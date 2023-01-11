@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 XCODE_BASE_PATH=$(xcode-select -p)/Platforms
+# XCODE_BASE_PATH="$(pwd -P)/Xcode.app/Contents/Developer/Platforms"
 VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" "${XCODE_BASE_PATH}/iPhoneOS.platform/version.plist")
 OUTPUT_PATH=iOS_${VERSION//./_}
 
