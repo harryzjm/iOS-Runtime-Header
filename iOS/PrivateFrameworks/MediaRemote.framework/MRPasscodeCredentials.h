@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -20,7 +20,7 @@
 @property(copy, nonatomic) NSString *passcode; // @synthesize passcode=_passcode;
 @property(nonatomic) unsigned long long characterCount; // @synthesize characterCount=_characterCount;
 @property(nonatomic) unsigned int type; // @synthesize type=_type;
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

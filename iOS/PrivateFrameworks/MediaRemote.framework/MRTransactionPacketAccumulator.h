@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableOrderedSet;
 
@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _currentLength;
 }
 
+- (void).cxx_destruct;
 - (id)mergePacket:(id)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

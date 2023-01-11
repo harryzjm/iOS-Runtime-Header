@@ -6,12 +6,13 @@
 
 #import <InstallCoordination/IXCoordinatorWithAppAssetPromise-Protocol.h>
 #import <InstallCoordination/IXCoordinatorWithAutoEnablingExtensionTypes-Protocol.h>
+#import <InstallCoordination/IXCoordinatorWithImportance-Protocol.h>
 #import <InstallCoordination/IXCoordinatorWithInstallOptions-Protocol.h>
 #import <InstallCoordination/IXUserInitiatedCoordinator-Protocol.h>
 
 @class NSString;
 
-@interface IXPromotingAppInstallCoordinator <IXCoordinatorWithAppAssetPromise, IXCoordinatorWithInstallOptions, IXCoordinatorWithAutoEnablingExtensionTypes, IXUserInitiatedCoordinator>
+@interface IXPromotingAppInstallCoordinator <IXCoordinatorWithAppAssetPromise, IXCoordinatorWithInstallOptions, IXCoordinatorWithAutoEnablingExtensionTypes, IXUserInitiatedCoordinator, IXCoordinatorWithImportance>
 {
 }
 
@@ -29,13 +30,13 @@
 @property(readonly, nonatomic) _Bool hasAppAssetPromise;
 - (id)appAssetPromiseWithError:(id *)arg1;
 - (_Bool)setAppAssetPromise:(id)arg1 error:(id *)arg2;
-@property(nonatomic, getter=isUserInitiated) _Bool userInitiated;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(nonatomic, getter=isUserInitiated) _Bool userInitiated;
 
 @end
 

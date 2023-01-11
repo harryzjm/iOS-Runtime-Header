@@ -5,7 +5,6 @@
 //
 
 #import <ITMLKit/IKJSXMLHTTPRequest-Protocol.h>
-#import <ITMLKit/IKNetworkRequestLoader-Protocol.h>
 #import <ITMLKit/ISStoreURLOperationDelegate-Protocol.h>
 #import <ITMLKit/NSURLSessionDataDelegate-Protocol.h>
 #import <ITMLKit/NSURLSessionTaskDelegate-Protocol.h>
@@ -13,7 +12,7 @@
 @class IKDOMDocument, ISURLOperation, JSManagedValue, NSData, NSDictionary, NSError, NSHTTPURLResponse, NSMutableArray, NSMutableURLRequest, NSNumber, NSString, NSURL, NSURLConnection, NSURLSession, NSURLSessionConfiguration;
 @protocol IKNetworkRequestRecord;
 
-@interface IKJSXMLHTTPRequest <ISStoreURLOperationDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate, IKNetworkRequestLoader, IKJSXMLHTTPRequest>
+@interface IKJSXMLHTTPRequest <ISStoreURLOperationDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate, IKJSXMLHTTPRequest>
 {
     _Bool _shouldSquashOnReadyStateEvents;
     struct os_unfair_lock_s _onReadyStateChangeMessageQueueLock;

@@ -8,14 +8,14 @@
 
 @interface NSError (IBErrorAdditions)
 + (id)ib_errorWithUnderlyingError:(id)arg1 recoverySuggestion:(id)arg2 localizedDescriptionFormat:(id)arg3;
-+ (id)ib_errorWithLocalizedDescription:(id)arg1 domain:(id)arg2 andCode:(long long)arg3;
++ (id)ib_errorWithLocalizedDescription:(id)arg1 domain:(id)arg2 code:(long long)arg3;
 + (id)ib_errorWithLocalizedDescriptionFormat:(id)arg1;
 + (id)ib_errorWithLocalizedDescription:(id)arg1;
-+ (id)ib_errorWithLocalizedDescription:(id)arg1 andFailureReason:(id)arg2;
-+ (id)ib_errorWithLocalizedDescription:(id)arg1 andRecoverySuggestion:(id)arg2;
-+ (id)ib_errorWithLocalizedDescription:(id)arg1 failureReason:(id)arg2 andRecoverySuggestion:(id)arg3;
-+ (id)ib_errorWithLocalizedDescription:(id)arg1 failureReason:(id)arg2 recoverySuggestion:(id)arg3 domain:(id)arg4 andCode:(long long)arg5;
-+ (id)ib_errorWithLocalizedDescription:(id)arg1 failureReason:(id)arg2 recoverySuggestion:(id)arg3 domain:(id)arg4 code:(long long)arg5 andRecoveryAttempter:(id)arg6;
++ (id)ib_errorWithLocalizedDescription:(id)arg1 failureReason:(id)arg2;
++ (id)ib_errorWithLocalizedDescription:(id)arg1 recoverySuggestion:(id)arg2;
++ (id)ib_errorWithLocalizedDescription:(id)arg1 failureReason:(id)arg2 recoverySuggestion:(id)arg3;
++ (id)ib_errorWithLocalizedDescription:(id)arg1 failureReason:(id)arg2 recoverySuggestion:(id)arg3 domain:(id)arg4 code:(long long)arg5;
++ (id)ib_errorWithLocalizedDescription:(id)arg1 failureReason:(id)arg2 recoverySuggestion:(id)arg3 domain:(id)arg4 code:(long long)arg5 recoveryOptions:(id)arg6 recoveryAttempter:(id)arg7;
 - (id)ib_firstObjectInSelfAndUnderlyingErrorsForUserInfoKey:(id)arg1;
 - (id)ib_errorForPresentingToUserAfterLoggingToConsole;
 - (id)ib_aggregatedDescriptionAndFailureReasons;
@@ -23,6 +23,6 @@
 - (id)ib_underlyingErrors;
 - (id)ib_errorByInjectingUnderlyingError:(id)arg1;
 - (id)ib_errorByInjectingUserInfoObject:(id)arg1 forKey:(id)arg2;
-- (_Bool)ib_isErrorWithDomain:(id)arg1 andCode:(long long)arg2;
+- (_Bool)ib_isErrorWithDomain:(id)arg1 code:(long long)arg2;
 @end
 

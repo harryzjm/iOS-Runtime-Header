@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TSUColor;
 
@@ -22,8 +22,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double viewScale; // @synthesize viewScale=_viewScale;
 @property(retain, nonatomic) TSUColor *color; // @synthesize color=_color;
 @property(nonatomic) int badgeType; // @synthesize badgeType=_badgeType;
+- (void).cxx_destruct;
 - (void)drawInContext:(struct CGContext *)arg1;
-- (void)dealloc;
 
 @end
 

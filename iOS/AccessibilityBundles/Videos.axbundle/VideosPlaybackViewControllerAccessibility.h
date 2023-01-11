@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_overlayIdleTimerFired:(id)arg1;
+- (void)_accessibilitySnarfed;
 - (void)_showOverlayViewQuickHide:(_Bool)arg1;
 - (void)_handleSingleTap:(id)arg1;
 - (void)_axAnnounceControlsVisible:(_Bool)arg1;

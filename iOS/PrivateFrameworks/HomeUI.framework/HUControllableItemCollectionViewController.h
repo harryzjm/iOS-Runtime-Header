@@ -8,8 +8,8 @@
 #import <HomeUI/HUQuickControlPresentationHost-Protocol.h>
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class HFItemManager, HUQuickControlPresentationCoordinator, NSMutableDictionary, NSString, UICollectionViewLayout, UILongPressGestureRecognizer, UIViewController;
-@protocol HUControllableCollectionViewLayout, HUQuickControlPresentationHost;
+@class HFItem, HFItemManager, HUQuickControlPresentationCoordinator, NSMutableDictionary, NSString, UICollectionViewLayout, UIGestureRecognizer, UILongPressGestureRecognizer, UIViewController;
+@protocol HUControllableCollectionViewLayout, HUQuickControlPresentationHost, NSCopying;
 
 @interface HUControllableItemCollectionViewController <HUQuickControlPresentationHost, UIGestureRecognizerDelegate, HUQuickControlPresentationCoordinatorDelegate>
 {
@@ -20,8 +20,12 @@
     UIViewController<HUQuickControlPresentationHost> *_ancestorQuickControlHostAtPresentationTime;
     UILongPressGestureRecognizer *_reorderGestureRecognizer;
     NSMutableDictionary *_actionSetExecutionFuturesKeyedByIdentifier;
+    UIGestureRecognizer *_contextualTapGestureRecognizer;
+    HFItem<NSCopying> *_selectedContextualMenuItem;
 }
 
+@property(retain, nonatomic) HFItem<NSCopying> *selectedContextualMenuItem; // @synthesize selectedContextualMenuItem=_selectedContextualMenuItem;
+@property(retain, nonatomic) UIGestureRecognizer *contextualTapGestureRecognizer; // @synthesize contextualTapGestureRecognizer=_contextualTapGestureRecognizer;
 @property(retain, nonatomic) NSMutableDictionary *actionSetExecutionFuturesKeyedByIdentifier; // @synthesize actionSetExecutionFuturesKeyedByIdentifier=_actionSetExecutionFuturesKeyedByIdentifier;
 @property(nonatomic) _Bool suppressCollectionViewUpdatesForReorderCommit; // @synthesize suppressCollectionViewUpdatesForReorderCommit=_suppressCollectionViewUpdatesForReorderCommit;
 @property(retain, nonatomic) UILongPressGestureRecognizer *reorderGestureRecognizer; // @synthesize reorderGestureRecognizer=_reorderGestureRecognizer;
@@ -31,6 +35,12 @@
 @property(readonly, nonatomic) unsigned long long contentColorStyle; // @synthesize contentColorStyle=_contentColorStyle;
 - (void).cxx_destruct;
 - (void)_logUserMetricsAfterTapOfItem:(id)arg1;
+- (void)_showQuickControlsForSelectedMenuItem;
+- (void)_showSettingsForSelectedMenuItem;
+- (_Bool)canBecomeFirstResponder;
+- (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (void)_handleContextualGesture:(id)arg1;
+- (id)customContextualMenuItemsForItem:(id)arg1;
 - (_Bool)hasDetailsActionForPresentationCoordinator:(id)arg1 item:(id)arg2;
 - (void)childViewController:(id)arg1 didEndQuickControlsPresentation:(id)arg2;
 - (void)childViewController:(id)arg1 willBeginQuickControlsPresentation:(id)arg2;
@@ -61,11 +71,13 @@
 - (void)setReorderableHomeKitItemList:(id)arg1 forSection:(long long)arg2;
 - (id)reorderableHomeKitItemListForSection:(long long)arg1;
 - (_Bool)canReorderItemAtIndexPath:(id)arg1;
+- (_Bool)alwaysAllowReordering;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (void)_reorderGestureDidEnd:(id)arg1 finished:(_Bool)arg2;
 - (void)_reorderGestureDidChange:(id)arg1;
 - (void)_reorderGestureDidBegin:(id)arg1;
 - (void)_handleReorderGesture:(id)arg1;
+- (void)_updateReorderingGestureRecognizer;
 - (void)setExecutionFuture:(id)arg1 forActionSet:(id)arg2;
 - (void)setContentColorStyle:(unsigned long long)arg1;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;

@@ -54,7 +54,6 @@ __attribute__((visibility("hidden")))
 - (int)verticalAlignmentForTextLayout:(id)arg1;
 - (unsigned int)autosizeFlagsForTextLayout:(id)arg1;
 @property(readonly, nonatomic) _Bool autosizes;
-- (unsigned int)cropLine:(struct CGRect)arg1 lineSegmentRects:(struct CGRect [128])arg2;
 - (id)interiorClippingPath;
 - (id)textWrapper;
 - (id)interiorWrapPath;
@@ -64,6 +63,9 @@ __attribute__((visibility("hidden")))
 - (void)processChanges:(id)arg1 forChangeSource:(id)arg2;
 - (_Bool)isInvisibleAutosizingShape;
 - (void)createContainedLayoutForInstructionalText;
+- (_Bool)p_isEmptyParagraphWithFillOrBorders;
+- (_Bool)p_isEmptyList;
+- (_Bool)p_hasVisibleContents;
 - (void)invalidatePath;
 - (void)invalidateSize;
 - (void)replaceChild:(id)arg1 with:(id)arg2;

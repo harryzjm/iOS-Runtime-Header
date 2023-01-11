@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class XCAXClient_iOS, XCAccessibilityElement, XCElementSnapshot, XCUIApplicationImpl, XCUIApplicationMonitor;
-@protocol OS_dispatch_queue, XCTRunnerAutomationSession;
+@class NSString, XCAccessibilityElement, XCElementSnapshot, XCUIApplicationMonitor;
+@protocol OS_dispatch_queue, XCTRunnerAutomationSession, XCUIAccessibilityInterface;
 
 @interface XCUIApplicationProcess : NSObject
 {
@@ -18,16 +18,17 @@
     id _token;
     int _exitCode;
     _Bool _eventLoopHasIdled;
-    _Bool _hasReceivedEventLoopHasIdled;
     _Bool _animationsHaveFinished;
-    _Bool _hasReceivedAnimationsHaveFinished;
     _Bool _hasExitCode;
     _Bool _hasCrashReport;
-    XCUIApplicationImpl *_applicationImplementation;
+    _Bool _bridged;
+    unsigned long long _alertCount;
+    NSString *_bundleID;
     id <XCTRunnerAutomationSession> _automationSession;
     XCElementSnapshot *_lastSnapshot;
+    XCUIApplicationProcess *_bridgedProcess;
     XCUIApplicationMonitor *_applicationMonitor;
-    XCAXClient_iOS *_AXClient_iOS;
+    id <XCUIAccessibilityInterface> _axInterface;
 }
 
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
@@ -35,19 +36,32 @@
 + (id)keyPathsForValuesAffectingBackground;
 + (id)keyPathsForValuesAffectingSuspended;
 + (id)keyPathsForValuesAffectingRunning;
-@property XCAXClient_iOS *AXClient_iOS; // @synthesize AXClient_iOS=_AXClient_iOS;
-@property XCUIApplicationMonitor *applicationMonitor; // @synthesize applicationMonitor=_applicationMonitor;
+@property(readonly) id <XCUIAccessibilityInterface> axInterface; // @synthesize axInterface=_axInterface;
+@property(readonly) XCUIApplicationMonitor *applicationMonitor; // @synthesize applicationMonitor=_applicationMonitor;
+@property(retain, nonatomic) XCUIApplicationProcess *bridgedProcess; // @synthesize bridgedProcess=_bridgedProcess;
 @property(retain) XCElementSnapshot *lastSnapshot; // @synthesize lastSnapshot=_lastSnapshot;
 @property(retain) id <XCTRunnerAutomationSession> automationSession; // @synthesize automationSession=_automationSession;
+@property(getter=isBridged) _Bool bridged; // @synthesize bridged=_bridged;
 @property _Bool hasCrashReport; // @synthesize hasCrashReport=_hasCrashReport;
 @property _Bool hasExitCode; // @synthesize hasExitCode=_hasExitCode;
+@property(readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+- (void).cxx_destruct;
 - (void)terminate;
 - (void)waitForViewControllerViewDidDisappearWithTimeout:(double)arg1;
+- (void)acquireBackgroundAssertion;
+- (void)waitForFutureAutomationSession:(id)arg1;
+- (id)futureAutomationSession;
 - (void)waitForAutomationSession;
+@property(readonly, getter=isQuiescent) _Bool quiescent;
+- (void)_initiateQuiescenceChecksIncludingAnimationsIdle:(_Bool)arg1;
 - (void)waitForQuiescenceIncludingAnimationsIdle:(_Bool)arg1;
-@property _Bool hasReceivedAnimationsHaveFinished;
+- (void)_notifyWhenAnimationsAreIdle:(CDUnknownBlockType)arg1;
+- (_Bool)_supportsAnimationsIdleNotifications;
+- (void)_notifyWhenMainRunLoopIsIdle:(CDUnknownBlockType)arg1;
+- (void)resetAlertCount;
+- (void)incrementAlertCount;
+@property(readonly) unsigned long long alertCount; // @synthesize alertCount=_alertCount;
 @property _Bool animationsHaveFinished;
-@property _Bool hasReceivedEventLoopHasIdled;
 @property _Bool eventLoopHasIdled;
 @property int exitCode;
 @property(retain) id token;
@@ -58,15 +72,13 @@
 @property(readonly) _Bool running;
 - (void)_awaitKnownApplicationState;
 @property(nonatomic) unsigned long long applicationState;
-@property XCUIApplicationImpl *applicationImplementation; // @synthesize applicationImplementation=_applicationImplementation;
 @property(nonatomic) _Bool accessibilityActive;
 @property(readonly, copy) XCAccessibilityElement *accessibilityElement;
 - (id)shortDescription;
 - (id)_queue_description;
 - (id)description;
-- (id)init;
-- (id)initWithApplicationMonitor:(id)arg1 AXInterface:(id)arg2;
-- (void)dealloc;
+- (id)initWithBundleID:(id)arg1;
+- (id)initWithBundleID:(id)arg1 applicationMonitor:(id)arg2 axInterface:(id)arg3;
 
 @end
 

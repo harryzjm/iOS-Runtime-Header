@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DAEAS/NSCoding-Protocol.h>
+#import <DAEAS/NSSecureCoding-Protocol.h>
 
 @class ASToDo, NSDate, NSNumber;
 
-@interface ASToDoRecurrence <NSCoding>
+@interface ASToDoRecurrence <NSSecureCoding>
 {
     NSDate *_startTime;
     NSNumber *_regenerate;
@@ -16,6 +16,7 @@
     ASToDo *_parentToDo;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)asParseRules;
 + (_Bool)notifyOfUnknownTokens;
 + (_Bool)frontingBasicTypes;

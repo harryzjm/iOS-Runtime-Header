@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 @protocol OS_dispatch_queue;
@@ -18,6 +18,8 @@
 + (id)sharedInstance;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *metricsQueue; // @synthesize metricsQueue=_metricsQueue;
 @property(retain, nonatomic) NSMutableDictionary *onGoingEventsMap; // @synthesize onGoingEventsMap=_onGoingEventsMap;
+- (void)metricAttachmentValidation:(_Bool)arg1 attachmentSize:(id)arg2 operationalErrorDomain:(id)arg3 operationalErrorCode:(id)arg4 validationErrorDomain:(id)arg5 validationErrorCode:(id)arg6;
+- (void)forceAutoBugCaptureWithSubType:(id)arg1 errorPayload:(id)arg2;
 - (void)autoBugCaptureWithSubType:(id)arg1 errorPayload:(id)arg2;
 - (_Bool)finalizeEvent:(id)arg1 addingDicitonary:(id)arg2;
 - (void)_finalizeEvent:(id)arg1 addingDicitonary:(id)arg2;

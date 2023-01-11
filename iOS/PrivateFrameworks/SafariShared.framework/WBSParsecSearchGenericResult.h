@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <SafariShared/WBSParsecSearchGenericResult-Protocol.h>
+
 @class NSArray, NSNumber, NSString, WBSParsecActionButton, WBSParsecAuxiliaryInfo, WBSParsecImageRepresentation;
 
-@interface WBSParsecSearchGenericResult
+@interface WBSParsecSearchGenericResult <WBSParsecSearchGenericResult>
 {
     WBSParsecActionButton *_actionButton;
     NSNumber *_titleMaximumLines;
@@ -15,13 +17,11 @@
     NSString *_secondaryTitle;
     WBSParsecImageRepresentation *_secondaryTitleGlyph;
     WBSParsecAuxiliaryInfo *_auxiliaryInfo;
-    NSArray *_rowSections;
     WBSParsecImageRepresentation *_thumbnail;
 }
 
 + (id)_specializedSchema;
 @property(readonly, nonatomic) WBSParsecImageRepresentation *thumbnail; // @synthesize thumbnail=_thumbnail;
-@property(readonly, nonatomic) NSArray *rowSections; // @synthesize rowSections=_rowSections;
 @property(readonly, nonatomic) WBSParsecAuxiliaryInfo *auxiliaryInfo; // @synthesize auxiliaryInfo=_auxiliaryInfo;
 @property(readonly, nonatomic) WBSParsecImageRepresentation *secondaryTitleGlyph; // @synthesize secondaryTitleGlyph=_secondaryTitleGlyph;
 @property(readonly, copy, nonatomic) NSString *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;

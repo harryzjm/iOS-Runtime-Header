@@ -4,34 +4,58 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ARPointCloud, ARTrackingErrorData, ARWorldTrackingData, NSMutableArray, NSObject, NSString;
+@class ARWorldTrackingErrorData, ARWorldTrackingOptions, ARWorldTrackingPoseData, ARWorldTrackingReferenceAnchorData, NSDictionary, NSHashTable, NSObject;
 @protocol OS_dispatch_semaphore;
 
 @interface ARWorldTrackingTechnique
 {
+    NSHashTable *_observers;
+    NSObject<OS_dispatch_semaphore> *_observersSemaphore;
     _Bool _useFixedIntrinsics;
-    unsigned long long _vioState;
-    NSObject<OS_dispatch_semaphore> *_vioStateSemaphore;
-    NSMutableArray *_latestVisionFeaturePointDatas;
-    ARPointCloud *_cachedFeaturePointCloud;
-    ARTrackingErrorData *_errorData;
-    ARWorldTrackingData *_cachedTrackingData;
-    ARWorldTrackingData *_lastPointCloudTrackingData;
+    long long _vioHandleState;
+    NSObject<OS_dispatch_semaphore> *_vioHandleStateSemaphore;
+    NSObject<OS_dispatch_semaphore> *_vioObjectDetectionSemaphore;
+    ARWorldTrackingReferenceAnchorData *_anchorData;
+    ARWorldTrackingErrorData *_errorData;
+    ARWorldTrackingPoseData *_cachedPoseData;
+    long long _reinitializationAttempts;
+    long long _reinitializationAttemptsAtInitialization;
+    double _lastRelocalizationTimestamp;
+    double _lastQualityKeyframeTimestamp;
+    long long _previousKeyframeCount;
+    double _lastPoseTrackingMapTimestamp;
+    double _lastMajorRelocalizationTimestamp;
+    double _lastPoseMajorRelocalizationTimestamp;
+    _Bool _relocalizingAfterSensorDataDrop;
+    _Bool _didRelocalize;
+    _Bool _didClearMap;
     NSObject<OS_dispatch_semaphore> *_resultSemaphore;
-    double _lastErrorLogTimestamp;
-    _Bool _relocalizationEnabled;
-    NSString *_deviceModel;
-    long long _latencyFrameCount;
+    double _minVergenceAngleCosine;
+    double _resultLatency;
+    ARWorldTrackingOptions *_options;
+    _Bool _allowPoseGraphUpdates;
+    NSDictionary *_objectDetectionOptions;
 }
 
++ (_Bool)supportsVideoResolution:(struct CGSize)arg1;
 + (_Bool)isSupported;
-@property(nonatomic) _Bool relocalizationEnabled; // @synthesize relocalizationEnabled=_relocalizationEnabled;
-@property(readonly, nonatomic) long long latencyFrameCount; // @synthesize latencyFrameCount=_latencyFrameCount;
-@property(readonly, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 - (void).cxx_destruct;
+- (_Bool)setupObjectDetection:(id)arg1;
+- (id)getObservers;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1;
+- (void)removeReferenceAnchors:(id)arg1;
+- (void)addReferenceAnchors:(id)arg1;
+- (void)loadSurfaceData:(id)arg1;
+- (id)serializeSurfaceData;
+- (void)clearMap;
+- (id)serializeMapData;
 - (CDStruct_14d5dc5e)cameraTransformAtTimestamp:(double)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithDeviceModel:(id)arg1 latencyFrameCount:(long long)arg2;
+- (long long)vioHandleState;
+@property(readonly, nonatomic) ARWorldTrackingOptions *mutableOptions;
+@property(readonly, copy, nonatomic) ARWorldTrackingOptions *options;
+- (id)initWithOptions:(id)arg1;
 - (id)init;
 
 @end

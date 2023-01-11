@@ -4,19 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UILabel;
-
 @interface FontSizeSliderCell
 {
-    UILabel *_smallSizeLabel;
-    UILabel *_largeSizeLabel;
-    UILabel *_veryLargeSizeLabel;
 }
 
-- (void).cxx_destruct;
 - (void)layoutSubviews;
 - (id)newControl;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
 
 @end
 

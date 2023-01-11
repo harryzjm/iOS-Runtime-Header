@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSHashTable, NSLock, PKFieldProperties;
+@class NSHashTable, PKFieldProperties;
 @protocol OS_dispatch_queue, PKFieldDetectorDelegate;
 
 @interface PKFieldDetector : NSObject
 {
+    struct os_unfair_lock_s _lock;
     NSHashTable *_observers;
-    NSLock *_observersLock;
     PKFieldProperties *_fieldProperties;
     NSObject<OS_dispatch_queue> *_fieldDetectorSerialQueue;
     NSObject<OS_dispatch_queue> *_replyQueue;
@@ -20,7 +20,7 @@
 }
 
 - (void).cxx_destruct;
-@property(nonatomic) __weak id <PKFieldDetectorDelegate> delegate;
+@property(nonatomic) __weak id <PKFieldDetectorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) __weak PKFieldProperties *fieldProperties;
 - (void)unregisterObserver:(id)arg1;
 - (void)registerObserver:(id)arg1;

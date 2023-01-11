@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface NSTextTable
+#import <UIFoundation/NSSecureCoding-Protocol.h>
+
+@interface NSTextTable <NSSecureCoding>
 {
     unsigned long long _numCols;
     unsigned long long _tableFlags;
@@ -13,6 +15,7 @@
     void *_tableSecondary;
 }
 
++ (_Bool)supportsSecureCoding;
 + (void)initialize;
 - (void)drawBackgroundForBlock:(id)arg1 withFrame:(struct CGRect)arg2 inView:(id)arg3 characterRange:(struct _NSRange)arg4 layoutManager:(id)arg5;
 - (_Bool)_missingColumnsForRowRange:(struct _NSRange)arg1 blockIndex:(unsigned long long)arg2 text:(id)arg3;

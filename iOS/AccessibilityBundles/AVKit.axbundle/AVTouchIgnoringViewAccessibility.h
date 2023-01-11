@@ -12,7 +12,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityObscuresScreen;
-- (_Bool)accessibilityElementsHidden;
 
 @end
 

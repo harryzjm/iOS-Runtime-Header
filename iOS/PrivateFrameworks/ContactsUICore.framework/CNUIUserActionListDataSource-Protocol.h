@@ -6,7 +6,7 @@
 
 #import <ContactsUICore/NSObject-Protocol.h>
 
-@class CNContactProperty, CNFuture, CNObservable, CNUIUserActionItem, NSArray, NSString, UIImage;
+@class CNContact, CNContactProperty, CNFuture, CNObservable, CNUIUserActionItem, NSArray, NSString, UIImage;
 @protocol CNCancelable, CNCapabilities, CNUIUserActionListConsumer;
 
 @protocol CNUIUserActionListDataSource <NSObject>
@@ -23,6 +23,7 @@
 - (NSString *)consumer:(id <CNUIUserActionListConsumer>)arg1 localizedDisplayNameForActionType:(NSString *)arg2;
 - (CNObservable *)consumer:(id <CNUIUserActionListConsumer>)arg1 actionModelsForActionType:(NSString *)arg2;
 - (id <CNCancelable>)consumer:(id <CNUIUserActionListConsumer>)arg1 actionModelsForActionType:(NSString *)arg2 handler:(void (^)(CNUIUserActionListModel *))arg3;
+- (void)setContact:(CNContact *)arg1;
 - (NSArray *)actionTypesForConsumer:(id <CNUIUserActionListConsumer>)arg1;
 @end
 

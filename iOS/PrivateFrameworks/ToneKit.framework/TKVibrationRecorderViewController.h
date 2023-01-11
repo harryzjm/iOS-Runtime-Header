@@ -6,10 +6,12 @@
 
 #import <UIKit/UINavigationController.h>
 
-@class TKVibrationRecorderContentViewController;
+#import <ToneKit/PSStateRestoration-Protocol.h>
+
+@class NSString, TKVibrationRecorderContentViewController;
 @protocol TKVibrationRecorderViewControllerDelegate;
 
-@interface TKVibrationRecorderViewController : UINavigationController
+@interface TKVibrationRecorderViewController : UINavigationController <PSStateRestoration>
 {
     TKVibrationRecorderContentViewController *_vibrationRecorderContentViewController;
 }
@@ -18,6 +20,13 @@
 @property(nonatomic) __weak id <TKVibrationRecorderViewControllerDelegate> vibrationRecorderViewControllerDelegate;
 - (void)dealloc;
 - (id)initWithVibratorController:(id)arg1;
+- (_Bool)canBeShownFromSuspendedState;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

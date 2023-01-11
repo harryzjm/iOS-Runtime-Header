@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSNumber;
+@class NSMutableDictionary, NSNumber;
 @protocol OS_dispatch_queue;
 
 @interface MPPlaybackUserDefaults : NSObject
@@ -18,6 +18,8 @@
     long long _musicRepeatType;
     long long _musicShuffleType;
     _Bool _soundCheckEnabled;
+    _Bool _speakerRouteEnabled;
+    NSMutableDictionary *_lastSiriPlaybackContextIDs;
     struct vector<int, std::__1::allocator<int>> _notifyTokens;
     NSObject<OS_dispatch_queue> *_userDefaultsMutationQueue;
 }
@@ -32,10 +34,13 @@
 - (long long)_calculateCurrentMusicRepeatType;
 - (int)_calculateCurrentMusicEQPreset;
 - (void)_addNotificationObserver:(CDUnknownBlockType)arg1 forUserDefaultKey:(struct __CFString *)arg2;
+- (void)setLastSiriPlaybackContextID:(id)arg1 forPlayerID:(id)arg2;
+- (id)lastSiriPlaybackContextIDForPlayerID:(id)arg1;
 @property(readonly, nonatomic) _Bool shouldUseNewQueueManagement;
 @property(copy, nonatomic, getter=isPrivateListeningEnabled) NSNumber *privateListeningEnabled;
 @property(readonly, nonatomic) unsigned long long preferredVideosAssetQualityOnWifi;
 @property(readonly, nonatomic) unsigned long long preferredVideosAssetQualityOnCellular;
+@property(readonly, nonatomic) _Bool speakerRouteEnabled;
 @property(readonly, nonatomic) _Bool soundCheckEnabled;
 @property(nonatomic) long long musicShuffleType;
 @property(nonatomic) long long musicRepeatType;

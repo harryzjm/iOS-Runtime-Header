@@ -4,21 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVOutputContextDestinationChangeInternal;
+@class AVOutputContextDestinationChangeInternal, NSString;
 
 @interface AVOutputContextDestinationChange : NSObject
 {
     AVOutputContextDestinationChangeInternal *_ivars;
 }
 
-- (void)_setStatus:(long long)arg1;
-- (void)markAsCancelled;
+- (void)_setStatus:(long long)arg1 cancellationReason:(id)arg2;
+- (void)markAsCancelledWithReason:(id)arg1;
 - (void)markAsFailed;
 - (void)markAsFinished;
 - (void)markAsInProgress;
+@property(readonly) NSString *cancellationReason;
 @property(readonly) long long status;
+- (id)description;
 - (void)dealloc;
 - (id)init;
 

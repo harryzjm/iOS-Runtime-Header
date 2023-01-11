@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <ProactiveSupport/_PASZonedObject.h>
 
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
+#import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSString;
 
-@interface PPSource : NSObject <NSCopying>
+@interface PPSource : _PASZonedObject <NSCopying, NSSecureCoding>
 {
     NSString *_bundleId;
     NSString *_groupId;
@@ -18,17 +19,19 @@
     NSDate *_date;
 }
 
-+ (id)allocWithZone:(struct _NSZone *)arg1;
++ (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(readonly, nonatomic) NSString *documentId; // @synthesize documentId=_documentId;
 @property(readonly, nonatomic) NSString *groupId; // @synthesize groupId=_groupId;
 @property(readonly, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
+- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToSource:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithBundleId:(id)arg1 groupId:(id)arg2 documentId:(id)arg3 date:(id)arg4;
-- (void)dealloc;
 
 @end
 

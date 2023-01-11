@@ -6,59 +6,62 @@
 
 #import <objc/NSObject.h>
 
-#import <Silex/SXMediaSelectionControllerDataSource-Protocol.h>
-#import <Silex/SXMediaSelectionControllerDelegate-Protocol.h>
-#import <Silex/SXVideoMetadataProviding-Protocol.h>
-#import <Silex/SXVolumeObserver-Protocol.h>
+#import <Silex/SVVideoMetadata-Protocol.h>
 
-@class NSArray, NSHashTable, NSString, SXAVPlayer, SXKeyValueObserver;
-@protocol SXVideoPlaybackHost, SXVideoProviding;
+@class NSArray, NSError, NSHashTable, NSString, SVKeyValueObserver, SXAVPlayer;
+@protocol SXAVPlayerFactory, SXVideoPlaybackHost, SXVideoProviding;
 
-@interface SXPlaybackCoordinator : NSObject <SXVideoMetadataProviding, SXMediaSelectionControllerDelegate, SXMediaSelectionControllerDataSource, SXVolumeObserver>
+@interface SXPlaybackCoordinator : NSObject <SVVideoMetadata>
 {
-    _Bool _hasMediaSelectionOptions;
-    _Bool _requiresReadyToDisplay;
+    _Bool _playbackLikelyToKeepUp;
+    _Bool _playbackBufferFull;
     _Bool _muted;
     _Bool _playbackRequested;
     _Bool _initiatedPlayback;
     id <SXVideoProviding> _video;
     unsigned long long _state;
     NSObject<SXVideoPlaybackHost> *_host;
+    NSError *_error;
     NSHashTable *_observers;
     SXAVPlayer *_player;
     CDUnknownBlockType _cancelHandler;
-    SXKeyValueObserver *_playerItemTracksObserver;
-    SXKeyValueObserver *_readyForDisplayObserver;
+    SVKeyValueObserver *_playerItemPresentationSizeObserver;
+    SVKeyValueObserver *_readyForDisplayObserver;
+    id <SXAVPlayerFactory> _playerFactory;
+    SVKeyValueObserver *_muteStateObserver;
+    SVKeyValueObserver *_playbackLikelyToKeepUpObserver;
+    SVKeyValueObserver *_playbackBufferFullObserver;
     struct CGSize _dimensions;
 }
 
-@property(retain, nonatomic) SXKeyValueObserver *readyForDisplayObserver; // @synthesize readyForDisplayObserver=_readyForDisplayObserver;
-@property(retain, nonatomic) SXKeyValueObserver *playerItemTracksObserver; // @synthesize playerItemTracksObserver=_playerItemTracksObserver;
+@property(retain, nonatomic) SVKeyValueObserver *playbackBufferFullObserver; // @synthesize playbackBufferFullObserver=_playbackBufferFullObserver;
+@property(retain, nonatomic) SVKeyValueObserver *playbackLikelyToKeepUpObserver; // @synthesize playbackLikelyToKeepUpObserver=_playbackLikelyToKeepUpObserver;
+@property(retain, nonatomic) SVKeyValueObserver *muteStateObserver; // @synthesize muteStateObserver=_muteStateObserver;
+@property(readonly, nonatomic) id <SXAVPlayerFactory> playerFactory; // @synthesize playerFactory=_playerFactory;
+@property(retain, nonatomic) SVKeyValueObserver *readyForDisplayObserver; // @synthesize readyForDisplayObserver=_readyForDisplayObserver;
+@property(retain, nonatomic) SVKeyValueObserver *playerItemPresentationSizeObserver; // @synthesize playerItemPresentationSizeObserver=_playerItemPresentationSizeObserver;
 @property(nonatomic) _Bool initiatedPlayback; // @synthesize initiatedPlayback=_initiatedPlayback;
 @property(copy, nonatomic) CDUnknownBlockType cancelHandler; // @synthesize cancelHandler=_cancelHandler;
 @property(retain, nonatomic) SXAVPlayer *player; // @synthesize player=_player;
 @property(readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(nonatomic) _Bool playbackRequested; // @synthesize playbackRequested=_playbackRequested;
+@property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(nonatomic) _Bool muted; // @synthesize muted=_muted;
-@property(nonatomic) _Bool requiresReadyToDisplay; // @synthesize requiresReadyToDisplay=_requiresReadyToDisplay;
 @property(nonatomic) __weak NSObject<SXVideoPlaybackHost> *host; // @synthesize host=_host;
 @property(nonatomic) struct CGSize dimensions; // @synthesize dimensions=_dimensions;
-@property(nonatomic) _Bool hasMediaSelectionOptions; // @synthesize hasMediaSelectionOptions=_hasMediaSelectionOptions;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
 @property(readonly, nonatomic) id <SXVideoProviding> video; // @synthesize video=_video;
+@property(readonly, nonatomic) _Bool playbackBufferFull; // @synthesize playbackBufferFull=_playbackBufferFull;
+@property(readonly, nonatomic) _Bool playbackLikelyToKeepUp; // @synthesize playbackLikelyToKeepUp=_playbackLikelyToKeepUp;
 - (void).cxx_destruct;
-- (void)removeReadyForDisplayObserver;
-- (void)addReadyForDisplayObserver;
-- (void)loadVideoDimensions;
-- (void)removePlayerItemTracksObserver;
-- (void)addPlayerItemTracksObserver;
-- (void)updateMediaSelectionOptionAvailability;
-- (void)loadAvailableMediaCharacteristics;
-- (void)muteStateChanged:(_Bool)arg1;
-- (id)mediaSelectionController:(id)arg1 preferredMediaSelectionOptionInMediaSelectionGroup:(id)arg2;
-- (id)mediaSelectionController:(id)arg1 selectedMediaSelectionOptionInMediaSelectionGroup:(id)arg2;
-- (void)mediaSelectionController:(id)arg1 selectMediaSelectionOption:(id)arg2 inMediaSelectionGroup:(id)arg3;
-- (id)mediaSelectionController:(id)arg1 mediaSelectionGroupWithCharacteristic:(id)arg2;
+- (void)removePlayerItemPresentationSizeObserver;
+- (void)addPlayerItemPresentationSizeObserver;
+- (void)muteStateChanged;
+- (void)addMuteStateObserver;
+- (void)playbackLikelyToKeepUpStateChanged;
+- (void)addPlaybackLikelyToKeepUpObserver;
+- (void)playbackBufferFullStateChanged;
+- (void)addPlaybackBuferObserver;
 - (void)stateChanged;
 - (void)loadedTimeRangesChanged;
 - (void)timeElapsed:(double)arg1 duration:(double)arg2;
@@ -70,11 +73,9 @@
 - (void)playbackInitiated;
 - (void)setupPlayerWithURL:(id)arg1;
 - (void)loadVideoIfNeeded;
-- (void)prefetch;
-- (void)playIfReady;
+- (void)load;
+@property(readonly, nonatomic) double loadingProgress;
 @property(readonly, nonatomic) double volume;
-@property(readonly, nonatomic) _Bool playbackBufferFull;
-@property(readonly, nonatomic) _Bool playbackLikelyToKeepUp;
 @property(readonly, nonatomic) NSArray *loadedTimeRanges;
 @property(readonly, nonatomic) double timePlayed;
 @property(readonly, nonatomic) double time;
@@ -85,7 +86,7 @@
 - (void)addPlaybackObserver:(id)arg1;
 - (void)pause;
 - (void)play;
-- (id)initWithVideo:(id)arg1;
+- (id)initWithVideo:(id)arg1 playerFactory:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

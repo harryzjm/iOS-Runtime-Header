@@ -7,8 +7,10 @@
 #import <ContactsUI/NSObject-Protocol.h>
 
 @class CNContactStore, PRPersonaStore;
+@protocol CNAvatarViewControllerDelegate;
 
 @protocol CNAvatarViewController_Private <NSObject>
+@property(nonatomic) __weak id <CNAvatarViewControllerDelegate> delegate;
 @property(nonatomic, getter=isThreeDTouchEnabled) _Bool threeDTouchEnabled;
 @property(readonly, nonatomic) PRPersonaStore *personaStore;
 @property(readonly, nonatomic) CNContactStore *contactStore;

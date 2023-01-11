@@ -8,7 +8,7 @@
 
 #import <ContactsUI/CNActionViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSObject, NSString, NUIContainerStackView;
+@class NSArray, NSMutableDictionary, NSObject, NSString, NUIContainerStackView, UIFont;
 @protocol CNActionsViewProtocol;
 
 @interface CNActionsView : UIView <CNActionViewDelegate>
@@ -20,11 +20,13 @@
     NUIContainerStackView *_stackView;
     NSMutableDictionary *_actionItemsByType;
     NSMutableDictionary *_actionViewsByType;
+    UIFont *_titleFont;
 }
 
 + (struct CGSize)intrinsicContentSizeForHorizontalLayoutForActionsViews:(id)arg1 spacing:(double)arg2;
 + (struct CGSize)intrinsicContentSizeForVerticalLayoutForActionsViews:(id)arg1 spacing:(double)arg2;
 + (long long)axisWithTitlesPresent:(_Bool)arg1;
+@property(retain, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 @property(retain, nonatomic) NSMutableDictionary *actionViewsByType; // @synthesize actionViewsByType=_actionViewsByType;
 @property(retain, nonatomic) NSMutableDictionary *actionItemsByType; // @synthesize actionItemsByType=_actionItemsByType;
 @property(retain, nonatomic) NUIContainerStackView *stackView; // @synthesize stackView=_stackView;

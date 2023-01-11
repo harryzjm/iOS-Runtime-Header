@@ -6,7 +6,7 @@
 
 #import <CoreML/MLModelSpecificationLoader-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSString;
 
 @interface MLGLMClassification <MLModelSpecificationLoader>
 {
@@ -19,14 +19,20 @@
     struct shared_ptr<CoreML::Specification::Model> m_spec;
 }
 
-+ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 error:(id *)arg2;
++ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)classify:(id)arg1 topK:(unsigned long long)arg2 error:(id *)arg3;
 - (id)classify:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (_Bool)calculateClassProbability:(double *)arg1 input:(id)arg2 error:(id *)arg3;
 - (id)classify:(id)arg1 error:(id *)arg2;
-- (id)initWithSpecification:(struct _MLModelSpecification *)arg1 error:(id *)arg2;
+- (id)initWithSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

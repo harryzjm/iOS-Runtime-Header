@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IBICHeightClass, IBICIdiom, IBICScale, IBICSubtype, IBICWidthClass;
+@class IBICColorSpace, IBICHeightClass, IBICIdiom, IBICLanguageDirection, IBICScale, IBICSubtype, IBICWidthClass;
 
 @interface IBICImageSetRepIdentifier
 {
@@ -15,9 +15,10 @@
 + (id)imagesOrderedFromNarrowestToWidest:(id)arg1;
 + (id)inferredRepIdentifiersGroupedByItemNameForPaths:(id)arg1;
 + (id)inferredRepIdentifierForPath:(id)arg1 slotComponentTransformer:(CDUnknownBlockType)arg2;
-+ (CDUnknownBlockType)slotComponentTransformerForPaths:(id)arg1;
 + (Class)slotClass;
 + (id)identifierWithSlot:(id)arg1 fileName:(id)arg2 explicitlyUnassigned:(_Bool)arg3;
+@property(readonly) IBICLanguageDirection *languageDirection;
+@property(readonly) IBICColorSpace *colorSpace;
 @property(readonly) IBICHeightClass *heightClass;
 @property(readonly) IBICWidthClass *widthClass;
 @property(readonly) IBICScale *scale;

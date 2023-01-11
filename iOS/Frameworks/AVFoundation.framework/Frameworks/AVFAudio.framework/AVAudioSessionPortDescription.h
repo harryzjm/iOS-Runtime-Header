@@ -13,12 +13,10 @@
     void *_impl;
 }
 
-+ (id)privateCreateOrConfigureArray:(id)arg1 withRawPortArray:(id)arg2 owningSession:(id)arg3;
-+ (_Bool)privateMatchesInputs:(id)arg1 toRawInputs:(id)arg2;
++ (id)privateCreateArray:(id)arg1 owningSession:(id)arg2;
 - (id)initWithPortType:(id)arg1;
 - (void)configureChannelsAndDataSources:(id)arg1;
 - (id)initWithRawPortDescription:(id)arg1 owningSession:(id)arg2;
-- (_Bool)privateMatchesRawDescription:(id)arg1;
 - (id)privateGetID;
 - (struct PortDescriptionImpl *)privateGetImplementation;
 - (_Bool)setPreferredDataSource:(id)arg1 error:(id *)arg2;
@@ -28,6 +26,7 @@
 @property(readonly) AVAudioSessionDataSourceDescription *selectedDataSource;
 - (unsigned long long)endpointType;
 - (_Bool)isHeadphones;
+- (_Bool)isLiveListenSupported;
 @property(readonly) _Bool hasHardwareVoiceCallProcessing;
 @property(readonly) NSArray *dataSources;
 @property(readonly) NSArray *channels;

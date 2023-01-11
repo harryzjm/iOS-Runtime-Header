@@ -17,6 +17,7 @@
 + (id)primarySession;
 + (id)retrieveSessionWithID:(unsigned int)arg1;
 + (id)sharedInstance;
+- (_Bool)isDolbyAtmosAvailable;
 - (void)privateUpdateOutputChannelCount:(id)arg1;
 - (void)privateUpdateInputChannelCount:(id)arg1;
 - (void)privateUpdateAudioFormat:(id)arg1;
@@ -26,6 +27,7 @@
 - (void)privateUpdatePromptStyle:(id)arg1;
 - (void)privateUpdateOutputVolume:(id)arg1;
 - (_Bool)privateSetPropertyValue:(unsigned int)arg1 withBool:(_Bool)arg2 error:(id *)arg3;
+- (void)privateHandleServerConnectionCompletion:(struct ConnectionResult)arg1;
 - (void)privateHandleRoutingContextChange;
 - (void)privateUpdatePiPAvailabilityChange:(id)arg1;
 - (void)privateHandleSecondaryAudioHintChange:(id)arg1;
@@ -61,7 +63,6 @@
 - (_Bool)setPreferredHardwareSampleRate:(double)arg1 error:(id *)arg2;
 - (void)setDelegate:(id)arg1;
 - (id)delegate;
-- (void)privateHandleServerReturned;
 - (id)privateRefreshAvailableInputs;
 @property(readonly) NSArray *availableInputs;
 - (double)speechDetectionDeviceSampleRate;
@@ -75,6 +76,7 @@
 - (_Bool)overrideOutputAudioPort:(unsigned long long)arg1 error:(id *)arg2;
 - (_Bool)selectIndependentRoutingContext:(id *)arg1;
 - (id)routingContextUID;
+- (_Bool)privateNeedsTranslationForNoSpeakerCategory:(id)arg1;
 - (_Bool)privateSetRoutingContextUID:(id)arg1 error:(id *)arg2;
 - (_Bool)privateSetRouteSharingPolicy:(unsigned long long)arg1 error:(id *)arg2;
 - (_Bool)setMode:(id)arg1 error:(id *)arg2;
@@ -92,6 +94,7 @@
 - (long long)interruptionPriority;
 - (unsigned long long)IOBufferFrameSize;
 - (double)IOBufferDuration;
+- (id)activeSessionDisplayIDs;
 - (double)outputSafetyOffset;
 - (double)inputSafetyOffset;
 - (double)outputLatency;
@@ -135,9 +138,10 @@
 - (_Bool)setPreferredIOBufferDuration:(double)arg1 error:(id *)arg2;
 - (_Bool)setPreferredSampleRate:(double)arg1 error:(id *)arg2;
 - (void)requestRecordPermission:(CDUnknownBlockType)arg1;
-- (unsigned long long)recordPermission;
+@property(readonly) unsigned long long recordPermission;
 - (_Bool)setActive:(_Bool)arg1 withFlags:(long long)arg2 error:(id *)arg3;
 - (_Bool)deactivateAndSetInterruptionPriority:(long long)arg1 error:(id *)arg2;
+- (void)activateWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)setActive:(_Bool)arg1 withOptions:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)setActive:(_Bool)arg1 error:(id *)arg2;
 - (_Bool)setCategory:(id)arg1 mode:(id)arg2 routeSharingPolicy:(unsigned long long)arg3 options:(unsigned long long)arg4 error:(id *)arg5;
@@ -149,7 +153,6 @@
 @property(readonly) unsigned long long routeSharingPolicy;
 @property(readonly) unsigned long long categoryOptions;
 @property(readonly) NSString *category;
-- (id)privateConfigureRouteDescription:(id)arg1;
 - (void)dealloc;
 - (id)initAuxiliarySession;
 - (id)initWithSessionID:(unsigned int)arg1;

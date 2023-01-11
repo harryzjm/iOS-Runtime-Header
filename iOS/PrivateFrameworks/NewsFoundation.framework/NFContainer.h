@@ -9,25 +9,27 @@
 #import <NewsFoundation/NFDefinitionContainer-Protocol.h>
 #import <NewsFoundation/NFRegistrationContainer-Protocol.h>
 
-@class NFContainerPool, NSMutableDictionary, NSString;
+@class NFCallbackStore, NFContainerPool, NFProxyResolver, NSMutableDictionary, NSString;
 @protocol NFResolver;
 
 @interface NFContainer : NSObject <NFDefinitionContainer, NFRegistrationContainer>
 {
-    id <NFResolver> _resolver;
     NSMutableDictionary *_definitions;
     NFContainerPool *_pool;
+    NFCallbackStore *_callbackStore;
     NSMutableDictionary *_privateContainers;
 }
 
 @property(retain, nonatomic) NSMutableDictionary *privateContainers; // @synthesize privateContainers=_privateContainers;
+@property(retain, nonatomic) NFCallbackStore *callbackStore; // @synthesize callbackStore=_callbackStore;
 @property(retain, nonatomic) NFContainerPool *pool; // @synthesize pool=_pool;
 @property(retain, nonatomic) NSMutableDictionary *definitions; // @synthesize definitions=_definitions;
-@property(retain, nonatomic) id <NFResolver> resolver; // @synthesize resolver=_resolver;
 - (void).cxx_destruct;
 - (void)validateDefinitionsWithProxyResolver:(id)arg1;
 - (id)register:(id)arg1 name:(id)arg2 createDefinitionBlock:(CDUnknownBlockType)arg3;
 - (id)definitionForKey:(id)arg1;
+@property(readonly, nonatomic) id <NFResolver> resolver;
+@property(readonly, nonatomic) NFProxyResolver *proxyResolver;
 - (id)unsafeRegisterForKey:(id)arg1 name:(id)arg2 factory:(CDUnknownBlockType)arg3;
 - (id)registerProtocol:(id)arg1 name:(id)arg2 factory:(CDUnknownBlockType)arg3;
 - (id)registerProtocol:(id)arg1 factory:(CDUnknownBlockType)arg2;
@@ -35,6 +37,8 @@
 - (id)registerClass:(Class)arg1 factory:(CDUnknownBlockType)arg2;
 @property(readonly, copy) NSString *debugDescription;
 - (id)initAsPrivateContainer;
+- (id)initWithFrameworkAssemblies:(id)arg1 assemblies:(id)arg2;
+- (id)initWithFrameworkAssemblies:(id)arg1;
 - (id)initWithAssemblies:(id)arg1;
 - (id)init;
 

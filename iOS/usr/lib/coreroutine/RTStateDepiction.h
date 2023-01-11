@@ -8,7 +8,7 @@
 
 #import <coreroutine/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSString, RTStateDepictionOneState, RTStateModelLocation;
+@class NSDate, NSString, RTMapItem, RTStateDepictionOneState, RTStateModelLocation;
 @protocol GEOMapItem;
 
 @interface RTStateDepiction : NSObject <NSSecureCoding>
@@ -44,7 +44,8 @@
 @property(nonatomic) long long typeSource;
 @property(nonatomic) long long type;
 @property(nonatomic) long long mapItemSource;
-@property(retain, nonatomic) id <GEOMapItem> mapItem;
+@property(retain, nonatomic) RTMapItem *mapItem;
+@property(retain, nonatomic) id <GEOMapItem> geoMapItem;
 - (void)incrementNumOfDataPtsByInteger:(long long)arg1;
 @property(retain, nonatomic) RTStateModelLocation *location;
 - (void)removeEntry:(double)arg1 exit:(double)arg2;
@@ -53,7 +54,7 @@
 - (void)_performIntegrityCheck;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithLocation:(id)arg1 type:(long long)arg2 typeSource:(long long)arg3 mapItem:(id)arg4 mapItemSource:(long long)arg5 customLabel:(id)arg6;
+- (id)initWithLocation:(id)arg1 type:(long long)arg2 typeSource:(long long)arg3 customLabel:(id)arg4 mapItem:(id)arg5;
 - (id)init;
 - (id)_excludeEntryExitOutlierDates:(id)arg1 options:(id)arg2;
 - (id)_filterEntryExitData:(id)arg1 options:(id)arg2;

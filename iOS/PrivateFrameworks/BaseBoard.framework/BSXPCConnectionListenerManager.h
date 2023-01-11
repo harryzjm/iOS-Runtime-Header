@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSLock, NSMutableDictionary;
 @protocol OS_dispatch_queue;
@@ -21,6 +21,7 @@
 + (void)listenForService:(id)arg1 onQueue:(id)arg2 withHandler:(id)arg3;
 + (id)defaultHandlerQueue;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_removeService:(id)arg1;
 - (void)_addService:(id)arg1 withHandler:(id)arg2 onQueue:(id)arg3;
 - (id)_defaultHandlerQueue;

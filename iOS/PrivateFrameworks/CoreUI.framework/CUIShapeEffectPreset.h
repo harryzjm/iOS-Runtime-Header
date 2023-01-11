@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CUIShapeEffectPreset : NSObject
 {
@@ -14,8 +14,10 @@
     float _minimumShadowSpread;
 }
 
++ (int)cgBlendModeFromCUIEffectBlendMode:(unsigned int)arg1;
 + (unsigned int)cuiEffectBlendModeFromCGBlendMode:(int)arg1;
 + (id)requiredEffectParametersForEffectType:(unsigned int)arg1;
+@property(nonatomic) double scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property float minimumShadowSpread; // @synthesize minimumShadowSpread=_minimumShadowSpread;
 - (id)debugDescription;
 - (void)addEffectsFromPreset:(id)arg1;
@@ -53,7 +55,7 @@
 - (id)layerEffectsRepresentation;
 - (id)CUIEffectDataRepresentation;
 - (unsigned long long)_parameterCount;
-- (id)initWithConstantPreset:(const CDStruct_32d4b02d *)arg1;
+- (id)initWithConstantPreset:(const CDStruct_35a2250d *)arg1;
 
 @end
 

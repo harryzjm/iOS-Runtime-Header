@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
@@ -27,6 +27,7 @@
 @property(nonatomic) double level; // @synthesize level=_level;
 @property(readonly, nonatomic) unsigned int contextID; // @synthesize contextID=_contextID;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
+- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
@@ -34,7 +35,6 @@
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (void)dealloc;
 - (id)initWithContextID:(unsigned int)arg1;
 - (id)initWithExternalSceneID:(id)arg1;
 - (id)init;

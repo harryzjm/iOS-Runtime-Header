@@ -6,12 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_source;
+#import <AssistantServices/NSCopying-Protocol.h>
 
-@interface AFWatchdogTimer : NSObject
+@protocol OS_dispatch_queue, OS_dispatch_source;
+
+@interface AFWatchdogTimer : NSObject <NSCopying>
 {
     double _interval;
     NSObject<OS_dispatch_source> *_timerSource;
+    NSObject<OS_dispatch_queue> *_queue;
+    CDUnknownBlockType _timeoutHandler;
     _Bool _isStopped;
     double _remainingInterval;
     double _startTime;
@@ -21,8 +25,10 @@
 - (void)reset;
 - (_Bool)cancelIfNotAlreadyCanceled;
 - (void)cancel;
+- (_Bool)isStopped;
 - (void)stop;
 - (void)start;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithTimeoutInterval:(double)arg1 onQueue:(id)arg2 timeoutHandler:(CDUnknownBlockType)arg3;
 - (id)initWithTimeoutInterval:(double)arg1 timeoutHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;

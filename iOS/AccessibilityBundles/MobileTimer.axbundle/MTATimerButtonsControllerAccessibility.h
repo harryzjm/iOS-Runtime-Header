@@ -12,7 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_updateCancelButtonState;
-- (void)setState:(int)arg1;
+- (void)setState:(unsigned long long)arg1;
 - (id)initWithTarget:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 

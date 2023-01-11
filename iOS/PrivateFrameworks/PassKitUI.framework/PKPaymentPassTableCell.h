@@ -6,7 +6,7 @@
 
 #import <Preferences/PSTableCell.h>
 
-@class PKPaymentApplication, PKPaymentPass, UIActivityIndicatorView, UIControl, UILabel, UIView;
+@class CALayer, PKPaymentApplication, PKPaymentPass, UIActivityIndicatorView, UIControl, UILabel, UIView;
 @protocol PKPaymentPassTableCellDelegate;
 
 @interface PKPaymentPassTableCell : PSTableCell
@@ -14,6 +14,8 @@
     PKPaymentApplication *_paymentApplication;
     long long _settingsContext;
     UIView *_cardSnapshotView;
+    CALayer *_cardSnapshotMask;
+    _Bool _snapshotLoaded;
     UIActivityIndicatorView *_spinner;
     _Bool _showState;
     _Bool _showSubTitle;
@@ -36,7 +38,7 @@
 @property(nonatomic) _Bool showSubTitle; // @synthesize showSubTitle=_showSubTitle;
 @property(retain, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 - (void).cxx_destruct;
-- (void)setFelicaProperties:(id)arg1;
+- (void)setTransitProperties:(id)arg1;
 - (void)disableAddButton;
 - (void)showActivitySpinner:(_Bool)arg1;
 - (void)_addButtonPressed:(id)arg1;

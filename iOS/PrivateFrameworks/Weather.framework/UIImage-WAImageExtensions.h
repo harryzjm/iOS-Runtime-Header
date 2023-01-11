@@ -7,6 +7,7 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (WAImageExtensions)
+- (void)drawPDFInRect:(struct CGRect)arg1;
 - (id)WAImageLoaderPreCacheImage;
 @end
 

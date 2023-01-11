@@ -7,7 +7,6 @@
 @class MKPlaceSectionItemView, MKViewWithHairline, NSArray;
 @protocol MKPlaceSectionViewDelegate;
 
-__attribute__((visibility("hidden")))
 @interface MKPlaceSectionView
 {
     unsigned long long _trackingSelectForRow;

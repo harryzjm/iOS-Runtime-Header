@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -30,12 +30,12 @@
 @property(retain, nonatomic) Class classType; // @synthesize classType=_classType;
 @property(copy, nonatomic) NSString *typeString; // @synthesize typeString=_typeString;
 @property(nonatomic) BOOL type; // @synthesize type=_type;
+- (void).cxx_destruct;
 - (id)description;
 @property(readonly, nonatomic) _Bool removeIfCollectionSetEmpty;
 @property(readonly, nonatomic) _Bool removeIfSettingDefaultValue;
 @property(readonly, nonatomic) _Bool synchronizeOnSet;
 @property(readonly, nonatomic, getter=isNumber) _Bool number;
-- (void)dealloc;
 
 @end
 

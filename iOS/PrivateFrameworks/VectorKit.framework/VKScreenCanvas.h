@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
     struct VKEdgeInsets _labelEdgeInsets;
     _Bool _deallocing;
     struct unique_ptr<md::RenderQueue, std::__1::default_delete<md::RenderQueue>> _renderQueue;
-    Renderer_e10ca448 *_mapRenderer;
+    Renderer_3c643a9a *_mapRenderer;
     struct LayoutContext *_layoutContext;
     Matrix_5173352a _bgColor;
     id <MDMapControllerDelegate> _mapDelegate;
@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (long long)tileSize;
+- (void)puckAnimator:(id)arg1 updatedTargetPosition:(const Coordinate3D_bc242218 *)arg2;
 - (void)puckAnimator:(id)arg1 updatedPosition:(const Coordinate3D_bc242218 *)arg2 course:(const Unit_3d259e8a *)arg3;
 - (_Bool)restoreViewportFromInfo:(id)arg1;
 - (id)viewportInfo;
@@ -53,7 +54,6 @@ __attribute__((visibility("hidden")))
 - (shared_ptr_a3c46825)styleManager;
 - (shared_ptr_664b6d77)stylesheet;
 - (shared_ptr_144c31f6)styleForFeature:(const shared_ptr_430519ce *)arg1;
-- (vector_8bf6b0e5)roadMarkersForSelectionAtScreenPoint:(struct CGPoint)arg1;
 - (shared_ptr_430519ce)featureMarkerAtScreenPoint:(struct CGPoint)arg1;
 - (shared_ptr_430519ce)buildingMarkerAtScreenPoint:(struct CGPoint)arg1;
 - (void)cameraControllerDidReturnToDefaultZoom:(id)arg1;
@@ -94,6 +94,7 @@ __attribute__((visibility("hidden")))
 - (void)setNeedsLayout;
 - (_Bool)wantsTimerTick;
 - (void)dealloc;
+- (void)softDealloc;
 - (id)initWithMapEngine:(struct MapEngine *)arg1 inBackground:(_Bool)arg2;
 
 // Remaining properties

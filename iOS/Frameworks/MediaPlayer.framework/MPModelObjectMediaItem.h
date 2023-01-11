@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary;
+@class MPModelObject, NSDictionary;
 
 @interface MPModelObjectMediaItem
 {
     NSDictionary *_propertyValues;
+    MPModelObject *_modelObject;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(readonly, nonatomic) MPModelObject *modelObject; // @synthesize modelObject=_modelObject;
 - (void).cxx_destruct;
 - (id)valuesForProperties:(id)arg1;
 - (id)valueForProperty:(id)arg1;

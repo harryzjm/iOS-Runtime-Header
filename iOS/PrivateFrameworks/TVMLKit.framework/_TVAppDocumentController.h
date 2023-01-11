@@ -12,8 +12,8 @@
 #import <TVMLKit/_TVModalPresenterFocusing-Protocol.h>
 #import <TVMLKit/_TVPagePerformanceDelegate-Protocol.h>
 
-@class CABackdropLayer, IKAppDocument, NSArray, NSString, TVMediaQueryEvaluator, UITapGestureRecognizer, UIView, _TVPagePerformanceController;
-@protocol _TVAppDocumentControllerDelegate;
+@class IKAppDocument, NSArray, NSString, TVMediaQueryEvaluator, UITapGestureRecognizer, UIView, _TVPagePerformanceController;
+@protocol UIFocusEnvironment, UIFocusItemContainer, _TVAppDocumentControllerDelegate;
 
 @interface _TVAppDocumentController : UIViewController <_TVIKAppDocumentDelegate, UIGestureRecognizerDelegate, _TVModalPresenterFocusing, _TVPagePerformanceDelegate, UIPopoverPresentationControllerDelegate>
 {
@@ -25,22 +25,20 @@
     _Bool _dismissAppOnMenu;
     _Bool _applicationDeactivatedOnMenu;
     _Bool _transitioning;
-    _Bool _backdropLayerNeeded;
+    _Bool _visualEffectDisablementNeeded;
     IKAppDocument *_appDocument;
     id <_TVAppDocumentControllerDelegate> _delegate;
     UIViewController *_templateViewController;
     CDUnknownBlockType _menuGestureHandler;
     TVMediaQueryEvaluator *_mediaQueryEvaluator;
     UITapGestureRecognizer *_menuGestureRecognizer;
-    CABackdropLayer *_backdropLayer;
     _TVPagePerformanceController *_pagePerformance;
     UIView *_pagePerformanceView;
 }
 
 @property(retain, nonatomic) UIView *pagePerformanceView; // @synthesize pagePerformanceView=_pagePerformanceView;
 @property(retain, nonatomic) _TVPagePerformanceController *pagePerformance; // @synthesize pagePerformance=_pagePerformance;
-@property(nonatomic, getter=isBackdropLayerNeeded) _Bool backdropLayerNeeded; // @synthesize backdropLayerNeeded=_backdropLayerNeeded;
-@property(nonatomic) __weak CABackdropLayer *backdropLayer; // @synthesize backdropLayer=_backdropLayer;
+@property(nonatomic, getter=isVisualEffectDisablementNeeded) _Bool visualEffectDisablementNeeded; // @synthesize visualEffectDisablementNeeded=_visualEffectDisablementNeeded;
 @property(nonatomic) __weak UITapGestureRecognizer *menuGestureRecognizer; // @synthesize menuGestureRecognizer=_menuGestureRecognizer;
 @property(nonatomic, getter=isTransitioning) _Bool transitioning; // @synthesize transitioning=_transitioning;
 @property(retain, nonatomic) TVMediaQueryEvaluator *mediaQueryEvaluator; // @synthesize mediaQueryEvaluator=_mediaQueryEvaluator;
@@ -52,6 +50,7 @@
 @property(nonatomic) __weak id <_TVAppDocumentControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) IKAppDocument *appDocument; // @synthesize appDocument=_appDocument;
 - (void).cxx_destruct;
+- (_Bool)ppt_isLoading;
 - (void)pagePerformanceController:(id)arg1 didUpdateMetrics:(id)arg2;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)popoverPresentationController:(id)arg1 willRepositionPopoverToRect:(inout struct CGRect *)arg2 inView:(inout id *)arg3;
@@ -68,6 +67,7 @@
 - (id)_alertControllerWithError:(id)arg1;
 - (void)_updateIdleModeStatus;
 - (void)_markAndNotifyStylesDirty;
+- (void)_darkerSystemColorStatusChanged:(id)arg1;
 - (void)scrollToTop;
 - (id)impressionableViewElementsForDocument:(id)arg1;
 - (_Bool)document:(id)arg1 evaluateStyleMediaQuery:(id)arg2;
@@ -101,7 +101,9 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) __weak id <UIFocusEnvironment> parentFocusEnvironment;
 @property(readonly, nonatomic) __weak UIView *preferredFocusedView;
 @property(readonly) Class superclass;
 

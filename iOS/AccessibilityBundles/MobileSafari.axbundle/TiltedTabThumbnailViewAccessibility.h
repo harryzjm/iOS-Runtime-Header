@@ -12,6 +12,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)accessibilityActivate;
+- (id)_accessibilityCustomActionGroupIdentifier;
+- (_Bool)_accessibilityRetainsCustomRotorActionSetting;
 
 @end
 

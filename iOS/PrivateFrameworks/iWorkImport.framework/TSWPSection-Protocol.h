@@ -4,10 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TSWPStorage;
-
 @protocol TSWPSection
-- (TSWPStorage *)parentStorage;
-- (void)setParentStorage:(TSWPStorage *)arg1;
 @end
 

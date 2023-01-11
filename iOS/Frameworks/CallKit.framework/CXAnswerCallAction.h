@@ -8,6 +8,7 @@
 
 @interface CXAnswerCallAction
 {
+    _Bool _downgradeToAudio;
     NSDate *_dateConnected;
     struct CGSize _localPortraitAspectRatio;
     struct CGSize _localLandscapeAspectRatio;
@@ -16,6 +17,7 @@
 + (_Bool)supportsSecureCoding;
 + (double)timeout;
 @property(copy, nonatomic) NSDate *dateConnected; // @synthesize dateConnected=_dateConnected;
+@property(nonatomic) _Bool downgradeToAudio; // @synthesize downgradeToAudio=_downgradeToAudio;
 - (void)setLocalLandscapeAspectRatio:(struct CGSize)arg1;
 - (struct CGSize)localLandscapeAspectRatio;
 - (void)setLocalPortraitAspectRatio:(struct CGSize)arg1;

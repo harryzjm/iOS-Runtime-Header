@@ -23,6 +23,7 @@
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (id)accessibilityValue;
+- (_Bool)isAccessibilityElement;
 
 @end
 

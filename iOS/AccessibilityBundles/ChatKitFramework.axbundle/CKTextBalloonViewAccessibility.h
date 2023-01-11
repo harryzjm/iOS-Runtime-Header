@@ -15,6 +15,7 @@
 - (id)_accessibilitySpeakThisString;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (id)_axMessageProvenanceDescription;
 - (_Bool)_axIsInvisibleInk;
 - (void)invisibleInkEffectViewWasUncovered;
 - (void)_setAXInvisibleInkDescription:(id)arg1;

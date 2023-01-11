@@ -8,8 +8,6 @@
 
 @interface NSObject (DVTInvalidation_Private)
 + (_Bool)__classIsDVTInvalidation;
-+ (void)_dvt_synthesizeInvalidationWithDeallocAssertion:(_Bool)arg1 multipleInvalidationAssertion:(_Bool)arg2;
-+ (void)_dvt_synthesizeInvalidationWithoutDeallocAssertion;
 + (id)_dvt_invalidatableClasses;
 - (_Bool)__isKVOInvalidationZombie;
 - (_Bool)__isInvalidationZombie;

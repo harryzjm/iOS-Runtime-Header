@@ -9,6 +9,7 @@
 @interface NSMapTable (DVTNSMapTableAdditions)
 + (id)dvt_strongObjectToStrongObjectTable;
 + (id)dvt_strongObjectPointerToStrongObjectTable;
++ (id)dvt_weakObjectPointerToStrongObjectTable;
 - (id)dvt_objectForKey:(id)arg1 creatingIfNecessaryWithBlock:(CDUnknownBlockType)arg2;
 - (id)dvt_objectForKey:(id)arg1 creatingIfNecessaryFromClass:(Class)arg2;
 - (void)dvt_addObject:(id)arg1 toArrayForKey:(id)arg2;

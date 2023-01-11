@@ -5,14 +5,13 @@
 //
 
 #import <PassKitUI/PKPaymentProvisioningControllerDelegate-Protocol.h>
-#import <PassKitUI/PKPaymentSetupViewControllerCanHideSetupLaterButton-Protocol.h>
-#import <PassKitUI/PKPaymentSetupViewControllerRequiresPreflightProtocol-Protocol.h>
+#import <PassKitUI/PKPaymentSetupHideSetupLaterButtonProtocol-Protocol.h>
+#import <PassKitUI/PKPaymentSetupRequiresPreflightProtocol-Protocol.h>
 
 @class NSString, PKPaymentCredential, PKPaymentCredentialMetadataTableController, PKPaymentSetupProduct, UIImage;
 
-@interface PKPaymentCredentialProvisioningViewController <PKPaymentSetupViewControllerCanHideSetupLaterButton, PKPaymentSetupViewControllerRequiresPreflightProtocol, PKPaymentProvisioningControllerDelegate>
+@interface PKPaymentCredentialProvisioningViewController <PKPaymentSetupRequiresPreflightProtocol, PKPaymentProvisioningControllerDelegate, PKPaymentSetupHideSetupLaterButtonProtocol>
 {
-    UIImage *_passSnapshot;
     UIImage *_passSnapshotPlaceHolder;
     unsigned long long _credentialProvisioningType;
     unsigned long long _displayType;
@@ -20,9 +19,13 @@
     PKPaymentCredential *_paymentCredential;
     PKPaymentSetupProduct *_setupProduct;
     _Bool _allowsManualEntry;
+    _Bool _previouslyAcceptedTerms;
+    _Bool _shouldAutoProvision;
+    UIImage *_passSnapshot;
 }
 
-+ (id)nextCredentialViewControllerWithProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 setupProduct:(id)arg4 allowsManualEntry:(_Bool)arg5;
+@property(copy, nonatomic) UIImage *passSnapshot; // @synthesize passSnapshot=_passSnapshot;
+@property(nonatomic) _Bool shouldAutoProvision; // @synthesize shouldAutoProvision=_shouldAutoProvision;
 - (void).cxx_destruct;
 - (void)paymentPassUpdatedOnCredential:(id)arg1;
 - (void)_cleanupTransferredCredentialFromSourceDeviceWithCompletion:(CDUnknownBlockType)arg1;
@@ -48,12 +51,13 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)_updatePassSnapshotHeader;
 - (void)_createPassSnapshotFromPaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_terminateSetupFlow;
 - (void)_skipCard;
 - (void)addDifferentCard:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (void)dealloc;
-- (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 paymentCredential:(id)arg4 setupProduct:(id)arg5 allowsManualEntry:(_Bool)arg6;
+- (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 paymentCredential:(id)arg4 setupProduct:(id)arg5 allowsManualEntry:(_Bool)arg6 previouslyAcceptedTerms:(_Bool)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

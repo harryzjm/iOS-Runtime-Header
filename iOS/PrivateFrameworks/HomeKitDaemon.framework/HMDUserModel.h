@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSNumber, NSString;
+@class HMDAccountHandle, HMDAccountIdentifier, NSArray, NSDictionary, NSNumber, NSString;
 
 @interface HMDUserModel
 {
@@ -13,7 +13,9 @@
 + (id)properties;
 
 // Remaining properties
-@property(retain, nonatomic) NSString *displayName; // @dynamic displayName;
+@property(retain, nonatomic) HMDAccountHandle *accountHandle; // @dynamic accountHandle;
+@property(retain, nonatomic) HMDAccountIdentifier *accountIdentifier; // @dynamic accountIdentifier;
+@property(retain, nonatomic) NSString *changeTag; // @dynamic changeTag;
 @property(retain, nonatomic) NSDictionary *pairingIdentity; // @dynamic pairingIdentity;
 @property(retain, nonatomic) NSNumber *presenceAuthorizationStatus; // @dynamic presenceAuthorizationStatus;
 @property(retain, nonatomic) NSNumber *privilege; // @dynamic privilege;

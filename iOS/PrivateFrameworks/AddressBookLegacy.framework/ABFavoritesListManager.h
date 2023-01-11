@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray;
 
@@ -54,6 +54,8 @@
 - (id)initWithAddressBook:(void *)arg1;
 - (void)_loadList;
 - (void)_loadListWithAddressBook:(void *)arg1;
+- (_Bool)shouldNotReportFavoritesError:(id)arg1;
+- (void)reportFavoritesIssue:(id)arg1;
 
 @end
 

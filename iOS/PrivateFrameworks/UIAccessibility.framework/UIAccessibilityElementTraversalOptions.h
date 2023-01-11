@@ -13,8 +13,10 @@
     _Bool _shouldIncludeKeyboardObscuredElements;
     _Bool _shouldUseAllSubviews;
     _Bool _includeHiddenViews;
+    _Bool _includeWindowlessViews;
     _Bool _sorted;
     _Bool _ignoreObscuresScreen;
+    _Bool _includeDirectDescendantsOnly;
     _Bool _includeAncestorsOfSelfInSiblingMatch;
     _Bool _forSpeakScreen;
     _Bool _shouldIncludeStatusBarWindow;
@@ -30,8 +32,10 @@
 @property(nonatomic) _Bool shouldIncludeStatusBarWindow; // @synthesize shouldIncludeStatusBarWindow=_shouldIncludeStatusBarWindow;
 @property(nonatomic) _Bool forSpeakScreen; // @synthesize forSpeakScreen=_forSpeakScreen;
 @property(nonatomic) _Bool includeAncestorsOfSelfInSiblingMatch; // @synthesize includeAncestorsOfSelfInSiblingMatch=_includeAncestorsOfSelfInSiblingMatch;
+@property(nonatomic) _Bool includeDirectDescendantsOnly; // @synthesize includeDirectDescendantsOnly=_includeDirectDescendantsOnly;
 @property(nonatomic) _Bool ignoreObscuresScreen; // @synthesize ignoreObscuresScreen=_ignoreObscuresScreen;
 @property(nonatomic) _Bool sorted; // @synthesize sorted=_sorted;
+@property(nonatomic) _Bool includeWindowlessViews; // @synthesize includeWindowlessViews=_includeWindowlessViews;
 @property(nonatomic) _Bool includeHiddenViews; // @synthesize includeHiddenViews=_includeHiddenViews;
 @property(nonatomic) _Bool shouldUseAllSubviews; // @synthesize shouldUseAllSubviews=_shouldUseAllSubviews;
 @property(nonatomic) _Bool shouldIncludeKeyboardObscuredElements; // @synthesize shouldIncludeKeyboardObscuredElements=_shouldIncludeKeyboardObscuredElements;

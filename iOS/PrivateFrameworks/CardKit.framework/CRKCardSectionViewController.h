@@ -6,47 +6,57 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <CardKit/INUIRemoteViewControllerDelegate-Protocol.h>
+#import <CardKit/CRKCardSectionViewControllingDelegate-Protocol.h>
+#import <CardKit/CRKEventResponding-Protocol.h>
+#import <CardKit/CRKFeedbackDelegate-Protocol.h>
 #import <CardKit/SFFeedbackListener-Protocol.h>
-#import <CardKit/SearchUIFeedbackDelegate-Protocol.h>
 
-@class CRKOverlayButton, INUIRemoteViewController, NSArray, NSString, UIView;
+@class CRKCardSectionViewConfiguration, CRKOverlayButton, INUIRemoteViewController, NSArray, NSString, UIView;
 @protocol CRCardSection, CRKCardSectionView, CRKCardSectionViewControllerDataSource, CRKCardSectionViewControllerDelegate;
 
-@interface CRKCardSectionViewController : UIViewController <INUIRemoteViewControllerDelegate, SearchUIFeedbackDelegate, SFFeedbackListener>
+@interface CRKCardSectionViewController : UIViewController <CRKCardSectionViewControllingDelegate, SFFeedbackListener, CRKFeedbackDelegate, CRKEventResponding>
 {
     CRKOverlayButton *_overlayButton;
     _Bool _loading;
-    _Bool _active;
-    _Bool _compressed;
-    INUIRemoteViewController *_remoteViewController;
     id <CRKCardSectionViewControllerDelegate> _delegate;
-    id <CRKCardSectionViewControllerDataSource> _dataSource;
     id <CRCardSection> _cardSection;
     NSArray *_extraCommands;
+    INUIRemoteViewController *__remoteViewController;
+    CRKCardSectionViewConfiguration *_viewConfiguration;
+    id <CRKCardSectionViewControllerDataSource> _dataSource;
 }
 
++ (void)_registerWithCardKit;
++ (id)cardSectionViewControllerForViewConfiguration:(id)arg1;
 + (void)registerCardSectionViewController;
 + (id)cardSectionClasses;
 + (id)cardSectionViewControllerForCardSection:(id)arg1 dataSource:(id)arg2;
++ (id)cardSectionViewControllerForCardSection:(id)arg1;
+@property(nonatomic) __weak id <CRKCardSectionViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property(retain, nonatomic) CRKCardSectionViewConfiguration *viewConfiguration; // @synthesize viewConfiguration=_viewConfiguration;
+@property(readonly, nonatomic) INUIRemoteViewController *_remoteViewController; // @synthesize _remoteViewController=__remoteViewController;
 @property(retain, nonatomic, getter=_extraCommands, setter=_setExtraCommands:) NSArray *extraCommands; // @synthesize extraCommands=_extraCommands;
-@property(nonatomic, getter=isCompressed) _Bool compressed; // @synthesize compressed=_compressed;
-@property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
 @property(nonatomic, getter=isLoading) _Bool loading; // @synthesize loading=_loading;
 @property(retain, nonatomic) id <CRCardSection> cardSection; // @synthesize cardSection=_cardSection;
-@property(nonatomic) __weak id <CRKCardSectionViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(nonatomic) __weak id <CRKCardSectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, nonatomic) INUIRemoteViewController *_remoteViewController; // @synthesize _remoteViewController;
 - (void).cxx_destruct;
+- (void)cardSectionViewDidInvalidateSizeForCardSection:(id)arg1;
+- (void)controllerForCard:(id)arg1 didReceiveAsyncCard:(id)arg2 withAsyncCardReceiptFeedback:(id)arg3;
+- (void)controllerForCard:(id)arg1 didRequestAsyncCard:(id)arg2 withAsyncCardRequestFeedback:(id)arg3;
+- (void)cardSectionViewDidDisappearForCardSection:(id)arg1 withDisappearanceFeedback:(id)arg2;
+- (void)cardSectionViewDidAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;
+- (void)cardSectionViewWillAppearForCardSection:(id)arg1 withAppearanceFeedback:(id)arg2;
+- (void)cardViewDidDisappearForCard:(id)arg1 withDisappearanceFeedback:(id)arg2;
+- (void)cardViewDidAppearForCard:(id)arg1 withAppearanceFeedback:(id)arg2;
+- (void)cardViewWillAppearForCard:(id)arg1 withAppearanceFeedback:(id)arg2;
+- (_Bool)shouldHandleEngagement:(id)arg1 forCardSection:(id)arg2;
+- (void)userDidEngageCardSection:(id)arg1 withEngagementFeedback:(id)arg2;
+- (_Bool)performCommand:(id)arg1 forViewController:(id)arg2;
 - (void)cardSectionViewDidSelectPreferredPunchoutIndex:(long long)arg1;
 - (void)presentViewController:(id)arg1;
 - (void)cardSectionViewDidInvalidateSize:(id)arg1;
+- (void)cardSectionViewDidInvalidateSize:(id)arg1 animate:(_Bool)arg2;
 - (void)didEngageCardSection:(id)arg1;
-- (void)remoteViewControllerServiceDidTerminate:(id)arg1;
-- (void)remoteViewController:(id)arg1 requestsHandlingOfIntent:(id)arg2;
-- (id)interfaceSectionsForRemoteViewController:(id)arg1;
-- (id)maximumSizesBySystemVersionForRemoteViewController:(id)arg1;
-- (id)minimumSizesBySystemVersionForRemoteViewController:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
@@ -56,16 +66,10 @@
 - (void)viewDidLoad;
 - (void)loadView;
 - (id)_generateCardSectionViewAppearanceFeedback;
-- (unsigned long long)crk_intrinsicInteractiveBehavior;
-- (void)_createAndSetSearchUIView;
-- (id)_parameters;
-- (id)_interaction;
 - (_Bool)_checkIfCardSectionIsNull:(id)arg1;
 - (id)_backingCardSection;
 - (_Bool)_shouldHideButtonOverlay;
 - (_Bool)_isIndicatingActivity;
-- (void)_attemptToConnectToRemoteViewControllerWithInteraction:(id)arg1 forParameters:(id)arg2;
-- (_Bool)_shouldAttemptToConnectToRemoteViewController;
 - (void)_buttonOverlayTouchWasCanceled:(id)arg1;
 - (void)_buttonOverlayWasTouchedDown:(id)arg1;
 - (void)_buttonOverlayWasTouchedUpOutside:(id)arg1;
@@ -78,14 +82,14 @@
 - (void)_cancelTouchesIfNecessary;
 - (void)_finishLoadingViewIfNecessary;
 - (void)_loadCardSectionView;
+- (void)_performAllCommands;
 - (_Bool)_isLoadedWithIntentsUIView;
-- (id)_unhandledParameters;
 - (_Bool)_expectsSearchUIView;
 - (_Bool)_hasCorrespondingSearchUIView;
 - (void)_performCommand:(id)arg1;
-- (_Bool)_setupWithDataSource:(id)arg1;
 - (id)_initWithCardSection:(id)arg1 dataSource:(id)arg2;
-- (void)eventDidOccur:(unsigned long long)arg1 withIdentifier:(id)arg2 userInfo:(id)arg3;
+- (id)_initWithCardSection:(id)arg1;
+- (void)cardEventDidOccur:(unsigned long long)arg1 withIdentifier:(id)arg2 userInfo:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

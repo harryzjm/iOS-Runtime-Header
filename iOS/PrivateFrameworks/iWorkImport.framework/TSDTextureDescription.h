@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface TSDTextureDescription : NSObject <NSCopying>
 {
     unsigned int _isMagicMove:1;
+    unsigned int _includesActionBuilds:1;
     unsigned int _shouldAddFinal:1;
     unsigned int _shouldAddMasks:1;
     unsigned int _shouldAddMagicMoveObjectOnly:1;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
     unsigned int _shouldSeparateStroke:1;
     unsigned int _shouldAddParameterizedStroke:1;
     unsigned int _shouldReverseStrokeDrawing:1;
+    unsigned int _shouldSeparateGroupedTextures:1;
     unsigned int _shouldSeparateText:1;
     unsigned int _shouldIgnoreScaleInSourceImage:1;
     unsigned int _shouldDistortToFit:1;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool shouldIgnoreScaleInSourceImage; // @synthesize shouldIgnoreScaleInSourceImage=_shouldIgnoreScaleInSourceImage;
 @property(nonatomic) _Bool shouldForceTextureGeneration; // @synthesize shouldForceTextureGeneration=_shouldForceTextureGeneration;
 @property(nonatomic) _Bool shouldSeparateText; // @synthesize shouldSeparateText=_shouldSeparateText;
+@property(nonatomic) _Bool shouldSeparateGroupedTextures; // @synthesize shouldSeparateGroupedTextures=_shouldSeparateGroupedTextures;
 @property(nonatomic) _Bool shouldReverseStrokeDrawing; // @synthesize shouldReverseStrokeDrawing=_shouldReverseStrokeDrawing;
 @property(nonatomic) _Bool shouldAddParameterizedStroke; // @synthesize shouldAddParameterizedStroke=_shouldAddParameterizedStroke;
 @property(nonatomic) _Bool shouldSeparateStroke; // @synthesize shouldSeparateStroke=_shouldSeparateStroke;
@@ -56,6 +59,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool shouldAddMasks; // @synthesize shouldAddMasks=_shouldAddMasks;
 @property(nonatomic) _Bool shouldAddMagicMoveObjectOnly; // @synthesize shouldAddMagicMoveObjectOnly=_shouldAddMagicMoveObjectOnly;
 @property(nonatomic) _Bool shouldAddFinal; // @synthesize shouldAddFinal=_shouldAddFinal;
+@property(nonatomic) _Bool includesActionBuilds; // @synthesize includesActionBuilds=_includesActionBuilds;
 @property(nonatomic) _Bool isMagicMove; // @synthesize isMagicMove=_isMagicMove;
 @property(nonatomic) __weak id <TSDAnimationSession> session; // @synthesize session=_session;
 - (void).cxx_destruct;

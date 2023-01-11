@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <StreamingZip/NSCopying-Protocol.h>
 #import <StreamingZip/SZExtractor-Protocol.h>
@@ -29,6 +29,7 @@
 
 + (void)enableDebugLogging;
 + (_Bool)supportsSecureCoding;
++ (id)knownSZExtractorImplementations;
 @property(nonatomic) _Bool hasHadPostSetupMethodsCalled; // @synthesize hasHadPostSetupMethodsCalled=_hasHadPostSetupMethodsCalled;
 @property(nonatomic) _Bool needsPreparation; // @synthesize needsPreparation=_needsPreparation;
 @property(readonly, nonatomic) _Bool isLocalExtractor; // @synthesize isLocalExtractor=_isLocalExtractor;
@@ -41,6 +42,7 @@
 @property(readonly, copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
 @property(copy, nonatomic) NSString *extractionPath; // @synthesize extractionPath=_extractionPath;
 - (void).cxx_destruct;
+@property(readonly, copy) NSString *description;
 - (void)setActiveExtractorDelegateMethods:(int)arg1;
 @property(nonatomic) __weak id <SZExtractorDelegate> extractorDelegate;
 @property(nonatomic) __weak id <SZExtractorDelegate> delegate;
@@ -50,6 +52,7 @@
 - (void)finishStreamWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)suspendStreamWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)supplyBytes:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (_Bool)_isValidObject;
 - (void)_invalidateObject;
 - (void)prepareForExtractionToPath:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)prepareForExtraction:(CDUnknownBlockType)arg1;
@@ -72,7 +75,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) Class superclass;
 
 @end

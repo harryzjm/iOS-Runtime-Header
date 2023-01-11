@@ -6,16 +6,14 @@
 
 #import <AccountsUI/ACUIViewController.h>
 
-#import <FamilyCircleUI/FAAddFamilyMemberDelegate-Protocol.h>
-#import <FamilyCircleUI/FAChildAccountCreationDelegate-Protocol.h>
 #import <FamilyCircleUI/FASharedSubscriptionSpecifierProviderDelegeate-Protocol.h>
 #import <FamilyCircleUI/RemoteUIControllerDelegate-Protocol.h>
 #import <FamilyCircleUI/UINavigationControllerDelegate-Protocol.h>
 
-@class AAFamilyDetailsResponse, AAFamilyMember, AAGrandSlamSigner, AAUIProfilePictureStore, AAUIServerUIHookHandler, ACAccount, ACAccountStore, CNMonogrammer, FAChildAccountCreationController, FACircleRemoteUIDelegate, FAFamilyCreditCard, FAFamilyNotificationObserver, FARequestConfigurator, FASharedSubscriptionSpecifierProvider, NSArray, NSMutableDictionary, NSMutableURLRequest, NSObject, NSOperationQueue, NSString, NSURL, PSSpecifier, RemoteUIController, SSAccount, UINavigationController, UITableViewCell;
+@class AAFamilyDetailsResponse, AAFamilyMember, AAGrandSlamSigner, AAUIProfilePictureStore, AAUIRemoteUIController, AAUIServerUIHookHandler, ACAccount, ACAccountStore, CNMonogrammer, FAChildAccountCreationController, FACircleRemoteUIDelegate, FAFamilyCreditCard, FAFamilyNotificationObserver, FARequestConfigurator, FASharedSubscriptionSpecifierProvider, NSArray, NSMutableDictionary, NSMutableURLRequest, NSObject, NSOperationQueue, NSString, NSURL, PSSpecifier, SSAccount, UINavigationController, UITableViewCell;
 @protocol FAFamilySettingsViewControllerDelegate;
 
-@interface FAFamilySettingsViewController : ACUIViewController <FAAddFamilyMemberDelegate, FAChildAccountCreationDelegate, UINavigationControllerDelegate, RemoteUIControllerDelegate, FASharedSubscriptionSpecifierProviderDelegeate>
+@interface FAFamilySettingsViewController : ACUIViewController <UINavigationControllerDelegate, RemoteUIControllerDelegate, FASharedSubscriptionSpecifierProviderDelegeate>
 {
     AAGrandSlamSigner *_iCloudGrandSlamSigner;
     AAGrandSlamSigner *_appleIDGrandSlamSigner;
@@ -29,9 +27,9 @@
     PSSpecifier *_addFamilyMemberCell;
     AAUIProfilePictureStore *_profilePictureStore;
     CNMonogrammer *_monogrammer;
-    RemoteUIController *_iCloudRemoteUIController;
-    RemoteUIController *_appleIDRemoteUIController;
-    RemoteUIController *_familyV2RemoteUIController;
+    AAUIRemoteUIController *_iCloudRemoteUIController;
+    AAUIRemoteUIController *_appleIDRemoteUIController;
+    AAUIRemoteUIController *_familyV2RemoteUIController;
     FACircleRemoteUIDelegate *_familyRemoteUIDelegate;
     UITableViewCell *_activeCell;
     NSURL *_activeURL;
@@ -75,17 +73,11 @@
 - (_Bool)_hasActiveCell;
 - (void)_stopSpinnerInCellLoadingRemoteUI;
 - (void)_startSpinnerInCellLoadingRemoteUI:(id)arg1;
+- (void)_fireFamilyUpdateNotification;
 - (void)_fetchFamilyPaymentInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fetchUpdatedFamilyDetailsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)childAccountCreationController:(id)arg1 didCompleteWithSuccess:(_Bool)arg2 error:(id)arg3;
-- (void)childAccountCreationController:(id)arg1 didLoadRemoteUIWithSuccess:(_Bool)arg2;
-- (id)navigationItemToShowInitialLoadingForChildAccountCreationController:(id)arg1;
-- (void)_createChildAccountWithContinuationData:(id)arg1;
-- (void)_createChildAccountButtonWasTapped:(id)arg1;
-- (void)addFamilyFamilyMemberViewControllerWantsChildAccountFlow:(id)arg1;
-- (void)addFamilyFamilyMemberViewController:(id)arg1 didCompleteWithSuccess:(_Bool)arg2;
+- (void)_performEventWithContext:(id)arg1 specifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_addMemberWithEventType:(id)arg1;
-- (void)_addMemberInline;
 - (void)_addFamilyMemberButtonWasTapped:(id)arg1;
 - (void)_setFresnoRemoteUIDelgate:(id)arg1;
 - (void)_loadRemoteUIWithRequest:(id)arg1 url:(id)arg2 specifier:(id)arg3 type:(long long)arg4;
@@ -104,7 +96,6 @@
 - (id)_sharedSubscriptionSpecifiers;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)specifiers;
-- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)_requestConfigurator;
 - (id)_appleIDGrandSlamSigner;

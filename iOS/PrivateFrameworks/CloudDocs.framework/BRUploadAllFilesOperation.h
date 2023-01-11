@@ -6,7 +6,6 @@
 
 @class BRContainer;
 
-__attribute__((visibility("hidden")))
 @interface BRUploadAllFilesOperation
 {
     CDUnknownBlockType _uploadAllFilesCompletion;

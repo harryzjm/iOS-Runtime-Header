@@ -8,10 +8,12 @@
 
 @interface NUFileSourceDefinition
 {
+    _Bool _useEmbeddedPreview;
     NSURL *_url;
     NSString *_uti;
 }
 
+@property(nonatomic) _Bool useEmbeddedPreview; // @synthesize useEmbeddedPreview=_useEmbeddedPreview;
 @property(readonly) NSString *uti; // @synthesize uti=_uti;
 @property(readonly) NSURL *url; // @synthesize url=_url;
 - (void).cxx_destruct;

@@ -6,42 +6,32 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-#import <HomeUI/UITextViewDelegate-Protocol.h>
+@class NSArray, UILabel, UITextView;
+@protocol HFStringGenerator;
 
-@class NSString, UIColor, UILabel, UITextView;
-@protocol HFStringGenerator, HUTextInteractionHandling;
-
-@interface HUItemTableSectionHeaderFooterView : UITableViewHeaderFooterView <UITextViewDelegate>
+@interface HUItemTableSectionHeaderFooterView : UITableViewHeaderFooterView
 {
-    unsigned long long _type;
-    id <HUTextInteractionHandling> _textInteractionHandler;
+    id <HFStringGenerator> _message;
     UITextView *_messageTextView;
+    unsigned long long _type;
+    NSArray *_constraints;
 }
 
-+ (id)defaultAttributesFotType:(unsigned long long)arg1;
++ (id)defaultAttributesForType:(unsigned long long)arg1;
 + (_Bool)requiresConstraintBasedLayout;
-@property(retain, nonatomic) UITextView *messageTextView; // @synthesize messageTextView=_messageTextView;
-@property(nonatomic) __weak id <HUTextInteractionHandling> textInteractionHandler; // @synthesize textInteractionHandler=_textInteractionHandler;
+@property(retain, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
+@property(retain, nonatomic) UITextView *messageTextView; // @synthesize messageTextView=_messageTextView;
 - (void).cxx_destruct;
-- (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
-- (void)_updateDefaultValuesForType;
-@property(retain, nonatomic) UIColor *textColor;
-@property(nonatomic) long long textAlignment;
-@property(nonatomic) struct UIEdgeInsets textViewEdgeInsets;
-@property(copy, nonatomic) id <HFStringGenerator> message;
+- (_Bool)_updateViewContent;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
+@property(copy, nonatomic) id <HFStringGenerator> message; // @synthesize message=_message;
 @property(readonly, nonatomic) UILabel *detailTextLabel; // @dynamic detailTextLabel;
 @property(readonly, nonatomic) UILabel *textLabel; // @dynamic textLabel;
-- (struct CGSize)intrinsicContentSize;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)updateConstraints;
 - (void)prepareForReuse;
+- (id)initWithReuseIdentifier:(id)arg1 type:(unsigned long long)arg2;
 - (id)initWithReuseIdentifier:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

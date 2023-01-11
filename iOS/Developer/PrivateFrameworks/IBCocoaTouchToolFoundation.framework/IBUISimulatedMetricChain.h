@@ -20,6 +20,9 @@
 + (struct CGSize)windowSizeForMetricChain:(id)arg1;
 @property(readonly, nonatomic) IBUISimulatedMetricChain *precedingMetric; // @synthesize precedingMetric=_precedingMetric;
 - (void).cxx_destruct;
+- (void)_appendLinkPrettyDescriptionsToArray:(id)arg1;
+- (id)prettyDescription;
+- (id)singleLinkPrettyDescription;
 - (id)explicitWindowSize;
 - (void)_appendDebugDescriptionLineToArray:(id)arg1;
 @property(readonly, copy) NSString *debugDescription;

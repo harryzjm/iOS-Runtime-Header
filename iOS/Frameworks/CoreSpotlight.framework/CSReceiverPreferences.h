@@ -4,33 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+@class NSDictionary;
 
-@class NSDictionary, NSMutableDictionary;
-@protocol OS_dispatch_queue;
-
-@interface CSReceiverPreferences : NSObject
+@interface CSReceiverPreferences
 {
-    int _notifyToken;
-    NSObject<OS_dispatch_queue> *_notifyQueue;
-    CDUnknownBlockType _notifyHandler;
-    NSMutableDictionary *_stateDictionary;
-    CDUnknownBlockType _notify_handler;
 }
 
-@property(readonly, copy, nonatomic) CDUnknownBlockType notify_handler; // @synthesize notify_handler=_notify_handler;
-@property(retain, nonatomic) NSMutableDictionary *stateDictionary; // @synthesize stateDictionary=_stateDictionary;
-@property(readonly, nonatomic) int notifyToken; // @synthesize notifyToken=_notifyToken;
-@property(copy, nonatomic) CDUnknownBlockType notifyHandler; // @synthesize notifyHandler=_notifyHandler;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *notifyQueue; // @synthesize notifyQueue=_notifyQueue;
-- (void).cxx_destruct;
-- (void)saveState:(id)arg1;
 - (void)enableBundleIdentifier:(id)arg1;
 - (void)disableBundleIdentifier:(id)arg1;
-- (void)handlePreferencesChanged;
 @property(readonly, copy, nonatomic) NSDictionary *dictionary;
-- (void)dealloc;
-- (_Bool)notifyStart;
+- (id)init;
 
 @end
 

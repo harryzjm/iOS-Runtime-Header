@@ -6,24 +6,31 @@
 
 #import <objc/NSObject.h>
 
+#import <SafariServices/SFAuthenticationViewControllerPresentationDelegate-Protocol.h>
 #import <SafariServices/SFSafariViewControllerDelegateInternal-Protocol.h>
 
 @class NSString, NSURL, SFAuthenticationViewController;
+@protocol _SFAuthenticationSessionDelegate;
 
-@interface SFAuthenticationSession : NSObject <SFSafariViewControllerDelegateInternal>
+@interface SFAuthenticationSession : NSObject <SFAuthenticationViewControllerPresentationDelegate, SFSafariViewControllerDelegateInternal>
 {
     NSURL *_initialURL;
     CDUnknownBlockType _completionHandler;
     SFAuthenticationViewController *_authViewController;
     NSString *_callbackURLScheme;
     _Bool _isSessionStarted;
+    id <_SFAuthenticationSessionDelegate> __delegate;
 }
 
+@property(nonatomic) __weak id <_SFAuthenticationSessionDelegate> _delegate; // @synthesize _delegate=__delegate;
 - (void).cxx_destruct;
 - (void)safariViewController:(id)arg1 didDecideCookieSharingForURL:(id)arg2 shouldCancel:(_Bool)arg3;
 - (void)safariViewController:(id)arg1 hostApplicationOpenURL:(id)arg2;
 - (void)safariViewControllerDidFinish:(id)arg1;
+- (id)presentingViewControllerForAuthenticationViewController:(id)arg1;
 - (void)cancel;
+- (_Bool)_startRequestingFromWebAuthenticationSession:(_Bool)arg1;
+- (_Bool)startASWebAuthenticationSession;
 - (_Bool)start;
 - (void)dealloc;
 - (id)initWithURL:(id)arg1 callbackURLScheme:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

@@ -7,14 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
-#import <MediaPlaybackCore/MPNowPlayingInfoLyricsDelegate-Protocol.h>
-#import <MediaPlaybackCore/MPNowPlayingPlaybackQueueDataSource_Private-Protocol.h>
+#import <MediaPlaybackCore/MPNowPlayingPlaybackQueueDataSourcePrivate-Protocol.h>
 
-@class MPCPlaybackEngine, MPLibraryAddStatusObserver, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSString;
+@class MPCPlaybackEngine, MPCPlayerPath, MPLibraryAddStatusObserver, MPNowPlayingInfoCenter, MPRemoteCommandCenter, NSString;
 
-@interface _MPCMediaRemotePublisher : NSObject <MPNowPlayingPlaybackQueueDataSource_Private, MPNowPlayingInfoLyricsDelegate, MPCPlaybackEngineEventObserving>
+@interface _MPCMediaRemotePublisher : NSObject <MPNowPlayingPlaybackQueueDataSourcePrivate, MPCPlaybackEngineEventObserving>
 {
     MPLibraryAddStatusObserver *_libraryAddStatusObserver;
+    NSString *_lastContextID;
     _Bool _initializedSupportedCommands;
     _Bool _engineRestoringState;
     MPCPlaybackEngine *_playbackEngine;
@@ -29,7 +29,10 @@
 @property(readonly, nonatomic) __weak MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 - (void).cxx_destruct;
 - (void)_performCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_updateUpNextItemCount;
 - (void)_updateSupportedCommands;
+- (void)_enqueueFallbackIntentIfNeededForCommandEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_becomeActiveIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_disableQueueModificationsChangedNotification:(id)arg1;
 - (void)_likedStateChangedNotification:(id)arg1;
 - (void)_durationAvailableNotification:(id)arg1;
@@ -45,12 +48,15 @@
 - (void)removeSupportedSpecializedQueueIdentifier:(id)arg1;
 - (void)addSupportedSpecializedQueueIdentifier:(id)arg1 localizedName:(id)arg2 queueType:(long long)arg3 queueParameters:(id)arg4;
 - (void)publishIfNeeded;
+@property(readonly, nonatomic) MPCPlayerPath *playerPath;
 - (void)becomeActive;
 - (id)initWithPlaybackEngine:(id)arg1;
-- (id)_contentItemForMPAVItem:(id)arg1;
-- (id)nowPlayingContentItemsForRequest:(void *)arg1 range:(CDStruct_339ad95e *)arg2;
-- (id)nowPlayingContentItemForIdentifier:(id)arg1;
-- (id)contentItemForOffset:(long long)arg1;
+- (id)nowPlayingInfoCenter:(id)arg1 lyricsForContentItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)nowPlayingInfoCenter:(id)arg1 artworkCatalogForContentItem:(id)arg2;
+- (id)nowPlayingInfoCenter:(id)arg1 artworkForContentItem:(id)arg2 size:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)nowPlayingInfoCenter:(id)arg1 contentItemForID:(id)arg2;
+- (id)nowPlayingInfoCenter:(id)arg1 contentItemIDForOffset:(long long)arg2;
+- (id)playbackQueueIdentifierForNowPlayingInfoCenter:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

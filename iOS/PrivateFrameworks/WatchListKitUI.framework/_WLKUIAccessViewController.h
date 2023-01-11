@@ -6,12 +6,13 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSArray, NSDictionary, WLKUIAccessView_iOS, WLKUISpinnerView;
+@class NSArray, NSDictionary, OBPrivacyLinkController, WLKUIAccessView_iOS, WLKUISpinnerView;
 
 @interface _WLKUIAccessViewController : UIViewController
 {
     WLKUIAccessView_iOS *_accessView;
     WLKUISpinnerView *_loadingView;
+    OBPrivacyLinkController *_privacyController;
     NSArray *_bundleIDs;
     NSDictionary *_options;
     _Bool _hasCalledCompletion;
@@ -26,6 +27,8 @@
 + (_Bool)_isHostedInRemoteViewService;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 - (void).cxx_destruct;
+- (id)preferredFocusEnvironments;
+- (id)cappedTraitCollection;
 - (id)_watchListAppIcon;
 - (void)_fetchRemoteAppInfo;
 - (id)_imageForBundleID:(id)arg1;
@@ -35,7 +38,6 @@
 - (void)_handleNackButton:(id)arg1;
 - (void)_handleMenuGesture:(id)arg1;
 - (void)_handleSeeAllButton:(id)arg1;
-- (void)_handlePrivacyButton:(id)arg1;
 - (void)_disallow:(id)arg1;
 - (void)_allow:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

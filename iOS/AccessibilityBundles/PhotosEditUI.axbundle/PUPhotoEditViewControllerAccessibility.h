@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_updateMainActionButtonAnimated:(_Bool)arg1;
 - (void)_updateToolbarsAnimated:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)_axUpdateIrisValue;

@@ -11,7 +11,6 @@
 }
 
 + (id)typeString;
-- (id)action;
 
 // Remaining properties
 @property(readonly, nonatomic) NSString *affiliateIdentifier; // @dynamic affiliateIdentifier;

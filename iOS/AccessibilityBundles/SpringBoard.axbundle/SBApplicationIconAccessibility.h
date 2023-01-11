@@ -12,7 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityLabel;
-- (id)_accessibilityApplicationBundleIdentifier;
+- (id)_accessibilityBundleIdentifier;
 
 @end
 

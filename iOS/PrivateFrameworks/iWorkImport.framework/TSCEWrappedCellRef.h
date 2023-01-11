@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 + (id)invalidCellRef;
 @property(readonly, nonatomic) struct TSCECellRef cellRef; // @synthesize cellRef=_cellRef;
 - (id).cxx_construct;
+- (id)description;
 - (_Bool)isValid;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

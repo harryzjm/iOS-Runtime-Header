@@ -8,7 +8,7 @@
 
 #import <Contacts/CNDataMapper-Protocol.h>
 
-@class CNContactsEnvironment, CNiOSAddressBook, NSString;
+@class CNContactsEnvironment, CNManagedAccountsCache, CNManagedConfiguration, CNiOSAddressBook, NSString;
 @protocol CNContactsLogger;
 
 @interface CNiOSAddressBookDataMapper : NSObject <CNDataMapper>
@@ -16,10 +16,15 @@
     CNiOSAddressBook *_addressBook;
     CNContactsEnvironment *_environment;
     id <CNContactsLogger> _logger;
+    CNManagedConfiguration *_managedConfiguration;
+    CNManagedAccountsCache *_managedAccountsCache;
 }
 
++ (id)encodedPeopleFetcherForForFetchRequest:(id)arg1 addressBook:(void *)arg2 managedConfiguration:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 environment:(id)arg5;
 + (id)contactBuffersDecoderForFetchRequest:(id)arg1;
 + (void)initialize;
+@property(retain, nonatomic) CNManagedAccountsCache *managedAccountsCache; // @synthesize managedAccountsCache=_managedAccountsCache;
+@property(readonly, nonatomic) CNManagedConfiguration *managedConfiguration; // @synthesize managedConfiguration=_managedConfiguration;
 @property(readonly, nonatomic) id <CNContactsLogger> logger; // @synthesize logger=_logger;
 @property(readonly, nonatomic) CNContactsEnvironment *environment; // @synthesize environment=_environment;
 @property(readonly, nonatomic) CNiOSAddressBook *addressBook; // @synthesize addressBook=_addressBook;
@@ -43,13 +48,21 @@
 - (id)serverSearchContainersMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)containersMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)_containersMatchingPredicate:(id)arg1 remote:(_Bool)arg2 error:(id *)arg3;
-- (id)defaultContainerIdentifierForAddressBook:(void *)arg1;
+- (id)defaultContainerIdentifierForAddressBook:(void *)arg1 error:(id *)arg2;
 - (id)defaultContainerIdentifier;
 - (void)_postProcessGroupsFromSaveContext:(id)arg1;
 - (_Bool)_processSubgroupMembershipsFromSaveContext:(id)arg1 error:(id *)arg2;
 - (_Bool)_processContactMembershipsFromSaveContext:(id)arg1 error:(id *)arg2;
 - (_Bool)_processGroupsFromSaveContext:(id)arg1 error:(id *)arg2;
 - (void)_postProcessContactsFromSaveContext:(id)arg1;
+- (_Bool)_canReadUnderManagementRestrictionsFromSource:(void *)arg1 inAddressBook:(void *)arg2;
+- (_Bool)_canWriteUnderManagementRestrictionsToSource:(void *)arg1 inAddressBook:(void *)arg2;
+- (_Bool)_hasManagementRestrictionsEnabled;
+- (_Bool)_hasAccessToReadFromAccountCorrespondingToSource:(void *)arg1 fromAddressBook:(void *)arg2;
+- (_Bool)_hasAccessToWriteToAccountCorrespondingToSource:(void *)arg1 fromAddressBook:(void *)arg2;
+- (_Bool)_hasWriteAccessToAccountContainingPerson:(void *)arg1 fromSaveContext:(id)arg2;
+- (void *)_alternativeSourceWithAccessibleAccountFromAddressBook:(void *)arg1;
+- (void *)_defaultSourceInAddressBook:(void *)arg1 error:(id *)arg2;
 - (_Bool)_processContactChangeRequestsFromSaveContext:(id)arg1 error:(id *)arg2;
 - (_Bool)_processContactsFromSaveContext:(id)arg1 error:(id *)arg2;
 - (void)_postProcessContainersFromSaveContext:(id)arg1;
@@ -67,18 +80,20 @@
 - (_Bool)setBestMeIfNeededForGivenName:(id)arg1 familyName:(id)arg2 email:(id)arg3 error:(id *)arg4;
 - (_Bool)setMeContact:(id)arg1 forContainer:(id)arg2 error:(id *)arg3;
 - (_Bool)setMeContact:(id)arg1 error:(id *)arg2;
-- (id)encodedContactsCursorForFetchRequest:(id)arg1 error:(id *)arg2;
+- (id)encodedContactsCursorForFetchRequest:(id)arg1 cursorCleanupBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (_Bool)fetchEncodedContactsForFetchRequest:(id)arg1 error:(id *)arg2 cancelationToken:(id)arg3 batchHandler:(CDUnknownBlockType)arg4;
 - (_Bool)fetchAndDecodeEncodedContactsForFetchRequest:(id)arg1 error:(id *)arg2 cancelationToken:(id)arg3 batchHandler:(CDUnknownBlockType)arg4;
 - (_Bool)fetchContactsForFetchRequest:(id)arg1 error:(id *)arg2 batchHandler:(CDUnknownBlockType)arg3;
 - (id)contactObservableForFetchRequest:(id)arg1;
+- (id)contactCountForFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)unifiedContactCountWithError:(id *)arg1;
 - (id)identifierWithError:(id *)arg1;
 - (_Bool)requestAccessForEntityType:(long long)arg1 error:(id *)arg2;
 - (void)requestAccessForEntityType:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)initWithContactsEnvironment:(id)arg1 addressBook:(id)arg2;
+- (id)initWithContactsEnvironment:(id)arg1 addressBook:(id)arg2 managedConfiguration:(id)arg3;
+- (id)initWithContactsEnvironment:(id)arg1 managedConfiguration:(id)arg2;
+- (id)initWithAddressBook:(id)arg1 managedConfiguration:(id)arg2;
 - (id)initWithContactsEnvironment:(id)arg1;
-- (id)initWithAddressBook:(id)arg1;
 - (id)init;
 
 // Remaining properties

@@ -58,6 +58,7 @@
 - (void)_updateDualCameraFusionSupportedForSourceDevice:(id)arg1;
 - (void)_updateStillImageStabilizationSupportedForSourceDevice:(id)arg1;
 - (void)_updateAvailableRawPhotoFileTypesForSourceDevice:(id)arg1;
+- (void)_updateAutoRedReductionSupportedForSourceDevice:(id)arg1;
 - (_Bool)_HEVCAndHEIFAreAvailableForSourceDevice:(id)arg1;
 - (void)_updateAvailablePhotoFileTypesForSourceDevice:(id)arg1;
 - (void)_updateAvailableRawPhotoPixelFormatTypesForSourceDevice:(id)arg1;
@@ -76,12 +77,16 @@
 - (void)userInitiatedCaptureRequestAtTime:(unsigned long long)arg1;
 - (void)setFilterRenderingEnabled:(_Bool)arg1;
 - (_Bool)isFilterRenderingEnabled;
+- (CDStruct_79c71658)optimizedImageDimensionsForOfflineStabilization;
 - (void)setOptimizesImagesForOfflineVideoStabilization:(_Bool)arg1;
 - (_Bool)optimizesImagesForOfflineVideoStabilization;
 - (_Bool)isImageOptimizationForOfflineVideoStabilizationSupported;
 - (CDStruct_1b6d18a9)livePhotoMovieVideoFrameDuration;
 - (CDStruct_1b6d18a9)livePhotoMovieDuration;
 - (CDStruct_79c71658)livePhotoMovieDimensions;
+- (void)setPortraitEffectsMatteDeliveryEnabled:(_Bool)arg1;
+- (_Bool)isPortraitEffectsMatteDeliveryEnabled;
+- (_Bool)isPortraitEffectsMatteDeliverySupported;
 - (void)setDepthDataDeliveryEnabled:(_Bool)arg1;
 - (_Bool)isDepthDataDeliveryEnabled;
 - (_Bool)isDepthDataDeliverySupported;
@@ -101,6 +106,7 @@
 @property(readonly, nonatomic, getter=isDualCameraDualPhotoDeliverySupported) _Bool dualCameraDualPhotoDeliverySupported;
 @property(readonly, nonatomic, getter=isDualCameraFusionSupported) _Bool dualCameraFusionSupported;
 @property(readonly, nonatomic) _Bool isFlashScene;
+@property(readonly, nonatomic, getter=isAutoRedEyeReductionSupported) _Bool autoRedEyeReductionSupported;
 @property(readonly, nonatomic) NSArray *supportedFlashModes;
 @property(readonly, nonatomic) _Bool isStillImageStabilizationScene;
 - (_Bool)isHDRScene;

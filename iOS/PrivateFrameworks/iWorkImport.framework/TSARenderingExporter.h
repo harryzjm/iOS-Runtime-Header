@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSKRenderingExporter-Protocol.h>
 
-@class NSString, TSADocumentRoot, TSDBitmapRenderingQualityInfo, TSDImager, TSUProgressContext;
+@class NSString, TSADocumentRoot, TSDBitmapRenderingQualityInfo, TSDImager, TSUProgress, TSUProgressContext;
 @protocol OS_dispatch_queue, TSARenderingExporterDelegate;
 
 __attribute__((visibility("hidden")))
@@ -27,12 +27,12 @@ __attribute__((visibility("hidden")))
 }
 
 @property(retain) TSUProgressContext *progressContext; // @synthesize progressContext=mProgressContext;
-- (_Bool)paginate;
-- (void)setPaginate:(_Bool)arg1;
-- (unsigned long long)pageCount;
-- (double)progressForCurrentPage;
-- (struct CGRect)unscaledClipRect;
-- (struct CGRect)boundsRect;
+- (void).cxx_destruct;
+@property(nonatomic) _Bool paginate;
+@property(readonly, nonatomic) unsigned long long pageCount;
+@property(readonly, nonatomic) double progressForCurrentPage;
+@property(readonly, nonatomic) struct CGRect unscaledClipRect;
+@property(readonly, nonatomic) struct CGRect boundsRect;
 - (id)bitmapRenderingQualityInfo;
 - (void)performBlockWithImager:(CDUnknownBlockType)arg1;
 - (_Bool)drawCurrentPageInContext:(struct CGContext *)arg1 viewScale:(double)arg2 unscaledClipRect:(struct CGRect)arg3 createPage:(_Bool)arg4;
@@ -43,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)setup;
 - (_Bool)isQuit;
 - (void)quit;
-- (_Bool)isCancelled;
+@property(readonly, nonatomic) _Bool isCancelled;
 - (void)cancel;
 - (_Bool)exportToURL:(id)arg1 pageNumber:(unsigned long long)arg2 delegate:(id)arg3 error:(id *)arg4;
 - (_Bool)exportToURL:(id)arg1 delegate:(id)arg2 error:(id *)arg3;
@@ -52,7 +52,6 @@ __attribute__((visibility("hidden")))
 - (void)drawAllPagesWithContext:(struct CGContext *)arg1 returnSuccess:(_Bool *)arg2;
 - (void)waitForRecalcToFinish;
 - (void)p_drawCurrentPageWithContext:(struct CGContext *)arg1 returnSuccess:(_Bool *)arg2 createPage:(_Bool)arg3;
-- (void)dealloc;
 - (id)initWithDocumentRoot:(id)arg1;
 - (id)initWithDocumentRoot:(id)arg1 imager:(id)arg2;
 - (id)p_renderingExporterDelegate;
@@ -62,10 +61,17 @@ __attribute__((visibility("hidden")))
 - (id)currentInfos;
 
 // Remaining properties
+@property(readonly, nonatomic) _Bool canExportInBackground;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSString *documentSpecificTypeUTI;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isExportSupported;
+@property(readonly, nonatomic) _Bool needsSupplementalFiles;
+@property(readonly, nonatomic) TSUProgress *progress;
+@property(readonly, nonatomic) NSString *savePanelMessage;
 @property(readonly) Class superclass;
+@property(copy, nonatomic) NSString *typeUTI;
 
 @end
 

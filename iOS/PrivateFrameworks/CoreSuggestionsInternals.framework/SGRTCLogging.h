@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreSuggestionsInternals/NSCoding-Protocol.h>
+#import <CoreSuggestionsInternals/NSSecureCoding-Protocol.h>
 
 @class NSMutableArray, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface SGRTCLogging : NSObject <NSCoding>
+@interface SGRTCLogging : NSObject <NSSecureCoding>
 {
     struct _opaque_pthread_mutex_t _lock;
     NSString *_path;
@@ -24,6 +24,7 @@
     NSObject<OS_dispatch_queue> *_interactionsWriteQueue;
 }
 
++ (_Bool)supportsSecureCoding;
 + (_Bool)_createEmptyFileAtPath:(id)arg1;
 + (id)defaultLogger;
 + (id)locationTypeForRealtimeEvent:(id)arg1;
@@ -34,6 +35,7 @@
 + (double)round:(double)arg1 toSignificantFigures:(long long)arg2;
 + (unsigned long long)bucketizeInteger:(unsigned long long)arg1 withBucketSize:(unsigned long long)arg2 limit:(unsigned long long)arg3;
 - (void).cxx_destruct;
+- (id)_descriptionForBundleId:(id)arg1;
 - (id)_descriptionForEntityType:(long long)arg1;
 - (id)_descriptionForSGRTCCategory:(unsigned short)arg1;
 - (id)_descriptionForActionType:(unsigned short)arg1;

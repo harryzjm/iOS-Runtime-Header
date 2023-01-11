@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSDMediaCompatibilityChecker-Protocol.h>
 
@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
     _Atomic _Bool mCancelled;
 }
 
++ (_Bool)platformSupportsHEIF;
++ (void)initialize;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=mError;
 @property(readonly, nonatomic) long long compatibilityLevel; // @synthesize compatibilityLevel=mCompatibilityLevel;
 - (void).cxx_destruct;

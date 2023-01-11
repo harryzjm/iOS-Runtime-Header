@@ -23,6 +23,7 @@
 
 + (id)defaultDatabaseDirectory;
 + (id)storeWithDirectory:(id)arg1 readOnly:(_Bool)arg2;
+@property(readonly, nonatomic) _DKCoreDataStorage *storage; // @synthesize storage=_storage;
 @property(retain) id <_DKLocationHistorian> locationHistorian; // @synthesize locationHistorian=_locationHistorian;
 - (void).cxx_destruct;
 - (void)anonymizeContactsWithSalt:(id)arg1;
@@ -46,6 +47,7 @@
 - (unsigned long long)deleteInteractionsOlderThanDate:(id)arg1 limit:(unsigned long long)arg2;
 - (unsigned long long)deleteUnreferencedContacts;
 - (unsigned long long)deleteUnreferencedKeywords;
+- (id)interactionCountPerMechanism;
 - (id)histogramContactInteractionsUsingPredicate:(id)arg1 withLimit:(unsigned long long)arg2;
 - (id)queryContactInteractionsUsingPredicate:(id)arg1 withLimit:(unsigned long long)arg2;
 - (unsigned long long)numberOfContactsMatchingPredicate:(id)arg1;
@@ -55,6 +57,7 @@
 - (id)queryInteractionsUsingPredicate:(id)arg1 withLimit:(unsigned long long)arg2;
 - (void)queryInteractionsUsingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)queryInteractionsUsingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3;
+- (id)queryInteractionsUsingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 error:(id *)arg5;
 - (id)queryInteractionsUsingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 error:(id *)arg4;
 - (unsigned long long)numberOfInteractionsMatchingPredicate:(id)arg1;
 - (void)countContactsUsingPredicate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -69,18 +72,21 @@
 - (_Bool)recordInteraction:(id)arg1;
 - (id)createInteractionFromRecord:(id)arg1;
 - (id)createKeywordFromRecord:(id)arg1;
+- (id)createAttachmentFromRecord:(id)arg1;
 - (id)getContactForRecord:(id)arg1;
 - (id)dateFromTimeIntervalSinceRef:(double)arg1;
-- (id)createInteractionRecord:(id)arg1 context:(id)arg2 keywordCache:(id)arg3 contactCache:(id)arg4 error:(id *)arg5;
+- (id)createInteractionRecord:(id)arg1 context:(id)arg2 keywordCache:(id)arg3 attachmentCache:(id)arg4 contactCache:(id)arg5 error:(id *)arg6;
 - (void)updateCachedStatsForContactRecord:(id)arg1 isSender:(_Bool)arg2 withInteraction:(id)arg3;
 - (id)createInteractionRecord:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (void)fillWithoutRelationshipsInteractionRecord:(id)arg1 fromInteraction:(id)arg2;
 - (id)batchFetchExistingInteractionsWithUUIDs:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (id)batchFetchExistingContactRecords:(id)arg1 context:(id)arg2 error:(id *)arg3;
+- (id)batchFetchExistingAttachmentRecords:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (id)errorForException:(id)arg1;
 - (id)batchFetchExistingKeywordRecords:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (id)fetchOrCreateContactRecord:(id)arg1 context:(id)arg2 cache:(id)arg3 error:(id *)arg4;
 - (id)fetchOrCreateContactRecord:(id)arg1 context:(id)arg2 error:(id *)arg3;
+- (id)fetchOrCreateAttachmentRecord:(id)arg1 context:(id)arg2 cache:(id)arg3 error:(id *)arg4;
 - (id)fetchOrCreateKeywordRecord:(id)arg1 context:(id)arg2 cache:(id)arg3 error:(id *)arg4;
 - (id)fetchOrCreateKeywordRecord:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (id)init;

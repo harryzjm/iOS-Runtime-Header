@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_setupTitleView;
+- (void)_setupTitleViewAnimated:(_Bool)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

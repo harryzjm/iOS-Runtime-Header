@@ -8,7 +8,7 @@
 {
 }
 
-+ (id)_localizedNameForValue:(unsigned long long)arg1;
++ (id)_localizedNameForValue:(unsigned long long)arg1 forDevice:(id)arg2;
 
 @end
 

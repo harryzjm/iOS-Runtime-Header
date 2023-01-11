@@ -6,8 +6,13 @@
 
 #import <CoreSpeech/NSObject-Protocol.h>
 
+@class CSVTUITrainingSession, NSData, NSString;
+
 @protocol CSVTUITrainingSessionDelegate <NSObject>
 - (void)CSVTUITrainingSessionStopListen;
 - (void)CSVTUITrainingSessionRMSAvailable:(float)arg1;
+
+@optional
+- (void)CSVTUITrainingSession:(CSVTUITrainingSession *)arg1 hasTrainUtterance:(NSData *)arg2 languageCode:(NSString *)arg3;
 @end
 

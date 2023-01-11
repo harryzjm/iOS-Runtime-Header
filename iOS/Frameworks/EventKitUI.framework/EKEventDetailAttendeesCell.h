@@ -4,7 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EKEventDetailAttendeesListView, NSLayoutConstraint, UIImageView, UILabel, UIViewController;
+@class EKEventDetailAttendeesListView, NSArray, NSLayoutConstraint, NSObject, UIImageView, UILabel, UIViewController;
+@protocol EKEventDetailAttendeeCellDelegate;
 
 __attribute__((visibility("hidden")))
 @interface EKEventDetailAttendeesCell
@@ -14,15 +15,20 @@ __attribute__((visibility("hidden")))
     UIImageView *_disclosure;
     NSLayoutConstraint *_listHeight;
     EKEventDetailAttendeesListView *_attendeesListView;
+    NSArray *_cachedAttendeesWithoutOrganizerAndLocations;
     UIViewController *_viewController;
+    NSObject<EKEventDetailAttendeeCellDelegate> *_attendeeCellDelegate;
 }
 
 + (_Bool)requiresConstraintBasedLayout;
+@property __weak NSObject<EKEventDetailAttendeeCellDelegate> *attendeeCellDelegate; // @synthesize attendeeCellDelegate=_attendeeCellDelegate;
 @property __weak UIViewController *viewController; // @synthesize viewController=_viewController;
 - (void).cxx_destruct;
 - (void)layoutForWidth:(double)arg1 position:(int)arg2;
 - (id)_attendeesListView;
-- (void)setAttendees:(id)arg1;
+- (void)_setAttendees:(id)arg1;
+- (void)_attendeesDidFinishLoadingForTest;
+- (id)_attendeesWithoutOrganizerAndLocations;
 - (_Bool)update;
 - (double)displayHeight;
 - (double)footerInset;

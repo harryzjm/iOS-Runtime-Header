@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CUMobileDeviceSession, NSMutableArray, NSString, RPDevice, UIViewController;
+@class CUMobileDeviceSession, NSMutableArray, NSString, RPDevice;
 @protocol OS_dispatch_queue;
 
 @interface RPSession : NSObject
@@ -25,7 +25,6 @@
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSString *_label;
     RPDevice *_peerDevice;
-    UIViewController *_presentingViewController;
     NSString *_serviceType;
     CDUnknownBlockType _errorHandler;
     CDUnknownBlockType _interruptionHandler;
@@ -39,7 +38,6 @@
 @property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
 @property(copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property(nonatomic) unsigned int securityFlags; // @synthesize securityFlags=_securityFlags;
-@property(retain, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property(retain, nonatomic) RPDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
 @property(retain, nonatomic) NSString *label; // @synthesize label=_label;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;

@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSMutableArray;
+
 @interface RCMutableWaveform
 {
 }
@@ -14,8 +16,10 @@
 - (void)addSegments:(id)arg1;
 - (void)addSegment:(id)arg1;
 - (_Bool)clipToTimeRange:(CDStruct_73a5d3ca)arg1;
-- (id)segments;
 - (void)setSegments:(id)arg1;
+
+// Remaining properties
+@property(readonly) NSMutableArray *segments; // @dynamic segments;
 
 @end
 

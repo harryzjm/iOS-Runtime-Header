@@ -4,27 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <ProactiveSupport/_PASZonedObject.h>
 
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
+#import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@protocol NSCopying;
+@class NSObject;
+@protocol NSCopying><NSSecureCoding;
 
-@interface PPScoredItem : NSObject <NSCopying>
+@interface PPScoredItem : _PASZonedObject <NSCopying, NSSecureCoding>
 {
-    NSObject<NSCopying> *_item;
+    NSObject<NSCopying><NSSecureCoding> *_item;
     double _score;
 }
 
-+ (id)allocWithZone:(struct _NSZone *)arg1;
++ (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) double score; // @synthesize score=_score;
-@property(readonly, nonatomic) NSObject<NSCopying> *item; // @synthesize item=_item;
+@property(readonly, nonatomic) NSObject<NSCopying><NSSecureCoding> *item; // @synthesize item=_item;
+- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToScoredItem:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithItem:(id)arg1 score:(double)arg2;
-- (void)dealloc;
 
 @end
 

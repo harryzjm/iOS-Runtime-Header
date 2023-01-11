@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface MRGameControllerDelayedEvents : NSObject
@@ -12,9 +12,9 @@ __attribute__((visibility("hidden")))
     struct NSMutableDictionary *_events;
 }
 
+- (void).cxx_destruct;
 - (void)invokeEventsForController:(unsigned long long)arg1 beacuseElement:(int)arg2;
 - (id)eventForController:(unsigned long long)arg1 element:(int)arg2;
-- (void)dealloc;
 
 @end
 

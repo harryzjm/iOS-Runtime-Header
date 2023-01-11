@@ -4,26 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface PSRestrictionsPasscodeController : NSObject
 {
 }
 
++ (void)removePasswordForHashAndSaltLegacyRestrictions;
++ (id)passwordForHashAndSaltLegacyRestrictions;
++ (id)saltForHashAndSaltLegacyRestrictions;
++ (id)newHashDataForPassword:(id)arg1 andSalt:(id)arg2;
++ (id)_restrictionPasswordDictionary;
++ (id)_generateSalt;
++ (_Bool)legacyRestrictionsInEffect;
++ (id)pinFromHashAndSaltLegacyPassword;
++ (_Bool)hasHashAndSaltLegacyPassword;
++ (void)_setKeychainPasswordForRestrictions:(id)arg1;
 + (id)_keychainPasswordForRestrictions;
 + (void)_removeKeychainPasswordForRestrictions;
 + (_Bool)validatePIN:(id)arg1;
 + (_Bool)settingEnabled;
 + (void)setPIN:(id)arg1;
-+ (void)removePasswordForRestrictions;
-+ (void)setPasswordForRestrictions:(id)arg1;
-+ (id)passwordForRestrictions;
-+ (id)saltForRestrictions;
-+ (id)newHashDataForPassword:(id)arg1 andSalt:(id)arg2;
-+ (id)_restrictionPasswordDictionary;
-+ (id)_generateSalt;
-+ (_Bool)legacyRestrictionsInEffect;
 + (void)migrateRestrictionsPasscode;
++ (void)_migrateRestrictionsPasscodeIfNeeded;
 
 @end
 

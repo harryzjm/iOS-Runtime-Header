@@ -21,21 +21,23 @@
 @property(retain, nonatomic) id appLayout; // @synthesize appLayout=_appLayout;
 @property(readonly, nonatomic) _Bool isControlCenter; // @synthesize isControlCenter=_isControlCenter;
 - (void).cxx_destruct;
-- (id)_accessibilityUserTestingChildren;
+- (_Bool)_accessibilityUpdatesSwitchMenu;
 - (id)_accessibilityScrollAncestor;
 - (id)_accessibilityPreferredScrollActions;
 - (_Bool)_accessibilityCanPerformAction:(int)arg1;
 - (_Bool)_accessibilityScrollToVisible;
 - (id)_accessibilityScrollStatus;
 - (_Bool)accessibilityScroll:(long long)arg1;
-- (id)accessibilityElements;
-- (id)_accessibilityCustomActions;
+- (unsigned long long)accessibilityTraits;
+- (id)accessibilityCustomActions;
 - (id)accessibilityValue;
 - (id)accessibilityHint;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (struct CGRect)accessibilityFrame;
 - (_Bool)shouldGroupAccessibilityChildren;
+- (id)_accessibilityCustomActionGroupIdentifier;
+- (_Bool)_accessibilityRetainsCustomRotorActionSetting;
 - (_Bool)isAccessibilityElement;
 - (_Bool)accessibilityActivate;
 

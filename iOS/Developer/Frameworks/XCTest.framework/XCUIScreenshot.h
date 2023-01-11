@@ -13,14 +13,15 @@
     XCTImage *_internalImage;
 }
 
++ (id)emptyScreenshot;
 + (long long)systemScreenshotQuality;
 + (void)setSystemScreenshotQuality:(long long)arg1;
 + (void)initialize;
 @property(retain) XCTImage *internalImage; // @synthesize internalImage=_internalImage;
+- (void).cxx_destruct;
 - (id)debugQuickLookObject;
 @property(readonly, copy) NSData *PNGRepresentation;
 @property(readonly, copy) UIImage *image;
-- (void)dealloc;
 - (id)initWithImage:(id)arg1;
 
 @end

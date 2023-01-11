@@ -17,6 +17,7 @@
 - (id)_accessibilityExtendedLabelForFocusParcelWithLabel:(id)arg1;
 - (unsigned long long)_accessibilityFocusParcelChildrenCount:(unsigned long long)arg1;
 - (_Bool)_accessibilityIsFocusParcel;
+- (id)_accessibilityTextForSubhierarchyIncludingHeaders:(_Bool)arg1 focusableItems:(_Bool)arg2 exclusions:(id)arg3 classExclusions:(id)arg4;
 - (id)_accessibilityTextForSubhierarchyIncludingHeaders:(_Bool)arg1 focusableItems:(_Bool)arg2 exclusions:(id)arg3;
 - (id)_accessibilitySubviews;
 - (_Bool)_isAccessibilityExplorerElement;
@@ -41,6 +42,7 @@
 - (_Bool)_accessibilityShouldSetNativeFocusWhenATVFocused;
 - (_Bool)_accessibilityViewHierarchyHasNativeFocus;
 - (_Bool)_accessibilityFullscreenVideoViewIsVisible;
+- (_Bool)_accessibilityUIKitHasNativeFocus;
 - (_Bool)_accessibilityHasNativeFocus;
 - (id)_accessibilitySpeakThisPreferredUnderlineColor;
 - (id)_accessibilitySpeakThisPreferredHighlightColor;
@@ -62,9 +64,14 @@
 - (struct CGPoint)_accessibilityScreenPointForSceneReferencePoint:(struct CGPoint)arg1;
 - (_Bool)_accessibilityHandleMagicTap;
 - (_Bool)_accessibilityHandleMagicTapForPronunciation;
+- (void)_setAccessibilityFrameForSortingBlock:(CDUnknownBlockType)arg1;
+- (void)_setAccessibilityIsRealtimeElementBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityActivateBlock:(CDUnknownBlockType)arg1;
+- (void)_setAccessibilityIncrementBlock:(CDUnknownBlockType)arg1;
+- (void)_setAccessibilityDecrementBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityGuideElementHeaderTextBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityLinkedUIElementsBlock:(CDUnknownBlockType)arg1;
+- (void)_setAccessibilityElementsBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityHeaderElementsBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityNavigationStyleBlock:(CDUnknownBlockType)arg1;
 - (void)_setShouldGroupAccessibilityChildrenBlock:(CDUnknownBlockType)arg1;
@@ -75,6 +82,7 @@
 - (void)_setAccessibilityPathBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityFrameBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityTraitsBlock:(CDUnknownBlockType)arg1;
+- (void)_setAccessibilityAdditionalTraitsBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityValueBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityHintBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityIdentifierBlock:(CDUnknownBlockType)arg1;

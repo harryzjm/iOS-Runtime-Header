@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface MPMediaDownload : NSObject
 {
@@ -16,6 +16,8 @@
     long long _storeSagaID;
 }
 
++ (id)MPMediaDownloadsFromATAssets:(id)arg1;
++ (id)MPMediaDownloadsFromMPStoreDownloads:(id)arg1;
 @property long long storeSagaID; // @synthesize storeSagaID=_storeSagaID;
 @property long long libraryID; // @synthesize libraryID=_libraryID;
 @property(nonatomic) double downloadProgress; // @synthesize downloadProgress=_downloadProgress;

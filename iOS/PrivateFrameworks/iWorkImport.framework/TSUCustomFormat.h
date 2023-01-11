@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/NSMutableCopying-Protocol.h>
@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
 {
     NSString *_formatNameStem;
     NSString *_formatNameTag;
+    NSString *_currencyCode;
+    _Bool _currencyCodeComputed;
     int _formatType;
     TSUCustomFormatData *_defaultFormatData;
     NSString *_formatName;
@@ -28,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) int formatType; // @synthesize formatType=_formatType;
 - (void).cxx_destruct;
 - (id)description;
+@property(readonly, nonatomic) NSString *currencyCode;
 - (id)conditionalFormatDataForKey:(unsigned long long)arg1;
 - (id)conditionalFormatAtIndex:(unsigned long long)arg1;
 - (id)conditionalFormatDataForValue:(double)arg1 outKey:(unsigned long long *)arg2;
@@ -40,6 +43,8 @@ __attribute__((visibility("hidden")))
 - (void)p_makeFormatNameStemAndTag;
 - (unsigned long long)hash;
 - (void)p_addConditionOfType:(int)arg1 value:(double)arg2 data:(id)arg3;
+- (void)p_setFormatType:(int)arg1;
+@property(readonly, nonatomic) _Bool conditionsAllowed;
 @property(readonly, nonatomic) unsigned long long conditionCount;
 - (id)customFormatWithNewName:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

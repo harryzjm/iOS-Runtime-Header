@@ -6,7 +6,7 @@
 
 #import <PhotoLibraryServices/PLMomentGenerationDataManagement-Protocol.h>
 
-@class NSDictionary, NSOrderedSet;
+@class NSArray, NSDictionary;
 @protocol PLMomentData;
 
 @protocol PLMomentGenerationDataManagement_Private <PLMomentGenerationDataManagement>
@@ -16,9 +16,7 @@
 - (void)setupPhotoLibrary;
 - (void)refreshAllObjects;
 - (void)refreshObject:(id)arg1 mergeChanges:(_Bool)arg2;
+- (void)invalidateLocationDataForAssetsWithOIDs:(NSArray *)arg1;
 - (void)invalidateLocationDataForAssetsInMoment:(id <PLMomentData>)arg1;
-- (void)insertMomentIntoAllMoments:(id <PLMomentData>)arg1 atIndex:(unsigned long long)arg2;
-- (void)removeMomentFromAllMoments:(id <PLMomentData>)arg1;
-- (NSOrderedSet *)allMomentsInLibrary;
 @end
 

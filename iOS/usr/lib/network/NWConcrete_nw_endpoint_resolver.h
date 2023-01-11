@@ -11,6 +11,7 @@
 @class NSString, NWConcrete_nw_endpoint_handler;
 @protocol OS_nw_array, OS_nw_resolver;
 
+__attribute__((visibility("hidden")))
 @interface NWConcrete_nw_endpoint_resolver : NSObject <OS_nw_endpoint_resolver>
 {
     NSObject<OS_nw_resolver> *resolver;
@@ -18,6 +19,7 @@
     unsigned int next_child_endpoint_index;
     unsigned int failed_to_start_next_child:1;
     unsigned int started_desperate_ivan:1;
+    unsigned int waiting_for_desperate_ivan:1;
     NWConcrete_nw_endpoint_handler *connected_child;
     NSObject<OS_nw_array> *child_endpoint_handlers;
     NSObject<OS_nw_array> *ready_child_endpoint_handlers;
@@ -28,7 +30,7 @@
 }
 
 - (void).cxx_destruct;
-- (void)applyWithHandler:(id)arg1 toChildren:(CDUnknownBlockType)arg2;
+- (_Bool)applyWithHandler:(id)arg1 toChildren:(CDUnknownBlockType)arg2;
 - (void)updatePathWithHandler:(id)arg1;
 - (void)cancelWithHandler:(id)arg1 forced:(_Bool)arg2;
 - (void)startWithHandler:(id)arg1;

@@ -7,12 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <GeoServices/GEODataSession-Protocol.h>
+#import <GeoServices/GEODataSessionRulesProvider-Protocol.h>
 
-@class GEODataURLSession, GEODataXPCSession, NSString;
+@class GEODataURLSession, NSString;
 @protocol GEODataSession, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
-@interface GEODataSession : NSObject <GEODataSession>
+@interface GEODataSession : NSObject <GEODataSessionRulesProvider, GEODataSession>
 {
     NSObject<OS_dispatch_queue> *_sessionIsolation;
     id <GEODataSession> _urlSession;
@@ -20,10 +20,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedDataSession;
-@property(readonly, nonatomic) GEODataXPCSession *xpcSession; // @synthesize xpcSession=_xpcSession;
+@property(readonly, nonatomic) id <GEODataSession> xpcSession; // @synthesize xpcSession=_xpcSession;
 @property(readonly, nonatomic) GEODataURLSession *urlSession; // @synthesize urlSession=_urlSession;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *sessionIsolation; // @synthesize sessionIsolation=_sessionIsolation;
 - (void).cxx_destruct;
+- (id)taskWithRequest:(id)arg1 rules:(id)arg2 priority:(float)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
 - (id)taskWithRequest:(id)arg1 rules:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
 - (id)manifestManager;
 - (id)initWithXPCSession:(id)arg1 urlSession:(id)arg2;

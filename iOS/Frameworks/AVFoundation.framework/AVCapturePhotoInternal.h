@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVApplePortraitMetadata, AVCameraCalibrationData, AVCaptureBracketedStillImageSettings, AVCapturePhotoSettings, AVCaptureResolvedPhotoSettings, AVDepthData, NSDictionary, NSString;
+@class AVApplePortraitMetadata, AVCameraCalibrationData, AVCaptureBracketedStillImageSettings, AVCapturePhotoSettings, AVCaptureResolvedPhotoSettings, AVDepthData, AVPortraitEffectsMatte, NSDictionary, NSString;
 
 @interface AVCapturePhotoInternal : NSObject
 {
@@ -23,6 +23,8 @@
     AVCapturePhotoSettings *unresolvedSettings;
     AVDepthData *depthData;
     _Bool didTryToDecodeDepthData;
+    AVPortraitEffectsMatte *portraitEffectsMatte;
+    _Bool didTryToDecodePortraitEffectsMatte;
     _Bool isRawPhoto;
     AVCaptureBracketedStillImageSettings *bracketSettings;
     unsigned long long sequenceCount;
@@ -31,6 +33,7 @@
     unsigned int expectedPhotoProcessingFlags;
     unsigned int actualPhotoProcessingFlags;
     AVApplePortraitMetadata *portraitMetadata;
+    _Bool lensStabilizationSupported;
 }
 
 @end

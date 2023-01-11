@@ -8,7 +8,5 @@
 {
 }
 
-- (Class)rowTableViewCellClass;
-
 @end
 

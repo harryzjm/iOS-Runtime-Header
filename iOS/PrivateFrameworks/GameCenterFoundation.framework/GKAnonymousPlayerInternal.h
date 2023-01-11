@@ -8,6 +8,7 @@
 {
 }
 
++ (_Bool)supportsSecureCoding;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isAnonymousPlayer;
 - (id)alias;

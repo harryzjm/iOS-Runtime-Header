@@ -4,16 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class CIImage, CIVector, NSDictionary, NSNumber;
+
 __attribute__((visibility("hidden")))
 @interface CILensModelCalculator
 {
+    CIImage *inputImage;
+    CIImage *inputMinMaxImage;
+    CIVector *inputOriginalSize;
+    CIVector *inputFocusRect;
+    NSNumber *inputSimulatedAperture;
+    NSNumber *inputIntrinsicMatrixFocalLength;
+    NSDictionary *inputTuningParameters;
 }
 
-+ (_Bool)processWithInputs:(id)arg1 arguments:(id)arg2 output:(id)arg3 error:(id *)arg4;
-+ (struct CGRect)roiForInput:(int)arg1 arguments:(id)arg2 outputRect:(struct CGRect)arg3;
-+ (_Bool)synchronizeInputs;
-+ (int)outputFormat;
-+ (int)formatForInputAtIndex:(int)arg1;
++ (id)customAttributes;
+@property(retain, nonatomic) NSDictionary *inputTuningParameters; // @synthesize inputTuningParameters;
+@property(copy, nonatomic) NSNumber *inputIntrinsicMatrixFocalLength; // @synthesize inputIntrinsicMatrixFocalLength;
+@property(copy, nonatomic) NSNumber *inputSimulatedAperture; // @synthesize inputSimulatedAperture;
+@property(copy, nonatomic) CIVector *inputFocusRect; // @synthesize inputFocusRect;
+@property(copy, nonatomic) CIVector *inputOriginalSize; // @synthesize inputOriginalSize;
+@property(retain) CIImage *inputMinMaxImage; // @synthesize inputMinMaxImage;
+@property(retain) CIImage *inputImage; // @synthesize inputImage;
+- (id)outputImage;
+- (id)cpuParams;
+- (id)kernel;
 
 @end
 

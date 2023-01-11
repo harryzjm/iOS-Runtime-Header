@@ -50,9 +50,12 @@
 - (id)_handleSessionIsLoginSession:(id)arg1;
 - (id)_handleHomeClickSwallowedForGuidedAccess:(id)arg1;
 - (id)_handleTripleClickHomeButtonFired:(id)arg1;
+- (id)_handleSetInCheckerBoardMode:(id)arg1;
+- (id)_handleInCheckerBoardMode:(id)arg1;
 - (id)_handleSetInPreBoardMode:(id)arg1;
 - (id)_handleInPreBoardMode:(id)arg1;
 - (_Bool)_sessionIsLoginSession;
+- (_Bool)_inCheckerBoardMode;
 - (_Bool)_inPreBoardMode;
 - (id)_gaxBackboard;
 - (id)_handleGetZoomInitialFocusRect:(id)arg1;
@@ -62,7 +65,8 @@
 - (id)_handleLockScreenDimTimerEnabled:(id)arg1;
 - (id)_handleInvertColorsChange:(id)arg1;
 - (id)_handleRegisterSiriViewServicePID:(id)arg1;
-- (id)_handleRegisterAccessibilityUIPID:(id)arg1;
+- (id)_handleRegisterAccessibilityUIServerPID:(id)arg1;
+- (id)_handleAssistiveTouchPID:(id)arg1;
 - (id)_handleAXUIServerPID:(id)arg1;
 - (id)_handleRegisterAssistiveTouchPID:(id)arg1;
 - (id)_handleZoomAttributesListenerRegistration:(id)arg1;

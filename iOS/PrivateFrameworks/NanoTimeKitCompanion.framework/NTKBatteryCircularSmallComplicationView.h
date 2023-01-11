@@ -4,29 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NanoTimeKitCompanion/NTKBatteryComplicationDisplay-Protocol.h>
+@class NTKColoringLabel;
 
-@class NSString;
-@protocol NTKComplicationDisplayObserver;
-
-@interface NTKBatteryCircularSmallComplicationView <NTKBatteryComplicationDisplay>
+@interface NTKBatteryCircularSmallComplicationView
 {
-    double _level;
-    long long _state;
+    NTKColoringLabel *_label;
 }
 
-- (void)setState:(long long)arg1;
-- (void)setLevel:(float)arg1;
-- (_Bool)_wantsPlatter;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(nonatomic) __weak id <NTKComplicationDisplayObserver> displayObserver;
-@property(readonly) unsigned long long hash;
-@property(nonatomic, getter=isHighlighted) _Bool highlighted;
-@property(nonatomic) _Bool shouldUseTemplateColors;
-@property(readonly) Class superclass;
++ (_Bool)handlesComplicationTemplate:(id)arg1;
++ (void)load;
+- (void).cxx_destruct;
+- (void)_updateForTemplateChange;
 
 @end
 

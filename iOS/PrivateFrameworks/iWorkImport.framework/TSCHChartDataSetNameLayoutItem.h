@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (_Bool)shouldPlaceTitleAtCenter;
 @property(readonly, nonatomic) _Bool isAboveChartBody;
 - (id)titleSelectionPath;
 - (unsigned long long)titleParagraphStyleIndex;

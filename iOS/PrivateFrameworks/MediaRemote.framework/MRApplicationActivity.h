@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaRemote/NSMutableCopying-Protocol.h>
 #import <MediaRemote/NSSecureCoding-Protocol.h>
@@ -16,7 +16,6 @@
     NSUUID *_uniqueIdentifier;
     NSString *_primaryApplicationDisplayID;
     NSString *_secondaryApplicationDisplayID;
-    _Bool _shouldPrepareAppPlaybackQueue;
     int _status;
     int _creatorProcessID;
 }
@@ -24,10 +23,10 @@
 + (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) int creatorProcessID; // @synthesize creatorProcessID=_creatorProcessID;
 @property(readonly, nonatomic) int status; // @synthesize status=_status;
-@property(readonly, nonatomic) _Bool shouldPrepareAppPlaybackQueue; // @synthesize shouldPrepareAppPlaybackQueue=_shouldPrepareAppPlaybackQueue;
 @property(readonly, nonatomic) NSString *secondaryApplicationDisplayID; // @synthesize secondaryApplicationDisplayID=_secondaryApplicationDisplayID;
 @property(readonly, nonatomic) NSString *primaryApplicationDisplayID; // @synthesize primaryApplicationDisplayID=_primaryApplicationDisplayID;
 @property(readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+- (void).cxx_destruct;
 - (id)_copyWithZone:(struct _NSZone *)arg1 usingConcreteClass:(Class)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -35,7 +34,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 - (id)initWithPrimaryAppDisplayID:(id)arg1 secondaryAppDisplayID:(id)arg2;
 
 @end

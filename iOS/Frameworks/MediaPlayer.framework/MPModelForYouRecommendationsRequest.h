@@ -8,17 +8,21 @@
 
 @interface MPModelForYouRecommendationsRequest
 {
+    long long _filteringPolicy;
     NSURL *_customForYouURL;
 }
 
 + (id)allSupportedSectionProperties;
 + (id)allSupportedItemProperties;
++ (_Bool)supportsSecureCoding;
 @property(copy, nonatomic) NSURL *customForYouURL; // @synthesize customForYouURL=_customForYouURL;
+@property(nonatomic) long long filteringPolicy; // @synthesize filteringPolicy=_filteringPolicy;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)newOperationWithResponseHandler:(CDUnknownBlockType)arg1;
+- (id)init;
 
 @end
 

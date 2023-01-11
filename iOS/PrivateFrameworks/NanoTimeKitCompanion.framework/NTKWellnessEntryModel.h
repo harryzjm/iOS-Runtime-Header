@@ -7,43 +7,44 @@
 #import <NanoTimeKitCompanion/CLKTimelineEntry-Protocol.h>
 #import <NanoTimeKitCompanion/NSCopying-Protocol.h>
 
-@class HKQuantity, NSString;
+@class HKQuantity, NSArray, NSString;
 
 @interface NTKWellnessEntryModel <NSCopying, CLKTimelineEntry>
 {
     _Bool _databaseLoading;
     _Bool _deviceLocked;
-    HKQuantity *_activeEnergy;
     HKQuantity *_activeEnergyTotal;
     HKQuantity *_activeEnergyGoal;
-    double _briskMinutes;
     double _briskMinutesTotal;
     double _briskMinutesGoal;
-    unsigned long long _standHourState;
     long long _standHoursTotal;
     long long _standHoursGoal;
-    NTKWellnessEntryModel *_previousEntryModel;
+    NSArray *_moveChartData;
+    NSArray *_exerciseChartData;
+    NSArray *_standChartData;
 }
 
 + (id)_LocalizedStringWithActiveEnergy:(id)arg1;
 + (id)formattingManager;
++ (id)_signatureRectangleFromModel:(id)arg1;
++ (id)_signatureBezelFromModel:(id)arg1;
++ (id)_signatureCornerFromModel:(id)arg1;
 + (id)largeUtility:(id)arg1;
 + (id)largeModular:(id)arg1;
 + (id)_activityTemplateWithFamily:(long long)arg1 entryModel:(id)arg2;
 + (id)idealizedEntryModel;
 + (id)lockedEntryModel;
-@property(nonatomic) __weak NTKWellnessEntryModel *previousEntryModel; // @synthesize previousEntryModel=_previousEntryModel;
 @property(readonly, nonatomic) _Bool deviceLocked; // @synthesize deviceLocked=_deviceLocked;
 @property(nonatomic) _Bool databaseLoading; // @synthesize databaseLoading=_databaseLoading;
+@property(retain, nonatomic) NSArray *standChartData; // @synthesize standChartData=_standChartData;
+@property(retain, nonatomic) NSArray *exerciseChartData; // @synthesize exerciseChartData=_exerciseChartData;
+@property(retain, nonatomic) NSArray *moveChartData; // @synthesize moveChartData=_moveChartData;
 @property(nonatomic) long long standHoursGoal; // @synthesize standHoursGoal=_standHoursGoal;
 @property(nonatomic) long long standHoursTotal; // @synthesize standHoursTotal=_standHoursTotal;
-@property(nonatomic) unsigned long long standHourState; // @synthesize standHourState=_standHourState;
 @property(nonatomic) double briskMinutesGoal; // @synthesize briskMinutesGoal=_briskMinutesGoal;
 @property(nonatomic) double briskMinutesTotal; // @synthesize briskMinutesTotal=_briskMinutesTotal;
-@property(nonatomic) double briskMinutes; // @synthesize briskMinutes=_briskMinutes;
 @property(retain, nonatomic) HKQuantity *activeEnergyGoal; // @synthesize activeEnergyGoal=_activeEnergyGoal;
 @property(retain, nonatomic) HKQuantity *activeEnergyTotal; // @synthesize activeEnergyTotal=_activeEnergyTotal;
-@property(retain, nonatomic) HKQuantity *activeEnergy; // @synthesize activeEnergy=_activeEnergy;
 - (void).cxx_destruct;
 - (id)date;
 - (void)setDate:(id)arg1;

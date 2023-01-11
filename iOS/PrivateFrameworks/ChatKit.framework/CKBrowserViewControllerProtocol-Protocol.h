@@ -10,10 +10,12 @@
 @protocol CKBrowserViewControllerSendDelegate, UIViewControllerTransitioningDelegate;
 
 @protocol CKBrowserViewControllerProtocol <NSObject>
+@property(readonly, nonatomic) _Bool inFullScreenModalPresentation;
 @property(readonly, nonatomic) _Bool inExpandedPresentation;
 @property(readonly, nonatomic) _Bool shouldShowChatChrome;
 @property(readonly, nonatomic) long long browserPresentationStyle;
 @property(readonly, nonatomic) _Bool mayBeKeptInViewHierarchy;
+@property(nonatomic) _Bool isPrimaryViewController;
 @property(readonly, nonatomic) _Bool shouldSuppressEntryView;
 @property(readonly, nonatomic) _Bool supportsQuickView;
 @property(readonly, nonatomic) _Bool wantsOpaqueUI;
@@ -43,7 +45,9 @@
 @property(readonly, nonatomic) _Bool wasExpandedPresentation;
 @property(retain, nonatomic) NSString *sender;
 @property(retain, nonatomic) NSArray *recipients;
+- (void)volumeButtonPressed:(_Bool)arg1;
 - (void)killExtensionProcess;
+- (void)dropAssertion;
 - (void)setStoreLaunchURL:(NSURL *)arg1 sourceApplication:(NSString *)arg2;
 - (void)messageAddedWithDataSource:(IMBalloonPluginDataSource *)arg1;
 - (void)viewDidTransitionToCompactPresentation;

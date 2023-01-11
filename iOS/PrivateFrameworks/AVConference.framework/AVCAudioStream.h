@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCMediaStreamDelegate-Protocol.h>
 
@@ -39,6 +39,7 @@
 - (void)registerBlocksForDelegateNotifications;
 @property(nonatomic, getter=isOutputFrequencyMeteringEnabled) _Bool outputFrequencyMeteringEnabled;
 @property(nonatomic, getter=isInputFrequencyMeteringEnabled) _Bool inputFrequencyMeteringEnabled;
+@property(nonatomic) float volume;
 @property(nonatomic) double rtcpSendIntervalSec;
 @property(nonatomic) double rtcpTimeOutIntervalSec;
 @property(nonatomic) double rtpTimeOutIntervalSec;

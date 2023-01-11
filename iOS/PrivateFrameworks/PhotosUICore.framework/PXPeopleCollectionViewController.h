@@ -19,7 +19,7 @@
 #import <PhotosUICore/UIViewControllerPreviewingDelegate-Protocol.h>
 #import <PhotosUICore/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSIndexPath, NSMutableDictionary, NSString, PXPeopleDragAndDropCollectionViewLayout, PXPeopleMeViewController, PXPeopleProgressFooterView, PXPeopleProgressManager, PXPeopleSectionedDataSource, PXPeopleSwipeSelectionManager, UIBarButtonItem, UILongPressGestureRecognizer;
+@class NSArray, NSDictionary, NSIndexPath, NSMutableDictionary, NSString, PXPeopleDragAndDropCollectionViewLayout, PXPeopleMeViewController, PXPeopleProgressFooterView, PXPeopleProgressManager, PXPeopleSectionedDataSource, PXPeopleSwipeSelectionManager, UIBarButtonItem, UILongPressGestureRecognizer, UITapGestureRecognizer;
 @protocol UIViewControllerAnimatedTransitioning;
 
 @interface PXPeopleCollectionViewController : UICollectionViewController <UIViewControllerTransitioningDelegate, PXPeopleZoomOverlayTransitionEndPoint, PXPeopleDragAndDropCollectionViewDelegate, UIGestureRecognizerDelegate, UICollectionViewDelegateFlowLayout, UIPopoverPresentationControllerDelegate, UIViewControllerPreviewingDelegate, PXPeopleSectionedDataSourceChangeObserver, PXPeoplePreviewActionViewControllerDelegate, PXPeopleDragAndDropCollectionViewDelegateLayout, PXPeopleCollectionViewCellDelegate, PXPeopleSwipeSelectionManagerDelegate>
@@ -41,6 +41,8 @@
     PXPeopleProgressManager *_progressManager;
     PXPeopleProgressFooterView *_progressFooterView;
     PXPeopleMeViewController *_meViewController;
+    UITapGestureRecognizer *_statusDebugRecognizer;
+    NSDictionary *_contactByPersonLocalIdentifier;
     PXPeopleSwipeSelectionManager *_swipeSelectionManager;
     PXPeopleSectionedDataSource *_dataSource;
     NSIndexPath *_sourceDragIndexPath;
@@ -72,6 +74,8 @@
 @property(retain, nonatomic) NSIndexPath *sourceDragIndexPath; // @synthesize sourceDragIndexPath=_sourceDragIndexPath;
 @property(readonly, nonatomic) PXPeopleSectionedDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) PXPeopleSwipeSelectionManager *swipeSelectionManager; // @synthesize swipeSelectionManager=_swipeSelectionManager;
+@property(retain, nonatomic) NSDictionary *contactByPersonLocalIdentifier; // @synthesize contactByPersonLocalIdentifier=_contactByPersonLocalIdentifier;
+@property(retain, nonatomic) UITapGestureRecognizer *statusDebugRecognizer; // @synthesize statusDebugRecognizer=_statusDebugRecognizer;
 @property(retain, nonatomic) PXPeopleMeViewController *meViewController; // @synthesize meViewController=_meViewController;
 @property(nonatomic) _Bool shouldShowMeHeader; // @synthesize shouldShowMeHeader=_shouldShowMeHeader;
 @property(nonatomic) _Bool shouldShowProgressFooter; // @synthesize shouldShowProgressFooter=_shouldShowProgressFooter;
@@ -87,6 +91,7 @@
 @property(retain, nonatomic) UILongPressGestureRecognizer *dragRecognizer; // @synthesize dragRecognizer=_dragRecognizer;
 @property _Bool ignoreChangeUpdates; // @synthesize ignoreChangeUpdates=_ignoreChangeUpdates;
 - (void).cxx_destruct;
+- (void)statusDebugRecognizerTapped:(id)arg1;
 - (void)swipeSelectionManager:(id)arg1 didSelectIndexPaths:(id)arg2;
 - (id)swipeSelectionManager:(id)arg1 itemIndexPathAtLocation:(struct CGPoint)arg2;
 - (id)swipeSelectionManager:(id)arg1 indexPathSetFromIndexPath:(id)arg2 toIndexPath:(id)arg3;

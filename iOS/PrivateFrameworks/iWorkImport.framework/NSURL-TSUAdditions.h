@@ -8,6 +8,9 @@
 
 @interface NSURL (TSUAdditions)
 + (id)tsu_fileURLWithPath:(id)arg1;
+- (id)tsu_contentModificationDateWithLogContext:(id)arg1;
+@property(readonly, getter=tsu_isInTrash) _Bool tsu_inTrash;
+- (void)tsu_removeCachedResourceValueForKeys:(id)arg1;
 - (id)tsu_fileProviderBookmarkableString;
 - (_Bool)tsu_isOnSameVolumeAs:(id)arg1;
 - (id)tsu_reachableFileURLByDeletingUnreachablePathComponents;
@@ -16,17 +19,8 @@
 - (id)tsu_fileSystemTypeName;
 - (id)tsu_fileTypeIdentifierHandlingFileCoordinationPromises;
 - (_Bool)tsu_setNeedsDocumentIdentifierAndReturnError:(out id *)arg1;
-- (_Bool)tsu_shareOwnerName:(out id *)arg1 error:(id *)arg2;
-- (id)tsu_shareOwnerName;
 - (_Bool)tsu_isDocumentUploaded:(out _Bool *)arg1 error:(id *)arg2;
 - (_Bool)tsu_isDocumentUploaded;
-- (_Bool)tsu_displayName:(out id *)arg1 error:(id *)arg2;
-- (id)tsu_displayName;
-- (_Bool)tsu_isShareOwner:(out _Bool *)arg1 error:(id *)arg2;
-- (_Bool)tsu_isShareOwner;
-- (_Bool)tsu_isShareCollaborator:(out _Bool *)arg1 error:(id *)arg2;
-- (_Bool)tsu_isShareCollaborator;
-- (_Bool)_isShareRole:(out _Bool *)arg1 role:(id)arg2 error:(id *)arg3;
 - (_Bool)tsu_isShared:(out _Bool *)arg1 error:(id *)arg2;
 - (_Bool)tsu_isShared;
 - (_Bool)tsu_fileSize:(out unsigned long long *)arg1 error:(id *)arg2;

@@ -29,8 +29,8 @@ __attribute__((visibility("hidden")))
     _Bool _allowsExternalPlayback;
     _Bool _pictureInPicturePossible;
     AVPlayerController *_playerControllerProxy;
-    struct WebPlaybackSessionModel *_delegate;
-    struct WebPlaybackSessionInterfaceAVKit *_playbackSessionInterface;
+    struct PlaybackSessionModel *_delegate;
+    struct PlaybackSessionInterfaceAVKit *_playbackSessionInterface;
     double _rate;
     double _contentDuration;
     double _contentDurationWithinEndTimes;
@@ -71,7 +71,7 @@ __attribute__((visibility("hidden")))
 @property(retain) NSString *externalPlaybackAirPlayDeviceLocalizedName; // @synthesize externalPlaybackAirPlayDeviceLocalizedName=_externalPlaybackAirPlayDeviceLocalizedName;
 @property long long externalPlaybackType; // @synthesize externalPlaybackType=_externalPlaybackType;
 @property(getter=isExternalPlaybackActive) _Bool externalPlaybackActive; // @synthesize externalPlaybackActive=_externalPlaybackActive;
-@property(readonly, getter=isPlayingOnSecondScreen) _Bool playingOnSecondScreen; // @synthesize playingOnSecondScreen=_playingOnSecondScreen;
+@property(nonatomic, getter=isPlayingOnSecondScreen) _Bool playingOnSecondScreen; // @synthesize playingOnSecondScreen=_playingOnSecondScreen;
 @property(retain) NSArray *legibleMediaSelectionOptions; // @synthesize legibleMediaSelectionOptions=_legibleMediaSelectionOptions;
 @property(retain) NSArray *audioMediaSelectionOptions; // @synthesize audioMediaSelectionOptions=_audioMediaSelectionOptions;
 @property(retain) NSArray *seekableTimeRanges; // @synthesize seekableTimeRanges=_seekableTimeRanges;
@@ -90,13 +90,15 @@ __attribute__((visibility("hidden")))
 @property _Bool canPause; // @synthesize canPause=_canPause;
 @property _Bool canPlay; // @synthesize canPlay=_canPlay;
 @property _Bool canScanBackward; // @synthesize canScanBackward=_canScanBackward;
-@property struct WebPlaybackSessionInterfaceAVKit *playbackSessionInterface; // @synthesize playbackSessionInterface=_playbackSessionInterface;
-@property struct WebPlaybackSessionModel *delegate; // @synthesize delegate=_delegate;
+@property struct PlaybackSessionInterfaceAVKit *playbackSessionInterface; // @synthesize playbackSessionInterface=_playbackSessionInterface;
+@property struct PlaybackSessionModel *delegate; // @synthesize delegate=_delegate;
 @property(retain) AVPlayerController *playerControllerProxy; // @synthesize playerControllerProxy=_playerControllerProxy;
 - (void)resetMediaState;
 - (_Bool)hasSeekableLiveStreamingContent;
 - (void)updateMinMaxTiming;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)volumeChanged:(double)arg1;
+@property double volume;
 - (void)toggleMuted:(id)arg1;
 @property(getter=isMuted) _Bool muted;
 @property(getter=isPictureInPictureInterrupted) _Bool pictureInPictureInterrupted;
@@ -124,6 +126,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasLiveStreamingContent;
 - (void)setCurrentTimeWithinEndTimes:(double)arg1;
 - (double)currentTimeWithinEndTimes;
+- (void)seekByTimeInterval:(double)arg1 toleranceBefore:(double)arg2 toleranceAfter:(double)arg3;
+- (void)seekByTimeInterval:(double)arg1;
+- (void)seekToTime:(double)arg1 toleranceBefore:(double)arg2 toleranceAfter:(double)arg3;
 - (void)seekToTime:(double)arg1;
 - (void)endScrubbing:(id)arg1;
 - (void)beginScrubbing:(id)arg1;

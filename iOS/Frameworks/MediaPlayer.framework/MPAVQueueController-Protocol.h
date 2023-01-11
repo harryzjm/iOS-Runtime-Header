@@ -6,19 +6,21 @@
 
 #import <MediaPlayer/NSObject-Protocol.h>
 
-@class MPAVController, MPAVItem, MPPlaybackContext, MPQueuePlayer, NSString;
+@class MPAVController, MPAVItem, MPPlaybackContext, NSString;
 @protocol MPAVItemQueueIdentifier;
 
 @protocol MPAVQueueController <NSObject>
 @property(readonly, nonatomic) long long currentIndex;
-@property(readonly, nonatomic) _Bool isTransitioningSource;
-@property(readonly, nonatomic) MPQueuePlayer *player;
 @property(nonatomic) __weak MPAVController *avController;
+@property(readonly, nonatomic) _Bool allowsQueueResetWhenReachingEnd;
 @property(readonly, nonatomic) long long upNextItemCount;
+@property(readonly, nonatomic) long long playlistItemCount;
+@property(nonatomic) _Bool shouldDeferItemLoading;
 @property(nonatomic) long long repeatMode;
 @property(readonly, nonatomic) _Bool canSkipToPreviousItem;
 @property(nonatomic) __weak id delegate;
 @property(readonly, nonatomic) MPAVItem *currentItem;
+@property(readonly, nonatomic) NSString *uniqueIdentifier;
 - (long long)_indexForStringIdentifier:(NSString *)arg1;
 - (long long)indexOfItemIdentifier:(id <MPAVItemQueueIdentifier>)arg1;
 - (long long)indexWithDelta:(long long)arg1 fromIndex:(long long)arg2 ignoreElapsedTime:(_Bool)arg3 didReachEnd:(_Bool *)arg4;
@@ -28,8 +30,7 @@
 - (MPAVItem *)itemForPlaylistIndex:(long long)arg1;
 - (void)updateForSoundCheckDefaultsChange;
 - (void)handlePlaybackFailureForItem:(MPAVItem *)arg1;
-- (void)disconnectPlayer;
-- (void)connectPlayer;
+- (void)updateLocationDependentPropertiesForItem:(MPAVItem *)arg1;
 - (_Bool)isPlaceholderItemForContentItemID:(NSString *)arg1;
 - (MPAVItem *)itemForContentItemID:(NSString *)arg1;
 - (void)finalizeStateRestorationWithCompletionHandler:(void (^)(NSError *))arg1;

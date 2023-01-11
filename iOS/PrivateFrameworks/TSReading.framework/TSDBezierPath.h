@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <TSReading/NSCoding-Protocol.h>
 #import <TSReading/NSCopying-Protocol.h>
+#import <TSReading/NSSecureCoding-Protocol.h>
 
-@interface TSDBezierPath : NSObject <NSCopying, NSCoding>
+@interface TSDBezierPath : NSObject <NSCopying, NSSecureCoding>
 {
     long long sfr_elementCount;
     long long sfr_elementMax;
@@ -36,6 +36,7 @@
     } sfr_bpFlags;
 }
 
++ (_Bool)supportsSecureCoding;
 + (double)defaultLineWidth;
 + (void)setDefaultLineWidth:(double)arg1;
 + (unsigned long long)defaultLineJoinStyle;

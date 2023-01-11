@@ -6,48 +6,44 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <ChatKit/IMCloudKitEventHandler-Protocol.h>
-
-@class IMCloudKitSyncProgress, NSString, UIButton, UILabel, UIProgressView, UIStackView;
+@class IMCloudKitSyncProgress, UIButton, UIColor, UILabel, UIProgressView;
 @protocol CKCloudKitSyncProgressViewControllerDelegate;
 
-@interface CKCloudKitSyncProgressViewController : UIViewController <IMCloudKitEventHandler>
+@interface CKCloudKitSyncProgressViewController : UIViewController
 {
     _Bool _hidden;
     id <CKCloudKitSyncProgressViewControllerDelegate> _delegate;
+    IMCloudKitSyncProgress *_lastProgress;
+    UIColor *_originalProgressTintColor;
     UILabel *_progressLabel;
     UILabel *_userMessageLabel;
     UIButton *_actionButton;
     UIProgressView *_progressBar;
-    IMCloudKitSyncProgress *_lastProgress;
-    UIStackView *_verticalStackView;
-    UIStackView *_horizontalStackView;
 }
 
-@property(retain, nonatomic) UIStackView *horizontalStackView; // @synthesize horizontalStackView=_horizontalStackView;
-@property(retain, nonatomic) UIStackView *verticalStackView; // @synthesize verticalStackView=_verticalStackView;
-@property(retain, nonatomic) IMCloudKitSyncProgress *lastProgress; // @synthesize lastProgress=_lastProgress;
 @property(readonly, nonatomic) UIProgressView *progressBar; // @synthesize progressBar=_progressBar;
 @property(readonly, nonatomic) UIButton *actionButton; // @synthesize actionButton=_actionButton;
 @property(readonly, nonatomic) UILabel *userMessageLabel; // @synthesize userMessageLabel=_userMessageLabel;
 @property(readonly, nonatomic) UILabel *progressLabel; // @synthesize progressLabel=_progressLabel;
+@property(copy, nonatomic) UIColor *originalProgressTintColor; // @synthesize originalProgressTintColor=_originalProgressTintColor;
+@property(retain, nonatomic) IMCloudKitSyncProgress *lastProgress; // @synthesize lastProgress=_lastProgress;
 @property(nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
 @property(nonatomic) __weak id <CKCloudKitSyncProgressViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (void)cloudKitEventNotificationManager:(id)arg1 syncProgressDidUpdate:(id)arg2;
+@property(nonatomic) _Bool actionButtonEnabled; // @dynamic actionButtonEnabled;
 - (void)addToToolbar:(id)arg1;
 - (void)updateWithCloudKitProgress:(id)arg1;
-- (void)viewWillLayoutSubviews;
+- (void)showUserMessageWithString:(id)arg1 showActionButton:(_Bool)arg2 withActionButtonLabel:(id)arg3;
+- (void)showProgressBarWithIndeterminateProgress:(_Bool)arg1 percentComplete:(double)arg2;
+- (void)viewDidLayoutSubviews;
 - (void)loadView;
+- (void)_addUserMessageLabel;
+- (void)_addProgressLabel;
 - (void)_actionButtonWasPressed:(id)arg1;
+- (void)_addActionButton;
+- (void)_addProgressView;
 - (id)_createLabel;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

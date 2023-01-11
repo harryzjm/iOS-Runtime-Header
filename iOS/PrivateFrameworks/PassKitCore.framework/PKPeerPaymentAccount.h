@@ -4,23 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, PKCurrencyAmount;
+@class NSArray, NSDate, NSDecimalNumber, NSDictionary, NSString, NSURL, PKCurrencyAmount;
 
 @interface PKPeerPaymentAccount : NSObject <NSSecureCoding>
 {
+    _Bool _accountStateDirty;
     _Bool _identityVerificationRequired;
     _Bool _termsAcceptanceRequired;
     unsigned long long _state;
     unsigned long long _stage;
     NSString *_countryCode;
     PKCurrencyAmount *_currentBalance;
+    NSDecimalNumber *_maximumBalance;
+    NSDate *_lastUpdated;
+    double _proactiveFetchPeriod;
     NSString *_termsIdentifier;
     NSURL *_termsURL;
     NSURL *_associatedPassURL;
+    long long _pendingPaymentCount;
     NSArray *_supportedFeatureDescriptors;
     NSString *_associatedPassSerialNumber;
     NSString *_associatedPassTypeIdentifier;
@@ -32,9 +37,14 @@
 @property(nonatomic) _Bool termsAcceptanceRequired; // @synthesize termsAcceptanceRequired=_termsAcceptanceRequired;
 @property(nonatomic) _Bool identityVerificationRequired; // @synthesize identityVerificationRequired=_identityVerificationRequired;
 @property(copy, nonatomic) NSArray *supportedFeatureDescriptors; // @synthesize supportedFeatureDescriptors=_supportedFeatureDescriptors;
+@property(nonatomic) long long pendingPaymentCount; // @synthesize pendingPaymentCount=_pendingPaymentCount;
 @property(copy, nonatomic) NSURL *associatedPassURL; // @synthesize associatedPassURL=_associatedPassURL;
 @property(copy, nonatomic) NSURL *termsURL; // @synthesize termsURL=_termsURL;
 @property(copy, nonatomic) NSString *termsIdentifier; // @synthesize termsIdentifier=_termsIdentifier;
+@property(nonatomic) double proactiveFetchPeriod; // @synthesize proactiveFetchPeriod=_proactiveFetchPeriod;
+@property(retain, nonatomic) NSDate *lastUpdated; // @synthesize lastUpdated=_lastUpdated;
+@property(nonatomic, getter=isAccountStateDirty) _Bool accountStateDirty; // @synthesize accountStateDirty=_accountStateDirty;
+@property(copy, nonatomic) NSDecimalNumber *maximumBalance; // @synthesize maximumBalance=_maximumBalance;
 @property(copy, nonatomic) PKCurrencyAmount *currentBalance; // @synthesize currentBalance=_currentBalance;
 @property(copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property(nonatomic) unsigned long long stage; // @synthesize stage=_stage;
@@ -45,10 +55,13 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)isAccountOutOfDate;
 - (id)associatedPassUniqueID;
 @property(readonly, copy, nonatomic) NSArray *defaultSuggestions;
-- (id)initWithDictionary:(id)arg1;
+- (id)initWithDictionary:(id)arg1 lastUpdated:(id)arg2;
 - (id)_featureWithIdentifier:(id)arg1;
+- (id)cardBalancePromotionFeatureDescriptor;
+- (_Bool)supportsCardBalancePromotion;
 - (id)requestFromUserFeatureDescriptor;
 - (_Bool)supportsRequestFromUser;
 - (id)sendToUserFeatureDescriptor;
@@ -59,6 +72,7 @@
 - (_Bool)supportsLoadFromCard;
 @property(readonly, nonatomic) NSDictionary *maximumTransferAmounts;
 @property(readonly, nonatomic) NSDictionary *minimumTransferAmounts;
+- (id)initWithDictionary:(id)arg1;
 
 @end
 

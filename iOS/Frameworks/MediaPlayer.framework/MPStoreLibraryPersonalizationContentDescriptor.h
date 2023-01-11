@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MPModelObject;
 
@@ -14,6 +14,9 @@
     long long _personalizationStyle;
 }
 
++ (id)_lightweightPersonalizationPropertiesForStoreAsset;
++ (id)_lightweightPersonalizationPropertiesForPlaybackPosition;
++ (id)lightweightPersonalizationPropertiesForModelClass:(Class)arg1;
 @property(readonly, nonatomic) long long personalizationStyle; // @synthesize personalizationStyle=_personalizationStyle;
 @property(readonly, nonatomic) MPModelObject *model; // @synthesize model=_model;
 - (void).cxx_destruct;

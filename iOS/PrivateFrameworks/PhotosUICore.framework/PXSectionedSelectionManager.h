@@ -28,6 +28,7 @@
 - (id)sectionedDataSourceManagerInterestingObjectReferences:(id)arg1;
 - (void)setSelectedIndexPaths:(id)arg1;
 - (void)deselectAll;
+- (void)selectAllItems;
 - (void)setSelectedState:(_Bool)arg1 forIndexPathSet:(id)arg2;
 - (void)setSelectedState:(_Bool)arg1 forIndexPath:(struct PXSimpleIndexPath)arg2;
 - (void)_updateSelectionSnapshotIfNeeded;
@@ -40,6 +41,8 @@
 - (id)mutableChangeObject;
 - (id)init;
 - (id)initWithDataSourceManager:(id)arg1;
+- (_Bool)areAllUnsavedAssetsSelectedWithImportStatusManager:(id)arg1;
+- (void)selectNonCopiedAssetsWithImportStatusManager:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

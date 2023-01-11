@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Vision/VNRequestCancelling-Protocol.h>
 #import <Vision/VNRequestWarming-Protocol.h>
@@ -26,7 +26,6 @@
 - (_Bool)prepareForPerformingRequests:(id)arg1 error:(id *)arg2;
 - (_Bool)prepareForPerformingRequestsOfClass:(id)arg1 error:(id *)arg2;
 - (id)init;
-- (id)clusterContextWithOptions:(id)arg1 allowingCreation:(_Bool)arg2 error:(id *)arg3;
 
 @end
 

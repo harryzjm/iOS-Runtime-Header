@@ -8,13 +8,14 @@
 
 #import <coreroutine/RTPurgable-Protocol.h>
 
-@class NSString, RTBatteryManager, RTBluetoothManager, RTLearnedLocationManager, RTLocationManager, RTMetricManager, RTNavigationManager, RTPersistenceManager, RTPhotoLibraryManager, RTPlatform, RTReachabilityManager, RTWalletManager;
+@class NSString, RTBatteryManager, RTBluetoothManager, RTCameraManager, RTLearnedLocationManager, RTLocationManager, RTMetricManager, RTNavigationManager, RTPersistenceManager, RTPlatform, RTReachabilityManager, RTWalletManager;
 @protocol OS_dispatch_queue;
 
 @interface RTHintManager : NSObject <RTPurgable>
 {
     RTBluetoothManager *_bluetoothManager;
     RTBatteryManager *_batteryManager;
+    RTCameraManager *_cameraManager;
     RTNavigationManager *_navigationManager;
     RTReachabilityManager *_reachabilityManager;
     RTWalletManager *_walletManager;
@@ -22,7 +23,6 @@
     RTMetricManager *_metricManager;
     RTLearnedLocationManager *_learnedLocationManager;
     RTPersistenceManager *_persistenceManager;
-    RTPhotoLibraryManager *_photoLibraryManager;
     RTPlatform *_platform;
     NSObject<OS_dispatch_queue> *_queue;
 }
@@ -30,7 +30,6 @@
 + (id)boundingBoxPredicateForLocation:(id)arg1;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) RTPlatform *platform; // @synthesize platform=_platform;
-@property(retain, nonatomic) RTPhotoLibraryManager *photoLibraryManager; // @synthesize photoLibraryManager=_photoLibraryManager;
 @property(retain, nonatomic) RTPersistenceManager *persistenceManager; // @synthesize persistenceManager=_persistenceManager;
 @property(retain, nonatomic) RTLearnedLocationManager *learnedLocationManager; // @synthesize learnedLocationManager=_learnedLocationManager;
 @property(retain, nonatomic) RTMetricManager *metricManager; // @synthesize metricManager=_metricManager;
@@ -38,13 +37,14 @@
 @property(retain, nonatomic) RTWalletManager *walletManager; // @synthesize walletManager=_walletManager;
 @property(retain, nonatomic) RTReachabilityManager *reachabilityManager; // @synthesize reachabilityManager=_reachabilityManager;
 @property(retain, nonatomic) RTNavigationManager *navigationManager; // @synthesize navigationManager=_navigationManager;
+@property(retain, nonatomic) RTCameraManager *cameraManager; // @synthesize cameraManager=_cameraManager;
 @property(retain, nonatomic) RTBatteryManager *batteryManager; // @synthesize batteryManager=_batteryManager;
 @property(retain, nonatomic) RTBluetoothManager *bluetoothManager; // @synthesize bluetoothManager=_bluetoothManager;
 - (void).cxx_destruct;
 - (void)_onWalletNotification:(id)arg1;
 - (void)onWalletNotification:(id)arg1;
-- (void)_onPhotoLibraryNotification:(id)arg1;
-- (void)onPhotoLibraryNotification:(id)arg1;
+- (void)_onCameraNotification:(id)arg1;
+- (void)onCameraNotification:(id)arg1;
 - (void)_onReachabilityChange:(id)arg1;
 - (void)onReachabilityChange:(id)arg1;
 - (void)_onNavigationNotification:(id)arg1;
@@ -65,7 +65,7 @@
 - (void)_unregisterForNotifications;
 - (void)_registerForNotifications;
 - (void)shutdown;
-- (id)initWithBluetoothManager:(id)arg1 batteryManager:(id)arg2 navigationManager:(id)arg3 reachabilityManager:(id)arg4 walletManager:(id)arg5 locationManager:(id)arg6 metricManager:(id)arg7 learnedLocationManager:(id)arg8 persistenceManager:(id)arg9 photoLibraryManager:(id)arg10 platform:(id)arg11;
+- (id)initWithBluetoothManager:(id)arg1 batteryManager:(id)arg2 navigationManager:(id)arg3 reachabilityManager:(id)arg4 walletManager:(id)arg5 locationManager:(id)arg6 metricManager:(id)arg7 learnedLocationManager:(id)arg8 persistenceManager:(id)arg9 cameraManager:(id)arg10 platform:(id)arg11;
 - (id)init;
 
 // Remaining properties

@@ -8,6 +8,8 @@
 
 @interface (null) (KNAdditions)
 + (void)load;
+@property(readonly, nonatomic) _Bool canBeDefinedAsMediaPlaceholder;
+@property(readonly, nonatomic) _Bool canBeDefinedAsTextPlaceholder;
 @property(readonly, nonatomic) _Bool isRightToLeft;
 @property(readonly, nonatomic) _Bool mayHaveImplicitBuildEvents;
 - (void)swizzled_setMatchesObjectPlaceholderGeometry:(_Bool)arg1;
@@ -23,6 +25,8 @@
 @property(readonly, nonatomic) unsigned long long buildCount;
 @property(readonly, nonatomic) KNBuild *buildOut;
 @property(readonly, nonatomic) KNBuild *buildIn;
+@property(readonly, nonatomic) NSSet *contentBuilds;
+@property(readonly, nonatomic) _Bool hasContentBuilds;
 @property(readonly, nonatomic) NSSet *actionBuilds;
 @property(readonly, nonatomic) _Bool hasActionBuilds;
 @property(readonly, nonatomic) KNAbstractSlide *abstractSlide;

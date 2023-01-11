@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <ScreenReaderOutput/NSSecureCoding-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface SCROConnection : NSObject
+@interface SCROConnection : NSObject <NSSecureCoding>
 {
     _Bool _isConnectionStarted;
     unsigned int _pingPort;
@@ -18,12 +20,15 @@ __attribute__((visibility("hidden")))
     id _delegate;
 }
 
++ (_Bool)supportsSecureCoding;
 + (void)_addConnectionToRunLoop:(id)arg1;
 + (void)_unconfigServerAndRetry:(_Bool)arg1;
 + (void)_configServer;
 + (void)_createConnectionRunLoop;
 + (void)initialize;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)_ping;
 - (int)performHandlerActionForKey:(int)arg1;
 - (id)handlerValueForKey:(int)arg1 withObject:(id)arg2;

@@ -12,7 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityContainsSportsGrid;
-- (_Bool)_accessibilityHasButtonSubviews;
+- (_Bool)_accessibilityHasAccessibleSubviews;
 - (unsigned long long)accessibilityTraits;
 - (_Bool)isAccessibilityElement;
 - (id)accessibilityLabel;

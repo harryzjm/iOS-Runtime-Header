@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class MFMessageLoadingContext, MFMessageLoadingContextEvent, MFMessageSigner, NSArray;
+@class MFMessageLoadingContext, MFMessageLoadingContextEvent, MFMessageSigner;
 
 @interface MFMessageLoadingContextSMIMEInfo : NSObject
 {
@@ -15,16 +15,11 @@
 
 + (id)smimeInfoForLoadEvent:(id)arg1;
 @property(readonly, nonatomic) MFMessageLoadingContextEvent *loadEvent; // @synthesize loadEvent=_loadEvent;
-- (struct __SecCertificate *)copySigningCertificate;
-- (void)removeSavedEncryptionCertificate;
-- (void)saveEncryptionCertificate;
-- (_Bool)isCertificateStoredInKeychain;
-- (unsigned long long)keychainCertificateStatus;
-- (id)_firstSender;
+- (void)reevaluateTrustWithNetworkAccessAllowed;
 @property(readonly, nonatomic, getter=isMessageEncrypted) _Bool messageEncrypted;
 @property(readonly, nonatomic, getter=isMessageSigned) _Bool messageSigned;
 @property(readonly, nonatomic) MFMessageSigner *firstSigner;
-@property(readonly, nonatomic) NSArray *signers;
+- (id)signers;
 @property(readonly, nonatomic) __weak MFMessageLoadingContext *context;
 - (id)initWithLoadEvent:(id)arg1;
 - (void)dealloc;

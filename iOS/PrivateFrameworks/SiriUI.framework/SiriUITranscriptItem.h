@@ -12,6 +12,7 @@
 @interface SiriUITranscriptItem : NSObject
 {
     _Bool _restored;
+    _Bool _shouldBeExposed;
     _Bool _snippetViewControllerHasBeenUnloaded;
     NSUUID *_itemIdentifier;
     UIViewController<SiriUIViewController> *_viewController;
@@ -22,6 +23,7 @@
 + (id)transcriptItemWithAceObject:(id)arg1;
 @property(nonatomic) struct CGRect previousFrame; // @synthesize previousFrame=_previousFrame;
 @property(nonatomic) _Bool snippetViewControllerHasBeenUnloaded; // @synthesize snippetViewControllerHasBeenUnloaded=_snippetViewControllerHasBeenUnloaded;
+@property(nonatomic) _Bool shouldBeExposed; // @synthesize shouldBeExposed=_shouldBeExposed;
 @property(nonatomic, getter=isRestored) _Bool restored; // @synthesize restored=_restored;
 @property(retain, nonatomic) AceObject *aceObject; // @synthesize aceObject=_aceObject;
 @property(retain, nonatomic) UIViewController<SiriUIViewController> *viewController; // @synthesize viewController=_viewController;

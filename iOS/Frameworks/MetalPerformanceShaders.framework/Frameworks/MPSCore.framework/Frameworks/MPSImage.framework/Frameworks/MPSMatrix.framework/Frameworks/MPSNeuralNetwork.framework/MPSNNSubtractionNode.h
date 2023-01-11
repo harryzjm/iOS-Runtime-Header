@@ -8,6 +8,7 @@
 {
 }
 
+- (Class)gradientClass;
 - (struct FilterGraphNode *)newFilterNode;
 
 @end

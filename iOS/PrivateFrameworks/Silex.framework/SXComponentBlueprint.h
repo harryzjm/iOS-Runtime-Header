@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <Silex/NSCoding-Protocol.h>
 #import <Silex/NSCopying-Protocol.h>
+#import <Silex/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, SXComponent, SXComponentLayout, SXComponentSizer, SXLayoutBlueprint;
+@class NSDictionary, SXComponentSizer, SXLayoutBlueprint;
+@protocol SXComponent, SXComponentLayout;
 
-@interface SXComponentBlueprint : NSObject <NSCoding, NSCopying>
+@interface SXComponentBlueprint : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _hasValidSize;
     _Bool _hasValidPosition;
-    SXComponent *_component;
-    SXComponentLayout *_componentLayout;
+    id <SXComponent> _component;
+    id <SXComponentLayout> _componentLayout;
     SXLayoutBlueprint *_parentLayoutBlueprint;
     SXComponentSizer *_componentSizer;
     NSDictionary *_infoFromLayouting;
@@ -28,6 +29,7 @@
     struct UIEdgeInsets _contentInsets;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) NSDictionary *infoFromLayouting; // @synthesize infoFromLayouting=_infoFromLayouting;
 @property(nonatomic) struct CGSize suggestedSizeAfterInvalidation; // @synthesize suggestedSizeAfterInvalidation=_suggestedSizeAfterInvalidation;
 @property(retain, nonatomic) SXComponentSizer *componentSizer; // @synthesize componentSizer=_componentSizer;
@@ -38,8 +40,8 @@
 @property(nonatomic) _Bool hasValidPosition; // @synthesize hasValidPosition=_hasValidPosition;
 @property(nonatomic) _Bool hasValidSize; // @synthesize hasValidSize=_hasValidSize;
 @property(nonatomic) __weak SXLayoutBlueprint *parentLayoutBlueprint; // @synthesize parentLayoutBlueprint=_parentLayoutBlueprint;
-@property(readonly, nonatomic) SXComponentLayout *componentLayout; // @synthesize componentLayout=_componentLayout;
-@property(readonly, nonatomic) SXComponent *component; // @synthesize component=_component;
+@property(readonly, nonatomic) id <SXComponentLayout> componentLayout; // @synthesize componentLayout=_componentLayout;
+@property(readonly, nonatomic) id <SXComponent> component; // @synthesize component=_component;
 @property(nonatomic) struct _NSRange columnRange; // @synthesize columnRange=_columnRange;
 - (void).cxx_destruct;
 - (id)description;

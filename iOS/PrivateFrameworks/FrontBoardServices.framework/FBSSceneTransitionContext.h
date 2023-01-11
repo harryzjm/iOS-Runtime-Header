@@ -11,7 +11,7 @@
 #import <FrontBoardServices/NSCopying-Protocol.h>
 #import <FrontBoardServices/NSMutableCopying-Protocol.h>
 
-@class BKSAnimationFenceHandle, BSAnimationSettings, BSMutableSettings, BSProcessHandle, NSSet, NSString;
+@class BKSAnimationFenceHandle, BSAnimationSettings, BSMutableSettings, BSProcessHandle, FBSceneUpdateContext, NSSet, NSString;
 
 @interface FBSSceneTransitionContext : NSObject <BSXPCCoding, BSDescriptionProviding, NSCopying, NSMutableCopying>
 {
@@ -21,13 +21,16 @@
     BSProcessHandle *_originatingProcess;
     BSMutableSettings *_otherSettings;
     BSMutableSettings *_transientLocalClientSettings;
+    FBSceneUpdateContext *_updateContext;
 }
 
 + (id)transitionContext;
+@property(retain, nonatomic) FBSceneUpdateContext *updateContext; // @synthesize updateContext=_updateContext;
 @property(retain, nonatomic) BSProcessHandle *originatingProcess; // @synthesize originatingProcess=_originatingProcess;
 @property(copy, nonatomic) NSSet *actions; // @synthesize actions=_actions;
 @property(retain, nonatomic) BKSAnimationFenceHandle *animationFence; // @synthesize animationFence=_animationFence;
 @property(copy, nonatomic) BSAnimationSettings *animationSettings; // @synthesize animationSettings=_animationSettings;
+- (void).cxx_destruct;
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;

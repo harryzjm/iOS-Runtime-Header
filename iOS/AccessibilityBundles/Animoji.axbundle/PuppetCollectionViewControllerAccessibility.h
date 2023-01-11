@@ -12,9 +12,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
-- (void)_accessibilitySetPuppetNames:(id)arg1;
-- (void)_setAXPuppetNames:(id)arg1;
-- (id)_axPuppetNames;
 
 @end
 

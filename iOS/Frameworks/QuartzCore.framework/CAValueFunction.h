@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuartzCore/NSSecureCoding-Protocol.h>
 
@@ -16,7 +16,6 @@
     void *_impl;
 }
 
-+ (void)CAMLParserEndElement:(id)arg1 content:(id)arg2;
 + (void)CAMLParserStartElement:(id)arg1;
 + (_Bool)supportsSecureCoding;
 + (id)functionWithName:(id)arg1;

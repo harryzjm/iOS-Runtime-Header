@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate;
+@class NSArray, NSDate;
 
 @interface IMCloudKitMockSyncState : NSObject
 {
     _Bool _IMCloudKitSyncingEnabled;
     _Bool _IMCloudKitIsSyncing;
-    _Bool _IMCloudKitIsRampedIntoTruthZone;
+    _Bool _IMCloudKitSyncPaused;
     _Bool _IMCloudKitIsEligibleForTruthZone;
     _Bool _IMCloudKitIsInExitState;
     _Bool _IMCloudKitIsRemovedFromBackup;
@@ -21,12 +21,16 @@
     _Bool _IMCloudKitStartingDisableDevices;
     NSDate *_IMCloudKitSyncDate;
     long long _IMCloudKitStartingEnabledSettingChange;
-    unsigned long long _IMCKSyncControllerSyncState;
-    unsigned long long _IMCKSyncControllerSyncType;
+    unsigned long long _IMCloudKitSyncControllerSyncState;
+    long long _IMCloudKitSyncControllerSyncType;
+    long long _IMCloudKitSyncControllerSyncRecordType;
+    NSArray *_IMCloudKitSyncErrors;
 }
 
-@property unsigned long long IMCKSyncControllerSyncType; // @synthesize IMCKSyncControllerSyncType=_IMCKSyncControllerSyncType;
-@property unsigned long long IMCKSyncControllerSyncState; // @synthesize IMCKSyncControllerSyncState=_IMCKSyncControllerSyncState;
+@property(retain) NSArray *IMCloudKitSyncErrors; // @synthesize IMCloudKitSyncErrors=_IMCloudKitSyncErrors;
+@property long long IMCloudKitSyncControllerSyncRecordType; // @synthesize IMCloudKitSyncControllerSyncRecordType=_IMCloudKitSyncControllerSyncRecordType;
+@property long long IMCloudKitSyncControllerSyncType; // @synthesize IMCloudKitSyncControllerSyncType=_IMCloudKitSyncControllerSyncType;
+@property unsigned long long IMCloudKitSyncControllerSyncState; // @synthesize IMCloudKitSyncControllerSyncState=_IMCloudKitSyncControllerSyncState;
 @property _Bool IMCloudKitStartingDisableDevices; // @synthesize IMCloudKitStartingDisableDevices=_IMCloudKitStartingDisableDevices;
 @property long long IMCloudKitStartingEnabledSettingChange; // @synthesize IMCloudKitStartingEnabledSettingChange=_IMCloudKitStartingEnabledSettingChange;
 @property _Bool IMCloudKitStartingInitialSync; // @synthesize IMCloudKitStartingInitialSync=_IMCloudKitStartingInitialSync;
@@ -35,7 +39,7 @@
 @property _Bool IMCloudKitIsRemovedFromBackup; // @synthesize IMCloudKitIsRemovedFromBackup=_IMCloudKitIsRemovedFromBackup;
 @property _Bool IMCloudKitIsInExitState; // @synthesize IMCloudKitIsInExitState=_IMCloudKitIsInExitState;
 @property _Bool IMCloudKitIsEligibleForTruthZone; // @synthesize IMCloudKitIsEligibleForTruthZone=_IMCloudKitIsEligibleForTruthZone;
-@property _Bool IMCloudKitIsRampedIntoTruthZone; // @synthesize IMCloudKitIsRampedIntoTruthZone=_IMCloudKitIsRampedIntoTruthZone;
+@property _Bool IMCloudKitSyncPaused; // @synthesize IMCloudKitSyncPaused=_IMCloudKitSyncPaused;
 @property _Bool IMCloudKitIsSyncing; // @synthesize IMCloudKitIsSyncing=_IMCloudKitIsSyncing;
 @property _Bool IMCloudKitSyncingEnabled; // @synthesize IMCloudKitSyncingEnabled=_IMCloudKitSyncingEnabled;
 - (void).cxx_destruct;

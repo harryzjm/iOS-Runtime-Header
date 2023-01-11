@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_queue;
 
@@ -17,6 +17,7 @@
 
 + (void)requestAuthorization:(CDUnknownBlockType)arg1;
 + (long long)authorizationStatus;
+- (void).cxx_destruct;
 - (void)_updateCapabilitiesWithResponse:(id)arg1 postNotification:(_Bool)arg2;
 - (void)_handleInvalidation;
 - (void)_playbackCapabilitiesDidChangeNotification;

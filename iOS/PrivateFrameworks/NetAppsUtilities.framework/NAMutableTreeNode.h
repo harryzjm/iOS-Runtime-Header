@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSSet;
+
 @interface NAMutableTreeNode
 {
 }
@@ -12,6 +14,7 @@
 - (void)removeChild:(id)arg1;
 - (void)addChildren:(id)arg1;
 - (void)addChild:(id)arg1;
+@property(copy, nonatomic) NSSet *childNodes; // @dynamic childNodes;
 
 // Remaining properties
 @property(retain, nonatomic) id representedObject; // @dynamic representedObject;

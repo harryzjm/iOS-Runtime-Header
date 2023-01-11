@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary;
 @protocol MTLDevice;
@@ -17,13 +17,10 @@ __attribute__((visibility("hidden")))
     NSDictionary *_wisdomParams;
 }
 
-+ (id)mapMetalDeviceNameToWisdomParams;
 @property(readonly) _Bool useGPU; // @synthesize useGPU=_useGPU;
 @property(readonly) NSDictionary *wisdomParams; // @synthesize wisdomParams=_wisdomParams;
 @property(readonly) id <MTLDevice> metalDevice; // @synthesize metalDevice=_metalDevice;
 - (void).cxx_destruct;
-- (void)initWisdomParams;
-- (void)setMetalDevice:(id)arg1;
 - (id)initWithMetalDevice:(id)arg1;
 
 @end

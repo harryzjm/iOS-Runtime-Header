@@ -9,6 +9,8 @@
 @class NSString, VMUClassInfoMap, VMUScanOverlay, VMUVMRegion;
 
 @protocol VMUCommonGraphInterface <NSObject>
+@property(readonly, nonatomic) unsigned long long physicalFootprintPeak;
+@property(readonly, nonatomic) unsigned long long physicalFootprint;
 @property(readonly, nonatomic) NSString *binaryImagesDescription;
 @property(readonly, nonatomic) NSString *processDescriptionString;
 @property(readonly, nonatomic) NSString *processName;
@@ -20,6 +22,7 @@
 @property(readonly, nonatomic) unsigned int vmPageSize;
 @property(readonly, nonatomic) int pid;
 - (void *)contentForNode:(unsigned int)arg1;
+- (NSString *)shortLabelForNode:(unsigned int)arg1;
 - (NSString *)labelForNode:(unsigned int)arg1;
 - (_Bool)hasLabelsForNodes;
 - (void)refineTypesWithOverlay:(VMUScanOverlay *)arg1;

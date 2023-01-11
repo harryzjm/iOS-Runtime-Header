@@ -7,6 +7,6 @@
 #import <UIKit/UIDevice.h>
 
 @interface UIDevice (HUAdditions)
-- (_Bool)hu_isHomeAffordancePresent;
++ (id)hu_modelSpecificLocalizedStringKeyWithGreenTeaForKey:(id)arg1;
 @end
 

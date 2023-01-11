@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TSKCOAbstractOperation, TSKCOUpdateRangeOperation;
+@class TSKCOUpdateRangeOperation;
 
 @protocol TSKCOUpdateRangeOperationSubset
-- (TSKCOAbstractOperation *)fromUpdateRangeOperation:(TSKCOUpdateRangeOperation *)arg1;
 - (TSKCOUpdateRangeOperation *)toUpdateRangeOperation;
 @end
 

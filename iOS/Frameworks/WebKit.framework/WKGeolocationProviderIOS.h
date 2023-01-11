@@ -9,16 +9,16 @@
 __attribute__((visibility("hidden")))
 @interface WKGeolocationProviderIOS : NSObject
 {
-    struct RefPtr<WebKit::WebGeolocationManagerProxy> _geolocationManager;
+    struct RefPtr<WebKit::WebGeolocationManagerProxy, WTF::DumbPtrTraits<WebKit::WebGeolocationManagerProxy>> _geolocationManager;
     struct RetainPtr<id<_WKGeolocationCoreLocationProvider>> _coreLocationProvider;
     _Bool _isWebCoreGeolocationActive;
-    struct RefPtr<WebKit::WebGeolocationPosition> _lastActivePosition;
+    struct RefPtr<WebKit::WebGeolocationPosition, WTF::DumbPtrTraits<WebKit::WebGeolocationPosition>> _lastActivePosition;
     struct Vector<GeolocationRequestData, 0, WTF::CrashOnOverflow, 16> _requestsWaitingForCoreLocationAuthorization;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)decidePolicyForGeolocationRequestFromOrigin:(struct SecurityOrigin *)arg1 frame:(struct WebFrameProxy *)arg2 request:(struct GeolocationPermissionRequestProxy *)arg3 view:(id)arg4;
+- (void)decidePolicyForGeolocationRequestFromOrigin:(struct SecurityOrigin *)arg1 frame:(struct WebFrameProxy *)arg2 completionHandler:(Function_f7a043c0 *)arg3 view:(id)arg4;
 - (id)initWithProcessPool:(struct WebProcessPool *)arg1;
 - (id)init;
 - (void)_setEnableHighAccuracy:(_Bool)arg1;

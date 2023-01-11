@@ -6,7 +6,7 @@
 
 #import <UserNotificationsKit/NCNotificationSectionSettingsProvider-Protocol.h>
 
-@class NCNotificationAction, NCNotificationRequest, NSDate, NSDictionary, NSSet;
+@class NCNotificationAction, NCNotificationRequest, NSDate, NSDictionary, NSSet, NSString;
 @protocol NCNotificationDestination;
 
 @protocol NCNotificationDestinationDelegate <NCNotificationSectionSettingsProvider>
@@ -16,5 +16,10 @@
 - (void)destination:(id <NCNotificationDestination>)arg1 requestsClearingNotificationRequests:(NSSet *)arg2;
 - (void)destination:(id <NCNotificationDestination>)arg1 executeAction:(NCNotificationAction *)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 requestAuthentication:(_Bool)arg4 withParameters:(NSDictionary *)arg5 completion:(void (^)(_Bool, _Bool))arg6;
 - (void)destination:(id <NCNotificationDestination>)arg1 requestPermissionToExecuteAction:(NCNotificationAction *)arg2 forNotificationRequest:(NCNotificationRequest *)arg3 withParameters:(NSDictionary *)arg4 completion:(void (^)(_Bool))arg5;
+
+@optional
+- (void)destination:(id <NCNotificationDestination>)arg1 setAllowsCriticalAlerts:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;
+- (void)destination:(id <NCNotificationDestination>)arg1 setDeliverQuietly:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;
+- (void)destination:(id <NCNotificationDestination>)arg1 setAllowsNotifications:(_Bool)arg2 forSectionIdentifier:(NSString *)arg3;
 @end
 

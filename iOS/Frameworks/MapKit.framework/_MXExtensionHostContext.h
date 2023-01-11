@@ -9,6 +9,7 @@
 @class NSString;
 @protocol _MXExtensionURLHandling;
 
+__attribute__((visibility("hidden")))
 @interface _MXExtensionHostContext <_MXExtensionHostContextType>
 {
     id <_MXExtensionURLHandling> _URLHandlingDelegate;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, RTApplicationManager, RTAuthorizationManager, RTDataProtectionManager, RTDefaultsManager, RTLocationManager, RTLocationTagger, RTMetricManager, RTPersistenceManager, RTPlatform, RTPredictionControllerApplication, RTPredictionControllerApplicationHome, RTPredictionControllerHero, RTPredictionExpertApplicationDataSource;
+@class NSDictionary, RTApplicationManager, RTAuthorizationManager, RTDataProtectionManager, RTDefaultsManager, RTLocationManager, RTLocationTagger, RTMetricManager, RTPersistenceManager, RTPlatform, RTPredictionControllerApplication, RTPredictionControllerApplicationHome, RTPredictionControllerHero, RTPredictionExpertApplicationDataSource, RTXPCActivityManager;
 
 @interface RTPredictedApplicationManager
 {
@@ -24,8 +24,10 @@
     RTDataProtectionManager *_dataProtectionManager;
     RTPredictionExpertApplicationDataSource *_dataSource;
     RTPlatform *_platform;
+    RTXPCActivityManager *_xpcActivityManager;
 }
 
+@property(retain, nonatomic) RTXPCActivityManager *xpcActivityManager; // @synthesize xpcActivityManager=_xpcActivityManager;
 @property(retain, nonatomic) RTPlatform *platform; // @synthesize platform=_platform;
 @property(retain, nonatomic) RTPredictionExpertApplicationDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) RTDataProtectionManager *dataProtectionManager; // @synthesize dataProtectionManager=_dataProtectionManager;
@@ -53,9 +55,10 @@
 - (void)onProtectedDataAvailabilityUpdate:(id)arg1;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
+- (void)_shutdown;
 - (void)shutdown;
 - (void)_finalizeDataProcessingWithError:(id)arg1;
-- (id)initWithDataProviders:(id)arg1 predictionControllerApplication:(id)arg2 predictionControllerApplicationHome:(id)arg3 predictionControllerHero:(id)arg4 metricManager:(id)arg5 applicationManager:(id)arg6 dataProtectionManager:(id)arg7 dataSource:(id)arg8 platform:(id)arg9;
+- (id)initWithDataProviders:(id)arg1 predictionControllerApplication:(id)arg2 predictionControllerApplicationHome:(id)arg3 predictionControllerHero:(id)arg4 metricManager:(id)arg5 applicationManager:(id)arg6 dataProtectionManager:(id)arg7 dataSource:(id)arg8 platform:(id)arg9 xpcActivityMangaer:(id)arg10;
 - (id)init;
 - (void)printMagicalMomentsModel:(CDUnknownBlockType)arg1;
 - (void)simulateApplicationPredictionWithBundleIdentifier:(id)arg1 reason:(long long)arg2 handler:(CDUnknownBlockType)arg3;

@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
-
-@interface UIApplicationAuditIssuesAccessibility : NSObject
+@interface UIApplicationAuditIssuesAccessibility
 {
 }
 
@@ -34,9 +32,11 @@
 + (_Bool)_axAuditShouldElementBeCheckedForClipping:(id)arg1;
 + (_Bool)_axAuditElementIsClipping:(id)arg1;
 + (void)_axAuditCheckElementForClipping:(id)arg1 storeIntoSet:(id)arg2;
++ (void)_axAuditSpinRunloopForDuration:(double)arg1;
 + (void)_axAuditRemoveUnsupportedCategories:(id)arg1;
 + (void)_axAuditStoreFontForElement:(id)arg1 intoDictionary:(id)arg2 forCurrentFont:(id)arg3;
 + (id)_axAuditFindElementsNotSupportingDynamicText:(id)arg1;
++ (id)_axAuditGetFontAttrFromAttributedString:(id)arg1;
 + (id)_axAuditGetFontForElement:(id)arg1;
 + (id)_axAuditFindFrontmostViewControllerForHierarchy:(id)arg1;
 + (void)_axAuditRemoveUIViewsFromArray:(id)arg1 usingFilter:(CDUnknownBlockType)arg2;
@@ -48,6 +48,9 @@
 + (id)_axAuditGetAllFontSizes;
 + (id)_accessibilityGetAllSubviews:(id)arg1 withFiltering:(_Bool)arg2;
 + (id)_axAuditGetCellReferenceMapTable;
++ (void)_accessibilityPerformValidations:(id)arg1;
++ (Class)safeCategoryBaseClass;
++ (id)safeCategoryTargetClassName;
 
 @end
 

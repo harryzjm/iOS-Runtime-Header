@@ -15,13 +15,18 @@
     id <CCUIContentModuleContextDelegate> _delegate;
 }
 
++ (void)performWithoutAnimationWhileHidden:(CDUnknownBlockType)arg1;
++ (void)setAnimationsPermitted:(_Bool)arg1;
++ (_Bool)areAnimationsPermitted;
 + (void)initialize;
 + (id)_sharedOpenApplicationOptions;
 + (id)_sharedOpenAppService;
 @property(nonatomic) __weak id <CCUIContentModuleContextDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, copy, nonatomic) NSString *moduleIdentifier; // @synthesize moduleIdentifier=_moduleIdentifier;
 - (void).cxx_destruct;
+- (void)dismissControlCenter;
 - (void)dismissModule;
+- (void)expandedModuleDidUpdatePreferredSize;
 - (void)requestExpandModule;
 - (void)enqueueStatusUpdate:(id)arg1;
 - (void)openApplication:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

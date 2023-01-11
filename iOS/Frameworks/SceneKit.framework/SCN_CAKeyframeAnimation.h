@@ -6,12 +6,14 @@
 
 #import <QuartzCore/CAKeyframeAnimation.h>
 
+__attribute__((visibility("hidden")))
 @interface SCN_CAKeyframeAnimation : CAKeyframeAnimation
 {
     struct __C3DKeyframedAnimation *_c3dAnimation;
     _Bool _caReady;
 }
 
++ (_Bool)supportsSecureCoding;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (_Bool)cumulative;

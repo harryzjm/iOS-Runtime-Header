@@ -7,35 +7,38 @@
 #import <objc/NSObject.h>
 
 #import <DiagnosticExtensionsDaemon/DEDFinisher-Protocol.h>
+#import <DiagnosticExtensionsDaemon/DEDSecureArchiving-Protocol.h>
 #import <DiagnosticExtensionsDaemon/DEDSeedingClientDelegate-Protocol.h>
 #import <DiagnosticExtensionsDaemon/NSSecureCoding-Protocol.h>
 
-@class DEDBugSession, DEDBugSessionConfiguration, DEDSeedingClient, NSMutableDictionary, NSString;
+@class DEDBugSession, DEDBugSessionConfiguration, DEDSeedingClient, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_source, OS_os_log, OS_os_transaction;
 
-@interface DEDSeedingFinisher : NSObject <DEDFinisher, DEDSeedingClientDelegate, NSSecureCoding>
+@interface DEDSeedingFinisher : NSObject <DEDFinisher, DEDSeedingClientDelegate, NSSecureCoding, DEDSecureArchiving>
 {
     NSObject<OS_dispatch_source> *_timerSource;
-    NSMutableDictionary *_promises;
     DEDBugSessionConfiguration *_config;
-    NSMutableDictionary *_uploads;
+    NSMutableSet *_uploads;
     unsigned long long _totalUploadSize;
     NSObject<OS_os_log> *_log;
     DEDBugSession *_session;
     NSObject<OS_os_transaction> *_transaction;
     DEDSeedingClient *_client;
+    NSMutableDictionary *_promises;
 }
 
++ (id)archivedClasses;
 + (_Bool)supportsSecureCoding;
+@property(retain) NSMutableDictionary *promises; // @synthesize promises=_promises;
 @property(retain) DEDSeedingClient *client; // @synthesize client=_client;
 @property(retain) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
 @property __weak DEDBugSession *session; // @synthesize session=_session;
 @property(retain) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property unsigned long long totalUploadSize; // @synthesize totalUploadSize=_totalUploadSize;
-@property(retain) NSMutableDictionary *uploads; // @synthesize uploads=_uploads;
+@property(retain) NSMutableSet *uploads; // @synthesize uploads=_uploads;
 @property(retain) DEDBugSessionConfiguration *config; // @synthesize config=_config;
-@property(retain) NSMutableDictionary *promises; // @synthesize promises=_promises;
 - (void).cxx_destruct;
+- (id)uploadItemForTask:(id)arg1;
 - (id)attachmentHandler;
 - (void)save;
 - (id)archiveItemsInDirectory:(id)arg1;

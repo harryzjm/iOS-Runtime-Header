@@ -11,9 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)createToolButtonItemWithInkIdentifier:(id)arg1 shouldEmboss:(_Bool)arg2;
-- (void)_axApplyLabelForButton:(id)arg1 identifier:(id)arg2;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (void)setSelectionState:(unsigned long long)arg1;
+- (void)_commonInit;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (_Bool)_accessibilityOnlyComparesByXAxis;
 - (void)_accessibilityLoadAccessibilityInformation;

@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSCloudKitMirroringDelegate, NSFileManager, NSManagedObjectModel, NSMapTable, NSMutableDictionary, NSString, NSURL, _DKDataProtectionStateMonitor;
-@protocol OS_dispatch_queue, _DKCoreDataStorageDelegate;
+@protocol _DKCoreDataStorageDelegate;
 
 @interface _DKCoreDataStorage : NSObject
 {
@@ -15,8 +15,6 @@
     NSMutableDictionary *_paths;
     NSMapTable *_managedObjectContexts;
     NSMutableDictionary *_persistentStoreCoordinators;
-    NSObject<OS_dispatch_queue> *_queueMOC;
-    NSObject<OS_dispatch_queue> *_queuePSC;
     _DKDataProtectionStateMonitor *_dataProtectionMonitor;
     NSFileManager *_fm;
     NSCloudKitMirroringDelegate *_mirroringDelegate;
@@ -55,16 +53,22 @@
 - (_Bool)deleteStorageFor:(id)arg1;
 - (_Bool)_deleteDatabaseFiles:(id)arg1;
 - (_Bool)confirmDatabaseConnectionFor:(id)arg1;
+- (_Bool)isManagedObjectContextFor:(id)arg1 equalToManagedObjectContext:(id)arg2;
 - (id)managedObjectContextFor:(id)arg1;
+- (void)removeManagedObjectContextForKey:(id)arg1;
+- (id)managedObjectContextForKey:(id)arg1;
+- (void)setManagedObjectContext:(id)arg1 forKey:(id)arg2;
 - (void)handleDatabaseErrors:(id)arg1 forProtectionClass:(id)arg2;
 - (id)persistentStoreCoordinatorFor:(id)arg1;
 - (_Bool)_addStoresToCoordinator:(id)arg1 protectionClass:(id)arg2 error:(id *)arg3;
 - (id)_descriptionForStoreWithURL:(id)arg1 protectionClass:(id)arg2 sync:(_Bool)arg3;
 - (id)_defaultOptionsForStoreWithProtectionClass:(id)arg1;
 - (_Bool)didAutoMigratePersistentStore:(id)arg1 toManagedObjectModel:(id)arg2 havingVersion:(unsigned long long)arg3 error:(id *)arg4;
+- (_Bool)willAutoMigrateStoreAtURL:(id)arg1 fromManagedObjectModel:(id)arg2 havingVersion:(unsigned long long)arg3 error:(id *)arg4;
 - (id)autoMigratePersistentStoreAtURL:(id)arg1 toManagedObjectModel:(id)arg2 protectionClass:(id)arg3 error:(id *)arg4;
 - (_Bool)migratePersistentStoreAtURL:(id)arg1 toManagedObjectModel:(id)arg2 protectionClass:(id)arg3 startVersion:(unsigned long long)arg4 endVersion:(unsigned long long)arg5 error:(id *)arg6;
 - (_Bool)migratePersistentStoreAtURL:(id)arg1 toManagedObjectModel:(id)arg2 protectionClass:(id)arg3 error:(id *)arg4;
+- (long long)modelVersionForStoreAtURL:(id)arg1 error:(id *)arg2;
 - (id)managedObjectModelForVersion:(unsigned long long)arg1;
 - (id)managedObjectModelURLForVersion:(unsigned long long)arg1;
 - (unsigned long long)managedObjectModelVersionCompatibleWithPersistentStoreAtURL:(id)arg1 error:(id *)arg2;
@@ -76,6 +80,7 @@
 - (void)removePersistentStoresInCoordinator:(id)arg1;
 - (void)invalidateManagedObjectContextAndPersistentStoreCoordinatorFor:(id)arg1;
 - (void)handleDataProtectionChangeFor:(id)arg1 willBeAvailable:(_Bool)arg2;
+- (_Bool)isDatabaseOwner;
 - (id)initWithDirectory:(id)arg1 databaseName:(id)arg2 modelURL:(id)arg3 readOnly:(_Bool)arg4 localOnly:(_Bool)arg5 sync:(_Bool)arg6;
 - (id)initWithDirectory:(id)arg1 databaseName:(id)arg2 modelURL:(id)arg3 sync:(_Bool)arg4;
 - (id)initWithDirectory:(id)arg1 databaseName:(id)arg2 modelURL:(id)arg3 readOnly:(_Bool)arg4 localOnly:(_Bool)arg5;

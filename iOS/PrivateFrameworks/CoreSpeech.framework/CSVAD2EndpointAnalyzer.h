@@ -106,6 +106,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) double elapsedTimeWithNoSpeech;
 @property(readonly, nonatomic) NSString *endpointerModelVersion;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

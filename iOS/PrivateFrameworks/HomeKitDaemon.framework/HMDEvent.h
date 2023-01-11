@@ -7,15 +7,15 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDEventTrigger, HMDHome, HMFMessageDispatcher, NSObject, NSString, NSUUID;
+@class HMDEventTrigger, HMDHome, HMFMessageDispatcher, NSObject, NSSet, NSString, NSUUID;
 @protocol HMDEventDelegate, OS_dispatch_queue;
 
-@interface HMDEvent : HMFObject <NSSecureCoding, HMFDumpState, HMFMessageReceiver, HMFLogging, HMDBackingStoreObjectProtocol>
+@interface HMDEvent : HMFObject <NSSecureCoding, HMFDumpState, HMDHomeMessageReceiver, HMFLogging, HMDBackingStoreObjectProtocol>
 {
     _Bool _endEvent;
     HMDEventTrigger *_eventTrigger;
@@ -30,6 +30,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)hasMessageReceiverChildren;
 + (id)logCategory;
 @property(nonatomic) unsigned long long activationType; // @synthesize activationType=_activationType;
 @property(readonly, nonatomic, getter=isEndEvent) _Bool endEvent; // @synthesize endEvent=_endEvent;
@@ -71,6 +72,7 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSSet *messageReceiverChildren;
 @property(readonly) Class superclass;
 
 @end

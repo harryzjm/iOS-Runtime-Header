@@ -8,6 +8,7 @@
 {
 }
 
++ (_Bool)supportsSecureCoding;
 - (CDStruct_14d5dc5e)cameraBoundingBoxOverridingSceneSize:(struct CGSize)arg1;
 - (CDStruct_14d5dc5e)cameraBoundingBox;
 - (id)containedNodeSet;

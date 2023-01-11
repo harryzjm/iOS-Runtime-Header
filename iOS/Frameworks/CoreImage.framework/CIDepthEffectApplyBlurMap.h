@@ -4,26 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVCameraCalibrationData, CIImage, NSNumber, NSString;
+@class CIImage, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CIDepthEffectApplyBlurMap
 {
     CIImage *inputImage;
     CIImage *inputBlurMap;
+    CIImage *inputMatteImage;
+    NSNumber *inputAperture;
     NSNumber *inputLumaNoiseScale;
     NSNumber *inputScale;
-    AVCameraCalibrationData *inputCalibrationData;
     id inputAuxDataMetadata;
     NSString *inputShape;
+    NSNumber *inputDraftMode;
 }
 
 + (id)customAttributes;
+@property(retain, nonatomic) NSNumber *inputDraftMode; // @synthesize inputDraftMode;
 @property(retain, nonatomic) NSString *inputShape; // @synthesize inputShape;
 @property(retain, nonatomic) id inputAuxDataMetadata; // @synthesize inputAuxDataMetadata;
-@property(retain, nonatomic) AVCameraCalibrationData *inputCalibrationData; // @synthesize inputCalibrationData;
 @property(retain, nonatomic) NSNumber *inputScale; // @synthesize inputScale;
 @property(copy, nonatomic) NSNumber *inputLumaNoiseScale; // @synthesize inputLumaNoiseScale;
+@property(copy, nonatomic) NSNumber *inputAperture; // @synthesize inputAperture;
+@property(retain) CIImage *inputMatteImage; // @synthesize inputMatteImage;
 @property(retain) CIImage *inputBlurMap; // @synthesize inputBlurMap;
 @property(retain) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;

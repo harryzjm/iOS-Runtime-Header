@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_configureAdditionalButtons;
+- (id)_accessibilitySoftwareMimicKeyboard;
 - (_Bool)_accessibilityIsSoftwareKeyboardMimic;
 
 @end

@@ -4,42 +4,59 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Home/HFAccessorySettings-Protocol.h>
-#import <Home/HFHomeKitItemProtocol-Protocol.h>
-#import <Home/HFItemBuilderItem-Protocol.h>
-#import <Home/HFServiceLikeBuilderCreating-Protocol.h>
-#import <Home/HFServiceLikeItem-Protocol.h>
+#import <Home/HFMediaAccessoryLikeItem-Protocol.h>
 
-@class HMAccessory, HMAccessorySettings, HMMediaProfile, NSString;
-@protocol HFCharacteristicValueSource, HFHomeKitObject;
+@class NSSet, NSString;
+@protocol HFCharacteristicValueSource, HFHomeKitObject, HFMediaProfileContainer;
 
-@interface HFMediaAccessoryItem <HFHomeKitItemProtocol, HFServiceLikeItem, HFServiceLikeBuilderCreating, HFItemBuilderItem, HFAccessorySettings>
+@interface HFMediaAccessoryItem <HFMediaAccessoryLikeItem>
 {
+    id <HFHomeKitObject> _homeKitObject;
+    id <HFMediaProfileContainer> _mediaProfileContainer;
     id <HFCharacteristicValueSource> _valueSource;
-    HMAccessory *_accessory;
 }
 
-@property(readonly, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
 @property(readonly, nonatomic) id <HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
+@property(readonly, nonatomic) id <HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
+@property(readonly, nonatomic) id <HFHomeKitObject> homeKitObject; // @synthesize homeKitObject=_homeKitObject;
 - (void).cxx_destruct;
-- (void)_decorateOutcomeForPlaybackState:(id)arg1;
+- (id)iconDescriptor;
+- (id)serviceNameComponents;
+- (_Bool)_isInstallingSoftwareUpdate;
+- (id)performStandardUpdateWithOptions:(id)arg1;
+- (void)_decorateWithMediaSystemSpecificKeys:(id)arg1;
+- (void)_decorateServiceLikeItemKeys:(id)arg1;
+- (void)_decorateWithMediaSessionKeys:(id)arg1;
+- (void)_decorateWithSoftwareUpdateStateKeys:(id)arg1;
 - (void)_decorateOutcomeWithAccessorySpecificKeys:(id)arg1;
+- (_Bool)supportsAlarmQuickControls;
+- (_Bool)supportsMediaQuickControls;
+- (_Bool)isSiriDisabled;
+- (_Bool)isSpeaker;
+- (_Bool)isAirPort;
+- (_Bool)isAppleTV;
+- (_Bool)isContainedWithinMediaSystem;
+- (_Bool)isHomePodAndIsInMediaSystem;
+- (_Bool)isHomePod;
+- (_Bool)isHomePodMediaSystem;
+@property(readonly, nonatomic) NSSet *availableSoftwareUpdates;
+@property(readonly, nonatomic) NSSet *accessoriesSupportingSoftwareUpdate;
+@property(readonly, nonatomic) _Bool isContainedWithinItemGroup;
+@property(readonly, nonatomic) unsigned long long numberOfItemsContainedWithinGroup;
+@property(readonly, nonatomic) _Bool isItemGroup;
 - (id)serviceLikeBuilderInHome:(id)arg1;
 - (id)accessories;
 - (id)services;
-- (id)controlPanelItems;
-- (id)allControlItems;
-- (id)incrementalStateControlItem;
-- (id)primaryStateControlItem;
+- (unsigned long long)_effectiveLoadingStateForSuggestedLoadingState:(unsigned long long)arg1;
 - (id)copyWithValueSource:(id)arg1;
-@property(readonly, nonatomic) id <HFHomeKitObject> homeKitObject;
-@property(readonly, nonatomic) HMAccessorySettings *settings;
-- (id)togglePlayState;
+- (id)settings;
+- (id)room;
 - (id)_subclass_updateWithOptions:(id)arg1;
-@property(readonly, nonatomic) HMMediaProfile *mediaProfile;
+- (id)createControlItems;
 @property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithValueSource:(id)arg1 accessory:(id)arg2;
+- (id)initWithValueSource:(id)arg1 homeKitObject:(id)arg2;
+- (id)initWithValueSource:(id)arg1 mediaProfileContainer:(id)arg2;
 - (id)init;
 
 // Remaining properties

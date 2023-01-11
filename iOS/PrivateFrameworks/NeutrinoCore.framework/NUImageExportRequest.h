@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString, NUColorSpace, NUImageExportFormat;
+@class NSDictionary, NUColorSpace, NUImageExportFormat;
 
 @interface NUImageExportRequest
 {
@@ -12,13 +12,11 @@
     NUColorSpace *_colorSpace;
     NUImageExportFormat *_format;
     NSDictionary *_imageProperties;
-    NSDictionary *_auxiliaryData;
-    NSString *_auxiliaryDataType;
+    NSDictionary *_auxiliaryDataByType;
     CDStruct_1b6d18a9 _time;
 }
 
-@property(copy) NSString *auxiliaryDataType; // @synthesize auxiliaryDataType=_auxiliaryDataType;
-@property(copy) NSDictionary *auxiliaryData; // @synthesize auxiliaryData=_auxiliaryData;
+@property(copy) NSDictionary *auxiliaryDataByType; // @synthesize auxiliaryDataByType=_auxiliaryDataByType;
 @property(copy) NSDictionary *imageProperties; // @synthesize imageProperties=_imageProperties;
 @property(nonatomic) _Bool renderToData; // @synthesize renderToData=_renderToData;
 @property CDStruct_1b6d18a9 time; // @synthesize time=_time;

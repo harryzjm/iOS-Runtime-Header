@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <EventKit/EKFrozenMeltedPair-Protocol.h>
 #import <EventKit/EKProtocolObject-Protocol.h>
 
-@class EKEventStore, EKObjectID, NSDictionary, NSMapTable, NSMutableDictionary, NSMutableSet, NSString;
+@class EKEventStore, EKObjectID, NSDictionary, NSMutableDictionary, NSMutableSet, NSString;
 
 @interface EKPersistentObject : NSObject <EKProtocolObject, EKFrozenMeltedPair>
 {
@@ -18,7 +18,7 @@
     EKObjectID *_objectID;
     NSMutableSet *_dirtyProperties;
     unsigned int _flags;
-    NSMapTable *_loadedProperties;
+    NSMutableDictionary *_loadedProperties;
     NSMutableDictionary *_committedProperties;
 }
 
@@ -67,8 +67,9 @@
 - (id)committedValueForKey:(id)arg1;
 - (void)unloadPropertyForKey:(id)arg1;
 - (void)_releaseLoadedProperties;
+- (void)_setProperty:(id)arg1 forKey:(id)arg2 forRelation:(id)arg3;
+- (void)_setProperty:(id)arg1 forKey:(id)arg2 isRelation:(_Bool)arg3;
 - (void)_setProperty:(id)arg1 forKey:(id)arg2;
-- (void)_fastpathSetProperty:(id)arg1 forKey:(id)arg2 isRelation:(_Bool)arg3;
 - (void)_createLoadedPropertiesIfNeeded;
 - (id)_propertyForKey:(id)arg1;
 - (_Bool)_areDefaultPropertiesLoaded;
@@ -82,12 +83,12 @@
 - (void)rollback;
 - (void)reset;
 - (void)saved;
+- (_Bool)setAttributes:(id)arg1 relations:(id)arg2 objectID:(id)arg3 eventStore:(id)arg4 error:(id *)arg5;
 - (_Bool)pushDirtyProperties:(id *)arg1;
 - (_Bool)isPropertyLoaded:(id)arg1;
 - (void)_addDirtyProperty:(id)arg1;
 - (id)dirtyProperties;
 - (_Bool)isPropertyDirty:(id)arg1;
-- (_Bool)refreshExcludingProperties:(id)arg1;
 - (_Bool)refresh;
 - (id)_loadedPropertyKeys;
 - (void)changed;
@@ -105,6 +106,7 @@
 - (struct EKPersistentObject *)frozenObject;
 - (id)existingMeltedObject;
 - (id)changeSet;
+@property(readonly, nonatomic) NSString *semanticIdentifier;
 @property(readonly, nonatomic) NSString *uniqueIdentifier;
 - (id)initWithObject:(id)arg1;
 - (_Bool)isPropertyUnavailable:(id)arg1;

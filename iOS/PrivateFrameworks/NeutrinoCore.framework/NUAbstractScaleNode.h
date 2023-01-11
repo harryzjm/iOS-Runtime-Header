@@ -4,12 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NURenderNode;
+
 @interface NUAbstractScaleNode
 {
 }
 
 - (id)_scaleImage:(id)arg1 by:(CDStruct_912cb5d2)arg2 sampleMode:(long long)arg3;
 - (_Bool)shouldCacheNodeForPipelineState:(id)arg1;
+@property(readonly, nonatomic) NURenderNode *inputNode;
+- (id)initWithInput:(id)arg1 settings:(id)arg2;
+- (id)initWithSettings:(id)arg1 inputs:(struct NSDictionary *)arg2;
 
 @end
 

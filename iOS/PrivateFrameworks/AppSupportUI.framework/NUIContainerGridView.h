@@ -14,8 +14,8 @@
     NSMutableArray *_viewRows;
     struct _NUIGridArrangement _visibleArrangement;
     struct CGSize _visibleCount;
-    struct unordered_map<UIView *, const std::__1::pair<_NSRange, _NSRange>, std::__1::hash<UIView *>, std::__1::equal_to<UIView *>, std::__1::allocator<std::__1::pair<UIView *const, const std::__1::pair<_NSRange, _NSRange>>>> _viewRanges;
-    struct unordered_map<unsigned long, const std::__1::pair<UIView *, UIView *>, std::__1::hash<unsigned long>, std::__1::equal_to<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, const std::__1::pair<UIView *, UIView *>>>> _rowBaselineViews;
+    struct map<UIView *, const std::__1::pair<_NSRange, _NSRange>, std::__1::less<UIView *>, std::__1::allocator<std::__1::pair<UIView *const, const std::__1::pair<_NSRange, _NSRange>>>> _viewRanges;
+    struct map<unsigned long, const std::__1::pair<UIView *, UIView *>, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, const std::__1::pair<UIView *, UIView *>>>> _rowBaselineViews;
     struct CGSize _spacing;
     struct vector<_NUIGridViewDimensionConfiguration, std::__1::allocator<_NUIGridViewDimensionConfiguration>> _rows;
     struct vector<_NUIGridViewDimensionConfiguration, std::__1::allocator<_NUIGridViewDimensionConfiguration>> _columns;
@@ -39,8 +39,8 @@
 @property(nonatomic) long long horizontalAlignment; // @synthesize horizontalAlignment=_horizontalAlignment;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)populateGridArrangementDimension:(vector_29d414c0 *)arg1 withCells:(const vector_f7a18e83 *)arg2 axis:(long long)arg3;
-- (void)populateGridArrangementCells:(vector_f7a18e83 *)arg1;
+- (void)populateGridArrangementDimension:(vector_b8a5df6e *)arg1 withCells:(const vector_f8404f95 *)arg2 axis:(long long)arg3;
+- (void)populateGridArrangementCells:(vector_f8404f95 *)arg1;
 - (void)_setupViewRangesIfNeeded;
 - (long long)_verticalAlignmentOfView:(id)arg1 inColumn:(long long)arg2;
 - (long long)_horizontalAlignmentOfView:(id)arg1 inColumn:(long long)arg2;
@@ -50,8 +50,9 @@
 - (void)didInsertArrangedSubview:(id)arg1 atIndex:(long long)arg2;
 - (_Bool)invalidateIntrinsicContentSizeRequiringArrangedSubviewRemeasurement:(_Bool)arg1;
 - (id)arrangedDescription;
-- (_Bool)layoutArrangedSubviewsInBounds:(struct CGRect)arg1;
+- (void)layoutArrangedSubviewsInBounds:(struct CGRect)arg1;
 - (struct CGSize)calculateArrangedSizeFittingSize:(struct CGSize)arg1;
+- (struct CGSize)_calculateArrangedSizeFittingSize:(struct CGSize)arg1 forLayout:(_Bool)arg2;
 - (id)viewForLastBaselineLayoutInRow:(long long)arg1;
 - (id)viewForFirstBaselineLayoutInRow:(long long)arg1;
 - (id)_baselineViewForFirstBaseline:(_Bool)arg1 forRow:(unsigned long long)arg2;

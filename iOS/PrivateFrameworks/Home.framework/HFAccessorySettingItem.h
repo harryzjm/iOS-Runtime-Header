@@ -6,19 +6,19 @@
 
 #import <Home/HFAccessorySettingItemProtocol-Protocol.h>
 
-@class HFAccessorySettingsEntity, HMAccessoryProfile, HMAccessorySetting, NSString;
-@protocol HFAccessorySettings, HFHomeKitObject;
+@class HFAccessorySettingsEntity, HMAccessorySetting, NSString;
+@protocol HFHomeKitObject, HFMediaProfileContainer;
 
 @interface HFAccessorySettingItem <HFAccessorySettingItemProtocol>
 {
-    HMAccessoryProfile<HFAccessorySettings> *_accessoryProfile;
+    id <HFMediaProfileContainer> _mediaProfileContainer;
     HMAccessorySetting *_setting;
     HFAccessorySettingsEntity *_entity;
 }
 
 @property(retain, nonatomic) HFAccessorySettingsEntity *entity; // @synthesize entity=_entity;
 @property(retain, nonatomic) HMAccessorySetting *setting; // @synthesize setting=_setting;
-@property(retain, nonatomic) HMAccessoryProfile<HFAccessorySettings> *accessoryProfile; // @synthesize accessoryProfile=_accessoryProfile;
+@property(retain, nonatomic) id <HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
 - (void).cxx_destruct;
 - (void)_decorateHiddenOrDisabled:(id)arg1;
 - (void)_decorateOutcomeWithResultKeys:(id)arg1;
@@ -31,7 +31,7 @@
 @property(readonly, nonatomic) NSString *settingKeyPath;
 @property(readonly, nonatomic) id <HFHomeKitObject> homeKitObject;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithAccessoryProfile:(id)arg1 setting:(id)arg2;
+- (id)initWithMediaProfileContainer:(id)arg1 setting:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

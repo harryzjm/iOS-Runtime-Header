@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -21,12 +21,12 @@
 - (id)addressAsText;
 - (_Bool)hasSameAddressAs:(id)arg1;
 - (void)setName:(id)arg1;
-@property(readonly, retain, nonatomic) NSString *netServiceDomain;
-@property(readonly, retain, nonatomic) NSString *netServiceName;
+@property(readonly, nonatomic) NSString *netServiceDomain;
+@property(readonly, nonatomic) NSString *netServiceName;
 - (id)host;
 @property(readonly, nonatomic) unsigned long long port;
-@property(readonly, retain, nonatomic) NSString *address;
-@property(readonly, retain, nonatomic) NSString *name;
+@property(readonly, nonatomic) NSString *address;
+@property(readonly, nonatomic) NSString *name;
 - (id)description;
 - (void)dealloc;
 - (id)init;

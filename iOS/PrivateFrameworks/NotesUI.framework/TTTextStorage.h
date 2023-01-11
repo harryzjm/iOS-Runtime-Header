@@ -30,6 +30,7 @@
     _Bool _isHandlingTextCheckingResults;
     _Bool _isTypingOrMarkingText;
     _Bool _isSelectingText;
+    _Bool _hasEditedCharactersAfterTextSelection;
     _Bool _isDragging;
     _Bool _isResettingBaseWritingDirection;
     _Bool _isReadingSelectionFromPasteboard;
@@ -55,8 +56,8 @@
     struct _NSRange _ttEditedRange;
 }
 
-+ (id)filteredAttributedSubstring:(id)arg1 fromRange:(struct _NSRange)arg2 forPlainText:(_Bool)arg3 fixAttachments:(_Bool)arg4;
-+ (void)fixAttachmentsForRenderingInAttributedString:(id)arg1 forPlainText:(_Bool)arg2;
++ (id)filteredAttributedSubstring:(id)arg1 fromRange:(struct _NSRange)arg2 forPlainText:(_Bool)arg3 forStandardizedText:(_Bool)arg4 fixAttachments:(_Bool)arg5;
++ (void)fixAttachmentsForRenderingInAttributedString:(id)arg1 forPlainText:(_Bool)arg2 forStandardizedText:(_Bool)arg3;
 + (id)removeTextAttachmentsForAttributedString:(id)arg1 translateTTFont:(_Bool)arg2;
 + (id)removeDataDetectorLinksForAttributedString:(id)arg1;
 + (id)standardizedAttributedStringFromAttributedString:(id)arg1 withStyler:(id)arg2 fixAttachments:(_Bool)arg3 translateTTFont:(_Bool)arg4;
@@ -78,6 +79,7 @@
 @property(nonatomic) _Bool isReadingSelectionFromPasteboard; // @synthesize isReadingSelectionFromPasteboard=_isReadingSelectionFromPasteboard;
 @property(nonatomic) _Bool isResettingBaseWritingDirection; // @synthesize isResettingBaseWritingDirection=_isResettingBaseWritingDirection;
 @property(nonatomic) _Bool isDragging; // @synthesize isDragging=_isDragging;
+@property(nonatomic) _Bool hasEditedCharactersAfterTextSelection; // @synthesize hasEditedCharactersAfterTextSelection=_hasEditedCharactersAfterTextSelection;
 @property(nonatomic) _Bool isSelectingText; // @synthesize isSelectingText=_isSelectingText;
 @property(nonatomic) _Bool isTypingOrMarkingText; // @synthesize isTypingOrMarkingText=_isTypingOrMarkingText;
 @property(nonatomic) _Bool isHandlingTextCheckingResults; // @synthesize isHandlingTextCheckingResults=_isHandlingTextCheckingResults;
@@ -121,6 +123,7 @@
 - (void)addAttribute:(id)arg1 value:(id)arg2 range:(struct _NSRange)arg3;
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withAttributedString:(id)arg2;
+- (id)correctParagraphStyleReuseForRange:(struct _NSRange)arg1 withNewAttributedString:(id)arg2;
 - (void)convertNSTablesToTabs:(id)arg1;
 - (_Bool)shouldBreakUndoCoalescingWithReplacementRange:(struct _NSRange)arg1 replacementLength:(unsigned long long)arg2;
 - (_Bool)isDeletingContentAttachmentWithReplacementRange:(struct _NSRange)arg1 replacementLength:(unsigned long long)arg2;
@@ -162,6 +165,7 @@
 - (_Bool)_usesSimpleTextEffects;
 - (void)resetTTEdits;
 - (void)restoreAttributedString:(id)arg1;
+@property(readonly, nonatomic) _Bool hasAnyTextViewWithDarkAppearance;
 - (id)initWithAttributedString:(id)arg1 replicaID:(id)arg2 sourceZoomController:(id)arg3 keepSourceZoomController:(_Bool)arg4;
 - (id)initWithAttributedString:(id)arg1 replicaID:(id)arg2;
 - (id)initWithDocument:(id)arg1;

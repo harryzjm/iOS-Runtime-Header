@@ -24,8 +24,8 @@
     double _lastStartTime;
 }
 
-+ (id)_swatchColorForColorOption:(id)arg1;
-+ (id)_swatchForEditModeDependsOnOptions:(long long)arg1;
++ (id)_swatchColorForColorOption:(id)arg1 forDevice:(id)arg2;
++ (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
 + (Class)_timeViewClass;
 - (void).cxx_destruct;
 - (void)_updateComplicationFactoryWithDateComplicationView:(id)arg1;
@@ -57,6 +57,7 @@
 - (void)_startSessionButtonPressed;
 - (void)_considerUpdatingLabels;
 - (id)_dateComplicationFontForStyle:(unsigned long long)arg1;
+- (_Bool)slotUsesCurvedText:(long long)arg1;
 - (id)utilityDateComplicationFontForDateStyle:(unsigned long long)arg1;
 - (void)_performWristRaiseAnimation;
 - (void)_prepareWristRaiseAnimation;
@@ -87,13 +88,20 @@
 - (void)_configureComplicationAlphasForFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_configureForEditMode:(long long)arg1;
+- (_Bool)_isComplicationSlotInsideDial:(id)arg1;
 - (_Bool)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
+- (id)_keylineViewForComplicationSlot:(id)arg1;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
+- (id)_curvedPickerMaskForSlot:(id)arg1;
+- (void)_curvedComplicationCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(_Bool *)arg5 forSlot:(id)arg6;
+- (_Bool)_slotSupportsCurvedText:(id)arg1;
+- (long long)_complicationPickerStyleForSlot:(id)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
+- (id)_slotForUtilitySlot:(long long)arg1;
 - (long long)_utilitySlotForSlot:(id)arg1;
 - (_Bool)_canStartTimeScrubbing;
 - (void)_layoutForegroundContainerView;
@@ -110,7 +118,7 @@
 - (void)_startScrubbingAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) NTKChronoScene *chronoScene;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BSEventQueue, NSString;
 
@@ -17,6 +17,7 @@
 
 @property(retain, nonatomic) BSEventQueue *eventQueue; // @synthesize eventQueue=_eventQueue;
 @property(copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
+- (void).cxx_destruct;
 - (void)relinquish;
 - (id)description;
 - (void)dealloc;

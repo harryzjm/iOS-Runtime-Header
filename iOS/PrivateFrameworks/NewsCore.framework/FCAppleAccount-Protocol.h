@@ -20,7 +20,8 @@
 @property(readonly, nonatomic) NSString *DSID;
 - (_Bool)isPrimaryAccountEmailAddress;
 - (NSString *)currentStoreFrontID;
-- (void)checkAlliOSDevicesRunningMajorOSVersionOrLater:(long long)arg1 orInactiveForTimeInterval:(double)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
+- (void)checkAllDevicesRunningMinimumiOSVersion:(CDStruct_912cb5d2)arg1 macOSVersion:(CDStruct_912cb5d2)arg2 orInactiveForTimeInterval:(double)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
+- (void)checkAlliOSDevicesRunningMinimumOSVersion:(CDStruct_912cb5d2)arg1 orInactiveForTimeInterval:(double)arg2 completionHandler:(void (^)(_Bool, NSError *))arg3;
 - (void)loadStoreFrontIfNeededWithCompletion:(void (^)(void))arg1;
 - (NSString *)iTunesAccountDSID;
 - (NSString *)iTunesAccountName;

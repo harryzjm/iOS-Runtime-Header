@@ -25,6 +25,7 @@
 - (void)setCardView:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
+- (id)accessibilityIdentifier;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

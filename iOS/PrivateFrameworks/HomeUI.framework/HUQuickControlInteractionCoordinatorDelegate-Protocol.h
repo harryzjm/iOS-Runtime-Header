@@ -6,9 +6,15 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class HUQuickControlInteractionCoordinator;
+@class HUQuickControlInteractionCoordinator, UIView;
+@protocol HUQuickControlAuxiliaryView;
 
 @protocol HUQuickControlInteractionCoordinatorDelegate <NSObject>
+- (void)interactionCoordinator:(HUQuickControlInteractionCoordinator *)arg1 updateControlVerticalStretchFactor:(double)arg2;
+- (void)interactionCoordinator:(HUQuickControlInteractionCoordinator *)arg1 updateControlHorizontalCompressionFactor:(double)arg2;
+- (void)hideAuxiliaryViewForInteractionCoordinator:(HUQuickControlInteractionCoordinator *)arg1;
+- (void)interactionCoordinator:(HUQuickControlInteractionCoordinator *)arg1 showAuxiliaryView:(UIView<HUQuickControlAuxiliaryView> *)arg2;
+- (void)interactionCoordinatorWantsDismissal:(HUQuickControlInteractionCoordinator *)arg1;
 - (_Bool)hasModelValueChangedForInteractionCoordinator:(HUQuickControlInteractionCoordinator *)arg1;
 - (void)interactionCoordinator:(HUQuickControlInteractionCoordinator *)arg1 interactionStateDidChange:(_Bool)arg2;
 - (void)interactionCoordinator:(HUQuickControlInteractionCoordinator *)arg1 viewValueDidChange:(id)arg2;

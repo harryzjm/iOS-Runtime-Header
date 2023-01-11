@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface IMMultiQueue : NSObject
 {
     NSMutableDictionary *_queueMap;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 - (void)_addBlock:(CDUnknownBlockType)arg1 withGUID:(id)arg2 forKey:(id)arg3 description:(id)arg4;
@@ -18,6 +20,8 @@
 - (void)addBlock:(CDUnknownBlockType)arg1 withTimeout:(double)arg2 forKey:(id)arg3 description:(id)arg4;
 - (void)_popEnqueuedBlockWithGUID:(id)arg1 key:(id)arg2;
 - (void)dealloc;
+- (id)initWithQueue:(id)arg1;
+- (id)init;
 
 @end
 

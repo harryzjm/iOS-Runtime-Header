@@ -11,12 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityEditPickerValue:(_Bool)arg1;
-- (long long)_accessibilityCurrentEditMode;
-- (id)_accessibilityEditView;
 - (id)_accessibilityEditPageView;
-- (id)_accessibilityFaceViewController;
-- (id)_accessibilityPickerView;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 - (unsigned long long)accessibilityTraits;

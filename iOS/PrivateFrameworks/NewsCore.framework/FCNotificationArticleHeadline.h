@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FCAssetManager, FCCoverArt, FCHeadlineThumbnail, FCTopStoriesStyleConfiguration, NSArray, NSDate, NSDictionary, NSObject, NSString, NSURL;
+@class FCAssetManager, FCCoverArt, FCHeadlineThumbnail, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSDictionary, NSString, NSURL;
 @protocol FCChannelProviding;
 
 @interface FCNotificationArticleHeadline
@@ -15,7 +15,13 @@
     _Bool _isDraft;
     _Bool _featureCandidate;
     _Bool _needsRapidUpdates;
+    _Bool _showMinimalChrome;
+    _Bool _boundToContext;
+    _Bool _hiddenFromFeeds;
+    _Bool _pressRelease;
+    _Bool _hiddenFromAutoFavorites;
     _Bool _paid;
+    _Bool _webEmbedsEnabled;
     NSString *_versionIdentifier;
     NSString *_identifier;
     NSString *_articleID;
@@ -27,7 +33,7 @@
     NSDate *_publishDate;
     long long _publisherArticleVersion;
     long long _backendArticleVersion;
-    NSObject<FCChannelProviding> *_sourceChannel;
+    id <FCChannelProviding> _sourceChannel;
     NSString *_sourceName;
     FCHeadlineThumbnail *_thumbnailLQ;
     FCHeadlineThumbnail *_thumbnail;
@@ -58,6 +64,7 @@
     FCAssetManager *_assetManager;
     NSDictionary *_articlePayload;
     NSString *_flintDocumentUrlString;
+    NSData *_flintDocumentPrefetchedData;
     NSArray *_flintFontResourceIDs;
     NSString *_changeEtag;
     struct CGRect _thumbnailFocalFrame;
@@ -65,13 +72,20 @@
 
 @property(retain, nonatomic) NSString *changeEtag; // @synthesize changeEtag=_changeEtag;
 @property(retain, nonatomic) NSArray *flintFontResourceIDs; // @synthesize flintFontResourceIDs=_flintFontResourceIDs;
+@property(retain, nonatomic) NSData *flintDocumentPrefetchedData; // @synthesize flintDocumentPrefetchedData=_flintDocumentPrefetchedData;
 @property(retain, nonatomic) NSString *flintDocumentUrlString; // @synthesize flintDocumentUrlString=_flintDocumentUrlString;
 @property(retain, nonatomic) NSDictionary *articlePayload; // @synthesize articlePayload=_articlePayload;
 @property(retain, nonatomic) FCAssetManager *assetManager; // @synthesize assetManager=_assetManager;
+- (_Bool)webEmbedsEnabled;
 - (id)coverArt;
 - (void)setPaid:(_Bool)arg1;
 - (_Bool)isPaid;
 - (long long)minimumNewsVersion;
+- (_Bool)isHiddenFromAutoFavorites;
+- (_Bool)isPressRelease;
+- (_Bool)isHiddenFromFeeds;
+- (_Bool)isBoundToContext;
+- (_Bool)showMinimalChrome;
 - (_Bool)needsRapidUpdates;
 - (void)setStoryStyle:(id)arg1;
 - (id)storyStyle;
@@ -129,6 +143,7 @@
 - (id)title;
 - (void)setContentType:(unsigned long long)arg1;
 - (unsigned long long)contentType;
+- (void)setClusterID:(id)arg1;
 - (id)clusterID;
 - (id)referencedArticleID;
 - (void)setArticleID:(id)arg1;
@@ -137,7 +152,7 @@
 - (id)identifier;
 - (id)versionIdentifier;
 - (void).cxx_destruct;
-- (id)generateFlintDocumentAssetHandleForUrlString:(id)arg1 withAssetManager:(id)arg2;
+- (id)generateFlintDocumentAssetHandleForUrlString:(id)arg1 prefetchedData:(id)arg2 withAssetManager:(id)arg3;
 - (id)generateThumbnailAssetHandleForUrlString:(id)arg1 withAssetManager:(id)arg2;
 - (_Bool)isValid;
 - (id)contentManifestWithContext:(id)arg1;

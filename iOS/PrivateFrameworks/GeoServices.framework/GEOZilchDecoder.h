@@ -7,6 +7,7 @@
 @class NSObject;
 @protocol GEOMapAccessRestrictions, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface GEOZilchDecoder
 {
     NSObject<OS_dispatch_queue> *_decoderQueue;

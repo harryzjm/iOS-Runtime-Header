@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)touchUpInsideSendButton:(id)arg1;
 - (void)collapsedPlaceholderLabelTapped:(id)arg1;
 - (void)browserButtonTapped:(id)arg1;
 - (void)arrowButtonTapped:(id)arg1;

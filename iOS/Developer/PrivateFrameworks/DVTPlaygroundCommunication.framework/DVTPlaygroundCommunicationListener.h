@@ -30,9 +30,9 @@
     _Bool _hasReadPacketHeaders;
     _Bool _hasReadPacketPayload;
     NSMutableData *_headerData;
-    long long _partiallyRecievedHeaderDataIndex;
+    long long _partiallyReceivedHeaderDataIndex;
     NSMutableData *_payloadData;
-    long long _partiallyRecievedPayloadDataIndex;
+    long long _partiallyReceivedPayloadDataIndex;
     unsigned long long _version;
     NSDate *_resultDate;
     unsigned long long _dataIdentifierLength;
@@ -49,7 +49,7 @@
 - (void)_decodeHeaderData:(id)arg1;
 - (void)_listenerQueue_endEncountered;
 - (void)_listenerQueue_errorEncountered:(id)arg1;
-- (_Bool)_listenerQueue_readIntoBuffer:(char *)arg1 bufferLength:(long long)arg2 partiallyRecievedBufferIndexRef:(long long *)arg3;
+- (_Bool)_listenerQueue_readIntoBuffer:(char *)arg1 bufferLength:(long long)arg2 partiallyReceivedBufferIndexRef:(long long *)arg3;
 - (void)_listenerQueue_bytesAvailable;
 - (void)_listenerQueue_openReadStream;
 - (void)_listenerQueue_setupReadStream;

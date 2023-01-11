@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ChatKit/CKAppInstallationWatcherObserver-Protocol.h>
 
-@class CKPreviewDispatchCache, IMBalloonPlugin, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSSet, NSString;
+@class CKPreviewDispatchCache, IMBalloonPlugin, NSArray, NSCache, NSDictionary, NSMutableArray, NSMutableDictionary, NSSet, NSString;
+@protocol CKExtensionConsumer;
 
 @interface CKBalloonPluginManager : NSObject <CKAppInstallationWatcherObserver>
 {
@@ -17,12 +18,14 @@
     NSArray *_visibleSwitcherPlugins;
     NSArray *_recentAppStripPlugins;
     NSArray *_visibleRecentAppStripPlugins;
-    _Bool _appStoreAutoEnableToggled;
-    _Bool _isAppInstalationEnabled;
+    _Bool _isAppInstallationEnabled;
     _Bool _isAppRemovalEnabled;
+    _Bool _isCameraAllowed;
+    _Bool _appStoreAutoEnableToggled;
     _Bool _keepingEmptySections;
     _Bool _isAppInstallationObserver;
     NSString *_lastLaunchedIdentifier;
+    id <CKExtensionConsumer> _currentExtensionConsumer;
     IMBalloonPlugin *_lastViewedPlugin;
     NSArray *_visiblePlugins;
     NSArray *_cachedPotentiallyVisiblePlugins;
@@ -30,12 +33,14 @@
     NSDictionary *_pluginVersionMap;
     NSDictionary *_pluginSeenMap;
     NSDictionary *_pluginIndexPathMap;
+    NSMutableDictionary *_historicalPluginIndexPathMap;
     NSMutableArray *_MRUPluginInteractionList;
     NSDictionary *_pluginLaunchTimeMap;
     NSArray *_allPlugins;
     long long _numberOfSectionsToKeep;
     NSMutableArray *_visibleInstallations;
     NSSet *_oldVisibleSwitcherPluginIdentifiers;
+    NSCache *_iconCache;
     CKPreviewDispatchCache *_snapshotCache;
     NSMutableDictionary *_activeBrowsers;
 }
@@ -46,6 +51,7 @@
 + (id)sharedInstance;
 @property(retain, nonatomic) NSMutableDictionary *activeBrowsers; // @synthesize activeBrowsers=_activeBrowsers;
 @property(retain, nonatomic) CKPreviewDispatchCache *snapshotCache; // @synthesize snapshotCache=_snapshotCache;
+@property(retain, nonatomic) NSCache *iconCache; // @synthesize iconCache=_iconCache;
 @property(retain, nonatomic) NSSet *oldVisibleSwitcherPluginIdentifiers; // @synthesize oldVisibleSwitcherPluginIdentifiers=_oldVisibleSwitcherPluginIdentifiers;
 @property(nonatomic) _Bool isAppInstallationObserver; // @synthesize isAppInstallationObserver=_isAppInstallationObserver;
 @property(retain, nonatomic) NSMutableArray *visibleInstallations; // @synthesize visibleInstallations=_visibleInstallations;
@@ -54,17 +60,20 @@
 @property(retain, nonatomic) NSArray *allPlugins; // @synthesize allPlugins=_allPlugins;
 @property(retain, nonatomic) NSDictionary *pluginLaunchTimeMap; // @synthesize pluginLaunchTimeMap=_pluginLaunchTimeMap;
 @property(retain, nonatomic) NSMutableArray *MRUPluginInteractionList; // @synthesize MRUPluginInteractionList=_MRUPluginInteractionList;
+@property(retain, nonatomic) NSMutableDictionary *historicalPluginIndexPathMap; // @synthesize historicalPluginIndexPathMap=_historicalPluginIndexPathMap;
 @property(retain, nonatomic) NSDictionary *pluginIndexPathMap; // @synthesize pluginIndexPathMap=_pluginIndexPathMap;
 @property(retain, nonatomic) NSDictionary *pluginSeenMap; // @synthesize pluginSeenMap=_pluginSeenMap;
 @property(retain, nonatomic) NSDictionary *pluginVersionMap; // @synthesize pluginVersionMap=_pluginVersionMap;
-@property(nonatomic) _Bool isAppRemovalEnabled; // @synthesize isAppRemovalEnabled=_isAppRemovalEnabled;
-@property(nonatomic) _Bool isAppInstalationEnabled; // @synthesize isAppInstalationEnabled=_isAppInstalationEnabled;
 @property(retain, nonatomic) NSArray *favoriteAppStripPlugins; // @synthesize favoriteAppStripPlugins=_favoriteAppStripPlugins;
 @property(retain, nonatomic) NSArray *visibleSwitcherPlugins; // @synthesize visibleSwitcherPlugins=_visibleSwitcherPlugins;
 @property(retain, nonatomic) NSArray *cachedPotentiallyVisiblePlugins; // @synthesize cachedPotentiallyVisiblePlugins=_cachedPotentiallyVisiblePlugins;
 @property(retain, nonatomic) NSArray *visiblePlugins; // @synthesize visiblePlugins=_visiblePlugins;
 @property(nonatomic, getter=isAppStoreAutoEnableToggled) _Bool appStoreAutoEnableToggled; // @synthesize appStoreAutoEnableToggled=_appStoreAutoEnableToggled;
+@property(nonatomic) _Bool isCameraAllowed; // @synthesize isCameraAllowed=_isCameraAllowed;
+@property(nonatomic) _Bool isAppRemovalEnabled; // @synthesize isAppRemovalEnabled=_isAppRemovalEnabled;
+@property(nonatomic) _Bool isAppInstallationEnabled; // @synthesize isAppInstallationEnabled=_isAppInstallationEnabled;
 @property(nonatomic) __weak IMBalloonPlugin *lastViewedPlugin; // @synthesize lastViewedPlugin=_lastViewedPlugin;
+@property(nonatomic) __weak id <CKExtensionConsumer> currentExtensionConsumer; // @synthesize currentExtensionConsumer=_currentExtensionConsumer;
 @property(retain, nonatomic) NSString *lastLaunchedIdentifier; // @synthesize lastLaunchedIdentifier=_lastLaunchedIdentifier;
 - (void).cxx_destruct;
 - (_Bool)isPluginVisible:(id)arg1;
@@ -89,6 +98,7 @@
 @property(readonly, nonatomic) NSArray *allEnabledPlugins;
 @property(readonly, nonatomic) _Bool hasLoadedExtensions;
 - (_Bool)isInternalPlugin:(id)arg1;
+- (void)invalidateIconCache;
 - (id)pluginForIdentifier:(id)arg1;
 - (id)balloonPluginIdentifierForAppExtensionBundleIdentifier:(id)arg1;
 - (void)saveWithNotification:(_Bool)arg1;
@@ -97,6 +107,7 @@
 - (id)_encodeIndexPathMap:(id)arg1;
 - (_Bool)isPluginEnabled:(id)arg1;
 - (void)setEnabled:(_Bool)arg1 forPlugin:(id)arg2;
+- (void)_updateHistoricalPluginIndexPathMap;
 - (void)commitInteractionTimeOrderingChanges;
 - (void)updateInteractionTimeForPlugin:(id)arg1;
 - (void)removeAppWithIdentifier:(id)arg1;
@@ -116,9 +127,12 @@
 - (void)updateSnapshotForBrowserViewController:(id)arg1 currentBounds:(struct CGRect)arg2;
 - (id)browserSnapshotForKey:(id)arg1;
 - (void)_invalidatePluginForKey:(id)arg1;
+- (void)invalidateAllActivePluginsSkippingCameraApp:(_Bool)arg1;
 - (void)invalidateAllActivePlugins;
 - (void)invalidateAllActiveSwitcherPlugins;
-- (void)forceTearDownRemoteViews;
+- (void)forceTearDownRemoteViewsSkippingCameraApp:(_Bool)arg1;
+- (void)forceKillNonCameraRemoteExtensionsImmediately;
+- (void)forceKillRemoteExtensionsWithDelay:(_Bool)arg1 skipCameraApp:(_Bool)arg2;
 - (void)forceKillRemoteExtensionsWithDelay:(_Bool)arg1;
 - (void)prepareForSuspend;
 - (_Bool)isViewController:(id)arg1 fromPluginWithIdentifier:(id)arg2;
@@ -132,8 +146,11 @@
 - (_Bool)isEnabledAndVisible:(id)arg1;
 - (void)updateIndexPath:(id)arg1 forPlugin:(id)arg2 isDrawerPluginPath:(_Bool)arg3;
 - (void)regeneratePluginIndexPaths;
+- (_Bool)_addPluginToRecentsFrontIfNeeded:(id)arg1 frontOfRecents:(id)arg2 pluginMap:(id)arg3 fallbackMap:(id)arg4;
+- (id)_pluginIndexPathForFavoritePluginWithIdentifier:(id)arg1 pluginMap:(id)arg2 fallbackMap:(id)arg3;
 - (id)orderedPlugins:(_Bool)arg1;
 - (id)allPotentiallyVisiblePlugins;
+@property(readonly, nonatomic) NSArray *potentiallyVisibleNonFavoritePlugins;
 @property(readonly, nonatomic) NSArray *potentiallyVisiblePlugins;
 @property(readonly, nonatomic) NSArray *visibleRecentAppStripPlugins;
 @property(readonly, nonatomic) NSArray *recentAppStripPlugins;

@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppStoreDaemon/ASDApplicationProgressDelegate-Protocol.h>
 #import <AppStoreDaemon/ASDJobManagerClient-Protocol.h>
 #import <AppStoreDaemon/NSXPCListenerDelegate-Protocol.h>
 
 @class ASDJobManagerOptions, NSArray, NSHashTable, NSMutableSet, NSObject, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
-@interface ASDJobManager <NSXPCListenerDelegate, ASDApplicationProgressDelegate, ASDJobManagerClient>
+@interface ASDJobManager <ASDJobManagerClient, NSXPCListenerDelegate>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSXPCConnection *_connection;
@@ -21,13 +20,13 @@
     NSHashTable *_observers;
     ASDJobManagerOptions *_options;
     NSMutableSet *_removedJobs;
+    _Bool _useLaunchServicesProgress;
     NSObject<OS_dispatch_queue> *_xpcQueue;
 }
 
 - (void).cxx_destruct;
 - (void)_willFinishJobs:(id)arg1;
 - (void)_updateActiveIDs:(id)arg1;
-- (_Bool)_trackProgressForBundleID:(id)arg1;
 - (_Bool)_shouldAutomaticallyReconnect;
 - (void)_setupConnection;
 - (void)_sendStatesUpdated:(id)arg1;
@@ -49,7 +48,6 @@
 - (void)didCompleteJobs:(id)arg1 finalPhases:(id)arg2;
 - (void)didCompleteJobs:(id)arg1;
 - (void)didChangeJobs:(id)arg1;
-- (void)didUpdateApplicationProgress:(id)arg1;
 - (void)resumeJobsWithIDs:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)removeObserver:(id)arg1;
 - (void)pauseJobsWithIDs:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;

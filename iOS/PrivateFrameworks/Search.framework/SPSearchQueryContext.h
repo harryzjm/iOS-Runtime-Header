@@ -24,13 +24,16 @@
     NSArray *_searchDomains;
     NSArray *_disabledDomains;
     NSArray *_disabledBundles;
+    NSArray *_disabledApps;
     unsigned long long _whyQuery;
     unsigned long long _whyClear;
     unsigned long long _queryIdent;
     NSArray *_searchEntities;
+    double _currentTime;
 }
 
 + (id)queryContextWithSearchString:(id)arg1;
+@property(nonatomic) double currentTime; // @synthesize currentTime=_currentTime;
 @property(nonatomic) _Bool noTokenize; // @synthesize noTokenize=_noTokenize;
 @property(nonatomic) _Bool promoteParsecResults; // @synthesize promoteParsecResults=_promoteParsecResults;
 @property(nonatomic) _Bool promoteLocalResults; // @synthesize promoteLocalResults=_promoteLocalResults;
@@ -39,6 +42,7 @@
 @property(nonatomic) unsigned long long whyClear; // @synthesize whyClear=_whyClear;
 @property(nonatomic) unsigned long long whyQuery; // @synthesize whyQuery=_whyQuery;
 @property(nonatomic) _Bool forceQueryEvenIfSame; // @synthesize forceQueryEvenIfSame=_forceQueryEvenIfSame;
+@property(retain, nonatomic) NSArray *disabledApps; // @synthesize disabledApps=_disabledApps;
 @property(retain, nonatomic) NSArray *disabledBundles; // @synthesize disabledBundles=_disabledBundles;
 @property(retain, nonatomic) NSArray *disabledDomains; // @synthesize disabledDomains=_disabledDomains;
 @property(retain, nonatomic) NSArray *searchDomains; // @synthesize searchDomains=_searchDomains;
@@ -53,6 +57,7 @@
 @property(readonly, nonatomic) NSString *displayedText;
 @property(readonly, nonatomic) _Bool hasMarkedText;
 - (id)initWithSearchString:(id)arg1;
+- (id)init;
 
 @end
 

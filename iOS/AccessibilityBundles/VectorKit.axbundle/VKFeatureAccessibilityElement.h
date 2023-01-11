@@ -47,7 +47,6 @@
 - (struct CGRect)accessibilityFrame;
 - (void)_mergePaths;
 - (void)_updatePath;
-- (_Bool)isEqual:(id)arg1;
 - (id)description;
 @property(readonly, nonatomic) _Bool isRoad;
 @property(readonly, nonatomic) long long mapFeatureType;

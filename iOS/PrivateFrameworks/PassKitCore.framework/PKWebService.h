@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSURLSessionTaskDelegate-Protocol.h>
 
@@ -22,7 +22,6 @@
     NSMutableArray *_diagnosticReasons;
     NSURLSession *_urlSession;
     NSObject<OS_dispatch_queue> *_diagnosticReasonsQueue;
-    NSObject<OS_dispatch_queue> *_diagnosticSessionQueue;
     NSObject<OS_dispatch_queue> *_stateQueue;
     NSObject<OS_dispatch_queue> *_sessionQueue;
 }
@@ -36,6 +35,8 @@
 - (id)_urlRequestTaggedWithDiagnosticReasonHeader:(id)arg1 forTaskID:(unsigned long long)arg2;
 - (void)_cleanUpDiagnosticReasonsForTaskID:(unsigned long long)arg1;
 - (void)_associateDiagnosticReasonsWithTaskID:(unsigned long long)arg1;
+- (void)removeDiagnosticReason:(id)arg1;
+- (void)addDiagnosticReason:(id)arg1;
 - (void)diagnosticSessionWithReason:(id)arg1 sessionHandler:(CDUnknownBlockType)arg2;
 - (id)_urlRequestTaggedWithWebServiceSessionMarkerHeader:(id)arg1;
 - (void)resetWebServiceSessionMarker;

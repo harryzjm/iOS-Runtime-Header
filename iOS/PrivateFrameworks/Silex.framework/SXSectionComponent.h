@@ -10,7 +10,6 @@
 
 + (id)jsonPropertyNameForObjCPropertyName:(id)arg1;
 + (id)typeString;
-- (Class)componentViewClass;
 
 @end
 

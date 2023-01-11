@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DAEAS/NSCoding-Protocol.h>
+#import <DAEAS/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface ASLocation <NSCoding>
+@interface ASLocation <NSSecureCoding>
 {
     NSString *_displayName;
     NSString *_annotation;
@@ -24,6 +24,7 @@
     NSString *_altitudeAccuracy;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)locationWithCalLocation:(void *)arg1;
 @property(retain, nonatomic) NSString *altitudeAccuracy; // @synthesize altitudeAccuracy=_altitudeAccuracy;
 @property(retain, nonatomic) NSString *altitude; // @synthesize altitude=_altitude;

@@ -29,12 +29,14 @@
 - (void)updateMockView:(id)arg1;
 - (id)accessibilityChildren;
 - (_Bool)isAccessibilityElement;
-- (void)_appendTextChildWithTitle:(id)arg1;
+- (id)_textChildWithTitle:(id)arg1;
 - (struct CGRect)accessibilityFrame;
 - (void)dealloc;
 - (void)_accessibilityClearChildren;
+- (void)_acccessibilityClearChildCache;
 - (id)_accessibilityAccessibleElementsInView:(id)arg1;
 - (_Bool)_accessibilityIsNotFirstElement;
+- (id)initWithAccessibilityContainer:(id)arg1;
 
 @end
 

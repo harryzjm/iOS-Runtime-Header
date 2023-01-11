@@ -6,7 +6,6 @@
 
 @class NSMutableSet;
 
-__attribute__((visibility("hidden")))
 @interface PUMutableIndexPathSet
 {
     NSMutableSet *_indexPaths;

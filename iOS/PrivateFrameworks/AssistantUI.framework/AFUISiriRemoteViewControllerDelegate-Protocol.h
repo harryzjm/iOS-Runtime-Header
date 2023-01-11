@@ -6,9 +6,10 @@
 
 #import <AssistantUI/NSObject-Protocol.h>
 
-@class AFUIRequestOptions, AFUISiriRemoteViewController, NSError, NSString, NSURL;
+@class AFUIRequestOptions, AFUISiriRemoteViewController, NSDictionary, NSError, NSString, NSURL;
 
 @protocol AFUISiriRemoteViewControllerDelegate <NSObject>
+- (void)siriRemoteViewController:(AFUISiriRemoteViewController *)arg1 didRequestCurrentTextInputWithReplyHandler:(void (^)(NSString *))arg2;
 - (void)siriRemoteViewControllerDidEndTapToEdit:(AFUISiriRemoteViewController *)arg1;
 - (void)siriRemoteViewControllerWillBeginTapToEdit:(AFUISiriRemoteViewController *)arg1;
 - (void)siriRemoteViewControllerDidResetTextInput:(AFUISiriRemoteViewController *)arg1;
@@ -25,10 +26,11 @@
 - (void)viewWillDisappearFinishedForSiriRemoteViewController:(AFUISiriRemoteViewController *)arg1;
 - (void)viewWillAppearFinishedForSiriRemoteViewController:(AFUISiriRemoteViewController *)arg1;
 - (_Bool)siriRemoteViewController:(AFUISiriRemoteViewController *)arg1 openURL:(NSURL *)arg2 appBundleID:(NSString *)arg3 allowSiriDismissal:(_Bool)arg4;
-- (_Bool)siriRemoteViewController:(AFUISiriRemoteViewController *)arg1 openURL:(NSURL *)arg2 delaySessionEndForTTS:(_Bool)arg3;
+- (void)siriRemoteViewController:(AFUISiriRemoteViewController *)arg1 openURL:(NSURL *)arg2 delaySessionEndForTTS:(_Bool)arg3 completion:(void (^)(_Bool))arg4;
 - (void)siriRemoteViewController:(AFUISiriRemoteViewController *)arg1 didReadBulletinWithIdentifier:(NSString *)arg2;
 - (void)siriRemoteViewControllerPulseHelpButton:(AFUISiriRemoteViewController *)arg1;
 - (void)siriRemoteViewControllerDidPresentUserInterface:(AFUISiriRemoteViewController *)arg1;
+- (void)siriRemoteViewController:(AFUISiriRemoteViewController *)arg1 failTest:(NSString *)arg2 withReason:(NSString *)arg3;
 - (void)siriRemoteViewController:(AFUISiriRemoteViewController *)arg1 didFinishTest:(NSString *)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteViewController *)arg1 willStartTest:(NSString *)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteViewController *)arg1 handlePasscodeUnlockWithCompletion:(void (^)(long long))arg2;
@@ -52,7 +54,7 @@
 - (void)siriRemoteViewController:(AFUISiriRemoteViewController *)arg1 startRequestWithOptions:(AFUIRequestOptions *)arg2;
 - (void)startGuidedAccessForRemoteViewController:(AFUISiriRemoteViewController *)arg1;
 - (long long)siriRemoteViewControllerRequestsActivationSource:(AFUISiriRemoteViewController *)arg1;
-- (void)dismissSiriRemoteViewController:(AFUISiriRemoteViewController *)arg1 delayForTTS:(_Bool)arg2;
+- (void)dismissSiriRemoteViewController:(AFUISiriRemoteViewController *)arg1 delayForTTS:(_Bool)arg2 userInfo:(NSDictionary *)arg3;
 - (void)siriRemoteViewController:(AFUISiriRemoteViewController *)arg1 viewServiceDidTerminateWithError:(NSError *)arg2;
 - (void)siriRemoteViewController:(AFUISiriRemoteViewController *)arg1 didEncounterUnexpectedServiceError:(NSError *)arg2;
 @end

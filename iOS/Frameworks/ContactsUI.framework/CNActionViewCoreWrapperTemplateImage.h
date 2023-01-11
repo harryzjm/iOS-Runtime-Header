@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsUI/CNActionViewTemplateImage-Protocol.h>
 
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 
 @property(readonly, nonatomic) id <CNUIUserActionTemplateImage> coreTemplateImage; // @synthesize coreTemplateImage=_coreTemplateImage;
 - (void).cxx_destruct;
+- (id)templateImage;
 - (id)imageWithColor:(id)arg1;
 - (id)initWithCoreTemplateImage:(id)arg1;
 

@@ -6,7 +6,7 @@
 
 #import <FrontBoard/BKSProcessDelegate-Protocol.h>
 
-@class BKSProcess, BKSProcessAssertion, BSMachPortSendRight, FBApplicationInfo, FBApplicationProcessExitContext, FBProcessCPUStatistics, FBProcessExecutionContext, FBProcessWatchdog, FBSProcessWatchdogPolicy, NSMutableArray, NSMutableSet, NSString;
+@class BKSProcess, BKSProcessAssertion, BSMachPortSendRight, FBApplicationInfo, FBApplicationProcessExitContext, FBProcessCPUStatistics, FBProcessExecutionContext, FBProcessState, FBProcessWatchdog, FBProcessWatchdogEventContext, FBSProcessTerminationRequest, FBSProcessWatchdogPolicy, NSMutableArray, NSMutableSet, NSString;
 @protocol FBApplicationProcessDelegate;
 
 @interface FBApplicationProcess <BKSProcessDelegate>
@@ -14,15 +14,20 @@
     FBApplicationInfo *_applicationInfo;
     FBApplicationProcessExitContext *_exitContext;
     FBProcessExecutionContext *_executionContext;
+    FBSProcessTerminationRequest *_terminationRequest;
+    FBProcessWatchdogEventContext *_terminationWatchdogContext;
+    FBProcessState *_terminationState;
     NSMutableSet *_allowedLockedFilePaths;
     NSMutableArray *_queuedSceneBlocksToExecuteAfterLaunch;
     NSMutableArray *_queue_terminateRequestCompletionBlocks;
-    _Bool _bootstrapped;
+    _Bool _attemptedBootstrap;
+    _Bool _attemptedFinalizedLaunch;
+    _Bool _queue_launchEventReceiptAcknowledged;
     _Bool _bootstrapFailed;
-    _Bool _performedLaunch;
-    _Bool _finishedLaunching;
+    _Bool _exitedBeforeAttemptingFinalizedLaunch;
     _Bool _pendingExit;
     _Bool _beingDebugged;
+    _Bool _waitForDebugger;
     BSMachPortSendRight *_gsEventPort;
     FBProcessWatchdog *_watchdog;
     FBSProcessWatchdogPolicy *_sceneCreateWatchdogPolicy;
@@ -32,6 +37,7 @@
     unsigned long long _htAppIdentifier;
     BKSProcess *_bksProcess;
     BKSProcessAssertion *_launchProcessAssertion;
+    BKSProcessAssertion *_viewServiceProcessAssertion;
     BKSProcessAssertion *_continuousProcessAssertion;
     _Bool _recordingAudio;
     _Bool _nowPlayingWithAudio;
@@ -41,12 +47,12 @@
 @property(nonatomic, getter=isConnectedToExternalAccessory) _Bool connectedToExternalAccessory; // @synthesize connectedToExternalAccessory=_connectedToExternalAccessory;
 @property(nonatomic, getter=isNowPlayingWithAudio) _Bool nowPlayingWithAudio; // @synthesize nowPlayingWithAudio=_nowPlayingWithAudio;
 @property(nonatomic, getter=isRecordingAudio) _Bool recordingAudio; // @synthesize recordingAudio=_recordingAudio;
-@property(readonly, retain, nonatomic, getter=_queue_cpuStatistics) FBProcessCPUStatistics *cpuStatistics; // @synthesize cpuStatistics=_cpuStatistics;
-@property(readonly, nonatomic) _Bool finishedLaunching; // @synthesize finishedLaunching=_finishedLaunching;
+@property(readonly, nonatomic, getter=_queue_cpuStatistics) FBProcessCPUStatistics *cpuStatistics; // @synthesize cpuStatistics=_cpuStatistics;
 @property(readonly, nonatomic, getter=isPendingExit) _Bool pendingExit; // @synthesize pendingExit=_pendingExit;
 @property(nonatomic, getter=isBeingDebugged) _Bool beingDebugged; // @synthesize beingDebugged=_beingDebugged;
 @property(readonly, copy, nonatomic) FBProcessExecutionContext *executionContext; // @synthesize executionContext=_executionContext;
-@property(readonly, retain, nonatomic) FBApplicationInfo *applicationInfo; // @synthesize applicationInfo=_applicationInfo;
+@property(readonly, nonatomic) FBApplicationInfo *applicationInfo; // @synthesize applicationInfo=_applicationInfo;
+- (void).cxx_destruct;
 - (id)_watchdog:(id)arg1 terminationRequestForViolatedProvision:(id)arg2 error:(id)arg3;
 - (_Bool)_watchdog:(id)arg1 shouldTerminateWithDeclineReason:(out id *)arg2;
 - (void)_watchdogStopped:(id)arg1;
@@ -56,6 +62,7 @@
 - (void)process:(id)arg1 isBeingDebugged:(_Bool)arg2;
 - (void)processWillExpire:(id)arg1;
 - (void)process:(id)arg1 taskStateDidChange:(long long)arg2;
+- (void)_queue_dropViewServiceAssertion;
 - (void)_queue_dropContinuousProcessAssertion;
 - (void)_queue_dropLaunchProcessAssertion;
 - (void)_queue_takeLaunchProcessAssertion;
@@ -67,7 +74,9 @@
 - (void)_queue_killForReason:(long long)arg1 andReport:(_Bool)arg2 withDescription:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_queue_terminateWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_executeKillForRequest:(id)arg1;
+- (id)_queue_composeContextWithValue:(id)arg1 key:(id)arg2;
 - (unsigned long long)_queue_noteExitedForForceQuit:(_Bool)arg1;
+- (id)_queue_crashReportThermalsInfo;
 - (void)_queue_killWithSignal:(int)arg1;
 - (void)_queue_doGracefulKillWithDeliveryConfirmation:(CDUnknownBlockType)arg1;
 - (id)_queue_lockedFilePathsIgnoringAllowed;
@@ -87,6 +96,7 @@
 - (id)_watchdogProvider;
 - (id)_workspaceServer;
 - (id)_workspace;
+- (void)_queue_noteSceneCreationAcknowledged:(id)arg1;
 - (void)_queue_executeTerminateRequestCompletionBlocksIfNecessaryForSucccess:(_Bool)arg1;
 - (void)_queue_executeLaunchCompletionBlocks;
 - (void)_queue_executeBlockAfterLaunchCompletes:(CDUnknownBlockType)arg1;
@@ -94,16 +104,15 @@
 - (void)_queue_sceneNeedsGracefulExit:(id)arg1 withDeliveryConfirmation:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic, getter=_queue_execTime) double execTime;
 @property(readonly, nonatomic, getter=_queue_terminationReason) long long terminationReason;
-- (void)_queue_processReallyDidExit;
 - (void)_queue_processDidExit;
 - (void)_queue_launchIfNecessary;
 - (void)stop;
 - (void)launchIfNecessary;
 - (_Bool)bootstrapWithContext:(id)arg1;
 - (id)GSEventPort;
-- (void)setFinishedLaunching:(_Bool)arg1;
 - (void)setPendingExit:(_Bool)arg1;
 @property(readonly, nonatomic) double elapsedCPUTime;
+@property(readonly, nonatomic) _Bool finishedLaunching;
 - (void)_queue_callExitObservers;
 - (id)_applicationWorkspace;
 - (id)_createWorkspace;
@@ -111,7 +120,7 @@
 - (_Bool)isApplicationProcess;
 - (void)killForReason:(long long)arg1 andReport:(_Bool)arg2 withDescription:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)killForReason:(long long)arg1 andReport:(_Bool)arg2 withDescription:(id)arg3;
-@property(readonly, retain, nonatomic) FBApplicationProcessExitContext *exitContext;
+@property(readonly, nonatomic) FBApplicationProcessExitContext *exitContext;
 - (void)dealloc;
 - (id)initWithApplicationInfo:(id)arg1 handle:(id)arg2 callOutQueue:(id)arg3;
 - (id)initWithApplicationInfo:(id)arg1 callOutQueue:(id)arg2;

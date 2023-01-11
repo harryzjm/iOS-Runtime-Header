@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Metal/NSCopying-Protocol.h>
 
@@ -13,12 +13,10 @@
 
 @interface MTLRenderPipelineDescriptor : NSObject <NSCopying>
 {
-    unsigned long long _inputPrimitiveTopology;
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)alloc;
-@property(nonatomic) unsigned long long inputPrimitiveTopology; // @synthesize inputPrimitiveTopology=_inputPrimitiveTopology;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)reset;
 
@@ -29,12 +27,14 @@
 @property(nonatomic) unsigned long long depthAttachmentPixelFormat; // @dynamic depthAttachmentPixelFormat;
 @property(readonly) MTLPipelineBufferDescriptorArray *fragmentBuffers; // @dynamic fragmentBuffers;
 @property(retain, nonatomic) id <MTLFunction> fragmentFunction; // @dynamic fragmentFunction;
+@property(nonatomic) unsigned long long inputPrimitiveTopology; // @dynamic inputPrimitiveTopology;
 @property(copy, nonatomic) NSString *label; // @dynamic label;
 @property(nonatomic) unsigned long long maxTessellationFactor; // @dynamic maxTessellationFactor;
 @property(nonatomic) unsigned long long rasterSampleCount; // @dynamic rasterSampleCount;
 @property(nonatomic, getter=isRasterizationEnabled) _Bool rasterizationEnabled; // @dynamic rasterizationEnabled;
 @property(nonatomic) unsigned long long sampleCount; // @dynamic sampleCount;
 @property(nonatomic) unsigned long long stencilAttachmentPixelFormat; // @dynamic stencilAttachmentPixelFormat;
+@property(nonatomic) _Bool supportIndirectCommandBuffers; // @dynamic supportIndirectCommandBuffers;
 @property(nonatomic) unsigned long long tessellationControlPointIndexType; // @dynamic tessellationControlPointIndexType;
 @property(nonatomic) unsigned long long tessellationFactorFormat; // @dynamic tessellationFactorFormat;
 @property(nonatomic, getter=isTessellationFactorScaleEnabled) _Bool tessellationFactorScaleEnabled; // @dynamic tessellationFactorScaleEnabled;

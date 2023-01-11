@@ -11,6 +11,7 @@
 @class NSDictionary, NSMutableDictionary, NSObject, NSString, PLImageGeometry, PLPhotoEditModel, PLPhotoEditRenderer, PUCropAndStraightenView, PUCropAspect, PUCropHandleView, PUCropOverlayView, PUCropToolControllerSpec, PUTiltWheelControl, UIAlertController, UIButton, UIImage, UILongPressGestureRecognizer, UIView;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface PUCropToolController <UIGestureRecognizerDelegate, PUCropAndStraightenViewDelegate, UIPopoverPresentationControllerDelegate>
 {
     _Bool __contentViewsHidden;
@@ -60,7 +61,6 @@
     struct CGRect __suggestedCrop;
 }
 
-+ (id)_preCropFilter;
 @property(retain, nonatomic, setter=_setAccessibilityLongPressGestureRecognizer:) UILongPressGestureRecognizer *_accessibilityLongPressGestureRecognizer; // @synthesize _accessibilityLongPressGestureRecognizer=__accessibilityLongPressGestureRecognizer;
 @property(nonatomic, setter=_setHasRequestedCropSuggestion:) _Bool _hasRequestedCropSuggestion; // @synthesize _hasRequestedCropSuggestion=__hasRequestedCropSuggestion;
 @property(nonatomic, setter=_setHasAppliedCropSuggestion:) _Bool _hasAppliedCropSuggestion; // @synthesize _hasAppliedCropSuggestion=__hasAppliedCropSuggestion;
@@ -116,11 +116,9 @@
 - (void)_aspectButtonTapped:(id)arg1;
 - (void)_rotateButtonTapped:(id)arg1;
 - (void)didResignActiveTool;
-- (void)animateResigningActiveTool;
 - (void)willResignActiveTool;
 - (void)didBecomeActiveTool;
 - (void)_installRenderedImageAndDisplayIfNeeded;
-- (void)animateBecomingActiveTool;
 - (void)willBecomeActiveTool;
 - (_Bool)canBecomeActiveTool;
 - (void)setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;

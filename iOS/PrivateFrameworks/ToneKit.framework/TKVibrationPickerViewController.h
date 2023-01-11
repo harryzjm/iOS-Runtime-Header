@@ -4,16 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <UIKit/UIViewController.h>
 
-#import <ToneKit/TKVibrationPickerTableViewCellDelegate-Protocol.h>
+#import <ToneKit/PSStateRestoration-Protocol.h>
+#import <ToneKit/TKVibrationPickerCollectionViewCellDelegate-Protocol.h>
 #import <ToneKit/TKVibrationRecorderViewControllerDelegate-Protocol.h>
+#import <ToneKit/UICollectionViewDataSource-Protocol.h>
+#import <ToneKit/UICollectionViewDelegate-Protocol.h>
+#import <ToneKit/UICollectionViewDelegateTableLayout-Protocol.h>
 #import <ToneKit/UINavigationControllerDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSMutableDictionary, NSString, NSTimer, TKVibratorController, TLVibrationManager;
+@class NSArray, NSIndexPath, NSMutableDictionary, NSMutableSet, NSString, NSTimer, NSURL, TKVibratorController, TLVibrationManager, UICollectionView;
 @protocol TKVibrationPickerStyleProvider, TKVibrationPickerViewControllerDelegate, TKVibrationPickerViewControllerDismissalDelegate;
 
-@interface TKVibrationPickerViewController : UITableViewController <TKVibrationPickerTableViewCellDelegate, TKVibrationRecorderViewControllerDelegate, UINavigationControllerDelegate>
+@interface TKVibrationPickerViewController : UIViewController <PSStateRestoration, TKVibrationPickerCollectionViewCellDelegate, TKVibrationRecorderViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateTableLayout, UINavigationControllerDelegate>
 {
     long long _alertType;
     _Bool _showsDefault;
@@ -31,12 +35,14 @@
     _Bool _defaultVibrationIdentifierWasExplicitlySet;
     _Bool _showsSynchronized;
     NSString *_synchronizedVibrationIdentifier;
+    UICollectionView *_collectionView;
     TLVibrationManager *_vibrationManager;
     TKVibratorController *_vibratorController;
     NSTimer *_vibrationShouldStopTimer;
-    NSArray *_sortedVibrationIdentifiers;
+    NSURL *_temporaryDirectoryForSystemVibrationIdentifiers;
     NSArray *_sortedUserGeneratedVibrationIdentifiers;
     NSIndexPath *_indexPathOfCellBeingDeleted;
+    NSMutableSet *_indexPathsOfCellsBeingSwiped;
     NSMutableDictionary *_sectionHeaderViews;
     _Bool _showsEditButtonInNavigationBar;
     NSString *_topic;
@@ -66,26 +72,33 @@
 @property(copy, nonatomic) NSString *topic; // @synthesize topic=_topic;
 @property(readonly, nonatomic) long long alertType; // @synthesize alertType=_alertType;
 - (void).cxx_destruct;
+- (void)_handlePreferredContentSizeCategoryDidChangeNotification:(id)arg1;
+- (double)_vibrationPickerRowHeight;
+- (struct UIEdgeInsets)_defaultSectionHeaderLabelContainerViewLabelPaddingInsets;
+- (void)_updateLabelPaddingInsetsForVisibleSectionHeaders;
+- (void)viewSafeAreaInsetsDidChange;
+- (void)viewLayoutMarginsDidChange;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_presentVibrationRecorderViewController;
-- (void)vibrationPickerTableViewCell:(id)arg1 endedEditingWithText:(id)arg2;
+- (void)vibrationPickerCollectionViewCell:(id)arg1 endedEditingWithText:(id)arg2;
 - (void)_stopVibrating;
 - (void)_startVibratingWithVibrationIdentifier:(id)arg1;
 - (unsigned long long)navigationControllerSupportedInterfaceOrientations:(id)arg1;
 - (void)vibrationRecorderViewControllerWasDismissedWithoutSavingRecordedVibrationPattern:(id)arg1;
 - (void)vibrationRecorderViewController:(id)arg1 didFinishRecordingVibrationPattern:(id)arg2 name:(id)arg3;
-- (void)tableView:(id)arg1 didEndEditingRowAtIndexPath:(id)arg2;
-- (void)tableView:(id)arg1 willBeginEditingRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
-- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
-- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
-- (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
-- (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (long long)numberOfSectionsInTableView:(id)arg1;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 tableLayout:(id)arg2 didEndEditingRowAtIndexPath:(id)arg3;
+- (void)collectionView:(id)arg1 tableLayout:(id)arg2 willBeginEditingRowAtIndexPath:(id)arg3;
+- (void)collectionView:(id)arg1 tableLayout:(id)arg2 commitEditingStyle:(long long)arg3 forRowAtIndexPath:(id)arg4;
+- (long long)collectionView:(id)arg1 tableLayout:(id)arg2 editingStyleForRowAtIndexPath:(id)arg3;
+- (double)collectionView:(id)arg1 tableLayout:(id)arg2 heightForFooterInSection:(long long)arg3;
+- (double)collectionView:(id)arg1 tableLayout:(id)arg2 heightForHeaderInSection:(long long)arg3;
+- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (_Bool)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
+- (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
+- (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
+- (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
+- (long long)numberOfSectionsInCollectionView:(id)arg1;
+- (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)_sectionForNoneGroup;
 - (long long)_sectionForUserGeneratedGroup;
 - (long long)_sectionForSystemGroup;
@@ -107,7 +120,13 @@
 - (id)_indexPathForVibrationWithIdentifier:(id)arg1;
 - (id)_identifierOfVibrationAtIndexPath:(id)arg1;
 - (id)_sortedUserGeneratedVibrationIdentifiers;
-- (id)_sortedVibrationIdentifiers;
+- (unsigned long long)_indexOfSystemVibrationIdentifier:(id)arg1;
+- (id)_systemVibrationIdentifierAtIndex:(unsigned long long)arg1;
+- (unsigned long long)_numberOfSystemVibrationIdentifiers;
+- (void)_ensureSystemVibrationIdentifiersAreInitialized;
+- (id)_fileNameForIndexOfSystemVibrationIdentifier:(id)arg1;
+- (id)_fileNameForSystemVibrationIdentifierAtIndex:(unsigned long long)arg1;
+- (id)_fileNameForSystemVibrationIdentifiersCount;
 - (id)_sortedArrayWithVibrationIdentifiers:(id)arg1 allowsDuplicateVibrationNames:(_Bool)arg2;
 - (id)_selectedVibrationIndexPath;
 - (id)_sanitizeVibrationIdentifierForPlayback:(id)arg1;
@@ -120,14 +139,15 @@
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (void)viewDidLoad;
+- (void)loadView;
 - (_Bool)_showsOnlyEditableSections;
-- (void)_updateStyleOfTableView:(id)arg1 forStyleProvider:(id)arg2;
+- (void)_updateStyleOfCollectionView:(id)arg1 forStyleProvider:(id)arg2;
 @property(readonly, nonatomic) _Bool canEnterEditingMode;
 - (void)dealloc;
 - (id)initWithAlertType:(long long)arg1;
-- (id)initWithStyle:(long long)arg1;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 @property(copy, nonatomic) NSString *accountIdentifier;
+- (_Bool)canBeShownFromSuspendedState;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

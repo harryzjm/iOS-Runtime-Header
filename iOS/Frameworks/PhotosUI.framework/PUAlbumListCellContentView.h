@@ -6,21 +6,26 @@
 
 #import <UIKit/UIView.h>
 
+#import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UITextFieldDelegate-Protocol.h>
 
-@class NSString, PUStackView, PXUIButton, UIFont, UILabel, UITextField;
+@class NSString, PUSharedAlbumAvatarView, PUStackView, PXUIButton, UIFont, UILabel, UITextField;
 @protocol PUAlbumListCellDelegate;
 
-@interface PUAlbumListCellContentView : UIView <UITextFieldDelegate>
+@interface PUAlbumListCellContentView : UIView <UITextFieldDelegate, UIGestureRecognizerDelegate>
 {
     _Bool _combinesPhotoDecorations;
+    _Bool _topInsetEnabled;
+    _Bool _showsAvatarView;
     _Bool _editing;
     _Bool _enabled;
     _Bool _showsDeleteButtonWhenEditing;
     _Bool _highlighted;
     _Bool __showsTitleAndSubtitle;
+    _Bool _usesLabelForTitle;
     id <PUAlbumListCellDelegate> _delegate;
     PUStackView *_stackView;
+    PUSharedAlbumAvatarView *_avatarView;
     UIView *_customImageView;
     NSString *_title;
     NSString *_subtitle;
@@ -30,12 +35,15 @@
     UIFont *_titleFont;
     UIFont *_subtitleFont;
     UITextField *__titleTextField;
+    UILabel *__titleLabel;
     UILabel *__subtitleLabel;
     PXUIButton *__deleteButton;
 }
 
+@property(nonatomic) _Bool usesLabelForTitle; // @synthesize usesLabelForTitle=_usesLabelForTitle;
 @property(retain, nonatomic, setter=_setDeleteButton:) PXUIButton *_deleteButton; // @synthesize _deleteButton=__deleteButton;
 @property(retain, nonatomic, setter=_setSubtitleLabel:) UILabel *_subtitleLabel; // @synthesize _subtitleLabel=__subtitleLabel;
+@property(retain, nonatomic, setter=_setTitleLabel:) UILabel *_titleLabel; // @synthesize _titleLabel=__titleLabel;
 @property(retain, nonatomic, setter=_setTitleTextField:) UITextField *_titleTextField; // @synthesize _titleTextField=__titleTextField;
 @property(nonatomic, setter=_setShowsTitleAndSubtitle:) _Bool _showsTitleAndSubtitle; // @synthesize _showsTitleAndSubtitle=__showsTitleAndSubtitle;
 @property(nonatomic, getter=isHighlighted) _Bool highlighted; // @synthesize highlighted=_highlighted;
@@ -50,13 +58,18 @@
 @property(copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) UIView *customImageView; // @synthesize customImageView=_customImageView;
+@property(nonatomic) _Bool showsAvatarView; // @synthesize showsAvatarView=_showsAvatarView;
+@property(retain, nonatomic) PUSharedAlbumAvatarView *avatarView; // @synthesize avatarView=_avatarView;
+@property(nonatomic) _Bool topInsetEnabled; // @synthesize topInsetEnabled=_topInsetEnabled;
 @property(nonatomic) _Bool combinesPhotoDecorations; // @synthesize combinesPhotoDecorations=_combinesPhotoDecorations;
 @property(retain, nonatomic, setter=_setStackView:) PUStackView *stackView; // @synthesize stackView=_stackView;
 @property(nonatomic) __weak id <PUAlbumListCellDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (void)_updateSubtitleLabelStyle;
-- (void)_updateTitleTextFieldsStyle;
+- (void)_updateTitleStyle;
+- (void)handleLabelTap:(id)arg1;
 - (void)_deleteAction:(id)arg1;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1;
 - (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
@@ -69,10 +82,12 @@
 - (void)_updateStackViewAnimated:(_Bool)arg1;
 - (void)_updateDeleteButtonAnimated:(_Bool)arg1;
 - (void)_updateSubviewOrdering;
+- (void)_updateAvatarView;
 - (void)setEditCapabilities:(unsigned long long)arg1 animated:(_Bool)arg2;
 - (void)setEnabled:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setSubtitle:(id)arg1 animated:(_Bool)arg2;
+@property(readonly, nonatomic) UIView *springLoadingTargetView;
 - (void)prepareForReuse;
 - (void)handleTransitionFade:(_Bool)arg1 animate:(_Bool)arg2;
 - (void)setShowsTitle:(_Bool)arg1 animated:(_Bool)arg2;

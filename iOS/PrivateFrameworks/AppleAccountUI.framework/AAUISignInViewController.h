@@ -6,16 +6,16 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <AppleAccountUI/AKAppleIDAuthenticationInAppContextPasswordDelegate-Protocol.h>
 #import <AppleAccountUI/RemoteUIControllerDelegate-Protocol.h>
 #import <AppleAccountUI/UITableViewDataSource-Protocol.h>
 #import <AppleAccountUI/UITableViewDelegate-Protocol.h>
 #import <AppleAccountUI/UITextFieldDelegate-Protocol.h>
-#import <AppleAccountUI/UITextViewDelegate-Protocol.h>
 
 @class AAUIBuddyView, AAUIHeaderView, NSArray, NSString, UILabel, UITableView, UITableViewCell, UITableViewHeaderFooterView;
 @protocol AAUISignInViewControllerDelegate;
 
-@interface AAUISignInViewController : UIViewController <RemoteUIControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UITextViewDelegate>
+@interface AAUISignInViewController : UIViewController <AKAppleIDAuthenticationInAppContextPasswordDelegate, RemoteUIControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 {
     UITableView *_tableView;
     UITableViewCell *_usernameCell;
@@ -25,6 +25,7 @@
     UITableViewHeaderFooterView *_tableFooterView;
     NSArray *_compactConstraints;
     NSArray *_expandedConstraints;
+    CDUnknownBlockType _passwordHandler;
     _Bool _shouldAnticipatePiggybacking;
     _Bool _allowsAccountCreation;
     _Bool _showServiceIcons;
@@ -41,7 +42,7 @@
 - (void).cxx_destruct;
 - (void)_updateConstraintsForTraitCollection:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
+- (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (_Bool)tableView:(id)arg1 shouldDrawTopSeparatorForSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
@@ -52,6 +53,7 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (_Bool)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3;
+- (void)context:(id)arg1 needsPasswordWithCompletion:(CDUnknownBlockType)arg2;
 - (void)_delegate_signInViewControllerDidCancel;
 - (void)_delegate_signInViewControllerDidCompleteWithAuthenticationResults:(id)arg1;
 - (void)sizeCategoryDidChange:(id)arg1;
@@ -65,19 +67,24 @@
 - (void)_textFieldDidChange:(id)arg1;
 - (void)_endObservingTextFieldDidChangeNotifications;
 - (void)_beginObservingTextFieldDidChangeNotifications;
-- (void)_presentAppleIDPrivacyInformationPane;
+- (id)_passwordFieldIndexPath;
+- (void)_setUsernameCellWaiting:(_Bool)arg1;
+- (void)_setPasswordFieldHidden:(_Bool)arg1;
+- (void)_cancelPasswordDelegateIfNecessary;
 - (id)_authorizationValueForAuthenticationResults:(id)arg1;
 - (void)_repairCloudAccountWithAuthenticationResults:(id)arg1;
 - (void)_attemptAuthenticationWithContext:(id)arg1;
 - (void)_attemptAuthentication;
+- (void)_prewarmSignInFlowIfApplicable;
 - (void)_presentForgotAppleIDPane;
 - (void)_presentCreateAppleIDPane;
 - (void)_actionButtonSelected:(id)arg1;
 - (void)_nextButtonSelected:(id)arg1;
 - (void)_cancelButtonSelected:(id)arg1;
 - (void)_setEnabled:(_Bool)arg1;
-- (id)_attributedStringForFooter;
+- (id)_stringForFooter;
 - (_Bool)_isGreenTeaCapable;
+- (_Bool)_isPasswordFieldVisible;
 - (_Bool)_hasValidCredentials;
 - (void)constrainView:(id)arg1 toFillHeaderFooterView:(id)arg2;
 - (id)_tableFooterView;
@@ -93,6 +100,7 @@
 - (id)authenticationContext;
 - (void)dealloc;
 - (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;

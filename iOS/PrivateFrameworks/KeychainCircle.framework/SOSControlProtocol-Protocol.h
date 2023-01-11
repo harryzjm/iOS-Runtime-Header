@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <KeychainCircle/NSObject-Protocol.h>
+
 @class NSArray, NSData, NSDictionary;
 
-@protocol SOSControlProtocol
+@protocol SOSControlProtocol <NSObject>
 - (void)setWatchdogParmeters:(NSDictionary *)arg1 complete:(void (^)(NSError *))arg2;
 - (void)getWatchdogParameters:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)triggerSync:(NSArray *)arg1 complete:(void (^)(_Bool, NSError *))arg2;
@@ -20,7 +22,6 @@
 - (void)assertStashedAccountCredential:(void (^)(_Bool, NSError *))arg1;
 - (void)stashedCredentialPublicKey:(void (^)(NSData *, NSError *))arg1;
 - (void)rateLimitingPerformanceCounters:(void (^)(NSDictionary *))arg1;
-- (void)idsPerformanceCounters:(void (^)(NSDictionary *))arg1;
 - (void)kvsPerformanceCounters:(void (^)(NSDictionary *))arg1;
 - (void)userPublicKey:(void (^)(_Bool, NSData *, NSError *))arg1;
 @end

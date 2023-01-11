@@ -13,9 +13,8 @@
 
 @interface IBCustomViewDrawingDescription : NSObject <IBBinaryArchiving>
 {
-    NSObject<IBBinaryArchivableColor> *_customViewDarkTexturedBorderColor;
-    NSObject<IBBinaryArchivableColor> *_customViewDarkBorderColor;
-    NSObject<IBBinaryArchivableColor> *_customViewLightBorderColor;
+    NSObject<IBBinaryArchivableColor> *_customViewOuterBorderColor;
+    NSObject<IBBinaryArchivableColor> *_customViewInnerBorderColor;
     NSObject<IBBinaryArchivableColor> *_containerCustomViewBackgroundColor;
     NSObject<IBBinaryArchivableColor> *_childlessCustomViewBackgroundColor;
     NSObject<IBBinaryArchivableColor> *_containerCustomViewTextColor;
@@ -28,9 +27,8 @@
 @property(retain, nonatomic) NSObject<IBBinaryArchivableColor> *containerCustomViewTextColor; // @synthesize containerCustomViewTextColor=_containerCustomViewTextColor;
 @property(retain, nonatomic) NSObject<IBBinaryArchivableColor> *childlessCustomViewBackgroundColor; // @synthesize childlessCustomViewBackgroundColor=_childlessCustomViewBackgroundColor;
 @property(retain, nonatomic) NSObject<IBBinaryArchivableColor> *containerCustomViewBackgroundColor; // @synthesize containerCustomViewBackgroundColor=_containerCustomViewBackgroundColor;
-@property(retain, nonatomic) NSObject<IBBinaryArchivableColor> *customViewLightBorderColor; // @synthesize customViewLightBorderColor=_customViewLightBorderColor;
-@property(retain, nonatomic) NSObject<IBBinaryArchivableColor> *customViewDarkBorderColor; // @synthesize customViewDarkBorderColor=_customViewDarkBorderColor;
-@property(retain, nonatomic) NSObject<IBBinaryArchivableColor> *customViewDarkTexturedBorderColor; // @synthesize customViewDarkTexturedBorderColor=_customViewDarkTexturedBorderColor;
+@property(retain, nonatomic) NSObject<IBBinaryArchivableColor> *customViewInnerBorderColor; // @synthesize customViewInnerBorderColor=_customViewInnerBorderColor;
+@property(retain, nonatomic) NSObject<IBBinaryArchivableColor> *customViewOuterBorderColor; // @synthesize customViewOuterBorderColor=_customViewOuterBorderColor;
 - (void).cxx_destruct;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;

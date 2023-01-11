@@ -6,7 +6,7 @@
 
 #import <HMFoundation/NSCopying-Protocol.h>
 
-@class HMFMessageDestination, HMFMessageTransport, NSDictionary, NSString, NSUUID;
+@class HMFActivity, HMFMessageDestination, HMFMessageTransport, NSDictionary, NSString, NSUUID;
 
 @interface HMFMessageInternal <NSCopying>
 {
@@ -15,6 +15,7 @@
     long long _qualityOfService;
     HMFMessageDestination *_destination;
     HMFMessageTransport *_transport;
+    HMFActivity *_activity;
     NSDictionary *_userInfo;
     NSDictionary *_headers;
     NSDictionary *_messagePayload;
@@ -25,6 +26,7 @@
 @property(copy, nonatomic) NSDictionary *messagePayload; // @synthesize messagePayload=_messagePayload;
 @property(copy, nonatomic) NSDictionary *headers; // @synthesize headers=_headers;
 @property(copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
+@property(retain, nonatomic) HMFActivity *activity; // @synthesize activity=_activity;
 @property(nonatomic) __weak HMFMessageTransport *transport; // @synthesize transport=_transport;
 @property(retain, nonatomic) HMFMessageDestination *destination; // @synthesize destination=_destination;
 @property(nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;

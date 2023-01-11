@@ -8,8 +8,8 @@
 #import <Message/MFLibrarySearchableIndexDataSource-Protocol.h>
 #import <Message/MFSQLiteConnectionPoolDelegate-Protocol.h>
 
-@class MFFileCompressionQueue, MFLibrarySearchableIndex, MFMailMessageLibraryMigrator, MFSQLiteConnectionPool, MFWeakObjectCache, MFWeakSet, NSMutableSet, NSObject, NSString, _MFMailMessageLibraryStatistics;
-@protocol MFMailMessageLibraryDelegate, MFMailboxPathProvider, OS_dispatch_queue, OS_dispatch_source;
+@class MFFileCompressionQueue, MFLibrarySearchableIndex, MFMailMessageLibraryMigrator, MFSQLiteConnectionPool, MFSearchableIndexBudgetConfiguration, MFSearchableIndexScheduler, MFWeakObjectCache, MFWeakSet, NSMutableSet, NSObject, NSString, _MFMailMessageLibraryStatistics;
+@protocol MFMailMessageLibraryDelegate, MFMailboxPathProvider, OS_dispatch_queue;
 
 @interface MFMailMessageLibrary <MFLibrarySearchableIndexDataSource, MFSQLiteConnectionPoolDelegate, MFContentProtectionObserver>
 {
@@ -28,10 +28,15 @@
     NSObject<OS_dispatch_queue> *_keyBagQueue;
     NSMutableSet *_messagesToThreadAtUnlock;
     MFWeakSet *_middleware;
-    NSObject<OS_dispatch_source> *_suspendTimer;
     _MFMailMessageLibraryStatistics *_lastStats;
     MFFileCompressionQueue *_compressionQueue;
+    _Bool _migrationHasRun;
+    _Bool _suspendedUnderLock;
+    _Bool _isReconciling;
     id <MFMailMessageLibraryDelegate> _delegate;
+    MFSearchableIndexScheduler *_searchableIndexScheduler;
+    id _migrationLock;
+    MFSearchableIndexBudgetConfiguration *_searchableIndexBudgetConfiguration;
     MFLibrarySearchableIndex *_searchableIndex;
 }
 
@@ -42,7 +47,14 @@
 + (void)setDefaultInstance:(id)arg1;
 + (id)defaultInstance;
 @property(retain, nonatomic) MFLibrarySearchableIndex *searchableIndex; // @synthesize searchableIndex=_searchableIndex;
+@property(retain, nonatomic) MFSearchableIndexBudgetConfiguration *searchableIndexBudgetConfiguration; // @synthesize searchableIndexBudgetConfiguration=_searchableIndexBudgetConfiguration;
+@property _Bool isReconciling; // @synthesize isReconciling=_isReconciling;
+@property _Bool suspendedUnderLock; // @synthesize suspendedUnderLock=_suspendedUnderLock;
+@property(readonly, nonatomic) id migrationLock; // @synthesize migrationLock=_migrationLock;
+@property(nonatomic) _Bool migrationHasRun; // @synthesize migrationHasRun=_migrationHasRun;
+@property(retain, nonatomic) MFSearchableIndexScheduler *searchableIndexScheduler; // @synthesize searchableIndexScheduler=_searchableIndexScheduler;
 @property(nonatomic) id <MFMailMessageLibraryDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)firstMessageMatchingCriterion:(id)arg1;
 - (id)_messageForStatement:(struct sqlite3_stmt *)arg1 options:(unsigned int)arg2 timestamp:(unsigned long long)arg3 isProtectedDataAvailable:(_Bool)arg4;
 - (id)_libraryMessageWithLibraryID:(unsigned int)arg1 wasCached:(_Bool *)arg2;
 - (id)_libraryMessageCache;
@@ -114,14 +126,17 @@
 - (id)_newConnection;
 - (id)newConnectionForConnectionPool:(id)arg1;
 - (void)_addMessageToThreadAtUnlock:(unsigned int)arg1;
-- (void)_reconcileAfterKeybagUnlock;
+- (void)_reconcileJournalIsLaunch:(_Bool)arg1;
+- (void)_reconcileJournalOnResume;
 - (void)reconcileJournalOnStartup;
 - (_Bool)_canAccessProtectedData;
+- (void)_cancelPendingJournalReconciliation;
+- (void)_scheduleJournalReconciliation;
 - (void)contentProtectionStateChanged:(int)arg1 previousState:(int)arg2;
 - (_Bool)isProtectedDataAvailable:(struct sqlite3 *)arg1;
-- (long long)_reconcileJournal;
 - (void)_schedulePeriodicStatisticsLogging;
 - (void)_logStatistics;
+- (_Bool)_shouldLogDatabaseStats;
 - (unsigned long long)_deleteJournaledEntries;
 - (void)_collectStatistics_nts;
 - (_Bool)checkDatabaseConsistency;
@@ -180,8 +195,7 @@
 - (id)loadMeetingExternalIDForMessage:(id)arg1;
 - (id)loadMeetingDataForMessage:(id)arg1;
 - (id)loadData:(id)arg1 forMessage:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (id)metadataForMessage:(id)arg1;
-- (id)metadataForMessage:(id)arg1 key:(id)arg2;
+- (id)metadataForMessage:(id)arg1 ofClass:(Class)arg2 key:(id)arg3;
 - (void)updateMessage:(id)arg1 withMetadata:(CDUnknownBlockType)arg2;
 - (void)setSummary:(id)arg1 forMessage:(id)arg2;
 - (void)_setMessageDataString:(id)arg1 forKey:(id)arg2 forMessage:(id)arg3;
@@ -194,6 +208,7 @@
 - (long long)deleteAttachmentsForMessage:(id)arg1 inMailboxFileURL:(id)arg2;
 - (id)attachmentsDirectoryURLForMessage:(id)arg1 inMailboxFileURL:(id)arg2;
 - (id)attachmentsDirectoryURLForMessage:(id)arg1;
+- (id)fileAttributesForMessage:(id)arg1;
 - (id)dataPathForMessage:(id)arg1 part:(id)arg2;
 - (id)dataPathForMessage:(id)arg1;
 - (id)dataPathForMessage:(id)arg1 type:(int)arg2;
@@ -251,6 +266,8 @@
 - (id)oldestMessageInMailbox:(id)arg1;
 - (void)setMostRecentStatusCount:(unsigned long long)arg1 forMailbox:(id)arg2;
 - (unsigned long long)mostRecentStatusCountForMailbox:(id)arg1;
+- (void)_setOrAdjust:(_Bool)arg1 lastSyncAndMostRecentStatusCountWithValue:(long long)arg2 forMailbox:(id)arg3;
+- (void)adjustLastSyncStatusCountBy:(long long)arg1 forMailbox:(id)arg2;
 - (void)setLastSyncAndMostRecentStatusCount:(unsigned long long)arg1 forMailbox:(id)arg2;
 - (long long)statusCountDeltaForMailbox:(id)arg1;
 - (void)setServerUnreadOnlyOnServerCount:(unsigned long long)arg1 forMailbox:(id)arg2;
@@ -307,7 +324,7 @@
 - (void)updateAdditionalThreadingInfoForSentMessageWithHeaders:(id)arg1 externalConversationID:(long long)arg2;
 - (id)addMessages:(id)arg1 withMailbox:(id)arg2 fetchBodies:(_Bool)arg3 newMessagesByOldMessage:(id)arg4 remoteIDs:(id)arg5 setFlags:(unsigned long long)arg6 clearFlags:(unsigned long long)arg7 messageFlagsForMessages:(id)arg8 copyFiles:(_Bool)arg9 addPOPUIDs:(_Bool)arg10 dataSectionsByMessage:(id)arg11;
 - (void)_tellMiddleWareDidIndexMessages:(id)arg1;
-- (void)_tellMiddlewareDidAddMessages:(id)arg1;
+- (void)_tellMiddlewareDidAddMessages:(id)arg1 newMessagesByOldMessage:(id)arg2;
 - (id)_tellMiddlewareWillAddMessage:(id)arg1;
 - (void)removeMiddleware:(id)arg1;
 - (void)addMiddleware:(id)arg1;
@@ -328,9 +345,8 @@
 - (void)setFlags:(unsigned long long)arg1 forMessage:(id)arg2;
 @property(readonly, nonatomic) unsigned long long pendingIndexItemsCount;
 - (void)applicationWillResume;
+- (void)applicationWillSuspendUnderLock;
 - (void)applicationWillSuspend;
-- (void)startSuspendTimer;
-- (void)cancelSuspendTimer;
 - (void)invalidateAndWait;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1;

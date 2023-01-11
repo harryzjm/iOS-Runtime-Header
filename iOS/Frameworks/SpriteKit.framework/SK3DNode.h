@@ -12,6 +12,7 @@
 }
 
 + (id)nodeWithViewportSize:(struct CGSize)arg1;
++ (_Bool)supportsSecureCoding;
 - (void)_renderForTime:(double)arg1;
 - (MISSING_TYPE *)unprojectPoint: /* Error: Ran out of types for this method. */;
 - (MISSING_TYPE *)projectPoint: /* Error: Ran out of types for this method. */;

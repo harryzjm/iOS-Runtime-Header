@@ -12,13 +12,13 @@
 __attribute__((visibility("hidden")))
 @interface KNArchivedCanvasSelection <TSKArchivedSelection>
 {
-    TSKSelection<TSDCanvasSelection> *mSelection;
+    TSKSelection<TSDCanvasSelection> *_selection;
 }
 
-@property(retain, nonatomic) TSKSelection *selection; // @synthesize selection=mSelection;
+@property(retain, nonatomic) TSKSelection *selection; // @synthesize selection=_selection;
+- (void).cxx_destruct;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)dealloc;
 - (id)initWithContext:(id)arg1;
 
 // Remaining properties

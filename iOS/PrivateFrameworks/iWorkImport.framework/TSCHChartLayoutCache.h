@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray;
 
@@ -17,10 +17,10 @@ __attribute__((visibility("hidden")))
 
 + (id)cacheWithCacheItem:(id)arg1;
 @property(nonatomic) _Bool ignoreInvalidation; // @synthesize ignoreInvalidation=mIgnoreInvalidation;
+- (void).cxx_destruct;
 - (void)printDebug;
 - (void)invalidate;
 - (void)accessWithCacheItemBlock:(CDUnknownBlockType)arg1 calculateBlock:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (id)initWithCacheItem:(id)arg1;
 - (id)init;
 

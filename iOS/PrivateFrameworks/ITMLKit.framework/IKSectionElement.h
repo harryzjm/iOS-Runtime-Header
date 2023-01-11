@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IKHeaderElement, NSArray;
+@class IKHeaderElement, IKViewElement, NSArray;
 
 @interface IKSectionElement
 {
@@ -14,6 +14,7 @@
 - (void).cxx_destruct;
 - (id)unboundItemElements;
 - (void)appDocumentDidMarkStylesDirty;
+@property(readonly, retain, nonatomic) IKViewElement *footer;
 @property(readonly, retain, nonatomic) NSArray *items;
 @property(readonly, retain, nonatomic) IKHeaderElement *header;
 - (id)applyUpdatesWithElement:(id)arg1;

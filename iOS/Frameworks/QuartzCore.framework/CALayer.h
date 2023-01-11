@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuartzCore/CAMediaTiming-Protocol.h>
 #import <QuartzCore/CAPropertyInfo-Protocol.h>
@@ -45,6 +45,7 @@
 @property struct CGSize shadowOffset;
 @property struct CGColor *shadowColor;
 @property float shadowOpacity;
+@property(copy) NSString *contentsSwizzle;
 @property struct CGColor *contentsMultiplyColor;
 @property double cornerRadius;
 @property double borderWidth;
@@ -97,6 +98,7 @@
 - (void)_colorSpaceDidChange;
 - (void)_display;
 - (void)display;
+- (int)_overrideImageFormat;
 - (void)_renderBorderInContext:(struct CGContext *)arg1;
 - (void)_renderSublayersInContext:(struct CGContext *)arg1;
 - (void)_renderForegroundInContext:(struct CGContext *)arg1;
@@ -129,6 +131,7 @@
 @property(copy) NSString *contentsScaling;
 @property(copy) NSString *contentsGravity;
 @property(copy) NSString *contentsFormat;
+@property unsigned int disableUpdateMask;
 @property unsigned int edgeAntialiasingMask;
 @property(retain) id contents;
 - (_Bool)containsPoint:(struct CGPoint)arg1;
@@ -180,6 +183,7 @@
 - (void)_scrollRect:(struct CGRect)arg1 fromLayer:(id)arg2;
 - (void)scrollPoint:(struct CGPoint)arg1;
 - (void)_scrollPoint:(struct CGPoint)arg1 fromLayer:(id)arg2;
+@property _Bool definesDisplayRegionOfInterest;
 @property _Bool acceleratesDrawing;
 @property struct CGSize backgroundColorPhase;
 @property struct CGSize sizeRequisition;
@@ -203,8 +207,8 @@
 @property _Bool canDrawConcurrently;
 @property _Bool literalContentsCenter;
 @property _Bool hitTestsAsOpaque;
+@property _Bool hitTestsContentsAlphaChannel;
 @property _Bool allowsHitTesting;
-@property _Bool allowsContentsRectCornerMasking;
 - (void)setFlipped:(_Bool)arg1;
 - (_Bool)isFlipped;
 - (_Bool)doubleSided;
@@ -213,6 +217,7 @@
 - (id)CAMLTypeForKey:(id)arg1;
 - (void)encodeWithCAMLWriter:(id)arg1;
 - (void)CAMLParser:(id)arg1 setValue:(id)arg2 forKey:(id)arg3;
+- (id)recursiveDescription;
 @property(copy) NSArray *presentationModifiers;
 - (void)removePresentationModifier:(id)arg1;
 - (void)addPresentationModifier:(id)arg1;

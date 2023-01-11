@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _ignoreNextSelect;
     _Bool _didAppear;
+    _Bool _didUpdateFocus;
     double _impressionThreshold;
     _TVNeedsMoreContentEvaluator *_needsMoreContentEvaluator;
     _TVConfirmationPreviewInteractionController *_previewInteractionController;
@@ -45,6 +46,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIViewController *headerViewController; // @synthesize headerViewController=_headerViewController;
 @property(retain, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 - (void).cxx_destruct;
+- (id)_closestIndexPathToIndexPath:(id)arg1;
+- (void)_ascertainLastFocusedIndexPathInView;
 - (void)_registerCellClassesInCollectionView:(id)arg1;
 - (void)_updateHeaderView;
 - (void)_doUpdateViewLayoutAnimated:(_Bool)arg1 relayout:(_Bool)arg2;
@@ -91,6 +94,7 @@ __attribute__((visibility("hidden")))
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

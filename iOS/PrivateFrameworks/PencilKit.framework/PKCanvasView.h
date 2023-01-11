@@ -6,23 +6,24 @@
 
 #import <UIKit/UIView.h>
 
+#import <PencilKit/PKDrawableView-Protocol.h>
 #import <PencilKit/PKInternalDrawingViewDelegate-Protocol.h>
 #import <PencilKit/PKSelectionDelegate-Protocol.h>
+#import <PencilKit/PKToolPickerDelegate-Protocol.h>
 #import <PencilKit/UIDropInteractionDelegate-Protocol.h>
 
-@class CHVisualizationManager, NSString, PKController, PKDrawing, PKInk, PKInkPicker, PKInternalDrawingView, PKRecognitionOverlayView, PKRendererController, PKSelectionController, UIGestureRecognizer, UIImage;
-@protocol PKCanvasViewDelegate, PKSelectionDelegate;
+@class CHVisualizationManager, NSString, PKController, PKDrawing, PKInk, PKInternalDrawingView, PKRecognitionOverlayView, PKSelectionController, UIColor, UIGestureRecognizer, UIImage;
+@protocol PKCanvasViewDelegate, PKRendererControllerProtocol, PKSelectionDelegate;
 
-@interface PKCanvasView : UIView <PKInternalDrawingViewDelegate, PKSelectionDelegate, UIDropInteractionDelegate>
+@interface PKCanvasView : UIView <PKInternalDrawingViewDelegate, PKSelectionDelegate, PKDrawableView, UIDropInteractionDelegate, PKToolPickerDelegate>
 {
     _Bool _layerFixedPixelSize;
-    _Bool _wantsThickerInks;
     _Bool __maintainsTransformsOnLayout;
     _Bool _visualizationsEnabled;
     double _fixedDrawingScale;
     id <PKCanvasViewDelegate> _delegate;
-    PKInkPicker *_managedInkPicker;
     UIImage *_backgroundImage;
+    UIColor *_backgroundColor;
     PKRecognitionOverlayView *_overlayView;
     PKSelectionController *_selectionController;
     PKInternalDrawingView *_drawingView;
@@ -36,17 +37,21 @@
 @property(nonatomic) _Bool _maintainsTransformsOnLayout; // @synthesize _maintainsTransformsOnLayout=__maintainsTransformsOnLayout;
 @property(retain, nonatomic) PKSelectionController *selectionController; // @synthesize selectionController=_selectionController;
 @property(retain, nonatomic) PKRecognitionOverlayView *overlayView; // @synthesize overlayView=_overlayView;
+@property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(retain, nonatomic) UIImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
-@property(retain, nonatomic) PKInkPicker *managedInkPicker; // @synthesize managedInkPicker=_managedInkPicker;
 @property(nonatomic) __weak id <PKCanvasViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) _Bool wantsThickerInks; // @synthesize wantsThickerInks=_wantsThickerInks;
 @property(readonly, nonatomic) _Bool _layerFixedPixelSize; // @synthesize _layerFixedPixelSize;
 @property(readonly, nonatomic) double _fixedDrawingScale; // @synthesize _fixedDrawingScale;
 @property(readonly, nonatomic) struct CGSize _fixedPixelSize; // @synthesize _fixedPixelSize;
 - (void).cxx_destruct;
+- (id)canvasViewForToolPicker:(id)arg1;
+- (id)undoManagerForToolPicker:(id)arg1;
+- (id)selectedInkForToolPicker:(id)arg1;
+- (void)toolPicker:(id)arg1 setSelectedInk:(id)arg2;
+- (void)replaceWithStrokesFromDrawing:(id)arg1 transform:(struct CGAffineTransform)arg2;
 - (void)applyCommand:(id)arg1 toDrawing:(id)arg2;
 - (void)resetSelectedStrokeStateForRenderer;
-- (void)toggleSelectedStrokes:(id)arg1 hide:(_Bool)arg2 inDrawing:(id)arg3;
+- (void)toggleSelectedStrokes:(id)arg1 hide:(_Bool)arg2 inDrawing:(id)arg3 isErasing:(_Bool)arg4;
 - (void)performUndo:(id)arg1;
 - (struct CGAffineTransform)imageTransform;
 - (id)keyCommands;
@@ -58,8 +63,9 @@
 - (struct CGPoint)closestPointForPastedSelectionRect:(struct CGRect)arg1 withDrawing:(id *)arg2;
 - (id)drawingForSelectionRect:(struct CGRect)arg1;
 - (id)drawingForUUID:(id)arg1;
-- (_Bool)containsDrawingUUID:(id)arg1;
+- (_Bool)canModifyWhitespace;
 - (_Bool)isValidDropPointForStrokes:(struct CGPoint)arg1;
+- (id)visibleStrokesOnscreen:(id)arg1 forDrawing:(id)arg2;
 - (struct CGPoint)pointInStrokeSpace:(struct CGPoint)arg1 inDrawing:(id)arg2;
 - (void)selectionRefreshWithChangeToDrawings:(id)arg1;
 - (id)selectionTopView;
@@ -85,11 +91,11 @@
 - (void)setOpaque:(_Bool)arg1;
 - (void)_drawingDisplay;
 - (void)_setNeedsDrawingDisplay;
-@property(readonly, nonatomic) PKRendererController *_rendererController;
+@property(readonly, nonatomic) id <PKRendererControllerProtocol> _rendererController;
 @property(readonly, nonatomic) PKController *_drawingController;
 - (void)imageWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (struct CGImage *)image;
 - (void)eraseAll;
+- (void)drawStrokeWithPoints:(struct CGPoint *)arg1 count:(unsigned long long)arg2;
 - (void)drawStrokeWithPath:(struct CGPath *)arg1;
 - (void)_setDrawing:(id)arg1 alreadyRenderedDrawing:(id)arg2 imageForAlreadyRenderedDrawing:(id)arg3 fullyRenderedCompletionBlock:(CDUnknownBlockType)arg4;
 @property(copy, nonatomic) PKDrawing *drawing;
@@ -110,7 +116,6 @@
 @property(readonly, nonatomic) UIView *selectionView;
 @property(readonly, nonatomic, getter=_pinchGestureRecognizer) UIGestureRecognizer *pinchGestureRecognizer;
 @property(readonly, nonatomic, getter=_drawingGestureRecognizer) UIGestureRecognizer *drawingGestureRecognizer;
-- (void)pickInk;
 - (void)layoutSubviews;
 - (void)commitSelectionIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)canBecomeFirstResponder;

@@ -6,11 +6,10 @@
 
 @interface CKModifyBadgeOperation
 {
-    unsigned long long _badgeValue;
     CDUnknownBlockType _modifyBadgeCompletionBlock;
+    unsigned long long _badgeValue;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType modifyBadgeCompletionBlock; // @synthesize modifyBadgeCompletionBlock=_modifyBadgeCompletionBlock;
 @property(nonatomic) unsigned long long badgeValue; // @synthesize badgeValue=_badgeValue;
 - (void).cxx_destruct;
 - (id)activityCreate;
@@ -19,6 +18,7 @@
 - (void)fillOutOperationInfo:(id)arg1;
 - (void)performCKOperation;
 - (_Bool)hasCKOperationCallbacksSet;
+@property(copy, nonatomic) CDUnknownBlockType modifyBadgeCompletionBlock; // @synthesize modifyBadgeCompletionBlock=_modifyBadgeCompletionBlock;
 - (id)initWithBadgeValue:(unsigned long long)arg1;
 - (id)init;
 

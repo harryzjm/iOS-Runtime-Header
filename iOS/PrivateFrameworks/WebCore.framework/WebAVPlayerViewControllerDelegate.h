@@ -13,19 +13,21 @@
 __attribute__((visibility("hidden")))
 @interface WebAVPlayerViewControllerDelegate : NSObject <AVPlayerViewControllerDelegate_WebKitOnly>
 {
-    struct RefPtr<WebCore::WebVideoFullscreenInterfaceAVKit> _fullscreenInterface;
+    struct RefPtr<WebCore::VideoFullscreenInterfaceAVKit, WTF::DumbPtrTraits<WebCore::VideoFullscreenInterfaceAVKit>> _fullscreenInterface;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (_Bool)playerViewControllerShouldStartPictureInPictureFromInlineWhenEnteringBackground:(id)arg1;
 - (void)playerViewController:(id)arg1 restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)playerViewController:(id)arg1 shouldExitFullScreenWithReason:(long long)arg2;
+- (_Bool)playerViewControllerShouldAutomaticallyDismissAtPictureInPictureStart:(id)arg1;
 - (void)playerViewControllerDidStopPictureInPicture:(id)arg1;
 - (void)playerViewControllerWillStopPictureInPicture:(id)arg1;
-- (void)playerViewControllerFailedToStartPictureInPicture:(id)arg1 withError:(id)arg2;
+- (void)playerViewController:(id)arg1 failedToStartPictureInPictureWithError:(id)arg2;
 - (void)playerViewControllerDidStartPictureInPicture:(id)arg1;
 - (void)playerViewControllerWillStartPictureInPicture:(id)arg1;
-@property struct WebVideoFullscreenInterfaceAVKit *fullscreenInterface;
+@property struct VideoFullscreenInterfaceAVKit *fullscreenInterface;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

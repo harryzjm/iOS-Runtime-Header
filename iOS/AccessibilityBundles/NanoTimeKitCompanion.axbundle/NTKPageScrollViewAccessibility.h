@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NTKPageScrollViewControllerAccessibility;
+
 @interface NTKPageScrollViewAccessibility
 {
-    id _accessibilityPageScrollViewController;
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-@property(nonatomic, getter=_accessibilityPageScrollViewController, setter=_accessibilitySetPageScrollViewController:) id accessibilityPageScrollViewController; // @synthesize accessibilityPageScrollViewController=_accessibilityPageScrollViewController;
+@property(nonatomic) __weak NTKPageScrollViewControllerAccessibility *accessibilityPageScrollViewController;
 - (id)_accessibilityGetCurrentPageView;
 - (void)_accessibilityScrollToIndex:(unsigned long long)arg1;
 - (id)_accessibilityScrollStatus;

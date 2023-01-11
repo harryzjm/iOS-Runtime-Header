@@ -13,6 +13,9 @@
 + (id)safeCategoryTargetClassName;
 - (void)_removePassphraseViewFromHierarchyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_addPassphraseViewControllerToHierarchy:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_handleModelUpdate;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)_accessibilitySetTotalMetaLabel;
 
 @end
 

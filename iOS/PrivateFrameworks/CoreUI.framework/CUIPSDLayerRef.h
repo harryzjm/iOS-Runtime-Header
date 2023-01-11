@@ -4,7 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
 @interface CUIPSDLayerRef
 {
 }
@@ -21,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (id)imageIsZeroSizeImage:(_Bool *)arg1;
 - (id)image;
 - (struct CGImage *)createCGImage;
-- (void)dealloc;
 - (id)initWithImageRef:(id)arg1 layerIndex:(unsigned int)arg2;
 
 @end

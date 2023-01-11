@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
 @class NSData, NSString;
 
-@interface DMFOpenAppRequest : CATTaskRequest
+@interface DMFOpenAppRequest
 {
+    _Bool _lockInApp;
     NSString *_bundleIdentifier;
     NSString *_activityType;
     NSData *_activityData;
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)isPermittedOnUserConnection;
++ (_Bool)isPermittedOnSystemConnection;
++ (id)permittedPlatforms;
+@property(nonatomic) _Bool lockInApp; // @synthesize lockInApp=_lockInApp;
 @property(copy, nonatomic) NSData *activityData; // @synthesize activityData=_activityData;
 @property(copy, nonatomic) NSString *activityType; // @synthesize activityType=_activityType;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;

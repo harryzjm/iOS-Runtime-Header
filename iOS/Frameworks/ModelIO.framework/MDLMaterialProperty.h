@@ -24,10 +24,12 @@
     MDLMaterialPropertyNode *_node;
     MDLMaterialProperty *_overrider;
     MDLMaterialProperty *_overridee;
+    _Bool _isDefaultValue;
     unsigned long long _type;
     CDStruct_14d5dc5e _matrix4x4;
 }
 
+@property(nonatomic) _Bool isDefaultValue; // @synthesize isDefaultValue=_isDefaultValue;
 @property(nonatomic) CDStruct_14d5dc5e matrix4x4; // @synthesize matrix4x4=_matrix4x4;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 - (void).cxx_destruct;

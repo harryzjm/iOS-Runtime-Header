@@ -8,13 +8,11 @@
 
 @interface CKDiscoverUserIdentitiesOperation
 {
-    NSArray *_userIdentityLookupInfos;
     CDUnknownBlockType _userIdentityDiscoveredBlock;
     CDUnknownBlockType _discoverUserIdentitiesCompletionBlock;
+    NSArray *_userIdentityLookupInfos;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType discoverUserIdentitiesCompletionBlock; // @synthesize discoverUserIdentitiesCompletionBlock=_discoverUserIdentitiesCompletionBlock;
-@property(copy, nonatomic) CDUnknownBlockType userIdentityDiscoveredBlock; // @synthesize userIdentityDiscoveredBlock=_userIdentityDiscoveredBlock;
 @property(copy, nonatomic) NSArray *userIdentityLookupInfos; // @synthesize userIdentityLookupInfos=_userIdentityLookupInfos;
 - (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
@@ -24,6 +22,8 @@
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
 - (Class)operationInfoClass;
+@property(copy, nonatomic) CDUnknownBlockType discoverUserIdentitiesCompletionBlock; // @synthesize discoverUserIdentitiesCompletionBlock=_discoverUserIdentitiesCompletionBlock;
+@property(copy, nonatomic) CDUnknownBlockType userIdentityDiscoveredBlock; // @synthesize userIdentityDiscoveredBlock=_userIdentityDiscoveredBlock;
 - (id)initWithUserIdentityLookupInfos:(id)arg1;
 - (id)init;
 

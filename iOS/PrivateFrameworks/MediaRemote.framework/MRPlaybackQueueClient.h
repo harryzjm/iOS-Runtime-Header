@@ -4,20 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray;
+@class NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface MRPlaybackQueueClient : NSObject
 {
-    NSMutableArray *_clients;
+    NSMutableDictionary *_controllers;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-- (id)description;
-- (id)playbackQueueClientForPlayerPath:(void *)arg1;
-@property(readonly, nonatomic) NSArray *playbackQueueClients;
+- (void).cxx_destruct;
+- (void)_handleOriginRemovedNotification:(id)arg1;
+- (void)_handleApplicationRemovedNotification:(id)arg1;
+- (void)_handlePlayerPathRemovedNotification:(id)arg1;
+- (id)subscriptionControllerForPlayerPath:(id)arg1;
 - (void)dealloc;
 - (id)initWithQueue:(id)arg1;
 

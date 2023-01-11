@@ -24,7 +24,7 @@
 - (_Bool)markDetectionInProgress;
 - (void)_accessibilityHandleMetadataOutput:(id)arg1;
 - (void)updateAccessibleFaceElementsWithFaces:(id)arg1;
-- (void)_handleFaceOutput:(id)arg1;
+- (void)_handleMetadataOutputFaces:(id)arg1 QRCodes:(id)arg2;
 - (void)captureOutput:(id)arg1 didOutputMetadataObjects:(id)arg2 fromConnection:(id)arg3;
 - (void)performDetectionsWithSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (void)captureOutput:(id)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;

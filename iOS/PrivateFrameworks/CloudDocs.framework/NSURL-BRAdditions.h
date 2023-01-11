@@ -8,6 +8,7 @@
 
 @interface NSURL (BRAdditions)
 + (void)br_containerIDsWithExternalReferencesTo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)br_documentURLFromBookmarkableString:(id)arg1 error:(id *)arg2;
 + (void)br_documentURLFromBookmarkableString:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)br_documentURLFromFileObjectID:(id)arg1 error:(id *)arg2;
 - (unsigned short)br_capabilityToMoveToURL:(id)arg1 error:(id *)arg2;
@@ -20,6 +21,7 @@
 - (_Bool)br_isPromiseURL;
 - (id)br_logicalURL;
 - (id)br_physicalURL;
+- (id)br_documentRecordIDWithError:(id *)arg1;
 - (id)br_itemID;
 - (id)br_URLByResolvingExternalDocumentReferenceWithError:(id *)arg1;
 - (id)br_URLByResolvingInProcessExternalDocumentReferenceWithProperties:(id)arg1;

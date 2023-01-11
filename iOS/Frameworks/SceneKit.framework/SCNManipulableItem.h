@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class SCNNode;
 
@@ -27,7 +27,7 @@
 - (id)parentItem;
 - (void)setPosition:(struct SCNVector3)arg1;
 - (struct SCNVector3)scale;
-- (struct SCNMatrix4)worldTransform;
+@property(nonatomic) struct SCNMatrix4 worldTransform;
 @property(nonatomic) struct SCNMatrix4 transform;
 - (_Bool)isNodeManipulator;
 - (unsigned long long)hash;

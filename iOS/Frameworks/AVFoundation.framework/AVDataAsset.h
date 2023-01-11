@@ -6,6 +6,7 @@
 
 @class AVAssetInspectorLoader, NSArray, NSDictionary;
 
+__attribute__((visibility("hidden")))
 @interface AVDataAsset
 {
     NSDictionary *_initializationOptions;

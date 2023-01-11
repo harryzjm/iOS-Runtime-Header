@@ -6,29 +6,29 @@
 
 #import <objc/NSObject.h>
 
+#import <DiagnosticExtensionsDaemon/DEDSecureArchiving-Protocol.h>
 #import <DiagnosticExtensionsDaemon/IDSServiceDelegate-Protocol.h>
 
-@class IDSService, NSMutableArray, NSString;
-@protocol DEDClientProtocol, IDSServiceDelegate, OS_dispatch_group, OS_dispatch_queue, OS_os_log;
+@class IDSService, NSString;
+@protocol DEDClientProtocol, IDSServiceDelegate, OS_dispatch_queue, OS_os_log;
 
-@interface DEDIDSConnection : NSObject <IDSServiceDelegate>
+@interface DEDIDSConnection : NSObject <IDSServiceDelegate, DEDSecureArchiving>
 {
     id <DEDClientProtocol> _remoteSideDelegate;
     NSObject<OS_os_log> *_log;
     IDSService *_service;
     NSObject<OS_dispatch_queue> *_run_queue;
-    NSObject<OS_dispatch_group> *_request_group;
-    NSMutableArray *_availableDevices;
+    NSObject<OS_dispatch_queue> *_discovery_queue;
     id <IDSServiceDelegate> _incomingDelegate;
     CDUnknownBlockType _deviceStatusCallback;
 }
 
 + (id)unpackProtobuf:(id)arg1;
 + (id)packPayload:(id)arg1;
++ (id)archivedClasses;
 @property(copy) CDUnknownBlockType deviceStatusCallback; // @synthesize deviceStatusCallback=_deviceStatusCallback;
 @property(retain) id <IDSServiceDelegate> incomingDelegate; // @synthesize incomingDelegate=_incomingDelegate;
-@property(retain) NSMutableArray *availableDevices; // @synthesize availableDevices=_availableDevices;
-@property(retain) NSObject<OS_dispatch_group> *request_group; // @synthesize request_group=_request_group;
+@property(retain) NSObject<OS_dispatch_queue> *discovery_queue; // @synthesize discovery_queue=_discovery_queue;
 @property(retain) NSObject<OS_dispatch_queue> *run_queue; // @synthesize run_queue=_run_queue;
 @property(retain) IDSService *service; // @synthesize service=_service;
 @property(retain) NSObject<OS_os_log> *log; // @synthesize log=_log;

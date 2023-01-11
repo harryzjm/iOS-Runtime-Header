@@ -6,15 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@interface _DKKnowledgeStorageLogging : NSObject
+#import <CoreDuet/_DKKnowledgeStorageEventNotificationDelegate-Protocol.h>
+
+@protocol OS_dispatch_queue;
+
+@interface _DKKnowledgeStorageLogging : NSObject <_DKKnowledgeStorageEventNotificationDelegate>
 {
+    NSObject<OS_dispatch_queue> *_notificationQueue;
 }
 
-+ (void)_knowledgeStorageDidInsertLocalEvents:(id)arg1;
-+ (void)_knowledgeStorageDidInsertEvents:(id)arg1;
-+ (void)_updateCounter:(id)arg1 notification:(id)arg2;
-+ (id)portraitStreamNames;
-+ (void)load;
++ (id)sharedInstance;
+@property(readonly) NSObject<OS_dispatch_queue> *notificationQueue; // @synthesize notificationQueue=_notificationQueue;
+- (void).cxx_destruct;
+- (void)knowledgeStorage:(id)arg1 didTombstoneEventsWithStreamNameCounts:(id)arg2;
+- (void)knowledgeStorage:(id)arg1 didDeleteEventsWithStreamNameCounts:(id)arg2;
+- (void)knowledgeStorage:(id)arg1 didInsertLocalEventsWithStreamNameCounts:(id)arg2;
+- (void)knowledgeStorage:(id)arg1 didInsertEventsWithStreamNameCounts:(id)arg2;
+- (void)_sendDistributedNotificationName:(id)arg1 streamNameCounts:(id)arg2;
+- (void)_sendDistributedNotificationName:(id)arg1;
+- (void)_sendDistributedNotificationName:(id)arg1 object:(id)arg2 throttledActivityName:(id)arg3;
+- (void)_updateCounter:(id)arg1 streamNameCounts:(id)arg2;
+- (id)streamNamesNotificationWhitelist;
+- (id)portraitStreamNames;
+- (id)init;
 
 @end
 

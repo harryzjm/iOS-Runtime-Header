@@ -46,6 +46,7 @@
 - (id)initWithShape:(id)arg1 dataType:(long long)arg2 error:(id *)arg3;
 - (double *)doublePointer;
 - (_Bool)isEqualToMultiArray:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (_Bool)isContiguousInOrder:(long long)arg1;
 @property(readonly, nonatomic, getter=isContiguous) _Bool contiguous;
 @property(readonly, nonatomic, getter=isManagingData) _Bool managingData;
@@ -56,6 +57,10 @@
 - (id)numberArray;
 - (_Bool)setRangeWithRawData:(id)arg1 destIndex:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)fillWithNumber:(id)arg1;
+- (id)sequeezeDimensions:(id)arg1 error:(id *)arg2;
+- (id)sequeeze;
+- (id)sliceAtOrigin:(id)arg1 shape:(id)arg2 squeeze:(_Bool)arg3 error:(id *)arg4;
+- (void *)multiArrayBuffer;
 - (id)debugQuickLookObject;
 
 @end

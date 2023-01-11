@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <NewsCore/FCJSONEncodableObjectProviding-Protocol.h>
 #import <NewsCore/NSCopying-Protocol.h>
 #import <NewsCore/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSSet, NTPBPersonalizationWhitelist;
 
-@interface FCPersonalizationWhitelist : NSObject <NSSecureCoding, NSCopying>
+@interface FCPersonalizationWhitelist : NSObject <NSSecureCoding, NSCopying, FCJSONEncodableObjectProviding>
 {
     NTPBPersonalizationWhitelist *_pbWhitelist;
     NSSet *_portraitDisabledTagIDs;
@@ -22,6 +23,7 @@
 @property(retain, nonatomic) NSDictionary *whitelist; // @synthesize whitelist=_whitelist;
 @property(retain, nonatomic) NSSet *portraitDisabledTagIDs; // @synthesize portraitDisabledTagIDs=_portraitDisabledTagIDs;
 - (void).cxx_destruct;
+- (id)jsonEncodableObject;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

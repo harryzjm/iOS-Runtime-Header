@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSDescriptionProviding-Protocol.h>
 
@@ -25,7 +25,8 @@
 + (id)bundleWithPath:(id)arg1;
 + (id)bundleForPID:(int)arg1;
 + (id)mainBundle;
-@property(readonly, retain, nonatomic) NSObject<OS_xpc_object> *xpcBundle; // @synthesize xpcBundle=_xpcBundle;
+@property(readonly, nonatomic) NSObject<OS_xpc_object> *xpcBundle; // @synthesize xpcBundle=_xpcBundle;
+- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
@@ -35,8 +36,7 @@
 @property(readonly, copy, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
 @property(readonly, copy, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-- (void)dealloc;
-- (id)bundleWithXPCBundle:(id)arg1;
+- (id)initWithXPCBundle:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -7,19 +7,21 @@
 #import <objc/NSObject.h>
 
 #import <HomeUI/HUPresentationDelegate-Protocol.h>
-#import <HomeUI/HUQuickControlViewControllerDelegate-Protocol.h>
+#import <HomeUI/HUQuickControlContainerViewControllerDelegate-Protocol.h>
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <HomeUI/UITraitEnvironment-Protocol.h>
 
-@class HUForceInterpolatedPressGestureRecognizer, HUPressedItemContext, HUQuickControlPresentationContext, HUQuickControlViewController, NSMapTable, NSMutableSet, NSString, UITraitCollection, UIView, UIViewController;
+@class HUForceInterpolatedPressGestureRecognizer, HUPressedItemContext, HUQuickControlContainerViewController, HUQuickControlPresentationContext, NSMapTable, NSMutableSet, NSString, UITapGestureRecognizer, UITraitCollection, UIView, UIViewController;
 @protocol HUQuickControlPresentationCoordinatorDelegate, NACancelable;
 
-@interface HUQuickControlPresentationCoordinator : NSObject <HUQuickControlViewControllerDelegate, HUPresentationDelegate, UIGestureRecognizerDelegate, UITraitEnvironment>
+@interface HUQuickControlPresentationCoordinator : NSObject <HUQuickControlContainerViewControllerDelegate, HUPresentationDelegate, UIGestureRecognizerDelegate, UITraitEnvironment>
 {
     HUQuickControlPresentationContext *_presentationContext;
-    HUQuickControlViewController *_quickControlViewController;
+    HUQuickControlContainerViewController *_quickControlViewController;
     UIView *_targetView;
     id <HUQuickControlPresentationCoordinatorDelegate> _delegate;
+    UITapGestureRecognizer *_singleTapGestureRecognizer;
+    UITapGestureRecognizer *_doubleTapGestureRecognizer;
     HUForceInterpolatedPressGestureRecognizer *_pressGestureRecognizer;
     NSMutableSet *_mutuallyExclusiveGestureRecognizers;
     id <NACancelable> _pressGestureActiveTimerCancellationToken;
@@ -30,9 +32,11 @@
 @property(retain, nonatomic) id <NACancelable> pressGestureActiveTimerCancellationToken; // @synthesize pressGestureActiveTimerCancellationToken=_pressGestureActiveTimerCancellationToken;
 @property(readonly, nonatomic) NSMutableSet *mutuallyExclusiveGestureRecognizers; // @synthesize mutuallyExclusiveGestureRecognizers=_mutuallyExclusiveGestureRecognizers;
 @property(retain, nonatomic) HUForceInterpolatedPressGestureRecognizer *pressGestureRecognizer; // @synthesize pressGestureRecognizer=_pressGestureRecognizer;
+@property(retain, nonatomic) UITapGestureRecognizer *doubleTapGestureRecognizer; // @synthesize doubleTapGestureRecognizer=_doubleTapGestureRecognizer;
+@property(retain, nonatomic) UITapGestureRecognizer *singleTapGestureRecognizer; // @synthesize singleTapGestureRecognizer=_singleTapGestureRecognizer;
 @property(nonatomic) __weak id <HUQuickControlPresentationCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) __weak UIView *targetView; // @synthesize targetView=_targetView;
-@property(retain, nonatomic) HUQuickControlViewController *quickControlViewController; // @synthesize quickControlViewController=_quickControlViewController;
+@property(retain, nonatomic) HUQuickControlContainerViewController *quickControlViewController; // @synthesize quickControlViewController=_quickControlViewController;
 @property(retain, nonatomic) HUQuickControlPresentationContext *presentationContext; // @synthesize presentationContext=_presentationContext;
 - (void).cxx_destruct;
 - (void)_logUserMetricsAfterPress;
@@ -43,6 +47,7 @@
 - (id)quickControlViewController:(id)arg1 applierForSourceViewTransitionWithAnimationSettings:(id)arg2 presenting:(_Bool)arg3;
 - (double)quickControlViewController:(id)arg1 sourceViewInitialScaleForPresentation:(_Bool)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 @property(readonly, nonatomic, getter=isQuickControlPresented) _Bool quickControlIsPresented;
 - (void)_cleanupForQuickControlDismissal;
@@ -50,8 +55,8 @@
 - (id)dismissQuickControlAnimated:(_Bool)arg1;
 - (id)dismissQuickControlAnimated:(_Bool)arg1 wasDismissed:(_Bool *)arg2;
 - (void)_validatePresentationContext:(id)arg1;
-- (void)_beginControlPresentation;
-- (void)presentQuickControlAnimatedWithContext:(id)arg1;
+- (id)_beginControlPresentationAnimated:(_Bool)arg1;
+- (id)presentQuickControlWithContext:(id)arg1 animated:(_Bool)arg2;
 - (void)_endUsingTapticFeedbackIfAvailable;
 - (void)_actuateTapticFeedbackIfAvailable;
 - (void)_prepareForTapticFeedbackIfAvailable;
@@ -59,12 +64,15 @@
 - (void)_updateOverrideAttributesWithTransform:(struct CGAffineTransform)arg1 alpha:(double)arg2 forItem:(id)arg3;
 - (void)_updateOverrideAttributesWithScale:(double)arg1 forItem:(id)arg2;
 - (id)_createPressedContextForItem:(id)arg1 userInitiated:(_Bool)arg2;
+- (void)_initiateProgrammaticBounceForItem:(id)arg1;
 - (void)_configureInitialStateForPressedItemContext:(id)arg1 userInitiated:(_Bool)arg2;
-- (void)_preparePressedItemContextForPresentationContext:(id)arg1 startApplier:(_Bool)arg2;
+- (void)_preparePressedItemContextForItem:(id)arg1 startApplier:(_Bool)arg2;
 - (void)_pressGestureDidEnd:(_Bool)arg1;
 - (void)_pressGestureDidBecomeActive;
 - (void)_pressGestureDidBeginWithLocation:(struct CGPoint)arg1;
 - (void)_handlePressGesture:(id)arg1;
+- (void)_handleDoubleTapGesture:(id)arg1;
+- (void)_handleSingleTapGesture:(id)arg1;
 - (void)_installGestureRecognizer;
 - (id)_gestureInstallationView;
 - (void)_handleMutuallyExclusiveGesture:(id)arg1;

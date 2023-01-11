@@ -4,13 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <MediaPlayer/MPNowPlayingContentItemArtworkDataSource-Protocol.h>
-
-@class NSString;
-
-@interface MPMediaItemArtwork : NSObject <MPNowPlayingContentItemArtworkDataSource>
+@interface MPMediaItemArtwork : NSObject
 {
     struct CGSize _bounds;
     CDUnknownBlockType _requestHandler;
@@ -26,13 +22,6 @@
 - (id)initWithBoundsSize:(struct CGSize)arg1 requestHandler:(CDUnknownBlockType)arg2;
 - (id)initWithImage:(id)arg1;
 - (id)init;
-- (void)nowPlayingInfoCenter:(id)arg1 artworkForContentItem:(id)arg2 size:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

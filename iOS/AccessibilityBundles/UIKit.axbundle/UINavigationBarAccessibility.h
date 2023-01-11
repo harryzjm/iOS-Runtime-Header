@@ -20,6 +20,9 @@
 - (_Bool)_accessibilityOnlyComparesByXAxis;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityFetchCachedNavBarElements;
+- (id)_accessibilityRightButtonElements;
+- (id)_accessibilityLeftButtonElements;
+- (_Bool)_accessibilityHasLeftRightButtonCountChanged;
 - (id)accessibilityElements;
 - (_Bool)accessibilityPerformEscape;
 - (id)accessibilityIdentifier;

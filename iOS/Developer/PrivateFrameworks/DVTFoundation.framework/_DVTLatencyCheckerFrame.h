@@ -36,8 +36,6 @@
 - (void).cxx_destruct;
 - (void)enumerateFramesWithBlock:(CDUnknownBlockType)arg1;
 - (void)logToSoftAssertWithID:(id)arg1;
-- (void)fileRadarWithFrame:(id)arg1 log:(id)arg2 canFileNewProblem:(_Bool)arg3 completionBlock:(CDUnknownBlockType)arg4;
-- (void)fileRadarWithLog:(id)arg1 minimumDuration:(double)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)fileRadarWithLog:(id)arg1;
 - (id)identifiersForRadarSignature;
 - (id)_fetchFrameForRadarSignatureWithMinimumDuration:(double)arg1;

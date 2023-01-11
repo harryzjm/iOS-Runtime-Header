@@ -9,6 +9,7 @@
 @protocol MTLBuffer, MTLResource, MTLTexture;
 
 @protocol MTLTexture <MTLResource>
+@property(readonly) _Bool allowGPUOptimizedContents;
 @property(readonly, getter=isFramebufferOnly) _Bool framebufferOnly;
 @property(readonly) unsigned long long usage;
 @property(readonly) unsigned long long arrayLength;

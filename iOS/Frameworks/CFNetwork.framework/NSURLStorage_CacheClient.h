@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CFNetwork/NSURLStorageCacheClient-Protocol.h>
 
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)notifyCacheClientOfTimeRelativeResponses:(id)arg1;
 - (void)notifyCachedURLResponseBecameFileBacked:(id)arg1 filePath:(id)arg2 forUUID:(id)arg3;
+- (void)flushWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setMinSizeForVMCachedResource:(long long)arg1;
 - (long long)currentDiskUsage;
 - (void)copyAllPartitionNamesWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
 @class NSArray;
 
-@interface DMFValidateApplicationsRequest : CATTaskRequest
+@interface DMFValidateApplicationsRequest
 {
     NSArray *_bundleIdentifiers;
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)isPermittedOnUserConnection;
++ (_Bool)isPermittedOnSystemConnection;
++ (id)permittedPlatforms;
 @property(copy, nonatomic) NSArray *bundleIdentifiers; // @synthesize bundleIdentifiers=_bundleIdentifiers;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

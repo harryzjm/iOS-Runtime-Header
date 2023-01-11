@@ -7,6 +7,7 @@
 #import <Foundation/NSBlockOperation.h>
 
 @interface NSBlockOperation (DVTMainThreadLatencyCheckerAdditions)
++ (id)__DVTMainThreadLatencyChecker__blockOperationWithBlock:(CDUnknownBlockType)arg1;
 - (void)__DVTMainThreadLatencyChecker__addExecutionBlock:(CDUnknownBlockType)arg1;
 @end
 

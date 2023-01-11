@@ -14,6 +14,7 @@
 - (id)_accessibilityUserTestingChildren;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)_axCloseTab;
+- (id)_accessibilityCustomActionGroupIdentifier;
 - (id)accessibilityCustomActions;
 - (_Bool)_accessibilityRetainsCustomRotorActionSetting;
 - (id)accessibilityPath;

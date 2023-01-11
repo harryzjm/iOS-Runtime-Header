@@ -9,12 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (struct CGRect)titleFrame;
-- (id)renderersWithRep:(id)arg1;
-- (void)p_layoutOutward;
-- (void)p_layoutInward;
-- (void)buildSubTree;
-- (id)seriesIndexedPieNormalizedLabelDistancesFromWedgeTips;
+- (Class)bodyLayoutItemClass;
 
 @end
 

@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DVTFoundation/NSCoding-Protocol.h>
+#import <DVTFoundation/NSSecureCoding-Protocol.h>
 
 @class DVTQuickLookPage;
 
-@interface DVTQuickLookDocumentLocation <NSCoding>
+@interface DVTQuickLookDocumentLocation <NSSecureCoding>
 {
     DVTQuickLookPage *_page;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(readonly) DVTQuickLookPage *page; // @synthesize page=_page;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

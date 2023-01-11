@@ -64,6 +64,7 @@
 - (id)_trailingSeparatorCreateIfNeeded:(_Bool)arg1;
 - (id)_leadingSeparatorCreateIfNeeded:(_Bool)arg1;
 - (id)_disclosureButtonCreateIfNeeded:(_Bool)arg1;
+- (void)tintColorDidChange;
 - (void)updateConstraints;
 
 @end

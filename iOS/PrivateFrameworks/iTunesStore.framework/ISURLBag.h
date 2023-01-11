@@ -60,6 +60,7 @@
 - (id)networkConstraintsForDownloadKind:(id)arg1;
 @property(readonly, nonatomic, getter=isValid) _Bool valid;
 @property(readonly) NSSet *availableStorefrontItemKinds;
+- (void)_toggleStopSendingLocalCookies;
 - (_Bool)loadFromDictionary:(id)arg1 returningError:(id *)arg2;
 - (id)copyExtraHeadersForURL:(id)arg1;
 - (id)initWithURLBagContext:(id)arg1;

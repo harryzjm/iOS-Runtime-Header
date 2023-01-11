@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HealthKit/NSSecureCoding-Protocol.h>
-
 @class HKQuantity, NSDate, NSDateComponents;
 
 __attribute__((visibility("hidden")))
-@interface _HKHeartRateHistogramQueryServerConfiguration <NSSecureCoding>
+@interface _HKHeartRateHistogramQueryServerConfiguration
 {
     NSDate *_startDate;
     NSDate *_endDate;
@@ -21,16 +19,17 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) HKQuantity *histogramBucketSize; // @synthesize histogramBucketSize=_histogramBucketSize;
-@property(retain, nonatomic) HKQuantity *histogramAnchor; // @synthesize histogramAnchor=_histogramAnchor;
-@property(retain, nonatomic) NSDateComponents *intervalComponents; // @synthesize intervalComponents=_intervalComponents;
-@property(retain, nonatomic) NSDate *anchorDate; // @synthesize anchorDate=_anchorDate;
+@property(copy, nonatomic) HKQuantity *histogramBucketSize; // @synthesize histogramBucketSize=_histogramBucketSize;
+@property(copy, nonatomic) HKQuantity *histogramAnchor; // @synthesize histogramAnchor=_histogramAnchor;
+@property(copy, nonatomic) NSDateComponents *intervalComponents; // @synthesize intervalComponents=_intervalComponents;
+@property(copy, nonatomic) NSDate *anchorDate; // @synthesize anchorDate=_anchorDate;
 @property(nonatomic) long long contextStyle; // @synthesize contextStyle=_contextStyle;
-@property(retain, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
-@property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property(copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property(copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

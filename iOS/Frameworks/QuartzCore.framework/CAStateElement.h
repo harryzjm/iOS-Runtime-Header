@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuartzCore/NSCopying-Protocol.h>
 #import <QuartzCore/NSSecureCoding-Protocol.h>
@@ -21,6 +21,7 @@
 + (void)CAMLParserStartElement:(id)arg1;
 @property(retain, nonatomic) CAStateElement *source; // @synthesize source=_source;
 @property(nonatomic) __weak CALayer *target; // @synthesize target=_target;
+- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)CAMLTypeForKey:(id)arg1;

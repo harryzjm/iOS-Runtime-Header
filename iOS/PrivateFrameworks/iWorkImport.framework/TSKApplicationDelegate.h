@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <iWorkImport/TSKApplicationDelegate-Protocol.h>
-
-@class NSArray, NSDate, NSString;
+@class NSArray, NSData, NSDate, NSString;
 @protocol TSKCompatibilityDelegate;
 
 __attribute__((visibility("hidden")))
-@interface TSKApplicationDelegate : NSObject <TSKApplicationDelegate>
+@interface TSKApplicationDelegate : NSObject
 {
     id <TSKCompatibilityDelegate> _compatibilityDelegate;
     NSArray *_availableLanguages;
@@ -34,7 +32,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSDate *applicationLaunchTime;
 @property(readonly, nonatomic) NSString *bladerunnerContainerIdentifier;
 @property(readonly, nonatomic) NSString *cloudKitContainerIdentifier;
-@property(copy, nonatomic) id appTextDefaults;
+@property(readonly, copy, nonatomic) NSData *iWorkTextDefaultsPassphraseVerifier;
+- (void)setAppTextDefaults:(id)arg1 passphraseVerifier:(id)arg2;
+@property(readonly, copy, nonatomic) id appTextDefaults;
 @property(copy, nonatomic) NSString *iWorkAuthorPrivateID; // @dynamic iWorkAuthorPrivateID;
 @property(nonatomic) unsigned long long iWorkAuthorColorIndex;
 @property(copy, nonatomic) NSString *iWorkAuthorName;
@@ -47,15 +47,19 @@ __attribute__((visibility("hidden")))
 - (_Bool)openURL:(id)arg1;
 - (id)invalidURLSchemes;
 - (Class)drawableInfoSubclassForClass:(Class)arg1 unarchiver:(id)arg2;
-@property(readonly, nonatomic) _Bool supportsNativeEquations;
+@property(readonly, nonatomic) _Bool supportsInlineNativeEquationObjects;
 - (id)appChartPropertyOverrides;
 - (void)customizeHyperlinkViewController:(id)arg1;
 - (id)previewImageForType:(id)arg1;
+@property(readonly, nonatomic) _Bool imageGalleryCaptionsUsePlaceholderText;
 - (_Bool)shouldValidateMasterLayoutWhileInsertingRows;
+@property(readonly, nonatomic) _Bool supportsCanvasNativeEquationObjects;
+@property(readonly, nonatomic) _Bool supportsLinkedTextBoxes;
 - (_Bool)supportsAutosizingTextboxes;
 - (_Bool)supportsShrinkTextToFit;
 - (_Bool)sidebarPositionRespectsUserInterfaceLayoutDirection;
 - (_Bool)supportsRTL;
+@property(readonly, nonatomic) _Bool supportsFreehandAnimationUI;
 @property(readonly, nonatomic) _Bool supportsPastingIntoGroups;
 - (_Bool)shouldRenderLargeImages;
 - (_Bool)shouldRenderCurvedShadow;
@@ -68,9 +72,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *documentTypeDisplayName;
 - (id)applicationNameForTitleBar;
 @property(readonly, nonatomic) unsigned long long applicationType;
+@property(readonly, nonatomic) NSString *applicationDisplayName;
 @property(readonly, nonatomic) NSString *applicationName;
 - (void)dealloc;
 - (id)init;
+- (id)strokeWidthsForFreehandDrawingToolType:(unsigned long long)arg1;
+@property(nonatomic) long long defaultPresetWhenConvertingToPlayableOnAllDevices;
+@property(nonatomic) _Bool shouldOptimizeForiOSOnInsert;
 @property(readonly, nonatomic) _Bool textInspectorShowsMoreSubpane;
 @property(readonly, nonatomic) _Bool tableCellInspectorShowsNaturalAlignment;
 @property(readonly, nonatomic) _Bool tableHeaderInspectorShowsRepeatHeaderRowsSwitch;

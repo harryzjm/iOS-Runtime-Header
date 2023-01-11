@@ -17,7 +17,9 @@
 @property(copy, nonatomic) CDUnknownBlockType sendBlock; // @synthesize sendBlock=_sendBlock;
 - (void).cxx_destruct;
 - (_Bool)textFieldShouldReturn:(id)arg1;
-- (void)_updateBackfillForNewRecipients;
+- (id)_handlesForRecipients:(id)arg1;
+- (_Bool)_updateBackfillForNewRecipients;
+- (_Bool)_hasExistingConversationWithAddedRecipient:(id)arg1;
 - (_Bool)alwaysShowSearchResultsTable;
 - (_Bool)shouldSuppressSearchResultsTable;
 - (_Bool)homogenizePreferredServiceForiMessage;
@@ -26,9 +28,11 @@
 - (void)reset;
 - (void)atomizeAndSendTimeoutHandler;
 - (void)atomizeAndInvokeBlock:(CDUnknownBlockType)arg1;
+- (void)_legacyAddRecipient:(id)arg1;
 - (void)addRecipient:(id)arg1;
 @property(readonly, nonatomic) NSArray *proposedRecipients;
 @property(readonly, nonatomic) NSArray *expandedRecipients;
+- (void)_updatePillViewIfNeededIfIsNewConversation:(_Bool)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)dealloc;
 

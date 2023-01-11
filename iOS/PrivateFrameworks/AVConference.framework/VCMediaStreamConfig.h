@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSData, NSDictionary, NSMutableDictionary, NSString, VCNetworkAddress;
+@class NSData, NSDictionary, NSMutableDictionary, NSString, VCMediaStreamMultiwayConfig, VCNetworkAddress;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaStreamConfig : NSObject
@@ -24,6 +24,9 @@ __attribute__((visibility("hidden")))
     long long _SRTPCipherSuite;
     _Bool _rtpTimeOutEnabled;
     double _rtpTimeOutInterval;
+    _Bool _decryptionTimeOutEnabled;
+    double _decryptionTimeOutInterval;
+    unsigned int _cellularUniqueTag;
     _Bool _rtcpEnabled;
     double _rtcpSendInterval;
     long long _SRTCPCipherSuite;
@@ -31,10 +34,10 @@ __attribute__((visibility("hidden")))
     double _rtcpTimeOutInterval;
     unsigned short _rtcpRemotePort;
     _Bool _rateAdaptationEnabled;
-    unsigned int _datagramChannelToken;
+    VCMediaStreamMultiwayConfig *_multiwayConfig;
 }
 
-@property(nonatomic) unsigned int datagramChannelToken; // @synthesize datagramChannelToken=_datagramChannelToken;
+@property(retain, nonatomic) VCMediaStreamMultiwayConfig *multiwayConfig; // @synthesize multiwayConfig=_multiwayConfig;
 @property(nonatomic, getter=isRateAdaptationEnabled) _Bool rateAdaptationEnabled; // @synthesize rateAdaptationEnabled=_rateAdaptationEnabled;
 @property(readonly, nonatomic) NSDictionary *txPayloadMap; // @synthesize txPayloadMap=_txPayloadMap;
 @property(readonly, nonatomic) NSDictionary *rxPayloadMap; // @synthesize rxPayloadMap=_rxPayloadMap;
@@ -43,8 +46,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSData *receiveMasterKey; // @synthesize receiveMasterKey=_receiveMasterKey;
 @property(retain, nonatomic) NSData *sendMasterKey; // @synthesize sendMasterKey=_sendMasterKey;
 @property(nonatomic) unsigned long long recommendedMTU; // @synthesize recommendedMTU=_recommendedMTU;
+@property(nonatomic) unsigned int cellularUniqueTag; // @synthesize cellularUniqueTag=_cellularUniqueTag;
+@property(nonatomic) double decryptionTimeOutInterval; // @synthesize decryptionTimeOutInterval=_decryptionTimeOutInterval;
 @property(nonatomic) double rtcpTimeOutInterval; // @synthesize rtcpTimeOutInterval=_rtcpTimeOutInterval;
 @property(nonatomic) double rtpTimeOutInterval; // @synthesize rtpTimeOutInterval=_rtpTimeOutInterval;
+@property(nonatomic, getter=isDecryptionTimeOutEnabled) _Bool decryptionTimeOutEnabled; // @synthesize decryptionTimeOutEnabled=_decryptionTimeOutEnabled;
 @property(nonatomic, getter=isRTCPTimeOutEnabled) _Bool rtcpTimeOutEnabled; // @synthesize rtcpTimeOutEnabled=_rtcpTimeOutEnabled;
 @property(nonatomic, getter=isRTPTimeOutEnabled) _Bool rtpTimeOutEnabled; // @synthesize rtpTimeOutEnabled=_rtpTimeOutEnabled;
 @property(nonatomic) double rtcpSendInterval; // @synthesize rtcpSendInterval=_rtcpSendInterval;
@@ -58,10 +64,10 @@ __attribute__((visibility("hidden")))
 - (void)applyMediaStreamClientDictionary:(id)arg1;
 - (void)setupMediaStreamConfig;
 @property(readonly, nonatomic) long long primaryTxCodecType;
-- (void)addTxCodecType:(long long)arg1 networkPayload:(unsigned int)arg2;
-- (void)addTxCodecType:(long long)arg1;
-- (void)addRxCodecType:(long long)arg1 networkPayload:(unsigned int)arg2;
-- (void)addRxCodecType:(long long)arg1;
+- (void)addTxPayloadType:(int)arg1 networkPayload:(unsigned int)arg2;
+- (void)addTxPayloadType:(int)arg1;
+- (void)addRxPayloadType:(int)arg1 networkPayload:(unsigned int)arg2;
+- (void)addRxPayloadType:(int)arg1;
 - (id)description;
 - (void)dealloc;
 - (id)initWithClientDictionary:(id)arg1;

@@ -7,6 +7,7 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (RCAdditions)
+- (void)rc_configurePopoverControllerWithSource:(id)arg1;
 - (void)rc_applicationWillEnterForeground;
 - (void)rc_applicationDidEnterBackground;
 - (_Bool)rc_shouldAutoDisableUpdatesWhenInBackground;
@@ -17,9 +18,6 @@
 - (_Bool)rc_isDescendantOfViewController:(id)arg1;
 - (id)rc_navigationItemForPresentingNavigationItem:(id)arg1 forViewController:(id)arg2;
 - (void)rc_loadViewIfNecessary;
-- (_Bool)rc_hasAxisWithRegularSizeClassOrGreater;
-- (_Bool)rc_isVerticalSizeClassRegularOrGreater;
-- (_Bool)rc_isHorizontalSizeClassRegularOrGreater;
 - (_Bool)rc_isPrimaryLayoutAxis:(long long)arg1;
 - (_Bool)rc_canAnimate;
 - (void)rc_addChildViewWithViewController:(id)arg1 toView:(id)arg2;

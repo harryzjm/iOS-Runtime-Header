@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSOperationQueue, NSString;
 
@@ -20,9 +20,11 @@
 @property struct _PCSIdentitySetData *set; // @synthesize set=_set;
 - (void).cxx_destruct;
 - (id)stripOperationErrorIfPCSError:(id)arg1;
-- (void)createNewIdentity:(id)arg1 roll:(_Bool)arg2 complete:(CDUnknownBlockType)arg3;
-- (void)syncWithServer:(id)arg1 complete:(CDUnknownBlockType)arg2;
-- (id)createIdentityOperation:(id)arg1 roll:(_Bool)arg2;
+- (void)createIdentity:(id)arg1 complete:(CDUnknownBlockType)arg2;
+- (void)createNewIdentity:(id)arg1 roll:(_Bool)arg2 sync:(_Bool)arg3 complete:(CDUnknownBlockType)arg4;
+- (_Bool)shouldRetryWithSync:(id)arg1;
+- (void)submitRequest:(id)arg1 complete:(CDUnknownBlockType)arg2;
+- (id)createIdentityOperation:(id)arg1;
 - (id)ensurePCSFieldsOperation:(id)arg1;
 - (id)fetchCurrentOperation:(id)arg1;
 - (id)syncViewOperation:(id)arg1;

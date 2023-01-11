@@ -4,30 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CALayer, UIColor;
+@class UIColor;
 
 @interface NTKExplorerHandsView
 {
-    CALayer *_secondHandDot;
-    CALayer *_minuteHandDot;
-    CALayer *_minuteHandTransitionBodyLayer;
-    CALayer *_minuteHandTransitionStemLayer;
-    CALayer *_minuteHandTransitionPegLayer;
-    CALayer *_hourHandTransitionBodyLayer;
-    CALayer *_hourHandTransitionStemLayer;
-    UIColor *_hourAndMinuteHandDotColor;
     UIColor *_secondHandDotColor;
 }
 
 @property(retain, nonatomic) UIColor *secondHandDotColor; // @synthesize secondHandDotColor=_secondHandDotColor;
-@property(retain, nonatomic) UIColor *hourAndMinuteHandDotColor; // @synthesize hourAndMinuteHandDotColor=_hourAndMinuteHandDotColor;
 - (void).cxx_destruct;
 - (void)layoutSubviews;
-- (void)_addTransitionLayers;
-- (void)_removeTransitionLayers;
 - (void)applyTransitionFraction:(double)arg1 fromColor:(unsigned long long)arg2 toColor:(unsigned long long)arg3;
 - (void)setInlayColor:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initForDevice:(id)arg1;
 
 @end
 

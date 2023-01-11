@@ -71,6 +71,45 @@ struct __va_list_tag {
     void *_field4;
 };
 
+struct buffer {
+    char *x;
+    unsigned int p;
+    unsigned int n;
+    int fd;
+    CDUnknownFunctionPointerType op;
+};
+
+struct cdb {
+    char *map;
+    int fd;
+    unsigned int size;
+    unsigned int loop;
+    unsigned int khash;
+    unsigned int kpos;
+    unsigned int hpos;
+    unsigned int hslots;
+    unsigned int dpos;
+    unsigned int dlen;
+};
+
+struct cdb_hp;
+
+struct cdb_hplist;
+
+struct cdb_make {
+    char bspace[8192];
+    char final[2048];
+    unsigned int count[256];
+    unsigned int start[256];
+    struct cdb_hplist *head;
+    struct cdb_hp *split;
+    struct cdb_hp *hash;
+    unsigned int numentries;
+    struct buffer b;
+    unsigned int pos;
+    int fd;
+};
+
 struct in6_addr {
     union {
         unsigned char __u6_addr8[16];
@@ -86,22 +125,6 @@ struct in_addr {
 struct iovec {
     void *iov_base;
     unsigned long long iov_len;
-};
-
-struct os_state_data_decoder_s {
-    char _field1[64];
-    char _field2[64];
-};
-
-struct os_state_data_s {
-    unsigned int _field1;
-    union {
-        unsigned int :32;
-        unsigned int _field1;
-    } _field2;
-    struct os_state_data_decoder_s _field3;
-    char _field4[64];
-    unsigned char _field5[0];
 };
 
 struct sockaddr {

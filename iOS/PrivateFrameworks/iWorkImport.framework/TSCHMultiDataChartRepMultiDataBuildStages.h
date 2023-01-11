@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSCHUnretainedParent-Protocol.h>
 
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)numberOfFadingBuildStages;
 @property(readonly, nonatomic) double duration; // @synthesize duration=mDuration;
 @property(readonly, nonatomic) unsigned long long currentStage; // @synthesize currentStage=mCurrentStage;
+- (void).cxx_destruct;
 - (_Bool)hasStage;
 - (void)advanceStage;
 - (unsigned long long)dataSetIndexForStage:(unsigned long long)arg1;

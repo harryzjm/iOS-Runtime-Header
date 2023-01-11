@@ -26,7 +26,7 @@
 - (void)_setup;
 - (void)_unregisterForNotifications;
 - (void)_registerForNotifications;
-- (void)shutdown;
+- (void)_shutdown;
 - (id)initWithDefaultsManager:(id)arg1;
 - (id)init;
 

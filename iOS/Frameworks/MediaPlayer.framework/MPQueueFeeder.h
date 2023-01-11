@@ -4,26 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/MPQueueBehaviorManaging-Protocol.h>
-#import <MediaPlayer/NSCoding-Protocol.h>
+#import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class MPModelPlayEvent, MPMutableBidirectionalDictionary, NSData, NSMutableDictionary, NSString;
+@class MPModelPlayEvent, MSVMutableBidirectionalDictionary, NSData, NSDictionary, NSMutableDictionary, NSString;
 @protocol MPQueueFeederDelegate;
 
-@interface MPQueueFeeder : NSObject <MPQueueBehaviorManaging, NSCoding>
+@interface MPQueueFeeder : NSObject <MPQueueBehaviorManaging, NSSecureCoding>
 {
     long long _repeatType;
     long long _shuffleType;
     NSMutableDictionary *_nextStartTimes;
-    MPMutableBidirectionalDictionary *_exportableItemIDs;
+    MSVMutableBidirectionalDictionary *_exportableItemIDs;
     _Bool _requiresQueueChangeVerification;
     id <MPQueueFeederDelegate> _delegate;
     unsigned long long _state;
     NSString *_playActivityFeatureName;
     NSData *_playActivityRecommendationData;
     NSString *_siriReferenceIdentifier;
+    NSDictionary *_siriWHAMetricsInfo;
     NSString *_playbackContextUniqueIdentifier;
     long long _activeShuffleType;
     NSString *_uniqueIdentifier;
@@ -31,6 +32,7 @@
     CDStruct_dcf4dde6 _skipLimit;
 }
 
++ (_Bool)supportsSecureCoding;
 + (_Bool)supportsStateRestoration;
 @property(readonly, nonatomic) MPModelPlayEvent *modelPlayEvent; // @synthesize modelPlayEvent=_modelPlayEvent;
 @property(readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -38,6 +40,7 @@
 @property(nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
 @property(nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
 @property(copy, nonatomic) NSString *playbackContextUniqueIdentifier; // @synthesize playbackContextUniqueIdentifier=_playbackContextUniqueIdentifier;
+@property(copy, nonatomic) NSDictionary *siriWHAMetricsInfo; // @synthesize siriWHAMetricsInfo=_siriWHAMetricsInfo;
 @property(copy, nonatomic) NSString *siriReferenceIdentifier; // @synthesize siriReferenceIdentifier=_siriReferenceIdentifier;
 @property(copy, nonatomic) NSData *playActivityRecommendationData; // @synthesize playActivityRecommendationData=_playActivityRecommendationData;
 @property(copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
@@ -98,6 +101,7 @@
 @property(readonly, nonatomic) _Bool canSeek;
 @property(readonly, nonatomic) _Bool canReorder;
 @property(readonly, nonatomic) _Bool allowsUserVisibleUpcomingItems;
+@property(readonly, nonatomic) _Bool allowsQueueResetWhenReachingEnd;
 - (_Bool)shouldBeginPlaybackOfItem:(id)arg1 error:(id *)arg2;
 - (id)errorResolverForItem:(id)arg1;
 - (void)reloadWithPlaybackContext:(id)arg1 requireFinalTracklist:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;

@@ -8,7 +8,8 @@
 
 #import <IDSFoundation/NSCopying-Protocol.h>
 
-@class IDSValidationSession, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSNumber, NSString, NSURL;
+@class APSOutgoingMessageCheckpointTrace, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSNumber, NSString, NSURL;
+@protocol IDSBaseMessageSigningSession;
 
 @interface IDSBaseMessage : NSObject <NSCopying>
 {
@@ -22,6 +23,7 @@
     _Bool _hasReceivedPushAck;
     _Bool _hasAttemptedAPSDelivery;
     _Bool _httpDoNotDecodeData;
+    _Bool _ignoreMaxRetryCount;
     _Bool _alwaysForceCellular;
     int _timeoutRetries;
     id _context;
@@ -45,18 +47,27 @@
     long long _importanceLevel;
     long long _deliveryMechanism;
     NSString *_underlyingService;
-    IDSValidationSession *_validationSession;
+    id <IDSBaseMessageSigningSession> _signingSession;
     NSURL *_URLOverride;
     unsigned long long _sentByteCount;
     unsigned long long _receivedByteCount;
+    APSOutgoingMessageCheckpointTrace *_apsdCheckpointTrace;
+    NSDate *_requestStart;
+    NSDate *_requestEnd;
+    NSDate *_responseReceived;
 }
 
+@property(retain, nonatomic) NSDate *responseReceived; // @synthesize responseReceived=_responseReceived;
+@property(retain, nonatomic) NSDate *requestEnd; // @synthesize requestEnd=_requestEnd;
+@property(retain, nonatomic) NSDate *requestStart; // @synthesize requestStart=_requestStart;
 @property _Bool alwaysForceCellular; // @synthesize alwaysForceCellular=_alwaysForceCellular;
+@property(retain) APSOutgoingMessageCheckpointTrace *apsdCheckpointTrace; // @synthesize apsdCheckpointTrace=_apsdCheckpointTrace;
+@property _Bool ignoreMaxRetryCount; // @synthesize ignoreMaxRetryCount=_ignoreMaxRetryCount;
 @property _Bool httpDoNotDecodeData; // @synthesize httpDoNotDecodeData=_httpDoNotDecodeData;
 @property(nonatomic) unsigned long long receivedByteCount; // @synthesize receivedByteCount=_receivedByteCount;
 @property(nonatomic) unsigned long long sentByteCount; // @synthesize sentByteCount=_sentByteCount;
 @property(copy) NSURL *URLOverride; // @synthesize URLOverride=_URLOverride;
-@property(retain, nonatomic) IDSValidationSession *validationSession; // @synthesize validationSession=_validationSession;
+@property(retain, nonatomic) id <IDSBaseMessageSigningSession> signingSession; // @synthesize signingSession=_signingSession;
 @property(copy) NSString *underlyingService; // @synthesize underlyingService=_underlyingService;
 @property long long deliveryMechanism; // @synthesize deliveryMechanism=_deliveryMechanism;
 @property long long importanceLevel; // @synthesize importanceLevel=_importanceLevel;
@@ -88,7 +99,6 @@
 @property(copy) NSDictionary *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property(retain) id context; // @synthesize context=_context;
 - (void).cxx_destruct;
-- (_Bool)shouldForceDevicesToCarry;
 - (void)logFailureInfo;
 - (void)handleResponseDictionary:(id)arg1;
 - (void)handleResponseStatus:(unsigned long long)arg1;
@@ -136,8 +146,8 @@
 @property(readonly) _Bool isWebTunnelMessage;
 @property(readonly) _Bool wantsSignature;
 @property(readonly) _Bool ignoresNetworkConnectivity;
+@property(readonly) _Bool allowsServerProvidedLenientAnisetteTimeout;
 @property(readonly) double anisetteHeadersTimeout;
-@property(readonly) _Bool wantsAnisetteHeaders;
 @property(readonly) _Bool wantsAPSRetries;
 @property(readonly) _Bool wantsManagedRetries;
 @property(readonly) _Bool wantsExtraTimeoutRetry;

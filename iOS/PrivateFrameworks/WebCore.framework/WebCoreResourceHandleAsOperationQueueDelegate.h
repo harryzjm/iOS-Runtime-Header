@@ -7,18 +7,20 @@
 #import <objc/NSObject.h>
 
 #import <WebCore/NSURLConnectionDelegate-Protocol.h>
-#import <WebCore/WebCoreResourceLoaderDelegate-Protocol.h>
 
 @class NSString;
 @protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface WebCoreResourceHandleAsOperationQueueDelegate : NSObject <NSURLConnectionDelegate, WebCoreResourceLoaderDelegate>
+@interface WebCoreResourceHandleAsOperationQueueDelegate : NSObject <NSURLConnectionDelegate>
 {
     struct ResourceHandle *m_handle;
     NSObject<OS_dispatch_semaphore> *m_semaphore;
+    MessageQueue_cca993fb *m_messageQueue;
     struct RetainPtr<NSURLRequest> m_requestResult;
+    struct Lock m_mutex;
     struct RetainPtr<NSCachedURLResponse> m_cachedResponseResult;
+    struct optional<WTF::HashSet<WTF::RefPtr<WTF::SchedulePair, WTF::DumbPtrTraits<WTF::SchedulePair>>, WTF::SchedulePairHash, WTF::HashTraits<WTF::RefPtr<WTF::SchedulePair, WTF::DumbPtrTraits<WTF::SchedulePair>>>>> m_scheduledPairs;
     _Bool m_boolResult;
 }
 
@@ -33,13 +35,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)connection:(id)arg1 canAuthenticateAgainstProtectionSpace:(id)arg2;
 - (void)connection:(id)arg1 didReceiveAuthenticationChallenge:(id)arg2;
 - (id)connection:(id)arg1 willSendRequest:(id)arg2 redirectResponse:(id)arg3;
-- (void)continueWillCacheResponse:(id)arg1;
-- (void)continueCanAuthenticateAgainstProtectionSpace:(_Bool)arg1;
-- (void)continueDidReceiveResponse;
-- (void)continueWillSendRequest:(id)arg1;
 - (void)dealloc;
 - (void)detachHandle;
-- (id)initWithHandle:(struct ResourceHandle *)arg1;
+- (id)initWithHandle:(struct ResourceHandle *)arg1 messageQueue:(MessageQueue_cca993fb *)arg2;
+- (void)callFunctionOnMainThread:(Function_89d21b48 *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

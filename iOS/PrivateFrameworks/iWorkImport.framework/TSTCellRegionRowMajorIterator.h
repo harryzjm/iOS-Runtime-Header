@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSTCellRegionIterating-Protocol.h>
 
@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface TSTCellRegionRowMajorIterator : NSObject <TSTCellRegionIterating>
 {
-    set_f8eea70b mCellRangeSet;
+    set_5fd94db8 mCellRangeSet;
     struct TSUCellCoord mCellID;
     struct TSUCellRect mBoundingCellRange;
 }

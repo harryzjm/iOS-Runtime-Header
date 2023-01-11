@@ -32,7 +32,6 @@
 - (void)lockFolders;
 - (void)unlockFiles;
 - (void)lockFiles;
-- (void)finalize;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 parentFolder:(id)arg2 device:(id)arg3;
 

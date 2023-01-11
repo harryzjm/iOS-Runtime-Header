@@ -10,7 +10,7 @@
 #import <MediaPlaybackCore/MPRTCReportingItemSessionContaining-Protocol.h>
 #import <MediaPlaybackCore/MPShuffleControllerDataSource-Protocol.h>
 
-@class MPCPlaybackRequestEnvironment, MPIdentifierSet, MPModelRequest, MPModelResponse, MPPlaceholderAVItem, MPPlaybackPlaceholderMediaItem, MPShuffleController, NSDictionary, NSHashTable, NSObject, NSOperationQueue, NSString;
+@class ICUserIdentity, MPCPlaybackRequestEnvironment, MPIdentifierSet, MPModelRequest, MPModelResponse, MPPlaceholderAVItem, MPPlaybackPlaceholderMediaItem, MPShuffleController, NSDictionary, NSHashTable, NSObject, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MPCModelQueueFeeder : MPQueueFeeder <MPRTCReportingItemSessionContaining, MPShuffleControllerDataSource, MPCQueueBehaviorManaging>
@@ -25,27 +25,37 @@
     CDUnknownBlockType _finalTracklistLoadingCompletionHandler;
     _Bool _hasFoundStartItem;
     _Bool _hasLoadedFinalResponse;
+    _Bool _hasShuffledInitialResult;
+    long long _preferredStartIndexFromPlaybackContext;
+    NSObject<OS_dispatch_queue> *_itemListChangeDetectionQueue;
     NSOperationQueue *_operationQueue;
     MPPlaceholderAVItem *_placeholderAVItem;
     MPPlaybackPlaceholderMediaItem *_placeholderMediaItem;
     MPModelRequest *_request;
+    _Bool _requireFinalTracklist;
     MPModelResponse *_response;
     NSString *_rtcReportingPlayQueueSourceIdentifier;
     MPShuffleController *_shuffleController;
+    NSString *_siriAssetInfo;
     _Bool _isSiriInitiated;
     MPIdentifierSet *_startItemIdentifiers;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
+    ICUserIdentity *_proactiveCacheIdentity;
     struct map<unsigned long, MPIdentifierSet *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, MPIdentifierSet *>>> _retrievedIndexToIdentifiers;
     NSDictionary *_startTimeModifications;
 }
 
 + (id)requiredPropertiesForStaticMediaClips;
 + (_Bool)supportsStateRestoration;
++ (_Bool)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_updateProactiveCaching;
 - (void)_unregisterNotificationsForResponse:(id)arg1;
 - (unsigned long long)_songShuffledIndexForIndex:(unsigned long long)arg1;
 - (unsigned long long)_indexOfItemWithIdentifier:(id)arg1 shouldIgnoreShuffle:(_Bool)arg2;
+- (_Bool)_shouldRecordReturnedItemIDs;
+- (id)_resultsForShuffleController;
 - (void)_reloadModelRequestWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_reloadModelRequestForInvalidation;
 - (void)_reloadForInitialRequest;
@@ -53,7 +63,7 @@
 - (id)_newModelRequest;
 - (id)_modelObjectAtIndex:(unsigned long long)arg1;
 - (id)_identifierSetAtIndex:(unsigned long long)arg1;
-- (void)_handleFinalResponseWithPreferredStartIndex:(unsigned long long)arg1;
+- (_Bool)_handleFinalResponseWithPreferredStartIndex:(unsigned long long)arg1;
 - (_Bool)_hasPlaceholderItemAtIndex:(unsigned long long)arg1;
 - (id)_genericObjectForModelObject:(id)arg1;
 - (id)_equivalencySourceAdamIDForIdentifierSet:(id)arg1;

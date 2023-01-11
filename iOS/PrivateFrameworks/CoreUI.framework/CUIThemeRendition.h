@@ -4,32 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSData, NSString;
+@class NSData, NSDictionary, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CUIThemeRendition : NSObject
 {
-    struct _renditionkeytoken _stackKey[17];
+    struct _renditionkeytoken _stackKey[18];
     struct _renditionkeytoken *_key;
     long long _type;
     unsigned int _subtype;
     unsigned int _scale;
     int _exifOrientation;
     int _blendMode;
-    struct {
-        unsigned int isHeaderFlaggedFPO:1;
-        unsigned int isExcludedFromContrastFilter:1;
-        unsigned int isVectorBased:1;
-        unsigned int isOpaque:1;
-        unsigned int bitmapEncoding:4;
-        unsigned int optOutOfThinning:1;
-        unsigned int isFlippable:1;
-        unsigned int isTintable:1;
-        unsigned int preservedVectorRepresentation:1;
-        unsigned int reserved:20;
-    } _renditionFlags;
+    struct cuithemerenditionrenditionflags _renditionFlags;
     long long _templateRenderingMode;
     long long _artworkStatus;
     unsigned long long _colorSpaceID;
@@ -39,6 +27,8 @@ __attribute__((visibility("hidden")))
     double _opacity;
     NSString *_utiType;
     struct CGImage *_uncroppedImage;
+    struct CGSize _physicalSizeInMeters;
+    NSDictionary *_properties;
 }
 
 + (id)displayNameForRenditionType:(long long)arg1;
@@ -46,12 +36,21 @@ __attribute__((visibility("hidden")))
 + (Class)renditionClassForRenditionType:(long long)arg1 andPixelFormat:(unsigned int)arg2;
 @property(nonatomic) int exifOrientation; // @synthesize exifOrientation=_exifOrientation;
 @property(nonatomic) int blendMode; // @synthesize blendMode=_blendMode;
+@property(nonatomic) long long artworkStatus; // @synthesize artworkStatus=_artworkStatus;
+@property(readonly, nonatomic) NSData *srcData; // @synthesize srcData=_srcData;
+@property(nonatomic) NSString *internalName; // @synthesize internalName=_name;
+@property(nonatomic) long long internalTemplateRenderingMode; // @synthesize internalTemplateRenderingMode=_templateRenderingMode;
+@property(nonatomic) unsigned int internalScale; // @synthesize internalScale=_scale;
+@property(nonatomic) unsigned int subtype; // @synthesize subtype=_subtype;
+@property(nonatomic) long long type; // @synthesize type=_type;
 @property(nonatomic) double opacity; // @synthesize opacity=_opacity;
 - (unsigned short)valueForTokenIdentifier:(unsigned short)arg1;
+- (int)objectVersion;
+- (CDStruct_14d5dc5e)transformation;
 - (struct CGImage *)uncroppedImage;
 - (struct CGRect)alphaCroppedRect;
 - (struct CGSize)originalUncroppedSize;
-- (id)packedContents;
+- (id)contentNames;
 - (id)mipLevels;
 - (id)layerReferences;
 - (id)externalTags;
@@ -60,11 +59,12 @@ __attribute__((visibility("hidden")))
 - (struct CGImage *)createImageFromPDFRenditionWithScale:(double)arg1;
 - (struct CGPDFDocument *)pdfDocument;
 - (id)effectPreset;
-- (unsigned int)subtype;
 - (unsigned int)gradientStyle;
 - (id)gradient;
 - (double)gradientDrawingAngle;
 - (id)sizeIndexes;
+- (_Bool)substituteWithSystemColor;
+- (id)systemColorName;
 - (const struct _csicolor *)csiColor;
 - (_Bool)edgesOnly;
 - (_Bool)isScaled;
@@ -80,7 +80,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (_Bool)isValidForLookGradation:(long long)arg1;
 - (unsigned long long)colorSpaceID;
-- (long long)artworkStatus;
+- (id)properties;
 - (_Bool)isTintable;
 - (_Bool)preservedVectorRepresentation;
 - (_Bool)isFlippable;
@@ -90,9 +90,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)isOpaque;
 - (_Bool)isVectorBased;
 - (_Bool)isHeaderFlaggedFPO;
+- (struct CGSize)physicalSizeInMeters;
 - (id)utiType;
 - (id)name;
-- (long long)type;
 - (const struct _renditionkeytoken *)key;
 - (void)dealloc;
 - (id)_initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
@@ -101,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (void)_initializeRenditionKey:(const struct _renditionkeytoken *)arg1;
 - (int)pixelFormat;
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
+- (void)_initializePropertiesFromCSIData:(const struct _csiheader *)arg1;
 - (void)_initalizeMetadataFromCSIData:(const struct _csiheader *)arg1;
 - (void)_initializeCompositingOptionsFromCSIData:(const struct _csiheader *)arg1;
 - (void)_initializeTypeIdentifiersWithLayout:(unsigned short)arg1;
@@ -110,6 +111,8 @@ __attribute__((visibility("hidden")))
 - (id)linkingToRendition;
 - (_Bool)isInternalLink;
 - (void)_setStructuredThemeStore:(id)arg1;
+- (struct cuithemerenditionrenditionflags *)renditionFlags;
+- (void)setName:(id)arg1;
 
 @end
 

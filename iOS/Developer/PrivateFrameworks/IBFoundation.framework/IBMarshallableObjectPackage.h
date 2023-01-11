@@ -27,6 +27,7 @@
 @property(readonly, copy) NSString *description;
 - (id)objectIDForObject:(id)arg1;
 - (id)objectForObjectID:(id)arg1;
+- (void)dealloc;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
 - (id)initWithMarshallingDescription:(id)arg1 objectsToObjectIDs:(id)arg2;

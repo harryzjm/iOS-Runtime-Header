@@ -9,11 +9,7 @@
 }
 
 + (id)_firstAssetInCollection:(id)arg1;
-+ (id)_createResourceDirectoryForSyncedAlbumWithPreviewOnly:(_Bool)arg1;
-- (void)finalizeWithCompletion:(CDUnknownBlockType)arg1;
-- (void)generateGalleryPreviewResourceDirectoryWithCompletion:(CDUnknownBlockType)arg1;
-@property(nonatomic) _Bool shouldFinalize;
-- (id)initWithResourceDirectory:(id)arg1 shouldFinalize:(_Bool)arg2;
++ (id)_assetForResourceDirectoryForDevice:(id)arg1;
 
 @end
 

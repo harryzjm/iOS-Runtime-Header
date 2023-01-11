@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TimingCollection, VCConnectionManager;
 @protocol OS_dispatch_queue;
@@ -43,11 +43,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) int detailedErrorCode;
 @property(nonatomic, setter=setCallActive:) _Bool isCallActive;
 - (void)callEventHandlerWithEvent:(unsigned int)arg1 info:(id)arg2;
-- (void)setReportingAgent:(struct opaqueRTCReporting *)arg1;
 - (void)stop;
 - (void)start;
 - (void)dealloc;
-- (id)init;
+- (id)initWithNotificationQueue:(id)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2;
 
 @end
 

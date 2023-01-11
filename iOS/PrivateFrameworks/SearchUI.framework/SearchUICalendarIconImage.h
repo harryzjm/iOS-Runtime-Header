@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SearchUI/NSSecureCoding-Protocol.h>
-
 @class NSDate;
 
-@interface SearchUICalendarIconImage <NSSecureCoding>
+@interface SearchUICalendarIconImage
 {
     NSDate *_date;
 }

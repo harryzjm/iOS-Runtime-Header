@@ -12,11 +12,11 @@
 {
 }
 
+- (void)remote_fetchURLForAnalyticsFileWithName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_stopObservingDataCollectionForType:(id)arg1;
 - (void)remote_observeDataCollectionForType:(id)arg1 interval:(double)arg2 inBackground:(_Bool)arg3 hasRunningWorkout:(_Bool)arg4;
 - (void)remote_resetAWDTask:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_runAWDTask:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_setShouldIgnoreUnlockedState:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_restoreEntitlement:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_dropEntitlement:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_select:(id)arg1 from:(id)arg2 where:(id)arg3 groupBy:(id)arg4 orderBy:(id)arg5 limit:(long long)arg6 completion:(CDUnknownBlockType)arg7;

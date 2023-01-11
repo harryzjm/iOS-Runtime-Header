@@ -15,7 +15,6 @@
 }
 
 + (id)issueGenerationContextWithPhase:(int)arg1;
-+ (id)issueGenerationContext;
 @property(readonly) int phase; // @synthesize phase=_phase;
 @property(readonly) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
 - (void).cxx_destruct;

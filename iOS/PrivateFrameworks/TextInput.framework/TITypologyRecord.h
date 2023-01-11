@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <TextInput/NSCoding-Protocol.h>
+#import <TextInput/NSSecureCoding-Protocol.h>
 
-@interface TITypologyRecord : NSObject <NSCoding>
+@interface TITypologyRecord : NSObject <NSSecureCoding>
 {
     double _timestamp;
 }
 
++ (id)recordClasses;
++ (_Bool)supportsSecureCoding;
 @property(nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 - (id)textSummaryForAutocorrection:(id)arg1;
 - (id)shortDescription;

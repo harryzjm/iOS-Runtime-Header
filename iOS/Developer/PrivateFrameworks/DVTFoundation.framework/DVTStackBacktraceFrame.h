@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <DVTFoundation/NSSecureCoding-Protocol.h>
+
 @class NSString;
 
-@interface DVTStackBacktraceFrame : NSObject
+@interface DVTStackBacktraceFrame : NSObject <NSSecureCoding>
 {
     unsigned long long _stackAddress;
     unsigned long long _lineNumber;
@@ -18,6 +20,7 @@
     NSString *_rawSymbolName;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(copy) NSString *rawSymbolName; // @synthesize rawSymbolName=_rawSymbolName;
 @property(copy) NSString *symbolOwnerName; // @synthesize symbolOwnerName=_symbolOwnerName;
 @property(copy) NSString *fileName; // @synthesize fileName=_fileName;
@@ -27,7 +30,10 @@
 - (void).cxx_destruct;
 - (id)frameStringRepresentationWithAddress:(_Bool)arg1;
 - (id)frameStringRepresentation;
-- (id)_initWithStackAddress:(unsigned long long)arg1 usingSymbolicator:(struct _CSTypeRef)arg2;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithStackAddress:(unsigned long long)arg1 symbolName:(id)arg2 symbolOwnerName:(id)arg3 fileName:(id)arg4 lineNumber:(unsigned long long)arg5;
 
 @end
 

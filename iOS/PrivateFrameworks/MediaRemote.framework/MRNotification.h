@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSString;
 @protocol OS_dispatch_queue, OS_xpc_object;
@@ -21,7 +21,7 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property(readonly, nonatomic) NSString *notification; // @synthesize notification=_notification;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithNotification:(id)arg1 userInfo:(id)arg2 queue:(id)arg3;
 
 @end

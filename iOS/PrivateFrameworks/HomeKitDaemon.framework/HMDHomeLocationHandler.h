@@ -6,16 +6,15 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitDaemon/HMDLocationDelegate-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
+#import <HomeKitDaemon/HMDBatchLocationDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class CLLocation, CLRegion, HMDHome, HMDHomeLocationData, HMFMessageDispatcher, NSDate, NSObject, NSString, NSTimeZone, NSUUID;
+@class CLLocation, CLRegion, HMDHome, HMDHomeLocationData, HMFMessageDispatcher, NSDate, NSObject, NSSet, NSString, NSTimeZone, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDHomeLocationHandler : HMFObject <HMDLocationDelegate, HMFMessageReceiver, NSSecureCoding>
+@interface HMDHomeLocationHandler : HMFObject <HMDBatchLocationDelegate, HMDHomeMessageReceiver, NSSecureCoding>
 {
-    _Bool _isExtractingCurrentLocation;
     int _locationAuthorization;
     CLLocation *_location;
     NSTimeZone *_timeZone;
@@ -27,8 +26,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)hasMessageReceiverChildren;
 + (_Bool)mergeLocationDataForLocalHome:(id)arg1 withCloudHome:(id)arg2;
-@property(nonatomic) _Bool isExtractingCurrentLocation; // @synthesize isExtractingCurrentLocation=_isExtractingCurrentLocation;
 @property(retain, nonatomic) CLRegion *region; // @synthesize region=_region;
 @property(nonatomic) int locationAuthorization; // @synthesize locationAuthorization=_locationAuthorization;
 @property(retain, nonatomic) NSDate *locationUpdateTimestamp; // @synthesize locationUpdateTimestamp=_locationUpdateTimestamp;
@@ -43,8 +42,9 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 - (id)messageDestination;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
-- (void)getReachableIPAccessory:(unsigned long long *)arg1 btleAccessory:(unsigned long long *)arg2;
+- (void)getReachableIPAccessory:(unsigned long long *)arg1 btleAccessory:(unsigned long long *)arg2 mediaAccessory:(unsigned long long *)arg3;
 - (void)didDetermineState:(long long)arg1 forRegion:(id)arg2;
+- (void)didDetermineBatchLocation:(id)arg1;
 - (void)didDetermineLocation:(id)arg1;
 - (_Bool)isDate:(id)arg1 laterThanDate:(id)arg2;
 - (_Bool)isLocation:(id)arg1 closeToLocation:(id)arg2;
@@ -52,11 +52,10 @@
 - (void)_sendLocationUpdate;
 - (void)runTransactionWithLocation:(id)arg1 updateTime:(id)arg2;
 - (id)_handleHomeLocationData:(id)arg1 message:(id)arg2;
-- (void)_updateLocation:(id)arg1;
 - (void)_updateTimeZone:(id)arg1;
-- (void)_evaluateHomeRegionState:(id)arg1;
-- (_Bool)_needToExtractLocation;
-- (_Bool)_canExtractLocation;
+- (void)_evaluateHomeRegionStateForCurrentDeviceLocation:(id)arg1;
+- (_Bool)_needToExtractBatchLocations;
+- (_Bool)_canExtractBatchLocations;
 - (void)accessoriesBecomeUnreachable;
 - (void)accessoriesBecomeReachable;
 - (void)accessoryAdded;
@@ -73,6 +72,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy) NSSet *messageReceiverChildren;
 @property(readonly) Class superclass;
 
 @end

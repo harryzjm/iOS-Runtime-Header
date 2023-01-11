@@ -18,6 +18,7 @@
 - (_Bool)_accessibilityFrameShouldIncludeExtraSpaceBelow;
 - (_Bool)_accessibilityScrollToVisible;
 - (id)_accessibilityScrollStatus;
+- (id)_accessibilityCustomActionGroupIdentifier;
 - (_Bool)_accessibilityRetainsCustomRotorActionSetting;
 - (id)accessibilityValue;
 - (_Bool)isAccessibilityElement;

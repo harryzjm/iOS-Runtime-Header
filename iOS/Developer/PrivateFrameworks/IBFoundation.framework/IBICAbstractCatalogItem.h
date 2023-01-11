@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <IBFoundation/IBICActivtyItem-Protocol.h>
 #import <IBFoundation/NSCoding-Protocol.h>
 
 @class NSArray, NSData, NSDate, NSDictionary, NSMutableDictionary, NSNumber, NSOrderedSet, NSSet, NSString, NSURL;
 
-@interface IBICAbstractCatalogItem : NSObject <NSCoding>
+@interface IBICAbstractCatalogItem : NSObject <IBICActivtyItem, NSCoding>
 {
     NSDictionary *_cachedChildrenByIdentifier;
     NSArray *_cachedDisplayOrderedChildren;
@@ -31,11 +32,11 @@
 }
 
 + (long long)validateCompressionType:(long long)arg1;
-+ (_Bool)ecnodesCompressionForChildren;
++ (_Bool)encodesCompressionForChildren;
 + (_Bool)supportsCompression;
 + (id)fileUTIsToAllowInUnstructuredImport;
 + (id)fileExtensionsToAllowInUnstructuredImport;
-+ (id)syntehsizeItemsFromLoosePaths:(id)arg1 claimingPaths:(id *)arg2;
++ (id)synthesizeItemsFromLoosePaths:(id)arg1 claimingPaths:(id *)arg2;
 + (id)importPriority;
 + (id)contentReferenceTypeName;
 + (id)catalogItemFileExtensionWithAlternatesForReading;
@@ -64,6 +65,7 @@
 + (id)keysThatImpactDisplayOrder;
 + (_Bool)fileNameIsIdentifier;
 + (id)keysThatImpactIdentifier;
++ (id)displayNameForChildren;
 + (_Bool)displayNameIsItemName;
 + (_Bool)itemNameIsFileNameWithoutCatalogExtension;
 + (void)updateModificationDatesOfItem:(id)arg1 withMutationResult:(id)arg2;
@@ -116,6 +118,9 @@
 - (id)enclosingItemThatCanHostItems:(id)arg1 includingReceiver:(_Bool)arg2;
 - (id)firstEnclosingItemIncludingReceiver:(_Bool)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (id)rootItem;
+@property(readonly, nonatomic) long long activityProgress;
+@property(readonly, nonatomic) NSString *activityName;
+- (void)recursivelyNotifyAboutIssuesUpdate;
 - (void)recursivelyNotifyAboutDisplayPropertiesChanged;
 - (void)recursivelyNotifyAboutDidChange:(CDUnknownBlockType)arg1;
 - (void)recursivelyNotifyAboutChangeToObject:(id)arg1 forKey:(id)arg2 oldValue:(id)arg3 newValue:(id)arg4 itemWithDisplayOrderChange:(id)arg5;
@@ -147,8 +152,8 @@
 - (id)childrenWithFileName:(id)arg1;
 - (long long)numberOfChildrenWithFileName:(id)arg1;
 - (id)childForIdentifier:(id)arg1;
-- (id)description;
-- (id)debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, copy) NSString *debugDescription;
 - (id)descriptionWithIndent:(long long)arg1 includeChildren:(_Bool)arg2;
 - (void)enumerateDescriptionAttributeComponents:(CDUnknownBlockType)arg1;
 - (void)populateMutatorsToAddRequiredChildCounterparts:(id)arg1;
@@ -159,7 +164,7 @@
 - (void)removeChildren:(id)arg1;
 - (void)removeChild:(id)arg1;
 - (void)addChild:(id)arg1 andUpdateIdentifierToBeUnique:(_Bool)arg2;
-- (void)updateIdentifierOfIncommingChildToBeUnique:(id)arg1;
+- (void)updateIdentifierOfIncomingChildToBeUnique:(id)arg1;
 - (void)addChild:(id)arg1;
 - (void)insertChild:(id)arg1 atIndex:(id)arg2;
 @property(readonly, nonatomic) long long childOrdering;
@@ -213,6 +218,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
+- (void)populateAppearanceImportInfo:(id)arg1 withOptions:(id)arg2 forLuminosityAppearance:(id)arg3 vibrancyAppearance:(id)arg4 contrastAppearance:(id)arg5;
 - (_Bool)populateNamedAssetImportInfo:(id)arg1 allCompiledItems:(id)arg2 withOptions:(id)arg3 error:(id *)arg4;
 - (id)fullyQualifiedRuntimeNameWithOptions:(id)arg1;
 - (Class)manifestArchivist:(id)arg1 childClassForChildEntry:(id)arg2 results:(id)arg3;
@@ -233,6 +239,11 @@
 - (id)manifestArchivist:(id)arg1 slotForChild:(id)arg2;
 - (Class)manifestArchivistSlotClassForChildren:(id)arg1;
 - (void)enumerateSizeProvidingItemsForValidatingBrandAssetCollection:(CDUnknownBlockType)arg1;
+- (_Bool)shouldPerformCV3DValidation;
+
+// Remaining properties
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

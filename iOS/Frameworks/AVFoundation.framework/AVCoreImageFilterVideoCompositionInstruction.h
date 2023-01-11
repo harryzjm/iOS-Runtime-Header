@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/AVVideoCompositionInstruction-Protocol.h>
 
 @class NSArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface AVCoreImageFilterVideoCompositionInstruction : NSObject <AVVideoCompositionInstruction>
 {
     CDStruct_e83c9415 _timeRange;

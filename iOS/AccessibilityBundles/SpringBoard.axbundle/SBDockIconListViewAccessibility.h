@@ -18,6 +18,7 @@
 - (double)_accessibilityAllowedGeometryOverlap;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 - (id)accessibilityLabel;
 - (id)_accessibilityEmptyListDropString;
 

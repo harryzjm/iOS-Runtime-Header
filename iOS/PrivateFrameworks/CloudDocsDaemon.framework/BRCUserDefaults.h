@@ -26,6 +26,9 @@
 + (id)defaultsForMangledID:(id)arg1;
 + (id)_userDefaultsManager;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) double eventMetricTimeout;
+@property(readonly, nonatomic) unsigned long long computeEvictableBatchSize;
+@property(readonly, nonatomic) unsigned long long applyCountToSignalFaultsLive;
 @property(readonly, nonatomic) unsigned long long fieldsToMoveOutOfTrashMask;
 @property(readonly, nonatomic) unsigned long long utiCacheSize;
 @property(readonly, nonatomic) BOOL forceSyncOverride;
@@ -223,6 +226,7 @@
 @property(readonly, nonatomic) unsigned int maxRecordCountInModifyRecordsOperation;
 @property(readonly, nonatomic) unsigned int maxRecordCountInFetchRecordsOperation;
 @property(readonly, nonatomic) _Bool shouldFetchAllChanges;
+@property(readonly, nonatomic) unsigned long long maxPreservedXattrBlobSize;
 @property(readonly, nonatomic) unsigned long long maxXattrBlobSize;
 - (id)xpcActivityDictionaryForKey:(id)arg1 byDefault:(id)arg2;
 - (_Bool)boolForKey:(id)arg1 inheritFromGlobal:(_Bool)arg2 byDefault:(_Bool)arg3;

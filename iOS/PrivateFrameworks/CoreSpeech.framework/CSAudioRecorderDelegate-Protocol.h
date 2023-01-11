@@ -13,10 +13,15 @@
 - (void)audioRecorderBufferAvailable:(CSAudioRecorder *)arg1 buffer:(NSData *)arg2 atTime:(unsigned long long)arg3;
 
 @optional
+- (void)audioRecorderLostMediaserverd:(CSAudioRecorder *)arg1;
+- (void)audioRecorderDisconnected:(CSAudioRecorder *)arg1;
 - (void)voiceTriggerDetectedOnAOP:(NSDictionary *)arg1;
+- (void)audioRecorder:(CSAudioRecorder *)arg1 didSetAudioSessionActive:(_Bool)arg2;
+- (void)audioRecorder:(CSAudioRecorder *)arg1 willSetAudioSessionActive:(_Bool)arg2;
 - (void)audioRecorderEndRecordInterruption:(CSAudioRecorder *)arg1;
 - (void)audioRecorderBeginRecordInterruption:(CSAudioRecorder *)arg1 withContext:(NSDictionary *)arg2;
 - (void)audioRecorderBeginRecordInterruption:(CSAudioRecorder *)arg1;
+- (void)audioRecorderDidFinishAlertPlayback:(CSAudioRecorder *)arg1 ofType:(long long)arg2 error:(NSError *)arg3;
 - (void)audioRecorderRecordHardwareConfigurationDidChange:(CSAudioRecorder *)arg1 toConfiguration:(long long)arg2;
 - (void)audioRecorderDidStopRecording:(CSAudioRecorder *)arg1 forReason:(long long)arg2;
 - (void)audioRecorderDidStartRecording:(CSAudioRecorder *)arg1 successfully:(_Bool)arg2 error:(NSError *)arg3;

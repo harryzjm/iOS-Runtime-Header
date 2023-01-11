@@ -123,6 +123,7 @@
 - (_Bool)allowsCalendarModifications;
 - (_Bool)isOrganizedBySharedCalendarOwner;
 - (_Bool)isExternallyOrganizedInvitation;
+- (_Bool)_isExternallyOrganizedInvitationWithAttendees:(_Bool)arg1;
 - (_Bool)isSelfOrganizedInvitation;
 - (_Bool)isSelfOrganized;
 - (_Bool)isFloating;
@@ -191,14 +192,15 @@
 - (void)setUniqueId:(id)arg1;
 - (id)uniqueId;
 - (id)description;
+- (void)willSave;
 - (void)setLocalCustomObject:(id)arg1 forKey:(id)arg2;
 - (id)localCustomObjectForKey:(id)arg1;
 - (void)setCustomObject:(id)arg1 forKey:(id)arg2;
 - (id)customObjectForKey:(id)arg1;
 - (void)_setCustomObject:(id)arg1 forKey:(id)arg2 local:(_Bool)arg3;
 - (id)_customObjectForKey:(id)arg1 local:(_Bool)arg2;
-- (void)setStructuredDataDictionary:(id)arg1 local:(_Bool)arg2;
-- (id)structuredDataDictionaryLocal:(_Bool)arg1;
+- (id)_dataFromStructuredDataDictionary:(id)arg1;
+- (id)_structuredDataDictionaryFromData:(id)arg1;
 @property(copy, nonatomic) NSData *localStructuredData;
 @property(copy, nonatomic) NSData *structuredData;
 

@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CalendarDaemon/CalActivatable-Protocol.h>
 #import <CalendarDaemon/ClientConnectionDelegate-Protocol.h>
+#import <CalendarDaemon/DatabaseChangeHandling-Protocol.h>
 #import <CalendarDaemon/NSXPCListenerDelegate-Protocol.h>
 
 @class BirthdayCalendarManager, CDBDataProtectionObserver, LocalAttachmentCleanUpSupport, NSArray, NSLock, NSMutableSet, NSString, NSXPCListener;
 @protocol OS_dispatch_queue, OS_xpc_object;
 
-@interface CADServer : NSObject <NSXPCListenerDelegate, ClientConnectionDelegate, CalActivatable>
+@interface CADServer : NSObject <NSXPCListenerDelegate, ClientConnectionDelegate, DatabaseChangeHandling, CalActivatable>
 {
     NSObject<OS_dispatch_queue> *_notificationQueue;
     int _backgroundTaskCount;
@@ -37,6 +38,7 @@
 @property(retain, nonatomic) NSArray *modules; // @synthesize modules=_modules;
 @property(retain, nonatomic) CDBDataProtectionObserver *dataProtectionObserver; // @synthesize dataProtectionObserver=_dataProtectionObserver;
 - (void).cxx_destruct;
+- (void)_enableICloudBackups;
 - (void)_dumpState;
 - (void)_exitWithStatus:(int)arg1;
 - (void)_deactivateAndExitWithStatus:(int)arg1;
@@ -56,6 +58,7 @@
 - (void)_finishInitializationWithDataAvailable;
 - (void)_handleXPCConnection:(id)arg1;
 - (void)clientConnectionDied:(id)arg1;
+- (void)_handleDatabaseChanged;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)deactivate;
 - (void)activate;

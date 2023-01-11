@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)mechanismEvent:(long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)mechanismEvent:(long long)arg1 value:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)_accessibilityNotificationFeedbackGenerator;
 - (void)_setAXNotificationFeedbackGenerator:(id)arg1;
 - (id)_axNotificationFeedbackGenerator;

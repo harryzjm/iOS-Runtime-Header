@@ -9,6 +9,7 @@
 
 @class NSArray, NSMutableDictionary, NSString, PUFiltersToolControllerSpec, UICollectionView, UICollectionViewFlowLayout;
 
+__attribute__((visibility("hidden")))
 @interface PUFiltersToolController <UICollectionViewDelegate, UICollectionViewDataSource>
 {
     _Bool _didPerformInitialScrollToReveal;

@@ -7,43 +7,42 @@
 #import <Home/HFAccessorySettingAdapterDisplayArbitrating-Protocol.h>
 #import <Home/MCProfileConnectionObserver-Protocol.h>
 
-@class HMAccessorySetting, MCProfileConnection, NSHashTable, NSString;
+@class MCProfileConnection, NSHashTable, NSString;
 
 @interface HFAccessorySettingManagedConfigurationAdapter <MCProfileConnectionObserver, HFAccessorySettingAdapterDisplayArbitrating>
 {
+    _Bool _isSettingUp;
     MCProfileConnection *_profileConnectionForSynchronization;
-    unsigned long long _mode;
     NSHashTable *_profileObservers;
 }
 
 @property(retain, nonatomic) NSHashTable *profileObservers; // @synthesize profileObservers=_profileObservers;
-@property(readonly, nonatomic) unsigned long long mode; // @synthesize mode=_mode;
-@property(readonly, nonatomic) MCProfileConnection *profileConnectionForSynchronization; // @synthesize profileConnectionForSynchronization=_profileConnectionForSynchronization;
+@property(nonatomic) _Bool isSettingUp; // @synthesize isSettingUp=_isSettingUp;
 - (void).cxx_destruct;
+- (void)_setupDebugHandler;
+- (id)_beginMonitoringSettingsKeyPath:(id)arg1;
 - (_Bool)shouldShowSettingsEntity:(id)arg1;
 - (void)profileConnectionDidReceiveProfileListChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (void)_dispatchWasUpdated;
 - (void)_rebootForReason:(id)arg1;
 - (id)_synchronizeHomeKitToManagedConfiguration;
 - (id)_synchronizeManagedConfigurationToHomeKit;
+@property(readonly, nonatomic) MCProfileConnection *profileConnectionForSynchronization; // @synthesize profileConnectionForSynchronization=_profileConnectionForSynchronization;
 - (id)_removeProfileFromProfileManager:(id)arg1;
-- (id)_profilesSettingDataWithError:(id *)arg1;
+- (id)_profilesSettingData;
 - (id)_installedProfileData;
-- (id)_installedProfiles;
-- (id)_profileWithIdentifier:(id)arg1 error:(id *)arg2;
+- (id)profilesSettingFuture;
 @property(readonly, nonatomic) unsigned long long numberOfProfiles;
-@property(readonly, nonatomic) HMAccessorySetting *profilesSetting;
 - (void)removeProfileObserver:(id)arg1;
 - (void)addProfileObserver:(id)arg1;
-- (id)profilesWithError:(id *)arg1;
+- (id)profiles;
 - (id)removeProfileDataFromHomeKit:(id)arg1;
-- (id)_synchronizeProfileDataToHomeKit:(id)arg1;
 - (id)removeProfileFromHomeKit:(id)arg1;
-- (id)addProfileDataToHomeKit:(id)arg1;
 - (void)accessorySettingWasUpdated:(id)arg1 value:(id)arg2;
 - (void)dealloc;
-- (id)initWithAccessoryProfile:(id)arg1;
-- (id)initWithAccessoryProfile:(id)arg1 mode:(unsigned long long)arg2;
+- (id)initWithMediaProfileContainer:(id)arg1 keyPaths:(id)arg2 updateHandler:(CDUnknownBlockType)arg3;
+- (id)initWithMediaProfileContainer:(id)arg1 keyPaths:(id)arg2 mode:(unsigned long long)arg3 updateHandler:(CDUnknownBlockType)arg4;
+- (id)initWithMediaProfileContainer:(id)arg1 mode:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

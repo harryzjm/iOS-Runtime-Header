@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -27,6 +27,7 @@
 @property(copy, nonatomic) NSString *transitionReason; // @synthesize transitionReason=_transitionReason;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(readonly, nonatomic) long long displayType; // @synthesize displayType=_displayType;
+- (void).cxx_destruct;
 - (void)endTransition;
 - (void)beginTransition;
 - (id)description;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <ScreenReaderOutput/NSSecureCoding-Protocol.h>
+
 @class NSString;
 
-@interface SCROBrailleKeyboardKey
+@interface SCROBrailleKeyboardKey <NSSecureCoding>
 {
     unsigned int _modifiers;
     unsigned int _keyCode;
@@ -14,6 +16,7 @@
     NSString *_keyString;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(nonatomic) unsigned int virtualKeyCode; // @synthesize virtualKeyCode=_virtualKeyCode;
 @property(nonatomic) unsigned int keyCode; // @synthesize keyCode=_keyCode;
 @property(nonatomic) unsigned int modifiers; // @synthesize modifiers=_modifiers;

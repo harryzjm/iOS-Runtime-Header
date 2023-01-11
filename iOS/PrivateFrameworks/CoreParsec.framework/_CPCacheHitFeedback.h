@@ -15,14 +15,13 @@
 
 @interface _CPCacheHitFeedback : PBCodable <_CPProcessableFeedback, _CPFeedbackUUID, _CPCacheHitFeedback, NSSecureCoding>
 {
-    CDStruct_c6e3878d _has;
     int _triggerEvent;
     unsigned long long _timestamp;
     NSString *_input;
     NSString *_uuid;
 }
 
-@property(copy, nonatomic) NSString *uuid;
+@property(copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property(nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 @property(copy, nonatomic) NSString *input; // @synthesize input=_input;
 @property(nonatomic) unsigned long long timestamp;
@@ -35,13 +34,8 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-@property(readonly, nonatomic) _Bool hasUuid;
-@property(readonly, nonatomic) _Bool hasTriggerEvent;
-@property(readonly, nonatomic) _Bool hasInput;
-@property(readonly, nonatomic) _Bool hasTimestamp;
 - (id)init;
 @property(readonly, nonatomic) _Bool requiresQueryId;
-- (id)initWithTriggerEvent:(int)arg1 input:(id)arg2 uuid:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

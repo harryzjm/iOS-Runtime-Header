@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSUAssertionHandler : NSObject
@@ -13,13 +13,18 @@ __attribute__((visibility("hidden")))
 
 + (int)_atomicIncrementAssertCount;
 + (void)handleFailureInFunction:(id)arg1 file:(id)arg2 lineNumber:(long long)arg3 isFatal:(_Bool)arg4 description:(const char *)arg5;
++ (void)handleFailureInFunction:(id)arg1 file:(id)arg2 lineNumber:(long long)arg3 isFatal:(_Bool)arg4 format:(id)arg5 args:(struct __va_list_tag [1])arg6;
 + (void)simulateCrashWithMessage:(id)arg1;
++ (id)packedBacktraceStringWithReturnAddresses:(id)arg1;
++ (id)packedBacktraceString;
++ (void)_logBacktraceWithCallStackSymbols:(id)arg1;
++ (void)logFullBacktrace;
 + (void)logBacktraceThrottled;
-+ (void)logBacktraceWithCallStackSymbols:(id)arg1;
-+ (void)logBacktrace;
 + (id)p_performBlockIgnoringAssertions:(CDUnknownBlockType)arg1 onlyFatal:(_Bool)arg2;
++ (id)performBlockIgnoringQAFatalAssertions:(CDUnknownBlockType)arg1;
 + (id)performBlockIgnoringFatalAssertions:(CDUnknownBlockType)arg1;
 + (id)performBlockIgnoringAssertions:(CDUnknownBlockType)arg1;
++ (void)initialize;
 
 @end
 

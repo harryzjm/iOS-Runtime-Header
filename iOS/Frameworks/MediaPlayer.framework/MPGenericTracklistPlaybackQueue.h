@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString;
+@class MPIdentifierSet, NSArray, NSString;
 
 @interface MPGenericTracklistPlaybackQueue
 {
@@ -12,8 +12,11 @@
     NSArray *_trackIdentifiers;
     long long _shuffleType;
     long long _repeatType;
+    MPIdentifierSet *_collectionIdentifierSet;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(readonly, nonatomic) MPIdentifierSet *collectionIdentifierSet; // @synthesize collectionIdentifierSet=_collectionIdentifierSet;
 @property(readonly, nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
 @property(readonly, nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
 @property(readonly, nonatomic) NSArray *trackIdentifiers; // @synthesize trackIdentifiers=_trackIdentifiers;

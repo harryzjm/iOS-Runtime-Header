@@ -87,8 +87,8 @@
 - (void)dealloc;
 - (id)init;
 - (unsigned long long)_stateTypeForState:(id)arg1;
-- (void)_changeToDesiredResourcePolicy;
 - (void)_changeToDesiredLocationProviderType;
+- (void)_acquireDesiredResourcePolicyAfterDelay:(double)arg1;
 - (void)transitionToState:(id)arg1;
 - (void)setCurrentState:(id)arg1;
 

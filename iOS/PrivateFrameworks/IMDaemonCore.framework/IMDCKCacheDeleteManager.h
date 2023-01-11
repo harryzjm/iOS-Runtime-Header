@@ -4,29 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface IMDCKCacheDeleteManager : NSObject
 {
     _Bool _alreadyCapturedErrorWithAutoBugCapture;
     _Bool _allowsWritingToDisk;
     _Bool _deviceLowOnDiskSpace;
-    unsigned long long _successfullyFetchedAttachments;
-    unsigned long long _totalNumberOfAttachmentsToFetch;
-    unsigned long long _successfullyValidatedAttachments;
-    unsigned long long _totalNumberOfTransfersToValidate;
 }
 
 + (id)sharedInstance;
 @property(nonatomic, getter=isDeviceLowOnDiskSpace) _Bool deviceLowOnDiskSpace; // @synthesize deviceLowOnDiskSpace=_deviceLowOnDiskSpace;
 @property(nonatomic) _Bool allowsWritingToDisk; // @synthesize allowsWritingToDisk=_allowsWritingToDisk;
 @property(nonatomic) _Bool alreadyCapturedErrorWithAutoBugCapture; // @synthesize alreadyCapturedErrorWithAutoBugCapture=_alreadyCapturedErrorWithAutoBugCapture;
-@property(nonatomic) unsigned long long totalNumberOfTransfersToValidate; // @synthesize totalNumberOfTransfersToValidate=_totalNumberOfTransfersToValidate;
-@property(nonatomic) unsigned long long successfullyValidatedAttachments; // @synthesize successfullyValidatedAttachments=_successfullyValidatedAttachments;
-@property(nonatomic) unsigned long long totalNumberOfAttachmentsToFetch; // @synthesize totalNumberOfAttachmentsToFetch=_totalNumberOfAttachmentsToFetch;
-@property(nonatomic) unsigned long long successfullyFetchedAttachments; // @synthesize successfullyFetchedAttachments=_successfullyFetchedAttachments;
-- (void)_clearMetrics;
-- (void)_recordMetrics;
 - (void)_fetchTransfersFromCloudKit:(id)arg1 indexOfTransfers:(unsigned long long)arg2 numberOfBatchesToFetch:(unsigned long long)arg3;
 - (_Bool)_shouldFetchNextBatch:(unsigned long long)arg1 totalTransfers:(id)arg2;
 - (unsigned long long)_indexOfNextBatch:(id)arg1 totalTransfers:(id)arg2 indexOfTransfers:(unsigned long long)arg3;
@@ -46,10 +36,13 @@
 - (id)createDictionaryForNotDeletingAnyAttachments:(id)arg1 urgency:(int)arg2;
 - (id)deleteAttachmentsAndReturnBytesDeleted:(id)arg1 urgency:(int)arg2;
 - (id)reportAvailableSpaceToBeDeleted:(id)arg1 urgency:(int)arg2;
+- (_Bool)shouldDownloadAssetsOfSize:(unsigned long long)arg1 refreshCachedValue:(_Bool)arg2;
 - (_Bool)canWriteFileOfEstimatedSize:(unsigned long long)arg1 refreshCachedValue:(_Bool)arg2;
+- (id)_cacheDeleteRequestCacheableSpaceGuidanceWithID:(id)arg1 diskVolume:(id)arg2 urgency:(int)arg3 requestedSize:(unsigned long long)arg4;
 - (void)_cacheDeleteSetUp;
 - (void)registerWithCacheDelete;
 - (id)_ckUtilitiesSharedInstance;
+- (id)init;
 
 @end
 

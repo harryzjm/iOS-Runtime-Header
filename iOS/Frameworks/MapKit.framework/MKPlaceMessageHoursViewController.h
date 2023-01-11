@@ -10,7 +10,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)messsageHoursWithMapItem:(id)arg1;
-- (id)currentOpeningString;
+- (id)localizedHoursBuilder;
+- (id)timeZone;
 - (id)completeHours;
 - (id)titleString;
 

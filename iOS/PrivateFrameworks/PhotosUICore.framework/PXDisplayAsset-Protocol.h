@@ -7,17 +7,27 @@
 #import <PhotosUICore/NSCopying-Protocol.h>
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@protocol PXDisplayAsset;
+@class NSDate, NSString;
+@protocol PXAssetdestinationAssetCopyProperties, PXDisplayAsset;
 
 @protocol PXDisplayAsset <NSObject, NSCopying>
+@property(readonly, nonatomic) _Bool isInCloud;
+@property(readonly, nonatomic) _Bool representsBurst;
 @property(readonly, nonatomic, getter=isFavorite) _Bool favorite;
+@property(readonly, nonatomic) NSDate *creationDate;
 @property(readonly, nonatomic) unsigned long long mediaSubtypes;
 @property(readonly, nonatomic) long long mediaType;
 - (long long)isContentEqualTo:(id <PXDisplayAsset>)arg1;
 
 @optional
+@property(readonly, nonatomic) NSString *localizedGeoDescription;
+@property(readonly, nonatomic) float hdrGain;
+@property(readonly, nonatomic) double aspectRatio;
 @property(readonly, nonatomic) long long playbackVariation;
 @property(readonly, nonatomic) long long playbackStyle;
 @property(readonly, nonatomic) double duration;
+- (id <PXAssetdestinationAssetCopyProperties>)destinationAssetCopyProperties;
+- (struct CGRect)bestCropRectForAspectRatio:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
+- (struct CGRect)bestCropRectForAspectRatio:(double)arg1;
 @end
 

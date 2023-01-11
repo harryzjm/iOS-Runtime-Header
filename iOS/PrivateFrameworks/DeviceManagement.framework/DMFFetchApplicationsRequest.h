@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
 @class NSArray;
 
-@interface DMFFetchApplicationsRequest : CATTaskRequest
+@interface DMFFetchApplicationsRequest
 {
     _Bool _excludeIcon;
     _Bool _excludeUnmanagedApps;

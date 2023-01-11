@@ -66,7 +66,6 @@
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (struct CGRect)frameForTextRange:(struct _NSRange)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

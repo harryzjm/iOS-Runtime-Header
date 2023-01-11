@@ -51,6 +51,7 @@
 @property(readonly, nonatomic) unsigned int state; // @synthesize state=_state;
 - (void).cxx_destruct;
 - (void)connection:(id)arg1 didReceiveData:(id)arg2;
+- (void)session:(id)arg1 didReceiveReport:(id)arg2;
 - (void)xpcObject:(id)arg1 objectContext:(id)arg2;
 - (void)session:(id)arg1 muted:(_Bool)arg2;
 - (void)session:(id)arg1 audioEnabled:(_Bool)arg2;
@@ -74,6 +75,7 @@
 - (void)setMuted:(_Bool)arg1;
 - (_Bool)getAudioEnabled;
 - (void)setAudioEnabled:(_Bool)arg1;
+- (void)sendSessionMessage:(id)arg1 toDestinations:(id)arg2;
 - (void)sendSessionMessage:(id)arg1;
 - (void)endSessionWithData:(id)arg1;
 - (void)endSession;

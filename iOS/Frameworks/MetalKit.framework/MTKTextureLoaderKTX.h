@@ -6,6 +6,7 @@
 
 @class NSData;
 
+__attribute__((visibility("hidden")))
 @interface MTKTextureLoaderKTX
 {
     NSData *_imageData;

@@ -10,19 +10,19 @@
 #import <Preferences/UIAppearance-Protocol.h>
 #import <Preferences/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <Preferences/UITableViewDataSource-Protocol.h>
+#import <Preferences/UITableViewDataSourcePrefetching-Protocol.h>
 #import <Preferences/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSIndexPath, NSMutableArray, NSMutableDictionary, NSString, PSListContainerView, UIColor, UIKeyboard, UITableView;
+@class NSArray, NSDictionary, NSIndexPath, NSMutableArray, NSMutableDictionary, NSString, UIColor, UIKeyboard, UITableView, UIView;
 @protocol PSSpecifierDataSource;
 
-@interface PSListController <UIAppearance, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, UIPopoverPresentationControllerDelegate, PSSpecifierObserver, PSViewControllerOffsetProtocol>
+@interface PSListController <UIAppearance, UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching, UIAlertViewDelegate, UIPopoverPresentationControllerDelegate, PSSpecifierObserver, PSViewControllerOffsetProtocol>
 {
     NSMutableArray *_prequeuedReusablePSTableCells;
     NSMutableDictionary *_cells;
     _Bool _cachesCells;
     _Bool _reusesCells;
     _Bool _forceSynchronousIconLoadForCreatedCells;
-    PSListContainerView *_containerView;
     UITableView *_table;
     NSArray *_specifiers;
     NSMutableDictionary *_specifiersByID;
@@ -44,8 +44,10 @@
     id <PSSpecifierDataSource> _dataSource;
     _Bool _requestingSpecifiersFromDataSource;
     _Bool _sectionContentInsetInitialized;
+    UIView *_containerView;
     NSIndexPath *_savedSelectedIndexPath;
     _Bool _edgeToEdgeCells;
+    _Bool _prefetchingEnabled;
     _Bool _usesDarkTheme;
     NSDictionary *_pendingURLResourceDictionary;
     NSString *_specifierIDPendingPush;
@@ -93,11 +95,14 @@
 @property(retain, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) _Bool usesDarkTheme; // @synthesize usesDarkTheme=_usesDarkTheme;
+@property(nonatomic, getter=isPrefetchingEnabled) _Bool prefetchingEnabled; // @synthesize prefetchingEnabled=_prefetchingEnabled;
 @property(copy, nonatomic) NSString *specifierIDPendingPush; // @synthesize specifierIDPendingPush=_specifierIDPendingPush;
 @property(retain, nonatomic) NSDictionary *pendingURLResourceDictionary; // @synthesize pendingURLResourceDictionary=_pendingURLResourceDictionary;
 @property(nonatomic) _Bool edgeToEdgeCells; // @synthesize edgeToEdgeCells=_edgeToEdgeCells;
 @property(nonatomic) _Bool forceSynchronousIconLoadForCreatedCells; // @synthesize forceSynchronousIconLoadForCreatedCells=_forceSynchronousIconLoadForCreatedCells;
 - (void).cxx_destruct;
+- (void)prefetchResourcesFor:(id)arg1;
+- (void)tableView:(id)arg1 prefetchRowsAtIndexPaths:(id)arg2;
 - (void)invalidateSpecifiersForDataSource:(id)arg1;
 - (void)performSpecifierUpdates:(id)arg1;
 - (void)dataSource:(id)arg1 performUpdates:(id)arg2;
@@ -273,6 +278,7 @@
 - (id)indexPathForSpecifier:(id)arg1;
 - (id)indexPathForIndex:(long long)arg1;
 - (void)setSpecifiers:(id)arg1;
+- (void)setTitle:(id)arg1;
 - (void)setSpecifier:(id)arg1;
 - (void)_removeIdentifierForSpecifier:(id)arg1;
 - (void)_addIdentifierForSpecifier:(id)arg1;

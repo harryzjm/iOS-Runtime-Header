@@ -97,6 +97,7 @@
 - (struct CGRect)rectOfElementWithID:(id)arg1;
 - (id)htmlString;
 - (void)getHTMLStringsAttachmentsCharsetsAndPlainTextAlternative:(CDUnknownBlockType)arg1;
+- (id)plainTextContentFromDOMDocument:(id)arg1;
 - (id)plainTextContent;
 - (id)compositionContextID;
 - (void)setCompositionContextID:(id)arg1;
@@ -181,6 +182,7 @@
 - (void)_replaceImages;
 - (void)_ensureQuotedImagesHaveAttachmentStyleForElement:(id)arg1;
 - (void)setLayoutInterval:(int)arg1;
+@property(readonly, nonatomic) _Bool shouldShowInsertPhotosButton;
 @property(readonly, nonatomic) _Bool shouldShowMarkupButton;
 - (id)_selectedAttachmentURLForMarkup;
 - (void)setCaretPosition:(unsigned long long)arg1;

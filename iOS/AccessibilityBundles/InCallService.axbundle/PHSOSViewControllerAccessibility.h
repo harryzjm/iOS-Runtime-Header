@@ -19,6 +19,8 @@
 - (void)showSOSNotified;
 - (void)showSOSDialCanceled;
 - (void)showSOSDialCountdown;
+- (void)showSOSNumbersList;
+- (_Bool)accessibilityPerformMagicTap;
 - (_Bool)accessibilityPerformEscape;
 
 @end

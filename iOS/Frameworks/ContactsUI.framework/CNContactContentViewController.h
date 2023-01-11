@@ -20,14 +20,15 @@
 #import <ContactsUI/CNPropertyGroupItemDelegate-Protocol.h>
 #import <ContactsUI/CNShareLocationProtocol-Protocol.h>
 #import <ContactsUI/CNUIObjectViewControllerDelegate-Protocol.h>
+#import <ContactsUI/NSUserActivityDelegate-Protocol.h>
 #import <ContactsUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 #import <ContactsUI/UIPopoverControllerDelegate-Protocol.h>
 #import <ContactsUI/UIViewControllerRestoration-Protocol.h>
 
-@class CNCardFaceTimeGroup, CNCardGroup, CNCardLinkedCardsGroup, CNContact, CNContactAction, CNContactAddFavoriteAction, CNContactAddLinkedCardAction, CNContactAddNewFieldAction, CNContactAddToExistingContactAction, CNContactCreateNewContactAction, CNContactFormatter, CNContactHeaderDisplayView, CNContactHeaderEditView, CNContactHeaderView, CNContactInlineActionsViewController, CNContactStore, CNContactSuggestionAction, CNContactToggleBlockCallerAction, CNContactUpdateExistingContactAction, CNContactView, CNContactViewCache, CNContainer, CNGroup, CNMedicalIDAction, CNMutableContact, CNPolicy, CNPropertyAction, CNPropertyFaceTimeAction, CNPropertyLinkedCardsAction, CNPropertyNoteCell, CNShareLocationController, CNSiriContactContextProvider, CNUIContactsEnvironment, CNUIUserActionListDataSource, HKHealthStore, NSArray, NSDictionary, NSLayoutConstraint, NSMapTable, NSMutableArray, NSMutableDictionary, NSString, UIKeyCommand, UITableView, UIView;
+@class CNCardFaceTimeGroup, CNCardGroup, CNCardLinkedCardsGroup, CNContact, CNContactAction, CNContactAddFavoriteAction, CNContactAddLinkedCardAction, CNContactAddNewFieldAction, CNContactAddToExistingContactAction, CNContactCreateNewContactAction, CNContactFormatter, CNContactHeaderDisplayView, CNContactHeaderEditView, CNContactHeaderView, CNContactInlineActionsViewController, CNContactStore, CNContactSuggestionAction, CNContactToggleBlockCallerAction, CNContactUpdateExistingContactAction, CNContactView, CNContactViewCache, CNContainer, CNGroup, CNManagedConfiguration, CNMedicalIDAction, CNMutableContact, CNPolicy, CNPropertyAction, CNPropertyFaceTimeAction, CNPropertyLinkedCardsAction, CNPropertyNoteCell, CNShareLocationController, CNSiriContactContextProvider, CNUIContactsEnvironment, CNUIUserActionListDataSource, CNUIUserActivityManager, HKHealthStore, NSArray, NSDictionary, NSLayoutConstraint, NSMapTable, NSMutableArray, NSMutableDictionary, NSString, UIKeyCommand, UITableView, UIView;
 @protocol CNCancelable, CNContactContentViewControllerDelegate, CNContactViewControllerPPTDelegate, CNContactViewHostProtocol, CNPresenterDelegate;
 
-@interface CNContactContentViewController : UIViewController <CNPropertyActionDelegate, CNPropertyCellDelegate, CNPropertyGroupItemDelegate, CNContactGroupPickerDelegate, UIPopoverControllerDelegate, CNContactHeaderViewDelegate, CNContactContentViewControllerDelegate, UIAdaptivePresentationControllerDelegate, CNShareLocationProtocol, CNUIObjectViewControllerDelegate, CNContactInlineActionsViewControllerDelegate_Internal, CNContactActionDelegate, CNPresenterDelegate, CNContactContentViewController, ABContactViewDataSource, ABContactViewDelegate, UIViewControllerRestoration>
+@interface CNContactContentViewController : UIViewController <CNPropertyActionDelegate, CNPropertyCellDelegate, CNPropertyGroupItemDelegate, CNContactGroupPickerDelegate, UIPopoverControllerDelegate, CNContactHeaderViewDelegate, CNContactContentViewControllerDelegate, UIAdaptivePresentationControllerDelegate, CNShareLocationProtocol, CNUIObjectViewControllerDelegate, CNContactInlineActionsViewControllerDelegate_Internal, NSUserActivityDelegate, CNContactActionDelegate, CNPresenterDelegate, CNContactContentViewController, ABContactViewDataSource, ABContactViewDelegate, UIViewControllerRestoration>
 {
     NSArray *_displayedProperties;
     _Bool _needsReload;
@@ -54,8 +55,10 @@
     _Bool _allowsSettingLinkedContactsAsPreferred;
     _Bool _allowsDeletion;
     _Bool _allowsActionsModel;
+    _Bool _allowsPickerActions;
     _Bool _hideCardActions;
     _Bool _outOfProcessSetupComplete;
+    _Bool _didSetFirstResponder;
     _Bool _contactSupportsTTYCalls;
     _Bool _runningPPT;
     _Bool _allowsEditInApp;
@@ -92,6 +95,7 @@
     CNCardGroup *_cardMedicalIDGroup;
     CNCardGroup *_cardBlockContactGroup;
     CNCardLinkedCardsGroup *_cardLinkedCardsGroup;
+    NSArray *_customActions;
     CNPropertyNoteCell *_noteCell;
     CNPropertyAction *_sendMessageAction;
     CNPropertyFaceTimeAction *_faceTimeAction;
@@ -136,10 +140,12 @@
     NSArray *_preEditLeftBarButtonItems;
     CNUIContactsEnvironment *_environment;
     CNContactViewCache *_contactViewCache;
+    CNUIUserActivityManager *_activityManager;
     CNPolicy *_policy;
     NSDictionary *_linkedPoliciesByContactIdentifier;
     long long _mode;
     CNContactStore *_contactStore;
+    CNManagedConfiguration *_managedConfiguration;
     NSArray *_originalContacts;
     NSDictionary *_propertyGroups;
     CNCardFaceTimeGroup *_cardFaceTimeGroup;
@@ -150,6 +156,7 @@
 + (id)viewControllerWithRestorationIdentifierPath:(id)arg1 coder:(id)arg2;
 + (id)boolStateRestorationProperties;
 + (_Bool)actionModelIncludesTTY:(id)arg1;
++ (void)_telemetryForContact:(id)arg1;
 + (_Bool)enablesTransportButtons;
 + (id)createActionsControllerWithActionListDataSource:(id)arg1;
 + (id)descriptorForRequiredKeysWithDescription:(id)arg1;
@@ -161,12 +168,14 @@
 @property(readonly, nonatomic) NSDictionary *propertyGroups; // @synthesize propertyGroups=_propertyGroups;
 @property(nonatomic) _Bool allowsEditInApp; // @synthesize allowsEditInApp=_allowsEditInApp;
 @property(retain, nonatomic) NSArray *originalContacts; // @synthesize originalContacts=_originalContacts;
+@property(retain, nonatomic) CNManagedConfiguration *managedConfiguration; // @synthesize managedConfiguration=_managedConfiguration;
 @property(retain, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property(nonatomic) long long mode; // @synthesize mode=_mode;
 @property(retain, nonatomic) NSDictionary *linkedPoliciesByContactIdentifier; // @synthesize linkedPoliciesByContactIdentifier=_linkedPoliciesByContactIdentifier;
 @property(retain, nonatomic) CNPolicy *policy; // @synthesize policy=_policy;
 @property(readonly, nonatomic) struct UIEdgeInsets peripheryInsets; // @synthesize peripheryInsets=_peripheryInsets;
 @property(nonatomic) _Bool runningPPT; // @synthesize runningPPT=_runningPPT;
+@property(readonly, nonatomic) CNUIUserActivityManager *activityManager; // @synthesize activityManager=_activityManager;
 @property(readonly, nonatomic) CNContactViewCache *contactViewCache; // @synthesize contactViewCache=_contactViewCache;
 @property(readonly, nonatomic) CNUIContactsEnvironment *environment; // @synthesize environment=_environment;
 @property(retain, nonatomic) NSArray *preEditLeftBarButtonItems; // @synthesize preEditLeftBarButtonItems=_preEditLeftBarButtonItems;
@@ -177,6 +186,7 @@
 @property(nonatomic) _Bool contactSupportsTTYCalls; // @synthesize contactSupportsTTYCalls=_contactSupportsTTYCalls;
 @property(retain, nonatomic) CNUIUserActionListDataSource *actionsDataSource; // @synthesize actionsDataSource=_actionsDataSource;
 @property(retain, nonatomic) NSArray *highlightedProperties; // @synthesize highlightedProperties=_highlightedProperties;
+@property(nonatomic) _Bool didSetFirstResponder; // @synthesize didSetFirstResponder=_didSetFirstResponder;
 @property(nonatomic) _Bool outOfProcessSetupComplete; // @synthesize outOfProcessSetupComplete=_outOfProcessSetupComplete;
 @property(retain, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property(retain, nonatomic) NSDictionary *userActivityUserInfo; // @synthesize userActivityUserInfo=_userActivityUserInfo;
@@ -213,6 +223,7 @@
 @property(retain, nonatomic) CNPropertyFaceTimeAction *faceTimeAction; // @synthesize faceTimeAction=_faceTimeAction;
 @property(retain, nonatomic) CNPropertyAction *sendMessageAction; // @synthesize sendMessageAction=_sendMessageAction;
 @property(retain, nonatomic) CNPropertyNoteCell *noteCell; // @synthesize noteCell=_noteCell;
+@property(retain, nonatomic) NSArray *customActions; // @synthesize customActions=_customActions;
 @property(retain, nonatomic) CNCardLinkedCardsGroup *cardLinkedCardsGroup; // @synthesize cardLinkedCardsGroup=_cardLinkedCardsGroup;
 @property(retain, nonatomic) CNCardGroup *cardBlockContactGroup; // @synthesize cardBlockContactGroup=_cardBlockContactGroup;
 @property(retain, nonatomic) CNCardGroup *cardMedicalIDGroup; // @synthesize cardMedicalIDGroup=_cardMedicalIDGroup;
@@ -241,6 +252,7 @@
 @property(retain, nonatomic) NSString *message; // @synthesize message=_message;
 @property(retain, nonatomic) NSString *alternateName; // @synthesize alternateName=_alternateName;
 @property(nonatomic) _Bool hideCardActions; // @synthesize hideCardActions=_hideCardActions;
+@property(nonatomic) _Bool allowsPickerActions; // @synthesize allowsPickerActions=_allowsPickerActions;
 @property(nonatomic) _Bool allowsActionsModel; // @synthesize allowsActionsModel=_allowsActionsModel;
 @property(nonatomic) _Bool allowsDeletion; // @synthesize allowsDeletion=_allowsDeletion;
 @property(nonatomic) _Bool allowsSettingLinkedContactsAsPreferred; // @synthesize allowsSettingLinkedContactsAsPreferred=_allowsSettingLinkedContactsAsPreferred;
@@ -311,6 +323,7 @@
 - (void)_reloadFaceTimeGroup;
 - (void)_reloadPropertyGroupsPreservingChanges:(_Bool)arg1;
 - (id)_loadPropertyGroups;
+- (_Bool)isGeminiAvailable;
 - (Class)groupClassForProperty:(id)arg1;
 - (void)_updateTTYTransportButtonsForItems:(id)arg1;
 - (void)_updateEmailTransportButtonsForItems:(id)arg1;
@@ -383,6 +396,7 @@
 - (void)setNeedsReload;
 - (_Bool)contactViewController:(id)arg1 shouldPerformDefaultActionForContact:(id)arg2 propertyKey:(id)arg3 propertyIdentifier:(id)arg4;
 - (void)contactViewController:(id)arg1 didDeleteContact:(id)arg2;
+- (_Bool)shouldShowActionsForAvatarView:(id)arg1;
 - (id)viewControllerForHeaderView:(id)arg1;
 - (void)headerPhotoDidSaveEditsForImageDrop;
 - (void)headerViewDidUpdateLabelSizes;
@@ -409,6 +423,7 @@
 - (void)contactInlineActionsViewControllerWillPresentDisambiguationUI:(id)arg1;
 - (_Bool)contactInlineActionsViewController:(id)arg1 shouldPerformActionOfType:(id)arg2 withContactProperty:(id)arg3;
 @property(readonly) _Bool isPresentingModalViewController;
+- (void)sender:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)sender:(id)arg1 dismissViewController:(id)arg2;
 - (long long)_modalPresentationStyleForViewController:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
@@ -428,6 +443,7 @@
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
@@ -435,6 +451,7 @@
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (_Bool)isStandardGroup:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)contactView:(id)arg1 didSelectItemAtIndex:(long long)arg2 inGroup:(id)arg3;
 - (double)contactView:(id)arg1 heightForItemAtIndex:(long long)arg2 inGroup:(id)arg3;

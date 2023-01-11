@@ -4,17 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <NewsCore/NSCoding-Protocol.h>
-
 @class NSOrderedSet;
 
-@interface FCCoverArticlesFeedGroupCursor : NSObject <NSCoding>
+@interface FCCoverArticlesFeedGroupCursor
 {
     NSOrderedSet *_promotedArticleIDs;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(copy, nonatomic) NSOrderedSet *promotedArticleIDs; // @synthesize promotedArticleIDs=_promotedArticleIDs;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

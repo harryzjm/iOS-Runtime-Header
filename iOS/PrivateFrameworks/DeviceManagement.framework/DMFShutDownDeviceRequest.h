@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
-@interface DMFShutDownDeviceRequest : CATTaskRequest
+@interface DMFShutDownDeviceRequest
 {
 }
+
++ (_Bool)isPermittedOnUserConnection;
++ (_Bool)isPermittedOnSystemConnection;
++ (id)permittedPlatforms;
 
 @end
 

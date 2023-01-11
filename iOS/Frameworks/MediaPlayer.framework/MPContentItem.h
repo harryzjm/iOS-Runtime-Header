@@ -4,16 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MPMediaItemArtwork, NSString;
-@protocol OS_dispatch_queue;
 
 @interface MPContentItem : NSObject
 {
-    void *_mediaRemoteDeltaContentItem;
-    NSObject<OS_dispatch_queue> *_notificationQueue;
-    _Bool _hasChanges;
     void *_mediaRemoteContentItem;
     MPMediaItemArtwork *_artwork;
 }
@@ -25,8 +21,6 @@
 @property(readonly, nonatomic) void *_mediaRemoteContentItem; // @synthesize _mediaRemoteContentItem;
 - (void).cxx_destruct;
 - (void)_loadArtwork:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_changeDictionary;
-- (void)_applyDeferredNotification;
 - (void)_postItemChangedNotificationWithDeltaBlock:(CDUnknownBlockType)arg1;
 @property(nonatomic, getter=isPlayable) _Bool playable;
 @property(nonatomic, getter=isStreamingContent) _Bool streamingContent;
@@ -36,9 +30,12 @@
 @property(copy, nonatomic) NSString *subtitle;
 @property(copy, nonatomic) NSString *title;
 @property(readonly, copy, nonatomic) NSString *identifier;
+- (_Bool)isEqual:(id)arg1;
+- (id)createExternalRepresentation;
 - (id)description;
 - (void)dealloc;
 - (id)_initWithMediaRemoteContentItem:(void *)arg1;
+- (id)initWithExternalRepresentation:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (id)init;
 

@@ -7,7 +7,7 @@
 #import <Cards/CRPayloadCommand-Protocol.h>
 
 @class NSDictionary, NSString;
-@protocol CRCard, NSSecureCoding;
+@protocol CRCard, NSSecureCoding><NSCopying;
 
 @interface CRNextCardCommand <CRPayloadCommand>
 {
@@ -16,9 +16,11 @@
 
 @property(retain, nonatomic) id <CRCard> nextCard; // @synthesize nextCard=_nextCard;
 - (void).cxx_destruct;
-@property(retain, nonatomic) id <NSSecureCoding> payload;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+@property(retain, nonatomic) id <NSSecureCoding><NSCopying> payload;
 
 // Remaining properties
+@property(nonatomic) unsigned long long commandDirection;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

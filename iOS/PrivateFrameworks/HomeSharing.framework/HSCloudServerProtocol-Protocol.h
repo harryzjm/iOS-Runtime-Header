@@ -86,6 +86,10 @@
 - (void)importItemArtworkForSagaID:(unsigned long long)arg1 completion:(void (^)(NSError *))arg2;
 - (void)importScreenshotForPurchaseHistoryID:(unsigned long long)arg1 completion:(void (^)(NSError *))arg2;
 - (void)importItemArtworkForPurchaseHistoryID:(unsigned long long)arg1 completion:(void (^)(NSError *))arg2;
+- (void)loadJaliscoUpdateProgressWithCompletion:(void (^)(NSError *, float))arg1;
+- (void)loadIsJaliscoUpdateInProgressWithCompletion:(void (^)(_Bool, _Bool))arg1;
+- (void)loadSagaUpdateProgressWithCompletion:(void (^)(NSError *, float))arg1;
+- (void)loadIsSagaUpdateInProgressWithCompletion:(void (^)(_Bool, _Bool))arg1;
 - (void)loadUpdateProgressWithCompletion:(void (^)(NSError *, float))arg1;
 - (void)loadIsUpdateInProgressWithCompletion:(void (^)(_Bool, _Bool))arg1;
 - (void)removeJaliscoLibraryWithCompletion:(void (^)(NSError *))arg1;
@@ -95,6 +99,7 @@
 - (void)updateSagaLibraryWithReason:(long long)arg1 completion:(void (^)(NSError *))arg2;
 - (void)updateJaliscoAppsLibraryWithReason:(long long)arg1 completion:(void (^)(NSError *))arg2;
 - (void)updateJaliscoLibraryWithReason:(long long)arg1 completion:(void (^)(NSError *))arg2;
+- (void)isSagaAuthenticatedWithCompletion:(void (^)(NSError *, _Bool))arg1;
 - (void)setConnectionConfiguration:(HSConnectionConfiguration *)arg1 daemonConfiguration:(unsigned long long)arg2 preferredVideoQuality:(unsigned long long)arg3 completion:(void (^)(NSError *))arg4;
 @end
 

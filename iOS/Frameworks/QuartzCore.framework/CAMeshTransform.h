@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuartzCore/NSCopying-Protocol.h>
 #import <QuartzCore/NSMutableCopying-Protocol.h>
@@ -17,6 +17,7 @@
     void *_impl;
     unsigned long long _normalization;
     long long _subdivisionSteps;
+    _Bool _replicatesEdges;
 }
 
 + (void)CAMLParserEndElement:(id)arg1 content:(id)arg2;
@@ -36,6 +37,7 @@
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (struct Object *)CA_copyRenderValue;
+@property(readonly) _Bool replicatesEdges;
 @property(readonly) int subdivisionSteps;
 @property(readonly, copy) NSString *depthNormalization;
 - (struct CAMeshFace)faceAtIndex:(unsigned long long)arg1;

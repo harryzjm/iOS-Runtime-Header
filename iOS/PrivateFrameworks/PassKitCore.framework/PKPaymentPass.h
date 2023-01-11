@@ -7,7 +7,7 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSSet, NSString, NSURL, PKCurrencyAmount, PKFelicaPassProperties, PKPaymentApplication;
+@class NSArray, NSSet, NSString, NSURL, PKCurrencyAmount, PKPaymentApplication, PKTransitPassProperties;
 
 @interface PKPaymentPass <NSCopying, NSSecureCoding>
 {
@@ -22,6 +22,7 @@
     _Bool _requiresTransferSerialNumberBasedProvisioning;
     NSString *_primaryAccountIdentifier;
     NSString *_primaryAccountNumberSuffix;
+    long long _cardType;
     NSSet *_associatedApplicationIdentifiers;
     NSSet *_associatedWebDomains;
     NSString *_sanitizedPrimaryAccountNumber;
@@ -45,6 +46,8 @@
 + (unsigned long long)defaultSettings;
 + (_Bool)supportsSecureCoding;
 + (id)displayableErrorForAction:(id)arg1 andReason:(unsigned long long)arg2;
++ (id)displayableErrorForTransitAction:(id)arg1 andReason:(unsigned long long)arg2;
++ (id)displayableNoPaymentNetworkErrorMessageForAction:(id)arg1 isTransit:(_Bool)arg2;
 @property(copy, nonatomic) NSArray *availableActions; // @synthesize availableActions=_availableActions;
 @property(nonatomic) _Bool requiresTransferSerialNumberBasedProvisioning; // @synthesize requiresTransferSerialNumberBasedProvisioning=_requiresTransferSerialNumberBasedProvisioning;
 @property(copy, nonatomic) NSString *localizedSuspendedReason; // @synthesize localizedSuspendedReason=_localizedSuspendedReason;
@@ -72,15 +75,20 @@
 @property(copy, nonatomic) NSString *sanitizedPrimaryAccountNumber; // @synthesize sanitizedPrimaryAccountNumber=_sanitizedPrimaryAccountNumber;
 @property(copy, nonatomic) NSSet *associatedWebDomains; // @synthesize associatedWebDomains=_associatedWebDomains;
 @property(copy, nonatomic) NSSet *associatedApplicationIdentifiers; // @synthesize associatedApplicationIdentifiers=_associatedApplicationIdentifiers;
+@property(nonatomic) long long cardType; // @synthesize cardType=_cardType;
 @property(copy, nonatomic) NSString *primaryAccountNumberSuffix; // @synthesize primaryAccountNumberSuffix=_primaryAccountNumberSuffix;
 @property(copy, nonatomic) NSString *primaryAccountIdentifier; // @synthesize primaryAccountIdentifier=_primaryAccountIdentifier;
 - (void).cxx_destruct;
+- (_Bool)shouldSuppressNoChargeAmount;
 - (id)sortedPaymentApplications:(id)arg1 ascending:(_Bool)arg2;
 - (id)_launchURLForPassAction:(id)arg1;
 - (id)addValueURL;
-@property(readonly, copy, nonatomic) PKFelicaPassProperties *felicaProperties;
+- (id)felicaProperties;
+@property(readonly, copy, nonatomic) PKTransitPassProperties *transitProperties;
 - (id)notificationCenterTitle;
+@property(readonly, nonatomic) _Bool supportsOnlyTransit;
 - (id)_localizedSuspendedReasonForAID:(id)arg1;
+- (_Bool)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2 clientOSVersion:(id)arg3;
 - (_Bool)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2;
 - (void)sanitizePaymentApplications;
 - (void)updateDevicePaymentApplicationsWithSecureElementIdentifiers:(id)arg1;
@@ -88,12 +96,15 @@
 @property(readonly, nonatomic) unsigned long long activationState;
 - (unsigned long long)_activationStateForApplicationState:(long long)arg1;
 - (_Bool)hasContactlessDevicePaymentApplicationsAvailable;
+- (id)deviceContactlessPaymentApplications;
 - (long long)effectiveContactlessPaymentApplicationState;
 - (id)sanitizedDeviceAccountNumber;
 @property(readonly) __weak NSString *deviceAccountNumberSuffix;
 @property(readonly) __weak NSString *deviceAccountIdentifier;
 - (_Bool)availableForAutomaticPresentationUsingBeaconContext;
 - (_Bool)availableForAutomaticPresentationUsingVASContext;
+- (_Bool)isSuicaPass;
+- (_Bool)isTransitPass;
 - (_Bool)isAccessPass;
 @property(readonly, nonatomic, getter=isPrivateLabel) _Bool privateLabel;
 - (_Bool)isDevicePrimaryPaymentApplicationPersonalized;

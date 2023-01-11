@@ -6,7 +6,6 @@
 
 @class CUIPSDGradient;
 
-__attribute__((visibility("hidden")))
 @interface CUIPSDGradientLayer
 {
     CUIPSDGradient *_gradient;

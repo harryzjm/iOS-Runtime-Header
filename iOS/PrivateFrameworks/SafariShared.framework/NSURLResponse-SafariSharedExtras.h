@@ -7,6 +7,7 @@
 #import <CFNetwork/NSURLResponse.h>
 
 @interface NSURLResponse (SafariSharedExtras)
+- (long long)safari_statusCodeGroup;
 - (_Bool)safari_hasAttachment;
 @end
 

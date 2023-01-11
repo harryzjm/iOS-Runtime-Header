@@ -10,8 +10,6 @@
 @interface IMDCKAttachmentSyncController
 {
     _Bool _assetDownloadInProgress;
-    _Bool _shouldCheckDeviceConditions;
-    CKServerChangeToken *_latestSyncToken;
     NSObject<OS_dispatch_queue> *_ckQueue;
     IMDRecordZoneManager *_recordZoneManager;
     IMDCKAttachmentSyncCKOperationFactory *_CKOperationFactory;
@@ -20,12 +18,13 @@
     NSMutableDictionary *_recordIDToTransferMap;
     CDUnknownBlockType _perTransferProgress;
     NSMutableArray *_downloadAssetsForTransferGUIDs;
+    unsigned long long _deviceConditionsToCheck;
     NSObject<OS_xpc_object> *_activity;
 }
 
 + (id)sharedInstance;
 @property NSObject<OS_xpc_object> *activity; // @synthesize activity=_activity;
-@property(nonatomic) _Bool shouldCheckDeviceConditions; // @synthesize shouldCheckDeviceConditions=_shouldCheckDeviceConditions;
+@property(nonatomic) unsigned long long deviceConditionsToCheck; // @synthesize deviceConditionsToCheck=_deviceConditionsToCheck;
 @property(retain, nonatomic) NSMutableArray *downloadAssetsForTransferGUIDs; // @synthesize downloadAssetsForTransferGUIDs=_downloadAssetsForTransferGUIDs;
 @property(nonatomic) _Bool assetDownloadInProgress; // @synthesize assetDownloadInProgress=_assetDownloadInProgress;
 @property(copy, nonatomic) CDUnknownBlockType perTransferProgress; // @synthesize perTransferProgress=_perTransferProgress;
@@ -42,12 +41,14 @@
 - (id)_constructAttachmentRecordIDUsingTombStoneDictionary:(id)arg1;
 - (_Bool)__shouldOptimizeAttachmentDefault;
 - (id)fileTransferCenter;
-- (void)_fetchFileTransfersFromCloudKit:(id)arg1 capturedWithABC:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_processRecordsFetchedForAttachmentPurge:(id)arg1 recordIDsToTransfers:(id)arg2 capturedWithABC:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_fetchAndValidateFileTransfersFromCloudKit:(id)arg1 capturedWithABC:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_processAndValidateAttachmentRecordsEligibleForPurge:(id)arg1 recordIDsToTransfers:(id)arg2 capturedWithABC:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_validateTransferFromCloudKit:(id)arg1 localTransfer:(id)arg2 validateCompletion:(CDUnknownBlockType)arg3;
 - (void)clearLocalSyncState;
 - (void)deleteAttachmentZone;
-@property(retain, nonatomic) CKServerChangeToken *latestSyncToken; // @synthesize latestSyncToken=_latestSyncToken;
+- (void)_deleteStingRayToken;
+@property(retain, nonatomic) CKServerChangeToken *latestSyncToken;
+- (id)_changeTokenKey;
 - (void)_migrateSyncToken;
 - (void)_resetAttachmentSyncStateForRecord:(id)arg1 toState:(long long)arg2;
 - (void)_markTransferAsNotBeingAbleToSyncUsingCKRecord:(id)arg1;
@@ -71,8 +72,11 @@
 - (_Bool)_attachmentZoneCreated;
 - (void)_writeCKRecordsToAttachmentZone:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_fetchAttachmentZoneChangesShouldWriteBackChanges:(_Bool)arg1 desiredKeys:(long long)arg2 syncType:(long long)arg3 currentBatchCount:(long long)arg4 maxBatchCount:(long long)arg5 syncToken:(id)arg6 completionBlock:(CDUnknownBlockType)arg7;
-- (void)_fetchAttachmentZoneRecords:(id)arg1 desiredKeys:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)_fetchedAllChangesFromCloudKit;
+- (void)_fetchAttachmentZoneRecords:(id)arg1 desiredKeys:(long long)arg2 useNonHSA2ManateeDatabase:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_writeAttachmentsToCloudKit:(CDUnknownBlockType)arg1;
+- (id)_updateAttachmentGUIDIfNeededAndReturnTransfersToForceMarkAsSync:(id)arg1 transfersToSyncRowIDs:(id)arg2;
+- (void)_markAttachmentWithROWIDAsSyncedWithCloudKit:(id)arg1;
 - (unsigned long long)_numberOfAttachmentsToWriteUp;
 - (unsigned long long)_numberOfAttachmentsToDownload;
 - (void)_scheduleOperation:(id)arg1;
@@ -81,14 +85,29 @@
 - (id)_attachmentZoneID;
 - (_Bool)_deviceConditionsAllowsMessageSyncIgnoreFeatureEnabled:(_Bool)arg1;
 - (_Bool)_deviceConditionsAllowsMessageSync;
+- (_Bool)_deviceConditionsAllowsMessageSyncForCurrentBatchCount:(long long)arg1 maxBatchCount:(long long)arg2;
+- (void)_updateDeviceCondictionsToCheckIfNeededForCurrentBatchCount:(long long)arg1 maxBatchCount:(long long)arg2;
 - (id)_ckUtilitiesInstance;
 - (id)__databaseRequestForAttachmentsWithAssets;
-- (void)downloadAttachmentAssetsWithActivity:(id)arg1 restoringAttachments:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)__databaseRequestResetAllAttachmentsInFaiedCloudDownloadState;
+- (void)downloadAttachmentAssetsForChatIDs:(id)arg1 services:(id)arg2 style:(unsigned char)arg3 completion:(CDUnknownBlockType)arg4;
+- (unsigned long long)purgedAttachmentsCountForChat:(id)arg1 services:(id)arg2;
+- (id)purgedAttachmentsForChat:(id)arg1 services:(id)arg2 limit:(long long)arg3;
+- (void)downloadAttachmentAssetsWithActivity:(id)arg1 restoringAttachments:(_Bool)arg2;
+- (void)downloadAttachmentAssetsWithActivity:(id)arg1 restoringAttachments:(_Bool)arg2 useNonHSA2ManateeDatabase:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_downloadAttachmentAssetsWithActivity:(id)arg1 restoringAttachments:(_Bool)arg2 useNonHSA2ManateeDatabase:(_Bool)arg3 retryCount:(unsigned long long)arg4 numAttachmentsDownloaded:(unsigned long long)arg5 transfers:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)_downloadAttachmentAssetsWithActivity:(id)arg1 restoringAttachments:(_Bool)arg2 useNonHSA2ManateeDatabase:(_Bool)arg3 retryCount:(unsigned long long)arg4 numAttachmentsDownloaded:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
+- (_Bool)_attachmentDownloadCanStart:(_Bool)arg1 withActivity:(id)arg2;
 - (void)acceptFileTransfer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchAttachmentDataForTransfers:(id)arg1 highQuality:(_Bool)arg2 perTransferProgress:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)syncAttachmentsWithSyncType:(long long)arg1 shouldCheckDeviceConditions:(_Bool)arg2 activity:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)fetchAttachmentDataForTransfers:(id)arg1 highQuality:(_Bool)arg2 useNonHSA2ManateeDatabase:(_Bool)arg3 perTransferProgress:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)syncAttachmentsWithSyncType:(long long)arg1 deviceConditionsToCheck:(unsigned long long)arg2 activity:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)_markAllUnsuccessFullSyncAttachmentsAsNeedingSync;
+- (_Bool)_shouldMarkAttachmentsAsNeedingReupload;
+- (long long)_numberOfBatchesOfAttachmentsToFetchInInitialSync;
 - (void)_updateAllAttachmentsAsNotNeedingReUpload;
 - (_Bool)_shouldMarkAllAttachmentsAsNeedingSync;
+- (long long)syncControllerRecordType;
 - (id)init;
 - (id)initWithSyncTokenStore:(id)arg1;
 - (void)dealloc;

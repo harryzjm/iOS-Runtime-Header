@@ -84,6 +84,7 @@
 @property(nonatomic) id <MFComposeRecipientTextViewDelegate> composeRecipientDelegate; // @synthesize composeRecipientDelegate=_composeRecipientViewDelegate;
 @property(nonatomic) id <MFMailComposeViewDelegate> composeViewDelegate; // @synthesize composeViewDelegate=_mailComposeViewDelegate;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)layoutMarginsDidChange;
 - (struct CGPoint)_headerViewOriginWithScrollViewOffsetCalculation;
 - (void)textContentView:(id)arg1 didChangeSize:(struct CGSize)arg2;
 - (_Bool)textContentView:(id)arg1 shouldChangeSizeForContentSize:(struct CGSize)arg2;

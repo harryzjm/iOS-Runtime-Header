@@ -7,7 +7,7 @@
 #import <HMFoundation/NSCopying-Protocol.h>
 #import <HMFoundation/NSMutableCopying-Protocol.h>
 
-@class HMFMessageDestination, HMFMessageInternal, HMFMessageTransport, NSDictionary, NSString, NSUUID;
+@class HMFActivity, HMFMessageDestination, HMFMessageInternal, HMFMessageTransport, NSDictionary, NSString, NSUUID;
 
 @interface HMFMessage <NSCopying, NSMutableCopying>
 {
@@ -17,6 +17,7 @@
 + (id)shortDescription;
 + (id)messageWithName:(id)arg1 qualityOfService:(long long)arg2 destination:(id)arg3 payload:(id)arg4;
 + (id)messageWithName:(id)arg1 destination:(id)arg2 payload:(id)arg3;
++ (id)activityNameWithMessageName:(id)arg1;
 + (id)messageWithMessage:(id)arg1 messagePayload:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 + (id)messageWithMessage:(id)arg1 messagePayload:(id)arg2;
 + (id)messageWithName:(id)arg1 identifier:(id)arg2 messagePayload:(id)arg3;
@@ -30,6 +31,7 @@
 @property(copy, nonatomic) NSDictionary *messagePayload;
 @property(readonly, copy, nonatomic) NSDictionary *headers;
 @property(readonly, copy, nonatomic) NSDictionary *userInfo;
+@property(readonly, nonatomic) HMFActivity *activity;
 @property(readonly, nonatomic) __weak HMFMessageTransport *transport;
 @property(retain, nonatomic) HMFMessageDestination *destination;
 @property(readonly, nonatomic) long long qualityOfService;

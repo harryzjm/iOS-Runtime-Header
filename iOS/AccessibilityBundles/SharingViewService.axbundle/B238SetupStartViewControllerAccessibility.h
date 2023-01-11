@@ -14,6 +14,7 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)handleStartButton:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)_accessibilityB238TitleLabel;
 
 @end
 

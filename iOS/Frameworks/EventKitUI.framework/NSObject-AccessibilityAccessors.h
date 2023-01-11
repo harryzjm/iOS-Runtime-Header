@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface NSObject (AccessibilityAccessors)
 + (id)_accessibilityStringForDate:(CDStruct_79f9e052)arg1;

@@ -13,6 +13,7 @@
 {
     _Bool _shouldColorDescription;
     _Bool _shouldShowLoadingState;
+    _Bool _shouldShowRoomName;
     _Bool _hasUpdatedUISinceLastReuse;
     _Bool _showingUpdatingState;
     _Bool _showingProgressIndicator;
@@ -43,11 +44,13 @@
 @property(retain, nonatomic) UILabel *coloredDescriptionLabel; // @synthesize coloredDescriptionLabel=_coloredDescriptionLabel;
 @property(retain, nonatomic) HUGridServiceCellTextView *serviceTextView; // @synthesize serviceTextView=_serviceTextView;
 @property(retain, nonatomic) HUIconView *iconView; // @synthesize iconView=_iconView;
+@property(nonatomic) _Bool shouldShowRoomName; // @synthesize shouldShowRoomName=_shouldShowRoomName;
 @property(nonatomic) _Bool shouldShowLoadingState; // @synthesize shouldShowLoadingState=_shouldShowLoadingState;
 @property(nonatomic) _Bool shouldColorDescription; // @synthesize shouldColorDescription=_shouldColorDescription;
 @property(retain, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
 @property(retain, nonatomic) HFItem *serviceItem; // @synthesize serviceItem=_serviceItem;
 - (void).cxx_destruct;
+- (void)_updateExclamationViewColor;
 - (void)_createExclamationViewIfNecessary;
 - (void)_updateAccessoryView;
 - (void)_updateSecondaryContentDisplayStyle;

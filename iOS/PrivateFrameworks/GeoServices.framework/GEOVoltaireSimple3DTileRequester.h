@@ -11,6 +11,7 @@
 }
 
 + (unsigned char)tileProviderIdentifier;
+- (_Bool)useProxyAuthForTileKey:(const struct _GEOTileKey *)arg1;
 - (id)urlForTileKey:(const struct _GEOTileKey *)arg1;
 - (unsigned char)_authTypeForTileKey:(const struct _GEOTileKey *)arg1;
 - (unsigned int)tileEditionForKey:(const struct _GEOTileKey *)arg1;

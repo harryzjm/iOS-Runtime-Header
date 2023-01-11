@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSString, NSUUID, VNImageprint;
+@class NSData, NSString, VNImageprint;
 
 @interface VNImageprintObservation
 {
@@ -23,7 +23,6 @@
 - (id)initWithRawImageprintDescriptor:(id)arg1;
 - (_Bool)isImageprintValid;
 - (float)calculateDistanceFromImageprintObservation:(id)arg1;
-@property(copy, nonatomic) NSUUID *identifier;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;

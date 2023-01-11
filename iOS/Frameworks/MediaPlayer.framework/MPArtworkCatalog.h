@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSCache, NSString;
 @protocol MPArtworkDataSource, MPArtworkDataSourceVisualIdenticality;
@@ -27,7 +27,7 @@
 + (id)_artworkLoadQueue;
 + (id)_artworkCacheForIdentifier:(id)arg1 requestingContext:(id)arg2;
 + (void)setCachePurgesWhenEnteringBackground:(_Bool)arg1 forCacheIdentifier:(id)arg2 requestingContext:(id)arg3;
-+ (void)setCacheLimit:(unsigned long long)arg1 forCacheIdentifier:(id)arg2 requestingContext:(id)arg3;
++ (void)setCacheLimit:(long long)arg1 forCacheIdentifier:(id)arg2 requestingContext:(id)arg3;
 + (id)staticArtworkCatalogWithImage:(id)arg1;
 @property(nonatomic) unsigned long long renderHint; // @synthesize renderHint=_renderHint;
 @property(nonatomic) __weak id <MPArtworkDataSource> dataSource; // @synthesize dataSource=_dataSource;
@@ -45,6 +45,7 @@
 - (void)_loadBestRepresentationIfNeeded;
 @property(readonly, nonatomic) NSCache *cache;
 - (void)setCacheIdentifier:(id)arg1 forRequestingContext:(id)arg2;
+- (void)requestExportableArtworkPropertiesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestExportableArtworkURLWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestRadiosityImageWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestFocusRegionsWithCompletionHandler:(CDUnknownBlockType)arg1;

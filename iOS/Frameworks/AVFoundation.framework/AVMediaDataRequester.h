@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol AVMediaDataRequesterConsumer, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVMediaDataRequester : NSObject
 {
     id <AVMediaDataRequesterConsumer> _mediaDataConsumer;

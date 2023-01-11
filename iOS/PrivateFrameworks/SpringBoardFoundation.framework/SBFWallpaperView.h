@@ -63,9 +63,6 @@
 @property(nonatomic) __weak id <SBFLegibilitySettingsProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (void)legibilitySettingsDidChange;
-@property(readonly, nonatomic) _Bool contrastRequiresGradient;
-- (_Bool)contrastRequiresTreatments;
-- (_Bool)luminanceInRectRequiresTreatments:(struct CGRect)arg1;
 - (void)_updateContentViewScale;
 - (void)_updateScaleFactor;
 - (void)_removeParallax;
@@ -91,9 +88,10 @@
 - (_Bool)_needsFallbackImageForBackdropGeneratedImage:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *variantCacheIdentifier;
 @property(readonly, copy, nonatomic) NSString *cacheGroup;
-- (id)_cacheKeyForParameters:(CDStruct_83077358)arg1 includingTint:(_Bool)arg2;
+- (id)_cacheKeyForParameters:(CDStruct_83077358)arg1 includingTint:(_Bool)arg2 downsampleFactor:(double)arg3;
 - (id)_imageForBackdropParameters:(CDStruct_83077358)arg1 includeTint:(_Bool)arg2;
 - (id)_blurredImage;
+- (void)preheatImageData;
 - (void)_stopGeneratingBlurredImages;
 - (void)_startGeneratingBlurredImages;
 - (double)_contrastInContentViewRect:(struct CGRect)arg1 contrastWithinBoxes:(double *)arg2 contrastBetweenBoxes:(double *)arg3;
@@ -116,6 +114,7 @@
 - (double)contrast;
 - (id)averageColorInRect:(struct CGRect)arg1 withSmudgeRadius:(double)arg2;
 - (void)_updateLegibilitySettingsForAverageColor:(id)arg1 force:(_Bool)arg2 notify:(_Bool)arg3;
+- (void)resetLegibilitySettingsForAverageColor:(id)arg1;
 - (void)updateLegibilitySettingsForAverageColor:(id)arg1;
 - (void)_setLegibilitySettings:(id)arg1 notify:(_Bool)arg2;
 - (id)_primaryColorOverride;

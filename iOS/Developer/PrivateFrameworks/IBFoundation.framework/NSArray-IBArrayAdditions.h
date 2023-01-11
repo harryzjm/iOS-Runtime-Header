@@ -74,6 +74,7 @@
 - (id)ib_arrayByMappingBlock:(CDUnknownBlockType)arg1;
 - (id)ib_arrayByMappingWithBehavior:(long long)arg1 andBlock:(CDUnknownBlockType)arg2;
 - (_Bool)ib_binarySearchForObject:(id)arg1 usingComparator:(CDUnknownBlockType)arg2;
+- (id)ib_dictionaryWithObjectToLastIndex;
 - (unsigned long long)ib_indexOfFirstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)ib_collectionByRemovingObject:(id)arg1;
 - (id)ib_collectionByAddingObject:(id)arg1;

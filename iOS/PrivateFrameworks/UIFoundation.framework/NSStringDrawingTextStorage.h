@@ -6,7 +6,7 @@
 
 #import <UIFoundation/NSLayoutManagerDelegate-Protocol.h>
 
-@class CUICatalog, CUIStyleEffectConfiguration, NSConcreteNotifyingMutableAttributedString, NSLayoutManager, NSString, NSTextContainer;
+@class CUICatalog, CUIStyleEffectConfiguration, NSConcreteNotifyingMutableAttributedString, NSGraphicsContext, NSLayoutManager, NSString, NSTextContainer;
 
 @interface NSStringDrawingTextStorage <NSLayoutManagerDelegate>
 {
@@ -20,11 +20,13 @@
         unsigned int _baselineMode:1;
         unsigned int _forceWordWrapping:1;
         unsigned int _usesSimpleTextEffects:1;
-        unsigned int _reserved:24;
+        unsigned int _applicationFrameworkContext:3;
+        unsigned int _reserved:21;
     } _sdflags;
     CUICatalog *_catalog;
     CUIStyleEffectConfiguration *_styleEffects;
     double _defaultTighteningFactor;
+    NSGraphicsContext *_graphicsContext;
 }
 
 + (_Bool)_hasCustomSettings;
@@ -32,6 +34,7 @@
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)stringDrawingTextStorage;
 + (void)initialize;
+@property(retain, nonatomic) NSGraphicsContext *graphicsContext; // @synthesize graphicsContext=_graphicsContext;
 @property(retain, nonatomic) CUIStyleEffectConfiguration *cuiStyleEffects; // @synthesize cuiStyleEffects=_styleEffects;
 @property(retain, nonatomic) CUICatalog *cuiCatalog; // @synthesize cuiCatalog=_catalog;
 @property double defaultTighteningFactor; // @synthesize defaultTighteningFactor=_defaultTighteningFactor;
@@ -58,6 +61,8 @@
 - (void)_setForceWordWrapping:(_Bool)arg1;
 - (_Bool)_forceWordWrapping;
 @property(nonatomic, getter=_usesSimpleTextEffects, setter=_setUsesSimpleTextEffects:) _Bool usesSimpleTextEffects;
+- (long long)_applicationFrameworkContext;
+- (void)_setApplicationFrameworkContext:(long long)arg1;
 - (_Bool)_baselineMode;
 - (void)_setBaselineMode:(_Bool)arg1;
 - (double)_baselineDelta;

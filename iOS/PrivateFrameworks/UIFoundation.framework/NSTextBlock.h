@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <UIFoundation/NSCoding-Protocol.h>
 #import <UIFoundation/NSCopying-Protocol.h>
+#import <UIFoundation/NSSecureCoding-Protocol.h>
 
-@interface NSTextBlock : NSObject <NSCoding, NSCopying>
+@interface NSTextBlock : NSObject <NSSecureCoding, NSCoding, NSCopying>
 {
     void *_propVals;
     unsigned long long _propMask;
@@ -20,6 +21,7 @@
     void *_blockSecondary;
 }
 
++ (_Bool)supportsSecureCoding;
 + (void)initialize;
 - (id)_attributeDescription;
 - (void)drawBackgroundWithFrame:(struct CGRect)arg1 inView:(id)arg2 characterRange:(struct _NSRange)arg3 layoutManager:(id)arg4;

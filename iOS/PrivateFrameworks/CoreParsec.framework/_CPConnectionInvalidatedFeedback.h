@@ -14,7 +14,6 @@
 
 @interface _CPConnectionInvalidatedFeedback : PBCodable <_CPProcessableFeedback, _CPConnectionInvalidatedFeedback, NSSecureCoding>
 {
-    CDStruct_b5306035 _has;
     unsigned long long _timestamp;
 }
 
@@ -27,7 +26,6 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-@property(readonly, nonatomic) _Bool hasTimestamp;
 - (id)init;
 @property(readonly, nonatomic) _Bool requiresQueryId;
 

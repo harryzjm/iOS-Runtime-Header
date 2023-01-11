@@ -12,6 +12,7 @@
 
 @class MCProfile, NSString, UIAlertView, UITextField;
 
+__attribute__((visibility("hidden")))
 @interface MCRemoveProfileViewController <MCInteractionDelegate, MCProfileViewControllerDelegate, PSStateRestoration, UIActionSheetDelegate, UITextFieldDelegate>
 {
     _Bool _profileWantsToReEnroll;

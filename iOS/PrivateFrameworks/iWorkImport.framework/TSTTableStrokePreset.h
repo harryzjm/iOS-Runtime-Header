@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (void)setIndex:(unsigned long long)arg1;
 - (unsigned long long)index;
 - (id)initWithContext:(id)arg1;
-- (id)init;
 
 @end
 

@@ -12,7 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_applyStatePreservingGlyphState:(_Bool)arg1 overridingText:(id)arg2 animated:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)emphasizeStateIfPossible:(long long)arg1 withTextOverride:(id)arg2;
+- (void)emphasizeStateIfPossible:(long long)arg1 withOverrideText:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 

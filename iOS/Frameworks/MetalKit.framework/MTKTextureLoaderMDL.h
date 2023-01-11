@@ -6,6 +6,7 @@
 
 @class MDLTexture;
 
+__attribute__((visibility("hidden")))
 @interface MTKTextureLoaderMDL
 {
     MDLTexture *_texture;

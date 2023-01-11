@@ -22,6 +22,7 @@
     NSLayoutConstraint *_overlayTopConstraint;
 }
 
++ (_Bool)requiresConstraintBasedLayout;
 @property(retain, nonatomic) NSLayoutConstraint *overlayTopConstraint; // @synthesize overlayTopConstraint=_overlayTopConstraint;
 @property(retain, nonatomic) HUQuickControlSliderValueOverlayView *valueOverlayView; // @synthesize valueOverlayView=_valueOverlayView;
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
@@ -33,6 +34,8 @@
 - (void).cxx_destruct;
 @property(retain, nonatomic) id secondaryValue;
 @property(retain, nonatomic) id value;
+- (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
+- (void)_updateOffState;
 - (void)layoutSubviews;
 - (struct CGSize)intrinsicContentSize;
 - (CDStruct_c3b9c2ee)_permittedValueRange;
@@ -42,7 +45,6 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(nonatomic) long long sizeSubclass;
 @property(readonly) Class superclass;
 
 @end

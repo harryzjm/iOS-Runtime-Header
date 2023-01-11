@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CIImageProcessorKernel : NSObject
 {
@@ -16,6 +16,7 @@
 + (_Bool)synchronizeInputs;
 + (_Bool)allowPartialOutputRegion;
 + (_Bool)outputIsOpaque;
++ (_Bool)canReduceOutputChannels;
 + (_Bool)allowSRGBTranferFuntionOnOutput;
 + (int)outputFormat;
 + (_Bool)allowSRGBTranferFuntionOnInputAtIndex:(int)arg1;

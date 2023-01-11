@@ -7,12 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <IBFoundation/IBBinaryArchiving-Protocol.h>
-#import <IBFoundation/NSCoding-Protocol.h>
 #import <IBFoundation/NSCopying-Protocol.h>
+#import <IBFoundation/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface IBUserDefinedRuntimeAttribute : NSObject <NSCoding, NSCopying, IBBinaryArchiving>
+@interface IBUserDefinedRuntimeAttribute : NSObject <NSSecureCoding, NSCopying, IBBinaryArchiving>
 {
     _Bool _localized;
     NSString *_typeIdentifier;
@@ -21,6 +21,7 @@
 }
 
 + (id)decodeWithBinaryUnarchiver:(id)arg1;
++ (_Bool)supportsSecureCoding;
 + (id)customAttributeWithKeyPath:(id)arg1 value:(id)arg2 isLocalized:(_Bool)arg3 andTypeIdentifier:(id)arg4;
 @property(readonly, nonatomic) id value; // @synthesize value=_value;
 @property(readonly, nonatomic, getter=isLocalized) _Bool localized; // @synthesize localized=_localized;

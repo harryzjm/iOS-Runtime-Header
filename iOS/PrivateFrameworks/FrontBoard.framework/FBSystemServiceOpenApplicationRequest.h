@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class FBProcess, FBSOpenApplicationOptions, NSString;
 
@@ -21,8 +21,8 @@
 @property(copy, nonatomic) FBSOpenApplicationOptions *options; // @synthesize options=_options;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(nonatomic, getter=isTrusted) _Bool trusted; // @synthesize trusted=_trusted;
+- (void).cxx_destruct;
 - (id)description;
-- (void)dealloc;
 
 @end
 

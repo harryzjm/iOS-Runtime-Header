@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TSTLayout, TSTLayoutSpace;
 
@@ -35,8 +35,8 @@ __attribute__((visibility("hidden")))
 - (int)validateLayoutSpaces;
 - (id)getSpaceContainingCellID:(struct TSUCellCoord)arg1;
 - (void)invalidateTableOffsets;
-- (void)invalidateCoordinatesAfterRow:(unsigned short)arg1;
-- (void)invalidateCoordinatesAfterColumn:(unsigned char)arg1;
+- (void)invalidateCoordinatesAfterRow:(unsigned int)arg1;
+- (void)invalidateCoordinatesAfterColumn:(unsigned short)arg1;
 - (void)invalidateCoordinates;
 - (void)dealloc;
 - (id)initWithLayout:(id)arg1;

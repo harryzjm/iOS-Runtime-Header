@@ -8,5 +8,6 @@
 
 @interface UICollectionViewController (IBCocoaTouchToolIntegration)
 - (id)ibTopLevelViewForLayoutEngine:(id)arg1;
+- (id)initWithMarshalledValues:(id)arg1 orderedKeys:(id)arg2 ignoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
 @end
 

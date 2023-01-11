@@ -10,6 +10,6 @@
 @protocol FBApplicationDataStoreRepositoryDelegate;
 
 @protocol FBApplicationDataStoreRepository <FBApplicationDataStoreRepositoryReading, FBApplicationDataStoreRepositoryWriting>
-@property(nonatomic) id <FBApplicationDataStoreRepositoryDelegate> delegate;
+@property(nonatomic) __weak id <FBApplicationDataStoreRepositoryDelegate> delegate;
 @end
 

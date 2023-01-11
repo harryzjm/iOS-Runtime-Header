@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
 @class NSString;
 
-@interface DMFLockDeviceRequest : CATTaskRequest
+@interface DMFLockDeviceRequest
 {
     NSString *_message;
     NSString *_phoneNumber;
+    NSString *_pin;
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)isPermittedOnUserConnection;
++ (_Bool)isPermittedOnSystemConnection;
++ (id)permittedPlatforms;
+@property(copy, nonatomic) NSString *pin; // @synthesize pin=_pin;
 @property(copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property(copy, nonatomic) NSString *message; // @synthesize message=_message;
 - (void).cxx_destruct;

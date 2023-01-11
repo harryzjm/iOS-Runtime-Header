@@ -17,8 +17,6 @@ __attribute__((visibility("hidden")))
 - (void)setSamplePositions:(const CDStruct_6e3f967a *)arg1 count:(unsigned long long)arg2;
 - (unsigned long long)defaultRasterSampleCount;
 - (void)setDefaultRasterSampleCount:(unsigned long long)arg1;
-- (unsigned long long)defaultSampleCount;
-- (void)setDefaultSampleCount:(unsigned long long)arg1;
 - (unsigned long long)tileHeight;
 - (void)setTileHeight:(unsigned long long)arg1;
 - (unsigned long long)tileWidth;
@@ -33,10 +31,14 @@ __attribute__((visibility("hidden")))
 - (void)setDitherEnabled:(_Bool)arg1;
 - (_Bool)fineGrainedBackgroundVisibilityEnabled;
 - (void)setFineGrainedBackgroundVisibilityEnabled:(_Bool)arg1;
+- (unsigned long long)defaultColorSampleCount;
+- (void)setDefaultColorSampleCount:(unsigned long long)arg1;
 - (unsigned long long)renderTargetHeight;
 - (void)setRenderTargetHeight:(unsigned long long)arg1;
 - (unsigned long long)renderTargetWidth;
 - (void)setRenderTargetWidth:(unsigned long long)arg1;
+- (unsigned long long)renderTargetArrayLength;
+- (void)setRenderTargetArrayLength:(unsigned long long)arg1;
 - (id)visibilityResultBuffer;
 - (void)setVisibilityResultBuffer:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

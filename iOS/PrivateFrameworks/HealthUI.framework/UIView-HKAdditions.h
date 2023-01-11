@@ -7,13 +7,16 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (HKAdditions)
++ (struct NSDirectionalEdgeInsets)wd_defaultDirectionalLayoutMargins;
 - (void)_updateForCurrentSizeCategory;
 - (double)hk_layoutHeightFittingWidth:(double)arg1;
 - (void)hk_alignConstraintsWithViewController:(id)arg1;
 - (void)hk_alignCenterConstraintsWithView:(id)arg1;
 - (void)hk_alignHorizontalConstraintsWithView:(id)arg1 margin:(double)arg2;
 - (void)hk_alignVerticalConstraintsWithView:(id)arg1 margin:(double)arg2;
+- (void)hk_alignConstraintsWithGuide:(id)arg1;
 - (void)hk_alignConstraintsWithView:(id)arg1;
+- (long long)hk_trailingTextAlignmentAtOrBelowSizeCategory:(id)arg1;
 - (_Bool)hk_isLeftToRight;
 - (id)hk_addConstraintsWithFormat:(id)arg1 options:(unsigned long long)arg2 views:(id)arg3;
 - (id)hk_addConstraintsWithFormat:(id)arg1 options:(unsigned long long)arg2 metrics:(id)arg3 views:(id)arg4;

@@ -4,20 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <CalendarDatabase/NSCoding-Protocol.h>
+#import <CalendarDatabase/NSSecureCoding-Protocol.h>
 
 @class NSDictionary;
 
-@interface CalItemMetadata : NSObject <NSCoding>
+@interface CalItemMetadata : NSObject <NSSecureCoding>
 {
     NSDictionary *_x_props;
     int _classification;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)metadataWithData:(id)arg1;
 + (id)metadataWithICSComponent:(id)arg1;
++ (id)_whitelistedClassesForSecureCoding;
 @property int classification; // @synthesize classification=_classification;
 @property(retain) NSDictionary *x_props; // @synthesize x_props=_x_props;
 - (void).cxx_destruct;

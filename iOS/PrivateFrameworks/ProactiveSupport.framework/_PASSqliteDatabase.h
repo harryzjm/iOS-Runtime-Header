@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSCache, NSOperationQueue, NSString;
-@protocol OS_dispatch_queue, _PASSqliteErrorHandlerProtocol;
+@class NSCache, NSMutableArray, NSString;
+@protocol _PASSqliteErrorHandlerProtocol;
 
 @interface _PASSqliteDatabase : NSObject
 {
@@ -18,20 +18,14 @@
     NSObject<_PASSqliteErrorHandlerProtocol> *_errorHandler;
     NSString *_filename;
     NSCache *_queryCache;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_queue> *_workQueue;
-    NSOperationQueue *_operationQueue;
-    struct _opaque_pthread_t {
-        long long _field1;
-        struct __darwin_pthread_handler_rec *_field2;
-        char _field3[8176];
-    } *_threadInQueue;
-    struct _opaque_pthread_mutex_t _threadInQueueLock;
+    struct _opaque_pthread_mutex_t _lock;
+    NSMutableArray *_statementsToFinalizeAsync;
     _Bool _currentExclusivity;
     _Bool _isInMemory;
 }
 
 + (id)corruptionMarkerPathForPath:(id)arg1;
++ (void)runDebugCommand:(const char *)arg1 onDbWithHandle:(id)arg2;
 + (_Bool)shouldCacheSql:(const char *)arg1;
 + (void)truncateDatabaseAtPath:(id)arg1;
 + (id)randomlyNamedInMemoryPathWithBaseName:(id)arg1;
@@ -55,8 +49,8 @@
 @property(readonly, nonatomic) NSString *filename; // @synthesize filename=_filename;
 - (void).cxx_destruct;
 - (id)languageForFTSTable:(id)arg1;
+- (void)finalizeLater:(struct sqlite3_stmt *)arg1;
 - (void)withDbLockExecuteBlock:(CDUnknownBlockType)arg1;
-- (void)withDbLockExecuteAsyncBlock:(CDUnknownBlockType)arg1;
 - (unsigned long long)numberOfRowsInTable:(id)arg1;
 - (_Bool)hasIndexNamed:(id)arg1;
 - (_Bool)hasColumnOnTable:(id)arg1 named:(id)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/NSCopying-Protocol.h>
 
@@ -12,10 +12,16 @@
 
 @interface MPStoreItemMetadataResponse : NSObject <NSCopying>
 {
+    NSArray *_cacheMissItemIdentifiers;
     NSMutableDictionary *_itemIdentifierToStoreItemMetadata;
     _Bool _finalResponse;
+    NSArray *_lastBatchItemIdentifiers;
+    NSArray *_requestItemIdentifiers;
 }
 
+@property(copy, nonatomic) NSArray *cacheMissItemIdentifiers; // @synthesize cacheMissItemIdentifiers=_cacheMissItemIdentifiers;
+@property(copy, nonatomic) NSArray *requestItemIdentifiers; // @synthesize requestItemIdentifiers=_requestItemIdentifiers;
+@property(copy, nonatomic) NSArray *lastBatchItemIdentifiers; // @synthesize lastBatchItemIdentifiers=_lastBatchItemIdentifiers;
 @property(nonatomic, getter=isFinalResponse) _Bool finalResponse; // @synthesize finalResponse=_finalResponse;
 - (void).cxx_destruct;
 - (void)setStoreItemMetadata:(id)arg1 forItemIdentifier:(id)arg2;

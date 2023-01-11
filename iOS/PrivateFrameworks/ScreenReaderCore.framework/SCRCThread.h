@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSString, NSThread, SCRCStackQueue;
+@class SCRCStackQueue;
 
 @interface SCRCThread : NSObject
 {
@@ -20,13 +20,11 @@
     _Bool _isTimerSet;
     _Bool _shouldStop;
     _Bool _isWaitingForStoppingThread;
-    NSString *_description;
-    _Bool _descriptionChanged;
-    NSThread *_nsThread;
     id __key;
     double _lastStartTime;
 }
 
++ (id)currentThreadTaskCache;
 + (void)postStopNotification;
 + (void)invalidateForKey:(id)arg1;
 + (double)lastStartTimeForKey:(id)arg1;
@@ -56,8 +54,8 @@
 - (double)_performSelector:(SEL)arg1 onTarget:(id)arg2 cancelMask:(unsigned int)arg3 count:(unsigned int)arg4 firstObject:(id)arg5 moreObjects:(struct __va_list_tag [1])arg6;
 - (void)dealloc;
 - (void)_threadDidStop;
+- (_Bool)_debug_currentlyRunningOnThisThread;
 - (void)_runThread:(id)arg1;
-- (void)_setName:(id)arg1;
 - (void)setName:(id)arg1;
 - (id)_initWithKey:(id)arg1 task:(id)arg2;
 - (id)init;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MapKit/MKInfoCardTheme-Protocol.h>
 
@@ -30,7 +30,6 @@
 + (id)themeWithThemeType:(unsigned long long)arg1;
 + (id)_currentTheme:(unsigned long long)arg1;
 + (id)currentTheme;
-+ (_Bool)_shouldAutoSwitchTheme;
 @property(nonatomic) _Bool useSmallFont; // @synthesize useSmallFont=_useSmallFont;
 @property(readonly, nonatomic) unsigned long long themeType; // @synthesize themeType=_themeType;
 - (void).cxx_destruct;
@@ -49,15 +48,19 @@
 @property(readonly, nonatomic) UIFont *largeTitleFont;
 @property(readonly, nonatomic) UIFont *largeTitleFontStatic;
 @property(readonly, nonatomic) UIColor *tintColor;
+@property(readonly, nonatomic) UIColor *headerSecondaryButtonHighlightedColor;
+@property(readonly, nonatomic) UIColor *headerSecondaryButtonNormalColor;
+@property(readonly, nonatomic) UIColor *headerPrimaryButtonHighlightedColor;
+@property(readonly, nonatomic) UIColor *headerPrimaryButtonNormalColor;
 @property(readonly, nonatomic) UIColor *normalActionRowBackgroundPressedColor;
 @property(readonly, nonatomic) UIColor *disabledActionRowBackgroundColor;
 @property(readonly, nonatomic) UIColor *normalActionRowBackgroundColor;
 @property(readonly, nonatomic) UIColor *disabledActionRowTextColor;
 @property(readonly, nonatomic) UIColor *highlightedActionRowTextColor;
-@property(readonly, nonatomic) UIColor *highlightedRowColor;
 @property(readonly, nonatomic) UIColor *selectedRowColor;
 @property(readonly, nonatomic) UIColor *rowColor;
 @property(readonly, nonatomic) UIColor *separatorLineColor;
+@property(readonly, nonatomic) UIColor *highlightedTintColor;
 @property(readonly, nonatomic) UIColor *backgroundColor;
 @property(readonly, nonatomic) UIColor *lightTextColor;
 @property(readonly, nonatomic) UIColor *textColor;
@@ -72,6 +75,7 @@
 - (unsigned long long)_currentSystemTheme;
 - (id)_initWithThemeType:(unsigned long long)arg1;
 - (id)init;
+- (_Bool)_isInSpotlightContext;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

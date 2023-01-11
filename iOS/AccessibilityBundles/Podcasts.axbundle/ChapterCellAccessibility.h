@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityLabelForPlaybackState:(long long)arg1;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

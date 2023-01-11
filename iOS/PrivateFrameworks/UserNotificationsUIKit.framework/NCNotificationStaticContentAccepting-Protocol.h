@@ -4,24 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UserNotificationsUIKit/NSObject-Protocol.h>
+#import <UserNotificationsUIKit/PLTitled-Protocol.h>
 
-@class NSArray, NSDate, NSString, NSTimeZone, UIImage, UIView;
+@class NSArray, NSString, UIImage, UIView;
 
-@protocol NCNotificationStaticContentAccepting <NSObject>
+@protocol NCNotificationStaticContentAccepting <PLTitled>
 @property(retain, nonatomic) NSArray *interfaceActions;
 @property(copy, nonatomic) NSString *secondaryText;
 @property(copy, nonatomic) NSString *primarySubtitleText;
 @property(copy, nonatomic) NSString *primaryText;
-@property(copy, nonatomic) NSTimeZone *timeZone;
-@property(readonly, nonatomic, getter=isDateAllDay) _Bool dateAllDay;
-@property(copy, nonatomic) NSDate *date;
-@property(copy, nonatomic) NSString *title;
-@property(retain, nonatomic) UIImage *icon;
 
 @optional
 @property(nonatomic) unsigned long long messageNumberOfLines;
 @property(retain, nonatomic) UIView *accessoryView;
 @property(retain, nonatomic) UIImage *thumbnail;
+@property(copy, nonatomic) NSString *summaryText;
 @end
 

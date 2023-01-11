@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <iWorkImport/TSKSearchTarget-Protocol.h>
 #import <iWorkImport/TSWPColumnMetrics-Protocol.h>
 #import <iWorkImport/TSWPLayoutParent-Protocol.h>
 #import <iWorkImport/TSWPStorageObserver-Protocol.h>
 
-@class NSMutableDictionary, NSString, TSTInfo, TSTLayoutHint, TSTLayoutSpaceBundle, TSTMasterLayout, TSTTableModel, TSWPLayout, TSWPPadding;
+@class NSMutableDictionary, NSString, TSTInfo, TSTLayoutHint, TSTLayoutSpaceBundle, TSTMasterLayout, TSWPLayout, TSWPPadding;
 
 __attribute__((visibility("hidden")))
-@interface TSTLayout <TSKSearchTarget, TSWPColumnMetrics, TSWPLayoutParent, TSWPStorageObserver>
+@interface TSTLayout <TSWPColumnMetrics, TSWPLayoutParent, TSWPStorageObserver>
 {
     TSTMasterLayout *mMasterLayout;
     TSTLayoutHint *mLayoutHint;
@@ -71,7 +70,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)p_getLayoutDirectionLeftToRight;
 - (int)p_defaultAlignmentForTableWritingDirection;
 - (int)reapCoordinatesChangedMaskForChrome;
-- (void)transferLayoutGeometryToInfo:(id)arg1;
 - (struct CGSize)initialTextSize;
 - (struct CGRect)p_maskRectForRichTextLayout:(id)arg1;
 - (struct CGRect)p_maskRectForTextEditingLayout:(id)arg1;
@@ -112,10 +110,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)orderedBefore:(id)arg1;
 - (struct CGPoint)activityLineUnscaledEndPointForSearchReference:(id)arg1;
 - (struct CGPoint)calculatePointFromSearchReference:(id)arg1;
-- (id)childSearchTargets;
-- (void)layoutSearchForAnnotationWithHitBlock:(CDUnknownBlockType)arg1;
-- (void)layoutSearchForSpellingErrorsWithHitBlock:(CDUnknownBlockType)arg1 stop:(_Bool *)arg2;
-- (void)layoutSearchForString:(id)arg1 options:(unsigned long long)arg2 hitBlock:(CDUnknownBlockType)arg3;
 - (double)viewScaleForZoomingToSelectionPath:(id)arg1 targetPointSize:(double)arg2;
 - (void)removeAttachmentCellLayouts;
 - (void)removeContainedTextEditingLayout;
@@ -135,24 +129,25 @@ __attribute__((visibility("hidden")))
 - (void)invalidatePosition;
 - (void)invalidateSize;
 - (void)invalidate;
-- (void)invalidateLayoutSpaceCoordinatesAfterRow:(unsigned short)arg1;
-- (void)invalidateLayoutSpaceCoordinatesAfterColumn:(unsigned char)arg1;
+- (void)invalidateLayoutSpaceCoordinatesAfterRow:(unsigned int)arg1;
+- (void)invalidateLayoutSpaceCoordinatesAfterColumn:(unsigned short)arg1;
 - (void)invalidateLayoutSpaceCoordinates;
 - (void)invalidateLayoutSpaceTableOffsets;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 - (void)setNeedsDisplay;
 - (void)validate;
 - (_Bool)isStrokeEditing;
-- (_Bool)isZoomedEditing;
+- (_Bool)suppressFrozenHeadersForEditing;
 - (_Bool)inFindReplaceMode;
 - (_Bool)inPrintPreviewMode;
+- (id)inspectorGeometry;
 - (struct CGRect)alignmentFrame;
 - (int)wrapFitType;
 - (id)initialInfoGeometry;
+- (id)computeInfoGeometryFromPureLayoutGeometry:(id)arg1;
 - (id)computeLayoutGeometry;
 - (id)layoutGeometryFromInfo;
 - (struct CGPoint)capturedInfoPositionForAttachment;
-- (struct CGPoint)infoGeometryPositionForCurrentAttachedLayoutGeometry;
 - (_Bool)isDraggable;
 - (_Bool)canAspectRatioLockBeChangedByUser;
 - (_Bool)resizeMayChangeAspectRatio;
@@ -162,7 +157,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithInfo:(id)arg1;
 - (id)initWithInfo:(id)arg1 layoutHint:(id)arg2;
-@property(readonly, nonatomic) TSTTableModel *tableModel;
+@property(readonly, nonatomic) TSTInfo *tableModel;
 @property(readonly, nonatomic) TSTInfo *tableInfo;
 @property(nonatomic) struct CGSize scaleToFit;
 - (void)iterateCellsInRange:(struct TSUCellRect)arg1 flags:(unsigned long long)arg2 searchFlags:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;

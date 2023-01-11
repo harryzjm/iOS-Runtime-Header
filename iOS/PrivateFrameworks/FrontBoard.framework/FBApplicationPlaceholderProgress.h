@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 #import <FrontBoard/BSInvalidatable-Protocol.h>
@@ -18,6 +18,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSProgress *_progress;
     int _invalidated;
+    long long _cancellationAllowed;
     long long _state;
     double _percentComplete;
     unsigned long long _installPhase;
@@ -32,6 +33,7 @@
 - (void)_startObservingProgress:(id)arg1 withContext:(void *)arg2;
 - (_Bool)queue_canPerformAction:(unsigned long long)arg1;
 - (unsigned long long)queue_supportedActions;
+- (_Bool)queue_isCancellationAllowed;
 - (_Bool)queue_updateProxy:(id)arg1;
 - (_Bool)queue_isValid;
 - (_Bool)_queue_updateFromProgress;

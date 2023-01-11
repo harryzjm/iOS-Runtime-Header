@@ -14,10 +14,11 @@
 - (void)_axUpdateVolumeButtonLabel;
 - (_Bool)_axPlayerControllerIsMuted;
 - (_Bool)_axShowVolumeSlider;
-- (void)playbackControlsVisibilityDidChange;
+- (void)_accessibilityVisibilityControllerItemVisibilityChanged:(id)arg1;
 - (void)volumeButtonTapTriggered:(id)arg1;
 - (void)_updateVolumeButtonGlyph;
 - (void)playbackControlsViewDidLoad:(id)arg1;
+- (void)dealloc;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <iWorkImport/NSCopying-Protocol.h>
 
 @class NSMutableIndexSet;
 
 __attribute__((visibility("hidden")))
-@interface TSTHiddenStateIndexSet : NSObject
+@interface TSTHiddenStateIndexSet : NSObject <NSCopying>
 {
     NSMutableIndexSet *_visibleIndexSet;
 }
 
 @property(retain, nonatomic) NSMutableIndexSet *visibleIndexSet; // @synthesize visibleIndexSet=_visibleIndexSet;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)swapIndex:(unsigned long long)arg1 withIndex:(unsigned long long)arg2;
 - (void)insertRange:(struct _NSRange)arg1;
 - (void)deleteRange:(struct _NSRange)arg1;

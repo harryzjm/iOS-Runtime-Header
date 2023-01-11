@@ -6,12 +6,30 @@
 
 #import <IMSharedUtilities/IMRuntimeTestSuite.h>
 
-@interface IMCloudKitEventNotificationRuntimeTestSuite : IMRuntimeTestSuite
+#import <IMCore/IMCloudKitEventHandler-Protocol.h>
+
+@class IMCloudKitHookTestSingleton, NSString;
+
+@interface IMCloudKitEventNotificationRuntimeTestSuite : IMRuntimeTestSuite <IMCloudKitEventHandler>
 {
+    _Bool _shouldTearDown;
+    IMCloudKitHookTestSingleton *_cloudKitHooks;
 }
 
-+ (void)load;
++ (void)runTestsIfNeeded;
+@property _Bool shouldTearDown; // @synthesize shouldTearDown=_shouldTearDown;
+@property(retain, nonatomic) IMCloudKitHookTestSingleton *cloudKitHooks; // @synthesize cloudKitHooks=_cloudKitHooks;
+- (void).cxx_destruct;
+- (void)tearDown;
+- (void)cloudKitEventNotificationManager:(id)arg1 syncProgressDidUpdate:(id)arg2;
+- (void)setUp;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

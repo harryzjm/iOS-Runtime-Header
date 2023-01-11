@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary;
 @protocol OS_dispatch_queue;
@@ -21,8 +21,12 @@
 @property(retain, nonatomic) NSDictionary *memberQueueDetails; // @synthesize memberQueueDetails=_memberQueueDetails;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *memberQueue; // @synthesize memberQueue=_memberQueue;
 - (void).cxx_destruct;
+- (id)tvProviderUserToken;
 - (id)provisionalEnrollmentExpirationDate;
 - (_Bool)isProvisionallyEnrolled;
+- (id)languageScript;
+- (id)region;
+- (id)language;
 - (id)diagnosticsUploadURL;
 - (int)userMode;
 - (_Bool)isAwaitingConfiguration;

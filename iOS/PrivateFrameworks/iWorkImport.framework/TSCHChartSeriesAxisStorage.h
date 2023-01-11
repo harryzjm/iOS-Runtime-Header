@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TSCHChartAxisID, TSCHChartGridAdapter;
 
@@ -17,11 +17,11 @@ __attribute__((visibility("hidden")))
 
 @property(retain, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID;
 @property(retain, nonatomic) TSCHChartGridAdapter *adapter; // @synthesize adapter;
+- (void).cxx_destruct;
 - (void)setValue:(id)arg1 atIndex:(unsigned long long)arg2 multiDataSetIndex:(unsigned long long)arg3;
 - (id *)valuesAtIndexes:(struct _NSRange)arg1 multiDataSetIndex:(unsigned long long)arg2;
 - (id)valueAtIndex:(unsigned long long)arg1 multiDataSetIndex:(unsigned long long)arg2;
 - (unsigned long long)numberOfValues;
-- (void)dealloc;
 
 @end
 

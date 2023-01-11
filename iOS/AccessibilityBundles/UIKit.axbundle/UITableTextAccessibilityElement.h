@@ -22,6 +22,7 @@
 - (unsigned long long)_accessibilityScanningBehaviorTraits;
 - (long long)_accessibilityScannerActivateBehavior;
 - (id)_accessibilitySpeakThisString;
+- (_Bool)_accessibilityUseElementAtPositionAfterActivation;
 - (_Bool)_accessibilityIsSpeakThisElement;
 - (id)_accessibilityEquivalenceTag;
 - (struct _NSRange)_accessibilitySelectedTextRange;
@@ -51,6 +52,7 @@
 - (id)_tableViewCellAttributeDelegate;
 - (void)accessibilityElementDidLoseFocus;
 - (id)_accessibilityScrollStatus;
+- (id)_accessibilityCustomActionGroupIdentifier;
 - (void)accessibilityElementDidBecomeFocused;
 - (id)_tableViewCellTextDelegate;
 

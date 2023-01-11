@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FrontBoardServices/FBSSystemServiceFacilityClient.h>
+#import <FrontBoardServices/FBSServiceFacilityClient.h>
 
 @class NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
-@interface SBSRemoteAlertClient : FBSSystemServiceFacilityClient
+@interface SBSRemoteAlertClient : FBSServiceFacilityClient
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_handleObserverQueue;

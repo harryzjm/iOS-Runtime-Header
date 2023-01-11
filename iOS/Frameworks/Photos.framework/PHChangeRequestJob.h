@@ -6,7 +6,7 @@
 
 #import <PhotoLibraryServices/PLDaemonJob.h>
 
-@class NSObject, NSOrderedSet;
+@class NSObject, NSOrderedSet, PLAssetsdClientServiceSender;
 @protocol OS_xpc_object;
 
 @interface PHChangeRequestJob : PLDaemonJob
@@ -18,10 +18,12 @@
     NSObject<OS_xpc_object> *_xpcInserts;
     NSObject<OS_xpc_object> *_xpcUpdates;
     NSObject<OS_xpc_object> *_xpcDeletes;
+    PLAssetsdClientServiceSender *_clientSender;
 }
 
 + (void)_addChangeRequests:(id)arg1 toXPCDict:(id)arg2 withKey:(const char *)arg3;
 + (void)applyPhotoKitInserts:(id)arg1 updates:(id)arg2 deletes:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+@property(retain, nonatomic) PLAssetsdClientServiceSender *clientSender; // @synthesize clientSender=_clientSender;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *xpcDeletes; // @synthesize xpcDeletes=_xpcDeletes;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *xpcUpdates; // @synthesize xpcUpdates=_xpcUpdates;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *xpcInserts; // @synthesize xpcInserts=_xpcInserts;

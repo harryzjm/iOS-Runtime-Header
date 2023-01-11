@@ -10,7 +10,6 @@
 @class AVPlayerItem, ISWrappedAVAudioSession, ISWrappedAVPlayer, NSDate, NSError, NSHashTable, NSMutableSet, NSObject, NSString, NSTimer, PUBrowsingVideoPlayerChange, PUMediaProvider, PXUpdater;
 @protocol OS_dispatch_queue, PUDisplayAsset;
 
-__attribute__((visibility("hidden")))
 @interface PUBrowsingVideoPlayer <ISChangeObserver, ISWrappedAVPlayerDelegate>
 {
     PXUpdater *_updater;

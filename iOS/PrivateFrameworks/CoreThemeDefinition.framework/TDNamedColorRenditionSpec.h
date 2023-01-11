@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface TDNamedColorRenditionSpec
 {
 }
@@ -17,6 +19,7 @@
 @property(nonatomic) long long colorSpaceID; // @dynamic colorSpaceID;
 @property(nonatomic) double green; // @dynamic green;
 @property(nonatomic) double red; // @dynamic red;
+@property(retain, nonatomic) NSString *systemColorName; // @dynamic systemColorName;
 
 @end
 

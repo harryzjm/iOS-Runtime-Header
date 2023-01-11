@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MPSNNFilterNode;
 @protocol MPSHandle;
@@ -13,8 +13,13 @@
 {
     id <MPSHandle> _handle;
     MPSNNFilterNode *_parent;
+    unsigned long long _clientCount;
+    _Bool _synchronize;
+    _Bool _exportFromGraph;
 }
 
+@property(nonatomic) _Bool exportFromGraph; // @synthesize exportFromGraph=_exportFromGraph;
+@property(nonatomic) _Bool synchronizeResource; // @synthesize synchronizeResource=_synchronize;
 @property(retain, nonatomic) id <MPSHandle> handle; // @synthesize handle=_handle;
 - (void)dealloc;
 - (id)debugQuickLookObject;

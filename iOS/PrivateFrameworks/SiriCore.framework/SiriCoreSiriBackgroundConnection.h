@@ -20,6 +20,7 @@
     NSObject<OS_dispatch_data> *_bufferedInputData;
     NSObject<OS_dispatch_data> *_bufferedProviderHeaderOutputData;
     NSObject<OS_dispatch_data> *_bufferedGeneralOutputData;
+    NSObject<OS_dispatch_data> *_bufferedUncompressedData;
     SiriCoreDataDecompressor *_inputDecompressor;
     SiriCoreDataCompressor *_outputCompressor;
     struct __CFHTTPMessage *_httpResponseHeader;
@@ -42,6 +43,7 @@
     NSMutableDictionary *_outstandingBarriers;
     long long _connectionMethod;
     NSObject<OS_dispatch_data> *_safetyNetBuffer;
+    NSObject<OS_dispatch_queue> *_metricsQueue;
     double _firstStartTime;
     double _currentStartTime;
     double _currentOpenTime;
@@ -56,6 +58,11 @@
     _Bool _siriConnectionUsesPeerManagedSync;
     Class _peerProviderClass;
     NSMutableArray *_outgoingCommandsWithSendCompletions;
+    _Bool _primaryConnectionViable;
+    _Bool _betterPathAvailable;
+    long long _secondaryConnectionOpenState;
+    id <SiriCoreConnectionProvider> _secondaryConnectionProvider;
+    _Bool _dispatchedSnapshotMetrics;
 }
 
 @property(nonatomic) _Bool deviceIsInWalkaboutExperimentGroup; // @synthesize deviceIsInWalkaboutExperimentGroup=_deviceIsInWalkaboutExperimentGroup;
@@ -67,8 +74,6 @@
 @property(copy, nonatomic) NSString *peerType; // @synthesize peerType=_peerType;
 @property(nonatomic) __weak id <SiriCoreSiriBackgroundConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (void)_flushOutgoingCommandsAndDispatchSendCompletionWithResult:(long long)arg1 error:(id)arg2;
-- (void)_addOutgoingCommandForSendCompletion:(id)arg1;
 - (void)getConnectionMetrics:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)_connectionMethodDescription;
 - (id)getConnectionMethodUsed;
@@ -86,12 +91,12 @@
 - (void)_setupReadHandlerOnProvider;
 - (_Bool)_sendAcePongWithId:(unsigned int)arg1 error:(id *)arg2;
 - (_Bool)_sendAcePingWithId:(unsigned int)arg1 error:(id *)arg2;
-- (void)sendCommand:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
-- (void)_prepareProviderHeader;
+- (void)sendCommands:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (void)sendCommand:(id)arg1 moreComing:(_Bool)arg2 errorHandler:(CDUnknownBlockType)arg3;
+- (void)_prepareProviderHeaderWithForceReconnect:(_Bool)arg1;
 - (void)_sendGeneralData:(id)arg1;
 - (void)_bufferGeneralData:(id)arg1;
 - (void)_tryToWriteBufferedOutputData;
-- (id)_userAgent;
 - (id)_headerDataForURL:(id)arg1 aceHost:(id)arg2 languageCode:(id)arg3 syncAssistantId:(id)arg4;
 - (void)_networkProviderDidOpen;
 - (void)_connectionHasBytesAvailable:(id)arg1;
@@ -102,6 +107,8 @@
 - (_Bool)_hasReadACEHeader;
 - (_Bool)_consumeHTTPHeaderWithData:(id)arg1 bytesRead:(unsigned long long *)arg2 error:(id *)arg3;
 - (_Bool)_hasReadHTTPHeader;
+- (void)connectionProviderReceivedBetterRouteNotification:(id)arg1;
+- (void)connectionProvider:(id)arg1 receivedViabilityChangeNotification:(_Bool)arg2;
 - (void)connectionProvider:(id)arg1 receivedError:(id)arg2;
 - (void)stopHeartBeat;
 - (void)startHeartBeat;
@@ -133,11 +140,16 @@
 - (void)_initializeBufferedGeneralOutputDataWithInitialPayload:(_Bool)arg1;
 - (id)_aceHeaderData;
 - (id)_httpHeaderData;
+- (void)_forceTriggerRetry;
+- (void)_cancelSecondaryConnection;
+- (void)_startSecondaryConnection;
+- (void)updateActiveBackgroundConnectionWithSecondary;
 - (void)cancel;
 - (void)_startNetworkProviderWithInfo:(id)arg1;
-- (void)_updateBuffersForInitialPayload:(id)arg1 bufferedLength:(unsigned long long)arg2;
-- (id)_getInitialPayloadWithBufferedLength:(unsigned long long *)arg1;
+- (void)_updateBuffersForInitialPayload:(id)arg1 bufferedLength:(unsigned long long)arg2 forceReconnect:(_Bool)arg3;
+- (id)_getInitialPayloadWithBufferedLength:(unsigned long long *)arg1 forceReconnect:(_Bool)arg2;
 - (Class)_providerClass;
+- (void)_setNetworkProvider:(id)arg1;
 - (void)_startWithConnectionInfo:(id)arg1 proposedFallbackMethod:(long long)arg2 allowFallbackToNewMethod:(_Bool)arg3;
 - (void)startWithConnectionInfo:(id)arg1;
 - (long long)_nextConnectionMethod;

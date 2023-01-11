@@ -27,6 +27,7 @@
 
 + (_Bool)_shouldSaveAttachmentWithName:(id)arg1 lifetime:(long long)arg2;
 + (_Bool)supportsSecureCoding;
+@property(readonly, getter=isValid) _Bool valid; // @synthesize valid=_valid;
 @property(readonly) double subactivitiesDuration; // @synthesize subactivitiesDuration=_subactivitiesDuration;
 @property(copy) NSString *aggregationIdentifier; // @synthesize aggregationIdentifier=_aggregationIdentifier;
 @property _Bool useLegacySerializationFormat; // @synthesize useLegacySerializationFormat=_useLegacySerializationFormat;
@@ -35,6 +36,7 @@
 @property(copy) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(copy) NSString *activityType; // @synthesize activityType=_activityType;
 @property(copy) NSString *title; // @synthesize title=_title;
+- (void).cxx_destruct;
 - (void)subactivityCompletedWithDuration:(double)arg1;
 - (void)_synchronized_ensureValid;
 - (void)invalidate;
@@ -46,9 +48,10 @@
 - (void)_synchronized_addAttachment:(id)arg1;
 - (void)removeAttachmentsWithName:(id)arg1;
 - (id)attachmentForName:(id)arg1;
+- (void)addLocalizableStringsData:(id)arg1;
 - (void)addSynthesizedEvent:(id)arg1;
 - (void)addSnapshot:(id)arg1;
-- (void)addScreenImageData:(id)arg1;
+- (void)addScreenImageData:(id)arg1 forceKeepAlways:(_Bool)arg2;
 - (void)addMemoryGraphData:(id)arg1;
 - (void)addDiagnosticReportData:(id)arg1;
 - (void)_synchronized_removeAttachmentsWithName:(id)arg1;
@@ -58,7 +61,7 @@
 - (id)initWithCoder:(id)arg1;
 @property(readonly, copy) NSString *name;
 - (id)init;
-- (void)dealloc;
+- (void)attachDiagnosticsIncludingLocalizableStringsData:(_Bool)arg1;
 - (void)attachAutomaticScreenshot;
 
 // Remaining properties

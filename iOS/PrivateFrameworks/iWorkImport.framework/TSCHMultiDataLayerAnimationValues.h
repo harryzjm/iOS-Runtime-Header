@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CALayer, NSArray, NSString;
 
@@ -26,8 +26,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *values; // @synthesize values=mValues;
 @property(readonly, nonatomic) NSString *key; // @synthesize key=mKey;
 @property(readonly, nonatomic) CALayer *layer; // @synthesize layer=mLayer;
+- (void).cxx_destruct;
 - (id)description;
-- (void)dealloc;
 - (id)initWithLayer:(id)arg1 key:(id)arg2 values:(id)arg3 keyTimes:(id)arg4 needPresentationLayerValues:(_Bool)arg5;
 
 @end

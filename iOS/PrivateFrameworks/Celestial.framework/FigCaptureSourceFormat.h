@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Celestial/FigXPCCoding-Protocol.h>
+#import <Celestial/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@interface FigCaptureSourceFormat : NSObject <FigXPCCoding>
+@interface FigCaptureSourceFormat : NSObject <FigXPCCoding, NSSecureCoding>
 {
     NSDictionary *_formatDictionary;
     struct opaqueCMFormatDescription *_formatDescription;
+    CDStruct_79c71658 _previewDimensions;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(readonly, getter=isExperimental) _Bool experimental;
 @property(readonly, getter=isDefaultActiveFormat) _Bool defaultActiveFormat;
 @property(readonly) unsigned int format;
@@ -24,6 +27,8 @@
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)copyXPCEncoding;
 - (id)initWithXPCEncoding:(id)arg1;
 - (id)initWithFigCaptureStreamFormatDictionary:(id)arg1;

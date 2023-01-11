@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TSReading/TSTCellRegionIterating-Protocol.h>
 
@@ -12,7 +12,7 @@
 
 @interface TSTCellRegionColMajorIterator : NSObject <TSTCellRegionIterating>
 {
-    set_79f671e2 mCellRangeSet;
+    set_3ba0425c mCellRangeSet;
     CDStruct_0441cfb5 mCellID;
     CDStruct_5f1f7aa9 mBoundingCellRange;
 }

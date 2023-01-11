@@ -11,6 +11,7 @@
 
 + (void)updateProfileCounts;
 + (id)_type:(unsigned long long)arg1;
++ (id)encrypted;
 + (id)signedByApple;
 + (id)signed;
 + (id)carrier;

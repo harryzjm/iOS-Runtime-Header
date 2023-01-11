@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreUtils/CUPairingManagerXPCInterface-Protocol.h>
 
@@ -60,7 +60,7 @@
 - (void)getPairedPeersWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_deletePairingIdentityWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deletePairingIdentityWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_getPairingIdentityWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_getPairingIdentityWithOptions:(unsigned long long)arg1 tryCount:(unsigned int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getPairingIdentityWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_invalidated;
 - (void)_invalidate;

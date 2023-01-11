@@ -10,6 +10,7 @@
 @protocol TUConversationManagerDataSource;
 
 @protocol TUConversationManagerDataSourceDelegate <NSObject>
+- (void)serverDisconnectedForDataSource:(id <TUConversationManagerDataSource>)arg1 oldConversationsByGroupUUID:(NSDictionary *)arg2;
 - (void)conversationsChangedForDataSource:(id <TUConversationManagerDataSource>)arg1 oldConversationsByGroupUUID:(NSDictionary *)arg2;
 @end
 

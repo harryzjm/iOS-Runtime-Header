@@ -12,7 +12,7 @@
 }
 
 + (id)nodeWithSource:(id)arg1 aData:(id)arg2;
-- (struct FilterGraphNode *)newFilterNode;
+- (id)descriptor;
 - (void)dealloc;
 - (id)initWithSource:(id)arg1 aData:(id)arg2;
 

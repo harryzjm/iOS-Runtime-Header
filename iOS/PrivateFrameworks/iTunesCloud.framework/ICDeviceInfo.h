@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSData, NSString;
+@protocol OS_dispatch_queue;
 
 @interface ICDeviceInfo : NSObject
 {
@@ -25,7 +26,9 @@
     NSString *_name;
     NSString *_pairedDeviceGUID;
     NSString *_serialNumber;
+    struct CGSize _mainScreenSize;
     NSString *_systemReleaseType;
+    NSObject<OS_dispatch_queue> *_accessQueue;
 }
 
 + (id)defaultInfo;
@@ -44,17 +47,19 @@
 @property(readonly, nonatomic) _Bool isIPad;
 @property(readonly, nonatomic) _Bool isAppleTV;
 @property(readonly, nonatomic) _Bool isIPhone;
+@property(readonly, nonatomic) struct CGSize mainScreenSize;
 @property(readonly, copy, nonatomic) NSString *serialNumber;
 @property(readonly, copy, nonatomic) NSString *name;
 @property(readonly, nonatomic) int deviceClass;
 @property(readonly, copy, nonatomic) NSString *pairedDeviceGUID;
-@property(readonly, copy, nonatomic) NSData *deviceGUIDData;
+@property(readonly, copy, nonatomic) NSData *deviceFairPlayGUIDData;
 @property(readonly, copy, nonatomic) NSString *deviceGUID;
 @property(readonly, copy, nonatomic) NSString *hardwarePlatform;
 @property(readonly, copy, nonatomic) NSString *systemReleaseType;
 @property(readonly, copy, nonatomic) NSString *rawDeviceModel;
 @property(readonly, copy, nonatomic) NSString *deviceModel;
 - (void)dealloc;
+- (id)_init;
 
 @end
 

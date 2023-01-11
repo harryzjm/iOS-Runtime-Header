@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray;
 
@@ -19,8 +19,10 @@ __attribute__((visibility("hidden")))
     int _dtxPayload;
     int _redPayload;
     NSMutableArray *_secondaryPayloads;
+    _Bool _useSBR;
 }
 
+@property(nonatomic) _Bool useSBR; // @synthesize useSBR=_useSBR;
 @property(nonatomic) unsigned int remoteSSRC; // @synthesize remoteSSRC=_remoteSSRC;
 @property(nonatomic) _Bool allowSwitching; // @synthesize allowSwitching=_allowSwitching;
 @property(nonatomic) unsigned int audioUnitModel; // @synthesize audioUnitModel=_audioUnitModel;

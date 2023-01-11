@@ -6,7 +6,7 @@
 
 #import <Silex/SXClassFactoryProtocol-Protocol.h>
 
-@class NSString, SXAction;
+@class NSString;
 
 @interface SXAddition <SXClassFactoryProtocol>
 {
@@ -14,7 +14,6 @@
 
 + (id)typeString;
 + (void)initializeObject;
-@property(readonly, nonatomic) SXAction *action;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

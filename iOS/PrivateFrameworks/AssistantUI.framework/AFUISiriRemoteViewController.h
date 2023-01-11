@@ -25,6 +25,8 @@
 @property(nonatomic) __weak id <AFUISiriRemoteViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <AFUISiriRemoteViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 - (void).cxx_destruct;
+- (void)setWaitingForTelephonyToStart:(_Bool)arg1;
+- (void)setRunningPPT:(_Bool)arg1 withTestName:(id)arg2 testOptions:(id)arg3;
 - (void)applicationDidBecomeActive;
 - (void)applicationWillEnterForeground;
 - (void)applicationWillResignActive;
@@ -34,7 +36,6 @@
 - (void)didReceiveHelpAction;
 - (void)setSpeechSynthesis:(id)arg1;
 - (void)setSession:(id)arg1;
-- (void)userInteractionDidOccur;
 - (void)setStatusViewHeight:(double)arg1;
 - (void)setStatusBarFrame:(struct CGRect)arg1;
 - (void)siriKeyboardViewDidChange:(CDStruct_a82615c4 *)arg1;
@@ -45,6 +46,7 @@
 - (void)siriWillShowPasscodeUnlock;
 - (void)siriDidDeactivate;
 - (void)showPresentationWithIdentifier:(id)arg1 properties:(id)arg2 lockState:(unsigned long long)arg3;
+- (void)preloadPluginBundles;
 - (void)preloadPresentationBundleWithIdentifier:(id)arg1;
 - (void)setRequestOptions:(id)arg1;
 - (void)siriDidActivateFromSource:(long long)arg1;
@@ -62,6 +64,7 @@
 - (void)serviceDidPresentUserInterface;
 - (void)serviceDidExitUITrackingMode;
 - (void)serviceDidEnterUITrackingMode;
+- (void)serviceFailTest:(id)arg1 withReason:(id)arg2;
 - (void)serviceDidFinishTest:(id)arg1;
 - (void)serviceWillStartTest:(id)arg1;
 - (void)serviceDidEndTaptoEdit;
@@ -69,8 +72,6 @@
 - (void)serviceDidResetTextInput;
 - (void)serviceDidRequestKeyboard:(_Bool)arg1 minimized:(_Bool)arg2;
 - (void)serviceDidRequestKeyboard:(_Bool)arg1;
-- (void)serviceDidDismissBugReporter;
-- (void)serviceDidPresentBugReporter;
 - (void)pulseHelpButton;
 - (void)handlePasscodeUnlockWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getScreenshotWithReplyHandler:(CDUnknownBlockType)arg1;
@@ -90,12 +91,13 @@
 - (void)siriIdleAndQuietStatusDidChange:(_Bool)arg1;
 - (void)notifyOnNextUserInteraction;
 - (void)serviceLaunchApplicationWithBundleIdentifier:(id)arg1 withURL:(id)arg2 launchOptions:(long long)arg3 replyHandler:(CDUnknownBlockType)arg4;
+- (void)serviceDidRequestCurrentTextInput:(CDUnknownBlockType)arg1;
 - (void)serviceUserRelevantEventDidOccur;
 - (void)serviceStartRequestWithOptions:(id)arg1;
 - (void)serviceDidReadBulletinWithIdentifier:(id)arg1;
 - (void)serviceBulletinWithIdentifier:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (void)serviceStartGuidedAccess;
-- (void)serviceRequestsDismissal:(_Bool)arg1;
+- (void)serviceRequestsDismissalWithDelayForTTS:(_Bool)arg1 userInfo:(id)arg2;
 - (void)serviceRequestsActivationSourceWithReplyHandler:(CDUnknownBlockType)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 - (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;

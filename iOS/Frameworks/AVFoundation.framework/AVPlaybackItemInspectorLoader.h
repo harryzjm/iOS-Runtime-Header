@@ -6,6 +6,7 @@
 
 @class NSArray;
 
+__attribute__((visibility("hidden")))
 @interface AVPlaybackItemInspectorLoader
 {
     struct OpaqueFigPlaybackItem *_playbackItem;

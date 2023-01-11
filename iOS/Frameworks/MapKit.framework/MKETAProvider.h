@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MapKit/MKLocationManagerObserver-Protocol.h>
 #import <MapKit/MKQuickRouteConfigurableView-Protocol.h>
@@ -14,7 +14,6 @@
 @class CLLocation, GEOAutomobileOptions, GEOTransitOptions, MKMapItem, NSHashTable, NSLock, NSNumber, NSString, NSTimer, _MKQuickRouteManager;
 @protocol GEOTransitLineItem, MKETAProviderDelegate, _MKPlaceItem;
 
-__attribute__((visibility("hidden")))
 @interface MKETAProvider : NSObject <MKLocationManagerObserver, MKQuickRouteManagerDelegate, MKQuickRouteConfigurableView, MKQuickRouteTransportTypeFinding>
 {
     _MKQuickRouteManager *_quickRouteManager;

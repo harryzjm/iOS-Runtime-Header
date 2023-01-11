@@ -4,31 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMDAccessorySettingGroup, HMDMediaSession, NSObject;
+@class HMDAccessorySettingContainer, HMDAppleMediaAccessory, HMDMediaSession, HMDMediaSystem, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface HMDMediaProfile
 {
-    HMDAccessorySettingGroup *_rootSettings;
     HMDMediaSession *_mediaSession;
+    HMDMediaSystem *_mediaSystem;
+    HMDAccessorySettingContainer *_container;
     NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)hasMessageReceiverChildren;
 + (id)logCategory;
 + (id)sessionNamespace;
 + (id)namespace;
 @property(readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property(retain, nonatomic) HMDAccessorySettingContainer *container; // @synthesize container=_container;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
+- (id)messageReceiverChildren;
 - (void)sessionAudioControlUpdated:(id)arg1;
-- (void)sessionPlaybackStateUpdated:(id)arg1;
+- (void)handleSessionPlaybackStateUpdatedNotification:(id)arg1;
+- (void)_sessionPlaybackStateUpdated:(id)arg1 notifyXPCClients:(_Bool)arg2;
+- (void)updateWithResponses:(id)arg1 message:(id)arg2;
 - (void)_handleMediaSessionSetAudioControl:(id)arg1;
-- (void)_handleMediaSessionSetPlayback:(id)arg1;
+- (void)_handleRefreshPlayback:(id)arg1;
+- (void)handleMediaResponses:(id)arg1 message:(id)arg2;
+- (void)_handleSetPlayback:(id)arg1;
 @property(retain) HMDMediaSession *mediaSession; // @synthesize mediaSession=_mediaSession;
-- (void)notifyClientsOfUpdatedRootSettings:(id)arg1;
-@property(retain) HMDAccessorySettingGroup *rootSettings; // @synthesize rootSettings=_rootSettings;
+@property(nonatomic) __weak HMDMediaSystem *mediaSystem; // @synthesize mediaSystem=_mediaSystem;
+@property(readonly) __weak HMDAppleMediaAccessory *mediaAccessory;
 - (void)registerForMessages;
 - (void)configureWithMessageDispatcher:(id)arg1;
 - (id)initWithAccessory:(id)arg1;

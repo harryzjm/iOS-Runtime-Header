@@ -26,8 +26,6 @@
 - (_Bool)_performPasscodeDialogOperationWithError:(id *)arg1;
 - (void)_performOptInDialogMetricsWithResult:(_Bool)arg1 error:(id)arg2;
 - (void)_loadURLBag;
-- (id)_clientIDForUserID:(id)arg1;
-- (id)_clientIDForMetrics;
 - (void)run;
 @property(copy) CDUnknownBlockType resultBlock;
 @property _Bool promptUser;

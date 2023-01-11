@@ -59,6 +59,7 @@
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_unboostingRemoteObjectProxy;
 @property(readonly, retain) id remoteObjectProxy;
+- (Class)_remoteObjectInterfaceClass;
 @property(retain) NSXPCInterface *exportedInterface;
 @property(retain) id exportedObject;
 - (void)_addClassToDecodeCache:(Class)arg1;
@@ -76,7 +77,7 @@
 - (id)userInfo;
 - (unsigned long long)_generationCount;
 - (id)valueForEntitlement:(id)arg1;
-- (CDStruct_6ad76789)auditToken;
+- (CDStruct_4c969caf)auditToken;
 - (void)setOptions:(unsigned long long)arg1;
 - (id)_exportTable;
 @property(readonly, retain) NSXPCListenerEndpoint *endpoint;

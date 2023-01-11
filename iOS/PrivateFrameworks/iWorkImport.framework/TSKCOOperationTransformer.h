@@ -4,23 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
-@class TSPObject;
+@class TSKCOOperationTransformHistory, TSPObject;
 @protocol TSKCOIntermediateOperationEnumerator;
 
 __attribute__((visibility("hidden")))
 @interface TSKCOOperationTransformer : NSObject <NSCopying>
 {
-    NSObject<TSKCOIntermediateOperationEnumerator> *mEnumerator;
-    _Bool mIsHigherPriority;
-    TSPObject *mDelegate;
+    _Bool _isHigherPriority;
+    TSKCOOperationTransformHistory *_history;
+    TSPObject *_delegate;
+    NSObject<TSKCOIntermediateOperationEnumerator> *_enumerator;
 }
 
-@property(readonly, nonatomic) NSObject<TSKCOIntermediateOperationEnumerator> *enumerator; // @synthesize enumerator=mEnumerator;
-@property(nonatomic) TSPObject *delegate; // @synthesize delegate=mDelegate;
+@property(readonly, nonatomic) NSObject<TSKCOIntermediateOperationEnumerator> *enumerator; // @synthesize enumerator=_enumerator;
+@property(nonatomic) __weak TSPObject *delegate; // @synthesize delegate=_delegate;
+- (void).cxx_destruct;
 - (void)saveToArchiver:(id)arg1 message:(struct OperationTransformer *)arg2;
 - (id)initWithUnarchiver:(id)arg1 message:(const struct OperationTransformer *)arg2;
 - (id)description;
@@ -31,9 +33,8 @@ __attribute__((visibility("hidden")))
 - (id)transformReplaceRangeOperation:(id)arg1;
 - (id)transformUpdateIdOperation:(id)arg1;
 - (id)transformIdPlacementBaseOperation:(id)arg1;
-- (void)dealloc;
-- (id)initWithOperationEnumerator:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithOperationEnumerator:(id)arg1;
 - (id)initWithOperationEnumerator:(id)arg1 isHigherPriority:(_Bool)arg2;
 
 @end

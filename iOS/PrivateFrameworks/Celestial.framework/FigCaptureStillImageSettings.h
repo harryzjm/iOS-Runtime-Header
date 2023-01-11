@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Celestial/NSCopying-Protocol.h>
 #import <Celestial/NSSecureCoding-Protocol.h>
@@ -35,20 +35,28 @@
     unsigned int _thumbnailFormat;
     unsigned int _thumbnailWidth;
     unsigned int _thumbnailHeight;
+    _Bool _rawThumbnailEnabled;
+    unsigned int _rawThumbnailFormat;
+    unsigned int _rawThumbnailWidth;
+    unsigned int _rawThumbnailHeight;
     _Bool _noiseReductionEnabled;
     _Bool _burstQualityCaptureEnabled;
     float _scaleFactor;
     unsigned int _shutterSound;
     int _flashMode;
+    _Bool _autoRedEyeReductionEnabled;
     int _wideColorMode;
     int _HDRMode;
     _Bool _depthDataDeliveryEnabled;
     _Bool _embedsDepthDataInImage;
     _Bool _depthDataFiltered;
     _Bool _cameraCalibrationDataDeliveryEnabled;
+    _Bool _portraitEffectsMatteDeliveryEnabled;
+    _Bool _embedsPortraitEffectsMatteInImage;
     NSDictionary *_metadata;
     NSArray *_originalImageFilters;
     NSArray *_processedImageFilters;
+    float _simulatedAperture;
     _Bool _providesOriginalImage;
     _Bool _bravoDualImageDeliveryEnabled;
     int _SISMode;
@@ -89,20 +97,28 @@
 @property(nonatomic) int SISMode; // @synthesize SISMode=_SISMode;
 @property(nonatomic) _Bool bravoDualImageDeliveryEnabled; // @synthesize bravoDualImageDeliveryEnabled=_bravoDualImageDeliveryEnabled;
 @property(nonatomic) _Bool providesOriginalImage; // @synthesize providesOriginalImage=_providesOriginalImage;
+@property(nonatomic) float simulatedAperture; // @synthesize simulatedAperture=_simulatedAperture;
 @property(copy, nonatomic) NSArray *processedImageFilters; // @synthesize processedImageFilters=_processedImageFilters;
 @property(copy, nonatomic) NSArray *originalImageFilters; // @synthesize originalImageFilters=_originalImageFilters;
 @property(copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
+@property(nonatomic) _Bool embedsPortraitEffectsMatteInImage; // @synthesize embedsPortraitEffectsMatteInImage=_embedsPortraitEffectsMatteInImage;
+@property(nonatomic) _Bool portraitEffectsMatteDeliveryEnabled; // @synthesize portraitEffectsMatteDeliveryEnabled=_portraitEffectsMatteDeliveryEnabled;
 @property(nonatomic) _Bool cameraCalibrationDataDeliveryEnabled; // @synthesize cameraCalibrationDataDeliveryEnabled=_cameraCalibrationDataDeliveryEnabled;
 @property(nonatomic) _Bool depthDataFiltered; // @synthesize depthDataFiltered=_depthDataFiltered;
 @property(nonatomic) _Bool embedsDepthDataInImage; // @synthesize embedsDepthDataInImage=_embedsDepthDataInImage;
 @property(nonatomic) _Bool depthDataDeliveryEnabled; // @synthesize depthDataDeliveryEnabled=_depthDataDeliveryEnabled;
 @property(nonatomic) int HDRMode; // @synthesize HDRMode=_HDRMode;
 @property(nonatomic) int wideColorMode; // @synthesize wideColorMode=_wideColorMode;
+@property(nonatomic) _Bool autoRedEyeReductionEnabled; // @synthesize autoRedEyeReductionEnabled=_autoRedEyeReductionEnabled;
 @property(nonatomic) int flashMode; // @synthesize flashMode=_flashMode;
 @property(nonatomic) unsigned int shutterSound; // @synthesize shutterSound=_shutterSound;
 @property(nonatomic) float scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property(nonatomic) _Bool burstQualityCaptureEnabled; // @synthesize burstQualityCaptureEnabled=_burstQualityCaptureEnabled;
 @property(nonatomic) _Bool noiseReductionEnabled; // @synthesize noiseReductionEnabled=_noiseReductionEnabled;
+@property(nonatomic) unsigned int rawThumbnailHeight; // @synthesize rawThumbnailHeight=_rawThumbnailHeight;
+@property(nonatomic) unsigned int rawThumbnailWidth; // @synthesize rawThumbnailWidth=_rawThumbnailWidth;
+@property(nonatomic) unsigned int rawThumbnailFormat; // @synthesize rawThumbnailFormat=_rawThumbnailFormat;
+@property(nonatomic) _Bool rawThumbnailEnabled; // @synthesize rawThumbnailEnabled=_rawThumbnailEnabled;
 @property(nonatomic) unsigned int thumbnailHeight; // @synthesize thumbnailHeight=_thumbnailHeight;
 @property(nonatomic) unsigned int thumbnailWidth; // @synthesize thumbnailWidth=_thumbnailWidth;
 @property(nonatomic) unsigned int thumbnailFormat; // @synthesize thumbnailFormat=_thumbnailFormat;
@@ -130,6 +146,7 @@
 @property(readonly, nonatomic) NSString *imageGroupIdentifier;
 - (void)setBracketType:(int)arg1 imageCount:(unsigned int)arg2;
 @property(readonly, nonatomic) NSDictionary *previewPixelBufferAttributes;
+@property(readonly, nonatomic, getter=isOutputFormatCompressed) _Bool outputFormatCompressed;
 @property(readonly, nonatomic) NSDictionary *outputPixelBufferAttributes;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -4,23 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MapKit/GEOResourceManifestTileGroupObserver-Protocol.h>
 
 @class NSLock, NSMutableArray, NSString, NSURL;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface _MKIconDiskCache : NSObject <GEOResourceManifestTileGroupObserver>
 {
     NSURL *_directoryURL;
+    NSObject<OS_dispatch_queue> *_storingQueue;
     NSLock *_lock;
     NSMutableArray *_inProgressUUIDs;
 }
 
 - (void).cxx_destruct;
 - (void)resourceManifestManager:(id)arg1 didChangeActiveTileGroup:(id)arg2 fromOldTileGroup:(id)arg3;
-- (id)imageForStyleAttributes:(id)arg1 size:(unsigned long long)arg2 scale:(double)arg3 isCarplay:(_Bool)arg4 drawingBlock:(CDUnknownBlockType)arg5;
+- (id)imageForStyleAttributes:(id)arg1 size:(unsigned long long)arg2 scale:(double)arg3 isCarplay:(_Bool)arg4 isTransit:(_Bool)arg5 isTransparent:(_Bool)arg6 drawingBlock:(CDUnknownBlockType)arg7;
 - (id)imageForStyleAttributes:(id)arg1 size:(unsigned long long)arg2 scale:(double)arg3 drawingBlock:(CDUnknownBlockType)arg4;
 - (void)_updateVersionsInfo;
 - (void)dealloc;

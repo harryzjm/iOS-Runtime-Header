@@ -10,7 +10,7 @@
 + (id)ib_unregisterFontsAtURLs:(id)arg1;
 + (id)ib_registerFontsAtURLs:(id)arg1;
 + (id)ib_customFonts;
-+ (id)availableFonts;
++ (id)ib_availableFonts;
 - (id)ib_URL;
 @end
 

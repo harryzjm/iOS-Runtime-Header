@@ -11,11 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface TSDRootLayout <TSDAdaptiveLayout>
 {
-    TSDLayoutController *mLayoutController;
-    _Bool mSupportsAdaptiveLayout;
-    TSURetainedPointerKeyDictionary *mShiftedObjects;
+    TSDLayoutController *_layoutController;
+    _Bool _supportsAdaptiveLayout;
+    TSURetainedPointerKeyDictionary *_shiftedObjects;
 }
 
+@property(readonly, nonatomic) __weak TSDLayoutController *layoutController; // @synthesize layoutController=_layoutController;
+- (void).cxx_destruct;
 - (struct CGPoint)applyAdaptiveLayoutTo:(id)arg1 info:(id)arg2 offset:(struct CGPoint)arg3;
 - (struct CGPoint)adjustMappingPointForInfo:(id)arg1 fromPoint:(struct CGPoint)arg2;
 - (void)resetLayout:(id)arg1 forInfo:(id)arg2;
@@ -28,9 +30,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isRootLayoutForInspectorGeometry;
 - (id)layoutsForProvidingGuidesForChildLayouts;
 - (_Bool)providesGuidesForChildLayouts;
-- (id)childLayoutsInRect:(struct CGRect)arg1;
-- (id)layoutController;
-- (void)dealloc;
+- (id)childLayoutsInRect:(struct CGRect)arg1 deep:(_Bool)arg2;
 - (id)initWithLayoutController:(id)arg1;
 
 @end

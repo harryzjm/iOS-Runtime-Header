@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Silex/SXFullScreenCanvasShowable-Protocol.h>
+#import <Silex/SXFullscreenCanvasShowable-Protocol.h>
 #import <Silex/SXImageViewDelegate-Protocol.h>
 #import <Silex/SXMosaicGalleryLayouterDataSource-Protocol.h>
 #import <Silex/SXTextSourceDataSource-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
-@class NSMutableArray, NSMutableSet, NSString, SXFullScreenCanvasController, SXMediaViewEvent, SXMosaicGalleryLayouter, UIView;
+@class NSMutableArray, NSMutableSet, NSString, SXFullscreenCanvasController, SXMediaViewEvent, SXMosaicGalleryLayouter, UIView;
+@protocol SXFullscreenCanvasControllerFactory, SXGalleryItemImageViewFactory;
 
-@interface SXMosaicGalleryComponentView <SXMosaicGalleryLayouterDataSource, SXFullScreenCanvasShowable, SXImageViewDelegate, SXTextSourceDataSource, SXViewportChangeListener>
+@interface SXMosaicGalleryComponentView <SXMosaicGalleryLayouterDataSource, SXFullscreenCanvasShowable, SXImageViewDelegate, SXTextSourceDataSource, SXViewportChangeListener>
 {
     _Bool _loadedAtleastOneImage;
-    SXFullScreenCanvasController *_fullScreenCanvasController;
+    id <SXGalleryItemImageViewFactory> _imageViewFactory;
+    id <SXFullscreenCanvasControllerFactory> _canvasControllerFactory;
+    SXFullscreenCanvasController *_fullScreenCanvasController;
     UIView *_galleryView;
     NSMutableArray *_imageViews;
     NSMutableArray *_visibleImageViews;
@@ -31,7 +34,9 @@
 @property(readonly, nonatomic) NSMutableArray *visibleImageViews; // @synthesize visibleImageViews=_visibleImageViews;
 @property(readonly, nonatomic) NSMutableArray *imageViews; // @synthesize imageViews=_imageViews;
 @property(retain, nonatomic) UIView *galleryView; // @synthesize galleryView=_galleryView;
-@property(readonly, nonatomic) SXFullScreenCanvasController *fullScreenCanvasController; // @synthesize fullScreenCanvasController=_fullScreenCanvasController;
+@property(readonly, nonatomic) SXFullscreenCanvasController *fullScreenCanvasController; // @synthesize fullScreenCanvasController=_fullScreenCanvasController;
+@property(readonly, nonatomic) id <SXFullscreenCanvasControllerFactory> canvasControllerFactory; // @synthesize canvasControllerFactory=_canvasControllerFactory;
+@property(readonly, nonatomic) id <SXGalleryItemImageViewFactory> imageViewFactory; // @synthesize imageViewFactory=_imageViewFactory;
 - (void).cxx_destruct;
 - (_Bool)allowHierarchyRemoval;
 - (void)willSubmitMediaExposureEvent:(id)arg1;
@@ -66,7 +71,7 @@
 - (void)fullScreenCanvasController:(id)arg1 didShowShowable:(id)arg2 viewIndex:(unsigned long long)arg3;
 - (void)fullScreenCanvasController:(id)arg1 didHideShowable:(id)arg2 viewIndex:(unsigned long long)arg3;
 - (id)fullScreenCanvasController:(id)arg1 captionForShowable:(id)arg2 viewIndex:(unsigned long long)arg3;
-- (id)fullScreenCanvasController:(id)arg1 canvasViewForShowable:(id)arg2;
+- (id)fullScreenCanvasController:(id)arg1 canvasViewControllerForShowable:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (_Bool)requestInteractivityFocusForFullScreenCanvasController:(id)arg1;
 - (id)documentColumnLayoutForGalleryLayouter:(id)arg1;
 - (_Bool)galleryLayouter:(id)arg1 viewIsCurrentlyFullscreenForItemAtIndex:(unsigned long long)arg2;
@@ -81,8 +86,9 @@
 - (void)visibleBoundsChanged;
 - (void)discardContents;
 - (void)renderContents;
-- (void)presentComponent;
-- (id)initWithComponent:(id)arg1 configuration:(id)arg2 context:(id)arg3 analyticsReporting:(id)arg4 appStateMonitor:(id)arg5;
+- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)loadComponent:(id)arg1;
+- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 appStateMonitor:(id)arg6 imageViewFactory:(id)arg7 canvasControllerFactory:(id)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_source, SCNJittererDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SCNJitterer : NSObject
 {
     _Bool _enabled;

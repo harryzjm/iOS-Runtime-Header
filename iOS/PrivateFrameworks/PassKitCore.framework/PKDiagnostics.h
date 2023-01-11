@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface PKDiagnostics : NSObject
 {
 }
 
++ (void)saveTransitState:(id)arg1 forPaymentAppliction:(id)arg2;
 + (id)_metadataForCardAtURL:(id)arg1;
 + (id)_allPasses;
 + (id)_secureElementData;

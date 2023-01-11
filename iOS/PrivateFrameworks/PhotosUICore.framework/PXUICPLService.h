@@ -7,13 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <PhotosUICore/PXCPLService-Protocol.h>
+#import <PhotosUICore/PXChangeObserver-Protocol.h>
 
 @class NSString, PXCPLServiceStatus, PXCPLState, PXCPLStatus;
-@protocol OS_dispatch_queue;
 
-@interface PXUICPLService : NSObject <PXCPLService>
+@interface PXUICPLService : NSObject <PXChangeObserver, PXCPLService>
 {
-    NSObject<OS_dispatch_queue> *_serialQueue;
     PXCPLStatus *_statusProvider;
     PXCPLState *_state;
     PXCPLServiceStatus *_serviceStatus;
@@ -22,6 +21,7 @@
 
 @property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 - (void).cxx_destruct;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_serviceStatusDidChange:(id)arg1;
 - (void)_setState:(id)arg1;
 - (void)performAction:(long long)arg1;

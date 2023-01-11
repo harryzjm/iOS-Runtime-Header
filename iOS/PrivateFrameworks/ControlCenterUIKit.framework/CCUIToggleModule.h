@@ -9,7 +9,7 @@
 #import <ControlCenterUIKit/CCUIContentModule-Protocol.h>
 
 @class CCUICAPackageDescription, CCUIContentModuleContext, CCUIToggleViewController, NSString, UIColor, UIImage, UIViewController;
-@protocol CCUIContentModuleContentViewController;
+@protocol CCUIContentModuleBackgroundViewController, CCUIContentModuleContentViewController;
 
 @interface CCUIToggleModule : NSObject <CCUIContentModule>
 {
@@ -32,7 +32,7 @@
 @property(nonatomic, getter=isSelected) _Bool selected; // @dynamic selected;
 
 // Remaining properties
-@property(readonly, nonatomic) UIViewController *backgroundViewController;
+@property(readonly, nonatomic) UIViewController<CCUIContentModuleBackgroundViewController> *backgroundViewController;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

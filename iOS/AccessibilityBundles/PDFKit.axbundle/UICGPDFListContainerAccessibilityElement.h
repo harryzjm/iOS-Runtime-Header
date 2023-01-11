@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIAccessibilityElement.h>
-
-@interface UICGPDFListContainerAccessibilityElement : UIAccessibilityElement
+@interface UICGPDFListContainerAccessibilityElement
 {
 }
 
+- (struct CGRect)accessibilityFrame;
 - (_Bool)isAccessibilityElement;
 - (long long)accessibilityContainerType;
 

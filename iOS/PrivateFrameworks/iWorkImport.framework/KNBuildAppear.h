@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <iWorkImport/KNChunkableBuildAnimator-Protocol.h>
+#import <iWorkImport/KNBuildCAAnimator-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface KNBuildAppear <KNChunkableBuildAnimator>
+@interface KNBuildAppear <KNBuildCAAnimator>
 {
 }
 
++ (long long)rendererTypeForAnimationContext:(id)arg1;
 + (id)thumbnailImageNameForType:(long long)arg1;
 + (id)defaultAttributes;
 + (void)fillLocalizedDirectionMenu:(id)arg1 forType:(long long)arg2;

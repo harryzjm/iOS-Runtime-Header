@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IBICColor;
+@class IBICColor, NSString;
 
 @interface IBICColorSetRep
 {
     IBICColor *_color;
+    NSString *_referenceColorName;
     long long _componentInterpretation;
 }
 
@@ -19,19 +20,18 @@
 + (id)assetRepWithRepIdentifier:(id)arg1;
 + (id)createDefaultInstancesForUnitTesting;
 @property(nonatomic) long long componentInterpretation; // @synthesize componentInterpretation=_componentInterpretation;
+@property(copy, nonatomic) NSString *referenceColorName; // @synthesize referenceColorName=_referenceColorName;
 @property(retain, nonatomic) IBICColor *color; // @synthesize color=_color;
 - (void).cxx_destruct;
+- (void)populateIssues:(id)arg1 context:(id)arg2;
+- (_Bool)isDraggable;
 - (id)copyUsingSlot:(id)arg1 andFileName:(id)arg2;
 - (_Bool)isEqualForUnitTests:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (int)colorModel;
-- (double)componentAtIndex:(unsigned long long)arg1;
-- (unsigned long long)componentCount;
 - (id)effectiveModificationDateForCARCompiler;
 - (_Bool)isMinimallyFitForCompiling;
 - (CDStruct_2a4d9400)taggingSupport;
-- (id)shortDisplayName;
 - (void)enumerateDescriptionAttributeComponents:(CDUnknownBlockType)arg1;
 - (void)setSlot:(id)arg1;
 - (id)structuredIdentifier;

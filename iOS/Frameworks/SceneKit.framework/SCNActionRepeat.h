@@ -6,6 +6,7 @@
 
 @class SCNAction;
 
+__attribute__((visibility("hidden")))
 @interface SCNActionRepeat
 {
     struct SCNCActionRepeat *_mycaction;

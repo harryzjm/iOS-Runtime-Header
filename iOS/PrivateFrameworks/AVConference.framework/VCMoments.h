@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCMomentsMessenger-Protocol.h>
 
@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (id)momentsDelegate;
 - (void)setTransportDelegate:(id)arg1;
 - (id)transportDelegate;
+- (void)setFrameRate:(float)arg1;
 - (void)processRequest:(id)arg1;
 - (void)updateRemoteScreenAttributes:(id)arg1;
 - (void)getInitialRemoteScreenAttributes:(id)arg1;

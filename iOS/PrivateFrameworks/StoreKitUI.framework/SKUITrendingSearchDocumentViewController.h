@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <StoreKitUI/ADPrivacyViewControllerDelegate-Protocol.h>
 #import <StoreKitUI/SKUIDocumentViewController-Protocol.h>
 
 @class NSString, SKUITrendingSearchTemplateElement, SKUITrendingSearchView, UIViewController;
 
-@interface SKUITrendingSearchDocumentViewController <ADPrivacyViewControllerDelegate, SKUIDocumentViewController>
+@interface SKUITrendingSearchDocumentViewController <SKUIDocumentViewController>
 {
     SKUITrendingSearchView *_resultsView;
     SKUITrendingSearchTemplateElement *_template;
@@ -20,9 +19,6 @@
 @property(retain, nonatomic) SKUITrendingSearchTemplateElement *template; // @synthesize template=_template;
 @property(retain, nonatomic) SKUITrendingSearchView *resultsView; // @synthesize resultsView=_resultsView;
 - (void).cxx_destruct;
-- (void)adPrivacyViewController:(id)arg1 didFailWithError:(id)arg2;
-- (void)adPrivacyViewControllerDidDismiss:(id)arg1;
-- (void)adPrivacyViewControllerDidLoad:(id)arg1;
 - (struct UIEdgeInsets)_resultsViewContentInset;
 - (void)_reloadResultsView;
 - (void)searchResultButtonTapped:(id)arg1;

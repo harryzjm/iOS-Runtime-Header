@@ -9,7 +9,7 @@
 #import <KeyboardServices/_KSTextReplacementSyncProtocol-Protocol.h>
 
 @class NSString, _KSTextReplacementCKStore, _KSTextReplacementLegacyStore;
-@protocol OS_dispatch_queue, _KSMigrationDelegate, _KSTextReplacementStoreProtocol;
+@protocol OS_dispatch_queue, _KSMigrationDelegate, _KSTextReplacementSyncProtocol;
 
 @interface _KSTextReplacementManager : NSObject <_KSTextReplacementSyncProtocol>
 {
@@ -20,7 +20,7 @@
     _Bool _didCheckMigrationOnCloud;
     _KSTextReplacementCKStore *_ckStore;
     _KSTextReplacementLegacyStore *_legacyStore;
-    NSObject<_KSTextReplacementStoreProtocol> *_textReplacementStore;
+    NSObject<_KSTextReplacementSyncProtocol> *_textReplacementStore;
     NSString *_directoryPath;
     id <_KSMigrationDelegate> _delegate;
 }
@@ -32,7 +32,7 @@
 @property(nonatomic) _Bool pendingMigration; // @synthesize pendingMigration=_pendingMigration;
 @property(nonatomic) _Bool didMigrateForCurrentAccount; // @synthesize didMigrateForCurrentAccount=_didMigrateForCurrentAccount;
 @property(copy, nonatomic) NSString *directoryPath; // @synthesize directoryPath=_directoryPath;
-@property(retain, nonatomic) NSObject<_KSTextReplacementStoreProtocol> *textReplacementStore; // @synthesize textReplacementStore=_textReplacementStore;
+@property(retain, nonatomic) NSObject<_KSTextReplacementSyncProtocol> *textReplacementStore; // @synthesize textReplacementStore=_textReplacementStore;
 @property(retain, nonatomic) _KSTextReplacementLegacyStore *legacyStore; // @synthesize legacyStore=_legacyStore;
 @property(retain, nonatomic) _KSTextReplacementCKStore *ckStore; // @synthesize ckStore=_ckStore;
 - (void).cxx_destruct;
@@ -57,7 +57,7 @@
 - (void)accountDidChange:(id)arg1;
 - (_Bool)shouldMigrateToCloudKit;
 - (id)initWithDirectoryPath:(id)arg1;
-- (id)initWithDirectoryPath:(id)arg1 ignoreMigrationBatchCheck:(_Bool)arg2 forceCloudKitSync:(_Bool)arg3;
+- (id)initWithDirectoryPath:(id)arg1 ignoreMigrationBatchCheck:(_Bool)arg2 syncMode:(int)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

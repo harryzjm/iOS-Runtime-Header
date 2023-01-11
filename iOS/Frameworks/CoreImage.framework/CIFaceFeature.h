@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSDictionary;
+
 @interface CIFaceFeature
 {
     struct CGRect bounds;
@@ -22,8 +24,10 @@
     _Bool hasSmile;
     _Bool leftEyeClosed;
     _Bool rightEyeClosed;
+    NSDictionary *landmarks;
 }
 
+@property(readonly) NSDictionary *landmarks; // @synthesize landmarks;
 @property(readonly) _Bool rightEyeClosed; // @synthesize rightEyeClosed;
 @property(readonly) _Bool leftEyeClosed; // @synthesize leftEyeClosed;
 @property(readonly) _Bool hasSmile; // @synthesize hasSmile;
@@ -40,7 +44,8 @@
 @property(readonly) struct CGPoint leftEyePosition; // @synthesize leftEyePosition;
 @property(readonly) _Bool hasLeftEyePosition; // @synthesize hasLeftEyePosition;
 @property(readonly) struct CGRect bounds; // @synthesize bounds;
-- (id)initWithBounds:(struct CGRect)arg1 hasLeftEyePosition:(_Bool)arg2 leftEyePosition:(struct CGPoint)arg3 hasRightEyePosition:(_Bool)arg4 rightEyePosition:(struct CGPoint)arg5 hasMouthPosition:(_Bool)arg6 mouthPosition:(struct CGPoint)arg7 hasFaceAngle:(_Bool)arg8 faceAngle:(float)arg9 hasTrackingID:(_Bool)arg10 trackingID:(int)arg11 hasTrackingFrameCount:(_Bool)arg12 trackingFrameCount:(int)arg13 hasSmile:(_Bool)arg14 leftEyeClosed:(_Bool)arg15 rightEyeClosed:(_Bool)arg16;
+- (void)dealloc;
+- (id)initWithBounds:(struct CGRect)arg1 hasLeftEyePosition:(_Bool)arg2 leftEyePosition:(struct CGPoint)arg3 hasRightEyePosition:(_Bool)arg4 rightEyePosition:(struct CGPoint)arg5 hasMouthPosition:(_Bool)arg6 mouthPosition:(struct CGPoint)arg7 hasFaceAngle:(_Bool)arg8 faceAngle:(float)arg9 hasTrackingID:(_Bool)arg10 trackingID:(int)arg11 hasTrackingFrameCount:(_Bool)arg12 trackingFrameCount:(int)arg13 hasSmile:(_Bool)arg14 leftEyeClosed:(_Bool)arg15 rightEyeClosed:(_Bool)arg16 landmarks:(id)arg17;
 - (id)type;
 
 @end

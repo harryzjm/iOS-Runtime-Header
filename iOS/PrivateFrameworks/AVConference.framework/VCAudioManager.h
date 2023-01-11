@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCAudioIOControllerControl-Protocol.h>
 #import <AVConference/VCAudioIOSink-Protocol.h>
 #import <AVConference/VCAudioIOSource-Protocol.h>
+#import <AVConference/VCAudioSessionDelegate-Protocol.h>
 
 @class AVAudioDevice, NSDictionary, NSMutableArray, NSMutableSet, NSString, VCAudioSessionMediaProperties, VCAudioUnitProperties;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioManager : NSObject <VCAudioIOControllerControl, VCAudioIOSink, VCAudioIOSource>
+@interface VCAudioManager : NSObject <VCAudioIOControllerControl, VCAudioIOSink, VCAudioIOSource, VCAudioSessionDelegate>
 {
     struct tagHANDLE *_hAUIO;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
@@ -40,6 +41,8 @@ __attribute__((visibility("hidden")))
     _Bool _isOutputMeteringEnabled;
     _Bool _isSpeakerPhoneEnabled;
     _Bool _isSuspended;
+    struct _VCAudioIOControllerIOState _sinkData;
+    struct _VCAudioIOControllerIOState _sourceData;
 }
 
 + (id)sharedInstance;
@@ -51,6 +54,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) AVAudioDevice *currentInputDevice; // @synthesize currentInputDevice=_inputDevice;
 @property(nonatomic, getter=isMicrophoneMuted) _Bool microphoneMuted; // @synthesize microphoneMuted=_isMicrophoneMuted;
 @property(nonatomic) _Bool isGKVoiceChat; // @synthesize isGKVoiceChat=_isGKVoiceChat;
+- (void)didSessionEnd;
+- (void)didSessionStop;
+- (void)didSessionResume;
+- (void)didSessionPause;
 - (void)pushAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
 - (void)pullAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
 - (void)stopAudioSession;
@@ -86,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)addClient:(id)arg1;
 - (void)flushEventQueue:(struct AudioEventQueue_t *)arg1;
 - (void)processEventQueue:(struct AudioEventQueue_t *)arg1 clientList:(id)arg2;
+- (void)resetAudioTimestamps;
 - (void)computeHardwarePreferences;
 - (void)setOutputMetering;
 - (void)setInputMetering;

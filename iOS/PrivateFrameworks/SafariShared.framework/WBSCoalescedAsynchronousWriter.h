@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSTimer, NSURL;
-@protocol OS_dispatch_group, OS_dispatch_queue, WBSCoalescedAsynchronousWriterDelegate;
+@class NSString, NSURL;
+@protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source, WBSCoalescedAsynchronousWriterDelegate;
 
 @interface WBSCoalescedAsynchronousWriter : NSObject
 {
@@ -15,12 +15,14 @@
     NSURL *_fileURL;
     CDUnknownBlockType _writerBlock;
     CDUnknownBlockType _dataSourceBlock;
+    NSObject<OS_dispatch_queue> *_dataSourceQueue;
     NSObject<OS_dispatch_queue> *_internalQueue;
-    NSTimer *_timer;
+    NSObject<OS_dispatch_source> *_timer;
     double _writeDelayInterval;
     NSObject<OS_dispatch_group> *_writeGroup;
     struct unique_ptr<SafariShared::SuddenTerminationDisabler, std::__1::default_delete<SafariShared::SuddenTerminationDisabler>> _suddenTerminationDisabler;
     _Bool _done;
+    NSString *_name;
     id <WBSCoalescedAsynchronousWriterDelegate> _delegate;
 }
 
@@ -29,19 +31,24 @@
 - (void).cxx_destruct;
 - (void)cancelPendingWriteSynchronously;
 - (void)completePendingWriteSynchronously;
+- (void)performScheduledWriteSynchronously;
+- (void)startScheduledWriteNowWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)startScheduledWriteNow;
 - (void)scheduleWrite;
 - (void)_cancelPendingWriteSynchronouslyLeavingSuddenTerminationIntact;
-- (void)_writeDataAsynchronously:(id)arg1;
+- (void)_writeDataAsynchronously:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_writeData:(id)arg1;
 - (void)_waitForWriteCompletion;
-- (void)_writeDataFromDataSourceAsynchronously;
+- (id)_dataFromDataSource;
 - (void)_scheduleTimer;
-- (void)_timerFired:(id)arg1;
+- (void)_timerFired;
 - (void)_invalidateTimer;
 - (void)dealloc;
-- (id)_initWithName:(id)arg1 fileURL:(id)arg2 writerBlock:(CDUnknownBlockType)arg3 dataSourceBlock:(CDUnknownBlockType)arg4;
+- (id)_initWithName:(id)arg1 fileURL:(id)arg2 writerBlock:(CDUnknownBlockType)arg3 dataSourceQueue:(id)arg4 dataSourceBlock:(CDUnknownBlockType)arg5 writeDelayInterval:(double)arg6;
+- (id)initWithName:(id)arg1 writerBlock:(CDUnknownBlockType)arg2 dataSourceQueue:(id)arg3 dataSourceBlock:(CDUnknownBlockType)arg4;
+- (id)initWithName:(id)arg1 fileURL:(id)arg2 dataSourceQueue:(id)arg3 dataSourceBlock:(CDUnknownBlockType)arg4;
 - (id)initWithName:(id)arg1 writerBlock:(CDUnknownBlockType)arg2 dataSourceBlock:(CDUnknownBlockType)arg3;
+- (id)initWithName:(id)arg1 fileURL:(id)arg2 dataSourceBlock:(CDUnknownBlockType)arg3 writeDelayInterval:(double)arg4;
 - (id)initWithName:(id)arg1 fileURL:(id)arg2 dataSourceBlock:(CDUnknownBlockType)arg3;
 
 @end

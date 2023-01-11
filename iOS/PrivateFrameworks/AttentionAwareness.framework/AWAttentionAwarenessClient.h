@@ -8,16 +8,14 @@
 
 #import <AttentionAwareness/AWFrameworkClient-Protocol.h>
 
-@class AWAttentionAwarenessConfiguration, AWAttentionEvent, AWClientPollWaiter, AWSchedulerManager, NSString;
-@protocol AWRemoteClient, AWScheduler, OS_dispatch_queue;
+@class AWAttentionAwarenessConfiguration, AWAttentionEvent, AWClientPollWaiter, NSString;
+@protocol NSXPCProxyCreating, OS_dispatch_queue;
 
 @interface AWAttentionAwarenessClient : NSObject <AWFrameworkClient>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    AWSchedulerManager *_schedulerManager;
-    id <AWScheduler> _scheduler;
     AWClientPollWaiter *_pollWaiter;
-    id <AWRemoteClient> _remoteClient;
+    id <NSXPCProxyCreating> _remoteClientProxy;
     unsigned long long _suspensionCount;
     _Bool _invalidated;
     NSObject<OS_dispatch_queue> *_clientQueue;
@@ -35,6 +33,7 @@
 - (void)notifyEvent:(id)arg1;
 - (_Bool)invalidateWithError:(id *)arg1;
 - (_Bool)suspendWithError:(id *)arg1;
+- (_Bool)invalidateRemoteClientWithError:(id *)arg1;
 - (_Bool)resumeWithError:(id *)arg1;
 - (id)reconnect;
 - (_Bool)cancelPollForAttentionWithError:(id *)arg1;
@@ -44,6 +43,7 @@
 - (_Bool)resetAttentionLostTimeoutWithError:(id *)arg1;
 @property(readonly, retain, nonatomic) AWAttentionEvent *lastEvent;
 - (_Bool)invokeRequiringClient:(_Bool)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
+- (_Bool)_invokeRequiringClient:(_Bool)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (void)setConfiguration:(id)arg1 shouldReset:(_Bool)arg2;
 - (id)init;
 

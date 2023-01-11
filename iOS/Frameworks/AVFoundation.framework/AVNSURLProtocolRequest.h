@@ -6,6 +6,7 @@
 
 @class AVAssetCustomURLBridgeForNSURLProtocol;
 
+__attribute__((visibility("hidden")))
 @interface AVNSURLProtocolRequest
 {
     AVAssetCustomURLBridgeForNSURLProtocol *_bridge;

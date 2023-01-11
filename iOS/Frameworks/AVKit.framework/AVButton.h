@@ -14,6 +14,7 @@
     _Bool _treatsForcePressAsLongPress;
     _Bool _multipleTouchesEndsTracking;
     _Bool _disablesHighlightWhenLongPressed;
+    _Bool _clampsHitRectInsetsWhenContainedInScrollableView;
     _Bool _wasForcePressTriggered;
     _Bool _collapsed;
     _Bool _included;
@@ -51,6 +52,7 @@
 @property(nonatomic) _Bool wasForcePressTriggered; // @synthesize wasForcePressTriggered=_wasForcePressTriggered;
 @property(nonatomic) double trackingStartTime; // @synthesize trackingStartTime=_trackingStartTime;
 @property(nonatomic) __weak UIViewPropertyAnimator *highlightAnimator; // @synthesize highlightAnimator=_highlightAnimator;
+@property(nonatomic) _Bool clampsHitRectInsetsWhenContainedInScrollableView; // @synthesize clampsHitRectInsetsWhenContainedInScrollableView=_clampsHitRectInsetsWhenContainedInScrollableView;
 @property(nonatomic) struct NSDirectionalEdgeInsets hitRectInsets; // @synthesize hitRectInsets=_hitRectInsets;
 @property(nonatomic) _Bool disablesHighlightWhenLongPressed; // @synthesize disablesHighlightWhenLongPressed=_disablesHighlightWhenLongPressed;
 @property(retain, nonatomic) AVMicaPackage *micaPackage; // @synthesize micaPackage=_micaPackage;
@@ -67,18 +69,23 @@
 @property(nonatomic) _Bool wasLongPressed; // @synthesize wasLongPressed=_wasLongPressed;
 - (void).cxx_destruct;
 - (id)_preferredImageName;
+- (void)_updateIsHiddenAndAlpha;
+- (void)_updateImageIfNeeded;
 - (void)_resetTrackedState;
 - (void)_handleUserInteractionGestureRecognizer:(id)arg1;
+- (struct CGSize)_preferredLayoutSize;
 - (struct CGSize)intrinsicContentSize;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGRect)hitRect;
-- (void)layoutSubviews;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)setImage:(id)arg1 forState:(unsigned long long)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)setEnabled:(_Bool)arg1;
+- (void)willMoveToWindow:(id)arg1;
 @property(readonly, nonatomic, getter=isCollapsedOrExcluded) _Bool collapsedOrExcluded;
 
 @end

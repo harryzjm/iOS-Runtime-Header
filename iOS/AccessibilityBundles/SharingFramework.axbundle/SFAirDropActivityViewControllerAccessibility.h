@@ -15,6 +15,8 @@
 - (void)updateContentAreaAnimated:(_Bool)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)_axSetDidPostScreenChangeAfterAppearance:(_Bool)arg1;
+- (_Bool)_axDidPostScreenChangeAfterAppearance;
 - (void)_axAnnotateCollectionViewCellIfNeeded;
 - (void)_axAddIfVisible:(id)arg1 toArray:(id)arg2;
 

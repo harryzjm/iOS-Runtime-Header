@@ -18,6 +18,7 @@
     id <AFSettingsDelegate> _delegate;
 }
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (void)fetchExperimentContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchExperimentConfigurationsWithCompletion:(CDUnknownBlockType)arg1;
@@ -25,15 +26,19 @@
 - (void)resetAnalyticsStoreWithCompletion:(CDUnknownBlockType)arg1;
 - (void)purgeAnalyticsStoreWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchEventRecordsFromAnalyticsStoreAtPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getStereoPairState:(CDUnknownBlockType)arg1;
+- (void)getStereoPartnerLastMyriadWinDate:(CDUnknownBlockType)arg1;
+- (void)setHorsemanSupplementalLanguageDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getHorsemanSupplementalLanguageDictionary:(CDUnknownBlockType)arg1;
+- (void)getSupplementalLanguagesForProduct:(id)arg1 forBuildVersion:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getSupplementalLanguageDictionaryForProduct:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getSupplementalLanguagesModificationDate:(CDUnknownBlockType)arg1;
+- (void)getSupplementalLanguagesDictionary:(CDUnknownBlockType)arg1;
+- (void)setSupplementalLanguages:(id)arg1 forProduct:(id)arg2 forBuildVersion:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)setSupplementalLanguageDictionary:(id)arg1 forProduct:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)stopAllAudioPlaybackRequests:(_Bool)arg1;
 - (void)stopAudioPlaybackRequest:(id)arg1 immediately:(_Bool)arg2;
 - (void)startAudioPlaybackRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)setDESPolicyCDNOverride:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)setDESLotteryWinOverrideEnabled:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)setDESRecordingAlwaysIsEnabled:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)disableDESWithCompletion:(CDUnknownBlockType)arg1;
-- (void)runLiveAdaptationRecipeEvaluationWithBaseURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)runAdaptationRecipeEvaluation:(id)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getPeerIdentifiers:(CDUnknownBlockType)arg1;
 - (void)startRemoteRequest:(id)arg1 onPeer:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)startUIRequestWithSpeechAudioFileURL:(id)arg1;
@@ -55,6 +60,8 @@
 - (id)_filterVoices:(id)arg1 forLanguage:(id)arg2;
 - (id)_voices;
 - (void)_setVoices:(id)arg1;
+- (void)configOverrides:(CDUnknownBlockType)arg1;
+- (void)setConfigOverrides:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getDevicesWithAvailablePHSAssetsForLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)disableAndDeleteCloudSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)barrier;
@@ -65,6 +72,7 @@
 - (void)deleteAccountWithIdentifier:(id)arg1;
 - (void)saveAccount:(id)arg1 setActive:(_Bool)arg2;
 - (id)accounts;
+- (void)fetchAccountsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSupportedLanguageCodes:(CDUnknownBlockType)arg1;
 - (id)_settingsServiceWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_settingsService;

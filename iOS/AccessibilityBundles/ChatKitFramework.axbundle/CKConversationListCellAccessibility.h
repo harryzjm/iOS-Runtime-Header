@@ -11,8 +11,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axFromString;
 - (void)updateContentsForConversation:(id)arg1;
+- (id)_accessibilitySpeechInputLabel;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)_accessibilityCustomActionGroupIdentifier;
+- (_Bool)_accessibilityRetainsCustomRotorActionSetting;
+- (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 
 @end

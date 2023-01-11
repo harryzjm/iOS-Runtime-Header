@@ -11,6 +11,7 @@
 @interface UNImageNotificationAttachmentOptions <UNNotificationAttachmentThumbnailOptions>
 {
     _Bool _thumbnailHidden;
+    _Bool _hiddenFromDefaultExpandedView;
     NSNumber *_thumbnailFrameNumber;
     struct CGRect _thumbnailClippingRect;
 }
@@ -18,6 +19,7 @@
 + (_Bool)supportsSecureCoding;
 + (id)optionsFromOptionsDictionary:(id)arg1;
 @property(readonly, copy, nonatomic) NSNumber *thumbnailFrameNumber; // @synthesize thumbnailFrameNumber=_thumbnailFrameNumber;
+@property(readonly, nonatomic) _Bool hiddenFromDefaultExpandedView; // @synthesize hiddenFromDefaultExpandedView=_hiddenFromDefaultExpandedView;
 @property(readonly, nonatomic) struct CGRect thumbnailClippingRect; // @synthesize thumbnailClippingRect=_thumbnailClippingRect;
 @property(readonly, nonatomic) _Bool thumbnailHidden; // @synthesize thumbnailHidden=_thumbnailHidden;
 - (void).cxx_destruct;
@@ -26,7 +28,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-- (id)initWithThumbnailHidden:(_Bool)arg1 thumbnailClippingRect:(struct CGRect)arg2 thumbnailFrameNumber:(id)arg3;
+- (id)initWithThumbnailHidden:(_Bool)arg1 thumbnailClippingRect:(struct CGRect)arg2 thumbnailFrameNumber:(id)arg3 hiddenFromDefaultExpandedView:(_Bool)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

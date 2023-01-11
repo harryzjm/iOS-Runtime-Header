@@ -4,21 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TPPaginatedPageInfo;
+@class NSTimer, TPPaginatedPageInfo;
 
 __attribute__((visibility("hidden")))
 @interface TPHeaderRep
 {
     _Bool _hideKnobs;
+    NSTimer *editingDidBeginTimer;
 }
 
 @property(nonatomic) _Bool hideKnobs; // @synthesize hideKnobs=_hideKnobs;
+@property(retain, nonatomic) NSTimer *editingDidBeginTimer; // @synthesize editingDidBeginTimer;
+- (void).cxx_destruct;
 - (_Bool)p_isMiddleFooterRep;
 - (_Bool)p_isMiddleHeaderRep;
 - (_Bool)p_shouldCreateArrowKnobs;
 - (_Bool)p_isInDocumentSetup;
-- (_Bool)shouldShowHyperlinkUI;
-- (_Bool)shouldIgnoreSingleTapAtPoint:(struct CGPoint)arg1 withRecognizer:(id)arg2;
 @property(readonly, nonatomic) TPPaginatedPageInfo *pageInfo;
 - (id)pageLayout;
 

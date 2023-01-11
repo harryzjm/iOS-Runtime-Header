@@ -14,6 +14,7 @@
 - (void)layoutSubviews;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (_Bool)accessibilityScrollToVisible;
+- (id)accessibilityIdentifier;
 
 @end
 

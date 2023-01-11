@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSPointerArray, NSString;
 
-@interface SKShader : NSObject <NSCopying, NSCoding>
+@interface SKShader : NSObject <NSCopying, NSSecureCoding>
 {
     NSMutableArray *_uniforms;
     NSArray *_attributes;
@@ -27,7 +27,7 @@
     _Bool _usesSpriteSizeUniform;
     shared_ptr_394c00aa _backingProgram;
     shared_ptr_394c00aa _backingProgramWithTransform;
-    map_7c6d24d7 _attributeBuffers;
+    map_48758480 _attributeBuffers;
     _Bool _performFullCapture;
 }
 
@@ -35,11 +35,13 @@
 + (id)shaderWithSource:(id)arg1 uniforms:(id)arg2;
 + (id)shaderWithSource:(id)arg1;
 + (id)shader;
++ (_Bool)supportsSecureCoding;
 @property _Bool performFullCapture; // @synthesize performFullCapture=_performFullCapture;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_getLegacyUniformData;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqualToShader:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_removeTargetNode:(id)arg1;
@@ -76,7 +78,7 @@
 - (id)fragmentPreludeMetal;
 - (id)fragmentPrelude;
 @property(copy) NSString *source;
-@property(readonly) map_7c6d24d7 *_attributeBuffers;
+@property(readonly) map_48758480 *_attributeBuffers;
 @property(copy, nonatomic) NSArray *attributes;
 - (id)initWithSource:(id)arg1 uniforms:(id)arg2;
 - (id)initWithSource:(id)arg1;

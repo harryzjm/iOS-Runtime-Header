@@ -44,6 +44,7 @@
 - (void)_axStartListeningForUpdateAccessibilityElementsComplete;
 - (id)_axTourGuideManager;
 - (id)_axElementManager;
+- (id)_retrieveAXElementManager;
 - (id)_axDirectionsManager;
 - (_Bool)accessibilityIsShowingRoutes;
 - (_Bool)_axTrackingEnabled;
@@ -53,6 +54,8 @@
 - (_Bool)_axElementsInvalidForVisibleBounds;
 - (void)_axMapViewDidChangeVisibleRegion;
 - (void)_axSummaryForVisibleBounds;
+- (void)_axSetLastSummaryForVisibleBounds:(id)arg1;
+- (id)_axLastSummaryForVisibleBounds;
 - (CDStruct_2c43369c)_axConvertScreenPointToCoordinate:(struct CGPoint)arg1;
 - (id)_axWindow;
 - (id)_axMapsDelegate;
@@ -79,6 +82,7 @@
 - (void)accessibilityIncreaseTrackingDetail;
 - (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
 - (void)accessibilityZoomInAtPoint:(struct CGPoint)arg1;
+- (struct CGPoint)_accessibilityMapViewPointForZoomPoint:(struct CGPoint)arg1;
 - (_Bool)accessibilityViewBoundsContainsPathPoint:(struct CGPoint)arg1;
 - (void)accessibilityClearVisibleAXBoundsFrame;
 - (struct CGRect)accessibilityVisibleAXViewBounds;

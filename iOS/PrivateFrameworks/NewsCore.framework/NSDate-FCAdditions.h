@@ -15,6 +15,7 @@
 + (id)fc_dateFromStringWithISO8601Format:(id)arg1;
 + (id)fc_dateFromString:(id)arg1 possibleFormats:(id)arg2;
 - (id)fc_stringWithYearAndMonthFormat;
+- (id)fc_stringWithISO8601Format;
 - (_Bool)fc_isSameDayAs:(id)arg1;
 @property(readonly, nonatomic) _Bool fc_isWeekend;
 - (_Bool)isToday;
@@ -24,8 +25,10 @@
 - (unsigned long long)fc_millisecondTimeIntervalSince1970;
 - (id)fc_dateBySubtractingTimeInterval:(double)arg1;
 - (_Bool)fc_isWithinTimeInterval:(double)arg1 ofDate:(id)arg2;
+- (_Bool)fc_isLaterThan:(id)arg1 withPrecision:(long long)arg2;
 - (_Bool)fc_isLaterThanOrEqualTo:(id)arg1;
 - (_Bool)fc_isLaterThan:(id)arg1;
+- (_Bool)fc_isEarlierThan:(id)arg1 withPrecision:(long long)arg2;
 - (_Bool)fc_isEarlierThanOrEqualTo:(id)arg1;
 - (_Bool)fc_isEarlierThan:(id)arg1;
 @property(readonly) double fc_timeIntervalUntilNow;

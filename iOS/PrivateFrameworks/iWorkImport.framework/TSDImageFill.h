@@ -41,7 +41,6 @@ __attribute__((visibility("hidden")))
 - (void)p_drawBitmapImage:(struct CGImage *)arg1 withOrientation:(long long)arg2 inContext:(struct CGContext *)arg3 bounds:(struct CGRect)arg4;
 - (struct CGRect)p_drawnRectForImageSize:(struct CGSize)arg1 destRect:(struct CGRect)arg2 inContext:(struct CGContext *)arg3;
 - (id)p_validatedImageProvider;
-- (SEL)mapThemeAssetSelector;
 - (id)presetKind;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
@@ -50,8 +49,9 @@ __attribute__((visibility("hidden")))
 - (id)p_standardSizeCachedImage;
 - (id)p_tintedImageWithScale:(double)arg1;
 - (void)paintPath:(struct CGPath *)arg1 naturalBounds:(struct CGRect)arg2 inContext:(struct CGContext *)arg3 isPDF:(_Bool)arg4;
+- (void)drawFillInContext:(struct CGContext *)arg1 rect:(struct CGRect)arg2 clippingToPath:(struct CGPath *)arg3;
 - (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
-- (void)p_paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
+- (void)p_paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2 rectForFill:(struct CGRect)arg3;
 - (struct CGSize)p_sizeOfFillImageForDestRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (struct CGSize)renderedImageSizeForObjectSize:(struct CGSize)arg1;
@@ -76,6 +76,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic, setter=p_setTintColor:) TSUColor *p_tintColor;
 @property(nonatomic, setter=p_setTechnique:) int p_technique;
 @property(retain, nonatomic, setter=p_setImageData:) TSPData *p_imageData;
+- (void)flushImageCache;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (void)p_clearTintedImageCache;

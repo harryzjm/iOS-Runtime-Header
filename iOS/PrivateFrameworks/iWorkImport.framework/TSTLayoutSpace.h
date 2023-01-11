@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TSTCoordinateArray, TSTLayout, TSTLayoutSpaceBezierPathCache, TSTLayoutSpaceBundle, TSTMasterLayout;
 
@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
     TSTLayoutSpaceBundle *mBundle;
     int mLayoutSpaceType;
     _Bool mInvalidTableOffset;
-    unsigned char mInvalidColumnIndex;
-    unsigned short mInvalidRowIndex;
+    unsigned short mInvalidColumnIndex;
+    unsigned int mInvalidRowIndex;
     CDStruct_58eae27c mGridRange;
     _Bool mHeaderColumnsRepeat;
     _Bool mHeaderRowsRepeat;
@@ -60,10 +60,11 @@ __attribute__((visibility("hidden")))
 - (void)p_drawStrokeForGridRow:(unsigned int)arg1 strokeRect:(CDStruct_58eae27c)arg2 clearStroke:(_Bool)arg3 shadowType:(int)arg4 context:(struct CGContext *)arg5;
 - (void)p_drawStrokeForGridColumn:(unsigned int)arg1 strokeRect:(CDStruct_58eae27c)arg2 clearStroke:(_Bool)arg3 shadowType:(int)arg4 context:(struct CGContext *)arg5;
 - (int)validateTableOffset:(id)arg1;
+- (void)validateCoordinateDirection;
 - (int)validate:(id)arg1;
 - (void)invalidateTableOffset;
-- (void)invalidateCoordinatesAfterRow:(unsigned short)arg1;
-- (void)invalidateCoordinatesAfterColumn:(unsigned char)arg1;
+- (void)invalidateCoordinatesAfterRow:(unsigned int)arg1;
+- (void)invalidateCoordinatesAfterColumn:(unsigned short)arg1;
 - (void)invalidateCoordinates;
 - (void)unlock;
 - (void)lockForWrite;

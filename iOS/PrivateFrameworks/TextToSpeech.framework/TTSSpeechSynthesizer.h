@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextToSpeech/TTSSpeechConnectionDelegate-Protocol.h>
 
@@ -34,6 +34,7 @@
         unsigned int willUseInput:1;
     } _synthesizerFlags;
     NSArray *_outputChannels;
+    _Bool _supportsAccurateWordCallbacks;
     _Bool _ignoreSubstitutions;
     float _rate;
     float _pitch;
@@ -53,7 +54,7 @@
 + (id)allAvailableVoices;
 + (void)refreshAllAvailableVoices;
 + (void)testingSetAllVoices:(id)arg1;
-+ (id)speechMarkupStringForType:(long long)arg1 forIdentifier:(id)arg2;
++ (id)speechMarkupStringForType:(long long)arg1 forIdentifier:(id)arg2 string:(id)arg3;
 + (_Bool)employSpeechMarkupForType:(long long)arg1 identifier:(id)arg2 withLanguage:(id)arg3;
 + (id)voiceForIdentifier:(id)arg1;
 + (id)availableVoices;
@@ -61,6 +62,7 @@
 @property(nonatomic) _Bool ignoreSubstitutions; // @synthesize ignoreSubstitutions=_ignoreSubstitutions;
 @property(copy, nonatomic) NSArray *phonemeSubstitutions; // @synthesize phonemeSubstitutions=_phonemeSubstitutions;
 @property(copy, nonatomic) NSArray *userSubstitutions; // @synthesize userSubstitutions=_userSubstitutions;
+@property(nonatomic) _Bool supportsAccurateWordCallbacks; // @synthesize supportsAccurateWordCallbacks=_supportsAccurateWordCallbacks;
 @property(nonatomic) void *speakingRequestClientContext; // @synthesize speakingRequestClientContext=_speakingRequestClientContext;
 @property(retain, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(retain, nonatomic) NSString *voiceIdentifier; // @synthesize voiceIdentifier=_voiceIdentifier;

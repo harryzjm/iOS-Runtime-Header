@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeUI/HUQuickControlPresentableView-Protocol.h>
+#import <HomeUI/NSObject-Protocol.h>
 
-@class HUQuickControlViewProfile;
+@class HUIntrinsicSizeDescriptor, HUQuickControlViewProfile;
 
-@protocol HUQuickControlControllableView <HUQuickControlPresentableView>
+@protocol HUQuickControlControllableView <NSObject>
 @property(copy, nonatomic) HUQuickControlViewProfile *profile;
 @property(retain, nonatomic) id value;
+- (HUIntrinsicSizeDescriptor *)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
 - (id)initWithProfile:(HUQuickControlViewProfile *)arg1;
 
 @optional

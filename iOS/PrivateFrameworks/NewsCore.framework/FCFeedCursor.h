@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsCore/NSCoding-Protocol.h>
 #import <NewsCore/NSCopying-Protocol.h>
+#import <NewsCore/NSSecureCoding-Protocol.h>
 
 @class NSDate;
 
-@interface FCFeedCursor : NSObject <NSCopying, NSCoding>
+@interface FCFeedCursor : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long _order;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)cursorForTopOfFeed;
 + (id)cursorForBottomOfFeed;
 + (id)cursorForCurrentDate;

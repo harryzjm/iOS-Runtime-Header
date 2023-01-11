@@ -29,6 +29,8 @@
 + (id)defaultMetadataCloudOptions;
 + (id)defaultLegacyCloudOptions;
 + (id)defaultIDSOptions;
++ (id)localPushBackOptions;
++ (id)cloudRequiresPushOptions;
 + (id)defaultCloudOptions;
 + (id)defaultXPCOptions;
 + (id)defaultLocalOptions;

@@ -12,6 +12,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityOpaqueElementScrollsContentIntoView;
+- (id)accessibilityValue;
+- (id)accessibilityIdentifier;
 
 @end
 

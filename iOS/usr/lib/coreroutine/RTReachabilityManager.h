@@ -21,7 +21,7 @@
 - (void)setCurrentReachability:(long long)arg1;
 - (void)processReachabilityChange:(unsigned int)arg1;
 - (id)description;
-- (void)shutdown;
+- (void)_shutdown;
 - (void)_stopMonitoringReachability;
 - (void)_startMonitoringReachability;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;

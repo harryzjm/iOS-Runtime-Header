@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <MusicLibrary/NSSecureCoding-Protocol.h>
+
 @class NSString;
 
-@interface ML3AggregateQuery
+@interface ML3AggregateQuery <NSSecureCoding>
 {
     Class _aggregateEntityClass;
     NSString *_foreignPersistentIDProperty;
     _Bool _isFastCountable;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(nonatomic) _Bool isFastCountable; // @synthesize isFastCountable=_isFastCountable;
 @property(readonly, nonatomic) NSString *foreignPersistentIDProperty; // @synthesize foreignPersistentIDProperty=_foreignPersistentIDProperty;
 @property(readonly, nonatomic) Class aggregateEntityClass; // @synthesize aggregateEntityClass=_aggregateEntityClass;

@@ -4,19 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSData, NSMutableArray, NSString;
 
 @interface PKDiff : NSObject <NSSecureCoding>
 {
     NSMutableArray *_hunks;
     NSString *_passUniqueID;
+    NSData *_passManifestHash;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(copy, nonatomic) NSData *passManifestHash; // @synthesize passManifestHash=_passManifestHash;
 @property(copy, nonatomic) NSString *passUniqueID; // @synthesize passUniqueID=_passUniqueID;
 - (void).cxx_destruct;
 - (unsigned long long)_hunkIndexForKey:(id)arg1;

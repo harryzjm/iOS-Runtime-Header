@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <PersistentConnection/CoreTelephonyClientDataDelegate-Protocol.h>
 #import <PersistentConnection/PCInterfaceUsabilityMonitorDelegate-Protocol.h>
 #import <PersistentConnection/PCInterfaceUsabilityMonitorProtocol-Protocol.h>
 
-@class CUTWeakReference, NSString, PCInterfaceUsabilityMonitor;
+@class CUTWeakReference, CoreTelephonyClient, NSString, PCInterfaceUsabilityMonitor;
 @protocol OS_dispatch_queue, PCInterfaceUsabilityMonitorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PCWWANUsabilityMonitor : NSObject <PCInterfaceUsabilityMonitorProtocol, PCInterfaceUsabilityMonitorDelegate>
+@interface PCWWANUsabilityMonitor : NSObject <CoreTelephonyClientDataDelegate, PCInterfaceUsabilityMonitorProtocol, PCInterfaceUsabilityMonitorDelegate>
 {
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_ivarQueue;
@@ -26,8 +27,9 @@ __attribute__((visibility("hidden")))
     double _trackedTimeInterval;
     NSString *_interfaceName;
     PCInterfaceUsabilityMonitor *_interfaceMonitor;
-    struct __CFString *_currentRAT;
+    int _currentRAT;
     int _powerlogCDRXToken;
+    CoreTelephonyClient *_ctClient;
     int _wwanContextID;
     NSObject<OS_dispatch_queue> *_ctServerQueue;
 }
@@ -52,9 +54,11 @@ __attribute__((visibility("hidden")))
 - (void)setTrackUsability:(_Bool)arg1;
 - (void)_forwardConfigurationOnIvarQueue;
 @property(readonly, nonatomic) struct __CFString *wwanInterfaceName;
-@property(readonly, nonatomic) struct __CFString *currentRAT; // @synthesize currentRAT=_currentRAT;
+@property(readonly, nonatomic) int currentRAT; // @synthesize currentRAT=_currentRAT;
+@property(readonly, nonatomic) NSString *networkCode;
 @property(readonly, nonatomic) _Bool isLTEWithCDRX;
-- (void)_adjustInterfaceNameForWWANContextID:(int)arg1;
+- (void)_adjustInterfaceNameForWWANContextID:(int)arg1 interfaceName:(id)arg2;
+- (id)_dataPreferredSubcriptionContext;
 - (void)_setupWWANMonitor;
 - (void)dealloc;
 - (id)initWithDelegateQueue:(id)arg1;

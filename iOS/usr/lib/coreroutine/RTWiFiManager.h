@@ -26,14 +26,10 @@
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)_cancelScan;
 - (void)_scheduleScan;
-- (void)_shutdown;
-- (void)_setup;
 - (void)fetchLinkStatus:(CDUnknownBlockType)arg1;
 - (void)fetchPowerStatus:(CDUnknownBlockType)arg1;
 - (void)cancelScan;
 - (void)scheduleScan;
-- (void)shutdown;
-- (void)setup;
 - (id)init;
 
 @end

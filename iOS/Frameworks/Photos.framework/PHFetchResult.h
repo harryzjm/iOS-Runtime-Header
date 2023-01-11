@@ -8,12 +8,11 @@
 
 #import <Photos/NSCopying-Protocol.h>
 #import <Photos/NSFastEnumeration-Protocol.h>
-#import <Photos/PHObjectIDBackedFetchResult-Protocol.h>
 
 @class NSArray, NSFetchRequest, NSNumber, NSSet, NSString, PHBatchFetchingArray, PHQuery, _PHFetchRequestWrapper;
 @protocol OS_dispatch_queue;
 
-@interface PHFetchResult : NSObject <PHObjectIDBackedFetchResult, NSCopying, NSFastEnumeration>
+@interface PHFetchResult : NSObject <NSCopying, NSFastEnumeration>
 {
     PHBatchFetchingArray *_fetchedObjects;
     NSArray *_seedOIDs;
@@ -32,6 +31,7 @@
 }
 
 + (id)_batchFetchingArrayForObjectIDs:(id)arg1 fetchResult:(id)arg2;
++ (id)filteredOIDsFrom:(id)arg1 usingEntityName:(id)arg2 withPhotoLibrary:(id)arg3;
 + (id)cleanedAndSortedOIDsFrom:(id)arg1 usingFetchOptions:(id)arg2;
 + (id)fetchObjectIDs:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)fetchObjectCount:(id)arg1 inManagedObjectContext:(id)arg2;
@@ -49,8 +49,10 @@
 - (void).cxx_destruct;
 - (id)description;
 - (id)localIdentifiers;
+- (_Bool)isFullyBackedByObjectIDs;
 - (void)getMediaTypeCounts;
 - (unsigned long long)countOfAssetsWithMediaType:(long long)arg1;
+- (unsigned long long)cachedCountOfAssetsWithMediaType:(long long)arg1;
 - (void)enumerateObjectsAtIndexes:(id)arg1 options:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateObjectsUsingBlock:(CDUnknownBlockType)arg1;
@@ -71,6 +73,7 @@
 - (void)updateRegistrationForChangeNotificationDeltas;
 - (id)objectIDAtIndex:(unsigned long long)arg1;
 @property(readonly) NSSet *fetchedObjectIDsSet;
+- (id)objectIDs;
 @property(readonly) NSArray *fetchedObjectIDs;
 - (id)containerIdentifier;
 - (long long)collectionFetchType;

@@ -36,7 +36,6 @@
 - (void)_makeBatchForTilesAroundStationsForSteps:(id)arg1;
 - (void)_ignoreAlreadyRequestedTilesAndUpdateGlobalListWithNonDuplicatesForTileKeyList:(id)arg1;
 - (void)_makeBatchesForSteps:(id)arg1;
-- (void)_performSubscriptionRequests;
 - (void)_performNextRequests;
 - (struct PolylineCoordinate)_polylineCoordinateForDouble:(double)arg1;
 - (void)_cancelAllBatches;
@@ -53,7 +52,7 @@
 - (void)setShouldPreloadEntireRoute:(_Bool)arg1;
 - (long long)tilesRequested;
 - (void)setTraits:(id)arg1;
-- (void)dealloc;
+- (void)performTearDown;
 - (void)_cancelPreloadTasks;
 - (void)_resetErrorCounts;
 - (void)_retryFailuresWithErrorsReset:(_Bool)arg1;

@@ -21,6 +21,7 @@
     NSObject<OS_dispatch_queue> *__syncQueue;
     NSObject<OS_dispatch_queue> *__startQueue;
     id <PKCorePlugInProtocol> _service;
+    id <PKCorePlugInProtocol> _syncService;
     NSUUID *_supersedingUUID;
     id <PKPlugIn> _supersededBy;
     NSUUID *_multipleInstanceUUID;
@@ -55,6 +56,7 @@
 @property(retain) NSUUID *multipleInstanceUUID; // @synthesize multipleInstanceUUID=_multipleInstanceUUID;
 @property(retain) id <PKPlugIn> supersededBy; // @synthesize supersededBy=_supersededBy;
 @property(retain) NSUUID *supersedingUUID; // @synthesize supersedingUUID=_supersedingUUID;
+@property(retain) id <PKCorePlugInProtocol> syncService; // @synthesize syncService=_syncService;
 @property(retain) id <PKCorePlugInProtocol> service; // @synthesize service=_service;
 @property(retain) NSObject<OS_dispatch_queue> *_startQueue; // @synthesize _startQueue=__startQueue;
 @property(retain) NSObject<OS_dispatch_queue> *_syncQueue; // @synthesize _syncQueue=__syncQueue;
@@ -69,8 +71,9 @@
 - (_Bool)useBundle:(id)arg1 error:(id *)arg2;
 - (_Bool)loadExtensions:(id)arg1 error:(id *)arg2;
 - (void)setBootstrap;
-- (void)preparePlugin:(CDUnknownBlockType)arg1;
-- (void)startPlugIn:(CDUnknownBlockType)arg1;
+- (void)preparePlugInUsingService:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)startPlugInSynchronously:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)beginUsingWithError:(id *)arg1;
 - (void)beginUsing:(CDUnknownBlockType)arg1;
 @property(readonly) NSUUID *effectiveUUID;
 - (id)createInstanceWithUUID:(id)arg1;
@@ -96,6 +99,7 @@
 @property(readonly) unsigned long long hash;
 @property(readonly) NSString *identifier;
 @property(readonly) NSString *localizedContainingName;
+@property(readonly) NSDictionary *localizedFileProviderActionNames;
 @property(readonly) NSString *localizedName;
 @property(readonly) NSString *localizedShortName;
 @property(readonly) _Bool onSystemVolume;

@@ -4,25 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+@class NSMutableArray, RTDefaultsManager, RTPlatform;
 
-@class NSArray, RTPlatform;
-
-@interface RTDiagnostics : NSObject
+@interface RTDiagnostics
 {
+    RTDefaultsManager *_defaultsManager;
     RTPlatform *_platform;
-    NSArray *_diagnosticProviders;
+    NSMutableArray *_diagnosticProviders;
 }
 
-@property(copy) NSArray *diagnosticProviders; // @synthesize diagnosticProviders=_diagnosticProviders;
++ (id)stringFromDateWithFormat;
++ (void)rolloverSnapshots;
++ (_Bool)createArchiveSourceURL:(id)arg1 destinationURL:(id)arg2 error:(id *)arg3;
++ (id)createDiagnosticsURLWithError:(id *)arg1;
++ (_Bool)collectArchiveSinceDate:(id)arg1 path:(id)arg2 error:(id *)arg3;
++ (id)crashReports;
 - (void).cxx_destruct;
 - (void)takeSnapshotSinceDate:(id)arg1 description:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)rolloverSnapshots;
+- (void)fetchPathToBackupWithHandler:(CDUnknownBlockType)arg1;
+- (void)_fetchPathToBackupWithHandler:(CDUnknownBlockType)arg1;
+- (id)_collectBackupWithError:(id *)arg1;
 - (void)fetchPathToDiagnosticFilesWithHandler:(CDUnknownBlockType)arg1;
-- (_Bool)collectArchiveSinceDate:(id)arg1 path:(id)arg2 error:(id *)arg3;
-- (id)crashReports;
+- (void)_fetchPathToDiagnosticFilesWithHandler:(CDUnknownBlockType)arg1;
+- (id)_collectDiagnosticFilesWithError:(id *)arg1;
+- (void)_shutdown;
+- (void)addDiagnosticProvider:(id)arg1;
 - (void)logProcessDiagnosticInformation;
-- (id)initWithPlatform:(id)arg1;
+- (id)initWithDefaultsManager:(id)arg1 platform:(id)arg2;
 - (id)init;
 
 @end

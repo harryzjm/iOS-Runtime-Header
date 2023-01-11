@@ -15,7 +15,7 @@
 - (id)accessibilityIdentification;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
-- (id)description;
+- (id)accessibilityElements;
 - (id)initWithImage:(id)arg1;
 
 @end

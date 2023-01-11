@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@protocol BSInvalidatable, OS_dispatch_queue, PKAuthenticatorDelegate;
+@protocol OS_dispatch_queue, PKAuthenticatorDelegate;
 
 @interface PKAuthenticator : NSObject
 {
     unsigned long long _authenticationIdentifier;
     NSObject<OS_dispatch_queue> *_contextMutationQueue;
-    _Bool _acquiringHintSupressionAssertion;
-    id <BSInvalidatable> _hintSupressionAssertion;
+    _Bool _invalidated;
     id <PKAuthenticatorDelegate> _delegate;
     double _fingerPresentTimeout;
 }
@@ -41,13 +40,13 @@
 @property(readonly, nonatomic) _Bool userIntentAvailable;
 - (void)setFingerPresentTimeout:(double)arg1 preventRestart:(_Bool)arg2;
 @property(readonly, nonatomic) unsigned long long authenticationIdentifier;
+- (void)invalidate;
 - (void)accessExternalizedContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)restartEvaluation;
 - (void)cancelEvaluationWithOptions:(unsigned long long)arg1;
 - (void)cancelEvaluation;
 - (void)fallbackToSystemPasscodeUI;
-- (void)evaluateRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)evaluatePolicy:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)evaluateRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1;
 - (id)init;

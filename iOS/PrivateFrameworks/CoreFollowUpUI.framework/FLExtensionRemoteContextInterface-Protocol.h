@@ -4,14 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreFollowUpUI/NSObject-Protocol.h>
+#import <CoreFollowUpUI/FLExtensionRemoteInterface-Protocol.h>
 
-@class FLFollowUpAction, FLFollowUpItem;
-
-@protocol FLExtensionRemoteContextInterface <NSObject>
-- (void)processFollowUpItem:(FLFollowUpItem *)arg1 selectedAction:(FLFollowUpAction *)arg2 completion:(void (^)(_Bool))arg3;
-
-@optional
-- (void)followUpPerformUpdateWithCompletionHandler:(void (^)(unsigned long long))arg1;
+@protocol FLExtensionRemoteContextInterface <FLExtensionRemoteInterface>
 @end
 

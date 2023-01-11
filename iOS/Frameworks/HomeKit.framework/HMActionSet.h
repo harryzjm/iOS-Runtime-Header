@@ -11,11 +11,12 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMApplicationData, HMDelegateCaller, HMFMessageDispatcher, HMHome, HMThreadSafeMutableArrayCollection, NSDate, NSSet, NSString, NSUUID;
+@class HMApplicationData, HMFUnfairLock, HMHome, HMMutableArray, NSDate, NSSet, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue;
 
 @interface HMActionSet : NSObject <HMFMessageReceiver, NSSecureCoding, HMObjectMerge, HMMutableApplicationData>
 {
+    HMFUnfairLock *_lock;
     _Bool _executionInProgress;
     NSUUID *_uniqueIdentifier;
     NSString *_name;
@@ -23,21 +24,15 @@
     HMApplicationData *_applicationData;
     NSDate *_lastExecutionDate;
     NSString *_actionSetType;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    HMDelegateCaller *_delegateCaller;
-    HMFMessageDispatcher *_msgDispatcher;
-    HMThreadSafeMutableArrayCollection *_currentActions;
+    _HMContext *_context;
+    HMMutableArray *_currentActions;
     NSUUID *_uuid;
 }
 
 + (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-@property(retain, nonatomic) HMThreadSafeMutableArrayCollection *currentActions; // @synthesize currentActions=_currentActions;
-@property(retain, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
-@property(retain, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property(retain, nonatomic) HMMutableArray *currentActions; // @synthesize currentActions=_currentActions;
+@property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property(readonly, copy, nonatomic) NSString *actionSetType; // @synthesize actionSetType=_actionSetType;
 @property(nonatomic) _Bool executionInProgress; // @synthesize executionInProgress=_executionInProgress;
 - (void).cxx_destruct;
@@ -55,9 +50,6 @@
 - (void)_handleActionRemovedNotification:(id)arg1;
 - (void)_handleActionAddedNotification:(id)arg1;
 - (void)_updateAction:(id)arg1 changes:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_invalidate;
-- (void)_unconfigure;
-- (void)_configure:(id)arg1 messageDispatcher:(id)arg2 clientQueue:(id)arg3 delegateCaller:(id)arg4;
 - (void)_removeAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_addAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -65,10 +57,8 @@
 - (id)_lookupActionWithInfo:(id)arg1;
 - (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)dealloc;
-- (id)initWithName:(id)arg1 type:(id)arg2 uuid:(id)arg3;
 - (void)setApplicationData:(id)arg1;
-@property(readonly, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
+@property(readonly, nonatomic) HMApplicationData *applicationData;
 @property(nonatomic) __weak HMHome *home; // @synthesize home=_home;
 @property(readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(readonly, nonatomic, getter=isExecuting) _Bool executing;
@@ -76,6 +66,11 @@
 - (void)setLastExecutionDate:(id)arg1;
 @property(readonly, copy, nonatomic) NSDate *lastExecutionDate; // @synthesize lastExecutionDate=_lastExecutionDate;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+- (void)_invalidate;
+- (void)_unconfigure;
+- (void)__configureWithContext:(id)arg1 home:(id)arg2;
+- (void)dealloc;
+- (id)initWithName:(id)arg1 type:(id)arg2 uuid:(id)arg3;
 - (id)init;
 
 // Remaining properties

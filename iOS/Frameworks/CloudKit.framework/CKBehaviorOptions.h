@@ -29,7 +29,7 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *cachedPrefsQueue; // @synthesize cachedPrefsQueue=_cachedPrefsQueue;
 @property(retain, nonatomic) NSMutableDictionary *cachedPrefs; // @synthesize cachedPrefs=_cachedPrefs;
 - (void).cxx_destruct;
-- (_Bool)sendKeyIDsOnAllRequests;
+- (double)minTTRPromptInterval;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (double)shareAcceptorRetrievingDialogMinPeriod;
 - (double)shareAcceptorRetrievingDialogDelay;
@@ -49,6 +49,7 @@
 - (double)maximumThrottleSeconds;
 - (int)defaultRetryAfter;
 - (_Bool)shouldDecryptRecordsBeforeSave;
+- (_Bool)allowExpiredDNSBehavior;
 - (unsigned long long)maxBatchSize;
 - (double)flowControlRegenerationOverride;
 - (long long)flowControlBudgetOverride;
@@ -103,6 +104,8 @@
 - (id)primaryAccountPasswordOverride;
 - (void)setPrimaryAccountEmailOverride:(id)arg1;
 - (id)primaryAccountEmailOverride;
+- (void)setCustomMetricsServiceBaseURL:(id)arg1;
+- (id)customMetricsServiceBaseURL;
 - (void)setCustomCodeServiceBaseURL:(id)arg1;
 - (id)customCodeServiceBaseURL;
 - (void)setCustomDeviceServiceBaseURL:(id)arg1;
@@ -126,8 +129,6 @@
 - (_Bool)sendDebugHeader;
 - (void)setModTimeInAssetCacheEviction:(_Bool)arg1;
 - (_Bool)useModTimeInAssetCacheEviction;
-- (void)setUseBackgroundSessions:(_Bool)arg1;
-- (_Bool)useBackgroundSessions;
 - (void)setCompressRequests:(_Bool)arg1;
 - (_Bool)compressRequests;
 - (void)setShouldProfileSQL:(_Bool)arg1;
@@ -148,10 +149,6 @@
 - (void)setOperationTimeout:(double)arg1;
 - (double)operationTimeout;
 - (_Bool)highPriorityURLDelegates;
-- (void)setDefaultResourceTimeout:(double)arg1;
-- (double)defaultResourceTimeout;
-- (void)setDefaultRequestTimeout:(double)arg1;
-- (double)defaultRequestTimeout;
 - (unsigned long long)recordCacheSizeLimit;
 - (void)setCachedRecordExpiryTime:(int)arg1;
 - (int)cachedRecordExpiryTime;

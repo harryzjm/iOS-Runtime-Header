@@ -9,12 +9,14 @@
 #import <CoreCDP/NSCopying-Protocol.h>
 #import <CoreCDP/NSSecureCoding-Protocol.h>
 
-@class AKCircleRequestContext, CUMessageSession, KCAESGCMDuplexSession, NSDictionary, NSNumber, NSString;
+@class AKCircleRequestContext, CUMessageSession, KCAESGCMDuplexSession, NSDictionary, NSMutableArray, NSNumber, NSString;
 @protocol CDPAuthProviderInternal;
 
 @interface CDPContext : NSObject <NSSecureCoding, NSCopying>
 {
+    NSMutableArray *_signInMetricsStack;
     _Bool _isHSA2Account;
+    _Bool _isFederatedAccount;
     _Bool _didUseSMSVerification;
     _Bool _guestMode;
     _Bool _supportsSkipSignIn;
@@ -40,6 +42,8 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)_metricsQueue;
++ (id)preflightContext:(id)arg1;
 @property(nonatomic) _Bool idmsMasterKeyRecovery; // @synthesize idmsMasterKeyRecovery=_idmsMasterKeyRecovery;
 @property(nonatomic) _Bool idmsRecovery; // @synthesize idmsRecovery=_idmsRecovery;
 @property(copy, nonatomic) NSString *_recoveryToken; // @synthesize _recoveryToken=__recoveryToken;
@@ -56,6 +60,7 @@
 @property(copy, nonatomic) NSString *cachedLocalSecret; // @synthesize cachedLocalSecret=_cachedLocalSecret;
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(nonatomic) _Bool didUseSMSVerification; // @synthesize didUseSMSVerification=_didUseSMSVerification;
+@property(nonatomic) _Bool isFederatedAccount; // @synthesize isFederatedAccount=_isFederatedAccount;
 @property(nonatomic) _Bool isHSA2Account; // @synthesize isHSA2Account=_isHSA2Account;
 @property(copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property(copy, nonatomic) NSNumber *dsid; // @synthesize dsid=_dsid;
@@ -64,6 +69,10 @@
 @property(copy, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
 @property(copy, nonatomic) NSDictionary *authenticationResults; // @synthesize authenticationResults=_authenticationResults;
 - (void).cxx_destruct;
+- (struct __CFData *)encodedTopLevelMetric;
+- (id)topLevelMetric;
+- (void)stopMetric:(id)arg1 withAttributes:(id)arg2;
+- (id)startMetricForEventName:(id)arg1;
 - (void)augmentWithCredentialsFromContext:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)updateWithAuthenticationResults:(id)arg1;

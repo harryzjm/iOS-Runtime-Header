@@ -4,24 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, NSDecimalNumber, NSLocale, NSString;
+@class NSArray, NSDecimalNumber, NSLocale, NSString, SKProductDiscount, SKProductSubscriptionPeriod;
 
+__attribute__((visibility("hidden")))
 @interface SKProductInternal : NSObject
 {
     NSString *_contentVersion;
     _Bool _downloadable;
     NSArray *_downloadContentLengths;
+    SKProductDiscount *_introductoryPrice;
     NSString *_localeIdentifier;
     NSString *_localizedDescription;
     NSString *_localizedTitle;
     NSDecimalNumber *_price;
     NSLocale *_priceLocale;
     NSString *_productIdentifier;
+    NSString *_subscriptionGroupIdentifier;
+    SKProductSubscriptionPeriod *_subscriptionPeriod;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

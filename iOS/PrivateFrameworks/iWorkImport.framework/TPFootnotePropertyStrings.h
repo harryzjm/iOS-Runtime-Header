@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TPFootnotePropertyStrings : NSObject
 {
 }
 
-+ (id)stringForFootnoteNumbering:(int)arg1;
-+ (id)stringForFootnoteFormat:(int)arg1;
-+ (id)stringForFootnoteKind:(int)arg1;
++ (id)stringForFootnoteNumbering:(long long)arg1;
++ (id)stringForFootnoteFormat:(long long)arg1;
++ (id)stringForFootnoteKind:(long long)arg1;
 + (id)titleForFootnoteNumbering;
 + (id)titleForFootnoteFormat;
 + (id)titleForFootnoteKind;
-+ (id)insertStringForFootnoteKind:(int)arg1;
++ (id)insertStringForFootnoteKind:(long long)arg1;
 
 @end
 

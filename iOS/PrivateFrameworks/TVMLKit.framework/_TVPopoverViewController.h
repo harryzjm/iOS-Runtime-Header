@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
 #import <TVMLKit/UITableViewDataSource-Protocol.h>
 #import <TVMLKit/UITableViewDelegate-Protocol.h>
 
 @class NSArray, NSString, UIBarButtonItem, UITableView, _TVPopoverDescriptor;
 
-@interface _TVPopoverViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface _TVPopoverViewController <UITableViewDelegate, UITableViewDataSource>
 {
     _Bool _ignoreDismissalOnExpansionOrContraction;
     _TVPopoverDescriptor *_popoverDescriptor;
@@ -32,11 +30,13 @@
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (void)_dismissViewControllerAnimated:(_Bool)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)updateWithViewElement:(id)arg1;
 @property(readonly, nonatomic) UITableView *tableView;
 @property(readonly, nonatomic) struct CGSize calculatedPreferredContentSize;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (id)_modalPresenterPresentedViewController;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
 - (void)loadView;

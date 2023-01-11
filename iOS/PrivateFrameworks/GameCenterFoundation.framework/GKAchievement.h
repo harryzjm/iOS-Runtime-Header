@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <GameCenterFoundation/NSCoding-Protocol.h>
 #import <GameCenterFoundation/NSCopying-Protocol.h>
@@ -45,9 +45,9 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)init;
 @property(readonly, retain, nonatomic) GKPlayer *player; // @synthesize player=_player;
 @property(copy, nonatomic) NSString *playerID; // @dynamic playerID;
+- (id)init;
 - (id)initWithIdentifier:(id)arg1 forPlayer:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 player:(id)arg2;
 - (id)initWithIdentifier:(id)arg1;

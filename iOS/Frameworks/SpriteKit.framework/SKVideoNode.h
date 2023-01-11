@@ -15,14 +15,15 @@
     AVPlayer *_player;
 }
 
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
++ (id)debugHierarchyPropertyDescriptions;
 + (id)videoNodeWithAVPlayer:(id)arg1;
 + (id)videoNodeWithURL:(id)arg1;
 + (id)videoNodeWithFileNamed:(id)arg1;
 + (id)videoNodeWithVideoURL:(id)arg1;
 + (id)videoNodeWithVideoFileNamed:(id)arg1;
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
-- (id)debugHierarchyPropertyDescriptions;
 @property(nonatomic) struct CGPoint anchorPoint;
 @property(nonatomic) struct CGSize size;
 - (void)pause;
@@ -31,18 +32,19 @@
 - (void)_didMakeBackingNode;
 - (struct SKCNode *)_makeBackingNode;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (id)description;
+- (_Bool)isEqualToNode:(id)arg1;
 - (id)initWithAVPlayer:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (id)initWithFileNamed:(id)arg1;
 - (id)initWithVideoFileNamed:(id)arg1;
 - (id)initWithVideoURL:(id)arg1;
-- (id)description;
-- (_Bool)isEqualToNode:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)init;
+- (void)commonInit;
 - (void)encodeWithCoder:(id)arg1;
 @property(retain, nonatomic) AVPlayer *_player;
 - (void)dealloc;
-- (id)init;
 
 @end
 

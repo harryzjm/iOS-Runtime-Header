@@ -8,6 +8,7 @@
 
 @class AVWeakReference, NSArray, NSDictionary, NSLocale, NSString;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetTrackInspector <AVAsynchronousKeyValueLoading>
 {
     AVWeakReference *_weakReference;

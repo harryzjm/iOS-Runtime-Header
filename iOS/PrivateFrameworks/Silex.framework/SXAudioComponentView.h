@@ -4,25 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Silex/AVPlayerViewControllerDelegate_AppStoreOnly-Protocol.h>
 #import <Silex/SXMediaPlaybackDelegate-Protocol.h>
 
 @class AVPlayerViewController, NSString, SXAVPlayer, SXAudioComponentOverlayView;
+@protocol SXHost, SXResourceDataSource;
 
-@interface SXAudioComponentView <SXMediaPlaybackDelegate>
+@interface SXAudioComponentView <SXMediaPlaybackDelegate, AVPlayerViewControllerDelegate_AppStoreOnly>
 {
     _Bool _audioHasPlayed;
     _Bool _startPlaybackWhenReady;
+    id <SXResourceDataSource> _resourceDataSource;
+    id <SXHost> _host;
+    SXAudioComponentOverlayView *_overlayView;
     AVPlayerViewController *_playerViewController;
     SXAVPlayer *_player;
-    SXAudioComponentOverlayView *_overlayView;
 }
 
 @property(nonatomic) _Bool startPlaybackWhenReady; // @synthesize startPlaybackWhenReady=_startPlaybackWhenReady;
 @property(nonatomic) _Bool audioHasPlayed; // @synthesize audioHasPlayed=_audioHasPlayed;
-@property(retain, nonatomic) SXAudioComponentOverlayView *overlayView; // @synthesize overlayView=_overlayView;
 @property(retain, nonatomic) SXAVPlayer *player; // @synthesize player=_player;
 @property(retain, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
+@property(readonly, nonatomic) SXAudioComponentOverlayView *overlayView; // @synthesize overlayView=_overlayView;
+@property(readonly, nonatomic) id <SXHost> host; // @synthesize host=_host;
+@property(readonly, nonatomic) id <SXResourceDataSource> resourceDataSource; // @synthesize resourceDataSource=_resourceDataSource;
 - (void).cxx_destruct;
+- (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
+- (void)playerViewController:(id)arg1 metricsCollectionEventOccured:(long long)arg2;
 - (_Bool)allowHierarchyRemoval;
 - (void)submitMediaEngageCompleteEvent;
 - (void)submitMediaEngageEventForUserAction:(unsigned long long)arg1;
@@ -41,8 +49,9 @@
 - (void)loadImage;
 - (void)setupPlayerViewControllerWithPlayer:(id)arg1;
 - (void)playButtonTapped:(id)arg1;
-- (void)presentComponent;
-- (id)initWithComponent:(id)arg1 configuration:(id)arg2 context:(id)arg3 analyticsReporting:(id)arg4 appStateMonitor:(id)arg5;
+- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)loadComponent:(id)arg1;
+- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 appStateMonitor:(id)arg6 resourceDataSource:(id)arg7 host:(id)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -11,13 +11,14 @@
     struct SKCLabelNode *_skcLabelNode;
 }
 
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
++ (id)debugHierarchyPropertyDescriptions;
 + (id)labelNodeWithFontNamed:(id)arg1;
 + (id)labelNodeWithAttributedText:(id)arg1;
 + (id)labelNodeWithText:(id)arg1;
++ (_Bool)supportsSecureCoding;
 + (id)_labelNodeWithFontTexture:(id)arg1 fontDataString:(id)arg2;
 + (id)_labelNodeWithFontNamed:(id)arg1;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
-- (id)debugHierarchyPropertyDescriptions;
 - (id)description;
 - (id)attributedString;
 @property(copy, nonatomic) NSString *text;

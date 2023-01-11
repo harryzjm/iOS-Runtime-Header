@@ -4,60 +4,57 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString;
+@class MRApplicationActivity, NSArray, NSMutableArray, _MRDeviceInfoMessageProtobuf, _MRNowPlayingClientProtobuf, _MROriginProtobuf;
 @protocol OS_dispatch_queue;
 
 @interface MRNowPlayingOriginClient : NSObject <MRNowPlayingClientState>
 {
-    void *_origin;
     NSObject<OS_dispatch_queue> *_serialQueue;
     _Bool _canBeNowPlayingApp;
     double _canBeNowPlayingAppTimestamp;
     _Bool _isOverrideApp;
     unsigned int _routeDiscoveryMode;
     NSMutableArray *_applicationPickedRoutes;
-    NSString *_parentApplication;
-    unsigned int _visibility;
-    union _MRColor _tintColor;
     unsigned int _inputMode;
-    _Bool _queueContentNotifications;
-    struct NSMutableDictionary *_pendingNotifications;
-    NSObject<OS_dispatch_queue> *_pendingNotificationQueue;
+    unsigned int _volumeCapabilities;
+    MRApplicationActivity *_activity;
+    _MRDeviceInfoMessageProtobuf *_deviceInfo;
     CDUnknownBlockType _playbackQueueCallback;
     CDUnknownBlockType _playbackQueueTransactionCallback;
     CDUnknownBlockType _capabilitiesCallback;
     CDUnknownBlockType _commandCallback;
     CDUnknownBlockType _beginLyricsEventCallback;
     CDUnknownBlockType _endLyricsEventCallback;
-    void *_activeNowPlayingClient;
     NSMutableArray *_nowPlayingClients;
     unsigned int _hardwareRemoteBehavior;
+    _MRNowPlayingClientProtobuf *_activeNowPlayingClient;
+    _MROriginProtobuf *_origin;
 }
 
 @property(nonatomic) unsigned int hardwareRemoteBehavior; // @synthesize hardwareRemoteBehavior=_hardwareRemoteBehavior;
-@property(readonly, nonatomic) void *origin; // @synthesize origin=_origin;
+@property(readonly, nonatomic) _MROriginProtobuf *origin; // @synthesize origin=_origin;
+- (void).cxx_destruct;
+- (id)debugDescription;
 - (id)description;
 - (void)restoreNowPlayingClientState;
 - (void)_unregisterMediaServerNotifications;
 - (void)_registerMediaServerNotifications;
 - (void)_avSessionMediaServicesResetNotification:(id)arg1;
-- (void)dispatchQueuedContentChanges;
-- (void)startQueuingContentChanges;
-- (void)notifyChangeOfContentItem:(void *)arg1 withRequest:(void *)arg2;
-- (void)removeClient:(void *)arg1;
-- (id)nowPlayingClientForPlayerPath:(void *)arg1;
-@property(nonatomic) void *activeNowPlayingClient;
+- (void)removeClient:(id)arg1;
+- (id)nowPlayingClientForPlayerPath:(id)arg1;
+- (id)existingNowPlayingClientForPlayerPath:(id)arg1;
+@property(retain, nonatomic) MRApplicationActivity *activity;
+@property(retain, nonatomic) _MRNowPlayingClientProtobuf *activeNowPlayingClient; // @synthesize activeNowPlayingClient=_activeNowPlayingClient;
 @property(nonatomic) _Bool canBeNowPlayingApp;
+@property(readonly, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
+- (void)updateDeviceInfo:(id)arg1;
 @property(nonatomic) unsigned int inputMode;
-@property(nonatomic) union _MRColor tintColor;
-@property(nonatomic) unsigned int visibility;
 @property(nonatomic) unsigned int routeDiscoveryMode;
 @property(nonatomic) _Bool isOverrideApp;
-@property(copy, nonatomic) NSString *parentApplication;
 @property(copy, nonatomic) NSArray *applicationPickedRoutes;
 @property(copy, nonatomic) CDUnknownBlockType endLyricsEventCallback;
 @property(copy, nonatomic) CDUnknownBlockType beginLyricsEventCallback;
@@ -65,8 +62,9 @@
 @property(copy, nonatomic) CDUnknownBlockType playbackQueueTransactionCallback;
 @property(copy, nonatomic) CDUnknownBlockType playbackQueueCallback;
 @property(readonly, nonatomic) NSArray *nowPlayingClients;
+@property(nonatomic) unsigned int volumeCapabilities;
 - (void)dealloc;
-- (id)initWithOrigin:(void *)arg1;
+- (id)initWithOrigin:(id)arg1;
 
 @end
 

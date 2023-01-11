@@ -7,14 +7,14 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDApplicationData, HMDHome, HMFMessageDispatcher, NSArray, NSDate, NSMutableArray, NSObject, NSString, NSUUID;
+@class HMDApplicationData, HMDHome, HMFMessageDispatcher, NSArray, NSDate, NSMutableArray, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDActionSet : HMFObject <HMFMessageReceiver, NSSecureCoding, HMFDumpState, HMDBackingStoreObjectProtocol>
+@interface HMDActionSet : HMFObject <HMDHomeMessageReceiver, NSSecureCoding, HMFDumpState, HMDBackingStoreObjectProtocol>
 {
     _Bool _executionInProgress;
     NSString *_name;
@@ -28,6 +28,7 @@
     HMDApplicationData *_appData;
 }
 
++ (_Bool)hasMessageReceiverChildren;
 + (_Bool)supportsSecureCoding;
 + (_Bool)isBuiltinActionSetType:(id)arg1;
 @property(retain, nonatomic) HMDApplicationData *appData; // @synthesize appData=_appData;
@@ -54,12 +55,13 @@
 - (void)handleExecutionCompleted:(id)arg1 startDate:(id)arg2 error:(id)arg3 readResponse:(id)arg4 response:(id)arg5;
 - (void)_logDuetEvent:(id)arg1 endDate:(id)arg2 message:(id)arg3;
 - (void)_logDuetRoomEvent;
-- (id)_generateOverallError:(id)arg1;
+- (id)_generateOverallError:(id)arg1 forSource:(unsigned long long)arg2;
 - (void)_handleRemoveAppDataModel:(id)arg1 message:(id)arg2;
 - (void)_handleUpdateAppDataModel:(id)arg1 message:(id)arg2;
 - (void)_handleReplaceActionValueRequest:(id)arg1;
 - (void)_handleRenameActionSetTransaction:(id)arg1 message:(id)arg2;
 - (void)_handleRenameRequest:(id)arg1;
+- (void)_removeDonatedIntent;
 - (void)_handleRemoveActionTransaction:(id)arg1 message:(id)arg2;
 - (void)_handleRemoveAction:(id)arg1 message:(id)arg2;
 - (void)_handleRemoveActionRequest:(id)arg1;
@@ -68,12 +70,15 @@
 - (void)_handleAddActionRequest:(id)arg1;
 - (void)_registerForMessages;
 - (id)actionWithUUID:(id)arg1;
+- (void)invalidate;
 - (void)removeAccessory:(id)arg1;
+@property(readonly, nonatomic) NSUUID *spiClientIdentifier;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 - (id)messageDestination;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)containsUnsecuringAction;
 - (_Bool)containsSecureCharacteristic;
 - (_Bool)_fixupActions;
 @property(readonly, nonatomic) NSString *serializedIdentifier;
@@ -84,6 +89,7 @@
 - (void)removeService:(id)arg1;
 - (void)executeWithTriggerSource:(id)arg1 captureCurrentState:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)execute:(id)arg1;
+- (id)isAccessValidForExecutionWithMessage:(id)arg1;
 - (id)dumpState;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
@@ -94,6 +100,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy) NSSet *messageReceiverChildren;
 @property(readonly) Class superclass;
 
 @end

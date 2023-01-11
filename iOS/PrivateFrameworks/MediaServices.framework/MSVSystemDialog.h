@@ -17,11 +17,11 @@
     MSVSystemDialogOptions *_options;
 }
 
-+ (id)passwordAlertWithOptions:(id)arg1;
 + (id)systemDialogWithOptions:(id)arg1;
 @property(readonly, nonatomic) NSArray *textFields; // @synthesize textFields=_textFields;
 @property(readonly, nonatomic) MSVSystemDialogOptions *options; // @synthesize options=_options;
 - (void).cxx_destruct;
+- (void)dismiss;
 - (void)presentWithCompletion:(CDUnknownBlockType)arg1;
 - (void)clearTextFields;
 - (void)addTextFieldWithTitle:(id)arg1 secure:(_Bool)arg2;

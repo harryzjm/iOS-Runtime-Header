@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
 @class NSNumber, NSString, NSURL;
 
-@interface DMFInstallManagedBookRequest : CATTaskRequest
+@interface DMFInstallManagedBookRequest
 {
     NSString *_originator;
     NSNumber *_iTunesStoreID;
@@ -21,6 +19,9 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)isPermittedOnUserConnection;
++ (_Bool)isPermittedOnSystemConnection;
++ (id)permittedPlatforms;
 + (Class)whitelistedClassForResultObject;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;

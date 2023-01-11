@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSCHPropertyMapsGeneratedProtocol-Protocol.h>
 #import <iWorkImport/TSCHStyleOwnerCollaborationSupport-Protocol.h>
 #import <iWorkImport/TSCHStyleOwning-Protocol.h>
 #import <iWorkImport/TSCHUnretainedParent-Protocol.h>
 
-@class NSString, TSCHChartGridAdapter, TSCHChartModel, TSCHChartSeriesType, TSCHErrorBarData, TSCHTrendLineData, TSUPointerKeyDictionary;
+@class NSString, TSCHChartGridAdapter, TSCHChartModel, TSCHChartSeriesType, TSCHErrorBarData, TSCHTrendLineData, TSUIntegerKeyDictionary;
 @protocol TSCHStyleActAlike, TSCHUnretainedParent;
 
 __attribute__((visibility("hidden")))
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     TSCHChartModel *mChartModel;
     unsigned long long mSeriesIndex;
     TSCHChartSeriesType *mSeriesType;
-    TSUPointerKeyDictionary *mAxisTable;
+    TSUIntegerKeyDictionary *mAxisTable;
     TSCHChartGridAdapter *mNameAdapter;
     unsigned long long mBarGapIndex;
     id <TSCHStyleActAlike> mStyle;
@@ -41,8 +41,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long barGapIndex; // @synthesize barGapIndex=mBarGapIndex;
 @property(readonly, nonatomic) unsigned long long seriesIndex; // @synthesize seriesIndex=mSeriesIndex;
 @property(readonly, nonatomic) NSObject<TSCHUnretainedParent> *seriesStorage; // @synthesize seriesStorage=mSeriesStorage;
-@property(nonatomic) TSCHChartSeriesType *seriesType; // @synthesize seriesType=mSeriesType;
-@property(readonly, nonatomic) TSCHChartModel *model; // @synthesize model=mChartModel;
+@property(nonatomic) __weak TSCHChartSeriesType *seriesType; // @synthesize seriesType=mSeriesType;
+@property(readonly, nonatomic) __weak TSCHChartModel *model; // @synthesize model=mChartModel;
+- (void).cxx_destruct;
 - (id)p_seriesNonStyleOrDefaultNonStyle;
 - (id)operationPropertyNameFromGenericProperty:(int)arg1;
 - (id)defaultProperties;

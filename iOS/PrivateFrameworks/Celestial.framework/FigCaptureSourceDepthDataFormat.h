@@ -8,7 +8,10 @@
 {
 }
 
+@property(readonly) _Bool RGBIRStereoFusionSupported;
+@property(readonly) float portraitEffectsMatteMainImageDownscalingFactor;
 - (CDStruct_79c71658)depthEngineOutputDimensions;
+@property(readonly, getter=isStillImageOnlyDepthData) _Bool stillImageOnlyDepthData;
 @property(readonly) CDStruct_79c71658 highResStillImageDimensions;
 @property(readonly) float fieldOfView;
 @property(readonly) float maxSupportedFrameRate;

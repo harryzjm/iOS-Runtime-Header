@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSString;
+@class NSData, NSString, SACFScriptEncryptionParameters, SACFScriptUrlInformation;
 
 @interface SACFClientFlowScript
 {
@@ -12,10 +12,13 @@
 
 + (id)clientFlowScriptWithDictionary:(id)arg1 context:(id)arg2;
 + (id)clientFlowScript;
+@property(retain, nonatomic) SACFScriptUrlInformation *urlInformation;
+@property(nonatomic) _Bool shouldSkipExecution;
 @property(nonatomic) _Bool shouldCacheScript;
 @property(copy, nonatomic) NSString *jsScriptIdentifier;
 @property(copy, nonatomic) NSData *jsScriptChecksum;
 @property(copy, nonatomic) NSString *jsScript;
+@property(retain, nonatomic) SACFScriptEncryptionParameters *encryptionParameters;
 @property(copy, nonatomic) NSData *compressedScript;
 - (id)encodedClassName;
 - (id)groupIdentifier;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreHandwriting/NSCopying-Protocol.h>
 
@@ -25,7 +25,7 @@
 @property(readonly, copy, nonatomic) NSArray *inputStrokeIdentifiers; // @synthesize inputStrokeIdentifiers=_inputStrokeIdentifiers;
 - (float)languageFitnessForLocale:(id)arg1;
 - (id)recognitionResultsForLocale:(id)arg1;
-- (id)highConfidenceTextWithLocalePreference:(id)arg1 rejectionRate:(double *)arg2;
+- (id)highConfidenceTextForSessionResult:(id)arg1 rejectionRate:(double *)arg2;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

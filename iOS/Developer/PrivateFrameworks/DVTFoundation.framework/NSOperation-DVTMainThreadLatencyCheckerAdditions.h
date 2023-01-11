@@ -9,6 +9,7 @@
 @class DVTStackBacktrace;
 
 @interface NSOperation (DVTMainThreadLatencyCheckerAdditions)
+- (void)__DVTMainThreadLatencyChecker__waitUntilFinished;
 - (void)__DVTMainThreadLatencyChecker__setCompletionBlock:(CDUnknownBlockType)arg1;
 @property(retain) DVTStackBacktrace *__DVTMainThreadLatencyChecker__creationBacktrace;
 - (id)__DVTMainThreadLatencyChecker__init;

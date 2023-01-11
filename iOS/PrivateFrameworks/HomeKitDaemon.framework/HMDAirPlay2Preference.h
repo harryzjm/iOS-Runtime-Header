@@ -4,32 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HMFoundation/HMFPreference.h>
+
 #import <HomeKitDaemon/HMFObject-Protocol.h>
 
-@class HMDSystemPreference, NSString;
+@class HMFSystemPreference, NSArray, NSString;
 
-@interface HMDAirPlay2Preference <HMFObject>
+@interface HMDAirPlay2Preference : HMFPreference <HMFObject>
 {
-    HMDSystemPreference *_airPlayPreference;
-    HMDSystemPreference *_homeKitPreference;
-    HMDSystemPreference *_whaPreference;
+    HMFSystemPreference *_airPlayPreference;
+    HMFSystemPreference *_homeKitPreference;
 }
 
-@property(readonly) HMDSystemPreference *whaPreference; // @synthesize whaPreference=_whaPreference;
-@property(readonly) HMDSystemPreference *homeKitPreference; // @synthesize homeKitPreference=_homeKitPreference;
-@property(readonly) HMDSystemPreference *airPlayPreference; // @synthesize airPlayPreference=_airPlayPreference;
++ (void)load;
+@property(readonly) HMFSystemPreference *homeKitPreference; // @synthesize homeKitPreference=_homeKitPreference;
+@property(readonly) HMFSystemPreference *airPlayPreference; // @synthesize airPlayPreference=_airPlayPreference;
 - (void).cxx_destruct;
 - (id)stringValue;
 - (id)numberValue;
 - (_Bool)boolValue;
 @property(readonly, copy) NSString *propertyDescription;
 - (id)initWithKey:(id)arg1 options:(unsigned long long)arg2 defaultValue:(id)arg3;
-- (id)initWithKey:(id)arg1 options:(unsigned long long)arg2;
 
 // Remaining properties
+@property(readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy) NSString *privateDescription;
+@property(readonly, copy) NSString *shortDescription;
 @property(readonly) Class superclass;
 
 @end

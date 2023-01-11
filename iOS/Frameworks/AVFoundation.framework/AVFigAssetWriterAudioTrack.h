@@ -6,6 +6,7 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface AVFigAssetWriterAudioTrack
 {
     NSMutableArray *_pendingAudioSampleBuffers;

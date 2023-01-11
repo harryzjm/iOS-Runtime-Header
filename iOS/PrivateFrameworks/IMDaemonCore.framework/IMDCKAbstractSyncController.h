@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+@class IMDCKSyncState;
 
 @interface IMDCKAbstractSyncController : NSObject
 {
@@ -14,12 +16,17 @@
 @property(nonatomic) _Bool isSyncing; // @synthesize isSyncing=_isSyncing;
 - (void)addSyncDebuggingInfoToDictionary:(id)arg1;
 - (id)syncStateDebuggingInfo:(id)arg1;
-- (id)readPersistentValueForKey:(id)arg1;
-- (_Bool)readPersistentBoolForKey:(id)arg1;
-- (void)writePersistentValue:(id)arg1 forKey:(id)arg2;
-- (void)writePersistentBool:(_Bool)arg1 forKey:(id)arg2;
-- (id)prefsWriter;
+- (void)setBroadcastedSyncStateToStartingInitialSync;
+- (void)setBroadcastedSyncStateToStartingPeriodicSync;
+- (void)setBroadcastedSyncStateToDeleting;
+- (void)setBroadcastedSyncStateToUploading;
+- (void)setBroadcastedSyncStateToDownloading;
+- (void)setBroadcastedSyncStateStateToStarting;
+- (void)setBroadcastedSyncStateStateToFinished;
+- (long long)syncControllerRecordType;
+@property(readonly, nonatomic) IMDCKSyncState *syncState;
 - (id)ckUtilities;
+@property(readonly, nonatomic) _Bool isUsingStingRay;
 
 @end
 

@@ -6,16 +6,16 @@
 
 #import <iWorkImport/TSKEncryptedDocumentExporter-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSString, TSUProgress;
 
 __attribute__((visibility("hidden")))
 @interface KNPdfExporter <TSKEncryptedDocumentExporter>
 {
-    NSDictionary *mOptions;
+    NSDictionary *_options;
 }
 
+- (void).cxx_destruct;
 - (void)setOptions:(id)arg1;
-- (void)dealloc;
 - (_Bool)validatePassphrases:(id *)arg1;
 - (void)setCopyPassphrase:(id)arg1 hint:(id)arg2;
 - (void)setPrintPassphrase:(id)arg1 hint:(id)arg2;
@@ -23,10 +23,18 @@ __attribute__((visibility("hidden")))
 - (id)p_renderingExporterDelegate;
 
 // Remaining properties
+@property(readonly, nonatomic) _Bool canExportInBackground;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) NSString *documentSpecificTypeUTI;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isCancelled;
+@property(readonly, nonatomic) _Bool isExportSupported;
+@property(readonly, nonatomic) _Bool needsSupplementalFiles;
+@property(readonly, nonatomic) TSUProgress *progress;
+@property(readonly, nonatomic) NSString *savePanelMessage;
 @property(readonly) Class superclass;
+@property(copy, nonatomic) NSString *typeUTI;
 
 @end
 

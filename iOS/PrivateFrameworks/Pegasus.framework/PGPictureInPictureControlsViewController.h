@@ -9,6 +9,7 @@
 @class NSArray, NSTimer, PGPlaybackProgress, PGPlaybackProgressIndicator, UIButton;
 @protocol PGPictureInPictureControlsViewControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface PGPictureInPictureControlsViewController : UIViewController
 {
     _Bool _showsAlternateActionButtonImage;

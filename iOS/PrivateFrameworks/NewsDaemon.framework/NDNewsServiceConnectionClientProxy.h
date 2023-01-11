@@ -18,7 +18,7 @@
 
 @property(nonatomic) __weak id <NDNewsServiceClient> client; // @synthesize client=_client;
 - (void).cxx_destruct;
-- (void)serviceHasNewHeadlineResults;
+- (void)serviceHasNewTodayResults;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

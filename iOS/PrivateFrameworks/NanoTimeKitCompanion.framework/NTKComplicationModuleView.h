@@ -11,6 +11,7 @@
 
 @interface NTKComplicationModuleView <NTKComplicationDisplay>
 {
+    _Bool canUseCurvedText;
     _Bool _isXL;
     id <NTKComplicationDisplayObserver> displayObserver;
 }
@@ -23,6 +24,7 @@
 + (id)_modularSmallAlarmImageProvider;
 + (id)largeModuleViewForComplicationType:(unsigned long long)arg1;
 + (id)smallModuleViewForComplicationType:(unsigned long long)arg1;
+@property(nonatomic) _Bool canUseCurvedText; // @synthesize canUseCurvedText;
 @property(nonatomic) __weak id <NTKComplicationDisplayObserver> displayObserver; // @synthesize displayObserver;
 - (void).cxx_destruct;
 - (void)_setTypographicTracking:(double)arg1 andFont:(id)arg2 onAttributedString:(id *)arg3 inRange:(struct _NSRange)arg4;

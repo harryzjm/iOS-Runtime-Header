@@ -14,6 +14,7 @@
     _Bool _doesNotHandleUIInterruptions;
     _Bool _allowBackgroundInteraction;
     _Bool _idleAnimationWaitEnabled;
+    unsigned int _currentInteractionOptions;
     XCUIApplicationOpenRequest *_lastLaunchRequest;
     XCUIElement *_keyboard;
     NSArray *_launchArguments;
@@ -28,6 +29,7 @@
 + (id)keyPathsForValuesAffectingSuspended;
 + (id)keyPathsForValuesAffectingRunning;
 + (id)keyPathsForValuesAffectingState;
++ (id)keyPathsForValuesAffectingIsApplicationStateKnown;
 + (id)new;
 + (id)applicationWithPID:(int)arg1;
 @property(getter=isIdleAnimationWaitEnabled) _Bool idleAnimationWaitEnabled; // @synthesize idleAnimationWaitEnabled=_idleAnimationWaitEnabled;
@@ -36,18 +38,25 @@
 @property _Bool prefersPlatformLauncher; // @synthesize prefersPlatformLauncher=_prefersPlatformLauncher;
 @property(readonly) XCUIApplicationImpl *applicationImpl; // @synthesize applicationImpl=_applicationImpl;
 @property _Bool ancillary; // @synthesize ancillary=_ancillary;
+@property unsigned int currentInteractionOptions; // @synthesize currentInteractionOptions=_currentInteractionOptions;
 @property unsigned long long generation; // @synthesize generation=_generation;
 @property(retain) XCApplicationQuery *applicationQuery; // @synthesize applicationQuery=_applicationQuery;
 @property(copy, nonatomic) NSDictionary *launchEnvironment; // @synthesize launchEnvironment=_launchEnvironment;
 @property(copy, nonatomic) NSArray *launchArguments; // @synthesize launchArguments=_launchArguments;
 @property(retain) XCUIApplicationOpenRequest *lastLaunchRequest; // @synthesize lastLaunchRequest=_lastLaunchRequest;
+- (void).cxx_destruct;
 - (void)dismissKeyboard;
 @property(readonly) XCUIElement *keyboard; // @synthesize keyboard=_keyboard;
 - (_Bool)setFauxCollectionViewCellsEnabled:(_Bool)arg1 error:(id *)arg2;
 @property(readonly) _Bool fauxCollectionViewCellsEnabled;
 @property(readonly, nonatomic) long long interfaceOrientation;
-- (void)_waitForViewControllerViewDidDisappearWithTimeout:(double)arg1;
+- (_Bool)_waitForViewControllerViewDidDisappearWithTimeout:(double)arg1 error:(id *)arg2;
 - (void)_waitForQuiescence;
+@property(readonly) _Bool hasAutomationSession;
+@property(readonly) _Bool backgroundInteractionAllowed;
+@property(readonly) _Bool shouldSkipPostEventQuiescence;
+@property(readonly) _Bool shouldSkipPreEventQuiescence;
+- (void)_performWithInteractionOptions:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
 - (void)terminate;
 - (void)activate;
 - (void)_launchUsingXcode:(_Bool)arg1;
@@ -59,15 +68,21 @@
 @property(readonly) _Bool background;
 @property(readonly) _Bool suspended;
 @property(readonly) _Bool running;
+@property(readonly) int bridgedProcessID;
 @property(nonatomic) int processID;
 @property(nonatomic) unsigned long long state;
+- (_Bool)isApplicationStateKnown;
+- (void)resetAlertCount;
+@property(readonly) _Bool shouldBeCheckedForAlerts;
 - (_Bool)exists;
 - (id)application;
+@property(readonly) id <XCTRunnerAutomationSession> bridgedProcessAutomationSession;
 @property(readonly) id <XCTRunnerAutomationSession> automationSession;
 - (id)description;
 - (id)query;
 - (void)clearQuery;
 - (void)resolveHandleUIInterruption:(_Bool)arg1;
+@property(readonly) XCAccessibilityElement *bridgedProcessAccessibilityElement;
 @property(readonly) XCAccessibilityElement *accessibilityElement;
 - (unsigned long long)elementType;
 @property(readonly) NSString *bundleID;
@@ -77,7 +92,6 @@
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)init;
 - (id)initWithElementQuery:(id)arg1;
-- (void)dealloc;
 
 @end
 

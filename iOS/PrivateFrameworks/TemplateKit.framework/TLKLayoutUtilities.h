@@ -4,12 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface TLKLayoutUtilities : NSObject
 {
 }
 
++ (_Bool)isSuperLargeAccessibilitySize;
++ (struct CGSize)maxThumbnailSize;
++ (_Bool)isWideScreen;
++ (void)applyRowBoundedSizingToImageView:(id)arg1;
 + (struct CGSize)idealImageSizeWithSize:(struct CGSize)arg1 fittingSize:(struct CGSize)arg2;
 + (void)setDynamicBaslineAlignmentsForLabel:(id)arg1 top:(double)arg2 bottom:(double)arg3;
 + (double)scaledValueForValue:(double)arg1 withFont:(id)arg2;

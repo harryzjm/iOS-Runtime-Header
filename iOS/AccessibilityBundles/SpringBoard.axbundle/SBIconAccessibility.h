@@ -8,11 +8,12 @@
 {
 }
 
++ (_Bool)_isSerializableAccessibilityElement;
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)dealloc;
 - (id)accessibilityValue;
-- (id)_accessibilityApplicationBundleIdentifier;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (id)_axIconView;

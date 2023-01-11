@@ -8,8 +8,5 @@
 {
 }
 
-+ (id)rowWithTitle:(id)arg1 action:(id)arg2;
-- (Class)rowTableViewCellClass;
-
 @end
 

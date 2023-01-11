@@ -23,6 +23,7 @@
 @property(retain, nonatomic) BLTPingSubscriber *notificationsPingSubscriber; // @synthesize notificationsPingSubscriber=_notificationsPingSubscriber;
 @property(nonatomic) __weak id <NNMKSyncStateManagerDelegate> delegate; // @synthesize delegate;
 - (void).cxx_destruct;
+- (_Bool)pairedDeviceSupportsStandaloneMode;
 - (_Bool)pairedDeviceSupportsMultipleMailboxes;
 - (id)_pairedNanoRegistryDevice;
 - (id)_bbSubsectionIdsForMessage:(id)arg1;

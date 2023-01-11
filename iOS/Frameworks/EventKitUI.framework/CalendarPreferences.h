@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CalPreferences, NSArray, NSDate, NSNumber, NSString;
 
@@ -17,6 +17,12 @@
 + (id)sharedPreferences;
 @property(nonatomic) _Bool drawDebugViewColors; // @synthesize drawDebugViewColors=_drawDebugViewColors;
 - (void).cxx_destruct;
+@property(retain, nonatomic) NSString *upNextColor;
+@property(retain, nonatomic) NSString *upNextLocation;
+@property(nonatomic) double upNextDuration;
+@property(retain, nonatomic) NSDate *upNextStartTime;
+@property(retain, nonatomic) NSString *upNextTitle;
+@property(nonatomic) _Bool upNextSimpleModeEnabled;
 @property(retain, nonatomic) NSArray *deselectedCalendarSyncHashes;
 @property(nonatomic) _Bool eventAutocompleteEnabled;
 @property(nonatomic) _Bool enableAvatars;

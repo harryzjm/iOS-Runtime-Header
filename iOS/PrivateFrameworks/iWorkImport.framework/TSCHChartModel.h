@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/TSCHNotifyOnModify-Protocol.h>
@@ -38,7 +38,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isTransient; // @synthesize isTransient=mIsTransient;
 @property(nonatomic) int scatterFormat; // @synthesize scatterFormat=mScatterFormat;
 @property(retain, nonatomic) TSCHChartGrid *grid; // @synthesize grid=mGrid;
-@property(nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=mInfo;
+@property(nonatomic) __weak TSCHChartInfo *chartInfo; // @synthesize chartInfo=mInfo;
+- (void).cxx_destruct;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (_Bool)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
@@ -74,17 +75,18 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long maxNumberOfReferenceLines; // @dynamic maxNumberOfReferenceLines;
 @property(readonly, nonatomic) unsigned long long numberOfSeries;
 - (id)noSyncSeriesList;
-@property(readonly, retain, nonatomic) NSDictionary *referenceLinesMap;
+@property(readonly, nonatomic) NSDictionary *referenceLinesMap;
 - (int)cachedChartMediatorGridDirection;
 - (id)cachedDataFormatterPersistableStyleObjectAtSeriesIndex:(unsigned long long)arg1;
 - (id)cachedDataFormatterPersistableStyleObjectForID:(id)arg1;
+- (void)disableCachingMediatorDataDuringBlock:(CDUnknownBlockType)arg1;
 - (void)setShouldCacheMediatorData:(_Bool)arg1;
-@property(readonly, retain, nonatomic) NSArray *seriesList;
+@property(readonly, nonatomic) NSArray *seriesList;
 - (id)axisForID:(id)arg1;
-@property(readonly, retain, nonatomic) NSArray *categoryAxisList;
-@property(readonly, retain, nonatomic) NSArray *valueAxisList;
+@property(readonly, nonatomic) NSArray *categoryAxisList;
+@property(readonly, nonatomic) NSArray *valueAxisList;
 - (id)noSyncAxisList;
-@property(readonly, retain, nonatomic) NSArray *axisList;
+@property(readonly, nonatomic) NSArray *axisList;
 - (void)validateIfNeededWithSeriesNonStyleMigration:(_Bool)arg1;
 - (void)validateIfNeeded;
 - (void)invalidateModel;
@@ -113,7 +115,7 @@ __attribute__((visibility("hidden")))
 - (void)enumerateMultiDataModelsUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool isMultiData;
 - (void)willModify;
-@property(readonly, retain, nonatomic) id syncRoot;
+@property(readonly, nonatomic) id syncRoot;
 - (void)clearParent;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSURL;
 @protocol OS_dispatch_queue, OS_dispatch_source;
@@ -12,15 +12,17 @@
 __attribute__((visibility("hidden")))
 @interface TSURemotePropertyList : NSObject
 {
-    NSURL *_remoteURL;
-    NSURL *_localURL;
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSDictionary *_propertyList;
     NSObject<OS_dispatch_queue> *_checkQueue;
     NSObject<OS_dispatch_source> *_updateTimer;
     _Bool _didUpdateAtLeastOnce;
+    NSURL *_remoteURL;
+    NSURL *_localURL;
 }
 
+@property(readonly, nonatomic) NSURL *localURL; // @synthesize localURL=_localURL;
+@property(readonly, nonatomic) NSURL *remoteURL; // @synthesize remoteURL=_remoteURL;
 - (void).cxx_destruct;
 - (void)processPropertyList:(id)arg1;
 - (id)deserializePropertyListData:(id)arg1 error:(out id *)arg2;

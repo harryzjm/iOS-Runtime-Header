@@ -46,6 +46,7 @@
 @property(readonly, nonatomic) NSString *languageIdentifer; // @synthesize languageIdentifer=_languageIdentifer;
 @property(nonatomic) __weak id <PBBridgeConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+- (void)prepareForForcedWatchSU:(id)arg1;
 - (_Bool)sendCompanionPerformanceResults;
 - (void)transportBecameUnreachable;
 - (void)transportBecameReachable;
@@ -73,6 +74,7 @@
 - (void)tellCompanionThatGizmoFinishedSettingPasscode:(_Bool)arg1 isLong:(_Bool)arg2;
 - (id)customDescriptionOfMessageType:(unsigned short)arg1;
 - (_Bool)tellCompanionThatLanguageAndLanguageCompletedWithStatus:(unsigned short)arg1;
+- (void)companionDidSendWirelessCredentials:(id)arg1;
 - (void)companionDidSendLanguageAndLocale:(id)arg1;
 - (void)setLocationEnabled:(id)arg1;
 - (void)setDiagnosticsEnabled:(id)arg1;
@@ -89,7 +91,9 @@
 - (void)setCompanionRegion:(id)arg1;
 - (void)setCompanionLanguage:(id)arg1;
 - (_Bool)tellCompanionGizmoFailedActivating:(id)arg1;
+- (_Bool)tellCompanionGizmoFinishedActivatingAsDeKOTA;
 - (_Bool)tellCompanionGizmoFinishedActivating;
+- (void)_recordThatWatchFinishedActivating;
 - (_Bool)tellCompanionGizmoBeganActivating;
 - (_Bool)updateRegionIdentifierWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)updateLanguageIdentifierWithCompletion:(CDUnknownBlockType)arg1;

@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ACAccount, NSArray, NSMutableArray, NSMutableDictionary, NSString, PSSpecifier;
+@class ACAccount, NSArray, NSMutableDictionary, NSString, PSSpecifier;
 
 @interface ACUIDataclassConfigurationViewController
 {
     _Bool _forceMailSetup;
-    NSMutableArray *_dirtyDataclassCells;
     NSString *_accountIdentifier;
     NSMutableDictionary *_allDesiredDataclassActions;
     _Bool _isMergingSyncData;
@@ -44,9 +43,6 @@
 - (_Bool)_confirmSyncDelete;
 - (_Bool)_confirmDeleteLocalDataForDataclasses:(id)arg1;
 - (_Bool)_confirmKeepLocalDataForDataclasses:(id)arg1;
-- (id)_activityInProgressTextForDataclass:(id)arg1 isBeingEnabled:(_Bool)arg2;
-- (void)hideActivityInProgressUIWithDelay:(double)arg1;
-- (void)_showDelayedActivityInProgressUIWithMessage:(id)arg1;
 - (void)operationsHelper:(id)arg1 didRemoveAccount:(id)arg2 withSuccess:(_Bool)arg3 error:(id)arg4;
 - (void)operationsHelper:(id)arg1 willRemoveAccount:(id)arg2;
 - (_Bool)isAppleMailAccount:(id)arg1;
@@ -68,9 +64,8 @@
 - (void)setDataclass:(id)arg1 enabled:(_Bool)arg2;
 - (_Bool)shouldAutomaticallyTryEnablingDataclassDuringSetup:(id)arg1;
 - (void)_enableAllProvisionedDataclassesWithoutRequringUserInteraction;
-- (void)resetDirtyDataclassSwitchCells;
-- (void)_markDataclassSwitchCellAsDirty:(id)arg1;
 - (void)dataclassSwitchStateDidChange:(id)arg1 withSpecifier:(id)arg2;
+- (id)_setupSpinnerTimerForSpecifier:(id)arg1;
 - (id)dataclassSwitchStateForSpecifier:(id)arg1;
 - (void)reloadDynamicSpecifiersWithAnimation:(_Bool)arg1;
 - (id)otherSpecifiers;

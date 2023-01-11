@@ -12,6 +12,10 @@
 
 @property(readonly, nonatomic) _Bool statusBarHidden; // @synthesize statusBarHidden=_statusBarHidden;
 @property(readonly, nonatomic) long long statusBarStyle; // @synthesize statusBarStyle=_statusBarStyle;
+- (id)singleLinkPrettyDescription;
+- (id)copyWithPrecedingMetric:(id)arg1;
+- (_Bool)isEqualToMetricChain:(id)arg1;
+- (unsigned long long)hash;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
 - (id)initWithStatusBarStyle:(long long)arg1 hidden:(_Bool)arg2 precedingMetric:(id)arg3;

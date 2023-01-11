@@ -7,21 +7,22 @@
 #import <HealthUI/HKGraphViewDelegate-Protocol.h>
 
 @class HKGraphView, NSString;
-@protocol HKGraphViewDelegate;
+@protocol HKGraphViewControllerDelegate, HKGraphViewDelegate;
 
 @interface HKGraphViewController <HKGraphViewDelegate>
 {
     HKGraphView *_graphView;
     id <HKGraphViewDelegate> _graphViewDelegateProxy;
+    id <HKGraphViewControllerDelegate> _delegate;
     long long _dateZoom;
 }
 
 @property(readonly, nonatomic) long long dateZoom; // @synthesize dateZoom=_dateZoom;
+@property(nonatomic) __weak id <HKGraphViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <HKGraphViewDelegate> graphViewDelegateProxy; // @synthesize graphViewDelegateProxy=_graphViewDelegateProxy;
 @property(readonly, nonatomic) HKGraphView *graphView; // @synthesize graphView=_graphView;
 - (void).cxx_destruct;
 - (void)graphViewDidTapYAxis:(id)arg1;
-- (void)graphView:(id)arg1 didUpdateAnnotationViewContentWithContexts:(id)arg2;
 - (void)graphView:(id)arg1 didUpdateLegendViewsWithTopLegendFrame:(struct CGRect)arg2;
 - (id)seriesSelectionLineColorForGraphView:(id)arg1;
 - (void)graphView:(id)arg1 didUpdateSeries:(id)arg2 newDataArrived:(_Bool)arg3;

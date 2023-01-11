@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/NSNetServiceDelegate-Protocol.h>
 
-@class HMFNetAddress, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSNetService, NSObject, NSString;
+@class HMFNetAddress, HMFUnfairLock, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSNetService, NSObject, NSString;
 @protocol HMFNetServiceDelegate, OS_dispatch_queue;
 
-@interface HMFNetService <NSNetServiceDelegate>
+@interface HMFNetService <HMFLogging, NSNetServiceDelegate>
 {
+    HMFUnfairLock *_lock;
     NSString *_type;
     NSString *_name;
     NSString *_domain;
@@ -22,17 +24,14 @@
     HMFNetAddress *_hostName;
     id <HMFNetServiceDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_delegateQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSMutableArray *_resolveBlocks;
 }
 
++ (id)logCategory;
 + (id)shortDescription;
 + (id)errorFromNetServiceErrorDict:(id)arg1;
 @property(nonatomic, getter=isResolving) _Bool resolving; // @synthesize resolving=_resolving;
 @property(readonly, nonatomic) NSMutableArray *resolveBlocks; // @synthesize resolveBlocks=_resolveBlocks;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(readonly, copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
 @property(readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
@@ -45,11 +44,11 @@
 - (void)netService:(id)arg1 didNotResolve:(id)arg2;
 - (void)netServiceDidResolveAddress:(id)arg1;
 - (void)netServiceWillResolve:(id)arg1;
+- (id)logIdentifier;
 - (void)_reallyResolveWithTimeout:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)confirmWithTimeout:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resolveWithTimeout:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)bestAddress;
-- (void)notifyUpdatedTXTRecord:(id)arg1;
 - (void)updateTXTRecordWithData:(id)arg1;
 - (void)removeAllTXTRecordObjects;
 - (void)setTXTRecord:(id)arg1;
@@ -69,6 +68,7 @@
 - (id)shortDescription;
 - (void)dealloc;
 - (id)initWithNetService:(id)arg1;
+- (id)initWithDomain:(id)arg1 type:(id)arg2 name:(id)arg3;
 - (id)init;
 
 // Remaining properties

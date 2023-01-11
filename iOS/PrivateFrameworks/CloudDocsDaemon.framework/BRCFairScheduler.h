@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
     unsigned long long _maxRegistedSourceBit;
     unsigned long long _lastVisitedBit;
     NSMutableDictionary *_sourceForBitIndex;
+    _Bool _resumed;
 }
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (void)close;
 - (void)cancel;
 - (void)suspend;

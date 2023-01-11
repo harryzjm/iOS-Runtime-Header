@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSDiscardableContent-Protocol.h>
 
@@ -80,7 +80,6 @@ __attribute__((visibility("hidden")))
 - (void)setModified:(_Bool)arg1 forObject:(id)arg2;
 @property(readonly) _Bool modified;
 @property(readonly) unsigned char packageIdentifier;
-@property(readonly, nonatomic) _Bool isStoredOutsideObjectArchive;
 - (void)setLocator:(id)arg1;
 @property(readonly, nonatomic) NSString *locator;
 - (_Bool)isContentDiscarded;
@@ -93,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isDiscardingContent;
 @property(retain) TSPObject *rootObject;
 - (_Bool)shouldKeepStrongObjectImpl;
+@property(readonly, nonatomic) _Bool isStoredOutsideObjectArchive;
 - (_Bool)shouldForceCaching;
 - (_Bool)isCachingEnabled;
 - (id)initWithDelegate:(id)arg1 message:(const struct ComponentInfo *)arg2 packageIdentifier:(unsigned char)arg3 encodedLength:(unsigned long long)arg4 lastModificationDate:(id)arg5;

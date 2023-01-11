@@ -46,6 +46,8 @@ __attribute__((visibility("hidden")))
 - (void)noteFailedProtocolRequest;
 - (void)noteFailedNetworkRequest;
 - (void)noteSuccessfulRequestWithNumDownloadedElements:(long long)arg1;
+- (id)sharingURLHostname;
+- (id)displayedHostname;
 - (id)regionCode;
 - (id)languageCode;
 - (_Bool)shouldFailAllTasks;
@@ -72,7 +74,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 - (id)serverPreferredPushEnvironment;
 - (id)trafficContainerIdentifier;
-- (id)applicationBundle;
 - (id)bundleID;
 - (id)containerID;
 @property(readonly, nonatomic) NSString *accountID;
@@ -82,9 +83,10 @@ __attribute__((visibility("hidden")))
 - (id)mescalSession;
 - (void)fetchDeviceIDForOperation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchServerEnvironmentForOperation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchContainerScopedUserIDForOperation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchPrivateURLForServerType:(long long)arg1 operation:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)fetchImportantUserIDsForOperation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchPublicURLForServerType:(long long)arg1 operation:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_fetchContainerInfoForOperation:(id)arg1 requireUserIDs:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)fetchPrivateURLForServerType:(long long)arg1 operation:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchConfigurationForOperation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)config;
 @property(readonly, nonatomic) _Bool isiCloudDevEnvironmentAccount;

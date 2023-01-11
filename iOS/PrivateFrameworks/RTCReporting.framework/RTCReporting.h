@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <RTCReporting/RTCReportingDeallocNotifierDelegate-Protocol.h>
 
@@ -14,13 +14,15 @@
 @interface RTCReporting : NSObject <RTCReportingDeallocNotifierDelegate>
 {
     NSObject<OS_dispatch_queue> *_reportingQueue;
+    NSObject<OS_dispatch_queue> *_reportingPeriodicTasksQueue;
     CDUnknownBlockType _loggingBlock;
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_source> *_timer;
     int _counter;
-    int _intervalMultiplier;
     NSMutableDictionary *_periodicServiceDict;
     NSArray *_enabledBackendNames;
+    NSArray *_whitelistedEvents;
+    NSArray *_blacklistedEvents;
     RTCReportingDeallocNotifier *_strongDeallocNotifier;
     id _weakDeallocNotifier;
     id _weakMessageSentDelegate;
@@ -38,6 +40,8 @@
 - (_Bool)flushMessages;
 - (_Bool)sendMessageWithDictionary:(id)arg1 error:(id *)arg2;
 - (_Bool)sendMessageWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3 error:(id *)arg4;
+- (_Bool)isBlacklistedEvent:(unsigned short)arg1;
+- (_Bool)isWhitelistedEvent:(unsigned short)arg1;
 - (void)notifyMessageWasSent:(id)arg1;
 - (void)fetchReportingStatesWithUserInfo:(id)arg1 fetchComplete:(CDUnknownBlockType)arg2;
 - (void)startConfigurationWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -52,7 +56,7 @@
 - (_Bool)registerPeriodicTaskForModule:(unsigned int)arg1 needToUpdate:(_Bool)arg2 needToReport:(_Bool)arg3 serviceBlock:(CDUnknownBlockType)arg4;
 - (void)stopLogTimer;
 - (void)startLogTimerWithInterval:(int)arg1 reportingMultiplier:(int)arg2 category:(unsigned short)arg3 type:(unsigned short)arg4;
-- (void)_myPeriodicTask:(unsigned short)arg1 type:(unsigned short)arg2;
+- (void)_myPeriodicTask:(unsigned short)arg1 type:(unsigned short)arg2 intervalMultiplier:(int)arg3 updateTimeout:(unsigned long long)arg4;
 - (_Bool)uploadDataArray:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)uploadFileWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)serverSupportsFileUpload;

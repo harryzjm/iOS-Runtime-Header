@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray;
 
@@ -18,8 +18,12 @@ __attribute__((visibility("hidden")))
     _Bool _octetAligned;
     _Bool _dtmf;
     unsigned int _networkPayload;
+    unsigned short _evsChannelAwareOffset;
+    _Bool _evsHeaderFullOnly;
 }
 
+@property(nonatomic) _Bool evsHeaderFullOnly; // @synthesize evsHeaderFullOnly=_evsHeaderFullOnly;
+@property(nonatomic) unsigned short evsChannelAwareOffset; // @synthesize evsChannelAwareOffset=_evsChannelAwareOffset;
 @property(nonatomic) unsigned int networkPayload; // @synthesize networkPayload=_networkPayload;
 @property(nonatomic, getter=isDTMF) _Bool dtmf; // @synthesize dtmf=_dtmf;
 @property(nonatomic, getter=isOctetAligned) _Bool octetAligned; // @synthesize octetAligned=_octetAligned;

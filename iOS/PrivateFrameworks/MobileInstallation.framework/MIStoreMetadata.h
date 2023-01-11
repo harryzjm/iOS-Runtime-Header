@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MobileInstallation/NSCopying-Protocol.h>
 #import <MobileInstallation/NSSecureCoding-Protocol.h>
@@ -20,6 +20,7 @@
     _Bool _gameCenterEverEnabled;
     _Bool _isAutoDownload;
     _Bool _sideLoadedDeviceBasedVPP;
+    _Bool _deviceBasedVPP;
     NSString *_iAdAttribution;
     NSString *_iAdConversionDate;
     NSString *_iAdImpressionDate;
@@ -59,6 +60,7 @@
 + (id)metadataFromPlistAtURL:(id)arg1 error:(id *)arg2;
 + (id)metadataFromPlistData:(id)arg1 error:(id *)arg2;
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) _Bool deviceBasedVPP; // @synthesize deviceBasedVPP=_deviceBasedVPP;
 @property(nonatomic) _Bool sideLoadedDeviceBasedVPP; // @synthesize sideLoadedDeviceBasedVPP=_sideLoadedDeviceBasedVPP;
 @property(copy, nonatomic) NSString *referrerApp; // @synthesize referrerApp=_referrerApp;
 @property(copy, nonatomic) NSString *referrerURL; // @synthesize referrerURL=_referrerURL;

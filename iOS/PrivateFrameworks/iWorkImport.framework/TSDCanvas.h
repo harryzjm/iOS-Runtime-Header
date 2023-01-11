@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSSet, TSDInteractiveCanvasController, TSDLayoutController, TSKAccessController, TSKChangeNotifier, TSKDocumentRoot, TSPObjectContext, TSUColor, TSUPointerKeyDictionary;
+@class NSArray, NSHashTable, NSMutableArray, NSSet, TSDInteractiveCanvasController, TSDLayoutController, TSKAccessController, TSKChangeNotifier, TSKDocumentRoot, TSPObjectContext, TSUColor, TSUPointerKeyDictionary;
 @protocol OS_dispatch_queue, TSDCanvasDelegate;
 
 __attribute__((visibility("hidden")))
@@ -25,68 +25,70 @@ __attribute__((visibility("hidden")))
     double mViewScale;
     double mContentsScale;
     _Bool mWideGamut;
+    _Bool mIsAnchoredAtRight;
     struct {
         unsigned int layout:1;
         unsigned int reps:1;
         unsigned int visibleBounds:1;
         unsigned int layers:1;
     } mInvalidFlags;
+    _Bool mShouldUpdateLayersDuringLayout;
     _Bool mInLayout;
     NSArray *mPreviouslyVisibleLayouts;
     NSMutableArray *mBlocksToPerform;
     NSObject<OS_dispatch_queue> *mBlocksToPerformAccessQueue;
+    NSHashTable *mCanvasLayoutObservers;
     _Bool mIgnoringClickThrough;
     TSUColor *mBackgroundColor;
     struct UIEdgeInsets mContentInset;
     _Bool mAllowsFontSubpixelQuantization;
     _Bool mSuppressesShadowsAndReflections;
-    _Bool mSuppressesColorAlphaComponent;
     _Bool mSuppressesShapeText;
-    _Bool mSuppressesColorAlphaComponen;
+    _Bool mShouldRenderInvisibleContentForNonInteractiveCanvas;
+    double i_viewScaleForAudioObjectsInNonInteractiveCanvas;
 }
 
 + (void)p_recursivelyAddOrderedChildrenOfRep:(id)arg1 toArray:(id)arg2;
 @property(readonly, nonatomic) _Bool isTemporaryForLayout; // @synthesize isTemporaryForLayout=mIsTemporaryForLayout;
 @property(nonatomic) double viewScale; // @synthesize viewScale=mViewScale;
 @property(nonatomic) struct CGSize unscaledSize; // @synthesize unscaledSize=mUnscaledSize;
-@property(nonatomic) _Bool suppressesColorAlphaComponent; // @synthesize suppressesColorAlphaComponent=mSuppressesColorAlphaComponen;
+@property(nonatomic) double i_viewScaleForAudioObjectsInNonInteractiveCanvas; // @synthesize i_viewScaleForAudioObjectsInNonInteractiveCanvas;
+@property(nonatomic) _Bool shouldRenderInvisibleContentForNonInteractiveCanvas; // @synthesize shouldRenderInvisibleContentForNonInteractiveCanvas=mShouldRenderInvisibleContentForNonInteractiveCanvas;
 @property(nonatomic) _Bool suppressesShapeText; // @synthesize suppressesShapeText=mSuppressesShapeText;
 @property(nonatomic) _Bool suppressesShadowsAndReflections; // @synthesize suppressesShadowsAndReflections=mSuppressesShadowsAndReflections;
 @property(nonatomic) _Bool allowsFontSubpixelQuantization; // @synthesize allowsFontSubpixelQuantization=mAllowsFontSubpixelQuantization;
 @property(nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=mContentInset;
 @property(copy, nonatomic) TSUColor *backgroundColor; // @synthesize backgroundColor=mBackgroundColor;
+@property(nonatomic) _Bool isAnchoredAtRight; // @synthesize isAnchoredAtRight=mIsAnchoredAtRight;
 @property(readonly, nonatomic) TSDLayoutController *layoutController; // @synthesize layoutController=mLayoutController;
 @property(readonly, nonatomic) NSSet *allReps; // @synthesize allReps=mAllReps;
 @property(readonly, nonatomic) NSArray *topLevelReps; // @synthesize topLevelReps=mTopLevelReps;
 @property(copy, nonatomic) NSArray *infosToDisplay; // @synthesize infosToDisplay=mInfos;
 @property(nonatomic) __weak id <TSDCanvasDelegate> delegate; // @synthesize delegate=mDelegate;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) struct CGRect unscaledRectOfLayouts;
 @property(readonly, nonatomic) NSArray *allRepsOrdered;
 - (void)p_removeAllReps;
 - (void)orderRepsForLayout:(id)arg1;
 - (_Bool)p_updateRepsFromLayouts;
 - (void)p_layoutWithReadLock;
 - (struct CGRect)p_bounds;
-- (struct CGImage *)i_newImageInContext:(struct CGContext *)arg1 bounds:(struct CGRect)arg2 integralBounds:(struct CGRect)arg3 distortedToMatch:(_Bool)arg4;
+- (struct CGImage *)i_newImageInContext:(struct CGContext *)arg1 bounds:(struct CGRect)arg2 integralBounds:(struct CGRect)arg3 distortedToMatch:(_Bool)arg4 keepingChildrenPassingTest:(CDUnknownBlockType)arg5;
 - (struct CGContext *)i_createContextToDrawImageInScaledRect:(struct CGRect)arg1 withTargetIntegralSize:(struct CGSize)arg2 distortedToMatch:(_Bool)arg3 returningBounds:(struct CGRect *)arg4 integralBounds:(struct CGRect *)arg5;
-- (struct CGImage *)i_imageInScaledRect:(struct CGRect)arg1 withTargetIntegralSize:(struct CGSize)arg2 distortedToMatch:(_Bool)arg3;
-- (struct CGImage *)i_imageInScaledRect:(struct CGRect)arg1;
+- (struct CGImage *)i_imageInScaledRect:(struct CGRect)arg1 withTargetIntegralSize:(struct CGSize)arg2 distortedToMatch:(_Bool)arg3 keepingChildrenPassingTest:(CDUnknownBlockType)arg4;
+- (struct CGImage *)i_imageInScaledRect:(struct CGRect)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
 - (struct CGImage *)i_image;
-- (void)i_drawRepsInContext:(struct CGContext *)arg1;
-- (void)i_drawRepsInContext:(struct CGContext *)arg1 distort:(struct CGAffineTransform)arg2;
+- (void)i_drawRepsInContext:(struct CGContext *)arg1 passingTest:(CDUnknownBlockType)arg2;
+- (void)i_drawRepsInContext:(struct CGContext *)arg1 passingTest:(CDUnknownBlockType)arg2 distort:(struct CGAffineTransform)arg3;
 - (void)addBitmapsToRenderingQualityInfo:(id)arg1 inContext:(struct CGContext *)arg2;
 - (void)i_drawBackgroundInContext:(struct CGContext *)arg1 bounds:(struct CGRect)arg2;
 - (void)i_drawBackgroundInContext:(struct CGContext *)arg1;
 - (struct CGRect)i_clipRectForCreatingRepsFromLayouts;
-- (struct CGRect)i_unscaledRectOfLayouts;
 - (struct CGRect)i_approximateScaledFrameOfEditingMenuAtPoint:(struct CGPoint)arg1;
 - (void)i_unregisterRep:(id)arg1;
 - (void)i_registerRep:(id)arg1;
 - (_Bool)i_shouldIgnoreClickThrough;
 - (void)i_performBlockWhileIgnoringClickThrough:(CDUnknownBlockType)arg1;
-- (_Bool)p_expandHitRegionOfPoint:(struct CGPoint)arg1 forRep:(id)arg2 smallRepOutset:(double)arg3 forShortestDistance:(double *)arg4;
-- (_Bool)p_shouldRep:(id)arg1 countAsClosestSmallRepForSizeLimit:(double)arg2;
-- (id)hitRep:(struct CGPoint)arg1 inTopLevelReps:(id)arg2 smallRepOutset:(double)arg3 passingTest:(CDUnknownBlockType)arg4;
 - (struct CGRect)visibleUnscaledRectForClippingReps;
 - (struct CGSize)convertBoundsToUnscaledSize:(struct CGSize)arg1;
 - (struct CGSize)convertUnscaledToBoundsSize:(struct CGSize)arg1;
@@ -98,7 +100,7 @@ __attribute__((visibility("hidden")))
 - (void)i_setCanvasIsWideGamut:(_Bool)arg1;
 @property(readonly, nonatomic) double contentsScale;
 - (void)i_setContentsScale:(double)arg1;
-- (_Bool)isExportingFixedLayoutEPub;
+- (_Bool)isExportingFixedLayoutEPUB;
 - (_Bool)isRenderingForKPF;
 - (_Bool)isDrawingIntoPDF;
 - (_Bool)shouldSuppressBackgrounds;
@@ -109,8 +111,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isCanvasInteractive;
 - (_Bool)spellCheckingSuppressed;
 - (_Bool)spellCheckingSupported;
+- (void)i_unregisterCanvasLayoutObserver:(id)arg1;
+- (void)i_registerCanvasLayoutObserver:(id)arg1;
 @property(readonly, nonatomic) _Bool supportsAdaptiveLayout;
 - (_Bool)i_needsLayout;
+- (void)i_layoutIfNeededUpdatingLayerTree;
 - (void)layoutIfNeeded;
 - (void)invalidateLayers;
 - (void)invalidateVisibleBounds;

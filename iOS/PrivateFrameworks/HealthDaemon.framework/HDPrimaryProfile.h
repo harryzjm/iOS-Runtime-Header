@@ -23,6 +23,7 @@
 
 - (void).cxx_destruct;
 - (void)_applyPPTUpdates;
+- (void)unitTest_setServiceManager:(id)arg1;
 - (id)_newWorkoutManager;
 - (id)_newNotificationManager;
 - (id)_newNanoSyncManager;
@@ -40,6 +41,7 @@
 - (id)cloudSyncManager;
 - (id)awdSubmissionManager;
 - (id)appSubscriptionManager;
+- (id)activityCacheManager;
 - (void)terminationCleanup;
 - (id)initWithDirectoryPath:(id)arg1 medicalIDDirectoryPath:(id)arg2 daemon:(id)arg3;
 

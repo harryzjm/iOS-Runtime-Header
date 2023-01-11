@@ -4,12 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IKViewElementStyleComposer, NSString;
-@protocol IKStyleableElement;
+#import <ITMLKit/NSObject-Protocol.h>
 
-@protocol IKStyleableElement
+@class IKViewElementStyleComposer, NSString;
+@protocol IKStyleableElement, NSCopying;
+
+@protocol IKStyleableElement <NSObject>
 @property(retain, nonatomic) IKViewElementStyleComposer *styleComposer;
 @property(readonly, copy, nonatomic) NSString *elementName;
 @property(readonly, nonatomic) __weak id <IKStyleableElement> parentStyleableElement;
+- (void)setObject:(id)arg1 forKeyedSubscript:(id <NSCopying>)arg2;
+- (id)objectForKeyedSubscript:(id)arg1;
 @end
 

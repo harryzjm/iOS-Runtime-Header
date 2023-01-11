@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSCopying-Protocol.h>
 #import <TextInput/NSSecureCoding-Protocol.h>
@@ -20,13 +20,13 @@
 + (_Bool)supportsSecureCoding;
 @property(copy) NSOrderedSet *candidates; // @synthesize candidates=_candidates;
 @property(copy) NSString *title; // @synthesize title=_title;
+- (void).cxx_destruct;
 - (id)description;
 - (void)addCandidate:(id)arg1;
 - (_Bool)hasAlternativeText;
 - (id)mutableCandidates;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 - (id)initWithTitle:(id)arg1 candidates:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

@@ -9,7 +9,7 @@
 #import <iAd/ADBannerViewInternalDelegate-Protocol.h>
 #import <iAd/ADInterstitialAdDelegate-Protocol.h>
 
-@class ADBannerView, ADInterstitialAd, NSData, NSError, NSMutableArray, NSString, NSURL;
+@class ADBannerView, ADInterstitialAd, NSData, NSError, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface ADPolicyEngine : NSObject <ADBannerViewInternalDelegate, ADInterstitialAdDelegate>
@@ -21,7 +21,6 @@
     double _nextInterstitialPresentationTime;
     double _nextPrerollPlaybackTime;
     NSObject<OS_dispatch_queue> *_policyEngineQueue;
-    NSMutableArray *_queuedCommands;
     ADInterstitialAd *_sharedInterstitialAd;
     NSString *_sharedInterstitialSection;
     NSURL *_sharedInterstitialServerURL;
@@ -45,7 +44,6 @@
 @property(retain, nonatomic) ADInterstitialAd *sharedInterstitialAd; // @synthesize sharedInterstitialAd=_sharedInterstitialAd;
 @property(nonatomic) _Bool canAutoEnable; // @synthesize canAutoEnable=_canAutoEnable;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
-@property(readonly, nonatomic) NSMutableArray *queuedCommands; // @synthesize queuedCommands=_queuedCommands;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *policyEngineQueue; // @synthesize policyEngineQueue=_policyEngineQueue;
 @property(nonatomic) double nextPrerollPlaybackTime; // @synthesize nextPrerollPlaybackTime=_nextPrerollPlaybackTime;
 @property(nonatomic) double nextInterstitialPresentationTime; // @synthesize nextInterstitialPresentationTime=_nextInterstitialPresentationTime;
@@ -65,9 +63,7 @@
 - (void)interstitialAdDidLoad:(id)arg1;
 - (void)finishedPresentingSharedInterstitialAd;
 - (_Bool)canPresentSharedInterstitialAdWithResultMessage:(id *)arg1;
-- (void)_adSheetConnectionBootstrapped;
-- (void)_performWhenAdSheetConnectionEstablished:(CDUnknownBlockType)arg1;
-- (void)adSheetDidIdleDisablePolicyEngine;
+- (void)adServingDaemonDidIdleDisablePolicyEngine;
 - (void)disablePolicyEngine;
 - (void)enablePolicyEngine;
 - (void)_enablePolicyEngineWithReason:(id)arg1;

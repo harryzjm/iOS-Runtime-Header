@@ -8,23 +8,22 @@
 
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 
-@class HMSoftwareUpdate, NSString, NSUUID, _HMContext;
+@class HMFUnfairLock, HMSoftwareUpdate, NSString, NSUUID, _HMContext;
 @protocol HMSoftwareUpdateManagerDelegate, OS_dispatch_queue;
 
 @interface HMSoftwareUpdateManager : NSObject <HMFMessageReceiver>
 {
+    HMFUnfairLock *_lock;
     _Bool _started;
     HMSoftwareUpdate *_availableUpdate;
     id <HMSoftwareUpdateManagerDelegate> _delegate;
     _HMContext *_context;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSUUID *_identifier;
 }
 
 + (id)logCategory;
 @property(nonatomic, getter=isStarted) _Bool started; // @synthesize started=_started;
 @property(readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property(readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property __weak id <HMSoftwareUpdateManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;

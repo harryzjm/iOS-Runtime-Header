@@ -9,6 +9,7 @@
 
 @interface IMDCKChatSyncController
 {
+    _Bool _fetchedChatsDuringLastSync;
     CKServerChangeToken *_latestSyncToken;
     NSObject<OS_dispatch_queue> *_ckQueue;
     IMDChatRegistry *_chatRegistry;
@@ -16,46 +17,52 @@
     id <IMDCKSyncTokenStore> _syncTokenStore;
     IMDCKChatSyncCKOperationFactory *_CKOperationFactory;
     CKRecord *_lockRecord;
+    CKRecord *_manateeLockRecord;
+    CKRecord *_stingRayLockRecord;
 }
 
 + (id)sharedInstance;
+@property(retain, nonatomic) CKRecord *stingRayLockRecord; // @synthesize stingRayLockRecord=_stingRayLockRecord;
+@property(retain, nonatomic) CKRecord *manateeLockRecord; // @synthesize manateeLockRecord=_manateeLockRecord;
 @property(retain, nonatomic) CKRecord *lockRecord; // @synthesize lockRecord=_lockRecord;
 @property(retain, nonatomic) IMDCKChatSyncCKOperationFactory *CKOperationFactory; // @synthesize CKOperationFactory=_CKOperationFactory;
 @property(retain, nonatomic) id <IMDCKSyncTokenStore> syncTokenStore; // @synthesize syncTokenStore=_syncTokenStore;
 @property(retain, nonatomic) IMDRecordZoneManager *recordZoneManager; // @synthesize recordZoneManager=_recordZoneManager;
 @property(retain, nonatomic) IMDChatRegistry *chatRegistry; // @synthesize chatRegistry=_chatRegistry;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *ckQueue; // @synthesize ckQueue=_ckQueue;
+@property(nonatomic) _Bool fetchedChatsDuringLastSync; // @synthesize fetchedChatsDuringLastSync=_fetchedChatsDuringLastSync;
 - (void)syncPendingDeletionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handleChatDeletionCompletionForRecordIDs:(id)arg1 error:(id)arg2;
 - (id)_copyRecordIDsToDelete;
 - (void)clearLocalSyncState;
-- (void)__syncChatsWithCloudKit:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)__syncChatsWithCloudKit:(long long)arg1 attemptCount:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)syncChatsWithCloudKit:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)syncChatsWithCloudKitWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateAllChatsAsNotNeedingReUpload;
 - (_Bool)_shouldMarkAllChatsAsNeedingReUpload;
 - (id)_recordKeyManagerSharedInstance;
 - (_Bool)_eligibleForTruthZone;
-- (id)_CKUtilitiesSharedInstance;
 - (void)deletChatSyncToken;
 - (void)deleteChatZone;
 - (void)anyChatExistsOnServerWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_syncChatsWithCloudKitWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_anyChatExistsOnServerWithResultsLimit:(int)arg1 changeToken:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_syncChatsWithCloudKitWithCompletionType:(long long)arg1 syncChatsCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)_resetSyncToken;
-- (void)_processFetchRecordChangesCompleted:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_processFetchRecordChangesCompleted:(id)arg1 completion:(CDUnknownBlockType)arg2 isUsingStingRay:(_Bool)arg3 syncType:(long long)arg4;
 - (void)_processRecordZoneFetchCompletion:(id)arg1 zoneID:(id)arg2 clientChangeTokenData:(id)arg3 moreComing:(_Bool)arg4 error:(id)arg5;
 - (void)_processRecordZoneChangeTokenUpdated:(id)arg1 zoneID:(id)arg2 clienChangeToken:(id)arg3;
-- (void)_processRecordChanged:(id)arg1;
+- (void)_processRecordChanged:(id)arg1 isUsingStingRay:(_Bool)arg2;
 - (void)_processRecordDeletion:(id)arg1;
 - (id)_fetchChatRecordOperation;
-- (void)_writeDirtyChatsToCloudKitWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_writeDirtyChatsToCloudKitWithCompletion:(CDUnknownBlockType)arg1 isUsingStingRay:(_Bool)arg2;
 - (void)_logGreenTeaLogsForChats:(id)arg1;
 - (_Bool)_shouldResyncChatsForError:(id)arg1;
 - (unsigned long long)_numberOfChatsToWrite;
-- (void)_writeCKRecordsToChatZone:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (unsigned long long)_numberOfChatsToFetch;
+- (void)_writeCKRecordsToChatZone:(id)arg1 isUsingStingRay:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_processModifyRecordCompletion:(id)arg1 deletedRecordIDs:(id)arg2 error:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (_Bool)_lockRecordHadConflict:(id)arg1;
-- (void)_processModifyPerRecordCallBack:(id)arg1 error:(id)arg2;
+- (void)_processModifyPerRecordCallBack:(id)arg1 error:(id)arg2 isUsingStingRay:(_Bool)arg3;
 - (_Bool)_chatZoneCreated;
 - (void)_markChatAsDefferedForSyncingUsingRecord:(id)arg1;
 - (void)_resetChatSyncStateForRecord:(id)arg1;
@@ -65,9 +72,14 @@
 - (id)_newckRecordsFromChats:(id)arg1;
 - (id)_randomSalt;
 - (id)_copyChatsToUploadWithLimit:(unsigned long long)arg1;
+- (void)_clearStingRaySyncToken;
 @property(retain, nonatomic) CKServerChangeToken *latestSyncToken; // @synthesize latestSyncToken=_latestSyncToken;
+- (id)_changeTokenKey;
 - (void)_migrateServerChangeToken;
+- (void)setLockRecord:(id)arg1 isUsingStingRay:(_Bool)arg2;
+- (id)lockRecordForStingRay:(_Bool)arg1;
 - (id)_generateLockRecord;
+- (long long)syncControllerRecordType;
 - (void)dealloc;
 - (id)init;
 - (id)initWithSyncTokenStore:(id)arg1;

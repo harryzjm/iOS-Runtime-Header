@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary, NSString, _EARFormatter, _EARSpeechModelInfo, _EARSpeechRecognitionAudioBuffer;
+@class NSArray, NSData, NSDictionary, NSString, _EARFormatter, _EARSpeechModelInfo, _EARSpeechRecognitionAudioBuffer;
 @protocol OS_dispatch_queue;
 
 @interface _EARSpeechRecognizer : NSObject
@@ -22,16 +22,21 @@
     _Bool _recognizeEagerCandidates;
     _Bool _farField;
     NSData *_userProfileData;
+    NSData *_jitProfileData;
     double _endpointStart;
     double _maximumRecognitionDuration;
     NSDictionary *_recognitionReplacements;
     NSDictionary *_recognitionConfidenceSubtraction;
+    NSArray *_leftContext;
+    NSString *_inputOrigin;
 }
 
 + (id)rawTokenResultsFromRecognitionResults:(id)arg1;
 + (id)maximumSupportedConfigurationVersion;
 + (id)minimumSupportedConfigurationVersion;
 + (void)initialize;
+@property(copy, nonatomic) NSString *inputOrigin; // @synthesize inputOrigin=_inputOrigin;
+@property(copy, nonatomic) NSArray *leftContext; // @synthesize leftContext=_leftContext;
 @property(copy, nonatomic) NSDictionary *recognitionConfidenceSubtraction; // @synthesize recognitionConfidenceSubtraction=_recognitionConfidenceSubtraction;
 @property(copy, nonatomic) NSDictionary *recognitionReplacements; // @synthesize recognitionReplacements=_recognitionReplacements;
 @property(nonatomic) double maximumRecognitionDuration; // @synthesize maximumRecognitionDuration=_maximumRecognitionDuration;
@@ -40,6 +45,7 @@
 @property(nonatomic) double endpointStart; // @synthesize endpointStart=_endpointStart;
 @property(nonatomic) _Bool concatenateUtterances; // @synthesize concatenateUtterances=_concatenateUtterances;
 @property(nonatomic) _Bool detectUtterances; // @synthesize detectUtterances=_detectUtterances;
+@property(copy, nonatomic) NSData *jitProfileData; // @synthesize jitProfileData=_jitProfileData;
 @property(copy, nonatomic) NSData *userProfileData; // @synthesize userProfileData=_userProfileData;
 - (id).cxx_construct;
 - (void).cxx_destruct;

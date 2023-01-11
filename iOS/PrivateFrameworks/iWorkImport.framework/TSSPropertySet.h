@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/NSMutableCopying-Protocol.h>
@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
 + (id)propertySetWithProperties:(int)arg1;
 + (id)propertySetWithProperty:(int)arg1;
 + (id)p_mutableIndexSetWithFirstProperty:(int)arg1 argumentList:(struct __va_list_tag [1])arg2;
+- (void).cxx_destruct;
+- (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
@@ -41,7 +43,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithProperties:(int)arg1;
 - (id)initWithPropertySet:(id)arg1;
 - (id)initWithFirstProperty:(int)arg1 argumentList:(struct __va_list_tag [1])arg2;
-- (void)dealloc;
 - (id)init;
 - (id)initWithIndexSet:(id)arg1;
 

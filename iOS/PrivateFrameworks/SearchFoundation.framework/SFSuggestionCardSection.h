@@ -12,7 +12,13 @@
 
 @interface SFSuggestionCardSection <SFSuggestionCardSection, NSSecureCoding, NSCopying>
 {
-    CDStruct_5c63c26d _has;
+    struct {
+        unsigned int canBeHidden:1;
+        unsigned int hasTopPadding:1;
+        unsigned int hasBottomPadding:1;
+        unsigned int separatorStyle:1;
+        unsigned int isContact:1;
+    } _has;
     _Bool _canBeHidden;
     _Bool _hasTopPadding;
     _Bool _hasBottomPadding;
@@ -24,9 +30,11 @@
     NSString *_type;
     SFColor *_backgroundColor;
     SFRichText *_suggestionText;
+    NSString *_scopedSearchSectionBundleIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(copy, nonatomic) NSString *scopedSearchSectionBundleIdentifier; // @synthesize scopedSearchSectionBundleIdentifier=_scopedSearchSectionBundleIdentifier;
 @property(nonatomic) _Bool isContact; // @synthesize isContact=_isContact;
 @property(retain, nonatomic) SFRichText *suggestionText; // @synthesize suggestionText=_suggestionText;
 @property(retain, nonatomic) SFColor *backgroundColor;

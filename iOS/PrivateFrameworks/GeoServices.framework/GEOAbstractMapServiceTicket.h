@@ -6,7 +6,7 @@
 
 #import <GeoServices/GEOMapServiceTicket-Protocol.h>
 
-@class GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEORelatedSearchSuggestion, NSArray, NSDictionary, NSString;
+@class GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface GEOAbstractMapServiceTicket <GEOMapServiceTicket>
@@ -21,7 +21,9 @@ __attribute__((visibility("hidden")))
     NSString *_resultDisplayHeader;
     NSArray *_displayHeaderSubstitutes;
     _Bool _shouldEnableRedoSearch;
+    GEOResolvedItem *_clientResolvedResult;
     GEODirectionIntent *_directionIntent;
+    NSArray *_retainedSearchMetadata;
     unsigned int _dymSuggestionVisibleTime;
     _Bool _showDymSuggestionCloseButton;
 }
@@ -38,7 +40,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *relatedSearchSuggestions; // @synthesize relatedSearchSuggestions=_relatedSearchSuggestions;
 @property(readonly, nonatomic, getter=isChainResultSet) _Bool chainResultSet; // @synthesize chainResultSet=_chainResultSet;
 @property(readonly, nonatomic) GEOMapRegion *resultBoundingRegion; // @synthesize resultBoundingRegion=_resultBoundingRegion;
+@property(readonly, nonatomic) NSArray *retainedSearchMetadata; // @synthesize retainedSearchMetadata=_retainedSearchMetadata;
 @property(readonly, nonatomic) GEODirectionIntent *directionIntent; // @synthesize directionIntent=_directionIntent;
+@property(readonly, nonatomic) GEOResolvedItem *clientResolvedResult; // @synthesize clientResolvedResult=_clientResolvedResult;
 - (void).cxx_destruct;
 - (void)applyToPlaceInfo:(id)arg1;
 - (void)applyToCorrectedSearch:(id)arg1;

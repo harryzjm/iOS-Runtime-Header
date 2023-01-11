@@ -39,10 +39,13 @@
     NSDictionary *_messageSummaryInfo;
     NSString *_associatedBalloonBundleID;
     NSData *_customTypingIndicatorIcon;
+    NSString *_notificationIDSTokenURI;
+    unsigned long long _sortID;
     struct _NSRange _associatedMessageRange;
 }
 
 + (id)determineRichLinksInMessage:(id)arg1;
++ (_Bool)supportedRichLinkURL:(id)arg1;
 + (id)messageFromIMMessageItemDictionary:(id)arg1 body:(id)arg2 sender:(id)arg3 subject:(id)arg4;
 + (id)messageFromIMMessageItem:(id)arg1 sender:(id)arg2 subject:(id)arg3;
 + (id)fromMeIMHandle:(id)arg1 withText:(id)arg2 fileTransferGUIDs:(id)arg3 flags:(unsigned long long)arg4;
@@ -58,7 +61,9 @@
 + (id)breadcrumbMessageWithText:(id)arg1 associatedMessageGUID:(id)arg2 balloonBundleID:(id)arg3 fileTransferGUIDs:(id)arg4 payloadData:(id)arg5;
 + (id)editedMessageWithOriginalMessage:(id)arg1 originalPrefixedGUID:(id)arg2 newBody:(id)arg3;
 + (id)instantMessageWithAssociatedMessageContent:(id)arg1 flags:(unsigned long long)arg2 associatedMessageGUID:(id)arg3 associatedMessageType:(long long)arg4 associatedMessageRange:(struct _NSRange)arg5 messageSummaryInfo:(id)arg6;
+@property(nonatomic) unsigned long long sortID; // @synthesize sortID=_sortID;
 @property(nonatomic) _Bool isSOS; // @synthesize isSOS=_isSOS;
+@property(retain, nonatomic) NSString *notificationIDSTokenURI; // @synthesize notificationIDSTokenURI=_notificationIDSTokenURI;
 @property(retain, nonatomic) NSData *customTypingIndicatorIcon; // @synthesize customTypingIndicatorIcon=_customTypingIndicatorIcon;
 @property(retain, nonatomic) NSDate *timeExpressiveSendPlayed; // @synthesize timeExpressiveSendPlayed=_timeExpressiveSendPlayed;
 @property(retain, nonatomic) NSString *expressiveSendStyleID; // @synthesize expressiveSendStyleID=_expressiveSendStyleID;
@@ -127,6 +132,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionForPurpose:(long long)arg1 inChat:(id)arg2;
 - (id)descriptionForPurpose:(long long)arg1;
+- (void)_ovverrideGUIDForTest:(id)arg1;
 @property(readonly, nonatomic) _Bool isAssociatedMessage;
 - (id)initWithSender:(id)arg1 time:(id)arg2 text:(id)arg3 messageSubject:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8 subject:(id)arg9 associatedMessageGUID:(id)arg10 associatedMessageType:(long long)arg11 associatedMessageRange:(struct _NSRange)arg12 associatedMessageInfo:(id)arg13;
 

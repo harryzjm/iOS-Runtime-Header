@@ -4,10 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 @interface NTKMinutesMinus15_30_45_60LabelCollectionNode
 {
+    NSArray *_visibleComplicationSlots;
 }
 
+@property(retain, nonatomic) NSArray *visibleComplicationSlots; // @synthesize visibleComplicationSlots=_visibleComplicationSlots;
+- (void).cxx_destruct;
+- (void)_updateNodeVisibility;
 - (void)createSubNodes;
 
 @end

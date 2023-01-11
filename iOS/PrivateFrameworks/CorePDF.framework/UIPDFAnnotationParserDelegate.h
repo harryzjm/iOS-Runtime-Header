@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CorePDF/NSXMLParserDelegate-Protocol.h>
 
 @class NSMutableString, NSString, UIPDFAnnotation;
 
+__attribute__((visibility("hidden")))
 @interface UIPDFAnnotationParserDelegate : NSObject <NSXMLParserDelegate>
 {
     NSMutableString *_characters;

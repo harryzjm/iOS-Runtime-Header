@@ -21,6 +21,7 @@
 - (void)setAutoStillImageStabilizationEnabled:(_Bool)arg1;
 - (void)setEV0PhotoDeliveryEnabled:(_Bool)arg1;
 - (void)setHDRMode:(long long)arg1;
+- (void)setAutoRedEyeReductionEnabled:(_Bool)arg1;
 - (void)setFlashMode:(long long)arg1;
 @property(nonatomic, getter=isLensStabilizationEnabled) _Bool lensStabilizationEnabled;
 @property(readonly, nonatomic) NSArray *bracketedSettings;

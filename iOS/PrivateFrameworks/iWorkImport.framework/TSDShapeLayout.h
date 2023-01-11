@@ -4,31 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TSDEditableBezierPathSource, TSDFill, TSDInfoGeometry, TSDLineEnd, TSDMutableStroke, TSDPathSource, TSDShapeInfo, TSUBezierPath;
+@class NSArray, TSDEditableBezierPathSource, TSDFill, TSDInfoGeometry, TSDLineEnd, TSDMutableStroke, TSDPathSource, TSDShapeInfo, TSUBezierPath;
 
 __attribute__((visibility("hidden")))
 @interface TSDShapeLayout
 {
     struct {
         unsigned int path:1;
-        unsigned int pathBounds:1;
-        unsigned int pathBoundsWithoutStroke:1;
         unsigned int pathIsOpen:1;
         unsigned int pathIsLineSegment:1;
-        unsigned int alignmentFrame:1;
-        unsigned int alignmentFrameInRoot:1;
         unsigned int headAndTail:1;
         unsigned int headLineEnd:1;
         unsigned int tailLineEnd:1;
         unsigned int clippedPath:1;
     } mShapeInvalidFlags;
     TSUBezierPath *mCachedPath;
-    struct CGRect mCachedPathBounds;
-    struct CGRect mCachedPathBoundsWithoutStroke;
     _Bool mCachedPathIsOpen;
     _Bool mCachedPathIsLineSegment;
-    struct CGRect mCachedAlignmentFrame;
-    struct CGRect mCachedAlignmentFrameInRoot;
+    CDStruct_5bfcb38a mCachedPathBoundsStruct;
+    CDStruct_5bfcb38a mCachedPathBoundsWithoutStrokeStruct;
+    TSUBezierPath *mCachedClippedPath;
+    CDStruct_5bfcb38a mCachedClippedPathStroked;
+    CDStruct_5bfcb38a mCachedClippedPathRotatedStroked;
+    struct CGAffineTransform mClippedPathRotatedTransform;
+    CDStruct_5bfcb38a mCachedAlignmentFrame;
+    CDStruct_5bfcb38a mCachedAlignmentFrameInRoot;
     struct CGAffineTransform mCachedAlignmentFrameInRootTransformInRoot;
     struct CGPoint mHeadPoint;
     struct CGPoint mTailPoint;
@@ -40,8 +40,8 @@ __attribute__((visibility("hidden")))
     long long mTailCutSegment;
     double mHeadCutT;
     double mTailCutT;
-    TSUBezierPath *mCachedClippedPath;
     TSDPathSource *mShrunkenPathSource;
+    TSDPathSource *mOriginalShrunkenPathSource;
     TSDEditableBezierPathSource *mCachedEditableBezierPathSource;
     TSDPathSource *mCachedPathSource;
     TSDPathSource *mResizePathSource;
@@ -49,11 +49,11 @@ __attribute__((visibility("hidden")))
     TSDInfoGeometry *mInitialInfoGeometry;
     TSDMutableStroke *mDynamicStroke;
     TSDFill *mDynamicFill;
+    NSArray *mDynamicStrokeOffsetArray;
+    _Bool mIsDynamicallyInvisible;
 }
 
-@property(retain, nonatomic) TSDFill *dynamicFill; // @synthesize dynamicFill=mDynamicFill;
 - (void).cxx_destruct;
-- (void)p_updateResizeInfoGeometryFromResizePathSource;
 - (id)p_unitePath:(id)arg1 withLineEndForHead:(_Bool)arg2 stroke:(id)arg3;
 - (struct CGRect)p_boundsOfLineEndForHead:(_Bool)arg1 transform:(struct CGAffineTransform)arg2;
 - (id)p_createClippedPath;
@@ -66,9 +66,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)p_cachedPathIsLineSegment;
 - (_Bool)p_cachedPathIsOpen;
 - (struct CGRect)p_cachedPathBoundsWithoutStroke;
+- (struct CGRect)p_updatedCachedClipRectIfNeededForRotation:(struct CGAffineTransform)arg1;
+- (struct CGRect)p_cachedClippedPathStroked;
 - (struct CGRect)p_cachedPathBounds;
 - (id)p_cachedPath;
-- (void)transferLayoutGeometryToInfo:(id)arg1;
+- (void)validate;
+- (void)transferLayoutGeometryToInfo:(id)arg1 withAdditionalTransform:(struct CGAffineTransform)arg2 assertIfInDocument:(_Bool)arg3;
 - (id)i_computeWrapPathClosed:(_Bool)arg1;
 - (id)i_computeWrapPath;
 @property(readonly, nonatomic) TSDLineEnd *strokeTailLineEnd;
@@ -76,15 +79,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct CGPoint unclippedTailPoint;
 @property(readonly, nonatomic) struct CGPoint unclippedHeadPoint;
 - (_Bool)supportsRotation;
-- (id)initialInfoGeometry;
 - (struct CGSize)minimumSize;
 - (_Bool)supportsResize;
 - (void)invalidatePathBounds;
 - (void)invalidatePath;
 - (void)invalidateFrame;
 - (_Bool)supportsCalloutAttributes;
-@property(readonly, nonatomic) _Bool canResetTextAndObjectHandles;
-@property(readonly, nonatomic) _Bool canBeIntersected;
+- (_Bool)canResetTextAndObjectHandles;
+- (_Bool)canBeIntersected;
 @property(readonly, nonatomic) TSDFill *fill;
 - (void)aliasPathForScale:(double)arg1 originalStroke:(id)arg2 adjustedStroke:(id *)arg3 adjustedPath:(id *)arg4 startDelta:(struct CGPoint *)arg5 endDelta:(struct CGPoint *)arg6;
 - (void)aliasPathForScale:(double)arg1 adjustedStroke:(id *)arg2 adjustedPath:(id *)arg3 startDelta:(struct CGPoint *)arg4 endDelta:(struct CGPoint *)arg5;
@@ -114,11 +116,8 @@ __attribute__((visibility("hidden")))
 - (id)editablePathSource;
 @property(readonly, nonatomic) TSDPathSource *pathSource;
 @property(readonly, nonatomic) TSDShapeInfo *shapeInfo;
-- (_Bool)isStrokeBeingManipulated;
-- (void)dynamicStrokeWidthChangeDidEnd;
-- (void)dynamicStrokeWidthChangeDidBegin;
 - (id)stroke;
-@property(readonly, nonatomic) _Bool shouldAdjustForStrokeWidthForCollabCursor;
+- (_Bool)shouldAdjustForStrokeWidthForCollabCursor;
 - (struct CGRect)frameForCulling;
 - (struct CGRect)boundsForStandardKnobs;
 - (void)processChangedProperty:(int)arg1;
@@ -127,6 +126,9 @@ __attribute__((visibility("hidden")))
 - (void)setGeometry:(id)arg1;
 - (struct CGAffineTransform)computeLayoutTransform;
 - (id)computeLayoutGeometry;
+- (void)invalidate;
+- (id)reliedOnLayouts;
+@property(readonly, nonatomic) _Bool isFreehandDrawingSpacerShape;
 - (id)layoutGeometryFromInfo;
 - (void)dealloc;
 - (id)initWithInfo:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSNumber, NSString, NSTimer;
 
@@ -28,6 +28,7 @@
 - (void)markAllMessagesAsNeedingCloudKitSync;
 - (id)messagesThatNeedSyncWithCloudKitWithLimit:(long long)arg1;
 - (id)_messagesThatNeedSyncWithCloudKitWithLimit:(long long)arg1 attemptCount:(unsigned long long)arg2;
+- (_Bool)_isUsingStingRay;
 - (_Bool)_itemClassShouldUpdateTransferForItem:(id)arg1;
 - (void)loadConsumedSessionPayloadsForItems:(id)arg1;
 - (id)replaceMessageAcknowledgmentsWithNewMessageAcknowledgment:(id)arg1 associatedMessageGUID:(id)arg2 sender:(id)arg3;
@@ -84,6 +85,7 @@
 - (_Bool)canStoreMessage:(id)arg1 onService:(id)arg2;
 - (_Bool)canStoreItem:(id)arg1 onService:(id)arg2;
 - (id)messagesWithGUIDs:(id)arg1;
+- (id)messagesWithAssociatedGUID:(id)arg1 shouldLoadAttachments:(_Bool)arg2;
 - (id)messagesWithAssociatedGUID:(id)arg1;
 - (void)registerTransfersWithGUIDs:(id)arg1 forMessageGUID:(id)arg2;
 - (id)_unreadMessagesWithRoomNames:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3 fallbackGUID:(id)arg4;
@@ -92,9 +94,10 @@
 - (id)_messagesWithRoomNames:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 limit:(unsigned long long)arg4 onlyMessages:(_Bool)arg5;
 - (id)_messagesWithHandles:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 limit:(unsigned long long)arg4 onlyMessages:(_Bool)arg5;
 - (id)_itemsWithGUIDs:(id)arg1;
-- (id)_itemsWithAssociatedGUID:(id)arg1;
+- (id)_itemsWithAssociatedGUID:(id)arg1 shouldLoadAttachments:(_Bool)arg2;
 - (_Bool)_hasMessagesWithGUIDs:(id)arg1;
 - (void)updateUnformattedID:(id)arg1 forBuddyID:(id)arg2 onService:(id)arg3;
+- (id)storeMessage:(id)arg1 forceReplace:(_Bool)arg2 modifyError:(_Bool)arg3 modifyFlags:(_Bool)arg4 flagMask:(unsigned long long)arg5 updateMessageCache:(_Bool)arg6;
 - (id)storeMessage:(id)arg1 forceReplace:(_Bool)arg2 modifyError:(_Bool)arg3 modifyFlags:(_Bool)arg4 flagMask:(unsigned long long)arg5;
 - (id)storeItem:(id)arg1 forceReplace:(_Bool)arg2;
 - (void)updateFileTransfer:(id)arg1;

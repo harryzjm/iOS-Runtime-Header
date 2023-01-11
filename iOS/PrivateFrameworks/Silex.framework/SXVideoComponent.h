@@ -13,7 +13,7 @@
 }
 
 + (id)typeString;
-- (Class)componentViewClass;
+- (unsigned long long)traits;
 - (_Bool)enablePrerollWithValue:(id)arg1 withType:(int)arg2;
 - (double)aspectRatioWithValue:(id)arg1 withType:(int)arg2;
 

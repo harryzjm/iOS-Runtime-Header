@@ -12,7 +12,6 @@
 
 @interface ISDialog : NSObject <SSXPCCoding>
 {
-    _Bool _allowsBioAuthorization;
     _Bool _allowDuplicates;
     SSAuthenticationContext *_authenticationContext;
     _Bool _authorizationIsForced;
@@ -42,6 +41,9 @@
     NSString *_touchIDContinueToken;
 }
 
++ (struct __CFString *)buttonTitleKeyForCFUserNotificationButtonTag:(unsigned long long)arg1;
++ (unsigned long long)buttonTagForCFUserNotificationButtonTitleKey:(struct __CFString *)arg1;
++ (void)_initializeStaticButtonTitleKeyAndTagMapping;
 + (long long)displayCountForKey:(id)arg1;
 @property(copy) NSString *touchIDContinueToken; // @synthesize touchIDContinueToken=_touchIDContinueToken;
 @property(readonly) SSPaymentSheet *paymentSheet; // @synthesize paymentSheet=_paymentSheet;
@@ -70,7 +72,7 @@
 - (id)initWithXPCEncoding:(id)arg1;
 - (long long)_kindForString:(id)arg1;
 - (id)buyParams;
-@property(readonly) _Bool allowsBioAuthorization;
+- (id)orderedButtonTitleKeysForCFUserNotification;
 - (id)valueForUserInfoKey:(id)arg1;
 - (void)setValue:(void *)arg1 forCFUserNotificationKey:(struct __CFString *)arg2;
 - (void)setValue:(id)arg1 forUserInfoKey:(id)arg2;

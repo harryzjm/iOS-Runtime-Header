@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
     struct OpaqueJSClass *m_classRef;
     struct Weak<JSC::JSObject> m_prototype;
     struct Weak<JSC::JSObject> m_constructor;
+    struct Weak<JSC::Structure> m_structure;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (struct Structure *)structureInContext:(id)arg1;
 - (struct JSObject *)prototypeInContext:(id)arg1;
 - (struct JSObject *)constructorInContext:(id)arg1;
 - (struct JSObject *)wrapperForObject:(id)arg1 inContext:(id)arg2;

@@ -12,12 +12,16 @@
 
 @interface IBUIEditorMetrics : NSObject <IBBinaryArchiving>
 {
+    long long _horizontalSizeClass;
+    long long _verticalSizeClass;
     struct CGRect _sceneRect;
     struct CGRect _navigationBarRect;
     struct CGRect _toolbarRect;
     struct CGRect _tabBarRect;
 }
 
+@property(readonly, nonatomic) long long verticalSizeClass; // @synthesize verticalSizeClass=_verticalSizeClass;
+@property(readonly, nonatomic) long long horizontalSizeClass; // @synthesize horizontalSizeClass=_horizontalSizeClass;
 @property(readonly, nonatomic) struct CGRect tabBarRect; // @synthesize tabBarRect=_tabBarRect;
 @property(readonly, nonatomic) struct CGRect toolbarRect; // @synthesize toolbarRect=_toolbarRect;
 @property(readonly, nonatomic) struct CGRect navigationBarRect; // @synthesize navigationBarRect=_navigationBarRect;
@@ -27,7 +31,7 @@
 @property(readonly) unsigned long long hash;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
-- (id)initWithSceneRect:(struct CGRect)arg1 navigationBarRect:(struct CGRect)arg2 toolbarRect:(struct CGRect)arg3 tabBarRect:(struct CGRect)arg4;
+- (id)initWithSceneRect:(struct CGRect)arg1 navigationBarRect:(struct CGRect)arg2 toolbarRect:(struct CGRect)arg3 tabBarRect:(struct CGRect)arg4 horizontalSizeClass:(long long)arg5 verticalSizeClass:(long long)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

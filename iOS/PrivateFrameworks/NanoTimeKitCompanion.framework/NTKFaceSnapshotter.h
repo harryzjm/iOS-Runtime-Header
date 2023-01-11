@@ -6,21 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NTKDelayedBlock, _NTKDFaceSnapshottingWindow;
+@class NTKDelayedBlock, NTKFaceSnapshottingWindow;
 
 @interface NTKFaceSnapshotter : NSObject
 {
-    _NTKDFaceSnapshottingWindow *_snapshotWindow;
+    NTKFaceSnapshottingWindow *_snapshotWindow;
     NTKDelayedBlock *_hideSnapshotWindowBlock;
 }
 
 - (void).cxx_destruct;
 - (void)_hideSnapshotWindow;
-- (void)_showSnapshotWindow;
-- (id)_mainQueue_takeSnapshotOfFace:(id)arg1 snapshotUIOnly:(_Bool)arg2 unadornedContent:(_Bool)arg3 forceLockedUI:(_Bool)arg4 hasBlankComplication:(_Bool *)arg5;
-- (id)createFace:(id)arg1 snapshotUIOnly:(_Bool)arg2 unadornedContent:(_Bool)arg3 forceLockedUI:(_Bool)arg4;
+- (void)_showSnapshotWindowForDevice:(id)arg1;
+- (id)_mainQueue_renderSnapshot;
+- (void)_mainQueue_takeSnapshotOfFace:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)viewControllerForFace:(id)arg1 withOptions:(id)arg2;
 - (void)provideSnapshotOfFace:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)takeSnapshotOfFace:(id)arg1 snapshotUIOnly:(_Bool)arg2 unadornedContent:(_Bool)arg3 forceLockedUI:(_Bool)arg4 hasBlankComplication:(_Bool *)arg5;
+- (void)provideSnapshotOfFace:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

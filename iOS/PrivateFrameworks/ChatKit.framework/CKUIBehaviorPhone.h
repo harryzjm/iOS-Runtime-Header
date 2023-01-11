@@ -8,5 +8,11 @@
 {
 }
 
+- (id)whatsNewViewApplePayImage;
+- (double)whatsNewViewBulletPointTextTrailingAnchorLayoutConstraintConstant;
+- (double)whatsNewViewBulletPointSymbolLeadingAnchorLayoutConstraintConstant;
+- (double)welcomeViewContentViewTopAnchorLayoutConstraintConstant;
+- (double)welcomeViewContentViewLeadingAnchorLayoutConstraintConstant;
+
 @end
 

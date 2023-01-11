@@ -6,17 +6,17 @@
 
 #import <SpringBoardUIServices/NSObject-Protocol.h>
 
-@class BSAnimationSettings, NSString, SBUIProudLockIconView, UIColor;
+@class BSAnimationSettings, NSString, UIColor;
 @protocol SBFLegibilitySettingsProvider, SBUIPasscodeLockViewDelegate;
 
 @protocol SBUIPasscodeLockView <NSObject>
+@property(nonatomic) _Bool proudLockShowsBiometricStates;
 @property(nonatomic) double backgroundAlpha;
 @property(copy, nonatomic) NSString *unlockDestination;
 @property(nonatomic, getter=isScreenOn) _Bool screenOn;
 @property(retain, nonatomic) id <SBFLegibilitySettingsProvider> backgroundLegibilitySettingsProvider;
 @property(retain, nonatomic) UIColor *customBackgroundColor;
-@property(retain, nonatomic) SBUIProudLockIconView *overrideProudLockView;
-@property(nonatomic) _Bool proudLockShowsBiometricStates;
+@property(nonatomic) long long passcodeLockViewState;
 @property(nonatomic) _Bool showsProudLock;
 @property(nonatomic) _Bool biometricPresentationAncillaryButtonsVisible;
 @property(nonatomic) _Bool allowsAutomaticBiometricPresentationTransition;
@@ -34,6 +34,7 @@
 - (void)updateStatusText:(NSString *)arg1 subtitle:(NSString *)arg2 animated:(_Bool)arg3;
 - (void)autofillForSuccessfulMesaAttemptWithCompletion:(void (^)(void))arg1;
 - (void)resetForFailedMesaAttemptWithStatusText:(NSString *)arg1 andSubtitle:(NSString *)arg2;
+- (void)setPasscodeLockViewState:(long long)arg1 animated:(_Bool)arg2;
 - (void)setKeypadVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)reset;
 - (void)resetForScreenOff;

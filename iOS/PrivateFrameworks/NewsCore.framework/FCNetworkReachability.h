@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class CTTelephonyNetworkInfo, FCReachability, NSHashTable, NSString;
+#import <NewsCore/FCNetworkReachabilityType-Protocol.h>
 
-@interface FCNetworkReachability : NSObject
+@class CTTelephonyNetworkInfo, NFReachability, NSHashTable, NSString;
+
+@interface FCNetworkReachability : NSObject <FCNetworkReachabilityType>
 {
     _Bool _isNetworkReachable;
     _Bool _isNetworkReachableViaWiFi;
@@ -23,11 +25,11 @@
     NSHashTable *_observers;
     long long _currentRadioAccessTechnology;
     NSString *_currentCellularCarrierName;
-    FCReachability *_internetReachability;
+    NFReachability *_internetReachability;
 }
 
 + (id)sharedNetworkReachability;
-@property(retain, nonatomic) FCReachability *internetReachability; // @synthesize internetReachability=_internetReachability;
+@property(retain, nonatomic) NFReachability *internetReachability; // @synthesize internetReachability=_internetReachability;
 @property(retain, nonatomic) NSString *currentCellularCarrierName; // @synthesize currentCellularCarrierName=_currentCellularCarrierName;
 @property(nonatomic) long long currentRadioAccessTechnology; // @synthesize currentRadioAccessTechnology=_currentRadioAccessTechnology;
 @property(nonatomic) _Bool accessRestrictedBecauseOfDeviceAbandoned; // @synthesize accessRestrictedBecauseOfDeviceAbandoned=_accessRestrictedBecauseOfDeviceAbandoned;
@@ -55,6 +57,12 @@
 @property(readonly, nonatomic) long long cellularRadioAccessTechnology;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

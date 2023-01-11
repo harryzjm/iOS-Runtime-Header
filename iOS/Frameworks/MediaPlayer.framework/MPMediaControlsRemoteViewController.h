@@ -6,9 +6,12 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
+#import <MediaPlayer/MPMediaControlsClientController-Protocol.h>
+
+@class NSString;
 @protocol MPMediaControlsClientController;
 
-@interface MPMediaControlsRemoteViewController : _UIRemoteViewController
+@interface MPMediaControlsRemoteViewController : _UIRemoteViewController <MPMediaControlsClientController>
 {
     id <MPMediaControlsClientController> _hostViewController;
 }
@@ -17,9 +20,16 @@
 + (id)exportedInterface;
 @property(nonatomic) __weak id <MPMediaControlsClientController> hostViewController; // @synthesize hostViewController=_hostViewController;
 - (void).cxx_destruct;
-- (void)viewServiceDidTerminateWithError:(id)arg1;
+- (void)didSelectRoute:(id)arg1;
 - (void)didReceiveInteraction;
 - (void)dismiss;
+- (void)viewServiceDidTerminateWithError:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

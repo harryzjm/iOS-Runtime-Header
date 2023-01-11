@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSATSTypesetter;
 
@@ -28,6 +28,7 @@
     } _flags;
 }
 
+@property(readonly, getter=isElasticOnly) _Bool elasticOnly;
 - (_Bool)hasElasticRange;
 - (void)justifyWithFactor:(double)arg1;
 - (void)saveWithGlyphOrigin:(double)arg1;

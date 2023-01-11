@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICStoreDialogResponse, ICURLBag, NSArray, NSData, NSDate, NSDictionary, NSError;
+@class ICStoreDialogResponse, ICURLBag, NSArray, NSData, NSDate, NSDictionary, NSError, NSString;
 
 @interface ICMusicSubscriptionPlaybackResponse : NSObject
 {
@@ -16,12 +16,14 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSDictionary *metricsDictionary;
 @property(readonly, copy, nonatomic) NSData *subscriptionKeyBagData;
 @property(readonly, copy, nonatomic) NSError *serverError;
 @property(readonly, copy, nonatomic) NSData *leaseInfoData;
 - (id)itemWithStoreAdamID:(long long)arg1;
 @property(readonly, copy, nonatomic) NSArray *items;
 @property(readonly, copy, nonatomic) NSDate *leaseExpirationDate;
+@property(readonly, copy, nonatomic) NSString *householdID;
 @property(readonly, copy, nonatomic) ICStoreDialogResponse *dialog;
 - (id)initWithResponseDictionary:(id)arg1 requestDate:(id)arg2 urlBag:(id)arg3;
 

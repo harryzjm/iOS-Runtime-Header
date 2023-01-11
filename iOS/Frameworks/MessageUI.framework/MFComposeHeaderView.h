@@ -45,6 +45,8 @@
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 @property(copy, nonatomic) NSString *label; // @dynamic label;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)labelColor;
 - (double)labelTopPadding;

@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class IBBinaryArchiverObjectIDTable, NSArray, NSDictionary, NSMutableArray;
+@class NSArray, NSDictionary, NSMapTable, NSMutableArray;
 @protocol IBObjectRepresentationTranslator;
 
 @interface IBBinaryArchiver : NSObject
 {
-    IBBinaryArchiverObjectIDTable *_objectToOIDMap;
+    NSMapTable *_objectToOIDMap;
     struct {
         unsigned long long length;
         unsigned long long capacity;
@@ -57,6 +57,7 @@
 @property(readonly, nonatomic) __weak NSObject<IBObjectRepresentationTranslator> *currentObjectTranslationDelegate;
 - (void)dealloc;
 - (id)initWithContext:(id)arg1;
+- (id)init;
 
 @end
 

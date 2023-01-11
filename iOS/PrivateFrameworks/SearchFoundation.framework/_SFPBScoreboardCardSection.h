@@ -13,7 +13,6 @@
 
 @interface _SFPBScoreboardCardSection : PBCodable <_SFPBScoreboardCardSection, NSSecureCoding>
 {
-    CDStruct_5ff9a38c _has;
     _Bool _canBeHidden;
     _Bool _hasTopPadding;
     _Bool _hasBottomPadding;
@@ -28,8 +27,10 @@
     _SFPBSportsTeam *_team1;
     _SFPBSportsTeam *_team2;
     NSString *_accessibilityDescription;
+    NSString *_eventStatus;
 }
 
+@property(copy, nonatomic) NSString *eventStatus; // @synthesize eventStatus=_eventStatus;
 @property(copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
 @property(retain, nonatomic) _SFPBSportsTeam *team2; // @synthesize team2=_team2;
 @property(retain, nonatomic) _SFPBSportsTeam *team1; // @synthesize team1=_team1;
@@ -53,19 +54,6 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-@property(readonly, nonatomic) _Bool hasAccessibilityDescription;
-@property(readonly, nonatomic) _Bool hasTeam2;
-@property(readonly, nonatomic) _Bool hasTeam1;
-@property(readonly, nonatomic) _Bool hasSubtitle;
-@property(readonly, nonatomic) _Bool hasTitle;
-@property(readonly, nonatomic) _Bool hasBackgroundColor;
-@property(readonly, nonatomic) _Bool hasSeparatorStyle;
-@property(readonly, nonatomic) _Bool hasType;
-@property(readonly, nonatomic) _Bool hasHasBottomPadding;
-@property(readonly, nonatomic) _Bool hasHasTopPadding;
-@property(readonly, nonatomic) _Bool hasCanBeHidden;
-@property(readonly, nonatomic) _Bool hasPunchoutPickerDismissText;
-@property(readonly, nonatomic) _Bool hasPunchoutPickerTitle;
 - (id)punchoutOptionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)punchoutOptionsCount;
 - (void)addPunchoutOptions:(id)arg1;

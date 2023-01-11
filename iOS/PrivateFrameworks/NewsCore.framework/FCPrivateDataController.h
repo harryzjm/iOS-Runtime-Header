@@ -9,12 +9,13 @@
 #import <NewsCore/FCCKZonePruningAssistant-Protocol.h>
 #import <NewsCore/FCCKZoneRestorationSource-Protocol.h>
 #import <NewsCore/FCCommandQueueDelegate-Protocol.h>
+#import <NewsCore/FCJSONEncodableObjectProviding-Protocol.h>
 #import <NewsCore/FCPrivateRecordSyncManagerDelegate-Protocol.h>
 #import <NewsCore/FCPrivateZoneSyncManagerDelegate-Protocol.h>
 
 @class FCAsyncSerialQueue, FCCloudContext, FCCommandQueue, FCKeyValueStore, FCPushNotificationCenter, NSArray, NSHashTable, NSString;
 
-@interface FCPrivateDataController : NSObject <FCPrivateZoneSyncManagerDelegate, FCPrivateRecordSyncManagerDelegate, FCCommandQueueDelegate, FCCKZoneRestorationSource, FCCKZonePruningAssistant>
+@interface FCPrivateDataController : NSObject <FCJSONEncodableObjectProviding, FCPrivateZoneSyncManagerDelegate, FCPrivateRecordSyncManagerDelegate, FCCommandQueueDelegate, FCCKZoneRestorationSource, FCCKZonePruningAssistant>
 {
     _Bool _waitingForFirstSync;
     _Bool _preparedForUse;
@@ -46,6 +47,7 @@
 + (_Bool)requiresHighPriorityFirstSync;
 + (_Bool)requiresBatchedSync;
 + (_Bool)requiresPushNotificationSupport;
++ (void)configureKeyValueStoreForJSONHandling:(id)arg1;
 @property(readonly, nonatomic) FCKeyValueStore *localStore; // @synthesize localStore=_localStore;
 @property(readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(readonly, nonatomic) FCCloudContext *context; // @synthesize context=_context;
@@ -71,12 +73,15 @@
 - (void)recordSyncManager:(id)arg1 stateDidChange:(id)arg2;
 - (void)zoneSyncManagerNotifyObservers:(id)arg1;
 - (void)zoneSyncManager:(id)arg1 stateDidChange:(id)arg2;
+- (unsigned long long)softMaxRecordCountWhenMigratingZoneName:(id)arg1;
+- (double)softMaxRecordAgeWhenMigratingZoneName:(id)arg1;
 - (id)pruneRecords:(id)arg1 forZoneName:(id)arg2;
 - (_Bool)canHelpPruneZoneName:(id)arg1;
 - (id)recordsForRestoringZoneName:(id)arg1;
 - (_Bool)canHelpRestoreZoneName:(id)arg1;
 - (void)loadLocalCachesFromStore;
 - (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordIDs:(id)arg2;
+- (void)handleSyncCompletion;
 - (void)manualDirty;
 @property(readonly, nonatomic, getter=isDirty) _Bool dirty;
 - (void)forceSyncWithCompletion:(CDUnknownBlockType)arg1;
@@ -93,11 +98,14 @@
 - (void)dealloc;
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
 - (id)init;
+- (void)_possiblySimulateCrashWithMessage:(id)arg1;
+- (void)assertReadyForUse;
 - (void)prepareForUse;
 - (void)mergeLocalStoreWithCloud;
 - (void)createLocalStore;
 - (void)disableSyncing;
 - (void)enableSyncing;
+- (id)jsonEncodableObject;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

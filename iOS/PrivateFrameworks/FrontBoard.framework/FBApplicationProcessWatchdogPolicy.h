@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBProcessWatchdogProviding-Protocol.h>
 
@@ -27,6 +27,7 @@
 + (double)_defaultLaunchScale;
 + (double)_scaleForGestaltKey:(struct __CFString *)arg1;
 + (id)defaultPolicy;
+- (void).cxx_destruct;
 - (id)watchdogPolicyForProcess:(id)arg1 eventContext:(id)arg2;
 - (double)_queue_watchdogScalingFactorForAppInfo:(id)arg1 isResume:(_Bool)arg2;
 - (void)_queue_reloadDefaultSettings;

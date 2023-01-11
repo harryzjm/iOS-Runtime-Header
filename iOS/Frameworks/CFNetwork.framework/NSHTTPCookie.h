@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSDate, NSDictionary, NSHTTPCookieInternal, NSString, NSURL;
 
@@ -36,6 +36,7 @@
 - (id)Secure;
 - (id)Version;
 - (id)OriginURL;
+- (id)SameSite;
 - (id)StoragePartition;
 - (id)CommentURL;
 - (id)Comment;
@@ -44,6 +45,7 @@
 - (id)Domain;
 - (id)Value;
 - (id)Name;
+- (id)sameSitePolicy;
 - (id)_storagePartition;
 @property(readonly, copy) NSArray *portList;
 @property(readonly, copy) NSURL *commentURL;

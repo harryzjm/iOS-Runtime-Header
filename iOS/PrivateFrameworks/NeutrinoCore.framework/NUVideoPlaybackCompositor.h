@@ -9,7 +9,6 @@
 }
 
 - (void)fulfillVideoCompositionRequest:(id)arg1;
-- (void)failVideoCompositionRequest:(id)arg1 error:(id)arg2;
 
 @end
 

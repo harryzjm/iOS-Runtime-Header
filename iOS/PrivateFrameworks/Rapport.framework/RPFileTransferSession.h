@@ -4,21 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSUUID;
+#import <objc/NSObject.h>
 
-@interface RPFileTransferSession
+@class NSArray, NSUUID, RPDevice, RPSession;
+@protocol OS_dispatch_queue;
+
+@interface RPFileTransferSession : NSObject
 {
-    NSUUID *_transferIdentifier;
+    NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _errorHandler;
+    RPDevice *_peerDevice;
     CDUnknownBlockType _progressHandler;
+    RPSession *_session;
+    NSUUID *_transferIdentifier;
+    NSArray *_urls;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
-@property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
+@property(copy, nonatomic) NSArray *urls; // @synthesize urls=_urls;
 @property(copy, nonatomic) NSUUID *transferIdentifier; // @synthesize transferIdentifier=_transferIdentifier;
+@property(retain, nonatomic) RPSession *session; // @synthesize session=_session;
+@property(copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
+@property(retain, nonatomic) RPDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
+@property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 - (void).cxx_destruct;
-- (void)_invalidate;
-- (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)invalidate;
+- (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addFileURL:(id)arg1;
 - (void)_cleanup;
 - (id)init;

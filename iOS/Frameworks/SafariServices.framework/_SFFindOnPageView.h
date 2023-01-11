@@ -10,7 +10,7 @@
 #import <SafariServices/_SFFindOnPageToolbarDelegate-Protocol.h>
 #import <SafariServices/_WKFindDelegate-Protocol.h>
 
-@class NSString, WKWebView, _SFFindOnPageToolbar;
+@class NSString, UITextInputPasswordRules, WKWebView, _SFFindOnPageToolbar;
 @protocol _SFFindOnPageViewDelegate;
 
 @interface _SFFindOnPageView : UIView <_SFFindOnPageToolbarDelegate, _WKFindDelegate, UIKeyInput>
@@ -45,11 +45,13 @@
 - (void)next;
 - (void)previous;
 - (id)textForToolbarLabel;
-- (void)getShortMatchLabelText:(id *)arg1 longMatchLabelText:(id *)arg2;
+- (id)longMatchLabelText;
+- (id)matchLabelText;
 - (void)_webView:(id)arg1 didFailToFindString:(id)arg2;
 - (void)_webView:(id)arg1 didFindMatches:(unsigned long long)arg2 forString:(id)arg3 withMatchIndex:(long long)arg4;
 - (void)_webView:(id)arg1 didCountMatches:(unsigned long long)arg2 forString:(id)arg3;
 - (void)_setFindingInWebViewIfNeeded;
+- (void)selectFindOnPageText;
 - (void)dismissFindOnPage;
 - (void)prepareFindOnPageWithString:(id)arg1;
 - (void)_advance:(id)arg1;
@@ -79,6 +81,7 @@
 @property(readonly) unsigned long long hash;
 @property(nonatomic) long long keyboardAppearance;
 @property(nonatomic) long long keyboardType;
+@property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property(nonatomic) long long returnKeyType;
 @property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry;
 @property(nonatomic) long long smartDashesType;

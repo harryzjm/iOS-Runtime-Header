@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVCapturePhotoSettings, AVCaptureResolvedPhotoSettings, AVWeakReferencingDelegateStorage, NSArray;
 
@@ -19,9 +19,15 @@
     unsigned long long _firedPhotoCallbacksCount;
     void *_previewSurface;
     struct opaqueCMSampleBuffer *_previewSampleBuffer;
+    void *_thumbnailSurface;
+    _Bool _delegateSupportsDebugMetadataSidecarFile;
+    _Bool _lensStabilizationSupported;
 }
 
-+ (id)requestWithDelegate:(id)arg1 settings:(id)arg2;
++ (id)requestWithDelegate:(id)arg1 settings:(id)arg2 lensStabilizationSupported:(_Bool)arg3;
+@property(readonly) _Bool lensStabilizationSupported; // @synthesize lensStabilizationSupported=_lensStabilizationSupported;
+@property(readonly) _Bool delegateSupportsDebugMetadataSidecarFile; // @synthesize delegateSupportsDebugMetadataSidecarFile=_delegateSupportsDebugMetadataSidecarFile;
+@property(retain, nonatomic) void *thumbnailSurface; // @synthesize thumbnailSurface=_thumbnailSurface;
 @property(retain, nonatomic) struct opaqueCMSampleBuffer *previewSampleBuffer; // @synthesize previewSampleBuffer=_previewSampleBuffer;
 @property(retain, nonatomic) void *previewSurface; // @synthesize previewSurface=_previewSurface;
 @property(nonatomic) unsigned long long firedPhotoCallbacksCount; // @synthesize firedPhotoCallbacksCount=_firedPhotoCallbacksCount;
@@ -34,7 +40,7 @@
 @property(retain, nonatomic) AVCaptureResolvedPhotoSettings *resolvedSettings;
 @property(readonly, nonatomic) unsigned long long expectedPhotoCount;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1 settings:(id)arg2;
+- (id)initWithDelegate:(id)arg1 settings:(id)arg2 lensStabilizationSupported:(_Bool)arg3;
 
 @end
 

@@ -11,7 +11,6 @@
 }
 
 + (id)sharedTrainer;
-- (_Bool)_saveUtterance:(id)arg1 meta:(id)arg2 to:(id)arg3;
 - (_Bool)trainUtterance:(id)arg1 languageCode:(id)arg2;
 
 @end

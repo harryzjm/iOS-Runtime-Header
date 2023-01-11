@@ -32,10 +32,12 @@
 + (id)imageForCharacter:(unsigned int)arg1 highlighted:(_Bool)arg2 whiteVersion:(_Bool)arg3;
 + (id)localizedLettersForCharacter:(unsigned int)arg1;
 + (_Bool)usesBoldAssets;
++ (_Bool)usesButtonSaturationFilters;
 + (_Bool)usesTelephonyGlyphsWhereAvailable;
 + (id)imageForCharacter:(unsigned int)arg1 highlighted:(_Bool)arg2;
 + (id)imageForCharacter:(unsigned int)arg1;
 + (struct UIEdgeInsets)paddingOutsideRing;
++ (_Bool)useLargeFont;
 + (double)outerCircleDiameter;
 + (struct CGRect)circleBounds;
 + (struct CGSize)defaultSize;

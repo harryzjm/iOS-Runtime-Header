@@ -6,6 +6,7 @@
 
 @class AVAssetTrack, AVWeakReference, NSDictionary;
 
+__attribute__((visibility("hidden")))
 @interface AVMediaSelectionTrackOption
 {
     id _groupID;

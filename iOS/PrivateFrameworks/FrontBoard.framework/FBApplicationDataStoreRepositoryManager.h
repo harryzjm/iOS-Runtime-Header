@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBApplicationDataStoreRepositoryDelegate-Protocol.h>
 
@@ -22,10 +22,10 @@
 + (id)sharedInstance;
 @property(retain, nonatomic) LSApplicationWorkspace *lsApplicationWorkspace; // @synthesize lsApplicationWorkspace=_lsApplicationWorkspace;
 @property(retain, nonatomic) id <FBApplicationDataStoreRepository> dataStore; // @synthesize dataStore=_dataStore;
+- (void).cxx_destruct;
 - (void)storeInvalidatedForIdentifier:(id)arg1;
 - (void)objectChangedForKeys:(id)arg1 application:(id)arg2;
 - (void)_performAfterDeferredWork:(CDUnknownBlockType)arg1;
-- (void)_handleApplicationsUninstalled:(id)arg1;
 - (void)_handleApplicationInstalled:(id)arg1;
 - (id)_safeObjectForKey:(id)arg1 forApplication:(id)arg2 ofType:(Class)arg3;
 - (void)clearExpiredUninstalledApplicationsFromStoreIfNecessary;

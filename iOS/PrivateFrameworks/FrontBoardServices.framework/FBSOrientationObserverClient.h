@@ -12,10 +12,13 @@
     unsigned int _interest;
 }
 
+- (void).cxx_destruct;
 - (void)handleMessage:(id)arg1 withType:(long long)arg2;
 - (void)configureConnectMessage:(id)arg1;
+- (void)_getActiveInterfaceOrientationSynchronously:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)registerOrientationInterest:(unsigned int)arg1;
 - (void)activeInterfaceOrientationWithCompletion:(CDUnknownBlockType)arg1;
+- (long long)activeInterfaceOrientation;
 - (void)invalidate;
 - (id)initWithDelegate:(id)arg1 calloutQueue:(id)arg2;
 

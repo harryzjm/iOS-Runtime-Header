@@ -53,7 +53,6 @@ __attribute__((visibility("hidden")))
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)referenceColor;
-- (SEL)mapThemeAssetSelector;
 - (id)presetKind;
 - (int)fillType;
 - (void)applyToCAShapeLayer:(id)arg1 withScale:(double)arg2;
@@ -63,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (void)paintRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (_Bool)drawsInOneStep;
+- (_Bool)requiresOutlineOnBackgroundWithAppearance:(unsigned long long)arg1;
 - (_Bool)isNearlyWhite;
 - (_Bool)isClear;
 - (_Bool)isOpaque;

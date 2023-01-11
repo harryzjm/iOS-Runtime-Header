@@ -6,17 +6,16 @@
 
 #import <HomeKit/_HMCameraSnapshotControlDelegate-Protocol.h>
 
-@class HMCameraSnapshot, NSObject, NSString, _HMCameraSnapshotControl;
-@protocol HMCameraSnapshotControlDelegate, OS_dispatch_queue;
+@class HMCameraSnapshot, HMFUnfairLock, NSString, _HMCameraSnapshotControl;
+@protocol HMCameraSnapshotControlDelegate;
 
 @interface HMCameraSnapshotControl <_HMCameraSnapshotControlDelegate>
 {
+    HMFUnfairLock *_lock;
     id <HMCameraSnapshotControlDelegate> _delegate;
     _HMCameraSnapshotControl *_snapshotControl;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property(retain, nonatomic) _HMCameraSnapshotControl *snapshotControl; // @synthesize snapshotControl=_snapshotControl;
 - (void).cxx_destruct;
 - (void)cameraSnapshotControlDidUpdateMostRecentSnapshot:(id)arg1;

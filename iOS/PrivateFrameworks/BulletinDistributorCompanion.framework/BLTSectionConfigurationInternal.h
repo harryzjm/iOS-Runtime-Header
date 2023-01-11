@@ -15,6 +15,12 @@
 
 - (void).cxx_destruct;
 - (id)_loadConfigurations;
+- (_Bool)hasSectionIDOptedOutOfSubtitleRemovalForOlderWatches:(id)arg1;
+- (id)additionalBridgeSectionIDsForSectionID:(id)arg1;
+- (id)watchVersionThatUsesUserInfoForContextForSectionID:(id)arg1;
+- (unsigned long long)legacyMapLocationForSectionID:(id)arg1;
+- (_Bool)applyWhitelistToChildSections:(id)arg1;
+- (_Bool)hasSectionIDOptedOutOfNotificationTuning:(id)arg1;
 - (_Bool)hasSectionIDOptedOutOfWaitForUserIdle:(id)arg1;
 - (_Bool)shouldSectionIDAlwaysAlert:(id)arg1;
 - (_Bool)shouldSectionIDSettingsAlwaysSync:(id)arg1;

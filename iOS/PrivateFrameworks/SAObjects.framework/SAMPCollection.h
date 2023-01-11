@@ -13,6 +13,7 @@
 + (id)collectionWithDictionary:(id)arg1 context:(id)arg2;
 + (id)collection;
 @property(copy, nonatomic) NSArray *items;
+@property(nonatomic) _Bool editable;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

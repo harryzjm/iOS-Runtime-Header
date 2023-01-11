@@ -8,11 +8,12 @@
 
 #import <Sharing/HMAccessoryBrowserDelegate-Protocol.h>
 #import <Sharing/HMHomeManagerDelegate-Protocol.h>
+#import <Sharing/HMHomeManagerDelegatePrivate-Protocol.h>
 
-@class HMAccessory, HMAccessoryBrowser, HMDeviceSetupOperation, HMHome, HMHomeManager, HMRoom, NSDictionary, NSString, TROperationQueue, TRSession;
+@class ACAccount, HMAccessory, HMAccessoryBrowser, HMDeviceSetupOperation, HMHome, HMHomeManager, HMRoom, NSDictionary, NSString, TROperationQueue, TRSession;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface SFDeviceOperationHomeKitSetup : NSObject <HMAccessoryBrowserDelegate, HMHomeManagerDelegate>
+@interface SFDeviceOperationHomeKitSetup : NSObject <HMAccessoryBrowserDelegate, HMHomeManagerDelegate, HMHomeManagerDelegatePrivate>
 {
     _Bool _active;
     _Bool _paused;
@@ -26,21 +27,24 @@
     _Bool _homeAppInstallUserDidChoose;
     HMDeviceSetupOperation *_homeKitDeviceSetupOperation;
     HMAccessory *_homeKitAccessory;
+    _Bool _reselectHome;
     HMRoom *_homeKitSelectedRoom;
     _Bool _homeKitAddedAccessory;
     _Bool _homeKitAddedAppData;
-    _Bool _configuredStereoPairSelf;
-    _Bool _configuredStereoPairPeer;
+    _Bool _configuredStereoPair;
+    _Bool _personalRequestsDone;
     _Bool _hasHomePod;
     _Bool _keyExchangeOnly;
     _Bool _pauseAfterUserInput;
+    _Bool _personalRequestsEnabled;
     int _stereoRole;
     NSDictionary *_appDataSelf;
-    NSDictionary *_appDataStereoCounterpart;
     CDUnknownBlockType _completionHandler;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     HMHome *_homeKitSelectedHome;
     NSString *_homeKitSelectedRoomName;
+    NSString *_iTunesAccountID;
+    ACAccount *_iTunesAccount;
     double _metricNonUserSeconds;
     double _metricUserSeconds;
     CDUnknownBlockType _pauseHandler;
@@ -48,54 +52,58 @@
     CDUnknownBlockType _promptForRoomHandler;
     CDUnknownBlockType _promptToInstallHomeAppHandler;
     HMAccessory *_stereoCounterpart;
-    NSString *_tightSyncGroupID;
     TRSession *_trSession;
 }
 
 @property(retain, nonatomic) TRSession *trSession; // @synthesize trSession=_trSession;
-@property(copy, nonatomic) NSString *tightSyncGroupID; // @synthesize tightSyncGroupID=_tightSyncGroupID;
 @property(nonatomic) int stereoRole; // @synthesize stereoRole=_stereoRole;
 @property(retain, nonatomic) HMAccessory *stereoCounterpart; // @synthesize stereoCounterpart=_stereoCounterpart;
 @property(copy, nonatomic) CDUnknownBlockType promptToInstallHomeAppHandler; // @synthesize promptToInstallHomeAppHandler=_promptToInstallHomeAppHandler;
 @property(copy, nonatomic) CDUnknownBlockType promptForRoomHandler; // @synthesize promptForRoomHandler=_promptForRoomHandler;
 @property(copy, nonatomic) CDUnknownBlockType promptForHomeHandler; // @synthesize promptForHomeHandler=_promptForHomeHandler;
+@property(nonatomic) _Bool personalRequestsEnabled; // @synthesize personalRequestsEnabled=_personalRequestsEnabled;
 @property(copy, nonatomic) CDUnknownBlockType pauseHandler; // @synthesize pauseHandler=_pauseHandler;
 @property(nonatomic) _Bool pauseAfterUserInput; // @synthesize pauseAfterUserInput=_pauseAfterUserInput;
 @property(readonly, nonatomic) double metricUserSeconds; // @synthesize metricUserSeconds=_metricUserSeconds;
 @property(readonly, nonatomic) double metricNonUserSeconds; // @synthesize metricNonUserSeconds=_metricNonUserSeconds;
 @property(nonatomic) _Bool keyExchangeOnly; // @synthesize keyExchangeOnly=_keyExchangeOnly;
+@property(retain, nonatomic) ACAccount *iTunesAccount; // @synthesize iTunesAccount=_iTunesAccount;
+@property(copy, nonatomic) NSString *iTunesAccountID; // @synthesize iTunesAccountID=_iTunesAccountID;
 @property(readonly, copy, nonatomic) NSString *homeKitSelectedRoomName; // @synthesize homeKitSelectedRoomName=_homeKitSelectedRoomName;
 @property(readonly, nonatomic) HMHome *homeKitSelectedHome; // @synthesize homeKitSelectedHome=_homeKitSelectedHome;
 @property(readonly, nonatomic) _Bool hasHomePod; // @synthesize hasHomePod=_hasHomePod;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property(copy, nonatomic) NSDictionary *appDataStereoCounterpart; // @synthesize appDataStereoCounterpart=_appDataStereoCounterpart;
 @property(copy, nonatomic) NSDictionary *appDataSelf; // @synthesize appDataSelf=_appDataSelf;
 - (void).cxx_destruct;
+- (void)_updateAccount;
 - (void)_updateHomeHasHomePod;
 - (void)_restoreHomeApp;
+- (void)_removeSimilarRoomNames:(id)arg1 home:(id)arg2;
+- (id)_normalizedString:(id)arg1;
+- (id)_mediaSystemForAccessory:(id)arg1;
 - (_Bool)_isOwnerOfHome:(id)arg1;
-- (void)_findStereoCounterpartWithCompletion:(CDUnknownBlockType)arg1;
-- (void)findStereoCounterpartWithCompletion:(CDUnknownBlockType)arg1;
+- (id)findStereoCounterparts;
+- (void)homeManager:(id)arg1 didUpdateStatus:(unsigned long long)arg2;
 - (void)homeManagerDidUpdateHomes:(id)arg1;
 - (void)homeManagerDidUpdateDataSyncState:(id)arg1;
 - (void)accessoryBrowser:(id)arg1 didRemoveNewAccessory:(id)arg2;
 - (void)accessoryBrowser:(id)arg1 didFindNewAccessory:(id)arg2;
-- (_Bool)_runHomeKitConfigureStereoPairPeer;
-- (_Bool)_runHomeKitConfigureStereoPairSelf;
+- (void)_runPersonalRequestsStart;
+- (_Bool)_runHomeKitConfigureStereoPairAndReturnError:(id *)arg1;
 - (void)_runHomeKitAddAppData;
 - (void)_runHomeKitAssignRoom;
 - (void)_runHomeKitSetupRoom;
 - (void)_runHomeKitAddAccessory;
 - (void)_runHomeKitSelectRoom;
 - (void)_runHomeKitAddHome;
-- (id)_runHomeKitAutoSelectHome;
+- (id)_runHomeKitAutoSelectHome:(_Bool)arg1;
 - (void)_runHomeKitDeviceSetup;
-- (void)_runHomeKitInstallHomeApp;
 - (void)_runInit;
 - (void)_run;
 - (void)_startTimeout:(double)arg1;
 - (void)selectRoom:(id)arg1;
+- (void)reselectHome;
 - (void)selectHome:(id)arg1;
 - (void)resume;
 - (void)homeAppInstallChoice:(_Bool)arg1;

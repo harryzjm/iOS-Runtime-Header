@@ -6,11 +6,12 @@
 
 #import <AnnotationKit/NSObject-Protocol.h>
 
-@class PKInlineColorPicker;
+@class PKInlineColorPicker, UIViewController;
 
 @protocol PKInlineColorPickerDelegate <NSObject>
 
 @optional
+- (UIViewController *)viewControllerForPopoverPresentationFromColorPicker:(PKInlineColorPicker *)arg1;
 - (void)colorPickerDidSelectColor:(PKInlineColorPicker *)arg1 colorChanged:(_Bool)arg2;
 - (void)colorPickerColorTappedInCompactChooseToolState:(PKInlineColorPicker *)arg1;
 @end

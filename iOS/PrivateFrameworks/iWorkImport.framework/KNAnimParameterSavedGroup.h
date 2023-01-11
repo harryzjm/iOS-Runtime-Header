@@ -4,29 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <iWorkImport/NSCoding-Protocol.h>
+#import <iWorkImport/NSSecureCoding-Protocol.h>
 
 @class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface KNAnimParameterSavedGroup : NSObject <NSCoding>
+@interface KNAnimParameterSavedGroup : NSObject <NSSecureCoding>
 {
     NSString *_name;
     NSString *_version;
     NSMutableDictionary *_parameters;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(retain, nonatomic) NSMutableDictionary *parameters; // @synthesize parameters=_parameters;
 @property(copy, nonatomic) NSString *version; // @synthesize version=_version;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+- (void).cxx_destruct;
 - (id)parameterForName:(id)arg1;
-- (id)allParameterNames;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)dealloc;
 
 @end
 

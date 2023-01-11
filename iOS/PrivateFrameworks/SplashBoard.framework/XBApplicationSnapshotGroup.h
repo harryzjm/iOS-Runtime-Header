@@ -7,17 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <SplashBoard/BSDescriptionProviding-Protocol.h>
-#import <SplashBoard/NSCoding-Protocol.h>
+#import <SplashBoard/NSSecureCoding-Protocol.h>
 
 @class NSMutableSet, NSSet, NSString, XBSnapshotContainerIdentity;
 
-@interface XBApplicationSnapshotGroup : NSObject <NSCoding, BSDescriptionProviding>
+@interface XBApplicationSnapshotGroup : NSObject <NSSecureCoding, BSDescriptionProviding>
 {
     NSString *_identifier;
     XBSnapshotContainerIdentity *_containerIdentity;
     NSMutableSet *_snapshots;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(readonly, copy, nonatomic) NSSet *snapshots; // @synthesize snapshots=_snapshots;
 @property(copy) XBSnapshotContainerIdentity *containerIdentity; // @synthesize containerIdentity=_containerIdentity;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

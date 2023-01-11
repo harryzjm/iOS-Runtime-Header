@@ -10,12 +10,14 @@
 
 @interface IBICIdiom <IBICCoreUISlotComponent>
 {
+    _Bool _isMarketingIdiom;
     NSString *_platform;
     long long _coreUIIdiom;
     NSString *_infoPlistSuffix;
 }
 
 + (id)identifierFromFileName:(id)arg1 inRange:(struct _NSRange *)arg2;
++ (id)itemWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 platform:(id)arg4 isMarketingIdiom:(_Bool)arg5 coreUIIdiom:(long long)arg6 infoPlistSuffix:(id)arg7 displayOrder:(double)arg8;
 + (id)itemWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 platform:(id)arg4 coreUIIdiom:(long long)arg5 infoPlistSuffix:(id)arg6 displayOrder:(double)arg7;
 + (id)itemWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 platform:(id)arg4 coreUIIdiom:(long long)arg5 displayOrder:(double)arg6;
 + (id)displayName;
@@ -23,6 +25,7 @@
 + (id)unspecifiedValuePlaceholder;
 + (void)setComponentID:(long long)arg1;
 + (long long)componentID;
+@property(readonly) _Bool isMarketingIdiom; // @synthesize isMarketingIdiom=_isMarketingIdiom;
 @property(readonly) NSString *infoPlistSuffix; // @synthesize infoPlistSuffix=_infoPlistSuffix;
 @property(readonly) long long coreUIIdiom; // @synthesize coreUIIdiom=_coreUIIdiom;
 @property(readonly) NSString *platform; // @synthesize platform=_platform;
@@ -33,7 +36,7 @@
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) long long coreUIValue;
 - (_Bool)isEqualToSlotComponentCounterpartWithKnownEqualClass:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 platform:(id)arg4 coreUIIdiom:(long long)arg5 infoPlistSuffix:(id)arg6 displayOrder:(double)arg7;
+- (id)initWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 platform:(id)arg4 isMarketingIdiom:(_Bool)arg5 coreUIIdiom:(long long)arg6 infoPlistSuffix:(id)arg7 displayOrder:(double)arg8;
 - (long long)componentID;
 
 // Remaining properties

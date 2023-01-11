@@ -9,6 +9,7 @@
 @class CLKFont;
 
 @protocol NTKUtilityComplicationFactoryDelegate <NSObject>
+- (_Bool)slotUsesCurvedText:(long long)arg1;
 - (CLKFont *)utilityDateComplicationFontForDateStyle:(unsigned long long)arg1;
 @end
 

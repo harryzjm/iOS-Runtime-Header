@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/ICEnvironmentMonitorObserver-Protocol.h>
 
@@ -28,7 +28,6 @@
 @property(readonly, nonatomic) long long effectiveNetworkTypeForPlayback;
 - (void)adjustEffectiveNetworkTypeUsingPreviouslyPlayedItem:(id)arg1;
 - (void)environmentMonitorDidChangeNetworkType:(id)arg1;
-- (void)dealloc;
 - (id)init;
 
 // Remaining properties

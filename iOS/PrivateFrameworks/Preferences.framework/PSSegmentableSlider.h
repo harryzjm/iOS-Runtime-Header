@@ -6,7 +6,7 @@
 
 #import <UIKit/UISlider.h>
 
-@class UIColor, _UIFeedbackRetargetBehavior;
+@class UIColor, UISelectionFeedbackGenerator;
 
 @interface PSSegmentableSlider : UISlider
 {
@@ -15,10 +15,10 @@
     _Bool _locksToSegment;
     _Bool _snapsToSegment;
     unsigned long long _segmentCount;
-    _UIFeedbackRetargetBehavior *_retargetFeedback;
+    UISelectionFeedbackGenerator *_feedbackGenerator;
 }
 
-@property(retain, nonatomic) _UIFeedbackRetargetBehavior *retargetFeedback; // @synthesize retargetFeedback=_retargetFeedback;
+@property(retain, nonatomic) UISelectionFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property(nonatomic) unsigned long long segmentCount; // @synthesize segmentCount=_segmentCount;
 @property(nonatomic) _Bool snapsToSegment; // @synthesize snapsToSegment=_snapsToSegment;
 @property(nonatomic) _Bool locksToSegment; // @synthesize locksToSegment=_locksToSegment;
@@ -26,7 +26,7 @@
 - (void).cxx_destruct;
 - (void)controlInteractionEnded:(id)arg1;
 - (void)controlInteractionBegan:(id)arg1;
-- (struct CGRect)trackRectForBounds:(struct CGRect)arg1;
+- (struct CGRect)thumbRectForBounds:(struct CGRect)arg1 trackRect:(struct CGRect)arg2 value:(float)arg3;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)setValue:(float)arg1 animated:(_Bool)arg2;
 - (float)offsetBetweenTicksForNumberOfTicks:(unsigned long long)arg1;

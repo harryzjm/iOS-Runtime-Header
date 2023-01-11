@@ -14,6 +14,9 @@ __attribute__((visibility("hidden")))
     id <MTLCommandBuffer> _cmdBuffer;
 }
 
+- (id)metalContext;
+- (unsigned int)contextID;
+- (struct CGColorSpace *)workingColorSpace;
 - (_Bool)metalCommandBufferRequested;
 @property(readonly, nonatomic) id <MTLCommandBuffer> metalCommandBuffer;
 @property(readonly, nonatomic) id <MTLTexture> metalTexture;

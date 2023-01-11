@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (_Bool)isAccessibilityElement;
 - (void)_updateImageViewWithImageProvider:(id)arg1;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

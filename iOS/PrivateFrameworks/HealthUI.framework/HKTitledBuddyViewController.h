@@ -6,7 +6,7 @@
 
 #import <HealthUI/HKTitledBuddyHeaderViewDelegate-Protocol.h>
 
-@class HKTitledLogoBuddyHeaderView, NSArray, UIActivityIndicatorView, UIScrollView, UIStackView, UIVisualEffectView;
+@class HKTitledLogoBuddyHeaderView, NSArray, NSString, UIActivityIndicatorView, UIScrollView, UIStackView, UIVisualEffectView;
 
 @interface HKTitledBuddyViewController <HKTitledBuddyHeaderViewDelegate>
 {
@@ -38,6 +38,8 @@
 - (id)bottomAnchoredButtons;
 - (id)subsequentViews;
 - (id)linkButtonTitle;
+- (void)updateBodyTextAttributesWithMutableString:(id)arg1;
+- (long long)bodyTextAlignment;
 - (id)bodyString;
 - (id)titleString;
 - (id)titleImage;
@@ -47,6 +49,12 @@
 - (void)viewDidLoad;
 - (unsigned long long)supportedInterfaceOrientations;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

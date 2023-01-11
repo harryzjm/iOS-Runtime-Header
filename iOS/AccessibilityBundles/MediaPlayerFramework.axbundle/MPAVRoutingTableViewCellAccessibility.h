@@ -11,10 +11,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)updateForRoute:(id)arg1 inferLocalizedModelName:(_Bool)arg2;
+- (void)updateForEndpoint:(id)arg1 route:(id)arg2 inferLocalizedModelName:(_Bool)arg3;
 - (id)accessibilityValue;
 - (id)_accessibilityDescriptionForRoute:(id)arg1;
 - (id)accessibilityLabel;
+- (struct CGPoint)accessibilityActivationPoint;
+- (_Bool)_axIsVolumeSliderVisible;
+- (_Bool)_axIsUsingSmartAudioCheckmarkStyle;
 - (void)setAccessibilityMediaRoute:(id)arg1;
 - (id)accessibilityMediaRoute;
 

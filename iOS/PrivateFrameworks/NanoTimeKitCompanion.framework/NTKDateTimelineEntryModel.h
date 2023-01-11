@@ -10,6 +10,8 @@
 }
 
 @property(nonatomic) _Bool lunar; // @synthesize lunar=_lunar;
+- (id)_newSignatureCircularTemplate;
+- (id)_newBezelTemplate;
 - (id)_newExtraLargeLunarTemplate;
 - (id)_newExtraLargeTemplate;
 - (id)_newCircularTemplateMedium:(_Bool)arg1;

@@ -25,11 +25,13 @@
     IBICFileType *_avicFileType;
     IBICFileType *_heicFileType;
     IBICFileType *_heifFileType;
-    NSSet *_allBitmapFileTypes;
+    IBICFileType *_arkit3DFileType;
+    NSSet *_allSupportedBitmapFileTypes;
     NSSet *_allAlphaEnabledBitmapFileTypes;
     NSSet *_allVectorFileTypes;
     NSSet *_allVectorAndBitmapFileTypes;
     NSSet *_allVectorAndAlphaEnabledBitmapFileTypes;
+    NSSet *_arkit3DFileTypes;
     NSArray *_modelFileTypes;
     IBICWidthClass *_anyWidthClass;
     IBICWidthClass *_compactWidthClass;
@@ -59,6 +61,7 @@
 - (void)registerCubeTextureSetComponentImplications:(id)arg1;
 - (void)registerFlatTextureSetComponentImplications:(id)arg1;
 - (void)registerImageSetComponentImplications:(id)arg1;
+- (void)registerAppIconSetComponentImplications:(id)arg1;
 - (void)applyGraphicsFeatureSetComponentImplicationsForSlotClass:(Class)arg1 schema:(id)arg2;
 - (void)applyMemoryClassComponentImplicationsForSlotClass:(Class)arg1 schema:(id)arg2;
 - (void)applyColorSpaceComponentImplicationsForSlotClass:(Class)arg1 schema:(id)arg2;

@@ -4,24 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
+#import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface MPMediaControlsConfiguration : NSObject <NSSecureCoding>
+@interface MPMediaControlsConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
+    _Bool _shouldPreventAutorotation;
+    _Bool _allowsNowPlayingApplicationLaunch;
     long long _style;
     NSString *_routingContextUID;
     NSString *_presentingAppBundleID;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) _Bool allowsNowPlayingApplicationLaunch; // @synthesize allowsNowPlayingApplicationLaunch=_allowsNowPlayingApplicationLaunch;
+@property(nonatomic) _Bool shouldPreventAutorotation; // @synthesize shouldPreventAutorotation=_shouldPreventAutorotation;
 @property(copy, nonatomic) NSString *presentingAppBundleID; // @synthesize presentingAppBundleID=_presentingAppBundleID;
 @property(copy, nonatomic) NSString *routingContextUID; // @synthesize routingContextUID=_routingContextUID;
 @property(nonatomic) long long style; // @synthesize style=_style;
 - (void).cxx_destruct;
+- (_Bool)isEqual:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;

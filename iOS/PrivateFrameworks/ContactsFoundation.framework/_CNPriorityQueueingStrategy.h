@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsFoundation/CNQueueingStrategy-Protocol.h>
 
@@ -15,6 +15,7 @@
     CDUnknownBlockType _priorityComparator;
 }
 
+@property(readonly, copy, nonatomic) CDUnknownBlockType priorityComparator; // @synthesize priorityComparator=_priorityComparator;
 - (void).cxx_destruct;
 - (unsigned long long)_insertionIndexForObject:(id)arg1 buffer:(id)arg2;
 - (void)enqueueObject:(id)arg1 buffer:(id)arg2;

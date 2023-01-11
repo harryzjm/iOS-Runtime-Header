@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVAssetDownloadSessionInternal, AVMediaSelection, NSArray, NSError, NSURL;
 
@@ -48,6 +48,7 @@
 - (void)_removeFigAssetListeners;
 - (void)_addFigAssetListeners;
 - (id)_figAssetNotificationNames;
+- (id)_errorFromAssetNotificationPayload:(id)arg1;
 - (struct OpaqueFigAsset *)_createDuplicateFigAssetFromAVAsset:(id)arg1;
 - (void)_selectMediaOptionsFromMediaSelection:(id)arg1;
 - (id)_loadedTimeRangesFromFigLoadedTimeRanges:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSMutableArray, NSString, TSUImage;
 
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 + (struct CGSize)defaultSwatchSize;
 @property(readonly, nonatomic) NSString *plistPath; // @synthesize plistPath=mPListPath;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=mIdentifier;
+- (void).cxx_destruct;
 - (id)seriesStylesForSeriesTypes:(id)arg1 context:(id)arg2;
 - (id)propertyMutationTuplesForPreviewOnChart:(id)arg1;
 - (void)p_createSeriesSwatchImagesWithSeriesCount:(unsigned long long)arg1 swatchSize:(struct CGSize)arg2;
@@ -46,7 +47,6 @@ __attribute__((visibility("hidden")))
 - (id)plistProperties;
 @property(readonly, nonatomic) NSString *lookupString;
 - (void)dealloc;
-- (id)init;
 - (id)initWithIdentifier:(id)arg1 plistPath:(id)arg2;
 
 @end

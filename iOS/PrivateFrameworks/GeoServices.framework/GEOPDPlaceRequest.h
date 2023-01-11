@@ -77,6 +77,10 @@
 @property(readonly, nonatomic) _Bool hasAnalyticMetadata;
 @property(nonatomic) _Bool hasNeedLatency;
 @property(nonatomic) _Bool needLatency;
+- (id)pdSpatialEventLookupParametersForParameters:(id)arg1;
+- (id)pdSpatialEventLookupParametersArrayForParameters:(id)arg1;
+- (id)pdSpatialPlaceLookupParametersForParameters:(id)arg1;
+- (id)pdSpatialPlaceLookupParametersArrayForParameters:(id)arg1;
 - (int)resultProviderID;
 - (_Bool)hasResultProviderID;
 - (_Bool)isAlwaysCacheable;
@@ -87,8 +91,10 @@
 - (_Bool)isForwardGeocoderRequest;
 - (id)initForDatasetCheckWithTraits:(id)arg1;
 - (_Bool)isBrandLookupRequest;
+- (id)initWithSpatialEventLookupParameters:(id)arg1 traits:(id)arg2;
+- (id)initWithSpatialPlaceLookupParameters:(id)arg1 traits:(id)arg2;
 - (id)initForGeoIpLookupWithIpAddress:(id)arg1 traits:(id)arg2;
-- (id)initForWifiFingerprintLookupWithLocations:(id)arg1 wifiAccessPoints:(id)arg2 maxLabels:(unsigned int)arg3 traits:(id)arg4;
+- (id)initForWifiFingerprintLookupWithLocations:(id)arg1 wifiAccessPoints:(id)arg2 maxLabels:(unsigned int)arg3 entryTime:(unsigned long long)arg4 exitTime:(unsigned long long)arg5 traits:(id)arg6;
 - (id)initForBrandLookupWithIMessageUid:(id)arg1 traits:(id)arg2;
 - (id)initForNearestTransitStationWithLine:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 traits:(id)arg3;
 - (id)initForSearchFieldPlaceholderWithTraits:(id)arg1;
@@ -98,13 +104,14 @@
 - (id)initWithSearchCategory:(id)arg1 searchString:(id)arg2 maxResults:(unsigned int)arg3 traits:(id)arg4;
 - (id)initWithCategory:(id)arg1 routeInfo:(id)arg2 maxResults:(unsigned int)arg3 traits:(id)arg4;
 - (id)initWithCategory:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;
+- (id)initForDFRCategoryListWithTraits:(id)arg1;
 - (id)initForSpotlightCategoryListWithTraits:(id)arg1;
 - (int)geoUserPreferredTransportType;
 - (id)initForCategoryListWithTraits:(id)arg1;
-- (id)initWithAutocompleteFragment:(id)arg1 type:(int)arg2 traits:(id)arg3 categoryFilter:(id)arg4;
+- (id)initWithAutocompleteFragment:(id)arg1 type:(int)arg2 traits:(id)arg3 categoryFilter:(id)arg4 retainedSearch:(id)arg5;
 - (id)initWithSearchURLQuery:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 maxResults:(unsigned int)arg3 traits:(id)arg4;
 - (id)initWithSearchURLQuery:(id)arg1 identifier:(id)arg2 resultProviderId:(int)arg3 contentProvider:(id)arg4 maxResults:(unsigned int)arg5 traits:(id)arg6;
-- (id)initWithSearchQuery:(id)arg1 entryMetadata:(id)arg2 metadata:(id)arg3 autocompleteEntry:(id)arg4 maxResults:(unsigned int)arg5 suppressResultsRequiringAttribution:(_Bool)arg6 traits:(id)arg7;
+- (id)initWithSearchQuery:(id)arg1 entryMetadata:(id)arg2 metadata:(id)arg3 autocompleteEntry:(id)arg4 retainedSearch:(id)arg5 maxResults:(unsigned int)arg6 suppressResultsRequiringAttribution:(_Bool)arg7 traits:(id)arg8;
 - (id)initWithCanonicalLocationSearchQueryString:(id)arg1 traits:(id)arg2;
 - (id)initWithBrandMUID:(unsigned long long)arg1 traits:(id)arg2;
 - (id)initWithVendorSpecificPlaceRefinementParameters:(id)arg1 traits:(id)arg2;
@@ -116,7 +123,7 @@
 - (id)initWithReverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 floorOrdinal:(int)arg2 includeEntryPoints:(_Bool)arg3 preserveOriginalLocation:(_Bool)arg4 traits:(id)arg5;
 - (id)initWithReverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 includeEntryPoints:(_Bool)arg2 preserveOriginalLocation:(_Bool)arg3 traits:(id)arg4;
 - (id)initWithExternalTransitStationCodes:(id)arg1 sourceID:(id)arg2 transactionDate:(id)arg3 transactionLocation:(id)arg4 traits:(id)arg5;
-- (id)initWithMerchantCode:(id)arg1 rawMerchantCode:(id)arg2 paymentNetwork:(id)arg3 transactionDate:(id)arg4 transactionLocation:(id)arg5 traits:(id)arg6;
+- (id)initWithMerchantCode:(id)arg1 rawMerchantCode:(id)arg2 industryCategory:(id)arg3 industryCode:(id)arg4 paymentNetwork:(id)arg5 transactionDate:(id)arg6 transactionLocation:(id)arg7 traits:(id)arg8;
 - (id)initWithExternalBusinessID:(id)arg1 contentProvider:(id)arg2 traits:(id)arg3;
 - (id)initWithIdentifiers:(id)arg1 resultProviderID:(int)arg2 traits:(id)arg3;
 - (id)initWithComponents:(id)arg1 identifier:(id)arg2 resultProviderID:(int)arg3 traits:(id)arg4;

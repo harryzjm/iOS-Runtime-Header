@@ -10,6 +10,9 @@
 {
 }
 
++ (id)adjustedDateInterval:(id)arg1 betweenMinDate:(id)arg2 maxDate:(id)arg3 strideDays:(unsigned long long)arg4;
++ (id)adjustedDate:(id)arg1 betweenMinDate:(id)arg2 maxDate:(id)arg3 strideDays:(unsigned long long)arg4 outDeltaDays:(long long *)arg5;
++ (id)adjustedDate:(id)arg1 betweenMinDate:(id)arg2 maxDate:(id)arg3 strideDays:(unsigned long long)arg4;
 + (id)bucketizeDates:(id)arg1 bucketInterval:(double)arg2 latestDate:(id)arg3;
 
 @end

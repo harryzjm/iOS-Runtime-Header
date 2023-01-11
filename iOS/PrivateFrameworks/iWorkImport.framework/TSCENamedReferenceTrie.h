@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSLocale;
 
 __attribute__((visibility("hidden")))
 @interface TSCENamedReferenceTrie : NSObject
 {
-    struct TSCENamedReferenceTrieNode mRoot;
-    NSLocale *mLocale;
+    struct TSCENamedReferenceTrieNode _root;
+    NSLocale *_locale;
 }
 
 - (id).cxx_construct;

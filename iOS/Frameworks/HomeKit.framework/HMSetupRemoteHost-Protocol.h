@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSError;
+@class HMAccessorySetupCompletedInfo, NSError;
 
 @protocol HMSetupRemoteHost
+- (void)accessorySetupDidFinishWithInfo:(HMAccessorySetupCompletedInfo *)arg1 error:(NSError *)arg2;
 - (void)accessorySetupDidFinishWithError:(NSError *)arg1;
 - (void)accessorySetupDidFinishPairing;
 - (void)accessorySetupDidBeginPairing;

@@ -18,6 +18,8 @@
     int _storeChangedNotificationToken;
 }
 
++ (id)registerBadgeCountNotificationBlock:(CDUnknownBlockType)arg1;
++ (id)interface;
 - (void).cxx_destruct;
 - (void)_setupConnection;
 - (void)_call:(id)arg1 run:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
@@ -26,16 +28,23 @@
 - (void)updateAllWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)showApplicationUpdateBulletin;
 - (void)showApplicationBadgeForPendingUpdates;
+- (void)setAutoUpdateEnabled:(_Bool)arg1;
 - (void)removeUpdateBulletins;
 - (void)reloadForSettingsFromServerWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)reloadManagedUpdatesWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)reloadFromServerWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)reloadFromServerInBackgroundWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)refreshUpdatesWithCompletionBlock:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)refreshUpdateCountWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)hideApplicationBadgeForPendingUpdates;
 - (_Bool)hasEntitlement;
+- (void)getUpdatesIncludingMetricsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)getUpdatesWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (void)getUpdateableFirstPartyAppMetadataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getMetricsWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)getManagedUpdatesWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)clearExpiredUpdateHistoryWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (_Bool)confirmAgentRequestedUpdateAll;
+- (_Bool)autoUpdateEnabled;
 - (void)dealloc;
 - (id)init;
 

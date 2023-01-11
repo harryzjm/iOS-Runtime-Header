@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSProtocolChecker, NSString;
 @protocol OS_xpc_object;
@@ -47,6 +47,7 @@
 - (void)_portInterrupted;
 - (void)_cancelHandlerCompleted;
 - (void)dealloc;
+- (void)_clearPort:(_Bool)arg1 signalRunLoopIfNeeded:(_Bool)arg2;
 - (void)_clearPort:(_Bool)arg1;
 @property(readonly, nonatomic) NSProtocolChecker *protocolChecker;
 @property(nonatomic) id target;

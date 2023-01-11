@@ -12,12 +12,16 @@
 @interface AKAccountManager : NSObject
 {
     ACAccountStore *_accountStore;
-    ACAccountType *_authKitAccountType;
-    ACAccountType *_appleIDAccountType;
-    ACAccountType *_iCloudAccountType;
     NSObject<OS_dispatch_queue> *_accountQueue;
+    ACAccountType *_authKitAccountType;
+    struct os_unfair_lock_s _authKitAccountTypeLock;
+    ACAccountType *_appleIDAccountType;
+    struct os_unfair_lock_s _appleIDAccountTypeLock;
+    ACAccountType *_iCloudAccountType;
+    struct os_unfair_lock_s _iCloudAccountTypeLock;
 }
 
++ (id)stringRepresentationForService:(long long)arg1;
 + (_Bool)isAccountsFrameworkAvailable;
 + (id)sharedInstance;
 @property(retain, nonatomic) ACAccountStore *store; // @synthesize store=_accountStore;
@@ -32,8 +36,7 @@
 - (id)iCloudAccountForAppleID:(id)arg1;
 - (_Bool)hasPrimaryiCloudAccountForAltDSID:(id)arg1;
 - (_Bool)hasPrimaryiCloudAccountForAppleID:(id)arg1;
-- (void)removeUnusedAuthKitAccounts;
-- (id)stringRepresentationForService:(long long)arg1;
+- (void)removeUnusedAndDuplicateAuthKitAccountsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)activeServiceNamesForAccount:(id)arg1;
 - (id)servicesUsingAccount:(id)arg1;
 - (void)setAccount:(id)arg1 inUse:(_Bool)arg2 byService:(long long)arg3;
@@ -60,8 +63,16 @@
 - (id)passwordResetTokenForAccount:(id)arg1;
 - (id)continuationTokenForAccount:(id)arg1;
 - (id)hearbeatTokenForAccount:(id)arg1;
+- (void)setRepairState:(unsigned long long)arg1 forAccount:(id)arg2;
+- (unsigned long long)repairStateForAccount:(id)arg1;
+- (_Bool)needsRepairForAccount:(id)arg1;
+- (void)setAuthenticationMode:(unsigned long long)arg1 forAccount:(id)arg2;
+- (unsigned long long)authenticationModeForAccount:(id)arg1;
 - (void)setSecurityLevel:(unsigned long long)arg1 forAccount:(id)arg2;
 - (unsigned long long)securityLevelForAccount:(id)arg1;
+- (_Bool)saveAccount:(id)arg1 error:(id *)arg2;
+- (_Bool)_setUsername:(id)arg1 forAccount:(id)arg2;
+- (void)updateUsername:(id)arg1 forAccountsWithAltDSID:(id)arg2;
 - (void)setAliases:(id)arg1 forAccount:(id)arg2;
 - (id)aliasesForAccount:(id)arg1;
 - (void)setDSID:(id)arg1 forAccount:(id)arg2;

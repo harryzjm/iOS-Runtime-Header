@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@protocol NUMutableBufferImage;
+
 @interface NUBufferRenderRequest
 {
 }
 
 - (void)submit:(CDUnknownBlockType)arg1;
 - (id)newRenderJob;
+@property id <NUMutableBufferImage> targetBufferImage;
 
 @end
 

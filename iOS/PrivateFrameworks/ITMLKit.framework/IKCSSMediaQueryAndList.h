@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSString;
+@class IKMutableArray, NSString;
 
 @interface IKCSSMediaQueryAndList
 {
-    NSMutableArray *_queryList;
+    IKMutableArray *_queryList;
     _Bool _negated;
     NSString *_type;
 }

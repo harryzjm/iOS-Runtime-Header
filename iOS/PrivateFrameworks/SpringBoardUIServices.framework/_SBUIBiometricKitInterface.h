@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoardUIServices/BKMatchOperationDelegate-Protocol.h>
+#import <SpringBoardUIServices/BKMatchPearlOperationDelegate-Protocol.h>
 #import <SpringBoardUIServices/BKOperationDelegate-Protocol.h>
 
 @class BKDevicePearl, BKDeviceTouchID, NSSet, NSString;
 @protocol OS_dispatch_queue, _SBUIBiometricKitInterfaceDelegate;
 
-@interface _SBUIBiometricKitInterface : NSObject <BKOperationDelegate, BKMatchOperationDelegate>
+@interface _SBUIBiometricKitInterface : NSObject <BKOperationDelegate, BKMatchOperationDelegate, BKMatchPearlOperationDelegate>
 {
     NSSet *_biometricDevices;
     unsigned long long _enrolledIdentitiesCount;
@@ -31,6 +32,7 @@
 - (void)_sendDelegateEvent:(unsigned long long)arg1;
 - (void)matchOperation:(id)arg1 matchedWithResult:(id)arg2;
 - (void)operation:(id)arg1 presenceStateChanged:(_Bool)arg2;
+- (void)matchOperation:(id)arg1 failedWithReason:(long long)arg2;
 - (void)operation:(id)arg1 stateChanged:(long long)arg2;
 - (void)operation:(id)arg1 finishedWithReason:(long long)arg2;
 - (id)_trackerForOperation:(id)arg1;
@@ -38,6 +40,7 @@
 - (_Bool)isFingerOn;
 - (_Bool)hasEnrolledIdentities;
 - (unsigned long long)lockoutState;
+- (id)createFaceDetectOperationsWithError:(id *)arg1;
 - (id)createFingerDetectOperationsWithError:(id *)arg1;
 - (id)createPresenceDetectOperationsWithError:(id *)arg1;
 - (id)createMatchOperationsWithMode:(unsigned long long)arg1 andCredentialSet:(id)arg2 error:(id *)arg3;

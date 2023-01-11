@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIFoundation/NSSecureCoding-Protocol.h>
+
 @class NSTextTable;
 
-@interface NSTextTableBlock
+@interface NSTextTableBlock <NSSecureCoding>
 {
     NSTextTable *_table;
     long long _rowNum;
@@ -17,6 +19,7 @@
     void *_tableBlockSecondary;
 }
 
++ (_Bool)supportsSecureCoding;
 + (void)initialize;
 - (void)drawBackgroundWithFrame:(struct CGRect)arg1 inView:(id)arg2 characterRange:(struct _NSRange)arg3 layoutManager:(id)arg4;
 - (struct CGRect)boundsRectForContentRect:(struct CGRect)arg1 inRect:(struct CGRect)arg2 textContainer:(id)arg3 characterRange:(struct _NSRange)arg4;

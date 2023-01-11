@@ -4,24 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDate;
 
 __attribute__((visibility("hidden")))
 @interface TSCESumAccumulator : NSObject
 {
-    NSDate *mDateAccumulator;
-    double mSecondsToAdd;
-    struct TSCENumberValue mNumberAccumulator;
-    _Bool mMixedDurationsAndNumbers;
-    _Bool mFoundANumber;
+    NSDate *_dateAccumulator;
+    double _secondsToAdd;
+    struct TSCENumberValue _numberAccumulator;
+    _Bool _mixedDurationsAndNumbers;
+    _Bool _foundANumber;
 }
 
+@property(nonatomic) _Bool foundANumber; // @synthesize foundANumber=_foundANumber;
+@property(nonatomic) _Bool mixedDurationsAndNumbers; // @synthesize mixedDurationsAndNumbers=_mixedDurationsAndNumbers;
+@property(nonatomic) double secondsToAdd; // @synthesize secondsToAdd=_secondsToAdd;
+@property(readonly, nonatomic) struct TSCENumberValue *numberAccumulator; // @synthesize numberAccumulator=_numberAccumulator;
+@property(nonatomic) NSDate *dateAccumulator; // @synthesize dateAccumulator=_dateAccumulator;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (struct TSCEValue)resultForFunction:(id)arg1;
-- (void)addValue:(struct TSCEValue)arg1 function:(id)arg2 evaluationContext:(struct TSCEEvaluationContext *)arg3;
+- (void)addValue:(const struct TSCEValue *)arg1 function:(id)arg2 evaluationContext:(struct TSCEEvaluationContext *)arg3;
 - (id)init;
 
 @end

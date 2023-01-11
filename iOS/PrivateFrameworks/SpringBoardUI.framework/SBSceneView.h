@@ -11,7 +11,7 @@
 #import <SpringBoardUI/SBScenePlaceholderContentViewProviderDelegate-Protocol.h>
 
 @class NSString, SBSceneHandle;
-@protocol FBSceneHostView, SBScenePlaceholderContentContext, SBScenePlaceholderContentView, SBScenePlaceholderContentViewProvider;
+@protocol FBSceneHostView, SBScenePlaceholderContentContext, SBScenePlaceholderContentView, SBScenePlaceholderContentViewProvider, SBSceneViewDelegate;
 
 @interface SBSceneView : UIView <SBSceneHandleObserver, SBScenePlaceholderContentViewProviderDelegate, BSInvalidatable>
 {
@@ -32,9 +32,11 @@
     UIView *_backgroundView;
     _Bool _placeholderContentEnabled;
     id <SBScenePlaceholderContentViewProvider> _placeholderContentProvider;
+    id <SBSceneViewDelegate> _delegate;
 }
 
 + (id)defaultDisplayModeAnimationFactory;
+@property(nonatomic) __weak id <SBSceneViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) long long hostingPriority; // @synthesize hostingPriority=_hostingPriority;
 @property(readonly, copy, nonatomic) NSString *hostingRequester; // @synthesize hostingRequester=_hostingRequester;
 @property(nonatomic) _Bool placeholderContentEnabled; // @synthesize placeholderContentEnabled=_placeholderContentEnabled;
@@ -53,6 +55,7 @@
 - (void)_hotSwapPlaceholderContentView;
 - (void)_clearSnapshotViews;
 - (void)_reloadPlaceholderContentIfNecessary;
+- (void)_configureBackgroundColorForLiveSnapshot:(_Bool)arg1;
 - (void)_configureHostView;
 - (void)_configureLiveSnapshotView;
 - (void)_configurePlaceholderContentView;

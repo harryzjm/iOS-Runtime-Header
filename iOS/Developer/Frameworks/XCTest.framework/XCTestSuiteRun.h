@@ -11,6 +11,7 @@
     NSMutableArray *_testRuns;
 }
 
+- (void).cxx_destruct;
 - (void)recordFailureWithDescription:(id)arg1 inFile:(id)arg2 atLine:(unsigned long long)arg3 expected:(_Bool)arg4;
 - (double)testDuration;
 - (unsigned long long)unexpectedExceptionCount;
@@ -20,7 +21,6 @@
 @property(readonly, copy) NSArray *testRuns;
 - (void)stop;
 - (void)start;
-- (void)dealloc;
 - (id)initWithTest:(id)arg1;
 
 @end

@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
-
 @interface SBMiscellaneousDefaults
 {
 }
@@ -15,7 +13,7 @@
 // Remaining properties
 @property(nonatomic) float backlightLevel; // @dynamic backlightLevel;
 @property(nonatomic) long long dataPlanActivationPromptCount; // @dynamic dataPlanActivationPromptCount;
-@property(readonly, nonatomic) NSArray *fakeDuetTriggers; // @dynamic fakeDuetTriggers;
+@property(nonatomic) _Bool suppressAlertsForKeynote; // @dynamic suppressAlertsForKeynote;
 @property(readonly, nonatomic) _Bool suppressNoSimAlert; // @dynamic suppressNoSimAlert;
 @property(readonly, nonatomic) _Bool walletPreArmForceLockButton; // @dynamic walletPreArmForceLockButton;
 

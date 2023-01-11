@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface VCRateControlOWRDEstimator : NSObject
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double owrd; // @synthesize owrd=_owrd;
 - (void)calculateOWRDWithSendTime:(double)arg1 receiveTime:(double)arg2;
 - (double)relativeReceiveTimeWithTimestamp:(unsigned short)arg1 timestampRate:(unsigned short)arg2;
-- (double)relativeSendTimeWithTimestamp:(unsigned int)arg1 timestampRate:(unsigned int)arg2;
+- (double)relativeSendTimeWithTimestamp:(unsigned short)arg1 timestampRate:(unsigned short)arg2;
 
 @end
 

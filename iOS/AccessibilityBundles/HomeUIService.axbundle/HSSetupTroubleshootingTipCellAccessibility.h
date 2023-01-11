@@ -11,9 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)accessibilityCustomRotors;
-- (id)accessibilityLabel;
-- (_Bool)isAccessibilityElement;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (PhotoLibraryServices)
+- (id)pl_redactedShareURL;
 - (id)_pl_stringByReplacingPathExtension:(id)arg1;
 @end
 

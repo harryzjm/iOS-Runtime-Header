@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol CNLaunchServicesAdapter, OS_os_log;
 
@@ -17,6 +17,7 @@
 @property(retain, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property(retain, nonatomic) id <CNLaunchServicesAdapter> adapter; // @synthesize adapter=_adapter;
 - (void).cxx_destruct;
+- (void)openSensitiveURLInBackground:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)openUserActivityData:(id)arg1 inApplication:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)applicationForBundleIdentifier:(id)arg1;
 - (id)applicationsForUserActivityType:(id)arg1;

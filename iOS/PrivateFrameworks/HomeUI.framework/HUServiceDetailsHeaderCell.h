@@ -8,29 +8,43 @@
 
 #import <HomeUI/HUCellProtocol-Protocol.h>
 
-@class HFItem, HUGridServiceCell, NSArray, NSString, UILabel;
+@class HFItem, HUGridServiceCell, NSArray, NSLayoutConstraint, NSString, UIActivityIndicatorView, UIButton, UILabel, UIStackView, UITextView;
 @protocol HUResizableCellDelegate;
 
 @interface HUServiceDetailsHeaderCell : UITableViewCell <HUCellProtocol>
 {
     HFItem *_item;
     id <HUResizableCellDelegate> _resizingDelegate;
-    UILabel *_errorLabel;
+    UIButton *_actionButton;
+    UITextView *_messageTextView;
     HUGridServiceCell *_serviceCell;
-    NSArray *_hiddenErrorLabelConstraints;
-    NSArray *_visibleErrorLabelConstraints;
+    NSArray *_hiddenMessageTextViewConstraints;
+    NSArray *_visibleMessageTextViewConstraints;
+    UIStackView *_titleSpinnerStackView;
+    UIActivityIndicatorView *_checkingForUpdateSpinner;
+    UILabel *_titleLabel;
+    NSLayoutConstraint *_spinnerBottomConstraint;
+    NSLayoutConstraint *_messageBottomConstraint;
+    NSLayoutConstraint *_actionBottomConstraint;
 }
 
 + (_Bool)requiresConstraintBasedLayout;
-@property(retain, nonatomic) NSArray *visibleErrorLabelConstraints; // @synthesize visibleErrorLabelConstraints=_visibleErrorLabelConstraints;
-@property(retain, nonatomic) NSArray *hiddenErrorLabelConstraints; // @synthesize hiddenErrorLabelConstraints=_hiddenErrorLabelConstraints;
+@property(retain, nonatomic) NSLayoutConstraint *actionBottomConstraint; // @synthesize actionBottomConstraint=_actionBottomConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *messageBottomConstraint; // @synthesize messageBottomConstraint=_messageBottomConstraint;
+@property(retain, nonatomic) NSLayoutConstraint *spinnerBottomConstraint; // @synthesize spinnerBottomConstraint=_spinnerBottomConstraint;
+@property(retain, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(retain, nonatomic) UIActivityIndicatorView *checkingForUpdateSpinner; // @synthesize checkingForUpdateSpinner=_checkingForUpdateSpinner;
+@property(retain, nonatomic) UIStackView *titleSpinnerStackView; // @synthesize titleSpinnerStackView=_titleSpinnerStackView;
+@property(retain, nonatomic) NSArray *visibleMessageTextViewConstraints; // @synthesize visibleMessageTextViewConstraints=_visibleMessageTextViewConstraints;
+@property(retain, nonatomic) NSArray *hiddenMessageTextViewConstraints; // @synthesize hiddenMessageTextViewConstraints=_hiddenMessageTextViewConstraints;
 @property(retain, nonatomic) HUGridServiceCell *serviceCell; // @synthesize serviceCell=_serviceCell;
-@property(retain, nonatomic) UILabel *errorLabel; // @synthesize errorLabel=_errorLabel;
+@property(retain, nonatomic) UITextView *messageTextView; // @synthesize messageTextView=_messageTextView;
+@property(retain, nonatomic) UIButton *actionButton; // @synthesize actionButton=_actionButton;
 @property(nonatomic) __weak id <HUResizableCellDelegate> resizingDelegate; // @synthesize resizingDelegate=_resizingDelegate;
 @property(retain, nonatomic) HFItem *item; // @synthesize item=_item;
 - (void).cxx_destruct;
-- (id)_visibleErrorLabelConstraints;
-- (id)_hiddenErrorLabelConstraints;
+- (id)_visibleMessageTextViewConstraints;
+- (id)_hiddenMessageTextViewConstraints;
 - (void)_updateRequiredHeightIfNeeded;
 - (void)_updateErrorLabelConstraints;
 - (void)_configureConstraints;

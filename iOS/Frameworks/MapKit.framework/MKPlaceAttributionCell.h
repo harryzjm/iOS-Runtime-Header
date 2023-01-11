@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSLayoutConstraint, UIButton, _MKUILabel;
+#import <MapKit/MKPlaceAttributionCellButtonDelegate-Protocol.h>
+
+@class MKPlaceAttributionCellButton, NSArray, NSLayoutConstraint, _MKUILabel;
 @protocol MKPlaceAttributionCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MKPlaceAttributionCell
+@interface MKPlaceAttributionCell <MKPlaceAttributionCellButtonDelegate>
 {
     NSArray *_visibleConstraints;
     NSLayoutConstraint *_collapsedConstraint;
+    _Bool _highlighted;
     _MKUILabel *_label;
-    UIButton *_labelButton;
+    MKPlaceAttributionCellButton *_labelButton;
     NSLayoutConstraint *_labelBaselineToTop;
     NSLayoutConstraint *_labelLastBaselineToBottom;
     id <MKPlaceAttributionCellDelegate> _cellDelegate;
@@ -23,9 +26,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <MKPlaceAttributionCellDelegate> cellDelegate; // @synthesize cellDelegate=_cellDelegate;
 @property(retain, nonatomic) NSLayoutConstraint *labelLastBaselineToBottom; // @synthesize labelLastBaselineToBottom=_labelLastBaselineToBottom;
 @property(retain, nonatomic) NSLayoutConstraint *labelBaselineToTop; // @synthesize labelBaselineToTop=_labelBaselineToTop;
-@property(retain, nonatomic) UIButton *labelButton; // @synthesize labelButton=_labelButton;
+@property(retain, nonatomic) MKPlaceAttributionCellButton *labelButton; // @synthesize labelButton=_labelButton;
+- (void)setHighlighted:(_Bool)arg1;
+- (_Bool)isHighlighted;
 @property(retain, nonatomic) _MKUILabel *label; // @synthesize label=_label;
 - (void).cxx_destruct;
+- (void)attributionCellButton:(id)arg1 isHighighted:(_Bool)arg2 executeAction:(_Bool)arg3;
 - (double)currentHeight;
 - (void)setAttributionString:(id)arg1;
 - (void)attributionClicked;

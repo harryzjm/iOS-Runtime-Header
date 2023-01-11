@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDate, NSMapTable, NSMutableDictionary, NSTimer;
 
@@ -20,8 +20,8 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedController;
 - (void).cxx_destruct;
-- (_Bool)updateTransitLineItemIfNeeded:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (_Bool)updateTransitMapItemIfNeeded:(id)arg1 updateForIncidents:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)updateTransitLineItemIfNeeded:(id)arg1 traits:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)updateTransitMapItemIfNeeded:(id)arg1 updateForIncidents:(_Bool)arg2 traits:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)removeDynamicTransitUIContainer:(id)arg1;
 - (void)addDynamicTransitUIContainer:(id)arg1;
 - (void)_scheduleReferenceDateUpdate;

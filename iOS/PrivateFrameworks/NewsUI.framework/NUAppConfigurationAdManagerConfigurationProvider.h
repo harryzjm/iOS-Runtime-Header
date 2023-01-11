@@ -8,14 +8,15 @@
 
 #import <NewsUI/NUAdManagerConfigurationProvider-Protocol.h>
 
-@class FCAppConfigurationManager, NSString;
+@class NSString;
+@protocol FCNewsAppConfigurationManager;
 
 @interface NUAppConfigurationAdManagerConfigurationProvider : NSObject <NUAdManagerConfigurationProvider>
 {
-    FCAppConfigurationManager *_appConfigurationManager;
+    id <FCNewsAppConfigurationManager> _appConfigurationManager;
 }
 
-@property(readonly, nonatomic) FCAppConfigurationManager *appConfigurationManager; // @synthesize appConfigurationManager=_appConfigurationManager;
+@property(readonly, nonatomic) id <FCNewsAppConfigurationManager> appConfigurationManager; // @synthesize appConfigurationManager=_appConfigurationManager;
 - (void).cxx_destruct;
 - (void)fetchConfigurationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithAppConfigurationManager:(id)arg1;

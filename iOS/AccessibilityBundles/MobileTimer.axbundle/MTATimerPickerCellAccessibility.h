@@ -8,9 +8,10 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)setState:(int)arg1 animated:(_Bool)arg2;
+- (void)setState:(unsigned long long)arg1 animated:(_Bool)arg2;
 
 @end
 

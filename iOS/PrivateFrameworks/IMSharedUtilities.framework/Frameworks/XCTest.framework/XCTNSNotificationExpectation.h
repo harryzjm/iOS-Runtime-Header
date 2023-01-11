@@ -12,6 +12,7 @@
 }
 
 @property(retain) _XCTNSNotificationExpectationImplementation *internal; // @synthesize internal=_internal;
+- (void).cxx_destruct;
 - (void)cleanup;
 @property(copy) CDUnknownBlockType handler;
 @property(readonly) NSNotificationCenter *notificationCenter;
@@ -20,7 +21,6 @@
 - (id)initWithName:(id)arg1;
 - (id)initWithName:(id)arg1 object:(id)arg2;
 - (id)initWithName:(id)arg1 object:(id)arg2 notificationCenter:(id)arg3;
-- (void)dealloc;
 
 @end
 

@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSDCanvasDelegate-Protocol.h>
+#import <iWorkImport/TSDDynamicOverridingCanvasDelegate-Protocol.h>
 
-@class NSArray, NSSet, NSString, TSDCanvas, TSKDocumentRoot, TSUColor;
-@protocol TSDCanvasProxyDelegate;
+@class NSArray, NSMapTable, NSSet, NSString, TSDCanvas, TSKDocumentRoot, TSUColor;
+@protocol TSDCanvasProxyDelegate, TSDInfo;
 
 __attribute__((visibility("hidden")))
-@interface TSDImager : NSObject <TSDCanvasDelegate>
+@interface TSDImager : NSObject <TSDDynamicOverridingCanvasDelegate, TSDCanvasDelegate>
 {
     NSArray *mInfos;
     TSUColor *mBackgroundColor;
@@ -26,6 +27,8 @@ __attribute__((visibility("hidden")))
     _Bool mShouldReuseBitmapContext;
     TSKDocumentRoot *mDocumentRoot;
     TSDCanvas *mCanvas;
+    _Bool mMayBeReused;
+    _Bool mHasBeenUsed;
     struct CGRect mActualScaledClipRect;
     _Bool mDrawingIntoPDF;
     _Bool mIsPrinting;
@@ -37,15 +40,18 @@ __attribute__((visibility("hidden")))
     struct CGSize mReusableScaledImageSize;
     NSSet *mPreviousRenderDatasNeedingDownload;
     CDUnknownBlockType mPostRenderAction;
+    NSMapTable *mDynamicOverrides;
+    NSObject<TSDInfo> *mInfoToDrawBeneath;
+    CDUnknownBlockType mInfoToDrawBeneathFilter;
 }
 
+@property(nonatomic) _Bool mayBeReused; // @synthesize mayBeReused=mMayBeReused;
 @property(nonatomic) _Bool imageIsRenderingForMovie; // @synthesize imageIsRenderingForMovie=mImageIsRenderingForMovie;
 @property(copy, nonatomic) NSSet *previousRenderDatasNeedingDownload; // @synthesize previousRenderDatasNeedingDownload=mPreviousRenderDatasNeedingDownload;
 @property(nonatomic) _Bool isPrinting; // @synthesize isPrinting=mIsPrinting;
 @property(nonatomic) _Bool shouldReuseBitmapContext; // @synthesize shouldReuseBitmapContext=mShouldReuseBitmapContext;
 @property(nonatomic) _Bool imageMustHaveEvenDimensions; // @synthesize imageMustHaveEvenDimensions=mImageMustHaveEvenDimensions;
 @property(nonatomic) _Bool distortedToMatch; // @synthesize distortedToMatch=mDistortedToMatch;
-@property(readonly, nonatomic) struct CGRect actualScaledClipRect; // @synthesize actualScaledClipRect=mActualScaledClipRect;
 @property(nonatomic) struct CGRect unscaledClipRect; // @synthesize unscaledClipRect=mUnscaledClipRect;
 @property(copy, nonatomic) TSUColor *backgroundColor; // @synthesize backgroundColor=mBackgroundColor;
 @property(retain, nonatomic) NSArray *infos; // @synthesize infos=mInfos;
@@ -55,7 +61,9 @@ __attribute__((visibility("hidden")))
 - (void)p_drawPageInContext:(struct CGContext *)arg1 createPage:(_Bool)arg2;
 - (struct CGSize)p_evenDimensionsWithSize:(struct CGSize)arg1;
 - (_Bool)p_configureCanvas;
+@property(readonly, nonatomic) struct CGRect actualScaledClipRect; // @synthesize actualScaledClipRect=mActualScaledClipRect;
 - (void)p_assertHasReadLock;
+- (id)dynamicOverrideForRep:(id)arg1;
 - (_Bool)isPrintingCanvas;
 - (_Bool)isCanvasDrawingIntoPDF:(id)arg1;
 - (struct CGRect)visibleScaledBoundsForClippingRepsOnCanvas:(id)arg1;
@@ -64,6 +72,8 @@ __attribute__((visibility("hidden")))
 - (id)pdfData;
 - (id)pngData;
 - (struct CGImage *)newImage;
+- (void)i_setDrawsOnlyBelowInfo:(id)arg1;
+- (void)setDynamicOverride:(id)arg1 forInfo:(id)arg2;
 @property(nonatomic) struct CGSize maximumScaledImageSize;
 @property(nonatomic) struct CGSize scaledImageSize;
 @property(nonatomic) double viewScale;

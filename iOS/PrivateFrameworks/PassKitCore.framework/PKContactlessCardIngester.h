@@ -4,25 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+@class NSNumberFormatter, NSString, PKPaymentProvisioningMethodMetadata;
 @protocol OS_dispatch_queue, PKContactlessCardIngesterDelegate;
 
 @interface PKContactlessCardIngester : NSObject
 {
     _Bool _listening;
     NSString *_pushTopic;
-    NSDictionary *_readerModeMetadata;
+    PKPaymentProvisioningMethodMetadata *_readerModeProvisioningMetadata;
+    NSNumberFormatter *_currencyNumberFormatter;
     id <PKContactlessCardIngesterDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_contactlessCardIngesterQueue;
     CDUnknownBlockType _cardSessionTokenCompletionHandler;
     CDUnknownBlockType _disableCardCompletionHandler;
 }
 
-+ (id)_displayableErrorForSPStatusCode:(unsigned long long)arg1 seldError:(id)arg2;
 + (id)debugDescriptionForStatus:(unsigned long long)arg1;
++ (_Bool)isSupported;
 - (void).cxx_destruct;
+- (id)_displayableErrorForSPStatusCode:(unsigned long long)arg1 seldError:(id)arg2;
 - (void)_startListeningToRemoteAdminEventsIfRequired;
 - (void)_stopListeningToRemoteAdminEvents;
 - (void)_ingestCardWithCardSessionToken:(id)arg1 completion:(CDUnknownBlockType)arg2;

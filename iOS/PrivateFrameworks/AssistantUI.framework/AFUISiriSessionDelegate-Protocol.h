@@ -10,6 +10,7 @@
 @protocol SAAceCommand;
 
 @protocol AFUISiriSessionDelegate <AFUISiriSessionListener>
+- (void)siriSessionFailTest:(NSString *)arg1 withReason:(NSString *)arg2;
 - (void)siriSessionDidFinishTest:(NSString *)arg1;
 - (void)siriSessionWillStartTest:(NSString *)arg1;
 - (void)siriSessionWillDismissAudioRoutePicker;
@@ -50,7 +51,8 @@
 - (void)siriSessionDidDetectMusic;
 - (void)siriSessionGetRequestContextWithCompletionHandler:(void (^)(NSArray *))arg1;
 - (void)siriSessionSupportsSpeechSynthesis:(_Bool)arg1;
-- (void)siriSessionIsPresentingAuthenticationUI;
+- (void)siriSessionIsPresentingApplePaySheet;
+- (void)siriSessionIsPresentingLocalAuthenticationUI;
 - (void)siriSessionWantsToCacheImage:(INImage *)arg1;
 - (void)siriSessionRequestsDismissal;
 - (void)siriSessionOpenURL:(NSURL *)arg1 completionHandler:(void (^)(_Bool))arg2;

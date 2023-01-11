@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 @protocol OS_dispatch_queue;
@@ -12,7 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface VCAdaptiveLearning : NSObject
 {
-    NSMutableDictionary *_callHistoryTBR;
+    NSMutableDictionary *_callHistory;
     _Bool _dirty;
     int _adaptiveLearningState;
     int _shortTermHistoryLength;
@@ -25,7 +25,18 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly) int adaptiveLearningState; // @synthesize adaptiveLearningState=_adaptiveLearningState;
-- (void)updateTargetBitrateForSegment:(id)arg1 newValue:(int)arg2;
+- (int)shortTermAverageBWEForSegment:(id)arg1;
+- (int)longTermAverageBWEForSegment:(id)arg1;
+- (int)shortTermAverageSARBRForSegment:(id)arg1;
+- (int)longTermAverageSARBRForSegment:(id)arg1;
+- (int)shortTermAverageSATXBRForSegment:(id)arg1;
+- (int)longTermAverageSATXBRForSegment:(id)arg1;
+- (int)previousISBRForSegment:(id)arg1;
+- (int)shortTermAverageISBRForSegment:(id)arg1;
+- (int)longTermAverageISBRForSegment:(id)arg1;
+- (int)shortTermAverageTBRForSegment:(id)arg1;
+- (int)longTermAverageTBRForSegment:(id)arg1;
+- (void)updateSegment:(id)arg1 TBR:(int)arg2 ISBTR:(int)arg3 SATXBR:(int)arg4 SARBR:(int)arg5 BWE:(int)arg6;
 - (int)learntBitrateForSegment:(id)arg1 defaultValue:(int)arg2;
 - (void)saveCallSegmentHistory;
 - (void)dealloc;

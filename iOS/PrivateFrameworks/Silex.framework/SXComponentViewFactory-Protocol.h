@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Silex/NSObject-Protocol.h>
+#import <Silex/SXComponentTypeDescribing-Protocol.h>
 
-@class SXComponent, SXComponentView;
+@class SXComponentView;
+@protocol SXComponent;
 
-@protocol SXComponentViewFactory <NSObject>
-- (SXComponentView *)componentViewForComponent:(SXComponent *)arg1;
+@protocol SXComponentViewFactory <SXComponentTypeDescribing>
+- (SXComponentView *)componentViewForComponent:(id <SXComponent>)arg1;
 @end
 

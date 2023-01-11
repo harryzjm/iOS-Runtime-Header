@@ -60,9 +60,11 @@
 @property(readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly) NSString *pluginType; // @synthesize pluginType=_pluginType;
 - (void).cxx_destruct;
+- (void)upgradeLegacyPluginConfigurationsWithUpgradeInfo:(id)arg1 completionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchCarrierBundleNATKeepAliveIntervalOverCell:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchUpgradeInfoForPluginType:(id)arg1 completionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchClientListenerWithBundleID:(id)arg1 completionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)showObsoleteAppAlert;
 - (void)triggerLocalAuthenticationForConfigurationWithID:(id)arg1 withCompletionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)copyIdentities:(id)arg1 fromDomain:(long long)arg2 withCompletionQueue:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)handleApplicationsRemoved:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -105,6 +107,7 @@
 - (id)errorWithCode:(long long)arg1 specifics:(id)arg2;
 - (id)description;
 - (void)dealloc;
+- (id)initForAllUsers;
 - (id)initWithPluginType:(id)arg1;
 - (id)init;
 - (id)initWithUserUUID:(id)arg1;

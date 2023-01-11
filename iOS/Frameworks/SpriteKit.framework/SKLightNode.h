@@ -11,7 +11,9 @@
     struct SKCLightNode *_skcLightNode;
 }
 
-- (id)debugHierarchyPropertyDescriptions;
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
++ (id)debugHierarchyPropertyDescriptions;
++ (_Bool)supportsSecureCoding;
 @property(nonatomic, getter=isEnabled) _Bool enabled;
 @property(retain, nonatomic) UIColor *shadowColor;
 @property(retain, nonatomic) UIColor *ambientColor;
@@ -27,6 +29,7 @@
 - (_Bool)isEqualToNode:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
+- (void)commonInit;
 - (void)_didMakeBackingNode;
 - (struct SKCNode *)_makeBackingNode;
 

@@ -8,7 +8,7 @@
 
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSFileHandle, NSNumber, NSString, NSURL, NSXPCListenerEndpoint;
+@class AFSpeechSynthesisRecord, CLLocation, NSDictionary, NSFileHandle, NSNumber, NSString, NSURL, NSXPCListenerEndpoint;
 
 @interface AFSpeechRequestOptions : NSObject <NSSecureCoding>
 {
@@ -21,7 +21,9 @@
     _Bool _usePrelisteningMode;
     _Bool _pendCallbacksUntilAfterContinuation;
     _Bool _useBorealisBuffer;
+    _Bool _fetchSmartSiriVolume;
     _Bool _suppressStopAlert;
+    _Bool _isOnPhoneCall;
     long long _activationEvent;
     NSString *_activationDeviceIdentifier;
     NSString *_serverCommandId;
@@ -39,13 +41,27 @@
     NSNumber *_notifyState;
     NSURL *_audioFileURL;
     unsigned long long _bargeInOptions;
+    AFSpeechSynthesisRecord *_speechSynthesisRecord;
+    CLLocation *_location;
+    NSString *_locationStatus;
+    NSDictionary *_clientAnalyticsContext;
+    NSDictionary *_startContext;
+    NSDictionary *_stopContext;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) _Bool isOnPhoneCall; // @synthesize isOnPhoneCall=_isOnPhoneCall;
+@property(copy, nonatomic) NSDictionary *stopContext; // @synthesize stopContext=_stopContext;
+@property(copy, nonatomic) NSDictionary *startContext; // @synthesize startContext=_startContext;
+@property(copy, nonatomic) NSDictionary *clientAnalyticsContext; // @synthesize clientAnalyticsContext=_clientAnalyticsContext;
+@property(copy, nonatomic) NSString *locationStatus; // @synthesize locationStatus=_locationStatus;
+@property(copy, nonatomic) CLLocation *location; // @synthesize location=_location;
+@property(copy, nonatomic) AFSpeechSynthesisRecord *speechSynthesisRecord; // @synthesize speechSynthesisRecord=_speechSynthesisRecord;
 @property(nonatomic) unsigned long long bargeInOptions; // @synthesize bargeInOptions=_bargeInOptions;
 @property(nonatomic) _Bool suppressStopAlert; // @synthesize suppressStopAlert=_suppressStopAlert;
 @property(copy, nonatomic) NSURL *audioFileURL; // @synthesize audioFileURL=_audioFileURL;
 @property(copy, nonatomic) NSNumber *notifyState; // @synthesize notifyState=_notifyState;
+@property(nonatomic) _Bool fetchSmartSiriVolume; // @synthesize fetchSmartSiriVolume=_fetchSmartSiriVolume;
 @property(nonatomic) _Bool useBorealisBuffer; // @synthesize useBorealisBuffer=_useBorealisBuffer;
 @property(nonatomic) _Bool pendCallbacksUntilAfterContinuation; // @synthesize pendCallbacksUntilAfterContinuation=_pendCallbacksUntilAfterContinuation;
 @property(nonatomic) _Bool usePrelisteningMode; // @synthesize usePrelisteningMode=_usePrelisteningMode;
@@ -75,6 +91,8 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
+- (_Bool)isRaiseToSpeak;
+- (_Bool)isVoiceTrigger;
 - (id)initWithActivationEvent:(long long)arg1;
 
 @end

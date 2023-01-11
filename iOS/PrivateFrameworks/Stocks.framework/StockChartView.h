@@ -81,6 +81,7 @@
 - (void)updateHUDView;
 - (void)setShowingHUD:(_Bool)arg1;
 - (id)HUDView;
+- (void)hideOtherGraphViews;
 - (void)stockGraphViewReadyForDisplay:(id)arg1;
 - (void)renderGraphDataIfNeeded;
 - (void)renderGraphDataIfNeededForMode:(id)arg1;
@@ -114,6 +115,7 @@
 - (id)graphViewForMode:(id)arg1;
 - (void)addDisplayMode:(id)arg1;
 - (id)initWithInitialDisplayMode:(id)arg1 preferredChartInterval:(long long)arg2 stockChartViewDelegate:(id)arg3;
+- (void)dealloc;
 - (_Bool)isCurrentChart;
 
 // Remaining properties

@@ -10,7 +10,8 @@
 
 @class NATreeNode, NSArray, NSMutableArray;
 
-@interface NATreeNodedeepNodeEnumerator : NSEnumerator <NSCopying>
+__attribute__((visibility("hidden")))
+@interface NATreeNodeDeepNodeEnumerator : NSEnumerator <NSCopying>
 {
     NSMutableArray *_enumeratorStack;
     NATreeNode *_node;

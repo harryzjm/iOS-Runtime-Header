@@ -4,23 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <NewsCore/FCFeedGroupInsertionDescriptor-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCFeedGroupEmittingContext, FCFeedGroupEmittingOperation, NSString;
-@protocol FCAppConfiguration, FCFeedGroupOutlining, NSCoding;
+@class FCFeedGroupEmittingContext, FCFeedGroupEmittingCursor, FCFeedGroupEmittingOperation, NSSet, NSString;
+@protocol FCCoreConfiguration, FCFeedGroupOutlining;
 
-@protocol FCFeedGroupEmitting <NSObject>
+@protocol FCFeedGroupEmitting <FCFeedGroupInsertionDescriptor, NSObject>
 @property(readonly, copy, nonatomic) NSString *groupEmitterIdentifier;
-- (_Bool)canEmitGroupsWithType:(long long)arg1;
-- (_Bool)wantsToInsertGroup:(id <FCFeedGroupOutlining>)arg1 withContext:(FCFeedGroupEmittingContext *)arg2;
-- (FCFeedGroupEmittingOperation *)operationToEmitGroupWithContext:(FCFeedGroupEmittingContext *)arg1 fromCursor:(id <NSCoding>)arg2 toCursor:(id <NSCoding>)arg3;
-- (_Bool)wantsToEmitGroupInContext:(FCFeedGroupEmittingContext *)arg1 withCursor:(id <NSCoding>)arg2 toCursor:(id <NSCoding>)arg3;
+@property(readonly, copy, nonatomic) NSSet *emittableGroupTypes;
+- (FCFeedGroupEmittingOperation *)operationToEmitGroupWithContext:(FCFeedGroupEmittingContext *)arg1 fromCursor:(FCFeedGroupEmittingCursor *)arg2 toCursor:(FCFeedGroupEmittingCursor *)arg3;
+- (_Bool)wantsToEmitGroupInContext:(FCFeedGroupEmittingContext *)arg1 fromCursor:(FCFeedGroupEmittingCursor *)arg2 toCursor:(FCFeedGroupEmittingCursor *)arg3;
 
 @optional
 @property(readonly, nonatomic) _Bool isRequiredByFollowingEmitters;
-@property(readonly, nonatomic) _Bool requiresForYouCatchUpOperation;
+@property(readonly, nonatomic) long long requiredForYouContentTypes;
+@property(readonly, nonatomic) _Bool emitsSingleRefreshSessionGroups;
 @property(readonly, nonatomic) _Bool emitsSingletonGroups;
-- (NSString *)backingChannelTagIDWithAppConfig:(id <FCAppConfiguration>)arg1;
+- (NSString *)backingChannelTagIDWithConfiguration:(id <FCCoreConfiguration>)arg1;
 - (_Bool)canMergeHeadlinesFromGroup:(id <FCFeedGroupOutlining>)arg1 intoGroup:(id <FCFeedGroupOutlining>)arg2;
 - (_Bool)canMergeGroupsUnconditionally;
 - (_Bool)supportsPagination;

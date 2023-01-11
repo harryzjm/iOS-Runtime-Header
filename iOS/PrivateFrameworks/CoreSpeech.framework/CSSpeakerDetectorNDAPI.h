@@ -6,20 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class CSSpeakerModel, NSString;
+@class CSSpeakerModel;
 @protocol CSSpeakerDetectorNDAPIDelegate;
 
 @interface CSSpeakerDetectorNDAPI : NSObject
 {
     float _threshold;
-    NSString *_languageCode;
+    unsigned long long _maxSpeakerVectorsToPersist;
     CSSpeakerModel *_spkModel;
-    float _retrainTriggerThreshold;
     id <CSSpeakerDetectorNDAPIDelegate> _delegate;
 }
 
 @property(nonatomic) __weak id <CSSpeakerDetectorNDAPIDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+- (unsigned long long)getMaxSpeakerVectorsToPersist;
+- (unsigned long long)getSATVectorCount;
+- (_Bool)addLastTriggerToProfileWithSuperVector:(id)arg1;
 - (_Bool)addLastTriggerToProfile;
 - (id)analyzeWavForEnrollment:(id)arg1 numSamples:(unsigned long long)arg2;
 - (float)_computeSATScore:(id)arg1;
@@ -28,7 +30,7 @@
 - (_Bool)_initializeNDAPI:(id)arg1 resourcePath:(id)arg2;
 - (void)dealloc;
 - (void)reset;
-- (id)initWithAsset:(id)arg1 languageCode:(id)arg2 speakerModel:(id)arg3;
+- (id)initWithAsset:(id)arg1 speakerModel:(id)arg2;
 
 @end
 

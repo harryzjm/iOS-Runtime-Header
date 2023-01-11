@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FCFeedDatabase, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
-@protocol FCContentContext;
+@class FCEdgeCacheHint, FCFeedDatabase, FCHeldRecords, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
+@protocol FCContentContext, FCCoreConfiguration;
 
 @interface FCFeedRequestOperation
 {
     id <FCContentContext> _context;
+    id <FCCoreConfiguration> _configuration;
     FCFeedDatabase *_feedDatabase;
     NSArray *_feedRequests;
     unsigned long long _maxCount;
     long long _options;
     NSArray *_feedTransformations;
+    FCEdgeCacheHint *_edgeCacheHint;
     unsigned long long _expectedNetworkEventCount;
     CDUnknownBlockType _requestCompletionHandler;
     CDUnknownBlockType _requestCompletionHandlerWithInterestToken;
@@ -22,13 +24,15 @@
     NSDictionary *_feedRequestsByFeedID;
     NSDictionary *_databaseLookupsByFeedID;
     NSMutableDictionary *_resultFeedResponses;
-    NSMutableArray *_resultHeldArticleAndTagRecords;
+    FCHeldRecords *_resultHeldArticleRecords;
+    FCHeldRecords *_resultHeldTagRecords;
 }
 
 + (_Bool)_orderFeedTopKEnabled;
 + (id)feedRequestContentEnvironmentTokenWithContext:(id)arg1;
 + (void)initialize;
-@property(retain, nonatomic) NSMutableArray *resultHeldArticleAndTagRecords; // @synthesize resultHeldArticleAndTagRecords=_resultHeldArticleAndTagRecords;
+@property(retain, nonatomic) FCHeldRecords *resultHeldTagRecords; // @synthesize resultHeldTagRecords=_resultHeldTagRecords;
+@property(retain, nonatomic) FCHeldRecords *resultHeldArticleRecords; // @synthesize resultHeldArticleRecords=_resultHeldArticleRecords;
 @property(retain, nonatomic) NSMutableDictionary *resultFeedResponses; // @synthesize resultFeedResponses=_resultFeedResponses;
 @property(retain, nonatomic) NSDictionary *databaseLookupsByFeedID; // @synthesize databaseLookupsByFeedID=_databaseLookupsByFeedID;
 @property(retain, nonatomic) NSDictionary *feedRequestsByFeedID; // @synthesize feedRequestsByFeedID=_feedRequestsByFeedID;
@@ -36,20 +40,30 @@
 @property(copy, nonatomic) CDUnknownBlockType requestCompletionHandlerWithInterestToken; // @synthesize requestCompletionHandlerWithInterestToken=_requestCompletionHandlerWithInterestToken;
 @property(copy, nonatomic) CDUnknownBlockType requestCompletionHandler; // @synthesize requestCompletionHandler=_requestCompletionHandler;
 @property(nonatomic) unsigned long long expectedNetworkEventCount; // @synthesize expectedNetworkEventCount=_expectedNetworkEventCount;
+@property(copy, nonatomic) FCEdgeCacheHint *edgeCacheHint; // @synthesize edgeCacheHint=_edgeCacheHint;
 @property(copy, nonatomic) NSArray *feedTransformations; // @synthesize feedTransformations=_feedTransformations;
 @property(nonatomic) long long options; // @synthesize options=_options;
 @property(nonatomic) unsigned long long maxCount; // @synthesize maxCount=_maxCount;
 @property(copy, nonatomic) NSArray *feedRequests; // @synthesize feedRequests=_feedRequests;
 @property(retain, nonatomic) FCFeedDatabase *feedDatabase; // @synthesize feedDatabase=_feedDatabase;
+@property(retain, nonatomic) id <FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
 @property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
 - (void).cxx_destruct;
+- (id)_additionalHTTPHeadersForOrderFeedRequest;
+- (_Bool)_countOfDroppedFeeds;
 - (unsigned long long)_orderFeedTopKFromBin:(long long)arg1 timeInterval:(double)arg2;
 - (id)_orderFeedIDFromFeedID:(id)arg1;
+- (_Bool)_shouldReturnItemsFromDroppedFeedResponse:(id)arg1;
 - (id)_failureResponseForRequest:(id)arg1 error:(id)arg2;
+- (id)_normalizedFeedRange:(id)arg1;
+- (void)_gatherEdgeCachedFeedResponsesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_gatherAllOrderFeedResponsesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_gatherAllFeedResponsesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (unsigned long long)_networkEventCount;
 @property(readonly, nonatomic) NSArray *networkEvents;
+- (void)resetForRetry;
+- (_Bool)canRetryWithError:(id)arg1 retryAfter:(id *)arg2;
+- (unsigned long long)maxRetries;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (void)prepareOperation;

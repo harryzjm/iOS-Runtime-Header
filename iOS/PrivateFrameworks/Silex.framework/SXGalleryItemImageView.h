@@ -4,22 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SXContext, SXGalleryItem;
+@class SXGalleryItem;
 
 @interface SXGalleryItemImageView
 {
     SXGalleryItem *_galleryItem;
-    unsigned long long _index;
-    SXContext *_context;
 }
 
-@property(readonly, nonatomic) SXContext *context; // @synthesize context=_context;
-@property(readonly, nonatomic) unsigned long long index; // @synthesize index=_index;
 @property(readonly, nonatomic) SXGalleryItem *galleryItem; // @synthesize galleryItem=_galleryItem;
 - (void).cxx_destruct;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
-- (id)initWithGalleryItem:(id)arg1 forIndex:(unsigned long long)arg2 context:(id)arg3;
+- (id)initWithGalleryItem:(id)arg1 imageResource:(id)arg2 resourceDataSource:(id)arg3 reachabilityProvider:(id)arg4;
 
 @end
 

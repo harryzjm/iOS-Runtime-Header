@@ -6,7 +6,6 @@
 
 @class CUIImage, CUIShapeEffectPreset, NSDictionary;
 
-__attribute__((visibility("hidden")))
 @interface CUIThemeSchemaEffectRendition
 {
     NSDictionary *_cuiInfo;

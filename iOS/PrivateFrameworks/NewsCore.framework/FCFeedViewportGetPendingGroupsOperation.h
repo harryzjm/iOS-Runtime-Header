@@ -8,6 +8,7 @@
 
 @interface FCFeedViewportGetPendingGroupsOperation
 {
+    _Bool _lightweightOnly;
     FCFeedRefreshSession *_refreshSession;
     NSArray *_feedGroupEmitters;
     FCFeedGroupEmittingContext *_groupEmittingContext;
@@ -18,6 +19,7 @@
 
 @property(retain, nonatomic) FCFeedRefreshSession *resultRefreshSession; // @synthesize resultRefreshSession=_resultRefreshSession;
 @property(copy, nonatomic) CDUnknownBlockType emitGroupsCompletionHandler; // @synthesize emitGroupsCompletionHandler=_emitGroupsCompletionHandler;
+@property _Bool lightweightOnly; // @synthesize lightweightOnly=_lightweightOnly;
 @property(retain, nonatomic) NSDictionary *toCursorsByEmitterID; // @synthesize toCursorsByEmitterID=_toCursorsByEmitterID;
 @property(retain, nonatomic) FCFeedGroupEmittingContext *groupEmittingContext; // @synthesize groupEmittingContext=_groupEmittingContext;
 @property(retain, nonatomic) NSArray *feedGroupEmitters; // @synthesize feedGroupEmitters=_feedGroupEmitters;

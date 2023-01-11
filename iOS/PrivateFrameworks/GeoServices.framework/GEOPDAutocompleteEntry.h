@@ -8,8 +8,9 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAutocompleteEntryAddress, GEOPDAutocompleteEntryBrandProfile, GEOPDAutocompleteEntryBusiness, GEOPDAutocompleteEntryCategory, GEOPDAutocompleteEntryHighlightLine, GEOPDAutocompleteEntryQuery, PBUnknownFields;
+@class GEOPDAutocompleteEntryAddress, GEOPDAutocompleteEntryBrandProfile, GEOPDAutocompleteEntryBusiness, GEOPDAutocompleteEntryCategory, GEOPDAutocompleteEntryClientResolved, GEOPDAutocompleteEntryDirectionIntent, GEOPDAutocompleteEntryHighlightLine, GEOPDAutocompleteEntryQuery, GEOPDRetainedSearchMetadata, PBUnknownFields;
 
+__attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteEntry : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
@@ -17,15 +18,19 @@
     GEOPDAutocompleteEntryBrandProfile *_brandProfile;
     GEOPDAutocompleteEntryBusiness *_business;
     GEOPDAutocompleteEntryCategory *_category;
+    GEOPDAutocompleteEntryClientResolved *_clientResolved;
+    GEOPDAutocompleteEntryDirectionIntent *_directionIntent;
     GEOPDAutocompleteEntryHighlightLine *_highlightExtra;
     GEOPDAutocompleteEntryHighlightLine *_highlightMain;
     GEOPDAutocompleteEntryQuery *_query;
+    GEOPDRetainedSearchMetadata *_retainSearch;
     int _type;
-    struct {
-        unsigned int type:1;
-    } _has;
+    CDStruct_f953fb60 _has;
 }
 
+@property(retain, nonatomic) GEOPDRetainedSearchMetadata *retainSearch; // @synthesize retainSearch=_retainSearch;
+@property(retain, nonatomic) GEOPDAutocompleteEntryDirectionIntent *directionIntent; // @synthesize directionIntent=_directionIntent;
+@property(retain, nonatomic) GEOPDAutocompleteEntryClientResolved *clientResolved; // @synthesize clientResolved=_clientResolved;
 @property(retain, nonatomic) GEOPDAutocompleteEntryBrandProfile *brandProfile; // @synthesize brandProfile=_brandProfile;
 @property(retain, nonatomic) GEOPDAutocompleteEntryCategory *category; // @synthesize category=_category;
 @property(retain, nonatomic) GEOPDAutocompleteEntryAddress *address; // @synthesize address=_address;
@@ -44,6 +49,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasRetainSearch;
+@property(readonly, nonatomic) _Bool hasDirectionIntent;
+@property(readonly, nonatomic) _Bool hasClientResolved;
 @property(readonly, nonatomic) _Bool hasBrandProfile;
 @property(readonly, nonatomic) _Bool hasCategory;
 @property(readonly, nonatomic) _Bool hasAddress;

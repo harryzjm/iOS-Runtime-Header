@@ -14,7 +14,7 @@
 - (void)accessibilityIncrement;
 - (void)accessibilityDecrement;
 - (void)_axUpdateStateForDetailView;
-- (id)_axDetailView;
+- (id)_axScrollView;
 
 @end
 

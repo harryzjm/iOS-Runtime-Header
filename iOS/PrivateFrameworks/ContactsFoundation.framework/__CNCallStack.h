@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface __CNCallStack : NSObject
 {
@@ -18,7 +18,6 @@
 - (id)copyArrayRepresentation;
 - (void **)frames;
 - (unsigned int)frameCount;
-- (void)finalize;
 - (void)dealloc;
 - (id)initWithFrames:(void **)arg1 count:(unsigned int)arg2;
 

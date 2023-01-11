@@ -12,14 +12,19 @@
 {
     struct MPSDevice *_device;
     id <MTLCommandBuffer> _cmdBuffer;
-    int _debugMode;
-    struct HeapNode *_freeList;
+    long long _debugMode;
+    struct HeapNode *_freeList[65];
     struct CacheFrame *_frameList;
     struct ResourceNode *_retainedResources;
-    _Bool _needsRetain;
     struct MPSAutoCache *_userCacheFrame;
+    unsigned long long _minimumBin;
+    unsigned long long _batchSize;
+    _Bool _needsRetain;
+    unsigned long long _totalAllocationBytes;
+    unsigned long long _cacheDelay;
 }
 
+@property(nonatomic) unsigned long long batchSizeHint; // @synthesize batchSizeHint=_batchSize;
 @property(readonly, nonatomic) id <MTLCommandBuffer> commandBuffer; // @synthesize commandBuffer=_cmdBuffer;
 - (id)debugDescription;
 - (void)releaseHeapBlock:(id)arg1;

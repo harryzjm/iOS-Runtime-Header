@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_source;
 
@@ -16,8 +16,10 @@ __attribute__((visibility("hidden")))
     double _lastResumeTime;
     double _lastPauseTime;
     double _runTime;
+    int _state;
 }
 
+@property int state; // @synthesize state=_state;
 - (void)setCancelCallbacks:(CDUnknownBlockType)arg1;
 - (void)resumeCallbacksForTimer;
 - (void)suspendCallbacksForTimer;

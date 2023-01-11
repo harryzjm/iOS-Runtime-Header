@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
-@interface DMFFetchProfilesRequest : CATTaskRequest
+@interface DMFFetchProfilesRequest
 {
     unsigned long long _filterFlags;
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)isPermittedOnUserConnection;
++ (_Bool)isPermittedOnSystemConnection;
++ (id)permittedPlatforms;
 + (Class)whitelistedClassForResultObject;
 @property(nonatomic) unsigned long long filterFlags; // @synthesize filterFlags=_filterFlags;
 - (void)encodeWithCoder:(id)arg1;

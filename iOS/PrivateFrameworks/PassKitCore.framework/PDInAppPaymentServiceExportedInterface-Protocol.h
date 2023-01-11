@@ -9,8 +9,9 @@
 @class NSNumber, NSString, NSXPCListenerEndpoint, PKPaymentRequest;
 
 @protocol PDInAppPaymentServiceExportedInterface <PDXPCServiceExportedInterface>
-- (void)paymentHardwareStatusWithCompletion:(void (^)(_Bool, unsigned long long))arg1;
-- (void)paymentServicesMerchantURL:(void (^)(_Bool, NSURL *))arg1;
+- (void)paymentHardwareStatusWithCompletion:(void (^)(PKPaymentHardwareStatus *))arg1;
+- (void)secureElementStatusWithCompletion:(void (^)(_Bool, unsigned long long))arg1;
+- (void)paymentServicesMerchantURLForAPIType:(unsigned long long)arg1 handler:(void (^)(_Bool, NSURL *))arg2;
 - (void)merchantStatusCheck:(NSString *)arg1 merchantDomain:(NSString *)arg2 sourceApplicationSecondaryIdentifier:(NSString *)arg3 handler:(void (^)(_Bool, NSError *))arg4;
 - (void)retrievePaymentListenerEndpointForHostIdentifier:(NSString *)arg1 handler:(void (^)(_Bool, NSXPCListenerEndpoint *))arg2;
 - (void)registerPaymentListenerEndpoint:(NSXPCListenerEndpoint *)arg1 forHostIdentifier:(NSString *)arg2 handler:(void (^)(_Bool))arg3;

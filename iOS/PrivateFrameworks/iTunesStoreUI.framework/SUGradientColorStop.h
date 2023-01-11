@@ -6,9 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesStoreUI/NSCoding-Protocol.h>
+#import <iTunesStoreUI/NSSecureCoding-Protocol.h>
 
-@interface SUGradientColorStop : NSObject <NSCoding>
+@interface SUGradientColorStop : NSObject <NSSecureCoding>
 {
     double _r;
     double _g;
@@ -18,6 +18,7 @@
     struct CGColor *_rawColor;
 }
 
++ (_Bool)supportsSecureCoding;
 - (id)description;
 @property(readonly, nonatomic) double offset;
 - (struct CGColor *)copyCGColor;

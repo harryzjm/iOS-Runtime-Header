@@ -22,6 +22,8 @@
 - (void)drawForPage:(id)arg1 withBox:(int)arg2 active:(_Bool)arg3 inContext:(struct CGContext *)arg4;
 - (void)setForceBreaks:(_Bool)arg1;
 - (_Bool)forceBreaks;
+- (void)setCornerRadius:(double)arg1;
+- (double)cornerRadius;
 - (void)setInactiveColor:(id)arg1;
 - (id)inactiveColor;
 - (void)setActiveColor:(id)arg1;
@@ -67,6 +69,7 @@
 - (id)selectionsByLine;
 - (struct _NSRange)rangeAtIndex:(unsigned long long)arg1 onPage:(id)arg2;
 - (unsigned long long)numberOfTextRangesOnPage:(id)arg1;
+- (id)pdfSelectionUUID;
 - (struct CGRect)lastSpanBoundsForPage:(id)arg1;
 - (struct CGRect)firstSpanBoundsForPage:(id)arg1;
 - (struct CGRect)spanBoundsForPage:(id)arg1 atPoint:(struct CGPoint)arg2;

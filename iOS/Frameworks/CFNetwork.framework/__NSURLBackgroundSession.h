@@ -7,7 +7,7 @@
 #import <CFNetwork/NDBackgroundSessionClient-Protocol.h>
 #import <CFNetwork/NSURLSessionSubclass-Protocol.h>
 
-@class NSError, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSURL, NSXPCConnection;
+@class NSError, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSURL, NSXPCConnection;
 @protocol NDBackgroundSessionProtocol, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -18,8 +18,10 @@ __attribute__((visibility("hidden")))
     NSXPCConnection *_xpcConn;
     NSMutableDictionary *_tasks;
     NSMutableArray *_taskIDsToFailOnReconnection;
+    NSMutableSet *_taskIDsGettingAuthHeaders;
     NSObject<OS_dispatch_queue> *_invalidateQueue;
     CDUnknownBlockType _invalidateCallback;
+    SmartBlockWithArgs_7064a8fd _backgroundSessionDidFinishAppWakeBlock;
     NSString *_appWakeUUID;
     NSURL *_downloadDirectory;
     NSURL *_assetDownloadDirectory;
@@ -35,6 +37,8 @@ __attribute__((visibility("hidden")))
 
 @property(copy) NSString *appWakeUUID; // @synthesize appWakeUUID=_appWakeUUID;
 @property(getter=isCompanionAvailable) _Bool companionAvailable; // @synthesize companionAvailable=_companionAvailable;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)_onqueue_getTasksWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_onqueue_completeInvalidation:(_Bool)arg1;
 - (void)credStorage_setDefaultCredential:(id)arg1 forProtectionSpace:(id)arg2;
@@ -104,6 +108,7 @@ __attribute__((visibility("hidden")))
 - (void)setCookiesFromResponse:(id)arg1 forOriginalRequest:(id)arg2 partitionIdentifier:(id)arg3;
 - (void)_onqueue_disavowTask:(id)arg1;
 - (id)taskForIdentifier:(unsigned long long)arg1;
+- (void)_useTLSSessionCacheFromSession:(id)arg1;
 - (id)copyTasks;
 - (void)dealloc;
 - (void)appWasLaunchedForBackgroundSession:(id)arg1;

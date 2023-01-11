@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableArray, NSMutableDictionary, VCMasterKeyIndex;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,15 +14,21 @@ __attribute__((visibility("hidden")))
 {
     NSMutableDictionary *_sendKeys;
     NSMutableDictionary *_receiveKeys;
-    unsigned int _latestSendKeyIndex;
-    unsigned int _latestReceiveKeyIndex;
+    VCMasterKeyIndex *_latestSendKeyIndex;
+    VCMasterKeyIndex *_latestReceiveKeyIndex;
+    VCMasterKeyIndex *_keyIndexNotReceived;
     _Bool _isSendKeysCleanUpPending;
     _Bool _isReceiveKeysCleanUpPending;
     id _delegate;
     NSObject<OS_dispatch_queue> *_keyManagerQueue;
+    _Bool _isKeyIndexNotReceivedReported;
+    double _lastKeyIndexNotReceived;
+    id _reportingAgentWeak;
+    _Bool _isDuplicateKeyReported;
+    NSMutableArray *_unknownKeyIndexList;
 }
 
-- (void)updateSendKeyMaterialWithIndex:(id)arg1 delay:(double)arg2;
+- (struct opaqueRTCReporting *)reportingAgent;
 - (void)pruneRecvKeyMaterialWithDelay:(double)arg1;
 - (void)pruneSendKeyMaterialWithDelay:(double)arg1;
 - (id)getLatestRecvKeyMaterial;
@@ -32,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)addSecurityKeyMaterial:(id)arg1;
 - (id)delegate;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1;
+- (id)initWithDelegate:(id)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2;
 
 @end
 

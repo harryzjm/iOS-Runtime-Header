@@ -11,7 +11,7 @@
 @interface NSObject (IBCocoaTouchToolIntegration)
 - (id)ibMakeWindowForRenderingWithSimulatedMetricsContext:(id)arg1;
 - (void)ibApplySimulatedMetricsWithContext:(id)arg1;
-- (id)ibContextAfterApplyingSimulatedMetricsWithWindowClass:(Class)arg1;
+- (id)ibContextAfterApplyingSimulatedMetrics;
 - (void)ibPrepareForSceneUpdateProcessingRequestPhase:(long long)arg1;
 - (void)ibPrepareForSceneUpdate;
 - (void)ibDidIncrementallyUpdateValueForKeyPath:(id)arg1;

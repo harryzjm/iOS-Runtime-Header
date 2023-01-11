@@ -14,7 +14,9 @@
 + (int)type;
 + (id)candidateWithPinyinSyllable:(id)arg1;
 + (_Bool)supportsSecureCoding;
+- (void)setLabel:(id)arg1;
 - (id)label;
+- (void).cxx_destruct;
 - (void)encodeWithCandidateResultSetCoder:(id)arg1;
 - (id)initWithCandidateResultSetCoder:(id)arg1;
 - (unsigned long long)hash;
@@ -23,7 +25,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithPinyinSyllable:(id)arg1;
-- (void)dealloc;
 
 @end
 

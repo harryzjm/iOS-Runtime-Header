@@ -19,6 +19,7 @@
 + (id)createDefaultInstancesForUnitTesting;
 - (_Bool)isEqualForUnitTests:(id)arg1;
 - (_Bool)shouldMutateChild:(id)arg1 byCopyingContentToNewSlot:(id)arg2;
+- (void)updateIdentifierOfIncomingChildToBeUnique:(id)arg1;
 - (CDStruct_2a4d9400)taggingSupport;
 - (void)manifestArchivist:(id)arg1 populateManifest:(id)arg2;
 - (void)manifestArchivist:(id)arg1 applyPropertiesFromManifest:(id)arg2;

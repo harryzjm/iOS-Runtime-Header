@@ -10,7 +10,7 @@
 
 @interface IBICAssetTagSolver : NSObject
 {
-    IBMutableIdentityDictionary *_cachedCumulativePropigatedTags;
+    IBMutableIdentityDictionary *_cachedCumulativePropagatedTags;
     IBMutableIdentityDictionary *_cachedAcceptedTags;
     NSDictionary *_adornersByAndornees;
     NSSet *_solutionSpace;
@@ -18,8 +18,8 @@
 
 @property(readonly) NSSet *solutionSpace; // @synthesize solutionSpace=_solutionSpace;
 - (void).cxx_destruct;
-- (id)cumulativeTagsPropigatedToItem:(id)arg1;
-- (id)cumulativeTagsPropigatedByItem:(id)arg1;
+- (id)cumulativeTagsPropagatedToItem:(id)arg1;
+- (id)cumulativeTagsPropagatedByItem:(id)arg1;
 - (id)acceptedTagsForItem:(id)arg1;
 - (id)setByUnioningTags:(id)arg1 withLocalTagsFromItem:(id)arg2;
 - (id)adornersForAdornee:(id)arg1;

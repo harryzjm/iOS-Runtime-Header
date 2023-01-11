@@ -9,21 +9,25 @@
 #import <NewsUI/NUArticleAdManagerFactory-Protocol.h>
 
 @class NSString;
-@protocol NUAdProvider, NUAdSettings, NUDevice;
+@protocol NUAdLayoutOptionsFactory, NUAdMetadataFactory, NUAdProvider, NUAdSettings, NUDevice;
 
 @interface NUANFArticleAdManagerFactory : NSObject <NUArticleAdManagerFactory>
 {
     id <NUAdProvider> _adProvider;
+    id <NUAdMetadataFactory> _adMetadataFactory;
     id <NUAdSettings> _settings;
     id <NUDevice> _device;
+    id <NUAdLayoutOptionsFactory> _layoutOptionsFactory;
 }
 
+@property(readonly, nonatomic) id <NUAdLayoutOptionsFactory> layoutOptionsFactory; // @synthesize layoutOptionsFactory=_layoutOptionsFactory;
 @property(readonly, nonatomic) id <NUDevice> device; // @synthesize device=_device;
 @property(readonly, nonatomic) id <NUAdSettings> settings; // @synthesize settings=_settings;
+@property(readonly, nonatomic) id <NUAdMetadataFactory> adMetadataFactory; // @synthesize adMetadataFactory=_adMetadataFactory;
 @property(readonly, nonatomic) id <NUAdProvider> adProvider; // @synthesize adProvider=_adProvider;
 - (void).cxx_destruct;
 - (id)createArticleAdManagerForArticle:(id)arg1;
-- (id)initWithAdProvider:(id)arg1 settings:(id)arg2 device:(id)arg3;
+- (id)initWithAdProvider:(id)arg1 adMetadataFactory:(id)arg2 settings:(id)arg3 device:(id)arg4 layoutOptionsFactory:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

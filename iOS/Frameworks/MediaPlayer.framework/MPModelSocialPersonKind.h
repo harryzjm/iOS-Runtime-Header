@@ -8,5 +8,7 @@
 {
 }
 
+- (id)humanDescription;
+
 @end
 

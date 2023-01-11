@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/TSCHPropertyMapsGeneratedProtocol-Protocol.h>
@@ -70,6 +70,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)groupedShadowsForChartModel:(id)arg1;
++ (_Bool)updateInitialLabelExplosionIfNeededForChartType:(id)arg1 seriesNonStyles:(inout id *)arg2 stylePreset:(id)arg3 rowCount:(unsigned long long)arg4 columnCount:(unsigned long long)arg5;
 + (id)scale3DPropertyToConstantDepthInfoChartScaleMappingsWithBarShape:(int)arg1 conversionBlock:(CDUnknownBlockType)arg2;
 + (id)p_chartTypeTo3DScalePropertyPairs;
 + (id)referenceLineStyleIdentifierForRoleIndex:(unsigned long long)arg1 ordinal:(unsigned long long)arg2;
@@ -111,17 +112,19 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *informationalMessageString; // @synthesize informationalMessageString=mMessageString;
 @property(nonatomic) _Bool displayMessageOnRepCreation; // @synthesize displayMessageOnRepCreation=mDisplayMessageOnRepCreation;
 @property(copy, nonatomic) NSString *lastAppliedFillSetLookupString; // @synthesize lastAppliedFillSetLookupString=mLastAppliedFillSetLookupString;
-@property(readonly, nonatomic) TSCHChartDrawableInfo *drawableInfo; // @synthesize drawableInfo=mDrawableInfo;
+@property(readonly, nonatomic) __weak TSCHChartDrawableInfo *drawableInfo; // @synthesize drawableInfo=mDrawableInfo;
 @property(nonatomic) struct CGPoint previewOrigin; // @synthesize previewOrigin=mPreviewOrigin;
 @property(retain, nonatomic) TSCHChartMediator *mediator; // @synthesize mediator=mChartMediator;
-@property(readonly, retain, nonatomic) TSCHChartType *chartType; // @synthesize chartType=mChartType;
+@property(readonly, nonatomic) TSCHChartType *chartType; // @synthesize chartType=mChartType;
 @property(retain, nonatomic) TSCHLegendModel *legend; // @synthesize legend=mLegendModel;
 @property(retain, nonatomic) TSCHChartModel *model; // @synthesize model=mModel;
+- (void).cxx_destruct;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (_Bool)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
 - (void)performDeferredUpgradeAndImportOperations;
 @property(readonly, nonatomic) _Bool wantsDeferredUpgradeOrImport;
+- (void)upgradeChartRoundedCornerRadiusWithValue:(double)arg1;
 - (void)upgradeAxisLabelFormatWithValuePrefix:(id)arg1 valueSuffix:(id)arg2 valueUseSeparator:(_Bool)arg3 horizontalPrefix:(id)arg4 horizontalSuffix:(id)arg5 horizontalUseSeparator:(_Bool)arg6;
 - (void)upgradeWithHorizontalMin:(id)arg1 horizontalMax:(id)arg2 valueMin:(id)arg3 valueMax:(id)arg4;
 - (struct CGRect)chartBodyBoundsForSageImportWithSageChartType:(_Bool)arg1 isSpiceDoc:(_Bool)arg2;
@@ -226,7 +229,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)gridEqualToDefaultGrid;
 - (void)setChartType:(id)arg1 andSetLegendDefaults:(_Bool)arg2 gridRowIds:(id)arg3 gridColumnIds:(id)arg4 forDocumentLocale:(id)arg5;
 - (void)setInfoGeometryByUpdatingLegendGeometryAccommodatedForInitialLayoutGeometry:(id)arg1;
-- (id)p_infoGeometryForGeometry:(id)arg1 isCircumscribing:(_Bool)arg2;
+- (id)p_infoGeometryForGeometry:(id)arg1 isCircumscribing:(_Bool)arg2 omitLabelPlacement:(_Bool)arg3;
+- (id)infoGeometryForDesiredCircumscribingGeometry:(id)arg1 omitLabelPlacement:(_Bool)arg2;
 - (id)infoGeometryForDesiredCircumscribingGeometry:(id)arg1;
 - (id)infoGeometryForDesiredPureLayoutGeometry:(id)arg1;
 - (id)infoGeometryForVisiblePositioningInfoGeometry:(id)arg1;
@@ -252,7 +256,6 @@ __attribute__((visibility("hidden")))
 - (void)clearParent;
 - (void)dealloc;
 - (id)initWithChartType:(id)arg1 legendShowing:(id)arg2 chartBodyFrame:(id)arg3 chartAreaFrame:(id)arg4 circumscribingFrame:(id)arg5 legendFrame:(id)arg6 stylePreset:(id)arg7 privateSeriesStyles:(id)arg8 chartNonStyle:(id)arg9 legendNonStyle:(id)arg10 valueAxisNonStyles:(id)arg11 categoryAxisNonStyles:(id)arg12 seriesNonStyles:(id)arg13 refLineNonStylesMap:(id)arg14 refLineStylesMap:(id)arg15 forDocumentLocale:(id)arg16;
-- (id)init;
 - (id)p_init;
 - (id)allStylesAndNonStylesThatCanHaveCustomNumberFormats;
 - (void)updateAfterPaste;
@@ -260,13 +263,17 @@ __attribute__((visibility("hidden")))
 - (id)allCustomFormatKeys;
 - (id)styleSwapCommandToApplyFillSetSeriesPropertyMaps:(id)arg1;
 - (id)commandToApplyFillSet:(id)arg1;
-- (id)create3DSceneWithLayoutSettings:(const CDStruct_44ada6bf *)arg1;
-@property(nonatomic) CDStruct_44ada6bf defaultLayoutSettings;
+- (id)create3DSceneWithLayoutSettings:(const CDStruct_b1c75024 *)arg1;
+@property(nonatomic) CDStruct_b1c75024 defaultLayoutSettings;
 @property(readonly, nonatomic) _Bool hasSetDefaultLayoutSettings;
 - (void)debugLayoutCache;
 @property(readonly, nonatomic) TSCHChartLayoutCache *sceneAreaLayoutItemCache;
 - (id)clamped3DRotationPropertyObject;
 - (id)pasteboardCustomFormatList;
+- (_Bool)supportsAndHasRoundedCorners;
+- (_Bool)hasTractReference;
+- (_Bool)hasCategoryReferences;
+- (_Bool)p_containsCalloutLinesWithModelSync:(_Bool)arg1;
 - (_Bool)containsCalloutLines;
 - (_Bool)isSingleCircleSpecialCase;
 - (_Bool)isSingleCircleSpecialCaseOutSeries:(id *)arg1;
@@ -274,6 +281,11 @@ __attribute__((visibility("hidden")))
 - (float)maximumExplosion;
 - (float)radiusForFrame:(struct CGRect)arg1 withMaxExplosion:(float)arg2;
 - (float)minFrameDimensionForRadius:(float)arg1 withMaxExplosion:(float)arg2;
+- (_Bool)p_supportsRoundedCornersWithModelSync:(_Bool)arg1;
+- (_Bool)supportsRoundedCorners;
+- (_Bool)hasRoundedCorners;
+- (_Bool)supportsRoundedCornersWithoutModelSync;
+- (_Bool)containsCalloutLinesWithoutModelSync;
 - (void)loadFromPreUFFArchive:(const struct ChartInfoArchive *)arg1 unarchiver:(id)arg2 persistentChartInfo:(id)arg3;
 - (id)g_operationPropertyNameForGenericProperty:(int)arg1;
 - (id)g_genericToDefaultPropertyMap;

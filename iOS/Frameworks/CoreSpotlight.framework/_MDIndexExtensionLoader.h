@@ -6,26 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary;
 @protocol OS_dispatch_queue;
 
 @interface _MDIndexExtensionLoader : NSObject
 {
     id _matchingContext;
     NSObject<OS_dispatch_queue> *_queue;
-    NSDictionary *_extensionsByBundleId;
+    long long _notificationCount;
 }
 
 + (id)_matchDictionary;
-@property(retain, nonatomic) NSDictionary *extensionsByBundleId; // @synthesize extensionsByBundleId=_extensionsByBundleId;
+@property(nonatomic) long long notificationCount; // @synthesize notificationCount=_notificationCount;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) id matchingContext; // @synthesize matchingContext=_matchingContext;
 - (void).cxx_destruct;
-- (id)_loadExtensionsSynchronously;
 - (void)stopLookingForExtensions;
 - (void)startLookingForExtensionsWithMatchUpdateHandler:(CDUnknownBlockType)arg1;
 - (void)findExtensionsWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (id)_filterIndexExtensions:(id)arg1;
+- (id)_filterIndexExtensions:(id)arg1 outFileProviderBundleMap:(id *)arg2;
 - (id)init;
 
 @end

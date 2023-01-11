@@ -20,9 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)containerCellularSettings;
 + (id)_notifAccountStore;
 - (void).cxx_destruct;
-- (_Bool)isCellularEnabledForContainerID:(id)arg1;
-- (_Bool)_isCellularEnabledForBundleID:(id)arg1;
-- (_Bool)_isCellularEnabledForDocumentsAndData;
+- (_Bool)isCellularEnabled;
 - (void)dealloc;
 - (id)init;
 - (void)_accountDidChange;

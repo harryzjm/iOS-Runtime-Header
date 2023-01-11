@@ -9,15 +9,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)animationDeliveryStylesForFilter:(id)arg1;
-- (_Bool)explosionAffectsChartBodyBounds;
-- (Class)repClass;
+- (long long)userInterfaceTag;
+- (double)defaultLabelExplosionValue;
 - (Class)chartLayoutItemClass;
 - (id)defaultSeriesType:(unsigned long long)arg1;
 - (id)userInterfaceName;
 - (id)init;
-- (struct CGSize)mungeBodySize:(struct CGSize)arg1;
-- (_Bool)layoutFrameShouldEncloseInfoGeometry;
 
 @end
 

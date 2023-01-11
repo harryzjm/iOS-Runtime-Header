@@ -8,21 +8,36 @@
 
 #import <ClassroomKit/NSSecureCoding-Protocol.h>
 
-@class CRKUser, DMFControlGroupIdentifier, NSDictionary, NSString;
+@class CRKUser, DMFControlGroupIdentifier, NSDate, NSDictionary, NSSet, NSString;
 
 @interface CRKCourse : NSObject <NSSecureCoding>
 {
-    _Bool _managed;
+    _Bool _requestingUnenroll;
+    _Bool _studentCredentialsAreValid;
+    _Bool _mustRequestUnenroll;
+    _Bool _expired;
     DMFControlGroupIdentifier *_courseIdentifier;
     NSString *_courseName;
     NSString *_courseDescription;
     CRKUser *_courseUser;
     NSDictionary *_instructorsByIdentifier;
+    unsigned long long _type;
+    NSDate *_automaticRemovalDate;
+    NSSet *_trustedCertificatePersistentIds;
+    NSSet *_validTrustedCertificatePersistentIds;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)stringForType:(unsigned long long)arg1;
 + (id)new;
-@property(nonatomic, getter=isManaged) _Bool managed; // @synthesize managed=_managed;
+@property(nonatomic, getter=isExpired) _Bool expired; // @synthesize expired=_expired;
+@property(nonatomic) _Bool mustRequestUnenroll; // @synthesize mustRequestUnenroll=_mustRequestUnenroll;
+@property(retain, nonatomic) NSSet *validTrustedCertificatePersistentIds; // @synthesize validTrustedCertificatePersistentIds=_validTrustedCertificatePersistentIds;
+@property(retain, nonatomic) NSSet *trustedCertificatePersistentIds; // @synthesize trustedCertificatePersistentIds=_trustedCertificatePersistentIds;
+@property(nonatomic) _Bool studentCredentialsAreValid; // @synthesize studentCredentialsAreValid=_studentCredentialsAreValid;
+@property(retain, nonatomic) NSDate *automaticRemovalDate; // @synthesize automaticRemovalDate=_automaticRemovalDate;
+@property(nonatomic, getter=isRequestingUnenroll) _Bool requestingUnenroll; // @synthesize requestingUnenroll=_requestingUnenroll;
+@property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(copy, nonatomic) NSDictionary *instructorsByIdentifier; // @synthesize instructorsByIdentifier=_instructorsByIdentifier;
 @property(retain, nonatomic) CRKUser *courseUser; // @synthesize courseUser=_courseUser;
 @property(copy, nonatomic) NSString *courseDescription; // @synthesize courseDescription=_courseDescription;
@@ -31,11 +46,15 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)isDeeplyEqual:(id)arg1;
 - (_Bool)isEqualToCourse:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
+- (void)setManaged:(_Bool)arg1;
+@property(readonly, nonatomic, getter=isManaged) _Bool managed;
 - (id)initWithIdentifier:(id)arg1 managed:(_Bool)arg2;
+- (id)initWithIdentifier:(id)arg1 type:(unsigned long long)arg2;
 - (id)init;
 
 @end

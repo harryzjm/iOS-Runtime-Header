@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSUIngestionTypes : NSObject
 {
 }
 
++ (id)highEfficiencyImageTypes;
 + (id)p_unsupportedPlainTextTypes;
 + (id)p_supportedPlainTextTypes;
 + (_Bool)isValidPlainTextUTI:(id)arg1;

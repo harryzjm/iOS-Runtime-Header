@@ -7,9 +7,11 @@
 #import <UIKit/UIDevice.h>
 
 @interface UIDevice (MaterialKitAdditions)
-+ (id)mt_lowQualityDevicesForDynamicBlurRadius;
++ (id)mt_lowQualityDevicesForBaseLuminanceOverlay;
 + (id)mt_mediumQualityDevicesForDynamicBlurRadius;
++ (id)mt_lowQualityDevicesForDynamicBlurRadius;
 - (id)mt_currentProduct;
+- (long long)mt_baseLuminanceOverlayGraphicsQuality;
 - (long long)mt_dynamicBlurRadiusGraphicsQuality;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSSet;
+@class MISSING_TYPE, NSArray, NSSet;
 
 @interface PRSQueryRankingConfiguration : NSObject
 {
@@ -17,9 +17,13 @@
     unsigned long long _dominantRankingQueryCount;
     unsigned long long _dominatedRankingQueryCount;
     unsigned long long _rankingBitCount;
+    MISSING_TYPE *_fuzzyMatchMask;
+    MISSING_TYPE *_fuzzyMatchCheck;
 }
 
 + (void)updateMailVIP:(id)arg1 phoneFavorites:(id)arg2 meEmailAddresses:(id)arg3;
+@property MISSING_TYPE *fuzzyMatchCheck; // @synthesize fuzzyMatchCheck=_fuzzyMatchCheck;
+@property MISSING_TYPE *fuzzyMatchMask; // @synthesize fuzzyMatchMask=_fuzzyMatchMask;
 @property _Bool allowAnonymousDataCollection; // @synthesize allowAnonymousDataCollection=_allowAnonymousDataCollection;
 @property unsigned long long rankingBitCount; // @synthesize rankingBitCount=_rankingBitCount;
 @property unsigned long long dominatedRankingQueryCount; // @synthesize dominatedRankingQueryCount=_dominatedRankingQueryCount;

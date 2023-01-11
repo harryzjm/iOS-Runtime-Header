@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Silex/SXFullScreenCanvasShowable-Protocol.h>
+#import <Silex/SXFullscreenCanvasShowable-Protocol.h>
 #import <Silex/SXImageViewDelegate-Protocol.h>
 #import <Silex/SXItemizedScrollViewDataSource-Protocol.h>
 #import <Silex/SXItemizedScrollViewDelegate-Protocol.h>
 #import <Silex/SXTextSourceDataSource-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet, NSString, SXFullScreenCanvasController, SXImageView, SXItemizedScrollView, SXMediaViewEvent, UIView;
+@class NSArray, NSMutableArray, NSMutableSet, NSString, SXFullscreenCanvasController, SXImageView, SXItemizedScrollView, SXMediaViewEvent, UIView;
+@protocol SXFullscreenCanvasControllerFactory, SXImageViewFactory;
 
-@interface SXStripGalleryComponentView <SXFullScreenCanvasShowable, SXItemizedScrollViewDataSource, SXItemizedScrollViewDelegate, SXImageViewDelegate, SXTextSourceDataSource>
+@interface SXStripGalleryComponentView <SXFullscreenCanvasShowable, SXItemizedScrollViewDataSource, SXItemizedScrollViewDelegate, SXImageViewDelegate, SXTextSourceDataSource>
 {
     _Bool _loadedAtleastOneImage;
+    id <SXImageViewFactory> _imageViewFactory;
+    id <SXFullscreenCanvasControllerFactory> _canvasControllerFactory;
     double _xOffset;
     double _rightContentInset;
     NSArray *_imageResources;
@@ -22,7 +25,7 @@
     SXItemizedScrollView *_itemizedScrollView;
     long long _visibleImageViewIndex;
     UIView *_fullscreenGestureView;
-    SXFullScreenCanvasController *_fullScreenCanvasController;
+    SXFullscreenCanvasController *_fullScreenCanvasController;
     SXMediaViewEvent *_mediaViewEvent;
     double _contentOffset;
     double _contentWidth;
@@ -38,7 +41,7 @@
 @property(readonly, nonatomic) double contentOffset; // @synthesize contentOffset=_contentOffset;
 @property(nonatomic) _Bool loadedAtleastOneImage; // @synthesize loadedAtleastOneImage=_loadedAtleastOneImage;
 @property(retain, nonatomic) SXMediaViewEvent *mediaViewEvent; // @synthesize mediaViewEvent=_mediaViewEvent;
-@property(retain, nonatomic) SXFullScreenCanvasController *fullScreenCanvasController; // @synthesize fullScreenCanvasController=_fullScreenCanvasController;
+@property(retain, nonatomic) SXFullscreenCanvasController *fullScreenCanvasController; // @synthesize fullScreenCanvasController=_fullScreenCanvasController;
 @property(nonatomic) __weak UIView *fullscreenGestureView; // @synthesize fullscreenGestureView=_fullscreenGestureView;
 @property(nonatomic) long long visibleImageViewIndex; // @synthesize visibleImageViewIndex=_visibleImageViewIndex;
 @property(retain, nonatomic) SXItemizedScrollView *itemizedScrollView; // @synthesize itemizedScrollView=_itemizedScrollView;
@@ -46,6 +49,8 @@
 @property(retain, nonatomic) NSArray *imageResources; // @synthesize imageResources=_imageResources;
 @property(readonly, nonatomic) double rightContentInset; // @synthesize rightContentInset=_rightContentInset;
 @property(readonly, nonatomic) double xOffset; // @synthesize xOffset=_xOffset;
+@property(readonly, nonatomic) id <SXFullscreenCanvasControllerFactory> canvasControllerFactory; // @synthesize canvasControllerFactory=_canvasControllerFactory;
+@property(readonly, nonatomic) id <SXImageViewFactory> imageViewFactory; // @synthesize imageViewFactory=_imageViewFactory;
 - (void).cxx_destruct;
 - (_Bool)allowHierarchyRemoval;
 - (void)preloadAdjacentViewsForIndex:(unsigned long long)arg1;
@@ -84,7 +89,7 @@
 - (unsigned long long)fullScreenCanvasController:(id)arg1 numberOfViewsForShowable:(id)arg2;
 - (void)fullScreenCanvasController:(id)arg1 showable:(id)arg2 shouldTransferToOriginalViewWithIndex:(unsigned long long)arg3;
 - (void)fullScreenCanvasController:(id)arg1 shouldAddGestureView:(id)arg2 forShowable:(id)arg3;
-- (id)fullScreenCanvasController:(id)arg1 canvasViewForShowable:(id)arg2;
+- (id)fullScreenCanvasController:(id)arg1 canvasViewControllerForShowable:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (_Bool)requestInteractivityFocusForFullScreenCanvasController:(id)arg1;
 - (void)imageView:(id)arg1 didLoadAnimatedImage:(id)arg2;
 - (void)imageView:(id)arg1 didLoadImage:(id)arg2 ofQuality:(int)arg3;
@@ -106,9 +111,10 @@
 - (struct CGRect)itemizedScrollView:(id)arg1 frameForViewAtIndex:(unsigned long long)arg2;
 - (unsigned long long)numberOfViewsInItemizedScrollView:(id)arg1;
 - (id)createViewForViewIndex:(unsigned long long)arg1;
-- (void)presentComponent;
+- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
 - (void)receivedInfo:(id)arg1 fromLayoutingPhaseWithIdentifier:(id)arg2;
-- (id)initWithComponent:(id)arg1 configuration:(id)arg2 context:(id)arg3 analyticsReporting:(id)arg4 appStateMonitor:(id)arg5;
+- (void)loadComponent:(id)arg1;
+- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 appStateMonitor:(id)arg6 imageViewFactory:(id)arg7 canvasControllerFactory:(id)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

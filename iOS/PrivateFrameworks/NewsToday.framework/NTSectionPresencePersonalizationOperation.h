@@ -6,12 +6,12 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCPersonalizationTreatment, NSArray, NSDictionary, NSObject;
-@protocol FRReadonlyPersonalizationAggregateStore;
+@class FCPersonalizationTreatment, NSArray, NSDictionary;
+@protocol FCReadonlyPersonalizationAggregateStore;
 
 @interface NTSectionPresencePersonalizationOperation : FCOperation
 {
-    NSObject<FRReadonlyPersonalizationAggregateStore> *_aggregateStore;
+    id <FCReadonlyPersonalizationAggregateStore> _aggregateStore;
     FCPersonalizationTreatment *_personalizationTreatment;
     NSArray *_absoluteRequests;
     NSArray *_relativeRequests;
@@ -24,7 +24,7 @@
 @property(copy, nonatomic) NSArray *relativeRequests; // @synthesize relativeRequests=_relativeRequests;
 @property(copy, nonatomic) NSArray *absoluteRequests; // @synthesize absoluteRequests=_absoluteRequests;
 @property(copy, nonatomic) FCPersonalizationTreatment *personalizationTreatment; // @synthesize personalizationTreatment=_personalizationTreatment;
-@property(retain, nonatomic) NSObject<FRReadonlyPersonalizationAggregateStore> *aggregateStore; // @synthesize aggregateStore=_aggregateStore;
+@property(retain, nonatomic) id <FCReadonlyPersonalizationAggregateStore> aggregateStore; // @synthesize aggregateStore=_aggregateStore;
 - (void).cxx_destruct;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;

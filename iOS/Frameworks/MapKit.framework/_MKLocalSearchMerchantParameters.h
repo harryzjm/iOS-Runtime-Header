@@ -4,23 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MapKit/NSCopying-Protocol.h>
 
-@class CLLocation, NSDate, NSString;
+@class CLLocation, NSDate, NSNumber, NSString;
 
 @interface _MKLocalSearchMerchantParameters : NSObject <NSCopying>
 {
     NSString *_merchantCode;
     NSString *_rawMerchantCode;
     NSString *_paymentNetwork;
+    NSString *_industryCategory;
+    NSNumber *_industryCode;
     NSDate *_transactionDate;
     CLLocation *_transactionLocation;
 }
 
 @property(retain, nonatomic) CLLocation *transactionLocation; // @synthesize transactionLocation=_transactionLocation;
 @property(retain, nonatomic) NSDate *transactionDate; // @synthesize transactionDate=_transactionDate;
+@property(retain, nonatomic) NSNumber *industryCode; // @synthesize industryCode=_industryCode;
+@property(copy, nonatomic) NSString *industryCategory; // @synthesize industryCategory=_industryCategory;
 @property(copy, nonatomic) NSString *paymentNetwork; // @synthesize paymentNetwork=_paymentNetwork;
 @property(copy, nonatomic) NSString *rawMerchantCode; // @synthesize rawMerchantCode=_rawMerchantCode;
 @property(copy, nonatomic) NSString *merchantCode; // @synthesize merchantCode=_merchantCode;

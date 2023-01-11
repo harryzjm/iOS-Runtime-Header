@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray;
 
@@ -12,8 +12,10 @@ __attribute__((visibility("hidden")))
 @interface MFObjectTable : NSObject
 {
     NSMutableArray *m_objects;
+    unsigned int m_maximumSize;
 }
 
+@property unsigned int maximumSize; // @synthesize maximumSize=m_maximumSize;
 - (int)size;
 - (id)getObject:(unsigned int)arg1;
 - (int)putObject:(id)arg1 in_objectPos:(unsigned int)arg2;

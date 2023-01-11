@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBDisplayLayoutDelegate-Protocol.h>
 #import <FrontBoard/FBDisplayLayoutServiceServerDelegate-Protocol.h>
@@ -18,6 +18,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)publishDisplayLayout:(id)arg1;
 - (id)server:(id)arg1 displayLayoutForDisplayType:(long long)arg2;
 - (id)_displayLayoutForDisplayType:(long long)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuartzCore/NSSecureCoding-Protocol.h>
 
@@ -27,6 +27,8 @@
 - (void)encodeWithCAMLWriter:(id)arg1;
 - (id)CAMLType;
 - (float)_solveForInput:(float)arg1;
+- (unsigned long long)CA_copyNumericValue:(double [20])arg1;
+- (struct Object *)CA_copyRenderValue;
 
 @end
 

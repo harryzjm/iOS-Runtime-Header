@@ -6,6 +6,7 @@
 
 @class AVAssetWriterInputPassDescription, AVAssetWriterInputWritingHelper;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetWriterInputInterPassAnalysisHelper
 {
     AVAssetWriterInputWritingHelper *_writingHelper;

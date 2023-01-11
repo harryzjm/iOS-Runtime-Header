@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ScreenReaderOutput/SCROBrailleDisplayDelegate-Protocol.h>
 
@@ -33,6 +33,7 @@
     _Bool _wordWrapEnabled;
     unsigned int _persistentKeyModifiers;
     long long _uiStringCachedLineOffset;
+    NSAttributedString *_uiEditingCachedString;
     NSMutableArray *_displayModeStack;
     SCROBrailleDisplayHistory *_history;
     NSAttributedString *_mainString;
@@ -47,9 +48,14 @@
     _Bool _isValid;
     int _inputAccessMode;
     NSAttributedString *_blankUIString;
+    CDUnknownBlockType _eventHandled;
+    CDUnknownBlockType _alertDisappeared;
 }
 
 + (void)initialize;
+@property(copy, nonatomic) CDUnknownBlockType alertDisappeared; // @synthesize alertDisappeared=_alertDisappeared;
+@property(copy, nonatomic) CDUnknownBlockType eventHandled; // @synthesize eventHandled=_eventHandled;
+@property(readonly, nonatomic) SCROBrailleDisplayManagedQueue *managedDisplayQueue; // @synthesize managedDisplayQueue=_managedDisplayQueue;
 - (void).cxx_destruct;
 - (void)setKeyboardHelpIsOn:(_Bool)arg1;
 - (void)endUpdates;
@@ -126,6 +132,7 @@
 - (void)brailleDisplay:(id)arg1 didReplaceRange:(struct _NSRange)arg2 withString:(id)arg3 cursor:(unsigned long long)arg4;
 - (void)brailleDidStartEditingWithDisplay:(id)arg1;
 - (void)brailleDisplay:(id)arg1 pressedKeys:(id)arg2;
+- (void)brailleDisplay:(id)arg1 didMoveSelection:(unsigned long long)arg2;
 - (void)configurationChangedForBrailleDisplay:(id)arg1;
 - (void)brailleDisplay:(id)arg1 isSleeping:(_Bool)arg2;
 - (void)brailleDriverDisconnected:(id)arg1;
@@ -150,7 +157,7 @@
 - (void)_setLineDescriptorCallbackEnabledHandler:(id)arg1;
 - (void)_displayModeHandler:(id)arg1;
 - (void)_exitCurrentDisplayMode;
-- (void)_wordWrapEnabledHandler:(id)arg1;
+- (void)wordWrapEnabledHandler:(id)arg1;
 - (void)automaticBrailleTranslationHandler:(id)arg1;
 - (void)_persistentKeyModifiersHandler:(id)arg1;
 - (void)inputContractionModeHandler:(id)arg1;

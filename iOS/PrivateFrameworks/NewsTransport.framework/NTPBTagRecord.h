@@ -8,19 +8,18 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString, NTPBFeedConfiguration, NTPBPublisherPaidDescriptionStrings, NTPBRecordBase;
+@class NSData, NSMutableArray, NSString, NTPBDate, NTPBFeedConfiguration, NTPBPublisherPaidDescriptionStrings, NTPBRecordBase;
 
 @interface NTPBTagRecord : PBCodable <NSCopying>
 {
-    long long _allowedAdTypes;
+    long long _behaviorFlags;
     long long _contentProvider;
-    unsigned long long _forYouCutoffTime;
-    unsigned long long _forYouMaximumArticleCount;
     long long _minimumNewsVersion;
+    unsigned long long _nameImageBaselineShift;
+    double _nameImageScaleFactor;
     long long _score;
-    unsigned long long _tagNameImageBaselineShift;
-    double _tagNameImageScaleFactor;
     NSMutableArray *_allowedStorefrontIDs;
+    NSData *_articleRecirculationConfiguration;
     NTPBRecordBase *_base;
     NSMutableArray *_blockedStorefrontIDs;
     NSString *_channelDefaultSectionID;
@@ -29,6 +28,7 @@
     NSString *_coverArticleListID;
     NSString *_coverImageURL;
     NTPBFeedConfiguration *_feedConfiguration;
+    NSString *_feedNavImageURL;
     int _groupingAvailability;
     NSMutableArray *_iAdCategories;
     NSMutableArray *_iAdKeywords;
@@ -51,12 +51,15 @@
     NSMutableArray *_publisherPaidFeldsparablePurchaseIDs;
     NSString *_publisherPaidVerificationURL;
     NSString *_publisherPaidWebaccessURL;
+    NSMutableArray *_publisherSpecifiedArticleIds;
+    NTPBDate *_publisherSpecifiedArticleIdsModifiedDate;
     NSMutableArray *_purchaseOfferableConfigurations;
     NSMutableArray *_relatedChannelIDs;
     NSMutableArray *_relatedChannelIDsForOnboardings;
     NSMutableArray *_relatedTopicIDs;
     NSMutableArray *_relatedTopicIDsForOnboardings;
     NSString *_replacementID;
+    NSString *_subtitle;
     NSString *_templateJson;
     int _type;
     _Bool _hideAccessoryText;
@@ -68,14 +71,12 @@
     _Bool _publisherPaidLeakyPaywallOptOut;
     _Bool _publisherPaidWebOptIn;
     struct {
-        unsigned int allowedAdTypes:1;
+        unsigned int behaviorFlags:1;
         unsigned int contentProvider:1;
-        unsigned int forYouCutoffTime:1;
-        unsigned int forYouMaximumArticleCount:1;
         unsigned int minimumNewsVersion:1;
+        unsigned int nameImageBaselineShift:1;
+        unsigned int nameImageScaleFactor:1;
         unsigned int score:1;
-        unsigned int tagNameImageBaselineShift:1;
-        unsigned int tagNameImageScaleFactor:1;
         unsigned int groupingAvailability:1;
         unsigned int type:1;
         unsigned int hideAccessoryText:1;
@@ -89,6 +90,7 @@
     } _has;
 }
 
++ (Class)publisherSpecifiedArticleIdsType;
 + (Class)iAdKeywordsType;
 + (Class)purchaseOfferableConfigurationType;
 + (Class)publisherPaidFeldsparablePurchaseIDsType;
@@ -102,6 +104,12 @@
 + (Class)relatedTopicIDsForOnboardingType;
 + (Class)relatedChannelIDsType;
 + (Class)relatedTopicIDsType;
+@property(retain, nonatomic) NSString *feedNavImageURL; // @synthesize feedNavImageURL=_feedNavImageURL;
+@property(retain, nonatomic) NTPBDate *publisherSpecifiedArticleIdsModifiedDate; // @synthesize publisherSpecifiedArticleIdsModifiedDate=_publisherSpecifiedArticleIdsModifiedDate;
+@property(retain, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property(retain, nonatomic) NSMutableArray *publisherSpecifiedArticleIds; // @synthesize publisherSpecifiedArticleIds=_publisherSpecifiedArticleIds;
+@property(retain, nonatomic) NSData *articleRecirculationConfiguration; // @synthesize articleRecirculationConfiguration=_articleRecirculationConfiguration;
+@property(nonatomic) long long behaviorFlags; // @synthesize behaviorFlags=_behaviorFlags;
 @property(nonatomic) _Bool isHidden; // @synthesize isHidden=_isHidden;
 @property(retain, nonatomic) NSData *nameImageCompactMetadata; // @synthesize nameImageCompactMetadata=_nameImageCompactMetadata;
 @property(retain, nonatomic) NSString *nameImageCompactURL; // @synthesize nameImageCompactURL=_nameImageCompactURL;
@@ -111,10 +119,8 @@
 @property(retain, nonatomic) NSString *nameImageMaskWidgetHQURL; // @synthesize nameImageMaskWidgetHQURL=_nameImageMaskWidgetHQURL;
 @property(retain, nonatomic) NSString *nameImageMaskWidgetLQURL; // @synthesize nameImageMaskWidgetLQURL=_nameImageMaskWidgetLQURL;
 @property(retain, nonatomic) NSMutableArray *iAdKeywords; // @synthesize iAdKeywords=_iAdKeywords;
-@property(nonatomic) double tagNameImageScaleFactor; // @synthesize tagNameImageScaleFactor=_tagNameImageScaleFactor;
-@property(nonatomic) unsigned long long tagNameImageBaselineShift; // @synthesize tagNameImageBaselineShift=_tagNameImageBaselineShift;
-@property(nonatomic) unsigned long long forYouCutoffTime; // @synthesize forYouCutoffTime=_forYouCutoffTime;
-@property(nonatomic) unsigned long long forYouMaximumArticleCount; // @synthesize forYouMaximumArticleCount=_forYouMaximumArticleCount;
+@property(nonatomic) double nameImageScaleFactor; // @synthesize nameImageScaleFactor=_nameImageScaleFactor;
+@property(nonatomic) unsigned long long nameImageBaselineShift; // @synthesize nameImageBaselineShift=_nameImageBaselineShift;
 @property(nonatomic) _Bool publisherPaidWebOptIn; // @synthesize publisherPaidWebOptIn=_publisherPaidWebOptIn;
 @property(nonatomic) _Bool publisherPaidLeakyPaywallOptOut; // @synthesize publisherPaidLeakyPaywallOptOut=_publisherPaidLeakyPaywallOptOut;
 @property(retain, nonatomic) NSMutableArray *purchaseOfferableConfigurations; // @synthesize purchaseOfferableConfigurations=_purchaseOfferableConfigurations;
@@ -141,7 +147,6 @@
 @property(retain, nonatomic) NSMutableArray *allowedStorefrontIDs; // @synthesize allowedStorefrontIDs=_allowedStorefrontIDs;
 @property(retain, nonatomic) NSMutableArray *blockedStorefrontIDs; // @synthesize blockedStorefrontIDs=_blockedStorefrontIDs;
 @property(retain, nonatomic) NSMutableArray *iAdCategories; // @synthesize iAdCategories=_iAdCategories;
-@property(nonatomic) long long allowedAdTypes; // @synthesize allowedAdTypes=_allowedAdTypes;
 @property(retain, nonatomic) NSString *logoURL; // @synthesize logoURL=_logoURL;
 @property(retain, nonatomic) NSString *parentID; // @synthesize parentID=_parentID;
 @property(retain, nonatomic) NSMutableArray *relatedChannelIDsForOnboardings; // @synthesize relatedChannelIDsForOnboardings=_relatedChannelIDsForOnboardings;
@@ -163,6 +168,15 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasFeedNavImageURL;
+@property(readonly, nonatomic) _Bool hasPublisherSpecifiedArticleIdsModifiedDate;
+@property(readonly, nonatomic) _Bool hasSubtitle;
+- (id)publisherSpecifiedArticleIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)publisherSpecifiedArticleIdsCount;
+- (void)addPublisherSpecifiedArticleIds:(id)arg1;
+- (void)clearPublisherSpecifiedArticleIds;
+@property(readonly, nonatomic) _Bool hasArticleRecirculationConfiguration;
+@property(nonatomic) _Bool hasBehaviorFlags;
 @property(nonatomic) _Bool hasIsHidden;
 @property(nonatomic) _Bool hasGroupingAvailability;
 @property(nonatomic) int groupingAvailability; // @synthesize groupingAvailability=_groupingAvailability;
@@ -177,10 +191,8 @@
 - (unsigned long long)iAdKeywordsCount;
 - (void)addIAdKeywords:(id)arg1;
 - (void)clearIAdKeywords;
-@property(nonatomic) _Bool hasTagNameImageScaleFactor;
-@property(nonatomic) _Bool hasTagNameImageBaselineShift;
-@property(nonatomic) _Bool hasForYouCutoffTime;
-@property(nonatomic) _Bool hasForYouMaximumArticleCount;
+@property(nonatomic) _Bool hasNameImageScaleFactor;
+@property(nonatomic) _Bool hasNameImageBaselineShift;
 @property(nonatomic) _Bool hasPublisherPaidWebOptIn;
 @property(nonatomic) _Bool hasPublisherPaidLeakyPaywallOptOut;
 - (id)purchaseOfferableConfigurationAtIndex:(unsigned long long)arg1;
@@ -231,7 +243,6 @@
 - (unsigned long long)iAdCategoriesCount;
 - (void)addIAdCategories:(id)arg1;
 - (void)clearIAdCategories;
-@property(nonatomic) _Bool hasAllowedAdTypes;
 @property(readonly, nonatomic) _Bool hasLogoURL;
 @property(readonly, nonatomic) _Bool hasParentID;
 - (id)relatedChannelIDsForOnboardingAtIndex:(unsigned long long)arg1;

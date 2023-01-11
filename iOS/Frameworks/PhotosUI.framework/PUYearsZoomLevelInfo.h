@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (id)renderedStripsElementKind;
 - (id)newCollectionViewLayout;
 - (struct __CFString *)aggregateLevelKey;
-- (id)displayTitle;
 - (unsigned long long)dateRangeFormatterPreset;
 - (id)momentsInCollectionList:(id)arg1;
 - (id)_yearsFetchResult;

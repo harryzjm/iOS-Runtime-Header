@@ -16,21 +16,27 @@
     long long _style;
     double _glyphViewPadding;
     double _labelTopPadding;
+    _Bool _biometricsUnavailableHint;
     _Bool _touchRecognizingHint;
     _Bool _persistentEmulationHint;
     _Bool _accessPass;
+    _Bool _useSmallStyleGlyph;
     long long _state;
     PKGlyphView *_glyph;
     UILabel *_label;
+    UILabel *_debugLabel;
     double _labelAlpha;
     id <PKPassPaymentPayStateViewDelegate> _delegate;
 }
 
-@property(nonatomic) id <PKPassPaymentPayStateViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <PKPassPaymentPayStateViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool useSmallStyleGlyph; // @synthesize useSmallStyleGlyph=_useSmallStyleGlyph;
 @property(nonatomic) _Bool accessPass; // @synthesize accessPass=_accessPass;
 @property(nonatomic) _Bool persistentEmulationHint; // @synthesize persistentEmulationHint=_persistentEmulationHint;
 @property(nonatomic) _Bool touchRecognizingHint; // @synthesize touchRecognizingHint=_touchRecognizingHint;
+@property(nonatomic) _Bool biometricsUnavailableHint; // @synthesize biometricsUnavailableHint=_biometricsUnavailableHint;
 @property(nonatomic) double labelAlpha; // @synthesize labelAlpha=_labelAlpha;
+@property(readonly, nonatomic) UILabel *debugLabel; // @synthesize debugLabel=_debugLabel;
 @property(readonly, nonatomic) UILabel *label; // @synthesize label=_label;
 @property(readonly, nonatomic) PKGlyphView *glyph; // @synthesize glyph=_glyph;
 @property(readonly, nonatomic) long long state; // @synthesize state=_state;
@@ -41,9 +47,11 @@
 - (id)_attributedTextWithTitle:(id)arg1;
 - (id)_textForState:(long long)arg1 textOverride:(id)arg2;
 - (_Bool)_canEmphasizeState:(long long)arg1;
-- (void)emphasizeStateIfPossible:(long long)arg1 withTextOverride:(id)arg2;
+- (void)updateDebugLabel:(id)arg1 isErrorState:(_Bool)arg2;
+- (void)emphasizeStateIfPossible:(long long)arg1 withOverrideText:(id)arg2;
+- (_Bool)labelWillChangeForState:(long long)arg1 withOverrideText:(id)arg2;
 - (void)_applyStatePreservingGlyphState:(_Bool)arg1 overridingText:(id)arg2 animated:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)setState:(long long)arg1 preservingGlyphState:(_Bool)arg2 overridingText:(id)arg3 animated:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)setState:(long long)arg1 animated:(_Bool)arg2 withOverrideText:(id)arg3 preserveGlyphState:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)setState:(long long)arg1 animated:(_Bool)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)_canPreserveGlyphForState:(long long)arg1;
 - (long long)_defaultGlyphStateForState:(long long)arg1;

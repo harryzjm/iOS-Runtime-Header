@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -21,7 +21,7 @@
 @property(retain, nonatomic) id defaultValue; // @synthesize defaultValue=_defaultValue;
 @property(retain, nonatomic) NSString *domain; // @synthesize domain=_domain;
 @property(retain, nonatomic) NSString *key; // @synthesize key=_key;
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

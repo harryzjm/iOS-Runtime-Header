@@ -30,11 +30,12 @@
     _Bool _hasBeenLive;
 }
 
-+ (_Bool)_acceptsComplicationType:(unsigned long long)arg1 family:(long long)arg2;
++ (_Bool)_acceptsComplicationType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (void).cxx_destruct;
 - (void)_updateDimStateForCurrentTimeline;
 - (id)_currentTemplate;
 - (id)_currentEntry;
+- (Class)richComplicationDisplayViewClass;
 - (id)complicationApplicationIdentifier;
 - (void)didTouchUpInside;
 - (void)didTouchDown;
@@ -59,9 +60,9 @@
 - (void)setTimelineStartDate:(id)arg1;
 - (void)invalidateEntries;
 - (double)minimumIntervalBetweenTimelineEntries;
-- (void)setCurrentTemplate:(id)arg1 withAnimation:(unsigned long long)arg2;
+- (void)setCurrentTemplate:(id)arg1 reason:(long long)arg2 animation:(unsigned long long)arg3;
 - (void)_queueAnimationForNextUpdate:(unsigned long long)arg1;
-- (void)_updateCurrentTemplate;
+- (void)_updateCurrentTemplateWithReason:(long long)arg1;
 - (void)_updateTimeTravelBoundaries;
 - (void)setTimeTravelDate:(id)arg1 animated:(_Bool)arg2;
 - (void)addDisplayWrapper:(id)arg1;
@@ -74,7 +75,7 @@
 - (void)_resetTimelineForCachingChange;
 - (void)_deactivate;
 - (void)_activate;
-- (id)initWithComplication:(id)arg1 family:(long long)arg2;
+- (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,27 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+@class OBPrivacyLinkController, PKExplanationView;
+@protocol PKExplanationViewControllerDelegate;
 
-#import <PassKitUI/PKPaymentSetupPrivacyFooterViewDelegate-Protocol.h>
-
-@class PKExplanationView;
-
-@interface PKExplanationViewController : UIViewController <PKPaymentSetupPrivacyFooterViewDelegate>
+@interface PKExplanationViewController
 {
     _Bool _showCancelButton;
     _Bool _showDoneButton;
+    id <PKExplanationViewControllerDelegate> _explanationViewControllerDelegate;
     long long _context;
     PKExplanationView *_explanationView;
+    OBPrivacyLinkController *_privacyLinkController;
 }
 
+@property(retain, nonatomic) OBPrivacyLinkController *privacyLinkController; // @synthesize privacyLinkController=_privacyLinkController;
 @property(readonly, nonatomic) PKExplanationView *explanationView; // @synthesize explanationView=_explanationView;
 @property(nonatomic) _Bool showDoneButton; // @synthesize showDoneButton=_showDoneButton;
 @property(nonatomic) _Bool showCancelButton; // @synthesize showCancelButton=_showCancelButton;
 @property(readonly, nonatomic) long long context; // @synthesize context=_context;
+@property(nonatomic) __weak id <PKExplanationViewControllerDelegate> explanationViewControllerDelegate; // @synthesize explanationViewControllerDelegate=_explanationViewControllerDelegate;
 - (void).cxx_destruct;
-- (void)privacyFooterLinkTapped:(id)arg1;
 - (void)_dismissViewController;
+- (void)_donePressed;
+- (void)_cancelPressed;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)loadView;

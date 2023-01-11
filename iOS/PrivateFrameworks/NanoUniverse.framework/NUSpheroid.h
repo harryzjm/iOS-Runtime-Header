@@ -13,55 +13,55 @@
 
 @interface NUSpheroid : NSObject <NUAnimatable, NURotatable>
 {
-    unsigned long long _type;
-    unsigned long long _programType;
-    NUSpheroid *_parent;
+    NUScene *_scene;
+    _Bool _visible;
+    _Bool _facing;
     float _distance;
-    float _angle;
-    float _radius;
-    float _rotation;
-    float _radiusScale;
-    float _opacity;
     float _distanceScale;
+    float _angle;
+    float _rotation;
+    float _opacity;
+    float _radius;
+    float _radiusScale;
+    unsigned long long _type;
+    NUSpheroid *_parent;
+    MISSING_TYPE *_light;
+    unsigned long long _programType;
+    unsigned long long _spriteType;
     MISSING_TYPE *_colorize;
     MISSING_TYPE *_position;
-    MISSING_TYPE *_light;
-    unsigned long long _spriteType;
     struct CLLocationCoordinate2D _homeCoordinate;
     struct CLLocationCoordinate2D _centerCoordinate;
-    unsigned int _visible:1;
-    unsigned int _facing:1;
-    NUScene *_scene;
 }
 
-@property(nonatomic) _Bool facing; // @synthesize facing=_facing;
-@property(nonatomic) _Bool visible; // @synthesize visible=_visible;
+@property(nonatomic, getter=isFacing) _Bool facing; // @synthesize facing=_facing;
+@property(nonatomic, getter=isVisible) _Bool visible; // @synthesize visible=_visible;
+@property(nonatomic) struct CLLocationCoordinate2D centerCoordinate; // @synthesize centerCoordinate=_centerCoordinate;
 @property(nonatomic) struct CLLocationCoordinate2D homeCoordinate; // @synthesize homeCoordinate=_homeCoordinate;
 @property(nonatomic) unsigned long long spriteType; // @synthesize spriteType=_spriteType;
 @property(readonly, nonatomic) unsigned long long programType; // @synthesize programType=_programType;
-@property(nonatomic) float rotation; // @synthesize rotation=_rotation;
 @property(readonly, nonatomic) MISSING_TYPE *light; // @synthesize light=_light;
 @property(readonly, nonatomic) MISSING_TYPE *position; // @synthesize position=_position;
 @property(nonatomic) float radiusScale; // @synthesize radiusScale=_radiusScale;
+@property(readonly, nonatomic) float radius; // @synthesize radius=_radius;
 @property(nonatomic) MISSING_TYPE *colorize; // @synthesize colorize=_colorize;
 @property(nonatomic) float opacity; // @synthesize opacity=_opacity;
-@property(readonly, nonatomic) float radius; // @synthesize radius=_radius;
+@property(nonatomic) float rotation; // @synthesize rotation=_rotation;
 @property(nonatomic) float angle; // @synthesize angle=_angle;
+@property(nonatomic) float distanceScale; // @synthesize distanceScale=_distanceScale;
 @property(nonatomic) float distance; // @synthesize distance=_distance;
 @property(readonly, nonatomic) NUSpheroid *parent; // @synthesize parent=_parent;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 - (void).cxx_destruct;
 - (void)setCenter:(struct CGPoint)arg1;
-@property(nonatomic) struct CLLocationCoordinate2D centerCoordinate; // @synthesize centerCoordinate=_centerCoordinate;
 - (void)_updateCamera;
 - (void)setCenterCoordinate:(struct CLLocationCoordinate2D)arg1 animated:(_Bool)arg2;
 - (void)setAnimatedFloat:(unsigned long long)arg1 forKey: /* Error: Ran out of types for this method. */;
 - (MISSING_TYPE *)animatedFloatForKey:(unsigned long long)arg1;
 - (void)centerOnCity:(id)arg1;
 - (void)updateSunLocationForDate:(id)arg1;
-- (void)date:(id)arg1 toRotation:(float *)arg2 toAngle:(float *)arg3 toLight:(MISSING_TYPE **)arg4 toDistance:(float *)arg5;
+- (void)date:(id)arg1 toRotation:(float *)arg2 toAngle:(float *)arg3 toLight:(MISSING_TYPE **)arg4 toDistance:(float *)arg5 toRadius:(float *)arg6;
 - (void)date:(id)arg1 toCameraPosition:(MISSING_TYPE **)arg2 toCameraTarget:(MISSING_TYPE **)arg3;
-@property(nonatomic) float distanceScale; // @dynamic distanceScale;
 - (void)_updatePositionFromAngle;
 - (id)initWithScene:(id)arg1 parent:(id)arg2 type:(unsigned long long)arg3;
 

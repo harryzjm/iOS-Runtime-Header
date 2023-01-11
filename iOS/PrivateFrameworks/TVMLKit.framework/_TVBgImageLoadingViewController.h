@@ -15,6 +15,15 @@
     TVImageProxy *_bgImageProxy;
     _Bool _loaded;
     UIView *_rightLargeTitleButton;
+    struct {
+        _Bool respondsToBackroundImageProxy;
+        _Bool respondsToBackgroundImageRequiresBlur;
+        _Bool respondsToBackdropNeeded;
+        _Bool respondsToImageProxySize;
+        _Bool respondsToBlurEffectStyle;
+        _Bool respondsToPurgeBgImages;
+        _Bool respondsToConfigureBgImageBackdropImage;
+    } _bgImageLoadingOptions;
     _Bool _appliedNavigationItem;
     IKViewElement *_navigationItemElement;
 }
@@ -27,16 +36,16 @@
 - (void)_updateNavigationBarPadding;
 - (void)_reparentNavigationItem:(id)arg1;
 - (long long)_overrideLargeTitleDisplayMode;
+- (void)_dismissViewController:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)updateNavigationItem:(id)arg1;
 - (void)loadFromViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)configureAppearanceTransition;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)updateWithViewElement:(id)arg1;
-- (void)_purgeBgImages;
 - (long long)preferredStatusBarStyle;
-- (void)_configureWithBgImage:(id)arg1 backdropImage:(id)arg2;
 - (long long)_blurEffectStyle;
 - (struct CGSize)_backgroundImageProxySize;
 - (_Bool)_isBackdropNeeded;

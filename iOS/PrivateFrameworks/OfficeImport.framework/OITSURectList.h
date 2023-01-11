@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface OITSURectList : NSObject
 {
-    vector_b8c73e0a mRectList;
+    vector_a9587b3d mRectList;
 }
 
 + (id)rectListWithDifference:(struct CGRect)arg1 withRect:(struct CGRect)arg2;

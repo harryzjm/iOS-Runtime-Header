@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sequenceWithActions:(id)arg1;
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)reversedAction;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <iWorkImport/KNImplicitAmbientAnimating-Protocol.h>
 #import <iWorkImport/TSDCompatibilityAwareMediaContainer-Protocol.h>
 #import <iWorkImport/TSDMixing-Protocol.h>
+#import <iWorkImport/TSDPlayableInfo-Protocol.h>
 
 @class NSString, NSURL, TSDMediaStyle, TSPData;
 
 __attribute__((visibility("hidden")))
-@interface TSDMovieInfo <TSDMixing, TSDCompatibilityAwareMediaContainer>
+@interface TSDMovieInfo <KNImplicitAmbientAnimating, TSDMixing, TSDCompatibilityAwareMediaContainer, TSDPlayableInfo>
 {
     TSPData *mMovieData;
     NSURL *mMovieRemoteURL;
@@ -23,19 +25,25 @@ __attribute__((visibility("hidden")))
     TSPData *mPosterImageData;
     _Bool mPosterImageGeneratedWithAlphaSupport;
     struct CGSize mNaturalSize;
-    unsigned long long mLoopOption;
+    long long mLoopOption;
     float mVolume;
     _Bool mAudioOnly;
     _Bool mStreaming;
+    _Bool mNativeAudioRecording;
     TSDMediaStyle *mStyle;
 }
 
 + (id)presetKinds;
 + (double)defaultPosterTimeForDuration:(double)arg1;
-@property(nonatomic) unsigned long long loopOption; // @synthesize loopOption=mLoopOption;
+@property(nonatomic) long long loopOption; // @synthesize loopOption=mLoopOption;
 @property(nonatomic, getter=isStreaming) _Bool streaming; // @synthesize streaming=mStreaming;
 @property(retain, nonatomic) TSPData *posterImageData; // @synthesize posterImageData=mPosterImageData;
 - (id)style;
+- (void).cxx_destruct;
+- (_Bool)willRenderContentViaImager;
+- (id)typesToPromiseWhenCopyingSingleDrawable;
+- (id)promisedTSPDataForType:(id)arg1;
+- (id)promisedDataForType:(id)arg1;
 - (id)mediaDataForDragging;
 - (_Bool)needsDownload;
 - (_Bool)supportsHyperlinks;
@@ -45,7 +53,8 @@ __attribute__((visibility("hidden")))
 - (id)objectForProperty:(int)arg1;
 - (_Bool)containsProperty:(int)arg1;
 - (_Bool)supportsAttachedComments;
-- (id)p_makePosterImageDataWithAVAsset:(id)arg1 inContext:(id)arg2;
+- (id)p_makePosterImageDataWithAVAsset:(id)arg1 inContext:(id)arg2 time:(double)arg3;
+- (id)synchronouslyGenerateNewPosterImageForAsset:(id)arg1 time:(double)arg2;
 - (id)synchronouslyGenerateDefaultPosterImageForContext:(id)arg1;
 - (id)generateEmptyPosterImageForContext:(id)arg1;
 - (id)makePosterImageGeneratorWithAVAsset:(id)arg1;
@@ -55,11 +64,17 @@ __attribute__((visibility("hidden")))
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)animationFilters;
+@property(readonly, nonatomic) _Bool supportsLoopingBackAndForth;
+@property(readonly, nonatomic) _Bool supportsLooping;
+@property(readonly, nonatomic) _Bool supportsStartTimeAndEndTime;
+- (_Bool)isAllowedInGroups;
 - (_Bool)canChangeWrapType;
 - (Class)repClass;
 - (Class)layoutClass;
 - (Class)styleClass;
 - (void)p_setPropertiesFromLoadedAsset:(id)arg1;
+- (_Bool)canBeReplaced;
+- (_Bool)canBeMediaPlaceholder;
 - (_Bool)canResetMediaSize;
 - (struct CGSize)rawDataSize;
 - (id)styleIdentifierTemplateForNewPreset;
@@ -69,11 +84,11 @@ __attribute__((visibility("hidden")))
 - (id)mediaFileType;
 - (id)mediaDisplayName;
 - (id)copyWithContext:(id)arg1;
-- (void)dealloc;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 movieRemoteURL:(id)arg4 loadedAsset:(id)arg5;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 movieData:(id)arg4 loadedAsset:(id)arg5;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2;
+@property(nonatomic, getter=isNativeAudioRecording) _Bool nativeAudioRecording;
 @property(nonatomic, getter=isAudioOnly) _Bool audioOnly;
 @property(nonatomic) float volume;
 @property(nonatomic) double posterTime;
@@ -89,6 +104,9 @@ __attribute__((visibility("hidden")))
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)loadFromArchive:(const struct MovieArchive *)arg1 unarchiver:(id)arg2;
 - (_Bool)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
+@property(readonly, nonatomic, getter=isImplicitAmbientAnimationInteractive) _Bool implicitAmbientAnimationInteractive;
+- (id)newImplicitAmbientBuildRendererWithAnimatedBuild:(id)arg1 buildChunk:(id)arg2 session:(id)arg3 animatedSlideView:(id)arg4;
+@property(readonly, nonatomic) _Bool canAddImplicitAmbientAnimations;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

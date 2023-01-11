@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GameplayKit/NSCoding-Protocol.h>
+#import <GameplayKit/NSSecureCoding-Protocol.h>
 
 @class GKBehavior, MISSING_TYPE;
 @protocol GKAgentDelegate;
 
-@interface GKAgent <NSCoding>
+@interface GKAgent <NSSecureCoding>
 {
     struct GKSimpleVehicle _vehicle;
     id <GKAgentDelegate> _delegate;
     GKBehavior *_behavior;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(retain, nonatomic) GKBehavior *behavior; // @synthesize behavior=_behavior;
 @property(nonatomic) __weak id <GKAgentDelegate> delegate; // @synthesize delegate=_delegate;
 - (id).cxx_construct;

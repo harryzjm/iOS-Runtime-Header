@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSInvalidatable-Protocol.h>
 #import <BaseBoard/BSXPCCoding-Protocol.h>
@@ -27,6 +27,7 @@
 + (id)_rightDescription;
 + (void)_serialize:(CDUnknownBlockType)arg1;
 @property(readonly, copy, nonatomic) NSString *trace; // @synthesize trace=_trace;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;

@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsCore/NSCoding-Protocol.h>
 #import <NewsCore/NSCopying-Protocol.h>
+#import <NewsCore/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface FCSolArticleID : NSObject <NSCoding, NSCopying>
+@interface FCSolArticleID : NSObject <NSSecureCoding, NSCopying>
 {
     NSString *_identifier;
     double _score;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(nonatomic) double score; // @synthesize score=_score;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;

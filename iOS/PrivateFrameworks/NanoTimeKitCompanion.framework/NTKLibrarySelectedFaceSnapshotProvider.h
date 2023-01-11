@@ -9,19 +9,25 @@
 #import <NanoTimeKitCompanion/NTKFaceCollectionObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKFaceObserver-Protocol.h>
 
-@class NSString, NTKFace, NTKFaceCollection;
-@protocol NTKLibrarySelectedFaceSnapshotProviderDelegate;
+@class NSString, NTKFace, NTKFaceCollection, UIImage;
+@protocol NTKLibrarySelectedFaceSnapshotProviderDelegate, OS_dispatch_queue;
 
 @interface NTKLibrarySelectedFaceSnapshotProvider : NSObject <NTKFaceCollectionObserver, NTKFaceObserver>
 {
     NTKFaceCollection *_libraryCollection;
     NTKFace *_selectedFace;
     NSString *_snapshotKey;
+    NSObject<OS_dispatch_queue> *_snapshotRequestsQueue;
+    _Bool _resumedQueue;
     id <NTKLibrarySelectedFaceSnapshotProviderDelegate> _delegate;
 }
 
++ (void)snapshotCurrentFaceForDeviceUUID:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)snapshotCurrentFaceForDevice:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)snapshotCurrentFaceForActiveDeviceWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @property(nonatomic) __weak id <NTKLibrarySelectedFaceSnapshotProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+- (void)snapshotSelectedFaceWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleFaceChange:(id)arg1;
 - (void)_updateSelectedFaceAndSnapshotKey;
 - (void)_notifyIfSnapshotAvailable;
@@ -30,8 +36,9 @@
 - (void)faceConfigurationDidChange:(id)arg1;
 - (void)faceCollection:(id)arg1 didSelectFace:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)faceCollectionDidLoad:(id)arg1;
-- (id)snapshotImage;
+@property(readonly, nonatomic) UIImage *snapshotImage;
 - (void)dealloc;
+- (id)initWithDeviceUUID:(id)arg1 delegate:(id)arg2;
 - (id)initWithDeviceUUID:(id)arg1;
 
 // Remaining properties

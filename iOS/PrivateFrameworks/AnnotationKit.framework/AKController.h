@@ -23,6 +23,7 @@
     _Bool _isLogging;
     _Bool _selectNewlyCreatedAnnotations;
     _Bool _shapeDetectionEnabled;
+    _Bool _useHighVisibilityDefaultInks;
     id <AKControllerDelegateProtocol> _delegate;
     AKModelController *_modelController;
     UIView *_toolbarView;
@@ -62,6 +63,7 @@
 + (id)akBundleIdentifier;
 + (id)akBundle;
 + (id)controllerWithDelegate:(id)arg1;
+@property(nonatomic) _Bool useHighVisibilityDefaultInks; // @synthesize useHighVisibilityDefaultInks=_useHighVisibilityDefaultInks;
 @property(nonatomic) __weak AKToolbarView *modernToolbarView; // @synthesize modernToolbarView=_modernToolbarView;
 @property(nonatomic) _Bool shapeDetectionEnabled; // @synthesize shapeDetectionEnabled=_shapeDetectionEnabled;
 @property(nonatomic) _Bool selectNewlyCreatedAnnotations; // @synthesize selectNewlyCreatedAnnotations=_selectNewlyCreatedAnnotations;
@@ -145,7 +147,11 @@
 - (void)redo:(id)arg1;
 - (_Bool)validateUndo:(id)arg1;
 - (void)undo:(id)arg1;
+- (void)clearUndoStack;
+- (void)applyCurrentCrop;
 - (void)resetToDefaultToolMode;
+- (void)setToolMode:(unsigned long long)arg1;
+- (unsigned long long)toolMode;
 - (id)imageForToolbarButtonItemOfType:(unsigned long long)arg1;
 - (id)toolbarButtonItemOfType:(unsigned long long)arg1;
 - (id)rotationGestureRecognizer;

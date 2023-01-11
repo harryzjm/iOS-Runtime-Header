@@ -10,6 +10,7 @@
 {
 }
 
++ (float)daysBeforeRemovingLogFiles;
 + (int)csAudioProcessingQueuePriority;
 + (unsigned short)zeroFilterApproxAbsSpeechThreshold;
 + (unsigned long long)zeroFilterWindowSizeInMs;
@@ -19,10 +20,10 @@
 + (double)inputRecordingBufferDuration;
 + (id)inputRecordingSampleRateConverterAlgorithm;
 + (long long)inputRecordingEncoderAudioQuality;
++ (unsigned int)EncryptionAudioSampleByteDepth;
 + (unsigned int)inputRecordingSampleByteDepth;
 + (unsigned int)inputRecordingSampleBitDepth;
 + (float)inputRecordingDurationInSecs;
-+ (unsigned long long)inputRecordingProcessingChannelsBitset;
 + (unsigned int)inputRecordingNumberOfChannels;
 + (unsigned int)inputRecordingBytesPerPacket;
 + (unsigned int)inputRecordingBytesPerFrame;

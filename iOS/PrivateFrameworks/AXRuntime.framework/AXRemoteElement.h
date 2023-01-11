@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMutableSet, NSString;
-@protocol AXRemoteElementChildrenDelegate, OS_dispatch_queue;
+@protocol AXRemoteElementChildrenDelegate;
 
 @interface AXRemoteElement : NSObject
 {
@@ -20,7 +20,6 @@
     unsigned int _machPort;
     id <AXRemoteElementChildrenDelegate> _remoteChildrenDelegate;
     id _accessibilityContainer;
-    NSObject<OS_dispatch_queue> *_remoteQueue;
 }
 
 + (_Bool)registerRemoteElement:(id)arg1;
@@ -28,7 +27,6 @@
 + (id)remoteElementsForBlock:(CDUnknownBlockType)arg1;
 + (id)remoteElementForBlock:(CDUnknownBlockType)arg1;
 + (void)initialize;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *remoteQueue; // @synthesize remoteQueue=_remoteQueue;
 @property(nonatomic) _Bool deniesDirectAppConnection; // @synthesize deniesDirectAppConnection=_deniesDirectAppConnection;
 @property(nonatomic) __weak id accessibilityContainer; // @synthesize accessibilityContainer=_accessibilityContainer;
 @property(nonatomic) unsigned int machPort; // @synthesize machPort=_machPort;
@@ -49,6 +47,7 @@
 - (id)_accessibilityResponderElement;
 - (id)_accessibilityActiveKeyboard;
 - (id)_remoteElementWithAttribute:(long long)arg1 limitToRemoteSubviews:(_Bool)arg2;
+- (void)getLeafElementsFromRemoteSide:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) unsigned long long uuidHash;
 - (void)dealloc;
 - (id)_accessibilityTextViewTextOperationResponder;

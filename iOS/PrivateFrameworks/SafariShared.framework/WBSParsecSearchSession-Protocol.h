@@ -6,7 +6,7 @@
 
 #import <SafariShared/NSObject-Protocol.h>
 
-@class WBSCompletionQuery, WBSParsecSearchResult;
+@class WBSCompletionQuery;
 @protocol WBSParsecFeedbackDispatcher, WBSParsecSearchSessionDelegate;
 
 @protocol WBSParsecSearchSession <NSObject>
@@ -15,6 +15,5 @@
 @property(readonly, nonatomic, getter=isValid) _Bool valid;
 @property(retain, nonatomic) WBSCompletionQuery *currentQuery;
 @property(nonatomic) __weak id <WBSParsecSearchSessionDelegate> delegate;
-- (void)fetchCardDetailsForResult:(WBSParsecSearchResult *)arg1 completionBlock:(void (^)(WBSParsecSearchResult *, NSError *))arg2;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TSReading/TSWPColumnMetrics-Protocol.h>
 #import <TSReading/TSWPLayoutOwner-Protocol.h>
@@ -30,9 +30,17 @@
     unsigned int _naturalAlignment;
     int _naturalDirection;
     NSObject<TSWPTextDelegate> *_delegate;
+    _Bool _allowsLastLineTruncation;
+    unsigned int _maxLineCount;
     id <TSWPStyleProvider> _styleProvider;
+    double _reservedWidthWhenTruncating;
 }
 
++ (void)renderColumns:(id)arg1 selection:(id)arg2 inContext:(struct CGContext *)arg3 isFlipped:(_Bool)arg4 viewScale:(double)arg5;
++ (void)renderColumn:(id)arg1 selection:(id)arg2 inContext:(struct CGContext *)arg3 isFlipped:(_Bool)arg4 viewScale:(double)arg5;
+@property(nonatomic) double reservedWidthWhenTruncating; // @synthesize reservedWidthWhenTruncating=_reservedWidthWhenTruncating;
+@property(nonatomic) _Bool allowsLastLineTruncation; // @synthesize allowsLastLineTruncation=_allowsLastLineTruncation;
+@property(nonatomic) unsigned int maxLineCount; // @synthesize maxLineCount=_maxLineCount;
 @property(retain, nonatomic) TSUColor *textColorOverride; // @synthesize textColorOverride=_textColorOverride;
 @property(readonly, nonatomic) int naturalDirection; // @synthesize naturalDirection=_naturalDirection;
 @property(readonly, nonatomic) unsigned int naturalAlignment; // @synthesize naturalAlignment=_naturalAlignment;
@@ -95,6 +103,7 @@
 - (struct CGSize)measureText:(id)arg1;
 - (id)layoutText:(id)arg1 kind:(int)arg2 minSize:(struct CGSize)arg3 maxSize:(struct CGSize)arg4 anchor:(struct CGPoint)arg5 flags:(int)arg6;
 - (id)layoutText:(id)arg1 minSize:(struct CGSize)arg2 maxSize:(struct CGSize)arg3 anchor:(struct CGPoint)arg4 flags:(int)arg5;
+- (id)layoutMultiColumnTextStorage:(id)arg1 minSize:(struct CGSize)arg2 maxSize:(struct CGSize)arg3 anchor:(struct CGPoint)arg4 pageNumber:(unsigned long long)arg5 pageCount:(unsigned long long)arg6 flags:(int)arg7;
 - (id)layoutTextStorage:(id)arg1 minSize:(struct CGSize)arg2 maxSize:(struct CGSize)arg3 anchor:(struct CGPoint)arg4 pageNumber:(unsigned long long)arg5 pageCount:(unsigned long long)arg6 flags:(int)arg7;
 - (id)layoutTextStorage:(id)arg1 minSize:(struct CGSize)arg2 maxSize:(struct CGSize)arg3 anchor:(struct CGPoint)arg4 flags:(int)arg5;
 - (void)dealloc;
@@ -107,7 +116,6 @@
 
 // Remaining properties
 @property(readonly, nonatomic) _Bool allowsDescendersToClip;
-@property(readonly, nonatomic) _Bool allowsLastLineTruncation;
 @property(readonly, nonatomic) _Bool alwaysAllowWordSplit;
 @property(retain, nonatomic) NSMutableArray *anchoredDrawablesForRelayout;
 @property(readonly, nonatomic) TSDCanvas *canvas;
@@ -117,7 +125,6 @@
 @property(readonly, nonatomic) struct __CFLocale *hyphenationLocale;
 @property(readonly, nonatomic) _Bool ignoresEquationAlignment;
 @property(readonly, nonatomic) struct CGRect maskRect;
-@property(readonly, nonatomic) unsigned int maxLineCount;
 @property(readonly, nonatomic) TSDLayout *parentLayoutForInlineAttachments;
 @property(readonly, nonatomic) _Bool pushAscendersIntoColumn;
 @property(readonly, nonatomic) _Bool shouldHyphenate;

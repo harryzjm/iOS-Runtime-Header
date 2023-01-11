@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <SiriTasks/NSCoding-Protocol.h>
+#import <SiriTasks/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface STGenericIntentPerson : NSObject <NSCoding>
+@interface STGenericIntentPerson : NSObject <NSSecureCoding>
 {
     NSString *_name;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;

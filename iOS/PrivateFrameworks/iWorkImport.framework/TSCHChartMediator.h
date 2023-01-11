@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/TSCHUnretainedParent-Protocol.h>
@@ -22,8 +22,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)propertiesThatInvalidateMediator;
-@property(nonatomic) id <TSCHNotifyOnModify> objectToNotify; // @synthesize objectToNotify=mObjectToNotify;
-@property(nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=mChartInfo;
+@property(nonatomic) __weak id <TSCHNotifyOnModify> objectToNotify; // @synthesize objectToNotify=mObjectToNotify;
+@property(nonatomic) __weak TSCHChartInfo *chartInfo; // @synthesize chartInfo=mChartInfo;
+- (void).cxx_destruct;
 - (_Bool)preferSeriesToValues;
 - (unsigned long long)p_gridSeriesIndexForRemoteSeriesIndex:(unsigned long long)arg1;
 - (unsigned long long)p_remoteSeriesIndexForGridSeriesIndex:(unsigned long long)arg1;
@@ -38,6 +39,8 @@ __attribute__((visibility("hidden")))
 - (id)dataFormatterForAxis:(id)arg1 documentRoot:(id)arg2;
 - (id)commandToSetChartGridDirection:(int)arg1 documentRoot:(id)arg2;
 - (void)invalidateAndSynchronizeMediator;
+- (_Bool)hasTractReference;
+- (_Bool)hasCategoryReferences;
 - (void)resumeCalculationEngine;
 - (void)pauseCalculationEngine;
 - (_Bool)isEditing;

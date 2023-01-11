@@ -17,6 +17,7 @@
 - (id)value;
 - (_Bool)hasValue;
 - (unsigned long long)eventType;
+- (id)description;
 - (id)initWithResult:(id)arg1;
 
 @end

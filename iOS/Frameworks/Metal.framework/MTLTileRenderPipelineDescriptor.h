@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Metal/NSCopying-Protocol.h>
 
@@ -23,6 +23,7 @@
 // Remaining properties
 @property(readonly) MTLTileRenderPipelineColorAttachmentDescriptorArray *colorAttachments; // @dynamic colorAttachments;
 @property(copy, nonatomic) NSString *label; // @dynamic label;
+@property(nonatomic) unsigned long long maxTotalThreadsPerThreadgroup; // @dynamic maxTotalThreadsPerThreadgroup;
 @property(nonatomic) unsigned long long rasterSampleCount; // @dynamic rasterSampleCount;
 @property(nonatomic) _Bool threadgroupSizeMatchesTileSize; // @dynamic threadgroupSizeMatchesTileSize;
 @property(readonly) MTLPipelineBufferDescriptorArray *tileBuffers; // @dynamic tileBuffers;

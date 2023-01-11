@@ -18,6 +18,7 @@
     long long _ivarQueue_videoPlayerItemRequestID;
     _Bool _ivarQueue_aggressivelyCacheVideoFrames;
     _Bool _ivarQueue_reversesMoreVideoFramesInMemory;
+    _Bool _ivarQueue_decodesAllFramesDuringOrdinaryPlayback;
     CDStruct_1b6d18a9 _ivarQueue_prePhotoTime;
     CDStruct_1b6d18a9 _ivarQueue_postPhotoTime;
     CDStruct_1b6d18a9 _ivarQueue_playerItemPhotoTime;
@@ -81,6 +82,8 @@
 @property(nonatomic, setter=_setStatus:) long long status;
 @property(retain, nonatomic, setter=_setPlayerContent:) ISPlayerContent *playerContent;
 @property(retain, nonatomic, setter=_setError:) NSError *error;
+- (_Bool)decodesAllFramesDuringOrdinaryPlayback;
+- (void)setDecodesAllFramesDuringOrdinaryPlayback:(_Bool)arg1;
 @property(nonatomic) _Bool reversesMoreVideoFramesInMemory;
 @property(nonatomic) _Bool aggressivelyCacheVideoFrames;
 - (void)_reloadAllContent;

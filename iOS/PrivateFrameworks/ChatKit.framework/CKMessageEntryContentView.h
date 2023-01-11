@@ -8,13 +8,12 @@
 
 #import <ChatKit/CKMessageEntryRichTextViewDelegate-Protocol.h>
 #import <ChatKit/CKMessageEntryViewStyleProtocol-Protocol.h>
-#import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <ChatKit/UITextViewDelegate-Protocol.h>
 
-@class CKComposition, CKConversation, CKMessageEntryRichTextView, CKMessageEntryTextView, IMPluginPayload, NSString, UIButton, UISwipeGestureRecognizer, UIView, UIViewController;
+@class CKComposition, CKConversation, CKMessageEntryRichTextView, CKMessageEntryTextView, IMPluginPayload, NSString, UIButton, UIView, UIViewController;
 @protocol CKPluginEntryViewController;
 
-@interface CKMessageEntryContentView : UIScrollView <UITextViewDelegate, CKMessageEntryRichTextViewDelegate, UIGestureRecognizerDelegate, CKMessageEntryViewStyleProtocol>
+@interface CKMessageEntryContentView : UIScrollView <UITextViewDelegate, CKMessageEntryRichTextViewDelegate, CKMessageEntryViewStyleProtocol>
 {
     _Bool _shouldShowSubject;
     _Bool _needsTextLayout;
@@ -40,13 +39,11 @@
     UIButton *_clearPluginButton;
     NSString *_requestedPlaceholderText;
     NSString *_overridePlaceholderText;
-    UISwipeGestureRecognizer *_jellyfishDemoSwipeGestureRecognizer;
 }
 
 + (id)_createSubjectView;
 + (id)_createTextView;
 + (void)prewarmTextView;
-@property(retain, nonatomic) UISwipeGestureRecognizer *jellyfishDemoSwipeGestureRecognizer; // @synthesize jellyfishDemoSwipeGestureRecognizer=_jellyfishDemoSwipeGestureRecognizer;
 @property(nonatomic) _Bool pendingShelfPayloadWillAnimateIn; // @synthesize pendingShelfPayloadWillAnimateIn=_pendingShelfPayloadWillAnimateIn;
 @property(retain, nonatomic) NSString *overridePlaceholderText; // @synthesize overridePlaceholderText=_overridePlaceholderText;
 @property(retain, nonatomic) NSString *requestedPlaceholderText; // @synthesize requestedPlaceholderText=_requestedPlaceholderText;
@@ -71,7 +68,6 @@
 @property(nonatomic) _Bool shouldShowSubject; // @synthesize shouldShowSubject=_shouldShowSubject;
 @property(nonatomic) long long style; // @synthesize style=_style;
 - (void).cxx_destruct;
-- (void)swipedForJellyfishDemo:(id)arg1;
 - (void)clearPluginButtonTapped:(id)arg1;
 - (_Bool)shouldLayoutPluginEdgeToEdge;
 - (_Bool)shouldShowClearButton;
@@ -81,11 +77,9 @@
 - (void)invalidateComposition;
 - (void)ensureTextViewVisibleIfNeeded;
 - (void)ensureSelectionVisibleIfNeeded;
-- (double)_calcuateIdealMaxPluginHeight;
+- (double)_calcuateIdealMaxPluginHeight:(_Bool)arg1;
 - (void)plugingPayloadDidLoad:(id)arg1;
-- (void)plugingPayloadWantsResize:(id)arg1;
-- (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
-- (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (void)pluginPayloadWantsResize:(id)arg1;
 - (void)messageEntryRichTextViewDidTapHandwritingKey:(id)arg1;
 - (void)messageEntryRichTextView:(id)arg1 pastedURL:(id)arg2;
 - (void)messageEntryRichTextViewWasTapped:(id)arg1 isLongPress:(_Bool)arg2;
@@ -113,7 +107,6 @@
 - (void)configureShelfForPluginPayload:(id)arg1;
 @property(retain, nonatomic) CKComposition *composition; // @synthesize composition=_composition;
 @property(readonly, nonatomic) _Bool shouldShowPlugin;
-- (void)configureForJellyfishDemo:(_Bool)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 shouldShowSubject:(_Bool)arg2;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setBounds:(struct CGRect)arg1;

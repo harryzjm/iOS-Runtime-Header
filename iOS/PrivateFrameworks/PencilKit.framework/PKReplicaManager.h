@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableOrderedSet;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet;
 @protocol OS_dispatch_queue;
 
 @interface PKReplicaManager : NSObject
@@ -14,6 +14,7 @@
     NSObject<OS_dispatch_queue> *_uuidAccessQueue;
     NSMutableOrderedSet *_replicaUUIDs;
     NSMutableDictionary *_replicaEntries;
+    NSMutableArray *_replicaManagerErrors;
     _Bool _testMode;
 }
 
@@ -29,6 +30,7 @@
 - (id)checkoutReplicaUUIDForDrawing:(id)arg1;
 - (void)dealloc;
 - (id)init;
+@property(readonly, nonatomic) NSArray *replicaManagerErrors;
 
 @end
 

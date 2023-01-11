@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TIAutocorrectionList;
+@class TIAutocorrectionList, TICandidateRequestToken;
 
 @interface TITypologyStatisticCurrentAutocorrections
 {
     TIAutocorrectionList *_autocorrections;
+    TICandidateRequestToken *_requestToken;
 }
 
+@property(retain, nonatomic) TICandidateRequestToken *requestToken; // @synthesize requestToken=_requestToken;
 @property(retain, nonatomic) TIAutocorrectionList *autocorrections; // @synthesize autocorrections=_autocorrections;
+- (void).cxx_destruct;
 - (void)visitRecordAutocorrections:(id)arg1;
-- (void)dealloc;
 
 @end
 

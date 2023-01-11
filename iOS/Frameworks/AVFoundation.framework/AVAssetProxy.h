@@ -6,6 +6,7 @@
 
 @class AVAssetProxyInternal;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetProxy
 {
     AVAssetProxyInternal *_assetProxy;

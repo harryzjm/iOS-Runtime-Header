@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCoding-Protocol.h>
 #import <Foundation/NSCopying-Protocol.h>
 #import <Foundation/NSFastEnumeration-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
 @class NSPointerFunctions;
 
-@interface NSMapTable : NSObject <NSCopying, NSCoding, NSFastEnumeration>
+@interface NSMapTable : NSObject <NSCopying, NSSecureCoding, NSFastEnumeration>
 {
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)weakToWeakObjectsMapTable;
 + (id)strongToWeakObjectsMapTable;
 + (id)weakToStrongObjectsMapTable;

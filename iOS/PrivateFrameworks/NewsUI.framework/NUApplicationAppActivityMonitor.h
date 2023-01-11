@@ -7,20 +7,30 @@
 #import <objc/NSObject.h>
 
 #import <NewsUI/FCAppActivityMonitor-Protocol.h>
+#import <NewsUI/SXAppStateMonitor-Protocol.h>
 
-@class NSHashTable, NSNotificationCenter, NSString;
+@class NSHashTable, NSMutableSet, NSNotificationCenter, NSString;
 
-@interface NUApplicationAppActivityMonitor : NSObject <FCAppActivityMonitor>
+@interface NUApplicationAppActivityMonitor : NSObject <FCAppActivityMonitor, SXAppStateMonitor>
 {
     NSNotificationCenter *_notificationCenter;
     NSHashTable *_observers;
+    NSMutableSet *_activeObserverBlocks;
+    NSMutableSet *_backgroundObserverBlocks;
 }
 
+@property(readonly, nonatomic) NSMutableSet *backgroundObserverBlocks; // @synthesize backgroundObserverBlocks=_backgroundObserverBlocks;
+@property(readonly, nonatomic) NSMutableSet *activeObserverBlocks; // @synthesize activeObserverBlocks=_activeObserverBlocks;
 @property(readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(readonly, nonatomic) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 - (void).cxx_destruct;
+- (void)activityObservingApplicationWillEnterForegroundNotification:(id)arg1;
+- (void)activityObservingApplicationDidFinishLaunchingNotification:(id)arg1;
 - (void)applicationDidEnterBackgroundNotification:(id)arg1;
 - (void)applicationDidBecomeActiveNotification:(id)arg1;
+- (void)performOnApplicationDidEnterBackground:(CDUnknownBlockType)arg1;
+- (void)performOnApplicationDidBecomeActive:(CDUnknownBlockType)arg1;
+- (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)initWithNotificationCenter:(id)arg1;

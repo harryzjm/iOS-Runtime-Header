@@ -34,11 +34,14 @@
     struct LogCategory *_ucatCrypto;
     NSXPCConnection *_xpcCnx;
     unsigned char _deviceActionType;
+    _Bool _duetSync;
+    _Bool _needsAWDL;
+    _Bool _needsKeyboard;
     _Bool _needsSetup;
+    _Bool _overrideScreenOff;
     _Bool _pairSetupDisabled;
     _Bool _tlsEnabled;
     _Bool _hasProblem;
-    _Bool _needsKeyboard;
     _Bool _supportsAirPlayReceiver;
     _Bool _wakeDevice;
     _Bool _autoUnlockEnabled;
@@ -49,6 +52,7 @@
     unsigned char _serviceType;
     _Bool _touchRemoteEnabled;
     _Bool _watchLocked;
+    _Bool _wifiP2P;
     unsigned int _pinType;
     unsigned int _sessionFlags;
     long long _advertiseRate;
@@ -76,6 +80,7 @@
     CDUnknownBlockType _requestMessageHandler;
     CDUnknownBlockType _pairSetupCompletionHandler;
     CDUnknownBlockType _peerDisconnectedHandler;
+    unsigned long long _problemFlags;
     CDUnknownBlockType _receivedFramePeerHandler;
     NSString *_requestSSID;
     CDUnknownBlockType _responseMessageInternalHandler;
@@ -85,6 +90,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) _Bool wifiP2P; // @synthesize wifiP2P=_wifiP2P;
 @property(nonatomic) _Bool watchLocked; // @synthesize watchLocked=_watchLocked;
 @property(nonatomic) _Bool touchRemoteEnabled; // @synthesize touchRemoteEnabled=_touchRemoteEnabled;
 @property(retain, nonatomic) NSXPCListenerEndpoint *testListenerEndpoint; // @synthesize testListenerEndpoint=_testListenerEndpoint;
@@ -94,6 +100,7 @@
 @property(copy, nonatomic) CDUnknownBlockType responseMessageInternalHandler; // @synthesize responseMessageInternalHandler=_responseMessageInternalHandler;
 @property(copy, nonatomic) NSString *requestSSID; // @synthesize requestSSID=_requestSSID;
 @property(copy, nonatomic) CDUnknownBlockType receivedFramePeerHandler; // @synthesize receivedFramePeerHandler=_receivedFramePeerHandler;
+@property(nonatomic) unsigned long long problemFlags; // @synthesize problemFlags=_problemFlags;
 @property(copy, nonatomic) CDUnknownBlockType peerDisconnectedHandler; // @synthesize peerDisconnectedHandler=_peerDisconnectedHandler;
 @property(copy, nonatomic) CDUnknownBlockType pairSetupCompletionHandler; // @synthesize pairSetupCompletionHandler=_pairSetupCompletionHandler;
 @property(nonatomic) unsigned char deviceModelCode; // @synthesize deviceModelCode=_deviceModelCode;
@@ -104,7 +111,6 @@
 @property(nonatomic) _Bool wakeDevice; // @synthesize wakeDevice=_wakeDevice;
 @property(nonatomic) _Bool supportsAirPlayReceiver; // @synthesize supportsAirPlayReceiver=_supportsAirPlayReceiver;
 @property(copy, nonatomic) CDUnknownBlockType requestMessageHandler; // @synthesize requestMessageHandler=_requestMessageHandler;
-@property(nonatomic) _Bool needsKeyboard; // @synthesize needsKeyboard=_needsKeyboard;
 @property(nonatomic) _Bool hasProblem; // @synthesize hasProblem=_hasProblem;
 @property(copy, nonatomic) CDUnknownBlockType eventMessageHandler; // @synthesize eventMessageHandler=_eventMessageHandler;
 @property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
@@ -127,10 +133,14 @@
 @property(copy, nonatomic) NSDictionary *pairVerifyACL; // @synthesize pairVerifyACL=_pairVerifyACL;
 @property(nonatomic) _Bool pairSetupDisabled; // @synthesize pairSetupDisabled=_pairSetupDisabled;
 @property(copy, nonatomic) NSDictionary *pairSetupACL; // @synthesize pairSetupACL=_pairSetupACL;
+@property(nonatomic) _Bool overrideScreenOff; // @synthesize overrideScreenOff=_overrideScreenOff;
 @property(nonatomic) _Bool needsSetup; // @synthesize needsSetup=_needsSetup;
+@property(nonatomic) _Bool needsKeyboard; // @synthesize needsKeyboard=_needsKeyboard;
+@property(nonatomic) _Bool needsAWDL; // @synthesize needsAWDL=_needsAWDL;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) NSString *fixedPIN; // @synthesize fixedPIN=_fixedPIN;
+@property(nonatomic) _Bool duetSync; // @synthesize duetSync=_duetSync;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property(nonatomic) unsigned char deviceActionType; // @synthesize deviceActionType=_deviceActionType;
 @property(nonatomic) long long advertiseRate; // @synthesize advertiseRate=_advertiseRate;

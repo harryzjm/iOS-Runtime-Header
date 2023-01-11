@@ -14,11 +14,11 @@
 @interface HMDConnectionProxy : HMFObject <HMDaemonConnection>
 {
     _Bool _entitledForAPIAccess;
-    _Bool _entitledForSPIAccess;
     _Bool _entitledForBackgroundMode;
     _Bool _activated;
     NSXPCConnection *_xpcConnection;
     HMDProcessInfo *_processInfo;
+    unsigned long long _entitlements;
     NSString *_clientName;
     HMFMessageDispatcher *_recvDispatcher;
     HMDXPCRequestTracker *_requestTracker;
@@ -27,6 +27,7 @@
     HMDApplicationRegistry *_appRegistry;
 }
 
++ (unsigned long long)entitlementsForConnection:(id)arg1;
 @property(nonatomic) __weak HMDApplicationRegistry *appRegistry; // @synthesize appRegistry=_appRegistry;
 @property(retain, nonatomic) NSDictionary *privateAccessEntitlement; // @synthesize privateAccessEntitlement=_privateAccessEntitlement;
 @property(nonatomic) _Bool activated; // @synthesize activated=_activated;
@@ -35,8 +36,8 @@
 @property(retain, nonatomic) HMFMessageDispatcher *recvDispatcher; // @synthesize recvDispatcher=_recvDispatcher;
 @property(retain, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property(readonly, nonatomic, getter=isEntitledForBackgroundMode) _Bool entitledForBackgroundMode; // @synthesize entitledForBackgroundMode=_entitledForBackgroundMode;
-@property(readonly, nonatomic, getter=isEntitledForSPIAccess) _Bool entitledForSPIAccess; // @synthesize entitledForSPIAccess=_entitledForSPIAccess;
 @property(readonly, nonatomic, getter=isEntitledForAPIAccess) _Bool entitledForAPIAccess; // @synthesize entitledForAPIAccess=_entitledForAPIAccess;
+@property(readonly) unsigned long long entitlements; // @synthesize entitlements=_entitlements;
 @property(nonatomic) __weak HMDProcessInfo *processInfo; // @synthesize processInfo=_processInfo;
 @property(nonatomic) __weak NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 - (void).cxx_destruct;
@@ -50,6 +51,7 @@
 - (void)deactivate;
 - (void)activate;
 @property(readonly, nonatomic) id remoteProxy;
+- (id)_extractBundleIdentifier;
 - (id)extractTeamIdentifier;
 @property(readonly, nonatomic) NSString *effectiveLocationBundleIdentifier;
 @property(readonly, nonatomic) NSString *teamIdentifier;
@@ -61,6 +63,7 @@
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
 @property(readonly, nonatomic, getter=isAuthorizedForLocationAccess) _Bool authorizedForLocationAccess;
+@property(readonly, getter=isEntitledForSPIAccess) _Bool entitledForSPIAccess;
 @property(readonly, nonatomic, getter=isAuthorizedForMicrophoneAccess) _Bool authorizedForMicrophoneAccess;
 @property(readonly, nonatomic, getter=isAuthorizedForHomeDataAccess) _Bool authorizedForHomeDataAccess;
 - (id)initWithConnection:(id)arg1 queue:(id)arg2 activeMessageTracker:(id)arg3 recvDispatcher:(id)arg4 appRegistry:(id)arg5;

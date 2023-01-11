@@ -4,40 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVOutputDeviceDiscoverySession, NSArray;
+@class NSArray, NSString;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface MRAVRoutingDiscoverySession : NSObject
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
-    AVOutputDeviceDiscoverySession *_avDiscoverySession;
     struct NSMutableDictionary *_endpointsChangedCallbacks;
     struct NSMutableDictionary *_outputDevicesChangedCallbacks;
-    struct NSMapTable *_groupIDsToWeakEndpointsTable;
-    struct NSMapTable *_deviceIDsToWeakOutputDevicesTable;
-    unsigned int _endpointFeatures;
-    unsigned int _discoveryMode;
-    NSArray *_availableEndpoints;
+    _Bool _alwaysAllowUpdates;
 }
 
-@property(copy, nonatomic) NSArray *availableEndpoints; // @synthesize availableEndpoints=_availableEndpoints;
-@property(nonatomic) unsigned int discoveryMode; // @synthesize discoveryMode=_discoveryMode;
-@property(readonly, nonatomic) unsigned int endpointFeatures; // @synthesize endpointFeatures=_endpointFeatures;
-- (void)_reloadAvailableEndpoints;
-- (void)_unregisterNotifications;
-- (void)_registerNotifications;
-- (void)_availableOutputDevicesDidChangeNotification:(id)arg1;
++ (id)discoverySessionWithEndpointFeatures:(unsigned int)arg1;
+@property(nonatomic) _Bool alwaysAllowUpdates; // @synthesize alwaysAllowUpdates=_alwaysAllowUpdates;
+- (void).cxx_destruct;
 - (void)removeOutputDevicesChangedCallback:(id)arg1;
 - (void)removeEndpointsChangedCallback:(id)arg1;
 - (id)addOutputDevicesChangedCallback:(CDUnknownBlockType)arg1;
 - (id)addEndpointsChangedCallback:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) NSArray *availableOutputDevices;
-@property(readonly, nonatomic) _Bool hasAvailableEndpoints;
-- (void)dealloc;
-- (id)initWithEndpointFeatures:(unsigned int)arg1;
+@property(readonly, nonatomic) NSArray *outputDevicesChangedCallbacks;
+@property(readonly, nonatomic) NSArray *endpointsChangedCallbacks;
+- (id)_init;
+
+// Remaining properties
+@property(readonly, nonatomic) NSArray *availableEndpoints; // @dynamic availableEndpoints;
+@property(readonly, nonatomic) NSArray *availableOutputDevices; // @dynamic availableOutputDevices;
+@property(readonly, nonatomic) _Bool devicePresenceDetected; // @dynamic devicePresenceDetected;
+@property(nonatomic) unsigned int discoveryMode; // @dynamic discoveryMode;
+@property(readonly, nonatomic) unsigned int endpointFeatures; // @dynamic endpointFeatures;
+@property(copy, nonatomic) NSString *routingContextUID; // @dynamic routingContextUID;
+@property(nonatomic) unsigned int targetAudioSessionID; // @dynamic targetAudioSessionID;
 
 @end
 

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Security/NSObject-Protocol.h>
+
 @class NSError;
 
-@protocol SecuritydXPCCallbackProtocol
+@protocol SecuritydXPCCallbackProtocol <NSObject>
 - (void)callCallback:(_Bool)arg1 error:(NSError *)arg2;
 @end
 

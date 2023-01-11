@@ -6,15 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface AVAudioSessionRouteDescription : NSObject
 {
     void *_impl;
 }
 
-+ (id)privateCreateOrConfigure:(id)arg1 withRawDescription:(id)arg2 owningSession:(id)arg3;
-- (_Bool)matchesRawDescription:(id)arg1;
+- (id)initWithRawDescription:(id)arg1 owningSession:(id)arg2;
 - (id)initWithCategory:(id)arg1;
 - (struct RouteDescriptionImpl *)privateGetImplementation;
 - (id)description;
@@ -24,6 +23,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)dealloc;
 - (id)init;
+@property(readonly) NSString *siriRemoteInputIdentifier;
 
 @end
 

@@ -30,6 +30,7 @@
 - (void)assetDidChange;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axApplyAssetToView;
+- (_Bool)_axConformsToFullScreenTileControllerDelegate;
 - (void)dealloc;
 
 @end

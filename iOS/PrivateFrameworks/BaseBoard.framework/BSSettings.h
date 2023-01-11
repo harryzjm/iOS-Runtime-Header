@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSDescriptionProviding-Protocol.h>
 #import <BaseBoard/BSXPCCoding-Protocol.h>
@@ -12,14 +12,14 @@
 #import <BaseBoard/NSMutableCopying-Protocol.h>
 #import <BaseBoard/NSSecureCoding-Protocol.h>
 
-@class NSMapTable, NSString;
+@class BSMutableIntegerMap, NSString;
 @protocol BSSettingDescriptionProvider;
 
 @interface BSSettings : NSObject <NSCopying, NSMutableCopying, BSXPCCoding, NSSecureCoding, BSDescriptionProviding>
 {
     id <BSSettingDescriptionProvider> _descriptionProvider;
-    NSMapTable *_settingToFlagMap;
-    NSMapTable *_settingToObjectMap;
+    BSMutableIntegerMap *_settingToFlagMap;
+    BSMutableIntegerMap *_settingToObjectMap;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -56,7 +56,6 @@
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)_init;
 - (_Bool)isKeyedSettings;

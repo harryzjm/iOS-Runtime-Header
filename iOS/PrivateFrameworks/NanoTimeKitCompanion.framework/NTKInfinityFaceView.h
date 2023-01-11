@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NTKComplicationDisplayWrapperView, NTKFaceLayoutContentProvider, NTKInfinityController, NTKInfinityListing, UIColor, UILabel, UIView;
+@class NTKComplicationDisplayWrapperView, NTKFaceViewComplicationFactory, NTKInfinityController, NTKInfinityListing, UIColor, UILabel, UIView;
 
 @interface NTKInfinityFaceView
 {
@@ -13,7 +13,7 @@
     UIView *_cornerView;
     UILabel *_reviewLabel;
     long long _previousDataMode;
-    NTKFaceLayoutContentProvider *_layoutContentProvider;
+    NTKFaceViewComplicationFactory *_faceViewComplicationFactory;
     NTKComplicationDisplayWrapperView *_touchWrapper;
     NTKInfinityController *_controller;
     NTKInfinityListing *_currentQueueListing;
@@ -37,6 +37,7 @@
 - (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (long long)_complicationPickerStyleForSlot:(id)arg1;
 - (_Bool)_shouldFadeToTransitionView;
 - (double)_timeLabelAlphaForEditMode:(long long)arg1;
 - (_Bool)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
@@ -60,7 +61,8 @@
 - (id)videoPlayerView;
 - (void)videoPlayerViewDidPauseAfterPlayingVideoToEnd:(id)arg1;
 - (void)videoPlayerViewDidBeginPlaying:(id)arg1;
-- (void)videoPlayerViewDidFinishPlayingVideoToEnd:(id)arg1;
+- (void)videoPlayerViewDidBeginPlayingQueuedVideo:(id)arg1;
+- (void)_backlightDidTurnOff;
 - (void)_backlightWillTurnOff;
 - (void)_handleOrdinaryScreenWake;
 - (void)_handleWristRaiseScreenWake;
@@ -73,7 +75,8 @@
 - (void)layoutSubviews;
 - (void)_unloadSnapshotContentViews;
 - (void)_loadSnapshotContentViews;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (void)dealloc;
+- (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 
 @end
 

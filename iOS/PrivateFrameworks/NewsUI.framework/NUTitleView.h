@@ -33,6 +33,7 @@
 - (id)createMaskingLayerForTranslation;
 - (void)finishDisplayingTitleViewUpdate:(id)arg1 finished:(CDUnknownBlockType)arg2;
 - (void)titleViewHandleTapGuesture;
+- (void)relayoutWithAnimation:(_Bool)arg1;
 - (void)applyTitleViewUpdate:(id)arg1 animation:(unsigned long long)arg2;
 - (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;

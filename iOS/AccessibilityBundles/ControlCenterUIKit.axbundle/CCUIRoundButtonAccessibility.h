@@ -16,6 +16,7 @@
 - (unsigned long long)accessibilityTraits;
 - (unsigned long long)_accesibilityRawTraits;
 - (_Bool)isAccessibilityElement;
+- (id)accessibilityPath;
 
 @end
 

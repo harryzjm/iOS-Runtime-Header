@@ -12,7 +12,10 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct BoundingBox2<float, acv::geometry::BoundingBoxFlags::Safe>;
+struct ARLabHistogram {
+    float _field1;
+    struct array<std::__1::array<std::__1::array<float, 8>, 8>, 4> _field2;
+};
 
 struct CGAffineTransform {
     double _field1;
@@ -38,17 +41,16 @@ struct CGSize {
     double height;
 };
 
-struct CovariantVector<acv::tracking::detection::IAlignedSurface<float>, acv::CovariantVectorInterface<acv::tracking::detection::IAlignedSurface<float>, acv::CovariantVectorInterface<acv::geometry::ISurface<float>, acv::ICovariantVector<acv::geometry::ISurface<float>>>>> {
-    CDUnknownFunctionPointerType *_vptr$ICovariantVectorBase;
-    struct shared_ptr<std::__1::vector<std::__1::shared_ptr<acv::tracking::detection::IAlignedSurface<float>>, std::__1::allocator<std::__1::shared_ptr<acv::tracking::detection::IAlignedSurface<float>>>>> m_vector;
-    struct shared_ptr<acv::CovariantVectorInterface<acv::tracking::detection::IAlignedSurface<float>, acv::CovariantVectorInterface<acv::geometry::ISurface<float>, acv::ICovariantVector<acv::geometry::ISurface<float>>>>> m_originalInterface;
+struct ExponentialSmoother<cva::Matrix<float, 9, 1>> {
+    struct optional<cva::Matrix<float, 9, 1>> state;
 };
 
-struct CovariantVectorInterface<acv::tracking::detection::IAlignedSurface<float>, acv::CovariantVectorInterface<acv::geometry::ISurface<float>, acv::ICovariantVector<acv::geometry::ISurface<float>>>>;
+struct ExponentialSmoother<float> {
+    struct optional<float> state;
+};
 
 struct FLEOptions {
     float smoothingAlpha;
-    int maxSHDegree;
     float lightIntensityMinimumConstraint;
     _Bool ransacEnabled;
     _Bool chromaEnabled;
@@ -60,49 +62,16 @@ struct FLEOptions {
 struct FaceTrackingData;
 
 struct FacialLightEstimation {
-    CDUnknownFunctionPointerType *_vptr$FacialLightEstimation;
     struct Matrix<float, 0, 1> m_validSampleIntensities;
     struct vector<int, std::__1::allocator<int>> m_validChromaSampleIDS;
     struct vector<int, std::__1::allocator<int>> m_sampleIndices_all;
     struct Matrix<float, 0, 0> m_validRtfs;
-    float m_gamma;
-    struct shared_ptr<acv::vision::algorithms::PrecomputedFaceData> m_precomputedFaceData;
-    struct Optional<cva::Matrix<float, 9, 1>, void> m_averageSHCoeff;
+    struct shared_ptr<arkit::PrecomputedFaceData> m_precomputedFaceData;
+    struct ExponentialSmoother<cva::Matrix<float, 9, 1>> m_smoother;
     struct vector<unsigned long, std::__1::allocator<unsigned long>> m_inliers;
 };
 
-struct IAlignedSurface<float> {
-    CDUnknownFunctionPointerType *_field1;
-};
-
-struct IAlignedSurfaceDetector<float>;
-
-struct ImageBuffer<unsigned char>;
-
-struct ImageT<unsigned char> {
-    struct shared_ptr<acv::graphics::ImageBuffer<unsigned char>> _field1;
-};
-
-struct ImageViewT<unsigned char> {
-    struct shared_ptr<acv::graphics::ImageBuffer<unsigned char>> _field1;
-};
-
-struct MarkerDetector {
-    struct shared_ptr<acv::vision::marker::MarkerDetectorImpl> _field1;
-    struct Settings _field2;
-    struct map<int, acv::vision::marker::ReferenceMarker, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, acv::vision::marker::ReferenceMarker>>> _field3;
-    struct ImageT<unsigned char> _field4;
-    struct ImageT<unsigned char> _field5;
-    struct ImageT<unsigned char> _field6;
-    struct ImageT<unsigned char> _field7;
-    struct ImageT<unsigned char> _field8;
-    struct vector<float, std::__1::allocator<float>> _field9;
-    struct vector<unsigned char, std::__1::allocator<unsigned char>> _field10;
-    struct vector<float, std::__1::allocator<float>> _field11;
-    struct vector<unsigned char, std::__1::allocator<unsigned char>> _field12;
-};
-
-struct MarkerDetectorImpl;
+struct KeyMapBuffer<const void *, std::__1::vector<unsigned char, std::__1::allocator<unsigned char>>>;
 
 struct Matrix<float, 0, 0> {
     float *m_data;
@@ -117,141 +86,117 @@ struct Matrix<float, 0, 1> {
     unsigned int m_rows;
 };
 
-struct Matrix<float, 3, 3> {
-    float _field1[9];
-};
-
-struct Matrix<float, 9, 1>;
-
-struct Optional<cva::Matrix<float, 9, 1>, void> {
-    struct unique_ptr<cva::Matrix<float, 9, 1>, std::__1::default_delete<cva::Matrix<float, 9, 1>>> m_value;
-};
-
-struct PinholeCamera;
-
 struct PrecomputedFaceData;
 
-struct SE3GroupStorage<float, cva::Matrix<float, 4, 4>> {
-    float _field1[16];
-};
-
-struct Settings {
-    int _field1;
-    unsigned char _field2;
-    int _field3;
-    int _field4;
-    _Bool _field5;
-    int _field6;
-};
-
-struct SurfaceExtent<float> {
-    struct Matrix<float, 3, 3> _field1;
-    struct vector<acv::geometry::BoundingBox2<float, acv::geometry::BoundingBoxFlags::Safe>, std::__1::allocator<acv::geometry::BoundingBox2<float, acv::geometry::BoundingBoxFlags::Safe>>> _field2;
-    struct SE3GroupStorage<float, cva::Matrix<float, 4, 4>> _field3;
-    float _field4;
-};
-
 struct __compressed_pair<float * __attribute__((ext_vector_type(3))), std::__1::allocator<float __attribute__((ext_vector_type(3)))>> {
-    void *__first_;
+    void *__value_;
 };
 
 struct __shared_weak_count;
 
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *__left_;
+    struct __tree_node_base<void *> *_field1;
 };
 
-struct map<int, acv::vision::marker::DetectedMarker, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, acv::vision::marker::DetectedMarker>>> {
-    struct __tree<std::__1::__value_type<int, acv::vision::marker::DetectedMarker>, std::__1::__map_value_compare<int, std::__1::__value_type<int, acv::vision::marker::DetectedMarker>, std::__1::less<int>, true>, std::__1::allocator<std::__1::__value_type<int, acv::vision::marker::DetectedMarker>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<int, acv::vision::marker::DetectedMarker>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __first_;
-        } __pair1_;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<int, std::__1::__value_type<int, acv::vision::marker::DetectedMarker>, std::__1::less<int>, true>> {
-            unsigned long long __first_;
-        } __pair3_;
-    } __tree_;
+struct a4;
+
+struct aligned_storage<cva::Matrix<float, 9, 1>> {
+    union dummy_u dummy_;
 };
 
-struct map<int, acv::vision::marker::ReferenceMarker, std::__1::less<int>, std::__1::allocator<std::__1::pair<const int, acv::vision::marker::ReferenceMarker>>> {
-    struct __tree<std::__1::__value_type<int, acv::vision::marker::ReferenceMarker>, std::__1::__map_value_compare<int, std::__1::__value_type<int, acv::vision::marker::ReferenceMarker>, std::__1::less<int>, true>, std::__1::allocator<std::__1::__value_type<int, acv::vision::marker::ReferenceMarker>>> {
+struct aligned_storage<float> {
+    union dummy_u dummy_;
+};
+
+struct array<float __attribute__((ext_vector_type(3))), 4> {
+    MISSING_TYPE *_field1[4];
+};
+
+struct array<float, 8> {
+    float _field1[8];
+};
+
+struct array<std::__1::array<float, 8>, 8> {
+    struct array<float, 8> _field1[8];
+};
+
+struct array<std::__1::array<std::__1::array<float, 8>, 8>, 4> {
+    struct array<std::__1::array<float, 8>, 8> _field1[4];
+};
+
+struct array<unsigned char, 16> {
+    unsigned char _field1[16];
+};
+
+struct optional<cva::Matrix<float, 9, 1>> {
+    _Bool m_initialized;
+    struct aligned_storage<cva::Matrix<float, 9, 1>> m_storage;
+};
+
+struct optional<float> {
+    _Bool m_initialized;
+    struct aligned_storage<float> m_storage;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
+struct set<std::__1::array<unsigned char, 16>, std::__1::less<std::__1::array<unsigned char, 16>>, std::__1::allocator<std::__1::array<unsigned char, 16>>> {
+    struct __tree<std::__1::array<unsigned char, 16>, std::__1::less<std::__1::array<unsigned char, 16>>, std::__1::allocator<std::__1::array<unsigned char, 16>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<int, acv::vision::marker::ReferenceMarker>, void *>>> {
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::array<unsigned char, 16>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<int, std::__1::__value_type<int, acv::vision::marker::ReferenceMarker>, std::__1::less<int>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::less<std::__1::array<unsigned char, 16>>> {
             unsigned long long _field1;
         } _field3;
     } _field1;
 };
 
-struct shared_ptr<acv::CovariantVectorInterface<acv::tracking::detection::IAlignedSurface<float>, acv::CovariantVectorInterface<acv::geometry::ISurface<float>, acv::ICovariantVector<acv::geometry::ISurface<float>>>>> {
-    struct CovariantVectorInterface<acv::tracking::detection::IAlignedSurface<float>, acv::CovariantVectorInterface<acv::geometry::ISurface<float>, acv::ICovariantVector<acv::geometry::ISurface<float>>>> *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
-struct shared_ptr<acv::graphics::ImageBuffer<unsigned char>> {
-    struct ImageBuffer<unsigned char> *_field1;
-    struct __shared_weak_count *_field2;
-};
-
-struct shared_ptr<acv::math::PinholeCamera> {
-    struct PinholeCamera *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
-struct shared_ptr<acv::tracking::detection::IAlignedSurfaceDetector<float>> {
-    struct IAlignedSurfaceDetector<float> *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
-struct shared_ptr<acv::vision::algorithms::FaceTrackingData> {
+struct shared_ptr<arkit::FaceTrackingData> {
     struct FaceTrackingData *_field1;
     struct __shared_weak_count *_field2;
 };
 
-struct shared_ptr<acv::vision::algorithms::PrecomputedFaceData> {
+struct shared_ptr<arkit::KeyMapBuffer<const void *, std::__1::vector<unsigned char, std::__1::allocator<unsigned char>>>> {
+    struct KeyMapBuffer<const void *, std::__1::vector<unsigned char, std::__1::allocator<unsigned char>>> *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
+struct shared_ptr<arkit::PrecomputedFaceData> {
     struct PrecomputedFaceData *__ptr_;
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<acv::vision::marker::MarkerDetectorImpl> {
-    struct MarkerDetectorImpl *_field1;
-    struct __shared_weak_count *_field2;
-};
-
-struct shared_ptr<std::__1::vector<std::__1::shared_ptr<acv::tracking::detection::IAlignedSurface<float>>, std::__1::allocator<std::__1::shared_ptr<acv::tracking::detection::IAlignedSurface<float>>>>> {
-    struct vector<std::__1::shared_ptr<acv::tracking::detection::IAlignedSurface<float>>, std::__1::allocator<std::__1::shared_ptr<acv::tracking::detection::IAlignedSurface<float>>>> *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
-struct unique_ptr<cva::Matrix<float, 9, 1>, std::__1::default_delete<cva::Matrix<float, 9, 1>>> {
-    struct __compressed_pair<cva::Matrix<float, 9, 1>*, std::__1::default_delete<cva::Matrix<float, 9, 1>>> {
-        struct Matrix<float, 9, 1> *__first_;
-    } __ptr_;
+struct vImage_Buffer {
+    void *data;
+    unsigned long long height;
+    unsigned long long width;
+    unsigned long long rowBytes;
 };
 
 struct vector<ARPatch, std::__1::allocator<ARPatch>> {
     CDStruct_183601bc *__begin_;
     CDStruct_183601bc *__end_;
     struct __compressed_pair<ARPatch *, std::__1::allocator<ARPatch>> {
-        CDStruct_183601bc *__first_;
+        CDStruct_183601bc *__value_;
     } __end_cap_;
 };
 
-struct vector<acv::geometry::BoundingBox2<float, acv::geometry::BoundingBoxFlags::Safe>, std::__1::allocator<acv::geometry::BoundingBox2<float, acv::geometry::BoundingBoxFlags::Safe>>> {
-    struct BoundingBox2<float, acv::geometry::BoundingBoxFlags::Safe> *_field1;
-    struct BoundingBox2<float, acv::geometry::BoundingBoxFlags::Safe> *_field2;
-    struct __compressed_pair<acv::geometry::BoundingBox2<float, acv::geometry::BoundingBoxFlags::Safe>*, std::__1::allocator<acv::geometry::BoundingBox2<float, acv::geometry::BoundingBoxFlags::Safe>>> {
-        struct BoundingBox2<float, acv::geometry::BoundingBoxFlags::Safe> *_field1;
-    } _field3;
+struct vector<ARTexturedPlane, std::__1::allocator<ARTexturedPlane>> {
+    CDStruct_183601bc *__begin_;
+    CDStruct_183601bc *__end_;
+    struct __compressed_pair<ARTexturedPlane *, std::__1::allocator<ARTexturedPlane>> {
+        CDStruct_183601bc *__value_;
+    } __end_cap_;
 };
 
 struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> {
     void *__begin_;
     void *__end_;
     struct __compressed_pair<float * __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> {
-        void *__first_;
+        void *__value_;
     } __end_cap_;
 };
 
@@ -259,7 +204,7 @@ struct vector<float, std::__1::allocator<float>> {
     float *__begin_;
     float *__end_;
     struct __compressed_pair<float *, std::__1::allocator<float>> {
-        float *__first_;
+        float *__value_;
     } __end_cap_;
 };
 
@@ -267,7 +212,7 @@ struct vector<int, std::__1::allocator<int>> {
     int *__begin_;
     int *__end_;
     struct __compressed_pair<int *, std::__1::allocator<int>> {
-        int *__first_;
+        int *__value_;
     } __end_cap_;
 };
 
@@ -275,25 +220,23 @@ struct vector<short, std::__1::allocator<short>> {
     short *__begin_;
     short *__end_;
     struct __compressed_pair<short *, std::__1::allocator<short>> {
-        short *__first_;
+        short *__value_;
     } __end_cap_;
 };
 
-struct vector<std::__1::shared_ptr<acv::tracking::detection::IAlignedSurface<float>>, std::__1::allocator<std::__1::shared_ptr<acv::tracking::detection::IAlignedSurface<float>>>>;
-
 struct vector<unsigned char, std::__1::allocator<unsigned char>> {
-    char *_field1;
-    char *_field2;
+    char *__begin_;
+    char *__end_;
     struct __compressed_pair<unsigned char *, std::__1::allocator<unsigned char>> {
-        char *_field1;
-    } _field3;
+        char *__value_;
+    } __end_cap_;
 };
 
 struct vector<unsigned long long, std::__1::allocator<unsigned long long>> {
     unsigned long long *__begin_;
     unsigned long long *__end_;
     struct __compressed_pair<unsigned long long *, std::__1::allocator<unsigned long long>> {
-        unsigned long long *__first_;
+        unsigned long long *__value_;
     } __end_cap_;
 };
 
@@ -301,7 +244,7 @@ struct vector<unsigned long, std::__1::allocator<unsigned long>> {
     unsigned long long *__begin_;
     unsigned long long *__end_;
     struct __compressed_pair<unsigned long *, std::__1::allocator<unsigned long>> {
-        unsigned long long *__first_;
+        unsigned long long *__value_;
     } __end_cap_;
 };
 
@@ -309,13 +252,13 @@ struct vector<unsigned long, std::__1::allocator<unsigned long>> {
 // Names with conflicting types:
 typedef struct ?<float __attribute__((ext_vector_type(3))), std::__1::allocator<float __attribute__((ext_vector_type(3)))>> {
     struct __compressed_pair<float * __attribute__((ext_vector_type(3))), std::__1::allocator<float __attribute__((ext_vector_type(3)))>> **_field1;
-} vector_0a935f00;
+} vector_35647d6b;
 
 typedef struct ?<float __attribute__((ext_vector_type(3))), std::__1::allocator<float __attribute__((ext_vector_type(3)))>> {
     void *__begin_;
     void *__end_;
     struct __compressed_pair<float * __attribute__((ext_vector_type(3))), std::__1::allocator<float __attribute__((ext_vector_type(3)))>> __end_cap_;
-} vector_fff08e2a;
+} vector_1cb3ea33;
 
 #endif
 
@@ -332,6 +275,24 @@ typedef struct {
 typedef struct {
     float coefficients[9];
 } CDStruct_9c26ff66;
+
+typedef struct {
+    void *_field1;
+    void *_field2;
+    unsigned long long _field3[4];
+    unsigned long long _field4[4];
+    unsigned long long _field5;
+    unsigned long long _field6;
+    unsigned long long _field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+    unsigned long long _field10;
+    unsigned long long _field11;
+    unsigned long long _field12;
+    unsigned long long _field13;
+    unsigned long long _field14;
+    int _field15;
+} CDStruct_cf098810;
 
 typedef struct {
     double m11;
@@ -352,9 +313,9 @@ typedef struct {
 } CDStruct_31142d93;
 
 typedef struct {
-    int width;
-    int height;
-} CDStruct_79c71658;
+    int _field1;
+    int _field2;
+} CDStruct_1ef3fb1f;
 
 typedef struct {
     long long value;
@@ -363,59 +324,67 @@ typedef struct {
     long long epoch;
 } CDStruct_1b6d18a9;
 
-typedef struct {
-    long long state;
-    long long reason;
-    _Bool relocalized;
-} CDStruct_fdd7a678;
-
 typedef struct CDStruct_183601bc;
 
+typedef struct {
+    struct array<unsigned char, 16> _field1;
+    unsigned long long _field2;
+    CDStruct_14d5dc5e _field3;
+    struct array<float __attribute__((ext_vector_type(3))), 4> _field4;
+    struct set<std::__1::array<unsigned char, 16>, std::__1::less<std::__1::array<unsigned char, 16>>, std::__1::allocator<std::__1::array<unsigned char, 16>>> _field5;
+    id _field6;
+} CDStruct_7c36bd15;
+
 // Template types
-typedef struct CovariantVector<acv::tracking::detection::IAlignedSurface<float>, acv::CovariantVectorInterface<acv::tracking::detection::IAlignedSurface<float>, acv::CovariantVectorInterface<acv::geometry::ISurface<float>, acv::ICovariantVector<acv::geometry::ISurface<float>>>>> {
-    CDUnknownFunctionPointerType *_vptr$ICovariantVectorBase;
-    struct shared_ptr<std::__1::vector<std::__1::shared_ptr<acv::tracking::detection::IAlignedSurface<float>>, std::__1::allocator<std::__1::shared_ptr<acv::tracking::detection::IAlignedSurface<float>>>>> m_vector;
-    struct shared_ptr<acv::CovariantVectorInterface<acv::tracking::detection::IAlignedSurface<float>, acv::CovariantVectorInterface<acv::geometry::ISurface<float>, acv::ICovariantVector<acv::geometry::ISurface<float>>>>> m_originalInterface;
-} CovariantVector_bf42e37e;
-
-typedef struct IAlignedSurface<float> {
-    CDUnknownFunctionPointerType *_field1;
-} IAlignedSurface_10111481;
-
-typedef struct ImageViewT<unsigned char> {
-    struct shared_ptr<acv::graphics::ImageBuffer<unsigned char>> _field1;
-} ImageViewT_0571eb02;
-
-typedef struct SurfaceExtent<float> {
-    struct Matrix<float, 3, 3> _field1;
-    struct vector<acv::geometry::BoundingBox2<float, acv::geometry::BoundingBoxFlags::Safe>, std::__1::allocator<acv::geometry::BoundingBox2<float, acv::geometry::BoundingBoxFlags::Safe>>> _field2;
-    struct SE3GroupStorage<float, cva::Matrix<float, 4, 4>> _field3;
-    float _field4;
-} SurfaceExtent_3e61329a;
-
-typedef struct shared_ptr<acv::tracking::detection::IAlignedSurfaceDetector<float>> {
-    struct IAlignedSurfaceDetector<float> *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-} shared_ptr_406f5783;
-
-typedef struct shared_ptr<acv::vision::algorithms::FaceTrackingData> {
+typedef struct shared_ptr<arkit::FaceTrackingData> {
     struct FaceTrackingData *_field1;
     struct __shared_weak_count *_field2;
-} shared_ptr_c68b61c3;
+} shared_ptr_9a05b847;
 
 typedef struct vector<ARPatch, std::__1::allocator<ARPatch>> {
     CDStruct_183601bc *__begin_;
     CDStruct_183601bc *__end_;
     struct __compressed_pair<ARPatch *, std::__1::allocator<ARPatch>> {
-        CDStruct_183601bc *__first_;
+        CDStruct_183601bc *__value_;
     } __end_cap_;
-} vector_b5b5dea7;
+} vector_f87b304d;
+
+typedef struct vector<ARTexturedPlane, std::__1::allocator<ARTexturedPlane>> {
+    CDStruct_183601bc *__begin_;
+    CDStruct_183601bc *__end_;
+    struct __compressed_pair<ARTexturedPlane *, std::__1::allocator<ARTexturedPlane>> {
+        CDStruct_183601bc *__value_;
+    } __end_cap_;
+} vector_478e3a44;
+
+typedef struct vector<float, std::__1::allocator<float>> {
+    float *__begin_;
+    float *__end_;
+    struct __compressed_pair<float *, std::__1::allocator<float>> {
+        float *__value_;
+    } __end_cap_;
+} vector_7584168e;
+
+typedef struct vector<short, std::__1::allocator<short>> {
+    short *__begin_;
+    short *__end_;
+    struct __compressed_pair<short *, std::__1::allocator<short>> {
+        short *__value_;
+    } __end_cap_;
+} vector_00df4d9c;
 
 typedef struct vector<unsigned long long, std::__1::allocator<unsigned long long>> {
     unsigned long long *__begin_;
     unsigned long long *__end_;
     struct __compressed_pair<unsigned long long *, std::__1::allocator<unsigned long long>> {
-        unsigned long long *__first_;
+        unsigned long long *__value_;
     } __end_cap_;
-} vector_7dcb3552;
+} vector_7984f87c;
+
+#pragma mark Named Unions
+
+union dummy_u {
+    char data[4];
+    struct a4 aligner_;
+};
 

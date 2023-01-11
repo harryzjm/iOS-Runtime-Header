@@ -8,7 +8,7 @@
 
 #import <Preferences/UIKeyInput-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableString, NSString, UIColor;
+@class NSArray, NSMutableArray, NSMutableString, NSString, UIColor, UITextInputPasswordRules;
 @protocol PSPasscodeFieldDelegate;
 
 @interface PSPasscodeField : UIView <UIKeyInput>
@@ -59,6 +59,7 @@
 @property(readonly, copy) NSString *description;
 @property(nonatomic) _Bool enablesReturnKeyAutomatically;
 @property(readonly) unsigned long long hash;
+@property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property(nonatomic) long long returnKeyType;
 @property(nonatomic) long long smartDashesType;
 @property(nonatomic) long long smartInsertDeleteType;

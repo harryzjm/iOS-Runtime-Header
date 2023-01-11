@@ -4,12 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PassKitUI/UINavigationControllerDelegate-Protocol.h>
-
-@class NSString, PKPaymentAuthorizationLayout, PKPaymentAuthorizationServiceViewController;
+@class PKPaymentAuthorizationLayout, PKPaymentAuthorizationServiceViewController;
 @protocol UIViewControllerTransitioningDelegate;
 
-@interface PKPaymentAuthorizationServiceNavigationController <UINavigationControllerDelegate>
+@interface PKPaymentAuthorizationServiceNavigationController
 {
     PKPaymentAuthorizationLayout *_layout;
     PKPaymentAuthorizationServiceViewController *_authorizationViewController;
@@ -19,14 +17,10 @@
 @property(retain, nonatomic) id <UIViewControllerTransitioningDelegate> paymentTransitioningDelegate; // @synthesize paymentTransitioningDelegate=_paymentTransitioningDelegate;
 @property(readonly, nonatomic) PKPaymentAuthorizationServiceViewController *authorizationViewController; // @synthesize authorizationViewController=_authorizationViewController;
 - (void).cxx_destruct;
+- (id)_backgroundColorForModalFormSheet;
 - (void)traitCollectionDidChange:(id)arg1;
+- (id)init;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

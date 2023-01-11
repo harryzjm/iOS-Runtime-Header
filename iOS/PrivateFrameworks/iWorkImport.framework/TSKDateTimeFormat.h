@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSString *_formatString;
 }
 
++ (id)defaultDateOnlyShortFormatForLocale:(id)arg1;
 + (id)nowFormatForLocale:(id)arg1;
 + (id)todayFormatForLocale:(id)arg1;
 @property(readonly, nonatomic) NSString *formatString; // @synthesize formatString=_formatString;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFormatString:(id)arg1;
 - (id)initWithLocale:(id)arg1;
 - (id)initWithFormatType:(int)arg1;
+@property(readonly, nonatomic) _Bool formatStringContainsAMPMSpecifier;
 @property(readonly, nonatomic) _Bool formatStringContainsOnlyDate;
 
 @end

@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
 @class DMFControlGroupIdentifier, NSArray, NSDate;
 
-@interface DMFJoinControlGroupRequest : CATTaskRequest
+@interface DMFJoinControlGroupRequest
 {
     DMFControlGroupIdentifier *_groupIdentifier;
     NSArray *_leaderIdentifiers;

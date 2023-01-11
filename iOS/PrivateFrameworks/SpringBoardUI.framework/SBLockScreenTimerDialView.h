@@ -6,12 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <SpringBoardUI/SBFScreenFadeReplicatable-Protocol.h>
 #import <SpringBoardUI/SBUILegibility-Protocol.h>
 
 @class NSString, SBUILegibilityView, _UILegibilitySettings;
 
-@interface SBLockScreenTimerDialView : UIView <SBUILegibility, SBFScreenFadeReplicatable>
+@interface SBLockScreenTimerDialView : UIView <SBUILegibility>
 {
     double _strength;
     _UILegibilitySettings *_legibilitySettings;
@@ -21,7 +20,6 @@
 @property(retain, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property(nonatomic) double strength; // @synthesize strength=_strength;
 - (void).cxx_destruct;
-- (id)replicate;
 - (id)_imageNameForCurrentContentSize:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)_newDialViewForSettings:(id)arg1;

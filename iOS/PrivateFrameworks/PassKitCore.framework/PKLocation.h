@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -41,6 +41,7 @@
 @property(readonly, nonatomic) struct CLLocationCoordinate2D coordinate;
 - (void)setLongitude:(id)arg1;
 - (void)setLatitude:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
 
 @end
 

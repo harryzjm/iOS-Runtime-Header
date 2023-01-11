@@ -8,15 +8,15 @@
 
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDBulletinIdentifiers-Protocol.h>
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDDevice, HMDHome, HMDUser, HMFMessageDispatcher, NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSUUID;
+@class HMDDevice, HMDHome, HMDUser, HMFMessageDispatcher, NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDTrigger : HMFObject <HMDBulletinIdentifiers, HMFMessageReceiver, NSSecureCoding, HMFDumpState, HMFLogging, HMDBackingStoreObjectProtocol>
+@interface HMDTrigger : HMFObject <HMDBulletinIdentifiers, HMDHomeMessageReceiver, NSSecureCoding, HMFDumpState, HMFLogging, HMDBackingStoreObjectProtocol>
 {
     _Bool _active;
     NSString *_name;
@@ -32,6 +32,7 @@
     NSDate *_mostRecentFireDate;
 }
 
++ (_Bool)hasMessageReceiverChildren;
 + (_Bool)supportsSecureCoding;
 + (id)logCategory;
 @property(copy, nonatomic) NSDate *mostRecentFireDate; // @synthesize mostRecentFireDate=_mostRecentFireDate;
@@ -47,6 +48,7 @@
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 - (void).cxx_destruct;
+- (id)updateEventTriggerMessage:(int)arg1 message:(id)arg2 relay:(_Bool)arg3;
 - (void)timerFired:(id)arg1;
 - (id)emptyModelObject;
 - (id)backingStoreObjects:(long long)arg1;
@@ -56,6 +58,7 @@
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+@property(readonly, copy) NSSet *messageReceiverChildren;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (void)encodeWithCoder:(id)arg1;
@@ -67,13 +70,16 @@
 - (void)userDidConfirmExecute:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_executeActionSets:(id)arg1 captureCurrentState:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_executeActionSetsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_activateTriggerRequest:(id)arg1;
 - (void)_handleActivateTriggerRequest:(id)arg1;
 - (void)_actionSetsUpdated:(id)arg1 message:(id)arg2;
+- (void)_updateActionSetRequest:(id)arg1 postUpdate:(_Bool)arg2;
 - (void)_handleUpdateActionSetRequest:(id)arg1 postUpdate:(_Bool)arg2;
 - (void)_handleRemoveTriggerOwnedActionSetRequest:(id)arg1 postUpdate:(_Bool)arg2;
 - (void)_handleRemoveActionSetRequest:(id)arg1 postUpdate:(_Bool)arg2;
 - (void)_handleAddTriggerOwnedActionSetRequest:(id)arg1;
 - (void)_handleAddActionSetRequest:(id)arg1;
+- (void)_renameRequest:(id)arg1;
 - (void)_handleRenameRequest:(id)arg1;
 - (void)_activate:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)markChangedForMessage:(id)arg1 triggerModel:(id)arg2;

@@ -17,7 +17,6 @@
     CDUnknownBlockType _willBeginExecutionHandler;
     ICStoreRequestContext *_requestContext;
     CDUnknownBlockType _responseHandler;
-    NSString *_householdID;
     unsigned long long _storeCloudID;
     long long _storeSubscriptionAdamID;
     long long _storePurchasedAdamID;
@@ -28,7 +27,6 @@
 @property(nonatomic) long long storePurchasedAdamID; // @synthesize storePurchasedAdamID=_storePurchasedAdamID;
 @property(nonatomic) long long storeSubscriptionAdamID; // @synthesize storeSubscriptionAdamID=_storeSubscriptionAdamID;
 @property(nonatomic) unsigned long long storeCloudID; // @synthesize storeCloudID=_storeCloudID;
-@property(copy, nonatomic) NSString *householdID; // @synthesize householdID=_householdID;
 @property(copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(copy, nonatomic) ICStoreRequestContext *requestContext; // @synthesize requestContext=_requestContext;
 @property(copy, nonatomic) CDUnknownBlockType willBeginExecutionHandler; // @synthesize willBeginExecutionHandler=_willBeginExecutionHandler;

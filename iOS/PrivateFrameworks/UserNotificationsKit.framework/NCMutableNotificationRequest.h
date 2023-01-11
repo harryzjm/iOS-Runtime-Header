@@ -11,6 +11,7 @@
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(nonatomic, getter=isCriticalAlert) _Bool criticalAlert; // @dynamic criticalAlert;
 @property(copy, nonatomic) NSDictionary *sourceInfo; // @dynamic sourceInfo;
 @property(nonatomic) unsigned long long collapsedNotificationsCount; // @dynamic collapsedNotificationsCount;
 @property(nonatomic) _Bool isCollapsedNotification; // @dynamic isCollapsedNotification;
@@ -27,8 +28,10 @@
 @property(retain, nonatomic) NCNotificationContent *content; // @dynamic content;
 @property(copy, nonatomic) NSSet *requestDestinations; // @dynamic requestDestinations;
 @property(retain, nonatomic) NSDate *timestamp; // @dynamic timestamp;
+@property(nonatomic, getter=isUniqueThreadIdentifier) _Bool uniqueThreadIdentifier; // @dynamic uniqueThreadIdentifier;
 @property(copy, nonatomic) NSString *parentSectionIdentifier; // @dynamic parentSectionIdentifier;
 @property(copy, nonatomic) NSArray *peopleIdentifiers; // @dynamic peopleIdentifiers;
+@property(copy, nonatomic) NSString *highestPrioritySubSectionIdentifier; // @dynamic highestPrioritySubSectionIdentifier;
 @property(copy, nonatomic) NSSet *subSectionIdentifiers; // @dynamic subSectionIdentifiers;
 @property(copy, nonatomic) NSString *categoryIdentifier; // @dynamic categoryIdentifier;
 @property(copy, nonatomic) NSString *threadIdentifier; // @dynamic threadIdentifier;

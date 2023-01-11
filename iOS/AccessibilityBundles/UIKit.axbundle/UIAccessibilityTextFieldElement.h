@@ -56,6 +56,8 @@
 - (_Bool)_accessibilityViewIsVisible;
 - (void)_accessibilityInsertText:(id)arg1 atPosition:(long long)arg2;
 - (void)_accessibilityReplaceCharactersAtCursor:(unsigned long long)arg1 withString:(id)arg2;
+- (_Bool)_accessibilityReplaceTextInRange:(struct _NSRange)arg1 withString:(id)arg2;
+- (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
 - (id)_accessibilityUserTestingParent;
 
 @end

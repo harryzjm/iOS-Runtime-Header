@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, PHImageRequestOptions, PXUIMediaProvider, UIImage;
-@protocol PXDisplayAsset;
+@class NSError, PHImageRequestOptions, UIImage;
+@protocol PXDisplayAsset, PXUIImageProvider;
 
 @interface PXImageRequest : NSObject
 {
     _Bool _gotFullQualityImage;
     _Bool _resultIsInCloud;
     _Bool _canceled;
-    PXUIMediaProvider *_mediaProvider;
+    id <PXUIImageProvider> _mediaProvider;
     id <PXDisplayAsset> _asset;
     PHImageRequestOptions *_options;
     long long _requestID;
@@ -32,7 +32,7 @@
 @property(readonly, nonatomic) PHImageRequestOptions *options; // @synthesize options=_options;
 @property(readonly, nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 @property(readonly, nonatomic) id <PXDisplayAsset> asset; // @synthesize asset=_asset;
-@property(readonly, nonatomic) PXUIMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
+@property(readonly, nonatomic) id <PXUIImageProvider> mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 - (void).cxx_destruct;
 - (id)description;
 - (void)performWithResultHandler:(CDUnknownBlockType)arg1;

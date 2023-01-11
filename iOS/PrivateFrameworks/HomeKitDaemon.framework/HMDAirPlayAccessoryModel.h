@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class HMFPairingIdentity, NSNumber, NSString;
 
 @interface HMDAirPlayAccessoryModel
 {
@@ -13,7 +13,8 @@
 + (id)properties;
 
 // Remaining properties
-@property(retain, nonatomic) NSString *administrationPassword; // @dynamic administrationPassword;
+@property(retain, nonatomic) NSNumber *minimumUserPriviledge; // @dynamic minimumUserPriviledge;
+@property(retain, nonatomic) HMFPairingIdentity *pairingIdentity; // @dynamic pairingIdentity;
 @property(retain, nonatomic) NSString *password; // @dynamic password;
 
 @end

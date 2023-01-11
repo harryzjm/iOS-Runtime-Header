@@ -10,6 +10,7 @@
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
 @class NSArray, NSString, PLCloudSharedAlbum, PUPhotoStreamComposeServiceViewController, PUPhotosPickerViewController, PUVideoTrimQueueController, UIBarButtonItem, UISegmentedControl, UIViewController;
+@protocol PUCloudSharedAlbumViewControllerDelegate;
 
 @interface PUCloudSharedAlbumViewController <PLAlbumStreamingOptionsViewControllerDelegate, UIPopoverPresentationControllerDelegate, PUVideoTrimQueueControllerDelegate, PUPhotoStreamComposeServiceDelegate>
 {
@@ -18,6 +19,7 @@
     PUPhotoStreamComposeServiceViewController *_composeServiceController;
     _Bool _displayingOptions;
     _Bool __canContributeToCloudSharedAlbum;
+    id <PUCloudSharedAlbumViewControllerDelegate> _delegate;
     UIViewController *__optionsViewController;
     UIViewController *__optionsPopoverRootViewController;
     NSArray *__transitioningOptionsViewControllers;
@@ -38,6 +40,7 @@
 @property(retain, nonatomic, setter=_setOptionsPopoverRootViewController:) UIViewController *_optionsPopoverRootViewController; // @synthesize _optionsPopoverRootViewController=__optionsPopoverRootViewController;
 @property(retain, nonatomic, setter=_setOptionsViewController:) UIViewController *_optionsViewController; // @synthesize _optionsViewController=__optionsViewController;
 @property(nonatomic, getter=isDisplayingOptions, setter=setDisplayingOptions:) _Bool displayingOptions; // @synthesize displayingOptions=_displayingOptions;
+@property(nonatomic) __weak id <PUCloudSharedAlbumViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (void)_collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;
 - (void)photoStreamComposeServiceDidCancel:(id)arg1;

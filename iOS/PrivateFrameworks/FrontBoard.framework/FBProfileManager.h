@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSSet;
 @protocol OS_dispatch_queue;
@@ -18,6 +18,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_managedAppsChangedNotification:(id)arg1;
 - (void)_workQueue_reloadManagedApplicationBundleIDs;
 - (void)_workQueue_reloadProfiles;

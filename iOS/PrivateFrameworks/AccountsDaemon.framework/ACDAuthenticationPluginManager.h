@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ACDQueueDictionary, NSLock, NSMutableDictionary;
+@class ACDQueueDictionary, ACRateLimiter, NSLock, NSMutableDictionary, NSMutableSet;
 @protocol OS_dispatch_queue;
 
 @interface ACDAuthenticationPluginManager : NSObject
@@ -14,6 +14,8 @@
     ACDQueueDictionary *_verificationHandlerQueues;
     ACDQueueDictionary *_renewalHandlerQueues;
     ACDQueueDictionary *_discoveryHandlerQueues;
+    ACRateLimiter *_renewalRateLimiter;
+    NSMutableSet *_keysForRateExceededBugSent;
     NSLock *_verificationHandlersLock;
     NSLock *_renewalHandlersLock;
     NSLock *_discoveryHandlersLock;
@@ -37,6 +39,7 @@
 - (void)credentialForAccount:(id)arg1 client:(id)arg2 store:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (_Bool)isPushSupportedForAccount:(id)arg1;
 - (id)init;
+@property(retain) ACRateLimiter *renewalRateLimiter;
 
 @end
 

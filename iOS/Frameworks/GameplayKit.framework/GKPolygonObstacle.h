@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GameplayKit/NSCoding-Protocol.h>
+#import <GameplayKit/NSSecureCoding-Protocol.h>
 
 @class MISSING_TYPE;
 
-@interface GKPolygonObstacle <NSCoding>
+@interface GKPolygonObstacle <NSSecureCoding>
 {
     struct GKCPolygonObstacle *_cPolygonObstacle;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)obstacleWithPoints:(MISSING_TYPE **)arg1 count:(unsigned long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

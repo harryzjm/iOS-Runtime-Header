@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_axIsActiveGridCell;
+- (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 
 @end

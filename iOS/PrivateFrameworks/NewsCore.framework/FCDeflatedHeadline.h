@@ -8,8 +8,8 @@
 
 #import <NewsCore/FCHeadlineProviding-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort, FCCoverArt, FCFeedPersonalizedArticleScoreProfile, FCHeadlineThumbnail, FCSharedStringIndex, FCTopStoriesStyleConfiguration, NSArray, NSDate, NSString, NSURL, NTPBFeedViewportHeadline;
-@protocol FCChannelProviding, FCNativeAdProviding;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort, FCCoverArt, FCFeedPersonalizedArticleScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCSharedStringIndex, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL, NTPBFeedViewportHeadline;
+@protocol FCChannelProviding, FCHeadlineStocksFields, FCNativeAdProviding;
 
 @interface FCDeflatedHeadline : NSObject <FCHeadlineProviding>
 {
@@ -22,6 +22,8 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool hasVideo;
 @property(readonly, nonatomic) id <FCNativeAdProviding> associatedAd;
+@property(readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs;
+@property(readonly, nonatomic) NSString *articleRecirculationConfigJSON;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *publisherCohort;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *globalCohort;
 @property(readonly, nonatomic) _Bool canBePurchased;
@@ -42,7 +44,14 @@
 @property(readonly, nonatomic) double globalUserFeedback;
 @property(readonly, copy, nonatomic) NSString *publisherID;
 @property(readonly, copy, nonatomic) NSString *sourceFeedID;
+@property(readonly, nonatomic, getter=isPressRelease) _Bool pressRelease;
+@property(readonly, nonatomic, getter=isHiddenFromAutoFavorites) _Bool hiddenFromAutoFavorites;
+@property(readonly, nonatomic, getter=isHiddenFromFeeds) _Bool hiddenFromFeeds;
+@property(readonly, nonatomic, getter=isBoundToContext) _Bool boundToContext;
+@property(readonly, nonatomic) _Bool showMinimalChrome;
 @property(readonly, nonatomic) _Bool needsRapidUpdates;
+@property(readonly, copy, nonatomic) NSURL *videoCallToActionURL;
+@property(readonly, copy, nonatomic) NSString *videoCallToActionTitle;
 @property(readonly, nonatomic) FCCoverArt *coverArt;
 @property(readonly, nonatomic, getter=isPaid) _Bool paid;
 @property(readonly, nonatomic) long long minimumNewsVersion;
@@ -85,10 +94,12 @@
 @property(readonly, nonatomic) _Bool hasThumbnail;
 @property(readonly, nonatomic) struct CGRect thumbnailFocalFrame;
 @property(readonly, copy, nonatomic) NSString *sourceName;
-@property(readonly, copy, nonatomic) NSObject<FCChannelProviding> *sourceChannel;
+@property(readonly, copy, nonatomic) id <FCChannelProviding> sourceChannel;
 @property(readonly, nonatomic) long long backendArticleVersion;
 @property(readonly, nonatomic) long long publisherArticleVersion;
 @property(readonly, copy, nonatomic) NSDate *publishDate;
+@property(copy, nonatomic) FCHeadlineExperimentalTitleMetadata *experimentalTitleMetadata;
+@property(readonly, copy, nonatomic) NSString *titleCompact;
 @property(readonly, copy, nonatomic) NSString *title;
 @property(readonly, copy, nonatomic) NSString *primaryAudience;
 @property(readonly, nonatomic) unsigned long long contentType;
@@ -102,6 +113,7 @@
 @property(readonly, nonatomic) FCFeedPersonalizedArticleScoreProfile *scoreProfile;
 @property(readonly, nonatomic) unsigned long long topStoryType;
 @property(readonly, nonatomic) _Bool isTopStory;
+@property(readonly, copy, nonatomic) NSSet *surfacedByTagIDs;
 @property(readonly, copy, nonatomic) NSString *surfacedByBinID;
 @property(readonly, copy, nonatomic) NSString *surfacedByTopicID;
 @property(readonly, copy, nonatomic) NSString *surfacedByChannelID;
@@ -116,9 +128,12 @@
 - (id)initWithPBHeadline:(id)arg1 sharedStrings:(id)arg2;
 
 // Remaining properties
+@property(readonly, nonatomic) NSData *backingArticleRecordData;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) id <FCHeadlineStocksFields> stocksFields;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool webEmbedsEnabled;
 
 @end
 

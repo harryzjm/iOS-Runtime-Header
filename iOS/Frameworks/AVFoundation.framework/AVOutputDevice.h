@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVOutputDeviceInternal, NSData, NSString;
 
@@ -15,11 +15,21 @@
 
 + (id)sharedLocalDevice;
 + (void)initialize;
++ (id)outputDeviceWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1 routingContextFactory:(id)arg2;
 + (id)outputDeviceWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1;
 - (double)frecencyScore;
 - (void)updateFrecencyScore;
-- (void)setAdministrativeConfiguration:(id)arg1 administrationPassword:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)configureUsingBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)configureUsingBlock:(CDUnknownBlockType)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
+- (_Bool)canFetchMediaDataFromSender;
+- (_Bool)canPlayEncryptedProgressiveDownloadAssets;
+- (_Bool)canRelayCommunicationChannel;
+- (_Bool)canCommunicateWithAllLogicalDeviceMembers;
+- (_Bool)isLogicalDeviceLeader;
+- (id)logicalDeviceID;
 - (_Bool)groupContainsGroupLeader;
+- (_Bool)participatesInGroupPlayback;
 - (_Bool)isGroupLeader;
 - (_Bool)canBeGroupLeader;
 - (id)groupID;
@@ -30,16 +40,25 @@
 - (void)outputDeviceImplDidChangeVolume:(id)arg1;
 - (float)volume;
 - (void)setSecondDisplayEnabled:(_Bool)arg1;
+- (_Bool)supportsBufferedAirPlay;
+- (_Bool)canAccessiCloudMusicLibrary;
+- (_Bool)canAccessAppleMusic;
 - (_Bool)canAccessRemoteAssets;
+- (_Bool)onlyAllowsConnectionsFromPeersInHomeGroup;
+- (_Bool)automaticallyAllowsConnectionsFromPeersInHomeGroup;
 - (_Bool)requiresAuthorization;
 - (unsigned long long)deviceFeatures;
 - (id)connectedPairedDevices;
 - (_Bool)isInUseByPairedDevice;
+- (id)airPlayProperties;
 - (id)modelSpecificInformation;
 - (float)batteryLevel;
 - (_Bool)hasBatteryLevel;
 @property(readonly, nonatomic) NSData *identifyingMACAddress;
+@property(readonly, nonatomic) NSString *firmwareVersion;
+@property(readonly, nonatomic) NSString *serialNumber;
 @property(readonly, nonatomic) NSString *modelID;
+@property(readonly, nonatomic) NSString *manufacturer;
 @property(readonly, nonatomic) long long deviceSubType;
 @property(readonly, nonatomic) long long deviceType;
 - (id)ID;

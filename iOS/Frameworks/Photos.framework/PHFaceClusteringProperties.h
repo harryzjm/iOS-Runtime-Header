@@ -4,15 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PHFaceprint;
+@class NSString, PHFaceprint;
 
 @interface PHFaceClusteringProperties
 {
     PHFaceprint *_faceprint;
+    NSString *_groupingIdentifier;
 }
 
 + (id)propertiesToFetch;
++ (id)entityName;
++ (id)keyPathToPrimaryObject;
++ (id)keyPathFromPrimaryObject;
 + (id)propertySetName;
+@property(readonly, nonatomic) NSString *groupingIdentifier; // @synthesize groupingIdentifier=_groupingIdentifier;
 @property(readonly, nonatomic) PHFaceprint *faceprint; // @synthesize faceprint=_faceprint;
 - (void).cxx_destruct;
 - (id)initWithFetchDictionary:(id)arg1 face:(id)arg2 prefetched:(_Bool)arg3;

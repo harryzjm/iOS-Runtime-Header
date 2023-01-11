@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
 @class NSString;
 
-@interface DMFRemoveProfileRequest : CATTaskRequest
+@interface DMFRemoveProfileRequest
 {
     unsigned long long _type;
     NSString *_profileIdentifier;
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)isPermittedOnUserConnection;
++ (_Bool)isPermittedOnSystemConnection;
++ (id)permittedPlatforms;
 @property(copy, nonatomic) NSString *profileIdentifier; // @synthesize profileIdentifier=_profileIdentifier;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 - (void).cxx_destruct;

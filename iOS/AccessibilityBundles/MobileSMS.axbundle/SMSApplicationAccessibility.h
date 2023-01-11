@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityMainWindow;
 - (_Bool)_accessibilitySoftwareKeyboardActive;
 - (void)_chatItemsDidChange:(id)arg1;
 

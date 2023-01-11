@@ -6,6 +6,7 @@
 
 @class AVWeakReference;
 
+__attribute__((visibility("hidden")))
 @interface AVTrackReaderInspector
 {
     struct OpaqueFigFormatReader *_formatReader;

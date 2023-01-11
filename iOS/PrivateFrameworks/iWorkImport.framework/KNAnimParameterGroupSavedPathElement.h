@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <iWorkImport/NSCoding-Protocol.h>
+#import <iWorkImport/NSSecureCoding-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface KNAnimParameterGroupSavedPathElement : NSObject <NSCoding>
+@interface KNAnimParameterGroupSavedPathElement : NSObject <NSSecureCoding>
 {
     unsigned long long _elementType;
     struct CGPoint _toPoint;
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     struct CGPoint _cp2;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(nonatomic) struct CGPoint cp2; // @synthesize cp2=_cp2;
 @property(nonatomic) struct CGPoint cp1; // @synthesize cp1=_cp1;
 @property(nonatomic) struct CGPoint toPoint; // @synthesize toPoint=_toPoint;

@@ -60,6 +60,8 @@
 - (_Bool)resignFirstResponder;
 - (_Bool)becomeFirstResponder;
 - (void)setText:(id)arg1;
+- (struct CGSize)intrinsicContentSize;
+- (struct UIEdgeInsets)safeAreaInsets;
 - (void)safeAreaInsetsDidChange;
 - (struct CGRect)_defaultFrame;
 - (id)initWithFrame:(struct CGRect)arg1 inputViewStyle:(long long)arg2;

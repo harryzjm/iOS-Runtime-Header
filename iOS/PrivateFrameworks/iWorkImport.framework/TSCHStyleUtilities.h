@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSCHStyleUtilities : NSObject
 {
 }
 
++ (_Bool)allSeriesInList:(id)arg1 haveExplosionValue:(double)arg2;
 + (void)breakUpFontName:(id)arg1 isBold:(_Bool *)arg2 isItalic:(_Bool *)arg3;
 + (id)stylesheetOfStyles:(id)arg1 nilAllowed:(_Bool)arg2;
 + (id)trendlineColorFromCGColor:(struct CGColor *)arg1;
@@ -32,6 +33,23 @@ __attribute__((visibility("hidden")))
 + (_Bool)hasNoFill:(id)arg1;
 + (id)fullyPopulatedStylesFromArray:(id)arg1 context:(id)arg2 styleClass:(Class)arg3;
 + (id)fullyPopulatedStyleFromStyle:(id)arg1 context:(id)arg2;
++ (id)tupleToUpdate2_3ExplosionFromValue:(id)arg1 chartInfo:(id)arg2 forStyleOwner:(id)arg3;
++ (double)pre2_4BendedCalloutLineLabelExplosionValueFromExplosionValue:(double)arg1 chartModel:(id)arg2 bodySize:(struct CGSize)arg3;
++ (double)bendedCalloutLineLabelExplosionValueFromPre2_4ExplosionValue:(double)arg1 chartModel:(id)arg2 bodySize:(struct CGSize)arg3;
++ (double)pieFamilyLabelExplosionMaximumPercentage;
++ (double)pieFamilyLabelExplosionMinimumPercentage;
++ (float)defaultCalloutLineThickness;
++ (double)p_pre2_4BendedCalloutLineLabelExplosionValueFromExplosionValue:(double)arg1 chartRadius:(double)arg2;
++ (double)p_bendedCalloutLineLabelExplosionValueFromPre2_4ExplosionValue:(double)arg1 chartRadius:(double)arg2;
++ (struct CGSize)bodySizeWithMinimumWedgeExplosionWithChartModel:(id)arg1 bodySize:(struct CGSize)arg2;
++ (float)defaultPieLabelExplosionPercentage;
++ (float)pre2_4DefaultPieLabelExplosionPercentageForCalloutLineCalculation;
++ (_Bool)shouldAnchorLabelsForSeries:(id)arg1 innerRadius:(double)arg2 calloutLineType:(int)arg3 defaultLabelExplosion:(double)arg4;
++ (_Bool)labelExplosionIsCenteredInWedgeWithInnerRadius:(double)arg1 labelExplosion:(double)arg2;
++ (float)defaultDonutLabelExplosionPercentage;
++ (float)centeredDonutLabelExplosionPercentageWithInnerRadius:(double)arg1;
++ (float)defaultInnerRadiusPercentageForIconRendering;
++ (float)defaultInnerRadiusPercentage;
 
 @end
 

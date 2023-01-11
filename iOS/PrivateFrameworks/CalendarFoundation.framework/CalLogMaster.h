@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CalLogNode, NSArray;
 @protocol OS_dispatch_group, OS_dispatch_queue;
@@ -42,6 +42,7 @@
 - (void)registerForConfigUpdateNotifications;
 - (void)reloadTopLevelNodes;
 - (id)copyLegacyLoggingDefaultsConvertedToNamespaces;
+- (_Bool)shouldProcessNamespace:(id)arg1;
 - (void)configureRootConfigurationNode;
 - (void)configureUserNotificationNode;
 - (void)configureStandardOutNode;

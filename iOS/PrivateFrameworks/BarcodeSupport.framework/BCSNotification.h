@@ -17,6 +17,7 @@
     int _requestingProcessID;
 }
 
++ (id)_tlAlertConfiguration;
 + (id)tempVCardFileURL;
 + (id)notificationForAction:(id)arg1;
 @property(nonatomic) int requestingProcessID; // @synthesize requestingProcessID=_requestingProcessID;
@@ -31,6 +32,7 @@
 - (void)didHandleBulletinActionWithIdentifier:(id)arg1;
 @property(readonly, nonatomic) BBBulletinRequest *bulletinRequest;
 - (void)handleActionWithIdentifier:(id)arg1 notificationResponseOriginID:(id)arg2;
+- (void)_performActionAfterUnlock:(_Bool)arg1 actionBlock:(CDUnknownBlockType)arg2;
 - (void)_performActionAfterUnlock:(CDUnknownBlockType)arg1;
 - (void)_handleContactInfo:(id)arg1;
 - (void)_handleCalendarEventWithICSString:(id)arg1;
@@ -46,6 +48,7 @@
 - (id)_actionTypeString;
 - (id)_title;
 - (id)attachmentDataForConstraints:(id)arg1;
+@property(readonly, nonatomic) long long codeType;
 @property(readonly, nonatomic) NSString *identifier;
 - (id)_initWithAction:(id)arg1;
 

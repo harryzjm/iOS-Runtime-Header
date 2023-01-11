@@ -10,6 +10,7 @@
 {
 }
 
+@property(readonly, nonatomic) unsigned long long traits;
 - (id)fillWithValue:(id)arg1 withType:(int)arg2;
 
 // Remaining properties

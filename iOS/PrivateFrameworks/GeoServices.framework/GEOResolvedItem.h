@@ -8,7 +8,6 @@
 
 @class GEOPDResolvedItem, NSString;
 
-__attribute__((visibility("hidden")))
 @interface GEOResolvedItem : NSObject
 {
     GEOPDResolvedItem *_resolvedItem;
@@ -16,8 +15,10 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic) int itemType;
+@property(readonly, nonatomic) _Bool hasResultIndex;
 @property(readonly, nonatomic) unsigned long long resultIndex;
 @property(readonly, nonatomic) NSString *extractedTerm;
+- (id)initWithAutocompleteResolvedItem:(id)arg1;
 - (id)initWithResolvedItem:(id)arg1;
 
 @end

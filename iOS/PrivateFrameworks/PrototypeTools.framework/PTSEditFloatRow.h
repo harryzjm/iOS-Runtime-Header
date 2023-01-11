@@ -6,15 +6,7 @@
 
 @interface PTSEditFloatRow
 {
-    unsigned long long _precision;
 }
-
-@property(nonatomic) unsigned long long precision; // @synthesize precision=_precision;
-- (void)updateWithRow:(id)arg1;
-- (id)init;
-- (id)between:(double)arg1 and:(double)arg2;
-- (id)precision:(unsigned long long)arg1;
-- (Class)rowTableViewCellClass;
 
 @end
 

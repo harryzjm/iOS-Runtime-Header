@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_queue;
 
@@ -14,10 +14,10 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_queue_reload;
 - (id)description;
 - (void)reload;
-- (void)dealloc;
 - (id)init;
 
 @end

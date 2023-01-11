@@ -14,6 +14,7 @@
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

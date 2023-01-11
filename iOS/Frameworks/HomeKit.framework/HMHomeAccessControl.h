@@ -4,23 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+@class HMUserPresenceAuthorization, HMUserPresenceCompute;
 
-@class HMUser, HMUserPresenceAuthorization, HMUserPresenceCompute;
-@protocol OS_dispatch_queue;
-
-@interface HMHomeAccessControl : NSObject
+@interface HMHomeAccessControl
 {
     _Bool _owner;
     _Bool _administrator;
     _Bool _remoteAccessAllowed;
-    HMUser *_user;
     HMUserPresenceAuthorization *_presenceAuthStatus;
     HMUserPresenceCompute *_presenceComputeStatus;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 - (void).cxx_destruct;
 - (void)updatePresenceAuthorizationStatus:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateRemoteAccess:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -32,7 +26,7 @@
 @property(getter=isRemoteAccessAllowed) _Bool remoteAccessAllowed; // @synthesize remoteAccessAllowed=_remoteAccessAllowed;
 @property(nonatomic, getter=isAdministrator) _Bool administrator; // @synthesize administrator=_administrator;
 @property(getter=isOwner) _Bool owner; // @synthesize owner=_owner;
-@property __weak HMUser *user; // @synthesize user=_user;
+- (_Bool)isEqual:(id)arg1;
 - (id)initWithUser:(id)arg1 owner:(_Bool)arg2 administratorPrivilege:(_Bool)arg3 remoteAccess:(_Bool)arg4 presenceAuthStatus:(id)arg5 presenceComputeStatus:(id)arg6;
 
 @end

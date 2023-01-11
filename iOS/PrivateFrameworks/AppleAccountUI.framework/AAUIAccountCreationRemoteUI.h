@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleAccountUI/RUILoaderDelegate-Protocol.h>
 #import <AppleAccountUI/RUIObjectModelDelegate-Protocol.h>
 
 @class AAAutoAccountVerifier, AASetupAssistantService, NSMutableArray, NSString, RUILoader, UIAlertView, UINavigationController;
 @protocol AAUIAccountCreationDelegate;
 
-@interface AAUIAccountCreationRemoteUI : NSObject <RUIObjectModelDelegate>
+@interface AAUIAccountCreationRemoteUI : NSObject <RUILoaderDelegate, RUIObjectModelDelegate>
 {
     _Bool _isModal;
     RUILoader *_loader;
@@ -32,6 +33,7 @@
 - (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (void)objectModelPressedBack:(id)arg1;
 - (id)parentViewControllerForObjectModel:(id)arg1;
+- (id)sessionConfigurationForLoader:(id)arg1;
 - (void)loader:(id)arg1 didFailWithError:(id)arg2;
 - (void)objectModelDidChange:(id)arg1;
 - (void)objectModel:(id)arg1 pressedLink:(id)arg2 httpMethod:(id)arg3;

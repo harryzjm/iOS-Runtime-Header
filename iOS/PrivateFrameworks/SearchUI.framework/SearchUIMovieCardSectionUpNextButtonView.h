@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class SearchUIWatchListUtilities;
+
 @interface SearchUIMovieCardSectionUpNextButtonView
 {
-    _Bool _isInUpNext;
+    SearchUIWatchListUtilities *_watchListUtility;
 }
 
-@property _Bool isInUpNext; // @synthesize isInUpNext=_isInUpNext;
+@property(retain) SearchUIWatchListUtilities *watchListUtility; // @synthesize watchListUtility=_watchListUtility;
+- (void).cxx_destruct;
 - (void)buttonPressed;
-- (void)updateUpNextStatus:(_Bool)arg1;
+- (void)updateUpNextStatus;
 - (id)initIsInUpNext:(_Bool)arg1 cardSectionView:(id)arg2;
 
 @end

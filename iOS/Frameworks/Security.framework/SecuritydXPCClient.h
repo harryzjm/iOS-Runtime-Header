@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSXPCConnection;
 
@@ -16,7 +16,7 @@
 + (void)configureSecuritydXPCProtocol:(id)arg1;
 @property(retain) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void).cxx_destruct;
-- (id)initWithEndpoint:(id)arg1;
+- (id)init;
 
 @end
 

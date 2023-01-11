@@ -4,33 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 
-@class NSData, NSString;
+@class NSString;
 
 @interface PKDSPContext : NSObject <NSCopying>
 {
     NSString *_secureElementID;
-    NSData *_cryptogram;
-    NSData *_challengeResponse;
     NSString *_serverEndpointIdentifier;
     NSString *_cardholderName;
     NSString *_phoneNumber;
     NSString *_peerPaymentRecipientAddress;
+    unsigned long long _eventFrequency;
     NSString *_primaryAppleAccountFirstName;
     NSString *_primaryAppleAccountLastName;
 }
 
 @property(copy, nonatomic) NSString *primaryAppleAccountLastName; // @synthesize primaryAppleAccountLastName=_primaryAppleAccountLastName;
 @property(copy, nonatomic) NSString *primaryAppleAccountFirstName; // @synthesize primaryAppleAccountFirstName=_primaryAppleAccountFirstName;
+@property(nonatomic) unsigned long long eventFrequency; // @synthesize eventFrequency=_eventFrequency;
 @property(copy, nonatomic) NSString *peerPaymentRecipientAddress; // @synthesize peerPaymentRecipientAddress=_peerPaymentRecipientAddress;
 @property(copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property(copy, nonatomic) NSString *cardholderName; // @synthesize cardholderName=_cardholderName;
 @property(copy, nonatomic) NSString *serverEndpointIdentifier; // @synthesize serverEndpointIdentifier=_serverEndpointIdentifier;
-@property(copy, nonatomic) NSData *challengeResponse; // @synthesize challengeResponse=_challengeResponse;
-@property(copy, nonatomic) NSData *cryptogram; // @synthesize cryptogram=_cryptogram;
 @property(copy, nonatomic) NSString *secureElementID; // @synthesize secureElementID=_secureElementID;
 - (void).cxx_destruct;
 - (void)setPrimaryAppleAccount:(id)arg1;

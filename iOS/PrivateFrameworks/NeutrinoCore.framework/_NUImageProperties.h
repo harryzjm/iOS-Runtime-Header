@@ -9,7 +9,7 @@
 #import <NeutrinoCore/NUImageProperties-Protocol.h>
 
 @class NSDictionary, NSString;
-@protocol NUDepthProperties, NURAWImageProperties;
+@protocol NUDepthProperties, NUPortraitEffectsMatteProperties, NURAWImageProperties;
 
 @interface _NUImageProperties : NSObject <NUImageProperties>
 {
@@ -20,11 +20,13 @@
     long long _alphaInfo;
     long long _componentInfo;
     id <NUDepthProperties> _depthProperties;
+    id <NUPortraitEffectsMatteProperties> _portraitEffectsMatteProperties;
     id <NURAWImageProperties> _rawProperties;
     CDStruct_d58201db _size;
 }
 
 @property(retain) id <NURAWImageProperties> rawProperties; // @synthesize rawProperties=_rawProperties;
+@property(retain) id <NUPortraitEffectsMatteProperties> portraitEffectsMatteProperties; // @synthesize portraitEffectsMatteProperties=_portraitEffectsMatteProperties;
 @property(retain) id <NUDepthProperties> depthProperties; // @synthesize depthProperties=_depthProperties;
 @property long long componentInfo; // @synthesize componentInfo=_componentInfo;
 @property long long alphaInfo; // @synthesize alphaInfo=_alphaInfo;

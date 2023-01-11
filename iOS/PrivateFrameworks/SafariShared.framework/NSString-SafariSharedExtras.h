@@ -14,19 +14,17 @@
 + (id)safari_localizedStringFromComponents:(id)arg1 usingConjunctionForFinalJoiner:(_Bool)arg2;
 + (id)safari_stringWithJSValue:(struct OpaqueJSValue *)arg1 context:(struct OpaqueJSContext *)arg2;
 + (id)safari_stringWithJSValue:(struct OpaqueJSValue *)arg1 context:(struct OpaqueJSContext *)arg2 nullStringPolicy:(long long)arg3;
+- (_Bool)safari_looksLikeObscuredPassword;
 @property(readonly, copy, nonatomic) NSString *safari_stringByRemovingExcessWhitespace;
 - (id)safari_stringWithFont:(id)arg1 forWidth:(double)arg2 lineBreakMode:(long long)arg3;
 - (id)safari_containedURLs;
 - (id)safari_sha256Hash;
 - (id)safari_md5Hash;
-- (id)safari_base64DecodedData;
 - (_Bool)safari_isVisualDuplicateOfURLString:(id)arg1;
 - (id)safari_canonicalURLStringForFrequentlyVisitedSites;
 - (void)safari_enumerateSubdomainRangesInHostUsingBlock:(CDUnknownBlockType)arg1;
 - (id)safari_scriptIfJavaScriptURLString;
 - (_Bool)safari_isJavaScriptURLString;
-- (id)safari_domainFromHost;
-- (unsigned long long)safari_countOfString:(id)arg1;
 - (_Bool)safari_isPathExtensionAllowedForAnalytics;
 - (id)safari_stringBySubstitutingHTMLEntitiesForAmpersandAndAngleBrackets;
 - (id)safari_stringBySubstitutingAmpersandAndAngleBracketsForHTMLEntities;
@@ -38,12 +36,11 @@
 - (id)safari_bestURLStringForUserTypedString;
 - (id)safari_bestLanguageTag;
 - (id)safari_bestURLForUserTypedString;
-- (id)safari_stringByRemovingWwwDotPrefix;
-- (id)safari_fixedStringByExpandingTildeInPath;
+- (id)safari_stringByDeletingTrailingSlash;
+- (id)safari_stringByDeletingStartingSlash;
+- (id)safari_fixedStringByExpandingTildeInPathToUserHomeDirectory;
 - (id)safari_stringByRemovingUnnecessaryCharactersFromUserTypedURLString;
 - (id)safari_stringByRemovingTopLevelDomainFromHost;
 - (id)safari_possibleTopLevelDomainCorrectionForUserTypedString;
-- (id)safari_stringByReplacingCharactersInSet:(id)arg1 withString:(id)arg2;
-- (id)safari_stringByRemovingCharactersInSet:(id)arg1;
 @end
 

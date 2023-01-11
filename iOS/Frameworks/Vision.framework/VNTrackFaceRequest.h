@@ -8,6 +8,7 @@
 {
 }
 
+- (id)_newTrackerOptionsForRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
 - (id)trackerType;
 - (id)initWithFaceObservation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithFaceObservation:(id)arg1;

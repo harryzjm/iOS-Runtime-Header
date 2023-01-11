@@ -10,12 +10,15 @@
 
 @class GEOABSecondPartyPlaceRequestClientMetaData, GEOAdditionalEnabledMarkets, GEOLocation, NSMutableArray, NSString, PBUnknownFields;
 
+__attribute__((visibility("hidden")))
 @interface GEOPDClientMetadata : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    CDStruct_95bda58d _knownClientResolvedTypeDeprecateds;
     CDStruct_95bda58d _knownClientResolvedTypes;
     GEOABSecondPartyPlaceRequestClientMetaData *_abClientMetadata;
     GEOAdditionalEnabledMarkets *_additionalEnabledMarkets;
+    NSMutableArray *_businessChatPreflightIdentifiers;
     unsigned int _dayOfWeek;
     NSString *_debugApiKey;
     NSString *_deviceCountryCode;
@@ -39,7 +42,9 @@
     } _has;
 }
 
++ (Class)businessChatPreflightIdentifierType;
 + (Class)deviceHistoricalLocationType;
+@property(retain, nonatomic) NSMutableArray *businessChatPreflightIdentifiers; // @synthesize businessChatPreflightIdentifiers=_businessChatPreflightIdentifiers;
 @property(retain, nonatomic) NSString *debugApiKey; // @synthesize debugApiKey=_debugApiKey;
 @property(retain, nonatomic) NSMutableArray *deviceHistoricalLocations; // @synthesize deviceHistoricalLocations=_deviceHistoricalLocations;
 @property(retain, nonatomic) GEOLocation *deviceExtendedLocation; // @synthesize deviceExtendedLocation=_deviceExtendedLocation;
@@ -62,8 +67,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
-@property(nonatomic) _Bool hasEnablePreflightVenues;
-@property(nonatomic) _Bool enablePreflightVenues; // @synthesize enablePreflightVenues=_enablePreflightVenues;
+- (id)businessChatPreflightIdentifierAtIndex:(unsigned long long)arg1;
+- (unsigned long long)businessChatPreflightIdentifiersCount;
+- (void)addBusinessChatPreflightIdentifier:(id)arg1;
+- (void)clearBusinessChatPreflightIdentifiers;
 - (int)StringAsKnownClientResolvedTypes:(id)arg1;
 - (id)knownClientResolvedTypesAsString:(int)arg1;
 - (void)setKnownClientResolvedTypes:(int *)arg1 count:(unsigned long long)arg2;
@@ -72,6 +79,16 @@
 - (void)clearKnownClientResolvedTypes;
 @property(readonly, nonatomic) int *knownClientResolvedTypes;
 @property(readonly, nonatomic) unsigned long long knownClientResolvedTypesCount;
+@property(nonatomic) _Bool hasEnablePreflightVenues;
+@property(nonatomic) _Bool enablePreflightVenues; // @synthesize enablePreflightVenues=_enablePreflightVenues;
+- (int)StringAsKnownClientResolvedTypeDeprecateds:(id)arg1;
+- (id)knownClientResolvedTypeDeprecatedsAsString:(int)arg1;
+- (void)setKnownClientResolvedTypeDeprecateds:(int *)arg1 count:(unsigned long long)arg2;
+- (int)knownClientResolvedTypeDeprecatedAtIndex:(unsigned long long)arg1;
+- (void)addKnownClientResolvedTypeDeprecated:(int)arg1;
+- (void)clearKnownClientResolvedTypeDeprecateds;
+@property(readonly, nonatomic) int *knownClientResolvedTypeDeprecateds;
+@property(readonly, nonatomic) unsigned long long knownClientResolvedTypeDeprecatedsCount;
 @property(readonly, nonatomic) _Bool hasDebugApiKey;
 - (int)StringAsRequiredVersion:(id)arg1;
 - (id)requiredVersionAsString:(int)arg1;
@@ -98,6 +115,7 @@
 @property(retain, nonatomic) GEOABSecondPartyPlaceRequestClientMetaData *abClientMetadata;
 @property(readonly, nonatomic) _Bool hasAbClientMetadata;
 - (id)initWithTraits:(id)arg1;
+- (void)clearLocations;
 
 @end
 

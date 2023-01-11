@@ -18,6 +18,7 @@
 - (MISSING_TYPE *)float3AtTime:(double)arg1;
 - (void)setDouble3:(double)arg1 atTime: /* Error: Ran out of types for this method. */;
 - (void)setFloat3:(double)arg1 atTime: /* Error: Ran out of types for this method. */;
+- (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 timeScale:(double)arg2 time:(double)arg3;
 - (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 timeScale:(double)arg2;
 - (struct VtValue)defaultVtValue;
 - (unsigned long long)precision;

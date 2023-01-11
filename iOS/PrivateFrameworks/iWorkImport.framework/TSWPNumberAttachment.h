@@ -9,13 +9,14 @@
 __attribute__((visibility("hidden")))
 @interface TSWPNumberAttachment
 {
-    NSString *_numberFormat;
     NSString *_stringValue;
+    NSString *_numberFormat;
 }
 
++ (_Bool)allowsObjectDigestValidation;
 + (Class)classForUnarchiver:(id)arg1;
-@property(copy, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
 @property(copy, nonatomic) NSString *numberFormat; // @synthesize numberFormat=_numberFormat;
+@property(copy, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
 - (void).cxx_destruct;
 - (void)performTemplateLocalization:(id)arg1;
 - (id)stringWithNumber:(unsigned long long)arg1;

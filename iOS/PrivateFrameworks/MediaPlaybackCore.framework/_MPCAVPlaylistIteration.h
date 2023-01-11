@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlaybackCore/NSCoding-Protocol.h>
+#import <MediaPlaybackCore/NSSecureCoding-Protocol.h>
 
 @class MPSparseArray;
 
-@interface _MPCAVPlaylistIteration : NSObject <NSCoding>
+@interface _MPCAVPlaylistIteration : NSObject <NSSecureCoding>
 {
     MPSparseArray *_sourceContexts;
     unsigned long long _iterationIndex;
@@ -18,6 +18,7 @@
     unsigned long long _indexToFaultIn;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(nonatomic) unsigned long long indexToFaultIn; // @synthesize indexToFaultIn=_indexToFaultIn;
 @property(nonatomic) unsigned long long count; // @synthesize count=_count;
 @property(nonatomic) unsigned long long iterationIndex; // @synthesize iterationIndex=_iterationIndex;

@@ -8,11 +8,13 @@
 
 #import <WebApp/UIApplicationDelegate-Protocol.h>
 
-@class NSString, UIWindow, WebAppController;
+@class NSString, UIWindow, WebAppViewController;
 
+__attribute__((visibility("hidden")))
 @interface WebApplication : UIApplication <UIApplicationDelegate>
 {
-    WebAppController *_webApp;
+    WebAppViewController *_webApp;
+    UIWindow *_window;
 }
 
 - (void).cxx_destruct;

@@ -11,10 +11,9 @@
 #import <GeoServices/GEODataSessionTaskRulesObserver-Protocol.h>
 #import <GeoServices/GEOStateCapturing-Protocol.h>
 
-@class GEOClientMetrics, GEODataSession, GEODataURLSessionTask, GEODataXPCSessionTask, NSData, NSError, NSString, NSURL;
-@protocol GEODataSessionTask, GEODataSessionTaskDelegate, GEODataSessionTaskRules, OS_dispatch_queue, OS_os_activity;
+@class GEOClientMetrics, GEODataSession, GEODataURLSessionTask, NSData, NSError, NSString, NSURL;
+@protocol GEODataSessionTask, GEODataSessionTaskDelegate, GEODataSessionTaskRules, GEORequestCounterTicket, NSObject, OS_dispatch_queue, OS_os_activity;
 
-__attribute__((visibility("hidden")))
 @interface GEODataSessionTask : NSObject <GEODataSessionTaskDelegate, GEODataSessionTaskRulesObserver, GEOStateCapturing, GEODataSessionTask>
 {
     id <GEODataSessionTaskDelegate> _delegate;
@@ -25,13 +24,14 @@ __attribute__((visibility("hidden")))
     NSObject<OS_os_activity> *_activity;
     id <GEODataSessionTask> _completedSubtask;
     GEODataURLSessionTask *_urlTask;
-    GEODataXPCSessionTask *_xpcTask;
+    GEODataSessionTask *_xpcTask;
     int _requestKind;
     unsigned long long _stateCaptureHandle;
     unsigned int _taskIdentifier;
     double _startTime;
     double _endTime;
     _Bool _didStart;
+    _Bool _willSendRequestDelegateCalled;
 }
 
 @property(readonly, nonatomic) NSObject<OS_os_activity> *activity; // @synthesize activity=_activity;
@@ -40,11 +40,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak GEODataSession *session; // @synthesize session=_session;
 @property(readonly, nonatomic) int requestKind; // @synthesize requestKind=_requestKind;
 @property(retain, nonatomic) id <GEODataSessionTask> completedSubtask; // @synthesize completedSubtask=_completedSubtask;
-@property(retain, nonatomic) GEODataXPCSessionTask *xpcTask; // @synthesize xpcTask=_xpcTask;
+@property(retain, nonatomic) GEODataSessionTask *xpcTask; // @synthesize xpcTask=_xpcTask;
 @property(retain, nonatomic) GEODataURLSessionTask *urlTask; // @synthesize urlTask=_urlTask;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *sessionIsolation; // @synthesize sessionIsolation=_sessionIsolation;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <GEORequestCounterTicket> requestCounterTicket;
 @property(readonly, nonatomic) GEOClientMetrics *clientMetrics;
 @property(readonly) _Bool failedDueToCancel;
 @property(readonly, nonatomic) NSString *remoteAddressAndPort;
@@ -52,13 +53,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long incomingPayloadSize;
 @property(readonly, nonatomic) NSData *receivedData;
 @property(readonly, nonatomic) _Bool protocolBufferHasPreamble;
+@property(readonly, nonatomic) id <NSObject> parsedResponse;
 @property(readonly, nonatomic) NSError *error;
 - (void)cancel;
 - (void)start;
 @property float priority;
 @property(readonly, copy) NSString *debugDescription;
 - (void)dealloc;
-- (id)initWithSession:(id)arg1 rules:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4 requestKind:(int)arg5;
+- (id)initWithSession:(id)arg1 rules:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4 requestKind:(int)arg5 requestCounterTicket:(id)arg6;
 - (_Bool)validateTileResponseWithError:(id *)arg1;
 - (void)rulesDidChooseCompletedSubtask:(id)arg1;
 - (void)dataSession:(id)arg1 willSendRequest:(id)arg2 forTask:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

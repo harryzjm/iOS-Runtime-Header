@@ -13,7 +13,6 @@
     long long _coreUIValue;
 }
 
-+ (id)identifierFromFileName:(id)arg1 inRange:(struct _NSRange *)arg2;
 + (id)sRGBColorSpace;
 + (id)p3ColorSpace;
 + (id)itemWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 coreUIValue:(long long)arg4 displayOrder:(double)arg5;

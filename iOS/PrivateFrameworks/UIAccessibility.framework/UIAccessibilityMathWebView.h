@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIWebView.h>
+#import <WebKit/WKWebView.h>
 
-@interface UIAccessibilityMathWebView : UIWebView
+@interface UIAccessibilityMathWebView : WKWebView
 {
 }
 

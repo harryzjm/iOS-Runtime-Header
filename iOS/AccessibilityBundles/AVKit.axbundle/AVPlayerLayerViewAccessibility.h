@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)isAccessibilityElement;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (_Bool)_axHasVideo;

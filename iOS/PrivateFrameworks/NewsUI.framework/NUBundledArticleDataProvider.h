@@ -7,23 +7,22 @@
 #import <objc/NSObject.h>
 
 #import <NewsUI/NUArticleDataProvider-Protocol.h>
-#import <NewsUI/SXEmbedDataSource-Protocol.h>
-#import <NewsUI/SXReachabilityProvider-Protocol.h>
+#import <NewsUI/SXEmbedDataProvider-Protocol.h>
 #import <NewsUI/SXResourceDataSource-Protocol.h>
 
 @class FCArticle, NSString;
 
-@interface NUBundledArticleDataProvider : NSObject <SXResourceDataSource, SXEmbedDataSource, SXReachabilityProvider, NUArticleDataProvider>
+@interface NUBundledArticleDataProvider : NSObject <SXResourceDataSource, SXEmbedDataProvider, NUArticleDataProvider>
 {
     FCArticle *_article;
 }
 
-@property(retain, nonatomic) FCArticle *article; // @synthesize article=_article;
+@property(readonly, nonatomic) FCArticle *article; // @synthesize article=_article;
 - (void).cxx_destruct;
 - (id)fileURLForBundleURL:(id)arg1;
-- (void)addReachabilityObserver:(id)arg1;
-- (_Bool)isNetworkReachable;
 - (id)embedForType:(id)arg1;
+- (id)translateURL:(id)arg1;
+- (void)fileURLForURL:(id)arg1 onCompletion:(CDUnknownBlockType)arg2 onError:(CDUnknownBlockType)arg3;
 - (CDUnknownBlockType)loadImagesForImageRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 @property(readonly, copy, nonatomic) NSString *articleID;
 - (void)loadContextWithCompletionBlock:(CDUnknownBlockType)arg1;

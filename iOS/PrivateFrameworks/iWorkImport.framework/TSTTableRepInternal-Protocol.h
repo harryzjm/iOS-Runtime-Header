@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet, TSDTilingLayer, TSTSelectionDragController, TSTTableReferences;
+@class NSMutableDictionary, NSSet, TSDTilingLayer, TSTSelectionDragController, TSTTableReferences;
 
 @protocol TSTTableRepInternal
+@property(readonly, nonatomic) NSMutableDictionary *childTextReps;
 @property(copy, nonatomic) NSSet *visibleFillKnobs;
 @property(readonly, nonatomic) _Bool usesWholeChromeResizer;
 @property(readonly, nonatomic) _Bool selectsCellOnInitialTap;
@@ -17,6 +18,8 @@
 @property(readonly, nonatomic) _Bool aspectOperationIsInProgress;
 @property(readonly, nonatomic) TSTTableReferences *references;
 @property(nonatomic) struct TSUCellCoord ratingsDragCellID;
+@property(readonly, nonatomic) TSDTilingLayer *overlayFrozenHeaderColumns;
+@property(readonly, nonatomic) TSDTilingLayer *overlayFrozenHeaderCorner;
 @property(readonly, nonatomic) TSDTilingLayer *overlayFrozenHeaderRows;
 @property(nonatomic) struct CGRect searchSelectionBounds;
 @end

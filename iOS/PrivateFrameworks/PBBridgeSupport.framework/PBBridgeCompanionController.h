@@ -9,7 +9,7 @@
 #import <PBBridgeSupport/PBBridgeCompanionProtocol-Protocol.h>
 #import <PBBridgeSupport/RUILoaderDelegate-Protocol.h>
 
-@class NSMutableData, NSMutableDictionary, NSMutableURLRequest, NSString, NSTimer, NSURLConnection, RUILoader, RUIStyle;
+@class NSDictionary, NSMutableData, NSMutableDictionary, NSMutableURLRequest, NSString, NSTimer, NSURLConnection, RUILoader, RUIStyle;
 @protocol PBBridgeConnectionDelegate, RUILoaderDelegate;
 
 @interface PBBridgeCompanionController <IDSServiceDelegate, NSURLConnectionDelegate, RUILoaderDelegate, PBBridgeCompanionProtocol>
@@ -34,12 +34,14 @@
     NSMutableData *_activationData;
     RUILoader *_ruiLoader;
     NSString *_contentType;
+    NSDictionary *_allHeaders;
     NSTimer *_activationTimeout;
     NSString *_internalLastSendMessageID;
     NSString *_remoteActivationUserAgent;
     CDUnknownBlockType _lockedOnAnimationCompletion;
     CDUnknownBlockType _initialSyncPrepCompletion;
     CDUnknownBlockType _languageLocaleCompletion;
+    CDUnknownBlockType _prepareWatchForForcedSUCompletion;
     NSMutableDictionary *_reportMapping;
 }
 
@@ -52,6 +54,7 @@
 @property(retain, nonatomic) NSMutableDictionary *reportMapping; // @synthesize reportMapping=_reportMapping;
 @property(nonatomic) _Bool sentActivationRequest; // @synthesize sentActivationRequest=_sentActivationRequest;
 @property(nonatomic) _Bool sentSessionRequest; // @synthesize sentSessionRequest=_sentSessionRequest;
+@property(copy, nonatomic) CDUnknownBlockType prepareWatchForForcedSUCompletion; // @synthesize prepareWatchForForcedSUCompletion=_prepareWatchForForcedSUCompletion;
 @property(copy, nonatomic) CDUnknownBlockType languageLocaleCompletion; // @synthesize languageLocaleCompletion=_languageLocaleCompletion;
 @property(copy, nonatomic) CDUnknownBlockType initialSyncPrepCompletion; // @synthesize initialSyncPrepCompletion=_initialSyncPrepCompletion;
 @property(copy, nonatomic) CDUnknownBlockType lockedOnAnimationCompletion; // @synthesize lockedOnAnimationCompletion=_lockedOnAnimationCompletion;
@@ -65,6 +68,7 @@
 @property(nonatomic) _Bool awaitingCustomResponse; // @synthesize awaitingCustomResponse=_awaitingCustomResponse;
 @property(nonatomic) _Bool connectionFailed; // @synthesize connectionFailed=_connectionFailed;
 @property(nonatomic) _Bool nonSilentActivation; // @synthesize nonSilentActivation=_nonSilentActivation;
+@property(retain, nonatomic) NSDictionary *allHeaders; // @synthesize allHeaders=_allHeaders;
 @property(copy, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
 @property(retain, nonatomic) RUILoader *ruiLoader; // @synthesize ruiLoader=_ruiLoader;
 @property(retain, nonatomic) NSMutableData *activationData; // @synthesize activationData=_activationData;
@@ -76,6 +80,10 @@
 - (void).cxx_destruct;
 - (id)reporterForConnection:(id)arg1;
 - (void)setReporter:(id)arg1 forConnection:(id)arg2;
+- (void)watchDidPrepareForForcedSU:(id)arg1;
+- (void)tellWatchToPrepareForForcedSUWithCompletion:(CDUnknownBlockType)arg1;
+- (void)watchDidIngestWirelessCredentials:(id)arg1;
+- (void)sendDemoWatchWirelessCredentials;
 - (void)transportBecameUnreachable;
 - (void)transportBecameReachable;
 - (void)handleOfflineTermsResponse:(id)arg1;

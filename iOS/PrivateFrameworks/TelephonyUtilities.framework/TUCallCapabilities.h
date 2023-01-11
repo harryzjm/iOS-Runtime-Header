@@ -11,13 +11,15 @@
 }
 
 + (id)debugDescription;
-+ (id)callCapabilitiesServerXPCInterface;
-+ (id)callCapabilitiesClientXPCInterface;
-+ (void)_sendNotificationsAfterRunningBlock:(CDUnknownBlockType)arg1;
-+ (id)_client;
-+ (void)_setClientServer:(id)arg1;
++ (void)_sendNotificationsAndCallbacksAfterRunningBlock:(CDUnknownBlockType)arg1;
++ (void)removeDelegate:(id)arg1;
++ (void)addDelegate:(id)arg1 queue:(id)arg2;
 + (id)client;
++ (id)_senderIdentityCapabilitiesByUUID;
++ (id)senderIdentityCapabilitiesWithUUID:(id)arg1;
++ (id)senderIdentityCapabilities;
 + (_Bool)supportsCarrierServices;
++ (_Bool)isEmergencyCallbackPossible;
 + (void)endEmergencyCallbackMode;
 + (_Bool)isEmergencyCallbackModeEnabled;
 + (void)cancelPinRequestFromPrimaryDevice;
@@ -56,10 +58,10 @@
 + (_Bool)isVoLTECallingEnabled;
 + (_Bool)supportsVoLTECalling;
 + (_Bool)supportsWiFiEmergencyCalling;
-+ (_Bool)isWiFiCallingRoamingEnabled;
 + (_Bool)isWiFiCallingCurrentlyAvailable;
 + (id)wiFiCallingCapabilityInfo;
 + (void)setWiFiCallingRoamingEnabled:(_Bool)arg1;
++ (_Bool)isWiFiCallingRoamingEnabled;
 + (void)setWiFiCallingEnabled:(_Bool)arg1;
 + (_Bool)isWiFiCallingEnabled;
 + (_Bool)supportsWiFiCalling;
@@ -82,8 +84,6 @@
 + (int)telephonyCallSupport;
 + (_Bool)supportsBasebandCalling;
 + (_Bool)supportsPrimaryCalling;
-+ (_Bool)canAttemptEmergencyCallsInAirplaneMode;
-+ (_Bool)canAttemptTelephonyCallsInAirplaneMode;
 + (_Bool)canAttemptEmergencyCallsWithoutCellularConnection;
 + (_Bool)canAttemptTelephonyCallsWithoutCellularConnection;
 + (_Bool)supportsFaceTimeVideoCalls;

@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <iAd/AdAnalyzable-Protocol.h>
 #import <iAd/NSObject-Protocol.h>
 
-@class ADMRAIDAction, NSError, NSString, UIView, UIViewController;
+@class ADLayoutOptions, ADMRAIDAction, NSError, NSString, UIView, UIViewController;
 
-@protocol ADAdRecipient <NSObject>
+@protocol ADAdRecipient <NSObject, AdAnalyzable>
 @property(nonatomic) long long lastErrorCode;
 @property(nonatomic) _Bool reUsed;
 @property(nonatomic) _Bool displayed;
@@ -18,7 +19,15 @@
 @property(readonly, nonatomic) UIViewController *presentingViewController;
 @property(readonly, nonatomic) UIView *adSpaceView;
 @property(readonly, nonatomic) long long options;
+@property(retain, nonatomic) ADLayoutOptions *layoutOptions;
 @property(readonly, nonatomic) int internalAdType;
+- (void)adlibManagedVideoAdDidToggleToMute:(_Bool)arg1;
+- (void)adlibManagedVideoAdDidTapVideo;
+- (void)adlibManagedVideoAdDidTapForMoreInfo;
+- (void)adlibManagedVideoAdDidCompletePlay:(int)arg1;
+- (void)adlibManagedVideoAdDidPausePlay;
+- (void)adlibManagedVideoAdDidResumePlay;
+- (void)adlibManagedVideoAdDidImpress;
 - (_Bool)shouldTestVisibilityAtPoint:(struct CGPoint)arg1;
 - (void)resumeBannerMedia;
 - (void)pauseBannerMedia;

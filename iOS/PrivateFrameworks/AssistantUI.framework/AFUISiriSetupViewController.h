@@ -6,12 +6,10 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <AssistantUI/SBUIPluginViewControllerInterface-Protocol.h>
+@class UIStatusBar, UIView, _UIBackdropView;
+@protocol AFUISiriSetupViewControllerDelegate;
 
-@class NSString, UIStatusBar, UIView, _UIBackdropView;
-@protocol AFUISiriSetupViewControllerDelegate, SBUIPluginFluidDismissalState;
-
-@interface AFUISiriSetupViewController : UIViewController <SBUIPluginViewControllerInterface>
+@interface AFUISiriSetupViewController : UIViewController
 {
     UIView *_contentView;
     _UIBackdropView *_backdropView;
@@ -19,10 +17,12 @@
     _Bool _visible;
     _Bool _lastTimeShown;
     id <AFUISiriSetupViewControllerDelegate> _delegate;
+    UIView *_siriSetupView;
     UIStatusBar *_statusBar;
 }
 
 @property(retain, nonatomic, getter=_statusBar, setter=_setStatusBar:) UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
+@property(retain, nonatomic) UIView *siriSetupView; // @synthesize siriSetupView=_siriSetupView;
 @property(nonatomic) _Bool lastTimeShown; // @synthesize lastTimeShown=_lastTimeShown;
 @property(nonatomic, getter=isVisible) _Bool visible; // @synthesize visible=_visible;
 @property(nonatomic) __weak id <AFUISiriSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -33,26 +33,16 @@
 - (struct CGRect)_statusBarFrame;
 - (void)_removeStatusBar;
 - (void)_addStatusBar;
-- (void)animateDisappearanceFromContext:(id)arg1;
-- (void)animateAppearanceFromContext:(id)arg1;
 - (void)_laterTapped:(id)arg1;
 - (void)_continueTapped:(id)arg1;
 - (id)dimBackdropSettings;
-- (void)_setBackdropVisible:(_Bool)arg1;
+- (void)setBackdropVisible:(_Bool)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(retain, nonatomic) id <SBUIPluginFluidDismissalState> fluidDismissalState;
-@property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) _Bool shouldTurnOnScreenOnAppearance;
-@property(readonly) Class superclass;
 
 @end
 

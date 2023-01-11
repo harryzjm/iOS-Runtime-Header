@@ -6,6 +6,7 @@
 
 @class NSDictionary, NSError, NSURL, SCNNode, SCNRenderer, SCNScene;
 
+__attribute__((visibility("hidden")))
 @interface _SCNExportOperation
 {
     void *_userInfo;

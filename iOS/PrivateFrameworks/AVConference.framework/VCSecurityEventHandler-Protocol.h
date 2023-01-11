@@ -9,6 +9,7 @@
 @class NSDictionary;
 
 @protocol VCSecurityEventHandler <NSObject>
-- (void)handleEncryptionInfoChange:(NSDictionary *)arg1;
+- (void)resetDecryptionTimeout;
+- (_Bool)handleEncryptionInfoChange:(NSDictionary *)arg1;
 @end
 

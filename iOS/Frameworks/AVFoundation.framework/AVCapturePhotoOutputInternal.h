@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVCapturePhotoSettings, AVWeakReference, NSArray, NSMutableArray, NSString;
 @protocol OS_dispatch_group, OS_dispatch_queue;
@@ -24,6 +24,7 @@
     _Bool dualCameraDualPhotoDeliveryEnabled;
     NSArray *supportedHDRModes;
     NSArray *supportedFlashModes;
+    _Bool autoRedEyeReductionSupported;
     _Bool highResolutionCaptureEnabled;
     unsigned long long maxBracketedCapturePhotoCount;
     _Bool lensStabilizationDuringBracketedCaptureSupported;
@@ -37,9 +38,12 @@
     _Bool livePhotoCaptureSuspended;
     _Bool depthDataDeliverySupported;
     _Bool depthDataDeliveryEnabled;
+    _Bool portraitEffectsMatteDeliverySupported;
+    _Bool portraitEffectsMatteDeliveryEnabled;
     _Bool filterRenderingEnabled;
     _Bool imageOptimizationForOfflineVideoStabilizationSupported;
     _Bool optimizesImagesForOfflineVideoStabilization;
+    CDStruct_79c71658 optimizedImageDimensionsForOfflineStabilization;
     _Bool livePhotoMovieProcessingSuspended;
     NSObject<OS_dispatch_queue> *sceneDetectionObserversDispatchQueue;
     int flashSceneObserverCount;

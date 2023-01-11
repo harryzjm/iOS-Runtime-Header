@@ -14,14 +14,6 @@
 
 @interface _CPResultEngagementFeedback : PBCodable <_CPProcessableFeedback, _CPResultEngagementFeedback, NSSecureCoding>
 {
-    struct {
-        unsigned int timestamp:1;
-        unsigned int actionEngaged:1;
-        unsigned int triggerEvent:1;
-        unsigned int destination:1;
-        unsigned int actionTarget:1;
-        unsigned int matchesUnengagedSuggestion:1;
-    } _has;
     _Bool _actionEngaged;
     _Bool _matchesUnengagedSuggestion;
     int _triggerEvent;
@@ -49,14 +41,6 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-@property(readonly, nonatomic) _Bool hasMatchesUnengagedSuggestion;
-@property(readonly, nonatomic) _Bool hasTitleText;
-@property(readonly, nonatomic) _Bool hasResult;
-@property(readonly, nonatomic) _Bool hasActionTarget;
-@property(readonly, nonatomic) _Bool hasDestination;
-@property(readonly, nonatomic) _Bool hasTriggerEvent;
-@property(readonly, nonatomic) _Bool hasActionEngaged;
-@property(readonly, nonatomic) _Bool hasTimestamp;
 - (id)init;
 - (id)initWithFacade:(id)arg1;
 @property(readonly, nonatomic) _Bool requiresQueryId;

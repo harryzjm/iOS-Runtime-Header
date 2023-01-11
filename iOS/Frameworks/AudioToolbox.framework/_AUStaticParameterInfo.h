@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AudioToolbox/NSSecureCoding-Protocol.h>
 
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int unit; // @synthesize unit=_unit;
 @property(nonatomic) float maxValue; // @synthesize maxValue=_maxValue;
 @property(nonatomic) float minValue; // @synthesize minValue=_minValue;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

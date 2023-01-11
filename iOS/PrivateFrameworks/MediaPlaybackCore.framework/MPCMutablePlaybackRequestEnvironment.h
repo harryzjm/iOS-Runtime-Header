@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPCPlaybackDelegationProperties, NSString;
+@class MPCPlaybackDelegationProperties, MPCPrivateListeningStateSource, NSString;
 
 @interface MPCMutablePlaybackRequestEnvironment
 {
@@ -12,7 +12,7 @@
 
 @property(copy, nonatomic) NSString *requestingBundleVersion; // @dynamic requestingBundleVersion;
 @property(copy, nonatomic) NSString *requestingBundleIdentifier; // @dynamic requestingBundleIdentifier;
-@property(copy, nonatomic) NSString *householdIdentifier; // @dynamic householdIdentifier;
+@property(copy, nonatomic) MPCPrivateListeningStateSource *privateListeningStateSource; // @dynamic privateListeningStateSource;
 @property(copy, nonatomic) MPCPlaybackDelegationProperties *delegationProperties; // @dynamic delegationProperties;
 @property(copy, nonatomic) NSString *clientVersion; // @dynamic clientVersion;
 @property(copy, nonatomic) NSString *clientIdentifier; // @dynamic clientIdentifier;

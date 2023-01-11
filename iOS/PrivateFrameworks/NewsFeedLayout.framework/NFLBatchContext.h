@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsFeedLayout/NSCoding-Protocol.h>
 #import <NewsFeedLayout/NSCopying-Protocol.h>
+#import <NewsFeedLayout/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface NFLBatchContext : NSObject <NSCopying, NSCoding>
+@interface NFLBatchContext : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_identifier;
     unsigned long long _batchType;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) unsigned long long batchType; // @synthesize batchType=_batchType;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;

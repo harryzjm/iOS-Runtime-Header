@@ -8,12 +8,13 @@
 #import <iWorkImport/TSWPLayoutParent-Protocol.h>
 #import <iWorkImport/TSWPStyleProvider-Protocol.h>
 
-@class NSString, TSWPLayout, TSWPPadding;
+@class NSMutableArray, NSString, TSWPLayout, TSWPPadding;
 
 __attribute__((visibility("hidden")))
 @interface KNNoteLayout <TSWPStyleProvider, TSWPLayoutParent, TSWPColumnMetrics>
 {
     TSWPPadding *_padding;
+    NSMutableArray *_invertedParagraphsStyles;
     TSWPLayout *_containedLayout;
     struct CGSize _sizeOfScrollViewEnclosingCanvas;
 }
@@ -54,7 +55,6 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)capturedInfoPositionForAttachment;
 - (void)updateChildrenFromInfo;
 - (void)createContainedLayoutForEditing;
-- (double)p_enclosingScrollViewScrollerWidthForLayoutController:(id)arg1;
 - (void)invalidateSize;
 - (void)replaceChild:(id)arg1 with:(id)arg2;
 - (void)insertChild:(id)arg1 above:(id)arg2;

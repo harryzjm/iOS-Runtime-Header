@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSCopying-Protocol.h>
 
@@ -30,6 +30,7 @@
 @property(readonly, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
 @property(readonly, nonatomic) NSDate *date; // @synthesize date=_date;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+- (void).cxx_destruct;
 - (void)enumerateHumanReadableTraceEntriesWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateRecordsWithBlock:(CDUnknownBlockType)arg1;
 - (void)logToHumanReadableTrace:(id)arg1;
@@ -43,7 +44,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithTypologyLog:(id)arg1;
 - (id)init;
-- (void)dealloc;
 
 @end
 

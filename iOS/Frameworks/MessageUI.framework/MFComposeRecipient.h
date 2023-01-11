@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <MessageUI/NSCoding-Protocol.h>
 #import <MessageUI/NSCopying-Protocol.h>
+#import <MessageUI/NSSecureCoding-Protocol.h>
 #import <MessageUI/UIItemProviderReading-Protocol.h>
 #import <MessageUI/UIItemProviderWriting-Protocol.h>
 
 @class CNAutocompleteResult, CNContact, MFComposeRecipientOriginContext, NSArray, NSString;
 
-@interface MFComposeRecipient : NSObject <UIItemProviderReading, UIItemProviderWriting, NSCopying, NSCoding>
+@interface MFComposeRecipient : NSObject <UIItemProviderReading, UIItemProviderWriting, NSCopying, NSSecureCoding>
 {
     void *_record;
     int _recordID;
@@ -41,11 +41,12 @@
 + (id)recipientWithProperty:(int)arg1 address:(id)arg2;
 + (id)recipientWithRecord:(void *)arg1 property:(int)arg2 identifier:(int)arg3;
 + (id)recipientWithRecord:(void *)arg1 recordID:(int)arg2 property:(int)arg3 identifier:(int)arg4;
++ (_Bool)supportsSecureCoding;
 + (id)composeRecipientWithAutocompleteResult:(id)arg1;
-+ (id)mf_recipientWithGALResult:(id)arg1;
 + (id)writableTypeIdentifiersForItemProvider;
 + (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
 + (id)readableTypeIdentifiersForItemProvider;
++ (id)mf_recipientWithGALResult:(id)arg1;
 @property(readonly, nonatomic) unsigned long long kind; // @synthesize kind=_kind;
 @property(retain, nonatomic) CNAutocompleteResult *autocompleteResult; // @synthesize autocompleteResult=_autocompleteResult;
 @property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;

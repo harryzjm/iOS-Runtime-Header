@@ -18,9 +18,11 @@
     NSString *_displayName;
     NSString *_issuerCountryCode;
     NSData *_manifestHash;
+    NSString *_organizationName;
     NSString *_passID;
     NSMutableArray *_paymentApplications;
     NSString *_peerPaymentAccountCurrency;
+    unsigned int _peerPaymentAccountState;
     NSString *_primaryAccountIdentifier;
     NSString *_primaryAccountNumberSuffix;
     _Bool _hasAssociatedPeerPaymentAccount;
@@ -28,6 +30,7 @@
     struct {
         unsigned int ingestedDate:1;
         unsigned int peerPaymentAccountBalance:1;
+        unsigned int peerPaymentAccountState:1;
         unsigned int hasAssociatedPeerPaymentAccount:1;
         unsigned int supportsAutomaticSelection:1;
     } _has;
@@ -35,6 +38,8 @@
 
 + (Class)associatedWebDomainsType;
 + (Class)paymentApplicationsType;
+@property(retain, nonatomic) NSString *organizationName; // @synthesize organizationName=_organizationName;
+@property(nonatomic) unsigned int peerPaymentAccountState; // @synthesize peerPaymentAccountState=_peerPaymentAccountState;
 @property(nonatomic) long long peerPaymentAccountBalance; // @synthesize peerPaymentAccountBalance=_peerPaymentAccountBalance;
 @property(retain, nonatomic) NSString *peerPaymentAccountCurrency; // @synthesize peerPaymentAccountCurrency=_peerPaymentAccountCurrency;
 @property(nonatomic) _Bool hasAssociatedPeerPaymentAccount; // @synthesize hasAssociatedPeerPaymentAccount=_hasAssociatedPeerPaymentAccount;
@@ -58,6 +63,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasOrganizationName;
+@property(nonatomic) _Bool hasPeerPaymentAccountState;
 @property(nonatomic) _Bool hasPeerPaymentAccountBalance;
 @property(readonly, nonatomic) _Bool hasPeerPaymentAccountCurrency;
 @property(nonatomic) _Bool hasHasAssociatedPeerPaymentAccount;

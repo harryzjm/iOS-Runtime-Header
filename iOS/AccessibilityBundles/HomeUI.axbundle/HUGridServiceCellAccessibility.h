@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
+- (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 
 @end

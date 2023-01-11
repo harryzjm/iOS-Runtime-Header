@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSDictionary, NSLocale, NSMutableArray, NSMutableDictionary, NSString, TSULocaleStructuredDictionary;
 
@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
     NSString *_scientificString;
     NSString *_decimalString;
     NSString *_decimalSeparator;
+    NSString *_plusSign;
+    NSString *_minusSign;
     NSString *_currencyDecimalSeparator;
     NSString *_groupingSeparator;
     NSString *_currencyGroupingSeparator;
@@ -38,6 +40,8 @@ __attribute__((visibility("hidden")))
     NSDictionary *_additionalCurrencyCodeFormatters;
 }
 
++ (id)formatterForLocale:(id)arg1;
++ (struct __CFNumberFormatter *)createHarmonizedCFNumberFormatterWithLocale:(id)arg1 style:(long long)arg2;
 + (id)userVisibleCurrencyCodes;
 + (unsigned long long)groupingSizeForLocale:(id)arg1;
 + (id)percentSymbolForLocale:(id)arg1;
@@ -63,9 +67,9 @@ __attribute__((visibility("hidden")))
 + (int)positionOfCurrencySymbolInNumberFormatSubpattern:(id)arg1;
 + (int)positionOfSymbol:(id)arg1 inNumberFormatSubpattern:(id)arg2;
 + (id)stringBySubstitutingCharactersCFNumberFormatterDoesntUnderstand:(id)arg1;
++ (void)unlock;
++ (void)lock;
 + (void)initialize;
-+ (id)formatterForLocale:(id)arg1;
-+ (struct __CFNumberFormatter *)createHarmonizedCFNumberFormatterWithLocale:(id)arg1 style:(long long)arg2;
 - (void).cxx_destruct;
 - (id)p_scientificFormatters;
 - (id)p_percentageFormatters;
@@ -77,6 +81,8 @@ __attribute__((visibility("hidden")))
 - (id)currencyGroupingSeparator;
 - (id)currencyDecimalSeparator;
 - (id)groupingSeparator;
+@property(readonly, nonatomic) NSString *plusSign;
+@property(readonly, nonatomic) NSString *minusSign;
 - (id)decimalSeparator;
 - (id)defaultFormatStringForValueType:(int)arg1;
 - (id)defaultFormatStringForValueType:(int)arg1 negativeStyle:(int)arg2;

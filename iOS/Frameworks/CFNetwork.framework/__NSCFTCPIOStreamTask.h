@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CFNetworkTimer, NSData, NSError, NSMutableArray, __NSCFURLLocalStreamTaskWorkRead, __NSCFURLLocalStreamTaskWorkWrite;
+@class CFNetworkTimer, NSData, NSMutableArray, __NSCFURLLocalStreamTaskWorkRead, __NSCFURLLocalStreamTaskWorkWrite;
 
 __attribute__((visibility("hidden")))
 @interface __NSCFTCPIOStreamTask
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     shared_ptr_54ecd472 _ios;
     unsigned char _captureStreamsUponCompletion;
     unsigned char _secure;
-    NSError *_cancelError;
     NSData *__initialDataPayload;
     struct shared_ptr<HTTPProtocol> _httpProtocol;
     NSMutableArray *_pendingWork;
@@ -51,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)_onqueue_cleanUpConnectionEstablishmentState;
 - (void)_onqueue_tlsDisabled;
 - (void)_onqueue_tlsCompletion;
+- (_Bool)_onqueue_isSecure;
 - (void)_onqueue_setTCPIOConnection:(shared_ptr_f0c1381f)arg1;
 - (void)_onqueue_postConnectConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_onqueue_dealWithSessionClientCertAuth:(long long)arg1 credential:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -94,6 +94,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithTask:(id)arg1 Connection:(shared_ptr_f0c1381f)arg2 disavow:(CDUnknownBlockType)arg3;
 - (id)initWithHost:(id)arg1 port:(long long)arg2 session:(id)arg3 disavow:(CDUnknownBlockType)arg4;
+- (_Bool)isKindOfClass:(Class)arg1;
 
 @end
 

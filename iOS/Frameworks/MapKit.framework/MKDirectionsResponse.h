@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOComposedRoute, GEODirectionsResponse, GEORouteSet, MKMapItem, NSArray, NSString, NSURL;
 
@@ -30,7 +30,7 @@
 @property(readonly, retain, nonatomic) NSString *_incidentDescription;
 - (id)_route;
 @property(readonly, nonatomic) double _typicalTrafficRatio;
-- (id)_completeRoutesFromRouteSet;
+- (void)_completeRoutesFromRouteSet;
 - (id)_initWithGEORouteResponse:(id)arg1 routeRequest:(id)arg2 request:(id)arg3 origin:(id)arg4 destination:(id)arg5;
 
 @end

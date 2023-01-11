@@ -18,6 +18,7 @@
     _Bool _isValid;
 }
 
++ (id)uiApplicationForContext:(unsigned int)arg1;
 + (id)uiApplicationAtCoordinate:(struct CGPoint)arg1;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1 startWithElement:(id)arg2;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1;
@@ -25,7 +26,7 @@
 + (id)uiElementWithAXElement:(struct __AXUIElement *)arg1 cache:(id)arg2;
 + (id)uiElementWithAXElement:(struct __AXUIElement *)arg1;
 + (void)initialize;
-+ (void)applyElementAttributeCacheScheme:(int)arg1;
++ (void)applyElementAttributeCacheScheme:(unsigned long long)arg1;
 + (id)uiSystemWideApplication;
 + (struct __AXUIElement *)systemWideAXUIElement;
 - (void).cxx_destruct;
@@ -52,8 +53,9 @@
 - (void)setAXAttribute:(long long)arg1 withLong:(long long)arg2;
 - (void)setAXAttribute:(long long)arg1 withString:(id)arg2;
 - (void)setAXAttribute:(long long)arg1 withBOOL:(_Bool)arg2;
-- (id)_elementsWithParameter:(long long)arg1 andCount:(unsigned long long)arg2;
+- (id)_elementsWithParameter:(long long)arg1 count:(unsigned long long)arg2 prefetchAttributes:(_Bool)arg3;
 - (id)previousElementsWithCount:(unsigned long long)arg1;
+- (id)nextElementsIncludingPrefetchedAttributesWithCount:(unsigned long long)arg1;
 - (id)nextElementsWithCount:(unsigned long long)arg1;
 - (id)uiElementsWithAttribute:(long long)arg1;
 - (id)uiElementsWithAttribute:(long long)arg1 parameter:(void *)arg2 fetchAttributes:(_Bool)arg3;

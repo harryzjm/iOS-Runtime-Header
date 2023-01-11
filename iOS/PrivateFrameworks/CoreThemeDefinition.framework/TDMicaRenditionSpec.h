@@ -20,6 +20,7 @@
 - (id)debugDescription;
 
 // Remaining properties
+@property(nonatomic) _Bool isTintable; // @dynamic isTintable;
 @property(copy, nonatomic) NSString *layerPath; // @dynamic layerPath;
 
 @end

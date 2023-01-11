@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MapKit/NSCopying-Protocol.h>
 
@@ -24,6 +24,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithGEOMapItemIdentifier:(id)arg1;
 - (id)initWithMUID:(unsigned long long)arg1 resultProviderID:(int)arg2 coordinate:(struct CLLocationCoordinate2D)arg3;
+- (id)initWithMUID:(unsigned long long)arg1 coordinate:(struct CLLocationCoordinate2D)arg2;
 - (id)initWithMUID:(unsigned long long)arg1;
 - (id)init;
 

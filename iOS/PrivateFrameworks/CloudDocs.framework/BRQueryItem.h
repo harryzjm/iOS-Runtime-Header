@@ -10,7 +10,7 @@
 #import <CloudDocs/NSFileProviderItem_Private-Protocol.h>
 #import <CloudDocs/NSSecureCoding-Protocol.h>
 
-@class BRFileObjectID, NSData, NSDate, NSDictionary, NSError, NSMutableDictionary, NSNumber, NSPersonNameComponents, NSString, NSURL;
+@class BRFileObjectID, NSArray, NSData, NSDate, NSDictionary, NSError, NSMutableDictionary, NSNumber, NSPersonNameComponents, NSString, NSURL;
 
 @interface BRQueryItem : NSObject <NSFileProviderItem_Private, NSSecureCoding, NSCopying>
 {
@@ -48,6 +48,7 @@
             unsigned int isBRAlias:1;
             unsigned int isTrashed:1;
             unsigned int itemMode:3;
+            unsigned int fromReadOnlyDB:1;
             unsigned char BRQueryItemKind;
             unsigned char kind;
         } ;
@@ -174,8 +175,11 @@
 @property(readonly, getter=fp_isUbiquitous) _Bool fp_ubiquitous;
 @property(readonly, nonatomic) NSNumber *isDownloadRequested;
 @property(readonly, nonatomic) _Bool isTrashed;
+@property(readonly, nonatomic) NSString *preformattedMostRecentEditorName;
+@property(readonly, nonatomic) NSString *preformattedOwnerName;
 @property(readonly, copy) NSString *providerIdentifier;
 @property(readonly) Class superclass;
+@property(readonly, copy) NSArray *tags;
 
 @end
 

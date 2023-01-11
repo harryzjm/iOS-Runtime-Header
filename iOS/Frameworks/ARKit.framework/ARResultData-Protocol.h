@@ -6,7 +6,7 @@
 
 #import <ARKit/ARData-Protocol.h>
 
-@class ARLightEstimate, ARPointCloud, NSArray, NSMutableArray;
+@class ARLightEstimate, ARPointCloud, ARWorldTrackingState, NSArray, NSMutableArray;
 
 @protocol ARResultData <ARData>
 
@@ -14,8 +14,10 @@
 - (NSArray *)anchorsForCameraWithTransform:(CDStruct_14d5dc5e)arg1 referenceOriginTransform:(CDStruct_14d5dc5e)arg2 existingAnchors:(NSArray *)arg3 anchorsToRemove:(NSMutableArray *)arg4;
 - (ARPointCloud *)featurePoints;
 - (ARLightEstimate *)lightEstimate;
-- (CDStruct_14d5dc5e)worldOriginTransform;
-- (CDStruct_fdd7a678)trackingState;
+- (unsigned long long)worldAlignmentModifiers;
+- (CDStruct_14d5dc5e)worldAlignmentTransform;
+- (ARWorldTrackingState *)worldTrackingState;
 - (CDStruct_14d5dc5e)cameraTransform;
+- (double)timestamp;
 @end
 

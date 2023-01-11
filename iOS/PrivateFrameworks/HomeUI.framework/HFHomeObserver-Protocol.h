@@ -4,30 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeUI/HMHomeDelegate-Protocol.h>
+#import <HomeUI/HMHomeDelegatePrivate-Protocol.h>
 
-@class CLLocation, HMActionSet, HMHome, HMResidentDevice, HMRoom, HMServiceGroup, HMUser, NSArray, NSSet, NSString;
+@class HMHome, HMRoom, NSSet;
 
-@protocol HFHomeObserver <HMHomeDelegate>
+@protocol HFHomeObserver <HMHomeDelegatePrivate>
 
 @optional
-- (void)home:(HMHome *)arg1 didUpdateMediaPassword:(NSString *)arg2;
-- (void)home:(HMHome *)arg1 didUpdateMediaPeerToPeerEnabled:(_Bool)arg2;
-- (void)home:(HMHome *)arg1 didUpdateMinimumMediaUserPrivilege:(long long)arg2;
-- (void)home:(HMHome *)arg1 didUpdateAutomaticSoftwareUpdateEnabled:(_Bool)arg2;
-- (void)home:(HMHome *)arg1 didRemoveResidentDevice:(HMResidentDevice *)arg2;
-- (void)home:(HMHome *)arg1 didAddResidentDevice:(HMResidentDevice *)arg2;
-- (void)home:(HMHome *)arg1 didUpdateAccessControlForUser:(HMUser *)arg2;
-- (void)home:(HMHome *)arg1 didUpdateAccesoryInvitationsForUser:(HMUser *)arg2;
-- (void)home:(HMHome *)arg1 didUpdateStateForOutgoingInvitations:(NSArray *)arg2;
-- (void)home:(HMHome *)arg1 didUpdateApplicationDataForServiceGroup:(HMServiceGroup *)arg2;
-- (void)home:(HMHome *)arg1 didUpdateApplicationDataForActionSet:(HMActionSet *)arg2;
-- (void)home:(HMHome *)arg1 didUpdateApplicationDataForRoom:(HMRoom *)arg2;
-- (void)homeDidUpdateApplicationData:(HMHome *)arg1;
-- (void)home:(HMHome *)arg1 didUpdateLocation:(CLLocation *)arg2;
 - (void)home:(HMHome *)arg1 remoteAccessStateDidChange:(unsigned long long)arg2;
 - (void)home:(HMHome *)arg1 didUpdateWallpaperForRoom:(HMRoom *)arg2;
 - (void)homeDidUpdateWallpaper:(HMHome *)arg1;
+- (void)home:(HMHome *)arg1 didSelectRoom:(HMRoom *)arg2;
 - (void)home:(HMHome *)arg1 didExecuteActionSets:(NSSet *)arg2 failedActionSets:(NSSet *)arg3;
 - (void)home:(HMHome *)arg1 didWriteValuesForCharacteristics:(NSSet *)arg2 failedCharacteristics:(NSSet *)arg3;
 - (void)home:(HMHome *)arg1 didReadValuesForCharacteristics:(NSSet *)arg2 failedCharacteristics:(NSSet *)arg3;

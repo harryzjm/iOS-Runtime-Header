@@ -43,7 +43,6 @@
 - (_Bool)isLocationServicesEnabled;
 - (void)dealloc;
 - (void)_shutdown;
-- (void)shutdown;
 - (void)_setup;
 - (void)setup;
 - (id)initWithMetricManager:(id)arg1 platform:(id)arg2 userSessionMonitor:(id)arg3;

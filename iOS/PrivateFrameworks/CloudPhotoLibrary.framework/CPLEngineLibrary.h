@@ -7,14 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
+#import <CloudPhotoLibrary/CPLStatusDelegate-Protocol.h>
 
 @class CPLConfiguration, CPLEngineFeedbackManager, CPLEngineScheduler, CPLEngineStore, CPLEngineSyncManager, CPLEngineSystemMonitor, CPLEngineTransport, CPLPlatformObject, CPLStatus, NSArray, NSDate, NSError, NSHashTable, NSString, NSURL;
 @protocol CPLEngineLibraryOwner, OS_dispatch_queue;
 
-@interface CPLEngineLibrary : NSObject <CPLAbstractObject>
+@interface CPLEngineLibrary : NSObject <CPLStatusDelegate, CPLAbstractObject>
 {
     NSArray *_components;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_closingQueue;
     NSHashTable *_attachedObjects;
     NSError *_openingError;
     CPLStatus *_status;
@@ -24,10 +26,12 @@
     unsigned long long _totalAssetCount;
     _Bool _libraryIsCorrupted;
     CPLPlatformObject *_platformObject;
+    NSString *_currentClosingComponentName;
     NSURL *_clientLibraryBaseURL;
     NSURL *_cloudLibraryStateStorageURL;
     NSURL *_cloudLibraryResourceStorageURL;
     NSString *_libraryIdentifier;
+    unsigned long long _libraryOptions;
     id <CPLEngineLibraryOwner> _owner;
     CPLEngineStore *_store;
     CPLEngineScheduler *_scheduler;
@@ -48,6 +52,7 @@
 @property(readonly, nonatomic) CPLEngineScheduler *scheduler; // @synthesize scheduler=_scheduler;
 @property(readonly, nonatomic) CPLEngineStore *store; // @synthesize store=_store;
 @property(nonatomic) __weak id <CPLEngineLibraryOwner> owner; // @synthesize owner=_owner;
+@property(readonly, nonatomic) unsigned long long libraryOptions; // @synthesize libraryOptions=_libraryOptions;
 @property(readonly, copy, nonatomic) NSString *libraryIdentifier; // @synthesize libraryIdentifier=_libraryIdentifier;
 @property(readonly, copy, nonatomic) NSURL *cloudLibraryResourceStorageURL; // @synthesize cloudLibraryResourceStorageURL=_cloudLibraryResourceStorageURL;
 @property(readonly, copy, nonatomic) NSURL *cloudLibraryStateStorageURL; // @synthesize cloudLibraryStateStorageURL=_cloudLibraryStateStorageURL;
@@ -78,6 +83,7 @@
 - (unsigned long long)totalAssetCountOnServer;
 - (void)updateAssetCountsFromServer:(id)arg1;
 - (void)_updateTotalAssetCountWithAssetCounts:(id)arg1;
+- (void)updateDisabledFeatures:(id)arg1;
 - (void)setConnectedToNetwork:(_Bool)arg1;
 - (void)setHasCellularBudget:(_Bool)arg1 hasBatteryBudget:(_Bool)arg2 isBudgetValid:(_Bool)arg3;
 @property(nonatomic) _Bool iCloudLibraryClientVersionTooOld;
@@ -85,9 +91,12 @@
 @property(nonatomic) _Bool isExceedingQuota;
 @property(nonatomic) _Bool hasChangesToProcess;
 - (void)reportUnsuccessfulSync;
+@property(readonly, nonatomic) NSDate *initialSyncDate;
 - (void)updateInitialSyncDate:(id)arg1;
 - (void)updateLastSuccessfullSyncDate:(id)arg1;
 - (void)closeAndDeactivate:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(readonly) NSString *currentClosingComponentName; // @synthesize currentClosingComponentName=_currentClosingComponentName;
+- (void)_setCurrentClosingComponentName:(id)arg1;
 - (void)_closeNextComponent:(id)arg1 deactivate:(_Bool)arg2 lastError:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_openNextComponent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -96,7 +105,8 @@
 - (void)reportQuarantineCountIfNecessary;
 - (void)_reportQuarantineCountIfNecessaryWithLastReportDate:(id)arg1;
 - (void)reportLibraryCorrupted;
-- (id)initWithClientLibraryBaseURL:(id)arg1 cloudLibraryStateStorageURL:(id)arg2 cloudLibraryResourceStorageURL:(id)arg3 libraryIdentifier:(id)arg4;
+- (void)statusDidChange:(id)arg1;
+- (id)initWithClientLibraryBaseURL:(id)arg1 cloudLibraryStateStorageURL:(id)arg2 cloudLibraryResourceStorageURL:(id)arg3 libraryIdentifier:(id)arg4 options:(unsigned long long)arg5;
 - (void)getStatusArrayForComponents:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_fillStatusArray:(id)arg1 forComponents:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getStatusForComponents:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

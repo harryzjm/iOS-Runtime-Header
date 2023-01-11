@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <StoreBookkeeper/NSCoding-Protocol.h>
+#import <StoreBookkeeper/NSSecureCoding-Protocol.h>
 
 @class NSData, NSDictionary;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface SBKStoreClampsController : NSObject <NSCoding>
+@interface SBKStoreClampsController : NSObject <NSSecureCoding>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSDictionary *_transactionClamps;
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     NSData *_pendingUserDefaultArchivedData;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)sharedClampsController;
 @property(retain) NSData *pendingUserDefaultArchivedData; // @synthesize pendingUserDefaultArchivedData=_pendingUserDefaultArchivedData;
 @property double nextUserCancelBackOffInterval; // @synthesize nextUserCancelBackOffInterval=_nextUserCancelBackOffInterval;

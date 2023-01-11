@@ -4,22 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSKeyedUnarchiverDelegate-Protocol.h>
 
-@class NSData, NSDictionary, NSOperationQueue, NSString, NSURL;
+@class NSData, NSDictionary, NSString, NSURL;
 
 @interface SCNSceneSource : NSObject <NSKeyedUnarchiverDelegate>
 {
     struct __C3DSceneSource *_sceneSource;
     struct __C3DScene *_lastLoadedScene;
     NSDictionary *_lastOptions;
-    NSOperationQueue *_downloadingQueue;
     _Bool _sceneLoaded;
     NSDictionary *_sceneSourceOptions;
 }
 
++ (void)patchColorSecureDecodingIfNeeded;
 + (id)sceneFileTypes;
 + (id)sceneTypes;
 + (id)sceneSourceWithData:(id)arg1 options:(id)arg2;
@@ -38,6 +38,7 @@
 - (_Bool)_appendToEntries:(id)arg1 entriesWithType:(unsigned long long)arg2 passingTest:(CDUnknownBlockType)arg3 entryObjectConstructor:(CDUnknownBlockType)arg4;
 - (id)identifiersOfEntriesWithClass:(Class)arg1;
 - (id)entryWithIdentifier:(id)arg1 withClass:(Class)arg2;
+- (id)c3dDataRepresentation;
 - (struct __C3DLibrary *)library;
 - (struct __C3DSceneSource *)sceneSourceRef;
 - (id)propertyForKey:(id)arg1;

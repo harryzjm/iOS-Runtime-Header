@@ -28,7 +28,6 @@
 - (void)logMoments;
 @property(readonly, retain, nonatomic) PLPhotoLibrary *photoLibrary;
 - (void)dealloc;
-- (id)init;
 - (id)initWithPhotoLibrary:(id)arg1;
 
 @end

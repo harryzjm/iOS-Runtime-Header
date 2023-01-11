@@ -6,14 +6,20 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOMapItemIdentifier, GEOSearchCategory, NSArray, NSData, NSString;
+@class GEODirectionIntent, GEOMapItemIdentifier, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, NSArray, NSData, NSString;
 @protocol GEOMapItem;
 
 @protocol GEOCompletionItem <NSObject>
+@property(readonly, nonatomic) float disambiguationRadiusMeters;
+@property(readonly, nonatomic) _Bool hasDisambiguationRadiusMeters;
+@property(readonly, nonatomic) int placeType;
 @property(readonly, nonatomic) GEOMapItemIdentifier *identifier;
 @property(readonly, nonatomic) long long type;
 @property(readonly, nonatomic) NSData *metadata;
 @property(readonly, nonatomic) NSData *entryMetadata;
+@property(readonly, nonatomic) GEORetainedSearchMetadata *retainedSearchMetadata;
+@property(readonly, nonatomic) GEODirectionIntent *directionIntent;
+@property(readonly, nonatomic) GEOResolvedItem *clientResolved;
 @property(readonly, nonatomic) GEOSearchCategory *searchCategory;
 @property(readonly, nonatomic) id <GEOMapItem> geoMapItem;
 @property(readonly, nonatomic) NSArray *displayLines;

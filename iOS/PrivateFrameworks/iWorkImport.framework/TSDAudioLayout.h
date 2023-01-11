@@ -4,18 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class TSDMovieInfo;
+
 __attribute__((visibility("hidden")))
 @interface TSDAudioLayout
 {
 }
 
-- (id)movieInfo;
++ (struct CGSize)scaledAudioSize;
+@property(readonly, nonatomic) TSDMovieInfo *movieInfo;
+- (struct CGRect)frameForCulling;
 - (int)wrapType;
 - (_Bool)canFlip;
 - (_Bool)allowsConnections;
 - (struct CGRect)alignmentFrame;
 - (struct CGRect)computeAlignmentFrameInRoot:(_Bool)arg1;
 - (_Bool)shouldDisplayGuides;
+- (id)visibleGeometries;
 - (id)layoutGeometryFromInfo;
 - (_Bool)canAspectRatioLockBeChangedByUser;
 - (_Bool)resizeMayChangeAspectRatio;

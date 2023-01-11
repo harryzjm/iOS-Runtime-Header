@@ -5,7 +5,7 @@
 //
 
 #import <NewsCore/FCAppActivityObserving-Protocol.h>
-#import <NewsCore/FCAppConfigurationObserving-Protocol.h>
+#import <NewsCore/FCCoreConfigurationObserving-Protocol.h>
 #import <NewsCore/FCDerivedPersonalizationData-Protocol.h>
 #import <NewsCore/FCOperationThrottlerDelegate-Protocol.h>
 #import <NewsCore/FCUserInfoObserving-Protocol.h>
@@ -13,7 +13,7 @@
 @class CKRecord, FCPersonalizationTreatment, FCUserInfo, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol FCOperationThrottler, OS_dispatch_queue;
 
-@interface FCPersonalizationData <FCOperationThrottlerDelegate, FCAppConfigurationObserving, FCUserInfoObserving, FCAppActivityObserving, FCDerivedPersonalizationData>
+@interface FCPersonalizationData <FCOperationThrottlerDelegate, FCCoreConfigurationObserving, FCUserInfoObserving, FCAppActivityObserving, FCDerivedPersonalizationData>
 {
     _Bool _attemptingUpload;
     NSMutableDictionary *_aggregates;
@@ -26,6 +26,7 @@
     FCUserInfo *_userInfo;
 }
 
++ (void)configureKeyValueStoreForJSONHandling:(id)arg1;
 + (id)localStoreMigrator;
 + (id)desiredKeys;
 + (id)commandsToMergeLocalDataToCloud:(id)arg1;
@@ -51,12 +52,12 @@
 - (void).cxx_destruct;
 - (void)operationThrottler:(id)arg1 performAsyncOperationWithCompletion:(CDUnknownBlockType)arg2;
 - (void)userInfoDidChangeFeldsparID:(id)arg1 fromCloud:(_Bool)arg2;
-- (void)appConfigurationDidChange:(id)arg1;
+- (void)configurationManager:(id)arg1 configurationDidChange:(id)arg2;
 - (id)aggregateForFeatureKey:(id)arg1;
 - (void)enumerateAggregatesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)aggregatesForFeatureKeys:(id)arg1;
 - (void)activityObservingApplicationDidEnterBackground;
-- (void)_reloadTreatmentWithReliablyFetchedAppConfig:(_Bool)arg1;
+- (void)_reloadTreatmentWithReliablyFetchedCoreConfig:(_Bool)arg1 feldsparID:(id)arg2;
 - (void)_applicationDidEnterBackground;
 - (void)_closeOpenChangeGroup;
 - (void)_writeToLocalStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -77,6 +78,11 @@
 - (void)addObserver:(id)arg1;
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3 userInfo:(id)arg4;
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
+- (void)d_allResults:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)prepareAggregatesForUseWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)updateFeatures:(id)arg1 withAction:(unsigned long long)arg2 displayRank:(long long)arg3 groupRank:(long long)arg4 individually:(_Bool)arg5 configurableValues:(id)arg6 featuresUpdatedBlock:(CDUnknownBlockType)arg7;
+- (id)aggregatesForFeatures:(id)arg1;
+- (id)baselineAggregateWithConfigurableValues:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

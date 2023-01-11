@@ -4,16 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IKViewElement;
+#import <VideoSubscriberAccountUI/IKAppKeyboardDelegate-Protocol.h>
+
+@class IKTextFieldElement, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VSITMLCredentialEntryField
+@interface VSITMLCredentialEntryField <IKAppKeyboardDelegate>
 {
-    IKViewElement *_associatedViewElement;
+    IKTextFieldElement *_associatedTextFieldElement;
 }
 
-@property(retain, nonatomic) IKViewElement *associatedViewElement; // @synthesize associatedViewElement=_associatedViewElement;
+@property(retain, nonatomic) IKTextFieldElement *associatedTextFieldElement; // @synthesize associatedTextFieldElement=_associatedTextFieldElement;
 - (void).cxx_destruct;
+- (void)textDidChangeForKeyboard:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

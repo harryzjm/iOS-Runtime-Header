@@ -6,13 +6,13 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDAppleMediaAccessory, HMDRemoteLoginHandler, HMFMessageDispatcher, NSObject, NSString, NSUUID;
+@class HMDAppleMediaAccessory, HMDRemoteLoginHandler, HMFMessageDispatcher, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDRemoteLoginBase : HMFObject <HMFLogging, HMFMessageReceiver>
+@interface HMDRemoteLoginBase : HMFObject <HMFLogging, HMDHomeMessageReceiver>
 {
     NSUUID *_uuid;
     HMDAppleMediaAccessory *_accessory;
@@ -23,6 +23,8 @@
 }
 
 + (id)logCategory;
++ (_Bool)hasMessageReceiverChildren;
++ (_Bool)shouldAcceptMessage:(id)arg1 home:(id)arg2;
 @property(retain, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(readonly, nonatomic) NSString *logString; // @synthesize logString=_logString;
@@ -41,6 +43,7 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy) NSSet *messageReceiverChildren;
 @property(readonly) Class superclass;
 
 @end

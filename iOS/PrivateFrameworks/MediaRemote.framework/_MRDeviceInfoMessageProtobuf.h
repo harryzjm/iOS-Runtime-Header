@@ -8,7 +8,7 @@
 
 #import <MediaRemote/NSCopying-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSMutableArray, NSString;
 
 @interface _MRDeviceInfoMessageProtobuf : PBCodable <NSCopying>
 {
@@ -16,32 +16,59 @@
     NSString *_applicationBundleIdentifier;
     NSString *_applicationBundleVersion;
     NSData *_bluetoothAddress;
+    int _deviceClass;
+    NSString *_groupName;
+    NSString *_groupUID;
+    NSMutableArray *_groupedDevices;
     unsigned int _lastSupportedMessageType;
+    NSString *_localReceiverPairingIdentity;
     NSString *_localizedModelName;
+    unsigned int _logicalDeviceCount;
+    NSString *_managedConfigDeviceID;
     NSString *_name;
     unsigned int _sharedQueueVersion;
     NSString *_systemBuildVersion;
     NSString *_systemMediaApplication;
+    NSString *_tightSyncUID;
     NSString *_uniqueIdentifier;
     _Bool _allowsPairing;
     _Bool _connected;
+    _Bool _isGroupLeader;
+    _Bool _isProxyGroupPlayer;
     _Bool _supportsACL;
     _Bool _supportsExtendedMotion;
     _Bool _supportsSharedQueue;
     _Bool _supportsSystemPairing;
+    _Bool _tightlySyncedGroup;
     struct {
         unsigned int protocolVersion:1;
+        unsigned int deviceClass:1;
         unsigned int lastSupportedMessageType:1;
+        unsigned int logicalDeviceCount:1;
         unsigned int sharedQueueVersion:1;
         unsigned int allowsPairing:1;
         unsigned int connected:1;
+        unsigned int isGroupLeader:1;
+        unsigned int isProxyGroupPlayer:1;
         unsigned int supportsACL:1;
         unsigned int supportsExtendedMotion:1;
         unsigned int supportsSharedQueue:1;
         unsigned int supportsSystemPairing:1;
+        unsigned int tightlySyncedGroup:1;
     } _has;
 }
 
++ (Class)groupedDevicesType;
+@property(nonatomic) _Bool isGroupLeader; // @synthesize isGroupLeader=_isGroupLeader;
+@property(retain, nonatomic) NSMutableArray *groupedDevices; // @synthesize groupedDevices=_groupedDevices;
+@property(retain, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
+@property(retain, nonatomic) NSString *groupUID; // @synthesize groupUID=_groupUID;
+@property(retain, nonatomic) NSString *tightSyncUID; // @synthesize tightSyncUID=_tightSyncUID;
+@property(nonatomic) _Bool isProxyGroupPlayer; // @synthesize isProxyGroupPlayer=_isProxyGroupPlayer;
+@property(nonatomic) _Bool tightlySyncedGroup; // @synthesize tightlySyncedGroup=_tightlySyncedGroup;
+@property(nonatomic) unsigned int logicalDeviceCount; // @synthesize logicalDeviceCount=_logicalDeviceCount;
+@property(retain, nonatomic) NSString *managedConfigDeviceID; // @synthesize managedConfigDeviceID=_managedConfigDeviceID;
+@property(retain, nonatomic) NSString *localReceiverPairingIdentity; // @synthesize localReceiverPairingIdentity=_localReceiverPairingIdentity;
 @property(nonatomic) unsigned int sharedQueueVersion; // @synthesize sharedQueueVersion=_sharedQueueVersion;
 @property(retain, nonatomic) NSData *bluetoothAddress; // @synthesize bluetoothAddress=_bluetoothAddress;
 @property(nonatomic) _Bool supportsExtendedMotion; // @synthesize supportsExtendedMotion=_supportsExtendedMotion;
@@ -59,6 +86,7 @@
 @property(retain, nonatomic) NSString *localizedModelName; // @synthesize localizedModelName=_localizedModelName;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
 @property(retain, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -68,6 +96,23 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasIsGroupLeader;
+- (id)groupedDevicesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)groupedDevicesCount;
+- (void)addGroupedDevices:(id)arg1;
+- (void)clearGroupedDevices;
+@property(readonly, nonatomic) _Bool hasGroupName;
+@property(readonly, nonatomic) _Bool hasGroupUID;
+@property(readonly, nonatomic) _Bool hasTightSyncUID;
+@property(nonatomic) _Bool hasIsProxyGroupPlayer;
+@property(nonatomic) _Bool hasTightlySyncedGroup;
+@property(nonatomic) _Bool hasLogicalDeviceCount;
+- (int)StringAsDeviceClass:(id)arg1;
+- (id)deviceClassAsString:(int)arg1;
+@property(nonatomic) _Bool hasDeviceClass;
+@property(nonatomic) int deviceClass; // @synthesize deviceClass=_deviceClass;
+@property(readonly, nonatomic) _Bool hasManagedConfigDeviceID;
+@property(readonly, nonatomic) _Bool hasLocalReceiverPairingIdentity;
 @property(nonatomic) _Bool hasSharedQueueVersion;
 @property(readonly, nonatomic) _Bool hasBluetoothAddress;
 @property(nonatomic) _Bool hasSupportsExtendedMotion;
@@ -85,7 +130,6 @@
 @property(readonly, nonatomic) _Bool hasLocalizedModelName;
 @property(readonly, nonatomic) _Bool hasName;
 @property(readonly, nonatomic) _Bool hasUniqueIdentifier;
-- (void)dealloc;
 
 @end
 

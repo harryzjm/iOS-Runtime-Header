@@ -6,7 +6,7 @@
 
 #import <CoreSpotlight/CSXPCConnection.h>
 
-@class NSArray, NSMutableSet, NSObject, NSSet, NSString;
+@class NSArray, NSMutableSet, NSObject, NSSet;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface SpotlightReceiverConnection : CSXPCConnection
@@ -16,36 +16,43 @@
     _Atomic _Bool _disabled;
     _Bool _wantsHTML;
     _Bool _wantsText;
+    _Bool _setupStarted;
     _Bool _setupComplete;
+    _Bool _skipFileProviderItems;
     int _supportedJobs;
     _Atomic unsigned int _requestCount;
     NSSet *_bundleIDs;
     NSArray *_contentTypes;
     NSSet *_INIntentClassNames;
-    NSString *_serviceName;
     NSObject<OS_dispatch_queue> *_senderQueue;
+    double _minDate;
     NSObject<OS_dispatch_semaphore> *_setupSemaphore;
 }
 
 + (void)setup;
 @property(retain) NSObject<OS_dispatch_semaphore> *setupSemaphore; // @synthesize setupSemaphore=_setupSemaphore;
+@property(nonatomic) double minDate; // @synthesize minDate=_minDate;
+@property(nonatomic) _Bool skipFileProviderItems; // @synthesize skipFileProviderItems=_skipFileProviderItems;
 @property(nonatomic) _Bool setupComplete; // @synthesize setupComplete=_setupComplete;
+@property(nonatomic) _Bool setupStarted; // @synthesize setupStarted=_setupStarted;
 @property(nonatomic) _Bool wantsText; // @synthesize wantsText=_wantsText;
 @property(nonatomic) _Bool wantsHTML; // @synthesize wantsHTML=_wantsHTML;
 @property(readonly, nonatomic) _Atomic unsigned int requestCount; // @synthesize requestCount=_requestCount;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *senderQueue; // @synthesize senderQueue=_senderQueue;
 @property(readonly, nonatomic) int supportedJobs; // @synthesize supportedJobs=_supportedJobs;
-@property(readonly, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property(readonly, nonatomic) NSSet *INIntentClassNames; // @synthesize INIntentClassNames=_INIntentClassNames;
 @property(readonly, nonatomic) NSArray *contentTypes; // @synthesize contentTypes=_contentTypes;
 @property(readonly, nonatomic) NSSet *bundleIDs; // @synthesize bundleIDs=_bundleIDs;
 - (void).cxx_destruct;
+- (void)donateRelevantActions:(id)arg1 bundleID:(id)arg2;
 - (void)deleteAllInteractionsWithBundleID:(id)arg1 protectionClass:(id)arg2;
 - (void)deleteInteractionsWithGroupIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
 - (void)deleteInteractionsWithIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
 - (void)addInteraction:(id)arg1 intentClassName:(id)arg2 bundleID:(id)arg3 protectionClass:(id)arg4;
 - (void)deleteFromBundle:(id)arg1;
 - (void)deleteFromBundle:(id)arg1 sinceDate:(id)arg2;
+- (void)deleteUserActivitiesWithPersistentIdentifiers:(id)arg1 bundleID:(id)arg2;
+- (void)deleteAllUserActivities:(id)arg1;
 - (void)addUserActions:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
 - (void)purgeFromBundle:(id)arg1 identifiers:(id)arg2;
 - (void)deleteFromBundle:(id)arg1 domainIdentifiers:(id)arg2;
@@ -57,6 +64,7 @@
 - (void)receiverRequestStart;
 @property(readonly, nonatomic) _Bool unresponsive;
 - (_Bool)canRun;
+- (_Bool)disabled;
 - (void)enableReceiver;
 - (void)disableReceiver;
 - (_Bool)_wantsContentType:(id)arg1;

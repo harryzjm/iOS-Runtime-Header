@@ -10,6 +10,7 @@
     double _nextMindfulSessionSampleTime;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(nonatomic) double nextMindfulSessionSampleTime; // @synthesize nextMindfulSessionSampleTime=_nextMindfulSessionSampleTime;
 @property(nonatomic) _Bool didGenerateMindfulnessMinute; // @synthesize didGenerateMindfulnessMinute=_didGenerateMindfulnessMinute;
 - (id)_heartRatesFromMindfulSessionSample:(id)arg1 demoPerson:(id)arg2 atTime:(double)arg3;

@@ -22,6 +22,7 @@
     CDUnknownBlockType _playingAlertCompletionHandler;
     id <TLAlertPlaybackObserver> _playbackObserver;
     AVAsset *_toneAssetForPendingPlayingAlert;
+    _Bool _hasToneAssetForPendingPlayingAlert;
     _Bool _isAudioEnvironmentSetup;
     _Bool _isAlertActivationAssertionAcquired;
     TLAlert *_alertForAudioEnvironmentSetup;
@@ -66,6 +67,7 @@
 - (void)_destroyQueuePlayer;
 - (void)_createQueuePlayerIfNecessary;
 - (void)_didReceiveAttentionPollingEventOfType:(long long)arg1;
+- (void)_resetClientPriority;
 - (void)_restoreAudioEnvironment;
 - (void)_prepareAudioEnvironment;
 - (void)_didEndPlayingAlert;

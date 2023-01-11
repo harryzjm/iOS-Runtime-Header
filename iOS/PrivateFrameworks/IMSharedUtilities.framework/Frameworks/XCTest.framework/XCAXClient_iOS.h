@@ -6,28 +6,35 @@
 
 #import <objc/NSObject.h>
 
-#import <XCTest/XCTAXClient-Protocol.h>
-#import <XCTest/XCTElementSnapshotAttributeDataSource-Protocol.h>
-#import <XCTest/XCTElementSnapshotProvider-Protocol.h>
+#import <XCTest/XCUIAccessibilityInterface-Protocol.h>
 
 @class NSMutableDictionary, NSString;
+@protocol OS_dispatch_queue, XCUIApplicationProcessTracker, XCUIRemoteAXInterface;
 
-@interface XCAXClient_iOS : NSObject <XCTAXClient, XCTElementSnapshotProvider, XCTElementSnapshotAttributeDataSource>
+@interface XCAXClient_iOS : NSObject <XCUIAccessibilityInterface>
 {
+    id <XCUIApplicationProcessTracker> _applicationProcessTracker;
+    id <XCUIRemoteAXInterface> _remoteAXInterface;
+    NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_userTestingNotificationHandlers;
-    NSMutableDictionary *_cacheAccessibilityLoadedValuesForPIDs;
-    unsigned long long _alertNotificationCounter;
+    NSMutableDictionary *_cachedAccessibilityLoadedValuesForPIDs;
 }
 
 + (id)sharedClient;
-@property unsigned long long alertNotificationCounter; // @synthesize alertNotificationCounter=_alertNotificationCounter;
-@property(retain) NSMutableDictionary *cacheAccessibilityLoadedValuesForPIDs; // @synthesize cacheAccessibilityLoadedValuesForPIDs=_cacheAccessibilityLoadedValuesForPIDs;
+@property(retain) NSMutableDictionary *cachedAccessibilityLoadedValuesForPIDs; // @synthesize cachedAccessibilityLoadedValuesForPIDs=_cachedAccessibilityLoadedValuesForPIDs;
 @property(retain) NSMutableDictionary *userTestingNotificationHandlers; // @synthesize userTestingNotificationHandlers=_userTestingNotificationHandlers;
+@property(retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+- (void).cxx_destruct;
+- (void)removeObserver:(id)arg1 forAXNotification:(id)arg2;
+- (id)addObserverForAXNotification:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)registerForAXNotificationsForApplicationWithPID:(int)arg1 completion:(CDUnknownBlockType)arg2;
 @property double AXTimeout;
 - (_Bool)_setAXTimeout:(double)arg1 error:(id *)arg2;
+- (id)localizableStringsDataForActiveApplications;
 - (_Bool)performAction:(int)arg1 onElement:(id)arg2 value:(id)arg3 error:(id *)arg4;
-- (id)parameterizedAttributeForElement:(id)arg1 attribute:(id)arg2 parameter:(id)arg3;
+- (id)parameterizedAttribute:(id)arg1 forElement:(id)arg2 parameter:(id)arg3 error:(id *)arg4;
 - (_Bool)setAttribute:(id)arg1 value:(id)arg2 element:(id)arg3 outError:(id *)arg4;
+@property(readonly) _Bool allowsRemoteAccess;
 - (id)attributesForElement:(id)arg1 attributes:(id)arg2 error:(id *)arg3;
 - (id)attributesForElement:(id)arg1 attributes:(id)arg2;
 - (id)attributesForElementSnapshot:(id)arg1 attributeList:(id)arg2;
@@ -36,21 +43,26 @@
 - (void)notifyWhenViewControllerViewDidDisappearReply:(CDUnknownBlockType)arg1;
 - (void)notifyWhenViewControllerViewDidAppearReply:(CDUnknownBlockType)arg1;
 - (void)notifyWhenNoAnimationsAreActiveForApplication:(id)arg1 reply:(CDUnknownBlockType)arg2;
+@property(readonly) _Bool supportsAnimationsInactiveNotifications;
 - (void)notifyWhenEventLoopIsIdleForApplication:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (id)interruptingUIElementAffectingSnapshot:(id)arg1;
-- (void)handleAccessibilityNotification:(int)arg1 withPayload:(id)arg2;
+- (id)interruptingUIElementsAffectingSnapshot:(id)arg1;
+@property(readonly) _Bool usePointTransformationsForFrameConversions;
+@property(readonly) _Bool supportsHostedViewCoordinateTransformations;
+@property(readonly) _Bool axNotificationsIncludeElement;
+- (void)handleAccessibilityNotification:(long long)arg1 fromElement:(id)arg2 payload:(id)arg3;
 - (void)notifyOnNextOccurrenceOfUserTestingEvent:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)handleUserTestingNotification:(id)arg1;
-- (id)elementAtPoint:(struct CGPoint)arg1 error:(id *)arg2;
+- (id)hitTestElement:(id)arg1 withPoint:(struct CGPoint)arg2 error:(id *)arg3;
 - (_Bool)cachedAccessibilityLoadedValueForPID:(int)arg1;
 - (id)activeApplications;
 - (id)systemApplication;
 - (_Bool)enableFauxCollectionViewCells:(id *)arg1;
 - (_Bool)loadAccessibility:(id *)arg1;
-- (_Bool)_registerForAXNotification:(int)arg1 error:(id *)arg2;
+- (_Bool)_registerForAXNotification:(long long)arg1 error:(id *)arg2;
 - (_Bool)_loadAccessibility:(id *)arg1;
-- (id)init;
-- (void)dealloc;
+@property(readonly) id <XCUIRemoteAXInterface> remoteAXInterface; // @synthesize remoteAXInterface=_remoteAXInterface;
+@property(readonly) id <XCUIApplicationProcessTracker> applicationProcessTracker; // @synthesize applicationProcessTracker=_applicationProcessTracker;
+- (id)initWithApplicationProcessTracker:(id)arg1 remoteAXInterface:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

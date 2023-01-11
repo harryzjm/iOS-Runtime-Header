@@ -12,11 +12,9 @@
 
 @interface RTLocationManager <CLLocationManagerRoutineDelegate, RTPurgable>
 {
-    int _userOptedIntoGEOAddressCorrectionToken;
     _Bool _updating;
     _Bool _leechingLocations;
     _Bool _monitoringLocations;
-    _Bool _userOptedIntoGEOAddressCorrection;
     _Bool _enabled;
     _Bool _supported;
     _Bool _locationStoreAvailable;
@@ -46,7 +44,6 @@
 @property(retain, nonatomic) CLLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property(retain, nonatomic) RTInvocationDispatcher *dispatcher; // @synthesize dispatcher=_dispatcher;
 @property(retain, nonatomic) RTPowerAssertion *powerAssertion; // @synthesize powerAssertion=_powerAssertion;
-@property(nonatomic) _Bool userOptedIntoGEOAddressCorrection; // @synthesize userOptedIntoGEOAddressCorrection=_userOptedIntoGEOAddressCorrection;
 @property(nonatomic) _Bool monitoringLocations; // @synthesize monitoringLocations=_monitoringLocations;
 @property(nonatomic) _Bool leechingLocations; // @synthesize leechingLocations=_leechingLocations;
 @property(nonatomic) _Bool updating; // @synthesize updating=_updating;
@@ -54,6 +51,7 @@
 @property(retain, nonatomic) NSMutableArray *currentLocationHandlers; // @synthesize currentLocationHandlers=_currentLocationHandlers;
 @property(retain, nonatomic) CLLocation *lastLocation; // @synthesize lastLocation=_lastLocation;
 - (void).cxx_destruct;
+- (void)submitHarvestSample:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_stopUpdatingMicroLocation;
 - (void)stopUpdatingMicroLocation;
 - (void)_startUpdatingMicroLocationForLocationOfInterestWithIdentifier:(id)arg1;
@@ -84,12 +82,12 @@
 - (void)startUpdatingLocation;
 - (void)dealloc;
 - (void)_shutdown;
-- (void)shutdown;
-- (void)setup;
 - (void)_setup;
+- (void)_createLocationManager;
 - (void)_unregisterNotifications;
 - (void)_registerNotifications;
-- (id)initWithAuthorizationManager:(id)arg1 locationStore:(id)arg2 platform:(id)arg3;
+- (void)performBlockOnMainThreadAndWait:(CDUnknownBlockType)arg1;
+- (id)initWithAuthorizationManager:(id)arg1 locationStore:(id)arg2 platform:(id)arg3 routineLocationManager:(id)arg4;
 - (id)init;
 - (void)injectLocations:(id)arg1 handler:(CDUnknownBlockType)arg2;
 

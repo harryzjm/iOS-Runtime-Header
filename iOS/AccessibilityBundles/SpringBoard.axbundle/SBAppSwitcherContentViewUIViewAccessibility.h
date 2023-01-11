@@ -15,9 +15,9 @@
 - (void)_axDidQuitApp:(id)arg1;
 - (id)_axAppElementsDictionary;
 - (id)_axAppElements;
-- (id)_axAppContainer;
-- (id)_axControlCenter;
 - (id)_axSwitcherViewController;
+- (id)_axSortedElementArray:(id)arg1;
+- (void)_axUpdateElementOrderingIfNecessary;
 - (_Bool)_axScrollToAppElement:(id)arg1;
 - (id)_axElementForAppLayout:(id)arg1;
 - (void)_axAddVisibleItemContainer:(id)arg1 forAppLayout:(id)arg2;
@@ -26,7 +26,6 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (long long)_accessibilityPageCount;
 - (_Bool)accessibilityScroll:(long long)arg1;
-- (unsigned long long)accessibilityTraits;
 - (id)accessibilityElements;
 - (void)setAccessibilityIdentifier:(id)arg1;
 - (void)_setAXIsControlCenterView:(_Bool)arg1;

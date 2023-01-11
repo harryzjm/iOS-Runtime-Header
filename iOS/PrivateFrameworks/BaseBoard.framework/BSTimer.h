@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BSDispatchSource;
 @protocol OS_dispatch_queue;
@@ -28,6 +28,7 @@
 @property(readonly, nonatomic) double repeatInterval; // @synthesize repeatInterval=_repeatInterval;
 @property(readonly, nonatomic) double fireInterval; // @synthesize fireInterval=_fireInterval;
 @property(readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
+- (void).cxx_destruct;
 - (void)_callOutQueue_noteTimerFired;
 - (void)_queue_cancel;
 - (void)cancel;

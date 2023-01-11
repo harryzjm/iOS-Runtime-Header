@@ -22,6 +22,7 @@
     _Bool _didHideOrShowBarsExplicitly;
     double _lastOffset;
     _Bool _inSteadyState;
+    _Bool _performingBatchUpdates;
     long long _state;
     double _topBarHeight;
     double _bottomBarOffset;
@@ -37,6 +38,7 @@
 - (void).cxx_destruct;
 - (void)setBottomBarOffset:(double)arg1 forState:(long long)arg2;
 - (void)setTopBarHeight:(double)arg1 forState:(long long)arg2;
+- (void)performBatchUpdates:(CDUnknownBlockType)arg1;
 - (void)_endDraggingWithVelocity:(double)arg1;
 - (void)endScrolling;
 - (void)endDraggingWithTargetOffset:(double)arg1 velocity:(double)arg2;

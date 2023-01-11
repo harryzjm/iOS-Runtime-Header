@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSError, NSMutableData;
+@class NSData, NSError, NSMutableData;
 
 @interface CUReadRequest : NSObject
 {
@@ -16,6 +16,7 @@
     void *_bufferBytes;
     NSMutableData *_bufferData;
     CDUnknownBlockType _completion;
+    NSData *_data;
     unsigned long long _minLength;
     unsigned long long _maxLength;
 }
@@ -23,8 +24,9 @@
 @property(nonatomic) unsigned long long maxLength; // @synthesize maxLength=_maxLength;
 @property(nonatomic) unsigned long long minLength; // @synthesize minLength=_minLength;
 @property(readonly, nonatomic) unsigned long long length; // @synthesize length=_length;
-@property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
+@property(retain, nonatomic) NSData *data; // @synthesize data=_data;
+@property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property(retain, nonatomic) NSMutableData *bufferData; // @synthesize bufferData=_bufferData;
 @property(nonatomic) void *bufferBytes; // @synthesize bufferBytes=_bufferBytes;
 - (void).cxx_destruct;

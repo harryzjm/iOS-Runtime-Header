@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+__attribute__((visibility("hidden")))
 @interface SCNActionPerformSelector
 {
     SEL _selector;
     id _target;
 }
 
-+ (id)perfromSelector:(SEL)arg1 onTarget:(id)arg2;
++ (id)performSelector:(SEL)arg1 onTarget:(id)arg2;
 + (_Bool)supportsSecureCoding;
 - (id)reversedAction;
 - (id)copyWithZone:(struct _NSZone *)arg1;

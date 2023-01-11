@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsUI/CNActionViewTemplateImage-Protocol.h>
 
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIImage *baseImage; // @synthesize baseImage=_baseImage;
 @property(readonly, nonatomic) CNCache *imageCache; // @synthesize imageCache=_imageCache;
 - (void).cxx_destruct;
+- (id)templateImage;
 - (id)uncachedImageWithColor:(id)arg1;
 - (id)imageWithColor:(id)arg1;
 - (id)initWithImage:(id)arg1 cache:(id)arg2;

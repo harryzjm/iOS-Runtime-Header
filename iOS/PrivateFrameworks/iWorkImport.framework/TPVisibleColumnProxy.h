@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSWPOffscreenColumn-Protocol.h>
 
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)p_targetLastHint;
 - (id)p_targetFirstHint;
 - (void)trimToCharIndex:(unsigned long long)arg1 inTarget:(id)arg2 removeFootnoteReferenceCount:(unsigned long long)arg3 removeAutoNumberFootnoteCount:(unsigned long long)arg4;
+@property(readonly, nonatomic) _Bool lastLineIsEmptyAndHasListLabel;
 @property(readonly, nonatomic) unsigned long long nextWidowPullsDownFromCharIndex;
 @property(readonly, nonatomic) struct _NSRange anchoredRange;
 - (unsigned long long)startAnchoredCharIndex;

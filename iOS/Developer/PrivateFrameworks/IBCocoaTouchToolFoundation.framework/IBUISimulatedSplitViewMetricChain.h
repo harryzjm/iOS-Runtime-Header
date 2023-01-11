@@ -10,6 +10,10 @@
 }
 
 @property(readonly, nonatomic) long long splitViewDestination; // @synthesize splitViewDestination=_splitViewDestination;
+- (id)singleLinkPrettyDescription;
+- (id)copyWithPrecedingMetric:(id)arg1;
+- (_Bool)isEqualToMetricChain:(id)arg1;
+- (unsigned long long)hash;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
 - (id)initWithDestination:(long long)arg1 precedingMetric:(id)arg2;

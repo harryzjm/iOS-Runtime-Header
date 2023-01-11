@@ -14,6 +14,7 @@
 - (id)dvt_observationInfoSummary;
 - (void)dvt_changeValueForKeys:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)dvt_changeValueForKey:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)dvt_newSharedObserverForKeyPath:(id)arg1 observeInitial:(_Bool)arg2 withHandlerBlock:(CDUnknownBlockType)arg3;
 - (id)dvt_newObserverForKeyPath:(id)arg1 options:(unsigned long long)arg2 withHandlerBlock:(CDUnknownBlockType)arg3;
 - (id)dvt_newObserverForKeyPath:(id)arg1 options:(unsigned long long)arg2 owner:(id)arg3 withHandlerBlock:(CDUnknownBlockType)arg4;
 - (id)_dvt_newObserverForKeyPath:(id)arg1 options:(unsigned long long)arg2 owner:(id)arg3 creationBacktrace:(id)arg4 withHandlerBlock:(CDUnknownBlockType)arg5;

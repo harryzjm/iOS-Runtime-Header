@@ -4,20 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/NSCoding-Protocol.h>
+#import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@interface MPModelKind : NSObject <NSCoding>
+@class NSString;
+
+@interface MPModelKind : NSObject <NSCoding, NSSecureCoding>
 {
     Class _modelClass;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)kindWithModelClass:(Class)arg1;
 @property(readonly, nonatomic) Class modelClass; // @synthesize modelClass=_modelClass;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(readonly, nonatomic) NSString *humanDescription;
+- (id)debugDescription;
 - (id)_init;
 - (shared_ptr_cf7b8a22)predicateWithBaseProperty:(struct ModelPropertyBase *)arg1;
 - (shared_ptr_cf7b8a22)representedSearchScopePredicate;

@@ -17,12 +17,14 @@
     _Bool _reachable;
     _Bool _securitySessionOpen;
     _Bool _supportsTimedWrite;
+    _Bool _bleLinkConnected;
     _Bool _incompatibleUpdate;
     NSNumber *_category;
     unsigned long long _configNumber;
     id <HAPAccessoryServerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSData *_setupHash;
+    unsigned long long _authMethod;
     HAPAccessory *_primaryAccessory;
     NSArray *_accessories;
     long long _linkType;
@@ -32,15 +34,18 @@
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     id <HAPKeyStore> _keyStore;
+    unsigned long long _pairSetupType;
 }
 
 + (_Bool)isAccessoryServerWithIdentifierPaired:(id)arg1 keyStore:(id)arg2;
+@property(nonatomic) unsigned long long pairSetupType; // @synthesize pairSetupType=_pairSetupType;
 @property(readonly, nonatomic) __weak id <HAPKeyStore> keyStore; // @synthesize keyStore=_keyStore;
 @property(nonatomic, getter=isIncompatibleUpdate) _Bool incompatibleUpdate; // @synthesize incompatibleUpdate=_incompatibleUpdate;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *internalDelegateQueue; // @synthesize internalDelegateQueue=_internalDelegateQueue;
 @property(readonly, nonatomic) NSHashTable *internalDelegates; // @synthesize internalDelegates=_internalDelegates;
+@property(readonly, nonatomic, getter=isBLELinkConnected) _Bool bleLinkConnected; // @synthesize bleLinkConnected=_bleLinkConnected;
 @property(copy) HMFVersion *version; // @synthesize version=_version;
 @property(nonatomic) _Bool supportsTimedWrite; // @synthesize supportsTimedWrite=_supportsTimedWrite;
 @property(readonly, nonatomic) long long linkType; // @synthesize linkType=_linkType;
@@ -64,7 +69,8 @@
 - (void)addPairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)stopPairingWithError:(id *)arg1;
 - (_Bool)tryPairingPassword:(id)arg1 error:(id *)arg2;
-- (void)startPairing;
+- (void)startPairingWithConsentRequired:(_Bool)arg1;
+- (void)continuePairingUsingWAC;
 - (void)continuePairingAfterAuthPrompt;
 - (_Bool)matchesSetupID:(id)arg1;
 @property(readonly, nonatomic, getter=isPaired) _Bool paired;
@@ -73,6 +79,7 @@
 @property(copy, nonatomic) NSNumber *category; // @synthesize category=_category;
 - (void)notifyDelegateUpdatedName:(id)arg1;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property(nonatomic) unsigned long long authMethod; // @synthesize authMethod=_authMethod;
 @property(copy, nonatomic) NSData *setupHash; // @synthesize setupHash=_setupHash;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(readonly, copy) HAPDeviceID *deviceID;

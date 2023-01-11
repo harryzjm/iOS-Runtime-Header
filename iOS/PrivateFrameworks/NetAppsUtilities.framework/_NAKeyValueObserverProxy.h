@@ -6,6 +6,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _NAKeyValueObserverProxy
 {
     _Bool _isObserving;

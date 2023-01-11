@@ -15,16 +15,17 @@
     _Bool _shouldRepeatTexture;
 }
 
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
++ (id)debugHierarchyPropertyDescriptions;
 + (id)spriteNodeWithColor:(id)arg1 size:(struct CGSize)arg2;
 + (id)spriteNodeWithTexture:(id)arg1 normalMap:(id)arg2;
 + (id)spriteNodeWithTexture:(id)arg1 size:(struct CGSize)arg2;
 + (id)spriteNodeWithTexture:(id)arg1;
 + (id)spriteNodeWithImageNamed:(id)arg1 normalMapped:(_Bool)arg2;
 + (id)spriteNodeWithImageNamed:(id)arg1;
++ (_Bool)supportsSecureCoding;
 @property(nonatomic) _Bool shouldRepeatTexture; // @synthesize shouldRepeatTexture=_shouldRepeatTexture;
 - (void).cxx_destruct;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
-- (id)debugHierarchyPropertyDescriptions;
 - (void)setValue:(id)arg1 forAttributeNamed:(id)arg2;
 - (id)valueForAttributeNamed:(id)arg1;
 - (_Bool)_pathFromTextureToPoints:(MISSING_TYPE ***)arg1 outSize:(unsigned long long *)arg2 accuracy:(float)arg3;

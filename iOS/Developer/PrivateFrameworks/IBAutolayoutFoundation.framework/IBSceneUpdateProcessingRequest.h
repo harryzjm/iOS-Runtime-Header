@@ -25,6 +25,7 @@
 - (void)processResult:(id)arg1 orError:(id)arg2;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
+- (void)dealloc;
 - (id)initWithResultPhase:(long long)arg1 postProcessingBlock:(CDUnknownBlockType)arg2;
 - (id)init;
 

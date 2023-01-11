@@ -10,11 +10,11 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct NSMapTable {
+struct NSMutableDictionary {
     Class _field1;
 };
 
-struct NSMutableDictionary {
+struct NSString {
     Class _field1;
 };
 
@@ -60,12 +60,6 @@ typedef struct {
 } CDStruct_212a8bf9;
 
 typedef struct {
-    unsigned int *list;
-    unsigned long long count;
-    unsigned long long size;
-} CDStruct_9f2792e4;
-
-typedef struct {
     double *list;
     unsigned long long count;
     unsigned long long size;
@@ -93,24 +87,14 @@ typedef struct {
 } CDStruct_669c4a63;
 
 typedef struct {
-    unsigned int errorCode:1;
-} CDStruct_70a7dc3e;
-
-typedef struct {
     unsigned int state:1;
 } CDStruct_5accba53;
 
-#pragma mark Named Unions
+typedef struct {
+    unsigned int volume:1;
+} CDStruct_731552e5;
 
-union _MRColor {
-    struct {
-        float red;
-        float green;
-        float blue;
-        float alpha;
-    } ;
-    float data[4];
-};
+#pragma mark Named Unions
 
 union _MRHIDPoint {
     CDStruct_643d22a7 _field1;

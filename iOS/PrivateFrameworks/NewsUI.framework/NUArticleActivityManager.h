@@ -9,7 +9,7 @@
 #import <NewsUI/NUActivityProvider-Protocol.h>
 
 @class FCReadingHistory, FCReadingList, FCSubscriptionList, NSString;
-@protocol FCHeadlineProviding, NUURLHandler;
+@protocol FCHeadlineProviding, NUArticleActivityOptionsProvider, NUReportConcernViewPresenter, NUURLHandling, NUURLModifying;
 
 @interface NUArticleActivityManager : NSObject <NUActivityProvider>
 {
@@ -17,10 +17,16 @@
     FCReadingHistory *_readingHistory;
     FCReadingList *_readingList;
     FCSubscriptionList *_subscriptionList;
-    id <NUURLHandler> _URLHandler;
+    id <NUURLHandling> _URLHandler;
+    id <NUReportConcernViewPresenter> _reportConcernViewPresenter;
+    id <NUURLModifying> _URLModifier;
+    id <NUArticleActivityOptionsProvider> _optionsProvider;
 }
 
-@property(readonly, nonatomic) id <NUURLHandler> URLHandler; // @synthesize URLHandler=_URLHandler;
+@property(readonly, nonatomic) id <NUArticleActivityOptionsProvider> optionsProvider; // @synthesize optionsProvider=_optionsProvider;
+@property(readonly, nonatomic) id <NUURLModifying> URLModifier; // @synthesize URLModifier=_URLModifier;
+@property(readonly, nonatomic) id <NUReportConcernViewPresenter> reportConcernViewPresenter; // @synthesize reportConcernViewPresenter=_reportConcernViewPresenter;
+@property(readonly, nonatomic) id <NUURLHandling> URLHandler; // @synthesize URLHandler=_URLHandler;
 @property(readonly, nonatomic) FCSubscriptionList *subscriptionList; // @synthesize subscriptionList=_subscriptionList;
 @property(readonly, nonatomic) FCReadingList *readingList; // @synthesize readingList=_readingList;
 @property(readonly, nonatomic) FCReadingHistory *readingHistory; // @synthesize readingHistory=_readingHistory;
@@ -39,9 +45,10 @@
 - (id)activityTitleForHeadline:(id)arg1 withType:(unsigned long long)arg2;
 - (id)activityTypeForHeadline:(id)arg1 withType:(unsigned long long)arg2;
 - (id)supportedActivities;
+- (id)activityForType:(unsigned long long)arg1;
 - (id)activities;
 - (id)activityItemSources;
-- (id)initWithHeadline:(id)arg1 readingHistory:(id)arg2 readingList:(id)arg3 subscriptionList:(id)arg4 URLHandler:(id)arg5;
+- (id)initWithHeadline:(id)arg1 readingHistory:(id)arg2 readingList:(id)arg3 subscriptionList:(id)arg4 URLHandler:(id)arg5 reportConcernViewPresenter:(id)arg6 URLModifier:(id)arg7 optionsProvider:(id)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

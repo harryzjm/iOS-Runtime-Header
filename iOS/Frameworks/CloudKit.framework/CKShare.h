@@ -12,6 +12,7 @@
 @interface CKShare <NSSecureCoding, NSCopying>
 {
     _Bool _allowsReadOnlyParticipantsToSeeEachOther;
+    _Bool _allowsAnonymousPublicAccess;
     _Bool _serializePersonalInfo;
     long long _publicPermission;
     NSMutableSet *_addedParticipantIDs;
@@ -34,6 +35,7 @@
 @property(copy, nonatomic) CKShareID *shareID; // @synthesize shareID=_shareID;
 @property(nonatomic) _Bool serializePersonalInfo; // @synthesize serializePersonalInfo=_serializePersonalInfo;
 @property(retain, nonatomic) NSArray *invitedKeysToRemove; // @synthesize invitedKeysToRemove=_invitedKeysToRemove;
+@property(nonatomic) _Bool allowsAnonymousPublicAccess; // @synthesize allowsAnonymousPublicAccess=_allowsAnonymousPublicAccess;
 @property(nonatomic) _Bool allowsReadOnlyParticipantsToSeeEachOther; // @synthesize allowsReadOnlyParticipantsToSeeEachOther=_allowsReadOnlyParticipantsToSeeEachOther;
 @property(retain, nonatomic) NSString *previousPublicProtectionEtag; // @synthesize previousPublicProtectionEtag=_previousPublicProtectionEtag;
 @property(retain, nonatomic) NSString *publicProtectionEtag; // @synthesize publicProtectionEtag=_publicProtectionEtag;
@@ -85,7 +87,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)_setPublicPermissionNoSideEffects:(long long)arg1;
 - (void)_removeAllParticipants;
-- (void)_removePendingPrivateParticipants;
+- (void)_removePendingPrivateAndAdminParticipants;
 - (void)_commonCKShareInit;
 - (void)_addOwnerParticipant;
 - (id)_initWithShareRecordID:(id)arg1;

@@ -4,18 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <NewsCore/NSCoding-Protocol.h>
 #import <NewsCore/NSCopying-Protocol.h>
 
 @class NSSet;
 
-@interface FCNewFavoriteFeedGroupEmitterCursor : NSObject <NSCopying, NSCoding>
+@interface FCNewFavoriteFeedGroupEmitterCursor <NSCopying>
 {
     NSSet *_tagIDsReturned;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(copy, nonatomic) NSSet *tagIDsReturned; // @synthesize tagIDsReturned=_tagIDsReturned;
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;

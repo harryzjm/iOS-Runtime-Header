@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSString;
-@protocol OS_dispatch_queue, XCTestExpectationDelegate;
+@protocol XCTestExpectationDelegate;
 
 @interface _XCTestExpectationImplementation : NSObject
 {
@@ -23,12 +23,8 @@
     NSArray *_fulfillCallStackReturnAddresses;
     _Bool _inverted;
     _Bool _assertForOverFulfill;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_queue> *_delegateQueue;
 }
 
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(nonatomic) unsigned long long numberOfFulfillments; // @synthesize numberOfFulfillments=_numberOfFulfillments;
 @property(nonatomic) unsigned long long expectedFulfillmentCount; // @synthesize expectedFulfillmentCount=_expectedFulfillmentCount;
 @property(copy) NSArray *fulfillCallStackReturnAddresses; // @synthesize fulfillCallStackReturnAddresses=_fulfillCallStackReturnAddresses;
@@ -41,8 +37,7 @@
 @property(retain) id <XCTestExpectationDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy) NSString *expectationDescription; // @synthesize expectationDescription=_expectationDescription;
 @property _Bool fulfilled; // @synthesize fulfilled=_fulfilled;
-- (void)dealloc;
-- (id)init;
+- (void).cxx_destruct;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <PhotoLibraryServices/PLManagedObjectContextPTPNotificationDelegate-Protocol.h>
 
-@class NSFileManager, NSMutableSet, NSSet, NSString, PFMediaCapabilities, PLManagedObjectContext, PLPTPdFormatConversionManager, PLPhotoLibrary;
+@class NSFileManager, NSMutableSet, NSSet, NSString, PFMediaCapabilities, PLPTPdFormatConversionManager, PLPhotoLibrary;
 @protocol OS_dispatch_queue, PhotoLibraryPTPDelegate;
 
 @interface PLPTPdAssetManager : NSObject <PLManagedObjectContextPTPNotificationDelegate>
@@ -26,7 +26,7 @@
 
 @property(retain, nonatomic) NSFileManager *fileManager; // @synthesize fileManager;
 - (id)fetchObjectIDsForAssetsExposedToPTPFromObjectIDs:(id)arg1;
-@property(readonly, retain) PLManagedObjectContext *managedObjectContext;
+- (id)managedObjectContext;
 - (id)_performResultTransactionAndWait:(CDUnknownBlockType)arg1;
 - (void)_performTransactionAndWait:(CDUnknownBlockType)arg1;
 - (id)_performResultBlockAndWait:(CDUnknownBlockType)arg1;
@@ -45,6 +45,8 @@
 - (id)dataForThumbnailFileAtPath:(id)arg1 rotatedToOrientation:(long long)arg2 size:(struct CGSize)arg3 compressionQuality:(float)arg4;
 - (id)_ptpThumbnailForFullSizeRenderWithAssetID:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
 - (id)_ptpThumbnailForOriginalWithAssetID:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
+- (_Bool)requestedSize:(struct CGSize)arg1 fitsInSourceSize:(struct CGSize)arg2;
+- (struct CGSize)masterThumbSize;
 - (id)ptpThumbnailForPhotoWithKey:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
 - (struct CGSize)_validateSize:(struct CGSize)arg1;
 - (id)ptpThumbnailForPhotoWithKey:(id)arg1;

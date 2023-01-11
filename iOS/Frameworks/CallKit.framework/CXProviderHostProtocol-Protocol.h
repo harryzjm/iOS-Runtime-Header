@@ -6,11 +6,13 @@
 
 #import <CallKit/NSObject-Protocol.h>
 
-@class CXAction, CXCallFailureContext, CXCallUpdate, CXProviderConfiguration, NSData, NSDate, NSString, NSUUID;
+@class CXAction, CXCallFailureContext, CXCallUpdate, CXProviderConfiguration, CXTransaction, NSData, NSDate, NSString, NSUUID;
 
 @protocol CXProviderHostProtocol <NSObject>
 - (oneway void)actionCompleted:(CXAction *)arg1;
+- (oneway void)requestTransaction:(CXTransaction *)arg1 reply:(void (^)(NSError *))arg2;
 - (oneway void)reportCallWithUUID:(NSUUID *)arg1 crossDeviceIdentifier:(NSString *)arg2 changedBytesOfDataUsed:(long long)arg3;
+- (oneway void)reportCallWithUUID:(NSUUID *)arg1 changedMeterLevel:(float)arg2 forDirection:(long long)arg3;
 - (oneway void)reportCallWithUUID:(NSUUID *)arg1 changedFrequencyData:(NSData *)arg2 forDirection:(long long)arg3;
 - (oneway void)reportAudioFinishedForCallWithUUID:(NSUUID *)arg1;
 - (oneway void)reportOutgoingCallWithUUID:(NSUUID *)arg1 connectedAtDate:(NSDate *)arg2;

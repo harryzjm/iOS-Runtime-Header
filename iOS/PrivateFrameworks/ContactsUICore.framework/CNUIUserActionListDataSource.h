@@ -8,7 +8,7 @@
 
 #import <ContactsUICore/CNUIUserActionListDataSource-Protocol.h>
 
-@class CNCache, CNContact, CNUIUserActionDisambiguationModeler, NSString;
+@class CNContact, CNUIUserActionDisambiguationModeler, CNUIUserActionListModelCache, NSString;
 @protocol CNSchedulerProvider;
 
 @interface CNUIUserActionListDataSource : NSObject <CNUIUserActionListDataSource>
@@ -16,7 +16,7 @@
     _Bool _tracksChanges;
     id <CNSchedulerProvider> _schedulerProvider;
     CNContact *_contact;
-    CNCache *_models;
+    CNUIUserActionListModelCache *_models;
     CNUIUserActionDisambiguationModeler *_modeler;
 }
 
@@ -27,7 +27,7 @@
 + (id)allActionTypes;
 + (id)descriptorForRequiredKeys;
 @property(retain, nonatomic) CNUIUserActionDisambiguationModeler *modeler; // @synthesize modeler=_modeler;
-@property(retain, nonatomic) CNCache *models; // @synthesize models=_models;
+@property(retain, nonatomic) CNUIUserActionListModelCache *models; // @synthesize models=_models;
 @property(copy, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property(nonatomic) _Bool tracksChanges; // @synthesize tracksChanges=_tracksChanges;
 @property(readonly, nonatomic) id <CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
@@ -39,6 +39,7 @@
 - (id)modelsForActionType:(id)arg1;
 - (id)consumer:(id)arg1 actionModelsForActionType:(id)arg2;
 - (id)consumer:(id)arg1 actionModelsForActionType:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (_Bool)shouldUseLabelForButtonWithDefaultAction:(id)arg1;
 - (id)consumer:(id)arg1 localizedDisplayNameForButtonWithDefaultAction:(id)arg2 actionType:(id)arg3;
 - (id)consumer:(id)arg1 localizedButtonDisplayNameForActionType:(id)arg2;
 - (id)consumer:(id)arg1 localizedDisplayNameForActionType:(id)arg2;

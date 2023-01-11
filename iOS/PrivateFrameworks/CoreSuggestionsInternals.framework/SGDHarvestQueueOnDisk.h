@@ -18,7 +18,10 @@
     SGDHarvestQueueFileReader *_reader;
     long long _idCounter;
     _Atomic unsigned long long _count;
+    _Atomic unsigned long long _countHighPriority;
     _Atomic unsigned long long _maxQueueItems;
+    _Atomic unsigned long long _pendingWrites;
+    _Atomic unsigned long long _maxPendingWrites;
     id _lockStateChangeToken;
 }
 
@@ -38,6 +41,7 @@
 - (void)_unlinkFileWithIdLocked:(int)arg1;
 - (void)_garbageCollectFilesAsync;
 - (void)close;
+@property(nonatomic) unsigned long long maxPendingWrites;
 @property(nonatomic) unsigned long long maxQueueItems;
 - (void)countHighPriorityItems:(unsigned long long *)arg1 lowPriorityItems:(unsigned long long *)arg2;
 - (unsigned long long)count;

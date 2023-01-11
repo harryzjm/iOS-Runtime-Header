@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Vision/NSCopying-Protocol.h>
 #import <Vision/NSSecureCoding-Protocol.h>
@@ -21,7 +21,7 @@
 
 + (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) float confidence; // @synthesize confidence=_confidence;
-@property(readonly, nonatomic) id <NSObject><NSCopying><NSSecureCoding> predictedPersonUniqueIdentifier; // @synthesize predictedPersonUniqueIdentifier=_predictedPersonUniqueIdentifier;
+@property(readonly, copy, nonatomic) id <NSObject><NSCopying><NSSecureCoding> predictedPersonUniqueIdentifier; // @synthesize predictedPersonUniqueIdentifier=_predictedPersonUniqueIdentifier;
 @property(readonly, nonatomic) VNFaceObservation *faceObservation; // @synthesize faceObservation=_faceObservation;
 - (void).cxx_destruct;
 - (id)description;

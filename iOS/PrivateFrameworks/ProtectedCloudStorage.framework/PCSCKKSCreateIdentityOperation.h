@@ -8,11 +8,9 @@
 
 @interface PCSCKKSCreateIdentityOperation
 {
-    _Bool _roll;
     PCSCKKSItemModifyContext *_context;
 }
 
-@property _Bool roll; // @synthesize roll=_roll;
 @property(retain) PCSCKKSItemModifyContext *context; // @synthesize context=_context;
 - (void).cxx_destruct;
 - (void)itemStored:(id)arg1;
@@ -21,7 +19,7 @@
 - (void)storePCSIdentity:(struct _PCSIdentityData *)arg1;
 - (void)createManateePCSIdentity;
 - (void)start;
-- (id)initWithItemModifyContext:(id)arg1 roll:(_Bool)arg2;
+- (id)initWithItemModifyContext:(id)arg1;
 
 @end
 

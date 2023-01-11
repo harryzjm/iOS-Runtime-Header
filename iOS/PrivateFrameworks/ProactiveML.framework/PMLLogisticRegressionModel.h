@@ -19,12 +19,13 @@
 
 + (id)withWeights:(id)arg1 andIntercept:(_Bool)arg2;
 + (id)withWeights:(id)arg1;
-+ (id)solverWithWeights:(id)arg1 andIntercept:(_Bool)arg2 learningRate:(float)arg3;
++ (id)solverWithWeights:(id)arg1 andIntercept:(_Bool)arg2 learningRate:(float)arg3 minIterations:(unsigned long long)arg4 stoppingThreshold:(float)arg5;
 + (id)solverWithWeights:(id)arg1 andIntercept:(_Bool)arg2;
 + (id)solverWithWeights:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
 - (id)toPlistWithChunks:(id)arg1;
+- (id)weights;
 - (_Bool)classify:(id)arg1;
 - (float)predict:(id)arg1;
 - (id)initWithSolver:(id)arg1;

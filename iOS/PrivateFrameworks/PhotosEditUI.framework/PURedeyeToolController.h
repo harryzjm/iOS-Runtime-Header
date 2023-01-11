@@ -8,6 +8,7 @@
 
 @class NSArray, NSMutableArray, NSString, PUPhotoEditOverlayBadge, PURedeyeToolControllerSpec, UITapGestureRecognizer;
 
+__attribute__((visibility("hidden")))
 @interface PURedeyeToolController <UIGestureRecognizerDelegate>
 {
     PUPhotoEditOverlayBadge *_instructionLabel;
@@ -29,6 +30,7 @@
 - (void)_showChangeIndicatorAtPoint:(struct CGPoint)arg1 isFailure:(_Bool)arg2;
 - (void)_loadCorrectionsFromModelAnimated:(_Bool)arg1;
 - (void)flashAutoRedEyeCorrections;
+- (struct CGPoint)_extractRedEyePointFromCorrectionDictionary:(id)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)_handleTapGesture:(id)arg1;
 - (void)setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;

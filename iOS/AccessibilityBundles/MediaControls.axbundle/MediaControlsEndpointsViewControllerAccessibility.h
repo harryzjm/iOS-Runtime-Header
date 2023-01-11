@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)accessibilityPerformEscape;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 

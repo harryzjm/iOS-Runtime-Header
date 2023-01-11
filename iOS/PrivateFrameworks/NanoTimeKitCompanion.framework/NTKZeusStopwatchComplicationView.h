@@ -15,12 +15,15 @@
 }
 
 - (void).cxx_destruct;
+- (void)applyTransitionFraction:(double)arg1 fromPalette:(id)arg2 toPalette:(id)arg3;
+- (void)applyPalette:(id)arg1;
 - (struct CGRect)contentFrame;
 - (void)layoutSubviews;
 - (void)setTime:(double)arg1;
 - (id)init;
 
 // Remaining properties
+@property(nonatomic) _Bool canUseCurvedText;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(nonatomic) __weak id <NTKComplicationDisplayObserver> displayObserver;

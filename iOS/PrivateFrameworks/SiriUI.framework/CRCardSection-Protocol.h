@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <SiriUI/NSCopying-Protocol.h>
 #import <SiriUI/NSObject-Protocol.h>
 
-@class INInteraction, NSArray, NSSet;
+@class INInteraction, NSArray, NSSet, NSString;
 @protocol SFCardSection;
 
-@protocol CRCardSection <NSObject>
+@protocol CRCardSection <NSObject, NSCopying>
+@property(readonly, nonatomic) NSString *cardSectionIdentifier;
 
 @optional
 @property(readonly, nonatomic) _Bool hasNextCard;

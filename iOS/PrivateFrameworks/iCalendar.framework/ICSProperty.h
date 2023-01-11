@@ -7,17 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <iCalendar/ICSWriting-Protocol.h>
-#import <iCalendar/NSCoding-Protocol.h>
+#import <iCalendar/NSSecureCoding-Protocol.h>
 
 @class NSMutableDictionary;
 
-@interface ICSProperty : NSObject <NSCoding, ICSWriting>
+@interface ICSProperty : NSObject <NSSecureCoding, ICSWriting>
 {
     NSMutableDictionary *_parameters;
     unsigned long long _type;
     id _value;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (id)stringValue;

@@ -4,20 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MPSNeuralNetwork/MPSCNNConvolutionDataSource-Protocol.h>
 
 @class MISSING_TYPE, MPSCNNConvolutionDescriptor, NSString;
-@protocol MPSCNNConvolutionDataSource;
+@protocol MPSCNNBatchNormalizationDataSource, MPSCNNConvolutionDataSource;
 
 @interface MPSWeightsWrapper : NSObject <MPSCNNConvolutionDataSource>
 {
+    id <MPSCNNBatchNormalizationDataSource> _dataSource;
     id <MPSCNNConvolutionDataSource> _source;
     struct NeuronInfo _info;
     MPSCNNConvolutionDescriptor *_descriptor;
 }
 
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)label;
 - (float *)lookupTableForUInt8Kernel;
 - (MISSING_TYPE **)rangesForUInt8Kernel;
@@ -28,7 +30,7 @@
 - (id)descriptor;
 - (unsigned int)dataType;
 - (void)dealloc;
-- (id)initWithSource:(id)arg1 neuronInfo:(struct NeuronInfo)arg2;
+- (id)initWithSource:(id)arg1 neuronInfo:(struct NeuronInfo)arg2 batchNorm:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

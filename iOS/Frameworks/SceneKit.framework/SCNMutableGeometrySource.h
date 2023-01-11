@@ -6,6 +6,7 @@
 
 @class NSMutableData;
 
+__attribute__((visibility("hidden")))
 @interface SCNMutableGeometrySource
 {
 }

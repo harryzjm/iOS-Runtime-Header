@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSCopying-Protocol.h>
 
@@ -18,12 +18,12 @@
     unsigned long long _maxCount;
 }
 
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *currentEntries;
 - (void)addEntries:(id)arg1;
 - (void)addEntry:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithMaxCount:(unsigned long long)arg1;
-- (void)dealloc;
 
 @end
 

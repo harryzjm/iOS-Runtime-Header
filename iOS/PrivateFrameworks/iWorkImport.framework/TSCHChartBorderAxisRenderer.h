@@ -9,7 +9,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)dealloc;
 - (id)init;
 
 @end

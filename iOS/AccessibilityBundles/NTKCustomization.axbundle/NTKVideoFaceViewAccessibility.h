@@ -12,7 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_createVideoPlayerViewIfNeeded;
-- (void)_handleTapToPlayVideoGesture;
+- (void)_handleTapToPlayVideoGesture:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

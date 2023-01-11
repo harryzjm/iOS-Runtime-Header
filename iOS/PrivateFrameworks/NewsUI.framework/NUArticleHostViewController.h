@@ -7,12 +7,13 @@
 #import <UIKit/UIViewController.h>
 
 #import <NewsUI/NULoadingDelegate-Protocol.h>
-#import <NewsUI/NUPagable-Protocol.h>
+#import <NewsUI/NUPageable-Protocol.h>
+#import <NewsUI/SXAnalyticsReporting-Protocol.h>
 
-@class FCArticle, NSString, NUMultiDelegate, UIView;
-@protocol NUArticleViewControllerFactory, NUErrorMessageFactory, NULoadingDelegate, NULoadingViewProviding, NUSettings;
+@class FCArticle, NFMultiDelegate, NSHashTable, NSString, UIView;
+@protocol NUAnalyticsReporting, NUArticleViewControllerFactory, NUErrorMessageFactory, NULoadingDelegate, NULoadingViewProviding, NUSettings;
 
-@interface NUArticleHostViewController : UIViewController <NULoadingDelegate, NUPagable>
+@interface NUArticleHostViewController : UIViewController <NULoadingDelegate, SXAnalyticsReporting, NUPageable>
 {
     NSString *_pageIdentifier;
     id <NULoadingDelegate> _loadingDelegate;
@@ -21,12 +22,14 @@
     id <NUSettings> _settings;
     UIViewController *_contentTypeViewController;
     UIView<NULoadingViewProviding> *_loadingView;
-    NUMultiDelegate *_multiLoadingDelegate;
+    NFMultiDelegate *_multiLoadingDelegate;
     id <NUErrorMessageFactory> _errorMessageFactory;
+    id <NUAnalyticsReporting> _analyticsReporting;
 }
 
+@property(readonly, nonatomic) id <NUAnalyticsReporting> analyticsReporting; // @synthesize analyticsReporting=_analyticsReporting;
 @property(readonly, nonatomic) id <NUErrorMessageFactory> errorMessageFactory; // @synthesize errorMessageFactory=_errorMessageFactory;
-@property(readonly, nonatomic) NUMultiDelegate *multiLoadingDelegate; // @synthesize multiLoadingDelegate=_multiLoadingDelegate;
+@property(readonly, nonatomic) NFMultiDelegate *multiLoadingDelegate; // @synthesize multiLoadingDelegate=_multiLoadingDelegate;
 @property(retain, nonatomic) UIView<NULoadingViewProviding> *loadingView; // @synthesize loadingView=_loadingView;
 @property(retain, nonatomic) UIViewController *contentTypeViewController; // @synthesize contentTypeViewController=_contentTypeViewController;
 @property(readonly, copy, nonatomic) id <NUSettings> settings; // @synthesize settings=_settings;
@@ -36,6 +39,7 @@
 @property(readonly, copy, nonatomic) NSString *pageIdentifier; // @synthesize pageIdentifier=_pageIdentifier;
 - (void).cxx_destruct;
 - (void)loadArticleAndEmbedArticleViewController;
+- (void)reportEvent:(id)arg1;
 - (void)loadingDidUpdateProgress:(double)arg1;
 - (void)loadingDidFinishWithError:(id)arg1;
 - (void)loadingDidStart;
@@ -43,7 +47,9 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+@property(readonly, nonatomic) NSHashTable *loadingListeners;
 - (id)initWithArticle:(id)arg1 articleViewControllerFactory:(id)arg2 settings:(id)arg3 errorMessageFactory:(id)arg4;
+- (id)initWithArticle:(id)arg1 articleViewControllerFactory:(id)arg2 settings:(id)arg3 errorMessageFactory:(id)arg4 analyticsReporting:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

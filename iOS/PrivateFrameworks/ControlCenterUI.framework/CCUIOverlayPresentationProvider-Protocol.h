@@ -15,6 +15,7 @@
 @property(readonly, nonatomic) _Bool allowHotPocketDuringTransition;
 @property(readonly, nonatomic) unsigned long long backgroundMaterialOptions;
 @property(readonly, nonatomic, getter=isPanDismissalAvailable) _Bool panDismissalAvailable;
+- (_Bool)backdropViewShouldUseAlphaTransformer;
 - (_Bool)tapAllowsDismissalForLocation:(struct CGPoint)arg1;
 - (CCUIAnimationBatch *)animationBatchForTransitionState:(CCUIOverlayTransitionState *)arg1 previousTransitionState:(CCUIOverlayTransitionState *)arg2;
 - (void)layoutViews;
@@ -24,6 +25,7 @@
 @optional
 @property(readonly, copy, nonatomic) id <CCUIOverlayFlickGestureBehavior> flickGestureBehavior;
 @property(readonly, nonatomic) unsigned long long headerMode;
+- (double (^)(double))customBackdropScaleAdjustment;
 - (CCUIAnimationBatch *)cleanupForDismissal;
 - (CCUIAnimationBatch *)prepareForPresentation;
 - (CCUIAnimationBatch *)secondaryAnimationBatchForTransitionState:(CCUIOverlayTransitionState *)arg1 previousTransitionState:(CCUIOverlayTransitionState *)arg2;

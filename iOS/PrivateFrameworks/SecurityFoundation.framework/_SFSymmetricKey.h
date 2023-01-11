@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, _SFSymmetricKeySpecifier;
+@class _SFSymmetricKeySpecifier;
 
 @interface _SFSymmetricKey
 {
@@ -13,7 +13,8 @@
 
 + (Class)_attributesClass;
 - (void).cxx_destruct;
-@property(readonly, nonatomic, getter=_keyData) NSData *keyData;
+- (id)_keyData;
+- (id)keyData;
 - (id)initWithData:(id)arg1 specifier:(id)arg2 error:(id *)arg3;
 - (id)initRandomKeyWithSpecifier:(id)arg1 error:(id *)arg2;
 

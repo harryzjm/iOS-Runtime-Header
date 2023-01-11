@@ -6,12 +6,11 @@
 
 #import <NewsCore/FCTodayPrivateData-Protocol.h>
 
-@class NSArray, NSDictionary, NSNumber, NSSet, NSString;
+@class NSArray, NSDictionary, NSNumber, NSSet;
 @protocol FCDerivedPersonalizationData><NSCoding;
 
 @protocol FCMutableTodayPrivateData <FCTodayPrivateData>
 @property(copy, nonatomic) NSNumber *onboardingVersion;
-@property(copy, nonatomic) NSString *feldsparID;
 @property(copy, nonatomic) NSDictionary *recentlyReadHistoryItems;
 @property(copy, nonatomic) NSArray *recentlySeenHistoryItems;
 @property(copy, nonatomic) NSArray *rankedPersonalSubscribedTagIDs;

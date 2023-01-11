@@ -11,7 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityObscuredScreenAllowedViews;
 - (void)setModalGroupIndex:(unsigned long long)arg1;
 - (void)setPresentationState:(int)arg1 animated:(_Bool)arg2;
 - (void)_accessibilityLoadAccessibilityInformation;

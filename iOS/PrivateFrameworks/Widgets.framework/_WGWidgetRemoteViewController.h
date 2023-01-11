@@ -27,6 +27,8 @@
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 - (void)__closeTransactionForAppearanceCallWithState:(int)arg1 withIdentifier:(id)arg2;
 - (void)__setLargestAvailableDisplayMode:(long long)arg1;
+- (void)__requestPreferredViewHeight:(double)arg1;
+- (void)_updateVisibleFrame:(struct CGRect)arg1 withReplyHandler:(CDUnknownBlockType)arg2;
 - (void)_updateVisibilityState:(long long)arg1;
 - (void)_performUpdateWithReplyHandler:(CDUnknownBlockType)arg1;
 - (void)_requestEncodedLayerTreeAtURL:(id)arg1 withReplyHandler:(CDUnknownBlockType)arg2;

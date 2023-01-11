@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)viewDidLoad;
+- (id)_accessibilityControlCenterElementToFocusAfterClose;
 - (unsigned long long)_accessibilityControlCenterButtonTraits;
 - (_Bool)_accessibilityControlCenterButtonIsToggle;
 - (id)_accessibilityControlCenterButtonHint;

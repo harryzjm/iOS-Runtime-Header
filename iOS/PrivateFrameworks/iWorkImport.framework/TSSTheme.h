@@ -8,7 +8,7 @@
 #import <iWorkImport/TSKModel-Protocol.h>
 #import <iWorkImport/TSSPresetSource-Protocol.h>
 
-@class NSMutableDictionary, NSString, TSSStylesheet;
+@class NSArray, NSMutableDictionary, NSSet, NSString, TSDMediaStyle, TSSStylesheet, TSWPCharacterStyle, TSWPColumnStyle, TSWPListStyle, TSWPParagraphStyle, TSWPTOCEntryStyle;
 
 __attribute__((visibility("hidden")))
 @interface TSSTheme <TSSPresetSource, TSKModel, TSKDocumentObject>
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 + (id)presetKinds;
 + (void)tsdRegisterPresetSourceClasses;
 + (void)tstRegisterPresetSourceClasses;
+- (void).cxx_destruct;
 - (id)referencedStyles;
 - (void)checkThemeStylesheetConsistency;
 - (void)bootstrapThemeAlternate:(int)arg1;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)migratedPresetForPreset:(id)arg1;
 - (id)p_migratedPresetForPreset:(id)arg1 followReplacements:(_Bool)arg2;
 - (id)migratedPresetUUIDForPresetUUID:(id)arg1;
+- (void)clearAllReplacementsOfPresetUUIDs;
 - (void)clearReplacementsOfPresetUUID:(id)arg1;
 - (void)recordReplacementOfPresetUUID:(id)arg1 withPresetUUID:(id)arg2;
 - (id)modelPathComponentForChild:(id)arg1;
@@ -67,7 +69,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *themeIdentifier;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 - (id)initWithContext:(id)arg1 documentStylesheet:(id)arg2;
 - (id)initWithContext:(id)arg1;
 - (void)tschSaveToArchive:(struct ThemeArchive *)arg1 archiver:(id)arg2;
@@ -76,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (void)tsdLoadFromArchive:(const struct ThemeArchive *)arg1 unarchiver:(id)arg2;
 - (void)installContactCurvedShadowPresets;
 - (void)installMoviePresetsInStylesheet:(id)arg1;
+- (void)installDrawingLinePresetsInStylesheet:(id)arg1;
 - (void)p_addStyleIfNotExisting:(id)arg1 inStylesheet:(id)arg2 withIdentifier:(id)arg3 presets:(id)arg4;
 - (void)upgradeStylesWithBlock:(CDUnknownBlockType)arg1;
 - (void)saveToArchive:(struct ThemeArchive *)arg1 archiver:(id)arg2;
@@ -85,18 +87,20 @@ __attribute__((visibility("hidden")))
 - (void)tswpSaveToArchive:(struct ThemeArchive *)arg1 archiver:(id)arg2;
 - (void)tswpLoadFromArchive:(const struct ThemeArchive *)arg1 unarchiver:(id)arg2;
 - (void)removeTextStylesOfPresetKinds:(id)arg1 notReferencedInDocumentRoot:(id)arg2;
-- (id)unmodifiableStyles;
-- (id)undeletableStyles;
+@property(readonly, nonatomic) NSSet *unmodifiableStyles;
+@property(readonly, nonatomic) NSSet *undeletableStyles;
 - (void)createCommentInfoStyleIfNeeded;
 - (void)createDefaultParagraphStyleIfNeeded;
 - (void)modifyHyperlinkStyleToMatchSage;
-- (id)defaultEquationStyle;
-- (id)defaultColumnStyle;
-- (id)defaultListStyle;
-- (id)defaultParagraphStyle;
-- (id)hyperlinkStyle;
-- (id)defaultCharacterStyle;
-- (id)paragraphPresetStyles;
+@property(readonly, nonatomic) NSString *localizedBodyStyleName;
+@property(readonly, nonatomic) TSDMediaStyle *defaultEquationStyle;
+@property(readonly, nonatomic) TSWPTOCEntryStyle *defaultTOCEntryStyle;
+@property(readonly, nonatomic) TSWPColumnStyle *defaultColumnStyle;
+@property(readonly, nonatomic) TSWPListStyle *defaultListStyle;
+@property(readonly, nonatomic) TSWPParagraphStyle *defaultParagraphStyle;
+@property(readonly, nonatomic) TSWPCharacterStyle *hyperlinkStyle;
+@property(readonly, nonatomic) TSWPCharacterStyle *defaultCharacterStyle;
+@property(readonly, nonatomic) NSArray *paragraphPresetStyles;
 - (id)paragraphStylesWithPartialContentTag:(id)arg1;
 - (id)paragraphStylesWithContentTag:(id)arg1;
 - (id)paragraphStyleWithContentTag:(id)arg1;

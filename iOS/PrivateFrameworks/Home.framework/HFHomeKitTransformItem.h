@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Home/HFAccessoryVendor-Protocol.h>
 #import <Home/HFHomeKitItemProtocol-Protocol.h>
 
 @class HFItem, NSString;
 @protocol HFHomeKitItemProtocol, HFHomeKitObject;
 
-@interface HFHomeKitTransformItem <HFHomeKitItemProtocol>
+@interface HFHomeKitTransformItem <HFHomeKitItemProtocol, HFAccessoryVendor>
 {
 }
 
+- (id)accessories;
 @property(readonly, nonatomic) id <HFHomeKitObject> homeKitObject;
 @property(readonly, nonatomic) HFItem<HFHomeKitItemProtocol> *sourceHomeKitItem;
 

@@ -28,6 +28,8 @@
     NSArray *_fileTypes;
     NSString *_providerIdentifier;
     _Bool _isRecursiveFolderEnumeration;
+    _Bool _started;
+    _Bool _restartAfterForeground;
     _Bool _shouldResort;
     _Bool _regathering;
     _Bool _enumeratingExtensionResults;
@@ -60,6 +62,8 @@
 + (id)activeCollections;
 + (_Bool)_item:(id)arg1 isCollectionRootForObservedItemID:(id)arg2;
 + (_Bool)item:(id)arg1 isValidForObservedItemID:(id)arg2;
++ (void)applicationDidEnterBackground:(id)arg1;
++ (void)applicationWillEnterForeground:(id)arg1;
 + (id)collectionWithIdentifier:(id)arg1 domainIdentifier:(id)arg2 providerIdentifier:(id)arg3 sortDescriptors:(id)arg4;
 + (void)initialize;
 @property(readonly, nonatomic) FPPacer *updatePacer; // @synthesize updatePacer=_updatePacer;
@@ -110,6 +114,7 @@
 - (void)_updateItems;
 - (void)_updateItemsWithUpdatesCount:(unsigned long long)arg1 section:(unsigned long long)arg2;
 - (void)_gatherInitialItems;
+- (id)_initialPageFromSortDescriptors:(id)arg1;
 - (void)_gatherMoreItemsAfterPage:(id)arg1 section:(unsigned long long)arg2;
 @property(readonly, copy, nonatomic) NSString *providerIdentifier;
 - (void)startObserving;

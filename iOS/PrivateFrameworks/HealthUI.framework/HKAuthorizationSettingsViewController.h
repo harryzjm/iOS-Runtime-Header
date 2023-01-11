@@ -5,23 +5,25 @@
 //
 
 #import <HealthUI/HKDocumentPickerViewControllerDelegate-Protocol.h>
+#import <HealthUI/HKHealthPrivacyServicePromptController-Protocol.h>
 #import <HealthUI/HKSourceAuthorizationControllerDelegate-Protocol.h>
 #import <HealthUI/HKSwitchTableViewCellDelegate-Protocol.h>
 
 @class HKDisplayCategoryController, HKHealthStore, HKSource, HKSourceAuthorizationController, NSArray, NSSet, NSString, UIBarButtonItem;
-@protocol HKAuthorizationSettingsViewControllerDelegate;
+@protocol HKHealthPrivacyServicePromptControllerDelegate;
 
-@interface HKAuthorizationSettingsViewController <HKSwitchTableViewCellDelegate, HKDocumentPickerViewControllerDelegate, HKSourceAuthorizationControllerDelegate>
+@interface HKAuthorizationSettingsViewController <HKSwitchTableViewCellDelegate, HKDocumentPickerViewControllerDelegate, HKSourceAuthorizationControllerDelegate, HKHealthPrivacyServicePromptController>
 {
     NSArray *_documents;
     NSArray *_actualSections;
     NSArray *_readingTypeOrdering;
-    id <HKAuthorizationSettingsViewControllerDelegate> _delegate;
+    id <HKHealthPrivacyServicePromptControllerDelegate> _delegate;
     HKHealthStore *_healthStore;
     HKSource *_source;
     long long _style;
     NSString *_updateDescription;
     NSString *_shareDescription;
+    NSString *_researchStudyUsageDescription;
     NSSet *_typesToShare;
     NSSet *_typesToRead;
     HKDisplayCategoryController *_displayCategoryController;
@@ -37,15 +39,17 @@
 @property(retain, nonatomic) HKDisplayCategoryController *displayCategoryController; // @synthesize displayCategoryController=_displayCategoryController;
 @property(retain, nonatomic) NSSet *typesToRead; // @synthesize typesToRead=_typesToRead;
 @property(retain, nonatomic) NSSet *typesToShare; // @synthesize typesToShare=_typesToShare;
+@property(copy, nonatomic) NSString *researchStudyUsageDescription; // @synthesize researchStudyUsageDescription=_researchStudyUsageDescription;
 @property(copy, nonatomic) NSString *shareDescription; // @synthesize shareDescription=_shareDescription;
 @property(copy, nonatomic) NSString *updateDescription; // @synthesize updateDescription=_updateDescription;
 @property(readonly, nonatomic) long long style; // @synthesize style=_style;
 @property(retain, nonatomic) HKSource *source; // @synthesize source=_source;
 @property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
-@property(nonatomic) __weak id <HKAuthorizationSettingsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <HKHealthPrivacyServicePromptControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (void)_configurationFailedWithError:(id)arg1;
 - (void)_addHeaderView;
+- (_Bool)shouldPresent;
 - (_Bool)_isTypeEnabledAtIndexPath:(id)arg1;
 - (id)_typeForIndexPath:(id)arg1 section:(long long *)arg2;
 - (long long)authorizationSectionForSection:(long long)arg1;
@@ -61,6 +65,7 @@
 - (id)_authorizationSettingCellForRowAtIndexPath:(id)arg1;
 - (id)_localizedNameForSection:(long long)arg1 type:(id)arg2;
 - (id)_specialCellWithIdentifier:(id)arg1;
+- (id)_openAppCell;
 - (id)_toggleAllCell;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;

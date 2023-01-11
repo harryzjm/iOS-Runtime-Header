@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/AVOutputContextImpl-Protocol.h>
 
 @class AVOutputContext, AVOutputContextCommunicationChannel, AVOutputDevice, AVWeakReference, NSArray, NSString;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVFigEndpointPickerOutputContextImpl : NSObject <AVOutputContextImpl>
 {
     AVOutputContext *_parentContext;
@@ -27,7 +28,7 @@
 + (struct OpaqueFigEndpointPicker *)copySystemVideoPicker;
 + (_Bool)supportsSecureCoding;
 + (id)outputContextImplForID:(id)arg1;
-+ (id)outputContextForControllingOutputDeviceGroupWithID:(id)arg1;
++ (id)outputContextImplForControllingOutputDeviceGroupWithID:(id)arg1 options:(id)arg2;
 + (id)iTunesAudioContext;
 + (id)sharedSystemScreenContext;
 + (id)sharedSystemAudioContext;
@@ -37,16 +38,20 @@
 + (void)initialize;
 @property __weak AVOutputContext *parentOutputContext; // @synthesize parentOutputContext=_parentContext;
 - (void).cxx_destruct;
+- (id)openCommunicationChannelWithOptions:(id)arg1 error:(id *)arg2;
 @property(readonly, nonatomic) AVOutputContextCommunicationChannel *outgoingCommunicationChannel;
+- (void)muteAllOutputDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)pausePlaybackOnAllOutputDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setVolume:(float)arg1;
 @property(readonly) _Bool canSetVolume;
 @property(readonly) float volume;
 @property(readonly) _Bool providesControlForAllVolumeFeatures;
 - (void)removeOutputDevice:(id)arg1;
-- (void)addOutputDevice:(id)arg1;
+- (void)addOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setOutputDevices:(id)arg1;
 @property(readonly) NSArray *outputDevices;
-- (_Bool)setOutputDevice:(id)arg1 options:(id)arg2;
+@property(readonly) _Bool supportsMultipleOutputDevices;
+- (void)setOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) AVOutputDevice *outputDevice;
 @property(readonly, copy, nonatomic) NSString *associatedAudioDeviceID;
 - (void)outputContextDidChangeApplicationProcessID:(id)arg1;

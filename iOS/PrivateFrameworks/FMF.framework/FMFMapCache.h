@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString;
+@class NSDate, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_pendingMapImageMetaData;
     NSString *_cachePath;
     NSString *_imageCachePath;
+    NSDate *_lastPruneDate;
     NSObject<OS_dispatch_queue> *_cacheMetaQueue;
     NSObject<OS_dispatch_queue> *_gridImageQueue;
     NSObject<OS_dispatch_queue> *_noLocationImageQueue;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *noLocationImageQueue; // @synthesize noLocationImageQueue=_noLocationImageQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *gridImageQueue; // @synthesize gridImageQueue=_gridImageQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *cacheMetaQueue; // @synthesize cacheMetaQueue=_cacheMetaQueue;
+@property(retain, nonatomic) NSDate *lastPruneDate; // @synthesize lastPruneDate=_lastPruneDate;
 @property(retain, nonatomic) NSString *imageCachePath; // @synthesize imageCachePath=_imageCachePath;
 @property(retain, nonatomic) NSString *cachePath; // @synthesize cachePath=_cachePath;
 @property(retain, nonatomic) NSMutableDictionary *pendingMapImageMetaData; // @synthesize pendingMapImageMetaData=_pendingMapImageMetaData;
@@ -43,9 +45,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableDictionary *gridImageMetaData; // @synthesize gridImageMetaData=_gridImageMetaData;
 @property(retain, nonatomic) NSMutableDictionary *cacheMetaData; // @synthesize cacheMetaData=_cacheMetaData;
 - (void).cxx_destruct;
+- (double)pruneIntervalInSeconds;
+- (double)cacheExpiryInSeconds;
 - (id)mapImageKeyForLocation:(id)arg1 altitude:(double)arg2 pitch:(double)arg3 width:(double)arg4 andHeight:(double)arg5;
 - (id)noLocationKeyForWidth:(double)arg1 andHeight:(double)arg2;
 - (id)gridKeyForWidth:(double)arg1 andHeight:(double)arg2;
+- (void)pruneCacheIfNeeded;
+- (void)flushCache;
 - (void)saveMetaData;
 - (void)readMetaData;
 - (_Bool)pendingMapImageForLocation:(id)arg1 altitude:(double)arg2 pitch:(double)arg3 width:(double)arg4 andHeight:(double)arg5;

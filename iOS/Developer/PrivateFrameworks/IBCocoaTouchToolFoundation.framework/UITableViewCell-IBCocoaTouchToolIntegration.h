@@ -22,12 +22,11 @@
 - (id)ibSampleTextForTextLabel;
 - (void)setIbSampleTextForTextLabel:(id)arg1;
 - (void)awakeAfterMarshallerDidEstablishAttributesWithContext:(id)arg1;
-- (id)ibSwizzled_encodableSubviews;
-- (void)ibSwizzled_populateArchivedSubviews:(id)arg1;
 @property(readonly) NSDictionary *ibLayoutFrames;
 - (void)ibDidIncrementallyUpdateValueForKeyPath:(id)arg1;
 @property(copy) NSNumber *ibRowHeight;
 @property __weak UITableView *ibAssociatedTableView;
+- (void)createAndWrapCellWithTableViewWithFrame:(struct CGRect)arg1 tableViewStyle:(long long)arg2 defaultRowHeight:(double)arg3 separatorStyle:(id)arg4 positionInSection:(id)arg5 globalMarshallingContext:(id)arg6;
 - (id)initWithMarshalledValues:(id)arg1 orderedKeys:(id)arg2 ignoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
 @end
 

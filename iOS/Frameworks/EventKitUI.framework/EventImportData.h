@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSData, NSDate, NSString, NSURL;
+@class EKStructuredLocation, NSData, NSDate, NSString, NSURL;
 
 @interface EventImportData : NSObject
 {
+    _Bool _prefersManagedCalendar;
     int _requestedAction;
     NSString *_title;
     NSDate *_startDate;
@@ -18,8 +19,10 @@
     NSString *_notes;
     NSData *_icsData;
     NSString *_uniqueId;
+    EKStructuredLocation *_structuredLocation;
 }
 
++ (id)_extractEventDataFromMapKitItemData:(id)arg1;
 + (id)_extractEventDataFromURL:(id)arg1;
 + (id)_extractEventDataFromReminderICSData:(id)arg1;
 + (id)_extractEventDataFromUTF8StringData:(id)arg1;
@@ -27,9 +30,12 @@
 + (id)_extractEventDataFromSpotlightIdentifier:(id)arg1;
 + (id)eventImportDataFromData:(id)arg1 forType:(id)arg2;
 + (_Bool)itemContainsCalendarICSData:(id)arg1;
++ (_Bool)isSessionManaged:(id)arg1;
 + (void)extractEventImportDataFromDropSession:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 + (id)acceptedTypeIdentifiers;
+@property(nonatomic) _Bool prefersManagedCalendar; // @synthesize prefersManagedCalendar=_prefersManagedCalendar;
 @property(nonatomic) int requestedAction; // @synthesize requestedAction=_requestedAction;
+@property(retain, nonatomic) EKStructuredLocation *structuredLocation; // @synthesize structuredLocation=_structuredLocation;
 @property(retain, nonatomic) NSString *uniqueId; // @synthesize uniqueId=_uniqueId;
 @property(retain, nonatomic) NSData *icsData; // @synthesize icsData=_icsData;
 @property(retain, nonatomic) NSString *notes; // @synthesize notes=_notes;

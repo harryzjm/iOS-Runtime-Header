@@ -7,15 +7,16 @@
 #import <UIKit/UIView.h>
 
 #import <PassKitUI/PKEnterCurrencyAmountViewDelegate-Protocol.h>
+#import <PassKitUI/PKEnterValueNewBalanceViewDelegate-Protocol.h>
 #import <PassKitUI/PKPeerPaymentAddBankAcountInformationViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPeerPaymentPerformActionView-Protocol.h>
 #import <PassKitUI/UITableViewDataSource-Protocol.h>
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 
-@class NSDecimalNumber, NSNumberFormatter, NSString, PKContinuousButton, PKEnterCurrencyAmountView, PKEnterValueNewBalanceView, PKPeerPaymentAccount, PKPeerPaymentBankAccountInformation, PKPeerPaymentService, UILabel, UITableView, UITextField;
+@class NSDecimalNumber, NSNumberFormatter, NSString, PKContinuousButton, PKEnterCurrencyAmountView, PKEnterValueNewBalanceView, PKPeerPaymentAccount, PKPeerPaymentBankAccountInformation, PKPeerPaymentService, UIImageView, UILabel, UITableView, UITextField;
 @protocol PKPerformActionViewDelegate;
 
-@interface PKPerformPeerPaymentTransferToBankActionView : UIView <PKEnterCurrencyAmountViewDelegate, PKPeerPaymentAddBankAcountInformationViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, PKPeerPaymentPerformActionView>
+@interface PKPerformPeerPaymentTransferToBankActionView : UIView <PKEnterCurrencyAmountViewDelegate, PKPeerPaymentAddBankAcountInformationViewControllerDelegate, PKEnterValueNewBalanceViewDelegate, UITableViewDelegate, UITableViewDataSource, PKPeerPaymentPerformActionView>
 {
     PKPeerPaymentBankAccountInformation *_bankInformation;
     PKPeerPaymentService *_peerPaymentService;
@@ -28,29 +29,42 @@
     PKContinuousButton *_addAccountButton;
     UILabel *_addAccountDetailLabel;
     UITableView *_tableView;
+    UIImageView *_checkmarkImageView;
+    UILabel *_tranferTitleLabel;
+    UILabel *_tranferMessageLabel;
+    _Bool _transferComplete;
     NSDecimalNumber *_cardBalance;
-    NSDecimalNumber *_minAmount;
-    NSDecimalNumber *_maxAmount;
+    NSDecimalNumber *_minBalance;
+    NSDecimalNumber *_maxBalance;
+    NSDecimalNumber *_minLoadAmount;
+    NSDecimalNumber *_maxLoadAmount;
 }
 
-@property(copy, nonatomic) NSDecimalNumber *maxAmount; // @synthesize maxAmount=_maxAmount;
-@property(copy, nonatomic) NSDecimalNumber *minAmount; // @synthesize minAmount=_minAmount;
+@property(nonatomic) _Bool transferComplete; // @synthesize transferComplete=_transferComplete;
+@property(copy, nonatomic) NSDecimalNumber *maxLoadAmount; // @synthesize maxLoadAmount=_maxLoadAmount;
+@property(copy, nonatomic) NSDecimalNumber *minLoadAmount; // @synthesize minLoadAmount=_minLoadAmount;
+@property(copy, nonatomic) NSDecimalNumber *maxBalance; // @synthesize maxBalance=_maxBalance;
+@property(copy, nonatomic) NSDecimalNumber *minBalance; // @synthesize minBalance=_minBalance;
 @property(copy, nonatomic) NSDecimalNumber *cardBalance; // @synthesize cardBalance=_cardBalance;
 @property(retain, nonatomic) PKPeerPaymentAccount *account; // @synthesize account=_account;
 @property(nonatomic) __weak id <PKPerformActionViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (double)_amountTopPadding;
 - (id)_tableView;
 - (id)_addAccountDetailLabel;
 - (id)_addAccountButton;
 - (void)_createSubviews;
+- (_Bool)_shouldEnableMaxBalanceTransferButton;
+- (id)_tranferMessageLabel;
+- (id)_tranferTitleLabel;
+- (id)_checkmarkImageView;
 - (_Bool)_isCurrentAmountValid;
+- (_Bool)_shouldShakeWithNewAmount:(id)arg1;
 - (void)_currentAmountDidChangeTo:(id)arg1 shouldGenerateNewSuggestions:(_Bool)arg2;
 - (void)_updateCurrentAmount:(id)arg1 shouldGenerateNewSuggestions:(_Bool)arg2;
-- (_Bool)_shouldShakeCard:(id)arg1;
-- (void)_presentAddBankAccountViewController;
+- (void)presentAddBankAccountViewController;
 - (void)_handleEditAccountInformationButtonPressed;
 - (void)_addAccountInformation:(id)arg1;
+- (unsigned long long)_topPadding;
 - (void)_presentViewController:(id)arg1;
 - (void)_setRightBarButtonEnabledState;
 - (void)enterCurrencyAmountViewDidChangeAmount:(id)arg1;
@@ -67,6 +81,7 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)didTapNewBalanceView;
 - (void)bankAccountInformationViewControllerChangedBankAccountInformation:(id)arg1;
 - (void)layoutSubviews;
 - (void)willMoveToWindow:(id)arg1;

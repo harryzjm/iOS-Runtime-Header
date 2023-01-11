@@ -23,11 +23,12 @@
 }
 
 + (id)messageWithLibraryID:(unsigned int)arg1;
+- (unsigned long long)fileSize;
 - (void)loadCachedHeaderValuesFromHeaders:(id)arg1;
 - (void)_forceLoadOfMessageSummaryFromProtectedStore;
 - (id)attachmentStorageLocation;
 - (id)_attachmentStorageLocation;
-- (id)metadataValueForKey:(id)arg1;
+- (id)metadataValueOfClass:(Class)arg1 forKey:(id)arg2;
 - (void)setMetadataValue:(id)arg1 forKey:(id)arg2;
 - (void)_initializeMetadata;
 - (id)copyMessageInfo;

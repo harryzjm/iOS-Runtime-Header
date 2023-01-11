@@ -45,6 +45,8 @@
 + (id)_lookUpCurrentEnclosureColor;
 + (id)_lookUpCurrentColor;
 + (id)deviceWithSerializedData:(id)arg1;
++ (id)systemContainerCacheURL;
++ (id)systemContainerURL;
 + (_Bool)supportsSecureCoding;
 + (id)activeIDSPeerDevice;
 + (id)currentDevice;
@@ -62,6 +64,7 @@
 @property(copy) NSString *serverFriendlyDescription; // @synthesize serverFriendlyDescription=_serverFriendlyDescription;
 - (void).cxx_destruct;
 @property(readonly) NSString *phoneNumber;
+@property(readonly) _Bool isMultiUserMode;
 @property(readonly) _Bool isInternalBuild;
 @property(readonly) NSString *integratedCircuitCardIdentifier;
 @property(readonly) NSString *mobileEquipmentIdentifier;
@@ -74,7 +77,6 @@
 @property(readonly) NSString *userFullName;
 @property(readonly) NSString *localUserUUID;
 @property(readonly) NSString *userChosenName;
-@property _Bool hasBeenUnlockedSinceLastCheckIn;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

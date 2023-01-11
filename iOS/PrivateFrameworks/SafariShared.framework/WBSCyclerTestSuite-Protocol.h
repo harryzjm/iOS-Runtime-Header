@@ -6,17 +6,16 @@
 
 #import <SafariShared/NSObject-Protocol.h>
 
-@class NSData, NSString, WBSCyclerDeviceCoordinator;
+@class NSString;
 @protocol WBSCyclerTestTarget;
 
 @protocol WBSCyclerTestSuite <NSObject>
-- (void)runWithTarget:(id <WBSCyclerTestTarget>)arg1 deviceCoordinator:(WBSCyclerDeviceCoordinator *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)runWithTarget:(id <WBSCyclerTestTarget>)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (id)init;
 
 @optional
 + (_Bool)setValue:(NSString *)arg1 forConfigurationKey:(NSString *)arg2;
 @property(readonly, nonatomic, getter=isFinished) _Bool finished;
-- (void)didReceiveData:(NSData *)arg1 fromDeviceCoordinator:(WBSCyclerDeviceCoordinator *)arg2 reply:(void (^)(NSData *))arg3;
 - (void)handleRequest:(NSString *)arg1 withTarget:(id <WBSCyclerTestTarget>)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (_Bool)canHandleRequest:(NSString *)arg1;
 - (void)tearDown;

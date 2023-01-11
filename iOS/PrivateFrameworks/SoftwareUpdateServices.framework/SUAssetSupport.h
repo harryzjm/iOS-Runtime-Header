@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface SUAssetSupport : NSObject
 {
@@ -18,8 +18,13 @@
 + (id)getLocalDefaultSoftwareUpdateAssetIfExists;
 + (void)purgeMSUUpdate:(CDUnknownBlockType)arg1;
 + (id)findAssetWithMatcher:(id)arg1 localSearch:(_Bool)arg2 releaseDate:(id *)arg3 error:(id *)arg4;
++ (id)copyInstalledAssets;
++ (id)copySUAssetForAssetID:(id)arg1;
++ (void)setSUFilters:(id)arg1;
++ (void)setAssetQueryFilters:(id)arg1;
 + (id)findAssetWithMatcher:(id)arg1 localSearch:(_Bool)arg2 error:(id *)arg3;
 + (id)_gestaltValueForKey:(struct __CFString *)arg1;
++ (long long)requestCatalogDownload:(id)arg1;
 + (void)cleanupAllSoftwareUpdateAndRelatedAssets;
 + (void)cleanupAllSoftwareUpdateAssets;
 + (void)_cleanupAllAssetsOfType:(id)arg1;

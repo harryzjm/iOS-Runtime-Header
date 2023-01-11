@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSCEReferenceTrackerDelegate-Protocol.h>
 
@@ -13,12 +13,15 @@
 __attribute__((visibility("hidden")))
 @interface TSTSortRuleReferenceTracker : NSObject <TSCEReferenceTrackerDelegate>
 {
-    TSTInfo *mTableInfo;
-    NSMutableSet *mReferences;
-    TSCEReferenceTracker *mReferenceTracker;
+    TSTInfo *_tableInfo;
+    NSMutableSet *_references;
+    TSCEReferenceTracker *_referenceTracker;
 }
 
-@property(nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=mTableInfo;
+@property(retain, nonatomic) TSCEReferenceTracker *referenceTracker; // @synthesize referenceTracker=_referenceTracker;
+@property(retain, nonatomic) NSMutableSet *references; // @synthesize references=_references;
+@property(nonatomic) __weak TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+- (void).cxx_destruct;
 - (id)initFromArchive:(const struct SortRuleReferenceTrackerArchive *)arg1 unarchiver:(id)arg2;
 - (void)encodeToArchive:(struct SortRuleReferenceTrackerArchive *)arg1 archiver:(id)arg2;
 - (void)referencedCellWasModified:(id)arg1;
@@ -34,11 +37,10 @@ __attribute__((visibility("hidden")))
 - (UUIDData_5fbc143e)ownerUID;
 - (void)updateForSortRules:(id)arg1;
 - (id)p_ruleReferenceForTrackedReference:(id)arg1;
-- (unsigned char)p_columnForTrackedReference:(id)arg1;
-- (struct TSCESpanningRangeRef)p_referenceForColumnIndex:(unsigned char)arg1;
-- (void)unregisterFromCalculationEngine;
-- (void)registerWithCalculationEngine:(id)arg1;
-- (void)dealloc;
+- (unsigned short)p_columnForTrackedReference:(id)arg1;
+- (struct TSCESpanningRangeRef)p_referenceForColumnIndex:(unsigned short)arg1;
+- (void)unregisterFromCalcEngine;
+- (void)registerWithCalcEngine:(id)arg1;
 - (id)initWithTableInfo:(id)arg1 context:(id)arg2;
 
 // Remaining properties

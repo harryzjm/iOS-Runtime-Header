@@ -10,9 +10,11 @@
 
 @interface _MPCPlayerPlaybackRateCommand <MPCPlayerPlaybackRateCommand>
 {
+    float _preferredPlaybackRate;
     NSArray *_supportedPlaybackRates;
 }
 
+@property(nonatomic) float preferredPlaybackRate; // @synthesize preferredPlaybackRate=_preferredPlaybackRate;
 @property(copy, nonatomic) NSArray *supportedPlaybackRates; // @synthesize supportedPlaybackRates=_supportedPlaybackRates;
 - (void).cxx_destruct;
 - (id)setPlaybackRate:(float)arg1;

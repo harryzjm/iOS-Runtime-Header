@@ -8,6 +8,7 @@
 {
 }
 
++ (_Bool)supportsSecureCoding;
 @property(copy, nonatomic) CDUnknownBlockType block;
 - (CDUnknownBlockType)batchBlock;
 - (void)setBatchBlock:(CDUnknownBlockType)arg1;

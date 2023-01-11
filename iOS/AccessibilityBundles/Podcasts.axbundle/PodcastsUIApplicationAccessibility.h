@@ -11,7 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityPlaybackSpeed;
 - (_Bool)accessibilityPerformMagicTap;
+- (id)_accessibilityPlayer;
 
 @end
 

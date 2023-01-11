@@ -4,40 +4,51 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MTAlarmManager;
-@protocol HFAccessorySettingMobileTimerAdapterDelegate;
+@class HMAccessoryCollectionSetting, NAFuture, NSHashTable, NSMutableSet, NSSet;
 
 @interface HFAccessorySettingMobileTimerAdapter
 {
-    id <HFAccessorySettingMobileTimerAdapterDelegate> _delegate;
-    unsigned long long _mode;
-    MTAlarmManager *_alarmManagerForSynchronization;
+    NAFuture *_alarmManagerForSynchronizationFuture;
+    NSHashTable *_observers;
+    NAFuture *_setupAccessoryAdapterModeFuture;
+    NSMutableSet *_internalAlarmsBeingAdded;
+    NSMutableSet *_internalAlarmsBeingRemoved;
+    NSMutableSet *_internalAlarmsBeingUpdated;
 }
 
-@property(retain, nonatomic) MTAlarmManager *alarmManagerForSynchronization; // @synthesize alarmManagerForSynchronization=_alarmManagerForSynchronization;
-@property(readonly, nonatomic) unsigned long long mode; // @synthesize mode=_mode;
-@property(nonatomic) __weak id <HFAccessorySettingMobileTimerAdapterDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, copy, nonatomic) NSMutableSet *internalAlarmsBeingUpdated; // @synthesize internalAlarmsBeingUpdated=_internalAlarmsBeingUpdated;
+@property(readonly, copy, nonatomic) NSMutableSet *internalAlarmsBeingRemoved; // @synthesize internalAlarmsBeingRemoved=_internalAlarmsBeingRemoved;
+@property(readonly, copy, nonatomic) NSMutableSet *internalAlarmsBeingAdded; // @synthesize internalAlarmsBeingAdded=_internalAlarmsBeingAdded;
+@property(readonly, nonatomic) NAFuture *setupAccessoryAdapterModeFuture; // @synthesize setupAccessoryAdapterModeFuture=_setupAccessoryAdapterModeFuture;
+@property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property(retain, nonatomic) NAFuture *alarmManagerForSynchronizationFuture; // @synthesize alarmManagerForSynchronizationFuture=_alarmManagerForSynchronizationFuture;
 - (void).cxx_destruct;
+- (void)_setupDebugHandler;
+- (id)_beginMonitoringSettingsKeyPath:(id)arg1;
+- (void)_notifyObserversOfUpdates;
 - (void)_respondToAlarmManagerUpdate;
 - (void)_alarmWasUpdated:(id)arg1;
 - (void)_alarmWasDeleted:(id)arg1;
 - (void)_alarmWasAdded:(id)arg1;
-- (void)_alarmDidFire:(id)arg1;
-- (void)_setupAccessoryAdapterMode;
-- (id)_homeKitAlarms;
-- (id)_synchronizeMobileTimerToHomeKit;
+- (id)_synchronizeMobileTimerToHomeKitWithChangeType:(unsigned long long)arg1;
 - (id)_synchronizeHomeKitToMobileTimer;
-- (id)_submitAlarmsToHomeKit:(id)arg1;
-- (id)alarmDataContentSetting;
-- (id)loggedInAppleMusicAccountDSID;
+- (id)alarmCollectionSettingFuture;
 - (id)addAlarm:(id)arg1;
 - (id)removeAlarm:(id)arg1;
 - (id)updateAlarm:(id)arg1;
 - (id)alarmManagerAlarms;
+- (id)alarmSettingsCurrentItemsFuture;
+- (id)allAlarmsFuture;
 - (id)allAlarms;
 - (void)accessorySettingWasUpdated:(id)arg1 value:(id)arg2;
-- (id)initWithAccessoryProfile:(id)arg1;
-- (id)initWithAccessoryProfile:(id)arg1 mode:(unsigned long long)arg2;
+@property(readonly, nonatomic) _Bool isAdapterReady;
+@property(readonly, nonatomic) HMAccessoryCollectionSetting *alarmCollectionSetting;
+@property(readonly, copy, nonatomic) NSSet *alarmsWithPendingEdits;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1;
+- (id)initWithMediaProfileContainer:(id)arg1 keyPaths:(id)arg2 updateHandler:(CDUnknownBlockType)arg3;
+- (id)initWithMediaProfileContainer:(id)arg1 keyPaths:(id)arg2 mode:(unsigned long long)arg3 updateHandler:(CDUnknownBlockType)arg4;
+- (id)initWithMediaProfileContainer:(id)arg1 mode:(unsigned long long)arg2;
 
 @end
 

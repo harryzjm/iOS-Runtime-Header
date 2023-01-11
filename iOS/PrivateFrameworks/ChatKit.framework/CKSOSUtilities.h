@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CKSOSUtilities : NSObject
 {
@@ -20,6 +20,7 @@
 - (void)sendMessage:(id)arg1;
 - (void)sendMessage:(id)arg1 location:(id)arg2 recipients:(id)arg3 failureHandler:(CDUnknownBlockType)arg4;
 - (void)sendMessage:(id)arg1 location:(id)arg2 recipients:(id)arg3;
+- (_Bool)isMMSEnabledForPhoneNumber:(id)arg1 simID:(id)arg2;
 @property(readonly, nonatomic, getter=isMMSEnabled) _Bool MMSEnabled;
 - (_Bool)isMobileKeyBagDisabledOrDeviceUnlockedSinceBoot;
 

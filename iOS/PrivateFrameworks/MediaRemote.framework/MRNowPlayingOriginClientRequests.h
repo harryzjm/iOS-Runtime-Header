@@ -4,30 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary;
+@class NSMutableArray, NSMutableDictionary, _MRDeviceInfoMessageProtobuf, _MROriginProtobuf;
 @protocol OS_dispatch_queue;
 
 @interface MRNowPlayingOriginClientRequests : NSObject <MRNowPlayingClientState>
 {
-    void *_origin;
     NSObject<OS_dispatch_queue> *_serialQueue;
+    _MRDeviceInfoMessageProtobuf *_deviceInfo;
+    unsigned int _volumeCapabilities;
+    float _volume;
     NSMutableArray *_nowPlayingClients;
     NSMutableDictionary *_transactionCallbacks;
+    _MROriginProtobuf *_origin;
 }
 
-@property(readonly, nonatomic) void *origin; // @synthesize origin=_origin;
+@property(readonly, nonatomic) _MROriginProtobuf *origin; // @synthesize origin=_origin;
+- (void).cxx_destruct;
 - (void)restoreNowPlayingClientState;
 - (CDUnknownBlockType)transactionCallbackForName:(unsigned long long)arg1;
 - (void)setTransactionCallback:(CDUnknownBlockType)arg1 forName:(unsigned long long)arg2;
-- (void)removeClient:(void *)arg1;
-- (id)nowPlayingClientRequestsForPlayerPath:(void *)arg1;
+@property(copy, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
+- (void)removeClient:(id)arg1;
+- (id)existingNowPlayingClientRequestsForPlayerPath:(id)arg1;
+- (id)nowPlayingClientRequestsForPlayerPath:(id)arg1;
+@property(nonatomic) float volume;
+@property(nonatomic) unsigned int volumeCapabilities;
 - (id)nowPlayingClients;
-- (void)dealloc;
-- (id)initWithOrigin:(void *)arg1;
+- (id)debugDescription;
+- (id)initWithOrigin:(id)arg1;
 
 @end
 

@@ -4,29 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FCArticleList, FCCloudContext, NSArray, NSDictionary, NSError;
-@protocol FCChannelProviding;
+@class FCCloudContext, FCTopStoriesOperationResult, NSError;
+@protocol FCChannelProviding, FCCoreConfiguration;
 
 @interface FCTopStoriesOperation
 {
+    id <FCCoreConfiguration> _configuration;
     FCCloudContext *_context;
     id <FCChannelProviding> _topStoriesChannel;
-    NSArray *_mandatoryHeadlines;
-    NSArray *_optionalHeadlines;
-    NSDictionary *_topStoriesMetadataByArticleID;
+    FCTopStoriesOperationResult *_topStoriesResult;
     NSError *_error;
     CDUnknownBlockType _catchUpCompletionHandler;
-    FCArticleList *_articleList;
 }
 
-@property(retain) FCArticleList *articleList; // @synthesize articleList=_articleList;
 @property(copy) CDUnknownBlockType catchUpCompletionHandler; // @synthesize catchUpCompletionHandler=_catchUpCompletionHandler;
 @property(retain) NSError *error; // @synthesize error=_error;
-@property(copy) NSDictionary *topStoriesMetadataByArticleID; // @synthesize topStoriesMetadataByArticleID=_topStoriesMetadataByArticleID;
-@property(copy) NSArray *optionalHeadlines; // @synthesize optionalHeadlines=_optionalHeadlines;
-@property(copy) NSArray *mandatoryHeadlines; // @synthesize mandatoryHeadlines=_mandatoryHeadlines;
+@property(retain) FCTopStoriesOperationResult *topStoriesResult; // @synthesize topStoriesResult=_topStoriesResult;
 @property(copy) id <FCChannelProviding> topStoriesChannel; // @synthesize topStoriesChannel=_topStoriesChannel;
 @property(retain, nonatomic) FCCloudContext *context; // @synthesize context=_context;
+@property(copy, nonatomic) id <FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
 - (void).cxx_destruct;
 - (void)_checkShouldShowTopStoriesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)operationWillFinishWithError:(id)arg1;

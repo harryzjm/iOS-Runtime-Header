@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Metal/MTLPipelineCache-Protocol.h>
 
@@ -14,8 +14,10 @@
 {
     _Bool _writable;
     struct MTLCompilerCache *_compilerCache;
+    _Bool _disableRunTimeCompilation;
 }
 
+@property _Bool disableRunTimeCompilation; // @synthesize disableRunTimeCompilation=_disableRunTimeCompilation;
 @property(readonly) _Bool writable; // @synthesize writable=_writable;
 - (void)write;
 @property(readonly) struct MTLCompilerCache *cache; // @synthesize cache=_compilerCache;

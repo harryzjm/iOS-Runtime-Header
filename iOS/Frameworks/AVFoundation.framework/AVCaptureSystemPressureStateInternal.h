@@ -4,22 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVFrameRateRange, NSString;
+@class AVFrameRateRange;
 
 @interface AVCaptureSystemPressureStateInternal : NSObject
 {
-    NSString *_level;
+    int _figLevel;
     unsigned long long _factors;
     AVFrameRateRange *_recommendedFrameRateRangeForPortrait;
 }
 
 @property(readonly) AVFrameRateRange *recommendedFrameRateRangeForPortrait;
 @property(readonly) unsigned long long factors;
-@property(readonly) NSString *level;
+@property(readonly) int figLevel;
 - (void)dealloc;
-- (id)initWithLevel:(id)arg1 factors:(unsigned long long)arg2 recommendedFrameRateRangeForPortrait:(id)arg3;
+- (id)initWithFigLevel:(int)arg1 factors:(unsigned long long)arg2 recommendedFrameRateRangeForPortrait:(id)arg3;
 
 @end
 

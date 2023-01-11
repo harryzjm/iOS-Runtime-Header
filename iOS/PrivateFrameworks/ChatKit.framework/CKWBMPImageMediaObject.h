@@ -10,6 +10,7 @@
 
 + (Class)imageDataClass;
 + (id)UTITypes;
+- (_Bool)generatePreviewOutOfProcess;
 
 @end
 

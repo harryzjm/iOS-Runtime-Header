@@ -40,6 +40,7 @@
 - (void)waitForSessionInitialization;
 @property(readonly, nonatomic) CARSession *currentSession;
 - (void)dealloc;
+- (id)initAndWaitUntilSessionUpdated;
 - (id)init;
 
 @end

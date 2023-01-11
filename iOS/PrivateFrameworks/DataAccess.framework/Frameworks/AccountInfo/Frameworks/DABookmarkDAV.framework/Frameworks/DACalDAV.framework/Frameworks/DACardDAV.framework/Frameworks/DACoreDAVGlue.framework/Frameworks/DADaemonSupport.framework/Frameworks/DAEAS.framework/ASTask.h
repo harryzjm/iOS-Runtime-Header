@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <DAEAS/DATask-Protocol.h>
 #import <DAEAS/NSURLSessionDataDelegate-Protocol.h>
@@ -92,10 +92,13 @@
 - (void)_handleCompletionError:(id)arg1;
 - (void)_handleCompletion;
 - (void)_handleAuthenticationChallenge:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_handleAuthenticationChallenge:(id)arg1;
+- (id)_getCredential:(id)arg1;
+- (_Bool)_canAuthenticateAgainstProtectionSpace:(id)arg1;
+- (_Bool)_shouldUseUsernamePasswordForAuthenticationMethod:(id)arg1;
 - (void)_URLSessionDataTaskDidReceiveData:(id)arg1;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
 - (void)_URLSessionTaskDidCompleteWithError:(id)arg1;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;

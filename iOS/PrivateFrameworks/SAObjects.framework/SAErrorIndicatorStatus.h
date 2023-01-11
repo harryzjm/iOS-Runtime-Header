@@ -15,6 +15,7 @@
 + (id)errorIndicatorStatusWithDictionary:(id)arg1 context:(id)arg2;
 + (id)errorIndicatorStatus;
 @property(copy, nonatomic) NSArray *values;
+@property(nonatomic) _Bool deviceFixingProblems;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

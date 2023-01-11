@@ -4,9 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSUUID;
+
 @interface PKPeerPaymentPerformResponse
 {
+    NSUUID *_deviceScoreIdentifier;
 }
+
++ (_Bool)supportsSecureCoding;
+@property(readonly, copy, nonatomic) NSUUID *deviceScoreIdentifier; // @synthesize deviceScoreIdentifier=_deviceScoreIdentifier;
+- (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithData:(id)arg1 deviceScoreIdentifier:(id)arg2;
+- (id)initWithData:(id)arg1;
 
 @end
 

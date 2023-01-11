@@ -9,12 +9,12 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDHomeManager, NSObject, NSString, NSUUID;
+@class HMDHomeManager, HMFMessageDestination, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDKeyTransferAgent : HMFObject <HMFLogging, HMFMessageReceiver>
 {
-    _Bool _inProgress;
+    NSString *_progressState;
     unsigned long long _residentProvisioningStatus;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDHomeManager *_homeManager;
@@ -26,11 +26,12 @@
 @property(nonatomic) __weak HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(readonly) unsigned long long residentProvisioningStatus; // @synthesize residentProvisioningStatus=_residentProvisioningStatus;
-@property(nonatomic, getter=isInProgress) _Bool inProgress; // @synthesize inProgress=_inProgress;
+@property(retain, nonatomic) NSString *progressState; // @synthesize progressState=_progressState;
 - (void).cxx_destruct;
 - (id)logIdentifier;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
+@property(readonly, copy) HMFMessageDestination *messageDestination;
 - (void)resetConfig;
 - (void)beginPairingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithHomeManager:(id)arg1;

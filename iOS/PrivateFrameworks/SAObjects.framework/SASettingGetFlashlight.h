@@ -10,6 +10,7 @@
 
 + (id)getFlashlightWithDictionary:(id)arg1 context:(id)arg2;
 + (id)getFlashlight;
+- (_Bool)mutatingCommand;
 - (_Bool)requiresResponse;
 - (id)encodedClassName;
 - (id)groupIdentifier;

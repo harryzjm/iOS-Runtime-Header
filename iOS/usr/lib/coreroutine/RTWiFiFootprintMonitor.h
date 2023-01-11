@@ -30,7 +30,7 @@
 - (void)onWiFiManagerNotificationScanResults:(id)arg1;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
-- (void)shutdown;
+- (void)_shutdown;
 - (void)_stop;
 - (void)_start;
 - (id)initWithWiFiManager:(id)arg1;

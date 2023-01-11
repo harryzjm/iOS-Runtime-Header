@@ -11,12 +11,14 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_axPerformBlockOnNotificationController:(CDUnknownBlockType)arg1;
+- (_Bool)_axIsGrouped;
+- (id)_axNCNotificationViewController;
 - (_Bool)accessibilityPerformEscape;
 - (id)accessibilityCustomActions;
 - (_Bool)_axClear:(id)arg1;
 - (_Bool)_axDismiss;
 - (_Bool)_axMore:(id)arg1;
-- (void)_axPerformBlockOnNotificationController:(CDUnknownBlockType)arg1;
 - (id)accessibilityIdentifier;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;

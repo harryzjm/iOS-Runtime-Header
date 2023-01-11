@@ -4,29 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSDChangeableInfo-Protocol.h>
 #import <iWorkImport/TSKDocumentObject-Protocol.h>
 #import <iWorkImport/TSKTransformableObject-Protocol.h>
 
-@class KNAbstractSlide, NSString, TSDFill, TSDInfoGeometry, TSPObject, TSSPropertySetChangeDetails, TSSStylesheet;
+@class KNAbstractSlide, NSString, TSDFill, TSDInfoGeometry, TSPObject, TSSPropertySetChangeDetails;
 @protocol TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
 @interface KNSlideBackgroundInfo : NSObject <TSDChangeableInfo, TSKDocumentObject, TSKTransformableObject>
 {
-    NSObject<TSDContainerInfo> *mParentInfo;
-    TSDInfoGeometry *mGeometry;
-    TSSPropertySetChangeDetails *mChanges;
-    TSSStylesheet *mStylesheet;
-    KNAbstractSlide *mSlide;
+    NSObject<TSDContainerInfo> *_parentInfo;
+    TSSPropertySetChangeDetails *_changes;
+    TSDInfoGeometry *_geometry;
+    KNAbstractSlide *_slide;
 }
 
 + (id)backgroundWithSlide:(id)arg1 andGeometry:(id)arg2;
-@property(readonly, nonatomic) KNAbstractSlide *slide; // @synthesize slide=mSlide;
-@property(copy, nonatomic) TSDInfoGeometry *geometry; // @synthesize geometry=mGeometry;
-@property(nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @synthesize parentInfo=mParentInfo;
+@property(readonly, nonatomic) __weak KNAbstractSlide *slide; // @synthesize slide=_slide;
+@property(copy, nonatomic) TSDInfoGeometry *geometry; // @synthesize geometry=_geometry;
+@property(nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @synthesize parentInfo=_parentInfo;
+- (void).cxx_destruct;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeRemovedFromDocumentRoot:(id)arg1;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
@@ -39,7 +39,6 @@ __attribute__((visibility("hidden")))
 - (void)willChangeProperty:(int)arg1;
 - (void)beginCollectingChanges;
 - (id)originalPDFDataForCopy;
-@property(readonly, nonatomic) _Bool isUserModifiable;
 @property(readonly, nonatomic) TSDFill *fill;
 - (Class)layoutClass;
 - (_Bool)isSelectable;
@@ -52,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
 - (_Bool)isThemeContent;
 - (Class)repClass;
-- (void)dealloc;
 - (id)initWithSlide:(id)arg1 andGeometry:(id)arg2;
 
 // Remaining properties

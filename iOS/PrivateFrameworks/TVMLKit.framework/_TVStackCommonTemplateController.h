@@ -66,7 +66,6 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)_updateOverlayBlurView;
 - (_Bool)_shouldOverlayBlur;
-- (void)viewDidLayoutSubviews;
 - (id)_overlayView;
 - (id)_viewControllerWithElement:(id)arg1 existingController:(id)arg2;
 - (_Bool)_updateSupplementaryViewControllersWithElements:(id)arg1 updateStyles:(_Bool)arg2;
@@ -88,6 +87,8 @@
 - (void)_disableScrollingIfNecessary:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
+- (id)_modalPresenterPresentedViewController;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)loadView;
 @property(readonly, retain, nonatomic) _TVStackWrappingView *stackWrappingView;
 - (void)updateWithViewElement:(id)arg1;

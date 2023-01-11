@@ -8,8 +8,8 @@
 {
 }
 
-- (void)_loadDetailsForDevice:(id)arg1;
-- (id)initWithDevice:(id)arg1;
+- (void)_loadDetailsForSample:(id)arg1;
+- (id)initWithSample:(id)arg1;
 
 @end
 

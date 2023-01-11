@@ -15,7 +15,6 @@
     HMFHTTPRequest *_request;
 }
 
-+ (id)shortDescription;
 @property(readonly, nonatomic) HMFHTTPResponseInternal *internal; // @synthesize internal=_internal;
 @property(readonly, nonatomic) HMFHTTPRequest *request; // @synthesize request=_request;
 - (void).cxx_destruct;
@@ -24,10 +23,7 @@
 @property(readonly, nonatomic) long long statusCode;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (id)debugDescription;
-- (id)descriptionWithPointer:(_Bool)arg1;
-- (id)shortDescription;
+- (id)attributeDescriptions;
 - (id)initWithRequest:(id)arg1 internalResponse:(id)arg2;
 - (id)init;
 

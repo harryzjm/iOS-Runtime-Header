@@ -9,17 +9,21 @@
 #import <Contacts/CNContactsLoggerProvider-Protocol.h>
 
 @class NSString;
-@protocol CNContactsLogger, CNRegulatoryLogger, CNSpotlightIndexingLogger;
+@protocol CNContactsLogger, CNFavoritesLogger, CNGeminiLogger, CNRegulatoryLogger, CNSpotlightIndexingLogger;
 
 @interface CNContactsLoggerProvider : NSObject <CNContactsLoggerProvider>
 {
     id <CNContactsLogger> _contactsLogger;
     id <CNSpotlightIndexingLogger> _spotlightIndexingLogger;
     id <CNRegulatoryLogger> _regulatoryLogger;
+    id <CNFavoritesLogger> _favoritesLogger;
+    id <CNGeminiLogger> _geminiLogger;
 }
 
 + (id)defaultProvider;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <CNGeminiLogger> geminiLogger;
+@property(readonly, nonatomic) id <CNFavoritesLogger> favoritesLogger;
 @property(readonly, nonatomic) id <CNRegulatoryLogger> regulatoryLogger;
 @property(readonly, nonatomic) id <CNSpotlightIndexingLogger> spotlightIndexingLogger;
 @property(readonly, nonatomic) id <CNContactsLogger> contactsLogger;

@@ -6,39 +6,30 @@
 
 #import <objc/NSObject.h>
 
-#import <SetupAssistantSupport/SASProximitySessionProtocol-Protocol.h>
-
-@class CUMessageSession, NSString;
+@class CUMessageSession, SASProximitySessionTransport;
 @protocol OS_dispatch_queue, SASProximitySessionDelegate;
 
-@interface SASProximitySession : NSObject <SASProximitySessionProtocol>
+@interface SASProximitySession : NSObject
 {
-    _Bool connected;
-    id <SASProximitySessionDelegate> delegate;
-    CUMessageSession *sharingMessageSession;
+    _Bool _connected;
+    id <SASProximitySessionDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_actionQueue;
-    CUMessageSession *_messageSession;
+    SASProximitySessionTransport *_transport;
 }
 
-@property(retain) CUMessageSession *messageSession; // @synthesize messageSession=_messageSession;
+@property(retain) SASProximitySessionTransport *transport; // @synthesize transport=_transport;
 @property(retain) NSObject<OS_dispatch_queue> *actionQueue; // @synthesize actionQueue=_actionQueue;
-@property(getter=isConnected) _Bool connected; // @synthesize connected;
-@property(retain) CUMessageSession *sharingMessageSession; // @synthesize sharingMessageSession;
-@property id <SASProximitySessionDelegate> delegate; // @synthesize delegate;
+@property(getter=isConnected) _Bool connected; // @synthesize connected=_connected;
+@property id <SASProximitySessionDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (void)handleAction:(id)arg1;
 - (id)actionFromData:(id)arg1;
 - (id)sendAction:(id)arg1;
 - (void)receivedAction:(id)arg1 response:(CDUnknownBlockType)arg2;
+@property(retain) CUMessageSession *sharingMessageSession;
 - (void)invalidate;
 - (void)activate;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

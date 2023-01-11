@@ -9,6 +9,7 @@
 #import <CloudKit/CKXPCClient-Protocol.h>
 
 @class ACAccountStore, CKAccountOverrideInfo, CKContainerID, CKContainerOptions, CKContainerSetupInfo, CKDatabase, CKOperationCallbackManager, CKOperationFlowControlManager, CKRecordID, NSMapTable, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString, NSXPCConnection;
+@protocol OS_dispatch_queue;
 
 @interface CKContainer : NSObject <CKXPCClient>
 {
@@ -24,6 +25,7 @@
     int _identityUpdateToken;
     CKContainerID *_containerID;
     CKRecordID *_containerScopedUserID;
+    CKRecordID *_orgAdminUserID;
     CKContainerOptions *_options;
     CKDatabase *_privateCloudDatabase;
     CKDatabase *_publicCloudDatabase;
@@ -41,6 +43,7 @@
     NSMapTable *_assetsByUUID;
     NSMutableDictionary *_fakeEntitlements;
     unsigned long long _stateHandle;
+    NSObject<OS_dispatch_queue> *_underlyingDispatchQueue;
 }
 
 + (void)getBehaviorOptionForKey:(id)arg1 isContainerOption:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -57,6 +60,7 @@
 + (id)containerIDForContainerIdentifier:(id)arg1;
 + (id)containerIDForContainerIdentifier:(id)arg1 environment:(long long)arg2;
 + (id)defaultContainer;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *underlyingDispatchQueue; // @synthesize underlyingDispatchQueue=_underlyingDispatchQueue;
 @property(nonatomic) unsigned long long stateHandle; // @synthesize stateHandle=_stateHandle;
 @property(retain, nonatomic) NSMutableDictionary *fakeEntitlements; // @synthesize fakeEntitlements=_fakeEntitlements;
 @property(retain, nonatomic) NSMapTable *assetsByUUID; // @synthesize assetsByUUID=_assetsByUUID;
@@ -80,6 +84,7 @@
 @property(retain, nonatomic) CKDatabase *publicCloudDatabase; // @synthesize publicCloudDatabase=_publicCloudDatabase;
 @property(retain, nonatomic) CKDatabase *privateCloudDatabase; // @synthesize privateCloudDatabase=_privateCloudDatabase;
 @property(retain, nonatomic) CKContainerOptions *options; // @synthesize options=_options;
+@property(retain, nonatomic) CKRecordID *orgAdminUserID; // @synthesize orgAdminUserID=_orgAdminUserID;
 @property(retain, nonatomic) CKRecordID *containerScopedUserID; // @synthesize containerScopedUserID=_containerScopedUserID;
 @property(retain, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 - (void).cxx_destruct;
@@ -89,6 +94,7 @@
 - (void)dumpDaemonStatusReportToFileHandle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dumpAllClientsStatusReportToFileHandle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)CKStatusReportArray;
+- (void)submitEventMetric:(id)arg1;
 - (void)fetchFullNameAndFormattedUsernameOfAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchFullNameAndPrimaryEmailOnAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchCurrentDeviceIDWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -108,6 +114,7 @@
 - (void)setHoldAllOperations:(_Bool)arg1;
 - (void)setFakeEntitlement:(id)arg1 forKey:(id)arg2;
 - (void)fetchCurrentUserBoundaryKeyWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)clearPCSCachesForKnownContextsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)wipeAllCachedLongLivedProxiesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setFakeResponseOperationResult:(id)arg1 forNextRequestOfClassName:(id)arg2 forItemID:(id)arg3 withLifetime:(int)arg4;
 - (void)setFakeError:(id)arg1 forNextRequestOfClassName:(id)arg2;
@@ -163,7 +170,11 @@
 - (void)discoverUserIdentityWithEmailAddress:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_discoverUserIdentityWithLookupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)discoverAllIdentitiesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)fetchOrgAdminUserRecordIDWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchUserRecordIDWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_fetchImportantUserRecordIDOfType:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_importantUserRecordIDOfType:(long long)arg1;
+- (void)_setImportantUserRecordID:(id)arg1 ofType:(long long)arg2;
 - (void)getNewWebSharingIdentityDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getNewWebSharingIdentity:(CDUnknownBlockType)arg1;
 - (void)decryptPersonalInfoOnShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

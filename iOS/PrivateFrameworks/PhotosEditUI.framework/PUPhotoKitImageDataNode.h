@@ -12,9 +12,11 @@
 @class NSArray, NSData, NSString, NSURL, PHAsset;
 @protocol PXRunNodeDelegate;
 
+__attribute__((visibility("hidden")))
 @interface PUPhotoKitImageDataNode : PXRunNode <PUImageDataNode, PUImageInfoNode>
 {
     int _requestID;
+    _Bool _useEmbeddedPreview;
     NSData *_imageData;
     NSURL *_imageDataURL;
     NSString *_imageDataUTI;
@@ -23,6 +25,7 @@
     PHAsset *_asset;
 }
 
+@property(readonly, nonatomic) _Bool useEmbeddedPreview; // @synthesize useEmbeddedPreview=_useEmbeddedPreview;
 @property(readonly, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
 @property(readonly, nonatomic) long long version; // @synthesize version=_version;
 @property(readonly, nonatomic) long long imageExifOrientation; // @synthesize imageExifOrientation=_imageExifOrientation;
@@ -33,7 +36,7 @@
 - (void)_handleLoadedImageData:(id)arg1 imageUTI:(id)arg2 imageOrientation:(long long)arg3 info:(id)arg4;
 - (void)run;
 - (void)didCancel;
-- (id)initWithAsset:(id)arg1 version:(long long)arg2;
+- (id)initWithAsset:(id)arg1 version:(long long)arg2 useEmbeddedPreview:(_Bool)arg3;
 
 // Remaining properties
 @property(readonly, getter=isCanceled) _Bool canceled;

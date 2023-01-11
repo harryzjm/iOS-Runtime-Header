@@ -7,6 +7,7 @@
 #import <CorePDF/CPDisposable-Protocol.h>
 #import <CorePDF/CPGraphicUser-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface CPTable <CPDisposable, CPGraphicUser>
 {
     struct CGRect tableBounds;

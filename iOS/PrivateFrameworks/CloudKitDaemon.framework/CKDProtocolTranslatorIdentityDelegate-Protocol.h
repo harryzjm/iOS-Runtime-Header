@@ -6,9 +6,9 @@
 
 #import <CloudKitDaemon/NSObject-Protocol.h>
 
-@class NSArray;
+@class NSData;
 
 @protocol CKDProtocolTranslatorIdentityDelegate <NSObject>
-@property(readonly, nonatomic) NSArray *sharingIdentityFingerprints;
+- (_Bool)sharingFingerprintsContainPublicKeyWithData:(NSData *)arg1 error:(id *)arg2;
 @end
 

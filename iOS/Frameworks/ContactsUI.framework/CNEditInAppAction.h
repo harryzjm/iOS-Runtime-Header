@@ -4,22 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNContactStore;
-@protocol CNUILSApplicationWorkspaceFacade;
+@class CNUIUserActivityManager;
 
 __attribute__((visibility("hidden")))
 @interface CNEditInAppAction
 {
-    CNContactStore *_contactStore;
-    id <CNUILSApplicationWorkspaceFacade> _applicationWorkspace;
+    CNUIUserActivityManager *_activityManager;
 }
 
-@property(readonly, nonatomic) id <CNUILSApplicationWorkspaceFacade> applicationWorkspace; // @synthesize applicationWorkspace=_applicationWorkspace;
-@property(readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
+@property(readonly, nonatomic) CNUIUserActivityManager *activityManager; // @synthesize activityManager=_activityManager;
 - (void).cxx_destruct;
 - (id)title;
 - (void)performActionWithSender:(id)arg1;
-- (id)initWithContact:(id)arg1 applicationWorkspace:(id)arg2 contactStore:(id)arg3;
+- (id)initWithContact:(id)arg1 activityManager:(id)arg2;
 
 @end
 

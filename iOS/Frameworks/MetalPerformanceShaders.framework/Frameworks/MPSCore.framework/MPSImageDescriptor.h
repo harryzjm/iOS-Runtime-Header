@@ -6,7 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@interface MPSImageDescriptor : NSObject
+#import <MPSCore/NSCopying-Protocol.h>
+
+@interface MPSImageDescriptor : NSObject <NSCopying>
 {
     unsigned long long _width;
     unsigned long long _height;
@@ -33,6 +35,7 @@
 @property(nonatomic) unsigned long long width; // @synthesize width=_width;
 - (id)debugQuickLookObject;
 - (id)debugDescription;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)newTextureDescriptor;
 - (id)init;
 @property(readonly, nonatomic) unsigned long long pixelFormat;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSPDecoderReadCoordinatorDelegate-Protocol.h>
 
@@ -22,11 +22,13 @@ __attribute__((visibility("hidden")))
     _Bool _deserializeAsPasteboard;
     _Bool _resetObjectUUIDs;
     _Bool _shouldDecodeMissingDataAsRemote;
+    _Bool _isCrossDocumentPaste;
+    _Bool _isCrossAppPaste;
 }
 
+@property(nonatomic) _Bool isCrossAppPaste; // @synthesize isCrossAppPaste=_isCrossAppPaste;
+@property(nonatomic) _Bool isCrossDocumentPaste; // @synthesize isCrossDocumentPaste=_isCrossDocumentPaste;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool isCrossAppPaste;
-@property(readonly, nonatomic) _Bool isCrossDocumentPaste;
 @property(readonly, nonatomic) long long sourceType;
 @property(readonly, nonatomic) _Bool hasDocumentVersionUUID;
 @property(readonly, nonatomic) unsigned long long fileFormatVersion;

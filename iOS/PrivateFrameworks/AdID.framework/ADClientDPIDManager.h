@@ -57,7 +57,7 @@
 - (_Bool)iCloudAccountSubscribed;
 - (void)writeDPIDtoKeychain;
 - (_Bool)limitAdTrackingEnabled;
-- (_Bool)isRestrictedAccount;
+- (_Bool)isRestrictedByApple;
 - (_Bool)isLoggedIntoiTunes;
 - (void)resetDPID:(CDUnknownBlockType)arg1;
 - (void)handlePushNotification:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

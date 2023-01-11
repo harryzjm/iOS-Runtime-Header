@@ -54,6 +54,7 @@
 - (void)_handleGesture:(id)arg1;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
 @property(retain, nonatomic) id value;
+- (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
 - (void)_updateMirroringAxisBiasIfNecessary;
 - (void)_applyMirroringAxisBiasToColorWheelSpaceIfNecessary;
 - (void)_updateMagnifierPosition;
@@ -70,7 +71,6 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(retain, nonatomic) id secondaryValue;
-@property(nonatomic) long long sizeSubclass;
 @property(readonly) Class superclass;
 
 @end

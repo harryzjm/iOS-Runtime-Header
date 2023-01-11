@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary;
 @protocol TSCHStyleOwning;
@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 
 @property(readonly) NSDictionary *mutations; // @synthesize mutations=mMutations;
 @property(readonly) id <TSCHStyleOwning> styleOwner; // @synthesize styleOwner=mStyleOwner;
+- (void).cxx_destruct;
 - (id)description;
-- (void)dealloc;
 - (id)initWithStyleOwner:(id)arg1 mutationMap:(id)arg2;
 - (id)initWithStyleOwner:(id)arg1 mutations:(id)arg2;
 - (id)styleOwnerRef;

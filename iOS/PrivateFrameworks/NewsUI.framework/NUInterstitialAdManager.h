@@ -6,8 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class FCAppConfigurationManager;
-@protocol NUAdProvider, NUInterstitialAdManagerDelegate, NUPage;
+@protocol FCNewsAppConfigurationManager, NUAdLayoutOptionsFactory, NUAdProvider, NUInterstitialAdManagerDelegate, NUPage;
 
 @interface NUInterstitialAdManager : NSObject
 {
@@ -15,10 +14,12 @@
     id <NUInterstitialAdManagerDelegate> _delegate;
     id <NUPage> _activePage;
     id <NUAdProvider> _adProvider;
-    FCAppConfigurationManager *_appConfigurationManager;
+    id <FCNewsAppConfigurationManager> _appConfigurationManager;
+    id <NUAdLayoutOptionsFactory> _layoutOptionsFactory;
 }
 
-@property(readonly, nonatomic) FCAppConfigurationManager *appConfigurationManager; // @synthesize appConfigurationManager=_appConfigurationManager;
+@property(readonly, nonatomic) id <NUAdLayoutOptionsFactory> layoutOptionsFactory; // @synthesize layoutOptionsFactory=_layoutOptionsFactory;
+@property(readonly, nonatomic) id <FCNewsAppConfigurationManager> appConfigurationManager; // @synthesize appConfigurationManager=_appConfigurationManager;
 @property(readonly, nonatomic) id <NUAdProvider> adProvider; // @synthesize adProvider=_adProvider;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property(retain, nonatomic) id <NUPage> activePage; // @synthesize activePage=_activePage;
@@ -29,7 +30,7 @@
 - (void)cancelTimer;
 - (void)loadInterstitial;
 - (void)dealloc;
-- (id)initWithAdProvider:(id)arg1 appConfigurationManager:(id)arg2;
+- (id)initWithAdProvider:(id)arg1 appConfigurationManager:(id)arg2 layoutOptionsFactory:(id)arg3;
 
 @end
 

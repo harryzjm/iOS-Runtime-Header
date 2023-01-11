@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreUtils/NSURLSessionDelegate-Protocol.h>
 #import <CoreUtils/NSURLSessionDownloadDelegate-Protocol.h>
@@ -14,6 +14,7 @@
 
 @interface CUReachabilityMonitor : NSObject <NSURLSessionDelegate, NSURLSessionDownloadDelegate>
 {
+    int _downloadStatus;
     NSObject<OS_dispatch_source> *_timeoutTimer;
     NSURLSession *_urlSession;
     CDUnknownBlockType _completionHandler;
@@ -31,6 +32,7 @@
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
 - (void)invalidate;
 - (void)_complete:(id)arg1;
+- (void)_startDownload;
 - (void)_activate;
 - (void)activate;
 - (id)init;

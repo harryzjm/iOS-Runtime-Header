@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class FLPreferencesFollowUpItemListViewController, NSSet, PSListController;
+#import <CoreFollowUpUI/FLSpecifierTapHandlerDelegate-Protocol.h>
+
+@class FLPreferencesFollowUpItemListViewController, NSSet, NSString, PSListController;
 @protocol FLViewModel;
 
-@interface FLPreferencesController : NSObject
+@interface FLPreferencesController : NSObject <FLSpecifierTapHandlerDelegate>
 {
     id <FLViewModel> _topViewModel;
-    FLPreferencesFollowUpItemListViewController *_controller;
+    FLPreferencesFollowUpItemListViewController *_spyglassController;
     NSSet *_spyglassWhitelist;
     _Bool _activityIndicatorActive;
     PSListController *_listViewController;
@@ -24,6 +26,9 @@
 - (void).cxx_destruct;
 - (void)stopSpinnerForSpecifier:(id)arg1;
 - (void)startSpinnerForSpecifier:(id)arg1;
+- (void)preflightNetworkConnectivityForHandler:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)startPresentingForHandler:(id)arg1 withRemoteController:(id)arg2;
+- (void)_zeroActionFailure:(id)arg1;
 - (void)_presentSpecifier:(id)arg1;
 - (void)_handleEmptyRefreshResult:(id)arg1;
 - (void)_refreshItemsAndPresentDetailForSpecifier:(id)arg1;
@@ -31,12 +36,18 @@
 - (id)spyglassSpecifiers;
 - (void)_updateSpecifier:(id)arg1 withCommonPropertiesForGroup:(id)arg2;
 - (id)_urlBasedSpecifierWithName:(id)arg1;
-- (id)_extensionSupportingSpecifierWithName:(id)arg1;
+- (id)_deferredLoadSpecifierWithName:(id)arg1;
 - (id)_specifierForGroup:(id)arg1;
 - (id)_specifierForItem:(id)arg1 group:(id)arg2;
 - (id)topLevelSpecifiers;
 - (id)initWithViewModel:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

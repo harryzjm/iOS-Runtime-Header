@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axUnarchivedTokenForData:(id)arg1;
 - (struct CGRect)accessibilityFrame;
 - (void)setRemoteTokenData:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;

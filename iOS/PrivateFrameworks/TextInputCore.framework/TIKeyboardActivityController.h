@@ -7,21 +7,23 @@
 #import <objc/NSObject.h>
 
 #import <TextInputCore/TIKeyboardActivityControlling-Protocol.h>
+#import <TextInputCore/TIKeyboardApplicationStateResponses-Protocol.h>
 #import <TextInputCore/TIKeyboardAssertionManagerDelegate-Protocol.h>
 
-@class NSHashTable, NSString, NSTimer;
+@class NSHashTable, NSString, NSTimer, TIKeyboardApplicationStateMonitor;
 @protocol OS_dispatch_source;
 
-@interface TIKeyboardActivityController : NSObject <TIKeyboardAssertionManagerDelegate, TIKeyboardActivityControlling>
+@interface TIKeyboardActivityController : NSObject <TIKeyboardAssertionManagerDelegate, TIKeyboardActivityControlling, TIKeyboardApplicationStateResponses>
 {
-    _Bool _isDirty;
     _Bool _hadRecentActivity;
     _Bool _hasBackgroundActivity;
     unsigned long long _activityState;
     NSObject<OS_dispatch_source> *_memoryPressureSource;
     long long _inactiveMemoryPressureCount;
+    _Bool _isDirty;
     NSTimer *_inactivityTimer;
     NSHashTable *_observers;
+    TIKeyboardApplicationStateMonitor *_appMonitor;
 }
 
 + (double)defaultKeyboardIdleTimeoutInterval;
@@ -30,9 +32,13 @@
 + (id)sharedController;
 + (void)setKeyboardIdleTimeoutInterval:(double)arg1;
 + (void)setSharedController:(id)arg1;
+@property(retain, nonatomic) TIKeyboardApplicationStateMonitor *appMonitor; // @synthesize appMonitor=_appMonitor;
 @property(readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(retain, nonatomic) NSTimer *inactivityTimer; // @synthesize inactivityTimer=_inactivityTimer;
+@property(nonatomic) _Bool isDirty; // @synthesize isDirty=_isDirty;
+- (void).cxx_destruct;
 - (_Bool)shouldBecomeClean;
+- (_Bool)canGoEarlyClean;
 - (void)setKeyboardCleanIfNecessary;
 - (_Bool)shouldBecomeDirty;
 - (void)setKeyboardDirtyIfNecessary;
@@ -40,8 +46,7 @@
 - (void)touchInactivityTimer;
 - (void)backgroundActivityAssertionsDidChange;
 - (void)keyboardAssertionsDidChange;
-- (void)keyboardBackgroundActivityAssertionsDidChange:(id)arg1;
-- (void)keyboardAssertionsDidChange:(id)arg1;
+- (void)releaseInputManagers;
 - (void)updateActivityState;
 @property(readonly, nonatomic) unsigned long long activityState;
 - (unsigned long long)getExcessMemoryInBytes;

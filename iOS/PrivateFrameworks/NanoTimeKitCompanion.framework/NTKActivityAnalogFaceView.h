@@ -6,7 +6,7 @@
 
 #import <NanoTimeKitCompanion/NTKActivityFaceViewFactoryDelegate-Protocol.h>
 
-@class HKRingsView, NSMutableDictionary, NSString, NTKActivityDateComplicationLabel, NTKActivityDialView, NTKActivityFaceControl, NTKActivityFaceViewFactory, NTKDateComplicationController, UILabel, UIView;
+@class HKRingsView, NSMutableDictionary, NSString, NTKActivityDateComplicationLabel, NTKActivityDialView, NTKActivityFaceViewFactory, NTKDateComplicationController, NTKFaceViewTapControl, UILabel, UIView;
 
 @interface NTKActivityAnalogFaceView <NTKActivityFaceViewFactoryDelegate>
 {
@@ -19,7 +19,7 @@
     UILabel *_briskMinutesLabel;
     UILabel *_standHoursLabel;
     NTKActivityDialView *_dialView;
-    NTKActivityFaceControl *_tapToLaunchButton;
+    NTKFaceViewTapControl *_tapToLaunchButton;
     NSMutableDictionary *_faceColorsToSchemes;
     _Bool _isDetailedDensity;
     double _contentScale;
@@ -31,8 +31,8 @@
     double _lastSedentaryPercentage;
 }
 
-+ (id)_swatchForEditModeDependsOnOptions:(long long)arg1;
-+ (void)_prewarm;
++ (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
++ (void)_prewarmForDevice:(id)arg1;
 - (void).cxx_destruct;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (id)_highlightImage;
@@ -60,13 +60,19 @@
 - (void)_prepareWristRaiseAnimation;
 - (struct CGPoint)_timeTravelStatusModuleCenter;
 - (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (long long)_complicationPickerStyleForSlot:(id)arg1;
+- (long long)_keylineStyleForComplicationSlot:(id)arg1;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
+- (id)_keylineViewForComplicationSlot:(id)arg1;
 - (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_applyShowsLockedUI;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
+- (id)_curvedPickerMaskForSlot:(id)arg1;
+- (void)_curvedComplicationCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(_Bool *)arg5 forSlot:(id)arg6;
+- (_Bool)_slotSupportsCurvedText:(id)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_unloadSnapshotContentViews;
@@ -81,7 +87,7 @@
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
 - (void)_loadLayoutRules;
 - (void)layoutSubviews;
-- (void)timeTravelDateEnteredOrExitedTimelineBounds:(_Bool)arg1;
+- (_Bool)slotUsesCurvedText:(id)arg1;
 - (void)_applyEntryModel:(id)arg1 byFraction:(double)arg2 updateLabels:(_Bool)arg3 animated:(_Bool)arg4;
 - (void)_applyCurrentEntryModelByFraction:(double)arg1 updateLabels:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)_applyCurrentEntryModelAnimated:(_Bool)arg1;
@@ -89,12 +95,9 @@
 - (void)applyEntryModel:(id)arg1 animated:(_Bool)arg2;
 - (void)_launchButtonPressed:(id)arg1;
 - (void)_applyShowsCanonicalContent;
-- (void)_startScrubbingAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_endScrubbingAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_scrubToDate:(id)arg1 animated:(_Bool)arg2;
 - (void)setDataMode:(long long)arg1;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

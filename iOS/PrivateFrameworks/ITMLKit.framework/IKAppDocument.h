@@ -10,7 +10,7 @@
 #import <ITMLKit/IKStyleMediaQueryEvaluator-Protocol.h>
 
 @class IKAppContext, IKDOMDocument, IKHeadElement, IKJSNavigationDocument, IKJSObject, IKViewElement, IKViewElementStyleFactory, NSError, NSMapTable, NSMutableDictionary, NSString;
-@protocol IKAppDocumentDelegate;
+@protocol IKAppDocumentDelegate, IKNetworkRequestLoader;
 
 @interface IKAppDocument : NSObject <IKJSDOMDocumentAppBridgeInternal, IKStyleMediaQueryEvaluator>
 {
@@ -55,6 +55,8 @@
 - (_Bool)_clearUpdatesForElement:(id)arg1;
 - (void)_updateWithXML:(id)arg1;
 - (id)_viewElementForNodeID:(unsigned long long)arg1;
+- (id)viewElementForNodeID:(unsigned long long)arg1;
+@property(readonly, nonatomic) id <IKNetworkRequestLoader> requestLoader;
 - (_Bool)evaluateStyleMediaQueryList:(id)arg1;
 - (_Bool)_isUpdateAllowed;
 - (void)runTestWithName:(id)arg1 options:(id)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSCache, NSLocale, NSLock, NSMutableArray, NSMutableDictionary, NSString, NSTimeZone, TSUDateParserLibrary;
 
@@ -50,6 +50,8 @@ __attribute__((visibility("hidden")))
     NSCache *_cachedLocalizedStrings;
     NSString *_trueString;
     NSString *_falseString;
+    NSString *_amString;
+    NSString *_pmString;
 }
 
 + (void)saveLocaleForReuse:(id)arg1;
@@ -69,12 +71,15 @@ __attribute__((visibility("hidden")))
 + (id)canonicalizeLocaleIdentifierWithLanguageOnly:(id)arg1;
 + (id)canonicalizeLocaleIdentifier:(id)arg1;
 + (id)applicationLocale;
++ (id)preferredLocale;
 + (id)currentLocale;
 + (id)preferredLanguages;
 + (id)cacheKeyForLocale:(id)arg1;
 + (unsigned long long)autoupdatingCurrentLocaleChangeCount;
 + (void)setLocalizedStringBundle:(struct __CFBundle *)arg1;
 + (void)initialize;
+@property(readonly) NSString *pmString; // @synthesize pmString=_pmString;
+@property(readonly) NSString *amString; // @synthesize amString=_amString;
 @property(readonly) TSUDateParserLibrary *dateParserLibrary; // @synthesize dateParserLibrary=_dateParserLibrary;
 @property(readonly) NSString *falseString; // @synthesize falseString=_falseString;
 @property(readonly) NSString *trueString; // @synthesize trueString=_trueString;
@@ -130,8 +135,10 @@ __attribute__((visibility("hidden")))
 - (id)copyWithDocumentLanguageIdentifier:(id)arg1;
 - (id)localeIdentifierWithLanguageScriptAndRegionOnly;
 - (id)localeIdentifierWithLanguageAndRegionOnly;
+- (id)languageIdentifierWithLanguageAndRegionOnly;
 - (id)initWithLocale:(id)arg1 documentLanguageIdentifier:(id)arg2 useAutoupdating:(_Bool)arg3;
 - (id)initWithLocale:(id)arg1 documentLanguageIdentifier:(id)arg2;
+- (id)localizedLabelForAggType:(unsigned char)arg1;
 - (id)allLocalizedFunctions;
 - (id)localizedCategoryArray;
 - (id)localizedFunctionCategoryDictionary;

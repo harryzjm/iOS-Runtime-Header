@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 
 + (id)customAttributes;
 - (float)_maskFillColorValue;
+- (id)_kernelB0;
 - (id)_kernel;
 
 @end

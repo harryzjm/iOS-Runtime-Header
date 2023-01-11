@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoardUI/BSDebugDescriptionProviding-Protocol.h>
 #import <BaseBoardUI/BSDescriptionProviding-Protocol.h>
@@ -22,6 +22,7 @@
     NSMutableSet *_queue_allKeys;
 }
 
+- (void).cxx_destruct;
 - (void)_noteExternalChangeForKey:(id)arg1;
 - (void)_warmupImageForKey:(id)arg1;
 - (void)_setImage:(id)arg1 forKey:(id)arg2 withPersistenceOptions:(unsigned long long)arg3 andCPBitmapReadFlags:(int)arg4;

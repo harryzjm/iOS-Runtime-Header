@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/NSSecureCoding-Protocol.h>
 
@@ -21,6 +21,8 @@
 @property(readonly) NSData *faceObservationsData;
 @property(readonly) int faceOrientation;
 @property(readonly) float luminanceNoiseAmplitude;
+@property(readonly) float maximumApertureFocalRatio;
+@property(readonly) float minimumApertureFocalRatio;
 @property(readonly) float apertureFocalRatio;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

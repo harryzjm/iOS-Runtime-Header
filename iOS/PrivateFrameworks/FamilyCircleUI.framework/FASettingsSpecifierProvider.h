@@ -7,7 +7,6 @@
 #import <objc/NSObject.h>
 
 #import <FamilyCircleUI/AAUISpecifierProvider-Protocol.h>
-#import <FamilyCircleUI/FAFamilyInvitationsViewControllerDelegate-Protocol.h>
 #import <FamilyCircleUI/FAFamilySettingsViewControllerDelegate-Protocol.h>
 #import <FamilyCircleUI/FASetupDelegate-Protocol.h>
 #import <FamilyCircleUI/RemoteUIControllerDelegate-Protocol.h>
@@ -15,14 +14,13 @@
 @class AAFamilyDetailsResponse, AAFamilyEligibilityResponse, AAGrandSlamSigner, AAUIAccountManager, FACircleContext, FAFamilyMemberDetailsPageSurrogate, FAFamilyNotificationObserver, FARequestConfigurator, NSArray, NSMutableArray, NSOperationQueue, NSString, PSListController, PSSpecifier;
 @protocol AAUISpecifierProviderDelegate;
 
-@interface FASettingsSpecifierProvider : NSObject <FASetupDelegate, FAFamilyInvitationsViewControllerDelegate, FAFamilySettingsViewControllerDelegate, RemoteUIControllerDelegate, AAUISpecifierProvider>
+@interface FASettingsSpecifierProvider : NSObject <FASetupDelegate, FAFamilySettingsViewControllerDelegate, RemoteUIControllerDelegate, AAUISpecifierProvider>
 {
     FAFamilyMemberDetailsPageSurrogate *_profileSurrogate;
     FAFamilyNotificationObserver *_familyNotificationObserver;
     PSListController *_presenter;
     PSSpecifier *_familyCellSpecifier;
     PSSpecifier *_invitationsCellSpecifier;
-    _Bool _didAttemptToGetFamilyDetails;
     _Bool _isLoadingFamilyDetails;
     _Bool _didFailToGetFamilyDetails;
     NSMutableArray *_pendingFamilyDetailsCompletionBlocks;
@@ -37,8 +35,8 @@
     AAUIAccountManager *_accountManager;
     AAGrandSlamSigner *_grandSlamSigner;
     FARequestConfigurator *_requestConfigurator;
-    _Bool _isUsingV2Flows;
     FACircleContext *_context;
+    _Bool _delayedEnterInitiateFlow;
     id <AAUISpecifierProviderDelegate> _delegate;
     NSArray *_specifiers;
 }
@@ -68,25 +66,25 @@
 - (void)_loadFamilyEligibilityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_viewFamilySpecifierWasTapped:(id)arg1;
 - (id)_valueForFamilySpecifier:(id)arg1;
-- (void)familyInvitationsViewControllerDidFinish:(id)arg1;
-- (void)familyInvitationsViewController:(id)arg1 didProcessInvite:(id)arg2;
-- (void)_pushInvitationsViewControllerWithSpecifier:(id)arg1 invites:(id)arg2 viewingInviteAtIndex:(long long)arg3;
 - (void)_presentPendingInvitesRemoteUI;
 - (void)_pendingInvitationsSpecifierWasTapped:(id)arg1;
 - (id)_valueForInvitiationsSpecifier:(id)arg1;
 - (void)familySetupViewController:(id)arg1 didCompleteWithSuccess:(_Bool)arg2;
 - (void)_showUnderageAlertWithEligibilityResponse:(id)arg1;
-- (id)_configureContextWithType:(id)arg1 ResourceDictionary:(id)arg2;
-- (void)_v2InitiateFamily:(id)arg1;
-- (void)_v2InitiateFamily;
+- (id)_configureContextWithType:(id)arg1 resourceDictionary:(id)arg2;
+- (void)_initiateFamilyWithResources:(id)arg1;
+- (void)_initiateFamily;
 - (void)_reloadFamily;
 - (void)_setUpFamilySpecifierWasTapped:(id)arg1;
 - (void)_handleFamilyDetailsResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_loadFamilyDetailsWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_familySpecifier;
+- (id)_invitationsCellSpecifier;
+- (unsigned long long)_familyState;
 @property(copy, nonatomic) NSArray *specifiers; // @synthesize specifiers=_specifiers;
+- (_Bool)_isEnabled;
 - (id)_requestConfigurator;
 - (id)_grandSlamSigner;
-- (_Bool)isAccountInGrayMode;
 - (id)_appleAccount;
 - (id)_accountStore;
 - (id)initWithAccountManager:(id)arg1 presenter:(id)arg2;

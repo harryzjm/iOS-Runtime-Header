@@ -17,6 +17,7 @@
 - (id)suggestedEventInfo;
 - (void)setSuggestionInfo:(id)arg1;
 - (id)suggestionInfo;
+- (_Bool)pushDirtyProperties:(id *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)setConferenceURL:(id)arg1;

@@ -17,6 +17,9 @@
 
 @property(readonly, copy) NSDictionary *keyValues; // @synthesize keyValues=_keyValues;
 - (void).cxx_destruct;
+- (_Bool)isEqualToMetricRepresentation:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long hash;
 - (void)applyToObject:(id)arg1;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
@@ -25,7 +28,6 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

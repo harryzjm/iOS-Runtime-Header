@@ -10,24 +10,28 @@
 #import <SiriUI/SiriUISiriStatusViewProtocol-Protocol.h>
 #import <SiriUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class AVPlayerItem, AVPlayerLayer, AVPlayerLooper, AVQueuePlayer, NSString, SUICFlamesView, SiriUIConfiguration, UIButton, UILongPressGestureRecognizer, UIScreen;
-@protocol SiriUISiriStatusViewAnimationDelegate, SiriUISiriStatusViewDelegate;
+@class AVAudioSession, AVPlayerItem, AVPlayerLayer, AVPlayerLooper, AVQueuePlayer, NSObject, NSString, SUICFlamesView, SiriUIConfiguration, UILongPressGestureRecognizer, UIScreen;
+@protocol OS_dispatch_queue, SiriUISiriStatusViewAnimationDelegate, SiriUISiriStatusViewDelegate;
 
 @interface SiriUISiriStatusView : UIView <SUICFlamesViewDelegate, UIGestureRecognizerDelegate, SiriUISiriStatusViewProtocol>
 {
-    UIButton *_button;
+    UIView *_touchInputView;
     UILongPressGestureRecognizer *_longPressRecognizer;
     UIView *_flamesContainerView;
     SUICFlamesView *_flamesView;
     UIView *_glyphView;
-    AVPlayerItem *_itemToLoop;
     AVPlayerLayer *_glyphLayer;
     AVPlayerLooper *_glyphPlayerLooper;
     AVQueuePlayer *_glyphQueuePlayer;
+    AVPlayerItem *_glyphPlayerItem;
+    AVAudioSession *_glyphAudioSession;
+    NSObject<OS_dispatch_queue> *_glyphConfigurationQueue;
     double _lastStateChangeTime;
     UIScreen *_screen;
     int _deferredFlamesViewState;
     SiriUIConfiguration *_configuration;
+    _Bool _textInputEnabled;
+    _Bool _siriGlyphHidden;
     _Bool _flamesViewDeferred;
     _Bool _inUITrackingMode;
     _Bool _paused;
@@ -38,6 +42,7 @@
     id <SiriUISiriStatusViewAnimationDelegate> _animationDelegate;
 }
 
++ (struct CGRect)activeFrameForScreen:(id)arg1 frame:(struct CGRect)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
 @property(nonatomic) __weak id <SiriUISiriStatusViewAnimationDelegate> animationDelegate; // @synthesize animationDelegate=_animationDelegate;
 @property(nonatomic) _Bool paused; // @synthesize paused=_paused;
 @property(nonatomic, getter=isInUITrackingMode) _Bool inUITrackingMode; // @synthesize inUITrackingMode=_inUITrackingMode;
@@ -50,17 +55,18 @@
 - (float)audioLevelForFlamesView:(id)arg1;
 - (void)_handleKeyboardWillHideNotification:(id)arg1;
 - (void)_handleKeyboardDidShowNotification:(id)arg1;
-- (struct CGRect)_adjustedInsetRectForRect:(struct CGRect)arg1;
 - (struct UIEdgeInsets)safeAreaInsets;
 - (void)safeAreaInsetsDidChange;
 @property(readonly, nonatomic) double statusViewHeight;
 - (struct CGRect)_siriGlyphTappableRect;
 - (struct CGRect)_flamesFrame;
 - (void)_animateSiriGlyphHidden:(_Bool)arg1;
+- (void)_setupOrbIfNeeded:(CDUnknownBlockType)arg1;
 - (void)_layoutFlamesViewIfNeeded;
 - (void)_attachFlamesViewIfNeeded;
 - (void)_setFlamesViewState:(int)arg1;
 - (id)_flamesView;
+- (_Bool)_deviceNeedsReducedFramerateForCarPlayThinkingState;
 - (void)_micButtonHeld:(id)arg1;
 - (void)_micButtonTapped:(id)arg1;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -68,11 +74,11 @@
 - (struct CGRect)_flamesViewFrame;
 - (void)layoutSubviews;
 - (void)fadeOutCurrentAura;
+- (void)setupOrbIfNeeded;
 - (void)forceMicVisible:(_Bool)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 @property(readonly, nonatomic) UIView *flamesContainerView;
 - (void)dealloc;
-- (void)_createLooperIfNeeded;
 - (id)initWithFrame:(struct CGRect)arg1 screen:(id)arg2 textInputEnabled:(_Bool)arg3 configuration:(id)arg4;
 
 // Remaining properties

@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
+#import <PassKitCore/CBCentralManagerDelegate-Protocol.h>
 #import <PassKitCore/PKContinuityPaymentCoordinatorDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, PKContinuityPaymentCoordinator, PKContinuityPaymentService, PKInAppPaymentSession, PKPaymentAuthorizationClientCallbackStateParam, PKPaymentAuthorizationDataModel, PKPaymentService, PKPaymentWebService, PKPeerPaymentSession;
+@class CBCentralManager, NSMutableArray, NSString, PKContinuityPaymentCoordinator, PKContinuityPaymentService, PKInAppPaymentSession, PKPaymentAuthorizationClientCallbackStateParam, PKPaymentAuthorizationDataModel, PKPaymentService, PKPaymentWebService, PKPeerPaymentSession;
 @protocol OS_dispatch_source, PKAggregateDictionaryProtocol, PKPaymentAuthorizationStateMachineDelegate;
 
-@interface PKPaymentAuthorizationStateMachine : NSObject <PKContinuityPaymentCoordinatorDelegate>
+@interface PKPaymentAuthorizationStateMachine : NSObject <PKContinuityPaymentCoordinatorDelegate, CBCentralManagerDelegate>
 {
     _Bool _hasReceivedRemoteDeviceUpdate;
     _Bool _awaitingClientCallbackReply;
     _Bool _awaitingWebServiceResponse;
+    _Bool _detectedBluetoothOn;
+    CBCentralManager *_bluetoothCentralManager;
     PKPaymentService *_paymentService;
     PKPaymentWebService *_paymentWebService;
     PKPaymentAuthorizationDataModel *_model;
@@ -35,6 +38,7 @@
     unsigned long long _prepareTransactionDetailsCounter;
 }
 
+@property(nonatomic) _Bool detectedBluetoothOn; // @synthesize detectedBluetoothOn=_detectedBluetoothOn;
 @property(nonatomic) unsigned long long prepareTransactionDetailsCounter; // @synthesize prepareTransactionDetailsCounter=_prepareTransactionDetailsCounter;
 @property(retain, nonatomic) NSString *instanceIdentifier; // @synthesize instanceIdentifier=_instanceIdentifier;
 @property(nonatomic) _Bool awaitingWebServiceResponse; // @synthesize awaitingWebServiceResponse=_awaitingWebServiceResponse;
@@ -71,6 +75,8 @@
 - (void)_performRewrapRequestWithParam:(id)arg1;
 - (void)_performPrepareTransactionDetailsRequestWithParam:(id)arg1;
 - (void)_performNonceRequestWithParam:(id)arg1;
+- (id)_pendingTransactionOnAlternateFundingSourceForAutorizedPeerPaymentQuote:(id)arg1;
+- (id)_pendingTransactionOnPeerPaymentPassForAuthorizedPeerPaymentQuote:(id)arg1;
 - (void)_enqueueDidAuthorizePeerPaymentQuoteWithAuthorizedQuote:(id)arg1;
 - (void)_enqeueDidAuthorizePurchaseWithParam:(id)arg1;
 - (void)_enqueueDidAuthorizePaymentWithPayment:(id)arg1;
@@ -81,6 +87,7 @@
 - (void)_enqueueDidSelectRemotePaymentInstrument:(id)arg1;
 - (void)_enqueueDidSelectPaymentPass:(id)arg1 paymentApplication:(id)arg2;
 - (void)_enqueueDidSelectPaymentPass:(id)arg1;
+- (void)_enqueueDidSelectPaymentMethodWithQuote:(id)arg1;
 - (void)_enqueueDidSelectShippingContact:(id)arg1;
 - (void)_enqueueDidRequestMerchantSession;
 - (void)_clientCallbackTimedOut;
@@ -96,6 +103,7 @@
 - (void)_enqueueInitialCallbacks;
 - (void)_startPayment;
 - (void)_startRemoteDeviceUpdate;
+- (void)_startHandoff;
 - (void)_start;
 - (id)_createNewRemotePaymentRequest;
 - (void)_performCancelRemotePaymentRequest;
@@ -104,6 +112,8 @@
 - (void)_performSendRemotePaymentRequest;
 - (void)_performUpdatePaymentDevices;
 - (void)_deviceUpdateDidTimeout;
+- (void)_processBluetoothState:(long long)arg1;
+- (void)centralManagerDidUpdateState:(id)arg1;
 - (void)continuityPaymentCoordinatorDidReceiveCancellation:(id)arg1;
 - (void)continuityPaymentCoordinator:(id)arg1 didReceivePayment:(id)arg2;
 - (void)continuityPaymentCoordinator:(id)arg1 didReceiveUpdatedPaymentDevices:(id)arg2;
@@ -111,6 +121,7 @@
 - (void)continuityPaymentCoordinatorDidTimeoutUpdatePaymentDevices:(id)arg1;
 - (void)didReceivePaymentAuthorizationStatus:(long long)arg1;
 - (void)didReceivePaymentAuthorizationResult:(id)arg1;
+- (void)didAuthenticateWithAuthenticatorEvaluationResponse:(id)arg1;
 - (void)didAuthenticateWithCredential:(id)arg1;
 - (void)didReceivePaymentMethodCompleteWithSummaryItems:(id)arg1;
 - (void)didReceivePaymentMethodCompleteWithUpdate:(id)arg1;
@@ -143,6 +154,7 @@
 @property(readonly, nonatomic) _Bool useSecureElement;
 - (void)_removeWebServiceConfigurationIfNeeded;
 - (void)_applyWebServiceConfigurationIfNeeded;
+@property(retain, nonatomic) CBCentralManager *bluetoothCentralManager; // @synthesize bluetoothCentralManager=_bluetoothCentralManager;
 - (void)_setState:(unsigned long long)arg1 param:(id)arg2;
 - (void)dealloc;
 - (id)init;

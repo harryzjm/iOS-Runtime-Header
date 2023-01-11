@@ -10,10 +10,12 @@
 
 @class GEOAbAssignInfo, GEOLocalTime, NSMutableArray, NSString, PBUnknownFields;
 
+__attribute__((visibility("hidden")))
 @interface GEOPDAnalyticMetadata : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
     struct GEOSessionID _sessionId;
+    double _relativeTimestamp;
     GEOAbAssignInfo *_abAssignInfo;
     NSString *_appIdentifier;
     NSString *_appMajorVersion;
@@ -31,6 +33,7 @@
     _Bool _isInternalTool;
     struct {
         unsigned int sessionId:1;
+        unsigned int relativeTimestamp:1;
         unsigned int requestSource:1;
         unsigned int sequenceNumber:1;
         unsigned int isFromApi:1;
@@ -40,6 +43,7 @@
 }
 
 + (Class)serviceTagType;
+@property(nonatomic) double relativeTimestamp; // @synthesize relativeTimestamp=_relativeTimestamp;
 @property(retain, nonatomic) GEOLocalTime *requestTime; // @synthesize requestTime=_requestTime;
 @property(retain, nonatomic) GEOAbAssignInfo *abAssignInfo; // @synthesize abAssignInfo=_abAssignInfo;
 @property(retain, nonatomic) NSString *loggedAbExperiment; // @synthesize loggedAbExperiment=_loggedAbExperiment;
@@ -66,6 +70,7 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasRelativeTimestamp;
 @property(readonly, nonatomic) _Bool hasRequestTime;
 @property(readonly, nonatomic) _Bool hasAbAssignInfo;
 @property(readonly, nonatomic) _Bool hasLoggedAbExperiment;

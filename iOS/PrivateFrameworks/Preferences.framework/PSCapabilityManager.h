@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -16,6 +16,7 @@
 + (id)sharedManager;
 @property(retain, nonatomic) NSMutableDictionary *overrides; // @synthesize overrides=_overrides;
 - (void).cxx_destruct;
+- (id)supportsPSTTYCapability;
 - (id)applicationDisplayIdentifiers;
 - (id)supportsPSShowStorageCapability;
 - (id)supportsInEDUModeCapability;

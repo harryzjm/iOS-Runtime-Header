@@ -30,6 +30,7 @@
 - (void)userEventOccurred;
 - (void)isMagnifierVisibleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)launchMagnifierApp;
+- (void)reactivateInCallService;
 - (_Bool)loadGAXBundleForUnmanagedASAM;
 - (void)relinquishAssertionWithType:(id)arg1 identifier:(id)arg2;
 - (void)acquireAssertionWithType:(id)arg1 identifier:(id)arg2;
@@ -48,6 +49,8 @@
 - (id)focusedAppPID;
 - (_Bool)isSystemAppShowingAnAlert;
 - (void)systemAppInfoWithQuery:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)canSetDockIconActivationMode;
+- (void)setDockIconActivationMode:(unsigned long long)arg1;
 - (id)medusaApps;
 - (_Bool)performMedusaGesture:(unsigned long long)arg1;
 - (id)allowedMedusaGestures;
@@ -70,13 +73,14 @@
 - (_Bool)isDockVisible;
 - (void)toggleDock;
 - (void)armApplePay;
-- (void)showControlCenter:(_Bool)arg1;
+- (_Bool)showControlCenter:(_Bool)arg1;
 - (_Bool)showNotificationCenter:(_Bool)arg1;
 - (_Bool)isControlCenterVisible;
 - (void)hideNotificationCenter;
 - (void)showNotificationCenter;
 - (void)toggleNotificationCenter;
 - (_Bool)isNotificationVisible;
+- (_Bool)isScreenshotWindowVisible;
 - (_Bool)isNotificationCenterVisible;
 - (_Bool)isMakingEmergencyCall;
 - (_Bool)hasActiveOrPendingCallOrFaceTime;
@@ -98,10 +102,12 @@
 - (_Bool)areSystemGesturesDisabledByAccessibility;
 - (_Bool)areSystemGesturesDisabledNatively;
 - (_Bool)isSyncingRestoringResettingOrUpdating;
+- (void)isSystemSleeping:(CDUnknownBlockType)arg1;
 - (_Bool)isSystemSleeping;
 - (void)screenLockStatus:(CDUnknownBlockType)arg1;
 - (_Bool)isScreenLockedWithPasscode:(_Bool *)arg1;
 - (void)_getPasscodeStatusImmediate:(CDUnknownBlockType)arg1;
+- (void)performVoiceShortcutWithIdentifier:(id)arg1 bundleID:(id)arg2;
 - (void)activateSOSMode;
 - (_Bool)isSoftwareUpdateUIVisible;
 - (_Bool)isNowPlayingUIVisible;
@@ -115,7 +121,9 @@
 - (_Bool)isPointInsideAccessibilityInspector:(id)arg1;
 - (_Bool)isInspectorMinimized;
 - (void)removeReachabilityHandler:(id)arg1;
+- (void)setReachabilityEnabled:(_Bool)arg1;
 - (void)setReachabilityActive:(_Bool)arg1;
+- (void)toggleReachability;
 - (_Bool)toggleIncomingCall;
 - (void)registerReachabilityHandler:(CDUnknownBlockType)arg1 withIdentifierCallback:(CDUnknownBlockType)arg2;
 - (void)cancelReachabilityDetection;
@@ -123,6 +131,9 @@
 - (void)registerSpringBoardActionHandler:(CDUnknownBlockType)arg1 withIdentifierCallback:(CDUnknownBlockType)arg2;
 - (void)removeActionHandler:(id)arg1;
 - (void)setShowSpeechPlaybackControls:(_Bool)arg1;
+- (void)_sendRemoteViewIPCMessage:(long long)arg1 withRemoteViewType:(long long)arg2 withData:(id)arg3;
+- (void)hideRemoteView:(long long)arg1 withData:(id)arg2;
+- (void)showRemoteView:(long long)arg1 withData:(id)arg2;
 - (void)showAlert:(long long)arg1 withHandler:(CDUnknownBlockType)arg2 withData:(id)arg3;
 - (void)showAlert:(long long)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)hideAlert;

@@ -11,11 +11,12 @@
     _Bool _enableSingletonGroups;
 }
 
++ (id)descriptorWithContext:(id)arg1 tag:(id)arg2;
++ (id)descriptorWithContext:(id)arg1;
 @property(nonatomic) _Bool enableSingletonGroups; // @synthesize enableSingletonGroups=_enableSingletonGroups;
 @property(nonatomic) _Bool disableFiltering; // @synthesize disableFiltering=_disableFiltering;
 @property(nonatomic) _Bool disableGroupMerging; // @synthesize disableGroupMerging=_disableGroupMerging;
-- (id)feedGroupEmitters;
-- (id)initWithContext:(id)arg1 identifier:(id)arg2 tag:(id)arg3;
+- (id)feedGroupEmittersWithConfiguration:(id)arg1;
 
 @end
 

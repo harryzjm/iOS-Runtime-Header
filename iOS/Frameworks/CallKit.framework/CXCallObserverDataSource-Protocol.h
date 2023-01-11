@@ -6,13 +6,13 @@
 
 #import <CallKit/NSObject-Protocol.h>
 
-@class CXTransaction, NSDictionary, NSString;
+@class CXTransaction, NSDictionary;
 @protocol CXCallObserverDataSourceDelegate;
 
 @protocol CXCallObserverDataSource <NSObject>
 @property(readonly, copy, nonatomic) NSDictionary *callUUIDToCallMap;
 - (void)invalidate;
-- (void)requestTransaction:(CXTransaction *)arg1 forExtensionIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)requestTransaction:(CXTransaction *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)removeDelegate:(id <CXCallObserverDataSourceDelegate>)arg1;
 - (void)addDelegate:(id <CXCallObserverDataSourceDelegate>)arg1;
 @end

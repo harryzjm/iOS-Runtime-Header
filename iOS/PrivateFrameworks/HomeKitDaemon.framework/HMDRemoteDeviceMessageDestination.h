@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HMFoundation/HMFMessageDestination.h>
+@class HMDDevice, HMDDeviceHandle;
 
-@class HMDDevice;
-
-@interface HMDRemoteDeviceMessageDestination : HMFMessageDestination
+@interface HMDRemoteDeviceMessageDestination
 {
     HMDDevice *_device;
+    HMDDeviceHandle *_preferredHandle;
 }
 
 + (id)shortDescription;
-+ (id)allMessageDestinations;
+@property(copy, nonatomic) HMDDeviceHandle *preferredHandle; // @synthesize preferredHandle=_preferredHandle;
 @property(readonly, nonatomic) HMDDevice *device; // @synthesize device=_device;
 - (void).cxx_destruct;
+- (id)remoteDestinationString;
 - (id)description;
 - (id)debugDescription;
 - (id)descriptionWithPointer:(_Bool)arg1;

@@ -6,15 +6,18 @@
 
 #import <MediaPlayer/MPAVController.h>
 
-@class MPAVItem, MPCPlaybackEngine;
+@class MPAVItem, MPCPlaybackEngine, NSObject;
+@protocol OS_dispatch_queue;
 
 @interface _MPCAVController : MPAVController
 {
+    NSObject<OS_dispatch_queue> *_unboostedAudioSessionQueue;
     _Bool _allowsNewPlaybackErrorItem;
     MPCPlaybackEngine *_playbackEngine;
     MPAVItem *_firstPlaybackErrorItem;
 }
 
++ (_Bool)prefersApplicationAudioSession;
 + (Class)playlistManagerClass;
 @property(retain, nonatomic) MPAVItem *firstPlaybackErrorItem; // @synthesize firstPlaybackErrorItem=_firstPlaybackErrorItem;
 @property(nonatomic) _Bool allowsNewPlaybackErrorItem; // @synthesize allowsNewPlaybackErrorItem=_allowsNewPlaybackErrorItem;
@@ -25,15 +28,18 @@
 - (void)_itemDidChange:(id)arg1;
 - (void)_itemWillChange:(id)arg1;
 - (id)_expectedAssetTypesForPlaybackMode:(long long)arg1;
+- (void)_delegateAuthorizationForItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_contentsChanged;
 - (void)_connectAVPlayer;
+- (void)_configureAudioSession;
+- (void)_networkPolicyItemCellularRestrictedNotification:(id)arg1;
 - (void)_playbackErrorNotification:(id)arg1;
+- (void)updateAudioSession;
 - (void)addPlaybackContext:(id)arg1 toQueueWithInsertionType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) long long upNextItemCount;
 - (void)setShuffleType:(long long)arg1;
 - (void)setRepeatType:(long long)arg1;
 - (void)reloadWithPlaybackContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)playWithOptions:(unsigned long long)arg1;
 - (id)initWithPlaybackEngine:(id)arg1;
 
 @end

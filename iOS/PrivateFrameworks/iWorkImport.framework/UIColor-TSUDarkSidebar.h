@@ -31,6 +31,10 @@
 + (id)tsu_sidebarInactiveTintColor;
 + (id)tsu_sidebarActiveTintColor;
 + (id)tsu_sidebarNavigationBarTitleColor;
++ (id)tsu_mediaBrowserChickletTitleDarkColor;
++ (id)tsu_mediaBrowserChickletTitleLightColor;
++ (id)tsu_mediaBrowserChickletDarkColor;
++ (id)tsu_mediaBrowserChickletLightColor;
 + (id)tsu_mediaBrowserSecondaryContentColor;
 + (id)tsu_mediaBrowserPrimaryContentColor;
 + (id)tsu_mediaBrowserNavigationBarTintColor;
@@ -41,6 +45,10 @@
 + (id)tsu_insertPaneBackgroundColor;
 + (id)tsu_sidebarNavigationBarBackgroundColor;
 + (id)tsu_sidebarNavigationBarTintColor;
++ (id)tsu_styleUpdateButton6ptBlackColor;
++ (id)tsu_styleUpdateButtonLightColor;
++ (id)tsu_styleUpdateButtonDarkColor;
++ (id)tsu_sidebarHighContrastBackgroundColor;
 + (id)tsu_sidebarBackgroundColor;
 + (id)tsu_sliderThumbTintColor;
 + (id)tsu_sliderMaximumTrackTintColor;

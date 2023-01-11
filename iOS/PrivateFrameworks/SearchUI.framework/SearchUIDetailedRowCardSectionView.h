@@ -6,11 +6,11 @@
 
 #import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, SearchUIAccessoryViewController, SearchUIThumbnailView, TLKDetailsView, TLKStackView, UIButton;
+@class NSMutableDictionary, NSString, SearchUIAccessoryViewController, SearchUIImageView, TLKDetailsView, TLKStackView, UIButton;
 
 @interface SearchUIDetailedRowCardSectionView <NUIContainerStackViewDelegate>
 {
-    SearchUIThumbnailView *_thumbnailView;
+    SearchUIImageView *_thumbnailView;
     UIButton *_buttonView;
     TLKDetailsView *_detailsView;
     TLKStackView *_innerStackView;
@@ -27,14 +27,13 @@
 @property(retain) TLKStackView *innerStackView; // @synthesize innerStackView=_innerStackView;
 @property(retain) TLKDetailsView *detailsView; // @synthesize detailsView=_detailsView;
 @property(retain) UIButton *buttonView; // @synthesize buttonView=_buttonView;
-@property(retain) SearchUIThumbnailView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
+@property(retain) SearchUIImageView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
 - (void).cxx_destruct;
 - (void)buttonPressed;
-- (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (long long)containerStackView:(id)arg1 alignmentForArrangedSubview:(id)arg2;
 - (_Bool)arrangedViewMustCenter:(id)arg1;
 - (void)updateChevronVisible:(_Bool)arg1 leaveSpaceForChevron:(_Bool)arg2;
-- (void)updateWithCardSection:(id)arg1;
+- (void)updateWithRowModel:(id)arg1;
 - (id)setupContentView;
 
 // Remaining properties

@@ -13,9 +13,11 @@
 @interface TVViewElement : NSObject <NSCopying>
 {
     _Bool _disabled;
+    _Bool _parsedOnce;
     IKViewElement *_element;
 }
 
+@property(nonatomic, getter=isParsedOnce) _Bool parsedOnce; // @synthesize parsedOnce=_parsedOnce;
 @property(readonly, nonatomic) __weak IKViewElement *element; // @synthesize element=_element;
 @property(nonatomic, getter=isDisabled) _Bool disabled; // @synthesize disabled=_disabled;
 - (void).cxx_destruct;
@@ -23,6 +25,7 @@
 - (void)dispatchEventOfType:(long long)arg1 canBubble:(_Bool)arg2 cancellable:(_Bool)arg3 extraInfo:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)resetProperty:(long long)arg1;
 @property(readonly, nonatomic) long long updateType;
+@property(readonly, nonatomic) long long semanticContentAttribute;
 @property(readonly, nonatomic) NSString *autoHighlightIdentifier;
 @property(readonly, nonatomic) TVViewElementStyle *style;
 @property(readonly, nonatomic) NSDictionary *attributes;

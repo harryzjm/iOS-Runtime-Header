@@ -4,31 +4,55 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImageView.h>
+#import <TemplateKit/NUIArrangementContainer-Protocol.h>
+#import <TemplateKit/NUIBoxArrangementDataSource-Protocol.h>
 
-#import <TemplateKit/TLKObservable-Protocol.h>
+@class NSString, NUIBoxArrangement, TLKArrangementItem, TLKImage, UIImageView;
 
-@class NSString, TLKImage, TLKImageFittingObject, TLKObserver;
-
-@interface TLKImageView : UIImageView <TLKObservable>
+@interface TLKImageView <NUIBoxArrangementDataSource, NUIArrangementContainer>
 {
     TLKImage *_tlkImage;
-    unsigned long long _style;
-    TLKImageFittingObject *_imageFittingObject;
-    TLKObserver *_imageObserver;
+    long long _verticalAlignment;
+    long long _horizontalAlignment;
+    UIImageView *_imageView;
+    TLKArrangementItem *_sizingHelper;
+    NUIBoxArrangement *_boxArrangement;
+    struct CGSize _minimumSize;
+    struct CGSize _maximumSize;
+    struct CGRect _rectOfShadow;
 }
 
-@property(retain) TLKObserver *imageObserver; // @synthesize imageObserver=_imageObserver;
-@property(retain) TLKImageFittingObject *imageFittingObject; // @synthesize imageFittingObject=_imageFittingObject;
-@property unsigned long long style; // @synthesize style=_style;
-@property(retain) TLKImage *tlkImage; // @synthesize tlkImage=_tlkImage;
++ (_Bool)sizeIsShadowWorthy:(struct CGSize)arg1;
++ (_Bool)imageIsEligibleForShadow:(id)arg1 isTemplate:(_Bool)arg2;
++ (struct CGSize)roundedSizeForSize:(struct CGSize)arg1;
++ (Class)layerClass;
+@property struct CGRect rectOfShadow; // @synthesize rectOfShadow=_rectOfShadow;
+@property(retain) NUIBoxArrangement *boxArrangement; // @synthesize boxArrangement=_boxArrangement;
+@property(retain) TLKArrangementItem *sizingHelper; // @synthesize sizingHelper=_sizingHelper;
+@property(retain) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property(nonatomic) long long horizontalAlignment; // @synthesize horizontalAlignment=_horizontalAlignment;
+@property(nonatomic) long long verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
+@property(nonatomic) struct CGSize maximumSize; // @synthesize maximumSize=_maximumSize;
+@property(nonatomic) struct CGSize minimumSize; // @synthesize minimumSize=_minimumSize;
+@property(retain, nonatomic) TLKImage *tlkImage; // @synthesize tlkImage=_tlkImage;
 - (void).cxx_destruct;
-- (void)dealloc;
-- (id)observableProperties;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (struct CGSize)intrinsicContentSize;
-- (void)updateImageView;
+- (id)actualImageView;
+- (id)viewForLastBaselineLayout;
+- (id)viewForFirstBaselineLayout;
+- (struct CGRect)layoutFrameForArrangedSubview:(id)arg1 withProposedContentFrame:(struct CGRect)arg2;
+- (struct CGSize)contentLayoutSizeFittingSize:(struct CGSize)arg1 forArrangedSubview:(id)arg2;
+- (struct CGSize)naturalImageSize;
+- (_Bool)supportsAsynchronousMeasurement;
 - (void)invalidateIntrinsicContentSizeIfNecessary;
+- (void)layoutSubviews;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
+- (struct CGSize)intrinsicContentSize;
+- (struct CGSize)constrainedSizeForImageSize:(struct CGSize)arg1;
+- (void)observedPropertiesChanged;
+- (id)boxArrangement:(id)arg1 itemAtIndex:(long long)arg2 horizontalAlignment:(long long *)arg3 verticalAlignment:(long long *)arg4;
+- (long long)numberOfItemsInBoxArrangement:(id)arg1;
+- (long long)effectiveUserInterfaceLayoutDirection;
 - (id)init;
 
 // Remaining properties

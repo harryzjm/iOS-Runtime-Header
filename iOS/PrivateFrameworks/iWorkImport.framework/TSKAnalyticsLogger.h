@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool shouldSummarize; // @synthesize shouldSummarize=_shouldSummarize;
 @property(nonatomic) long long samplingPercentage; // @synthesize samplingPercentage=_samplingPercentage;
 - (void).cxx_destruct;
+- (void)logScalarValueAddition:(long long)arg1 forKey:(id)arg2;
 - (void)logDistributionValue:(double)arg1 forKey:(id)arg2;
 - (void)logScalarValue:(long long)arg1 forKey:(id)arg2;
 - (void)finishMessage;

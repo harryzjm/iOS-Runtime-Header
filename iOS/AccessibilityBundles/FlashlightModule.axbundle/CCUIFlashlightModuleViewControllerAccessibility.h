@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)viewDidLoad;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (_Bool)_accessibilityControlCenterButtonIsToggle;
 - (id)_accessibilityControlCenterButtonIdentifier;
 - (id)_accessibilityControlCenterButtonLabel;
 

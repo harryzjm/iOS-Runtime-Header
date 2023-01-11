@@ -14,7 +14,11 @@ __attribute__((visibility("hidden")))
     NSString *_searchQuery;
 }
 
+@property(readonly, nonatomic, getter=_searchQuery) NSString *searchQuery; // @synthesize searchQuery=_searchQuery;
 - (void).cxx_destruct;
+- (_Bool)shouldDisplayNoResults;
+- (_Bool)hasShouldDisplayNoResults;
+- (double)retainSearchTime;
 - (_Bool)isRapEnabled;
 - (void)applyToSuggestionEntry:(id)arg1 withAutocompleteSearchResultIdentifier:(id)arg2;
 - (void)applyToSuggestionList:(id)arg1;

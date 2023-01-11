@@ -8,7 +8,7 @@
 #import <WebKit/UITextInputTokenizer-Protocol.h>
 #import <WebKit/UITextInputTraits_Private-Protocol.h>
 
-@class NSArray, NSAttributedString, NSString, UIColor, UIDictationSerializableResults, UIFont, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UITextSuggestion, UIView, WebEvent;
+@class NSArray, NSAttributedString, NSDictionary, NSString, RTIInputSystemSourceSession, UIColor, UIDictationSerializableResults, UIFont, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UITextSuggestion, UIView, WebEvent;
 @protocol UISelectionInteractionAssistant, UITextInputSuggestionDelegate;
 
 @protocol UITextInputPrivate <UITextInput, UITextInputTokenizer, UITextInputTraits_Private>
@@ -20,6 +20,7 @@
 - (UITextInputTraits *)textInputTraits;
 
 @optional
+@property(readonly, nonatomic) RTIInputSystemSourceSession *_rtiSourceSession;
 @property(nonatomic) long long _textInputSource;
 @property(readonly, nonatomic) id <UITextInputSuggestionDelegate> textInputSuggestionDelegate;
 @property(nonatomic) long long selectionGranularity;
@@ -33,6 +34,7 @@
 - (void)replaceRangeWithTextWithoutClosingTyping:(UITextRange *)arg1 replacementText:(NSString *)arg2;
 - (_Bool)_shouldRepeatInsertText:(NSString *)arg1;
 - (double)_delayUntilRepeatInsertText:(NSString *)arg1;
+- (NSDictionary *)_autofillContext;
 - (_Bool)isAutoFillMode;
 - (void)acceptedAutoFillWord:(NSString *)arg1;
 - (void)insertTextSuggestion:(UITextSuggestion *)arg1;
@@ -42,11 +44,15 @@
 - (void)streamingDictationDidEnd;
 - (void)streamingDictationDidBegin;
 - (struct CGRect)visibleRect;
+- (UIView *)selectionContainerView;
 - (UIView *)automaticallySelectedOverlay;
 - (void)setBottomBufferHeight:(double)arg1;
 - (id <UISelectionInteractionAssistant>)selectionInteractionAssistant;
 - (void)handleKeyWebEvent:(WebEvent *)arg1 withCompletionHandler:(void (^)(WebEvent *, _Bool))arg2;
 - (void)handleKeyWebEvent:(WebEvent *)arg1;
 - (_Bool)requiresKeyEvents;
+- (void)setAttributedMarkedText:(NSAttributedString *)arg1 selectedRange:(struct _NSRange)arg2;
+- (NSAttributedString *)attributedTextInRange:(UITextRange *)arg1;
+- (void)insertAttributedText:(NSAttributedString *)arg1;
 @end
 

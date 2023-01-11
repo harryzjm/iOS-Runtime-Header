@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TSDStroke, TSTStrokeLayerMergedStack;
 
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) TSDStroke *stroke; // @synthesize stroke=_stroke;
 @property(nonatomic) struct TSTSimpleRange range; // @synthesize range=_range;
 @property(retain, nonatomic) TSTStrokeLayerMergedStack *mergedStrokes; // @synthesize mergedStrokes=_mergedStrokes;
-- (id)strokeAtIndex:(unsigned short)arg1;
+- (id)strokeAtIndex:(unsigned int)arg1;
 - (void)dealloc;
 - (id)initWithMergedStack:(id)arg1;
 

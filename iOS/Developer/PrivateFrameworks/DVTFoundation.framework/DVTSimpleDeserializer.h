@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)error;
+- (unsigned long long)streamFormatVersion;
 - (id)decodeObjectList;
 - (id)decodeObject;
 - (id)decodeString;

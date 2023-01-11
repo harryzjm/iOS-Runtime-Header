@@ -4,19 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MPPropertySet;
 
 @interface MPStoreModelObjectBuilder : NSObject
 {
+    _Bool _preventStoreItemMetadataCaching;
     MPPropertySet *_requestedPropertySet;
 }
 
 + (id)allSupportedProperties;
+@property(nonatomic) _Bool preventStoreItemMetadataCaching; // @synthesize preventStoreItemMetadataCaching=_preventStoreItemMetadataCaching;
 @property(readonly, nonatomic) MPPropertySet *requestedPropertySet; // @synthesize requestedPropertySet=_requestedPropertySet;
 - (void).cxx_destruct;
 - (id)modelObjectWithStorePlatformDictionary:(id)arg1;
+- (id)modelObjectWithStoreItemMetadata:(id)arg1 sourceModelObject:(id)arg2;
 - (id)modelObjectWithStoreItemMetadata:(id)arg1;
 - (id)initWithRequestedPropertySet:(id)arg1;
 

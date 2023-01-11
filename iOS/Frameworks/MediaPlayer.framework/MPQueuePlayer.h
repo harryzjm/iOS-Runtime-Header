@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/MPAVRoutingControllerDelegate-Protocol.h>
 
@@ -50,7 +50,6 @@
 - (void)_setExpectedAssetTypes:(id)arg1;
 @property(copy, nonatomic) NSString *externalPlaybackVideoGravity;
 - (void)_setEQPreset:(int)arg1;
-@property(nonatomic) _Bool disallowsAMRAudio;
 - (void)_setClientName:(id)arg1;
 - (void)_setCALayerDestinationIsTVOut:(_Bool)arg1;
 - (_Bool)_resumePlayback:(double)arg1;

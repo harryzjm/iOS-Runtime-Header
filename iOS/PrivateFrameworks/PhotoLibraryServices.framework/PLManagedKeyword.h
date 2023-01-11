@@ -4,9 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSSet, NSString;
+
 @interface PLManagedKeyword
 {
 }
+
++ (id)entityInManagedObjectContext:(id)arg1;
++ (id)entityName;
++ (id)insertInManagedObjectContext:(id)arg1;
+
+// Remaining properties
+@property(retain, nonatomic) NSSet *assetAttributes; // @dynamic assetAttributes;
+@property(retain, nonatomic) NSString *title; // @dynamic title;
 
 @end
 

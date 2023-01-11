@@ -23,6 +23,8 @@
     NSMutableArray *_relatedSearchSuggestions;
     NSMutableArray *_resultDetourInfos;
     NSString *_resultDisplayHeader;
+    unsigned int _retainSearchTime;
+    NSMutableArray *_retainSearchs;
     GEOPDSearchClientBehavior *_searchClientBehavior;
     int _searchResultType;
     _Bool _enablePartialClientization;
@@ -30,6 +32,7 @@
     _Bool _showDymSuggestionCloseButton;
     struct {
         unsigned int dymSuggestionVisibleTime:1;
+        unsigned int retainSearchTime:1;
         unsigned int searchResultType:1;
         unsigned int enablePartialClientization:1;
         unsigned int isChainResultSet:1;
@@ -37,10 +40,13 @@
     } _has;
 }
 
++ (Class)retainSearchType;
 + (Class)displayHeaderSubstituteType;
 + (Class)resultDetourInfoType;
 + (Class)relatedSearchSuggestionType;
 + (Class)disambiguationLabelType;
+@property(retain, nonatomic) NSMutableArray *retainSearchs; // @synthesize retainSearchs=_retainSearchs;
+@property(nonatomic) unsigned int retainSearchTime; // @synthesize retainSearchTime=_retainSearchTime;
 @property(nonatomic) _Bool enablePartialClientization; // @synthesize enablePartialClientization=_enablePartialClientization;
 @property(retain, nonatomic) NSMutableArray *displayHeaderSubstitutes; // @synthesize displayHeaderSubstitutes=_displayHeaderSubstitutes;
 @property(retain, nonatomic) GEOPDResolvedItem *clientResolvedResult; // @synthesize clientResolvedResult=_clientResolvedResult;
@@ -64,6 +70,11 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)retainSearchAtIndex:(unsigned long long)arg1;
+- (unsigned long long)retainSearchsCount;
+- (void)addRetainSearch:(id)arg1;
+- (void)clearRetainSearchs;
+@property(nonatomic) _Bool hasRetainSearchTime;
 @property(nonatomic) _Bool hasShowDymSuggestionCloseButton;
 @property(nonatomic) _Bool showDymSuggestionCloseButton; // @synthesize showDymSuggestionCloseButton=_showDymSuggestionCloseButton;
 @property(nonatomic) _Bool hasDymSuggestionVisibleTime;

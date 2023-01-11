@@ -6,33 +6,36 @@
 
 #import <NewsCore/FCFeedPaginating-Protocol.h>
 
-@class FCAppConfigurationManager, FCSubscriptionList, NSString;
+@class FCSubscriptionList, NSString;
+@protocol FCCoreConfigurationManager;
 
 @interface FCForYouFeedDescriptor <FCFeedPaginating>
 {
     unsigned long long _trendingAndSavedStoriesCount;
-    FCAppConfigurationManager *_appConfigurationManager;
+    id <FCCoreConfigurationManager> _configurationManager;
     FCSubscriptionList *_subscriptionList;
 }
 
 @property(retain, nonatomic) FCSubscriptionList *subscriptionList; // @synthesize subscriptionList=_subscriptionList;
-@property(retain, nonatomic) FCAppConfigurationManager *appConfigurationManager; // @synthesize appConfigurationManager=_appConfigurationManager;
+@property(retain, nonatomic) id <FCCoreConfigurationManager> configurationManager; // @synthesize configurationManager=_configurationManager;
 @property(nonatomic) unsigned long long trendingAndSavedStoriesCount; // @synthesize trendingAndSavedStoriesCount=_trendingAndSavedStoriesCount;
 - (void).cxx_destruct;
 - (void)d_fetchAllHeadlinesWithCloudContext:(id)arg1 sinceDate:(id)arg2 filter:(_Bool)arg3 personalize:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)_sortedEditorialGroupEmittersWithForYouGroupsConfiguration:(id)arg1;
 - (id)editionFollowingEdition:(id)arg1;
 - (id)editionAtDate:(id)arg1;
+- (long long)feedPersonalizationConfigurationSet;
 - (long long)feedFilterOptions;
 - (long long)feedSortMethod;
 - (id)feedPaginator;
-- (_Bool)shouldFilterFeedGroupEmitter:(id)arg1;
+- (_Bool)shouldFilterFeedGroupEmitter:(id)arg1 withConfiguration:(id)arg2;
 - (void)prepareToProvideFeedGroupEmittersWithCallbackQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)feedGroupEmitters;
-- (id)offlineFeedGroupEmitters;
+- (id)feedGroupEmittersWithConfiguration:(id)arg1;
+- (id)offlineFeedGroupEmittersWithConfiguration:(id)arg1;
 - (id)iAdFeedID;
 - (id)name;
 - (_Bool)derivesContentsFromExplicitSubscriptions;
-- (id)initWithIdentifier:(id)arg1 trendingAndSavedStoriesCount:(long long)arg2 appConfigurationManager:(id)arg3 subscriptionList:(id)arg4;
+- (id)initWithIdentifier:(id)arg1 trendingAndSavedStoriesCount:(long long)arg2 configurationManager:(id)arg3 subscriptionList:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

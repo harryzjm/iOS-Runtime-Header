@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSError, NSMutableArray, NSString, NSURL;
+@class CKAssetDownloadPreauthorization, NSArray, NSData, NSError, NSMutableArray, NSString, NSURL;
 @protocol MMCSOperationMetric;
 
 __attribute__((visibility("hidden")))
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 - (void).cxx_destruct;
 - (void)addItem:(id)arg1;
-@property(readonly, nonatomic) _Bool usePerItemAuthRequests;
+@property(readonly, nonatomic) CKAssetDownloadPreauthorization *downloadPreauthorization;
 @property(readonly, nonatomic) NSString *requestor;
 @property(readonly, nonatomic) NSString *owner;
 @property(readonly, nonatomic) NSURL *contentBaseURL;

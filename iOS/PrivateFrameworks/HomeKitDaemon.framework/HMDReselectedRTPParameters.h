@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDCameraTLVCreateParse-Protocol.h>
+#import <HomeKitDaemon/HMDTLVCreateParse-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class NSNumber;
 
-@interface HMDReselectedRTPParameters <HMDCameraTLVCreateParse, NSSecureCoding>
+@interface HMDReselectedRTPParameters <HMDTLVCreateParse, NSSecureCoding>
 {
     NSNumber *_maximumBitrate;
     NSNumber *_minimumBitrate;

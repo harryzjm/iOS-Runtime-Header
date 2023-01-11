@@ -28,6 +28,8 @@ __attribute__((visibility("hidden")))
 
 + (void)upgradeForTrendLineEquationAndR2LabelsPropertyMigrationFromChartStyle:(id)arg1 seriesStyles:(id)arg2;
 + (void)upgradeFor3DShadowPropertyMigrationFromChartStyle:(id)arg1 seriesStyles:(id)arg2;
++ (void)upgradeDonutStylesForSeriesPresets:(id)arg1;
++ (void)p_useProperty:(int)arg1 asProperty:(int)arg2 inStyle:(id)arg3;
 + (void)upgradeCalloutLineStylesForSeriesPresets:(id)arg1 valueAxisPresets:(id)arg2 paragraphPresets:(id)arg3;
 + (void)upgradeShadowPropertyForParagraphStyles:(id)arg1;
 + (void)upgradeTrendLinesAndErrorBarsForSeriesPresets:(id)arg1 valueAxisPresets:(id)arg2 paragraphPresets:(id)arg3;
@@ -45,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *valueAxisStyles; // @synthesize valueAxisStyles=mValueAxisStylesList;
 @property(readonly, nonatomic) TSCHLegendStyle *legendStyle; // @synthesize legendStyle=mLegendStyle;
 @property(readonly, nonatomic) TSCHChartStyle *chartStyle; // @synthesize chartStyle=mChartStyle;
+- (void).cxx_destruct;
 - (id)migratedPresetInTheme:(id)arg1 followReplacements:(_Bool)arg2;
 - (id)styleOwnerFromSwapType:(int)arg1 andIndex:(unsigned long long)arg2;
 - (id)applyStyleSwapTuple:(id)arg1;
@@ -66,12 +69,10 @@ __attribute__((visibility("hidden")))
 - (id)allStyles;
 - (id)copyWithContext:(id)arg1;
 - (id)copyWithContext:(id)arg1 shallowCopyStyles:(_Bool)arg2;
-- (void)dealloc;
 - (id)initWithContext:(id)arg1 chartStyle:(id)arg2 legendStyle:(id)arg3 valueAxisStyles:(id)arg4 categoryAxisStyles:(id)arg5 seriesStyles:(id)arg6;
 - (id)initWithContext:(id)arg1 chartStyle:(id)arg2 legendStyle:(id)arg3 valueAxisStyles:(id)arg4 categoryAxisStyles:(id)arg5 seriesStyles:(id)arg6 paragraphStyles:(id)arg7 refLineStyle:(id)arg8;
 - (id)initWithContext:(id)arg1 chartStyle:(id)arg2 legendStyle:(id)arg3 valueAxisStyles:(id)arg4 categoryAxisStyles:(id)arg5 seriesStyles:(id)arg6 paragraphStyles:(id)arg7 refLineStyle:(id)arg8 uuid:(id)arg9;
 - (id)p_initWithContext:(id)arg1;
-- (id)initWithContext:(id)arg1;
 - (id)presetByAdoptingStylesheet:(id)arg1 withMapper:(id)arg2;
 - (id)chartStyleState;
 

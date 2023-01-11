@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface SUUtility : NSObject
 {
@@ -16,6 +16,7 @@
 + (id)gregorianCalendar;
 + (id)URLIfFileExists:(id)arg1;
 + (void)setCacheable:(_Bool)arg1;
++ (void)purgeV1SUAssets;
 + (unsigned long long)devicePadding:(id)arg1;
 + (_Bool)freeCachedSpaceSynchronous:(unsigned long long)arg1 timeout:(double)arg2 isAutoDownload:(_Bool)arg3 disableCDLevelFour:(_Bool)arg4 disableSiriDeletion:(_Bool)arg5 disableAppDemotion:(_Bool)arg6;
 + (_Bool)freeCachedSpaceSynchronous:(unsigned long long)arg1 timeout:(double)arg2 isAutoDownload:(_Bool)arg3;
@@ -32,6 +33,7 @@
 + (_Bool)hasEnoughDiskSpace:(unsigned long long)arg1 growth:(unsigned long long)arg2;
 + (long long)appDemoteableSpace;
 + (void)postFailureNotification:(id)arg1 body:(id)arg2 buttonText:(id)arg3 altButtonText:(id)arg4;
++ (void)postAutoUpdateInformationalNotification:(id)arg1 body:(id)arg2 buttonText:(id)arg3 altButtonText:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
 + (long long)translateErrorCodeFromError:(id)arg1;
 + (id)translateError:(id)arg1 withAddedUserInfo:(id)arg2;
 + (id)translateError:(id)arg1;

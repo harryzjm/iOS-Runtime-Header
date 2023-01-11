@@ -17,8 +17,6 @@
 - (long long)indexOfAccessibilityElement:(id)arg1;
 - (long long)accessibilityElementCount;
 - (id)_axVisibleCells;
-- (long long)_axLastVisibleIndex;
-- (long long)_axFirstVisibleIndex;
 
 @end
 

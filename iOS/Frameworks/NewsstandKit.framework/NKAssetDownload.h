@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <NewsstandKit/NSSecureCoding-Protocol.h>
 
 @class NKIssue, NSData, NSDictionary, NSString, NSURLConnection, NSURLRequest;
 
-@interface NKAssetDownload : NSObject
+@interface NKAssetDownload : NSObject <NSSecureCoding>
 {
     NKIssue *_issue;
     NSString *_identifier;
@@ -19,6 +21,7 @@
     _Bool _isDecodingValid;
 }
 
++ (_Bool)supportsSecureCoding;
 @property _Bool attemptedConnection; // @synthesize attemptedConnection=_attemptedConnection;
 @property(retain) NSURLConnection *connection; // @synthesize connection=_connection;
 @property(retain) NSData *userInfoData; // @synthesize userInfoData=_userInfoData;

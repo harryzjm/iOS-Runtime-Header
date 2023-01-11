@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 #import <FrontBoard/FBSProcessIdentity-Protocol.h>
@@ -36,7 +36,7 @@
     long long _executableOnSystemPartition;
 }
 
-@property(readonly, retain, nonatomic) FBWorkspace *workspace; // @synthesize workspace=_workspace;
+@property(readonly, nonatomic) FBWorkspace *workspace; // @synthesize workspace=_workspace;
 @property(readonly, nonatomic) long long backgroundingPolicy; // @synthesize backgroundingPolicy=_backgroundingPolicy;
 @property(readonly, nonatomic, getter=isRunning) _Bool running; // @synthesize running=_running;
 @property(readonly, nonatomic) int pid; // @synthesize pid=_pid;
@@ -64,6 +64,7 @@
 - (void)_queue_configureWithHandle:(id)arg1;
 - (id)_queue;
 @property(nonatomic, getter=_queue_supportsSuspendOnLock, setter=_queue_setSupportsSuspendOnLock:) _Bool supportsSuspendOnLock; // @synthesize supportsSuspendOnLock=_supportsSuspendOnLock;
+- (void)_queue_noteSceneCreationAcknowledged:(id)arg1;
 - (void)_queue_sceneLifecycleStateChanged:(id)arg1;
 @property(nonatomic, getter=_queue_visibility, setter=_queue_setVisibility:) int queue_visibility;
 - (int)_effectiveVisibilityForSceneSettings:(id)arg1 underLock:(_Bool)arg2;
@@ -82,7 +83,7 @@
 - (void)_queue_updateStateWithBlock:(CDUnknownBlockType)arg1;
 - (_Bool)_queue_executableLivesOnSystemPartition;
 @property(readonly, nonatomic) _Bool executableLivesOnSystemPartition;
-@property(nonatomic) id <FBProcessDelegate> delegate;
+@property(nonatomic) __weak id <FBProcessDelegate> delegate;
 - (id)_workspace;
 @property(readonly, nonatomic, getter=isForeground) _Bool foreground;
 - (id)valueForEntitlement:(id)arg1;

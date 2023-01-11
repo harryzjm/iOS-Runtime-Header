@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotoEditSupport/NSSecureCoding-Protocol.h>
+
 @class NSDictionary;
 
-@interface BLRedEyeBrushTap
+@interface BLRedEyeBrushTap <NSSecureCoding>
 {
     int _destinationWidth;
     double _timestamp;
@@ -14,6 +16,7 @@
     struct CGPoint _point;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(retain, nonatomic) NSDictionary *eyeRepairData; // @synthesize eyeRepairData=_eyeRepairData;
 @property(nonatomic) struct CGPoint point; // @synthesize point=_point;
 @property(nonatomic) int destinationWidth; // @synthesize destinationWidth=_destinationWidth;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DAEAS/NSCoding-Protocol.h>
+#import <DAEAS/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface ASFolder <NSCoding>
+@interface ASFolder <NSSecureCoding>
 {
     _Bool _renameOnCollision;
     int _folderType;
@@ -21,6 +21,7 @@
 }
 
 + (id)asParseRules;
++ (_Bool)supportsSecureCoding;
 + (_Bool)notifyOfUnknownTokens;
 + (_Bool)frontingBasicTypes;
 + (_Bool)parsingWithSubItems;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSCHUnretainedParent-Protocol.h>
 
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly, nonatomic) _Bool showTrendLine; // @synthesize showTrendLine=mShowTrendLine;
+- (void).cxx_destruct;
 - (void)p_releaseCache;
 - (void)p_updateTrendLineData;
 - (void)p_generateRegression;

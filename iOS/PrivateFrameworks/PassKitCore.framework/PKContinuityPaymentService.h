@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/PKContinuityPaymentServiceExportedInterface-Protocol.h>
 
-@class NSArray, PKXPCService;
+@class NSArray, NSLock, PKXPCService;
 @protocol OS_dispatch_queue, PKContinuityPaymentServiceDelegate;
 
 @interface PKContinuityPaymentService : NSObject <PKContinuityPaymentServiceExportedInterface>
 {
     PKXPCService *_remoteService;
     NSObject<OS_dispatch_queue> *_delegateQueue;
-    NSObject<OS_dispatch_queue> *_internalQueue;
+    NSLock *_remoteDeviceLock;
     NSArray *_remoteDevices;
     id <PKContinuityPaymentServiceDelegate> _delegate;
 }

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBExclusiveTouchGestureRecognizerDelegate-Protocol.h>
 #import <FrontBoard/UIGestureRecognizerDelegate-Protocol.h>
@@ -34,6 +34,7 @@
 @property(retain, nonatomic) UIGestureRecognizer *catchEdgeSwipeFailureGesture; // @synthesize catchEdgeSwipeFailureGesture=_catchEdgeSwipeFailureGesture;
 @property(retain, nonatomic) UIGestureRecognizer *pendingSwipeGesture; // @synthesize pendingSwipeGesture=_pendingSwipeGesture;
 @property(retain, nonatomic) UIGestureRecognizer *exclusiveTouchGesture; // @synthesize exclusiveTouchGesture=_exclusiveTouchGesture;
+- (void).cxx_destruct;
 - (void)_handleTooMuchMovementWithLastTouchTimestamp:(double)arg1;
 - (void)_externalGestureRecognizerChanged:(id)arg1;
 - (void)_catchSwipeFailureGestureChanged:(id)arg1;

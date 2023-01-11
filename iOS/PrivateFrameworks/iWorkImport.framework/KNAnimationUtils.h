@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface KNAnimationUtils : NSObject
@@ -24,6 +24,11 @@ __attribute__((visibility("hidden")))
 + (_Bool)isRandomNumberSeedInspectionEnabled;
 + (_Bool)isDisplayLoggingEnabled;
 + (_Bool)isResponsivenessLoggingEnabled;
++ (_Bool)isRenderingLocal;
++ (_Bool)shouldBadgeMetalRendering;
++ (_Bool)isMetalDisabled;
++ (_Bool)areGLActionBuildsEnabled;
++ (_Bool)isMaxConcurrentTexturePrecachingEnabled;
 + (_Bool)isTexturePrecachingDisabled;
 + (_Bool)isGLStateValidationEnabled;
 + (_Bool)isFPSGraphEnabled;

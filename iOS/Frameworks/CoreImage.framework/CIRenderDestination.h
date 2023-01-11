@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CIBlendKernel;
 
@@ -16,6 +16,8 @@
 - (id)debugDescription;
 - (id)description;
 - (id)imageRepresentation;
+- (void)setLabel:(id)arg1;
+- (id)label;
 @property _Bool blendsInDestinationColorSpace;
 @property(retain, nonatomic) CIBlendKernel *blendKernel;
 @property(nonatomic) struct CGColorSpace *colorSpace;

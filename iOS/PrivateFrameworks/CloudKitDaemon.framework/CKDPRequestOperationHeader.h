@@ -8,7 +8,7 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPIdentifier, CKDPLocale, NSData, NSMutableArray, NSString;
+@class CKDPIdentifier, CKDPLocale, CKDPRequestOperationHeaderAssetAuthorizeGetRequestOptions, NSData, NSMutableArray, NSString;
 
 @interface CKDPRequestOperationHeader : PBCodable <NSCopying>
 {
@@ -22,6 +22,7 @@
     NSString *_applicationContainer;
     int _applicationContainerEnvironment;
     NSString *_applicationVersion;
+    CKDPRequestOperationHeaderAssetAuthorizeGetRequestOptions *_assetAuthorizeGetRequestOptions;
     NSData *_clientChangeToken;
     NSString *_deviceAssignedName;
     NSString *_deviceFlowControlKey;
@@ -40,6 +41,7 @@
     int _targetDatabase;
     NSString *_userIDContainerID;
     NSString *_userToken;
+    _Bool _deviceSoftwareIsAppleInternal;
     struct {
         unsigned int applicationConfigVersion:1;
         unsigned int deviceFlowControlBudget:1;
@@ -51,10 +53,13 @@
         unsigned int deviceFlowControlRegeneration:1;
         unsigned int isolationLevel:1;
         unsigned int targetDatabase:1;
+        unsigned int deviceSoftwareIsAppleInternal:1;
     } _has;
 }
 
 + (Class)serviceIdentityKeyIDsType;
+@property(retain, nonatomic) CKDPRequestOperationHeaderAssetAuthorizeGetRequestOptions *assetAuthorizeGetRequestOptions; // @synthesize assetAuthorizeGetRequestOptions=_assetAuthorizeGetRequestOptions;
+@property(nonatomic) _Bool deviceSoftwareIsAppleInternal; // @synthesize deviceSoftwareIsAppleInternal=_deviceSoftwareIsAppleInternal;
 @property(retain, nonatomic) NSMutableArray *serviceIdentityKeyIDs; // @synthesize serviceIdentityKeyIDs=_serviceIdentityKeyIDs;
 @property(nonatomic) unsigned long long operationGroupQuantity; // @synthesize operationGroupQuantity=_operationGroupQuantity;
 @property(retain, nonatomic) NSString *operationGroupName; // @synthesize operationGroupName=_operationGroupName;
@@ -90,6 +95,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasAssetAuthorizeGetRequestOptions;
+@property(nonatomic) _Bool hasDeviceSoftwareIsAppleInternal;
 - (id)serviceIdentityKeyIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)serviceIdentityKeyIDsCount;
 - (void)addServiceIdentityKeyIDs:(id)arg1;

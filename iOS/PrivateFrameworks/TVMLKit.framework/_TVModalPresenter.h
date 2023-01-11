@@ -17,6 +17,7 @@
 {
     _UIProgressiveBlurPresentationAnimator *_presentingAnimator;
     _UIProgressiveBlurPresentationAnimator *_dismissingAnimator;
+    _Bool _dismissing;
     _TVPlaybackFadeAnimator *_playbackAnimator;
     UINavigationController *_modalRootViewController;
 }
@@ -25,10 +26,11 @@
 @property(readonly, nonatomic) UINavigationController *modalRootViewController; // @synthesize modalRootViewController=_modalRootViewController;
 - (void).cxx_destruct;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
+- (void)_forceOrientationBackToSupportedOrientation;
 - (void)_willRotateNotification:(id)arg1;
 - (void)_dismissAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)_isDismissing;
 - (void)_configureModalController:(id)arg1 withFromController:(id)arg2 andConfiguration:(id)arg3;
-- (unsigned long long)navigationControllerSupportedInterfaceOrientations:(id)arg1;
 - (void)hideAllAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)hideController:(id)arg1 animated:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)showController:(id)arg1 fromController:(id)arg2 withConfiguration:(id)arg3 animated:(_Bool)arg4 andCompletionBlock:(CDUnknownBlockType)arg5;

@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@protocol MKOverlay;
+@class MKMapView;
+@protocol MKOverlay, OS_dispatch_queue;
 
 @interface MKOverlayRenderer : NSObject
 {
     id <MKOverlay> _overlay;
     CDStruct_02837cd9 _boundingMapRect;
     id _renderer;
+    NSObject<OS_dispatch_queue> *_isolationQueue;
+    MKMapView *_mapView;
     double _contentScaleFactor;
     double _alpha;
 }
@@ -23,6 +26,7 @@
 - (_Bool)canDrawMapRect:(CDStruct_02837cd9)arg1 zoomScale:(double)arg2;
 - (void)overlay:(id)arg1 drawKey:(const CDStruct_7523a67d *)arg2 inContext:(struct CGContext *)arg3;
 - (_Bool)overlay:(id)arg1 canDrawKey:(const CDStruct_7523a67d *)arg2;
+- (_Bool)_mayExtendOutsideBounds;
 - (void)set_renderer:(id)arg1;
 - (id)_renderer;
 - (CDStruct_02837cd9)_boundingMapRect;
@@ -34,6 +38,8 @@
 - (struct CGRect)rectForMapRect:(CDStruct_02837cd9)arg1;
 - (CDStruct_c3b9c2ee)mapPointForPoint:(struct CGPoint)arg1;
 - (struct CGPoint)pointForMapPoint:(CDStruct_c3b9c2ee)arg1;
+- (void)_setMapView:(id)arg1;
+- (id)_mapView;
 - (id)_mk_overlayLayer;
 - (id)_mk_overlayView;
 - (CDStruct_c3b9c2ee)_originMapPoint;

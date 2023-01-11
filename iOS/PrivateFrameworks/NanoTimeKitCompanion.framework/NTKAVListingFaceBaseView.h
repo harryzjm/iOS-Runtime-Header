@@ -44,6 +44,7 @@
 - (void)_transitionToPosterView:(id)arg1;
 - (void)_endScrubbingAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_startScrubbingAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_complicationFlickerWorkgroundAnimationWithDuration:(double)arg1 applier:(CDUnknownBlockType)arg2;
 - (void)_unpauseFromSwitcher;
 - (void)_playVideoForScreenWake:(id)arg1;
 - (void)_playVideo;
@@ -79,7 +80,7 @@
 - (void)_selectDefaultListing;
 - (_Bool)_changeCurrentListing;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 
 @end
 

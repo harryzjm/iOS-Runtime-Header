@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSString;
 @protocol AVOutputDeviceImpl;
 
+__attribute__((visibility("hidden")))
 @interface AVOutputDeviceInternal : NSObject
 {
     id <AVOutputDeviceImpl> impl;
@@ -16,7 +17,10 @@
     NSString *ID;
     long long deviceType;
     long long deviceSubType;
+    NSString *manufacturer;
     NSString *modelID;
+    NSString *serialNumber;
+    NSString *firmwareVersion;
     NSData *MACAddress;
     unsigned long long deviceFeatures;
 }

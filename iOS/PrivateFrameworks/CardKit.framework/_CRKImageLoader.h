@@ -8,11 +8,12 @@
 
 #import <CardKit/SFResourceLoader-Protocol.h>
 
-@class NSString;
+@class INUIImageLoader, NSString;
 @protocol _CRKImageLoaderDelegate;
 
 @interface _CRKImageLoader : NSObject <SFResourceLoader>
 {
+    INUIImageLoader *_imageLoader;
     _Bool _active;
     id <_CRKImageLoaderDelegate> _delegate;
 }

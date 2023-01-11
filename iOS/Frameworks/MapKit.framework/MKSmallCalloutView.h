@@ -6,13 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <MapKit/CalloutViewControllerProtocol-Protocol.h>
-
-@class MKCalloutBackgroundView, NSArray, NSLayoutConstraint, NSString, UILayoutGuide, _MKSmallCalloutPassthroughButton, _MKUILabel;
+@class NSArray, NSLayoutConstraint, NSString, UILayoutGuide, _MKSmallCalloutPassthroughButton, _MKUILabel;
 @protocol _MKCalloutAccessoryView;
 
 __attribute__((visibility("hidden")))
-@interface MKSmallCalloutView : UIView <CalloutViewControllerProtocol>
+@interface MKSmallCalloutView : UIView
 {
     _MKUILabel *_titleLabel;
     _MKUILabel *_subtitleLabel;
@@ -20,12 +18,12 @@ __attribute__((visibility("hidden")))
     UIView<_MKCalloutAccessoryView> *_rightView;
     UIView<_MKCalloutAccessoryView> *_externalLeftView;
     UIView<_MKCalloutAccessoryView> *_externalRightView;
+    UIView<_MKCalloutAccessoryView> *_externalDetailView;
     UIView<_MKCalloutAccessoryView> *_detailView;
     struct CGSize _preferredContentSize;
     _Bool _shouldPositionTitleForMapsTransitionMovingSideways;
     _MKSmallCalloutPassthroughButton *_maskedContainerView;
     UIView *_unmaskedContainerView;
-    MKCalloutBackgroundView *_calloutBackgroundView;
     CDStruct_80aa614a _mapDisplayStyle;
     _Bool _needsPreferredContentSizeUpdate;
     NSLayoutConstraint *_minWidthConstraint;
@@ -53,9 +51,12 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_detailViewMinTopConstraint;
     NSLayoutConstraint *_detailViewBottomConstraint;
     NSLayoutConstraint *_detailViewTrailingConstraint;
+    _Bool _parallaxEnabled;
+    UIView *_titlesContainerView;
 }
 
-@property(retain, nonatomic) MKCalloutBackgroundView *calloutBackgroundView; // @synthesize calloutBackgroundView=_calloutBackgroundView;
+@property(nonatomic) _Bool parallaxEnabled; // @synthesize parallaxEnabled=_parallaxEnabled;
+@property(readonly, nonatomic) UIView *titlesContainerView; // @synthesize titlesContainerView=_titlesContainerView;
 @property(nonatomic) CDStruct_80aa614a mapDisplayStyle; // @synthesize mapDisplayStyle=_mapDisplayStyle;
 - (void).cxx_destruct;
 - (void)_updateAccessoryViewStyles;
@@ -82,12 +83,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double minimumWidth;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

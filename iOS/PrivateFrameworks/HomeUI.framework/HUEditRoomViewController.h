@@ -5,20 +5,23 @@
 //
 
 #import <HomeUI/HUWallpaperEditingViewControllerDelegate-Protocol.h>
+#import <HomeUI/HUWallpaperPickerInlineViewControllerDelegate-Protocol.h>
 #import <HomeUI/HUWallpaperPickerViewControllerDelegate-Protocol.h>
+#import <HomeUI/HUWallpaperThumbnailCellDelegate-Protocol.h>
 #import <HomeUI/UIImagePickerControllerDelegate-Protocol.h>
 #import <HomeUI/UINavigationControllerDelegate-Protocol.h>
 #import <HomeUI/UITextFieldDelegate-Protocol.h>
 
-@class HFRoomBuilder, HUEditRoomItemManager, HUEditableTextCell, HUZoneModuleController, NSString, UIBarButtonItem;
+@class HFRoomBuilder, HUEditRoomItemManager, HUEditableTextCell, HUWallpaperPickerInlineViewController, HUZoneModuleController, NSString, UIBarButtonItem;
 @protocol HUEditRoomViewControllerAddRoomDelegate, HUEditRoomViewControllerPresentationDelegate;
 
-@interface HUEditRoomViewController <UITextFieldDelegate, HUWallpaperPickerViewControllerDelegate, HUWallpaperEditingViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface HUEditRoomViewController <UITextFieldDelegate, HUWallpaperPickerViewControllerDelegate, HUWallpaperEditingViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, HUWallpaperThumbnailCellDelegate, HUWallpaperPickerInlineViewControllerDelegate>
 {
     HFRoomBuilder *_roomBuilder;
     id <HUEditRoomViewControllerPresentationDelegate> _presentationDelegate;
     id <HUEditRoomViewControllerAddRoomDelegate> _addRoomDelegate;
     HUZoneModuleController *_zoneModuleController;
+    HUWallpaperPickerInlineViewController *_wallpaperPickerController;
     HUEditRoomItemManager *_roomItemManager;
     HUEditableTextCell *_nameCell;
     UIBarButtonItem *_savedButtonBarItem;
@@ -27,6 +30,7 @@
 @property(retain, nonatomic) UIBarButtonItem *savedButtonBarItem; // @synthesize savedButtonBarItem=_savedButtonBarItem;
 @property(nonatomic) __weak HUEditableTextCell *nameCell; // @synthesize nameCell=_nameCell;
 @property(nonatomic) __weak HUEditRoomItemManager *roomItemManager; // @synthesize roomItemManager=_roomItemManager;
+@property(retain, nonatomic) HUWallpaperPickerInlineViewController *wallpaperPickerController; // @synthesize wallpaperPickerController=_wallpaperPickerController;
 @property(retain, nonatomic) HUZoneModuleController *zoneModuleController; // @synthesize zoneModuleController=_zoneModuleController;
 @property(readonly, nonatomic) __weak id <HUEditRoomViewControllerAddRoomDelegate> addRoomDelegate; // @synthesize addRoomDelegate=_addRoomDelegate;
 @property(readonly, nonatomic) __weak id <HUEditRoomViewControllerPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
@@ -35,8 +39,13 @@
 - (id)_allTextFields;
 - (void)_resignTextFieldFirstResponder;
 - (void)updateWallpaper:(id)arg1 image:(id)arg2;
+- (void)presentWallpaperEditingViewControllerWithImage:(id)arg1 wallpaper:(id)arg2;
 - (void)wallpaperEditingDidCancel:(id)arg1;
 - (void)wallpaperEditing:(id)arg1 didFinishWithWallpaper:(id)arg2 image:(id)arg3;
+- (void)wallpaperPickerRequestOpenWallpaperEditor:(id)arg1;
+- (void)wallpaperPicker:(id)arg1 didSelectWallpaper:(id)arg2 withImage:(id)arg3;
+- (void)wallpaperPicker:(id)arg1 didReceiveDroppedImage:(id)arg2;
+- (void)wallpaperThumbnailCell:(id)arg1 didReceiveDroppedImage:(id)arg2;
 - (void)wallpaperPickerDidFinish:(id)arg1 wallpaper:(id)arg2 image:(id)arg3;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (_Bool)textFieldShouldReturn:(id)arg1;

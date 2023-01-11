@@ -7,15 +7,15 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDCentralMessageDispatcher, HMDHome, HMDResidentDevice, HMFMessageDispatcher, HMFTimer, NSArray, NSMutableSet, NSObject, NSString, NSUUID;
+@class HMDCentralMessageDispatcher, HMDHome, HMDResidentDevice, HMFMessageDispatcher, HMFTimer, NSArray, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
 @protocol HMDResidentDeviceManagerDelegate, OS_dispatch_queue;
 
-@interface HMDResidentDeviceManager : HMFObject <HMFTimerDelegate, HMFLogging, HMFMessageReceiver, NSSecureCoding, HMDBackingStoreObjectProtocol>
+@interface HMDResidentDeviceManager : HMFObject <HMFTimerDelegate, HMFLogging, HMDHomeMessageReceiver, NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
     NSMutableSet *_residentDevices;
     _Bool _residentAvailable;
@@ -36,6 +36,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)hasMessageReceiverChildren;
 + (id)logCategory;
 + (long long)compareElectionVersions:(id)arg1 otherVersion:(id)arg2;
 + (id)shortDescription;
@@ -86,8 +87,10 @@
 - (id)_orderedDevicesForElection;
 - (void)_electResidentDevice;
 - (void)electResidentDevice;
+- (void)__currentDeviceUpdated:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleCurrentDeviceUpdated:(id)arg1;
 - (void)handleCurrentDeviceChanged:(id)arg1;
+- (void)__handleAppleAccountResolved:(id)arg1;
 - (void)_handleResidentDeviceUpdateEnabled:(id)arg1;
 - (void)notifyUpdatedPrimaryResident:(id)arg1;
 - (void)notifyClientsOfUpdatedResidentDevice:(id)arg1;
@@ -116,6 +119,7 @@
 @property(readonly, nonatomic) __weak HMDResidentDevice *primaryResidentDevice;
 - (void)_teardownSessionWithPrimaryResidentDevice;
 - (void)_setupSessionWithPrimaryResidentDevice;
+- (void)_run;
 - (void)run;
 - (void)_registerForMessages;
 - (void)configureWithHome:(id)arg1;
@@ -129,6 +133,7 @@
 
 // Remaining properties
 @property(readonly) unsigned long long hash;
+@property(readonly, copy) NSSet *messageReceiverChildren;
 @property(readonly) Class superclass;
 
 @end

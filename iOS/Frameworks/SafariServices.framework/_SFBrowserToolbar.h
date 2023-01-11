@@ -4,39 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIBarButtonItem;
-@protocol _SFBrowserToolbarDataSource, _SFBrowserToolbarDelegate;
+#import <SafariServices/_SFBarRegistrationObserving-Protocol.h>
+
+@class NSString;
+@protocol _SFBarRegistrationToken, _SFBrowserToolbarDataSource;
 
 __attribute__((visibility("hidden")))
-@interface _SFBrowserToolbar
+@interface _SFBrowserToolbar <_SFBarRegistrationObserving>
 {
-    UIBarButtonItem *_backItem;
-    UIBarButtonItem *_forwardItem;
-    id <_SFBrowserToolbarDelegate> _browserDelegate;
+    id <_SFBarRegistrationToken> _barRegistration;
     id <_SFBrowserToolbarDataSource> _dataSource;
-    UIBarButtonItem *_actionItem;
-    UIBarButtonItem *_openInSafariItem;
 }
 
-@property(readonly, nonatomic) UIBarButtonItem *openInSafariItem; // @synthesize openInSafariItem=_openInSafariItem;
-@property(readonly, nonatomic) UIBarButtonItem *actionItem; // @synthesize actionItem=_actionItem;
 @property(nonatomic) __weak id <_SFBrowserToolbarDataSource> dataSource; // @synthesize dataSource=_dataSource;
-@property(nonatomic) __weak id <_SFBrowserToolbarDelegate> browserDelegate; // @synthesize browserDelegate=_browserDelegate;
 - (void).cxx_destruct;
+- (void)didCompleteBarRegistrationWithToken:(id)arg1;
+- (id)popoverSourceInfoForBarItem:(long long)arg1;
 - (double)_contentMargin;
 - (double)URLFieldHorizontalMargin;
 @property(readonly, nonatomic) double differenceBetweenWidthsOfLeadingAndTrailingItems;
 - (double)_totalWidthOfLeadingItems;
 - (double)_totalWidthOfTrailingItems;
-- (struct CGRect)popoverPresentationRectForButtonItem:(id)arg1;
-- (void)openInSafariButtonPressed;
-- (void)actionButtonPressed;
-- (void)forwardButtonPressed;
-- (void)backButtonPressed;
-- (void)updateButtonStates;
 - (void)layoutSubviews;
 - (_Bool)isMinibar;
 - (id)_toolbarItems;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

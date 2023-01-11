@@ -9,6 +9,7 @@
     int _encodingCount;
 }
 
++ (_Bool)supportsSecureCoding;
 - (_Bool)isEqual:(id)arg1;
 - (id)alias;
 - (id)playerID;

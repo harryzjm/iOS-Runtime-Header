@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreNFC/NFCHardwareManagerCallbacks-Protocol.h>
 #import <CoreNFC/NFCReaderSession-Protocol.h>
@@ -47,7 +47,7 @@
 - (void)didInvalidate;
 - (void)hardwareFailedToLoad;
 - (void)didDetectTags:(id)arg1;
-- (void)didDetectExternalReader:(id)arg1;
+- (void)didDetectExternalReaderWithNotification:(id)arg1;
 - (void)didTerminate:(id)arg1;
 - (void)didStartSession:(id)arg1;
 - (void)invalidateSessionWithReason:(long long)arg1;

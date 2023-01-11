@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class DeviceManager, NSString;
 @protocol ICDeviceDelegate;
@@ -20,6 +20,7 @@
 - (id)valueForUndefinedKey:(id)arg1;
 - (void)requestCloseSession;
 - (void)requestOpenSession;
+@property(readonly) _Bool isAppleDevice; // @dynamic isAppleDevice;
 @property _Bool closeSessionPending;
 @property _Bool openSessionPending;
 @property _Bool autoOpenSession;
@@ -33,7 +34,6 @@
 @property(copy) NSString *name;
 @property DeviceManager *deviceManager;
 @property id <ICDeviceDelegate> delegate;
-- (void)finalize;
 - (void)dealloc;
 - (id)description;
 - (id)init;

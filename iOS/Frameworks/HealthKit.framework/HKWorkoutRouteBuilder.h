@@ -4,26 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKWorkoutRoute;
+#import <HealthKit/HKSeriesBuilderClientInterface-Protocol.h>
 
-@interface HKWorkoutRouteBuilder
+@class NSString;
+
+@interface HKWorkoutRouteBuilder <HKSeriesBuilderClientInterface>
 {
-    HKWorkoutRoute *_route;
 }
 
-- (void).cxx_destruct;
-- (_Bool)_validateRouteData:(id)arg1 error:(out id *)arg2;
-- (void)setRoute:(id)arg1;
-- (id)route;
-- (void)_resourceQueue_discardWithHandler:(CDUnknownBlockType)arg1;
-- (void)_associateRoute:(id)arg1 toWorkout:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)configureServerInterface:(id)arg1;
++ (void)configureClientInterface:(id)arg1;
++ (id)serverInterface;
++ (id)clientInterface;
+- (id)remoteInterface;
+- (id)exportedInterface;
 - (void)_resourceQueue_finishRouteWithWorkout:(id)arg1 metadata:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)finishRouteWithWorkout:(id)arg1 metadata:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)addMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_resourceQueue_insertRouteData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)insertRouteData:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)dealloc;
+- (id)initWithHealthStore:(id)arg1 identifier:(id)arg2 device:(id)arg3 workoutBuilderID:(id)arg4;
 - (id)initWithHealthStore:(id)arg1 device:(id)arg2;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

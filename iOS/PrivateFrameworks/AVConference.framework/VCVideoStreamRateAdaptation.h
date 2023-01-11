@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class VCMediaStreamStats, VCVideoStreamRateController;
 
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     double _maxOWRD;
     double _averageBitrateWindowDuration;
     struct opaqueRTCReporting *_reportingAgent;
+    int _reportingModuleID;
     VCVideoStreamRateController *_rateController;
     VCMediaStreamStats *_stats;
 }
@@ -53,7 +54,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)runVideoStreamRateAdaptation;
 - (void)setEnableRateAdaptation:(_Bool)arg1 maxBitrate:(unsigned int)arg2 minBitrate:(unsigned int)arg3 adaptationInterval:(double)arg4;
 - (void)dealloc;
-- (id)initWithRTPHandle:(struct tagHANDLE *)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2 receiverStats:(id)arg3 dumpID:(unsigned int)arg4;
+- (id)initWithRTPHandle:(struct tagHANDLE *)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2 receiverStats:(id)arg3 dumpID:(unsigned int)arg4 reportingParentID:(int)arg5;
 
 @end
 

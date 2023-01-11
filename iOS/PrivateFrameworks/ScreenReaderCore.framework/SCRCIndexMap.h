@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <ScreenReaderCore/NSCoding-Protocol.h>
 #import <ScreenReaderCore/NSCopying-Protocol.h>
+#import <ScreenReaderCore/NSSecureCoding-Protocol.h>
 
-@interface SCRCIndexMap : NSObject <NSCopying, NSCoding>
+@interface SCRCIndexMap : NSObject <NSCopying, NSSecureCoding>
 {
     struct __CFDictionary *_map;
 }
 
++ (_Bool)supportsSecureCoding;
 - (id)description;
 - (void)addObjectsFromIndexMap:(id)arg1;
 - (id)indexes;

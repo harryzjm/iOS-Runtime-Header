@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSManagedObjectModel, NSMutableArray, NSMutableDictionary, NSString, NSURL, NSUUID, TDCatalogGlobals, TDDeviceTraits, TDHistorian, TDThreadMOCOrganizer;
+@class NSManagedObjectModel, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSURL, NSUUID, TDCatalogGlobals, TDDeviceTraits, TDHistorian, TDThreadMOCOrganizer;
 @protocol TDAssetManagementDelegate, TDCustomAssetProvider;
 
 @interface CoreThemeDocument
@@ -31,6 +31,8 @@
     NSMutableArray *_deviceTraits;
     struct _renditionkeyfmt *_keyFormat;
     TDCatalogGlobals *_catalogGlobals;
+    NSMutableArray *_cachedAppearances;
+    NSMutableSet *_cachedUnknownAppearanceIds;
     id <TDAssetManagementDelegate> _assetManagementDelegate;
     id <TDCustomAssetProvider> _customAssetProvider;
 }
@@ -54,6 +56,8 @@
 + (id)createConfiguredDocumentAtURL:(id)arg1 error:(id *)arg2;
 + (void)_addThemeDocument:(id)arg1;
 + (id)_sharedDocumentList;
++ (_Bool)deepmapCompressionEnabled;
++ (_Bool)HEVCCompressionEnabled;
 + (int)maximumAreaOfPackableImageForScale:(unsigned long long)arg1;
 + (void)initialize;
 @property(nonatomic) id <TDCustomAssetProvider> customAssetProvider; // @synthesize customAssetProvider=_customAssetProvider;
@@ -108,7 +112,7 @@
 - (int)renditionKeySemantics;
 - (const struct _renditionkeyfmt *)renditionKeyFormat;
 - (const struct _renditionkeyfmt *)untrimmedRenditionKeyFormat;
-- (void)_updateKeyFormat;
+- (void)_updateKeyFormatWithContext:(id)arg1;
 - (_Bool)_canremoveKeyAttribte:(unsigned short)arg1;
 - (void)convertColorsFromColorSpaceWithIdentifier:(unsigned long long)arg1 toIdentifier:(unsigned long long)arg2;
 - (unsigned long long)colorSpaceID;
@@ -118,8 +122,7 @@
 - (void)primeArrayControllers;
 - (void)resetThemeConstants;
 - (void)buildModel;
-- (long long)targetPlatform;
-- (void)setTargetPlatform:(long long)arg1;
+@property long long targetPlatform;
 - (void)setArtworkFormat:(id)arg1;
 - (id)artworkFormat;
 - (unsigned int)checksum;
@@ -153,14 +156,24 @@
 - (_Bool)canImportNamedAssetImportInfo:(id)arg1;
 - (void)importNamedAssetsFromFileURLs:(id)arg1 referenceFiles:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_backwardsCompatibilityPatchForLayoutDirection;
+- (void)_generateWatchImages;
+- (_Bool)_production:(id)arg1 containsScale:(unsigned int)arg2 andIdiom:(unsigned int)arg3 andSubtype:(unsigned int)arg4;
+- (void)createNamedRenditionGroupProductionsForImportInfos:(id)arg1 error:(id *)arg2;
+- (void)_tidyUpRecognitionImages;
 - (void)_tidyUpLayerStacks;
 - (void)_makeRadiosityImages;
 - (void)_addResolvedLayerReferenceToFlattenedImageRendition:(id)arg1 usingArtworkRendition:(id)arg2 andLayerReference:(id)arg3;
 - (long long)_compareFlattenedKeySpec1:(id)arg1 toKeySpec2:(id)arg2;
 - (id)updateAutomaticTexturesForCustomInfos:(id)arg1 allTextureInfos:(id)arg2;
+- (void)createNamedRecognitionObjectsForAssets:(id)arg1 customInfos:(id)arg2 error:(id *)arg3;
 - (void)createNamedModelsForCustomInfos:(id)arg1 referenceFiles:(_Bool)arg2 bitSource:(id)arg3 error:(id *)arg4;
 - (void)createNamedTexturesForCustomInfos:(id)arg1 referenceFiles:(_Bool)arg2 bitSource:(id)arg3 error:(id *)arg4;
 - (id)createNamedArtworkProductionsForAssets:(id)arg1 customInfos:(id)arg2 error:(id *)arg3;
+- (void)_createForwardstopRenditions;
+- (void)createForwardstop:(id)arg1 withDeploymentTarget:(long long)arg2;
+- (_Bool)needToCreateForwardstopFor2018DeploymentVariant:(id)arg1;
+- (_Bool)isArtworkRenditionEligibleForForwardstop:(id)arg1;
+- (_Bool)needToCreateForwardstopForPlatform;
 - (id)_sizeIndexesByNameFromNamedAssetImportInfos:(id)arg1;
 - (id)createNamedColorProductionsForImportInfos:(id)arg1 error:(id *)arg2;
 - (id)slicesComputedForImageSize:(struct CGSize)arg1 usingSliceInsets:(CDStruct_3c058996)arg2 resizableSliceSize:(struct CGSize)arg3 withRenditionType:(long long)arg4;
@@ -197,11 +210,14 @@
 - (void)deleteObjects:(id)arg1;
 - (id)newObjectForEntity:(id)arg1;
 - (unsigned long long)countForEntity:(id)arg1 withPredicate:(id)arg2;
+- (id)objectsForEntity:(id)arg1 withPredicate:(id)arg2 sortDescriptors:(id)arg3 withContext:(id)arg4 error:(id *)arg5;
 - (id)objectsForEntity:(id)arg1 withPredicate:(id)arg2 sortDescriptors:(id)arg3 error:(id *)arg4;
 - (id)objectsForEntity:(id)arg1 withPredicate:(id)arg2 sortDescriptors:(id)arg3;
 - (id)allObjectsForEntity:(id)arg1 withSortDescriptors:(id)arg2 error:(id *)arg3;
 - (id)allObjectsForEntity:(id)arg1 withSortDescriptors:(id)arg2;
 - (id)mappingForPhotoshopLayerIndex:(long long)arg1 themeDrawingLayerIdentifier:(long long)arg2;
+- (id)appearanceWithIdentifier:(long long)arg1 name:(id)arg2 createIfNeeded:(_Bool)arg3;
+- (id)appearanceWithIdentifier:(long long)arg1;
 - (id)artworkDraftTypeWithIdentifier:(long long)arg1;
 - (id)zeroCodeArtworkInfoWithIdentifier:(long long)arg1;
 - (id)psdImageRefForAsset:(id)arg1;
@@ -251,6 +267,15 @@
 - (void)_getFilename:(id *)arg1 scaleFactor:(unsigned int *)arg2 category:(id *)arg3 bitSource:(id *)arg4 forFileURL:(id)arg5;
 - (id)_predicateForRenditionKeySpec:(id)arg1;
 - (void)changedObjectsNotification:(id)arg1;
+- (_Bool)shouldCreateForwardstopForLossless;
+- (_Bool)shouldCreateForwardstopForLossy;
+- (_Bool)shouldAllowDeepmapCompressionForDeploymentTarget:(unsigned int)arg1;
+- (_Bool)shouldAllowDeepmapCompression;
+- (_Bool)shouldAllowHevcCompressionForDeploymentTarget:(unsigned int)arg1;
+- (_Bool)shouldAllowHevcCompression;
+- (_Bool)shouldPerformHistogramBasedPacking;
+- (_Bool)shouldAllowPaletteImageCompressionForDeploymentTarget:(unsigned int)arg1;
+- (_Bool)shouldAllowPaletteImageCompression;
 - (_Bool)shouldSupportCompactCompression;
 - (void)updateRenditionSpec:(id)arg1;
 - (id)deviceTraitsUsedForOptimization;

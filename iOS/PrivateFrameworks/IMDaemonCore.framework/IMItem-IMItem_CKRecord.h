@@ -22,7 +22,9 @@
 + (id)populateIMMessageItemWithProtoBufFields:(id)arg1 withProtbufData:(id)arg2;
 + (id)protobufForCompressedData:(id)arg1;
 - (_Bool)shouldStoreMessage;
+- (_Bool)_shouldDownloadIfPhoneNumberAndNoSIM:(id)arg1;
 - (id)copyCKRecordRepresentationWithZoneID:(id)arg1 salt:(id)arg2;
+- (_Bool)_usingStingRay;
 - (id)_recordFromServerChangeToken;
 - (void)_populateCKRecordWithIMMessageActionItemFields:(id)arg1;
 - (id)compressedProtobufDataForMessageActionItem;
@@ -36,8 +38,6 @@
 - (id)compressedProtobufDataForGroupTitleChangeItem;
 - (void)_populateCKRecordWithIMMessageItemFields:(id)arg1;
 - (void)_populateCKRecordWithIMItemFields:(id)arg1;
-- (id)_recordIDUsingName:(id)arg1 zoneID:(id)arg2;
-- (id)_recordNameUsingSalt:(id)arg1;
 - (id)compressedProtobufDataForMessage;
 - (id)compressedProtobufDataWithPadding:(id)arg1;
 - (id)_accountControllerSharedInstance;

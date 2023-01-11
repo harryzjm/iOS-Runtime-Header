@@ -64,6 +64,7 @@
 - (double)_accessibilityScrollWidthDistance;
 - (_Bool)_accessibilityShouldAnimateScroll;
 - (_Bool)_accessibilityShouldAnimateScrollToVisible;
+- (long long)accessibilityContainerType;
 - (_Bool)_accessibilityScrollToFrame:(struct CGRect)arg1 forView:(id)arg2;
 - (_Bool)_axShouldScrollToAlignWithPage;
 - (struct CGPoint)_accessibilityContentOffset;
@@ -77,6 +78,12 @@
 - (void)_scrollToTopFromTouchAtScreenLocation:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)_accessibilityScrollToTopWithAnnouncement:(_Bool)arg1 touchLocation:(struct CGPoint)arg2 originalHandler:(CDUnknownBlockType)arg3;
 - (double)_accessibilityZoomScale;
+- (id)_accessibilityHorizontalScrollBarElement;
+- (id)_accessibilityVerticalScrollBarElement;
+- (void)_axSetHorizontalScrollBar:(id)arg1;
+- (id)_axHorizontalScrollBar;
+- (void)_axSetVerticalScrollBar:(id)arg1;
+- (id)_axVerticalScrollBar;
 
 @end
 

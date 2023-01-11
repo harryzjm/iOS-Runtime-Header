@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBApplicationDataStoreRepository-Protocol.h>
 
@@ -23,7 +23,8 @@
     NSObject<OS_dispatch_queue> *_writeQueue;
 }
 
-@property(nonatomic) id <FBApplicationDataStoreRepositoryReadingDelegate> delegate;
+@property(nonatomic) __weak id <FBApplicationDataStoreRepositoryReadingDelegate> delegate;
+- (void).cxx_destruct;
 - (void)_notifyDelegateOfStoreInvalidationForIdentifier:(id)arg1;
 - (void)_notifyDelegateOfChangeForKeys:(id)arg1 application:(id)arg2;
 - (void)_writeQueue_flushSynchronously;
@@ -43,8 +44,7 @@
 - (void)removeObjectsForKeys:(id)arg1 forApplication:(id)arg2;
 - (void)removeObjectForKey:(id)arg1 forApplication:(id)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2 forApplication:(id)arg3;
-- (void)objectForKeys:(id)arg1 forAllApplicationsWithResult:(CDUnknownBlockType)arg2;
-- (void)objectForKey:(id)arg1 forApplication:(id)arg2 withResult:(CDUnknownBlockType)arg3;
+- (id)allObjectsForKeys:(id)arg1;
 - (id)objectForKey:(id)arg1 forApplication:(id)arg2;
 - (_Bool)containsKey:(id)arg1 forApplication:(id)arg2;
 - (id)keysForApplication:(id)arg1;

@@ -28,6 +28,7 @@
     NSString *_givenName;
     NSString *_familyName;
     NSURL *_photoURL;
+    NSString *_userAuxiliaryString;
     id __photo;
     NSDate *_creationDate;
     NSDate *_lastLoginDate;
@@ -38,6 +39,7 @@
     unsigned long long _dataQuota;
     unsigned long long _dataUsed;
     NSError *_errorCausingLogout;
+    NSError *_debugErrorCausingLogout;
     NSDate *_firstLoginStartDate;
     NSDate *_firstLoginEndDate;
     NSDate *_lastCachedLoginStartDate;
@@ -53,6 +55,7 @@
 @property(copy, nonatomic) NSDate *lastCachedLoginStartDate; // @synthesize lastCachedLoginStartDate=_lastCachedLoginStartDate;
 @property(copy, nonatomic) NSDate *firstLoginEndDate; // @synthesize firstLoginEndDate=_firstLoginEndDate;
 @property(copy, nonatomic) NSDate *firstLoginStartDate; // @synthesize firstLoginStartDate=_firstLoginStartDate;
+@property(copy, nonatomic) NSError *debugErrorCausingLogout; // @synthesize debugErrorCausingLogout=_debugErrorCausingLogout;
 @property(retain, nonatomic) NSError *errorCausingLogout; // @synthesize errorCausingLogout=_errorCausingLogout;
 @property(nonatomic) _Bool hasDataToSync; // @synthesize hasDataToSync=_hasDataToSync;
 @property(nonatomic) unsigned long long dataUsed; // @synthesize dataUsed=_dataUsed;
@@ -68,6 +71,7 @@
 @property(copy, nonatomic) NSDate *lastLoginDate; // @synthesize lastLoginDate=_lastLoginDate;
 @property(copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(copy, nonatomic) id _photo; // @synthesize _photo=__photo;
+@property(copy, nonatomic) NSString *userAuxiliaryString; // @synthesize userAuxiliaryString=_userAuxiliaryString;
 @property(copy, nonatomic) NSURL *photoURL; // @synthesize photoURL=_photoURL;
 @property(copy, nonatomic) NSString *familyName; // @synthesize familyName=_familyName;
 @property(copy, nonatomic) NSString *givenName; // @synthesize givenName=_givenName;
@@ -90,6 +94,7 @@
 @property(copy, nonatomic) NSString *displayName;
 - (struct dqblk)_diskQuota;
 @property(readonly, nonatomic) double passcodeBackOffInterval;
+- (_Bool)inFirstLoginSession;
 - (void)fetchAttributesIfNeeded;
 - (_Bool)fetchAttributesWithOutError:(id *)arg1;
 - (id)init;

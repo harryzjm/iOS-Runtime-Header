@@ -4,23 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class MFFuture;
+@class DNDEventBehaviorResolutionService, MFFuture;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface _MFSoundBehaviorOverridesMonitor : NSObject
 {
-    int _condition;
-    NSObject<OS_dispatch_queue> *_queue;
+    DNDEventBehaviorResolutionService *_dndBehaviorResolutionService;
+    NSObject<OS_dispatch_queue> *_dndBehaviorResolutionServiceQueue;
+    MFFuture *_behaviorOverrideTypes;
 }
 
 + (id)sharedInstance;
+@property(readonly) MFFuture *behaviorOverrideTypes; // @synthesize behaviorOverrideTypes=_behaviorOverrideTypes;
 - (void).cxx_destruct;
-@property(readonly) MFFuture *behaviorOverrideTypes;
-- (void)_activeOverrideTypesChanged:(id)arg1;
-- (void)_beginGeneratingActiveOverrideTypeChanges;
+- (id)_resolveDNDBehavior;
 - (id)init;
 
 @end

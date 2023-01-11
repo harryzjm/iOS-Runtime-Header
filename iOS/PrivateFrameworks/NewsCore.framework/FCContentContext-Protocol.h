@@ -7,8 +7,8 @@
 #import <NewsCore/FCCacheFlushing-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCAppConfigurationManager, FCArticleController, FCAssetManager, FCFlintResourceManager, FCNetworkBehaviorMonitor, FCTagController, NSString, NSURL;
-@protocol FCBackgroundTaskable, FCContentContextInternal, FCPPTContext;
+@class FCArticleController, FCAssetManager, FCFlintResourceManager, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCTagController, NSArray, NSString, NSURL;
+@protocol FCBackgroundTaskable, FCContentContextInternal, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCNewsAppConfigurationManager, FCPPTContext, FCWebArchiveSource;
 
 @protocol FCContentContext <NSObject, FCCacheFlushing>
 @property(readonly, copy, nonatomic) NSString *contentEnvironmentToken;
@@ -18,14 +18,19 @@
 @property(readonly, nonatomic) NSURL *webArchiveCacheDirectoryURL;
 @property(readonly, nonatomic) NSURL *assetCacheDirectoryURL;
 @property(readonly, copy, nonatomic) NSString *contentDirectory;
+@property(retain, nonatomic) id <FCWebArchiveSource> webArchiveSource;
 @property(readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor;
 @property(readonly, nonatomic) FCFlintResourceManager *flintResourceManager;
 @property(readonly, nonatomic) FCTagController *tagController;
 @property(readonly, nonatomic) FCArticleController *articleController;
 @property(readonly, nonatomic) FCAssetManager *assetManager;
-@property(readonly, nonatomic) FCAppConfigurationManager *appConfigurationManager;
+@property(readonly, nonatomic) id <FCNewsAppConfigurationManager> appConfigurationManager;
+@property(readonly, nonatomic) id <FCCoreConfigurationManager> configurationManager;
 @property(readonly, copy, nonatomic) NSString *supportedContentStoreFrontID;
 @property(readonly, copy, nonatomic) NSString *contentStoreFrontID;
+- (id <FCJSONRecordTreeSourceType>)recordTreeSourceWithRecordSources:(NSArray *)arg1;
+- (id <FCJSONRecordSourceType>)recordSourceWithSchema:(FCJSONRecordSourceSchema *)arg1;
 - (void)ppt_overrideFeedEndpoint:(long long)arg1;
+- (id <FCCoreConfigurationManager><FCNewsAppConfigurationManager>)news_core_ConfigurationManager;
 @end
 

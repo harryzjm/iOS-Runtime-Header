@@ -9,46 +9,55 @@
 #import <TelephonyUtilities/TUCallCapabilitiesXPCClient-Protocol.h>
 #import <TelephonyUtilities/TUCallCapabilitiesXPCServerActions-Protocol.h>
 
-@class NSString, NSXPCConnection, TUCallCapabilitiesState;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore, TUCallCapabilitiesXPCServer;
+@class NSMapTable, NSString, NSXPCConnection, TUCallCapabilitiesState;
+@protocol OS_dispatch_queue;
 
 @interface TUCallCapabilitiesXPCClient : NSObject <TUCallCapabilitiesXPCClient, TUCallCapabilitiesXPCServerActions>
 {
     int _token;
     NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_xpcConnection;
-    id <TUCallCapabilitiesXPCServer> _server;
+    NSMapTable *_delegateToQueue;
     TUCallCapabilitiesState *_state;
-    NSObject<OS_dispatch_semaphore> *_stateSemaphore;
 }
 
-@property(retain, nonatomic) NSObject<OS_dispatch_semaphore> *stateSemaphore; // @synthesize stateSemaphore=_stateSemaphore;
++ (id)callCapabilitiesServerXPCInterface;
++ (id)callCapabilitiesClientXPCInterface;
++ (void)setSynchronousServer:(id)arg1;
++ (id)synchronousServer;
++ (void)setAsynchronousServer:(id)arg1;
++ (id)asynchronousServer;
 @property(retain, nonatomic) TUCallCapabilitiesState *state; // @synthesize state=_state;
-@property(nonatomic) id <TUCallCapabilitiesXPCServer> server; // @synthesize server=_server;
-@property(nonatomic) int token; // @synthesize token=_token;
+@property(readonly, nonatomic) NSMapTable *delegateToQueue; // @synthesize delegateToQueue=_delegateToQueue;
+@property(readonly, nonatomic) int token; // @synthesize token=_token;
 @property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (void).cxx_destruct;
 - (void)_updateState:(id)arg1;
-- (void)_retrieveStateForInitialUpdate:(_Bool)arg1;
+- (void)_retrieveState;
 - (oneway void)capabilityStateUpdated:(id)arg1;
+- (void)invalidate;
 - (oneway void)cancelPinRequestFromPrimaryDevice;
 - (oneway void)requestPinFromPrimaryDevice;
-- (oneway void)invalidateAndRefreshThumperCallingProvisioningURL;
-- (oneway void)invalidateAndRefreshWiFiCallingProvisioningURL;
+- (oneway void)invalidateAndRefreshThumperCallingProvisioningURLForSenderIdentityWithUUID:(id)arg1;
+- (oneway void)invalidateAndRefreshWiFiCallingProvisioningURLForSenderIdentityWithUUID:(id)arg1;
 - (oneway void)endEmergencyCallbackMode;
+- (oneway void)setThumperCallingAllowedOnDefaultPairedDevice:(_Bool)arg1 forSenderIdentityWithUUID:(id)arg2;
+- (oneway void)setThumperCallingAllowed:(_Bool)arg1 onSecondaryDeviceWithID:(id)arg2 forSenderIdentityWithUUID:(id)arg3;
+- (oneway void)setThumperCallingEnabled:(_Bool)arg1 forSenderIdentityWithUUID:(id)arg2;
+- (oneway void)setVoLTECallingEnabled:(_Bool)arg1 forSenderIdentityWithUUID:(id)arg2;
+- (oneway void)setWiFiCallingRoamingEnabled:(_Bool)arg1 forSenderIdentityWithUUID:(id)arg2;
+- (oneway void)setWiFiCallingEnabled:(_Bool)arg1 forSenderIdentityWithUUID:(id)arg2;
 - (oneway void)setRelayCallingEnabled:(_Bool)arg1 forDeviceWithID:(id)arg2;
-- (oneway void)setThumperCallingAllowedOnDefaultPairedDevice:(_Bool)arg1;
-- (oneway void)setThumperCallingAllowed:(_Bool)arg1 onSecondaryDeviceWithID:(id)arg2;
 - (oneway void)setRelayCallingEnabled:(_Bool)arg1;
-- (oneway void)setThumperCallingEnabled:(_Bool)arg1;
-- (oneway void)setVoLTECallingEnabled:(_Bool)arg1;
-- (oneway void)setWiFiCallingRoamingEnabled:(_Bool)arg1;
-- (oneway void)setWiFiCallingEnabled:(_Bool)arg1;
-- (id)serverWithErrorHandler:(CDUnknownBlockType)arg1;
-- (void)invalidateXPCConnection;
+- (void)performDelegateCallbackBlock:(CDUnknownBlockType)arg1;
+- (void)removeDelegate:(id)arg1;
+- (void)addDelegate:(id)arg1 queue:(id)arg2;
+- (id)synchronousServerWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)asynchronousServerWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)asynchronousServer;
+- (void)handleServerDisconnect;
 - (void)dealloc;
-- (id)initWithServer:(id)arg1;
 - (id)init;
 
 // Remaining properties

@@ -18,6 +18,7 @@
 }
 
 + (id)defaultPropertyValues;
++ (_Bool)supportsSecureCoding;
 + (id)albumOrderedChildItemIDsForLookupCollectionPropertyValues:(id)arg1;
 + (long long)offerPassTypeForLookupCollectionPropertyValues:(id)arg1;
 + (id)offerDictionariesForLookupCollectionPropertyValues:(id)arg1;

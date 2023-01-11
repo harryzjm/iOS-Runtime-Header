@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <Message/NSCoding-Protocol.h>
+#import <Message/NSSecureCoding-Protocol.h>
 
-@interface MFOfflineCacheOperation : NSObject <NSCoding>
+@interface MFOfflineCacheOperation : NSObject <NSSecureCoding>
 {
     long long _rowid;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(nonatomic) long long rowid; // @synthesize rowid=_rowid;
 - (_Bool)hasRowid;
 - (void)encodeWithCoder:(id)arg1;

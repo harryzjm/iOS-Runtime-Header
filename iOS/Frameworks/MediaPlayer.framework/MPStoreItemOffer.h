@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
@@ -25,9 +25,9 @@
 @property(readonly, copy, nonatomic) NSString *buyParameters;
 @property(readonly, copy, nonatomic) NSArray *assets;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithLookupDictionary:(id)arg1;
 - (id)initWithLookupItemOffer:(id)arg1;
 

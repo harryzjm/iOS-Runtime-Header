@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <MapKit/NSCoding-Protocol.h>
+#import <MapKit/NSSecureCoding-Protocol.h>
 
-@interface MKJunction : NSObject <NSCoding>
+@interface MKJunction : NSObject <NSSecureCoding>
 {
     struct GEOJunctionElement *_elements;
     unsigned long long _count;
@@ -18,6 +18,7 @@
     struct GEOJunctionElement *_snapped[8];
 }
 
++ (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) int type; // @synthesize type=_type;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

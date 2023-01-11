@@ -11,8 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityModuleViewElements;
 - (void)viewDidLoad;
 - (struct CGRect)_accessibilityControlCenterButtonFrame;
+- (_Bool)_accessibilityControlCenterShouldExpandContentModule;
 - (id)_accessibilityControlCenterButtonHint;
 - (id)_accessibilityControlCenterButtonIdentifier;
 - (id)_accessibilityControlCenterButtonLabel;

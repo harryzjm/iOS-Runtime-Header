@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
 #import <MaterialKit/CAAnimationDelegate-Protocol.h>
 
 @class MTLumaDodgePillSettings, NSMutableArray, NSString;
 @protocol MTLumaDodgePillBackgroundLuminanceObserver;
 
-@interface MTLumaDodgePillView : UIView <CAAnimationDelegate>
+@interface MTLumaDodgePillView <CAAnimationDelegate>
 {
     long long _style;
     MTLumaDodgePillSettings *_settings;
@@ -44,9 +42,7 @@
 - (void)_updateStyle;
 - (id)_styleSettings;
 - (void)dealloc;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -35,11 +35,12 @@
 - (void)rollbackClearContext;
 - (void)resetContextTypes:(long long)arg1;
 - (void)clearContext;
+- (void)resumeInterruptedAudioPlaybackIfNeeded;
 - (void)forceAudioSessionInactive;
 - (void)forceAudioSessionActive;
 - (void)preheat;
 - (void)setLockState:(unsigned long long)arg1;
 - (void)setCarDNDActive:(_Bool)arg1;
-- (void)setIsStark:(_Bool)arg1;
+- (void)setDeviceInStarkMode:(_Bool)arg1;
 @end
 

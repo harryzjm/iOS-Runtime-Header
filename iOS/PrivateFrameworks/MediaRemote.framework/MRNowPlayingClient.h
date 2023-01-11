@@ -4,31 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
-@class NSArray, NSMutableArray;
+@class NSArray, NSMutableArray, _MRNowPlayingClientProtobuf, _MRNowPlayingPlayerPathProtobuf;
 @protocol OS_dispatch_queue;
 
 @interface MRNowPlayingClient : NSObject <MRNowPlayingClientState>
 {
-    void *_client;
+    _MRNowPlayingClientProtobuf *_client;
     NSObject<OS_dispatch_queue> *_serialQueue;
-    int _notifyRestoreClientStateForLaunch;
-    void *_activePlayerPath;
     NSMutableArray *_playerClients;
+    _MRNowPlayingPlayerPathProtobuf *_activePlayer;
+    _MRNowPlayingPlayerPathProtobuf *_playerPath;
 }
 
-@property(readonly, nonatomic) void *client; // @synthesize client=_client;
+@property(retain, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
+- (void).cxx_destruct;
+- (id)debugDescription;
 - (id)description;
 - (void)restoreNowPlayingClientState;
 @property(readonly, nonatomic) NSArray *playerClients;
-- (void)removePlayer:(void *)arg1;
-- (id)nowPlayingPlayerClientForPlayerPath:(void *)arg1;
-@property(nonatomic) void *activePlayerPath;
-- (void)dealloc;
-- (id)initWithClient:(void *)arg1;
+- (void)removePlayer:(id)arg1;
+- (id)nowPlayingPlayerClientForPlayerPath:(id)arg1;
+@property(retain, nonatomic) _MRNowPlayingPlayerPathProtobuf *activePlayer; // @synthesize activePlayer=_activePlayer;
+- (void)updateClient:(id)arg1;
+@property(retain, nonatomic) _MRNowPlayingClientProtobuf *client;
+- (id)initWithPlayerPath:(id)arg1;
 
 @end
 

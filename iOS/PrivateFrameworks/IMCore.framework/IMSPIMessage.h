@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class IMSPIHandle, NSArray, NSAttributedString, NSDate, NSString, NSURL;
+@class IMSPIHandle, LPLinkMetadata, NSArray, NSAttributedString, NSDate, NSString, NSURL, PKCurrencyAmount;
 
 @interface IMSPIMessage : NSObject
 {
@@ -27,6 +27,7 @@
     _Bool _isRead;
     _Bool _isAudioMessage;
     _Bool _isGroupChat;
+    long long _itemType;
     NSString *_groupID;
     NSString *_chatIdentifier;
     NSString *_displayName;
@@ -35,8 +36,12 @@
     NSString *_bundleId;
     long long _messageType;
     NSString *_displayAppName;
+    LPLinkMetadata *_richLinkMetadata;
+    PKCurrencyAmount *_peerPaymentAmount;
 }
 
+@property(retain) PKCurrencyAmount *peerPaymentAmount; // @synthesize peerPaymentAmount=_peerPaymentAmount;
+@property(retain) LPLinkMetadata *richLinkMetadata; // @synthesize richLinkMetadata=_richLinkMetadata;
 @property(retain) NSString *displayAppName; // @synthesize displayAppName=_displayAppName;
 @property long long messageType; // @synthesize messageType=_messageType;
 @property(retain) NSString *bundleId; // @synthesize bundleId=_bundleId;
@@ -49,6 +54,7 @@
 @property _Bool isGroupChat; // @synthesize isGroupChat=_isGroupChat;
 @property(retain) NSString *chatIdentifier; // @synthesize chatIdentifier=_chatIdentifier;
 @property(retain) NSString *groupID; // @synthesize groupID=_groupID;
+@property long long itemType; // @synthesize itemType=_itemType;
 @property(retain) NSArray *attachments; // @synthesize attachments=_attachments;
 @property(retain) NSArray *chatGuids; // @synthesize chatGuids=_chatGuids;
 @property _Bool isAudioMessage; // @synthesize isAudioMessage=_isAudioMessage;

@@ -12,13 +12,17 @@
 #import <Silex/WKUIDelegate-Protocol.h>
 
 @class NSMutableSet, NSString, SXEmbedResource, SXWebCrashRetryThrottler, UIActivityIndicatorView, UILabel, WKNavigation, WKWebView;
-@protocol SXEmbedType;
+@protocol SXComponentActionHandler, SXEmbedService, SXEmbedType, SXReachabilityProvider;
 
 @interface SXEmbedComponentView <WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler, UIGestureRecognizerDelegate, UIScrollViewDelegate, SXViewportChangeListener>
 {
     _Bool _failedLoading;
     _Bool _isCurrentlyLoadingEmbedData;
-    id <SXEmbedType> _embedDataSource;
+    _Bool _hasRegisteredScriptMessageHandlers;
+    id <SXReachabilityProvider> _reachabilityProvider;
+    id <SXEmbedService> _embedService;
+    id <SXComponentActionHandler> _actionHandler;
+    id <SXEmbedType> _embedConfiguration;
     SXEmbedResource *_embedResource;
     WKWebView *_webView;
     SXWebCrashRetryThrottler *_webCrashRetryThrottler;
@@ -35,6 +39,7 @@
     struct CGPoint _lastKnownTouchPoint;
 }
 
+@property(nonatomic) _Bool hasRegisteredScriptMessageHandlers; // @synthesize hasRegisteredScriptMessageHandlers=_hasRegisteredScriptMessageHandlers;
 @property(retain, nonatomic) WKNavigation *initialNavigation; // @synthesize initialNavigation=_initialNavigation;
 @property(nonatomic) _Bool isCurrentlyLoadingEmbedData; // @synthesize isCurrentlyLoadingEmbedData=_isCurrentlyLoadingEmbedData;
 @property(nonatomic) struct CGPoint lastKnownTouchPoint; // @synthesize lastKnownTouchPoint=_lastKnownTouchPoint;
@@ -51,9 +56,14 @@
 @property(retain, nonatomic) SXWebCrashRetryThrottler *webCrashRetryThrottler; // @synthesize webCrashRetryThrottler=_webCrashRetryThrottler;
 @property(retain, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 @property(retain, nonatomic) SXEmbedResource *embedResource; // @synthesize embedResource=_embedResource;
-@property(retain, nonatomic) id <SXEmbedType> embedDataSource; // @synthesize embedDataSource=_embedDataSource;
+@property(retain, nonatomic) id <SXEmbedType> embedConfiguration; // @synthesize embedConfiguration=_embedConfiguration;
+@property(readonly, nonatomic) id <SXComponentActionHandler> actionHandler; // @synthesize actionHandler=_actionHandler;
+@property(readonly, nonatomic) id <SXEmbedService> embedService; // @synthesize embedService=_embedService;
+@property(readonly, nonatomic) id <SXReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
 - (void).cxx_destruct;
 - (_Bool)allowHierarchyRemoval;
+- (void)removeScriptMessageHandlers;
+- (void)addScriptMessageHandlers;
 - (unsigned long long)userActionMediaTypes;
 - (void)showActivityIndicator:(_Bool)arg1;
 - (_Bool)hasLoadedEmbedData;
@@ -85,11 +95,11 @@
 - (void)displayEmbedIfNeeded;
 - (void)loadEmbedData;
 - (void)loadEmbedIfNeeded;
-- (void)presentComponent;
+- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
 - (void)willPresentComponent;
 - (void)discardContents;
 - (void)renderContents;
-- (id)initWithComponent:(id)arg1 configuration:(id)arg2 context:(id)arg3 analyticsReporting:(id)arg4 appStateMonitor:(id)arg5;
+- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 reachabilityProvider:(id)arg6 embedService:(id)arg7 actionHandler:(id)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

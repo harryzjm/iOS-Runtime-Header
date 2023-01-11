@@ -7,8 +7,11 @@
 #import <TVMLKit/NSObject-Protocol.h>
 
 @class NSArray, NSString, UIFocusAnimationCoordinator, UIFocusUpdateContext, UIView;
+@protocol UIFocusEnvironment, UIFocusItemContainer;
 
 @protocol UIFocusEnvironment <NSObject>
+@property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
+@property(readonly, nonatomic) __weak id <UIFocusEnvironment> parentFocusEnvironment;
 @property(readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
 - (void)didUpdateFocusInContext:(UIFocusUpdateContext *)arg1 withAnimationCoordinator:(UIFocusAnimationCoordinator *)arg2;
 - (_Bool)shouldUpdateFocusInContext:(UIFocusUpdateContext *)arg1;

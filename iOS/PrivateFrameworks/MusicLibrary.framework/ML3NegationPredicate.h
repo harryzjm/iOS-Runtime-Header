@@ -8,6 +8,7 @@
 {
 }
 
++ (_Bool)supportsSecureCoding;
 - (void)appendSQLToMutableString:(id)arg1 entityClass:(Class)arg2;
 - (id)description;
 

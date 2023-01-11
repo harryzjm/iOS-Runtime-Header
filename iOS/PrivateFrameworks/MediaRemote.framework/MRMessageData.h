@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MRProtocolMessage, NSData;
 
@@ -18,11 +18,11 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) long long readPosition; // @synthesize readPosition=_readPosition;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool canPurge;
 @property(readonly, nonatomic, getter=isFinished) _Bool finished;
 @property(readonly, nonatomic) MRProtocolMessage *message;
 @property(readonly, nonatomic) NSData *data;
-- (void)dealloc;
 - (id)initWithMessage:(id)arg1 createDataBlock:(CDUnknownBlockType)arg2;
 
 @end

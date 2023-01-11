@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, NSObject;
+@protocol TSDWrappable;
 
 @protocol TSDWrappableParent
+- (_Bool)descendentWrappablesContainsWrappable:(NSObject<TSDWrappable> *)arg1;
 - (NSArray *)descendentWrappables;
 @end
 

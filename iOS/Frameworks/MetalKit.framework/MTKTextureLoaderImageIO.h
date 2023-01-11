@@ -6,6 +6,7 @@
 
 @class NSData;
 
+__attribute__((visibility("hidden")))
 @interface MTKTextureLoaderImageIO
 {
     struct CGImageBlockSet *_blockSet;

@@ -11,6 +11,7 @@
     AVCaptureSynchronizedSampleBufferDataInternal *_internal;
 }
 
+- (_Bool)hasCorrespondingVisionData;
 - (_Bool)hasCorrespondingDepthData;
 @property(readonly) long long droppedReason;
 @property(readonly) _Bool sampleBufferWasDropped;

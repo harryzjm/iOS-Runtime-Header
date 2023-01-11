@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <iCalendar/NSCoding-Protocol.h>
+#import <iCalendar/NSSecureCoding-Protocol.h>
 
 @class ICSDateValue, ICSDuration;
 
-@interface ICSPeriod : NSObject <NSCoding>
+@interface ICSPeriod : NSObject <NSSecureCoding>
 {
     ICSDateValue *_start;
     ICSDateValue *_end;
     ICSDuration *_duration;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

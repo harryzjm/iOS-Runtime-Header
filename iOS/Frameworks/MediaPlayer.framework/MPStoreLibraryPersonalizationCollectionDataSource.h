@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/MPModelLazySectionedCollectionDataSource-Protocol.h>
 
-@class MPMediaLibraryEntityTranslationContext, MPMediaLibraryView, MPModelRequest, MPSectionedCollection, NSMapTable, NSMutableDictionary, NSString;
+@class MPMediaLibraryEntityTranslationContext, MPMediaLibraryView, MPPropertySet, MPSectionedCollection, NSDictionary, NSMapTable, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MPStoreLibraryPersonalizationCollectionDataSource : NSObject <MPModelLazySectionedCollectionDataSource>
@@ -16,20 +16,18 @@
     NSObject<OS_dispatch_queue> *_accessSerialQueue;
     struct vector<std::__1::shared_ptr<mlcore::EntityCache>, std::__1::allocator<std::__1::shared_ptr<mlcore::EntityCache>>> _entityCaches;
     MPSectionedCollection *_unpersonalizedContentDescriptors;
-    MPModelRequest *_unpersonalizedRequest;
+    MPPropertySet *_itemProperties;
+    MPPropertySet *_sectionProperties;
+    NSDictionary *_itemIndexPathToOverridePropertySet;
     MPMediaLibraryView *_libraryView;
     MPMediaLibraryEntityTranslationContext *_translatingContext;
     NSMapTable *_relativeModelClassToMappingResponse;
     NSMutableDictionary *_sectionToLibraryAddedOverride;
 }
 
-+ (void)_configureFallbackContentItemIDForIdentifierSet:(id)arg1;
 + (id)_identifiersByCombiningPersonalizedIdentifiers:(id)arg1 unpersonalizedIdentifiers:(id)arg2;
 + (id)_completePersonalizedObjectWithLibraryObject:(id)arg1 personalizationProperties:(id)arg2 overrideLibraryAddedStatus:(long long)arg3;
-+ (id)_intersectingStoreAssetLightweightPersonalizationProperties;
-+ (id)_intersectingPlaybackPositionLightweightPersonalizationProperties;
 + (id)_requiredLightweightPersonalizationPropertiesForModelClass:(Class)arg1 requestedProperties:(id)arg2;
-+ (id)_intersectingLightweightPersonalizationPropertiesForModelClass:(Class)arg1;
 + (id)_lightweightPersonalizedObjectWithUnpersonalizedObject:(id)arg1 libraryObject:(id)arg2 personalizationProperties:(id)arg3 overrideLibraryAddedStatus:(long long)arg4;
 + (id)_lightweightPersonalizedStoreAssetWithUnpersonalizedAsset:(id)arg1 libraryAsset:(id)arg2 personalizationProperties:(id)arg3;
 + (id)_lightweightPersonalizedPlaybackPositionWithUnpersonalizedPlaybackPosition:(id)arg1 identifiers:(id)arg2 personalizationProperties:(id)arg3;
@@ -38,13 +36,17 @@
 @property(copy, nonatomic) NSMapTable *relativeModelClassToMappingResponse; // @synthesize relativeModelClassToMappingResponse=_relativeModelClassToMappingResponse;
 @property(retain, nonatomic) MPMediaLibraryEntityTranslationContext *translatingContext; // @synthesize translatingContext=_translatingContext;
 @property(copy, nonatomic) MPMediaLibraryView *libraryView; // @synthesize libraryView=_libraryView;
-@property(copy, nonatomic) MPModelRequest *unpersonalizedRequest; // @synthesize unpersonalizedRequest=_unpersonalizedRequest;
+@property(copy, nonatomic) NSDictionary *itemIndexPathToOverridePropertySet; // @synthesize itemIndexPathToOverridePropertySet=_itemIndexPathToOverridePropertySet;
+@property(copy, nonatomic) MPPropertySet *sectionProperties; // @synthesize sectionProperties=_sectionProperties;
+@property(copy, nonatomic) MPPropertySet *itemProperties; // @synthesize itemProperties=_itemProperties;
 @property(retain, nonatomic) MPSectionedCollection *unpersonalizedContentDescriptors; // @synthesize unpersonalizedContentDescriptors=_unpersonalizedContentDescriptors;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (shared_ptr_1c86f238)_entityCacheForEntityClass:(struct EntityClass *)arg1 propertiesToFetch:(vector_90d4f7ff)arg2;
 - (id)_libraryObjectWithRelativeModelClass:(Class)arg1 identifierSet:(id)arg2 propertySet:(id)arg3;
 - (id)indexPathForItemWithIdentifiersIntersectingSet:(id)arg1;
+- (id)identifiersForSectionAtIndex:(long long)arg1;
+- (id)identifiersForItemAtIndexPath:(id)arg1;
 - (id)itemAtIndexPath:(id)arg1;
 - (unsigned long long)numberOfItemsInSection:(unsigned long long)arg1;
 - (id)sectionAtIndex:(unsigned long long)arg1;

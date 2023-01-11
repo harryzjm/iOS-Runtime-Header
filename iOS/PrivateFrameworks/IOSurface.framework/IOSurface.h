@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IOSurface/NSSecureCoding-Protocol.h>
 
@@ -14,12 +14,16 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (unsigned long long)registryID;
+- (unsigned long long)timestampAtIndex:(unsigned long long)arg1;
+- (void)setTimestamp:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (_Bool)supportsProtectionOptions:(unsigned long long)arg1;
 - (unsigned long long)protectionOptions;
 - (int)setPurgeable:(unsigned int)arg1 oldState:(unsigned int *)arg2;
 @property(readonly) _Bool allowsPixelSizeCasting;
 - (void)decrementUseCount;
 - (void)incrementUseCount;
+- (_Bool)isSysMemOnly;
 - (_Bool)isDisplayable;
 @property(readonly, getter=isInUse) _Bool inUse;
 @property(readonly) int localUseCount;

@@ -10,6 +10,7 @@
 @protocol NSSecureCoding, _WKFocusedElementInfo;
 
 @protocol _WKFormInputSession <NSObject>
+@property(readonly, nonatomic) _Bool requiresStrongPasswordAssistance;
 @property(nonatomic) _Bool forceSecureTextEntry;
 @property(nonatomic) _Bool accessoryViewShouldNotShow;
 @property(copy, nonatomic) NSArray *suggestions;
@@ -18,5 +19,6 @@
 @property(readonly, nonatomic) id <_WKFocusedElementInfo> focusedElementInfo;
 @property(readonly, nonatomic) NSObject<NSSecureCoding> *userObject;
 @property(readonly, nonatomic, getter=isValid) _Bool valid;
+- (void)reloadFocusedElementContextView;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <SafariShared/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, WBSCompletionListRankingObserver, WBSCompletionQuery, WBSParsecSearchResult;
+@class NSArray, NSDictionary, NSString, WBSCompletionListRankingObserver, WBSCompletionQuery, WBSParsecLegacySearchResult;
 @protocol WBSCompletionListItem;
 
 @protocol WBSParsecFeedbackDispatcher <NSObject>
@@ -14,7 +14,6 @@
 - (void)didReceiveWebSuggestionsForQuery:(WBSCompletionQuery *)arg1 fromSearchProvider:(NSString *)arg2 responseSize:(long long)arg3 statusCode:(long long)arg4 networkTimingData:(NSDictionary *)arg5;
 - (void)userDidCancelSession:(long long)arg1;
 - (void)userDidCancelSession;
-- (void)userDidEngageWithCardShowingResult:(WBSParsecSearchResult *)arg1 onCardOfType:(NSString *)arg2 actionType:(NSString *)arg3 actionTarget:(NSString *)arg4 destination:(NSString *)arg5;
 - (void)didDisplayCompletionListItems:(NSArray *)arg1 forQuery:(WBSCompletionQuery *)arg2 forEvent:(long long)arg3;
 
 @optional
@@ -33,5 +32,6 @@
 - (void)userDidEngageWithCompletionListItem:(id <WBSCompletionListItem>)arg1 withCardActionDictionary:(NSDictionary *)arg2;
 - (void)userDidSelectCompletionListItem:(id <WBSCompletionListItem>)arg1 atPosition:(unsigned long long)arg2;
 - (void)userDidSelectCompletionListItem:(id <WBSCompletionListItem>)arg1;
+- (void)userDidEngageWithCardShowingResult:(WBSParsecLegacySearchResult *)arg1 onCardOfType:(NSString *)arg2 actionType:(NSString *)arg3 actionTarget:(NSString *)arg4 destination:(NSString *)arg5;
 @end
 

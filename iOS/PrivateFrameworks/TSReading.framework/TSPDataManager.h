@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSURL, TSPObjectContext, TSUPathSet;
 @protocol OS_dispatch_group, OS_dispatch_queue;
@@ -62,8 +62,6 @@
 - (id)dataFromReadChannel:(id)arg1 filename:(id)arg2 temporaryPath:(id)arg3;
 - (id)dataFromReadChannel:(id)arg1 filename:(id)arg2 linkURLOrNil:(id)arg3;
 - (id)dataFromReadChannel:(id)arg1 filename:(id)arg2;
-- (void)dataFromAssetsLibraryURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)dataFromAssetsLibraryURL:(id)arg1;
 - (void)coordinateReadingNewFileURL:(id)arg1 byAccessor:(CDUnknownBlockType)arg2;
 - (id)dataFromFileURL:(id)arg1 useFileCoordination:(_Bool)arg2;
 - (id)dataFromURL:(id)arg1 useFileCoordination:(_Bool)arg2;

@@ -14,6 +14,6 @@
 
 @optional
 - (_Bool)serviceUI:(PXCPLServiceUI *)arg1 performAction:(long long)arg2;
-- (void)serviceUI:(PXCPLServiceUI *)arg1 progressDidChange:(double)arg2;
+- (void)serviceUI:(PXCPLServiceUI *)arg1 progressDidChange:(float)arg2;
 @end
 

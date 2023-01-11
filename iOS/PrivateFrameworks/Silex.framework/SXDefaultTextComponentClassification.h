@@ -12,9 +12,7 @@
 + (int)role;
 + (id)typeString;
 - (id)fontTextStyle;
-- (Class)componentSizerClass;
 - (Class)componentModelClass;
-- (Class)componentViewClass;
 
 @end
 

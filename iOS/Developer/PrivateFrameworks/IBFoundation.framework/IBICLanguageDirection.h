@@ -13,6 +13,8 @@
     long long _coreUIValue;
 }
 
++ (id)rightToLeftLanguageDirection;
++ (id)leftToRightLanguageDirection;
 + (id)itemWithIdentifier:(id)arg1 title:(id)arg2 coreUIValue:(long long)arg3 displayOrder:(double)arg4;
 + (id)displayName;
 + (id)contentsJSONKey;

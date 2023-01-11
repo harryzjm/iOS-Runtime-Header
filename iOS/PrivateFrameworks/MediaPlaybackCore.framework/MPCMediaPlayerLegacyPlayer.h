@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaPlaybackCore/MPNowPlayingPlaybackQueueDataSource_Private-Protocol.h>
+#import <MediaPlaybackCore/MPNowPlayingPlaybackQueueDataSource-Protocol.h>
 #import <MediaPlaybackCore/MPRemoteCommandDelegate_Private-Protocol.h>
 
-@class MPAVController, MPCMediaPlayerLegacyAVController, MPCMediaPlayerLegacyItem, MPCMediaPlayerLegacyItemContainer, MPCMediaPlayerLegacyNowPlayingObserver, MPCMediaPlayerLegacyReportingController, MPCPlaybackIntent, NSMapTable, NSObject, NSString;
+@class MPAVController, MPAVItem, MPCMediaPlayerLegacyAVController, MPCMediaPlayerLegacyItem, MPCMediaPlayerLegacyItemContainer, MPCMediaPlayerLegacyNowPlayingObserver, MPCMediaPlayerLegacyReportingController, MPCPlaybackIntent, MPLibraryAddStatusObserver, NSMapTable, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface MPCMediaPlayerLegacyPlayer <MPNowPlayingPlaybackQueueDataSource_Private, MPRemoteCommandDelegate_Private>
+@interface MPCMediaPlayerLegacyPlayer <MPNowPlayingPlaybackQueueDataSource, MPRemoteCommandDelegate_Private>
 {
     NSMapTable *_avItemToPlayerItemWeakMap;
     MPCMediaPlayerLegacyItemContainer *_currentContainer;
@@ -20,6 +20,9 @@
     _Bool _hasReceivedAddPlaybackIntent;
     _Bool _mediaRemoteSync;
     NSObject<OS_dispatch_queue> *_stateRestorationSerialQueue;
+    MPLibraryAddStatusObserver *_libraryAddStatusObserver;
+    _Bool _allowsNewPlaybackErrorItem;
+    MPAVItem *_firstPlaybackErrorItem;
     _Bool _iAmTheiPod;
     MPCPlaybackIntent *_fallbackPlaybackIntent;
     MPCMediaPlayerLegacyAVController *_player;
@@ -58,8 +61,10 @@
 - (void)_handleSetQueueCommandEvent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleInsertIntoQueueCommandEvent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_getPlaybackContextForPlaybackQueue:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (id)nowPlayingContentItemForIdentifier:(id)arg1;
-- (id)nowPlayingContentItemsForRequest:(void *)arg1 range:(CDStruct_339ad95e *)arg2;
+- (id)nowPlayingInfoCenter:(id)arg1 artworkCatalogForContentItem:(id)arg2;
+- (id)nowPlayingInfoCenter:(id)arg1 artworkForContentItem:(id)arg2 size:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)nowPlayingInfoCenter:(id)arg1 contentItemForID:(id)arg2;
+- (id)nowPlayingInfoCenter:(id)arg1 contentItemIDForOffset:(long long)arg2;
 - (_Bool)_shouldVendContentItemForOffset:(long long)arg1;
 - (id)contentItemIdentifierForOffset:(long long)arg1;
 - (id)contentItemForOffset:(long long)arg1;

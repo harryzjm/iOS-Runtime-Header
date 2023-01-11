@@ -7,15 +7,21 @@
 #import <objc/NSObject.h>
 
 #import <Home/HFCharacteristicValueSource-Protocol.h>
+#import <Home/HFMediaValueSource-Protocol.h>
 
-@class NSString;
-@protocol HFCharacteristicOperationContextProviding;
+@class NSError, NSString;
+@protocol HFCharacteristicOperationContextProviding, HFMediaProfileContainer;
 
-@interface HFNullValueSource : NSObject <HFCharacteristicValueSource>
+@interface HFNullValueSource : NSObject <HFCharacteristicValueSource, HFMediaValueSource>
 {
 }
 
 + (id)na_identity;
+@property(readonly, nonatomic) NSError *cachedPlaybackStateWriteError;
+@property(readonly, nonatomic) _Bool hasPendingWrites;
+- (id)writePlaybackState:(long long)arg1;
+- (long long)lastPlaybackStateForProfile;
+@property(readonly, nonatomic) id <HFMediaProfileContainer> mediaProfileContainer;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)commitTransactionWithReason:(id)arg1;

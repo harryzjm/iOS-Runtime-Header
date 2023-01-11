@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
@@ -19,23 +19,26 @@
 }
 
 + (id)sharedManager;
-- (void)removePlayer:(void *)arg1;
-- (void)removeClient:(void *)arg1;
-- (void)removeOrigin:(void *)arg1;
+- (void).cxx_destruct;
+- (void)removePlayer:(id)arg1;
+- (void)removeClient:(id)arg1;
+- (void)removeOriginRequests:(id)arg1;
+- (void)removeOrigin:(id)arg1;
 - (void)restoreNowPlayingClientState;
-- (void)playerClientRequestsForUnresolvedPlayerPath:(void *)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)clientRequestsForUnresolvedPlayerPath:(void *)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)originClientRequestsForUnresolvedPlayerPath:(void *)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)localOriginClientRequests:(CDUnknownBlockType)arg1;
-- (id)playerClientRequestsForPlayerPath:(void *)arg1;
-- (id)clientRequestsForPlayerPath:(void *)arg1;
-- (id)originClientRequestsForPlayerPath:(void *)arg1;
-- (id)playerClientForPlayerPath:(void *)arg1;
-- (id)clientForPlayerPath:(void *)arg1;
-- (id)originClientForPlayerPath:(void *)arg1;
-- (id)originClientForOrigin:(void *)arg1;
+- (id)existingPlayerClientRequestsForPlayerPath:(id)arg1;
+- (id)existingClientRequestsForPlayerPath:(id)arg1;
+- (id)existingOriginClientRequestsForPlayerPath:(id)arg1;
+- (id)playerClientRequestsForPlayerPath:(id)arg1;
+- (id)clientRequestsForPlayerPath:(id)arg1;
+- (id)originClientRequestsForPlayerPath:(id)arg1;
+- (id)playerClientForPlayerPath:(id)arg1;
+- (id)clientForPlayerPath:(id)arg1;
+- (id)existingClientForPlayerPath:(id)arg1;
+- (id)originClientForPlayerPath:(id)arg1;
+- (id)existingOriginClientForPlayerPath:(id)arg1;
+- (id)originClientForOrigin:(id)arg1;
 - (id)localOriginClient;
-- (void)dealloc;
+- (id)debugDescription;
 - (id)init;
 
 @end

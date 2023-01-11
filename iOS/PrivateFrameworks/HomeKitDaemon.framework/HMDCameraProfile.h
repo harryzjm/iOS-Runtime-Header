@@ -21,6 +21,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)hasMessageReceiverChildren;
 + (id)logCategory;
 @property(readonly, nonatomic) HMDCameraResidentMessageHandler *residentMessageHandler; // @synthesize residentMessageHandler=_residentMessageHandler;
 @property(retain, nonatomic) HMFNetMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
@@ -32,10 +33,11 @@
 @property(readonly, nonatomic, getter=isMicrophonePresent) _Bool microphonePresent; // @synthesize microphonePresent=_microphonePresent;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
+- (id)messageReceiverChildren;
 - (void)monitorForEventsForServices:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)cameraSettingProactiveReaderDidCompleteRead:(id)arg1;
+- (void)cameraSettingProactiveReaderDidCompleteRead:(id)arg1 negotiateStreamMessageWasHandled:(_Bool)arg2;
 - (void)_handleStreamControlRequest:(id)arg1;
 - (void)_handleNegotiateStreamRequest:(id)arg1;
 - (void)registerForMessages;

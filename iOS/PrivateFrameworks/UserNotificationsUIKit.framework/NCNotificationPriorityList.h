@@ -4,42 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <UserNotificationsUIKit/NCNotificationList-Protocol.h>
-
-@class NSMutableOrderedSet, NSString;
-
-@interface NCNotificationPriorityList : NSObject <NCNotificationList>
+@interface NCNotificationPriorityList
 {
-    NSMutableOrderedSet *_requests;
 }
 
-@property(retain, nonatomic) NSMutableOrderedSet *requests; // @synthesize requests=_requests;
-- (void).cxx_destruct;
-- (id)_clearRequestsWithPersistence:(unsigned long long)arg1;
-- (unsigned long long)_insertionIndexForNotificationRequest:(id)arg1;
-- (unsigned long long)_indexOfRequestMatchingNotificationRequest:(id)arg1;
-- (id)_identifierForNotificationRequest:(id)arg1;
-- (id)allNotificationRequests;
-- (unsigned long long)insertionIndexForNotificationRequest:(id)arg1;
-- (unsigned long long)indexOfNotificationRequestMatchingRequest:(id)arg1;
-- (_Bool)containsNotificationRequestMatchingRequest:(id)arg1;
+- (long long)_insertionIndexComparisonForNotificationRequest:(id)arg1 withRequest:(id)arg2;
+- (id)allNonPersistentRequests;
 - (id)clearRequestsPassingTest:(CDUnknownBlockType)arg1;
 - (id)clearNonPersistentRequests;
 - (id)clearAllRequests;
-- (unsigned long long)removeNotificationRequest:(id)arg1;
-- (unsigned long long)modifyNotificationRequest:(id)arg1;
-- (unsigned long long)insertNotificationRequest:(id)arg1;
-- (id)requestAtIndex:(unsigned long long)arg1;
-@property(readonly, nonatomic) unsigned long long count;
-- (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSUFileProviderUtilities : NSObject
 {
 }
 
-+ (void)bookmarkableStringFromDocumentURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)didUpdateAlternateContentsDocumentForDocumentAtURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)fetchAlternateContentsURLForDocumentURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
-+ (void)setAlternateContentsURL:(id)arg1 onDocumentURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)bookmarkableStringFromDocumentURL:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)didUpdateAlternateContentsDocumentForDocumentAtURL:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)fetchAlternateContentsURLForDocumentURL:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)setAlternateContentsURL:(id)arg1 onDocumentURL:(id)arg2 completionQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)initialize;
 - (id)init;
 

@@ -14,6 +14,8 @@
 - (_Bool)_accessibilityTextOperationAction:(id)arg1;
 - (id)_accessibilityTextOperations;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityValue;
+- (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 
 @end

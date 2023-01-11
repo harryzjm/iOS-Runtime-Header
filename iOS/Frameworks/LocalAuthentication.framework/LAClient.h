@@ -12,6 +12,7 @@
 @class LACachedExternalizedContext, NSData, NSError, NSMutableArray, NSXPCConnection;
 @protocol LAContextXPC, LAUIDelegate, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface LAClient : NSObject <LAContextXPC, LAContextCallbackXPC>
 {
     id <LAContextXPC> _remoteContext;
@@ -30,6 +31,7 @@
 + (id)_queue;
 @property(nonatomic) __weak id <LAUIDelegate> uiDelegate; // @synthesize uiDelegate=_uiDelegate;
 - (void).cxx_destruct;
+- (void)setShowingCoachingHint:(_Bool)arg1 event:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)notifyEvent:(long long)arg1 options:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)resetWithReply:(CDUnknownBlockType)arg1;
 - (void)prearmTouchIdWithReply:(CDUnknownBlockType)arg1;
@@ -55,6 +57,7 @@
 - (void)_performCallBool:(CDUnknownBlockType)arg1 finally:(CDUnknownBlockType)arg2;
 - (void)_performCallIdCore:(CDUnknownBlockType)arg1 finally:(CDUnknownBlockType)arg2;
 - (void)_performCallId:(CDUnknownBlockType)arg1 finally:(CDUnknownBlockType)arg2;
+- (void)_serializedInvalidateWithMessage:(id)arg1;
 - (void)invalidateWithMessage:(id)arg1;
 - (void)dealloc;
 - (void)tccPreflightWithService:(id)arg1 reply:(CDUnknownBlockType)arg2;

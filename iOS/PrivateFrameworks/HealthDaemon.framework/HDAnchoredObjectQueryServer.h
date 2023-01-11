@@ -11,7 +11,6 @@
 {
     _Bool _deliversUpdates;
     _Bool _initialResultsSent;
-    _Bool _suspended;
     _Bool _objectsDeleted;
     _Bool _includeDeletedObjects;
     HKQueryAnchor *_startAnchor;
@@ -24,23 +23,28 @@
     unsigned long long _limit;
 }
 
++ (_Bool)supportsAnchorBasedAuthorization;
++ (id)requiredEntitlements;
++ (Class)queryClass;
 @property(readonly, nonatomic) unsigned long long limit; // @synthesize limit=_limit;
-@property(readonly, nonatomic) HKQueryAnchor *anchor; // @synthesize anchor=_anchor;
+@property(readonly, copy, nonatomic) HKQueryAnchor *anchor; // @synthesize anchor=_anchor;
 - (void).cxx_destruct;
 - (void)_queue_samplesWereRemovedWithAnchor:(id)arg1;
-- (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
-- (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (_Bool)_queue_shouldAcceptUpdates;
 - (_Bool)_queue_shouldAccumulateUpdates;
+- (void)_queue_deliverSamples:(id)arg1 deletedObjects:(id)arg2 anchor:(id)arg3 clearPendingSamples:(_Bool)arg4 deliverResults:(_Bool)arg5 description:(id)arg6;
 - (id)_maxRowIDInDatabaseWithError:(id *)arg1;
+- (void)_queue_handleBatchedQueryResult:(long long)arg1 error:(id)arg2;
 - (void)_queue_startForUpdate;
 - (void)_queue_startForInitialResults;
+- (id)_queue_configuredEntityEnumerator;
+- (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
+- (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)_queue_start;
 - (_Bool)_shouldObserveOnPause;
 - (_Bool)_shouldListenForUpdates;
-- (id)requiredEntitlements;
 - (id)anchoredObjectQueryClient;
-- (id)initWithQueryUUID:(id)arg1 configuration:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 profile:(id)arg6;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
 
 @end
 

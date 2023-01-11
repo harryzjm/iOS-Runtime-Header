@@ -8,12 +8,15 @@
 
 #import <Silex/SXVideoPlayerViewControllerProvider-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSURL;
+@class NSMutableDictionary, NSString, NSURL, SVVolumeProvider;
 
 @interface SXVideoPlayerViewControllerManager : NSObject <SXVideoPlayerViewControllerProvider>
 {
     _Bool _presentedAndAppeared;
+    SVVolumeProvider *_volumeProvider;
     NSURL *_autoplayURL;
+    NSMutableDictionary *_videoAnalyticsRouters;
+    NSMutableDictionary *_visibilityMonitors;
     NSMutableDictionary *_videoPlayerViewControllers;
     NSMutableDictionary *_loseOwnershipBlocks;
     NSMutableDictionary *_pendingVideoPlayerViewControllers;
@@ -26,13 +29,16 @@
 @property(readonly, nonatomic) NSMutableDictionary *pendingVideoPlayerViewControllers; // @synthesize pendingVideoPlayerViewControllers=_pendingVideoPlayerViewControllers;
 @property(readonly, nonatomic) NSMutableDictionary *loseOwnershipBlocks; // @synthesize loseOwnershipBlocks=_loseOwnershipBlocks;
 @property(readonly, nonatomic) NSMutableDictionary *videoPlayerViewControllers; // @synthesize videoPlayerViewControllers=_videoPlayerViewControllers;
+@property(readonly, nonatomic) NSMutableDictionary *visibilityMonitors; // @synthesize visibilityMonitors=_visibilityMonitors;
+@property(readonly, nonatomic) NSMutableDictionary *videoAnalyticsRouters; // @synthesize videoAnalyticsRouters=_videoAnalyticsRouters;
 @property(copy, nonatomic) NSURL *autoplayURL; // @synthesize autoplayURL=_autoplayURL;
+@property(readonly, nonatomic) SVVolumeProvider *volumeProvider; // @synthesize volumeProvider=_volumeProvider;
 @property(nonatomic) _Bool presentedAndAppeared; // @synthesize presentedAndAppeared=_presentedAndAppeared;
 - (void).cxx_destruct;
-- (void)autoplayVideoWithURL:(id)arg1;
-- (void)registerExistingVideoPlayerViewController:(id)arg1 URL:(id)arg2 loseOwnershipBlock:(CDUnknownBlockType)arg3;
+- (void)configureAutoplayForVideoWithURL:(id)arg1 analyticsRouter:(id)arg2;
+- (void)registerExistingVideoPlayerViewController:(id)arg1 URL:(id)arg2 analyticsRouter:(id)arg3 videoPlayerVisibilityMonitor:(id)arg4 loseOwnershipBlock:(CDUnknownBlockType)arg5;
 - (id)videoPlayerViewControllerForURL:(id)arg1 receiveOwnershipBlock:(CDUnknownBlockType)arg2;
-- (id)init;
+- (id)initWithVolumeProvider:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,7 +6,6 @@
 
 @class GEOMapItemReviewsAttribution, NSArray;
 
-__attribute__((visibility("hidden")))
 @interface _MKMapItemReviewsAttribution
 {
     GEOMapItemReviewsAttribution *_geoReviewsAttribution;

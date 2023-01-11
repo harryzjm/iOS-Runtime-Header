@@ -8,7 +8,7 @@
 
 #import <TVMLKit/UIKeyInput-Protocol.h>
 
-@class NSString, UIActivityIndicatorView, UITextField;
+@class NSString, UIActivityIndicatorView, UITextField, UITextInputPasswordRules;
 @protocol _TVSearchBarDelegate;
 
 __attribute__((visibility("hidden")))
@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(nonatomic) long long keyboardAppearance;
 @property(nonatomic) long long keyboardType;
+@property(copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property(nonatomic) long long returnKeyType;
 @property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry;
 @property(nonatomic) long long smartDashesType;

@@ -52,7 +52,6 @@
 - (void)lookupAccount:(CDUnknownBlockType)arg1;
 - (id)_primaryiCloudAccount;
 - (void)_shutdown;
-- (void)shutdown;
 - (void)dealloc;
 - (void)_setup;
 - (void)setup;

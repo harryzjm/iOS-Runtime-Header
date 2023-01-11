@@ -10,10 +10,9 @@
 @protocol CKBrowserDragControllerTranscriptDelegate;
 
 @protocol CKChatInputControllerDelegate <NSObject>
+- (void)chatInputControllerDidSelectFunCamera:(CKChatInputController *)arg1;
+- (void)chatInputControllerWillSelectFunCamera:(CKChatInputController *)arg1;
 - (void)sendCurrentLocation;
-- (void)chatInputControllerDidEndJellyfish:(CKChatInputController *)arg1;
-- (void)chatInputControllerDidEnterJellyfish:(CKChatInputController *)arg1;
-- (_Bool)isInJellyfishDemoTransitionForChatInputController:(CKChatInputController *)arg1;
 - (void)chatInputControllerWillDismissCompactBrowserViewController:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidDismissCompactBrowserViewController:(CKChatInputController *)arg1;
 - (void)chatInputControllerDidTransitionCollapsed:(CKChatInputController *)arg1;
@@ -32,6 +31,7 @@
 - (void)setLocalUserIsComposing:(_Bool)arg1 withPluginBundleID:(NSString *)arg2 typingIndicatorData:(NSData *)arg3;
 - (void)chatInputDidUpdateWithNewInputViewController:(UIInputViewController *)arg1;
 - (void)chatInputDidUpdateInputViewShowingBrowser:(_Bool)arg1 entryFieldCollapsed:(_Bool)arg2 animated:(_Bool)arg3;
+- (void)chatInputWillUpdateInputViewShowingBrowser;
 - (void)chatInputSentComposition:(CKComposition *)arg1;
 - (_Bool)keyboardIsVisibleForChatInputController:(CKChatInputController *)arg1;
 - (id <CKBrowserDragControllerTranscriptDelegate>)dragControllerTranscriptDelegate;

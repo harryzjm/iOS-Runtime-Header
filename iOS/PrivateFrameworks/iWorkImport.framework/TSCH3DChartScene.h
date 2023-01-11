@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSCH3DChartScene : NSObject
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)addLabelsToScene;
 - (void)addChartTitlesToScene;
 - (void)adjustSceneSettings;
-- (const CDStruct_44ada6bf *)layoutSettings;
+- (const CDStruct_b1c75024 *)layoutSettings;
 - (id)seriesType;
 - (id)chartType;
 - (id)chartInfo;

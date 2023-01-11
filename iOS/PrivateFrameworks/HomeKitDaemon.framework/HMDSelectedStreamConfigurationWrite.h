@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDCameraTLVCreateParse-Protocol.h>
+#import <HomeKitDaemon/HMDTLVCreateParse-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDSelectedAudioParameters, HMDSelectedVideoParameters, HMDSessionControl;
 
-@interface HMDSelectedStreamConfigurationWrite <HMDCameraTLVCreateParse, NSSecureCoding>
+@interface HMDSelectedStreamConfigurationWrite <HMDTLVCreateParse, NSSecureCoding>
 {
     HMDSessionControl *_sessionControl;
     HMDSelectedVideoParameters *_videoParameters;

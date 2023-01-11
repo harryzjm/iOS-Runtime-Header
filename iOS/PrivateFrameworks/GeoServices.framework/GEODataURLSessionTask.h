@@ -7,24 +7,23 @@
 #import <objc/NSObject.h>
 
 #import <GeoServices/GEODataSessionTask-Protocol.h>
+#import <GeoServices/GEODataSessionUpdatableTask-Protocol.h>
 #import <GeoServices/GEOStateCapturing-Protocol.h>
 
-@class GEOClientMetrics, GEODataRequest, GEODataURLSessionTaskQueue, NSData, NSError, NSHTTPURLResponse, NSMutableData, NSString, NSURL, NSURLRequest, NSURLSessionDataTask, NSURLSessionTaskMetrics;
-@protocol GEODataSessionTaskDelegate, OS_dispatch_queue, OS_os_activity;
+@class GEOClientMetrics, GEODataRequest, NSData, NSError, NSHTTPURLResponse, NSMutableData, NSString, NSURL, NSURLRequest, NSURLSessionDataTask, NSURLSessionTaskMetrics;
+@protocol GEODataSessionTaskDelegate, GEORequestCounterTicket, NSObject, OS_dispatch_queue, OS_os_activity, OS_voucher;
 
-__attribute__((visibility("hidden")))
-@interface GEODataURLSessionTask : NSObject <GEOStateCapturing, GEODataSessionTask>
+@interface GEODataURLSessionTask : NSObject <GEOStateCapturing, GEODataSessionTask, GEODataSessionUpdatableTask>
 {
     id <GEODataSessionTaskDelegate> _delegate;
     GEODataRequest *_request;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_sessionIsolation;
     NSURLSessionDataTask *_backingTask;
-    NSError *_error;
+    NSError *_nonBackingTaskError;
     NSData *_cachedData;
     NSMutableData *_receivedData;
     NSURLSessionTaskMetrics *_urlTaskMetrics;
-    GEODataURLSessionTaskQueue *_taskQueue;
     double _startTime;
     double _endTime;
     int _requestKind;
@@ -36,10 +35,11 @@ __attribute__((visibility("hidden")))
     _Bool _finished;
     unsigned int _qos;
     NSObject<OS_os_activity> *_activity;
+    NSObject<OS_voucher> *_voucher;
+    id <NSObject> _parsedResponse;
 }
 
 @property(nonatomic) unsigned int sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
-@property(retain, nonatomic) GEODataURLSessionTaskQueue *taskQueue; // @synthesize taskQueue=_taskQueue;
 @property(readonly, nonatomic) _Bool finished; // @synthesize finished=_finished;
 @property(readonly, nonatomic) NSURLSessionDataTask *backingTask; // @synthesize backingTask=_backingTask;
 @property(readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) GEODataRequest *request; // @synthesize request=_request;
 @property(readonly) NSObject<OS_os_activity> *activity; // @synthesize activity=_activity;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) id <GEORequestCounterTicket> requestCounterTicket;
 - (void)notifyDelegateWithSession:(id)arg1;
 @property(readonly, nonatomic) NSString *remoteAddressAndPort;
 @property(readonly, nonatomic) GEOClientMetrics *clientMetrics;
@@ -59,7 +60,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long incomingPayloadSize;
 @property(readonly, nonatomic) unsigned long long outgoingPayloadSize;
 @property(readonly, nonatomic) NSURLRequest *originalURLRequest;
-@property(readonly, nonatomic) NSError *error;
+- (void)setParsedResponse:(id)arg1;
+@property(readonly, nonatomic) id <NSObject> parsedResponse;
+@property(retain, nonatomic) NSError *error;
 @property(readonly, nonatomic) NSHTTPURLResponse *response;
 @property(readonly, nonatomic) NSData *receivedData;
 @property(readonly, nonatomic) _Bool protocolBufferHasPreamble;
@@ -67,11 +70,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 - (void)cancel;
 - (void)_prepareForRestart;
-@property(readonly, nonatomic, getter=isTileRequest) _Bool tileRequest;
 - (void)_start;
 - (void)start;
 - (void)dealloc;
-- (id)initWithSession:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3 requestKind:(int)arg4;
+- (id)initWithSession:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3 requestKind:(int)arg4 priority:(float)arg5;
 - (id)init;
 - (_Bool)validateContentLengthWithError:(id *)arg1;
 - (_Bool)validateNonEmptyResponseWithError:(id *)arg1;
@@ -85,8 +87,6 @@ __attribute__((visibility("hidden")))
 - (void)dataSession:(id)arg1 willSendRequestForEstablishedConnection:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)createURLRequest;
 - (id)createURLSessionTaskWithSession:(id)arg1 request:(id)arg2;
-@property(readonly, nonatomic) float _priority;
-- (void)startDequeuedFromQueue:(id)arg1;
 - (_Bool)didValidateEntityTagForData:(id *)arg1 entityTag:(id *)arg2;
 @property(readonly) double elapsedTime;
 @property(readonly, nonatomic) NSURL *originalRequestURL;

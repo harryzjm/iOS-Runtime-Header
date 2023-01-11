@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@interface PUTabbedLibraryViewControllerSpec : NSObject
+@interface PUTabbedLibraryViewControllerSpec
 {
 }
 
++ (id)padSpec;
++ (id)phoneSpec;
 - (id)createSharedAlbumListViewController;
 - (id)createAlbumListViewController;
-- (id)createMemoriesViewController;
 - (id)feedViewControllerSpec;
 - (id)zoomableGridViewControllerSpec;
 - (id)albumListViewControllerSpec;

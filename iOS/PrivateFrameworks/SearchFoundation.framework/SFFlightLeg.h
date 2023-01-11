@@ -14,7 +14,9 @@
 
 @interface SFFlightLeg : NSObject <SFFlightLeg, NSSecureCoding, NSCopying>
 {
-    CDStruct_47fe53f2 _has;
+    struct {
+        unsigned int status:1;
+    } _has;
     int _status;
     NSDate *_departurePublishedTime;
     NSDate *_departureActualTime;
@@ -29,9 +31,17 @@
     SFAirport *_divertedAirport;
     NSString *_title;
     NSString *_baggageClaim;
+    NSDate *_departureGateClosedTime;
+    NSDate *_departureRunwayTime;
+    NSDate *_arrivalRunwayTime;
+    NSDate *_arrivalGateTime;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(copy, nonatomic) NSDate *arrivalGateTime; // @synthesize arrivalGateTime=_arrivalGateTime;
+@property(copy, nonatomic) NSDate *arrivalRunwayTime; // @synthesize arrivalRunwayTime=_arrivalRunwayTime;
+@property(copy, nonatomic) NSDate *departureRunwayTime; // @synthesize departureRunwayTime=_departureRunwayTime;
+@property(copy, nonatomic) NSDate *departureGateClosedTime; // @synthesize departureGateClosedTime=_departureGateClosedTime;
 @property(copy, nonatomic) NSString *baggageClaim; // @synthesize baggageClaim=_baggageClaim;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) SFAirport *divertedAirport; // @synthesize divertedAirport=_divertedAirport;

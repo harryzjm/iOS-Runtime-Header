@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreTelephony/CXCallObserverDelegate-Protocol.h>
 
@@ -19,7 +19,7 @@
     CXCallObserver *_callKitObserver;
 }
 
-@property CXCallObserver *callKitObserver; // @synthesize callKitObserver=_callKitObserver;
+@property(retain) CXCallObserver *callKitObserver; // @synthesize callKitObserver=_callKitObserver;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)callObserver:(id)arg1 callChanged:(id)arg2;

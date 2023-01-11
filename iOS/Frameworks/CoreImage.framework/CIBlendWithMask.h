@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
 - (float)_maskFillColorValue;
+- (id)_kernelB0;
 - (id)_kernel;
 
 @end

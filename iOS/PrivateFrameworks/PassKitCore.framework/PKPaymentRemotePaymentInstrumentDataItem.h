@@ -12,6 +12,7 @@
 
 + (long long)dataType;
 - (_Bool)isValidWithError:(id *)arg1;
+- (unsigned long long)peerPaymentAccountState;
 - (id)peerPaymentAccountBalance;
 - (_Bool)hasAssociatedPeerPaymentAccount;
 @property(readonly, nonatomic) _Bool requiresBillingAddress;

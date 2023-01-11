@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/NSCopying-Protocol.h>
 
 @interface FBSceneMonitorBehaviors : NSObject <NSCopying>
 {
-    _Bool _monitorsCommits;
     _Bool _monitorsSettings;
     _Bool _monitorsPairingStatus;
     _Bool _monitorsClientSettings;
@@ -21,7 +20,6 @@
 @property(nonatomic) _Bool monitorsClientSettings; // @synthesize monitorsClientSettings=_monitorsClientSettings;
 @property(nonatomic) _Bool monitorsPairingStatus; // @synthesize monitorsPairingStatus=_monitorsPairingStatus;
 @property(nonatomic) _Bool monitorsSettings; // @synthesize monitorsSettings=_monitorsSettings;
-@property(nonatomic) _Bool monitorsCommits; // @synthesize monitorsCommits=_monitorsCommits;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

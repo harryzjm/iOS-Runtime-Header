@@ -17,6 +17,7 @@
 - (void)_accessibilityAdjustSliderValueInForwardDirection:(_Bool)arg1;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
+- (id)accessibilityPath;
 - (unsigned long long)accessibilityTraits;
 - (id)_accessibilityGenericModuleSliderDescription;
 - (id)accessibilityValue;

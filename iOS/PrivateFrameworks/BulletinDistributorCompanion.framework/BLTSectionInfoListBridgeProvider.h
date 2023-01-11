@@ -9,7 +9,7 @@
 #import <BulletinDistributorCompanion/BLTSectionInfoListProvider-Protocol.h>
 #import <BulletinDistributorCompanion/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
-@class NSDate, NSString;
+@class BLTSectionConfiguration, NSDate, NSString;
 @protocol BLTSectionInfoListProviderDelegate;
 
 @interface BLTSectionInfoListBridgeProvider : NSObject <LSApplicationWorkspaceObserverProtocol, BLTSectionInfoListProvider>
@@ -17,17 +17,19 @@
     struct _opaque_pthread_mutex_t _lock;
     NSDate *_lastKnownBridgeSettingsChangeDate;
     id <BLTSectionInfoListProviderDelegate> _delegate;
+    BLTSectionConfiguration *_sectionConfiguration;
 }
 
+@property(retain, nonatomic) BLTSectionConfiguration *sectionConfiguration; // @synthesize sectionConfiguration=_sectionConfiguration;
 @property(nonatomic) __weak id <BLTSectionInfoListProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (void)enableNotifications:(_Bool)arg1 sectionID:(id)arg2 mirror:(_Bool)arg3;
+- (void)setNotificationsLevel:(int)arg1 sectionID:(id)arg2 forceCustom:(_Bool)arg3;
 - (id)_loadOverridesChangedSince:(id)arg1;
 - (void)_reloadUpdatedOverridesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_reloadUpdatedOverrides;
 - (void)dealloc;
 - (void)reloadWithCompletion:(CDUnknownBlockType)arg1;
-- (id)init;
+- (id)initWithSectionConfiguration:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

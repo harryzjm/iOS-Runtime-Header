@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AudioToolbox/AudioComponentRegistrarProtocol-Protocol.h>
 
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)getComponentList:(id)arg1 linkedSDKVersion:(int)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)getComponentList:(id)arg1 linkedSDKVersion:(int)arg2 includeExtensions:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
 - (id)initWithRegistrar:(struct AudioComponentRegistrarImpl *)arg1 connection:(id)arg2;
 
 @end

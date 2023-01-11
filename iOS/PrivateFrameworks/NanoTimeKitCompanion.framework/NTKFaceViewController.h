@@ -16,7 +16,7 @@
 @class NSCache, NSDate, NSMutableDictionary, NSObject, NSString, NTKComplicationController, NTKComplicationDisplayWrapperView, NTKDelayedBlock, NTKFace, NTKFaceEditView, NTKFaceView, UIImageView, UIView;
 @protocol NTKClockStatusBarViewController, NTKFaceViewControllerDelegate, OS_dispatch_source;
 
-@interface NTKFaceViewController : UIViewController <NTKFaceEditViewDelegate, NTKComplicationPickerViewDataSource, NTKFaceObserver, NTKClockIconZoomAnimator, NTKClockHardwareInput, NTKFaceViewDelegate>
+@interface NTKFaceViewController : UIViewController <NTKFaceEditViewDelegate, NTKComplicationPickerViewDataSource, NTKClockIconZoomAnimator, NTKClockHardwareInput, NTKFaceViewDelegate, NTKFaceObserver>
 {
     NTKFaceView *_faceView;
     NSMutableDictionary *_normalComplicationControllers;
@@ -81,6 +81,7 @@
 - (void)_clearFaceLaunchRect;
 - (void)_clearLastTappedComplication;
 - (struct CGRect)launchRectForComplicationApplicationIdentifier:(id)arg1;
+- (void)_configureBackgroundFillAlpha:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_configureForEditMode:(long long)arg1;
 - (id)_controllerForComplication:(id)arg1 slot:(id)arg2;
@@ -114,6 +115,7 @@
 - (void)face:(id)arg1 didChangeOptionsForEditMode:(long long)arg2;
 - (void)faceResourceDirectoryDidChange:(id)arg1;
 - (void)faceConfigurationDidChange:(id)arg1;
+- (id)customEditOptionContainerViewForComplicationPickerView:(id)arg1;
 - (id)complicationPickerView:(id)arg1 layoutRuleForComplicationDisplay:(id)arg2;
 - (void)complicationPickerView:(id)arg1 getDisplay:(id *)arg2 controller:(id *)arg3 forComplication:(id)arg4;
 - (id)PPTDescriptionForComplication:(id)arg1;
@@ -121,6 +123,9 @@
 - (void)PPTCreateComplication:(id)arg1 forSlot:(id)arg2 synchronously:(_Bool)arg3;
 - (void)PPTPrepareComplicationTest;
 - (id)PPTUniqueComplicationsToSlotForCurrentFace;
+- (id)faceViewComplicationForSlot:(id)arg1;
+- (id)faceViewComplicationAppIdentifierForSlot:(id)arg1;
+- (_Bool)faceView:(id)arg1 wantsToDismissPresentedViewControllerAnimated:(_Bool)arg2;
 - (void)faceViewWantsToPresentViewController:(id)arg1;
 - (void)faceViewUpdatedResourceDirectory:(id)arg1 wantsToTransferOwnership:(_Bool)arg2;
 - (_Bool)faceViewComplicationIsEmptyForSlot:(id)arg1;
@@ -148,16 +153,21 @@
 - (id)_ensurePickerViewForSlot:(id)arg1;
 - (void)_tearDownEditing;
 - (void)_updateComplicationLisaGesture;
+- (void)_setupEditViewForHiddenComplications;
 - (void)_setupEditViewForComplications;
 - (void)_updateFaceAndViewWithOption:(id)arg1 forMode:(long long)arg2 resourcePath:(id)arg3 slot:(id)arg4;
 - (void)_setFaceViewResourceDirectoryFromFace;
+- (void)_loadInitialComplicationVisibilityFromFace;
 - (void)_populateFaceViewEditOptionsFromFace;
 - (void)_endTransitionToValue:(long long)arg1 forEditMode:(long long)arg2;
 - (void)_transitionFraction:(double)arg1 fromValue:(long long)arg2 toValue:(long long)arg3 forEditMode:(long long)arg4;
 - (void)_setupEditViewForCustomEditMode:(long long)arg1;
 - (id)_keylineLabelTextForOption:(id)arg1 customEditMode:(long long)arg2;
 - (void)_setupEditing;
+- (_Bool)becomeFirstResponder;
+- (_Bool)canBecomeFirstResponder;
 - (_Bool)canStopEditing;
+- (void)hideFaceEditingUIAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)hideFaceEditingUIAnimated:(_Bool)arg1;
 - (void)showEditingUIAnimated:(_Bool)arg1;
 - (_Bool)dailySnapshotShowsComplication:(id)arg1 forSlot:(id)arg2;
@@ -169,6 +179,7 @@
 - (void)enumerateComplicationControllersAndDisplaysWithBlock:(CDUnknownBlockType)arg1;
 - (void)getComplicationController:(id *)arg1 andDisplay:(id *)arg2 forSlot:(id)arg3;
 @property(readonly, copy) NSString *description;
+- (void)finalizeForSnapshotting:(CDUnknownBlockType)arg1;
 - (void)prepareForSnapshotting;
 - (id)blurSourceImage;
 - (void)viewDidLayoutSubviews;

@@ -9,6 +9,7 @@
 #import <AuthKit/NSURLSessionAppleIDContext-Protocol.h>
 
 @class AKAnisetteData, AKAnisetteProvisioningController, AKDevice, NSLock, NSString;
+@protocol AKAnisetteServiceProtocol;
 
 @interface AKAppleIDSession : NSObject <NSURLSessionAppleIDContext>
 {
@@ -18,15 +19,17 @@
     AKAnisetteData *_proxiedAnisetteData;
     NSLock *_anisetteControllerLock;
     AKDevice *_pairedDevice;
+    id <AKAnisetteServiceProtocol> _anisetteDataProvider;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(retain, nonatomic) id <AKAnisetteServiceProtocol> anisetteDataProvider; // @synthesize anisetteDataProvider=_anisetteDataProvider;
 @property(retain, nonatomic) AKDevice *pairedDevice; // @synthesize pairedDevice=_pairedDevice;
 - (void).cxx_destruct;
 - (id)_pairedDeviceAnisetteController;
 - (id)_nativeAnisetteController;
 - (void)_handleURLResponse:(id)arg1 forRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)_generateAppleIDHeadersForRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_generateAppleIDHeadersForSessionTask:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)_generateAppleIDHeadersForRequest:(id)arg1 error:(id *)arg2;
 - (id)_genericAppleIDHeadersDictionaryForRequest:(id)arg1;
 - (void)handleResponse:(id)arg1 forRequest:(id)arg2 shouldRetry:(_Bool *)arg3;

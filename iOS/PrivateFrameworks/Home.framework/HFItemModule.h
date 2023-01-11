@@ -16,6 +16,8 @@
 
 @property(readonly, nonatomic) __weak id <HFItemUpdating> itemUpdater; // @synthesize itemUpdater=_itemUpdater;
 - (void).cxx_destruct;
+- (void)unregisterForExternalUpdates;
+- (void)registerForExternalUpdates;
 - (_Bool)containsItem:(id)arg1;
 @property(readonly, nonatomic) NSSet *allItems;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;

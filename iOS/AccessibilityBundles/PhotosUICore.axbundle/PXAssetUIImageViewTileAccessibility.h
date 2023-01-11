@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_updateImageView;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

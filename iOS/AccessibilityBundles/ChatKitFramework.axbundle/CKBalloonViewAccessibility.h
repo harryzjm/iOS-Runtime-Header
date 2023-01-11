@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityDropPointDescriptors;
+- (_Bool)_axIsInNotification;
 - (id)_axAcknowledgmentDescription;
 - (id)_axStickerDescription;
 - (id)_axMessageSender;
@@ -23,7 +24,9 @@
 - (id)_axBuddyNameForBalloon;
 - (id)_axMessageForBalloon;
 - (id)_axChatItemForBalloon;
-- (_Bool)accessibilityPerformCustomAction:(long long)arg1;
+- (void)_axPerformInterfaceAction:(id)arg1;
+- (void)_axTapback;
+- (id)_axBalloonViewCustomActions;
 - (id)accessibilityCustomActions;
 - (_Bool)isAccessibilityElement;
 

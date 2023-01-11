@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BSMachPortTaskNameRight;
 
@@ -14,6 +14,7 @@
     struct FBProcessTimes _times;
 }
 
+- (void).cxx_destruct;
 - (double)_elapsedCPUTime;
 - (void)_hostwideUserElapsedCPUTime:(double *)arg1 systemElapsedCPUTime:(double *)arg2 idleElapsedCPUTime:(double *)arg3;
 - (void)_getApplicationCPUTimesForUser:(double *)arg1 system:(double *)arg2 idle:(double *)arg3;
@@ -23,7 +24,6 @@
 @property(readonly, nonatomic) double totalElapsedSystemTime;
 @property(readonly, nonatomic) double totalElapsedUserTime;
 @property(readonly, nonatomic) double totalElapsedTime;
-- (void)dealloc;
 - (id)initWithTaskNameRight:(id)arg1;
 
 @end

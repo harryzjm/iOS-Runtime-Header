@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)keyPathsForValuesAffectingDerivedSubscriptionInfo;
+- (_Bool)validateBillingIdentifier:(id *)arg1 error:(id *)arg2;
 - (_Bool)validateTierIdentifiers:(id *)arg1 error:(id *)arg2;
 - (_Bool)validateSubscriberIdentifierHash:(id *)arg1 error:(id *)arg2;
 - (_Bool)validateExpirationDate:(id *)arg1 error:(id *)arg2;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)awakeFromFetch;
 - (void)awakeFromInsert;
 @property(copy, nonatomic) NSArray *tierIdentifiers; // @dynamic tierIdentifiers;
+@property(copy, nonatomic) NSString *billingIdentifier; // @dynamic billingIdentifier;
 @property(copy, nonatomic) NSString *subscriberIdentifierHash; // @dynamic subscriberIdentifierHash;
 @property(copy, nonatomic) NSDate *mostRecentSaveDate; // @dynamic mostRecentSaveDate;
 @property(copy, nonatomic) NSDate *expirationDate; // @dynamic expirationDate;

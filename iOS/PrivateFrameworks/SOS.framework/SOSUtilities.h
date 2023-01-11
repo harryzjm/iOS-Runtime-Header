@@ -26,6 +26,8 @@
 + (_Bool)canTriggerSOSWithClicks;
 + (_Bool)canTriggerSOSWithVolumeLockHold;
 + (_Bool)mustAllowThreeClickTrigger;
++ (void)setNewtonTriggersEmergencySOS:(_Bool)arg1;
++ (_Bool)newtonTriggersEmergencySOS;
 + (void)setLongPressTriggersEmergencySOS:(_Bool)arg1;
 + (_Bool)longPressTriggersEmergencySOS;
 + (id)_userFriendsDefaults;

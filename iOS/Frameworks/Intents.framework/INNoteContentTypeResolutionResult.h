@@ -8,9 +8,7 @@
 {
 }
 
-+ (id)confirmationRequiredWithValueToConfirm:(long long)arg1;
 + (id)confirmationRequiredWithNoteContentTypeToConfirm:(long long)arg1;
-+ (id)successWithResolvedValue:(long long)arg1;
 + (id)successWithResolvedNoteContentType:(long long)arg1;
 
 @end

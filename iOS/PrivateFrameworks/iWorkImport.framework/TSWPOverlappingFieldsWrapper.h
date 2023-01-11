@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, TSWPStorage;
 
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)description;
 - (void)sortWithContext:(void *)arg1;
+- (void)resetTextAttributeUUIDString;
 - (id)copyWithContext:(id)arg1;
 - (_Bool)isEquivalentToObject:(id)arg1;
 - (_Bool)isEqualToOverlappingFieldWrapper:(id)arg1;

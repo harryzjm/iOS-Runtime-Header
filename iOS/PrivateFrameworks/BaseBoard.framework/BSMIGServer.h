@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -22,14 +22,14 @@
     struct __CFRunLoopObserver *_exitObserver;
 }
 
+- (void).cxx_destruct;
 - (void)_installAutoreleasePoolsIfNecessaryForMode:(struct __CFString *)arg1;
 - (unsigned int)_createPortNamed:(id)arg1;
 - (void *)_start;
 - (void)setThreadName:(id)arg1;
-@property(readonly, nonatomic) NSString *threadName;
+@property(readonly, copy, nonatomic) NSString *threadName;
 @property(nonatomic) int threadPriority;
 - (unsigned int)port;
-- (void)dealloc;
 - (id)init;
 - (id)initWithPortName:(id)arg1 subsystem:(struct mig_subsystem *)arg2 separateThread:(_Bool)arg3;
 

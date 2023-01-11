@@ -7,18 +7,23 @@
 #import <objc/NSObject.h>
 
 #import <NanoRegistry/NRMutableStateParentDelegate-Protocol.h>
+#import <NanoRegistry/NSCopying-Protocol.h>
 #import <NanoRegistry/NSFastEnumeration-Protocol.h>
 #import <NanoRegistry/NSSecureCoding-Protocol.h>
 
-@class NRMutableDeviceCollection, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet;
+@class NRMutableDeviceCollection, NRPBDeviceCollectionHistory, NRSwitchRecordCollection, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet;
 
-@interface NRDeviceCollectionHistory : NSObject <NRMutableStateParentDelegate, NSSecureCoding, NSFastEnumeration>
+@interface NRDeviceCollectionHistory : NSObject <NRMutableStateParentDelegate, NSCopying, NSSecureCoding, NSFastEnumeration>
 {
     NSMutableOrderedSet *_observers;
-    _Bool _dirty;
+    long long _maxHistoryDepth;
+    _Atomic _Bool _atomicDirty;
+    struct os_unfair_lock_s _observerLock;
+    struct os_unfair_lock_s _cacheLock;
     NRMutableDeviceCollection *_deviceCollection;
     unsigned long long _startIndex;
     NSMutableArray *_history;
+    NRSwitchRecordCollection *_switchRecords;
     NSMutableDictionary *_historyStateCache;
     NSMutableArray *_historyStateCacheMRU;
     NSMutableArray *_historyStateCacheIndex;
@@ -28,17 +33,19 @@
 @property(retain, nonatomic) NSMutableArray *historyStateCacheIndex; // @synthesize historyStateCacheIndex=_historyStateCacheIndex;
 @property(retain, nonatomic) NSMutableArray *historyStateCacheMRU; // @synthesize historyStateCacheMRU=_historyStateCacheMRU;
 @property(retain, nonatomic) NSMutableDictionary *historyStateCache; // @synthesize historyStateCache=_historyStateCache;
+@property(retain, nonatomic) NRSwitchRecordCollection *switchRecords; // @synthesize switchRecords=_switchRecords;
 @property(retain, nonatomic) NSMutableArray *history; // @synthesize history=_history;
 @property(nonatomic) unsigned long long startIndex; // @synthesize startIndex=_startIndex;
 @property(readonly, nonatomic) NRMutableDeviceCollection *deviceCollection; // @synthesize deviceCollection=_deviceCollection;
-@property(readonly, nonatomic) _Bool dirty; // @synthesize dirty=_dirty;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqualToHistory:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (id)description;
-- (void)notifyObserversWithEntry:(id)arg1;
+- (void)invalidate;
+- (void)notifyHistoryObserversWithEntry:(id)arg1;
 - (id)deviceIDAtSwitchIndex:(unsigned int)arg1 date:(id *)arg2;
 - (id)switchDeviceIDFromDiff:(id)arg1;
 @property(readonly, nonatomic) unsigned int switchIndex;
@@ -56,8 +63,12 @@
 - (id)_mostRecentStateBefore:(id)arg1;
 - (unsigned long long)_findIndexInHistoryStateCache:(id)arg1 type:(unsigned long long)arg2;
 - (id)stateAtIndex:(unsigned long long)arg1;
+@property(readonly, nonatomic) NRPBDeviceCollectionHistory *protobuf;
+- (id)initWithProtobuf:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)_createIndex;
 - (void)encodeWithCoder:(id)arg1;
+@property(readonly, nonatomic) _Bool dirty;
 - (id)init;
 
 @end

@@ -9,7 +9,8 @@
 #import <Silex/SXAdDocumentStateObserver-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
-@class ADBannerView, NSError, NSString, SXIAdDebugView;
+@class ADBannerView, NSError, NSString, SXAdController, SXIAdDebugView;
+@protocol SXHost;
 
 @interface SXIAdComponentView <ADBannerViewDelegate, SXAdDisplayInstructions, SXViewportChangeListener, SXAdDocumentStateObserver>
 {
@@ -18,6 +19,8 @@
     _Bool _isDisplayingBannerView;
     _Bool _didUnloadBannerView;
     int _opportunityError;
+    SXAdController *_adController;
+    id <SXHost> _host;
     ADBannerView *_bannerView;
     CDUnknownBlockType _cancelHandler;
     SXIAdDebugView *_debugView;
@@ -37,6 +40,8 @@
 @property(nonatomic) struct CGSize viewportSizeOnAdRequest; // @synthesize viewportSizeOnAdRequest=_viewportSizeOnAdRequest;
 @property(nonatomic) _Bool hasInvalidatedLayout; // @synthesize hasInvalidatedLayout=_hasInvalidatedLayout;
 @property(retain, nonatomic) ADBannerView *bannerView; // @synthesize bannerView=_bannerView;
+@property(readonly, nonatomic) id <SXHost> host; // @synthesize host=_host;
+@property(readonly, nonatomic) __weak SXAdController *adController; // @synthesize adController=_adController;
 - (void).cxx_destruct;
 - (void)sendOpportunityEvent;
 - (_Bool)shouldSendOpportunityEvent;
@@ -58,12 +63,12 @@
 - (_Bool)shouldRegisterForViewportChanges;
 - (void)registerForViewportChanges;
 - (void)viewport:(id)arg1 dynamicBoundsDidChangeFromBounds:(struct CGRect)arg2;
-- (void)presentComponent;
+- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
 - (void)applicationDidBecomeActive:(id)arg1;
 - (void)applicationDidEnterBackground:(id)arg1;
 - (void)adSheetDisconnectedNotification:(id)arg1;
-- (void)dealloc;
-- (id)initWithComponent:(id)arg1 configuration:(id)arg2 context:(id)arg3 analyticsReporting:(id)arg4 appStateMonitor:(id)arg5;
+- (void)loadComponent:(id)arg1;
+- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 host:(id)arg6 adController:(id)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

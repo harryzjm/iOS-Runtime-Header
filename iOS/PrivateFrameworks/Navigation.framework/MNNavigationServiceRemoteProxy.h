@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <MNNavigationServiceRemoteProxyDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (void)navigationServiceReconnector:(id)arg1 didReconnectWithDetails:(id)arg2;
+- (void)navigationServiceProxy:(id)arg1 didUpdateNavigationDetails:(id)arg2;
 - (void)navigationServiceProxy:(id)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (void)navigationServiceProxy:(id)arg1 willChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (void)interfaceHashesWithHandler:(CDUnknownBlockType)arg1;
@@ -69,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)_reconnectIfAllowed;
 - (void)_openConnection;
 - (void)_updateConnection;
+- (_Bool)isOpenForClient:(id)arg1;
 - (void)closeForClient:(id)arg1;
 - (void)openForClient:(id)arg1;
 - (void)dealloc;

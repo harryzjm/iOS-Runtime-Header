@@ -8,20 +8,22 @@
 
 #import <ARKit/ARResultDataContext-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSArray, NSString;
 
 @interface ARTechniqueGatherContext : NSObject <ARResultDataContext>
 {
     id _parentContext;
-    NSMutableArray *_gatheredData;
 }
 
-@property(retain, nonatomic) NSMutableArray *gatheredData; // @synthesize gatheredData=_gatheredData;
-@property(retain, nonatomic) id parentContext; // @synthesize parentContext=_parentContext;
+@property(readonly, nonatomic) id parentContext; // @synthesize parentContext=_parentContext;
 - (void).cxx_destruct;
+- (id)anchorsToRemove;
+- (id)anchorsToAdd;
 - (id)resultDataOfClass:(Class)arg1;
-- (CDStruct_14d5dc5e)sessionOriginTransform;
+- (long long)cameraPosition;
 - (id)imageData;
+- (id)captureGatheredData;
+@property(readonly, nonatomic) NSArray *gatheredData;
 - (id)initWithParentContext:(id)arg1;
 
 // Remaining properties

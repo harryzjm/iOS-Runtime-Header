@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+__attribute__((visibility("hidden")))
 @interface SFProximityEstimatorMaxOfMean
 {
     char *_channelNumberArray;
@@ -13,7 +14,7 @@
     unsigned int _rssiMinCount;
 }
 
-- (_Bool)updateWithSFBLEDevice:(id)arg1;
+- (int)_estimateRSSIForSFBLEDevice:(id)arg1;
 - (void)dealloc;
 - (id)initWithProximityInfo:(id)arg1;
 

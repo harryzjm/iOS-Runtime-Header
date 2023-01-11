@@ -15,6 +15,7 @@
 {
     GEOComposedRoute *_nonRecommendedRoute;
     _Bool _invalid;
+    _Bool _rerouting;
     MNCommuteDestinationSuggestion *_suggestion;
     GEOComposedRoute *_route;
     GEORouteSet *_routeSet;
@@ -32,9 +33,10 @@
 
 + (_Bool)supportsSecureCoding;
 @property(retain) MNObserverHashTable *observers; // @synthesize observers=_observers;
-@property(retain, nonatomic) NSDictionary *scores; // @synthesize scores=_scores;
+@property(copy, nonatomic) NSDictionary *scores; // @synthesize scores=_scores;
 @property(nonatomic) long long score; // @synthesize score=_score;
 @property(retain, nonatomic) MNLocation *lastLocation; // @synthesize lastLocation=_lastLocation;
+@property(nonatomic) _Bool rerouting; // @synthesize rerouting=_rerouting;
 @property(nonatomic) double remainingDistance; // @synthesize remainingDistance=_remainingDistance;
 @property(nonatomic) double remainingTime; // @synthesize remainingTime=_remainingTime;
 @property(retain, nonatomic) GEOETATrafficUpdateResponse *etaResponse; // @synthesize etaResponse=_etaResponse;
@@ -52,10 +54,10 @@
 @property(readonly, nonatomic) double geodesicDistance;
 @property(readonly) _Bool canCalculateETA;
 @property(readonly) _Bool canGetETARoute;
-@property(readonly, nonatomic) NSString *name;
+@property(readonly, copy, nonatomic) NSString *name;
 @property(readonly, nonatomic) GEOComposedWaypoint *waypoint;
-@property(readonly, nonatomic) NSString *uniqueIdentifier;
-@property(readonly) NSString *shortDescription;
+@property(readonly, copy, nonatomic) NSString *uniqueIdentifier;
+@property(readonly, nonatomic) NSString *shortDescription;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSUbiquitousKeyValueStore;
 
@@ -49,7 +49,6 @@
 - (void)handleSyncedDataChanged:(id)arg1;
 - (void)reloadStocksFromDefaults;
 - (id)_defaultStockDictionaries;
-- (id)_localeStocks;
 - (id)stockForURL:(id)arg1;
 - (void)dealloc;
 - (id)init;

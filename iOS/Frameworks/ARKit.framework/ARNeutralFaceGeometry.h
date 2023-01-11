@@ -10,9 +10,9 @@
 
 @interface ARNeutralFaceGeometry : NSObject
 {
-    vector_fff08e2a _verticesVector;
+    vector_1cb3ea33 _verticesVector;
     struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> _texCoordinatesVector;
-    struct vector<short, std::__1::allocator<short>> _trianglesIndicesVector;
+    vector_00df4d9c _trianglesIndicesVector;
 }
 
 + (id)sharedNeutralGeometry;

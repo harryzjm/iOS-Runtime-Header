@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_queue;
 
@@ -15,6 +15,7 @@
     int _logMaxVerbosity;
 }
 
++ (id)defaultLogger;
 + (id)logger;
 - (void)waitForLoggingToComplete;
 - (_Bool)isVerbosityLogEverything;

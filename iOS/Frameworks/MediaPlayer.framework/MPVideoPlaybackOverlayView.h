@@ -6,16 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-#import <MediaPlayer/MPAVRoutingControllerDelegate-Protocol.h>
+#import <MediaPlayer/MPAVLightweightRoutingControllerDelegate-Protocol.h>
 #import <MediaPlayer/MPDetailSliderDelegate-Protocol.h>
 #import <MediaPlayer/MPVideoOverlay-Protocol.h>
 #import <MediaPlayer/MPVolumeControllerDelegate-Protocol.h>
 #import <MediaPlayer/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class MPAVController, MPAVItem, MPAVRoutingController, MPAudioAndSubtitlesController, MPDetailSlider, MPKnockoutButton, MPVideoView, MPVolumeController, MPVolumeSlider, NSArray, NSLayoutConstraint, NSString, UIActivityIndicatorView, UIButton, UILabel, UINavigationBar, UIStatusBar, UIViewController, _UIBackdropView;
+@class MPAVController, MPAVItem, MPAVLightweightRoutingController, MPAudioAndSubtitlesController, MPDetailSlider, MPKnockoutButton, MPVideoView, MPVolumeController, MPVolumeSlider, NSArray, NSLayoutConstraint, NSString, UIActivityIndicatorView, UIButton, UILabel, UINavigationBar, UIStatusBar, UIViewController, _UIBackdropView;
 @protocol MPVideoControllerProtocol, MPVideoOverlayDelegate;
 
-@interface MPVideoPlaybackOverlayView : UIView <UIPopoverPresentationControllerDelegate, MPAVRoutingControllerDelegate, MPVolumeControllerDelegate, MPVideoOverlay, MPDetailSliderDelegate>
+@interface MPVideoPlaybackOverlayView : UIView <UIPopoverPresentationControllerDelegate, MPAVLightweightRoutingControllerDelegate, MPVolumeControllerDelegate, MPVideoOverlay, MPDetailSliderDelegate>
 {
     MPDetailSlider *_scrubber;
     MPKnockoutButton *_playPauseButton;
@@ -33,7 +33,7 @@
     MPKnockoutButton *_leftButton;
     MPKnockoutButton *_rightButton;
     UIButton *_audioAndSubtitlesButton;
-    MPAVRoutingController *_airplayController;
+    MPAVLightweightRoutingController *_lightweightRoutingController;
     MPVolumeController *_volumeController;
     UIView *_topBarLayoutGuide;
     UIView *_topBarItemsGuide;
@@ -145,8 +145,10 @@
 - (void)_applicationDidEnterBackgroundNotification:(id)arg1;
 - (void)_alternateTracksAvailable:(id)arg1;
 - (void)_activeAudioRouteDidChange:(id)arg1;
+- (void)volumeController:(id)arg1 volumeControlAvailableDidChange:(_Bool)arg2;
 - (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
-- (void)routingControllerAvailableRoutesDidChange:(id)arg1;
+- (void)lightweightRoutingController:(id)arg1 didChangePickedRoutes:(id)arg2;
+- (void)lightweightRoutingController:(id)arg1 didChangeDevicePresenceDetected:(_Bool)arg2;
 - (void)_skipButtonTouchUpOutside:(id)arg1;
 - (void)_skipButtonTouchUpInside:(id)arg1;
 - (void)_skipButtonTouchCancel:(id)arg1;

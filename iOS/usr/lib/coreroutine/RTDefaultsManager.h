@@ -4,41 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary, NSObject, NSUserDefaults, RTAssetManager;
-@protocol OS_dispatch_queue;
+@protocol RTUserDefaults;
 
 @interface RTDefaultsManager
 {
-    NSObject<OS_dispatch_queue> *_serviceQueue;
-    NSMutableDictionary *_remoteDefaultsDictionary;
-    RTAssetManager *_assetsManager;
-    NSUserDefaults *_userDefaults;
+    id <RTUserDefaults> _userDefaults;
 }
 
-@property(retain, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
-@property(retain, nonatomic) RTAssetManager *assetsManager; // @synthesize assetsManager=_assetsManager;
-@property(retain, nonatomic) NSMutableDictionary *remoteDefaultsDictionary; // @synthesize remoteDefaultsDictionary=_remoteDefaultsDictionary;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *serviceQueue; // @synthesize serviceQueue=_serviceQueue;
 - (void).cxx_destruct;
-- (void)_onAssetDownloadNotification:(id)arg1;
-- (void)onAssetDownloadNotification:(id)arg1;
-- (void)_setObject:(id)arg1 forKey:(id)arg2;
-- (void)setObject:(id)arg1 forKey:(id)arg2;
-- (id)_objectForKey:(id)arg1;
-- (id)objectForKey:(id)arg1;
-- (void)_printCurrentEffectiveDefaults;
-- (void)_installDefaults:(id)arg1 toDefaultsDictionary:(id)arg2;
-- (void)_loadRemoteDefaults;
-- (void)shutdown;
-- (void)_unregisterForNotifications;
-- (void)_registerForNotifications;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
-- (id)initWithUserDefaults:(id)arg1 assetsManager:(id)arg2;
-- (id)initWithAssetsManager:(id)arg1;
-- (id)init;
+- (void)notifyUpdatedKeys:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2 domain:(id)arg3;
 - (id)objectForKey:(id)arg1 domain:(id)arg2;
+- (void)setObject:(id)arg1 forKey:(id)arg2;
+- (id)objectForKey:(id)arg1;
+- (void)addDomain:(id)arg1;
+- (void)registerDefault:(id)arg1 forKey:(id)arg2;
+- (void)registerDefaults:(id)arg1;
+- (void)shutdown;
+- (id)initWithUserDefaults:(id)arg1 customDomain:(id)arg2;
+- (id)init;
 
 @end
 

@@ -13,7 +13,7 @@
 #import <AXMediaUtilities/NSCopying-Protocol.h>
 #import <AXMediaUtilities/NSSecureCoding-Protocol.h>
 
-@class AXMFeatureTrackingManager, AXMService, AXMTaskDispatcher, AXMVisionEngineCache, AXMVisionEngineDiagnosticInfo, NSArray, NSMapTable, NSMutableArray, NSString, _AXMVisionEngineAnalysisTask;
+@class AXMFeatureTrackingManager, AXMService, AXMTaskDispatcher, AXMVisionEngineCache, NSArray, NSMapTable, NSMutableArray, NSString, _AXMVisionEngineAnalysisTask;
 @protocol OS_dispatch_queue;
 
 @interface AXMVisionEngine : NSObject <AXMVisionEngineNodeConnectionDelegate, AXMFeatureTrackingManagerDelegate, AXMTaskDispatcherDelegate, NSCopying, NSSecureCoding, AXMDescribing>
@@ -33,7 +33,6 @@
     long long _maximumQueueSize;
     unsigned long long _thresholdPriority;
     AXMVisionEngineCache *_cache;
-    AXMVisionEngineDiagnosticInfo *_diagnosticInfo;
     AXMService *_axMediaUtilsService;
     AXMTaskDispatcher *_taskDispatcher;
 }
@@ -41,7 +40,6 @@
 + (_Bool)supportsSecureCoding;
 @property(retain, nonatomic) AXMTaskDispatcher *taskDispatcher; // @synthesize taskDispatcher=_taskDispatcher;
 @property(retain, nonatomic) AXMService *axMediaUtilsService; // @synthesize axMediaUtilsService=_axMediaUtilsService;
-@property(retain, nonatomic) AXMVisionEngineDiagnosticInfo *diagnosticInfo; // @synthesize diagnosticInfo=_diagnosticInfo;
 @property(nonatomic, getter=areDiagnosticsEnabled) _Bool diagnosticsEnabled; // @synthesize diagnosticsEnabled=_diagnosticsEnabled;
 @property(nonatomic, getter=isFeatureTrackingEnabled) _Bool featureTrackingEnabled; // @synthesize featureTrackingEnabled=_featureTrackingEnabled;
 @property(retain, nonatomic) AXMVisionEngineCache *cache; // @synthesize cache=_cache;
@@ -96,6 +94,7 @@
 - (id)_queue_sourceNodeWithIdentifier:(id)arg1;
 - (id)evaluationNodeWithIdentifier:(id)arg1;
 - (id)sourceNodeWithIdentifier:(id)arg1;
+- (void)addSourceNodes:(id)arg1 evaluationNodes:(id)arg2;
 - (void)removeAllEvaluationNodes;
 - (void)removeEvaluationNode:(id)arg1;
 - (void)insertEvaluationNode:(id)arg1 atIndex:(long long)arg2;

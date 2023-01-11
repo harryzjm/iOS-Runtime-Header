@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TSgPTPClock;
 @protocol OS_dispatch_queue;
@@ -21,6 +21,7 @@
 + (id)gPTPManager;
 + (id)sharedgPTPManagerSyncWithTimeout:(unsigned long long)arg1;
 + (id)sharedgPTPManager;
++ (void)notifyWhengPTPManagerIsAvailable:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) unsigned long long systemDomainClockIdentifier; // @synthesize systemDomainClockIdentifier=_systemDomainClockIdentifier;
 - (void)dealloc;
 - (_Bool)removeDomainWithIdentifier:(unsigned long long)arg1 error:(id *)arg2;

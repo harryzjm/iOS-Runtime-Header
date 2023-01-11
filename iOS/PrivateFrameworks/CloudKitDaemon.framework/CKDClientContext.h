@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKAccountOverrideInfo, CKContainerID, CKDAccount, CKDAppContainerIntersectionMetadata, CKDAppContainerTuple, CKDApplicationMetadata, CKDCachePurger, CKDFlowControlManager, CKDKeyValueDiskCache, CKDMMCS, CKDMescalSession, CKDPCSCache, CKDPCSManager, CKDPublicIdentityLookupService, CKDServerConfiguration, CKDZoneGatekeeper, CKTimeLogger, NSBundle, NSHashTable, NSMutableDictionary, NSString, NSURL;
+@class CKAccountOverrideInfo, CKContainerID, CKDAccount, CKDAppContainerIntersectionMetadata, CKDAppContainerTuple, CKDApplicationMetadata, CKDCachePurger, CKDFlowControlManager, CKDKeyValueDiskCache, CKDMMCS, CKDMescalSession, CKDPCSCache, CKDPCSManager, CKDPublicIdentityLookupService, CKDServerConfiguration, CKDZoneGatekeeper, CKTimeLogger, NSHashTable, NSMutableDictionary, NSString, NSURL;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface CKDClientContext : NSObject
@@ -19,6 +19,7 @@
     _Bool _returnPCSMetadata;
     _Bool _useMMCSEncryptionV2;
     _Bool _bypassPCSEncryption;
+    _Bool _forceEnableReadOnlyManatee;
     _Bool _isSiloedContext;
     _Bool _sandboxed;
     _Bool _finishedAppProxySetup;
@@ -30,11 +31,12 @@
     NSURL *_publicShareServiceURL;
     NSURL *_publicDeviceServiceURL;
     NSURL *_publicCodeServiceURL;
+    NSURL *_publicMetricsServiceURL;
     NSString *_containerScopedUserID;
+    NSString *_orgAdminUserID;
     NSHashTable *_proxies;
     long long _cachedEnvironment;
     CKContainerID *_containerID;
-    NSBundle *_applicationBundle;
     NSString *_applicationBundleID;
     NSString *_sourceApplicationBundleID;
     NSString *_applicationVersion;
@@ -64,6 +66,7 @@
     NSObject<OS_dispatch_queue> *_setupQueue;
     NSString *_contextID;
     CKDCachePurger *_cachePurger;
+    NSString *_containerEncryptionServiceName;
     NSString *_entitlementSpecifiedPCSServiceName;
     CKDKeyValueDiskCache *_publicIdentitiesDiskCache;
     CKDPublicIdentityLookupService *_foregroundPublicIdentityLookupService;
@@ -95,6 +98,7 @@
 @property(retain, nonatomic) CKDPublicIdentityLookupService *foregroundPublicIdentityLookupService; // @synthesize foregroundPublicIdentityLookupService=_foregroundPublicIdentityLookupService;
 @property(retain, nonatomic) CKDKeyValueDiskCache *publicIdentitiesDiskCache; // @synthesize publicIdentitiesDiskCache=_publicIdentitiesDiskCache;
 @property(retain, nonatomic) NSString *entitlementSpecifiedPCSServiceName; // @synthesize entitlementSpecifiedPCSServiceName=_entitlementSpecifiedPCSServiceName;
+@property(retain, nonatomic) NSString *containerEncryptionServiceName; // @synthesize containerEncryptionServiceName=_containerEncryptionServiceName;
 @property(nonatomic) _Bool wasInitializedWithProxy; // @synthesize wasInitializedWithProxy=_wasInitializedWithProxy;
 @property(retain, nonatomic) CKDCachePurger *cachePurger; // @synthesize cachePurger=_cachePurger;
 @property(readonly, nonatomic) NSString *contextID; // @synthesize contextID=_contextID;
@@ -113,6 +117,7 @@
 @property(retain) CKDMMCS *MMCS; // @synthesize MMCS=_MMCS;
 @property(nonatomic) _Bool isSiloedContext; // @synthesize isSiloedContext=_isSiloedContext;
 @property(nonatomic) unsigned int clientSDKVersion; // @synthesize clientSDKVersion=_clientSDKVersion;
+@property(nonatomic) _Bool forceEnableReadOnlyManatee; // @synthesize forceEnableReadOnlyManatee=_forceEnableReadOnlyManatee;
 @property(nonatomic) _Bool bypassPCSEncryption; // @synthesize bypassPCSEncryption=_bypassPCSEncryption;
 @property(nonatomic) _Bool useMMCSEncryptionV2; // @synthesize useMMCSEncryptionV2=_useMMCSEncryptionV2;
 @property(nonatomic) _Bool returnPCSMetadata; // @synthesize returnPCSMetadata=_returnPCSMetadata;
@@ -137,16 +142,17 @@
 @property(retain, nonatomic) NSString *applicationVersion; // @synthesize applicationVersion=_applicationVersion;
 @property(readonly, nonatomic) NSString *sourceApplicationBundleID; // @synthesize sourceApplicationBundleID=_sourceApplicationBundleID;
 @property(readonly, nonatomic) NSString *applicationBundleID; // @synthesize applicationBundleID=_applicationBundleID;
-@property(readonly, nonatomic) NSBundle *applicationBundle; // @synthesize applicationBundle=_applicationBundle;
 @property(readonly, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property long long cachedEnvironment; // @synthesize cachedEnvironment=_cachedEnvironment;
 @property(retain, nonatomic) NSHashTable *proxies; // @synthesize proxies=_proxies;
 @property(nonatomic) _Bool isForClouddInternalUse; // @synthesize isForClouddInternalUse=_isForClouddInternalUse;
-@property(retain, nonatomic) NSString *containerScopedUserID; // @synthesize containerScopedUserID=_containerScopedUserID;
-@property(retain, nonatomic) NSURL *publicCodeServiceURL; // @synthesize publicCodeServiceURL=_publicCodeServiceURL;
-@property(retain, nonatomic) NSURL *publicDeviceServiceURL; // @synthesize publicDeviceServiceURL=_publicDeviceServiceURL;
-@property(retain, nonatomic) NSURL *publicShareServiceURL; // @synthesize publicShareServiceURL=_publicShareServiceURL;
-@property(retain, nonatomic) NSURL *publicCloudDBURL; // @synthesize publicCloudDBURL=_publicCloudDBURL;
+@property(copy) NSString *orgAdminUserID; // @synthesize orgAdminUserID=_orgAdminUserID;
+@property(copy) NSString *containerScopedUserID; // @synthesize containerScopedUserID=_containerScopedUserID;
+@property(copy) NSURL *publicMetricsServiceURL; // @synthesize publicMetricsServiceURL=_publicMetricsServiceURL;
+@property(copy) NSURL *publicCodeServiceURL; // @synthesize publicCodeServiceURL=_publicCodeServiceURL;
+@property(copy) NSURL *publicDeviceServiceURL; // @synthesize publicDeviceServiceURL=_publicDeviceServiceURL;
+@property(copy) NSURL *publicShareServiceURL; // @synthesize publicShareServiceURL=_publicShareServiceURL;
+@property(copy) NSURL *publicCloudDBURL; // @synthesize publicCloudDBURL=_publicCloudDBURL;
 @property(retain, nonatomic) CKDServerConfiguration *config; // @synthesize config=_config;
 - (void).cxx_destruct;
 - (void)clearAuthTokensForRecordWithID:(id)arg1 databaseScope:(long long)arg2;
@@ -159,8 +165,10 @@
 - (void)clearAssetCache;
 - (void)setFakeResponseOperationResult:(id)arg1 forNextRequestOfClassName:(id)arg2 forItemID:(id)arg3 withLifetime:(int)arg4;
 - (void)setFakeError:(id)arg1 forNextRequestOfClassName:(id)arg2;
+@property(nonatomic) _Bool hasNonLegacyShareURLEntitlement;
 @property(retain, nonatomic) NSString *clientPrefixEntitlement;
 @property(retain, nonatomic) NSString *applicationIdentifier;
+@property(readonly, nonatomic) NSString *encryptionServiceName;
 @property(nonatomic) _Bool hasDisplaysSystemAcceptPromptEntitlement;
 @property(nonatomic) _Bool hasParticipantPIIEntitlement;
 @property(nonatomic) _Bool hasOutOfProcessUIEntitlement;

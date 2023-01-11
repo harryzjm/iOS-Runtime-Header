@@ -19,6 +19,7 @@
     UIImage *_flatHighlightImage;
     _Bool _selected;
     double _cornerRadius;
+    _Bool _continuousCorners;
     CAFilter *_highlightFilter;
     _Bool _imageContainsCornerRadius;
     _Bool _imageLoaded;
@@ -53,6 +54,8 @@
 - (void)_setCornerRadius:(double)arg1;
 - (double)_continuousCornerRadius;
 - (void)_setContinuousCornerRadius:(double)arg1;
+- (id)backgroundColor;
+- (void)setBackgroundColor:(id)arg1;
 - (void)setImageProxy:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @property(retain, nonatomic) UIImage *image;
 - (void)willMoveToWindow:(id)arg1;

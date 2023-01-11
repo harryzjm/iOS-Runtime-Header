@@ -78,6 +78,7 @@
 }
 
 + (id)contactWithABRecord:(void *)arg1 serverID:(id)arg2;
++ (id)externalRepClasses;
 + (id)asParseRules;
 + (void)_setSystemTimeZoneForUnitTests:(id)arg1;
 + (_Bool)notifyOfUnknownTokens;

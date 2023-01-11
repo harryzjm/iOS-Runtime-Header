@@ -10,6 +10,7 @@
 
 + (id)matchupDetailsSnippetWithDictionary:(id)arg1 context:(id)arg2;
 + (id)matchupDetailsSnippet;
+@property(nonatomic) _Bool isModalView;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

@@ -6,19 +6,7 @@
 
 #import <Foundation/NSSet.h>
 
-#import <Home/HFPrettyDescription-Protocol.h>
-#import <Home/HFStateDumpSerializable-Protocol.h>
-
-@class NSString;
-
-@interface NSSet (HFDebugging) <HFPrettyDescription, HFStateDumpSerializable>
-- (id)hf_serializedStateDumpRepresentation;
-- (id)hf_prettyDescriptionOfType:(unsigned long long)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+@interface NSSet (HFDebugging)
+- (id)hf_prettyDescription;
 @end
 

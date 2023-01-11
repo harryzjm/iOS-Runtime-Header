@@ -6,9 +6,11 @@
 
 #import <iAd/NSObject-Protocol.h>
 
-@class NSValue;
+@class NSString, NSValue;
 
 @protocol ADWebProcessProxy <NSObject>
+- (void)resetVideoTagPlaytime;
+- (void)actionDidFailWithErrorDescription:(NSString *)arg1;
 - (void)setExpandedSize:(NSValue *)arg1;
 - (void)creativeVisibilityDidChange:(_Bool)arg1;
 - (void)creativeStateDidChange:(long long)arg1;

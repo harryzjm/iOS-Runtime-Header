@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKAccountOverrideInfo;
+@class CKAccountOverrideInfo, NSString;
 
 @interface CKContainerOptions : NSObject
 {
@@ -17,11 +17,15 @@
     _Bool _useMMCSEncryptionV2;
     _Bool _bypassPCSEncryption;
     _Bool _enforceNamedOperationGroups;
+    _Bool _forceEnableReadOnlyManatee;
     CKAccountOverrideInfo *_accountInfoOverride;
+    NSString *_encryptionServiceName;
 }
 
+@property(nonatomic) _Bool forceEnableReadOnlyManatee; // @synthesize forceEnableReadOnlyManatee=_forceEnableReadOnlyManatee;
 @property(nonatomic) _Bool enforceNamedOperationGroups; // @synthesize enforceNamedOperationGroups=_enforceNamedOperationGroups;
 @property(nonatomic) _Bool bypassPCSEncryption; // @synthesize bypassPCSEncryption=_bypassPCSEncryption;
+@property(retain, nonatomic) NSString *encryptionServiceName; // @synthesize encryptionServiceName=_encryptionServiceName;
 @property(nonatomic) _Bool useMMCSEncryptionV2; // @synthesize useMMCSEncryptionV2=_useMMCSEncryptionV2;
 @property(nonatomic) _Bool returnPCSMetadata; // @synthesize returnPCSMetadata=_returnPCSMetadata;
 @property(copy, nonatomic) CKAccountOverrideInfo *accountInfoOverride; // @synthesize accountInfoOverride=_accountInfoOverride;

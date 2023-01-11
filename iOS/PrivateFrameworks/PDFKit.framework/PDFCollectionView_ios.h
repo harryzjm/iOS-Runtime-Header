@@ -4,7 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PDFPage, PDFThumbnailItem_ios, UITouch;
+@class NSObject, PDFPage, PDFThumbnailItem_ios, UITouch;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface PDFCollectionView_ios
@@ -15,11 +16,13 @@ __attribute__((visibility("hidden")))
     UITouch *_currentTouch;
     PDFThumbnailItem_ios *_scrubbingItemView;
     PDFPage *_lastScrubbedToPage;
+    NSObject<OS_dispatch_queue> *_thumbnailQueue;
     struct CGRect _lastFrame;
 }
 
 + (id)layoutForPlatform;
 + (struct CGSize)defaultThumbnailSize;
+@property(retain) NSObject<OS_dispatch_queue> *thumbnailQueue; // @synthesize thumbnailQueue=_thumbnailQueue;
 @property _Bool isUpdatingScrollPosition; // @synthesize isUpdatingScrollPosition=_isUpdatingScrollPosition;
 @property _Bool inDelayedUpdate; // @synthesize inDelayedUpdate=_inDelayedUpdate;
 @property struct CGRect lastFrame; // @synthesize lastFrame=_lastFrame;

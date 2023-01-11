@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableURLRequest, NSString, NSURLRequest, __NSCFURLSession;
 
@@ -25,22 +25,31 @@ __attribute__((visibility("hidden")))
     _Bool __shouldSkipPreferredClientCertificateLookup;
     struct __CFDictionary *__atsContext;
     NSMutableArray *_transactionMetrics;
+    struct os_unfair_lock_s _unfair_lock;
 }
 
+- (_Bool)_isTopLevelNavigation;
+- (id)_siteForCookies;
+- (id)_nw_activity;
+- (id)_APSRelayTopic;
 - (id)_incompleteTaskMetrics;
 - (void)set_incompleteTaskMetrics:(id)arg1;
 - (_Bool)_preconnect;
 - (void)set_preconnect:(_Bool)arg1;
 - (void)_consumePendingBytesReceivedEncoded;
 - (void)_appendCountOfPendingBytesReceivedEncoded:(long long)arg1;
+- (long long)_discretionaryOverrride;
+- (void)set_discretionaryOverride:(long long)arg1;
 - (_Bool)_allowsQUIC;
 - (void)set_allowsQUIC:(_Bool)arg1;
+- (void)set_TLSNegotiatedCipherSuite:(unsigned short)arg1;
 - (void)set_TCPConnectionMetadata:(id)arg1;
 - (id)_transactionMetrics;
 - (void)_prepareNewTimingDataContainer;
 - (id)_storagePartitionIdentifier;
 - (void)set_trailers:(id)arg1;
 - (id)_trailers;
+- (unsigned short)_TLSNegotiatedCipherSuite;
 - (const struct __CFData **)_TCPConnectionMetadata;
 - (const struct __CFDictionary **)_DuetActivityProperties;
 - (struct __CFDictionary *)_dependencyInfo;
@@ -48,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (struct __CFSet *)_getAuthenticatorStatusCodes;
 - (void)_getAuthenticationHeadersForResponse:(struct _CFURLResponse *)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setAppleIDContext:(id)arg1;
+- (_Bool)_requiresSecureHTTPSProxyConnection;
 - (_Bool)_preventsSystemHTTPProxyAuthentication;
 - (_Bool)_cacheOnly;
 - (_Bool)_shouldSkipPreferredClientCertificateLookup;
@@ -111,7 +121,7 @@ __attribute__((visibility("hidden")))
 - (void)_setSocketProperties:(struct __CFDictionary *)arg1 connectionProperties:(struct __CFDictionary *)arg2;
 - (const struct XCredentialStorage *)_createXCredentialStorage;
 - (const struct XCookieStorage *)_createXCookieStorage;
-- (const struct XURLCache *)_createXURLCache;
+- (void)_withXURLCache:(CDUnknownBlockType)arg1;
 - (struct _CFHSTSPolicy *)_copyHSTSPolicy;
 - (void)_processConnectionProperties;
 - (void)_initializeTimingDataWithSessionConfiguration:(id)arg1;

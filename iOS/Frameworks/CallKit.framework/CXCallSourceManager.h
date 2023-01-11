@@ -35,7 +35,9 @@
 - (void)transactionManager:(id)arg1 transactionGroupCompleted:(id)arg2;
 - (void)transactionManager:(id)arg1 actionTimedOut:(id)arg2 forCallSource:(id)arg3;
 - (void)callSource:(id)arg1 actionCompleted:(id)arg2;
+- (void)callSource:(id)arg1 requestedTransaction:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)callSource:(id)arg1 reportedCallWithUUID:(id)arg2 crossDeviceIdentifier:(id)arg3 changedBytesOfDataUsed:(long long)arg4;
+- (void)callSource:(id)arg1 reportedCallWithUUID:(id)arg2 changedMeterLevel:(float)arg3 forDirection:(long long)arg4;
 - (void)callSource:(id)arg1 reportedCallWithUUID:(id)arg2 changedFrequencyData:(id)arg3 forDirection:(long long)arg4;
 - (void)callSource:(id)arg1 reportedAudioFinishedForCallWithUUID:(id)arg2;
 - (void)callSource:(id)arg1 reportedOutgoingCallWithUUID:(id)arg2 connectedAtDate:(id)arg3;

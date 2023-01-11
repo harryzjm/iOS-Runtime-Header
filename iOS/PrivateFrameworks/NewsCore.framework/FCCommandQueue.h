@@ -19,6 +19,7 @@
     _Bool _executingCommand;
     FCCloudContext *_context;
     NSString *_persistentStorePath;
+    NSString *_name;
     FCKeyValueStore *_persistentStore;
     long long _urgency;
     id <FCCommandQueueDelegate> _delegate;
@@ -40,6 +41,7 @@
 @property(nonatomic) __weak id <FCCommandQueueDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) long long urgency; // @synthesize urgency=_urgency;
 @property(retain, nonatomic) FCKeyValueStore *persistentStore; // @synthesize persistentStore=_persistentStore;
+@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *persistentStorePath; // @synthesize persistentStorePath=_persistentStorePath;
 @property(retain, nonatomic) FCCloudContext *context; // @synthesize context=_context;
 - (void).cxx_destruct;

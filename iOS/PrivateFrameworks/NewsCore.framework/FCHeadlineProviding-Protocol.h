@@ -7,13 +7,15 @@
 #import <NewsCore/FCClassifiable-Protocol.h>
 #import <NewsCore/FCFeedElement-Protocol.h>
 #import <NewsCore/FCFeedTransformationItem-Protocol.h>
-#import <NewsCore/NSCopying-Protocol.h>
+#import <NewsCore/NFCopying-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCArticleContentManifest, FCCoverArt, FCFeedPersonalizedArticleScoreProfile, FCHeadlineThumbnail, FCTopStoriesStyleConfiguration, NSArray, NSDate, NSObject, NSString, NSURL;
-@protocol FCChannelProviding, FCContentContext, FCNativeAdProviding;
+@class FCArticleContentManifest, FCCoverArt, FCFeedPersonalizedArticleScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
+@protocol FCChannelProviding, FCContentContext, FCHeadlineStocksFields, FCNativeAdProviding;
 
-@protocol FCHeadlineProviding <NSObject, NSCopying, FCFeedElement, FCClassifiable, FCFeedTransformationItem>
+@protocol FCHeadlineProviding <NSObject, NFCopying, FCFeedElement, FCClassifiable, FCFeedTransformationItem>
+@property(readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs;
+@property(readonly, nonatomic) NSString *articleRecirculationConfigJSON;
 @property(readonly, nonatomic) id <FCNativeAdProviding> associatedAd;
 @property(readonly, nonatomic) _Bool isBlockedExplicitContent;
 @property(readonly, nonatomic) _Bool showSubscriptionRequiredText;
@@ -27,11 +29,19 @@
 @property(readonly, nonatomic) _Bool isTopStory;
 @property(readonly, nonatomic) FCFeedPersonalizedArticleScoreProfile *scoreProfile;
 @property(readonly, nonatomic) double tileProminenceScore;
+@property(readonly, copy, nonatomic) NSSet *surfacedByTagIDs;
 @property(readonly, copy, nonatomic) NSString *surfacedByBinID;
 @property(readonly, copy, nonatomic) NSString *surfacedByTopicID;
 @property(readonly, copy, nonatomic) NSString *surfacedByChannelID;
 @property(readonly, copy, nonatomic) NSString *surfacedBySectionID;
+@property(readonly, nonatomic, getter=isHiddenFromFeeds) _Bool hiddenFromFeeds;
+@property(readonly, nonatomic, getter=isBoundToContext) _Bool boundToContext;
+@property(readonly, nonatomic, getter=isHiddenFromAutoFavorites) _Bool hiddenFromAutoFavorites;
+@property(readonly, nonatomic, getter=isPressRelease) _Bool pressRelease;
+@property(readonly, nonatomic) _Bool showMinimalChrome;
 @property(readonly, nonatomic) _Bool needsRapidUpdates;
+@property(readonly, copy, nonatomic) NSURL *videoCallToActionURL;
+@property(readonly, copy, nonatomic) NSString *videoCallToActionTitle;
 @property(readonly, nonatomic) FCCoverArt *coverArt;
 @property(readonly, nonatomic, getter=isPaid) _Bool paid;
 @property(readonly, nonatomic) long long minimumNewsVersion;
@@ -70,9 +80,10 @@
 @property(readonly, nonatomic) _Bool hasThumbnail;
 @property(readonly, nonatomic) struct CGRect thumbnailFocalFrame;
 @property(readonly, copy, nonatomic) NSString *sourceName;
-@property(readonly, copy, nonatomic) NSObject<FCChannelProviding> *sourceChannel;
+@property(readonly, copy, nonatomic) id <FCChannelProviding> sourceChannel;
 @property(readonly, nonatomic) long long backendArticleVersion;
 @property(readonly, copy, nonatomic) NSDate *publishDate;
+@property(readonly, copy, nonatomic) NSString *titleCompact;
 @property(readonly, copy, nonatomic) NSString *title;
 @property(readonly, copy, nonatomic) NSString *primaryAudience;
 @property(readonly, nonatomic) unsigned long long contentType;
@@ -83,6 +94,10 @@
 @property(readonly, copy, nonatomic) NSString *versionIdentifier;
 
 @optional
+@property(readonly, nonatomic) _Bool webEmbedsEnabled;
+@property(copy, nonatomic) FCHeadlineExperimentalTitleMetadata *experimentalTitleMetadata;
+@property(readonly, nonatomic) NSData *backingArticleRecordData;
+@property(readonly, nonatomic) id <FCHeadlineStocksFields> stocksFields;
 - (FCArticleContentManifest *)contentManifestWithContext:(id <FCContentContext>)arg1;
 @end
 

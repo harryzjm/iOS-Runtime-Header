@@ -34,6 +34,7 @@
 - (_Bool)ib_isComposedEntirelyOfCharactersFromSet:(id)arg1;
 - (_Bool)ib_isRange:(struct _NSRange)arg1 composedEntirelyOfCharactersFromSet:(id)arg2;
 - (id)ib_UTF8Representation;
+- (id)ib_objcIdentifierByReplacingIllegalCharactersWithString:(id)arg1;
 - (id)ib_stringByCapitalizingFirstCharacterOfEachSpacedComponent;
 - (id)ib_stringByCapitalizingFirstCharacter;
 - (id)ib_stringByLowercasingFirstCharacter;

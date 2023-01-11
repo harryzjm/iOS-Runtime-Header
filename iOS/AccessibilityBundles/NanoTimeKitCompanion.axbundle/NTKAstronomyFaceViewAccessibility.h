@@ -11,12 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_updateTimeAnimated:(_Bool)arg1;
 - (void)_loadSnapshotContentViews;
-- (void)_handleVirtualButton:(id)arg1;
-- (void)crownInputSequencerOffsetDidChange:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)_accessibilityLocalizedStringForTarget:(unsigned long long)arg1;
 
 @end
 

@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class AVAssetExportSession, NSOperationQueue, NSString, RCActionSheetController, RCAudioTrimmingModalItemViewController, RCSavedRecording, RCTrimTimeRangeOperation;
-@protocol RCAudioTrimmingModalItemDelegate;
+@class AVAssetExportSession, NSOperationQueue, NSString, RCActionSheetController, RCAudioTrimmingModalItemViewController, RCTrimTimeRangeOperation;
+@protocol RCAudioTrimmingModalItemDelegate, RCRecording;
 
 @interface RCAudioTrimmingModalItem : NSObject
 {
@@ -24,11 +24,11 @@
     _Bool _deletesDestinationPathWhenDone;
     id <RCAudioTrimmingModalItemDelegate> _delegate;
     double _maximumTrimmedDuration;
-    RCSavedRecording *_recording;
+    id <RCRecording> _recording;
 }
 
 + (id)exportableAudioFormatPathExtensionWithSourceURL:(id)arg1;
-@property(readonly, nonatomic) RCSavedRecording *recording; // @synthesize recording=_recording;
+@property(readonly, nonatomic) id <RCRecording> recording; // @synthesize recording=_recording;
 @property(nonatomic) double maximumTrimmedDuration; // @synthesize maximumTrimmedDuration=_maximumTrimmedDuration;
 @property(nonatomic) _Bool deletesDestinationPathWhenDone; // @synthesize deletesDestinationPathWhenDone=_deletesDestinationPathWhenDone;
 @property(readonly, copy, nonatomic) NSString *destinationPath; // @synthesize destinationPath=_destinationPath;
@@ -39,7 +39,7 @@
 - (void)_dismissAnimated:(_Bool)arg1;
 - (void)dismiss;
 - (void)_handleTrimSheetActionWithClickedButtonIndex:(unsigned long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)showWithPresentationViewController:(id)arg1 message:(id)arg2 trimButtonTitle:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)showWithPresentationViewController:(id)arg1 source:(id)arg2 message:(id)arg3 trimButtonTitle:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1 sourcePath:(id)arg2 destinationPath:(id)arg3;
 - (id)init;

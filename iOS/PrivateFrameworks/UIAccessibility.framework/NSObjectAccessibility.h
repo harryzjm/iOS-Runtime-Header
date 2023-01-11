@@ -13,6 +13,7 @@
 - (id)accessibilityUserDefinedDropPointDescriptors;
 - (id)accessibilityUserDefinedDragSourceDescriptors;
 - (void)setAccessibilityElements:(id)arg1;
+- (id)accessibilityElements;
 - (id)accessibilityUserDefinedContainer;
 - (id)accessibilityHeaderElements;
 - (long long)accessibilityNavigationStyle;
@@ -26,6 +27,7 @@
 - (_Bool)shouldGroupAccessibilityChildren;
 - (id)accessibilityUserDefinedActivationPoint;
 - (struct CGPoint)accessibilityActivationPoint;
+- (_Bool)accessibilityActivate;
 - (id)accessibilityUserDefinedIdentifier;
 - (id)accessibilityIdentifier;
 - (id)accessibilityUserDefinedLanguage;

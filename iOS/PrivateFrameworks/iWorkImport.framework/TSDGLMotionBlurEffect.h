@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class TSDGLDataBuffer, TSDGLFrameBuffer, TSDGLShader, TSDGLState;
-@protocol TSDAnimationRandomGenerator;
+@class TSDGLFrameBuffer, TSDGLShader, TSDGLState;
+@protocol TSDAnimationRandomGenerator, TSDGLDataBuffer;
 
 __attribute__((visibility("hidden")))
 @interface TSDGLMotionBlurEffect : NSObject
@@ -20,10 +20,10 @@ __attribute__((visibility("hidden")))
     TSDGLFrameBuffer *_velocityFramebuffer;
     TSDGLShader *_defaultTextureShader;
     TSDGLFrameBuffer *_colorFramebuffer;
-    TSDGLDataBuffer *_colorFBODataBuffer;
-    TSDGLDataBuffer *_velocityFBODataBuffer;
-    TSDGLDataBuffer *_velocitySquashedFBODataBuffer;
-    TSDGLDataBuffer *_FBODataBuffer;
+    id <TSDGLDataBuffer> _colorFBODataBuffer;
+    id <TSDGLDataBuffer> _velocityFBODataBuffer;
+    id <TSDGLDataBuffer> _velocitySquashedFBODataBuffer;
+    id <TSDGLDataBuffer> _FBODataBuffer;
     TSDGLShader *_velocityTileMaxVerticalShader;
     TSDGLShader *_velocityTileMaxHorizontalShader;
     TSDGLShader *_velocityNeighborMaxHorizontalShader;

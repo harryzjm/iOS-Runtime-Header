@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVAsset, AVAssetExportSessionInternal, NSError, NSString, NSURL;
 
@@ -32,6 +32,8 @@
 - (id)audioMix;
 - (void)setAudioTimePitchAlgorithm:(id)arg1;
 - (id)audioTimePitchAlgorithm;
+- (void)setMaximizePowerEfficiency:(_Bool)arg1;
+- (_Bool)maximizePowerEfficiency;
 - (void)setFileLengthLimit:(long long)arg1;
 - (long long)fileLengthLimit;
 - (void)setMetadataItemFilter:(id)arg1;

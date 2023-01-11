@@ -12,6 +12,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySupplementaryFooterViews;
+- (id)_accessibilityCustomActionGroupIdentifier;
+- (_Bool)_accessibilityRetainsCustomRotorActionSetting;
 - (void)setFailed:(_Bool)arg1;
 
 @end

@@ -4,28 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKit/HMAccessorySettingsContainer-Protocol.h>
+#import <HomeKit/HMMediaObject-Protocol.h>
 #import <HomeKit/_HMMediaProfileDelegate-Protocol.h>
 
-@class HMAccessorySettings, HMMediaSession, NSObject, NSString;
-@protocol HMMediaProfileDelegate, OS_dispatch_queue;
+@class HMAccessorySettings, HMHome, HMMediaSession, NSString;
+@protocol HMMediaProfileDelegate;
 
-@interface HMMediaProfile <_HMMediaProfileDelegate>
+@interface HMMediaProfile <_HMMediaProfileDelegate, HMMediaObject, HMAccessorySettingsContainer>
 {
-    HMAccessorySettings *_settings;
+    NSString *_routeUID;
     id <HMMediaProfileDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property __weak id <HMMediaProfileDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)mediaProfile:(id)arg1 didUpdateMediaSession:(id)arg2;
-- (void)mediaProfile:(id)arg1 didUpdateRootGroup:(id)arg2;
+@property(readonly) __weak HMHome *containerHome;
+@property(readonly, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
 @property(readonly, copy) HMMediaSession *mediaSession;
-- (void)_notifyDelegateOfUpdatedSettings:(id)arg1;
-- (void)setSettings:(id)arg1;
-@property(readonly) HMAccessorySettings *settings; // @synthesize settings=_settings;
+@property(readonly) HMAccessorySettings *settings;
 - (id)initWithAccessoryProfile:(id)arg1;
 - (id)init;
 

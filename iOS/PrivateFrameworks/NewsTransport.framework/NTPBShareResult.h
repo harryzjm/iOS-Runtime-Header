@@ -33,8 +33,10 @@
     NSMutableArray *_fractionalCohortMemberships;
     NSString *_groupFeedId;
     int _groupType;
+    NSData *_groupViewExposureId;
     NSString *_iadNativeAd;
     NSString *_iadNativeCampaign;
+    NSString *_iadNativeCampaignAd;
     NSString *_iadNativeLine;
     NSString *_iosActivityType;
     NSString *_language;
@@ -103,6 +105,8 @@
 
 + (Class)fractionalCohortMembershipType;
 + (Class)namedEntitiesType;
+@property(retain, nonatomic) NSData *groupViewExposureId; // @synthesize groupViewExposureId=_groupViewExposureId;
+@property(retain, nonatomic) NSString *iadNativeCampaignAd; // @synthesize iadNativeCampaignAd=_iadNativeCampaignAd;
 @property(nonatomic) long long previousArticlePublisherArticleVersion; // @synthesize previousArticlePublisherArticleVersion=_previousArticlePublisherArticleVersion;
 @property(retain, nonatomic) NSString *iadNativeAd; // @synthesize iadNativeAd=_iadNativeAd;
 @property(retain, nonatomic) NSString *iadNativeLine; // @synthesize iadNativeLine=_iadNativeLine;
@@ -160,6 +164,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasGroupViewExposureId;
+@property(readonly, nonatomic) _Bool hasIadNativeCampaignAd;
 @property(nonatomic) _Bool hasPreviousArticlePublisherArticleVersion;
 @property(readonly, nonatomic) _Bool hasIadNativeAd;
 @property(readonly, nonatomic) _Bool hasIadNativeLine;

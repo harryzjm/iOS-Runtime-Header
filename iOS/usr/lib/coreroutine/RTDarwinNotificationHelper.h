@@ -18,6 +18,7 @@
 - (void)removeObserver:(id)arg1 center:(struct __CFNotificationCenter *)arg2 key:(id)arg3 info:(void *)arg4;
 - (void)addObserver:(id)arg1 center:(struct __CFNotificationCenter *)arg2 key:(id)arg3 callback:(CDUnknownFunctionPointerType)arg4 info:(void *)arg5 suspensionBehavior:(long long)arg6;
 - (void)_handleDarwinNotificationCallback:(id)arg1;
+- (unsigned long long)stateForNotificationName:(id)arg1;
 - (void)postNotification:(id)arg1;
 - (void)removeObserverForNotificationName:(id)arg1;
 - (void)addObserverForNotificationName:(id)arg1 handler:(CDUnknownBlockType)arg2;

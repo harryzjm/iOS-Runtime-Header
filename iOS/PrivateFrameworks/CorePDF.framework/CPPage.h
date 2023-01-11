@@ -8,6 +8,7 @@
 
 @class CPChunk, NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface CPPage <CPDisposable>
 {
     int pageNumber;

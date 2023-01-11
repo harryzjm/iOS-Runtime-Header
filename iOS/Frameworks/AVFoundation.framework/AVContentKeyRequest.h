@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVContentKeyRequestInternal, NSData, NSError;
 
@@ -13,14 +13,18 @@
     AVContentKeyRequestInternal *_contentKeyRequest;
 }
 
-- (void)removeFigCryptorListeners;
-- (void)addFigCryptorListeners;
++ (void)_validateHLSEncryptionMethod:(id)arg1;
++ (void)_validateProtocolVersionList:(id)arg1;
++ (id)_mergePreloadingRequestOptions:(id)arg1 withCreateKeyRequestOptions:(id)arg2;
++ (int)_prepareCryptor:(struct OpaqueFigCPECryptor *)arg1 forRenewal:(_Bool)arg2 andReturnKeyRequestID:(unsigned long long *)arg3;
 - (void)_sendFinishLoadingToCustomURLHandlerWithError:(id)arg1;
 - (void)_sendFinishLoadingToCustomURLHandler;
 - (void)_sendDataToCustomURLHandler:(id)arg1;
 - (void)_ensureResponseInfoSentToCustomURLHandler;
 - (void)_sendResponseInfoToCustomURLHandler;
 - (void)respondByRequestingPersistableContentKeyRequest;
+- (_Bool)respondByRequestingPersistableContentKeyRequestAndReturnError:(id *)arg1;
+- (_Bool)_canRespondByRequestingPersistableContentKeyRequest;
 - (void)renewExpiringContentKeyResponseData;
 - (void)processContentKeyResponseError:(id)arg1;
 - (void)processContentKeyResponse:(id)arg1;
@@ -28,9 +32,9 @@
 - (void)makeStreamingContentKeyRequestDataForApp:(id)arg1 contentIdentifier:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)contentKeyRequestDataForApp:(id)arg1 contentIdentifier:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (struct OpaqueFigCPECryptor *)_setCryptorWithFormatDescription:(struct opaqueCMFormatDescription *)arg1 error:(id *)arg2;
-- (void)_handleKeyResponseError:(int)arg1;
+- (void)_handleKeyResponseSuccess;
+- (void)_handleKeyResponseError:(id)arg1;
 - (id)_getRetryReasonForError:(int)arg1;
-- (void)_handleUpdateToPersistentKey:(id)arg1;
 - (struct OpaqueFigCPECryptor *)figCryptor;
 @property(readonly) _Bool canProvidePersistableContentKey;
 - (void)_setError:(id)arg1;
@@ -46,7 +50,9 @@
 - (void)dealloc;
 - (id)initWithContentKeySession:(id)arg1 customURLHandler:(struct OpaqueFigCustomURLHandler *)arg2 identifier:(id)arg3 requestInfo:(struct __CFDictionary *)arg4 requestID:(unsigned long long)arg5 providesPersistableKey:(_Bool)arg6;
 - (id)initWithContentKeySession:(id)arg1 customURLProviderContext:(id)arg2 identifier:(id)arg3 initializationData:(id)arg4 providesPersistableKey:(_Bool)arg5;
-- (id)initWithContentKeySession:(id)arg1 identifier:(id)arg2 initializationData:(id)arg3 providesPersistableKey:(_Bool)arg4;
+- (void)_copyAndStoreCryptorUUID;
+- (id)initWithContentKeySession:(id)arg1 identifier:(id)arg2 initializationData:(id)arg3 preloadingRequestOptions:(id)arg4 providesPersistableKey:(_Bool)arg5;
+- (int)_extractAndStoreDefualtKeyIDFromInitializationData:(id)arg1;
 
 @end
 

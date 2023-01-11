@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface PSSystemPolicyManager : NSObject
 {
@@ -20,7 +20,9 @@
 + (_Bool)_privacySettingsNeededForProxy:(id)arg1;
 + (_Bool)_systemSettingsNeededForProxy:(id)arg1;
 + (_Bool)_shouldIncludeProxy:(id)arg1;
++ (id)_thirdPartyApplicationProxyForBundleID:(id)arg1;
 + (id)thirdPartyApplicationProxyForBundleID:(id)arg1;
++ (id)_thirdPartyApplicationProxies;
 + (id)thirdPartyApplicationProxies;
 + (id)thirdPartyApplicationForBundleID:(id)arg1;
 + (id)thirdPartyApplications;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSURangeList : NSObject
 {
-    struct vector<_NSRange, std::__1::allocator<_NSRange>> mRangeList;
+    vector_b5e32e34 mRangeList;
 }
 
 - (id).cxx_construct;

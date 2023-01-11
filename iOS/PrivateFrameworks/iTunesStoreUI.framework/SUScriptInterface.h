@@ -7,11 +7,12 @@
 #import <iTunesStoreUI/SFSafariViewControllerDelegate-Protocol.h>
 #import <iTunesStoreUI/SUScriptModalDialogDelegate-Protocol.h>
 #import <iTunesStoreUI/SUScriptXMLHTTPRequestDelegate-Protocol.h>
+#import <iTunesStoreUI/SUScriptXMLHTTPStoreRequestDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString, SFSafariViewController, SSAuthenticationContext, SUClientInterface, SUScriptAccount, SUScriptAccountManager, SUScriptAppleAccountStore, SUScriptApplication, SUScriptCarrierBundlingController, SUScriptDevice, SUScriptDictionary, SUScriptFairPlayContext, SUScriptKeyValueStore, SUScriptMediaLibrary, SUScriptMetricsController, SUScriptNavigationBar, SUScriptNotificationObserver, SUScriptOperationDelegate, SUScriptPassbookLibrary, SUScriptPreviewOverlay, SUScriptProtocol, SUScriptPurchaseManager, SUScriptSectionsController, SUScriptStoreBagLoader, SUScriptSubscriptionStatusCoordinator, SUScriptTelephony, SUScriptViewController, SUScriptWindow, SUScriptWindowContext, WebFrame;
-@protocol SUScriptInterfaceDelegate;
+@class NSArray, NSMutableDictionary, NSMutableSet, NSNumber, NSObject, NSString, SFSafariViewController, SSAuthenticationContext, SUClientInterface, SUScriptAccount, SUScriptAccountManager, SUScriptAppleAccountStore, SUScriptApplication, SUScriptCarrierBundlingController, SUScriptDevice, SUScriptDictionary, SUScriptFairPlayContext, SUScriptKeyValueStore, SUScriptMediaLibrary, SUScriptMetricsController, SUScriptNavigationBar, SUScriptNavigationSimulator, SUScriptNotificationObserver, SUScriptOperationDelegate, SUScriptPassbookLibrary, SUScriptPreviewOverlay, SUScriptProtocol, SUScriptPurchaseManager, SUScriptSectionsController, SUScriptStoreBagLoader, SUScriptSubscriptionStatusCoordinator, SUScriptTelephony, SUScriptViewController, SUScriptWindow, SUScriptWindowContext, WebFrame;
+@protocol OS_dispatch_queue, SUScriptInterfaceDelegate;
 
-@interface SUScriptInterface <SUScriptModalDialogDelegate, SUScriptXMLHTTPRequestDelegate, SFSafariViewControllerDelegate>
+@interface SUScriptInterface <SUScriptModalDialogDelegate, SUScriptXMLHTTPRequestDelegate, SUScriptXMLHTTPStoreRequestDelegate, SFSafariViewControllerDelegate>
 {
     SUScriptAccountManager *_accountManager;
     SUScriptKeyValueStore *_applicationLocalStorage;
@@ -33,7 +34,11 @@
     SUScriptWindowContext *_scriptWindowContext;
     SUScriptSubscriptionStatusCoordinator *_subscriptionStatusCoordinator;
     id _threadSafeDelegate;
+    NSObject<OS_dispatch_queue> *_hsaTokenQueue;
+    struct __CFString *_hsaCurrentIdentifier;
+    SUScriptNavigationSimulator *_navigationSimulator;
     NSString *_safariViewControllerIdentifier;
+    NSNumber *_safariDismissButtonStyle;
     SFSafariViewController *_safariViewController;
 }
 
@@ -42,9 +47,11 @@
 + (id)webScriptNameForKeyName:(id)arg1;
 + (long long)purchaseAnimationStyleFromString:(id)arg1;
 @property(retain, nonatomic) SFSafariViewController *safariViewController; // @synthesize safariViewController=_safariViewController;
+@property(copy) NSNumber *safariDismissButtonStyle; // @synthesize safariDismissButtonStyle=_safariDismissButtonStyle;
 @property(retain, nonatomic) NSString *safariViewControllerIdentifier; // @synthesize safariViewControllerIdentifier=_safariViewControllerIdentifier;
 - (id)scriptAttributeKeys;
 - (id)attributeKeys;
+- (_Bool)scriptXMLHTTPStoreRequest:(id)arg1 requiresCellularForURL:(id)arg2;
 - (_Bool)scriptXMLHTTPRequest:(id)arg1 requiresCellularForURL:(id)arg2;
 - (id)presentingViewControllerForScriptModalDialog:(id)arg1;
 - (void)_cleanUpSafariViewController;
@@ -78,58 +85,81 @@
 @property(readonly) long long storeSheetTypeAskToBuy;
 @property(readonly) long long storeSheetTypeDefault;
 @property(readonly) NSString *safariViewControllerIdentifierQueryParameterName;
-@property(readonly) NSString *askToBuyPrompt;
+@property(readonly) NSString *userAgent;
+@property(readonly) NSString *tidState;
+@property(readonly) SUScriptDictionary *tidHeaders;
 @property(readonly) long long storeSheetType;
 @property(readonly) NSString *storeFrontIdentifier;
+- (void)setUserAgent:(id)arg1;
+- (void)setTidState:(id)arg1;
+- (void)setTidHeaders:(id)arg1;
 - (void)setStoreFrontIdentifier:(id)arg1;
+- (void)setNavigationSimulator:(id)arg1;
 - (void)setNavigationBar:(id)arg1;
+- (void)setSafariViewControllerDismissButtonStyle:(id)arg1;
 - (void)setReferringUserAgent:(id)arg1;
 - (void)setReferrerURL:(id)arg1;
 - (void)setOrientation:(id)arg1;
 - (void)setLoggingEnabled:(id)arg1;
+- (void)setGsToken:(id)arg1;
 - (void)setGlobalRootObject:(id)arg1;
 - (void)setCookieForDefaultURL:(id)arg1;
 - (void)setCookieDefaultURL:(id)arg1;
 @property(copy) NSString *cookie;
 @property(readonly) id screenReaderRunning;
 @property(readonly) SUScriptPreviewOverlay *previewOverlay;
+- (id)safariViewControllerDismissButtonStyle;
 - (id)requestInfo;
 @property(readonly) NSString *referringUserAgent;
 @property(readonly) NSString *referrerURL;
 @property(readonly) NSNumber *orientation;
+@property(readonly) SUScriptNavigationSimulator *navigationSimulator;
 @property(readonly) SUScriptNavigationBar *navigationBar;
+- (id)makeXMLHTTPStoreRequest;
 - (id)makeXMLHTTPRequest;
 @property(readonly) id loggingEnabled;
+@property(readonly) NSString *gsToken;
 @property(readonly) id globalRootObject;
+@property(readonly) NSString *deviceSerialNumber;
+@property(readonly) NSArray *deviceOffers;
+@property(readonly) id creditCardReaderAvailable;
 @property(readonly) NSString *cookieForDefaultURL;
 @property(readonly) NSString *cookieDefaultURL;
 @property(readonly) NSString *clientIdentifier;
 - (id)_className;
+@property(readonly) NSString *askToBuyPrompt;
 @property(readonly) SUScriptKeyValueStore *applicationLocalStorage;
 @property(readonly) id applicationAccessibilityEnabled;
-@property(readonly) id creditCardReaderAvailable;
 - (void)showSafariViewControllerWithURLString:(id)arg1 identifier:(id)arg2 animated:(_Bool)arg3;
 - (void)dismissSafariViewControllerAnimated:(_Bool)arg1;
 - (void)accessibilityPostScreenChange;
 - (void)accessibilityPostLayoutChange;
 - (void)_accessibilityPostLayoutChange;
+- (void)stopListeningForAuthenticationToken;
+- (void)startListeningForAuthenticationTokenWithCallback:(id)arg1;
 - (void)signOutPrimaryAccount;
+- (id)shouldDisplayPrivacyLinkWithIdentifier:(id)arg1;
 - (void)setLibraryIdentifierWithType:(id)arg1 value:(id)arg2;
 - (void)sendPostOfType:(id)arg1 withOptions:(id)arg2;
 - (void)requireCellularForResourceWithURL:(id)arg1;
 - (void)reportAProblemForIdentifier:(id)arg1;
+- (void)removeDeviceOfferWithIdentifier:(id)arg1 account:(id)arg2;
 - (void)registerNavBarButtonWithTitle:(id)arg1 side:(id)arg2 function:(id)arg3;
+- (id)presentPrivacySplashWithIdentifier:(id)arg1;
+- (id)presentPrivacyViewControllerWithIdentifier:(id)arg1;
 - (void)performPurchaseAnimationForIdentifier:(id)arg1 style:(id)arg2;
 - (void)perfLog:(id)arg1;
 - (void)openWallet;
 - (id)machineGUID;
 - (void)log:(id)arg1;
 - (void)handleDialogPropertyListString:(id)arg1;
+- (void)financeInterruptionResolved:(id)arg1;
 - (void)dispatchXEvent:(id)arg1;
 - (void)dispatchGlobalEventWithName:(id)arg1 payload:(id)arg2;
 - (void)openFamilyCircleSetupWithClientName:(id)arg1 completionFunction:(id)arg2;
 - (void)_finishCreditCardReaderWithOutput:(id)arg1 callback:(id)arg2;
 - (void)openCreditCardReaderWithCompletionFunction:(id)arg1;
+- (void)acknowledgePrivacyLinkWithIdentifier:(id)arg1;
 - (id)parentViewController;
 - (id)DOMElementWithElement:(id)arg1;
 @property(retain) WebFrame *webFrame;
@@ -261,7 +291,6 @@
 - (id)makeScriptActionWithType:(id)arg1;
 - (id)makeDateFormatter;
 @property(readonly) SUScriptPurchaseManager *purchaseManager;
-- (id)makeTweetComposeViewController;
 - (id)makeMediaPlayerItemWithProperties:(id)arg1;
 - (void)showMediaPreviewWithURLString:(id)arg1;
 - (void)showMediaPlayerWithURLString:(id)arg1 orientation:(id)arg2 title:(id)arg3 subtitle:(id)arg4 bookmarkID:(id)arg5 duration:(id)arg6 type:(id)arg7 imageURL:(id)arg8;

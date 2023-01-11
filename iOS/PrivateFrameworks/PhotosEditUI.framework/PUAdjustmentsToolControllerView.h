@@ -6,6 +6,7 @@
 
 @class PUAdjustmentsModeBar;
 
+__attribute__((visibility("hidden")))
 @interface PUAdjustmentsToolControllerView
 {
     PUAdjustmentsModeBar *_modeBar;

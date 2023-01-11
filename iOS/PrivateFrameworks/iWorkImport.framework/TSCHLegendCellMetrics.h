@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TSWPParagraphStyle;
 
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) float badgeSize; // @synthesize badgeSize=mBadgeSize;
 @property(readonly, nonatomic) struct __CTFont *font; // @synthesize font=mFont;
 @property(readonly, nonatomic) TSWPParagraphStyle *paragraphStyle; // @synthesize paragraphStyle=mParagraphStyle;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithParagraphStyle:(id)arg1;
 

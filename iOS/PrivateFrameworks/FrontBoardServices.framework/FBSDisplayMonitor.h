@@ -9,7 +9,7 @@
 #import <FrontBoardServices/BSInvalidatable-Protocol.h>
 
 @class CADisplay, FBSDisplayConfiguration, FBSDisplayIdentity, FBSDisplayStatus, NSHashTable, NSMapTable, NSSet, NSString;
-@protocol FBSDisplayObserving;
+@protocol FBSDisplayMonitorDelegate, FBSDisplayObserving;
 
 @interface FBSDisplayMonitor : NSObject <BSInvalidatable>
 {
@@ -18,8 +18,10 @@
     CADisplay *_mainDisplay;
     FBSDisplayStatus *_mainDisplayStatus;
     NSMapTable *_statusByDisplay;
+    id <FBSDisplayMonitorDelegate> _displayMonitorDelegate;
 }
 
+@property(nonatomic) __weak id <FBSDisplayMonitorDelegate> displayMonitorDelegate; // @synthesize displayMonitorDelegate=_displayMonitorDelegate;
 @property(nonatomic) __weak id <FBSDisplayObserving> bookendObserver; // @synthesize bookendObserver=_bookendObserver;
 - (void).cxx_destruct;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -28,6 +30,7 @@
 - (void)_noteUpdateStatus:(id)arg1 withConfiguration:(id)arg2;
 - (void)_noteConnectStatus:(id)arg1 withConfiguration:(id)arg2 debounce:(_Bool)arg3 broadcast:(_Bool)arg4;
 - (void)_updateDisplaysIfNecessary;
+- (void)_reevaluateConnectionStatusForAllDisplays;
 - (void)invalidate;
 @property(readonly, copy) NSString *description;
 - (void)removeObserver:(id)arg1;

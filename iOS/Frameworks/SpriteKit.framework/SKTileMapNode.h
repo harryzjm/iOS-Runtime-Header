@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class MISSING_TYPE, NSDictionary, NSString, SKShader, SKTileSet, UIColor;
 
-@interface SKTileMapNode <NSCopying, NSCoding>
+@interface SKTileMapNode <NSCopying, NSSecureCoding>
 {
     struct SKCTileMapNode *_skcTileMapNode;
     SKTileSet *_tileSet;
@@ -25,13 +25,14 @@
     NSString *_tileSetName;
 }
 
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
++ (id)debugHierarchyPropertyDescriptions;
 + (id)tileMapNodeWithTileSet:(id)arg1 columns:(unsigned long long)arg2 rows:(unsigned long long)arg3 tileSize:(struct CGSize)arg4 tileGroupLayout:(id)arg5;
 + (id)tileMapNodeWithTileSet:(id)arg1 columns:(unsigned long long)arg2 rows:(unsigned long long)arg3 tileSize:(struct CGSize)arg4 fillWithTileGroup:(id)arg5;
 + (id)tileMapNodeWithTileSet:(id)arg1 columns:(unsigned long long)arg2 rows:(unsigned long long)arg3 tileSize:(struct CGSize)arg4;
++ (_Bool)supportsSecureCoding;
 @property(retain, nonatomic) NSString *tileSetName; // @synthesize tileSetName=_tileSetName;
 - (void).cxx_destruct;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
-- (id)debugHierarchyPropertyDescriptions;
 - (void)setValue:(id)arg1 forAttributeNamed:(id)arg2;
 - (id)valueForAttributeNamed:(id)arg1;
 - (void)forceRedraw;
@@ -75,8 +76,10 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copy;
 - (void)setRawTiles:(unsigned int *)arg1 rows:(unsigned long long)arg2 columns:(unsigned long long)arg3;
+- (_Bool)isEqualToNode:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)commonInit;
 - (void)setAlpha:(double)arg1;
 - (double)alpha;
 @property(nonatomic) _Bool enableAutomapping;

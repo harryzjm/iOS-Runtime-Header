@@ -13,6 +13,7 @@
 {
     _Bool _isLocationTrackingEnabled;
     _Bool _locationServicesActive;
+    _Bool _stopUpdateIfNeeded;
     WeatherLocationManager *_locationManager;
     WFGeocodeRequest *_geocodeRequest;
     unsigned long long _citySource;
@@ -22,6 +23,7 @@
 
 @property(copy, nonatomic) CDUnknownBlockType WeatherLocationManagerGenerator; // @synthesize WeatherLocationManagerGenerator=_WeatherLocationManagerGenerator;
 @property(retain, nonatomic) WeatherPreferences *preferences; // @synthesize preferences=_preferences;
+@property(nonatomic) _Bool stopUpdateIfNeeded; // @synthesize stopUpdateIfNeeded=_stopUpdateIfNeeded;
 @property(nonatomic) unsigned long long citySource; // @synthesize citySource=_citySource;
 @property(retain, nonatomic) WFGeocodeRequest *geocodeRequest; // @synthesize geocodeRequest=_geocodeRequest;
 @property(nonatomic) _Bool locationServicesActive; // @synthesize locationServicesActive=_locationServicesActive;
@@ -33,15 +35,20 @@
 - (void)ubiquitousDefaultsDidChange:(id)arg1;
 - (void)_executeLocationUpdateForFirstWeatherCityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_executeLocationUpdateForLocalWeatherCityWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)shouldNotUseUpdatedLocation;
 - (void)_willDeliverForecastModel:(id)arg1;
 - (void)_executeLocationUpdateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_weatherPreferencesWereSynchronized:(id)arg1;
+- (_Bool)updateLocationTrackingStatus;
+- (void)syncLastUpdateTime;
 - (void)_teardownLocationManager;
+- (void)checkIfNeedsToUpdate;
 - (void)_kickstartLocationManager;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)setCitySource:(unsigned long long)arg1 fireNotification:(_Bool)arg2;
 - (id)forecastModel;
+- (void)clearLocationUpdateState;
 - (void)dealloc;
 - (id)init;
 - (id)initWithPreferences:(id)arg1 effectiveBundleIdentifier:(id)arg2;

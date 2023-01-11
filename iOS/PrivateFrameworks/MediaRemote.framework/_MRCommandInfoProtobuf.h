@@ -27,12 +27,14 @@
     float _maximumRating;
     float _minimumRating;
     int _numAvailableSkips;
+    float _preferredPlaybackRate;
     int _presentationStyle;
     int _repeatMode;
     int _shuffleMode;
     int _skipFrequency;
     int _skipInterval;
     NSMutableArray *_supportedCustomQueueIdentifiers;
+    int _upNextItemCount;
     _Bool _active;
     _Bool _enabled;
     _Bool _supportsSharedQueue;
@@ -42,11 +44,13 @@
         unsigned int maximumRating:1;
         unsigned int minimumRating:1;
         unsigned int numAvailableSkips:1;
+        unsigned int preferredPlaybackRate:1;
         unsigned int presentationStyle:1;
         unsigned int repeatMode:1;
         unsigned int shuffleMode:1;
         unsigned int skipFrequency:1;
         unsigned int skipInterval:1;
+        unsigned int upNextItemCount:1;
         unsigned int active:1;
         unsigned int enabled:1;
         unsigned int supportsSharedQueue:1;
@@ -54,6 +58,8 @@
 }
 
 + (Class)supportedCustomQueueIdentifierType;
+@property(nonatomic) float preferredPlaybackRate; // @synthesize preferredPlaybackRate=_preferredPlaybackRate;
+@property(nonatomic) int upNextItemCount; // @synthesize upNextItemCount=_upNextItemCount;
 @property(nonatomic) _Bool supportsSharedQueue; // @synthesize supportsSharedQueue=_supportsSharedQueue;
 @property(retain, nonatomic) NSMutableArray *supportedCustomQueueIdentifiers; // @synthesize supportedCustomQueueIdentifiers=_supportedCustomQueueIdentifiers;
 @property(nonatomic) int canScrub; // @synthesize canScrub=_canScrub;
@@ -67,6 +73,7 @@
 @property(retain, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property(nonatomic) _Bool active; // @synthesize active=_active;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
+- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -76,6 +83,8 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasPreferredPlaybackRate;
+@property(nonatomic) _Bool hasUpNextItemCount;
 @property(nonatomic) _Bool hasSupportsSharedQueue;
 - (void)setSupportedInsertionPositions:(int *)arg1 count:(unsigned long long)arg2;
 - (int)supportedInsertionPositionsAtIndex:(unsigned long long)arg1;

@@ -7,8 +7,7 @@
 #import <TemplateKit/NUIContainerStackViewDelegate-Protocol.h>
 #import <TemplateKit/TLKTextAreaViewTesting-Protocol.h>
 
-@class NSMutableArray, NSObject, NSString, TLKRichTextField, TLKTitleContainerView;
-@protocol OS_dispatch_queue;
+@class NSMutableArray, NSString, TLKRichTextField, TLKTitleContainerView;
 
 @interface TLKTextAreaView <NUIContainerStackViewDelegate, TLKTextAreaViewTesting>
 {
@@ -16,14 +15,12 @@
     TLKTitleContainerView *_titleContainer;
     NSMutableArray *_detailsFields;
     TLKRichTextField *_footnoteLabel;
-    NSObject<OS_dispatch_queue> *_concurrentQueue;
     unsigned long long _style;
 }
 
 + (id)footNoteLabelFont;
 @property _Bool disableAllObservers; // @synthesize disableAllObservers=_disableAllObservers;
 @property unsigned long long style; // @synthesize style=_style;
-@property(retain) NSObject<OS_dispatch_queue> *concurrentQueue; // @synthesize concurrentQueue=_concurrentQueue;
 @property(retain) TLKRichTextField *footnoteLabel; // @synthesize footnoteLabel=_footnoteLabel;
 @property(retain) NSMutableArray *detailsFields; // @synthesize detailsFields=_detailsFields;
 @property(retain) TLKTitleContainerView *titleContainer; // @synthesize titleContainer=_titleContainer;
@@ -32,15 +29,16 @@
 - (id)secondaryTitleLabelString;
 - (id)titleLabelString;
 - (id)textAreaLabelStrings;
+- (id)detailsViews;
+- (id)titleView;
+- (id)viewForLastBaselineLayout;
 - (id)viewForFirstBaselineLayout;
-- (struct UIEdgeInsets)containerStackView:(id)arg1 minimumSpacingAdjecentToArrangedSubview:(id)arg2;
-- (void)disableObserversOnLabels:(_Bool)arg1;
 - (_Bool)noFootNote;
 - (_Bool)noRichTextFields;
 - (void)updateFootnote:(id)arg1;
-- (void)disableUnbatchedUpdates;
-- (void)updateExistingDetailText:(id)arg1;
-- (void)updateDetails:(id)arg1 withDisabledObservers:(_Bool)arg2;
+- (void)internalTextFieldsInBatchUpdate:(_Bool)arg1;
+- (void)performBatchUpdates:(CDUnknownBlockType)arg1;
+- (void)updateDetails:(id)arg1;
 - (void)styleDidChange:(unsigned long long)arg1;
 - (void)updateResultWithTitle:(id)arg1 secondaryTitle:(id)arg2 image:(id)arg3 detached:(_Bool)arg4;
 - (id)init;

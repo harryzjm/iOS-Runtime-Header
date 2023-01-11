@@ -5,12 +5,13 @@
 //
 
 @class FCFeedDatabase, NSArray, NSMutableArray, NSMutableDictionary, NSObject;
-@protocol FCContentContext, OS_dispatch_queue;
+@protocol FCContentContext, FCCoreConfiguration, OS_dispatch_queue;
 
 @interface FCFeedStreamingRequestOperation
 {
     _Bool _throttled;
     id <FCContentContext> _context;
+    id <FCCoreConfiguration> _configuration;
     FCFeedDatabase *_feedDatabase;
     NSArray *_feedRequests;
     long long _streamingType;
@@ -38,6 +39,7 @@
 @property(nonatomic) long long streamingType; // @synthesize streamingType=_streamingType;
 @property(copy, nonatomic) NSArray *feedRequests; // @synthesize feedRequests=_feedRequests;
 @property(retain, nonatomic) FCFeedDatabase *feedDatabase; // @synthesize feedDatabase=_feedDatabase;
+@property(retain, nonatomic) id <FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
 @property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
 - (void).cxx_destruct;
 - (id)_feedRangeBrokenIntoSteps:(id)arg1;
@@ -46,6 +48,7 @@
 - (void)_startNextFetchStep;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
+- (_Bool)validateOperation;
 
 @end
 

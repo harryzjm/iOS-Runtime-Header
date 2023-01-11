@@ -6,7 +6,7 @@
 
 #import <PDFKit/NSObject-Protocol.h>
 
-@class NSArray, NSObject, NSString, PDFPage, PDFPageLayerEffect, PDFRenderingProperties;
+@class NSObject, NSUUID, PDFPage, PDFPageLayerEffect, PDFRenderingProperties;
 @protocol PDFPageLayerGeometryInterface;
 
 @protocol PDFPageLayerInterface <NSObject>
@@ -19,15 +19,18 @@
 - (void)forceTileUpdate;
 - (_Bool)enablesTileUpdates;
 - (void)setEnableTileUpdates:(_Bool)arg1;
-- (void)updatePageLayerEffect:(PDFPageLayerEffect *)arg1;
-- (NSArray *)pageLayerEffects;
-- (void)removePageLayerEffectByUUID:(NSString *)arg1;
-- (void)removePageLayerEffect:(PDFPageLayerEffect *)arg1;
-- (PDFPageLayerEffect *)getPageLayerEffectByUUID:(NSString *)arg1;
-- (NSString *)addPageLayerEffect:(PDFPageLayerEffect *)arg1;
+- (void)scalePageLayerEffects:(double)arg1;
+- (struct CGAffineTransform)layerEffectTransform;
+- (void)updatePageLayerEffects;
+- (void)updatePageLayerEffectForID:(NSUUID *)arg1;
+- (PDFPageLayerEffect *)pageLayerEffectForID:(NSUUID *)arg1;
+- (void)removePageLayerEffectForID:(NSUUID *)arg1;
+- (void)addPageLayerEffect:(PDFPageLayerEffect *)arg1;
 - (_Bool)isVisible;
 - (long long)displayBox;
 - (void)setNeedsTilesUpdate;
+- (PDFRenderingProperties *)renderingProperties;
+- (NSObject<PDFPageLayerGeometryInterface> *)geometryInterface;
 - (PDFPage *)page;
 - (id)initWithPage:(PDFPage *)arg1 geometryInterface:(NSObject<PDFPageLayerGeometryInterface> *)arg2 andRenderingProperties:(PDFRenderingProperties *)arg3;
 @end

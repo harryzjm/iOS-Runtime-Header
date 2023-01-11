@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMFMessageDestination, HMFMessageTransport, NSDictionary, NSString, NSUUID;
+@class HMFActivity, HMFMessageDestination, HMFMessageTransport, NSDictionary, NSString, NSUUID;
 
 @interface HMFMutableMessage
 {
@@ -17,6 +17,7 @@
 @property(copy, nonatomic) NSDictionary *headers; // @dynamic headers;
 - (void)setUserInfoValue:(id)arg1 forKey:(id)arg2;
 @property(copy, nonatomic) NSDictionary *userInfo; // @dynamic userInfo;
+@property(retain, nonatomic) HMFActivity *activity; // @dynamic activity;
 @property(nonatomic) long long qualityOfService; // @dynamic qualityOfService;
 @property(copy, nonatomic) NSString *name; // @dynamic name;
 

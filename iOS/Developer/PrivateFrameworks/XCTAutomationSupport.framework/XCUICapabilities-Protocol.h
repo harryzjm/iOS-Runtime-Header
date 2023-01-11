@@ -7,11 +7,16 @@
 #import <XCTAutomationSupport/NSObject-Protocol.h>
 
 @class NSDictionary, NSString;
+@protocol XCUICapabilities;
 
 @protocol XCUICapabilities <NSObject>
+@property(readonly) id <XCUICapabilities> bridgedProcessCapabilities;
+@property(readonly) _Bool automationSessionSupportsAnimationsIdleNotifications;
+@property(readonly) _Bool automationSessionSupportsMainRunLoopIdleNotifications;
+@property(readonly) _Bool automationSessionSupportsAttributeFetching;
 @property(readonly) NSDictionary *truncatedValueSnapshotParameter;
 @property(readonly) NSString *truncatedValueAttribute;
 @property(readonly) _Bool supportsTruncatedValue;
-@property(readonly) _Bool supportsAutomationSessions;
+@property(readonly) long long automationSessionSupport;
 @end
 

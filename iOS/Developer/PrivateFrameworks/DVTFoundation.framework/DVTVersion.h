@@ -24,7 +24,7 @@
 + (id)versionWithMajorComponent:(unsigned long long)arg1 minorComponent:(unsigned long long)arg2 updateComponent:(unsigned long long)arg3;
 + (id)versionWithAvailabilityForm:(unsigned long long)arg1;
 + (void)initialize;
-@property(copy) NSString *buildNumber; // @synthesize buildNumber=_buildNumber;
+@property(readonly, copy) NSString *buildNumber; // @synthesize buildNumber=_buildNumber;
 - (void).cxx_destruct;
 - (unsigned long long)availabilityFormIncludingUpdate:(_Bool)arg1 shortForm:(_Bool)arg2;
 - (unsigned long long)availabilityFormIncludingUpdate:(_Bool)arg1;
@@ -32,6 +32,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqualToOrNewerThanVersion:(id)arg1;
 - (long long)compare:(id)arg1;
+@property(readonly, copy) NSString *stringValueWithBuildNumber;
+@property(readonly, copy) NSString *stringValueTrimmingAllZeroes;
 @property(readonly, copy) NSString *stringValue;
 @property(readonly) unsigned long long updateComponent;
 @property(readonly) unsigned long long minorComponent;
@@ -39,7 +41,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
-- (id)initWithVersionComponents:(CDUnion_7de6e739)arg1;
+- (id)initWithVersionComponents:(CDUnion_7de6e739)arg1 buildNumber:(id)arg2;
 
 @end
 

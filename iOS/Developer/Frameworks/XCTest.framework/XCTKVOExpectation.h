@@ -12,6 +12,7 @@
 }
 
 @property(retain) _XCKVOExpectationImplementation *internal; // @synthesize internal=_internal;
+- (void).cxx_destruct;
 - (void)cleanup;
 @property(copy) CDUnknownBlockType handler;
 @property(readonly) unsigned long long options;

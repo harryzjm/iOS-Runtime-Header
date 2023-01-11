@@ -86,6 +86,7 @@
 - (id)_itemAtIndexPath:(id)arg1;
 - (id)_adjustedIndexPathForPlaybackQueue:(id)arg1;
 - (long long)_numberOfItemsInPlaybackQueue;
+- (void)modelResponseDidInvalidate:(id)arg1;
 - (void)_limitedUIChanged:(id)arg1;
 - (id)_setupRequest;
 - (void)_performRequest;

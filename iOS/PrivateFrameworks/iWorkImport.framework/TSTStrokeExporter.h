@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSPointerArray, TSUIntegerKeyDictionary;
-@protocol TSTCustomStrokeProviding, TSTTableInternalGeometryProviding><TSTTableHiddenRowColumnProviding, TSTTableStrokeProviding;
+@protocol TSTCategoryProviding><TSTTableInternalGeometryProviding><TSTTableHiddenRowColumnProviding, TSTCustomStrokeProviding, TSTTableStrokeProviding;
 
 __attribute__((visibility("hidden")))
 @interface TSTStrokeExporter : NSObject
 {
     id <TSTTableStrokeProviding> _defaultStrokeProvider;
     id <TSTCustomStrokeProviding> _customStrokeProvider;
-    id <TSTTableInternalGeometryProviding><TSTTableHiddenRowColumnProviding> _tableProvider;
+    id <TSTCategoryProviding><TSTTableInternalGeometryProviding><TSTTableHiddenRowColumnProviding> _tableProvider;
     NSPointerArray *_topRowStrokes;
     NSPointerArray *_bottomRowStrokes;
     NSPointerArray *_leftColumnStrokes;
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, retain, nonatomic) NSPointerArray *leftColumnStrokes; // @synthesize leftColumnStrokes=_leftColumnStrokes;
 @property(readonly, retain, nonatomic) NSPointerArray *bottomRowStrokes; // @synthesize bottomRowStrokes=_bottomRowStrokes;
 @property(readonly, retain, nonatomic) NSPointerArray *topRowStrokes; // @synthesize topRowStrokes=_topRowStrokes;
-@property(readonly, retain, nonatomic) id <TSTTableInternalGeometryProviding><TSTTableHiddenRowColumnProviding> tableProvider; // @synthesize tableProvider=_tableProvider;
+@property(readonly, retain, nonatomic) id <TSTCategoryProviding><TSTTableInternalGeometryProviding><TSTTableHiddenRowColumnProviding> tableProvider; // @synthesize tableProvider=_tableProvider;
 @property(readonly, retain, nonatomic) id <TSTCustomStrokeProviding> customStrokeProvider; // @synthesize customStrokeProvider=_customStrokeProvider;
 @property(readonly, retain, nonatomic) id <TSTTableStrokeProviding> defaultStrokeProvider; // @synthesize defaultStrokeProvider=_defaultStrokeProvider;
 - (void)strokesForCellID:(struct TSUCellCoord)arg1 top:(id *)arg2 left:(id *)arg3 bottom:(id *)arg4 right:(id *)arg5;

@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet, SXContext, SXDocumentController;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, SXDocumentController;
 @protocol OS_dispatch_semaphore;
 
 @interface SXLayoutDataProvider : NSObject
 {
     SXDocumentController *_documentController;
-    SXContext *_context;
     NSMutableArray *_components;
     NSMutableArray *_componentIdentifiers;
     NSMutableDictionary *_componentLayouts;
@@ -27,10 +26,9 @@
 @property(retain, nonatomic) NSMutableDictionary *componentLayouts; // @synthesize componentLayouts=_componentLayouts;
 @property(retain, nonatomic) NSMutableArray *componentIdentifiers; // @synthesize componentIdentifiers=_componentIdentifiers;
 @property(retain, nonatomic) NSMutableArray *components; // @synthesize components=_components;
-@property(readonly, nonatomic) SXContext *context; // @synthesize context=_context;
+@property(readonly, nonatomic) SXDocumentController *documentController; // @synthesize documentController=_documentController;
 - (void).cxx_destruct;
 - (id)description;
-@property(readonly, nonatomic) SXDocumentController *documentController; // @synthesize documentController=_documentController;
 - (void)removeComponent:(id)arg1;
 - (void)removeComponentWithIdentifier:(id)arg1;
 - (void)insertComponentLayout:(id)arg1 withIdentifier:(id)arg2;
@@ -44,8 +42,9 @@
 - (id)componentForIdentifier:(id)arg1;
 - (id)componentAtIndex:(unsigned long long)arg1;
 - (unsigned long long)numberOfComponents;
+- (id)allComponents;
 - (void)prepare;
-- (id)initWithComponents:(id)arg1 andContext:(id)arg2;
+- (id)initWithComponents:(id)arg1 documentController:(id)arg2;
 
 @end
 

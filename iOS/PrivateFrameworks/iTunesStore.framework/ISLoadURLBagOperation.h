@@ -12,11 +12,18 @@
 {
     SSURLBagContext *_context;
     ISURLBag *_outputBag;
+    NSNumber *_accountDSID;
 }
 
++ (id)_networkSynchronyQueue;
++ (id)_networkCounters;
++ (id)_executedNetworkRequests;
 + (void)_addStoreFrontHeaderSuffix:(id)arg1 forBundleIdentifier:(id)arg2;
 + (id)storeFrontHeaderSuffixForBundleIdentifier:(id)arg1;
 + (id)storeFrontHeaderSuffix;
++ (void)incrementNetworkCounterForBagContext:(id)arg1;
++ (void)decrementNetworkCounterForBagContext:(id)arg1;
+@property(retain, nonatomic) NSNumber *accountDSID; // @synthesize accountDSID=_accountDSID;
 @property(readonly) SSURLBagContext *context; // @synthesize context=_context;
 - (void).cxx_destruct;
 - (_Bool)_setURLBagWithDictionary:(id)arg1 response:(id)arg2 error:(id *)arg3;

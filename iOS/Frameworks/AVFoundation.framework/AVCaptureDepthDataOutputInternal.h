@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVWeakReference, AVWeakReferencingDelegateStorage;
 @protocol OS_dispatch_queue;
@@ -17,8 +17,9 @@
     _Bool alwaysDiscardsLateDepthData;
     _Bool filteringEnabled;
     NSObject<OS_dispatch_queue> *depthDataQueue;
-    struct OpaqueFigSimpleMutex *remoteQueueMutex;
-    void *remoteReceiverQueue;
+    struct OpaqueFigSimpleMutex *queueMutex;
+    void *remoteQueueReceiver;
+    void *localQueue;
 }
 
 - (void)dealloc;

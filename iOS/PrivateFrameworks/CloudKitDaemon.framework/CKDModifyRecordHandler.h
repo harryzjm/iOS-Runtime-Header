@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKDModifyRecordsOperation, CKDPCSCache, CKDPCSManager, CKDProgressTracker, CKDRecordPCSData, CKDSharePCSData, CKRecord, CKRecordID, NSError, NSString;
+@class CKDModifyRecordsOperation, CKDPCSCache, CKDPCSManager, CKDProgressTracker, CKDRecordPCSData, CKDSharePCSData, CKRecord, CKRecordID, NSError, NSMutableDictionary, NSString;
 @protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     NSString *_etag;
     unsigned long long _state;
     NSError *_error;
+    NSMutableDictionary *_rereferencedAssetArrayByFieldname;
     CKDProgressTracker *_progressTracker;
     long long _batchRank;
     CKRecordID *_recordID;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int saveAttempts; // @synthesize saveAttempts=_saveAttempts;
 @property(nonatomic) long long batchRank; // @synthesize batchRank=_batchRank;
 @property(retain, nonatomic) CKDProgressTracker *progressTracker; // @synthesize progressTracker=_progressTracker;
+@property(retain, nonatomic) NSMutableDictionary *rereferencedAssetArrayByFieldname; // @synthesize rereferencedAssetArrayByFieldname=_rereferencedAssetArrayByFieldname;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(nonatomic) unsigned long long state; // @synthesize state=_state;
 @property(retain, nonatomic) NSString *etag; // @synthesize etag=_etag;
@@ -62,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareForSave;
 - (_Bool)_prepareAsset:(id)arg1 recordKey:(id)arg2 record:(id)arg3 error:(id *)arg4;
 - (id)prepareAssetsForUploadWithError:(id *)arg1;
+- (id)assetsWhichNeedRecordFetch;
 - (void)fetchSharePCSData;
 - (void)_handlePCSData:(id)arg1 withError:(id)arg2;
 - (void)_fetchExistingPCSForProvidedPCSData:(id)arg1;

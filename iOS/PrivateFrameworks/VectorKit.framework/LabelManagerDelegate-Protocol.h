@@ -8,7 +8,7 @@
 
 @protocol LabelManagerDelegate <NSObject>
 - (void)labelManager:(struct LabelManager *)arg1 pendingArtworkIsReady:(_Bool)arg2;
-- (void)labelManager:(struct LabelManager *)arg1 selectedLabelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
+- (void)labelManager:(struct LabelManager *)arg1 labelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)labelManager:(struct LabelManager *)arg1 selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)labelManagerDidLayout:(struct LabelManager *)arg1;
 - (void)labelManager:(struct LabelManager *)arg1 setNeedsDisplay:(_Bool)arg2;

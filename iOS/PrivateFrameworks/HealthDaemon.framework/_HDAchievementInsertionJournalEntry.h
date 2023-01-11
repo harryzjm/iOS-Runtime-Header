@@ -4,20 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _HKAchievement;
-
 @interface _HDAchievementInsertionJournalEntry
 {
-    _HKAchievement *_achievement;
 }
 
 + (_Bool)supportsSecureCoding;
 + (void)applyEntries:(id)arg1 withProfile:(id)arg2;
-@property(readonly, nonatomic) _HKAchievement *achievement; // @synthesize achievement=_achievement;
-- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithAchievement:(id)arg1;
 
 @end
 

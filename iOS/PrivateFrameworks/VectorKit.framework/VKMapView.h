@@ -47,6 +47,7 @@
     MDARController *_arController;
 }
 
+@property(readonly, nonatomic) GEOResourceManifestConfiguration *manifestConfiguration; // @synthesize manifestConfiguration=_manifestConfiguration;
 @property(readonly, nonatomic) VKPuckAnimator *userLocationAnimator; // @synthesize userLocationAnimator=_userLocationAnimator;
 @property(retain, nonatomic) GEOResourceManifestConfiguration *additionalManifestConfiguration; // @synthesize additionalManifestConfiguration=_additionalManifestConfiguration;
 @property(nonatomic) unsigned char displayedSearchResultsType; // @synthesize displayedSearchResultsType=_displayedSearchResultsType;
@@ -113,7 +114,7 @@
 - (void)map:(id)arg1 didUpdateContainsOverlay:(_Bool)arg2;
 - (void)map:(id)arg1 willTransitionFrom:(long long)arg2 to:(long long)arg3 duration:(double)arg4;
 - (void)mapLabelsDidLayout:(id)arg1;
-- (void)map:(id)arg1 selectedLabelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
+- (void)map:(id)arg1 labelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)map:(id)arg1 selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)mapDidFinishChangingMapDisplayStyle:(CDStruct_80aa614a)arg1;
 - (void)map:(id)arg1 flyoverModeWillChange:(int)arg2;
@@ -199,10 +200,11 @@
 - (void)navigationCameraReturnToPuck;
 - (void)pauseTracking;
 - (void)stopTracking;
-- (id)flyoverStatistics;
-- (void)resetFlyoverStatistics;
-- (void)disableFlyoverStatistics;
-- (void)enableFlyoverStatistics;
+- (id)tileStatistics;
+- (id)testStatistics;
+- (void)resetTestStatistics;
+- (void)disableTestStatistics;
+- (void)enableTestStatistics;
 - (void)resumeFlyoverTourAnimation;
 - (void)pauseFlyoverTourAnimation;
 - (void)stopFlyoverAnimation;
@@ -299,7 +301,6 @@
 - (id)detailedDescription;
 @property(nonatomic) _Bool shouldLoadMapMargin;
 @property(nonatomic) _Bool shouldLoadFallbackTiles;
-- (id)closestRoadMarkerForSelectionAtPoint:(struct CGPoint)arg1;
 - (id)debugLabelString:(_Bool)arg1;
 - (void)debugHighlightLabelAtPoint:(struct CGPoint)arg1;
 @property(readonly, nonatomic) _Bool enableDebugLabelHighlighting;
@@ -352,7 +353,6 @@
 - (void)setApplicationState:(unsigned char)arg1 displayedSearchResultsType:(unsigned char)arg2;
 - (void)populateDebugNode:(shared_ptr_eafb90f9)arg1;
 - (long long)currentMapMode;
-- (id)roadMarkersForSelectionAtPoint:(struct CGPoint)arg1;
 - (shared_ptr_430519ce)buildingMarkerAtPoint:(struct CGPoint)arg1;
 - (shared_ptr_430519ce)featureMarkerAtPoint:(struct CGPoint)arg1;
 - (void)performStylesheetDidChange;

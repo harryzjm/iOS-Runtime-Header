@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <InstallCoordination/IXCoordinatorWithImportance-Protocol.h>
 #import <InstallCoordination/IXCoordinatorWithUserDataPromise-Protocol.h>
 #import <InstallCoordination/IXUserInitiatedCoordinator-Protocol.h>
 
 @class NSString;
 
-@interface IXRestoringDemotedAppInstallCoordinator <IXCoordinatorWithUserDataPromise, IXUserInitiatedCoordinator>
+@interface IXRestoringDemotedAppInstallCoordinator <IXCoordinatorWithUserDataPromise, IXUserInitiatedCoordinator, IXCoordinatorWithImportance>
 {
 }
 
@@ -21,13 +22,13 @@
 @property(readonly, nonatomic) _Bool hasUserDataPromise;
 - (id)userDataPromiseWithError:(id *)arg1;
 - (_Bool)setUserDataPromise:(id)arg1 error:(id *)arg2;
-@property(nonatomic, getter=isUserInitiated) _Bool userInitiated;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(nonatomic, getter=isUserInitiated) _Bool userInitiated;
 
 @end
 

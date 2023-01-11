@@ -7,6 +7,6 @@
 #import <CoreRoutine/RTRoute.h>
 
 @interface RTRoute (RTRouteMO)
-- (id)initWithRouteMO:(id)arg1;
+- (id)initWithRouteMO:(id)arg1 includeLocations:(_Bool)arg2;
 @end
 

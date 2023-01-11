@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TSReading/TSWPColumnMetrics-Protocol.h>
 #import <TSReading/TSWPLayoutOwner-Protocol.h>
@@ -96,6 +96,7 @@
 @property(readonly, nonatomic) struct CGRect maskRect;
 @property(readonly, nonatomic) TSDLayout *parentLayoutForInlineAttachments;
 @property(readonly, nonatomic) _Bool pushAscendersIntoColumn;
+@property(readonly, nonatomic) double reservedWidthWhenTruncating;
 @property(readonly, nonatomic) _Bool shouldHyphenate;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) double textScaleFactor;

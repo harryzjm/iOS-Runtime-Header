@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HAPPairingIdentity, NSArray, NSDate, NSNumber;
+@class HAPPairingIdentity, HMFPairingIdentity, NSArray, NSDate, NSNumber;
 
 @interface HMDUserManagementOperationModel
 {
@@ -14,7 +14,7 @@
 - (id)dependentUUIDs;
 
 // Remaining properties
-@property(retain, nonatomic) HAPPairingIdentity *accessoryPairingIdentity; // @dynamic accessoryPairingIdentity;
+@property(retain, nonatomic) HMFPairingIdentity *accessoryPairingIdentity; // @dynamic accessoryPairingIdentity;
 @property(retain, nonatomic) NSArray *dependencies; // @dynamic dependencies;
 @property(retain, nonatomic) NSDate *expirationDate; // @dynamic expirationDate;
 @property(retain, nonatomic) NSNumber *operationType; // @dynamic operationType;

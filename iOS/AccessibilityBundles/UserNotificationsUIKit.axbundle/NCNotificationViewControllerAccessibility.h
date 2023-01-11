@@ -11,12 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (Class)_axNotificationBannerWindowClass;
-- (Class)_axCoverSheetWindowClass;
-- (id)_axModalAncestorForLongLookView:(id)arg1;
 - (id)_axLongLookView;
 - (void)dismissViewControllerWithTransition:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)viewDidAppear:(_Bool)arg1;
+- (_Bool)_accessibilityAppearanceAnnouncementHandledByEnclosingEntity;
 
 @end
 

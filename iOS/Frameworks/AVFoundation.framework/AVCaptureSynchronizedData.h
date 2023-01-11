@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVCaptureSynchronizedDataInternal;
 
@@ -13,6 +13,7 @@
     AVCaptureSynchronizedDataInternal *_synchronizedDataInternal;
 }
 
+- (_Bool)hasCorrespondingVisionData;
 - (_Bool)hasCorrespondingDepthData;
 - (void)setAdjustedTimestamp:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)adjustedTimestamp;

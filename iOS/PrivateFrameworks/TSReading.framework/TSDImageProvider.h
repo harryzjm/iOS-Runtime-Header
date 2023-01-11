@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TSPData, TSUFlushingManager;
 
@@ -12,14 +12,15 @@
 {
     int mLoadState;
     TSPData *mImageData;
-    _Atomic int mRetainCount;
-    _Atomic int mOwnerCount;
     TSUFlushingManager *mFlushingManager;
     int mInterest;
     struct os_unfair_lock_s mInterestLock;
+    struct atomic<int> mRetainCount;
+    struct atomic<int> mOwnerCount;
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
+- (id).cxx_construct;
 - (unsigned long long)retainCount;
 - (oneway void)release;
 - (id)retain;

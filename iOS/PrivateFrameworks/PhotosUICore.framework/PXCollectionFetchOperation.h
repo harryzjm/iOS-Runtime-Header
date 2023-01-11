@@ -23,6 +23,7 @@
 @property(nonatomic) __weak id <PXCollectionFetchOperationDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (void)handleFinish;
+- (void)handleBegin;
 - (void)main;
 - (id)initWithCollection:(id)arg1;
 - (id)init;

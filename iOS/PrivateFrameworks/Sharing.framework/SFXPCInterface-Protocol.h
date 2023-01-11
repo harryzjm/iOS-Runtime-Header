@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSError, NSString, NSUUID, SFDevice, SFEventMessage, SFRemoteTextSessionInfo, SFRequestMessage, SFResponseMessage;
+@class NSData, NSDictionary, NSError, NSString, NSUUID, SFDevice, SFEventMessage, SFRemoteTextSessionInfo, SFRequestMessage, SFResponseMessage;
 
 @protocol SFXPCInterface
 
@@ -27,9 +27,13 @@
 - (void)remoteInteractionSessionTextSessionDidChange:(SFRemoteTextSessionInfo *)arg1;
 - (void)remoteInteractionSessionTextSessionDidEnd:(SFRemoteTextSessionInfo *)arg1;
 - (void)remoteInteractionSessionTextSessionDidBegin:(SFRemoteTextSessionInfo *)arg1;
+- (void)remoteInteractionSessionRemoteTextEvent:(NSDictionary *)arg1;
 - (void)deviceDiscoveryScanStateChanged:(long long)arg1;
 - (void)deviceDiscoveryDeviceChanged:(SFDevice *)arg1 changes:(unsigned int)arg2;
 - (void)deviceDiscoveryLostDevice:(SFDevice *)arg1;
 - (void)deviceDiscoveryFoundDevice:(SFDevice *)arg1;
+- (void)autoFillPromptForPIN:(unsigned int)arg1 throttleSeconds:(int)arg2;
+- (void)autoFillPairingSucceeded:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
+- (void)autoFillDismissUserNotification;
 @end
 

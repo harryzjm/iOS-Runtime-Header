@@ -7,29 +7,38 @@
 #import <objc/NSObject.h>
 
 #import <HomeKit/HMFLogging-Protocol.h>
+#import <HomeKit/HMObjectMerge-Protocol.h>
 
-@class HMAccessory, HMAccessorySettingGroup, NSString;
-@protocol HMAccessorySettingsDelegate, OS_dispatch_queue;
+@class HMAccessory, HMAccessorySettingGroup, HMFUnfairLock, NSString, NSUUID, _HMContext;
+@protocol HMAccessorySettingsContainer, HMAccessorySettingsDelegate, HMControllable;
 
-@interface HMAccessorySettings : NSObject <HMFLogging>
+@interface HMAccessorySettings : NSObject <HMFLogging, HMObjectMerge>
 {
-    HMAccessory *_accessory;
+    HMFUnfairLock *_lock;
+    id <HMAccessorySettingsContainer> _settingsContainer;
+    id <HMControllable> _settingsControl;
     id <HMAccessorySettingsDelegate> _delegate;
     HMAccessorySettingGroup *_rootGroup;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
+    _HMContext *_context;
 }
 
 + (id)logCategory;
 + (id)localizationKeyForKeyPath:(id)arg1;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property(readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property(readonly) HMAccessorySettingGroup *rootGroup; // @synthesize rootGroup=_rootGroup;
 @property __weak id <HMAccessorySettingsDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+- (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+@property(readonly, nonatomic) NSUUID *uniqueIdentifier;
 - (void)__notifyDelegateSettingsDidUpdate;
 - (void)__notifyDelegateSettingsWillUpdateWithCompletionHanlder:(CDUnknownBlockType)arg1;
 - (void)_updateSettingsWithBlock:(CDUnknownBlockType)arg1;
-@property __weak HMAccessory *accessory; // @synthesize accessory=_accessory;
-- (id)initWithAccessory:(id)arg1 rootGroup:(id)arg2;
+@property(readonly, getter=isControllable) _Bool controllable;
+@property __weak id <HMControllable> settingsControl; // @synthesize settingsControl=_settingsControl;
+@property __weak id <HMAccessorySettingsContainer> settingsContainer; // @synthesize settingsContainer=_settingsContainer;
+@property(readonly) __weak HMAccessory *accessory;
+- (void)_configureWithContext:(id)arg1;
+- (id)initWithSettingsContainer:(id)arg1 settingsControl:(id)arg2 rootGroup:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

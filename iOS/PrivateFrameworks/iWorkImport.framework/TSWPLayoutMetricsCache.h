@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSWPStorageParagraphObserver-Protocol.h>
 
-@class NSString, TSUWeakReference;
+@class NSString, TSWPStorage;
 
 __attribute__((visibility("hidden")))
 @interface TSWPLayoutMetricsCache : NSObject <TSWPStorageParagraphObserver>
 {
-    TSUWeakReference *_storageReference;
+    TSWPStorage *_storage;
     struct vector<TSWPParagraphMetrics, std::__1::allocator<TSWPParagraphMetrics>> _paragraphMetrics;
 }
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSObject, PKFelicaAppletHistory, PKFieldProperties, PKPaymentApplication, PKPaymentPass;
+@class NSArray, NSObject, PKFieldProperties, PKPaymentApplication, PKPaymentPass, PKTransitAppletHistory;
 @protocol OS_dispatch_queue, PKContactlessInterfaceSessionDelegate;
 
 @interface PKContactlessInterfaceSession
@@ -17,7 +17,7 @@
     PKFieldProperties *_fieldProperties;
     PKFieldProperties *_fieldPropertiesToLookup;
     unsigned long long _transactionStartTime;
-    _Bool _fieldPresent;
+    _Atomic _Bool _fieldPresent;
     _Bool _handlingExpress;
     unsigned long long _expressActivity;
     _Bool _felicaStateChanged;
@@ -26,6 +26,7 @@
     NSObject<OS_dispatch_queue> *_callbackQueue;
 }
 
++ (id)transitAppletStateFromPaymentSession:(id)arg1 withPaymentApplication:(id)arg2;
 @property(readonly, nonatomic) PKFieldProperties *fieldProperties; // @synthesize fieldProperties=_fieldProperties;
 @property(readonly, nonatomic) NSArray *activatedValueAddedServicePasses; // @synthesize activatedValueAddedServicePasses=_activatedValueAddedServicePasses;
 - (void).cxx_destruct;
@@ -34,10 +35,11 @@
 @property(readonly, nonatomic) _Bool persistentCardEmulationQueued;
 @property(readonly, nonatomic) _Bool fieldPresent;
 @property(readonly, nonatomic) unsigned long long state;
-@property(readonly, nonatomic) PKFelicaAppletHistory *felicaAppletState;
+@property(readonly, nonatomic) PKTransitAppletHistory *transitAppletState;
 - (void)setState:(unsigned long long)arg1;
 @property(readonly, nonatomic) PKPaymentPass *activatedPaymentPass;
 @property(readonly, nonatomic) PKPaymentApplication *activatedPaymentApplication;
+- (_Bool)paymentApplicationSupportsAutomaticAuthorization:(id)arg1;
 - (_Bool)resetPersistentCardEmulation;
 - (_Bool)queuePersistentCardEmulation;
 - (void)resetExpressState;

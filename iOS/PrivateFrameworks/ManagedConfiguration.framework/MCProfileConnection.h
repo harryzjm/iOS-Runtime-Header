@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ManagedConfiguration/MCProfileConnectionXPCProtocol-Protocol.h>
 
@@ -30,6 +30,7 @@
 
 + (id)sharedConnection;
 + (id)profileInstallationErrorWithUnderlyingError:(id)arg1;
++ (id)features;
 - (void).cxx_destruct;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
@@ -52,6 +53,7 @@
 - (void)_createAndResumeXPCConnection;
 @property(readonly, nonatomic) NSXPCConnection *publicXPCConnection; // @synthesize publicXPCConnection=_publicXPCConnection;
 @property(readonly, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+- (_Bool)isClassroomRequestPermissionToLeaveClassesForced;
 - (_Bool)isClassroomUnpromptedAppAndDeviceLockForced;
 - (_Bool)isClassroomAutomaticClassJoiningForced;
 - (_Bool)isClassroomUnpromptedScreenObservationForced;
@@ -145,6 +147,7 @@
 - (id)valueRestrictionForFeature:(id)arg1;
 - (int)boolRestrictionForFeature:(id)arg1;
 - (id)effectiveRestrictions;
+- (id)permittedAutoLockSeconds;
 - (id)lockedDownRootCertificatesWithOutLocalizedSourceDescription:(id *)arg1;
 - (id)userValueForUnionSetting:(id)arg1;
 - (id)userValueForIntersectionSetting:(id)arg1;
@@ -296,6 +299,7 @@
 - (_Bool)isNotificationsModificationAllowedForBundleID:(id)arg1;
 - (_Bool)isTodayViewModificationAllowed;
 - (_Bool)isTodayViewAllowed;
+- (_Bool)isUSBRestrictedModeAllowed;
 - (void)setDriverDoNotDisturbModificationsAllowed:(_Bool)arg1;
 - (_Bool)isDriverDoNotDisturbModificationsAllowed;
 - (_Bool)isVPNCreationAllowed;
@@ -308,6 +312,8 @@
 - (void)setRemoteAppPairingAllowed:(_Bool)arg1;
 - (_Bool)isRemoteAppPairingAllowed;
 - (_Bool)isWiFiWhitelistingEnforced;
+- (_Bool)isAutomaticDateAndTimeEnforced;
+- (unsigned long long)enforcedSoftwareUpdateDelayInDays;
 - (_Bool)isSoftwareUpdateResisted;
 - (void)setTVAllowed:(_Bool)arg1;
 - (_Bool)isTVAllowed;
@@ -339,6 +345,7 @@
 - (_Bool)isScreenShotAllowed;
 - (_Bool)isWallpaperModificationAllowed;
 - (_Bool)isDeviceNameModificationAllowed;
+- (_Bool)isESIMModificationAllowed;
 - (_Bool)isBluetoothModificationAllowed;
 - (_Bool)isInAppPaymentAllowed;
 - (_Bool)isFingerprintForContactlessPaymentAllowed;
@@ -417,6 +424,9 @@
 - (void)validateAppBundleIDs:(id)arg1;
 - (void)setTrustedCodeSigningIdentities:(id)arg1;
 - (id)trustedCodeSigningIdentities;
+- (_Bool)isPasswordProximityAutoFillRequestingAllowed;
+- (_Bool)isPasswordSharingAllowed;
+- (_Bool)isPasswordAutoFillAllowed;
 - (_Bool)isAuthenticationBeforeAutoFillRequired;
 - (_Bool)isSafariPasswordAutoFillAllowedForURL:(id)arg1;
 - (id)managedMedia;
@@ -434,7 +444,7 @@
 - (id)_localizedSourceDescriptionForType:(long long)arg1 MDMName:(id)arg2 exchangeName:(id)arg3 exchangeCount:(long long)arg4 profileName:(id)arg5 profileCount:(long long)arg6;
 - (id)_localizedRestrictionSourceDescriptionFromMDMName:(id)arg1 exchangeName:(id)arg2 exchangeCount:(long long)arg3 profileName:(id)arg4 profileCount:(long long)arg5;
 - (id)_localizedCertificateSourceDescriptionFromMDMName:(id)arg1 exchangeName:(id)arg2 exchangeCount:(long long)arg3 profileName:(id)arg4 profileCount:(long long)arg5;
-- (id)activationLockBypassKeyCreateNewIfNeeded:(_Bool)arg1;
+- (id)fetchActivationLockBypassKeyWithError:(id *)arg1;
 - (void)doMCICDidFinishPreflightWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)doMCICDidRequestShowUserWarnings:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)doMCICDidRequestUserInput:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -513,8 +523,10 @@
 - (id)restrictedAppBundleIDsExcludingRemovedSystemApps;
 - (id)restrictedAppBundleIDs;
 - (id)restrictionEnforcedHomeScreenLayout;
+- (_Bool)isHomeScreenLayoutApplied;
 - (id)knownAirPrintIPPURLStrings;
 - (_Bool)isTeslaCloudConfigurationAvailable;
+- (id)deviceOrganizationVendorID;
 - (id)deviceOrganizationCountry;
 - (id)deviceOrganizationZipCode;
 - (id)deviceOrganizationRegion;
@@ -534,6 +546,7 @@
 - (void)setupAssistantDidFinish;
 - (void)markStoredProfileForPurposeAsInstalled:(int)arg1;
 - (_Bool)shouldInstallStoredProfileForPurpose:(int)arg1;
+- (void)storeProfileData:(id)arg1 configurationSource:(int)arg2 purpose:(int)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)storeProfileData:(id)arg1 configurationSource:(int)arg2 purpose:(int)arg3;
 - (void)installProfileDataStoredForPurpose:(int)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)profileDataStoredForPurpose:(int)arg1 completionBlock:(CDUnknownBlockType)arg2;
@@ -554,12 +567,24 @@
 - (void)unenrollWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)enrollProvisionallyWithNonce:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)cloudConfigurationDetails;
+- (_Bool)_shouldApplyContactsFilterForTargetBundleID:(id)arg1 targetAccountManagement:(int)arg2 outAllowManagedAccounts:(_Bool *)arg3 outAllowUnmanagedAccounts:(_Bool *)arg4;
+- (_Bool)_shouldApplyContactsFilterForBundleID:(id)arg1 sourceAccountManagement:(int)arg2 outAllowManagedAccounts:(_Bool *)arg3 outAllowUnmanagedAccounts:(_Bool *)arg4;
+- (_Bool)_managedMayWriteUnmanagedContacts;
+- (_Bool)_unmanagedMayReadManagedContacts;
 - (void)allowedKeyboardBundleIDsAfterApplyingFilterToBundleIDs:(id)arg1 hostAppBundleID:(id)arg2 accountIsManaged:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)filteredOpenInOriginatingAccounts:(id)arg1 targetAppBundleID:(id)arg2 targetAccountManagement:(int)arg3;
 - (id)filteredOpenInAccounts:(id)arg1 originatingAppBundleID:(id)arg2 sourceAccountManagement:(int)arg3;
+- (_Bool)shouldApplyFilterForTargetBundleID:(id)arg1 targetAccountManagement:(int)arg2 outAllowManagedAccounts:(_Bool *)arg3 outAllowUnmanagedAccounts:(_Bool *)arg4;
 - (_Bool)shouldApplyFilterForBundleID:(id)arg1 sourceAccountManagement:(int)arg2 outAllowManagedAccounts:(_Bool *)arg3 outAllowUnmanagedAccounts:(_Bool *)arg4;
 - (id)filteredMailSheetAccountsForBundleID:(id)arg1 sourceAccountManagement:(int)arg2;
+- (_Bool)hasAnyMailAccountIgnoringFiltering;
 - (_Bool)canSendMail:(id)arg1 sourceAccountManagement:(int)arg2;
+- (_Bool)mayShowLocalAccountsForTargetBundleID:(id)arg1 targetAccountManagement:(int)arg2;
 - (_Bool)mayShowLocalAccountsForBundleID:(id)arg1 sourceAccountManagement:(int)arg2;
+- (_Bool)mayShowLocalContactsAccountsForTargetBundleID:(id)arg1 targetAccountManagement:(int)arg2;
+- (id)filteredOpenInOriginatingContactsAccounts:(id)arg1 targetAppBundleID:(id)arg2 targetAccountManagement:(int)arg3;
+- (id)filteredOpenInContactsAccounts:(id)arg1 originatingAppBundleID:(id)arg2 sourceAccountManagement:(int)arg3;
+- (_Bool)mayShowLocalContactsAccountsForBundleID:(id)arg1 sourceAccountManagement:(int)arg2;
 - (long long)dragDropTargetManagementStateForBundleID:(id)arg1;
 - (long long)dragDropSourceManagementStateForBundleID:(id)arg1;
 - (long long)dragDropBidirectionalManagementStateForBaseBundleID:(id)arg1;

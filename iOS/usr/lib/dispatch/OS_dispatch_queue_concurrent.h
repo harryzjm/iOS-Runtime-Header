@@ -8,7 +8,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface OS_dispatch_queue_concurrent <OS_dispatch_queue_concurrent>
 {
 }

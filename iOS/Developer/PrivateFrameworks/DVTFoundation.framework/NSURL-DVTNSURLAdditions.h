@@ -16,5 +16,6 @@
 - (id)dvt_documentParameters;
 - (id)dvt_sanitizedFilePath;
 - (_Bool)dvt_isGeneneratedInterface;
+- (_Bool)dvt_isEmptyURL;
 @end
 

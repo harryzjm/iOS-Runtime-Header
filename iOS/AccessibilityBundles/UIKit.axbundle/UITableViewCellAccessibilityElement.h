@@ -93,6 +93,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityIdentifier;
 - (id)accessibilityValue;
+- (id)_accessibilityCustomActionGroupIdentifier;
 - (id)accessibilityLocalizedStringTableName;
 - (id)accessibilityLocalizationBundlePath;
 - (id)accessibilityLocalizationBundleID;

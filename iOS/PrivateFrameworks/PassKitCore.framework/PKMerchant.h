@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 #import <PassKitCore/PKCloudStoreCoding-Protocol.h>
@@ -47,11 +47,16 @@
 @property(readonly, nonatomic) _Bool isValid;
 @property(readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(copy, nonatomic) CLLocation *location;
+- (id)jsonDictionaryRepresentation;
 - (id)description;
+- (_Bool)hasCloudArchivableDeviceData;
+- (_Bool)isCloudArchivableDeviceDataEqual:(id)arg1;
 - (_Bool)isEqualToMerchant:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (unsigned long long)itemType;
 - (id)recordTypesAndNames;
+- (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
 - (id)initWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

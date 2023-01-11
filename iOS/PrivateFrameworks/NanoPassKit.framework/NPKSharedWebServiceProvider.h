@@ -28,6 +28,8 @@
 @property(retain, nonatomic) NPKPaymentWebServiceCompanionTargetDevice *targetDevice; // @synthesize targetDevice=_targetDevice;
 @property(retain, nonatomic) PKPaymentWebService *webService; // @synthesize webService=_webService;
 - (void).cxx_destruct;
+- (void)checkCompanionPeerPaymentRegistrationState;
+- (void)handleDownloadAllPaymentPasses;
 - (void)handleUpdatedPeerPaymentWebServiceContext:(id)arg1 account:(id)arg2;
 - (void)setNewAuthRandom:(CDUnknownBlockType)arg1;
 - (void)sendPaymentOptionsDefaultsToWatch;
@@ -38,10 +40,11 @@
 - (void)archiveWebServiceContext:(id)arg1;
 - (void)handlePreferredAID:(id)arg1 forPassWithUniqueID:(id)arg2;
 - (void)handleUpdatePaymentPassWithTypeIdentifier:(id)arg1;
+- (void)handleBalanceUpdate:(id)arg1 forUniqueID:(id)arg2;
 - (void)handleRemoveTransactionsWithIdentifiers:(id)arg1;
 - (void)handleAppletState:(id)arg1 forUniqueID:(id)arg2;
 - (void)handlePaymentTransactions:(id)arg1 appletStates:(id)arg2 forUniqueIDs:(id)arg3;
-- (void)handlePreconditionNotMetWithUniqueIDs:(id)arg1 shouldUnregister:(_Bool)arg2;
+- (void)handlePreconditionNotMetWithUniqueIDs:(id)arg1 preconditionDescription:(id)arg2 shouldUnregister:(_Bool)arg3;
 - (void)handlePushToken:(id)arg1;
 - (void)_deviceFailedToPair:(id)arg1;
 - (id)_peerPaymentAccount;

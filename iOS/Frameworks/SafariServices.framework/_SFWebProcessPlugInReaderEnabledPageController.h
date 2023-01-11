@@ -7,7 +7,7 @@
 #import <SafariServices/RequestDesktopSiteWebProcessPlugInListener-Protocol.h>
 #import <SafariServices/SFReaderWebProcessControllerProtocol-Protocol.h>
 
-@class NSDictionary, NSMutableSet, NSString, SFWebProcessPlugInCertificateWarningController, SFWebProcessPlugInPageExtensionController, _SFReaderWebProcessPlugInPageController, _SFWebProcessPlugInPageSafeBrowsingController, _SFWebProcessSharingLinkExtractor, _WKRemoteObjectInterface;
+@class NSDictionary, NSMutableDictionary, NSString, SFWebProcessPlugInCertificateWarningController, SFWebProcessPlugInPageExtensionController, _SFReaderWebProcessPlugInPageController, _SFWebProcessPlugInAppleConnectExtensionController, _SFWebProcessPlugInPageSafeBrowsingController, _SFWebProcessSharingLinkExtractor, _WKRemoteObjectInterface;
 @protocol RequestDesktopSiteUIProcessListener, SFReaderEventsListener;
 
 @interface _SFWebProcessPlugInReaderEnabledPageController <RequestDesktopSiteWebProcessPlugInListener, SFReaderWebProcessControllerProtocol>
@@ -22,15 +22,15 @@
     SFWebProcessPlugInPageExtensionController *_extensionController;
     _SFWebProcessSharingLinkExtractor *_sharingLinkExtractor;
     SFWebProcessPlugInCertificateWarningController *_certificateWarningController;
+    _SFWebProcessPlugInAppleConnectExtensionController *_appleConnectExtensionController;
     id <RequestDesktopSiteUIProcessListener> _requestDesktopSiteUIProcessListener;
     _WKRemoteObjectInterface *_requestDesktopSiteWebProcessPlugInListenerInterface;
+    NSMutableDictionary *_domainToUserAgentPolicyMap;
     _Bool _viewingReadingListArchive;
     NSDictionary *_initalArticleScrollPositionAsDictionary;
     NSDictionary *_initialReaderConfiguration;
-    NSMutableSet *_domainsNeedingDesktopUserAgent;
 }
 
-@property(readonly, nonatomic) NSMutableSet *domainsNeedingDesktopUserAgent; // @synthesize domainsNeedingDesktopUserAgent=_domainsNeedingDesktopUserAgent;
 @property(readonly, nonatomic, getter=isViewingReadingListArchive) _Bool viewingReadingListArchive; // @synthesize viewingReadingListArchive=_viewingReadingListArchive;
 @property(readonly, nonatomic) NSDictionary *initialReaderConfiguration; // @synthesize initialReaderConfiguration=_initialReaderConfiguration;
 @property(nonatomic) long long cachedReaderTopScrollOffset; // @synthesize cachedReaderTopScrollOffset=_cachedReaderTopScrollOffset;
@@ -39,6 +39,8 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)markURLAsNeedingDesktopUserAgent:(id)arg1;
+- (void)_setUpUIProcessListenerIfNeeded;
+- (id)webProcessPlugInBrowserContextController:(id)arg1 frame:(id)arg2 userAgentForURL:(id)arg3;
 - (id)webProcessPlugInBrowserContextController:(id)arg1 frame:(id)arg2 willSendRequestForResource:(unsigned long long)arg3 request:(id)arg4 redirectResponse:(id)arg5;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 renderingProgressDidChange:(unsigned long long)arg2;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didFinishLoadForFrame:(id)arg2;
@@ -46,17 +48,19 @@
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didSameDocumentNavigation:(long long)arg2 forFrame:(id)arg3;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didCommitLoadForFrame:(id)arg2;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 globalObjectIsAvailableForFrame:(id)arg2 inScriptWorld:(id)arg3;
-- (void)webProcessPlugInBrowserContextController:(id)arg1 didReceiveServerRedirectForProvisionalLoadForFrame:(id)arg2;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 didStartProvisionalLoadForFrame:(id)arg2;
-- (void)_deferPageLoadingUntilSafeBrowsingCheckCompleteForFrame:(id)arg1;
+- (void)_removeLoadDeferringReasonsForSafeBrowsingIfNecessary;
+- (void)_deferPageLoadingUntilSafeBrowsingCheckCompleteForFrame:(id)arg1 isMainFrame:(_Bool)arg2;
 - (void)prepareReaderContentForPrinting;
 - (void)collectReaderContentForMail;
-- (void)readerContentIsReadyForDisplay:(id)arg1;
+- (void)readerContentDidBecomeReadyWithDetectedLanguage:(id)arg1;
 - (void)didSetReaderConfiguration:(id)arg1;
 - (void)collectReadingListItemInfoWithBookmarkID:(id)arg1;
 - (void)loadNewReaderArticle;
 - (void)didCreateReaderPageContextHandle:(id)arg1;
 - (void)prepareToTransitionToReader;
+- (void)willHideReader;
+- (void)didFinishPresentationUpdateAfterTransitioningToReader;
 - (void)decreaseReaderTextSize;
 - (void)increaseReaderTextSize;
 - (void)setReaderTheme:(id)arg1;
@@ -68,8 +72,9 @@
 - (void)_clearReaderControllerInterface;
 - (void)_setUpReaderControllerInterface;
 - (void)_setUpReaderActivityListenerProxy;
-- (void)readerTextWasExtracted:(id)arg1;
+- (void)readerTextWasExtracted:(id)arg1 withMetadata:(id)arg2 wasDeterminingAvailability:(_Bool)arg3;
 - (void)didDetermineReaderAvailability:(_Bool)arg1 dueToSameDocumentNavigation:(_Bool)arg2;
+- (void)articleContentDidChange;
 - (void)willDestroyBrowserContextController:(id)arg1;
 - (id)initWithPlugIn:(id)arg1 contextController:(id)arg2;
 

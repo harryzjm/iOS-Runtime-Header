@@ -36,6 +36,8 @@
 - (id)dvt_objectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)dvt_objectsOfClass:(Class)arg1;
 - (id)dvt_objectByFoldingWithBlock:(CDUnknownBlockType)arg1;
+- (id)dvt_dictionaryWithEntriesAsValuesAndKeysFromBlock:(CDUnknownBlockType)arg1;
+- (id)dvt_dictionaryWithEntriesAsKeysAndValuesFromBlock:(CDUnknownBlockType)arg1;
 - (id)dvt_onlyObject;
 - (id)dvt_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)dvt_unorderedArrayByGroupingObjectsUsingKeyPaths:(id)arg1;

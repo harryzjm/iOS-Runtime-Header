@@ -34,6 +34,14 @@ struct SGMContactDetailExtractionOutcome_ {
     unsigned long long _field1;
 };
 
+struct SGMContactDetailFoundIn_ {
+    unsigned long long _field1;
+};
+
+struct SGMContactDetailOwner_ {
+    unsigned long long _field1;
+};
+
 struct SGMContactDetailType_ {
     unsigned long long _field1;
 };
@@ -106,6 +114,10 @@ struct SGMInteractionIgnoredReason_ {
     unsigned long long _field1;
 };
 
+struct SGMLowCount_ {
+    unsigned long long _field1;
+};
+
 struct SGMNLEventActionType_ {
     unsigned long long _field1;
 };
@@ -150,10 +162,6 @@ struct _NSRange {
 struct _opaque_pthread_mutex_t {
     long long __sig;
     char __opaque[56];
-};
-
-struct atomic_flag {
-    _Atomic _Bool _Value;
 };
 
 struct objc_method_description {

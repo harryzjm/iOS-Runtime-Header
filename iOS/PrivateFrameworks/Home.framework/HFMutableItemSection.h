@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSAttributedString, NSDictionary, NSString;
 
 @interface HFMutableItemSection
 {
@@ -13,6 +13,7 @@
 - (void)setItems:(id)arg1 filteringToDisplayedItems:(id)arg2;
 
 // Remaining properties
+@property(copy, nonatomic) NSAttributedString *attributedFooterTitle; // @dynamic attributedFooterTitle;
 @property(copy, nonatomic) NSString *footerTitle; // @dynamic footerTitle;
 @property(copy, nonatomic) NSString *headerTitle; // @dynamic headerTitle;
 @property(copy, nonatomic) NSArray *items; // @dynamic items;

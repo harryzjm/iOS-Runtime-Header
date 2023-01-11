@@ -10,7 +10,7 @@
 #import <VectorKit/VKPolylineOverlayRouteRibbonObserver-Protocol.h>
 #import <VectorKit/VKTileProviderClient-Protocol.h>
 
-@class GEOResourceManifestConfiguration, NSArray, NSLocale, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString, VKNavigationPuck, VKPolylineOverlay, VKRasterOverlayTileSource, VKSceneConfiguration, VKTileProvider, VKTimedAnimation, VKTrafficTileSource;
+@class GEOResourceManifestConfiguration, NSArray, NSHashTable, NSLocale, NSMapTable, NSMutableSet, NSSet, NSString, VKNavigationPuck, VKPolylineOverlay, VKRasterOverlayTileSource, VKSceneConfiguration, VKTileProvider, VKTimedAnimation, VKTrafficTileSource;
 @protocol GEORoutePreloadSession, VKMapModelDelegate, VKRouteMatchedAnnotationPresentation;
 
 __attribute__((visibility("hidden")))
@@ -68,7 +68,7 @@ __attribute__((visibility("hidden")))
     _Bool _limitingNavCameraHeight;
     NSMutableSet *_blockingStylesheetObservers;
     double _styleTransitionProgress;
-    NSMutableArray *_externalAnchors;
+    NSHashTable *_externalAnchors;
     double _forcedMaxZoomLevel;
     _Bool _disableTransitLines;
     VKTimedAnimation *_modeTransitionAnimation;
@@ -90,13 +90,14 @@ __attribute__((visibility("hidden")))
     VKNavigationPuck *_navigationPuck;
     struct set<VKPolylineGroupOverlay *, std::__1::less<VKPolylineGroupOverlay *>, std::__1::allocator<VKPolylineGroupOverlay *>> _observedOverlays;
     struct set<geo::_retain_ptr<VKOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::less<geo::_retain_ptr<VKOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>, std::__1::allocator<geo::_retain_ptr<VKOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>> _overlays;
-    unsigned char _navMapMode;
+    struct optional<gss::MapZoomLevel> _mapZoomLevel;
     _Bool _isEmphasisSet;
     shared_ptr_e963992e _taskContext;
     _Bool _showsPointsOfInterest;
     _Bool _localizeLabels;
     unsigned char _labelScaleFactor;
-    float _navMapModeTransitionZ;
+    float _navMapZoomLevelTransitionZ;
+    float _standardMapZoomLevelTransitionZ;
     long long _shieldSize;
     long long _navigationShieldSize;
     long long _shieldIdiom;
@@ -110,7 +111,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct PolylineCoordinate routeUserOffset; // @synthesize routeUserOffset=_routeUserOffset;
 @property(nonatomic) unsigned char labelScaleFactor; // @synthesize labelScaleFactor=_labelScaleFactor;
 @property(nonatomic) _Bool localizeLabels; // @synthesize localizeLabels=_localizeLabels;
-@property(nonatomic) float navMapModeTransitionZ; // @synthesize navMapModeTransitionZ=_navMapModeTransitionZ;
+@property(nonatomic) float standardMapZoomLevelTransitionZ; // @synthesize standardMapZoomLevelTransitionZ=_standardMapZoomLevelTransitionZ;
+@property(nonatomic) float navMapZoomLevelTransitionZ; // @synthesize navMapZoomLevelTransitionZ=_navMapZoomLevelTransitionZ;
 @property(nonatomic) _Bool showsPointsOfInterest; // @synthesize showsPointsOfInterest=_showsPointsOfInterest;
 @property(nonatomic) long long shieldIdiom; // @synthesize shieldIdiom=_shieldIdiom;
 @property(nonatomic) long long navigationShieldSize; // @synthesize navigationShieldSize=_navigationShieldSize;
@@ -163,7 +165,7 @@ __attribute__((visibility("hidden")))
 - (void)setRouteContext:(id)arg1;
 - (void)setNavCameraIsDetached:(_Bool)arg1;
 - (void)didLayoutLabels;
-- (void)selectedLabelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg1;
+- (void)labelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg1;
 - (void)selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg1;
 - (id)labelMapTileForTile:(id)arg1 layer:(unsigned char)arg2;
 - (void)_updateOverlayTileSource;
@@ -199,7 +201,7 @@ __attribute__((visibility("hidden")))
 - (void)buildingsDidBecome3D:(_Bool)arg1;
 - (void)reserveStencilRangesForScene:(id)arg1 context:(struct LayoutContext *)arg2 renderQueue:(RenderQueue_70f64fd3 *)arg3;
 - (void)updateRasterOverlayProviders:(id)arg1 withContext:(struct LayoutContext *)arg2;
-- (void)destroyRenderer;
+- (void)destroyRendererStopObserving;
 - (void)layoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2 renderQueue:(RenderQueue_70f64fd3 *)arg3;
 - (id)navigationPuck;
 - (double)northYawAtZoom:(int)arg1;
@@ -207,7 +209,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutScene:(id)arg1 withContext:(struct LayoutContext *)arg2;
 - (void)tileProviderNeedsUpdate:(id)arg1;
 - (void)_transitionFromMode:(long long)arg1 toMode:(long long)arg2 animated:(_Bool)arg3;
-- (void)_beginNavMapModeTransitionToMode:(unsigned char)arg1;
+- (void)_beginMapZoomLevelTransition:(unsigned char)arg1;
 - (void)_updateZoomLevel:(struct LayoutContext *)arg1;
 - (long long)_maximumZoomLevelInView:(id)arg1 ignoreZoomOverride:(_Bool)arg2;
 - (long long)maximumZoomLevelInView:(id)arg1;
@@ -221,6 +223,7 @@ __attribute__((visibility("hidden")))
 - (void)flushCaches:(_Bool)arg1;
 - (void)clearScene;
 - (_Bool)isShowingNoDataPlaceholders;
+- (id)tileStatistics;
 - (id)attributionsForCurrentRegion;
 @property(readonly, nonatomic) NSArray *visibleTileSets;
 - (void)didReceiveMemoryWarning:(_Bool)arg1;

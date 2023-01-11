@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
         unsigned int implementsMarginInsets:1;
         unsigned int implementsActiveDisplayModeDidChange:1;
         unsigned int implementsDidBecomeForeground:1;
+        unsigned int implementsVisibleFrameDidChange:1;
     } _contentProvidingViewControllerFlags;
     UIViewController<NCWidgetProvidingPrivate> *_contentProvidingViewController;
     long long _visibilityState;
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=_visibilityState, setter=_setVisibilityState:) long long visibilityState; // @synthesize visibilityState=_visibilityState;
 @property(retain, nonatomic, getter=_contentProvidingViewController) UIViewController<NCWidgetProvidingPrivate> *contentProvidingViewController; // @synthesize contentProvidingViewController=_contentProvidingViewController;
 - (void).cxx_destruct;
+- (void)__updateVisibleFrame:(struct CGRect)arg1 withReplyHandler:(CDUnknownBlockType)arg2;
 - (void)__updateVisibilityState:(long long)arg1;
 - (void)__openTransactionForAppearanceCallWithState:(int)arg1 withIdentifier:(id)arg2;
 - (void)__performUpdateWithReplyHandler:(CDUnknownBlockType)arg1;
@@ -53,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)__setMaximumSize:(struct CGSize)arg1 forDisplayMode:(long long)arg2;
 - (void)__setActiveDisplayMode:(long long)arg1;
 - (_Bool)_disableAutomaticKeyboardBehavior;
+- (_Bool)_setVisibleFrame:(struct CGRect)arg1;
 - (void)_setVisibilityState:(long long)arg1 force:(_Bool)arg2;
 - (void)_setMaximumWidth:(double)arg1 forDisplayMode:(long long)arg2;
 - (void)delayed:(id)arg1;
@@ -63,7 +66,6 @@ __attribute__((visibility("hidden")))
 - (id)_widgetExtensionContext;
 - (void)sizeObservingView:(id)arg1 didChangeSize:(struct CGSize)arg2;
 - (void)_clientLargestSupportedDisplayModeDidChange;
-- (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(_Bool *)arg2;
 - (void)_performUpdateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)_shouldRemoveViewFromHierarchyOnDisappear;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityUpdateConversationInfo;
 - (void)updateContentsForConversation:(id)arg1;
+- (_Bool)isAccessibilityElement;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

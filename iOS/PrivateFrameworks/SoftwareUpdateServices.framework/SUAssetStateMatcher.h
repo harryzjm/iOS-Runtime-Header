@@ -4,22 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SoftwareUpdateServices/SUAssetMatcher-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface SUAssetStateMatcher : NSObject <SUAssetMatcher>
 {
     NSString *_assetType;
     int _interestedStates;
+    NSDictionary *_matcherInfo;
 }
 
+@property(readonly, nonatomic) NSDictionary *matcherInfo; // @synthesize matcherInfo=_matcherInfo;
 @property(readonly, nonatomic) int interestedStates; // @synthesize interestedStates=_interestedStates;
 @property(readonly, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;
 - (_Bool)_matchesFilterType:(id)arg1;
+- (void)_modifyMADownloadOptions:(id)arg1;
 - (id)_findMatchFromCandidates:(id)arg1 error:(id *)arg2;
+- (void)modifyMADownloadOptions:(id)arg1;
 - (id)findMatchFromCandidates:(id)arg1 error:(id *)arg2;
 - (id)initWithType:(id)arg1 interestedStates:(int)arg2;
 

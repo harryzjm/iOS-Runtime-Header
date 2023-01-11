@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class ASAsset, NSString, VSVoiceAsset;
 
@@ -13,13 +13,18 @@
     VSVoiceAsset *_voiceData;
     ASAsset *_asset;
     NSString *_builtInVoicePath;
+    NSString *_voicePath;
 }
 
+@property(retain, nonatomic) NSString *voicePath; // @synthesize voicePath=_voicePath;
 @property(retain) NSString *builtInVoicePath; // @synthesize builtInVoicePath=_builtInVoicePath;
 @property(retain) ASAsset *asset; // @synthesize asset=_asset;
 @property(retain) VSVoiceAsset *voiceData; // @synthesize voiceData=_voiceData;
 - (void).cxx_destruct;
-- (id)voicePath;
+- (_Bool)isDownloading;
+- (_Bool)isInstalled;
+- (unsigned long long)size;
+- (id)descriptiveKey;
 - (id)key;
 
 @end

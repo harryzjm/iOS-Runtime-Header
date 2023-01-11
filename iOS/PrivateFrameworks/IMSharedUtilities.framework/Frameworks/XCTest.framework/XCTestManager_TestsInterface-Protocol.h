@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSString;
+@class NSData, NSString, XCAccessibilityElement;
 
 @protocol XCTestManager_TestsInterface
-- (void)_XCT_receivedAccessibilityNotification:(int)arg1 withPayload:(NSData *)arg2;
+- (void)_XCT_receivedAccessibilityNotification:(long long)arg1 fromElement:(XCAccessibilityElement *)arg2 payload:(NSData *)arg3;
+- (void)_XCT_receivedAccessibilityNotification:(long long)arg1 withPayload:(NSData *)arg2;
 - (void)_XCT_applicationWithBundleID:(NSString *)arg1 didUpdatePID:(int)arg2 andState:(unsigned long long)arg3;
 @end
 

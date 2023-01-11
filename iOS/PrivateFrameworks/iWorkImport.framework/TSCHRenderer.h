@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSCHSupportsTextEditing-Protocol.h>
 
@@ -14,14 +14,15 @@
 __attribute__((visibility("hidden")))
 @interface TSCHRenderer : NSObject <TSCHSupportsTextEditing>
 {
-    id <TSCHSupportsRendering> mChartRep;
     TSCHChartLayoutItem *mChartLayoutItem;
+    id <TSCHSupportsRendering> mChartRep;
 }
 
-@property(readonly, nonatomic) id <TSCHSupportsRendering> chartRep; // @synthesize chartRep=mChartRep;
+@property(readonly, nonatomic) __weak id <TSCHSupportsRendering> chartRep; // @synthesize chartRep=mChartRep;
+- (void).cxx_destruct;
 - (struct CGRect)tLayerRectForContext:(struct CGContext *)arg1;
 - (struct CGRect)chartLayoutSpaceRenderingRect;
-- (void)addSelection:(id)arg1 toCGPath:(struct CGPath *)arg2;
+- (void)addSelection:(id)arg1 toCGPath:(struct CGPath *)arg2 useWrapWidth:(_Bool)arg3;
 - (void)renderIntoContext:(struct CGContext *)arg1 selection:(id)arg2;
 - (_Bool)canRenderSelectionPath:(id)arg1;
 - (void)p_debugLayoutInContext:(struct CGContext *)arg1;
@@ -43,7 +44,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) TSCHChartLayoutItem *layoutItem;
 @property(readonly, nonatomic) TSCHChartModel *model;
 @property(readonly, nonatomic) TSCHChartInfo *chartInfo;
-- (void)dealloc;
 - (id)initWithChartRep:(id)arg1 layoutItem:(id)arg2;
 - (void)drawErrorBarsInContext:(struct CGContext *)arg1 chartVertical:(_Bool)arg2 elementRenderClass:(Class)arg3;
 - (void)drawTrendLinesInContext:(struct CGContext *)arg1 chartVertical:(_Bool)arg2 elementRenderClass:(Class)arg3;

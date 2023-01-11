@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EKEventDetailAttendeesCell, NSArray, NSMutableDictionary, UITableViewCell;
+#import <EventKitUI/EKEventDetailAttendeeCellDelegate-Protocol.h>
+
+@class EKEventDetailAttendeesCell, NSArray, NSMutableDictionary, NSString, UITableViewCell;
 
 __attribute__((visibility("hidden")))
-@interface EKEventAttendeesDetailItem
+@interface EKEventAttendeesDetailItem <EKEventDetailAttendeeCellDelegate>
 {
     NSMutableDictionary *_attendeesCells;
     UITableViewCell *_titleCell;
@@ -19,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *attendees; // @synthesize attendees=_attendees;
 @property(nonatomic) long long status; // @synthesize status=_status;
 - (void).cxx_destruct;
+- (void)eventDetailAttendeeCellWantsRefreshForHeightChange;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (_Bool)hasDetailViewControllerAtIndex:(unsigned long long)arg1;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
@@ -27,6 +30,12 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)numberOfSubitems;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (void)reset;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

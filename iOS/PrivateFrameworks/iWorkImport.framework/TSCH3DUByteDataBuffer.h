@@ -7,7 +7,7 @@
 __attribute__((visibility("hidden")))
 @interface TSCH3DUByteDataBuffer
 {
-    vector_4c74e494 mContainer;
+    vector_1798193c mContainer;
 }
 
 - (id).cxx_construct;
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)count;
 - (void)fillCapacity;
 - (const void *)data;
-@property(readonly, nonatomic) vector_4c74e494 *container;
+@property(readonly, nonatomic) vector_1798193c *container;
 - (id)initWithCapacity:(unsigned long long)arg1;
 
 @end

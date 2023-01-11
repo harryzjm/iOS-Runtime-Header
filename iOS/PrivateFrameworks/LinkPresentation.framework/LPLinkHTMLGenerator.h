@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class DOMDocument, DOMDocumentFragment, DOMElement, LPCSSResolver, LPCaptionBarPresentationProperties, LPHTMLComponent, LPHTMLVideoComponent, LPImage, LPLinkMetadata, LPMetadataProvider, LPTheme, LPVideo, NSString, NSURL, UIColor;
+@class DOMDocument, DOMDocumentFragment, DOMElement, LPCSSResolver, LPCaptionBarPresentationProperties, LPHTMLComponent, LPHTMLVideoComponent, LPImage, LPLinkMetadata, LPMetadataProvider, LPPointUnit, LPTheme, LPVideo, NSString, NSURL, UIColor;
 @protocol LPLinkHTMLGeneratorDelegate;
 
 @interface LPLinkHTMLGenerator : NSObject
@@ -21,12 +21,14 @@
     LPImage *_image;
     LPVideo *_video;
     UIColor *_backgroundColor;
+    LPPointUnit *_minimumRootHeight;
     DOMElement *_rootElement;
     LPHTMLComponent *_linkComponent;
     LPHTMLVideoComponent *_videoComponent;
     _Bool _everBuiltView;
     _Bool _useVariablesWhenUsingInlineStyles;
     _Bool _includeClassNamesWhenUsingInlineStyles;
+    _Bool _includeDarkInterfaceInlineStyles;
     _Bool _allowsTapToLoad;
     _Bool _useInlineStyles;
     _Bool _applyCornerRadiusToLink;
@@ -55,6 +57,7 @@
 @property(nonatomic) _Bool useInlineStyles; // @synthesize useInlineStyles=_useInlineStyles;
 @property(nonatomic) __weak id <LPLinkHTMLGeneratorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic, setter=_setAllowsTapToLoad:) _Bool _allowsTapToLoad; // @synthesize _allowsTapToLoad;
+@property(nonatomic, setter=_setIncludeDarkInterfaceInlineStyles:) _Bool _includeDarkInterfaceInlineStyles; // @synthesize _includeDarkInterfaceInlineStyles;
 @property(nonatomic, setter=_setIncludeClassNamesWhenUsingInlineStyles:) _Bool _includeClassNamesWhenUsingInlineStyles; // @synthesize _includeClassNamesWhenUsingInlineStyles;
 @property(nonatomic, setter=_setUseVariablesWhenUsingInlineStyles:) _Bool _useVariablesWhenUsingInlineStyles; // @synthesize _useVariablesWhenUsingInlineStyles;
 - (void).cxx_destruct;
@@ -66,6 +69,8 @@
 - (id)_createMediaBottomCaptionBar;
 - (id)_createMediaTopCaptionBar;
 - (id)_createCaptionBar;
+@property(readonly, nonatomic) LPPointUnit *minimumRootHeight;
+@property(readonly, nonatomic) LPPointUnit *rootWidth;
 @property(readonly, nonatomic) _Bool hasTallMedia;
 @property(readonly, nonatomic) _Bool useFlexibleWidth;
 - (void)_setPresentationProperties:(id)arg1;

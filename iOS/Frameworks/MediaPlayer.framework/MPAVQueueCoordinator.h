@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class MPAVItem, MPQueuePlayer, NSArray, NSDate, NSHashTable, NSMutableSet, NSOperationQueue;
+@class MPAVItem, MPQueuePlayer, NSArray, NSHashTable, NSMutableSet, NSOperationQueue;
 @protocol MPAVQueueCoordinatorDataSource;
 
 @interface MPAVQueueCoordinator : NSObject
@@ -19,12 +19,12 @@
     _Bool _isSyncingPlayerItems;
     NSHashTable *_itemsPendingAssetLoading;
     MPAVItem *_lastItemAnchor;
-    NSDate *_lastPausedDate;
     unsigned long long _lastPreferredQueueDepth;
     _Bool _needsCurrentItemUpdateAfterPlayerItemSync;
     _Bool _preventLoadingItems;
-    double _rateQueueDepthAdjustmentDelay;
     NSMutableSet *_reusableItems;
+    _Bool _shouldExpectEmptyQueue;
+    _Bool _shouldDeferItemLoading;
     MPQueuePlayer *_player;
     id <MPAVQueueCoordinatorDataSource> _dataSource;
     MPAVItem *_currentItem;
@@ -33,6 +33,8 @@
 }
 
 @property(copy, nonatomic) CDUnknownBlockType equilibriumAchievedHandler; // @synthesize equilibriumAchievedHandler=_equilibriumAchievedHandler;
+@property(nonatomic) _Bool shouldDeferItemLoading; // @synthesize shouldDeferItemLoading=_shouldDeferItemLoading;
+@property(nonatomic) _Bool shouldExpectEmptyQueue; // @synthesize shouldExpectEmptyQueue=_shouldExpectEmptyQueue;
 @property(readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 @property(readonly, nonatomic) MPAVItem *currentItem; // @synthesize currentItem=_currentItem;
 @property(readonly, nonatomic) __weak id <MPAVQueueCoordinatorDataSource> dataSource; // @synthesize dataSource=_dataSource;

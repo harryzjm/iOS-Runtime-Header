@@ -12,9 +12,11 @@
 {
     _Bool _addOperation;
     _Bool _addViaWAC;
+    _Bool _wacLegacy;
     AWDHomeKitVendorInformation *_vendorInfo;
     long long _linkType;
     long long _certificationStatus;
+    unsigned long long _authMethod;
 }
 
 + (id)removingAccessory:(id)arg1 hapAccessory:(id)arg2;
@@ -22,7 +24,9 @@
 + (id)pairingAccessoryWithDescription:(id)arg1;
 + (id)uuid;
 + (void)initialize;
+@property(nonatomic) unsigned long long authMethod; // @synthesize authMethod=_authMethod;
 @property(nonatomic) long long certificationStatus; // @synthesize certificationStatus=_certificationStatus;
+@property(nonatomic, getter=isWacLegacy) _Bool wacLegacy; // @synthesize wacLegacy=_wacLegacy;
 @property(nonatomic, getter=isAddViaWAC) _Bool addViaWAC; // @synthesize addViaWAC=_addViaWAC;
 @property(readonly, nonatomic, getter=isAddOperation) _Bool addOperation; // @synthesize addOperation=_addOperation;
 @property(nonatomic) long long linkType; // @synthesize linkType=_linkType;
@@ -31,6 +35,7 @@
 - (void)pairedAccessory:(id)arg1;
 - (void)pairedToServer:(id)arg1 certificationStatus:(long long)arg2;
 - (void)setcertificationStatus:(long long)arg1;
+- (void)setAuthenticationMethod:(unsigned long long)arg1;
 - (void)setAddedViaWAC:(_Bool)arg1;
 - (id)initWithAccessoryDescription:(id)arg1;
 - (id)initWithUnpairedAccessory:(id)arg1 pairedAccessory:(id)arg2 hapAccessory:(id)arg3 isAddOperation:(_Bool)arg4;

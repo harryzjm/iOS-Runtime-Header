@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
 @class NSArray;
 
-@interface DMFFetchDevicePropertiesRequest : CATTaskRequest
+@interface DMFFetchDevicePropertiesRequest
 {
     NSArray *_propertyKeys;
 }
 
++ (id)devicePropertyKeysForPlatform:(unsigned long long)arg1;
++ (id)currentDevicePropertyKeys;
 + (_Bool)supportsSecureCoding;
++ (_Bool)isPermittedOnUserConnection;
++ (_Bool)isPermittedOnSystemConnection;
++ (id)permittedPlatforms;
 + (Class)whitelistedClassForResultObject;
 @property(copy, nonatomic) NSArray *propertyKeys; // @synthesize propertyKeys=_propertyKeys;
 - (void).cxx_destruct;

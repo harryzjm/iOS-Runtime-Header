@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSURLCredentialStorageInternal;
 
@@ -24,7 +24,9 @@
 - (void)removeCredential:(id)arg1 forProtectionSpace:(id)arg2 options:(id)arg3;
 - (void)removeCredential:(id)arg1 forProtectionSpace:(id)arg2;
 - (void)setCredential:(id)arg1 forProtectionSpace:(id)arg2;
+- (id)_allCredentialsWithAccessControlGroup:(id)arg1 includeLegacyKeychain:(_Bool)arg2;
 @property(readonly, copy) NSDictionary *allCredentials;
+- (id)__allCredentialsWithAccessControlGroup:(id)arg1 includeLegacyKeychain:(_Bool)arg2;
 - (id)credentialsForProtectionSpace:(id)arg1;
 @property(nonatomic) _Bool _useSystemKeychain;
 - (struct _CFURLCredentialStorage *)_CFURLCredentialStorage;

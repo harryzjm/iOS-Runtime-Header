@@ -4,9 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSExtensionContext;
+#import <objc/NSObject.h>
 
-@interface SXHostExtension
+#import <Silex/SXHost-Protocol.h>
+
+@class NSExtensionContext, NSString;
+
+@interface SXHostExtension : NSObject <SXHost>
 {
     _Bool _isActive;
     NSExtensionContext *_extensionContext;
@@ -20,8 +24,14 @@
 - (void)extensionHostDidBecomeActive:(id)arg1;
 - (_Bool)canOpenURL:(id)arg1;
 - (void)openURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (_Bool)active;
+@property(readonly, nonatomic) _Bool active;
 - (id)initWithExtensionContext:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

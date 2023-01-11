@@ -18,9 +18,10 @@
     UIView *_carPlayGatekeeperBackdropView;
     _Bool _backdropViewVisible;
     _Bool _carPlayGatekeeperBackdropViewVisible;
+    struct UIEdgeInsets _suspendedSafeAreaInsets;
+    _Bool _safeAreaInsetsSuspended;
     UIView *_dimmingAndLockContainer;
     UIView *_statusViewContainer;
-    UIView<SiriUISiriStatusViewProtocol> *_siriStatusView;
     SiriUIAudioRoutePickerButton *_audioRoutePickerButton;
     SiriUIHelpButton *_helpButton;
     SiriUIContentButton *_reportBugButton;
@@ -40,9 +41,9 @@
     _Bool _statusViewHidden;
     _Bool _keepStatusViewHidden;
     _Bool _flamesViewDeferred;
-    _Bool _flamesViewPaused;
+    _Bool _helpButtonDeferred;
     _Bool _carDisplaySnippetVisible;
-    _Bool _safeAreaInsetsSuspended;
+    _Bool _inFluidDismissal;
     UIView *_remoteContentView;
     UIView *_foregroundView;
     UIView *_foregroundContainerView;
@@ -50,18 +51,18 @@
     id <AFUISiriViewDelegate> _delegate;
     long long _siriSessionState;
     long long _mode;
+    UIView<SiriUISiriStatusViewProtocol> *_siriStatusView;
     UIView *_frozenBackdropSnapshotView;
-    struct UIEdgeInsets _suspendedSafeAreaInsets;
 }
 
 + (void)_animateView:(id)arg1 fromYPosition:(double)arg2 toYPosition:(double)arg3 fade:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 @property(retain, nonatomic) UIView *frozenBackdropSnapshotView; // @synthesize frozenBackdropSnapshotView=_frozenBackdropSnapshotView;
-@property(nonatomic) _Bool safeAreaInsetsSuspended; // @synthesize safeAreaInsetsSuspended=_safeAreaInsetsSuspended;
-@property(nonatomic) struct UIEdgeInsets suspendedSafeAreaInsets; // @synthesize suspendedSafeAreaInsets=_suspendedSafeAreaInsets;
+@property(retain, nonatomic) UIView<SiriUISiriStatusViewProtocol> *siriStatusView; // @synthesize siriStatusView=_siriStatusView;
 @property(nonatomic) long long mode; // @synthesize mode=_mode;
 @property(nonatomic) long long siriSessionState; // @synthesize siriSessionState=_siriSessionState;
+@property(nonatomic, getter=isInFluidDismissal) _Bool inFluidDismissal; // @synthesize inFluidDismissal=_inFluidDismissal;
 @property(nonatomic) _Bool carDisplaySnippetVisible; // @synthesize carDisplaySnippetVisible=_carDisplaySnippetVisible;
-@property(nonatomic) _Bool flamesViewPaused; // @synthesize flamesViewPaused=_flamesViewPaused;
+@property(nonatomic) _Bool helpButtonDeferred; // @synthesize helpButtonDeferred=_helpButtonDeferred;
 @property(nonatomic) _Bool flamesViewDeferred; // @synthesize flamesViewDeferred=_flamesViewDeferred;
 @property(nonatomic) _Bool keepStatusViewHidden; // @synthesize keepStatusViewHidden=_keepStatusViewHidden;
 @property(nonatomic) _Bool statusViewHidden; // @synthesize statusViewHidden=_statusViewHidden;
@@ -80,7 +81,7 @@
 - (void)siriStatusViewWasTapped:(id)arg1;
 - (float)audioLevelForSiriStatusView:(id)arg1;
 - (void)cancelShowingPasscodeUnlock;
-- (void)showPasscodeUnlockWithStatusText:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 unlockCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)showPasscodeUnlockWithStatusText:(id)arg1 subTitle:(id)arg2 completionHandler:(CDUnknownBlockType)arg3 unlockCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)_configureEyesFreeLogo;
 - (_Bool)_helpButtonIsVisible;
 - (void)pulseHelpButton;
@@ -112,11 +113,14 @@
 @property(readonly, nonatomic) _UIBackdropView *backgroundBlurView;
 - (void)reloadData;
 - (void)fadeOutCurrentAura;
+- (void)setupOrbIfNeeded;
 @property(nonatomic, getter=isInUITrackingMode) _Bool inUITrackingMode;
 - (void)teardownStatusView;
+@property(nonatomic) _Bool flamesViewPaused;
 - (void)setStatusViewUserInteractionEnabled:(_Bool)arg1;
 - (void)_animateButtonsHidden:(_Bool)arg1;
 - (void)_updateControlsAppearance;
+- (void)_setSafeAreaInsetsSuspended:(_Bool)arg1;
 - (void)safeAreaInsetsDidChange;
 - (struct UIEdgeInsets)safeAreaInsets;
 @property(readonly, nonatomic) double statusViewHeight;
@@ -126,6 +130,7 @@
 - (_Bool)isCarPlayMode;
 - (void)_destroyAssistantVersionLabelIfNecessary;
 - (void)_createAssistantVersionLabelIfNecessary;
+- (void)_setupButtonsIfNecessary;
 - (_Bool)_reducesMotionEffects;
 - (id)initWithFrame:(struct CGRect)arg1 configuration:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;

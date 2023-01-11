@@ -34,9 +34,8 @@
 - (void)_accessibilityVoiceOverStatusChanged;
 - (void)_accessibilitySwitchControlStatusChanged;
 - (void)_accessibilityCancelSBAXIconMoveSpeakTimer;
-- (_Bool)scrollToIconListAtIndex:(long long)arg1 animate:(_Bool)arg2;
+- (void)animateScrollToPageZeroWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
-- (void)handleHomeButtonTap;
 
 @end
 

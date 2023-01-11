@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)setName:(id)arg1;
 - (id)getName;
 - (void)dealloc;
-- (id)initWithStgInfo:(struct _StgInfo *)arg1;
+- (id)initWithStgInfo:(const struct _StgInfo *)arg1;
 - (id)init;
 
 @end

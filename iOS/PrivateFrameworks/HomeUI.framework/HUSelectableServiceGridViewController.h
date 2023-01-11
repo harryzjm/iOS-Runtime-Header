@@ -17,6 +17,7 @@
 }
 
 + (CDUnknownBlockType)defaultItemProviderCreatorWithOptions:(unsigned long long)arg1;
++ (id)itemServiceTypesToHide;
 @property(retain, nonatomic) HFMutableSetDiff *mutableSelectedItems; // @synthesize mutableSelectedItems=_mutableSelectedItems;
 @property(nonatomic) __weak HUServiceGridItemManager *serviceGridItemManager; // @synthesize serviceGridItemManager=_serviceGridItemManager;
 @property(nonatomic) _Bool allowsMultipleSelection; // @synthesize allowsMultipleSelection=_allowsMultipleSelection;
@@ -24,9 +25,13 @@
 - (void).cxx_destruct;
 - (void)_deleteItemFromSelection:(id)arg1;
 - (void)_addItemToSelection:(id)arg1;
+- (_Bool)_wantsToggleButtonForSection:(unsigned long long)arg1;
 - (void)_updateToggleStateForSection:(long long)arg1 headerView:(id)arg2;
 - (void)_setSelected:(_Bool)arg1 forItemsInSection:(long long)arg2;
 - (void)_updateSelectionState:(_Bool)arg1 forCell:(id)arg2;
+- (_Bool)serviceGridItemManager:(id)arg1 shouldHideItem:(id)arg2;
+- (void)addItemToSelection:(id)arg1;
+- (void)deleteItemFromSelection:(id)arg1;
 - (void)didDeselectItem:(id)arg1;
 - (void)didSelectItem:(id)arg1;
 - (void)didChangeSelection;

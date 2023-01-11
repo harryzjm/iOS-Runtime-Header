@@ -14,7 +14,6 @@
 {
     CDUnknownBlockType _block;
     NSRunLoop *_schedulingRunLoop;
-    DVTStackBacktrace *_schedulingBacktrace;
     struct {
         unsigned int scheduledInvocation:1;
         unsigned int shouldInvokeIfNeededWhenAppTerminates:1;
@@ -27,6 +26,7 @@
         unsigned int _reserved:1;
     } _flags;
     DVTDelayedInvocationScheduler *_scheduler;
+    DVTStackBacktrace *_schedulingBacktrace;
     NSArray *_runLoopModes;
     NSString *_terminationDisablingReason;
 }
@@ -35,6 +35,7 @@
 + (id)delayedInvocationWithTerminationDisablingReason:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 @property(copy) NSString *terminationDisablingReason; // @synthesize terminationDisablingReason=_terminationDisablingReason;
 @property(copy, nonatomic) NSArray *runLoopModes; // @synthesize runLoopModes=_runLoopModes;
+@property(readonly) DVTStackBacktrace *schedulingBacktrace; // @synthesize schedulingBacktrace=_schedulingBacktrace;
 @property(copy, nonatomic) DVTDelayedInvocationScheduler *scheduler; // @synthesize scheduler=_scheduler;
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
@@ -55,6 +56,7 @@
 @property(readonly) _Bool hasScheduledInvocation;
 - (void)primitiveInvalidate;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
+- (id)initWithWeakTarget:(id)arg1 selector:(SEL)arg2;
 - (id)initWithTarget:(id)arg1 selector:(SEL)arg2;
 
 // Remaining properties

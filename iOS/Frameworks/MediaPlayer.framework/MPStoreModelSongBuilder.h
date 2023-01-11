@@ -15,6 +15,7 @@
         unsigned int initialized:1;
         unsigned int title:1;
         unsigned int duration:1;
+        unsigned int trackCount:1;
         unsigned int trackNumber:1;
         unsigned int discNumber:1;
         unsigned int grouping:1;
@@ -40,7 +41,14 @@
         unsigned int classicalMovement:1;
         unsigned int classicalMovementCount:1;
         unsigned int classicalMovementNumber:1;
-        CDStruct_0f043e9e album;
+        struct {
+            unsigned int identifiers:1;
+            unsigned int title:1;
+            unsigned int releaseDate:1;
+            unsigned int year:1;
+            unsigned int artist:1;
+            unsigned int trackCount:1;
+        } album;
         CDStruct_63a3d127 artist;
         CDStruct_63a3d127 composer;
         CDStruct_63a3d127 genre;
@@ -51,7 +59,7 @@
 
 + (id)allSupportedProperties;
 - (void).cxx_destruct;
-- (id)modelObjectWithStoreItemMetadata:(id)arg1;
+- (id)modelObjectWithStoreItemMetadata:(id)arg1 sourceModelObject:(id)arg2;
 
 @end
 

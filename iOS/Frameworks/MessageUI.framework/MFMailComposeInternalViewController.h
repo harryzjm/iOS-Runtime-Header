@@ -7,11 +7,12 @@
 #import <UIKit/UIViewController.h>
 
 #import <MessageUI/MFMailComposeRemoteViewControllerDelegate-Protocol.h>
+#import <MessageUI/MFMailCompositionUTITypes-Protocol.h>
 
-@class MFMailComposePlaceholderViewController, MFMailComposeRemoteViewController, NSError, NSMutableArray, NSMutableDictionary, NSString, _UIAsyncInvocation;
+@class MFMailComposePlaceholderViewController, MFMailComposeRemoteViewController, NSArray, NSError, NSMutableArray, NSMutableDictionary, NSString, _UIAsyncInvocation;
 @protocol MFMailComposeViewControllerDelegate;
 
-@interface MFMailComposeInternalViewController : UIViewController <MFMailComposeRemoteViewControllerDelegate>
+@interface MFMailComposeInternalViewController : UIViewController <MFMailComposeRemoteViewControllerDelegate, MFMailCompositionUTITypes>
 {
     id <MFMailComposeViewControllerDelegate> _mailComposeDelegate;
     MFMailComposePlaceholderViewController *_placeholderViewController;
@@ -42,6 +43,7 @@
 - (void)finalizeCompositionValues;
 - (id)addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 - (id)addAttachmentFileURL:(id)arg1 mimeType:(id)arg2;
+@property(copy, nonatomic) NSArray *UTITypes;
 - (void)setCaretPosition:(unsigned long long)arg1;
 - (void)setContentVisible:(_Bool)arg1;
 - (void)setSourceAccountManagement:(int)arg1;

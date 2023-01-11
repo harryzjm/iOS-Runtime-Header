@@ -9,7 +9,6 @@
 }
 
 - (void)initializeWithArguments:(id)arg1;
-- (void)installPreApplicationInitializationFrameworkHooks;
 
 @end
 

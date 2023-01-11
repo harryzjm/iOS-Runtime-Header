@@ -8,6 +8,7 @@
 
 @class NSArray, NSMutableDictionary, NSMutableSet, NSString, PUAdjustmentsModeBadge, PUSlidersCollectionView, UIButton, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface PUCompactAdjustmentsModeBar <UICollectionViewDataSource>
 {
     UILabel *_titleLabel;

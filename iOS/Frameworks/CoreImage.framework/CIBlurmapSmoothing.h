@@ -4,14 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CIImage;
+@class CIImage, NSDictionary, NSNumber;
 
 __attribute__((visibility("hidden")))
 @interface CIBlurmapSmoothing
 {
     CIImage *inputImage;
+    NSDictionary *inputTuningParameters;
+    NSNumber *inputScale;
+    NSNumber *inputDraftMode;
 }
 
++ (id)customAttributes;
+@property(retain, nonatomic) NSNumber *inputDraftMode; // @synthesize inputDraftMode;
+@property(retain) NSNumber *inputScale; // @synthesize inputScale;
+@property(retain) NSDictionary *inputTuningParameters; // @synthesize inputTuningParameters;
 @property(retain) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
 - (id)performPass:(id)arg1 reference:(id)arg2 values:(id)arg3 rect:(struct CGRect)arg4;

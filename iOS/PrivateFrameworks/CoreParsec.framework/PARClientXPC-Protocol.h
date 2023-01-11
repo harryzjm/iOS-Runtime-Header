@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSError, NSString, PARBag;
+#import <CoreParsec/NSObject-Protocol.h>
 
-@protocol PARClientXPC
+@class NSError, NSString, NSUUID, PARBag;
+
+@protocol PARClientXPC <NSObject>
+- (void)sessionDidChange:(NSUUID *)arg1;
 - (void)didDeleteResource:(NSString *)arg1;
 - (void)didDownloadResource:(NSString *)arg1;
 - (void)bagDidLoad:(PARBag *)arg1 error:(NSError *)arg2;

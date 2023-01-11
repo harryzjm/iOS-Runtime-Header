@@ -7,6 +7,7 @@
 @protocol GEOVenueIdentifier, GEOVenueLabel;
 
 @protocol GEOVenueFilterItem
+@property(readonly, nonatomic) _Bool describesParentVenue;
 @property(readonly, nonatomic) id <GEOVenueLabel> label;
 @property(readonly, nonatomic) id <GEOVenueIdentifier> filterID;
 @end

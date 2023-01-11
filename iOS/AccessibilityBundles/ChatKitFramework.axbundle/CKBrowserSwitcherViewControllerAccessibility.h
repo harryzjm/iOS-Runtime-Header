@@ -16,6 +16,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityScrollStatusForScrollView:(id)arg1;
+- (void)browserTransitionCoordinatorWillCollapseOrDismiss:(id)arg1 withReason:(long long)arg2;
+- (void)browserTransitionCoordinatorWillTransitionOrPresentToFullscreen:(id)arg1 withReason:(long long)arg2;
+- (_Bool)accessibilityPerformEscape;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)setCurrentViewController:(id)arg1;
 - (void)loadView;

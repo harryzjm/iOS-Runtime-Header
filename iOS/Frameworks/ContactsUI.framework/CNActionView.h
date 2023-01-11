@@ -8,7 +8,7 @@
 
 #import <ContactsUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSString, UIImage, UIImageView, UILabel, UILongPressGestureRecognizer, UITapGestureRecognizer;
+@class NSArray, NSString, UIFont, UIImage, UIImageView, UILabel, UILongPressGestureRecognizer, UITapGestureRecognizer;
 @protocol CNActionViewDelegate, CNActionViewTemplateImage;
 
 @interface CNActionView : UIView <UIGestureRecognizerDelegate>
@@ -28,12 +28,17 @@
     UILongPressGestureRecognizer *_longPressGestureRecognizer;
     UILongPressGestureRecognizer *_highlightGestureRecognizer;
     id <CNActionViewTemplateImage> _templateImage;
+    UIFont *_titleFont;
 }
 
 + (void)fadeInView:(id)arg1;
++ (id)defaultTitleFontOfSize:(double)arg1;
++ (id)defaultTitleFont;
++ (id)colorByIncreasingBrightnessComponentByPercentage:(double)arg1 ofColor:(id)arg2;
 + (id)contentColorForDisabledVibrantDarkState;
 + (id)contentColorForDisabledBoldState;
 + (id)borderColorForDisabledBoldState;
+@property(retain, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 @property(retain, nonatomic) id <CNActionViewTemplateImage> templateImage; // @synthesize templateImage=_templateImage;
 @property(retain, nonatomic) UILongPressGestureRecognizer *highlightGestureRecognizer; // @synthesize highlightGestureRecognizer=_highlightGestureRecognizer;
 @property(retain, nonatomic) UILongPressGestureRecognizer *longPressGestureRecognizer; // @synthesize longPressGestureRecognizer=_longPressGestureRecognizer;
@@ -70,6 +75,7 @@
 - (void)setDisabled:(_Bool)arg1 animated:(_Bool)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)init;
+- (id)colorByAdjustingColorToHighlightState:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

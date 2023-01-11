@@ -8,12 +8,13 @@
 #import <iWorkImport/TSTTableRepInternal-Protocol.h>
 #import <iWorkImport/UITextFieldDelegate-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSMutableArray, NSMutableDictionary, NSSet, NSString, TSDTilingLayer, TSKHighlightArrayController, TSTAnimation, TSTCellSelection, TSTInfo, TSTLayout, TSTMasterLayout, TSTSearchReference, TSTSelectionDragController, TSTTableModel, TSTTableReferences;
+@class CALayer, CAShapeLayer, NSMutableArray, NSMutableDictionary, NSSet, NSString, TSDTilingLayer, TSTAnimation, TSTCellSelection, TSTInfo, TSTLayout, TSTMasterLayout, TSTSelectionDragController, TSTTableReferences;
 @protocol TSTCanvasReferenceController, TSTTableAnimationController, TSTTableChromeProvider, TSTTableRepDelegate;
 
 __attribute__((visibility("hidden")))
 @interface TSTTableRep <TSTTableRepInternal, UITextFieldDelegate, CALayerDelegate>
 {
+    _Bool _tableRepIsBeingRemovedFromBackgroundLayout;
     _Bool _selectionDragAbortedOnNewSelection;
     _Bool _selectionUsesBezierPath;
     _Bool _selectsCellOnInitialTap;
@@ -26,8 +27,8 @@ __attribute__((visibility("hidden")))
     _Bool _zoomOperationIsInProgress;
     _Bool _recursivelyDrawingInContext;
     _Bool _dragByHandleOnly;
-    struct TSUCellCoord _ratingsDragCellID;
     NSMutableDictionary *_childTextReps;
+    struct TSUCellCoord _ratingsDragCellID;
     TSTTableReferences *_references;
     TSTSelectionDragController *_cellDragController;
     NSSet *_visibleFillKnobs;
@@ -44,38 +45,20 @@ __attribute__((visibility("hidden")))
     CALayer *_overlayFrozenHeaderTableBodyMask;
     CALayer *_overlayFrozenHeaderTableNameMask;
     double _currentScreenScale;
-    struct TSUCellRect _dirtyCellRange;
     NSMutableArray *_animationStack;
-    struct TSUCellRect _zoomToEditVisibleCellRange;
-    CAShapeLayer *_findSelectionHighlightLayer;
     CAShapeLayer *_cellEditingMaskLayer;
-    TSKHighlightArrayController *_bodyHighlightArrayController;
-    TSKHighlightArrayController *_frozenCornerHighlightArrayController;
-    TSKHighlightArrayController *_frozenColumnsHighlightArrayController;
-    TSKHighlightArrayController *_frozenRowsHighlightArrayController;
-    TSKHighlightArrayController *_bodyPulseArrayController;
-    TSKHighlightArrayController *_frozenCornerPulseArrayController;
-    TSKHighlightArrayController *_frozenColumnsPulseArrayController;
-    TSKHighlightArrayController *_frozenRowsPulseArrayController;
-    TSTSearchReference *_previousSearchReference;
+    CAShapeLayer *_findSelectionHighlightLayer;
+    struct TSUCellRect _dirtyCellRange;
+    struct TSUCellRect _zoomToEditVisibleCellRange;
     struct CGRect _searchSelectionBounds;
 }
 
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;
 + (unsigned long long)p_countOfIdenticalCellsBetweenOutgoingTableInfo:(id)arg1 incomingTableInfo:(id)arg2;
 + (Class)tableRepDelegateClass;
-@property(retain, nonatomic) TSTSearchReference *previousSearchReference; // @synthesize previousSearchReference=_previousSearchReference;
-@property(retain, nonatomic) TSKHighlightArrayController *frozenRowsPulseArrayController; // @synthesize frozenRowsPulseArrayController=_frozenRowsPulseArrayController;
-@property(retain, nonatomic) TSKHighlightArrayController *frozenColumnsPulseArrayController; // @synthesize frozenColumnsPulseArrayController=_frozenColumnsPulseArrayController;
-@property(retain, nonatomic) TSKHighlightArrayController *frozenCornerPulseArrayController; // @synthesize frozenCornerPulseArrayController=_frozenCornerPulseArrayController;
-@property(retain, nonatomic) TSKHighlightArrayController *bodyPulseArrayController; // @synthesize bodyPulseArrayController=_bodyPulseArrayController;
-@property(retain, nonatomic) TSKHighlightArrayController *frozenRowsHighlightArrayController; // @synthesize frozenRowsHighlightArrayController=_frozenRowsHighlightArrayController;
-@property(retain, nonatomic) TSKHighlightArrayController *frozenColumnsHighlightArrayController; // @synthesize frozenColumnsHighlightArrayController=_frozenColumnsHighlightArrayController;
-@property(retain, nonatomic) TSKHighlightArrayController *frozenCornerHighlightArrayController; // @synthesize frozenCornerHighlightArrayController=_frozenCornerHighlightArrayController;
-@property(retain, nonatomic) TSKHighlightArrayController *bodyHighlightArrayController; // @synthesize bodyHighlightArrayController=_bodyHighlightArrayController;
+@property(retain, nonatomic) CAShapeLayer *findSelectionHighlightLayer; // @synthesize findSelectionHighlightLayer=_findSelectionHighlightLayer;
 @property(retain, nonatomic) CAShapeLayer *cellEditingMaskLayer; // @synthesize cellEditingMaskLayer=_cellEditingMaskLayer;
 @property(readonly, nonatomic) _Bool dragByHandleOnly; // @synthesize dragByHandleOnly=_dragByHandleOnly;
-@property(retain, nonatomic) CAShapeLayer *findSelectionHighlightLayer; // @synthesize findSelectionHighlightLayer=_findSelectionHighlightLayer;
 @property(nonatomic) struct TSUCellRect zoomToEditVisibleCellRange; // @synthesize zoomToEditVisibleCellRange=_zoomToEditVisibleCellRange;
 @property(readonly, nonatomic) NSMutableArray *animationStack; // @synthesize animationStack=_animationStack;
 @property(nonatomic, getter=isRecursivelyDrawingInContext) _Bool recursivelyDrawingInContext; // @synthesize recursivelyDrawingInContext=_recursivelyDrawingInContext;
@@ -108,19 +91,17 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) TSTTableReferences *references; // @synthesize references=_references;
 @property(nonatomic) struct TSUCellCoord ratingsDragCellID; // @synthesize ratingsDragCellID=_ratingsDragCellID;
 @property(nonatomic) struct CGRect searchSelectionBounds; // @synthesize searchSelectionBounds=_searchSelectionBounds;
+@property _Bool tableRepIsBeingRemovedFromBackgroundLayout; // @synthesize tableRepIsBeingRemovedFromBackgroundLayout=_tableRepIsBeingRemovedFromBackgroundLayout;
 @property(readonly, nonatomic) NSMutableDictionary *childTextReps; // @synthesize childTextReps=_childTextReps;
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
-- (id)p_textImageForPath:(struct CGPath *)arg1 shouldPulsate:(_Bool)arg2 cellID:(struct TSUCellCoord)arg3;
-- (_Bool)shouldHighlightGray:(struct TSUCellCoord)arg1;
 - (void)drawInContext:(struct CGContext *)arg1;
-- (void)recursivelyDrawInContext:(struct CGContext *)arg1;
+- (void)recursivelyDrawInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
 - (_Bool)canDrawInParallel;
 - (_Bool)mustDrawOnMainThreadForInteractiveCanvas;
 - (_Bool)canDrawInBackgroundDuringScroll;
 - (void)invalidateFrozenHeaders;
 - (void)validateFrozenHeaderTableBodyMask;
-- (void)addAdditionalChildLayersToArray:(id)arg1;
 - (void)validateFrozenHeaderColumns;
 - (void)validateFrozenHeaderRows;
 - (void)validateFrozenHeaderCorner;
@@ -140,11 +121,9 @@ __attribute__((visibility("hidden")))
 - (void)p_resetDynamicModePropertiesForContainedTextEditing;
 - (void)p_updateDynamicModePropertiesForContainedTextEditingWithSpillingTextRange:(struct TSUCellRect)arg1;
 - (void)p_updateDynamicModePropertiesForContainedTextEditing;
-- (void)screenScaleDidChange;
 - (_Bool)isFullyVisibleWithBorder:(int)arg1;
 - (void)validateVisibleRect;
 - (void)validateStrokesInEditingSpillingTextRange;
-- (void)layoutInRootChangedFrom:(id)arg1 to:(id)arg2 translatedOnly:(_Bool)arg3;
 - (void)updateFromLayout;
 - (id)hyperlinkRegions;
 - (id)hyperlinkContainerRep;
@@ -174,17 +153,17 @@ __attribute__((visibility("hidden")))
 - (void)p_removeObservers;
 - (void)dealloc;
 - (struct CGRect)layerFrameInScaledCanvas;
-- (id)repForDragging;
 - (id)hitRepChrome:(struct CGPoint)arg1;
-- (id)hitRep:(struct CGPoint)arg1;
+- (id)hitRep:(struct CGPoint)arg1 withPrecision:(_Bool)arg2;
 @property(readonly, nonatomic) long long selectionType;
 @property(readonly, nonatomic) TSTCellSelection *selection;
 @property(readonly, nonatomic) struct CGRect canvasVisibleRect;
 @property(readonly, nonatomic) struct CGAffineTransform transformFromCanvas;
 @property(readonly, nonatomic) struct CGAffineTransform transformToCanvas;
 @property(readonly, nonatomic) TSTMasterLayout *masterLayout;
+@property(readonly, nonatomic) _Bool layoutDirectionIsLeftToRight;
 @property(readonly, nonatomic) TSTLayout *tableLayout;
-@property(readonly, nonatomic) TSTTableModel *tableModel;
+@property(readonly, nonatomic) TSTInfo *tableModel;
 @property(readonly, nonatomic) TSTInfo *tableInfo;
 
 // Remaining properties

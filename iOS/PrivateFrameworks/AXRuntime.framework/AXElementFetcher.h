@@ -49,7 +49,7 @@
 @property(retain, nonatomic) NSArray *currentApps; // @synthesize currentApps=_currentApps;
 @property(nonatomic) unsigned long long activeFetchEvents; // @synthesize activeFetchEvents=_activeFetchEvents;
 @property(retain, nonatomic) NSMapTable *fetchObservers; // @synthesize fetchObservers=_fetchObservers;
-@property(nonatomic) id <AXElementFetcherDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <AXElementFetcherDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) long long elementGroupingHeuristics; // @synthesize elementGroupingHeuristics=_elementGroupingHeuristics;
 @property(nonatomic, getter=isGroupingEnabled) _Bool groupingEnabled; // @synthesize groupingEnabled=_groupingEnabled;
 @property(nonatomic) _Bool shouldIncludeNonScannerElements; // @synthesize shouldIncludeNonScannerElements=_shouldIncludeNonScannerElements;
@@ -65,7 +65,7 @@
 - (id)_processAppGroup:(id)arg1 keyboardGroup:(id *)arg2;
 @property(readonly, nonatomic) AXElementGroupPruner *elementGroupPruner;
 - (id)_filterGroup:(id)arg1 withFilter:(CDUnknownBlockType)arg2;
-- (id)_groupWithItems:(id)arg1 groupTraits:(unsigned long long)arg2 scanningBehaviorTraits:(unsigned long long)arg3 label:(id)arg4 currentPid:(int)arg5;
+- (id)_groupWithItems:(id)arg1 groupTraits:(unsigned long long)arg2 scanningBehaviorTraits:(unsigned long long)arg3 label:(id)arg4 identifier:(id)arg5 currentPid:(int)arg6;
 - (id)_groupWithDictionary:(id)arg1 currentPid:(int)arg2;
 - (id)findGroupableMatchingBlock:(CDUnknownBlockType)arg1;
 - (id)_findGroupableMatchingBlock:(CDUnknownBlockType)arg1 inElementGroup:(id)arg2;

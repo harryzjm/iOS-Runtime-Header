@@ -18,7 +18,6 @@
 
 + (id)sharedRequester;
 + (void)useRemoteProxy;
-+ (void)useLocalProxy;
 + (void)useProxy:(Class)arg1;
 - (void).cxx_destruct;
 - (void)clearCache;

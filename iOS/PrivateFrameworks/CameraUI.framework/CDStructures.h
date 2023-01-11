@@ -101,6 +101,10 @@ struct __sbuf {
     int _field2;
 };
 
+struct fsid {
+    int _field1[2];
+};
+
 struct ledger_entry_info {
     long long _field1;
     long long _field2;
@@ -108,6 +112,25 @@ struct ledger_entry_info {
     unsigned long long _field4;
     unsigned long long _field5;
     unsigned long long _field6;
+};
+
+struct statfs {
+    unsigned int _field1;
+    int _field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
+    unsigned long long _field5;
+    unsigned long long _field6;
+    unsigned long long _field7;
+    struct fsid _field8;
+    unsigned int _field9;
+    unsigned int _field10;
+    unsigned int _field11;
+    unsigned int _field12;
+    char _field13[16];
+    char _field14[1024];
+    char _field15[1024];
+    unsigned int _field16[8];
 };
 
 #pragma mark Typedef'd Structures
@@ -123,4 +146,21 @@ typedef struct {
     unsigned int flags;
     long long epoch;
 } CDStruct_1b6d18a9;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    struct CGPoint _field3;
+} CDStruct_d1ca95b4;
+
+typedef struct {
+    double _field1;
+    struct CGPoint _field2;
+} CDStruct_f31c9284;
+
+typedef struct {
+    struct CGPoint _field1;
+    struct CGPoint _field2;
+    double _field3;
+} CDStruct_9c823225;
 

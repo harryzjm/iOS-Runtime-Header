@@ -10,7 +10,6 @@
 {
     _Bool _topInsetIncludesPalette;
     _Bool _keyboardVisible;
-    _Bool _holdingKeyboardUpdatesForJellyfishDemo;
     _Bool _keyboardInteractionCancelled;
     UIScrollView *_scrollView;
     double _topInsetPadding;
@@ -22,7 +21,6 @@
 
 @property(retain, nonatomic) IMScheduledUpdater *updater; // @synthesize updater=_updater;
 @property(nonatomic) _Bool keyboardInteractionCancelled; // @synthesize keyboardInteractionCancelled=_keyboardInteractionCancelled;
-@property(nonatomic, getter=isHoldingKeyboardUpdatesForJellyfishDemo) _Bool holdingKeyboardUpdatesForJellyfishDemo; // @synthesize holdingKeyboardUpdatesForJellyfishDemo=_holdingKeyboardUpdatesForJellyfishDemo;
 @property(nonatomic) struct CGRect keyboardScreenFrame; // @synthesize keyboardScreenFrame=_keyboardScreenFrame;
 @property(nonatomic, getter=isKeyboardVisible) _Bool keyboardVisible; // @synthesize keyboardVisible=_keyboardVisible;
 @property(readonly, nonatomic) double minimumBottomInset; // @synthesize minimumBottomInset=_minimumBottomInset;
@@ -31,8 +29,6 @@
 @property(readonly, nonatomic) _Bool topInsetIncludesPalette; // @synthesize topInsetIncludesPalette=_topInsetIncludesPalette;
 @property(readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 - (void).cxx_destruct;
-- (void)endHoldingKeyboardUpdatesForJellyfishDemo;
-- (void)beginHoldingKeyboardUpdatesForJellyfishDemo;
 - (double)_visibleKeyboardHeight;
 - (double)_bottomRotatingFooterHeight;
 - (void)_entryViewWillRotate:(id)arg1;

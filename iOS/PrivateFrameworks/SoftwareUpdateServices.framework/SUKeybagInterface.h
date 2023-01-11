@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSHashTable;
 @protocol OS_dispatch_queue;
@@ -31,6 +31,7 @@
 - (_Bool)persistKeybagStash;
 - (_Bool)createInstallationKeybagForDescriptor:(id)arg1 withSecret:(id)arg2 forUnattendedInstall:(_Bool)arg3;
 - (int)installationKeybagStateForDescriptor:(id)arg1;
+- (_Bool)hadFirstUnlock;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 @property(readonly, nonatomic) _Bool isPasscodeLocked;

@@ -4,25 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <SiriUI/CRCommandHandling-Protocol.h>
 #import <SiriUI/CRFeedbackListener-Protocol.h>
 
-@class CRKCardSectionViewController, CRKCardViewController, CRNextCardCommand, CRPunchoutCommand, INIntent, UIViewController;
-@protocol CRCard, CRReferentialCommand;
+@class CRKCardSectionViewController, CRNextCardCommand, CRPunchoutCommand, CRRequestUserConfirmationCommand, INIntent, UIViewController;
+@protocol CRCard, CRKCardViewControlling, CRReferentialCommand;
 
-@protocol CRKCardViewControllerDelegate <CRFeedbackListener>
+@protocol CRKCardViewControllerDelegate <CRFeedbackListener, CRCommandHandling>
 
 @optional
-- (void)presentViewController:(UIViewController *)arg1 forCardViewController:(CRKCardViewController *)arg2;
-- (unsigned long long)navigationIndexOfCardViewController:(CRKCardViewController *)arg1;
-- (_Bool)performPunchoutCommand:(CRPunchoutCommand *)arg1 forCardViewController:(CRKCardViewController *)arg2;
-- (_Bool)performNextCardCommand:(CRNextCardCommand *)arg1 forCardViewController:(CRKCardViewController *)arg2;
-- (_Bool)performReferentialCommand:(id <CRReferentialCommand>)arg1 forCardViewController:(CRKCardViewController *)arg2;
-- (_Bool)canPerformReferentialCommand:(id <CRReferentialCommand>)arg1 forCardViewController:(CRKCardViewController *)arg2;
-- (id <CRCard>)baseCardForCardViewController:(CRKCardViewController *)arg1;
-- (struct CGSize)cardViewController:(CRKCardViewController *)arg1 boundingSizeForCardSectionViewController:(CRKCardSectionViewController *)arg2;
-- (void)cardViewController:(CRKCardViewController *)arg1 didFailToLoadCard:(id <CRCard>)arg2;
-- (void)cardViewController:(CRKCardViewController *)arg1 requestsHandlingOfIntent:(INIntent *)arg2;
-- (void)cardViewControllerBoundsDidChange:(CRKCardViewController *)arg1;
-- (void)cardViewControllerDidLoad:(CRKCardViewController *)arg1;
+- (void)cardViewController:(UIViewController<CRKCardViewControlling> *)arg1 requestCardSectionViewSourceForCard:(id <CRCard>)arg2 reply:(void (^)(id <CRKCardSectionViewSourcing>, NSError *))arg3;
+- (_Bool)performRequestUserConfirmationCommand:(CRRequestUserConfirmationCommand *)arg1 forCardViewController:(UIViewController<CRKCardViewControlling> *)arg2;
+- (_Bool)performPunchoutCommand:(CRPunchoutCommand *)arg1 forCardViewController:(UIViewController<CRKCardViewControlling> *)arg2;
+- (_Bool)performNextCardCommand:(CRNextCardCommand *)arg1 forCardViewController:(UIViewController<CRKCardViewControlling> *)arg2;
+- (_Bool)performReferentialCommand:(id <CRReferentialCommand>)arg1 forCardViewController:(UIViewController<CRKCardViewControlling> *)arg2;
+- (void)presentViewController:(UIViewController *)arg1 forCardViewController:(UIViewController<CRKCardViewControlling> *)arg2;
+- (unsigned long long)navigationIndexOfCardViewController:(UIViewController<CRKCardViewControlling> *)arg1;
+- (_Bool)canPerformReferentialCommand:(id <CRReferentialCommand>)arg1 forCardViewController:(UIViewController<CRKCardViewControlling> *)arg2;
+- (id <CRCard>)baseCardForCardViewController:(UIViewController<CRKCardViewControlling> *)arg1;
+- (struct CGSize)cardViewController:(UIViewController<CRKCardViewControlling> *)arg1 boundingSizeForCardSectionViewController:(CRKCardSectionViewController *)arg2;
+- (void)cardViewController:(UIViewController<CRKCardViewControlling> *)arg1 didFailToLoadCard:(id <CRCard>)arg2;
+- (void)cardViewController:(UIViewController<CRKCardViewControlling> *)arg1 requestsHandlingOfIntent:(INIntent *)arg2;
+- (void)cardViewControllerBoundsDidChange:(UIViewController<CRKCardViewControlling> *)arg1;
+- (void)cardViewControllerDidLoad:(UIViewController<CRKCardViewControlling> *)arg1;
 @end
 

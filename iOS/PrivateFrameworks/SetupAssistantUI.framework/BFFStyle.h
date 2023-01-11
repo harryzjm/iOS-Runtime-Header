@@ -19,7 +19,7 @@
 - (void)applyThemeToTextView:(id)arg1;
 - (void)applyThemeToLabel:(id)arg1;
 - (double)tallRowHeight;
-- (struct CGSize)sizeForContinueButtonInParent:(id)arg1;
+- (struct CGSize)sizeForContinueButtonInAncestor:(id)arg1;
 - (id)continueButtonWithTitle:(id)arg1 inView:(id)arg2;
 - (void)applyThemeToNavigationController:(id)arg1;
 - (void)applyThemeToNavigationController:(id)arg1 allowUnderlap:(_Bool)arg2;
@@ -39,9 +39,10 @@
 - (double)headerTitleBaselineOffsetForView:(id)arg1 hasIcon:(_Bool)arg2;
 - (double)headerIconBaselineOffset;
 - (double)headerIconBaselineOffsetForView:(id)arg1;
-- (double)headerTitleBaselineOffsetForView:(id)arg1 icon:(id)arg2;
 - (double)headerYOffsetForIcon:(id)arg1 inView:(id)arg2;
-- (struct CGSize)_effectiveSizeForIcon:(id)arg1 inView:(id)arg2;
+- (double)headerTitleBaselineOffsetForView:(id)arg1 iconSize:(struct CGSize)arg2;
+- (double)headerYOffsetForIconSize:(struct CGSize)arg1 inView:(id)arg2;
+- (struct CGSize)_effectiveSizeForIconSize:(struct CGSize)arg1 inView:(id)arg2;
 - (id)headerTitleFont;
 
 @end

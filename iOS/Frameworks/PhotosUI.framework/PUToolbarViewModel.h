@@ -8,6 +8,7 @@
 
 @interface PUToolbarViewModel
 {
+    _Bool _needsToUpdateToolbarSize;
     NSArray *_toolbarItems;
     UIView *_accessoryView;
     double _accessoryViewTopOutset;
@@ -16,6 +17,7 @@
     UIViewController *__viewController;
 }
 
+@property(nonatomic) _Bool needsToUpdateToolbarSize; // @synthesize needsToUpdateToolbarSize=_needsToUpdateToolbarSize;
 @property(nonatomic, setter=_setViewController:) __weak UIViewController *_viewController; // @synthesize _viewController=__viewController;
 @property(nonatomic) double maximumHeight; // @synthesize maximumHeight=_maximumHeight;
 @property(nonatomic) double accessoryViewMaximumHeight; // @synthesize accessoryViewMaximumHeight=_accessoryViewMaximumHeight;
@@ -23,6 +25,7 @@
 @property(retain, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
 @property(copy, nonatomic) NSArray *toolbarItems; // @synthesize toolbarItems=_toolbarItems;
 - (void).cxx_destruct;
+- (void)didPublishChanges;
 @property(readonly, nonatomic) PUToolbarViewModelChange *currentChange;
 - (id)newViewModelChange;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol CBPairingAgentDelegate, CBPairingAgentParentDelegate;
 
@@ -27,9 +27,11 @@
 - (id)retrieveOOBDataForPeer:(id)arg1;
 - (void)respondToPairingRequest:(id)arg1 type:(long long)arg2 accept:(_Bool)arg3 data:(id)arg4;
 - (void)unpairPeer:(id)arg1;
+- (void)pairPeer:(id)arg1 options:(id)arg2;
 - (void)pairPeer:(id)arg1 useMITM:(_Bool)arg2;
 - (void)pairPeer:(id)arg1;
 - (id)retrievePairedPeers;
+- (_Bool)isPeerMagicPaired:(id)arg1;
 - (_Bool)isPeerCloudPaired:(id)arg1;
 - (_Bool)isPeerPaired:(id)arg1;
 - (void)updateRegistration;

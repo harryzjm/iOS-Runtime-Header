@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface ICCameraFolderProperties : NSObject
 {
     NSMutableArray *_files;
@@ -16,7 +17,6 @@
 
 @property(retain) NSMutableArray *folders; // @synthesize folders=_folders;
 @property(retain) NSMutableArray *files; // @synthesize files=_files;
-- (void)finalize;
 - (void)dealloc;
 
 @end

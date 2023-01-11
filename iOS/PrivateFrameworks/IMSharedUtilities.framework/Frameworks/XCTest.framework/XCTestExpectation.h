@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSString, _XCTestExpectationImplementation;
-@protocol OS_dispatch_queue, XCTestExpectationDelegate;
+@protocol XCTestExpectationDelegate;
 
 @interface XCTestExpectation : NSObject
 {
@@ -16,28 +16,29 @@
 
 + (id)expectationWithDescription:(id)arg1;
 @property(readonly) _XCTestExpectationImplementation *internalImplementation; // @synthesize internalImplementation=_internalImplementation;
+- (void).cxx_destruct;
 - (void)cleanup;
 @property _Bool hasBeenWaitedOn;
 @property id <XCTestExpectationDelegate> delegate;
 @property(readonly, copy) NSArray *fulfillCallStackReturnAddresses;
 @property(readonly, copy) NSArray *creationCallStackReturnAddresses;
+@property(readonly) _Bool on_queue_fulfilled;
 @property(readonly) _Bool fulfilled;
 @property _Bool hasInverseBehavior;
 @property(getter=isInverted) _Bool inverted;
+@property(readonly) _Bool on_queue_isInverted;
 @property(nonatomic) _Bool assertForOverFulfill;
 @property(nonatomic) unsigned long long expectedFulfillmentCount;
 @property(nonatomic) unsigned long long fulfillmentCount;
+@property(readonly) unsigned long long on_queue_fulfillmentToken;
 @property(readonly) unsigned long long fulfillmentToken;
 @property(readonly) unsigned long long creationToken;
-- (void)_queue_fulfillWithCallStackReturnAddresses:(id)arg1;
+- (_Bool)_queue_fulfillWithCallStackReturnAddresses:(id)arg1;
 - (void)fulfill;
 @property(copy) NSString *expectationDescription;
 - (id)description;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 - (id)initWithDescription:(id)arg1;
 - (id)init;
-- (void)dealloc;
 
 @end
 

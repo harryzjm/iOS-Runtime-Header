@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Silex/SXDynamicAdLayout-Protocol.h>
+#import <Silex/SXAutoPlacementLayout-Protocol.h>
 
 @class NSString;
 @protocol SXEdgeSpacing;
 
-@interface SXJSONDynamicAdLayout <SXDynamicAdLayout>
+@interface SXJSONDynamicAdLayout <SXAutoPlacementLayout>
 {
 }
 

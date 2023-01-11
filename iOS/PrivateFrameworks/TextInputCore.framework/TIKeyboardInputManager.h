@@ -7,7 +7,7 @@
 #import <TextInputCore/TILanguageSelectionControllerDelegate-Protocol.h>
 #import <TextInputCore/TIRevisionHistoryDelegate-Protocol.h>
 
-@class NSArray, NSCharacterSet, NSMutableArray, NSMutableString, NSString, TIAutoshiftRegularExpressionLoader, TIEmojiCandidateGenerator, TIInputContextHistory, TIKeyboardCandidate, TIKeyboardFeatureSpecialization, TIKeyboardInputManagerConfig, TIKeyboardInputManagerState, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardState, TILRUDictionary, TILanguageSelectionController, TIRevisionHistory, TITextCheckerExemptions;
+@class NSArray, NSCharacterSet, NSMutableString, NSString, TIAutoshiftRegularExpressionLoader, TIEmojiCandidateGenerator, TIInputContextHistory, TIKeyboardCandidate, TIKeyboardFeatureSpecialization, TIKeyboardInputManagerConfig, TIKeyboardInputManagerState, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardState, TILRUDictionary, TILanguageSelectionController, TIRevisionHistory, TITextCheckerExemptions;
 
 @interface TIKeyboardInputManager <TIRevisionHistoryDelegate, TILanguageSelectionControllerDelegate>
 {
@@ -24,7 +24,6 @@
     TILanguageSelectionController *_languageSelectionController;
     TIEmojiCandidateGenerator *_emojiCandidateGenerator;
     TIInputContextHistory *_synchronizedInputContextHistory;
-    NSMutableArray *_conversationTurns;
     _Bool _wordLearningEnabled;
     _Bool _isEditingWordPrefix;
     TIKeyboardState *_keyboardState;
@@ -106,9 +105,8 @@
 - (_Bool)shouldGenerateSuggestionsForSelectedText;
 - (void)reconcileCandidates:(struct CandidateCollection *)arg1 forTypedString:(struct String *)arg2 withPhraseCandidate:(struct Candidate *)arg3 replacing:(const struct String *)arg4;
 - (id)autocorrectionListForSelectedText;
+- (void)generateCannedResponseCandidatesAsyncForString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)cannedResponseCandidatesForString:(id)arg1;
-- (id)rewriteMoneyAttributes:(id)arg1;
-- (id)_responseKitResponseCandidatesForString:(id)arg1;
 - (void)updateResponseModelForKeyboardState:(id)arg1;
 - (_Bool)shouldAllowContextTokenID:(struct TITokenID)arg1;
 - (_Bool)shouldDropInputStem;
@@ -123,7 +121,7 @@
 - (id)autocorrectionCandidateForInput:(id)arg1 withCandidate:(const struct Candidate *)arg2 insertingSpace:(_Bool)arg3 sharedPrefixLength:(unsigned long long)arg4;
 - (id)autocorrectionCandidateForInput:(id)arg1 withCandidate:(const struct Candidate *)arg2;
 - (_Bool)isEditingExistingWord;
-- (id)phraseCandidateCompletedByWord:(const struct String *)arg1 allowNoSuggest:(_Bool)arg2;
+- (id)phraseCandidateCompletedByWord:(const struct String *)arg1 allowNoSuggest:(_Bool)arg2 forAutocorrection:(_Bool)arg3;
 - (unsigned long long)prefixLengthOfInput:(id)arg1 sharedWithCandidates:(const struct CandidateCollection *)arg2;
 - (unsigned long long)prefixLengthOfInput:(id)arg1 sharedWithCandidate:(const struct Candidate *)arg2;
 - (void)checkAutocorrectionDictionaries;
@@ -140,7 +138,7 @@
 - (id)nonstopPunctuationCharacters;
 - (void)updateForRevisitedString:(id)arg1;
 - (id)autocorrectionRecordForWord:(id)arg1;
-- (void)recordRejectedAutocorrectionForAcceptedText:(id)arg1;
+- (void)recordRejectedAutocorrectionForAcceptedText:(id)arg1 fromPredictiveInputBar:(_Bool)arg2;
 - (void)recordAcceptedAutocorrection:(id)arg1 fromPredictiveInputBar:(_Bool)arg2;
 - (id)revisionListFromAutocorrectionList:(id)arg1 afterAcceptingCandidate:(id)arg2;
 - (void)recordSuggestedAutocorrectionList:(id)arg1;
@@ -156,7 +154,7 @@
 - (void)addItemToConversationHistoryWithText:(id)arg1 timestamp:(id)arg2 senderID:(id)arg3;
 - (void)registerNegativeEvidence:(id)arg1 tokenID:(struct TITokenID)arg2 context:(const struct TITokenID *)arg3 contextLength:(unsigned long long)arg4 intendedTokenID:(struct TITokenID *)arg5 hint:(int)arg6;
 - (void)decrementLanguageModelCount:(id)arg1 tokenID:(struct TITokenID)arg2 context:(const struct TITokenID *)arg3 contextLength:(unsigned long long)arg4;
-- (void)incrementLanguageModelCount:(id)arg1 tokenID:(struct TITokenID)arg2 context:(const struct TITokenID *)arg3 contextLength:(unsigned long long)arg4 saveToDifferentialPrivacy:(_Bool)arg5;
+- (void)incrementLanguageModelCount:(id)arg1 tokenID:(struct TITokenID)arg2 context:(const struct TITokenID *)arg3 contextLength:(unsigned long long)arg4 saveToDifferentialPrivacy:(int)arg5;
 - (_Bool)shouldLearnWord:(id)arg1;
 - (_Bool)shouldSuppressLanguageSelectionEvidence;
 - (_Bool)shouldSuppressLearning;
@@ -248,11 +246,10 @@
 - (id)generateReplacementsForString:(id)arg1 keyLayout:(id)arg2;
 - (id)handleAcceptedCandidate:(id)arg1 keyboardState:(id)arg2;
 - (void)generateCandidatesWithKeyboardState:(id)arg1 candidateRange:(struct _NSRange)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)generateAutocorrectionsWithKeyboardState:(id)arg1 candidateRange:(struct _NSRange)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)generateAutocorrectionsWithKeyboardState:(id)arg1;
+- (void)generateAutocorrectionsWithKeyboardState:(id)arg1 candidateRange:(struct _NSRange)arg2 candidateHandler:(id)arg3;
+- (id)generateOneTimeCodeCandidatesWithKeyboardState:(id)arg1;
 - (id)generateAutofillFormWithKeyboardState:(id)arg1;
 - (void)trackProactiveMetrics:(id)arg1 keyboardState:(id)arg2;
-- (id)generateProactiveAutocompletionsWithDocumentState:(id)arg1;
 - (void)deleteFromInputWithContext:(id)arg1;
 - (void)addInput:(id)arg1 withContext:(id)arg2;
 - (id)handleKeyboardInput:(id)arg1;
@@ -260,6 +257,7 @@
 - (void)syncToKeyboardState:(id)arg1;
 - (_Bool)documentState:(id)arg1 matchesDocumentState:(id)arg2;
 - (void)resume;
+- (void)releaseMRLBuffers;
 - (void)suspend;
 - (id)currentInputModeIdentifier;
 - (void)acceptCurrentCandidateIfSelectedWithContext:(id)arg1;
@@ -306,8 +304,8 @@
 - (id)newInputManagerState;
 @property(readonly, nonatomic) TIKeyboardFeatureSpecialization *keyboardFeatureSpecialization;
 - (void)dealloc;
-- (id)initWithConfig:(id)arg1;
-- (id)initWithInputMode:(id)arg1;
+- (id)initWithConfig:(id)arg1 keyboardState:(id)arg2;
+- (id)initWithInputMode:(id)arg1 keyboardState:(id)arg2;
 - (_Bool)supportsNumberKeySelection;
 - (id)indexTitlesForGroupTitles:(id)arg1 sortingMethod:(id)arg2;
 - (void)groupedCandidatesFromCandidates:(id)arg1 usingSortingMethod:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -369,7 +367,9 @@
 - (void)addSynthesizedTouchToInput:(id)arg1;
 - (_Bool)isHardwareKeyboardAutocorrectionEnabled;
 - (id)generateAndRenderProactiveSuggestionsWithTriggers:(id)arg1 withAdditionalPredictions:(id)arg2 withInput:(id)arg3;
+- (void)generateAndRenderProactiveSuggestionsWithTriggers:(id)arg1 withAdditionalPredictions:(id)arg2 withInput:(id)arg3 async:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (_Bool)enablesProactiveQuickType;
+- (id)getTestingStateObject;
 - (unsigned long long)userFrequencyOfWord:(id)arg1 lexiconID:(unsigned int)arg2;
 - (unsigned long long)userFrequencyOfWord:(id)arg1;
 - (RefPtr_9bddf3b2)getDictionary;

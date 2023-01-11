@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VoiceServices/VSSpeechConnectionDelegate-Protocol.h>
 
@@ -91,6 +91,9 @@
 - (void)getLocalVoiceResources:(CDUnknownBlockType)arg1;
 - (void)getLocalVoiceAssets:(CDUnknownBlockType)arg1;
 - (void)cleanUnusedAssets:(CDUnknownBlockType)arg1;
+- (void)endAudioPowerUpdate;
+- (void)beginAudioPowerUpdateWithReply:(CDUnknownBlockType)arg1;
+- (void)getTTSServerVoicesWithFilter:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)continueSpeakingWithError:(id *)arg1;
 - (_Bool)stopSpeakingAtNextBoundary:(long long)arg1 error:(id *)arg2;
 - (_Bool)startSpeakingString:(id)arg1 toURL:(id)arg2 withLanguageCode:(id)arg3 error:(id *)arg4;
@@ -137,6 +140,7 @@
 - (_Bool)pauseSpeakingAtNextBoundary:(long long)arg1 synchronously:(_Bool)arg2 error:(id *)arg3;
 - (_Bool)stopSpeakingPresynthesizedAudioSynchronously:(_Bool)arg1 error:(id *)arg2;
 - (_Bool)stopSpeakingAtNextBoundary:(long long)arg1 synchronously:(_Bool)arg2 error:(id *)arg3;
+- (id)cachePresynthesizedAudioRequest:(id)arg1;
 - (id)startSpeakingPresynthesizedAudioRequest:(id)arg1;
 - (id)startSpeakingRequest:(id)arg1;
 - (id)startSynthesizingRequest:(id)arg1;

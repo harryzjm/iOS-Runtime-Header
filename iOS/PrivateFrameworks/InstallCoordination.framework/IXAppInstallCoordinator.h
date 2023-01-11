@@ -14,18 +14,21 @@
 @interface IXAppInstallCoordinator : NSObject <IXCoordinatorWithPlaceholderPromise>
 {
     _Bool _complete;
+    NSError *_error;
+    unsigned long long _errorSourceIdentifier;
     id <IXAppInstallCoordinatorObserver> _observer;
     IXAppInstallCoordinatorSeed *_seed;
     NSObject<OS_dispatch_queue> *_observerCalloutQueue;
+    NSObject<OS_dispatch_queue> *_internalQueue;
     unsigned long long _observersCalled;
-    NSError *_error;
-    unsigned long long _errorSourceIdentifier;
 }
 
 + (void)setRemovability:(unsigned long long)arg1 forAppWithBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)removabilityForAppWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (_Bool)uninstallAppWithBundleID:(id)arg1 error:(id *)arg2;
++ (void)uninstallAppWithBundleID:(id)arg1 requestUserConfirmation:(_Bool)arg2 waitForDeletion:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)uninstallAppWithBundleID:(id)arg1 requestUserConfirmation:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
++ (_Bool)demoteAppToPlaceholderWithBundleID:(id)arg1 forReason:(unsigned long long)arg2 waitForDeletion:(_Bool)arg3 error:(id *)arg4;
 + (_Bool)demoteAppToPlaceholderWithBundleID:(id)arg1 forReason:(unsigned long long)arg2 error:(id *)arg3;
 + (void)prioritizeCoordinatorForAppWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (_Bool)prioritizeCoordinatorForAppWithBundleID:(id)arg1 error:(id *)arg2;
@@ -46,16 +49,16 @@
 + (id)coordinatorForAppWithBundleID:(id)arg1 withClientID:(unsigned long long)arg2 createIfNotExisting:(_Bool)arg3 created:(_Bool *)arg4 error:(id *)arg5;
 + (id)_coordinatorForAppWithBundleID:(id)arg1 withClientID:(unsigned long long)arg2 intent:(unsigned long long)arg3 createIfNotExisting:(_Bool)arg4 created:(_Bool *)arg5 error:(id *)arg6;
 + (_Bool)coordinationIsEnabled;
++ (_Bool)setTestModeForIdentifierPrefix:(id)arg1 testMode:(unsigned long long)arg2;
 + (_Bool)setTestingEnabled:(_Bool)arg1;
++ (int)daemonPid;
 + (_Bool)killDaemonForTesting;
 + (_Bool)purgeAllCoordinatorsAndPromisesForCreator:(unsigned long long)arg1;
 + (void)installApplication:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)installApplication:(id)arg1 consumeSource:(_Bool)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)_beginInstallForURL:(id)arg1 consumeSource:(_Bool)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
-@property(nonatomic) unsigned long long errorSourceIdentifier; // @synthesize errorSourceIdentifier=_errorSourceIdentifier;
-@property(retain, nonatomic) NSError *error; // @synthesize error=_error;
-@property(nonatomic, getter=isComplete) _Bool complete; // @synthesize complete=_complete;
 @property(nonatomic) unsigned long long observersCalled; // @synthesize observersCalled=_observersCalled;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *observerCalloutQueue; // @synthesize observerCalloutQueue=_observerCalloutQueue;
 @property(readonly, nonatomic) IXAppInstallCoordinatorSeed *seed; // @synthesize seed=_seed;
 @property(nonatomic) __weak id <IXAppInstallCoordinatorObserver> observer; // @synthesize observer=_observer;
@@ -80,6 +83,9 @@
 - (_Bool)isPaused:(_Bool *)arg1 withError:(id *)arg2;
 - (_Bool)resumeWithError:(id *)arg1;
 - (_Bool)pauseWithError:(id *)arg1;
+@property(nonatomic, getter=isComplete) _Bool complete; // @synthesize complete=_complete;
+@property(nonatomic) unsigned long long errorSourceIdentifier; // @synthesize errorSourceIdentifier=_errorSourceIdentifier;
+@property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 - (_Bool)setPreparationPromise:(id)arg1 withError:(id *)arg2;
 - (id)preparationPromiseWithError:(id *)arg1;
 - (id)userDataRestoreShouldBegin:(_Bool *)arg1;
@@ -89,6 +95,8 @@
 @property(readonly, nonatomic) _Bool hasInitialODRAssetPromises;
 - (id)initialODRAssetPromisesWithError:(id *)arg1;
 - (_Bool)setInitialODRAssetPromises:(id)arg1 error:(id *)arg2;
+- (unsigned long long)importanceWithError:(id *)arg1;
+- (_Bool)setImportance:(unsigned long long)arg1 error:(id *)arg2;
 @property(nonatomic, getter=isUserInitiated) _Bool userInitiated;
 @property(readonly, nonatomic) _Bool hasAutoEnabledExtensionTypes;
 - (_Bool)setAutoEnabledExtensionTypes:(id)arg1 error:(id *)arg2;

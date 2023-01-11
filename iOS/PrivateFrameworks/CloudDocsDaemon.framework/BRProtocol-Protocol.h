@@ -6,7 +6,7 @@
 
 #import <CloudDocsDaemon/CKXPCShareDaemon-Protocol.h>
 
-@class BRFileObjectID, CKShare, CKShareMetadata, NSArray, NSData, NSDictionary, NSFileHandle, NSObject, NSSet, NSString, NSURL;
+@class BRFileObjectID, CKRecordID, CKShare, CKShareMetadata, NSArray, NSData, NSDictionary, NSFileHandle, NSObject, NSSet, NSString, NSURL;
 @protocol BRItemNotificationReceiving, BRNonLocalVersionReceiving, BROperationClient;
 
 @protocol BRProtocol <CKXPCShareDaemon>
@@ -67,6 +67,7 @@
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toPrepFolderForSharingAt:(NSURL *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toUploadAllFilesInContainer:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyAvailableQuotaWithReply:(void (^)(NSNumber *, NSError *))arg2;
+- (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyDocumentURLForRecordID:(CKRecordID *)arg2 syncIfNeeded:(_Bool)arg3 reply:(void (^)(FPSandboxingURLWrapper *, NSError *))arg4;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopySharingAccessToken:(NSURL *)arg2 reply:(void (^)(NSData *, NSString *, NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopySharingWebAuthTokenForContainerID:(NSString *)arg2 reply:(void (^)(NSString *, NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopySharingInfoAtURL:(NSURL *)arg2 reply:(void (^)(CKShare *, NSURL *, NSError *))arg3;
@@ -134,7 +135,7 @@
 - (void)dropSpotlightIndexWithReply:(void (^)(NSError *))arg1;
 - (void)reclaimAmount:(long long)arg1 withUrgency:(int)arg2 reply:(void (^)(long long))arg3;
 - (void)purgeAmount:(long long)arg1 withUrgency:(int)arg2 reply:(void (^)(long long))arg3;
-- (void)computePurgableSpaceWithUrgency:(int)arg1 reply:(void (^)(long long))arg2;
+- (void)computePurgeableSpaceForAllUrgenciesWithReply:(void (^)(NSDictionary *, NSNumber *, NSError *))arg1;
 - (void)iWorkForceSyncContainerID:(NSString *)arg1 ownedByMe:(_Bool)arg2 reply:(void (^)(NSError *))arg3;
 - (void)forceSyncContainerID:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)_t_waitUntilIdle:(NSString *)arg1 reply:(void (^)(NSError *))arg2;

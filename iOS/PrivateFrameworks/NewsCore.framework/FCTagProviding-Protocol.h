@@ -4,13 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NewsCore/NSCopying-Protocol.h>
+#import <NewsCore/NFCopying-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCAssetHandle, FCPurchaseOfferableConfiguration, NSArray, NSDate, NSString, NSURL, NTPBPublisherPaidDescriptionStrings;
+@class FCAssetHandle, FCColor, FCPurchaseOfferableConfiguration, NSArray, NSData, NSDate, NSString, NSURL, NTPBPublisherPaidDescriptionStrings;
 @protocol FCChannelProviding, FCFeedTheming, FCSectionProviding, FCTagProviding, FCTopicProviding;
 
-@protocol FCTagProviding <NSObject, NSCopying>
+@protocol FCTagProviding <NSObject, NFCopying>
+@property(readonly, nonatomic) NSDate *publisherSpecifiedArticleIDsModifiedDate;
+@property(readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs;
+@property(readonly, nonatomic) NSString *articleRecirculationConfigJSON;
+@property(readonly, nonatomic) _Bool isArticleReadCountReportingEnabled;
+@property(readonly, nonatomic) _Bool isRealTimeTrackingEnabled;
 @property(readonly, nonatomic) _Bool isHidden;
 @property(readonly, nonatomic) unsigned long long groupingEligibility;
 @property(readonly, nonatomic) NTPBPublisherPaidDescriptionStrings *publisherPaidDescriptionStrings;
@@ -25,8 +30,7 @@
 @property(readonly, copy, nonatomic) NSString *publisherPaidWebAccessURL;
 @property(readonly, copy, nonatomic) NSString *publisherPaidVerificationURL;
 @property(readonly, copy, nonatomic) NSString *publisherPaidAuthorizationURL;
-@property(readonly, nonatomic) double forYouCutoffTime;
-@property(readonly, nonatomic) unsigned long long forYouMaximumArticleCount;
+@property(readonly, copy, nonatomic) NSString *subtitle;
 @property(readonly, nonatomic) _Bool isNotificationEnabled;
 @property(readonly, nonatomic) long long minimumNewsVersion;
 @property(readonly, nonatomic) long long score;
@@ -35,8 +39,10 @@
 @property(readonly, nonatomic) NSArray *blockedStorefrontIDs;
 @property(readonly, nonatomic) NSArray *iAdKeywords;
 @property(readonly, nonatomic) NSArray *iAdCategories;
+@property(readonly, copy, nonatomic) FCColor *groupTitleColor;
 @property(readonly, copy, nonatomic) id <FCFeedTheming> theme;
 @property(readonly, copy, nonatomic) NSString *coverArticleListID;
+@property(readonly, nonatomic) FCAssetHandle *feedNavImageAssetHandle;
 @property(readonly, nonatomic) FCAssetHandle *coverImageAssetHandle;
 @property(readonly, nonatomic) _Bool isSubscribable;
 @property(readonly, nonatomic) NSArray *relatedChannelIDsForOnboarding;
@@ -69,5 +75,8 @@
 - (_Bool)isPurchaseSetup;
 - (_Bool)isEqualToTag:(id <FCTagProviding>)arg1;
 - (_Bool)isNoLongerAvailable;
+
+@optional
+@property(readonly, nonatomic) NSData *backingTagRecordData;
 @end
 

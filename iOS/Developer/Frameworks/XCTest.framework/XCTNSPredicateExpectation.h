@@ -12,6 +12,7 @@
 }
 
 @property(retain) _XCTNSPredicateExpectationImplementation *internal; // @synthesize internal=_internal;
+- (void).cxx_destruct;
 - (void)considerFulfilling;
 - (void)cleanup;
 - (void)fulfill;
@@ -20,7 +21,7 @@
 @property(readonly, copy) NSPredicate *predicate;
 @property(readonly) id object;
 - (id)debugDescription;
-- (void)setHasBeenWaitedOn:(_Bool)arg1;
+- (void)on_queue_setHasBeenWaitedOn:(_Bool)arg1;
 - (id)initWithPredicate:(id)arg1 object:(id)arg2;
 - (void)dealloc;
 

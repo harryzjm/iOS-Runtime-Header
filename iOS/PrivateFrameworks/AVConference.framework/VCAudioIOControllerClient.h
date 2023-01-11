@@ -4,12 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@protocol VCAudioIOControllerDelegate><VCAudioIOSink><VCAudioIOSource;
+#import <AVConference/VCAudioIOControllerSink-Protocol.h>
+#import <AVConference/VCAudioIOControllerSource-Protocol.h>
+
+@class NSString;
+@protocol VCAudioIOControllerDelegate><VCAudioIOControllerSink><VCAudioIOControllerSource;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioIOControllerClient : NSObject
+@interface VCAudioIOControllerClient : NSObject <VCAudioIOControllerSource, VCAudioIOControllerSink>
 {
     id _delegate;
     struct AudioStreamBasicDescription _format;
@@ -40,13 +44,20 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool allowAudioRecording; // @synthesize allowAudioRecording=_allowAudioRecording;
 @property(nonatomic) int deviceRole; // @synthesize deviceRole=_deviceRole;
 @property(readonly, nonatomic) struct AudioStreamBasicDescription format; // @synthesize format=_format;
-@property(readonly, nonatomic) id <VCAudioIOControllerDelegate><VCAudioIOSink><VCAudioIOSource> delegate;
+- (void)pushAudioSamples:(struct opaqueVCAudioBufferList *)arg1 controllerTime:(const struct _VCAudioIOControllerTime *)arg2;
+- (void)pullAudioSamples:(struct opaqueVCAudioBufferList *)arg1 controllerTime:(const struct _VCAudioIOControllerTime *)arg2;
+@property(readonly, nonatomic) id <VCAudioIOControllerDelegate><VCAudioIOControllerSink><VCAudioIOControllerSource> delegate;
 - (void)setClientFormat:(struct AudioStreamBasicDescription)arg1;
 - (void)setRemoteCodecType:(unsigned int)arg1 sampleRate:(double)arg2;
 - (void)setFarEndVersionInfo:(struct VoiceIOFarEndVersionInfo)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1 clientPid:(int)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

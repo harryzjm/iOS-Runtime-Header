@@ -13,7 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)eventGestureController:(id)arg1 commitToPoint:(struct CGPoint)arg2;
 - (void)_updateDraggingOffsetTimesForPoint:(struct CGPoint)arg1;
-- (id)eventGestureController:(id)arg1 setUpAtPoint:(struct CGPoint)arg2 withOccurrence:(id)arg3;
+- (id)eventGestureController:(id)arg1 setUpAtPoint:(struct CGPoint)arg2 withOccurrence:(id)arg3 forceNewEvent:(_Bool)arg4;
 - (void)_axSetIsCommittingTimeAdjustment:(_Bool)arg1;
 - (_Bool)_axIsCommittingTimeAdjustment;
 - (void)showDate:(id)arg1 animated:(_Bool)arg2 completionBlock:(CDUnknownBlockType)arg3;

@@ -6,24 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class CKDPIdentifier, NSString;
+@class CKDPIdentifier, NSMutableDictionary, NSString;
 @protocol CKDProtocolTranslatorIdentityDelegate;
 
 @interface CKDProtocolTranslator : NSObject
 {
     _Bool _dontCreateValidatingParentReferences;
     NSString *_bundleIdentifier;
+    NSString *_orgAdminUserID;
     long long _databaseScope;
     id <CKDProtocolTranslatorIdentityDelegate> _identityDelegate;
     NSString *_containerScopedUserID;
     NSString *_overriddenContainerScopedUserID;
+    NSMutableDictionary *_downloadPreauthorizationMap;
 }
 
 + (id)translatorIgnoringUserIDsWithDatabaseScope:(long long)arg1;
+@property(retain, nonatomic) NSMutableDictionary *downloadPreauthorizationMap; // @synthesize downloadPreauthorizationMap=_downloadPreauthorizationMap;
 @property(copy, nonatomic) NSString *overriddenContainerScopedUserID; // @synthesize overriddenContainerScopedUserID=_overriddenContainerScopedUserID;
 @property(copy, nonatomic) NSString *containerScopedUserID; // @synthesize containerScopedUserID=_containerScopedUserID;
 @property(nonatomic) __weak id <CKDProtocolTranslatorIdentityDelegate> identityDelegate; // @synthesize identityDelegate=_identityDelegate;
 @property(readonly, nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
+@property(copy, nonatomic) NSString *orgAdminUserID; // @synthesize orgAdminUserID=_orgAdminUserID;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(nonatomic) _Bool dontCreateValidatingParentReferences; // @synthesize dontCreateValidatingParentReferences=_dontCreateValidatingParentReferences;
 - (void).cxx_destruct;
@@ -75,8 +79,10 @@
 @property(readonly, nonatomic) CKDPIdentifier *pUserID;
 - (_Bool)_isDefaultUserNameFromClient:(id)arg1;
 - (_Bool)_isDefaultUserNameFromServer:(id)arg1;
-- (id)initWithContainerScopedUserID:(id)arg1 bundleIdentifier:(id)arg2 databaseScope:(long long)arg3;
-- (id)_initWithContainerScopedUserID:(id)arg1 bundleIdentifier:(id)arg2 databaseScope:(long long)arg3;
+- (void)consumeResponseHeader:(id)arg1;
+- (id)initWithBundleIdentifier:(id)arg1 databaseScope:(long long)arg2;
+- (id)initWithContainerScopedUserID:(id)arg1 orgAdminUserID:(id)arg2 bundleIdentifier:(id)arg3 databaseScope:(long long)arg4;
+- (id)_initWithContainerScopedUserID:(id)arg1 orgAdminUserID:(id)arg2 bundleIdentifier:(id)arg3 databaseScope:(long long)arg4;
 - (id)pFieldWithKey:(id)arg1 value:(id)arg2;
 - (id)objectRepresentationFromFieldValue:(id)arg1;
 - (id)encryptedObjectRepresentationFromFieldValue:(id)arg1;

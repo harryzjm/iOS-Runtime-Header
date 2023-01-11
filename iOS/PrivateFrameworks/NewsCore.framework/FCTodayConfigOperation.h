@@ -4,25 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSObject, NSString, NTPBTodayConfig;
-@protocol FCContentContext;
+@class NSArray, NSDictionary, NSString, NTPBTodayConfig;
+@protocol FCContentContext, FCCoreConfiguration;
 
 @interface FCTodayConfigOperation
 {
+    id <FCCoreConfiguration> _configuration;
     id <FCContentContext> _context;
     NSString *_widgetConfigID;
     NSArray *_networkEvents;
-    CDUnknownBlockType _todayConfigCompletionHandlerWithInterest;
+    CDUnknownBlockType _todayConfigCompletionHandler;
     NTPBTodayConfig *_resultTodayConfig;
-    NSObject *_resultInterestToken;
+    NSDictionary *_resultHeldRecordsByType;
 }
 
-@property(copy, nonatomic) NSObject *resultInterestToken; // @synthesize resultInterestToken=_resultInterestToken;
+@property(retain, nonatomic) NSDictionary *resultHeldRecordsByType; // @synthesize resultHeldRecordsByType=_resultHeldRecordsByType;
 @property(copy, nonatomic) NTPBTodayConfig *resultTodayConfig; // @synthesize resultTodayConfig=_resultTodayConfig;
-@property(copy, nonatomic) CDUnknownBlockType todayConfigCompletionHandlerWithInterest; // @synthesize todayConfigCompletionHandlerWithInterest=_todayConfigCompletionHandlerWithInterest;
+@property(copy, nonatomic) CDUnknownBlockType todayConfigCompletionHandler; // @synthesize todayConfigCompletionHandler=_todayConfigCompletionHandler;
 @property(copy, nonatomic) NSArray *networkEvents; // @synthesize networkEvents=_networkEvents;
 @property(copy, nonatomic) NSString *widgetConfigID; // @synthesize widgetConfigID=_widgetConfigID;
 @property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
+@property(copy) id <FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
 - (void).cxx_destruct;
 - (void)_collectRecordIDsReferencedBySectionConfig:(id)arg1 withArticleListIDs:(id)arg2 articleIDs:(id)arg3;
 - (void)operationWillFinishWithError:(id)arg1;

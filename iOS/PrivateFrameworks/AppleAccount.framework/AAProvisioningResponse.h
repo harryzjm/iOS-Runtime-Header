@@ -12,10 +12,12 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=hasOptionalTerms) _Bool optionalTerms;
 @property(readonly, nonatomic, getter=isCloudDocsMigrated) _Bool cloudDocsMigrated;
 @property(readonly, nonatomic, getter=isSandboxAccount) _Bool sandboxAccount;
 @property(readonly, nonatomic, getter=isNotesMigrated) _Bool notesMigrated;
 @property(readonly, nonatomic, getter=isManagedAppleID) _Bool managedAppleID;
+@property(readonly, nonatomic) NSDictionary *regionInfo;
 @property(readonly, nonatomic) NSString *fmipSiriToken;
 @property(readonly, nonatomic) NSString *fmipAuthToken;
 @property(readonly, nonatomic) NSString *iCloudAuthToken;

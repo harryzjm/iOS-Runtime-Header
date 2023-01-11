@@ -14,6 +14,8 @@
 + (id)siriui_lightInsertionPointColor;
 + (id)siriui_platterInsertionPointColor;
 + (id)siriui_insertionPointColor;
++ (id)siriui_tapToEditMaskingColor;
++ (id)siriui_tapToEditColor;
 + (id)siriui_platterTextHighlightColor;
 + (id)siriui_lightTextHighlightColor;
 + (id)siriui_textHighlightColor;
@@ -27,6 +29,8 @@
 + (id)siriui_glyphColor;
 + (id)siriui_platterMaskingColor;
 + (id)siriui_lightMaskingColor;
++ (id)siriui_transparantHighlightedButtonColor;
++ (id)siriui_transparantButtonColor;
 + (id)siriui_maskingColor;
 + (id)siriui_keylineColorStark;
 + (id)siriui_platterKeylineColor;

@@ -10,6 +10,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)isWLAN;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;

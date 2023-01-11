@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DAEAS/NSCoding-Protocol.h>
+#import <DAEAS/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSNumber, NSString;
 
-@interface ASChangedCollectionLeaf <NSCoding>
+@interface ASChangedCollectionLeaf <NSSecureCoding>
 {
     _Bool _isResponse;
     _Bool _validateOpeningTokens;
@@ -21,6 +21,7 @@
     NSDictionary *_applicationData;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)asParseRules;
 + (_Bool)notifyOfUnknownTokens;
 + (_Bool)frontingBasicTypes;

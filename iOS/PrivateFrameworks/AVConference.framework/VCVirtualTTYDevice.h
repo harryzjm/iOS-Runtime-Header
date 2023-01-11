@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCAudioIODelegate-Protocol.h>
 #import <AVConference/VCAudioIOSink-Protocol.h>
 #import <AVConference/VCAudioIOSource-Protocol.h>
 #import <AVConference/VCMediaStreamProtocol-Protocol.h>
+#import <AVConference/VCTextSender-Protocol.h>
 
 @class NSString, VCAudioIO, VCAudioPayload;
 @protocol OS_dispatch_queue, VCMediaStreamDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCVirtualTTYDevice : NSObject <VCMediaStreamProtocol, VCAudioIOSink, VCAudioIOSource, VCAudioIODelegate>
+@interface VCVirtualTTYDevice : NSObject <VCMediaStreamProtocol, VCTextSender, VCAudioIOSink, VCAudioIOSource, VCAudioIODelegate>
 {
     int _clientPid;
     struct AudioStreamBasicDescription vpioFormat;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
     struct SoundDec_t *_decoder;
     struct opaqueCMSimpleQueue *_charQueue;
     struct tagVCMemoryPool *_characterPool;
+    id _textStream;
 }
 
 @property(nonatomic) NSObject<VCMediaStreamDelegate> *delegate; // @synthesize delegate;
@@ -47,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)setPause:(_Bool)arg1;
 - (void)stopAudioWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)stop;
-- (void)sendCharater:(unsigned short)arg1;
+- (void)sendCharacter:(unsigned short)arg1;
 - (void)startVirtualTTYWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)start;
 - (void)dealloc;

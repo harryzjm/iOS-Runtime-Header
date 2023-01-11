@@ -8,13 +8,15 @@
 
 #import <NewsToday/NTSectionDescriptor-Protocol.h>
 
-@class NSString, NSURL;
+@class NSString, NSURL, NTPBDiscoverMoreVideosInfo;
 @protocol NTSectionFetchDescriptor;
 
 @interface NTSectionConfigSectionDescriptor : NSObject <NTSectionDescriptor>
 {
     _Bool _displaysAsVideoPlaylist;
+    _Bool _useNameColorInWidget;
     _Bool _videoPlaysMutedByDefault;
+    _Bool _openVideoPlaylistInApp;
     int _readArticlesFilterMethod;
     int _seenArticlesFilterMethod;
     int _leadingCellPromotionPolicy;
@@ -31,20 +33,22 @@
     unsigned long long _fallbackOrder;
     long long _supplementalInterSectionFilterOptions;
     long long _supplementalIntraSectionFilterOptions;
-    NSString *_discoverMoreVideosTitle;
-    NSString *_discoverMoreVideosSubtitle;
-    NSURL *_discoverMoreVideosURL;
+    NTPBDiscoverMoreVideosInfo *_discoverMoreVideosInfo;
     NSString *_backgroundGradientColor;
+    NSString *_actionTitle;
+    NSURL *_actionURL;
     NSObject<NTSectionFetchDescriptor> *_fetchDescriptor;
 }
 
 @property(copy, nonatomic) NSObject<NTSectionFetchDescriptor> *fetchDescriptor; // @synthesize fetchDescriptor=_fetchDescriptor;
+@property(readonly, nonatomic) _Bool openVideoPlaylistInApp; // @synthesize openVideoPlaylistInApp=_openVideoPlaylistInApp;
+@property(readonly, copy, nonatomic) NSURL *actionURL; // @synthesize actionURL=_actionURL;
+@property(readonly, copy, nonatomic) NSString *actionTitle; // @synthesize actionTitle=_actionTitle;
 @property(readonly, nonatomic) _Bool videoPlaysMutedByDefault; // @synthesize videoPlaysMutedByDefault=_videoPlaysMutedByDefault;
 @property(readonly, nonatomic) int leadingCellPromotionPolicy; // @synthesize leadingCellPromotionPolicy=_leadingCellPromotionPolicy;
 @property(readonly, copy, nonatomic) NSString *backgroundGradientColor; // @synthesize backgroundGradientColor=_backgroundGradientColor;
-@property(readonly, copy, nonatomic) NSURL *discoverMoreVideosURL; // @synthesize discoverMoreVideosURL=_discoverMoreVideosURL;
-@property(readonly, copy, nonatomic) NSString *discoverMoreVideosSubtitle; // @synthesize discoverMoreVideosSubtitle=_discoverMoreVideosSubtitle;
-@property(readonly, copy, nonatomic) NSString *discoverMoreVideosTitle; // @synthesize discoverMoreVideosTitle=_discoverMoreVideosTitle;
+@property(readonly, copy, nonatomic) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo; // @synthesize discoverMoreVideosInfo=_discoverMoreVideosInfo;
+@property(readonly, nonatomic) _Bool useNameColorInWidget; // @synthesize useNameColorInWidget=_useNameColorInWidget;
 @property(readonly, nonatomic) _Bool displaysAsVideoPlaylist; // @synthesize displaysAsVideoPlaylist=_displaysAsVideoPlaylist;
 @property(readonly, nonatomic) long long supplementalIntraSectionFilterOptions; // @synthesize supplementalIntraSectionFilterOptions=_supplementalIntraSectionFilterOptions;
 @property(readonly, nonatomic) long long supplementalInterSectionFilterOptions; // @synthesize supplementalInterSectionFilterOptions=_supplementalInterSectionFilterOptions;
@@ -65,9 +69,9 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)incrementalLimitTransformationWithFeedPersonalizer:(id)arg1 limit:(unsigned long long)arg2 priorFeedItems:(id)arg3;
 - (id)incrementalSortTransformationWithFeedPersonalizer:(id)arg1;
-- (id)extractResultsFromCatchUpOperation:(id)arg1;
+- (id)assembleResultsWithCatchUpOperation:(id)arg1;
 - (void)configureCatchUpOperationWithFetchRequest:(id)arg1;
-- (id)initWithSectionConfig:(id)arg1 appConfiguration:(id)arg2 todayData:(id)arg3 supplementalFeedFilterOptions:(long long)arg4;
+- (id)initWithSectionConfig:(id)arg1 topStoriesChannelID:(id)arg2 hiddenFeedIDs:(id)arg3 todayData:(id)arg4 supplementalFeedFilterOptions:(long long)arg5;
 - (id)init;
 
 // Remaining properties

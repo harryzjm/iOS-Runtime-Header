@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
 @class NSData, NSString;
 
-@interface DMFClearDevicePasscodeRequest : CATTaskRequest
+@interface DMFClearDevicePasscodeRequest
 {
     NSData *_unlockTokenData;
     NSString *_secret;
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)isPermittedOnUserConnection;
++ (_Bool)isPermittedOnSystemConnection;
++ (id)permittedPlatforms;
 @property(copy, nonatomic) NSString *secret; // @synthesize secret=_secret;
 @property(copy, nonatomic) NSData *unlockTokenData; // @synthesize unlockTokenData=_unlockTokenData;
 - (void).cxx_destruct;

@@ -6,11 +6,12 @@
 
 #import <PhotosUI/PUPhotosSectionHeaderViewDelegate-Protocol.h>
 #import <PhotosUI/PUSearchGridDataSourceDelegate-Protocol.h>
+#import <PhotosUI/PUSectionedGridLayoutDelegate-Protocol.h>
 
 @class NSString, PUSearchGridDataSource;
 
 __attribute__((visibility("hidden")))
-@interface PUSearchGridViewController <PUPhotosSectionHeaderViewDelegate, PUSearchGridDataSourceDelegate>
+@interface PUSearchGridViewController <PUPhotosSectionHeaderViewDelegate, PUSearchGridDataSourceDelegate, PUSectionedGridLayoutDelegate>
 {
     PUSearchGridDataSource *_searchGridDataSource;
     NSString *_emptyPlaceholderText;
@@ -20,13 +21,21 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PUSearchGridDataSource *searchGridDataSource; // @synthesize searchGridDataSource=_searchGridDataSource;
 - (void).cxx_destruct;
 - (void)searchGridDataSourceHasPendingChanges:(id)arg1;
+- (_Bool)pu_handleSecondTabTap;
 - (_Bool)allowSlideshowButton;
 - (id)newEmptyPlaceholderView;
+- (_Bool)updateSpec;
 - (id)newGridLayout;
 - (long long)_titleViewVerticalSizeClassForExtendedTraitCollection:(id)arg1;
 - (id)_subtitle;
 - (_Bool)_containsScene;
 - (void)_updateNavigationTitleView;
+- (void)didTapHeaderView:(id)arg1;
+- (double)sectionedGridLayout:(id)arg1 accessibilitySectionHeaderHeightForVisualSection:(long long)arg2;
+- (double)sectionedGridLayout:(id)arg1 sectionHeaderHeightForVisualSection:(long long)arg2;
+- (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3;
+- (struct UIEdgeInsets)fullMomentsLevelSectionHeaderHighlightInset;
+- (void)_getDataForVisualSection:(long long)arg1 locations:(id *)arg2 title:(id *)arg3 startDate:(id *)arg4 endDate:(id *)arg5;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 

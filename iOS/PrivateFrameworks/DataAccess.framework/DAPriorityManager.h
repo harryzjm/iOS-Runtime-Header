@@ -4,20 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMapTable;
+@class BKSApplicationStateMonitor, NSMapTable, NSMutableDictionary;
 
 @interface DAPriorityManager : NSObject
 {
     int _currentPriority;
     NSMapTable *_clientsToPriorityRequests;
+    BKSApplicationStateMonitor *_appStateMonitor;
+    NSMutableDictionary *_cachedAppState;
     long long _foregroundDataclasses;
 }
 
 + (id)sharedManager;
 + (void)vendPriorityManagers;
 @property(nonatomic) long long foregroundDataclasses; // @synthesize foregroundDataclasses=_foregroundDataclasses;
+@property(retain, nonatomic) NSMutableDictionary *cachedAppState; // @synthesize cachedAppState=_cachedAppState;
+@property(retain, nonatomic) BKSApplicationStateMonitor *appStateMonitor; // @synthesize appStateMonitor=_appStateMonitor;
 @property(readonly, nonatomic) int currentPriority; // @synthesize currentPriority=_currentPriority;
 @property(retain, nonatomic) NSMapTable *clientsToPriorityRequests; // @synthesize clientsToPriorityRequests=_clientsToPriorityRequests;
 - (void).cxx_destruct;
@@ -29,7 +33,8 @@
 - (void)_setForegroundDataclasses:(long long)arg1;
 - (void)dealloc;
 - (id)init;
-- (void)_SBApplicationStateChanged:(id)arg1;
+- (void)_updateForegroundDataclasses;
+- (void)_applicationStateChanged:(id)arg1;
 - (id)appIDsToDataclasses;
 
 @end

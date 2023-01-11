@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
-@class NSArray, NSMutableDictionary, TSKSelectionPath;
+@class NSArray, NSMutableDictionary, TSDFreehandDrawingToolkitUIState, TSKSelectionPath;
 @protocol TNUIStateDelegate;
 
 __attribute__((visibility("hidden")))
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     id <TNUIStateDelegate> _delegate;
     long long _documentMode;
     NSArray *_selectedQuickCalcFunctions;
+    TSDFreehandDrawingToolkitUIState *_freehandDrawingToolkitUIState;
     NSMutableDictionary *_chartUIState;
     NSMutableDictionary *_sheetUIStates;
     NSMutableDictionary *_editModeSheetUIStates;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool showCanvasGuides; // @synthesize showCanvasGuides=_showCanvasGuides;
 @property(nonatomic) struct CGSize desktopScreenSize; // @synthesize desktopScreenSize=_desktopScreenSize;
 @property(nonatomic) struct CGRect desktopWindowFrame; // @synthesize desktopWindowFrame=_desktopWindowFrame;
+@property(retain, nonatomic) TSDFreehandDrawingToolkitUIState *freehandDrawingToolkitUIState; // @synthesize freehandDrawingToolkitUIState=_freehandDrawingToolkitUIState;
 @property(nonatomic) _Bool showsRulers; // @synthesize showsRulers=_showsRulers;
 @property(nonatomic) _Bool showsComments; // @synthesize showsComments=_showsComments;
 @property(nonatomic) _Bool removedAllQuickCalcFunctions; // @synthesize removedAllQuickCalcFunctions=_removedAllQuickCalcFunctions;
@@ -68,6 +70,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool hasVisibleRect;
 - (void)setUIState:(id)arg1 forChart:(id)arg2;
 - (id)UIStateForChart:(id)arg1;
+- (void)removeAllUIStatesForSheet:(id)arg1;
 - (void)removeUIStateForSheet:(id)arg1;
 - (id)p_uiStateForActiveSheet;
 - (id)uiStateForSheet:(id)arg1 createIfNeeded:(_Bool)arg2;

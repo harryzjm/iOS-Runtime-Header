@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
 @class NSNumber, NSString;
 
-@interface DMFRemoveManagedBookRequest : CATTaskRequest
+@interface DMFRemoveManagedBookRequest
 {
     NSNumber *_iTunesStoreID;
     NSString *_persistentID;
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)isPermittedOnUserConnection;
++ (_Bool)isPermittedOnSystemConnection;
++ (id)permittedPlatforms;
 @property(copy, nonatomic) NSString *persistentID; // @synthesize persistentID=_persistentID;
 @property(copy, nonatomic) NSNumber *iTunesStoreID; // @synthesize iTunesStoreID=_iTunesStoreID;
 - (void).cxx_destruct;

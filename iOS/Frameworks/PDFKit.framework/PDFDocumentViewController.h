@@ -6,6 +6,7 @@
 
 #import <UIKit/UIPageViewController.h>
 
+#import <PDFKit/PDFDocumentPageChangeDelegate-Protocol.h>
 #import <PDFKit/PDFPageBackgroundManagerDelegate-Protocol.h>
 #import <PDFKit/UIPageViewControllerDataSource-Protocol.h>
 #import <PDFKit/UIPageViewControllerDelegate-Protocol.h>
@@ -14,12 +15,14 @@
 @class NSString, PDFDocumentViewControllerPrivate;
 
 __attribute__((visibility("hidden")))
-@interface PDFDocumentViewController : UIPageViewController <PDFPageBackgroundManagerDelegate, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate>
+@interface PDFDocumentViewController : UIPageViewController <PDFPageBackgroundManagerDelegate, PDFDocumentPageChangeDelegate, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate>
 {
     PDFDocumentViewControllerPrivate *_private;
 }
 
 - (void).cxx_destruct;
+- (void)didRemovePage:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)didInsertPage:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)recieveBackgroundImage:(id)arg1 atBackgroundQuality:(int)arg2 forPage:(id)arg3;
 - (id)backgroundImageForPage:(id)arg1 withQuality:(int *)arg2;
 - (void)_updateCurrentPageViewController:(id)arg1;

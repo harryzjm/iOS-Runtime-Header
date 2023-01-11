@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSBundle, NSSet, NSString, NSURL, UIImage;
 
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+- (void).cxx_destruct;
 - (void)prepareWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, copy, nonatomic) NSSet *tags;
 @property(readonly, nonatomic) _Bool isUserTemplate;
@@ -29,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (_Bool)isEqualToTemplateInfo:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 - (id)initWithDisplayName:(id)arg1;
 
 @end

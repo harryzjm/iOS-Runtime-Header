@@ -6,21 +6,25 @@
 
 #import <objc/NSObject.h>
 
+#import <ARKit/ARDictionaryCoding-Protocol.h>
 #import <ARKit/ARMutableSensorData-Protocol.h>
 #import <ARKit/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface ARGyroscopeData : NSObject <ARMutableSensorData, NSSecureCoding>
+@interface ARGyroscopeData : NSObject <ARDictionaryCoding, ARMutableSensorData, NSSecureCoding>
 {
     double _timestamp;
     CDStruct_31142d93 _rotationRate;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property(nonatomic) CDStruct_31142d93 rotationRate; // @synthesize rotationRate=_rotationRate;
+@property(nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
+- (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)encodeToDictionary;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

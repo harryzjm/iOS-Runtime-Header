@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class FCMutexLock;
+@class NFMutexLock;
 @protocol FCOperationCanceling><FCOperationPrioritizing, OS_dispatch_group;
 
 @interface FCAsyncOnceOperation : NSObject
@@ -18,10 +18,10 @@
     NSObject<OS_dispatch_group> *_activeGroup;
     id <FCOperationCanceling><FCOperationPrioritizing> _activeOperation;
     long long _relativePriority;
-    FCMutexLock *_lock;
+    NFMutexLock *_lock;
 }
 
-@property(retain, nonatomic) FCMutexLock *lock; // @synthesize lock=_lock;
+@property(retain, nonatomic) NFMutexLock *lock; // @synthesize lock=_lock;
 @property(nonatomic) long long relativePriority; // @synthesize relativePriority=_relativePriority;
 @property(retain, nonatomic) id <FCOperationCanceling><FCOperationPrioritizing> activeOperation; // @synthesize activeOperation=_activeOperation;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *activeGroup; // @synthesize activeGroup=_activeGroup;

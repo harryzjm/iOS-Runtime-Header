@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)isAccessibilityElement;
 - (id)_accessibilitySupplementaryFooterViews;
 
 @end

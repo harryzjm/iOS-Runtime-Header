@@ -4,26 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <WeatherFoundation/WFTemperatureFormatter.h>
+#import <Foundation/NSMeasurementFormatter.h>
 
 #import <HomeUI/HFTemperatureFormatter-Protocol.h>
-#import <HomeUI/WFTemperatureUnitObserver-Protocol.h>
+#import <HomeUI/HFTemperatureUnitObserver-Protocol.h>
 
-@class NSString;
+@class NSNumber, NSString;
 
-@interface HUTemperatureFormatter : WFTemperatureFormatter <WFTemperatureUnitObserver, HFTemperatureFormatter>
+@interface HUTemperatureFormatter : NSMeasurementFormatter <HFTemperatureUnitObserver, HFTemperatureFormatter>
 {
+    _Bool _inputIsCelsius;
+    _Bool _outputIsCelsius;
+    NSString *_fallbackTemperatureString;
+    NSNumber *_stepValue;
 }
 
-- (void)temperatureUnitObserver:(id)arg1 didChangeTemperatureUnitTo:(int)arg2;
-@property(nonatomic) _Bool inputIsCelsius;
+@property(retain, nonatomic) NSNumber *stepValue; // @synthesize stepValue=_stepValue;
+@property(nonatomic) _Bool outputIsCelsius; // @synthesize outputIsCelsius=_outputIsCelsius;
+@property(nonatomic) _Bool inputIsCelsius; // @synthesize inputIsCelsius=_inputIsCelsius;
+@property(copy, nonatomic) NSString *fallbackTemperatureString; // @synthesize fallbackTemperatureString=_fallbackTemperatureString;
+- (void).cxx_destruct;
+- (void)temperatureUnitObserver:(id)arg1 didChangeTemperatureUnit:(_Bool)arg2;
+- (id)stringForObjectValue:(id)arg1;
+@property(nonatomic) unsigned long long minimumFractionDigits;
+@property(nonatomic) unsigned long long maximumFractionDigits;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(copy, nonatomic) NSString *fallbackTemperatureString;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

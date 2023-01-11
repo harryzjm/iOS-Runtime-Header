@@ -13,10 +13,10 @@
 
 @interface _SFPBImagesCardSection : PBCodable <_SFPBImagesCardSection, NSSecureCoding>
 {
-    CDStruct_5ff9a38c _has;
     _Bool _canBeHidden;
     _Bool _hasTopPadding;
     _Bool _hasBottomPadding;
+    _Bool _borderless;
     int _separatorStyle;
     NSArray *_punchoutOptions;
     NSString *_punchoutPickerTitle;
@@ -26,6 +26,7 @@
     NSArray *_images;
 }
 
+@property(nonatomic) _Bool borderless; // @synthesize borderless=_borderless;
 @property(copy, nonatomic) NSArray *images; // @synthesize images=_images;
 @property(retain, nonatomic) _SFPBColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
@@ -49,14 +50,6 @@
 - (unsigned long long)imagesCount;
 - (void)addImages:(id)arg1;
 - (void)clearImages;
-@property(readonly, nonatomic) _Bool hasBackgroundColor;
-@property(readonly, nonatomic) _Bool hasSeparatorStyle;
-@property(readonly, nonatomic) _Bool hasType;
-@property(readonly, nonatomic) _Bool hasHasBottomPadding;
-@property(readonly, nonatomic) _Bool hasHasTopPadding;
-@property(readonly, nonatomic) _Bool hasCanBeHidden;
-@property(readonly, nonatomic) _Bool hasPunchoutPickerDismissText;
-@property(readonly, nonatomic) _Bool hasPunchoutPickerTitle;
 - (id)punchoutOptionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)punchoutOptionsCount;
 - (void)addPunchoutOptions:(id)arg1;

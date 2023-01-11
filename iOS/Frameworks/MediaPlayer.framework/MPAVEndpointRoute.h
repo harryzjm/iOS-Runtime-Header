@@ -4,28 +4,57 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPAVRouteConnection;
+@class MPAVRouteConnection, MPMRAVEndpointWrapper, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 @interface MPAVEndpointRoute
 {
     MPAVRouteConnection *_connection;
-    void *_endpoint;
+    NSObject<OS_dispatch_queue> *_accessQueue;
+    NSObject<OS_dispatch_queue> *_calloutQueue;
+    NSString *_sortName;
+    MPMRAVEndpointWrapper *_endpointWrapper;
 }
 
 + (void)getActiveEndpointRouteWithCompletion:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) void *endpoint; // @synthesize endpoint=_endpoint;
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+- (unsigned long long)_outputDevicesComposition;
+- (_Bool)_groupLeaderIsOfDeviceSubtype:(unsigned int)arg1;
+- (void)_endpointOutputDevicesDidChange:(id)arg1;
+- (void)_endpointDidChange:(id)arg1;
+- (_Bool)supportsRemoteControl;
+- (_Bool)supportsGrouping;
 - (long long)routeSubtype;
 - (long long)routeType;
+- (id)groupUID;
 - (id)routeUID;
+- (_Bool)isRoutingToWirelessDevice;
+- (_Bool)isDeviceSpeakerRoute;
+@property(readonly, nonatomic) _Bool canModifyGroupMembership;
+- (_Bool)isProxyGroupPlayer;
 - (_Bool)isDeviceRoute;
-- (_Bool)isB238Route;
+- (_Bool)isStereoPair;
+- (_Bool)isHomePodRoute;
 - (_Bool)isAppleTVRoute;
+- (_Bool)isAirPlayingToDevice;
+- (_Bool)presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
+- (_Bool)canFetchMediaDataFromSender;
+- (_Bool)canPlayEncryptedProgressiveDownloadAssets;
 - (_Bool)canAccessRemoteAssets;
-- (id)connection;
+@property(retain, nonatomic) MPAVRouteConnection *connection;
+@property(retain, nonatomic) MPMRAVEndpointWrapper *endpointWrapper; // @synthesize endpointWrapper=_endpointWrapper;
+@property(readonly, nonatomic) void *endpoint;
 - (id)description;
+- (void)establishGroup;
+- (id)designatedGroupLeaderName;
+- (id)routeNames;
+- (id)routeName;
+@property(readonly, nonatomic) NSString *sortName;
 - (void)dealloc;
 - (id)initWithEndpoint:(void *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

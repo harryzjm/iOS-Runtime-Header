@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSWPUserDefaults : NSObject
@@ -12,11 +12,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)registerUserDefaults:(_Bool)arg1;
++ (unsigned long long)maximumFontSize;
++ (unsigned long long)minimumFontSize;
 + (void)setAutomaticTextReplacement:(_Bool)arg1;
 + (void)setAutomaticQuoteSubstitution:(_Bool)arg1;
 + (void)setAutomaticDashSubstitution:(_Bool)arg1;
-+ (void)setLlamaPandaEanbled:(_Bool)arg1;
 + (void)setSpellCheckingEnabled:(_Bool)arg1;
++ (void)setAutomaticallyFormatFractions:(_Bool)arg1;
 + (void)setSuperscriptNumericalSuffixes:(_Bool)arg1;
 + (void)setAutomaticallyDetectLists:(_Bool)arg1;
 + (void)setUnderlineLinks:(_Bool)arg1;
@@ -24,15 +26,15 @@ __attribute__((visibility("hidden")))
 + (void)setInvisiblesColor:(id)arg1;
 + (void)setReplacementsDictionary:(id)arg1;
 + (id)appReplacementsDictionary;
-+ (id)replacementsDictionary;
++ (id)replacementsDictionaryAllowingFractions:(_Bool)arg1;
 + (id)p_caseInsensitiveDictionary:(id)arg1 mergedWithDictionary:(id)arg2;
 + (id)quotesArrayForLanguage:(id)arg1;
 + (_Bool)automaticTextReplacement;
 + (_Bool)automaticQuoteSubstitution;
 + (_Bool)automaticDashSubstitution;
-+ (_Bool)llamaPandaEnabled;
 + (_Bool)shouldShowInvisibles;
 + (_Bool)spellCheckingEnabled;
++ (_Bool)automaticallyFormatFractions;
 + (_Bool)superscriptNumericalSuffixes;
 + (_Bool)automaticallyDetectLists;
 + (_Bool)underlineLinks;

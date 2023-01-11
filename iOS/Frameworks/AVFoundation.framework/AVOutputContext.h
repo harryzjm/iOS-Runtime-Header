@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/NSSecureCoding-Protocol.h>
 
@@ -20,10 +20,10 @@
 + (_Bool)supportsSecureCoding;
 + (id)outputContextForID:(id)arg1;
 + (id)outputContextForControllingOutputDeviceGroupWithID:(id)arg1;
++ (id)outputContextForControllingOutputDeviceGroupWithID:(id)arg1 options:(id)arg2;
 + (id)iTunesAudioContext;
 + (id)sharedSystemScreenContext;
 + (id)sharedSystemAudioContext;
-+ (_Bool)isSystemContextAllowed;
 + (id)auxiliaryOutputContext;
 + (id)sharedAudioPresentationOutputContext;
 + (id)outputContext;
@@ -35,8 +35,11 @@
 - (void)outputContextImpl:(id)arg1 didReceiveData:(id)arg2 fromCommunicationChannel:(id)arg3;
 - (void)outputContextImplOutgoingCommunicationChannelDidBecomeAvailable:(id)arg1;
 - (void)setCommunicationChannelDelegate:(id)arg1;
+- (id)openCommunicationChannelWithOptions:(id)arg1 error:(id *)arg2;
 - (id)communicationChannelDelegate;
 - (id)outgoingCommunicationChannel;
+- (void)muteAllOutputDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)pausePlaybackOnAllOutputDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setVolume:(float)arg1;
 - (void)outputContextImplDidChangeCanSetVolume:(id)arg1;
 - (_Bool)canSetVolume;
@@ -46,15 +49,18 @@
 - (_Bool)providesControlForAllVolumeFeatures;
 - (void)removeOutputDevice:(id)arg1;
 - (void)addOutputDevice:(id)arg1;
+- (void)addOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setOutputDevices:(id)arg1;
 - (void)outputContextImplDidChangeOutputDevices:(id)arg1;
 - (id)outputDevices;
+- (_Bool)supportsMultipleOutputDevices;
 - (void)outputContextImplDidChangeGlobalOutputDeviceConfiguration:(id)arg1;
 - (void)outputContextImplDidChangeOutputDevice:(id)arg1;
 - (void)outputContextImpl:(id)arg1 didInitiateDestinationChange:(id)arg2;
 - (void)setOutputDevice:(id)arg1 options:(id)arg2;
 - (_Bool)setOutputDevice:(id)arg1 forFeatures:(unsigned long long)arg2;
 - (unsigned long long)outputDeviceFeatures;
+- (void)setOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)outputDevice;
 - (id)associatedAudioDeviceID;
 @property(readonly, nonatomic) NSString *deviceName;

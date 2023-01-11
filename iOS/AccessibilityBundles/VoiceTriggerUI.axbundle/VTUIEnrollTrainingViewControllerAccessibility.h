@@ -23,10 +23,11 @@
 - (void)_triggerEndpoint:(id)arg1;
 - (void)_continueFromIntro:(id)arg1;
 - (void)_showStatusMessage:(id)arg1 afterDelay:(double)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_retryAfterBadMicAlert;
+- (void)_accessibilitySuperShowTrainingInstruction:(long long)arg1 afterDelay:(double)arg2 isRetry:(_Bool)arg3 animate:(_Bool)arg4;
 - (void)_showTrainingInstruction:(long long)arg1 afterDelay:(double)arg2 isRetry:(_Bool)arg3 animate:(_Bool)arg4;
+- (void)_axSetShowTrainingInstructionBlock:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)_axShowTrainingInstructionBlock;
 - (void)_showEnrollmentSuccessView;
-- (void)_advanceState;
 - (void)_showIntroView;
 - (void)_setupViews;
 - (void)dealloc;

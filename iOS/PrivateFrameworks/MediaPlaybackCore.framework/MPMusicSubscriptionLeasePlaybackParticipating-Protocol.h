@@ -6,7 +6,10 @@
 
 #import <MediaPlaybackCore/NSObject-Protocol.h>
 
+@class ICMusicSubscriptionLeaseStatus;
+
 @protocol MPMusicSubscriptionLeasePlaybackParticipating <NSObject>
+@property(readonly, copy, nonatomic) ICMusicSubscriptionLeaseStatus *leaseStatus;
 @property(readonly, nonatomic) long long leasePlaybackPreventionState;
 @end
 

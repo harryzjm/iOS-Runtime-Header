@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, _SFECKeySpecifier;
+@class _SFECKeySpecifier;
 
 @interface _SFECPublicKey
 {
@@ -14,7 +14,6 @@
 + (id)_secKeyCreationAttributesForSpecifier:(id)arg1;
 + (id)_specifierForSecKey:(struct __SecKey *)arg1;
 - (void).cxx_destruct;
-@property(readonly) NSData *x963Data;
 - (id)performWithCCKey:(CDUnknownBlockType)arg1;
 
 // Remaining properties

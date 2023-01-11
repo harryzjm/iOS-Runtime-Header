@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class HDHealthServiceManager, HDProfile, HKQuantity, _HDFTMProducerMetricTracker;
+#import <HealthDaemon/HDWorkoutDataAccumulatorObserver-Protocol.h>
+
+@class HDEurotasData, HDHealthServiceManager, HDProfile, HKQuantity, NSString, _HDFTMProducerMetricTracker;
 @protocol OS_dispatch_queue;
 
-@interface HDFitnessMachineDataProducer : NSObject
+@interface HDFitnessMachineDataProducer : NSObject <HDWorkoutDataAccumulatorObserver>
 {
     NSObject<OS_dispatch_queue> *_queue;
     unsigned long long _sessionIdentifier;
@@ -19,27 +21,36 @@
     HKQuantity *_averageHeartRate;
     _HDFTMProducerMetricTracker *_heartRateTracker;
     _Bool _heartRateEnabled;
+    HDEurotasData *_previousEurotasData;
     HDProfile *_profile;
 }
 
 @property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
 - (void).cxx_destruct;
-- (void)_queue_sendEurotasData:(id)arg1;
+- (void)_queue_detachHealthServiceSession;
+- (void)_queue_sendEurotasData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_queue_generateEurotasData;
+- (void)_queue_updateFitnessMachineWithCompletion:(CDUnknownBlockType)arg1 forcing:(_Bool)arg2;
 - (void)_queue_updateFitnessMachine;
-- (void)_queue_metricsAddedToWorkout:(id)arg1;
-- (void)_queue_quantitiesAddedToWorkout:(id)arg1;
+- (void)_queue_workoutDataAccumulator:(id)arg1 didUpdateStatistics:(id)arg2;
 - (void)_readHeartRateEnabledPreference;
-@property(readonly, nonatomic) _Bool connected;
-- (void)metricsAddedToWorkout:(id)arg1;
-- (void)quantitiesAddedToWorkout:(id)arg1;
+- (void)workoutDataAccumulator:(id)arg1 didUpdateStatistics:(id)arg2;
+@property(readonly, nonatomic) _Bool attached;
 - (void)resumeCurrentSession;
 - (void)pauseCurrentSession;
-- (void)disconnectHealthServiceSession;
-- (void)connectToHealthServiceSession:(unsigned long long)arg1;
+- (void)detachHealthServiceSession;
+- (void)deliverFinalValuesAndDetachWithCompletion:(CDUnknownBlockType)arg1;
+- (void)sendInitialValues;
+- (void)attachHealthServiceSession:(unsigned long long)arg1;
 @property(readonly, nonatomic) HDHealthServiceManager *healthServiceManager;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

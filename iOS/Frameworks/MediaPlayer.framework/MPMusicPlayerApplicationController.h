@@ -4,21 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore;
+@class MPCPlayerPath, MPCRemotePlaybackEngine;
 
 @interface MPMusicPlayerApplicationController
 {
-    NSObject<OS_dispatch_queue> *_queueTransationQueue;
-    NSObject<OS_dispatch_semaphore> *_queueLoadingSemaphore;
+    long long _notificationsCount;
+    MPCPlayerPath *_playerPath;
+    MPCRemotePlaybackEngine *_playbackEngine;
 }
 
++ (_Bool)_isPlayerInstalled;
+@property(retain, nonatomic) MPCRemotePlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
+@property(retain, nonatomic) MPCPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 - (void).cxx_destruct;
-- (void)_queueDidInvalidate;
-- (void)_queueUpdateDidFinish;
-- (void)_queueRequestDidFinish;
+- (void)_playerPathDidChange:(id)arg1;
+- (void)_playbackEngineDidDisconnect:(id)arg1;
 - (void)performQueueTransaction:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)init;
+- (void)endGeneratingPlaybackNotifications;
+- (void)beginGeneratingPlaybackNotifications;
+- (void)prepareToPlay;
+- (id)_init;
 
 @end
 

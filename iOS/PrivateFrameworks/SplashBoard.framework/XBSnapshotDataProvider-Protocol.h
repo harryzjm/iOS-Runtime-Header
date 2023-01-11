@@ -7,12 +7,15 @@
 #import <SplashBoard/NSObject-Protocol.h>
 
 @class NSData, UIImage, XBSnapshotDataProviderContext;
+@protocol XBSnapshotDataProvider;
 
 @protocol XBSnapshotDataProvider <NSObject>
 @property(readonly, retain, nonatomic) XBSnapshotDataProviderContext *context;
 
 @optional
 - (void)invalidateImage;
+- (_Bool)hasProtectedContent;
+- (id <XBSnapshotDataProvider>)fallbackSnapshotDataProvider;
 - (UIImage *)fetchImage;
 - (NSData *)fetchImageData:(out struct CGAffineTransform *)arg1;
 @end

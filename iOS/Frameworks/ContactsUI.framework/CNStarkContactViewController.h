@@ -34,6 +34,7 @@
 - (void)setupTableHeaderView;
 - (_Bool)shouldDisplayAvatarHeaderView;
 - (void)initializeTableViewsForHeaderHeight;
+- (_Bool)isGeminiAvailable;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(_Bool)arg2;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

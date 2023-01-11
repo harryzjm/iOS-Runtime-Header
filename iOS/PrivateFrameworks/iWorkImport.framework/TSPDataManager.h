@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TSPObjectContext, TSUPathSet, TSUTemporaryDirectory;
 @protocol OS_dispatch_group, OS_dispatch_queue;
@@ -50,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)dataFromExternalReferenceURL:(id)arg1 filename:(id)arg2 useFileCoordination:(_Bool)arg3;
 - (id)dataWithTemporaryDataStorageURL:(id)arg1 digest:(id)arg2 filename:(id)arg3;
 - (id)temporaryDataStorageURLForFilename:(id)arg1;
-- (_Bool)linkTemporaryURL:(id)arg1 fromURL:(id)arg2;
+- (_Bool)linkOrCloneTemporaryURL:(id)arg1 fromURL:(id)arg2 canLink:(_Bool)arg3;
 - (int)openTemporaryURL:(id)arg1;
 - (id)dataForIdentifierImpl:(long long)arg1;
 - (id)dataForIdentifier:(long long)arg1;
@@ -76,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)dataFromFileURL:(id)arg1 filename:(id)arg2 context:(id)arg3 completionQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)dataFromFileURL:(id)arg1 filename:(id)arg2 useFileCoordination:(_Bool)arg3;
 - (id)dataFromURL:(id)arg1 filename:(id)arg2 useFileCoordination:(_Bool)arg3;
+- (void)willCreateData;
 - (void)didCloseDocument;
 - (id)initWithContext:(id)arg1;
 - (id)init;

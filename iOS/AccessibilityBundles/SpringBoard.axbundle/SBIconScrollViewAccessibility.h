@@ -19,7 +19,8 @@
 - (id)_accessibilityScrollStatus;
 - (id)_accessibilityUserTestingChildren;
 - (id)_accessibilityScrollStatus:(_Bool)arg1;
-- (id)_accessibilityUpdateCurrentPage:(long long)arg1 post:(_Bool)arg2;
+- (id)_accessibilityCurrentFolderIconForPage:(long long)arg1;
+- (id)_accessibilityScrollDescriptionForCurrentPage:(long long)arg1;
 - (double)_accessibilityAllowedGeometryOverlap;
 - (_Bool)accessibilityScrollToTopSupported;
 - (unsigned long long)accessibilityTraits;

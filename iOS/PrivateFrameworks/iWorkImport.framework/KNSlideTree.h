@@ -6,16 +6,17 @@
 
 #import <iWorkImport/KNSlideCollection-Protocol.h>
 
-@class KNSlideNode, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSString, TSUPointerKeyDictionary;
+@class KNSlideNode, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSNumberFormatter, NSString, TSUPointerKeyDictionary;
 
 __attribute__((visibility("hidden")))
 @interface KNSlideTree <KNSlideCollection>
 {
-    NSMutableOrderedSet *mSlideNodes;
-    NSMutableArray *mDisplayedSlideNodeCache;
-    NSMutableDictionary *mSlideNodesForUniqueIdentifiersCache;
-    NSMutableDictionary *mSlideNodesForFormulaReferenceNamesCache;
-    TSUPointerKeyDictionary *mFormulaReferenceNamesForSlideNodesCache;
+    NSMutableOrderedSet *_slideNodes;
+    NSMutableArray *_displayedSlideNodeCache;
+    NSMutableDictionary *_slideNodesForUniqueIdentifiersCache;
+    NSMutableDictionary *_slideNodesForFormulaReferenceNamesCache;
+    TSUPointerKeyDictionary *_formulaReferenceNamesForSlideNodesCache;
+    NSNumberFormatter *_formatter;
 }
 
 + (_Bool)areMultipleMasterTypesInCollection:(id)arg1;
@@ -23,7 +24,9 @@ __attribute__((visibility("hidden")))
 + (id)slideNodeDepthMapToCleanUpSlideNodes:(id)arg1 minimumValidDepth:(unsigned long long)arg2 canExceedSlideTreeMaxDepth:(_Bool)arg3;
 + (id)slideNodeDepthMapToCleanUpSlideNodes:(id)arg1 atDepths:(id)arg2 minimumValidDepth:(unsigned long long)arg3;
 + (id)slideNodeDepthMapToCleanUpSlideNodes:(id)arg1 minimumValidDepth:(unsigned long long)arg2;
-@property(retain, nonatomic) NSArray *displayedSlideNodes; // @synthesize displayedSlideNodes=mDisplayedSlideNodeCache;
+@property(retain) NSNumberFormatter *formatter; // @synthesize formatter=_formatter;
+@property(retain, nonatomic) NSArray *displayedSlideNodes; // @synthesize displayedSlideNodes=_displayedSlideNodeCache;
+- (void).cxx_destruct;
 - (void)p_cacheSlideNodes;
 - (void)p_clearSlideNodeCache;
 - (void)addSlideNodeForDocumentUpgrade:(id)arg1 atDepth:(unsigned long long)arg2;

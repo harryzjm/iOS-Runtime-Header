@@ -6,7 +6,7 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CNContact, FMFHandle, FMFMapViewController, UIImage, UIView;
+@class CNContact, FMFHandle, FMFMapViewController, UIView;
 @protocol MKAnnotation;
 
 @protocol FMFMapViewControllerDelegate <NSObject>
@@ -15,7 +15,6 @@
 - (CNContact *)annotationContactForHandle:(FMFHandle *)arg1;
 - (void *)annotationABRecordForHandle:(FMFHandle *)arg1;
 - (UIView *)titleViewForSelectedHandle;
-- (UIImage *)annotationImageForHandle:(FMFHandle *)arg1;
 - (void)fmfMapViewController:(FMFMapViewController *)arg1 didReceiveLocation:(id <MKAnnotation>)arg2;
 - (void)fmfMapViewController:(FMFMapViewController *)arg1 regionDidChangeAnimated:(_Bool)arg2;
 - (void)fmfMapViewController:(FMFMapViewController *)arg1 regionWillChangeAnimated:(_Bool)arg2;

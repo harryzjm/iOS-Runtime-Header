@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSObject;
+@class NSArray, NSObject, RTXPCActivityManager;
 @protocol OS_dispatch_source;
 
 @interface RTPurgeManager
@@ -12,9 +12,11 @@
     NSObject<OS_dispatch_source> *_memoryWarningDispatchSource;
     long long _pressureState;
     NSArray *_purgers;
+    RTXPCActivityManager *_xpcActivityManager;
 }
 
 + (id)earliestRawLocationDate;
+@property(readonly, nonatomic) RTXPCActivityManager *xpcActivityManager; // @synthesize xpcActivityManager=_xpcActivityManager;
 @property(retain, nonatomic) NSArray *purgers; // @synthesize purgers=_purgers;
 @property(nonatomic) long long pressureState; // @synthesize pressureState=_pressureState;
 @property(retain, nonatomic) NSObject<OS_dispatch_source> *memoryWarningDispatchSource; // @synthesize memoryWarningDispatchSource=_memoryWarningDispatchSource;
@@ -28,9 +30,9 @@
 - (void)_registerForMemoryPressureWarnings;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
-- (void)shutdown;
+- (void)_shutdown;
 - (void)dealloc;
-- (id)initWithDefaultsManager:(id)arg1 platform:(id)arg2 purgers:(id)arg3;
+- (id)initWithDefaultsManager:(id)arg1 platform:(id)arg2 purgers:(id)arg3 xpcActivityManager:(id)arg4;
 - (id)init;
 
 @end

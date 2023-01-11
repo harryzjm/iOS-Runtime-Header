@@ -52,7 +52,7 @@
 - (void)markForceNeedsSyncUp;
 - (void)markForceUpload;
 - (void)handleUnknownItemError;
-- (void)markLatestRequestAcknowledgedInZone:(id)arg1;
+- (_Bool)markLatestRequestAcknowledgedInZone:(id)arg1;
 - (void)markLatestSyncRequestRejectedInZone:(id)arg1;
 - (void)markNeedsReading;
 - (void)markDead;
@@ -95,6 +95,7 @@
 - (_Bool)_isInterestingUpdateForNotifs;
 @property(readonly, nonatomic) unsigned int downloadStatus;
 @property(readonly, nonatomic) unsigned int queryItemStatus;
+@property(readonly, nonatomic) _Bool isDownloadRequestedForThumbnail;
 @property(readonly, nonatomic) _Bool isDownloadRequested;
 @property(readonly, nonatomic) _Bool shouldTransferThumbnail;
 @property(readonly, nonatomic) _Bool shouldHaveThumbnail;

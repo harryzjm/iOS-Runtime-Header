@@ -27,10 +27,11 @@
 - (void)eraseAnisetteForContext:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)syncAnisetteForContext:(id)arg1 withSIMData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)provisionAnisetteForContext:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)registerSurrogateForContext:(id)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dismissNativeRecoveryUIForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentNativeRecoveryUIForContext:(id)arg1 recoveryContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dismissServerProvidedUIForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)presentServerProvidedUIForContext:(id)arg1 URLRequest:(id)arg2 delegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)presentServerProvidedUIForContext:(id)arg1 withConfiguration:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentSecondFactorAlertForContext:(id)arg1 withError:(id)arg2 title:(id)arg3 message:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)dismissSecondFactorUIForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentSecondFactorUIForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -14,8 +14,6 @@
 - (unsigned long long)accessibilityTraits;
 - (_Bool)_accessibilityHitTestShouldFallbackToNearestChild;
 - (_Bool)shouldGroupAccessibilityChildren;
-- (id)_toolbarItems;
-- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

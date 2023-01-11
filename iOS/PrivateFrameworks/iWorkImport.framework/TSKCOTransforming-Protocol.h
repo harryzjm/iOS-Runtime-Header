@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TSKCOAbstractOperation, TSKCOIdPlacementBaseOperation, TSKCOReplaceRangeOperation, TSKCOUpdateIdOperation, TSKCOUpdateRangeOperation;
+@class TSKCOAbstractOperation, TSKCOIdPlacementBaseOperation, TSKCOOperationTransformHistory, TSKCOReplaceRangeOperation, TSKCOUpdateIdOperation, TSKCOUpdateRangeOperation;
 @protocol TSKCOTransforming;
 
 @protocol TSKCOTransforming
-- (TSKCOAbstractOperation<TSKCOTransforming> *)transformDynamicByAnyOperation:(TSKCOAbstractOperation<TSKCOTransforming> *)arg1 byHigherPriority:(_Bool)arg2;
-- (TSKCOUpdateRangeOperation *)transformUpdateRangeOperation:(TSKCOUpdateRangeOperation *)arg1 isHigherPriority:(_Bool)arg2;
-- (TSKCOReplaceRangeOperation *)transformReplaceRangeOperation:(TSKCOReplaceRangeOperation *)arg1 isHigherPriority:(_Bool)arg2;
-- (TSKCOUpdateIdOperation *)transformUpdateIdOperation:(TSKCOUpdateIdOperation *)arg1 isHigherPriority:(_Bool)arg2;
-- (TSKCOIdPlacementBaseOperation *)transformIdPlacementBaseOperation:(TSKCOIdPlacementBaseOperation *)arg1 isHigherPriority:(_Bool)arg2;
+- (TSKCOAbstractOperation<TSKCOTransforming> *)transformDynamicByAnyOperation:(TSKCOAbstractOperation<TSKCOTransforming> *)arg1 byHigherPriority:(_Bool)arg2 history:(TSKCOOperationTransformHistory *)arg3;
+- (TSKCOUpdateRangeOperation *)transformUpdateRangeOperation:(TSKCOUpdateRangeOperation *)arg1 isHigherPriority:(_Bool)arg2 history:(TSKCOOperationTransformHistory *)arg3;
+- (TSKCOReplaceRangeOperation *)transformReplaceRangeOperation:(TSKCOReplaceRangeOperation *)arg1 isHigherPriority:(_Bool)arg2 history:(TSKCOOperationTransformHistory *)arg3;
+- (TSKCOUpdateIdOperation *)transformUpdateIdOperation:(TSKCOUpdateIdOperation *)arg1 isHigherPriority:(_Bool)arg2 history:(TSKCOOperationTransformHistory *)arg3;
+- (TSKCOIdPlacementBaseOperation *)transformIdPlacementBaseOperation:(TSKCOIdPlacementBaseOperation *)arg1 isHigherPriority:(_Bool)arg2 history:(TSKCOOperationTransformHistory *)arg3;
 @end
 

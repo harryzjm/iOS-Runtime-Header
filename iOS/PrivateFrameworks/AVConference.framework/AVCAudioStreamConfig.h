@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface AVCAudioStreamConfig : NSObject
 {
@@ -15,12 +15,19 @@
     unsigned long long _dtmfTimestampRate;
     unsigned long long _ptime;
     unsigned long long _maxPtime;
+    unsigned long long _channelAwareOffset;
     long long _audioStreamMode;
     unsigned int _codecRateModeMask;
     long long _preferredCodecRateMode;
     _Bool _octetAligned;
+    _Bool _headerFullOnly;
     _Bool _dtxEnabled;
     _Bool _latencySensitiveMode;
+    _Bool _enableMaxBitrateOnNoChangeCMR;
+    unsigned long long _numRedundantPayloads;
+    unsigned long long _txRedPayloadType;
+    unsigned long long _rxRedPayloadType;
+    float _volume;
 }
 
 + (long long)clientCodecRateModeForCodecRateMode:(int)arg1;
@@ -31,11 +38,18 @@
 + (long long)streamModeWithClientStreamMode:(long long)arg1;
 + (long long)clientCodecTypeWithCodecType:(long long)arg1;
 + (long long)codecTypeWithClientCodecType:(long long)arg1;
+@property(nonatomic) float volume; // @synthesize volume=_volume;
+@property(nonatomic) _Bool enableMaxBitrateOnNoChangeCMR; // @synthesize enableMaxBitrateOnNoChangeCMR=_enableMaxBitrateOnNoChangeCMR;
+@property(nonatomic) unsigned long long rxRedPayloadType; // @synthesize rxRedPayloadType=_rxRedPayloadType;
+@property(nonatomic) unsigned long long txRedPayloadType; // @synthesize txRedPayloadType=_txRedPayloadType;
+@property(nonatomic) unsigned long long numRedundantPayloads; // @synthesize numRedundantPayloads=_numRedundantPayloads;
 @property(nonatomic, getter=isLatencySensitiveMode) _Bool latencySensitiveMode; // @synthesize latencySensitiveMode=_latencySensitiveMode;
 @property(nonatomic) long long preferredCodecRateMode; // @synthesize preferredCodecRateMode=_preferredCodecRateMode;
 @property(nonatomic) unsigned int codecRateModeMask; // @synthesize codecRateModeMask=_codecRateModeMask;
 @property(nonatomic, getter=isDTXEnabled) _Bool dtxEnabled; // @synthesize dtxEnabled=_dtxEnabled;
+@property(nonatomic, getter=isHeaderFullOnly) _Bool headerFullOnly; // @synthesize headerFullOnly=_headerFullOnly;
 @property(nonatomic, getter=isOctectAligned) _Bool octetAligned; // @synthesize octetAligned=_octetAligned;
+@property(nonatomic) unsigned long long channelAwareOffset; // @synthesize channelAwareOffset=_channelAwareOffset;
 @property(nonatomic) unsigned long long maxPtime; // @synthesize maxPtime=_maxPtime;
 @property(nonatomic) unsigned long long ptime; // @synthesize ptime=_ptime;
 @property(nonatomic) unsigned long long dtmfTimestampRate; // @synthesize dtmfTimestampRate=_dtmfTimestampRate;
@@ -46,6 +60,7 @@
 @property(nonatomic) long long audioStreamMode; // @synthesize audioStreamMode=_audioStreamMode;
 - (id)dictionary;
 - (void)setUpWithDictionary:(id)arg1;
+- (_Bool)isRedValid;
 - (_Bool)isCNValid;
 - (_Bool)isDTMFValid;
 - (_Bool)isValid;

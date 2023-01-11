@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface MFMailSignatureController : NSObject
 {
 }
 
+- (void)getDocument:(id)arg1 withHiddenSignatureHandler:(CDUnknownBlockType)arg2;
 - (void)finalizeSignatureForBodyField:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateSignatureForSender:(id)arg1 bodyField:(id)arg2;
 - (void)removeSignatureForSender:(id)arg1 bodyField:(id)arg2;

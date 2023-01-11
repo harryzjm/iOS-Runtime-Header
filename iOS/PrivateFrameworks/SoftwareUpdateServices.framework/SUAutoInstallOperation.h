@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
 #import <SoftwareUpdateServices/SUAutoInstallOperationClientHandler-Protocol.h>
@@ -34,9 +34,10 @@
 - (_Bool)_isValidTillDate:(id)arg1;
 - (_Bool)_isValidForScheduling;
 - (_Bool)_isEffectivelyScheduled;
+- (void)_noteAutoInstallOperationPasscodePolicyChanged:(unsigned long long)arg1;
 - (void)_noteAutoInstallOperationIsReadyToInstall:(CDUnknownBlockType)arg1;
 - (void)_noteAutoInstallOperationDidConsent;
-- (void)_noteAutoInstallOperationDidExpire;
+- (void)_noteAutoInstallOperationDidExpireWithError:(id)arg1;
 - (void)_noteAutoInstallOperationWasCancelled;
 - (id)uniqueIdentifier;
 - (void)encodeWithCoder:(id)arg1;

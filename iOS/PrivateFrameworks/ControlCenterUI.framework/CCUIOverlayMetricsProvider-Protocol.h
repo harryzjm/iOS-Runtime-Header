@@ -9,10 +9,10 @@
 @class CCUIStatusBarStyleSnapshot;
 
 @protocol CCUIOverlayMetricsProvider <NSObject>
+@property(readonly, nonatomic) double overlayReachabilityHeight;
 @property(readonly, copy, nonatomic) CCUIStatusBarStyleSnapshot *overlayStatusBarStyle;
 @property(readonly, nonatomic) long long overlayInterfaceOrientation;
-@property(readonly, nonatomic) struct UIEdgeInsets overlayAdditionalEdgeInsets;
 @property(readonly, nonatomic) struct CGRect overlayContainerFrame;
-@property(readonly, nonatomic) struct CGSize overlayContentSize;
+@property(readonly, nonatomic) struct CGRect overlayBackgroundFrame;
 @end
 

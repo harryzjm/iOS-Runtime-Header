@@ -17,7 +17,6 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (void)_dispose;
-- (id)retain;
 - (id)init;
 
 // Remaining properties

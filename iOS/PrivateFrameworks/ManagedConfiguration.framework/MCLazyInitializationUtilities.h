@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface MCLazyInitializationUtilities : NSObject
 {
@@ -14,8 +14,7 @@
 + (void)initUserManagement;
 + (void)initSpringBoardUIServices;
 + (void)initSpringBoardServices;
-+ (void)initMobileCoreServices;
-+ (void)initServerAccounts;
++ (void)initCoreServices;
 + (void)initSetupAssistant;
 + (void)initLoggingSupport;
 + (void)initDAEAS;

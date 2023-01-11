@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ChatKit/MFContactsSearchConsumer-Protocol.h>
 
@@ -22,10 +22,8 @@
     NSMutableArray *_searchResults;
     NSNumber *_currentSearchTaskID;
     NSString *_searchText;
-    NSArray *_conversationCache;
 }
 
-@property(copy, nonatomic) NSArray *conversationCache; // @synthesize conversationCache=_conversationCache;
 @property(retain, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
 @property(retain, nonatomic) NSNumber *currentSearchTaskID; // @synthesize currentSearchTaskID=_currentSearchTaskID;
 @property(retain, nonatomic) NSMutableArray *searchResults; // @synthesize searchResults=_searchResults;
@@ -42,11 +40,10 @@
 - (struct _NSRange)_rangeForSearchTerm:(id)arg1 inTarget:(id)arg2 tokenizedByCharacterSet:(id)arg3;
 - (void)finishedSearchingForAutocompleteResults;
 - (void)consumeAutocompleteSearchResults:(id)arg1 taskID:(id)arg2;
+- (id)_filterGroupResults:(id)arg1;
 - (id)_cullOldResults:(id)arg1;
 - (id)_sortResultsByDate:(id)arg1;
 - (id)_sortSearchResultsWithCoreRecentsResults:(id)arg1 displayNameMatches:(id)arg2 participantNameMatches:(id)arg3;
-- (void)_generateConversationCache;
-- (void)chatStateChanged:(id)arg1;
 - (void)removeRecipient:(id)arg1;
 - (void)didSelectRecipient:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)cancelSearch;

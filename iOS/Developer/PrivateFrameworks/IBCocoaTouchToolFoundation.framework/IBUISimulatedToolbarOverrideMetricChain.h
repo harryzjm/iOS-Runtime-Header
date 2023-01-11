@@ -13,6 +13,10 @@
 
 @property(readonly, nonatomic) IBUIMetricRepresentation *toolbar; // @synthesize toolbar=_toolbar;
 - (void).cxx_destruct;
+- (id)singleLinkPrettyDescription;
+- (id)copyWithPrecedingMetric:(id)arg1;
+- (_Bool)isEqualToMetricChain:(id)arg1;
+- (unsigned long long)hash;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
 - (id)initWithToolbar:(id)arg1 precedingMetric:(id)arg2;

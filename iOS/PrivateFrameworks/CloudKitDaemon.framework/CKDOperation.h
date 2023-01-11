@@ -21,8 +21,10 @@ __attribute__((visibility("hidden")))
     _Bool _isFinished;
     _Bool _isExecuting;
     _Bool _useEncryption;
+    _Bool _useClearAssetEncryption;
     _Bool _isProxyOperation;
     _Bool _shouldPipelineFetchAllChangesRequests;
+    _Atomic int _pcsWaitCount;
     CKDURLRequest *_request;
     CKTimeLogger *_timeLogger;
     NSDate *_startDate;
@@ -47,6 +49,7 @@ __attribute__((visibility("hidden")))
 
 + (long long)isPredominatelyDownload;
 + (id)_globalOperationCallbackQueueForQOS:(long long)arg1;
+@property(nonatomic) _Atomic int pcsWaitCount; // @synthesize pcsWaitCount=_pcsWaitCount;
 @property(retain, nonatomic) NSString *clientSuppliedDeviceIdentifier; // @synthesize clientSuppliedDeviceIdentifier=_clientSuppliedDeviceIdentifier;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *childOperationsGroup; // @synthesize childOperationsGroup=_childOperationsGroup;
 @property(retain, nonatomic) id <NSObject> powerAssertion; // @synthesize powerAssertion=_powerAssertion;
@@ -63,6 +66,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(nonatomic) _Bool shouldPipelineFetchAllChangesRequests; // @synthesize shouldPipelineFetchAllChangesRequests=_shouldPipelineFetchAllChangesRequests;
 @property(readonly, nonatomic) _Bool isProxyOperation; // @synthesize isProxyOperation=_isProxyOperation;
+@property(nonatomic) _Bool useClearAssetEncryption; // @synthesize useClearAssetEncryption=_useClearAssetEncryption;
 @property(nonatomic) _Bool useEncryption; // @synthesize useEncryption=_useEncryption;
 @property(nonatomic) __weak CKDClientProxy *proxy; // @synthesize proxy=_proxy;
 @property(retain, nonatomic) CKDClientContext *context; // @synthesize context=_context;
@@ -93,6 +97,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool shouldCheckAppVersion;
 - (void)_setIsExecuting:(_Bool)arg1;
 - (void)_setIsFinished:(_Bool)arg1;
+- (_Bool)isWaitingOnPCS;
+- (void)noteOperationDidFinishWaitingOnPCS;
+- (void)noteOperationWillWaitOnPCS;
 - (void)_acquirePowerAssertionsForSelfAndParent;
 - (void)_acquirePowerAssertion;
 - (void)_dropPowerAssertionsForSelfAndParent;
@@ -129,11 +136,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSNumber *operationGroupQuantityNumber;
 @property(readonly, nonatomic) NSString *operationGroupName;
 @property(readonly, nonatomic) NSString *operationGroupID;
+@property(readonly, nonatomic) _Bool shouldSkipZonePCSUpdate;
 - (id)additionalRequestHTTPHeaders;
 @property(readonly, nonatomic) double timeoutIntervalForResource;
 @property(readonly, nonatomic) double timeoutIntervalForRequest;
 @property(readonly, nonatomic) _Bool allowsBackgroundNetworking;
 @property(readonly, nonatomic) _Bool preferAnonymousRequests;
+@property(readonly, nonatomic) unsigned long long discretionaryNetworkBehavior;
+@property(readonly, nonatomic) _Bool automaticallyRetryNetworkFailures;
 @property(readonly, nonatomic) NSString *authPromptReason;
 @property(readonly, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
 @property(readonly, nonatomic) CKOperationMMCSRequestOptions *MMCSRequestOptions;
@@ -150,6 +160,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)_ensureOperationGroup;
 - (id)activityCreate;
+@property(readonly, nonatomic) NSObject<OS_os_activity> *osActivity;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 
 // Remaining properties

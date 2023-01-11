@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleAccountUI/RUILoaderDelegate-Protocol.h>
 #import <AppleAccountUI/RUIObjectModelDelegate-Protocol.h>
 
 @class ACAccount, ACAccountStore, NSMutableArray, NSString, RUILoader, UINavigationController, UIViewController;
 @protocol AAUIGenericTermsRemoteUIDelegate;
 
-@interface AAUIGenericTermsRemoteUI : NSObject <RUIObjectModelDelegate>
+@interface AAUIGenericTermsRemoteUI : NSObject <RUILoaderDelegate, RUIObjectModelDelegate>
 {
     UINavigationController *_parentNavController;
     UIViewController *_originatingViewController;
@@ -21,7 +22,6 @@
     ACAccount *_account;
     ACAccountStore *_accountStore;
     _Bool _isModal;
-    NSString *_agreeURL;
     _Bool _isPreferringPassword;
     id <AAUIGenericTermsRemoteUIDelegate> _delegate;
 }
@@ -34,16 +34,19 @@
 - (void)_displayConnectionErrorAndDismiss;
 - (void)_popObjectModelAnimated:(_Bool)arg1;
 - (void)_cleanupRUILoader;
-- (void)_cleanUpAndDismissWithSuccess:(_Bool)arg1;
+- (void)_cleanUpAndDismissWithSuccess:(_Bool)arg1 agreeURL:(id)arg2;
+- (void)_agreeToTermsWithURLString:(id)arg1 preferPassword:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_cancelButtonTapped:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientationsForObjectModel:(id)arg1 page:(id)arg2;
 - (id)parentViewControllerForObjectModel:(id)arg1;
 - (void)objectModelPressedBack:(id)arg1;
 - (void)objectModel:(id)arg1 pressedLink:(id)arg2 httpMethod:(id)arg3;
 - (void)objectModel:(id)arg1 pressedButton:(id)arg2 attributes:(id)arg3;
+- (id)sessionConfigurationForLoader:(id)arg1;
 - (void)loader:(id)arg1 didFailWithError:(id)arg2;
+- (_Bool)_isUnauthorizedError:(id)arg1;
 - (void)loader:(id)arg1 receivedObjectModel:(id)arg2 actionSignal:(unsigned long long)arg3;
-- (void)_loadRequestPreferingPassword:(_Bool)arg1;
+- (void)_loadRequestPreferringPassword:(_Bool)arg1;
 - (void)presentFromViewController:(id)arg1 modal:(_Bool)arg2;
 - (id)initWithAccount:(id)arg1 inStore:(id)arg2;
 

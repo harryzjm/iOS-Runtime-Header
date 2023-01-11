@@ -5,13 +5,12 @@
 //
 
 #import <MediaPlayer/MPCacheableConcreteMediaEntity-Protocol.h>
-#import <MediaPlayer/NSCoding-Protocol.h>
 #import <MediaPlayer/NSCopying-Protocol.h>
 
 @class MPConcreteMediaEntityPropertiesCache, MPMediaLibrary, NSObject;
 @protocol OS_dispatch_queue;
 
-@interface MPConcreteMediaItem <NSCoding, NSCopying, MPCacheableConcreteMediaEntity>
+@interface MPConcreteMediaItem <NSCopying, MPCacheableConcreteMediaEntity>
 {
     MPMediaLibrary *_library;
     unsigned long long _persistentID;

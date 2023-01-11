@@ -38,10 +38,12 @@
     _Bool _separatorHidden;
     _Bool _expanded;
     _Bool _didIgnoreFirstResponderResign;
+    _Bool _showsAddButtonWhenExpanded;
     int _hideLastAtomComma;
     UIFont *_baseFont;
     long long _maxRecipients;
     UIButton *_addButton;
+    UIColor *_typingTextColor;
     _MFAtomTextAttachment *_placeholderAttachment;
     UIView *_atomContainerView;
 }
@@ -50,6 +52,8 @@
 @property(readonly, nonatomic) UIView *atomContainerView; // @synthesize atomContainerView=_atomContainerView;
 @property(retain, nonatomic) _MFAtomTextAttachment *placeholderAttachment; // @synthesize placeholderAttachment=_placeholderAttachment;
 @property(nonatomic) int hideLastAtomComma; // @synthesize hideLastAtomComma=_hideLastAtomComma;
+@property(retain, nonatomic) UIColor *typingTextColor; // @synthesize typingTextColor=_typingTextColor;
+@property(nonatomic) _Bool showsAddButtonWhenExpanded; // @synthesize showsAddButtonWhenExpanded=_showsAddButtonWhenExpanded;
 @property(readonly, nonatomic) UIButton *addButton; // @synthesize addButton=_addButton;
 @property(nonatomic) long long maxRecipients; // @synthesize maxRecipients=_maxRecipients;
 @property(readonly, nonatomic) _Bool didIgnoreFirstResponderResign; // @synthesize didIgnoreFirstResponderResign=_didIgnoreFirstResponderResign;
@@ -97,6 +101,7 @@
 - (void)_setTextViewIsCollapsed:(_Bool)arg1 animated:(_Bool)arg2;
 - (_Bool)_isTextViewCollapsed;
 - (void)_updateInactiveTextView;
+- (void)_ensureInactiveTextView;
 - (id)_accessibilityToString;
 - (_Bool)_textViewContainsAtomizedRecipients;
 - (void)_resetSelectionState;
@@ -119,6 +124,7 @@
 - (void)invalidateAtomPresentationOptionsForRecipient:(id)arg1;
 - (void)invalidateAtomPresentationOptions;
 - (void)clearText;
+- (id)_baseAttributes;
 @property(retain, nonatomic) UIColor *inactiveTextColor;
 - (void)setLabel:(id)arg1;
 - (void)_invalidateAtomPresentationOptionsCache;
@@ -134,6 +140,7 @@
 @property(readonly, nonatomic) NSString *text;
 - (id)_userEnteredTextWithRange:(struct _NSRange *)arg1;
 - (_Bool)_hasUnsafeRecipients;
+- (void)_updateAddButtonVisibility;
 - (void)setEditable:(_Bool)arg1 animated:(_Bool)arg2;
 @property(readonly, copy, nonatomic) NSArray *uncommentedAddresses;
 @property(copy, nonatomic) NSArray *addresses;

@@ -20,12 +20,10 @@
 __attribute__((visibility("hidden")))
 @interface KNAbstractSlide <TSSPropertySource, TSKDocumentObject, TSDDrawableContainerInfo, TSDMutableContainerInfo, TSKTransformableObject, TSSStyleClient, TSDReplaceableMediaContainer, TSDReducibleImageContainer, TSDCompatibilityAwareMediaContainer>
 {
-    KNSlideNode *_slideNode;
     KNSlideStyle *_style;
     KNSlideBackgroundInfo *_background;
     NSOrderedSet *_childInfos;
     _Bool _inDocument;
-    NSDictionary *_placeholdersForTags;
     NSSet *_builds;
     NSArray *_buildChunks;
     _Bool _needsSlideNodeEventCountUpdate;
@@ -37,6 +35,8 @@ __attribute__((visibility("hidden")))
     KNBodyPlaceholderInfo *_bodyPlaceholder;
     KNObjectPlaceholderInfo *_objectPlaceholder;
     KNSlideNumberPlaceholderInfo *_slideNumberPlaceholder;
+    KNSlideNode *_slideNode;
+    struct NSDictionary *_placeholdersForTags;
 }
 
 + (Class)classForUnarchiver:(id)arg1;
@@ -49,7 +49,7 @@ __attribute__((visibility("hidden")))
 + (id)parentSlideForInfo:(id)arg1;
 @property(copy, nonatomic) NSDictionary *placeholdersForTags; // @synthesize placeholdersForTags=_placeholdersForTags;
 @property(readonly, nonatomic) _Bool inDocument; // @synthesize inDocument=_inDocument;
-@property(readonly, nonatomic) KNSlideNode *slideNode; // @synthesize slideNode=_slideNode;
+@property(readonly, nonatomic) __weak KNSlideNode *slideNode; // @synthesize slideNode=_slideNode;
 @property(retain, nonatomic) KNSlideNumberPlaceholderInfo *slideNumberPlaceholder; // @synthesize slideNumberPlaceholder=_slideNumberPlaceholder;
 @property(retain, nonatomic) KNObjectPlaceholderInfo *objectPlaceholder; // @synthesize objectPlaceholder=_objectPlaceholder;
 @property(retain, nonatomic) KNBodyPlaceholderInfo *bodyPlaceholder; // @synthesize bodyPlaceholder=_bodyPlaceholder;
@@ -58,7 +58,8 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) KNSlideStyle *style; // @synthesize style=_style;
 - (void).cxx_destruct;
 - (void)p_updateChartBuildChunksImmediatelyWithoutUndoHistory;
-- (void)p_updatePreUFFBuildEffects;
+- (void)p_updateBuildEffects:(_Bool)arg1 version:(unsigned long long)arg2;
+- (unsigned long long)p_keynoteVersionFromUnarchiver:(id)arg1;
 - (void)p_updateOverlappingBuildEventTriggers;
 - (void)saveToArchive:(struct SlideArchive *)arg1 archiver:(id)arg2;
 - (void)p_updateStartAndEndOffsetsIfNecessaryForFileVersion:(unsigned long long)arg1;
@@ -102,6 +103,10 @@ __attribute__((visibility("hidden")))
 - (void)insertChildInfo:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)addChildInfo:(id)arg1;
 - (void)p_insertChildInfos:(id)arg1 atIndex:(unsigned long long)arg2 dolcContext:(id)arg3;
+- (void)moveModel:(id)arg1 toIndex:(unsigned long long)arg2;
+- (void)removeContainedModel:(id)arg1;
+- (void)insertContainedModel:(id)arg1 atIndex:(unsigned long long)arg2;
+@property(readonly, nonatomic) NSArray *containedModels;
 @property(readonly, nonatomic) TSUMutablePointerSet *drawablesWithInvalidatedGhosts;
 @property(readonly, nonatomic) TSUPointerKeyDictionary *drawableToGhostInfosMap;
 - (void)i_primitiveInsertBuildChunk:(id)arg1 afterChunk:(id)arg2 generateIdentifier:(_Bool)arg3;
@@ -119,6 +124,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)deliveryGroupIndexForBuildChunk:(id)arg1;
 - (_Bool)hasComplementForBuildChunk:(id)arg1;
 - (_Bool)hasComplementForBuildChunk:(id)arg1 inBuildChunks:(id)arg2;
+- (id)buildChunksForActiveBuildChunkIndexes:(id)arg1;
 - (id)p_calculateActiveBuildChunks;
 @property(readonly, nonatomic) NSArray *activeBuildChunks;
 - (struct _NSRange)p_activeChunkRangeForBuild:(id)arg1 inActiveChunks:(id)arg2;
@@ -136,6 +142,9 @@ __attribute__((visibility("hidden")))
 - (id)activeChunksForDrawable:(id)arg1 animationType:(long long)arg2;
 - (id)p_ChunksForDrawable:(id)arg1 animationType:(long long)arg2 onlyActiveChunks:(_Bool)arg3;
 - (id)activeChunksForDrawable:(id)arg1;
+- (id)p_chunksWhichWillPlayWithChunksToSetToWith:(id)arg1;
+- (_Bool)canSetChunksToAutomaticWith:(id)arg1;
+- (id)availableEventTriggersForBuildChunks:(id)arg1;
 - (void)removeBuildChunk:(id)arg1 rollbackGeneratedIdentifier:(_Bool)arg2;
 - (void)insertBuildChunk:(id)arg1 afterChunk:(id)arg2 generateIdentifier:(_Bool)arg3;
 - (void)p_assertChunksInSequenceForBuild:(id)arg1;
@@ -144,6 +153,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *buildChunks;
 - (void)removeInvalidBuildsOnDrawable:(id)arg1 usingParentCommand:(id)arg2;
 - (id)p_invalidBuildsOnDrawable:(id)arg1;
+- (id)contentBuildForDrawable:(id)arg1;
 - (id)outBuildForDrawable:(id)arg1;
 - (id)inBuildForDrawable:(id)arg1;
 - (id)buildsForDrawable:(id)arg1;
@@ -153,6 +163,7 @@ __attribute__((visibility("hidden")))
 - (void)addBuild:(id)arg1;
 @property(copy, nonatomic) NSSet *builds;
 @property(readonly, nonatomic) unsigned long long buildCount;
+@property(readonly, nonatomic) _Bool supportsBuilds;
 - (void)p_invalidateSlideNodeBuildEventCountCaches;
 - (void)p_invalidateCachesForBuildUpdate:(id)arg1 isForRemoval:(_Bool)arg2;
 - (void)p_invalidateCachesForChunkUpdate:(id)arg1 isForRemoval:(_Bool)arg2;
@@ -199,7 +210,7 @@ __attribute__((visibility("hidden")))
 - (void)p_checkChildInfosForDuplicates:(id)arg1;
 - (void)setChildInfosWithoutDOLC:(id)arg1;
 - (void)setChildInfos:(id)arg1;
-- (id)childInfos;
+@property(readonly, nonatomic) NSArray *childInfos;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 @property(readonly, nonatomic) TSDFill *backgroundFill;
 - (id)objectUUIDPath;
@@ -214,6 +225,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool matchesObjectPlaceholderGeometry;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool supportsCollaborativeEditing;
 
 @end
 

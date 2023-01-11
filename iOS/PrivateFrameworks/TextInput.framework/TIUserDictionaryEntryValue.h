@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSSecureCoding-Protocol.h>
 #import <TextInput/TIUserDictionaryEntry-Protocol.h>
@@ -23,12 +23,12 @@
 @property(retain, nonatomic) NSNumber *timestamp; // @synthesize timestamp=_timestamp;
 @property(copy, nonatomic) NSString *shortcut; // @synthesize shortcut=_shortcut;
 @property(copy, nonatomic) NSString *phrase; // @synthesize phrase=_phrase;
+- (void).cxx_destruct;
 - (id)shortcutForSorting;
 - (_Bool)matchesEntry:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

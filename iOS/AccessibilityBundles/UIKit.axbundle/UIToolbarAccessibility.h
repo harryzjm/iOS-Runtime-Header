@@ -17,6 +17,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)_accessibilityFuzzyHitTestElements;
 - (_Bool)_accessibilityHitTestShouldFallbackToNearestChild;
+- (id)accessibilityIdentifier;
 
 @end
 

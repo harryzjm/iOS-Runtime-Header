@@ -12,6 +12,7 @@
 
 @interface CKComposeChatController <CKComposeRecipientSelectionControllerDelegate, CKBusinessInfoViewDelegate>
 {
+    _Bool _ignoreKeyboardNotifications;
     _Bool _newComposeCancelled;
     CKComposeRecipientSelectionController *_composeRecipientSelectionController;
     NSArray *_prepopulatedRecipients;
@@ -31,12 +32,15 @@
 @property(nonatomic) _Bool newComposeCancelled; // @synthesize newComposeCancelled=_newComposeCancelled;
 @property(retain, nonatomic) CKComposition *prepopulatedComposition; // @synthesize prepopulatedComposition=_prepopulatedComposition;
 @property(retain, nonatomic) NSArray *prepopulatedRecipients; // @synthesize prepopulatedRecipients=_prepopulatedRecipients;
+@property(nonatomic) _Bool ignoreKeyboardNotifications; // @synthesize ignoreKeyboardNotifications=_ignoreKeyboardNotifications;
 @property(retain, nonatomic) CKComposeRecipientSelectionController *composeRecipientSelectionController; // @synthesize composeRecipientSelectionController=_composeRecipientSelectionController;
 - (void).cxx_destruct;
 - (void)handleAddressBookChange:(id)arg1;
 - (void)businessInfoView:(id)arg1 infoButtonTapped:(id)arg2;
 - (void)layoutBusinessInfoViewIfNecessary;
 - (void)setBusinessInfoViewInfoIfNecessary;
+- (void)_triggerRecipientFinalization;
+- (void)chatInputWillUpdateInputViewShowingBrowser;
 - (_Bool)_chatShowsUnexpectedlyLoggedOutNotification;
 - (void)_saveDraftState;
 - (_Bool)hasFailedRecipients;
@@ -50,6 +54,7 @@
 - (void)recipientSelectionControllerSearchListDidShowOrHide:(id)arg1;
 - (void)recipientSelectionControllerReturnPressed:(id)arg1;
 - (void)recipientSelectionControllerDidChangeSize:(id)arg1;
+- (void)recipientSelectionControllerDidBecomeFirstResponder:(id)arg1;
 - (void)recipientSelectionController:(id)arg1 didSelectConversation:(id)arg2;
 - (void)sendAnimationManagerWillStartAnimation:(id)arg1 context:(id)arg2;
 - (_Bool)becomeFirstResponder;
@@ -67,6 +72,7 @@
 - (_Bool)transcriptCollectionViewControllerPlaybackForOutgoingEffectsIsAllowed:(id)arg1;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 tappedForChatItem:(id)arg3;
 - (void)_updateTitleAnimated:(_Bool)arg1;
+- (void)keyboardWillShowOrHide:(id)arg1;
 - (double)topInsetPadding;
 - (_Bool)isSafeToMarkAsRead;
 - (id)outgoingComposeViewForSendAnimation;

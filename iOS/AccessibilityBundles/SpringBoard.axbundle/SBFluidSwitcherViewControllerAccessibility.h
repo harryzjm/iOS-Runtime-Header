@@ -30,8 +30,8 @@
 - (void)_addVisibleItemContainerForAppLayout:(id)arg1;
 - (_Bool)_removeVisibleItemContainerForAppLayout:(id)arg1;
 - (void)_setupContentAndTransientViews;
-- (void)_axScrollToAppLayout:(id)arg1;
-- (_Bool)_axPerformScrollToIndex:(unsigned long long)arg1;
+- (void)_axScrollToAppLayout:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)_axPerformScrollToIndex:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)accessibilityScroll:(long long)arg1;
 - (_Bool)accessibilityPerformEscape;
 - (_Bool)_accessibilityServesAsContainingParentForOrdering;

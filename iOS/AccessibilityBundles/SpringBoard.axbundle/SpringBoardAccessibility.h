@@ -17,6 +17,8 @@
 - (void)_accessibilityHandleSpeakScreenGesture:(id)arg1;
 - (void)_accessibilitySetSpeakScreenGestureRecognizer:(id)arg1;
 - (id)_accessibilitySpeakScreenGestureRecognizer;
+- (unsigned long long)_accessibilityNotificationCount;
+- (id)_accessibilityNotificationSummary:(unsigned long long)arg1;
 - (void)takeScreenshotAndEdit:(_Bool)arg1;
 - (void)_keyboardOrCaseLatchWantsToAttemptUnlock:(int)arg1;
 - (_Bool)handleDoubleHeightStatusBarTapWithStyleOverride:(int)arg1;
@@ -39,12 +41,13 @@
 - (_Bool)_accessibilityIsSystemLocked;
 - (_Bool)_accessibilityIsBatteryLow;
 - (_Bool)_accessibilityIsVoiceControlRunning;
-- (int)_accessibilityApplicationOrientation;
+- (long long)_accessibilityApplicationOrientation;
 - (void)_accessibilityDeactivationAnimationWillBegin;
 - (void)powerDownRequested:(id)arg1;
 - (_Bool)_isDim;
 - (void)restartManagerWillReboot:(id)arg1;
 - (void)applicationDidFinishLaunching:(id)arg1;
+- (void)_processAccessibilityStatusChange:(id)arg1;
 - (void)_accessibilityStatusChanged:(id)arg1;
 - (void)_accessibilityLoadPIPInfo;
 - (void)_accessibilityLoadAccessibilityInformation;
@@ -54,6 +57,7 @@
 - (_Bool)_accessibilityShouldLoadAXInfoOnAppLaunchFinish;
 - (void)accessibilityDisable;
 - (void)accessibilityInitialize;
+- (id)_accessibilitySoftwareMimicKeyboard;
 - (void)noteInterfaceOrientationChanged:(long long)arg1 duration:(double)arg2 updateMirroredDisplays:(_Bool)arg3 force:(_Bool)arg4 logMessage:(id)arg5;
 - (void)_accessibilityHandleOrientationChange;
 - (_Bool)_accessibilitySystemAppServerIsReady;

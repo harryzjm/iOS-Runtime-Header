@@ -4,13 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CoreFoundation/NSSecureCoding-Protocol.h>
+
 __attribute__((visibility("hidden")))
-@interface __NSCFCharacterSet
+@interface __NSCFCharacterSet <NSSecureCoding>
 {
 }
 
++ (_Bool)supportsSecureCoding;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (Class)classForCoder;
 - (void)makeCharacterSetFast;
 - (void)makeCharacterSetCompact;

@@ -32,10 +32,12 @@ typedef struct {
     unsigned int personalizationTreatmentId:1;
     unsigned int previousArticlePublisherArticleVersion:1;
     unsigned int publisherArticleVersionInt64:1;
+    unsigned int subscribedChannelCtr:1;
     unsigned int userFeedbackScore:1;
     unsigned int activeTimeSpent:1;
     unsigned int articleDisplayRankInGroup:1;
     unsigned int articleHostViewType:1;
+    unsigned int articleSuggestionOrigin:1;
     unsigned int articleType:1;
     unsigned int articleViewPresentationReason:1;
     unsigned int backendArticleVersion:1;
@@ -44,6 +46,7 @@ typedef struct {
     unsigned int characterCount:1;
     unsigned int coverArticleDisplayRank:1;
     unsigned int coverArticleFeatureType:1;
+    unsigned int curatedContentType:1;
     unsigned int displayRank:1;
     unsigned int feedAutoSubscribeType:1;
     unsigned int feedCellHostType:1;
@@ -52,16 +55,23 @@ typedef struct {
     unsigned int groupArticleCountInForYou:1;
     unsigned int groupDisplayRankInForYou:1;
     unsigned int groupFormationReason:1;
+    unsigned int groupLocation:1;
     unsigned int groupPresentationReason:1;
     unsigned int groupType:1;
     unsigned int loadFailureReason:1;
     unsigned int maxActiveTimeSpent:1;
     unsigned int maxVerticalScrollPositionEnding:1;
+    unsigned int moduleEventType:1;
+    unsigned int moduleItemCount:1;
+    unsigned int moduleItemPosition:1;
+    unsigned int moduleLocation:1;
     unsigned int nextArticleAffordanceType:1;
     unsigned int paidSubscriberToFeedType:1;
     unsigned int parentFeedType:1;
     unsigned int previousArticleHostViewTypeIfSwipe:1;
+    unsigned int previousWebEmbedLocation:1;
     unsigned int publisherArticleVersion:1;
+    unsigned int rankInVideoPlaylist:1;
     unsigned int topStoryMandatoryArticleCount:1;
     unsigned int topStoryOptionalArticleCount:1;
     unsigned int topStoryType:1;
@@ -72,6 +82,7 @@ typedef struct {
     unsigned int articleLoaded:1;
     unsigned int badgeExposure:1;
     unsigned int didBounce:1;
+    unsigned int didExpandDuringView:1;
     unsigned int didOpenInSafari:1;
     unsigned int isBreakingNewsArticle:1;
     unsigned int isCoverArticle:1;
@@ -91,7 +102,7 @@ typedef struct {
     unsigned int isVideoInFeed:1;
     unsigned int subscriptionOnlyArticle:1;
     unsigned int viewFromNotificationDirectOpen:1;
-} CDStruct_97bd45a4;
+} CDStruct_120998a0;
 
 // Ambiguous groups
 typedef struct {
@@ -99,14 +110,29 @@ typedef struct {
     unsigned int widgetArticleCountInSection:1;
     unsigned int widgetArticleRank:1;
     unsigned int widgetArticleRankInSection:1;
+    unsigned int widgetContentType:1;
     unsigned int widgetEngagementType:1;
     unsigned int widgetSectionDisplayRank:1;
     unsigned int widgetVideoPresentationReason:1;
-} CDStruct_80f27018;
+} CDStruct_de6d94e7;
+
+typedef struct {
+    unsigned int articleHeadlineTreatmentId:1;
+    unsigned int articleHeadlineTreatmentState:1;
+} CDStruct_762d0caf;
+
+typedef struct {
+    unsigned int publisherArticleVersion:1;
+    unsigned int articleType:1;
+} CDStruct_3186b938;
 
 typedef struct {
     unsigned int coverArticleWidgetArticleCount:1;
 } CDStruct_bb0d9f0d;
+
+typedef struct {
+    unsigned int maxArticlesShown:1;
+} CDStruct_df5cdcef;
 
 typedef struct {
     unsigned int moduloForHashing:1;

@@ -6,13 +6,13 @@
 
 #import <AnnotationKit/NSObject-Protocol.h>
 
-@class NSString, PKInlineInkPicker, UIColor;
+@class NSString, PKInlineInkPicker, UIColor, UIViewController;
 
 @protocol PKInlineInkPickerDelegate <NSObject>
 
 @optional
+- (UIViewController *)viewControllerForPopoverPresentationFromInlineInkPicker:(PKInlineInkPicker *)arg1;
 - (void)inlineInkPicker:(PKInlineInkPicker *)arg1 didChangeSizeState:(unsigned long long)arg2;
-- (void)inlineInkPicker:(PKInlineInkPicker *)arg1 didChangeState:(unsigned long long)arg2;
 - (void)inlineInkPicker:(PKInlineInkPicker *)arg1 didSelectColor:(UIColor *)arg2;
 - (void)inlineInkPicker:(PKInlineInkPicker *)arg1 didSelectTool:(NSString *)arg2;
 @end

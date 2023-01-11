@@ -6,12 +6,11 @@
 
 #import <Metal/MTLDevice-Protocol.h>
 
-@class MTLCommandQueueDescriptor, MTLComputePipelineDescriptor, MTLStructType, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSData, NSObject, NSString, _MTLIndirectArgumentBufferLayout;
-@protocol MTLArgumentEncoder, MTLCommandQueue, MTLComputePipelineState, MTLDeviceSPI, MTLFunction, MTLIndirectArgumentEncoder, MTLLibrary, MTLPipelineLibrarySPI, MTLRenderPipelineState, MTLTexture, MTLTextureLayout, OS_dispatch_data;
+@class MTLCommandQueueDescriptor, MTLComputePipelineDescriptor, MTLIndirectCommandBufferDescriptor, MTLStructType, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSData, NSObject, NSString, _MTLIndirectArgumentBufferLayout;
+@protocol MTLArgumentEncoder, MTLBuffer, MTLCommandQueue, MTLComputePipelineState, MTLDevice, MTLDeviceSPI, MTLFunction, MTLIndirectArgumentEncoder, MTLIndirectRenderCommandEncoder, MTLLibrary, MTLPipelineLibrarySPI, MTLRenderPipelineState, MTLSharedEvent, MTLTexture, MTLTextureLayout, OS_dispatch_data;
 
 @protocol MTLDeviceSPI <MTLDevice>
 + (void)registerDevices;
-+ (_Bool)metalBufferSanitizerEnabled;
 @property(readonly) struct IndirectArgumentBufferCapabilities indirectArgumentBufferCapabilities;
 @property(readonly) unsigned long long dedicatedMemorySize;
 @property(readonly) unsigned long long sharedMemorySize;
@@ -21,8 +20,16 @@
 @property(readonly) unsigned long long maxTileSamplers;
 @property(readonly) unsigned long long maxTileTextures;
 @property(readonly) unsigned long long maxTileBuffers;
+@property(readonly) unsigned long long linearTextureArrayAlignmentSlice;
+@property(readonly) unsigned long long linearTextureArrayAlignmentBytes;
 @property(readonly) unsigned long long maxFramebufferStorageBits;
+@property(readonly) unsigned long long maxTextureBufferWidth;
 @property(readonly) unsigned long long maxCustomSamplePositions;
+@property(readonly) unsigned long long maxViewportCount;
+@property(readonly) unsigned long long maxIndirectSamplersPerDevice;
+@property(readonly) unsigned long long maxIndirectSamplers;
+@property(readonly) unsigned long long maxIndirectTextures;
+@property(readonly) unsigned long long maxIndirectBuffers;
 @property(readonly) unsigned long long maxTessellationFactor;
 @property(readonly) unsigned long long maxInterpolatedComponents;
 @property(readonly) unsigned long long maxComputeThreadgroupMemoryAlignmentBytes;
@@ -42,7 +49,6 @@
 @property(readonly) unsigned long long maxTextureWidth1D;
 @property(readonly) unsigned long long minBufferNoCopyAlignmentBytes;
 @property(readonly) unsigned long long minConstantBufferAlignmentBytes;
-@property(readonly) unsigned long long maxBufferLength;
 @property(readonly) unsigned long long maxVisibilityQueryOffset;
 @property(readonly) float maxPointSize;
 @property(readonly) float maxLineWidth;
@@ -64,12 +70,15 @@
 @property(readonly) unsigned long long maxVertexBuffers;
 @property(readonly) unsigned long long maxVertexAttributes;
 @property(readonly) unsigned long long maxColorAttachments;
-@property(readonly) const CDStruct_230ee03b *limits;
+@property(readonly) const CDStruct_37c53b2f *limits;
 @property(readonly) unsigned long long featureProfile;
 @property(nonatomic) _Bool metalAssertionsEnabled;
 @property(readonly) unsigned long long doubleFPConfig;
 @property(readonly) unsigned long long singleFPConfig;
 @property(readonly) unsigned long long halfFPConfig;
+- (id <MTLSharedEvent>)newSharedEventWithMachPort:(unsigned int)arg1;
+- (id <MTLIndirectRenderCommandEncoder>)newIndirectRenderCommandEncoderWithBuffer:(id <MTLBuffer>)arg1;
+- (id <MTLBuffer>)newIndirectCommandBufferWithDescriptor:(MTLIndirectCommandBufferDescriptor *)arg1 maxCount:(unsigned long long)arg2 options:(unsigned long long)arg3;
 - (id <MTLArgumentEncoder>)newArgumentEncoderWithLayout:(_MTLIndirectArgumentBufferLayout *)arg1;
 - (id <MTLIndirectArgumentEncoder>)newIndirectArgumentEncoderWithLayout:(_MTLIndirectArgumentBufferLayout *)arg1;
 - (_MTLIndirectArgumentBufferLayout *)newIndirectArgumentBufferLayoutWithStructType:(MTLStructType *)arg1;
@@ -81,17 +90,18 @@
 - (unsigned long long)minLinearTextureAlignmentForPixelFormat:(unsigned long long)arg1;
 - (_Bool)deviceOrFeatureProfileSupportsFeatureSet:(unsigned long long)arg1;
 - (_Bool)deviceSupportsFeatureSet:(unsigned long long)arg1;
+- (id <MTLDevice>)_deviceWrapper;
 - (void)_setDeviceWrapper:(id <MTLDeviceSPI>)arg1;
 - (void)compilerPropagatesThreadPriority:(_Bool)arg1;
+- (NSString *)productName;
+- (NSString *)familyName;
+- (NSString *)vendorName;
 
 @optional
 @property(readonly, getter=isQuadDataSharingSupported) _Bool quadDataSharingSupported;
 @property(readonly) const struct MTLTargetDeviceArch *targetDeviceInfo;
 @property(readonly) unsigned long long indirectArgumentBuffersSupport;
 @property _Bool shaderDebugInfoCaching;
-- (NSString *)productName;
-- (NSString *)familyName;
-- (NSString *)vendorName;
 - (id <MTLTextureLayout>)newTextureLayoutWithDescriptor:(MTLTextureDescriptor *)arg1 isHeapOrBufferBacked:(_Bool)arg2;
 - (id <MTLTexture>)newTextureWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 descriptor:(MTLTextureDescriptor *)arg3 deallocator:(void (^)(void *, unsigned long long))arg4;
 - (NSData *)endCollectingPipelineDescriptors;
@@ -110,6 +120,8 @@
 - (id <MTLComputePipelineState>)newComputePipelineStateWithDescriptor:(MTLComputePipelineDescriptor *)arg1 error:(id *)arg2;
 - (void)unmapShaderSampleBuffer;
 - (_Bool)mapShaderSampleBufferWithBuffer:(CDStruct_32a7f38a *)arg1 capacity:(unsigned long long)arg2 size:(unsigned long long)arg3;
+- (void)reserveResourceIndicesForResourceType:(unsigned long long)arg1 indices:(unsigned long long *)arg2 indexCount:(unsigned long long)arg3;
+- (unsigned long long)resourcePatchingTypeForResourceType:(unsigned long long)arg1;
 - (void)setupMPSFunctionTable:(struct MPSFunctionTable *)arg1;
 - (void)setIndirectArgumentBufferDecodingData:(NSObject<OS_dispatch_data> *)arg1;
 - (NSObject<OS_dispatch_data> *)indirectArgumentBufferDecodingData;

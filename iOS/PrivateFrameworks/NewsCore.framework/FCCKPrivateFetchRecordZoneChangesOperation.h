@@ -4,29 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKFetchRecordZoneChangesOptions, CKRecordZoneID, CKServerChangeToken, NSArray;
+@class CKRecordZoneID, FCCKPrivateDatabaseServerChangeToken, NSArray;
 
 @interface FCCKPrivateFetchRecordZoneChangesOperation
 {
+    _Bool _fetchNewestChangesFirst;
     _Bool _fetchAllChanges;
     _Bool _resultMoreComing;
     CKRecordZoneID *_recordZoneID;
-    CKFetchRecordZoneChangesOptions *_options;
+    FCCKPrivateDatabaseServerChangeToken *_previousServerChangeToken;
+    NSArray *_desiredKeys;
     CDUnknownBlockType _fetchRecordZoneChangesCompletionBlock;
     NSArray *_resultChangedRecords;
     NSArray *_resultDeletedRecordIDs;
-    CKServerChangeToken *_resultServerChangeToken;
+    FCCKPrivateDatabaseServerChangeToken *_resultServerChangeToken;
 }
 
 @property(nonatomic) _Bool resultMoreComing; // @synthesize resultMoreComing=_resultMoreComing;
-@property(retain, nonatomic) CKServerChangeToken *resultServerChangeToken; // @synthesize resultServerChangeToken=_resultServerChangeToken;
+@property(retain, nonatomic) FCCKPrivateDatabaseServerChangeToken *resultServerChangeToken; // @synthesize resultServerChangeToken=_resultServerChangeToken;
 @property(retain, nonatomic) NSArray *resultDeletedRecordIDs; // @synthesize resultDeletedRecordIDs=_resultDeletedRecordIDs;
 @property(retain, nonatomic) NSArray *resultChangedRecords; // @synthesize resultChangedRecords=_resultChangedRecords;
 @property(copy, nonatomic) CDUnknownBlockType fetchRecordZoneChangesCompletionBlock; // @synthesize fetchRecordZoneChangesCompletionBlock=_fetchRecordZoneChangesCompletionBlock;
 @property(nonatomic) _Bool fetchAllChanges; // @synthesize fetchAllChanges=_fetchAllChanges;
-@property(copy, nonatomic) CKFetchRecordZoneChangesOptions *options; // @synthesize options=_options;
+@property(nonatomic) _Bool fetchNewestChangesFirst; // @synthesize fetchNewestChangesFirst=_fetchNewestChangesFirst;
+@property(copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
+@property(copy, nonatomic) FCCKPrivateDatabaseServerChangeToken *previousServerChangeToken; // @synthesize previousServerChangeToken=_previousServerChangeToken;
 @property(copy, nonatomic) CKRecordZoneID *recordZoneID; // @synthesize recordZoneID=_recordZoneID;
 - (void).cxx_destruct;
+- (id)_configurationForDestination:(long long)arg1;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (_Bool)validateOperation;

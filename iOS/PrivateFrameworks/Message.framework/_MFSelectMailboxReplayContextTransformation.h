@@ -4,17 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <Message/MFOfflineCacheReplayContextTransformation-Protocol.h>
-
 @class NSString;
 
-@interface _MFSelectMailboxReplayContextTransformation : NSObject <MFOfflineCacheReplayContextTransformation>
+@interface _MFSelectMailboxReplayContextTransformation
 {
     NSString *_mailboxID;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void)applyToReplayContext:(id)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

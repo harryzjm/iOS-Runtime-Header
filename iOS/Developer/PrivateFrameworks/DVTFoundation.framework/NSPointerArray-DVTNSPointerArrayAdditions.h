@@ -7,6 +7,7 @@
 #import <Foundation/NSPointerArray.h>
 
 @interface NSPointerArray (DVTNSPointerArrayAdditions)
+- (void)dvt_removeFirstObjectIdenticalTo:(id)arg1;
 - (unsigned long long)dvt_indexOfObjectIdenticalTo:(id)arg1;
 - (void)dvt_replaceObjectAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 - (void)dvt_insertObject:(id)arg1 atIndex:(unsigned long long)arg2;

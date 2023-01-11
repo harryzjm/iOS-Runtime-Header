@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)setSelected:(_Bool)arg1;
+- (void)displaySelection:(_Bool)arg1;
 
 @end
 

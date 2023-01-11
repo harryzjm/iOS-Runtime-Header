@@ -13,6 +13,7 @@
 
 @interface ADNSURLSessionDemultiplexer : NSObject <NSURLSessionDataDelegate>
 {
+    _Bool _sessionMarkedInvalid;
     NSString *_identifier;
     long long _requestCount;
     NSMutableDictionary *_taskInfoByTaskIdentifier;
@@ -23,6 +24,7 @@
     CDUnknownBlockType _sessionInvalidated;
 }
 
+@property(nonatomic) _Bool sessionMarkedInvalid; // @synthesize sessionMarkedInvalid=_sessionMarkedInvalid;
 @property(copy, nonatomic) CDUnknownBlockType sessionInvalidated; // @synthesize sessionInvalidated=_sessionInvalidated;
 @property(nonatomic) long long maximumRequestCount; // @synthesize maximumRequestCount=_maximumRequestCount;
 @property(nonatomic) NSObject<OS_dispatch_queue> *demuxQueue; // @synthesize demuxQueue=_demuxQueue;
@@ -31,6 +33,7 @@
 @property(retain) NSMutableDictionary *taskInfoByTaskIdentifier; // @synthesize taskInfoByTaskIdentifier=_taskInfoByTaskIdentifier;
 @property(nonatomic) long long requestCount; // @synthesize requestCount=_requestCount;
 @property NSString *identifier; // @synthesize identifier=_identifier;
+- (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;

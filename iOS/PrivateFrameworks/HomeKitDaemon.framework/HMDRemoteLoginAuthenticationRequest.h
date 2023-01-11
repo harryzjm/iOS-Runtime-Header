@@ -4,9 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKit/HMRemoteLoginMessage.h>
-
-@interface HMDRemoteLoginAuthenticationRequest : HMRemoteLoginMessage
+@interface HMDRemoteLoginAuthenticationRequest
 {
     unsigned long long _targetedAccountType;
 }

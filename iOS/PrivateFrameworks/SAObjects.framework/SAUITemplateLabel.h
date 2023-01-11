@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SAUITemplateAttributedString;
+@class NSDictionary, SAUITemplateAttributedString;
 
 @interface SAUITemplateLabel
 {
@@ -13,6 +13,7 @@
 + (id)labelWithDictionary:(id)arg1 context:(id)arg2;
 + (id)label;
 @property(retain, nonatomic) SAUITemplateAttributedString *text;
+@property(copy, nonatomic) NSDictionary *attributedTexts;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

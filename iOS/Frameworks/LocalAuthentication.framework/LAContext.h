@@ -30,6 +30,8 @@
 @property(retain, nonatomic) NSData *evaluatedPolicyDomainState; // @synthesize evaluatedPolicyDomainState=_evaluatedPolicyDomainState;
 @property(retain, nonatomic) NSNumber *maxBiometryFailures; // @synthesize maxBiometryFailures=_maxBiometryFailures;
 - (void).cxx_destruct;
+- (void)setOptionNoFailureUI:(id)arg1;
+- (id)optionNoFailureUI;
 - (void)setOptionCallerAuditToken:(id)arg1;
 - (id)optionCallerAuditToken;
 @property(nonatomic) _Bool interactionNotAllowed;
@@ -98,6 +100,7 @@
 @property(copy, nonatomic) NSString *localizedFallbackTitle;
 - (void)_setServerPropertyForOption:(long long)arg1 value:(id)arg2;
 - (id)_serverPropertyValueForOption:(long long)arg1;
+- (void)setShowingCoachingHint:(_Bool)arg1 event:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)resetWithReply:(CDUnknownBlockType)arg1;
 - (void)prearmTouchIDWithReply:(CDUnknownBlockType)arg1;
 - (_Bool)isCredentialSet:(long long)arg1;
@@ -117,7 +120,7 @@
 - (id)evaluationMechanismsForPolicy:(long long)arg1 error:(id *)arg2;
 - (id)_evaluationMechanismsFromReturnedError:(id)arg1 error:(id *)arg2;
 - (void)evaluatePolicy:(long long)arg1 localizedReason:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (id)_publicErrorFromInternalError:(id)arg1;
+- (id)_publicErrorFromInternalError:(id)arg1 options:(id)arg2;
 - (id)evaluatePolicy:(long long)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)_hashWithBundleIdentifier:(id)arg1;
 - (void)evaluatePolicy:(long long)arg1 options:(id)arg2 reply:(CDUnknownBlockType)arg3;

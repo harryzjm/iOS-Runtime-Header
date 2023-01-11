@@ -20,7 +20,7 @@
 - (void)setTransform:(id)arg1;
 - (struct CGColor *)irradianceAtPoint:(struct CGColorSpace *)arg1 colorSpace: /* Error: Ran out of types for this method. */;
 - (struct CGColor *)irradianceAtPoint: /* Error: Ran out of types for this method. */;
-@property(readonly, nonatomic) struct RTLight *rtLight;
+- (struct RTLight *)rtLight;
 - (void)dealloc;
 - (id)init;
 @property(copy, nonatomic) NSString *colorSpace;

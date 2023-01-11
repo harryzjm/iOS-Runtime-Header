@@ -15,6 +15,10 @@
 @property(readonly, nonatomic) _Bool forcePrompt; // @synthesize forcePrompt=_forcePrompt;
 @property(readonly, nonatomic) IBUIMetricRepresentation *navigationBar; // @synthesize navigationBar=_navigationBar;
 - (void).cxx_destruct;
+- (id)singleLinkPrettyDescription;
+- (id)copyWithPrecedingMetric:(id)arg1;
+- (_Bool)isEqualToMetricChain:(id)arg1;
+- (unsigned long long)hash;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
 - (id)initWithNavigationBar:(id)arg1 forcePrompt:(_Bool)arg2 precedingMetric:(id)arg3;

@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CalEntitlementsVerifier : NSObject
 {
 }
 
++ (_Bool)currentProcessHasSyncClientEntitlement;
 + (_Bool)currentProcessHasContactsUIEntitlement;
 + (_Bool)currentProcessHasLocationdEffectiveBundleEntitlement;
 + (_Bool)currentProcessHasWatchOSMutableDatabaseEntitlement;

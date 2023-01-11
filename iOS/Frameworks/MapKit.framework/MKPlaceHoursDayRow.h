@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSLayoutConstraint;
+@class NSArray, NSLayoutConstraint, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface MKPlaceHoursDayRow
@@ -13,11 +13,13 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_baselineToTop;
     NSArray *_baselineToBaselineConstraints;
     NSArray *_baselineToBottomConstraints;
+    UIColor *_openingStateColor;
 }
 
+@property(retain, nonatomic) UIColor *openingStateColor; // @synthesize openingStateColor=_openingStateColor;
 - (void).cxx_destruct;
 - (void)_contentSizeDidChange;
-- (void)setDays:(id)arg1 hours:(id)arg2 shouldStack:(_Bool)arg3;
+- (void)setDays:(id)arg1 hours:(id)arg2 shouldStack:(_Bool)arg3 isViewControllerExpanding:(_Bool)arg4 shouldCollapseFurther:(_Bool)arg5;
 - (id)_standardLabel;
 - (_Bool)wantsDefaultClipping;
 - (id)initWithFrame:(struct CGRect)arg1;

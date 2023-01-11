@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SoftwareUpdateServices/NSCopying-Protocol.h>
 #import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
@@ -34,21 +34,31 @@
     _Bool _disableAppDemotion;
     _Bool _disableIntallTonight;
     _Bool _rampEnabled;
+    _Bool _criticalOutOfBoxOnly;
+    _Bool _autoUpdateEnabled;
+    NSString *_setupCritical;
     NSDictionary *_systemPartitionPadding;
     NSData *_sepDigest;
     NSData *_rsepDigest;
     NSDate *_releaseDate;
     unsigned long long _mdmDelayInterval;
+    NSString *_assetID;
     _Bool _downloadableOverCellular;
     _Bool _streamingZipCapable;
+    NSString *_criticalDownloadPolicy;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(retain, nonatomic) NSString *assetID; // @synthesize assetID=_assetID;
 @property(nonatomic) unsigned long long mdmDelayInterval; // @synthesize mdmDelayInterval=_mdmDelayInterval;
 @property(retain, nonatomic) NSDate *releaseDate; // @synthesize releaseDate=_releaseDate;
 @property(retain, nonatomic, setter=setRSEPDigest:) NSData *rsepDigest; // @synthesize rsepDigest=_rsepDigest;
 @property(retain, nonatomic, setter=setSEPDigest:) NSData *sepDigest; // @synthesize sepDigest=_sepDigest;
 @property(retain, nonatomic) NSDictionary *systemPartitionPadding; // @synthesize systemPartitionPadding=_systemPartitionPadding;
+@property(retain, nonatomic) NSString *criticalDownloadPolicy; // @synthesize criticalDownloadPolicy=_criticalDownloadPolicy;
+@property(nonatomic) _Bool autoUpdateEnabled; // @synthesize autoUpdateEnabled=_autoUpdateEnabled;
+@property(nonatomic) _Bool criticalOutOfBoxOnly; // @synthesize criticalOutOfBoxOnly=_criticalOutOfBoxOnly;
+@property(retain, nonatomic) NSString *setupCritical; // @synthesize setupCritical=_setupCritical;
 @property(nonatomic) _Bool rampEnabled; // @synthesize rampEnabled=_rampEnabled;
 @property(nonatomic, getter=installTonightDisabled, setter=_setDisableInstallTonight:) _Bool disableInstallTonight; // @synthesize disableInstallTonight=_disableIntallTonight;
 @property(nonatomic, getter=appDemotionDisabled, setter=_setDisableAppDemotion:) _Bool disableAppDemotion; // @synthesize disableAppDemotion=_disableAppDemotion;
@@ -71,6 +81,7 @@
 @property(retain, nonatomic) NSString *productSystemName; // @synthesize productSystemName=_productSystemName;
 @property(retain, nonatomic) NSString *publisher; // @synthesize publisher=_publisher;
 - (id)description;
+- (_Bool)isEmergencyOrCritical;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)_buildCompareKey;
@@ -79,6 +90,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)updateTypeName;
 - (unsigned long long)totalRequiredFreeSpace;
 - (unsigned long long)preparationSize;
 - (id)humanReadableUpdateName;

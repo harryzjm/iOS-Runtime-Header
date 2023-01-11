@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, NSData, NSDictionary, NSMutableAttributedString, SCROBrailleChunk, SCROBrailleLineVirtualStatus;
+@class NSArray, NSAttributedString, NSData, NSDictionary, NSMutableArray, NSMutableAttributedString, SCROBrailleChunk, SCROBrailleLineVirtualStatus;
 @protocol SCROBrailleDriverProtocol;
 
 @interface SCROBrailleLine : NSObject
@@ -52,11 +52,11 @@
     SCROBrailleChunk *_chunkPendingTranslation;
     NSArray *_chunkArray;
     NSDictionary *_chunkDictionary;
-    NSDictionary *_pendingBrailleStringDictionary;
+    NSMutableArray *_pendingBrailleStringDictionaries;
 }
 
 + (void)initialize;
-@property(retain, nonatomic) NSDictionary *pendingBrailleStringDictionary; // @synthesize pendingBrailleStringDictionary=_pendingBrailleStringDictionary;
+@property(retain, nonatomic) NSMutableArray *pendingBrailleStringDictionaries; // @synthesize pendingBrailleStringDictionaries=_pendingBrailleStringDictionaries;
 @property(retain, nonatomic) NSDictionary *chunkDictionary; // @synthesize chunkDictionary=_chunkDictionary;
 @property(retain, nonatomic) NSArray *chunkArray; // @synthesize chunkArray=_chunkArray;
 @property(nonatomic) __weak SCROBrailleChunk *chunkPendingTranslation; // @synthesize chunkPendingTranslation=_chunkPendingTranslation;
@@ -96,6 +96,7 @@
 @property(readonly, nonatomic) _Bool shouldTranslateNow;
 @property(readonly, nonatomic) _Bool wantsEdits;
 @property(readonly, nonatomic) _Bool hasEdits;
+@property(readonly, nonatomic) NSAttributedString *editingString;
 - (id)description;
 - (unsigned long long)bufferIndexForRouterIndex:(unsigned long long)arg1;
 - (void)addAttributedPaddingToLineBuffer:(id)arg1 chunkWithIndex:(unsigned long long)arg2;

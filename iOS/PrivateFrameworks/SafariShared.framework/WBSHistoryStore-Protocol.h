@@ -10,6 +10,7 @@
 @protocol WBSHistoryStoreDelegate;
 
 @protocol WBSHistoryStore <WBSHistoryLoader>
+@property(readonly, nonatomic) _Bool isUsingInMemoryDatabase;
 @property(nonatomic) _Bool pushNotificationsAreInitialized;
 @property(nonatomic) unsigned long long cachedNumberOfDevicesInSyncCircle;
 @property(copy, nonatomic) NSData *syncCircleSizeRetrievalThrottlerData;
@@ -39,6 +40,7 @@
 - (void)itemsWereModified:(NSArray *)arg1 byUserInitiatedAction:(_Bool)arg2;
 - (void)itemsWereAdded:(NSArray *)arg1 byUserInitiatedAction:(_Bool)arg2;
 - (void)removePastHistoryVisitsForItem:(WBSHistoryItem *)arg1 completionHandler:(void (^)(void))arg2;
+- (void)checkIfLocalVisitExistsInAnyOfItems:(NSSet *)arg1 withCompletion:(void (^)(_Bool))arg2;
 - (void)getVisitsCreatedAfterDate:(NSDate *)arg1 beforeDate:(NSDate *)arg2 completionHandler:(void (^)(NSSet *))arg3;
 - (void)enumerateSubsequentVisitsInRedirectChainOnDatabaseQueue:(NSSet *)arg1 items:(NSSet *)arg2 enumerationBlock:(void (^)(WBSHistoryVisit *))arg3;
 - (void)enumeratePriorVisitsInRedirectChainOnDatabaseQueue:(NSSet *)arg1 items:(NSSet *)arg2 enumerationBlock:(void (^)(WBSHistoryVisit *))arg3;

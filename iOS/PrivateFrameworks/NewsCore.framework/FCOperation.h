@@ -6,17 +6,18 @@
 
 #import <Foundation/NSOperation.h>
 
+#import <NewsCore/FCOperationCanceling-Protocol.h>
+#import <NewsCore/FCOperationIdentifying-Protocol.h>
 #import <NewsCore/FCOperationPrioritizing-Protocol.h>
 
-@class FCMutexLock, NSMutableArray, NSObject, NSString;
+@class FCOnce, NFMutexLock, NSMutableArray, NSObject, NSString;
 @protocol OS_dispatch_group;
 
-@interface FCOperation : NSOperation <FCOperationPrioritizing>
+@interface FCOperation : NSOperation <FCOperationCanceling, FCOperationIdentifying, FCOperationPrioritizing>
 {
     _Bool _executing;
     _Bool _finished;
     _Bool _childOperationsCancelled;
-    _Bool _childOperationsFinished;
     long long _relativePriority;
     unsigned long long _retryCount;
     double _timeoutDuration;
@@ -25,13 +26,14 @@
     double _operationEndTime;
     CDUnknownBlockType _timedOutTest;
     NSMutableArray *_childOperations;
-    FCMutexLock *_childOperationsLock;
+    NFMutexLock *_childOperationsLock;
+    FCOnce *_startOnce;
     NSObject<OS_dispatch_group> *_finishedGroup;
 }
 
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *finishedGroup; // @synthesize finishedGroup=_finishedGroup;
-@property(retain, nonatomic) FCMutexLock *childOperationsLock; // @synthesize childOperationsLock=_childOperationsLock;
-@property(nonatomic) _Bool childOperationsFinished; // @synthesize childOperationsFinished=_childOperationsFinished;
+@property(retain, nonatomic) FCOnce *startOnce; // @synthesize startOnce=_startOnce;
+@property(retain, nonatomic) NFMutexLock *childOperationsLock; // @synthesize childOperationsLock=_childOperationsLock;
 @property(nonatomic) _Bool childOperationsCancelled; // @synthesize childOperationsCancelled=_childOperationsCancelled;
 @property(retain, nonatomic) NSMutableArray *childOperations; // @synthesize childOperations=_childOperations;
 @property(copy, nonatomic) CDUnknownBlockType timedOutTest; // @synthesize timedOutTest=_timedOutTest;
@@ -42,6 +44,8 @@
 @property(nonatomic) unsigned long long retryCount; // @synthesize retryCount=_retryCount;
 @property(nonatomic) long long relativePriority; // @synthesize relativePriority=_relativePriority;
 - (void).cxx_destruct;
+- (id)longOperationDescription;
+- (id)shortOperationDescription;
 - (id)_errorUserInfo;
 - (void)_finishOperationWithError:(id)arg1;
 @property(readonly, nonatomic) _Bool hasOperationStarted;
@@ -68,6 +72,7 @@
 - (void)_finishedPerformingOperationWithError:(id)arg1;
 - (void)finishedPerformingOperationWithError:(id)arg1;
 - (void)performOperation;
+- (_Bool)_startIfNeeded;
 - (void)start;
 - (void)startIfNeeded;
 - (void)prepareOperation;

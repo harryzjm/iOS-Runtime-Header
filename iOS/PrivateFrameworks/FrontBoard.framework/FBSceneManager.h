@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBSDisplayObserving-Protocol.h>
 #import <FrontBoard/FBSceneDelegate-Protocol.h>
@@ -33,6 +33,7 @@
 + (void)synchronizeChanges:(CDUnknownBlockType)arg1;
 + (_Bool)_isSynchronizingSceneUpdates;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)displayMonitor:(id)arg1 willDisconnectIdentity:(id)arg2;
 - (void)displayMonitor:(id)arg1 didConnectIdentity:(id)arg2 withConfiguration:(id)arg3;
 - (void)workspace:(id)arg1 destroySceneWithIdentifier:(id)arg2;
@@ -64,7 +65,7 @@
 - (id)_occlusionStackForDisplayIdentity:(id)arg1 creatingIfNecessary:(_Bool)arg2;
 - (void)_destroyScene:(id)arg1 withTransitionContext:(id)arg2;
 - (void)_updateScene:(id)arg1 withSettings:(id)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_applyMutableSettings:(id)arg1 toScene:(id)arg2 asUpdate:(_Bool)arg3 withTransitionContext:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_applyMutableSettings:(id)arg1 toScene:(id)arg2 withTransitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_createSceneWithDefinition:(id)arg1 initialParameters:(id)arg2 clientProvider:(id)arg3 transitionContext:(id)arg4;
 - (void)_sendOutstandingOcclusionChangesForStack:(id)arg1 withTransitionContext:(id)arg2;
 - (void)_endSynchronizationBlock;
@@ -87,7 +88,7 @@
 - (id)sceneWithIdentifier:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
-@property(nonatomic) id <FBSceneManagerDelegate> delegate;
+@property(nonatomic) __weak id <FBSceneManagerDelegate> delegate;
 - (void)dealloc;
 - (id)init;
 

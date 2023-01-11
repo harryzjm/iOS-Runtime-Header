@@ -7,6 +7,7 @@
 #import <Foundation/NSCharacterSet.h>
 
 @interface NSCharacterSet (SafariSharedExtras)
++ (id)safari_obscuredPasswordCharacterSets;
 + (id)safari_lockRelatedEmojiCharacterSet;
 @end
 

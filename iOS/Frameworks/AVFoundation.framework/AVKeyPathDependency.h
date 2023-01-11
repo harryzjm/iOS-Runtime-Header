@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVKVODispatcher, AVTwoPartKeyPath, AVWeakReference, NSString;
 @protocol AVCallbackCancellation, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVKeyPathDependency : NSObject
 {
     NSObject<OS_dispatch_queue> *_subObjectRegistrationQueue;

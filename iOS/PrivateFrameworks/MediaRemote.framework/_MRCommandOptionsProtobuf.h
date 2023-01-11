@@ -15,6 +15,7 @@
     double _playbackPosition;
     long long _radioStationID;
     unsigned long long _trackID;
+    NSString *_commandID;
     NSString *_contentItemID;
     NSString *_contextID;
     NSString *_destinationAppDisplayID;
@@ -29,9 +30,11 @@
     float _playbackRate;
     NSString *_radioStationHash;
     float _rating;
+    NSString *_remoteControlInterface;
     int _repeatMode;
     int _replaceIntent;
-    unsigned int _sendOptions;
+    int _sendOptions;
+    NSString *_senderID;
     int _shuffleMode;
     float _skipInterval;
     NSString *_sourceID;
@@ -64,6 +67,9 @@
     } _has;
 }
 
+@property(retain, nonatomic) NSString *remoteControlInterface; // @synthesize remoteControlInterface=_remoteControlInterface;
+@property(retain, nonatomic) NSString *senderID; // @synthesize senderID=_senderID;
+@property(retain, nonatomic) NSString *commandID; // @synthesize commandID=_commandID;
 @property(retain, nonatomic) NSString *nowPlayingContentItemID; // @synthesize nowPlayingContentItemID=_nowPlayingContentItemID;
 @property(retain, nonatomic) NSString *insertAfterContentItemID; // @synthesize insertAfterContentItemID=_insertAfterContentItemID;
 @property(retain, nonatomic) NSData *playbackQueueContext; // @synthesize playbackQueueContext=_playbackQueueContext;
@@ -76,7 +82,6 @@
 @property(retain, nonatomic) NSString *stationURL; // @synthesize stationURL=_stationURL;
 @property(nonatomic) _Bool shouldOverrideManuallyCuratedQueue; // @synthesize shouldOverrideManuallyCuratedQueue=_shouldOverrideManuallyCuratedQueue;
 @property(nonatomic) _Bool requestDefermentToPlaybackQueuePosition; // @synthesize requestDefermentToPlaybackQueuePosition=_requestDefermentToPlaybackQueuePosition;
-@property(nonatomic) unsigned int sendOptions; // @synthesize sendOptions=_sendOptions;
 @property(retain, nonatomic) NSString *destinationAppDisplayID; // @synthesize destinationAppDisplayID=_destinationAppDisplayID;
 @property(retain, nonatomic) NSData *systemAppPlaybackQueueData; // @synthesize systemAppPlaybackQueueData=_systemAppPlaybackQueueData;
 @property(retain, nonatomic) NSString *radioStationHash; // @synthesize radioStationHash=_radioStationHash;
@@ -91,6 +96,7 @@
 @property(nonatomic) _Bool externalPlayerCommand; // @synthesize externalPlayerCommand=_externalPlayerCommand;
 @property(retain, nonatomic) NSString *mediaType; // @synthesize mediaType=_mediaType;
 @property(retain, nonatomic) NSString *sourceID; // @synthesize sourceID=_sourceID;
+- (void).cxx_destruct;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
@@ -100,6 +106,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasRemoteControlInterface;
+@property(readonly, nonatomic) _Bool hasSenderID;
+@property(readonly, nonatomic) _Bool hasCommandID;
 - (int)StringAsReplaceIntent:(id)arg1;
 - (id)replaceIntentAsString:(int)arg1;
 @property(nonatomic) _Bool hasReplaceIntent;
@@ -116,7 +125,10 @@
 @property(readonly, nonatomic) _Bool hasStationURL;
 @property(nonatomic) _Bool hasShouldOverrideManuallyCuratedQueue;
 @property(nonatomic) _Bool hasRequestDefermentToPlaybackQueuePosition;
+- (int)StringAsSendOptions:(id)arg1;
+- (id)sendOptionsAsString:(int)arg1;
 @property(nonatomic) _Bool hasSendOptions;
+@property(nonatomic) int sendOptions; // @synthesize sendOptions=_sendOptions;
 @property(readonly, nonatomic) _Bool hasDestinationAppDisplayID;
 @property(readonly, nonatomic) _Bool hasSystemAppPlaybackQueueData;
 @property(readonly, nonatomic) _Bool hasRadioStationHash;
@@ -139,7 +151,6 @@
 @property(nonatomic) _Bool hasExternalPlayerCommand;
 @property(readonly, nonatomic) _Bool hasMediaType;
 @property(readonly, nonatomic) _Bool hasSourceID;
-- (void)dealloc;
 
 @end
 

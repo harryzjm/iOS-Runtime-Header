@@ -9,7 +9,6 @@
 @interface GEODataRequestState
 {
     NSURL *_URL;
-    NSDictionary *_xpcRequestDictionary;
     GEOApplicationAuditToken *_auditToken;
     NSDictionary *_additionalHTTPHeaders;
     NSData *_bodyData;
@@ -21,7 +20,6 @@
     _Bool _allowsCellularAccess;
 }
 
-+ (id)xpcRequestDictionaryWithXPCRequest:(id)arg1;
 + (const char *)decoderType;
 + (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;

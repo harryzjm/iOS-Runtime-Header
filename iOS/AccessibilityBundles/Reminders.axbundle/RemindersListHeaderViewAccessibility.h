@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_axAnnotateTitleLabel;
 - (void)_axUpdateNumberOfItemsLabel;
 - (void)setStyle:(int)arg1;
 - (void)setNumberOfItems:(long long)arg1;

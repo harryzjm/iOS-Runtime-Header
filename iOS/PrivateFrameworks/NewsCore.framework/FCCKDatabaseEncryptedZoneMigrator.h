@@ -8,19 +8,20 @@
 
 #import <NewsCore/FCCKDatabaseMigrator-Protocol.h>
 
-@class FCCKDatabaseEncryptionMiddleware, FCCKPrivateDatabaseSchema, NSSet, NSString;
+@class FCCKPrivateDatabaseSchema, NSSet, NSString;
+@protocol FCCKDatabaseRecordMiddleware;
 
 @interface FCCKDatabaseEncryptedZoneMigrator : NSObject <FCCKDatabaseMigrator>
 {
     FCCKPrivateDatabaseSchema *_sourceSchema;
-    FCCKDatabaseEncryptionMiddleware *_recordEncryptionMiddleware;
+    id <FCCKDatabaseRecordMiddleware> _recordEncryptionMiddleware;
     CDUnknownBlockType _deprecatedBlock;
     NSSet *_sourceZoneNames;
 }
 
 @property(retain, nonatomic) NSSet *sourceZoneNames; // @synthesize sourceZoneNames=_sourceZoneNames;
 @property(copy, nonatomic) CDUnknownBlockType deprecatedBlock; // @synthesize deprecatedBlock=_deprecatedBlock;
-@property(retain, nonatomic) FCCKDatabaseEncryptionMiddleware *recordEncryptionMiddleware; // @synthesize recordEncryptionMiddleware=_recordEncryptionMiddleware;
+@property(retain, nonatomic) id <FCCKDatabaseRecordMiddleware> recordEncryptionMiddleware; // @synthesize recordEncryptionMiddleware=_recordEncryptionMiddleware;
 @property(retain, nonatomic) FCCKPrivateDatabaseSchema *sourceSchema; // @synthesize sourceSchema=_sourceSchema;
 - (void).cxx_destruct;
 - (_Bool)_isEnabledForDatabase:(id)arg1;
@@ -29,6 +30,7 @@
 - (id)databaseMigrationMigrateRecord:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (_Bool)databaseMigrationShouldDropRecord:(id)arg1 database:(id)arg2;
 - (id)databaseMigrationRecordNamesToMigrateInZone:(id)arg1 database:(id)arg2;
+- (_Bool)databaseMigrationShouldMigrateEntireZone:(id)arg1 database:(id)arg2;
 - (id)databaseMigrationZoneNamesForDatabase:(id)arg1;
 - (id)initWithSourceSchema:(id)arg1 recordEncryptionMiddleware:(id)arg2 deprecatedBlock:(CDUnknownBlockType)arg3;
 

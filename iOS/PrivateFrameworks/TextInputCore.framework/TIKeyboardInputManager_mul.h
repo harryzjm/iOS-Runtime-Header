@@ -25,7 +25,6 @@
 - (id)keyboardConfiguration;
 - (void)suspend;
 - (void)resume;
-- (void)dealloc;
 
 @end
 

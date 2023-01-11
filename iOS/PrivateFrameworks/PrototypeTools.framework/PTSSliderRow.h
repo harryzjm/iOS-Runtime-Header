@@ -6,16 +6,7 @@
 
 @interface PTSSliderRow
 {
-    double _minValue;
-    double _maxValue;
 }
-
-@property(nonatomic) double maxValue; // @synthesize maxValue=_maxValue;
-@property(nonatomic) double minValue; // @synthesize minValue=_minValue;
-- (void)updateWithRow:(id)arg1;
-- (id)init;
-- (id)minValue:(double)arg1 maxValue:(double)arg2;
-- (Class)rowTableViewCellClass;
 
 @end
 

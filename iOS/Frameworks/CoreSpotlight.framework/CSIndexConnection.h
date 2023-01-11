@@ -8,12 +8,15 @@
 
 @interface CSIndexConnection
 {
+    _Bool _previouslyInitialized;
     NSMutableDictionary *_indexMap;
 }
 
 + (id)sharedConnection;
+@property(readonly, nonatomic) _Bool previouslyInitialized; // @synthesize previouslyInitialized=_previouslyInitialized;
 @property(readonly, nonatomic) NSMutableDictionary *indexMap; // @synthesize indexMap=_indexMap;
 - (void).cxx_destruct;
+- (void)sendMessageAsync:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)indexForID:(unsigned int)arg1;
 - (void)addIndex:(id)arg1 forID:(unsigned int)arg2;
 - (void)dropIndexID:(unsigned int)arg1;

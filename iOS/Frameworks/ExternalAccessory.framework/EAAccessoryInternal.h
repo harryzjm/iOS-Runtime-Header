@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSData, NSDictionary, NSLock, NSMutableArray, NSString;
 @protocol EAAccessoryDelegate;
@@ -44,6 +44,7 @@
     _Bool _createdByCoreAccessories;
     unsigned int _eqIndex;
     NSMutableArray *_enqueuedNMEASentences;
+    unsigned long long _destinationSharingOptions;
     NSString *_coreAccessoryPrimaryUUID;
     NSString *_bonjourName;
     CDUnknownBlockType _pairingCompletionBlock;
@@ -58,6 +59,7 @@
 @property(copy, nonatomic) NSString *bonjourName; // @synthesize bonjourName=_bonjourName;
 @property(nonatomic) int locationSentenceTypesMask; // @synthesize locationSentenceTypesMask=_locationSentenceTypesMask;
 @property(copy, nonatomic) NSString *coreAccessoryPrimaryUUID; // @synthesize coreAccessoryPrimaryUUID=_coreAccessoryPrimaryUUID;
+@property unsigned long long destinationSharingOptions; // @synthesize destinationSharingOptions=_destinationSharingOptions;
 @property(retain, nonatomic) NSMutableArray *enqueuedNMEASentences; // @synthesize enqueuedNMEASentences=_enqueuedNMEASentences;
 @property _Bool pointOfInterestHandoffEnabled; // @synthesize pointOfInterestHandoffEnabled=_pointOfInterestHandoffEnabled;
 @property(nonatomic) id <EAAccessoryDelegate> delegate; // @synthesize delegate=_delegate;

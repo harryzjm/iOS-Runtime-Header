@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)_rowIdsOfEntriesBeforeTimeStamp:(double)arg1;
 - (double)_nextTimeStampForRefreshTimer;
 - (void)_removeOldFormatCache;
+- (void)tearDown;
 - (id)initWithPath:(id)arg1;
 
 @end

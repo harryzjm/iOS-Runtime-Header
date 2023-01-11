@@ -9,7 +9,7 @@
 #import <SceneKit/SCNSceneRenderer-Protocol.h>
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
-@class AVAudioEngine, AVAudioEnvironmentNode, CALayer, EAGLContext, NSArray, NSRecursiveLock, NSString, SCNCameraController, SCNDisplayLink, SCNJitterer, SCNNode, SCNRenderer, SCNScene, SCNSpriteKitEventHandler, SCNTechnique, SKScene, UIColor;
+@class AVAudioEngine, AVAudioEnvironmentNode, CALayer, EAGLContext, NSArray, NSString, SCNCameraController, SCNDisplayLink, SCNJitterer, SCNNode, SCNRecursiveLock, SCNRenderer, SCNScene, SCNSpriteKitEventHandler, SCNTechnique, SKScene, UIColor;
 @protocol SCNCameraControlConfiguration, SCNEventHandler, SCNSceneRendererDelegate;
 
 @interface SCNView : UIView <SCNSceneRenderer, SCNTechniqueSupport>
@@ -34,12 +34,14 @@
     id _delegate;
     SCNRenderer *_renderer;
     SCNScene *_scene;
+    _Bool _displayLinkCreationRequested;
     SCNDisplayLink *_displayLink;
     long long _preferredFramePerSeconds;
     CALayer *_backingLayer;
     SCNJitterer *_jitterer;
-    NSRecursiveLock *_lock;
+    SCNRecursiveLock *_lock;
     UIColor *_backgroundColor;
+    struct CGSize _boundsSize;
     char *_snapshotImageData;
     unsigned long long _snapshotImageDataLength;
     id <SCNEventHandler> _navigationCameraController;
@@ -61,6 +63,7 @@
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 - (struct CGRect)_focusFrameForSCNNode:(id)arg1;
 - (id)_getFocusableNodes;
+- (void)safeAreaInsetsDidChange;
 - (void)_enterBackground:(id)arg1;
 - (void)_flushDisplayLink;
 - (void)_enterForeground:(id)arg1;
@@ -118,6 +121,9 @@
 - (void)_setNeedsDisplay;
 @property(nonatomic) long long preferredFramesPerSecond;
 - (_Bool)_checkAndUpdateDisplayLinkStateIfNeeded;
+- (void)_createDisplayLinkIfNeeded;
+- (double)_renderThreadPriority;
+- (void)setDisplayLink:(id)arg1;
 - (id)displayLink;
 - (void)set_wantsSceneRendererDelegationMessages:(_Bool)arg1;
 - (_Bool)_wantsSceneRendererDelegationMessages;
@@ -138,7 +144,7 @@
 - (id)navigationCameraController;
 - (id)eventHandler;
 - (void)setEventHandler:(id)arg1;
-@property(nonatomic) id <SCNSceneRendererDelegate> delegate;
+@property(nonatomic) __weak id <SCNSceneRendererDelegate> delegate;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (struct SCNVector3)unprojectPoint:(struct SCNVector3)arg1;
 - (struct SCNVector3)projectPoint:(struct SCNVector3)arg1;
@@ -146,6 +152,7 @@
 - (_Bool)isNodeInsideFrustum:(id)arg1 withPointOfView:(id)arg2;
 - (id)hitTestWithSegmentFromPoint:(struct SCNVector3)arg1 toPoint:(struct SCNVector3)arg2 options:(id)arg3;
 - (id)hitTest:(struct CGPoint)arg1 options:(id)arg2;
+- (struct SCNVector4)_viewport;
 - (double)_flipY:(double)arg1;
 - (void)stop:(id)arg1;
 - (void)pause:(id)arg1;
@@ -169,6 +176,7 @@
 - (struct CGSize)_updateBackingSize;
 - (void)_updateContentsScaleFactor;
 - (void)_resetContentsScaleFactor;
+- (void)updateAtTime:(double)arg1;
 - (void)SCN_displayLinkCallback:(double)arg1;
 - (id)_renderingQueue;
 - (_Bool)scn_inLiveResize;
@@ -179,6 +187,8 @@
 - (void)scn_setBackingLayer:(id)arg1;
 - (id)scn_backingLayer;
 - (id)renderer;
+- (unsigned long long)_renderOptions;
+- (void)set_renderOptions:(unsigned long long)arg1;
 - (struct SCNMatrix4)_screenTransform;
 - (void)set_screenTransform:(struct SCNMatrix4)arg1;
 - (double)_superSamplingFactor;
@@ -193,6 +203,7 @@
 - (id)initWithFrame:(struct CGRect)arg1 options:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)_commonInit:(id)arg1;
+- (void)_initializeDisplayLink;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

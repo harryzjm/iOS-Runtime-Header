@@ -12,6 +12,8 @@
 }
 
 + (_Bool)shouldIncludePredictionLogs;
++ (_Bool)isDNUEnabled;
++ (_Bool)isAudioAccessory;
 + (_Bool)isBetaBuild;
 + (_Bool)isInternalBuild;
 + (_Bool)isDemoModeEnabled;

@@ -8,19 +8,17 @@
 
 @interface CKPublishAssetsOperation
 {
+    CDUnknownBlockType _assetPublishedBlock;
+    CDUnknownBlockType _publishAssetCompletionBlock;
     NSDictionary *_fileNamesByAssetFieldNames;
     unsigned long long _requestedTTL;
     unsigned long long _URLOptions;
-    CDUnknownBlockType _assetPublishedBlock;
-    CDUnknownBlockType _publishAssetCompletionBlock;
     NSArray *_recordIDs;
     NSMutableDictionary *_perItemErrorsByRecordID;
 }
 
 @property(retain, nonatomic) NSMutableDictionary *perItemErrorsByRecordID; // @synthesize perItemErrorsByRecordID=_perItemErrorsByRecordID;
 @property(retain, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
-@property(copy, nonatomic) CDUnknownBlockType publishAssetCompletionBlock; // @synthesize publishAssetCompletionBlock=_publishAssetCompletionBlock;
-@property(copy, nonatomic) CDUnknownBlockType assetPublishedBlock; // @synthesize assetPublishedBlock=_assetPublishedBlock;
 @property(nonatomic) unsigned long long URLOptions; // @synthesize URLOptions=_URLOptions;
 @property(nonatomic) unsigned long long requestedTTL; // @synthesize requestedTTL=_requestedTTL;
 @property(retain, nonatomic) NSDictionary *fileNamesByAssetFieldNames; // @synthesize fileNamesByAssetFieldNames=_fileNamesByAssetFieldNames;
@@ -32,6 +30,8 @@
 - (_Bool)hasCKOperationCallbacksSet;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+@property(copy, nonatomic) CDUnknownBlockType publishAssetCompletionBlock; // @synthesize publishAssetCompletionBlock=_publishAssetCompletionBlock;
+@property(copy, nonatomic) CDUnknownBlockType assetPublishedBlock; // @synthesize assetPublishedBlock=_assetPublishedBlock;
 - (id)activityCreate;
 - (id)initWithRecordIDs:(id)arg1;
 

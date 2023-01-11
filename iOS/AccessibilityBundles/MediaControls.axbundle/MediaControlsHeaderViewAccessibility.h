@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityCombinedTitleElement;
+- (_Bool)_accessibilityHitTestShouldFallbackToNearestChild;
 - (void)layoutSubviews;
 - (id)accessibilityElements;
 - (void)_accessibilityLoadAccessibilityInformation;

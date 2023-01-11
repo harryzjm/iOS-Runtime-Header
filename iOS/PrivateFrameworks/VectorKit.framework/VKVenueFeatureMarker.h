@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class GEOMapItemIdentifier, NSArray;
 
-__attribute__((visibility("hidden")))
 @interface VKVenueFeatureMarker
 {
+    _Bool _localize;
 }
 
+- (id)shortName;
 - (id)name;
 @property(readonly, nonatomic) NSArray *buildings;
+@property(readonly, nonatomic) GEOMapItemIdentifier *mapIdentifier;
 @property(readonly, nonatomic) unsigned long long businessID;
 - (const shared_ptr_c500bfa8 *)venueFeatureMarker;
-- (id)initWithVenue:(const struct Venue *)arg1;
+- (id)initWithVenue:(const struct Venue *)arg1 localize:(_Bool)arg2;
 
 @end
 

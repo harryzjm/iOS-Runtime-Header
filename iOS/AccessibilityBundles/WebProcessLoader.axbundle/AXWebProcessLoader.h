@@ -10,6 +10,7 @@
 {
 }
 
++ (void)_accessibilityLoadWebCoreAXBundle;
 + (void)initialize;
 + (void)_registerForAccessibility;
 + (void)_axUpdated:(id)arg1;

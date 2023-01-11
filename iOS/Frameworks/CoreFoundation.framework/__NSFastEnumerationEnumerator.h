@@ -6,6 +6,7 @@
 
 @protocol NSFastEnumeration;
 
+__attribute__((visibility("hidden")))
 @interface __NSFastEnumerationEnumerator
 {
     id <NSFastEnumeration> _obj;

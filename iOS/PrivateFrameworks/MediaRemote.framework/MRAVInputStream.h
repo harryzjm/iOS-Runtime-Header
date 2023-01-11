@@ -8,13 +8,13 @@
 
 @class AVOutputContext, NSString;
 
-__attribute__((visibility("hidden")))
 @interface MRAVInputStream <AVOutputContextCommunicationChannelDelegate>
 {
     AVOutputContext *_outputContext;
 }
 
 @property(readonly, nonatomic) AVOutputContext *outputContext; // @synthesize outputContext=_outputContext;
+- (void).cxx_destruct;
 - (void)outputContext:(id)arg1 didCloseCommunicationChannel:(id)arg2;
 - (void)outputContext:(id)arg1 didReceiveData:(id)arg2 fromCommunicationChannel:(id)arg3;
 @property(readonly, copy) NSString *description;

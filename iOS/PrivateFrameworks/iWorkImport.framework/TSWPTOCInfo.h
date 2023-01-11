@@ -7,14 +7,12 @@
 #import <iWorkImport/TSWPTextualEquivalentProvider-Protocol.h>
 
 @class NSArray, NSSet, NSString, TSWPTOCPartitioner, TSWPTOCSettings;
-@protocol TSWPTOCController;
 
 __attribute__((visibility("hidden")))
 @interface TSWPTOCInfo <TSWPTextualEquivalentProvider>
 {
     TSWPTOCPartitioner *_partitioner;
     NSArray *_tocEntries;
-    id <TSWPTOCController> _tocController;
     TSWPTOCSettings *_tocSettings;
     NSArray *_pageNumberRanges;
 }
@@ -22,7 +20,6 @@ __attribute__((visibility("hidden")))
 + (_Bool)canPartition;
 @property(retain, nonatomic) NSArray *pageNumberRanges; // @synthesize pageNumberRanges=_pageNumberRanges;
 @property(retain, nonatomic, setter=setTOCSettings:) TSWPTOCSettings *tocSettings; // @synthesize tocSettings=_tocSettings;
-@property(nonatomic) __weak id <TSWPTOCController> tocController; // @synthesize tocController=_tocController;
 @property(retain, nonatomic, setter=setTOCEntries:) NSArray *tocEntries; // @synthesize tocEntries=_tocEntries;
 - (void).cxx_destruct;
 - (id)textualEquivalent;
@@ -40,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSSet *paragraphStylesShownInTOC;
 @property(readonly, nonatomic) NSArray *visibleTOCEntries;
 - (id)partitioner;
+- (_Bool)wantsPositionFixedWhenCopying;
 - (int)elementKind;
 - (Class)repClass;
 - (id)copyWithContext:(id)arg1;

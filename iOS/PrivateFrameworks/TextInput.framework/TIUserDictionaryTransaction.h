@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSSecureCoding-Protocol.h>
 
@@ -19,10 +19,10 @@
 + (_Bool)supportsSecureCoding;
 @property(retain, nonatomic) TIUserDictionaryEntryValue *valueToInsert; // @synthesize valueToInsert=_valueToInsert;
 @property(retain, nonatomic) TIUserDictionaryEntryValue *valueToDelete; // @synthesize valueToDelete=_valueToDelete;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)dealloc;
 
 @end
 

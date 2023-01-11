@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CKDPCSMemoryCache *shareMemoryCache; // @synthesize shareMemoryCache=_shareMemoryCache;
 @property(readonly, nonatomic) CKDPCSMemoryCache *zoneMemoryCache; // @synthesize zoneMemoryCache=_zoneMemoryCache;
 @property(readonly, nonatomic) CKDPCSMemoryCache *recordMemoryCache; // @synthesize recordMemoryCache=_recordMemoryCache;
+@property(readonly, nonatomic) CKDPCSSQLCache *sqlCache; // @synthesize sqlCache=_sqlCache;
 - (void).cxx_destruct;
 - (id)CKStatusReportArray;
 - (_Bool)hasStatusToReport;
@@ -53,10 +54,11 @@ __attribute__((visibility("hidden")))
 - (id)_lockedGetOutstandingFetchForOperation:(id)arg1 options:(unsigned long long)arg2 itemIDString:(id)arg3;
 - (void)_lockedRemoveOutstandingFetch:(id)arg1 forItemIDString:(id)arg2 databaseScope:(long long)arg3;
 - (void)_lockedHandleMemoryFetchOfItem:(id)arg1 pcsData:(id)arg2 forOperation:(id)arg3 options:(unsigned long long)arg4 fetchCreator:(CDUnknownBlockType)arg5 withCompletionHandler:(CDUnknownBlockType)arg6;
-@property(readonly, nonatomic) CKDPCSSQLCache *sqlCache; // @synthesize sqlCache=_sqlCache;
-- (id)_lockedGetSQLCache;
+- (void)getSQLCache:(CDUnknownBlockType)arg1;
+- (void)_lockedGetSQLCacheWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithClientContext:(id)arg1;
+- (void)clearInvalidatedPCSSQLCacheEntriesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)clearPCSMemoryCaches;
 - (void)clearPCSCaches;
 

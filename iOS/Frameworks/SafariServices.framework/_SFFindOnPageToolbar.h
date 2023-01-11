@@ -8,7 +8,7 @@
 
 #import <SafariServices/UISearchBarDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSString, NSTimer, UIBarButtonItem, UILabel, UITextField, UIToolbar, _SFFindOnPageInputBarContainer;
+@class NSArray, NSString, NSTimer, UIBarButtonItem, UILabel, UITextField, UIToolbar, _SFFindOnPageInputBar;
 @protocol _SFFindOnPageToolbarDelegate;
 
 @interface _SFFindOnPageToolbar : UIInputView <UISearchBarDelegate>
@@ -16,15 +16,14 @@
     UIToolbar *_toolbar;
     UIBarButtonItem *_previousButtonItem;
     UIBarButtonItem *_nextButtonItem;
-    _SFFindOnPageInputBarContainer *_inputBarContainer;
+    _SFFindOnPageInputBar *_inputBar;
     UIBarButtonItem *_doneBarButtonItem;
     NSArray *_toolbarItems;
     id <_SFFindOnPageToolbarDelegate> _findDelegate;
     NSTimer *_textChangedUpdateTimer;
     UILabel *_inFieldMatchLabel;
-    UILabel *_matchLabel;
-    NSLayoutConstraint *_matchLabelZeroWidthConstraint;
     _Bool _editing;
+    _Bool _useBottomInset;
     _Bool _usesNarrowLayout;
     NSString *_searchText;
 }
@@ -46,14 +45,17 @@
 - (void)next:(id)arg1;
 - (void)previous:(id)arg1;
 @property(readonly, nonatomic) UITextField *inputField;
+- (id)_matchLabelText;
 - (void)updateUI;
 - (void)layoutSubviews;
 - (void)safeAreaInsetsDidChange;
 - (struct CGSize)intrinsicContentSize;
-- (void)_orientationDidChange:(id)arg1;
+- (double)_accessoryViewHeight;
+- (double)_toolbarVerticalInset;
+- (struct CGRect)_toolbarFrame;
+- (void)_keyboardWillChangeFrame:(id)arg1;
 - (struct CGSize)rightContentViewSize;
 - (struct CGSize)leftContentViewSize;
-- (void)dealloc;
 - (id)initWithDelegate:(id)arg1;
 
 // Remaining properties

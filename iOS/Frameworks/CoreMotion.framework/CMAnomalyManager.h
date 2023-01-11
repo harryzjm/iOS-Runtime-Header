@@ -6,18 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@protocol CMAnomalyDelegate;
+@class CMAnomalyEvent;
+@protocol CMAnomalyDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface CMAnomalyManager : NSObject
 {
+    NSObject<OS_dispatch_queue> *fPrivateQueue;
+    NSObject<OS_dispatch_queue> *fAppQueue;
+    NSObject<OS_dispatch_source> *fWatchdogTimer;
+    struct CLConnectionClient *fLocationdConnection;
+    CMAnomalyEvent *fLastReceivedEvent;
+    CMAnomalyEvent *fLastDispatchedEvent;
+    _Bool fRegisteredForNotification;
     id <CMAnomalyDelegate> _delegate;
 }
 
 + (_Bool)isAnomalyDetectionAvailable;
 @property(nonatomic) id <CMAnomalyDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)resolveAnomalyEvent:(id)arg1 withResolution:(long long)arg2;
+- (void)respondToAnomalyEvent:(id)arg1 withResponse:(long long)arg2;
+- (void)_sendRegistrationForAnomalyEvent:(id)arg1;
 - (void)ackAnomalyEvent:(id)arg1 withResolution:(long long)arg2;
+- (void)_stopWatchdogCheckins;
+- (void)_startWatchdogCheckins;
+- (void)_registerForAnomalyDetection:(_Bool)arg1;
 - (void)stopAnomalyDetection;
 - (void)startAnomalyDetection;
+- (void)dealloc;
+- (id)init;
 
 @end
 

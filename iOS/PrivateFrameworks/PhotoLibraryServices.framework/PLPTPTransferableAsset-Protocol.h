@@ -12,7 +12,6 @@
 @protocol PLPTPTransferableAsset <NSObject>
 @property(readonly, copy, nonatomic) NSString *pathForFullsizeRenderVideoFile;
 @property(readonly, copy, nonatomic) NSString *pathForFullsizeRenderImageFile;
-@property(readonly, copy, nonatomic) NSString *importSessionID;
 @property(readonly, copy, nonatomic) NSString *pathForAdjustmentFile;
 @property(readonly, copy, nonatomic) NSString *pathForDiagnosticFile;
 @property(readonly, retain, nonatomic) CLLocation *location;

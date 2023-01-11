@@ -15,6 +15,7 @@
 - (_Bool)_accessibilityRetainsCustomRotorActionSetting;
 - (id)accessibilityCustomActions;
 - (id)accessibilityHint;
+- (id)_accessibilityCustomActionGroupIdentifier;
 - (id)accessibilityLabel;
 - (_Bool)_accessibilityScrollToVisible;
 

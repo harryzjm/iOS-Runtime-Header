@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreFoundation/NSCoding-Protocol.h>
 #import <CoreFoundation/NSCopying-Protocol.h>
+#import <CoreFoundation/NSSecureCoding-Protocol.h>
 
-@interface NSFileSecurity : NSObject <NSCopying, NSCoding>
+@interface NSFileSecurity : NSObject <NSCopying, NSSecureCoding>
 {
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

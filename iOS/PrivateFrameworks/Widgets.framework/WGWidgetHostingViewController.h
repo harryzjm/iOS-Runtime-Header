@@ -6,12 +6,13 @@
 
 #import <UIKit/UIViewController.h>
 
-@class BSAuditToken, NSDate, NSMapTable, NSMutableDictionary, NSObject, NSString, NSTimer, UIImage, UIView, WGWidgetInfo, WGWidgetLifeCycleSequence, _WGBrokenWidgetView, _WGCAPackageView, _WGWidgetRemoteViewController;
+@class BSAuditToken, NSDate, NSMapTable, NSMutableDictionary, NSObject, NSString, NSTimer, UIView, WGWidgetInfo, WGWidgetLifeCycleSequence, _WGBrokenWidgetView, _WGCAPackageView, _WGLockedOutWidgetView, _WGWidgetRemoteViewController;
 @protocol NSCopying, OS_dispatch_queue, OS_dispatch_semaphore, WGWidgetHostingViewControllerDelegate, WGWidgetHostingViewControllerHost;
 
 @interface WGWidgetHostingViewController : UIViewController
 {
     _Bool _implementsPerformUpdate;
+    _Bool _lockedOut;
     _Bool _disconnectsImmediately;
     _Bool _encodingLayerTree;
     _Bool _didRequestViewInset;
@@ -42,6 +43,7 @@
     NSDate *_lastUnanticipatedDisconnectionDate;
     NSMapTable *_openAppearanceTransactions;
     _WGBrokenWidgetView *_brokenView;
+    _WGLockedOutWidgetView *_lockedOutView;
     NSMutableDictionary *_sequenceIDsToOutstandingWidgetUpdateCompletionHandlers;
     struct CGRect _snapshotViewBounds;
 }
@@ -56,6 +58,7 @@
 + (_Bool)_canWidgetHostConnectRemoteViewControllerByRequestingForSequence:(id)arg1 disconnectionTimer:(id)arg2 connectionState:(long long)arg3;
 @property(nonatomic, getter=_isIgnoringParentAppearState, setter=_setIgnoringParentAppearState:) _Bool ignoringParentAppearState; // @synthesize ignoringParentAppearState=_ignoringParentAppearState;
 @property(retain, nonatomic, getter=_sequenceIDsToOutstandingWidgetUpdateCompletionHandlers, setter=_setSequenceIDsToOutstandingWidgetUpdateCompletionHandlers:) NSMutableDictionary *sequenceIDsToOutstandingWidgetUpdateCompletionHandlers; // @synthesize sequenceIDsToOutstandingWidgetUpdateCompletionHandlers=_sequenceIDsToOutstandingWidgetUpdateCompletionHandlers;
+@property(retain, nonatomic, getter=_lockedOutView, setter=_setLockedOutView:) _WGLockedOutWidgetView *lockedOutView; // @synthesize lockedOutView=_lockedOutView;
 @property(retain, nonatomic, getter=_brokenView, setter=_setBrokenView:) _WGBrokenWidgetView *brokenView; // @synthesize brokenView=_brokenView;
 @property(nonatomic, getter=_isBlacklisted, setter=_setBlacklisted:) _Bool blacklisted; // @synthesize blacklisted=_blacklisted;
 @property(nonatomic, getter=_didUpdate, setter=_setDidUpdate:) _Bool didUpdate; // @synthesize didUpdate=_didUpdate;
@@ -82,6 +85,7 @@
 @property(nonatomic) _Bool disconnectsImmediately; // @synthesize disconnectsImmediately=_disconnectsImmediately;
 @property(nonatomic) unsigned long long maskedCorners; // @synthesize maskedCorners=_maskedCorners;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property(readonly, nonatomic, getter=isLockedOut) _Bool lockedOut; // @synthesize lockedOut=_lockedOut;
 @property(nonatomic, setter=_setImplementsPerformUpdate:) _Bool implementsPerformUpdate; // @synthesize implementsPerformUpdate=_implementsPerformUpdate;
 @property(readonly, nonatomic) long long activeDisplayMode; // @synthesize activeDisplayMode=_activeDisplayMode;
 @property(nonatomic) __weak id <WGWidgetHostingViewControllerHost> host; // @synthesize host=_host;
@@ -89,6 +93,8 @@
 @property(readonly, nonatomic) WGWidgetInfo *widgetInfo; // @synthesize widgetInfo=_widgetInfo;
 - (void).cxx_destruct;
 - (id)description;
+- (void)_insertLockedOutViewWithExplanation:(id)arg1;
+- (void)_invalidateVisibleFrame;
 @property(readonly, copy, nonatomic, getter=_containerIdentifier) NSString *containerIdentifier;
 - (void)_rowHeightDidChange:(id)arg1;
 - (id)_cancelTouches;
@@ -151,7 +157,6 @@
 - (void)_initiateNewSequenceIfNecessary;
 - (_Bool)_isActiveSequence:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)viewDidLoad;
@@ -164,6 +169,7 @@
 - (void)_endRemoteViewControllerAppearanceTransitionIfNecessary;
 - (void)_endRemoteViewControllerAppearanceTransitionIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_beginRemoteViewControllerAppearanceTransitionIfNecessary:(_Bool)arg1 semaphore:(id)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)setLockedOut:(_Bool)arg1 withExplanation:(id)arg2;
 @property(readonly, nonatomic) long long largestAvailableDisplayMode;
 - (void)maximumSizeDidChangeForDisplayMode:(long long)arg1;
 @property(readonly, nonatomic) __weak BSAuditToken *auditToken;
@@ -175,8 +181,8 @@
 - (_Bool)isLinkedOnOrAfterSystemVersion:(id)arg1;
 @property(nonatomic) long long userSpecifiedDisplayMode;
 - (void)setActiveDisplayMode:(long long)arg1;
-@property(readonly, nonatomic) UIImage *settingsIcon;
-@property(readonly, nonatomic) UIImage *icon;
+- (void)requestSettingsIconWithHandler:(CDUnknownBlockType)arg1;
+- (void)requestIconWithHandler:(CDUnknownBlockType)arg1;
 @property(readonly, copy, nonatomic) NSString *displayName;
 @property(readonly, copy, nonatomic) NSString *widgetIdentifier;
 - (void)dealloc;

@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <MIME/NSCopying-Protocol.h>
+
 @protocol NSObject;
 
-@interface MFPair : NSObject
+@interface MFPair : NSObject <NSCopying>
 {
     id <NSObject> _first;
     id <NSObject> _second;
@@ -21,6 +23,7 @@
 - (_Bool)isEqualToPair:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFirst:(id)arg1 second:(id)arg2;
 - (void)dealloc;
 

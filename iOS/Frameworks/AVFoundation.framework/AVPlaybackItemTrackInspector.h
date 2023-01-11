@@ -6,6 +6,7 @@
 
 @class AVWeakReference;
 
+__attribute__((visibility("hidden")))
 @interface AVPlaybackItemTrackInspector
 {
     struct OpaqueFigPlaybackItem *_playbackItem;

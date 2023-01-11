@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/_UINavigationBarTitleView.h>
 
 @class NSString, UILabel;
 
-@interface MFMailComposeNavigationBarTitleView : UIView
+@interface MFMailComposeNavigationBarTitleView : _UINavigationBarTitleView
 {
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
@@ -16,11 +16,19 @@
 }
 
 - (id)_subtitleTextColor;
+- (double)_subtitleFontSizeWhenMini:(_Bool)arg1;
+- (double)_titleFontSizeWhenMini:(_Bool)arg1;
+- (double)_topPaddingForTitleWhenMini:(_Bool)arg1;
 - (double)_verticalOffsetForSubtitleWhenMini:(_Bool)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)layoutSubviews;
-- (void)setSubtitleText:(id)arg1 withStyle:(unsigned long long)arg2;
+- (struct UIEdgeInsets)_contentInsetsWithExclusionRects:(id)arg1 wantsUniformHorizontalInsets:(_Bool)arg2;
+- (void)contentDidChange;
+- (void)layoutMarginsDidChange;
+- (long long)_preferredAlignment;
+- (void)setSubtitle:(id)arg1 withStyle:(unsigned long long)arg2;
+@property(copy, nonatomic) NSString *subtitle;
 @property(copy, nonatomic) NSString *title;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

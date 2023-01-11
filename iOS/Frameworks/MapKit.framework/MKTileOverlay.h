@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MapKit/MKOverlay-Protocol.h>
 
@@ -32,7 +32,7 @@
 - (void)_flushCaches;
 - (id)_tilesInMapRect:(CDStruct_02837cd9)arg1 zoomScale:(double)arg2 contentScale:(double)arg3;
 - (int)_zoomLevelForScale:(double)arg1;
-- (void)_loadTile:(id)arg1 result:(CDUnknownBlockType)arg2;
+- (void)_loadTile:(const struct _GEOTileKey *)arg1 result:(CDUnknownBlockType)arg2;
 - (struct _GEOTileKey)_keyForPath:(CDStruct_cbb88d5e)arg1;
 - (void)loadTileAtPath:(CDStruct_cbb88d5e)arg1 result:(CDUnknownBlockType)arg2;
 - (id)URLForTilePath:(CDStruct_cbb88d5e)arg1;

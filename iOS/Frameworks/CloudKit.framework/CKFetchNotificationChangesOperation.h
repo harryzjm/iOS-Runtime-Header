@@ -9,16 +9,14 @@
 @interface CKFetchNotificationChangesOperation
 {
     _Bool _moreComing;
-    CKServerChangeToken *_previousServerChangeToken;
-    unsigned long long _resultsLimit;
     CDUnknownBlockType _notificationChangedBlock;
     CDUnknownBlockType _fetchNotificationChangesCompletionBlock;
+    CKServerChangeToken *_previousServerChangeToken;
+    unsigned long long _resultsLimit;
     CKServerChangeToken *_resultServerChangeToken;
 }
 
 @property(retain, nonatomic) CKServerChangeToken *resultServerChangeToken; // @synthesize resultServerChangeToken=_resultServerChangeToken;
-@property(copy, nonatomic) CDUnknownBlockType fetchNotificationChangesCompletionBlock; // @synthesize fetchNotificationChangesCompletionBlock=_fetchNotificationChangesCompletionBlock;
-@property(copy, nonatomic) CDUnknownBlockType notificationChangedBlock; // @synthesize notificationChangedBlock=_notificationChangedBlock;
 @property(nonatomic) _Bool moreComing; // @synthesize moreComing=_moreComing;
 @property(nonatomic) unsigned long long resultsLimit; // @synthesize resultsLimit=_resultsLimit;
 @property(copy, nonatomic) CKServerChangeToken *previousServerChangeToken; // @synthesize previousServerChangeToken=_previousServerChangeToken;
@@ -31,6 +29,8 @@
 - (_Bool)hasCKOperationCallbacksSet;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+@property(copy, nonatomic) CDUnknownBlockType fetchNotificationChangesCompletionBlock; // @synthesize fetchNotificationChangesCompletionBlock=_fetchNotificationChangesCompletionBlock;
+@property(copy, nonatomic) CDUnknownBlockType notificationChangedBlock; // @synthesize notificationChangedBlock=_notificationChangedBlock;
 - (id)initWithPreviousServerChangeToken:(id)arg1;
 - (id)init;
 

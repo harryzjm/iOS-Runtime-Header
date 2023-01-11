@@ -6,12 +6,13 @@
 
 #import <iWorkImport/TSDImportExportDelegate-Protocol.h>
 #import <iWorkImport/TSDScrollingAwareChangeSource-Protocol.h>
+#import <iWorkImport/TSKPencilAnnotationSupportedDocument-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSObject, NSSet, NSString, SFUCryptoKey, TSACachedDocumentInfo, TSAFunctionBrowserState, TSAShortcutController, TSCECalculationEngine, TSKCustomFormatList, TSKViewState, TSPDocumentRevision, TSPLazyReference, TSTCustomFormatList;
+@class NSArray, NSDictionary, NSMapTable, NSMutableDictionary, NSMutableSet, NSObject, NSSet, NSString, SFUCryptoKey, TSADocumentInfo, TSAFunctionBrowserState, TSAShortcutController, TSCECalculationEngine, TSDFreehandDrawingToolkitUIState, TSKCustomFormatList, TSKViewState, TSPDocumentRevision, TSPLazyReference, TSTCustomFormatList;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface TSADocumentRoot <TSDImportExportDelegate, TSDScrollingAwareChangeSource>
+@interface TSADocumentRoot <TSKPencilAnnotationSupportedDocument, TSDImportExportDelegate, TSDScrollingAwareChangeSource>
 {
     _Atomic int _needsToCaptureViewState;
     NSMutableDictionary *_upgradeState;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
     _Bool _didLoadControllers;
     _Bool _needsMediaCompatibilityUpgrade;
     _Bool _collaborativeMediaCompatibilityUpgradeDidFail;
+    _Bool _canUseHEVC;
     _Bool _isClosed;
     _Bool _documentLocaleWasUpdated;
     TSPDocumentRevision *_lastSyncRevision;
@@ -40,6 +42,7 @@ __attribute__((visibility("hidden")))
     NSArray *_buildVersionHistory;
 }
 
++ (_Bool)shouldShowImportedDataNotificationsOnOpen;
 + (id)persistenceWarningsForData:(id)arg1 flags:(unsigned long long)arg2;
 + (unsigned long long)previewTypeForCurrentDevice;
 + (struct CGSize)previewImageMaxSizeForType:(unsigned long long)arg1;
@@ -75,6 +78,15 @@ __attribute__((visibility("hidden")))
 - (id)readBuildVersionHistoryFromDiskHasPreUFFVersion:(_Bool)arg1;
 @property(readonly, nonatomic) NSString *defaultDraftName;
 @property(readonly, nonatomic) NSString *name;
+- (void)removePencilAnnotationsFromDrawables:(id)arg1;
+- (void)enumeratePencilAnnotationsFromRootObject:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumeratePencilAnnotationsUsingBlock:(CDUnknownBlockType)arg1;
+- (id)pencilAnnotationEnumeratorFromRootObect:(id)arg1;
+- (_Bool)hasPencilAnnotations;
+- (void)removePencilAnnotations;
+- (_Bool)childrenCanBeAnnotatedWithPencil;
+- (_Bool)canBeAnnotatedWithPencil;
+- (id)allPencilAnnotations;
 - (_Bool)shouldCancelScrollingToSelectionPath:(id)arg1 forChanges:(id)arg2;
 - (id)uniqueDocumentCachePathForProposedPath:(id)arg1;
 - (struct CGImageSource *)newImageSourceForDocumentCachePath:(id)arg1;
@@ -85,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (id)documentCachePath;
 - (id)referencedStylesOfClass:(Class)arg1;
 - (_Bool)shouldAllowDrawableInGroups:(id)arg1 forImport:(_Bool)arg2;
+@property(readonly, nonatomic) TSDFreehandDrawingToolkitUIState *freehandDrawingToolkitUIState;
 - (void)upgradeToFixNonVariationChildStylesWithFileFormatVersion:(unsigned long long)arg1;
 - (void)removeRedundantStyleOverridesAndEnsureReferencedStylesAreInStylesheet;
 - (void)upgradeToSingleStylesheet;
@@ -116,6 +129,8 @@ __attribute__((visibility("hidden")))
 - (void)p_registerAllFormulasAfterImport;
 - (void)didDownloadRemoteData:(id)arg1;
 - (void)didDownloadDocumentResources:(id)arg1;
+- (void)fontUpdatedForStyleClient:(id)arg1;
+- (id)tableToShowImportedDataNotificationOnOpenFor;
 - (_Bool)shouldShowFontWarningNotificationForWarnings:(id)arg1;
 - (id)warningLocationDescriptionForAffectedObjects:(id)arg1 sortingInfo:(id *)arg2;
 - (id)warningsByCombiningSortedWarnings:(id)arg1 withWarnings:(id)arg2;
@@ -167,12 +182,13 @@ __attribute__((visibility("hidden")))
 - (void)loadFromArchive:(const struct DocumentArchive *)arg1 unarchiver:(id)arg2;
 - (void)stashUpgradeState:(const struct DocumentArchive *)arg1 unarchiver:(id)arg2;
 - (id)upgradeState;
+- (void)collectDocumentCloseAnalyticsWithLogger:(id)arg1;
 - (void)collectDocumentOpenAnalyticsWithLogger:(id)arg1;
 - (void)documentDidLoad;
 - (_Bool)objectsNeedToBeMigrated:(id)arg1;
 - (id)makeIsolatedStyleMapper;
 - (id)makeStyleMapper;
-@property(readonly, nonatomic) TSACachedDocumentInfo *cachedDocumentInfo;
+@property(readonly, nonatomic) TSADocumentInfo *documentInfo;
 - (id)tsa_delegate;
 - (void)dealloc;
 - (unsigned long long)writingDirection;
@@ -182,9 +198,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)p_updateDocumentLanguageToCurrentIfNeeded;
 - (void)p_updateBuildVersionHistoryWithVersionOfTemplateBundle:(id)arg1;
 - (void)prepareNewDocumentWithTemplateBundle:(id)arg1 documentLocale:(id)arg2;
-- (id)init;
 - (void)commonInit;
 - (id)initWithContext:(id)arg1;
+@property(nonatomic) _Bool canUseHEVC;
 @property(nonatomic) _Bool collaborativeMediaCompatibilityUpgradeDidFail;
 @property(nonatomic) _Bool needsMediaCompatibilityUpgrade;
 @property(copy, nonatomic) NSString *templateIdentifier;
@@ -197,8 +213,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) NSDictionary *incompatibleMediaContainersWithDataUnsupportedOnAllDevices;
-@property(readonly, nonatomic) NSDictionary *incompatibleMediaContainersWithDataUnsupportedOnThisDevice;
+@property(readonly, nonatomic) NSMapTable *incompatibleMediaContainersWithDataUnsupportedOnAllDevices;
+@property(readonly, nonatomic) NSMapTable *incompatibleMediaContainersWithDataUnsupportedOnThisDevice;
 @property(readonly, nonatomic) _Bool isBrowsingVersions;
 @property(readonly) Class superclass;
 

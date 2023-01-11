@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesStoreUI/NSCoding-Protocol.h>
 #import <iTunesStoreUI/NSCopying-Protocol.h>
+#import <iTunesStoreUI/NSSecureCoding-Protocol.h>
 
 @class UIColor;
 
-@interface SUShadow : NSObject <NSCoding, NSCopying>
+@interface SUShadow : NSObject <NSSecureCoding, NSCopying>
 {
     UIColor *_color;
     struct CGSize _offset;
@@ -19,6 +19,7 @@
     double _radius;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(nonatomic) double radius; // @synthesize radius=_radius;
 @property(nonatomic) double opacity; // @synthesize opacity=_opacity;
 @property(nonatomic) struct CGSize offset; // @synthesize offset=_offset;

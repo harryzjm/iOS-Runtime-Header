@@ -8,11 +8,12 @@
 
 #import <Home/HFAccessoryObserver-Protocol.h>
 #import <Home/HFCameraObserver-Protocol.h>
+#import <Home/HFExecutionEnvironmentObserver-Protocol.h>
 
-@class HMCameraProfile, NSDate, NSError, NSMapTable, NSString;
+@class HFExecutionEnvironment, HMCameraProfile, NSDate, NSError, NSMapTable, NSString;
 @protocol NACancelable;
 
-@interface HFCameraManager : NSObject <HFAccessoryObserver, HFCameraObserver>
+@interface HFCameraManager : NSObject <HFAccessoryObserver, HFCameraObserver, HFExecutionEnvironmentObserver>
 {
     _Bool _isRegisteredForEvents;
     NSError *_cachedStreamError;
@@ -22,8 +23,10 @@
     id <NACancelable> _nextSnapshotEvent;
     NSDate *_snapshotErrorDate;
     unsigned long long _snapshotErrorCount;
+    HFExecutionEnvironment *_executionEnvironment;
 }
 
+@property(retain, nonatomic) HFExecutionEnvironment *executionEnvironment; // @synthesize executionEnvironment=_executionEnvironment;
 @property(nonatomic) unsigned long long snapshotErrorCount; // @synthesize snapshotErrorCount=_snapshotErrorCount;
 @property(retain, nonatomic) NSDate *snapshotErrorDate; // @synthesize snapshotErrorDate=_snapshotErrorDate;
 @property(retain, nonatomic) id <NACancelable> nextSnapshotEvent; // @synthesize nextSnapshotEvent=_nextSnapshotEvent;
@@ -35,7 +38,10 @@
 - (void).cxx_destruct;
 - (_Bool)_hasStreamRequesters;
 - (_Bool)_hasSnapshotRequesters;
-- (void)_handleApplicationDidBecomeActiveNotificationNotification;
+- (void)executionEnvironmentDidBecomeVisible:(id)arg1;
+- (void)executionEnvironmentDidBecomeOccluded:(id)arg1;
+- (void)executionEnvironmentDidBecomeActive:(id)arg1;
+- (void)executionEnvironmentWillResignActive:(id)arg1;
 - (void)accessoryDidUpdateReachability:(id)arg1;
 - (void)_updateEventRegistration;
 - (void)cameraStreamControl:(id)arg1 didStopStreamWithError:(id)arg2;

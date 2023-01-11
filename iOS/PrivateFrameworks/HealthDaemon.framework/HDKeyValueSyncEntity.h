@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthDaemon/HDNanoSyncEntity-Protocol.h>
 #import <HealthDaemon/HDSyncEntity-Protocol.h>
 
 @class NSString;
 
-@interface HDKeyValueSyncEntity : NSObject <HDNanoSyncEntity, HDSyncEntity>
+@interface HDKeyValueSyncEntity : NSObject <HDSyncEntity>
 {
 }
 
@@ -22,10 +21,8 @@
 + (long long)nextSyncAnchorWithSession:(id)arg1 predicate:(id)arg2 startSyncAnchor:(long long)arg3 profile:(id)arg4 error:(id *)arg5;
 + (_Bool)generateSyncObjectsForSession:(id)arg1 predicate:(id)arg2 syncAnchorRange:(struct HDSyncAnchorRange)arg3 maxEncodedBytesPerMessage:(long long)arg4 profile:(id)arg5 error:(id *)arg6 handler:(CDUnknownBlockType)arg7;
 + (id)_syncObjectPredicateWithPredicate:(id)arg1;
-+ (long long)syncEntityType;
++ (id)syncEntityIdentifier;
 + (long long)category;
-+ (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;
-+ (int)nanoSyncObjectType;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

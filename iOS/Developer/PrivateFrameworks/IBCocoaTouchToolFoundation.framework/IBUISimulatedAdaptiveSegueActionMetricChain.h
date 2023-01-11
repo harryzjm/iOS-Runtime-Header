@@ -10,14 +10,20 @@
 {
     IBUISimulatedNavigationItemMetrics *_navigationItemMetrics;
     long long _actionType;
+    long long _presentationStyleWhenModal;
 }
 
+@property(readonly, nonatomic) long long presentationStyleWhenModal; // @synthesize presentationStyleWhenModal=_presentationStyleWhenModal;
 @property(readonly, nonatomic) long long actionType; // @synthesize actionType=_actionType;
 @property(readonly, nonatomic) IBUISimulatedNavigationItemMetrics *navigationItemMetrics; // @synthesize navigationItemMetrics=_navigationItemMetrics;
 - (void).cxx_destruct;
+- (id)singleLinkPrettyDescription;
+- (id)copyWithPrecedingMetric:(id)arg1;
+- (_Bool)isEqualToMetricChain:(id)arg1;
+- (unsigned long long)hash;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
-- (id)initWithNavigationItemMetrics:(id)arg1 actionType:(long long)arg2 precedingMetric:(id)arg3;
+- (id)initWithNavigationItemMetrics:(id)arg1 actionType:(long long)arg2 presentationStyleWhenModal:(long long)arg3 precedingMetric:(id)arg4;
 - (id)createWindowForViewController:(id)arg1 initialSize:(id)arg2 inContext:(id)arg3;
 
 @end

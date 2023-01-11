@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, NSUUID;
 
 @interface CXSendMMIOrUSSDCodeAction
 {
     NSString *_code;
     long long _ttyType;
+    NSUUID *_senderIdentityUUID;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(retain, nonatomic) NSUUID *senderIdentityUUID; // @synthesize senderIdentityUUID=_senderIdentityUUID;
 @property(nonatomic) long long ttyType; // @synthesize ttyType=_ttyType;
 @property(copy, nonatomic) NSString *code; // @synthesize code=_code;
 - (void).cxx_destruct;

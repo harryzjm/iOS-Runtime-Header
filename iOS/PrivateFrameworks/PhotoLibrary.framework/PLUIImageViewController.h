@@ -6,13 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <PhotoLibrary/PLCropOverlayDelegate-Protocol.h>
 #import <PhotoLibrary/PLImageLoadingQueueDelegate-Protocol.h>
 #import <PhotoLibrary/PLPhotoTileViewControllerDelegate-Protocol.h>
 #import <PhotoLibrary/PLVideoViewDelegate-Protocol.h>
 
 @class NSString, NSURL, PLCropOverlay, PLImageCache, PLImageLoadingQueue, PLImageSource, PLManagedAsset, PLPhotoTileViewController, PLProgressView, PLVideoRemaker, PLVideoView, UIImage;
 
-@interface PLUIImageViewController : UIViewController <PLVideoViewDelegate, PLImageLoadingQueueDelegate, PLPhotoTileViewControllerDelegate>
+@interface PLUIImageViewController : UIViewController <PLVideoViewDelegate, PLImageLoadingQueueDelegate, PLPhotoTileViewControllerDelegate, PLCropOverlayDelegate>
 {
     PLManagedAsset *_photo;
     struct CGImage *_imageRef;
@@ -95,6 +96,7 @@
 - (long long)_imagePickerStatusBarStyle;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)didUpdateNavigationBarAppearance;
 - (_Bool)isDisplayedInPhotoPicker;
 - (long long)preferredStatusBarUpdateAnimation;
 - (_Bool)prefersStatusBarHidden;

@@ -6,11 +6,15 @@
 
 #import <UIKit/UICollectionView.h>
 
-@class NSIndexPath;
+#import <TVMLKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@interface _TVStackCollectionView : UICollectionView
+@class NSIndexPath, NSString;
+
+@interface _TVStackCollectionView : UICollectionView <UIGestureRecognizerDelegate>
 {
     double _bottomPadding;
+    struct UIEdgeInsets _gradientBoundsInsets;
+    CDStruct_ce7ae26c _flags;
     NSIndexPath *_indexPathForLastFocusedItem;
 }
 
@@ -18,10 +22,23 @@
 - (void).cxx_destruct;
 - (_Bool)_shouldFadeCellsForBoundChangeWhileRotating;
 - (struct CGRect)_visibleBounds;
+- (void)_performWithoutLayoutBelow:(CDUnknownBlockType)arg1;
+- (void)layoutBelowIfNeeded;
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
 - (void)reloadData;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (void)_getGradientMaskBounds:(out struct CGRect *)arg1 startInsets:(out struct UIEdgeInsets *)arg2 endInsets:(out struct UIEdgeInsets *)arg3 intensities:(out struct UIEdgeInsets *)arg4;
+@property(nonatomic, getter=_gradientBoundsInsets, setter=_setGradientBoundsInsets:) struct UIEdgeInsets _gradientBoundsInsets;
 - (void)setBottomPaddingForVisibleBounds:(double)arg1;
+- (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (_Bool)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

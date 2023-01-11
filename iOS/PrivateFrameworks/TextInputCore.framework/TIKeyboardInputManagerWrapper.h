@@ -7,16 +7,19 @@
 #import <TextInput/TIKeyboardInputManagerStub.h>
 
 @class TIKeyboardInputManagerBase;
-@protocol TIKeyboardInputManagerLogging;
+@protocol TIClientProxy, TIKeyboardInputManagerLogging;
 
 @interface TIKeyboardInputManagerWrapper : TIKeyboardInputManagerStub
 {
     TIKeyboardInputManagerBase *_inputManager;
     id <TIKeyboardInputManagerLogging> _logger;
+    id <TIClientProxy> _clientProxy;
 }
 
+@property(retain, nonatomic) id <TIClientProxy> clientProxy; // @synthesize clientProxy=_clientProxy;
 @property(retain, nonatomic) id <TIKeyboardInputManagerLogging> logger; // @synthesize logger=_logger;
 @property(retain, nonatomic) TIKeyboardInputManagerBase *inputManager; // @synthesize inputManager=_inputManager;
+- (void).cxx_destruct;
 - (void)writeTypologyLogWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)lastAcceptedCandidateCorrected;
 - (void)candidateRejected:(id)arg1;
@@ -28,17 +31,20 @@
 - (void)performHitTestForTouchEvent:(id)arg1 keyboardState:(id)arg2 continuation:(CDUnknownBlockType)arg3;
 - (void)generateRefinementsForCandidate:(id)arg1 keyboardState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)generateReplacementsForString:(id)arg1 keyLayout:(id)arg2 continuation:(CDUnknownBlockType)arg3;
+- (void)handleAcceptedCandidate:(id)arg1 acceptedSecureCandidate:(id)arg2 keyboardState:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handleAcceptedCandidate:(id)arg1 keyboardState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)generateCandidatesWithKeyboardState:(id)arg1 candidateRange:(struct _NSRange)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)generateAutocorrectionsWithKeyboardState:(id)arg1 candidateRange:(struct _NSRange)arg2 requestToken:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)generateAutocorrectionsWithKeyboardState:(id)arg1 candidateRange:(struct _NSRange)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)generateAutocorrectionsWithKeyboardState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)handleKeyboardInput:(id)arg1 acceptedSecureCandidate:(id)arg2 keyboardState:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handleKeyboardInput:(id)arg1 keyboardState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_updateKeyboardOutput:(id)arg1 withSecureCandidatePayload:(id)arg2;
-- (id)acceptSecureCandidate:(id)arg1 keyboardState:(id)arg2;
+- (void)updateAnalyticsForRejectedSuggestion:(id)arg1 keyboardState:(id)arg2;
+- (void)acceptSecureCandidate:(id)arg1 keyboardState:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)syncToKeyboardState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleKeyboardState:(id)arg1;
 - (id)init;
-- (void)dealloc;
 
 @end
 

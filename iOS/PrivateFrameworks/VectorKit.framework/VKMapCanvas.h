@@ -17,8 +17,7 @@ __attribute__((visibility("hidden")))
     VKMapModel *_map;
     struct CGSize _lastCanvasSize;
     VKCamera *_defaultTrackingCamera;
-    float _lastValidCanvasSizeZoomLevel;
-    _Bool _hasLastValidCanvasSizeZoomLevel;
+    optional_44235073 _lastValidCanvasSizeZoomLevel;
     VKTimedAnimation *_horizontalOffsetAnimation;
     double _canonicalSkyHeight;
     struct shared_ptr<md::AnchorContext> _anchorContext;
@@ -32,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) VKMapModel *map; // @synthesize map=_map;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)tileStatistics;
 - (void)populateDebugNode:(shared_ptr_eafb90f9)arg1;
 - (id)navigationPuck;
 - (double)displayZoomLevel;
@@ -72,7 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)mapModelDidReloadStylesheet:(id)arg1;
 - (void)mapModel:(id)arg1 didUpdateContainsOverlay:(_Bool)arg2;
 - (void)mapModelLabelsDidLayout:(id)arg1;
-- (void)mapModel:(id)arg1 selectedLabelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
+- (void)mapModel:(id)arg1 labelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)mapModel:(id)arg1 selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)mapModelDidFailLoadingTiles:(id)arg1 withError:(id)arg2;
 - (void)mapModelDidFinishLoadingTiles:(id)arg1;
@@ -133,6 +133,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_c3b9c2ee)convertPointToCoordinate:(struct CGPoint)arg1;
 - (CDStruct_c3b9c2ee)convertPointToMapPoint:(struct CGPoint)arg1;
 - (void)updateCameraForFrameResize;
+- (optional_44235073)_zoomLevelForCanvasSize:(struct CGSize)arg1;
 - (void)forceSceneLoad;
 - (void)gglWillDrawWithTimestamp;
 - (void)_updateViewTransform;
@@ -156,7 +157,7 @@ __attribute__((visibility("hidden")))
 - (unsigned char)targetDisplay;
 - (void)setContentsScale:(double)arg1;
 - (void)reloadStylesheet;
-- (void)setStylesheetName:(const basic_string_805fe43b *)arg1;
+- (void)setStylesheetName:(const basic_string_23d93216 *)arg1;
 @property(nonatomic) shared_ptr_a3c46825 styleManager;
 @property(readonly, nonatomic) VKSceneConfiguration *sceneConfiguration;
 - (void)setDesiredMapMode:(long long)arg1 immediate:(_Bool)arg2;

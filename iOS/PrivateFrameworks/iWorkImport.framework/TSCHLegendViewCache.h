@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSCHUnretainedParent-Protocol.h>
 
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) struct CGSize legendSize; // @synthesize legendSize=mFinalSize;
 @property(readonly) unsigned long long numberOfColumns; // @synthesize numberOfColumns=mNumberOfColumns;
 @property(readonly) unsigned long long numberOfRows; // @synthesize numberOfRows=mNumberOfRows;
+- (void).cxx_destruct;
 - (struct CGPoint)originForCell:(id)arg1;
 - (void)dealloc;
 - (void)clearParent;

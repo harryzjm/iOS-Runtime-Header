@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <UIFoundation/NSCoding-Protocol.h>
+#import <UIFoundation/NSSecureCoding-Protocol.h>
 #import <UIFoundation/NSTextAttachmentContainer-Protocol.h>
 
-@class NSData, NSFileWrapper, NSString, UIImage, UITextAttachmentView, UIView;
+@class NSData, NSFileWrapper, NSString, NSTextAttachmentView, UIImage, UIView;
 
-@interface NSTextAttachment : NSObject <NSTextAttachmentContainer, NSCoding>
+@interface NSTextAttachment : NSObject <NSSecureCoding, NSTextAttachmentContainer, NSCoding>
 {
     NSData *_data;
     NSString *_uti;
@@ -25,7 +26,7 @@
     } _taFlags;
     NSFileWrapper *_fileWrapper;
     UIImage *_image;
-    UITextAttachmentView *_wrapperView;
+    NSTextAttachmentView *_wrapperView;
 }
 
 + (void)registerTextAttachmentClass:(Class)arg1 forFileType:(id)arg2;
@@ -33,6 +34,7 @@
 + (void)registerTextAttachmentViewProviderClass:(Class)arg1 forFileType:(id)arg2;
 + (Class)textAttachmentViewProviderClassForFileType:(id)arg1;
 + (id)imageCache;
++ (_Bool)supportsSecureCoding;
 + (void)initialize;
 @property(readonly, copy) NSString *description;
 - (void)detachView:(id)arg1 fromParentView:(id)arg2;

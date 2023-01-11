@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
 #import <ChatKit/UITextViewDelegate-Protocol.h>
 
 @class NSString, UITextView;
 
-@interface CKBusinessDescriptionViewController : UIViewController <UITextViewDelegate>
+@interface CKBusinessDescriptionViewController <UITextViewDelegate>
 {
     UITextView *_businessDetailsTextView;
 }
@@ -19,7 +17,6 @@
 - (void).cxx_destruct;
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)doneButtonTapped;
-- (void)setTextViewContentInset;
 - (void)setupBusinessDetailsText;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;

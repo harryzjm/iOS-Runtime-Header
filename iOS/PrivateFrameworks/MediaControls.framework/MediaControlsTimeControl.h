@@ -23,11 +23,11 @@
     double _currentTimeInTrack;
     NSString *_elapsedTime;
     NSString *_remainingTime;
+    _Bool _debugPreviousDisplayLinkPaused;
     _Bool _transitioning;
     _Bool _empty;
     _Bool _timeControlOnScreen;
     _Bool _currentlyTracking;
-    _Bool _live;
     long long _style;
     MPCPlayerResponse *_response;
     UIView *_elapsedTrack;
@@ -42,7 +42,6 @@
     CDStruct_fce57115 _durationSnapshot;
 }
 
-@property(nonatomic, getter=isLive) _Bool live; // @synthesize live=_live;
 @property(nonatomic, getter=isCurrentlyTracking) _Bool currentlyTracking; // @synthesize currentlyTracking=_currentlyTracking;
 @property(nonatomic) double sliderValue; // @synthesize sliderValue=_sliderValue;
 @property(retain, nonatomic) UILayoutGuide *trackLayoutGuide; // @synthesize trackLayoutGuide=_trackLayoutGuide;
@@ -60,7 +59,9 @@
 @property(nonatomic, getter=isEmpty) _Bool empty; // @synthesize empty=_empty;
 @property(nonatomic, getter=isTransitioning) _Bool transitioning; // @synthesize transitioning=_transitioning;
 - (void).cxx_destruct;
-- (void)dealloc;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)invalidateDisplayLinkIfNeeded;
+- (void)createDisplayLinkIfNeeded;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (void)_updateDisplayLinkPause;
 - (void)_updateTimeControl;
@@ -76,7 +77,6 @@
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (void)didMoveToWindow;
 - (void)layoutSubviews;
 - (void)viewDidMoveToSuperview;
 - (id)initWithFrame:(struct CGRect)arg1;

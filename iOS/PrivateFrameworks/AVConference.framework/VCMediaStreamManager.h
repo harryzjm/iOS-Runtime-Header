@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCMediaStreamDelegate-Protocol.h>
 
@@ -21,7 +21,9 @@
 
 + (void)addNSError:(id)arg1 toXPCArgumentDictionary:(id)arg2;
 + (id)defaultManager;
+- (void)deregisterBlocksForService;
 - (void)registerBlocksForService;
+- (id)textStreamWithStreamToken:(long long)arg1;
 - (void)vcMediaStream:(id)arg1 didUpdateVideoConfiguration:(_Bool)arg2 error:(id)arg3 dictionary:(id)arg4;
 - (void)vcMediaStream:(id)arg1 uplinkQualityDidChange:(id)arg2;
 - (void)vcMediaStream:(id)arg1 downlinkQualityDidChange:(id)arg2;

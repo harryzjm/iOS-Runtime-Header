@@ -29,6 +29,7 @@
     NSString *_scriptUserInfo;
     _Bool _shouldAdjustContentOffsets;
     _Bool _useWebViewFastPath;
+    _Bool _isInBackground;
     SUStorePageProtocol *_lastValidProtocol;
     UIPopoverController *_navigationMenuPopover;
     SUNavigationMenuViewController *_navigationMenuViewController;
@@ -45,8 +46,10 @@
     long long _activeSectionIndex;
     SUPageSectionGroup *_sectionsGroup;
     SUSegmentedControl *_segmentedControl;
+    _Bool _didPageViewLoad;
 }
 
+@property(nonatomic) _Bool didPageViewLoad; // @synthesize didPageViewLoad=_didPageViewLoad;
 @property(nonatomic) _Bool canMoveToOverlay; // @synthesize canMoveToOverlay=_canMoveToOverlay;
 @property(readonly, nonatomic) SUSegmentedControl *sectionSegmentedControl; // @synthesize sectionSegmentedControl=_segmentedControl;
 @property(readonly, nonatomic) SUPageSectionGroup *sectionGroup; // @synthesize sectionGroup=_sectionsGroup;
@@ -61,7 +64,6 @@
 - (void)setShouldAdjustContentOffsets:(_Bool)arg1;
 - (_Bool)shouldAdjustContentOffsets;
 @property(readonly, nonatomic) SUViewController *activeChildViewController; // @synthesize activeChildViewController=_activeChildViewController;
-- (void)_reloadContentInsets;
 - (void)_verifyStorePageProtocol:(id)arg1;
 - (void)_tearDownNavigationMenu;
 - (void)_showPlaceholderViewControllerWithTearDown:(_Bool)arg1;
@@ -135,7 +137,6 @@
 - (void)didRotateFromInterfaceOrientation:(long long)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (void)viewWillLayoutSubviews;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (_Bool)viewIsReady;
@@ -157,6 +158,7 @@
 - (id)newRotationController;
 - (id)navigationItemForScriptInterface;
 - (void)loadView;
+- (_Bool)_shouldShowPlaceholderForEmptyPage;
 - (_Bool)loadMoreWithURL:(id)arg1;
 - (void)iTunesStoreUI_searchFieldControllerDidChange:(id)arg1;
 - (id)iTunesStoreUI_searchFieldController;
@@ -189,6 +191,7 @@
 - (id)newViewControllerForPage:(id)arg1 ofType:(long long)arg2 returningError:(id *)arg3;
 - (id)newPlaceholderViewController;
 - (id)newFetchOperation;
+- (void)forceLoadingForNeverAppearedPage;
 - (void)enqueueFetchOperationForPageSection:(id)arg1;
 - (void)enqueueFetchOperation;
 - (void)_finishWebViewLoadWithResult:(_Bool)arg1 error:(id)arg2;

@@ -41,6 +41,7 @@
 - (void)layoutOptionsDidChange;
 - (void)updateUIWithAnimation:(_Bool)arg1;
 - (struct CGRect)cameraViewFrame;
+@property(nonatomic) double cameraViewAlpha;
 - (void)tintColorDidChange;
 - (void)dealloc;
 - (void)prepareForReuse;

@@ -4,17 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class RTDistanceCalculator;
+
 @interface RTLearnedLocationStore
 {
+    RTDistanceCalculator *_distanceCalculator;
 }
 
-+ (id)dominantDeviceClassFrom:(id)arg1;
 + (id)filterPlaces:(id)arg1;
+@property(retain, nonatomic) RTDistanceCalculator *distanceCalculator; // @synthesize distanceCalculator=_distanceCalculator;
+- (void).cxx_destruct;
 - (void)_associatePlacesToVisits:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_dedupePlacesMergingVisitsAndSourcesWithHandler:(CDUnknownBlockType)arg1;
-- (void)dedupePlacesMergingVisitsAndSourcesWithHandler:(CDUnknownBlockType)arg1;
 - (void)logLocationsOfInterestWithHandler:(CDUnknownBlockType)arg1;
 - (void)_logLocationsOfInterestWithHandler:(CDUnknownBlockType)arg1;
+- (void)_removeAllMapItems:(CDUnknownBlockType)arg1;
+- (void)removeAllMapItems:(CDUnknownBlockType)arg1;
+- (void)_fetchEntityAsDictionaryWithEntityName:(id)arg1 propertiesToFetch:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)__removeUnreferencedMapItems:(CDUnknownBlockType)arg1;
+- (void)__removeUnreferencedExtendedAttributes:(CDUnknownBlockType)arg1;
+- (void)__removeUnreferencedAddresses:(CDUnknownBlockType)arg1;
+- (void)_removeUnreferencedMapItems:(CDUnknownBlockType)arg1;
+- (void)removeUnreferencedMapItems:(CDUnknownBlockType)arg1;
 - (void)replaceWithLocationsOfInterest:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_replaceWithLocationsOfInterest:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)clearWithHandler:(CDUnknownBlockType)arg1;
@@ -30,6 +40,8 @@
 - (void)_removeVisitsWithHandler:(CDUnknownBlockType)arg1;
 - (void)removeVisits:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_removeVisits:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)removePlacesWithoutVisitsWithHandler:(CDUnknownBlockType)arg1;
+- (void)_removePlacesWithoutVisitsWithHandler:(CDUnknownBlockType)arg1;
 - (void)removePlacesWithHandler:(CDUnknownBlockType)arg1;
 - (void)_removePlacesWithHandler:(CDUnknownBlockType)arg1;
 - (void)removePlace:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -44,6 +56,8 @@
 - (void)fetchDominantDeviceClassWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchMetricsWithHandler:(CDUnknownBlockType)arg1;
 - (void)_fetchMetricsWithHandler:(CDUnknownBlockType)arg1;
+- (void)fetchLocationOfInterestTransitionsBetweenStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_fetchLocationOfInterestTransitionsBetweenStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchLocationOfInterestWithPlace:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchLocationOfInterestWithPlace:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchLocationOfInterestWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -62,8 +76,9 @@
 - (void)fetchLocationsOfInterestWithinDistance:(double)arg1 location:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_fetchLocationsOfInterestWithinDistance:(double)arg1 location:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)_learnedLocationsOfInterestFromLearnedLocationsOfInterestMO:(id)arg1 context:(id)arg2;
+- (void)fetchTransitionsBetweenStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchTransitionsWithHandler:(CDUnknownBlockType)arg1;
-- (void)_fetchTransitionsWithHandler:(CDUnknownBlockType)arg1;
+- (void)_fetchTransitionsBetweenStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchTransitionsOriginatingFromVisits:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchTransitionsOriginatingFromVisits:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchCountOfVisitsToPlaceWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -80,10 +95,10 @@
 - (void)_fetchVisitsPredating:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchVisitWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchVisitWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)fetchPlaceWithMapItemIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_fetchPlaceWithMapItemIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchPlacesWithinDistance:(double)arg1 location:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_fetchPlacesWithinDistance:(double)arg1 location:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)fetchPlacesWithDehydratedMapItemWithHandler:(CDUnknownBlockType)arg1;
-- (void)_fetchPlacesWithDehydratedMapItemWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchPlacesWithMapItem:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchPlaceWithMapItem:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchPlacesWithMapItem:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -93,17 +108,24 @@
 - (void)_fetchPlacesWithType:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchPlacesWithHandler:(CDUnknownBlockType)arg1;
 - (void)_fetchPlacesWithHandler:(CDUnknownBlockType)arg1;
+- (void)updateTransitionWithIdentifier:(id)arg1 motionActivityType:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_updateTransitionWithIdentifier:(id)arg1 motionActivityType:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)updateExpirationDateOfVisitsWithIdentifiers:(id)arg1 expirationDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_updateExpirationDateOfVisitsWithIdentifiers:(id)arg1 expirationDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)updateLocationOfInterestWithIdentifier:(id)arg1 place:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_updateLocationOfInterestWithIdentifier:(id)arg1 place:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)updatePlaces:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_refreshMapItemsWithEnumerationBlock:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (id)refreshMapItemsWithEnumerationBlock:(CDUnknownBlockType)arg1;
+- (void)_migrateLegacyMapItemsWithEnumerationBlock:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (id)migrateLegacyMapItemsWithEnumerationBlock:(CDUnknownBlockType)arg1;
 - (void)storeTransitions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)storeVisits:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)associatePlacesToVisits:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)storeVisits:(id)arg1 place:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_storeVisits:(id)arg1 place:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)storePlaces:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)initWithDistanceCalculator:(id)arg1 persistenceManager:(id)arg2;
 - (id)init;
 
 @end

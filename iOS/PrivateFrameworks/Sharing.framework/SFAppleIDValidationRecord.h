@@ -8,31 +8,39 @@
 
 #import <Sharing/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSNumber, NSString;
+@class NSArray, NSData, NSDate, NSNumber, NSString;
 
 @interface SFAppleIDValidationRecord : NSObject <NSSecureCoding>
 {
+    NSString *_altDSID;
     NSData *_data;
     NSString *_identifier;
     NSDate *_nextCheckDate;
-    NSDate *_startDate;
-    double _suggestedValidInterval;
+    unsigned long long _suggestedValidDuration;
+    NSArray *_validatedEmailHashes;
+    NSArray *_validatedPhoneHashes;
+    NSDate *_validStartDate;
     NSNumber *_version;
 }
 
 + (_Bool)supportsSecureCoding;
 @property(retain, nonatomic) NSNumber *version; // @synthesize version=_version;
-@property(nonatomic) double suggestedValidInterval; // @synthesize suggestedValidInterval=_suggestedValidInterval;
-@property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property(retain, nonatomic) NSDate *validStartDate; // @synthesize validStartDate=_validStartDate;
+@property(retain, nonatomic) NSArray *validatedPhoneHashes; // @synthesize validatedPhoneHashes=_validatedPhoneHashes;
+@property(retain, nonatomic) NSArray *validatedEmailHashes; // @synthesize validatedEmailHashes=_validatedEmailHashes;
+@property(nonatomic) unsigned long long suggestedValidDuration; // @synthesize suggestedValidDuration=_suggestedValidDuration;
 @property(retain, nonatomic) NSDate *nextCheckDate; // @synthesize nextCheckDate=_nextCheckDate;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
+@property(retain, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool needsUpdate;
+@property(readonly, nonatomic) _Bool isInvalid;
 - (id)description;
 - (id)initWithDictionary:(id)arg1;
 - (_Bool)isEqualToValidationRecord:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (id)expirationDate;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

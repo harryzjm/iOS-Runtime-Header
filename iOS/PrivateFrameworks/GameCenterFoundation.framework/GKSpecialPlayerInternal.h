@@ -8,6 +8,7 @@
 {
 }
 
++ (_Bool)supportsSecureCoding;
 - (id)compositeName;
 - (_Bool)isLoaded;
 - (void)setPhotos:(id)arg1;

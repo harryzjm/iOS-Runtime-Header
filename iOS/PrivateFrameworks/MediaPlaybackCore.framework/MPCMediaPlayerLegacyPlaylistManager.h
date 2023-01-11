@@ -8,7 +8,7 @@
 
 #import <MediaPlaybackCore/MPCQueueBehaviorManaging-Protocol.h>
 
-@class MPAVItem, MPMusicPlayerControllerQueue, MPMutableBidirectionalDictionary, MPQueueFeeder, NSMapTable, NSMutableArray, NSMutableIndexSet, NSObject, NSString, _MPCAVItemSourceContext, _MPCAVPlaylistIteration;
+@class MPAVItem, MPMusicPlayerControllerQueue, MPQueueFeeder, MSVMutableBidirectionalDictionary, NSMapTable, NSMutableArray, NSMutableIndexSet, NSObject, NSString, _MPCAVItemSourceContext, _MPCAVPlaylistIteration;
 @protocol OS_dispatch_queue;
 
 @interface MPCMediaPlayerLegacyPlaylistManager : MPAVPlaylistManager <MPCQueueBehaviorManaging>
@@ -21,7 +21,7 @@
     unsigned long long _minimumPlaylistIndex;
     unsigned long long _maximumPlaylistIndex;
     NSMutableIndexSet *_failedSoftQueueIndexes;
-    MPMutableBidirectionalDictionary *_identifiersToIndexes;
+    MSVMutableBidirectionalDictionary *_identifiersToIndexes;
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_musicPlayerControllerAccessQueue;
     MPMusicPlayerControllerQueue *_currentMusicPlayerControllerQueue;
@@ -36,6 +36,7 @@
     _MPCAVPlaylistIteration *_softQueueModifications;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(nonatomic) _Bool disableQueueModifications; // @synthesize disableQueueModifications=_disableQueueModifications;
 @property(retain, nonatomic) _MPCAVPlaylistIteration *softQueueModifications; // @synthesize softQueueModifications=_softQueueModifications;
 @property(copy, nonatomic) _MPCAVItemSourceContext *repeatPlaylistIdentifer; // @synthesize repeatPlaylistIdentifer=_repeatPlaylistIdentifer;
@@ -79,10 +80,11 @@
 - (_Bool)canSkipToPreviousItemForItem:(id)arg1;
 - (id)queueCoordinator:(id)arg1 itemToFollowItem:(id)arg2;
 - (void)_willFinishReloadWithQueueFeeder:(id)arg1 fromPlaybackContext:(id)arg2;
+- (_Bool)allowsQueueResetWhenReachingEnd;
 - (void)queueFeederDidInvalidateRealShuffleType:(id)arg1;
 - (void)queueFeeder:(id)arg1 didChangeContentsWithReplacementPlaybackContext:(id)arg2;
 - (void)queueFeeder:(id)arg1 didChangeContentsWithPreferredStartIndex:(unsigned long long)arg2 error:(id)arg3;
-- (unsigned long long)playlistItemCount;
+- (long long)playlistItemCount;
 - (long long)playlistIndexWithDelta:(long long)arg1 fromIndex:(long long)arg2 ignoreElapsedTime:(_Bool)arg3 didReachEnd:(_Bool *)arg4;
 - (void)setRepeatMode:(long long)arg1;
 - (_Bool)setPlaylistFeeder:(id)arg1 startIndex:(long long)arg2 keepPlaying:(_Bool)arg3;
@@ -99,6 +101,7 @@
 - (id)metadataItemForPlaylistIndex:(long long)arg1;
 - (unsigned long long)indexForContentItemID:(id)arg1;
 - (id)contentItemIDForPlaylistIndex:(long long)arg1;
+- (void)updateLocationDependentPropertiesForItem:(id)arg1;
 - (_Bool)isPlaceholderItemForContentItemID:(id)arg1;
 - (id)itemForContentItemID:(id)arg1;
 - (id)itemForPlaylistIndex:(long long)arg1;
@@ -114,6 +117,7 @@
 - (void)clearSoftQueue;
 - (void)clearHardQueue;
 - (void)addPlaybackContext:(id)arg1 toQueueWithInsertionType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)uniqueIdentifier;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_commonInit;
 - (void)finalizeStateRestorationWithCompletionHandler:(CDUnknownBlockType)arg1;

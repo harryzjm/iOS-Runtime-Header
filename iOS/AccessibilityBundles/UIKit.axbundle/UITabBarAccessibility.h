@@ -11,12 +11,14 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilitySupportsContentSizeCategory:(id)arg1;
+- (id)accessibilityLabel;
 - (void)beginCustomizingItems:(id)arg1;
 - (void)_dismissCustomizeSheet:(_Bool)arg1;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityFuzzyHitTestElements;
 - (_Bool)_accessibilityHitTestShouldFallbackToNearestChild;
 - (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 - (_Bool)shouldGroupAccessibilityChildren;
 
 @end

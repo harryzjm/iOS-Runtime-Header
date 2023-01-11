@@ -6,18 +6,20 @@
 
 #import <iWorkImport/TSCEReferenceTrackerDelegate-Protocol.h>
 
-@class NSLock, NSString, TSCECalculationEngine, TSCENamedReferenceTrie, TSCEReferenceTracker;
+@class NSObject, NSString, TSCECalculationEngine, TSCENamedReferenceTrie, TSCEReferenceTracker;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface TSCENamedReferenceManager <TSCEReferenceTrackerDelegate>
 {
     TSCENamedReferenceTrie *_names;
-    struct unordered_map<TSU::UUIDData<TSP::UUIDData>, SFUtility::ObjcSharedPtr<TSUPointerKeyDictionary>, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<std::__1::pair<const TSU::UUIDData<TSP::UUIDData>, SFUtility::ObjcSharedPtr<TSUPointerKeyDictionary>>>> _stringsByTrackedReferenceByTable;
-    NSLock *_nrmLock;
+    struct unordered_map<TSU::UUIDData<TSP::UUIDData>, TSUPointerKeyDictionary *, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<std::__1::pair<const TSU::UUIDData<TSP::UUIDData>, TSUPointerKeyDictionary *>>> _stringsByTrackedReferenceByTable;
+    NSObject<OS_dispatch_queue> *_nrmQueue;
     TSCEReferenceTracker *_referenceTracker;
     TSCECalculationEngine *_calcEngine;
 }
 
+@property __weak TSCECalculationEngine *calcEngine; // @synthesize calcEngine=_calcEngine;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)loadFromUnarchiver:(id)arg1;
@@ -38,20 +40,22 @@ __attribute__((visibility("hidden")))
 - (id)trackedReferencesExactlyMatchingString:(id)arg1 scopedToTable:(const UUIDData_5fbc143e *)arg2;
 - (id)trackedReferencesMatchingPrefix:(id)arg1;
 - (id)trackedReferencesMatchingPrefix:(id)arg1 scopedToTable:(const UUIDData_5fbc143e *)arg2;
-- (_Bool)referenceNameIsUnique:(id)arg1 forReference:(const struct TSCERangeRef *)arg2 contextTable:(const UUIDData_5fbc143e *)arg3;
+- (_Bool)referenceNameIsUnique:(id)arg1 forReference:(const RefTypeHolder_8c6da553 *)arg2 contextTable:(const UUIDData_5fbc143e *)arg3;
 - (id)stringForTrackedReference:(id)arg1 inTable:(const UUIDData_5fbc143e *)arg2;
 - (id)referenceForTrackedReference:(id)arg1 sticky:(_Bool)arg2;
 - (struct TSCERangeRef)rangeForTrackedReference:(id)arg1 gettingTrackedCell:(struct TSCECellRef *)arg2;
 - (id)referenceTracker;
 - (void)endTrackingNamesInTable:(const UUIDData_5fbc143e *)arg1;
-- (void)beginTrackingNameInCell:(struct TSUCellCoord)arg1 ofResolver:(id)arg2 addingTrackedReferencesTo:(id)arg3;
-- (void)beginTrackingNamesInRange:(struct TSCERangeCoordinate)arg1 ofResolver:(id)arg2 addingTrackedReferencesTo:(id)arg3;
+- (void)beginTrackingNameInCell:(struct TSUCellCoord)arg1 ofResolver:(struct TSCETableResolver *)arg2 addingTrackedReferencesTo:(id)arg3;
+- (void)beginTrackingNamesInRange:(struct TSCERangeCoordinate)arg1 ofResolver:(struct TSCETableResolver *)arg2 addingTrackedReferencesTo:(id)arg3;
 - (id)beginTrackingNamesInTable:(const UUIDData_5fbc143e *)arg1 limitedToRange:(struct TSCERangeCoordinate)arg2;
 - (void)headerCellContentWasModified:(id)arg1;
 - (UUIDData_5fbc143e)formulaOwnerUID;
 - (void)setCalculationEngine:(id)arg1;
+- (void)willClose;
 - (id)initWithContext:(id)arg1 calculationEngine:(id)arg2;
 - (id)initWithContext:(id)arg1;
+- (void)commonInit;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

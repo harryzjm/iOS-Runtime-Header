@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IMDaemonCore/APSConnectionDelegate-Protocol.h>
 
@@ -20,6 +20,7 @@
     CKRecordZone *_messageRecordZone;
     CKRecordZoneID *_deDupeSaltZoneID;
     CKRecordZone *_deDupeSaltRecordZone;
+    CKRecordZoneID *_metricZoneID;
     IMDCKDatabaseManager *_dataBaseManager;
     APSConnection *_pushConnection;
 }
@@ -27,6 +28,7 @@
 + (id)sharedInstance;
 @property(retain, nonatomic) APSConnection *pushConnection; // @synthesize pushConnection=_pushConnection;
 @property(retain, nonatomic) IMDCKDatabaseManager *dataBaseManager; // @synthesize dataBaseManager=_dataBaseManager;
+@property(readonly, nonatomic) CKRecordZoneID *metricZoneID; // @synthesize metricZoneID=_metricZoneID;
 @property(readonly, nonatomic) CKRecordZone *deDupeSaltRecordZone; // @synthesize deDupeSaltRecordZone=_deDupeSaltRecordZone;
 @property(readonly, nonatomic) CKRecordZoneID *deDupeSaltZoneID; // @synthesize deDupeSaltZoneID=_deDupeSaltZoneID;
 @property(readonly, nonatomic) CKRecordZone *messageRecordZone; // @synthesize messageRecordZone=_messageRecordZone;
@@ -35,8 +37,11 @@
 @property(readonly, nonatomic) CKRecordZoneID *attachmentRecordZoneID; // @synthesize attachmentRecordZoneID=_attachmentRecordZoneID;
 @property(readonly, nonatomic) CKRecordZone *chatRecordZone; // @synthesize chatRecordZone=_chatRecordZone;
 @property(readonly, nonatomic) CKRecordZoneID *chatRecordZoneID; // @synthesize chatRecordZoneID=_chatRecordZoneID;
+- (void)fetchChatZoneToCheckManateeStatus:(CDUnknownBlockType)arg1;
+- (id)ckUtilities;
+- (void)_deleteAllZonesForDatabase:(id)arg1;
 - (void)deleteAllZones;
-- (void)createSubscriptionIfNeededOnDeDupeZoneForSubscription:(id)arg1 recordType:(id)arg2;
+- (void)createSubscriptionIfNeededOnDeDupeZoneForSubscription:(id)arg1 recordType:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)deleteDeDupeSaltZone;
 - (void)createDeDupeSaltZoneIfNeededWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)deleteMessageZone;
@@ -45,12 +50,13 @@
 - (void)createAttachmentZoneIfNeededWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)deleteChatZone;
 - (void)createChatZoneIfNeededWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)_deleteZone:(id)arg1 forDatabase:(id)arg2;
 - (void)_deleteZone:(id)arg1;
 - (void)_createRecordZoneIfNeeded:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)_createRecordZone:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)_checkRecordZoneExists:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)_createSubscriptionIfNeededForZoneID:(id)arg1 subscriptionID:(id)arg2 recordType:(id)arg3;
-- (void)_createSubscriptionForZoneID:(id)arg1 subscriptionID:(id)arg2 recordType:(id)arg3;
+- (void)_createSubscriptionIfNeededForZoneID:(id)arg1 subscriptionID:(id)arg2 recordType:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)_createSubscriptionForZoneID:(id)arg1 subscriptionID:(id)arg2 recordType:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)_handleNotificationForZoneID:(id)arg1 subscriptionID:(id)arg2;
 - (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;

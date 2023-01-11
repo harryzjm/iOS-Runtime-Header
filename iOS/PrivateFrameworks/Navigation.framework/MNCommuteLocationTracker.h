@@ -6,13 +6,12 @@
 
 #import <Navigation/GEOETAUpdaterDelegate-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedWaypoint, GEOETAUpdater, GEONavigationMapMatcher, MNActiveRouteInfo, MNLocation, MNNavigationTraceManager, NSString;
+@class GEOComposedRoute, GEOComposedWaypoint, GEOETAUpdater, GEONavigationMapMatcher, MNActiveRouteInfo, MNCommuteDestinationSuggestion, MNLocation, MNNavigationTraceManager, NSString;
 @protocol GEODirectionServiceTicket, GEOMapServiceTicket;
 
 __attribute__((visibility("hidden")))
 @interface MNCommuteLocationTracker <GEOETAUpdaterDelegate>
 {
-    GEOComposedWaypoint *_destination;
     GEOComposedWaypoint *_lastOrigin;
     MNLocation *_lastLocation;
     MNActiveRouteInfo *_routeInfo;
@@ -20,16 +19,17 @@ __attribute__((visibility("hidden")))
     id <GEODirectionServiceTicket> _directionsRequestTicket;
     GEONavigationMapMatcher *_mapMatcher;
     GEOETAUpdater *_etaUpdater;
-    unsigned long long _destinationID;
     MNNavigationTraceManager *_traceManager;
     _Bool _requestNonRecommendedRoutes;
     _Bool _routingInProgress;
+    unsigned long long _destinationID;
+    MNCommuteDestinationSuggestion *_suggestion;
 }
 
+@property(readonly, nonatomic) MNCommuteDestinationSuggestion *suggestion; // @synthesize suggestion=_suggestion;
 @property(nonatomic) _Bool routingInProgress; // @synthesize routingInProgress=_routingInProgress;
 @property(nonatomic) unsigned long long destinationID; // @synthesize destinationID=_destinationID;
 @property(nonatomic) _Bool requestNonRecommendedRoutes; // @synthesize requestNonRecommendedRoutes=_requestNonRecommendedRoutes;
-@property(readonly, nonatomic) GEOComposedWaypoint *destination; // @synthesize destination=_destination;
 - (void).cxx_destruct;
 - (void)etaUpdaterReceivedInvalidRoute:(id)arg1 newRoute:(id)arg2 incidentsOnRoute:(id)arg3 incidentsOffRoute:(id)arg4;
 - (void)etaUpdaterUpdatedETA:(id)arg1;
@@ -51,12 +51,13 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) GEOComposedRoute *route;
 - (void)_setAuditToken:(id)arg1;
 - (void)updateETA;
+@property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) GEOComposedWaypoint *destination;
 - (void)dealloc;
-- (id)initWithDestination:(id)arg1 traceManager:(id)arg2;
+- (id)initWithSuggestion:(id)arg1 traceManager:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

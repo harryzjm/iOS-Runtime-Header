@@ -6,38 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSNumber, UITraitCollection, UIWindow;
+@class NSArray, NSMutableArray, NSNumber, UITraitCollection, UIWindow;
 
 @interface IBCTTUISimulatedMetricsContext : NSObject
 {
-    Class _windowClass;
+    NSMutableArray *_windowCleanupBlocks;
+    _Bool _allowStatusBar;
     UIWindow *_window;
     UIWindow *_statusBarWindow;
     UIWindow *_backgroundWindow;
     NSNumber *_explicitInterfaceOrientation;
     NSNumber *_explicitStatusBarShouldBeHidden;
     UITraitCollection *_explicitTraitCollection;
-    CDUnknownBlockType _slideOverSplitViewMasterBlock;
 }
 
 + (void)_applyGlobalSimulatedMetricsForScreen:(id)arg1 orientation:(id)arg2 statusBarHeight:(id)arg3 userInterfaceStyle:(id)arg4;
 + (void)applyDefaultGlobalSimulatedMetrics;
-@property(copy, nonatomic) CDUnknownBlockType slideOverSplitViewMasterBlock; // @synthesize slideOverSplitViewMasterBlock=_slideOverSplitViewMasterBlock;
+@property(nonatomic) _Bool allowStatusBar; // @synthesize allowStatusBar=_allowStatusBar;
 @property(copy, nonatomic) UITraitCollection *explicitTraitCollection; // @synthesize explicitTraitCollection=_explicitTraitCollection;
 @property(copy, nonatomic) NSNumber *explicitStatusBarShouldBeHidden; // @synthesize explicitStatusBarShouldBeHidden=_explicitStatusBarShouldBeHidden;
 @property(copy, nonatomic) NSNumber *explicitInterfaceOrientation; // @synthesize explicitInterfaceOrientation=_explicitInterfaceOrientation;
 @property(retain, nonatomic) UIWindow *backgroundWindow; // @synthesize backgroundWindow=_backgroundWindow;
 @property(retain, nonatomic) UIWindow *statusBarWindow; // @synthesize statusBarWindow=_statusBarWindow;
 @property(retain, nonatomic) UIWindow *window; // @synthesize window=_window;
-@property(readonly, nonatomic) Class windowClass; // @synthesize windowClass=_windowClass;
 - (void).cxx_destruct;
 - (void)_oldApplyGlobalAndAdditionalSimulatedMetricsForTool:(id)arg1 during:(CDUnknownBlockType)arg2;
+- (void)applyStatusBarOverrideDuring:(CDUnknownBlockType)arg1;
 - (void)applyGlobalAndAdditionalSimulatedMetricsForTool:(id)arg1 during:(CDUnknownBlockType)arg2;
 - (void)_setupBackgroundWindowForTool:(id)arg1;
+- (void)addWindowCleanupBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSArray *windows;
 - (void)invalidate;
 - (void)dealloc;
-- (id)initWithWindowClass:(Class)arg1;
 
 @end
 

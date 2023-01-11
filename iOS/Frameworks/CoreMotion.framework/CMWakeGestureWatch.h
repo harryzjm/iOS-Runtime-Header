@@ -8,7 +8,5 @@
 {
 }
 
-+ (_Bool)isWakeGestureAvailable;
-
 @end
 

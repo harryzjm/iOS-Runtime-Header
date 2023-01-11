@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsUI/CNContactDataSource-Protocol.h>
 
-@class CNContact, CNContactFilter, CNContactFormatter, CNContactStore, CNContactStoreFilter, CNContactStoreSnapshot, CNiOSAddressBook, NSArray, NSDictionary, NSString;
+@class CNContact, CNContactFilter, CNContactFormatter, CNContactStore, CNContactStoreFilter, CNContactStoreSnapshot, CNManagedConfiguration, CNiOSAddressBook, NSArray, NSDictionary, NSString;
 @protocol CNContactDataSourceDelegate, OS_dispatch_queue;
 
 @interface CNContactStoreDataSource : NSObject <CNContactDataSource>
@@ -18,19 +18,23 @@
     NSObject<OS_dispatch_queue> *_queue;
     _Bool _loadingSnapshot;
     _Bool _fetchUnified;
+    _Bool _meContactNeedsUpdate;
     CNContactFormatter *contactFormatter;
     id <CNContactDataSourceDelegate> delegate;
     CNContactStoreFilter *_filter;
     CNContactStore *_store;
+    CNManagedConfiguration *_managedConfiguration;
     NSArray *_keysToFetch;
     CNContact *_meContact;
 }
 
 + (id)keyPathsForValuesAffectingEffectiveFilter;
 + (_Bool)isErrorPossiblyRelatedToExtraStores:(id)arg1;
+@property(nonatomic) _Bool meContactNeedsUpdate; // @synthesize meContactNeedsUpdate=_meContactNeedsUpdate;
 @property(copy, nonatomic) CNContact *meContact; // @synthesize meContact=_meContact;
 @property(nonatomic) _Bool fetchUnified; // @synthesize fetchUnified=_fetchUnified;
 @property(retain, nonatomic) NSArray *keysToFetch; // @synthesize keysToFetch=_keysToFetch;
+@property(retain, nonatomic) CNManagedConfiguration *managedConfiguration; // @synthesize managedConfiguration=_managedConfiguration;
 @property(retain, nonatomic) CNContactStore *store; // @synthesize store=_store;
 @property(copy, nonatomic) CNContactStoreFilter *filter; // @synthesize filter=_filter;
 @property(nonatomic) __weak id <CNContactDataSourceDelegate> delegate; // @synthesize delegate;
@@ -58,7 +62,6 @@
 - (_Bool)setMeContact:(id)arg1 error:(id *)arg2;
 - (id)preferredForNameMeContactIdentifier;
 - (id)preferredForNameMeContactWithKeysToFetch:(id)arg1;
-- (void)resetPreferredForNameMeContact;
 - (id)indexPathForContact:(id)arg1;
 - (id)completeContactFromContact:(id)arg1 fromMainStoreOnly:(_Bool)arg2 keysToFetch:(id)arg3;
 @property(readonly, nonatomic) NSArray *indexSections;

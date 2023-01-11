@@ -16,6 +16,7 @@
 - (_Bool)accessibilityPerformEscape;
 - (_Bool)_accessibilityCanPerformEscapeAction;
 - (_Bool)_accessibilitySpeakThisShouldOnlyIncludeVisibleElements;
+- (id)_accessibilityGroupIdentifier;
 - (id)_accessibilityScannerGroupElements;
 - (id)_axVisibleHeadersAndFootersAfterLastVisibleCellSection:(long long)arg1;
 - (id)_axVisibleHeadersAndFootersPriorToFirstVisibleCellSection:(long long)arg1;
@@ -85,6 +86,7 @@
 - (id)dequeueReusableCellWithIdentifier:(id)arg1 forIndexPath:(id)arg2;
 - (id)dequeueReusableCellWithIdentifier:(id)arg1;
 - (_Bool)_accessibilityShouldDisableCellReuse;
+- (_Bool)_automationPrefersRealElements;
 - (id)_axAttemptCreationOfViewType:(int)arg1 identifier:(id)arg2;
 - (id)_axAttemptStoryboard:(id)arg1 viewType:(int)arg2;
 - (void)setTableHeaderViewShouldAutoHide:(_Bool)arg1;

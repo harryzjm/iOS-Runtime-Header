@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, TSCHLegendCellMetrics, TSCHLegendViewCache, TSDShadow, TSDStroke, TSWPParagraphStyle;
 
@@ -27,9 +27,11 @@ __attribute__((visibility("hidden")))
     _Bool mReverseSingleColumnLegendOrder;
     double mLastLegendWidth;
     TSCHLegendViewCache *mLastLegendViewCache;
+    _Bool mLegendIsRTL;
     double mSymbolGap;
 }
 
+@property(readonly) _Bool legendIsRTL; // @synthesize legendIsRTL=mLegendIsRTL;
 @property(readonly) _Bool reverseSingleColumnLegendOrder; // @synthesize reverseSingleColumnLegendOrder=mReverseSingleColumnLegendOrder;
 @property(readonly) double effectiveStrokeWidth; // @synthesize effectiveStrokeWidth=mEffectiveStrokeWidth;
 @property(readonly) struct CGSize largestCellSize; // @synthesize largestCellSize=mLargestCellSize;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) NSArray *cells; // @synthesize cells=mCells;
 @property(readonly) unsigned long long cellCount; // @synthesize cellCount=mCellCount;
 @property(readonly) _Bool legendOn; // @synthesize legendOn=mLegendOn;
+- (void).cxx_destruct;
 - (id)viewCacheForWidth:(double)arg1;
 - (id)cellForSeriesIndex:(unsigned long long)arg1 cellType:(int)arg2;
 - (void)dealloc;

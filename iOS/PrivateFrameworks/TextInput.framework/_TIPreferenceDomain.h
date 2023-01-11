@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -23,7 +23,7 @@
 @property(nonatomic) _Bool needsGetSync; // @synthesize needsGetSync=_needsGetSync;
 @property(retain, nonatomic) NSString *notification; // @synthesize notification=_notification;
 @property(retain, nonatomic) NSString *domain; // @synthesize domain=_domain;
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

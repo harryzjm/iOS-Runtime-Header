@@ -19,6 +19,8 @@
 #import <CameraUI/CAMConfigurationDelegate-Protocol.h>
 #import <CameraUI/CAMControlVisibilityDelegate-Protocol.h>
 #import <CameraUI/CAMControlVisibilityUpdateDelegate-Protocol.h>
+#import <CameraUI/CAMDescriptionOverlayViewDelegate-Protocol.h>
+#import <CameraUI/CAMDisabledPreviewControllerDelegate-Protocol.h>
 #import <CameraUI/CAMFacesDelegate-Protocol.h>
 #import <CameraUI/CAMFilterScrubberViewDelegate-Protocol.h>
 #import <CameraUI/CAMLightingControlDelegate-Protocol.h>
@@ -26,12 +28,13 @@
 #import <CameraUI/CAMModeDialDataSource-Protocol.h>
 #import <CameraUI/CAMPanoramaCaptureRequestDelegate-Protocol.h>
 #import <CameraUI/CAMPhysicalCaptureNotifierDelegate-Protocol.h>
-#import <CameraUI/CAMPortraitModeDescriptionOverlayViewDelegate-Protocol.h>
 #import <CameraUI/CAMPreviewViewControllerDelegate-Protocol.h>
 #import <CameraUI/CAMRemoteShutterDelegate-Protocol.h>
 #import <CameraUI/CAMShallowDepthOfFieldStatusDelegate-Protocol.h>
+#import <CameraUI/CAMShutterButtonDelegate-Protocol.h>
 #import <CameraUI/CAMStillImageCaptureRequestDelegate-Protocol.h>
 #import <CameraUI/CAMStillImageCapturingVideoDelegate-Protocol.h>
+#import <CameraUI/CAMStorageControllerDelegate-Protocol.h>
 #import <CameraUI/CAMSuggestionDelegate-Protocol.h>
 #import <CameraUI/CAMTimelapseControllerDelegate-Protocol.h>
 #import <CameraUI/CAMTimerButtonDelegate-Protocol.h>
@@ -40,12 +43,13 @@
 #import <CameraUI/CAMZoomControlDelegate-Protocol.h>
 #import <CameraUI/CAMZoomDelegate-Protocol.h>
 #import <CameraUI/CAMZoomSliderDelegate-Protocol.h>
+#import <CameraUI/PUApertureSliderDelegate-Protocol.h>
 #import <CameraUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class BCSAVParsingSession, CAMAnimationDelegate, CAMBarsAccessibilityHUDManager, CAMBottomBar, CAMBurstIndicatorView, CAMCallStatusMonitor, CAMCameraRollController, CAMCaptureGraphConfiguration, CAMClosedViewfinderController, CAMDisabledModeOverlayView, CAMElapsedTimeView, CAMFilterButton, CAMFilterNameBadge, CAMFilterScrubberView, CAMFlashBadge, CAMFlashButton, CAMFlipButton, CAMFocusLockBadge, CAMFramerateIndicatorView, CAMGridView, CAMHDRBadge, CAMHDRButton, CAMIdleController, CAMImageWell, CAMIrisButton, CAMKeepAliveController, CAMLevelIndicatorView, CAMLevelViewModel, CAMLightingControl, CAMLightingNameBadge, CAMLivePhotoBadge, CAMLocationController, CAMMachineReadableCodeLoggingController, CAMModeDial, CAMMotionController, CAMPanoramaViewController, CAMPhysicalCaptureNotifier, CAMPhysicalCaptureRecognizer, CAMPortraitModeDescriptionOverlayView, CAMPortraitModeInstructionLabel, CAMPowerController, CAMPreciseTimer, CAMPreviewViewController, CAMRemoteShutterController, CAMShallowDepthOfFieldBadge, CAMShutterIndicatorView, CAMTimelapseController, CAMTimerButton, CAMTimerIndicatorView, CAMTopBar, CAMTorchPatternController, CAMUtilityBar, CAMZoomControl, CAMZoomSlider, CUCaptureController, CUShutterButton, NSDate, NSMutableSet, NSSet, NSString, UIAlertController, UIButton, UIGestureRecognizer, UIPanGestureRecognizer, UIPinchGestureRecognizer, UISelectionFeedbackGenerator, UISwipeGestureRecognizer, UIView, _UIButtonFeedbackGenerator;
-@protocol CAMCameraConfigurationDelegate, CAMViewfinderReviewButtonSource, UIViewControllerPreviewing;
+@class BCSAVParsingSession, CAMAnimationDelegate, CAMApertureButton, CAMBarsAccessibilityHUDManager, CAMBottomBar, CAMBurstIndicatorView, CAMCallStatusMonitor, CAMCameraRollController, CAMCaptureGraphConfiguration, CAMClosedViewfinderController, CAMCreativeCameraButton, CAMDisabledModeOverlayView, CAMDisabledPreviewController, CAMElapsedTimeView, CAMFeedbackContoller, CAMFilterButton, CAMFilterNameBadge, CAMFilterScrubberView, CAMFlashBadge, CAMFlashButton, CAMFlipButton, CAMFocusLockBadge, CAMFramerateIndicatorView, CAMGridView, CAMHDRBadge, CAMHDRButton, CAMIdleController, CAMImageWell, CAMKeepAliveController, CAMLevelIndicatorView, CAMLevelViewModel, CAMLightingControl, CAMLightingNameBadge, CAMLivePhotoBadge, CAMLivePhotoButton, CAMLocationController, CAMMachineReadableCodeLoggingController, CAMMessagesPhotosButton, CAMModeDial, CAMMotionController, CAMPanoramaViewController, CAMPhysicalCaptureNotifier, CAMPhysicalCaptureRecognizer, CAMPortraitModeDescriptionOverlayView, CAMPortraitModeInstructionLabel, CAMPowerController, CAMPreciseTimer, CAMPreviewViewController, CAMQRCodeDescriptionOverlayView, CAMQRCodeInstructionLabel, CAMRemoteShutterController, CAMShallowDepthOfFieldBadge, CAMShutterIndicatorView, CAMStorageController, CAMTimelapseController, CAMTimerButton, CAMTimerIndicatorView, CAMTopBar, CAMTorchPatternController, CAMUtilityBar, CAMZoomControl, CAMZoomSlider, CUCaptureController, CUShutterButton, NSDate, NSMutableSet, NSSet, NSString, PUApertureSlider, PUReviewScreenDoneButton, UIAlertController, UIButton, UIGestureRecognizer, UIPanGestureRecognizer, UIPinchGestureRecognizer, UISwipeGestureRecognizer, UIView;
+@protocol CAMCameraConfigurationDelegate, CAMCreativeCameraDelegate, CAMViewfinderReviewButtonSource, UIViewControllerPreviewing;
 
-@interface CAMViewfinderViewController : UIViewController <UIGestureRecognizerDelegate, CAMModeDialDataSource, CAMStillImageCaptureRequestDelegate, CAMVideoCaptureRequestDelegate, CAMPanoramaCaptureRequestDelegate, CAMFacesDelegate, CAMMachineReadableCodeDelegate, CAMConfigurationDelegate, CAMSuggestionDelegate, CAMAvailabilityDelegate, CAMBurstDelegate, CAMTimerButtonDelegate, CAMControlVisibilityDelegate, CAMControlVisibilityUpdateDelegate, CAMPreviewViewControllerDelegate, CAMCaptureRecoveryDelegate, CAMCaptureInterruptionDelegate, CAMCaptureRunningDelegate, CAMZoomDelegate, CAMZoomSliderDelegate, CAMTimelapseControllerDelegate, CAMCameraRollControllerImageWellDelegate, CAMCameraRollControllerSessionDelegate, CAMCameraRollControllerPresentationDelegate, CAMClosedViewfinderControllerDelegate, CAMStillImageCapturingVideoDelegate, CAMZoomControlDelegate, CAMShallowDepthOfFieldStatusDelegate, CAMPhysicalCaptureNotifierDelegate, CAMFilterScrubberViewDelegate, CAMVideoThumbnailContentsDelegate, CAMBarsAccessibilityHUDManagerDelegate, CAMPortraitModeDescriptionOverlayViewDelegate, CAMLightingControlDelegate, CAMRemoteShutterDelegate>
+@interface CAMViewfinderViewController : UIViewController <UIGestureRecognizerDelegate, CAMModeDialDataSource, CAMStillImageCaptureRequestDelegate, CAMVideoCaptureRequestDelegate, CAMPanoramaCaptureRequestDelegate, CAMFacesDelegate, CAMMachineReadableCodeDelegate, CAMConfigurationDelegate, CAMSuggestionDelegate, CAMAvailabilityDelegate, CAMBurstDelegate, CAMTimerButtonDelegate, CAMControlVisibilityDelegate, CAMControlVisibilityUpdateDelegate, CAMPreviewViewControllerDelegate, CAMCaptureRecoveryDelegate, CAMCaptureInterruptionDelegate, CAMCaptureRunningDelegate, CAMZoomDelegate, CAMZoomSliderDelegate, CAMTimelapseControllerDelegate, CAMCameraRollControllerImageWellDelegate, CAMCameraRollControllerSessionDelegate, CAMCameraRollControllerPresentationDelegate, CAMClosedViewfinderControllerDelegate, CAMDisabledPreviewControllerDelegate, CAMStillImageCapturingVideoDelegate, CAMZoomControlDelegate, CAMShallowDepthOfFieldStatusDelegate, CAMPhysicalCaptureNotifierDelegate, CAMFilterScrubberViewDelegate, CAMVideoThumbnailContentsDelegate, CAMBarsAccessibilityHUDManagerDelegate, CAMDescriptionOverlayViewDelegate, CAMShutterButtonDelegate, CAMLightingControlDelegate, CAMStorageControllerDelegate, PUApertureSliderDelegate, CAMRemoteShutterDelegate>
 {
     struct {
         _Bool respondsToWillBeginConfiguration;
@@ -53,6 +57,7 @@
     } _configurationDelegateFlags;
     _Bool __openingViewfinder;
     _Bool __closingViewfinder;
+    _Bool __useCreativeCameraControls;
     _Bool __capturingFromPhysicalButton;
     _Bool __shouldIgnoreZoomFactorKVOForRamping;
     _Bool __capturingFromTimer;
@@ -61,10 +66,10 @@
     _Bool __outOfDiskSpace;
     _Bool __performingTopBarOrientationChange;
     _Bool __flashingLivePhotoBadge;
-    _Bool __preventingAdditionalCaptures;
     _Bool __wantsFilterScrubberVisible;
     _Bool __shouldShowFilterScrubberAfterNextRender;
     _Bool __showingFilterScrubber;
+    _Bool __showingPortraitApertureSlider;
     _Bool __animatingFilterScrubberDismissal;
     _Bool __modeDisabledForMultitasking;
     _Bool _userInteractionLoggingEnabled;
@@ -74,18 +79,21 @@
     _Bool _performingTileTransition;
     _Bool _disablingMultipleCaptureFeatures;
     _Bool _disablingAdditionalCaptures;
+    _Bool _preventingAdditionalCaptures;
     _Bool _showingStandardControls;
     _Bool _performingReviewUsingOverlay;
     int __lastConfigurationRequestID;
     long long _configuredCaptureMode;
     long long _configuredCaptureDevice;
     id <CAMViewfinderReviewButtonSource> _reviewButtonSource;
+    id <CAMCreativeCameraDelegate> _creativeCameraDelegate;
     CUCaptureController *__captureController;
     CAMPreviewViewController *__previewViewController;
     CAMPanoramaViewController *__panoramaViewController;
     CAMCameraRollController *__cameraRollController;
     CAMIdleController *__idleController;
     CAMClosedViewfinderController *__closedViewfinderController;
+    CAMDisabledPreviewController *__disabledPreviewController;
     BCSAVParsingSession *__barcodeParsingSession;
     CAMMachineReadableCodeLoggingController *__machineReadableCodeLoggingController;
     CAMCallStatusMonitor *__callStatusMonitor;
@@ -95,6 +103,7 @@
     CAMRemoteShutterController *__remoteShutterController;
     CAMKeepAliveController *__keepAliveController;
     CAMPowerController *__powerController;
+    CAMStorageController *__storageController;
     CAMCaptureGraphConfiguration *__currentGraphConfiguration;
     CAMCaptureGraphConfiguration *__configuredGraphConfiguration;
     long long __resolvedFlashMode;
@@ -110,6 +119,7 @@
     long long __squareModeEffectFilterType;
     long long __portraitModeEffectFilterType;
     long long __portraitModeLightingEffectType;
+    double __portraitModeApertureValue;
     long long __homeIndicatorAutoHideOrientation;
     long long __internalAutorotationStyle;
     long long __layoutStyle;
@@ -120,23 +130,30 @@
     CAMHDRButton *__HDRButton;
     CAMHDRBadge *__HDRBadge;
     CAMTimerButton *__timerButton;
-    CAMIrisButton *__irisButton;
+    CAMLivePhotoButton *__livePhotoButton;
     CAMFlipButton *__flipButton;
     CAMElapsedTimeView *__elapsedTimeView;
     CAMFocusLockBadge *__focusAndExposureLockBadge;
     UIButton *__reviewButton;
+    CAMCreativeCameraButton *__creativeCameraButton;
+    CAMMessagesPhotosButton *__photosButton;
+    PUReviewScreenDoneButton *__doneButton;
     CAMFilterNameBadge *__filterNameBadge;
     CAMLivePhotoBadge *__livePhotoBadge;
     long long __shallowDepthOfFieldStatus;
+    long long __stagePreviewStatus;
     CAMShallowDepthOfFieldBadge *__shallowDepthOfFieldBadge;
     CAMPortraitModeInstructionLabel *__portraitModeInstructionLabel;
+    CAMQRCodeInstructionLabel *__qrCodeInstructionLabel;
     CAMPortraitModeDescriptionOverlayView *__portraitModeDescriptionOverlayView;
+    CAMQRCodeDescriptionOverlayView *__qrCodeDescriptionOverlayView;
     CUShutterButton *__shutterButton;
     CAMShutterIndicatorView *__shutterIndicatorView;
     CUShutterButton *__stillDuringVideoButton;
     CAMModeDial *__modeDial;
     CAMImageWell *__imageWell;
     CAMFilterButton *__filterButton;
+    CAMApertureButton *__apertureButton;
     CAMBurstIndicatorView *__burstIndicatorView;
     CAMTimerIndicatorView *__timerIndicatorView;
     CAMZoomSlider *__zoomSlider;
@@ -147,6 +164,7 @@
     CAMFramerateIndicatorView *__framerateIndicatorView;
     CAMUtilityBar *__utilityBar;
     CAMFilterScrubberView *__filterScrubberView;
+    PUApertureSlider *__portraitApertureSlider;
     CAMLightingControl *__lightingControl;
     CAMLightingNameBadge *__lightingNameBadge;
     long long __flashAndHDRConflictingControl;
@@ -174,17 +192,15 @@
     UIAlertController *__flashOrTorchUnavailableAlertController;
     CAMDisabledModeOverlayView *__disabledModeOverlayView;
     NSMutableSet *__filterNamesSelectedBeforeCapture;
+    long long __lastZoomInteractionType;
     CAMBarsAccessibilityHUDManager *__topBarHUDManager;
     CAMBarsAccessibilityHUDManager *__bottomBarHUDManager;
-    UISelectionFeedbackGenerator *__modeSelectionFeedbackGenerator;
-    _UIButtonFeedbackGenerator *__shutterButtonMomentaryFeedbackGenerator;
-    _UIButtonFeedbackGenerator *__shutterButtonLatchingOnFeedbackGenerator;
-    _UIButtonFeedbackGenerator *__shutterButtonLatchingOffFeedbackGenerator;
-    _UIButtonFeedbackGenerator *__shutterButtonFeedbackGenerator;
-    UISelectionFeedbackGenerator *__burstCountFeedbackGenerator;
+    CAMFeedbackContoller *__feedbackController;
+    unsigned long long __lastPerformedShutterButtonFeedbackType;
     NSSet *_availableCaptureModes;
     id <CAMCameraConfigurationDelegate> _configurationDelegate;
     unsigned long long _persistenceBehavior;
+    long long _messagesTransitionState;
     long long _emulationMode;
     long long _imagePickerVideoConfiguration;
     double _maximumVideoRecordingDuration;
@@ -199,7 +215,9 @@
 @property(nonatomic) long long imagePickerVideoConfiguration; // @synthesize imagePickerVideoConfiguration=_imagePickerVideoConfiguration;
 @property(nonatomic, getter=isShowingStandardControls) _Bool showingStandardControls; // @synthesize showingStandardControls=_showingStandardControls;
 @property(readonly, nonatomic) long long emulationMode; // @synthesize emulationMode=_emulationMode;
+@property(readonly, nonatomic) long long messagesTransitionState; // @synthesize messagesTransitionState=_messagesTransitionState;
 @property(nonatomic) unsigned long long persistenceBehavior; // @synthesize persistenceBehavior=_persistenceBehavior;
+@property(nonatomic, getter=isPreventingAdditionalCaptures, setter=_setPreventingAdditionalCaptures:) _Bool preventingAdditionalCaptures; // @synthesize preventingAdditionalCaptures=_preventingAdditionalCaptures;
 @property(nonatomic, getter=isDisablingAdditionalCaptures) _Bool disablingAdditionalCaptures; // @synthesize disablingAdditionalCaptures=_disablingAdditionalCaptures;
 @property(nonatomic, getter=isDisablingMultipleCaptureFeatures) _Bool disablingMultipleCaptureFeatures; // @synthesize disablingMultipleCaptureFeatures=_disablingMultipleCaptureFeatures;
 @property(nonatomic, getter=isPerformingTileTransition) _Bool performingTileTransition; // @synthesize performingTileTransition=_performingTileTransition;
@@ -209,22 +227,19 @@
 @property(nonatomic) _Bool automaticallyAdjustsAvailableCaptureModes; // @synthesize automaticallyAdjustsAvailableCaptureModes=_automaticallyAdjustsAvailableCaptureModes;
 @property(copy, nonatomic) NSSet *availableCaptureModes; // @synthesize availableCaptureModes=_availableCaptureModes;
 @property(nonatomic, getter=isUserInteractionLoggingEnabled) _Bool userInteractionLoggingEnabled; // @synthesize userInteractionLoggingEnabled=_userInteractionLoggingEnabled;
-@property(readonly, nonatomic) UISelectionFeedbackGenerator *_burstCountFeedbackGenerator; // @synthesize _burstCountFeedbackGenerator=__burstCountFeedbackGenerator;
-@property(readonly, nonatomic) _UIButtonFeedbackGenerator *_shutterButtonFeedbackGenerator; // @synthesize _shutterButtonFeedbackGenerator=__shutterButtonFeedbackGenerator;
-@property(readonly, nonatomic) _UIButtonFeedbackGenerator *_shutterButtonLatchingOffFeedbackGenerator; // @synthesize _shutterButtonLatchingOffFeedbackGenerator=__shutterButtonLatchingOffFeedbackGenerator;
-@property(readonly, nonatomic) _UIButtonFeedbackGenerator *_shutterButtonLatchingOnFeedbackGenerator; // @synthesize _shutterButtonLatchingOnFeedbackGenerator=__shutterButtonLatchingOnFeedbackGenerator;
-@property(readonly, nonatomic) _UIButtonFeedbackGenerator *_shutterButtonMomentaryFeedbackGenerator; // @synthesize _shutterButtonMomentaryFeedbackGenerator=__shutterButtonMomentaryFeedbackGenerator;
-@property(readonly, nonatomic) UISelectionFeedbackGenerator *_modeSelectionFeedbackGenerator; // @synthesize _modeSelectionFeedbackGenerator=__modeSelectionFeedbackGenerator;
+@property(nonatomic, setter=_setLastPerformedShutterButtonFeedbackType:) unsigned long long _lastPerformedShutterButtonFeedbackType; // @synthesize _lastPerformedShutterButtonFeedbackType=__lastPerformedShutterButtonFeedbackType;
+@property(readonly, nonatomic) CAMFeedbackContoller *_feedbackController; // @synthesize _feedbackController=__feedbackController;
 @property(retain, nonatomic, setter=_setBottomBarAccessibilityHUDManager:) CAMBarsAccessibilityHUDManager *_bottomBarHUDManager; // @synthesize _bottomBarHUDManager=__bottomBarHUDManager;
 @property(retain, nonatomic, setter=_setTopBarAccessibilityHUDManager:) CAMBarsAccessibilityHUDManager *_topBarHUDManager; // @synthesize _topBarHUDManager=__topBarHUDManager;
+@property(nonatomic, setter=_setLastZoomInteractionType:) long long _lastZoomInteractionType; // @synthesize _lastZoomInteractionType=__lastZoomInteractionType;
 @property(readonly, nonatomic) NSMutableSet *_filterNamesSelectedBeforeCapture; // @synthesize _filterNamesSelectedBeforeCapture=__filterNamesSelectedBeforeCapture;
 @property(retain, nonatomic, setter=_setDisabledModeOverlayView:) CAMDisabledModeOverlayView *_disabledModeOverlayView; // @synthesize _disabledModeOverlayView=__disabledModeOverlayView;
 @property(nonatomic, getter=_isModeDisabledForMultitasking, setter=_setModeDisabledForMultitasking:) _Bool _modeDisabledForMultitasking; // @synthesize _modeDisabledForMultitasking=__modeDisabledForMultitasking;
 @property(nonatomic, getter=_isAnimatingFilterScrubberDismissal, setter=_setAnimatingFilterScrubberDismissal:) _Bool _animatingFilterScrubberDismissal; // @synthesize _animatingFilterScrubberDismissal=__animatingFilterScrubberDismissal;
+@property(nonatomic, getter=_isShowingPortraitApertureSlider, setter=_setShowingPortraitApertureSlider:) _Bool _showingPortraitApertureSlider; // @synthesize _showingPortraitApertureSlider=__showingPortraitApertureSlider;
 @property(nonatomic, getter=_isShowingFilterScrubber, setter=_setShowingFilterScrubber:) _Bool _showingFilterScrubber; // @synthesize _showingFilterScrubber=__showingFilterScrubber;
 @property(nonatomic, setter=_setShouldShowFilterScrubberAfterNextRender:) _Bool _shouldShowFilterScrubberAfterNextRender; // @synthesize _shouldShowFilterScrubberAfterNextRender=__shouldShowFilterScrubberAfterNextRender;
 @property(nonatomic, setter=_setWantsFilterScrubberVisible:) _Bool _wantsFilterScrubberVisible; // @synthesize _wantsFilterScrubberVisible=__wantsFilterScrubberVisible;
-@property(nonatomic, getter=_isPreventingAdditionalCaptures, setter=_setPreventingAdditionalCaptures:) _Bool _preventingAdditionalCaptures; // @synthesize _preventingAdditionalCaptures=__preventingAdditionalCaptures;
 @property(nonatomic, getter=_isFlashingLivePhotoBadge, setter=_setFlashingLivePhotoBadge:) _Bool _flashingLivePhotoBadge; // @synthesize _flashingLivePhotoBadge=__flashingLivePhotoBadge;
 @property(nonatomic, getter=_isPerformingTopBarOrientationChange, setter=_setPerformingTopBarOrientationChange:) _Bool _performingTopBarOrientationChange; // @synthesize _performingTopBarOrientationChange=__performingTopBarOrientationChange;
 @property(nonatomic, getter=_isOutOfDiskSpace, setter=_setOutOfDiskSpace:) _Bool _outOfDiskSpace; // @synthesize _outOfDiskSpace=__outOfDiskSpace;
@@ -258,6 +273,7 @@
 @property(nonatomic, setter=_setFlashAndHDRConflictingControl:) long long _flashAndHDRConflictingControl; // @synthesize _flashAndHDRConflictingControl=__flashAndHDRConflictingControl;
 @property(readonly, nonatomic) CAMLightingNameBadge *_lightingNameBadge; // @synthesize _lightingNameBadge=__lightingNameBadge;
 @property(readonly, nonatomic) CAMLightingControl *_lightingControl; // @synthesize _lightingControl=__lightingControl;
+@property(readonly, nonatomic) PUApertureSlider *_portraitApertureSlider; // @synthesize _portraitApertureSlider=__portraitApertureSlider;
 @property(readonly, nonatomic) CAMFilterScrubberView *_filterScrubberView; // @synthesize _filterScrubberView=__filterScrubberView;
 @property(readonly, nonatomic) CAMUtilityBar *_utilityBar; // @synthesize _utilityBar=__utilityBar;
 @property(readonly, nonatomic) CAMFramerateIndicatorView *_framerateIndicatorView; // @synthesize _framerateIndicatorView=__framerateIndicatorView;
@@ -268,23 +284,30 @@
 @property(readonly, nonatomic) CAMZoomSlider *_zoomSlider; // @synthesize _zoomSlider=__zoomSlider;
 @property(readonly, nonatomic) CAMTimerIndicatorView *_timerIndicatorView; // @synthesize _timerIndicatorView=__timerIndicatorView;
 @property(readonly, nonatomic) CAMBurstIndicatorView *_burstIndicatorView; // @synthesize _burstIndicatorView=__burstIndicatorView;
+@property(readonly, nonatomic) CAMApertureButton *_apertureButton; // @synthesize _apertureButton=__apertureButton;
 @property(readonly, nonatomic) CAMFilterButton *_filterButton; // @synthesize _filterButton=__filterButton;
 @property(readonly, nonatomic) CAMImageWell *_imageWell; // @synthesize _imageWell=__imageWell;
 @property(readonly, nonatomic) CAMModeDial *_modeDial; // @synthesize _modeDial=__modeDial;
 @property(readonly, nonatomic) CUShutterButton *_stillDuringVideoButton; // @synthesize _stillDuringVideoButton=__stillDuringVideoButton;
 @property(readonly, nonatomic) CAMShutterIndicatorView *_shutterIndicatorView; // @synthesize _shutterIndicatorView=__shutterIndicatorView;
 @property(readonly, nonatomic) CUShutterButton *_shutterButton; // @synthesize _shutterButton=__shutterButton;
+@property(retain, nonatomic, setter=_setQRCodeDescriptionOverlayView:) CAMQRCodeDescriptionOverlayView *_qrCodeDescriptionOverlayView; // @synthesize _qrCodeDescriptionOverlayView=__qrCodeDescriptionOverlayView;
 @property(retain, nonatomic, setter=_setPortraitModeDescriptionOverlayView:) CAMPortraitModeDescriptionOverlayView *_portraitModeDescriptionOverlayView; // @synthesize _portraitModeDescriptionOverlayView=__portraitModeDescriptionOverlayView;
+@property(readonly, nonatomic) CAMQRCodeInstructionLabel *_qrCodeInstructionLabel; // @synthesize _qrCodeInstructionLabel=__qrCodeInstructionLabel;
 @property(readonly, nonatomic) CAMPortraitModeInstructionLabel *_portraitModeInstructionLabel; // @synthesize _portraitModeInstructionLabel=__portraitModeInstructionLabel;
 @property(readonly, nonatomic) CAMShallowDepthOfFieldBadge *_shallowDepthOfFieldBadge; // @synthesize _shallowDepthOfFieldBadge=__shallowDepthOfFieldBadge;
+@property(nonatomic, setter=_setStagePreviewStatus:) long long _stagePreviewStatus; // @synthesize _stagePreviewStatus=__stagePreviewStatus;
 @property(nonatomic, setter=_setShallowDepthOfFieldStatus:) long long _shallowDepthOfFieldStatus; // @synthesize _shallowDepthOfFieldStatus=__shallowDepthOfFieldStatus;
 @property(readonly, nonatomic) CAMLivePhotoBadge *_livePhotoBadge; // @synthesize _livePhotoBadge=__livePhotoBadge;
 @property(readonly, nonatomic) CAMFilterNameBadge *_filterNameBadge; // @synthesize _filterNameBadge=__filterNameBadge;
+@property(readonly, nonatomic) PUReviewScreenDoneButton *_doneButton; // @synthesize _doneButton=__doneButton;
+@property(readonly, nonatomic) CAMMessagesPhotosButton *_photosButton; // @synthesize _photosButton=__photosButton;
+@property(readonly, nonatomic) CAMCreativeCameraButton *_creativeCameraButton; // @synthesize _creativeCameraButton=__creativeCameraButton;
 @property(retain, nonatomic) UIButton *_reviewButton; // @synthesize _reviewButton=__reviewButton;
 @property(readonly, nonatomic) CAMFocusLockBadge *_focusAndExposureLockBadge; // @synthesize _focusAndExposureLockBadge=__focusAndExposureLockBadge;
 @property(readonly, nonatomic) CAMElapsedTimeView *_elapsedTimeView; // @synthesize _elapsedTimeView=__elapsedTimeView;
 @property(readonly, nonatomic) CAMFlipButton *_flipButton; // @synthesize _flipButton=__flipButton;
-@property(readonly, nonatomic) CAMIrisButton *_irisButton; // @synthesize _irisButton=__irisButton;
+@property(readonly, nonatomic) CAMLivePhotoButton *_livePhotoButton; // @synthesize _livePhotoButton=__livePhotoButton;
 @property(readonly, nonatomic) CAMTimerButton *_timerButton; // @synthesize _timerButton=__timerButton;
 @property(readonly, nonatomic) CAMHDRBadge *_HDRBadge; // @synthesize _HDRBadge=__HDRBadge;
 @property(readonly, nonatomic) CAMHDRButton *_HDRButton; // @synthesize _HDRButton=__HDRButton;
@@ -292,10 +315,12 @@
 @property(readonly, nonatomic) CAMFlashButton *_flashButton; // @synthesize _flashButton=__flashButton;
 @property(readonly, nonatomic) CAMBottomBar *_bottomBar; // @synthesize _bottomBar=__bottomBar;
 @property(readonly, nonatomic) CAMTopBar *_topBar; // @synthesize _topBar=__topBar;
+@property(readonly, nonatomic) _Bool _useCreativeCameraControls; // @synthesize _useCreativeCameraControls=__useCreativeCameraControls;
 @property(nonatomic, setter=_setLayoutStyle:) long long _layoutStyle; // @synthesize _layoutStyle=__layoutStyle;
 @property(nonatomic, setter=_setInternalAutorotationStyle:) long long _internalAutorotationStyle; // @synthesize _internalAutorotationStyle=__internalAutorotationStyle;
 @property(nonatomic, setter=_setLastConfigurationRequestID:) int _lastConfigurationRequestID; // @synthesize _lastConfigurationRequestID=__lastConfigurationRequestID;
 @property(nonatomic, setter=_setHomeIndicatorAutoHideOrientation:) long long _homeIndicatorAutoHideOrientation; // @synthesize _homeIndicatorAutoHideOrientation=__homeIndicatorAutoHideOrientation;
+@property(nonatomic, setter=_setPortraitModeApertureValue:) double _portraitModeApertureValue; // @synthesize _portraitModeApertureValue=__portraitModeApertureValue;
 @property(nonatomic, setter=_setPortraitModeLightingEffectType:) long long _portraitModeLightingEffectType; // @synthesize _portraitModeLightingEffectType=__portraitModeLightingEffectType;
 @property(nonatomic, setter=_setPortraitModeEffectFilterType:) long long _portraitModeEffectFilterType; // @synthesize _portraitModeEffectFilterType=__portraitModeEffectFilterType;
 @property(nonatomic, setter=_setSquareModeEffectFilterType:) long long _squareModeEffectFilterType; // @synthesize _squareModeEffectFilterType=__squareModeEffectFilterType;
@@ -311,6 +336,7 @@
 @property(nonatomic, setter=_setResolvedFlashMode:) long long _resolvedFlashMode; // @synthesize _resolvedFlashMode=__resolvedFlashMode;
 @property(retain, nonatomic, setter=_setConfiguredGraphConfiguration:) CAMCaptureGraphConfiguration *_configuredGraphConfiguration; // @synthesize _configuredGraphConfiguration=__configuredGraphConfiguration;
 @property(retain, nonatomic, setter=_setCurrentGraphConfiguration:) CAMCaptureGraphConfiguration *_currentGraphConfiguration; // @synthesize _currentGraphConfiguration=__currentGraphConfiguration;
+@property(readonly, nonatomic) CAMStorageController *_storageController; // @synthesize _storageController=__storageController;
 @property(readonly, nonatomic) CAMPowerController *_powerController; // @synthesize _powerController=__powerController;
 @property(readonly, nonatomic) CAMKeepAliveController *_keepAliveController; // @synthesize _keepAliveController=__keepAliveController;
 @property(readonly, nonatomic) CAMRemoteShutterController *_remoteShutterController; // @synthesize _remoteShutterController=__remoteShutterController;
@@ -322,48 +348,54 @@
 @property(readonly, nonatomic) CAMCallStatusMonitor *_callStatusMonitor; // @synthesize _callStatusMonitor=__callStatusMonitor;
 @property(readonly, nonatomic) CAMMachineReadableCodeLoggingController *_machineReadableCodeLoggingController; // @synthesize _machineReadableCodeLoggingController=__machineReadableCodeLoggingController;
 @property(retain, nonatomic, setter=_setBarcodeParsingSession:) BCSAVParsingSession *_barcodeParsingSession; // @synthesize _barcodeParsingSession=__barcodeParsingSession;
+@property(readonly, nonatomic) CAMDisabledPreviewController *_disabledPreviewController; // @synthesize _disabledPreviewController=__disabledPreviewController;
 @property(readonly, nonatomic) CAMClosedViewfinderController *_closedViewfinderController; // @synthesize _closedViewfinderController=__closedViewfinderController;
 @property(readonly, nonatomic) CAMIdleController *_idleController; // @synthesize _idleController=__idleController;
 @property(readonly, nonatomic) CAMCameraRollController *_cameraRollController; // @synthesize _cameraRollController=__cameraRollController;
 @property(readonly, nonatomic) CAMPanoramaViewController *_panoramaViewController; // @synthesize _panoramaViewController=__panoramaViewController;
 @property(readonly, nonatomic) CAMPreviewViewController *_previewViewController; // @synthesize _previewViewController=__previewViewController;
 @property(readonly, nonatomic) CUCaptureController *_captureController; // @synthesize _captureController=__captureController;
+@property(nonatomic) __weak id <CAMCreativeCameraDelegate> creativeCameraDelegate; // @synthesize creativeCameraDelegate=_creativeCameraDelegate;
 @property(nonatomic) __weak id <CAMViewfinderReviewButtonSource> reviewButtonSource; // @synthesize reviewButtonSource=_reviewButtonSource;
 @property(readonly, nonatomic) long long configuredCaptureDevice; // @synthesize configuredCaptureDevice=_configuredCaptureDevice;
 @property(readonly, nonatomic) long long configuredCaptureMode; // @synthesize configuredCaptureMode=_configuredCaptureMode;
 - (void).cxx_destruct;
-- (void)_performBurstCountFeedback;
-- (void)_prepareBurstCountFeedback;
-- (_Bool)_shouldPerformBurstCountFeedback;
-- (void)_performShutterButtonReleasedFeedback;
-- (void)_prepareShutterButtonReleasedFeedback;
-- (void)_performShutterButtonPressedFeedback;
-- (void)_prepareShutterButtonPressedFeedback;
-- (_Bool)_shouldPerformShutterButtonFeedback;
-- (void)_performModeSelectionFeedback;
-- (void)_prepareModeSelectionFeedback;
-- (_Bool)_shouldPerformModeSelectionFeedback;
+- (void)_handleCreativeCameraButtonTouchAttemptedWhileDisabled:(id)arg1;
+- (void)_handleDoneButtonReleased:(id)arg1;
+- (void)_handlePhotosButtonReleased:(id)arg1;
+- (void)_handleCreativeCameraButtonReleased:(id)arg1;
+- (void)_handleCreativeCameraButtonPressed:(id)arg1;
+- (unsigned long long)_shutterButtonFeedbackForCurrentConfiguration;
 - (void)dismissAccessibilityHUDViewForAccessibilityHUDManager:(id)arg1;
 - (void)accessibilityHUDManager:(id)arg1 wantsToShowHUDItem:(id)arg2;
 - (void)_updateDisabledModeUIAnimated:(_Bool)arg1;
 - (void)_setModeDisabledForMultitasking:(_Bool)arg1 animateUIChanges:(_Bool)arg2;
 - (_Bool)_shouldDisableModeForMultitaskingAndGraphConfiguration:(id)arg1;
 - (_Bool)_isApplicationFullscreen;
+- (void)_dismissQRCodeDescriptionOverlayViewWithDuration:(double)arg1;
 - (void)_dismissPortraitModeDescriptionOverlayViewWithDuration:(double)arg1;
-- (void)portraitModeDescriptionOverlayViewDidAcknowledge:(id)arg1;
+- (void)descriptionOverlayViewDidAcknowledge:(id)arg1;
 - (void)_updateForShallowDepthOfFieldStatusChangedAnimated:(_Bool)arg1;
-- (void)_setShallowDepthOfFieldStatus:(long long)arg1 animated:(_Bool)arg2;
-- (void)captureController:(id)arg1 didOutputShallowDepthOfFieldStatus:(long long)arg2;
+- (void)_setShallowDepthOfFieldStatus:(long long)arg1 stagePreviewStatus:(long long)arg2 animated:(_Bool)arg3;
+- (void)_setShallowDepthOfFieldStatus:(long long)arg1 stagePreviewStatus:(long long)arg2;
+- (void)captureController:(id)arg1 didOutputShallowDepthOfFieldStatus:(long long)arg2 stagePreviewStatus:(long long)arg3;
 - (long long)_videoConfigurationForImagePickerQualityType:(long long)arg1;
 @property(readonly, nonatomic) struct CGRect reviewUsingOverlayFrame;
 - (_Bool)isEmulatingImagePicker;
 - (id)_mutableSupportedCaptureModes;
 - (id)_automaticallyAdjustedCaptureModes;
 - (long long)_availableDefaultCaptureMode;
+@property(readonly, nonatomic, getter=_isTransitioningBackFromReview) _Bool _transitioningBackFromReview;
+@property(readonly, nonatomic, getter=_isTransitioningToReview) _Bool _transitioningToReview;
+@property(readonly, nonatomic, getter=_isTransitioningToCreativeCamera) _Bool _transitioningToCreativeCamera;
+@property(readonly, nonatomic) _Bool _shouldDisableUserInteractionForTransitioning;
+- (void)setMessagesTransitionState:(long long)arg1 animated:(_Bool)arg2;
 - (struct CGSize)viewSystemLayoutSizeFittingSize:(struct CGSize)arg1 forCaptureMode:(long long)arg2;
 - (_Bool)stopRecording;
 - (_Bool)startRecording;
 - (_Bool)capturePhoto;
+@property(readonly, nonatomic, getter=isCapturingLivePhoto) _Bool capturingLivePhoto;
+@property(readonly, nonatomic, getter=isCapturingPhoto) _Bool capturingPhoto;
 @property(readonly, nonatomic, getter=isRecording) _Bool recording;
 - (void)changeToMode:(long long)arg1 device:(long long)arg2 animated:(_Bool)arg3;
 - (void)changeToMode:(long long)arg1 device:(long long)arg2;
@@ -377,7 +409,7 @@
 - (void)_updateTorchAggregateDictionaryForRequest:(id)arg1 isTorchActive:(_Bool)arg2;
 - (void)_updateLivePhotoAggregateDictionaryForRequest:(id)arg1;
 - (void)_updateVideoConfigurationAggregateDictionaryForRequest:(id)arg1;
-- (void)_updateZoomAggregateDictionaryForMode:(long long)arg1 device:(long long)arg2 videoConfiguration:(long long)arg3 zoomFactor:(double)arg4;
+- (void)_updateZoomAggregateDictionaryForMode:(long long)arg1 device:(long long)arg2 videoConfiguration:(long long)arg3 zoomFactor:(double)arg4 zoomInteractionType:(long long)arg5;
 - (void)_updateZoomAggregateDictionaryForRequest:(id)arg1 response:(id)arg2;
 - (void)_updateLightingAggregateDictionariesForRequest:(id)arg1;
 - (void)_resetAggregateInfoForPhotoFilters;
@@ -409,8 +441,8 @@
 - (void)cameraRollControllerDidDismissFullyPresentedCameraRoll:(id)arg1;
 - (void)cameraRollControllerDidFullyPresentCameraRoll:(id)arg1;
 - (id)cameraRollControllerPresentingViewController:(id)arg1;
-- (void)resumeCameraSession;
-- (void)suspendCameraSession;
+- (void)resumeCameraSessionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)suspendCameraSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateLevelMotionTracking;
 - (_Bool)_shouldMonitorDeviceMotionForGraphConfiguration:(id)arg1;
 - (void)_createOrDestroyLevelViewIfNecessary;
@@ -437,15 +469,17 @@
 - (void)_updateDiskSpaceAlertViewVisibilityAnimated:(_Bool)arg1;
 - (_Bool)_hasBeenPromptedForICPLToday;
 - (void)_handleTimelapseLowDiskSpaceNotification:(id)arg1;
-- (void)_handleDiskSpaceDidBecomeLowNotification:(id)arg1;
+- (void)availableDiskSpaceChanged;
 - (void)_handleApplicationDidEnterBackground:(id)arg1;
 - (void)_handleApplicationWillEnterForeground:(id)arg1;
 - (void)_handleApplicationWillResignActive:(id)arg1;
 - (void)_handleApplicationDidBecomeActive:(id)arg1;
+- (void)_handleApplicationDidRemoveDeactivationReason:(id)arg1;
 - (void)_handleApplicationWillAddDeactivationReason:(id)arg1;
 - (id)_debugStringForApplicationDeactivationReason:(int)arg1;
 - (void)_snapshotImageWellAndPersist;
 - (void)_snapshotShutterButtonAndPersist;
+- (void)_ensureSensitiveContentHidden;
 - (void)prepareForDefaultImageSnapshotForScreen:(id)arg1;
 - (void)captureControllerInterruptionEnded:(id)arg1;
 - (void)captureControllerWasInterrupted:(id)arg1;
@@ -454,13 +488,12 @@
 - (void)captureController:(id)arg1 willRecoverFromRuntimeError:(id)arg2;
 - (void)lightingControl:(id)arg1 willChangeExpanded:(_Bool)arg2;
 - (void)lightingControlDidChangeSelectedLightingType:(id)arg1;
-- (void)zoomControl:(id)arg1 didTapEmptySpaceAtPoint:(struct CGPoint)arg2;
-- (void)zoomControlDidTapButton:(id)arg1;
-- (void)zoomControl:(id)arg1 didChangeZoomFactor:(double)arg2;
+- (void)toggleBetweenWideAndTelephotoForZoomControl:(id)arg1;
+- (_Bool)canToggleBetweenWideAndTelephotoForZoomControl:(id)arg1;
+- (void)zoomControl:(id)arg1 didChangeZoomFactor:(double)arg2 interactionType:(long long)arg3;
+- (_Bool)_shouldAllowZoomControlCallbacks;
 - (void)_handleTouchDownForZoomControl:(id)arg1;
 - (void)_configureZoomControlForGraphConfiguration:(id)arg1;
-- (void)_updateZoomButtonTelephotoToggleForDevice:(long long)arg1;
-- (void)_handleZoomButtonWasTapped:(id)arg1;
 - (void)_updateFocusAfterZoomIfNecessary;
 - (void)zoomSliderDidEndAutozooming:(id)arg1;
 - (void)zoomSliderDidBeginAutozooming:(id)arg1;
@@ -472,19 +505,16 @@
 - (void)_zoomSliderValueDidChange:(id)arg1 forEvent:(id)arg2;
 - (double)_zoomFactorForZoomSliderValue:(double)arg1;
 - (double)_zoomSliderValueForZoomFactor:(double)arg1;
+- (void)_resetZoom;
 - (void)_changeToZoomFactor:(double)arg1 rampDuration:(double)arg2 shouldAnimate:(_Bool)arg3;
-- (void)_updateZoomControlWithZoomFactor:(double)arg1 forGraphConfiguration:(id)arg2;
 - (void)captureController:(id)arg1 didChangeRampingVideoZoom:(_Bool)arg2;
 - (void)captureController:(id)arg1 didOutputMinAvailableVideoZoomFactor:(double)arg2;
-- (void)_updateZoomSliderWithZoomFactor:(double)arg1 animated:(_Bool)arg2;
+- (void)_updateZoomUIWithZoomFactor:(double)arg1 animated:(_Bool)arg2;
 - (void)captureController:(id)arg1 didOutputVideoZoomFactor:(double)arg2;
-- (double)_linearMappingForX:(double)arg1 x1:(double)arg2 y1:(double)arg3 x2:(double)arg4 y2:(double)arg5 clamp:(_Bool)arg6;
-- (double)_zoomFactorForZoomControlDisplayValue:(double)arg1 graphConfiguration:(id)arg2;
-- (double)_zoomControlDisplayValueForZoomFactor:(double)arg1 graphConfiguration:(id)arg2;
-- (double)_maximumZoomFactorForGraphConfiguration:(id)arg1;
 - (double)_currentMaximumZoomFactor;
 - (_Bool)_isZoomAllowedCurrently;
 - (_Bool)_isZoomAllowedForGraphConfiguration:(id)arg1;
+- (void)_handleApertureButtonTapped:(id)arg1;
 - (void)_clearThumbnailContentsIfNotNeededFromCallsite:(id)arg1;
 - (void)videoThumbnailOutputWillEndRenderingThumbnails;
 - (void)videoThumbnailOutputWillBeginRenderingThumbnailsWithContents:(id)arg1;
@@ -492,8 +522,13 @@
 - (void)_handleFilterScrubberDismissGestureRecognizer:(id)arg1;
 - (void)filterScrubberViewDidChangeSelectedFilterType:(id)arg1;
 - (void)_setLightingType:(long long)arg1 forMode:(long long)arg2;
-- (long long)_lightingTypeForMode:(long long)arg1;
-- (void)_updateLightingUIForGraphConfiguration:(id)arg1;
+- (long long)_lightingTypeForMode:(long long)arg1 device:(long long)arg2;
+- (void)_updateLightingUIForGraphConfiguration:(id)arg1 animated:(_Bool)arg2;
+- (void)apertureSliderDidChangeApertureValue:(id)arg1;
+- (void)_updatePortraitApertureButtonForGraphConfiguration:(id)arg1 animated:(_Bool)arg2;
+- (void)_updatePortraitApertureSliderForGraphConfiguration:(id)arg1;
+- (void)_setShowingPortraitApertureSlider:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)_dismissOverlays;
 - (void)_updateFilterNameBadgeAnimated:(_Bool)arg1;
 - (void)_hideUtilityBarAnimated:(_Bool)arg1;
 - (void)_setShowingFilterScrubber:(_Bool)arg1 animated:(_Bool)arg2;
@@ -504,7 +539,7 @@
 - (void)_updateFilterScrubberForGraphConfiguration:(id)arg1;
 - (id)_originalCaptureFiltersForMode:(long long)arg1;
 - (id)_captureFiltersForMode:(long long)arg1;
-- (id)_previewFiltersForMode:(long long)arg1;
+- (id)_previewFiltersForMode:(long long)arg1 device:(long long)arg2;
 - (unsigned long long)_previewConfigurationForMode:(long long)arg1 videoThumbnailOutputEnabled:(_Bool)arg2;
 - (_Bool)_shouldUseFiltersForGraphConfiguration:(id)arg1;
 - (long long)_lastCapturedFilterTypeForMode:(long long)arg1;
@@ -525,13 +560,11 @@
 - (long long)_aspectRatioForMode:(long long)arg1;
 - (double)_minimumExecutionTimeForChangeToGraphConfiguration:(id)arg1 fromGraphConfiguration:(id)arg2;
 - (void)_changeToGraphConfiguration:(id)arg1 fromGraphConfiguration:(id)arg2;
-- (long long)_sanitizedVideoConfigurationForMode:(long long)arg1 device:(long long)arg2 encodingBehavior:(long long)arg3;
+- (long long)_sanitizedVideoConfigurationForMode:(long long)arg1 device:(long long)arg2;
 - (id)_graphConfigurationForChangeToMode:(long long)arg1 device:(long long)arg2 fromGraphConfiguration:(id)arg3;
 - (_Bool)_shouldResetZoomForChangeFromMode:(long long)arg1 toMode:(long long)arg2;
 - (void)cameraRollControllerDidStartSession:(id)arg1;
 - (void)cameraRollController:(id)arg1 didChangeImageWellImage:(id)arg2 withUUID:(id)arg3 animated:(_Bool)arg4;
-- (void)_updatePausingOfCameraRollAudioHandlingForCapture;
-- (_Bool)_shouldSuspendCameraRollAudioHandlingForCapture;
 - (void)_presentCameraRollViewControllerAnimated:(_Bool)arg1 interactive:(_Bool)arg2;
 - (_Bool)_shouldDeferMediaLoadingForGraphConfiguration:(id)arg1;
 - (void)_handleImageWellReleased:(id)arg1;
@@ -541,10 +574,13 @@
 - (_Bool)_shouldApplyTopBarRotationForGraphConfiguration:(id)arg1;
 - (_Bool)_shouldRotateTopBarForGraphConfiguration:(id)arg1;
 - (void)_rotateTopBarAndControlsToOrientation:(long long)arg1 shouldAnimate:(_Bool)arg2;
+- (long long)_topBarStyleForGraphConfiguration:(id)arg1 capturing:(_Bool)arg2;
 - (void)_updateTopBarStyleForGraphConfiguration:(id)arg1 capturing:(_Bool)arg2 animated:(_Bool)arg3;
+- (void)_validateViewfinderLayoutIfNeeded;
 - (void)_endDisablingInterfaceAutorotation;
 - (void)_beginDisablingInterfaceAutorotation;
 - (void)_updateUIForCaptureOrientationAnimated:(_Bool)arg1;
+- (void)_updateHomeIndicatorBehaviorsForCaptureOrientation;
 - (void)_captureOrientationChanged:(id)arg1;
 @property(nonatomic) long long autorotationStyle;
 - (void)_applyTransformsForAutorotationStyle:(long long)arg1;
@@ -562,6 +598,7 @@
 - (void)captureControllerWillStartCapturingBurst:(id)arg1;
 - (void)_stopCapturingBurst;
 - (void)_startCapturingBurstWithRequest:(id)arg1;
+- (void)_beginCapturingBurst;
 - (void)_handleBurstTimerFired:(id)arg1;
 - (void)_teardownBurstTimer;
 - (void)_setupBurstTimerWithDelay:(double)arg1;
@@ -570,6 +607,8 @@
 - (void)_dominantPhysicalButtonChanged:(id)arg1;
 - (void)_stopGeneratingDominantPhysicalButtonNotificationsIfSupported;
 - (void)_startGeneratingDominantPhysicalButtonNotificationsIfSupported;
+- (void)handleVolumeButtonReleased;
+- (void)handleVolumeButtonPressed;
 - (void)_handlePhysicalButtonCancelled:(long long)arg1;
 - (void)_handlePhysicalButtonReleased:(long long)arg1;
 - (void)_handlePhysicalButtonPressed:(long long)arg1;
@@ -583,7 +622,9 @@
 - (void)_handleShutterButtonCancelled:(id)arg1;
 - (void)_handleShutterButtonActionWithEventTriggerDescription:(id)arg1;
 - (void)_handleShutterButtonReleased:(id)arg1;
+- (void)_handleShutterButtonDragEnter:(id)arg1;
 - (void)_handleShutterButtonPressed:(id)arg1;
+- (void)shutterButtonTouchAttemptedWhileDisabled:(id)arg1;
 - (void)_handleFlipButtonReleased:(id)arg1;
 - (void)_handleFlipButtonTouchDown:(id)arg1;
 - (void)_handleModeDialWasTapped:(id)arg1;
@@ -598,7 +639,7 @@
 - (unsigned long long)_previousModeSwipeDirectionForLayoutStyle:(long long)arg1;
 - (void)_stopFlashingLivePhotoBadge;
 - (void)_startFlashingLivePhotoBadge;
-- (void)_handleIrisButtonReleased:(id)arg1;
+- (void)_handleLivePhotoButtonDidChangeMode:(id)arg1;
 - (void)_updateForUserInitiatedLivePhotoMode:(long long)arg1;
 - (void)_timerButtonDidChangeTimerDuration:(id)arg1;
 - (void)_updateFlashButtonAvailability;
@@ -620,7 +661,7 @@
 - (void)_updateFlashButtonForMode:(long long)arg1;
 - (void)_updateFlashModeOnControllerIfNecessaryForMode:(long long)arg1;
 - (void)_resolveAndUpdatePotentiallyConflictingControls:(_Bool)arg1;
-- (void)_resolvePotentiallyConflictingControlsForGraphConfiguration:(id)arg1 resolvedFlashMode:(long long *)arg2 resolvedHDRMode:(long long *)arg3 resolvedLivePhotoMode:(long long *)arg4;
+- (void)_resolvePotentiallyConflictingControlsForMode:(long long)arg1 device:(long long)arg2 resolvedFlashMode:(long long *)arg3 resolvedHDRMode:(long long *)arg4 resolvedLivePhotoMode:(long long *)arg5;
 - (_Bool)_wantsHDRControlsVisible;
 - (void)_updateHDRSuggestionMonitoringForGraphConfiguration:(id)arg1;
 - (void)_hdrButtonDidChangeHDRMode:(id)arg1;
@@ -638,6 +679,8 @@
 - (void)_updateBarBackgroundStyleForMode:(long long)arg1 animated:(_Bool)arg2;
 - (long long)_bottomBarBackgroundStyleForMode:(long long)arg1;
 - (long long)_topBarBackgroundStyleForMode:(long long)arg1;
+- (void)disabledPreviewController:(id)arg1 wantsPreviewEnabledForReason:(long long)arg2;
+- (void)disabledPreviewController:(id)arg1 wantsPreviewDisabledForReason:(long long)arg2;
 - (void)closedViewfinderController:(id)arg1 wantsViewfinderOpenForReason:(long long)arg2;
 - (void)closedViewfinderController:(id)arg1 wantsViewfinderClosedForReason:(long long)arg2;
 - (_Bool)_shouldAnimateViewfinderCloseForReason:(long long)arg1;
@@ -651,8 +694,12 @@
 - (void)_updateEnabledControlsWithReason:(id)arg1;
 - (_Bool)_shouldEnableZoomControl;
 - (_Bool)_shouldEnableZoomSlider;
+- (_Bool)_shouldEnableApertureButton;
 - (_Bool)_shouldEnableFilterButton;
+- (unsigned long long)_reasonsToDisableCreativeCameraButton;
+- (_Bool)_shouldEnableCreativeCameraButton;
 - (_Bool)_shouldShowShutterButtonDisabled;
+- (unsigned long long)_reasonsToDisableShutterButton;
 - (_Bool)_shouldEnableShutterButton;
 - (_Bool)_shouldEnableSwipeToChangeFilters;
 - (_Bool)_shouldEnableSwipeToModeSwitch;
@@ -667,8 +714,9 @@
 - (_Bool)shouldHideLightingNameBadgeForOrientation:(long long)arg1;
 @property(readonly, nonatomic) _Bool shouldHideLightingControl;
 @property(readonly, nonatomic) _Bool shouldHideFilterNameBadge;
+@property(readonly, nonatomic) _Bool shouldHideQRCodeInstructionLabel;
 @property(readonly, nonatomic) _Bool shouldHidePortraitModeInstructionLabel;
-@property(readonly, nonatomic) _Bool shouldHideIrisButton;
+@property(readonly, nonatomic) _Bool shouldHideLivePhotoButton;
 @property(readonly, nonatomic) _Bool shouldHideElapsedTimeView;
 @property(readonly, nonatomic) _Bool shouldHideFlipButton;
 @property(readonly, nonatomic) _Bool shouldHideTimerButton;
@@ -703,19 +751,25 @@
 - (_Bool)_shouldHidePanoramaViewForGraphConfiguration:(id)arg1;
 - (_Bool)_shouldHideFilterNameBadgeForGraphConfiguration:(id)arg1;
 - (_Bool)_shouldHideUtilityBarForGraphConfiguration:(id)arg1;
+- (_Bool)_shouldHideApertureButtonForGraphConfiguration:(id)arg1;
 - (_Bool)_shouldHideFilterButtonForGraphConfiguration:(id)arg1;
 - (_Bool)_shouldHideShutterIndicatorViewForGraphConfiguration:(id)arg1;
 - (_Bool)_shouldHideShutterButtonForGraphConfiguration:(id)arg1;
 - (_Bool)_shouldHideStillDuringVideoButtonForGraphConfiguration:(id)arg1;
+- (_Bool)_shouldHideDoneButtonForGraphConfiguration:(id)arg1;
+- (_Bool)_shouldHidePhotosButtonForGraphConfiguration:(id)arg1;
+- (_Bool)_shouldHideCreativeCameraButtonForGraphConfiguration:(id)arg1;
 - (_Bool)_shouldHideReviewButtonForGraphConfiguration:(id)arg1;
 - (_Bool)_shouldHideImageWellForGraphConfiguration:(id)arg1;
 - (_Bool)_shouldHideModeDialForGraphConfiguration:(id)arg1;
 - (_Bool)_shouldHideFlipButtonForGraphConfiguration:(id)arg1;
+- (_Bool)_shouldHideQRCodeDescriptionOverlayViewForGraphConfiguration:(id)arg1;
+- (_Bool)_shouldHideQRCodeInstructionLabelForGraphConfiguration:(id)arg1;
 - (_Bool)_shouldHidePortraitModeDescriptionOverlayViewForGraphConfiguration:(id)arg1;
 - (_Bool)_shouldHidePortraitModeInstructionLabelForGraphConfiguration:(id)arg1;
 - (_Bool)_shouldHideShallowDepthOfFieldBadgeForGraphConfiguration:(id)arg1;
 - (_Bool)_shouldHideLivePhotoBadgeForGraphConfiguration:(id)arg1;
-- (_Bool)_shouldHideIrisButtonForGraphConfiguration:(id)arg1;
+- (_Bool)_shouldHideLivePhotoButtonForGraphConfiguration:(id)arg1;
 - (_Bool)_shouldHideElapsedTimeViewForGraphConfiguration:(id)arg1;
 - (_Bool)_shouldHideHDRBadgeForGraphConfiguration:(id)arg1;
 - (_Bool)_shouldHideHDRButtonForGraphConfiguration:(id)arg1;
@@ -726,6 +780,7 @@
 - (_Bool)_shouldHideBottomBarForGraphConfiguration:(id)arg1;
 - (void)_embedLightingNameBadgeWithLayoutStyle:(long long)arg1;
 - (void)_embedLightingControlWithLayoutStyle:(long long)arg1;
+- (void)_embedPortraitApertureSliderWithLayoutStyle:(long long)arg1;
 - (void)_embedFilterNameBadgeWithLayoutStyle:(long long)arg1;
 - (void)_embedFilterScrubberViewWithLayoutStyle:(long long)arg1;
 - (void)_embedUtilityBarWithLayoutStyle:(long long)arg1;
@@ -738,7 +793,11 @@
 - (void)_embedZoomSliderWithLayoutStyle:(long long)arg1;
 - (void)_embedPanoramaViewWithLayoutStyle:(long long)arg1;
 - (void)_embedBurstIndicatorViewWithLayoutStyle:(long long)arg1;
+- (void)_embedApertureButtonWithLayoutStyle:(long long)arg1;
 - (void)_embedFilterButtonWithLayoutStyle:(long long)arg1;
+- (void)_embedDoneButtonWithLayoutStyle:(long long)arg1;
+- (void)_embedPhotosButtonWithLayoutStyle:(long long)arg1;
+- (void)_embedCreativeCameraButtonWithLayoutStyle:(long long)arg1;
 - (void)_embedReviewButtonWithLayoutStyle:(long long)arg1;
 - (void)_embedImageWellWithLayoutStyle:(long long)arg1;
 - (void)_embedModeDialWithLayoutStyle:(long long)arg1;
@@ -748,11 +807,13 @@
 - (void)_embedTimerIndicatorViewWithLayoutStyle:(long long)arg1;
 - (void)_embedTimerButtonWithLayoutStyle:(long long)arg1;
 - (void)_embedFlipButtonWithLayoutStyle:(long long)arg1;
+- (void)_embedQRCodeDescriptionOverlayViewWithStyle:(long long)arg1;
+- (void)_embedQRCodeInstructionLabelWithLayoutStyle:(long long)arg1;
 - (void)_embedPortraitModeDescriptionOverlayViewWithLayoutStyle:(long long)arg1;
 - (void)_embedPortraitModeInstructionLabelWithLayoutStyle:(long long)arg1;
 - (void)_embedShallowDepthOfFieldBadgeWithLayoutStyle:(long long)arg1;
 - (void)_embedLivePhotoBadgeWithLayoutStyle:(long long)arg1;
-- (void)_embedIrisButtonWithLayoutStyle:(long long)arg1;
+- (void)_embedLivePhotoButtonWithLayoutStyle:(long long)arg1;
 - (void)_embedFocusAndExposureLockBadgeWithLayoutStyle:(long long)arg1;
 - (void)_embedHDRBadgeWithLayoutStyle:(long long)arg1;
 - (void)_embedHDRButtonWithLayoutStyle:(long long)arg1;
@@ -764,6 +825,7 @@
 - (void)_unembedAndDestroyAllControls;
 - (void)_createLightingNameBadgeIfNecessary;
 - (void)_createLightingControlIfNecessary;
+- (void)_createPortraitApertureSliderIfNecessary;
 - (void)_createFilterNameBadgeIfNecessary;
 - (void)_destroyFilterScrubberViewIfNecessary;
 - (void)_createFilterScrubberViewIfNecessary;
@@ -779,12 +841,15 @@
 - (void)_createPanoramaViewControllerIfNecessary;
 - (void)_createBurstIndicatorViewIfNecessary;
 - (void)_createFlipButtonIfNecessary;
+- (void)_createQRCodeDescriptionOverlayViewIfNecessary;
+- (void)_updateQRCodeInstructionLabelForCurrentState;
 - (void)_createPortraitModeDescriptionOverlayViewIfNecessary;
 - (void)_updatePortraitModeInstructionLabelForCurrentState;
+- (void)_createQRCodeInstructionLabelIfNecessary;
 - (void)_createPortraitModeInstructionLabelIfNecessary;
 - (void)_createShallowDepthOfFieldBadgeIfNecessary;
 - (void)_createLivePhotoBadgeIfNecessary;
-- (void)_createIrisButtonIfNecessary;
+- (void)_createLivePhotoButtonIfNecessary;
 - (void)_createTimerIndicatorViewIfNecessary;
 - (void)_createTimerButtonIfNecessary;
 - (void)_createFocusAndExposureLockBadgeIfNecessary;
@@ -800,7 +865,12 @@
 - (void)_createStillDuringVideoButtonIfNecessary;
 - (void)_createShutterIndicatorIfNecessary;
 - (void)_createShutterButtonIfNecessary;
+- (void)_createApertureButtonIfNecessary;
 - (void)_createFilterButtonIfNecessary;
+- (void)_createDoneButtonIfNecessary;
+- (void)_createPhotosButtonIfNecessary;
+- (_Bool)_shouldCreatePhotosButton;
+- (void)_createCreativeCameraButtonIfNecessary;
 - (void)_createReviewButtonIfNecessary;
 - (void)_createImageWellIfNecessary;
 - (void)_createModeDialIfNecessary;
@@ -809,6 +879,7 @@
 - (void)_createVideoControlsIfNecessary;
 - (void)_createPortraitModeControlsIfNecessary;
 - (void)_createStillImageControlsIfNecessary;
+- (void)_createControlsIfNecessaryForMode:(long long)arg1;
 - (void)_createModeSpecificControlsIfNecessary;
 - (void)_createCommonControlsIfNecessary;
 - (void)_destroyFilterScrubberGestureRecognizers;
@@ -920,9 +991,7 @@
 @property(readonly, nonatomic) long long _currentDevice;
 @property(readonly, nonatomic) long long _currentMode;
 - (void)dealloc;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithCaptureController:(id)arg1 captureConfiguration:(id)arg2 conflictingControlConfiguration:(id)arg3 locationController:(id)arg4 motionController:(id)arg5 timelapseController:(id)arg6 keepAliveController:(id)arg7 remoteShutterController:(id)arg8 powerController:(id)arg9 cameraRollController:(id)arg10 callStatusMonitor:(id)arg11 usingEmulationMode:(long long)arg12 initialLayoutStyle:(long long)arg13;
+- (id)initWithCaptureController:(id)arg1 captureConfiguration:(id)arg2 conflictingControlConfiguration:(id)arg3 locationController:(id)arg4 motionController:(id)arg5 timelapseController:(id)arg6 keepAliveController:(id)arg7 remoteShutterController:(id)arg8 powerController:(id)arg9 cameraRollController:(id)arg10 callStatusMonitor:(id)arg11 usingEmulationMode:(long long)arg12 initialLayoutStyle:(long long)arg13 options:(long long)arg14;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PassKitUI/PKPaymentSetupViewControllerCanHideSetupLaterButton-Protocol.h>
+#import <PassKitUI/PKPaymentSetupHideSetupLaterButtonProtocol-Protocol.h>
 #import <PassKitUI/PKPaymentVerificationControllerDelegate-Protocol.h>
 #import <PassKitUI/RemoteUIControllerDelegate-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
 @class CLInUseAssertion, NSString, NSTimer, PKPaymentProvisioningController, PKPaymentSetupFooterView, PKPaymentVerificationController, RemoteUIController, UINotificationFeedbackGenerator;
 
-@interface PKPaymentSetupProvisioningFieldsViewController <UITextFieldDelegate, RemoteUIControllerDelegate, PKPaymentVerificationControllerDelegate, PKPaymentSetupViewControllerCanHideSetupLaterButton>
+@interface PKPaymentSetupProvisioningFieldsViewController <UITextFieldDelegate, RemoteUIControllerDelegate, PKPaymentVerificationControllerDelegate, PKPaymentSetupHideSetupLaterButtonProtocol>
 {
     PKPaymentSetupFooterView *_cardDetailsFooterView;
     RemoteUIController *_termsUIController;
@@ -25,8 +25,10 @@
     NSString *_activatingPaymentPassUniqueID;
     _Bool _hideSetupLaterButton;
     PKPaymentProvisioningController *_paymentProvisioningController;
+    CDUnknownBlockType _continueActionHandler;
 }
 
+@property(copy, nonatomic) CDUnknownBlockType continueActionHandler; // @synthesize continueActionHandler=_continueActionHandler;
 @property(nonatomic) _Bool hideSetupLaterButton; // @synthesize hideSetupLaterButton=_hideSetupLaterButton;
 @property(retain, nonatomic) PKPaymentProvisioningController *paymentProvisioningController; // @synthesize paymentProvisioningController=_paymentProvisioningController;
 - (void).cxx_destruct;
@@ -74,8 +76,10 @@
 - (void)handleNextActionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleNextActionError:(id)arg1 shouldContinue:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)handleNextButtonTapped:(id)arg1;
+- (void)setNotificationTextInFooterView:(id)arg1;
 - (void)suppressFooterViewManualEntryButton;
 - (void)suppressFooterViewSetupLaterButton;
+- (void)suppressFooterViewSkipCardButton;
 - (id)_cardDetailsFooterView;
 - (id)footerView;
 - (void)viewDidDisappear:(_Bool)arg1;

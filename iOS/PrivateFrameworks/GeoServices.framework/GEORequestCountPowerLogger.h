@@ -9,7 +9,6 @@
 @class NSDate, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface GEORequestCountPowerLogger : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
@@ -19,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)shouldIgnoreRequestType:(unsigned char)arg1 fromClientWithId:(id)arg2;
++ (void)cancelOldActivities;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_cancelXpcActivity;

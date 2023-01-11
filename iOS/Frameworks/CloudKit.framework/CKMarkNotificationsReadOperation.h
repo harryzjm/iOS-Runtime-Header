@@ -8,15 +8,14 @@
 
 @interface CKMarkNotificationsReadOperation
 {
-    NSArray *_notificationIDs;
     CDUnknownBlockType _markNotificationsReadCompletionBlock;
+    NSArray *_notificationIDs;
     NSMutableArray *_notificationIDsMarkedRead;
     NSMutableDictionary *_errorsByNotificationID;
 }
 
 @property(retain, nonatomic) NSMutableDictionary *errorsByNotificationID; // @synthesize errorsByNotificationID=_errorsByNotificationID;
 @property(retain, nonatomic) NSMutableArray *notificationIDsMarkedRead; // @synthesize notificationIDsMarkedRead=_notificationIDsMarkedRead;
-@property(copy, nonatomic) CDUnknownBlockType markNotificationsReadCompletionBlock; // @synthesize markNotificationsReadCompletionBlock=_markNotificationsReadCompletionBlock;
 @property(copy, nonatomic) NSArray *notificationIDs; // @synthesize notificationIDs=_notificationIDs;
 - (void).cxx_destruct;
 - (id)activityCreate;
@@ -27,6 +26,7 @@
 - (void)_handleProgressCallback:(id)arg1;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+@property(copy, nonatomic) CDUnknownBlockType markNotificationsReadCompletionBlock; // @synthesize markNotificationsReadCompletionBlock=_markNotificationsReadCompletionBlock;
 - (id)initWithNotificationIDsToMarkRead:(id)arg1;
 - (id)init;
 

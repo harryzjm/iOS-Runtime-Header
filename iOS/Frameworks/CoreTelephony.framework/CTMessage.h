@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CTPhoneNumber, NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, NSUUID;
+@class CTPhoneNumber, CTXPCServiceSubscriptionContext, NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, NSUUID;
 @protocol CTMessageAddress><NSCopying;
 
 @interface CTMessage : NSObject
@@ -26,8 +26,10 @@
     NSString *_countryCode;
     NSUUID *_uuid;
     _Bool _bypassSupportedMessageModesCheck;
+    CTXPCServiceSubscriptionContext *_context;
 }
 
+@property(copy, nonatomic) CTXPCServiceSubscriptionContext *context; // @synthesize context=_context;
 @property(nonatomic) _Bool bypassSupportedMessageModesCheck; // @synthesize bypassSupportedMessageModesCheck=_bypassSupportedMessageModesCheck;
 @property(retain, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uuid;
 @property(readonly, copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;

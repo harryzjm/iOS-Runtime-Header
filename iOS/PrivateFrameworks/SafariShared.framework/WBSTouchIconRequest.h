@@ -4,23 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <SafariShared/WBSIconRequest-Protocol.h>
+
 @class NSString;
 
-@interface WBSTouchIconRequest
+@interface WBSTouchIconRequest <WBSIconRequest>
 {
+    _Bool _iconGenerationEnabled;
+    _Bool _iconDownloadingEnabled;
     NSString *_monogramTitle;
     struct CGSize _minimumIconSize;
     struct CGSize _maximumIconSize;
 }
 
++ (id)requestWithTitle:(id)arg1 url:(id)arg2 minimumIconSize:(struct CGSize)arg3 maximumIconSize:(struct CGSize)arg4 iconGenerationEnabled:(_Bool)arg5 iconDownloadingEnabled:(_Bool)arg6;
 + (id)requestWithTitle:(id)arg1 url:(id)arg2 minimumIconSize:(struct CGSize)arg3 maximumIconSize:(struct CGSize)arg4;
++ (id)requestWithTitle:(id)arg1 url:(id)arg2 minimumIconSize:(struct CGSize)arg3 maximumIconSize:(struct CGSize)arg4 iconGenerationEnabled:(_Bool)arg5;
 @property(readonly, copy, nonatomic) NSString *monogramTitle; // @synthesize monogramTitle=_monogramTitle;
 @property(readonly, nonatomic) struct CGSize maximumIconSize; // @synthesize maximumIconSize=_maximumIconSize;
 @property(readonly, nonatomic) struct CGSize minimumIconSize; // @synthesize minimumIconSize=_minimumIconSize;
+@property(readonly, nonatomic, getter=isIconDownloadingEnabled) _Bool iconDownloadingEnabled; // @synthesize iconDownloadingEnabled=_iconDownloadingEnabled;
+@property(readonly, nonatomic, getter=isIconGenerationEnabled) _Bool iconGenerationEnabled; // @synthesize iconGenerationEnabled=_iconGenerationEnabled;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) struct CGSize sizeForDrawing;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
+@property(readonly, copy, nonatomic) NSString *uniqueIdentifier;
+- (id)initWithTitle:(id)arg1 url:(id)arg2 minimumIconSize:(struct CGSize)arg3 maximumIconSize:(struct CGSize)arg4 iconGenerationEnabled:(_Bool)arg5 iconDownloadingEnabled:(_Bool)arg6;
+- (id)initWithTitle:(id)arg1 url:(id)arg2 minimumIconSize:(struct CGSize)arg3 maximumIconSize:(struct CGSize)arg4 iconGenerationEnabled:(_Bool)arg5;
 - (id)initWithTitle:(id)arg1 url:(id)arg2 minimumIconSize:(struct CGSize)arg3 maximumIconSize:(struct CGSize)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableSet, NSSet;
 
@@ -14,13 +14,13 @@
     NSSet *_immutable;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 @property(readonly) unsigned long long count;
 - (id)immutableSet;
 - (_Bool)containsObject:(id)arg1;
 - (void)removeObject:(id)arg1;
 - (void)addObject:(id)arg1;
-- (void)dealloc;
 
 @end
 

@@ -11,16 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityLabel;
 - (unsigned long long)_accessibilityScannerGroupTraits;
 - (long long)accessibilityNavigationStyle;
-- (id)accessibilityCustomActions;
-- (_Bool)_axShowPredictionView:(id)arg1;
-- (_Bool)_axHidePredictionView:(id)arg1;
-- (_Bool)accessibilityActivate;
-- (id)accessibilityValue;
-- (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
-- (_Bool)_axIsCollapsed;
 
 @end
 

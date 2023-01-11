@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString, NSUUID, SFPasswordSharingInfo, SFService, SFUserNotification;
+@class NSDate, NSString, NSUUID, SFPasswordSharingInfo, SFService, SFUserAlert;
 @protocol OS_dispatch_queue, SFPasswordSharingServiceDelegate;
 
 @interface SFPasswordSharingService : NSObject
 {
     _Bool _activateCalled;
     _Bool _invalidateCalled;
-    SFUserNotification *_notification;
+    SFUserAlert *_notification;
     NSUUID *_peer;
     SFPasswordSharingInfo *_promptedInfo;
     SFService *_service;
@@ -34,6 +34,7 @@
 - (_Bool)__invalidateCalled;
 - (_Bool)__activateCalled;
 - (id)messageForDisplayName:(id)arg1 deviceName:(id)arg2 info:(id)arg3;
+- (_Bool)disabledViaConfig;
 - (void)_promptUserWithInfo:(id)arg1 message:(id)arg2;
 - (void)_passInfoToDelegate:(id)arg1;
 - (void)_sendPasswordDeclinedWithError:(int)arg1;

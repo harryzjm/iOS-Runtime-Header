@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -60,6 +60,7 @@
 - (struct __C3DGeometry *)__createCFObject;
 - (void)_customDecodingOfSCNGeometry:(id)arg1;
 - (void)_customEncodingOfSCNGeometry:(id)arg1;
+- (void)removeAllBindings;
 - (void)unbindAnimatablePath:(id)arg1;
 - (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (id)_scnBindings;
@@ -89,6 +90,8 @@
 - (void)handleBindingOfSymbol:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)shaderModifiersArgumentsNames;
 @property(copy, nonatomic) NSDictionary *shaderModifiers;
+- (void)copyShaderModifiersFrom:(id)arg1;
+- (id)__shadableHelper;
 - (void)_setupShadableHelperIfNeeded;
 - (id)customMaterialAttributes;
 - (id)customMaterialAttributeNames;

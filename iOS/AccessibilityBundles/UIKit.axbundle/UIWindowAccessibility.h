@@ -11,7 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityFirstElement;
 - (id)accessibilityAttributeValue:(long long)arg1;
 - (unsigned int)_accessibilityWindowContextId;
 - (void)_orderFrontWithoutMakingKey;
@@ -32,6 +31,8 @@
 - (id)_accessibilityRemoteElement;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)_accessibilitySetMarzipanRotors:(id)arg1;
+- (id)_accessibilityMarzipanRotors;
 - (void)_accessibilitySetAllRemoteElements:(id)arg1;
 - (id)_accessibilityAllRemoteElements;
 

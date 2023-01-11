@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (_Bool)isEqualToCellValue:(id)arg1;
 - (struct TSCEValue)tsceValue;
+- (id)canonicalKeyString;
 - (id)displayString;
 - (id)format;
 - (struct TSCEBooleanValue *)booleanValue;

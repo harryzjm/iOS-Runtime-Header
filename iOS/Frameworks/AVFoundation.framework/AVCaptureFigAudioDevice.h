@@ -32,6 +32,7 @@
 - (_Bool)startUsingDevice:(id *)arg1;
 - (_Bool)isConnected;
 - (_Bool)isInUseByAnotherApplication;
+- (_Bool)isBuiltInStereoAudioCaptureSupported;
 - (_Bool)hasMediaType:(id)arg1;
 - (id)figCaptureSourceAudioSettingsForSessionPreset:(id)arg1;
 - (id)deviceType;

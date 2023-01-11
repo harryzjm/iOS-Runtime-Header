@@ -6,11 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <RemoteUI/NSURLSessionTaskDelegate-Protocol.h>
+@class NSURLRequest, NSURLSession, NSURLSessionDataTask;
 
-@class NSString, NSURLRequest, NSURLSession, NSURLSessionDataTask;
-
-@interface RUIHTTPRequest : NSObject <NSURLSessionTaskDelegate>
+@interface RUIHTTPRequest : NSObject
 {
     NSURLRequest *_request;
     NSURLSessionDataTask *_dataTask;
@@ -36,20 +34,16 @@
 - (_Bool)isLoading;
 - (void)cancel;
 - (void)_preLoadCancel;
+- (id)urlSessionDelegate;
 - (id)sessionConfiguration;
 - (id)handleWillLoadRequest:(id)arg1;
+- (void)shouldLoadRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadRequest:(id)arg1;
 - (void)_loadRequestMain:(id)arg1;
 - (void)_finishedLoading;
 - (void)_startedLoading;
 - (void)dealloc;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

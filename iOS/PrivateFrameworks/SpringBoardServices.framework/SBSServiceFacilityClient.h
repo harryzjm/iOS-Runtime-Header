@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FrontBoardServices/FBSSystemServiceFacilityClient.h>
+#import <FrontBoardServices/FBSServiceFacilityClient.h>
 
-@interface SBSServiceFacilityClient : FBSSystemServiceFacilityClient
+@interface SBSServiceFacilityClient : FBSServiceFacilityClient
 {
     long long _numberOfCheckOuts;
 }

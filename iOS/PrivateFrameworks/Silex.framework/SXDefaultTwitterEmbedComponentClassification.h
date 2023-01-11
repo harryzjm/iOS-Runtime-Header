@@ -10,7 +10,6 @@
 
 + (id)typeString;
 + (_Bool)shouldRegister;
-- (Class)componentViewClass;
 - (Class)componentModelClass;
 
 @end

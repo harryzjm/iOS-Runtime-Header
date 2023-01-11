@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <PassKitCore/PKForegroundActiveArbiterObserver-Protocol.h>
 
 @class NSLock, NSString, NSXPCConnection, NSXPCInterface, PKXPCForwarder;
-@protocol NSObject, PKXPCServiceDelegate;
+@protocol NSObject, PKForegroundActiveArbiter, PKXPCServiceDelegate;
 
-@interface PKXPCService : NSObject
+@interface PKXPCService : NSObject <PKForegroundActiveArbiterObserver>
 {
     NSXPCInterface *_remoteObjectInterface;
     NSXPCInterface *_exportedObjectInterface;
@@ -20,19 +22,23 @@
     NSXPCConnection *_connection;
     PKXPCForwarder *_exportedProxy;
     _Bool _suspendCallbacks;
+    _Bool _forceConnectionOnResume;
+    id <PKForegroundActiveArbiter> _foregroundActiveArbiter;
     id <NSObject> _foregroundListener;
     id <NSObject> _backgroundListener;
     int _serviceResumedToken;
     id <PKXPCServiceDelegate> _delegate;
     NSString *_machServiceName;
+    unsigned long long _options;
 }
 
-+ (void)setCallbacksSuspendedEvaluator:(CDUnknownBlockType)arg1;
-+ (_Bool)areCallbacksSuspended;
++ (void)setForegroundActiveArbiter:(id)arg1;
+@property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property(readonly, nonatomic) NSString *machServiceName; // @synthesize machServiceName=_machServiceName;
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_newErrorHandlerWithSemaphore:(id)arg1;
 - (CDUnknownBlockType)_newWrappedErrorHandlerForHandler:(CDUnknownBlockType)arg1;
+@property(nonatomic) _Bool forceConnectionOnResume;
 @property(readonly, nonatomic) _Bool connectionEstablished;
 @property(readonly, nonatomic, getter=isSuspended) _Bool suspended;
 @property(nonatomic) __weak id <PKXPCServiceDelegate> delegate; // @synthesize delegate=_delegate;
@@ -40,6 +46,7 @@
 - (void)_registerForServiceListenerResumedNotifications;
 - (void)_unregisterForApplicationLifeCycleNotifications;
 - (void)_registerForApplicationLifeCycleNotifications;
+- (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_3d581f42)arg2;
 - (void)_sendSuspended;
 - (void)_sendResumed;
 - (void)_createConnectionIfPossible:(_Bool)arg1;
@@ -55,9 +62,16 @@
 - (id)remoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;
 - (id)remoteObjectProxy;
 - (void)dealloc;
+- (id)initWithMachServiceName:(id)arg1 remoteObjectInterface:(id)arg2 exportedObjectInterface:(id)arg3 exportedObject:(id)arg4 serviceResumedNotificationName:(id)arg5 options:(unsigned long long)arg6;
 - (id)initWithMachServiceName:(id)arg1 remoteObjectInterface:(id)arg2 exportedObjectInterface:(id)arg3 exportedObject:(id)arg4 serviceResumedNotificationName:(id)arg5;
 - (id)initWithMachServiceName:(id)arg1 remoteObjectInterface:(id)arg2 exportedObjectInterface:(id)arg3 exportedObject:(id)arg4;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AAGrandSlamSigner, ACAccount, ACAccountStore, AIDAServiceOwnersManager;
+@class AAGrandSlamSigner, ACAccount, ACAccountStore, AIDAServiceOwnersManager, AKAppleIDSigningController;
 
 @interface FARequestConfigurator : NSObject
 {
@@ -16,6 +16,7 @@
     AAGrandSlamSigner *_grandSlamSigner;
     AAGrandSlamSigner *_familyGrandSlamSigner;
     AIDAServiceOwnersManager *_serviceOwnersManager;
+    AKAppleIDSigningController *_akSigningController;
     _Bool _attachSetupHeader;
 }
 
@@ -26,6 +27,7 @@
 - (id)_familyTokenForGrandSlamAccount:(id)arg1 andTokenID:(id)arg2;
 - (void)_addAccountForServiceType:(id)arg1 toPayload:(id)arg2 forKey:(id)arg3;
 - (id)_fresnoPayloadWithAdditionalHeaders:(id)arg1;
+- (id)_akSigningController;
 - (id)_familyGrandSlamSigner;
 - (id)_grandSlamSigner;
 - (id)_grandSlamAccount;
@@ -33,7 +35,7 @@
 - (id)_account;
 - (void)renewCredentialsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_urlForEventType:(id)arg1;
-- (id)requestForEventType:(id)arg1;
+- (id)requestForContext:(id)arg1;
 - (void)addPayload:(id)arg1 toRequest:(id)arg2;
 - (void)addFresnoPayloadToRequest:(id)arg1 additionalHeaders:(id)arg2;
 - (void)addFresnoHeadersToRequest:(id)arg1;

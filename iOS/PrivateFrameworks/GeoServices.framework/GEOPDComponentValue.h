@@ -8,8 +8,9 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAddress, GEOPDAddressObject, GEOPDAmenities, GEOPDAssociatedApp, GEOPDBounds, GEOPDBrowseCategories, GEOPDBusinessClaim, GEOPDCaptionedPhoto, GEOPDContainedPlace, GEOPDETA, GEOPDEntity, GEOPDExternalAction, GEOPDFactoid, GEOPDFlyover, GEOPDHours, GEOPDIcon, GEOPDLocationEvent, GEOPDMessageLink, GEOPDPhoto, GEOPDPlaceInfo, GEOPDPlacecardURL, GEOPDPriceDescription, GEOPDQuickLink, GEOPDRap, GEOPDRating, GEOPDRawAttribute, GEOPDRestaurantReservationLink, GEOPDResultSnippet, GEOPDReview, GEOPDRoadAccessInfo, GEOPDSimpleRestaurantMenuText, GEOPDSpatialLookupResult, GEOPDTextBlock, GEOPDTip, GEOPDTransitAttribution, GEOPDTransitIncident, GEOPDTransitInfo, GEOPDTransitInfoSnippet, GEOPDTransitSchedule, GEOPDVenueInfo, GEOPDWifiFingerprint, GEOStyleAttributes, PBUnknownFields;
+@class GEONonComponentPlaceData, GEOPDAddress, GEOPDAddressObject, GEOPDAmenities, GEOPDAnnotatedItemList, GEOPDAssociatedApp, GEOPDBounds, GEOPDBrowseCategories, GEOPDBusinessClaim, GEOPDCaptionedPhoto, GEOPDContainedPlace, GEOPDETA, GEOPDEntity, GEOPDExternalAction, GEOPDFactoid, GEOPDFlyover, GEOPDHours, GEOPDIcon, GEOPDLocationEvent, GEOPDMessageLink, GEOPDPhoto, GEOPDPlaceInfo, GEOPDPlacecardLayoutConfiguration, GEOPDPlacecardURL, GEOPDPoiEvent, GEOPDPriceDescription, GEOPDQuickLink, GEOPDRap, GEOPDRating, GEOPDRawAttribute, GEOPDRestaurantReservationLink, GEOPDResultSnippet, GEOPDReview, GEOPDRoadAccessInfo, GEOPDSimpleRestaurantMenuText, GEOPDSpatialLookupResult, GEOPDTextBlock, GEOPDTip, GEOPDTransitAttribution, GEOPDTransitIncident, GEOPDTransitInfo, GEOPDTransitInfoSnippet, GEOPDTransitSchedule, GEOPDVenueInfo, GEOPDWifiFingerprint, GEOStyleAttributes, PBUnknownFields;
 
+__attribute__((visibility("hidden")))
 @interface GEOPDComponentValue : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
@@ -17,11 +18,13 @@
     GEOPDAddress *_address;
     GEOPDAddressObject *_addressObject;
     GEOPDAmenities *_amenities;
+    GEOPDAnnotatedItemList *_annotatedItemList;
     GEOPDAssociatedApp *_associatedApp;
     GEOPDBounds *_bounds;
     GEOPDBrowseCategories *_browseCategories;
     GEOPDBusinessClaim *_businessClaim;
     GEOPDCaptionedPhoto *_captionedPhoto;
+    GEONonComponentPlaceData *_clientExtNonComponentData;
     GEOPDContainedPlace *_containedPlace;
     GEOPDEntity *_entity;
     GEOPDETA *_eta;
@@ -34,7 +37,9 @@
     GEOPDMessageLink *_messageLink;
     GEOPDPhoto *_photo;
     GEOPDPlaceInfo *_placeInfo;
+    GEOPDPlacecardLayoutConfiguration *_placecardLayoutConfiguration;
     GEOPDPlacecardURL *_placecardUrl;
+    GEOPDPoiEvent *_poiEvent;
     GEOPDPriceDescription *_priceDescription;
     GEOPDQuickLink *_quickLink;
     GEOPDRap *_rap;
@@ -57,6 +62,9 @@
     GEOPDWifiFingerprint *_wifiFingerprint;
 }
 
+@property(retain, nonatomic) GEOPDPlacecardLayoutConfiguration *placecardLayoutConfiguration; // @synthesize placecardLayoutConfiguration=_placecardLayoutConfiguration;
+@property(retain, nonatomic) GEOPDPoiEvent *poiEvent; // @synthesize poiEvent=_poiEvent;
+@property(retain, nonatomic) GEOPDAnnotatedItemList *annotatedItemList; // @synthesize annotatedItemList=_annotatedItemList;
 @property(retain, nonatomic) GEOPDBrowseCategories *browseCategories; // @synthesize browseCategories=_browseCategories;
 @property(retain, nonatomic) GEOPDPriceDescription *priceDescription; // @synthesize priceDescription=_priceDescription;
 @property(retain, nonatomic) GEOPDIcon *icon; // @synthesize icon=_icon;
@@ -110,6 +118,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasPlacecardLayoutConfiguration;
+@property(readonly, nonatomic) _Bool hasPoiEvent;
+@property(readonly, nonatomic) _Bool hasAnnotatedItemList;
 @property(readonly, nonatomic) _Bool hasBrowseCategories;
 @property(readonly, nonatomic) _Bool hasPriceDescription;
 @property(readonly, nonatomic) _Bool hasIcon;
@@ -152,6 +163,8 @@
 @property(readonly, nonatomic) _Bool hasAccessInfo;
 @property(readonly, nonatomic) _Bool hasPlaceInfo;
 @property(readonly, nonatomic) _Bool hasEntity;
+@property(retain, nonatomic) GEONonComponentPlaceData *clientExtNonComponentData;
+@property(readonly, nonatomic) _Bool hasClientExtNonComponentData;
 
 @end
 

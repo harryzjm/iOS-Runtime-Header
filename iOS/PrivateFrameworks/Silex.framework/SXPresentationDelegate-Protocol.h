@@ -6,8 +6,8 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class SXComponentAnimationController, SXComponentBehaviorController, SXComponentController, SXComponentView, SXFullScreenCanvasController, SXFullScreenCanvasViewController, SXFullscreenVideoPlaybackManager, SXMediaPlaybackController, SXPresentationAttributes, SXTangierController, SXViewport, UIView, UIViewController;
-@protocol SXAdDocumentStateManager, SXTextSelectionManager, SXVideoPlayerViewControllerProvider;
+@class SXComponentAnimationController, SXComponentBehaviorController, SXComponentController, SXComponentView, SXFullscreenCanvasController, SXFullscreenVideoPlaybackManager, SXMediaPlaybackController, SXPresentationAttributes, SXTangierController, SXViewport, UIView, UIViewController;
+@protocol SXAdDocumentStateManager, SXTextSelectionManager;
 
 @protocol SXPresentationDelegate <NSObject>
 @property(readonly, nonatomic) id <SXTextSelectionManager> textSelectionManager;
@@ -15,7 +15,6 @@
 @property(readonly, nonatomic) SXPresentationAttributes *presentationAttributes;
 @property(readonly, nonatomic) SXMediaPlaybackController *mediaPlaybackController;
 @property(readonly, nonatomic) SXFullscreenVideoPlaybackManager *fullscreenVideoPlaybackManager;
-@property(readonly, nonatomic) id <SXVideoPlayerViewControllerProvider> videoPlayerViewControllerProvider;
 @property(readonly, nonatomic) SXComponentBehaviorController *behaviorController;
 @property(readonly, nonatomic) SXComponentAnimationController *animationController;
 @property(readonly, nonatomic) SXTangierController *tangierController;
@@ -28,9 +27,8 @@
 - (_Bool)isScrolling;
 - (UIViewController *)presentingContentViewController;
 - (void)dismissFullscreenCanvasForComponent:(SXComponentView *)arg1;
-- (SXFullScreenCanvasViewController *)requestFullScreenCanvasViewControllerForComponent:(SXComponentView *)arg1 withCompletionBlock:(void (^)(void))arg2;
-- (SXFullScreenCanvasViewController *)requestFullScreenCanvasViewControllerForComponent:(SXComponentView *)arg1;
-- (UIView *)requestFullScreenCanvasForComponent:(SXComponentView *)arg1 canvasController:(SXFullScreenCanvasController *)arg2;
+- (UIViewController *)requestFullScreenCanvasViewControllerForComponent:(SXComponentView *)arg1 canvasController:(SXFullscreenCanvasController *)arg2 withCompletionBlock:(void (^)(void))arg3;
+- (UIViewController *)requestFullScreenCanvasViewControllerForComponent:(SXComponentView *)arg1 withCompletionBlock:(void (^)(void))arg2;
 - (void)removeInteractivityFocusForComponent:(SXComponentView *)arg1;
 - (_Bool)addInteractivityFocusForComponent:(SXComponentView *)arg1;
 - (_Bool)allowInteractivityFocusForComponent:(SXComponentView *)arg1;

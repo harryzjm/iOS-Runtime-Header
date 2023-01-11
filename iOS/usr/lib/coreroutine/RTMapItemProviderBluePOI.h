@@ -4,30 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <coreroutine/RTMapItemProvider-Protocol.h>
 
-@class NSString, RTFingerprintManager, RTLocationStore, RTMapServiceManager;
+@class NSString, RTFingerprintManager, RTLocationManager, RTMapServiceManager, RTMotionActivityManager;
 
-@interface RTMapItemProviderBluePOI : NSObject <RTMapItemProvider>
+@interface RTMapItemProviderBluePOI <RTMapItemProvider>
 {
     RTFingerprintManager *_fingerprintManager;
-    RTLocationStore *_locationStore;
+    RTLocationManager *_locationManager;
+    RTMotionActivityManager *_motionActivityManager;
     RTMapServiceManager *_mapServiceManager;
 }
 
-+ (id)filterByDistance:(id)arg1 location:(id)arg2 thresholdForUnknownLabel:(double)arg3;
-+ (double)distanceThresholdFor:(id)arg1 thresholdForUnknownLabel:(double)arg2;
 @property(retain, nonatomic) RTMapServiceManager *mapServiceManager; // @synthesize mapServiceManager=_mapServiceManager;
-@property(retain, nonatomic) RTLocationStore *locationStore; // @synthesize locationStore=_locationStore;
+@property(retain, nonatomic) RTMotionActivityManager *motionActivityManager; // @synthesize motionActivityManager=_motionActivityManager;
+@property(retain, nonatomic) RTLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property(retain, nonatomic) RTFingerprintManager *fingerprintManager; // @synthesize fingerprintManager=_fingerprintManager;
 - (void).cxx_destruct;
+- (_Bool)harvestVisits:(id)arg1 mapItem:(id)arg2 error:(id *)arg3;
+- (_Bool)submitHarvest:(id)arg1 error:(id *)arg2;
+- (id)poiHarvestForFingerprint:(id)arg1 mapItem:(id)arg2 referenceLocation:(id)arg3 endDate:(id)arg4 error:(id *)arg5;
+- (id)filterByDistance:(id)arg1 location:(id)arg2 thresholdForUnknownLabel:(double)arg3 error:(id *)arg4;
 - (id)mapItemsWithinDistance:(double)arg1 location:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 error:(id *)arg5;
-- (id)mapItemsFromLocations:(id)arg1 accessPoints:(id)arg2 error:(id *)arg3;
+- (id)mapItemsFromLocations:(id)arg1 accessPoints:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 error:(id *)arg5;
+- (id)motionActivitesFrom:(id)arg1 to:(id)arg2 error:(id *)arg3;
+- (id)locationsFrom:(id)arg1 to:(id)arg2 error:(id *)arg3;
 - (id)locationsForAccessPoints:(id)arg1 error:(id *)arg2;
-- (id)accessPointsForFingerprint:(id)arg1 error:(id *)arg2;
-- (id)initWithFingerprintManager:(id)arg1 locationStore:(id)arg2 mapServiceManager:(id)arg3;
+- (id)accessPointsForFingerprint:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
+- (id)fingerprintsBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
+- (id)initWithDistanceCalculator:(id)arg1 fingerprintManager:(id)arg2 locationManager:(id)arg3 mapServiceManager:(id)arg4 motionActivityManager:(id)arg5;
 - (id)init;
 
 // Remaining properties

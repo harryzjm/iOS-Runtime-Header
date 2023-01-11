@@ -4,15 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PXGridLayoutGenerator;
-
 @interface PXMemoriesGridLayoutGenerator
 {
-    PXGridLayoutGenerator *__gridGenerator;
 }
 
-@property(readonly, nonatomic) PXGridLayoutGenerator *_gridGenerator; // @synthesize _gridGenerator=__gridGenerator;
-- (void).cxx_destruct;
 - (void)getGeometries:(struct _PXLayoutGeometry *)arg1 inRange:(struct _NSRange)arg2 withKind:(long long)arg3;
 - (id)geometryKinds;
 

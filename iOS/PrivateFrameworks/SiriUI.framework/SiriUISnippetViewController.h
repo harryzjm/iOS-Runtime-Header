@@ -23,6 +23,7 @@
     _Bool _virgin;
     _Bool _willAnimateConfirmation;
     _Bool _willAnimateCancellation;
+    _Bool _awaitingSuccessOrFailureEvent;
     _Bool _showHeaderChevron;
     _Bool _provisional;
     UIColor *_titleTextColor;
@@ -40,6 +41,7 @@
 
 @property(nonatomic, getter=_isProvisional, setter=_setProvisional:) _Bool provisional; // @synthesize provisional=_provisional;
 @property(nonatomic) _Bool showHeaderChevron; // @synthesize showHeaderChevron=_showHeaderChevron;
+@property(nonatomic, getter=_isAwaitingSuccessOrFailureEvent, setter=_setAwaitingSuccessOrFailureEvent:) _Bool awaitingSuccessOrFailureEvent; // @synthesize awaitingSuccessOrFailureEvent=_awaitingSuccessOrFailureEvent;
 @property(retain, nonatomic, getter=_previousConfirmationOptions, setter=_setPreviousConfirmationOptions:) SAUIConfirmationOptions *previousConfirmationOptions; // @synthesize previousConfirmationOptions=_previousConfirmationOptions;
 @property(nonatomic, getter=_willAnimateCancellation, setter=_setWillAnimateCancellation:) _Bool willAnimateCancellation; // @synthesize willAnimateCancellation=_willAnimateCancellation;
 @property(nonatomic, getter=_willAnimateConfirmation, setter=_setWillAnimateConfirmation:) _Bool willAnimateConfirmation; // @synthesize willAnimateConfirmation=_willAnimateConfirmation;
@@ -103,6 +105,7 @@
 - (long long)_insertionAnimation;
 - (long long)_pinAnimationType;
 - (void)_setVirgin:(_Bool)arg1;
+- (_Bool)shouldHidePriorViews;
 - (_Bool)logContentsIfApplicable;
 @property(readonly, nonatomic, getter=isIndicatingActivity) _Bool indicatingActivity;
 - (_Bool)usePlatterStyle;

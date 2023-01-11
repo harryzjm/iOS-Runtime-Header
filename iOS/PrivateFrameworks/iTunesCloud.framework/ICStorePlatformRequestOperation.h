@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ICStorePlatformRequest;
+@class ICStorePlatformRequest, ICStoreURLRequest, NSObject;
+@protocol OS_dispatch_queue;
 
 @interface ICStorePlatformRequestOperation
 {
+    NSObject<OS_dispatch_queue> *_accessQueue;
+    ICStoreURLRequest *_activeURLRequest;
     ICStorePlatformRequestOperation *_strongSelf;
     ICStorePlatformRequest *_platformRequest;
     CDUnknownBlockType _responseHandler;
@@ -24,6 +27,7 @@
 - (void)_enqueueDataRequest:(id)arg1;
 - (void)finishWithError:(id)arg1;
 - (void)execute;
+- (void)cancel;
 - (id)initWithPlatformRequest:(id)arg1;
 
 @end

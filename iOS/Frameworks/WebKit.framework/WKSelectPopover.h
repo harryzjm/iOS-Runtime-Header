@@ -6,6 +6,8 @@
 
 #import <WebKit/WKFormControl-Protocol.h>
 
+@class UITableViewController;
+
 __attribute__((visibility("hidden")))
 @interface WKSelectPopover <WKFormControl>
 {
@@ -14,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UITableViewController *tableViewController;
 - (void)_userActionDismissedPopover:(id)arg1;
 - (void)controlEndEditing;
 - (void)controlBeginEditing;

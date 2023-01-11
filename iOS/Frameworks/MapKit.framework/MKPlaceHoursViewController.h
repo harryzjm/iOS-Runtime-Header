@@ -8,7 +8,7 @@
 #import <MapKit/MKStackingViewControllerFixedHeightAware-Protocol.h>
 #import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
-@class MKMapItem, MKPlaceSectionHeaderView, NSArray, NSMutableDictionary, NSString, NSTimeZone;
+@class MKMapItem, MKPlaceSectionHeaderView, NSArray, NSMutableDictionary, NSString, NSTimeZone, _MKLocalizedHoursBuilder;
 @protocol _MKInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
@@ -17,8 +17,10 @@ __attribute__((visibility("hidden")))
     _Bool _isExpanded;
     MKPlaceSectionHeaderView *_headerView;
     NSMutableDictionary *_formattedData;
+    _MKLocalizedHoursBuilder *_localizedHoursBuilder;
     NSArray *_completeHours;
-    NSString *_currentOpeningString;
+    NSString *_currentOpenHoursString;
+    NSString *_currentOpenStateString;
     _Bool _resizableViewsDisabled;
     id <_MKInfoCardAnalyticsDelegate> _analyticsDelegate;
     MKMapItem *_mapItem;
@@ -31,13 +33,16 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)infoCardChildPossibleActions;
 - (void)_updateHoursAnimated:(_Bool)arg1;
+- (_Bool)_shouldCollapseFurtherAndColorTopString;
 - (id)formattedData;
 - (void)calculateWidthsForData:(id)arg1;
 - (void)_contentSizeDidChange;
 - (void)_toggleShowAllHours;
 - (void)_setExpanded:(_Bool)arg1;
 - (_Bool)_shouldOnlyShowExpanded;
-@property(readonly, nonatomic) NSString *currentOpeningString;
+@property(readonly, nonatomic) _MKLocalizedHoursBuilder *localizedHoursBuilder;
+@property(readonly, nonatomic) NSString *currentOpenStateString;
+@property(readonly, nonatomic) NSString *currentOpenHoursString;
 @property(readonly, nonatomic) NSArray *completeHours;
 @property(readonly, nonatomic) NSTimeZone *timeZone;
 - (void)viewWillAppear:(_Bool)arg1;

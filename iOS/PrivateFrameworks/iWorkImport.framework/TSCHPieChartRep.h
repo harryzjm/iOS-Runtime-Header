@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, TSCHChartPieElementsRenderer;
+@class NSArray, NSDictionary, TSCHChartRadialElementsRenderer;
 
 __attribute__((visibility("hidden")))
 @interface TSCHPieChartRep
 {
-    TSCHChartPieElementsRenderer *mPieElementRenderer;
+    TSCHChartRadialElementsRenderer *mPieElementRenderer;
     NSArray *mWedgeKnobs;
     NSDictionary *mSeriesIndexedPieWedgeDraggingLayers;
     _Bool mHasDrawnSinceWedgeKnobTrackerCreated;
 }
 
+- (void).cxx_destruct;
 - (void)renderIntoContext:(struct CGContext *)arg1 visible:(struct CGRect)arg2;
 - (double)p_radius;
 - (double)dragTravelAlongBisectorBetweenStartPoint:(struct CGPoint)arg1 andEndingPoint:(struct CGPoint)arg2 forSeries:(unsigned long long)arg3;

@@ -20,10 +20,12 @@
 + (void)useLocalProxy;
 + (void)useProxy:(Class)arg1;
 - (void).cxx_destruct;
-- (id)getDefault:(id)arg1;
+- (void)invalidateTileCache;
+- (unsigned long long)freePurgableSpace:(unsigned long long)arg1 forUrgency:(int)arg2;
+- (unsigned long long)calculatePurgableSpaceForUrgency:(int)arg1;
+- (id)getDefault:(id)arg1 source:(long long *)arg2;
 - (void)lockDBs;
 - (void)unlockDBs;
-- (void)resetMapDataExtension;
 - (id)init;
 
 @end

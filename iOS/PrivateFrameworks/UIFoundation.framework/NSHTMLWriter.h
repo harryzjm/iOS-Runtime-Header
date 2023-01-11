@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSAttributedString, NSData, NSDictionary, NSFileWrapper, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableOrderedSet, NSMutableString, NSString, NSURL;
 
@@ -50,6 +50,7 @@
     } _flags;
 }
 
++ (id)fontNameForFont:(id)arg1;
 - (id)documentFragmentString;
 - (id)documentFragmentForDocument:(id)arg1;
 - (void)readDocumentFragment:(id)arg1;

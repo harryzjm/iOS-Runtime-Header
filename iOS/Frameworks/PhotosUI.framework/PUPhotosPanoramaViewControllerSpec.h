@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@interface PUPhotosPanoramaViewControllerSpec : NSObject
+@interface PUPhotosPanoramaViewControllerSpec
 {
 }
 
++ (id)padSpec;
++ (id)phoneSpec;
 - (struct CGSize)_itemSizeForWidth:(double)arg1;
 - (id)gridSpec;
 - (void)configureCollectionViewGridLayout:(id)arg1 referenceWidth:(double)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;

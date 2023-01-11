@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MPRemoteCommand, NSDictionary, NSString;
 
@@ -12,6 +12,7 @@
 {
     NSDictionary *_mediaRemoteOptions;
     NSString *_contextID;
+    NSString *_commandID;
     MPRemoteCommand *_command;
     double _timestamp;
 }
@@ -22,6 +23,7 @@
 - (void).cxx_destruct;
 - (long long)playbackQueueOffset;
 - (id)contentItemID;
+- (id)commandID;
 - (id)contextID;
 - (id)mediaRemoteOptions;
 - (id)initWithCommand:(id)arg1 mediaRemoteType:(unsigned int)arg2 options:(id)arg3;

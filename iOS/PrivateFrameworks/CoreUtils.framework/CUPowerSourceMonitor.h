@@ -4,23 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CUCoalescer, NSMutableDictionary;
+@class NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface CUPowerSourceMonitor : NSObject
 {
+    _Bool _activateCalled;
+    NSMutableDictionary *_aggregateSources;
+    NSMutableDictionary *_pendingAggregates;
     NSMutableDictionary *_powerSources;
     int _psNotifyTokenAccessoryAttach;
     int _psNotifyTokenAccessoryPowerSource;
     int _psNotifyTokenAccessoryTimeRemaining;
     int _psNotifyTokenAnyPowerSource;
-    int _psNotifyTokenAttach;
-    int _psNotifyTokenPercentChange;
-    int _psNotifyTokenPowerSource;
-    int _psNotifyTokenTimeRemaining;
-    CUCoalescer *_updateCoaleser;
     unsigned int _changeFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _invalidationHandler;
@@ -40,8 +38,11 @@
 - (void)_handlePowerSourceLost:(id)arg1 sourceID:(id)arg2;
 - (void)_handlePowerSourceFound:(id)arg1 desc:(id)arg2 adapterDesc:(id)arg3;
 - (void)_updatePowerSources;
+- (void)_update;
+- (void)_aggregatePowerSourceUpdate:(id)arg1 changes:(unsigned int)arg2;
+- (void)_aggregatePowerSourceLost:(id)arg1;
+- (void)_aggregatePowerSourceFound:(id)arg1;
 - (void)invalidate;
-- (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_cleanup;
 - (void)dealloc;

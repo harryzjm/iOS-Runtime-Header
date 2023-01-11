@@ -12,9 +12,9 @@
 }
 
 @property(copy, nonatomic) NSSet *actions; // @synthesize actions=_actions;
+- (void).cxx_destruct;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
-- (void)dealloc;
 
 @end
 

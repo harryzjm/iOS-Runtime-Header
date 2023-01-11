@@ -4,21 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
 #import <SceneKit/SCNAnimatable-Protocol.h>
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
-@class NSArray, NSData, NSMutableDictionary, NSString, NSURL, SCNMaterialProperty, SCNOrderedDictionary, SCNTechnique;
-@protocol MTLTexture;
+@class MISSING_TYPE, NSArray, NSData, NSMutableDictionary, NSString, NSURL, SCNMaterialProperty, SCNOrderedDictionary, SCNTechnique;
 
 @interface SCNLight : NSObject <SCNAnimatable, SCNTechniqueSupport, NSCopying, NSSecureCoding>
 {
     struct __C3DLight *_light;
     unsigned int _isPresentationInstance:1;
-    unsigned int _goboProjectShadows:1;
     unsigned int _castsShadow:1;
     unsigned int _usesDeferredShadows:1;
     unsigned int _usesModulatedMode:1;
@@ -48,6 +46,13 @@
     double _zNear;
     double _zFar;
     double _shadowBias;
+    long long _probeType;
+    long long _probeUpdateType;
+    _Bool _parallaxCorrectionEnabled;
+    MISSING_TYPE *_probeExtents;
+    MISSING_TYPE *_probeOffset;
+    MISSING_TYPE *_parallaxExtentsFactor;
+    MISSING_TYPE *_parallaxCenterOffset;
     float _attenuationStartDistance;
     float _attenuationEndDistance;
     float _attenuationFalloffExponent;
@@ -55,11 +60,11 @@
     float _spotOuterAngle;
     float _spotFalloffExponent;
     SCNMaterialProperty *_gobo;
-    SCNMaterialProperty *_ies;
     NSURL *_IESProfileURL;
     SCNTechnique *_technique;
     NSData *_sphericalHarmonics;
-    id <MTLTexture> _probeTexture;
+    SCNMaterialProperty *_probeEnvironment;
+    NSArray *_probeTextureMipsArray;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -74,6 +79,21 @@
 - (void)_customEncodingOfSCNLight:(id)arg1;
 @property(retain, nonatomic) NSURL *IESProfileURL;
 @property(readonly, nonatomic) SCNMaterialProperty *gobo;
+- (id)probeEnvironment;
+- (void)setProbeOffset: /* Error: Ran out of types for this method. */;
+- (MISSING_TYPE *)probeOffset;
+- (void)setProbeExtents: /* Error: Ran out of types for this method. */;
+- (MISSING_TYPE *)probeExtents;
+- (void)setParallaxExtentsFactor: /* Error: Ran out of types for this method. */;
+- (MISSING_TYPE *)parallaxExtentsFactor;
+- (void)setParallaxCenterOffset: /* Error: Ran out of types for this method. */;
+- (MISSING_TYPE *)parallaxCenterOffset;
+- (void)setParallaxCorrectionEnabled:(_Bool)arg1;
+- (_Bool)parallaxCorrectionEnabled;
+- (void)setProbeUpdateType:(long long)arg1;
+- (long long)probeUpdateType;
+- (void)setProbeType:(long long)arg1;
+- (long long)probeType;
 @property(nonatomic) long long shadowMode;
 - (void)set_shadowCascadeDebugFactor:(double)arg1;
 - (double)_shadowCascadeDebugFactor;
@@ -123,14 +143,15 @@
 @property(readonly, copy, nonatomic) NSData *sphericalHarmonicsCoefficients;
 - (void)set_sphericalHarmonics:(id)arg1;
 - (id)_sphericalHarmonics;
-- (void)set_probeTexture:(id)arg1;
-- (id)_probeTexture;
+- (void)set_probeTextureMipsArray:(id)arg1;
+- (id)_probeTextureMipsArray;
 - (id)attributeForKey:(id)arg1;
 - (void)setAttribute:(id)arg1 forKey:(id)arg2;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)removeAllBindings;
 - (void)unbindAnimatablePath:(id)arg1;
 - (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (id)_scnBindings;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMFSoftwareVersion, NSNumber;
+@class HMFSoftwareVersion, HMSoftwareUpdateDocumentationMetadata, NSNumber;
 
 @interface HMDSoftwareUpdateModel
 {
@@ -13,6 +13,7 @@
 + (id)properties;
 
 // Remaining properties
+@property(retain, nonatomic) HMSoftwareUpdateDocumentationMetadata *documentationMetadata; // @dynamic documentationMetadata;
 @property(retain, nonatomic) NSNumber *downloadSize; // @dynamic downloadSize;
 @property(retain, nonatomic) HMFSoftwareVersion *softwareVersion; // @dynamic softwareVersion;
 @property(retain, nonatomic) NSNumber *state; // @dynamic state;

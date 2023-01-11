@@ -15,5 +15,6 @@
 - (struct CGSize)sizeThatFitsBounds;
 - (_Bool)ibIsMultiline;
 - (struct CGRect)textRect;
+- (_Bool)ibAllowsDefaultDesignTimeOrIntegralIntrinsicSizeCorrection;
 @end
 

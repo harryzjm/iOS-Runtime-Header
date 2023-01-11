@@ -11,7 +11,9 @@
 @interface HMDCloudTransaction : HMFObject
 {
     _Bool _needConflictResolution;
+    _Bool _iCloudSwitchStateEnabled;
     _Bool _temporaryCache;
+    _Bool _zoneHasNoLocalData;
     _Bool _createZone;
     _Bool _zoneWasCreated;
     _Bool _deleteZone;
@@ -37,14 +39,17 @@
 @property(nonatomic, getter=shouldDeleteZone) _Bool deleteZone; // @synthesize deleteZone=_deleteZone;
 @property(nonatomic, getter=wasZoneCreated) _Bool zoneWasCreated; // @synthesize zoneWasCreated=_zoneWasCreated;
 @property(nonatomic, getter=shouldCreateZone) _Bool createZone; // @synthesize createZone=_createZone;
+@property(readonly, nonatomic) _Bool zoneHasNoLocalData; // @synthesize zoneHasNoLocalData=_zoneHasNoLocalData;
 @property(readonly, nonatomic, getter=isTemporaryCache) _Bool temporaryCache; // @synthesize temporaryCache=_temporaryCache;
 @property(retain, nonatomic) CKServerChangeToken *updatedServerChangeToken; // @synthesize updatedServerChangeToken=_updatedServerChangeToken;
+@property(nonatomic) _Bool iCloudSwitchStateEnabled; // @synthesize iCloudSwitchStateEnabled=_iCloudSwitchStateEnabled;
 @property(nonatomic) _Bool needConflictResolution; // @synthesize needConflictResolution=_needConflictResolution;
 @property(nonatomic) __weak HMDCloudZone *cloudZone; // @synthesize cloudZone=_cloudZone;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *objectChanges;
 - (id)replayTransaction:(id)arg1 stagedTransaction:(id)arg2;
+- (void)loadObjectChanges;
 - (id)changeWithRecordName:(id)arg1;
 - (id)changeWithObjectID:(id)arg1;
 @property(readonly, nonatomic, getter=isHomeTransaction) _Bool homeTransaction;
@@ -53,11 +58,13 @@
 @property(readonly, nonatomic, getter=isLegacyTransaction) _Bool legacyTransaction;
 - (void)updateCloudCache;
 - (void)setDeleteAsProcessedWithRecordID:(id)arg1;
+- (void)resetRecordWithRecordID:(id)arg1;
 - (void)setSaveAsProcessedWithRecord:(id)arg1;
 - (void)fetchBatchToUpload:(CDUnknownBlockType)arg1;
 - (_Bool)moreChangesToProcess;
 - (void)setAllChangedAsProcessed;
 - (void)loadCloudRecordsAndDetermineDeletesFromCache:(CDUnknownBlockType)arg1;
+- (void)cachedCloudRecordWithObjectID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)cachedCloudRecordWithObjectID:(id)arg1;
 - (_Bool)doesRecordExistInCacheWithObjectID:(id)arg1;
 - (_Bool)doesRecordExistWithObjectID:(id)arg1;
@@ -66,7 +73,6 @@
 - (void)addChangeWithDeletedRecordID:(id)arg1;
 - (void)addChangeWithRecord:(id)arg1;
 - (void)addChangeWithObjectChange:(id)arg1;
-- (id)transactionStoreRowIDsForObjectID:(id)arg1;
 @property(readonly, nonatomic) NSArray *processedTransactionStoreRowIDs;
 @property(readonly, nonatomic) NSArray *allTransactionStoreRowIDs;
 @property(readonly, nonatomic) CKRecordID *privateZoneRootRecordID;
@@ -77,6 +83,7 @@
 - (id)description;
 - (id)shortDescription;
 - (void)updateCloudZone:(id)arg1;
+- (id)initWithType:(unsigned long long)arg1 temporaryCache:(_Bool)arg2 noLocalData:(_Bool)arg3;
 - (id)initWithType:(unsigned long long)arg1 temporaryCache:(_Bool)arg2;
 - (id)init;
 

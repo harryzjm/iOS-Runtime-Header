@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class TSDGLDataBuffer, TSDGLFrameBuffer, TSDGLState;
+@class TSDGLFrameBuffer, TSDGLState;
+@protocol TSDGLDataBuffer;
 
 __attribute__((visibility("hidden")))
 @interface TSDGLEdgeDistanceField : NSObject
@@ -19,9 +20,9 @@ __attribute__((visibility("hidden")))
     double _downsampleScale;
     TSDGLFrameBuffer *_exteriorFramebuffer;
     TSDGLFrameBuffer *_interiorFramebuffer;
-    TSDGLDataBuffer *_origDataBuffer;
-    TSDGLDataBuffer *_rectDataBuffer;
-    TSDGLDataBuffer *_squareDataBuffer;
+    id <TSDGLDataBuffer> _origDataBuffer;
+    id <TSDGLDataBuffer> _rectDataBuffer;
+    id <TSDGLDataBuffer> _squareDataBuffer;
     TSDGLState *_GLState;
     int _oldViewport[4];
 }

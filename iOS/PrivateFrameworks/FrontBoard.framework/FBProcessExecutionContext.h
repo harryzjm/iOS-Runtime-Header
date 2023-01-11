@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/NSCopying-Protocol.h>
 #import <FrontBoard/NSMutableCopying-Protocol.h>
@@ -40,10 +40,10 @@
 @property(retain, nonatomic) NSURL *standardOutputURL; // @synthesize standardOutputURL=_standardOutputURL;
 @property(copy, nonatomic) NSDictionary *environment; // @synthesize environment=_environment;
 @property(copy, nonatomic) NSArray *arguments; // @synthesize arguments=_arguments;
+- (void).cxx_destruct;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned int)_launchAssertionFlags;
-- (void)dealloc;
 - (id)_initWithExecutionContext:(id)arg1;
 - (id)init;
 

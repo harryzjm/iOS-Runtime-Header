@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVWeakReference, AVWeakReferencingDelegateStorage, NSArray;
 @protocol OS_dispatch_queue;
@@ -19,6 +19,7 @@
     NSArray *dataOutputsStorage;
     int masterSynchronizedDataQueueMaxDepth;
     _Bool synchronizingVideoAndDepth;
+    _Bool synchronizingVideoAndVisionData;
 }
 
 @end

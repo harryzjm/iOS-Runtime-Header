@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface EKConferenceURLDetector : NSObject
 {
 }
 
-+ (id)preferredDomainList;
-+ (_Bool)_url:(id)arg1 hasDomain:(id)arg2;
-+ (_Bool)isPreferredURL:(id)arg1;
-+ (id)conferenceURLFromConferenceSources:(id)arg1;
 + (id)logHandle;
++ (id)_dataDetector;
++ (id)_preferredHostSuffixes;
++ (_Bool)_isValidTelURL:(id)arg1;
++ (_Bool)_isPreferredURL:(id)arg1;
++ (id)_linksInSource:(id)arg1;
++ (id)conferenceURLFromSources:(id)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SafariSafeBrowsing/NSCopying-Protocol.h>
 #import <SafariSafeBrowsing/NSSecureCoding-Protocol.h>
@@ -28,6 +28,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)_initWithServiceLookUpResults:(id)arg1;
 - (id)_initWithServiceLookUpResults:(id)arg1 URLContainsUserInfo:(_Bool)arg2;
 
 @end

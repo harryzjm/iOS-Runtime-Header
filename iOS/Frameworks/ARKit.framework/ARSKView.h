@@ -9,7 +9,7 @@
 #import <ARKit/ARInternalSessionObserver-Protocol.h>
 
 @class ARSession, NSMutableDictionary, NSObject, NSSet, NSString;
-@protocol ARSKViewDelegate, NSObject;
+@protocol ARSKViewDelegate;
 
 @interface ARSKView : SKView <ARInternalSessionObserver>
 {
@@ -17,12 +17,12 @@
     NSMutableDictionary *_nodesByAnchorIdentifier;
     NSSet *_lastFrameAnchors;
     long long _interfaceOrientation;
-    id <NSObject> _interfaceOrientationObserver;
     struct CGSize _viewportSize;
 }
 
 - (void).cxx_destruct;
 - (void)session:(id)arg1 didOutputAudioSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
+- (void)sessionShouldAttemptRelocalization:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sessionInterruptionEnded:(id)arg1;
 - (void)sessionWasInterrupted:(id)arg1;
 - (void)session:(id)arg1 cameraDidChangeTrackingState:(id)arg2;
@@ -36,6 +36,7 @@
 - (id)hitTest:(struct CGPoint)arg1 types:(unsigned long long)arg2;
 @property(retain, nonatomic) ARSession *session;
 - (void)layoutSubviews;
+- (void)deviceOrientationDidChange:(id)arg1;
 - (void)dealloc;
 - (void)commonInit;
 - (id)initWithFrame:(struct CGRect)arg1;

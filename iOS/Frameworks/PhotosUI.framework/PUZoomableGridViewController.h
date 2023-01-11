@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUI/PUCloudQuotaControllerDelegate-Protocol.h>
 #import <PhotosUI/PUMagnfiedViewControllerDelegate-Protocol.h>
 #import <PhotosUI/PXCPLServiceUIDelegate-Protocol.h>
+#import <PhotosUI/PXCloudQuotaControllerDelegate-Protocol.h>
+#import <PhotosUI/PXPhotosGlobalFooterViewModelPresentationDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, NSTimer, PUCloudQuotaController, PUGridMagnifiedImageViewController, PUGridPinchGestureRecognizer, PUGridZoomLevelInfo, PUMomentsZoomLevelManager, PUZoomableGridTransition, PUZoomableGridViewControllerSpec, PXCPLServiceUI, UITapGestureRecognizer;
+@class NSArray, NSIndexPath, NSString, NSTimer, PUGridMagnifiedImageViewController, PUGridPinchGestureRecognizer, PUGridZoomLevelInfo, PUMomentsZoomLevelManager, PUZoomableGridTransition, PUZoomableGridViewControllerSpec, PXCPLServiceUI, PXCloudQuotaController, UITapGestureRecognizer;
 
-@interface PUZoomableGridViewController <PXCPLServiceUIDelegate, PUCloudQuotaControllerDelegate, PUMagnfiedViewControllerDelegate>
+@interface PUZoomableGridViewController <PXCPLServiceUIDelegate, PXCloudQuotaControllerDelegate, PUMagnfiedViewControllerDelegate, PXPhotosGlobalFooterViewModelPresentationDelegate>
 {
     _Bool _isDisplayingGlobalFooterView;
+    _Bool _isDisplayingEmptyPlaceholderView;
     PXCPLServiceUI *_cplServiceUI;
-    PUCloudQuotaController *_cloudQuotaController;
+    PXCloudQuotaController *_cloudQuotaController;
+    _Bool _iCPLEnabled;
     _Bool _globalFooterDidAutoScroll;
     NSTimer *_globalFooterAutoScrollMinimumIdleTimer;
     _Bool _simulateGlobalFooterImportantInformationUpdates;
@@ -71,9 +74,11 @@
 - (void)_handleGridPinchGestureRecognizer:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (void)_accountStoreDidChange:(id)arg1;
 - (_Bool)serviceUI:(id)arg1 performAction:(long long)arg2;
-- (void)serviceUI:(id)arg1 progressDidChange:(double)arg2;
+- (void)serviceUI:(id)arg1 progressDidChange:(float)arg2;
 - (void)serviceUI:(id)arg1 statusDidChange:(id)arg2;
+- (id)presentingViewControllerForViewModel:(id)arg1;
 - (void)collectionView:(id)arg1 didEndDisplayingSupplementaryView:(id)arg2 forElementOfKind:(id)arg3 atIndexPath:(id)arg4;
 - (void)_didEndDisplayingGlobalFooterView;
 - (void)collectionView:(id)arg1 willDisplaySupplementaryView:(id)arg2 forElementKind:(id)arg3 atIndexPath:(id)arg4;
@@ -85,7 +90,7 @@
 - (void)_globalFooterHasImportantInformationDidChange;
 - (_Bool)_globalFooterHasImportantInformation;
 - (void)_conditionallyRevealPhotosGlobalFooterView;
-- (void)_conditionallyRevealPhotosGlobalFooterViewWithContentOffset:(struct CGPoint)arg1;
+- (void)_conditionallyRevealPhotosGlobalFooterViewWithLastUserScrollTime:(double)arg1;
 - (_Bool)_shouldRevealPhotosGlobalFooterView;
 - (void)_configureGlobalFooterImportantInformationUpdatesTimer;
 - (_Bool)_shouldShowCPLInformationInGlobalFooter;
@@ -99,14 +104,18 @@
 - (id)presentingViewControllerForCloudQuotaController:(id)arg1;
 - (void)cloudQuotaController:(id)arg1 presentInformationBanner:(id)arg2;
 - (_Bool)shouldPreventRevealInMomentAction;
-- (void)getEmptyPlaceholderViewTitle:(id *)arg1 message:(id *)arg2;
+- (void)getEmptyPlaceholderViewTitle:(id *)arg1 message:(id *)arg2 buttonTitle:(id *)arg3 buttonAction:(CDUnknownBlockType *)arg4;
+- (void)didEndDisplayingEmptyPlaceholderView;
+- (void)willDisplayEmptyPlaceholderView;
+- (_Bool)wantsPlaceholderView;
+- (void)_needsCPLInformationDidChange;
 - (double)cellAspectRatioHint;
 - (void)preheatAssets;
 - (unsigned long long)dateRangeFormatterPreset;
 - (long long)imageDeliveryMode;
 - (struct CGSize)contentSizeForPreheating;
 - (struct CGPoint)contentOffsetForPreheating;
-- (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3 animated:(_Bool)arg4;
+- (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3;
 - (void)configureGridCell:(id)arg1 forItemAtIndexPath:(id)arg2;
 - (_Bool)canBeginStackCollapseTransition;
 - (_Bool)canNavigateToPhotoInteractively:(_Bool)arg1;

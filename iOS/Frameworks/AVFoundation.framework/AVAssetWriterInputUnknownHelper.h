@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+__attribute__((visibility("hidden")))
 @interface AVAssetWriterInputUnknownHelper
 {
 }
@@ -30,6 +31,7 @@
 - (void)setLanguageCode:(id)arg1;
 - (_Bool)_validateLanguageCode:(id)arg1;
 - (void)setNaturalSize:(struct CGSize)arg1;
+- (void)setMaximizePowerEfficiency:(_Bool)arg1;
 - (void)setExpectsMediaDataInRealTime:(_Bool)arg1;
 - (void)setMediaTimeScale:(int)arg1;
 - (void)setMetadata:(id)arg1;

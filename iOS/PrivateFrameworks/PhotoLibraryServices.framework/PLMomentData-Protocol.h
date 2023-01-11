@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotoLibraryServices/PLMomentProtocol-Protocol.h>
 #import <PhotoLibraryServices/PLMomentRefreshable-Protocol.h>
 
 @class CLLocation, NSArray, NSData, NSDate, NSObject, NSOrderedSet, NSString;
 @protocol NSCopying, PLMomentAssetData, PLMomentListData;
 
-@protocol PLMomentData <PLMomentRefreshable>
+@protocol PLMomentData <PLMomentRefreshable, PLMomentProtocol>
++ (NSArray *)sortByTimeSortDescriptors;
 @property(retain, nonatomic) NSArray *userTitles;
 @property(retain, nonatomic) NSString *uuid;
 @property(nonatomic) _Bool usedLocationsOfInterest;
@@ -20,6 +22,7 @@
 @property(nonatomic) int cachedCount;
 @property(retain, nonatomic) id <PLMomentListData> megaMomentList;
 @property(retain, nonatomic) id <PLMomentListData> yearMomentList;
+@property(readonly, retain, nonatomic) NSArray *batchedAssets;
 @property(retain, nonatomic) NSOrderedSet *assets;
 @property(retain, nonatomic) CLLocation *approximateLocation;
 @property(readonly, retain, nonatomic) NSObject<NSCopying> *uniqueObjectID;
@@ -30,5 +33,8 @@
 - (void)replaceAssetDataAtIndex:(unsigned long long)arg1 withAssetData:(id <PLMomentAssetData>)arg2;
 - (void)delete;
 - (_Bool)isDeleted;
+
+@optional
+@property(readonly, retain, nonatomic) NSString *title;
 @end
 

@@ -8,14 +8,13 @@
 
 #import <SafariShared/NSXPCListenerDelegate-Protocol.h>
 
-@class NSDate, NSMutableSet, NSString, NSURL, NSXPCListener, WBSHistoryDatabaseAccessBroker, WBSHistoryURLCompletionDataStore;
+@class NSDate, NSString, NSURL, NSXPCListener, WBSHistoryDatabaseAccessBroker, WBSHistoryURLCompletionDataStore;
 @protocol OS_dispatch_queue;
 
 @interface WBSHistoryService : NSObject <NSXPCListenerDelegate>
 {
     NSXPCListener *_listener;
     NSObject<OS_dispatch_queue> *_historyServiceQueue;
-    NSMutableSet *_connectionsReceivingHistoryNotifications;
     NSDate *_initDate;
     WBSHistoryDatabaseAccessBroker *_databaseAccessBroker;
     WBSHistoryURLCompletionDataStore *_urlCompletionDataStore;
@@ -24,9 +23,6 @@
 @property(readonly, nonatomic) WBSHistoryURLCompletionDataStore *urlCompletionDataStore; // @synthesize urlCompletionDataStore=_urlCompletionDataStore;
 @property(readonly, nonatomic) WBSHistoryDatabaseAccessBroker *databaseAccessBroker; // @synthesize databaseAccessBroker=_databaseAccessBroker;
 - (void).cxx_destruct;
-- (void)postHistoryNotificationToRegisteredConnections:(id)arg1;
-- (void)unregisterConnectionForHistoryNotifications:(id)arg1;
-- (void)registerConnectionForHistoryNotifications:(id)arg1;
 @property(readonly, nonatomic) NSURL *databaseURL;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (_Bool)_connectionIsEntitledToUseService:(id)arg1;

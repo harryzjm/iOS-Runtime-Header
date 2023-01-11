@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MPStoreRedownloadProductItemAsset, NSArray, NSDictionary, NSString, NSURL;
 
@@ -23,6 +23,9 @@
 - (void).cxx_destruct;
 - (void)_enumerateAssetDictionariesWithBlock:(CDUnknownBlockType)arg1;
 - (id)assetForFlavor:(id)arg1;
+@property(readonly, nonatomic) NSURL *alternateHLSKeyCertificateURL;
+@property(readonly, nonatomic) NSURL *alternateHLSKeyServerURL;
+@property(readonly, nonatomic) NSURL *alternateHLSPlaylistURL;
 @property(readonly, nonatomic, getter=isiTunesStoreStream) _Bool iTunesStoreStream;
 @property(readonly, nonatomic) NSURL *HLSPlaylistURL;
 @property(readonly, nonatomic) NSURL *HLSKeyServerURL;

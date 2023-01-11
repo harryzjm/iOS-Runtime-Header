@@ -6,17 +6,18 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMAccessoryCategory, HMFMessageDispatcher, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDUnassociatedAccessory : HMFObject <HMFMessageReceiver, NSSecureCoding>
+@interface HMDUnassociatedAccessory : HMFObject <HMFLogging, HMFMessageReceiver, NSSecureCoding>
 {
+    NSUUID *_uuid;
     NSString *_name;
     HMAccessoryCategory *_category;
-    NSUUID *_uuid;
     NSString *_identifier;
     long long _associationOptions;
     NSObject<OS_dispatch_queue> *_clientQueue;
@@ -25,6 +26,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)logCategory;
 + (id)shortDescription;
 + (id)otherAccessoryCategory;
 @property(readonly, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
@@ -32,13 +34,14 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(readonly) long long associationOptions; // @synthesize associationOptions=_associationOptions;
 @property(readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
-@property(readonly, copy) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property(copy, setter=setUUID:) NSUUID *uuid; // @synthesize uuid=_uuid;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
 - (id)messageDestination;
+- (id)logIdentifier;
 - (void)identifyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_handleIdentify:(id)arg1;
 @property(readonly, getter=isReachable) _Bool reachable;

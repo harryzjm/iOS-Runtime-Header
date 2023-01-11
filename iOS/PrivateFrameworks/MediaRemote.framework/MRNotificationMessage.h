@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSString, _MRNowPlayingPlayerPathProtobuf;
 
 @interface MRNotificationMessage
 {
 }
 
 - (unsigned long long)type;
-@property(readonly, nonatomic) void *playerPath;
+@property(readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath;
 @property(readonly, nonatomic) NSDictionary *userInfo;
 @property(readonly, nonatomic) NSString *notification;
 - (id)initWithNotification:(id)arg1;

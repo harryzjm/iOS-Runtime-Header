@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Security/SecuritydXPCCallbackProtocol-Protocol.h>
+
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface SecuritydXPCCallback : NSObject <SecuritydXPCCallbackProtocol>
@@ -18,6 +20,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)callCallback:(_Bool)arg1 error:(id)arg2;
 - (id)initWithCallback:(CDUnknownBlockType)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

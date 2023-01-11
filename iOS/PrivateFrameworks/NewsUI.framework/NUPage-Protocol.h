@@ -9,13 +9,13 @@
 #import <NewsUI/NUPageStyling-Protocol.h>
 
 @class NSString, UIViewController;
-@protocol NUPagable;
+@protocol NUPageable;
 
 @protocol NUPage <NUPageStyling, NUPageNextActionable, NUAdContextProvider>
 @property(readonly, nonatomic) _Bool allowNeighboringAdvertising;
 @property(readonly, copy, nonatomic) NSString *identifier;
 - (void)activityProvider:(void (^)(id <NUActivityProvider>))arg1;
-- (UIViewController<NUPagable> *)viewController;
+- (UIViewController<NUPageable> *)viewController;
 - (void)unprepare;
 - (void)prepare;
 @end

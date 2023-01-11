@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSMutableSet, TSCERemoteDataValueMap, TSUIntToIntDictionary, TSUPointerKeyDictionary;
 @protocol OS_dispatch_queue;
@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)p_localeStocks;
 - (void)removeRemoteDataInterest:(id)arg1 forStore:(id)arg2;
 - (void)addRemoteDataInterest:(id)arg1 forStore:(id)arg2;
+- (void)updateKnownCachedStocksInStore:(id)arg1;
 - (id)cachedQuoteForSingleSymbol:(id)arg1;
 - (id)valueForSingleKey:(id)arg1;
 - (void)autoCompleteQuotesWithInput:(id)arg1 completion:(CDUnknownBlockType)arg2;

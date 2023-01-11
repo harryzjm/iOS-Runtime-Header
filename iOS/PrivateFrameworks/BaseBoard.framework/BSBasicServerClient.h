@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSXPCServerClient-Protocol.h>
 
@@ -21,6 +21,7 @@
 
 + (id)wrapperWithConnection:(id)arg1;
 @property(retain, nonatomic) NSObject<OS_xpc_object> *connection; // @synthesize connection=_connection;
+- (void).cxx_destruct;
 - (void)sendMessageWithPacker:(CDUnknownBlockType)arg1 replyHandler:(CDUnknownBlockType)arg2 onQueue:(id)arg3;
 - (void)sendMessageWithPacker:(CDUnknownBlockType)arg1;
 - (void)sendMessage:(id)arg1;

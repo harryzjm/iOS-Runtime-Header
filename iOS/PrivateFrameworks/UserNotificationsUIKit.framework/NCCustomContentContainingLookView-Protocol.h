@@ -4,21 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UserNotificationsUIKit/MTPlatter-Protocol.h>
-#import <UserNotificationsUIKit/MTTitled-Protocol.h>
+#import <UserNotificationsUIKit/PLExpandedPlatter-Protocol.h>
+#import <UserNotificationsUIKit/PLPlatter-Protocol.h>
+#import <UserNotificationsUIKit/PLTitled-Protocol.h>
 
-@class UIScrollView, UITapGestureRecognizer;
+@class UITapGestureRecognizer;
 
-@protocol NCCustomContentContainingLookView <MTPlatter, MTTitled>
+@protocol NCCustomContentContainingLookView <PLPlatter, PLTitled, PLExpandedPlatter>
 @property(readonly, nonatomic) UITapGestureRecognizer *lookViewTapGestureRecognizer;
-@property(nonatomic, getter=isActionsHidden) _Bool actionsHidden;
-@property(readonly, nonatomic, getter=_scrollView) UIScrollView *scrollView;
 @property(nonatomic) _Bool hidesNotificationContent;
-@property(readonly, nonatomic) struct CGSize sizeExcludingActions;
-@property(readonly, nonatomic) struct CGSize contentSizeExcludingActions;
 @property(nonatomic) unsigned long long customContentLocation;
-@property(nonatomic) struct CGSize customContentSize;
-- (struct CGRect)scrollViewFrame;
-- (struct CGSize)actionsSizeThatFits:(struct CGSize)arg1;
 @end
 

@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
 __attribute__((visibility("hidden")))
 @interface KNRecordingEvent : NSObject <NSCopying>
 {
-    double mStartTime;
+    double _startTime;
 }
 
-@property(readonly, nonatomic) double startTime; // @synthesize startTime=mStartTime;
+@property(readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
 - (id)recordingEventByAddingTimeOffset:(double)arg1;
 @property(readonly, nonatomic) _Bool canPrecedeDiscontinuity;
 @property(readonly, nonatomic, getter=isIgnoredWhenSeeking) _Bool ignoredWhenSeeking;

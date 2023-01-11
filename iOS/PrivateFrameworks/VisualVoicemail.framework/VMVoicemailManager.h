@@ -4,40 +4,49 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, NSMutableSet, NSOrderedSet, VMClientWrapper, VMVoicemailCapabilities;
-@protocol OS_dispatch_queue;
+#import <VisualVoicemail/VMClientXPCProtocol-Protocol.h>
 
-@interface VMVoicemailManager : NSObject
+@class NSArray, NSMutableSet, NSOrderedSet, NSProgress, NSString, VMClientWrapper, VMVoicemailCapabilities;
+@protocol OS_dispatch_queue, VMServerXPCProtocol;
+
+@interface VMVoicemailManager : NSObject <VMClientXPCProtocol>
 {
     _Bool _messageWaiting;
     _Bool _online;
     _Bool _subscribed;
     _Bool _syncInProgress;
+    _Bool _transcribing;
     _Bool _transcriptionEnabled;
     int _token;
     NSObject<OS_dispatch_queue> *_completionQueue;
     unsigned long long _storageUsage;
+    NSProgress *_transcriptionProgress;
     NSOrderedSet *_voicemails;
-    VMClientWrapper *_client;
-    VMVoicemailCapabilities *_capabilities;
     NSMutableSet *_trashedMessages;
-    NSObject<OS_dispatch_queue> *_concurrentDispatchQueue;
+    NSObject<OS_dispatch_queue> *_serialDispatchQueue;
+    VMVoicemailCapabilities *_capabilities;
+    VMClientWrapper *_client;
 }
 
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *concurrentDispatchQueue; // @synthesize concurrentDispatchQueue=_concurrentDispatchQueue;
+@property(retain, nonatomic) VMClientWrapper *client; // @synthesize client=_client;
+@property(retain, nonatomic) VMVoicemailCapabilities *capabilities; // @synthesize capabilities=_capabilities;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
 @property(nonatomic) int token; // @synthesize token=_token;
 @property(retain, nonatomic) NSMutableSet *trashedMessages; // @synthesize trashedMessages=_trashedMessages;
-@property(retain, nonatomic) VMVoicemailCapabilities *capabilities; // @synthesize capabilities=_capabilities;
-@property(retain, nonatomic) VMClientWrapper *client; // @synthesize client=_client;
 @property(copy, nonatomic) NSOrderedSet *voicemails; // @synthesize voicemails=_voicemails;
+@property(readonly, nonatomic) NSProgress *transcriptionProgress; // @synthesize transcriptionProgress=_transcriptionProgress;
 @property(nonatomic) unsigned long long storageUsage; // @synthesize storageUsage=_storageUsage;
 @property(readonly, nonatomic, getter=isTranscriptionEnabled) _Bool transcriptionEnabled; // @synthesize transcriptionEnabled=_transcriptionEnabled;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 - (void).cxx_destruct;
+- (void)performSynchronousBlock:(CDUnknownBlockType)arg1;
+- (void)obliterate;
 @property(nonatomic, getter=isSyncInProgress) _Bool syncInProgress; // @synthesize syncInProgress=_syncInProgress;
 @property(nonatomic, getter=isMessageWaiting) _Bool messageWaiting; // @synthesize messageWaiting=_messageWaiting;
 @property(nonatomic, getter=isSubscribed) _Bool subscribed; // @synthesize subscribed=_subscribed;
+@property(nonatomic, getter=isTranscribing) _Bool transcribing; // @synthesize transcribing=_transcribing;
 @property(nonatomic, getter=isOnline) _Bool online; // @synthesize online=_online;
 - (void)voicemailsUpdated:(id)arg1;
 @property(readonly, nonatomic) unsigned long long maximumPasswordLength;
@@ -67,9 +76,9 @@
 @property(readonly, nonatomic) _Bool mailboxRequiresSetup;
 @property(readonly, nonatomic) _Bool canChangeGreeting;
 @property(readonly, nonatomic) _Bool canChangePassword;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 - (void)_requestInitialStateIfNecessaryAndSendNotifications:(_Bool)arg1;
-- (id)serverConnection;
+- (void)requestInitialStateIfNecessaryAndSendNotifications:(_Bool)arg1;
+@property(readonly, nonatomic) id <VMServerXPCProtocol> serverConnection;
 - (id)synchronousServerConnectionWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)serverConnectionWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
@@ -77,6 +86,12 @@
 - (id)init;
 - (void)reportTranscriptionRatedAccurate:(_Bool)arg1 forVoicemail:(id)arg2;
 - (void)reportTranscriptionProblemForVoicemail:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

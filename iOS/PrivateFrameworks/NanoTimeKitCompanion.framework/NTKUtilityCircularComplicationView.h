@@ -16,6 +16,9 @@
 @property(readonly, nonatomic) NTKContainerView *contentView; // @synthesize contentView=_contentView;
 - (void).cxx_destruct;
 - (long long)layoutOverride;
+- (void)_updateEditingRotationAngle;
+- (void)setEditingRotationAngle:(double)arg1;
+- (void)setEditing:(_Bool)arg1;
 - (void)_layoutContentView;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;

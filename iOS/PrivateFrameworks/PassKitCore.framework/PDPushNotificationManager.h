@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/APSConnectionDelegate-Protocol.h>
 
-@class APSConnection, NSHashTable, NSMutableSet, NSString;
+@class APSConnection, NSArray, NSHashTable, NSLock, NSMutableSet, NSString;
+@protocol OS_dispatch_queue;
 
 @interface PDPushNotificationManager : NSObject <APSConnectionDelegate>
 {
@@ -16,11 +17,15 @@
     NSMutableSet *_registeredTopics;
     NSString *_pushToken;
     NSHashTable *_consumers;
+    NSLock *_consumersLock;
+    NSObject<OS_dispatch_queue> *_replyQueue;
 }
 
 @property(copy, nonatomic) NSString *pushToken; // @synthesize pushToken=_pushToken;
 - (void).cxx_destruct;
 - (void)connect;
+@property(readonly, nonatomic) NSArray *currentConsumers;
+@property(readonly, nonatomic) NSArray *topics;
 - (void)recalculatePushTopics;
 - (void)unregisterAllConsumers;
 - (void)unregisterConsumer:(id)arg1;

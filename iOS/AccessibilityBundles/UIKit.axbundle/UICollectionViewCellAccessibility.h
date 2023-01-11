@@ -26,6 +26,7 @@
 - (void)insertSubview:(id)arg1 belowSubview:(id)arg2;
 - (void)willRemoveSubview:(id)arg1;
 - (void)addSubview:(id)arg1;
+- (void)_accessibilityClearInternalCaches;
 - (id)_accessibilityChildren;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (void)accessibilityReuseChildren:(id)arg1 forMockParent:(id)arg2;

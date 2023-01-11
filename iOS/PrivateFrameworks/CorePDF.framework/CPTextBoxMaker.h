@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CPBody, CPZone;
 
+__attribute__((visibility("hidden")))
 @interface CPTextBoxMaker : NSObject
 {
     CPBody *bodyZone;

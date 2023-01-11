@@ -7,10 +7,10 @@
 __attribute__((visibility("hidden")))
 @interface KNRecordingLaserEvent
 {
-    struct CGPoint mUnitLocation;
+    struct CGPoint _unitLocation;
 }
 
-@property(readonly, nonatomic) struct CGPoint unitLocation; // @synthesize unitLocation=mUnitLocation;
+@property(readonly, nonatomic) struct CGPoint unitLocation; // @synthesize unitLocation=_unitLocation;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;

@@ -23,8 +23,10 @@
     NSArray *_artworkHostedIdioms;
     NSString *_displayGamut;
     NSString *_artworkDynamicDisplayMode;
+    NSString *_deploymentTargetVersion;
 }
 
+@property(readonly) NSString *deploymentTargetVersion; // @synthesize deploymentTargetVersion=_deploymentTargetVersion;
 @property(readonly) NSString *artworkDynamicDisplayMode; // @synthesize artworkDynamicDisplayMode=_artworkDynamicDisplayMode;
 @property(readonly) NSString *displayGamut; // @synthesize displayGamut=_displayGamut;
 @property(readonly) NSArray *artworkHostedIdioms; // @synthesize artworkHostedIdioms=_artworkHostedIdioms;
@@ -40,7 +42,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
-- (id)initWithProductType:(id)arg1 artworkDeviceIdiom:(id)arg2 artworkDeviceScaleFactor:(long long)arg3 artworkDeviceSubtype:(long long)arg4 devicePerformanceMemoryClass:(long long)arg5 deviceGraphicsFeatureSetClass:(id)arg6 deviceGraphicsFeatureSetFallbacks:(id)arg7 artworkHostedIdioms:(id)arg8 displayGamut:(id)arg9 artworkDynamicDisplayMode:(id)arg10;
+- (id)initWithProductType:(id)arg1 artworkDeviceIdiom:(id)arg2 artworkDeviceScaleFactor:(long long)arg3 artworkDeviceSubtype:(long long)arg4 devicePerformanceMemoryClass:(long long)arg5 deviceGraphicsFeatureSetClass:(id)arg6 deviceGraphicsFeatureSetFallbacks:(id)arg7 artworkHostedIdioms:(id)arg8 displayGamut:(id)arg9 artworkDynamicDisplayMode:(id)arg10 deploymentTargetVersion:(id)arg11;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

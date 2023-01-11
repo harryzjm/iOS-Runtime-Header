@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/MPRemoteCommandDelegate_Internal-Protocol.h>
 
@@ -50,6 +50,7 @@
     MPAdvanceRepeatModeCommand *_advanceRepeatModeCommand;
     MPRemoteCommand *_createRadioStationCommand;
     MPSetPlaybackQueueCommand *_setPlaybackQueueCommand;
+    MPRemoteCommand *_prepareForSetPlaybackQueueCommand;
     MPInsertIntoPlaybackQueueCommand *_insertIntoPlaybackQueueCommand;
     MPRemoteCommand *_removeFromPlaybackQueueCommand;
     MPReorderQueueCommand *_reorderQueueCommand;
@@ -60,14 +61,11 @@
     NSString *_playerID;
 }
 
++ (long long)_numberOfCommandCentersWithTargets;
 + (id)commandCenterForPlayerID:(id)arg1;
 + (id)sharedCommandCenter;
 @property(readonly, copy, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;
 - (void).cxx_destruct;
-- (long long)_handlePlayItemCommand:(id)arg1;
-- (long long)_handleRemoveCommand:(id)arg1;
-- (long long)_handleReorderCommand:(id)arg1;
-- (void)_playbackQueueDelegateDidChangeNotification:(id)arg1;
 - (void)_commandTargetsDidChangeNotification:(id)arg1;
 - (void)_scheduleSupportedCommandsChanged;
 - (void)_teardownNotifications;
@@ -83,6 +81,7 @@
 @property(readonly, nonatomic) MPReorderQueueCommand *reorderQueueCommand; // @synthesize reorderQueueCommand=_reorderQueueCommand;
 @property(readonly, nonatomic) MPRemoteCommand *removeFromPlaybackQueueCommand; // @synthesize removeFromPlaybackQueueCommand=_removeFromPlaybackQueueCommand;
 @property(readonly, nonatomic) MPInsertIntoPlaybackQueueCommand *insertIntoPlaybackQueueCommand; // @synthesize insertIntoPlaybackQueueCommand=_insertIntoPlaybackQueueCommand;
+@property(readonly, nonatomic) MPRemoteCommand *prepareForSetPlaybackQueueCommand; // @synthesize prepareForSetPlaybackQueueCommand=_prepareForSetPlaybackQueueCommand;
 @property(readonly, nonatomic) MPSetPlaybackQueueCommand *setPlaybackQueueCommand; // @synthesize setPlaybackQueueCommand=_setPlaybackQueueCommand;
 @property(readonly, nonatomic) MPRemoteCommand *createRadioStationCommand; // @synthesize createRadioStationCommand=_createRadioStationCommand;
 @property(readonly, nonatomic) MPAdvanceRepeatModeCommand *advanceRepeatModeCommand; // @synthesize advanceRepeatModeCommand=_advanceRepeatModeCommand;

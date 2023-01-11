@@ -13,7 +13,6 @@
 __attribute__((visibility("hidden")))
 @interface MKPlaceMessageViewController <_MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol>
 {
-    _Bool _canUseMessageID;
     id <_MKInfoCardAnalyticsDelegate> _analyticsDelegate;
     id <_MKPlaceItem> _placeItem;
 }

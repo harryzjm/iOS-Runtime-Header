@@ -8,18 +8,13 @@
 
 #import <MapKit/UIScrollViewDelegate-Protocol.h>
 
-@class MKPlacePhotosView, NSString, NSTimer, NSURLSessionTask, UIActivityIndicatorView, UIImage, UIImageView, UILabel;
-@protocol GEOMapItemPhoto;
+@class MKMapItemPhoto, MKPlacePhotosView, NSString, NSURLSessionTask, UIImage, UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface _MKPlacePhotoView : UIScrollView <UIScrollViewDelegate>
 {
-    UIActivityIndicatorView *_activity;
     _Bool _isZoomed;
-    NSTimer *_tapTimer;
-    UILabel *_descriptionLabel;
-    UILabel *_licenseLabel;
-    id <GEOMapItemPhoto> _photo;
+    MKMapItemPhoto *_photo;
     MKPlacePhotosView *_viewer;
     NSURLSessionTask *_task;
     _Bool _hasLoadedFullPhoto;

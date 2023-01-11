@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, TSSPropertyMap;
 
@@ -24,14 +24,16 @@ __attribute__((visibility("hidden")))
     _Bool mSupportsTextWrapping;
     Class mMultiDataChartOptionsControllerBuildSupportClass;
     NSString *mSaveChartStyleHelpKey;
+    long long _analyticsAppType;
 }
 
 + (void)resetSharedChartConfiguration;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)sharedChartConfiguration;
 + (id)_singletonAlloc;
+@property(nonatomic) long long analyticsAppType; // @synthesize analyticsAppType=_analyticsAppType;
 @property(copy, nonatomic) NSString *saveChartStyleHelpKey; // @synthesize saveChartStyleHelpKey=mSaveChartStyleHelpKey;
-@property(nonatomic) Class multiDataChartOptionsControllerBuildSupportClass; // @synthesize multiDataChartOptionsControllerBuildSupportClass=mMultiDataChartOptionsControllerBuildSupportClass;
+@property(retain, nonatomic) Class multiDataChartOptionsControllerBuildSupportClass; // @synthesize multiDataChartOptionsControllerBuildSupportClass=mMultiDataChartOptionsControllerBuildSupportClass;
 @property(nonatomic) _Bool supportsTextWrapping; // @synthesize supportsTextWrapping=mSupportsTextWrapping;
 @property(nonatomic) _Bool supportsTextBackground; // @synthesize supportsTextBackground=mSupportsTextBackground;
 @property(nonatomic) _Bool exportsUsingSageKeynoteChartNonStyleDefaultsOverride; // @synthesize exportsUsingSageKeynoteChartNonStyleDefaultsOverride=mExportsUsingSageKeynoteChartNonStyleDefaultsOverride;
@@ -43,13 +45,9 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool supportsNumberFormatSameAsSource; // @synthesize supportsNumberFormatSameAsSource=mSupportsNumberFormatSameAsSource;
 @property(nonatomic) _Bool supportsChartRangeEditingMode; // @synthesize supportsChartRangeEditingMode=mSupportsChartRangeEditingMode;
 @property(nonatomic) _Bool supportsChartDataEditor; // @synthesize supportsChartDataEditor=mSupportsChartDataEditor;
+- (void).cxx_destruct;
 @property(readonly) TSSPropertyMap *appSpecificPropertyOverrides;
-- (void)dealloc;
 - (id)init;
-- (id)autorelease;
-- (oneway void)release;
-- (unsigned long long)retainCount;
-- (id)retain;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

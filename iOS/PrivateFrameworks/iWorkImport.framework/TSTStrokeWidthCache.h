@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSTStrokeWidthCache : NSObject
 {
     unsigned int mCount;
     struct _opaque_pthread_rwlock_t mLock;
-    vector_3f7ffb82 mStrokeWidth;
+    vector_b67dfe3a mStrokeWidth;
 }
 
 - (id).cxx_construct;

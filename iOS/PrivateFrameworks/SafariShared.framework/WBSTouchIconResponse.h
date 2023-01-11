@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIColor, UIImage;
+#import <SafariShared/WBSIconResponse-Protocol.h>
 
-@interface WBSTouchIconResponse
+@class NSString, UIColor, UIImage;
+
+@interface WBSTouchIconResponse <WBSIconResponse>
 {
     _Bool _generated;
     UIImage *_touchIcon;
@@ -18,9 +20,15 @@
 @property(readonly, nonatomic) UIColor *extractedBackgroundColor; // @synthesize extractedBackgroundColor=_extractedBackgroundColor;
 @property(readonly, nonatomic) UIImage *touchIcon; // @synthesize touchIcon=_touchIcon;
 - (void).cxx_destruct;
-- (id)description;
+@property(readonly, nonatomic) UIImage *icon;
+@property(readonly, copy) NSString *description;
 - (id)initWithURL:(id)arg1 touchIcon:(id)arg2 generated:(_Bool)arg3 extractedBackgroundColor:(id)arg4;
 - (id)initWithURL:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

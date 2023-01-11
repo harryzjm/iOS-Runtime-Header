@@ -6,30 +6,26 @@
 
 #import <ITMLKit/IKJSDevice-Protocol.h>
 #import <ITMLKit/NSObject-Protocol.h>
-#import <ITMLKit/RadiosPreferencesDelegate-Protocol.h>
 #import <ITMLKit/_IKJSDevice-Protocol.h>
 #import <ITMLKit/_IKJSDeviceProxy-Protocol.h>
 
-@class NSNumber, NSString, RadiosPreferences;
+@class NSNumber, NSString;
 @protocol IKAppDeviceConfig;
 
-@interface IKJSDevice <RadiosPreferencesDelegate, NSObject, IKJSDevice, _IKJSDeviceProxy, _IKJSDevice>
+@interface IKJSDevice <NSObject, IKJSDevice, _IKJSDeviceProxy, _IKJSDevice>
 {
-    id _isNetworkTypeChangedToken;
-    id _networkReachabilityChangedToken;
-    RadiosPreferences *_radioPrefs;
+    id _networkPropertiesChangedToken;
     id <IKAppDeviceConfig> _deviceConfig;
 }
 
 + (id)getMobileGestaltString:(struct __CFString *)arg1;
 @property(nonatomic) __weak id <IKAppDeviceConfig> deviceConfig; // @synthesize deviceConfig=_deviceConfig;
 - (void).cxx_destruct;
-- (void)_notifyObservers;
-- (void)airplaneModeChanged;
 - (id)capacity:(id)arg1;
 @property(readonly, nonatomic) _Bool isInRetailDemoMode;
 @property(readonly, nonatomic) double lastNetworkChangedTime;
 @property(readonly, nonatomic) NSString *networkType;
+@property(readonly, nonatomic) _Bool runningAnInternalBuild;
 @property(readonly, nonatomic) _Bool isInAirplaneMode;
 @property(readonly, nonatomic) _Bool isNetworkReachable;
 @property(readonly, nonatomic) NSNumber *pixelRatio;

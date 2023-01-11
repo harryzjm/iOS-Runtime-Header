@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_accessibilityIsHintTitleVisible;
 - (long long)_accessibilitySortPriority;
 - (id)accessibilityLabel;
 - (_Bool)_accessibilityIsScannerElement;

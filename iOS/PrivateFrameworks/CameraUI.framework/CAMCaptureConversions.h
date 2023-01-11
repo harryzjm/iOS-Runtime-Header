@@ -10,7 +10,10 @@
 {
 }
 
-+ (long long)captureShallowDepthOfFieldStatusForStatus:(long long)arg1;
++ (long long)CAMDevicePositionForAVDevicePosition:(long long)arg1;
++ (long long)AVDevicePositionForCAMDevicePosition:(long long)arg1;
++ (long long)stagePreviewStatusForCaptureStatus:(long long)arg1;
++ (long long)shallowDepthOfFieldStatusForCaptureStatus:(long long)arg1;
 + (long long)viewContentModeForPreviewViewAspectMode:(long long)arg1;
 + (id)previewLayerVideoGravityForPreviewViewAspectMode:(long long)arg1;
 + (long long)whiteBalanceModeForCaptureWhiteBalanceMode:(long long)arg1;
@@ -18,7 +21,7 @@
 + (long long)exposureModeForCaptureExposureMode:(long long)arg1;
 + (long long)captureExposureModeForExposureMode:(long long)arg1;
 + (long long)focusModeForCaptureFocusMode:(long long)arg1;
-+ (long long)captureFocusModeForFocusMode:(long long)arg1;
++ (long long)captureFocusModeForFocusMode:(long long)arg1 isPerformingContrastBasedFocus:(_Bool)arg2;
 + (long long)hdrModeForCaptureHDRMode:(long long)arg1;
 + (long long)captureHDRModeForHDRMode:(long long)arg1;
 + (long long)torchModeForCaptureTorchMode:(long long)arg1;

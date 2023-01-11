@@ -38,6 +38,8 @@
 @property(retain, nonatomic) HDAppAssertionManager *appAssertionManager; // @synthesize appAssertionManager=_appAssertionManager;
 @property(nonatomic) __weak HDProfile *profile; // @synthesize profile=_profile;
 - (void).cxx_destruct;
+- (void)unitTesting_synchronizeWithQueue;
+- (_Bool)areSubscriptionsSupportedForDataTypeCode:(long long)arg1;
 - (void)ackForBundleID:(id)arg1 dataCode:(long long)arg2 anchor:(id)arg3 ackTime:(id)arg4;
 - (void)setAnchor:(id)arg1 forDataCode:(long long)arg2;
 - (void)subscribeForBundleID:(id)arg1 dataCode:(long long)arg2 frequencyInSeconds:(unsigned long long)arg3;
@@ -49,11 +51,11 @@
 - (_Bool)_shouldDoAFirstLaunchForBundleIdentifier:(id)arg1;
 - (void)_queue_updateBundleID:(id)arg1 dataCode:(long long)arg2 launchTime:(id)arg3;
 - (void)_queue_ackForBundleID:(id)arg1 dataCode:(long long)arg2 anchor:(id)arg3 ackTime:(id)arg4;
-- (void)_queue_setAnchor:(id)arg1 forDataCode:(long long)arg2;
 - (void)_queue_subscribeForBundleID:(id)arg1 dataCode:(long long)arg2 frequencyInSeconds:(unsigned long long)arg3;
 - (void)_removeSubscriptionForBundleID:(id)arg1 dataCode:(long long)arg2 anchor:(id)arg3;
 - (void)_removeBundleID:(id)arg1;
 - (void)_launchTimerFired:(id)arg1 code:(id)arg2 anchor:(id)arg3;
+- (id)_appSubscriptionsForDataTypeCode:(long long)arg1 lastAppLaunchTimes:(id)arg2 error:(id *)arg3;
 - (void)_queue_scheduleLaunches:(long long)arg1 anchor:(id)arg2;
 - (void)_removeLaunchForSubscription:(id)arg1 anchor:(id)arg2;
 - (void)_queue_scheduleLaunchForSubscription:(id)arg1 anchor:(id)arg2;

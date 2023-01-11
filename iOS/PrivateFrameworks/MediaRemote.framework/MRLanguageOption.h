@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaRemote/NSCoding-Protocol.h>
+#import <MediaRemote/NSSecureCoding-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface MRLanguageOption <NSCoding>
+@interface MRLanguageOption <NSSecureCoding>
 {
 }
 
++ (_Bool)supportsSecureCoding;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 

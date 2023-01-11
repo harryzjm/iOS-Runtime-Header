@@ -19,8 +19,9 @@
 }
 
 + (id)defaultRequestEnvironment;
-+ (id)requiredPropertiesForStaticMediaClips;
++ (_Bool)supportsSecureCoding;
 + (Class)queueFeederClass;
++ (id)requiredPropertiesForStaticMediaClips;
 @property(copy, nonatomic) NSDictionary *assetStoreFronts; // @synthesize assetStoreFronts=_assetStoreFronts;
 @property(copy, nonatomic) NSDictionary *endTimeModifications; // @synthesize endTimeModifications=_endTimeModifications;
 @property(copy, nonatomic) NSDictionary *startTimeModifications; // @synthesize startTimeModifications=_startTimeModifications;
@@ -30,7 +31,9 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)descriptionComponents;
 - (id)init;
+- (void)getRemotePlaybackQueueRepresentationWithPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

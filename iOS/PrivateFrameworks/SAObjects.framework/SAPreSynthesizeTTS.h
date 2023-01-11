@@ -15,6 +15,7 @@
 - (_Bool)requiresResponse;
 @property(copy, nonatomic) NSDictionary *speakableContextInfo;
 @property(copy, nonatomic) NSArray *dialogStrings;
+@property(copy, nonatomic) NSArray *aceAudioData;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

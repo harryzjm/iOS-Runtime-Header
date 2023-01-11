@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class FBApplicationInfo, NSArray;
 @protocol OS_dispatch_queue;
@@ -20,6 +20,7 @@
 }
 
 @property(readonly, nonatomic) NSArray *profiles; // @synthesize profiles=_provisioningProfiles;
+- (void).cxx_destruct;
 - (void)_acceptApplicationSignatureIdentity;
 - (_Bool)_workQueue_signatureNeedsExplicitUserTrust;
 - (id)_workQueue_expirationDateForProvisioningProfile;
@@ -27,7 +28,6 @@
 - (unsigned long long)trustStateWithTrustRequiredReasons:(unsigned long long *)arg1;
 - (unsigned long long)trustState;
 - (void)acknowledgeTrust;
-- (void)dealloc;
 - (id)_initWithApplicationInfo:(id)arg1 andProvisioningProfiles:(id)arg2 isManaged:(_Bool)arg3;
 
 @end

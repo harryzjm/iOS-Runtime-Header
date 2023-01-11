@@ -7,6 +7,7 @@
 @class NSHashTable, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface BKSTerminationAssertionClient
 {
     NSHashTable *_observers;

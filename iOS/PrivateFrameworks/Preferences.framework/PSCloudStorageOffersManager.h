@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Preferences/CommerceRemoteUIDelegateDelegate-Protocol.h>
 
@@ -15,6 +15,7 @@
 {
     CommerceRemoteUIDelegate *_commerceDelegate;
     _Bool _shouldOfferFamilySharePlansOnly;
+    _Bool _shouldOfferDeviceOffers;
     _Bool _skipRetryWithoutToken;
     _Bool _skipCompletionAlert;
     _Bool _supportsModernAlerts;
@@ -25,6 +26,7 @@
 @property(nonatomic) _Bool supportsModernAlerts; // @synthesize supportsModernAlerts=_supportsModernAlerts;
 @property(nonatomic) _Bool skipCompletionAlert; // @synthesize skipCompletionAlert=_skipCompletionAlert;
 @property(nonatomic) _Bool skipRetryWithoutToken; // @synthesize skipRetryWithoutToken=_skipRetryWithoutToken;
+@property(nonatomic) _Bool shouldOfferDeviceOffers; // @synthesize shouldOfferDeviceOffers=_shouldOfferDeviceOffers;
 @property(nonatomic) _Bool shouldOfferFamilySharePlansOnly; // @synthesize shouldOfferFamilySharePlansOnly=_shouldOfferFamilySharePlansOnly;
 @property(nonatomic) unsigned long long requiredStorageThreshold; // @synthesize requiredStorageThreshold=_requiredStorageThreshold;
 @property(nonatomic) __weak id <PSCloudStorageOffersManagerDelegate> delegate; // @synthesize delegate=_delegate;

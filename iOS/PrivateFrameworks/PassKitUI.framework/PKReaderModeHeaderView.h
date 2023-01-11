@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSArray, NSDictionary, PKPaymentSetupProduct;
 
 @interface PKReaderModeHeaderView
 {
-    NSString *_displayName;
+    PKPaymentSetupProduct *_product;
+    NSArray *_resourceKeys;
     long long _context;
+    NSDictionary *_readerModeResources;
     unsigned long long _state;
 }
 
@@ -17,7 +19,9 @@
 - (void).cxx_destruct;
 - (void)layoutSubviews;
 - (void)_configureForCurrentState;
-- (id)initWithState:(unsigned long long)arg1 context:(long long)arg2 productDisplayName:(id)arg3;
+- (id)_subtitleForState:(unsigned long long)arg1;
+- (id)_titleForState:(unsigned long long)arg1;
+- (id)initWithState:(unsigned long long)arg1 context:(long long)arg2 product:(id)arg3;
 
 @end
 

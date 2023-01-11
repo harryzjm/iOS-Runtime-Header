@@ -16,7 +16,6 @@
 {
     NURenderView *_renderView;
     NUScrollView *_scrollView;
-    NUComposition *_composition;
     NUMediaViewRenderer *_renderer;
     struct UIEdgeInsets _edgeInsets;
     NUAVPlayerController *_nuAVPlayerController;
@@ -34,10 +33,12 @@
         _Bool hasDidFinishPreparingVideo;
     } _delegateFlags;
     _Bool _loopsVideo;
-    _Bool _inTransition;
+    long long _transitionCount;
     _Bool _centerContent;
     _Bool _muted;
     _Bool _videoPlayerVisible;
+    _Bool _debugEnabled;
+    _Bool _scrollUpdatesSuppressed;
     id <NUMediaViewDelegate> _delegate;
     double _angle;
     struct CGSize __masterSizeWithoutGeometry;
@@ -45,6 +46,8 @@
 }
 
 + (struct UIEdgeInsets)_proposedInsetsForInsets:(struct UIEdgeInsets)arg1 contentSize:(struct CGSize)arg2 inFrame:(struct CGRect)arg3 centerContent:(_Bool)arg4;
+@property(nonatomic) _Bool scrollUpdatesSuppressed; // @synthesize scrollUpdatesSuppressed=_scrollUpdatesSuppressed;
+@property(nonatomic, getter=isDebugEnabled) _Bool debugEnabled; // @synthesize debugEnabled=_debugEnabled;
 @property(nonatomic, getter=isVideoPlayerVisible) _Bool videoPlayerVisible; // @synthesize videoPlayerVisible=_videoPlayerVisible;
 @property(nonatomic, getter=isMuted) _Bool muted; // @synthesize muted=_muted;
 @property(nonatomic) _Bool centerContent; // @synthesize centerContent=_centerContent;
@@ -52,13 +55,14 @@
 @property(nonatomic) struct CGRect cropRect; // @synthesize cropRect=_cropRect;
 @property(nonatomic) struct CGSize _masterSizeWithoutGeometry; // @synthesize _masterSizeWithoutGeometry=__masterSizeWithoutGeometry;
 @property(nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
-@property(retain, nonatomic) NUComposition *composition; // @synthesize composition=_composition;
 @property(nonatomic) __weak id <NUMediaViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (void)playerControllerIsReadyForPlayback:(id)arg1;
 - (void)playerController:(id)arg1 didUpdateElapsedTime:(double)arg2 duration:(double)arg3;
 - (void)playerControllerDidFinishPlaying:(id)arg1 duration:(double)arg2;
 - (void)playerViewReadyForDisplayDidChange:(id)arg1;
+- (id)_viewRecursiveDescription;
+- (id)_layerRecursiveDescription;
 - (void)_updateVideoPlayerAlpha;
 @property(nonatomic, getter=isVideoEnabled) _Bool videoEnabled;
 - (void)_withComposition:(id)arg1 visitRenderClient:(CDUnknownBlockType)arg2;
@@ -81,11 +85,14 @@
 - (id)_videoPlayerViewWithoutControls;
 - (id)_videoPlayerView;
 - (void)_transitionToInsets:(struct UIEdgeInsets)arg1;
-- (id)_renderClient;
+- (void)_endTransition;
+- (void)_beginTransition;
 - (void)waitForRender;
 - (void)_updateRenderContent;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
+- (void)scrollViewDidScroll:(id)arg1;
+- (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewDidEndZooming:(id)arg1 withView:(id)arg2 atScale:(double)arg3;
 - (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
 - (void)scrollViewDidZoom:(id)arg1;
@@ -107,6 +114,7 @@
 @property(nonatomic) double zoomScale;
 - (void)setZoomScaleToFit;
 - (void)didMoveToWindow;
+@property(copy, nonatomic) NUComposition *composition;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

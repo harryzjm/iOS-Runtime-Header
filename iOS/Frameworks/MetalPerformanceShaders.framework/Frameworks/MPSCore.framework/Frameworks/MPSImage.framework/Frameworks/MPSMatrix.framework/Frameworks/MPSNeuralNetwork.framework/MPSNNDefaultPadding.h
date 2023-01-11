@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MPSNeuralNetwork/MPSNNPadding-Protocol.h>
 
@@ -17,6 +17,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)paddingForTensorflowAveragePoolingValidOnly;
 + (id)paddingForTensorflowAveragePooling;
 + (id)paddingWithMethod:(unsigned long long)arg1;
 - (void)dealloc;

@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (struct CGPoint)accessibilityActivationPoint;
 - (_Bool)accessibilityScroll:(long long)arg1;
 - (_Bool)_axIsBackFacing;
 - (_Bool)accessibilityPerformEscape;

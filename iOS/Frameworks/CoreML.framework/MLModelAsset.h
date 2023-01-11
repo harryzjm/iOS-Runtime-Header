@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSURL;
+@class MLModelConfiguration, NSURL;
 @protocol MLClassifier, MLModeling, MLRegressor;
 
 @interface MLModelAsset : NSObject
@@ -14,11 +14,14 @@
     _Bool _ranLoad;
     NSURL *_compiledURL;
     NSObject<MLModeling> *_asset;
+    MLModelConfiguration *_loadConfiguration;
 }
 
 + (id)modelAssetWithSpecificationURL:(id)arg1 error:(id *)arg2;
 + (id)modelAssetWithSpecification:(struct _MLModelSpecification *)arg1 error:(id *)arg2;
++ (id)modelAssetWithURL:(id)arg1 configuration:(id)arg2 error:(id *)arg3;
 + (id)modelAssetWithURL:(id)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) MLModelConfiguration *loadConfiguration; // @synthesize loadConfiguration=_loadConfiguration;
 @property(retain) NSObject<MLModeling> *asset; // @synthesize asset=_asset;
 @property _Bool ranLoad; // @synthesize ranLoad=_ranLoad;
 @property(readonly) NSURL *compiledURL; // @synthesize compiledURL=_compiledURL;
@@ -31,6 +34,7 @@
 @property(readonly, nonatomic) id <MLModeling> model;
 - (_Bool)load:(id *)arg1;
 - (id)description;
+- (id)initWithURL:(id)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (id)initWithURL:(id)arg1 error:(id *)arg2;
 
 @end

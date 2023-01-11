@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface PSSystemConfiguration : NSObject
 {
     struct __SCPreferences *_prefs;
 }
 
-+ (void)releaseSharedInstance;
 + (id)sharedInstance;
 - (void)setProtocolConfigurationValue:(id)arg1 forKey:(struct __CFString *)arg2 protocolType:(struct __CFString *)arg3 serviceID:(struct __CFString *)arg4;
 - (id)protocolConfigurationValueForKey:(struct __CFString *)arg1 protocolType:(struct __CFString *)arg2 serviceID:(struct __CFString *)arg3;

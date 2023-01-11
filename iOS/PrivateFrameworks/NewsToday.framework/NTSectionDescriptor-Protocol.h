@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NewsToday/NSCopying-Protocol.h>
+#import <NewsToday/NFCopying-Protocol.h>
 #import <NewsToday/NSObject-Protocol.h>
 #import <NewsToday/NTSectionDisplayDescriptor-Protocol.h>
 #import <NewsToday/NTSectionFetchDescriptor-Protocol.h>
 
 @class NSString;
 
-@protocol NTSectionDescriptor <NTSectionDisplayDescriptor, NTSectionFetchDescriptor, NSObject, NSCopying>
+@protocol NTSectionDescriptor <NTSectionDisplayDescriptor, NTSectionFetchDescriptor, NSObject, NFCopying>
+@property(readonly, nonatomic) _Bool openVideoPlaylistInApp;
 @property(readonly, nonatomic) int leadingCellPromotionPolicy;
 @property(readonly, nonatomic) long long supplementalIntraSectionFilterOptions;
 @property(readonly, nonatomic) long long supplementalInterSectionFilterOptions;

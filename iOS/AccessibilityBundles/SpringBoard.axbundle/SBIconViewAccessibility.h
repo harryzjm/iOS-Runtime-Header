@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_accessibilityUpdatesSwitchMenu;
 - (_Bool)_accessibilityCanDrag;
 - (id)_accessibilityPreferredScrollActions;
 - (void)_accessibilityBeginDragAtPoint:(struct CGPoint)arg1 endpoint:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -21,11 +22,10 @@
 - (id)_accessibilitySupportGesturesAttributes;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)_accessibilitySupportsActivateAction;
-- (_Bool)_accessibilityLaunchAppWithRole:(long long)arg1 onLeft:(_Bool)arg2;
-- (_Bool)_accessibilityLaunchFloatingRight:(id)arg1;
-- (_Bool)_accessibilityLaunchFloatingLeft:(id)arg1;
-- (_Bool)_accessibilityLaunchRight:(id)arg1;
-- (_Bool)_accessibilityLaunchLeft:(id)arg1;
+- (_Bool)_accessibilityLaunchAppWithRole:(long long)arg1 onLeadingSide:(_Bool)arg2;
+- (_Bool)_accessibilityLaunchFloatingTrailing:(id)arg1;
+- (_Bool)_accessibilityLaunchTrailing:(id)arg1;
+- (_Bool)_accessibilityLaunchLeading:(id)arg1;
 - (_Bool)_accessibilityShowTodayView;
 - (void)_accessibilityAddTodayViewAction:(id)arg1;
 - (void)_accessibilityInDockActions:(id)arg1;
@@ -41,6 +41,7 @@
 - (_Bool)accessibilityActivate;
 - (_Bool)accessibilityScrollToVisible;
 - (id)_accessibilityScrollStatus;
+- (struct CGPoint)accessibilityActivationPoint;
 - (struct CGRect)accessibilityFrame;
 - (id)_accessibilityBundleIdentifier;
 - (unsigned long long)accessibilityTraits;
@@ -49,6 +50,7 @@
 - (_Bool)isAccessibilityElement;
 - (id)accessibilityValue;
 - (id)accessibilityHint;
+- (_Bool)_accessibilityIsTimedOut;
 - (_Bool)_accessibilityHasBadge;
 - (_Bool)_accessibilityIsInFolder;
 - (id)accessibilityIdentifier;

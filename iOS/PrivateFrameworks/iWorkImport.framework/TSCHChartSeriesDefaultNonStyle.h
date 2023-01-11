@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSCHStyleActAlike-Protocol.h>
 
@@ -36,10 +36,6 @@ __attribute__((visibility("hidden")))
 - (id)valueForProperty:(int)arg1;
 - (_Bool)overridesProperty:(int)arg1;
 - (_Bool)definesProperty:(int)arg1;
-- (id)autorelease;
-- (oneway void)release;
-- (unsigned long long)retainCount;
-- (id)retain;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 // Remaining properties

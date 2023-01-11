@@ -13,14 +13,14 @@
 
 @interface NFLHeadlineTileInfo : NSObject <NFLFeedTileInfo>
 {
-    NSObject<FCHeadlineProviding> *_headline;
+    id <FCHeadlineProviding> _headline;
     NSString *_groupIdentifier;
     NSString *_namespacedIdentifier;
 }
 
 @property(copy, nonatomic) NSString *namespacedIdentifier; // @synthesize namespacedIdentifier=_namespacedIdentifier;
 @property(copy, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
-@property(copy, nonatomic) NSObject<FCHeadlineProviding> *headline; // @synthesize headline=_headline;
+@property(copy, nonatomic) id <FCHeadlineProviding> headline; // @synthesize headline=_headline;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) unsigned long long tileInfoType;
 @property(readonly, copy, nonatomic) NSString *identifier;

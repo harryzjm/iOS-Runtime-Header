@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (_Bool)optimizeSegmentationOfEmptyLines;
 - (id)nextTargetTopicNumbers;
 - (id)previousTargetTopicNumbers;
 - (id)nextTargetFirstColumn;

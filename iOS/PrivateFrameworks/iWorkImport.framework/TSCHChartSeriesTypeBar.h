@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)userInterfaceNameForLabelPosition:(id)arg1;
 - (id)legalChartLabelPositions;
 - (_Bool)isVertical;
+- (_Bool)supportsRoundedCorners;
 - (_Bool)supportsBarGap;
 - (_Bool)supportsSetGap;
 - (_Bool)useInBarGapCalculations;

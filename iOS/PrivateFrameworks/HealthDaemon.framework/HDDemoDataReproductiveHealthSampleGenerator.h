@@ -14,6 +14,7 @@
     double _nextSexualActivitySampleTime;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(nonatomic) double nextSexualActivitySampleTime; // @synthesize nextSexualActivitySampleTime=_nextSexualActivitySampleTime;
 @property(nonatomic) double nextOvulationTestSampleTime; // @synthesize nextOvulationTestSampleTime=_nextOvulationTestSampleTime;
 @property(copy, nonatomic) NSArray *cervicalMucusTable; // @synthesize cervicalMucusTable=_cervicalMucusTable;

@@ -4,27 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVWeakReference, AVWeakReferencingDelegateStorage, NSData, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVContentKeySessionInternal : NSObject
 {
     AVWeakReferencingDelegateStorage *_delegateStorage;
     AVWeakReference *_weakReference;
     NSURL *_storageURL;
+    NSData *_appIdentifier;
     _Bool _isExpired;
     _Bool _internal;
     NSObject<OS_dispatch_queue> *_threadSafetyQ;
     struct __CFData *_protectorSessionIdentifier;
-    NSMutableDictionary *_decryptorsByInitData;
     NSHashTable *_contentKeyRecipients;
-    NSData *_appIdentifier;
     struct OpaqueFigContentKeySession *_figContentKeySession;
     NSMutableArray *_cryptorsList;
-    NSString *_hlsMethod;
     NSString *_keySystem;
+    NSMutableDictionary *keyRequestsByRequestID;
 }
 
 @end

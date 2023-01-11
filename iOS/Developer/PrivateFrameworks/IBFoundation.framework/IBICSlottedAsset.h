@@ -15,7 +15,7 @@
 
 + (id)fileUTIsToAllowInUnstructuredImport;
 + (id)fileExtensionsToAllowInUnstructuredImport;
-+ (id)syntehsizeItemsFromLoosePaths:(id)arg1 claimingPaths:(id *)arg2;
++ (id)synthesizeItemsFromLoosePaths:(id)arg1 claimingPaths:(id *)arg2;
 + (Class)repIdentifierClass;
 + (Class)slotClass;
 + (_Bool)fileNameIsIdentifier;
@@ -25,6 +25,7 @@
 + (id)defaultInstanceForIdioms:(id)arg1 enforceStrictIdioms:(_Bool)arg2;
 + (id)defaultName;
 + (_Bool)isAbstractCatalogItemClass;
++ (id)defaultInstanceWithChildSlots:(id)arg1;
 - (void).cxx_destruct;
 - (_Bool)isEqualForUnitTests:(id)arg1;
 - (_Bool)shouldMutateChild:(id)arg1 byCopyingContentToNewSlot:(id)arg2;

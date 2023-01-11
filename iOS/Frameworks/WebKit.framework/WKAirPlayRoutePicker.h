@@ -4,39 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
-#import <WebKit/UIPopoverControllerDelegate-Protocol.h>
-
-@class NSString, WKContentView;
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
-@interface WKAirPlayRoutePicker : UIView <UIPopoverControllerDelegate>
+@interface WKAirPlayRoutePicker : NSObject
 {
-    struct RetainPtr<MPAVRoutingController> _routingController;
-    struct RetainPtr<MPAudioVideoRoutingPopoverController> _popoverController;
-    struct RetainPtr<MPAVRoutingSheet> _actionSheet;
-    WKContentView *_view;
+    struct RetainPtr<MPMediaControlsViewController> _actionSheet;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)show:(_Bool)arg1 fromRect:(struct CGRect)arg2;
-- (void)showAirPlayPickerIPhone:(long long)arg1;
-- (void)showAirPlayPickerIPad:(long long)arg1 fromRect:(struct CGRect)arg2;
-- (void)_dismissAirPlayRoutePickerIPad;
-- (void)_windowDidRotate:(id)arg1;
-- (void)_windowWillRotate:(id)arg1;
-- (void)_presentAirPlayPopoverAnimated:(_Bool)arg1 fromRect:(struct CGRect)arg2;
-- (void)popoverControllerDidDismissPopover:(id)arg1;
+- (void)showFromView:(id)arg1 routeSharingPolicy:(int)arg2 routingContextUID:(id)arg3;
 - (void)dealloc;
-- (id)initWithView:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

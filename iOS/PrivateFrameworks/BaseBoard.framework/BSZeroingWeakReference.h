@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface BSZeroingWeakReference : NSObject
 {
@@ -16,11 +16,11 @@
 + (id)referenceWithObject:(id)arg1;
 @property(nonatomic) unsigned long long objectAddress; // @synthesize objectAddress=_objectAddress;
 @property(nonatomic) Class objectClass; // @synthesize objectClass=_objectClass;
-@property(readonly, nonatomic) id object;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) __weak id object;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;
-- (void)dealloc;
 - (id)init;
 - (id)initWithObject:(id)arg1;
 

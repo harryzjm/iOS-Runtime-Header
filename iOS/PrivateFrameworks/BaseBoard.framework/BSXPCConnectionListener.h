@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 @protocol BSXPCConnectionListenerHandler, OS_dispatch_queue, OS_xpc_object;
@@ -17,9 +17,10 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property(readonly, retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(readonly, copy) NSString *service; // @synthesize service=_service;
-@property(readonly, retain) id <BSXPCConnectionListenerHandler> handler; // @synthesize handler=_handler;
+@property(readonly) id <BSXPCConnectionListenerHandler> handler; // @synthesize handler=_handler;
+- (void).cxx_destruct;
 - (id)description;
 - (void)invalidate;
 - (void)dealloc;

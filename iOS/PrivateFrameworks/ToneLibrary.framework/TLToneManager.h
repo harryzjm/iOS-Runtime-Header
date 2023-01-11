@@ -25,6 +25,7 @@
 }
 
 + (_Bool)_checkForFileExistenceAtPath:(id)arg1 allowingTCCPreflight:(_Bool)arg2;
++ (id)_currentOverridePolicyPreferenceKeyForAlertType:(long long)arg1;
 + (_Bool)_migrateLegacyToneSettings;
 + (id)_defaultToneIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
 + (id)_systemWideTonePreferenceKeyForAlertType:(long long)arg1;
@@ -37,6 +38,9 @@
 - (id)_localizedNameOfToneWithIdentifier:(id)arg1;
 - (id)_fileNameFromToneIdentifier:(id)arg1 withPrefix:(id)arg2;
 - (void)_performBlockInAccessQueue:(CDUnknownBlockType)arg1;
+- (void)_setCurrentOverridePolicy:(long long)arg1 forAlertType:(long long)arg2;
+- (long long)_currentOverridePolicyForAlertType:(long long)arg1 didFindAlertOverridePolicy:(_Bool *)arg2;
+- (long long)_currentOverridePolicyForAlertType:(long long)arg1;
 - (void)_handleWatchPrefersSalientNotificationDidChange;
 - (void)_setWatchPrefersSalientNotifications:(_Bool)arg1;
 - (_Bool)_watchPrefersSalientNotifications;
@@ -69,10 +73,12 @@
 - (id)_filePathForToneIdentifier:(id)arg1 isValid:(_Bool *)arg2;
 - (id)filePathForToneIdentifier:(id)arg1;
 - (id)_soundForToneIdentifier:(id)arg1;
+- (_Bool)hasSpecificDefaultToneIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
+- (id)_defaultPreferablyNonSilentToneIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
 - (id)_defaultRingtonePath;
 - (id)_defaultRingtoneName;
 - (id)defaultRingtoneIdentifier;
-- (id)_defaultToneIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
+- (id)defaultToneIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
 - (id)defaultToneIdentifierForAlertType:(long long)arg1;
 - (unsigned int)currentToneSoundIDForAlertType:(long long)arg1 topic:(id)arg2;
 - (unsigned int)currentToneSoundIDForAlertType:(long long)arg1;
@@ -93,12 +99,14 @@
 - (id)_aliasForToneIdentifier:(id)arg1;
 - (void)_loadToneIdentifierAliasMap;
 - (void)_loadAlertToneInfo;
+- (id)_systemWatchSoundDirectory;
 - (id)_systemNewSoundDirectory;
 - (id)_systemSoundDirectory;
 - (id)_systemEmbeddedModernSoundDirectory;
 - (id)_systemEmbeddedSoundDirectory;
 - (id)_baseDirectoryForAlertToneSoundFiles;
 - (id)_alarmWakeUpRingtoneDirectory;
+- (_Bool)_removeAllTones;
 - (int)_lockManifestAtPath:(id)arg1;
 - (_Bool)_removeTonesFromManifestAtPath:(id)arg1 fileNames:(id)arg2 shouldSkipReload:(_Bool)arg3 alreadyLockedManifest:(_Bool)arg4 removedEntries:(id *)arg5;
 - (_Bool)_removeToneFromManifestAtPath:(id)arg1 fileName:(id)arg2;

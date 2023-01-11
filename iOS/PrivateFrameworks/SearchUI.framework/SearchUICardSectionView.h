@@ -8,16 +8,16 @@
 
 #import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
 
-@class NSString, SFCardSection, UIView;
+@class NSString, SFCardSection, SearchUICardSectionRowModel, UIView;
 @protocol SearchUIFeedbackDelegate;
 
 @interface SearchUICardSectionView : NUIContainerStackView <NUIContainerStackViewDelegate>
 {
     _Bool _spansFullWidth;
     unsigned long long _style;
-    SFCardSection *_section;
     id <SearchUIFeedbackDelegate> _feedbackDelegate;
     UIView *_contentView;
+    SearchUICardSectionRowModel *_rowModel;
     UIView *_chevronView;
 }
 
@@ -28,20 +28,21 @@
 + (int)separatorStyleForCardSection:(id)arg1;
 + (double)separatorInsetForLeadingImageForSection:(id)arg1;
 @property(retain) UIView *chevronView; // @synthesize chevronView=_chevronView;
+@property(retain, nonatomic) SearchUICardSectionRowModel *rowModel; // @synthesize rowModel=_rowModel;
 @property(retain) UIView *contentView; // @synthesize contentView=_contentView;
 @property __weak id <SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
 @property(readonly) _Bool spansFullWidth; // @synthesize spansFullWidth=_spansFullWidth;
-@property(retain, nonatomic) SFCardSection *section; // @synthesize section=_section;
 @property unsigned long long style; // @synthesize style=_style;
 - (void).cxx_destruct;
 - (void)presentViewController:(id)arg1;
 - (void)didInvalidateSizeAnimate:(_Bool)arg1;
 - (id)sendFeedbackForPunchout:(id)arg1 triggerEvent:(unsigned long long)arg2;
 - (void)openPunchout:(id)arg1 triggerEvent:(unsigned long long)arg2;
-- (void)updateWithCardSection:(id)arg1;
+- (void)updateWithRowModel:(id)arg1;
+@property(readonly, nonatomic) SFCardSection *section;
 - (void)updateChevronVisible:(_Bool)arg1 leaveSpaceForChevron:(_Bool)arg2;
 - (id)setupContentView;
-- (id)initWithCardSection:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

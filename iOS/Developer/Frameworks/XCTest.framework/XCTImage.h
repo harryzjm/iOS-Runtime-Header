@@ -19,7 +19,9 @@
 + (double)_scaleForImage:(id)arg1;
 + (id)UTIForQuality:(long long)arg1;
 + (double)compressionQualityForQuality:(long long)arg1;
++ (id)emptyImageWithSize:(struct CGSize)arg1;
 @property(retain) _XCTImageImplementation *internalImplementation; // @synthesize internalImplementation=_internalImplementation;
+- (void).cxx_destruct;
 - (id)debugQuickLookObject;
 - (void)_ensureImage;
 @property(readonly) double scale;
@@ -32,7 +34,6 @@
 - (id)initWithImage:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)_init;
-- (void)dealloc;
 
 @end
 

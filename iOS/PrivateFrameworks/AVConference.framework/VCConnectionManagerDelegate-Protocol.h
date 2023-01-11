@@ -9,11 +9,13 @@
 @protocol VCConnectionProtocol;
 
 @protocol VCConnectionManagerDelegate <NSObject>
+- (void)updateParticipantGenerationCounter:(unsigned char)arg1;
 - (void)didEnableDuplication:(_Bool)arg1 activeConnection:(id <VCConnectionProtocol>)arg2;
 - (void)connectionCallback:(id <VCConnectionProtocol>)arg1 isInitialConnection:(_Bool)arg2;
 - (void)primaryConnectionChanged:(id <VCConnectionProtocol>)arg1 oldPrimaryConnection:(id <VCConnectionProtocol>)arg2;
 
 @optional
+- (void)optOutAllStreamsForConnection:(id <VCConnectionProtocol>)arg1;
 - (void)discardConnection:(id <VCConnectionProtocol>)arg1;
 @end
 

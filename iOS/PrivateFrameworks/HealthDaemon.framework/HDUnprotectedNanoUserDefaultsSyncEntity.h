@@ -13,7 +13,7 @@
 }
 
 + (id)_didReceiveKeysAndValuesNotificationName;
-+ (long long)syncEntityType;
++ (id)syncEntityIdentifier;
 + (long long)category;
 + (_Bool)supportsSpeculativeNanoSyncChanges;
 + (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TSURetainedPointerKeyDictionary;
 
@@ -15,12 +15,12 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)dictionary;
+- (void).cxx_destruct;
 - (void)addEntriesFromAnimationDictionary:(id)arg1 beginTime:(double)arg2 duration:(double)arg3 interpolations:(id)arg4;
 - (id)animationDictionaryForBuildEngine;
 - (id)nonretainedValueForObject:(id)arg1;
 - (void)addAnimation:(id)arg1 animationInfo:(id)arg2 forLayer:(id)arg3;
 - (id)entryForLayer:(id)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

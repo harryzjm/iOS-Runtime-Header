@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CUPowerSource, CUPowerSourceMonitor, NSMutableDictionary, SBUISound;
+@class NSMutableDictionary, SFChargingUICoordinator, SFWirelessChargingMonitor;
 @protocol OS_dispatch_queue;
 
 @interface SFChargingCenterClient : NSObject
@@ -14,47 +14,46 @@
     _Bool _activateCalled;
     _Bool _invalidateCalled;
     _Bool _invalidateDone;
+    int _triggerEngagementToken;
+    _Bool _forcePill;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _visualInformationRequestHandler;
     CDUnknownBlockType _requestHandler;
-    SBUISound *_chimeSound;
-    CUPowerSourceMonitor *_monitor;
-    NSMutableDictionary *_powerSourcesInUI;
-    CUPowerSource *_mePowerSource;
+    NSObject<OS_dispatch_queue> *_workQueue;
+    SFWirelessChargingMonitor *_monitor;
+    SFChargingUICoordinator *_uiCoordinator;
+    NSMutableDictionary *_errorNotifications;
 }
 
-+ (id)keyPathsForValuesAffectingNumberOfDevicesCharging;
-+ (id)keyPathsForValuesAffectingChargeLevel;
-+ (id)keyPathsForValuesAffectingCharging;
-@property(retain, nonatomic) CUPowerSource *mePowerSource; // @synthesize mePowerSource=_mePowerSource;
-@property(retain, nonatomic) NSMutableDictionary *powerSourcesInUI; // @synthesize powerSourcesInUI=_powerSourcesInUI;
-@property(retain, nonatomic) CUPowerSourceMonitor *monitor; // @synthesize monitor=_monitor;
-@property(retain, nonatomic) SBUISound *chimeSound; // @synthesize chimeSound=_chimeSound;
++ (void)playShortEngagementWithSound:(_Bool)arg1 haptic:(_Bool)arg2;
++ (void)notificationFeedbackConfigurationWithSound:(_Bool)arg1 andHaptic:(_Bool)arg2 forFeedbackType:(long long)arg3 completion:(CDUnknownBlockType)arg4;
+@property(retain, nonatomic) NSMutableDictionary *errorNotifications; // @synthesize errorNotifications=_errorNotifications;
+@property(retain, nonatomic) SFChargingUICoordinator *uiCoordinator; // @synthesize uiCoordinator=_uiCoordinator;
+@property(retain, nonatomic) SFWirelessChargingMonitor *monitor; // @synthesize monitor=_monitor;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property(copy, nonatomic) CDUnknownBlockType requestHandler; // @synthesize requestHandler=_requestHandler;
 @property(copy, nonatomic) CDUnknownBlockType visualInformationRequestHandler; // @synthesize visualInformationRequestHandler=_visualInformationRequestHandler;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 - (void).cxx_destruct;
-- (id)dataRepresentationForInformationProvider:(id)arg1;
-- (void)updateConfigurationContext:(id)arg1 withInformationProvider:(id)arg2;
-- (void)updateConfigurationContext:(id)arg1 withKeyPowerSource:(id)arg2;
-- (void)updateConfigurationContextWithAnyPowerSourceAsKey:(id)arg1;
-- (void)updateConfigurationContextWithPowerSourcesData:(id)arg1;
-- (void)playChime;
+- (id)onqueue_dataRepresentationForInformationProvider:(id)arg1;
+- (void)onqueue_updateConfigurationContext:(id)arg1 withInformationProvider:(id)arg2;
+- (void)onqueue_updateConfigurationContext:(id)arg1 withKeyPowerSource:(id)arg2;
+- (void)onqueue_updateConfigurationContextWithPowerSourcesData:(id)arg1;
 - (void)contextsForRemoteAlertActivationWithReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)sendPresentationRequestForPowerSource:(id)arg1 added:(_Bool)arg2 removed:(_Bool)arg3;
-- (void)presentationRequestContextsForReason:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)removeNoLongerChargingPowerSource:(id)arg1 withChargingDate:(id)arg2;
-- (void)addNewChargingPowerSource:(id)arg1;
-- (void)evaluatePowerSource:(id)arg1 found:(_Bool)arg2 lost:(_Bool)arg3;
+- (void)onqueue_sendPresentationRequestForPowerSource:(id)arg1 removed:(_Bool)arg2;
+- (void)onqueue_presentationRequestContextsForReason:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 @property(readonly, nonatomic) long long numberOfDevicesCharging;
-@property(readonly, nonatomic) double chargeLevel;
-@property(readonly, nonatomic, getter=isCharging) _Bool charging;
 - (void)onqueue_invalidate;
 - (void)invalidate;
 - (void)onqueue_activate;
 - (void)activate;
+- (void)updateErrorNotificationsForPowerSource:(id)arg1 removed:(_Bool)arg2;
 - (void)dealloc;
+- (void)createWorkQueue;
 - (void)setUpMonitor;
+- (void)listenToNotifications;
+- (void)checkDefaults;
 - (id)init;
 
 @end

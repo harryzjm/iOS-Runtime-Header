@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray;
 
@@ -23,6 +23,7 @@
 + (id)sharedClockManagerSyncWithTimeout:(unsigned long long)arg1;
 + (id)sharedClockManager;
 + (id)timeSyncAudioClockDeviceUIDForClockIdentifier:(unsigned long long)arg1;
++ (void)notifyWhenClockManagerIsAvailable:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) unsigned long long machAbsoluteNanosecondClockIdentifier; // @synthesize machAbsoluteNanosecondClockIdentifier=_machAbsoluteNanosecondClockIdentifier;
 - (void)dealloc;
 - (unsigned long long)nanosecondsToMachAbsolute:(unsigned long long)arg1;

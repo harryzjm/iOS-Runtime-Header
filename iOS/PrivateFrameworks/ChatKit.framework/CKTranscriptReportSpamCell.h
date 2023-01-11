@@ -8,10 +8,12 @@
 
 @interface CKTranscriptReportSpamCell
 {
+    _Bool _showReportSMSSpam;
     UIButton *_reportSpamButton;
 }
 
 + (id)reportSpamButton;
+@property(nonatomic) _Bool showReportSMSSpam; // @synthesize showReportSMSSpam=_showReportSMSSpam;
 @property(retain, nonatomic) UIButton *reportSpamButton; // @synthesize reportSpamButton=_reportSpamButton;
 - (void).cxx_destruct;
 @property(copy, nonatomic) NSAttributedString *attributedButtonText;

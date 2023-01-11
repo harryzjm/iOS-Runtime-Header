@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol PLAssetsdClientService;
 
@@ -14,6 +14,9 @@
 }
 
 - (void).cxx_destruct;
+- (void)resourceURLReceived:(id)arg1 connection:(id)arg2;
+- (void)assetAvailable:(id)arg1 connection:(id)arg2;
+- (void)downloadFinished:(id)arg1 connection:(id)arg2;
 - (void)downloadStatus:(id)arg1 connection:(id)arg2;
 - (void)dispatchEvent:(id)arg1 connection:(id)arg2;
 - (id)clientService;

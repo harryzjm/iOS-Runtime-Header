@@ -12,7 +12,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)accessibilityTraits;
+- (id)_accessibilitySupplementaryFooterViews;
 - (id)accessibilityLabel;
+- (id)_accessibilityAdvertisement;
 
 @end
 

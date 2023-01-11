@@ -27,6 +27,7 @@
 + (id)identifierFromFileName:(id)arg1 inRange:(struct _NSRange *)arg2;
 + (id)fallbackContentsJSONKeys;
 + (id)displayName;
++ (id)descriptionKey;
 + (id)contentsJSONKey;
 + (void)setComponentID:(long long)arg1;
 + (long long)componentID;
@@ -35,6 +36,9 @@
 + (id)componentFilterMatching:(id)arg1;
 + (id)unspecifiedValueFilter;
 + (id)allComponentsFilterForSlotClass:(Class)arg1;
++ (id)groupedAttributeValueForManifestArchiving;
++ (id)groupingKeyForManifestArchiving;
++ (long long)encodingType;
 @property(readonly) _Bool deprecated; // @synthesize deprecated=_deprecated;
 @property(readonly) double displayOrder; // @synthesize displayOrder=_displayOrder;
 @property(readonly) NSString *fileNameComponent; // @synthesize fileNameComponent=_fileNameComponent;

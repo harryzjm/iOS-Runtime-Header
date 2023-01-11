@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/EQKitLayout-Protocol.h>
 
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) EQKitBox *box; // @synthesize box=mBox;
 @property(readonly, copy) NSString *description;
 - (void)renderIntoContext:(struct CGContext *)arg1 offset:(struct CGPoint)arg2;
+- (void)setFontSmoothingBackgroundColor:(struct CGColor *)arg1;
 - (struct CGSize)naturalSize;
 - (struct CGRect)erasableBounds;
 - (double)naturalAlignmentOffset;

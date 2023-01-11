@@ -8,7 +8,7 @@
 
 #import <Symbolication/VMUCommonGraphInterface-Protocol.h>
 
-@class NSMutableArray, NSString, VMUClassInfoMap, VMUDebugTimer, VMUObjectIdentifier, VMUProcessObjectGraph, VMURangeArray, VMUVMRegionIdentifier;
+@class NSMutableArray, NSMutableDictionary, NSString, VMUClassInfoMap, VMUDebugTimer, VMUObjectIdentifier, VMUProcessObjectGraph, VMURangeArray, VMUTaskMemoryCache, VMUVMRegionIdentifier;
 
 @interface VMUTaskMemoryScanner : NSObject <VMUCommonGraphInterface>
 {
@@ -16,6 +16,7 @@
     int _pid;
     unsigned long long _suspendTime;
     unsigned int _suspensionToken;
+    VMUTaskMemoryCache *_memoryCache;
     VMUObjectIdentifier *_objectIdentifier;
     VMUVMRegionIdentifier *_regionIdentifier;
     struct _VMUBlockNode *_blocks;
@@ -26,6 +27,9 @@
     struct _VMURegionMap *_regionMap;
     VMURangeArray *_stackRanges;
     NSMutableArray *_zoneNames;
+    struct _VMURange _dataSegmentsRangeInSharedCache;
+    struct _VMURange _dataSegmentsRangeOutsideSharedCache;
+    VMURangeArray *_dataSegmentsRangeArrayOutsideSharedCache;
     struct _VMUZoneNode *_zones;
     unsigned int _zonesCount;
     unsigned int _zonesSize;
@@ -42,27 +46,34 @@
     unsigned long long _maxInteriorOffset;
     unsigned int _scanningMask;
     VMUDebugTimer *_debugTimer;
+    _Bool _showRawClassNames;
+    _Bool _javaScriptCoreUsingPoisoning;
     NSString *_processName;
     NSString *_processDescriptionString;
     NSString *_binaryImagesDescription;
+    unsigned long long _physicalFootprint;
+    unsigned long long _physicalFootprintPeak;
+    unsigned long long _regionDescriptionOptions;
     CDUnknownBlockType _referenceLogger;
     CDUnknownBlockType _nodeLogger;
     _Bool _abandonedMarkingEnabled;
-    _Bool _saveNodeLabelsInGraph;
     VMUProcessObjectGraph *_processObjectGraph;
     void *_userMarkedAbandoned;
+    NSMutableDictionary *_variantCachesByIsaIndex;
     unsigned long long _cfPasteboardReservedBase;
 }
 
 + (id)referenceDescription:(CDStruct_8b65991f)arg1 withSourceNode:(CDStruct_599faf0f)arg2 destinationNode:(CDStruct_599faf0f)arg3 sortedVMRegions:(id)arg4 symbolicator:(struct _CSTypeRef)arg5 alignmentSpacing:(unsigned int)arg6;
 + (id)nodeDescription:(CDStruct_599faf0f)arg1 withNodeOffset:(unsigned long long)arg2 sortedVMRegions:(id)arg3;
 + (void)initialize;
+@property(readonly, nonatomic) unsigned long long physicalFootprintPeak; // @synthesize physicalFootprintPeak=_physicalFootprintPeak;
+@property(readonly, nonatomic) unsigned long long physicalFootprint; // @synthesize physicalFootprint=_physicalFootprint;
 @property(readonly, nonatomic) NSString *binaryImagesDescription; // @synthesize binaryImagesDescription=_binaryImagesDescription;
 @property(readonly, nonatomic) NSString *processDescriptionString; // @synthesize processDescriptionString=_processDescriptionString;
 @property(readonly, nonatomic) NSString *processName; // @synthesize processName=_processName;
+@property(nonatomic) _Bool showRawClassNames; // @synthesize showRawClassNames=_showRawClassNames;
 @property(retain, nonatomic) VMUDebugTimer *debugTimer; // @synthesize debugTimer=_debugTimer;
 @property(nonatomic) _Bool abandonedMarkingEnabled; // @synthesize abandonedMarkingEnabled=_abandonedMarkingEnabled;
-@property(nonatomic) _Bool saveNodeLabelsInGraph; // @synthesize saveNodeLabelsInGraph=_saveNodeLabelsInGraph;
 @property(nonatomic) unsigned int scanningMask; // @synthesize scanningMask=_scanningMask;
 @property(readonly, nonatomic) unsigned int regionCount; // @synthesize regionCount=_regionsCount;
 @property(readonly, nonatomic) unsigned int zoneCount; // @synthesize zoneCount=_zonesCount;
@@ -70,6 +81,7 @@
 @property(nonatomic) _Bool exactScanningEnabled; // @synthesize exactScanningEnabled=_exactScanningEnabled;
 @property(nonatomic) unsigned long long maxInteriorOffset; // @synthesize maxInteriorOffset=_maxInteriorOffset;
 @property(readonly, nonatomic) VMUObjectIdentifier *objectIdentifier; // @synthesize objectIdentifier=_objectIdentifier;
+@property(readonly, nonatomic) VMUTaskMemoryCache *memoryCache; // @synthesize memoryCache=_memoryCache;
 @property(readonly, nonatomic) unsigned int task; // @synthesize task=_task;
 @property(readonly, nonatomic) int pid; // @synthesize pid=_pid;
 - (void).cxx_destruct;
@@ -86,10 +98,12 @@
 - (unsigned int)enumerateMarkedObjects:(void *)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (unsigned int)enumerateObjectsWithBlock:(CDUnknownBlockType)arg1;
 - (unsigned int)enumerateNodesWithBlock:(CDUnknownBlockType)arg1;
+- (_Bool)addressIsInDataSegment:(unsigned long long)arg1;
 - (_Bool)validateAddressRange:(struct _VMURange)arg1;
 - (id)classInfoForObjectAtAddress:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned int mallocNodeCount;
 - (void *)contentForNode:(unsigned int)arg1;
+- (id)shortLabelForNode:(unsigned int)arg1;
 - (id)labelForNode:(unsigned int)arg1;
 - (_Bool)hasLabelsForNodes;
 - (id)zoneNameForIndex:(unsigned int)arg1;
@@ -99,6 +113,7 @@
 - (CDStruct_599faf0f)nodeDetails:(unsigned int)arg1;
 @property(readonly, nonatomic) VMUClassInfoMap *realizedClasses;
 - (id)processSnapshotGraph;
+- (id)processSnapshotGraphWithOptions:(unsigned long long)arg1;
 - (id)processSnapshotGraphWithMallocStackLogs:(_Bool)arg1;
 - (void)scanNodesForReferences:(CDUnknownBlockType)arg1;
 - (void)removeRootReachableNodes;
@@ -111,6 +126,7 @@
 - (void)_buildRegionPageBlockMaps;
 - (void)refineTypesWithOverlay:(id)arg1;
 - (void)_findMarkedAbandonedBlocks;
+- (void)_identifyNonObjectsPointedToByTypedIvars;
 - (void)_fixupBlockIsas;
 - (void)_sortAndClassifyBlocks;
 - (void)addMallocNodes:(id)arg1;
@@ -118,6 +134,9 @@
 - (void)_sortBlocks;
 - (void)addRootNodesFromTask;
 - (void)_updateLinearClassInfos;
+- (void)_registerVariant:(id)arg1 forGenericInfo:(id)arg2 variantKey:(unsigned long long)arg3;
+- (id)_cachedVariantForGenericInfo:(id)arg1 variantKey:(unsigned long long)arg2;
+- (unsigned int)_indexForClassInfo:(id)arg1;
 - (void)_destroyLinearClassInfos;
 - (void)_callRemoteMallocEnumerators:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_withMemoryReaderBlock:(CDUnknownBlockType)arg1;
@@ -128,6 +147,7 @@
 - (id)initWithTask:(unsigned int)arg1 options:(unsigned long long)arg2;
 - (id)initWithSelfTaskAndOptions:(unsigned long long)arg1;
 - (id)_initWithTask:(unsigned int)arg1 options:(unsigned long long)arg2;
+- (void)unmapAllRegions;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

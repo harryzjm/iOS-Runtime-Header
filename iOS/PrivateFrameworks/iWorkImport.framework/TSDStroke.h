@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/NSMutableCopying-Protocol.h>
@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, setter=i_setCap:) int i_cap; // @synthesize i_cap=mCap;
 @property(nonatomic) double i_width; // @synthesize i_width=mWidth;
 @property(copy, nonatomic) TSUColor *i_color; // @synthesize i_color=mColor;
+- (_Bool)canDrawWithOtherStroke:(id)arg1;
 - (id)strokeByTransformingByTransform:(struct CGAffineTransform)arg1;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
@@ -60,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)canApplyToCAShapeLayer;
 - (void)applyToRepCALayer:(id)arg1 withScale:(double)arg2;
 - (_Bool)canApplyDirectlyToRepCALayer;
+- (_Bool)requiresOutlineOnBackgroundWithAppearance:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool isNearlyWhite;
 @property(readonly, nonatomic) _Bool isFrame;
 @property(readonly, nonatomic) double suggestedMinimumLineWidth;
@@ -68,7 +70,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsWidth;
 @property(readonly, nonatomic) _Bool supportsPattern;
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
-@property(readonly, nonatomic) double i_verticalOffsetForSwatch;
 - (double)horizontalMarginForSwatch;
 - (id)pathForLineEnd:(id)arg1 wrapPath:(_Bool)arg2 atPoint:(struct CGPoint)arg3 atAngle:(double)arg4 withScale:(double)arg5;
 - (struct CGRect)boundsForLineEnd:(id)arg1 atPoint:(struct CGPoint)arg2 atAngle:(double)arg3 withScale:(double)arg4 transform:(struct CGAffineTransform)arg5;

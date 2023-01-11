@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 
@@ -20,6 +20,7 @@
 @property(nonatomic, getter=isCompleted) _Bool completed; // @synthesize completed=_completed;
 @property(readonly) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(readonly) NSArray *photoSettingsArray;
+- (void)_setRequestID:(unsigned long long)arg1;
 @property(readonly) unsigned long long requestID;
 - (void)dealloc;
 - (id)_initWithArray:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

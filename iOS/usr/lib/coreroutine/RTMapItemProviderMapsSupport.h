@@ -4,21 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <coreroutine/RTMapItemProvider-Protocol.h>
 
 @class NSString, RTMapsSupportManager;
 
-@interface RTMapItemProviderMapsSupport : NSObject <RTMapItemProvider>
+@interface RTMapItemProviderMapsSupport <RTMapItemProvider>
 {
     RTMapsSupportManager *_mapsSupportManager;
 }
 
 @property(retain, nonatomic) RTMapsSupportManager *mapsSupportManager; // @synthesize mapsSupportManager=_mapsSupportManager;
 - (void).cxx_destruct;
+- (double)confidenceFromMapItemSource:(unsigned long long)arg1;
 - (id)mapItemsWithinDistance:(double)arg1 location:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 error:(id *)arg5;
-- (id)initWithMapsSupportManager:(id)arg1;
+- (id)initWithDistanceCalculator:(id)arg1 mapsSupportManager:(id)arg2;
 - (id)init;
 
 // Remaining properties

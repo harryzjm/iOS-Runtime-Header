@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableArray, NSNumber, NSString, NSXPCConnection;
+@class NSDate, NSMutableArray, NSNumber, NSString, NSUserDefaults, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface WLKSettingsStore : NSObject
@@ -14,6 +14,7 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_readWriteQueue;
     _Bool _privateModeEnabled;
+    _Bool _sportsScoreSpoilersAllowed;
     NSString *_pushToken;
     NSString *_accountID;
     NSNumber *_optedInVal;
@@ -21,6 +22,7 @@
     _Bool _migratediOS;
     _Bool _migratedtvOS;
     NSMutableArray *_apps;
+    NSUserDefaults *_defaultsAccessor;
     int _didChangeNotificationToken;
     NSXPCConnection *_connection;
     _Bool _hasOutstandingChanges;
@@ -29,13 +31,14 @@
     NSDate *_lastSyncToCloudDate;
 }
 
++ (void)synchronizeSettingsDefaultsForKeys:(id)arg1;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (id)sharedSettings;
 @property _Bool hasOutstandingChanges; // @synthesize hasOutstandingChanges=_hasOutstandingChanges;
 @property int ignoreChangesCount; // @synthesize ignoreChangesCount=_ignoreChangesCount;
 @property(readonly, copy, nonatomic) NSDate *lastSyncToCloudDate; // @synthesize lastSyncToCloudDate=_lastSyncToCloudDate;
 @property(readonly, copy, nonatomic) NSDate *lastSyncDate; // @synthesize lastSyncDate=_lastSyncDate;
-@property(retain, nonatomic) NSNumber *optedInVal; // @synthesize optedInVal=_optedInVal;
+@property(copy, nonatomic) NSNumber *optedInVal; // @synthesize optedInVal=_optedInVal;
 - (void).cxx_destruct;
 - (id)_connection;
 - (void)endIgnoringChanges;
@@ -48,21 +51,24 @@
 - (void)_attemptCullingOfObsoleteApp:(id)arg1;
 - (_Bool)synchronize:(unsigned long long)arg1;
 - (void)synchronize:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)forceUpdateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_supportPath;
 - (void)_dictionaryOnDisk:(CDUnknownBlockType)arg1;
 - (void)_writeToDisk:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_dictionaryOnDisk;
 - (void)_writeToDisk;
 - (void)_readFromDisk;
+- (id)_dictionaryRepresentationDataOnly;
 - (id)_dictionaryRepresentation;
 - (void)refresh;
 - (id)description;
-@property(retain, nonatomic) NSString *pushToken;
+@property(copy, nonatomic) NSString *pushToken;
 - (void)setLastSyncToCloudDate:(id)arg1;
 - (void)setLastSyncDate:(id)arg1;
 @property(nonatomic) _Bool migratedtvOS;
 @property(nonatomic) _Bool migratediOS;
 @property(nonatomic) _Bool optedIn;
+@property(nonatomic) _Bool sportsScoreSpoilersAllowed;
 @property(nonatomic) _Bool privateModeEnabled;
 - (void)setName:(id)arg1 forChannelID:(id)arg2 externalID:(id)arg3;
 - (void)setStatus:(unsigned long long)arg1 forChannelID:(id)arg2 externalID:(id)arg3;

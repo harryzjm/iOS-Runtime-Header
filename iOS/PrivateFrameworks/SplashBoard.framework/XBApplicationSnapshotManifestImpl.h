@@ -5,11 +5,11 @@
 //
 
 #import <SplashBoard/BSDescriptionProviding-Protocol.h>
-#import <SplashBoard/NSCoding-Protocol.h>
+#import <SplashBoard/NSSecureCoding-Protocol.h>
 
 @class BSAtomicSignal, BSTimer, NSFileManager, NSMutableArray, NSMutableDictionary, NSString, XBSnapshotContainerIdentity, XBSnapshotManifestIdentity;
 
-@interface XBApplicationSnapshotManifestImpl <NSCoding, BSDescriptionProviding>
+@interface XBApplicationSnapshotManifestImpl <NSSecureCoding, BSDescriptionProviding>
 {
     XBSnapshotContainerIdentity *_containerIdentity;
     XBSnapshotManifestIdentity *_identity;
@@ -25,13 +25,16 @@
     _Bool _archiveSchedulingQueue_scheduled;
 }
 
-+ (long long)_defaultOutputFormat;
++ (_Bool)supportsSecureCoding;
++ (long long)_outputFormatForSnapshot:(id)arg1;
 + (void)_configureSnapshot:(id)arg1 withCompatibilityInfo:(id)arg2 forLaunchRequest:(id)arg3;
 + (id)_snapshotPredicateForRequest:(id)arg1;
 + (void)_flushManifestQueue;
++ (_Bool)isUnderMemoryPressure;
 + (void)_queue_noteManifestInvalidated:(id)arg1;
 + (void)relinquishManifest:(id)arg1;
 + (id)acquireManifestForContainerIdentity:(id)arg1 store:(id)arg2 creatingIfNecessary:(_Bool)arg3;
++ (void)initialize;
 @property(readonly, copy, nonatomic) XBSnapshotManifestIdentity *identity; // @synthesize identity=_identity;
 @property(readonly, copy, nonatomic) XBSnapshotContainerIdentity *containerIdentity; // @synthesize containerIdentity=_containerIdentity;
 - (void).cxx_destruct;
@@ -50,6 +53,8 @@
 - (id)_queue_snapshotsForGroupID:(id)arg1 matchingPredicate:(id)arg2;
 - (id)_queue_snapshotsMatchingPredicate:(id)arg1;
 - (void)_queue_gatherPaths:(id)arg1 forSnapshot:(id)arg2;
+- (void)_queue_handleMemoryPressure;
+- (_Bool)_queue_purgeSnapshotsWithProtectedContent;
 - (void)_queue_deleteSnapshots:(id)arg1;
 - (void)_queue_deletePaths:(id)arg1;
 - (void)_queue_accessSnapshotsWithBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
@@ -63,8 +68,11 @@
 - (id)_createSnapshotWithGroupID:(id)arg1 newSnapshotCreator:(CDUnknownBlockType)arg2;
 - (id)_createSnapshotWithGroupID:(id)arg1 generationContext:(id)arg2;
 - (id)_generatableSnapshotForGroupID:(id)arg1 generationContext:(id)arg2;
+- (_Bool)_invalidate;
+- (id)_snapshotGroupsByID;
 - (void)beginSnapshotAccessTransaction:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteAllSnapshots;
+- (void)purgeSnapshotsWithProtectedContent;
 - (void)deleteSnapshotsForGroupID:(id)arg1;
 - (void)deleteSnapshotsForGroupID:(id)arg1 matchingPredicate:(id)arg2;
 - (void)deleteSnapshotsForGroupID:(id)arg1 predicateBuilder:(CDUnknownBlockType)arg2;

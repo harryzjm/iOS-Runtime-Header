@@ -4,17 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+@class NSArray, NSString, NSURL;
 
-@class NSString, NSURL;
-
-@interface DMFOpenURLRequest : CATTaskRequest
+@interface DMFOpenURLRequest
 {
+    _Bool _lockInApp;
     NSURL *_url;
     NSString *_URLDisplayName;
+    NSArray *_handlingBundleIdentifiers;
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)isPermittedOnUserConnection;
++ (_Bool)isPermittedOnSystemConnection;
++ (id)permittedPlatforms;
+@property(copy, nonatomic) NSArray *handlingBundleIdentifiers; // @synthesize handlingBundleIdentifiers=_handlingBundleIdentifiers;
+@property(nonatomic) _Bool lockInApp; // @synthesize lockInApp=_lockInApp;
 @property(copy, nonatomic) NSString *URLDisplayName; // @synthesize URLDisplayName=_URLDisplayName;
 @property(copy, nonatomic) NSURL *url; // @synthesize url=_url;
 - (void).cxx_destruct;

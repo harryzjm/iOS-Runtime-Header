@@ -9,12 +9,18 @@
 #import <NewsCore/FCCacheCoordinatorDelegate-Protocol.h>
 #import <NewsCore/FCCacheFlushing-Protocol.h>
 #import <NewsCore/FCFetchCoordinatorDelegate-Protocol.h>
+#import <NewsCore/FCJSONEncodableObjectProviding-Protocol.h>
 
-@class FCCKContentDatabase, FCCacheCoordinator, FCFetchCoordinator, FCKeyValueStore, FCThreadSafeMutableDictionary, NSArray, NSString;
+@class FCCKContentDatabase, FCCacheCoordinator, FCFetchCoordinator, FCKeyValueStore, FCThreadSafeMutableDictionary, NSArray, NSDictionary, NSString;
 @protocol OS_dispatch_queue;
 
-@interface FCRecordSource : NSObject <FCCacheCoordinatorDelegate, FCFetchCoordinatorDelegate, FCCacheFlushing>
+@interface FCRecordSource : NSObject <FCCacheCoordinatorDelegate, FCFetchCoordinatorDelegate, FCCacheFlushing, FCJSONEncodableObjectProviding>
 {
+    struct os_unfair_lock_s _derivedKeysLock;
+    NSArray *_desiredKeys;
+    NSDictionary *_localizedKeysByOriginalKey;
+    NSDictionary *_experimentalizedKeysByOriginalKey;
+    NSDictionary *_localizedExperimentalizedKeysByOriginalKey;
     NSObject<OS_dispatch_queue> *_initQueue;
     FCCKContentDatabase *_contentDatabase;
     NSString *_contentDirectory;
@@ -32,14 +38,10 @@
 + (id)canaryRecordName;
 + (_Bool)supportsDeletions;
 + (id)defaultCachePolicy;
-+ (unsigned long long)highThresholdDataSizeLimit;
-+ (unsigned long long)lowThresholdDataSizeLimit;
-+ (unsigned long long)storeVersion;
-+ (id)storeFilename;
-+ (id)recordType;
 @property(readonly, nonatomic) NSString *activeTreatmentID; // @synthesize activeTreatmentID=_activeTreatmentID;
 @property(readonly, nonatomic) NSString *experimentalizableFieldsPostfix; // @synthesize experimentalizableFieldsPostfix=_experimentalizableFieldsPostfix;
 @property(readonly, nonatomic) FCThreadSafeMutableDictionary *fetchErrorsByKey; // @synthesize fetchErrorsByKey=_fetchErrorsByKey;
+@property(readonly, nonatomic) struct os_unfair_lock_s derivedKeysLock; // @synthesize derivedKeysLock=_derivedKeysLock;
 @property(readonly, nonatomic) FCFetchCoordinator *fetchCoordinator; // @synthesize fetchCoordinator=_fetchCoordinator;
 @property(readonly, nonatomic) FCCacheCoordinator *cacheCoordinator; // @synthesize cacheCoordinator=_cacheCoordinator;
 @property(readonly, nonatomic) FCKeyValueStore *localStore; // @synthesize localStore=_localStore;
@@ -47,6 +49,7 @@
 @property(readonly, nonatomic) FCCKContentDatabase *contentDatabase; // @synthesize contentDatabase=_contentDatabase;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *initQueue; // @synthesize initQueue=_initQueue;
 - (void).cxx_destruct;
+- (id)jsonEncodableObject;
 - (void)t_stopOverridingExperimentalizableFieldsPostfixAndTreatmentID;
 - (void)t_startOverridingExperimentalizableFieldsPostfix:(id)arg1 treatmentID:(id)arg2;
 - (id)_fetchErrorForKey:(id)arg1;
@@ -55,6 +58,8 @@
 - (id)_identifierFromCKRecordID:(id)arg1;
 - (id)_ckRecordIDFromIdentifier:(id)arg1;
 - (id)_recordBaseFromCKRecord:(id)arg1;
+- (void)_deriveDesiredKeys;
+- (void)_deriveDesiredKeysIfNeeded;
 - (void)_initStore;
 - (void)_prepareForUse;
 - (void)fetchCoordinator:(id)arg1 addFetchOperation:(id)arg2 context:(id)arg3;
@@ -63,26 +68,35 @@
 - (void)cacheCoordinator:(id)arg1 flushKeysWithWriteLock:(id)arg2;
 - (unsigned long long)cacheCoordinatorCurrentSizeWithReadLock:(id)arg1;
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1;
+- (_Bool)recognizesRecordID:(id)arg1;
 - (_Bool)isRecordStale:(id)arg1 withCachePolicy:(id)arg2;
 - (void)updateFetchDateForRecordIDs:(id)arg1;
+- (id)convertRecords:(id)arg1;
 - (id)saveRecords:(id)arg1;
 - (id)cachedRecordsWithIDs:(id)arg1;
 - (id)fetchOperationForRecordsWithIDs:(id)arg1 ignoreCacheForRecordIDs:(id)arg2;
 - (id)fetchOperationForRecordsWithIDs:(id)arg1;
-- (id)_localizedExperimentalizedKeysByOriginalWithCacheDictionary:(id)arg1;
 - (id)_localizedExperimentalizedKeysByOriginalKeyForContentStoreFrontID:(id)arg1 experimentPostfix:(id)arg2;
-- (id)_experimentalizedKeysByOriginalWithCacheDictionary:(id)arg1;
 - (id)_experimentalizedKeysByOriginalKeyForExperimentPostfix:(id)arg1;
-- (id)_localizedKeysByOriginalWithCacheDictionary:(id)arg1;
 - (id)_localizedKeysByOriginalKeyForContentStoreFrontID:(id)arg1;
 - (id)_desiredKeysForContentStoreFrontID:(id)arg1 experimentPostfix:(id)arg2;
-- (id)_desiredKeysWithCacheDictionary:(id)arg1;
-- (id)localizableExperimentalizableKeys;
-- (id)experimentalizableKeys;
-- (id)localizableKeys;
-@property(readonly, nonatomic) NSArray *genericKeys;
+@property(readonly, nonatomic) NSDictionary *localizedExperimentalizedKeysByOriginalKey; // @synthesize localizedExperimentalizedKeysByOriginalKey=_localizedExperimentalizedKeysByOriginalKey;
+@property(readonly, nonatomic) NSDictionary *experimentalizedKeysByOriginalKey; // @synthesize experimentalizedKeysByOriginalKey=_experimentalizedKeysByOriginalKey;
+@property(readonly, nonatomic) NSDictionary *localizedKeysByOriginalKey; // @synthesize localizedKeysByOriginalKey=_localizedKeysByOriginalKey;
+@property(readonly, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
+@property(readonly, nonatomic) NSArray *localizableExperimentalizableKeys;
+@property(readonly, nonatomic) NSArray *experimentalizableKeys;
+@property(readonly, nonatomic) NSArray *localizableKeys;
+@property(readonly, nonatomic) NSArray *nonLocalizableKeys;
+- (id)keyValueRepresentationOfRecord:(id)arg1;
 - (id)recordFromCKRecord:(id)arg1 base:(id)arg2;
-@property(readonly, nonatomic) NSArray *desiredKeys;
+- (id)recordIDPrefix;
+- (unsigned long long)highThresholdDataSizeLimit;
+- (unsigned long long)lowThresholdDataSizeLimit;
+- (unsigned long long)storeVersion;
+- (id)storeFilename;
+- (int)pbRecordType;
+- (id)recordType;
 - (id)initWithContentDatabase:(id)arg1 contentDirectory:(id)arg2 experimentalizableFieldsPostfix:(id)arg3 activeTreatmentID:(id)arg4;
 - (id)initWithContentDatabase:(id)arg1 contentDirectory:(id)arg2;
 - (id)init;

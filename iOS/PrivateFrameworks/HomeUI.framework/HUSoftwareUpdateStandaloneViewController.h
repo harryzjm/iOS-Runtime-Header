@@ -18,6 +18,11 @@
 @property(retain, nonatomic) NAFuture *softwareUpdateFetchFuture; // @synthesize softwareUpdateFetchFuture=_softwareUpdateFetchFuture;
 @property(retain, nonatomic) HUSoftwareUpdateItemModuleController *softwareUpdateModule; // @synthesize softwareUpdateModule=_softwareUpdateModule;
 - (void).cxx_destruct;
+- (void)_kickoffSoftwareUpdate;
+- (void)_triggerRefresh:(id)arg1;
+- (void)_setupRefreshControl;
+- (void)itemManager:(id)arg1 didUpdateResultsForItem:(id)arg2 atIndexPath:(id)arg3;
+- (id)softwareUpdateModuleController:(id)arg1 navigateToViewController:(id)arg2;
 - (id)softwareUpdateModuleController:(id)arg1 dismissViewController:(id)arg2;
 - (id)softwareUpdateModuleController:(id)arg1 presentViewController:(id)arg2;
 - (void)switchCell:(id)arg1 didTurnOn:(_Bool)arg2;
@@ -27,7 +32,8 @@
 - (id)itemModuleControllers;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)init;
+- (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
+- (id)initWithHome:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

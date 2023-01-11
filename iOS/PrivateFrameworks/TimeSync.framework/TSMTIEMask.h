@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSString;
 
@@ -14,6 +14,8 @@
     NSString *_name;
 }
 
++ (id)gPTP1Hop;
++ (id)gPTP7Hop;
 + (id)gPTPMask3;
 + (id)gPTPMask2;
 + (id)gPTPMask1;

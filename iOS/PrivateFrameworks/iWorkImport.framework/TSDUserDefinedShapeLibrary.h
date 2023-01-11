@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <iWorkImport/TSDShapeSearchResultProviding-Protocol.h>
 
 @class NSCache, NSDictionary, NSString, NSUserDefaults, TSDShapeSearchIndex;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface TSDUserDefinedShapeLibrary : NSObject
+@interface TSDUserDefinedShapeLibrary : NSObject <TSDShapeSearchResultProviding>
 {
     NSObject<OS_dispatch_queue> *_searchIndexQueue;
     _Bool _isWritingDefaultsDatabase;
@@ -41,8 +43,8 @@ __attribute__((visibility("hidden")))
 - (void)p_setPathSourceDefaults:(id)arg1;
 - (id)p_pathSourceDefaults;
 - (void)p_addUserDefinedShapeWithPathSource:(id)arg1 atIndex:(unsigned long long)arg2 pathSourceDefaults:(id)arg3 withChangedIndexSet:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)shapeFromSearchResult:(id)arg1;
 - (id)resultsForSearchTerm:(id)arg1;
-- (id)userDefinedShapeForSearchResult:(id)arg1;
 - (id)userDefinedShapeAtIndex:(unsigned long long)arg1;
 - (_Bool)updateShapeAtIndex:(unsigned long long)arg1 withName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)removeUserDefinedShapeAtIndex:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -50,7 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)addUserDefinedShapesWithPathSources:(id)arg1 documentRoot:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(readonly) _Bool remoteWriteHappened;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)p_notifyForIndexesChanged:(id)arg1 changeType:(unsigned long long)arg2 documentRoot:(id)arg3;
+- (void)p_notifyForIndexesChanged:(id)arg1 changeType:(unsigned long long)arg2 categoryChangeType:(unsigned long long)arg3 documentRoot:(id)arg4;
 @property(readonly) unsigned long long numberOfUserDefinedShapes;
 @property(readonly, nonatomic) NSString *name;
 - (void)dealloc;

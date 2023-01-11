@@ -16,7 +16,7 @@
     _Bool _shouldIgnoreInteractionMode;
     _Bool _inProcess;
     _Bool _forPickingDocuments;
-    _Bool _sourceIsManaged;
+    _Bool _isContentManaged;
     _Bool _neverCreateBookmarkForOpenInPlace;
     _Bool _pickingItemsShouldBumpLastOpenDate;
     _Bool _suppressBlackCallout;
@@ -45,6 +45,7 @@
     NSArray *_excludedDocumentTypes;
     NSArray *_urls;
     NSString *_hostIdentifier;
+    NSString *_hostBundleTitle;
     NSArray *_hiddenSourcesIdentifiers;
     unsigned long long _maximumNumberOfItemsToFetch;
     unsigned long long _maximumNumberOfRows;
@@ -52,6 +53,7 @@
     NSString *_roleIdentifier;
     NSArray *_forbiddenActionIdentifiers;
     double _thumbnailFetchingTimeOut;
+    double _thumbnailFadeAnimationDuration;
     NSArray *_documentTypes;
 }
 
@@ -60,6 +62,7 @@
 + (id)configurationForImportingDocumentsWithContentTypes:(id)arg1 mode:(unsigned long long)arg2;
 + (id)configurationForOpeningDocumentsOfApplicationWithBundleIdentifier:(id)arg1;
 @property(copy, nonatomic) NSArray *documentTypes; // @synthesize documentTypes=_documentTypes;
+@property double thumbnailFadeAnimationDuration; // @synthesize thumbnailFadeAnimationDuration=_thumbnailFadeAnimationDuration;
 @property _Bool enableThumbnailFadeAnimation; // @synthesize enableThumbnailFadeAnimation=_enableThumbnailFadeAnimation;
 @property double thumbnailFetchingTimeOut; // @synthesize thumbnailFetchingTimeOut=_thumbnailFetchingTimeOut;
 @property(retain) NSArray *forbiddenActionIdentifiers; // @synthesize forbiddenActionIdentifiers=_forbiddenActionIdentifiers;
@@ -90,8 +93,9 @@
 @property _Bool suppressBlackCallout; // @synthesize suppressBlackCallout=_suppressBlackCallout;
 @property _Bool pickingItemsShouldBumpLastOpenDate; // @synthesize pickingItemsShouldBumpLastOpenDate=_pickingItemsShouldBumpLastOpenDate;
 @property _Bool neverCreateBookmarkForOpenInPlace; // @synthesize neverCreateBookmarkForOpenInPlace=_neverCreateBookmarkForOpenInPlace;
-@property _Bool sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
+@property(nonatomic) _Bool isContentManaged; // @synthesize isContentManaged=_isContentManaged;
 @property _Bool forPickingDocuments; // @synthesize forPickingDocuments=_forPickingDocuments;
+@property(copy, nonatomic) NSString *hostBundleTitle; // @synthesize hostBundleTitle=_hostBundleTitle;
 @property(copy, nonatomic) NSString *hostIdentifier; // @synthesize hostIdentifier=_hostIdentifier;
 @property(retain) NSArray *urls; // @synthesize urls=_urls;
 @property(copy, nonatomic) NSArray *excludedDocumentTypes; // @synthesize excludedDocumentTypes=_excludedDocumentTypes;
@@ -101,6 +105,9 @@
 @property(retain) DOCConcreteLocation *defaultLocation; // @synthesize defaultLocation=_defaultLocation;
 - (void).cxx_destruct;
 - (unsigned long long)interactionModeForPreparing;
+@property(readonly) _Bool isFilesApp;
+- (_Bool)isEqualToConfiguration:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

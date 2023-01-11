@@ -9,6 +9,7 @@
 @protocol SXReachabilityObserver;
 
 @protocol SXReachabilityProvider <NSObject>
+- (void)removeReachabilityObserver:(id <SXReachabilityObserver>)arg1;
 - (void)addReachabilityObserver:(id <SXReachabilityObserver>)arg1;
 - (_Bool)isNetworkReachable;
 @end

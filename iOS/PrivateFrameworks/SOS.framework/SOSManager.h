@@ -9,7 +9,7 @@
 #import <SOS/SOSClientProtocol-Protocol.h>
 #import <SOS/SOSInternalClientProtocol-Protocol.h>
 
-@class NSString, NSXPCConnection;
+@class NSMapTable, NSString, NSXPCConnection;
 @protocol OS_dispatch_semaphore;
 
 @interface SOSManager : NSObject <SOSInternalClientProtocol, SOSClientProtocol>
@@ -20,6 +20,7 @@
     NSObject<OS_dispatch_semaphore> *_initialStateSemaphore;
     int _connectionRequestNotificationToken;
     NSXPCConnection *_connection;
+    NSMapTable *_observerToQueue;
     NSString *_mostRecentSOSActivationReason;
 }
 
@@ -35,15 +36,20 @@
 + (void)triggerSOSWithCompletion:(CDUnknownBlockType)arg1;
 + (void)triggerSOS;
 @property(copy, nonatomic) NSString *mostRecentSOSActivationReason; // @synthesize mostRecentSOSActivationReason=_mostRecentSOSActivationReason;
+@property(readonly, nonatomic) NSMapTable *observerToQueue; // @synthesize observerToQueue=_observerToQueue;
 @property(nonatomic) int connectionRequestNotificationToken; // @synthesize connectionRequestNotificationToken=_connectionRequestNotificationToken;
 - (void).cxx_destruct;
 - (void)_resetStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_waitForInitialState;
+- (void)didDismissClientSOSBeforeSOSCall:(long long)arg1;
 - (void)dismissClientSOSWithCompletion:(CDUnknownBlockType)arg1;
-- (void)updateCurrentSOSInteractiveState:(long long)arg1;
-- (void)updateCurrentSOSInitiationState:(long long)arg1;
+- (void)updateClientCurrentSOSInteractiveState:(long long)arg1;
+- (void)updateClientCurrentSOSInitiationState:(long long)arg1;
 - (void)setSendingLocationUpdate:(_Bool)arg1;
+- (void)didDismissSOSBeforeSOSCall:(long long)arg1;
 - (void)dismissSOSWithCompletion:(CDUnknownBlockType)arg1;
+- (void)removeObserver:(id)arg1;
+- (void)addObserver:(id)arg1 queue:(id)arg2;
 @property(nonatomic) long long currentSOSInteractiveState;
 @property(nonatomic) long long currentSOSInitiationState;
 - (_Bool)isSendingLocationUpdate;

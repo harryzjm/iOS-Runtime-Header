@@ -6,19 +6,7 @@
 
 #import <HomeKit/HMCharacteristicThresholdRangeEvent.h>
 
-#import <Home/HFPrettyDescription-Protocol.h>
-#import <Home/HFStateDumpSerializable-Protocol.h>
-
-@class NSString;
-
-@interface HMCharacteristicThresholdRangeEvent (HFDebugging) <HFPrettyDescription, HFStateDumpSerializable>
-- (id)hf_serializedStateDumpRepresentation;
-- (id)hf_prettyDescriptionOfType:(unsigned long long)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+@interface HMCharacteristicThresholdRangeEvent (HFDebugging)
+- (id)hf_stateDumpBuilderWithContext:(id)arg1;
 @end
 

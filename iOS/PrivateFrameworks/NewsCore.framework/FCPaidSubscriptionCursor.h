@@ -4,19 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <NewsCore/NSCoding-Protocol.h>
-
 @class NSMutableDictionary, NSMutableSet;
 
-@interface FCPaidSubscriptionCursor : NSObject <NSCoding>
+@interface FCPaidSubscriptionCursor
 {
     NSMutableSet *_processedChannelIDs;
     NSMutableDictionary *_supplementalArticleIDs;
     NSMutableDictionary *_expiredChannelIDs;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(retain, nonatomic) NSMutableDictionary *expiredChannelIDs; // @synthesize expiredChannelIDs=_expiredChannelIDs;
 @property(retain, nonatomic) NSMutableDictionary *supplementalArticleIDs; // @synthesize supplementalArticleIDs=_supplementalArticleIDs;
 @property(retain, nonatomic) NSMutableSet *processedChannelIDs; // @synthesize processedChannelIDs=_processedChannelIDs;

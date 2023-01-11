@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber, NSString;
+@class HMDDevice, NSNumber, NSString;
 
 @interface HMDResidentUserModel
 {
+    NSString *_displayName;
 }
 
 + (id)properties;
+@property(retain, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+- (void).cxx_destruct;
 
 // Remaining properties
 @property(retain, nonatomic) NSNumber *configState; // @dynamic configState;
+@property(retain, nonatomic) HMDDevice *device; // @dynamic device;
 @property(retain, nonatomic) NSString *deviceIdentifier; // @dynamic deviceIdentifier;
-@property(retain, nonatomic) NSString *displayName; // @dynamic displayName;
 
 @end
 

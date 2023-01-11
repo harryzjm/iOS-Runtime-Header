@@ -9,15 +9,21 @@
 #import <XCTAutomationSupport/XCUICapabilities-Protocol.h>
 
 @class NSDictionary, NSString;
+@protocol XCUICapabilities;
 
 @interface XCUICapabilities : NSObject <XCUICapabilities>
 {
 }
 
+@property(readonly) id <XCUICapabilities> bridgedProcessCapabilities;
+@property(readonly) _Bool automationSessionSupportsAnimationsIdleNotifications;
+@property(readonly) _Bool automationSessionSupportsMainRunLoopIdleNotifications;
+@property(readonly) _Bool automationSessionSupportsAttributeFetching;
 @property(readonly) NSDictionary *truncatedValueSnapshotParameter;
 @property(readonly) NSString *truncatedValueAttribute;
 @property(readonly) _Bool supportsTruncatedValue;
-@property(readonly) _Bool supportsAutomationSessions;
+@property(readonly) long long automationSessionSupport;
+- (_Bool)_supportsFeature:(id)arg1 requiresMacOS:(long long)arg2 macOSBuildNumber:(long long)arg3 iOS:(long long)arg4 iOSBuildNumber:(long long)arg5 tvOS:(long long)arg6 tvOSBuildNumber:(long long)arg7 watchOS:(long long)arg8 watchOSBuildNumber:(long long)arg9;
 - (_Bool)_supportsFeature:(id)arg1 requiresMacOS:(long long)arg2 iOS:(long long)arg3 tvOS:(long long)arg4 watchOS:(long long)arg5;
 
 // Remaining properties

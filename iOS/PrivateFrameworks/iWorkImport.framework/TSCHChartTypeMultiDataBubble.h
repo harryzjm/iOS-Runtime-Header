@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (long long)userInterfaceTag;
 - (id)defaultDataFileName;
 - (Class)presetImagerClass;
 - (id)allCDESectionLabels;

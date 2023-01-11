@@ -6,33 +6,39 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/_HMAccesorySettingDelegate-Protocol.h>
 
 @class HMAccessorySettingGroup, NSString, _HMAccessorySetting;
-@protocol NSCopying><NSSecureCoding;
+@protocol NSObject><NSCopying><NSSecureCoding;
 
-@interface HMAccessorySetting : NSObject <_HMAccesorySettingDelegate>
+@interface HMAccessorySetting : NSObject <_HMAccesorySettingDelegate, HMFLogging>
 {
     _HMAccessorySetting *_internal;
     HMAccessorySettingGroup *_group;
 }
 
++ (id)logCategory;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)settingForInternal:(id)arg1;
 @property __weak HMAccessorySettingGroup *group; // @synthesize group=_group;
 @property(readonly) _HMAccessorySetting *internal; // @synthesize internal=_internal;
 - (void).cxx_destruct;
+- (id)logIdentifier;
+- (void)_settingDidUpdateReflected:(id)arg1;
+- (void)_settingWillUpdateReflected:(id)arg1;
 - (void)_settingDidUpdateValue:(id)arg1;
 - (void)_settingWillUpdateValue:(id)arg1;
+@property(readonly, getter=isReflected) _Bool reflected;
 - (void)updateValue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-@property(readonly, copy) id <NSCopying><NSSecureCoding> value;
+@property(readonly, copy) id <NSObject><NSCopying><NSSecureCoding> value;
 @property(readonly) Class valueClass;
 @property(readonly, copy) NSString *localizedTitle;
 @property(readonly, copy) NSString *keyPath;
+@property(readonly, copy) NSString *description;
 @property(readonly, getter=isWritable) _Bool writable;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
-@property(readonly, copy) NSString *description;
 - (id)initWithInternal:(id)arg1;
 - (id)initWithKey:(id)arg1 properties:(unsigned long long)arg2 value:(id)arg3;
 - (id)init;

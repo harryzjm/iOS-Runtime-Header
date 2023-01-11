@@ -8,6 +8,7 @@
 
 @class NSDictionary;
 
+__attribute__((visibility("hidden")))
 @interface AVAVVideoSettingsVideoOutputSettings <AVReencodedVideoSettingsForFig>
 {
     NSDictionary *_adaptedVideoCompressionProperties;

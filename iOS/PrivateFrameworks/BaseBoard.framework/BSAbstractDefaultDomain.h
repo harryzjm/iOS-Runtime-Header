@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSMutableSet, NSUserDefaults;
 @protocol OS_dispatch_queue;
@@ -25,6 +25,7 @@
 + (id)__getPropertyMetadataForProperty:(struct objc_property *)arg1;
 + (void)__processPropertyMetadata:(id)arg1;
 + (void)initialize;
+- (void).cxx_destruct;
 - (_Bool)_isCollectionEmpty:(id)arg1;
 - (id)_propertyFromSelector:(SEL)arg1;
 - (id)_defaultKeyFromPropertyName:(id)arg1;

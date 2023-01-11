@@ -17,7 +17,7 @@
 + (_Bool)isDisplayBacklightOff;
 + (int)siriViewServicePid;
 + (int)assistiveTouchPid;
-+ (int)accessibilityUIPid;
++ (int)accessibilityUIServerPid;
 + (void)setLockScreenDimTimerEnabled:(_Bool)arg1;
 + (void)processExternalHIDEvent:(struct __IOHIDEvent *)arg1;
 + (struct CGPoint)displayConvertToCAScreen:(struct CGPoint)arg1 withDisplayIntegerId:(unsigned int)arg2;
@@ -41,8 +41,9 @@
 - (void)registerEventListener:(_Bool)arg1;
 - (void)setLockScreenDimTimerEnabled:(_Bool)arg1;
 - (void)setSiriViewServicePid:(int)arg1;
-- (int)accessibilityUIPid;
-- (void)setAccessibilityUIPid:(int)arg1;
+- (int)accessibilityUIServerPid;
+- (void)setAccessibilityUIServerPid:(int)arg1;
+- (int)accessibilityAssistiveTouchPid;
 - (void)setAssistiveTouchPid:(int)arg1;
 
 // Remaining properties

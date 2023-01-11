@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary, NSMutableDictionary, WBSDeviceEligibilityInformation;
+@class NSArray, NSDate, NSDictionary, NSMutableDictionary, WBSDeviceEligibilityInformation;
 @protocol OS_dispatch_queue, WBSLogger;
 
 @interface WBSCloudBookmarksMigrationReadinessDecider : NSObject
@@ -18,11 +18,13 @@
     NSDate *_dateOfDeviceEligibilityUpdate;
     NSMutableDictionary *_nonMigratableDeviceIdentifiersToLastModifiedDates;
     WBSDeviceEligibilityInformation *_deviceEligibilityInformation;
+    NSArray *_eligibleOperatingSystemVersionRanges;
     _Bool _readyToMigrate;
     _Bool _lastCloudTabDevicesSyncRequestWasSuccessful;
     id <WBSLogger> _keyActionsLogger;
 }
 
++ (id)_deviceEligibilityInformationFromDictionaryRepresentation:(id)arg1;
 @property(retain, nonatomic) id <WBSLogger> keyActionsLogger; // @synthesize keyActionsLogger=_keyActionsLogger;
 - (void).cxx_destruct;
 - (_Bool)_shouldWaitForCloudTabDevicesUpdate;
@@ -36,6 +38,7 @@
 - (double)_maximumAgeForCloudTabDevicesUpdate;
 - (double)_nonMigratableDeviceGracePeriod;
 - (long long)_timescale;
+- (_Bool)_hasValidDeviceEligibilityInformation;
 - (void)_pruneOldNonMigratableDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_reevaluateReadinessWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_logPrunedDeviceIdentifiers:(id)arg1;
@@ -46,6 +49,7 @@
 - (void)_synchronizeCloudTabDevicesWithCloudTabDeviceProvider:(id)arg1 deviceEligibilityFetcher:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_fetchDeviceEligibilityInformationWithCloudTabDeviceProvider:(id)arg1 deviceEligibilityFetcher:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateWithCloudTabDeviceProvider:(id)arg1 deviceEligibilityFetcher:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+@property(copy, nonatomic) NSArray *eligibleOperatingSystemVersionRanges;
 @property(readonly, nonatomic) NSDate *earliestPossibleDateOfMigration;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property(readonly, nonatomic, getter=isReadyToMigrate) _Bool readyToMigrate;

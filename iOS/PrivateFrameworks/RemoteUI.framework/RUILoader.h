@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL, RUIParser, RUIStyle;
+#import <RemoteUI/NSURLSessionTaskDelegate-Protocol.h>
+
+@class NSString, NSURL, RUIParser, RUIStyle, _RUILoaderSessionDelegateAdapter;
 @protocol RUIParserDelegate;
 
-@interface RUILoader
+@interface RUILoader <NSURLSessionTaskDelegate>
 {
     RUIParser *_parser;
     NSURL *_url;
+    _RUILoaderSessionDelegateAdapter *_sessionDelegateAdapter;
     _Bool _allowNonSecureHTTP;
     id <RUIParserDelegate> _parserDelegate;
     RUIStyle *_style;
@@ -34,11 +37,19 @@
 - (void)loadXMLUIWithData:(id)arg1 baseURL:(id)arg2;
 - (void)loadXMLUIWithRequest:(id)arg1;
 - (void)loadXMLUIWithURL:(id)arg1;
+- (id)urlSessionDelegate;
 - (id)sessionConfiguration;
-- (id)handleWillLoadRequest:(id)arg1;
+- (void)shouldLoadRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_handleShouldLoadRequestResult:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadRequest:(id)arg1;
 - (void)cancel;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

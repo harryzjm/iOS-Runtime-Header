@@ -8,7 +8,7 @@
 {
 }
 
-- (void)animateWithDelay:(double)arg1 completionDelay:(double)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)animateWithBeginTime:(double)arg1 completionDelay:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (struct CGPoint)glyphOffset;
 - (long long)acknowledgmentType;
 

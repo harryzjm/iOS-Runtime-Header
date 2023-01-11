@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CIVector *inputMinComponents; // @synthesize inputMinComponents;
 @property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
+- (id)_kernelAlphaPreserving;
 - (id)_kernel;
 
 @end

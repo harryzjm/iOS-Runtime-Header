@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSDictionary, NSString, NSUUID;
 
@@ -18,8 +18,12 @@
     NSDictionary *_txtDictionary;
     NSData *_txtData;
     NSDictionary *_deviceInfo;
+    NSString *_identifierStr;
+    NSUUID *_identifierUUID;
 }
 
+@property(copy, nonatomic) NSUUID *identifierUUID; // @synthesize identifierUUID=_identifierUUID;
+@property(copy, nonatomic) NSString *identifierStr; // @synthesize identifierStr=_identifierStr;
 @property(copy, nonatomic) NSDictionary *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
 @property(copy, nonatomic) NSData *txtData; // @synthesize txtData=_txtData;
 @property(readonly, copy, nonatomic) NSDictionary *txtDictionary; // @synthesize txtDictionary=_txtDictionary;
@@ -30,7 +34,9 @@
 - (void).cxx_destruct;
 - (unsigned int)updateWithBonjourDeviceInfo:(id)arg1;
 - (void)_updateTXTDictionary:(id)arg1;
+- (void)reconfirm;
 - (id)copyConnectionStringWithFlags:(unsigned long long)arg1 error:(id *)arg2;
+- (id)descriptionWithLevel:(int)arg1;
 - (id)description;
 - (id)shortDescription;
 

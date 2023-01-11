@@ -41,8 +41,8 @@
 - (void).cxx_destruct;
 - (void)exerciseAmbiguityInLayoutForView:(id)arg1;
 - (void)_catchExceptionsToWorkaround13752578During:(CDUnknownBlockType)arg1;
-- (id)constraintAbstractionsAffectingLayoutOfView:(id)arg1 forOrientation:(unsigned long long)arg2;
-- (void)_populateConstraintAbstractions:(id)arg1 fromRepresentedConstraint:(id)arg2;
+- (id)constraintAbstractionsAffectingLayoutOfView:(id)arg1 forOrientation:(unsigned long long)arg2 maximumNumberOfConstraints:(id)arg3;
+- (void)_populateConstraintAbstractions:(id)arg1 fromRepresentedConstraint:(id)arg2 maximumNumberOfConstraints:(id)arg3;
 - (id)constraintAbstractionForRepresentedConstraint:(id)arg1 referencesDocumentViews:(_Bool)arg2;
 - (void)setContentHuggingPriority:(float)arg1 onRepresentationOfView:(id)arg2 forOrientation:(unsigned long long)arg3;
 - (void)setContentCompressionResistancePriority:(float)arg1 onRepresentationOfView:(id)arg2 forOrientation:(unsigned long long)arg3;
@@ -65,6 +65,7 @@
 - (void)addExplicitConstraintsForViewsRequiringAdditionalEngineConstraints;
 - (void)iterateViewsAndGenerateRepresentedConstraintsAndMapToRealConstraints;
 - (void)performEngineBootstrappingConstraintAdditionOperationForAddingConstraint:(id)arg1;
+- (id)generateAndInstallTemporaryBootstrappingConstraints;
 - (void)continuouslyPerformEngineBootstrappingOperationWithName:(id)arg1 untilSuccessWhileTrackingUnsatisfiableConstraintsDuring:(CDUnknownBlockType)arg2 withUnsatisfiableConstraintRemovedHandler:(CDUnknownBlockType)arg3;
 - (_Bool)tryToAddConstraint:(id)arg1 toRepresentedView:(id)arg2 roundingAdjustment:(double)arg3 mutuallyExclusiveConstraints:(id *)arg4;
 - (_Bool)internalTryToAddConstraint:(id)arg1 toRepresentedView:(id)arg2 roundingAdjustment:(double)arg3 mutuallyExclusiveConstraints:(id *)arg4;
@@ -82,7 +83,6 @@
 - (void)setNeedsLayoutFixFor27106541;
 @property(readonly) Class spacerItemClass;
 - (id)debugDescription;
-@property _Bool shouldIntegralize;
 @property(readonly) NSISEngine *internalEngine;
 @property(readonly) _Bool allowsDerivedDesignTimeDefaultIntrinsicContentSize;
 @property(readonly) _Bool allowsResizingTopLevelView;
@@ -114,6 +114,7 @@
 @property(readonly) id <IBAutolayoutInfoProvider> layoutInfo;
 - (void)performInternalEngineModificationsAndAssertOnUnsatisfiableConstraintsIfNeededDuring:(CDUnknownBlockType)arg1 withUnsatisfiableConstraintsHandler:(CDUnknownBlockType)arg2;
 - (_Bool)localAssertsOnRuntimeUnsatisfiableConstraints;
+- (void)enumerateRealAndRepresentedViewsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)invalidate;
 - (id)prepareViewHierarchyAndReturnAddedRepresentedConstraintsForRepresentedViews;
 - (id)initWithArbitrationUnit:(id)arg1 options:(unsigned long long)arg2;

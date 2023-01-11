@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CFNetwork/NSURLProtocol.h>
+#import <Foundation/NSURLProtocol.h>
 
 #import <iAd/NSURLSessionDataDelegate-Protocol.h>
 #import <iAd/NSURLSessionTaskDelegate-Protocol.h>
@@ -30,6 +30,7 @@
 @property double startTime; // @synthesize startTime=_startTime;
 @property(copy) NSArray *modes; // @synthesize modes=_modes;
 @property(retain) NSThread *clientThread; // @synthesize clientThread=_clientThread;
+- (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;

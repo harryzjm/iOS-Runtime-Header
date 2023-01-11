@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)setPreviewView:(id)arg1;
 - (void)setListView:(id)arg1;
 - (void)setBannerView:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;

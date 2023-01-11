@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Metal/NSCopying-Protocol.h>
 
@@ -13,12 +13,10 @@
 
 @interface MTLRenderPassDescriptor : NSObject <NSCopying>
 {
-    unsigned long long _renderTargetArrayLength;
     unsigned long long _imageblockSampleLength;
     unsigned long long _threadgroupMemoryLength;
     unsigned long long _tileWidth;
     unsigned long long _tileHeight;
-    unsigned long long _defaultSampleCount;
     unsigned long long _defaultRasterSampleCount;
 }
 
@@ -26,12 +24,10 @@
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)alloc;
 @property(nonatomic) unsigned long long defaultRasterSampleCount; // @synthesize defaultRasterSampleCount=_defaultRasterSampleCount;
-@property(nonatomic) unsigned long long defaultSampleCount; // @synthesize defaultSampleCount=_defaultSampleCount;
 @property(nonatomic) unsigned long long tileHeight; // @synthesize tileHeight=_tileHeight;
 @property(nonatomic) unsigned long long tileWidth; // @synthesize tileWidth=_tileWidth;
 @property(nonatomic) unsigned long long threadgroupMemoryLength; // @synthesize threadgroupMemoryLength=_threadgroupMemoryLength;
 @property(nonatomic) unsigned long long imageblockSampleLength; // @synthesize imageblockSampleLength=_imageblockSampleLength;
-@property(nonatomic) unsigned long long renderTargetArrayLength; // @synthesize renderTargetArrayLength=_renderTargetArrayLength;
 - (unsigned long long)getSamplePositions:(CDStruct_6e3f967a *)arg1 count:(unsigned long long)arg2;
 - (void)setSamplePositions:(const CDStruct_6e3f967a *)arg1 count:(unsigned long long)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -39,6 +35,7 @@
 // Remaining properties
 @property(readonly) MTLRenderPassColorAttachmentDescriptorArray *colorAttachments; // @dynamic colorAttachments;
 @property(copy, nonatomic) MTLRenderPassDepthAttachmentDescriptor *depthAttachment; // @dynamic depthAttachment;
+@property(nonatomic) unsigned long long renderTargetArrayLength; // @dynamic renderTargetArrayLength;
 @property(nonatomic) unsigned long long renderTargetHeight; // @dynamic renderTargetHeight;
 @property(nonatomic) unsigned long long renderTargetWidth; // @dynamic renderTargetWidth;
 @property(copy, nonatomic) MTLRenderPassStencilAttachmentDescriptor *stencilAttachment; // @dynamic stencilAttachment;

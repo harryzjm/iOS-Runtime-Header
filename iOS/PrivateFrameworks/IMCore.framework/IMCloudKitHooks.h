@@ -10,12 +10,16 @@
 {
 }
 
++ (id)logHandle;
 + (id)sharedInstance;
 + (void)__setSingleton__im:(id)arg1;
 + (id)__singleton__im;
+- (_Bool)mocAccountsMatch;
+- (void)broadcastCloudKitStateAfterClearingErrors;
+- (void)broadcastCloudKitState;
+- (void)tryToAutoCollectLogsWithErrorString:(id)arg1 sendLogsTo:(id)arg2;
 - (void)fetchCloudKitSyncStateDebuggingInfo:(id)arg1;
 - (id)syncStateDictionary;
-- (id)lastSyncErrors;
 - (void)syncDeletesToCloudKit;
 - (void)printCachedRampState;
 - (void)fetchLatestRampState;
@@ -33,6 +37,7 @@
 - (void)loadDeletedMessagesWithLimit:(long long)arg1;
 - (void)_updateCloudKitState;
 - (void)_updateCloudKitStateWithDictionary:(id)arg1;
+- (id)exitDate;
 - (_Bool)isInExitState;
 - (void)_didAttemptToDisableAllDevicesResult:(_Bool)arg1;
 - (_Bool)isDisablingDevices;
@@ -43,16 +48,20 @@
 - (_Bool)isSyncing;
 - (_Bool)isStartingSync;
 - (void)initiateSync;
+- (void)_requestMOCEnabledReturned:(unsigned long long)arg1;
+- (void)requestMOCEnabledState;
 - (void)setShouldOptimizeAttachmentStorage:(_Bool)arg1;
 - (_Bool)shouldOptimizeAttachmentStorage;
 - (_Bool)eligibleForTruthZone;
 - (_Bool)rampedIntoTruthZone;
 - (_Bool)removedFromiCloudBackup;
 - (void)tryToDisableAllDevices;
+- (void)fetchSecurityLevelAndUpdateMiCSwitchEligibility;
 - (void)performAdditionalStorageRequiredCheck;
 - (void)setEnabled:(_Bool)arg1;
 - (_Bool)isEnabled;
 - (_Bool)shouldShowCloudKitUI;
+- (void)sendRestoreFailuresLogDumps;
 - (void)clearDataFromCloudKit;
 - (void)clearLocalSyncState;
 - (void)loadDirtyMessagesWithLimit:(long long)arg1;
@@ -76,6 +85,7 @@
 - (void)createChatZone;
 - (void)setupIMCloudKitHooks;
 - (id)init;
+- (id)logHandle;
 
 @end
 

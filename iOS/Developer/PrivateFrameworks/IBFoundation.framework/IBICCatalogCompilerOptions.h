@@ -9,7 +9,7 @@
 #import <IBFoundation/IBBinaryArchiving-Protocol.h>
 #import <IBFoundation/NSCopying-Protocol.h>
 
-@class IBICDeviceThinningTraits, NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@class IBICDeviceThinningTraits, NSDictionary, NSMutableDictionary, NSMutableSet, NSNumber, NSSet, NSString;
 
 @interface IBICCatalogCompilerOptions : NSObject <IBBinaryArchiving, NSCopying>
 {
@@ -33,6 +33,7 @@
     NSString *_launchImageName;
     NSString *_minimumDeploymentTarget;
     NSString *_targetPlatform;
+    NSNumber *_platformCoreUIValue;
     NSString *_targetName;
     NSSet *_targetDevices;
     NSDictionary *_assetPackOutputSpecifications;
@@ -42,6 +43,11 @@
     NSString *_productType;
     NSDictionary *_additionalEnvironment;
     NSDictionary *_buildEnvironment;
+    NSString *_sourceGenerationOutputDirectory;
+    NSString *_sourceGenerationLanguages;
+    NSString *_sourceGenerationVersion;
+    NSDictionary *_appearanceSpecificationToPlatformAppearanceMapping;
+    NSDictionary *_referenceColorNamesToIBICColorMap;
     NSString *_issueTextForResizableImage;
     NSString *_issueTextForTemplateRenderingIntent;
     IBICDeviceThinningTraits *_filterForDeviceTraits;
@@ -57,6 +63,11 @@
 @property _Bool supportsTemplateRenderingIntent; // @synthesize supportsTemplateRenderingIntent=_supportsTemplateRenderingIntent;
 @property(copy) NSString *issueTextForResizableImage; // @synthesize issueTextForResizableImage=_issueTextForResizableImage;
 @property _Bool supportsResizableImages; // @synthesize supportsResizableImages=_supportsResizableImages;
+@property(retain, nonatomic) NSDictionary *referenceColorNamesToIBICColorMap; // @synthesize referenceColorNamesToIBICColorMap=_referenceColorNamesToIBICColorMap;
+@property(copy, nonatomic) NSDictionary *appearanceSpecificationToPlatformAppearanceMapping; // @synthesize appearanceSpecificationToPlatformAppearanceMapping=_appearanceSpecificationToPlatformAppearanceMapping;
+@property(copy) NSString *sourceGenerationVersion; // @synthesize sourceGenerationVersion=_sourceGenerationVersion;
+@property(copy) NSString *sourceGenerationLanguages; // @synthesize sourceGenerationLanguages=_sourceGenerationLanguages;
+@property(copy) NSString *sourceGenerationOutputDirectory; // @synthesize sourceGenerationOutputDirectory=_sourceGenerationOutputDirectory;
 @property(copy, nonatomic) NSDictionary *buildEnvironment; // @synthesize buildEnvironment=_buildEnvironment;
 @property(copy, nonatomic) NSDictionary *additionalEnvironment; // @synthesize additionalEnvironment=_additionalEnvironment;
 @property(copy, nonatomic) NSString *productType; // @synthesize productType=_productType;
@@ -69,6 +80,7 @@
 @property(readonly) NSSet *impliedIdiomIdentifiers; // @synthesize impliedIdiomIdentifiers=_impliedIdiomIdentifiers;
 @property(copy) NSSet *targetDevices; // @synthesize targetDevices=_targetDevices;
 @property(copy, nonatomic) NSString *targetName; // @synthesize targetName=_targetName;
+@property(copy, nonatomic) NSNumber *platformCoreUIValue; // @synthesize platformCoreUIValue=_platformCoreUIValue;
 @property(copy) NSString *targetPlatform; // @synthesize targetPlatform=_targetPlatform;
 @property(copy) NSString *minimumDeploymentTarget; // @synthesize minimumDeploymentTarget=_minimumDeploymentTarget;
 @property(copy) NSString *launchImageName; // @synthesize launchImageName=_launchImageName;

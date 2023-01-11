@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVRunLoopCondition, AVWeakReference, NSArray;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetReaderOutputInternal : NSObject
 {
     AVWeakReference *weakReference;
@@ -21,6 +22,7 @@
     _Bool currentConfigurationIsFinal;
     _Bool extractionCompleteForCurrentConfiguration;
     int finished;
+    _Bool maximizePowerEfficiency;
 }
 
 @end

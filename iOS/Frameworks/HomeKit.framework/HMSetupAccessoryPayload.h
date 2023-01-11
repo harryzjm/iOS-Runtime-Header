@@ -8,7 +8,7 @@
 
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSString, NSURL;
+@class HMAccessoryCategory, NSNumber, NSString, NSURL;
 
 @interface HMSetupAccessoryPayload : NSObject <NSSecureCoding>
 {
@@ -20,13 +20,13 @@
     NSString *_setupCode;
     NSString *_setupID;
     NSNumber *_categoryNumber;
-    NSURL *_setupPayloadURL;
     NSNumber *_flags;
+    NSURL *_setupPayloadURL;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) NSNumber *flags; // @synthesize flags=_flags;
 @property(retain, nonatomic) NSURL *setupPayloadURL; // @synthesize setupPayloadURL=_setupPayloadURL;
+@property(retain, nonatomic) NSNumber *flags; // @synthesize flags=_flags;
 @property(nonatomic) _Bool paired; // @synthesize paired=_paired;
 @property(nonatomic) _Bool supportsBTLE; // @synthesize supportsBTLE=_supportsBTLE;
 @property(nonatomic) _Bool supportsWAC; // @synthesize supportsWAC=_supportsWAC;
@@ -43,6 +43,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)description;
 - (id)_parseSetupPayload:(id)arg1;
+@property(readonly, nonatomic) HMAccessoryCategory *category;
 - (id)initWithSetupCode:(id)arg1;
 - (id)initWithSetupPayload:(id)arg1;
 - (id)initWithSetupPayloadURL:(id)arg1 error:(id *)arg2;

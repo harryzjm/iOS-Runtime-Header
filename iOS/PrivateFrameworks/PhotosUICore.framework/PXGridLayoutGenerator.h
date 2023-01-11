@@ -4,17 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PXGridLayoutMetrics;
+@class NSIndexSet, PXGridLayoutMetrics;
 
 @interface PXGridLayoutGenerator
 {
     long long _numberOfItemsWide;
+    NSIndexSet *_geometrySet;
 }
 
-- (struct _PXLayoutGeometry)_geometryForItemAtIndex:(unsigned long long)arg1;
+- (void).cxx_destruct;
+- (void)getGeometry:(struct _PXLayoutGeometry *)arg1 forItemAtIndex:(unsigned long long)arg2;
+- (void)_getAdditionalGeometries:(struct _PXLayoutGeometry *)arg1 inRange:(struct _NSRange)arg2;
+- (void)_getHeaderGeometries:(struct _PXLayoutGeometry *)arg1 inRange:(struct _NSRange)arg2;
+- (void)_getContentGeometries:(struct _PXLayoutGeometry *)arg1 inRange:(struct _NSRange)arg2;
 - (void)getGeometries:(struct _PXLayoutGeometry *)arg1 inRange:(struct _NSRange)arg2 withKind:(long long)arg3;
 - (struct CGSize)size;
 - (struct CGSize)estimatedSize;
+- (unsigned long long)numberOfGeometriesWithKind:(long long)arg1;
+- (id)geometryKinds;
 - (id)initWithMetrics:(id)arg1;
 - (id)init;
 

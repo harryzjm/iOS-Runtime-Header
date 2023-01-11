@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSFuture-Protocol.h>
 
@@ -18,6 +18,7 @@
     NSMutableArray *_completionBlocks;
 }
 
+- (void).cxx_destruct;
 - (void)_flushCompletionBlocks;
 - (void)_addCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)addFailureBlock:(CDUnknownBlockType)arg1;
@@ -32,7 +33,6 @@
 @property(readonly, getter=isFinished) _Bool finished;
 - (id)resultBeforeDate:(id)arg1 error:(id *)arg2;
 - (id)result:(id *)arg1;
-- (void)dealloc;
 - (id)init;
 
 // Remaining properties

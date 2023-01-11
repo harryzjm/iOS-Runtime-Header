@@ -9,32 +9,25 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMDelegateCaller, HMHome, HMHomeInvitationData, NSDate, NSString, NSURL, NSUUID;
-@protocol OS_dispatch_queue;
+@class HMFUnfairLock, HMHome, HMHomeInvitationData, NSDate, NSString, NSURL, NSUUID, _HMContext;
 
 @interface HMHomeInvitation : NSObject <HMObjectMerge, NSSecureCoding>
 {
+    HMFUnfairLock *_lock;
     HMHome *_home;
     NSURL *_homeObjectURL;
+    _HMContext *_context;
     HMHomeInvitationData *_invitationData;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    HMDelegateCaller *_delegateCaller;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(retain, nonatomic) HMHomeInvitationData *invitationData; // @synthesize invitationData=_invitationData;
+@property(retain, nonatomic) _HMContext *context; // @synthesize context=_context;
 - (void).cxx_destruct;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
-@property(readonly, nonatomic) NSUUID *uniqueIdentifier;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 invitationData:(id)arg2;
 - (id)initWithCoder:(id)arg1;
-@property(readonly) unsigned long long hash;
-- (_Bool)isEqual:(id)arg1;
 - (void)_updateInvitationState:(long long)arg1;
 - (void)cancelInviteWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) long long invitationState;
@@ -43,6 +36,9 @@
 @property(readonly, copy, nonatomic) NSUUID *identifier;
 @property(readonly, nonatomic) NSURL *homeObjectURL; // @synthesize homeObjectURL=_homeObjectURL;
 @property(nonatomic) __weak HMHome *home; // @synthesize home=_home;
+@property(readonly, nonatomic) NSUUID *uniqueIdentifier;
+- (_Bool)isEqual:(id)arg1;
+@property(readonly) unsigned long long hash;
 - (id)initWithInvitationData:(id)arg1 home:(id)arg2;
 
 // Remaining properties

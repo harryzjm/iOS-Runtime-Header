@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_alternateContentsURLDictionary;
     NSMutableDictionary *_contextByDomainID;
     NSMutableDictionary *_domainContextByURL;
+    _Bool _isBeingDeallocated;
     FPXDomainContext *_defaultDomainContext;
     NSString *_providerIdentifier;
 }
@@ -33,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)startOperation:(id)arg1 toFetchDefaultContainerForBundleIdentifier:(id)arg2 englishName:(id)arg3 inDomainIdentifier:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)startOperation:(id)arg1 toFetchItemID:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)startOperation:(id)arg1 toFetchParentForItem:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)startOperation:(id)arg1 toFetchParentForItem:(id)arg2 recursively:(_Bool)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)startOperation:(id)arg1 toCreateFolderWithName:(id)arg2 underParent:(id)arg3 bounceOnCollision:(_Bool)arg4 bounceIndex:(unsigned long long)arg5 reply:(CDUnknownBlockType)arg6;
 - (void)startOperation:(id)arg1 toCreateFolderWithName:(id)arg2 underParent:(id)arg3 bounceOnCollision:(_Bool)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)startOperation:(id)arg1 toDeleteItems:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -75,7 +76,6 @@ __attribute__((visibility("hidden")))
 - (void)indexOneBatchInDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)itemChangedAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeTrashedItemsOlderThanDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)refreshInstalledAppsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)defaultInstance;
 - (void)deleteSearchableItemsWithDomainIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)evictItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -92,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (id)instanceForDomainIdentifier:(id)arg1;
 - (id)domainContextForIdentifier:(id)arg1;
 - (void)invalidate;
+- (void)dealloc;
 - (void)_setTransaction:(id)arg1;
 - (void)startWithPrincipalInstance:(id)arg1 domains:(id)arg2 alternateContentsDictionary:(id)arg3;
 - (id)initWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 contextUUID:(id)arg3;

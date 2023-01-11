@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
 @class NSArray, NSNumber, NSString;
 
-@interface DMFAssignUserRequest : CATTaskRequest
+@interface DMFAssignUserRequest
 {
     NSString *_userIdentifier;
     NSNumber *_groupID;

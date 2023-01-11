@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <ScreenReaderOutput/NSCoding-Protocol.h>
+#import <ScreenReaderOutput/NSSecureCoding-Protocol.h>
 
-@interface SCROCallback : NSObject <NSCoding>
+@protocol NSSecureCoding;
+
+@interface SCROCallback : NSObject <NSSecureCoding>
 {
     int _key;
-    id _object;
+    id <NSSecureCoding> _object;
     _Bool _isAtomic;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)postToHandler:(id)arg1;
 - (_Bool)isAtomic;

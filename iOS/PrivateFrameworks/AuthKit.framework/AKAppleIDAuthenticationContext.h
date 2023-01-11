@@ -9,12 +9,11 @@
 #import <AuthKit/AKAppleIDAuthenticationLimitedUIProvider-Protocol.h>
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
-@class AKAnisetteData, AKDevice, AKNativeAccountRecoveryController, NSArray, NSDictionary, NSNumber, NSSet, NSString, NSUUID;
-@protocol AKAnisetteServiceProtocol, CDPStateUIProvider, OS_dispatch_queue;
+@class AKAnisetteData, AKDevice, NSArray, NSDictionary, NSNumber, NSSet, NSString, NSUUID;
+@protocol AKAnisetteServiceProtocol, OS_dispatch_queue;
 
 @interface AKAppleIDAuthenticationContext : NSObject <AKAppleIDAuthenticationLimitedUIProvider, NSSecureCoding>
 {
-    id <CDPStateUIProvider> _cdpUiProvider;
     NSString *_generatedCode;
     NSNumber *_latitude;
     NSNumber *_longitude;
@@ -27,12 +26,14 @@
     AKDevice *_proxiedDevice;
     AKDevice *_companionDevice;
     NSString *_interpolatedReason;
-    AKNativeAccountRecoveryController *_nativeRecoveryController;
     unsigned long long _attemptIndex;
     _Bool _isProxyingForApp;
     _Bool _shouldSendIdentityTokenForRemoteUI;
+    _Bool _shouldSendGrandSlamTokensForRemoteUI;
     _Bool _isPasswordEditable;
     _Bool _shouldSkipInitialReachabilityCheck;
+    _Bool _shouldPreventInteractiveAuth;
+    _Bool _shouldForceInteractiveAuth;
     _Bool _isUsernameEditable;
     _Bool _shouldAllowAppleIDCreation;
     _Bool _needsCredentialRecovery;
@@ -41,10 +42,9 @@
     _Bool _isTriggeredByNotification;
     _Bool _isEphemeral;
     _Bool _shouldOfferSecurityUpgrade;
+    _Bool _needsRepair;
     _Bool _shouldPromptForPasswordOnly;
     _Bool _shouldUpdatePersistentServiceTokens;
-    _Bool _shouldPreventInteractiveAuth;
-    _Bool _shouldForceInteractiveAuth;
     _Bool _shouldRequestRecoveryPET;
     _Bool _shouldRequestShortLivedToken;
     _Bool _shouldRequestConfigurationInfo;
@@ -54,6 +54,7 @@
     _Bool _shouldSkipSettingsLaunchAlert;
     NSString *_proxiedAppBundleID;
     NSUUID *_identifier;
+    NSString *_identityToken;
     NSString *_passwordPromptTitle;
     NSString *_proxiedAppName;
     NSString *_password;
@@ -73,10 +74,12 @@
     NSString *_title;
     NSString *_helpAnchor;
     NSString *_helpBook;
+    unsigned long long _authenticationType;
     id <AKAnisetteServiceProtocol> _anisetteDataProvider;
     NSNumber *_isAppleIDLoginEnabled;
     NSNumber *_hasEmptyPassword;
     NSSet *_desiredInternalTokens;
+    NSString *_securityUpgradeContext;
     AKAnisetteData *_proxiedDeviceAnisetteData;
     AKAnisetteData *_companionDeviceAnisetteData;
     NSString *_displayString;
@@ -88,6 +91,7 @@
 @property(copy, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
 @property(retain, nonatomic) AKAnisetteData *companionDeviceAnisetteData; // @synthesize companionDeviceAnisetteData=_companionDeviceAnisetteData;
 @property(retain, nonatomic) AKAnisetteData *proxiedDeviceAnisetteData; // @synthesize proxiedDeviceAnisetteData=_proxiedDeviceAnisetteData;
+@property(copy, nonatomic) NSString *securityUpgradeContext; // @synthesize securityUpgradeContext=_securityUpgradeContext;
 @property(nonatomic) _Bool shouldSkipSettingsLaunchAlert; // @synthesize shouldSkipSettingsLaunchAlert=_shouldSkipSettingsLaunchAlert;
 @property(nonatomic, setter=setFirstTimeLogin:) _Bool isFirstTimeLogin; // @synthesize isFirstTimeLogin=_isFirstTimeLogin;
 @property(copy, nonatomic) NSSet *desiredInternalTokens; // @synthesize desiredInternalTokens=_desiredInternalTokens;
@@ -98,14 +102,14 @@
 @property(nonatomic) _Bool shouldRequestRecoveryPET; // @synthesize shouldRequestRecoveryPET=_shouldRequestRecoveryPET;
 @property(copy, nonatomic, setter=setHasEmptyPassword:) NSNumber *hasEmptyPassword; // @synthesize hasEmptyPassword=_hasEmptyPassword;
 @property(copy, nonatomic, setter=setAppleIDLoginEnabled:) NSNumber *isAppleIDLoginEnabled; // @synthesize isAppleIDLoginEnabled=_isAppleIDLoginEnabled;
-@property(copy, nonatomic) id <AKAnisetteServiceProtocol> anisetteDataProvider; // @synthesize anisetteDataProvider=_anisetteDataProvider;
-@property(nonatomic) _Bool shouldForceInteractiveAuth; // @synthesize shouldForceInteractiveAuth=_shouldForceInteractiveAuth;
-@property(nonatomic) _Bool shouldPreventInteractiveAuth; // @synthesize shouldPreventInteractiveAuth=_shouldPreventInteractiveAuth;
+@property(retain, nonatomic) id <AKAnisetteServiceProtocol> anisetteDataProvider; // @synthesize anisetteDataProvider=_anisetteDataProvider;
 @property(nonatomic) _Bool shouldUpdatePersistentServiceTokens; // @synthesize shouldUpdatePersistentServiceTokens=_shouldUpdatePersistentServiceTokens;
 @property(nonatomic) _Bool shouldPromptForPasswordOnly; // @synthesize shouldPromptForPasswordOnly=_shouldPromptForPasswordOnly;
-@property(copy) NSString *helpBook; // @synthesize helpBook=_helpBook;
-@property(copy) NSString *helpAnchor; // @synthesize helpAnchor=_helpAnchor;
-@property(retain) NSString *title; // @synthesize title=_title;
+@property(nonatomic) unsigned long long authenticationType; // @synthesize authenticationType=_authenticationType;
+@property(copy, nonatomic) NSString *helpBook; // @synthesize helpBook=_helpBook;
+@property(copy, nonatomic) NSString *helpAnchor; // @synthesize helpAnchor=_helpAnchor;
+@property(retain, nonatomic) NSString *title; // @synthesize title=_title;
+@property(nonatomic) _Bool needsRepair; // @synthesize needsRepair=_needsRepair;
 @property(nonatomic) _Bool shouldOfferSecurityUpgrade; // @synthesize shouldOfferSecurityUpgrade=_shouldOfferSecurityUpgrade;
 @property(retain, nonatomic) id clientInfo; // @synthesize clientInfo=_clientInfo;
 @property(copy, nonatomic) NSDictionary *httpHeadersForRemoteUI; // @synthesize httpHeadersForRemoteUI=_httpHeadersForRemoteUI;
@@ -124,7 +128,6 @@
 @property(nonatomic) _Bool shouldAllowAppleIDCreation; // @synthesize shouldAllowAppleIDCreation=_shouldAllowAppleIDCreation;
 @property(nonatomic) _Bool isUsernameEditable; // @synthesize isUsernameEditable=_isUsernameEditable;
 @property(copy, nonatomic) NSString *username; // @synthesize username=_username;
-@property(retain, nonatomic) id <CDPStateUIProvider> cdpUiProvider; // @synthesize cdpUiProvider=_cdpUiProvider;
 @property(nonatomic) unsigned long long _attemptIndex; // @synthesize _attemptIndex;
 @property(readonly, nonatomic) _Bool _shouldSkipInitialReachabilityCheck; // @synthesize _shouldSkipInitialReachabilityCheck;
 @property(copy, nonatomic, setter=_setMessage:) NSString *_message; // @synthesize _message;
@@ -133,7 +136,9 @@
 @property(copy, nonatomic, setter=_setPassword:) NSString *_password; // @synthesize _password;
 @property(copy, nonatomic, setter=_setProxiedAppName:) NSString *_proxiedAppName; // @synthesize _proxiedAppName;
 @property(copy, nonatomic) NSString *_passwordPromptTitle; // @synthesize _passwordPromptTitle;
+@property(nonatomic) _Bool _shouldSendGrandSlamTokensForRemoteUI; // @synthesize _shouldSendGrandSlamTokensForRemoteUI;
 @property(nonatomic) _Bool _shouldSendIdentityTokenForRemoteUI; // @synthesize _shouldSendIdentityTokenForRemoteUI;
+@property(copy, nonatomic, setter=_setIdentityToken:) NSString *_identityToken; // @synthesize _identityToken;
 @property(readonly, nonatomic) NSUUID *_identifier; // @synthesize _identifier;
 @property(copy, nonatomic, setter=_setProxiedAppBundleID:) NSString *_proxiedAppBundleID; // @synthesize _proxiedAppBundleID;
 @property(nonatomic, setter=_setProxyingForApp:) _Bool _isProxyingForApp; // @synthesize _isProxyingForApp;
@@ -147,13 +152,15 @@
 - (void)presentSecondFactorUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dismissBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) _Bool _requiresPasswordInput;
 - (void)presentBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
-- (void)dismissNativeRecoveryUIWithCompletion:(CDUnknownBlockType)arg1;
-- (void)presentNativeRecoveryUIWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @property(copy, nonatomic) AKDevice *companionDevice;
 @property(copy, nonatomic) AKDevice *proxiedDevice;
 @property(copy, nonatomic) NSString *serviceIdentifier;
+@property(readonly, nonatomic) NSString *_interpolatedReasonWithBlame;
 @property(readonly, nonatomic) NSString *_interpolatedReason;
+@property(nonatomic) _Bool shouldForceInteractiveAuth; // @synthesize shouldForceInteractiveAuth=_shouldForceInteractiveAuth;
+@property(nonatomic) _Bool shouldPreventInteractiveAuth; // @synthesize shouldPreventInteractiveAuth=_shouldPreventInteractiveAuth;
 @property(readonly, nonatomic) unsigned long long _capabilityForUIDisplay; // @synthesize _capabilityForUIDisplay;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
@@ -164,6 +171,8 @@
 - (id)initWithCoder:(id)arg1;
 - (id)_initWithIdentifier:(id)arg1;
 - (id)init;
+- (id)authKitAccountForSilentServiceToken:(id *)arg1;
+- (id)authKitAccount:(id *)arg1;
 @property(copy, nonatomic) NSString *generatedCode;
 @property(copy, nonatomic) NSString *deviceEnclosureColor;
 @property(copy, nonatomic) NSString *deviceColor;

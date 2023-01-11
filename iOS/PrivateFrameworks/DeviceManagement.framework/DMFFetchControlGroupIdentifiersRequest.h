@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
 @class NSString;
 
-@interface DMFFetchControlGroupIdentifiersRequest : CATTaskRequest
+@interface DMFFetchControlGroupIdentifiersRequest
 {
     _Bool _includeTemporary;
     NSString *_leaderIdentifier;

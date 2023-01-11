@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSData, NSDictionary, NSString;
 
@@ -17,9 +17,9 @@
     struct __SecCertificate *_peerCertificate;
     struct __SecKey *_peerPublicKey;
     _Bool _peerSignatureVerified;
-    struct __SecTrust *_peerTrust;
     NSDictionary *_peerValidationDict;
     _Bool _peerValidated;
+    int _securityLevel;
     NSString *_myAppleID;
     CUAppleIDClient *_myInfoClient;
     NSString *_peerAppleID;
@@ -41,6 +41,7 @@
 @property(retain, nonatomic) CUAppleIDClient *myInfoClient; // @synthesize myInfoClient=_myInfoClient;
 @property(copy, nonatomic) NSString *myAppleID; // @synthesize myAppleID=_myAppleID;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) int securityLevel;
 - (struct __SecKey *)_getPeerPublicKeyAndReturnError:(id *)arg1;
 - (struct __SecCertificate *)_getPeerCertificateAndReturnError:(id *)arg1;
 - (id)copyMyValidationDataAndReturnError:(id *)arg1;
@@ -51,6 +52,7 @@
 - (id)copyMyAppleIDAndReturnError:(id *)arg1;
 - (_Bool)verifyBytes:(const void *)arg1 verifyLength:(unsigned long long)arg2 signatureBytes:(const void *)arg3 signatureLength:(unsigned long long)arg4 error:(id *)arg5;
 - (_Bool)verifyData:(id)arg1 signature:(id)arg2 error:(id *)arg3;
+- (_Bool)_validatePeerHashes:(id)arg1;
 - (_Bool)validatePeerWithFlags:(unsigned int)arg1 error:(id *)arg2;
 - (id)signBytes:(const void *)arg1 length:(unsigned long long)arg2 error:(id *)arg3;
 - (id)signData:(id)arg1 error:(id *)arg2;

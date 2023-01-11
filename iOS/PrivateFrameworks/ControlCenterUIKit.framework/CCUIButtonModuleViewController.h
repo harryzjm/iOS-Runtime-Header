@@ -18,9 +18,11 @@
 
 @property(readonly, nonatomic, getter=isExpanded) _Bool expanded; // @synthesize expanded=_expanded;
 - (void).cxx_destruct;
+- (void)didTransitionToExpandedContentMode:(_Bool)arg1;
 - (void)willTransitionToExpandedContentMode:(_Bool)arg1;
 @property(readonly, nonatomic) double preferredExpandedContentHeight;
 - (void)viewDidLoad;
+- (void)_buttonTapped:(id)arg1 forEvent:(id)arg2;
 - (void)buttonTapped:(id)arg1 forEvent:(id)arg2;
 @property(readonly, nonatomic) CCUIButtonModuleView *buttonView;
 @property(nonatomic, getter=isSelected) _Bool selected;

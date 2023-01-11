@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSString, PKPeerPaymentPerformResponse, PKPeerPaymentQuote, PKPeerPaymentQuoteCertificatesResponse, PKPeerPaymentQuoteRequest, PKPeerPaymentRecipient;
+@class NSString, PKPeerPaymentPerformResponse, PKPeerPaymentQuote, PKPeerPaymentQuoteCertificatesResponse, PKPeerPaymentQuoteRequest, PKPeerPaymentRecipient, PKPeerPaymentRequestToken;
 
 @interface PKPeerPaymentControllerInternalState : NSObject <NSSecureCoding>
 {
@@ -18,7 +18,7 @@
     NSString *recipientPhoneOrEmail;
     PKPeerPaymentRecipient *recipient;
     NSString *recipientDisplayName;
-    NSString *requestToken;
+    PKPeerPaymentRequestToken *requestToken;
     PKPeerPaymentQuote *quote;
     PKPeerPaymentPerformResponse *performQuoteResponse;
     PKPeerPaymentQuoteCertificatesResponse *quoteCertificatesResponse;

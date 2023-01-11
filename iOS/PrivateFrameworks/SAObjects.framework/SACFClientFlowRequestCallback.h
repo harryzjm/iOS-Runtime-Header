@@ -19,6 +19,7 @@
 @property(copy, nonatomic) NSArray *weightedPromptResponseTargets;
 @property(copy, nonatomic) NSArray *weightedPromptAbortValues;
 @property(copy, nonatomic) NSString *nlInput;
+@property(copy, nonatomic) NSArray *displayHintsAsJson;
 @property(copy, nonatomic) NSString *disambiguationPromptTargetDomain;
 @property(copy, nonatomic) NSArray *disambiguationPromptResponseTargets;
 @property(copy, nonatomic) NSNumber *disambiguationPromptAmbiguityId;
@@ -26,6 +27,7 @@
 @property(copy, nonatomic) NSArray *dictationPromptTargetNodes;
 @property(copy, nonatomic) NSString *dictationPromptTargetDomain;
 @property(copy, nonatomic) NSArray *dictationPromptAbortValues;
+@property(copy, nonatomic) NSArray *conversationStateAttachments;
 @property(copy, nonatomic) NSArray *applicationContextObjects;
 - (id)encodedClassName;
 - (id)groupIdentifier;

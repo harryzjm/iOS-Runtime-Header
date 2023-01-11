@@ -6,6 +6,7 @@
 
 @class UIImage;
 
+__attribute__((visibility("hidden")))
 @interface UIPDFPopupAnnotationView
 {
     UIImage *_image;

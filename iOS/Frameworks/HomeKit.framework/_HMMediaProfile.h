@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMAccessorySettings, HMMediaSession, _HMAccessorySettingGroup;
+@class HMMediaSession, NSString;
 @protocol _HMMediaProfileDelegate;
 
 @interface _HMMediaProfile
 {
-    HMAccessorySettings *_accessorySettings;
-    _HMAccessorySettingGroup *_rootGroup;
     HMMediaSession *_mediaSession;
+    NSString *_routeUID;
     id <_HMMediaProfileDelegate> _delegate;
 }
 
@@ -20,15 +19,11 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)setRouteUID:(id)arg1;
+@property(readonly) NSString *routeUID; // @synthesize routeUID=_routeUID;
 - (void)_notifyDelegateOfUpdatedMediaSession:(id)arg1;
 @property(retain) HMMediaSession *mediaSession; // @synthesize mediaSession=_mediaSession;
-- (void)_handleRootSettingsUpdated:(id)arg1;
-- (void)notifyDelegateOfUpdatedRootGroup:(id)arg1;
-- (void)setRootGroup:(id)arg1;
-@property(readonly) _HMAccessorySettingGroup *rootGroup; // @synthesize rootGroup=_rootGroup;
-@property __weak HMAccessorySettings *accessorySettings; // @synthesize accessorySettings=_accessorySettings;
-- (void)_registerNotificationHandlers;
-- (void)configureWithAccessory:(id)arg1 home:(id)arg2 context:(id)arg3;
+- (void)__configureWithContext:(id)arg1 accessory:(id)arg2;
 
 @end
 

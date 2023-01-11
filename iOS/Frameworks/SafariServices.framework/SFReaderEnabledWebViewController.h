@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
 
 @property(readonly, nonatomic) _SFReaderController *readerController; // @synthesize readerController=_readerController;
 - (void).cxx_destruct;
+- (void)readerController:(id)arg1 contentDidBecomeReadyWithDetectedLanguage:(id)arg2;
+- (void)createReaderWebViewForReaderController:(id)arg1;
 - (void)readerController:(id)arg1 didClickLinkInReaderWithRequest:(id)arg2;
 - (void)readerController:(id)arg1 didClickLinkRequestingNewWindowInReaderWithRequest:(id)arg2;
 - (void)readerController:(id)arg1 didDetermineReaderAvailability:(_Bool)arg2 dueToSameDocumentNavigation:(_Bool)arg3;

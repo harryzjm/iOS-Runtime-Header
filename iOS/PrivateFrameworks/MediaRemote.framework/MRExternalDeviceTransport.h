@@ -4,22 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSString;
+@class NSError, NSString, _MRDeviceInfoMessageProtobuf;
 
 __attribute__((visibility("hidden")))
 @interface MRExternalDeviceTransport : NSObject
 {
+    long long _connectionType;
     _Bool _requiresCustomPairing;
+    NSString *_uid;
 }
 
+@property(readonly, nonatomic) long long connectionType; // @synthesize connectionType=_connectionType;
 @property(readonly, nonatomic) _Bool requiresCustomPairing; // @synthesize requiresCustomPairing=_requiresCustomPairing;
+@property(readonly, nonatomic) NSString *uid; // @synthesize uid=_uid;
+- (void).cxx_destruct;
+- (void)reset;
 - (_Bool)getInputStream:(id *)arg1 outputStream:(id *)arg2;
+@property(readonly, nonatomic) NSError *error;
+@property(nonatomic) _Bool shouldUseSystemAuthenticationPrompt; // @dynamic shouldUseSystemAuthenticationPrompt;
 @property(readonly, nonatomic) long long port;
 @property(readonly, nonatomic) NSString *hostname;
 @property(readonly, nonatomic) NSString *name;
-@property(readonly, nonatomic) void *deviceInfo;
+@property(readonly, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
 
 @end
 

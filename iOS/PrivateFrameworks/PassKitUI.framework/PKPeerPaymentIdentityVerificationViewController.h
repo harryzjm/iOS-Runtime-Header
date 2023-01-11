@@ -4,12 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
+#import <PassKitUI/PKPeerPaymentAccountResolutionControllerDelegate-Protocol.h>
+
 @class NSArray, NSString, PKPeerPaymentIdentityVerificationController;
 
-@interface PKPeerPaymentIdentityVerificationViewController
+@interface PKPeerPaymentIdentityVerificationViewController <PKExplanationViewDelegate, PKPeerPaymentAccountResolutionControllerDelegate>
 {
     PKPeerPaymentIdentityVerificationController *_controller;
     NSArray *_visibleFieldIdentifiers;
+    unsigned long long _identityVerificaionError;
     NSString *_headerTitle;
     NSString *_headerSubtitle;
 }
@@ -19,14 +23,25 @@
 - (void).cxx_destruct;
 - (void)_terminateFlow;
 - (void)_handleCancelButtonTapped:(id)arg1;
+- (void)_showNavigationBarSpinner:(_Bool)arg1;
 - (id)defaultHeaderViewSubTitle;
 - (id)defaultHeaderViewTitle;
 - (void)handleNextButtonTapped:(id)arg1;
 - (id)visibleFieldIdentifiers;
+- (void)explanationViewDidSelectSetupLater:(id)arg1;
+- (void)explanationViewDidSelectContinue:(id)arg1;
+- (void)peerPaymentAccountResolutionController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(_Bool)arg2;
+- (void)peerPaymentAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(_Bool)arg3;
 - (id)pkui_navigationBarTintColor;
 - (_Bool)pkui_prefersNavigationBarShadowHidden;
 - (id)initWithController:(id)arg1 setupDelegate:(id)arg2 visibleFieldIdentifiers:(id)arg3;
 - (id)initWithController:(id)arg1 visibleFieldIdentifiers:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

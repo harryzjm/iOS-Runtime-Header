@@ -6,11 +6,11 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@protocol SXDynamicAdLayout;
+@protocol SXAutoPlacementLayout;
 
 @protocol SXAdvertisingSettings <NSObject>
 @property(readonly, nonatomic) struct _SXConvertibleValue distanceFromMedia;
-@property(readonly, nonatomic) id <SXDynamicAdLayout> layout;
+@property(readonly, nonatomic) id <SXAutoPlacementLayout> layout;
 @property(readonly, nonatomic) unsigned long long bannerType;
 @property(readonly, nonatomic) unsigned long long frequency;
 @end

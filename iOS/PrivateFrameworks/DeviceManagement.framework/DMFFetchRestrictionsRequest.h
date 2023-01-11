@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
-@interface DMFFetchRestrictionsRequest : CATTaskRequest
+@interface DMFFetchRestrictionsRequest
 {
     _Bool _includeProfileRestrictions;
     unsigned long long _profileFilterFlags;
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)isPermittedOnUserConnection;
++ (_Bool)isPermittedOnSystemConnection;
++ (id)permittedPlatforms;
 + (Class)whitelistedClassForResultObject;
 @property(nonatomic) unsigned long long profileFilterFlags; // @synthesize profileFilterFlags=_profileFilterFlags;
 @property(nonatomic) _Bool includeProfileRestrictions; // @synthesize includeProfileRestrictions=_includeProfileRestrictions;

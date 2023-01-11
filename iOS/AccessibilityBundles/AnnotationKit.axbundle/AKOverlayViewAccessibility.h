@@ -12,10 +12,11 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityElements;
-- (struct CGPoint)accessibilityActivationPoint;
-- (id)accessibilityHint;
-- (id)accessibilityLabel;
-- (_Bool)isAccessibilityElement;
+- (void)_axSetOverlayViewLayers:(id)arg1;
+- (id)_axOverlayViewLayers;
+- (void)_axSetOverlayViewElement:(id)arg1;
+- (id)_axOverlayViewElement;
+- (_Bool)_axShouldExposeDrawingElement;
 
 @end
 

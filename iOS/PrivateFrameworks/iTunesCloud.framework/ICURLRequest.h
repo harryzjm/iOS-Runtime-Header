@@ -8,7 +8,7 @@
 
 #import <iTunesCloud/NSProgressReporting-Protocol.h>
 
-@class ICRequestContext, NSDictionary, NSError, NSMutableArray, NSMutableData, NSProgress, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSessionTask;
+@class ICRequestContext, NSData, NSDictionary, NSError, NSMutableArray, NSMutableData, NSProgress, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSessionTask;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface ICURLRequest : NSObject <NSProgressReporting>
@@ -19,7 +19,6 @@
     _Bool _prioritize;
     _Bool _cancelOnHTTPErrors;
     _Bool _extendedCertificateValidationRequired;
-    _Bool _shouldRetry;
     NSProgress *_progress;
     unsigned long long _maxRetryCount;
     ICRequestContext *_requestContext;
@@ -27,6 +26,7 @@
     unsigned long long _redirectCount;
     double _retryDelay;
     long long _requestState;
+    NSData *_resumeData;
     NSURLRequest *_urlRequest;
     NSURLSessionTask *_task;
     long long _type;
@@ -37,6 +37,7 @@
     NSURL *_responseDataURL;
     NSError *_error;
     NSDictionary *_avDownloadOptions;
+    long long _handlingType;
     double _lastUpdateTime;
     double _lastProgressUpdateTime;
     CDUnknownBlockType _completionHandler;
@@ -45,7 +46,7 @@
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property(nonatomic) double lastProgressUpdateTime; // @synthesize lastProgressUpdateTime=_lastProgressUpdateTime;
 @property(nonatomic) double lastUpdateTime; // @synthesize lastUpdateTime=_lastUpdateTime;
-@property(nonatomic) _Bool shouldRetry; // @synthesize shouldRetry=_shouldRetry;
+@property(nonatomic) long long handlingType; // @synthesize handlingType=_handlingType;
 @property(retain, nonatomic) NSDictionary *avDownloadOptions; // @synthesize avDownloadOptions=_avDownloadOptions;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic) NSURL *responseDataURL; // @synthesize responseDataURL=_responseDataURL;
@@ -57,6 +58,7 @@
 @property(retain, nonatomic) NSURLSessionTask *task; // @synthesize task=_task;
 @property(readonly, nonatomic) NSURLRequest *urlRequest; // @synthesize urlRequest=_urlRequest;
 @property(nonatomic, getter=isExtendedCertificateValidationRequired) _Bool extendedCertificateValidationRequired; // @synthesize extendedCertificateValidationRequired=_extendedCertificateValidationRequired;
+@property(readonly, copy, nonatomic) NSData *resumeData; // @synthesize resumeData=_resumeData;
 @property(nonatomic) long long requestState; // @synthesize requestState=_requestState;
 @property(nonatomic) double retryDelay; // @synthesize retryDelay=_retryDelay;
 @property(nonatomic) unsigned long long redirectCount; // @synthesize redirectCount=_redirectCount;
@@ -65,7 +67,7 @@
 @property(nonatomic) unsigned long long maxRetryCount; // @synthesize maxRetryCount=_maxRetryCount;
 @property(nonatomic) _Bool cancelOnHTTPErrors; // @synthesize cancelOnHTTPErrors=_cancelOnHTTPErrors;
 @property(nonatomic) _Bool prioritize; // @synthesize prioritize=_prioritize;
-@property(retain) NSProgress *progress; // @synthesize progress=_progress;
+@property(retain, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 - (void).cxx_destruct;
 - (void)updateState:(long long)arg1;
 - (void)removeObserver:(id)arg1;
@@ -73,7 +75,9 @@
 - (void)buildURLRequestWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
+- (id)initWithURLRequest:(id)arg1 requestContext:(id)arg2 resumeData:(id)arg3;
 - (id)initWithURLRequest:(id)arg1 requestContext:(id)arg2;
+- (id)initWithURL:(id)arg1 requestContext:(id)arg2 resumeData:(id)arg3;
 - (id)initWithURL:(id)arg1 requestContext:(id)arg2;
 
 // Remaining properties

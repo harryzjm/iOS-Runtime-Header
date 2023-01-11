@@ -10,7 +10,7 @@
 #import <iAd/WKNavigationDelegate-Protocol.h>
 #import <iAd/_WKInputDelegate-Protocol.h>
 
-@class ADAdImpressionPublicAttributes, ADTapGestureTimer, ADWebView, NSString, _WKRemoteObjectInterface;
+@class ADAdImpressionPublicAttributes, ADWebView, ADWebViewGestureRecognizer, NSString, _WKRemoteObjectInterface;
 @protocol ADCreativeControllerDelegate, ADWebProcessProxy;
 
 @interface ADCreativeController : NSObject <WKNavigationDelegate, ADWebProcessDelegate, _WKInputDelegate>
@@ -18,22 +18,30 @@
     id <ADWebProcessProxy> _webProcessProxy;
     id <ADCreativeControllerDelegate> _delegate;
     _Bool _contentVisible;
+    _Bool _tapWasRecognized;
+    _Bool _isVideoAd;
     _Bool _isExpandedCreativePresented;
     _Bool _browserContextControllerDidLoad;
+    _Bool _shouldBlockNavigation;
     ADWebView *_creativeView;
     NSString *_creativeIdentifier;
     ADAdImpressionPublicAttributes *_publicAttributes;
     CDUnknownBlockType _loadCompletion;
     _WKRemoteObjectInterface *_remoteObjectInterface;
-    ADTapGestureTimer *_tapGestureTimer;
+    NSString *_adSpaceIdentifier;
+    ADWebViewGestureRecognizer *_gestureRecognizer;
 }
 
+@property(nonatomic) _Bool shouldBlockNavigation; // @synthesize shouldBlockNavigation=_shouldBlockNavigation;
+@property(retain, nonatomic) ADWebViewGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
 @property(nonatomic) _Bool browserContextControllerDidLoad; // @synthesize browserContextControllerDidLoad=_browserContextControllerDidLoad;
-@property(retain, nonatomic) ADTapGestureTimer *tapGestureTimer; // @synthesize tapGestureTimer=_tapGestureTimer;
 @property(nonatomic) _Bool isExpandedCreativePresented; // @synthesize isExpandedCreativePresented=_isExpandedCreativePresented;
+@property(copy, nonatomic) NSString *adSpaceIdentifier; // @synthesize adSpaceIdentifier=_adSpaceIdentifier;
 @property(retain, nonatomic) _WKRemoteObjectInterface *remoteObjectInterface; // @synthesize remoteObjectInterface=_remoteObjectInterface;
 @property(copy, nonatomic) CDUnknownBlockType loadCompletion; // @synthesize loadCompletion=_loadCompletion;
 @property(retain, nonatomic) ADAdImpressionPublicAttributes *publicAttributes; // @synthesize publicAttributes=_publicAttributes;
+@property(nonatomic) _Bool isVideoAd; // @synthesize isVideoAd=_isVideoAd;
+@property(nonatomic) _Bool tapWasRecognized; // @synthesize tapWasRecognized=_tapWasRecognized;
 @property(copy, nonatomic) NSString *creativeIdentifier; // @synthesize creativeIdentifier=_creativeIdentifier;
 @property(nonatomic, getter=isContentVisible) _Bool contentVisible; // @synthesize contentVisible=_contentVisible;
 - (_Bool)_webView:(id)arg1 focusShouldStartInputSession:(id)arg2;
@@ -44,16 +52,40 @@
 - (void)webProcessPlugInBrowserContextControllerGlobalObjectIsAvailableForFrame;
 - (void)webProcessPlugInWillDestroyBrowserContextController;
 - (void)webProcessPlugInDidCreateBrowserContextController;
+- (void)webProcessVideoAdJSODidCallExitFullScreenTapped:(float)arg1 volume:(float)arg2;
+- (void)webProcessVideoAdJSODidCallFullScreenTapped:(float)arg1 volume:(float)arg2;
+- (void)webProcessVideoAdJSODidCallSkipAdTapped:(float)arg1 volume:(float)arg2;
+- (void)webProcessVideoAdJSODidCallVideoTapped:(float)arg1 volume:(float)arg2;
+- (void)webProcessVideoAdJSODidCallMoreInfoTapped:(float)arg1 volume:(float)arg2;
+- (void)webProcessVideoAdJSODidCallAudioUnmuted:(float)arg1 volume:(float)arg2;
+- (void)webProcessVideoAdJSODidCallAudioMuted:(float)arg1;
+- (void)webProcessVideoAdJSODidCallVolumeChanged:(float)arg1 playTime:(float)arg2;
+- (void)webProcessVideoAdJSODidCallViewabilityChanged:(_Bool)arg1 playTime:(float)arg2 volume:(float)arg3;
+- (void)webProcessVideoAdJSODidCallPlayCompletedWithVolume:(float)arg1;
+- (void)webProcessVideoAdJSODidCallPlayProgressed:(float)arg1 volume:(float)arg2;
+- (void)webProcessVideoAdJSODidCallPlayPaused:(float)arg1 volume:(float)arg2;
+- (void)webProcessVideoAdJSODidCallPlayResumed:(float)arg1 volume:(float)arg2;
+- (void)webProcessVideoAdJSODidCallPlayStarted:(float)arg1 volume:(float)arg2;
+- (void)webProcessVideoAdJSOCreativeViewLoaded;
+- (void)webProcessVideoAdJSOGetVideoInfo:(CDUnknownBlockType)arg1;
+- (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
+- (void)webViewWebContentProcessDidTerminate:(id)arg1;
 - (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
+- (void)_navigationAttemptBlockedDueToAccidentalTapForMRAIDActionType:(long long)arg1;
+- (void)_tapGestureTimerDidExpireForRequestedActionType:(long long)arg1;
 - (void)_requestOpenURL:(id)arg1;
 - (void)_updateWebProcessProxyVisibility;
 - (void)_callLoadCompletionWithError:(id)arg1;
+- (void)resetVideoPlaytime;
 - (void)adSpaceActionViewControllerWillDismiss:(id)arg1;
 - (void)adSpaceActionViewControllerWillPresent:(id)arg1;
 - (void)unregisterExportedObjectInterface;
-- (void)loadAdImpression:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)loadAdImpression:(id)arg1 identifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_resetGestureFlags;
+- (_Bool)_navigationIsBlocked;
+- (void)_tapRecognized:(id)arg1;
 - (struct CGRect)frameForCreativeView;
 - (id)_userAgentForUserAgentString:(id)arg1;
 - (id)_customUserAgentString;

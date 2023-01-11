@@ -4,45 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <RelevanceEngine/REElementDataSource.h>
 
-@class NSString;
-@protocol NTKUpNextElementDataSourceDelegate;
-
-@interface NTKUpNextElementDataSource : NSObject
+@interface NTKUpNextElementDataSource : REElementDataSource
 {
-    _Bool _running;
-    _Bool _unlockedSinceBoot;
-    id <NTKUpNextElementDataSourceDelegate> _delegate;
-    unsigned long long _state;
-    NSString *_logHeader;
 }
 
-+ (id)sampleContentElements;
-+ (_Bool)wantsReloadForFirstDeviceUnlock;
-+ (_Bool)wantsReloadForSignificantTimeChange;
-+ (_Bool)wantsLocationInUseAsserton;
-+ (_Bool)wantsAppPrewarm;
-+ (id)overrideLocalizedDataSourceName;
-+ (id)overrideDataSourceImage;
-+ (id)bundleIdentifier;
-+ (id)dataSourceClasses;
-@property(readonly, nonatomic, getter=hasUnlockedSinceBoot) _Bool unlockedSinceBoot; // @synthesize unlockedSinceBoot=_unlockedSinceBoot;
-@property(readonly, nonatomic) NSString *logHeader; // @synthesize logHeader=_logHeader;
-@property(nonatomic) unsigned long long state; // @synthesize state=_state;
-@property(readonly, nonatomic, getter=isRunning) _Bool running; // @synthesize running=_running;
-@property(nonatomic) __weak id <NTKUpNextElementDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
-- (void)loadLoggingHeader;
-- (id)complicationDescriptor;
-- (void)setUnlockedSinceBoot:(_Bool)arg1;
-- (void)setRunning:(_Bool)arg1;
-- (void)elementWithIdentifierDidBecomeHidden:(id)arg1;
-- (void)elementWithIdentifierWillBecomeVisible:(id)arg1;
-- (void)resume;
-- (void)pause;
 - (void)getElementsDuringDateInterval:(id)arg1 inSection:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (id)init;
+- (id)supportedSections;
 
 @end
 

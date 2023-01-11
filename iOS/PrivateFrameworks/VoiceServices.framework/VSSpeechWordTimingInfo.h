@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VoiceServices/NSSecureCoding-Protocol.h>
 
@@ -14,6 +14,7 @@
     struct _NSRange _textRange;
 }
 
++ (id)wordTimingInfoFrom:(id)arg1 timestamps:(id)arg2;
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) struct _NSRange textRange; // @synthesize textRange=_textRange;
 @property(nonatomic) double startTime; // @synthesize startTime=_startTime;

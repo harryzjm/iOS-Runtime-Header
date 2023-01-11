@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 @protocol ICDeviceBrowserDelegate;
@@ -20,7 +20,6 @@
 - (int)start;
 @property(readonly, getter=isBrowsing) _Bool browsing;
 @property id <ICDeviceBrowserDelegate> delegate;
-- (void)finalize;
 - (void)dealloc;
 - (id)init;
 

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     _Bool _viewIsVisible;
     _Bool _deletedParticipants;
     _Bool _fromDetail;
+    _Bool _prohibitCallingSearcherStateChanged;
     EKUIEventInviteesEditViewController *_parentController;
     NSDate *_selectedStartDate;
     NSDate *_selectedEndDate;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_participantsInArray:(id)arg1 thatAreNotInArray:(id)arg2;
+@property(nonatomic) _Bool prohibitCallingSearcherStateChanged; // @synthesize prohibitCallingSearcherStateChanged=_prohibitCallingSearcherStateChanged;
 @property(retain, nonatomic) EKInviteeAlternativeTimeSearcher *availabilitySearcher; // @synthesize availabilitySearcher=_availabilitySearcher;
 @property(retain, nonatomic) EKUIInviteesViewAllInviteesCanAttendSection *allInviteesCanAttendSection; // @synthesize allInviteesCanAttendSection=_allInviteesCanAttendSection;
 @property(retain, nonatomic) EKUIInviteesViewSomeInviteesCanAttendSection *someInviteesCanAttendSection; // @synthesize someInviteesCanAttendSection=_someInviteesCanAttendSection;

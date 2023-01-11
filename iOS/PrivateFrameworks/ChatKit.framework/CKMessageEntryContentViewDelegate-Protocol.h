@@ -10,7 +10,6 @@
 
 @protocol CKMessageEntryContentViewDelegate <UIScrollViewDelegate>
 - (void)messageEntryContentViewCancelWasTapped:(CKMessageEntryContentView *)arg1 shelfPluginPayload:(IMPluginPayload *)arg2;
-- (void)messageEntryContentViewDidSwipeForJellyfishDemo:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentViewDidTapHandwritingKey:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentView:(CKMessageEntryContentView *)arg1 didPasteURL:(NSString *)arg2;
 - (void)messageEntryContentViewWasTapped:(CKMessageEntryContentView *)arg1 isLongPress:(_Bool)arg2;
@@ -18,8 +17,9 @@
 - (struct CGSize)messageEntryContentViewMaxShelfPluginViewSize:(CKMessageEntryContentView *)arg1;
 - (_Bool)messageEntryContentView:(CKMessageEntryContentView *)arg1 shouldInsertMediaObjects:(NSArray *)arg2;
 - (void)messageEntryContentViewDidEndEditing:(CKMessageEntryContentView *)arg1;
-- (void)messageEntryContentViewDidBeginEditing:(CKMessageEntryContentView *)arg1;
+- (void)messageEntryContentViewDidBeginEditing:(CKMessageEntryContentView *)arg1 wasAlreadyActive:(_Bool)arg2;
 - (_Bool)messageEntryContentViewShouldBeginEditing:(CKMessageEntryContentView *)arg1;
+- (void)messageEntryContentViewShelfDidChange:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentViewDidChange:(CKMessageEntryContentView *)arg1;
 @end
 

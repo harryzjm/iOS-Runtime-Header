@@ -15,8 +15,8 @@
 - (void)_accessibilityInsertText:(id)arg1 atPosition:(long long)arg2;
 - (_Bool)_accessibilityHandwritingAttributeCanDeleteCharacter;
 - (_Bool)_accessibilityHandwritingAttributeAcceptsRawInput;
-- (int)_accessibilityHandwritingAttributeAllowedCharacterSets;
-- (int)_accessibilityHandwritingAttributePreferredCharacterSet;
+- (unsigned long long)_accessibilityHandwritingAttributeAllowedCharacterSets;
+- (unsigned long long)_accessibilityHandwritingAttributePreferredCharacterSet;
 - (_Bool)_accessibilitySupportsHandwriting;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;

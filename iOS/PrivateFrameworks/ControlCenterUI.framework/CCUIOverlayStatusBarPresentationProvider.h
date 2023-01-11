@@ -21,6 +21,7 @@
 + (id)_moduleAlphaCAAnimationParametersForTransitionState:(id)arg1;
 + (id)_moduleScaleCAAnimationParametersForTransitionState:(id)arg1;
 + (id)_moduleC2AnimationParametersForTransitionState:(id)arg1 layoutRect:(struct CCUILayoutRect)arg2;
++ (id)_reducedMotionStatusBarStateCAAnimationParameters;
 + (id)_expandedTrailingStatusBarAlphaCAAnimationParametersForTransitionState:(id)arg1;
 + (id)_expandedLeadingStatusBarAlphaCAAnimationParametersForTransitionState:(id)arg1;
 + (id)_compactTrailingStatusBarAlphaCAAnimationParametersForTransitionState:(id)arg1;
@@ -38,17 +39,18 @@
 - (void)_addModuleScaleAnimationsToBatch:(id)arg1 transitionState:(id)arg2;
 - (struct CGAffineTransform)_moduleViewTransformForTransitionState:(id)arg1 layoutRect:(struct CCUILayoutRect)arg2;
 - (void)_addModuleTransformAnimationsToBatch:(id)arg1 transitionState:(id)arg2;
+- (void)_addReducedMotionStatusBarStateAnimationToBatch:(id)arg1 transitionState:(id)arg2;
 - (void)_addStatusBarAlphaAnimationToBatch:(id)arg1 transitionState:(id)arg2;
 - (void)_addStatusBarStateAnimationToBatch:(id)arg1 transitionState:(id)arg2;
 - (struct CGAffineTransform)_headerViewTransformForTransitionState:(id)arg1;
+- (struct CGAffineTransform)_compactStatusBar:(id)arg1 transformForTransitionState:(id)arg2;
 - (void)_addHeaderContentTransformAnimationToBatch:(id)arg1 transitionState:(id)arg2;
 - (double)_leadingStatusBarAlphaForTransitionState:(id)arg1;
 - (void)_addLeadingStatusBarAlphaAnimationToBatch:(id)arg1 transitionState:(id)arg2;
 - (void)_addBackgroundViewWeightingAnimationToBatch:(id)arg1 transitionState:(id)arg2;
 - (void)_addScrollViewContentOffsetAnimationToBatch:(id)arg1 transitionState:(id)arg2;
-- (struct CGRect)headerViewFrame;
-- (struct UIEdgeInsets)_moduleCollectionViewFrameEdgeInsets;
-- (struct CGRect)_moduleCollectionViewFrame;
+- (struct CGRect)_headerViewFrameForContentSize:(struct CGSize)arg1 withinBounds:(struct CGRect)arg2 contentInset:(struct UIEdgeInsets)arg3 contentEdgeInsets:(struct UIEdgeInsets)arg4 orientation:(long long)arg5;
+- (struct UIEdgeInsets)_edgeInsetsForContentSize:(struct CGSize)arg1 withinBounds:(struct CGRect)arg2 contentEdgeInsets:(struct UIEdgeInsets)arg3 orientation:(long long)arg4;
 - (struct CGRect)_presentedViewFrame;
 @property(readonly, nonatomic) unsigned long long dismissalFlickAllowedDirections;
 @property(readonly, nonatomic) double dismissalFlickMinimumVelocity;
@@ -63,6 +65,7 @@
 - (void)layoutViews;
 - (unsigned long long)finalTransitionTypeForState:(id)arg1 gestureTranslation:(struct CGPoint)arg2 gestureVelocity:(struct CGPoint)arg3;
 - (id)transitionStateForType:(unsigned long long)arg1 interactive:(_Bool)arg2 translation:(struct CGPoint)arg3;
+- (_Bool)backdropViewShouldUseAlphaTransformer;
 @property(readonly, nonatomic) _Bool allowHotPocketDuringTransition; // @dynamic allowHotPocketDuringTransition;
 @property(readonly, nonatomic) unsigned long long backgroundMaterialOptions; // @dynamic backgroundMaterialOptions;
 @property(readonly, nonatomic, getter=isPanDismissalAvailable) _Bool panDismissalAvailable; // @dynamic panDismissalAvailable;

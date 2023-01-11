@@ -28,7 +28,7 @@
 @property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
 @property(retain, nonatomic) MTXPCConnectionInfo *info; // @synthesize info=_info;
 - (void).cxx_destruct;
-- (void)dealloc;
+- (void)invalidate;
 - (id)description;
 - (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)performRemoteBlock:(CDUnknownBlockType)arg1 withErrorHandler:(CDUnknownBlockType)arg2;
@@ -39,6 +39,7 @@
 - (void)_didTerminateConnection;
 - (void)_didInvalidateConnection;
 - (void)_didInterruptConnection;
+- (void)dealloc;
 - (id)initWithConnectionInfo:(id)arg1 errorHandler:(CDUnknownBlockType)arg2 reconnectHandler:(CDUnknownBlockType)arg3;
 
 @end

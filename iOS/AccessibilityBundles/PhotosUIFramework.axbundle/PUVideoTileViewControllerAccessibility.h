@@ -17,6 +17,7 @@
 - (id)_axMainImageView;
 - (void)setAssetViewModel:(id)arg1;
 - (void)_updateImage;
+- (_Bool)_axConformsToFullScreenTileControllerDelegate;
 
 @end
 

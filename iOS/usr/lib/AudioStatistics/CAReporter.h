@@ -4,19 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+@class NSDate;
 
 @interface CAReporter : NSObject
 {
     _Bool _removedByClient;
     unsigned short _serviceType;
     long long _reporterID;
+    NSDate *_startDate;
 }
 
 + (void)sendSingleMessage:(id)arg1 category:(unsigned short)arg2 type:(unsigned short)arg3;
 @property _Bool removedByClient; // @synthesize removedByClient=_removedByClient;
+@property(retain) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(nonatomic) unsigned short serviceType; // @synthesize serviceType=_serviceType;
 @property(readonly) long long reporterID; // @synthesize reporterID=_reporterID;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)stop;
 - (void)sendMessage:(id)arg1 category:(unsigned short)arg2 type:(unsigned short)arg3;

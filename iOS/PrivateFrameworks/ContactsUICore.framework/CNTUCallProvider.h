@@ -15,8 +15,11 @@
     TUCallProvider *_callProvider;
 }
 
++ (void)setSenderIdentity:(id)arg1 forDialRequest:(id)arg2 handle:(id)arg3 contact:(id)arg4 geminiManager:(id)arg5 contactStore:(id)arg6;
++ (void)setSenderIdentity:(id)arg1 forDialRequest:(id)arg2 handle:(id)arg3 contact:(id)arg4;
 @property(copy, nonatomic) TUCallProvider *callProvider; // @synthesize callProvider=_callProvider;
 - (void).cxx_destruct;
+- (id)dialRequestForHandle:(id)arg1 contact:(id)arg2 video:(_Bool)arg3 senderIdentity:(id)arg4;
 - (id)dialRequestForHandle:(id)arg1 contact:(id)arg2 video:(_Bool)arg3;
 @property(readonly, copy, nonatomic) NSSet *supportedHandleTypes;
 @property(readonly, nonatomic) _Bool supportsVideo;

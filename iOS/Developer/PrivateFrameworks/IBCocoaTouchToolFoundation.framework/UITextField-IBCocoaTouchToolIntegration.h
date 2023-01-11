@@ -9,6 +9,7 @@
 @interface UITextField (IBCocoaTouchToolIntegration)
 - (struct CGSize)sizeThatFitsBounds;
 - (struct CGRect)textRect;
+- (void)setIbPasswordRules:(id)arg1;
 - (void)setIbTextContentType:(id)arg1;
 - (void)setIbSmartQuotesType:(long long)arg1;
 - (void)setIbSmartInsertDeleteType:(long long)arg1;

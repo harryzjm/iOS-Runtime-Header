@@ -12,7 +12,6 @@
 
 @interface HMDRemoteMessageTransport : HMFMessageTransport <HMFLogging>
 {
-    _Bool _secure;
     HMDAccountRegistry *_accountRegistry;
     long long _qualityOfService;
 }
@@ -20,8 +19,8 @@
 + (id)logCategory;
 + (id)remoteMessageFromMessage:(id)arg1 secure:(_Bool)arg2 accountRegistry:(id)arg3;
 + (unsigned long long)restriction;
++ (id)remoteMessageTransportsForProductInfo:(id)arg1;
 @property(readonly, nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
-@property(readonly, nonatomic, getter=isSecure) _Bool secure; // @synthesize secure=_secure;
 @property(readonly, nonatomic) HMDAccountRegistry *accountRegistry; // @synthesize accountRegistry=_accountRegistry;
 - (void).cxx_destruct;
 - (long long)compareCapability:(id)arg1 key:(id)arg2 withCapability:(id)arg3;
@@ -30,6 +29,7 @@
 - (id)remoteMessageFromMessage:(id)arg1;
 - (void)postDidReceiveRemoteMessageWithNoListenerFromDevice:(id)arg1;
 - (void)start;
+@property(readonly, nonatomic, getter=isSecure) _Bool secure;
 - (id)initWithAccountRegistry:(id)arg1;
 - (_Bool)canSendMessage:(id)arg1;
 - (id)init;

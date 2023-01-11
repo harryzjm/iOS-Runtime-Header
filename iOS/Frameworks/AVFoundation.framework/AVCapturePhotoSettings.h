@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/NSCopying-Protocol.h>
 
@@ -30,6 +30,8 @@
 - (id)photoFilters;
 - (void)setUserInitiatedPhotoRequestTime:(unsigned long long)arg1;
 - (unsigned long long)userInitiatedPhotoRequestTime;
+- (struct CGSize)rawEmbeddedThumbnailCGSize;
+- (unsigned int)rawEmbeddedThumbnailFormatFourCC;
 - (struct CGSize)embeddedThumbnailCGSize;
 - (unsigned int)embeddedThumbnailFormatFourCC;
 - (struct CGSize)previewCGSize;
@@ -39,6 +41,8 @@
 - (unsigned int)shutterSound;
 - (void)setSquareCropEnabled:(_Bool)arg1;
 - (_Bool)isSquareCropEnabled;
+@property(copy, nonatomic) NSDictionary *rawEmbeddedThumbnailPhotoFormat;
+@property(readonly, nonatomic) NSArray *availableRawEmbeddedThumbnailPhotoCodecTypes;
 @property(copy, nonatomic) NSDictionary *embeddedThumbnailPhotoFormat;
 @property(readonly, nonatomic) NSArray *availableEmbeddedThumbnailPhotoCodecTypes;
 @property(copy, nonatomic) NSDictionary *previewPhotoFormat;
@@ -55,6 +59,8 @@
 - (id)livePhotoMovieFileURLForOriginalPhoto;
 @property(copy, nonatomic) NSURL *livePhotoMovieFileURL;
 @property(copy, nonatomic) NSDictionary *metadata;
+@property(nonatomic) _Bool embedsPortraitEffectsMatteInPhoto;
+@property(nonatomic, getter=isPortraitEffectsMatteDeliveryEnabled) _Bool portraitEffectsMatteDeliveryEnabled;
 @property(nonatomic, getter=isCameraCalibrationDataDeliveryEnabled) _Bool cameraCalibrationDataDeliveryEnabled;
 @property(nonatomic, getter=isDepthDataFiltered) _Bool depthDataFiltered;
 @property(nonatomic) _Bool embedsDepthDataInPhoto;
@@ -67,6 +73,7 @@
 - (_Bool)isEV0PhotoDeliveryEnabled;
 - (void)setHDRMode:(long long)arg1;
 - (long long)HDRMode;
+@property(nonatomic, getter=isAutoRedEyeReductionEnabled) _Bool autoRedEyeReductionEnabled;
 @property(nonatomic) long long flashMode;
 - (void)setTurboModeEnabled:(_Bool)arg1;
 - (_Bool)isTurboModeEnabled;

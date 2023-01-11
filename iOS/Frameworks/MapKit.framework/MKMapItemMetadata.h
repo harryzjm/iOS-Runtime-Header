@@ -4,22 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GEOBusiness, NSMutableDictionary;
-@protocol MKMapItemVendorDeal;
 
 @interface MKMapItemMetadata : NSObject
 {
-    _Bool _hasCheckedForVendorDeal;
     GEOBusiness *_business;
-    id <MKMapItemVendorDeal> _deal;
     NSMutableDictionary *_imageCache;
 }
 
 @property(retain, nonatomic) NSMutableDictionary *imageCache; // @synthesize imageCache=_imageCache;
-@property(nonatomic) _Bool hasCheckedForVendorDeal; // @synthesize hasCheckedForVendorDeal=_hasCheckedForVendorDeal;
-@property(retain, nonatomic) id <MKMapItemVendorDeal> deal; // @synthesize deal=_deal;
 @property(readonly, nonatomic) GEOBusiness *business; // @synthesize business=_business;
 - (void).cxx_destruct;
 - (id)imageForURL:(id)arg1;

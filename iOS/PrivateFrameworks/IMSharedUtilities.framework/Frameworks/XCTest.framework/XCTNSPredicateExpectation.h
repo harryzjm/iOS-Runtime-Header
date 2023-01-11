@@ -12,6 +12,7 @@
 }
 
 @property(retain) _XCTNSPredicateExpectationImplementation *internal; // @synthesize internal=_internal;
+- (void).cxx_destruct;
 - (void)considerFulfilling;
 - (void)cleanup;
 - (void)fulfill;

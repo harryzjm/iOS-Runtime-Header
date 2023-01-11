@@ -74,8 +74,9 @@
 - (CDStruct_14d5dc5e)getProjectionMatrixAtTime:(double)arg1;
 @property(readonly, nonatomic) CDStruct_14d5dc5e projectionMatrix;
 - (CDStruct_14d5dc5e)getViewMatrixAtTime:(double)arg1;
-@property(readonly, nonatomic) struct RTCamera *rtCamera;
+- (struct RTCamera *)rtCamera;
 - (long long)version;
+- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

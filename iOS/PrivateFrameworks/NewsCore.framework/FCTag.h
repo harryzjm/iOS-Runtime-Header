@@ -25,6 +25,8 @@
     _Bool _publisherPaidWebAccessOptIn;
     _Bool _hideAccessoryText;
     _Bool _isHidden;
+    _Bool _isRealTimeTrackingEnabled;
+    _Bool _isArticleReadCountReportingEnabled;
     NSString *_identifier;
     NSString *_versionKey;
     NSString *_name;
@@ -44,8 +46,7 @@
     NSArray *_pinnedArticleIDs;
     long long _score;
     long long _minimumNewsVersion;
-    unsigned long long _forYouMaximumArticleCount;
-    double _forYouCutoffTime;
+    NSString *_subtitle;
     FCAssetHandle *_nameImageAssetHandle;
     FCAssetHandle *_nameImageCompactAssetHandle;
     double _bannerImageScale;
@@ -54,6 +55,7 @@
     FCAssetHandle *_nameImageMaskAssetHandle;
     FCAssetHandle *_logoImageAssetHandle;
     FCAssetHandle *_coverImageAssetHandle;
+    FCAssetHandle *_feedNavImageAssetHandle;
     NSString *_coverArticleListID;
     FCTextInfo *_headlineTitleTextInfo;
     FCTextInfo *_headlineExcerptTextInfo;
@@ -75,6 +77,8 @@
     FCAssetHandle *_nameImageMaskWidgetLQAssetHandle;
     FCAssetHandle *_nameImageMaskWidgetHQAssetHandle;
     unsigned long long _groupingEligibility;
+    NSArray *_publisherSpecifiedArticleIDs;
+    NSDate *_publisherSpecifiedArticleIDsModifiedDate;
     NSString *_pptFeedIDOverride;
     FCInterestToken *_tagInterestToken;
     NTPBFeedConfiguration *_feedConfiguration;
@@ -88,9 +92,9 @@
     struct CGSize _nameImageSize;
     struct CGSize _nameImageForDarkBackgroundSize;
     struct CGSize _nameImageMaskSize;
-    struct UIEdgeInsets _nameImageInsets;
-    struct UIEdgeInsets _nameImageForDarkBackgroundInsets;
-    struct UIEdgeInsets _nameImageMaskInsets;
+    struct FCEdgeInsets _nameImageInsets;
+    struct FCEdgeInsets _nameImageForDarkBackgroundInsets;
+    struct FCEdgeInsets _nameImageMaskInsets;
 }
 
 @property(readonly, nonatomic) FCInterestToken *tagRecordInterestToken; // @synthesize tagRecordInterestToken=_tagRecordInterestToken;
@@ -103,6 +107,10 @@
 @property(copy, nonatomic) NTPBFeedConfiguration *feedConfiguration; // @synthesize feedConfiguration=_feedConfiguration;
 @property(retain, nonatomic) FCInterestToken *tagInterestToken; // @synthesize tagInterestToken=_tagInterestToken;
 @property(copy, nonatomic) NSString *pptFeedIDOverride; // @synthesize pptFeedIDOverride=_pptFeedIDOverride;
+@property(readonly, nonatomic) NSDate *publisherSpecifiedArticleIDsModifiedDate; // @synthesize publisherSpecifiedArticleIDsModifiedDate=_publisherSpecifiedArticleIDsModifiedDate;
+@property(readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs; // @synthesize publisherSpecifiedArticleIDs=_publisherSpecifiedArticleIDs;
+@property(readonly, nonatomic) _Bool isArticleReadCountReportingEnabled; // @synthesize isArticleReadCountReportingEnabled=_isArticleReadCountReportingEnabled;
+@property(readonly, nonatomic) _Bool isRealTimeTrackingEnabled; // @synthesize isRealTimeTrackingEnabled=_isRealTimeTrackingEnabled;
 @property(readonly, nonatomic) _Bool isHidden; // @synthesize isHidden=_isHidden;
 @property(readonly, nonatomic) unsigned long long groupingEligibility; // @synthesize groupingEligibility=_groupingEligibility;
 @property(readonly, nonatomic) _Bool hideAccessoryText; // @synthesize hideAccessoryText=_hideAccessoryText;
@@ -124,22 +132,22 @@
 @property(readonly, copy, nonatomic) FCTextInfo *headlineExcerptTextInfo; // @synthesize headlineExcerptTextInfo=_headlineExcerptTextInfo;
 @property(readonly, copy, nonatomic) FCTextInfo *headlineTitleTextInfo; // @synthesize headlineTitleTextInfo=_headlineTitleTextInfo;
 @property(readonly, copy, nonatomic) NSString *coverArticleListID; // @synthesize coverArticleListID=_coverArticleListID;
+@property(readonly, nonatomic) FCAssetHandle *feedNavImageAssetHandle; // @synthesize feedNavImageAssetHandle=_feedNavImageAssetHandle;
 @property(readonly, nonatomic) FCAssetHandle *coverImageAssetHandle; // @synthesize coverImageAssetHandle=_coverImageAssetHandle;
 @property(readonly, nonatomic) FCAssetHandle *logoImageAssetHandle; // @synthesize logoImageAssetHandle=_logoImageAssetHandle;
-@property(readonly, nonatomic) struct UIEdgeInsets nameImageMaskInsets; // @synthesize nameImageMaskInsets=_nameImageMaskInsets;
+@property(readonly, nonatomic) struct FCEdgeInsets nameImageMaskInsets; // @synthesize nameImageMaskInsets=_nameImageMaskInsets;
 @property(readonly, nonatomic) struct CGSize nameImageMaskSize; // @synthesize nameImageMaskSize=_nameImageMaskSize;
 @property(readonly, nonatomic) FCAssetHandle *nameImageMaskAssetHandle; // @synthesize nameImageMaskAssetHandle=_nameImageMaskAssetHandle;
-@property(readonly, nonatomic) struct UIEdgeInsets nameImageForDarkBackgroundInsets; // @synthesize nameImageForDarkBackgroundInsets=_nameImageForDarkBackgroundInsets;
+@property(readonly, nonatomic) struct FCEdgeInsets nameImageForDarkBackgroundInsets; // @synthesize nameImageForDarkBackgroundInsets=_nameImageForDarkBackgroundInsets;
 @property(readonly, nonatomic) struct CGSize nameImageForDarkBackgroundSize; // @synthesize nameImageForDarkBackgroundSize=_nameImageForDarkBackgroundSize;
 @property(readonly, nonatomic) FCAssetHandle *nameImageForDarkBackgroundAssetHandle; // @synthesize nameImageForDarkBackgroundAssetHandle=_nameImageForDarkBackgroundAssetHandle;
 @property(nonatomic) double bannerImageBaselineOffsetPercentage; // @synthesize bannerImageBaselineOffsetPercentage=_bannerImageBaselineOffsetPercentage;
 @property(nonatomic) double bannerImageScale; // @synthesize bannerImageScale=_bannerImageScale;
 @property(readonly, nonatomic) FCAssetHandle *nameImageCompactAssetHandle; // @synthesize nameImageCompactAssetHandle=_nameImageCompactAssetHandle;
-@property(readonly, nonatomic) struct UIEdgeInsets nameImageInsets; // @synthesize nameImageInsets=_nameImageInsets;
+@property(readonly, nonatomic) struct FCEdgeInsets nameImageInsets; // @synthesize nameImageInsets=_nameImageInsets;
 @property(nonatomic) struct CGSize nameImageSize; // @synthesize nameImageSize=_nameImageSize;
 @property(retain, nonatomic) FCAssetHandle *nameImageAssetHandle; // @synthesize nameImageAssetHandle=_nameImageAssetHandle;
-@property(readonly, nonatomic) double forYouCutoffTime; // @synthesize forYouCutoffTime=_forYouCutoffTime;
-@property(readonly, nonatomic) unsigned long long forYouMaximumArticleCount; // @synthesize forYouMaximumArticleCount=_forYouMaximumArticleCount;
+@property(readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(readonly, nonatomic) _Bool isNotificationEnabled; // @synthesize isNotificationEnabled=_isNotificationEnabled;
 @property(readonly, nonatomic) long long minimumNewsVersion; // @synthesize minimumNewsVersion=_minimumNewsVersion;
 @property(readonly, nonatomic) long long score; // @synthesize score=_score;
@@ -166,8 +174,9 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool isWhitelisted;
 @property(readonly, nonatomic) _Bool supportsNotifications;
+@property(readonly, nonatomic) NSData *backingTagRecordData;
 - (void)ppt_overrideFeedID:(id)arg1;
-@property(readonly, nonatomic) FCColor *groupTitleColor;
+@property(readonly, copy, nonatomic) FCColor *groupTitleColor;
 @property(readonly, nonatomic) FCColor *foregroundColor;
 @property(readonly, nonatomic) FCColor *backgroundColor;
 @property(readonly, nonatomic) FCTagBanner *compactBannerImage; // @synthesize compactBannerImage=_compactBannerImage;
@@ -177,6 +186,7 @@
 @property(readonly, nonatomic) _Bool isWhite;
 @property(readonly, nonatomic) FCTagBanner *bannerImageForMask; // @synthesize bannerImageForMask=_bannerImageForMask;
 @property(readonly, nonatomic) long long feedType;
+@property(readonly, nonatomic) NSString *articleRecirculationConfigJSON;
 - (id)prefetchPurchaseOffer;
 - (id)authorizationURL;
 - (_Bool)isAuthenticationSetup;

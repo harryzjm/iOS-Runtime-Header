@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <iWorkImport/TSDContainerRep-Protocol.h>
 #import <iWorkImport/TSDMagicMoveMatching-Protocol.h>
+#import <iWorkImport/TSWPContainerTextEditingRep-Protocol.h>
 #import <iWorkImport/TSWPShapeLayoutDelegate-Protocol.h>
 
-@class CALayer, NSObject, NSString, TSWPRep, TSWPStorage;
+@class CALayer, NSArray, NSObject, NSString, TSWPRep, TSWPStorage;
 @protocol TSDContainerInfo;
 
 __attribute__((visibility("hidden")))
-@interface TSWPShapeRep <TSDMagicMoveMatching, TSDContainerRep, TSWPShapeLayoutDelegate>
+@interface TSWPShapeRep <TSDMagicMoveMatching, TSWPContainerTextEditingRep, TSWPShapeLayoutDelegate>
 {
     _Bool _editingContainedRep;
     CALayer *_overflowGlyphLayer;
@@ -36,10 +36,8 @@ __attribute__((visibility("hidden")))
 - (void)selectChildRep:(id)arg1 extendingSelection:(_Bool)arg2;
 - (_Bool)canSelectChildRep:(id)arg1;
 - (void)addAdditionalChildLayersToArray:(id)arg1;
-- (id)childReps;
+@property(readonly, nonatomic) NSArray *childReps;
 @property(readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
-- (id)hitReps:(struct CGPoint)arg1 withSlop:(struct CGSize)arg2;
-- (id)hitRep:(struct CGPoint)arg1;
 - (void)recursivelyPerformSelector:(SEL)arg1 withObject:(id)arg2;
 - (void)recursivelyPerformSelector:(SEL)arg1;
 - (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1 withObject:(id)arg2;

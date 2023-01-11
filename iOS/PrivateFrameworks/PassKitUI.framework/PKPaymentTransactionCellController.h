@@ -14,6 +14,8 @@
     UIFont *_transactionCellPrimaryLabelPeerPaymentFont;
     UIFont *_transactionCellValueLabelFont;
     UIFont *_transactionCellValueLabelPeerPaymentFont;
+    UIFont *_transactionCellSecondaryLabelFont;
+    UIFont *_transactionCellSecondaryLabelPeerPaymentFont;
     NSData *_businessAvatarImageData;
     NSData *_topUpAvatarImageData;
     PKPeerPaymentContactResolver *_contactResolver;
@@ -26,10 +28,12 @@
 - (id)_businessAvatarImageData;
 - (id)_topUpAvatarImageData;
 - (void)_updateAvatarOnTransactionCell:(id)arg1 withTransaction:(id)arg2 contact:(id)arg3;
+- (id)_transactionCellSecondaryLabelFontForPass:(id)arg1;
 - (id)_transactionCellPrimaryLabelFontForPass:(id)arg1;
 - (id)_transactionCellValueLabelFontForPass:(id)arg1;
 - (double)paymentTransactionCellHeightForPass:(id)arg1;
-- (void)configureCell:(id)arg1 forTransaction:(id)arg2 paymentPass:(id)arg3 avatarViewDelegate:(id)arg4;
+- (id)_relativeDateAndStatusForTransaction:(id)arg1;
+- (void)configureCell:(id)arg1 forTransaction:(id)arg2 paymentPass:(id)arg3 detailStyle:(long long)arg4 deviceName:(id)arg5 avatarViewDelegate:(id)arg6;
 - (id)initWithContactResolver:(id)arg1;
 
 @end

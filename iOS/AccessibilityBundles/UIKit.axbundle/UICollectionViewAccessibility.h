@@ -22,6 +22,7 @@
 - (struct CGRect)_visibleBounds;
 - (id)_accessibilitySortedElementsWithin;
 - (id)_accessibilityScannerGroupElementsGroupedByRow;
+- (id)_accessibilityGroupIdentifier;
 - (id)_accessibilityScannerGroupElements;
 - (_Bool)_accessibilityDescendantElementAtIndexPathIsValid:(id)arg1;
 - (unsigned long long)accessibilityTraits;

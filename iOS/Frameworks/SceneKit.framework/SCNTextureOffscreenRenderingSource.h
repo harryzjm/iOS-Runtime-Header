@@ -6,6 +6,7 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface SCNTextureOffscreenRenderingSource
 {
     _Bool _usesIOSurface;

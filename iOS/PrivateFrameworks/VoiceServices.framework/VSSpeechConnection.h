@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, NSXPCConnection, VSPresynthesizedAudioRequest, VSSpeechConnectionDelegateWrapper, VSSpeechRequest;
 @protocol OS_dispatch_queue, VSSpeechConnectionDelegate;
 
+__attribute__((visibility("hidden")))
 @interface VSSpeechConnection : NSObject
 {
     NSXPCConnection *_xpcConnection;
@@ -23,6 +24,7 @@
 @property(nonatomic) __weak id <VSSpeechConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
+- (void)getTTSServerVoicesWithFilter:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getLogToFile:(CDUnknownBlockType)arg1;
 - (void)setLogToFile:(_Bool)arg1;
 - (void)getVoiceInfoForLanguageCode:(id)arg1 footprint:(long long)arg2 gender:(long long)arg3 type:(long long)arg4 reply:(CDUnknownBlockType)arg5;
@@ -37,8 +39,11 @@
 - (void)stopCurrentSpeechRequestAtMark:(long long)arg1;
 - (void)startSynthesisRequest:(id)arg1;
 - (void)stopPresynthesizedAudioRequest;
+- (void)cachePresynthesizedAudioRequest:(id)arg1;
 - (void)startPresynthesizedAudioRequest:(id)arg1;
 - (void)startSpeechRequest:(id)arg1;
+- (void)endAudioPowerUpdate;
+- (void)beginAudioPowerUpdateWithReply:(CDUnknownBlockType)arg1;
 - (_Bool)isSystemSpeakingOnBehalfOfCurrentConnection;
 - (_Bool)isSystemSpeaking;
 - (id)availableFootprintsForVoice:(id)arg1 languageCode:(id)arg2;
@@ -47,8 +52,7 @@
 - (void)updateWithConnectionIdentifier:(id)arg1;
 @property(readonly, nonatomic) VSPresynthesizedAudioRequest *presynthesizedAudioRequest;
 - (void)setPresynthesizedAudioRequest:(id)arg1;
-@property(readonly, nonatomic) VSSpeechRequest *synthesisRequest;
-- (void)setSynthesisRequest:(id)arg1;
+- (id)concurrentSynthesisRequests;
 @property(readonly, nonatomic) VSSpeechRequest *request;
 - (void)setRequest:(id)arg1;
 - (void)_connectionInvalidated;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DAEAS/NSCoding-Protocol.h>
+#import <DAEAS/NSSecureCoding-Protocol.h>
 
 @class ASEvent, NSDate, NSNumber;
 
-@interface ASRecurrence <NSCoding>
+@interface ASRecurrence <NSSecureCoding>
 {
     NSNumber *_type;
     NSNumber *_interval;
@@ -23,6 +23,7 @@
     ASEvent *_parentEvent;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)asParseRules;
 + (_Bool)notifyOfUnknownTokens;
 + (_Bool)frontingBasicTypes;

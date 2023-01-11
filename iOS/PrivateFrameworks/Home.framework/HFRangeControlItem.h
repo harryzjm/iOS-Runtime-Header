@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber, NSSet, NSString;
+@class HFNumberValueConstraints, NSNumber, NSSet, NSString;
 
 @interface HFRangeControlItem
 {
@@ -14,6 +14,7 @@
 }
 
 + (_Bool)_hasWritableCharacteristicsOfType:(id)arg1 valueSource:(id)arg2;
++ (id)readOnlyCharacteristicTypes;
 + (Class)valueClass;
 @property(readonly, copy, nonatomic) NSString *maximumCharacteristicType; // @synthesize maximumCharacteristicType=_maximumCharacteristicType;
 @property(readonly, copy, nonatomic) NSString *minimumCharacteristicType; // @synthesize minimumCharacteristicType=_minimumCharacteristicType;
@@ -24,15 +25,20 @@
 - (id)_minimumCharacteristicTypeMetadata;
 - (id)targetCharacteristicTypeWithCharacteristicValuesKeyedByType:(id)arg1;
 - (unsigned long long)rangeModeWithCharacteristicValuesKeyedByType:(id)arg1;
-@property(readonly, copy, nonatomic) NSNumber *minimumCharacteristicTypeStepValue;
-@property(readonly, copy, nonatomic) NSNumber *maximumCharacteristicTypeStepValue;
+- (id)numberValueFormatter;
+- (id)minimumCharacteristicTypeStepValue;
+- (id)maximumCharacteristicTypeStepValue;
 @property(readonly, copy, nonatomic) NSNumber *stepValue;
 @property(readonly, copy, nonatomic) NSNumber *maximumValue;
 @property(readonly, copy, nonatomic) NSNumber *minimumValue;
+@property(readonly, nonatomic) HFNumberValueConstraints *targetValueConstraints;
+@property(readonly, nonatomic) HFNumberValueConstraints *maximumValueConstraints;
+@property(readonly, nonatomic) HFNumberValueConstraints *minimumValueConstraints;
+- (id)resultsForBatchReadResponse:(id)arg1;
 - (id)characteristicValuesForValue:(id)arg1;
 - (id)valueForCharacteristicValues:(id)arg1;
-- (id)copyWithCharacteristicTypes:(id)arg1 valueSource:(id)arg2;
-- (id)initWithValueSource:(id)arg1 characteristicTypes:(id)arg2 displayResults:(id)arg3;
+- (id)copyWithCharacteristicOptions:(id)arg1 valueSource:(id)arg2;
+- (id)initWithValueSource:(id)arg1 characteristicOptions:(id)arg2 displayResults:(id)arg3;
 - (id)initWithValueSource:(id)arg1 targetCharacteristicTypes:(id)arg2 minimumCharacteristicType:(id)arg3 maximumCharacteristicType:(id)arg4 displayResults:(id)arg5;
 
 @end

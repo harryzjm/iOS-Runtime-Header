@@ -12,8 +12,11 @@
     DVTDispatchLock *_lock;
     NSMutableArray *_suboperations;
     NSError *_error;
+    CDUnknownBlockType _signpost;
 }
 
++ (id)new;
++ (id)operationGroupWithSuboperations:(id)arg1 signpost:(CDUnknownBlockType)arg2;
 + (id)operationGroupWithSuboperations:(id)arg1;
 - (void).cxx_destruct;
 - (id)notFinishedReasonWithDepth:(unsigned long long)arg1;
@@ -28,10 +31,11 @@
 - (void)addSuboperation:(id)arg1;
 - (void)addSuboperations:(id)arg1;
 - (void)setQualityOfService:(long long)arg1;
+@property(getter=isSuspended) _Bool suspended;
 @property long long maxConcurrentOperationCount;
 @property(readonly) NSArray *suboperations;
 - (void)setName:(id)arg1;
-- (id)initWithName:(id)arg1;
+- (id)initWithSignpost:(CDUnknownBlockType)arg1;
 - (id)init;
 
 @end

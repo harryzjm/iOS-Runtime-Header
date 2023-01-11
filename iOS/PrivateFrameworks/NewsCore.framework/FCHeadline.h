@@ -9,8 +9,8 @@
 #import <NewsCore/FCFeedElement-Protocol.h>
 #import <NewsCore/FCHeadlineProviding-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort, FCCoverArt, FCFeedPersonalizedArticleScoreProfile, FCHeadlineThumbnail, FCTopStoriesStyleConfiguration, NSArray, NSDate, NSString, NSURL;
-@protocol FCChannelProviding, FCNativeAdProviding;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort, FCCoverArt, FCFeedPersonalizedArticleScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
+@protocol FCChannelProviding, FCHeadlineStocksFields, FCNativeAdProviding;
 
 @interface FCHeadline : NSObject <FCHeadlineProviding, FCFeedElement>
 {
@@ -21,9 +21,15 @@
     _Bool _isDraft;
     _Bool _usesImageOnTopLayout;
     _Bool _needsRapidUpdates;
+    _Bool _showMinimalChrome;
+    _Bool _boundToContext;
+    _Bool _hiddenFromFeeds;
+    _Bool _pressRelease;
+    _Bool _hiddenFromAutoFavorites;
     _Bool _paid;
     _Bool _showSubscriptionRequiredText;
     _Bool _canBePurchased;
+    _Bool _webEmbedsEnabled;
     _Bool _displayAsNativeAd;
     FCHeadlineThumbnail *_thumbnailLQ;
     FCHeadlineThumbnail *_thumbnail;
@@ -34,6 +40,7 @@
     FCHeadlineThumbnail *_thumbnailWidget;
     FCHeadlineThumbnail *_thumbnailWidgetHQ;
     NSString *_title;
+    FCHeadlineExperimentalTitleMetadata *_experimentalTitleMetadata;
     NSString *_articleID;
     NSString *_referencedArticleID;
     NSString *_clusterID;
@@ -45,7 +52,7 @@
     NSDate *_publishDate;
     long long _publisherArticleVersion;
     long long _backendArticleVersion;
-    NSObject<FCChannelProviding> *_sourceChannel;
+    id <FCChannelProviding> _sourceChannel;
     NSString *_sourceName;
     NSURL *_contentURL;
     NSDate *_lastModifiedDate;
@@ -62,6 +69,7 @@
     NSString *_surfacedByChannelID;
     NSString *_surfacedByTopicID;
     NSString *_surfacedByBinID;
+    NSSet *_surfacedByTagIDs;
     NSString *_accessoryText;
     NSString *_localDraftPath;
     FCFeedPersonalizedArticleScoreProfile *_scoreProfile;
@@ -73,13 +81,18 @@
     FCTopStoriesStyleConfiguration *_storyStyle;
     long long _minimumNewsVersion;
     FCCoverArt *_coverArt;
+    NSString *_videoCallToActionTitle;
+    NSURL *_videoCallToActionURL;
     unsigned long long _feedOrder;
     double _globalUserFeedback;
     NSDate *_displayDate;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *_globalCohort;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *_publisherCohort;
+    NSString *_articleRecirculationConfigJSON;
+    NSArray *_publisherSpecifiedArticleIDs;
     NSString *_identifier;
     NSURL *_headlineURL;
+    NSString *_titleCompact;
     NSString *_sponsoredBy;
     id <FCNativeAdProviding> _associatedAd;
     NSString *_excerpt;
@@ -91,8 +104,12 @@
 @property(retain, nonatomic) id <FCNativeAdProviding> associatedAd; // @synthesize associatedAd=_associatedAd;
 @property(copy, nonatomic) NSString *sponsoredBy; // @synthesize sponsoredBy=_sponsoredBy;
 @property(nonatomic, getter=isDisplayingAsNativeAd) _Bool displayAsNativeAd; // @synthesize displayAsNativeAd=_displayAsNativeAd;
+@property(copy, nonatomic) NSString *titleCompact; // @synthesize titleCompact=_titleCompact;
 @property(copy, nonatomic) NSURL *headlineURL; // @synthesize headlineURL=_headlineURL;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) _Bool webEmbedsEnabled; // @synthesize webEmbedsEnabled=_webEmbedsEnabled;
+@property(readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs; // @synthesize publisherSpecifiedArticleIDs=_publisherSpecifiedArticleIDs;
+@property(readonly, nonatomic) NSString *articleRecirculationConfigJSON; // @synthesize articleRecirculationConfigJSON=_articleRecirculationConfigJSON;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *publisherCohort; // @synthesize publisherCohort=_publisherCohort;
 @property(readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *globalCohort; // @synthesize globalCohort=_globalCohort;
 @property(copy, nonatomic) NSDate *displayDate; // @synthesize displayDate=_displayDate;
@@ -100,9 +117,16 @@
 @property(nonatomic) double globalUserFeedback; // @synthesize globalUserFeedback=_globalUserFeedback;
 @property(nonatomic) unsigned long long feedOrder; // @synthesize feedOrder=_feedOrder;
 @property(nonatomic) _Bool showSubscriptionRequiredText; // @synthesize showSubscriptionRequiredText=_showSubscriptionRequiredText;
+@property(readonly, copy, nonatomic) NSURL *videoCallToActionURL; // @synthesize videoCallToActionURL=_videoCallToActionURL;
+@property(readonly, copy, nonatomic) NSString *videoCallToActionTitle; // @synthesize videoCallToActionTitle=_videoCallToActionTitle;
 @property(readonly, nonatomic) FCCoverArt *coverArt; // @synthesize coverArt=_coverArt;
 @property(nonatomic, getter=isPaid) _Bool paid; // @synthesize paid=_paid;
 @property(readonly, nonatomic) long long minimumNewsVersion;
+@property(readonly, nonatomic, getter=isHiddenFromAutoFavorites) _Bool hiddenFromAutoFavorites;
+@property(readonly, nonatomic, getter=isPressRelease) _Bool pressRelease; // @synthesize pressRelease=_pressRelease;
+@property(readonly, nonatomic, getter=isHiddenFromFeeds) _Bool hiddenFromFeeds; // @synthesize hiddenFromFeeds=_hiddenFromFeeds;
+@property(readonly, nonatomic, getter=isBoundToContext) _Bool boundToContext; // @synthesize boundToContext=_boundToContext;
+@property(readonly, nonatomic) _Bool showMinimalChrome; // @synthesize showMinimalChrome=_showMinimalChrome;
 @property(readonly, nonatomic) _Bool needsRapidUpdates; // @synthesize needsRapidUpdates=_needsRapidUpdates;
 @property(retain, nonatomic) FCTopStoriesStyleConfiguration *storyStyle; // @synthesize storyStyle=_storyStyle;
 @property(nonatomic) unsigned long long storyType; // @synthesize storyType=_storyType;
@@ -114,6 +138,7 @@
 @property(retain, nonatomic) FCFeedPersonalizedArticleScoreProfile *scoreProfile; // @synthesize scoreProfile=_scoreProfile;
 @property(readonly, copy, nonatomic) NSString *localDraftPath; // @synthesize localDraftPath=_localDraftPath;
 @property(readonly, copy, nonatomic) NSString *accessoryText; // @synthesize accessoryText=_accessoryText;
+@property(copy, nonatomic) NSSet *surfacedByTagIDs; // @synthesize surfacedByTagIDs=_surfacedByTagIDs;
 @property(copy, nonatomic) NSString *surfacedByBinID; // @synthesize surfacedByBinID=_surfacedByBinID;
 @property(copy, nonatomic) NSString *surfacedByTopicID; // @synthesize surfacedByTopicID=_surfacedByTopicID;
 @property(copy, nonatomic) NSString *surfacedByChannelID; // @synthesize surfacedByChannelID=_surfacedByChannelID;
@@ -134,7 +159,7 @@
 @property(readonly, copy, nonatomic) NSDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property(readonly, copy, nonatomic) NSURL *contentURL; // @synthesize contentURL=_contentURL;
 @property(copy, nonatomic) NSString *sourceName; // @synthesize sourceName=_sourceName;
-@property(copy, nonatomic) NSObject<FCChannelProviding> *sourceChannel; // @synthesize sourceChannel=_sourceChannel;
+@property(copy, nonatomic) id <FCChannelProviding> sourceChannel; // @synthesize sourceChannel=_sourceChannel;
 @property(readonly, nonatomic) long long backendArticleVersion; // @synthesize backendArticleVersion=_backendArticleVersion;
 @property(readonly, nonatomic) long long publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;
 @property(copy, nonatomic) NSDate *publishDate; // @synthesize publishDate=_publishDate;
@@ -143,9 +168,10 @@
 @property(readonly, copy, nonatomic) NSArray *topics; // @synthesize topics=_topics;
 @property(copy, nonatomic) NSString *shortExcerpt; // @synthesize shortExcerpt=_shortExcerpt;
 @property(readonly, copy, nonatomic) NSString *primaryAudience; // @synthesize primaryAudience=_primaryAudience;
-@property(readonly, copy, nonatomic) NSString *clusterID;
+@property(copy, nonatomic) NSString *clusterID; // @synthesize clusterID=_clusterID;
 @property(readonly, copy, nonatomic) NSString *referencedArticleID; // @synthesize referencedArticleID=_referencedArticleID;
 @property(copy, nonatomic) NSString *articleID; // @synthesize articleID=_articleID;
+@property(copy, nonatomic) FCHeadlineExperimentalTitleMetadata *experimentalTitleMetadata; // @synthesize experimentalTitleMetadata=_experimentalTitleMetadata;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) FCHeadlineThumbnail *thumbnailWidgetHQ; // @synthesize thumbnailWidgetHQ=_thumbnailWidgetHQ;
 @property(readonly, nonatomic) FCHeadlineThumbnail *thumbnailWidget; // @synthesize thumbnailWidget=_thumbnailWidget;
@@ -171,8 +197,8 @@
 @property(readonly, nonatomic) unsigned long long halfLife;
 @property(readonly, copy, nonatomic) NSString *sourceFeedID;
 @property(readonly, nonatomic) _Bool isTopStory;
-- (void)applyHeadlineMetadata:(id)arg1 appConfig:(id)arg2;
-- (void)assignStoryType:(unsigned long long)arg1 withAppConfig:(id)arg2;
+- (void)applyHeadlineMetadata:(id)arg1 configuration:(id)arg2;
+- (void)assignStoryType:(unsigned long long)arg1 withConfiguration:(id)arg2;
 - (void)overrideDisplayDate:(id)arg1;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) _Bool hasVideo;
@@ -186,7 +212,9 @@
 - (_Bool)isEqual:(id)arg1;
 
 // Remaining properties
+@property(readonly, nonatomic) NSData *backingArticleRecordData;
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) id <FCHeadlineStocksFields> stocksFields;
 @property(readonly) Class superclass;
 
 @end

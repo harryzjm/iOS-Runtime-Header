@@ -16,6 +16,7 @@
 - (id)_accessibilitySummaryButton;
 - (_Bool)_accessibilityPerformSummaryButton:(id)arg1;
 - (unsigned long long)accessibilityTraits;
+- (id)_accessibilityLabelForPlaybackState:(long long)arg1;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 

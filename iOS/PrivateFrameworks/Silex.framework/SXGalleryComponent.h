@@ -12,7 +12,7 @@
 
 + (CDUnknownBlockType)valueClassBlockForPropertyWithName:(id)arg1;
 + (id)typeString;
-- (Class)componentViewClass;
+- (unsigned long long)traits;
 
 // Remaining properties
 @property(readonly, nonatomic) NSString *galleryType; // @dynamic galleryType;

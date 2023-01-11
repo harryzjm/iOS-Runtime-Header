@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <MusicLibrary/NSCoding-Protocol.h>
 #import <MusicLibrary/NSCopying-Protocol.h>
+#import <MusicLibrary/NSSecureCoding-Protocol.h>
 
-@interface ML3Predicate : NSObject <NSCoding, NSCopying>
+@interface ML3Predicate : NSObject <NSSecureCoding, NSCopying>
 {
 }
 
++ (_Bool)supportsSecureCoding;
 - (_Bool)containsPropertyPredicate:(id)arg1 matchingValue:(id)arg2 usingComparison:(int)arg3;
 - (id)spotlightPredicate;
 - (_Bool)isFalseAlways;

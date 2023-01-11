@@ -7,6 +7,7 @@
 #import <UIKit/UIToolbar.h>
 
 @interface UIToolbar (IBCocoaTouchToolIntegration)
+- (_Bool)ibRequiresWidthConstraintForAmbiguityDuringEngineBootstrapping;
 - (id)itemImageBitmaps;
 - (id)titleRectsArray;
 - (id)itemFramesArray;

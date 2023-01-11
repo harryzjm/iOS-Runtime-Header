@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/PKPaymentServiceExportedInterface-Protocol.h>
 #import <PassKitCore/PKXPCServiceDelegate-Protocol.h>
@@ -18,16 +18,18 @@
     unsigned long long _interfaceType;
     _Atomic _Bool _cachedFieldPropertiesValid;
     _Bool _hasPaymentDeviceFieldProperties;
+    _Bool _forceConnectionOnResume;
     id <PKPaymentServiceDelegate> _delegate;
 }
 
 @property(nonatomic) __weak id <PKPaymentServiceDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+- (void)_accessDelegate:(CDUnknownBlockType)arg1;
 - (_Bool)_hasInterfaceOfType:(unsigned long long)arg1;
-- (void)_sharedPaymentWebServiceContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_defaultPaymentPassUniqueIdentifier:(CDUnknownBlockType)arg1;
 - (void)_messagesAppLaunchTokenForPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_transactionsAppLaunchTokenForPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)sharedPaymentWebServiceContextWithCompletion:(CDUnknownBlockType)arg1;
 @property(retain, nonatomic) PKPaymentWebServiceContext *sharedPaymentWebServiceContext;
 @property(retain, nonatomic) NSString *defaultPaymentPassUniqueIdentifier;
 @property(readonly, nonatomic) PKExpressTransactionState *outstandingExpressTransactionState;
@@ -40,18 +42,27 @@
 - (void)consistencyCheck;
 - (void)downloadAllPaymentPasses;
 - (void)simulatePaymentPush;
-- (void)felicaStateWithPassUniqueIdentifier:(id)arg1 paymentApplication:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)simulateDefaultExpressTransitPassIdentifier:(id)arg1;
-- (void)processFelicaTransitTransactionEventWithHistory:(id)arg1 transactionDate:(id)arg2 forPaymentApplication:(id)arg3 withPassUniqueIdentifier:(id)arg4;
+- (void)transitStateWithPassUniqueIdentifier:(id)arg1 paymentApplication:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)simulateDefaultExpressTransitPassIdentifier:(id)arg1 forExpressMode:(id)arg2;
+- (void)processTransitTransactionEventWithHistory:(id)arg1 transactionDate:(id)arg2 forPaymentApplication:(id)arg3 withPassUniqueIdentifier:(id)arg4 expressTransactionState:(id)arg5;
+- (void)removeExpressPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)removeExpressPassesWithCardType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setExpressWithPassInformation:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)expressPassInformationForMode:(id)arg1;
 - (id)expressPassesInformation;
+- (id)expressPassesInformationWithAutomaticSelectionTechnologyType:(long long)arg1;
+- (id)expressPassesInformationWithCardType:(long long)arg1;
+- (id)expressPassInformationWithPassUniqueIdentifier:(id)arg1;
+- (void)setDefaultExpressTransitPassIdentifier:(id)arg1 withCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)defaultExpressTransitPassIdentifier;
 - (void)setDefaultExpressFelicaTransitPassIdentifier:(id)arg1 withCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)defaultExpressFelicaTransitPassIdentifier;
 - (void)sanitizeExpressPasses;
+- (void)initializeSecureElement:(CDUnknownBlockType)arg1;
 - (void)initializeSecureElementIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)defaultPaymentApplicationForPassUniqueIdentifier:(id)arg1;
 - (void)setDefaultPaymentApplication:(id)arg1 forPassUniqueIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)valueAddedServiceTransactionWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)valueAddedServiceTransactionsForPaymentTransaction:(id)arg1 limit:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)valueAddedServiceTransactionsForPassWithUniqueIdentifier:(id)arg1 limit:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)insertOrUpdateValueAddedServiceTransaction:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentTransaction:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -59,6 +70,7 @@
 - (void)deleteMessagesForPaymentPassWithUniqueIdentifier:(id)arg1;
 - (void)deleteAllTransactionsForPaymentPassWithUniqueIdentifier:(id)arg1;
 - (void)deletePaymentTransactionWithIdentifier:(id)arg1 forPassWithUniqueIdentifier:(id)arg2;
+- (void)balancesForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)messagesForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)passUniqueIdentifierForTransactionWithServiceIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)passUniqueIdentifierForTransactionWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -73,11 +85,12 @@
 - (void)submitVerificationCode:(id)arg1 verificationData:(id)arg2 forDPANIdentifier:(id)arg3;
 - (id)messagesAppLaunchTokenForPassWithUniqueIdentifier:(id)arg1;
 - (id)transactionsAppLaunchTokenForPassWithUniqueIdentifier:(id)arg1;
-- (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithFelicaPassProperties:(id)arg2;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)passWithUniqueIdentifier:(id)arg1 didReceiveValueAddedServiceTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableTransactionService:(_Bool)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableMessageService:(_Bool)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveMessage:(id)arg2;
 - (void)didUpdateDefaultPaymentPassWithUniqueIdentifier:(id)arg1;
@@ -97,6 +110,7 @@
 - (void)remoteServiceDidSuspend:(id)arg1;
 - (void)remoteService:(id)arg1 didInterruptConnection:(id)arg2;
 - (void)remoteService:(id)arg1 didEstablishConnection:(id)arg2;
+- (void)dealloc;
 - (id)initWithDelegate:(id)arg1;
 - (id)init;
 

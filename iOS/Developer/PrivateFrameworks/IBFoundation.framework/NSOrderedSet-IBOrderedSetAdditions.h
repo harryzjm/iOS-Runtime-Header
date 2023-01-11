@@ -28,6 +28,7 @@
 - (void)ib_enumerateCopyOfObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)ib_enumerateObjectsUsingMutatingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)ib_binarySearchForObject:(id)arg1 usingComparator:(CDUnknownBlockType)arg2;
+- (id)ib_dictionaryWithObjectToLastIndex;
 - (unsigned long long)ib_indexOfFirstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)ib_collectionByKeepingObjectsInSet:(id)arg1;
 - (id)ib_collectionByRemovingObjectsInSet:(id)arg1;

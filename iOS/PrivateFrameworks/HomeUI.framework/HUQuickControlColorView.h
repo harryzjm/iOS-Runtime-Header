@@ -48,6 +48,7 @@
 - (void)controlView:(id)arg1 colorPickerModeDidChange:(unsigned long long)arg2;
 - (void)controlView:(id)arg1 interactionStateDidChange:(_Bool)arg2 forFirstTouch:(_Bool)arg3;
 - (void)controlView:(id)arg1 valueDidChange:(id)arg2;
+- (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
 @property(retain, nonatomic) id value;
 @property(readonly, nonatomic, getter=isUserInteractionActive) _Bool userInteractionActive;
@@ -72,7 +73,6 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(retain, nonatomic) id secondaryValue;
-@property(nonatomic) long long sizeSubclass;
 @property(readonly) Class superclass;
 
 @end

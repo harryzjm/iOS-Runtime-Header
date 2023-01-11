@@ -7,11 +7,12 @@
 #import <BulletinDistributorCompanion/BBObserverDelegate-Protocol.h>
 #import <BulletinDistributorCompanion/BLTSectionConfigurationDelegate-Protocol.h>
 #import <BulletinDistributorCompanion/BLTSectionInfoListDelegate-Protocol.h>
+#import <BulletinDistributorCompanion/BLTSiriActionAppListDelegate-Protocol.h>
 
-@class BBObserver, BLTSectionInfoList, BLTSectionInfoListBridgeProvider, BLTSectionInfoSyncCoordinator, BLTSettingSyncSendQueue, NSObject, NSString;
+@class BBObserver, BLTSectionInfoList, BLTSectionInfoListBridgeProvider, BLTSectionInfoSyncCoordinator, BLTSettingSyncSendQueue, BLTSiriActionAppList, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface BLTSettingSync <BBObserverDelegate, BLTSectionInfoListDelegate, BLTSectionConfigurationDelegate>
+@interface BLTSettingSync <BBObserverDelegate, BLTSectionInfoListDelegate, BLTSectionConfigurationDelegate, BLTSiriActionAppListDelegate>
 {
     BLTSectionInfoList *_sectionInfoList;
     BLTSettingSyncSendQueue *_settingSendQueue;
@@ -20,16 +21,23 @@
     NSObject<OS_dispatch_queue> *_sectionInfoSyncCoordinatorQueue;
     _Bool _initialSyncPerformed;
     BLTSectionInfoListBridgeProvider *_bridgeProvider;
+    NSMutableDictionary *_reloadBBCompletions;
+    unsigned long long _stateHandler;
+    BLTSiriActionAppList *_siriActionAppList;
     BBObserver *_observer;
 }
 
 @property(retain, nonatomic) BBObserver *observer; // @synthesize observer=_observer;
 - (void).cxx_destruct;
+- (id)_stateDescription;
+- (void)_callAndRemoveReloadBBCompletion:(CDUnknownBlockType)arg1 sectionID:(id)arg2;
+- (void)_addReloadBBCompletion:(CDUnknownBlockType)arg1 sectionID:(id)arg2;
+- (void)_callReloadBBCompletionsForSectionID:(id)arg1;
 - (void)sectionConfiguration:(id)arg1 addedSectionIDs:(id)arg2 removedSectionIDs:(id)arg3;
 - (void)sectionInfoList:(id)arg1 receivedRemoveSectionWithSectionID:(id)arg2;
 - (void)sectionInfoList:(id)arg1 receivedUpdatedSectionInfoForSectionID:(id)arg2;
 - (void)observer:(id)arg1 noteSectionParametersChanged:(id)arg2 forSectionID:(id)arg3;
-- (void)enableNotifications:(_Bool)arg1 sectionID:(id)arg2 mirror:(_Bool)arg3 fromRemote:(_Bool)arg4;
+- (void)setNotificationsLevel:(unsigned long long)arg1 sectionID:(id)arg2 mirror:(_Bool)arg3 fromRemote:(_Bool)arg4;
 - (void)setSectionInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)_willSectionIDAlert:(id)arg1;
 - (id)overriddenSettings;
@@ -37,15 +45,19 @@
 - (id)settingOverrides;
 - (void)spoolSectionInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)sendAllSectionInfoWithSpool:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)sendRemoveSectionWithSectionID:(id)arg1;
+- (void)sendRemoveSectionWithSectionID:(id)arg1 sent:(CDUnknownBlockType)arg2;
 - (void)sendSectionInfoWithSectionID:(id)arg1 completion:(CDUnknownBlockType)arg2 spoolToFile:(_Bool)arg3;
 - (id)_overriddenSectionInfoForSectionID:(id)arg1;
+- (void)sendOverrideOnly:(id)arg1 sectionID:(id)arg2 spoolToFile:(_Bool)arg3;
 - (void)_updateAllBBSectionsWithCompletion:(CDUnknownBlockType)arg1 withProgress:(CDUnknownBlockType)arg2 spoolToFile:(_Bool)arg3;
 - (id)_alertingSectionIDs;
 - (void)_sendSectionSubtypeParameterIcons:(id)arg1 sectionID:(id)arg2 waitForAcknowledgement:(_Bool)arg3 spoolToFile:(_Bool)arg4 andCompletion:(CDUnknownBlockType)arg5;
 - (void)clearSectionInfoSentCache;
 - (_Bool)isSectionInfoSentCacheEmpty;
 - (void)dealloc;
+- (void)siriActionAppListUpdated:(id)arg1;
+- (void)handleAllSyncComplete;
+- (void)_sendSiriAppListWithInstalled:(struct NSDictionary *)arg1 removed:(id)arg2;
 - (void)_sendSpooledSyncWithCompletion:(CDUnknownBlockType)arg1 withProgress:(CDUnknownBlockType)arg2;
 - (void)_logNotificationSettings;
 - (void)_spoolInitialSync;

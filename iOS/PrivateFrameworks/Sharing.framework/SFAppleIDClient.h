@@ -15,6 +15,7 @@
     _Bool _invalidateCalled;
     _Bool _invalidateDone;
     NSXPCConnection *_xpcCnx;
+    NSXPCConnection *_xpcAuthCnx;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
 }
@@ -25,15 +26,18 @@
 - (void).cxx_destruct;
 - (void)statusInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestWithInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)appleIDListWithCompletion:(CDUnknownBlockType)arg1;
-- (void)addAppleID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)authenticateAccountWithAppleID:(id)arg1 password:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_personInfoWithEmailOrPhone:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)personInfoWithEmailOrPhone:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_myAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (void)myAccountWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_copyIdentityWithCertificatePermanentReference:(id)arg1 keyPermanentReference:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_copyIdentityForAppleID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)copyIdentityForAppleID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_copyCertificateForAppleID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)copyCertificateForAppleID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_invalidated;
 - (void)_interrupted;
+- (void)_ensureAuthXPCStarted;
 - (void)_ensureXPCStarted;
 - (void)_invalidate;
 - (void)invalidate;

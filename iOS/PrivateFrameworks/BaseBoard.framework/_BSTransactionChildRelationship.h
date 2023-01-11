@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BSTransaction;
 
@@ -15,8 +15,8 @@
 }
 
 @property(readonly, nonatomic) unsigned long long schedulingPolicy; // @synthesize schedulingPolicy=_schedulingPolicy;
-@property(readonly, retain, nonatomic) BSTransaction *childTransaction; // @synthesize childTransaction=_childTransaction;
-- (void)dealloc;
+@property(readonly, nonatomic) BSTransaction *childTransaction; // @synthesize childTransaction=_childTransaction;
+- (void).cxx_destruct;
 - (id)initWithChildTransaction:(id)arg1 schedulingPolicy:(unsigned long long)arg2;
 
 @end

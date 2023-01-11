@@ -9,7 +9,7 @@
 #import <WeatherFoundation/WeatherServicePrivateProtocol-Protocol.h>
 #import <WeatherFoundation/WeatherServiceProtocol-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSString, WFQueryDispatcher, WFTemperatureUnitProvider, WFWeatherStoreService;
+@class NSArray, NSMapTable, NSMutableArray, NSString, WFQueryDispatcher, WFTemperatureUnitProvider, WFWeatherStoreService;
 @protocol OS_dispatch_queue;
 
 @interface WeatherService : NSObject <WeatherServiceProtocol, WeatherServicePrivateProtocol>
@@ -19,11 +19,11 @@
     NSObject<OS_dispatch_queue> *_clientQueue;
     WFWeatherStoreService *_internalService;
     WFQueryDispatcher *_queryDispatcher;
-    NSMutableDictionary *_clientDictionary;
+    NSMapTable *_clientDictionary;
 }
 
 + (id)sharedService;
-@property(retain) NSMutableDictionary *clientDictionary; // @synthesize clientDictionary=_clientDictionary;
+@property(retain) NSMapTable *clientDictionary; // @synthesize clientDictionary=_clientDictionary;
 @property(retain) WFQueryDispatcher *queryDispatcher; // @synthesize queryDispatcher=_queryDispatcher;
 @property(retain) WFWeatherStoreService *internalService; // @synthesize internalService=_internalService;
 @property(retain, nonatomic) WFTemperatureUnitProvider *temperatureUnitProvider; // @synthesize temperatureUnitProvider=_temperatureUnitProvider;

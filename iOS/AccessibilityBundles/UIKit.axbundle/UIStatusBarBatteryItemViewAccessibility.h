@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axCachedAXLabel;
+- (void)_axSetCachedAXLabel:(id)arg1;
 - (_Bool)_axIsCapacityDirty;
 - (void)_axSetCapacityDirty:(_Bool)arg1;
 - (_Bool)updateForNewData:(id)arg1 actions:(int)arg2;
@@ -20,6 +22,8 @@
 - (struct CGRect)accessibilityFrame;
 - (struct CGPoint)accessibilityActivationPoint;
 - (id)_accessibilityIsBatteryPercentVisible;
+- (void)_accessibilitySetNonQuantizedBatteryLevel:(long long)arg1;
+- (long long)_accessibilityNonQuantizedBatteryLevel;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSCHPropertyMapsGeneratedProtocol-Protocol.h>
 #import <iWorkImport/TSCHStyleOwnerCollaborationSupport-Protocol.h>
@@ -34,13 +34,14 @@ __attribute__((visibility("hidden")))
 + (unsigned char)styleOwnerPathType;
 @property(readonly, copy, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID=mAxisID;
 @property(readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=mUUID;
+- (void).cxx_destruct;
 - (void)setStyle:(id)arg1 nonStyle:(id)arg2;
 - (id)nonstyle;
 - (id)style;
 - (id)swapTuplesForParagraphStyleMutations:(id)arg1 forReferencingProperty:(int)arg2;
 - (id)swapTuplesForMutations:(id)arg1 forImport:(_Bool)arg2;
 @property(readonly, nonatomic) unsigned long long styleSwapIndex;
-@property(readonly, nonatomic) TSCHChartAxis *axis;
+@property(readonly, nonatomic) __weak TSCHChartAxis *axis;
 - (id)model;
 - (id)context;
 - (id)drawableInfo;

@@ -7,13 +7,16 @@
 #import <Silex/SXViewportChangeListener-Protocol.h>
 #import <Silex/WKNavigationDelegate-Protocol.h>
 #import <Silex/WKNavigationDelegatePrivate-Protocol.h>
+#import <Silex/WKUIDelegate-Protocol.h>
 
 @class NSString, SXWebCrashRetryThrottler, WKWebView;
+@protocol SXComponentActionHandler;
 
-@interface SXEmbedVideoComponentView <WKNavigationDelegate, WKNavigationDelegatePrivate, SXViewportChangeListener>
+@interface SXEmbedVideoComponentView <WKNavigationDelegate, WKNavigationDelegatePrivate, WKUIDelegate, SXViewportChangeListener>
 {
     _Bool _webViewIsLoaded;
     _Bool _isPresentingFullscreen;
+    id <SXComponentActionHandler> _actionHandler;
     WKWebView *_webView;
     SXWebCrashRetryThrottler *_webCrashRetryThrottler;
 }
@@ -23,6 +26,7 @@
 @property(nonatomic) _Bool webViewIsLoaded; // @synthesize webViewIsLoaded=_webViewIsLoaded;
 @property(retain, nonatomic) SXWebCrashRetryThrottler *webCrashRetryThrottler; // @synthesize webCrashRetryThrottler=_webCrashRetryThrottler;
 @property(retain, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
+@property(readonly, nonatomic) id <SXComponentActionHandler> actionHandler; // @synthesize actionHandler=_actionHandler;
 - (void).cxx_destruct;
 - (_Bool)allowHierarchyRemoval;
 - (unsigned long long)analyticsVideoType;
@@ -35,6 +39,7 @@
 - (_Bool)shouldAllowRequestToURL:(id)arg1;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)_webViewWebProcessDidCrash:(id)arg1;
+- (id)webView:(id)arg1 createWebViewWithConfiguration:(id)arg2 forNavigationAction:(id)arg3 windowFeatures:(id)arg4;
 - (void)handleError:(id)arg1;
 - (struct CGRect)visibleFrame;
 - (struct CGRect)transitionContentFrame;
@@ -42,8 +47,8 @@
 - (void)initializeWebViewWithURL:(id)arg1;
 - (void)visibilityStateDidChangeFromState:(long long)arg1;
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
-- (void)presentComponent;
-- (id)initWithComponent:(id)arg1 configuration:(id)arg2 context:(id)arg3 analyticsReporting:(id)arg4 appStateMonitor:(id)arg5;
+- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 appStateMonitor:(id)arg6 actionHandler:(id)arg7;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

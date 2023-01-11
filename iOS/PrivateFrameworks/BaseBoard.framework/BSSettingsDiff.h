@@ -4,23 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSXPCCoding-Protocol.h>
 #import <BaseBoard/NSCopying-Protocol.h>
 
-@class BSMutableSettings, NSHashTable, NSString;
+@class BSMutableSettings, NSMutableSet, NSString;
 @protocol BSSettingDescriptionProvider;
 
 @interface BSSettingsDiff : NSObject <NSCopying, BSXPCCoding>
 {
     id <BSSettingDescriptionProvider> _descriptionProvider;
     BSMutableSettings *_changes;
-    NSHashTable *_flagRemovals;
-    NSHashTable *_objectRemovals;
+    NSMutableSet *_flagRemovals;
+    NSMutableSet *_objectRemovals;
 }
 
-+ (id)_newHashTableWithInitialCapacity:(unsigned long long)arg1;
 + (id)diffFromSettings:(id)arg1 toSettings:(id)arg2;
 @property(nonatomic) __weak id <BSSettingDescriptionProvider> descriptionProvider; // @synthesize descriptionProvider=_descriptionProvider;
 - (void).cxx_destruct;
@@ -29,14 +28,13 @@
 @property(readonly, copy) NSString *description;
 - (unsigned long long)_diffTypesForSetting:(unsigned long long)arg1;
 - (id)allSettings;
-- (void)_enumerateSettingsInTable:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)_enumerateSettingsInSet:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)inspectChangesWithBlock:(CDUnknownBlockType)arg1;
 - (void)applyToSettings:(id)arg1;
 @property(readonly, nonatomic) _Bool isEmpty;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)_initWithChanges:(id)arg1 flagRemovals:(id)arg2 objectRemovals:(id)arg3;
 

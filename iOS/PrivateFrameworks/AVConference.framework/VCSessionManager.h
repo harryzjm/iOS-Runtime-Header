@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCSessionDelegate-Protocol.h>
 
@@ -21,13 +21,26 @@ __attribute__((visibility("hidden")))
 + (void)addNSError:(id)arg1 toXPCArgumentDictionary:(id)arg2;
 + (id)sharedInstance;
 @property(readonly, nonatomic) NSMutableDictionary *sessions; // @synthesize sessions=_sessions;
+- (id)participantConfigFromXPCDictionary:(id)arg1;
+- (void)deregisterBlocksForService;
 - (void)registerBlocksForService;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 didDetectError:(id)arg3;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 didChangeProminence:(unsigned char)arg3 description:(id)arg4;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 remoteVideoPausedDidChange:(_Bool)arg3;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 remoteAudioPausedDidChange:(_Bool)arg3;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 videoPaused:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(id)arg5;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 audioPaused:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(id)arg5;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 remoteVideoEnabledDidChange:(_Bool)arg3;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 remoteAudioEnabledDidChange:(_Bool)arg3;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 videoEnabled:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(id)arg5;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 audioEnabled:(_Bool)arg3 didSucceed:(_Bool)arg4 error:(id)arg5;
 - (void)vcSession:(id)arg1 updateConfiguration:(id)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
 - (void)vcSession:(id)arg1 removeParticipantWithID:(id)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
 - (void)vcSession:(id)arg1 addParticipantWithID:(id)arg2 didSucceed:(_Bool)arg3 error:(id)arg4;
 - (void)vcSession:(id)arg1 didStopWithError:(id)arg2;
 - (void)vcSession:(id)arg1 didStart:(_Bool)arg2 error:(id)arg3;
-- (id)sessionForIDSDestination:(id)arg1;
+- (id)sessionForStreamToken:(unsigned int)arg1;
+- (id)sessionForUUID:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

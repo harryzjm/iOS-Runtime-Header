@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, NSString, UIViewController;
+@class NSDictionary, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface RPService : NSObject
@@ -24,7 +24,6 @@
     unsigned int _advertiseRate;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSString *_label;
-    UIViewController *_presentingViewController;
     NSString *_serviceType;
     NSDictionary *_txtDictionary;
     CDUnknownBlockType _errorHandler;
@@ -43,9 +42,8 @@
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
-@property(readonly, copy, nonatomic) NSDictionary *txtDictionary; // @synthesize txtDictionary=_txtDictionary;
+@property(copy, nonatomic) NSDictionary *txtDictionary; // @synthesize txtDictionary=_txtDictionary;
 @property(copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
-@property(retain, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property(nonatomic) _Bool needsSetup; // @synthesize needsSetup=_needsSetup;
 @property(retain, nonatomic) NSString *label; // @synthesize label=_label;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;

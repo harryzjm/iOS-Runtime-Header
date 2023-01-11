@@ -13,6 +13,11 @@
     _Bool _useTiling;
     id <MPSExternalMatrixMultiplication> _plugin;
     CDUnknownFunctionPointerType _encode;
+    unsigned long long _MPlugin;
+    unsigned long long _NPlugin;
+    unsigned long long _KPlugin;
+    double _alphaPlugin;
+    double _betaPlugin;
     _Bool _transA;
     _Bool _transB;
     unsigned long long _batchStart;
@@ -40,6 +45,7 @@
 @property(nonatomic) CDStruct_67e7699a rightMatrixOrigin; // @synthesize rightMatrixOrigin=_rightMatrixOrigin;
 @property(nonatomic) CDStruct_67e7699a leftMatrixOrigin; // @synthesize leftMatrixOrigin=_leftMatrixOrigin;
 @property(nonatomic) CDStruct_67e7699a resultMatrixOrigin; // @synthesize resultMatrixOrigin=_resultMatrixOrigin;
+- (void)dealloc;
 - (void)encodeToCommandBuffer:(id)arg1 encoder:(id)arg2 leftMatrix:(id)arg3 rightMatrix:(id)arg4 resultMatrix:(id)arg5;
 - (void)encodeToCommandBuffer:(id)arg1 leftMatrix:(id)arg2 rightMatrix:(id)arg3 resultMatrix:(id)arg4;
 - (id)debugDescription;

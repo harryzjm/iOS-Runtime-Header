@@ -41,8 +41,8 @@
 @property(retain, nonatomic) HFItem *item; // @synthesize item=_item;
 - (void).cxx_destruct;
 - (void)inlineWebContainerViewDidFinishLoadingContent:(id)arg1;
-- (id)_gearBackgroundImage;
-- (void)updateConstraints;
+- (void)layoutSubviews;
+- (void)_updateReleaseNotesHeightIfNeeded;
 - (void)updateUIWithAnimation:(_Bool)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

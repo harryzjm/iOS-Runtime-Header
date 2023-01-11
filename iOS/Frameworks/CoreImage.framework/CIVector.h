@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreImage/NSCopying-Protocol.h>
 #import <CoreImage/NSSecureCoding-Protocol.h>
@@ -59,6 +59,9 @@
 - (id)initWithX:(double)arg1;
 - (id)init;
 @property(readonly) double *_values;
+- (float)_dot:(id)arg1;
+- (id)_orthonormalizeTo:(id)arg1;
+- (float)_norm;
 
 @end
 

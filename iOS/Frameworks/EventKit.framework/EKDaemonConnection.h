@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <EventKit/CADClientInterface-Protocol.h>
 
@@ -20,11 +20,13 @@
     NSMutableDictionary *_cancellableOperations;
     unsigned int _nextCancellationToken;
     _Bool _registeredForStartNote;
+    _Bool _hasEverConnected;
     NSXPCConnection *_xpcConnection;
     id <EKDaemonConnectionDelegate> _delegate;
     CADDatabaseInitializationOptions *_initializationOptions;
 }
 
+@property(nonatomic) _Bool hasEverConnected; // @synthesize hasEverConnected=_hasEverConnected;
 @property(retain, nonatomic) CADDatabaseInitializationOptions *initializationOptions; // @synthesize initializationOptions=_initializationOptions;
 @property __weak id <EKDaemonConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;

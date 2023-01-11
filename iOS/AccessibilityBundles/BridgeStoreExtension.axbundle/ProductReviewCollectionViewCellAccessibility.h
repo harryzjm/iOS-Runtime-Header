@@ -11,8 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)layoutSubviews;
-- (id)accessibilityElements;
+- (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
 - (_Bool)isAccessibilityElement;
 - (void)_setAccessibilityProductReviewCollectionViewCellElements:(id)arg1;
 - (id)_accessibilityProductReviewCollectionViewCellElements;

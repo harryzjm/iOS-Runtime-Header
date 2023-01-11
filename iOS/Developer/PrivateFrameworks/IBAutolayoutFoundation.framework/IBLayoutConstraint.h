@@ -36,6 +36,7 @@
 }
 
 + (Class)archivableRepresentationClass;
++ (double)inferredScoringTypeForFirstItem:(id)arg1 firstAttribute:(unsigned long long)arg2 secondItem:(id)arg3 secondAttribute:(unsigned long long)arg4 isAbsolute:(_Bool)arg5;
 + (id)keyPathsForValuesAffectingContentType;
 + (double)minimumPriority;
 + (double)maximumPriority;
@@ -71,10 +72,10 @@
 - (_Bool)satisfyConstantUpdatingIfNeededWithLayoutInfo:(id)arg1 substitutingCurrentConstant:(id)arg2 context:(id)arg3;
 - (unsigned long long)satisfiabilityStateAccordingToFrameworkMetricsWithLayoutDirection:(long long)arg1 substitutingConstant:(id)arg2 returningCurrentCanvasConstant:(double *)arg3 differenceBetweenDeclaredConstantAndCurrentCanvasConstant:(double *)arg4 context:(id)arg5;
 - (double)roundingAdjustmentWithUserInterfaceLayoutDirection:(long long)arg1;
-- (CDStruct_00258f55)geometricDescriptionInCoordinateSpaceOfView:(id)arg1 userInterfaceLayoutDirection:(long long)arg2;
+- (CDStruct_1fea1e38)geometricDescriptionInCoordinateSpaceOfView:(id)arg1 userInterfaceLayoutDirection:(long long)arg2;
 - (id)suggestedViewForGeometricDescription;
-- (CDStruct_00258f55)relativeGeometricDescriptionInCoordinateSpaceOfView:(id)arg1 userInterfaceLayoutDirection:(long long)arg2;
-- (CDStruct_00258f55)absoluteGeometricDescriptionInCoordinateSpaceOfView:(id)arg1 userInterfaceLayoutDirection:(long long)arg2 ofItem:(id)arg3 attribute:(unsigned long long)arg4;
+- (CDStruct_1fea1e38)relativeGeometricDescriptionInCoordinateSpaceOfView:(id)arg1 userInterfaceLayoutDirection:(long long)arg2;
+- (CDStruct_1fea1e38)absoluteGeometricDescriptionInCoordinateSpaceOfView:(id)arg1 userInterfaceLayoutDirection:(long long)arg2 ofItem:(id)arg3 attribute:(unsigned long long)arg4;
 - (void)enumerateItems:(CDUnknownBlockType)arg1;
 - (unsigned long long)attributeReferencingItem:(id)arg1;
 - (id)itemNotMatchingItem:(id)arg1;

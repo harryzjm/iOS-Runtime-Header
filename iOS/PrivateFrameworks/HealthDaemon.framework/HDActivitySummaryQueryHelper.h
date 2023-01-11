@@ -24,7 +24,6 @@
     long long _lastProcessedAnchor;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    _Bool _shouldIncludePrivateProperties;
     CDUnknownBlockType _initialResultsHandler;
     CDUnknownBlockType _updateHandler;
 }
@@ -45,7 +44,7 @@
 - (void)_queue_deliverUpdates;
 - (void)_queue_deliverActivitySummariesToClient:(id)arg1;
 - (void)_queue_deliverErrorToClient:(id)arg1;
-- (void)_onClientQueue:(CDUnknownBlockType)arg1;
+@property _Bool shouldIncludeStatistics;
 @property _Bool shouldIncludePrivateProperties;
 - (_Bool)_shouldStopProcessing;
 - (void)_queue_stop;

@@ -7,7 +7,7 @@
 #import <MPSCore/NSObject-Protocol.h>
 
 @class MTLRenderPassDescriptor, NSError, NSString;
-@protocol MTLBlitCommandEncoder, MTLCommandQueue, MTLComputeCommandEncoder, MTLDevice, MTLDrawable, MTLParallelRenderCommandEncoder, MTLRenderCommandEncoder;
+@protocol MTLBlitCommandEncoder, MTLCommandQueue, MTLComputeCommandEncoder, MTLDevice, MTLDrawable, MTLEvent, MTLParallelRenderCommandEncoder, MTLRenderCommandEncoder;
 
 @protocol MTLCommandBuffer <NSObject>
 @property(readonly) NSError *error;
@@ -23,6 +23,9 @@
 - (void)popDebugGroup;
 - (void)pushDebugGroup:(NSString *)arg1;
 - (id <MTLParallelRenderCommandEncoder>)parallelRenderCommandEncoderWithDescriptor:(MTLRenderPassDescriptor *)arg1;
+- (void)encodeSignalEvent:(id <MTLEvent>)arg1 value:(unsigned long long)arg2;
+- (void)encodeWaitForEvent:(id <MTLEvent>)arg1 value:(unsigned long long)arg2;
+- (id <MTLComputeCommandEncoder>)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
 - (id <MTLComputeCommandEncoder>)computeCommandEncoder;
 - (id <MTLRenderCommandEncoder>)renderCommandEncoderWithDescriptor:(MTLRenderPassDescriptor *)arg1;
 - (id <MTLBlitCommandEncoder>)blitCommandEncoder;

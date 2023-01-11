@@ -11,7 +11,7 @@
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 #import <PassKitUI/WLCardViewDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, PKBarcodePassDetailViewController, PKGroup, PKPassView, PKReusablePassViewQueue, UILongPressGestureRecognizer, UIMotionEffectGroup, UIPageControl, UIPanGestureRecognizer, UIScrollView;
+@class NSMutableDictionary, NSString, PKGroup, PKPassView, PKReusablePassViewQueue, UILongPressGestureRecognizer, UIMotionEffectGroup, UIPageControl, UIPanGestureRecognizer, UIScrollView, UIViewController;
 @protocol PKPassGroupViewDelegate;
 
 @interface PKPassGroupView : UIView <WLCardViewDelegate, PKGroupDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate>
@@ -45,7 +45,7 @@
     UIMotionEffectGroup *_motionEffectGroup;
     _Bool _isAuthenticating;
     id <PKPassGroupViewDelegate> _delegate;
-    PKBarcodePassDetailViewController *_detailsVC;
+    UIViewController *_detailsVC;
     NSString *_passBeingPresented;
     _Bool _groupWasMarkedDeleted;
     _Bool _passBeingPresentedWasDeleted;
@@ -54,12 +54,8 @@
     PKPassView *_frontmostPassView;
     PKGroup *_group;
     PKReusablePassViewQueue *_passViewQueue;
-    double _verticalMotionRelativeValue;
-    double _horizontalMotionRelativeValue;
 }
 
-@property(nonatomic) double horizontalMotionRelativeValue; // @synthesize horizontalMotionRelativeValue=_horizontalMotionRelativeValue;
-@property(nonatomic) double verticalMotionRelativeValue; // @synthesize verticalMotionRelativeValue=_verticalMotionRelativeValue;
 @property(nonatomic) _Bool pageControlHidden; // @synthesize pageControlHidden=_pageControlHidden;
 @property(nonatomic) long long presentationState; // @synthesize presentationState=_presentationState;
 @property(nonatomic) PKReusablePassViewQueue *passViewQueue; // @synthesize passViewQueue=_passViewQueue;
@@ -71,11 +67,10 @@
 - (void)passViewDidBeginAuthenticating:(id)arg1;
 - (void)passView:(id)arg1 didPresentPassDetailsViewController:(id)arg2;
 - (void)passView:(id)arg1 willPresentPassDetailsViewController:(id)arg2;
-- (void)passView:(id)arg1 resizeButtonPressedForPass:(id)arg2 withBarcode:(_Bool)arg3;
 - (_Bool)passView:(id)arg1 deleteButtonEnabledForPass:(id)arg2;
 - (void)passView:(id)arg1 deleteButtonPressedForPass:(id)arg2;
-- (void)passViewDidResize:(id)arg1 animated:(_Bool)arg2;
-- (_Bool)passViewShouldResize:(id)arg1;
+- (void)passViewUpdateBarcodeVisibility:(id)arg1 animated:(_Bool)arg2;
+- (_Bool)passViewCanShowBarcode:(id)arg1;
 - (void)passViewTapped:(id)arg1;
 - (void)dismissBackOfPassIfNecessaryForUniqueID:(id)arg1;
 - (void)markGroupDeleted;
@@ -96,7 +91,6 @@
 - (void)_removePanAndLongPressGestureRecognizers;
 - (void)_addPanAndLongPressGestureRecognizers;
 @property(readonly, nonatomic) struct UIOffset offsetForFrontmostPassWhileStacked;
-- (void)setPileMotionEffectsEnabled:(_Bool)arg1;
 @property(readonly, nonatomic) UIPageControl *pageControl;
 - (double)continuousShadowIndex;
 @property(readonly, nonatomic) unsigned long long displayIndex;
@@ -104,6 +98,7 @@
 - (void)_updatePageControlWithDisplayIndex;
 - (void)updatePageControlFrame;
 - (void)_pageControlChanged:(id)arg1;
+- (id)passViewForIndex:(unsigned long long)arg1;
 - (long long)_defaultContentModeForIndex:(unsigned long long)arg1;
 - (id)_loadCardViewForIndex:(unsigned long long)arg1 contentMode:(long long)arg2;
 - (void)_updateLoadedViews:(_Bool)arg1;
@@ -120,12 +115,15 @@
 - (void)_updateDelegateResponderCache;
 - (void)resizePassViewForPass:(id)arg1 animated:(_Bool)arg2;
 - (void)setDimmer:(double)arg1 animated:(_Bool)arg2;
+- (void)presentPassWithUniqueID:(id)arg1 withContext:(id)arg2;
 - (void)presentPassWithUniqueID:(id)arg1;
 - (void)presentDiff:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)endPinningFrontFaceContentMode;
 - (void)beginPinningFrontFaceContentMode;
 - (void)applyContentModesAnimated:(_Bool)arg1;
 - (void)setPresentationState:(long long)arg1 animated:(_Bool)arg2;
+- (void)setFrontmostPassView:(id)arg1 withContext:(id)arg2;
+- (void)setFrontmostPassViewFromPassIndex:(long long)arg1 withContext:(id)arg2;
 - (void)setFrontmostPassViewFromPassIndex:(long long)arg1;
 - (struct CGRect)_pagingFrameForCardView:(id)arg1 atIndex:(unsigned long long)arg2;
 - (struct CGPoint)_stackingPositionForPassViewLayer:(id)arg1 atStackIndex:(unsigned long long)arg2 withSeparation:(_Bool)arg3;

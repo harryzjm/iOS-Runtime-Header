@@ -6,20 +6,19 @@
 
 #import <UIKit/UIViewController.h>
 
-@interface SXFullScreenCanvasViewController : UIViewController
+@interface SXFullscreenCanvasViewController : UIViewController
 {
-    _Bool _isObservingNavigationBar;
-    _Bool _visible;
+    _Bool _isTransitioning;
+    CDUnknownBlockType _onTransition;
 }
 
-@property(nonatomic) _Bool visible; // @synthesize visible=_visible;
-@property(nonatomic) _Bool isObservingNavigationBar; // @synthesize isObservingNavigationBar=_isObservingNavigationBar;
-- (long long)preferredStatusBarStyle;
+@property(copy, nonatomic) CDUnknownBlockType onTransition; // @synthesize onTransition=_onTransition;
+@property(nonatomic) _Bool isTransitioning; // @synthesize isTransitioning=_isTransitioning;
+- (void).cxx_destruct;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (long long)preferredStatusBarUpdateAnimation;
 - (_Bool)prefersStatusBarHidden;
-- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 
 @end
 

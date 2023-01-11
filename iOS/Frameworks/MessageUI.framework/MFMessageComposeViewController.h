@@ -19,6 +19,7 @@
     unsigned long long _currentAttachedVideoCount;
     unsigned long long _currentAttachedAudioCount;
     unsigned long long _currentAttachedImageCount;
+    NSArray *_UTITypes;
     NSArray *_attachments;
 }
 
@@ -29,6 +30,7 @@
 + (double)maxTrimDurationForVideo;
 + (double)maxTrimDurationForAudio;
 + (id)_chatKitBundle;
++ (void)_preloadDependencies;
 + (_Bool)canSendText;
 + (void)_startListeningForAvailabilityNotifications;
 + (void)_serviceAvailabilityChanged:(id)arg1;
@@ -39,6 +41,8 @@
 + (_Bool)_canSendText;
 + (void)_setupAccountMonitor;
 @property(readonly, copy, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
+- (void)setUTITypes:(id)arg1;
+- (id)UTITypes;
 @property(nonatomic) unsigned long long currentAttachedImageCount; // @synthesize currentAttachedImageCount=_currentAttachedImageCount;
 @property(nonatomic) unsigned long long currentAttachedAudioCount; // @synthesize currentAttachedAudioCount=_currentAttachedAudioCount;
 @property(nonatomic) unsigned long long currentAttachedVideoCount; // @synthesize currentAttachedVideoCount=_currentAttachedVideoCount;
@@ -54,6 +58,7 @@
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLoad;
 - (void)setModalPresentationStyle:(long long)arg1;
 - (void)dealloc;
 - (void)disableUserAttachments;

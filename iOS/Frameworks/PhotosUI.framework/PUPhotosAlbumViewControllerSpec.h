@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 __attribute__((visibility("hidden")))
-@interface PUPhotosAlbumViewControllerSpec : NSObject
+@interface PUPhotosAlbumViewControllerSpec
 {
     long long _fullMomentsSectionHeaderStyle;
 }
 
++ (id)padSpec;
++ (id)phoneSpec;
 @property(readonly, nonatomic) long long fullMomentsSectionHeaderStyle; // @synthesize fullMomentsSectionHeaderStyle=_fullMomentsSectionHeaderStyle;
 @property(readonly, nonatomic) unsigned long long fullMomentsSectionHeaderBackgroundStyle;
 @property(readonly, nonatomic) struct UIEdgeInsets fullMomentsLevelSectionHeaderHighlightInset;

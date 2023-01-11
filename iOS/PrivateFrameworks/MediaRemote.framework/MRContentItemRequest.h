@@ -4,24 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <MediaRemote/NSCoding-Protocol.h>
+#import <MediaRemote/NSSecureCoding-Protocol.h>
+
+@class _MRContentItemProtobuf, _MRPlaybackQueueRequestProtobuf;
 
 __attribute__((visibility("hidden")))
-@interface MRContentItemRequest : NSObject <NSCoding>
+@interface MRContentItemRequest : NSObject <NSSecureCoding>
 {
-    void *_item;
-    void *_request;
+    _MRContentItemProtobuf *_item;
+    _MRPlaybackQueueRequestProtobuf *_request;
 }
 
-@property(nonatomic) void *request; // @synthesize request=_request;
-@property(nonatomic) void *item; // @synthesize item=_item;
++ (_Bool)supportsSecureCoding;
+@property(retain, nonatomic) _MRPlaybackQueueRequestProtobuf *request; // @synthesize request=_request;
+@property(retain, nonatomic) _MRContentItemProtobuf *item; // @synthesize item=_item;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)dealloc;
-- (id)initWithItem:(void *)arg1 request:(void *)arg2;
+- (id)initWithItem:(id)arg1 request:(id)arg2;
 
 @end
 

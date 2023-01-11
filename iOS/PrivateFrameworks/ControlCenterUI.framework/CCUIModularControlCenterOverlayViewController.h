@@ -11,7 +11,7 @@
 #import <ControlCenterUI/CCUIStatusLabelViewControllerDelegate-Protocol.h>
 #import <ControlCenterUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CCUIAnimationRunner, CCUIFlickGestureRecognizer, CCUIHeaderPocketView, CCUIModuleCollectionView, CCUIOverlayTransitionState, CCUIScrollView, CCUIStatusBarStyleSnapshot, CCUIStatusLabelViewController, MTMaterialView, NSHashTable, NSString, NSUUID, UIPanGestureRecognizer, UIScrollView, UIStatusBar, UITapGestureRecognizer, UIView;
+@class CCUIAnimationRunner, CCUIFlickGestureRecognizer, CCUIHeaderPocketView, CCUIModuleCollectionView, CCUIOverlayTransitionState, CCUIScrollView, CCUIStatusBarStyleSnapshot, CCUIStatusLabelViewController, MTMaterialView, NSHashTable, NSString, NSUUID, UIPanGestureRecognizer, UIScrollView, UIStatusBar, UIStatusBar_Modern, UITapGestureRecognizer, UIView;
 @protocol CCUIHostStatusBarStyleProvider, CCUIModularControlCenterOverlayViewControllerDelegate, CCUIOverlayPresentationProvider;
 
 @interface CCUIModularControlCenterOverlayViewController <UIGestureRecognizerDelegate, CCUIScrollViewDelegate, CCUIStatusLabelViewControllerDelegate, CCUIOverlayViewProvider, CCUIOverlayMetricsProvider, CCUIStatusBarDelegate>
@@ -23,7 +23,7 @@
     CCUIHeaderPocketView *_headerPocketView;
     CCUIScrollView *_scrollView;
     UIView *_containerView;
-    UIStatusBar *_compactLeadingStatusBar;
+    UIStatusBar_Modern *_compactLeadingStatusBar;
     _Bool _presentationPanGestureActive;
     UIPanGestureRecognizer *_headerPocketViewDismissalPanGesture;
     UITapGestureRecognizer *_headerPocketViewDismissalTapGesture;
@@ -32,22 +32,26 @@
     UITapGestureRecognizer *_collectionViewDismissalTapGesture;
     UIPanGestureRecognizer *_collectionViewScrollPanGesture;
     NSHashTable *_blockingGestureRecognizers;
-    _Bool _interactiveTransition;
     NSUUID *_currentTransitionUUID;
     CCUIOverlayTransitionState *_previousTransitionState;
     CCUIStatusBarStyleSnapshot *_hostStatusBarStyleSnapshot;
+    _Bool _reachabilityActive;
     unsigned long long _presentationState;
+    unsigned long long _transitionState;
     id <CCUIHostStatusBarStyleProvider> _hostStatusBarStyleProvider;
 }
 
 + (id)_presentationProviderForDevice;
+@property(nonatomic, getter=isReachabilityActive) _Bool reachabilityActive; // @synthesize reachabilityActive=_reachabilityActive;
 @property(nonatomic) __weak id <CCUIHostStatusBarStyleProvider> hostStatusBarStyleProvider; // @synthesize hostStatusBarStyleProvider=_hostStatusBarStyleProvider;
+@property(readonly, nonatomic) unsigned long long transitionState; // @synthesize transitionState=_transitionState;
 @property(nonatomic) unsigned long long presentationState; // @synthesize presentationState=_presentationState;
 - (void).cxx_destruct;
 - (_Bool)_gestureRecognizerIsActive:(id)arg1;
 - (void)_setupPanGestureFailureRequirements;
 - (void)_updateHotPocket:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_updateHotPocketAnimated:(_Bool)arg1;
+- (void)_updateChevronStateForTransitionState:(id)arg1;
 - (_Bool)_scrollViewCanAcceptDownwardsPan;
 - (_Bool)_scrollViewIsScrollable;
 - (_Bool)_scrollPanGestureRecognizerCanBeginForGestureVelocity:(struct CGPoint)arg1;
@@ -70,12 +74,15 @@
 - (void)endPresentationWithLocation:(struct CGPoint)arg1 translation:(struct CGPoint)arg2 velocity:(struct CGPoint)arg3;
 - (void)updatePresentationWithLocation:(struct CGPoint)arg1 translation:(struct CGPoint)arg2 velocity:(struct CGPoint)arg3;
 - (void)beginPresentationWithLocation:(struct CGPoint)arg1 translation:(struct CGPoint)arg2 velocity:(struct CGPoint)arg3;
-- (id)compactStyleRequestForStatusBar:(id)arg1;
+- (void)dismissControlCenterForContentModuleContext:(id)arg1;
+- (struct CGRect)compactAvoidanceFrameForStatusBar:(id)arg1;
+- (id)compactTrailingStyleRequestForStatusBar:(id)arg1;
+@property(readonly, nonatomic) double overlayReachabilityHeight;
 @property(readonly, copy, nonatomic) CCUIStatusBarStyleSnapshot *overlayStatusBarStyle;
 @property(readonly, nonatomic) long long overlayInterfaceOrientation;
-@property(readonly, nonatomic) struct UIEdgeInsets overlayAdditionalEdgeInsets;
+- (struct UIEdgeInsets)overlayAdditionalEdgeInsets;
 @property(readonly, nonatomic) struct CGRect overlayContainerFrame;
-@property(readonly, nonatomic) struct CGSize overlayContentSize;
+@property(readonly, nonatomic) struct CGRect overlayBackgroundFrame;
 - (void)setOverlayStatusBarHidden:(_Bool)arg1;
 @property(readonly, nonatomic) UIStatusBar *overlayLeadingStatusBar;
 @property(readonly, nonatomic) CCUIHeaderPocketView *overlayHeaderView;

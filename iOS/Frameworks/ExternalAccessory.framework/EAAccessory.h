@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class EAAccessoryInternal, NSArray, NSString;
 @protocol EAAccessoryDelegate;
@@ -57,6 +57,8 @@
 - (_Bool)supportsLocation;
 - (void)setLocationSentenceTypesMask:(int)arg1;
 - (int)locationSentenceTypesMask;
+- (unsigned long long)destinationSharingOptions;
+- (void)setDestinationSharingOptions:(unsigned long long)arg1;
 - (_Bool)pointOfInterestHandoffEnabled;
 - (void)setPointOfInterestHandoffEnabled:(_Bool)arg1;
 - (unsigned int)eqIndex;

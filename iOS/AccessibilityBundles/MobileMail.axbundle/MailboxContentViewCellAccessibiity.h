@@ -29,8 +29,8 @@
 - (id)_accessibilityEquivalenceTag;
 - (id)_accessibilityApproximateVisibleSummaryText;
 - (id)accessibilityHint;
-- (void)staticViewNeedsDisplay;
 - (void)prepareForReuse;
+- (id)_accessibilityCustomActionGroupIdentifier;
 - (id)accessibilityLabel;
 - (id)_accessibilityUserTestingChildren;
 - (void)_axProcessMailLabel:(id)arg1 children:(id)arg2;

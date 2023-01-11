@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSCHChartGridValue : NSObject
@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 + (id)numberValueWithDouble:(double)arg1;
 + (void)saveGridValue:(id)arg1 toArchive:(struct GridValue *)arg2;
 + (id)instanceWithArchive:(const struct GridValue *)arg1;
-- (id)init;
 - (id)initWithArchive:(const struct GridValue *)arg1;
 
 @end

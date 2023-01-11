@@ -4,24 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, NSArray, SKNode, SKSpriteNode;
+@class NSArray, NSCalendar, NSDate, NTKZeusColorPalette, SKNode, SKSpriteNode;
 
 @interface NTKZeusAnalogScene
 {
+    NSCalendar *_calendar;
+    NSDate *_overrideDate;
+    SKNode *_fontContainerNode;
     NSArray *_fontHourNodes;
     SKNode *_logoContainerNode;
     SKSpriteNode *_logo1Node;
     SKSpriteNode *_logo2Node;
+    SKNode *_multicolorContainerNode;
+    SKSpriteNode *_multicolorBackground;
+    SKSpriteNode *_multicolorSplit;
+    double _previousCorrectionTime;
+    double _currentTime;
+    double _startSplitRotation;
+    double _endSplitRotation;
+    double _rotationDuration;
+    NTKZeusColorPalette *_palette;
     unsigned long long _currentDensity;
-    _Bool _isEditing;
     unsigned long long _style;
-    _Bool _statusIconVisible;
-    MISSING_TYPE *_lightDirection;
+    _Bool _isEditing;
+    _Bool _isStatusIconVisible;
     _Bool _scrubbing;
 }
 
 @property(nonatomic, getter=isScrubbing) _Bool scrubbing; // @synthesize scrubbing=_scrubbing;
 - (void).cxx_destruct;
+@property(nonatomic) double backgroundAlpha;
+- (double)_splitAngle;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (double)_digitAlphaForEditMode:(long long)arg1;
 - (void)_configureForEditMode:(long long)arg1;
@@ -31,20 +44,25 @@
 - (void)applyTransitionFraction:(double)arg1 fromDensity:(unsigned long long)arg2 toDensity:(unsigned long long)arg3;
 - (double)_secondHandAlphaForDensity:(unsigned long long)arg1 isEditing:(_Bool)arg2;
 - (void)applyDensity:(unsigned long long)arg1;
-- (id)_colorForFaceColor:(unsigned long long)arg1;
-- (void)applyTransitionFraction:(double)arg1 fromColor:(unsigned long long)arg2 toColor:(unsigned long long)arg3;
-- (void)applyColor:(unsigned long long)arg1;
+- (void)applyTransitionFraction:(double)arg1 fromPalette:(id)arg2 toPalette:(id)arg3;
+- (void)applyPalette:(id)arg1;
 - (void)applyTransitionFraction:(double)arg1 fromStyle:(unsigned long long)arg2 toStyle:(unsigned long long)arg3;
+- (void)_applyTransitionFraction:(double)arg1 fromHourLabelCollectionNode:(id)arg2 toHourLabelCollectionNode:(id)arg3;
 - (void)applyStyle:(unsigned long long)arg1;
-- (id)_hoursNodeForStyle:(unsigned long long)arg1;
+- (void)_applyHourLabelCollectionNode:(id)arg1;
+- (id)_hoursNodeForStyle:(unsigned long long)arg1 bleed:(unsigned long long)arg2;
 - (void)_displayZoomScale:(double)arg1 fraction:(double)arg2;
+- (void)setOverrideDate:(id)arg1 duration:(double)arg2;
+- (void)update:(double)arg1;
 - (void)_update12ForStatusIconVisibilityAnimated:(_Bool)arg1;
 - (void)_update12ForStatusIconVisibility;
 - (void)setAdjustsForStatusBarIcon:(_Bool)arg1 animated:(_Bool)arg2;
 - (id)auxiliaryScrubbingObscuredNodes;
 - (void)endScrubbingAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)startScrubbingAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (id)initWithSize:(struct CGSize)arg1;
+- (void)_significantTimeChanged;
+- (void)dealloc;
+- (id)initWithSize:(struct CGSize)arg1 forDevice:(id)arg2;
 
 @end
 

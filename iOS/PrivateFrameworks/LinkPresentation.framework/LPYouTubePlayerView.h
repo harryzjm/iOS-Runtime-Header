@@ -8,7 +8,7 @@
 
 #import <LinkPresentation/UIScrollViewDelegate-Protocol.h>
 
-@class LPYouTubePlayerScriptMessageHandler, NSString, WKWebView;
+@class LPYouTubePlayerScriptMessageHandler, NSMutableArray, NSString, WKWebView;
 @protocol LPYouTubePlayerDelegate;
 
 @interface LPYouTubePlayerView : UIView <UIScrollViewDelegate>
@@ -17,6 +17,8 @@
     NSString *_videoID;
     long long _state;
     LPYouTubePlayerScriptMessageHandler *_scriptMessageHandler;
+    _Bool _ready;
+    NSMutableArray *_commandsPendingPlayerReadiness;
     _Bool _startsPlayingAutomatically;
     _Bool _showsControls;
     _Bool _muted;
@@ -42,6 +44,7 @@
 - (void)seekTo:(double)arg1;
 - (void)pause;
 - (void)play;
+- (void)evaluatePlayerCommand:(id)arg1;
 - (void)dealloc;
 - (void)loadVideoWithID:(id)arg1;
 - (void)loadVideoWithEmbedURL:(id)arg1;

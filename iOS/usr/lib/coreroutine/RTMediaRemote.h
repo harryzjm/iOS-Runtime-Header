@@ -39,7 +39,7 @@
 - (void)__handleNowPlayingApplication:(id)arg1 didChangeState:(unsigned int)arg2;
 - (void)_handleNowPlayingApplicationIsPlayingDidChange;
 - (void)handleNowPlayingApplicationIsPlayingDidChange;
-- (void)shutdown;
+- (void)_shutdown;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)_unregisterForMediaRemoteNotifications;

@@ -11,7 +11,6 @@
 @class NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface SFXPCClient : NSObject <NSXPCConnectionDelegate>
 {
     _Bool _activateCalled;
@@ -40,9 +39,9 @@ __attribute__((visibility("hidden")))
 - (void)onqueue_ensureConnectionEstablished;
 - (void)onqueue_ensureXPCStarted;
 - (void)onqueue_invalidate;
-- (void)invalidate;
+- (void)_invalidate;
 - (void)onqueue_activate;
-- (void)activate;
+- (void)_activate;
 - (void)onqueue_getRemoteObjectProxyOnQueue:(CDUnknownBlockType)arg1;
 - (void)getRemoteObjectProxyOnQueue:(CDUnknownBlockType)arg1;
 - (void)dealloc;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, SAUIAppPunchOut;
+@class NSArray, NSString, SAUIAppPunchOut, SAUIButton;
 
 @interface SAGuidanceGuideSnippet
 {
@@ -16,6 +16,7 @@
 @property(copy, nonatomic) NSString *headerText;
 @property(copy, nonatomic) NSArray *domainSnippets;
 @property(retain, nonatomic) SAUIAppPunchOut *appStorePunchOut;
+@property(retain, nonatomic) SAUIButton *appPunchOutButton;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

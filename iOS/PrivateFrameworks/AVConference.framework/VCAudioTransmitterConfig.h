@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVCStatisticsCollector, NSMutableArray, VCAudioPayload, VCTransportSession;
+@class AVCStatisticsCollector, NSArray, NSMutableArray, VCAudioPayload, VCTransportSession;
 
 __attribute__((visibility("hidden")))
 @interface VCAudioTransmitterConfig : NSObject
@@ -20,27 +20,47 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_audioPayloads;
     VCAudioPayload *_chosenAudioPayload;
     VCAudioPayload *_chosenDTXPayload;
-    int _chosenRedPayloadType;
     unsigned char _packetsPerBundle;
-    _Bool _useAFRC;
+    _Bool _useRateControl;
     int _bundlingScheme;
     _Bool _isUseCaseWatchContinuity;
     _Bool _allowAudioSwitching;
     _Bool _supportsAdaptation;
+    int _chosenRedPayloadType;
     _Bool _redEnabled;
+    _Bool _includeRedSequenceOffset;
+    unsigned int _redNumPayloads;
+    unsigned int _redMaxDelay20ms;
     _Bool _transmitROC;
     _Bool _needsPacketThread;
     int _operatingMode;
     struct AudioStreamBasicDescription _inputFormat;
     struct opaqueRTCReporting *_reportingAgent;
+    int _reportingParentID;
     VCTransportSession *_transportSession;
     _Bool _ignoreSilence;
+    unsigned int _maxIDSStreamIdCount;
+    NSArray *_streamIDs;
+    unsigned int _tierNetworkBitrate;
+    NSArray *_supportedNumRedundantPayload;
+    _Bool _sendActiveVoiceOnly;
+    _Bool _currentDTXEnable;
 }
 
+@property(nonatomic, getter=isCurrentDTXEnabled) _Bool currentDTXEnable; // @synthesize currentDTXEnable=_currentDTXEnable;
+@property(nonatomic) int reportingParentID; // @synthesize reportingParentID=_reportingParentID;
+@property(nonatomic) _Bool sendActiveVoiceOnly; // @synthesize sendActiveVoiceOnly=_sendActiveVoiceOnly;
+@property(retain, nonatomic) NSArray *supportedNumRedundantPayload; // @synthesize supportedNumRedundantPayload=_supportedNumRedundantPayload;
+@property(nonatomic) unsigned int maxIDSStreamIdCount; // @synthesize maxIDSStreamIdCount=_maxIDSStreamIdCount;
+@property(nonatomic) unsigned int tierNetworkBitrate; // @synthesize tierNetworkBitrate=_tierNetworkBitrate;
+@property(retain, nonatomic) NSArray *streamIDs; // @synthesize streamIDs=_streamIDs;
 @property(nonatomic) _Bool needsPacketThread; // @synthesize needsPacketThread=_needsPacketThread;
 @property(nonatomic) _Bool ignoreSilence; // @synthesize ignoreSilence=_ignoreSilence;
 @property(nonatomic) _Bool transmitROC; // @synthesize transmitROC=_transmitROC;
 @property(retain, nonatomic) AVCStatisticsCollector *statisticsCollector; // @synthesize statisticsCollector=_statisticsCollector;
+@property(nonatomic) unsigned int redMaxDelay20ms; // @synthesize redMaxDelay20ms=_redMaxDelay20ms;
+@property(nonatomic) unsigned int redNumPayloads; // @synthesize redNumPayloads=_redNumPayloads;
+@property(nonatomic) _Bool includeRedSequenceOffset; // @synthesize includeRedSequenceOffset=_includeRedSequenceOffset;
 @property(nonatomic, getter=isRedEnabled) _Bool redEnabled; // @synthesize redEnabled=_redEnabled;
 @property(retain, nonatomic) VCTransportSession *transportSession; // @synthesize transportSession=_transportSession;
 @property(nonatomic) struct opaqueRTCReporting *reportingAgent; // @synthesize reportingAgent=_reportingAgent;
@@ -50,7 +70,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool allowAudioSwitching; // @synthesize allowAudioSwitching=_allowAudioSwitching;
 @property(nonatomic) _Bool isUseCaseWatchContinuity; // @synthesize isUseCaseWatchContinuity=_isUseCaseWatchContinuity;
 @property(nonatomic) int bundlingScheme; // @synthesize bundlingScheme=_bundlingScheme;
-@property(nonatomic) _Bool useAFRC; // @synthesize useAFRC=_useAFRC;
+@property(nonatomic) _Bool useRateControl; // @synthesize useRateControl=_useRateControl;
 @property(nonatomic) unsigned char packetsPerBundle; // @synthesize packetsPerBundle=_packetsPerBundle;
 @property(nonatomic) int chosenRedPayloadType; // @synthesize chosenRedPayloadType=_chosenRedPayloadType;
 @property(retain, nonatomic) VCAudioPayload *chosenDTXPayload; // @synthesize chosenDTXPayload=_chosenDTXPayload;

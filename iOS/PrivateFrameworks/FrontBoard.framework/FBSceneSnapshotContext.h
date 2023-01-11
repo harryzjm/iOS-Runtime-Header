@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
-@class FBSSceneSettings, NSDate, NSSet, NSString;
+@class BSSettings, FBSSceneSettings, NSDate, NSSet, NSString;
 
 @interface FBSceneSnapshotContext : NSObject <BSDescriptionProviding>
 {
@@ -20,9 +20,11 @@
     long long _orientation;
     NSDate *_expirationDate;
     double _scale;
+    BSSettings *_clientExtendedData;
 }
 
 + (id)contextWithFBSContext:(id)arg1;
+@property(copy, nonatomic) BSSettings *clientExtendedData; // @synthesize clientExtendedData=_clientExtendedData;
 @property(nonatomic) double scale; // @synthesize scale=_scale;
 @property(retain, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
@@ -31,12 +33,12 @@
 @property(nonatomic, getter=isOpaque) _Bool opaque; // @synthesize opaque=_opaque;
 @property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property(readonly, copy, nonatomic) NSString *sceneID; // @synthesize sceneID=_sceneID;
+- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
-- (void)dealloc;
 - (id)initWithFBSContext:(id)arg1;
 - (id)initWithScene:(id)arg1;
 

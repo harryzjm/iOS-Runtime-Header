@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SpriteKit/NSCoding-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class AVAudioNode;
 
-@interface SKAudioNode <NSCoding>
+@interface SKAudioNode <NSSecureCoding>
 {
     struct SKCAudioNode *_skcAudioNode;
     _Bool _autoplayLooped;
@@ -16,6 +16,7 @@
 }
 
 + (id)_audioURLWithName:(id)arg1 bundle:(id)arg2;
++ (_Bool)supportsSecureCoding;
 @property(nonatomic, getter=isPositional) _Bool positional; // @synthesize positional=_positional;
 @property(nonatomic) _Bool autoplayLooped; // @synthesize autoplayLooped=_autoplayLooped;
 - (void)_connectToScene:(id)arg1;
@@ -30,10 +31,12 @@
 - (id)initWithURL:(id)arg1;
 - (id)initWithFileNamed:(id)arg1;
 - (id)initWithFileNamed:(id)arg1 bundle:(id)arg2;
+- (_Bool)isEqualToNode:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithAVAudioNode:(id)arg1;
 - (id)init;
+- (void)commonInit;
 - (void)_didMakeBackingNode;
 - (struct SKCNode *)_makeBackingNode;
 

@@ -10,6 +10,10 @@
 }
 
 @property(readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
+- (id)singleLinkPrettyDescription;
+- (id)copyWithPrecedingMetric:(id)arg1;
+- (_Bool)isEqualToMetricChain:(id)arg1;
+- (unsigned long long)hash;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
 - (id)initWithSize:(struct CGSize)arg1 precedingMetric:(id)arg2;

@@ -6,11 +6,11 @@
 
 #import <NanoTimeKitCompanion/NSObject-Protocol.h>
 
-@class NTKWellnessEntryModel;
+@class NSString, NTKWellnessEntryModel;
 
 @protocol NTKActivityFaceViewFactoryDelegate <NSObject>
+- (_Bool)slotUsesCurvedText:(NSString *)arg1;
 - (void)applyEntryModelWithUnfilledRings:(NTKWellnessEntryModel *)arg1;
-- (void)timeTravelDateEnteredOrExitedTimelineBounds:(_Bool)arg1;
 - (void)applyEntryModel:(NTKWellnessEntryModel *)arg1 animated:(_Bool)arg2;
 @end
 

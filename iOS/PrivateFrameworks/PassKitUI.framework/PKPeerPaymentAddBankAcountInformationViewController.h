@@ -22,12 +22,14 @@
     NSString *_accountCountryCode;
     NSMutableDictionary *_userEnteredValues;
     _Bool _isEditingBankInformation;
+    _Bool _hasInteractedWithCell;
     id <PKPeerPaymentAddBankAcountInformationViewControllerDelegate> _delegate;
 }
 
 @property(nonatomic) __weak id <PKPeerPaymentAddBankAcountInformationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (id)_countrySpecificLocalizedStringKeyForKey:(id)arg1 digitsString:(id)arg2;
+- (id)_countrySpecificLocalizedStringKeyForKey:(id)arg1 minDigits:(unsigned long long)arg2 maxDigits:(unsigned long long)arg3;
+- (id)_countrySpecificLocalizedStringKeyForKey:(id)arg1 numberOfDigits:(unsigned long long)arg2;
 - (id)_countrySpecificLocalizedStringKeyForKey:(id)arg1;
 - (unsigned long long)_maxTextLengthForRow:(unsigned long long)arg1;
 - (unsigned long long)_minTextLengthForRow:(unsigned long long)arg1;
@@ -47,7 +49,9 @@
 - (id)_placeholderTextForRow:(unsigned long long)arg1;
 - (id)_textForRow:(unsigned long long)arg1;
 - (id)_bankInformationTextForRow:(unsigned long long)arg1;
+- (void)_reloadTableSection;
 - (void)_setState:(unsigned long long)arg1;
+- (void)_setText:(id)arg1 forForCellAtRow:(unsigned long long)arg2;
 - (id)_userEnteredTextForCellAtRow:(unsigned long long)arg1;
 - (_Bool)_isCellValidAtRow:(unsigned long long)arg1;
 - (_Bool)_isRoutingNumberCellValid;

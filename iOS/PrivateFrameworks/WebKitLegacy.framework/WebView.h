@@ -63,8 +63,6 @@
 + (void)_setIconLoadingEnabled:(_Bool)arg1;
 + (id)_MIMETypeForFile:(id)arg1;
 + (_Bool)_isUnderMemoryPressure;
-+ (_Bool)_allowCookies;
-+ (void)_setAllowCookies:(_Bool)arg1;
 + (_Bool)canShowFile:(id)arg1;
 + (void)closeAllWebViews;
 + (_Bool)canCloseAllWebViews;
@@ -172,6 +170,9 @@
 - (void)showCandidates:(id)arg1 forString:(id)arg2 inRect:(struct CGRect)arg3 forSelectedRange:(struct _NSRange)arg4 view:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_setFontFallbackPrefersPictographs:(_Bool)arg1;
 @property(copy, nonatomic, getter=_sourceApplicationAuditData, setter=_setSourceApplicationAuditData:) NSData *sourceApplicationAuditData;
+- (void)viewDidChangeEffectiveAppearance;
+@property(nonatomic, setter=_setUseSystemAppearance:) _Bool _useSystemAppearance;
+- (_Bool)_effectiveAppearanceIsDark;
 @property(nonatomic, setter=_setUnobscuredSafeAreaInsets:) struct WebEdgeInsets _unobscuredSafeAreaInsets;
 - (void)_setWebGLEnabled:(_Bool)arg1;
 - (_Bool)_webGLEnabled;
@@ -600,8 +601,6 @@
 - (_Bool)_becomingFirstResponderFromOutside;
 - (id)_deviceOrientationProvider;
 - (void)_setDeviceOrientationProvider:(id)arg1;
-- (id)_userMediaClient;
-- (void)_setUserMediaClient:(id)arg1;
 - (void)_resetAllGeolocationPermission;
 - (void)_geolocationDidFailWithMessage:(id)arg1;
 - (void)_geolocationDidChangePosition:(id)arg1;

@@ -9,7 +9,8 @@
 __attribute__((visibility("hidden")))
 @interface TSPUnknownFieldObjectReference
 {
-    TSPLazyReferenceArray *_objects;
+    TSPLazyReferenceArray *_strongObjects;
+    TSPLazyReferenceArray *_weakObjects;
 }
 
 - (void).cxx_destruct;

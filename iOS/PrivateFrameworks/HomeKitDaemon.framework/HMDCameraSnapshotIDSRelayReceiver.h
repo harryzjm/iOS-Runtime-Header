@@ -8,7 +8,7 @@
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 #import <HomeKitDaemon/IDSSessionDelegate-Protocol.h>
 
-@class HMDSnapshotFile, IDSSession, NSMutableData, NSObject, NSString;
+@class HMDCameraIDSSessionInviterDeviceVerifier, HMDSnapshotFile, IDSSession, NSMutableData, NSObject, NSString;
 @protocol HMDCameraSnapshotIDSRelayReceiverDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface HMDCameraSnapshotIDSRelayReceiver <IDSServiceDelegate, IDSSessionDelegate, HMFLogging>
@@ -21,9 +21,11 @@
     IDSSession *_idsSession;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     id <HMDCameraSnapshotIDSRelayReceiverDelegate> _delegate;
+    HMDCameraIDSSessionInviterDeviceVerifier *_sessionInviterDeviceVerifier;
 }
 
 + (id)logCategory;
+@property(readonly, nonatomic) HMDCameraIDSSessionInviterDeviceVerifier *sessionInviterDeviceVerifier; // @synthesize sessionInviterDeviceVerifier=_sessionInviterDeviceVerifier;
 @property(readonly, nonatomic) __weak id <HMDCameraSnapshotIDSRelayReceiverDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property(retain, nonatomic) IDSSession *idsSession; // @synthesize idsSession=_idsSession;
@@ -42,7 +44,7 @@
 - (void)_handleDataFromSocket:(id)arg1;
 - (void)_startFileReceive;
 - (id)logIdentifier;
-- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 snapshotFile:(id)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
+- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 sessionInviterDeviceVerifier:(id)arg3 snapshotFile:(id)arg4 delegate:(id)arg5 delegateQueue:(id)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,30 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ARPatchGrid, MISSING_TYPE;
+@class ARPatchGrid, ARPlaneGeometry, MISSING_TYPE, NSDictionary;
 
 @interface ARPlaneAnchor
 {
+    float _uncertaintyAlongNormal;
     long long _alignment;
+    ARPlaneGeometry *_geometry;
+    long long _classificationStatus;
+    long long _classification;
     ARPatchGrid *_gridExtent;
-    long long _activePlaneID;
+    long long _worldAlignmentRotation;
+    NSDictionary *_possibleClassifications;
     MISSING_TYPE *_center;
     MISSING_TYPE *_extent;
-    CDStruct_14d5dc5e _visionTransform;
 }
 
-@property(nonatomic) long long activePlaneID; // @synthesize activePlaneID=_activePlaneID;
-@property(nonatomic) CDStruct_14d5dc5e visionTransform; // @synthesize visionTransform=_visionTransform;
++ (_Bool)supportsSecureCoding;
++ (_Bool)isClassificationSupported;
+@property(copy, nonatomic) NSDictionary *possibleClassifications; // @synthesize possibleClassifications=_possibleClassifications;
+@property(nonatomic) long long worldAlignmentRotation; // @synthesize worldAlignmentRotation=_worldAlignmentRotation;
+@property(nonatomic) float uncertaintyAlongNormal; // @synthesize uncertaintyAlongNormal=_uncertaintyAlongNormal;
 @property(retain, nonatomic) ARPatchGrid *gridExtent; // @synthesize gridExtent=_gridExtent;
+@property(nonatomic) long long classification; // @synthesize classification=_classification;
+@property(nonatomic) long long classificationStatus; // @synthesize classificationStatus=_classificationStatus;
+@property(retain, nonatomic) ARPlaneGeometry *geometry; // @synthesize geometry=_geometry;
 @property(nonatomic) MISSING_TYPE *extent; // @synthesize extent=_extent;
 @property(nonatomic) MISSING_TYPE *center; // @synthesize center=_center;
 @property(readonly, nonatomic) long long alignment; // @synthesize alignment=_alignment;
 - (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithAnchor:(id)arg1;
+- (float)area;
 - (id)debugQuickLookObject;
 - (id)description;
 - (id)_description:(_Bool)arg1;
-- (id)_hitTestFromOrigin:(_Bool)arg1 withDirection:usingExtent: /* Error: Ran out of types for this method. */;
+- (id)_hitTestFromOrigin:(_Bool)arg1 withDirection:(_Bool)arg2 usingExtent:usingGeometry: /* Error: Ran out of types for this method. */;
 - (id)initWithIdentifier:(id)arg1 transform:(CDStruct_14d5dc5e)arg2 alignment:(long long)arg3;
 
 @end

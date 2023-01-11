@@ -16,10 +16,16 @@
 
 + (id)sharedAWDLogger;
 @property(copy) NSData *activeAID; // @synthesize activeAID=_activeAID;
+- (void)postAWDMobileSoftwareUpdateException:(unsigned int)arg1;
+- (void)postAWDFelicaStateChangeEvent:(id)arg1;
+- (void)postAWDHCEEndEvent;
+- (void)postAWDHCEStateChangeEvent:(unsigned int)arg1;
+- (void)postAWDHCEStartEvent:(id)arg1;
+- (void)postAWDHCIActivityTimeout:(id)arg1;
 - (void)postAWDPeerPaymentRequestWithParameters:(id)arg1;
 - (void)postAWDPeerPaymentEnrollmentWithParameters:(id)arg1;
 - (void)postAWDReaderSessionEventWithParameters:(id)arg1;
-- (void)postAWDMiddlewareException:(unsigned int)arg1 mwVersion:(unsigned int)arg2 errorType:(unsigned int)arg3 errorCode:(unsigned int)arg4 checkMaxExceptionCounter:(_Bool)arg5;
+- (void)postAWDMiddlewareException:(unsigned int)arg1 mwVersion:(unsigned int)arg2 errorType:(unsigned int)arg3 errorCode:(unsigned int)arg4 breadcrumb:(unsigned long long)arg5 checkMaxExceptionCounter:(_Bool)arg6;
 - (void)postAWDPLLUnlockEvent;
 - (void)postAWDReaderModeExceptionForType:(unsigned int)arg1 withErrorCode:(unsigned int)arg2;
 - (void)postAWDVASTransactionException:(unsigned int)arg1 withSWStatus:(unsigned int)arg2;
@@ -38,11 +44,13 @@
 - (void)postAWDAPNReceived;
 - (void)postAWDTransactionEndOfOperation;
 - (void)postAWDTransactionLastRAPDU;
+- (void)postAWDHCIEndOfTransactionV2EventWithParameters:(id)arg1;
+- (void)postAWDHCIStartOfTransactionV2EventWithParameters:(id)arg1;
 - (void)postAWDHCIEndOfTransactionEventWithParameters:(id)arg1;
 - (void)postAWDHCIStartOfTransactionEventWithVersion:(unsigned int)arg1 withStatus:(unsigned int)arg2;
 - (void)postAWDCardIngestionReaderStateChangeWithType:(unsigned int)arg1 errorCode:(unsigned int)arg2;
-- (void)postAWDCardIngestionSessionStateChangeTo:(unsigned int)arg1;
-- (void)postAWDExpressTransactionEventFor:(unsigned int)arg1 started:(_Bool)arg2;
+- (void)postAWDCardIngestionSessionStateChange:(id)arg1;
+- (void)postAWDExpressTransactionEvent:(id)arg1;
 - (void)postAWDCRSActivationTimerExpiredWithVersion:(unsigned int)arg1 withStatus:(unsigned int)arg2;
 - (void)postAWDSESelectEventWithAID:(id)arg1;
 - (void)postAWDCRSDeAuthWithStatus:(unsigned int)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MPSNNFilterNode;
 @protocol MPSHandle, MPSImageAllocator;
@@ -14,12 +14,17 @@
     id <MPSHandle> _handle;
     MPSNNFilterNode *_parent;
     id <MPSImageAllocator> _imageAllocator;
-    _Bool _exportFromGraph;
+    unsigned long long _clientCount;
     unsigned long long _format;
+    _Bool _exportFromGraph;
+    _Bool _synchronize;
+    _Bool _stopGradient;
 }
 
 + (id)exportedNodeWithHandle:(id)arg1;
 + (id)nodeWithHandle:(id)arg1;
+@property(nonatomic) _Bool stopGradient; // @synthesize stopGradient=_stopGradient;
+@property(nonatomic) _Bool synchronizeResource; // @synthesize synchronizeResource=_synchronize;
 @property(nonatomic) _Bool exportFromGraph; // @synthesize exportFromGraph=_exportFromGraph;
 @property(retain, nonatomic) id <MPSImageAllocator> imageAllocator; // @synthesize imageAllocator=_imageAllocator;
 @property(retain, nonatomic) id <MPSHandle> handle; // @synthesize handle=_handle;

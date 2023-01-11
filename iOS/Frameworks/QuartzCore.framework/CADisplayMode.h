@@ -4,20 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CADisplay, NSString;
+@class NSString;
 
 @interface CADisplayMode : NSObject
 {
-    struct Mode _mode;
-    CADisplay *_dpy;
-    unsigned long long _width;
-    unsigned long long _height;
+    struct CADisplayModePriv *_priv;
 }
 
 + (id)_displayModeWithMode:(struct Mode)arg1 display:(id)arg2;
-- (id).cxx_construct;
 - (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

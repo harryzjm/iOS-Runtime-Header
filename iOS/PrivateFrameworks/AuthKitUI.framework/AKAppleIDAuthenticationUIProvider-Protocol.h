@@ -5,12 +5,13 @@
 //
 
 #import <AuthKitUI/AKAppleIDAuthenticationLimitedUIProvider-Protocol.h>
+#import <AuthKitUI/AKAppleIDServerAuthenticationUIProvider-Protocol.h>
 
-@class AKAppleIDServerResourceLoadDelegate, NSString, NSURLRequest;
+@class AKAccountRecoveryContext, NSString;
 
-@protocol AKAppleIDAuthenticationUIProvider <AKAppleIDAuthenticationLimitedUIProvider>
-- (void)dismissServerProvidedUIWithCompletion:(void (^)(_Bool, NSError *))arg1;
-- (void)presentServerProvidedUIWithURLRequest:(NSURLRequest *)arg1 delegate:(AKAppleIDServerResourceLoadDelegate *)arg2 completion:(void (^)(NSHTTPURLResponse *, NSDictionary *, NSError *))arg3;
+@protocol AKAppleIDAuthenticationUIProvider <AKAppleIDAuthenticationLimitedUIProvider, AKAppleIDServerAuthenticationUIProvider>
+- (void)dismissNativeRecoveryUIWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)presentNativeRecoveryUIWithContext:(AKAccountRecoveryContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 
 @optional
 - (void)dismissKeepUsingUIWithCompletion:(void (^)(_Bool, NSError *))arg1;

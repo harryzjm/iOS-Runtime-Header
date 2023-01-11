@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <ChatKit/NSCoding-Protocol.h>
+#import <ChatKit/NSSecureCoding-Protocol.h>
 
-@interface CKMessageEntryViewLayoutMetrics : NSObject <NSCoding>
+@interface CKMessageEntryViewLayoutMetrics : NSObject <NSSecureCoding>
 {
     double _defaultEntryContentViewHeight;
     double _defaultSubjectEntryContentViewHeight;
@@ -18,6 +18,7 @@
     struct UIEdgeInsets _entryViewTextAlignmentInsets;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) double defaultSubjectEntryViewHeight; // @synthesize defaultSubjectEntryViewHeight=_defaultSubjectEntryViewHeight;
 @property(readonly, nonatomic) double defaultEntryViewHeight; // @synthesize defaultEntryViewHeight=_defaultEntryViewHeight;
 @property(readonly, nonatomic) double defaultSubjectEntryContentViewHeight; // @synthesize defaultSubjectEntryContentViewHeight=_defaultSubjectEntryContentViewHeight;

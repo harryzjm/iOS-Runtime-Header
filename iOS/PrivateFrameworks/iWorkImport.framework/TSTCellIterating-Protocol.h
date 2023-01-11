@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <iWorkImport/TSTDataStoreIterating-Protocol.h>
+#import <iWorkImport/NSObject-Protocol.h>
 
 @class TSTInfo;
 @protocol TSTCellIteratorData;
 
-@protocol TSTCellIterating <TSTDataStoreIterating>
+@protocol TSTCellIterating <NSObject>
 - (void)terminate;
 - (_Bool)getNextCellData:(id *)arg1;
 - (id <TSTCellIteratorData>)nextCellData;

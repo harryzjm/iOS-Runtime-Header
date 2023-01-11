@@ -11,6 +11,8 @@
     struct SKCShapeNode *_skcShapeNode;
 }
 
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
++ (id)debugHierarchyPropertyDescriptions;
 + (id)shapeNodeWithSplinePoints:(struct CGPoint *)arg1 count:(unsigned long long)arg2;
 + (id)shapeNodeWithPoints:(struct CGPoint *)arg1 count:(unsigned long long)arg2;
 + (id)shapeNodeWithTriangleA:(struct CGPoint)arg1 B:(struct CGPoint)arg2 C:(struct CGPoint)arg3;
@@ -23,8 +25,7 @@
 + (id)shapeNodeWithEllipseInRect:(struct CGRect)arg1;
 + (id)shapeNodeWithPath:(struct CGPath *)arg1 centered:(_Bool)arg2;
 + (id)shapeNodeWithPath:(struct CGPath *)arg1;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
-- (id)debugHierarchyPropertyDescriptions;
++ (_Bool)supportsSecureCoding;
 - (void)setValue:(id)arg1 forAttributeNamed:(id)arg2;
 - (id)valueForAttributeNamed:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

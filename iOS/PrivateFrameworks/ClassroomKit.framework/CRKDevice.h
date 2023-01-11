@@ -9,7 +9,7 @@
 #import <ClassroomKit/NSCopying-Protocol.h>
 #import <ClassroomKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDate, NSDictionary, NSString;
 
 @interface CRKDevice : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,8 +18,12 @@
     _Bool _orientationLocked;
     _Bool _appLocked;
     _Bool _passcodeEnabled;
+    _Bool _requestingUnenroll;
     float _batteryLevel;
     float _volume;
+    float _displayBackingScaleFactor;
+    float _displayWidth;
+    float _displayHeight;
     NSString *_identifier;
     NSString *_serialNumber;
     unsigned long long _platform;
@@ -34,6 +38,8 @@
     unsigned long long _availableBytes;
     unsigned long long _deviceOrientation;
     unsigned long long _interfaceOrientation;
+    NSDate *_internetDateAndTime;
+    double _uptimeAtInternetDateAndTimeFetch;
     NSString *_primaryOpenApplication;
     NSString *_secondaryOpenApplication;
     NSString *_pipOpenApplication;
@@ -56,6 +62,7 @@
     NSString *_managementLockPasscode;
 }
 
++ (id)bootDate;
 + (_Bool)supportsSecureCoding;
 + (id)allPropertyKeys;
 + (id)CRKKeyForDMFKey:(id)arg1;
@@ -63,6 +70,7 @@
 @property(copy, nonatomic) NSString *managementLockPasscode; // @synthesize managementLockPasscode=_managementLockPasscode;
 @property(copy, nonatomic) NSArray *availableAirPlayRoutes; // @synthesize availableAirPlayRoutes=_availableAirPlayRoutes;
 @property(copy, nonatomic) NSDictionary *activeAirPlayRoute; // @synthesize activeAirPlayRoute=_activeAirPlayRoute;
+@property(nonatomic, getter=isRequestingUnenroll) _Bool requestingUnenroll; // @synthesize requestingUnenroll=_requestingUnenroll;
 @property(copy, nonatomic) NSString *instructorImageIdentifier; // @synthesize instructorImageIdentifier=_instructorImageIdentifier;
 @property(copy, nonatomic) NSString *studentImageIdentifier; // @synthesize studentImageIdentifier=_studentImageIdentifier;
 @property(nonatomic, getter=isPasscodeEnabled) _Bool passcodeEnabled; // @synthesize passcodeEnabled=_passcodeEnabled;
@@ -82,6 +90,11 @@
 @property(copy, nonatomic) NSString *pipOpenApplication; // @synthesize pipOpenApplication=_pipOpenApplication;
 @property(copy, nonatomic) NSString *secondaryOpenApplication; // @synthesize secondaryOpenApplication=_secondaryOpenApplication;
 @property(copy, nonatomic) NSString *primaryOpenApplication; // @synthesize primaryOpenApplication=_primaryOpenApplication;
+@property(nonatomic) double uptimeAtInternetDateAndTimeFetch; // @synthesize uptimeAtInternetDateAndTimeFetch=_uptimeAtInternetDateAndTimeFetch;
+@property(retain, nonatomic) NSDate *internetDateAndTime; // @synthesize internetDateAndTime=_internetDateAndTime;
+@property(nonatomic) float displayHeight; // @synthesize displayHeight=_displayHeight;
+@property(nonatomic) float displayWidth; // @synthesize displayWidth=_displayWidth;
+@property(nonatomic) float displayBackingScaleFactor; // @synthesize displayBackingScaleFactor=_displayBackingScaleFactor;
 @property(nonatomic, getter=isOrientationLocked) _Bool orientationLocked; // @synthesize orientationLocked=_orientationLocked;
 @property(nonatomic) unsigned long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property(nonatomic) unsigned long long deviceOrientation; // @synthesize deviceOrientation=_deviceOrientation;
@@ -112,6 +125,7 @@
 - (unsigned long long)hash;
 - (id)description;
 - (id)initWithIdentifier:(id)arg1;
+- (_Bool)isApplicationInstalled:(id)arg1;
 - (_Bool)isApplicationOpen:(id)arg1;
 
 @end

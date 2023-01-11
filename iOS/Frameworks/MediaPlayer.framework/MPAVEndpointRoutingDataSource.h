@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMapTable, NSObject;
+@class NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MPAVEndpointRoutingDataSource
 {
-    NSMapTable *_cachedEndpoints;
-    NSObject<OS_dispatch_queue> *_serialQueue;
     void *_discoverySession;
     void *_callbackToken;
+    NSString *_routingContextUID;
+    NSObject<OS_dispatch_queue> *_serialQueue;
+    NSMutableDictionary *_endpoints;
 }
 
+@property(retain, nonatomic) NSMutableDictionary *endpoints; // @synthesize endpoints=_endpoints;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
+@property(copy, nonatomic) NSString *routingContextUID; // @synthesize routingContextUID=_routingContextUID;
 - (void).cxx_destruct;
 - (void)_endpointsDidChange:(id)arg1;
 - (void)setPickedRoute:(id)arg1 withPassword:(id)arg2 completion:(CDUnknownBlockType)arg3;

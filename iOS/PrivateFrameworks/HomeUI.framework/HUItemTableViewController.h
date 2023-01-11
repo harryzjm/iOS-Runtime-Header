@@ -10,36 +10,48 @@
 #import <HomeUI/HUItemPresentationContainer-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
 
-@class HFItem, HFItemManager, HUGridLayoutOptions, NSMapTable, NSMutableArray, NSMutableSet, NSString;
+@class HFItem, HFItemManager, HUGridLayoutOptions, HUItemTableViewScrollDestination, NSMapTable, NSMutableArray, NSMutableSet, NSString;
 @protocol NACancelable;
 
 @interface HUItemTableViewController <HFExecutionEnvironmentObserver, HFItemManagerDelegate, HUItemManagerContainer, HUItemPresentationContainer, HUPreloadableViewController>
 {
     _Bool _wantsPreferredContentSize;
+    _Bool _viewHasAppeared;
+    _Bool _hasForcedLoadingVisibleCells;
     _Bool _hasFinishedInitialLoad;
+    _Bool _automaticallyUpdatesViewControllerTitle;
     _Bool _visibilityUpdatesEnabled;
+    unsigned long long _appearState;
+    HUItemTableViewScrollDestination *_pendingScrollDestination;
     HFItemManager *_itemManager;
+    NSMutableSet *_internalItemModuleControllers;
     NSMutableArray *_foregroundUpdateFutures;
     NSMutableSet *_registeredCellClasses;
     id <NACancelable> _deferredVisibilityUpdate;
-    NSMapTable *_textFieldToIndexPathMap;
-    NSMapTable *_indexPathToTextFieldMap;
+    NSMapTable *_textFieldToCellMap;
     HUGridLayoutOptions *_gridLayoutOptions;
 }
 
 + (unsigned long long)updateMode;
 + (_Bool)adoptsDefaultGridLayoutMargins;
 @property(retain, nonatomic) HUGridLayoutOptions *gridLayoutOptions; // @synthesize gridLayoutOptions=_gridLayoutOptions;
-@property(readonly, nonatomic) NSMapTable *indexPathToTextFieldMap; // @synthesize indexPathToTextFieldMap=_indexPathToTextFieldMap;
-@property(readonly, nonatomic) NSMapTable *textFieldToIndexPathMap; // @synthesize textFieldToIndexPathMap=_textFieldToIndexPathMap;
+@property(readonly, nonatomic) NSMapTable *textFieldToCellMap; // @synthesize textFieldToCellMap=_textFieldToCellMap;
 @property(retain, nonatomic) id <NACancelable> deferredVisibilityUpdate; // @synthesize deferredVisibilityUpdate=_deferredVisibilityUpdate;
 @property(nonatomic) _Bool visibilityUpdatesEnabled; // @synthesize visibilityUpdatesEnabled=_visibilityUpdatesEnabled;
+@property(nonatomic) _Bool automaticallyUpdatesViewControllerTitle; // @synthesize automaticallyUpdatesViewControllerTitle=_automaticallyUpdatesViewControllerTitle;
 @property(readonly, nonatomic) NSMutableSet *registeredCellClasses; // @synthesize registeredCellClasses=_registeredCellClasses;
 @property(retain, nonatomic) NSMutableArray *foregroundUpdateFutures; // @synthesize foregroundUpdateFutures=_foregroundUpdateFutures;
 @property(nonatomic) _Bool hasFinishedInitialLoad; // @synthesize hasFinishedInitialLoad=_hasFinishedInitialLoad;
+@property(readonly, nonatomic) NSMutableSet *internalItemModuleControllers; // @synthesize internalItemModuleControllers=_internalItemModuleControllers;
 @property(retain, nonatomic) HFItemManager *itemManager; // @synthesize itemManager=_itemManager;
+@property(retain, nonatomic) HUItemTableViewScrollDestination *pendingScrollDestination; // @synthesize pendingScrollDestination=_pendingScrollDestination;
+@property(nonatomic) _Bool hasForcedLoadingVisibleCells; // @synthesize hasForcedLoadingVisibleCells=_hasForcedLoadingVisibleCells;
+@property(nonatomic) _Bool viewHasAppeared; // @synthesize viewHasAppeared=_viewHasAppeared;
+@property(nonatomic) unsigned long long appearState; // @synthesize appearState=_appearState;
 @property(nonatomic) _Bool wantsPreferredContentSize; // @synthesize wantsPreferredContentSize=_wantsPreferredContentSize;
 - (void).cxx_destruct;
+- (id)moduleController:(id)arg1 dismissViewControllerForRequest:(id)arg2;
+- (id)moduleController:(id)arg1 presentViewControllerForRequest:(id)arg2;
 - (void)recursivelyDisableItemUpdates:(_Bool)arg1 withReason:(id)arg2;
 @property(readonly, nonatomic) HFItem *hu_presentedItem;
 - (void)executionEnvironmentRunningStateDidChange:(id)arg1;
@@ -49,8 +61,10 @@
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (_Bool)textFieldShouldClear:(id)arg1;
 - (void)textFieldDidBeginEditing:(id)arg1;
+- (void)scrollToItem:(id)arg1 animated:(_Bool)arg2;
 - (void)highlightItemAnimated:(id)arg1 duration:(double)arg2;
 - (void)highlightItemAnimated:(id)arg1;
+- (void)itemManager:(id)arg1 didUpdateItemModules:(id)arg2;
 - (void)itemManager:(id)arg1 didChangeSourceItem:(id)arg2;
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
 - (void)itemManager:(id)arg1 didChangeOverallLoadingState:(unsigned long long)arg2;
@@ -78,6 +92,7 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)_scrollToDestination:(id)arg1;
 - (void)_updateLayoutMarginsForCells:(id)arg1;
 - (_Bool)_shouldHideFooterForSection:(long long)arg1;
 - (_Bool)_shouldHideHeaderForSection:(long long)arg1;
@@ -89,7 +104,6 @@
 - (void)_dispatchUpdateForCell:(id)arg1 item:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
 - (id)textFieldForVisibleItem:(id)arg1;
 - (id)moduleControllerForItem:(id)arg1;
-- (id)subclass_preloadContent;
 - (id)childViewControllersToPreload;
 - (id)itemTableFooterView;
 - (id)itemTableHeaderView;
@@ -98,7 +112,6 @@
 - (unsigned long long)automaticDisablingReasonsForItem:(id)arg1;
 - (_Bool)shouldHideFooterBelowSection:(long long)arg1;
 - (_Bool)shouldHideHeaderAboveSection:(long long)arg1;
-- (_Bool)automaticallyUpdatesViewControllerTitle;
 - (_Bool)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
 - (void)textFieldDidEndEditing:(id)arg1 item:(id)arg2;
 - (void)textDidChange:(id)arg1 forTextField:(id)arg2 item:(id)arg3;
@@ -110,10 +123,14 @@
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
+- (id)buildItemModuleControllerForModule:(id)arg1;
 - (id)itemModuleControllers;
+- (_Bool)alwaysUseDeltaTableViewUpdatesAfterViewHasAppeared;
+- (_Bool)bypassInitialItemUpdateReload;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;

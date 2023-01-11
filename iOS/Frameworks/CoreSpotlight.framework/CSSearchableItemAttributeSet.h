@@ -435,7 +435,6 @@
 - (void)setThumbnailURL:(id)arg1;
 - (id)contentURL;
 - (void)setContentURL:(id)arg1;
-- (void)_updateDocumentInfoForContentURL:(id)arg1;
 - (id)weakRelatedUniqueIdentifier;
 - (void)setWeakRelatedUniqueIdentifier:(id)arg1;
 - (id)relatedUniqueIdentifier;
@@ -563,6 +562,10 @@
 @property(copy) NSString *parentFileItemID;
 @property(copy) NSString *fileItemID;
 @property(copy) NSString *fileProviderID;
+@property(copy) NSString *punchoutLabel;
+@property(retain) NSNumber *backgroundRunnable;
+@property(copy) NSString *suggestedInvocationPhrase;
+@property(copy) NSData *intentData;
 @property(retain) NSNumber *isPlaceholder;
 @property(copy) NSDate *lastApplicationLaunchedDate;
 - (id)containerOrder;

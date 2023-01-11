@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSDictionary, NSMutableDictionary, NSString, NSURL;
+@class HMFActivity, NSData, NSDictionary, NSMutableDictionary, NSString, NSURL;
 
 @interface HMFHTTPRequestInternal
 {
@@ -12,8 +12,10 @@
     NSURL *_URL;
     NSString *_method;
     NSData *_body;
+    HMFActivity *_activity;
 }
 
+@property(readonly, nonatomic) HMFActivity *activity; // @synthesize activity=_activity;
 @property(retain, nonatomic) NSData *body; // @synthesize body=_body;
 @property(retain, nonatomic) NSDictionary *headerFields; // @synthesize headerFields=_headerFields;
 @property(copy, nonatomic) NSString *method; // @synthesize method=_method;

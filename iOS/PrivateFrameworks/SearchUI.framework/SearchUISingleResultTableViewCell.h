@@ -7,13 +7,13 @@
 #import <SearchUI/CNAvatarViewDelegate-Protocol.h>
 #import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
 
-@class CNAvatarView, NSMutableDictionary, NSString, NUIContainerStackView, SFSearchResult, SearchUIAccessoryViewController, SearchUIForceTouchGestureRecognizer, SearchUIThumbnailView, TLKDetailsView;
+@class CNAvatarView, NSMutableDictionary, NSString, NUIContainerStackView, SFSearchResult, SearchUIAccessoryViewController, SearchUIForceTouchGestureRecognizer, SearchUIImageView, TLKDetailsView;
 
 @interface SearchUISingleResultTableViewCell <NUIContainerStackViewDelegate, CNAvatarViewDelegate>
 {
     SFSearchResult *_result;
     NUIContainerStackView *_innerContainer;
-    SearchUIThumbnailView *_thumbnailView;
+    SearchUIImageView *_thumbnailView;
     TLKDetailsView *_detailsView;
     NSMutableDictionary *_accessoryViewControllers;
     SearchUIAccessoryViewController *_accessoryViewControllerForResult;
@@ -28,13 +28,12 @@
 @property(retain) SearchUIAccessoryViewController *accessoryViewControllerForResult; // @synthesize accessoryViewControllerForResult=_accessoryViewControllerForResult;
 @property(retain) NSMutableDictionary *accessoryViewControllers; // @synthesize accessoryViewControllers=_accessoryViewControllers;
 @property(retain) TLKDetailsView *detailsView; // @synthesize detailsView=_detailsView;
-@property(retain) SearchUIThumbnailView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
+@property(retain) SearchUIImageView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
 @property(retain) NUIContainerStackView *innerContainer; // @synthesize innerContainer=_innerContainer;
 @property(retain) SFSearchResult *result; // @synthesize result=_result;
 - (void).cxx_destruct;
 - (void)willBeginPreviewInteractionForAvatarView:(id)arg1;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
-- (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (long long)containerStackView:(id)arg1 alignmentForArrangedSubview:(id)arg2;
 - (_Bool)arrangedViewMustCenter:(id)arg1;
 - (void)updateForceTouchRecognizerWithResult:(id)arg1;
@@ -43,9 +42,6 @@
 - (id)contactInlineActionViewController;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)containerViewDidInvalidateIntrinsicContentSize:(id)arg1;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)updateLayoutMargins;
-- (void)setSectionLocation:(int)arg1;
 - (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
 
 // Remaining properties

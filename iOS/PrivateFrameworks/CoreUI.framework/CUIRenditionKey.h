@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreUI/NSCoding-Protocol.h>
 #import <CoreUI/NSCopying-Protocol.h>
 
 @interface CUIRenditionKey : NSObject <NSCopying, NSCoding>
 {
-    struct _renditionkeytoken _stackKey[17];
+    struct _renditionkeytoken _stackKey[18];
     struct _renditionkeytoken *_key;
     unsigned short _highwaterKeyCount;
 }
@@ -26,6 +26,8 @@
 - (void)setThemeDeploymentTarget:(long long)arg1;
 - (long long)themeDisplayGamut;
 - (void)setThemeDisplayGamut:(long long)arg1;
+- (long long)themeAppearance;
+- (void)setThemeAppearance:(long long)arg1;
 - (long long)themeIdentifier;
 - (void)setThemeIdentifier:(long long)arg1;
 - (long long)themeGraphicsClass;

@@ -4,24 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <iWorkImport/TSKSearchCanvasDelegate-Protocol.h>
-
-@class NSString;
-
 __attribute__((visibility("hidden")))
-@interface TPThumbnailImager <TSKSearchCanvasDelegate>
+@interface TPThumbnailImager
 {
 }
 
 - (struct CGImage *)newImage;
 - (void)canvasDidValidateLayouts:(id)arg1;
-- (void)canvasWillLayout:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)canvasWillValidateLayouts:(id)arg1;
 
 @end
 

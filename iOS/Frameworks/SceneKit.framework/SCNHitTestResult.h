@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class SCNNode;
+@class MISSING_TYPE, SCNNode;
 
 @interface SCNHitTestResult : NSObject
 {
@@ -28,6 +28,11 @@
 @property(readonly, nonatomic) SCNNode *node;
 - (void)dealloc;
 - (id)initWithResult:(struct __C3DHitTestResult *)arg1;
+@property(readonly, nonatomic) CDStruct_14d5dc5e simdModelTransform;
+@property(readonly, nonatomic) MISSING_TYPE *simdWorldNormal;
+@property(readonly, nonatomic) MISSING_TYPE *simdLocalNormal;
+@property(readonly, nonatomic) MISSING_TYPE *simdWorldCoordinates;
+@property(readonly, nonatomic) MISSING_TYPE *simdLocalCoordinates;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSNumber, NSURL;
+@class NSArray, NSNumber, NSString, NSURL;
 
 @interface SAMPCreateRadioStation
 {
@@ -16,6 +16,7 @@
 @property(copy, nonatomic) NSURL *stationUrl;
 @property(copy, nonatomic) NSNumber *startPlaying;
 @property(copy, nonatomic) NSArray *hashedRouteUIDs;
+@property(copy, nonatomic) NSString *assetInfo;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

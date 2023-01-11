@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class TSWPColumn, TSWPShapeLayout;
+@class TSDLayout, TSWPColumn;
+@protocol TSWPLayoutTarget;
 
 __attribute__((visibility("hidden")))
 @interface TSWPInteriorCookie : NSObject
 {
     TSWPColumn *_column;
-    TSWPShapeLayout *_layout;
+    TSDLayout<TSWPLayoutTarget> *_layout;
 }
 
-@property(nonatomic) __weak TSWPShapeLayout *layout; // @synthesize layout=_layout;
+@property(nonatomic) __weak TSDLayout<TSWPLayoutTarget> *layout; // @synthesize layout=_layout;
 @property(nonatomic) __weak TSWPColumn *column; // @synthesize column=_column;
 - (void).cxx_destruct;
 

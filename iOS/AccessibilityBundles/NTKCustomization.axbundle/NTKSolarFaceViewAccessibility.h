@@ -11,17 +11,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityApplyUpdatedSolarPathLabel:(double)arg1;
 - (void)_accessibilityLoadSolarPathInfo;
-- (id)_accessibilityOffsettedTimeString;
 - (void)_accessibilityAnnounceWaypointDifference;
-- (void)_accessibilityUpdateTimeDifferenceLabel;
-- (void)_updateTimeScrubbingContent;
 - (void)_setViewMode:(long long)arg1 animated:(_Bool)arg2;
 - (void)_applyDataMode;
 - (void)crownInputSequencerIdleDidChange:(id)arg1;
 - (void)_handleViewModeTapGesture:(id)arg1;
-- (void)_updateSolarPathForChangedDate:(id)arg1;
 - (void)_loadSnapshotContentViews;
 - (void)_accessibilityLoadAccessibilityInformation;
 

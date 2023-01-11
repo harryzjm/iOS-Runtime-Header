@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/MPRequestCancellationToken-Protocol.h>
 #import <MediaPlayer/NSCopying-Protocol.h>
 
-@class NSArray, NSBlockOperation, NSError, NSOperationQueue, NSString;
+@class NSArray, NSError, NSOperationQueue, NSString;
+@protocol OS_dispatch_queue;
 
 @interface MPRequest : NSObject <MPRequestCancellationToken, NSCopying>
 {
@@ -17,8 +18,8 @@
     long long _qualityOfService;
     double _timeoutInterval;
     NSOperationQueue *_calloutQueue;
-    NSBlockOperation *_completionOperation;
     NSError *_cancelationError;
+    NSObject<OS_dispatch_queue> *_cleanupQueue;
     NSOperationQueue *_queue;
     NSArray *_middlewareClasses;
 }
@@ -27,8 +28,8 @@
 + (Class)responseClass;
 @property(copy, nonatomic) NSArray *middlewareClasses; // @synthesize middlewareClasses=_middlewareClasses;
 @property(readonly, nonatomic) NSOperationQueue *queue; // @synthesize queue=_queue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *cleanupQueue; // @synthesize cleanupQueue=_cleanupQueue;
 @property(readonly, nonatomic) NSError *cancelationError; // @synthesize cancelationError=_cancelationError;
-@property(readonly, nonatomic) NSBlockOperation *completionOperation; // @synthesize completionOperation=_completionOperation;
 @property(readonly, nonatomic) NSOperationQueue *calloutQueue; // @synthesize calloutQueue=_calloutQueue;
 @property(nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
 @property(nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;

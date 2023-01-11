@@ -15,6 +15,7 @@
 - (_Bool)mutatingCommand;
 - (_Bool)requiresResponse;
 @property(retain, nonatomic) SAMPPodcastStation *station;
+@property(nonatomic) _Bool startPlaying;
 @property(copy, nonatomic) NSArray *hashedRouteUIDs;
 - (id)encodedClassName;
 - (id)groupIdentifier;

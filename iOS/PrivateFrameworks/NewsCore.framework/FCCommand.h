@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsCore/NSCoding-Protocol.h>
+#import <NewsCore/NSSecureCoding-Protocol.h>
 
-@interface FCCommand : NSObject <NSCoding>
+@interface FCCommand : NSObject <NSSecureCoding>
 {
 }
 
++ (_Bool)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)statusForCloudKitError:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString;
+@class NSArray, NSNumber, NSString;
 
 @interface SASStartSpeechRequest
 {
@@ -19,7 +19,10 @@
 @property(nonatomic) _Bool talkOnly;
 @property(nonatomic) _Bool handsFree;
 @property(nonatomic) _Bool eyesFree;
+@property(copy, nonatomic) NSNumber *durationSincePreviousTTSStart;
+@property(copy, nonatomic) NSNumber *durationSincePreviousTTSFinish;
 @property(copy, nonatomic) NSString *clientModelVersion;
+@property(copy, nonatomic) NSArray *bargeInModes;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

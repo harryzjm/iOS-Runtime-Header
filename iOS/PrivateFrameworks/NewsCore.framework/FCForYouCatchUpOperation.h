@@ -4,56 +4,62 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FCBreakingNewsOperation, FCCoverArticlesOperation, FCEditorialOperation, FCMutexLock, FCMyArticlesOperation, FCTopStoriesOperation, FCTrendingOperation, NSArray, NSDictionary, NSError, NSHashTable, NSOperationQueue;
+@class FCCoverArticlesOperation, FCEditorialOperation, FCFeedPersonalizedArticles, FCMyArticlesOperation, FCSpecialEventsOperation, FCTopStoriesOperation, FCTopStoriesOperationResult, FCTrendingOperation, FCVideoArticlesOperation, FCVideoArticlesOperationResult, NFMutexLock, NSArray, NSDictionary, NSError, NSHashTable, NSOperationQueue;
 @protocol FCChannelProviding;
 
 @interface FCForYouCatchUpOperation
 {
+    long long _contentTypes;
     FCMyArticlesOperation *_myArticlesOperation;
-    FCBreakingNewsOperation *_breakingNewsOperation;
+    FCSpecialEventsOperation *_specialEventsOperation;
     FCTopStoriesOperation *_topStoriesOperation;
     FCTrendingOperation *_trendingOperation;
     FCCoverArticlesOperation *_coverArticlesOperation;
     FCEditorialOperation *_editorialOperation;
+    FCVideoArticlesOperation *_videoArticlesOperation;
     NSOperationQueue *_operationQueue;
     NSHashTable *_conditionWaiters;
-    FCMutexLock *_conditionWaitersLock;
+    NFMutexLock *_conditionWaitersLock;
 }
 
-+ (id)temporaryBackgroundCatchUpOperationForEdition:(id)arg1 context:(id)arg2;
-+ (id)sharedCatchUpOperationForEdition:(id)arg1 context:(id)arg2;
-@property(retain, nonatomic) FCMutexLock *conditionWaitersLock; // @synthesize conditionWaitersLock=_conditionWaitersLock;
++ (id)sharedCatchUpOperationForEdition:(id)arg1 contentTypes:(long long)arg2 configuration:(id)arg3 context:(id)arg4;
+@property(retain, nonatomic) NFMutexLock *conditionWaitersLock; // @synthesize conditionWaitersLock=_conditionWaitersLock;
 @property(retain, nonatomic) NSHashTable *conditionWaiters; // @synthesize conditionWaiters=_conditionWaiters;
 @property(retain, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
+@property(retain, nonatomic) FCVideoArticlesOperation *videoArticlesOperation; // @synthesize videoArticlesOperation=_videoArticlesOperation;
 @property(retain, nonatomic) FCEditorialOperation *editorialOperation; // @synthesize editorialOperation=_editorialOperation;
 @property(retain, nonatomic) FCCoverArticlesOperation *coverArticlesOperation; // @synthesize coverArticlesOperation=_coverArticlesOperation;
 @property(retain, nonatomic) FCTrendingOperation *trendingOperation; // @synthesize trendingOperation=_trendingOperation;
 @property(retain, nonatomic) FCTopStoriesOperation *topStoriesOperation; // @synthesize topStoriesOperation=_topStoriesOperation;
-@property(retain, nonatomic) FCBreakingNewsOperation *breakingNewsOperation; // @synthesize breakingNewsOperation=_breakingNewsOperation;
+@property(retain, nonatomic) FCSpecialEventsOperation *specialEventsOperation; // @synthesize specialEventsOperation=_specialEventsOperation;
 @property(retain, nonatomic) FCMyArticlesOperation *myArticlesOperation; // @synthesize myArticlesOperation=_myArticlesOperation;
+@property(nonatomic) long long contentTypes; // @synthesize contentTypes=_contentTypes;
 - (void).cxx_destruct;
 - (void)_serviceConditionWaiters;
 - (void)_addConditionWaiter:(id)arg1;
 @property(readonly, copy) NSDictionary *feedContextByFeedID;
 - (id)catchUpErrorForContentTypes:(long long)arg1;
 @property(readonly, copy, nonatomic) NSError *catchUpError;
+@property(readonly, copy, nonatomic) FCVideoArticlesOperationResult *moreVideosResult;
+@property(readonly, copy, nonatomic) FCVideoArticlesOperationResult *topVideosResult;
 - (void)enumerateEditorialSectionsByRecencyAfterTransformation:(id)arg1 minFamilySize:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
 - (id)orphanedEditorialHeadlinesAfterTransformation:(id)arg1 minFamilySize:(unsigned long long)arg2;
+@property(readonly, copy, nonatomic) FCFeedPersonalizedArticles *nonEditorialPersonalizedArticles;
 @property(readonly, copy, nonatomic) NSArray *nonEditorialFeedItems;
+- (id)sortedNonEditorialFeedItemsAfterTransformation:(id)arg1;
 - (id)allNonEditorialFeedItemsAfterTransformation:(id)arg1;
 - (id)allFeedItemsAfterTransformation:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *supplementalCoverArticleHeadlines;
 @property(readonly, copy, nonatomic) NSArray *coverArticleHeadlines;
 @property(readonly, copy, nonatomic) NSArray *trendingHeadlines;
-@property(readonly, copy, nonatomic) NSDictionary *topStoriesMetadataByArticleID;
-@property(readonly, copy, nonatomic) NSArray *optionalTopStoriesHeadlines;
-@property(readonly, copy, nonatomic) NSArray *mandatoryTopStoriesHeadlines;
+@property(readonly, copy, nonatomic) FCTopStoriesOperationResult *topStoriesResult;
 @property(readonly, copy, nonatomic) id <FCChannelProviding> topStoriesChannel;
+@property(readonly, copy, nonatomic) NSArray *specialEventHeadlines;
 @property(readonly, copy, nonatomic) NSArray *breakingNewsHeadlines;
 - (id)waiterForCondition:(id)arg1;
 - (void)operationDidFinishWithError:(id)arg1;
 - (void)performOperation;
-- (id)initWithContext:(id)arg1 dateRange:(id)arg2 background:(_Bool)arg3;
+- (id)initWithContext:(id)arg1 configuration:(id)arg2 dateRange:(id)arg3 contentTypes:(long long)arg4 background:(_Bool)arg5;
 
 @end
 

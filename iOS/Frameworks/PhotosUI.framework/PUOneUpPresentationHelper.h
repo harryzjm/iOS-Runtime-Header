@@ -24,6 +24,7 @@
         _Bool respondsToWillPresentOneUpViewController;
         _Bool respondsToDidDismissOneUpViewController;
         _Bool respondsToViewHostingGestureRecognizers;
+        _Bool respondsToViewHostingTilingView;
         _Bool respondsToScrollView;
         _Bool respondsToPreferredBarStyle;
         _Bool respondsToShouldLeaveContentOnSecondScreen;
@@ -33,6 +34,7 @@
         _Bool respondsToPreventRevealInMomentAction;
         _Bool respondsToPreferredPresentationOrientation;
         _Bool respondsToEnableFreezeLayoutOnOrientationChange;
+        _Bool respondsToAdditionalOptions;
     } _delegateFlags;
     struct {
         _Bool respondsToCurrentImageForAssetReference;
@@ -106,6 +108,7 @@
 - (id)tilingView:(id)arg1 dataSourceConverterForTransitionFromLayout:(id)arg2 toLayout:(id)arg3;
 - (id)tilingView:(id)arg1 tileTransitionCoordinatorForTransitionFromLayout:(id)arg2 toLayout:(id)arg3 withContext:(id)arg4;
 - (id)tilingView:(id)arg1 tileControllerWithIndexPath:(id)arg2 kind:(id)arg3 dataSource:(id)arg4;
+- (void)tilingViewControllerTransitionWasAborted:(id)arg1;
 - (long long)tilingViewControllerTransitionPreferredBarStyle:(id)arg1;
 - (_Bool)tilingViewControllerTransitionUsesTransientTilingView:(id)arg1;
 - (void)tilingViewControllerTransition:(id)arg1 adoptTilingView:(id)arg2 fromEndPoint:(id)arg3 isCancelingTransition:(_Bool)arg4 animationSetupCompletionHandler:(CDUnknownBlockType)arg5;

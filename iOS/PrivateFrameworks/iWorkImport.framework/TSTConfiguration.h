@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSTConfiguration : NSObject
@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
     _Bool _tableNameEnabledInNewTables;
     _Bool _supportsRowColumnAdderKnob;
     _Bool _supportsDragDropMoveMode;
+    _Bool _supportsDynamicallyHidingRowColumnForDragDrop;
     _Bool _formulaEditorEvaluatesFormulas;
     _Bool _showReferenceHighlightsOnFormulaCellSelection;
     _Bool _tokenizeFormulaStringLiterals;
@@ -79,13 +80,21 @@ __attribute__((visibility("hidden")))
     _Bool _supportsStockUI;
     _Bool _shouldZoomOutOnEndEditing;
     _Bool _forceZoomInOnBeginEditing;
+    _Bool _supportsCategorization;
+    _Bool _allowsBlackDragDropBackground;
     unsigned int _maxNumberOfRows;
     unsigned int _maxNumberOfColumns;
     unsigned int _maxNumberOfPopulatedCells;
+    double _structuredTextImportConfidenceThreshold;
+    double _structuredTextImportConfidenceThresholdForCanvas;
 }
 
 + (void)resetSharedTableConfiguration;
 + (id)sharedTableConfiguration;
+@property(nonatomic) _Bool allowsBlackDragDropBackground; // @synthesize allowsBlackDragDropBackground=_allowsBlackDragDropBackground;
+@property(nonatomic) double structuredTextImportConfidenceThresholdForCanvas; // @synthesize structuredTextImportConfidenceThresholdForCanvas=_structuredTextImportConfidenceThresholdForCanvas;
+@property(nonatomic) double structuredTextImportConfidenceThreshold; // @synthesize structuredTextImportConfidenceThreshold=_structuredTextImportConfidenceThreshold;
+@property(nonatomic) _Bool supportsCategorization; // @synthesize supportsCategorization=_supportsCategorization;
 @property(nonatomic) _Bool forceZoomInOnBeginEditing; // @synthesize forceZoomInOnBeginEditing=_forceZoomInOnBeginEditing;
 @property(nonatomic) _Bool shouldZoomOutOnEndEditing; // @synthesize shouldZoomOutOnEndEditing=_shouldZoomOutOnEndEditing;
 @property(nonatomic) _Bool supportsStockUI; // @synthesize supportsStockUI=_supportsStockUI;
@@ -109,6 +118,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool tokenizeFormulaStringLiterals; // @synthesize tokenizeFormulaStringLiterals=_tokenizeFormulaStringLiterals;
 @property(nonatomic) _Bool showReferenceHighlightsOnFormulaCellSelection; // @synthesize showReferenceHighlightsOnFormulaCellSelection=_showReferenceHighlightsOnFormulaCellSelection;
 @property(nonatomic) _Bool formulaEditorEvaluatesFormulas; // @synthesize formulaEditorEvaluatesFormulas=_formulaEditorEvaluatesFormulas;
+@property(nonatomic) _Bool supportsDynamicallyHidingRowColumnForDragDrop; // @synthesize supportsDynamicallyHidingRowColumnForDragDrop=_supportsDynamicallyHidingRowColumnForDragDrop;
 @property(nonatomic) _Bool supportsDragDropMoveMode; // @synthesize supportsDragDropMoveMode=_supportsDragDropMoveMode;
 @property(nonatomic) _Bool supportsRowColumnAdderKnob; // @synthesize supportsRowColumnAdderKnob=_supportsRowColumnAdderKnob;
 @property(nonatomic) _Bool tableNameEnabledInNewTables; // @synthesize tableNameEnabledInNewTables=_tableNameEnabledInNewTables;

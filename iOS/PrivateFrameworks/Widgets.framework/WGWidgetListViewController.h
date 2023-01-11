@@ -22,6 +22,7 @@
     UIStackView *_stackView;
     NSMutableDictionary *_cancelTouchesAssertionsByWidgetID;
     NSMutableDictionary *_widgetIDsToItemVCs;
+    struct CGSize _maxVisibleContentSize;
     _Bool _shouldBlurContent;
     id <WGWidgetListViewControllerDelegate> _delegate;
     NSArray *_previouslyVisibleWidgetIDs;
@@ -33,6 +34,7 @@
 - (void).cxx_destruct;
 - (_Bool)isWidgetExtensionVisible:(id)arg1;
 - (id)widgetListItemViewController:(id)arg1 widgetHostWithIdentifier:(id)arg2;
+- (struct CGRect)visibleFrameForWidget:(id)arg1;
 - (_Bool)managingContainerIsVisibleForWidget:(id)arg1;
 - (void)remoteViewControllerDidDisconnectForWidget:(id)arg1;
 - (void)brokenViewDidAppearForWidget:(id)arg1;
@@ -41,6 +43,8 @@
 - (void)widget:(id)arg1 didChangeLargestSupportedDisplayMode:(long long)arg2;
 - (struct UIEdgeInsets)marginInsetsForWidget:(id)arg1;
 - (struct CGSize)maxSizeForWidget:(id)arg1 forDisplayMode:(long long)arg2;
+- (struct CGSize)_maxVisibleContentSize;
+- (struct CGRect)_visibleContentFrameForBounds:(struct CGRect)arg1 withContentOccludingInsets:(struct UIEdgeInsets)arg2;
 - (void)orderOfVisibleWidgetsDidChange:(id)arg1;
 - (void)scrollViewDidScrollToTop:(id)arg1;
 - (_Bool)scrollViewShouldScrollToTop:(id)arg1;

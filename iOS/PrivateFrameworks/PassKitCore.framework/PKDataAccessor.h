@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSBundle, NSData, PKRemoteAssetManager;
 @protocol OS_dispatch_queue;
@@ -18,8 +18,10 @@
 - (id)displayProfileOfType:(long long)arg1;
 @property(readonly, nonatomic) PKRemoteAssetManager *remoteAssetManager;
 @property(readonly, nonatomic) _Bool remoteAssetsDownloaded;
-- (void)downloadRemoteAssetsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)downloadRemoteAssetsWithCloudStoreCoordinatorDelegate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)dataForBundleResources:(id)arg1;
+- (id)dataForBundleResource:(id)arg1;
 - (id)dataForBundleResourceNamed:(id)arg1 withExtension:(id)arg2;
 @property(readonly, nonatomic) NSBundle *bundle;
 @property(readonly, nonatomic) NSData *serializedFileWrapper;
@@ -38,6 +40,8 @@
 - (id)imageSetForType:(long long)arg1 displayProfile:(id)arg2 preheat:(_Bool)arg3;
 - (id)dictionary;
 - (id)content;
+- (void)downloadRemoteAssetsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

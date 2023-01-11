@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
 @protocol SAHandoffPayload;
 
 @interface SAInitiateHandoffOnCompanion
@@ -13,7 +14,9 @@
 + (id)initiateHandoffOnCompanionWithDictionary:(id)arg1 context:(id)arg2;
 + (id)initiateHandoffOnCompanion;
 - (_Bool)requiresResponse;
+@property(copy, nonatomic) NSString *notificationText;
 @property(retain, nonatomic) id <SAHandoffPayload> handoffPayload;
+@property(copy, nonatomic) NSString *dialogIdentifier;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

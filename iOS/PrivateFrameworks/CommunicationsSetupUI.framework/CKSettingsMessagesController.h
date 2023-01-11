@@ -8,7 +8,7 @@
 #import <CommunicationsSetupUI/CNFRegWizardControllerDelegate-Protocol.h>
 #import <CommunicationsSetupUI/IMCloudKitEventHandler-Protocol.h>
 
-@class CKFilteringListController, CKNSExtension, NSString;
+@class CKFilteringListController, CKMultipleCTSubscriptionsController, CKNSExtension, IMCTXPCServiceSubscriptionInfo, NSString;
 
 @interface CKSettingsMessagesController <CNFRegWizardControllerDelegate, AKAppleIDAuthenticationDelegate, IMCloudKitEventHandler>
 {
@@ -16,6 +16,9 @@
     int _profileToken;
     CKFilteringListController *_filteringController;
     id _beginMappingID;
+    CKMultipleCTSubscriptionsController *_mmsMessagingController;
+    CKMultipleCTSubscriptionsController *_mmsAllowsGroupMessagingController;
+    IMCTXPCServiceSubscriptionInfo *_ctSubscriptionInfo;
     CKNSExtension *_ckExtension;
 }
 
@@ -23,6 +26,9 @@
 + (int)currentMessageAutoKeepOptionForType:(int)arg1;
 + (_Bool)currentMessageAutoKeepForType:(int)arg1;
 @property(retain, nonatomic) CKNSExtension *ckExtension; // @synthesize ckExtension=_ckExtension;
+@property(retain, nonatomic) IMCTXPCServiceSubscriptionInfo *ctSubscriptionInfo; // @synthesize ctSubscriptionInfo=_ctSubscriptionInfo;
+@property(retain, nonatomic) CKMultipleCTSubscriptionsController *mmsAllowsGroupMessagingController; // @synthesize mmsAllowsGroupMessagingController=_mmsAllowsGroupMessagingController;
+@property(retain, nonatomic) CKMultipleCTSubscriptionsController *mmsMessagingController; // @synthesize mmsMessagingController=_mmsMessagingController;
 @property(retain) id beginMappingID; // @synthesize beginMappingID=_beginMappingID;
 @property(retain, nonatomic) CKFilteringListController *filteringController; // @synthesize filteringController=_filteringController;
 - (void).cxx_destruct;
@@ -59,18 +65,17 @@
 - (id)areReadReceiptsEnabled:(id)arg1;
 - (id)readReceiptSpecifierIdentifiers;
 - (_Bool)shouldShowReadReceipts;
-- (void)cloudKitEventNotificationManager:(id)arg1 syncStateDidChange:(id)arg2;
-- (id)lastSyncDateStringForSpecifier:(id)arg1;
-- (_Bool)_shouldShowLastSyncLabel:(id *)arg1;
-- (id)_formattedStringFromLastSyncDate:(id)arg1;
-- (id)iCloudSettingsSpecificerIdentifiers;
-- (_Bool)shouldShowiCloudSettings;
 - (id)smsRelaySettingsSpecifierIdentifiers;
 - (_Bool)shouldShowSMSRelaySettings;
 - (id)contactPhotoSettingsSpecifierIdentifiers;
 - (_Bool)shouldShowContactPhotoSettings;
 - (id)audioMessageSettingsSpecifierIdentifiers;
 - (_Bool)shouldShowAudioMessageSettings;
+- (void)setSiriToneNotificationEnabled:(id)arg1 specifier:(id)arg2;
+- (id)isSiriToneNotificationEnabled:(id)arg1;
+- (id)siriSettingsIdentifiers;
+- (_Bool)isPersonalCompanionEnabled;
+- (_Bool)shouldShowSiriSettings;
 - (void)setConversationListFilteringEnabled:(id)arg1 specifier:(id)arg2;
 - (id)isConversationListFilteringEnabled:(id)arg1;
 - (id)spamFilteringSpecifierIdentifiers;
@@ -94,7 +99,9 @@
 - (id)_switchFooterText:(_Bool *)arg1;
 - (void)setMadridEnabled:(id)arg1 specifier:(id)arg2;
 - (id)isMadridEnabled:(id)arg1;
+- (id)madridAccountsMultipleSubscriptionsSpecifierIdentifiers;
 - (id)madridSwitchSpecifierIdentifiers;
+- (_Bool)shouldShowIDSSubscriptions;
 - (_Bool)shouldShowMadridSwitch;
 - (_Bool)_isMadridSwitchOn;
 - (_Bool)_isMadridAccountOperational;
@@ -113,7 +120,10 @@
 - (id)deliveryReceiptSpecifierIdentifiers;
 - (_Bool)shouldShowDeliveryReceipts;
 - (void)setSpecifierLoading:(id)arg1 loading:(_Bool)arg2 animated:(_Bool)arg3;
+- (void)_setupMultipleSubscriptionsMMSGroupSpecifiers:(id)arg1 wantsMMSBasicGroup:(_Bool)arg2;
+- (void)_setupMMSGroupSpecifiers:(id)arg1 wantsMMSBasicGroup:(_Bool)arg2;
 - (id)specifiers;
+- (void)_showPrivacySheet:(id)arg1;
 - (void)newCarrierNotification;
 - (_Bool)shouldReloadSpecifiersOnResume;
 - (void)systemApplicationDidEnterBackground;

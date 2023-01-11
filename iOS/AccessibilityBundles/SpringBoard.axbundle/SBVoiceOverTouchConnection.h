@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class SBVOTWindow, SBVoiceOverTouchLabelElementAlertItem, UIView;
+@class SBVoiceOverTouchLabelElementAlertItem;
 
 @interface SBVoiceOverTouchConnection : NSObject
 {
     struct __CFMachPort *_votMachPort;
-    SBVOTWindow *_votWindow;
-    UIView *_contentView;
     SBVoiceOverTouchLabelElementAlertItem *_labelAlert;
     _Bool _screenCurtainEnabled;
     _Bool inVoiceOverPassthroughMode;
@@ -34,7 +32,6 @@
 - (void)tearDownVoiceOverTouchConnection;
 - (void)_registerForMachConnection;
 - (void)_registerVOTConnectionWithPort:(unsigned int)arg1;
-- (id)votWindow;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSNumber;
 
@@ -22,6 +22,7 @@
 @property(readonly, nonatomic) NSNumber *leftPercentage; // @synthesize leftPercentage=_leftPercentage;
 - (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
+- (id)description;
 - (id)initWithOutputDevice:(void *)arg1;
 - (id)initWithRouteDescription:(id)arg1;
 

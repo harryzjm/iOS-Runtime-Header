@@ -8,11 +8,10 @@
 
 #import <LoggingSupport/OSLogEventProvider-Protocol.h>
 
-@class NSDate, NSString, NSTimeZone, NSUUID;
+@class NSDate, NSString, NSTimeZone, NSUUID, OSLogEventBacktrace, OSLogEventDecomposedMessage;
 
 @interface OSLogEventProxy : NSObject <OSLogEventProvider>
 {
-    struct os_activity_map_s *_aid_map;
     struct {
         unsigned long long type;
         int pid;
@@ -34,7 +33,7 @@
             struct timezone tz;
             unsigned int offset;
             unsigned int opaque_flags;
-            char *ptr;
+            char *message;
             unsigned long long sz;
         } common;
         union {
@@ -48,6 +47,9 @@
             struct {
                 char *buffer;
                 unsigned long long buffer_sz;
+                struct os_log_fmt_hdr_s *hdr;
+                void *pubdata;
+                unsigned short pubdata_sz;
                 char *privdata;
                 unsigned long long privdata_sz;
                 char *subsystem;
@@ -58,6 +60,10 @@
                 unsigned char signpost_scope;
                 unsigned char signpost_type;
                 unsigned long long signpost_id;
+                unsigned int signpost_name_offset;
+                char *signpost_name;
+                struct os_trace_context_data_s *ctxdata;
+                unsigned long long ctxdata_sz;
             } log_message;
             struct {
                 char *action;
@@ -70,12 +76,18 @@
                 unsigned long long wallclock_nsec;
                 unsigned char ttl;
             } timesync;
+            struct {
+                CDStruct_69b3e0b9 start;
+                CDStruct_69b3e0b9 end;
+                unsigned int count;
+            } loss;
         } ;
         struct {
             unsigned long long message_size;
             unsigned char ttl;
         } statedump;
     } _eint;
+    struct os_activity_map_s *_aid_map;
     CDStruct_c6d697a1 *_event;
     unsigned long long _efv;
     struct _os_timesync_db_s *_tsdb;
@@ -87,22 +99,32 @@
     unsigned long long _retainCount;
     NSString *_processImagePath;
     NSString *_senderImagePath;
+    OSLogEventBacktrace *_backtrace;
     NSString *_logMessage;
+    OSLogEventDecomposedMessage *_decomposedMessage;
     unsigned long long _uuidi;
 }
 
 + (id)_make;
 @property(nonatomic) unsigned long long _timesyncRangeUUIDIndex; // @synthesize _timesyncRangeUUIDIndex=_uuidi;
-- (id)valueForUndefinedKey:(id)arg1;
+@property(readonly, nonatomic) CDStruct_0dd72924 lossCount;
+@property(readonly, nonatomic) struct timezone *lossEndUnixTimeZone;
+@property(readonly, nonatomic) struct timeval *lossEndUnixDate;
+@property(readonly, nonatomic) unsigned long long lossEndMachContinuousTimestamp;
+@property(readonly, nonatomic) struct timezone *lossStartUnixTimeZone;
+@property(readonly, nonatomic) struct timeval *lossStartUnixDate;
+@property(readonly, nonatomic) unsigned long long lossStartMachContinuousTimestamp;
 @property(readonly, nonatomic) unsigned long long creatorProcessUniqueIdentifier;
 @property(readonly, nonatomic) unsigned long long creatorActivityIdentifier;
 - (id)formatArguments;
 @property(readonly, nonatomic) NSString *formatString;
+@property(readonly, nonatomic) NSString *signpostName;
 @property(readonly, nonatomic) unsigned long long signpostScope;
 @property(readonly, nonatomic) unsigned long long signpostType;
 @property(readonly, nonatomic) unsigned long long signpostIdentifier;
 @property(readonly, nonatomic) NSString *category;
 @property(readonly, nonatomic) NSString *subsystem;
+@property(readonly, nonatomic) OSLogEventBacktrace *backtrace;
 @property(readonly, nonatomic) unsigned long long senderImageOffset;
 @property(readonly, nonatomic) NSString *sender;
 @property(readonly, nonatomic) NSString *senderImagePath;
@@ -131,18 +153,21 @@
 @property(readonly, nonatomic) unsigned long long size;
 @property(readonly, nonatomic) unsigned long long logType;
 @property(readonly, nonatomic) unsigned long long type;
+@property(readonly, nonatomic) OSLogEventDecomposedMessage *decomposedMessage;
 @property(readonly, nonatomic) NSString *composedMessage;
 @property(readonly, nonatomic) unsigned int _oversizeIdentifier;
 - (id)description;
+- (void)_fillFromXPCEventObject:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
-- (_Bool)_setLogEvent:(CDStruct_c6d697a1 *)arg1;
+- (_Bool)_setLogEvent:(CDStruct_c6d697a1 *)arg1 rangeUUIDIndex:(unsigned long long)arg2 machTimebase:(struct mach_timebase_info *)arg3;
 - (void)_setBuffer:(const void *)arg1 size:(unsigned long long)arg2 privateBuffer:(const void *)arg3 privateSize:(unsigned long long)arg4;
 - (void)_setDoNotTrackActivites:(_Bool)arg1;
 - (void)_setFallbackTimezone;
 - (void)_setUUIDDBFileDescriptor:(int)arg1;
 - (void)_setTimesyncDatabase:(struct _os_timesync_db_s *)arg1;
 - (void)_setIncludeSensitive:(_Bool)arg1;
+- (void)_setThreadCrumb;
 - (void)_assertBalanced;
 - (oneway void)release;
 - (id)retain;

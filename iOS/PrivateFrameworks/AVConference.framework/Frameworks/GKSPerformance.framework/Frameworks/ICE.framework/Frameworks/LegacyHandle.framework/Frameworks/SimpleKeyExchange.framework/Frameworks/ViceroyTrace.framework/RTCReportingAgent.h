@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ViceroyTrace/RTCReportingMessageSentNotifier-Protocol.h>
 #import <ViceroyTrace/VCAggregatorDelegate-Protocol.h>
 
-@class NSArray, NSString, RTCReporting, VCAggregator;
+@class NSArray, NSMutableDictionary, NSString, RTCReporting, VCAggregator;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -22,23 +22,32 @@ __attribute__((visibility("hidden")))
     NSArray *_backends;
     VCAggregator *_aggregator;
     int _clientType;
+    int _nextUnassignedReportingModuleID;
+    NSMutableDictionary *_userInfoMap;
+    _Bool _forceDisableABC;
 }
 
+@property(getter=isABCForceDisabled) _Bool forceDisableABC; // @synthesize forceDisableABC=_forceDisableABC;
+@property(readonly) NSMutableDictionary *userInfoMap; // @synthesize userInfoMap=_userInfoMap;
 @property int clientType; // @synthesize clientType=_clientType;
 @property(retain) VCAggregator *aggregator; // @synthesize aggregator=_aggregator;
 @property(copy) NSArray *backends; // @synthesize backends=_backends;
 @property(readonly) NSObject<OS_dispatch_queue> *reportingQueue; // @synthesize reportingQueue=_reportingQueue;
 @property(retain) RTCReporting *reportingObject; // @synthesize reportingObject=_reportingObject;
 - (int)learntBitrateForSegment:(id)arg1 defaultValue:(int)arg2;
+- (void)reportingSetReportCallback:(CDUnknownFunctionPointerType)arg1 withContext:(void *)arg2;
 - (void)reportingSymptom:(unsigned int)arg1 withOptionalDict:(struct __CFDictionary *)arg2;
-- (void)sendAggregatedReport;
+- (void)sendAggregatedSessionReport;
+- (void)sendAggregatedCallReport;
 - (void)releaseReportingObject;
 - (void)didSendMessageForReportingClient:(id)arg1 event:(id)arg2;
 - (void)reportQR:(id)arg1;
-- (void)report:(id)arg1;
+- (void)report:(id)arg1 segmentDirection:(int)arg2;
 - (void)dealloc;
 - (void)initAdaptiveLearningWithParameters:(id)arg1;
-- (id)initWithCallID:(unsigned int)arg1 clientType:(int)arg2;
+- (id)initWithCallID:(unsigned int)arg1 clientType:(int)arg2 parentHierarchyToken:(id)arg3;
+- (id)deriveFromParentHierarchyToken:(id)arg1;
+@property(readonly) int nextUnassignedReportingModuleID;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

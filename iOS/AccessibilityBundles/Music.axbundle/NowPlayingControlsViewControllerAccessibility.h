@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityLeftbuttonValueString;
+- (id)_accessibilityLeftButtonLabelString;
 - (id)_accessibilityPlayPauseButtonString;
 - (void)_axMediaRemoteCommandChanged:(id)arg1;
 - (void)_axLikedStateCommandChanged:(id)arg1;
@@ -18,9 +20,6 @@
 - (void)viewDidLoad;
 - (id)_axLikedBannedValueForState:(long long)arg1;
 - (_Bool)accessibilityPerformEscape;
-- (id)_axRepeatButtonValue;
-- (id)_axShuffleButtonValue;
-- (id)_axPlayerPath;
 - (id)_axTrackList;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)axSetLikedStateNotificationRegistered:(_Bool)arg1;

@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <UIFoundation/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface NSTextAlternatives : NSObject
+@interface NSTextAlternatives : NSObject <NSSecureCoding>
 {
     NSString *_primaryString;
     NSArray *_alternativeStrings;
     id _internal;
 }
 
++ (_Bool)supportsSecureCoding;
 - (id)identifier;
 - (id)alternativeAtIndex:(unsigned long long)arg1;
 - (id)alternatives;

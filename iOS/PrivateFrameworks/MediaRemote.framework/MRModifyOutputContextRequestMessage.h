@@ -6,19 +6,20 @@
 
 @class NSArray;
 
-__attribute__((visibility("hidden")))
 @interface MRModifyOutputContextRequestMessage
 {
 }
 
++ (id)setDevicesRequestMessageWithContextType:(unsigned int)arg1 outputDeviceUIDs:(id)arg2;
 + (id)removeDevicesRequestMessageWithContextType:(unsigned int)arg1 outputDeviceUIDs:(id)arg2;
 + (id)addDevicesRequestMessageWithContextType:(unsigned int)arg1 outputDeviceUIDs:(id)arg2;
 - (unsigned long long)type;
+@property(readonly, nonatomic) NSArray *settingOutputDeviceUIDs;
 @property(readonly, nonatomic) NSArray *removingOutputDeviceUIDs;
 @property(readonly, nonatomic) NSArray *addingOutputDeviceUIDs;
 @property(readonly, nonatomic) unsigned int contextType;
 - (id)description;
-- (id)initWithContextType:(unsigned int)arg1 addingDeviceUIDs:(id)arg2 removingDeviceUIDs:(id)arg3;
+- (id)initWithContextType:(unsigned int)arg1 addingDeviceUIDs:(id)arg2 removingDeviceUIDs:(id)arg3 settingDeviceUIDs:(id)arg4;
 
 @end
 

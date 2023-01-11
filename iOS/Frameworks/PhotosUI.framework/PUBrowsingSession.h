@@ -10,28 +10,30 @@
 #import <PhotosUI/PUAssetsDataSourceManagerDelegate-Protocol.h>
 #import <PhotosUI/PULoadingStatusManagerDelegate-Protocol.h>
 #import <PhotosUI/PXAssetEditOperationManagerObserver-Protocol.h>
-#import <PhotosUI/PXAutoloopSchedulerDelegate-Protocol.h>
 
-@class NSString, PUAssetActionManager, PUAssetsDataSourceManager, PUBrowsingViewModel, PUContentTileProvider, PULoadingStatusManager, PUMediaProvider, PUTileAnimator, PXAssetEditOperationManager, PXPhotosDetailsContext;
+@class NSString, PUAssetActionManager, PUAssetsDataSourceManager, PUBrowsingViewModel, PUContentTileProvider, PULoadingStatusManager, PUMediaProvider, PUTileAnimator, PXAssetEditOperationManager, PXGestureProvider, PXPhotosDetailsContext;
+@protocol PXImportStatusManager;
 
-@interface PUBrowsingSession : NSObject <PUAssetsDataSourceManagerDelegate, PUAssetActionManagerDelegate, PULoadingStatusManagerDelegate, PXAssetEditOperationManagerObserver, PXAutoloopSchedulerDelegate>
+@interface PUBrowsingSession : NSObject <PUAssetsDataSourceManagerDelegate, PUAssetActionManagerDelegate, PULoadingStatusManagerDelegate, PXAssetEditOperationManagerObserver>
 {
-    _Bool _active;
     PUAssetsDataSourceManager *_dataSourceManager;
     PUMediaProvider *_mediaProvider;
     PUAssetActionManager *_actionManager;
     PUBrowsingViewModel *_viewModel;
     PUContentTileProvider *_contentTileProvider;
     PULoadingStatusManager *_loadingStatusManager;
+    id <PXImportStatusManager> _importStatusManager;
     PXPhotosDetailsContext *_photosDetailsContext;
+    PXGestureProvider *_gestureProvider;
     PXAssetEditOperationManager *_editOperationManager;
     PUTileAnimator *_tileAnimator;
 }
 
 @property(retain, nonatomic) PUTileAnimator *tileAnimator; // @synthesize tileAnimator=_tileAnimator;
 @property(readonly, nonatomic) PXAssetEditOperationManager *editOperationManager; // @synthesize editOperationManager=_editOperationManager;
-@property(nonatomic, getter=isActive) _Bool active; // @synthesize active=_active;
+@property(readonly, nonatomic) PXGestureProvider *gestureProvider; // @synthesize gestureProvider=_gestureProvider;
 @property(readonly, nonatomic) PXPhotosDetailsContext *photosDetailsContext; // @synthesize photosDetailsContext=_photosDetailsContext;
+@property(readonly, nonatomic) id <PXImportStatusManager> importStatusManager; // @synthesize importStatusManager=_importStatusManager;
 @property(readonly, nonatomic) PULoadingStatusManager *loadingStatusManager; // @synthesize loadingStatusManager=_loadingStatusManager;
 @property(retain, nonatomic) PUContentTileProvider *contentTileProvider; // @synthesize contentTileProvider=_contentTileProvider;
 @property(retain, nonatomic) PUBrowsingViewModel *viewModel; // @synthesize viewModel=_viewModel;
@@ -39,7 +41,6 @@
 @property(retain, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property(readonly, nonatomic) PUAssetsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 - (void).cxx_destruct;
-- (id)assetUUIDToFavorizeForAutoloopScheduler:(id)arg1;
 - (void)configureTilingView:(id)arg1;
 - (void)assetEditOperationManager:(id)arg1 didChangeEditOperationStatusForAsset:(id)arg2 context:(void *)arg3;
 - (void)assetEditOperationManager:(id)arg1 didChangeEditOperationsPerformedOnAsset:(id)arg2 context:(void *)arg3;
@@ -47,6 +48,7 @@
 - (id)assetActionManagerCurrentAssetsDataSource:(id)arg1;
 - (id)assetsDataSourceManagerInterestingAssetReferences:(id)arg1;
 - (void)assetsDataSourceManager:(id)arg1 didChangeAssetsDataSource:(id)arg2;
+- (id)initWithDataSourceManager:(id)arg1 actionManager:(id)arg2 mediaProvider:(id)arg3 photosDetailsContext:(id)arg4 gestureProvider:(id)arg5 importStatusManager:(id)arg6;
 - (id)initWithDataSourceManager:(id)arg1 actionManager:(id)arg2 mediaProvider:(id)arg3 photosDetailsContext:(id)arg4;
 - (id)initWithDataSourceManager:(id)arg1 actionManager:(id)arg2 mediaProvider:(id)arg3;
 - (id)init;

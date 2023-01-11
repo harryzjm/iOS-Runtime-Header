@@ -4,12 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Cards/CRContent-Protocol.h>
+#import <Cards/NSCopying-Protocol.h>
 #import <Cards/NSObject-Protocol.h>
 #import <Cards/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSSet, SFCard;
+@class NSArray, NSSet, NSString, SFCard;
 
-@protocol CRCard <NSObject, NSSecureCoding>
+@protocol CRCard <NSObject, NSSecureCoding, NSCopying, CRContent>
+@property(readonly, nonatomic) unsigned long long cardFormat;
+@property(readonly, copy, nonatomic) NSString *cardIdentifier;
 @property(readonly, nonatomic) NSArray *dismissalCommands;
 @property(readonly, nonatomic) NSSet *interactions;
 @property(readonly, nonatomic) NSArray *cardSections;

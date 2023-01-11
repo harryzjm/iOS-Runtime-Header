@@ -11,11 +11,13 @@
     NSDictionary *_relationshipKinds;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)kindWithRelationshipKinds:(id)arg1;
 @property(readonly, nonatomic) NSDictionary *relationshipKinds; // @synthesize relationshipKinds=_relationshipKinds;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)humanDescription;
 
 @end
 

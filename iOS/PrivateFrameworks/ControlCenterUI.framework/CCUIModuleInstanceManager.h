@@ -29,6 +29,8 @@
 @property(nonatomic) __weak id <CCUIContentModuleContextDelegate> contextDelegate; // @synthesize contextDelegate=_contextDelegate;
 - (void).cxx_destruct;
 - (id)_instantiateModuleWithMetadata:(id)arg1;
+- (void)didUpdatePreferredSizeForContentModuleContext:(id)arg1;
+- (void)dismissControlCenterForContentModuleContext:(id)arg1;
 - (void)dismissExpandedViewForContentModuleContext:(id)arg1;
 - (void)requestExpandModuleForContentModuleContext:(id)arg1;
 - (void)contentModuleContext:(id)arg1 enqueueStatusUpdate:(id)arg2;

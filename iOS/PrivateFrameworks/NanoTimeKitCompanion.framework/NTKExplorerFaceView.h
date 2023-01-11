@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NTKExplorerDialView, NTKExplorerHandsView, NTKExplorerStatusView, NTKFaceLayoutContentProvider;
+#import <NanoTimeKitCompanion/NTKColorCircularUtilitarianFaceViewComplicationFactoryDelegate-Protocol.h>
 
-@interface NTKExplorerFaceView
+@class NSString, NTKColorCircularUtilitarianFaceViewComplicationFactory, NTKExplorerDialView, NTKExplorerHandsView, NTKExplorerStatusView;
+
+@interface NTKExplorerFaceView <NTKColorCircularUtilitarianFaceViewComplicationFactoryDelegate>
 {
-    NTKFaceLayoutContentProvider *_layoutContentProvider;
+    NTKColorCircularUtilitarianFaceViewComplicationFactory *_faceViewComplicationFactory;
     NTKExplorerDialView *_dialView;
     NTKExplorerStatusView *_statusView;
     _Bool _observingConnectivity;
@@ -18,8 +20,8 @@
     unsigned long long _color;
 }
 
-+ (id)_swatchImageForColorOption:(id)arg1;
-+ (id)_swatchForEditModeDependsOnOptions:(long long)arg1;
++ (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
++ (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
 + (Class)_timeViewClass;
 @property(nonatomic) unsigned long long color; // @synthesize color=_color;
 @property(nonatomic) unsigned long long density; // @synthesize density=_density;
@@ -46,23 +48,33 @@
 - (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
+- (id)_keylineViewForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (long long)_keylineStyleForComplicationSlot:(id)arg1;
 - (double)_verticalPaddingForStatusBar;
 - (struct CGPoint)_contentCenterOffset;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
+- (id)_curvedPickerMaskForSlot:(id)arg1;
+- (void)_curvedComplicationCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(_Bool *)arg5 forSlot:(id)arg6;
+- (_Bool)_slotSupportsCurvedText:(id)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_loadLayoutRules;
+- (_Bool)slotUsesCurvedText:(id)arg1;
 - (void)_configureReusableTimeView:(id)arg1;
 - (_Bool)_supportsTimeScrubbing;
 - (void)_applyShowsCanonicalContent;
 - (void)_applyFrozen;
 - (void)_unloadSnapshotContentViews;
 - (void)_loadSnapshotContentViews;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @property(readonly, nonatomic) NTKExplorerHandsView *timeView; // @dynamic timeView;
 
 @end

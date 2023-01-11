@@ -6,6 +6,7 @@
 
 #import <CorePDF/CPDisposable-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface CPTableCell <CPDisposable>
 {
     struct CGRect cellBounds;

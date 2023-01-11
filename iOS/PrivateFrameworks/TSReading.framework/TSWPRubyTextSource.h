@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TSReading/TSWPTextSource-Protocol.h>
 
@@ -13,8 +13,8 @@
 
 @interface TSWPRubyTextSource : NSObject <TSWPTextSource>
 {
-    vector_88016b54 _spaceCharIndexes;
-    vector_88016b54 _bidiCharIndexes;
+    vector_06e666a8 _spaceCharIndexes;
+    vector_06e666a8 _bidiCharIndexes;
     id <TSWPTextSource> _source;
     TSWPRangeMap *_rangeMap;
     unsigned long long _length;

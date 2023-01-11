@@ -9,7 +9,7 @@
 #import <NanoTimeKitCompanion/NTKComplicationDisplay-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTemplateComplicationDisplay-Protocol.h>
 
-@class CLKComplicationTemplate, NSDate, NSString, UIColor;
+@class CLKComplicationTemplate, CLKDevice, NSDate, NSString, UIColor;
 @protocol NTKComplicationDisplayObserver;
 
 @interface NTKCircularComplicationView : UIView <NTKTemplateComplicationDisplay, NTKComplicationDisplay>
@@ -17,9 +17,13 @@
     UIView *_platter;
     UIView *_highlightView;
     NSDate *_timeTravelDate;
+    _Bool canUseCurvedText;
     _Bool _useRoundedFontDesign;
     _Bool _usesMediumLayout;
+    _Bool _wantsPlatter;
+    _Bool _usesMultiColor;
     id <NTKComplicationDisplayObserver> displayObserver;
+    CLKDevice *_device;
     UIColor *_foregroundColor;
     UIColor *_platterColor;
     CLKComplicationTemplate *_complicationTemplate;
@@ -33,23 +37,29 @@
 + (id)viewForComplicationType:(unsigned long long)arg1;
 @property(readonly, nonatomic) CLKComplicationTemplate *complicationTemplate; // @synthesize complicationTemplate=_complicationTemplate;
 @property(readonly) NSDate *timeTravelDate; // @synthesize timeTravelDate=_timeTravelDate;
+@property(nonatomic) _Bool usesMultiColor; // @synthesize usesMultiColor=_usesMultiColor;
+@property(nonatomic) _Bool wantsPlatter; // @synthesize wantsPlatter=_wantsPlatter;
 @property(nonatomic) _Bool usesMediumLayout; // @synthesize usesMediumLayout=_usesMediumLayout;
 @property(nonatomic) _Bool useRoundedFontDesign; // @synthesize useRoundedFontDesign=_useRoundedFontDesign;
 @property(retain, nonatomic) UIColor *platterColor; // @synthesize platterColor=_platterColor;
 @property(retain, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
+@property(readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
+@property(nonatomic) _Bool canUseCurvedText; // @synthesize canUseCurvedText;
 @property(nonatomic) __weak id <NTKComplicationDisplayObserver> displayObserver; // @synthesize displayObserver;
 - (void).cxx_destruct;
 - (id)_fontForDynamicFontSize:(long long)arg1;
 - (CDStruct_69ceb9b6)_layoutConstants;
 - (void)_updateForTemplateChange;
-- (_Bool)_wantsPlatter;
 - (id)_mediumStackFontForText:(id)arg1;
 - (long long)_variableFontSizeForText:(id)arg1;
 - (id)_newLabelSubviewWithFont:(id)arg1;
 - (void)_enumerateForegroundColoringViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)setTimeTravelDate:(id)arg1 animated:(_Bool)arg2;
-- (void)setComplicationTemplate:(id)arg1;
+- (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2;
 @property(nonatomic, getter=isHighlighted) _Bool highlighted;
+- (void)_updateLabelViewColor:(id)arg1;
+- (void)_updateImageViewColor:(id)arg1;
+- (void)_updateColorChange;
 - (void)_updateLabelsForFontChange;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;

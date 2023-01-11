@@ -31,7 +31,10 @@
 - (_Bool)_axIsDoneAnnouncing;
 - (void)setTimeView:(id)arg1;
 - (void)_axMakeTimeViewFirstElement;
+- (void)_axApplyAnnotationsToComplicationControllers:(id)arg1;
+- (void)_axAnnotateComplications;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)layoutSubviews;
 
 @end
 

@@ -18,6 +18,8 @@
 - (struct CGSize)ibContentSize;
 - (id)sectionAndCellFrames;
 - (void)setIbReuseIdentifiersToPrototypeNibData:(id)arg1;
+- (void)setIbCachedSectionsIncludingPrototypes:(id)arg1;
+- (id)ibCachedSectionsIncludingPrototypes;
 @property(readonly) NSArray *ibSectionsIncludingPrototypes;
 - (_Bool)ibInsetsContentViewsToSafeArea;
 - (void)setIbInsetsContentViewsToSafeArea:(_Bool)arg1;

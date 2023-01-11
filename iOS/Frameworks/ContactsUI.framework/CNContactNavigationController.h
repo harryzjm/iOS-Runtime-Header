@@ -13,7 +13,7 @@
 #import <ContactsUI/CNContactViewControllerAddContactPresenter-Protocol.h>
 #import <ContactsUI/CNContactViewControllerDelegate-Protocol.h>
 
-@class CNAccountsAndGroupsDataSource, CNContactListViewController, CNContactStore, CNContactStoreDataSource, CNContactStyle, CNContactViewController, NSString, UIAlertController, UIKeyCommand;
+@class CNAccountsAndGroupsDataSource, CNContactListViewController, CNContactStore, CNContactStoreDataSource, CNContactStyle, CNContactViewController, CNUIUserActivityManager, NSString, UIAlertController, UIKeyCommand;
 @protocol CNContactDataSource, CNContactNavigationControllerDelegate, CNScheduler;
 
 @interface CNContactNavigationController : UINavigationController <CNContactListViewControllerDelegate, CNContactListViewControllerDelegateInternal, CNContactViewControllerDelegate, CNContactContentViewControllerDelegate, CNAccountsAndGroupsViewControllerDelegate, CNContactViewControllerAddContactPresenter>
@@ -24,6 +24,7 @@
     _Bool _allowsCanceling;
     _Bool _allowsDone;
     _Bool _allowsContactBlocking;
+    _Bool _hasPendingShowCard;
     _Bool _ignoresMapsData;
     CNContactStyle *_contactStyle;
     CNContactStore *_contactStore;
@@ -36,10 +37,13 @@
     UIKeyCommand *_addKeyCommand;
     UIAlertController *_facebookContactsAlertController;
     id <CNScheduler> _backgroundScheduler;
+    CNUIUserActivityManager *_activityManager;
 }
 
 + (id)newContactFormatter;
 @property(nonatomic) _Bool ignoresMapsData; // @synthesize ignoresMapsData=_ignoresMapsData;
+@property(retain, nonatomic) CNUIUserActivityManager *activityManager; // @synthesize activityManager=_activityManager;
+@property(nonatomic) _Bool hasPendingShowCard; // @synthesize hasPendingShowCard=_hasPendingShowCard;
 @property(retain, nonatomic) id <CNScheduler> backgroundScheduler; // @synthesize backgroundScheduler=_backgroundScheduler;
 @property(nonatomic) __weak UIAlertController *facebookContactsAlertController; // @synthesize facebookContactsAlertController=_facebookContactsAlertController;
 @property(retain, nonatomic) UIKeyCommand *addKeyCommand; // @synthesize addKeyCommand=_addKeyCommand;

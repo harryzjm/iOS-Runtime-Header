@@ -15,6 +15,7 @@
     NSDictionary *_childrenIdentifiersToConflictStates;
 }
 
++ (id)defaultInstanceWithChildSlots:(id)arg1;
 + (_Bool)fileNameIsIdentifier;
 + (Class)requiredChildrenClass;
 + (Class)slotClass;

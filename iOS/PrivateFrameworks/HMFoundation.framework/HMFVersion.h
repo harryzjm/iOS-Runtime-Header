@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HMFoundation/HMFLocalizable-Protocol.h>
 #import <HMFoundation/NSCopying-Protocol.h>
 #import <HMFoundation/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface HMFVersion <NSCopying, NSSecureCoding>
+@interface HMFVersion <HMFLocalizable, NSCopying, NSSecureCoding>
 {
     unsigned long long _majorVersion;
     unsigned long long _minorVersion;
@@ -29,6 +30,7 @@
 - (long long)compare:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+@property(readonly, copy) NSString *localizedDescription;
 - (id)description;
 @property(readonly, copy) NSString *versionString;
 - (id)initWithVersionString:(id)arg1;

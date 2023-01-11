@@ -15,7 +15,6 @@
 
 - (void)_deleteObjectsForOldKeys;
 - (void)setOnboardingVersion:(id)arg1;
-- (void)setFeldsparID:(id)arg1;
 - (void)setRecentlySeenHistoryItems:(id)arg1;
 - (void)setRecentlyReadHistoryItems:(id)arg1;
 - (void)setRankedPersonalSubscribedTagIDs:(id)arg1;
@@ -32,7 +31,6 @@
 @property(readonly, copy, nonatomic) id <FCDerivedPersonalizationData><NSCoding> derivedPersonalizationData;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) NSMutableDictionary *dictionary; // @dynamic dictionary;
-@property(readonly, copy, nonatomic) NSString *feldsparID;
 @property(readonly) unsigned long long hash;
 @property(readonly, copy, nonatomic) NSSet *mutedTagIDs;
 @property(readonly, copy, nonatomic) NSNumber *onboardingVersion;

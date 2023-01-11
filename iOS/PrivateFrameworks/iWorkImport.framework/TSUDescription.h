@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableDictionary, NSString;
 
@@ -23,10 +23,11 @@ __attribute__((visibility("hidden")))
 
 + (id)descriptionWithObject:(id)arg1;
 + (id)descriptionWithCFType:(void *)arg1 format:(id)arg2;
-+ (id)descriptionWithObject:(id)arg1 class:(Class)arg2;
 + (id)descriptionWithObject:(id)arg1 format:(id)arg2;
++ (id)descriptionWithObject:(id)arg1 class:(Class)arg2;
 + (id)descriptionWithObject:(id)arg1 class:(Class)arg2 format:(id)arg3;
-- (id)descriptionString;
+- (void).cxx_destruct;
+@property(readonly, copy, nonatomic) NSString *descriptionString;
 - (void)setFieldOptionCommaSeparated;
 - (void)addSuperDescription;
 - (void)addFieldValue:(id)arg1;
@@ -34,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (void)addField:(id)arg1 format:(id)arg2;
 - (void)addField:(id)arg1 value:(id)arg2;
 - (id)p_header;
-- (void)dealloc;
 - (id)initWithObject:(id)arg1;
 - (id)initWithObject:(id)arg1 format:(id)arg2;
 - (id)initWithObject:(id)arg1 class:(Class)arg2 format:(id)arg3;

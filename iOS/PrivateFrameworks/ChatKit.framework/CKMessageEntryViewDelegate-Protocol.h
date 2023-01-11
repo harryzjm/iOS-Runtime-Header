@@ -26,9 +26,9 @@
 - (void)messageEntryViewDidChange:(CKMessageEntryView *)arg1;
 
 @optional
-- (void)messageEntryViewDidEndJellyfishDemo:(CKMessageEntryView *)arg1;
-- (void)messageEntryViewWillEndJellyfishDemo:(CKMessageEntryView *)arg1;
 - (void)sendCurrentLocationMessage:(CKMessageEntryView *)arg1;
+- (void)messageEntryViewSwipeDownGestureRecognized:(CKMessageEntryView *)arg1;
+- (void)messageEntryView:(CKMessageEntryView *)arg1 shouldShowAppStrip:(_Bool)arg2 animated:(_Bool)arg3;
 - (_Bool)shouldMessageEntryViewReportBrowserButtonHitToInputDelegate:(CKMessageEntryView *)arg1;
 - (_Bool)getContainerWidth:(double *)arg1 offset:(double *)arg2;
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TSWPPadding;
+@class NSObject, TSWPPadding;
 @protocol TSWPLayoutTarget;
 
 @protocol TSWPColumnMetrics
@@ -20,5 +20,6 @@
 
 @optional
 @property(readonly, nonatomic) double textScaleFactor;
+- (TSWPPadding *)layoutMarginsForTarget:(NSObject<TSWPLayoutTarget> *)arg1;
 @end
 

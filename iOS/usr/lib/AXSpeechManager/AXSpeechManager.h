@@ -20,6 +20,7 @@
     _Bool _speechEnabled;
     _Bool isPaused;
     _Bool _showControlCenterControls;
+    _Bool _supportsAccurateWordCallbacks;
     CDUnknownBlockType _requestWillStart;
     NSNumber *_originalSpeechRateForJobOverride;
 }
@@ -34,9 +35,10 @@
 + (id)availableVoices;
 + (id)availableLanguageCodes;
 + (id)pauseMarkupString:(id)arg1;
-+ (id)spellOutMarkupString:(id)arg1;
++ (id)spellOutMarkupString:(id)arg1 string:(id)arg2;
 + (id)currentLanguageCode;
 @property(retain, nonatomic) NSNumber *originalSpeechRateForJobOverride; // @synthesize originalSpeechRateForJobOverride=_originalSpeechRateForJobOverride;
+@property(nonatomic) _Bool supportsAccurateWordCallbacks; // @synthesize supportsAccurateWordCallbacks=_supportsAccurateWordCallbacks;
 @property(copy, nonatomic) CDUnknownBlockType requestWillStart; // @synthesize requestWillStart=_requestWillStart;
 @property(readonly, nonatomic) _Bool showControlCenterControls; // @synthesize showControlCenterControls=_showControlCenterControls;
 @property(nonatomic) _Bool speechEnabled; // @synthesize speechEnabled=_speechEnabled;

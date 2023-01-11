@@ -8,6 +8,7 @@
 @protocol OS_dispatch_queue;
 
 @protocol NRMutableStateObserverProtocol
+- (void)invalidate;
 - (void)removeObserver:(id)arg1;
 - (id)addObserverQueue:(NSObject<OS_dispatch_queue> *)arg1 withBlock:(void (^)(id <NRDiffProtocol>, id))arg2;
 @end

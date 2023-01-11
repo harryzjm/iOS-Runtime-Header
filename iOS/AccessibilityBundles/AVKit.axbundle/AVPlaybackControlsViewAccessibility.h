@@ -13,6 +13,13 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)setFullScreen:(_Bool)arg1;
+- (_Bool)accessibilityElementsHidden;
+- (_Bool)_accessibilityViewIsVisible;
+- (_Bool)_accessibilityAllControlsAreHidden;
+- (id)_accessibilityPlaybackControlsVisibilityController;
+- (id)_accessibilityPlayerViewController;
+- (id)_accessibilityFullScreenViewController;
+- (id)_accessibilityNextResponderOfClass:(Class)arg1;
 
 @end
 

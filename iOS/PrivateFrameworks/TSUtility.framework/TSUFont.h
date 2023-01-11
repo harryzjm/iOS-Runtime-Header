@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, UIFont;
 
@@ -20,6 +20,7 @@
 + (id)fontWithName:(id)arg1 size:(double)arg2;
 + (id)fontWithUIFont:(id)arg1;
 @property(readonly, nonatomic) struct __CTFont *CTFont; // @synthesize CTFont=_ctFont;
+- (id)convertFontToBold:(_Bool)arg1 italic:(_Bool)arg2;
 - (id)fontWithScale:(double)arg1;
 - (id)fontWithSize:(double)arg1;
 @property(readonly, nonatomic) double lineHeight;

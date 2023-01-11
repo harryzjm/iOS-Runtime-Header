@@ -4,41 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SafariShared/WBSParsecSearchMapsResultFeedbackSenderClient-Protocol.h>
-#import <SafariShared/WBSParsecSearchResultPresentedInCard-Protocol.h>
+#import <SafariShared/WBSParsecSearchMapsResult-Protocol.h>
 
-@class NSString, NSURL, WBSParsecSearchMapsResultExtraCompletionItem, WBSParsecSearchMapsResultFeedbackSender, WBSParsecSearchResult;
+@class NSString, SFSearchResult, WBSParsecSearchMapsResultFeedbackSender, WBSQuerySuggestion;
 @protocol WBSParsecSearchSession;
 
-@interface WBSParsecSearchMapsResult <WBSParsecSearchMapsResultFeedbackSenderClient, WBSParsecSearchResultPresentedInCard>
+@interface WBSParsecSearchMapsResult <WBSParsecSearchMapsResult>
 {
-    NSString *_mapsDataType;
-    WBSParsecSearchMapsResultFeedbackSender *_mapsFeedbackSender;
-    NSString *_mapsResultType;
-    NSURL *_moreURL;
-    NSString *_nearbyBusinessesString;
-    WBSParsecSearchMapsResultExtraCompletionItem *_extraCompletionItem;
     id <WBSParsecSearchSession> _parsecSearchSession;
-    WBSParsecSearchResult *_hiddenParsecResult;
+    WBSParsecSearchMapsResultFeedbackSender *_mapsFeedbackSender;
 }
 
-@property(retain, nonatomic) WBSParsecSearchResult *hiddenParsecResult; // @synthesize hiddenParsecResult=_hiddenParsecResult;
-@property(retain, nonatomic) id <WBSParsecSearchSession> parsecSearchSession; // @synthesize parsecSearchSession=_parsecSearchSession;
-@property(readonly, nonatomic) WBSParsecSearchMapsResultExtraCompletionItem *extraCompletionItem; // @synthesize extraCompletionItem=_extraCompletionItem;
-@property(readonly, nonatomic) NSString *nearbyBusinessesString; // @synthesize nearbyBusinessesString=_nearbyBusinessesString;
-@property(readonly, nonatomic) NSURL *moreURL; // @synthesize moreURL=_moreURL;
-@property(readonly, nonatomic) NSString *mapsResultType; // @synthesize mapsResultType=_mapsResultType;
 @property(retain, nonatomic) WBSParsecSearchMapsResultFeedbackSender *mapsFeedbackSender; // @synthesize mapsFeedbackSender=_mapsFeedbackSender;
+@property(retain, nonatomic) id <WBSParsecSearchSession> parsecSearchSession; // @synthesize parsecSearchSession=_parsecSearchSession;
 - (void).cxx_destruct;
-- (void)didDisplayMapsResultForQuery:(id)arg1;
-@property(readonly, nonatomic) _Bool willPresentResultInCard;
-- (id)supportedStyleOverrides;
 - (id)initWithDictionary:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) unsigned long long engagementDestination;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) NSString *lastSearchQuery;
+@property(readonly, nonatomic) NSString *parsecDomainIdentifier;
+@property(readonly, nonatomic) SFSearchResult *sfSearchResultValue;
+@property(retain, nonatomic) WBSQuerySuggestion *siriSuggestion;
 @property(readonly) Class superclass;
 
 @end

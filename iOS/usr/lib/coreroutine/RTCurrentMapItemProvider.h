@@ -21,6 +21,7 @@
     NSMutableArray *_futureAccessPoints;
 }
 
++ (void)logPredictedLocationsOfInterest:(id)arg1 prestring:(id)arg2;
 + (void)logMapItems:(id)arg1 prestring:(id)arg2;
 + (id)convertMapItemsToPredictedLocationsOfInterest:(id)arg1;
 @property(nonatomic) _Bool registeredForNotifications; // @synthesize registeredForNotifications=_registeredForNotifications;
@@ -36,6 +37,8 @@
 - (void)shutdown;
 - (void)onWiFiScanNotification:(id)arg1;
 - (void)onLocationNotification:(id)arg1;
+- (void)performBluePOIQueryLookingBack:(double)arg1 lookingAhead:(double)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)_performBluePOIQueryLookingBack:(double)arg1 lookingAhead:(double)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchCurrentMapItemsLookingBack:(double)arg1 lookingAhead:(double)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_fetchCurrentMapItemsLookingBack:(double)arg1 lookingAhead:(double)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)_pickMinimumHorizontalUncertainty:(id)arg1;

@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreFoundation/NSCoding-Protocol.h>
 #import <CoreFoundation/NSCopying-Protocol.h>
+#import <CoreFoundation/NSSecureCoding-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface __NSFileSecurity <NSCopying, NSCoding>
+@interface __NSFileSecurity <NSCopying, NSSecureCoding>
 {
     struct _filesec *_filesec;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)__new:(struct _filesec *)arg1;

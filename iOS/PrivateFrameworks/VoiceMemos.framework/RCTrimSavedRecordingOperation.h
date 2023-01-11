@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class RCSavedRecording;
+@protocol RCMutableRecording, RCRecording;
 
 @interface RCTrimSavedRecordingOperation
 {
-    RCSavedRecording *_sourceRecording;
-    RCSavedRecording *_destinationRecording;
+    id <RCRecording> _sourceRecording;
+    id <RCMutableRecording> _destinationRecording;
 }
 
-@property(readonly, nonatomic) RCSavedRecording *destinationRecording; // @synthesize destinationRecording=_destinationRecording;
-@property(readonly, nonatomic) RCSavedRecording *sourceRecording; // @synthesize sourceRecording=_sourceRecording;
+@property(readonly, nonatomic) id <RCMutableRecording> destinationRecording; // @synthesize destinationRecording=_destinationRecording;
+@property(readonly, nonatomic) id <RCRecording> sourceRecording; // @synthesize sourceRecording=_sourceRecording;
 - (void).cxx_destruct;
 - (void)main;
 - (id)initWithSourceRecording:(id)arg1 destinationRecording:(id)arg2 timeRange:(CDStruct_73a5d3ca)arg3 trimMode:(long long)arg4;

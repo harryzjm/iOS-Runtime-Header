@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <ChatKit/NSCoding-Protocol.h>
+#import <ChatKit/NSSecureCoding-Protocol.h>
 
-@interface IMMockItemInfo : NSObject <NSCoding>
+@interface IMMockItemInfo : NSObject <NSSecureCoding>
 {
     _Bool _outgoing;
     long long _type;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)decodedMockItemInfoArray:(id)arg1;
 + (id)encodedMockItemInfoArray:(id)arg1;
 + (id)defaultMockInfoArray;

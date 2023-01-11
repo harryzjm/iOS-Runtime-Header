@@ -6,14 +6,12 @@
 
 #import <MessageUI/CNAutocompleteFetchDelegate-Protocol.h>
 
-@class CNAutocompleteFetchContext, CNAutocompleteStore, NSError, NSObject, NSString;
-@protocol CNCancelable, OS_dispatch_semaphore;
+@class CNAutocompleteFetchContext, CNAutocompleteStore, MFCancelationToken, MFPromise, NSString;
 
 @interface MFContactsAutocompleteSearchOperation <CNAutocompleteFetchDelegate>
 {
-    id <CNCancelable> _fetchRequestHandle;
-    NSObject<OS_dispatch_semaphore> *_fetchRequestSemaphore;
-    NSError *_fetchError;
+    MFCancelationToken *_fetchRequestToken;
+    MFPromise *_fetchRequestPromise;
     _Bool _includeContacts;
     _Bool _includeRecents;
     _Bool _includeSuggestions;

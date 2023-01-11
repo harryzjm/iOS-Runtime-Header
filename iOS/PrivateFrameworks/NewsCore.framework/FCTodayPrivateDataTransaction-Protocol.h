@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NewsCore/NSCoding-Protocol.h>
 #import <NewsCore/NSCopying-Protocol.h>
+#import <NewsCore/NSSecureCoding-Protocol.h>
 
 @class NSObject;
 @protocol FCMutableTodayPrivateData, FCPrivateDataContext;
 
-@protocol FCTodayPrivateDataTransaction <NSCopying, NSCoding>
+@protocol FCTodayPrivateDataTransaction <NSCopying, NSSecureCoding>
 - (void)performWithTodayPrivateData:(NSObject<FCMutableTodayPrivateData> *)arg1;
 - (void)performWithPrivateDataContext:(id <FCPrivateDataContext>)arg1;
 @end

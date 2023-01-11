@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CLLocation, GEOMapServiceTraits, GEOSearchCategory, NSArray, NSString, NSTimer;
-@protocol GEOMapServiceCompletionTicket, MKLocalSearchCompleterDelegate, MKLocationManagerOperation;
+@class CLLocation, GEOMapServiceTraits, GEORetainedSearchMetadata, GEOSearchCategory, NSArray, NSString, NSTimer;
+@protocol GEOMapServiceCompletionTicket, MKAutocompleteAnalyticsProvider, MKLocalSearchCompleterDelegate, MKLocationManagerOperation;
 
 @interface MKLocalSearchCompleter : NSObject
 {
     NSString *_queryFragment;
     CDStruct_b7cb895d _region;
     GEOSearchCategory *_categoryFilter;
+    GEORetainedSearchMetadata *_retainedSearchMetadata;
     id <MKLocalSearchCompleterDelegate> _delegate;
     id _context;
     NSString *_identifier;
@@ -30,8 +31,14 @@
     int _source;
     id <MKLocationManagerOperation> _singleLocationUpdate;
     GEOMapServiceTraits *_traits;
+    _Bool _shouldDisplayNoResults;
+    _Bool _shouldPreloadTransitInfo;
+    id <MKAutocompleteAnalyticsProvider> _analyticsProvider;
 }
 
+@property(nonatomic, getter=_shouldPreloadTransitInfo, setter=_setShouldPreloadTransitInfo:) _Bool shouldPreloadTransitInfo; // @synthesize shouldPreloadTransitInfo=_shouldPreloadTransitInfo;
+@property(readonly, nonatomic, getter=_shouldDisplayNoResults) _Bool shouldDisplayNoResults; // @synthesize shouldDisplayNoResults=_shouldDisplayNoResults;
+@property(retain, nonatomic) id <MKAutocompleteAnalyticsProvider> analyticsProvider; // @synthesize analyticsProvider=_analyticsProvider;
 @property(retain, nonatomic) GEOMapServiceTraits *traits; // @synthesize traits=_traits;
 @property(nonatomic) unsigned long long mapType; // @synthesize mapType=_mapType;
 @property(retain, nonatomic) CLLocation *deviceLocation; // @synthesize deviceLocation=_deviceLocation;
@@ -41,6 +48,7 @@
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(nonatomic) __weak id context; // @synthesize context=_context;
 @property(nonatomic) __weak id <MKLocalSearchCompleterDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) GEORetainedSearchMetadata *retainedSearchMetadata; // @synthesize retainedSearchMetadata=_retainedSearchMetadata;
 @property(retain, nonatomic) GEOSearchCategory *categoryFilter; // @synthesize categoryFilter=_categoryFilter;
 @property(nonatomic) CDStruct_b7cb895d region; // @synthesize region=_region;
 @property(copy, nonatomic) NSString *queryFragment; // @synthesize queryFragment=_queryFragment;
@@ -56,12 +64,15 @@
 @property(readonly, nonatomic, getter=isSearching) _Bool searching;
 - (int)source;
 - (void)setSource:(int)arg1;
-- (void)_scheduleRequest;
+- (double)timeToNextRequest;
+- (void)_scheduleRequestWithTimeToNextRequest:(double)arg1;
+- (void)_markDirtyAndScheduleRequestWithTimeToNextRequest:(double)arg1;
 - (void)_markDirty;
 - (void)_schedulePendingRequest;
 - (void)_fireRequest;
 - (void)_handleError:(id)arg1 forTicket:(id)arg2;
-- (void)_handleCompletion:(id)arg1 forTicket:(id)arg2;
+- (void)_notifyDelegatesWithResults:(id)arg1 shouldDisplayNoResults:(_Bool)arg2 ticket:(id)arg3;
+- (void)_handleCompletion:(id)arg1 shouldDisplayNoResults:(_Bool)arg2 forTicket:(id)arg3;
 - (void)dealloc;
 - (id)init;
 

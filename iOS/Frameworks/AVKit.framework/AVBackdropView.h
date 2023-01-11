@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVStackView, NSArray, UIView, UIVisualEffectView;
+@class NSArray, NSString, UIStackView, UIView, UIVisualEffectView, _UIVisualEffectBackdropView;
 
 @interface AVBackdropView
 {
     NSArray *_temporaryArrangedSubviews;
+    _Bool _disablesAutoLayout;
     long long _axis;
     unsigned long long _shapeStyle;
     UIView *_targetViewForSecondaryMaterialOverlay;
-    AVStackView *_contentView;
+    UIStackView *_stackView;
     UIVisualEffectView *_visualEffectView;
-    UIView *_secondaryMaterialOverlayView;
+    UIVisualEffectView *_secondaryMaterialOverlayView;
     NSArray *_secondaryMaterialOverlayViewConstraints;
+    NSString *_groupName;
+    _UIVisualEffectBackdropView *_captureView;
 }
 
 + (id)secondaryMaterialOverlayView;
@@ -28,28 +31,37 @@
 + (void)applySecondaryGlyphTintToView:(id)arg1;
 + (void)applyPrimaryGlyphTintToView:(id)arg1;
 + (void)removeAllFiltersFromView:(id)arg1;
-+ (void)applyPlusLFilterToView:(id)arg1;
++ (id)baseEffects;
+@property(nonatomic) _Bool disablesAutoLayout; // @synthesize disablesAutoLayout=_disablesAutoLayout;
+@property(nonatomic) __weak _UIVisualEffectBackdropView *captureView; // @synthesize captureView=_captureView;
+@property(copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
 @property(retain, nonatomic) NSArray *secondaryMaterialOverlayViewConstraints; // @synthesize secondaryMaterialOverlayViewConstraints=_secondaryMaterialOverlayViewConstraints;
-@property(retain, nonatomic) UIView *secondaryMaterialOverlayView; // @synthesize secondaryMaterialOverlayView=_secondaryMaterialOverlayView;
+@property(retain, nonatomic) UIVisualEffectView *secondaryMaterialOverlayView; // @synthesize secondaryMaterialOverlayView=_secondaryMaterialOverlayView;
 @property(readonly, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
-@property(readonly, nonatomic) AVStackView *contentView; // @synthesize contentView=_contentView;
+@property(readonly, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property(retain, nonatomic) UIView *targetViewForSecondaryMaterialOverlay; // @synthesize targetViewForSecondaryMaterialOverlay=_targetViewForSecondaryMaterialOverlay;
 @property(nonatomic) unsigned long long shapeStyle; // @synthesize shapeStyle=_shapeStyle;
 @property(readonly, nonatomic) long long axis; // @synthesize axis=_axis;
 - (void).cxx_destruct;
-- (void)_ensureContentView;
 - (void)_updateTransparencyOfVisualEffectView;
-- (void)layoutSubviews;
+- (void)_ensureGroupNameAndCaptureView;
+- (void)_applyShapeStyle;
+- (id)_stackViewIfLoaded;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)setCaptureGroupName:(id)arg1 captureView:(id)arg2;
 - (void)updateConstraints;
+- (void)didMoveToWindow;
 - (void)setSemanticContentAttribute:(long long)arg1;
+- (void)layoutSubviews;
 @property(nonatomic) struct NSDirectionalEdgeInsets contentLayoutMargins;
 - (void)setCustomSpacing:(double)arg1 afterViews:(id)arg2;
 - (void)setCustomSpacing:(double)arg1 afterView:(id)arg2;
-- (void)setHitRectInsets:(struct NSDirectionalEdgeInsets)arg1;
 - (void)setArrangedSubviews:(id)arg1 axis:(long long)arg2;
+@property(readonly, nonatomic) UIView *contentView;
 - (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1 captureView:(id)arg2 disablingAutoLayout:(_Bool)arg3;
+- (id)initWithArrangedSubviews:(id)arg1 captureView:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithArrangedSubviews:(id)arg1;
 
 @end
 

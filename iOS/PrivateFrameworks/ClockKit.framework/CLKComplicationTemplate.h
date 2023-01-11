@@ -9,10 +9,11 @@
 #import <ClockKit/NSCopying-Protocol.h>
 #import <ClockKit/NSSecureCoding-Protocol.h>
 
-@class NSMutableSet, UIColor;
+@class NSDictionary, NSMutableSet, UIColor;
 
 @interface CLKComplicationTemplate : NSObject <NSSecureCoding, NSCopying>
 {
+    NSDictionary *_metadata;
     NSMutableSet *_activeClients;
     _Bool _finalized;
     UIColor *_tintColor;
@@ -26,6 +27,9 @@
 - (void)_enumerateScalarKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_setProvidersPaused:(_Bool)arg1;
 - (id)_initWithJSONObjectRepresentation:(id)arg1 bundle:(id)arg2;
+- (void)_enumerateEmbeddedTemplateKeysWithBlock:(CDUnknownBlockType)arg1;
+- (void)_enumerateFullColorImageProviderKeysWithBlock:(CDUnknownBlockType)arg1;
+- (void)_enumerateGaugeProviderKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateDateKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateBOOLKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateFloatKeysWithBlock:(CDUnknownBlockType)arg1;
@@ -46,6 +50,8 @@
 - (void)finalize;
 - (id)finalizedCopy;
 - (void)validate;
+- (void)setMetadata:(id)arg1;
+- (id)metadata;
 @property(readonly, nonatomic) long long timeTravelUpdateFrequency;
 - (_Bool)isCompatibleWithFamily:(long long)arg1;
 - (void)endUpdatesForClient:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSSet;
 
@@ -25,7 +25,7 @@
 @property(copy, nonatomic) NSArray *includes; // @synthesize includes=_includes;
 @property(nonatomic) int minimumLevel; // @synthesize minimumLevel=_minimumLevel;
 - (void).cxx_destruct;
-- (_Bool)proceedProcessingEnvelope:(id)arg1;
+- (_Bool)proceedProcessingLogName:(id)arg1;
 - (id)generateRegexesForPatterns:(id)arg1;
 - (id)description;
 - (id)init;

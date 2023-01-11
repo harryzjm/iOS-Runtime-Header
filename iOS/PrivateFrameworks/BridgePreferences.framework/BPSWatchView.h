@@ -10,6 +10,7 @@
 
 @interface BPSWatchView : UIView
 {
+    _Bool _wantsLightenBlendedScreen;
     NSString *_screenImageSearchBundleIdentifier;
     NSString *_screenImageName;
     unsigned long long _style;
@@ -19,6 +20,7 @@
     UIImageView *_watchScreenImageView;
 }
 
+@property(nonatomic) _Bool wantsLightenBlendedScreen; // @synthesize wantsLightenBlendedScreen=_wantsLightenBlendedScreen;
 @property(readonly, nonatomic) UIImageView *watchScreenImageView; // @synthesize watchScreenImageView=_watchScreenImageView;
 @property(copy, nonatomic) NSString *styleVersionSuffix; // @synthesize styleVersionSuffix=_styleVersionSuffix;
 @property(retain, nonatomic) BPSRemoteImageView *watchImageView; // @synthesize watchImageView=_watchImageView;
@@ -31,10 +33,12 @@
 - (struct CGSize)screenImageSize;
 - (unsigned long long)deviceSize;
 - (void)overrideMaterial:(unsigned long long)arg1 size:(unsigned long long)arg2;
+- (void)_cleanedImageName:(id *)arg1 withFallbackImage:(id *)arg2;
 - (void)layoutSubviews;
 - (struct CGSize)intrinsicContentSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)applyScreenStyle;
+- (id)screenBackground:(struct CGSize)arg1;
 - (id)watchAssetBundle;
 - (id)initWithStyle:(unsigned long long)arg1 versionModifier:(id)arg2 allowsMaterialFallback:(_Bool)arg3;
 - (id)initWithStyle:(unsigned long long)arg1 allowsMaterialFallback:(_Bool)arg2;

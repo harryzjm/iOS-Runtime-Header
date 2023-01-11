@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MPSNeuralNetwork/NSCopying-Protocol.h>
 #import <MPSNeuralNetwork/NSSecureCoding-Protocol.h>
 
-@class MPSCNNNeuron, NSData;
+@class MPSCNNNeuron, MPSNNNeuronDescriptor, NSData;
 
 @interface MPSCNNConvolutionDescriptor : NSObject <NSSecureCoding, NSCopying>
 {
@@ -26,11 +26,8 @@
     unsigned long long _subPixelScaleFactor;
     unsigned long long _dilationRateX;
     unsigned long long _dilationRateY;
-    int _neuronType;
-    float _neuronA;
-    float _neuronB;
     _Bool _depthWiseConvolution;
-    NSData *_perChannelNeuronA;
+    MPSNNNeuronDescriptor *_fusedNeuronDescriptor;
     MPSCNNNeuron *_neuron_deprecated;
 }
 
@@ -60,14 +57,19 @@
 - (void)setBatchNormalizationParametersForInferenceWithMean:(const float *)arg1 variance:(const float *)arg2 gamma:(const float *)arg3 beta:(const float *)arg4 epsilon:(float)arg5;
 - (id)initWithKernelWidth:(unsigned long long)arg1 kernelHeight:(unsigned long long)arg2 inputFeatureChannels:(unsigned long long)arg3 outputFeatureChannels:(unsigned long long)arg4;
 - (id)init;
+- (_Bool)hasBatchNormData;
 - (id)initWithKernelWidth:(unsigned long long)arg1 kernelHeight:(unsigned long long)arg2 inputFeatureChannels:(unsigned long long)arg3 outputFeatureChannels:(unsigned long long)arg4 neuronFilter:(id)arg5;
+- (void)setNeuronType:(int)arg1 parameterA:(float)arg2 parameterB:(float)arg3 parameterC:(float)arg4;
 - (void)setNeuronType:(int)arg1 parameterA:(float)arg2 parameterB:(float)arg3;
+- (float)neuronParameterC;
 - (float)neuronParameterB;
 - (float)neuronParameterA;
 - (int)neuronType;
+- (void)setNeuronParameterC:(float)arg1;
 - (void)setNeuronParameterB:(float)arg1;
 - (void)setNeuronParameterA:(float)arg1;
 - (void)setNeuronType:(int)arg1;
+@property(retain, nonatomic) MPSNNNeuronDescriptor *fusedNeuronDescriptor; // @synthesize fusedNeuronDescriptor=_fusedNeuronDescriptor;
 
 @end
 

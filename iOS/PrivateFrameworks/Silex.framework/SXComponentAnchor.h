@@ -4,21 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <objc/NSObject.h>
+
+#import <Silex/SXComponentAnchor-Protocol.h>
+
 @class NSString;
 
-@interface SXComponentAnchor
+@interface SXComponentAnchor : NSObject <SXComponentAnchor>
 {
+    NSString *_targetComponentIdentifier;
+    long long _targetAnchorPosition;
+    long long _originAnchorPosition;
+    struct _NSRange _range;
 }
 
-- (long long)anchorAlignmentForString:(id)arg1;
-- (long long)targetAnchorPositionWithValue:(id)arg1 withType:(int)arg2;
-- (long long)originAnchorPositionWithValue:(id)arg1 withType:(int)arg2;
+@property(nonatomic) struct _NSRange range; // @synthesize range=_range;
+@property(nonatomic) long long originAnchorPosition; // @synthesize originAnchorPosition=_originAnchorPosition;
+@property(nonatomic) long long targetAnchorPosition; // @synthesize targetAnchorPosition=_targetAnchorPosition;
+@property(readonly, nonatomic) NSString *targetComponentIdentifier; // @synthesize targetComponentIdentifier=_targetComponentIdentifier;
+- (void).cxx_destruct;
+@property(readonly, copy) NSString *description;
+- (id)initWithTargetComponentIdentifier:(id)arg1;
 
 // Remaining properties
-@property(readonly, nonatomic) long long originAnchorPosition; // @dynamic originAnchorPosition;
-@property(readonly, nonatomic) struct _NSRange range; // @dynamic range;
-@property(readonly, nonatomic) long long targetAnchorPosition; // @dynamic targetAnchorPosition;
-@property(readonly, nonatomic) NSString *targetComponentIdentifier; // @dynamic targetComponentIdentifier;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

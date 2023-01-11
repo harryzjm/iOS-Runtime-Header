@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
 @protocol CPLNetworkWatcherDelegate, OS_dispatch_queue;
 
 @interface CPLNetworkWatcher : NSObject
@@ -21,13 +22,14 @@
 @property(nonatomic) __weak id <CPLNetworkWatcherDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) unsigned long long networkState; // @synthesize networkState=_networkState;
 - (void).cxx_destruct;
-- (void)_initialReachabilityTestFailed;
 - (void)_reachabilityFlagsDidChange:(unsigned int)arg1;
 - (void)stop;
 - (void)start;
 - (void)_setupReachability;
 - (void)_teardownReachability;
 - (void)_updateState:(unsigned long long)arg1;
+@property(readonly, nonatomic) NSString *endPoint;
+- (const char *)_reachabilityEndPoint;
 - (id)initWithQueue:(id)arg1;
 
 @end

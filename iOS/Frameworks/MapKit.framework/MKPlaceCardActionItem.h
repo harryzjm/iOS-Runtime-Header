@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSString, UIColor, _MKMapItemAttribution;
 
-__attribute__((visibility("hidden")))
 @interface MKPlaceCardActionItem : NSObject
 {
     _Bool _enabled;

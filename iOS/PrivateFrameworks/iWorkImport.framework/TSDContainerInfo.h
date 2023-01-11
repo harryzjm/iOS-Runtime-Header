@@ -4,28 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <iWorkImport/TSDChangeableInfo-Protocol.h>
+#import <iWorkImport/TSDModelContainer-Protocol.h>
 #import <iWorkImport/TSDMutableContainerInfo-Protocol.h>
 #import <iWorkImport/TSKDocumentObject-Protocol.h>
 
-@class NSMutableArray, NSObject, NSString, TSDInfoGeometry, TSPObject;
+@class NSArray, NSMutableArray, NSObject, NSString, TSDInfoGeometry, TSPObject, TSSPropertySetChangeDetails;
 @protocol TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
-@interface TSDContainerInfo <TSDMutableContainerInfo, TSKDocumentObject>
+@interface TSDContainerInfo <TSDMutableContainerInfo, TSKDocumentObject, TSDModelContainer, TSDChangeableInfo>
 {
-    TSDInfoGeometry *mGeometry;
-    NSObject<TSDContainerInfo> *mParentInfo;
-    NSMutableArray *mChildInfos;
+    TSDInfoGeometry *_geometry;
+    NSObject<TSDContainerInfo> *_parentInfo;
+    NSMutableArray *_childInfos;
+    TSSPropertySetChangeDetails *_changes;
 }
 
-@property(nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @synthesize parentInfo=mParentInfo;
-@property(copy, nonatomic) TSDInfoGeometry *geometry; // @synthesize geometry=mGeometry;
+@property(nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @synthesize parentInfo=_parentInfo;
+@property(copy, nonatomic) TSDInfoGeometry *geometry; // @synthesize geometry=_geometry;
+- (void).cxx_destruct;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeRemovedFromDocumentRoot:(id)arg1;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
+- (id)endCollectingChanges;
+- (void)willChangeProperties:(id)arg1;
+- (void)willChangeProperty:(int)arg1;
+- (void)beginCollectingChanges;
 - (void)replaceChildInfo:(id)arg1 with:(id)arg2;
 - (void)removeChildInfo:(id)arg1;
 - (void)moveChildren:(id)arg1 toIndexes:(id)arg2;
@@ -34,8 +42,12 @@ __attribute__((visibility("hidden")))
 - (void)insertChildInfo:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)addChildInfo:(id)arg1;
 - (void)setChildInfos:(id)arg1;
+- (void)moveModel:(id)arg1 toIndex:(unsigned long long)arg2;
+- (void)removeContainedModel:(id)arg1;
+- (void)insertContainedModel:(id)arg1 atIndex:(unsigned long long)arg2;
+@property(readonly, nonatomic) NSArray *containedModels;
 - (id)infoForSelectionPath:(id)arg1;
-- (id)childInfos;
+@property(readonly, nonatomic) NSArray *childInfos;
 - (id)copyWithContext:(id)arg1;
 - (_Bool)isThemeContent;
 - (Class)repClass;
@@ -62,6 +74,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool matchesObjectPlaceholderGeometry;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool supportsCollaborativeEditing;
 
 @end
 

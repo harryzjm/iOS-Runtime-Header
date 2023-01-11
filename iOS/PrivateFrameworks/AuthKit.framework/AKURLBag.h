@@ -35,8 +35,11 @@
 @property(readonly, nonatomic) unsigned long long lastKnownIDMSEnvironment;
 @property(readonly, nonatomic) unsigned long long IDMSEnvironment;
 @property(readonly, nonatomic) NSString *APSEnvironment;
+@property(readonly, nonatomic) NSURL *repairURL;
+@property(readonly, nonatomic) NSURL *acsURL;
 @property(readonly, nonatomic, getter=isPhoneNumberSupportedConfig) _Bool phoneNumberSupportedConfig;
 @property(readonly, nonatomic) NSURL *storeModernRecoveryURL;
+@property(readonly, nonatomic) NSURL *fetchAuthenticationModeURL;
 @property(readonly, nonatomic) NSURL *fetchUserInfoURL;
 @property(readonly, nonatomic) NSURL *fetchFollowUps;
 @property(readonly, nonatomic) NSURL *circleURL;

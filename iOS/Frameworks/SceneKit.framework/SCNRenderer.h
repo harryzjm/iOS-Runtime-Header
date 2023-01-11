@@ -4,22 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/SCNSceneRenderer-Protocol.h>
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
-@class AVAudioEngine, AVAudioEnvironmentNode, EAGLContext, MISSING_TYPE, NSLock, NSString, SCNNode, SCNRendererTransitionContext, SCNScene, SCNTechnique, SKScene, UIColor, __SKSCNRenderer;
-@protocol MTLTexture, OS_dispatch_queue, SCNRenderContext, SCNSceneRenderer, SCNSceneRendererDelegate;
+@class AVAudioEngine, AVAudioEnvironmentNode, EAGLContext, MISSING_TYPE, NSString, SCNAuthoringEnvironment, SCNMTLRenderContext, SCNNode, SCNRecursiveLock, SCNRendererTransitionContext, SCNScene, SCNTechnique, SKScene, UIColor, __SKSCNRenderer;
+@protocol MTLTexture, OS_dispatch_queue, SCNSceneRenderer, SCNSceneRendererDelegate;
 
 @interface SCNRenderer : NSObject <SCNSceneRenderer, SCNTechniqueSupport>
 {
     SCNScene *_scene;
     SCNNode *_pointOfView;
     SCNNode *_pointOfCulling;
-    NSLock *_lock;
+    SCNRecursiveLock *_lock;
     NSObject<OS_dispatch_queue> *__renderingQueue;
     unsigned long long __antialiasingMode;
+    unsigned long long __preparePixelFormat;
     struct {
         struct __C3DFramebuffer *frameBuffer;
         struct __C3DFramebuffer *multisamplingFrameBuffer;
@@ -32,6 +33,7 @@
     unsigned int _isPrivateRenderer:1;
     unsigned int _isViewPrivateRenderer:1;
     unsigned int _renderingSnapshot:1;
+    unsigned int _renderingPrepare:1;
     unsigned int _autoUpdate:1;
     unsigned int _disableLinearRendering:1;
     double _currentSceneTime;
@@ -51,26 +53,28 @@
     struct __C3DEngineContext *_engineContext;
     unsigned long long _renderingAPI;
     struct SCNVector4 __viewport;
+    double __aspectRatio;
+    MISSING_TYPE *__drawableSafeAreaInsets;
     EAGLContext *_glContext;
-    id <SCNRenderContext> _renderContext;
+    SCNMTLRenderContext *_renderContext;
     unsigned int _jitteringEnabled:1;
     unsigned int _frozen:1;
-    unsigned int _delegateSupportsUpdate:1;
-    unsigned int _delegateSupportsDidApplyAnimations:1;
-    unsigned int _delegateSupportsDidSimulatePhysics:1;
-    unsigned int _delegateSupportsDidApplyConstraints:1;
-    unsigned int _delegateSupportsWillRender:1;
-    unsigned int _delegateSupportsDidRender:1;
-    unsigned int _delegateSupportsInputTime:1;
     unsigned int _privateRendererShouldForwardSceneRendererDelegationMessagesToOwner:1;
-    unsigned int _privateRendererOwnerSupportsUpdate:1;
-    unsigned int _privateRendererOwnerSupportsDidApplyAnimations:1;
-    unsigned int _privateRendererOwnerSupportsDidSimulatePhysics:1;
-    unsigned int _privateRendererOwnerSupportsDidApplyConstraints:1;
-    unsigned int _privateRendererOwnerSupportsWillRender:1;
-    unsigned int _privateRendererOwnerSupportsDidRender:1;
+    CDStruct_f76d274b _privateRendererOwnerDelegationConformance;
+    CDStruct_f76d274b _delegationConformance;
     UIColor *_backgroundColor;
-    struct C3DColor4 _c3dBackgroundColor;
+    struct C3DColor4 {
+        union {
+            float rgba[4];
+            struct {
+                float r;
+                float g;
+                float b;
+                float a;
+            } ;
+            MISSING_TYPE *simd;
+        } ;
+    } _c3dBackgroundColor;
     SCNRenderer *_preloadRenderer;
     id <SCNSceneRenderer> _privateRendererOwner;
     SCNTechnique *_technique;
@@ -80,12 +84,17 @@
     _Bool _disableOverlays;
     float _contentScaleFactor;
     _Bool _isRunningInExtension;
+    _Bool _watchAppInForeground;
+    SCNAuthoringEnvironment *_authoringEnvironment;
+    unsigned long long _debugOptions;
     _Bool _showStatistics;
+    _Bool _showAuthoringEnvironment;
     double _statisticsTimeStamp;
 }
 
 + (id)rendererWithContext:(id)arg1 options:(id)arg2;
 + (id)rendererWithDevice:(id)arg1 options:(id)arg2;
+- (void)_setInterfaceOrientation:(long long)arg1;
 - (void)_UIOrientationDidChangeNotification:(id)arg1;
 - (id)privateRendererOwner;
 - (void)_jitterAtStep:(unsigned long long)arg1 updateMainFramebuffer:(_Bool)arg2 redisplay:(_Bool)arg3 jitterer:(id)arg4;
@@ -118,9 +127,12 @@
 @property(retain, nonatomic) SCNNode *audioListener;
 @property(readonly, nonatomic) AVAudioEnvironmentNode *audioEnvironmentNode;
 @property(readonly, nonatomic) AVAudioEngine *audioEngine;
+- (void)set_drawableSafeAreaInsets: /* Error: Ran out of types for this method. */;
+- (MISSING_TYPE *)_drawableSafeAreaInsets;
 - (void)set_viewport:(struct SCNVector4)arg1;
 - (struct SCNVector4)_viewport;
 - (id)_authoringEnvironment;
+- (void)setupAuthoringEnvironement;
 - (void)set_showsAuthoringEnvironment:(_Bool)arg1;
 - (_Bool)_showsAuthoringEnvironment;
 - (id)_compilationErrors;
@@ -130,6 +142,7 @@
 - (_Bool)_disableLinearRendering;
 - (void)set_enablesDeferredShading:(_Bool)arg1;
 - (_Bool)_enablesDeferredShading;
+- (void)_reloadDebugOptions;
 @property(nonatomic) unsigned long long debugOptions;
 - (void)_presentFramebuffer;
 - (void)_runningInExtension;
@@ -148,9 +161,9 @@
 - (void)_pause;
 - (void)_play;
 - (id)nodesInsideFrustumWithPointOfView:(id)arg1;
-- (id)_nodesInsideFrustumWithPointOfView:(id)arg1 viewport:(struct CGSize)arg2;
+- (id)_nodesInsideFrustumWithPointOfView:(id)arg1 viewport:(struct SCNVector4)arg2;
 - (_Bool)isNodeInsideFrustum:(id)arg1 withPointOfView:(id)arg2;
-- (_Bool)_isNodeInsideFrustum:(id)arg1 withPointOfView:(id)arg2 viewport:(struct CGSize)arg3;
+- (_Bool)_isNodeInsideFrustum:(id)arg1 withPointOfView:(id)arg2 viewport:(struct SCNVector4)arg3;
 - (id)_hitTest:(struct CGPoint)arg1 viewport:(struct CGSize)arg2 options:(id)arg3;
 - (id)hitTestWithSegmentFromPoint:(struct SCNVector3)arg1 toPoint:(struct SCNVector3)arg2 options:(id)arg3;
 - (id)hitTest:(struct CGPoint)arg1 options:(id)arg2;
@@ -175,7 +188,7 @@
 - (void)updateCurrentTimeIfPlayingWithSystemTime:(double)arg1;
 - (void)set_privateRendererShouldForwardSceneRendererDelegationMessagesToOwner:(_Bool)arg1;
 - (_Bool)_privateRendererShouldForwardSceneRendererDelegationMessagesToOwner;
-@property(nonatomic) id <SCNSceneRendererDelegate> delegate;
+@property(nonatomic) __weak id <SCNSceneRendererDelegate> delegate;
 - (void)_updateEngineCallbacks;
 - (id)programWithNode:(id)arg1 withMaterial:(id)arg2;
 - (void)prepareObjects:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -184,6 +197,15 @@
 - (void)_releasePreloadRenderer;
 - (_Bool)_preparePreloadRenderer;
 - (_Bool)_preloadResource:(id)arg1 abortHandler:(CDUnknownBlockType)arg2;
+- (void)set_computedLightingEnvironmentMapsPath:(id)arg1;
+- (id)_computedLightingEnvironmentMapsPath;
+- (void)set_recordWithoutExecute:(_Bool)arg1;
+- (_Bool)_recordWithoutExecute;
+- (void)_renderGraphFrameRecordingAtPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (_Bool)_renderGraphEnabled;
+- (void)set_renderGraphEnabled:(_Bool)arg1;
+- (id)_copyRenderGraphDescription;
+- (id)_copyPassDescription;
 @property(copy, nonatomic) SCNTechnique *technique;
 @property(retain, nonatomic) SKScene *overlaySKScene;
 - (void)_overlaysDidUpdate:(id)arg1;
@@ -202,13 +224,15 @@
 - (id)_defaultPOVForScene:(id)arg1;
 - (_Bool)autoAdjustCamera;
 - (void)setAutoAdjustCamera:(_Bool)arg1;
+- (void)_writeSubdivCacheForHash:(id)arg1 dataProvider:(CDUnknownBlockType)arg2;
+- (id)_readSubdivCacheForHash:(id)arg1;
 - (void)_willRenderScene:(id)arg1;
 - (void)_didRenderScene:(id)arg1;
 - (struct SCNVector3)unprojectPoint:(struct SCNVector3)arg1;
 - (struct SCNVector3)projectPoint:(struct SCNVector3)arg1;
-- (struct SCNVector3)_unprojectPoint:(struct SCNVector3)arg1 viewport:(struct CGSize)arg2;
-- (struct SCNVector3)_projectPoint:(struct SCNVector3)arg1 viewport:(struct CGSize)arg2;
-- (void)_projectPoints:(struct SCNVector3 *)arg1 count:(unsigned long long)arg2 viewport:(struct CGSize)arg3;
+- (struct SCNVector3)_unprojectPoint:(struct SCNVector3)arg1 viewport:(struct SCNVector4)arg2;
+- (struct SCNVector3)_projectPoint:(struct SCNVector3)arg1 viewport:(struct SCNVector4)arg2;
+- (void)_projectPoints:(struct SCNVector3 *)arg1 count:(unsigned long long)arg2 viewport:(struct SCNVector4)arg3;
 - (MISSING_TYPE *)viewportWithLetterboxingIfNeeded: /* Error: Ran out of types for this method. */;
 - (id)pointOfCulling;
 - (void)setPointOfCulling:(id)arg1;
@@ -217,22 +241,24 @@
 - (const void *)__CFObject;
 - (long long)_getFrameIndex;
 - (id)_renderContextMetal;
-- (struct __C3DRendererContext *)_rendererContext;
+- (struct __C3DRendererContext *)_rendererContextGL;
 - (struct __C3DEngineContext *)_engineContext;
 - (struct SCNMatrix4)_screenTransform;
 - (void)set_screenTransform:(struct SCNMatrix4)arg1;
+- (double)_aspectRatio;
+- (void)set_aspectRatio:(double)arg1;
 - (double)_superSamplingFactor;
 - (void)set_superSamplingFactor:(double)arg1;
 - (void)set_antialiasingMode:(unsigned long long)arg1;
 - (unsigned long long)_antialiasingMode;
 - (unsigned long long)_sampleCount;
+- (void)_createPrepareFramebufferIfNeeded;
 - (void)_createOffscreenFramebufferIfNeeded;
 - (void)_prepareGLRenderTarget;
 - (void)_prepareRenderTarget;
 - (void)_resolveAndDiscardGL;
 - (void)_endFrame;
 - (void)_beginFrame;
-- (void)_prepareFrame:(_Bool)arg1;
 - (void)_deleteGLFramebuffer;
 - (void)_invalidateFramebuffer;
 - (void)_setBackingSize:(struct CGSize)arg1;

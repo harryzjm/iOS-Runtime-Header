@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray;
+@class CKChatEagerUploadController, NSMutableArray;
 
 @interface CKModalTranscriptController
 {
@@ -15,8 +15,10 @@
     int _entryViewInvisible;
     _Bool _cameraSelectionDisabled;
     _Bool _forceMMS;
+    CKChatEagerUploadController *_eagerUploadController;
 }
 
+@property(retain, nonatomic) CKChatEagerUploadController *eagerUploadController; // @synthesize eagerUploadController=_eagerUploadController;
 @property(nonatomic) _Bool forceMMS; // @synthesize forceMMS=_forceMMS;
 @property(nonatomic) _Bool mimeType; // @synthesize mimeType=_mimeType;
 - (void).cxx_destruct;
@@ -31,6 +33,8 @@
 - (void)disableCameraAttachments;
 - (void)setCanEditRecipients:(_Bool)arg1;
 - (void)setPendingAddresses:(id)arg1;
+- (_Bool)_deviceIsLocked;
+- (void)_setConversationDeferredSetup;
 - (void)sendComposition:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
@@ -40,6 +44,7 @@
 - (void)insertMessage:(id)arg1 appProxy:(id)arg2;
 - (void)insertRichLinkWithURL:(id)arg1 data:(id)arg2;
 - (_Bool)_insertMediaObject:(id)arg1;
+- (void)setComposition:(id)arg1;
 - (id)initWithNavigationController:(id)arg1;
 
 @end

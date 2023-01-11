@@ -13,11 +13,24 @@
     NSString *_identifier;
 }
 
++ (id)ProfessionEmoji;
++ (id)GenderEmoji;
++ (id)SkinToneEmoji;
++ (id)NoneVariantEmoji;
++ (id)DingbatsVariantEmoji;
++ (_Bool)_isProfessionEmoji:(id)arg1;
++ (_Bool)_isGenderEmoji:(id)arg1;
++ (_Bool)_isSkinToneEmoji:(id)arg1;
++ (_Bool)_isNoneVariantEmoji:(id)arg1;
++ (_Bool)_isDingbatsVariantEmoji:(id)arg1;
 + (id)localizedSkinToneEmojiDescriptionForLocale:(id)arg1;
 + (id)localizedSkinToneEmojiDescription;
 + (id)localizedRecentsDescriptionForLocale:(id)arg1;
 + (id)localizedRecentsDescription;
 + (id)computeEmojiFlagsSortedByLanguage;
++ (id)insertionFlagsForCountryCodes:(id)arg1 inSortedCountryCodes:(id)arg2;
++ (id)extraFlagsForCountryCode:(id)arg1;
++ (void)insertToSortedCountries:(id)arg1 withAdditionalFlags:(id)arg2;
 + (id)stringToRegionalIndicatorString:(id)arg1;
 + (id)_emojiSetForIdentifier:(id)arg1;
 + (id)_baseLocalizationKeyForIdentifier:(id)arg1;
@@ -33,11 +46,6 @@
 + (id)NatureEmoji;
 + (id)PeopleEmoji;
 + (id)PrepopulatedEmoji;
-+ (id)ProfessionEmoji;
-+ (id)GenderEmoji;
-+ (id)SkinToneEmoji;
-+ (id)NoneVariantEmoji;
-+ (id)DingbatsVariantEmoji;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
 - (id)emojiTokensForLocaleData:(id)arg1;

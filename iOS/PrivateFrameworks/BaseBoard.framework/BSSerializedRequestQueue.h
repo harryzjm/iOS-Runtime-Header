@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_queue;
 
@@ -15,7 +15,8 @@
     CDUnknownBlockType _conditionBlock;
 }
 
-@property(readonly, retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
+- (void).cxx_destruct;
 - (void)_enqueueSerialConditionalRequest:(CDUnknownBlockType)arg1;
 - (void)enqueueAsyncRequest:(CDUnknownBlockType)arg1;
 - (void)enqueueRequest:(CDUnknownBlockType)arg1;

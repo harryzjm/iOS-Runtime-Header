@@ -11,8 +11,10 @@
 @interface _SBUIBiometricMatchingAssertion <BSDescriptionProviding>
 {
     unsigned long long _matchMode;
+    long long _restartCount;
 }
 
+@property(nonatomic) long long restartCount; // @synthesize restartCount=_restartCount;
 @property(readonly, nonatomic) unsigned long long matchMode; // @synthesize matchMode=_matchMode;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

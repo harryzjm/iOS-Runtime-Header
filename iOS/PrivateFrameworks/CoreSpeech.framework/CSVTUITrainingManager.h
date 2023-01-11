@@ -47,6 +47,7 @@
 - (void)audioSessionRecordBufferAvailable:(id)arg1;
 - (void)audioSessionDidStopRecording:(long long)arg1;
 - (void)audioSessionDidStartRecording:(_Bool)arg1 error:(id)arg2;
+- (void)CSVTUITrainingSession:(id)arg1 hasTrainUtterance:(id)arg2 languageCode:(id)arg3;
 - (void)CSVTUITrainingSessionStopListen;
 - (void)CSVTUITrainingSessionRMSAvailable:(float)arg1;
 - (_Bool)shouldPerformRMS;

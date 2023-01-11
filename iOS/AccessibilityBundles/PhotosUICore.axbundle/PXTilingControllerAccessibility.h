@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (void)_updateTilesIfNeeded;
 - (void)_axUpdateImageViewTile:(id)arg1 withIndexPath:(struct PXSimpleIndexPath)arg2;
 

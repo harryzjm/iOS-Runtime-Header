@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ABVCardRecord, UIImage;
+@class CNContactVCardSummary, UIImage;
 
 @interface CKContactMediaObject
 {
     _Bool _vCardParsingFailed;
-    ABVCardRecord *_vCard;
+    CNContactVCardSummary *_vCardSummary;
     UIImage *_vCardImage;
 }
 
@@ -18,7 +18,7 @@
 + (id)UTITypes;
 @property(retain, nonatomic) UIImage *vCardImage; // @synthesize vCardImage=_vCardImage;
 @property(nonatomic) _Bool vCardParsingFailed; // @synthesize vCardParsingFailed=_vCardParsingFailed;
-@property(retain, nonatomic) ABVCardRecord *vCard; // @synthesize vCard=_vCard;
+@property(retain, nonatomic) CNContactVCardSummary *vCardSummary; // @synthesize vCardSummary=_vCardSummary;
 - (void).cxx_destruct;
 - (id)vCardImageOfSize:(struct CGSize)arg1;
 - (id)generateThumbnailFillToSize:(struct CGSize)arg1 contentAlignmentInsets:(struct UIEdgeInsets)arg2;

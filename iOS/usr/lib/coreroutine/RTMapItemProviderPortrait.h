@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <coreroutine/RTMapItemProvider-Protocol.h>
 
-@class NSString, RTMapServiceManager, RTPersonalizationPortraitManager;
+@class NSObject, NSString, RTMapServiceManager, RTPersonalizationPortraitManager;
 @protocol OS_dispatch_queue;
 
-@interface RTMapItemProviderPortrait : NSObject <RTMapItemProvider>
+@interface RTMapItemProviderPortrait <RTMapItemProvider>
 {
     NSObject<OS_dispatch_queue> *_queue;
     RTMapServiceManager *_mapServiceManager;
@@ -24,7 +22,7 @@
 - (void).cxx_destruct;
 - (id)_mapItemsForLocation:(id)arg1 withNames:(id)arg2 error:(id *)arg3;
 - (id)mapItemsWithinDistance:(double)arg1 location:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 error:(id *)arg5;
-- (id)initWithMapServiceManager:(id)arg1 personalizationPortraitManager:(id)arg2;
+- (id)initWithDistanceCalculator:(id)arg1 mapServiceManager:(id)arg2 personalizationPortraitManager:(id)arg3;
 - (id)init;
 
 // Remaining properties

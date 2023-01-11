@@ -11,7 +11,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityValue;
 - (id)accessibilityLabel;
+- (_Bool)_accessibilityIsTransitPass;
+- (_Bool)_accessibilityIsAccessPass;
+- (_Bool)_accessibilityIsApplePayCashCard;
 - (_Bool)isAccessibilityElement;
 
 @end

@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)scrubView:(id)arg1 pageSizeAtIndex:(unsigned long long)arg2;
 - (void)scrubView:(id)arg1 thumbnailForPage:(long long)arg2 size:(struct CGSize)arg3 withCompletionBlock:(CDUnknownBlockType)arg4;
 - (long long)numberOfPagesInScrubView:(id)arg1;
+- (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)webViewWebContentProcessDidTerminate:(id)arg1;
 - (void)_webViewDidRequestPasswordForQuickLookDocument:(id)arg1;
 - (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
@@ -75,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)canSwipeToDismiss;
 - (_Bool)shouldAcceptTouch:(id)arg1 ofGestureRecognizer:(id)arg2;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (_Bool)automaticallyUpdateScrollViewIndicatorInset;
 - (_Bool)automaticallyUpdateScrollViewContentInset;
 - (_Bool)automaticallyUpdateScrollViewContentOffset;
 - (id)scrollView;

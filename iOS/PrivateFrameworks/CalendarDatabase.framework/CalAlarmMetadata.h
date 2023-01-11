@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <CalendarDatabase/NSCoding-Protocol.h>
+#import <CalendarDatabase/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface CalAlarmMetadata : NSObject <NSCoding>
+@interface CalAlarmMetadata : NSObject <NSSecureCoding>
 {
     NSArray *_attach;
     NSArray *_attendee;
@@ -18,6 +18,7 @@
     NSString *_summary;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)metadataWithData:(id)arg1;
 @property(retain) NSString *summary; // @synthesize summary=_summary;
 @property(retain) NSString *description; // @synthesize description=_description;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, TSCH3DTextureAtlasTextureResource;
 
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     tvec2_3b141483 mSize;
     float mSamples;
     NSMutableArray *mLabels;
-    vector_56a3751a mPositions;
+    vector_522a5b3a mPositions;
     long long mCurrentxpos;
     long long mCurrentypos;
     long long mCurrentheight;

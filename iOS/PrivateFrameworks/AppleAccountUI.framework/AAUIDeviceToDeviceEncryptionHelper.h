@@ -6,26 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class UIViewController;
+@class AKAppleIDAuthenticationController, UIViewController;
 @protocol AAUIDeviceToDeviceEncryptionHelperDelegate;
 
 @interface AAUIDeviceToDeviceEncryptionHelper : NSObject
 {
-    id <AAUIDeviceToDeviceEncryptionHelperDelegate> _delegate;
     UIViewController *_presentingViewController;
+    id <AAUIDeviceToDeviceEncryptionHelperDelegate> _delegate;
+    AKAppleIDAuthenticationController *_authController;
 }
 
-+ (id)helperWithPresentingViewController:(id)arg1;
-@property(nonatomic) __weak UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property(retain, nonatomic) AKAppleIDAuthenticationController *authController; // @synthesize authController=_authController;
 @property(nonatomic) __weak id <AAUIDeviceToDeviceEncryptionHelperDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) __weak UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 - (void).cxx_destruct;
-- (id)_errorWithUnderlyingError:(id)arg1;
+- (id)_encryptionErrorFromError:(id)arg1;
 - (_Bool)_hasPasscode;
 - (void)_validatePasscodeWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_validateCDPStateWithCompletion:(CDUnknownBlockType)arg1;
-- (_Bool)_isHSA2AvailableForAltDSID:(id)arg1;
-- (void)_askPermissionToContinueFlowForEligibleAccountWithCompletion:(CDUnknownBlockType)arg1;
-- (void)performDeviceToDeviceEncryptionStateRepairForAltDSID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_validateCDPStateForAuthResults:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (_Bool)_isHSA2AvailableForAuthenticationContext:(id)arg1;
+- (void)_presentCDPUpgradeSpinnerViewControllerForAuthContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_authenticateContext:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_askPermissionToContinueFlowForEligibleAccountForContext:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)performDeviceToDeviceEncryptionStateRepairForContext:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)initWithPresentingViewController:(id)arg1;
 
 @end
 

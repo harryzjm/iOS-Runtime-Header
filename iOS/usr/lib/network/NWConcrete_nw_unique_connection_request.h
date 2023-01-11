@@ -9,28 +9,34 @@
 #import <network/OS_nw_unique_connection_request-Protocol.h>
 
 @class NSString, NWConcrete_nw_connection;
-@protocol OS_nw_endpoint;
+@protocol OS_nw_endpoint, OS_nw_parameters, OS_nw_path_evaluator;
 
+__attribute__((visibility("hidden")))
 @interface NWConcrete_nw_unique_connection_request : NSObject <OS_nw_unique_connection_request>
 {
     NSObject<OS_nw_endpoint> *endpoint;
-    char service[430];
+    NSObject<OS_nw_parameters> *userParameters;
+    char service[436];
     unsigned long long sequenceNumber;
+    unsigned long long uniqueID;
     unsigned char uuid[16];
     NWConcrete_nw_connection *connection;
-    _Bool isIncoming;
-    _Bool isPending;
-    _Bool pendingRequestAccepted;
+    NSObject<OS_nw_path_evaluator> *pathEvaluator;
     CDUnknownBlockType requestCompletionBlock;
+    unsigned int isIncoming:1;
+    unsigned int isPending:1;
+    unsigned int pendingRequestAccepted:1;
+    unsigned int isWaitingForListenerReady:1;
+    unsigned int isWaitingForActiveConnection:1;
 }
 
 - (void).cxx_destruct;
+@property(readonly, copy) NSString *description;
 - (void)dealloc;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

@@ -12,6 +12,7 @@
 }
 
 + (Class)queueFeederClass;
++ (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 - (void).cxx_destruct;
 - (id)descriptionComponents;

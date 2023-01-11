@@ -28,6 +28,7 @@
     long long _contentViewPosition;
     UIView *_buttonTray;
     UIColor *_bleedColor;
+    struct UIEdgeInsets _additionalInsets;
 }
 
 @property(nonatomic) _Bool usesTwoButtonLayout; // @synthesize usesTwoButtonLayout=_usesTwoButtonLayout;
@@ -36,6 +37,7 @@
 @property(nonatomic, getter=isScrollingDisabled) _Bool scrollingDisabled; // @synthesize scrollingDisabled=_scrollingDisabled;
 @property(nonatomic) _Bool disableIconTint; // @synthesize disableIconTint=_disableIconTint;
 @property(retain, nonatomic) UIColor *tint; // @synthesize tint=_tint;
+@property(nonatomic) struct UIEdgeInsets additionalInsets; // @synthesize additionalInsets=_additionalInsets;
 @property(readonly, nonatomic) UIView *buttonTray; // @synthesize buttonTray=_buttonTray;
 @property(nonatomic) long long contentViewPosition; // @synthesize contentViewPosition=_contentViewPosition;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
@@ -43,9 +45,10 @@
 - (void).cxx_destruct;
 - (void)_buttonPressed:(id)arg1;
 - (void)_updateTrayVisibility;
+- (void)updateBleedViewLayout;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)updateBleedColor;
-- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;

@@ -6,28 +6,42 @@
 
 #import <UIKit/UIView.h>
 
-@class CKAppChevronView, UILabel;
+@class CKAppChevronView, UIButton, UIImageView, UILabel;
+@protocol CKAppGrabberViewDelegate;
 
 @interface CKAppGrabberView : UIView
 {
+    UIImageView *_iconImageView;
+    UIImageView *_iconOutlineView;
     UILabel *_pluginTitleLabel;
+    UIButton *_closeButton;
     UIView *_headerView;
     UIView *_grayLine;
     CKAppChevronView *_chevronView;
+    _Bool _showsAppTitle;
+    _Bool _roundsTopCorners;
+    id <CKAppGrabberViewDelegate> _delegate;
 }
 
++ (double)compactRoundedCornerRadius;
 + (double)roundedCornerRadius;
+@property(nonatomic) _Bool roundsTopCorners; // @synthesize roundsTopCorners=_roundsTopCorners;
+@property(readonly, nonatomic) UIButton *closeButton; // @synthesize closeButton=_closeButton;
+@property(nonatomic) _Bool showsAppTitle; // @synthesize showsAppTitle=_showsAppTitle;
+@property(nonatomic) __weak id <CKAppGrabberViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (void)setState:(long long)arg1 animated:(_Bool)arg2;
 @property(nonatomic) long long state;
 - (void)updateHeaderFrame:(_Bool)arg1;
-- (void)setRoundsTopConers:(_Bool)arg1;
-- (void)fadeOutAppTitle;
-- (void)updateAppTitle:(id)arg1;
+- (void)closeButtonTapped:(id)arg1;
+- (void)updateAppTitle:(id)arg1 icon:(id)arg2;
 - (double)chevronMaxYInView:(id)arg1;
 - (double)visualOriginYInView:(id)arg1;
 @property(readonly, nonatomic) double chevronMaxYOffset;
 @property(readonly, nonatomic) double visualOriginYOffset;
+@property(nonatomic) _Bool showsHairlineSeperator;
+@property(nonatomic) _Bool showsGrabberPill;
+- (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

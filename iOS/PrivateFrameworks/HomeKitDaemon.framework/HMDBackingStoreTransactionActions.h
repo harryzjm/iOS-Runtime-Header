@@ -4,26 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class HMDBackingStore;
+
 @interface HMDBackingStoreTransactionActions
 {
     _Bool _local;
     _Bool _changed;
     _Bool _saveToAssistant;
     _Bool _saveToSharedUserAccount;
+    HMDBackingStore *_backingStore;
 }
 
 + (id)logCategory;
+@property(readonly, nonatomic) __weak HMDBackingStore *backingStore; // @synthesize backingStore=_backingStore;
 @property(readonly, nonatomic) _Bool saveToSharedUserAccount; // @synthesize saveToSharedUserAccount=_saveToSharedUserAccount;
 @property(readonly, nonatomic) _Bool saveToAssistant; // @synthesize saveToAssistant=_saveToAssistant;
 @property(readonly, nonatomic) _Bool changed; // @synthesize changed=_changed;
 @property(readonly, nonatomic) _Bool local; // @synthesize local=_local;
+- (void).cxx_destruct;
 - (id)description;
 - (id)logIdentifier;
 - (void)markSaveToSharedUserAccount;
 - (void)markSaveToAssistant;
 - (void)markChanged;
 - (void)markLocalChanged;
-- (id)initWithOptions:(id)arg1;
+- (id)initWithBackingStore:(id)arg1 options:(id)arg2;
 
 @end
 

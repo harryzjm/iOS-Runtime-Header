@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class HapticClient, NSArray;
 
@@ -14,6 +14,7 @@
     _Bool _resourcesAllocated;
     unsigned long long _behavior;
     NSArray *_channelArray;
+    CDUnknownBlockType _connectionErrorHandler;
 }
 
 + (_Bool)isSupported;
@@ -39,6 +40,7 @@
 - (void)allocateRenderResourcesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)releaseChannels;
 - (void)invalidateChannels;
+@property(copy) CDUnknownBlockType connectionErrorHandler;
 @property(readonly) double hapticLatency;
 @property(readonly) double currentMediaTime;
 @property(readonly, nonatomic) NSArray *channels;

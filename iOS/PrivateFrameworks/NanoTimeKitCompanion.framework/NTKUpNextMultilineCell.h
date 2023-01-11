@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CLKFont, NSArray, NTKColoringLabel, NTKUpNextAccessoryView, NTKUpNextImageView, UILayoutGuide;
+@class CLKFont, NSArray, NTKColoringLabel, NTKUpNextImageView, UILayoutGuide, UIView;
 
 @interface NTKUpNextMultilineCell
 {
@@ -13,8 +13,9 @@
     UILayoutGuide *_bodyImageSizingLayoutGuide;
     _Bool _showingHeader;
     _Bool _showingHeaderImage;
-    _Bool _showingThreeLineLayout;
-    _Bool _showingAccessory;
+    _Bool _showingThirdLine;
+    _Bool _showingDescriptionAccessory;
+    _Bool _showingImageAccessory;
     _Bool _showingDescriptionImage;
     _Bool _usingStretchableImage;
     unsigned int _headerImageEdge;
@@ -22,7 +23,7 @@
     NTKColoringLabel *_descriptionLine1Label;
     NTKColoringLabel *_descriptionLine2Label;
     NTKUpNextImageView *_headerImage;
-    NTKUpNextAccessoryView *_accessoryView;
+    UIView *_accessoryView;
     NTKUpNextImageView *_descriptionImageView;
     CLKFont *_standardFont;
     CLKFont *_italicFont;
@@ -34,15 +35,16 @@
     NSArray *_headerWithNoImageConstraints;
     NSArray *_withDescription2Constraints;
     NSArray *_withoutDescription2Constraints;
-    NSArray *_withDescriptionAccessoryConstraints;
-    NSArray *_withoutDescriptionAccessoryConstraints;
+    NSArray *_withAccessoryConstraints;
+    NSArray *_withoutAccessoryConstraints;
     NSArray *_withDescriptionImageViewConstraints;
     NSArray *_withStretchableDescriptionImageViewConstraints;
     NSArray *_withoutDescriptionImageViewConstraints;
 }
 
-+ (void)initialize;
++ (struct CGSize)suggestedBodyImageSizeForDevice:(id)arg1;
 - (void).cxx_destruct;
+- (void)setPaused:(_Bool)arg1;
 - (void)configureWithContent:(id)arg1;
 - (void)updateConstraints;
 - (id)initWithFrame:(struct CGRect)arg1;

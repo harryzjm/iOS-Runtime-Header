@@ -7,7 +7,7 @@
 #import <ContactsUI/CNAvatarViewDelegate-Protocol.h>
 
 @class CNAvatarView, CNContactStore, NSArray, NSString, PRPersonaStore;
-@protocol CNSchedulerProvider, CNUILikenessRendering;
+@protocol CNSchedulerProvider, CNUILikenessRendering, NSObject><CNAvatarViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface CNAvatarViewController_LegacyAvatarView <CNAvatarViewDelegate>
@@ -18,12 +18,14 @@ __attribute__((visibility("hidden")))
     PRPersonaStore *_personaStore;
     id <CNUILikenessRendering> _imageRenderer;
     unsigned long long _style;
+    id <NSObject><CNAvatarViewControllerDelegate> _delegate;
     id <CNSchedulerProvider> _schedulerProvider;
     CNAvatarView *_avatarView;
 }
 
 @property(nonatomic) __weak CNAvatarView *avatarView; // @synthesize avatarView=_avatarView;
 @property(readonly, nonatomic) id <CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
+@property(nonatomic) __weak id <NSObject><CNAvatarViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
 @property(readonly, nonatomic) id <CNUILikenessRendering> imageRenderer; // @synthesize imageRenderer=_imageRenderer;
 @property(nonatomic, getter=isThreeDTouchEnabled) _Bool threeDTouchEnabled; // @synthesize threeDTouchEnabled=_threeDTouchEnabled;
@@ -31,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 - (id)contacts;
 - (void).cxx_destruct;
+- (void)didUpdateContentForAvatarView:(id)arg1;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
 - (void)setContacts:(id)arg1;
 - (void)loadView;

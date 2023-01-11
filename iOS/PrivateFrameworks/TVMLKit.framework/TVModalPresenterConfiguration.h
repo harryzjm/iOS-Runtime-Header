@@ -11,18 +11,17 @@
 @interface TVModalPresenterConfiguration : NSObject
 {
     _Bool _allowsModalOverModal;
+    _Bool _allowsMenuDismissal;
     _Bool _navigationBarHidden;
     NSString *_barButtonID;
     unsigned long long _configurationType;
     long long _presentationStyle;
     UIView *_sourceView;
-    unsigned long long _preferredInterfaceOrientation;
     struct CGSize _formSheetSize;
     struct CGSize _popoverSize;
     struct CGRect _sourceRect;
 }
 
-@property(nonatomic) unsigned long long preferredInterfaceOrientation; // @synthesize preferredInterfaceOrientation=_preferredInterfaceOrientation;
 @property(nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
 @property(retain, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property(nonatomic) long long presentationStyle; // @synthesize presentationStyle=_presentationStyle;
@@ -31,6 +30,7 @@
 @property(nonatomic) struct CGSize formSheetSize; // @synthesize formSheetSize=_formSheetSize;
 @property(nonatomic) unsigned long long configurationType; // @synthesize configurationType=_configurationType;
 @property(copy, nonatomic) NSString *barButtonID; // @synthesize barButtonID=_barButtonID;
+@property(nonatomic) _Bool allowsMenuDismissal; // @synthesize allowsMenuDismissal=_allowsMenuDismissal;
 @property(nonatomic) _Bool allowsModalOverModal; // @synthesize allowsModalOverModal=_allowsModalOverModal;
 - (void).cxx_destruct;
 - (void)_configureWithDictionary:(id)arg1;

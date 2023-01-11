@@ -12,13 +12,11 @@
 #import <NewsCore/FCPrivateDataContext-Protocol.h>
 #import <NewsCore/FCTestingContext-Protocol.h>
 
-@class FCAppConfigurationManager, FCArticleController, FCAssetManager, FCClientEndpointConnection, FCCommandQueue, FCFeedManager, FCFlintResourceManager, FCNetworkBehaviorMonitor, FCNotificationController, FCNotificationsEndpointConnection, FCPersonalizationData, FCPrivateChannelMembershipController, FCPurchaseController, FCReadingHistory, FCReadingList, FCSubscriptionController, FCSubscriptionList, FCTagController, FCTagSettings, FCUserInfo, NSString, NSURL;
-@protocol FCAppActivityMonitor, FCBackgroundTaskable, FCContentContext, FCContentContextInternal, FCFeedPersonalizing, FCFlintHelper, FCPPTContext, FCPrivateDataContext, FCPrivateDataContextInternal, FCPushNotificationHandling;
+@class FCArticleController, FCAssetManager, FCClientEndpointConnection, FCCommandQueue, FCFeedManager, FCFlintResourceManager, FCNetworkBehaviorMonitor, FCNotificationController, FCNotificationsEndpointConnection, FCPersonalizationData, FCPrivateChannelMembershipController, FCPurchaseController, FCReadingHistory, FCReadingList, FCSubscriptionController, FCSubscriptionList, FCTagController, FCTagSettings, FCUserInfo, NSString, NSURL;
+@protocol FCAppActivityMonitor, FCBackgroundTaskable, FCContentContext, FCContentContextInternal, FCCoreConfigurationManager, FCFeedPersonalizing, FCFlintHelper, FCNewsAppConfigurationManager, FCPPTContext, FCPrivateDataContext, FCPrivateDataContextInternal, FCPushNotificationHandling, FCWebArchiveSource;
 
 @interface FCCloudContext : NSObject <FCTestingContext, FCCKDatabaseEncryptionDelegate, FCContentContext, FCPrivateDataContext, FCCacheFlushing>
 {
-    _Bool _abTestingEnabled;
-    _Bool _personalizationEnabled;
     _Bool _deviceIsiPad;
     FCSubscriptionController *_subscriptionController;
     FCFeedManager *_feedManager;
@@ -37,6 +35,7 @@
     id <FCPrivateDataContext> _privateDataContext;
 }
 
++ (id)testingContextWithDesiredHeadlineFieldOptions:(unsigned long long)arg1;
 + (id)testingContext;
 + (void)initialize;
 @property(retain, nonatomic) id <FCPrivateDataContext> privateDataContext; // @synthesize privateDataContext=_privateDataContext;
@@ -46,11 +45,10 @@
 @property(nonatomic) __weak id <FCBackgroundTaskable> backgroundTaskable; // @synthesize backgroundTaskable=_backgroundTaskable;
 @property(nonatomic) __weak id <FCFlintHelper> flintHelper; // @synthesize flintHelper=_flintHelper;
 @property(readonly, nonatomic) FCPurchaseController *purchaseController; // @synthesize purchaseController=_purchaseController;
-@property(readonly, nonatomic, getter=isPersonalizationEnabled) _Bool personalizationEnabled; // @synthesize personalizationEnabled=_personalizationEnabled;
-@property(readonly, nonatomic, getter=isABTestingEnabled) _Bool abTestingEnabled; // @synthesize abTestingEnabled=_abTestingEnabled;
 @property(readonly, nonatomic) FCNotificationController *notificationController; // @synthesize notificationController=_notificationController;
 @property(retain, nonatomic) id <FCAppActivityMonitor> appActivityMonitor; // @synthesize appActivityMonitor=_appActivityMonitor;
 - (void).cxx_destruct;
+- (void)fetchOriginalDataShouldBeDeletedAfterMigrationForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchPrivateDataEncryptionMigrationIsDesiredForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchPrivateDataEncryptionIsAllowedForDatabase:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)insertTestArticlesWithCount:(unsigned long long)arg1;
@@ -67,13 +65,18 @@
 @property(readonly, nonatomic) FCReadingHistory *readingHistory;
 @property(readonly, nonatomic) FCPrivateChannelMembershipController *privateChannelMembershipController;
 @property(readonly, nonatomic) FCPersonalizationData *personalizationData;
+- (id)recordTreeSourceWithRecordSources:(id)arg1;
+- (id)recordSourceWithSchema:(id)arg1;
+@property(retain, nonatomic) id <FCWebArchiveSource> webArchiveSource;
 @property(readonly, nonatomic) NSURL *webArchiveCacheDirectoryURL;
 @property(readonly, nonatomic) NSURL *assetCacheDirectoryURL;
 @property(readonly, copy, nonatomic) NSString *contentDirectory;
 @property(readonly, copy, nonatomic) NSString *supportedContentStoreFrontID;
 @property(readonly, copy, nonatomic) NSString *contentStoreFrontID;
 @property(readonly, nonatomic) id <FCContentContextInternal> internalContentContext;
-@property(readonly, nonatomic) FCAppConfigurationManager *appConfigurationManager;
+- (id)news_core_ConfigurationManager;
+@property(readonly, nonatomic) id <FCNewsAppConfigurationManager> appConfigurationManager;
+@property(readonly, nonatomic) id <FCCoreConfigurationManager> configurationManager;
 @property(readonly, nonatomic) FCFlintResourceManager *flintResourceManager;
 @property(readonly, nonatomic) FCTagController *tagController;
 @property(readonly, nonatomic) FCArticleController *articleController;
@@ -96,8 +99,9 @@
 - (id)notificationsController;
 @property(readonly, nonatomic) FCSubscriptionController *subscriptionController; // @synthesize subscriptionController=_subscriptionController;
 - (id)initWithContentContext:(id)arg1 privateDataContext:(id)arg2 networkBehaviorMonitor:(id)arg3;
+- (id)initForTestingWithDesiredHeadlineFieldOptions:(unsigned long long)arg1;
 - (id)initForTesting;
-- (id)initWithContentHostDirectory:(id)arg1 privateDataHostDirectory:(id)arg2 privateDataActionProvider:(id)arg3 networkBehaviorMonitor:(id)arg4 appActivityMonitor:(id)arg5 desiredHeadlineFieldOptions:(unsigned long long)arg6 feedUsage:(long long)arg7 lockStoreFrontIfNeeded:(_Bool)arg8 deviceIsiPad:(_Bool)arg9 backgroundTaskable:(id)arg10 personalizationEnabled:(_Bool)arg11 abTestingEnabled:(_Bool)arg12 pptContext:(id)arg13;
+- (id)initWithConfiguration:(id)arg1 configurationManager:(id)arg2 contentHostDirectory:(id)arg3 privateDataHostDirectory:(id)arg4 privateDataActionProvider:(id)arg5 networkBehaviorMonitor:(id)arg6 appActivityMonitor:(id)arg7 desiredHeadlineFieldOptions:(unsigned long long)arg8 feedUsage:(long long)arg9 lockStoreFrontIfNeeded:(_Bool)arg10 deviceIsiPad:(_Bool)arg11 backgroundTaskable:(id)arg12 privateDataSyncAvailability:(id)arg13 pptContext:(id)arg14;
 - (id)init;
 
 // Remaining properties

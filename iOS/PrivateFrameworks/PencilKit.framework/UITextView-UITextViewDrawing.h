@@ -10,6 +10,7 @@
 @protocol UITextViewDrawingDelegate;
 
 @interface UITextView (UITextViewDrawing)
+- (_Bool)_canSelectDrawing;
 - (void)_insertDrawing:(id)arg1;
 - (void)_insertDrawingWithTap:(id)arg1;
 - (_Bool)_canInsertDrawingInRange:(struct _NSRange)arg1;

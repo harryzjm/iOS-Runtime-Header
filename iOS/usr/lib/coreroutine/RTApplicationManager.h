@@ -41,7 +41,7 @@
 - (void)_registerForNotifications;
 - (void)_purge;
 - (void)purge;
-- (void)shutdown;
+- (void)_shutdown;
 - (id)initWithApplicationWorkspace:(id)arg1 mediaRemote:(id)arg2;
 - (id)initWithMediaRemote:(id)arg1;
 - (id)init;

@@ -11,11 +11,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)showWithText:(id)arg1 theme:(long long)arg2;
-- (void)showWithProgress:(double)arg1 aligned:(long long)arg2 theme:(long long)arg3;
-- (void)showLoadingWithAligned:(long long)arg1 theme:(long long)arg2;
-- (void)showRedownloadWithAligned:(long long)arg1 theme:(long long)arg2;
+- (void)showWithText:(id)arg1 theme:(id)arg2;
+- (void)showWithProgress:(double)arg1 aligned:(long long)arg2 theme:(id)arg3 isCompact:(_Bool)arg4;
+- (void)showLoadingWithAligned:(long long)arg1 theme:(id)arg2 isCompact:(_Bool)arg3;
+- (void)showRedownloadWithAligned:(long long)arg1 theme:(id)arg2 isCompact:(_Bool)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (_Bool)isAccessibilityElement;
 

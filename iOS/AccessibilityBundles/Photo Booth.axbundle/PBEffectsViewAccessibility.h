@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_setUpEffectLayers;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (void)dealloc;
 - (void)toggleEffectsMode:(id)arg1;
 - (_Bool)_accessibilityShouldHitTestLayers;

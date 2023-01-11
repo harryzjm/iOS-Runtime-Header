@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSLock, NSMutableArray, NSMutableDictionary, NSMutableSet;
+@class NSLock, NSMutableArray, NSMutableDictionary, NSMutableSet, PLPhotoLibraryPathManager;
 @protocol PLThumbPersistenceManager;
 
 @interface PLThumbnailManager : NSObject
@@ -20,6 +20,7 @@
     NSMutableArray *_alreadyFailedAssetObjectIDsForRebuild;
     NSLock *_fixLock;
     id _observerToken;
+    PLPhotoLibraryPathManager *_pathManager;
 }
 
 + (int)_supportedThumbnailFormatIDFromGeneralFormatID:(int)arg1;
@@ -51,6 +52,9 @@
 + (_Bool)hasExceededRebuildThumbnailRequestLimit;
 + (_Bool)isRebuildingThumbnails;
 + (void)rebuildAllMissingThumbnails;
++ (id)_rebuildThumbnailsQueue;
++ (_Bool)hasMissingThumbnailsInLibrary:(id)arg1;
++ (id)_missingThumbnailPredicate;
 + (void)_recordRebuildThumbnailsAttempt;
 + (void)removeRebuildThumbnailsRequest:(const char *)arg1;
 + (_Bool)hasRebuildThumbnailsRequest;
@@ -65,10 +69,10 @@
 + (_Bool)_thumbnailChangeContainsOnlyTableDeprecationsFromVersion:(int)arg1 toVersion:(int)arg2 fromFormat:(int)arg3 toFormat:(int)arg4;
 + (int)thumbnailVersionCurrent;
 + (void)removeObsoleteMetadata;
-+ (id)defaultThumbnailsDirectoryV2;
-+ (id)defaultThumbnailsDirectory;
++ (id)imageTableForFormat:(int)arg1;
 + (_Bool)useImageTableForFormat:(int)arg1;
 + (id)defaultThumbnailManager;
+@property(readonly, nonatomic) PLPhotoLibraryPathManager *pathManager; // @synthesize pathManager=_pathManager;
 @property(retain, nonatomic) id observerToken; // @synthesize observerToken=_observerToken;
 @property(readonly, retain, nonatomic) NSMutableDictionary *thumbManagersByFormat; // @synthesize thumbManagersByFormat=_thumbManagersByFormat;
 - (id)_thumbManagerForFormatID:(int)arg1;
@@ -88,7 +92,7 @@
 - (long long)_rebuildAssetThumbnailsWithLimit:(int)arg1 error:(id *)arg2;
 - (void)_discardAlreadyFailedAssetObjectIDsForRebuild;
 - (void)dealloc;
-- (id)init;
+- (id)initWithPhotoLibraryPathManager:(id)arg1;
 
 @end
 

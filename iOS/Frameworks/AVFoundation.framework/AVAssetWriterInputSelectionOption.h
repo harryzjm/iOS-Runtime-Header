@@ -6,6 +6,7 @@
 
 @class AVAssetWriterInput, NSArray, NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetWriterInputSelectionOption
 {
     AVAssetWriterInput *_input;

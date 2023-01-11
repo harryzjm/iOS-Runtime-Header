@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary, NSString;
+@class NSDate, NSDictionary, NSString, WBSCloudBookmarksMigrationRampSettings;
 @protocol OS_dispatch_queue;
 
 @interface WBSCloudBookmarksMigrationRampEvaluator : NSObject
@@ -14,14 +14,19 @@
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSDate *_dateOfLastSettingsUpdate;
     _Bool _rampIncludesUserIdentity;
-    NSDictionary *_settingsDictionary;
+    WBSCloudBookmarksMigrationRampSettings *_settings;
     NSString *_userIdentity;
 }
 
 - (void).cxx_destruct;
 - (_Bool)_isInternalBuild;
+- (id)_macSafariNormalizedBundleVersion;
+- (CDStruct_f6aba300)_operatingSystemVersion;
+- (id)_operatingSystemFamily;
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+- (_Bool)_evaluateRampIncludesOperatingSystemVersion;
 - (_Bool)_evaluateRampIncludesUserIdentity;
+@property(readonly, nonatomic) WBSCloudBookmarksMigrationRampSettings *settings;
 @property(readonly, nonatomic) _Bool rampIncludesUserIdentity;
 - (void)clearUserIdentity;
 - (void)_didFetchSettingsDictionary:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

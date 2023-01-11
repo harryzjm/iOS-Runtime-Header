@@ -8,11 +8,12 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/_HMFCFHTTPServerDelegate-Protocol.h>
 
-@class HMFMutableNetService, NSArray, NSMutableArray, NSObject, NSString, _HMFCFHTTPServer;
+@class HMFMutableNetService, HMFUnfairLock, NSArray, NSMutableArray, NSObject, NSString, _HMFCFHTTPServer;
 @protocol HMFHTTPServerDelegate, OS_dispatch_queue;
 
 @interface HMFHTTPServer <_HMFCFHTTPServerDelegate, HMFHTTPClientConnectionDelegate, HMFLogging>
 {
+    HMFUnfairLock *_lock;
     NSMutableArray *_connections;
     NSMutableArray *_requestHandlers;
     unsigned long long _port;
@@ -24,12 +25,9 @@
     unsigned long long _options;
     HMFMutableNetService *_netService;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
 + (id)logCategory;
-+ (id)shortDescription;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property(readonly, nonatomic) HMFMutableNetService *netService; // @synthesize netService=_netService;
 @property(readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
@@ -38,6 +36,7 @@
 @property __weak id <HMFHTTPServerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (void)connection:(id)arg1 didReceiveRequest:(id)arg2;
+- (id)logIdentifier;
 - (void)server:(id)arg1 didCloseConnection:(id)arg2;
 - (void)server:(id)arg1 didOpenConnection:(id)arg2;
 - (void)serverDidInvalidate:(id)arg1;
@@ -57,16 +56,15 @@
 @property(readonly, copy) NSArray *connections; // @synthesize connections=_connections;
 @property double connectionIdleTimeout; // @synthesize connectionIdleTimeout=_connectionIdleTimeout;
 @property(readonly) unsigned long long port; // @synthesize port=_port;
-- (id)logIdentifier;
-@property(readonly, copy) NSString *description;
-@property(readonly, copy) NSString *debugDescription;
-- (id)descriptionWithPointer:(_Bool)arg1;
+- (id)attributeDescriptions;
 - (id)shortDescription;
 - (void)dealloc;
 - (id)initWithServiceType:(id)arg1 name:(id)arg2 port:(unsigned long long)arg3 options:(unsigned long long)arg4;
 - (id)init;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

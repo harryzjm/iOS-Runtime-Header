@@ -8,11 +8,11 @@
 
 #import <MediaPlaybackCore/MPCVideoView-Protocol.h>
 
-@class NSString;
+@class AVPlayerLayer, NSString;
 
 @interface MPVideoView (MPCPlaybackEngineMiddlewareAdditions) <MPCVideoView>
 + (id)keyPathsForValuesAffectingPreferredContentSize;
-+ (id)keyPathsForValuesAffectingReadyForDisplay;
++ (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 @property(retain, nonatomic) NSString *videoGravity;
 @property(readonly, nonatomic) struct CGSize preferredContentSize;
 @property(readonly, nonatomic, getter=isReadyForDisplay) _Bool readyForDisplay;
@@ -21,6 +21,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) AVPlayerLayer *playerLayer;
 @property(readonly) Class superclass;
 @end
 

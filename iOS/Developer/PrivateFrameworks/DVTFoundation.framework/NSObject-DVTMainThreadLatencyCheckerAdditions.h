@@ -8,6 +8,7 @@
 
 @interface NSObject (DVTMainThreadLatencyCheckerAdditions)
 + (void)__DVTMainThreadLatencyChecker__cancelPreviousPerformRequestsWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3;
+- (void)__DVTMainThreadLatencyChecker__performSelector:(SEL)arg1 onThread:(id)arg2 withObject:(id)arg3 waitUntilDone:(_Bool)arg4 modes:(id)arg5;
 - (void)__DVTMainThreadLatencyChecker__performSelector:(SEL)arg1 withObject:(id)arg2 afterDelay:(double)arg3 inModes:(id)arg4;
 @end
 

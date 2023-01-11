@@ -13,6 +13,7 @@
 {
 }
 
++ (id)new;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithSubscriptionID:(id)arg1;
 - (id)init;

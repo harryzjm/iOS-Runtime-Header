@@ -6,7 +6,7 @@
 
 #import <TemplateKit/TLKTextAreaViewTesting-Protocol.h>
 
-@class NSArray, NSString, TLKImage, TLKMultilineText, TLKObserver, TLKRichText, TLKTextAreaView;
+@class NSArray, NSString, TLKImage, TLKMultilineText, TLKRichText, TLKTextAreaView;
 
 @interface TLKDetailsView <TLKTextAreaViewTesting>
 {
@@ -17,29 +17,21 @@
     NSArray *_details;
     TLKRichText *_footnote;
     TLKTextAreaView *_textAreaView;
-    TLKObserver *_detailsObserver;
 }
 
-+ (id)detailsFont;
-@property(retain) TLKObserver *detailsObserver; // @synthesize detailsObserver=_detailsObserver;
 @property(retain) TLKTextAreaView *textAreaView; // @synthesize textAreaView=_textAreaView;
-@property(retain) TLKRichText *footnote; // @synthesize footnote=_footnote;
-@property(retain) NSArray *details; // @synthesize details=_details;
-@property(retain) TLKImage *secondaryTitleImage; // @synthesize secondaryTitleImage=_secondaryTitleImage;
-@property _Bool secondaryTitleIsDetached; // @synthesize secondaryTitleIsDetached=_secondaryTitleIsDetached;
-@property(retain) TLKMultilineText *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;
-@property(retain) TLKRichText *title; // @synthesize title=_title;
+@property(retain, nonatomic) TLKRichText *footnote; // @synthesize footnote=_footnote;
+@property(retain, nonatomic) NSArray *details; // @synthesize details=_details;
+@property(retain, nonatomic) TLKImage *secondaryTitleImage; // @synthesize secondaryTitleImage=_secondaryTitleImage;
+@property(nonatomic) _Bool secondaryTitleIsDetached; // @synthesize secondaryTitleIsDetached=_secondaryTitleIsDetached;
+@property(retain, nonatomic) TLKMultilineText *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;
+@property(retain, nonatomic) TLKRichText *title; // @synthesize title=_title;
 - (void).cxx_destruct;
-- (void)dealloc;
 - (id)secondaryTitleLabelString;
 - (id)titleLabelString;
 - (id)footnoteLabelString;
 - (id)textAreaLabelStrings;
-- (void)updateExistingDetailText:(id)arg1;
-- (void)disableUnbatchedUpdates;
-- (void)performBatchUpdates:(CDUnknownBlockType)arg1;
 - (void)observedPropertiesChanged;
-- (id)observableProperties;
 - (void)styleDidChange:(unsigned long long)arg1;
 - (id)init;
 

@@ -19,12 +19,17 @@
     long long _verifiedType;
 }
 
++ (id)inferredContactByPersonLocalIdentifierForPersons:(id)arg1;
++ (id)fetchPersonsForContacts:(id)arg1 options:(id)arg2;
 + (id)displayNameFromContact:(id)arg1;
 + (id)fullNameFromContact:(id)arg1;
 + (id)personToKeepForCloudConistencyFromPersons:(id)arg1;
 + (id)fetchPersonCountGroupedByAssetLocalIdentifierForAssets:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsGroupedByAssetLocalIdentifierForAssets:(id)arg1 options:(id)arg2;
 + (id)fetchHomePersonUUIDsGroupedByAssetUUIDForAssetUUIDs:(id)arg1 options:(id)arg2;
++ (id)fetchSuggestedRecipientsForAssetCollection:(id)arg1 options:(id)arg2;
++ (id)_momentLocalIdentifiersForAssetCollection:(id)arg1;
++ (id)fetchFinalMergeTargetPersonsForPersonWithUUID:(id)arg1 options:(id)arg2;
 + (id)fetchInvalidMergeCandidatePersonsForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchMergeCandidatePersonsForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchAssociatedPersonsGroupedByFaceGroupLocalIdentifierForFaceGroups:(id)arg1 options:(id)arg2;
@@ -39,7 +44,7 @@
 + (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
 + (id)localIdentifierExpressionForFetchRequests;
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
-+ (id)entityKeyForPropertyKey:(id)arg1;
++ (id)entityKeyMap;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
 + (id)identifierCode;
 + (_Bool)managedObjectSupportsKeyFaces;
@@ -67,6 +72,9 @@
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 - (void).cxx_destruct;
 - (id)description;
+- (id)suggestedContacts;
+- (id)inferredContact;
+- (id)linkedContactWithKeysToFetch:(id)arg1;
 - (void)markAsNeedingKeyFace;
 @property(readonly, nonatomic, getter=isVerified) _Bool verified;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;

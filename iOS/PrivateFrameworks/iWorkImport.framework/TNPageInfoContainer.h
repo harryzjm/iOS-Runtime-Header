@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSDContainerInfo-Protocol.h>
 
-@class NSString, TNPageController, TSDInfoGeometry, TSPObject;
+@class NSArray, NSString, TNPageController, TSDInfoGeometry, TSPObject;
 @protocol TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)infoForSelectionPath:(id)arg1;
-- (id)childInfos;
+@property(readonly, nonatomic) NSArray *childInfos;
 - (_Bool)isSelectable;
 - (Class)layoutClass;
 @property(readonly, nonatomic, getter=isAttachedToBodyText) _Bool attachedToBodyText;

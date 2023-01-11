@@ -11,9 +11,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityPostLayoutChangeIfNecessary;
+- (void)_accessibilityAnnotateItems;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_configureBarsIfNecessary;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)_axSetDidPostNotification:(_Bool)arg1;
+- (_Bool)_axDidPostNotification;
 
 @end
 

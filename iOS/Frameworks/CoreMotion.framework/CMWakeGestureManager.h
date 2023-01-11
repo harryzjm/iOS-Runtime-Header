@@ -13,6 +13,7 @@
     id <CMWakeGestureDelegate> _delegate;
 }
 
++ (_Bool)isWakeGestureEnabledOniPad;
 + (_Bool)isWakeGestureAvailable;
 + (id)sharedManager;
 @property(nonatomic) id <CMWakeGestureDelegate> delegate; // @synthesize delegate=_delegate;

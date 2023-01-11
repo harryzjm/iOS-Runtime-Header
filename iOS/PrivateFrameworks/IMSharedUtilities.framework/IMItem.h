@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IMSharedUtilities/IMRemoteObjectCoding-Protocol.h>
 #import <IMSharedUtilities/NSCopying-Protocol.h>
@@ -28,25 +28,35 @@
     id _context;
     long long _type;
     NSString *_balloonBundleID;
+    unsigned long long _sortID;
     NSString *_destinationCallerID;
     NSDate *_clientSendTime;
+    NSString *_personCentric;
     long long _cloudKitSyncState;
     NSString *_cloudKitRecordID;
     NSData *_cloudKitServerChangeTokenBlob;
     NSString *_cloudKitRecordChangeTag;
     NSString *_parentChatID;
+    long long _srCloudKitSyncState;
+    NSString *_srCloudKitRecordID;
+    NSString *_srCloudKitRecordChangeTag;
 }
 
 + (_Bool)supportsSecureCoding;
 + (Class)classForMessageItemDictionary:(id)arg1;
 + (Class)classForIMItemType:(long long)arg1;
+@property(copy, nonatomic) NSString *srCloudKitRecordChangeTag; // @synthesize srCloudKitRecordChangeTag=_srCloudKitRecordChangeTag;
+@property(copy, nonatomic) NSString *srCloudKitRecordID; // @synthesize srCloudKitRecordID=_srCloudKitRecordID;
+@property(nonatomic) long long srCloudKitSyncState; // @synthesize srCloudKitSyncState=_srCloudKitSyncState;
 @property(copy, nonatomic) NSString *parentChatID; // @synthesize parentChatID=_parentChatID;
 @property(copy, nonatomic) NSString *cloudKitRecordChangeTag; // @synthesize cloudKitRecordChangeTag=_cloudKitRecordChangeTag;
 @property(copy, nonatomic) NSData *cloudKitServerChangeTokenBlob; // @synthesize cloudKitServerChangeTokenBlob=_cloudKitServerChangeTokenBlob;
 @property(copy, nonatomic) NSString *cloudKitRecordID; // @synthesize cloudKitRecordID=_cloudKitRecordID;
 @property(nonatomic) long long cloudKitSyncState; // @synthesize cloudKitSyncState=_cloudKitSyncState;
+@property(retain, nonatomic) NSString *personCentric; // @synthesize personCentric=_personCentric;
 @property(retain, nonatomic) NSDate *clientSendTime; // @synthesize clientSendTime=_clientSendTime;
 @property(retain, nonatomic) NSString *destinationCallerID; // @synthesize destinationCallerID=_destinationCallerID;
+@property(nonatomic) unsigned long long sortID; // @synthesize sortID=_sortID;
 @property(retain, nonatomic) NSString *balloonBundleID; // @synthesize balloonBundleID=_balloonBundleID;
 @property(nonatomic) long long type; // @synthesize type=_type;
 @property(retain, nonatomic) id context; // @synthesize context=_context;
@@ -66,6 +76,7 @@
 - (unsigned long long)hash;
 - (_Bool)isOlderThanItem:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+@property(retain, nonatomic) NSString *personCentricID;
 @property(retain, nonatomic) NSString *sender;
 @property(readonly, nonatomic) _Bool isFromMe;
 - (id)dictionaryRepresentation;

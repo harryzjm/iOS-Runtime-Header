@@ -14,6 +14,7 @@
 }
 
 + (id)referenceActionWithName:(id)arg1 duration:(double)arg2;
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_ensureReferencedAction;
 - (id)reversedAction;

@@ -16,6 +16,7 @@
     NSDictionary *_assetStoreFronts;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)requiredPropertiesForStaticMediaClips;
 + (Class)queueFeederClass;
 @property(copy, nonatomic) NSDictionary *assetStoreFronts; // @synthesize assetStoreFronts=_assetStoreFronts;
@@ -25,6 +26,7 @@
 @property(copy, nonatomic) MPModelRequest *request; // @synthesize request=_request;
 @property(copy, nonatomic) id playbackRequestEnvironment; // @synthesize playbackRequestEnvironment=_playbackRequestEnvironment;
 - (void).cxx_destruct;
+- (id)descriptionComponents;
 - (id)init;
 
 @end

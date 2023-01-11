@@ -5,42 +5,35 @@
 //
 
 #import <iWorkImport/TSDMasterDrawableDelegate-Protocol.h>
+#import <iWorkImport/TSKChangeSourceObserver-Protocol.h>
 
-@class CALayer, NSString, TPMarginAdjustRep;
+@class CALayer, NSString, TPiOSMarginAdjustRep, TSDFill;
 
 __attribute__((visibility("hidden")))
-@interface TPPageRep <TSDMasterDrawableDelegate>
+@interface TPPageRep <TSKChangeSourceObserver, TSDMasterDrawableDelegate>
 {
-    CALayer *_separatorLayer;
-    TPMarginAdjustRep *_marginAdjustRep;
+    CALayer *_horizontalSeparatorLayer;
+    CALayer *_verticalSeparatorLayer;
+    _Bool _backgroundFillRequiresLayerUpdate;
+    _Bool _fillCanApplyToCALayer;
+    TPiOSMarginAdjustRep *_marginAdjustRep;
+    TSDFill *_cachedBackgroundFill;
 }
 
-@property(readonly, nonatomic) TPMarginAdjustRep *marginAdjustRep; // @synthesize marginAdjustRep=_marginAdjustRep;
+@property(retain, nonatomic) TSDFill *cachedBackgroundFill; // @synthesize cachedBackgroundFill=_cachedBackgroundFill;
+@property(readonly, nonatomic) TPiOSMarginAdjustRep *marginAdjustRep; // @synthesize marginAdjustRep=_marginAdjustRep;
 - (void).cxx_destruct;
 - (id)bodyReps;
 - (_Bool)masksToBounds;
-- (void)drawInLayerContext:(struct CGContext *)arg1;
 - (void)drawInContext:(struct CGContext *)arg1;
-- (void)setNeedsDisplayInRect:(struct CGRect)arg1;
-- (void)setNeedsDisplay;
 - (_Bool)directlyManagesLayerContent;
-- (id)layerClass;
-- (void)p_updateBorderLayers;
-- (_Bool)p_pageRequiresSeparator;
+- (_Bool)p_pageRequiresHorizontalSeparator;
 - (_Bool)childRepIsMasterDrawable:(id)arg1;
 - (_Bool)childRepIsOnDocSetupCanvas:(id)arg1;
-- (id)colorBehindBodyTextLayer:(id)arg1;
-- (void)p_updateLayoutBordersVisibility;
-- (id)p_bodyRepThatCanSelectChildRep:(id)arg1;
-- (void)selectChildRep:(id)arg1 extendingSelection:(_Bool)arg2;
-- (_Bool)canSelectChildRep:(id)arg1;
 - (void)willBeRemoved;
-- (void)showHUDForWPRep:(id)arg1 withFlags:(unsigned long long)arg2;
-- (id)hitMasterRep:(struct CGPoint)arg1;
-- (id)p_hitRep:(struct CGPoint)arg1 passingTest:(CDUnknownBlockType)arg2;
-- (int)p_hitHeaderFooterFragment:(int)arg1 atPoint:(struct CGPoint)arg2;
-- (id)hitRep:(struct CGPoint)arg1 passingTest:(CDUnknownBlockType)arg2;
-- (_Bool)p_headerFooterIsVisibleAndInteractive:(int)arg1;
+- (id)colorBehindBodyTextLayer:(id)arg1;
+- (_Bool)isOpaque;
+- (id)backgroundFill;
 - (void)dealloc;
 
 // Remaining properties

@@ -56,7 +56,7 @@
 - (id)manifestFileName;
 - (id)initializeManifestArchivist;
 - (void)populateIssues:(id)arg1 context:(id)arg2;
-- (void)updateIdentifierOfIncommingChildToBeUnique:(id)arg1;
+- (void)updateIdentifierOfIncomingChildToBeUnique:(id)arg1;
 - (long long)childOrdering;
 - (id)defaultUnqualifiedRuntimeName;
 - (Class)expectedChildClassForSlot:(id)arg1;

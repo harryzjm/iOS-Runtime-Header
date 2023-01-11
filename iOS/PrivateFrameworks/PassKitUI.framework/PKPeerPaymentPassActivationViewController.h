@@ -4,36 +4,70 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <PassKitUI/AAUIDeviceToDeviceEncryptionHelperDelegate-Protocol.h>
+#import <PassKitUI/PKExplanationViewControllerDelegate-Protocol.h>
+#import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
+#import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
+#import <PassKitUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class PKPaymentProvisioningController, PKPeerPaymentCredential, PKPeerPaymentWebService, PKTableHeaderView, UIImage;
+@class NSString, PKPaymentProvisioningController, PKPeerPaymentCredential, PKPeerPaymentSetupFlowHeroView, PKPeerPaymentWebService, RemoteUIController, UIImage;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPeerPaymentPassActivationViewController : UIViewController
+@interface PKPeerPaymentPassActivationViewController <PKPaymentSetupViewControllerDelegate, AAUIDeviceToDeviceEncryptionHelperDelegate, PKExplanationViewControllerDelegate, RemoteUIControllerDelegate, PKExplanationViewDelegate>
 {
     PKPaymentProvisioningController *_provisioningController;
-    long long _setupContext;
     PKPeerPaymentCredential *_credential;
     id <PKPaymentSetupViewControllerDelegate> _delegate;
     unsigned long long _state;
     PKPeerPaymentWebService *_peerPaymentWebService;
-    PKTableHeaderView *_headerView;
+    RemoteUIController *_termsController;
     UIImage *_passSnapShot;
+    _Bool _shouldShowAddDebitCardViewController;
+    PKPeerPaymentSetupFlowHeroView *_heroView;
+    _Bool _presentedDeviceToDeviceEncryptionFlow;
 }
 
+@property(nonatomic) _Bool presentedDeviceToDeviceEncryptionFlow; // @synthesize presentedDeviceToDeviceEncryptionFlow=_presentedDeviceToDeviceEncryptionFlow;
 - (void).cxx_destruct;
+- (void)_terminateSetupFlow;
+- (void)_handleNextStep;
 - (void)_handleError:(id)arg1;
-- (void)_completeProvisioningFlow;
+- (void)_presentSetupWillCompleteLaterAlertController;
+- (void)_presentAlertControllerForError:(id)arg1;
+- (void)_presentDeviceToDeviceEncryptionFlow;
+- (void)_presentIdentityVerificationWithError:(id)arg1;
+- (void)_presentTermsAndConditionsWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_bodyStringForState;
 - (id)_titleStringForState;
-- (_Bool)_hasDebitCard;
-- (void)_donePressed;
+- (void)_handleActivatedState;
 - (void)_setState:(unsigned long long)arg1;
-- (void)_setShowCheckmark:(_Bool)arg1;
+- (void)_presentActivationFailedErrorAlert;
 - (void)_setShowSpinner:(_Bool)arg1;
+- (void)_provisionPeerPaymentPass;
+- (void)_resetApplyPayManateeView;
+- (void)_presentMissingTLKsAlert;
+- (void)_checkCloudStoreState;
 - (void)_beginSetup;
-- (void)viewWillLayoutSubviews;
+- (_Bool)_shouldShowAddDebitCardViewController;
+- (void)_presentAddDebitCardViewController;
+- (struct CGSize)_snapshotSize;
+- (void)_processCloudStorePCSError;
+- (void)_initalizeCloudStoreWithTargetDevice:(id)arg1 ifNecessaryWithCompletion:(CDUnknownBlockType)arg2;
+- (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
+- (void)deviceToDeviceEncryptionHelper:(id)arg1 shouldContinueUpgradingUserToHSA2WithCompletion:(CDUnknownBlockType)arg2;
+- (void)explanationViewControllerDidSelectCancel:(id)arg1;
+- (void)viewControllerDidCancelSetupFlow:(id)arg1;
+- (void)viewControllerDidTerminateSetupFlow:(id)arg1;
+- (void)explanationViewDidSelectSetupLater:(id)arg1;
+- (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)viewDidLoad;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 credential:(id)arg4 passSnapShot:(id)arg5;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

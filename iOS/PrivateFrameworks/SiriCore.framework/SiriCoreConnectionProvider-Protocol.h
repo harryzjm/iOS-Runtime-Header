@@ -6,7 +6,7 @@
 
 #import <SiriCore/NSObject-Protocol.h>
 
-@class NSError, NSObject, NSString, NSURL, SAConnectionPolicyRoute, SiriCoreAceConnectionAnalysisInfo, SiriCoreConnectionMetrics, SiriCoreConnectionType;
+@class NSError, NSObject, NSString, NSURL, SAConnectionPolicy, SAConnectionPolicyRoute, SiriCoreAceConnectionAnalysisInfo, SiriCoreConnectionMetrics, SiriCoreConnectionType;
 @protocol OS_dispatch_data, OS_dispatch_queue, SiriCoreConnectionProviderDelegate;
 
 @protocol SiriCoreConnectionProvider <NSObject>
@@ -18,13 +18,17 @@
 - (_Bool)providerStatsIndicatePoorLinkQuality;
 - (void)writeData:(NSObject<OS_dispatch_data> *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)readData:(void (^)(NSObject<OS_dispatch_data> *, NSError *))arg1;
+- (void)setStaleInterval:(double)arg1;
+- (void)setRetransmitConnectionDropTime:(double)arg1;
+- (void)setKeepAlive:(double)arg1 withInterval:(double)arg2 withCount:(unsigned long long)arg3;
+- (void)setScopeIsWiFiOnly;
 - (void)setEnforceExtendedValidation:(_Bool)arg1;
 - (void)setConnectByPOPMethod:(_Bool)arg1;
 - (void)setPrefersWWAN:(_Bool)arg1;
 - (void)setPolicyRoute:(SAConnectionPolicyRoute *)arg1;
+- (void)setProviderConnectionPolicy:(SAConnectionPolicy *)arg1;
 - (NSString *)resolvedHost;
 - (_Bool)shouldFallbackFromError:(NSError *)arg1;
-- (_Bool)isNetworkDownError:(NSError *)arg1;
 - (_Bool)isPeerNotNearbyError:(NSError *)arg1;
 - (_Bool)isPeerConnectionError:(NSError *)arg1;
 - (void)close;
@@ -32,7 +36,7 @@
 - (SiriCoreAceConnectionAnalysisInfo *)analysisInfo;
 - (SiriCoreConnectionType *)connectionType;
 - (_Bool)shouldFallbackQuickly;
-- (NSObject<OS_dispatch_data> *)headerData;
+- (NSObject<OS_dispatch_data> *)headerDataWithForceReconnect:(_Bool)arg1;
 - (_Bool)hasActiveConnection;
 - (void)openConnectionForURL:(NSURL *)arg1 withConnectionId:(NSString *)arg2 initialPayload:(NSObject<OS_dispatch_data> *)arg3 completion:(void (^)(NSError *))arg4;
 - (_Bool)supportsInitialPayload;

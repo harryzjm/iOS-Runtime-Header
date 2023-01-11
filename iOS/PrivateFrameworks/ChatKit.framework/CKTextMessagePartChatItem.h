@@ -14,6 +14,7 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool containsHyperlink;
 @property(readonly, copy, nonatomic) NSAttributedString *subject;
+@property(readonly, copy, nonatomic) NSAttributedString *fallbackCorruptText;
 @property(readonly, copy, nonatomic) NSAttributedString *text;
 - (_Bool)shouldUseBigEmoji;
 - (id)_time;
@@ -22,6 +23,8 @@
 - (Class)impactBalloonViewClass;
 - (Class)balloonViewClass;
 - (id)_attributedTextWithTextColor:(id)arg1;
+- (id)_fallbackCorruptMessageTextWithTextColor:(id)arg1;
+- (_Bool)showMoneyResults;
 - (id)loadTranscriptText;
 - (id)sendAnimationText;
 - (id)composition;

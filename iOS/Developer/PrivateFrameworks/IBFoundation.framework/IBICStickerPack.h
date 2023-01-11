@@ -16,6 +16,7 @@
 
 + (id)importPriority;
 + (_Bool)fileNameIsIdentifier;
++ (id)displayNameForChildren;
 + (Class)requiredChildrenClass;
 + (id)contentReferenceTypeName;
 + (id)classNameComponents;

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Message/EMReceivingAccount-Protocol.h>
+
 @class MFError, MFLock, MFMailboxUid, MFMessageLibrary, MFWeakObjectCache, NSMutableDictionary, NSString;
 
-@interface MailAccount
+@interface MailAccount <EMReceivingAccount>
 {
     NSString *_path;
     NSString *_nonPersistentPath;
@@ -63,9 +65,9 @@
 + (id)defaultMailAccountForDeliveryExcludingRestricted;
 + (id)defaultMailAccountForDelivery;
 + (void)setGlobalPathForAccounts:(id)arg1;
-+ (id)defaultPathNameForAccountWithHostname:(id)arg1 username:(id)arg2;
 + (id)defaultAccountDirectory;
-+ (id)defaultPathForAccountWithHostname:(id)arg1 username:(id)arg2;
++ (id)legacyPathNameForAccountWithHostname:(id)arg1 username:(id)arg2;
++ (id)legacyPathForAccountIdentifier:(id)arg1 withHostname:(id)arg2 username:(id)arg3;
 + (id)newAccountWithDictionary:(id)arg1;
 + (id)newAccountWithPath:(id)arg1;
 + (id)accountWithPath:(id)arg1;
@@ -112,8 +114,8 @@
 + (void)initialize;
 @property(readonly, nonatomic) _Bool supportsFastRemoteBodySearch; // @synthesize supportsFastRemoteBodySearch=_supportsFastRemoteBodySearch;
 - (_Bool)supportsMailDrop;
-- (_Bool)supportsContinuationType:(id)arg1;
-- (id)unsupportedContinuationTypes;
+- (_Bool)supportsHandoffType:(id)arg1;
+- (id)unsupportedHandoffTypes;
 @property(readonly) _Bool sourceIsManaged;
 @property(readonly) _Bool shouldArchiveByDefault;
 - (int)archiveDestinationForMailbox:(id)arg1;
@@ -170,7 +172,7 @@
 - (id *)_specialMailboxIvarOfType:(int)arg1;
 - (id)_defaultSpecialMailboxNameForType:(int)arg1;
 - (id)powerAssertionIdentifierWithPrefix:(id)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (_Bool)_deleteMailbox:(id)arg1;
 - (_Bool)_setChildren:(id)arg1 forMailboxUid:(id)arg2;
 - (void)_writeMailboxCacheWithPrejudice:(_Bool)arg1;
@@ -251,7 +253,7 @@
 - (void)setPortNumber:(unsigned int)arg1;
 - (_Bool)isAccountClassEquivalentTo:(id)arg1;
 - (_Bool)isHostnameEquivalentTo:(id)arg1;
-- (void)setHostname:(id)arg1;
+@property(copy, nonatomic) NSString *hostname;
 - (void)setUsername:(id)arg1;
 - (void)resetMailboxURLs;
 - (void)_resetAllMailboxURLs:(_Bool)arg1;
@@ -301,6 +303,8 @@
 - (void)_asynchronouslyInvalidateAndDeleteAccountData:(_Bool)arg1;
 - (void)_invalidateAndDeleteAccountData:(_Bool)arg1;
 - (void)_deleteHook;
+- (_Bool)canAuthenticateWithCurrentCredentials;
+- (id)smtpIdentifier;
 - (id)emailAddressesAndAliases;
 - (id)emailAddressesAndAliasesList;
 - (void)setLastEmailAliasesSyncDate:(id)arg1;
@@ -333,6 +337,9 @@
 - (void)setLastKnownHostname:(id)arg1;
 - (void)setPath:(id)arg1;
 - (id)path;
+@property(readonly, nonatomic) NSString *defaultPath;
+- (id)URLStringFromLegacyURLString:(id)arg1;
+- (id)legacySQLExpressionToMatchAllMailboxes;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1;
 - (id)initWithLibrary:(id)arg1 path:(id)arg2;
@@ -346,6 +353,12 @@
 - (_Bool)isUsernameEquivalentTo:(id)arg1;
 - (_Bool)isEquivalentTo:(id)arg1 hostname:(id)arg2 username:(id)arg3;
 - (void)accountDidLoad;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(copy, nonatomic) NSString *password;
+@property(readonly) Class superclass;
 
 @end
 

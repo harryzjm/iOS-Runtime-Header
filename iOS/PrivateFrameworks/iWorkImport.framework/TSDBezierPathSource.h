@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     TSUBezierPath *mPath;
     _Bool mIsRectangular;
     struct CGSize mNaturalSize;
+    TSUBezierPath *mBezierPathWithoutFlips;
 }
 
 + (id)pathSourceWithBezierPath:(id)arg1;

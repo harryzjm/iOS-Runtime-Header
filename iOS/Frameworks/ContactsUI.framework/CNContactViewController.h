@@ -110,6 +110,7 @@
 - (void)_endDelayingPresentation;
 - (_Bool)_isDelayingPresentation;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)_viewWillBePresented;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;

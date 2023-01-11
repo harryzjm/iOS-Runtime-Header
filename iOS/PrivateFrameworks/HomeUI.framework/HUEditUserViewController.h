@@ -8,10 +8,11 @@
 #import <HomeUI/HUAboutResidentDeviceViewControllerDelegate-Protocol.h>
 #import <HomeUI/HUSwitchCellDelegate-Protocol.h>
 
-@class HUAboutResidentDeviceFooterView, HUEditUserItemManager, HUPendingAccessoriesGridViewController, NSString;
+@class HFUserItem, HUAboutResidentDeviceFooterView, HUEditUserItemManager, HUPendingAccessoriesGridViewController, NSString;
 
 @interface HUEditUserViewController <HUAboutResidentDeviceFooterViewDelegate, HUAboutResidentDeviceViewControllerDelegate, HUSwitchCellDelegate>
 {
+    HFUserItem *_userItem;
     HUEditUserItemManager *_editUserItemManager;
     HUPendingAccessoriesGridViewController *_pendingAccessoriesViewController;
     HUAboutResidentDeviceFooterView *_aboutResidentDeviceFooterView;
@@ -20,6 +21,7 @@
 @property(retain, nonatomic) HUAboutResidentDeviceFooterView *aboutResidentDeviceFooterView; // @synthesize aboutResidentDeviceFooterView=_aboutResidentDeviceFooterView;
 @property(readonly, nonatomic) HUPendingAccessoriesGridViewController *pendingAccessoriesViewController; // @synthesize pendingAccessoriesViewController=_pendingAccessoriesViewController;
 @property(readonly, nonatomic) HUEditUserItemManager *editUserItemManager; // @synthesize editUserItemManager=_editUserItemManager;
+@property(readonly, copy, nonatomic) HFUserItem *userItem; // @synthesize userItem=_userItem;
 - (void).cxx_destruct;
 - (id)_lazyAboutResidentDeviceFooterView;
 - (void)_removeUser;
@@ -33,7 +35,7 @@
 - (_Bool)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
-- (id)userID;
+- (id)userHandle;
 - (id)initWithItem:(id)arg1 home:(id)arg2;
 
 // Remaining properties

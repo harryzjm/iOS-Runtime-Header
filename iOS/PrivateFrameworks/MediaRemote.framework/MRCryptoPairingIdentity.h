@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSString;
 
@@ -18,7 +18,7 @@
 @property(readonly, nonatomic) NSData *privateKey; // @synthesize privateKey=_privateKey;
 @property(readonly, nonatomic) NSData *publicKey; // @synthesize publicKey=_publicKey;
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1 publicKey:(id)arg2 privateKey:(id)arg3;
 

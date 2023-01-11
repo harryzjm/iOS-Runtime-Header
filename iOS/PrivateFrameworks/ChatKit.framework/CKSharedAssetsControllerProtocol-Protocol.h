@@ -11,6 +11,7 @@
 
 @protocol CKSharedAssetsControllerProtocol <NSObject>
 @property(nonatomic) __weak id <CKSharedAssetsControllerDelegate> delegate;
+- (_Bool)isDisplayingAttachmentContent;
 - (void)updateAttachmentItems:(NSArray *)arg1;
 - (void)parentScrollViewDidScroll:(struct CGPoint)arg1;
 - (struct CGSize)contentSizeThatFits:(struct CGSize)arg1;

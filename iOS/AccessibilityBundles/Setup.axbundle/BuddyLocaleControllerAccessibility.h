@@ -15,7 +15,7 @@
 - (id)_accessibilitySelectedLanguage;
 - (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (void)updateHeaderView;
+- (void)setLanguage:(id)arg1;
 - (void)switchToRealMode;
 
 @end

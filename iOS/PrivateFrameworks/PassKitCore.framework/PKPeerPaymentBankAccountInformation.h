@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -25,6 +25,7 @@
 - (void)_deleteBankAccountKeychainData;
 - (id)_bankAccountInformationInKeychain;
 - (void)_writeBankAccountInformationToKeychain;
+- (id)_wrapperWithType:(unsigned long long)arg1;
 - (id)description;
 - (void)updateToLatestKeychainData;
 - (_Bool)isValid;

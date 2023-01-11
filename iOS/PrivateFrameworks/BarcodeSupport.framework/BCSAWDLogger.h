@@ -11,7 +11,10 @@
 }
 
 + (id)sharedLogger;
+- (int)_awdBarcodePreferredAppLinkOpenStrategyFromURLAction:(id)arg1;
+- (int)_awdBarcodeURLTypeFromURLAction:(id)arg1;
 - (int)_awdInvalidBarcodeDataTypeFromInvalidData:(id)arg1;
+- (int)_awdBarcodeSourceTypeForAction:(id)arg1;
 - (int)_awdBarcodeClientType;
 - (int)_awdBarcodeDataTypeFromAction:(id)arg1;
 - (void)logBarcodePreviewedEventForContentType:(long long)arg1;

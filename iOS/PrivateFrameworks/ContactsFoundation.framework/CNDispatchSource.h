@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsFoundation/CNCancelable-Protocol.h>
 
@@ -18,7 +18,6 @@
 
 - (void)cancel;
 - (id)source;
-- (void)finalize;
 - (void)dealloc;
 - (id)initWithSource:(id)arg1;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
 
@@ -15,9 +15,13 @@
     NSString *_identifier;
     _Bool _forced;
     NSMutableSet *_types;
+    NSString *_requestedPMV;
+    _Bool _MDMUseDelayPeriod;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) _Bool MDMUseDelayPeriod; // @synthesize MDMUseDelayPeriod=_MDMUseDelayPeriod;
+@property(retain, nonatomic) NSString *requestedPMV; // @synthesize requestedPMV=_requestedPMV;
 @property(retain, nonatomic) NSSet *types; // @synthesize types=_types;
 @property(nonatomic, getter=isForced) _Bool forced; // @synthesize forced=_forced;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

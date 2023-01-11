@@ -7,42 +7,41 @@
 #import <objc/NSObject.h>
 
 @class NSCache, NSLock, NSNumber;
-@protocol OS_dispatch_queue;
 
 @interface ISBiometricStore : NSObject
 {
     NSCache *_contextCache;
-    NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSLock *_lock;
-    _Bool _shouldUseTouchID2;
 }
 
-+ (id)keychainLabelForAccountID:(id)arg1;
-+ (_Bool)shouldUseTouchID2;
++ (_Bool)shouldUseX509;
++ (id)keychainLabelForCertWithAccountID:(id)arg1 purpose:(long long)arg2;
++ (id)keychainLabelForKeyWithAccountID:(id)arg1 purpose:(long long)arg2;
++ (id)keychainLabelForAccountID:(id)arg1 purpose:(long long)arg2;
 + (id)diskBasedPaymentSheet;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_updateUserDefaultsKey:(struct __CFString *)arg1 withBooleanValue:(_Bool)arg2;
-- (void)_updateTouchIDVersionWithBagKey:(id)arg1;
+- (id)x509CertChainDataForAccountIdentifier:(id)arg1 purpose:(long long)arg2 regenerateCerts:(_Bool)arg3 error:(id *)arg4;
 - (id)signData:(id)arg1 context:(id)arg2 error:(id *)arg3;
-- (id)publicKeyDataForAccountIdentifier:(id)arg1 error:(id *)arg2;
+- (id)publicKeyDataForAccountIdentifier:(id)arg1 purpose:(long long)arg2 error:(id *)arg3;
 - (_Bool)deleteKeychainTokensForAccountIdentifier:(id)arg1 error:(id *)arg2;
-- (id)createAttestationDataForAccountIdentifier:(id)arg1 error:(id *)arg2;
-- (_Bool)shouldUseTouchID2;
+- (id)createX509CertChainDataForAccountIdentifier:(id)arg1 purpose:(long long)arg2 error:(id *)arg3;
+- (id)createAttestationDataForAccountIdentifier:(id)arg1 purpose:(long long)arg2 error:(id *)arg3;
 @property long long biometricState;
 - (void)saveIdentityMapForAccountIdentifier:(id)arg1;
 - (void)registerAccountIdentifier:(id)arg1;
 @property(readonly) NSNumber *lastRegisteredAccountIdentifier;
+- (unsigned long long)keyCountForAccountIdentifier:(id)arg1;
 - (_Bool)isIdentityMapValidForAccountIdentifier:(id)arg1;
 @property(readonly, getter=isBiometricStateEnabled) _Bool biometricStateEnabled;
 - (unsigned long long)identityMapCount;
 - (id)fetchContextFromCacheWithToken:(id)arg1 evict:(_Bool)arg2;
 - (void)clearLastRegisteredAccountIdentifier;
-- (_Bool)canPerformExtendedTouchIDActionsForAccountIdentifier:(id)arg1;
+- (_Bool)canPerformExtendedBiometricActionsForAccountIdentifier:(id)arg1;
 - (_Bool)canPerformBiometricOptIn;
 - (long long)biometricAvailabilityForAccountIdentifier:(id)arg1;
 - (void)addContextToCache:(id)arg1 withToken:(id)arg2;
-- (id)initWithBagListener;
+- (id)init;
 
 @end
 

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol BCSParsedData;
+@protocol BCSCodePayload, BCSParsedData;
 
 @protocol BCSNotificationServiceProtocol
-- (void)cancelNotifications;
-- (void)notifyParsedBarcodeWithData:(id <BCSParsedData>)arg1 reply:(void (^)(NSError *, AWDBarcodeSupportCodeDetectedEvent *))arg2;
+- (void)cancelNotificationsForCodeType:(long long)arg1;
+- (void)notifyParsedCodeWithData:(id <BCSParsedData>)arg1 codePayload:(id <BCSCodePayload>)arg2 shouldReplacePreviousNotifications:(_Bool)arg3 reply:(void (^)(NSError *, AWDBarcodeSupportCodeDetectedEvent *))arg4;
 @end
 

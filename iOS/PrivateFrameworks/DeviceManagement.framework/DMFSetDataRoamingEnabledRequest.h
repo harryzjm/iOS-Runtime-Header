@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
-@interface DMFSetDataRoamingEnabledRequest : CATTaskRequest
+@interface DMFSetDataRoamingEnabledRequest
 {
     _Bool _enabled;
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)isPermittedOnUserConnection;
++ (_Bool)isPermittedOnSystemConnection;
++ (id)permittedPlatforms;
 @property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

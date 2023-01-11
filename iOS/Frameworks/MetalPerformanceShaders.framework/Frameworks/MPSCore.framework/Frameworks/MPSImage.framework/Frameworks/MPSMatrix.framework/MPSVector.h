@@ -24,9 +24,13 @@
 @property(readonly, nonatomic) unsigned long long length; // @synthesize length=_length;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (unsigned long long)resourceSize;
+- (void)synchronizeOnCommandBuffer:(id)arg1;
 @property(readonly, nonatomic) id <MTLBuffer> data;
+- (id)initWithDevice:(id)arg1 descriptor:(id)arg2;
 - (id)initWithBuffer:(id)arg1 descriptor:(id)arg2;
 - (id)initWithBuffer:(id)arg1 length:(unsigned long long)arg2 dataType:(unsigned int)arg3;
+- (id)initPrivateWithDescriptor:(id)arg1 device:(struct MPSDevice *)arg2;
 - (id)init;
 @property(readonly, retain, nonatomic) id <MTLDevice> device;
 

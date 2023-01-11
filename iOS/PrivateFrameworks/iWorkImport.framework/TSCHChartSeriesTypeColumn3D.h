@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)sceneObjectClass;
+- (_Bool)supportsRoundedCorners;
 - (id)genericToSpecificPropertyMap;
 - (id)g_genericToSpecificPropertyMap3DColumn;
 

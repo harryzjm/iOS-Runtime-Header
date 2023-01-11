@@ -6,12 +6,12 @@
 
 #import <FrontBoardServices/FBSApplicationDataStoreRepositoryClient-Protocol.h>
 
-@class NSHashTable, NSMutableDictionary, NSObject, NSString;
+@class NSCountedSet, NSHashTable, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface FBSApplicationDataStoreRepositoryClient <FBSApplicationDataStoreRepositoryClient>
 {
-    NSMutableDictionary *_prefetchedKeyCounts;
+    NSCountedSet *_prefetchedKeys;
     NSMutableDictionary *_prefetchedKeyValues;
     NSMutableDictionary *_pendingChangesToPrefetchedKeys;
     NSObject<OS_dispatch_queue> *_prefetchedDataQueue;
@@ -19,7 +19,7 @@
     NSHashTable *_observers;
 }
 
-- (void)fireCompletion:(CDUnknownBlockType)arg1 arrayResults:(id)arg2 error:(id)arg3;
+- (void).cxx_destruct;
 - (void)fireCompletion:(CDUnknownBlockType)arg1 result:(id)arg2 error:(id)arg3;
 - (void)fireCompletion:(CDUnknownBlockType)arg1 error:(id)arg2;
 - (id)clientCallbackQueue;
@@ -38,14 +38,12 @@
 - (void)removeAllObjectsForApplication:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)removeObjectForKey:(id)arg1 forApplication:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)setObject:(id)arg1 forKey:(id)arg2 forApplication:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
-- (void)objectForKey:(id)arg1 forApplication:(id)arg2 withResult:(CDUnknownBlockType)arg3 checkPrefetch:(_Bool)arg4;
-- (void)objectForKey:(id)arg1 forApplication:(id)arg2 withResult:(CDUnknownBlockType)arg3;
-- (void)availableDataStores:(CDUnknownBlockType)arg1;
+- (id)objectForKey:(id)arg1 forApplication:(id)arg2;
+- (id)availableDataStores;
 - (void)synchronizeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_sendPrefetchedKeys:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)removePrefetchedKeys:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)addPrefetchedKeys:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)dealloc;
+- (void)addPrefetchedKeys:(id)arg1;
 - (void)invalidate;
 - (id)init;
 

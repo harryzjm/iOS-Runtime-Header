@@ -6,7 +6,7 @@
 
 #import <TVMLKit/TVAppTemplateImpressionable-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, UIColor, UIFocusGuide, UIView;
+@class NSArray, NSDictionary, NSString, UIColor, UIView;
 
 __attribute__((visibility("hidden")))
 @interface _TVOrganizerView <TVAppTemplateImpressionable>
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     UIView *_lastFocusedView;
     UIView *_rightColumnDivider;
     UIView *_leftColumnDivider;
-    UIFocusGuide *_focusGuide;
     _Bool _columnDividersEnabled;
     _Bool _remembersLastFocusedItem;
     UIView *_backgroundImageView;

@@ -24,6 +24,7 @@
 - (void)_releaseAllServiceSemaphores;
 - (void)_blockOnServiceSemaphore:(id)arg1;
 - (id)_serviceSemaphore;
+- (void)dealloc;
 - (id)init;
 
 @end

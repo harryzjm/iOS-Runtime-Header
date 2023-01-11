@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MPSNNImageNode, MPSNNStateNode, NSArray, NSMutableArray, NSString;
 @protocol MPSNNPadding;
@@ -22,10 +22,19 @@
 @property(copy) NSString *label; // @synthesize label=_label;
 @property(retain, nonatomic) id <MPSNNPadding> paddingPolicy; // @synthesize paddingPolicy=_paddingPolicy;
 @property(readonly, nonatomic) MPSNNImageNode *resultImage; // @synthesize resultImage=_resultImage;
+- (id)sourceStates;
+- (id)sourceImages;
+- (id)trainingGraphWithSourceGradient:(id)arg1 nodeHandler:(CDUnknownBlockType)arg2;
+- (id)gradientFiltersWithSource:(id)arg1;
+- (id)gradientFiltersWithSources:(id)arg1;
+- (id)gradientFilterWithSource:(id)arg1;
+- (id)gradientFilterWithSources:(id)arg1;
+- (Class)gradientClass;
 - (id)debugQuickLookObject;
 - (struct FilterGraphNode *)newFilterNode;
 - (id)debugDescription;
 - (void)dealloc;
+- (id)resultStatesNoAllocate;
 @property(readonly, nonatomic) NSArray *resultStates;
 @property(readonly, nonatomic) MPSNNStateNode *resultState;
 - (id)initWithSourceImages:(id)arg1 sourceStates:(id)arg2 paddingPolicy:(id)arg3;

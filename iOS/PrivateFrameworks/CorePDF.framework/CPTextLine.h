@@ -8,6 +8,7 @@
 
 @class CPCharSequence, NSArray;
 
+__attribute__((visibility("hidden")))
 @interface CPTextLine <CPDisposable>
 {
     CPCharSequence *charSequence;

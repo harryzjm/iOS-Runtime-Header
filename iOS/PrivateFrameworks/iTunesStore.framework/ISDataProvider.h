@@ -8,7 +8,7 @@
 
 #import <iTunesStore/NSCopying-Protocol.h>
 
-@class ISOperation, NSNumber, NSString, NSURL, SSAuthenticationContext, SSBiometricAuthenticationContext, SSURLBagContext;
+@class ISOperation, NSNumber, NSString, NSURL, NSURLResponse, SSAuthenticationContext, SSBiometricAuthenticationContext, SSURLBagContext;
 @protocol ISBiometricSessionDelegate;
 
 @interface ISDataProvider : NSObject <NSCopying>
@@ -23,6 +23,8 @@
     NSURL *_redirectURL;
     SSBiometricAuthenticationContext *_biometricAuthenticationContext;
     long long _errorHandlerResponseType;
+    unsigned long long _authenticatedAccountCredentialSource;
+    NSURLResponse *_response;
     id <ISBiometricSessionDelegate> _biometricSessionDelegate;
 }
 
@@ -30,6 +32,7 @@
 @property id <ISBiometricSessionDelegate> biometricSessionDelegate; // @synthesize biometricSessionDelegate=_biometricSessionDelegate;
 @property(retain) SSBiometricAuthenticationContext *biometricAuthenticationContext; // @synthesize biometricAuthenticationContext=_biometricAuthenticationContext;
 @property(retain) NSURL *redirectURL; // @synthesize redirectURL=_redirectURL;
+@property(retain) NSURLResponse *response; // @synthesize response=_response;
 @property __weak ISOperation *parentOperation; // @synthesize parentOperation=_parentOperation;
 @property(retain) id output; // @synthesize output=_output;
 @property long long errorHandlerResponseType; // @synthesize errorHandlerResponseType=_errorHandlerResponseType;
@@ -37,6 +40,7 @@
 @property long long contentLength; // @synthesize contentLength=_contentLength;
 @property(retain) SSURLBagContext *bagContext; // @synthesize bagContext=_bagContext;
 @property(retain) NSNumber *authenticatedAccountDSID; // @synthesize authenticatedAccountDSID=_authenticatedAccountDSID;
+@property unsigned long long authenticatedAccountCredentialSource; // @synthesize authenticatedAccountCredentialSource=_authenticatedAccountCredentialSource;
 @property(retain) SSAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 - (void).cxx_destruct;
 - (_Bool)_runServerAuthenticationOperation:(id)arg1 error:(id *)arg2;

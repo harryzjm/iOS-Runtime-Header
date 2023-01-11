@@ -9,10 +9,9 @@
 #import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 #import <MapKit/_MKStackViewDelegate-Protocol.h>
 
-@class MKPlaceSectionRowView, NSArray, NSLayoutConstraint, NSString, NSURL, UIImageView, UILayoutGuide, _MKDataHeaderModel, _MKTokenAttributedString, _MKUILabel;
+@class MKPlaceSectionRowView, NSArray, NSLayoutConstraint, NSString, NSURL, UIImageView, UILayoutGuide, UIView, _MKDataHeaderModel, _MKLocalizedHoursBuilder, _MKTokenAttributedString, _MKUILabel;
 @protocol GEOTransitLineItem, MKPlaceCardHeaderViewControllerDelegate, _MKPlaceItem;
 
-__attribute__((visibility("hidden")))
 @interface MKPlaceCardHeaderViewController <_MKStackViewDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol, MKETAProviderObserver>
 {
     unsigned long long _layout;
@@ -23,7 +22,7 @@ __attribute__((visibility("hidden")))
     _MKUILabel *_firstLabel;
     _MKUILabel *_secondLabel;
     _MKUILabel *_thirdLabel;
-    _MKUILabel *_thirdDisplayedLabel;
+    UIView *_thirdDisplayedLabel;
     NSArray *_constraints;
     UILayoutGuide *_leadingGuide;
     NSURL *_logoURL;
@@ -33,7 +32,7 @@ __attribute__((visibility("hidden")))
     _MKTokenAttributedString *_ratingsToken;
     _MKTokenAttributedString *_priceToken;
     _MKTokenAttributedString *_categoryToken;
-    _MKTokenAttributedString *_closedToken;
+    _MKTokenAttributedString *_openStateToken;
     _MKTokenAttributedString *_hoursToken;
     _MKTokenAttributedString *_userLocationToken;
     _MKTokenAttributedString *_venueToken;
@@ -45,9 +44,11 @@ __attribute__((visibility("hidden")))
     id <_MKPlaceItem> _placeItem;
     id <GEOTransitLineItem> _lineItem;
     id <MKPlaceCardHeaderViewControllerDelegate> _delegate;
+    _MKLocalizedHoursBuilder *_localizedHoursBuilder;
 }
 
 + (double)minimalModeHeight;
+@property(retain, nonatomic) _MKLocalizedHoursBuilder *localizedHoursBuilder; // @synthesize localizedHoursBuilder=_localizedHoursBuilder;
 @property(nonatomic) __weak id <MKPlaceCardHeaderViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) id <GEOTransitLineItem> lineItem; // @synthesize lineItem=_lineItem;
 @property(readonly, nonatomic) id <_MKPlaceItem> placeItem; // @synthesize placeItem=_placeItem;
@@ -61,10 +62,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)_mapItemShouldDisplayDistance:(id)arg1;
 - (void)ETAProviderUpdated:(id)arg1;
 - (void)_loadLogo;
-- (_Bool)_willShowDistance;
+- (_Bool)_isLikelyToShowDistance;
 - (void)_setupDatas;
 - (id)_localizedHours;
-- (id)_closedNow;
+- (id)_openStateString;
 - (id)_reviewLabelText;
 - (id)_verifiedText;
 - (id)_currentTitle;

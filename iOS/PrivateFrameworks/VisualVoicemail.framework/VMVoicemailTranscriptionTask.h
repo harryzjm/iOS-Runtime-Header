@@ -4,21 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
+@class VMVoicemailTranscriptionController;
 @protocol OS_dispatch_queue;
 
 @interface VMVoicemailTranscriptionTask : NSObject
 {
     _Bool _taskRunning;
     _Bool _hasInsomniaAssertion;
+    VMVoicemailTranscriptionController *_transcriptionController;
     NSObject<OS_dispatch_queue> *_taskQueue;
 }
 
 + (void)resetRetranscriptionTaskState;
 @property(nonatomic) _Bool hasInsomniaAssertion; // @synthesize hasInsomniaAssertion=_hasInsomniaAssertion;
 @property(nonatomic, getter=isTaskRunning) _Bool taskRunning; // @synthesize taskRunning=_taskRunning;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *taskQueue; // @synthesize taskQueue=_taskQueue;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *taskQueue; // @synthesize taskQueue=_taskQueue;
+@property(nonatomic) __weak VMVoicemailTranscriptionController *transcriptionController; // @synthesize transcriptionController=_transcriptionController;
 - (void).cxx_destruct;
 - (void)retranscribeAllVoicemails;
 - (void)_endRetranscribingTask;

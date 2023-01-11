@@ -7,12 +7,11 @@
 #import <NewsCore/NSMutableCopying-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSNumber, NSSet, NSString;
+@class NSArray, NSDictionary, NSNumber, NSSet;
 @protocol FCDerivedPersonalizationData><NSCoding;
 
 @protocol FCTodayPrivateData <NSObject, NSMutableCopying>
 @property(readonly, copy, nonatomic) NSNumber *onboardingVersion;
-@property(readonly, copy, nonatomic) NSString *feldsparID;
 @property(readonly, copy, nonatomic) NSDictionary *recentlyReadHistoryItems;
 @property(readonly, copy, nonatomic) NSArray *recentlySeenHistoryItems;
 @property(readonly, copy, nonatomic) NSArray *rankedPersonalSubscribedTagIDs;

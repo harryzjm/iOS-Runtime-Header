@@ -9,6 +9,7 @@
     unsigned long long _persistentID;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)defaultPropertyValues;
 + (_Bool)canFilterByProperty:(id)arg1;
 - (id)mediaLibrary;

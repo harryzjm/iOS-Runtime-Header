@@ -9,6 +9,7 @@
 @protocol EQKitLayoutContext;
 
 @protocol EQKitLayout <NSObject>
+- (void)setFontSmoothingBackgroundColor:(struct CGColor *)arg1;
 - (void)renderIntoContext:(struct CGContext *)arg1 offset:(struct CGPoint)arg2;
 - (struct CGSize)naturalSize;
 - (struct CGRect)erasableBounds;

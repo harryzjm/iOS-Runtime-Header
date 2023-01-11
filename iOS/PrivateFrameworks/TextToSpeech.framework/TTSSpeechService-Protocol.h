@@ -12,7 +12,7 @@
 @protocol TTSSpeechService <NSObject>
 @property(nonatomic) NSObject<OS_dispatch_queue> *serviceQueue;
 - (_Bool)isVoiceValid:(TTSSpeechVoice *)arg1;
-- (NSString *)speechMarkupStringForType:(long long)arg1 voice:(TTSSpeechVoice *)arg2;
+- (NSString *)speechMarkupStringForType:(long long)arg1 voice:(TTSSpeechVoice *)arg2 string:(NSString *)arg3;
 - (NSSet *)supportedIPAPhonemeLanguages;
 - (oneway void)getSpeechIsActiveForRequest:(TTSSpeechRequest *)arg1 reply:(void (^)(_Bool))arg2;
 - (oneway void)getSpeechIsActiveReply:(void (^)(_Bool))arg1;
@@ -23,6 +23,7 @@
 - (oneway void)startSpeechRequest:(TTSSpeechRequest *)arg1;
 
 @optional
+- (NSString *)embeddedVolumeMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 volume:(double)arg3;
 - (NSString *)embeddedPitchMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 pitch:(double)arg3;
 - (NSString *)embeddedRateMarkupForVoice:(TTSSpeechVoice *)arg1 string:(NSString *)arg2 rate:(double)arg3;
 - (NSString *)nashvilleVoiceName:(NSString *)arg1 footprint:(long long)arg2 voiceType:(long long)arg3 gender:(long long)arg4;

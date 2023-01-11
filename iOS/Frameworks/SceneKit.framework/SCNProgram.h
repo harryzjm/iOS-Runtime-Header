@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -19,6 +19,7 @@
     NSString *_vertexFunctionName;
     NSString *_fragmentFunctionName;
     NSString *_name;
+    NSString *_sourceFile;
     NSMutableDictionary *_semanticInfos;
     _Bool _opaque;
     id _library;
@@ -49,6 +50,8 @@
 @property(copy, nonatomic) NSString *fragmentFunctionName;
 @property(copy, nonatomic) NSString *vertexFunctionName;
 @property(nonatomic, getter=isOpaque) _Bool opaque;
+- (id)sourceFile;
+- (void)setSourceFile:(id)arg1;
 - (id)name;
 - (int)shadingLanguage;
 - (void)setName:(id)arg1;

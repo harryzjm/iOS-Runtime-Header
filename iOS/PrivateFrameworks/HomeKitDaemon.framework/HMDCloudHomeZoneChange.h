@@ -18,6 +18,7 @@
 - (id)changeWithObjectID:(id)arg1;
 - (void)flushAllChangesToCache;
 - (void)setDeleteAsProcessedWithRecordID:(id)arg1;
+- (void)resetRecordWithRecordID:(id)arg1;
 - (void)setSaveAsProcessedWithRecord:(id)arg1;
 - (void)fetchBatchToUpload:(CDUnknownBlockType)arg1;
 - (_Bool)moreChangesToProcess;

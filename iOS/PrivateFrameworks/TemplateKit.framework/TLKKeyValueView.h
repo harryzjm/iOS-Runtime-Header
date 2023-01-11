@@ -10,6 +10,7 @@
 
 @interface TLKKeyValueView <NUIContainerStackViewDelegate>
 {
+    _Bool _isInMeasurementPass;
     NSArray *_leadingTuples;
     NSArray *_trailingTuples;
     TLKImage *_image;
@@ -20,13 +21,14 @@
 }
 
 + (unsigned long long)visibleRowsInGrid:(id)arg1;
+@property _Bool isInMeasurementPass; // @synthesize isInMeasurementPass=_isInMeasurementPass;
 @property(retain) TLKStackView *containerView; // @synthesize containerView=_containerView;
 @property(retain) TLKImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain) TLKKeyValueGridView *trailingGrid; // @synthesize trailingGrid=_trailingGrid;
 @property(retain) TLKKeyValueGridView *leadingGrid; // @synthesize leadingGrid=_leadingGrid;
-@property(retain) TLKImage *image; // @synthesize image=_image;
-@property(retain) NSArray *trailingTuples; // @synthesize trailingTuples=_trailingTuples;
-@property(retain) NSArray *leadingTuples; // @synthesize leadingTuples=_leadingTuples;
+@property(retain, nonatomic) TLKImage *image; // @synthesize image=_image;
+@property(retain, nonatomic) NSArray *trailingTuples; // @synthesize trailingTuples=_trailingTuples;
+@property(retain, nonatomic) NSArray *leadingTuples; // @synthesize leadingTuples=_leadingTuples;
 - (void).cxx_destruct;
 - (id)leadingTextKeyLabels;
 - (unsigned long long)numberOfVisibleRowsForTrailingGrid;
@@ -36,8 +38,9 @@
 - (long long)currentStackViewDistribution;
 - (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (void)observedPropertiesChanged;
+- (_Bool)isLayoutSizeDependentOnPerpendicularAxis;
+- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (void)styleDidChange:(unsigned long long)arg1;
-- (id)observableProperties;
 - (id)init;
 
 // Remaining properties

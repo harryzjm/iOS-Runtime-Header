@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SiriTasks/NSCoding-Protocol.h>
+#import <SiriTasks/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface STGenericIntentLocation : NSObject <NSCoding>
+@interface STGenericIntentLocation : NSObject <NSSecureCoding>
 {
     _Bool _isLatLong;
     NSString *_name;
@@ -18,6 +18,7 @@
     double _longitude;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(nonatomic) _Bool isLatLong; // @synthesize isLatLong=_isLatLong;
 @property(nonatomic) double longitude; // @synthesize longitude=_longitude;
 @property(nonatomic) double latitude; // @synthesize latitude=_latitude;

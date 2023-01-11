@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface SAStartDirectActionRequest
 {
@@ -13,6 +13,8 @@
 + (id)startDirectActionRequestWithDictionary:(id)arg1 context:(id)arg2;
 + (id)startDirectActionRequest;
 - (_Bool)requiresResponse;
+@property(copy, nonatomic) NSString *utteranceFromRequestParameters;
+@property(copy, nonatomic) NSDictionary *requestExecutionParameters;
 @property(copy, nonatomic) NSString *directAction;
 - (id)encodedClassName;
 - (id)groupIdentifier;

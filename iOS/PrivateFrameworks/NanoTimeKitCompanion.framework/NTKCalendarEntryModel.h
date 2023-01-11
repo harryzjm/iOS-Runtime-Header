@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NSString, NSURL;
+@class NSArray, NSDate, NSString, NSURL;
 
 @interface NTKCalendarEntryModel
 {
     _Bool _displayAsTomorrow;
     _Bool _displayAsConflicting;
     _Bool _displayAsFirstInDay;
+    _Bool _overlappingDates;
     NSString *_identifier;
     NSDate *_eventStartDate;
     NSDate *_eventEndDate;
@@ -21,11 +22,18 @@
     unsigned long long _overlappingEventCount;
     unsigned long long _eventsInDayCount;
     NSURL *_launchURL;
+    NSArray *_eventColors;
 }
 
 + (id)_entryForTemplateDescription:(id)arg1 family:(long long)arg2;
 + (id)loadingEntryForFamily:(long long)arg1;
 + (id)lockedEntryForFamily:(long long)arg1;
++ (id)signatureRectangular:(id)arg1;
++ (id)_signatureCornerImageProvider;
++ (id)signatureCorner:(id)arg1;
++ (id)_signatureCircularCalendarProvider;
++ (id)signatureCircular:(id)arg1;
++ (id)signatureBezel:(id)arg1;
 + (id)extraLarge:(id)arg1;
 + (id)circular:(id)arg1 isMedium:(_Bool)arg2;
 + (id)largeUtility:(id)arg1;
@@ -37,9 +45,13 @@
 + (id)_modularSmallCalendarImageProvider;
 + (id)smallUtility:(id)arg1;
 + (id)_swapPlaceholderString:(id)arg1 withTimeStringForDate:(id)arg2 inString:(id)arg3 usingBaseFont:(id)arg4 smallCapsBaseFont:(id)arg5 timeZone:(id)arg6 options:(unsigned long long)arg7;
++ (id)contentForSignatureRectangular:(id)arg1;
++ (id)contentForLargeModular:(id)arg1;
 + (id)largeModular:(id)arg1;
+@property(retain, nonatomic) NSArray *eventColors; // @synthesize eventColors=_eventColors;
 @property(retain, nonatomic) NSURL *launchURL; // @synthesize launchURL=_launchURL;
 @property(nonatomic) unsigned long long eventsInDayCount; // @synthesize eventsInDayCount=_eventsInDayCount;
+@property(nonatomic) _Bool overlappingDates; // @synthesize overlappingDates=_overlappingDates;
 @property(nonatomic) unsigned long long overlappingEventCount; // @synthesize overlappingEventCount=_overlappingEventCount;
 @property(nonatomic) _Bool displayAsFirstInDay; // @synthesize displayAsFirstInDay=_displayAsFirstInDay;
 @property(nonatomic) _Bool displayAsConflicting; // @synthesize displayAsConflicting=_displayAsConflicting;

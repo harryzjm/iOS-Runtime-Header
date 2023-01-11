@@ -16,13 +16,13 @@ struct CGPoint {
 };
 
 struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
+    struct CGPoint origin;
+    struct CGSize size;
 };
 
 struct CGSize {
-    double _field1;
-    double _field2;
+    double width;
+    double height;
 };
 
 struct CGVector {
@@ -36,8 +36,8 @@ struct _CSTypeRef {
 };
 
 struct _NSRange {
-    unsigned long long location;
-    unsigned long long length;
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 
 struct __va_list_tag {
@@ -45,6 +45,10 @@ struct __va_list_tag {
     unsigned int _field2;
     void *_field3;
     void *_field4;
+};
+
+struct atomic_flag {
+    _Atomic _Bool _Value;
 };
 
 struct time_value {
@@ -55,18 +59,8 @@ struct time_value {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    unsigned int _field6;
-    unsigned int _field7;
-} CDStruct_a561fd19;
-
-typedef struct {
-    unsigned short _field1;
-    unsigned short _field2;
-    unsigned short _field3[1];
-} CDStruct_27a325c0;
+    long long _field1;
+    long long _field2;
+    long long _field3;
+} CDStruct_2ec95fd7;
 

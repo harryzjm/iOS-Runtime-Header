@@ -19,6 +19,10 @@
 @property(readonly, nonatomic) _Bool toolbarHidden; // @synthesize toolbarHidden=_toolbarHidden;
 @property(readonly, nonatomic) _Bool navigationBarHidden; // @synthesize navigationBarHidden=_navigationBarHidden;
 - (void).cxx_destruct;
+- (id)singleLinkPrettyDescription;
+- (id)copyWithPrecedingMetric:(id)arg1;
+- (_Bool)isEqualToMetricChain:(id)arg1;
+- (unsigned long long)hash;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
 - (id)initWithNavigationBarHidden:(_Bool)arg1 toolbarHidden:(_Bool)arg2 navigationBar:(id)arg3 toolbar:(id)arg4 precedingMetric:(id)arg5;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSArray, NSString, SACFAbstractClientCommand;
 
 @interface SACFSignal
 {
@@ -14,7 +14,10 @@
 + (id)signal;
 - (_Bool)mutatingCommand;
 - (_Bool)requiresResponse;
+@property(retain, nonatomic) SACFAbstractClientCommand *signalPayload;
+@property(copy, nonatomic) NSArray *scriptIdentifiers;
 @property(copy, nonatomic) NSString *flowScriptHint;
+@property(copy, nonatomic) NSString *domain;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

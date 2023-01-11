@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -30,7 +30,7 @@
 - (unsigned long long)hash;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)_rawDictionary;
+- (id)jsonDictionaryRepresentation;
 - (void)_initWithFeeDictionary:(id)arg1;
 - (id)initWithFeeDictionary:(id)arg1;
 

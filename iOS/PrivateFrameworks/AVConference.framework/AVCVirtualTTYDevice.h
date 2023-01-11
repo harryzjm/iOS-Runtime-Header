@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVConferenceXPCClient;
 @protocol AVCVirtualTTYDeviceDelegate;
@@ -24,7 +24,9 @@
 - (void)stop;
 - (void)start;
 - (void)dealloc;
+- (id)initWithMode:(long long)arg1 error:(id *)arg2 streamToken:(long long)arg3;
 - (id)initWithMode:(long long)arg1 error:(id *)arg2;
+- (id)initWithStreamToken:(long long)arg1 error:(id *)arg2;
 
 @end
 

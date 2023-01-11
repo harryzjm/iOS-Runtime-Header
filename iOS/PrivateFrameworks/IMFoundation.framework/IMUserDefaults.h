@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IMFoundation/IMUserDefaults-Protocol.h>
 
@@ -14,8 +14,13 @@
 {
 }
 
-+ (_Bool)isAbsintheV3V4Enabled;
-+ (void)setEnableAbsintheV3V4:(_Bool)arg1;
++ (_Bool)isLiveDeliveryWarmUpEnabled;
++ (void)setEnableLiveDeliveryWarmUp:(_Bool)arg1;
++ (_Bool)isDebugPiscoLoggingEnabled;
++ (_Bool)isDeviceScoringEnabled;
++ (_Bool)isBAACertDisabled;
++ (_Bool)isAbsintheV4Enabled;
++ (_Bool)isPiscoDisabled;
 + (id)phoneNumberValidationPreflightTestData;
 + (void)setPhoneNumberValidationPreflightTestData:(id)arg1;
 + (long long)phoneNumberValidationMode;

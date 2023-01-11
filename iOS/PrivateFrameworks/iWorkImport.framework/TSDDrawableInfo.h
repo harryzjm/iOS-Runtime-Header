@@ -10,7 +10,7 @@
 #import <iWorkImport/TSKSearchable-Protocol.h>
 #import <iWorkImport/TSKTransformableObject-Protocol.h>
 
-@class NSData, NSObject, NSString, NSURL, TSDDefaultPartitioner, TSDDrawableComment, TSDExteriorTextWrap, TSDInfoGeometry, TSPLazyReference, TSPObject, TSSPropertySetChangeDetails;
+@class NSArray, NSData, NSObject, NSSet, NSString, NSURL, TSDDefaultPartitioner, TSDDrawableComment, TSDExteriorTextWrap, TSDGroupInfo, TSDInfoGeometry, TSPLazyReference, TSPObject, TSSPropertySetChangeDetails;
 @protocol TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     TSDDefaultPartitioner *mDefaultPartitioner;
     NSURL *mHyperlinkURL;
     TSDDrawableComment *mComment;
+    NSArray *mPencilAnnotations;
     NSString *mAccessibilityDescription;
 }
 
@@ -41,25 +42,28 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment; // @synthesize owningAttachment=mOwningAttachment;
 - (void).cxx_destruct;
 @property(nonatomic) _Bool matchesObjectPlaceholderGeometry;
-- (struct CGPoint)transformableObjectAnchorPoint;
+@property(readonly, nonatomic) struct CGPoint transformableObjectAnchorPoint;
 - (id)transformedGeometryWithTransform:(struct CGAffineTransform)arg1 inBounds:(struct CGRect)arg2;
 - (double)transformGeometryRatioForTransform:(struct CGAffineTransform)arg1;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
-- (id)containingGroup;
+@property(readonly, nonatomic) TSDGroupInfo *containingGroup;
+- (void)finalizeDataOnDeepCopyBeforeSerializingForDragAndDrop;
+- (id)promisedTSPDataForType:(id)arg1;
 - (id)promisedDataForType:(id)arg1;
 - (id)typesToPromiseWhenCopyingSingleDrawable;
 - (id)descriptionForPasteboardWithSource:(id)arg1;
 - (id)descriptionForPasteboard;
-- (_Bool)requiresStagesBuildingInReverse;
-- (_Bool)suppliesFinalTextures;
+@property(readonly, nonatomic) _Bool requiresStagesBuildingInReverse;
+@property(readonly, nonatomic) _Bool contentsAreRightToLeft;
+@property(readonly, nonatomic) _Bool suppliesFinalTextures;
 - (id)textureDeliveryStylesLocalized:(_Bool)arg1 animationFilter:(id)arg2;
 - (unsigned long long)textureDeliveryStyleFromDeliveryString:(id)arg1;
 - (unsigned long long)chunkCountForTextureDeliveryStyle:(unsigned long long)arg1 byGlyphStyle:(int)arg2 animationFilter:(id)arg3;
 - (unsigned long long)chunkCountForTextureDeliveryStyle:(unsigned long long)arg1 animationFilter:(id)arg2;
-- (id)animationFilters;
+@property(readonly, nonatomic) NSSet *animationFilters;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
-- (_Bool)canChangeWrapType;
+@property(readonly, nonatomic) _Bool canChangeWrapType;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeRemovedFromDocumentRoot:(id)arg1;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
@@ -69,37 +73,44 @@ __attribute__((visibility("hidden")))
 - (void)willChangeProperties:(id)arg1;
 - (void)willChangeProperty:(int)arg1;
 - (void)beginCollectingChanges;
+@property(retain, nonatomic) NSArray *pencilAnnotations;
 @property(retain, nonatomic) TSDDrawableComment *comment;
 @property(readonly, nonatomic) _Bool supportsAttachedComments;
 - (_Bool)shouldCancelScrollingToSelectionPath:(id)arg1 forChanges:(id)arg2;
+@property(readonly, nonatomic) _Bool willRenderContentViaImager;
 - (struct CGPoint)autosizePositionOffsetForGeometry:(id)arg1 dynamicallyDraggedLayout:(id)arg2;
-- (_Bool)canAnchor;
+@property(readonly, nonatomic) _Bool canAnchor;
+@property(readonly, nonatomic) _Bool wantsPositionFixedWhenCopying;
 @property(readonly, nonatomic) NSData *originalPDFDataForCopy;
 @property(readonly, nonatomic) _Bool hasPDFDataForCopy;
 - (void)didCopy;
 - (void)willCopyWithOtherDrawables:(id)arg1;
+- (_Bool)shouldPreventCopyOperationWithOtherInfos:(id)arg1;
+@property(readonly, nonatomic) _Bool shouldBeIgnoredWhenCopying;
+@property(readonly, nonatomic) _Bool needsDownload;
 - (id)copyWithContext:(id)arg1;
 - (_Bool)isSelectable;
 @property(readonly, nonatomic, getter=isLockable) _Bool lockable;
-- (id)presetKind;
+@property(readonly, nonatomic) NSString *presetKind;
 @property(readonly, nonatomic) _Bool supportsHyperlinks;
 - (id)partitioner;
 - (_Bool)isThemeContent;
 - (Class)repClass;
 - (Class)layoutClass;
-@property(readonly, nonatomic) _Bool isUserModifiable;
 - (id)exteriorTextWrapForMovingToFloating;
 @property(copy, nonatomic) TSDExteriorTextWrap *exteriorTextWrap;
 @property(readonly, nonatomic, getter=isAttachedToBodyText) _Bool attachedToBodyText;
 @property(readonly, nonatomic, getter=isInlineWithText) _Bool inlineWithText;
 @property(readonly, nonatomic, getter=isAnchoredToText) _Bool anchoredToText;
 @property(readonly, nonatomic, getter=isFloatingAboveText) _Bool floatingAboveText;
-- (struct CGAffineTransform)transformInRoot;
-- (struct CGAffineTransform)fullTransformInRoot;
+@property(readonly, nonatomic) struct CGAffineTransform transformInRoot;
+@property(readonly, nonatomic) struct CGAffineTransform fullTransformInRoot;
 - (struct CGAffineTransform)computeFullTransform;
 - (struct CGAffineTransform)computeLayoutFullTransform;
 - (void)performBlockWithTemporaryLayout:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool allowsParentGroupToBeResizedWithoutAspectRatioLock;
+@property(readonly, nonatomic, getter=isAllowedInFreehandDrawings) _Bool allowedInFreehandDrawings;
+@property(readonly, nonatomic, getter=isAllowedInGroups) _Bool allowedInGroups;
 @property(readonly, nonatomic) _Bool supportsParentRotation;
 @property(readonly, nonatomic) _Bool canSizeBeChangedIncrementally;
 @property(readonly, nonatomic) _Bool canAspectRatioLockBeChangedByUser;

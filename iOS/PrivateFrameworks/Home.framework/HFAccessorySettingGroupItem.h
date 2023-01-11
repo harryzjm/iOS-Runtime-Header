@@ -6,12 +6,12 @@
 
 #import <Home/HFAccessorySettingItemProtocol-Protocol.h>
 
-@class HFAccessorySettingsEntity, HMAccessoryProfile, HMAccessorySelectionSetting, HMAccessorySettingGroup, NSString;
-@protocol HFAccessorySettings, HFHomeKitObject;
+@class HFAccessorySettingsEntity, HMAccessorySelectionSetting, HMAccessorySettingGroup, NSString;
+@protocol HFHomeKitObject, HFMediaProfileContainer;
 
 @interface HFAccessorySettingGroupItem <HFAccessorySettingItemProtocol>
 {
-    HMAccessoryProfile<HFAccessorySettings> *_accessoryProfile;
+    id <HFMediaProfileContainer> _mediaProfileContainer;
     HFAccessorySettingsEntity *_entity;
     HMAccessorySettingGroup *_settingGroup;
     HMAccessorySelectionSetting *_selectionSetting;
@@ -20,18 +20,19 @@
 @property(readonly, nonatomic) HMAccessorySelectionSetting *selectionSetting; // @synthesize selectionSetting=_selectionSetting;
 @property(readonly, nonatomic) HMAccessorySettingGroup *settingGroup; // @synthesize settingGroup=_settingGroup;
 @property(readonly, nonatomic) HFAccessorySettingsEntity *entity; // @synthesize entity=_entity;
-@property(readonly, nonatomic) HMAccessoryProfile<HFAccessorySettings> *accessoryProfile; // @synthesize accessoryProfile=_accessoryProfile;
+@property(readonly, nonatomic) id <HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
 - (void).cxx_destruct;
+- (void)_decorateHiddenOrDisabled:(id)arg1;
+- (_Bool)_validateKeyPathDependencies;
 - (id)_displayTitle;
 - (id)_subclass_updateWithOptions:(id)arg1;
 @property(readonly, nonatomic) id <HFHomeKitObject> homeKitObject;
 @property(readonly, nonatomic) NSString *settingKeyPath;
-- (id)accessory;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithAccessoryProfile:(id)arg1 selectionSetting:(id)arg2;
-- (id)initWithAccessoryProfile:(id)arg1 group:(id)arg2;
-- (id)initWithAccessoryProfile:(id)arg1 entity:(id)arg2;
-- (id)initWithAccessoryProfile:(id)arg1;
+- (id)initWithMediaProfileContainer:(id)arg1 selectionSetting:(id)arg2;
+- (id)initWithMediaProfileContainer:(id)arg1 group:(id)arg2;
+- (id)initWithMediaProfileContainer:(id)arg1 entity:(id)arg2;
+- (id)initWithMediaProfileContainer:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

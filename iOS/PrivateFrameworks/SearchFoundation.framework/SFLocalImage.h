@@ -12,7 +12,9 @@
 
 @interface SFLocalImage <SFLocalImage, NSSecureCoding, NSCopying>
 {
-    CDStruct_1ae5a928 _has;
+    struct {
+        unsigned int localImageType:1;
+    } _has;
     int _localImageType;
 }
 

@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class _MRGameControllerMessageProtobuf;
+
 @interface MRGameControllerMessage
 {
-    void *_event;
     unsigned long long _priority;
 }
 
@@ -14,8 +15,8 @@
 - (unsigned long long)priority;
 - (unsigned long long)type;
 @property(readonly, nonatomic) unsigned long long controllerID;
-@property(readonly, nonatomic) void *event;
-- (id)initWithGameControllerEvent:(void *)arg1 controllerID:(unsigned long long)arg2;
+@property(readonly, nonatomic) _MRGameControllerMessageProtobuf *event;
+- (id)initWithGameControllerEvent:(id)arg1 controllerID:(unsigned long long)arg2;
 
 @end
 

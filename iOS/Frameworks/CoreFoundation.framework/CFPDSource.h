@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     const char *_pathToTemporaryFileToWriteTo;
     NSObject<OS_dispatch_group> *_inProgressWriteGroup;
     struct __CFSet *_observingConnections;
+    struct os_unfair_lock_s _observingConnectionsLock;
     struct os_unfair_lock_s _lock;
     unsigned int _lastEuid;
     unsigned int _lastEgid;
@@ -33,16 +34,14 @@ __attribute__((visibility("hidden")))
     _Bool _managedUsesContainer;
     _Bool _neverCache;
     _Bool _checkedForNonPrefsPlist;
-    _Bool _hasDrainedPendingChangesSinceLastReplyToOwner;
     _Bool _restrictedReadability;
     _Bool _waitingForDeviceUnlock;
     _Bool _watchingParentDirectory;
     _Bool _disableBackup;
-    _Bool _hasPreviouslyBeenUnableToDetermineSandboxAccess;
 }
 
-+ (void)removeObservationConnectionsForIdentifier:(unsigned long long)arg1;
 - (void)dealloc;
+- (void)cleanUpAfterAcceptingMessage:(id)arg1;
 - (id)acceptMessage:(id)arg1;
 - (void)attachSizeWarningsToReply:(id)arg1 forByteCount:(unsigned long long)arg2;
 - (void)handleNoPlistFound;
@@ -50,7 +49,6 @@ __attribute__((visibility("hidden")))
 - (void)handleEUIDorEGIDMismatch;
 - (void)handleNeverCache;
 - (void)handleAvoidCache;
-- (id)copyCachedObservationConnectionForMessage:(id)arg1;
 - (void)setObserved:(_Bool)arg1 bySenderOfMessage:(id)arg2;
 - (void)stopNotifyingObserver:(id)arg1;
 - (int)validateMessage:(id)arg1 withNewKey:(id)arg2 newValue:(id)arg3 currentPlistData:(id)arg4 containerPath:(const char *)arg5 diagnosticMessage:(const char **)arg6;
@@ -59,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (int)validateSandboxForRead:(id)arg1 containerPath:(const char *)arg2;
 - (_Bool)validateSandboxForWrite:(id)arg1 containerPath:(const char *)arg2;
 - (_Bool)validateAccessToken:(int)arg1 accessType:(int)arg2;
+- (void)observingConnectionsLockedSync:(CDUnknownBlockType)arg1;
 - (void)lockedSync:(CDUnknownBlockType)arg1;
 - (void)lockedAsync:(CDUnknownBlockType)arg1;
 - (void)clearCache;
@@ -66,7 +65,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)enqueueNewKey:(id)arg1 value:(id)arg2 size:(unsigned long long)arg3 encoding:(int)arg4;
 - (_Bool)hasObservers;
 - (void)drainPendingChanges;
-- (void)asyncNotifyObserversOfWriteFromConnection:(id)arg1;
+- (void)observingConnectionWasInvalidated:(id)arg1;
+- (void)asyncNotifyObserversOfWriteFromConnection:(id)arg1 message:(id)arg2;
 - (id)copyPropertyListValidatingPlist:(_Bool)arg1;
 - (id)copyPropertyListWithoutDrainingPendingChangesValidatingPlist:(_Bool)arg1;
 - (void)handleDeviceUnlock;
@@ -79,14 +79,9 @@ __attribute__((visibility("hidden")))
 - (void)handleOpenForWritingFailureWithErrno:(int)arg1;
 - (void)setDirty:(_Bool)arg1;
 - (void)updateShmemEntry;
-- (_Bool)hasEverHadMultipleOwners;
-- (int)owner;
 - (short)shmemIndex;
 - (id)description;
 - (_Bool)byHost;
-- (void)removeOwner;
-- (void)addOwner:(id)arg1;
-- (void)transitionToMultiOwner;
 - (void)respondToFileWrittenToBehindOurBack;
 - (struct __CFString *)cloudConfigurationPath;
 - (struct __CFString *)container;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVAssetReaderOutputInternal, AVWeakReference, NSDictionary, NSString;
 
@@ -40,6 +40,8 @@
 - (id)_asset;
 - (void)setSupportsRandomAccess:(_Bool)arg1;
 - (_Bool)supportsRandomAccess;
+- (void)setMaximizePowerEfficiency:(_Bool)arg1;
+- (_Bool)maximizePowerEfficiency;
 @property(nonatomic) _Bool alwaysCopiesSampleData;
 @property(readonly, nonatomic) NSString *mediaType;
 - (void)finalize;

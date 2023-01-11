@@ -12,7 +12,7 @@
 #import <coreroutine/RTDaemonClientRegistrarVehicleEventProtocol-Protocol.h>
 #import <coreroutine/RTDaemonProtocol-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, NSXPCConnection, RTAccountManager, RTActionManager, RTAssetManager, RTAuthorizationManager, RTDaemonClientRegistrarAction, RTDaemonClientRegistrarApplicationPrediction, RTDaemonClientRegistrarScenarioTrigger, RTDaemonClientRegistrarVehicleEvent, RTDeviceLocationPredictor, RTDiagnostics, RTEventAgentManager, RTEventModelProvider, RTLearnedLocationManager, RTLocationManager, RTLocationStore, RTMetricManager, RTPredictedApplicationManager, RTPredictedContentManager, RTPurgeManager, RTRouteManager, RTScenarioTriggerManager, RTVehicleLocationProvider, RTVisitManager;
+@class NSMutableArray, NSMutableDictionary, NSSet, NSString, NSXPCConnection, RTAccountManager, RTActionManager, RTAssetManager, RTAuthorizationManager, RTDaemonClientRegistrarAction, RTDaemonClientRegistrarApplicationPrediction, RTDaemonClientRegistrarScenarioTrigger, RTDaemonClientRegistrarVehicleEvent, RTDeviceLocationPredictor, RTDiagnostics, RTEventAgentManager, RTEventModelProvider, RTFingerprintManager, RTLearnedLocationManager, RTLocationManager, RTLocationStore, RTMapServiceManager, RTMetricManager, RTPredictedApplicationManager, RTPurgeManager, RTRouteManager, RTScenarioTriggerManager, RTVehicleLocationProvider, RTVisitManager, RTWiFiManager;
 @protocol OS_dispatch_queue, RTClientListenerProtocol;
 
 @interface RTDaemonClient : NSObject <RTDaemonClientRegistrarApplicationPredictionProtocol, RTDaemonClientRegistrarVehicleEventProtocol, RTDaemonClientRegistrarScenarioTriggerProtocol, RTDaemonClientRegistrarActionProtocol, RTDaemonProtocol>
@@ -29,54 +29,64 @@
     id <RTClientListenerProtocol> _clientManagerDelegate;
     NSMutableDictionary *_restorationData;
     NSObject<OS_dispatch_queue> *_queue;
-    NSString *_executablePath;
-    NSString *_signingIdentifier;
-    NSString *_bundleIdentifier;
     NSMutableArray *_pendingNextPredictedLocationsOfInterestInvocations;
     RTDaemonClientRegistrarAction *_actionRegistrar;
     RTDaemonClientRegistrarApplicationPrediction *_predictedApplicationRegistrar;
     RTDaemonClientRegistrarVehicleEvent *_vehicleEventRegistrar;
     RTDaemonClientRegistrarScenarioTrigger *_scenarioTriggerRegistrar;
-    RTPredictedApplicationManager *_predictedApplicationManager;
-    RTScenarioTriggerManager *_scenarioTriggerManager;
-    RTVehicleLocationProvider *_vehicleLocationProvider;
+    RTAccountManager *_accountManager;
+    RTActionManager *_actionManager;
+    RTAssetManager *_assetManager;
     RTAuthorizationManager *_authorizationManager;
     RTDeviceLocationPredictor *_deviceLocationPredictor;
-    RTPurgeManager *_purgeManager;
-    RTActionManager *_actionManager;
-    RTEventModelProvider *_eventModelProvider;
-    RTVisitManager *_visitManager;
-    RTAssetManager *_assetManager;
-    RTLocationStore *_locationStore;
-    RTLocationManager *_locationManager;
-    RTEventAgentManager *_eventAgentManager;
     RTDiagnostics *_diagnostics;
+    RTEventAgentManager *_eventAgentManager;
+    RTEventModelProvider *_eventModelProvider;
+    RTFingerprintManager *_fingerprintManager;
     RTLearnedLocationManager *_learnedLocationManager;
-    RTRouteManager *_routeManager;
-    RTPredictedContentManager *_predictedContentManager;
-    RTAccountManager *_accountManager;
+    RTLocationManager *_locationManager;
+    RTLocationStore *_locationStore;
+    RTMapServiceManager *_mapServiceManager;
     RTMetricManager *_metricManager;
+    RTPredictedApplicationManager *_predictedApplicationManager;
+    RTPurgeManager *_purgeManager;
+    RTRouteManager *_routeManager;
+    RTScenarioTriggerManager *_scenarioTriggerManager;
+    RTVehicleLocationProvider *_vehicleLocationProvider;
+    RTVisitManager *_visitManager;
+    RTWiFiManager *_wifiManager;
+    NSSet *_clientsAuthorizedForRestrictedSPIs;
+    NSString *_executablePath;
+    NSString *_signingIdentifier;
+    NSString *_bundleIdentifier;
 }
 
-@property(retain, nonatomic) RTMetricManager *metricManager; // @synthesize metricManager=_metricManager;
-@property(retain, nonatomic) RTAccountManager *accountManager; // @synthesize accountManager=_accountManager;
-@property(retain, nonatomic) RTPredictedContentManager *predictedContentManager; // @synthesize predictedContentManager=_predictedContentManager;
-@property(retain, nonatomic) RTRouteManager *routeManager; // @synthesize routeManager=_routeManager;
-@property(retain, nonatomic) RTLearnedLocationManager *learnedLocationManager; // @synthesize learnedLocationManager=_learnedLocationManager;
-@property(retain, nonatomic) RTDiagnostics *diagnostics; // @synthesize diagnostics=_diagnostics;
-@property(retain, nonatomic) RTEventAgentManager *eventAgentManager; // @synthesize eventAgentManager=_eventAgentManager;
-@property(retain, nonatomic) RTLocationManager *locationManager; // @synthesize locationManager=_locationManager;
-@property(retain, nonatomic) RTLocationStore *locationStore; // @synthesize locationStore=_locationStore;
-@property(retain, nonatomic) RTAssetManager *assetManager; // @synthesize assetManager=_assetManager;
+@property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property(copy, nonatomic) NSString *signingIdentifier; // @synthesize signingIdentifier=_signingIdentifier;
+@property(nonatomic) int processIdentifier; // @synthesize processIdentifier=_processIdentifier;
+@property(copy, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
+@property(retain, nonatomic) NSSet *clientsAuthorizedForRestrictedSPIs; // @synthesize clientsAuthorizedForRestrictedSPIs=_clientsAuthorizedForRestrictedSPIs;
+@property(retain, nonatomic) RTWiFiManager *wifiManager; // @synthesize wifiManager=_wifiManager;
 @property(retain, nonatomic) RTVisitManager *visitManager; // @synthesize visitManager=_visitManager;
-@property(retain, nonatomic) RTEventModelProvider *eventModelProvider; // @synthesize eventModelProvider=_eventModelProvider;
-@property(retain, nonatomic) RTActionManager *actionManager; // @synthesize actionManager=_actionManager;
-@property(retain, nonatomic) RTPurgeManager *purgeManager; // @synthesize purgeManager=_purgeManager;
-@property(retain, nonatomic) RTDeviceLocationPredictor *deviceLocationPredictor; // @synthesize deviceLocationPredictor=_deviceLocationPredictor;
-@property(retain, nonatomic) RTAuthorizationManager *authorizationManager; // @synthesize authorizationManager=_authorizationManager;
 @property(retain, nonatomic) RTVehicleLocationProvider *vehicleLocationProvider; // @synthesize vehicleLocationProvider=_vehicleLocationProvider;
 @property(retain, nonatomic) RTScenarioTriggerManager *scenarioTriggerManager; // @synthesize scenarioTriggerManager=_scenarioTriggerManager;
+@property(retain, nonatomic) RTRouteManager *routeManager; // @synthesize routeManager=_routeManager;
+@property(retain, nonatomic) RTPurgeManager *purgeManager; // @synthesize purgeManager=_purgeManager;
 @property(retain, nonatomic) RTPredictedApplicationManager *predictedApplicationManager; // @synthesize predictedApplicationManager=_predictedApplicationManager;
+@property(retain, nonatomic) RTMetricManager *metricManager; // @synthesize metricManager=_metricManager;
+@property(retain, nonatomic) RTMapServiceManager *mapServiceManager; // @synthesize mapServiceManager=_mapServiceManager;
+@property(retain, nonatomic) RTLocationStore *locationStore; // @synthesize locationStore=_locationStore;
+@property(retain, nonatomic) RTLocationManager *locationManager; // @synthesize locationManager=_locationManager;
+@property(retain, nonatomic) RTLearnedLocationManager *learnedLocationManager; // @synthesize learnedLocationManager=_learnedLocationManager;
+@property(retain, nonatomic) RTFingerprintManager *fingerprintManager; // @synthesize fingerprintManager=_fingerprintManager;
+@property(retain, nonatomic) RTEventModelProvider *eventModelProvider; // @synthesize eventModelProvider=_eventModelProvider;
+@property(retain, nonatomic) RTEventAgentManager *eventAgentManager; // @synthesize eventAgentManager=_eventAgentManager;
+@property(retain, nonatomic) RTDiagnostics *diagnostics; // @synthesize diagnostics=_diagnostics;
+@property(retain, nonatomic) RTDeviceLocationPredictor *deviceLocationPredictor; // @synthesize deviceLocationPredictor=_deviceLocationPredictor;
+@property(retain, nonatomic) RTAuthorizationManager *authorizationManager; // @synthesize authorizationManager=_authorizationManager;
+@property(retain, nonatomic) RTAssetManager *assetManager; // @synthesize assetManager=_assetManager;
+@property(retain, nonatomic) RTActionManager *actionManager; // @synthesize actionManager=_actionManager;
+@property(retain, nonatomic) RTAccountManager *accountManager; // @synthesize accountManager=_accountManager;
 @property(retain, nonatomic) RTDaemonClientRegistrarScenarioTrigger *scenarioTriggerRegistrar; // @synthesize scenarioTriggerRegistrar=_scenarioTriggerRegistrar;
 @property(retain, nonatomic) RTDaemonClientRegistrarVehicleEvent *vehicleEventRegistrar; // @synthesize vehicleEventRegistrar=_vehicleEventRegistrar;
 @property(retain, nonatomic) RTDaemonClientRegistrarApplicationPrediction *predictedApplicationRegistrar; // @synthesize predictedApplicationRegistrar=_predictedApplicationRegistrar;
@@ -87,18 +97,14 @@
 @property(nonatomic) _Bool leechVisits; // @synthesize leechVisits=_leechVisits;
 @property(nonatomic) _Bool monitorVisits; // @synthesize monitorVisits=_monitorVisits;
 @property(nonatomic) _Bool supported; // @synthesize supported=_supported;
-@property(nonatomic) _Bool enabled; // @synthesize enabled=_enabled;
-@property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property(copy, nonatomic) NSString *signingIdentifier; // @synthesize signingIdentifier=_signingIdentifier;
-@property(nonatomic) int processIdentifier; // @synthesize processIdentifier=_processIdentifier;
-@property(copy, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
+@property _Bool enabled; // @synthesize enabled=_enabled;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) NSMutableDictionary *restorationData; // @synthesize restorationData=_restorationData;
 @property(nonatomic) __weak id <RTClientListenerProtocol> clientManagerDelegate; // @synthesize clientManagerDelegate=_clientManagerDelegate;
 @property(copy, nonatomic) NSString *restorationIdentifier; // @synthesize restorationIdentifier=_restorationIdentifier;
 @property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 - (void).cxx_destruct;
-- (void)fetchPredictedContentForBundleWithIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (_Bool)_verifyClientUsingRestrictedSPIs:(id *)arg1;
 - (void)fetchAllRoutesForSettingsWithReply:(CDUnknownBlockType)arg1;
 - (void)sortRoutes:(id)arg1 toLocationOfInterestWithIdentifier:(id)arg2 fromLocation:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)userInteractionWithPredictedLocationOfInterest:(id)arg1 interaction:(unsigned long long)arg2 feedback:(id)arg3 geoMapItem:(id)arg4 reply:(CDUnknownBlockType)arg5;
@@ -144,8 +150,8 @@
 - (void)scenarioTriggerRegistrar:(id)arg1 didReceiveScenarioTriggers:(id)arg2 error:(id)arg3;
 - (void)fetchMonitoredScenarioTriggerTypesWithReply:(CDUnknownBlockType)arg1;
 - (void)stopMonitoringScenarioTriggerOfType:(unsigned long long)arg1;
-- (void)_startMonitoringScenarioTriggerOfType:(unsigned long long)arg1;
 - (void)startMonitoringScenarioTriggerOfType:(unsigned long long)arg1;
+- (void)fetchTransitionsBetweenStartDate:(id)arg1 endDate:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)fetchLocationsOfInterestVisitedBetweenStartDate:(id)arg1 endDate:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)fetchLocationOfInterestWithIdentifier:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)fetchLocationOfInterestAtLocation:(id)arg1 withReply:(CDUnknownBlockType)arg2;
@@ -161,6 +167,8 @@
 - (void)startLeechingVisits;
 - (void)stopMonitoringVisits;
 - (void)startMonitoringVisits;
+- (void)performBluePOIQueryLookingBack:(double)arg1 lookingAhead:(double)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)fetchCurrentPredictedLocationsOfInterestLookingBack:(double)arg1 lookingAhead:(double)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)fetchPredictedLocationsOfInterestOnDate:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)fetchPredictedLocationsOfInterestAssociatedToTitle:(id)arg1 location:(id)arg2 calendarIdentifier:(id)arg3 withReply:(CDUnknownBlockType)arg4;
 - (void)fetchLocationsOfInterestAssociatedToIdentifier:(id)arg1 withReply:(CDUnknownBlockType)arg2;
@@ -168,9 +176,7 @@
 - (void)fetchPredictedConditionsForAction:(id)arg1 dateInterval:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)provideFeedbackForAction:(id)arg1 engagementResult:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)actionRegistrar:(id)arg1 didReceiveActionConditions:(id)arg2 error:(id)arg3;
-- (void)_stopMonitoringPredictedConditionsForAction:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)stopMonitoringPredictedConditionsForAction:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_startMonitoringPredictedConditionsForAction:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)startMonitoringPredictedConditionsForAction:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)simulateApplicationPredictionWithBundleIdentifier:(id)arg1 reason:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)submitMetricWithIdentifier:(id)arg1 dictionary:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -186,7 +192,7 @@
 - (void)fetchLocationsOfInterestWithinDistance:(double)arg1 ofLocation:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 - (_Bool)hasEntitlement:(id)arg1;
 @property(readonly, copy) NSString *description;
-- (id)initWithQueue:(id)arg1 restorationData:(id)arg2 deviceLocationPredictor:(id)arg3 scenarioTriggerManager:(id)arg4 vehicleLocationProvider:(id)arg5 predictedApplicationManager:(id)arg6 actionManager:(id)arg7 eventModelProvider:(id)arg8 visitManager:(id)arg9 authorizationManager:(id)arg10 purgeManager:(id)arg11 assetManager:(id)arg12 locationStore:(id)arg13 locationManager:(id)arg14 eventAgentManager:(id)arg15 diagnostics:(id)arg16 learnedLocationManager:(id)arg17 routeManager:(id)arg18 predictedContentManager:(id)arg19 accountManager:(id)arg20 metricManager:(id)arg21;
+- (id)initWithQueue:(id)arg1 restorationData:(id)arg2 accountManager:(id)arg3 actionManager:(id)arg4 assetManager:(id)arg5 authorizationManager:(id)arg6 deviceLocationPredictor:(id)arg7 diagnostics:(id)arg8 eventAgentManager:(id)arg9 eventModelProvider:(id)arg10 fingerprintManager:(id)arg11 learnedLocationManager:(id)arg12 locationManager:(id)arg13 locationStore:(id)arg14 mapServiceManager:(id)arg15 metricManager:(id)arg16 predictedApplicationManager:(id)arg17 purgeManager:(id)arg18 routeManager:(id)arg19 scenarioTriggerManager:(id)arg20 vehicleLocationProvider:(id)arg21 visitManager:(id)arg22 wifiManager:(id)arg23;
 - (id)init;
 
 // Remaining properties

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NSDictionary, NSObject, NSURL;
+@class NSArray, NSDate, NSDictionary, NSObject, NSURL;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -18,9 +18,12 @@ __attribute__((visibility("hidden")))
     NSDictionary *_collectionInfo;
     NSDate *_currentPlaybackDate;
     NSDictionary *_deviceSpecificUserInfo;
+    NSArray *_artworkURLTemplates;
 }
 
 + (void)initialize;
+@property(copy, nonatomic) NSArray *artworkURLTemplates; // @synthesize artworkURLTemplates=_artworkURLTemplates;
+- (void).cxx_destruct;
 - (id)customDictionaryRepresentation;
 @property(copy, nonatomic) NSDictionary *deviceSpecificUserInfo;
 @property(copy, nonatomic) NSDate *currentPlaybackDate;
@@ -29,7 +32,6 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSDictionary *appMetrics;
 @property(copy, nonatomic) NSDictionary *userInfo;
 @property(copy, nonatomic) NSURL *assetURL;
-- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)initWithData:(id)arg1;

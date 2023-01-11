@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPSCNNConvolutionStateNode;
+@class MPSCNNConvolutionGradientStateNode;
 
 @interface MPSCNNConvolutionTransposeNode
 {
 }
 
 + (id)nodeWithSource:(id)arg1 convolutionState:(id)arg2 weights:(id)arg3;
++ (id)nodeWithSource:(id)arg1 convolutionGradientState:(id)arg2 weights:(id)arg3;
 - (struct FilterGraphNode *)newFilterNode;
-@property(readonly, nonatomic) MPSCNNConvolutionStateNode *convolutionState;
+- (id)convolutionState;
 - (id)initWithSource:(id)arg1 convolutionState:(id)arg2 weights:(id)arg3;
+@property(readonly, nonatomic) MPSCNNConvolutionGradientStateNode *convolutionGradientState;
+- (id)initWithSource:(id)arg1 convolutionGradientState:(id)arg2 weights:(id)arg3;
 
 @end
 

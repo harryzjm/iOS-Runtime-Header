@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSPObjectContextDelegate-Protocol.h>
 
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _isClosed;
     TSUTemporaryDirectory *_tempDirForSupport;
+    TSUTemporaryDirectory *_tempDirForCache;
     TSPObjectContext *_context;
     NSString *_documentPasswordHint;
     NSURL *_fileURL;
@@ -29,7 +30,8 @@ __attribute__((visibility("hidden")))
 - (id)supportDirectoryURL;
 - (id)documentCachePath;
 - (id)name;
-- (id)tskCachedDocumentInfo;
+- (id)tskDocumentInfo;
+- (id)logContext;
 @property(readonly, nonatomic) _Bool skipDocumentUpgrade;
 - (void)documentDidLoad;
 - (void)close;

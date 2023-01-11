@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSOrderedSet;
 @protocol OS_dispatch_queue;
@@ -12,8 +12,9 @@
 @interface MRNotificationClient : NSObject
 {
     unsigned long long _registeredNowPlayingObservers;
-    NSObject<OS_dispatch_queue> *_nowPlayingNotificationsQueue;
+    NSObject<OS_dispatch_queue> *_customNotificationsQueue;
     NSObject<OS_dispatch_queue> *_serialQueue;
+    NSObject<OS_dispatch_queue> *_notificationQueue;
     NSOrderedSet *_nowPlayingNotifications;
     NSOrderedSet *_routesChangedNotifications;
     NSOrderedSet *_volumeControlNotifications;
@@ -22,7 +23,6 @@
     NSOrderedSet *_supportedCommandsNotifications;
     NSOrderedSet *_voiceInputNotifications;
     NSOrderedSet *_errorNotifications;
-    CDUnknownBlockType _notificationCallback;
     _Bool _receivesExternalScreenTypeChangedNotifications;
     _Bool _receivesSupportedCommandsNotifications;
     _Bool _receivesRoutesChangedNotifications;
@@ -40,13 +40,16 @@
 @property(nonatomic) _Bool receivesRoutesChangedNotifications; // @synthesize receivesRoutesChangedNotifications=_receivesRoutesChangedNotifications;
 @property(nonatomic) _Bool receivesSupportedCommandsNotifications; // @synthesize receivesSupportedCommandsNotifications=_receivesSupportedCommandsNotifications;
 @property(nonatomic) _Bool receivesExternalScreenTypeChangedNotifications; // @synthesize receivesExternalScreenTypeChangedNotifications=_receivesExternalScreenTypeChangedNotifications;
+- (void).cxx_destruct;
+- (_Bool)_postNotification:(id)arg1 userInfo:(id)arg2 object:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (_Bool)postNotification:(id)arg1 userInfo:(id)arg2 object:(id)arg3;
+- (void)dispatchNotification:(id)arg1 userInfo:(id)arg2 object:(id)arg3;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *notificationQueue;
 @property(readonly, nonatomic, getter=isRegisteredForNowPlayingNotifications) _Bool registeredForNowPlayingNotifications;
 - (void)unregisterForNowPlayingNotifications;
+- (void)registerForNowPlayingNotificationsWithQueue:(id)arg1 force:(_Bool)arg2;
 - (void)registerForNowPlayingNotificationsWithQueue:(id)arg1;
-@property(copy, nonatomic) CDUnknownBlockType notificationCallback;
-- (void)dealloc;
-- (id)initWithNotificationCallback:(CDUnknownBlockType)arg1;
+- (id)init;
 
 @end
 

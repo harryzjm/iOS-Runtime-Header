@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardUIServices/FBUISceneContentManager-Protocol.h>
 #import <FrontBoardUIServices/FBUISceneSurrogate-Protocol.h>
@@ -75,7 +75,7 @@
 - (void)updateSettingsWithBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deactivate;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
-@property(readonly, retain, nonatomic) id <FBUISceneContentManager> contentManager; // @dynamic contentManager;
+@property(readonly, nonatomic) id <FBUISceneContentManager> contentManager; // @dynamic contentManager;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 identifier:(id)arg2 specification:(id)arg3;
 - (id)init;

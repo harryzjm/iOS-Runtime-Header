@@ -4,56 +4,54 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class MPAVController, NSString, UIImage;
-@protocol MPVolumeControllerDelegate;
+#import <MediaPlayer/MPVolumeControllerDataSourceDelegate-Protocol.h>
 
-@interface MPVolumeController : NSObject
+@class NSString;
+@protocol MPVolumeControllerDataSource, MPVolumeControllerDelegate;
+
+@interface MPVolumeController : NSObject <MPVolumeControllerDataSourceDelegate>
 {
-    MPAVController *_player;
-    NSString *_volumeAudioCategory;
-    _Bool _volumeWarningBlinking;
-    UIImage *_volumeWarningTrackImage;
-    _Bool _debugVolumeWarning;
-    _Bool _volumeWarningEnabled;
-    float _volumeValue;
-    float _EUVolumeLimit;
+    id <MPVolumeControllerDataSource> _dataSource;
+    int _volumeChangeCoalescingCount;
     id <MPVolumeControllerDelegate> _delegate;
-    long long _volumeWarningState;
 }
 
-@property(readonly, nonatomic) float EUVolumeLimit; // @synthesize EUVolumeLimit=_EUVolumeLimit;
-@property(readonly, nonatomic) long long volumeWarningState; // @synthesize volumeWarningState=_volumeWarningState;
-@property(readonly, nonatomic) _Bool volumeWarningEnabled; // @synthesize volumeWarningEnabled=_volumeWarningEnabled;
-@property(readonly, nonatomic) float volumeValue; // @synthesize volumeValue=_volumeValue;
+@property(retain, nonatomic) id <MPVolumeControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(nonatomic) __weak id <MPVolumeControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (float)_volumeFromAVController;
-- (_Bool)_isPlayerInValidState;
-- (void)_setVolumeWarningState:(long long)arg1;
-- (void)_internalSetVolumeValue:(float)arg1;
-- (void)_applicationWillEnterForegroundNotification:(id)arg1;
-- (void)_applicationDidEnterBackgroundNotification:(id)arg1;
-- (void)_isExternalPlaybackActiveDidChangeNotification:(id)arg1;
-- (void)_availableRoutesDidChangeNotification:(id)arg1;
-- (void)_volumeDidChange:(id)arg1;
-- (void)_mediaServerDiedNotification:(id)arg1;
-- (void)_EUVolumeLimitEnforcedDidChange:(id)arg1;
-- (void)_EUVolumeLimitDidChange:(id)arg1;
-- (void)_systemMuteDidChange:(id)arg1;
-- (void)_systemVolumeDidChange:(id)arg1;
-- (void)_tearDownNotifications;
-- (void)_setupNotifications;
-- (void)_forcefullySetVolumeValue:(float)arg1;
-- (void)updateVolumeWarningState;
-- (void)updateVolumeValue;
+- (_Bool)muted;
 @property(copy, nonatomic) NSString *volumeAudioCategory;
-@property(retain, nonatomic) MPAVController *player;
-@property(nonatomic) _Bool muted;
-- (float)setVolumeValue:(float)arg1;
-- (void)dealloc;
+- (void)volumeControllerDataSource:(id)arg1 didChangeVolumeAudioCategory:(id)arg2;
+- (void)volumeControllerDataSource:(id)arg1 didChangeVolumeWarning:(long long)arg2;
+- (void)volumeControllerDataSource:(id)arg1 didChangeEUVolumeLimitEnforced:(_Bool)arg2;
+- (void)volumeControllerDataSource:(id)arg1 didChangeEUVolumeLimit:(float)arg2;
+- (void)volumeControllerDataSource:(id)arg1 didChangeVolumeLabel:(id)arg2;
+- (void)volumeControllerDataSource:(id)arg1 didChangeVolumeControlAvailability:(_Bool)arg2;
+- (void)volumeControllerDataSource:(id)arg1 didChangeVolume:(float)arg2;
+- (void)volumeControllerDataSource:(id)arg1 didChangeMuted:(_Bool)arg2;
+- (void)_updateVolumeControlAvailability;
+- (void)updateVolumeWarningState;
+@property(readonly, nonatomic) float EUVolumeLimit;
+@property(readonly, nonatomic) long long volumeWarningState;
+@property(readonly, nonatomic) _Bool volumeWarningEnabled;
+- (void)setVolume:(float)arg1 withNoticationDelay:(float)arg2;
+- (void)getVolumeValueWithCompletion:(CDUnknownBlockType)arg1;
+- (void)adjustVolumeValue:(float)arg1;
+- (void)updateVolumeValue;
+@property(nonatomic, getter=isMuted) _Bool muted;
+@property(nonatomic) float volumeValue;
+@property(readonly, copy, nonatomic) NSString *volumeControlLabel;
+@property(readonly, nonatomic, getter=isVolumeControlAvailable) _Bool volumeControlAvailable;
+- (id)initWithDataSource:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -4,18 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class RTDefaultsManager;
+
 @interface RTStarkManager
 {
+    RTDefaultsManager *_defaultsManager;
 }
 
 + (_Bool)supportsNotificationName:(id)arg1;
 + (id)allocWithZone:(struct _NSZone *)arg1;
+@property(retain, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
+- (void).cxx_destruct;
 - (void)_fetchConnectionStateWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchConnectionStateWithHandler:(CDUnknownBlockType)arg1;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
-- (void)_shutdown;
-- (void)shutdown;
+- (id)initWithDefaultsManager:(id)arg1;
+- (id)init;
 
 @end
 

@@ -4,16 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PCSCKKSItemModifyContext;
+@class CKKSControl, NSString, PCSCKKSItemModifyContext;
 
 @interface PCSCKKSSyncViewOperation
 {
     PCSCKKSItemModifyContext *_context;
+    CKKSControl *_CKKSControl;
+    NSString *_view;
 }
 
+@property(retain) NSString *view; // @synthesize view=_view;
+@property(retain) CKKSControl *CKKSControl; // @synthesize CKKSControl=_CKKSControl;
 @property(readonly) PCSCKKSItemModifyContext *context; // @synthesize context=_context;
 - (void).cxx_destruct;
-- (void)syncView:(id)arg1;
+- (void)syncView;
+- (void)checkTLKStatus;
+- (_Bool)ensureControl;
 - (void)start;
 - (id)initWithItemModifyContext:(id)arg1;
 

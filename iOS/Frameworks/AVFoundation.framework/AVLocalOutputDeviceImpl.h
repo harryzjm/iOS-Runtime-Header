@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/AVOutputDeviceImpl-Protocol.h>
 
-@class AVOutputDevice, NSArray, NSData, NSNumber, NSString;
+@class AVOutputDevice, NSArray, NSData, NSDictionary, NSNumber, NSString;
 
+__attribute__((visibility("hidden")))
 @interface AVLocalOutputDeviceImpl : NSObject <AVOutputDeviceImpl>
 {
     AVOutputDevice *_parentDevice;
@@ -17,8 +18,16 @@
 
 @property __weak AVOutputDevice *parentOutputDevice; // @synthesize parentOutputDevice=_parentDevice;
 - (void).cxx_destruct;
-- (void)setAdministrativeConfiguration:(id)arg1 administrationPassword:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)configureUsingBlock:(CDUnknownBlockType)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+@property(readonly, nonatomic) _Bool presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
+@property(readonly, nonatomic) _Bool canFetchMediaDataFromSender;
+@property(readonly, nonatomic) _Bool canPlayEncryptedProgressiveDownloadAssets;
+@property(readonly, nonatomic) _Bool canRelayCommunicationChannel;
+@property(readonly, nonatomic) _Bool canCommunicateWithAllLogicalDeviceMembers;
+@property(readonly, nonatomic) _Bool isLogicalDeviceLeader;
+@property(readonly, nonatomic) NSString *logicalDeviceID;
 @property(readonly, nonatomic) _Bool groupContainsGroupLeader;
+@property(readonly, nonatomic) _Bool participatesInGroupPlayback;
 @property(readonly, nonatomic) _Bool isGroupLeader;
 @property(readonly, nonatomic) _Bool canBeGroupLeader;
 @property(readonly, copy, nonatomic) NSString *groupID;
@@ -27,17 +36,26 @@
 @property(readonly) _Bool canSetVolume;
 @property(readonly) float volume;
 - (void)setSecondDisplayEnabled:(_Bool)arg1;
+@property(readonly, nonatomic) _Bool supportsBufferedAirPlay;
+@property(readonly, nonatomic) _Bool canAccessiCloudMusicLibrary;
+@property(readonly, nonatomic) _Bool canAccessAppleMusic;
 @property(readonly, nonatomic) _Bool canAccessRemoteAssets;
+@property(readonly, nonatomic) _Bool onlyAllowsConnectionsFromPeersInHomeGroup;
+@property(readonly, nonatomic) _Bool automaticallyAllowsConnectionsFromPeersInHomeGroup;
 @property(readonly, nonatomic) _Bool requiresAuthorization;
 @property(readonly, nonatomic) unsigned long long deviceFeatures;
 @property(readonly, copy, nonatomic) NSArray *connectedPairedDevices;
 @property(readonly, nonatomic, getter=isInUseByPairedDevice) _Bool inUseByPairedDevice;
+@property(readonly, nonatomic) NSDictionary *airPlayProperties;
 @property(readonly, nonatomic) NSNumber *rightBatteryLevel;
 @property(readonly, nonatomic) NSNumber *leftBatteryLevel;
 @property(readonly, nonatomic) NSNumber *caseBatteryLevel;
 @property(readonly, nonatomic) NSNumber *batteryLevel;
 @property(readonly, copy, nonatomic) NSData *identifyingMACAddress;
+@property(readonly, nonatomic) NSString *firmwareVersion;
+@property(readonly, nonatomic) NSString *serialNumber;
 @property(readonly, copy, nonatomic) NSString *modelID;
+@property(readonly, nonatomic) NSString *manufacturer;
 @property(readonly, nonatomic) long long deviceSubType;
 @property(readonly, nonatomic) long long deviceType;
 @property(readonly, copy, nonatomic) NSString *ID;

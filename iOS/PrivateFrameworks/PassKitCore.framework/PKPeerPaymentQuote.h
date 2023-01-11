@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDecimalNumber, NSString, NSURL, PKPeerPaymentRecipient;
+@class NSArray, NSData, NSDate, NSDecimalNumber, NSString, NSURL, PKCurrencyAmount, PKPeerPaymentRecipient;
 
 @interface PKPeerPaymentQuote : NSObject <NSSecureCoding>
 {
@@ -26,9 +26,15 @@
     NSString *_totalFeesCurrency;
     NSDate *_validUntil;
     PKPeerPaymentRecipient *_recipient;
+    NSString *_bankName;
+    NSString *_routingNumber;
+    NSString *_accountNumber;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(copy, nonatomic) NSString *accountNumber; // @synthesize accountNumber=_accountNumber;
+@property(copy, nonatomic) NSString *routingNumber; // @synthesize routingNumber=_routingNumber;
+@property(copy, nonatomic) NSString *bankName; // @synthesize bankName=_bankName;
 @property(retain, nonatomic) PKPeerPaymentRecipient *recipient; // @synthesize recipient=_recipient;
 @property(readonly, copy, nonatomic) NSDate *validUntil; // @synthesize validUntil=_validUntil;
 @property(readonly, copy, nonatomic) NSString *totalFeesCurrency; // @synthesize totalFeesCurrency=_totalFeesCurrency;
@@ -52,6 +58,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+@property(readonly, nonatomic) PKCurrencyAmount *calculatedTotalAmount;
 @property(readonly, nonatomic) double validityDuration;
 
 @end

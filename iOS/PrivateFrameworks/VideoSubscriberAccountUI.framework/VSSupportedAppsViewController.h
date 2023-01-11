@@ -11,7 +11,7 @@
 
 @interface VSSupportedAppsViewController : UIViewController
 {
-    VSOptional *_identityProviderID;
+    VSOptional *_identityProvider;
     VSAuditToken *_auditToken;
     id <VSSupportedAppsViewControllerDelegate> _delegate;
     NSOperationQueue *_privateQueue;
@@ -22,7 +22,7 @@
 @property(retain, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property(nonatomic) __weak id <VSSupportedAppsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
-@property(retain, nonatomic) VSOptional *identityProviderID; // @synthesize identityProviderID=_identityProviderID;
+@property(retain, nonatomic) VSOptional *identityProvider; // @synthesize identityProvider=_identityProvider;
 - (void).cxx_destruct;
 - (void)viewDidLoad;
 - (void)beginLoadingApps;

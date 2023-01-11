@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol IMBatteryStatusTestDelegate;
 
@@ -13,8 +13,9 @@
     id <IMBatteryStatusTestDelegate> _testDelegate;
 }
 
+@property(nonatomic) __weak id <IMBatteryStatusTestDelegate> testDelegate; // @synthesize testDelegate=_testDelegate;
+- (void).cxx_destruct;
 @property(readonly, getter=isCharging) _Bool charging;
-- (void)setTestDelegate:(id)arg1;
 
 @end
 

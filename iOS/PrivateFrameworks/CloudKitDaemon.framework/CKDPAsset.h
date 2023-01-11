@@ -16,7 +16,9 @@ __attribute__((visibility("hidden")))
     long long _downloadTokenExpiration;
     long long _downloadURLExpiration;
     long long _size;
+    NSString *_assetAuthorizationResponseUUID;
     NSData *_assetCopyMetadata;
+    NSData *_clearAssetKey;
     NSString *_contentBaseURL;
     NSString *_derivedContentType;
     NSString *_downloadBaseURL;
@@ -37,6 +39,8 @@ __attribute__((visibility("hidden")))
     } _has;
 }
 
+@property(retain, nonatomic) NSString *assetAuthorizationResponseUUID; // @synthesize assetAuthorizationResponseUUID=_assetAuthorizationResponseUUID;
+@property(retain, nonatomic) NSData *clearAssetKey; // @synthesize clearAssetKey=_clearAssetKey;
 @property(retain, nonatomic) NSData *assetCopyMetadata; // @synthesize assetCopyMetadata=_assetCopyMetadata;
 @property(nonatomic) long long downloadTokenExpiration; // @synthesize downloadTokenExpiration=_downloadTokenExpiration;
 @property(retain, nonatomic) NSData *referenceSignature; // @synthesize referenceSignature=_referenceSignature;
@@ -64,6 +68,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(readonly, nonatomic) _Bool hasAssetAuthorizationResponseUUID;
+@property(readonly, nonatomic) _Bool hasClearAssetKey;
 @property(readonly, nonatomic) _Bool hasAssetCopyMetadata;
 @property(nonatomic) _Bool hasDownloadTokenExpiration;
 @property(readonly, nonatomic) _Bool hasReferenceSignature;

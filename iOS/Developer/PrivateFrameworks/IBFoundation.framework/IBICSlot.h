@@ -30,9 +30,12 @@
 + (id)decodeWithBinaryUnarchiver:(id)arg1;
 + (id)genesisSlotsForSlots:(id)arg1;
 + (id)slotWithComponents:(id)arg1;
++ (id)rootNameFromPath:(id)arg1;
++ (id)slotFromFileName:(id)arg1 returningRootName:(id *)arg2 andExtension:(id *)arg3 withDefaults:(id)arg4;
 + (id)slotFromFileName:(id)arg1 returningRootName:(id *)arg2 andExtension:(id *)arg3;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (void)initialize;
++ (id)slotWithComponents:(id *)arg1 count:(unsigned long long)arg2 unknownIDs:(id)arg3;
 + (id)slotWithComponents:(id *)arg1 count:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (id)baseSlotWithoutSecondaryVariations;

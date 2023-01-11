@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <coreroutine/RTMapItemProvider-Protocol.h>
 
 @class NSString, RTEventManager, RTMapServiceManager;
 
-@interface RTMapItemProviderEventKit : NSObject <RTMapItemProvider>
+@interface RTMapItemProviderEventKit <RTMapItemProvider>
 {
     RTEventManager *_eventManager;
     RTMapServiceManager *_mapServiceManager;
@@ -20,7 +18,7 @@
 @property(retain, nonatomic) RTEventManager *eventManager; // @synthesize eventManager=_eventManager;
 - (void).cxx_destruct;
 - (id)mapItemsWithinDistance:(double)arg1 location:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 error:(id *)arg5;
-- (id)initWithEventManager:(id)arg1 mapServiceManager:(id)arg2;
+- (id)initWithDistanceCalculator:(id)arg1 eventManager:(id)arg2 mapServiceManager:(id)arg3;
 - (id)init;
 
 // Remaining properties

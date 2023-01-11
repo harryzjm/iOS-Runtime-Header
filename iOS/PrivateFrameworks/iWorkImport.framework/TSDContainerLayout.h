@@ -4,13 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSObject;
+@protocol TSDContainerInfo;
+
 __attribute__((visibility("hidden")))
 @interface TSDContainerLayout
 {
 }
 
-- (id)containerInfo;
+@property(readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
 - (void)updateChildrenFromInfo;
+- (void)processChangedProperty:(int)arg1;
+- (id)additionalInfosForChildLayouts;
 - (id)initWithInfo:(id)arg1;
 
 @end

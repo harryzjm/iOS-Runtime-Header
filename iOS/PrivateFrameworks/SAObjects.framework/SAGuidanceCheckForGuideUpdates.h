@@ -16,7 +16,6 @@
 + (id)checkForGuideUpdates;
 - (_Bool)requiresResponse;
 @property(copy, nonatomic) NSArray *supportedFeatures;
-@property(copy, nonatomic) NSNumber *currentSuggestedUtterancesTag;
 @property(copy, nonatomic) NSNumber *currentGuideTag;
 - (id)encodedClassName;
 - (id)groupIdentifier;

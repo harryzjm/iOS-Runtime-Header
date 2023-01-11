@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class GQDTTable;
 
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     int mPrevRowIndex;
     int mPrevColumnIndex;
     GQDTTable *mTable;
-    vector_eef16772 *mCellCountInColumns;
+    vector_8d85e9cb *mCellCountInColumns;
     int mGroupLevel;
     _Bool mSplitTable;
     double mCurrentTablePosition;
@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)splitTable;
 - (void)setGroupLevel:(int)arg1;
 - (int)groupLevel;
-- (vector_eef16772 *)cellCountInColumns;
+- (vector_8d85e9cb *)cellCountInColumns;
 - (void)setTable:(id)arg1;
 - (id)table;
 - (void)setPrevRowIndex:(int)arg1 columnIndex:(int)arg2;

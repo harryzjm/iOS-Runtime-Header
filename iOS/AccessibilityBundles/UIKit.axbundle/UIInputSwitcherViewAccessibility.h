@@ -14,7 +14,6 @@
 - (void)willFadeForSelectionAtIndex:(unsigned long long)arg1;
 - (void)_segmentControlValueDidChange:(id)arg1;
 - (_Bool)accessibilityViewIsModal;
-- (void)didSelectItemAtIndex:(unsigned long long)arg1;
 - (void)updateSelectionWithPoint:(struct CGPoint)arg1;
 - (id)accessibilityIdentifier;
 - (void)_accessibilitySetLastHandednessBiasAnnouncement:(id)arg1;

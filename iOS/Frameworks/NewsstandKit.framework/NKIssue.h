@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <NewsstandKit/NSSecureCoding-Protocol.h>
 
 @class NKLibrary, NSArray, NSDate, NSMapTable, NSMutableArray, NSMutableSet, NSString, NSURL;
 
-@interface NKIssue : NSObject
+@interface NKIssue : NSObject <NSSecureCoding>
 {
     NKLibrary *_library;
     NSString *_name;
@@ -21,6 +23,7 @@
     _Bool _isDecodingValid;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(copy) NSString *directory; // @synthesize directory=_directory;
 @property(copy) NSDate *date; // @synthesize date=_date;
 @property(copy) NSString *name; // @synthesize name=_name;
@@ -31,8 +34,7 @@
 - (_Bool)_isDecodingValid;
 - (id)_assetsForRequest:(id)arg1;
 - (id)_directory;
-- (void)_setLibrary:(id)arg1;
-- (id)_library;
+@property(nonatomic, setter=_setLibrary:) NKLibrary *_library;
 - (id)addAssetWithRequest:(id)arg1;
 @property(readonly) long long status;
 @property(readonly, copy) NSURL *contentURL;

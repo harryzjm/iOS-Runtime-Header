@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ICMediaAVAssetDownloadOptions, ICStoreRequestContext, ICURLRequest, ICURLResponse, ICURLSession, NSURL;
+@class ICMediaAVAssetDownloadOptions, ICStoreRequestContext, ICURLRequest, ICURLResponse, ICURLSession, NSData, NSURL;
 
 @interface ICMediaAssetDownloadRequest
 {
@@ -19,8 +19,10 @@
     _Bool _discretionary;
     _Bool _requiresPower;
     NSURL *_destinationURL;
+    NSData *_resumeData;
 }
 
+@property(retain, nonatomic) NSData *resumeData; // @synthesize resumeData=_resumeData;
 @property(nonatomic) _Bool requiresPower; // @synthesize requiresPower=_requiresPower;
 @property(nonatomic, getter=isDiscretionary) _Bool discretionary; // @synthesize discretionary=_discretionary;
 @property(nonatomic) _Bool allowsCellularFallback; // @synthesize allowsCellularFallback=_allowsCellularFallback;
@@ -32,7 +34,7 @@
 - (void)cancel;
 - (void)execute;
 - (void)performRequestWithResponseHandler:(CDUnknownBlockType)arg1;
-- (id)initWithRequestContext:(id)arg1 assetURL:(id)arg2 avAssetDownloadOptions:(id)arg3;
+- (id)initWithRequestContext:(id)arg1 assetURL:(id)arg2 avAssetDownloadOptions:(id)arg3 resumeData:(id)arg4;
 
 @end
 

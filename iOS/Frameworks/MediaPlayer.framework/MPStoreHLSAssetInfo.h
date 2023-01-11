@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class ICStoreHLSAssetInfo, NSURL;
 
@@ -15,6 +15,9 @@
 
 - (void).cxx_destruct;
 @property(readonly, nonatomic, getter=isiTunesStoreStream) _Bool iTunesStoreStream;
+@property(readonly, copy, nonatomic) NSURL *alternateKeyServerURL;
+@property(readonly, copy, nonatomic) NSURL *alternateKeyCertificateURL;
+@property(readonly, copy, nonatomic) NSURL *alternatePlaylistURL;
 @property(readonly, copy, nonatomic) NSURL *keyServerURL;
 @property(readonly, copy, nonatomic) NSURL *keyCertificateURL;
 @property(readonly, copy, nonatomic) NSURL *playlistURL;

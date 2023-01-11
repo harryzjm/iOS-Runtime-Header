@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -14,6 +14,8 @@
     NSString *_query;
 }
 
++ (id)predicateForContactsMatchingPreferredChannel:(id)arg1 limitOne:(_Bool)arg2;
++ (id)predicateForContactsInRange:(struct _NSRange)arg1 allowedStoreIdentifiers:(id)arg2 sortOrder:(int)arg3;
 + (id)predicateForContactsInRange:(struct _NSRange)arg1 sortOrder:(int)arg2;
 + (id)predicateForContactsMatchingOrganizationName:(id)arg1;
 + (id)predicateForSingleContactMatchingMultivalueProperty:(int)arg1 value:(id)arg2;

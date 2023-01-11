@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <GameKitServices/NSCoding-Protocol.h>
+#import <GameKitServices/NSSecureCoding-Protocol.h>
 
 @class NSData;
 
-@interface GCKOOBMessage : NSObject <NSCoding>
+@interface GCKOOBMessage : NSObject <NSSecureCoding>
 {
     unsigned int type;
     unsigned int band;
     NSData *data;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

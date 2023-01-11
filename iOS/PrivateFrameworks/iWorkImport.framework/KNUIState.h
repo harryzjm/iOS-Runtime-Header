@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
-@class KNMacUILayout, KNSlideCollectionSelection, NSArray, NSMutableDictionary, NSSet, TSKSelectionPath;
+@class KNMacUILayout, KNSlideCollectionSelection, NSArray, NSMutableDictionary, NSSet, TSDFreehandDrawingToolkitUIState, TSKSelectionPath;
 
 __attribute__((visibility("hidden")))
 @interface KNUIState : NSObject <NSCopying>
@@ -40,10 +40,12 @@ __attribute__((visibility("hidden")))
     NSSet *_outlineCollapsedSlideNodes;
     NSSet *_outlineHasBodySlideNodes;
     NSArray *_elementListExpandedGroups;
+    TSDFreehandDrawingToolkitUIState *_freehandDrawingToolkitUIState;
     struct CGPoint _desktopMainWindowOrigin;
     struct CGSize _desktopMainContentSize;
 }
 
+@property(retain, nonatomic) TSDFreehandDrawingToolkitUIState *freehandDrawingToolkitUIState; // @synthesize freehandDrawingToolkitUIState=_freehandDrawingToolkitUIState;
 @property(nonatomic) _Bool showsRuler; // @synthesize showsRuler=_showsRuler;
 @property(nonatomic) _Bool showsComments; // @synthesize showsComments=_showsComments;
 @property(nonatomic) _Bool showMasterGuides; // @synthesize showMasterGuides=_showMasterGuides;

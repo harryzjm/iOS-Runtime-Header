@@ -10,7 +10,7 @@
 #import <PassKitUI/PKPaymentAuthorizationFooterViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentAuthorizationStateMachineDelegate-Protocol.h>
 
-@class NSArray, NSString, NSTimer, PKAuthenticator, PKContinuityPaymentCardSummaryView, PKContinuityPaymentFaviconView, PKPaymentAuthorizationFooterView, PKPaymentAuthorizationStateMachine, PKPhysicalButtonView, PKRemotePaymentRequest, UILabel, UIStackView, UIView, _UIBackdropView;
+@class LAUIPhysicalButtonView, NSArray, NSString, NSTimer, PKAuthenticator, PKContinuityPaymentCardSummaryView, PKContinuityPaymentFaviconView, PKPaymentAuthorizationFooterView, PKPaymentAuthorizationStateMachine, PKRemotePaymentRequest, UILabel, UIStackView, UIView, _UIBackdropView;
 @protocol PKPaymentAuthorizationHostProtocol;
 
 @interface PKContinuityPaymentViewController : UIViewController <PKAuthenticatorDelegate, PKPaymentAuthorizationFooterViewDelegate, PKPaymentAuthorizationStateMachineDelegate>
@@ -18,7 +18,7 @@
     _UIBackdropView *_backdropView;
     UIView *_dimmingBackgroundView;
     UIView *_compactRegion;
-    PKPhysicalButtonView *_physicalButtonView;
+    LAUIPhysicalButtonView *_physicalButtonView;
     UILabel *_requestingDeviceLabel;
     UILabel *_requestingSiteLabel;
     UILabel *_priceLabel;
@@ -61,7 +61,8 @@
 - (void)_didCancel;
 - (void)_didFailWithFatalError:(id)arg1;
 - (void)_didFailWithError:(id)arg1;
-- (void)_didSucceed;
+- (void)_updatePendingTransaction:(id)arg1 withAuthorizationStateParam:(id)arg2;
+- (void)_didSucceedWithAuthorizationStateParam:(id)arg1;
 - (id)_evaluationRequest;
 - (long long)_authenticatorPolicy;
 - (void)_startEvaluation;
@@ -70,7 +71,9 @@
 - (void)authorizationDidAuthorizePaymentCompleteWithResult:(id)arg1;
 - (void)_processClientCallback:(id)arg1;
 - (_Bool)paymentAuthorizationStateMachine:(id)arg1 didTransitionFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3 withParam:(id)arg4;
+- (void)invalidate;
 - (void)updatePaymentWithClientUpdate:(id)arg1;
+- (void)_updateCardView;
 - (void)_timeoutFired;
 - (void)_resetAndScheduleTimeout;
 - (void)_cancelPassphrasePressed;
@@ -80,7 +83,9 @@
 - (void)_setPassphraseViewController:(id)arg1;
 - (void)_setPasscodeViewController:(id)arg1;
 - (void)_setAuthenticating:(_Bool)arg1;
+- (void)setProgressState:(long long)arg1 string:(id)arg2 animated:(_Bool)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)setProgressState:(long long)arg1 string:(id)arg2 animated:(_Bool)arg3;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(_Bool)arg1;

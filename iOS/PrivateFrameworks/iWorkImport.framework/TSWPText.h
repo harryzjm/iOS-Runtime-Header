@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSWPColumnMetrics-Protocol.h>
 #import <iWorkImport/TSWPLayoutOwner-Protocol.h>
@@ -42,7 +42,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) int naturalDirection; // @synthesize naturalDirection=_naturalDirection;
 @property(readonly, nonatomic) int naturalAlignment; // @synthesize naturalAlignment=_naturalAlignment;
 @property(readonly, nonatomic) TSWPStorage *storage; // @synthesize storage=_storage;
-@property(readonly, retain, nonatomic) NSMutableArray *columns; // @synthesize columns=_columns;
+@property(readonly, nonatomic) NSMutableArray *columns; // @synthesize columns=_columns;
+- (void).cxx_destruct;
 - (void)p_setParentLayoutMaximumFrameSizeForChildren;
 - (_Bool)forceWesternLineBreaking;
 - (id)textWrapper;
@@ -77,10 +78,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) TSPObject<TSDHint> *nextTargetFirstChildHint;
 @property(readonly, nonatomic) id <TSWPFootnoteMarkProvider> footnoteMarkProvider;
 @property(readonly, nonatomic) id <TSWPFootnoteHeightMeasurer> footnoteHeightMeasurer;
-@property(readonly, retain, nonatomic) id <TSWPOffscreenColumn> nextTargetFirstColumn;
+@property(readonly, nonatomic) id <TSWPOffscreenColumn> nextTargetFirstColumn;
 @property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *nextTargetTopicNumbers;
 @property(readonly, nonatomic) NSObject<TSWPTopicNumberHints> *previousTargetTopicNumbers;
-@property(readonly, retain, nonatomic) id <TSWPOffscreenColumn> previousTargetLastColumn;
+@property(readonly, nonatomic) id <TSWPOffscreenColumn> previousTargetLastColumn;
 - (id)columnMetricsForCharIndex:(unsigned long long)arg1 outRange:(struct _NSRange *)arg2;
 @property(readonly, nonatomic) _Bool columnsAreLeftToRight;
 @property(readonly, nonatomic) _Bool shrinkTextToFit;
@@ -102,7 +103,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *childLayouts;
 - (id)layoutTextStorage:(id)arg1 minSize:(struct CGSize)arg2 maxSize:(struct CGSize)arg3 anchor:(struct CGPoint)arg4 pageNumber:(unsigned long long)arg5 pageCount:(unsigned long long)arg6 flags:(int)arg7;
 - (id)layoutTextStorage:(id)arg1 minSize:(struct CGSize)arg2 maxSize:(struct CGSize)arg3 anchor:(struct CGPoint)arg4 flags:(int)arg5;
-- (void)dealloc;
 - (id)init;
 - (id)initWithParagraphStyle:(id)arg1 columnStyle:(id)arg2;
 - (id)initWithParagraphStyle:(id)arg1 listStyle:(id)arg2 columnStyle:(id)arg3;
@@ -116,6 +116,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) struct __CFLocale *hyphenationLocale;
 @property(readonly, nonatomic) _Bool isLinked;
+@property(readonly, nonatomic) _Bool marginsAreMirrored;
 @property(readonly, nonatomic) struct CGRect maskRect;
 @property(readonly, nonatomic) TSDLayout *parentLayoutForInlineAttachments;
 @property(readonly, nonatomic) _Bool repShouldPreventCaret;

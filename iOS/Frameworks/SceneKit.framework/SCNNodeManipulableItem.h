@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+__attribute__((visibility("hidden")))
 @interface SCNNodeManipulableItem
 {
 }
@@ -17,6 +18,7 @@
 - (void)setPosition:(struct SCNVector3)arg1;
 - (struct SCNVector3)scale;
 - (struct SCNMatrix4)worldTransform;
+- (void)setWorldTransform:(struct SCNMatrix4)arg1;
 - (void)setTransform:(struct SCNMatrix4)arg1;
 - (struct SCNMatrix4)transform;
 - (_Bool)isNodeManipulator;

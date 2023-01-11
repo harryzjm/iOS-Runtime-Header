@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <iCalendar/NSCoding-Protocol.h>
+#import <iCalendar/NSSecureCoding-Protocol.h>
 
-@interface ICSDateTimeValue <NSCoding>
+@interface ICSDateTimeValue <NSSecureCoding>
 {
     long long _hour;
     long long _minute;
     long long _second;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(readonly) long long second; // @synthesize second=_second;
 @property(readonly) long long minute; // @synthesize minute=_minute;
 @property(readonly) long long hour; // @synthesize hour=_hour;

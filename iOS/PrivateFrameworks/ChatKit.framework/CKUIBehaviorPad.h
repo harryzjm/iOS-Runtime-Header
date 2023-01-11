@@ -8,6 +8,7 @@
 {
 }
 
+- (double)welcomeViewContentViewTopAnchorLayoutConstraintConstant;
 - (_Bool)shouldPopoverSuggestionsBanner;
 - (unsigned long long)suggestedAppStripLimit;
 - (id)fullscreenPickerActionLayoutAxisPrioritiesForWidth:(double)arg1;
@@ -19,6 +20,7 @@
 - (double)attachmentBrowserGridInterItemSpacing;
 - (struct CGSize)attachmentBrowserDefaultSizeForSquare;
 - (double)entryViewMaxHandWritingPluginShelfHeight;
+- (_Bool)isAppStripInKeyboard;
 - (_Bool)presentsFullscreenInViewService;
 - (_Bool)shouldRefreshAlternateAddressesSheet;
 - (_Bool)shouldShowDisclosureChevronInRecipientAtoms;

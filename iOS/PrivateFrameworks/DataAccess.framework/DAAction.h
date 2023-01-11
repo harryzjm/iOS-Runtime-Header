@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <DataAccess/NSCoding-Protocol.h>
+#import <DataAccess/NSSecureCoding-Protocol.h>
 
-@interface DAAction : NSObject <NSCoding>
+@interface DAAction : NSObject <NSSecureCoding>
 {
     int _changeId;
     unsigned long long _itemChangeType;
@@ -19,6 +19,7 @@
     id _forwardedAttendeeUUIDs;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(retain, nonatomic) id forwardedAttendeeUUIDs; // @synthesize forwardedAttendeeUUIDs=_forwardedAttendeeUUIDs;
 @property(retain, nonatomic) id forwardedAttendees; // @synthesize forwardedAttendees=_forwardedAttendees;
 @property(nonatomic) int changeId; // @synthesize changeId=_changeId;

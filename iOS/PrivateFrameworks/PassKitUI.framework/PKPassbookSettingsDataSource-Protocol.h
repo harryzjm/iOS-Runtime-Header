@@ -6,7 +6,7 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSArray, NSString, UIViewController;
+@class NSArray, NSString;
 @protocol PKPassLibraryDataProvider, PKPassbookPeerPaymentSettingsDataSource, PKPassbookPeerPaymentSettingsDelegate, PKPaymentDataProvider, PKPaymentOptionsProtocol, PKPaymentSetupDelegate;
 
 @protocol PKPassbookSettingsDataSource <NSObject>
@@ -23,9 +23,10 @@
 - (id <PKPaymentSetupDelegate>)setupDelegate;
 
 @optional
+- (_Bool)supportsCredentialType:(long long)arg1;
 - (_Bool)hasFelicaSecureElement;
 - (NSString *)deviceName;
-- (void)setDefaultExpressFelicaTransitPassIdentifier:(NSString *)arg1 visibleViewController:(UIViewController *)arg2 completion:(void (^)(_Bool, NSString *))arg3;
+- (NSArray *)setupBrowsableProductTypesForDevice;
 - (NSArray *)setupFeaturedNetworksForDevice;
 @end
 

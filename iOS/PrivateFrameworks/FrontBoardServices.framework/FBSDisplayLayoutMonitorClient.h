@@ -11,6 +11,7 @@
     id <FBSDisplayLayoutMonitorClientDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 - (void)_handleDisplayLayoutUpdate:(id)arg1;
 - (void)handleMessage:(id)arg1 withType:(long long)arg2;
 - (void)configureConnectMessage:(id)arg1;

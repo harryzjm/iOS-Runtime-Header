@@ -24,6 +24,7 @@
 }
 
 + (id)directionsButtonImage;
++ (_Bool)regionIsBlocked;
 + (_Bool)supportsResult:(id)arg1;
 @property double longitude; // @synthesize longitude=_longitude;
 @property double latitude; // @synthesize latitude=_latitude;
@@ -36,6 +37,7 @@
 - (void).cxx_destruct;
 - (void)contactInlineActionsViewController:(id)arg1 willPerformActionOfType:(id)arg2;
 - (id)hostingViewControllerForController:(id)arg1;
+- (void)updateWithContact:(id)arg1;
 - (void)updateWithResult:(id)arg1;
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
 - (void)didPressActionView:(id)arg1 longPress:(_Bool)arg2;

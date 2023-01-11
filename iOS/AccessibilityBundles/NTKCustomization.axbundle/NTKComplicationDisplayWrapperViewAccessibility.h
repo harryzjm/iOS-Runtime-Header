@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)setComplicationTemplate:(id)arg1 withComplicationAnimation:(unsigned long long)arg2;
+- (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2 animation:(unsigned long long)arg3;
 - (id)accessibilityAttributeValue:(long long)arg1;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityHint;

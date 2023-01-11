@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSCHSupportsRendering-Protocol.h>
 
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 
 @property(retain, nonatomic) TSCHChartLayout *chartLayout; // @synthesize chartLayout=mChartLayout;
 @property(retain, nonatomic) TSCHChartInfo *chartInfo; // @synthesize chartInfo=mChartInfo;
+- (void).cxx_destruct;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (_Bool)requireSeparateLabelLayer;
 - (_Bool)renderTrendLinesForSeriesIndex:(unsigned long long)arg1;

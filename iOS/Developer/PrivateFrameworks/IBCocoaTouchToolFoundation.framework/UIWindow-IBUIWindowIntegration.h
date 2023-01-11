@@ -11,7 +11,6 @@
 @interface UIWindow (IBUIWindowIntegration)
 - (id)ibSwizzled_traitCollection;
 @property(retain, nonatomic, setter=ib_setCustomTraits:) UITraitCollection *ib_customTraits;
-@property(readonly, nonatomic) _Bool ib_supportsRemoteRendering;
 - (void)ibApplySimulatedMetricsWithContext:(id)arg1;
 - (id)ibEffectiveRootCoordinateSystemForConversions;
 - (id)ibEffectiveWindowForConversions;

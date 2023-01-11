@@ -12,8 +12,10 @@
 @interface _NUFaceDetectionResult <NUFaceDetectionResult>
 {
     NSArray *_faces;
+    CDStruct_d58201db _imageSize;
 }
 
+@property CDStruct_912cb5d2 imageSize; // @synthesize imageSize=_imageSize;
 @property(retain) NSArray *faces; // @synthesize faces=_faces;
 - (void).cxx_destruct;
 

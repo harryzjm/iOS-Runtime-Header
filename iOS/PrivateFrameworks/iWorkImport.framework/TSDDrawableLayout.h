@@ -11,9 +11,9 @@
 __attribute__((visibility("hidden")))
 @interface TSDDrawableLayout <TSDWrappable>
 {
-    TSDWrapSegments *mCachedWrapSegments;
     TSUBezierPath *mCachedWrapPath;
-    TSUBezierPath *mCachedExternalWrapPath;
+    TSDWrapSegments *mCachedWrapSegments;
+    TSUBezierPath *mCachedPathForClippingConnectionLines;
     TSUBezierPath *mCachedExteriorWrapPath;
 }
 
@@ -25,6 +25,8 @@ __attribute__((visibility("hidden")))
 - (void)processChangedProperty:(int)arg1;
 @property(copy, nonatomic) TSDLayoutGeometry *geometry;
 - (void)dragBy:(struct CGPoint)arg1;
+- (void)inRootGeometryChangedBy:(struct CGAffineTransform)arg1;
+- (void)invalidateInRootGeometry;
 - (void)invalidateExteriorWrap;
 - (void)invalidate;
 @property(readonly, nonatomic) _Bool hasAlpha;
@@ -35,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)wrapSegments;
 - (id)wrapPath;
 - (id)p_exteriorTextWrapPath;
-- (id)i_externalWrapPath;
+- (id)pathForClippingConnectionLines;
 - (id)i_wrapPath;
 - (id)i_computeWrapPath;
 - (id)i_computeWrapPathClosed:(_Bool)arg1;

@@ -19,6 +19,7 @@
 @property(nonatomic) float p0; // @synthesize p0=_p0;
 @property(nonatomic) float ps; // @synthesize ps=_ps;
 @property(nonatomic) float pm; // @synthesize pm=_pm;
+- (Class)gradientClass;
 - (struct FilterGraphNode *)newFilterNode;
 - (id)initWithSource:(id)arg1 kernelSize:(unsigned long long)arg2;
 - (id)initWithSource:(id)arg1;

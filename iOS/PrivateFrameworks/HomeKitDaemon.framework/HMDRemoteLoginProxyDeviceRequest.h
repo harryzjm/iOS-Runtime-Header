@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKit/HMRemoteLoginMessage.h>
-
 #import <HomeKitDaemon/HMRemoteLoginMessageProtocol-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@interface HMDRemoteLoginProxyDeviceRequest : HMRemoteLoginMessage <HMRemoteLoginMessageProtocol>
+@interface HMDRemoteLoginProxyDeviceRequest <HMRemoteLoginMessageProtocol>
 {
 }
 

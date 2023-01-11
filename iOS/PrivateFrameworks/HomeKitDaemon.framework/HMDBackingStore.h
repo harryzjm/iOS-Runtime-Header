@@ -26,6 +26,7 @@
 + (id)logCategory;
 + (id)resetBackingStore;
 + (id)flushBackingStore;
++ (id)internalAllowedTypes;
 + (id)allowedTypes;
 + (void)start;
 @property(nonatomic) __weak id <HMDBackingStoreObjectProtocol> delegate; // @synthesize delegate=_delegate;
@@ -37,17 +38,14 @@
 @property(readonly, nonatomic) CKRecordID *root; // @synthesize root=_root;
 - (void).cxx_destruct;
 - (id)__fetchWithGroup:(id)arg1 uuids:(id)arg2 error:(id *)arg3;
-- (void)markAsMigrated:(CDUnknownBlockType)arg1;
-- (void)fetchAllObjects:(CDUnknownBlockType)arg1;
-- (void)fetchMigratedObjects:(CDUnknownBlockType)arg1;
-- (void)_fetchObjects:(_Bool)arg1 migration:(_Bool)arg2 result:(CDUnknownBlockType)arg3;
 - (void)submitBlock:(CDUnknownBlockType)arg1;
 - (void)saveToPersistentStoreWithReason:(id)arg1 incrementGeneration:(_Bool)arg2;
 - (id)dumpState;
 - (id)logIdentifier;
 @property(readonly, copy) NSString *description;
-- (void)registerObject:(id)arg1 forUUID:(id)arg2;
 - (void)submit:(id)arg1;
+- (void)deleteModelObjects:(id)arg1 destination:(unsigned long long)arg2;
+- (void)updateModelObjects:(id)arg1 destination:(unsigned long long)arg2;
 - (void)commit:(id)arg1 run:(_Bool)arg2 save:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)transaction:(id)arg1 options:(id)arg2;
 - (id)transactionWithOptions:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UITableViewCell, UITextView;
+@class UITableViewCell;
 @protocol EKEventDetailNotesCellDelegate;
 
 __attribute__((visibility("hidden")))
@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 {
     UITableViewCell *_cell;
     UITableViewCell *_moreButtonCell;
-    UITextView *_notesView;
     _Bool _cellNeedsUpdate;
     id <EKEventDetailNotesCellDelegate> _noteDelegate;
 }

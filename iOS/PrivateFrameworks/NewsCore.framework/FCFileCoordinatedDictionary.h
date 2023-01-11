@@ -8,28 +8,28 @@
 
 #import <NewsCore/NSFilePresenter-Protocol.h>
 
-@class NSOperationQueue, NSSet, NSString, NSURL;
+@class FCAsyncSerialQueue, NSOperationQueue, NSSet, NSString, NSURL;
 
 @interface FCFileCoordinatedDictionary : NSObject <NSFilePresenter>
 {
     NSURL *_presentedItemURL;
     NSOperationQueue *_presentedItemOperationQueue;
     NSURL *_fileURL;
+    NSSet *_allowedClasses;
     NSOperationQueue *_accessQueue;
+    FCAsyncSerialQueue *_accessSynchronizationQueue;
 }
 
-@property(retain, nonatomic) NSOperationQueue *accessQueue; // @synthesize accessQueue=_accessQueue;
-@property(copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property(readonly, nonatomic) FCAsyncSerialQueue *accessSynchronizationQueue; // @synthesize accessSynchronizationQueue=_accessSynchronizationQueue;
+@property(readonly, nonatomic) NSOperationQueue *accessQueue; // @synthesize accessQueue=_accessQueue;
+@property(readonly, copy, nonatomic) NSSet *allowedClasses; // @synthesize allowedClasses=_allowedClasses;
+@property(readonly, copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property(readonly, retain) NSOperationQueue *presentedItemOperationQueue; // @synthesize presentedItemOperationQueue=_presentedItemOperationQueue;
 @property(readonly, copy) NSURL *presentedItemURL; // @synthesize presentedItemURL=_presentedItemURL;
 - (void).cxx_destruct;
-- (_Bool)_writeDictionary:(id)arg1 toFileURL:(id)arg2;
-- (id)_readFromFileURL:(id)arg1;
-- (void)replaceWithEntriesFromDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)writeWithAccessor:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)readWithAccessor:(CDUnknownBlockType)arg1;
-@property long long maxConcurrentOperationCount;
-- (id)initWithFileURL:(id)arg1;
+- (id)initWithFileURL:(id)arg1 allowedClasses:(id)arg2;
 - (id)init;
 
 // Remaining properties

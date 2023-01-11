@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NewsFeedLayout/NSCopying-Protocol.h>
+#import <NewsFeedLayout/NFCopying-Protocol.h>
 #import <NewsFeedLayout/NSObject-Protocol.h>
 
 @class NSArray, NSString;
 
-@protocol NFLFeedTileInfo <NSObject, NSCopying>
+@protocol NFLFeedTileInfo <NSObject, NFCopying>
 @property(readonly, nonatomic) NSArray *underlyingFeedElements;
 @property(readonly, nonatomic) unsigned long long bookmarkOffsetType;
 @property(readonly, nonatomic) _Bool bookmarkable;

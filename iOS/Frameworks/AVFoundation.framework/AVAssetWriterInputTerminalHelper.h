@@ -8,6 +8,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetWriterInputTerminalHelper <AVAssetWriterInputMediaDataRequesterDelegate>
 {
     long long _terminalStatus;

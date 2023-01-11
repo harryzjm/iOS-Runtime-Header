@@ -16,15 +16,18 @@
 }
 
 - (void).cxx_destruct;
+- (void)applyTransitionFraction:(double)arg1 fromPalette:(id)arg2 toPalette:(id)arg3;
+- (void)applyPalette:(id)arg1;
 - (struct CGRect)contentFrame;
 - (void)layoutSubviews;
 - (void)_updateImage;
 - (void)setStyle:(unsigned long long)arg1;
 - (id)init;
 - (unsigned long long)desiredDateComplicationDateStyle;
-- (void)setDateComplicationText:(id)arg1 forDateStyle:(unsigned long long)arg2;
+- (void)setDateComplicationText:(id)arg1 withDayRange:(struct _NSRange)arg2 forDateStyle:(unsigned long long)arg3;
 
 // Remaining properties
+@property(nonatomic) _Bool canUseCurvedText;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(nonatomic) __weak id <NTKComplicationDisplayObserver> displayObserver;

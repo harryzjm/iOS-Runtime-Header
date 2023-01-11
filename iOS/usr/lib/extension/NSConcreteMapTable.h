@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     _Bool shouldRehash;
 }
 
++ (_Bool)supportsSecureCoding;
 - (id)allValues;
 - (id)allKeys;
 - (_Bool)isEqual:(id)arg1;

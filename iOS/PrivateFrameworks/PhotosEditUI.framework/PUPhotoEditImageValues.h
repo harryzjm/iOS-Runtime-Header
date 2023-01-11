@@ -8,6 +8,7 @@
 
 @class NSDictionary;
 
+__attribute__((visibility("hidden")))
 @interface PUPhotoEditImageValues : NSObject
 {
     _Bool _complete;
@@ -17,9 +18,11 @@
     double _smartColorAutoSuggestion;
     NSDictionary *_autoCropValues;
     NSDictionary *_portraitValues;
+    NSDictionary *_apertureValues;
 }
 
 @property(getter=isComplete) _Bool complete; // @synthesize complete=_complete;
+@property(copy) NSDictionary *apertureValues; // @synthesize apertureValues=_apertureValues;
 @property(copy) NSDictionary *portraitValues; // @synthesize portraitValues=_portraitValues;
 @property(copy) NSDictionary *autoCropValues; // @synthesize autoCropValues=_autoCropValues;
 @property double smartColorAutoSuggestion; // @synthesize smartColorAutoSuggestion=_smartColorAutoSuggestion;

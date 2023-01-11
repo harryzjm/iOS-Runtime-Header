@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <EventKitUI/CalendarEventLoaderDelegate-Protocol.h>
 
@@ -24,6 +24,7 @@
     id <OccurrenceCacheDataSourceProtocol> _occurrenceCacheFilteredDataSource;
     long long _cachedFakeTodayIndex;
     long long _displayableAccountErrorsCount;
+    _Bool _autoStartNotificationMonitor;
     NSSet *_selectedCalendars;
     NSString *_searchString;
     NSCalendar *_calendar;
@@ -33,6 +34,7 @@
 }
 
 + (id)calendarModelWithDataPath:(id)arg1;
+@property(nonatomic) _Bool autoStartNotificationMonitor; // @synthesize autoStartNotificationMonitor=_autoStartNotificationMonitor;
 @property(retain, nonatomic) EKEvent *selectedOccurrence; // @synthesize selectedOccurrence=_selectedOccurrence;
 @property(nonatomic) unsigned long long firstVisibleSecond; // @synthesize firstVisibleSecond=_firstVisibleSecond;
 @property(copy, nonatomic) EKCalendarDate *selectedDate; // @synthesize selectedDate=_selectedDate;
@@ -58,7 +60,9 @@
 - (void)updateAfterAppResume;
 - (void)_occurrenceCacheChanged;
 - (void)_eventStoreChanged:(id)arg1;
-- (void)calendarEventLoader:(id)arg1 occurrencesDidUpdateBetweenStart:(double)arg2 end:(double)arg3;
+- (void)calendarEventLoader:(id)arg1 occurrencesDidUpdateBetweenStart:(double)arg2 end:(double)arg3 wasEmptyLoad:(_Bool)arg4;
+- (void)_finishedFirstLoad;
+- (void)simulateFirstLoadFinished;
 - (long long)countSourcesWithErrors;
 @property(readonly, nonatomic) long long displayableAccountErrorsCount;
 - (void)_processReloadForCacheOnly:(_Bool)arg1 includingCalendars:(_Bool)arg2 checkCalendarsValid:(_Bool)arg3 checkSources:(_Bool)arg4;
@@ -98,6 +102,7 @@
 - (id)occurrencesForStartDate:(id)arg1 endDate:(id)arg2 preSorted:(_Bool)arg3 waitForLoad:(_Bool)arg4;
 - (id)occurrencesForStartDay:(id)arg1 endDay:(id)arg2 preSorted:(_Bool)arg3 waitForLoad:(_Bool)arg4;
 - (void)addOccurrenceAwaitingRefresh:(id)arg1;
+- (void)updateSelectedDateTimeZone;
 @property(readonly, nonatomic) EKCalendarDate *selectedDay;
 - (id)refreshCalendarDataIfNeeded:(_Bool)arg1;
 - (id)refreshAccountListIfNeeded:(_Bool)arg1;
@@ -106,6 +111,7 @@
 - (void)ensureCalendarVisibleWithId:(id)arg1;
 @property(readonly, nonatomic) long long readWriteCalendarCount;
 @property(readonly, nonatomic) long long visibleCalendarCount;
+@property(nonatomic) _Bool allowEventLocationPrediction;
 - (_Bool)selectedOccurrenceIsSearchMatch;
 @property(retain, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 @property(retain, nonatomic) NSSet *selectedCalendars; // @synthesize selectedCalendars=_selectedCalendars;

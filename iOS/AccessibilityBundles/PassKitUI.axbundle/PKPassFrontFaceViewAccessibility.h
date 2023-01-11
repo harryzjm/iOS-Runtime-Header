@@ -8,8 +8,10 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)setBottomRightItem:(long long)arg1;
 - (void)createBodyContentViews;
 - (void)_accessibilityLoadAccessibilityInformation;
 

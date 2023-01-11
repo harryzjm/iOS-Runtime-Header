@@ -9,6 +9,7 @@
 
 @interface HUEditableTextViewCell
 {
+    _Bool _editEnabled;
     _Bool _showingPlaceholder;
     NSString *_text;
     NSString *_placeholderText;
@@ -17,6 +18,7 @@
 
 @property(nonatomic) _Bool showingPlaceholder; // @synthesize showingPlaceholder=_showingPlaceholder;
 @property(retain, nonatomic) UITextView *textView; // @synthesize textView=_textView;
+@property(nonatomic) _Bool editEnabled; // @synthesize editEnabled=_editEnabled;
 @property(copy, nonatomic) NSString *placeholderText; // @synthesize placeholderText=_placeholderText;
 - (void).cxx_destruct;
 - (id)trimmedStringForText:(id)arg1;

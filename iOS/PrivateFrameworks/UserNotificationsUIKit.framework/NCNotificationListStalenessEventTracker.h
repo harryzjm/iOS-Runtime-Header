@@ -6,22 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, PETScalarEventTracker;
-@protocol NCNotificationList, OS_dispatch_queue;
+@class NCNotificationListSection, NSMutableDictionary, PETScalarEventTracker;
+@protocol OS_dispatch_queue;
 
 @interface NCNotificationListStalenessEventTracker : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_lastDisplayedDateByNotificationMetadata;
     PETScalarEventTracker *_stalenessEventTracker;
-    id <NCNotificationList> _notificationList;
+    NCNotificationListSection *_notificationList;
 }
 
 + (id)_metricsSafeBundleIdentifierForBundleIdentifier:(id)arg1;
 + (id)_allMetricsSafeBundleIdentifiers;
 + (id)_metricsSafeBundleIdentifierByBundleIdentifier;
 + (id)eventTrackerWithAutomaticCollation;
-@property(nonatomic) __weak id <NCNotificationList> notificationList; // @synthesize notificationList=_notificationList;
+@property(nonatomic) __weak NCNotificationListSection *notificationList; // @synthesize notificationList=_notificationList;
 - (void).cxx_destruct;
 - (void)_queue_collateAndRecordMetrics;
 - (void)collateAndRecordMetrics;

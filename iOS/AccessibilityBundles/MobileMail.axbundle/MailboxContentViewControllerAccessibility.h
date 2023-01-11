@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_updateBackButtonImage;
+- (void)_updateBackButtonImageWithCount:(unsigned long long)arg1;
 - (_Bool)_accessibilityIsDraftsMailbox;
 - (_Bool)_accessibilityIsOutbox;
 - (id)_accessibilityMallSources;

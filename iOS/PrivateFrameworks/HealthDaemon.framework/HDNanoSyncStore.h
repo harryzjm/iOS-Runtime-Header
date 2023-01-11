@@ -39,8 +39,7 @@
 }
 
 + (id)_observedDeviceProperties;
-+ (id)orderedSyncEntitiesForProtocolVersion:(int)arg1 companion:(_Bool)arg2;
-+ (id)_allOrderedNanoSyncEntities;
++ (id)orderedSyncEntitiesForProfile:(id)arg1 protocolVersion:(int)arg2 companion:(_Bool)arg3;
 + (id)nanoSyncStoreWithProfile:(id)arg1 device:(id)arg2 delegate:(id)arg3;
 @property(nonatomic) _Bool needsSyncOnUnlock; // @synthesize needsSyncOnUnlock=_needsSyncOnUnlock;
 @property(readonly, nonatomic) HDNanoSyncRestoreSession *restoreSession; // @synthesize restoreSession=_restoreSession;
@@ -60,8 +59,8 @@
 - (_Bool)enforceSyncEntityOrdering;
 - (id)orderedSyncEntities;
 - (id)syncStoreDefaultSourceBundleIdentifier;
+- (id)databaseIdentifier;
 - (id)syncStoreIdentifier;
-- (id)syncStoreTypeIdentifier;
 - (long long)syncEpoch;
 - (long long)syncProvenance;
 - (_Bool)validatePairingUUIDsWithIncomingMessage:(id)arg1;
@@ -87,6 +86,7 @@
 @property(retain, nonatomic) NSUUID *persistentUUID;
 @property(retain, nonatomic) NSUUID *healthUUID;
 @property(readonly, getter=isActive) _Bool active;
+@property(readonly) long long syncStoreType;
 @property(readonly) int protocolVersion;
 @property(readonly) NSDate *lastInactiveDate;
 @property(readonly, copy) NSString *deviceName;

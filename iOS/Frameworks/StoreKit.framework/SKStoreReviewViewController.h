@@ -6,10 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <StoreKit/SKRemoteReviewViewControllerDelegate-Protocol.h>
+
 @class NSString, SKInvocationQueueProxy, SKRemoteReviewViewController, _UIAsyncInvocation;
 @protocol SKUIServiceReviewViewController;
 
-@interface SKStoreReviewViewController : UIViewController
+@interface SKStoreReviewViewController : UIViewController <SKRemoteReviewViewControllerDelegate>
 {
     SKInvocationQueueProxy<SKUIServiceReviewViewController> *_serviceProxy;
     _UIAsyncInvocation *_cancelRequest;
@@ -22,14 +24,20 @@
 @property(retain, nonatomic) _UIAsyncInvocation *cancelRequest; // @synthesize cancelRequest=_cancelRequest;
 @property(retain, nonatomic) SKInvocationQueueProxy<SKUIServiceReviewViewController> *serviceProxy; // @synthesize serviceProxy=_serviceProxy;
 - (void).cxx_destruct;
-- (void)_viewTapped:(id)arg1;
 - (void)_addRemoteView;
 - (void)_requestRemoteViewController;
+- (void)remoteReviewViewControllerTerminatedWithError:(id)arg1;
 - (void)_didFinishWithResult:(unsigned long long)arg1 error:(id)arg2;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)dealloc;
 - (id)initWithReviewRequestToken:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

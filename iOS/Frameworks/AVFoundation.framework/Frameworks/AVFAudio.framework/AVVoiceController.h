@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioFormat, NSDictionary, NSString, NSXPCConnection;
-@protocol AVVoiceControllerPlaybackDelegate, AVVoiceControllerRecordDelegate, AVVoiceControllerVoiceTriggerDelegate, Endpointer;
+@class AVAudioFormat, NSDictionary, NSString;
+@protocol AVVoiceControllerPlaybackDelegate, AVVoiceControllerRecordDelegate, Endpointer;
 
 @interface AVVoiceController : NSObject
 {
@@ -16,6 +16,9 @@
 }
 
 @property(readonly) unsigned long long alertStartTime; // @synthesize alertStartTime=_alertStartTime;
+- (id)currentRecordDeviceInfo;
+- (void)removePluginNotifications;
+- (void)setupPluginNotifications;
 @property(readonly) NSDictionary *metrics;
 @property(getter=isStopOnEndpointEnabled) _Bool stopOnEndpointEnabled;
 - (float)averagePowerForChannel:(unsigned long long)arg1;
@@ -65,11 +68,14 @@
 - (void)finalize;
 - (void)prewarmAudioSession;
 - (id)initWithContext:(id)arg1 error:(id *)arg2;
+- (void)endAudioSessionActivate:(_Bool)arg1;
+- (void)beginAudioSessionActivate:(_Bool)arg1;
 - (void)endPlaybackInterruption;
 - (void)beginPlaybackInterruption;
 - (void)endRecordInterruption;
 - (void)beginRecordInterruptionWithContext:(id)arg1;
 - (void)beginRecordInterruption;
+- (void)alertPlaybackFinishedOfType:(int)arg1;
 - (void)decodeError;
 - (void)finishedPlaying;
 - (void)playbackBufferReceived:(struct MyAudioQueueBuffer *)arg1;
@@ -79,10 +85,14 @@
 - (void)interspeechPointDetected;
 - (void)startpointDetected;
 - (void)finishedRecording;
+- (void)lpcmRecordBufferForNonLPCMReceived:(struct AudioQueueBuffer *)arg1 atTime:(unsigned long long)arg2;
 - (void)recordBufferReceived:(struct MyAudioQueueBuffer *)arg1 atTime:(unsigned long long)arg2;
 - (void)avAudioPCMRecordBufferReceived:(id)arg1 atTime:(unsigned long long)arg2;
+- (void)avAudioPCMRecordBufferListReceived:(struct AudioBufferList *)arg1 numChannels:(unsigned int)arg2 atTime:(unsigned long long)arg3;
 - (void)lpcmRecordBufferReceived:(struct AudioQueueBuffer *)arg1 atTime:(unsigned long long)arg2;
 - (void)beganRecording;
+- (void)handlePluginDidUnpublishDevice:(id)arg1;
+- (void)handlePluginDidPublishDevice:(id)arg1;
 - (void)handleMediaServerReset:(id)arg1;
 - (void)handleMediaServerDeath:(id)arg1;
 - (void)handleRouteChange:(id)arg1;
@@ -92,11 +102,7 @@
 - (void)setSessionNotifications;
 - (struct ControllerImpl *)impl;
 - (_Bool)playAlertSoundForType:(int)arg1 overrideMode:(long long)arg2;
-- (void)updateVoiceTriggerConfiguration:(id)arg1;
-- (void)enableVoiceTriggerListening:(_Bool)arg1;
-@property(readonly, retain) NSXPCConnection *voiceTriggerServerConnection; // @dynamic voiceTriggerServerConnection;
-@property id <AVVoiceControllerVoiceTriggerDelegate> voiceTriggerDelegate;
-@property(readonly) unsigned long long voiceTriggerPastDataFramesAvailable;
+@property(readonly) unsigned long long numberOfChannels;
 @property(setter=setDuckOthersOption:) _Bool duckOthersOption;
 @property(readonly) AVAudioFormat *pcmRecordBufferFormat;
 @property(getter=isSynchronousCallbackEnabled) _Bool synchronousCallbackEnabled;
@@ -107,7 +113,6 @@
 @property(readonly, copy) NSString *playbackRoute;
 @property(readonly, copy) NSString *recordRoute;
 - (void)sendRemoteConnectionMessage:(id)arg1;
-- (void)voiceTriggerNotification:(id)arg1;
 
 @end
 

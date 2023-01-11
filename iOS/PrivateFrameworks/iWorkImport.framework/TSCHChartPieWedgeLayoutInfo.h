@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
-@class NSArray, TSCHChartPieWedgeElement;
+@class NSArray, NSNumber, TSCHChartPieWedgeElement;
 
 __attribute__((visibility("hidden")))
 @interface TSCHChartPieWedgeLayoutInfo : NSObject <NSCopying>
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     TSCHChartPieWedgeElement *mWedgeElement;
     NSArray *mPieLabels;
     struct CGAffineTransform mCombinedLabelTransformIntoPieChartCoordinateSpace;
+    NSNumber *mEnableCalloutLine;
 }
 
 @property(nonatomic) struct CGAffineTransform combinedLabelTransformIntoPieChartCoordinateSpace; // @synthesize combinedLabelTransformIntoPieChartCoordinateSpace=mCombinedLabelTransformIntoPieChartCoordinateSpace;

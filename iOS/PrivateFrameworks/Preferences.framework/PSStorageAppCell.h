@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, UIImage, UIImageView, UILabel;
+@class NSMutableArray, UIImageView, UILabel;
 
 @interface PSStorageAppCell
 {
@@ -13,7 +13,6 @@
     UILabel *_titleLabel;
     UILabel *_infoLabel;
     UILabel *_sizeLabel;
-    UIImage *_icon;
     long long _size;
 }
 

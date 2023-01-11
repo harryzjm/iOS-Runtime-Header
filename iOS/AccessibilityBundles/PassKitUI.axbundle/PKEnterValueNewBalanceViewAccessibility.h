@@ -12,8 +12,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityElements;
-- (void)_setAXAggregateLabels:(id)arg1;
-- (id)_axAggregateLabels;
 
 @end
 

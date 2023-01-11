@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface _CUIThemeFacetCacheKey : NSObject
 {
-    struct _renditionkeytoken keyList[17];
+    struct _renditionkeytoken keyList[18];
     long long themeIndex;
     unsigned long long hashPrecalc;
 }

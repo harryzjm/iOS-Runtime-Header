@@ -38,6 +38,7 @@
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLoad;
 - (void)_addRemoteVCIfNeeded;
 - (void)setTextEntryContentsVisible:(_Bool)arg1;
 - (void)smsComposeControllerSendStartedWithText:(id)arg1;
@@ -45,6 +46,7 @@
 - (void)smsComposeControllerCancelled;
 - (void)smsComposeControllerAppeared;
 - (void)smsComposeControllerDataInserted;
+- (void)setUTIs:(id)arg1;
 - (void)setUICustomizationData:(id)arg1;
 - (void)setGameCenterPickedHandles:(id)arg1 playerNames:(id)arg2;
 - (void)setGameCenterModeWithPickerBlock:(CDUnknownBlockType)arg1;

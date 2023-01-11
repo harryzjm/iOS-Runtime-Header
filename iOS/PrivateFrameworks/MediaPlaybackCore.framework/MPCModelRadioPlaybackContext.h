@@ -21,6 +21,7 @@
 }
 
 + (Class)queueFeederClass;
++ (_Bool)supportsSecureCoding;
 @property(copy, nonatomic) NSURL *stationURL; // @synthesize stationURL=_stationURL;
 @property(nonatomic) long long stationID; // @synthesize stationID=_stationID;
 @property(copy, nonatomic) NSString *stationStringID; // @synthesize stationStringID=_stationStringID;
@@ -32,7 +33,10 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) MPAVItem *prefixItem;
 - (id)descriptionComponents;
+- (id)initWithCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (void)getRemotePlaybackQueueRepresentationWithPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

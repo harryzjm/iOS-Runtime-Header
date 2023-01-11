@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class BRCClientZone, BRCProgress, CKRecord, CKRecordID, GSPermanentStorage, NSError;
+@class BRCClientZone, BRCProgress, CKRecord, CKRecordID, GSPermanentStorage, NSError, NSNumber;
 
 __attribute__((visibility("hidden")))
 @interface BRCDownloadVersion
@@ -16,8 +16,10 @@ __attribute__((visibility("hidden")))
     _Bool _isLoser;
     GSPermanentStorage *_storage;
     NSError *_gsError;
+    NSNumber *_docID;
 }
 
+@property(readonly, nonatomic) NSNumber *docID; // @synthesize docID=_docID;
 @property(readonly, nonatomic) NSError *gsError; // @synthesize gsError=_gsError;
 @property(readonly, nonatomic) GSPermanentStorage *storage; // @synthesize storage=_storage;
 @property(readonly, nonatomic) _Bool isLoser; // @synthesize isLoser=_isLoser;

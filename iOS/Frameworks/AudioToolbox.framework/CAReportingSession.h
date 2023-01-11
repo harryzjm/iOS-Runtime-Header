@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableDictionary, NSString, RTCReporting;
 @protocol OS_dispatch_queue;
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _started;
     unsigned short _serviceType;
+    struct NSMutableDictionary *_driverSnapShot;
     long long _reporterID;
     NSObject<OS_dispatch_queue> *_sessionReportingQueue;
     NSMutableArray *_aggregatedPayloadData;
@@ -33,10 +34,12 @@ __attribute__((visibility("hidden")))
 @property(retain) NSMutableArray *aggregatedPayloadData; // @synthesize aggregatedPayloadData=_aggregatedPayloadData;
 @property(retain) NSObject<OS_dispatch_queue> *sessionReportingQueue; // @synthesize sessionReportingQueue=_sessionReportingQueue;
 @property long long reporterID; // @synthesize reporterID=_reporterID;
+@property(retain) NSMutableDictionary *driverSnapShot; // @synthesize driverSnapShot=_driverSnapShot;
 @property(nonatomic) unsigned short serviceType; // @synthesize serviceType=_serviceType;
 @property _Bool started; // @synthesize started=_started;
 - (void).cxx_destruct;
 - (id)createSummaryEventForSession;
+- (void)dealloc;
 - (void)endSync:(_Bool)arg1;
 - (void)end;
 - (void)sendMessage:(id)arg1 category:(unsigned short)arg2 type:(unsigned short)arg3 reply:(CDUnknownBlockType)arg4;

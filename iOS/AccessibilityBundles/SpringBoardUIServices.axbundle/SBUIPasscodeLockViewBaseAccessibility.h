@@ -23,8 +23,8 @@
 - (_Bool)_accessibilityHandwritingAttributeShouldPlayKeyboardSecureClickSound;
 - (_Bool)_accessibilityHandwritingAttributeShouldEchoCharacter;
 - (_Bool)_accessibilityHandwritingAttributeCanDeleteCharacter;
-- (int)_accessibilityHandwritingAttributeAllowedCharacterSets;
-- (int)_accessibilityHandwritingAttributePreferredCharacterSet;
+- (unsigned long long)_accessibilityHandwritingAttributeAllowedCharacterSets;
+- (unsigned long long)_accessibilityHandwritingAttributePreferredCharacterSet;
 - (_Bool)_accessibilitySupportsHandwriting;
 
 @end

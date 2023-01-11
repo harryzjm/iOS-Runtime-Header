@@ -20,6 +20,7 @@
 - (void)disableBrightnessFilters;
 - (_Bool)supportsBlueLightReduction;
 - (_Bool)_sessionIsLoginSession;
+- (_Bool)_inCheckerBoardMode;
 - (_Bool)_inPreBoardMode;
 - (id <AXBackBoardServerInstanceDelegate>)delegate;
 @end

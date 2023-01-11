@@ -9,7 +9,7 @@
 #import <ContactsUI/CNContactNavigationControllerDelegate-Protocol.h>
 #import <ContactsUI/CNContactPickerContentViewController-Protocol.h>
 
-@class CNContactNavigationController, CNContactStoreDataSource, NSArray, NSMutableArray, NSPredicate, NSString, UINavigationController;
+@class CNContactNavigationController, CNContactStoreDataSource, CNManagedConfiguration, NSArray, NSMutableArray, NSPredicate, NSString, UINavigationController;
 @protocol CNContactPickerContentDelegate;
 
 __attribute__((visibility("hidden")))
@@ -37,9 +37,11 @@ __attribute__((visibility("hidden")))
     NSPredicate *_predicateForEnablingContact;
     NSPredicate *_predicateForSelectionOfContact;
     NSPredicate *_predicateForSelectionOfProperty;
+    CNManagedConfiguration *_managedConfiguration;
 }
 
 + (id)descriptorForContactPropertiesSupportingPredicateEvaluation;
+@property(retain, nonatomic) CNManagedConfiguration *managedConfiguration; // @synthesize managedConfiguration=_managedConfiguration;
 @property(copy, nonatomic) NSPredicate *predicateForSelectionOfProperty; // @synthesize predicateForSelectionOfProperty=_predicateForSelectionOfProperty;
 @property(copy, nonatomic) NSPredicate *predicateForSelectionOfContact; // @synthesize predicateForSelectionOfContact=_predicateForSelectionOfContact;
 @property(copy, nonatomic) NSPredicate *predicateForEnablingContact; // @synthesize predicateForEnablingContact=_predicateForEnablingContact;

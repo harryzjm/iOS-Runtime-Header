@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString;
+@class NSArray, NSString, PKPeerPaymentAccount;
 
 @interface PKPeerPaymentIdentityVerificationResponse
 {
     _Bool _complete;
+    _Bool _manuallyTriggered;
+    PKPeerPaymentAccount *_account;
     NSString *_contextLocalizedTitle;
     NSString *_contextLocalizedDescription;
     NSString *_localizedTitle;
@@ -19,6 +21,7 @@
     NSString *_encryptionVersion;
 }
 
+@property(nonatomic) _Bool manuallyTriggered; // @synthesize manuallyTriggered=_manuallyTriggered;
 @property(readonly, copy, nonatomic) NSString *encryptionVersion; // @synthesize encryptionVersion=_encryptionVersion;
 @property(readonly, copy, nonatomic) NSArray *encryptionCertificates; // @synthesize encryptionCertificates=_encryptionCertificates;
 @property(readonly, nonatomic) NSArray *acceptableDocuments; // @synthesize acceptableDocuments=_acceptableDocuments;
@@ -27,6 +30,7 @@
 @property(readonly, copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property(readonly, copy, nonatomic) NSString *contextLocalizedDescription; // @synthesize contextLocalizedDescription=_contextLocalizedDescription;
 @property(readonly, copy, nonatomic) NSString *contextLocalizedTitle; // @synthesize contextLocalizedTitle=_contextLocalizedTitle;
+@property(readonly, nonatomic) PKPeerPaymentAccount *account; // @synthesize account=_account;
 @property(readonly, nonatomic) _Bool complete; // @synthesize complete=_complete;
 - (void).cxx_destruct;
 - (id)initWithData:(id)arg1;

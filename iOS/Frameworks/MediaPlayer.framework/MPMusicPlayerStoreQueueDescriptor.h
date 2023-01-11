@@ -4,26 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableDictionary, NSString;
+@class NSArray, NSDictionary, NSMutableDictionary, NSString;
 
 @interface MPMusicPlayerStoreQueueDescriptor
 {
     NSArray *_storeIDs;
     NSMutableDictionary *_storeFronts;
     NSString *_startItemID;
+    NSDictionary *_assetStoreFronts;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(copy, nonatomic) NSDictionary *assetStoreFronts; // @synthesize assetStoreFronts=_assetStoreFronts;
 @property(copy, nonatomic) NSString *startItemID; // @synthesize startItemID=_startItemID;
 @property(copy, nonatomic) NSArray *storeIDs; // @synthesize storeIDs=_storeIDs;
 - (void).cxx_destruct;
-- (id)assetStoreFronts;
 - (void)setSourceStorefront:(id)arg1 forItemWithStoreID:(id)arg2;
 - (void)setEndTime:(double)arg1 forItemWithStoreID:(id)arg2;
 - (void)setStartTime:(double)arg1 forItemWithStoreID:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)initWithStoreIDs:(id)arg1;
 
 @end

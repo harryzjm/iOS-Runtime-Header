@@ -6,6 +6,7 @@
 
 @class AVWeakReference, NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface AVMediaSelectionKeyValueOption
 {
     id _groupID;

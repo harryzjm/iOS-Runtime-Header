@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVKeyPathDependencyManager, AVNetworkPlaybackPerfHUDLayer, AVPlayer, AVPlayerLayer, CALayer, FigBaseCALayer, FigSubtitleCALayer, FigVideoContainerLayer, NSDictionary, NSSet, NSString;
 @protocol AVCallbackCancellation, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVPlayerLayerInternal : NSObject
 {
     AVNetworkPlaybackPerfHUDLayer *hudLayer;
@@ -30,7 +31,6 @@
     FigBaseCALayer *closedCaptionLayer;
     AVPlayerLayer *associatedPIPLayer;
     _Bool willManageSublayersAsSwappedLayers;
-    _Bool canEnterPIPMode;
     _Bool isReadyForDisplay;
     AVPlayer *playerBeingObserved;
     NSSet *KVOInvokers;

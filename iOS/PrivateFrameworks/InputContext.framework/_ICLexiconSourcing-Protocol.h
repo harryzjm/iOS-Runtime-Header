@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PEXNameDelegate;
+@class _ICLexiconManager;
 
 @protocol _ICLexiconSourcing
-- (void)unregisterNameDelegate:(PEXNameDelegate *)arg1;
-- (void)registerNameDelegate:(PEXNameDelegate *)arg1;
+- (void)hibernate;
+- (void)warmUp;
+- (void)startLoadingWithManager:(_ICLexiconManager *)arg1;
 @end
 

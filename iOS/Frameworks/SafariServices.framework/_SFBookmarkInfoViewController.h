@@ -6,12 +6,13 @@
 
 #import <SafariServices/UITableViewDataSource-Protocol.h>
 #import <SafariServices/UITableViewDelegate-Protocol.h>
+#import <SafariServices/_SFBookmarkInfoViewControllerDelegate-Protocol.h>
 #import <SafariServices/_SFBookmarkTextEntryTableViewControllerDelegate-Protocol.h>
 
 @class NSArray, NSString, UITextField, WebBookmark, WebBookmarkCollection, _SFBookmarkTextEntryTableViewCell, _SFSiteIconView;
 @protocol _SFBookmarkInfoViewControllerDelegate;
 
-@interface _SFBookmarkInfoViewController <_SFBookmarkTextEntryTableViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface _SFBookmarkInfoViewController <_SFBookmarkInfoViewControllerDelegate, _SFBookmarkTextEntryTableViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     WebBookmarkCollection *_collection;
     WebBookmark *_parentBookmark;
@@ -27,6 +28,7 @@
     NSArray *_folders;
     long long _selectedFolderIndex;
     UITextField *_textFieldToRestoreFirstResponder;
+    _Bool _enableAddFolder;
     id <_SFBookmarkInfoViewControllerDelegate> _delegate;
     WebBookmark *_bookmark;
 }
@@ -34,6 +36,9 @@
 @property(retain, nonatomic) WebBookmark *bookmark; // @synthesize bookmark=_bookmark;
 @property(nonatomic) __weak id <_SFBookmarkInfoViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+- (_Bool)bookmarkInfoViewControllerShouldUseTranslucentAppearance:(id)arg1;
+- (_Bool)bookmarkInfoViewControllerCanSaveBookmarkChanges:(id)arg1;
+- (void)bookmarkInfoViewController:(id)arg1 didFinishWithResult:(_Bool)arg2;
 - (id)backgroundColorUsingTranslucentAppearance:(_Bool)arg1;
 - (void)updateTranslucentAppearance;
 - (_Bool)hasTranslucentAppearance;
@@ -52,11 +57,18 @@
 - (void)_didBeginEditingTextField:(id)arg1;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)_iconForViewCellGivenBookmark:(id)arg1;
+- (id)_cellForParentBookmarkWithTableView:(id)arg1;
+- (id)_cellForExpandedFolderAtIndex:(long long)arg1 withTableView:(id)arg2;
+- (id)_cellForNewFolderRowWithTableView:(id)arg1;
+- (id)_dequeueFolderPickerCellFromTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (_Bool)_isIndexPathForNewFolderRow:(id)arg1;
+- (long long)_numberOfExpandedFolderPickerRows;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
+- (void)_createNewFolder;
 - (void)_editField:(unsigned long long)arg1;
 - (_Bool)canSaveChanges;
 - (void)_updateSaveButton;

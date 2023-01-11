@@ -7,8 +7,10 @@
 #import <IBFoundation/NSObject-Protocol.h>
 
 @class IBICAbstractCatalogItem, IBICSlot;
+@protocol IBCollection;
 
 @protocol IBICAssetWithSlottedChildren <NSObject>
++ (id)defaultInstanceWithChildSlots:(id <IBCollection>)arg1;
 + (Class)slotClass;
 - (_Bool)shouldMutateChild:(IBICAbstractCatalogItem *)arg1 byCopyingContentToNewSlot:(IBICSlot *)arg2;
 - (void)setConflictState:(unsigned long long)arg1 forChild:(IBICAbstractCatalogItem *)arg2;

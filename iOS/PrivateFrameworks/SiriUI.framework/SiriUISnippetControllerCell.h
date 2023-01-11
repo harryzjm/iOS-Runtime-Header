@@ -38,6 +38,7 @@
 - (void)setTopPadding:(double)arg1;
 - (void)setShowBackgroundView:(_Bool)arg1;
 - (void)_snippetPunchOutButtonTapped:(id)arg1;
+- (void)animateSnippetResizeToSize:(struct CGSize)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)animateSnippetConfirmationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)animateSnippetCancellationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_setTransparentFooterView:(id)arg1;
@@ -50,6 +51,7 @@
 - (double)_heightForHeaderView;
 - (void)_configureSubviewsForCurrentInset;
 - (void)layoutSubviews;
+- (id)accessibilityIdentifier;
 - (void)prepareForReuse;
 - (id)initWithFrame:(struct CGRect)arg1;
 

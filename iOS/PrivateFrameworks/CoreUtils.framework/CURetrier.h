@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
@@ -12,14 +12,15 @@
 {
     _Bool _invalidateCalled;
     NSObject<OS_dispatch_source> *_retryTimer;
-    double _startTime;
     CDUnknownBlockType _action;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     double _interval;
     double _leeway;
     CDUnknownBlockType _invalidationHandler;
+    double _startTime;
 }
 
+@property(nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(nonatomic) double leeway; // @synthesize leeway=_leeway;
 @property(nonatomic) double interval; // @synthesize interval=_interval;

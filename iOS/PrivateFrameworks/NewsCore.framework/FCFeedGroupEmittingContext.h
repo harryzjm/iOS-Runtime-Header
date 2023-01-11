@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class FCCloudContext, FCDateRange, FCFeedDescriptor, FCFeedEdition, FCFeedRefreshSession, FCForYouCatchUpOperation, NSArray, NSDate, NSHashTable, NSSet;
-@protocol FCFeedPersonalizing;
+@protocol FCCoreConfiguration, FCFeedPersonalizing;
 
 @interface FCFeedGroupEmittingContext : NSObject
 {
@@ -16,6 +16,7 @@
     _Bool _preferSpeedOverQuality;
     _Bool _isOffline;
     FCForYouCatchUpOperation *_forYouCatchUpOperation;
+    id <FCCoreConfiguration> _configuration;
     FCCloudContext *_cloudContext;
     id <FCFeedPersonalizing> _personalizer;
     FCDateRange *_refreshDateRange;
@@ -60,6 +61,7 @@
 @property(readonly, nonatomic) FCDateRange *refreshDateRange; // @synthesize refreshDateRange=_refreshDateRange;
 @property(readonly, nonatomic) id <FCFeedPersonalizing> personalizer; // @synthesize personalizer=_personalizer;
 @property(readonly, nonatomic) FCCloudContext *cloudContext; // @synthesize cloudContext=_cloudContext;
+@property(readonly, copy, nonatomic) id <FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
 - (void).cxx_destruct;
 - (id)_filterTransformationWithFilterOptions:(long long)arg1 groupTypes:(id)arg2 includeArticlesFromGroupTypes:(_Bool)arg3;
 @property(readonly, nonatomic) FCForYouCatchUpOperation *forYouCatchUpOperation; // @synthesize forYouCatchUpOperation=_forYouCatchUpOperation;
@@ -71,10 +73,13 @@
 - (id)filterTransformationWithFilterOptions:(long long)arg1 ignoringCurrentPageOutputFrom:(id)arg2;
 - (id)filterTransformationWithFilterOptions:(long long)arg1 additionalArticleIDs:(id)arg2;
 - (id)filterTransformationWithFilterOptions:(long long)arg1;
+- (id)creationDateOfGroupWithType:(long long)arg1;
 - (id)creationDateOfFollowingGroupWithType:(long long)arg1;
 - (id)precedingNewFavoriteTagIDs;
 - (_Bool)pageHasPrecedingGroupWithSourceIdentifier:(id)arg1;
 - (_Bool)pageHasExhaustedGroupsWithTypes:(id)arg1;
+- (_Bool)pageWillContainHeadlineCount:(unsigned long long)arg1 fromGroupTypes:(id)arg2;
+- (_Bool)pageWillContainExpandedNewGroupWithType:(long long)arg1;
 - (_Bool)pageWillContainGroupWithType:(long long)arg1;
 - (unsigned long long)countOfPrecedingAdjacentGroupsWithTypes:(id)arg1;
 - (id)followingAdjacentHeadlinesFromGroupType:(long long)arg1;
@@ -83,7 +88,7 @@
 @property(readonly, nonatomic) long long precedingGroupType;
 - (id)groupFromPageWithType:(long long)arg1;
 - (id)copyWithRefreshSession:(id)arg1;
-- (id)initWithCloudContext:(id)arg1 refreshSession:(id)arg2 refreshDateRange:(id)arg3 currentEdition:(id)arg4 followingEdition:(id)arg5 precedingGroups:(id)arg6 followingGroups:(id)arg7 pendingGroupsFromOtherSessions:(id)arg8 feedDescriptor:(id)arg9 emitters:(id)arg10 desiredHeadlineCount:(unsigned long long)arg11 preferSpeedOverQuality:(_Bool)arg12 forYouCatchUpOperation:(id)arg13;
+- (id)initWithConfiguration:(id)arg1 cloudContext:(id)arg2 refreshSession:(id)arg3 refreshDateRange:(id)arg4 currentEdition:(id)arg5 followingEdition:(id)arg6 precedingGroups:(id)arg7 followingGroups:(id)arg8 pendingGroupsFromOtherSessions:(id)arg9 feedDescriptor:(id)arg10 emitters:(id)arg11 desiredHeadlineCount:(unsigned long long)arg12 preferSpeedOverQuality:(_Bool)arg13 forYouCatchUpOperation:(id)arg14;
 
 @end
 

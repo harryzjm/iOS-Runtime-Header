@@ -9,7 +9,7 @@
 #import <CallKit/CXCallControllerHostProtocol-Protocol.h>
 #import <CallKit/CXCallControllerVendorProtocol-Protocol.h>
 
-@class NSBundle, NSSet, NSString, NSXPCConnection;
+@class NSSet, NSString, NSURL, NSXPCConnection;
 @protocol CXCallControllerHostConnectionDelegate, CXCallControllerVendorProtocol, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 {
     _Bool _hasVoIPBackgroundMode;
     NSString *_applicationIdentifier;
-    NSBundle *_bundle;
+    NSURL *_bundleURL;
     id <CXCallControllerHostConnectionDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSXPCConnection *_connection;
@@ -29,10 +29,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property(nonatomic) __weak id <CXCallControllerHostConnectionDelegate> delegate; // @synthesize delegate=_delegate;
-@property(copy, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
+@property(copy, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
 @property(copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 - (void).cxx_destruct;
-- (oneway void)requestTransaction:(id)arg1 forExtensionIdentifier:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (oneway void)requestTransaction:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (oneway void)requestCalls:(CDUnknownBlockType)arg1;
 - (oneway void)removeCall:(id)arg1;
 - (oneway void)addOrUpdateCall:(id)arg1;

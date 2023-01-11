@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NSString;
+@class NSDate, NSString, UIColor;
 
 @interface NTKReminderTimelineEntry
 {
@@ -14,19 +14,16 @@
     NSString *_primaryReminderId;
     NSString *_secondaryReminderTitle;
     unsigned long long _overlappingReminderCount;
+    UIColor *_primaryReminderParentListColor;
 }
 
 + (id)loadingEntryForFamily:(long long)arg1;
 + (id)lockedEntryForFamily:(long long)arg1;
-+ (id)_colorReminderImageProvider;
 + (id)_analogReminderImageProvider;
-+ (id)_modularXLReminderImageProvider;
-+ (id)_modularSmallReminderImageProvider;
-+ (id)_reminderImageXLarge;
-+ (id)_reminderImageModular;
-+ (id)_reminderImageVictory;
-+ (id)_reminderImageColorAnalog;
++ (id)_cornerReminderImageProvider;
++ (id)_reminderImageCorner;
 + (id)_reminderImageAnalog;
+@property(retain, nonatomic) UIColor *primaryReminderParentListColor; // @synthesize primaryReminderParentListColor=_primaryReminderParentListColor;
 @property(nonatomic) unsigned long long overlappingReminderCount; // @synthesize overlappingReminderCount=_overlappingReminderCount;
 @property(nonatomic) _Bool displayAsConflicting; // @synthesize displayAsConflicting=_displayAsConflicting;
 @property(retain, nonatomic) NSString *secondaryReminderTitle; // @synthesize secondaryReminderTitle=_secondaryReminderTitle;
@@ -34,12 +31,9 @@
 @property(retain, nonatomic) NSString *primaryReminderTitle; // @synthesize primaryReminderTitle=_primaryReminderTitle;
 @property(retain, nonatomic) NSDate *dueDate; // @synthesize dueDate=_dueDate;
 - (void).cxx_destruct;
-- (id)_createCircularTemplateMedium:(_Bool)arg1;
 - (id)_createLargeUtilityTemplate;
-- (id)_createSmallUtilityTemplate;
 - (id)_createLargeModularTemplate;
-- (id)_createExtraLargeTemplate;
-- (id)_createSmallModularTemplate;
+- (id)_createSignatureCornerTemplate;
 - (id)templateForComplicationFamily:(long long)arg1;
 - (id)description;
 

@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <XCTest/XCTUIApplicationMonitor-Protocol.h>
+#import <XCTest/XCUIApplicationMonitor-Protocol.h>
+#import <XCTest/XCUIApplicationProcessTracker-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString, XCUIApplicationRegistry;
+@class NSMutableDictionary, NSMutableSet, NSString, XCUIApplicationImplDepot, XCUIApplicationRegistry;
 @protocol OS_dispatch_queue;
 
-@interface XCUIApplicationMonitor : NSObject <XCTUIApplicationMonitor>
+@interface XCUIApplicationMonitor : NSObject <XCUIApplicationMonitor, XCUIApplicationProcessTracker>
 {
     XCUIApplicationRegistry *_applicationRegistry;
     NSObject<OS_dispatch_queue> *_queue;
-    NSMutableDictionary *_applicationImplementations;
+    XCUIApplicationImplDepot *_applicationImplDepot;
+    NSMutableSet *_trackedBundleIDs;
     NSMutableDictionary *_applicationProcessesForPID;
     NSMutableDictionary *_applicationProcessesForToken;
     NSMutableSet *_launchedApplications;
@@ -25,11 +27,16 @@
 @property(readonly, copy) NSMutableSet *launchedApplications; // @synthesize launchedApplications=_launchedApplications;
 @property(readonly, copy) NSMutableDictionary *applicationProcessesForToken; // @synthesize applicationProcessesForToken=_applicationProcessesForToken;
 @property(readonly, copy) NSMutableDictionary *applicationProcessesForPID; // @synthesize applicationProcessesForPID=_applicationProcessesForPID;
-@property(readonly, copy) NSMutableDictionary *applicationImplementations; // @synthesize applicationImplementations=_applicationImplementations;
-@property NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(readonly) XCUIApplicationRegistry *applicationRegistry; // @synthesize applicationRegistry=_applicationRegistry;
-- (void)requestAutomationSessionForTestTargetWithPID:(int)arg1 reply:(CDUnknownBlockType)arg2;
+@property(readonly, copy) NSMutableSet *trackedBundleIDs; // @synthesize trackedBundleIDs=_trackedBundleIDs;
+@property(readonly, copy) XCUIApplicationImplDepot *applicationImplDepot; // @synthesize applicationImplDepot=_applicationImplDepot;
+@property(retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(retain) XCUIApplicationRegistry *applicationRegistry; // @synthesize applicationRegistry=_applicationRegistry;
+- (void).cxx_destruct;
+- (void)acquireBackgroundAssertionForPID:(int)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)requestAutomationSessionForTestTargetWithPID:(int)arg1 preferredBackendPath:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)updatedApplicationStateSnapshot:(id)arg1;
+- (void)_setIsTrackingForBundleID:(id)arg1;
+- (_Bool)_isTrackingBundleID:(id)arg1;
 - (void)applicationWithBundleID:(id)arg1 didUpdatePID:(int)arg2 state:(unsigned long long)arg3;
 - (void)processWithToken:(id)arg1 exitedWithStatus:(int)arg2;
 - (void)stopTrackingProcessWithToken:(id)arg1;
@@ -48,9 +55,7 @@
 - (void)setApplicationProcess:(id)arg1 forPID:(int)arg2;
 - (id)applicationProcessWithPID:(int)arg1;
 - (id)applicationImplementationForApplicationAtPath:(id)arg1 bundleID:(id)arg2;
-- (id)_lookupApplicationImplementationForApplicationAtPath:(id)arg1 bundleID:(id)arg2;
 - (id)init;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

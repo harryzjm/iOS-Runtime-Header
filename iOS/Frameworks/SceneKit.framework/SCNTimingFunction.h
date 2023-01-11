@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 
@@ -18,6 +18,7 @@
 + (id)functionWithTimingMode:(long long)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (struct __C3DTimingFunction *)c3dTimingFunction;
 - (void)dealloc;
 - (id)initWithTimingFunctionRef:(struct __C3DTimingFunction *)arg1;
 

@@ -11,8 +11,8 @@
 #import <EventKitUI/EKDayViewContentDelegate-Protocol.h>
 #import <EventKitUI/UIScrollViewDelegate-Protocol.h>
 
-@class EKDayAllDayView, EKDayTimeView, EKDayViewContent, EKEvent, NSArray, NSCalendar, NSDate, NSDateComponents, NSString, NSTimer, UIColor, UIImageView, UIPinchGestureRecognizer, UIScrollView, UITapGestureRecognizer, UIVisualEffect;
-@protocol EKDayViewDataSource, EKDayViewDelegate;
+@class EKDayAllDayView, EKDayTimeView, EKDayViewContent, EKEvent, NSArray, NSCalendar, NSDate, NSDateComponents, NSObject, NSString, NSTimer, UIColor, UIImageView, UIPinchGestureRecognizer, UIScrollView, UITapGestureRecognizer, UIVisualEffect;
+@protocol EKDayViewDataSource, EKDayViewDelegate, OS_dispatch_queue;
 
 @interface EKDayView : UIView <UIScrollViewDelegate, EKDayAllDayViewDelegate, EKDayViewContentDelegate, EKDayTimeViewDelegate>
 {
@@ -41,6 +41,7 @@
     _Bool _pinching;
     UIPinchGestureRecognizer *_pinchGestureRecognizer;
     UITapGestureRecognizer *_doubleTapGestureRecognizer;
+    NSObject<OS_dispatch_queue> *_reloadQueue;
     _Bool _allowsOccurrenceSelection;
     _Bool _alignsMidnightToTop;
     _Bool _showOnlyAllDayArea;
@@ -66,6 +67,7 @@
 
 @property(nonatomic) double hourScale; // @synthesize hourScale=_hourScale;
 @property(nonatomic) double scrollAnimationDurationOverride; // @synthesize scrollAnimationDurationOverride=_scrollAnimationDurationOverride;
+@property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property(nonatomic) double todayScrollSecondBuffer; // @synthesize todayScrollSecondBuffer=_todayScrollSecondBuffer;
 @property(nonatomic) _Bool allowPinchingHourHeights; // @synthesize allowPinchingHourHeights=_allowPinchingHourHeights;
 @property(nonatomic) _Bool usesVibrantGridDrawing; // @synthesize usesVibrantGridDrawing=_usesVibrantGridDrawing;
@@ -117,6 +119,8 @@
 - (void)occurrencePressed:(id)arg1 onDay:(double)arg2;
 - (void)allDayViewDidLayoutSubviews:(id)arg1;
 - (void)allDayView:(id)arg1 didSelectEvent:(id)arg2;
+- (void)reloadDataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)reloadDataSynchronously;
 - (void)reloadData;
 - (void)relayoutExistingTimedOccurrences;
 - (void)setScrollerYInset:(double)arg1 keepingYPointVisible:(double)arg2;
@@ -161,6 +165,7 @@
 - (void)_scrollToSecond:(int)arg1 offset:(double)arg2 animated:(_Bool)arg3 whenFinished:(CDUnknownBlockType)arg4;
 - (void)_scrollToSecond:(int)arg1 animated:(_Bool)arg2 whenFinished:(CDUnknownBlockType)arg3;
 - (void)scrollToEvent:(id)arg1 animated:(_Bool)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (id)verticalScrollView;
 @property(nonatomic) struct CGPoint normalizedContentOffset;
 @property(readonly, nonatomic) double scrollOffset;
 @property(readonly, nonatomic) EKDayTimeView *timeView;
@@ -187,7 +192,6 @@
 @property(nonatomic) _Bool animatesTimeMarker;
 @property(nonatomic) _Bool showsTimeLabel;
 - (void)adjustForSignificantTimeChange;
-- (void)setOrientation:(long long)arg1;
 - (void)setTimeZone:(id)arg1;
 - (void)updateMarkerPosition;
 - (void)_invalidateMarkerTimer;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MobileCoreServices/NSUserActivity.h>
+#import <Foundation/NSUserActivity.h>
 
 @interface NSUserActivity (ContactsUICore)
 + (id)_cnui_searchMailUserActivityForContact:(id)arg1;

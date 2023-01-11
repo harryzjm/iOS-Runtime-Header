@@ -6,10 +6,12 @@
 
 #import <NanoTimeKitCompanion/NSObject-Protocol.h>
 
-@class NTKFace;
+@class NSDictionary, NSUUID, NTKFace;
 
 @protocol NTKFaceSnapshotServer <NSObject>
 - (void)performAfterCompletingCurrentlyPendingSnapshots:(void (^)(void))arg1;
+- (void)snapshotLibrarySelectedFaceForDeviceUUID:(NSUUID *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(UIImage *))arg3;
+- (void)snapshotFace:(NTKFace *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(UIImage *))arg3;
 - (void)requestSnapshotOfFace:(NTKFace *)arg1;
 - (void)createFaceForPerformanceTesting:(long long)arg1;
 - (void)updateAllSnapshots;

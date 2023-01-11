@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_replacePrimaryGraphViewControllerWithTimeScope:(long long)arg1 anchorDate:(id)arg2 animated:(_Bool)arg3;
 - (void)_setDateSelectorToVisibleRange;
 - (void)_accessibilityLoadAccessibilityInformation;
 

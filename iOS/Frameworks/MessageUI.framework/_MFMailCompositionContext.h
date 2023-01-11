@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <MessageUI/MFMailCompositionUTITypes-Protocol.h>
 
 @class MFAttachmentCompositionContext, MFMailMessage, MFMessageLoadingContext, NSArray, NSMutableArray, NSString, UIView;
 @protocol MFComposeBodyField;
 
-@interface _MFMailCompositionContext : NSObject
+@interface _MFMailCompositionContext : NSObject <MFMailCompositionUTITypes>
 {
     NSString *_sendingAddress;
     NSString *_subject;
@@ -18,7 +20,7 @@
     NSArray *_bccRecipients;
     NSString *_messageBody;
     int _composeType;
-    id _autosaveIdentifier;
+    NSString *_autosaveIdentifier;
     MFMailMessage *_originalMessage;
     NSString *_attachmentToMarkupContentID;
     id _originalContent;
@@ -33,6 +35,7 @@
     _Bool _usingDefaultAccount;
     _Bool _prefersFirstLineSelection;
     int _sourceAccountManagement;
+    NSArray *UTITypes;
     unsigned long long _caretPosition;
     NSString *_originatingBundleID;
     UIView<MFComposeBodyField> *_bodyField;
@@ -44,10 +47,11 @@
 @property(retain, nonatomic) MFMessageLoadingContext *loadingContext; // @synthesize loadingContext=_loadingContext;
 @property(nonatomic) unsigned long long caretPosition; // @synthesize caretPosition=_caretPosition;
 @property(nonatomic) _Bool prefersFirstLineSelection; // @synthesize prefersFirstLineSelection=_prefersFirstLineSelection;
+@property(copy, nonatomic) NSArray *UTITypes; // @synthesize UTITypes;
 @property(retain, nonatomic) NSString *attachmentToMarkupContentID; // @synthesize attachmentToMarkupContentID=_attachmentToMarkupContentID;
 @property(readonly, nonatomic) MFAttachmentCompositionContext *attachmentContext; // @synthesize attachmentContext=_attachmentContext;
 @property(readonly, nonatomic) MFMailMessage *originalMessage; // @synthesize originalMessage=_originalMessage;
-@property(readonly, nonatomic) id autosaveIdentifier; // @synthesize autosaveIdentifier=_autosaveIdentifier;
+@property(readonly, nonatomic) NSString *autosaveIdentifier; // @synthesize autosaveIdentifier=_autosaveIdentifier;
 @property(readonly, nonatomic) int composeType; // @synthesize composeType=_composeType;
 @property(retain, nonatomic) id originalContent; // @synthesize originalContent=_originalContent;
 @property(nonatomic) _Bool showContentImmediately; // @synthesize showContentImmediately=_showContentImmediately;
@@ -76,6 +80,7 @@
 - (id)messageBody;
 - (void)switchToReplyAllWithDelegate:(id)arg1;
 - (void)dealloc;
+- (id)initWithHandoffActivityPayload:(id)arg1;
 - (id)initOutboxRestoreOfMessage:(id)arg1;
 - (id)initSendAgainDraftOfMessage:(id)arg1;
 - (id)initDraftRestoreOfMessage:(id)arg1;

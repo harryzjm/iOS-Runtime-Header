@@ -9,29 +9,31 @@
 #import <CoreSpotlight/CSIndexExtensionDelegate-Protocol.h>
 
 @class NSCondition, NSDictionary, NSString, _MDIndexExtensionLoader;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue;
 
 @interface _MDIndexExtensionManager : NSObject <CSIndexExtensionDelegate>
 {
-    _Bool _isUnderMemoryPressure;
     NSObject<OS_dispatch_queue> *_notifyQueue;
     _MDIndexExtensionLoader *_extensionLoader;
     NSDictionary *_indexExtensionsByBundleID;
+    NSDictionary *_fileProviderBundleMap;
     NSObject<OS_dispatch_queue> *_queue;
     NSCondition *_extensionsCondition;
-    NSObject<OS_dispatch_source> *_memoryStatusSource;
+    NSObject<OS_dispatch_queue> *_extensionManagerQueue;
+    long long _loaderCallbackCount;
 }
 
++ (void)setMemoryPressureStatus:(unsigned long long)arg1;
 + (id)sharedManager;
-@property _Bool isUnderMemoryPressure; // @synthesize isUnderMemoryPressure=_isUnderMemoryPressure;
-@property(retain, nonatomic) NSObject<OS_dispatch_source> *memoryStatusSource; // @synthesize memoryStatusSource=_memoryStatusSource;
+@property(nonatomic) long long loaderCallbackCount; // @synthesize loaderCallbackCount=_loaderCallbackCount;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *extensionManagerQueue; // @synthesize extensionManagerQueue=_extensionManagerQueue;
 @property(retain, nonatomic) NSCondition *extensionsCondition; // @synthesize extensionsCondition=_extensionsCondition;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(retain, nonatomic) NSDictionary *fileProviderBundleMap; // @synthesize fileProviderBundleMap=_fileProviderBundleMap;
 @property(retain, nonatomic) NSDictionary *indexExtensionsByBundleID; // @synthesize indexExtensionsByBundleID=_indexExtensionsByBundleID;
 @property(retain, nonatomic) _MDIndexExtensionLoader *extensionLoader; // @synthesize extensionLoader=_extensionLoader;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *notifyQueue; // @synthesize notifyQueue=_notifyQueue;
 - (void).cxx_destruct;
-- (void)findExtensionsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)indexRequestsPerformDataJob:(id)arg1 forBundle:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)indexRequestsPerformJob:(id)arg1 extensions:(id)arg2 perExtensionCompletionHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)indexRequestsPerformJob:(id)arg1 perExtensionCompletionHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -43,12 +45,10 @@
 - (id)extensions;
 - (id)anyExtensionWithBlock:(CDUnknownBlockType)arg1;
 - (id)allExtensionsWithBlock:(CDUnknownBlockType)arg1;
-- (void)_filterExtensionsWithBlock:(CDUnknownBlockType)arg1;
+- (void)_waitForLoadLocked;
 - (void)_notifyForLoadedExtensions;
-- (void)loadExtensionsSynchronously;
+- (void)findExtensionsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)loadExtensions;
-- (void)_didUpdateMemoryStatus:(unsigned long long)arg1;
-- (void)dealloc;
 - (id)init;
 
 // Remaining properties

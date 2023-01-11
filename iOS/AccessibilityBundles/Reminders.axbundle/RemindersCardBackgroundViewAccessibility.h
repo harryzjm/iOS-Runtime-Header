@@ -25,6 +25,7 @@
 - (_Bool)isAccessibilityElement;
 - (_Bool)_axIsRegularList;
 - (_Bool)_axIsNewList;
+- (id)_axListTitle;
 - (int)_axCardStackViewState;
 - (struct UIEdgeInsets)_axEdgeInsets;
 - (_Bool)_accessibilityRepresentsPiledCardsAtBottom;

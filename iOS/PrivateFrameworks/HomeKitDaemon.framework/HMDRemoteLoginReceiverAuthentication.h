@@ -4,17 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ACAccountStore;
 @protocol HMDRemoteLoginReceiverAuthenticationDelegate;
 
 @interface HMDRemoteLoginReceiverAuthentication
 {
     id <HMDRemoteLoginReceiverAuthenticationDelegate> _delegate;
-    ACAccountStore *_store;
 }
 
 + (id)logCategory;
-@property(readonly, nonatomic) ACAccountStore *store; // @synthesize store=_store;
 @property(readonly, nonatomic) __weak id <HMDRemoteLoginReceiverAuthenticationDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (void)_completedAuthenticationRequest:(id)arg1 loggedInAccount:(id)arg2;

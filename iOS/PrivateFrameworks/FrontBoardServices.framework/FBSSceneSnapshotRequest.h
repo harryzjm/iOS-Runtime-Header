@@ -17,11 +17,14 @@
     FBSSceneSettings *_settings;
     _Bool _handled;
     id <FBSSceneSnapshotRequestDelegate> _delegate;
+    _Bool _allowsProtectedContent;
 }
 
+@property(readonly, nonatomic) _Bool allowsProtectedContent; // @synthesize allowsProtectedContent=_allowsProtectedContent;
 @property(readonly, copy, nonatomic) FBSSceneSettings *settings; // @synthesize settings=_settings;
 @property(copy, nonatomic) NSString *sceneID; // @synthesize sceneID=_sceneID;
-@property(nonatomic) id <FBSSceneSnapshotRequestDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <FBSSceneSnapshotRequestDelegate> delegate; // @synthesize delegate=_delegate;
+- (void).cxx_destruct;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -30,8 +33,8 @@
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
 - (_Bool)performSnapshotWithContext:(id)arg1;
-- (void)dealloc;
 - (id)initWithSettings:(id)arg1;
+- (id)initWithSettings:(id)arg1 allowsProtectedContent:(_Bool)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

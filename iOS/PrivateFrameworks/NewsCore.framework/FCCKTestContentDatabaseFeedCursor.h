@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsCore/NSCoding-Protocol.h>
 #import <NewsCore/NSCopying-Protocol.h>
+#import <NewsCore/NSSecureCoding-Protocol.h>
 
 @class NSNumber;
 
-@interface FCCKTestContentDatabaseFeedCursor : NSObject <NSCopying, NSCoding>
+@interface FCCKTestContentDatabaseFeedCursor : NSObject <NSCopying, NSSecureCoding>
 {
     NSNumber *_order;
     NSNumber *_subOrder;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(copy, nonatomic) NSNumber *subOrder; // @synthesize subOrder=_subOrder;
 @property(copy, nonatomic) NSNumber *order; // @synthesize order=_order;
 - (void).cxx_destruct;

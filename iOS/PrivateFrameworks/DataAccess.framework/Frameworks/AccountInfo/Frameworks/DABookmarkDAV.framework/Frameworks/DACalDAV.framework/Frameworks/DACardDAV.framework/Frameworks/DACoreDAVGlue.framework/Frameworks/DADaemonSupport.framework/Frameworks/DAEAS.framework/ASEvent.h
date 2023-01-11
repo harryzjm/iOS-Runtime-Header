@@ -5,11 +5,11 @@
 //
 
 #import <DAEAS/DADataElement-Protocol.h>
-#import <DAEAS/NSCoding-Protocol.h>
+#import <DAEAS/NSSecureCoding-Protocol.h>
 
 @class ASEventUID, ASLocation, ASRecurrence, ASTimeZone, NSArray, NSCalendarDate, NSDate, NSNumber, NSString;
 
-@interface ASEvent <NSCoding, DADataElement>
+@interface ASEvent <NSSecureCoding, DADataElement>
 {
     _Bool _bodyTruncated;
     _Bool _doNotSendBody;
@@ -54,8 +54,11 @@
     NSDate *_proposedEndTime;
 }
 
++ (_Bool)supportsSecureCoding;
 + (void)_setFakeDTStampDateForUnitTests:(id)arg1;
 + (id)eventWithCalEvent:(void *)arg1 serverID:(id)arg2 account:(id)arg3;
++ (id)calendarItemExternalRepClasses;
++ (id)attendeeExternalRepClasses;
 + (id)asParseRules;
 + (_Bool)notifyOfUnknownTokens;
 + (_Bool)frontingBasicTypes;

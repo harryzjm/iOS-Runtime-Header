@@ -8,7 +8,7 @@
 
 #import <TelephonyUtilities/TUCallContainer-Protocol.h>
 
-@class CNContactStore, NSArray, NSString, TUAudioDeviceController, TUCall, TUCallProviderManager, TUCallServicesInterface, TUConversationManager, TUVideoDeviceController;
+@class CNContactStore, NSArray, NSString, TUAudioDeviceController, TUCall, TUCallProviderManager, TUCallServicesInterface, TUConversationManager, TURouteController, TUVideoDeviceController;
 @protocol OS_dispatch_queue, TUCallContainerPrivate;
 
 @interface TUCallCenter : NSObject <TUCallContainer>
@@ -17,6 +17,7 @@
     TUCallServicesInterface *_callServicesInterface;
     TUAudioDeviceController *_audioDeviceController;
     TUVideoDeviceController *_videoDeviceController;
+    TURouteController *_routeController;
     CNContactStore *_contactStore;
     TUCallProviderManager *_providerManager;
     TUConversationManager *_conversationManager;
@@ -31,13 +32,13 @@
 + (id)sharedInstance;
 + (id)sharedContactStore;
 + (const void *)sharedAddressBook;
-+ (_Bool)isInCallServiceProcess;
 @property(copy, nonatomic) CDUnknownBlockType disconnectCallPreflight; // @synthesize disconnectCallPreflight=_disconnectCallPreflight;
 @property(nonatomic) struct CGSize localPortraitAspectRatio; // @synthesize localPortraitAspectRatio=_localPortraitAspectRatio;
 @property(nonatomic) struct CGSize localLandscapeAspectRatio; // @synthesize localLandscapeAspectRatio=_localLandscapeAspectRatio;
 @property(retain, nonatomic) TUConversationManager *conversationManager; // @synthesize conversationManager=_conversationManager;
 @property(retain, nonatomic) TUCallProviderManager *providerManager; // @synthesize providerManager=_providerManager;
 @property(retain, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
+@property(retain, nonatomic) TURouteController *routeController; // @synthesize routeController=_routeController;
 @property(retain, nonatomic) TUVideoDeviceController *videoDeviceController; // @synthesize videoDeviceController=_videoDeviceController;
 @property(retain, nonatomic) TUAudioDeviceController *audioDeviceController; // @synthesize audioDeviceController=_audioDeviceController;
 @property(retain, nonatomic) TUCallServicesInterface *callServicesInterface; // @synthesize callServicesInterface=_callServicesInterface;
@@ -56,12 +57,15 @@
 - (_Bool)isHoldAllowed;
 - (_Bool)isMergeable;
 - (_Bool)isSwappable;
+- (id)activeConversationForCall:(id)arg1;
 - (void)enteredBackgroundForAllCalls;
 - (void)willEnterBackgroundForAllCalls;
 - (void)enteredForegroundForCall:(id)arg1;
+- (id)joinConversationWithConversationRequest:(id)arg1;
+- (_Bool)launchAppForJoinRequest:(id)arg1;
 - (void)joinConversationWithRequest:(id)arg1;
 - (void)pullHostedCallsFromPairedHostDevice;
-- (void)pushHostedCallsToPairedClientDevice;
+- (void)pushHostedCallsToDestination:(id)arg1;
 - (void)pullRelayingCallsFromClient;
 - (void)pushRelayingCallsToHostWithSourceIdentifier:(id)arg1;
 - (void)pushRelayingCallsToHost;
@@ -93,16 +97,11 @@
 - (void)answerCall:(id)arg1;
 - (void)sendFieldModeDigits:(id)arg1 forProvider:(id)arg2;
 - (void)launchAppForDialRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_dial:(id)arg1 callID:(int)arg2 provider:(id)arg3 video:(_Bool)arg4 sourceIdentifier:(id)arg5 dialType:(long long)arg6;
-- (id)_dial:(id)arg1 callID:(int)arg2 service:(int)arg3 sourceIdentifier:(id)arg4 dialType:(long long)arg5;
-- (id)dialEmergency:(id)arg1 sourceIdentifier:(id)arg2;
-- (id)dialEmergency:(id)arg1;
-- (id)dial:(id)arg1 callID:(int)arg2 service:(int)arg3;
-- (id)dial:(id)arg1 service:(int)arg2;
 - (id)_dialWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dialWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)dialWithRequest:(id)arg1;
 - (_Bool)canDialWithRequest:(id)arg1;
+- (_Bool)_isEmergencyDialRequest:(id)arg1;
 - (_Bool)_canDialWithRequest:(id)arg1 shouldUseRelay:(_Bool *)arg2;
 - (_Bool)_isCallingAvailableOnSecondaryDeviceWithRelayCallingAvailability:(int)arg1 isProviderAvailable:(_Bool)arg2 isRelayAllowed:(_Bool)arg3 isEmergency:(_Bool)arg4 supportsBasebandCalling:(_Bool)arg5 shouldUseRelay:(_Bool *)arg6;
 - (_Bool)_existingCallsAllowDialRequest:(id)arg1 allowVoiceWithData:(_Bool)arg2;
@@ -153,7 +152,7 @@
 @property(readonly, copy, nonatomic) NSArray *currentVideoCalls;
 @property(readonly, copy, nonatomic) NSArray *currentCalls;
 - (id)_allCalls;
-- (_Bool)_shouldPreferRelayOverDirectSecondaryCallingForRelayingCallingAvailability:(int)arg1 isRelayCallingSupported:(_Bool)arg2;
+- (_Bool)_shouldPreferRelayOverDirectSecondaryCallingForRelayingCallingAvailability:(int)arg1 isRelayCallingSupported:(_Bool)arg2 isEmergencyCallbackPossible:(_Bool)arg3;
 - (_Bool)shouldPreferRelayOverDirectSecondaryCallingForProvider:(id)arg1 isVideo:(_Bool)arg2;
 - (_Bool)isDirectCallingCurrentlyAvailableForProvider:(id)arg1 isVideo:(_Bool)arg2;
 - (_Bool)isRelayCallingSupportedForProvider:(id)arg1 isVideo:(_Bool)arg2;

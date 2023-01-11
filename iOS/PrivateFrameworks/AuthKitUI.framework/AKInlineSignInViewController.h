@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <AuthKitUI/AKAppleIDAuthenticationInAppContextPasswordDelegate-Protocol.h>
 #import <AuthKitUI/UITextFieldDelegate-Protocol.h>
 
-@class AKAppleIDAuthenticationInAppContext, AKTextField, NSString, UIActivityIndicatorView, UIButton, UIView;
+@class AKAppleIDAuthenticationInAppContext, AKTextField, NSString, UIActivityIndicatorView, UIButton, UIColor, UIView;
 
-@interface AKInlineSignInViewController <UITextFieldDelegate>
+@interface AKInlineSignInViewController <UITextFieldDelegate, AKAppleIDAuthenticationInAppContextPasswordDelegate>
 {
     _Bool _usesDarkMode;
     _Bool _usesVibrancy;
@@ -16,8 +17,10 @@
     NSString *_secondaryButtonTitle;
     NSString *_tertiaryButtonTitle;
     AKAppleIDAuthenticationInAppContext *_context;
+    CDUnknownBlockType _passwordRequiredCompletion;
     _Bool _wantsAuthenticationProgress;
     NSString *_primaryButtonTitle;
+    UIColor *_fieldBackgroundColor;
     UIView *_loginFieldsContainer;
     AKTextField *_appleIDField;
     AKTextField *_passwordField;
@@ -34,16 +37,20 @@
 @property(retain) AKTextField *passwordField; // @synthesize passwordField=_passwordField;
 @property(retain) AKTextField *appleIDField; // @synthesize appleIDField=_appleIDField;
 @property(retain) UIView *loginFieldsContainer; // @synthesize loginFieldsContainer=_loginFieldsContainer;
+@property(retain, nonatomic) UIColor *fieldBackgroundColor; // @synthesize fieldBackgroundColor=_fieldBackgroundColor;
 @property(readonly) NSString *primaryButtonTitle; // @synthesize primaryButtonTitle=_primaryButtonTitle;
 @property _Bool wantsAuthenticationProgress; // @synthesize wantsAuthenticationProgress=_wantsAuthenticationProgress;
 - (void).cxx_destruct;
+- (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
+- (_Bool)textFieldShouldReturn:(id)arg1;
+- (void)context:(id)arg1 needsPasswordWithCompletion:(CDUnknownBlockType)arg2;
 @property(nonatomic) long long blurEffectStyle;
 @property(nonatomic) _Bool usesVibrancy;
-- (_Bool)textFieldShouldReturn:(id)arg1;
 - (void)_updateFonts:(id)arg1;
 - (void)_updateSignInButtonState;
 - (void)_passwordTextFieldDidChange:(id)arg1;
 - (void)_appleIDTextFieldDidChange:(id)arg1;
+- (void)_setPasswordFieldHidden:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_hidebusyWorkUI;
 - (void)_startBusyWorkUI;
 - (void)_beginAuthenticationIfPossibleWithOption:(unsigned long long)arg1;
@@ -54,6 +61,7 @@
 - (void)_prefillAuthFields;
 - (void)_updateSignInFieldStatuses;
 - (void)_updatePlaceholderIfNeeded;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)setContext:(id)arg1;
 - (id)context;

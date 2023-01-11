@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/AVKeyPathDependencyHost-Protocol.h>
 #import <AVFoundation/AVWeakObservable-Protocol.h>
@@ -37,6 +37,8 @@
 - (void)addCallbackToCancelDuringDeallocation:(id)arg1;
 - (void)setPerformsMultiPassEncodingIfSupported:(_Bool)arg1;
 - (_Bool)performsMultiPassEncodingIfSupported;
+- (void)setMaximizePowerEfficiency:(_Bool)arg1;
+- (_Bool)maximizePowerEfficiency;
 @property(nonatomic) _Bool expectsMediaDataInRealTime;
 @property(readonly, nonatomic, getter=isReadyForMoreMediaData) _Bool readyForMoreMediaData;
 - (void)declareKeyPathDependenciesWithRegistry:(id)arg1;

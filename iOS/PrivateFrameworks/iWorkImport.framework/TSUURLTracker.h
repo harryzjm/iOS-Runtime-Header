@@ -4,22 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSData, NSURL, TSUURLTrackerFilePresenter;
+#import <iWorkImport/TSUURLWrapper-Protocol.h>
+
+@class NSData, NSString, NSURL, TSUURLTrackerFilePresenter;
 
 __attribute__((visibility("hidden")))
-@interface TSUURLTracker : NSObject
+@interface TSUURLTracker : NSObject <TSUURLWrapper>
 {
     TSUURLTrackerFilePresenter *_filePresenter;
 }
 
 - (void).cxx_destruct;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (void)stop;
 - (void)resume;
 - (void)pause;
+@property(readonly) _Bool deleted;
+@property(readonly) NSData *bookmarkDataIfAvailable;
 @property(readonly) NSData *bookmarkData;
+@property(readonly) NSURL *URLIfAvailable;
 - (id)URLAndReturnError:(id *)arg1;
 @property(readonly) NSURL *URL;
 - (void)dealloc;
@@ -29,6 +34,11 @@ __attribute__((visibility("hidden")))
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 bookmarkData:(id)arg2 delegate:(id)arg3;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

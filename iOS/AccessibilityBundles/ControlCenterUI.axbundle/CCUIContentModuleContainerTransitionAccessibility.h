@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axElementToFocusForViewController:(id)arg1;
 - (id)_axExpandedPlatterModalParentOfView:(id)arg1;
 - (void)transitionDidEnd:(_Bool)arg1;
 

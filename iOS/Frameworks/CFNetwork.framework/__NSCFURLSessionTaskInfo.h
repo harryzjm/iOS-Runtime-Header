@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CFNetwork/NSSecureCoding-Protocol.h>
 
@@ -22,7 +22,10 @@
     _Bool _shouldCancelOnDisconnect;
     _Bool _discretionary;
     _Bool _mayBeDemotedToDiscretionary;
+    _Bool __hasSZExtractor;
+    _Bool __doesSZExtractorConsumeExtractedData;
     _Bool _initializedWithAVAsset;
+    unsigned int _qos;
     unsigned long long _identifier;
     unsigned long long _taskKind;
     double _creationTime;
@@ -43,6 +46,7 @@
     unsigned long long _retryCount;
     unsigned long long _lowThroughputTimerRetryCount;
     long long _basePriority;
+    long long _discretionaryOverride;
     NSString *_uniqueIdentifier;
     NSString *_storagePartitionIdentifier;
     long long _bytesPerSecondLimit;
@@ -92,6 +96,8 @@
 @property(copy) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
 @property(copy) NSURL *URL; // @synthesize URL=_URL;
 @property unsigned long long AVAssetDownloadToken; // @synthesize AVAssetDownloadToken=_AVAssetDownloadToken;
+@property(nonatomic) _Bool _doesSZExtractorConsumeExtractedData; // @synthesize _doesSZExtractorConsumeExtractedData=__doesSZExtractorConsumeExtractedData;
+@property(nonatomic) _Bool _hasSZExtractor; // @synthesize _hasSZExtractor=__hasSZExtractor;
 @property(retain, nonatomic) id <SZExtractor> _extractor; // @synthesize _extractor=__extractor;
 @property double timeoutIntervalForResource; // @synthesize timeoutIntervalForResource=_timeoutIntervalForResource;
 @property(copy) NSString *pathToDownloadTaskFile; // @synthesize pathToDownloadTaskFile=_pathToDownloadTaskFile;
@@ -100,6 +106,8 @@
 @property long long bytesPerSecondLimit; // @synthesize bytesPerSecondLimit=_bytesPerSecondLimit;
 @property(copy) NSString *storagePartitionIdentifier; // @synthesize storagePartitionIdentifier=_storagePartitionIdentifier;
 @property(copy) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property unsigned int qos; // @synthesize qos=_qos;
+@property long long discretionaryOverride; // @synthesize discretionaryOverride=_discretionaryOverride;
 @property(getter=isDiscretionary) _Bool discretionary; // @synthesize discretionary=_discretionary;
 @property long long basePriority; // @synthesize basePriority=_basePriority;
 @property _Bool shouldCancelOnDisconnect; // @synthesize shouldCancelOnDisconnect=_shouldCancelOnDisconnect;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class HUIconView, NSArray, UILabel;
+@class HUIconView, NSArray, UILabel, UILayoutGuide;
 @protocol HFStringGenerator;
 
 @interface HUQuickControlSummaryView : UIView
@@ -20,9 +20,11 @@
     UILabel *_primaryStatusLabel;
     UILabel *_secondaryStatusLabel;
     NSArray *_contentConstraints;
+    UILayoutGuide *_lastBaselineLayoutGuide;
 }
 
 + (_Bool)requiresConstraintBasedLayout;
+@property(retain, nonatomic) UILayoutGuide *lastBaselineLayoutGuide; // @synthesize lastBaselineLayoutGuide=_lastBaselineLayoutGuide;
 @property(retain, nonatomic) NSArray *contentConstraints; // @synthesize contentConstraints=_contentConstraints;
 @property(readonly, nonatomic) UILabel *secondaryStatusLabel; // @synthesize secondaryStatusLabel=_secondaryStatusLabel;
 @property(readonly, nonatomic) UILabel *primaryStatusLabel; // @synthesize primaryStatusLabel=_primaryStatusLabel;
@@ -34,14 +36,16 @@
 @property(readonly, nonatomic) HUIconView *iconView; // @synthesize iconView=_iconView;
 - (void).cxx_destruct;
 - (id)_secondaryFont;
-- (id)_secondaryFontMetrics;
+- (id)_secondaryFontTextStyle;
 - (id)_primaryFont;
-- (id)_primaryFontMetrics;
+- (id)_primaryFontTextStyle;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
+- (id)lastBaselineAnchor;
 - (id)viewForLastBaselineLayout;
 - (id)viewForFirstBaselineLayout;
 - (double)_iconHeight;
+- (double)_secondaryStatusLineHeight;
 - (void)_updateSecondaryStatusContent;
 - (void)_updatePrimaryStatusContent;
 - (void)_invalidateContentAndConstraints;

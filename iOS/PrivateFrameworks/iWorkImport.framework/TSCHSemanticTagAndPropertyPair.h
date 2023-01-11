@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -19,12 +19,12 @@ __attribute__((visibility("hidden")))
 
 + (id)pairWithSemanticTag:(id)arg1 property:(int)arg2;
 + (id)semanticTagToSemanticUsagesMapForSemanticUsages:(id)arg1;
+- (void).cxx_destruct;
 - (id)description;
 - (int)property;
 - (id)semanticTag;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithSemanticTag:(id)arg1 property:(int)arg2;
 

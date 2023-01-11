@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVVideoOutputSettings, AVWeakReference;
 @protocol AVPlayerItemOutputPullDelegate, OS_dispatch_queue, OS_dispatch_source;
 
+__attribute__((visibility("hidden")))
 @interface AVPlayerItemVideoOutputInternal : NSObject
 {
     struct OpaqueCMTimebase *timebase;

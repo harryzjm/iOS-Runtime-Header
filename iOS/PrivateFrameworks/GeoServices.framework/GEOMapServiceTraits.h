@@ -20,6 +20,7 @@
     double _carHeadunitPixelHeight;
     double _carHeadunitPixelWidth;
     double _mapZoomLevel;
+    double _sessionRelativeTimestamp;
     int _action;
     NSString *_analyticsAppIdentifier;
     NSString *_appIdentifier;
@@ -55,12 +56,16 @@
     GEOTraitsTransitScheduleFilter *_transitScheduleFilter;
     GEOPDVenueIdentifier *_venueIdentifier;
     GEOWalkingOptions *_walkingOptions;
+    _Bool _appDarkMode;
+    _Bool _deviceDarkMode;
     _Bool _deviceInVehicle;
     _Bool _isAPICall;
     _Bool _isRedoSearch;
     _Bool _navigating;
+    _Bool _supportDirectionIntentAutocomplete;
     _Bool _supportDirectionIntentSearch;
     _Bool _supportDymSuggestion;
+    _Bool _supportUnresolvedDirectionIntent;
     _Bool _useBackgroundUrl;
     _Bool _wantsBrandIcon;
     struct {
@@ -68,6 +73,7 @@
         unsigned int carHeadunitPixelHeight:1;
         unsigned int carHeadunitPixelWidth:1;
         unsigned int mapZoomLevel:1;
+        unsigned int sessionRelativeTimestamp:1;
         unsigned int action:1;
         unsigned int carHeadunitConnectionType:1;
         unsigned int carHeadunitInteractionModel:1;
@@ -82,12 +88,16 @@
         unsigned int source:1;
         unsigned int timeSinceMapEnteredForeground:1;
         unsigned int timeSinceMapViewportChanged:1;
+        unsigned int appDarkMode:1;
+        unsigned int deviceDarkMode:1;
         unsigned int deviceInVehicle:1;
         unsigned int isAPICall:1;
         unsigned int isRedoSearch:1;
         unsigned int navigating:1;
+        unsigned int supportDirectionIntentAutocomplete:1;
         unsigned int supportDirectionIntentSearch:1;
         unsigned int supportDymSuggestion:1;
+        unsigned int supportUnresolvedDirectionIntent:1;
         unsigned int useBackgroundUrl:1;
         unsigned int wantsBrandIcon:1;
     } _has;
@@ -97,6 +107,11 @@
 + (Class)reviewUserPhotoSizesType;
 + (Class)photoSizesType;
 + (Class)deviceDisplayLanguageType;
+@property(nonatomic) _Bool appDarkMode; // @synthesize appDarkMode=_appDarkMode;
+@property(nonatomic) _Bool deviceDarkMode; // @synthesize deviceDarkMode=_deviceDarkMode;
+@property(nonatomic) _Bool supportUnresolvedDirectionIntent; // @synthesize supportUnresolvedDirectionIntent=_supportUnresolvedDirectionIntent;
+@property(nonatomic) _Bool supportDirectionIntentAutocomplete; // @synthesize supportDirectionIntentAutocomplete=_supportDirectionIntentAutocomplete;
+@property(nonatomic) double sessionRelativeTimestamp; // @synthesize sessionRelativeTimestamp=_sessionRelativeTimestamp;
 @property(retain, nonatomic) NSString *analyticsAppIdentifier; // @synthesize analyticsAppIdentifier=_analyticsAppIdentifier;
 @property(nonatomic) unsigned int httpRequestPriority; // @synthesize httpRequestPriority=_httpRequestPriority;
 @property(nonatomic) _Bool useBackgroundUrl; // @synthesize useBackgroundUrl=_useBackgroundUrl;
@@ -147,6 +162,11 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasAppDarkMode;
+@property(nonatomic) _Bool hasDeviceDarkMode;
+@property(nonatomic) _Bool hasSupportUnresolvedDirectionIntent;
+@property(nonatomic) _Bool hasSupportDirectionIntentAutocomplete;
+@property(nonatomic) _Bool hasSessionRelativeTimestamp;
 @property(readonly, nonatomic) _Bool hasAnalyticsAppIdentifier;
 @property(nonatomic) _Bool hasHttpRequestPriority;
 @property(nonatomic) _Bool hasUseBackgroundUrl;
@@ -255,7 +275,10 @@
 @property(nonatomic) _Bool hasSequenceNumber;
 @property(nonatomic) _Bool hasSessionId;
 - (void)dealloc;
+- (void)updateAnalyticsShortSession;
 - (int)uiActionType;
+- (void)clearLocations;
+- (void)clearSessionId;
 
 @end
 

@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_accessibilityCanBeConsideredAsMainWindow;
 - (long long)_accessibilitySortPriority;
 - (_Bool)_accessibilityIsIsolatedWindow;
 - (_Bool)accessibilityElementsHidden;

@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <DataDetectorsCore/NSCoding-Protocol.h>
 #import <DataDetectorsCore/NSSecureCoding-Protocol.h>
 
 @class NSArray;
 
-@interface DDScannerResult : NSObject <NSCoding, NSSecureCoding>
+@interface DDScannerResult : NSObject <NSSecureCoding>
 {
     struct __DDResult *_coreResult;
     NSArray *_subResultsCache;

@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/NSURLSessionDataDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSString, NSURLSession;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetCustomURLBridgeForNSURLSession : NSObject <NSURLSessionDataDelegate>
 {
     NSMutableDictionary *_taskToRequest;
@@ -21,7 +22,6 @@
 
 @property(retain, nonatomic) NSURLSession *session; // @synthesize session=_session;
 - (void)dealloc;
-- (id)initWithFigAsset:(struct OpaqueFigAsset *)arg1 session:(id)arg2;
 - (id)initWithFigAsset:(struct OpaqueFigAsset *)arg1;
 - (id)init;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 willCacheResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

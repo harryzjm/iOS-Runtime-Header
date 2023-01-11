@@ -8,7 +8,7 @@
 
 #import <IBFoundation/IBICSchemaProvider-Protocol.h>
 
-@class IBICColorSpace, IBICFileType, IBICIdiom, IBICLanguageDirection, IBICPlatform, IBICScale, IBICSize, NSString;
+@class IBICColorSpace, IBICContrastAppearance, IBICFileType, IBICIdiom, IBICLanguageDirection, IBICLuminosityAppearance, IBICPlatform, IBICScale, IBICSize, IBICVibrancyAppearance, NSString;
 
 @interface IBICCocoaSchemaAdditions : NSObject <IBICSchemaProvider>
 {
@@ -19,6 +19,7 @@
     IBICScale *_anyScale;
     IBICScale *_oneXScale;
     IBICScale *_twoXScale;
+    IBICScale *_threeXScale;
     IBICSize *_size16;
     IBICSize *_size32;
     IBICSize *_size128;
@@ -32,9 +33,17 @@
     IBICLanguageDirection *_rightToLeftLanguageDirection;
     IBICFileType *_pngFileType;
     IBICFileType *_jpegFileType;
+    IBICLuminosityAppearance *_anyLightness;
+    IBICLuminosityAppearance *_darkAppearance;
+    IBICLuminosityAppearance *_lightAppearance;
+    IBICContrastAppearance *_anyContrast;
+    IBICContrastAppearance *_highContrast;
+    IBICVibrancyAppearance *_anyVibrancy;
+    IBICVibrancyAppearance *_vibrant;
 }
 
 - (void).cxx_destruct;
+- (void)registerSuggestionSets:(id)arg1;
 - (void)registerColorSetSlots:(id)arg1;
 - (void)registerTextureSetSlots:(id)arg1;
 - (void)registerModelSetSlots:(id)arg1;
@@ -43,6 +52,7 @@
 - (id)macAppIconDetailAreaGroupPathForSize:(id)arg1;
 - (void)registerIconSetSlots:(id)arg1;
 - (void)registerImageSetSlots:(id)arg1;
+- (id)registerAppearanceSuggestionSets:(id)arg1 forSlotClasses:(id)arg2;
 - (void)registerSchemaComponents:(id)arg1;
 - (void)captureExistingSlotComponents:(id)arg1;
 - (void)registerSlotComponents:(id)arg1;

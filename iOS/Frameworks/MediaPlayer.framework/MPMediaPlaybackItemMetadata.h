@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MPMediaItem, MPModelGenericObject, NSDictionary, NSNumber, NSString, NSURL;
 @protocol OS_dispatch_queue;
@@ -52,10 +52,12 @@
     NSNumber *_iTunesStoreContentDSID;
     NSNumber *_rentalIdentifier;
     NSDictionary *_hlsOfflinePlaybackKeys;
+    NSString *_hlsPlaylistURLString;
 }
 
 + (_Bool)_shouldRespectStoreCellularDataSetting;
 + (_Bool)_shouldRespectMusicCellularDataSetting;
+@property(readonly, copy, nonatomic) NSString *hlsPlaylistURLString; // @synthesize hlsPlaylistURLString=_hlsPlaylistURLString;
 @property(readonly, nonatomic, getter=isOfflineHLS) _Bool offlineHLS; // @synthesize offlineHLS=_offlineHLS;
 @property(readonly, nonatomic) NSDictionary *hlsOfflinePlaybackKeys; // @synthesize hlsOfflinePlaybackKeys=_hlsOfflinePlaybackKeys;
 @property(readonly, nonatomic, getter=_rentalIdentifier) NSNumber *rentalIdentifier; // @synthesize rentalIdentifier=_rentalIdentifier;

@@ -6,34 +6,44 @@
 
 #import <objc/NSObject.h>
 
-#import <TVMLKit/ISURLOperationDelegate-Protocol.h>
+#import <TVMLKit/NSURLSessionDataDelegate-Protocol.h>
+#import <TVMLKit/NSURLSessionTaskDelegate-Protocol.h>
 #import <TVMLKit/TVImageLoader-Protocol.h>
 
-@class ISOperationQueue, NSNumber, NSString;
+@class NSMapTable, NSString, NSURLSession;
+@protocol OS_dispatch_queue;
 
-@interface TVURLImageLoader : NSObject <ISURLOperationDelegate, TVImageLoader>
+@interface TVURLImageLoader : NSObject <NSURLSessionTaskDelegate, NSURLSessionDataDelegate, TVImageLoader>
 {
-    ISOperationQueue *imageLoadQueue;
     _Bool _imageRotationEnabled;
+    NSURLSession *_session;
+    NSMapTable *_dataTaskMap;
+    NSObject<OS_dispatch_queue> *_processingQueue;
 }
 
 + (id)sharedInstance;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
+@property(readonly, nonatomic) NSMapTable *dataTaskMap; // @synthesize dataTaskMap=_dataTaskMap;
+@property(readonly, nonatomic) NSURLSession *session; // @synthesize session=_session;
 @property(nonatomic, getter=isImageRotationEnabled) _Bool imageRotationEnabled; // @synthesize imageRotationEnabled=_imageRotationEnabled;
 - (void).cxx_destruct;
-- (void)operation:(id)arg1 failedWithError:(id)arg2;
-- (void)operation:(id)arg1 finishedWithOutput:(id)arg2;
-- (void)cancelLoad:(id)arg1;
 - (id)loadImageForObject:(id)arg1 scaleToSize:(struct CGSize)arg2 cropToFit:(_Bool)arg3 imageDirection:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)loadImageForObject:(id)arg1 scaleToSize:(struct CGSize)arg2 cropToFit:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 willCacheResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)cancelLoad:(id)arg1;
+- (id)loadImageForObject:(id)arg1 scaleToSize:(struct CGSize)arg2 cropToFit:(_Bool)arg3 imageDirection:(long long)arg4 requestLoader:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)imageKeyForObject:(id)arg1;
+- (id)URLForObject:(id)arg1;
+- (void)_executeOnProcessingQueue:(CDUnknownBlockType)arg1;
 - (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentage;
-@property(readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
-@property(readonly, nonatomic) NSNumber *metricsLoadURLSessionDuration;
 @property(readonly) Class superclass;
 
 @end

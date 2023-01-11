@@ -10,6 +10,7 @@
 
 @class MCDetailsDescriptionTableCell, MCDetailsHeaderCell, MCProfile, MCQuestionsController, NSArray, NSData, NSString, UIAlertView, UITableViewCell, UITextField;
 
+__attribute__((visibility("hidden")))
 @interface MCConfigurationDetailsController <MCQuestionsControllerDelegate, MCInteractionDelegate, MCUIInfoListDelegate>
 {
     NSString *_profileId;

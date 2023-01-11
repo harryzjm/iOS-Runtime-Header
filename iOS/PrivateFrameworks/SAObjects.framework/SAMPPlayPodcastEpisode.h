@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, SAMPPodcast;
+@class NSArray, NSString, SAMPPodcast;
 
 @interface SAMPPlayPodcastEpisode
 {
@@ -14,8 +14,10 @@
 + (id)playPodcastEpisode;
 - (_Bool)mutatingCommand;
 - (_Bool)requiresResponse;
+@property(nonatomic) _Bool startPlaying;
 @property(retain, nonatomic) SAMPPodcast *podcastEpisode;
 @property(copy, nonatomic) NSArray *hashedRouteUIDs;
+@property(copy, nonatomic) NSString *assetInfo;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

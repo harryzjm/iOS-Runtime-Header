@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BKSTerminationAssertionObserver-Protocol.h>
 
@@ -17,7 +17,8 @@
 }
 
 + (id)sharedInstance;
-@property(nonatomic) id <FBApplicationTerminationAssertionServiceDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <FBApplicationTerminationAssertionServiceDelegate> delegate; // @synthesize delegate=_delegate;
+- (void).cxx_destruct;
 - (id)_reasonForEfficacy:(unsigned long long)arg1;
 - (unsigned long long)_efficacyForReason:(id)arg1;
 - (void)_notifyDelegateOfRelinquishForBundleID:(id)arg1;

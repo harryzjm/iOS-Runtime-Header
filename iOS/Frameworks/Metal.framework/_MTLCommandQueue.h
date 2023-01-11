@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSString, _MTLDevice;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source;
@@ -39,6 +39,8 @@ __attribute__((visibility("hidden")))
     _Bool _executionEnabled;
     _Bool _skipRender;
     _Bool _openGLQueue;
+    NSObject<OS_dispatch_semaphore> *_presentScheduledSemaphore;
+    _Bool _forceImmediateSubmissionOnCommitThread;
 }
 
 @property(readonly) _Bool isOpenGLQueue; // @synthesize isOpenGLQueue=_openGLQueue;
@@ -55,7 +57,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=isStatEnabled) _Bool StatEnabled; // @synthesize StatEnabled=_StatEnabled;
 @property(getter=isProfilingEnabled) _Bool profilingEnabled; // @synthesize profilingEnabled=_profilingEnabled;
 @property _Bool skipRender; // @synthesize skipRender=_skipRender;
-@property(copy) NSString *label; // @synthesize label=_label;
 - (int)requestCounters:(id)arg1 withIndex:(unsigned long long)arg2;
 - (unsigned long long)getAndIncrementNumCommandBuffers;
 - (void)addPerfSampleHandler:(CDUnknownBlockType)arg1;
@@ -63,11 +64,13 @@ __attribute__((visibility("hidden")))
 - (void)availableCounters;
 - (void)insertDebugCaptureBoundary;
 - (void)finish;
+@property(copy) NSString *label;
 - (void)commandBufferDidComplete:(id)arg1 startTime:(unsigned long long)arg2 completionTime:(unsigned long long)arg3 error:(id)arg4;
+- (_Bool)submitCommandBuffer:(id)arg1;
 - (void)commitCommandBuffer:(id)arg1 wake:(_Bool)arg2;
 - (void)submitCommandBuffers:(const id *)arg1 count:(unsigned long long)arg2;
 - (void)completeCommandBuffers:(id *)arg1 count:(unsigned long long)arg2;
-- (void)_submitAvailableCommandBuffers;
+- (_Bool)_submitAvailableCommandBuffers;
 - (void)enqueueCommandBuffer:(id)arg1;
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;

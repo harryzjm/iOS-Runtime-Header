@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MPSNeuralNetwork/MPSCNNConvolutionDataSource-Protocol.h>
 
@@ -18,6 +18,7 @@
     _Bool _hasBias;
 }
 
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)purge;
 - (_Bool)load;

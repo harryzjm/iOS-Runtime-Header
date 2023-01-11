@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <iWorkImport/TSDAttachmentAwareContainerInfo-Protocol.h>
 #import <iWorkImport/TSDMixing-Protocol.h>
+#import <iWorkImport/TSDModelContainer-Protocol.h>
 #import <iWorkImport/TSDMutableContainerInfo-Protocol.h>
 #import <iWorkImport/TSDSelectionStatisticsContributor-Protocol.h>
 #import <iWorkImport/TSKDocumentObject-Protocol.h>
 
-@class NSMutableArray, NSObject, NSString, TSDInfoGeometry, TSPObject;
+@class NSArray, NSMutableArray, NSObject, NSSet, NSString, TSDInfoGeometry, TSPObject;
 @protocol TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
-@interface TSDGroupInfo <TSDMutableContainerInfo, TSDMixing, TSKDocumentObject, TSDSelectionStatisticsContributor>
+@interface TSDGroupInfo <TSDMutableContainerInfo, TSDMixing, TSKDocumentObject, TSDSelectionStatisticsContributor, TSDModelContainer, TSDAttachmentAwareContainerInfo>
 {
     NSMutableArray *mChildInfos;
     _Bool mIsInDocument;
@@ -21,7 +23,10 @@ __attribute__((visibility("hidden")))
 
 + (id)p_drawablesToInsertForGroup:(id)arg1 outDidUngroup:(_Bool *)arg2 filteredWithBlock:(CDUnknownBlockType)arg3;
 + (id)drawablesToInsertForGroup:(id)arg1 filteredWithBlock:(CDUnknownBlockType)arg2;
++ (id)groupGeometryFromChildrenInfos:(id)arg1 currentlyLaidOutWithLayoutController:(id)arg2;
 + (id)groupGeometryFromChildrenInfos:(id)arg1;
++ (_Bool)canEditGroupsInCollaborativeDocuments;
++ (Class)classForUnarchiver:(id)arg1;
 - (void).cxx_destruct;
 - (void)processSelectedStoragesWithStatisticsController:(id)arg1;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
@@ -50,17 +55,25 @@ __attribute__((visibility("hidden")))
 - (void)insertChildInfo:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)addChildInfo:(id)arg1;
 - (void)setChildInfos:(id)arg1;
+@property(readonly, nonatomic) _Bool supportsCollaborativeEditing;
+- (void)moveModel:(id)arg1 toIndex:(unsigned long long)arg2;
+- (void)removeContainedModel:(id)arg1;
+- (void)insertContainedModel:(id)arg1 atIndex:(unsigned long long)arg2;
+@property(readonly, nonatomic) NSArray *containedModels;
+@property(readonly, nonatomic) NSSet *infosToObserveForAttachedInfo;
 - (id)infoForSelectionPath:(id)arg1;
-- (id)childInfos;
-- (id)allNestedChildrenInfosIncludingGroups;
-- (id)allNestedChildrenInfos;
+@property(readonly, nonatomic) NSArray *childInfos;
+@property(readonly, nonatomic) NSArray *allNestedChildrenInfosIncludingGroups;
+@property(readonly, nonatomic) NSArray *allNestedChildrenInfosForWrap;
+@property(readonly, nonatomic) NSArray *allNestedChildrenInfos;
 - (id)copyWithContext:(id)arg1;
+@property(readonly, nonatomic) _Bool isFreehandDrawing;
 - (Class)repClass;
 - (Class)layoutClass;
 @property(copy, nonatomic) TSDInfoGeometry *geometry;
 - (_Bool)supportsParentRotation;
 - (_Bool)allowsParentGroupToBeResizedWithoutAspectRatioLock;
-- (_Bool)canAspectRatioLockBeChangedByUser;
+@property(readonly, nonatomic) _Bool canAspectRatioLockBeChangedByUser;
 - (void)dealloc;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2;
 - (void)saveToArchiver:(id)arg1;

@@ -7,12 +7,14 @@
 #import <objc/NSObject.h>
 
 @class NSDictionary, NSMutableArray, NSMutableSet, NSNotificationCenter, NSNumber, PLManagedObjectContext;
+@protocol OS_dispatch_queue;
 
 @interface PLChangeNotificationCenter : NSObject
 {
     _Bool _isProcessingRemoteDidSave;
     int _cameraPreviewChangeListenerCount;
     NSNumber *_cameraPreviewChangedToken;
+    NSObject<OS_dispatch_queue> *_notificationHandlingQueue;
     NSMutableArray *_snapshots;
     struct changeList_s _changedAlbumLists;
     struct contentChanges_s _albumListsContent;
@@ -33,10 +35,11 @@
 }
 
 + (void)forceFetchingAlbumReload;
-+ (void)getInsertedAssetCount:(unsigned long long *)arg1 deletedAssetCount:(unsigned long long *)arg2 updatedAssets:(id)arg3 fromContextDidChangeNotification:(id)arg4;
++ (void)getInsertedAssetCount:(unsigned long long *)arg1 deletedAssetCount:(unsigned long long *)arg2 fromContextDidChangeNotification:(id)arg3;
 + (id)allManagedObjectKeysStrategy;
 + (id)defaultCenter;
 - (void)removeCameraPreviewWellImageChangeObserver:(id)arg1;
+- (id)observeCameraPreviewWellImageChangeOnQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)addCameraPreviewWellImageChangeObserver:(id)arg1;
 - (void)_unregisterForCameraPreviewWellChanges;
 - (void)_registerForCameraPreviewWellChanges;

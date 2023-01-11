@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface GKSConnectivitySettings : NSObject
 {
@@ -24,8 +24,10 @@
 + (int)getLongTermHistoryLength;
 + (int)getShortTermHistoryLength;
 + (int)getAdaptiveLearningState;
++ (int)getNewSessionJoiningInterval;
++ (int)getDecryptionTimeoutInterval;
++ (int)getRateControllerType;
 + (_Bool)supportiRATRecommendation;
-+ (_Bool)isRedStateA;
 + (_Bool)supportsRedAudio;
 + (_Bool)supportsEVSCodec;
 + (int)getKeepAliveTimeoutFromCarrierBundle;

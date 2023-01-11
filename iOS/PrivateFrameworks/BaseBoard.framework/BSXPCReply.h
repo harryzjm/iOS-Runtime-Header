@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_xpc_object;
 
@@ -16,11 +16,11 @@
 
 + (id)messageWithReply:(id)arg1;
 + (id)replyForMessage:(id)arg1;
+- (void).cxx_destruct;
 - (id)message;
 - (long long)messageKind;
 - (id)initWithReply:(id)arg1;
 - (void)sendReply:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (id)initForMessage:(id)arg1;
 - (id)_initWithReply:(id)arg1;
 

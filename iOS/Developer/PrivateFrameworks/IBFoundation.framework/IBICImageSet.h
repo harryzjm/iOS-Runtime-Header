@@ -8,19 +8,22 @@
 {
     _Bool _preservesVectorRepresentation;
     long long _templateRenderingIntent;
+    long long _autoscalingType;
 }
 
-+ (_Bool)ecnodesCompressionForChildren;
++ (_Bool)encodesCompressionForChildren;
 + (_Bool)supportsCompression;
 + (id)importPriority;
 + (id)contentReferenceTypeName;
 + (id)classNameComponents;
 + (id)catalogItemFileExtension;
++ (id)defaultInstanceWithChildSlots:(id)arg1;
 + (id)defaultInstanceForIdioms:(id)arg1 enforceStrictIdioms:(_Bool)arg2;
 + (id)defaultName;
 + (id)createInstanceNamed:(id)arg1;
 + (id)createDefaultInstancesForUnitTesting;
 + (Class)assetRepClass;
+@property(nonatomic) long long autoscalingType; // @synthesize autoscalingType=_autoscalingType;
 @property(nonatomic) _Bool preservesVectorRepresentation; // @synthesize preservesVectorRepresentation=_preservesVectorRepresentation;
 @property(nonatomic) long long templateRenderingIntent; // @synthesize templateRenderingIntent=_templateRenderingIntent;
 - (_Bool)isEqualForUnitTests:(id)arg1;

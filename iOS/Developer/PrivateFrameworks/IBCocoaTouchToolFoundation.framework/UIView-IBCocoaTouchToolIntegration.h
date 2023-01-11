@@ -47,6 +47,7 @@
 - (id)ibTopLevelViewForLayoutEngine:(id)arg1;
 - (id)ibEffectiveRootObjectForSimulatedMetrics;
 - (void)ibPlaceInWindowPositioningAndSizingIfNeeded:(_Bool)arg1 during:(CDUnknownBlockType)arg2;
+- (void)ibPlaceInWindowForRenderingAndPrimitiveAutolayoutQuestionsIfNeededDuring:(CDUnknownBlockType)arg1;
 - (void)ibPropagatePropertiesToCopyOfReceiver:(id)arg1 forLayoutEngine:(id)arg2;
 - (void)setIbDesignTimeDefaultIntrinsicContentSizeForSelfSizingContainers:(id)arg1;
 - (id)ibDesignTimeDefaultIntrinsicContentSizeForSelfSizingContainers;
@@ -54,6 +55,7 @@
 - (id)ibExternalDesignTimeIntrinsicContentSize;
 - (id)ibEffectiveDesignTimeIntrinsicContentSizeForCopyOfReceiver:(id)arg1 layoutEngine:(id)arg2;
 - (id)ibDefaultDesignTimeIntrinsicContentSizeForChild:(id)arg1;
+- (_Bool)ibAllowsDefaultDesignTimeOrIntegralIntrinsicSizeCorrection;
 - (unsigned long long)ibAmbiguityStatusForRepresentationOfItem:(id)arg1 inEngine:(id)arg2;
 - (id)ibEffectiveContentHeightVariable;
 - (id)ibEffectiveContentWidthVariable;

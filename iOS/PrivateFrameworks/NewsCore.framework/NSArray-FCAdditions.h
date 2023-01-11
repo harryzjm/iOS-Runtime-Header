@@ -15,12 +15,14 @@
 + (id)fc_arrayByAddingUniqueObjectsFromArray:(id)arg1 toArray:(id)arg2;
 + (id)fc_arrayByAddingObjectsFromArray:(id)arg1 toArray:(id)arg2 inRelativeOrder:(unsigned long long)arg3;
 + (id)fc_arrayByAddingObjectsFromArray:(id)arg1 toArray:(id)arg2;
+- (_Bool)fc_isEqualToArray:(id)arg1;
 - (_Bool)fc_isEqualToArray:(id)arg1 inRange:(struct _NSRange)arg2;
 - (id)fc_rotateElementsFromTheIndexOfSelectedItem:(unsigned long long)arg1;
 - (id)fc_sortedArrayStartingWithElementsSatisfying:(CDUnknownBlockType)arg1 sortedBy:(CDUnknownBlockType)arg2;
 - (void)fc_enumerateIslandsOfCommonValuesForKeyBlock:(CDUnknownBlockType)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)fc_splitArrayWithTest:(CDUnknownBlockType)arg1 result:(CDUnknownBlockType)arg2;
 - (struct _NSRange)fc_expandIndex:(unsigned long long)arg1 toIncludeAdjacentObjectsPassingTest:(CDUnknownBlockType)arg2;
+- (id)fc_uniqueByValueBlock:(CDUnknownBlockType)arg1;
 - (unsigned long long)fc_uniqueCount;
 - (id)fc_arrayByReversingObjects;
 - (double)fc_reduceArrayWithDouble:(double)arg1 block:(CDUnknownBlockType)arg2;
@@ -31,6 +33,7 @@
 - (void)fc_subarrayWithCount:(unsigned long long)arg1 result:(CDUnknownBlockType)arg2;
 - (id)fc_safeSubarrayWithCountFromBack:(unsigned long long)arg1;
 - (id)fc_safeSubarrayWithCountFromFront:(unsigned long long)arg1;
+- (id)fc_safeObjectAtIndex:(unsigned long long)arg1;
 - (id)fc_arrayByMergingAdjacentObjectsWithMergePolicy:(CDUnknownBlockType)arg1 mergeBlock:(CDUnknownBlockType)arg2;
 - (id)fc_subarrayToIndex:(unsigned long long)arg1 withMaxCount:(unsigned long long)arg2 range:(struct _NSRange *)arg3;
 - (id)fc_subarrayFromIndex:(unsigned long long)arg1 withMaxCount:(unsigned long long)arg2 range:(struct _NSRange *)arg3;

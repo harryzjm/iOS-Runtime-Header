@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ScreenReaderOutput/SCROBrailleDisplayCommandDispatcherDelegate-Protocol.h>
 #import <ScreenReaderOutput/SCROBrailleDriverDelegate-Protocol.h>
 
-@class NSLock, NSString, SCROBrailleDisplayInput, SCROBrailleDisplayStatus, SCROBrailleEventDispatcher, SCROBrailleLine;
+@class NSAttributedString, NSLock, NSMutableArray, NSString, SCROBrailleDisplayInput, SCROBrailleDisplayStatus, SCROBrailleEventDispatcher, SCROBrailleLine;
 @protocol SCROBrailleDisplayCommandDispatcherProtocol, SCROBrailleDisplayDelegate, SCROBrailleDriverProtocol, SCROIOElementProtocol;
 
 @interface SCROBrailleDisplay : NSObject <SCROBrailleDisplayCommandDispatcherDelegate, SCROBrailleDriverDelegate>
@@ -42,14 +42,19 @@
     _Bool _blinkingEnabled;
     _Bool _inputAllowed;
     _Bool _inputEnabled;
+    _Bool _inputPaused;
+    double _inputPausedTime;
+    NSMutableArray *_keyEventsQueue;
     SCROBrailleDisplayInput *_input;
     _Bool _isValid;
     _Bool _delegateWantsDisplayCallback;
     unsigned int _persistentKeyModifiers;
+    CDUnknownBlockType _eventHandled;
 }
 
 + (id)displayWithIOElement:(id)arg1 driverIdentifier:(id)arg2 delegate:(id)arg3;
 + (_Bool)brailleDriverClassIsValid:(Class)arg1;
+@property(copy, nonatomic) CDUnknownBlockType eventHandled; // @synthesize eventHandled=_eventHandled;
 @property(nonatomic) unsigned int persistentKeyModifiers; // @synthesize persistentKeyModifiers=_persistentKeyModifiers;
 @property(nonatomic) _Bool outputShowEightDot; // @synthesize outputShowEightDot=_outputShowEightDot;
 @property(nonatomic) _Bool inputShowEightDot; // @synthesize inputShowEightDot=_inputShowEightDot;
@@ -94,10 +99,17 @@
 @property(readonly, nonatomic) unsigned long long brailleLineGenerationID;
 - (void)_panHandler:(id)arg1;
 - (void)_processKeyEvents:(id)arg1;
+- (void)_replaceRange:(struct _NSRange)arg1 withString:(id)arg2 cursor:(unsigned long long)arg3;
+- (void)_unpauseInput;
+- (void)_pauseInput;
+- (_Bool)_inputPaused;
 - (id)_translatedBrailleStringAndKeyEvents:(out id *)arg1 replacementRange:(out struct _NSRange *)arg2 cursor:(out unsigned long long *)arg3;
 - (void)_translateBrailleStringAndPostEventAppendingKeys:(id)arg1;
 - (void)_translateBrailleStringAndPostEvent;
 - (void)_startEditingText;
+@property(readonly, nonatomic) SCROBrailleLine *testingBrailleLine;
+- (void)insertTypingString:(id)arg1;
+- (_Bool)_currentChordShouldExecuteEvenDuringTyping;
 - (void)_keyboardHelpHandler:(id)arg1;
 - (void)_configurationChangeHandler;
 - (void)_updateDisplay;
@@ -107,7 +119,11 @@
 - (void)_setDelegateWantsDisplayCallbackHandler:(id)arg1;
 - (void)_aggregatedStatusHandler:(id)arg1;
 - (void)_statusDisplayHandler:(id)arg1;
+@property(readonly, nonatomic) _Bool hasEdits;
+@property(readonly, nonatomic) NSAttributedString *editingString;
 - (void)_setBrailleFormatter:(id)arg1;
+- (void)unpauseInputOnBrailleFormatterChange;
+- (void)_unpauseInputAndProcessKeyEvents;
 - (void)_setBrailleFormatterHandler:(id)arg1;
 - (id)_statusStringWithDictionary:(id)arg1;
 - (void)_unloadHandler;
@@ -131,6 +147,7 @@
 - (void)setBrailleFormatter:(id)arg1;
 - (void)endUpdates;
 - (void)beginUpdates;
+- (void)requestFlushLine;
 - (id)configuration;
 @property(nonatomic) _Bool wordWrapEnabled;
 - (long long)statusSize;
@@ -147,6 +164,7 @@
 - (void)sleep;
 - (void)dealloc;
 - (void)_runThread;
+- (_Bool)_attemptLoad;
 - (void)_delayedDisplayLoad;
 - (id)_initWithDriver:(id)arg1 driverIdentifier:(id)arg2 ioElement:(id)arg3 delegate:(id)arg4;
 

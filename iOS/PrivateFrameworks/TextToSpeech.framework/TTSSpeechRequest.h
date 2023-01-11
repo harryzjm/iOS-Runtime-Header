@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextToSpeech/NSSecureCoding-Protocol.h>
 
@@ -16,6 +16,7 @@
     id <TTSSpeechRequestDelegate> _delegate;
     TTSSpeechChannel *_speechChannel;
     _Bool _maintainsInput;
+    _Bool _supportsAccurateWordCallbacks;
     _Bool _audioSessionIDIsValid;
     _Bool _useVoiceBooster;
     _Bool _useMonarchStyleRate;
@@ -57,6 +58,7 @@
 @property(nonatomic) unsigned int audioQueueFlags; // @synthesize audioQueueFlags=_audioQueueFlags;
 @property(nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 @property(nonatomic) _Bool audioSessionIDIsValid; // @synthesize audioSessionIDIsValid=_audioSessionIDIsValid;
+@property(nonatomic) _Bool supportsAccurateWordCallbacks; // @synthesize supportsAccurateWordCallbacks=_supportsAccurateWordCallbacks;
 @property(nonatomic) _Bool maintainsInput; // @synthesize maintainsInput=_maintainsInput;
 @property(nonatomic) double volume; // @synthesize volume=_volume;
 @property(nonatomic) double pitch; // @synthesize pitch=_pitch;

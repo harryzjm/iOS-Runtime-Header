@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIImageView, UIView;
+@class IMBalloonPluginDataSource, NSString, UIImageView, UIView;
 
 @interface CKPluginMessageStatusCell
 {
     NSString *_balloonBundleID;
+    IMBalloonPluginDataSource *_dataSource;
     UIView *_previousPluginSnapshot;
     UIImageView *_imageView;
 }
 
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(retain, nonatomic) UIView *previousPluginSnapshot; // @synthesize previousPluginSnapshot=_previousPluginSnapshot;
+@property(retain, nonatomic) IMBalloonPluginDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property(copy, nonatomic) NSString *balloonBundleID; // @synthesize balloonBundleID=_balloonBundleID;
 - (void).cxx_destruct;
 - (void)performInsertion:(CDUnknownBlockType)arg1;

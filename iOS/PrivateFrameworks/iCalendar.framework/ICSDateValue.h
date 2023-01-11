@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <iCalendar/NSCoding-Protocol.h>
+#import <iCalendar/NSSecureCoding-Protocol.h>
 
-@interface ICSDateValue : NSObject <NSCoding>
+@interface ICSDateValue : NSObject <NSSecureCoding>
 {
     long long _year;
     long long _month;
     long long _day;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)dateFromICSString:(id)arg1;
 + (id)dateFromICSUTF8String:(const char *)arg1;
 @property(readonly) long long day; // @synthesize day=_day;

@@ -6,6 +6,7 @@
 
 @class AVChapterMetadataItemInternal;
 
+__attribute__((visibility("hidden")))
 @interface AVChapterMetadataItem
 {
     AVChapterMetadataItemInternal *_privChapter;

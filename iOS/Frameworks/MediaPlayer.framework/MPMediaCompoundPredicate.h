@@ -13,6 +13,7 @@
     NSArray *_predicates;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)predicateMatchingPredicates:(id)arg1;
 @property(readonly, copy, nonatomic) NSArray *predicates; // @synthesize predicates=_predicates;
 - (void).cxx_destruct;

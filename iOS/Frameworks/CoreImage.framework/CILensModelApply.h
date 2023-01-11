@@ -4,27 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CIImage, CIVector, NSDictionary, NSNumber;
+@class CIImage;
 
 __attribute__((visibility("hidden")))
 @interface CILensModelApply
 {
     CIImage *inputImage;
-    CIImage *inputCalculatorValuesImage;
-    NSNumber *inputAperture;
-    CIVector *inputOriginalSize;
-    NSNumber *inputIntrinsicMatrixFocalLength;
-    NSDictionary *inputTuningParameters;
+    CIImage *inputLensModelParams;
 }
 
-@property(retain, nonatomic) NSDictionary *inputTuningParameters; // @synthesize inputTuningParameters;
-@property(copy, nonatomic) NSNumber *inputIntrinsicMatrixFocalLength; // @synthesize inputIntrinsicMatrixFocalLength;
-@property(copy, nonatomic) CIVector *inputOriginalSize; // @synthesize inputOriginalSize;
-@property(copy, nonatomic) NSNumber *inputAperture; // @synthesize inputAperture;
-@property(retain, nonatomic) CIImage *inputCalculatorValuesImage; // @synthesize inputCalculatorValuesImage;
+@property(retain, nonatomic) CIImage *inputLensModelParams; // @synthesize inputLensModelParams;
 @property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
-- (id)_lensModelKernel;
+- (id)kernel;
 
 @end
 

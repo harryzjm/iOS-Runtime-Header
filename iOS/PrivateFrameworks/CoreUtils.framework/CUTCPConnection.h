@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CUBonjourDevice, CUReadRequest, CUWriteRequest, NSString;
+#import <CoreUtils/CUReadWriteRequestable-Protocol.h>
+
+@class CUBonjourDevice, CUNetLinkEndpoint, CUNetLinkManager, CUReadRequest, CUWriteRequest, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface CUTCPConnection : NSObject
+@interface CUTCPConnection : NSObject <CUReadWriteRequestable>
 {
     struct AsyncConnection *_connector;
     NSObject<OS_dispatch_source> *_readSource;
@@ -23,18 +25,19 @@
     CDUnknownBlockType _activateCompletion;
     _Bool _invalidateCalled;
     _Bool _invalidateDone;
+    CUNetLinkEndpoint *_netLinkEndpoint;
     struct LogCategory *_ucat;
     unsigned long long _ifExtendedFlags;
     unsigned int _ifFlags;
     unsigned int _ifIndex;
-    unsigned char _ifMACAddress[6];
     unsigned int _ifMedia;
     char _ifName[17];
-    unsigned int _ifTransportType;
     CDUnion_fab80606 _peerAddr;
     CDUnion_fab80606 _selfAddr;
     int _defaultPort;
     unsigned int _flags;
+    int _keepAliveSeconds;
+    unsigned int _netTransportType;
     int _socketFD;
     double _connectTimeoutSecs;
     double _dataTimeoutSecs;
@@ -44,12 +47,16 @@
     CDUnknownBlockType _errorHandler;
     CDUnknownBlockType _invalidationHandler;
     NSString *_label;
+    CUNetLinkManager *_netLinkManager;
     CDUnknownBlockType _serverInvalidationHandler;
 }
 
 @property(copy, nonatomic) CDUnknownBlockType serverInvalidationHandler; // @synthesize serverInvalidationHandler=_serverInvalidationHandler;
 @property(nonatomic) int socketFD; // @synthesize socketFD=_socketFD;
+@property(readonly, nonatomic) unsigned int netTransportType; // @synthesize netTransportType=_netTransportType;
+@property(retain, nonatomic) CUNetLinkManager *netLinkManager; // @synthesize netLinkManager=_netLinkManager;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property(nonatomic) int keepAliveSeconds; // @synthesize keepAliveSeconds=_keepAliveSeconds;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property(copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
@@ -72,6 +79,7 @@
 - (void)_prepareReadRequest:(id)arg1;
 - (void)_processReads:(_Bool)arg1;
 - (void)readWithRequest:(id)arg1;
+- (void)_netLinkStateChanged;
 - (_Bool)_setupIOAndReturnError:(id *)arg1;
 - (_Bool)_startConnectingToDestination:(id)arg1 error:(id *)arg2;
 - (void)_invalidated;

@@ -13,20 +13,16 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (_Bool)p_isMinorVersion:(id)arg1 equalToMinorVersion:(id)arg2;
-+ (_Bool)p_isMajorVersion:(id)arg1 equalToMajorVersion:(id)arg2;
-+ (_Bool)p_isSeparatedString:(id)arg1 equalToString:(id)arg2 atIndex:(unsigned long long)arg3 usingSeparator:(id)arg4;
 + (id)sceneprintCurrentVersion;
-+ (id)observationWithSceneprints:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *sceneprintVersion; // @synthesize sceneprintVersion=_sceneprintVersion;
-@property(copy, nonatomic) NSArray *sceneprints; // @synthesize sceneprints=_sceneprints;
+@property(readonly, nonatomic) NSArray *sceneprints; // @synthesize sceneprints=_sceneprints;
 - (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSceneprints:(id)arg1;
+- (id)initWithRequestRevision:(unsigned long long)arg1 sceneprints:(id)arg2;
 
 @end
 

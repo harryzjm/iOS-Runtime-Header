@@ -4,15 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@interface MRSupportedProtocolMessages : NSObject
+#import <MediaRemote/NSSecureCoding-Protocol.h>
+
+@interface MRSupportedProtocolMessages : NSObject <NSSecureCoding>
 {
     unsigned long long _lastSupportedMessageType;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) unsigned long long lastSupportedMessageType; // @synthesize lastSupportedMessageType=_lastSupportedMessageType;
+- (void)encodeWithCoder:(id)arg1;
 - (_Bool)isSupported:(unsigned long long)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithLastSupportedMessageType:(unsigned long long)arg1;
 
 @end

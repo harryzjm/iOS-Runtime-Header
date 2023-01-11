@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class MISSING_TYPE;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -23,11 +25,6 @@ struct CGRect {
 struct CGSize {
     double width;
     double height;
-};
-
-struct IBObjectIDHashEntry_tag {
-    long long _field1;
-    id _field2;
 };
 
 struct NSDirectionalEdgeInsets {
@@ -54,6 +51,13 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
+struct __va_list_tag {
+    unsigned int _field1;
+    unsigned int _field2;
+    void *_field3;
+    void *_field4;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -68,6 +72,10 @@ typedef struct {
     unsigned long long *_field3;
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
+
+typedef struct {
+    MISSING_TYPE *_field1[4];
+} CDStruct_f1db2b5e;
 
 typedef struct {
     double minX;

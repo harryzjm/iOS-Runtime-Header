@@ -4,38 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <PhotoLibraryServices/NSCopying-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString;
+@class PSIDate;
 
-@interface PSIAsset : NSObject <NSCopying>
+@interface PSIAsset <NSCopying>
 {
-    NSMutableDictionary *_synonymsByOriginalWord;
-    NSMutableDictionary *_categoriesToPairedOwningCategories;
-    NSString *_uuid;
-    NSArray *_contentStrings;
-    struct __CFArray *_categories;
-    struct __CFArray *_owningCategories;
+    PSIDate *_creationDate;
 }
 
-@property(readonly, retain, nonatomic) struct __CFArray *owningCategories; // @synthesize owningCategories=_owningCategories;
-@property(readonly, retain, nonatomic) struct __CFArray *categories; // @synthesize categories=_categories;
-@property(readonly, retain, nonatomic) NSArray *contentStrings; // @synthesize contentStrings=_contentStrings;
-@property(copy, nonatomic, setter=setUUID:) NSString *uuid; // @synthesize uuid=_uuid;
-- (void)clear;
-- (void)reverse;
-- (id)pairedCategoryForCategory:(short)arg1;
-- (void)enumerateSynonymsForOriginalContentString:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)addSynonym:(id)arg1 category:(short)arg2 originalContentString:(id)arg3;
-- (void)addContentString:(id)arg1 category:(short)arg2 owningCategory:(short)arg3 categoryAndOwningCategoryArePaired:(_Bool)arg4;
-- (void)addContentString:(id)arg1 category:(short)arg2 owningCategory:(short)arg3;
-- (id)description;
-- (void)dealloc;
+@property(readonly) PSIDate *creationDate; // @synthesize creationDate=_creationDate;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)init;
-- (id)_initForCopy:(_Bool)arg1;
+- (id)initWithUUID:(id)arg1 creationDate:(id)arg2;
 
 @end
 

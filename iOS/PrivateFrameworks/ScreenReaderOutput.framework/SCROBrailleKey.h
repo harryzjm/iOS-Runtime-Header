@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <ScreenReaderOutput/NSCoding-Protocol.h>
+#import <ScreenReaderOutput/NSSecureCoding-Protocol.h>
 
 @class NSMutableArray, NSString;
+@protocol NSSecureCoding;
 
-@interface SCROBrailleKey : NSObject <NSCoding>
+@interface SCROBrailleKey : NSObject <NSSecureCoding>
 {
     NSMutableArray *_maskArray;
     NSString *_identifier;
@@ -18,11 +19,12 @@
     long long _routerToken;
     long long _routerLocation;
     _Bool _hasRouterInfo;
-    id _appToken;
+    id <NSSecureCoding> _appToken;
     int _displayToken;
     int _displayMode;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 - (_Bool)getRouterIndex:(long long *)arg1 token:(long long *)arg2 location:(long long *)arg3 appToken:(id *)arg4;
 - (void)setRouterIndex:(long long)arg1 token:(long long)arg2 location:(long long)arg3 appToken:(id)arg4;

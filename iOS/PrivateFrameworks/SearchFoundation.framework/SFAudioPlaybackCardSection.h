@@ -8,11 +8,17 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFAudioPlaybackCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFImage, SFRichText, SFText;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFImage, SFRichText;
 
 @interface SFAudioPlaybackCardSection <SFAudioPlaybackCardSection, NSSecureCoding, NSCopying>
 {
-    CDStruct_29067556 _has;
+    struct {
+        unsigned int canBeHidden:1;
+        unsigned int hasTopPadding:1;
+        unsigned int hasBottomPadding:1;
+        unsigned int separatorStyle:1;
+        unsigned int state:1;
+    } _has;
     _Bool _canBeHidden;
     _Bool _hasTopPadding;
     _Bool _hasBottomPadding;
@@ -23,14 +29,6 @@
     NSString *_punchoutPickerDismissText;
     NSString *_type;
     SFColor *_backgroundColor;
-    SFImage *_topImage;
-    SFText *_topText;
-    NSString *_topSecondaryText;
-    SFImage *_bottomImage;
-    SFText *_bottomText;
-    SFText *_bottomSubtitle;
-    NSString *_topImageEmoji;
-    NSString *_bottomImageEmoji;
     NSArray *_playCommands;
     NSArray *_stopCommands;
     SFRichText *_detailText;
@@ -47,14 +45,6 @@
 @property(copy, nonatomic) NSArray *stopCommands; // @synthesize stopCommands=_stopCommands;
 @property(copy, nonatomic) NSArray *playCommands; // @synthesize playCommands=_playCommands;
 @property(nonatomic) int state; // @synthesize state=_state;
-@property(copy, nonatomic) NSString *bottomImageEmoji; // @synthesize bottomImageEmoji=_bottomImageEmoji;
-@property(copy, nonatomic) NSString *topImageEmoji; // @synthesize topImageEmoji=_topImageEmoji;
-@property(retain, nonatomic) SFText *bottomSubtitle; // @synthesize bottomSubtitle=_bottomSubtitle;
-@property(retain, nonatomic) SFText *bottomText; // @synthesize bottomText=_bottomText;
-@property(retain, nonatomic) SFImage *bottomImage; // @synthesize bottomImage=_bottomImage;
-@property(copy, nonatomic) NSString *topSecondaryText; // @synthesize topSecondaryText=_topSecondaryText;
-@property(retain, nonatomic) SFText *topText; // @synthesize topText=_topText;
-@property(retain, nonatomic) SFImage *topImage; // @synthesize topImage=_topImage;
 @property(retain, nonatomic) SFColor *backgroundColor;
 @property(nonatomic) int separatorStyle;
 @property(copy, nonatomic) NSString *type;

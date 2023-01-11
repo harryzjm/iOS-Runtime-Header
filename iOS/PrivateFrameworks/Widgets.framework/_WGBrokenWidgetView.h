@@ -4,22 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
-@class UILabel, UITapGestureRecognizer;
-
-@interface _WGBrokenWidgetView : UIView
+@interface _WGBrokenWidgetView
 {
-    UILabel *_label;
-    UITapGestureRecognizer *_tapGesture;
 }
 
-+ (void)_configureLabelForCurrentGraphicsQuality:(id)arg1;
-- (void).cxx_destruct;
-- (void)_backgroundContrastDidChange:(id)arg1;
-- (void)layoutSubviews;
-- (void)dealloc;
-- (void)addTarget:(id)arg1 action:(SEL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

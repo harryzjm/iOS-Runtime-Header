@@ -10,7 +10,7 @@
 
 + (id)_objectWithCodable:(id)arg1;
 + (Class)healthEntityClass;
-+ (long long)syncEntityType;
++ (id)syncEntityIdentifier;
 + (_Bool)supportsSpeculativeNanoSyncChanges;
 + (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;
 + (int)nanoSyncObjectType;

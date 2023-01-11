@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSString;
 
@@ -53,6 +53,11 @@
 @property(readonly) _Bool passesAllAccess; // @synthesize passesAllAccess=_passesAllAccess;
 - (void).cxx_destruct;
 - (void)_probeEntitlementsWithConnection:(id)arg1;
+- (id)_stringValueOfEntitlement:(id)arg1 fromSecTask:(struct __SecTask *)arg2;
+- (id)_arrayValueOfEntitlement:(id)arg1 fromSecTask:(struct __SecTask *)arg2;
+- (_Bool)_boolValueOfEntitlement:(id)arg1 fromSecTask:(struct __SecTask *)arg2;
+- (void *)_copyValueOfEntitlement:(id)arg1 fromSecTask:(struct __SecTask *)arg2;
+- (_Bool)isEntitledForMerchantSession:(id)arg1;
 - (_Bool)isEntitledForPaymentRequest:(id)arg1;
 - (_Bool)supportsWebPayments;
 @property(readonly) _Bool allAccess;

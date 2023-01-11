@@ -6,7 +6,7 @@
 
 #import <NanoTimeKitCompanion/NTKCFaceDetailCustomPhotosViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, NTKBasePhotosFaceView, NTKCompanionCustomPhotosEditor, NTKCompanionSyncedAlbumEditor, NTKCompanionTransientCustomPhotosEditor, UIViewController;
+@class NSArray, NSString, NTKBasePhotosFaceView, NTKCompanionCustomPhotosEditor, NTKCompanionMemoriesEditor, NTKCompanionSyncedAlbumEditor, NTKCompanionTransientCustomPhotosEditor, UIViewController;
 @protocol NTKCFaceDetailPhotosSectionDelegate;
 
 @interface NTKCFaceDetailPhotosSectionController <NTKCFaceDetailCustomPhotosViewControllerDelegate>
@@ -16,6 +16,7 @@
     UIViewController *_parentViewController;
     NTKCompanionCustomPhotosEditor *_customPhotosEditor;
     NTKCompanionSyncedAlbumEditor *_syncedAlbumEditor;
+    NTKCompanionMemoriesEditor *_memoriesEditor;
     NTKCompanionTransientCustomPhotosEditor *_transientEditor;
     NSArray *_externalAssets;
 }
@@ -23,6 +24,7 @@
 + (_Bool)hasPhotosSectionForFace:(id)arg1 forEditMode:(long long)arg2;
 @property(retain, nonatomic) NSArray *externalAssets; // @synthesize externalAssets=_externalAssets;
 @property(retain, nonatomic) NTKCompanionTransientCustomPhotosEditor *transientEditor; // @synthesize transientEditor=_transientEditor;
+@property(retain, nonatomic) NTKCompanionMemoriesEditor *memoriesEditor; // @synthesize memoriesEditor=_memoriesEditor;
 @property(retain, nonatomic) NTKCompanionSyncedAlbumEditor *syncedAlbumEditor; // @synthesize syncedAlbumEditor=_syncedAlbumEditor;
 @property(retain, nonatomic) NTKCompanionCustomPhotosEditor *customPhotosEditor; // @synthesize customPhotosEditor=_customPhotosEditor;
 @property(nonatomic) __weak UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;

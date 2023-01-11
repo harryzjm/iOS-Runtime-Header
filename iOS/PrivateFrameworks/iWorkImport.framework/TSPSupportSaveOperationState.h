@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSURL, NSUUID, TSUSafeSaveAssistant;
 
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSUUID *originalVersionUUID; // @synthesize originalVersionUUID=_originalVersionUUID;
 @property(readonly, nonatomic) NSUUID *originalDocumentUUID; // @synthesize originalDocumentUUID=_originalDocumentUUID;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isSameDocumentUpdate;
 @property(readonly, nonatomic) _Bool preserveDocumentUUID;
 @property(readonly, nonatomic) _Bool shouldUpdate;
 - (id)initWithOriginalDocumentUUID:(id)arg1 originalVersionUUID:(id)arg2 originalURL:(id)arg3 updateType:(long long)arg4;

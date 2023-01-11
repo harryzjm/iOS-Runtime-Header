@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <MapKit/NSCoding-Protocol.h>
 #import <MapKit/NSCopying-Protocol.h>
+#import <MapKit/NSSecureCoding-Protocol.h>
 
 @class NSDictionary;
 
-@interface MKServerFormattedStringParameters : NSObject <NSCopying, NSCoding>
+@interface MKServerFormattedStringParameters : NSObject <NSCopying, NSSecureCoding>
 {
     long long _instructionsDistanceDetailLevel;
     NSDictionary *_variableOverides;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(readonly, copy, nonatomic) NSDictionary *variableOverides; // @synthesize variableOverides=_variableOverides;
 @property(readonly, nonatomic) long long instructionsDistanceDetailLevel; // @synthesize instructionsDistanceDetailLevel=_instructionsDistanceDetailLevel;
 - (void).cxx_destruct;

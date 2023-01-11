@@ -10,6 +10,7 @@
 
 @interface PKPaymentPassContent <NSSecureCoding>
 {
+    _Bool _supportsTransitOnly;
     NSString *_cobrandName;
     NSURL *_transactionServiceURL;
     NSString *_transactionPushTopic;
@@ -22,6 +23,7 @@
 
 + (_Bool)supportsSecureCoding;
 @property(copy, nonatomic) NSArray *availableActions; // @synthesize availableActions=_availableActions;
+@property(nonatomic) _Bool supportsTransitOnly; // @synthesize supportsTransitOnly=_supportsTransitOnly;
 @property(copy, nonatomic) NSDictionary *localizedSuspendedReasonsByAID; // @synthesize localizedSuspendedReasonsByAID=_localizedSuspendedReasonsByAID;
 @property(copy, nonatomic) NSString *appURLScheme; // @synthesize appURLScheme=_appURLScheme;
 @property(copy, nonatomic) NSString *messagePushTopic; // @synthesize messagePushTopic=_messagePushTopic;
@@ -32,7 +34,7 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDictionary:(id)arg1 bundle:(id)arg2;
+- (id)initWithDictionary:(id)arg1 bundle:(id)arg2 privateBundle:(id)arg3;
 
 @end
 

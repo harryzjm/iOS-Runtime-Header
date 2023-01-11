@@ -11,9 +11,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_axSetLabelForCardNumberCell:(id)arg1 withPass:(id)arg2;
+- (void)_axSetLabelForCardNumberCell:(id)arg1;
 - (unsigned long long)_cardInfoSectionGenerateCellWithOutput:(id *)arg1 forRowIndex:(long long)arg2 tableView:(id)arg3;
+- (id)_infoCellWithDescription:(id)arg1 forTableView:(id)arg2;
 - (id)_deviceAccountNumberCellForIndexPath:(id)arg1 tableView:(id)arg2;
+- (id)_peerPaymentCardInfoCellForRowIndex:(long long)arg1 tableView:(id)arg2;
 - (id)_linkCellWithText:(id)arg1 forTableView:(id)arg2;
 - (void)_accessibilityLoadAccessibilityInformation;
 

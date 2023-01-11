@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSKStyleMapper-Protocol.h>
 
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (void)replaceReferencedStylesInMap:(id)arg1 withMapper:(id)arg2;
 @property(nonatomic) _Bool forceMatchStyle; // @synthesize forceMatchStyle=mForceMatchStyle;
 @property(readonly) id <TSKStyleMapper> underlyingMapper; // @synthesize underlyingMapper=mUnderlyingMapper;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool clientsMustRemap;
 - (id)mappedStyleForStyle:(id)arg1;
 - (id)mappedStyleForStyle:(id)arg1 bakeComputable:(_Bool)arg2;
@@ -33,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (void)replaceReferencedStylesInMap:(id)arg1;
 - (void)dealloc;
 - (id)initWithMapper:(id)arg1;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

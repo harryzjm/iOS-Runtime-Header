@@ -167,6 +167,7 @@
 - (void)_enqueueWriteCompletionHandler:(CDUnknownBlockType)arg1 forCharacteristic:(id)arg2;
 - (void)_handleDisconnectionWithQueue:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)handleDisconnectionWithError:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)isBLELinkConnected;
 - (void)_handleSuccessfulBTLEConnection;
 - (void)_handleConnectionWithError:(id)arg1;
 - (void)handleConnectionWithPeripheral:(id)arg1 withError:(id)arg2;
@@ -180,7 +181,7 @@
 - (_Bool)tryPairingPassword:(id)arg1 error:(id *)arg2;
 - (void)_checkForAuthPrompt;
 - (void)continuePairingAfterAuthPrompt;
-- (void)startPairing;
+- (void)startPairingWithConsentRequired:(_Bool)arg1;
 - (void)configureCharacteristics:(id)arg1 queue:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)generateBroadcastKey:(unsigned char)arg1 queue:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_createPrimaryAccessoryFromAdvertisementData;

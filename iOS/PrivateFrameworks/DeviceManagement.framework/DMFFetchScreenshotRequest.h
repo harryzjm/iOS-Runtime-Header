@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
 @class NSString;
 
-@interface DMFFetchScreenshotRequest : CATTaskRequest
+@interface DMFFetchScreenshotRequest
 {
+    _Bool _usesPixels;
     unsigned long long _maxWidth;
     unsigned long long _maxHeight;
     NSString *_sessionToken;
@@ -18,6 +17,7 @@
 + (_Bool)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
 @property(copy, nonatomic) NSString *sessionToken; // @synthesize sessionToken=_sessionToken;
+@property(nonatomic) _Bool usesPixels; // @synthesize usesPixels=_usesPixels;
 @property(nonatomic) unsigned long long maxHeight; // @synthesize maxHeight=_maxHeight;
 @property(nonatomic) unsigned long long maxWidth; // @synthesize maxWidth=_maxWidth;
 - (void).cxx_destruct;

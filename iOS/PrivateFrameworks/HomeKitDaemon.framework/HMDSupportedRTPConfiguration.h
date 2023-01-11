@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDCameraTLVCreateParse-Protocol.h>
+#import <HomeKitDaemon/HMDTLVCreateParse-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class NSArray;
 
-@interface HMDSupportedRTPConfiguration <HMDCameraTLVCreateParse, NSSecureCoding>
+@interface HMDSupportedRTPConfiguration <HMDTLVCreateParse, NSSecureCoding>
 {
     NSArray *_srtpCryptoSuites;
 }

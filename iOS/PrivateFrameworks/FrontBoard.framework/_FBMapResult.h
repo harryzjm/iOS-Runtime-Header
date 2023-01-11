@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface _FBMapResult : NSObject
 {
@@ -16,7 +16,7 @@
 @property(nonatomic) _Bool filtered; // @synthesize filtered=_filtered;
 @property(nonatomic) _Bool created; // @synthesize created=_created;
 @property(retain, nonatomic) id result; // @synthesize result=_result;
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

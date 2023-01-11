@@ -9,11 +9,13 @@
 @class HMAccessorySettingConstraint, _HMAccessorySetting;
 
 @protocol _HMAccesorySettingDelegate <NSObject>
+- (void)_settingDidUpdateReflected:(_HMAccessorySetting *)arg1;
+- (void)_settingWillUpdateReflected:(_HMAccessorySetting *)arg1;
 - (void)_settingDidUpdateValue:(_HMAccessorySetting *)arg1;
 - (void)_settingWillUpdateValue:(_HMAccessorySetting *)arg1;
 
 @optional
-- (void)_setting:(_HMAccessorySetting *)arg1 didRemoveConstriant:(HMAccessorySettingConstraint *)arg2;
-- (void)_setting:(_HMAccessorySetting *)arg1 didAddConstriant:(HMAccessorySettingConstraint *)arg2;
+- (void)_setting:(_HMAccessorySetting *)arg1 didRemoveConstraint:(HMAccessorySettingConstraint *)arg2;
+- (void)_setting:(_HMAccessorySetting *)arg1 didAddConstraint:(HMAccessorySettingConstraint *)arg2;
 @end
 

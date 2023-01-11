@@ -20,8 +20,10 @@ __attribute__((visibility("hidden")))
     Box_3d7e3c2c bounds;
     Matrix_99e705ad _shaderMatrix;
     shared_ptr_696716c4 _viewConstantData;
+    _Bool _preliminary;
 }
 
+@property(nonatomic, getter=isPreliminary) _Bool preliminary; // @synthesize preliminary=_preliminary;
 @property(readonly, nonatomic) double birthdate; // @synthesize birthdate=_birthdate;
 @property(readonly, nonatomic) struct VKTileKey key; // @synthesize key=_key;
 - (id).cxx_construct;

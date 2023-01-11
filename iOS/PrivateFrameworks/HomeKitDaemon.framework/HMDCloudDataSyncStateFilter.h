@@ -13,6 +13,7 @@
 @interface HMDCloudDataSyncStateFilter <HMFMessageReceiver, HMFTimerDelegate>
 {
     _Bool _decryptionFailed;
+    _Bool _deviceSetupRunning;
     _Bool _keychainSyncEnabled;
     _Bool _keychainSyncRequiredPopShown;
     _Bool _iCloudSwitchRequiredPopShown;
@@ -25,6 +26,7 @@
     _Bool _resetConfigDisplayTimeHasElapsed;
     _Bool _keychainSyncPeerAvailable;
     _Bool _cloudDataSyncPeerAvailable;
+    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSUUID *_uuid;
     HMFMessageDispatcher *_msgDispatcher;
     NSObject<OS_dispatch_source> *_popupTimer;
@@ -64,6 +66,7 @@
 @property(retain, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property(nonatomic) _Bool keychainSyncEnabled; // @synthesize keychainSyncEnabled=_keychainSyncEnabled;
 @property(retain, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
@@ -78,7 +81,7 @@
 - (void)_updateCloudDataSyncState:(_Bool)arg1;
 - (void)updateCloudDataSyncState:(_Bool)arg1;
 - (_Bool)_cloudSyncinProgressCheck:(id)arg1 supressPopup:(_Bool)arg2 sendCanceledError:(_Bool *)arg3 dataSyncState:(unsigned long long *)arg4;
-- (_Bool)dataSyncInProgressWithState:(unsigned long long *)arg1;
+- (_Bool)dataSyncInProgressWithState:(unsigned long long *)arg1 withMessage:(id)arg2;
 - (_Bool)acceptMessage:(id)arg1 target:(id)arg2 errorReason:(id *)arg3;
 - (void)_updateCurrentAccount:(id)arg1;
 - (void)updateCurrentAccount:(id)arg1;
@@ -92,6 +95,7 @@
 - (void)_clearResetConfigDisplayTimer;
 - (void)_stopResetConfigDisplayTimer;
 - (void)_startResetConfigDisplayTimer;
+- (void)kickResetConfigDisplayTimer;
 - (void)_stallCloudDataSyncTimer;
 - (void)_resetCloudDataSyncTimer;
 - (void)_stopCloudDataSyncTimer;
@@ -100,13 +104,16 @@
 - (void)updateNetworkConnectivity:(_Bool)arg1;
 - (void)_stopDataConfigResetTimers;
 - (void)_startDataConfigResetTimers;
+- (void)startDataConfigResetTimers;
+@property(nonatomic) _Bool deviceSetupRunning; // @synthesize deviceSetupRunning=_deviceSetupRunning;
+- (void)__handleDeviceSetupRunningUpdated;
 @property(nonatomic) _Bool decryptionFailed; // @synthesize decryptionFailed=_decryptionFailed;
-- (void)_postNotificationForDataSyncInProgress:(_Bool)arg1 dataSyncState:(unsigned long long)arg2;
+- (void)_postNotificationForDataSyncInProgress:(_Bool)arg1 dataSyncState:(unsigned long long)arg2 forcePost:(_Bool)arg3;
 - (void)handleKeychainSyncStateChangedNotification:(id)arg1;
 - (void)_updateKeychainSyncEnabled:(_Bool)arg1;
 - (void)dealloc;
 - (void)_registerForMessages;
-- (id)initWithName:(id)arg1 homeManager:(id)arg2 messageDispatcher:(id)arg3 serverTokenAvailable:(_Bool)arg4 homeDataHasBeenDecrypted:(_Bool)arg5 localDataDecryptionFailed:(_Bool)arg6 totalHomes:(long long)arg7 currentAccount:(id)arg8;
+- (id)initWithName:(id)arg1 homeManager:(id)arg2 messageDispatcher:(id)arg3 serverTokenAvailable:(_Bool)arg4 homeDataHasBeenDecrypted:(_Bool)arg5 homeManagerServerTokenAvailable:(_Bool)arg6 localDataDecryptionFailed:(_Bool)arg7 totalHomes:(long long)arg8 currentAccount:(id)arg9;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

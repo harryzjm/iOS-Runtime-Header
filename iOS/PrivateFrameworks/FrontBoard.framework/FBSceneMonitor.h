@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBSceneLayerManagerObserver-Protocol.h>
 #import <FrontBoard/FBSceneManagerInternalObserver-Protocol.h>
@@ -20,15 +20,12 @@
     NSMutableSet *_externalSceneIDs;
     NSMutableSet *_pairedExternalSceneIDs;
     NSMutableDictionary *_monitorsBySceneID;
-    NSMutableDictionary *_updateContextsByTransactionID;
     FBSSceneClientSettingsDiffInspector *_diffInspector;
     FBSMutableSceneSettings *_sceneSettings;
     FBSMutableSceneSettings *_effectiveSettings;
-    FBSSceneSettings *_lastCommitSettings;
     FBSceneMonitorBehaviors *_givenMonitorBehaviors;
     FBSceneMonitorBehaviors *_delegateMonitorBehaviors;
     FBSceneMonitorBehaviors *_effectiveMonitorBehaviors;
-    _Bool _monitorSceneCommits;
     _Bool _invalidated;
     _Bool _isSynchronizing;
     _Bool _updateSettingsAfterSync;
@@ -37,20 +34,20 @@
 }
 
 @property(copy, nonatomic) FBSceneMonitorBehaviors *behaviors; // @synthesize behaviors=_givenMonitorBehaviors;
-@property(readonly, retain, nonatomic) FBSSceneSettings *effectiveSceneSettings; // @synthesize effectiveSceneSettings=_effectiveSettings;
-@property(readonly, retain, nonatomic) FBSSceneSettings *sceneSettings; // @synthesize sceneSettings=_sceneSettings;
-@property(nonatomic) id <FBSceneMonitorDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) FBSSceneSettings *effectiveSceneSettings; // @synthesize effectiveSceneSettings=_effectiveSettings;
+@property(readonly, nonatomic) FBSSceneSettings *sceneSettings; // @synthesize sceneSettings=_sceneSettings;
+@property(nonatomic) __weak id <FBSceneMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, copy, nonatomic) NSString *sceneID; // @synthesize sceneID=_sceneID;
-@property(readonly, retain, nonatomic) FBScene *scene; // @synthesize scene=_scene;
+@property(readonly, nonatomic) FBScene *scene; // @synthesize scene=_scene;
+- (void).cxx_destruct;
 - (void)sceneMonitor:(id)arg1 effectiveSceneSettingsDidChangeWithDiff:(id)arg2 previousSettings:(id)arg3;
 - (void)sceneManager:(id)arg1 scene:(id)arg2 didUpdateClientSettingsWithDiff:(id)arg3 oldClientSettings:(id)arg4 transitionContext:(id)arg5;
 - (void)sceneManagerDidEndSceneUpdateSynchronization:(id)arg1;
 - (void)sceneManagerWillBeginSceneUpdateSynchronization:(id)arg1;
 - (void)sceneManager:(id)arg1 didDestroyScene:(id)arg2;
 - (void)sceneManager:(id)arg1 willDestroyScene:(id)arg2;
-- (void)sceneManager:(id)arg1 didCommitUpdateForScene:(id)arg2 transactionID:(unsigned long long)arg3;
-- (void)sceneManager:(id)arg1 willCommitUpdateForScene:(id)arg2 transactionID:(unsigned long long)arg3;
-- (void)sceneManager:(id)arg1 didCreateScene:(id)arg2 withClient:(id)arg3;
+- (void)sceneManager:(id)arg1 updateForScene:(id)arg2 appliedWithContext:(id)arg3;
+- (void)sceneManager:(id)arg1 didCreateScene:(id)arg2;
 - (void)sceneLayerManager:(id)arg1 didRepositionLayer:(id)arg2 fromIndex:(unsigned long long)arg3 toIndex:(unsigned long long)arg4;
 - (id)_effectiveBehaviors;
 - (void)_updateEffectiveSceneSettings:(_Bool)arg1;

@@ -13,7 +13,9 @@
     struct SKCEffectNode *_skcEffectNode;
 }
 
-- (id)debugHierarchyPropertyDescriptions;
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
++ (id)debugHierarchyPropertyDescriptions;
++ (_Bool)supportsSecureCoding;
 - (void)setValue:(id)arg1 forAttributeNamed:(id)arg2;
 - (id)valueForAttributeNamed:(id)arg1;
 @property(retain, nonatomic) SKShader *shader;

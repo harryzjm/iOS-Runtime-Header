@@ -11,16 +11,22 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilitySupplementaryFooterViews;
+- (id)_accessibilityUserTestingChildren;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
+- (_Bool)_axIsCollapsed;
+- (id)_axNCNotificationViewController;
 - (id)_axLookView;
 - (id)accessibilityHint;
 - (_Bool)isAccessibilityElement;
 - (_Bool)_accessibilityIsAwayAlertElement;
 - (id)accessibilityDragSourceDescriptors;
+- (_Bool)_axManage:(id)arg1;
 - (_Bool)_axClear:(id)arg1;
-- (_Bool)_axMore:(id)arg1;
+- (_Bool)_axView:(id)arg1;
 - (id)accessibilityCustomActions;
+- (id)accessibilitHint;
 - (_Bool)accessibilityActivate;
 - (_Bool)_accessibilitySupportsActivateAction;
 

@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)ciImage;
 - (id)initWithCIImage:(id)arg1;
-- (id)observationsCacheKey;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSMutableOrderedSet, TSPObjectContext;
 @protocol OS_dispatch_queue;
@@ -42,10 +42,10 @@ __attribute__((visibility("hidden")))
 - (void)addComponent:(id)arg1;
 - (void)addObject:(id)arg1;
 - (void)processPackageMetadataMessage:(shared_ptr_cd1ed623)arg1;
-- (void)addMessage:(const struct Message *)arg1 withStrongReferencesMap:(unordered_map_502345cb *)arg2 forObjectIdentifier:(long long)arg3;
+- (void)addMessage:(const struct Message *)arg1 withStrongReferencesMap:(unordered_map_38045d47 *)arg2 forObjectIdentifier:(long long)arg3;
 - (void)addArchiver:(id)arg1;
-- (map_33c58e88 *)_messageAlternateMapFromArchivableContent:(id)arg1;
-- (unordered_map_502345cb *)_strongReferencesFromArchiver:(id)arg1;
+- (map_4bea934e *)_messageAlternateMapFromArchivableContent:(id)arg1;
+- (unordered_map_38045d47 *)_strongReferencesFromArchiver:(id)arg1;
 - (id)initWithContext:(id)arg1 options:(unsigned long long)arg2;
 - (id)init;
 

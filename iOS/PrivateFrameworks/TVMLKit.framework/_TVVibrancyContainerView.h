@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIVisualEffectView.h>
-
 @class UIView;
 
-@interface _TVVibrancyContainerView : UIVisualEffectView
+@interface _TVVibrancyContainerView
 {
     UIView *_containedView;
 }

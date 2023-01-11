@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSKCompatibilityDelegate-Protocol.h>
 
@@ -27,8 +27,8 @@ __attribute__((visibility("hidden")))
 - (Class)exportOptionsControllerClass;
 - (Class)exporterClassForType:(id)arg1 options:(id)arg2;
 - (Class)importerClassForType:(id)arg1 path:(id)arg2;
-- (id)epubExportLanguageCodes;
-- (id)epubExportCategories;
+- (id)EPUBExportLanguageCodes;
+- (id)EPUBExportCategories;
 - (id)newExportableDocumentTypesForFlag:(unsigned long long)arg1;
 
 // Remaining properties

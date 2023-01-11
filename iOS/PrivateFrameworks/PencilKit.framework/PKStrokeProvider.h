@@ -13,6 +13,7 @@
 
 @interface PKStrokeProvider : NSObject <CHStrokeProvider>
 {
+    _Bool _disabled;
     PKDrawing *_drawing;
 }
 

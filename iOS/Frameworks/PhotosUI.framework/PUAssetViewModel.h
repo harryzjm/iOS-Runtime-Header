@@ -9,7 +9,7 @@
 #import <PhotosUI/PUBrowsingIrisPlayerChangeObserver-Protocol.h>
 #import <PhotosUI/PUBrowsingVideoPlayerChangeObserver-Protocol.h>
 
-@class NSNumber, NSObject, NSProgress, NSString, PUAssetReference, PUAssetSharedViewModel, PUAssetViewModelChange, PUBadgeInfoPromise, PUBrowsingAnimatedImagePlayer, PUBrowsingIrisPlayer, PUBrowsingVideoPlayer, PUMediaProvider, PUModelTileTransform, PUOperationStatus, PXAutoloopScheduler;
+@class NSNumber, NSObject, NSProgress, NSString, PUAssetReference, PUAssetSharedViewModel, PUAssetViewModelChange, PUBadgeInfoPromise, PUBrowsingAnimatedImagePlayer, PUBrowsingIrisPlayer, PUBrowsingVideoPlayer, PUMediaProvider, PUModelTileTransform, PUOperationStatus;
 @protocol OS_dispatch_group, PUDisplayAsset;
 
 @interface PUAssetViewModel <PUBrowsingIrisPlayerChangeObserver, PUAssetSharedViewModelChangeObserver, PUBrowsingVideoPlayerChangeObserver, PUBrowsingAnimatedImagePlayerChangeObserver>
@@ -33,6 +33,7 @@
     PUOperationStatus *_loadingStatus;
     NSProgress *_saveProgress;
     long long _saveState;
+    long long _importState;
     NSObject<OS_dispatch_group> *_displayedContentUpdateGroup;
     PUBadgeInfoPromise *_badgeInfoPromise;
     long long _lastAccessoryViewVisibilityChangeReason;
@@ -41,7 +42,6 @@
     long long __currentFavoriteOverrideRequest;
     long long _displayedContentUpdateCount;
     PUMediaProvider *_mediaProvider;
-    PXAutoloopScheduler *_autoloopScheduler;
     NSNumber *_isFavoriteOverride;
     PUAssetReference *_assetReference;
     PUAssetSharedViewModel *_assetSharedViewModel;
@@ -52,7 +52,6 @@
 @property(retain, nonatomic) PUAssetSharedViewModel *assetSharedViewModel; // @synthesize assetSharedViewModel=_assetSharedViewModel;
 @property(retain, nonatomic) PUAssetReference *assetReference; // @synthesize assetReference=_assetReference;
 @property(copy, nonatomic) NSNumber *isFavoriteOverride; // @synthesize isFavoriteOverride=_isFavoriteOverride;
-@property(retain, nonatomic) PXAutoloopScheduler *autoloopScheduler; // @synthesize autoloopScheduler=_autoloopScheduler;
 @property(retain, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property(nonatomic) long long displayedContentUpdateCount; // @synthesize displayedContentUpdateCount=_displayedContentUpdateCount;
 @property(nonatomic, setter=_setCurrentFavoriteOverrideRequest:) long long _currentFavoriteOverrideRequest; // @synthesize _currentFavoriteOverrideRequest=__currentFavoriteOverrideRequest;
@@ -68,6 +67,7 @@
 @property(copy, nonatomic) PUBadgeInfoPromise *badgeInfoPromise; // @synthesize badgeInfoPromise=_badgeInfoPromise;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *displayedContentUpdateGroup; // @synthesize displayedContentUpdateGroup=_displayedContentUpdateGroup;
 @property(nonatomic) _Bool isUpdatingDisplayedContent; // @synthesize isUpdatingDisplayedContent=_isUpdatingDisplayedContent;
+@property(nonatomic) long long importState; // @synthesize importState=_importState;
 @property(readonly, nonatomic) long long saveState; // @synthesize saveState=_saveState;
 @property(retain, nonatomic) NSProgress *saveProgress; // @synthesize saveProgress=_saveProgress;
 @property(copy, nonatomic) PUOperationStatus *loadingStatus; // @synthesize loadingStatus=_loadingStatus;

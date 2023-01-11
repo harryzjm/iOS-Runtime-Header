@@ -5,27 +5,25 @@
 //
 
 #import <iWorkImport/TSDDrawableContainerInfo-Protocol.h>
+#import <iWorkImport/TSKPencilAnnotationContainer-Protocol.h>
 #import <iWorkImport/TSSStyleClient-Protocol.h>
 #import <iWorkImport/TSWPStorageParent-Protocol.h>
 #import <iWorkImport/TSWPTextSource-Protocol.h>
 
-@class NSMutableString, NSObject, NSString, TSDInfoGeometry, TSPObject, TSSStylesheet, TSUWeakReference, TSWPCharacterStyle, TSWPDocumentRoot, TSWPStorageBroadcaster;
+@class NSArray, NSMutableString, NSObject, NSString, TSDDrawableInfo, TSDInfoGeometry, TSPObject, TSSStylesheet, TSWPCharacterStyle, TSWPDocumentRoot, TSWPStorageBroadcaster;
 @protocol TSDContainerInfo><TSWPStorageParent, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
-@interface TSWPStorage <TSDDrawableContainerInfo, TSWPStorageParent, TSSStyleClient, TSWPTextSource>
+@interface TSWPStorage <TSDDrawableContainerInfo, TSKPencilAnnotationContainer, TSWPStorageParent, TSSStyleClient, TSWPTextSource>
 {
     NSMutableString *_string;
-    struct TSWPAttributeArray *_attributesTable[20];
+    struct TSWPAttributeArray *_attributesTable[21];
     TSWPStorageBroadcaster *_broadcaster;
-    TSWPDocumentRoot *_documentRoot;
     TSSStylesheet *_stylesheet;
     _Bool _dolcSuppressed;
     unsigned long long _changeCount;
     int _WPKind;
     _Bool _wasPreviouslyRemovedFromDocument;
-    TSUWeakReference *_parentInfoReference;
-    TSPObject<TSDOwningAttachment> *_owningAttachment;
     unsigned int _disallowElementKinds;
     unsigned int _disallowSmartFieldKinds;
     int _writingDirectionCache;
@@ -36,6 +34,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _wordAtCharIndexChangeCount;
     _Bool _isInInit;
     _Bool _ignoreContentsChangedNotifications;
+    TSPObject<TSDOwningAttachment> *_owningAttachment;
+    NSObject<TSDContainerInfo><TSWPStorageParent> *_parentInfo;
+    TSWPDocumentRoot *_documentRoot;
 }
 
 + (Class)classForUnarchiver:(id)arg1;
@@ -54,13 +55,15 @@ __attribute__((visibility("hidden")))
 + (void)initialize;
 + (struct TSWPAttributeArray *)createEmptyAttributeArrayForKind:(int)arg1;
 + (struct TSWPAttributeArray *)createAttributeArrayForKind:(int)arg1 actionState:(struct TSWPStorageActionState *)arg2;
+@property(nonatomic) __weak TSWPDocumentRoot *documentRoot; // @synthesize documentRoot=_documentRoot;
+@property(nonatomic) __weak NSObject<TSDContainerInfo><TSWPStorageParent> *parentInfo; // @synthesize parentInfo=_parentInfo;
 @property(readonly, nonatomic) unsigned long long changeCount; // @synthesize changeCount=_changeCount;
 @property(nonatomic) _Bool ignoreContentsChangedNotifications; // @synthesize ignoreContentsChangedNotifications=_ignoreContentsChangedNotifications;
 @property(nonatomic) _Bool isInInit; // @synthesize isInInit=_isInInit;
 @property(nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment; // @synthesize owningAttachment=_owningAttachment;
 @property(readonly, nonatomic) TSSStylesheet *stylesheet; // @synthesize stylesheet=_stylesheet;
-- (void)validate:(_Bool)arg1 shouldThrow:(_Bool)arg2 shouldFatalAssert:(_Bool)arg3;
-- (void)validate:(_Bool)arg1 shouldThrow:(_Bool)arg2;
+- (void).cxx_destruct;
+- (_Bool)validate:(unsigned long long)arg1;
 @property(readonly, copy) NSString *description;
 @property(readonly, copy) NSString *debugDescription;
 - (struct TSWPAttributeArray *)attributeArrayForKind:(int)arg1 withCreate:(_Bool)arg2;
@@ -93,12 +96,14 @@ __attribute__((visibility("hidden")))
 - (void)didChangeRange:(struct _NSRange)arg1 delta:(long long)arg2 broadcastKind:(int)arg3 attributeKindChanges:(id)arg4;
 - (void)didChangeRange:(struct _NSRange)arg1 delta:(long long)arg2 broadcastKind:(int)arg3;
 @property(readonly, nonatomic) TSWPCharacterStyle *hyperlinkStyle;
+- (void)afterReplacingReferencedStylesSetStylesheet:(id)arg1;
 - (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)referencedStyles;
 - (id)referencedStylesOfClass:(Class)arg1;
+@property(readonly, nonatomic) TSDDrawableInfo *parentDrawable;
 - (double)highestScaleFactorForRenderingDrawableInfo:(id)arg1;
 - (id)infoForSelectionPath:(id)arg1;
-- (id)childInfos;
+@property(readonly, nonatomic) NSArray *childInfos;
 - (id)copyWithContext:(id)arg1;
 - (_Bool)isThemeContent;
 - (Class)repClass;
@@ -111,14 +116,15 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isFloatingAboveText) _Bool floatingAboveText;
 @property(readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
-@property(nonatomic) NSObject<TSDContainerInfo><TSWPStorageParent> *parentInfo; // @dynamic parentInfo;
 - (void)setPrimitiveGeometry:(id)arg1;
 @property(copy, nonatomic) TSDInfoGeometry *geometry;
 @property(readonly, nonatomic) long long contentWritingDirection;
-- (_Bool)textIsLinked;
-- (_Bool)textIsVertical;
-- (_Bool)autoListTermination;
-- (_Bool)autoListRecognition;
+@property(readonly, nonatomic) _Bool preventsChangeTracking;
+@property(readonly, nonatomic) _Bool preventsComments;
+@property(readonly, nonatomic) _Bool textIsLinked;
+@property(readonly, nonatomic) _Bool textIsVertical;
+@property(readonly, nonatomic) _Bool autoListTermination;
+@property(readonly, nonatomic) _Bool autoListRecognition;
 - (id)fontNameAtCharIndex:(unsigned long long)arg1 size:(double *)arg2 effectiveRange:(struct _NSRange *)arg3 styleProvider:(id)arg4;
 - (void)fixGlyphVariantFontsForRange:(struct _NSRange)arg1;
 - (id)glyphVariantDataAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
@@ -142,6 +148,7 @@ __attribute__((visibility("hidden")))
 - (id)placeholderSmartFieldAtRange:(struct _NSRange)arg1;
 - (id)placeholderSmartFieldsIntersectingRange:(struct _NSRange)arg1;
 - (id)smartFieldsWithAttributeKind:(int)arg1 intersectingRange:(struct _NSRange)arg2;
+- (void)nonUndoableRemoveUnsupportedHyperlinks;
 - (id)smartFieldsWithAttributeKind:(int)arg1 intersectingRange:(struct _NSRange)arg2 passingTest:(CDUnknownBlockType)arg3;
 - (void)resetAllTextAttributeUUIDStrings;
 - (void)enumerateSmartFieldsWithAttributeKind:(int)arg1 inRange:(struct _NSRange)arg2 usingBlock:(CDUnknownBlockType)arg3;
@@ -155,6 +162,7 @@ __attribute__((visibility("hidden")))
 - (id)smartFieldAtCharIndex:(unsigned long long)arg1 attributeKind:(int)arg2 effectiveRange:(struct _NSRange *)arg3;
 - (id)extendSelectionToIncludeSmartFields:(id)arg1;
 - (struct _NSRange)p_extendRangeToIncludeSmartFields:(struct _NSRange)arg1;
+- (id)attachments;
 - (unsigned long long)charIndexBeforeAnyAnchoredAttachmentsAtCharIndex:(unsigned long long)arg1;
 - (_Bool)anchoredDrawableAttachmentCharacterAtCharIndex:(unsigned long long)arg1;
 - (struct _NSRange)attachmentRangeForCharIndex:(unsigned long long)arg1 forwards:(_Bool)arg2 attributeKind:(int)arg3;
@@ -196,7 +204,8 @@ __attribute__((visibility("hidden")))
 - (id)sectionAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (unsigned long long)sectionIndexForSection:(id)arg1;
 - (unsigned long long)sectionIndexForCharIndex:(unsigned long long)arg1;
-- (void)replaceSectionAtSectionIndex:(unsigned long long)arg1 withSection:(id)arg2 dolcContext:(id)arg3 undoTransaction:(struct TSWPStorageTransaction *)arg4;
+- (struct _NSRange)replaceSectionAtSectionIndex:(unsigned long long)arg1 withSection:(id)arg2 dolcContext:(id)arg3 undoTransaction:(struct TSWPStorageTransaction *)arg4;
+- (struct _NSRange)insertSectionBreakAtCharIndex:(unsigned long long)arg1 replaceParagraphBreak:(_Bool)arg2 sectionToInsert:(id)arg3 changeSession:(id)arg4 dolcContext:(id)arg5 undoTransaction:(struct TSWPStorageTransaction *)arg6;
 - (id)sectionAtSectionIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (_Bool)hasSectionForParagraphBreakAtCharIndex:(unsigned long long)arg1;
 - (unsigned long long)sectionCount;
@@ -210,7 +219,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasColumnBreakAtCharIndex:(unsigned long long)arg1;
 - (_Bool)hasColumnStyleForParagraphBreakAtCharIndex:(unsigned long long)arg1;
 - (unsigned long long)columnStyleCount;
-- (_Bool)supportsMultipleColumns;
+@property(readonly, nonatomic) _Bool supportsMultipleColumns;
 - (_Bool)supportsColumnStyles;
 - (id)valueForProperty:(int)arg1 atCharIndex:(unsigned long long)arg2 effectiveRange:(struct _NSRange *)arg3;
 - (void)setCharacterStyle:(id)arg1 range:(struct _NSRange)arg2 undoTransaction:(struct TSWPStorageTransaction *)arg3;
@@ -244,7 +253,7 @@ __attribute__((visibility("hidden")))
 - (void)setParagraphStyle:(id)arg1 atParIndex:(unsigned long long)arg2 undoTransaction:(struct TSWPStorageTransaction *)arg3;
 - (id)paragraphStyleAtParIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (void)setDictationAndAutocorrection:(id)arg1 forCharRange:(struct _NSRange)arg2 undoTransaction:(struct TSWPStorageTransaction *)arg3;
-- (void)addAllDictationAndAutocorrectionKeyRangesInRange:(struct _NSRange)arg1 toRanges:(struct TSWPRangeVector *)arg2;
+- (void)addAllDictationAndAutocorrectionKeyRangesInRange:(struct _NSRange)arg1 toRanges:(id)arg2;
 - (id)dictationAndAutocorrectionKeyAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (id)languageAtParIndex:(unsigned long long)arg1 useStringTokenizer:(_Bool)arg2 useDocumentLanguage:(_Bool)arg3;
 - (id)languageForTextRange:(struct _NSRange)arg1 useStringTokenizer:(_Bool)arg2 useDocumentLanguage:(_Bool)arg3;
@@ -253,7 +262,6 @@ __attribute__((visibility("hidden")))
 - (void)setParagraphWritingDirection:(int)arg1 forCharRange:(struct _NSRange)arg2 undoTransaction:(struct TSWPStorageTransaction *)arg3;
 - (int)writingDirectionForParagraphAtParIndex:(unsigned long long)arg1;
 - (int)writingDirectionForParagraphAtCharIndex:(unsigned long long)arg1;
-- (int)p_writingDirectionFromBidiAttributesTableForParagraphAtCharIndex:(unsigned long long)arg1;
 - (_Bool)isWritingDirectionRightToLeftForListAtParIndex:(unsigned long long)arg1;
 - (_Bool)isWritingDirectionRightToLeftForParagraphAtParIndex:(unsigned long long)arg1;
 - (_Bool)isWritingDirectionRightToLeftForParagraphAtCharIndex:(unsigned long long)arg1;
@@ -279,6 +287,10 @@ __attribute__((visibility("hidden")))
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (_Bool)styleOverridesAppliedToRange:(struct _NSRange)arg1;
 - (struct _NSRange)replaceAllOccurrencesOfStyle:(id)arg1 withStyle:(id)arg2 undoTransaction:(struct TSWPStorageTransaction *)arg3;
+- (void)removePencilAnnotations;
+- (_Bool)childrenCanBeAnnotatedWithPencil;
+- (_Bool)canBeAnnotatedWithPencil;
+- (void)enumeratePencilAnnotationsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)acceptVisitor:(id)arg1;
 - (id)childEnumerator;
 - (struct _NSRange)rangeOfParagraphBreakingCharacter:(unsigned short)arg1 backwards:(_Bool)arg2 range:(struct _NSRange)arg3;
@@ -312,8 +324,8 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)charRangeMappedToStorage:(struct _NSRange)arg1;
 - (unsigned long long)charIndexMappedFromStorage:(unsigned long long)arg1;
 - (unsigned long long)charIndexMappedToStorage:(unsigned long long)arg1;
-- (long long)hyphenationLocationBeforeIndex:(long long)arg1 inRange:(struct _NSRange)arg2 locale:(struct __CFLocale *)arg3 hyphenChar:(unsigned int *)arg4;
-- (void)attributesAtCharIndex:(unsigned long long)arg1 attributesOfInterest:(_Bool [20])arg2 attributesTable:(id [20])arg3 effectiveRange:(struct _NSRange *)arg4;
+- (long long)hyphenationLocationBeforeIndex:(long long)arg1 inRange:(struct _NSRange)arg2 locale:(id)arg3 hyphenChar:(unsigned int *)arg4;
+- (void)attributesAtCharIndex:(unsigned long long)arg1 attributesOfInterest:(_Bool [21])arg2 attributesTable:(id [21])arg3 effectiveRange:(struct _NSRange *)arg4;
 - (id)objectAtLocationAtExactCharIndex:(unsigned long long)arg1 forAttributeKind:(int)arg2;
 - (id)objectAtLocationPriorToMappedCharIndex:(unsigned long long)arg1 forAttributeKind:(int)arg2 effectiveRange:(struct _NSRange *)arg3;
 - (struct _NSRange)rangeByTrimmingRange:(struct _NSRange)arg1 withBlock:(CDUnknownBlockType)arg2;
@@ -355,6 +367,7 @@ __attribute__((visibility("hidden")))
 - (struct TSWPParagraphEnumerator)paragraphEnumeratorAtCharIndex:(unsigned long long)arg1 styleProvider:(id)arg2;
 - (id)textSourceForLayoutInRange:(struct _NSRange)arg1;
 - (void)nonUndoableFilterInvalidContentForStorage:(id)arg1 keepHighlights:(_Bool)arg2;
+- (_Bool)allowsTypographicalFractions;
 - (_Bool)supportsPageBreaks;
 - (void)p_nonUndoableFilterPageBreaksFromStorage:(id)arg1;
 - (void)p_nonUndoableFilterSectionBreaksFromStorage:(id)arg1;
@@ -368,21 +381,22 @@ __attribute__((visibility("hidden")))
 - (void)removeDisallowedElementKind:(int)arg1;
 - (void)addDisallowedElementKind:(int)arg1;
 - (void)nonUndoableSetWPKind:(int)arg1 keepHighlights:(_Bool)arg2;
+@property(readonly, nonatomic) _Bool supportsChangeTracking;
 - (int)wpKind;
-- (void)setDocumentRoot:(id)arg1;
-- (id)documentRoot;
 - (void)removeParagraphObserver:(id)arg1;
 - (void)addParagraphObserver:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)removeAllObservers;
+- (void)i_repairParagraphArray;
 - (void)unarchiverAppendParagraphBreak:(unsigned short)arg1;
-- (void)saveRange:(struct _NSRange)arg1 toArchiver:(id)arg2 styleProvider:(id)arg3 archiveChanges:(_Bool)arg4 removeDeletedText:(_Bool)arg5;
+- (void)saveRange:(struct _NSRange)arg1 toArchiver:(id)arg2 styleProvider:(id)arg3 archiveChanges:(_Bool)arg4 removeDeletedText:(_Bool)arg5 archivePencilAnnotations:(_Bool)arg6;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)objectUUIDPath;
 - (void)dealloc;
 - (id)initWithContext:(id)arg1 string:(id)arg2 stylesheet:(id)arg3 kind:(int)arg4;
+- (void)commonInit;
 - (id)initWithContext:(id)arg1 string:(id)arg2 kind:(int)arg3 stylesheet:(id)arg4 paragraphStyle:(id)arg5 listStyle:(id)arg6 section:(id)arg7 columnStyle:(id)arg8 paragraphDirection:(int)arg9;
 - (id)initWithContext:(id)arg1 string:(id)arg2 kind:(int)arg3 stylesheet:(id)arg4 paragraphStyle:(id)arg5 listStyle:(id)arg6 section:(id)arg7 columnStyle:(id)arg8;
 - (id)rangesForLocalization;
@@ -391,8 +405,9 @@ __attribute__((visibility("hidden")))
 - (id)stringWithFormulaDetokenizedText;
 - (id)stringWithFormulaPlainTextFromRange:(struct _NSRange)arg1;
 - (id)stringWithFormulaPlainText;
+- (void)insertUIGraphicalAttachment:(id)arg1 withLanguage:(id)arg2;
 - (void)insertUIGraphicalAttachment:(id)arg1;
-- (void)takeText:(id)arg1 andSetLanguage:(id)arg2;
+- (void)takeText:(id)arg1 withLanguage:(id)arg2;
 - (void)takeText:(id)arg1;
 - (unsigned long long)nextNonWhitespaceOrNewlineIndexStartingAtIndex:(unsigned long long)arg1;
 - (unsigned long long)previousNonWhitespaceOrNewlineIndexStartingAtIndex:(unsigned long long)arg1;
@@ -417,6 +432,7 @@ __attribute__((visibility("hidden")))
 - (void)splitSmartFieldAtCharIndex:(unsigned long long)arg1 lengthToInsert:(unsigned long long)arg2 attributeKind:(int)arg3 dolcContext:(id)arg4 undoTransaction:(struct TSWPStorageTransaction *)arg5;
 - (id)storageByApplyingCustomFormat:(id)arg1;
 - (id)valueForBIUProperties:(id)arg1;
+- (_Bool)hasDrawableAttachmentOfClass:(Class)arg1;
 - (_Bool)canBeStoredInAStringValueCell;
 - (_Bool)p_passesExtraTablesChecksForStoringInAStringValueCell;
 - (id)pOverrideObjectBeforeReplacingCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2 withInsertionBehavior:(int)arg3;
@@ -424,7 +440,9 @@ __attribute__((visibility("hidden")))
 - (id)pFindValidInsertionCharStyleFromCharIndex:(unsigned long long)arg1;
 - (int)compareAttributeArray1:(struct TSWPAttributeArray *)arg1 array2:(struct TSWPAttributeArray *)arg2 range1:(struct _NSRange)arg3 range2:(struct _NSRange)arg4 attributeIndex1:(unsigned long long)arg5 attributeIndex2:(unsigned long long)arg6 styleComparisonBlock:(CDUnknownBlockType)arg7;
 - (int)compareAttributeArray:(struct TSWPAttributeArray *)arg1 range:(struct _NSRange)arg2 otherStorage:(id)arg3 otherRange:(struct _NSRange)arg4 styleComparisonBlock:(CDUnknownBlockType)arg5;
-- (void)nonUndoableInitializeAttributeArraySource:(struct TSWPAttributeArray *)arg1 forSourceRange:(struct _NSRange)arg2 toDestStorage:(id)arg3 objectContext:(id)arg4 dolcContext:(id)arg5 flags:(int)arg6;
+- (void)nonUndoableInitializeAttributeArraySource:(struct TSWPAttributeArray *)arg1 forSourceRange:(struct _NSRange)arg2 toDestStorage:(id)arg3 objectContext:(id)arg4 dolcContext:(id)arg5 flags:(unsigned int)arg6;
+- (void *)cfRetainedNonUndoableFastCopyAttributeRecord:(struct TSWPAttributeRecord *)arg1 shouldAddRecord:(_Bool *)arg2 attributeArrayKind:(int)arg3 atIndex:(unsigned long long)arg4 sourceStorage:(id)arg5 objectContext:(id)arg6 flags:(unsigned int)arg7 actionState:(struct TSWPStorageActionState *)arg8;
+- (_Bool)canTransferAttributesForInitialization:(int)arg1 withFlags:(unsigned int)arg2;
 - (struct _NSRange)replaceAllOccurrencesOfObject:(id)arg1 withObject:(id)arg2 forKind:(int)arg3 undoTransaction:(struct TSWPStorageTransaction *)arg4;
 - (void)applyWritingDirection:(int)arg1 toParagraphIndexRange:(struct _NSRange)arg2 forKind:(int)arg3 undoTransaction:(struct TSWPStorageTransaction *)arg4;
 - (void)applyDataValue:(unsigned int)arg1 toParagraphIndexRange:(struct _NSRange)arg2 forKind:(int)arg3 undoTransaction:(struct TSWPStorageTransaction *)arg4;
@@ -440,9 +458,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)isObjectValid:(id)arg1 forStyleKind:(int)arg2;
 - (struct _NSRange)insertSpecialCharacter:(unsigned short)arg1 object:(id)arg2 kind:(int)arg3 range:(struct _NSRange)arg4 placementIndex:(int)arg5 dolcContext:(id)arg6 undoTransaction:(struct TSWPStorageTransaction *)arg7 changeSession:(id)arg8;
 - (struct _NSRange)insertSpecialCharacter:(unsigned short)arg1 object:(id)arg2 kind:(int)arg3 range:(struct _NSRange)arg4 dolcContext:(id)arg5 undoTransaction:(struct TSWPStorageTransaction *)arg6 changeSession:(id)arg7;
-- (void)p_attributesAtCharIndex:(unsigned long long)arg1 attributesOfInterest:(_Bool [20])arg2 attributesTable:(id [20])arg3 effectiveRange:(struct _NSRange *)arg4;
+- (void)p_attributesAtCharIndex:(unsigned long long)arg1 attributesOfInterest:(_Bool [21])arg2 attributesTable:(id [21])arg3 effectiveRange:(struct _NSRange *)arg4;
 - (struct TSWPAttributeArray *)attributeArrayForKind:(int)arg1;
 - (struct TSWPParagraphAttributeArray *)paragraphAttributeArrayForKind:(int)arg1 withCreate:(_Bool)arg2;
+- (int)p_writingDirectionFromBidiAttributesTableForParagraphAtCharIndex:(unsigned long long)arg1;
 - (_Bool)p_shouldAcceptChangesForRange:(struct _NSRange)arg1 removeDeletedText:(_Bool *)arg2;
 - (long long)pFlipSpecialCharacterForObject:(id)arg1 range:(struct _NSRange)arg2 insertLength:(unsigned long long)arg3 outChangeRange:(struct _NSRange *)arg4 attributeArrayKind:(int)arg5 actionState:(struct TSWPStorageActionState *)arg6;
 - (id)pFlipStringForObject:(id)arg1 insertLength:(unsigned long long)arg2 attributeArrayKind:(int)arg3;
@@ -455,9 +474,14 @@ __attribute__((visibility("hidden")))
 - (void)transferAttributeArraySource:(struct TSWPAttributeArray *)arg1 toAttributeArrayDest:(struct TSWPAttributeArray *)arg2 atCharIndex:(unsigned long long)arg3 delta:(long long)arg4 dolcContext:(id)arg5 actionBuilder:(struct TSWPStorageActionBuilder *)arg6;
 - (_Bool)p_canTransferBookmark:(id)arg1;
 - (_Bool)p_shouldInsertionSplitChange:(id)arg1 changeSession:(id)arg2;
+- (struct _NSRange)p_rangeForOverlappingField:(id)arg1 attributeKind:(int)arg2;
+- (void)p_removeOverlappingFieldsInRange:(struct _NSRange)arg1 attributeKind:(int)arg2 undoTransaction:(struct TSWPStorageTransaction *)arg3;
+- (void)removePencilAnnotationsInRange:(struct _NSRange)arg1 undoTransaction:(struct TSWPStorageTransaction *)arg2;
+- (void)enumeratePencilAnnotationsInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (struct _NSRange)rangeForPencilAnnotation:(id)arg1;
 - (void)p_handleChangeSplittingForInsertedRange:(struct _NSRange)arg1 changeSession:(id)arg2 actionBuilder:(struct TSWPStorageActionBuilder *)arg3;
 - (void)p_updateChangeTimestampForDeletedRange:(struct _NSRange)arg1 actionBuilder:(struct TSWPStorageActionBuilder *)arg2;
-- (id)p_replacementsForSelection:(id)arg1 withString:(id)arg2 changeSession:(id)arg3 shouldTrackDeletions:(_Bool)arg4;
+- (id)p_replacementsForSelection:(id)arg1 withString:(id)arg2 replaceTextData:(id)arg3 changeSession:(id)arg4 shouldTrackDeletions:(_Bool)arg5;
 - (id)editableAnnotationForInsertionPointSelection:(id)arg1 includeComments:(_Bool)arg2 withOutRange:(struct _NSRange *)arg3 selectionIsOnEdge:(_Bool *)arg4;
 - (struct _NSRange)rangeOfAnnotationWithOptions:(unsigned long long)arg1 range:(struct _NSRange)arg2;
 - (struct _NSRange)rangeForAnnotation:(id)arg1;
@@ -469,8 +493,6 @@ __attribute__((visibility("hidden")))
 - (void)addHighlight:(id)arg1 toRange:(struct _NSRange)arg2 dolcContext:(id)arg3 undoTransaction:(struct TSWPStorageTransaction *)arg4;
 - (void)enumerateHighlightsInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateHighlightsInExpandedRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (int)p_highlightsAttributeKind;
-- (_Bool)supportsOverlappingHighlights;
 - (id)highlightsForSelectionRange:(struct _NSRange)arg1 requireComment:(_Bool)arg2;
 - (id)firstHighlightForSelectionRange:(struct _NSRange)arg1 outRange:(struct _NSRange *)arg2 requireComment:(_Bool)arg3;
 - (id)firstHighlightForSelectionRange:(struct _NSRange)arg1 outRange:(struct _NSRange *)arg2;
@@ -506,7 +528,6 @@ __attribute__((visibility("hidden")))
 - (id)visibleRangesInRange:(struct _NSRange)arg1;
 - (id)hiddenRangesInRange:(struct _NSRange)arg1;
 - (id)deletedRangesInRange:(struct _NSRange)arg1;
-- (struct TSWPRangeVector)deletedRangeVectorInRange:(struct _NSRange)arg1;
 - (id)changeAtCharIndex:(unsigned long long)arg1 outRange:(struct _NSRange *)arg2;
 - (id)changeAtCharIndex:(unsigned long long)arg1 attributeKind:(int)arg2 effectiveRange:(struct _NSRange *)arg3;
 - (struct _NSRange)rangeForChange:(id)arg1;
@@ -531,6 +552,7 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool matchesObjectPlaceholderGeometry;
+@property(readonly, nonatomic) _Bool storageChangesInvalidateWrap;
 @property(readonly) Class superclass;
 
 @end

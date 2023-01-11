@@ -16,8 +16,6 @@
     NSString *_loggingSubsystem;
 }
 
-+ (id)_getCategory:(id)arg1;
-+ (void)_addCategory:(id)arg1 inSubsystem:(id)arg2;
 + (id)categoryWithName:(id)arg1 inSubsystem:(id)arg2;
 + (id)categoryWithName:(id)arg1;
 + (id)defaultCategory;

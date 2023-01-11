@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (void)initDefaultPropertyMap:(id)arg1 presetID:(unsigned long long)arg2 colors:(id)arg3 alternate:(int)arg4;
 + (void)initDefaultStrokePresetListInPropertyMap:(id)arg1 presetID:(unsigned long long)arg2 colors:(id)arg3;
++ (int)defaultIntValueForProperty:(int)arg1;
 + (id)styleIDForPreset:(unsigned long long)arg1;
 + (unsigned long long)presetIDForStyleID:(id)arg1;
 + (id)nonEmphasisTableProperties;
@@ -23,6 +24,26 @@ __attribute__((visibility("hidden")))
 + (id)properties;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
+@property(readonly, nonatomic) TSDStroke *categoryLevel5InteriorStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel4InteriorStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel3InteriorStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel2InteriorStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel1InteriorStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel5BottomStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel4BottomStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel3BottomStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel2BottomStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel1BottomStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel5LabelSeparatorStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel4LabelSeparatorStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel3LabelSeparatorStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel2LabelSeparatorStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel1LabelSeparatorStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel5TopStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel4TopStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel3TopStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel2TopStroke;
+@property(readonly, nonatomic) TSDStroke *categoryLevel1TopStroke;
 @property(readonly, nonatomic) TSDStroke *footerRowSeparatorStroke;
 @property(readonly, nonatomic) TSDStroke *footerRowBodyRowStroke;
 @property(readonly, nonatomic) TSDStroke *footerRowBodyColumnStroke;
@@ -54,7 +75,6 @@ __attribute__((visibility("hidden")))
 - (id)verticalStrokeForStrokePreset:(unsigned long long)arg1;
 - (id)horizontalStrokeForStrokePreset:(unsigned long long)arg1;
 - (id)strokeForStrokePreset:(unsigned long long)arg1;
-- (void)dealloc;
 - (id)initWithContext:(id)arg1 name:(id)arg2 overridePropertyMap:(id)arg3 isVariation:(_Bool)arg4;
 
 // Remaining properties

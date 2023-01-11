@@ -13,6 +13,10 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityValue;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)_accessibilityGeocodingGroup;
+- (void)_accessibilitySetGeocodingGroup:(id)arg1;
+- (id)_accessibilityGetGeocodingGroup;
+- (void)setCoordinate:(struct CLLocationCoordinate2D)arg1;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityHint;
 - (_Bool)isAccessibilityElement;

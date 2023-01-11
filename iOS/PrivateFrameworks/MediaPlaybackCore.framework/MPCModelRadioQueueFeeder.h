@@ -8,7 +8,7 @@
 
 #import <MediaPlaybackCore/MPRTCReportingItemSessionContaining-Protocol.h>
 
-@class ICStoreRequestContext, ICUserIdentityStore, MPAVItem, MPCModelRadioPersonalizationResponse, MPCModelRadioPlaybackQueue, MPCPlaybackRequestEnvironment, NSDictionary, NSOperationQueue, NSString, SSVPlayActivityController;
+@class ICStoreRequestContext, ICUserIdentity, ICUserIdentityStore, MPAVItem, MPCModelRadioPersonalizationResponse, MPCModelRadioPlaybackQueue, MPCPlaybackRequestEnvironment, NSDictionary, NSOperationQueue, NSString, SSVPlayActivityController;
 @protocol MPAVItemQueueIdentifier;
 
 @interface MPCModelRadioQueueFeeder : MPQueueFeeder <MPRTCReportingItemSessionContaining>
@@ -27,22 +27,25 @@
     SSVPlayActivityController *_playActivityController;
     MPCModelRadioPlaybackQueue *_playbackQueue;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
+    ICUserIdentity *_proactiveCacheIdentity;
     long long _queueGeneration;
+    NSString *_siriAssetInfo;
     ICStoreRequestContext *_storeRequestContext;
 }
 
 - (void).cxx_destruct;
+- (void)_updateProactiveCaching;
 - (id)_startPlaybackRequestWithPlaybackContext:(id)arg1;
 - (void)_savePlaybackHistoryWithCurrentIndex:(long long)arg1;
 - (void)_repersonalizeCurrentTracks;
 - (void)_responseDidInvalidate;
 - (void)_removeRestrictedTracks;
 - (void)_observePersonalizationResponse:(id)arg1;
-- (void)_loadTracksWithRequest:(id)arg1;
+- (void)_loadTracksWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_loadAdditionalItemsIfNeeded;
 - (long long)_indexOfAVItem:(id)arg1;
-- (void)_handlePersonalizationResponse:(id)arg1 personalizationError:(id)arg2 fromRequest:(id)arg3;
-- (void)_handleGetTracksResponse:(id)arg1 getTracksError:(id)arg2 fromRequest:(id)arg3;
+- (void)_handlePersonalizationResponse:(id)arg1 personalizationError:(id)arg2 fromRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_handleGetTracksResponse:(id)arg1 getTracksError:(id)arg2 fromRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_failAfterRequest:(id)arg1 withError:(id)arg2;
 - (void)_endObservingIdentityStoreForSignOut;
 - (void)_endBackgroundTaskAssertion;
@@ -66,7 +69,6 @@
 - (long long)realRepeatType;
 - (_Bool)preventsHardQueueModificationsForItem:(id)arg1;
 - (_Bool)playerPreparesItemsForPlaybackAsynchronously;
-- (_Bool)player:(id)arg1 shouldContinuePlaybackForNetworkType:(long long)arg2 returningError:(id *)arg3;
 - (void)player:(id)arg1 currentItemDidChangeToItem:(id)arg2;
 - (unsigned long long)itemCount;
 - (Class)itemClass;
@@ -78,6 +80,7 @@
 - (_Bool)canReorder;
 - (id)audioSessionModeForItemAtIndex:(unsigned long long)arg1;
 - (_Bool)allowsUserVisibleUpcomingItems;
+- (_Bool)allowsQueueResetWhenReachingEnd;
 - (void)dealloc;
 - (id)init;
 

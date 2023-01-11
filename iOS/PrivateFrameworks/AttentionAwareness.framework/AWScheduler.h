@@ -24,11 +24,13 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedScheduler;
 - (void).cxx_destruct;
+- (void)createUnitTestSampler;
 - (void)getUnitTestSamplerWithReply:(CDUnknownBlockType)arg1;
 - (void)outputPowerLogWithReply:(CDUnknownBlockType)arg1;
 - (void)setDebugPreference:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getDebugPreferences:(CDUnknownBlockType)arg1;
 - (void)armEvents;
+- (void)setSmartCoverClosed:(_Bool)arg1;
 - (void)processHIDEvent:(unsigned long long)arg1 timestamp:(unsigned long long)arg2;
 - (void)removeClientsForConnection:(id)arg1;
 - (void)removeInvalidClients;

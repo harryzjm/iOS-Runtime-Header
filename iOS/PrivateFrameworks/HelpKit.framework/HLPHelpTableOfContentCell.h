@@ -6,38 +6,45 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class HLPHelpItem, HLPURLSession, NSLayoutConstraint, UIImageView, UILabel;
+@class HLPHelpItem, NSLayoutConstraint, TPSURLSessionItem, UIImageView, UILabel;
 
 @interface HLPHelpTableOfContentCell : UITableViewCell
 {
-    HLPURLSession *_sectionImageURLSession;
     NSLayoutConstraint *_arrowImageViewLeadingConstraint;
     NSLayoutConstraint *_arrowImageViewWidthConstraint;
     NSLayoutConstraint *_sectionImageWidthConstraint;
     NSLayoutConstraint *_sectionImageLeadingConstraint;
+    NSLayoutConstraint *_labelToArrowViewLeadingConstraint;
     _Bool _showFirstLevelIcon;
+    _Bool _ignoreLevels;
     _Bool _closed;
     _Bool _RTL;
     HLPHelpItem *_helpItem;
     UILabel *_nameLabel;
     UIImageView *_arrowImageView;
     UIImageView *_sectionImageView;
+    TPSURLSessionItem *_sectionImageURLSessionItem;
 }
 
+@property(retain, nonatomic) TPSURLSessionItem *sectionImageURLSessionItem; // @synthesize sectionImageURLSessionItem=_sectionImageURLSessionItem;
 @property(retain, nonatomic) UIImageView *sectionImageView; // @synthesize sectionImageView=_sectionImageView;
 @property(retain, nonatomic) UIImageView *arrowImageView; // @synthesize arrowImageView=_arrowImageView;
 @property(retain, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property(nonatomic) _Bool RTL; // @synthesize RTL=_RTL;
 @property(retain, nonatomic) HLPHelpItem *helpItem; // @synthesize helpItem=_helpItem;
 @property(nonatomic) _Bool closed; // @synthesize closed=_closed;
+@property(nonatomic) _Bool ignoreLevels; // @synthesize ignoreLevels=_ignoreLevels;
 @property(nonatomic) _Bool showFirstLevelIcon; // @synthesize showFirstLevelIcon=_showFirstLevelIcon;
 - (void).cxx_destruct;
 - (id)accessibilityLabel;
 - (void)updateToggleImageAnimated:(_Bool)arg1;
+- (struct CGAffineTransform)arrowTransform;
 - (void)toggle;
+- (long long)itemLevel;
 - (void)updateConstraints;
 - (void)layoutSubviews;
-- (void)updateFonts;
+- (void)cancelIconRequest;
+- (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)prepareForReuse;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)dealloc;

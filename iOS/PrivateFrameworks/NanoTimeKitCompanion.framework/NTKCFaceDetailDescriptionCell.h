@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UITextView;
+#import <NanoTimeKitCompanion/UITextViewDelegate-Protocol.h>
 
-@interface NTKCFaceDetailDescriptionCell
+@class NSAttributedString, NSString, UITextView;
+
+@interface NTKCFaceDetailDescriptionCell <UITextViewDelegate>
 {
     UITextView *_textView;
 }
@@ -14,11 +16,19 @@
 + (id)reuseIdentifier;
 @property(retain, nonatomic) UITextView *textView; // @synthesize textView=_textView;
 - (void).cxx_destruct;
+- (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)_fontSizeDidChange;
 - (void)layoutSubviews;
 - (double)rowHeight;
+@property(copy, nonatomic) NSAttributedString *attributedText;
 @property(copy, nonatomic) NSString *text;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

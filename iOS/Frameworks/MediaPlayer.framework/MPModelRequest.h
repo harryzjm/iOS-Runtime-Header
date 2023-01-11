@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
@@ -35,8 +35,8 @@
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 - (void).cxx_destruct;
 - (id)_kindForClass:(Class)arg1;
-@property(nonatomic) Class itemClass;
-@property(nonatomic) Class sectionClass;
+@property(retain, nonatomic) Class itemClass;
+@property(retain, nonatomic) Class sectionClass;
 - (id)newOperationWithResponseHandler:(CDUnknownBlockType)arg1;
 - (void)performWithResponseHandler:(CDUnknownBlockType)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

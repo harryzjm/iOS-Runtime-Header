@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableDictionary;
 @protocol OS_dispatch_queue, OS_xpc_object;
@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)registerBlockForService:(char *)arg1 block:(CDUnknownBlockType)arg2;
 - (void)sendMessageAsync:(char *)arg1 arguments:(id)arg2 toAllClientsWithContext:(id)arg3;
 - (void)sendMessageAsync:(char *)arg1 arguments:(id)arg2 context:(id)arg3;
+- (void)sendMessageAsync:(char *)arg1 arguments:(id)arg2 xpcArguments:(id)arg3 context:(id)arg4;
 - (void)sendMessageAsync:(char *)arg1 arguments:(id)arg2;
 - (id)autorelease;
 - (oneway void)release;

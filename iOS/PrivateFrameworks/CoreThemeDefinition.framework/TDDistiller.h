@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CUIMutableCommonAssetStorage, CoreThemeDocument, NSArray, NSMutableArray, NSString, NSThread, NSUUID, TDLogger;
 
@@ -74,6 +74,7 @@
 - (_Bool)distillCustomColors;
 - (_Bool)_distillColorDefinitions:(id)arg1;
 - (_Bool)distillCatalogGlobals;
+- (_Bool)distillThemeAppearances;
 - (_Bool)distillRenditions;
 - (_Bool)_recordRenditionEntryFromRendition:(id)arg1;
 - (id)_productionForRenditionSpec:(id)arg1;

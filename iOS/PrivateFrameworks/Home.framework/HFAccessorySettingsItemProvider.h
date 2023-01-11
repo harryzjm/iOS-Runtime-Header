@@ -4,33 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMAccessoryProfile, HMAccessorySettingGroup, NATreeNode, NSMutableDictionary, NSMutableSet;
-@protocol HFAccessorySettings;
+@class HMAccessorySettingGroup, NATreeNode, NSMutableDictionary, NSMutableSet;
+@protocol HFMediaProfileContainer;
 
 @interface HFAccessorySettingsItemProvider
 {
     HMAccessorySettingGroup *_settingGroup;
     CDUnknownBlockType _filter;
-    HMAccessoryProfile<HFAccessorySettings> *_accessoryProfile;
+    id <HFMediaProfileContainer> _mediaProfileContainer;
     NSMutableDictionary *_tupleCache;
     NSMutableSet *_settingItems;
     NATreeNode *_parentNode;
 }
 
++ (id)buildSettingsObjectForMediaProfileContainer:(id)arg1 settingGroup:(id)arg2 underNode:(id)arg3 cache:(id)arg4;
 @property(readonly, nonatomic) NATreeNode *parentNode; // @synthesize parentNode=_parentNode;
 @property(retain, nonatomic) NSMutableSet *settingItems; // @synthesize settingItems=_settingItems;
 @property(retain, nonatomic) NSMutableDictionary *tupleCache; // @synthesize tupleCache=_tupleCache;
-@property(readonly, nonatomic) HMAccessoryProfile<HFAccessorySettings> *accessoryProfile; // @synthesize accessoryProfile=_accessoryProfile;
+@property(readonly, nonatomic) id <HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
 @property(copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
-@property(readonly, nonatomic) HMAccessorySettingGroup *settingGroup; // @synthesize settingGroup=_settingGroup;
+@property(retain, nonatomic) HMAccessorySettingGroup *settingGroup; // @synthesize settingGroup=_settingGroup;
 - (void).cxx_destruct;
 - (id)invalidationReasons;
 - (id)items;
 - (id)reloadItems;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithAccessoryProfile:(id)arg1;
-- (id)initWithAccessoryProfile:(id)arg1 settingGroup:(id)arg2;
-- (id)initWithSettingGroupItem:(id)arg1;
+- (id)initWithMediaProfileContainer:(id)arg1 settingGroup:(id)arg2;
 
 @end
 

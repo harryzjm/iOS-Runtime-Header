@@ -47,12 +47,16 @@
     double _dictationBlueColor;
     SUICAudioLevelSmoother *_levelSmoother;
     int _fidelity;
+    double _frameRateScalingFactor;
+    _Bool _transitionFinished;
     _Bool _isInitialized;
     _Bool _hasCustomActiveFrame;
     _Bool _shadersAreCompiled;
     _Bool _reduceMotionEnabled;
     _Bool _showAura;
+    _Bool _freezesAura;
     _Bool _reduceFrameRate;
+    _Bool _reduceThinkingFramerate;
     _Bool _renderInBackground;
     _Bool _paused;
     _Bool _accelerateTransitions;
@@ -65,9 +69,14 @@
     struct CGRect _activeFrame;
 }
 
++ (void)setIndexCacheSize:(unsigned long long)arg1;
++ (id)_indexCache;
++ (void)prewarmShadersForScreen:(id)arg1 initialFrame:(struct CGRect)arg2 activeFrame:(struct CGRect)arg3 fidelity:(int)arg4 prewarmInBackground:(_Bool)arg5;
++ (void)prewarmShadersForScreen:(id)arg1 activeFrame:(struct CGRect)arg2 fidelity:(int)arg3;
 + (void)prewarmShadersForScreen:(id)arg1 size:(struct CGSize)arg2 fidelity:(int)arg3 prewarmInBackground:(_Bool)arg4;
 + (void)prewarmShadersForScreen:(id)arg1 size:(struct CGSize)arg2 fidelity:(int)arg3;
 + (void)prewarmShadersForScreen:(id)arg1 size:(struct CGSize)arg2;
++ (_Bool)_supportsAdaptiveFramerate;
 + (Class)layerClass;
 @property(nonatomic) _Bool accelerateTransitions; // @synthesize accelerateTransitions=_accelerateTransitions;
 @property(nonatomic) double horizontalScaleFactor; // @synthesize horizontalScaleFactor=_horizontalScaleFactor;
@@ -76,7 +85,9 @@
 @property(retain, nonatomic) UIColor *dictationColor; // @synthesize dictationColor=_dictationColor;
 @property(retain, nonatomic) UIImage *overlayImage; // @synthesize overlayImage=_overlayImage;
 @property(nonatomic) struct CGRect activeFrame; // @synthesize activeFrame=_activeFrame;
+@property(nonatomic) _Bool reduceThinkingFramerate; // @synthesize reduceThinkingFramerate=_reduceThinkingFramerate;
 @property(nonatomic) _Bool reduceFrameRate; // @synthesize reduceFrameRate=_reduceFrameRate;
+@property(nonatomic) _Bool freezesAura; // @synthesize freezesAura=_freezesAura;
 @property(nonatomic) _Bool showAura; // @synthesize showAura=_showAura;
 @property(nonatomic) int state; // @synthesize state=_state;
 @property(nonatomic) int mode; // @synthesize mode=_mode;
@@ -84,6 +95,7 @@
 - (void).cxx_destruct;
 - (void)traitCollectionDidChange:(id)arg1;
 - (float)_currentMicPowerLevel;
+- (void)_didFinishTransition;
 - (void)_updateCurveLayer:(id)arg1;
 - (_Bool)_isOriginatingProcessInBackground;
 @property(readonly, nonatomic) _Bool isRenderingEnabled;
@@ -91,6 +103,7 @@
 - (_Bool)inDictationMode;
 - (_Bool)inSiriMode;
 - (void)_tearDownDisplayLink;
+- (_Bool)_deviceNeeds2xFlamesWithCurrentScale:(double)arg1;
 - (double)_currentDisplayScale;
 - (void)layoutSubviews;
 - (void)_updateOrthoProjection;
@@ -117,7 +130,6 @@
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHidden:(_Bool)arg1;
-- (void)_updateDisplayLinkPausedStateFromSuccess:(_Bool)arg1;
 - (void)_updateDisplayLinkPausedState;
 - (void)_setPreferredFramesPerSecond;
 - (void)fadeOutCurrentAura;

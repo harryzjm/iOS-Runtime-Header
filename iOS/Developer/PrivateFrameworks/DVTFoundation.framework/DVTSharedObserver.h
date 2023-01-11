@@ -6,21 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, NSString;
+@class NSMutableArray, NSString;
 
 @interface DVTSharedObserver : NSObject
 {
     NSString *_keyPath;
-    id _object;
-    NSMapTable *_registeredObservers;
+    id _observedObject;
+    NSMutableArray *_activeObservingTokens;
+    unsigned int _numTombstones;
+    unsigned int _numRegisteredObservers;
+    _Bool _needsRebalancing;
+    struct os_unfair_lock_s _tokensLock;
 }
 
 - (void).cxx_destruct;
+- (void)_locked_rebalanceObservingTokens;
 @property(readonly) _Bool _hasRegisteredObservers;
-- (void)_removeObserver:(id)arg1 forName:(id)arg2;
-- (void)_setObserver:(id)arg1 forName:(id)arg2 handlerBlock:(CDUnknownBlockType)arg3;
+- (void)_removeObserverWithTrackingIndex:(unsigned int)arg1;
+- (id)_setObserverWithCreationBacktrace:(id)arg1 handlerBlock:(CDUnknownBlockType)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (id)_handlerInfoForObserver:(id)arg1;
 - (void)dealloc;
 - (id)_initWithObservedObject:(id)arg1 keyPath:(id)arg2;
 

@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CUBonjourAdvertiser : NSObject
 {
-    _Bool _activateCalled;
     _Bool _activated;
     struct BonjourAdvertiserPrivate *_bonjourAdvertiser;
     _Bool _invalidateCalled;
+    _Bool _started;
     struct LogCategory *_ucat;
-    _Bool _updating;
+    _Bool _updatePending;
     _Bool _advertiseFlagsChanged;
     _Bool _domainChanged;
     _Bool _interfaceIndexChanged;
@@ -49,13 +49,12 @@
 @property(nonatomic) unsigned long long advertiseFlags; // @synthesize advertiseFlags=_advertiseFlags;
 - (void).cxx_destruct;
 - (void)_updateTXTDictionary;
-- (void)_updateLocked:(_Bool)arg1;
-- (void)_update:(_Bool)arg1;
-- (void)performUpdate:(CDUnknownBlockType)arg1;
+- (void)_updateLocked;
 - (void)invalidate;
 - (void)_activateSafeInvokeBlock:(CDUnknownBlockType)arg1;
-- (void)_activate;
+- (void)_activateLocked;
 - (void)activate;
+- (id)descriptionWithLevel:(int)arg1;
 - (id)description;
 - (void)dealloc;
 - (id)init;

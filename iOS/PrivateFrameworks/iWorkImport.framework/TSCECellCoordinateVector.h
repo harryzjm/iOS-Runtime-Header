@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
 @interface TSCECellCoordinateVector : NSObject
 {
-    vector_13f93596 _cellCoordinates;
+    vector_38b190b0 _cellCoordinates;
     NSObject<OS_dispatch_semaphore> *_sem;
 }
 
@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithArchive:(const struct CellCoordinateVectorArchive *)arg1;
 - (void)removeAllCellCoordinates;
 - (void)addCellCoordinate:(struct TSUCellCoord)arg1;
-- (unordered_set_c5f37819)cellCoordinatesSet;
-- (vector_13f93596 *)cellCoordinates;
+- (unordered_set_cb28a53b)cellCoordinatesSet;
+- (vector_38b190b0 *)cellCoordinates;
 - (id)init;
 
 @end

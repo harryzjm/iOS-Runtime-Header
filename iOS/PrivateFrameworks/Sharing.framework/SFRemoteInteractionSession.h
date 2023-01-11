@@ -23,6 +23,7 @@
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
     SFDevice *_peerDevice;
+    CDUnknownBlockType _remoteTextEventHandler;
     CDUnknownBlockType _textSessionDidBegin;
     CDUnknownBlockType _textSessionDidEnd;
     CDUnknownBlockType _textSessionDidChange;
@@ -34,6 +35,7 @@
 @property(copy, nonatomic) CDUnknownBlockType textSessionDidChange; // @synthesize textSessionDidChange=_textSessionDidChange;
 @property(copy, nonatomic) CDUnknownBlockType textSessionDidEnd; // @synthesize textSessionDidEnd=_textSessionDidEnd;
 @property(copy, nonatomic) CDUnknownBlockType textSessionDidBegin; // @synthesize textSessionDidBegin=_textSessionDidBegin;
+@property(copy, nonatomic) CDUnknownBlockType remoteTextEventHandler; // @synthesize remoteTextEventHandler=_remoteTextEventHandler;
 @property(retain, nonatomic) SFDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
@@ -42,10 +44,12 @@
 - (void)remoteInteractionSessionTextSessionDidChange:(id)arg1;
 - (void)remoteInteractionSessionTextSessionDidEnd:(id)arg1;
 - (void)remoteInteractionSessionTextSessionDidBegin:(id)arg1;
+- (void)remoteInteractionSessionRemoteTextEvent:(id)arg1;
 - (void)_interrupted;
 - (void)_ensureXPCStarted;
 - (void)_sessionHandleEvent:(id)arg1;
 - (void)_sessionSetText:(id)arg1;
+- (void)_sessionSendPayload:(struct NSDictionary *)arg1;
 - (void)_sessionInsertText:(id)arg1;
 - (void)_sessionDeleteTextBackward;
 - (void)_sessionCommitText;
@@ -56,6 +60,7 @@
 - (void)deleteTextBackward;
 - (void)commitText;
 - (void)clearText;
+- (void)sendPayload:(struct NSDictionary *)arg1;
 - (void)_invalidated;
 - (void)_invalidate;
 - (void)invalidate;

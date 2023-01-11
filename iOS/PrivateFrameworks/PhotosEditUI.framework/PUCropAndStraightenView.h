@@ -13,6 +13,7 @@
 @class NSString, NUComposition, NUMediaView, PHLivePhoto, PHLivePhotoView, PLImageGeometry, PXImageLayerModulator, PXImageModulationManager, UIImage, UIImageView, UIScrollView;
 @protocol PUCropAndStraightenViewDelegate;
 
+__attribute__((visibility("hidden")))
 @interface PUCropAndStraightenView : UIView <UIScrollViewDelegate, UIGestureRecognizerDelegate, NUMediaViewDelegate>
 {
     _Bool _tracking;
@@ -20,7 +21,6 @@
     UIImage *_image;
     PHLivePhoto *_livePhoto;
     NUComposition *_autoloopComposition;
-    long long _imageModulationOptions;
     id <PUCropAndStraightenViewDelegate> _delegate;
     double _straightenAngle;
     long long _orientation;
@@ -35,6 +35,7 @@
     NUMediaView *__mediaView;
     PXImageModulationManager *__imageModulationManager;
     PXImageLayerModulator *__imageLayerModulator;
+    CDStruct_910f5d27 _imageModulationOptions;
     struct CGRect _cropRect;
     struct CGRect _canvasFrame;
     struct CGRect __fittingRegion;
@@ -59,7 +60,7 @@
 @property(nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property(nonatomic) double straightenAngle; // @synthesize straightenAngle=_straightenAngle;
 @property(nonatomic) __weak id <PUCropAndStraightenViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property(nonatomic) long long imageModulationOptions; // @synthesize imageModulationOptions=_imageModulationOptions;
+@property(nonatomic) CDStruct_910f5d27 imageModulationOptions; // @synthesize imageModulationOptions=_imageModulationOptions;
 @property(retain, nonatomic) NUComposition *autoloopComposition; // @synthesize autoloopComposition=_autoloopComposition;
 @property(retain, nonatomic) PHLivePhoto *livePhoto; // @synthesize livePhoto=_livePhoto;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;

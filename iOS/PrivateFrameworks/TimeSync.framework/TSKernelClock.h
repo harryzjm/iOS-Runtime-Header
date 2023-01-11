@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class __TSKernelClockNotification;
+
 @interface TSKernelClock
 {
     unsigned int _service;
@@ -11,11 +13,17 @@
     struct IONotificationPort *_notificationPort;
     unsigned int _interestNotification;
     _Bool _serviceIsAlive;
+    __TSKernelClockNotification *_clockForNotification;
 }
 
++ (id)clockNameForClockIdentifier:(unsigned long long)arg1;
++ (id)diagnosticInfoForClockIdentifier:(unsigned long long)arg1;
++ (id)diagnosticInfoForService:(unsigned int)arg1;
++ (unsigned int)serviceForClockIdentifier:(unsigned long long)arg1;
 + (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
 + (id)iokitMatchingDictionaryForClockIdentifier:(unsigned long long)arg1;
 + (id)availableKernelClockIdentifiers;
+- (id)diagnosticDescriptionWithIndent:(id)arg1;
 - (void)dealloc;
 - (id)clockName;
 - (void)_handleInterestNotification:(unsigned int)arg1 withArgument:(void *)arg2;
@@ -28,7 +36,7 @@
 @property(readonly, nonatomic) unsigned int service; // @dynamic service;
 - (_Bool)getRateRatioNumerator:(unsigned long long *)arg1 denominator:(unsigned long long *)arg2 machAnchor:(unsigned long long *)arg3 andDomainAnchor:(unsigned long long *)arg4 withError:(id *)arg5;
 - (double)hostRateRatio;
-- (int)lockState;
+- (int)_lockState;
 - (unsigned long long)convertFromDomainIntervalToMachAbsoluteInterval:(unsigned long long)arg1;
 - (unsigned long long)convertFromMachAbsoluteIntervalToDomainInterval:(unsigned long long)arg1;
 - (_Bool)convertFromDomainTime:(unsigned long long *)arg1 toMachAbsoluteTime:(unsigned long long *)arg2 withCount:(unsigned int)arg3;

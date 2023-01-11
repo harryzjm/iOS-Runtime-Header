@@ -9,19 +9,18 @@
 #import <GeoServices/GEODataSession-Protocol.h>
 #import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
-@class GEODataURLSessionList, GEODataURLSessionTaskQueue, NSMutableDictionary, NSOperationQueue, NSString;
+@class GEODataURLSessionList, NSMutableDictionary, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
 @interface GEODataURLSession : NSObject <NSURLSessionDataDelegate, GEODataSession>
 {
     GEODataURLSessionList *_urlSessions;
     NSObject<OS_dispatch_queue> *_sessionIsolation;
     NSOperationQueue *_sessionIsolationOperationQueue;
     NSMutableDictionary *_sessionTasks;
-    GEODataURLSessionTaskQueue *_tileTaskQueue;
     NSObject<OS_dispatch_source> *_memoryNotificationEventSource;
     unsigned int _nextSessionIdentifier;
+    int _symptomsAlternateAdviceToken;
 }
 
 @property(nonatomic) unsigned int nextSessionIdentifier; // @synthesize nextSessionIdentifier=_nextSessionIdentifier;
@@ -32,9 +31,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (void)tearDown;
+- (id)taskWithRequest:(id)arg1 rules:(id)arg2 priority:(float)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
 - (id)taskWithRequest:(id)arg1 rules:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
-@property(readonly, nonatomic) GEODataURLSessionTaskQueue *tileTaskQueue;
-- (void)didReceiveMemmoryPressureWarning;
+- (void)didReceiveMemoryPressureWarning;
+- (void)dealloc;
 - (id)init;
 - (id)activeSessionIdentifiers;
 - (void)pruneInactiveSessions;

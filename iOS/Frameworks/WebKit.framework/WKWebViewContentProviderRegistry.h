@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)registerProvider:(Class)arg1 forMIMEType:(const struct String *)arg2;
 - (void)removePage:(struct WebPageProxy *)arg1;
 - (void)addPage:(struct WebPageProxy *)arg1;
-- (id)init;
+- (id)initWithConfiguration:(id)arg1;
 
 @end
 

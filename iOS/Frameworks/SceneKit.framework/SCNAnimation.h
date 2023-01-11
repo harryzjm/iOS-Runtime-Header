@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -35,7 +35,7 @@
     CDUnknownBlockType _animationDidStart;
     CDUnknownBlockType _animationDidStop;
     NSMutableDictionary *_userInfo;
-    id _caAnimation;
+    id _caAnimationCache;
     id _userAnimation;
     _Bool _didMutate;
 }
@@ -46,6 +46,7 @@
 + (id)animationNamed:(id)arg1;
 + (_Bool)supportsSecureCoding;
 + (id)animationWithC3DAnimation:(struct __C3DAnimation *)arg1;
++ (id)animationWithMDLTransform:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (id)valueForUndefinedKey:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;

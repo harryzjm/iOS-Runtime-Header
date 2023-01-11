@@ -18,13 +18,17 @@ __attribute__((visibility("hidden")))
     NSURL *_publicShareServiceURL;
     NSURL *_publicDeviceServiceURL;
     NSURL *_publicCodeServiceURL;
+    NSURL *_publicMetricsServiceURL;
     NSString *_containerScopedUserID;
+    NSString *_orgAdminUserID;
     long long _environment;
 }
 
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) long long environment; // @synthesize environment=_environment;
+@property(copy, nonatomic) NSString *orgAdminUserID; // @synthesize orgAdminUserID=_orgAdminUserID;
 @property(copy, nonatomic) NSString *containerScopedUserID; // @synthesize containerScopedUserID=_containerScopedUserID;
+@property(copy, nonatomic) NSURL *publicMetricsServiceURL; // @synthesize publicMetricsServiceURL=_publicMetricsServiceURL;
 @property(copy, nonatomic) NSURL *publicCodeServiceURL; // @synthesize publicCodeServiceURL=_publicCodeServiceURL;
 @property(copy, nonatomic) NSURL *publicDeviceServiceURL; // @synthesize publicDeviceServiceURL=_publicDeviceServiceURL;
 @property(copy, nonatomic) NSURL *publicShareServiceURL; // @synthesize publicShareServiceURL=_publicShareServiceURL;

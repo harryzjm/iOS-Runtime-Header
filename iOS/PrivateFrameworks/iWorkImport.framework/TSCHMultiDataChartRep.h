@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly, nonatomic) _Bool shouldDisableMultiDataControls; // @synthesize shouldDisableMultiDataControls=_shouldDisableMultiDataControls;
+- (void).cxx_destruct;
 - (void)didEndZooming;
 - (void)willBeginZooming;
 - (_Bool)shouldUseLegendLayerForLayerBasedRep;

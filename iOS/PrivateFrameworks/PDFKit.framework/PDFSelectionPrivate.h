@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, PDFDocument, UIColor;
+@class NSMutableArray, NSUUID, PDFDocument, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface PDFSelectionPrivate : NSObject
@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
     NSMutableArray *pageRanges;
     UIColor *activeColor;
     UIColor *inactiveColor;
+    double cornerRadius;
     _Bool forceBreaks;
     struct __CFArray *cgSelections;
     NSMutableArray *pages;
+    NSUUID *pdfSelectionUUID;
 }
 
 - (void).cxx_destruct;

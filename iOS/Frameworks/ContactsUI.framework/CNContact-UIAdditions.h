@@ -14,6 +14,7 @@
 + (id)descriptorForAllUIKeys;
 + (_Bool)settableMeCardEnabled;
 + (_Bool)contactRemindersEnabled;
++ (_Bool)geminiEnabled;
 + (_Bool)quickActionsEnabled;
 + (_Bool)suggestionsShownInEditMode;
 + (_Bool)suggestionsEnabled;

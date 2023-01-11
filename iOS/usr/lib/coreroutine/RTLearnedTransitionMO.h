@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, RTLearnedVisitMO;
+@class NSDate, NSNumber, RTLearnedVisitMO;
 
 @interface RTLearnedTransitionMO
 {
@@ -16,6 +16,7 @@
 // Remaining properties
 @property(retain, nonatomic) RTLearnedVisitMO *destination; // @dynamic destination;
 @property(retain, nonatomic) RTLearnedVisitMO *origin; // @dynamic origin;
+@property(copy, nonatomic) NSNumber *predominantMotionActivityType; // @dynamic predominantMotionActivityType;
 @property(copy, nonatomic) NSDate *startDate; // @dynamic startDate;
 @property(copy, nonatomic) NSDate *stopDate; // @dynamic stopDate;
 

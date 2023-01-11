@@ -14,6 +14,8 @@
 - (id)querySelectorAll:(id)arg1;
 - (id)querySelector:(id)arg1;
 - (void)remove;
+- (void)webkitRequestFullscreen;
+- (void)webkitRequestFullScreen:(unsigned short)arg1;
 - (_Bool)webkitMatchesSelector:(id)arg1;
 - (id)closest:(id)arg1;
 - (_Bool)matches:(id)arg1;
@@ -46,7 +48,6 @@
 - (id)children;
 @property(readonly) DOMElement *nextElementSibling;
 @property(readonly) DOMElement *previousElementSibling;
-- (id)webkitRegionOverset;
 - (void)setUiactions:(id)arg1;
 - (id)uiactions;
 @property(readonly, copy) NSString *innerText;

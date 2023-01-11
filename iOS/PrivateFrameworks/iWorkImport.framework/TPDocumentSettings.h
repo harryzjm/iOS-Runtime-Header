@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
     _Bool _hasBody;
     _Bool _hasHeaders;
     _Bool _hasFooters;
-    _Bool _hasLlamaPanda;
+    _Bool _hasFacingPages;
     _Bool _qlPreview;
     _Bool _copyMovies;
     _Bool _copyAssets;
@@ -29,9 +29,9 @@ __attribute__((visibility("hidden")))
     _Bool _formatChangesVisible;
     _Bool _annotationsVisible;
     _Bool _documentIsRTL;
-    int _footnoteKind;
-    int _footnoteFormat;
-    int _footnoteNumbering;
+    long long _footnoteKind;
+    long long _footnoteFormat;
+    long long _footnoteNumbering;
     long long _footnoteGap;
     NSString *_decimalTab;
     NSString *_language;
@@ -45,12 +45,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int ctBubblesVisibility; // @synthesize ctBubblesVisibility=_ctBubblesVisibility;
 - (void).cxx_destruct;
 - (id)stringWithCurrentDate;
-- (void)resetForNewDocumentFromTemplate:(id)arg1;
+- (void)resetForNewDocumentFromTemplate:(id)arg1 locale:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)initWithContext:(id)arg1;
 @property(nonatomic) _Bool hasBody;
-@property(readonly, nonatomic) int basicFootnoteFormat;
+@property(readonly, nonatomic) long long basicFootnoteFormat;
 @property(copy, nonatomic) NSString *bibliographyFormat;
 @property(copy, nonatomic) NSString *creationDate;
 @property(copy, nonatomic) NSString *originalTemplate;
@@ -59,9 +59,9 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSString *language;
 @property(copy, nonatomic) NSString *decimalTab;
 @property(nonatomic) long long footnoteGap;
-@property(nonatomic) int footnoteNumbering;
-@property(nonatomic) int footnoteFormat;
-@property(nonatomic) int footnoteKind;
+@property(nonatomic) long long footnoteNumbering;
+@property(nonatomic) long long footnoteFormat;
+@property(nonatomic) long long footnoteKind;
 @property(nonatomic) _Bool sectionAuthoring;
 @property(nonatomic) _Bool documentIsRTL;
 @property(nonatomic) _Bool annotationsVisible;
@@ -78,7 +78,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool copyTemplateAssets;
 @property(nonatomic) _Bool copyMovies;
 @property(nonatomic) _Bool quickLookPreview;
-@property(nonatomic) _Bool hasLlamaPanda;
+@property(nonatomic) _Bool hasFacingPages;
 @property(nonatomic) _Bool hasFooters;
 @property(nonatomic) _Bool hasHeaders;
 

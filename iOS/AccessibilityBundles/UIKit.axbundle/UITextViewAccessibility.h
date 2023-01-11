@@ -11,6 +11,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityParagraphElementsWithLinks;
+- (id)_accessibilityParagraphElements;
+- (id)_accessibilityParagraphLinksCustomRotor;
+- (id)_accessibilityLinksForRange:(struct _NSRange)arg1;
+- (id)_accessibilityInternalTextLinks;
+- (long long)accessibilityContainerType;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
 - (id)accessibilityCustomRotors;
 - (id)_accessibilityAttributedTextRetrieval;
@@ -24,13 +30,18 @@
 - (id)accessibilityDropPointDescriptors;
 - (id)accessibilityDragSourceDescriptors;
 - (id)_accessibilityTextSelectionRectWithLargestVisualRangeFromCandidates:(id)arg1;
+- (id)accessibilityElements;
 - (unsigned long long)accessibilityTraits;
+- (_Bool)_axIsOnlyOneLinkElement;
+- (_Bool)_accessibilityActivateLink:(id)arg1;
 - (_Bool)accessibilityActivate;
 - (_Bool)isAccessibilityElement;
 - (void)setAttributedPlaceholder:(id)arg1;
 - (id)accessibilityPlaceholderValue;
+- (id)accessibilityLabel;
 - (id)accessibilityAttributedValue;
 - (id)accessibilityValue;
+- (id)_accessibilityGetValue:(_Bool)arg1;
 - (id)_accessibilityGetValue;
 - (_Bool)_accessibilityOverridesLabelValueHintSelector:(SEL)arg1;
 - (id)_accessibilityAttributedValueForRange:(struct _NSRange *)arg1;
@@ -43,6 +54,13 @@
 - (void)setAttributedText:(id)arg1;
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;
 - (struct _NSRange)_accessibilitySelectedTextRange;
+- (void)_axDidFinishDataDetectorURLification:(id)arg1;
+- (void)_axClearCachedLinkData;
+- (void)dealloc;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axRegisterForDDNotificationIfNeeded;
+- (void)_axSetDidRegisterForDDNotification:(_Bool)arg1;
+- (_Bool)_axDidRegisterForDDNotification;
 
 @end
 

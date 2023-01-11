@@ -9,7 +9,7 @@
 #import <PDFKit/NSCoding-Protocol.h>
 #import <PDFKit/NSCopying-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSString, NSURL, PDFAction, PDFAnnotationPopup, PDFAnnotationPrivateVars, PDFBorder, PDFDestination, PDFPage, UIColor, UIFont;
+@class NSArray, NSDate, NSDictionary, NSString, NSURL, PDFAction, PDFAnnotationPrivateVars, PDFBorder, PDFDestination, PDFPage, UIColor, UIFont;
 
 @interface PDFAnnotation : NSObject <NSCopying, NSCoding>
 {
@@ -28,6 +28,7 @@
 - (void)addToPageView;
 - (struct __CFDictionary *)gcCreateAttributesForFont:(id)arg1 color:(id)arg2;
 - (void)derotateContext:(struct CGContext *)arg1;
+- (id)debugQuickLookObject;
 - (id)description;
 - (void)_drawAnnotationWithBox:(long long)arg1 inContext:(struct CGContext *)arg2;
 - (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2;
@@ -164,22 +165,25 @@
 - (void)setAccessibilityNode:(id)arg1;
 - (id)accessibilityNode;
 - (_Bool)shouldComb;
-- (void)setEditingTextWidget:(_Bool)arg1;
-- (_Bool)isEditingTextWidget;
+- (void)setMouseHoverBackgroundColor:(id)arg1;
+- (id)mouseHoverBackgroundColor;
 - (void)setControl:(id)arg1;
 - (id)control;
 - (void)setShouldBurnIn:(_Bool)arg1;
 - (_Bool)shouldBurnIn;
 - (void)setIsSignature:(_Bool)arg1;
 - (_Bool)isSignature;
-@property(retain, nonatomic) PDFAnnotationPopup *popup;
+@property(retain, nonatomic) PDFAnnotation *popup;
 @property(copy, nonatomic) NSString *userName;
 @property(copy, nonatomic) NSDate *modificationDate;
+- (void)_restorePropertiesAfterSetBounds;
+- (void)_savePropertiesBeforeSetBounds;
 @property(nonatomic) struct CGRect bounds;
 @property(copy, nonatomic) NSString *type;
 @property(nonatomic) __weak PDFPage *page;
 - (void)removeAKAnnotationAdaptor;
 - (void)setupAKAnnotationAdaptorIfNecessary;
+- (void)_releaseDictionaryRef;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -193,6 +197,7 @@
 - (id)init;
 - (void)removeBezierPath:(id)arg1;
 - (void)addBezierPath:(id)arg1;
+@property(copy, nonatomic) NSString *stampName;
 @property(copy, nonatomic) UIColor *backgroundColor;
 @property(copy, nonatomic) NSString *caption;
 @property(copy, nonatomic) NSString *fieldName;
@@ -247,6 +252,7 @@
 @property(nonatomic) struct CGPoint endPoint;
 @property(nonatomic) struct CGPoint startPoint;
 @property(nonatomic) long long alignment;
+@property(copy, nonatomic) UIColor *interiorColor;
 @property(copy, nonatomic) UIColor *fontColor;
 @property(copy, nonatomic) UIFont *font;
 

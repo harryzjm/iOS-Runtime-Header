@@ -10,7 +10,7 @@
 
 + (id)contentReferenceTypeName;
 + (long long)validateCompressionType:(long long)arg1;
-+ (_Bool)ecnodesCompressionForChildren;
++ (_Bool)encodesCompressionForChildren;
 + (_Bool)supportsCompression;
 + (id)importPriority;
 + (id)classNameComponents;

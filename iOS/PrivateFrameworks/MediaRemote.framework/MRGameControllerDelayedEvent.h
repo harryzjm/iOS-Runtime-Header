@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface MRGameControllerDelayedEvent : NSObject
@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
 
 @property(copy, nonatomic) CDUnknownBlockType sendEventBlock; // @synthesize sendEventBlock=_sendEventBlock;
 @property(nonatomic) unsigned long long lastDownEvent; // @synthesize lastDownEvent=_lastDownEvent;
+- (void).cxx_destruct;
 - (void)send;
-- (void)dealloc;
 
 @end
 

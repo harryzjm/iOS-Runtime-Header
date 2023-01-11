@@ -8,8 +8,8 @@
 
 #import <SearchUI/SearchUIKeyboardableNavigationProtocol-Protocol.h>
 
-@class NSArray, NSString, SearchUIDragSource, SearchUIDropTarget, UIView;
-@protocol SearchUIFeedbackDelegateInternal, SearchUIRowModel;
+@class NSArray, NSString, SearchUIDragSource, SearchUIDropTarget, UIView, UIViewController;
+@protocol SearchUIFeedbackDelegateInternal, SearchUIResultShortLook, SearchUIRowModel;
 
 @interface SearchUITableViewCell : UITableViewCell <SearchUIKeyboardableNavigationProtocol>
 {
@@ -20,6 +20,7 @@
     UIView *_sizingContainer;
     SearchUIDragSource *_dragSource;
     SearchUIDropTarget *_dropTarget;
+    UIViewController<SearchUIResultShortLook> *_shortLookViewController;
 }
 
 + (double)distanceToTopOfAppIconsForMultiResultCell;
@@ -27,6 +28,7 @@
 + (id)convertResultIfNecessary:(id)arg1;
 + (id)reuseIdentifierForResult:(id)arg1;
 + (id)cellViewForRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+@property __weak UIViewController<SearchUIResultShortLook> *shortLookViewController; // @synthesize shortLookViewController=_shortLookViewController;
 @property(retain) SearchUIDropTarget *dropTarget; // @synthesize dropTarget=_dropTarget;
 @property(retain) SearchUIDragSource *dragSource; // @synthesize dragSource=_dragSource;
 @property(retain) UIView *sizingContainer; // @synthesize sizingContainer=_sizingContainer;

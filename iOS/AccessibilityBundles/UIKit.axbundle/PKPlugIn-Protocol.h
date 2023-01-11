@@ -19,6 +19,7 @@
 @property(readonly) NSUUID *multipleInstanceUUID;
 @property(readonly) id <PKPlugIn> supersededBy;
 @property long long userElection;
+@property(readonly) NSDictionary *localizedFileProviderActionNames;
 @property(readonly) NSString *localizedContainingName;
 @property(readonly) NSString *localizedShortName;
 @property(readonly) NSString *localizedName;
@@ -38,6 +39,7 @@
 - (void)setHostPrincipal:(id)arg1 withProtocol:(Protocol *)arg2;
 - (void)endUsing:(void (^)(NSError *))arg1;
 - (_Bool)useBundle:(NSString *)arg1 error:(id *)arg2;
+- (_Bool)beginUsingWithError:(id *)arg1;
 - (void)beginUsing:(void (^)(NSError *))arg1;
 @end
 

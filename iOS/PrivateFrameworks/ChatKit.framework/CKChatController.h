@@ -10,7 +10,9 @@
 #import <ChatKit/CKChatInputControllerDelegate-Protocol.h>
 #import <ChatKit/CKDetailsControllerDelegate-Protocol.h>
 #import <ChatKit/CKEffectPickerViewControllerDelegate-Protocol.h>
+#import <ChatKit/CKExtensionConsumer-Protocol.h>
 #import <ChatKit/CKFullScreenBalloonViewControllerDelegate-Protocol.h>
+#import <ChatKit/CKFunCameraViewControllerDelegate-Protocol.h>
 #import <ChatKit/CKMessageEntryViewDelegate-Protocol.h>
 #import <ChatKit/CKNavbarCanvasViewControllerDelegate-Protocol.h>
 #import <ChatKit/CKPhotoPickerControllerDelegate-Protocol.h>
@@ -23,6 +25,7 @@
 #import <ChatKit/CKVideoMessageRecordingViewControllerDelegate-Protocol.h>
 #import <ChatKit/CNContactViewControllerDelegate-Protocol.h>
 #import <ChatKit/EKEventEditViewDelegate-Protocol.h>
+#import <ChatKit/ILClassificationUIExtensionHostViewControllerDelegate-Protocol.h>
 #import <ChatKit/PHPhotoLibraryChangeObserver-Protocol.h>
 #import <ChatKit/PKAddPassesViewControllerDelegate-Protocol.h>
 #import <ChatKit/QLPreviewControllerDelegate-Protocol.h>
@@ -39,19 +42,20 @@
 #import <ChatKit/UIViewControllerPreviewingDelegate_Private-Protocol.h>
 #import <ChatKit/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class CADisplayLink, CKAudioTrimViewController, CKChatInputController, CKComposition, CKEffectPickerViewController, CKInvisibleInkEffectController, CKMessageEntryView, CKNavbarCanvasViewController, CKPhotoPickerController, CKQLDetailsPreviewController, CKQLPreviewController, CKRaiseGesture, CKScheduledUpdater, CKThrowAnimationManager, CKUnexpectedlyLoggedOutNotificationView, CKVideoMessageRecordingViewController, CKVideoTrimController, IMPluginPayload, IMScheduledUpdater, NSObject, NSString, SGUIBannerView, UIImagePickerController, UIToolbar, UIView, UIWindow;
+@class CADisplayLink, CKAudioTrimViewController, CKChatInputController, CKComposition, CKEffectPickerViewController, CKFunCameraViewController, CKInvisibleInkEffectController, CKMessageEntryView, CKNavbarCanvasViewController, CKPhotoPickerController, CKQLDetailsPreviewController, CKQLPreviewController, CKRaiseGesture, CKScheduledUpdater, CKThrowAnimationManager, CKUnexpectedlyLoggedOutNotificationView, CKVideoMessageRecordingViewController, CKVideoTrimController, IMPluginPayload, IMScheduledUpdater, NSObject, NSString, SGUIBannerView, UIImagePickerController, UIToolbar, UIView, UIWindow;
 @protocol CKChatControllerDelegate, OS_dispatch_group, UIDragSession, UIDropSession;
 
-@interface CKChatController <CKEffectPickerViewControllerDelegate, CKThrowAnimationManagerDelegate, CKSendAnimationManagerDelegate, CKSendAnimationBalloonProvider, UIInteractionProgressObserver, QLPreviewControllerDelegate, CKReaderViewControllerDelegate, PKAddPassesViewControllerDelegate, UIViewControllerTransitioningDelegate, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, CKPhotoPickerControllerDelegate, CKVideoMessageRecordingViewControllerDelegate, CKActionMenuGestureRecognizerButtonDelegate, PHPhotoLibraryChangeObserver, CKMessageEntryViewDelegate, CKTrimControllerDelegate, AFContextProvider, UIGestureRecognizerDelegate, CKChatInputControllerDelegate, CKFullScreenBalloonViewControllerDelegate, CKNavbarCanvasViewControllerDelegate, CKBrowserDragControllerTranscriptDelegate, SGUIBannerViewDelegate, CKDetailsControllerDelegate, UIPreviewInteractionDelegate, CNContactViewControllerDelegate, EKEventEditViewDelegate, CKUnexpectedlyLoggedOutNotificationViewDelegate, UIPopoverPresentationControllerDelegate, UIDragInteractionDelegate, UIDropInteractionDelegate, UITextDropDelegate, UITextPasteDelegate>
+@interface CKChatController <CKEffectPickerViewControllerDelegate, CKThrowAnimationManagerDelegate, CKSendAnimationManagerDelegate, CKSendAnimationBalloonProvider, UIInteractionProgressObserver, QLPreviewControllerDelegate, CKReaderViewControllerDelegate, PKAddPassesViewControllerDelegate, UIViewControllerTransitioningDelegate, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, CKPhotoPickerControllerDelegate, CKVideoMessageRecordingViewControllerDelegate, CKActionMenuGestureRecognizerButtonDelegate, PHPhotoLibraryChangeObserver, CKMessageEntryViewDelegate, CKTrimControllerDelegate, AFContextProvider, UIGestureRecognizerDelegate, CKChatInputControllerDelegate, CKFullScreenBalloonViewControllerDelegate, CKNavbarCanvasViewControllerDelegate, CKBrowserDragControllerTranscriptDelegate, SGUIBannerViewDelegate, CKDetailsControllerDelegate, UIPreviewInteractionDelegate, CNContactViewControllerDelegate, EKEventEditViewDelegate, CKUnexpectedlyLoggedOutNotificationViewDelegate, UIPopoverPresentationControllerDelegate, UIDragInteractionDelegate, UIDropInteractionDelegate, UITextDropDelegate, UITextPasteDelegate, CKExtensionConsumer, CKFunCameraViewControllerDelegate, ILClassificationUIExtensionHostViewControllerDelegate>
 {
     struct CGPoint _startingScrollOffset;
     _Bool _shouldBecomeFirstResponderWhenDismissingModalBrowser;
+    _Bool _shouldDisplayKeyboardWhenDismissingModalBrowser;
     CKComposition *_dropComposition;
     _Bool _isAnimatingMessageSend;
     _Bool _transitioningSize;
+    _Bool _suppressEntryViewKeyboardNotifications;
     _Bool _entryViewWasActiveBeforePresentingDataDetector;
     _Bool _primeTranscriptWithInitialScrollGeometries;
-    _Bool _hideAppStripOnEntryViewReload;
     _Bool _showingVideoMessageRecordingView;
     _Bool _isShowingPreview;
     _Bool _entryViewWasActiveOnPreview;
@@ -59,7 +63,7 @@
     _Bool _effectPickerIsPresented;
     _Bool _scrollDownIsValid;
     _Bool _isShowingDetailsController;
-    _Bool _inJellyfishDemoTransition;
+    _Bool _isShowingCamera;
     CKMessageEntryView *_entryView;
     long long _lastKnownDeviceOrientation;
     long long _targetFirstResponder;
@@ -95,13 +99,15 @@
     NSObject<OS_dispatch_group> *_revealAnimationGroup;
     id <UIDragSession> _dragSession;
     id <UIDropSession> _dropSession;
+    CKFunCameraViewController *_funCameraViewController;
     CDUnknownBlockType _deferredPresentationBlock;
     struct CGPoint _initialContentOffset;
     struct UIEdgeInsets _initialContentInset;
 }
 
-@property(nonatomic, getter=isInJellyfishDemoTransition) _Bool inJellyfishDemoTransition; // @synthesize inJellyfishDemoTransition=_inJellyfishDemoTransition;
 @property(copy, nonatomic) CDUnknownBlockType deferredPresentationBlock; // @synthesize deferredPresentationBlock=_deferredPresentationBlock;
+@property(nonatomic) _Bool isShowingCamera; // @synthesize isShowingCamera=_isShowingCamera;
+@property(retain, nonatomic) CKFunCameraViewController *funCameraViewController; // @synthesize funCameraViewController=_funCameraViewController;
 @property(nonatomic) _Bool isShowingDetailsController; // @synthesize isShowingDetailsController=_isShowingDetailsController;
 @property(retain, nonatomic) id <UIDropSession> dropSession; // @synthesize dropSession=_dropSession;
 @property(retain, nonatomic) id <UIDragSession> dragSession; // @synthesize dragSession=_dragSession;
@@ -134,7 +140,6 @@
 @property(retain, nonatomic) CKComposition *compositionBeingTrimmed; // @synthesize compositionBeingTrimmed=_compositionBeingTrimmed;
 @property(retain, nonatomic) UIToolbar *actionsToolbar; // @synthesize actionsToolbar=_actionsToolbar;
 @property(retain, nonatomic) CKRaiseGesture *raiseGesture; // @synthesize raiseGesture=_raiseGesture;
-@property(nonatomic) _Bool hideAppStripOnEntryViewReload; // @synthesize hideAppStripOnEntryViewReload=_hideAppStripOnEntryViewReload;
 @property(retain, nonatomic) CKComposition *initialComposition; // @synthesize initialComposition=_initialComposition;
 @property(nonatomic) struct UIEdgeInsets initialContentInset; // @synthesize initialContentInset=_initialContentInset;
 @property(nonatomic) struct CGPoint initialContentOffset; // @synthesize initialContentOffset=_initialContentOffset;
@@ -145,6 +150,7 @@
 @property(retain, nonatomic) CKNavbarCanvasViewController *navbarCanvasViewController; // @synthesize navbarCanvasViewController=_navbarCanvasViewController;
 @property(retain, nonatomic) CKScheduledUpdater *typingUpdater; // @synthesize typingUpdater=_typingUpdater;
 @property(retain, nonatomic) IMScheduledUpdater *autorotationUpdater; // @synthesize autorotationUpdater=_autorotationUpdater;
+@property(nonatomic) _Bool suppressEntryViewKeyboardNotifications; // @synthesize suppressEntryViewKeyboardNotifications=_suppressEntryViewKeyboardNotifications;
 @property(retain, nonatomic) CKChatInputController *inputController; // @synthesize inputController=_inputController;
 @property(nonatomic) long long targetFirstResponder; // @synthesize targetFirstResponder=_targetFirstResponder;
 @property(nonatomic) long long lastKnownDeviceOrientation; // @synthesize lastKnownDeviceOrientation=_lastKnownDeviceOrientation;
@@ -152,6 +158,12 @@
 @property(nonatomic) _Bool isAnimatingMessageSend; // @synthesize isAnimatingMessageSend=_isAnimatingMessageSend;
 @property(retain, nonatomic) CKMessageEntryView *entryView; // @synthesize entryView=_entryView;
 - (void).cxx_destruct;
+- (void)controller:(id)arg1 didCompleteClassificationRequest:(id)arg2 withResponse:(id)arg3;
+- (void)presentPhotosApp;
+- (void)stageAssetArchive:(id)arg1 skipShelf:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)willDismissFunCamera:(id)arg1;
+- (void)startCommitPayload:(id)arg1 forConversation:(id)arg2;
+- (void)startDeferredEditingPayload:(id)arg1 forConversation:(id)arg2;
 - (void)unexpectedlyLoggedOutNotificationView:(id)arg1 didChangeRequestedHeight:(double)arg2;
 - (void)dismissPresentedViewController:(id)arg1;
 - (id)presentedControllerDoneButtonItem;
@@ -198,6 +210,7 @@
 - (void)fullScreenBalloonViewController:(id)arg1 sendMessageAcknowledgment:(long long)arg2 forChatItem:(id)arg3;
 - (void)fullScreenBalloonViewController:(id)arg1 willDisappearWithSendAnimation:(_Bool)arg2;
 - (void)fullScreenBalloonViewController:(id)arg1 willAppearAnimated:(_Bool)arg2;
+- (void)showSMSReportSpamExtensionControllerForMessages:(id)arg1;
 - (void)showFullScreenAcknowledgmentPickerForBalloonAtIndexPath:(id)arg1 showActionMenu:(_Bool)arg2;
 - (_Bool)_shouldShowAcknowledgmentPickerForBalloon;
 - (id)_fullScreenBalloonViewControllerWithChatItem:(id)arg1 showActionMenu:(_Bool)arg2;
@@ -212,6 +225,7 @@
 - (_Bool)_isRunningPPT;
 - (void)_editCancelButtonPressed;
 - (void)clearCurrentMessageThread;
+- (void)_reportSelectedMessages:(id)arg1;
 - (void)_forwardSelectedMessages:(id)arg1;
 - (void)_deleteSelectedMessages:(id)arg1;
 - (id)rotatingFooterView;
@@ -233,10 +247,12 @@
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)sendCurrentLocationMessage:(id)arg1;
 - (void)updateTyping;
+- (void)messageEntryViewSwipeDownGestureRecognized:(id)arg1;
+- (void)updateEntryViewHeightIncludingAppStrip:(_Bool)arg1;
+- (void)updateAppStripVisibility:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)messageEntryView:(id)arg1 shouldShowAppStrip:(_Bool)arg2 animated:(_Bool)arg3;
 - (_Bool)shouldMessageEntryViewReportBrowserButtonHitToInputDelegate:(id)arg1;
 - (_Bool)getContainerWidth:(double *)arg1 offset:(double *)arg2;
-- (void)messageEntryViewDidEndJellyfishDemo:(id)arg1;
-- (void)messageEntryViewWillEndJellyfishDemo:(id)arg1;
 - (struct CGSize)messageEntryViewMaxShelfPluginViewSize:(id)arg1;
 - (double)messageEntryViewMaxHeight:(id)arg1;
 - (void)messageEntryViewRaiseGestureAutoSend:(id)arg1;
@@ -245,6 +261,7 @@
 - (void)messageEntryViewSendButtonLongPressBegan:(id)arg1;
 - (void)messageEntryViewSendButtonHitWhileDisabled:(id)arg1;
 - (void)_passKitUIDismissed:(id)arg1;
+- (void)selectAccountAndSendComposition:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)messageEntryViewSendButtonHit:(id)arg1;
 - (void)messageEntryView:(id)arg1 didTapMediaObject:(id)arg2;
 - (_Bool)messageEntryView:(id)arg1 shouldInsertMediaObjects:(id)arg2;
@@ -253,17 +270,20 @@
 - (_Bool)messageEntryViewShouldBeginEditing:(id)arg1;
 - (void)messageEntryViewRecordingDidChange:(id)arg1;
 - (void)messageEntryViewDidChange:(id)arg1;
+- (void)_validateAndSendComposition:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)presentActionMenuForAccountSelection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)_shouldValidatePayloadBeforeSendingPayload:(id)arg1;
+@property(readonly, nonatomic) _Bool isFunCamPresented;
+- (void)prewarmFunCamera;
 - (void)sendCurrentLocation;
-- (void)chatInputControllerDidEndJellyfish:(id)arg1;
-- (void)chatInputControllerDidEnterJellyfish:(id)arg1;
-- (_Bool)isInJellyfishDemoTransitionForChatInputController:(id)arg1;
 - (void)chatInputControllerDidTransitionCollapsed:(id)arg1;
 - (void)chatInputControllerWillTransitionCollapsed:(id)arg1;
 - (void)chatInputControllerDidTransitionExpanded:(id)arg1;
 - (void)chatInputControllerWillTransitionExpanded:(id)arg1;
 - (void)chatInputWillChangeHeightForCompactPresentation:(double)arg1;
 - (void)chatInputDidChangeSize;
+- (void)chatInputControllerDidSelectFunCamera:(id)arg1;
+- (void)chatInputControllerWillSelectFunCamera:(id)arg1;
 - (void)chatInputDidSelectPhotoPicker;
 - (void)chatInputControllerDidDismissCompactBrowserViewController:(id)arg1;
 - (void)chatInputControllerWillDismissCompactBrowserViewController:(id)arg1;
@@ -272,6 +292,7 @@
 - (void)chatInputControllerDidPresentModalBrowserViewController:(id)arg1;
 - (void)chatInputControllerWillPresentModalBrowserViewController:(id)arg1;
 - (void)chatInputDidUpdateWithNewInputViewController:(id)arg1;
+- (void)chatInputWillUpdateInputViewShowingBrowser;
 - (void)chatInputDidUpdateInputViewShowingBrowser:(_Bool)arg1 entryFieldCollapsed:(_Bool)arg2 animated:(_Bool)arg3;
 - (void)chatInputControllerRequestInputViewFocusFromFullscreen:(id)arg1;
 - (void)setLocalUserIsComposing:(_Bool)arg1 withPluginBundleID:(id)arg2 typingIndicatorData:(id)arg3;
@@ -292,6 +313,7 @@
 - (void)chatInputSentComposition:(id)arg1;
 - (id)viewForDragAndChatInputDropTarget;
 - (id)viewControllerForChatInputModalPresentation;
+- (id)consumingBundleIdentifiers;
 - (_Bool)becomeFirstResponder;
 - (_Bool)_shouldDisplayTextEntry;
 - (_Bool)canBecomeFirstResponder;
@@ -306,6 +328,7 @@
 - (struct UIEdgeInsets)_marginInsetsForEntryView;
 - (id)inputViewController;
 - (id)inputAccessoryView;
+- (void)inputLanguageDidChange:(id)arg1;
 - (void)_textInputModeDidChange:(id)arg1;
 - (void)composeRecipientViewShouldResignFirstResponder;
 - (void)_handleIsUnexpectedlyLoggedOutChanged:(id)arg1;
@@ -325,11 +348,13 @@
 - (void)registerNotificationsForConversation:(id)arg1;
 - (id)_suggestionsNotificationNameForChat:(id)arg1;
 - (void)registerNotifications;
+- (void)_callButtonPressedWithVideo:(_Bool)arg1;
 - (void)dismissDetailsController:(id)arg1;
 - (id)_navigationControllerToPop;
 - (void)_backbuttonPressed;
 - (void)_presentDetailsViewController;
 - (void)_detailsButtonPressed;
+- (void)navbarCanvasViewController:(id)arg1 buttonWasPressedOfType:(long long)arg2 wasLongPress:(_Bool)arg3;
 - (void)navbarCanvasViewControllerWantsNavbarResize:(id)arg1;
 - (void)navbarCanvasViewController:(id)arg1 didTapView:(id)arg2;
 - (void)navbarCanvasViewController:(id)arg1 avatarPickerViewControllerDidSelectEntity:(id)arg2;
@@ -344,8 +369,9 @@
 - (id)progressBar;
 - (double)topInsetPadding;
 - (double)minimumBottomInset;
-- (void)updateAppStripVisibility;
-- (void)keyboardVisibilityWillChange;
+- (void)keyboardWillBeginInteractiveDismissal:(id)arg1;
+- (void)keyboardShouldShowCandidates:(id)arg1;
+- (void)keyboardShouldShowPredictions:(id)arg1;
 - (void)keyboardDidShowOrHide:(id)arg1;
 - (void)keyboardWillShowOrHide:(id)arg1;
 - (void)_askToTurnOnSMSRelayIfNeeded;
@@ -357,10 +383,15 @@
 - (void)_didSendCompositionInConversation:(id)arg1;
 - (void)_willSendComposition:(id)arg1 inConversation:(id)arg2;
 - (void)_updateForNewPreferredService;
+- (void)presentAppStoreForURL:(id)arg1 fromSourceApplication:(id)arg2;
 - (void)_presentBrowserOrAppStoreForAdamID:(id)arg1;
 - (struct UIEdgeInsets)_avoidanceInsets;
 - (void)setupScrollingForKeyboardInteraction;
-- (void)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestPresentationStyleExpanded:(_Bool)arg2 forChatItem:(id)arg3;
+- (void)transcriptCollectionViewControllerDisplaySMSSpamReporting:(id)arg1;
+- (_Bool)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestCommitSticker:(id)arg2 forPlugin:(id)arg3 allowAllCommits:(_Bool)arg4 error:(id *)arg5;
+- (void)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestStartEditingPayload:(id)arg2 forPlugin:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (_Bool)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestCommitPayload:(id)arg2 forPlugin:(id)arg3 allowAllCommits:(_Bool)arg4 error:(id *)arg5;
+- (void)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestPresentationStyle:(unsigned long long)arg2 forChatItem:(id)arg3 allowAllStyles:(_Bool)arg4;
 - (void)transcriptCollectionViewController:(id)arg1 didEndImpactEffectAnimationWithSendAnimationContext:(id)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 willBeginImpactEffectAnimationWithSendAnimationContext:(id)arg2;
 - (void)transcriptCollectionViewControllerChatItemsDidChange:(id)arg1;
@@ -388,7 +419,6 @@
 - (void)showKeyboardForReply;
 - (void)showKeyboard;
 - (void)makeEntryViewActiveAfterSend;
-- (void)hideAppStripAfterSend;
 @property(retain, nonatomic) CKComposition *composition;
 - (void)setupStateForLaunchPluginWithBundleID:(id)arg1 pluginPayload:(id)arg2;
 - (void)setupStateForLaunchURL:(id)arg1;

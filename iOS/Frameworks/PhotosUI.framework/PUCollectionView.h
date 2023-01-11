@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     UIView *_draggedView;
     struct CGPoint _draggedViewCenterOffset;
     PXUIAutoScroller *_autoScroller;
+    _Bool _shouldWorkaround34630932;
     id <PUCollectionViewReorderDelegate> _reorderDelegate;
     id <PUCollectionViewSelectionDelegate> _selectionDelegate;
     _UIDragSnappingFeedbackGenerator *__feedbackDragBehavior;
@@ -35,6 +36,8 @@ __attribute__((visibility("hidden")))
 - (void)_updateDragUsingIndexPathUpdateBlock:(CDUnknownBlockType)arg1;
 - (id)_reorderableLayout;
 - (void)_handleDrag:(id)arg1;
+- (void)_applyAutomaticAdjustedContentOffset:(struct CGPoint)arg1;
+- (void)didScrollToInitialPosition;
 - (id)indexPathsForSelectedItems;
 - (void)reloadData;
 - (void)moveItemAtIndexPath:(id)arg1 toIndexPath:(id)arg2;

@@ -16,6 +16,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (_Bool)isAccessibilityElement;
+- (_Bool)accessibilityElementsHidden;
 
 @end
 

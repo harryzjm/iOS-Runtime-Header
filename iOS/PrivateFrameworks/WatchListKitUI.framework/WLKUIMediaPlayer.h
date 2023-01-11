@@ -19,11 +19,16 @@
     NSObject<OS_dispatch_queue> *_workQueue;
     MPUQueryDataSource *_queryDataSource;
     WLKUIOrderedItemsMap *_orderedItemsMap;
+    NSOperationQueue *_fetchOperationQueue;
+    NSOperationQueue *_fetchCompletionOperationQueue;
 }
 
+@property(retain, nonatomic) NSOperationQueue *fetchCompletionOperationQueue; // @synthesize fetchCompletionOperationQueue=_fetchCompletionOperationQueue;
+@property(retain, nonatomic) NSOperationQueue *fetchOperationQueue; // @synthesize fetchOperationQueue=_fetchOperationQueue;
 @property(retain, nonatomic) WLKUIOrderedItemsMap *orderedItemsMap; // @synthesize orderedItemsMap=_orderedItemsMap;
 @property(retain, nonatomic) MPUQueryDataSource *queryDataSource; // @synthesize queryDataSource=_queryDataSource;
 - (void).cxx_destruct;
+- (id)_logObject;
 - (void)_mediaLibraryChanged:(id)arg1;
 - (id)_stringForNumber:(id)arg1;
 - (void)_onSyncGenerationChangedNotification:(id)arg1;
@@ -39,6 +44,8 @@
 - (void)_dataSourceDidChange;
 - (void)_dataSourceChanged:(id)arg1;
 - (void)itemsMapAddedKeys:(id)arg1 andRemovedKeys:(id)arg2;
+- (_Bool)isHDRCapable;
+- (void)fetchMediaEntitiesWithOptions:(id)arg1:(id)arg2;
 - (void)setFilterAsync:(id)arg1:(id)arg2;
 - (_Bool)setFilter:(id)arg1;
 - (long long)queryHasItemCount:(id)arg1;

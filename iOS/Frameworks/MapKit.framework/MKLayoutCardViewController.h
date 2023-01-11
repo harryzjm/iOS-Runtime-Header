@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MKMapItem, NSMutableDictionary, NSString;
-@protocol MKLayoutCardProvider;
+@class MKMapItem, NSMutableDictionary;
 
-__attribute__((visibility("hidden")))
 @interface MKLayoutCardViewController
 {
-    NSString *_appId;
-    id <MKLayoutCardProvider> _configurationProvider;
     MKMapItem *_mapItem;
     NSMutableDictionary *_cacheVC;
     NSMutableDictionary *_cacheModuleType;
@@ -21,15 +17,12 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableDictionary *cacheVC; // @synthesize cacheVC=_cacheVC;
 @property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 - (void).cxx_destruct;
-- (double)_heightForSeparatorBetweenUpperViewController:(id)arg1 andLowerViewController:(id)arg2;
 - (struct UIViewController *)_createViewControllerForModule:(id)arg1;
 - (struct UIViewController *)_cachedViewControllerForModule:(int)arg1;
 - (void)_createModuleLayout:(id)arg1;
 - (id)_layoutModuleForMapItem;
 - (_Bool)isLayoutDynamic;
 - (_Bool)isTransitItem;
-- (id)initWithAppId:(id)arg1 configurationProvider:(id)arg2;
-- (id)initWithAppId:(id)arg1;
 
 @end
 

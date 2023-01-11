@@ -7,10 +7,11 @@
 #import <MarkupUI/MUContentViewControllerProtocol-Protocol.h>
 #import <MarkupUI/PDFAKControllerDelegateProtocol-Protocol.h>
 #import <MarkupUI/PDFViewDelegatePrivate-Protocol.h>
+#import <MarkupUI/_UIViewBoundingPathChangeObserver-Protocol.h>
 
 @class MUPDFPageLabelView, NSArray, NSLayoutConstraint, NSString, PDFDocument, PDFPage, PDFThumbnailView, PDFView, UIScrollView, UIView;
 
-@interface MUPDFContentViewController <PDFAKControllerDelegateProtocol, PDFViewDelegatePrivate, MUContentViewControllerProtocol>
+@interface MUPDFContentViewController <PDFAKControllerDelegateProtocol, PDFViewDelegatePrivate, _UIViewBoundingPathChangeObserver, MUContentViewControllerProtocol>
 {
     PDFDocument *_pdfDocument;
     _Bool _showsThumbnailView;
@@ -32,8 +33,10 @@
     double _viewTransitionPreviousScale;
     struct CGPoint _viewTransitionPointOnPageToCenter;
     struct UIEdgeInsets _edgeInsets;
+    struct UIEdgeInsets _cachedThumnailViewInsets;
 }
 
+@property(nonatomic) struct UIEdgeInsets cachedThumnailViewInsets; // @synthesize cachedThumnailViewInsets=_cachedThumnailViewInsets;
 @property _Bool didSetup; // @synthesize didSetup=_didSetup;
 @property _Bool viewTransitionPreviousAutoscalingState; // @synthesize viewTransitionPreviousAutoscalingState=_viewTransitionPreviousAutoscalingState;
 @property double viewTransitionPreviousScale; // @synthesize viewTransitionPreviousScale=_viewTransitionPreviousScale;
@@ -59,8 +62,6 @@
 - (void)_userChangedScrollViewMagnificationNotification:(id)arg1;
 - (void)_updateMinMaxZoomFactor;
 - (struct CGSize)_medianSizeForCurrentDocumentInPDFViewWithGetter:(CDUnknownBlockType)arg1;
-- (struct CGPoint)_minimumContentOffset;
-- (struct CGPoint)_maximumContentOffset;
 - (void)_recoverFromRotation;
 - (void)_prepareToRotate;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
@@ -78,6 +79,8 @@
 @property(readonly, nonatomic) NSString *documentUnlockedWithPassword;
 - (void)_updateThumbnailViewAppearance;
 - (void)_updateThumbnailViewHolderConstraints;
+- (_Bool)_updateCachedThumbnailViewInsetsDidChangeRight;
+- (void)_boundingPathMayHaveChangedForView:(id)arg1 relativeToBoundsOriginOnly:(_Bool)arg2;
 - (void)_updatePDFViewDisplayMode;
 @property(readonly) unsigned long long pageCount;
 - (void)controllerWillDismissSignatureManagerView:(id)arg1;

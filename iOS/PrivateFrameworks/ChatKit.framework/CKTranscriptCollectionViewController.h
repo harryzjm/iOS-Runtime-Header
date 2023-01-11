@@ -64,12 +64,14 @@
     NSMutableSet *_currentEffectDecorationViews;
     long long _contentAnimationPauseReasons;
     UIView *_snapshotOfPluginBeingReplacedByBreadcrumb;
+    NSString *_mostRecentlyTouchedPlugin;
     CDUnknownBlockType _transcriptUpdateCompletion;
     struct CGPoint _peekSampleTranslation;
     struct UIEdgeInsets _marginInsets;
 }
 
 @property(copy, nonatomic) CDUnknownBlockType transcriptUpdateCompletion; // @synthesize transcriptUpdateCompletion=_transcriptUpdateCompletion;
+@property(nonatomic) NSString *mostRecentlyTouchedPlugin; // @synthesize mostRecentlyTouchedPlugin=_mostRecentlyTouchedPlugin;
 @property(retain, nonatomic) UIView *snapshotOfPluginBeingReplacedByBreadcrumb; // @synthesize snapshotOfPluginBeingReplacedByBreadcrumb=_snapshotOfPluginBeingReplacedByBreadcrumb;
 @property(nonatomic) _Bool playedLastImpactEffectForTransitionFromComposing; // @synthesize playedLastImpactEffectForTransitionFromComposing=_playedLastImpactEffectForTransitionFromComposing;
 @property(nonatomic) long long contentAnimationPauseReasons; // @synthesize contentAnimationPauseReasons=_contentAnimationPauseReasons;
@@ -121,6 +123,7 @@
 - (void)chatRegistryDidLoad:(id)arg1;
 - (void)chatItemsDidChange:(id)arg1;
 - (void)chatItemIsFilteredChanged:(id)arg1;
+- (void)multiwayCallStateChanged:(id)arg1;
 - (void)installedAppsChanged:(id)arg1;
 - (void)addressBookChanged:(id)arg1;
 - (void)transferUpdated:(id)arg1;
@@ -143,12 +146,14 @@
 - (void)touchUpInsideCellSpeakerButton:(id)arg1;
 - (void)touchUpInsideCellStatusButton:(id)arg1;
 - (void)touchUpInsideCellFailureButton:(id)arg1;
+- (void)updateLastAddressedHandleID:(id)arg1 lastAddressedSIMID:(id)arg2;
 - (void)selectChatItem:(id)arg1;
 - (id)cellForAssociatedChatItem:(id)arg1;
 - (id)chatItemForCell:(id)arg1;
 - (id)cellForChatItem:(id)arg1;
 - (id)balloonViewForChatItem:(id)arg1;
 - (id)balloonViewForIndexPath:(id)arg1;
+- (id)balloonPluginForViewController:(id)arg1;
 - (id)messagePartForBalloonView:(id)arg1;
 - (id)indexPathForBalloonView:(id)arg1;
 - (id)lastMessagePartChatItem;
@@ -192,14 +197,18 @@
 - (void)locationShareBalloonViewShareButtonTapped:(id)arg1;
 - (void)locationShareBalloonViewIgnoreButtonTapped:(id)arg1;
 - (void)balloonView:(id)arg1 mediaObjectDidFinishPlaying:(id)arg2;
+- (void)tuConversationBalloonJoinButtonTapped:(id)arg1;
 - (void)interactionStoppedFromPreviewItemControllerInBalloonView:(id)arg1;
 - (void)interactionStartedFromPreviewItemControllerInBalloonView:(id)arg1;
-- (void)liveViewController:(id)arg1 requestPresentationStyleExpanded:(_Bool)arg2;
+- (void)liveViewController:(id)arg1 stageSticker:(id)arg2 skipShelf:(_Bool)arg3 allowAllCommits:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)liveViewController:(id)arg1 stagePayload:(id)arg2 skipShelf:(_Bool)arg3 allowAllCommits:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)liveViewController:(id)arg1 requestPresentationStyle:(unsigned long long)arg2;
 - (void)associatedMessageTranscriptCellLongTouched:(id)arg1;
 - (void)associatedMessageTranscriptCellDoubleTapped:(id)arg1;
 - (void)_handleAssociatedMessageCellTapEvent:(id)arg1 isDoubleTap:(_Bool)arg2;
 - (void)balloonViewDoubleTapped:(id)arg1;
 - (void)balloonViewLongTouched:(id)arg1;
+- (void)liveBalloonTouched:(id)arg1;
 - (void)balloonViewTapped:(id)arg1;
 - (id)currentEffectForCollectionView:(id)arg1 layout:(id)arg2;
 - (void)collectionViewLayout:(id)arg1 sizeDidChange:(struct CGSize)arg2;
@@ -238,8 +247,9 @@
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewWillBeginDragging:(id)arg1;
-- (void)stopJellyfishDemoMode;
-- (void)startJellyfishDemoMode;
+- (void)clearRecentPluginTouch;
+- (_Bool)hasRecentTouchForSendingPlugin:(id)arg1;
+- (_Bool)isVisiblePlugin:(id)arg1;
 - (void)stopFullscreenEffect;
 - (void)startFullscreenEffectIfNeededForChatItem:(id)arg1;
 - (void)raiseGestureRecognized:(id)arg1;

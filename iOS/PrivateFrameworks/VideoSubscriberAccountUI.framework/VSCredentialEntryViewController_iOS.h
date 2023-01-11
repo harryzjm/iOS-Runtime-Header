@@ -8,7 +8,7 @@
 
 #import <VideoSubscriberAccountUI/VSCredentialEntryViewController-Protocol.h>
 
-@class NSArray, NSString, UIButton, VSCredentialEntryViewModel, VSIdentityProviderLogoView, VSViewModel;
+@class NSString, PSTextFieldSpecifier, UIButton, VSCredentialEntryViewModel, VSIdentityProviderLogoView, VSViewModel;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,7 +19,8 @@ __attribute__((visibility("hidden")))
     id <VSAuthenticationViewControllerDelegate> _delegate;
     VSIdentityProviderLogoView *_logoView;
     UIButton *_linkButton;
-    NSArray *_credentialEntryFieldSpecifiers;
+    PSTextFieldSpecifier *_usernameFieldSpecifier;
+    PSTextFieldSpecifier *_passwordFieldSpecifier;
     double _keyboardHeight;
     id _textFieldTextDidChangeObserver;
     id _keyboardWillShowObserver;
@@ -32,7 +33,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id keyboardWillShowObserver; // @synthesize keyboardWillShowObserver=_keyboardWillShowObserver;
 @property(nonatomic) __weak id textFieldTextDidChangeObserver; // @synthesize textFieldTextDidChangeObserver=_textFieldTextDidChangeObserver;
 @property(nonatomic) double keyboardHeight; // @synthesize keyboardHeight=_keyboardHeight;
-@property(retain, nonatomic) NSArray *credentialEntryFieldSpecifiers; // @synthesize credentialEntryFieldSpecifiers=_credentialEntryFieldSpecifiers;
+@property(retain, nonatomic) PSTextFieldSpecifier *passwordFieldSpecifier; // @synthesize passwordFieldSpecifier=_passwordFieldSpecifier;
+@property(retain, nonatomic) PSTextFieldSpecifier *usernameFieldSpecifier; // @synthesize usernameFieldSpecifier=_usernameFieldSpecifier;
 @property(retain, nonatomic) UIButton *linkButton; // @synthesize linkButton=_linkButton;
 @property(retain, nonatomic) VSIdentityProviderLogoView *logoView; // @synthesize logoView=_logoView;
 @property(nonatomic) __weak id <VSAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -52,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 @property(readonly, nonatomic) struct CGSize preferredLogoSize;
 - (void)setViewModel:(id)arg1;
+- (id)_createSpecifierForField:(id)arg1;
 - (void)_stopObservingViewModel:(id)arg1;
 - (void)_startObservingViewModel:(id)arg1;
 - (void)_startValidation;

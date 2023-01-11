@@ -6,8 +6,12 @@
 
 #import <CellularPlanManager/NSObject-Protocol.h>
 
+@class NSError;
+
 @protocol CTCellularPlanClientDelegate <NSObject>
 - (void)remoteProvisioningDidBecomeAvailable;
+- (void)carrierInfoDidUpdate;
+- (void)localPlanInfoDidUpdate:(NSError *)arg1;
 - (void)planInfoDidUpdate;
 @end
 

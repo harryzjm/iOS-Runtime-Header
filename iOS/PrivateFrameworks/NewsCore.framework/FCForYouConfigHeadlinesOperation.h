@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FCCachePolicy, FCForYouConfig, NSArray, NSDictionary, NSString;
-@protocol FCContentContext, FCFeedPersonalizing;
+@class FCCachePolicy, FCForYouConfig, NSArray, NSDictionary;
+@protocol FCContentContext, FCCoreConfiguration, FCFeedPersonalizing;
 
 @interface FCForYouConfigHeadlinesOperation
 {
     _Bool _shouldFetchEditorialSectionTags;
+    id <FCCoreConfiguration> _configuration;
     id <FCContentContext> _context;
     id <FCFeedPersonalizing> _personalizer;
-    NSString *_forYouConfigID;
     long long _fields;
     NSArray *_additionalArticleListIDs;
     NSArray *_additionalTagIDs;
@@ -38,11 +38,11 @@
 @property(copy, nonatomic) NSArray *additionalTagIDs; // @synthesize additionalTagIDs=_additionalTagIDs;
 @property(copy, nonatomic) NSArray *additionalArticleListIDs; // @synthesize additionalArticleListIDs=_additionalArticleListIDs;
 @property(nonatomic) long long fields; // @synthesize fields=_fields;
-@property(copy, nonatomic) NSString *forYouConfigID; // @synthesize forYouConfigID=_forYouConfigID;
 @property(retain, nonatomic) id <FCFeedPersonalizing> personalizer; // @synthesize personalizer=_personalizer;
 @property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
+@property(copy, nonatomic) id <FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
 - (void).cxx_destruct;
-- (long long)_requestTypeOverride;
+- (id)_edgeCacheHint;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (_Bool)validateOperation;

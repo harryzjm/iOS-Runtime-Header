@@ -4,13 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface VideoHeaderLockupViewAccessibility
 {
+    NSString *_accessibilityVideoLabel;
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+@property(retain, nonatomic) NSString *accessibilityVideoLabel; // @synthesize accessibilityVideoLabel=_accessibilityVideoLabel;
+- (void).cxx_destruct;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;

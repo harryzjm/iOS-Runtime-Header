@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/PKPaymentWebServiceDelegate-Protocol.h>
 
-@class NSArray, NSHashTable, NSLock, NSMutableArray, NSMutableSet, NSSet, NSString, NSTimer, PKPaymentCredential, PKPaymentEligibilityResponse, PKPaymentPass, PKPaymentProvisioningControllerCredentialQueue, PKPaymentProvisioningResponse, PKPaymentRequest, PKPaymentRequirementsResponse, PKPaymentSetupProductModel, PKPaymentWebService;
+@class NSArray, NSHashTable, NSLock, NSMutableArray, NSMutableSet, NSSet, NSString, NSTimer, PKPaymentCredential, PKPaymentEligibilityResponse, PKPaymentPass, PKPaymentProvisioningControllerCredentialQueue, PKPaymentProvisioningResponse, PKPaymentRequirementsResponse, PKPaymentSetupProductModel, PKPaymentWebService;
 
 @interface PKPaymentProvisioningController : NSObject <PKPaymentWebServiceDelegate>
 {
@@ -26,6 +26,7 @@
     PKPaymentWebService *_webService;
     long long _state;
     NSString *_localizedProgressDescription;
+    NSArray *_purchaseCredentials;
     PKPaymentProvisioningControllerCredentialQueue *_credentialProvisioningQueue;
     PKPaymentSetupProductModel *_paymentSetupProductModel;
     PKPaymentRequirementsResponse *_requirementsResponse;
@@ -34,10 +35,10 @@
     PKPaymentPass *_provisionedPass;
     NSArray *_moreInfoItems;
     NSSet *_automaticExpressModes;
-    PKPaymentRequest *_provisionAndReturnPaymentRequest;
+    NSArray *_allowedPaymentNetworks;
 }
 
-@property(retain, nonatomic) PKPaymentRequest *provisionAndReturnPaymentRequest; // @synthesize provisionAndReturnPaymentRequest=_provisionAndReturnPaymentRequest;
+@property(retain, nonatomic) NSArray *allowedPaymentNetworks; // @synthesize allowedPaymentNetworks=_allowedPaymentNetworks;
 @property(readonly, nonatomic) NSSet *automaticExpressModes; // @synthesize automaticExpressModes=_automaticExpressModes;
 @property(readonly, nonatomic) NSArray *moreInfoItems; // @synthesize moreInfoItems=_moreInfoItems;
 @property(readonly, nonatomic) PKPaymentPass *provisionedPass; // @synthesize provisionedPass=_provisionedPass;
@@ -46,6 +47,7 @@
 @property(readonly, nonatomic) PKPaymentRequirementsResponse *requirementsResponse; // @synthesize requirementsResponse=_requirementsResponse;
 @property(readonly, nonatomic) PKPaymentSetupProductModel *paymentSetupProductModel; // @synthesize paymentSetupProductModel=_paymentSetupProductModel;
 @property(readonly, nonatomic) PKPaymentProvisioningControllerCredentialQueue *credentialProvisioningQueue; // @synthesize credentialProvisioningQueue=_credentialProvisioningQueue;
+@property(readonly, copy, nonatomic) NSArray *purchaseCredentials; // @synthesize purchaseCredentials=_purchaseCredentials;
 @property(readonly, copy, nonatomic) NSArray *associatedCredentials; // @synthesize associatedCredentials=_associatedCredentials;
 @property(readonly, copy, nonatomic) NSString *localizedProgressDescription; // @synthesize localizedProgressDescription=_localizedProgressDescription;
 @property(nonatomic) long long state; // @synthesize state=_state;
@@ -63,6 +65,8 @@
 - (_Bool)hasDebitPaymentPass;
 - (_Bool)hasCreditPaymentPass;
 - (_Bool)hasPaymentPass;
+@property(readonly, copy, nonatomic) NSArray *allCredentials;
+- (id)associatedCredentialsForDefaultBehaviour;
 - (void)removeDelegate:(id)arg1;
 - (void)addDelegate:(id)arg1;
 - (void)_downloadMoreInfoItemURLs:(id)arg1 withMetadata:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -76,9 +80,12 @@
 - (void)removeProvisionedPass;
 - (void)_requestProvisioning:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)requestProvisioning:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)resolveProvisioningForCredential:(id)arg1;
 - (void)acceptTerms;
 - (void)_requestEligibility:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)requestEligibility:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)resolveRequirementsUsingAlreadyProvisionedRemoteCredential:(id)arg1;
+- (void)resolveRequirementsUsingProvisioningMethodMetadata:(id)arg1;
 - (void)resolveRequirementsUsingProduct:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 - (void)resolveAmbiguousRequirementsWithProductIdentifier:(id)arg1;
@@ -87,13 +94,19 @@
 - (void)_queryEligibilityForCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queryRequirementsForCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_filterPaymentSetupProducts:(id)arg1;
+- (void)setupProductForProvisioning:(id)arg1 includePurchases:(_Bool)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)requestPurchasesForProduct:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)requestProvisioningMethodMetadataForProduct:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_mockBrowseBanksResponse;
+- (void)browsableBankAppsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updatePaymentSetupProductModelWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_informDelegatesOfPaymentPassUpdateOnCredential:(id)arg1;
 - (void)_downloadRemoteAssetsForPaymentPass:(id)arg1 paymentCredential:(id)arg2;
 - (void)_downloadPassForPaymentCredential:(id)arg1;
 - (void)_addAssociatedCredential:(id)arg1;
 - (void)_associateCredential:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (_Bool)_credentialIsValidForPaymentRequest:(id)arg1;
+- (_Bool)_credentialIsValidForSetupConfiguration:(id)arg1;
+- (_Bool)_hasSetupConfiguration;
 - (void)_associateCredentials:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)associateCredentials:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)updateRemoteCredentials:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

@@ -13,7 +13,6 @@
 
 @interface _SFPBFlightLeg : PBCodable <_SFPBFlightLeg, NSSecureCoding>
 {
-    CDStruct_47fe53f2 _has;
     int _status;
     _SFPBDate *_departurePublishedTime;
     _SFPBDate *_departureActualTime;
@@ -28,8 +27,16 @@
     _SFPBAirport *_divertedAirport;
     NSString *_title;
     NSString *_baggageClaim;
+    _SFPBDate *_departureGateClosedTime;
+    _SFPBDate *_departureRunwayTime;
+    _SFPBDate *_arrivalRunwayTime;
+    _SFPBDate *_arrivalGateTime;
 }
 
+@property(retain, nonatomic) _SFPBDate *arrivalGateTime; // @synthesize arrivalGateTime=_arrivalGateTime;
+@property(retain, nonatomic) _SFPBDate *arrivalRunwayTime; // @synthesize arrivalRunwayTime=_arrivalRunwayTime;
+@property(retain, nonatomic) _SFPBDate *departureRunwayTime; // @synthesize departureRunwayTime=_departureRunwayTime;
+@property(retain, nonatomic) _SFPBDate *departureGateClosedTime; // @synthesize departureGateClosedTime=_departureGateClosedTime;
 @property(copy, nonatomic) NSString *baggageClaim; // @synthesize baggageClaim=_baggageClaim;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property(retain, nonatomic) _SFPBAirport *divertedAirport; // @synthesize divertedAirport=_divertedAirport;
@@ -53,20 +60,6 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
-@property(readonly, nonatomic) _Bool hasBaggageClaim;
-@property(readonly, nonatomic) _Bool hasTitle;
-@property(readonly, nonatomic) _Bool hasDivertedAirport;
-@property(readonly, nonatomic) _Bool hasArrivalAirport;
-@property(readonly, nonatomic) _Bool hasArrivalGate;
-@property(readonly, nonatomic) _Bool hasArrivalTerminal;
-@property(readonly, nonatomic) _Bool hasArrivalActualTime;
-@property(readonly, nonatomic) _Bool hasArrivalPublishedTime;
-@property(readonly, nonatomic) _Bool hasDepartureAirport;
-@property(readonly, nonatomic) _Bool hasDepartureGate;
-@property(readonly, nonatomic) _Bool hasDepartureTerminal;
-@property(readonly, nonatomic) _Bool hasDepartureActualTime;
-@property(readonly, nonatomic) _Bool hasDeparturePublishedTime;
-@property(readonly, nonatomic) _Bool hasStatus;
 - (id)initWithFacade:(id)arg1;
 
 // Remaining properties

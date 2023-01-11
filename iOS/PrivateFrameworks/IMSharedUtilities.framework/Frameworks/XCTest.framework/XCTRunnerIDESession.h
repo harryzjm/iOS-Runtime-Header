@@ -9,17 +9,20 @@
 #import <XCTest/XCTTestRunSessionDelegate-Protocol.h>
 #import <XCTest/XCTestDriverInterface-Protocol.h>
 #import <XCTest/XCTestObservation-Protocol.h>
+#import <XCTest/XCUIXcodeApplicationManaging-Protocol.h>
 
 @class DTXConnection, NSString, XCTestRun;
-@protocol OS_dispatch_queue, XCTUIApplicationMonitor, XCTestManager_IDEInterface><NSObject;
+@protocol OS_dispatch_queue, XCTRunnerIDESessionDelegate, XCTTestWorker, XCTUIApplicationMonitor, XCTestManager_IDEInterface><NSObject;
 
-@interface XCTRunnerIDESession : NSObject <XCTestObservation, XCTestDriverInterface, XCTTestRunSessionDelegate>
+@interface XCTRunnerIDESession : NSObject <XCTestObservation, XCTestDriverInterface, XCTTestRunSessionDelegate, XCUIXcodeApplicationManaging>
 {
     NSObject<OS_dispatch_queue> *_queue;
     DTXConnection *_IDEConnection;
     id <XCTestManager_IDEInterface><NSObject> _IDEProxy;
     long long _IDEProtocolVersion;
+    id <XCTRunnerIDESessionDelegate> _delegate;
     id <XCTUIApplicationMonitor> _applicationMonitor;
+    id <XCTTestWorker> _testWorker;
     XCTestRun *_currentTestRun;
     CDUnknownBlockType _readinessReply;
 }
@@ -28,11 +31,14 @@
 + (void)setSharedSession:(id)arg1;
 + (id)sharedSession;
 + (id)sharedSessionQueue;
+@property __weak id <XCTTestWorker> testWorker; // @synthesize testWorker=_testWorker;
 @property(copy) CDUnknownBlockType readinessReply; // @synthesize readinessReply=_readinessReply;
 @property(retain) id <XCTestManager_IDEInterface><NSObject> IDEProxy; // @synthesize IDEProxy=_IDEProxy;
 @property(retain) DTXConnection *IDEConnection; // @synthesize IDEConnection=_IDEConnection;
 @property __weak id <XCTUIApplicationMonitor> applicationMonitor; // @synthesize applicationMonitor=_applicationMonitor;
+@property __weak id <XCTRunnerIDESessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+- (void).cxx_destruct;
 - (void)testBundleDidFinish:(id)arg1;
 - (void)_testCase:(id)arg1 didFinishActivity:(id)arg2;
 - (void)_testCase:(id)arg1 willStartActivity:(id)arg2;
@@ -46,6 +52,7 @@
 - (void)testBundleWillStart:(id)arg1;
 - (id)_IDE_processWithToken:(id)arg1 exitedWithStatus:(id)arg2;
 - (id)_IDE_stopTrackingProcessWithToken:(id)arg1;
+- (void)reportSelfDiagnosisIssue:(id)arg1 description:(id)arg2;
 - (void)terminateProcessWithToken:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestLaunchProgressForProcessWithToken:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)launchProcessWithPath:(id)arg1 bundleID:(id)arg2 arguments:(id)arg3 environmentVariables:(id)arg4 completion:(CDUnknownBlockType)arg5;
@@ -56,13 +63,15 @@
 - (void)testRunSession:(id)arg1 initializationForUITestingDidFailWithError:(id)arg2;
 - (void)testRunSessionDidBeginInitializingForUITesting:(id)arg1;
 - (void)testRunSessionDidBeginExecutingTestPlan:(id)arg1;
+- (id)_IDE_shutdown;
+- (id)_IDE_executeTestIdentifiers:(id)arg1 skippingTestIdentifiers:(id)arg2;
+- (id)_IDE_fetchDiscoveredTestClasses;
 - (id)_IDE_startExecutingTestPlanWithProtocolVersion:(id)arg1;
 - (void)requestReadinessForTesting:(CDUnknownBlockType)arg1;
 @property(readonly) _Bool supportsVariableScreenshotFormats;
 @property(readonly) _Bool reportsCrashes;
 @property long long IDEProtocolVersion; // @synthesize IDEProtocolVersion=_IDEProtocolVersion;
-- (id)initWithTransport:(id)arg1;
-- (void)dealloc;
+- (id)initWithTransport:(id)arg1 delegate:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

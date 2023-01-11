@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class EQKitEnvironment, NSData;
 @protocol EQKitExpression;
@@ -17,6 +17,7 @@
 }
 
 + (id)mathMLStringFromLaTeXString:(id)arg1 environment:(id)arg2 error:(id *)arg3;
++ (id)equationSourceFromPDFDocument:(struct CGPDFDocument *)arg1;
 + (id)equationWithXMLDoc:(struct _xmlDoc *)arg1 node:(struct _xmlNode *)arg2 environment:(id)arg3 error:(id *)arg4;
 + (id)equationWithString:(id)arg1 format:(int)arg2 error:(id *)arg3;
 + (id)equationWithString:(id)arg1 format:(int)arg2 environment:(id)arg3 error:(id *)arg4;

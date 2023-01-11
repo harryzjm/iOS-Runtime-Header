@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class FBSSerialQueue, FBSystemServiceServer;
+@class FBSSerialQueue, FBServiceFacilityServer;
 @protocol FBSystemServiceDelegate;
 
 @interface FBSystemService : NSObject
@@ -14,13 +14,14 @@
     FBSSerialQueue *_queue;
     int _pendingExit;
     id <FBSystemServiceDelegate> _delegate;
-    FBSystemServiceServer *_server;
+    FBServiceFacilityServer *_server;
 }
 
 + (id)sharedInstance;
-@property(retain, nonatomic) FBSystemServiceServer *server; // @synthesize server=_server;
-@property(nonatomic) id <FBSystemServiceDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, retain, nonatomic) FBSSerialQueue *queue; // @synthesize queue=_queue;
+@property(retain, nonatomic) FBServiceFacilityServer *server; // @synthesize server=_server;
+@property(nonatomic) __weak id <FBSystemServiceDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) FBSSerialQueue *queue; // @synthesize queue=_queue;
+- (void).cxx_destruct;
 - (unsigned long long)_mapShutdownOptionsToOptions:(id)arg1;
 - (_Bool)_isWhitelistedLaunchSuspendedApp:(id)arg1;
 - (_Bool)_requireEntitlementToOpenURL:(id)arg1 options:(id)arg2;
@@ -46,6 +47,7 @@
 - (void)prepareForExitAndRelaunch:(_Bool)arg1;
 - (void)exitAndRelaunch:(_Bool)arg1;
 - (void)shutdownWithOptions:(unsigned long long)arg1;
+- (void)shutdownWithOptions:(unsigned long long)arg1 forSource:(long long)arg2;
 - (void)shutdownAndReboot:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithQueue:(id)arg1;

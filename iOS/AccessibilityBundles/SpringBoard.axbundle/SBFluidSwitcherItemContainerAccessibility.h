@@ -11,8 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityUserTestingChildren;
-- (void)_axLoadCloseBoxAccessibility:(id)arg1;
 - (long long)_accessibilityAppLayoutType;
 - (_Bool)_accessibilityIsControlCenterVisible;
 - (id)_accessibilityPreferredScrollActions;
@@ -24,6 +22,7 @@
 - (_Bool)_accessibilityScrollToVisible;
 - (_Bool)_accessibilityCloseApp:(id)arg1;
 - (id)_accessibilityScrollStatus;
+- (id)_accessibilityCustomActionGroupIdentifier;
 - (_Bool)_accessibilityRetainsCustomRotorActionSetting;
 - (id)accessibilityCustomActions;
 - (_Bool)_accessibilityCanCloseApp;
@@ -32,10 +31,8 @@
 - (id)_accessibilityBundleIdentifier;
 - (id)_axDisplayItems;
 - (id)_axAppLayout;
-- (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
 - (void)_handlePageViewTap:(id)arg1;
-- (id)_createCloseBox;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

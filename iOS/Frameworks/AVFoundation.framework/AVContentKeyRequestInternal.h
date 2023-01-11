@@ -4,25 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVContentKeySession, NSData, NSError;
+@class AVContentKeySession, NSData, NSDictionary, NSError, NSString;
 
+__attribute__((visibility("hidden")))
 @interface AVContentKeyRequestInternal : NSObject
 {
     AVContentKeySession *session;
     id identifier;
+    NSData *sinfDefaultKeyIdentifier;
     NSData *initializationData;
     long long status;
     id customURLProviderContext;
     int responseInfoSent;
     _Bool providesPersistableKey;
+    NSDictionary *preloadingRequestOptions;
     struct OpaqueFigCPECryptor *figCryptor;
     NSError *error;
     struct __CFDictionary *requestInfo;
-    unsigned long long requestID;
+    unsigned long long customURLRequestID;
     struct OpaqueFigCustomURLHandler *customURLHandler;
-    int cryptorListenerAdded;
+    NSString *cryptorUUID;
+    unsigned long long cryptorKeyRequestID;
 }
 
 @end

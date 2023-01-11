@@ -20,6 +20,8 @@
 + (id)writeAheadLogSharedMemoryURLForDatabaseURL:(id)arg1;
 + (id)writeAheadLogURLForDatabaseURL:(id)arg1;
 + (id)_errorWithErrorCode:(int)arg1;
++ (id)privateOnDiskDatabaseURL;
++ (id)inMemoryDatabaseURL;
 + (void)setUpLogCollection;
 + (void)initialize;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
@@ -41,6 +43,7 @@
 - (_Bool)reportErrorWithCode:(int)arg1 statement:(struct sqlite3_stmt *)arg2 error:(id *)arg3;
 - (void)_reportSevereError:(id)arg1;
 - (int)close;
+- (_Bool)openWithAccessType:(long long)arg1 protectionType:(long long)arg2 vfs:(id)arg3 error:(id *)arg4;
 - (_Bool)openWithAccessType:(long long)arg1 vfs:(id)arg2 error:(id *)arg3;
 - (_Bool)openWithAccessType:(long long)arg1 error:(id *)arg2;
 - (void)dealloc;

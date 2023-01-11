@@ -6,6 +6,7 @@
 
 @class AVAssetWriter, AVAssetWriterInput, AVAssetWriterInputPixelBufferAdaptor;
 
+__attribute__((visibility("hidden")))
 @interface SCNMovieExportOperation
 {
     AVAssetWriterInput *_assetWriterInput;

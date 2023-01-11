@@ -6,8 +6,7 @@
 
 #import <MapsSupport/NSObject-Protocol.h>
 
-@class MSPCloudRepeatableTask, MSPCloudSynchronizer, NSDate, NSError, NSUUID;
-@protocol NSObject><NSCopying><NSCoding;
+@class MSPCloudRepeatableTask, MSPCloudSynchronizer, NSDate, NSError, NSString, NSUUID;
 
 @protocol MSPCloudSynchronizerDelegate <NSObject>
 - (void)synchronizer:(MSPCloudSynchronizer *)arg1 didFailAttemptingTask:(MSPCloudRepeatableTask *)arg2 withError:(NSError *)arg3 reattemptingAfterDate:(NSDate *)arg4;
@@ -18,7 +17,7 @@
 - (NSDate *)storedBoostDateForSynchronizer:(MSPCloudSynchronizer *)arg1;
 - (void)synchronizer:(MSPCloudSynchronizer *)arg1 storeNewClientRegistrationIdentifier:(NSUUID *)arg2;
 - (NSUUID *)storedClientRegistrationIdentifierForSynchronizer:(MSPCloudSynchronizer *)arg1;
-- (void)synchronizer:(MSPCloudSynchronizer *)arg1 storeNewUserIdentity:(id <NSObject><NSCopying><NSCoding>)arg2;
-- (id <NSObject><NSCopying><NSCoding>)storedUserIdentityForSynchronizer:(MSPCloudSynchronizer *)arg1;
+- (void)synchronizer:(MSPCloudSynchronizer *)arg1 storeNewUserIdentity:(NSString *)arg2;
+- (NSString *)storedUserIdentityForSynchronizer:(MSPCloudSynchronizer *)arg1;
 @end
 

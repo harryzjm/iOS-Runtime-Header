@@ -6,12 +6,14 @@
 
 #import <AVFoundation/NSCopying-Protocol.h>
 
-@class AVMetadataItem, NSArray, NSData, NSDictionary, NSString;
+@class AVDisplayCriteria, AVMetadataItem, NSArray, NSData, NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetInspector <NSCopying>
 {
 }
 
+@property(readonly, nonatomic) AVDisplayCriteria *preferredDisplayCriteria;
 @property(readonly, nonatomic) NSArray *availableVideoDynamicRanges;
 @property(readonly, nonatomic) struct CGSize maximumVideoResolution;
 - (id)makePropertyListForProxyWithOptions:(id)arg1;

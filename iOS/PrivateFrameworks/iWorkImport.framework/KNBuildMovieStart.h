@@ -4,11 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <iWorkImport/KNAnimationPluginAmbientAnimationStart-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface KNBuildMovieStart
+@interface KNBuildMovieStart <KNAnimationPluginAmbientAnimationStart>
 {
 }
 
++ (long long)rendererTypeForAnimationContext:(id)arg1;
++ (_Bool)startsAmbientAnimation;
 + (id)thumbnailImageNameForType:(long long)arg1;
 + (id)localizedMenuString:(long long)arg1;
 + (id)supportedTypes;
@@ -16,6 +22,12 @@ __attribute__((visibility("hidden")))
 + (id)animationName;
 + (long long)animationCategory;
 - (void)addAnimationsTo:(id)arg1 context:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

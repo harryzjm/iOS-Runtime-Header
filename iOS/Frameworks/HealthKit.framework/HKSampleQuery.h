@@ -19,6 +19,7 @@
 
 + (void)configureClientInterface:(id)arg1;
 + (id)clientInterfaceProtocol;
++ (Class)configurationClass;
 @property(nonatomic) _Bool includeTimeZones; // @synthesize includeTimeZones=_includeTimeZones;
 @property(readonly, nonatomic) CDUnknownBlockType resultHandler; // @synthesize resultHandler=_resultHandler;
 - (void).cxx_destruct;
@@ -26,7 +27,6 @@
 - (void)queue_validate;
 - (void)queue_deliverError:(id)arg1;
 - (void)queue_populateConfiguration:(id)arg1;
-- (void)queue_connectToQueryServerWithHealthStore:(id)arg1 activationUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)client_deliverSamples:(id)arg1 clearPendingSamples:(_Bool)arg2 isFinalBatch:(_Bool)arg3 queryUUID:(id)arg4;
 - (_Bool)_prepareSamplesForDelivery:(id)arg1 error:(id *)arg2;
 @property(readonly, copy) NSArray *sortDescriptors;

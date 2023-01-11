@@ -24,13 +24,23 @@
     VMURangeToStringMap *_binarySectionNameRanges;
     VMURangeToStringMap *_regionSymbolNameRanges;
     _Bool _gotObjcClassStructureRanges;
+    _Bool _showRawClassNames;
+    _Bool _javaScriptCoreUsingPoisoning;
     NSDictionary *_pthreadOffsets;
     VMUNodeToStringMap *_nodeLabels;
     void *_userMarked;
     VMUGraphStackLogReader *_stackLogReader;
     VMUDebugTimer *_debugTimer;
+    unsigned long long _physicalFootprint;
+    unsigned long long _physicalFootprintPeak;
+    _Bool _showsPhysFootprint;
 }
 
+@property(nonatomic) _Bool showsPhysFootprint; // @synthesize showsPhysFootprint=_showsPhysFootprint;
+@property(nonatomic) _Bool javaScriptCoreUsingPoisoning; // @synthesize javaScriptCoreUsingPoisoning=_javaScriptCoreUsingPoisoning;
+@property(nonatomic) unsigned long long physicalFootprintPeak; // @synthesize physicalFootprintPeak=_physicalFootprintPeak;
+@property(nonatomic) unsigned long long physicalFootprint; // @synthesize physicalFootprint=_physicalFootprint;
+@property(nonatomic) _Bool showRawClassNames; // @synthesize showRawClassNames=_showRawClassNames;
 @property(retain, nonatomic) id <VMUStackLogReader> stackLogReader; // @synthesize stackLogReader=_stackLogReader;
 @property(retain, nonatomic) VMUDebugTimer *debugTimer; // @synthesize debugTimer=_debugTimer;
 @property(nonatomic) unsigned long long snapshotMachTime; // @synthesize snapshotMachTime=_machAbsolute;
@@ -38,6 +48,7 @@
 @property(readonly, nonatomic) unsigned int vmPageSize; // @synthesize vmPageSize=_kernPageSize;
 @property(readonly, nonatomic) int pid; // @synthesize pid=_pid;
 - (void).cxx_destruct;
+- (void)markReachableNodesFromRoots:(void *)arg1 inMap:(void *)arg2 showLeakedVMregions:(_Bool)arg3;
 - (void)markReachableNodesFromRoots:(void *)arg1 inMap:(void *)arg2;
 - (void)refineEdges:(unsigned int)arg1 withOptions:(unsigned int)arg2 markingInvalid:(void *)arg3;
 - (void)refineTypesWithOverlay:(id)arg1;
@@ -45,6 +56,7 @@
 - (id)_detailedNodeOffsetDescription:(CDStruct_8b65991f)arg1 withSourceNode:(unsigned int)arg2 destinationNode:(unsigned int)arg3 alignmentSpacing:(unsigned int)arg4;
 - (id)nodeOffsetDescription:(CDStruct_8b65991f)arg1 withSourceNode:(unsigned int)arg2 destinationNode:(unsigned int)arg3;
 - (id)nodeDescription:(unsigned int)arg1 withDestinationNode:(unsigned int)arg2 referenceInfo:(CDStruct_8b65991f)arg3;
+- (id)nodeDescription:(unsigned int)arg1 withOffset:(unsigned long long)arg2 showLabel:(_Bool)arg3;
 - (id)nodeDescription:(unsigned int)arg1 withOffset:(unsigned long long)arg2;
 - (id)nodeDescription:(unsigned int)arg1;
 - (id)shortNodeDescription:(unsigned int)arg1;
@@ -65,7 +77,7 @@
 - (id)zoneNameForIndex:(unsigned int)arg1;
 @property(readonly, nonatomic) unsigned int zoneCount;
 @property(readonly, nonatomic) VMUClassInfoMap *realizedClasses;
-- (id)shortLabelForMallocNode:(unsigned int)arg1;
+- (id)shortLabelForNode:(unsigned int)arg1;
 - (void *)contentForNode:(unsigned int)arg1;
 - (_Bool)hasLabelsForNodes;
 - (id)labelForNode:(unsigned int)arg1;

@@ -6,10 +6,14 @@
 
 #import <WebKit/NSObject-Protocol.h>
 
-@class NSString;
+@class NSObject, NSString;
+@protocol NSSecureCoding;
 
 @protocol _WKFocusedElementInfo <NSObject>
+@property(readonly, nonatomic) NSObject<NSSecureCoding> *userObject;
 @property(readonly, nonatomic, getter=isUserInitiated) _Bool userInitiated;
+@property(readonly, copy, nonatomic) NSString *label;
+@property(readonly, copy, nonatomic) NSString *placeholder;
 @property(readonly, copy, nonatomic) NSString *value;
 @property(readonly, nonatomic) long long type;
 @end

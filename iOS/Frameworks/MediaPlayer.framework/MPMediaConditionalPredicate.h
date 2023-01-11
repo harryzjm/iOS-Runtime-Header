@@ -15,6 +15,7 @@
     MPMediaPredicate *_elsePredicate;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)predicateWithConditionPredicate:(id)arg1 thenPredicate:(id)arg2 elsePredicate:(id)arg3;
 @property(readonly, copy, nonatomic) MPMediaPredicate *elsePredicate; // @synthesize elsePredicate=_elsePredicate;
 @property(readonly, copy, nonatomic) MPMediaPredicate *thenPredicate; // @synthesize thenPredicate=_thenPredicate;
@@ -22,6 +23,8 @@
 - (void).cxx_destruct;
 - (id)protobufferEncodableObject;
 - (id)initWithProtobufferDecodableObject:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithConditionPredicate:(id)arg1 thenPredicate:(id)arg2 elsePredicate:(id)arg3;
 - (id)ML3PredicateForContainer;
 - (id)ML3PredicateForTrack;

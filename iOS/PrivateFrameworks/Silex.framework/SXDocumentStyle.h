@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SXFill, UIColor;
+@class SXFill, SXJSONLinearGradient, UIColor;
 
 @interface SXDocumentStyle
 {
@@ -16,6 +16,7 @@
 @property(readonly, nonatomic) UIColor *backgroundColor; // @dynamic backgroundColor;
 @property(readonly, nonatomic) SXFill *fill; // @dynamic fill;
 @property(readonly, nonatomic) UIColor *topBackgroundColor; // @dynamic topBackgroundColor;
+@property(readonly, nonatomic) SXJSONLinearGradient *topBackgroundGradient; // @dynamic topBackgroundGradient;
 
 @end
 

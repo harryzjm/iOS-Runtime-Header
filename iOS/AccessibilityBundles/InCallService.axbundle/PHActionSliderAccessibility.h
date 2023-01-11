@@ -15,6 +15,7 @@
 - (_Bool)accessibilityActivate;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
+- (id)accessibilityPath;
 
 @end
 

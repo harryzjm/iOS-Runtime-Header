@@ -12,6 +12,7 @@
     NSString *_stationStringID;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) NSString *stationStringID; // @synthesize stationStringID=_stationStringID;
 @property(readonly, nonatomic) long long stationID; // @synthesize stationID=_stationID;
 - (void).cxx_destruct;

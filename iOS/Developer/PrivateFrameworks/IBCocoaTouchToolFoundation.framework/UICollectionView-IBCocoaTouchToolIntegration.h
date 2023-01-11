@@ -32,6 +32,7 @@
 @property(readonly) UIColor *ibSectionHeaderViewBackgroundColor;
 - (void)setIbSectionHeaderViewBackgroundColor:(id)arg1;
 - (void)setIbDataSourceType:(id)arg1;
+- (void)awakeAfterMarshallerDidEstablishRelationshipsWithContext:(id)arg1 populatingWarningMessages:(id)arg2;
 - (id)initWithMarshalledValues:(id)arg1 orderedKeys:(id)arg2 ignoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
 @end
 

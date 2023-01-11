@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SafariShared/WBSParsecSearchMapsResultFeedbackSenderClient-Protocol.h>
-#import <SafariShared/WBSParsecSearchResultPresentedInCard-Protocol.h>
+#import <SafariShared/WBSParsecSearchSimpleResult-Protocol.h>
 
 @class NSArray, NSNumber, NSString, WBSParsecImageRepresentation, WBSParsecSearchMapsResultFeedbackSender;
 @protocol WBSParsecSearchSession;
 
-@interface WBSParsecSearchSimpleResult <WBSParsecSearchMapsResultFeedbackSenderClient, WBSParsecSearchResultPresentedInCard>
+@interface WBSParsecSearchSimpleResult <WBSParsecSearchSimpleResult>
 {
     WBSParsecImageRepresentation *_titleGlyph;
     NSArray *_moreIconRepresentations;
@@ -33,9 +32,6 @@
 @property(retain, nonatomic) id <WBSParsecSearchSession> parsecSearchSession; // @synthesize parsecSearchSession=_parsecSearchSession;
 @property(retain, nonatomic) WBSParsecSearchMapsResultFeedbackSender *mapsFeedbackSender; // @synthesize mapsFeedbackSender=_mapsFeedbackSender;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) _Bool willPresentResultInCard;
-- (id)moreIconsWithSession:(id)arg1;
-@property(readonly, nonatomic) _Bool hasMoreIcons;
 - (id)titleGlyphWithSession:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 

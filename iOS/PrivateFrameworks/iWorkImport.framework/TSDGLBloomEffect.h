@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class TSDGLDataBuffer, TSDGLFrameBuffer, TSDGLShader;
+@class TSDGLFrameBuffer, TSDGLShader;
+@protocol TSDGLDataBuffer;
 
 __attribute__((visibility("hidden")))
 @interface TSDGLBloomEffect : NSObject
@@ -15,9 +16,9 @@ __attribute__((visibility("hidden")))
     struct CGSize _blurBufferSize;
     TSDGLFrameBuffer *_colorFramebuffer;
     TSDGLFrameBuffer *_blurFramebuffer;
-    TSDGLDataBuffer *_dataBuffer;
-    TSDGLDataBuffer *_blurTransferDataBuffer;
-    TSDGLDataBuffer *_blurDataBuffer;
+    id <TSDGLDataBuffer> _dataBuffer;
+    id <TSDGLDataBuffer> _blurTransferDataBuffer;
+    id <TSDGLDataBuffer> _blurDataBuffer;
     TSDGLShader *_blurHorizontalShader;
     TSDGLShader *_blurVerticalShader;
     TSDGLShader *_bloomShader;

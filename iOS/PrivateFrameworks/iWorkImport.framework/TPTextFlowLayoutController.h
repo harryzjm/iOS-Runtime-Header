@@ -4,20 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSKChangeSourceObserver-Protocol.h>
 #import <iWorkImport/TSWPLayoutOwner-Protocol.h>
 
-@class NSMapTable, NSString, TPPaginatedPageController;
+@class NSMapTable, NSString, TPPageController;
+@protocol TSWPTopicNumberHints;
 
 __attribute__((visibility("hidden")))
 @interface TPTextFlowLayoutController : NSObject <TSWPLayoutOwner, TSKChangeSourceObserver>
 {
-    TPPaginatedPageController *_pageController;
+    TPPageController *_pageController;
     NSMapTable *_layoutMgrs;
     NSMapTable *_flows;
     _Bool _tornDown;
+    NSObject<TSWPTopicNumberHints> *_startTargetTopicNumberHints;
 }
 
 - (void).cxx_destruct;

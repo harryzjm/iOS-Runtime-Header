@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class _MRLyricsEventProtobuf;
+
 @interface MRSendLyricsEventMessage
 {
 }
 
 - (unsigned long long)type;
-@property(readonly, nonatomic) void *event;
-- (id)initWithEvent:(void *)arg1;
+@property(readonly, nonatomic) _MRLyricsEventProtobuf *event;
+- (id)initWithEvent:(id)arg1;
 
 @end
 

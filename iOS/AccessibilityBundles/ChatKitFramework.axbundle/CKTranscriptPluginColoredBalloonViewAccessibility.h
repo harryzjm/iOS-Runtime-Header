@@ -13,7 +13,13 @@
 + (id)safeCategoryTargetClassName;
 - (id)_axChatItemPluginPayload;
 - (id)_axBalloonContentDescription;
+- (_Bool)_axIsLiveView;
+- (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
+- (_Bool)isAccessibilityElement;
+- (id)accessibilityElements;
+- (void)setContentElement:(id)arg1;
+- (id)contentElement;
 
 @end
 

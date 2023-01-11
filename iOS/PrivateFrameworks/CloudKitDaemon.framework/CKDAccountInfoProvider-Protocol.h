@@ -6,7 +6,7 @@
 
 #import <CloudKitDaemon/NSObject-Protocol.h>
 
-@class CKAccountOverrideInfo, CKContainerID, CKDMescalSession, CKDOperation, CKDServerConfiguration, CKDURLRequest, NSBundle, NSDictionary, NSString, NSURL;
+@class CKAccountOverrideInfo, CKContainerID, CKDMescalSession, CKDOperation, CKDServerConfiguration, CKDURLRequest, NSDictionary, NSString, NSURL;
 
 @protocol CKDAccountInfoProvider <NSObject>
 @property(readonly, nonatomic) CKAccountOverrideInfo *fakeAccountInfo;
@@ -23,12 +23,13 @@
 - (void)iCloudAuthTokenWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
 - (void)renewCloudKitAuthTokenWithReason:(NSString *)arg1 shouldForce:(_Bool)arg2 failedToken:(NSString *)arg3 completionHandler:(void (^)(_Bool, NSError *))arg4;
 - (void)cloudKitAuthTokenWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
+- (NSString *)sharingURLHostname;
+- (NSString *)displayedHostname;
 - (NSString *)regionCode;
 - (NSString *)languageCode;
 - (NSString *)serverPreferredPushEnvironment;
 - (NSString *)deviceName;
 - (NSString *)hardwareID;
-- (NSBundle *)applicationBundle;
 - (NSString *)bundleID;
 - (CKContainerID *)containerID;
 - (NSString *)containerScopedUserID;
@@ -38,9 +39,9 @@
 - (CKDMescalSession *)mescalSession;
 - (void)fetchDeviceIDForOperation:(CKDOperation *)arg1 withCompletionHandler:(void (^)(NSString *, NSError *))arg2;
 - (void)fetchServerEnvironmentForOperation:(CKDOperation *)arg1 withCompletionHandler:(void (^)(long long, NSError *))arg2;
-- (void)fetchContainerScopedUserIDForOperation:(CKDOperation *)arg1 withCompletionHandler:(void (^)(NSString *, NSError *))arg2;
-- (void)fetchPrivateURLForServerType:(long long)arg1 operation:(CKDOperation *)arg2 completionHandler:(void (^)(NSURL *, NSError *))arg3;
+- (void)fetchImportantUserIDsForOperation:(CKDOperation *)arg1 withCompletionHandler:(void (^)(NSString *, NSString *, NSError *))arg2;
 - (void)fetchPublicURLForServerType:(long long)arg1 operation:(CKDOperation *)arg2 completionHandler:(void (^)(NSURL *, NSError *))arg3;
+- (void)fetchPrivateURLForServerType:(long long)arg1 operation:(CKDOperation *)arg2 completionHandler:(void (^)(NSURL *, NSError *))arg3;
 - (void)fetchConfigurationForOperation:(CKDOperation *)arg1 withCompletionHandler:(void (^)(CKDServerConfiguration *, NSError *))arg2;
 - (CKDServerConfiguration *)config;
 - (NSURL *)baseURLForServerType:(long long)arg1 partitionType:(long long)arg2;

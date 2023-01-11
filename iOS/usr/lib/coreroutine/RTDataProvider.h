@@ -28,7 +28,7 @@
 - (void).cxx_destruct;
 - (void)fetchDataProviderStatus:(CDUnknownBlockType)arg1;
 - (void)onMemoryWarningNotification:(id)arg1;
-- (void)shutdown;
+- (void)_shutdown;
 - (void)addObserverInternal:(id)arg1 notificationName:(id)arg2;
 - (void)removeObserverInternal:(id)arg1 notificationName:(id)arg2;
 - (void)__fetchDataWithFilterPredicates:(id)arg1 sortDescriptors:(id)arg2 handler:(CDUnknownBlockType)arg3;

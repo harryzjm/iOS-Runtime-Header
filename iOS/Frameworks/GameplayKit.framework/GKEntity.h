@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <GameplayKit/NSCoding-Protocol.h>
 #import <GameplayKit/NSCopying-Protocol.h>
+#import <GameplayKit/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableDictionary;
 
-@interface GKEntity : NSObject <NSCopying, NSCoding>
+@interface GKEntity : NSObject <NSCopying, NSSecureCoding>
 {
     NSMutableDictionary *_components;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)entity;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

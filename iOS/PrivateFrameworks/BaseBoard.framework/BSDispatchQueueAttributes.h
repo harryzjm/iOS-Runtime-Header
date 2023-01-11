@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_queue_attr;
 
@@ -16,7 +16,8 @@
 + (id)concurrent;
 + (id)serial;
 + (id)_attributesWithAttributes:(id)arg1;
-@property(nonatomic) NSObject<OS_dispatch_queue_attr> *attributes; // @synthesize attributes=_attrs;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue_attr> *attributes; // @synthesize attributes=_attrs;
+- (void).cxx_destruct;
 - (id)inactive;
 - (id)autoreleaseFrequency:(unsigned long long)arg1;
 - (id)serviceClass:(unsigned int)arg1;

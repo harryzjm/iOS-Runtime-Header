@@ -4,28 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IBICColorSpace, IBICIdiom;
+@class IBICColorSpace, IBICContrastAppearance, IBICIdiom, IBICLuminosityAppearance, IBICVibrancyAppearance;
 
 @interface IBICColorSetRepSlot
 {
     IBICIdiom *_idiom;
     IBICColorSpace *_colorSpace;
+    IBICLuminosityAppearance *_luminosityAppearance;
+    IBICContrastAppearance *_contrastAppearance;
+    IBICVibrancyAppearance *_vibrancyAppearance;
 }
 
-+ (id)detailAreaGroupPathForIdiom:(id)arg1 colorSpace:(id)arg2;
 + (id)genesisSlotsForSlots:(id)arg1;
++ (id)slotWithIdiom:(id)arg1 appearance:(id)arg2;
 + (id)slotWithIdiom:(id)arg1 colorSpace:(id)arg2;
 + (id)orderedComponentClasses;
-+ (id)slotFilterWithIdiomFilter:(id)arg1 colorSpaceFilter:(id)arg2;
-+ (id)slotFilterWithNilMatching:(long long)arg1 idioms:(id)arg2 colorSpaces:(id)arg3;
-+ (id)slotFilterUnionedWithStandardUniversalCounterpart:(_Bool)arg1 idioms:(id)arg2 colorSpaces:(id)arg3;
++ (id)slotFilterWithNilMatching:(long long)arg1 idioms:(id)arg2 colorSpaces:(id)arg3 luminositySlots:(id)arg4 contrastSlots:(id)arg5 vibrancySlots:(id)arg6;
++ (id)slotFilterUnionedWithStandardUniversalCounterpart:(_Bool)arg1 idioms:(id)arg2 colorSpaces:(id)arg3 luminositySlots:(id)arg4 contrastSlots:(id)arg5 vibrancySlots:(id)arg6;
 + (Class)assetRepClass;
 + (Class)assetSetClass;
+@property(readonly) IBICVibrancyAppearance *vibrancyAppearance; // @synthesize vibrancyAppearance=_vibrancyAppearance;
+@property(readonly) IBICContrastAppearance *contrastAppearance; // @synthesize contrastAppearance=_contrastAppearance;
+@property(readonly) IBICLuminosityAppearance *luminosityAppearance; // @synthesize luminosityAppearance=_luminosityAppearance;
 @property(readonly) IBICColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 @property(readonly) IBICIdiom *idiom; // @synthesize idiom=_idiom;
 - (void).cxx_destruct;
+- (_Bool)hasUnspecifiedAppearance;
 - (id)detailAreaPath;
 - (long long)compareDisplayOrder:(id)arg1;
+- (id)shortDisplayNameConsideringCounterparts:(id)arg1;
+- (_Bool)anyExplicitValuesForSlotComponentClass:(Class)arg1 amongCounterparts:(id)arg2;
 - (id)shortDisplayName;
 - (void)captureComponents;
 

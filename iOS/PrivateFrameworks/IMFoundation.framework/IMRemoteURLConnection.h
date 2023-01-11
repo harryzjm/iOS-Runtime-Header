@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, NSURLRequest;
 @protocol OS_xpc_object;
@@ -26,8 +26,10 @@
     _Bool _disableKeepAlive;
     int _keepAliveWifi;
     int _keepAliveCell;
+    _Bool _shouldReturnTimingData;
 }
 
+@property _Bool shouldReturnTimingData; // @synthesize shouldReturnTimingData=_shouldReturnTimingData;
 @property _Bool alwaysForceCellular; // @synthesize alwaysForceCellular=_alwaysForceCellular;
 @property(copy) CDUnknownBlockType block; // @synthesize block=_block;
 @property(retain) NSURLRequest *request; // @synthesize request=_request;
@@ -42,6 +44,7 @@
 - (void)cancel;
 - (void)load;
 - (void)dealloc;
+- (id)initWithURLRequest:(id)arg1 completionBlockWithTimingData:(CDUnknownBlockType)arg2;
 - (id)initWithURLRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (_Bool)_connect;
 - (_Bool)_disconnect;

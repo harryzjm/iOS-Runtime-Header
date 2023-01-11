@@ -6,7 +6,7 @@
 
 #import <iWorkImport/CAAnimationDelegate-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSArray, NSString, NSTimer, TSDLayout, TSWPSearchReference, TSWPSelection, TSWPStorage, TSWPTextEditor;
+@class CALayer, CAShapeLayer, NSArray, NSString, TSDLayout, TSWPSearchReference, TSWPSelection, TSWPStorage;
 @protocol TSWPLayoutTarget;
 
 __attribute__((visibility("hidden")))
@@ -33,11 +33,6 @@ __attribute__((visibility("hidden")))
     _Bool _markChanged;
     unsigned long long _newSelectionFlags;
     _Bool _repFieldsAreActive;
-    _Bool _indentAnimationRunning;
-    CALayer *_indentAnimationLayer;
-    long long _indentDelta;
-    SEL _indentSelector;
-    id _indentTarget;
     _Bool _hudStateDirty;
     _Bool _invalidateHUDState;
     _Bool _useKeyboardWhenEditing;
@@ -45,29 +40,25 @@ __attribute__((visibility("hidden")))
     TSWPSelection *_dropSelection;
     _Bool _isShowingCommentKnobs;
     _Bool _tornDown;
-    NSTimer *_caretTimer;
-    _Bool _caretCancelled;
+    _Bool _searchHitsAreInvalid;
     _Bool _findIsShowing;
     TSWPSearchReference *_activeSearchReference;
-    TSWPTextEditor *_textEditor;
     NSArray *_searchReferences;
     CALayer *_floatingCaretLayer;
     struct CGAffineTransform _transformToConvertNaturalToScaledRoot;
 }
 
++ (void)initialize;
 @property(copy, nonatomic) TSWPSelection *lastSelection; // @synthesize lastSelection=_lastSelection;
 @property(retain, nonatomic) CALayer *floatingCaretLayer; // @synthesize floatingCaretLayer=_floatingCaretLayer;
 @property(retain, nonatomic) NSArray *searchReferences; // @synthesize searchReferences=_searchReferences;
 @property(readonly, nonatomic) struct CGAffineTransform transformToConvertNaturalToScaledRoot; // @synthesize transformToConvertNaturalToScaledRoot=_transformToConvertNaturalToScaledRoot;
 @property(nonatomic) _Bool useKeyboardWhenEditing; // @synthesize useKeyboardWhenEditing=_useKeyboardWhenEditing;
-@property(readonly, nonatomic) TSWPTextEditor *textEditor; // @synthesize textEditor=_textEditor;
 @property(nonatomic) struct _NSRange dragRange; // @synthesize dragRange=_dragRange;
 @property(nonatomic, getter=isSelectionHighlightSuppressed) _Bool suppressSelectionHighlight; // @synthesize suppressSelectionHighlight=_suppressSelectionHighlight;
 @property(nonatomic) _Bool findIsShowing; // @synthesize findIsShowing=_findIsShowing;
 @property(retain, nonatomic) TSWPSearchReference *activeSearchReference; // @synthesize activeSearchReference=_activeSearchReference;
-- (_Bool)p_hasEmptyParagraphFillOrBorders;
-- (_Bool)p_hasEmptyList;
-- (_Bool)p_hasVisibleContents;
+- (void).cxx_destruct;
 - (void)p_drawTextInLayer:(id)arg1 context:(struct CGContext *)arg2 limitSelection:(id)arg3 rubyGlyphRange:(struct _NSRange)arg4 renderMode:(int)arg5 suppressInvisibles:(_Bool)arg6;
 - (void)p_teardown;
 @property(readonly, nonatomic) _Bool textIsVertical;
@@ -87,11 +78,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) TSWPSelection *selection;
 @property(readonly, nonatomic) NSArray *columns;
 @property(readonly, nonatomic) TSWPStorage *storage;
-@property(readonly, nonatomic) TSDLayout<TSWPLayoutTarget> *layout;
-- (id)hyperlinkContainerRep;
-- (id)repForDragging;
-- (id)siblings;
+@property(readonly, nonatomic) __weak TSDLayout<TSWPLayoutTarget> *layout;
 - (id)repForCharIndex:(unsigned long long)arg1 isStart:(_Bool)arg2;
+- (void)viewDidAppear;
+- (void)gesturesDidEnd;
 @property(readonly, nonatomic) _Bool isBeingEdited;
 - (id)columnForCharIndex:(unsigned long long)arg1;
 - (id)closestColumnForPoint:(struct CGPoint)arg1;
@@ -109,23 +99,20 @@ __attribute__((visibility("hidden")))
 - (id)p_hyperlinkAtPoint:(struct CGPoint)arg1;
 - (_Bool)directlyManagesLayerContent;
 - (Class)layerClass;
-- (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(_Bool)arg2 allowNotFound:(_Bool)arg3 pastCenterGoesToNextChar:(_Bool)arg4 isAtEndOfLine:(_Bool *)arg5 leadingEdge:(_Bool *)arg6;
-- (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(_Bool)arg2 allowNotFound:(_Bool)arg3 isAtEndOfLine:(_Bool *)arg4 leadingEdge:(_Bool *)arg5;
-- (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(_Bool)arg2 isAtEndOfLine:(_Bool *)arg3;
-- (unsigned long long)charIndexForPointWithPinning:(struct CGPoint)arg1 isTail:(_Bool)arg2 selectionType:(int)arg3;
-- (unsigned long long)charIndexForPointWithPinning:(struct CGPoint)arg1;
 - (_Bool)p_shouldShowCommentsIncludingHighlights:(_Bool)arg1;
+- (void)p_unregisterNotifications;
+- (void)p_registerNotifications;
 - (struct CGRect)p_closestCaretRectForPoint:(struct CGPoint)arg1 inSelection:(_Bool)arg2 allowPastBreak:(_Bool)arg3;
 - (struct CGRect)p_topicDragRectForSelection:(id)arg1;
 - (struct CGRect)p_caretRectForSelection:(id)arg1;
 - (struct CGRect)caretRectForSelection:(id)arg1;
 - (CDStruct_7e4c5a1e)wordMetricsAtCharIndex:(unsigned long long)arg1;
-- (CDStruct_b7a3d57d)lineMetricsAtCharIndex:(unsigned long long)arg1;
-- (CDStruct_b7a3d57d)lineMetricsAtPoint:(struct CGPoint)arg1;
+- (CDStruct_d12891c8)lineMetricsAtCharIndex:(unsigned long long)arg1;
+- (CDStruct_d12891c8)lineMetricsAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)caretRectForCharIndex:(unsigned long long)arg1 leadingEdge:(_Bool)arg2 caretAffinity:(int)arg3;
 - (struct CGRect)caretRectForCharIndex:(unsigned long long)arg1 caretAffinity:(int)arg2;
 - (struct CGRect)naturalBoundsRectForHyperlinkField:(id)arg1;
-- (struct CGPath *)newPathForSelection:(id)arg1;
+- (const struct CGPath *)newPathForSelection:(id)arg1;
 - (struct CGRect)rectForSelection:(id)arg1 includeRuby:(_Bool)arg2 includePaginatedAttachments:(_Bool)arg3;
 - (_Bool)isPointInSelectedArea:(struct CGPoint)arg1;
 - (struct CGRect)selectionRect;

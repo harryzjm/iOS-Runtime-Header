@@ -9,7 +9,7 @@
 #import <PlugInKit/NSXPCListenerDelegate-Protocol.h>
 
 @class NSArray, NSMutableDictionary, NSString, NSXPCListener, PKServicePersonality;
-@protocol OS_dispatch_queue, PKServiceDelegate;
+@protocol OS_dispatch_queue, OS_dispatch_source, PKServiceDelegate;
 
 @interface PKService : NSObject <NSXPCListenerDelegate>
 {
@@ -20,11 +20,13 @@
     PKServicePersonality *_solePersonality;
     NSObject<OS_dispatch_queue> *__sync;
     NSArray *_subsystems;
+    NSObject<OS_dispatch_source> *_terminationTimer;
 }
 
 + (int)_defaultRun:(int)arg1 arguments:(const char **)arg2;
 + (id)defaultService;
 + (void)main;
+@property(retain) NSObject<OS_dispatch_source> *terminationTimer; // @synthesize terminationTimer=_terminationTimer;
 @property _Bool shared; // @synthesize shared=_shared;
 @property(retain) NSArray *subsystems; // @synthesize subsystems=_subsystems;
 @property(retain) NSObject<OS_dispatch_queue> *_sync; // @synthesize _sync=__sync;
@@ -33,6 +35,8 @@
 @property(retain) NSXPCListener *serviceListener; // @synthesize serviceListener=_serviceListener;
 @property(retain) id <PKServiceDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+- (void)cancelTermination;
+- (void)scheduleTermination:(double)arg1;
 - (void)checkEnvironment:(id)arg1;
 - (_Bool)unregisterPersonality:(id)arg1;
 - (void)registerPersonality:(id)arg1;
@@ -52,6 +56,7 @@
 - (void)discoverSubsystems;
 - (_Bool)_processDefaultSubsystemName:(id)arg1;
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (void)_prepareToRun;
 - (void)run;
 - (id)init;
 

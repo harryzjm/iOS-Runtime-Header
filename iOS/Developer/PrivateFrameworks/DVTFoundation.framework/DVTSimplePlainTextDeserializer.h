@@ -9,8 +9,10 @@
 @interface DVTSimplePlainTextDeserializer
 {
     NSMutableArray *_knownClasses;
+    unsigned long long _streamFormatVersion;
 }
 
+@property unsigned long long streamFormatVersion; // @synthesize streamFormatVersion=_streamFormatVersion;
 - (void).cxx_destruct;
 - (id)decodeObjectList;
 - (id)decodeObject;

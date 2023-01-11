@@ -16,6 +16,7 @@
     unsigned long long _hash;
 }
 
++ (void)allowFetchingSymbolsViaXPC;
 + (id)compileTimeClassNameByRemovingSwiftModuleNameFromRuntimeClassName:(id)arg1;
 + (id)classNameFromSymbolName:(id)arg1;
 + (id)compileTimeClassNameFromRuntimeClassName:(id)arg1;
@@ -26,9 +27,10 @@
 + (id)currentStackBacktraceStartingFromFrame:(long long)arg1;
 + (id)currentStackBacktrace;
 + (id)stackBacktraceWithCallStackReturnAddresses:(id)arg1;
-+ (void)initialize;
 - (void).cxx_destruct;
+- (id)symbolicatedFramesFromXPCServiceForReturnAddresses:(unsigned long long *)arg1 returnAddressesCount:(unsigned long long)arg2 dyldImageSuffix:(id)arg3 allowDsymData:(_Bool)arg4;
 - (id)callStackReturnAddresses;
+- (id)_primitiveSymbolicatedStackBacktraceFrames;
 - (id)_symbolicatedStackBacktraceFrames;
 - (id)_stringRepresentationWithAddresses:(_Bool)arg1;
 - (id)symbolicatedStackBacktraceFrames;

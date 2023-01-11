@@ -4,8 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface IBICAbstractCatalog
+#import <IBFoundation/IBICActivityReportingDelegate-Protocol.h>
+
+@protocol IBICActivityReportingDelegate;
+
+@interface IBICAbstractCatalog <IBICActivityReportingDelegate>
 {
+    id <IBICActivityReportingDelegate> _activityReportingDelegate;
 }
 
 + (id)contentReferenceTypeName;
@@ -13,10 +18,16 @@
 + (id)catalogItemFileExtension;
 + (id)classNameComponents;
 + (id)createDefaultInstancesForUnitTesting;
+@property __weak id <IBICActivityReportingDelegate> activityReportingDelegate; // @synthesize activityReportingDelegate=_activityReportingDelegate;
+- (void).cxx_destruct;
+- (void)activityDidEndForItem:(id)arg1;
+- (void)activityDidUpdateForItem:(id)arg1;
+- (void)activityDidStartForItem:(id)arg1;
 - (id)classesForImportingLooseFilesInImportOrder;
 - (_Bool)shouldShowSuggestionSetsForBundleIcons;
 - (CDStruct_2a4d9400)taggingSupport;
 - (void)replaceChildrenWithDiskContent:(id)arg1;
+- (id)allColorSets;
 - (id)allIconSets;
 - (id)allImageSets;
 - (id)catalog;

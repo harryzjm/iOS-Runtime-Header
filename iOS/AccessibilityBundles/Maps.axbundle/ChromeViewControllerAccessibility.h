@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)mapViewDidFinishLoadingMap:(id)arg1;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

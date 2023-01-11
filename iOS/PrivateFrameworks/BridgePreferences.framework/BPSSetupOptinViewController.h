@@ -43,9 +43,14 @@
 - (void)_madeOptinChoice:(_Bool)arg1 withAlertController:(id)arg2;
 - (void)applyConfirmedOptin:(_Bool)arg1;
 - (void)showOptinConfirmationAlert:(id)arg1 optinChoice:(_Bool)arg2;
+- (id)optinLocalizationBundle;
+- (id)optinLocalizationStringsFile;
 - (void)viewDidLayoutSubviews;
+- (double)suggestedChoicePillDetailTextLabelVerticalOffset;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (double)noHWDetailOffset;
+- (double)noHWImageOffset;
 - (double)alternateButtonDetailTextPaddingWithImage;
 - (double)okayButtonTopPadding;
 - (double)imageDetailPadding;
@@ -63,6 +68,7 @@
 - (id)learnMoreButtonTitle;
 - (id)alternateButtonTitle;
 - (id)suggestedButtonTitle;
+- (_Bool)wantsLightenBlendedScreen;
 - (id)init;
 
 // Remaining properties

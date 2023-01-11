@@ -17,11 +17,13 @@
     _Bool _isRequestedRating;
     NSURL *_defaultToroServerURL;
     NSURL *_defaultAdTargetingServerURL;
-    NSString *_storefrontLocalizationLanguage;
     NSString *_algoID;
     NSArray *_userKeyboards;
     double _requestedLocationAccuracy;
     double _locationGridSpacing;
+    NSString *_requestedText;
+    NSString *_requestedIcon;
+    NSString *_templateType;
     double _reverseGeolocationRefreshThresholdInMeters;
     double _clickExpirationThresholdInSeconds;
     double _frequencyCapExpirationInSeconds;
@@ -37,6 +39,9 @@
 @property(nonatomic) double frequencyCapExpirationInSeconds; // @synthesize frequencyCapExpirationInSeconds=_frequencyCapExpirationInSeconds;
 @property(nonatomic) double clickExpirationThresholdInSeconds; // @synthesize clickExpirationThresholdInSeconds=_clickExpirationThresholdInSeconds;
 @property(nonatomic) double reverseGeolocationRefreshThresholdInMeters; // @synthesize reverseGeolocationRefreshThresholdInMeters=_reverseGeolocationRefreshThresholdInMeters;
+@property(retain, nonatomic) NSString *templateType; // @synthesize templateType=_templateType;
+@property(retain, nonatomic) NSString *requestedIcon; // @synthesize requestedIcon=_requestedIcon;
+@property(retain, nonatomic) NSString *requestedText; // @synthesize requestedText=_requestedText;
 @property(nonatomic) _Bool isRequestedRating; // @synthesize isRequestedRating=_isRequestedRating;
 @property(nonatomic) _Bool isRequestedImage; // @synthesize isRequestedImage=_isRequestedImage;
 @property(nonatomic) _Bool isCustomTemplate; // @synthesize isCustomTemplate=_isCustomTemplate;
@@ -46,7 +51,6 @@
 @property(nonatomic) double requestedLocationAccuracy; // @synthesize requestedLocationAccuracy=_requestedLocationAccuracy;
 @property(retain, nonatomic) NSArray *userKeyboards; // @synthesize userKeyboards=_userKeyboards;
 @property(retain, nonatomic) NSString *algoID; // @synthesize algoID=_algoID;
-@property(retain, nonatomic) NSString *storefrontLocalizationLanguage; // @synthesize storefrontLocalizationLanguage=_storefrontLocalizationLanguage;
 @property(retain, nonatomic) NSURL *defaultAdTargetingServerURL; // @synthesize defaultAdTargetingServerURL=_defaultAdTargetingServerURL;
 @property(retain, nonatomic) NSURL *defaultToroServerURL; // @synthesize defaultToroServerURL=_defaultToroServerURL;
 - (void).cxx_destruct;
@@ -55,7 +59,7 @@
 - (void)overrideToroClickExpiration:(double)arg1;
 - (void)overrideMaxFrequencyCapElements:(unsigned long long)arg1;
 - (void)overrideFrequencyCapExpiration:(double)arg1;
-- (void)checkForInternalSettingsOverrides;
+- (void)checkDefaultsAndSetInternalSettingsOverrides;
 - (void)applyClientSettings;
 - (void)refreshClientSettings:(CDUnknownBlockType)arg1;
 - (void)restoreClientSettings;

@@ -11,7 +11,7 @@
 #import <VectorKit/VKInteractiveMap-Protocol.h>
 #import <VectorKit/VKMapDataAccess-Protocol.h>
 
-@class GEOResourceManifestConfiguration, NSArray, NSMutableArray, NSSet, NSString, VKARCameraController, VKAnchorWrapper, VKGlobeCameraController, VKGlobeLineContainer;
+@class GEOResourceManifestConfiguration, NSArray, NSHashTable, NSSet, NSString, VKARCameraController, VKAnchorWrapper, VKGlobeCameraController, VKGlobeLineContainer;
 @protocol VKInteractiveMapDelegate, VKRouteMatchedAnnotationPresentation;
 
 __attribute__((visibility("hidden")))
@@ -40,12 +40,13 @@ __attribute__((visibility("hidden")))
     double _currentZoomLevel;
     CDUnknownBlockType _sceneDidLoadCallback;
     CDUnknownBlockType _artworkIsReadyBlock;
-    NSMutableArray *_externalAnchors;
+    NSHashTable *_externalAnchors;
     GEOResourceManifestConfiguration *_manifestConfiguration;
     struct shared_ptr<md::AnchorContext> _anchorContext;
     VKARCameraController *_arCameraController;
     _Bool _arRoadDisabledState;
     struct CGSize _lastCanvasSize;
+    struct unique_ptr<md::FlyoverPolylineOverlayCache, std::__1::default_delete<md::FlyoverPolylineOverlayCache>> _overlayCache;
     _Bool _showsBuildings;
     _Bool _showsVenues;
     int _flyoverMode;
@@ -78,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (Coordinate3D_bc242218)groundCoordinateForScreenPixel:(const Matrix_2bdd42a3 *)arg1 cameraFrame:(const CameraFrame_406dbd31 *)arg2;
 - (float)currentRoadSignOffset;
 - (void)setNavCameraIsDetached:(_Bool)arg1;
+- (void)puckAnimator:(id)arg1 updatedTargetPosition:(const Coordinate3D_bc242218 *)arg2;
 - (void)puckAnimator:(id)arg1 updatedPosition:(const Coordinate3D_bc242218 *)arg2 course:(const Unit_3d259e8a *)arg3;
 - (void)transitionToTracking:(_Bool)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 startCourse:(double)arg4 cameraController:(id)arg5 pounceCompletionHandler:(CDUnknownBlockType)arg6;
 - (_Bool)currentSceneRequiresMSAA;
@@ -124,7 +126,7 @@ __attribute__((visibility("hidden")))
 - (void)lineContainerNeedsDisplay:(id)arg1;
 - (void)labelManager:(struct LabelManager *)arg1 pendingArtworkIsReady:(_Bool)arg2;
 - (void)labelManagerDidLayout:(struct LabelManager *)arg1;
-- (void)labelManager:(struct LabelManager *)arg1 selectedLabelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
+- (void)labelManager:(struct LabelManager *)arg1 labelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)labelManager:(struct LabelManager *)arg1 selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)labelManager:(struct LabelManager *)arg1 setNeedsDisplay:(_Bool)arg2;
 - (void)labelManager:(struct LabelManager *)arg1 setNeedsLayout:(_Bool)arg2;

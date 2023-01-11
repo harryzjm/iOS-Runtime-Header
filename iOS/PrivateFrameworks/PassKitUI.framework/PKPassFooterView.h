@@ -6,24 +6,28 @@
 
 #import <UIKit/UIView.h>
 
+#import <PassKitUI/PKForegroundActiveArbiterObserver-Protocol.h>
 #import <PassKitUI/PKPassFooterContentViewDelegate-Protocol.h>
+#import <PassKitUI/PKUIForegroundActiveArbiterDeactivationObserver-Protocol.h>
 
 @class NSObject, NSString, PKPassFooterContentView, PKPassView, PKPaymentSessionHandle;
 @protocol OS_dispatch_group, OS_dispatch_source, PKPassFooterViewDelegate;
 
-@interface PKPassFooterView : UIView <PKPassFooterContentViewDelegate>
+@interface PKPassFooterView : UIView <PKPassFooterContentViewDelegate, PKForegroundActiveArbiterObserver, PKUIForegroundActiveArbiterDeactivationObserver>
 {
     PKPassView *_passView;
     PKPassFooterContentView *_contentView;
-    PKPaymentSessionHandle *_sessionHandle;
     NSObject<OS_dispatch_source> *_sessionStartTimer;
     long long _paymentApplicationState;
     _Bool _isBackgrounded;
+    _Bool _isAssistantActive;
     _Bool _acquiringSession;
     unsigned long long _sessionToken;
+    NSObject<OS_dispatch_group> *_sessionDelayGroup;
+    PKPaymentSessionHandle *_sessionHandle;
+    _Bool _invalidated;
     unsigned char _visibility;
     unsigned char _contentViewVisibility;
-    NSObject<OS_dispatch_group> *_sessionDelayGroup;
     _Bool _userIntentRequired;
     long long _state;
     id <PKPassFooterViewDelegate> _delegate;
@@ -46,17 +50,22 @@
 - (void)_setContentView:(id)arg1 animated:(_Bool)arg2;
 - (void)_configureForValueAddedServiceWithContext:(id)arg1;
 - (void)_configureForPersonalizedPaymentApplicationWithContext:(id)arg1;
-- (void)_acquireContactlessInterfaceSessionWithHandler:(CDUnknownBlockType)arg1;
-- (void)_startContactlessInterfaceSessionWithSessionAvailable:(CDUnknownBlockType)arg1 sessionUnavailable:(CDUnknownBlockType)arg2;
+- (void)_acquireContactlessInterfaceSessionWithSessionToken:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_startContactlessInterfaceSessionWithContext:(id)arg1 sessionAvailable:(CDUnknownBlockType)arg2 sessionUnavailable:(CDUnknownBlockType)arg3;
 - (id)_contentViewForPaymentApplicationWithContext:(id)arg1;
 - (void)_configureForState:(long long)arg1 context:(id)arg2 passView:(id)arg3;
-- (void)_handleEnterBackgroundNotification:(id)arg1;
-- (void)_handleEnterForegroundNotification:(id)arg1;
+- (void)_updateForNonForegroundActivePresentationAnimated:(_Bool)arg1;
+- (void)_updateForForegroundActivePresentationIfNecessaryAnimated:(_Bool)arg1;
+- (unsigned long long)suppressedContentForContentView:(id)arg1;
+- (_Bool)isPassFooterContentViewInGroup:(id)arg1;
+- (void)foregroundActiveArbiter:(id)arg1 didUpdateDeactivationReasons:(unsigned int)arg2;
+- (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
 - (void)passFooterContentViewDidEndAuthenticating:(id)arg1;
 - (void)passFooterContentViewDidBeginAuthenticating:(id)arg1;
 - (void)passFooterContentViewDidChangeUserIntentRequirement:(id)arg1;
 - (void)passFooterContentViewRequestsSessionSuppression:(id)arg1;
 @property(readonly, nonatomic, getter=isPassAuthorized) _Bool passAuthorized;
+- (void)invalidate;
 - (void)configureForState:(long long)arg1 context:(id)arg2 passView:(id)arg3;
 - (void)didBecomeHiddenAnimated:(_Bool)arg1;
 - (void)didBecomeVisibleAnimated:(_Bool)arg1;

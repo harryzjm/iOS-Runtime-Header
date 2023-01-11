@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Foundation/NSSecureCoding-Protocol.h>
+
 __attribute__((visibility("hidden")))
-@interface NSConcreteHashTable
+@interface NSConcreteHashTable <NSSecureCoding>
 {
     struct NSSlice slice;
     unsigned long long count;
@@ -14,6 +16,7 @@ __attribute__((visibility("hidden")))
     unsigned long long mutations;
 }
 
++ (_Bool)supportsSecureCoding;
 - (id)objectEnumerator;
 - (id)description;
 - (void)dealloc;

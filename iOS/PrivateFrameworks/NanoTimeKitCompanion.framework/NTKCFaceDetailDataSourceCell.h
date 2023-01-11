@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIImageView;
+@class NSArray, UIImageView;
 
 @interface NTKCFaceDetailDataSourceCell
 {
-    NSString *_bundleIdentifier;
+    NSArray *_bundleIdentifiers;
     UIImageView *_iconImageView;
 }
 
 + (id)reuseIdentifier;
 @property(retain, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
-@property(readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property(readonly, nonatomic) NSArray *bundleIdentifiers; // @synthesize bundleIdentifiers=_bundleIdentifiers;
 - (void).cxx_destruct;
 - (void)layoutSubviews;
-- (id)initWithIdentifier:(id)arg1 andLabel:(id)arg2;
+- (id)initWithIdentifiers:(id)arg1 andLabel:(id)arg2 showIcon:(_Bool)arg3 isDonation:(_Bool)arg4;
 
 @end
 

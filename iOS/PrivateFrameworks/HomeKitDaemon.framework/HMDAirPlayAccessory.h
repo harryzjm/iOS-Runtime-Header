@@ -4,28 +4,55 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitDaemon/HMDAccessoryDisassociation-Protocol.h>
+#import <HomeKitDaemon/HMDAccessoryMinimumUserPrivilegeCapable-Protocol.h>
+#import <HomeKitDaemon/HMDAccessoryUserManagement-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class NSString;
+@class HMFExponentialBackoffTimer, HMFPairingIdentity, NSString;
 
-@interface HMDAirPlayAccessory <HMFLogging>
+@interface HMDAirPlayAccessory <HMDAccessoryMinimumUserPrivilegeCapable, HMFTimerDelegate, HMDAccessoryDisassociation, HMDAccessoryUserManagement, HMFLogging>
 {
+    HMFPairingIdentity *_pairingIdentity;
     NSString *_password;
-    NSString *_administrationPassword;
+    long long _minimumUserPriviledge;
+    HMFExponentialBackoffTimer *_configurationRetryTimer;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(copy) NSString *administrationPassword; // @synthesize administrationPassword=_administrationPassword;
++ (void)initialize;
+@property(readonly, nonatomic) HMFExponentialBackoffTimer *configurationRetryTimer; // @synthesize configurationRetryTimer=_configurationRetryTimer;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)timerDidFire:(id)arg1;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (void)pairingsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)removeUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)addUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(readonly) _Bool supportsUserManagement;
+- (void)disassociateUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)disassociateWithCompletionHandler:(CDUnknownBlockType)arg1;
+@property(readonly) _Bool supportsDisassociation;
 - (id)transactionWithObjectChangeType:(unsigned long long)arg1;
+- (void)populateModelObject:(id)arg1 version:(long long)arg2;
+- (id)backingStoreObjects:(long long)arg1;
+- (void)setMinimumUserPriviledge:(long long)arg1;
+@property(readonly) long long minimumUserPriviledge; // @synthesize minimumUserPriviledge=_minimumUserPriviledge;
 - (void)setPassword:(id)arg1;
 @property(readonly, copy) NSString *password; // @synthesize password=_password;
+- (void)setPairingIdentity:(id)arg1;
+@property(readonly, copy) HMFPairingIdentity *pairingIdentity; // @synthesize pairingIdentity=_pairingIdentity;
 - (void)handleUpdatedPassword:(id)arg1;
+- (void)handleUpdatedMinimumUserPrivilege:(long long)arg1;
+- (_Bool)supportsMinimumUserPrivilege;
+- (void)setReachable:(_Bool)arg1;
 - (void)handleUpdatedName:(id)arg1;
 - (void)handleUpdatedAdvertisement:(id)arg1;
+- (void)setAdvertisement:(id)arg1;
+- (id)advertisement;
+- (void)configure:(id)arg1 msgDispatcher:(id)arg2 accessoryConfigureGroup:(id)arg3;
 - (id)initWithTransaction:(id)arg1 home:(id)arg2;
 
 // Remaining properties

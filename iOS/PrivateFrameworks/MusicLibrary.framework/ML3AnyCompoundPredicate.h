@@ -8,6 +8,7 @@
 {
 }
 
++ (_Bool)supportsSecureCoding;
 - (id)compoundOperatorJoiner;
 
 @end

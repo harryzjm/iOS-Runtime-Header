@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/CAAnimationDelegate-Protocol.h>
 
@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) SEL selector; // @synthesize selector;
 @property(retain, nonatomic) id target; // @synthesize target;
+- (void).cxx_destruct;
 - (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

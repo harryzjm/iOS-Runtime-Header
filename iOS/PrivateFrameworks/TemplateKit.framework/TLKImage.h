@@ -10,19 +10,20 @@
 {
     _Bool _isTemplate;
     _Bool _shouldCropToCircle;
+    _Bool _useFastPathShadow;
     UIImage *_uiImage;
     double _cornerRadius;
     struct CGSize _size;
 }
 
-@property double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
-@property _Bool shouldCropToCircle; // @synthesize shouldCropToCircle=_shouldCropToCircle;
-@property _Bool isTemplate; // @synthesize isTemplate=_isTemplate;
-@property struct CGSize size; // @synthesize size=_size;
+@property _Bool useFastPathShadow; // @synthesize useFastPathShadow=_useFastPathShadow;
+@property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property(nonatomic) _Bool shouldCropToCircle; // @synthesize shouldCropToCircle=_shouldCropToCircle;
+@property(nonatomic) _Bool isTemplate; // @synthesize isTemplate=_isTemplate;
+@property(nonatomic) struct CGSize size; // @synthesize size=_size;
+@property(retain, nonatomic) UIImage *uiImage; // @synthesize uiImage=_uiImage;
 - (void).cxx_destruct;
-- (id)observableProperties;
 - (id)initWithImage:(id)arg1;
-@property(retain) UIImage *uiImage; // @synthesize uiImage=_uiImage;
 - (id)init;
 
 @end

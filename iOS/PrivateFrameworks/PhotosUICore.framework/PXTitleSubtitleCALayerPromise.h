@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosUICore/CALayerDelegate-Protocol.h>
 #import <PhotosUICore/PXMutableTitleSubtitleCALayerPromise-Protocol.h>
 
 @class NSArray, NSString, PXTitleSubtitleLabelSpec;
 
-@interface PXTitleSubtitleCALayerPromise <PXMutableTitleSubtitleCALayerPromise>
+@interface PXTitleSubtitleCALayerPromise <PXMutableTitleSubtitleCALayerPromise, CALayerDelegate>
 {
     _Bool _diagnosticsEnabled;
     NSString *_titleText;

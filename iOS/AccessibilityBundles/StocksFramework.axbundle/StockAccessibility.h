@@ -12,7 +12,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySpeakThisString;
-- (id)formattedPrice;
 - (id)_accessibilityLabelWithMarketCap:(_Bool)arg1;
 - (id)accessibilityLabel;
 

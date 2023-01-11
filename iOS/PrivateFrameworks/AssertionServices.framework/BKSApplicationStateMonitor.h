@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BSSignal, NSArray;
 @protocol OS_dispatch_queue, OS_xpc_object;
@@ -39,10 +39,13 @@
 - (void)_setEndpoint:(id)arg1;
 - (id)_connection;
 - (void)invalidate;
+- (id)dumpDescriptionForSubsystem:(id)arg1;
 - (id)bundleInfoValueForKey:(id)arg1 PID:(int)arg2;
 - (_Bool)isApplicationBeingDebugged:(id)arg1;
 - (unsigned int)mostElevatedApplicationStateForPID:(int)arg1;
 - (unsigned int)applicationStateForApplication:(id)arg1;
+- (id)applicationInfoForPID:(int)arg1;
+- (id)applicationInfoForApplication:(id)arg1;
 - (void)applicationInfoForPID:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)applicationInfoForApplication:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateInterestedAssertionReasons:(id)arg1;

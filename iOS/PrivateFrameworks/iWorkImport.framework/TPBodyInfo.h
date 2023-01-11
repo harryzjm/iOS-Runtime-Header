@@ -4,22 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSDContainerInfo-Protocol.h>
+#import <iWorkImport/TSKModelRootIndexProvider-Protocol.h>
 
-@class NSString, TPPageHint, TPPageInfo, TSDInfoGeometry, TSPObject, TSWPStorage;
+@class NSArray, NSString, TPPageHint, TPPageInfo, TSDInfoGeometry, TSPObject, TSWPStorage;
 @protocol TSDContainerInfo, TSDHint, TSDOwningAttachment, TSWPOffscreenColumn, TSWPTopicNumberHints;
 
 __attribute__((visibility("hidden")))
-@interface TPBodyInfo : NSObject <TSDContainerInfo>
+@interface TPBodyInfo : NSObject <TSDContainerInfo, TSKModelRootIndexProvider>
 {
     TPPageInfo *_pageInfo;
 }
 
 @property(nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @synthesize parentInfo=_pageInfo;
 - (id)infoForSelectionPath:(id)arg1;
-- (id)childInfos;
+@property(readonly, nonatomic) NSArray *childInfos;
 - (id)copyWithContext:(id)arg1;
 - (_Bool)isThemeContent;
 - (_Bool)isSelectable;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isFloatingAboveText) _Bool floatingAboveText;
 @property(readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
 @property(nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
+- (long long)modelRootIndex;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
 - (void)setPrimitiveGeometry:(id)arg1;
 @property(copy, nonatomic) TSDInfoGeometry *geometry;

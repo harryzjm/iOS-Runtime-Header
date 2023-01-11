@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/PKPaymentWebServiceProxyObjectExportedInterface-Protocol.h>
 
@@ -24,6 +24,7 @@
 - (void)invalidateRemoteProxyTargetDevice;
 - (void)archiveBackgroundContext:(id)arg1;
 - (void)archiveContext:(id)arg1;
+- (void)supportsPeerPaymentRegistrationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removePass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addPassData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handlePotentialExpressPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -33,7 +34,9 @@
 - (void)downloadAllPaymentPasses;
 - (void)validateAddPreconditionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)canProvisionPaymentPassWithPrimaryAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)passesOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)hasPassesOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setNewAuthRandom:(CDUnknownBlockType)arg1;
 - (void)setNewAuthRandomIfNecessaryReturningPairingState:(CDUnknownBlockType)arg1;
 - (void)noteProvisioningDidEnd;
 - (void)noteProvisioningDidBegin;

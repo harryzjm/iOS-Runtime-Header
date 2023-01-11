@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class HSCloudClient, MSVDistributedNotificationObserver;
 @protocol HSCloudAvailability, OS_dispatch_queue;
@@ -17,7 +17,10 @@
     _Bool _preferencesChangedNotifyTokenIsValid;
     NSObject<OS_dispatch_queue> *_queue;
     MSVDistributedNotificationObserver *_addToPlaylistBehaviorChangedObserver;
-    _Bool _isInitialImport;
+    _Bool _isCloudLibraryUpdateInProgress;
+    _Bool _isCloudLibraryInitialImport;
+    _Bool _isJaliscoUpdateInProgress;
+    _Bool _isJaliscoInitialImport;
     _Bool _isCloudEnabled;
     _Bool _jaliscoGeniusEnabled;
     HSCloudClient *_cloudClient;
@@ -51,16 +54,23 @@
 - (void)enableCloudLibraryWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)isCloudLibraryEnabled;
 - (void)resignActive;
+- (void)loadJaliscoLibraryUpdateProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)loadCloudMusicLibraryUpdateProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadUpdateProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadGeniusItemsForSagaID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-@property(readonly, nonatomic) _Bool isUpdateInProgress; // @synthesize isUpdateInProgress=_isUpdateInProgress;
-@property(readonly, nonatomic) _Bool isInitialImport; // @synthesize isInitialImport=_isInitialImport;
+@property(readonly, nonatomic) _Bool isJaliscoUpdateInProgress; // @synthesize isJaliscoUpdateInProgress=_isJaliscoUpdateInProgress;
+@property(readonly, nonatomic) _Bool isCloudLibraryUpdateInProgress; // @synthesize isCloudLibraryUpdateInProgress=_isCloudLibraryUpdateInProgress;
+@property(readonly, nonatomic) _Bool isUpdateInProgress;
+@property(readonly, nonatomic) _Bool isJaliscoInitialImport; // @synthesize isJaliscoInitialImport=_isJaliscoInitialImport;
+@property(readonly, nonatomic) _Bool isCloudLibraryInitialImport; // @synthesize isCloudLibraryInitialImport=_isCloudLibraryInitialImport;
+@property(readonly, nonatomic) _Bool isInitialImport;
 @property(readonly, nonatomic) _Bool isGeniusEnabled;
 @property(readonly, nonatomic) _Bool hasCloudLockerAccount;
 @property(readonly, nonatomic) _Bool hasPurchaseHistoryAccount;
 - (void)becomeActiveAndWaitUntilDone:(_Bool)arg1;
 - (void)becomeActive;
 - (void)deprioritizeArtworkRequestForEntityPersistentID:(long long)arg1 entityType:(long long)arg2 artworkType:(long long)arg3 artworkSourceType:(long long)arg4;
+- (void)loadArtworkInfoForEntityPersistentID:(long long)arg1 entityType:(long long)arg2 artworkType:(long long)arg3 artworkSourceType:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)loadArtworkForEntityPersistentID:(long long)arg1 entityType:(long long)arg2 artworkType:(long long)arg3 artworkSourceType:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)removeItemsWithSagaIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addStorePlaylistWithGlobalID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

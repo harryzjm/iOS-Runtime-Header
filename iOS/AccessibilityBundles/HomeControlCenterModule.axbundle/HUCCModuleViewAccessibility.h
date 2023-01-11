@@ -16,6 +16,8 @@
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (_Bool)isAccessibilityElement;
+- (void)layoutSubviews;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

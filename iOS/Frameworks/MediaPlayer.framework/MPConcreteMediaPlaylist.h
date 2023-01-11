@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MediaPlayer/NSCoding-Protocol.h>
 #import <MediaPlayer/NSCopying-Protocol.h>
 
 @class MPMediaQuery, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
-@interface MPConcreteMediaPlaylist <NSCoding, NSCopying>
+@interface MPConcreteMediaPlaylist <NSCopying>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSMutableDictionary *_properties;
@@ -18,6 +17,7 @@
     void *_clusterPlaylist;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 - (_Bool)_allowsEditing;
 - (void)endGeneratingGeniusClusterItems;

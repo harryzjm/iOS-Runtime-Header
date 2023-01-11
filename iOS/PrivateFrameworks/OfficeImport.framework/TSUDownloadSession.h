@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSError, NSMutableDictionary, NSMutableSet, NSProgress, NSString, NSURLResponse, OITSUBasicProgress, OITSUProgress, TSUDownloadManager;
 @protocol OS_dispatch_group, OS_dispatch_queue, TSUDownloadSessionDelegate;

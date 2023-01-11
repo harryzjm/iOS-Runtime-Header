@@ -37,6 +37,7 @@
 - (id)_accessibilityRetrieveIvarText;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityCheckForAllowedModalView:(struct CGPoint)arg1 event:(id)arg2;
+- (_Bool)_accessibilityViewIsBeingHitTested:(id)arg1;
 - (id)__accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)_accessibilityIsUserInteractionEnabledChain;
 - (double)_accessibilityMaxFuzzyHitTestDistance;

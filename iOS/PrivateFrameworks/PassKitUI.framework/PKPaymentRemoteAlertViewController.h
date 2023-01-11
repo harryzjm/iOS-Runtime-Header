@@ -9,18 +9,20 @@
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 #import <PassKitUI/SBSHardwareButtonEventConsuming-Protocol.h>
 
-@class CLInUseAssertion, NSArray, NSObject, NSString, PKAssertion, PKFieldDetectEducationViewController, PKFieldProperties, PKPassGroupsViewController, PKPaymentService;
+@class CLInUseAssertion, NSArray, NSObject, NSString, PKAssertion, PKEducationViewController, PKFieldProperties, PKPassGroupsViewController, PKPaymentService, SBSAssertion;
 @protocol BSInvalidatable, OS_dispatch_group;
 
 @interface PKPaymentRemoteAlertViewController : SBUIRemoteAlertServiceViewController <PKPaymentServiceDelegate, SBSHardwareButtonEventConsuming>
 {
     PKPassGroupsViewController *_passGroupsViewController;
+    id _staticGlyphResources;
     PKPaymentService *_paymentService;
     PKFieldProperties *_fieldProperties;
     NSArray *_fieldPassUniqueIdentifiers;
     NSString *_passUniqueIdentifier;
     CLInUseAssertion *_passbookForegroundAssertion;
     id <BSInvalidatable> _lockButtonObserver;
+    SBSAssertion *_lockButtonAssertion;
     PKAssertion *_notificationSuppressionAssertion;
     NSObject<OS_dispatch_group> *_fieldPropertiesLookupGroup;
     long long _presentationSource;
@@ -28,10 +30,12 @@
     _Bool _backlightActive;
     _Bool _deviceUILocked;
     _Bool _processHomeButtonEvents;
-    _Bool _homeButtonDoubleTapAlertHasOccurred;
-    PKFieldDetectEducationViewController *_educationVC;
+    _Bool _brightnessRampingAllowed;
+    PKEducationViewController *_educationVC;
     _Bool _appearedOnce;
-    _Bool _invalidated;
+    _Bool _insertedGroupsVC;
+    _Bool _shouldInsertGroupsVC;
+    long long _invalidationStatus;
 }
 
 + (_Bool)_isSecureForRemoteViewService;
@@ -48,6 +52,7 @@
 - (void)_dismissIfRestricted;
 - (void)_presentHomeButtonDoubleTapAlertIfNecessary;
 - (void)_presentPassAnimated:(_Bool)arg1;
+- (void)_insertGroupController;
 - (void)_setupGroupController;
 - (void)handleHomeButtonPressed;
 - (void)configureWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -59,12 +64,15 @@
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
+- (void)_appearIfNecessary;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidLoad;
+- (void)loadView;
 - (void)_willAppearInRemoteViewController;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(_Bool)arg2;
+- (void)_invalidateForType:(long long)arg1;
 - (void)_invalidate;
 - (void)dealloc;
 - (id)init;

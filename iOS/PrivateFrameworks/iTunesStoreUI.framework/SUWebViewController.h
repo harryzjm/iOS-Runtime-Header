@@ -7,7 +7,7 @@
 #import <iTunesStoreUI/SUWebViewDelegate-Protocol.h>
 #import <iTunesStoreUI/SUWebViewManagerDelegate-Protocol.h>
 
-@class ISURLRequestPerformance, NSString, NSURL, SSAuthenticationContext, SSMutableAuthenticationContext, SUDelayedNavigationItem, SUMescalSession, SUObjectPool, SUStorePageProtocol, SUWebView, SUWebViewManager;
+@class ACAccount, ISURLRequestPerformance, NSDictionary, NSString, NSURL, SSAuthenticationContext, SSMutableAuthenticationContext, SUDelayedNavigationItem, SUMescalSession, SUObjectPool, SUStorePageProtocol, SUWebView, SUWebViewManager;
 
 @interface SUWebViewController <SUWebViewManagerDelegate, SUWebViewDelegate>
 {
@@ -28,8 +28,12 @@
     NSURL *_url;
     _Bool _viewIsReady;
     SUWebViewManager *_webViewManager;
+    ACAccount *_account;
+    NSDictionary *_tidHeaders;
 }
 
+@property(retain, nonatomic) NSDictionary *tidHeaders; // @synthesize tidHeaders=_tidHeaders;
+@property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property(nonatomic) _Bool viewIsReady; // @synthesize viewIsReady=_viewIsReady;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(nonatomic) _Bool shouldSignRequests; // @synthesize shouldSignRequests=_shouldSignRequests;

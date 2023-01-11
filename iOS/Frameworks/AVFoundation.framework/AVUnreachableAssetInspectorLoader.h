@@ -6,6 +6,7 @@
 
 @class NSDictionary;
 
+__attribute__((visibility("hidden")))
 @interface AVUnreachableAssetInspectorLoader
 {
     int _figError;

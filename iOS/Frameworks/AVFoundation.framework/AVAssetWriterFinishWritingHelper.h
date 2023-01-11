@@ -6,6 +6,7 @@
 
 @class NSArray, NSOperation;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetWriterFinishWritingHelper
 {
     NSArray *_finishWritingOperations;

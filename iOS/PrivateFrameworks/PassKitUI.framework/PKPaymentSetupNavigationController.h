@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PassKitUI/PKPaymentSetupRequiresPreflightProtocol-Protocol.h>
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 
 @class NSString, PKPaymentProvisioningController;
 @protocol PKPaymentSetupDelegate;
 
-@interface PKPaymentSetupNavigationController <PKPaymentSetupViewControllerDelegate>
+@interface PKPaymentSetupNavigationController <PKPaymentSetupViewControllerDelegate, PKPaymentSetupRequiresPreflightProtocol>
 {
     long long _context;
+    _Bool _rootViewControllerNeedsConfiguration;
     _Bool _showsWelcomeViewController;
     _Bool _allowsManualEntry;
     PKPaymentProvisioningController *_provisioningController;
@@ -33,7 +35,9 @@
 - (void)viewController:(id)arg1 didShowProvisioningError:(id)arg2;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;
 - (void)cancel:(id)arg1;
+- (void)_dirtyConfigurationAndReloadIfNeeded;
 - (void)setCustomFormSheetPresentationStyleForiPad;
+- (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_reconfigureRootViewController;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(_Bool)arg2;
 - (void)viewDidLoad;

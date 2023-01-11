@@ -8,9 +8,8 @@
 
 #import <GeoServices/GEOProtobufSessionTaskDelegate-Protocol.h>
 
-@class GEOApplicationAuditToken, GEOETATrafficUpdateRequest, GEOProtobufSession, GEOProtobufSessionTask, NSString;
+@class GEOApplicationAuditToken, GEOETATrafficUpdateRequest, GEOMapServiceTraits, GEOProtobufSession, GEOProtobufSessionTask, NSString;
 
-__attribute__((visibility("hidden")))
 @interface GEOETAProvider : NSObject <GEOProtobufSessionTaskDelegate>
 {
     GEOProtobufSession *_protobufSession;
@@ -20,6 +19,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _finishedHandler;
     CDUnknownBlockType _willSendRequestHandler;
     GEOApplicationAuditToken *_auditToken;
+    GEOMapServiceTraits *_traits;
     _Bool _cancelled;
     struct GEOOnce_s _didStart;
 }
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)startRequest:(id)arg1 connectionProperties:(id)arg2 willSendRequest:(CDUnknownBlockType)arg3 finished:(CDUnknownBlockType)arg4 error:(CDUnknownBlockType)arg5;
 - (void)updateRequest:(id)arg1 finished:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
 - (void)startRequest:(id)arg1 finished:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
-- (id)initWithAuditToken:(id)arg1;
+- (id)initWithAuditToken:(id)arg1 traits:(id)arg2;
 - (id)init;
 - (void)didCompleteTask;
 - (void)protobufSession:(id)arg1 willSendRequestForTask:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

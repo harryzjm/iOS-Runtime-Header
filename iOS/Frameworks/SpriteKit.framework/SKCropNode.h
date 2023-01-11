@@ -12,6 +12,7 @@
     struct SKCCropNode *_skcCropNode;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(nonatomic) _Bool invertMask;

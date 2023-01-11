@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSDContainerInfo-Protocol.h>
+#import <iWorkImport/TSKModelRootIndexProvider-Protocol.h>
 
-@class NSString, TPBodyInfo, TPDocumentRoot, TSDInfoGeometry, TSPObject;
+@class NSArray, NSString, TPBodyInfo, TPDocumentRoot, TSDInfoGeometry, TSPObject;
 @protocol TPPageLayoutInfoProvider, TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
-@interface TPPageInfo : NSObject <TSDContainerInfo>
+@interface TPPageInfo : NSObject <TSDContainerInfo, TSKModelRootIndexProvider>
 {
     unsigned long long _pageIndex;
     TPBodyInfo *_bodyInfo;
@@ -20,13 +21,22 @@ __attribute__((visibility("hidden")))
     id <TPPageLayoutInfoProvider> _layoutInfoProvider;
 }
 
++ (unsigned long long)documentSetupLeftSidePageIndex;
++ (unsigned long long)documentSetupRightSidePageIndex;
++ (unsigned long long)documentSetupPageIndex;
++ (unsigned long long)pageTemplateIndexFromPageIndex:(unsigned long long)arg1 documentRoot:(id)arg2;
++ (unsigned long long)pageIndexFromPageTemplateIndex:(unsigned long long)arg1;
++ (_Bool)isAlternativePageIndex:(unsigned long long)arg1 documentRoot:(id)arg2;
++ (_Bool)isPageTemplatePageIndex:(unsigned long long)arg1 documentRoot:(id)arg2;
++ (_Bool)isDocSetupPageIndex:(unsigned long long)arg1;
++ (_Bool)hasBodyInfo;
 @property(readonly, nonatomic) __weak id <TPPageLayoutInfoProvider> layoutInfoProvider; // @synthesize layoutInfoProvider=_layoutInfoProvider;
 @property(readonly, nonatomic) __weak TPDocumentRoot *documentRoot; // @synthesize documentRoot=_documentRoot;
 @property(readonly, nonatomic) TPBodyInfo *bodyInfo; // @synthesize bodyInfo=_bodyInfo;
 @property(readonly, nonatomic) unsigned long long pageIndex; // @synthesize pageIndex=_pageIndex;
 - (void).cxx_destruct;
 - (id)infoForSelectionPath:(id)arg1;
-- (id)childInfos;
+@property(readonly, nonatomic) NSArray *childInfos;
 - (Class)layoutClass;
 - (_Bool)isSelectable;
 @property(readonly, nonatomic, getter=isAttachedToBodyText) _Bool attachedToBodyText;
@@ -35,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isFloatingAboveText) _Bool floatingAboveText;
 @property(readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
 @property(nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
+- (long long)modelRootIndex;
 - (_Bool)isThemeContent;
 - (Class)repClass;
 - (void)setPrimitiveGeometry:(id)arg1;

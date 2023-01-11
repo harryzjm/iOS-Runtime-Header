@@ -22,7 +22,7 @@
 @property(retain, nonatomic) NSString *initialValue; // @synthesize initialValue=_initialValue;
 - (void).cxx_destruct;
 - (void)configure:(_Bool)arg1 requirePasscodeForActions:(_Bool)arg2;
-- (_Bool)dismissOnLock;
+- (_Bool)reappearsAfterLock;
 - (_Bool)allowMenuButtonDismissal;
 - (_Bool)willShowInAwayItems;
 - (_Bool)shouldShowInEmergencyCall;

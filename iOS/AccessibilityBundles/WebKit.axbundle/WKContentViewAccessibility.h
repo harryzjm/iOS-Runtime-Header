@@ -25,6 +25,7 @@
 - (void)paste:(id)arg1;
 - (void)cut:(id)arg1;
 - (void)copy:(id)arg1;
+- (void)_pasteboardChanged:(id)arg1;
 - (id)_accessibilityResponderElementForFocus;
 - (unsigned long long)accessibilityTraits;
 - (_Bool)_accessibilityServesAsFirstResponder;
@@ -34,10 +35,10 @@
 - (void)_didRelaunchProcess;
 - (void)_axCleanupAfterTermination;
 - (void)_accessibilityRegisterUIProcessTokens;
-- (void)_axMonitorWebContentSuspensions;
-- (void)_axHandleMonitorStateUpdate:(id)arg1;
 - (void)_axClearRemoteElements;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)_registerForNotificationsIfNecessary;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

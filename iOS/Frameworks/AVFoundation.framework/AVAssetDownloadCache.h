@@ -6,6 +6,7 @@
 
 @class AVAssetDownloadCacheInternal;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetDownloadCache
 {
     AVAssetDownloadCacheInternal *_internal;

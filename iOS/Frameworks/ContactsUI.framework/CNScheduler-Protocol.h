@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <ContactsUI/CNTimeProvider-Protocol.h>
 #import <ContactsUI/NSObject-Protocol.h>
 
 @protocol CNCancelable;
 
-@protocol CNScheduler <NSObject>
-- (double)timestamp;
+@protocol CNScheduler <CNTimeProvider, NSObject>
 - (id <CNCancelable>)afterDelay:(double)arg1 performBlock:(void (^)(void))arg2 qualityOfService:(unsigned long long)arg3;
 - (id <CNCancelable>)afterDelay:(double)arg1 performBlock:(void (^)(void))arg2;
 - (id <CNCancelable>)performCancelableBlock:(void (^)(CNCancelationToken *))arg1 qualityOfService:(unsigned long long)arg2;

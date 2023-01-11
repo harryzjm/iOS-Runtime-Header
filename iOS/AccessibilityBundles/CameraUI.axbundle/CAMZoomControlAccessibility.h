@@ -22,6 +22,10 @@
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
+- (void)_axSetZoomFactorForDisplayValue:(double)arg1;
+- (double)_axMinimumZoomFactor;
+- (double)_axMaximumZoomFactor;
+- (double)_axDisplayZoomValue;
 
 @end
 

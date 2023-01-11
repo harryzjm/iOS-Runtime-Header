@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, NSString;
-@protocol CPLMinglePulledChangesTaskDelegate, OS_dispatch_queue;
+@class CPLScopeFilter, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 @interface CPLMinglePulledChangesTask
 {
@@ -13,23 +13,21 @@
     NSString *_clientCacheIdentifier;
     _Bool _hasPreparedForMingling;
     unsigned long long _countOfNotifiedBatchesInPullQueue;
+    CPLScopeFilter *_scopeFilter;
 }
 
 + (_Bool)mingleBatch:(id)arg1 forStore:(id)arg2 putBatchesInPullQueue:(_Bool *)arg3 error:(id *)arg4;
+@property(retain, nonatomic) CPLScopeFilter *scopeFilter; // @synthesize scopeFilter=_scopeFilter;
 - (void).cxx_destruct;
 - (id)taskIdentifier;
 - (void)cancel;
-- (void)resume;
-- (void)pause;
 - (void)taskDidFinishWithError:(id)arg1;
 - (void)launch;
 - (void)_launch;
 - (void)_processNextBatch;
 - (void)_taskDidFinishWithError:(id)arg1;
+- (_Bool)_checkContinueMinglingInTransaction:(id)arg1;
 - (id)initWithEngineLibrary:(id)arg1;
-
-// Remaining properties
-@property(retain) id <CPLMinglePulledChangesTaskDelegate> delegate; // @dynamic delegate;
 
 @end
 

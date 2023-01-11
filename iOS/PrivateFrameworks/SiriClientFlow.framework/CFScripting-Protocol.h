@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, SACFAbstractClientCommand, SACFClientFlowScript;
+@class AFPeerInfo, NSArray, SACFAbstractClientCommand, SACFClientFlowScript, SACFSignal;
 
 @protocol CFScripting
-- (id)initWithConnectionName:(NSString *)arg1;
 - (void)removeScripts:(NSArray *)arg1 completion:(void (^)(_Bool))arg2;
 - (void)updateScriptCacheForFlowScript:(SACFClientFlowScript *)arg1 completion:(void (^)(_Bool))arg2;
-- (void)performWarmup;
-- (void)performWarmupAndEvaluateScriptWithScriptHint:(NSString *)arg1;
-- (void)performCommandExecutionForCommand:(SACFAbstractClientCommand *)arg1 completion:(void (^)(SABaseCommand *))arg2;
+- (void)performCommandExecutionForCommand:(SACFAbstractClientCommand *)arg1 peerInfo:(AFPeerInfo *)arg2 completion:(void (^)(SABaseCommand *))arg3;
+- (void)warmUpWithSignal:(SACFSignal *)arg1 completion:(void (^)(_Bool))arg2;
 @end
 

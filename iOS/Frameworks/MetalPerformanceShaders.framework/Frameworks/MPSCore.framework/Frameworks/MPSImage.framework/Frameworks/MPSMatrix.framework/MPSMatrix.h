@@ -28,10 +28,14 @@
 @property(readonly, nonatomic) unsigned long long rows; // @synthesize rows=_rows;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)synchronizeOnCommandBuffer:(id)arg1;
+- (id)debugDescription;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, nonatomic) id <MTLBuffer> data;
+- (unsigned long long)resourceSize;
+- (id)initWithDevice:(id)arg1 descriptor:(id)arg2;
 - (id)initWithBuffer:(id)arg1 descriptor:(id)arg2;
-- (id)initWithDescriptor:(id)arg1 device:(struct MPSDevice *)arg2;
+- (id)initPrivateWithDescriptor:(id)arg1 device:(struct MPSDevice *)arg2;
 - (id)init;
 @property(readonly, retain, nonatomic) id <MTLDevice> device;
 

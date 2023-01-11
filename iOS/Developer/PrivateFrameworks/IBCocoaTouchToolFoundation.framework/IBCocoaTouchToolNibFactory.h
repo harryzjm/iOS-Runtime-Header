@@ -27,10 +27,8 @@
 - (void).cxx_destruct;
 - (id)archiver:(id)arg1 willEncodeObject:(id)arg2;
 - (id)nibCoder:(id)arg1 willEncodeObject:(id)arg2 forObject:(id)arg3 forKey:(id)arg4;
-- (id)nibCoder:(id)arg1 willEncodeObject:(id)arg2;
 - (id)coder:(id)arg1 willEncodeObject:(id)arg2;
 - (id)nibDataWithMinimumCompatibility:(long long)arg1;
-- (Class)archiverClassForMinimumCompatibility:(long long)arg1;
 - (void)encodeNibContentWithCoder:(id)arg1;
 - (id)initWithObjects:(id)arg1 customClasses:(id)arg2 topLevelObjects:(id)arg3 traitStorageLists:(id)arg4 accessibilityConfigurations:(id)arg5 connections:(id)arg6 keyValuePairs:(id)arg7 andVisibleWindows:(id)arg8;
 

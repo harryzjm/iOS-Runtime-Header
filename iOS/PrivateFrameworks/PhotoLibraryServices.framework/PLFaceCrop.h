@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotoLibraryServices/PLCloudDeletable-Protocol.h>
 #import <PhotoLibraryServices/PLSyncableObject-Protocol.h>
 
 @class NSData, NSString, PLDetectedFace, PLManagedAsset, PLPerson;
 
-@interface PLFaceCrop <PLSyncableObject>
+@interface PLFaceCrop <PLSyncableObject, PLCloudDeletable>
 {
     _Bool _needsPersistenceUpdate;
 }
@@ -25,6 +26,8 @@
 + (id)faceCropsWithUUIDs:(id)arg1 inPhotoLibrary:(id)arg2;
 + (id)allFaceCropsInPhotoLibrary:(id)arg1;
 + (id)_faceCropsMatchingPredicate:(id)arg1 limit:(unsigned long long)arg2 inManagedObjectContext:(id)arg3;
++ (id)cloudUUIDKeyForDeletion;
++ (long long)cloudDeletionTypeForTombstone:(id)arg1;
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)insertIntoManagedObjectContext:(id)arg1 withUUID:(id)arg2 resourceData:(id)arg3 type:(short)arg4;
@@ -33,15 +36,19 @@
 @property(readonly, copy) NSString *debugDescription;
 - (id)cplFaceCropChange;
 @property(readonly, retain, nonatomic) id localID;
+- (id)momentShare;
 - (id)cplFullRecord;
 - (_Bool)isSyncableChange;
 - (_Bool)supportsCloudUpload;
 - (void)applyPropertiesToTrainingFace;
+@property(readonly, copy) NSString *cloudUUIDForDeletion;
+@property(readonly) long long cloudDeletionType;
 - (void)prepareForDeletion;
 - (void)willSave;
 
 // Remaining properties
 @property(retain, nonatomic) PLManagedAsset *asset; // @dynamic asset;
+@property(nonatomic) short cloudDeleteState; // @dynamic cloudDeleteState;
 @property(nonatomic) short cloudLocalState; // @dynamic cloudLocalState;
 @property(nonatomic) unsigned short cloudType; // @dynamic cloudType;
 @property(readonly, copy) NSString *description;

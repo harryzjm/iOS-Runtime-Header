@@ -11,6 +11,7 @@
 
 @protocol NNMKSyncStateManager <NSObject>
 @property(nonatomic) __weak id <NNMKSyncStateManagerDelegate> delegate;
+- (_Bool)pairedDeviceSupportsStandaloneMode;
 - (_Bool)pairedDeviceSupportsMultipleMailboxes;
 - (_Bool)willPresentNotificationForMessage:(NNMKMessage *)arg1;
 - (_Bool)pairedDeviceSupportsMailContentProtectedChannel;

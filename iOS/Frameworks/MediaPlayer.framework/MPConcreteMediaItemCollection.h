@@ -5,12 +5,11 @@
 //
 
 #import <MediaPlayer/MPCacheableConcreteMediaEntity-Protocol.h>
-#import <MediaPlayer/NSCoding-Protocol.h>
 #import <MediaPlayer/NSCopying-Protocol.h>
 
 @class MPConcreteMediaEntityPropertiesCache, MPMediaItem, MPMediaQuery;
 
-@interface MPConcreteMediaItemCollection <NSCoding, NSCopying, MPCacheableConcreteMediaEntity>
+@interface MPConcreteMediaItemCollection <NSCopying, MPCacheableConcreteMediaEntity>
 {
     long long _identifier;
     MPMediaQuery *_itemsQuery;
@@ -19,6 +18,7 @@
     MPConcreteMediaEntityPropertiesCache *_propertiesCache;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_enumerateItemPersistentIDsUsingBlock:(CDUnknownBlockType)arg1;
 - (unsigned long long)count;

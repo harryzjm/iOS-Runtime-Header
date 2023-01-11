@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 @protocol OS_dispatch_io, OS_dispatch_queue, __NSCFLocalDownloadFileOpener;
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property(retain) NSString *path; // @synthesize path=_path;
 - (void)captureFile:(id *)arg1 outStat:(struct stat *)arg2;
 - (id)fileURL;
+- (void)setFinished;
 - (void)finishOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)writeBytes:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)truncate;

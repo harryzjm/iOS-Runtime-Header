@@ -14,9 +14,9 @@
 }
 
 + (void)_createMainFrameWithSimpleHTMLDocumentWithPage:(struct Page *)arg1 frameView:(id)arg2 style:(id)arg3;
-+ (Ref_3893e693)_createSubframeWithOwnerElement:(struct HTMLFrameOwnerElement *)arg1 frameName:(const struct String *)arg2 frameView:(id)arg3;
++ (Ref_840bf4f8)_createSubframeWithOwnerElement:(struct HTMLFrameOwnerElement *)arg1 frameName:(const struct String *)arg2 frameView:(id)arg3;
 + (void)_createMainFrameWithPage:(struct Page *)arg1 frameName:(const struct String *)arg2 frameView:(id)arg3;
-+ (Ref_3893e693)_createFrameWithPage:(struct Page *)arg1 frameName:(const struct String *)arg2 frameView:(id)arg3 ownerElement:(struct HTMLFrameOwnerElement *)arg4;
++ (Ref_840bf4f8)_createFrameWithPage:(struct Page *)arg1 frameName:(const struct String *)arg2 frameView:(id)arg3 ownerElement:(struct HTMLFrameOwnerElement *)arg4;
 + (id)stringWithData:(id)arg1 textEncodingName:(id)arg2;
 @property(readonly, nonatomic) JSContext *javaScriptContext;
 @property(readonly, nonatomic) struct OpaqueJSContext *globalContext;
@@ -61,8 +61,8 @@
 - (id)_markDOMRange;
 - (struct _NSRange)_convertDOMRangeToNSRange:(id)arg1;
 - (id)_convertNSRangeToDOMRange:(struct _NSRange)arg1;
-- (RefPtr_59db400e)_convertToDOMRange:(struct _NSRange)arg1 rangeIsRelativeTo:(unsigned char)arg2;
-- (RefPtr_59db400e)_convertToDOMRange:(struct _NSRange)arg1;
+- (RefPtr_033e7b31)_convertToDOMRange:(struct _NSRange)arg1 rangeIsRelativeTo:(unsigned char)arg2;
+- (RefPtr_033e7b31)_convertToDOMRange:(struct _NSRange)arg1;
 - (struct _NSRange)_convertToNSRange:(struct Range *)arg1;
 - (int)_selectionGranularity;
 - (_Bool)_needsLayout;
@@ -225,7 +225,6 @@
 - (struct CGRect)elementRectAtPoint:(struct CGPoint)arg1;
 - (id)nextUnperturbedDictationResultBoundaryFromPosition:(id)arg1;
 - (id)previousUnperturbedDictationResultBoundaryFromPosition:(id)arg1;
-- (struct CGImage *)imageForNode:(id)arg1 allowDownsampling:(_Bool)arg2 drawContentBehindTransparentNodes:(_Bool)arg3;
 - (_Bool)renderedCharactersExceed:(unsigned long long)arg1;
 - (id)endPosition;
 - (id)startPosition;

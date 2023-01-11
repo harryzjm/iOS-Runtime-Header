@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableSet, NSXPCConnection;
 @protocol OS_dispatch_queue;
@@ -21,13 +21,19 @@
     CDUnknownBlockType _invalidationHandler;
 }
 
++ (void)primaryAccountSignedOut;
++ (void)primaryAccountSignedIn;
 @property(nonatomic) unsigned int type; // @synthesize type=_type;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 - (void).cxx_destruct;
+- (void)primaryAccountSignedOutWithCompletion:(CDUnknownBlockType)arg1;
+- (void)primaryAccountSignedInWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getIdentitiesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)diagnosticShow:(id)arg1 level:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)diagnosticLogControl:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)diagnosticCommand:(id)arg1 params:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)activateAssertionWithIdentifier:(id)arg1;
 - (void)_invalidated;
 - (void)invalidate;

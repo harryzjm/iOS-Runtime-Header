@@ -12,7 +12,9 @@
 + (id)dvt_dataWithFirstBytes:(unsigned long long)arg1 ofFile:(id)arg2 error:(id *)arg3;
 - (id)dvt_stringRepresentationInBase:(unsigned long long)arg1;
 - (id)dvt_base64EncodedString;
+- (id)dvt_lowercaseHexString;
 - (id)dvt_hexString;
+- (id)dvt_hexStringLowercased:(_Bool)arg1;
 - (id)dvt_dataWithSHA1Digest;
 - (id)dvt_dataWithMD5Digest;
 @end

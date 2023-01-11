@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -27,17 +27,27 @@
 - (id)_queue_region:(id)arg1;
 - (id)_queue_regions;
 - (_Bool)_queue_supportedForOSVersion:(id)arg1 inRegion:(id)arg2 deviceClass:(id)arg3 platform:(id)arg4;
+- (id)marketGeoRegionNotificationNetworkThresholdsForRegion:(id)arg1;
+- (id)marketGeoRegionNotificationTimeRangeForRegion:(id)arg1;
+- (_Bool)browseProvisioningBankAppsManualEntryDisabledForRegion:(id)arg1;
+- (_Bool)browseProvisioningBankAppsEnabledForRegion:(id)arg1;
+- (id)marketGeoRegionNotificationHourForRegion:(id)arg1;
+- (id)marketGeoRegionNotificationSendLimitForRegion:(id)arg1;
+- (id)marketGeoRegionNotificationDisabledNetworksForRegion:(id)arg1;
 - (_Bool)remotePaymentsRequiredForVoiceover;
 - (id)unsupportedWebPaymentConfigurations;
 - (id)supportedRegionsForOSVersion:(id)arg1 deviceClass:(id)arg2 platform:(id)arg3;
 - (id)supportedRegionsForOSVersion:(id)arg1 deviceClass:(id)arg2;
 - (id)maxRefreshIntervalForRegion:(id)arg1;
 - (id)maxRefreshIntervalForUnsupportedRegion;
+- (id)betaPaymentNetworkVersionsForRegion:(id)arg1;
+- (id)betaPaymentNetworksForRegion:(id)arg1;
+- (_Bool)userCanResetCloudStoreApplePayViewForRegion:(id)arg1;
+- (_Bool)peerPaymentEnabledForRegion:(id)arg1;
 - (double)provisioningEnablementPercentageForRegion:(id)arg1;
 - (_Bool)regionHasProvisioningEnablementPercentage:(id)arg1;
 - (id)paymentSetupBrowsableProductTypesForRegion:(id)arg1;
 - (_Bool)suppressCardholderNameFieldForRegion:(id)arg1;
-- (_Bool)findWithoutNumberEnabledForRegion:(id)arg1;
 - (id)heroImageManifestURLForRegion:(id)arg1;
 - (id)primaryFeaturedNetworkForRegion:(id)arg1;
 - (id)paymentSetupFeaturedNetworksForRegion:(id)arg1;

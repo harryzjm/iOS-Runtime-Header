@@ -15,6 +15,7 @@
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;
 - (id)accessibilityContainer;
+- (_Bool)accessibilityElementsHidden;
 - (struct CGRect)accessibilityFrame;
 - (id)_accessibilitySpriteKitChildrenNodes;
 - (id)accessibilityLabel;

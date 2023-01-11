@@ -7,18 +7,17 @@
 #import <objc/NSObject.h>
 
 @class CDPContext;
-@protocol CDPDProtectedCloudStorageProxy;
+@protocol CDPProtectedCloudStorageProxy;
 
 @interface CDPDPCSController : NSObject
 {
-    id <CDPDProtectedCloudStorageProxy> _pcsProxy;
+    id <CDPProtectedCloudStorageProxy> _pcsProxy;
     CDPContext *_context;
 }
 
 @property(retain, nonatomic) CDPContext *context; // @synthesize context=_context;
-@property(retain, nonatomic) id <CDPDProtectedCloudStorageProxy> pcsProxy; // @synthesize pcsProxy=_pcsProxy;
+@property(retain, nonatomic) id <CDPProtectedCloudStorageProxy> pcsProxy; // @synthesize pcsProxy=_pcsProxy;
 - (void).cxx_destruct;
-- (id)_pcsConfigForPrimaryAccount;
 - (id)_contextSetupDictionary;
 - (void)_disableCDPWithCompletion:(CDUnknownBlockType)arg1;
 - (void)disableCDPWithCompletion:(CDUnknownBlockType)arg1;

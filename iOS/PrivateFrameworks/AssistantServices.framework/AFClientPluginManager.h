@@ -4,25 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class NSArray, NSMutableDictionary, NSString;
-
-@interface AFClientPluginManager : NSObject
+@interface AFClientPluginManager
 {
-    NSString *_path;
-    NSArray *_domainKeys;
-    CDUnknownBlockType _factoryInitializationBlock;
-    NSMutableDictionary *_domainKeyDictionary;
 }
 
-+ (id)pluginManagerForPath:(id)arg1 domainKeys:(id)arg2 factoryInitializationBlock:(CDUnknownBlockType)arg3;
-- (void).cxx_destruct;
-- (id)description;
-- (void)_registerBundle:(id)arg1;
-- (void)_loadBundles;
-- (void)enumerateFactoryInstancesForDomainKey:(id)arg1 groupIdentifier:(id)arg2 classIdentifier:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
-- (id)initWithPath:(id)arg1 domainKeys:(id)arg2 factoryInitializationBlock:(CDUnknownBlockType)arg3;
++ (id)clientPluginManagerWithFactoryInitializationBlock:(CDUnknownBlockType)arg1;
+- (id)speakableNamespaceProviderForAceObject:(id)arg1;
 
 @end
 

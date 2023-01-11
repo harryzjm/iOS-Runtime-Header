@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <QuickLookSupport/QLAsynchronousOperation.h>
+
 @class QLItem, QLListCell;
 @protocol QLListCellDataGenerationOperationDelegate;
 
 __attribute__((visibility("hidden")))
-@interface QLListCellDataGenerationOperation
+@interface QLListCellDataGenerationOperation : QLAsynchronousOperation
 {
     _Bool _didGenerateThumbnail;
     _Bool _didGenerateSubtitleInformation;

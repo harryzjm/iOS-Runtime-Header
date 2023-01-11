@@ -6,9 +6,9 @@
 
 #import <TemplateKit/NSObject-Protocol.h>
 
-@class NSArray;
+@protocol TLKObserver;
 
 @protocol TLKObservable <NSObject>
-- (NSArray *)observableProperties;
+@property __weak id <TLKObserver> observer;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDate, NSString, NSURLRequest, NSURLResponse, NSUUID;
 
@@ -18,6 +18,8 @@
 - (id)init;
 
 // Remaining properties
+@property _Bool _apsRelayAttempted; // @dynamic _apsRelayAttempted;
+@property _Bool _apsRelaySucceeded; // @dynamic _apsRelaySucceeded;
 @property _Bool _cellular; // @dynamic _cellular;
 @property(copy) NSUUID *_connectionIdentifier; // @dynamic _connectionIdentifier;
 @property _Bool _connectionRace; // @dynamic _connectionRace;
@@ -31,6 +33,8 @@
 @property long long _responseHeaderBytesReceived; // @dynamic _responseHeaderBytesReceived;
 @property _Bool _secureConnection; // @dynamic _secureConnection;
 @property _Bool _serverPush; // @dynamic _serverPush;
+@property long long _totalBytesReceived; // @dynamic _totalBytesReceived;
+@property long long _totalBytesSent; // @dynamic _totalBytesSent;
 @property(copy) NSDate *connectEndDate; // @dynamic connectEndDate;
 @property(copy) NSDate *connectStartDate; // @dynamic connectStartDate;
 @property(copy) NSDate *domainLookupEndDate; // @dynamic domainLookupEndDate;

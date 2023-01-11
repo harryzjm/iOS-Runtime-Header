@@ -19,7 +19,6 @@
     CDUnknownBlockType _objectsConstructor;
     id _lastEnumeratedObject;
     _Bool _inTransaction;
-    _Bool _requiresSecureCoding;
     NSSet *_defaultUnarchivingAllowedClasses;
     NSError *_error;
     unsigned long long _rowNumber;
@@ -32,7 +31,6 @@
 @property(readonly, nonatomic) unsigned long long rowNumber; // @synthesize rowNumber=_rowNumber;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property(retain, nonatomic) NSSet *defaultUnarchivingAllowedClasses; // @synthesize defaultUnarchivingAllowedClasses=_defaultUnarchivingAllowedClasses;
-@property(nonatomic) _Bool requiresSecureCoding; // @synthesize requiresSecureCoding=_requiresSecureCoding;
 - (void).cxx_destruct;
 - (struct PQLResultSet *)enumerateObjects:(CDUnknownBlockType)arg1;
 - (struct PQLResultSet *)enumerateObjectsOfClass:(Class)arg1;

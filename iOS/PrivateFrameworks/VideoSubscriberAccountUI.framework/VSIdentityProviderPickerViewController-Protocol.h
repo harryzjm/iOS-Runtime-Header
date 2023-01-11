@@ -6,7 +6,7 @@
 
 #import <VideoSubscriberAccountUI/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, UISearchController;
 @protocol VSIdentityProviderPickerViewControllerDelegate;
 
 @protocol VSIdentityProviderPickerViewController <NSObject>
@@ -17,5 +17,8 @@
 @property(nonatomic, getter=isCancellationAllowed) _Bool cancellationAllowed;
 @property(nonatomic) __weak id <VSIdentityProviderPickerViewControllerDelegate> delegate;
 - (void)deselectSelectedProviderAnimated:(_Bool)arg1;
+
+@optional
+@property(readonly, nonatomic) UISearchController *searchController;
 @end
 

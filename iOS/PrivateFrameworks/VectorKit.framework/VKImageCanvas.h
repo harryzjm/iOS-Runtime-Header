@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     struct DisplayStyle _mapDisplayStyle;
     unsigned char _emphasis;
     id <MDRenderTarget> _displayTarget;
-    Renderer_e10ca448 *_mapRenderer;
+    Renderer_3c643a9a *_mapRenderer;
     struct LayoutContext *_layoutContext;
     id <VKImageCanvasDelegate> _delegate;
     struct RunLoopController *_runLoopController;

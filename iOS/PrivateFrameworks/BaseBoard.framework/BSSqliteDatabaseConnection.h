@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSCache, NSHashTable;
 @protocol OS_dispatch_queue;
@@ -18,6 +18,7 @@
 }
 
 + (int)_sqliteOpenFlagsForDataProtectionClass:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (void)_closeConnection;
 - (void)_queue_close;
 - (id)_sqliteErrorForResult:(int)arg1 errorMessage:(id)arg2;

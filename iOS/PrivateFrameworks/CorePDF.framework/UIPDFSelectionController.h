@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class UIPDFPageView;
 @protocol UIPDFSelectionWidget, UIPDFSelectionWidget><NSObject;
 
+__attribute__((visibility("hidden")))
 @interface UIPDFSelectionController : NSObject
 {
     UIPDFPageView *_pageView;

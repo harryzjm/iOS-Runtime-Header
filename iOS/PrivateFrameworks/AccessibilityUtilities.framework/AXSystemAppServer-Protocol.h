@@ -11,6 +11,7 @@
 @protocol AXSystemAppServer <NSObject>
 + (id <AXSystemAppServer>)server;
 - (void)wakeUpDeviceIfNecessary;
+- (_Bool)isSystemSleeping;
 - (void)rebootDevice;
 - (_Bool)isMediaPlaying;
 - (_Bool)isReceivingAirPlay;
@@ -32,6 +33,7 @@
 - (int)pid;
 
 @optional
+- (_Bool)isScreenshotWindowVisible;
 - (_Bool)isPasscodeLockVisible;
 @end
 

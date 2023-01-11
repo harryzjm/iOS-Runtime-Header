@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol _MKURLHandlerDelegate;
 
@@ -14,6 +14,7 @@
 }
 
 + (unsigned char)_MKGetURLSchemeTypeFor:(id)arg1;
++ (_Bool)canHandleURL:(id)arg1;
 @property(nonatomic) __weak id <_MKURLHandlerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (_Bool)_handleMapItems:(id)arg1 withOptions:(id)arg2 url:(id)arg3 sourceApplication:(id)arg4 originIsActiveWatch:(_Bool)arg5;

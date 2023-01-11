@@ -6,6 +6,7 @@
 
 @class NSString, SCNAction;
 
+__attribute__((visibility("hidden")))
 @interface SCNActionRunAction
 {
     SCNAction *_action;

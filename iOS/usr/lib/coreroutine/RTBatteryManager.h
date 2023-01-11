@@ -20,12 +20,13 @@
     id <RTIOServiceStrategy> _ioServiceStrategy;
 }
 
-+ (id)RTBatteryManagerExternalConnectionStateToString:(long long)arg1;
++ (id)externalConnectionStateToString:(long long)arg1;
 @property(readonly, nonatomic) id <RTIOServiceStrategy> ioServiceStrategy; // @synthesize ioServiceStrategy=_ioServiceStrategy;
 @property(nonatomic) long long externalConnectionState; // @synthesize externalConnectionState=_externalConnectionState;
 @property(nonatomic) _Bool monitorBatteryStatusChanges; // @synthesize monitorBatteryStatusChanges=_monitorBatteryStatusChanges;
 @property(retain, nonatomic) RTIONotificationPort *port; // @synthesize port=_port;
 - (void).cxx_destruct;
+- (void)fetchCurrentChargerConnectionState:(CDUnknownBlockType)arg1;
 - (void)onServiceChanged:(unsigned int)arg1 messageType:(unsigned int)arg2;
 - (void)onRegistryEntriesMatched:(unsigned int)arg1;
 - (void)batteryStatusChange:(unsigned int)arg1 messageType:(unsigned int)arg2;
@@ -38,7 +39,7 @@
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)_unregisterForNotifications;
-- (void)shutdown;
+- (void)_shutdown;
 - (void)dealloc;
 - (id)init;
 - (id)initWithStrategy:(id)arg1;

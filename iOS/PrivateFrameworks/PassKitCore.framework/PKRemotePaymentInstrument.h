@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
@@ -16,6 +16,7 @@
     _Bool _supportsAutomaticSelection;
     _Bool _hasAssociatedPeerPaymentAccount;
     NSString *_passIdentifier;
+    NSString *_organizationName;
     NSData *_manifestHash;
     NSString *_displayName;
     NSString *_primaryAccountNumberSuffix;
@@ -25,6 +26,7 @@
     PKPaymentApplication *_primaryPaymentApplication;
     NSDate *_ingestedDate;
     PKCurrencyAmount *_peerPaymentAccountBalance;
+    unsigned long long _peerPaymentAccountState;
     NSArray *_associatedWebDomains;
 }
 
@@ -33,6 +35,7 @@
 + (id)remotePaymentInstrumentWithProtobuf:(id)arg1;
 + (id)thumbnailCachePathForManifestHash:(id)arg1 size:(struct CGSize)arg2;
 @property(retain, nonatomic) NSArray *associatedWebDomains; // @synthesize associatedWebDomains=_associatedWebDomains;
+@property(nonatomic) unsigned long long peerPaymentAccountState; // @synthesize peerPaymentAccountState=_peerPaymentAccountState;
 @property(nonatomic) _Bool hasAssociatedPeerPaymentAccount; // @synthesize hasAssociatedPeerPaymentAccount=_hasAssociatedPeerPaymentAccount;
 @property(retain, nonatomic) PKCurrencyAmount *peerPaymentAccountBalance; // @synthesize peerPaymentAccountBalance=_peerPaymentAccountBalance;
 @property(nonatomic) _Bool supportsAutomaticSelection; // @synthesize supportsAutomaticSelection=_supportsAutomaticSelection;
@@ -44,12 +47,14 @@
 @property(copy, nonatomic) NSString *primaryAccountNumberSuffix; // @synthesize primaryAccountNumberSuffix=_primaryAccountNumberSuffix;
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(copy, nonatomic) NSData *manifestHash; // @synthesize manifestHash=_manifestHash;
+@property(copy, nonatomic) NSString *organizationName; // @synthesize organizationName=_organizationName;
 @property(copy, nonatomic) NSString *passIdentifier; // @synthesize passIdentifier=_passIdentifier;
 - (void).cxx_destruct;
 - (_Bool)isEqualToRemotePaymentInstrument:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)sortedPaymentApplications:(id)arg1 ascending:(_Bool)arg2;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

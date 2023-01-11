@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <Widgets/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 #import <Widgets/WGWidgetDataSourceObserver-Protocol.h>
 #import <Widgets/WGWidgetListEditViewControllerDataSource-Protocol.h>
 #import <Widgets/WGWidgetListEditViewControllerDelegate-Protocol.h>
@@ -14,7 +15,7 @@
 @class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSPointerArray, NSString, WGWidgetListEditViewController, WGWidgetPersistentStateController;
 @protocol OS_dispatch_queue, WGWidgetDebugging, WGWidgetDiscoveryControllerDelegate;
 
-@interface WGWidgetDiscoveryController : NSObject <WGWidgetViewControllerDelegate, WGWidgetDataSourceObserver, WGWidgetListEditViewControllerDataSource, WGWidgetListEditViewControllerDelegate>
+@interface WGWidgetDiscoveryController : NSObject <WGWidgetViewControllerDelegate, WGWidgetDataSourceObserver, WGWidgetListEditViewControllerDataSource, WGWidgetListEditViewControllerDelegate, LSApplicationWorkspaceObserverProtocol>
 {
     struct NSMutableDictionary *_archive;
     NSObject<OS_dispatch_queue> *_archiveWriteQueue;
@@ -23,7 +24,6 @@
     NSMutableDictionary *_identifiersToDatums;
     NSMutableDictionary *_dataSourceIdentifiersToDatumIdentifiers;
     NSMutableDictionary *_identifiersToWidgetInfos;
-    NSMutableDictionary *_widgetIDsToWidgets;
     NSMutableArray *_orderedEnabledTodayIdentifiers;
     NSArray *_orderedVisibleTodayIdentifiers;
     NSMutableArray *_orderedEnabledWidgetsIdentifiers;
@@ -36,6 +36,7 @@
     id <WGWidgetDiscoveryControllerDelegate> _delegate;
     NSMutableDictionary *_widgetIDsToPendingTestCompletions;
     NSMutableDictionary *_widgetIDsToPendingTestTearDowns;
+    NSMutableDictionary *_widgetIDsToWidgets;
     id <WGWidgetDebugging> _debuggingHandler;
     WGWidgetListEditViewController *_presentedEditViewController;
     id _presentedEditViewControllerStatusBarAssertion;
@@ -46,16 +47,18 @@
 @property(retain, nonatomic, getter=_presentedEditViewControllerStatusBarAssertion, setter=_setPresentedEditViewControllerStatusBarAssertion:) id presentedEditViewControllerStatusBarAssertion; // @synthesize presentedEditViewControllerStatusBarAssertion=_presentedEditViewControllerStatusBarAssertion;
 @property(nonatomic, setter=_setPresentedEditViewController:) __weak WGWidgetListEditViewController *presentedEditViewController; // @synthesize presentedEditViewController=_presentedEditViewController;
 @property(nonatomic) __weak id <WGWidgetDebugging> debuggingHandler; // @synthesize debuggingHandler=_debuggingHandler;
+@property(readonly, nonatomic, getter=_widgetIDsToWidgets) NSMutableDictionary *widgetIDsToWidgets; // @synthesize widgetIDsToWidgets=_widgetIDsToWidgets;
 @property(retain, nonatomic) NSMutableDictionary *widgetIDsToPendingTestTearDowns; // @synthesize widgetIDsToPendingTestTearDowns=_widgetIDsToPendingTestTearDowns;
 @property(retain, nonatomic) NSMutableDictionary *widgetIDsToPendingTestCompletions; // @synthesize widgetIDsToPendingTestCompletions=_widgetIDsToPendingTestCompletions;
 @property(nonatomic) __weak id <WGWidgetDiscoveryControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (void)debugWidgetWithBundleID:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)deviceManagementPolicyDidChange:(id)arg1;
 - (void)remoteViewControllerViewDidAppearForWidgetViewController:(id)arg1;
 - (void)remoteViewControllerDidConnectForWidgetViewController:(id)arg1;
 - (long long)layoutModeForWidgetListEditViewController:(id)arg1;
 - (_Bool)widgetListEditViewControllerShouldIncludeInternalWidgets:(id)arg1;
-- (id)widgetListEditViewController:(id)arg1 iconForItemWithIdentifier:(id)arg2;
+- (void)widgetListEditViewController:(id)arg1 requestsIconForItemWithIdentifier:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (id)widgetListEditViewController:(id)arg1 displayNameForItemWithIdentifier:(id)arg2;
 - (void)widgetListEditViewController:(id)arg1 acknowledgeInterfaceItemsWithIdentifiers:(id)arg2;
 - (void)widgetListEditViewController:(id)arg1 setEnabled:(_Bool)arg2 forItemsWithIdentifiers:(id)arg3;
@@ -123,6 +126,9 @@
 - (id)_orderedEnabledIdentifiersForGroup:(id)arg1;
 - (id)widgetWithIdentifier:(id)arg1 delegate:(id)arg2 forRequesterWithIdentifier:(id)arg3;
 - (id)_newWidgetWithIdentifier:(id)arg1 delegate:(id)arg2;
+- (void)_updateLockedOutStateForWidget:(id)arg1;
+- (void)_updateLockedOutStateForWidget:(id)arg1 withContainingAppProxy:(id)arg2;
+- (_Bool)_isApplicationLockedOutWithProxy:(id)arg1;
 - (void)removeDiscoveryObserver:(id)arg1;
 - (void)addDiscoveryObserver:(id)arg1;
 - (void)setWidgetSnapshotTimestampsEnabled:(_Bool)arg1;

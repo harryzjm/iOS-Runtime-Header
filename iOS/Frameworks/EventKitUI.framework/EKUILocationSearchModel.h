@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <EventKitUI/CLLocationManagerDelegate-Protocol.h>
 #import <EventKitUI/MKSearchCompleterDelegate-Protocol.h>
@@ -60,6 +60,7 @@
 - (void)updateEventLocations:(id)arg1;
 - (void)searchFrequentLocations:(id)arg1;
 - (void)updateRecents:(id)arg1;
+- (void)_updateContactsSearchWithResults:(id)arg1 forToken:(id)arg2;
 - (void)updateContacts:(id)arg1;
 - (void)completerDidUpdateResults:(id)arg1 finished:(_Bool)arg2;
 - (void)dedupeResults;

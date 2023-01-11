@@ -21,9 +21,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool shouldFit; // @synthesize shouldFit=_shouldFit;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 - (void).cxx_destruct;
+- (_Bool)previewScrollViewShouldResizeContentBasedOnPeripheryInsets:(id)arg1;
 - (double)previewScrollView:(id)arg1 extraMinimumZoomForMinimumZoomScale:(double)arg2 maximumZoomScale:(double)arg3;
 - (void)previewScrollView:(id)arg1 didEndZoomingAtScale:(double)arg2;
 - (void)previewScrollViewWillBeginZooming:(id)arg1;
+- (_Bool)shouldLayoutContentBasedOnPeripheryInsets;
 - (void)_updateScrollViewZoomUpdate:(struct CGSize)arg1;
 - (id)parallaxView;
 - (id)scrollView;

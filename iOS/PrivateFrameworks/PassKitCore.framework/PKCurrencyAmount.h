@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
@@ -23,6 +23,7 @@
 - (void).cxx_destruct;
 - (id)negativeValue;
 - (id)absoluteValue;
+- (id)minimalFormattedStringValueInLocale:(id)arg1;
 - (id)minimalFormattedStringValue;
 - (id)formattedStringValue;
 - (id)description;

@@ -25,6 +25,7 @@
 - (void)setExpanded:(_Bool)arg1 textFieldSelectionRange:(struct _NSRange)arg2;
 - (void)_updateReaderButtonVisibilityAnimated:(_Bool)arg1 showAvailabilityText:(_Bool)arg2 adjustURLLabels:(_Bool)arg3;
 - (void)fluidProgressViewDidShowProgress:(id)arg1;
+- (void)_showNotSecureWebsiteMessage;
 - (void)_readerButtonTapped:(id)arg1;
 - (long long)_accessibilitySortPriority;
 - (_Bool)shouldGroupAccessibilityChildren;

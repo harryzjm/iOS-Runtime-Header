@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
@@ -17,6 +17,7 @@
     _Bool _invalidateDone;
     _Bool _scanning;
     NSObject<OS_dispatch_source> *_scanTimer;
+    _Bool _suspended;
     struct LogCategory *_ucat;
     unsigned int _changeFlags;
     unsigned int _scanFlags;
@@ -44,6 +45,8 @@
 - (void)_scanWiFiProcessResult:(id)arg1;
 - (void)_scanWiFiFinished:(id)arg1 status:(int)arg2;
 - (void)_scanWiFiStart;
+- (void)resume;
+- (void)suspend;
 - (void)_invalidated;
 - (void)invalidate;
 - (void)activate;

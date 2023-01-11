@@ -15,7 +15,6 @@
 }
 
 - (void).cxx_destruct;
-- (_Bool)_wantsPlatter;
 - (void)setMonogramText:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
@@ -23,6 +22,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
+@property(nonatomic) _Bool canUseCurvedText;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(nonatomic) __weak id <NTKComplicationDisplayObserver> displayObserver;

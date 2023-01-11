@@ -8,5 +8,7 @@
 {
 }
 
++ (long long)typeContainerClass;
+
 @end
 

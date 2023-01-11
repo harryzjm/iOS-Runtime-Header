@@ -130,6 +130,7 @@
 - (long long)_currentGeneration;
 - (void)replayAndAddTombstone:(id)arg1;
 - (void)getAllTombstonesWithCompletion:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) _Bool isUsingInMemoryDatabase;
 @property(nonatomic) unsigned long long cachedNumberOfDevicesInSyncCircle;
 @property(copy, nonatomic) NSData *syncCircleSizeRetrievalThrottlerData;
 @property(copy, nonatomic) NSData *fetchThrottlerData;
@@ -151,6 +152,7 @@
 - (void)removePastHistoryVisitsForItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)clearHistoryVisitsAddedAfterDate:(id)arg1 beforeDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_updateGenerationForVisits:(id)arg1;
+- (void)checkIfLocalVisitExistsInAnyOfItems:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getVisitsCreatedAfterDate:(id)arg1 beforeDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)visitTitleWasUpdated:(id)arg1;
 - (void)visitsWereModified:(id)arg1;

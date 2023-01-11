@@ -10,13 +10,21 @@
 {
 }
 
++ (id)keyPathForActiveComplications;
++ (id)keyPathForDefaultPairedDeviceForegroundApp;
++ (id)keyPathForWatchForegroundApp;
++ (id)keyPathForDefaultPairedDeviceThermalPressureLevel;
 + (id)keyPathForWatchThermalPressureLevel;
++ (id)keyPathForDefaultPairedDevicePluginStatus;
 + (id)keyPathForWatchPluginStatus;
++ (id)keyPathForDefaultPairedDeviceBatteryLevel;
 + (id)keyPathForWatchBatteryLevel;
 + (id)keyPathForWatchActiveStatus;
++ (id)keyPathForDefaultPairedDeviceNearbyStatus;
 + (id)keyPathForWatchNearbyStatus;
 + (id)keyPathForNetworkingBudgetRemainingStatus;
 + (id)keyPathForEnergyBudgetRemainingStatus;
++ (id)keyPathForCPUUsageLevel;
 + (id)keyPathForThermalPressureLevel;
 + (id)predicateForPluginStatus:(_Bool)arg1;
 + (id)keyPathForPluginStatus;
@@ -40,6 +48,7 @@
 + (id)keyPathForCarConnectedStatus;
 + (id)keyPathForNavigationStatus;
 + (id)keyPathForMediaPlayingStatus;
++ (id)keyPathForKeybagLockStatus;
 + (id)keyPathForDeviceLockStatus;
 + (id)keyPathForFirstWakeupStatus;
 + (id)keyPathForNextUserVisibleWakeDate;
@@ -58,6 +67,16 @@
 + (id)actionSetUUID;
 + (id)sceneHomeUUID;
 + (id)keyPathForHomeKitSceneDataDictionary;
++ (id)appUsageType;
++ (id)appUsageStartDate;
++ (id)appUsageBundleID;
++ (id)keyPathForAppUsageDataDictionaries;
++ (id)appWebUsageWebDomain;
++ (id)appWebUsageWepageURL;
++ (id)appWebUsageType;
++ (id)appWebUsageStartDate;
++ (id)appWebUsageBundleID;
++ (id)keyPathForAppWebUsageDataDictionaries;
 + (id)batteryIsChargingKey;
 + (id)batteryFullyChargedKey;
 + (id)batteryAdapterTypeKey;
@@ -98,6 +117,8 @@
 + (id)audioPortTypeKey;
 + (id)audioOutputStatusKey;
 + (id)keyPathForAudioOutputDataDictionary;
++ (id)keyPathForDefaultPairedServicesAppearingForeground;
++ (id)keyPathForServicesAppearingForeground;
 + (id)viewInformation;
 + (id)viewName;
 + (id)viewUUID;
@@ -113,11 +134,20 @@
 + (id)sunriseSunsetAvailabilityStatusKey;
 + (id)keyPathForSunriseSunsetDataDictionary;
 + (id)predicateForBluetoothConnectionStatus:(_Bool)arg1;
++ (id)bluetoothProductIDKey;
++ (id)bluetoothIsAppleAudioDeviceKey;
 + (id)bluetoothDeviceTypeKey;
 + (id)bluetoothAddressKey;
 + (id)bluetoothNameKey;
 + (id)bluetoothConnectionStatusKey;
 + (id)keyPathForBluetoothDataDictionary;
++ (id)userActivityRequiredString;
++ (id)itemIdentifier;
++ (id)userActivityType;
++ (id)title;
++ (id)eligibility;
++ (id)userActivityUUID;
++ (id)keyPathForUserActivityDataDictionary;
 
 @end
 

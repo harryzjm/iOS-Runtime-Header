@@ -30,6 +30,7 @@
     struct CGSize _imageSize;
 }
 
++ (id)sharedInstance;
 @property(retain) NSMutableDictionary *imageCache; // @synthesize imageCache=_imageCache;
 @property _Atomic int currentRequestId; // @synthesize currentRequestId=_currentRequestId;
 @property(nonatomic) long long cachedPeopleCount; // @synthesize cachedPeopleCount=_cachedPeopleCount;
@@ -50,7 +51,7 @@
 - (id)_members;
 @property(readonly, nonatomic) long long peopleCount;
 - (void)_updateCachedCountIfNeeded;
-@property(readonly, nonatomic, getter=isCountAvailable) _Bool countAvailable;
+@property(readonly, nonatomic) _Bool isCountAvailable;
 - (id)peopleViewController;
 - (void)requestAlbumImagesWithSize:(struct CGSize)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;

@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
 @class NSString;
 
-@interface DMFDeleteUserRequest : CATTaskRequest
+@interface DMFDeleteUserRequest
 {
     _Bool _forceDeletion;
     NSString *_username;
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)isPermittedOnUserConnection;
++ (_Bool)isPermittedOnSystemConnection;
++ (id)permittedPlatforms;
 @property(nonatomic) _Bool forceDeletion; // @synthesize forceDeletion=_forceDeletion;
 @property(copy, nonatomic) NSString *username; // @synthesize username=_username;
 - (void).cxx_destruct;

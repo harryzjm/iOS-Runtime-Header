@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <iWorkImport/TSPReferenceItem-Protocol.h>
 
 @class NSString, NSUUID, TSPComponent, TSPObjectContext, TSPUnknownContent, TSUUUIDPath;
 @protocol TSPObjectDelegate;
 
 __attribute__((visibility("hidden")))
-@interface TSPObject : NSObject
+@interface TSPObject : NSObject <TSPReferenceItem>
 {
     _Atomic long long _identifier;
     _Atomic long long _modifyObjectToken;
@@ -24,8 +26,9 @@ __attribute__((visibility("hidden")))
 + (_Bool)tsp_isTransientObjectIdentifier:(long long)arg1;
 + (_Bool)needsObjectUUID;
 + (Class)classForUnarchiver:(id)arg1;
++ (_Bool)tsp_isPerformingUpgrade;
 + (void)performUpgradeUsingBlock:(CDUnknownBlockType)arg1;
-+ (id)tsp_deserializeFromURL:(id)arg1 options:(id)arg2 context:(id)arg3 completion:(CDUnknownBlockType)arg4;
++ (id)tsp_deserializeFromURL:(id)arg1 options:(id)arg2 context:(id)arg3 isCrossDocumentPaste:(_Bool)arg4 isCrossAppPaste:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
 + (id)tsp_deserializeFromData:(id)arg1 options:(id)arg2 context:(id)arg3 error:(id *)arg4;
 @property(nonatomic) __weak id <TSPObjectDelegate> tsp_delegate; // @synthesize tsp_delegate=_delegate;
 @property(nonatomic) __weak TSPComponent *tsp_component; // @synthesize tsp_component=_component;
@@ -35,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool needsArchiving;
 @property(nonatomic) long long tsp_modifyObjectToken;
 @property(nonatomic) long long tsp_identifier;
+@property(readonly, nonatomic) _Bool tsp_isLazyReference;
 - (id)tsp_descriptionWithDepth:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSString *tsp_description;
 - (void)resetObjectUUIDWithoutUpdatingObjectUUIDMap;
@@ -94,6 +98,12 @@ __attribute__((visibility("hidden")))
 - (id)documentRoot;
 - (_Bool)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
 - (id)owningDocument;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

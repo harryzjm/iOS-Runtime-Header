@@ -4,16 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface GKReporter : NSObject
 {
 }
 
 + (id)reporter;
+- (void)reportDistributionValue:(id)arg1 domain:(id)arg2;
+- (void)reportValue:(long long)arg1 domain:(id)arg2;
 - (void)report:(id)arg1 signature:(id)arg2 result:(_Bool)arg3;
 - (void)report:(id)arg1 signature:(id)arg2;
 - (void)report:(id)arg1;
+- (void)_nativeReportDistributionValue:(id)arg1 signature:(id)arg2 domain:(id)arg3;
+- (void)_nativeReportValue:(long long)arg1 signature:(id)arg2 domain:(id)arg3;
 - (void)_nativeReport:(id)arg1 signature:(id)arg2 result:(_Bool *)arg3;
 
 @end

@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UIScrollView.h>
 
 @class PKPassView, PKPaymentPass, PKPaymentSetupMoreInfoItem, PKTableHeaderView, UIImageView;
 
-@interface PKPaymentSetupMoreInfoView : UIView
+@interface PKPaymentSetupMoreInfoView : UIScrollView
 {
     PKPassView *_passView;
+    struct CGSize _boundSize;
     PKPaymentSetupMoreInfoItem *_moreInfoItem;
     PKPaymentPass *_pass;
     long long _context;
@@ -26,6 +27,7 @@
 - (void).cxx_destruct;
 - (void)layoutSubviews;
 - (id)initWithMoreInfoItem:(id)arg1 paymentPass:(id)arg2 context:(long long)arg3;
+- (void)pk_applyAppearance:(id)arg1;
 
 @end
 

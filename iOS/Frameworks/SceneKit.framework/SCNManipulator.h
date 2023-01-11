@@ -4,30 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSMutableIndexSet, NSOrderedSet, SCNAuthoringEnvironment, SCNNode;
+@class MISSING_TYPE, NSMutableIndexSet, NSOrderedSet, SCNAuthoringEnvironment, SCNBillboardConstraint, SCNNode;
 
 @interface SCNManipulator : NSObject
 {
     SCNAuthoringEnvironment *_authoringEnvironment;
     NSOrderedSet *_targets;
+    SCNNode *_node;
     union C3DMatrix4x4 _xAxisToZAxisTransform;
     union C3DMatrix4x4 _yAxisToZAxisTransform;
     union C3DMatrix4x4 _xyPlaneToYZPlaneTransform;
     union C3DMatrix4x4 _xyPlaneToXZPlaneTransform;
+    unsigned short _selectedAxis;
     union {
         struct {
-            unsigned short selectedAxis;
             MISSING_TYPE *originalPosition__axisDirection__mouseDeltaVector;
         } axisMove;
         struct {
-            unsigned short selectedPlane;
             MISSING_TYPE *originalPosition__planeNormal__pointInPlane__mouseDeltaVector;
         } planeMove;
         struct {
-            unsigned short selectedAxis;
-            struct CGPoint originalMouseLocation;
             float rotationSign;
             MISSING_TYPE *originalRotation;
         } axisRotate;
@@ -35,10 +33,12 @@
     _Bool _isMouseDown;
     _Bool _readonly;
     unsigned short _action;
+    struct CGPoint _originalMouseLocation;
     struct {
         void *positions;
         void *orientations;
         struct SCNMatrix4 *originalLocalMatrix;
+        void *scales;
     } _originalData;
     unsigned int _originalDataCount;
     union C3DMatrix4x4 _worldInitialMatrix;
@@ -53,8 +53,28 @@
     long long _xAlignment;
     long long _yAlignment;
     long long _zAlignment;
+    SCNNode *_planarTranslationHandleXY;
+    SCNNode *_planarTranslationHandleYZ;
+    SCNNode *_planarTranslationHandleXZ;
+    SCNNode *_planarTranslationHandles;
+    SCNNode *_axis;
+    SCNNode *_arcHandleXY;
+    SCNNode *_arcHandleYZ;
+    SCNNode *_arcHandleXZ;
+    SCNNode *_arcHandles;
+    SCNNode *_scaleNode;
+    SCNNode *_screenSpaceRotation;
+    SCNNode *_highlightNode;
+    MISSING_TYPE *_planarTranslationLayout;
+    _Bool _layoutLocked;
+    SCNNode *_zArrow;
+    SCNNode *_rotationHandles;
+    SCNNode *_occluder;
+    SCNNode *_translateHandles;
+    SCNBillboardConstraint *_billboard;
     NSOrderedSet *_cloneSet;
     _Bool _cloning;
+    unsigned long long _features;
 }
 
 @property(nonatomic) long long zAlignment; // @synthesize zAlignment=_zAlignment;
@@ -67,24 +87,35 @@
 - (void)_prepareSnapToAlignData:(unsigned short)arg1 minOffset:maxOffset: /* Error: Ran out of types for this method. */;
 - (const CDStruct_962da47d *)snapInfoAtIndex:(unsigned long long)arg1 axis:(unsigned long long)arg2;
 - (id)snapGuideIndexesOnAxis:(unsigned long long)arg1;
-- (void)_updateCloneStateWithEvent:(CDStruct_edec59f9)arg1;
+- (void)_updateCloneStateWithEvent:(CDStruct_8affffdd)arg1;
 - (id)setupClones;
 - (void)validateClones;
 - (void)addClonesToScene;
 - (void)removeClonesFromScene;
 - (id)scene;
-- (_Bool)mouseUp:(CDStruct_edec59f9)arg1;
-- (_Bool)mouseDown:(CDStruct_edec59f9)arg1;
-- (_Bool)mouseDragged:(CDStruct_edec59f9)arg1;
+- (_Bool)mouseUp:(CDStruct_8affffdd)arg1;
+- (_Bool)mouseDown:(CDStruct_8affffdd)arg1;
+- (_Bool)mouseDragged:(CDStruct_8affffdd)arg1;
 - (void)clearSnapIndexes;
-- (_Bool)_applyWithEvent:(CDStruct_edec59f9)arg1;
+- (_Bool)_applyWithEvent:(CDStruct_8affffdd)arg1;
 - (void)_deleteOriginalData;
 - (void)_saveOriginalData;
+- (void)updateItemsScale:(float)arg1;
 - (void)updateItemsRotation: /* Error: Ran out of types for this method. */;
 - (void)updateItemsPosition;
-- (_Bool)mouseMoved:(CDStruct_edec59f9)arg1;
-- (void)_updateActionWithEvent:(CDStruct_edec59f9)arg1;
-- (void)draw;
+- (_Bool)mouseMoved:(CDStruct_8affffdd)arg1;
+- (void)_updateActionWithEvent:(CDStruct_8affffdd)arg1;
+- (id)hitTest:(CDStruct_8affffdd)arg1;
+- (void)unhighlightSelectedNode;
+- (void)unlockLayout;
+- (void)lockLayout;
+@property(nonatomic) unsigned long long features;
+- (void)updateManipulatorComponents;
+- (void)editingSpaceChanged;
+- (void)updateManipulatorNode;
+- (void)updateManipulatorPosition:(struct __C3DEngineContext *)arg1;
+- (void)setupNode;
+@property(readonly) SCNNode *manipulatorNode;
 - (_Bool)isDragging;
 - (long long)effectiveEditingSpace;
 - (id)copy;

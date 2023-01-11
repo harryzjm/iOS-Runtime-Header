@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VoiceServices/NSSecureCoding-Protocol.h>
 
@@ -14,6 +14,8 @@
 {
     _Bool _shouldCache;
     _Bool _disableCompactVoiceFallback;
+    _Bool _forceServerTTS;
+    _Bool _canUseServerTTS;
     _Bool _useCustomVoice;
     _Bool _audioSessionIDIsValid;
     _Bool _maintainsInput;
@@ -37,9 +39,11 @@
     unsigned long long _requestCreatedTimestamp;
     CDUnknownBlockType _stopHandler;
     CDUnknownBlockType _pauseHandler;
+    long long _pointer;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) long long pointer; // @synthesize pointer=_pointer;
 @property(copy, nonatomic) CDUnknownBlockType pauseHandler; // @synthesize pauseHandler=_pauseHandler;
 @property(copy, nonatomic) CDUnknownBlockType stopHandler; // @synthesize stopHandler=_stopHandler;
 @property(nonatomic) unsigned long long requestCreatedTimestamp; // @synthesize requestCreatedTimestamp=_requestCreatedTimestamp;
@@ -52,6 +56,8 @@
 @property(copy, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
 @property(copy, nonatomic) NSURL *resourceSearchPathURL; // @synthesize resourceSearchPathURL=_resourceSearchPathURL;
 @property(copy, nonatomic) NSURL *resourceListURL; // @synthesize resourceListURL=_resourceListURL;
+@property(nonatomic) _Bool canUseServerTTS; // @synthesize canUseServerTTS=_canUseServerTTS;
+@property(nonatomic) _Bool forceServerTTS; // @synthesize forceServerTTS=_forceServerTTS;
 @property(nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 @property(nonatomic) _Bool disableCompactVoiceFallback; // @synthesize disableCompactVoiceFallback=_disableCompactVoiceFallback;
 @property(copy, nonatomic) NSDictionary *contextInfo; // @synthesize contextInfo=_contextInfo;

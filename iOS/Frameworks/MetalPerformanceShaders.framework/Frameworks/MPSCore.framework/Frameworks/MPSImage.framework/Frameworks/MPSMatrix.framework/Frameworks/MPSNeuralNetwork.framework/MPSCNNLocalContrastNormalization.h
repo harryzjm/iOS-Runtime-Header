@@ -6,8 +6,6 @@
 
 @interface MPSCNNLocalContrastNormalization
 {
-    unsigned long long _kernelWidth;
-    unsigned long long _kernelHeight;
     float _alpha;
     float _beta;
     float _delta;
@@ -23,10 +21,13 @@
 @property(nonatomic) float delta; // @synthesize delta=_delta;
 @property(nonatomic) float beta; // @synthesize beta=_beta;
 @property(nonatomic) float alpha; // @synthesize alpha=_alpha;
-@property(readonly, nonatomic) unsigned long long kernelHeight; // @synthesize kernelHeight=_kernelHeight;
-@property(readonly, nonatomic) unsigned long long kernelWidth; // @synthesize kernelWidth=_kernelWidth;
+- (id)debugDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
+- (struct NSArray *)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2;
+- (id)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2;
+- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2 destinationImages:(struct NSArray *)arg3;
+- (void)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 destinationImage:(id)arg3;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;
 - (id)initWithDevice:(id)arg1 kernelWidth:(unsigned long long)arg2 kernelHeight:(unsigned long long)arg3;

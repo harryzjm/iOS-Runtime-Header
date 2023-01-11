@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
@@ -13,9 +13,11 @@
 
 @interface PKPaymentSummaryItem : NSObject <NSCopying, NSSecureCoding>
 {
+    _Bool _useDarkColor;
     NSString *_label;
     NSDecimalNumber *_amount;
     unsigned long long _type;
+    NSString *_localizedAmount;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -23,6 +25,8 @@
 + (id)summaryItemWithLabel:(id)arg1 amount:(id)arg2;
 + (long long)version;
 + (id)itemWithProtobuf:(id)arg1;
+@property(nonatomic) _Bool useDarkColor; // @synthesize useDarkColor=_useDarkColor;
+@property(retain, nonatomic) NSString *localizedAmount; // @synthesize localizedAmount=_localizedAmount;
 @property(nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(copy, nonatomic) NSDecimalNumber *amount; // @synthesize amount=_amount;
 @property(copy, nonatomic) NSString *label; // @synthesize label=_label;

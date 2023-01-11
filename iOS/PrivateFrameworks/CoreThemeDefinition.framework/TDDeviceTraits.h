@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreThemeDefinition/NSCopying-Protocol.h>
 
@@ -24,10 +24,12 @@
     long long _graphicsPerformanceClass;
     long long _graphicsFeatureSetClassValue;
     NSArray *_graphicsFeatureSetFallbackValues;
+    NSArray *_subtypeFallbackValues;
     long long _dynamicDisplayModeValue;
 }
 
 @property(nonatomic) long long dynamicDisplayModeValue; // @synthesize dynamicDisplayModeValue=_dynamicDisplayModeValue;
+@property(retain, nonatomic) NSArray *subtypeFallbackValues; // @synthesize subtypeFallbackValues=_subtypeFallbackValues;
 @property(copy, nonatomic) NSArray *graphicsFeatureSetFallbackValues; // @synthesize graphicsFeatureSetFallbackValues=_graphicsFeatureSetFallbackValues;
 @property(nonatomic) long long graphicsFeatureSetClassValue; // @synthesize graphicsFeatureSetClassValue=_graphicsFeatureSetClassValue;
 @property(nonatomic) long long graphicsPerformanceClass; // @synthesize graphicsPerformanceClass=_graphicsPerformanceClass;

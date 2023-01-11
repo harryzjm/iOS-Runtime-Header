@@ -6,6 +6,7 @@
 
 @class AVAssetInspector, NSMutableArray, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetMakeReadyForInspectionLoader
 {
     AVAssetInspector *_assetInspector;

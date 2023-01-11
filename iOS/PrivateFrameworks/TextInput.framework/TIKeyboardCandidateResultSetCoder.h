@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSMutableData;
 
@@ -22,6 +22,7 @@
 @property(nonatomic) unsigned long long offset; // @synthesize offset=_offset;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 @property(retain, nonatomic) NSMutableData *mutableData; // @synthesize mutableData=_mutableData;
+- (void).cxx_destruct;
 - (id)candidateResultSet;
 - (id)dataFromCandidateResultSet:(id)arg1;
 - (id)decodePointerValueArray;
@@ -43,7 +44,6 @@
 - (id)decodeCandidate;
 @property(readonly, nonatomic) const char *currentPosition;
 @property(readonly, nonatomic) const char *bytes;
-- (void)dealloc;
 - (id)initWithData:(id)arg1 mutableData:(id)arg2;
 - (id)initForDecodingWithData:(id)arg1;
 - (id)initForEncoding;

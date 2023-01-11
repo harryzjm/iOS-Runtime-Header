@@ -4,8 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CPListItem;
+@class CPParagraphListItem;
 
+__attribute__((visibility("hidden")))
 @interface CPParagraph
 {
     _Bool noIndentation;
@@ -13,11 +14,11 @@
     unsigned long long alignment;
     _Bool hasDropCap;
     id flowProperties;
-    CPListItem *listItem;
+    CPParagraphListItem *listItem;
     double preformatWidth;
 }
 
-@property(retain, nonatomic) CPListItem *listItem; // @synthesize listItem;
+@property(retain, nonatomic) CPParagraphListItem *listItem; // @synthesize listItem;
 - (_Bool)isPreformattedWithUnitWidth:(double *)arg1;
 - (void)setAlignment:(unsigned long long)arg1;
 - (unsigned long long)alignment;

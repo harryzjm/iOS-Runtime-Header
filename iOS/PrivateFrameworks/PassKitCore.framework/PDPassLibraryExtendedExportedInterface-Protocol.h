@@ -6,9 +6,13 @@
 
 #import <PassKitCore/PDPassLibraryInAppExportedInterface-Protocol.h>
 
-@class CLLocation, NSArray, NSString, PKCatalog, PKContact, PKDisplayProfile, PKFieldProperties, PKPass;
+@class CLLocation, NSArray, NSSet, NSString, PKCatalog, PKContact, PKDisplayProfile, PKFieldProperties, PKPass;
 
 @protocol PDPassLibraryExtendedExportedInterface <PDPassLibraryInAppExportedInterface>
+- (void)getDataForBundleResources:(NSSet *)arg1 objectUniqueIdentifier:(NSString *)arg2 handler:(void (^)(NSDictionary *))arg3;
+- (void)spotlightDeleteIndexEntriesForAllPassesWithCompletion:(void (^)(NSError *))arg1;
+- (void)spotlightReindexPassesWithUniqueIDs:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)spotlightReindexAllPassesWithCompletion:(void (^)(NSError *))arg1;
 - (void)isPassbookVisibleWithHandler:(void (^)(_Bool))arg1;
 - (void)isRemovingPassesOfType:(unsigned long long)arg1 handler:(void (^)(_Bool))arg2;
 - (void)enabledValueAddedServicePassesWithHandler:(void (^)(NSArray *))arg1;
@@ -21,6 +25,7 @@
 - (void)sendUserEditedCatalog:(PKCatalog *)arg1;
 - (void)issueWalletUserNotificationWithTitle:(NSString *)arg1 message:(NSString *)arg2 forPassUniqueIdentifier:(NSString *)arg3 customActionRoute:(NSString *)arg4;
 - (void)shuffleGroups:(int)arg1;
+- (void)forceImmediateRevocationCheck;
 - (void)introduceDatabaseIntegrityProblem;
 - (void)nukeDatabaseAndExit;
 - (void)removeAllScheduledActivities;
@@ -28,7 +33,6 @@
 - (void)noteAccountChangedWithHandler:(void (^)(void))arg1;
 - (void)notifyPassUsed:(PKPass *)arg1 fromSource:(long long)arg2;
 - (void)noteObjectSharedWithUniqueID:(NSString *)arg1;
-- (void)getDataForBundleResourceNamed:(NSString *)arg1 withExtension:(NSString *)arg2 objectUniqueIdentifier:(NSString *)arg3 handler:(void (^)(NSData *))arg4;
 - (void)getArchivedObjectWithUniqueID:(NSString *)arg1 handler:(void (^)(NSData *))arg2;
 - (void)personalizePassWithUniqueIdentifier:(NSString *)arg1 contact:(PKContact *)arg2 personalizationToken:(NSString *)arg3 requiredPersonalizationFields:(unsigned long long)arg4 personalizationSource:(unsigned long long)arg5 handler:(void (^)(_Bool))arg6;
 - (void)updateObjectWithUniqueIdentifier:(NSString *)arg1 handler:(void (^)(_Bool))arg2;
@@ -40,8 +44,8 @@
 - (void)getPassesWithUniqueIdentifiers:(NSArray *)arg1 handler:(void (^)(NSArray *))arg2;
 - (void)presentContactlessInterfaceForPassWithUniqueIdentifier:(NSString *)arg1 fromSource:(long long)arg2 handler:(void (^)(_Bool))arg3;
 - (void)presentContactlessInterfaceForDefaultPassFromSource:(long long)arg1 handler:(void (^)(_Bool))arg2;
-- (void)requestContactlessInterfaceSuppressionWithHandler:(void (^)(_Bool))arg1;
 - (void)openWalletUIWithRelevantPass:(NSString *)arg1;
+- (void)openDigitalIssuanceUIForIdentifier:(NSString *)arg1 withCompletion:(void (^)(_Bool))arg2;
 - (void)openPaymentUIWithCompletion:(void (^)(_Bool))arg1;
 @end
 

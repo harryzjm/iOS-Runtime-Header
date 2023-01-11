@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSString;
 
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_entries;
 }
 
+- (void).cxx_destruct;
 - (void)write;
 - (void)addMessage:(id)arg1 data:(id)arg2;
 - (void)dealloc;

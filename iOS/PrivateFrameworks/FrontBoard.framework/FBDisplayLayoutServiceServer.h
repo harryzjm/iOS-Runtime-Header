@@ -4,28 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary;
+#import <FrontBoardServices/FBSServiceFacility.h>
+
+@class FBServiceClientAuthenticator, NSMutableDictionary;
 @protocol FBDisplayLayoutServiceServerDelegate;
 
-@interface FBDisplayLayoutServiceServer
+@interface FBDisplayLayoutServiceServer : FBSServiceFacility
 {
     id <FBDisplayLayoutServiceServerDelegate> _delegate;
     NSMutableDictionary *_calloutQueuesByQOS;
     NSMutableDictionary *_defaultQOSClientsByDisplayType;
     NSMutableDictionary *_utilityQOSClientsByDisplayType;
+    FBServiceClientAuthenticator *_connectionAuthenticator;
 }
 
-@property(nonatomic) id <FBDisplayLayoutServiceServerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <FBDisplayLayoutServiceServerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void).cxx_destruct;
 - (void)noteDidReceiveMessage:(id)arg1 withType:(long long)arg2 fromClient:(id)arg3;
 - (void)noteClientDidDisconnect:(id)arg1;
 - (void)noteClientDidConnect:(id)arg1 withMessage:(id)arg2;
-- (id)prerequisiteMilestones;
+- (_Bool)shouldAllowClientConnection:(id)arg1 withMessage:(id)arg2;
+- (id)_prerequisiteMilestones;
 - (void)_sendDisplayLayout:(id)arg1 toClients:(id)arg2 withQualityOfService:(unsigned long long)arg3;
 - (id)_utilityQOSClientsForDisplayType:(long long)arg1;
 - (id)_defaultQOSClientsForDisplayType:(long long)arg1;
 - (id)_calloutQueueForQOS:(unsigned long long)arg1;
 - (void)publishDisplayLayout:(id)arg1;
-- (void)dealloc;
 - (id)initWithQueue:(id)arg1;
 
 @end

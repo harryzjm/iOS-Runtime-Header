@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CIContext : NSObject
 {
@@ -77,6 +77,8 @@
 - (void)unlock;
 - (void)lock;
 - (int)_contextColorForInstruments;
+@property(readonly) unsigned long long identifier;
+- (id)device;
 - (void)dealloc;
 - (void)_gpuContextCheck;
 - (id)_initWithInternalRepresentation:(void *)arg1;
@@ -96,6 +98,10 @@
 - (id)startTaskToRender:(id)arg1 toDestination:(id)arg2 error:(id *)arg3;
 - (id)_startTaskToRender:(id)arg1 toDestination:(id)arg2 forPrepareRender:(_Bool)arg3 error:(id *)arg4;
 - (id)startTaskToRender:(id)arg1 fromRect:(struct CGRect)arg2 toDestination:(id)arg3 atPoint:(struct CGPoint)arg4 error:(id *)arg5;
+- (id)depthBlurEffectFilterForImage:(id)arg1 disparityImage:(id)arg2 portraitEffectsMatte:(id)arg3 orientation:(unsigned int)arg4 options:(id)arg5;
+- (void)_performFaceDetection:(id)arg1 image:(id)arg2 orientation:(int)arg3 filter:(id)arg4;
+- (id)depthBlurEffectFilterForImageURL:(id)arg1 options:(id)arg2;
+- (id)depthBlurEffectFilterForImageData:(id)arg1 options:(id)arg2;
 
 @end
 

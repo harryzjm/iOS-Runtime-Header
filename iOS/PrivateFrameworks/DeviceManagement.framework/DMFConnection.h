@@ -15,21 +15,22 @@
 @interface DMFConnection : NSObject <CATTaskClientDelegate, DMFTransportProvider>
 {
     _Bool _isConnected;
+    _Bool _isSystemConnection;
     id <DMFTransportProvider> _transportProvider;
     CATTaskClient *_taskClient;
     CATOperationQueue *_operationQueue;
 }
 
-+ (id)watchOSRequestClasses;
-+ (id)tvOSRequestClasses;
-+ (id)macOSRequestClasses;
-+ (id)iOSRequestClasses;
-+ (id)currentPlatformRequestClasses;
++ (id)connectionForAppleID:(id)arg1;
++ (id)connectionForUID:(unsigned int)arg1;
++ (id)currentUserConnection;
++ (id)systemConnection;
 + (id)sharedConnection;
+@property(nonatomic) _Bool isSystemConnection; // @synthesize isSystemConnection=_isSystemConnection;
 @property(nonatomic) _Bool isConnected; // @synthesize isConnected=_isConnected;
-@property(retain, nonatomic) CATOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
-@property(retain, nonatomic) CATTaskClient *taskClient; // @synthesize taskClient=_taskClient;
-@property(nonatomic) __weak id <DMFTransportProvider> transportProvider; // @synthesize transportProvider=_transportProvider;
+@property(readonly, nonatomic) CATOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
+@property(readonly, nonatomic) CATTaskClient *taskClient; // @synthesize taskClient=_taskClient;
+@property(readonly, nonatomic) __weak id <DMFTransportProvider> transportProvider; // @synthesize transportProvider=_transportProvider;
 - (void).cxx_destruct;
 - (void)_operationDidFinish:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)client:(id)arg1 didInterruptWithError:(id)arg2;
@@ -38,12 +39,12 @@
 - (void)clientDidConnect:(id)arg1;
 - (id)makeNewTransport;
 - (void)invalidate;
-- (id)progressForAllInflightRequests;
+- (id)batchOperationToPerformOperations:(id)arg1;
 - (id)prepareOperationForRequest:(id)arg1;
 - (void)performRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
-- (id)initWithTransportProvider:(id)arg1;
-- (id)init;
+- (id)initWithTransportProvider:(id)arg1 userInfo:(id)arg2;
+- (id)initWithUserInfo:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

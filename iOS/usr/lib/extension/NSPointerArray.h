@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCoding-Protocol.h>
 #import <Foundation/NSCopying-Protocol.h>
 #import <Foundation/NSFastEnumeration-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
 @class NSPointerFunctions;
 
-@interface NSPointerArray : NSObject <NSFastEnumeration, NSCopying, NSCoding>
+@interface NSPointerArray : NSObject <NSFastEnumeration, NSCopying, NSSecureCoding>
 {
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)pointerArrayWithPointerFunctions:(id)arg1;
 + (id)pointerArrayWithOptions:(unsigned long long)arg1;

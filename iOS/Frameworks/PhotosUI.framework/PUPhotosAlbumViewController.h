@@ -47,8 +47,6 @@
 - (double)sectionedGridLayout:(id)arg1 aspectRatioForItemAtIndexPath:(id)arg2;
 - (double)sectionedGridLayout:(id)arg1 accessibilitySectionHeaderHeightForVisualSection:(long long)arg2;
 - (double)sectionedGridLayout:(id)arg1 sectionHeaderHeightForVisualSection:(long long)arg2;
-- (_Bool)_navigateToBottomIfNeededAnimated:(_Bool)arg1;
-- (_Bool)pu_handleSecondTabTap;
 - (void)handleTransitionFade:(_Bool)arg1 animate:(_Bool)arg2;
 - (_Bool)prepareForDismissingForced:(_Bool)arg1;
 - (void)handleAddFromAction;
@@ -58,6 +56,7 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (unsigned long long)additionalOneUpViewControllerOptions;
 - (unsigned long long)userEventSourceType;
 - (long long)cellFillMode;
 - (_Bool)allowSelectAllButton;
@@ -72,7 +71,7 @@
 - (void)configureGlobalHeaderView:(id)arg1;
 - (double)globalHeaderHeight;
 - (id)_globalHeaderTitle;
-- (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3 animated:(_Bool)arg4;
+- (void)configureSupplementaryView:(id)arg1 ofKind:(id)arg2 forIndexPath:(id)arg3;
 - (void)_getDataForVisualSection:(long long)arg1 hasActionButton:(_Bool *)arg2 locations:(id *)arg3 title:(id *)arg4 startDate:(id *)arg5 endDate:(id *)arg6;
 - (_Bool)updateSpec;
 - (void)updateLayoutMetrics;

@@ -8,7 +8,6 @@
 {
 }
 
-- (_Bool)_wantsPlatter;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

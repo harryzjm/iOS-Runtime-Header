@@ -57,23 +57,12 @@ typedef struct {
 } CDStruct_60a219bf;
 
 typedef struct {
-    struct CGPoint start;
-    struct CGPoint end;
-} CDStruct_f6143a38;
-
-typedef struct {
-    CDStruct_f6143a38 _field1;
-    double _field2;
-} CDStruct_00258f55;
-
-typedef struct {
-    struct CGRect rect;
-    unsigned int rectEdge;
     struct {
-        double start;
-        double length;
-    } range;
-} CDStruct_8f194ad9;
+        struct CGPoint _field1;
+        struct CGPoint _field2;
+    } _field1;
+    double _field2;
+} CDStruct_1fea1e38;
 
 #pragma mark Typedef'd Unions
 

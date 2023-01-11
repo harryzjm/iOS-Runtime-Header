@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString, WBSFormAutoFillClassificationToCorrectionsTransformer, WBSFormMetadata;
+@class NSDictionary, NSSet, NSString, WBSFormAutoFillClassificationToCorrectionsTransformer, WBSFormMetadata;
 @protocol WBSFormFieldClassificationCorrectorDelegate;
 
 @interface WBSFormFieldClassificationCorrector : NSObject
 {
     WBSFormAutoFillClassificationToCorrectionsTransformer *_classificationToCorrectionsTransformer;
+    NSSet *_uniqueIDsOfControlsThatWereAutoFilled;
     id <WBSFormFieldClassificationCorrectorDelegate> _delegate;
     NSString *_domain;
     WBSFormMetadata *_formMetadata;
@@ -26,7 +27,7 @@
 - (id)_classificationCorrectionsForControlWithMetadata:(id)arg1 wasIdentifiedAsAddressBookField:(_Bool *)arg2;
 - (void)processCorrections;
 - (id)init;
-- (id)initWithDomain:(id)arg1 formMetadata:(id)arg2 formValues:(id)arg3;
+- (id)initWithDomain:(id)arg1 formMetadata:(id)arg2 formValues:(id)arg3 uniqueIDsOfControlsThatWereAutoFilled:(id)arg4;
 
 @end
 

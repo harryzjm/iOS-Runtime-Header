@@ -4,59 +4,81 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIAccessibilityElement.h>
-
 #import "UIAccessibilityContainerDataTable-Protocol.h"
 #import "UIAccessibilityContainerDataTableCell-Protocol.h"
 
-@class NSMutableArray, NSString, PDFView;
+@class NSMutableArray, NSString, PDFPage;
 
-@interface UICGPDFNodeAccessibilityElement : UIAccessibilityElement <UIAccessibilityContainerDataTable, UIAccessibilityContainerDataTableCell>
+@interface UICGPDFNodeAccessibilityElement <UIAccessibilityContainerDataTable, UIAccessibilityContainerDataTableCell>
 {
-    int _listItemNumber;
-    struct CGPDFNode *_node;
-    PDFView *_view;
+    struct CGPDFTaggedNode *_nodeRef;
+    PDFPage *_page;
     NSMutableArray *_cachedAXElements;
     NSMutableArray *_cachedAXPDFLinks;
+    NSMutableArray *_cachedAXPDFOtherLinks;
+    NSMutableArray *_cachedAXPDFLinkNodes;
+    NSMutableArray *_cachedAXPDFTableCellNodes;
+    NSMutableArray *_cachedAXFigureChildrenNodesOfTableCellNode;
+    NSMutableArray *_cachedAXCaptionChildrenNodesOfFigureNode;
+    long long _listItemNumber;
     NSString *_listStyle;
+    NSString *_altText;
 }
 
 + (void)_findClosestWordNodeForBounds:(struct CGRect)arg1 withLineNode:(id)arg2 withDistanceBetterThan:(double *)arg3 siblingNodeFound:(id *)arg4;
 + (void)_findClosestLineNodeForBounds:(struct CGRect)arg1 withRootNode:(id)arg2 withDistanceBetterThan:(double *)arg3 parentFound:(id *)arg4 siblingFound:(id *)arg5;
 + (void)_addPDFAnnotation:(id)arg1 toPDFAccessibilityNode:(id)arg2;
 + (void)buildPDFAnnotationNodes:(id)arg1;
++ (_Bool)_isValidTextFieldElement:(id)arg1;
++ (_Bool)_containsOnlyTextChildren:(struct CGPDFTaggedNode *)arg1;
+@property(retain, nonatomic) NSString *altText; // @synthesize altText=_altText;
 @property(retain, nonatomic) NSString *listStyle; // @synthesize listStyle=_listStyle;
-@property(nonatomic) int listItemNumber; // @synthesize listItemNumber=_listItemNumber;
+@property(nonatomic) long long listItemNumber; // @synthesize listItemNumber=_listItemNumber;
+@property(retain, nonatomic) NSMutableArray *cachedAXCaptionChildrenNodesOfFigureNode; // @synthesize cachedAXCaptionChildrenNodesOfFigureNode=_cachedAXCaptionChildrenNodesOfFigureNode;
+@property(retain, nonatomic) NSMutableArray *cachedAXFigureChildrenNodesOfTableCellNode; // @synthesize cachedAXFigureChildrenNodesOfTableCellNode=_cachedAXFigureChildrenNodesOfTableCellNode;
+@property(retain, nonatomic) NSMutableArray *cachedAXPDFTableCellNodes; // @synthesize cachedAXPDFTableCellNodes=_cachedAXPDFTableCellNodes;
+@property(retain, nonatomic) NSMutableArray *cachedAXPDFLinkNodes; // @synthesize cachedAXPDFLinkNodes=_cachedAXPDFLinkNodes;
+@property(retain, nonatomic) NSMutableArray *cachedAXPDFOtherLinks; // @synthesize cachedAXPDFOtherLinks=_cachedAXPDFOtherLinks;
 @property(retain, nonatomic) NSMutableArray *cachedAXPDFLinks; // @synthesize cachedAXPDFLinks=_cachedAXPDFLinks;
 @property(retain, nonatomic) NSMutableArray *cachedAXElements; // @synthesize cachedAXElements=_cachedAXElements;
-@property(nonatomic) __weak PDFView *view; // @synthesize view=_view;
-@property(nonatomic) struct CGPDFNode *node; // @synthesize node=_node;
+@property(nonatomic) __weak PDFPage *page; // @synthesize page=_page;
+@property(nonatomic) struct CGPDFTaggedNode *nodeRef; // @synthesize nodeRef=_nodeRef;
 - (void).cxx_destruct;
-- (id)_findLanguageChildrenNodesOfNode:(id)arg1;
-- (id)_accessibilityStringForListType:(int)arg1;
-- (id)_accessibilityLabelForNode;
-- (id)_findParagraphChildNodeOfNode:(id)arg1;
-- (_Bool)_accessibilityPDFNodeIsTableCell:(struct CGPDFNode *)arg1;
-- (_Bool)_accessibilityPDFNodeIsTable:(struct CGPDFNode *)arg1;
+- (unsigned long long)_findTraitsForTableCellElements;
+- (id)_findTOCIChildNodeOfNode:(id)arg1;
+- (id)_findLabelChildNodeOfListItem:(id)arg1;
+- (id)_findTableCellNodesOfTableNode:(id)arg1 withHeadersOnly:(_Bool)arg2;
+- (id)_findFigureChildrenNodesOfTableCellNode:(id)arg1;
+- (id)_findCaptionChildrenNodesOfFigureNode:(id)arg1;
+- (id)_findLinkChildrenNodesOfNode:(id)arg1;
+- (id)_findLinkChildrenNodesThatHaveLinksWithoutLinkNode:(id)arg1;
+- (_Bool)_pdfElementHasLinkContainer;
+- (_Bool)_isContainerOfOnlyOneLinkNodeChild;
 - (id)_accessibilityLinks;
-- (struct CGPDFPage *)_axPageRef;
-- (id)accessibilityCustomRotors;
+- (_Bool)_isSubFigure;
+- (id)_attributedAccessibilityLabelForNode:(struct CGPDFTaggedNode *)arg1;
+- (id)_accessibilityStringForListType:(int)arg1;
+- (id)_accessibilityHeadingLevel;
+- (struct _NSRange)accessibilityColumnRange;
+- (struct _NSRange)accessibilityRowRange;
 - (id)accessibilityDataTableCellElementForRow:(unsigned long long)arg1 column:(unsigned long long)arg2;
 - (id)accessibilityHeaderElementsForColumn:(unsigned long long)arg1;
 - (id)accessibilityHeaderElementsForRow:(unsigned long long)arg1;
-- (struct _NSRange)accessibilityColumnRange;
-- (struct _NSRange)accessibilityRowRange;
 - (unsigned long long)accessibilityColumnCount;
 - (unsigned long long)accessibilityRowCount;
-- (id)accessibilityElements;
-- (id)accessibilityLanguage;
+- (id)accessibilityCustomRotors;
 - (id)accessibilityIdentification;
 - (long long)accessibilityContainerType;
+- (id)accessibilityLanguage;
 - (_Bool)isAccessibilityElement;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
 - (struct CGRect)accessibilityFrame;
-- (id)initWithAccessibilityContainer:(id)arg1 pdfNode:(struct CGPDFNode *)arg2 inPDFView:(id)arg3;
+- (struct CGRect)accessibilityFrameForScrolling;
+- (id)accessibilityElements;
+- (id)initWithAccessibilityContainer:(id)arg1 pdfNodeRef:(struct CGPDFTaggedNode *)arg2 withPage:(id)arg3;
+- (void)_accessibilitySetPDFCustomLinksRotor:(id)arg1;
+- (id)_accessibilityPDFCustomLinksRotor;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

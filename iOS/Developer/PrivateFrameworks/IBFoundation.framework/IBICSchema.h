@@ -30,6 +30,7 @@
     NSMutableSet *_deprecatedSlots;
     NSMutableSet *_slotsToIgnoreSubtype;
     NSMutableSet *_slotFiltersForSlotsToContinueWriting;
+    NSMutableDictionary *_hiddenSlotsFilterPerSlotClass;
     NSMutableDictionary *_impliedCounterpartSlots;
     NSMutableDictionary *_impliedCounterpartSlotComponentsBySlotClass;
     NSMutableDictionary *_suggestionSetsBySlotClass;
@@ -55,7 +56,9 @@
     NSMutableDictionary *_shouldIncludeOrientationInLaunchImageNameBySlot;
     NSMutableDictionary *_pixelSizesByLaunchImageSlots;
     NSMutableDictionary *_brandAssetCollectionSlotChildClasses;
+    NSMutableDictionary *_brandAssetCollectionChildSlotsForSlot;
     NSMutableSet *_bundleIconSlotsRequiringIdiomSuffixesInFileName;
+    NSMutableDictionary *_idiomsToMarketingIdioms;
     NSMutableSet *_launchImageSlotsRequiringIdiomSuffixesInFileName;
     IBICIdiom *_universalIdiom;
     IBICPlatform *_iOSPlatform;
@@ -85,6 +88,7 @@
 - (id)fileTypeWithIdentifier:(id)arg1;
 - (id)sizeWithPointSize:(struct CGSize)arg1;
 - (id)scaleWithMultiple:(double)arg1;
+- (id)roleWithIdentifier:(id)arg1;
 - (id)sizeWithIdentifier:(id)arg1;
 - (id)scaleWithIdentifier:(id)arg1;
 - (id)idiomWithIdentifier:(id)arg1;
@@ -98,8 +102,10 @@
 - (id)languageDirectionWithIdentifier:(id)arg1;
 - (id)deviceOrientationWithIdentifier:(id)arg1;
 - (id)graphicsFeatureSetsWithIdentifier:(id)arg1;
+- (id)roles;
 - (id)sizes;
 - (id)scales;
+- (id)allPossibleValidIdiomIdentifiers;
 - (id)idioms;
 - (id)subtypes;
 - (id)platforms;
@@ -152,8 +158,13 @@
 - (id)pixelSizeForLaunchImageRepSlot:(id)arg1;
 - (void)setShouldIncludeOrientationInLaunchImageName:(_Bool)arg1 forSlot:(id)arg2;
 - (_Bool)shouldIncludeOrientationInLaunchImageNameForSlot:(id)arg1;
+- (id)idiomsForMarketingIdiom:(id)arg1;
+- (id)marketingIdiomForIdiom:(id)arg1;
+- (void)registerMarketingIdiom:(id)arg1 forIdiom:(id)arg2;
 - (void)addBundleIconSlotsRequiringIdiomSuffixInFileName:(id)arg1;
 - (_Bool)bundleIconSlotShouldIncludeIdiomSuffixInFileName:(id)arg1;
+- (id)childSlotsForBrandAssetCollectionSlot:(id)arg1;
+- (void)setChildSlots:(id)arg1 forBrandAssetCollectionSlot:(id)arg2;
 - (void)setChildClass:(Class)arg1 forBrandAssetCollectionSlot:(id)arg2;
 - (Class)childClassForBrandAssetCollectionSlot:(id)arg1;
 - (id)issueProvidersForClass:(Class)arg1;
@@ -186,6 +197,8 @@
 - (void)markSuggestionSetForInclusionInImageSetIdiomEditingMenus:(id)arg1;
 - (id)suggestionSetWithIdentifier:(id)arg1 forSlotClass:(Class)arg2;
 - (id)allSuggestionSets;
+- (void)addSuggestionSets:(id)arg1 replaceExisting:(_Bool)arg2;
+- (void)_removeSuggestionSet:(id)arg1 fromSet:(id)arg2;
 - (void)addSuggestionSets:(id)arg1;
 - (_Bool)shouldIgnoreSubtypeOnCompilationForSlot:(id)arg1;
 - (void)ignoreSubtypeOnSlotsForCompilation:(id)arg1;
@@ -216,6 +229,9 @@
 - (id)platformForIdiom:(id)arg1;
 - (_Bool)shouldContinueWritingAppIconUsingSlot:(id)arg1;
 - (void)registerSlotFilterForAppIconsToContinueWriting:(id)arg1;
+- (_Bool)isSlotAllowedForDefaultInstantiation:(id)arg1;
+- (_Bool)isSlotHiddenForDefaultInstantiation:(id)arg1;
+- (void)hideSlotsForDefaultInstantiation:(id)arg1;
 - (id)validSlotFilterForClass:(Class)arg1;
 - (id)validSlotFilterForClass:(Class)arg1 platform:(id)arg2;
 - (void)subtractValidSlotsFilter:(id)arg1 forPlatform:(id)arg2;

@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)setState:(int)arg1 animate:(_Bool)arg2;
+- (void)setState:(unsigned long long)arg1 animate:(_Bool)arg2;
 - (_Bool)isAccessibilityElement;
 - (id)accessibilityElements;
 - (void)setTimerToneName:(id)arg1;

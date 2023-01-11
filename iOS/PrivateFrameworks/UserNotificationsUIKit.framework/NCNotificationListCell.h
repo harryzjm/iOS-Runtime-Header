@@ -6,15 +6,16 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <UserNotificationsUIKit/MTContentSizeCategoryAdjusting-Protocol.h>
+#import <UserNotificationsUIKit/NCLegibilitySettingsAdjusting-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationViewControllerObserving-Protocol.h>
+#import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 #import <UserNotificationsUIKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <UserNotificationsUIKit/UIScrollViewDelegate-Protocol.h>
 
 @class NCNotificationListCellActionButtonsView, NCNotificationViewController, NSString, UIPanGestureRecognizer, UIView, UIViewFloatAnimatableProperty;
 @protocol NCNotificationListCellDelegate;
 
-@interface NCNotificationListCell : UICollectionViewCell <UIScrollViewDelegate, UIGestureRecognizerDelegate, NCNotificationViewControllerObserving, MTContentSizeCategoryAdjusting>
+@interface NCNotificationListCell : UICollectionViewCell <UIScrollViewDelegate, UIGestureRecognizerDelegate, NCNotificationViewControllerObserving, PLContentSizeCategoryAdjusting, NCLegibilitySettingsAdjusting>
 {
     _Bool _adjustsFontForContentSizeCategory;
     _Bool _configured;
@@ -61,6 +62,7 @@
 @property(retain, nonatomic) NCNotificationViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
 - (void).cxx_destruct;
+- (void)adjustForLegibilitySettingsChange:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (_Bool)adjustForContentSizeCategoryChange;
 - (_Bool)_shouldPerformClipping;
@@ -99,9 +101,9 @@
 - (void)_updateActionButtonRevealPercentageForTargetPosition:(double)arg1;
 - (double)_updateActionRevealStateForTargetPosition:(double)arg1 currentPosition:(double)arg2 velocity:(double)arg3;
 - (void)_handlePanGesture:(id)arg1;
-- (void)_removePanGestureRecognizer;
 - (void)_setupPanGestureRecognizer;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (void)resetCellActionButtons;
 - (void)hintSideSwipeForDefaultAction;
 - (void)applyLayoutAttributes:(id)arg1;
 - (_Bool)_disableRasterizeInAnimations;
@@ -109,6 +111,7 @@
 - (void)prepareForReuse;
 - (void)cellOpenButtonPressed:(id)arg1;
 - (void)cellClearButtonPressed:(id)arg1;
+- (void)cellSettingsButtonPressed:(id)arg1;
 - (void)cellViewButtonPressed:(id)arg1;
 - (void)layoutSubviews;
 - (void)updateCellForContentViewController:(id)arg1;

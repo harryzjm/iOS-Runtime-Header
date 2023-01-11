@@ -4,20 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIAccessibilityElement.h>
+@class NSMutableArray, PDFAnnotation, PDFPage;
 
-@class PDFAnnotation, PDFView;
-
-@interface PDFAnnotationAccessibilityElement : UIAccessibilityElement
+@interface PDFAnnotationAccessibilityElement
 {
-    PDFView *_view;
+    PDFPage *_page;
     PDFAnnotation *_annotation;
-    UIAccessibilityElement *_parentNode;
+    NSMutableArray *_cachedAXElements;
 }
 
-@property(retain, nonatomic) UIAccessibilityElement *parentNode; // @synthesize parentNode=_parentNode;
+@property(retain, nonatomic) NSMutableArray *cachedAXElements; // @synthesize cachedAXElements=_cachedAXElements;
 @property(nonatomic) __weak PDFAnnotation *annotation; // @synthesize annotation=_annotation;
-@property(nonatomic) __weak PDFView *view; // @synthesize view=_view;
+@property(nonatomic) __weak PDFPage *page; // @synthesize page=_page;
 - (void).cxx_destruct;
 - (_Bool)_accessibilityIsButtonWidget;
 - (id)_accessibilityAnnotationFieldType;
@@ -30,7 +28,9 @@
 - (unsigned long long)accessibilityTraits;
 - (struct CGRect)accessibilityFrame;
 - (_Bool)isAccessibilityElement;
-- (id)initWithPDFView:(id)arg1 annotation:(id)arg2 withParent:(id)arg3;
+- (void)_axRemovedFromSuperview:(id)arg1;
+- (void)_axAnnotationHit:(id)arg1;
+- (id)initWithPage:(id)arg1 annotation:(id)arg2 withParent:(id)arg3;
 
 @end
 

@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)setForecast:(id)arg1 temperatureUnit:(int)arg2;
 - (id)accessibilityLabel;
+- (id)_axForecast;
 - (_Bool)isAccessibilityElement;
 - (void)axSetIsDataCelsiusValue:(id)arg1;
 - (id)axIsDataCelsiusValue;

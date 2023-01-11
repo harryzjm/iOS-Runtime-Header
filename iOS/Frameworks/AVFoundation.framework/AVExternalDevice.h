@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVExternalDeviceInternal, NSArray, NSData, NSDictionary, NSString;
 @protocol AVExternalDeviceDelegate;
@@ -24,6 +24,7 @@
 - (void)takeScreenForClient:(id)arg1 reason:(id)arg2;
 - (id)borrowScreenForClient:(id)arg1 reason:(id)arg2;
 - (id)requestTurnByTurnNavigationOwnership;
+- (void)requestViewArea:(long long)arg1 forScreenID:(id)arg2;
 - (void)requestCarUIForURL:(id)arg1 withUUID:(id)arg2;
 - (void)requestCarUIForURL:(id)arg1;
 - (void)requestCarUI;
@@ -51,6 +52,8 @@
 @property(readonly, nonatomic) NSDictionary *screenInputCapabilities;
 @property(readonly, nonatomic) NSString *name;
 @property(readonly, nonatomic) NSString *ID;
+@property(readonly, nonatomic) NSDictionary *screenSafeAreas;
+@property(readonly, nonatomic) NSDictionary *screenViewAreas;
 @property(readonly, nonatomic) NSArray *screenIDs;
 - (id)_screenInfo;
 - (id)_figEndpointPropertyValueForKey:(struct __CFString *)arg1;

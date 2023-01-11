@@ -9,6 +9,7 @@
 #import <MobileTimer/MTDictionarySerializable-Protocol.h>
 #import <MobileTimer/MTDiffable-Protocol.h>
 #import <MobileTimer/MTScheduleable-Protocol.h>
+#import <MobileTimer/MTTimerIntentSupport-Protocol.h>
 #import <MobileTimer/NAEquatable-Protocol.h>
 #import <MobileTimer/NSCopying-Protocol.h>
 #import <MobileTimer/NSMutableCopying-Protocol.h>
@@ -17,7 +18,7 @@
 @class MTSound, NSDate, NSString, NSURL, NSUUID;
 @protocol MTTimerTime;
 
-@interface MTTimer : NSObject <MTScheduleable, MTDictionarySerializable, MTDiffable, NAEquatable, NSCopying, NSMutableCopying, NSSecureCoding>
+@interface MTTimer : NSObject <MTScheduleable, MTDictionarySerializable, MTDiffable, MTTimerIntentSupport, NAEquatable, NSCopying, NSMutableCopying, NSSecureCoding>
 {
     NSUUID *_timerID;
     unsigned long long _state;
@@ -33,7 +34,9 @@
 
 + (id)_timerTimeForState:(unsigned long long)arg1 remainingTime:(double)arg2 currentDateProvider:(CDUnknownBlockType)arg3;
 + (_Bool)supportsSecureCoding;
++ (_Bool)stateChangeIsAllowableFromState:(unsigned long long)arg1 toState:(unsigned long long)arg2;
 + (id)descriptionForState:(unsigned long long)arg1;
++ (id)currentTimerFromTimers:(id)arg1;
 @property(copy, nonatomic) CDUnknownBlockType currentDateProvider; // @synthesize currentDateProvider=_currentDateProvider;
 @property(copy, nonatomic) id <MTTimerTime> fireTime; // @synthesize fireTime=_fireTime;
 @property(copy, nonatomic) MTSound *sound; // @synthesize sound=_sound;
@@ -63,10 +66,13 @@
 - (long long)compare:(id)arg1;
 - (id)timerByUpdatingWithState:(unsigned long long)arg1;
 - (id)timerByRestarting;
+@property(readonly, nonatomic) _Bool hasDefaultTitle;
 @property(readonly, nonatomic) NSString *displayTitle;
+@property(readonly, nonatomic) NSDate *fireDate;
 @property(readonly, nonatomic) double remainingTime;
 @property(readonly, nonatomic) NSURL *timerURL;
-- (id)_initForCopy;
+- (_Bool)isCurrentTimer;
+- (id)_initCommon;
 - (id)initWithIdentifier:(id)arg1;
 - (id)initWithState:(unsigned long long)arg1 duration:(double)arg2 currentDateProvider:(CDUnknownBlockType)arg3;
 - (id)initWithState:(unsigned long long)arg1 duration:(double)arg2;

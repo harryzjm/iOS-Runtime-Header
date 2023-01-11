@@ -4,19 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSURL;
+@class AVDisplayCriteria, NSArray, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface AVFigAssetInspector
 {
     struct OpaqueFigAsset *_figAsset;
     struct OpaqueFigFormatReader *_formatReader;
     long long _formatReaderOnce;
     long long _checkIsStreamingOnce;
+    long long _makeDisplayCriteriaOnce;
+    AVDisplayCriteria *_displayCriteria;
     _Bool _isStreaming;
     _Bool didCheckForSaveRestriction;
     _Bool hasSaveRestriction;
 }
 
+- (id)preferredDisplayCriteria;
 - (id)availableVideoDynamicRanges;
 - (struct CGSize)maximumVideoResolution;
 - (id)propertyListForProxy;

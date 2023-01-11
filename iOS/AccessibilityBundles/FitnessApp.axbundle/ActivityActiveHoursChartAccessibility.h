@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityHoursPerSlice;
 - (double)_accessibilityTimeIntervalPerSlice;
 - (id)_accessibilityQuantityForSliceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)_accessibilityNumberOfSlices;

@@ -4,24 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <PrototypeTools/NSCopying-Protocol.h>
-
-@interface PTSRowAction : NSObject <NSCopying>
+@interface PTSRowAction
 {
     _Bool _deselectRowOnSuccess;
-    CDUnknownBlockType _handler;
 }
 
-+ (id)actionWithHandler:(CDUnknownBlockType)arg1;
-+ (id)action;
-@property(nonatomic) _Bool deselectRowOnSuccess; // @synthesize deselectRowOnSuccess=_deselectRowOnSuccess;
-@property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
-- (void).cxx_destruct;
-- (void)resolveTemplatesWithIndex:(unsigned long long)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)init;
+@property _Bool deselectRowOnSuccess; // @synthesize deselectRowOnSuccess=_deselectRowOnSuccess;
 
 @end
 

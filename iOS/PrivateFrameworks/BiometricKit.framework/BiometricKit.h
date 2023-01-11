@@ -36,6 +36,7 @@
 - (void)setDebugImages:(_Bool)arg1;
 - (void)timestampEvent:(unsigned long long)arg1;
 - (long long)getFreeIdentityCount:(int)arg1 forUser:(unsigned int)arg2;
+- (void)logEventOrCode:(unsigned long long)arg1;
 - (float)getModulationRatio;
 - (long long)getCalibrationDataState;
 - (long long)getSensorCalibrationStatus;

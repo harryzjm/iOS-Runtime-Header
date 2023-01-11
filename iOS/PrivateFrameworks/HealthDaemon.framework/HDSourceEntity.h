@@ -10,11 +10,13 @@
 
 + (id)_firstSourceWithPredicate:(id)arg1 database:(id)arg2 error:(id *)arg3;
 + (id)_firstSourceWithPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
-+ (id)_sourcesWithPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
++ (id)_sourcesWithPredicate:(id)arg1 includeDeleted:(_Bool)arg2 profile:(id)arg3 error:(id *)arg4;
++ (id)countOfWatchSourcesWithDatabase:(id)arg1 error:(id *)arg2;
 + (id)orderedBundleIdentifiersFromSourceUUIDsData:(id)arg1 database:(id)arg2 error:(id *)arg3;
-+ (id)sourcesWithPredicate:(id)arg1 orderingProperties:(id)arg2 orderingDirections:(id)arg3 database:(id)arg4 error:(id *)arg5;
-+ (id)sourcesWithPredicate:(id)arg1 database:(id)arg2 error:(id *)arg3;
-+ (id)sourcesWithPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
++ (_Bool)enumerateBundleIdentifiersForSourcesWithPredicate:(id)arg1 database:(id)arg2 error:(id *)arg3 enumerationHandler:(CDUnknownBlockType)arg4;
++ (id)sourcesWithPredicate:(id)arg1 orderingProperties:(id)arg2 orderingDirections:(id)arg3 includeDeleted:(_Bool)arg4 database:(id)arg5 error:(id *)arg6;
++ (id)sourcesWithPredicate:(id)arg1 includeDeleted:(_Bool)arg2 database:(id)arg3 error:(id *)arg4;
++ (id)sourcesWithPredicate:(id)arg1 includeDeleted:(_Bool)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)firstSourceWithPredicate:(id)arg1 database:(id)arg2 error:(id *)arg3;
 + (id)firstSourceWithPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)sourceForLocalDeviceWithDatabase:(id)arg1 error:(id *)arg2;
@@ -26,16 +28,16 @@
 + (id)entityEncoderForProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
 + (long long)protectionClass;
 + (id)indices;
-+ (id)columnsDefinition;
++ (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)databaseTable;
 - (_Bool)deleteSourceWithDatabase:(id)arg1 error:(id *)arg2;
+- (id)sourceBundleIdentifierInDatabase:(id)arg1 error:(id *)arg2;
 - (_Bool)_updateValues:(id)arg1 forProperties:(id)arg2 profile:(id)arg3 didUpdate:(_Bool *)arg4 error:(id *)arg5;
 - (_Bool)setBundleIdentifier:(id)arg1 UUID:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 - (_Bool)setOptions:(unsigned long long)arg1 profile:(id)arg2 didUpdate:(_Bool *)arg3 error:(id *)arg4;
 - (_Bool)setName:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 - (id)sourceUUIDWithProfile:(id)arg1 error:(id *)arg2;
 - (id)sourceUUIDWithHealthDatabase:(id)arg1 error:(id *)arg2;
-- (id)sourceBundleIdentifierInHealthDatabase:(id)arg1 error:(id *)arg2;
 - (id)codableSourceWithEncoder:(id)arg1 error:(id *)arg2;
 - (id)codableSourceWithProfile:(id)arg1 error:(id *)arg2;
 - (id)sourceWithProfile:(id)arg1 error:(id *)arg2;

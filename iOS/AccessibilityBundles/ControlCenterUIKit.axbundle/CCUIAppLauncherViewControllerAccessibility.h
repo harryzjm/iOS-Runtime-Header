@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityControlCenterButtonIdentifier;
 - (id)_accessibilityControlCenterButtonLabel;
+- (_Bool)_accessibilityControlCenterShouldExpandContentModule;
 
 @end
 

@@ -4,17 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <PhotosUICore/CPLStatusDelegate-Protocol.h>
 
-@class CPLStatus, NSProgress, NSString, PLPhotoLibrary, PXCPLState;
+@class CPLStatus, NSObject, NSProgress, NSString, PLPhotoLibrary, PXCPLState;
 @protocol OS_dispatch_queue;
 
-@interface PXCPLStatus : NSObject <CPLStatusDelegate>
+@interface PXCPLStatus <CPLStatusDelegate>
 {
     PXCPLState *_state;
-    NSObject<OS_dispatch_queue> *_serialQueue;
+    NSObject<OS_dispatch_queue> *_serialUpdateQueue;
     CPLStatus *_cplStatus;
     unsigned long long _syncProgressState;
     id _syncProgressSubscriber;
@@ -26,13 +24,16 @@
     CDUnknownBlockType _handler;
 }
 
++ (id)currentStatusProvider;
 @property(readonly, nonatomic) PXCPLState *state; // @synthesize state=_state;
-@property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 - (void).cxx_destruct;
 - (void)statusDidChange:(id)arg1;
 - (void)syncWithCloudPhotoLibrary;
-- (void)overrideSystemBudgetsForSyncSession:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)userPauseCloudPhotos:(_Bool)arg1;
+- (void)setHandler:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)handler;
+- (void)userResumeICloudPhotos;
+- (void)userPauseICloudPhotos;
 - (void)_unsubscribeFromSyncProgress;
 - (void)_subscribeToSyncProgress;
 - (void)_setSyncProgress:(id)arg1;
@@ -42,6 +43,7 @@
 - (void)_performUpdate;
 - (id)_updateState:(id)arg1 requestedTypes:(unsigned long long)arg2 failedTypes:(unsigned long long *)arg3;
 - (void)setState:(id)arg1;
+- (id)mutableChangeObject;
 - (void)dealloc;
 - (id)init;
 - (id)_initWithInitialSynchronousUpdateType:(unsigned long long)arg1;

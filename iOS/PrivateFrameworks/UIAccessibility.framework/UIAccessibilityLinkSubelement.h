@@ -6,16 +6,19 @@
 
 #import <UIKit/UIAccessibilityElement.h>
 
-@class UITextRange;
+@class NSURL;
 
 @interface UIAccessibilityLinkSubelement : UIAccessibilityElement
 {
+    NSURL *_url;
     struct _NSRange _range;
 }
 
+@property(retain, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(nonatomic) struct _NSRange range; // @synthesize range=_range;
+- (void).cxx_destruct;
 - (struct CGRect)accessibilityFrame;
-@property(readonly) UITextRange *textRange;
+- (id)textRangeForTextView:(id)arg1;
 - (unsigned long long)accessibilityTraits;
 
 @end

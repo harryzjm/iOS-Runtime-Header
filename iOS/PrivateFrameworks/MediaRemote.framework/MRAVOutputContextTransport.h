@@ -4,30 +4,47 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVOutputContext, MRAVInputStream, MRAVOutputStream, NSArray;
+@class AVOutputContext, AVOutputDevice, MRAVInputStream, MRAVOutputDevice, MRAVOutputStream, NSError, NSObject, _MRDeviceInfoMessageProtobuf;
+@protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface MRAVOutputContextTransport
 {
+    unsigned long long _state;
+    NSObject<OS_dispatch_queue> *_serialQueue;
     AVOutputContext *_outputContext;
-    void *_deviceInfo;
+    _MRDeviceInfoMessageProtobuf *_deviceInfo;
+    NSError *_error;
     MRAVInputStream *_inputStream;
     MRAVOutputStream *_outputStream;
-    NSArray *_outputDevices;
+    _Bool _useSystemAuthenticationPrompt;
+    MRAVOutputDevice *_outputDevice;
+    AVOutputDevice *_avOutputDevice;
 }
 
-@property(readonly, nonatomic) NSArray *outputDevices; // @synthesize outputDevices=_outputDevices;
-- (id)_createRemoteControlContextWithID:(id)arg1;
-- (void)_initializeOutputContext;
+@property(readonly, nonatomic) AVOutputDevice *avOutputDevice; // @synthesize avOutputDevice=_avOutputDevice;
+@property(readonly, nonatomic) MRAVOutputDevice *outputDevice; // @synthesize outputDevice=_outputDevice;
+- (void).cxx_destruct;
+- (id)_onQueue_createRemoteControlContextWithID:(id)arg1;
+- (void)_destroyRemoteControlContext;
+- (void)_unregisterNotificationsForOutputContext:(id)arg1;
+- (void)_registerNotificationsForOutputContext:(id)arg1;
+- (void)_onQueue_resetStreams;
+- (void)_onQueue_initializeOutputContext;
+- (void)_outputContextDevicesDidChangeNotification:(id)arg1;
 - (_Bool)requiresCustomPairing;
+- (void)reset;
 - (_Bool)getInputStream:(id *)arg1 outputStream:(id *)arg2;
+- (id)error;
+- (void)setShouldUseSystemAuthenticationPrompt:(_Bool)arg1;
+- (_Bool)shouldUseSystemAuthenticationPrompt;
 - (long long)port;
 - (id)hostname;
 - (id)name;
-- (void *)deviceInfo;
+- (id)uid;
+- (id)deviceInfo;
 - (id)description;
 - (void)dealloc;
-- (id)initWithOutputDevices:(id)arg1;
+- (id)initWithOutputDevice:(id)arg1 avOutputDevice:(id)arg2 connectionType:(long long)arg3;
 
 @end
 

@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_deactivateAddFaceAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_scrollToAndSetupFaceAtIndex:(unsigned long long)arg1 updateLibraryFaceCollection:(_Bool)arg2;
 - (void)endInteractiveLibraryPresentation;
 - (id)_accessibilityCustomActionsForPageAtIndex:(unsigned long long)arg1 forPageScrollViewController:(id)arg2;

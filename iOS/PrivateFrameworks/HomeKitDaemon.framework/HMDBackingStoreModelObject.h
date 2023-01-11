@@ -37,6 +37,7 @@
 + (Class)genericRepresentation;
 + (id)readonlyBefore;
 + (id)bsoSchemaHash;
++ (id)schemaHashRoot;
 + (id)properties;
 @property _Bool bsoDataVersionOverride; // @synthesize bsoDataVersionOverride=_bsoDataVersionOverride;
 @property(readonly, nonatomic) CKRecord *bsoRecord; // @synthesize bsoRecord=_bsoRecord;
@@ -62,10 +63,12 @@
 - (_Bool)validForStorage;
 - (_Bool)propertyIsAvailable:(id)arg1;
 - (_Bool)propertyIsReadOnly:(id)arg1;
+@property(readonly, nonatomic, getter=isReplayable) _Bool replayable;
 @property(readonly, nonatomic, getter=isGenericRepresentation) _Bool isGenericRepresentation; // @dynamic isGenericRepresentation;
 @property(readonly, nonatomic, getter=isReadOnly) _Bool isReadOnly; // @dynamic isReadOnly;
 - (_Bool)propertyWasSet:(id)arg1;
 - (id)setProperties;
+- (void)setParentUUIDIfNotNil:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)encodeForCloud:(id *)arg1;

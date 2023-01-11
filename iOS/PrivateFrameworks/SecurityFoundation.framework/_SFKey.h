@@ -6,18 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, _SFKeySpecifier;
+@class NSData, NSString, _SFKeySpecifier;
 
 @interface _SFKey : NSObject
 {
     id _keyInternal;
+    NSData *_keyData;
 }
 
 + (id)_specifierForSecKey:(struct __SecKey *)arg1;
 + (Class)_attributesClass;
+@property(readonly, nonatomic) NSData *keyData; // @synthesize keyData=_keyData;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *keyDomain;
 @property(readonly, copy, nonatomic) _SFKeySpecifier *keySpecifier;
+- (_Bool)isEqual:(id)arg1;
 - (id)initRandomKeyWithSpecifier:(id)arg1;
 - (id)initWithAttributes:(id)arg1;
 - (id)initWithData:(id)arg1 specifier:(id)arg2 error:(id *)arg3;

@@ -13,7 +13,6 @@
 + (id)safeCategoryTargetClassName;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)showWithFlags:(unsigned int)arg1 throttleSeconds:(int)arg2;
-- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

@@ -29,7 +29,6 @@
 - (void)setDelegate:(id)arg1;
 - (id)delegate;
 @property(readonly, nonatomic) NSArray *requiredPaymentSetupFileURLs;
-- (id)_deviceSpecificLocalizedStringKeyForKey:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;

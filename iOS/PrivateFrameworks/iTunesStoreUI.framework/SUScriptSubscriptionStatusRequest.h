@@ -8,6 +8,7 @@
 
 @interface SUScriptSubscriptionStatusRequest
 {
+    long long _carrierBundleProvisioningStyle;
     _Bool _ignoreCache;
     long long _reason;
     long long _service;
@@ -27,7 +28,9 @@
 @property(copy) NSString *serviceName;
 @property(copy) NSString *reasonName;
 @property id ignoreCache;
+@property(copy) NSString *carrierBundleProvisioningStyleName;
 - (id)_className;
+- (id)init;
 
 @end
 

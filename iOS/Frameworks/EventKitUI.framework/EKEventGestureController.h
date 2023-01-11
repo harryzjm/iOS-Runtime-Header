@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <EventKitUI/EKICSPreviewControllerDelegate-Protocol.h>
 #import <EventKitUI/UIAlertViewDelegate-Protocol.h>
@@ -59,6 +59,7 @@
     _UIFeedbackDragSnappingBehavior *_dragSnappingFeedback;
     UIDropInteraction *_dropInteraction;
     UIDragInteraction *_dragInteraction;
+    long long _currentDropDataOwnerCache;
     _Bool _usesXDragOffsetInCancelRegion;
     _Bool _usesHorizontalDragLocking;
     _Bool _commitBlocked;
@@ -100,6 +101,8 @@
 - (void)_animateInNewEvent;
 - (id)_createTemporaryView:(id)arg1 animated:(_Bool)arg2;
 - (id)originalStartDateForEvent:(id)arg1 includingTravel:(_Bool)arg2;
+- (long long)_dragInteraction:(id)arg1 dataOwnerForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
+- (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (void)dragInteraction:(id)arg1 session:(id)arg2 didEndWithOperation:(unsigned long long)arg3;
 - (void)dragInteraction:(id)arg1 session:(id)arg2 willEndWithOperation:(unsigned long long)arg3;
 - (_Bool)dragInteraction:(id)arg1 prefersFullSizePreviewsForSession:(id)arg2;
@@ -120,6 +123,7 @@
 - (void)_setToSystemDraggingImageForDrag:(id)arg1;
 - (void)_enableSystemPreviewForDrag:(id)arg1;
 - (void)_disableSystemPreviewForDrag:(id)arg1;
+- (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (void)dropInteraction:(id)arg1 sessionDidEnd:(id)arg2;
 - (struct CGPoint)_estimateFinalDropOriginForTimedDelegate;
 - (id)dropInteraction:(id)arg1 previewForDroppingItem:(id)arg2 withDefault:(id)arg3;
@@ -144,6 +148,9 @@
 - (id)_getEventUsingDropSession:(id)arg1;
 - (id)_acceptedExternalTypes;
 - (id)_acceptedTypes;
+- (_Bool)_calendarCanAcceptManagedData:(id)arg1;
+- (id)_findFirstCalendar:(id)arg1;
+- (void)_setEventCalendar:(id)arg1 useManagedCalendar:(_Bool)arg2;
 - (void)_updateFlingToCancelParameters;
 - (id)_viewForTracking;
 - (void)_dragFailedToStart;
@@ -165,6 +172,7 @@
 - (void)_manageFeedbackForStateChangeFrom:(int)arg1 to:(int)arg2;
 - (id)_debugStringForDraggingState:(int)arg1;
 - (int)_draggingState;
+- (_Bool)_setDraggingState:(int)arg1 withPoint:(struct CGPoint)arg2 event:(id)arg3 context:(id)arg4;
 - (_Bool)_setDraggingState:(int)arg1 withPoint:(struct CGPoint)arg2 event:(id)arg3;
 - (void)_scrollTimerFired:(id)arg1;
 - (void)_removeScrollTimer;

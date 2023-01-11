@@ -25,15 +25,7 @@ struct CGSize {
     double height;
 };
 
-struct CLKUIGLUniforms {
-    int rotation;
-    int sampleRadius;
-    int sampleCenter;
-    int primaryTexture;
-    int secondaryTexture;
-};
-
-struct CLKUITextureBackingStructure {
+struct CLKUIAtlasBackingStructure {
     void *bytes;
     unsigned int length;
     unsigned int width;
@@ -41,10 +33,28 @@ struct CLKUITextureBackingStructure {
     unsigned int planes;
     unsigned int planeLength;
     unsigned int bytesPerPixel;
+    unsigned int mipCount;
     unsigned char format;
     unsigned char filter;
     unsigned char wrap;
     _Bool mipmaps;
+};
+
+struct CLKUIGLUniforms {
+    int rotation;
+    int dialRadius;
+    int sampleRadius;
+    int sampleCenter;
+    int primaryTexture;
+    int primaryTextureRect;
+    int secondaryTexture;
+    int secondaryTextureRect;
+    int aspect;
+};
+
+struct CLKUIQuadSize {
+    int _field1;
+    int _field2;
 };
 
 struct NSNumber {

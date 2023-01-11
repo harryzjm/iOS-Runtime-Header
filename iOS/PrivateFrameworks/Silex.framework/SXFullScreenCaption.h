@@ -11,7 +11,7 @@
 @class NSString, SXFormattedText;
 @protocol SXTextSourceDataSource;
 
-@interface SXFullScreenCaption : NSObject <SXTextSourceDataSource>
+@interface SXFullscreenCaption : NSObject <SXTextSourceDataSource>
 {
     NSString *_text;
     SXFormattedText *_caption;

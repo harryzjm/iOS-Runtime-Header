@@ -24,8 +24,10 @@
     id <_NSExtensionContextVending> __extensionVendorProxy;
     NSXPCConnection *__auxiliaryConnection;
     NSXPCListener *__auxiliaryListener;
+    id __processAssertion;
     id __principalObject;
     NSObject<OS_os_transaction> *__transaction;
+    CDStruct_4c969caf __extensionHostAuditToken;
 }
 
 + (id)_allowedErrorClasses;
@@ -37,11 +39,12 @@
 + (id)_extensionContextHostProtocolWithAllowedErrorClasses:(id)arg1;
 + (id)_defaultExtensionContextProtocol;
 + (id)_extensionContextHostProtocolAllowedClassesForItems;
-+ (void)initialize;
 + (id)_extensionContextForIdentifier:(id)arg1;
+@property(setter=_setExtensionHostAuditToken:) CDStruct_4c969caf _extensionHostAuditToken; // @synthesize _extensionHostAuditToken=__extensionHostAuditToken;
 @property(retain, getter=_transaction, setter=_setTransaction:) NSObject<OS_os_transaction> *_transaction; // @synthesize _transaction=__transaction;
 @property(nonatomic, getter=_isDummyExtension, setter=_setDummyExtension:) _Bool _dummyExtension; // @synthesize _dummyExtension=__dummyExtension;
 @property(nonatomic, setter=_setPrincipalObject:) id _principalObject; // @synthesize _principalObject=__principalObject;
+@property(retain, setter=_setProcessAssertion:) id _processAssertion; // @synthesize _processAssertion=__processAssertion;
 @property(retain, nonatomic, setter=_setAuxiliaryListener:) NSXPCListener *_auxiliaryListener; // @synthesize _auxiliaryListener=__auxiliaryListener;
 @property(retain, nonatomic, setter=_setAuxiliaryConnection:) NSXPCConnection *_auxiliaryConnection; // @synthesize _auxiliaryConnection=__auxiliaryConnection;
 @property(retain, nonatomic, setter=_setExtensionVendorProxy:) id <_NSExtensionContextVending> _extensionVendorProxy; // @synthesize _extensionVendorProxy=__extensionVendorProxy;

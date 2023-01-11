@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityAllowsSiblingsWhenOvergrown;
 - (void)detailSlider:(id)arg1 didChangeScrubSpeed:(long long)arg2;
+- (void)_updateAirplayButton;
 - (void)_playbackStateChanged:(id)arg1;
 - (void)_effectiveScaleModeDidChange:(id)arg1;
 - (void)_configureTransportControls;
@@ -21,6 +22,7 @@
 - (void)_axAnnotateAllButtons;
 - (void)_axAnnotateLeftRightButtons;
 - (void)_axUpdateScaleButton;
+- (void)_axUpdateAirplayButton;
 - (void)_axUpdatePictureInPictureButton;
 - (void)_axUpdatePlayPauseButton;
 

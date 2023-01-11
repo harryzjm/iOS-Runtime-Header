@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString;
+@class NSArray, NSNumber, NSString;
 @protocol SAUITemplateItem;
 
 @interface SAUITemplateTabularData
@@ -14,10 +14,13 @@
 + (id)tabularDataWithDictionary:(id)arg1 context:(id)arg2;
 + (id)tabularData;
 @property(nonatomic) _Bool showHeaderDivider;
+@property(copy, nonatomic) NSArray *rowStyleRules;
+@property(copy, nonatomic) NSNumber *minimumRowHeight;
 @property(copy, nonatomic) NSString *layoutStyle;
 @property(retain, nonatomic) id <SAUITemplateItem> headerItem;
 @property(retain, nonatomic) id <SAUITemplateItem> footerItem;
 @property(copy, nonatomic) NSArray *columns;
+@property(nonatomic) _Bool allowContentScrolling;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

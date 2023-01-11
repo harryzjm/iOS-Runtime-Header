@@ -9,33 +9,41 @@
 #import <TVMLKit/UICollectionViewDataSource-Protocol.h>
 #import <TVMLKit/UICollectionViewDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSObject, NSString, _TVCarouselCollectionView;
+@class CADisplayLink, NSArray, NSDate, NSDictionary, NSIndexPath, NSObject, NSString, _TVCarouselCollectionView;
 @protocol OS_dispatch_source, TVCarouselViewDataSource, TVCarouselViewDelegate;
 
 @interface TVCarouselView : UIView <UICollectionViewDataSource, UICollectionViewDelegate>
 {
     NSObject<OS_dispatch_source> *_autoScrollTimer;
     _TVCarouselCollectionView *_collectionView;
-    unsigned long long _currentVirtualIndexForCellDequeue;
+    unsigned long long _indexToDeque;
     NSIndexPath *_focusedIndexPath;
-    _Bool _hasValidLayout;
     unsigned long long _numberOfRealItemsForDataSource;
     double _originalSelectionDuration;
     double _originalUnselectionDuration;
-    NSArray *_remoteGestures;
-    _Bool _firstFocusMove;
+    long long _numFocusChangesInInterval;
     id <TVCarouselViewDataSource> _dataSource;
     id <TVCarouselViewDelegate> _delegate;
     double _interitemSpacing;
     unsigned long long _scrollMode;
     double _autoScrollInterval;
     double _continuousScrollVelocity;
-    CDUnknownBlockType _continuousScrollingBlock;
+    NSDictionary *_collectionToDatasourceIndexMap;
+    CADisplayLink *_displayLink;
+    double _previousDisplayLinkTimestamp;
+    double _offsetChangePerSecond;
+    NSDate *_firstFocusChangeInInterval;
     struct CGSize _itemSize;
     struct CGPoint _focusDirection;
+    struct CGPoint _targetContentOffset;
 }
 
-@property(copy) CDUnknownBlockType continuousScrollingBlock; // @synthesize continuousScrollingBlock=_continuousScrollingBlock;
+@property(retain, nonatomic) NSDate *firstFocusChangeInInterval; // @synthesize firstFocusChangeInInterval=_firstFocusChangeInInterval;
+@property(nonatomic) double offsetChangePerSecond; // @synthesize offsetChangePerSecond=_offsetChangePerSecond;
+@property(nonatomic) struct CGPoint targetContentOffset; // @synthesize targetContentOffset=_targetContentOffset;
+@property(nonatomic) double previousDisplayLinkTimestamp; // @synthesize previousDisplayLinkTimestamp=_previousDisplayLinkTimestamp;
+@property(retain, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
+@property(retain, nonatomic) NSDictionary *collectionToDatasourceIndexMap; // @synthesize collectionToDatasourceIndexMap=_collectionToDatasourceIndexMap;
 @property(nonatomic) struct CGPoint focusDirection; // @synthesize focusDirection=_focusDirection;
 @property(nonatomic) double continuousScrollVelocity; // @synthesize continuousScrollVelocity=_continuousScrollVelocity;
 @property(nonatomic) double autoScrollInterval; // @synthesize autoScrollInterval=_autoScrollInterval;
@@ -46,25 +54,28 @@
 @property(nonatomic) __weak id <TVCarouselViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 - (void).cxx_destruct;
 - (void)_updateIdleModeLayoutAttributes;
-- (void)_stopContinuousScroll;
-- (void)_startContinuousScroll;
 - (void)_stopAutoScrollTimer;
 - (void)_startAutoScrollTimer;
 - (void)_updateAutoScrollTimer;
+- (_Bool)_canScrollCarouselView;
 - (void)_updateContentOffsetForFocusedIndex:(long long)arg1 animated:(_Bool)arg2;
 - (void)_updateCollectionViewLayoutAnimated:(_Bool)arg1;
 - (void)_updateCollectionViewLayout;
-- (double)_contentOffsetXForIndex:(long long)arg1;
+- (double)_contentOffsetXForCollectionViewIndex:(long long)arg1;
+- (void)_prepareIndexMap:(long long)arg1;
+- (void)_updateCarouselWithCenterIndex:(long long)arg1 indexToRemove:(long long)arg2 indexToAdd:(long long)arg3;
+- (void)_setContentOffsetForCollectionViewIndex:(long long)arg1;
+- (void)_adjustCarouselForDirectionShift:(long long)arg1;
+- (long long)_numberOfCells;
+- (long long)_centerCollectionViewCellIndex;
 @property(readonly, copy, nonatomic) NSArray *visibleCells;
 - (void)setInteritemSpacing:(double)arg1 animated:(_Bool)arg2;
 - (void)reloadData;
 - (void)registerClass:(Class)arg1 forCellWithReuseIdentifier:(id)arg2;
 - (unsigned long long)indexForCell:(id)arg1;
 - (id)dequeueReusableCellWithReuseIdentifier:(id)arg1 forIndex:(unsigned long long)arg2;
-- (id)cellForItemAtIndex:(unsigned long long)arg1;
+- (id)_cellForItemAtIndex:(unsigned long long)arg1;
 - (void)_handlePlayGesture:(id)arg1;
-- (void)_handleButtonGesture:(id)arg1;
-- (void)_focusGestureDidBeginNotification:(id)arg1;
 - (void)_applicationWillEnterForegroundNotification:(id)arg1;
 - (void)_applicationDidEnterBackgroundNotification:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
@@ -82,6 +93,10 @@
 - (void)didMoveToSuperview;
 - (id)_collectionView;
 - (void)dealloc;
+- (void)_stopContinuousScroll;
+- (void)displayLinkDidFire:(id)arg1;
+- (void)_startContinuousScroll;
+- (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

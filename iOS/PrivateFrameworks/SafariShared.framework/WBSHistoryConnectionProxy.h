@@ -6,27 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariShared/WBSHistoryClientProtocol-Protocol.h>
 #import <SafariShared/WBSHistoryConnectionProxy-Protocol.h>
 
 @class NSXPCConnection;
 @protocol OS_dispatch_queue;
 
-@interface WBSHistoryConnectionProxy : NSObject <WBSHistoryClientProtocol, WBSHistoryConnectionProxy>
+@interface WBSHistoryConnectionProxy : NSObject <WBSHistoryConnectionProxy>
 {
     NSXPCConnection *_connection;
-    _Bool _registeredForHistoryNotifications;
     NSObject<OS_dispatch_queue> *_connectionProxyQueue;
 }
 
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *connectionProxyQueue; // @synthesize connectionProxyQueue=_connectionProxyQueue;
-@property(readonly, nonatomic, getter=isRegisteredForHistoryNotifications) _Bool registeredForHistoryNotifications; // @synthesize registeredForHistoryNotifications=_registeredForHistoryNotifications;
 - (void).cxx_destruct;
-- (void)processRemoteHistoryNotification:(id)arg1;
+- (id)queryMemoryFootprintWithError:(id *)arg1;
+- (void)queryMemoryFootprint:(CDUnknownBlockType)arg1;
 - (void)killService;
-- (void)unregisterForHistoryNotifications;
-- (void)_registerForHistoryNotifications;
-- (void)registerForHistoryNotifications;
 - (void)beginHistoryAccessSession:(CDUnknownBlockType)arg1;
 - (void)beginURLCompletionSession:(CDUnknownBlockType)arg1;
 - (void)debugGetDatabaseURLWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/MPArtworkDataSource-Protocol.h>
 #import <MediaPlayer/NSURLSessionDataDelegate-Protocol.h>
@@ -22,6 +22,7 @@
     NSURLSession *_URLSession;
 }
 
++ (void)_applyURLCachePolicy:(unsigned long long)arg1 cacheDiskPath:(id)arg2 toConfiguration:(id)arg3;
 @property(retain, nonatomic) NSURLSession *URLSession; // @synthesize URLSession=_URLSession;
 @property(retain, nonatomic) NSMutableDictionary *pendingRequestToCompletionHandlers; // @synthesize pendingRequestToCompletionHandlers=_pendingRequestToCompletionHandlers;
 @property(retain, nonatomic) NSMapTable *catalogTaskMap; // @synthesize catalogTaskMap=_catalogTaskMap;
@@ -49,6 +50,7 @@
 - (id)requestForCatalog:(id)arg1 size:(struct CGSize)arg2;
 - (id)supportedSizesForCatalog:(id)arg1;
 - (_Bool)areRepresentationsAvailableForCatalog:(id)arg1;
+- (void)updateURLSessionWithCachePolicy:(unsigned long long)arg1 cachePath:(id)arg2;
 @property(readonly, nonatomic) NSURLSessionConfiguration *URLSessionConfiguration;
 - (id)init;
 

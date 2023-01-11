@@ -10,7 +10,7 @@
 #import <PassKitUI/PKPaymentAuthorizationCoordinatorPrivateDelegate-Protocol.h>
 #import <PassKitUI/PKPerformActionViewDelegate-Protocol.h>
 
-@class NSString, PKPaymentPass, PKPaymentPassAction, PKPaymentWebService, PKPerformActionLoadingView, PKPerformActionPassView, PKServiceProviderPurchase, UIView;
+@class NSString, PKPaymentPass, PKPaymentPassAction, PKPaymentWebService, PKPerformActionLoadingView, PKPerformActionPassView, PKServiceProviderPurchase, UIBarButtonItem, UIView;
 @protocol PKPaymentDataProvider, PKPerformActionView, PKPerformActionViewControllerDelegate;
 
 @interface PKPerformActionViewController : UIViewController <PKPerformActionViewDelegate, PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate>
@@ -19,7 +19,10 @@
     PKPerformActionLoadingView *_loadingView;
     id <PKPaymentDataProvider> _paymentDataProvider;
     _Bool _remoteContentFetched;
+    _Bool _fieldsVerified;
     PKServiceProviderPurchase *_completedPurchase;
+    UIBarButtonItem *_button;
+    UIBarButtonItem *_spinner;
     PKPaymentPass *_pass;
     PKPaymentPassAction *_action;
     UIView<PKPerformActionView> *_actionView;
@@ -28,7 +31,7 @@
 }
 
 + (id)navigationBarBackgroundColor;
-+ (id)alertControllerForUnableReason:(unsigned long long)arg1 displayableError:(id)arg2 addCardActionHandler:(CDUnknownBlockType)arg3;
++ (id)alertControllerForUnableReason:(unsigned long long)arg1 action:(id)arg2 displayableError:(id)arg3 addCardActionHandler:(CDUnknownBlockType)arg4;
 @property(nonatomic) __weak id <PKPerformActionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) PKPaymentWebService *webService; // @synthesize webService=_webService;
 @property(readonly, nonatomic) UIView<PKPerformActionView> *actionView; // @synthesize actionView=_actionView;
@@ -39,12 +42,15 @@
 - (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizePurchase:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationCoordinatorDidFinish:(id)arg1;
 - (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizePayment:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (_Bool)_shouldPresentPaymentRequest:(long long)arg1;
+- (void)_presentPaymentSetupControllerWithAllowedPaymentNetworks:(id)arg1;
 - (void)_showGenericErrorAlert:(CDUnknownBlockType)arg1;
 - (void)_canPerformPaymentWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_rightBarButtonPressed:(id)arg1;
 - (void)_reloadActionView;
 - (void)_showLoadingView:(_Bool)arg1;
 - (void)_fetchRemoteContentIfNeeded;
+- (void)_showSpinner:(_Bool)arg1;
 - (void)setRightBarButtonEnabled:(_Bool)arg1;
 - (void)shakeCard;
 - (_Bool)pkui_prefersNavigationBarShadowHidden;

@@ -12,15 +12,19 @@
     NSData *_paymentData;
     NSDictionary *_certificates;
     NSString *_recipientPhoneOrEmail;
+    NSString *_pushToken;
+    NSData *_signedEnrollmentDataSignature;
 }
 
 + (id)requestWithAuthorizedPeerPaymentQuote:(id)arg1;
+@property(copy, nonatomic) NSData *signedEnrollmentDataSignature; // @synthesize signedEnrollmentDataSignature=_signedEnrollmentDataSignature;
+@property(copy, nonatomic) NSString *pushToken; // @synthesize pushToken=_pushToken;
 @property(copy, nonatomic) NSString *recipientPhoneOrEmail; // @synthesize recipientPhoneOrEmail=_recipientPhoneOrEmail;
 @property(copy, nonatomic) NSDictionary *certificates; // @synthesize certificates=_certificates;
 @property(copy, nonatomic) NSData *paymentData; // @synthesize paymentData=_paymentData;
 @property(copy, nonatomic) NSString *quoteIdentifier; // @synthesize quoteIdentifier=_quoteIdentifier;
 - (void).cxx_destruct;
-- (id)_urlRequestWithServiceURL:(id)arg1 account:(id)arg2 deviceIdentifier:(id)arg3 deviceScore:(id)arg4;
+- (id)_urlRequestWithServiceURL:(id)arg1 account:(id)arg2 deviceIdentifier:(id)arg3 deviceScore:(id)arg4 deviceMetadata:(id)arg5;
 
 @end
 

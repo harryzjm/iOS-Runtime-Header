@@ -4,16 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSCalendar, NSDate, NSLocale, NSMutableDictionary, NSObject, NSString, NSTimeZone;
-@protocol OS_dispatch_semaphore;
+@class NSArray, NSCalendar, NSDate, NSLocale, NSMutableDictionary, NSString, NSTimeZone;
 
 @interface NSDateFormatter
 {
     NSMutableDictionary *_attributes;
     struct __CFDateFormatter *_formatter;
     unsigned long long _counter;
-    NSObject<OS_dispatch_semaphore> *_lock;
     long long _cacheGeneration;
+    struct os_unfair_lock_s _lock;
 }
 
 + (id)dateFormatFromTemplate:(id)arg1 options:(unsigned long long)arg2 locale:(id)arg3;

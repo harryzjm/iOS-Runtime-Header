@@ -151,7 +151,6 @@
 - (id)accessibilityLanguage;
 - (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
 - (void)accessibilityZoomInAtPoint:(struct CGPoint)arg1;
-- (void)accessibilityElementDidBecomeFocused;
 - (_Bool)accessibilityActivate;
 - (id)accessibilityPath;
 - (_Bool)_accessibilitySupportsActivateAction;
@@ -189,6 +188,7 @@
 - (long long)_accessibilityExpandedStatus;
 - (_Bool)_axWebKitHasPopup;
 - (_Bool)_axWebKitIsAriaPressed;
+- (id)accessibilityLinkRelationshipType;
 - (_Bool)_axWebKitSupportsARIAPressed;
 - (_Bool)_accessibilityIsPressed;
 - (_Bool)_accessibilitySupportsPressedState;

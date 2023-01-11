@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CIVector *inputExtent; // @synthesize inputExtent;
 @property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
+- (id)outputImageNonMPS;
 - (id)outputData;
 - (_Bool)_inputsAreOK;
 - (struct IRect)_netExtent;

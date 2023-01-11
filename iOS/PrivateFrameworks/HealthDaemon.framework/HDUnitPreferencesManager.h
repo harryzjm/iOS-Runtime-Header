@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HDProfile, NSDictionary, NSHashTable, NSMutableDictionary;
+@class HDProfile, HKObserverSet, NSDictionary, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface HDUnitPreferencesManager : NSObject
@@ -14,8 +14,7 @@
     HDProfile *_profile;
     NSDictionary *_unitPreferences;
     NSMutableDictionary *_defaultPreferredUnits;
-    NSHashTable *_observers;
-    NSObject<OS_dispatch_queue> *_observerQueue;
+    HKObserverSet *_observers;
     NSObject<OS_dispatch_queue> *_resourceQueue;
 }
 
@@ -33,7 +32,7 @@
 - (id)_queue_unitPreferenceDictionaryWithError:(id *)arg1;
 - (void)_queue_notifyObserversWithUnitPreferences;
 - (void)removeUnitPreferenceObserver:(id)arg1;
-- (void)addUnitPreferenceObserver:(id)arg1;
+- (void)addUnitPreferenceObserver:(id)arg1 queue:(id)arg2;
 - (void)_queue_updateUnitPreferenceCacheWithUnit:(id)arg1 type:(id)arg2;
 - (id)unitTesting_preferredUnitForType:(id)arg1 error:(id *)arg2;
 - (void)setPreferredUnitToDefaultIfNotSetForType:(id)arg1;

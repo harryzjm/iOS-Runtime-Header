@@ -36,12 +36,13 @@
 - (id)_accessibilityApplicationSemanticContextWithViewController:(id)arg1;
 - (id)_accessibilitySemanticContext;
 - (id)_accessibilityAuditIssuesWithOptions:(id)arg1;
-- (id)_axAuditCheckDynamicTextSupport:(_Bool)arg1 andClippingIssues:(_Bool)arg2;
+- (id)_axAuditCheckDynamicTextSupport:(_Bool)arg1 andClippingIssues:(_Bool)arg2 spinRunloop:(_Bool)arg3;
 - (void)_accessibilityShowKeyboardHints;
 - (_Bool)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (_Bool)_accessibilityActionIsPhysicalButton:(int)arg1 nativeUIKitTypeRef:(long long *)arg2;
 - (id)_accessibilityElementsWithSemanticContext:(id)arg1;
 - (id)accessibilityLabel;
+- (id)_accessibilityRealtimeElements;
 - (id)_accessibilityPreviewWindow;
 - (id)_accessibilityIsolatedWindows;
 - (id)_accessibilityElementCommunityIdentifier;
@@ -52,6 +53,7 @@
 - (int)_accessibilityApplicationInterfaceOrientation;
 - (int)_accessibilityApplicationForPosition:(struct CGPoint)arg1;
 - (id)accessibilityAttributeValue:(long long)arg1;
+- (id)accessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
 - (_Bool)_accessibilityDispatchKeyboardAction:(id)arg1;
 - (id)_axSubviews;
 - (id)_accessibilityCurrentHardwareKeyboardLayout;
@@ -72,6 +74,7 @@
 - (id)_lastStatusBarElement;
 - (id)_firstStatusBarElement;
 - (id)_accessibilityTypingCandidates;
+- (id)_accessibilityTextReplacementCandidates;
 - (id)_axAllSubviews;
 - (id)_accessibilitySummaryElement;
 - (id)_accessibilityTitleBarElement;
@@ -96,6 +99,7 @@
 - (void)dealloc;
 - (void)accessibilityDisable;
 - (void)_accessibilityInitialize;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (void)_loadAllAccessibilityInformation;
 - (void)_accessibilityAVCaptureStopped:(id)arg1;
 - (void)_accessibilityAVCaptureStarted:(id)arg1;

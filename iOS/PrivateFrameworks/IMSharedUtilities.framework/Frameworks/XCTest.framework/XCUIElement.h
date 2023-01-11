@@ -6,25 +6,28 @@
 
 #import <objc/NSObject.h>
 
-#import <XCTest/XCElementAttributesPrivate-Protocol.h>
 #import <XCTest/XCTNSPredicateExpectationObject-Protocol.h>
 #import <XCTest/XCUIElementAttributes-Protocol.h>
+#import <XCTest/XCUIElementAttributesPrivate-Protocol.h>
+#import <XCTest/XCUIElementSnapshotProviding-Protocol.h>
 #import <XCTest/XCUIElementTypeQueryProvider-Protocol.h>
 #import <XCTest/XCUIScreenshotProviding-Protocol.h>
 
-@class NSString, XCElementSnapshot, XCUIApplication, XCUICoordinate, XCUIElementQuery;
+@class NSString, XCElementSnapshot, XCTLocalizableStringInfo, XCUIApplication, XCUICoordinate, XCUIElementQuery;
 
-@interface XCUIElement : NSObject <XCUIScreenshotProviding, XCTNSPredicateExpectationObject, XCElementAttributesPrivate, XCUIElementAttributes, XCUIElementTypeQueryProvider>
+@interface XCUIElement : NSObject <XCUIScreenshotProviding, XCUIElementSnapshotProviding, XCTNSPredicateExpectationObject, XCUIElementAttributesPrivate, XCUIElementAttributes, XCUIElementTypeQueryProvider>
 {
     _Bool _safeQueryResolutionEnabled;
     XCUIElementQuery *_query;
     XCElementSnapshot *_lastSnapshot;
 }
 
++ (id)standardAttributeNames;
 + (_Bool)_isInvalidEventDuration:(double)arg1;
 @property _Bool safeQueryResolutionEnabled; // @synthesize safeQueryResolutionEnabled=_safeQueryResolutionEnabled;
 @property(retain) XCElementSnapshot *lastSnapshot; // @synthesize lastSnapshot=_lastSnapshot;
 @property(readonly) XCUIElementQuery *query; // @synthesize query=_query;
+- (void).cxx_destruct;
 @property(readonly, copy) XCUIElementQuery *statusItems;
 @property(readonly, copy) XCUIElementQuery *otherElements;
 @property(readonly, copy) XCUIElementQuery *handles;
@@ -114,6 +117,7 @@
 @property(readonly, nonatomic) long long interfaceOrientation;
 @property(readonly) _Bool hasKeyboardFocus;
 - (unsigned long long)traits;
+@property(readonly, copy) XCTLocalizableStringInfo *localizableStringInfo;
 @property(readonly) long long horizontalSizeClass;
 @property(readonly) long long verticalSizeClass;
 @property(readonly) unsigned long long elementType;
@@ -125,6 +129,7 @@
 @property(readonly, copy) NSString *title;
 @property(readonly) struct CGRect frame;
 @property(readonly) id value;
+- (_Bool)resolveHandleUIInterruption:(_Bool)arg1 error:(id *)arg2;
 - (void)resolveHandleUIInterruption:(_Bool)arg1;
 - (void)resolve;
 - (_Bool)waitForExistenceWithTimeout:(double)arg1;
@@ -138,11 +143,14 @@
 @property(readonly) _Bool exists;
 @property(readonly, nonatomic) XCUIApplication *application;
 @property(readonly, copy) NSString *description;
+- (id)elementBoundByAccessibilityElement;
 - (id)initWithElementQuery:(id)arg1;
-- (void)dealloc;
 - (id)screenshot;
 - (id)_screen;
+- (id)snapshotWithError:(id *)arg1;
+- (_Bool)_shouldDispatchEvent:(id *)arg1;
 - (void)_dispatchEvent:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (_Bool)_dispatchEvent:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (void)typeText:(id)arg1;
 - (void)rotate:(double)arg1 withVelocity:(double)arg2;
 - (void)pinchWithScale:(double)arg1 velocity:(double)arg2;
@@ -160,10 +168,11 @@
 - (void)twoFingerTap;
 - (void)doubleTap;
 - (void)tap;
-- (struct CGPoint)_hitPointByAttemptingToScrollToVisibleSnapshot:(id)arg1;
+- (id)_hitPointByAttemptingToScrollToVisibleSnapshot:(id)arg1 error:(id *)arg2;
 @property(readonly) double normalizedSliderPosition;
 - (void)adjustToNormalizedSliderPosition:(double)arg1;
 - (void)adjustToPickerWheelValue:(id)arg1;
+- (void)tapOrClick;
 - (void)forcePress;
 
 // Remaining properties

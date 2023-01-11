@@ -4,22 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/AVAsynchronousKeyValueLoading-Protocol.h>
 #import <AVFoundation/NSCopying-Protocol.h>
 
 @class AVWeakReference, NSArray, NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetInspectorLoader : NSObject <NSCopying, AVAsynchronousKeyValueLoading>
 {
     AVWeakReference *_weakReference;
 }
 
 + (void)initialize;
-- (void)postURLSessionSetUpDidCompleteNotificationIfAppropriate;
-- (id)_URLSessionDataDelegate;
-- (id)_URLSessionOperationQueue;
 - (id)_createAVErrorForError:(id)arg1 andFigErrorCode:(int)arg2;
 - (void)loadValuesAsynchronouslyForKeys:(id)arg1 keysForCollectionKeys:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_ensureAllDependenciesOfKeyAreLoaded:(id)arg1;

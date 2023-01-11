@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, PKPaymentEligibilityResponse, PKPaymentRequirementsResponse;
 
@@ -26,6 +26,11 @@
 @property(copy, nonatomic) NSString *sanitizedPrimaryAccountNumber; // @synthesize sanitizedPrimaryAccountNumber=_sanitizedPrimaryAccountNumber;
 @property(nonatomic) long long credentialType; // @synthesize credentialType=_credentialType;
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isTransitCredential) _Bool transitCredential;
+- (id)purchasedProductCredential;
+- (_Bool)isPurchasedProductCredential;
+- (id)digitalIssuanceProductCredential;
+- (_Bool)isDigitalIssuanceProductCredential;
 - (id)contactlessProductCredential;
 - (_Bool)isContactlessProductCredential;
 - (id)peerPaymentCredential;

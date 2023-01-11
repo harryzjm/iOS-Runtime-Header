@@ -9,7 +9,7 @@
 #import <iAd/ADAdRecipient-Protocol.h>
 #import <iAd/ADDimmerViewDelegate-Protocol.h>
 
-@class ADAdSpace, ADDimmerView, ADPrivacyButton, NSDate, NSString, NSTimer, NSURL, UILabel, UIViewController;
+@class ADAdSpace, ADDimmerView, ADLayoutOptions, ADPrivacyButton, NSDate, NSString, NSTimer, NSURL, UILabel, UIViewController;
 @protocol ADBannerViewDelegate, ADBannerViewInternalDelegate;
 
 @interface ADBannerView : UIView <ADAdRecipient, ADDimmerViewDelegate>
@@ -35,6 +35,7 @@
     NSString *_adResponseId;
     long long _lastErrorCode;
     long long _options;
+    ADLayoutOptions *_layoutOptions;
     long long _adType;
     NSString *_advertisingSection;
     UIView *_highlightClippedView;
@@ -98,6 +99,7 @@
 @property(readonly, nonatomic) long long adType; // @synthesize adType=_adType;
 @property(nonatomic) struct CGSize landscapeSize; // @synthesize landscapeSize=_landscapeSize;
 @property(nonatomic) struct CGSize portraitSize; // @synthesize portraitSize=_portraitSize;
+@property(retain, nonatomic) ADLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property(readonly, nonatomic) int internalAdType; // @synthesize internalAdType=_internalAdType;
 @property(readonly, nonatomic) long long options; // @synthesize options=_options;
 @property(nonatomic) long long lastErrorCode; // @synthesize lastErrorCode=_lastErrorCode;
@@ -106,6 +108,9 @@
 @property(nonatomic) int slotPosition; // @synthesize slotPosition=_slotPosition;
 @property(nonatomic) int screenfuls; // @synthesize screenfuls=_screenfuls;
 @property(copy, nonatomic) NSString *adResponseId; // @synthesize adResponseId=_adResponseId;
+- (id)currentAdIdentifier;
+- (void)unregisterVideoPlayerForAdAnalytics:(id)arg1;
+- (void)registerVideoPlayerForAdAnalytics:(id)arg1;
 - (id)context;
 - (void)setContext:(id)arg1;
 - (id)publicImpressionAttributes;
@@ -150,6 +155,13 @@
 - (id)requiredContentSizeIdentifiers;
 - (void)setRequiredContentSizeIdentifiers:(id)arg1;
 @property(nonatomic) __weak id <ADBannerViewDelegate> delegate;
+- (void)adlibManagedVideoAdDidToggleToMute:(_Bool)arg1;
+- (void)adlibManagedVideoAdDidTapVideo;
+- (void)adlibManagedVideoAdDidTapForMoreInfo;
+- (void)adlibManagedVideoAdDidCompletePlay:(int)arg1;
+- (void)adlibManagedVideoAdDidPausePlay;
+- (void)adlibManagedVideoAdDidResumePlay;
+- (void)adlibManagedVideoAdDidImpress;
 - (void)creativeControllerViewWasTappedAtPoint:(struct CGPoint)arg1 withMRAIDAction:(id)arg2;
 - (_Bool)shouldTestVisibilityAtPoint:(struct CGPoint)arg1;
 - (void)resumeBannerMedia;
@@ -162,6 +174,7 @@
 - (void)serverBannerViewWillLoad;
 @property(readonly, nonatomic) UIViewController *presentingViewController;
 - (void)setViewSizeInPortrait:(struct CGSize)arg1 inLandscape:(struct CGSize)arg2;
+- (id)adPrivacyDetailsAttributes;
 - (void)privacyButtonWasTapped;
 - (void)_resetHighlightTimer;
 - (void)_updateHighlight:(id)arg1;
@@ -170,6 +183,10 @@
 - (void)displayCreativeView;
 - (void)displayBannerView;
 - (void)reportNativeClickEvent;
+- (void)reportAdPrivacySheetDidLinkOut;
+- (void)reportAdPrivacySheetDidDisappear;
+- (void)reportAdPrivacySheetDidAppear;
+- (void)reportAdPrivacySheetDidRender;
 - (void)bannerTappedAtPoint:(struct CGPoint)arg1 withMRAIDAction:(id)arg2;
 - (void)bannerTappedAtPoint:(struct CGPoint)arg1;
 - (void)beginAction;
@@ -200,9 +217,25 @@
 - (id)initFromIBWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)_initWithInternalAdType:(int)arg1 layoutOptions:(id)arg2 options:(long long)arg3;
 - (id)_initWithInternalAdType:(int)arg1 options:(long long)arg2;
 - (id)initWithAdType:(long long)arg1;
 - (void)dealloc;
+- (void)videoBannerTouched:(id)arg1;
+- (void)videoBannerVisibilityDidChange:(id)arg1;
+- (void)playbackFailed:(id)arg1 forURL:(id)arg2;
+- (void)playbackMediaWasSkipped:(id)arg1;
+- (void)playbackDidExitFullscreen:(id)arg1;
+- (void)playbackDidEnterFullscreen:(id)arg1;
+- (void)playbackAudioWasUnmuted:(id)arg1;
+- (void)playbackAudioWasMuted:(id)arg1;
+- (void)playbackDidReachProgressEvent:(id)arg1;
+- (void)playbackDidFinish:(id)arg1;
+- (void)playbackDidResume:(id)arg1;
+- (void)playbackDidPause:(id)arg1;
+- (void)playbackDidStart:(id)arg1;
+- (void)videoBannerDidUnload:(id)arg1;
+- (void)videoBannerDidLoad:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

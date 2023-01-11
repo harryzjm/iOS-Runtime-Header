@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, NSURL, TDDistiller, TDLogger;
 
@@ -17,8 +17,10 @@
     TDLogger *_logger;
     NSString *_assetStoreVersionString;
     long long _assetStoreVersionNumber;
+    NSString *_minDeploymentTarget;
 }
 
+@property(nonatomic) NSString *minDeploymentTarget; // @synthesize minDeploymentTarget=_minDeploymentTarget;
 @property long long assetStoreVersionNumber; // @synthesize assetStoreVersionNumber=_assetStoreVersionNumber;
 @property(copy) NSString *assetStoreVersionString; // @synthesize assetStoreVersionString=_assetStoreVersionString;
 @property(retain, nonatomic) TDLogger *logger; // @synthesize logger=_logger;

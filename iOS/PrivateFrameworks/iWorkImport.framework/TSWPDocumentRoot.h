@@ -6,17 +6,19 @@
 
 #import <iWorkImport/TSWPObjectIndex-Protocol.h>
 
-@class EQKitEnvironment, NSUUID;
+@class EQKitEnvironment, NSUUID, TSULocale;
 
 __attribute__((visibility("hidden")))
 @interface TSWPDocumentRoot <TSWPObjectIndex>
 {
-    _Bool _didRemoveMissingAttachments;
     NSUUID *_uuid;
+    _Bool _didRemoveMissingAttachments;
 }
 
 @property(nonatomic) _Bool didRemoveMissingAttachments; // @synthesize didRemoveMissingAttachments=_didRemoveMissingAttachments;
+- (void).cxx_destruct;
 - (double)bodyWidth;
+- (void)fontUpdatedForStyleClient:(id)arg1;
 - (id)documentId;
 @property(readonly, nonatomic) _Bool supportHeaderFooterParagraphAlignmentInInspectors;
 - (int)verticalAlignmentForTextStorage:(id)arg1;
@@ -31,13 +33,16 @@ __attribute__((visibility("hidden")))
 - (id)documentTSWPFontObjects;
 - (id)documentFonts;
 - (id)p_fontsInStylesheetUsingBlock:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) TSULocale *typesettingLocale;
 - (_Bool)useLigatures;
-- (struct __CFLocale *)hyphenationLocale;
+- (const struct __CFLocale *)hyphenationLocale;
 - (_Bool)shouldHyphenate;
 - (id)changeVisibility;
 - (id)changeSessionManagerForModel:(id)arg1;
 - (void)willClose;
 - (void)documentDidLoad;
+- (_Bool)has_30356142_build;
+- (_Bool)validatedLoadFromUnarchiver:(id)arg1;
 
 @end
 

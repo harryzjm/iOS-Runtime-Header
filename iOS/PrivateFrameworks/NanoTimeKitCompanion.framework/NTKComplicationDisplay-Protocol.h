@@ -9,6 +9,7 @@
 @protocol NTKComplicationDisplayObserver;
 
 @protocol NTKComplicationDisplay <NSObject>
+@property(nonatomic) _Bool canUseCurvedText;
 @property(nonatomic) __weak id <NTKComplicationDisplayObserver> displayObserver;
 
 @optional

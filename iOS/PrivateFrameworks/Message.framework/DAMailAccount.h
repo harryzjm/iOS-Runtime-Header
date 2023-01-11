@@ -64,11 +64,12 @@
 + (id)displayedShortAccountTypeString;
 + (id)displayedAccountTypeString;
 + (id)csAccountTypeString;
++ (id)legacyPathForAccountIdentifier:(id)arg1 withHostname:(id)arg2 username:(id)arg3;
 + (id)accountTypeString;
 + (id)folderIDForRelativePath:(id)arg1 accountID:(id *)arg2;
 + (Class)_accountConduitClass;
 @property(retain, nonatomic) MFMailboxUid *virtualAllSearchMailbox; // @synthesize virtualAllSearchMailbox=_virtualAllSearchMailbox;
-- (id)unsupportedContinuationTypes;
+- (id)unsupportedHandoffTypes;
 - (id)fetchLimits;
 - (_Bool)supportsMailDrop;
 - (_Bool)isManaged;
@@ -183,6 +184,7 @@
 - (id)statisticsKind;
 - (id)initWithDAAccount:(id)arg1;
 - (id)initWithLibrary:(id)arg1 persistentAccount:(id)arg2;
+- (id)URLStringFromLegacyURLString:(id)arg1;
 
 @end
 

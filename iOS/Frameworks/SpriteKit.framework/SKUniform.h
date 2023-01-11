@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class MISSING_TYPE, NSMutableArray, NSString, SKTexture;
 
-@interface SKUniform : NSObject <NSCopying, NSCoding>
+@interface SKUniform : NSObject <NSCopying, NSSecureCoding>
 {
     long long _type;
     NSString *_name;
@@ -41,6 +41,7 @@
 + (id)uniformWithName:(id)arg1 vectorFloat2: /* Error: Ran out of types for this method. */;
 + (id)uniformWithName:(id)arg1 float:(float)arg2;
 + (id)uniformWithName:(id)arg1;
++ (_Bool)supportsSecureCoding;
 @property unsigned long long _seed; // @synthesize _seed;
 @property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 - (void).cxx_destruct;
@@ -48,6 +49,7 @@
 - (void)_addTargetShader:(id)arg1;
 - (void)_propagateChange;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqualToUniform:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) long long uniformType;

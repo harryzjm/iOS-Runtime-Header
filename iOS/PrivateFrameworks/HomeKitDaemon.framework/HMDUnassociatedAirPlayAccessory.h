@@ -4,23 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDMediaAccessoryAssociation-Protocol.h>
+#import <HomeKitDaemon/HMDAccessoryAssociation-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class NSString;
+@class HMFPairingIdentity, NSString;
 
-@interface HMDUnassociatedAirPlayAccessory <HMDMediaAccessoryAssociation>
+@interface HMDUnassociatedAirPlayAccessory <HMFLogging, HMDAccessoryAssociation>
 {
-    NSString *_administrationPassword;
+    HMFPairingIdentity *_pairingIdentity;
 }
 
++ (id)logCategory;
 + (Class)modelClass;
-+ (id)randomAdministrationPassword:(id *)arg1;
-@property(copy) NSString *administrationPassword; // @synthesize administrationPassword=_administrationPassword;
 - (void).cxx_destruct;
-- (void)associateWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)logIdentifier;
+- (void)associateToHome:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly) _Bool supportsAssociation;
+@property(copy) HMFPairingIdentity *pairingIdentity; // @synthesize pairingIdentity=_pairingIdentity;
 - (id)addTransactionForHome:(id)arg1 configurationAppIdentifier:(id)arg2;
-- (id)initWithIdentifier:(id)arg1 name:(id)arg2 category:(id)arg3 messageDispatcher:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

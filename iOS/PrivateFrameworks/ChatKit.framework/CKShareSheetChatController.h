@@ -6,6 +6,7 @@
 
 @interface CKShareSheetChatController
 {
+    unsigned long long _interactionSignPost;
     _Bool _alreadySetUp;
 }
 
@@ -13,6 +14,8 @@
 - (_Bool)shouldDismissAfterSend;
 - (void)sendComposition:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)_endInteractionSignPost;
+- (void)_beginInteractionSignPost;
 - (void)keyboardDidChangeFrame:(id)arg1;
 
 @end

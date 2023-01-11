@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSUserDefaults;
 
@@ -16,13 +16,18 @@
 
 + (id)currentSettings;
 @property(nonatomic, getter=isExternalDevicePairingAllowed) _Bool externalDevicePairingAllowed; // @synthesize externalDevicePairingAllowed=_externalDevicePairingAllowed;
+- (void).cxx_destruct;
 - (void)_removeValueForKey:(id)arg1;
 - (long long)_integerValueForKey:(id)arg1 usingDefaultValue:(long long)arg2;
 - (double)_doubleValueForKey:(id)arg1 usingDefaultValue:(double)arg2;
 - (_Bool)_boolValueForKey:(id)arg1 usingDefaultValue:(_Bool)arg2;
-@property(nonatomic) NSArray *connectedClientPIDs;
+@property(readonly, nonatomic) _Bool takelockScreenAssertion;
+@property(readonly, nonatomic) _Bool computeNowPlayingApplication;
+@property(readonly, nonatomic) double pauseWhileOnLockScreenTimeout;
+@property(readonly, nonatomic) double nowPlayingApplicationTimeout;
+@property(retain, nonatomic) NSArray *connectedClientPIDs;
+@property(readonly, nonatomic) _Bool useGenericTransportForHostedEndpoints;
 @property(readonly, nonatomic) _Bool useSystemAudioContextForAirPlayTransport;
-@property(readonly, nonatomic, getter=isAirPlay2Enabled) _Bool airPlay2Enabled;
 @property(readonly, nonatomic) double transactionWaitDurationOnNetworkSend;
 @property(readonly, nonatomic) double transactionWaitDurationOnXpcSend;
 @property(readonly, nonatomic) double transactionWaitDurationOnOutOfMemory;
@@ -39,13 +44,13 @@
 @property(readonly, nonatomic) double externalDeviceTimeoutDuration;
 @property(readonly, nonatomic) long long externalDeviceSocketQOSLevel;
 @property(readonly, nonatomic) _Bool hasExternalDeviceSocketQOSLevelSet;
+@property(readonly, nonatomic) _Bool shouldLogArtwork;
 @property(readonly, nonatomic) _Bool shouldLogPairingSetupCode;
+@property(readonly, nonatomic) _Bool shouldInitializeGenericBonjourService;
 @property(readonly, nonatomic) _Bool shouldInitializeTelevisionBonjourService;
-@property(readonly, nonatomic) _Bool deviceSupportsExternalRemoteControl;
 @property(readonly, nonatomic) _Bool useDebugAVRouteWithoutVolumeControl;
 @property(readonly, nonatomic) _Bool useNoDelayOptionForExternalDeviceSockets;
 @property(readonly, nonatomic) _Bool usePeerToPeerExternalDeviceConnections;
-- (void)dealloc;
 - (id)init;
 
 @end

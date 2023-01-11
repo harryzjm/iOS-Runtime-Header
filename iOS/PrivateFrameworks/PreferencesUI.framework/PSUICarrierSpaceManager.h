@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PreferencesUI/CTCarrierSpaceClientDelegate-Protocol.h>
+#import <PreferencesUI/CoreTelephonyClientSubscriberDelegate-Protocol.h>
 
-@class CTCarrierSpaceAppsInfo, CTCarrierSpaceCapabilities, CTCarrierSpaceClient, CTCarrierSpacePlansInfo, CTCarrierSpaceUsageInfo, CTCarrierSpaceUserConsentFlowInfo, NSNumber, NSString, PSUIAppInstallController;
+@class CTCarrierSpaceAppsInfo, CTCarrierSpaceCapabilities, CTCarrierSpaceClient, CTCarrierSpacePlansInfo, CTCarrierSpaceUsageInfo, CTCarrierSpaceUserConsentFlowInfo, CoreTelephonyClient, NSNumber, NSString, PSUIAppInstallController;
 @protocol OS_dispatch_queue;
 
-@interface PSUICarrierSpaceManager : NSObject <CTCarrierSpaceClientDelegate>
+@interface PSUICarrierSpaceManager : NSObject <CTCarrierSpaceClientDelegate, CoreTelephonyClientSubscriberDelegate>
 {
     NSObject<OS_dispatch_queue> *_carrierSpaceQueue;
     CTCarrierSpaceCapabilities *_capabilities;
@@ -21,7 +22,9 @@
     PSUIAppInstallController *_carrierAppInstallController;
     NSNumber *_hasUserConsent;
     CTCarrierSpaceUserConsentFlowInfo *_userConsentFlowInfo;
+    NSNumber *_userConsentResponse;
     struct __CTServerConnection *_serverConnection;
+    CoreTelephonyClient *_coreTelephonyClient;
     CTCarrierSpaceClient *_carrierSpaceClient;
 }
 
@@ -35,6 +38,7 @@
 - (void)plansDidChange;
 - (void)usageDidChange;
 - (void)capabilitiesDidChange:(id)arg1;
+- (void)simStatusDidChange:(id)arg1 status:(id)arg2;
 - (id)localizedDataStringFromBytes:(unsigned long long)arg1;
 - (_Bool)shouldShowPlanMetrics:(id)arg1;
 - (id)descriptionForPlanMetrics:(id)arg1;
@@ -51,6 +55,7 @@
 - (void)refresh;
 - (void)refreshAndReload;
 - (void)reset;
+- (void)userConsentAcknowledged:(_Bool)arg1;
 - (void)setUserConsent:(_Bool)arg1;
 - (id)userConsentFlowInfo;
 - (_Bool)hasUserConsent;

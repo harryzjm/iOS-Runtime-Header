@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface SUDownloadPolicyFactory : NSObject
 {
@@ -14,7 +14,9 @@
 + (id)downloadPolicyForType:(int)arg1 forDescriptor:(id)arg2;
 + (id)userDownloadPolicyForDescriptor:(id)arg1;
 + (id)userDownloadPolicyForDescriptor:(id)arg1 existingPolicy:(id)arg2;
-+ (id)_userDownloadPolicyFromCurrentPolicy:(id)arg1 descriptor:(id)arg2 networkMonitor:(id)arg3;
++ (id)userDownloadPolicyForDescriptor:(id)arg1 existingPolicy:(id)arg2 allowCellularOverride:(_Bool)arg3;
++ (id)userDownloadPolicyForDescriptor:(id)arg1 existingPolicy:(id)arg2 networkMonitor:(id)arg3 allowCellularOverride:(_Bool)arg4;
++ (id)_userDownloadPolicyFromCurrentPolicy:(id)arg1 descriptor:(id)arg2 networkMonitor:(id)arg3 allowCellularOverride:(_Bool)arg4;
 
 @end
 

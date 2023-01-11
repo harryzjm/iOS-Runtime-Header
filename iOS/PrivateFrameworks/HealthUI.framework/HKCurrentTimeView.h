@@ -30,6 +30,7 @@
 - (double)_foregroundAlpha:(_Bool)arg1;
 - (id)_backgroundColor:(_Bool)arg1;
 - (id)_foregroundColor:(_Bool)arg1;
+- (id)_labelColor:(_Bool)arg1;
 - (id)_tintColor:(_Bool)arg1;
 - (id)_colorIfForeground:(_Bool)arg1 enabled:(_Bool)arg2;
 - (double)_currentTimeButtonBaselineToBottom;

@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSPArchiverManagerDelegate-Protocol.h>
 #import <iWorkImport/TSPComponentWriterDelegate-Protocol.h>
 #import <iWorkImport/TSPDataArchiver-Protocol.h>
 #import <iWorkImport/TSPObjectModifyDelegate-Protocol.h>
 #import <iWorkImport/TSPProxyObjectMapping-Protocol.h>
+#import <iWorkImport/TSPProxyObjectWriting-Protocol.h>
 
-@class NSHashTable, NSMutableArray, NSString, NSURL, TSPArchiverManager, TSPObjectContext, TSURetainedPointerKeyDictionary;
+@class NSMutableArray, NSString, NSURL, TSPArchiverManager, TSPObjectContext, TSPReferenceOrderedSet, TSURetainedPointerKeyDictionary;
 @protocol OS_dispatch_queue, TSPEncoder, TSPEncoderWriteCoordinatorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface TSPEncoderWriteCoordinator : NSObject <TSPArchiverManagerDelegate, TSPComponentWriterDelegate, TSPDataArchiver, TSPObjectModifyDelegate, TSPProxyObjectMapping>
+@interface TSPEncoderWriteCoordinator : NSObject <TSPArchiverManagerDelegate, TSPComponentWriterDelegate, TSPDataArchiver, TSPObjectModifyDelegate, TSPProxyObjectWriting, TSPProxyObjectMapping>
 {
     id <TSPEncoder> _encoder;
     TSPArchiverManager *_archiverManager;
@@ -24,7 +25,7 @@ __attribute__((visibility("hidden")))
     _Bool _didStopCapturingSnapshots;
     NSMutableArray *_dataFinalizeHandlers;
     NSObject<OS_dispatch_queue> *_accessQueue;
-    NSHashTable *_delayedObjects;
+    TSPReferenceOrderedSet *_delayedObjects;
     _Bool _hasProxyObjects;
     TSURetainedPointerKeyDictionary *_proxyObjectMap;
     TSPObjectContext *_context;

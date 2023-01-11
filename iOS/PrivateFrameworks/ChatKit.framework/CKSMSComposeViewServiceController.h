@@ -9,7 +9,8 @@
 #import <ChatKit/CKComposeChatControllerDelegate-Protocol.h>
 #import <ChatKit/CKSMSComposeViewServiceProtocol-Protocol.h>
 
-@class CKModalTranscriptController, NSString;
+@class CKModalTranscriptController, NSArray, NSString;
+@protocol CKSMSComposeViewServiceControllerDelegate;
 
 @interface CKSMSComposeViewServiceController : UINavigationController <CKComposeChatControllerDelegate, CKSMSComposeViewServiceProtocol>
 {
@@ -18,7 +19,9 @@
     _Bool _supportsMessageInspection;
     _Bool _forceMMS;
     _Bool _disableCameraAttachments;
+    NSArray *_utiTypes;
     CKModalTranscriptController *_modalTranscriptController;
+    id <CKSMSComposeViewServiceControllerDelegate> _composeDelegate;
     CDUnknownBlockType _gameCenterPickerBlock;
 }
 
@@ -26,8 +29,10 @@
 + (id)_exportedInterface;
 + (_Bool)_isSecureForRemoteViewService;
 @property(copy, nonatomic) CDUnknownBlockType gameCenterPickerBlock; // @synthesize gameCenterPickerBlock=_gameCenterPickerBlock;
+@property(nonatomic) __weak id <CKSMSComposeViewServiceControllerDelegate> composeDelegate; // @synthesize composeDelegate=_composeDelegate;
 @property(retain, nonatomic) CKModalTranscriptController *modalTranscriptController; // @synthesize modalTranscriptController=_modalTranscriptController;
 - (void).cxx_destruct;
+- (void)donateInteractionWithRecipients:(id)arg1;
 - (void)_willAppearInRemoteViewController;
 - (_Bool)supportsMessageInspection;
 - (_Bool)supportsAttachments;
@@ -35,11 +40,13 @@
 - (void)composeChatController:(id)arg1 didSelectNewConversation:(id)arg2;
 - (void)composeChatControllerDidCancelComposition:(id)arg1;
 - (_Bool)composeChatControllerCanEditRecipients;
+- (void)prewarmCameraIfNecessaryForChatController:(id)arg1;
 - (void)chatController:(id)arg1 forwardComposition:(id)arg2;
 - (void)chatController:(id)arg1 didReportSpamForConversation:(id)arg2;
 - (void)chatController:(id)arg1 didSendCompositionInConversation:(id)arg2;
 - (void)chatController:(id)arg1 willSendComposition:(id)arg2 inConversation:(id)arg3;
 - (void)composeChatController:(id)arg1 shouldSendComposition:(id)arg2 inConversation:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)setTextEntryContentsVisible:(_Bool)arg1;
@@ -51,6 +58,7 @@
 - (void)setGameCenterModeWithPickerBlock:(CDUnknownBlockType)arg1;
 - (void)forceMMS;
 - (void)_forceMMSIfNecessary;
+- (void)setUTIs:(id)arg1;
 - (void)setUICustomizationData:(id)arg1;
 - (void)forceCancelComposition;
 - (void)insertRemoteItemForSending:(id)arg1;

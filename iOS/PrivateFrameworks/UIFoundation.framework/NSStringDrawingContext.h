@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CUICatalog, CUIStyleEffectConfiguration, NSDictionary;
 
@@ -35,6 +35,7 @@
         unsigned int _cachesLayout:1;
         unsigned int _usesSimpleTextEffects:1;
         unsigned int _activeRenderers:4;
+        unsigned int _applicationPlatformContext:3;
     } _sdcFlags;
 }
 
@@ -51,6 +52,8 @@
 @property(nonatomic) struct CGRect totalBounds; // @synthesize totalBounds=_totalBounds;
 @property(nonatomic) double actualScaleFactor; // @synthesize actualScaleFactor=_actualScaleFactor;
 @property(nonatomic) double minimumScaleFactor; // @synthesize minimumScaleFactor=_minimumScaleFactor;
+- (void)setApplicationFrameworkContext:(long long)arg1;
+- (long long)applicationFrameworkContext;
 @property(nonatomic) unsigned long long activeRenderers;
 @property(nonatomic) _Bool usesSimpleTextEffects;
 @property(nonatomic) _Bool cachesLayout;
@@ -63,6 +66,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)dealloc;
+- (id)init;
 @property(nonatomic) double minimumTrackingAdjustment; // @dynamic minimumTrackingAdjustment;
 
 @end

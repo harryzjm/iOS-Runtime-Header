@@ -8,7 +8,6 @@
 
 @protocol MKVariableDelayTapRecognizerDelegate;
 
-__attribute__((visibility("hidden")))
 @interface MKVariableDelayTapRecognizer : UITapGestureRecognizer
 {
     double originalMaximumIntervalBetweenSuccessiveTaps;

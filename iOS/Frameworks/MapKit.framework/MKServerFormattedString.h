@@ -4,20 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <MapKit/NSCoding-Protocol.h>
 #import <MapKit/NSCopying-Protocol.h>
+#import <MapKit/NSSecureCoding-Protocol.h>
 
 @class MKServerFormattedStringParameters;
 @protocol GEOServerFormattedString;
 
-@interface MKServerFormattedString : NSObject <NSCopying, NSCoding>
+@interface MKServerFormattedString : NSObject <NSCopying, NSSecureCoding>
 {
     id <GEOServerFormattedString> _geoServerString;
     MKServerFormattedStringParameters *_parameters;
 }
 
++ (_Bool)supportsSecureCoding;
 @property(readonly, copy, nonatomic) MKServerFormattedStringParameters *parameters; // @synthesize parameters=_parameters;
 @property(readonly, nonatomic) id <GEOServerFormattedString> geoServerString; // @synthesize geoServerString=_geoServerString;
 - (void).cxx_destruct;

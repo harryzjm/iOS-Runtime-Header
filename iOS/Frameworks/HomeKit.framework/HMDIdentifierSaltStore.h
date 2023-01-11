@@ -6,17 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSData;
-@protocol OS_dispatch_queue;
+@class HMFUnfairLock, NSData;
 
 @interface HMDIdentifierSaltStore : NSObject
 {
+    HMFUnfairLock *_lock;
     NSData *_identifierSalt;
     NSData *_assistantIdentifierSalt;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 - (void).cxx_destruct;
 @property(retain, nonatomic) NSData *assistantIdentifierSalt; // @synthesize assistantIdentifierSalt=_assistantIdentifierSalt;
 @property(retain, nonatomic) NSData *identifierSalt; // @synthesize identifierSalt=_identifierSalt;

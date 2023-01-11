@@ -6,17 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class CXCallObserver, NSString;
+@class CXCallObserver;
 @protocol OS_dispatch_queue;
 
 @interface CXCallController : NSObject
 {
     CXCallObserver *_callObserver;
     NSObject<OS_dispatch_queue> *_completionQueue;
-    NSString *_extensionIdentifier;
 }
 
-@property(copy, nonatomic) NSString *extensionIdentifier; // @synthesize extensionIdentifier=_extensionIdentifier;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 @property(retain, nonatomic) CXCallObserver *callObserver; // @synthesize callObserver=_callObserver;
 - (void).cxx_destruct;

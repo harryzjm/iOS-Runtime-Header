@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SAMPPodcastCollection;
+@class NSString, SAMPPodcastCollection;
 
 @interface SAMPSubscribeToPodcastCollection
 {
@@ -14,6 +14,8 @@
 + (id)subscribeToPodcastCollection;
 - (_Bool)requiresResponse;
 @property(retain, nonatomic) SAMPPodcastCollection *podcastCollection;
+@property(copy, nonatomic) NSString *hashedRouteUID;
+@property(copy, nonatomic) NSString *assetInfo;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

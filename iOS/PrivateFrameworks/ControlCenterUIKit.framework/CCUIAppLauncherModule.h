@@ -9,7 +9,7 @@
 #import <ControlCenterUIKit/CCUIContentModule-Protocol.h>
 
 @class CCUIContentModuleContext, NSBundle, NSString, NSURL, UIImage, UIViewController;
-@protocol CCUIContentModuleContentViewController;
+@protocol CCUIContentModuleBackgroundViewController, CCUIContentModuleContentViewController;
 
 @interface CCUIAppLauncherModule : NSObject <CCUIContentModule>
 {
@@ -34,7 +34,7 @@
 - (id)init;
 
 // Remaining properties
-@property(readonly, nonatomic) UIViewController *backgroundViewController;
+@property(readonly, nonatomic) UIViewController<CCUIContentModuleBackgroundViewController> *backgroundViewController;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

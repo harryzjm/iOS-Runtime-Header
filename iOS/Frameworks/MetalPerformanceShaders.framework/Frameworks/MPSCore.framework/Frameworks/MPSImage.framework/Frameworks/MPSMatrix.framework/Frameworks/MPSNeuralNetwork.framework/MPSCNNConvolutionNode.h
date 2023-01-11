@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPSCNNConvolutionStateNode;
+@class MPSCNNConvolutionGradientStateNode, MPSCNNConvolutionStateNode;
 @protocol MPSCNNConvolutionDataSource;
 
 @interface MPSCNNConvolutionNode
 {
     id <MPSCNNConvolutionDataSource> _weights;
+    unsigned long long _accumulatorPrecision;
 }
 
 + (id)nodeWithSource:(id)arg1 weights:(id)arg2;
+@property(nonatomic) unsigned long long accumulatorPrecision; // @synthesize accumulatorPrecision=_accumulatorPrecision;
+- (Class)gradientClass;
 - (id)resultState;
 @property(readonly, nonatomic) MPSCNNConvolutionStateNode *convolutionState;
+@property(readonly, nonatomic) MPSCNNConvolutionGradientStateNode *convolutionGradientState;
 - (struct FilterGraphNode *)newFilterNode;
 - (void)dealloc;
 - (id)initWithSource:(id)arg1 weights:(id)arg2 state:(id)arg3;

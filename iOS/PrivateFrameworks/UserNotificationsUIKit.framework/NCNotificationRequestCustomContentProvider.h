@@ -8,12 +8,14 @@
 
 #import <UserNotificationsUIKit/NCNotificationCustomContentProviding-Protocol.h>
 
-@class NSString;
+@class NCNotificationContentContainerViewController, NSString;
 
 @interface NCNotificationRequestCustomContentProvider : NSObject <NCNotificationCustomContentProviding>
 {
+    NCNotificationContentContainerViewController *_customContentViewController;
 }
 
+- (void).cxx_destruct;
 - (id)longLookContentProvidingViewControllerForNotificationViewController:(id)arg1;
 
 // Remaining properties

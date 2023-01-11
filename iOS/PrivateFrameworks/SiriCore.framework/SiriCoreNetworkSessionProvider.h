@@ -10,7 +10,7 @@
 #import <SiriCore/NSURLSessionDelegate-Protocol.h>
 #import <SiriCore/SiriCoreConnectionProvider-Protocol.h>
 
-@class NSInputStream, NSOperationQueue, NSOutputStream, NSString, NSURL, NSURLSession, NSURLSessionStreamTask, SAConnectionPolicyRoute, SiriCoreConnectionType;
+@class NSInputStream, NSOperationQueue, NSOutputStream, NSString, NSURL, NSURLSession, NSURLSessionStreamTask, SAConnectionPolicy, SAConnectionPolicyRoute, SiriCoreConnectionType;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source, SiriCoreConnectionProviderDelegate;
 
 @interface SiriCoreNetworkSessionProvider : NSObject <NSURLSessionDelegate, NSStreamDelegate, SiriCoreConnectionProvider>
@@ -18,6 +18,7 @@
     id <SiriCoreConnectionProviderDelegate> _delegate;
     NSURL *_url;
     SAConnectionPolicyRoute *_route;
+    SAConnectionPolicy *_policy;
     _Bool _prefersWWAN;
     _Bool _connectByPOPEnabled;
     _Bool _enforceEV;
@@ -43,22 +44,27 @@
     NSObject<OS_dispatch_source> *_openTimer;
     NSObject<OS_dispatch_source> *_staleConnectionTimer;
     unsigned long long _readWriteCounter;
+    double _staleConnectionInterval;
 }
 
 + (void)getMetricsContext:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (void)writeData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)readData:(CDUnknownBlockType)arg1;
+- (void)setStaleInterval:(double)arg1;
 - (void)setEnforceExtendedValidation:(_Bool)arg1;
 - (void)setConnectByPOPMethod:(_Bool)arg1;
 - (void)setPrefersWWAN:(_Bool)arg1;
+- (void)setProviderConnectionPolicy:(id)arg1;
 - (void)setPolicyRoute:(id)arg1;
+- (void)setRetransmitConnectionDropTime:(double)arg1;
+- (void)setKeepAlive:(double)arg1 withInterval:(double)arg2 withCount:(unsigned long long)arg3;
+- (void)setScopeIsWiFiOnly;
 - (_Bool)isCanceled;
 - (_Bool)isReady;
 - (_Bool)isEstablishing;
 - (_Bool)isMultipath;
 - (_Bool)shouldFallbackFromError:(id)arg1;
-- (_Bool)isNetworkDownError:(id)arg1;
 - (_Bool)isPeerNotNearbyError:(id)arg1;
 - (_Bool)isPeerConnectionError:(id)arg1;
 - (void)_closeWithError:(id)arg1;
@@ -83,7 +89,7 @@
 - (void)stream:(id)arg1 handleEvent:(unsigned long long)arg2;
 - (void)_invokeOpenCompletionWithError:(id)arg1;
 - (_Bool)shouldFallbackQuickly;
-- (id)headerData;
+- (id)headerDataWithForceReconnect:(_Bool)arg1;
 - (void)setDelegate:(id)arg1;
 - (id)delegate;
 - (id)initWithQueue:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 #import <FrontBoard/FBSceneHost-Protocol.h>
@@ -30,26 +30,27 @@
     FBSSceneDefinition *_definition;
     NSHashTable *_geometryObservers;
     unsigned long long _transactionID;
-    _Bool _lockedForMutation;
+    _Bool _inTransaction;
     id <BSInvalidatable> _stateCaptureAssertion;
     unsigned long long _lastForegroundingTransitionID;
 }
 
-@property(readonly, retain, nonatomic) FBSMutableSceneSettings *mutableSettings; // @synthesize mutableSettings=_mutableSettings;
-@property(nonatomic, setter=_setLockedForMutation:) _Bool _lockedForMutation; // @synthesize _lockedForMutation;
+@property(readonly, nonatomic, getter=_isInTransaction) _Bool _inTransaction; // @synthesize _inTransaction;
 @property(readonly, nonatomic) unsigned long long _transactionID; // @synthesize _transactionID;
-@property(nonatomic) id <FBSceneDelegate> delegate; // @synthesize delegate=_delegate;
-@property(readonly, retain, nonatomic) id <FBSceneClientProvider> clientProvider; // @synthesize clientProvider=_clientProvider;
-@property(readonly, retain, nonatomic) id <FBSceneClient> client; // @synthesize client=_client;
+@property(retain, nonatomic) FBSMutableSceneSettings *mutableSettings; // @synthesize mutableSettings=_mutableSettings;
+@property(nonatomic) __weak id <FBSceneDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) id <FBSceneClientProvider> clientProvider; // @synthesize clientProvider=_clientProvider;
+@property(readonly, nonatomic) id <FBSceneClient> client; // @synthesize client=_client;
 @property(readonly, nonatomic, getter=isValid) _Bool valid; // @synthesize valid=_valid;
-@property(readonly, retain, nonatomic) FBProcess *clientProcess; // @synthesize clientProcess=_clientProcess;
-@property(readonly, retain, nonatomic) FBSSceneClientSettings *clientSettings; // @synthesize clientSettings=_clientSettings;
-@property(readonly, retain, nonatomic) FBSSceneSettings *settings; // @synthesize settings=_settings;
-@property(readonly, retain, nonatomic) FBSceneHostManager *hostManager; // @synthesize hostManager=_hostManager;
-@property(readonly, retain, nonatomic) FBSceneLayerManager *layerManager; // @synthesize layerManager=_layerManager;
+@property(readonly, nonatomic) FBProcess *clientProcess; // @synthesize clientProcess=_clientProcess;
+@property(readonly, nonatomic) FBSSceneClientSettings *clientSettings; // @synthesize clientSettings=_clientSettings;
+@property(readonly, nonatomic) FBSSceneSettings *settings; // @synthesize settings=_settings;
+@property(readonly, nonatomic) FBSceneHostManager *hostManager; // @synthesize hostManager=_hostManager;
+@property(readonly, nonatomic) FBSceneLayerManager *layerManager; // @synthesize layerManager=_layerManager;
 @property(readonly, copy, nonatomic) FBSSceneDefinition *definition; // @synthesize definition=_definition;
 @property(readonly, copy, nonatomic) NSString *workspaceIdentifier; // @synthesize workspaceIdentifier=_workspaceIdentifier;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (void).cxx_destruct;
 - (void)_dispatchClientMessageWithBlock:(CDUnknownBlockType)arg1;
 - (void)clientWillInvalidate:(id)arg1;
 - (void)client:(id)arg1 didReceiveActions:(id)arg2;
@@ -68,7 +69,9 @@
 - (void)sendActions:(id)arg1;
 - (void)updateSettings:(id)arg1 withTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_invalidateWithTransitionContext:(id)arg1;
-- (unsigned long long)_applyMutableSettings:(id)arg1 withTransitionContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_applyUpdateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_endTransaction:(unsigned long long)arg1;
+- (unsigned long long)_beginTransaction;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (id)snapshotContext;

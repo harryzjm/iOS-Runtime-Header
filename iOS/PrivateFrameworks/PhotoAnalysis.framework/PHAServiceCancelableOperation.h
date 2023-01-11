@@ -6,28 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class NSLock;
+@class NSInvocation;
+@protocol OS_dispatch_group;
 
 @interface PHAServiceCancelableOperation : NSObject
 {
-    NSLock *_mutex;
-    CDUnknownBlockType _operationBlock;
+    NSInvocation *_invocation;
     long long _operationId;
-    _Atomic int _canceled;
+    _Bool _cancelRequested;
     CDUnknownBlockType _cancellationBlock;
+    NSObject<OS_dispatch_group> *_completionGroup;
 }
 
 + (id)operationNotFoundError:(long long)arg1;
++ (id)currentOperation;
 - (void).cxx_destruct;
 - (id)description;
-- (_Bool)isCancelled;
 - (id)operationCanceledError:(_Bool)arg1;
+- (void)enqueueOnQueue:(id)arg1;
+- (void)_startWork;
+- (_Bool)isCancelled;
 - (_Bool)cancel;
 - (void)setCancellationBlock:(CDUnknownBlockType)arg1;
-- (void)setOperationBlock:(CDUnknownBlockType)arg1;
-- (void)start;
 - (long long)operationId;
-- (id)initWithLock:(id)arg1 operationId:(long long)arg2;
+- (void)addCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)endAsyncWork;
+- (void)beginAsyncWork;
+- (id)initWithOperationId:(long long)arg1 invocation:(id)arg2;
 
 @end
 

@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+@class GEOTileLoader;
 @protocol OS_dispatch_queue;
 
 @interface GEOMapFeatureAccess : NSObject
@@ -14,6 +15,7 @@
     _Bool _allowNetworkTileLoad;
     _Bool _flipNegativeTravelDirectionRoads;
     _Bool _visitDoubleTravelDirectionRoadsTwice;
+    GEOTileLoader *_tileLoader;
 }
 
 + (unsigned long long)zoomLevelForStyle:(int)arg1 scale:(int)arg2;
@@ -22,6 +24,7 @@
 @property(nonatomic) _Bool allowNetworkTileLoad; // @synthesize allowNetworkTileLoad=_allowNetworkTileLoad;
 - (void).cxx_destruct;
 - (void)_preloadTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 tileSetStyle:(int)arg3 tileSize:(int)arg4 tileScale:(int)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)roadTileKeysNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2;
 - (void)preloadBuildingTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)preloadTransitTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)preloadRoadTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -48,6 +51,7 @@
 - (id)findRoadsFromPreviousIntersectionOf:(id)arg1 handler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)findRoadsNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 handler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (CDUnknownBlockType)_openTileLoaderWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)initWithQueue:(id)arg1 memoryCacheCountLimit:(unsigned long long)arg2 memoryCacheCostLimit:(unsigned long long)arg3;
 - (id)initWithQueue:(id)arg1;
 - (id)init;
 

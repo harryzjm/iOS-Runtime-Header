@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class KNAnimationRegistry, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface KNAnimationRegistryWithFallbacks : NSObject
 {
-    KNAnimationRegistry *mRegistry;
-    NSMutableDictionary *mFallbacks;
+    KNAnimationRegistry *_registry;
+    NSMutableDictionary *_fallbacks;
 }
 
+- (void).cxx_destruct;
 - (void)registerFallbackEffectIdentifer:(id)arg1 forEffectIdentifer:(id)arg2;
 - (id)animationInfoForEffectIdentifier:(id)arg1 animationType:(long long)arg2;
 - (id)init;

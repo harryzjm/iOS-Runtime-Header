@@ -43,7 +43,7 @@
 - (void)showChronoMode;
 - (void)showTimeMode;
 - (void)layoutSubviews;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initForDevice:(id)arg1;
 
 @end
 

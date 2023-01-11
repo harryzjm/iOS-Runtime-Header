@@ -11,6 +11,7 @@
 @class NSString;
 @protocol PXTileIdentifierConverter;
 
+__attribute__((visibility("hidden")))
 @interface AEDelegatingTileIdentifierConverter : NSObject <PXTileIdentifierConverter>
 {
     id <PXTileIdentifierConverter> __wrappedConverter;

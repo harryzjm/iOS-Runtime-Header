@@ -8,6 +8,7 @@
 {
 }
 
++ (_Bool)supportsSecureCoding;
 - (_Bool)isUnknownPlayer;
 - (id)playerID;
 

@@ -14,8 +14,8 @@
 @interface IBICColor : NSObject <NSCoding, NSCopying>
 {
     double *_components;
-    long long _componentCount;
     struct CGColorSpace *_colorSpace;
+    long long _componentCount;
     long long _colorSpaceID;
 }
 
@@ -28,6 +28,7 @@
 + (id)colorWithWhite:(double)arg1 alpha:(double)arg2;
 + (id)colorWithCGColor:(struct CGColor *)arg1;
 @property(readonly, nonatomic) long long colorSpaceID; // @synthesize colorSpaceID=_colorSpaceID;
+@property(readonly, nonatomic) long long componentCount; // @synthesize componentCount=_componentCount;
 - (id)description;
 - (id)colorWithAlphaComponent:(double)arg1;
 - (id)colorWithWhiteComponent:(double)arg1;
@@ -50,12 +51,12 @@
 @property(readonly, nonatomic) int colorModel;
 @property(readonly, nonatomic) struct CGColorSpace *colorSpace;
 - (double)alphaComponent;
+- (double)_componentAtIndex:(long long)arg1 withExpectedComponentCount:(long long)arg2;
 - (double)whiteComponent;
 - (double)blueComponent;
 - (double)greenComponent;
 - (double)redComponent;
 - (const double *)components;
-@property(readonly, nonatomic) long long componentCount;
 - (void)dealloc;
 - (id)initWithColor:(struct CGColor *)arg1;
 - (id)initWithComponents:(const double *)arg1 colorSpaceID:(long long)arg2;

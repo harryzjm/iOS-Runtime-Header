@@ -19,6 +19,9 @@
 - (id)accessibilityDropPointDescriptors;
 - (id)accessibilityDragSourceDescriptors;
 - (_Bool)_accessibilityIsSpeakThisElement;
+- (_Bool)_accessibilityHandleReorderMove:(id)arg1 up:(_Bool)arg2;
+- (_Bool)_accessibilityHandleReorderMoveUp:(id)arg1;
+- (_Bool)_accessibilityHandleReorderMoveDown:(id)arg1;
 - (id)_privateAccessibilityCustomActions;
 - (id)_axCustomActionsForActions:(id)arg1;
 - (_Bool)_axPerformAction:(id)arg1;
@@ -30,6 +33,7 @@
 - (_Bool)_accessibilityPerformSwipeAction:(id)arg1;
 - (_Bool)_accessibilityHandleDetailButtonPress:(id)arg1;
 - (_Bool)_accessibilitySwipeActionsAllowed;
+- (_Bool)_hasTrailingSwipeActions;
 - (_Bool)isAccessibilityElement;
 - (void)_beginSwiping;
 - (id)accessibilityLabel;
@@ -51,7 +55,7 @@
 - (void)accessibilitySetIsFetchingChildren:(_Bool)arg1;
 - (_Bool)accessibilityIsFetchingChildren;
 - (_Bool)_accessibilityIgnoreInternalLabels;
-- (_Bool)_axSubviewIgnoredDueToHiddenAncestry:(id)arg1;
+- (_Bool)_axSubviewIgnoredDueToHiddenOrZeroAlphaAncestry:(id)arg1;
 - (void)setShowingDeleteConfirmation:(_Bool)arg1;
 - (_Bool)_accessibilityTableViewCellSubclassShouldExist;
 - (void)_setShowingDeleteConfirmation:(_Bool)arg1;
@@ -82,6 +86,7 @@
 - (_Bool)_accessibilityIsRemoveConfirmVisible;
 - (_Bool)_accessibilityIsRemoveControlVisible;
 - (id)_accessibilityPreviousIndexPath;
+- (_Bool)_accessibilityHasTextOperations;
 - (id)_accessibilityNextIndexPath;
 - (id)_accessibilityIndexPath;
 - (_Bool)_accessibilityTableViewCellHidesInsertControl;
@@ -109,6 +114,7 @@
 - (_Bool)_accessibilityIsButtonAccessoryType:(long long)arg1;
 - (_Bool)_accessibilityIsButton;
 - (unsigned long long)accessibilityTraits;
+- (id)_accessibilityUserTestingChildrenInAccessibilitySortedOrder:(_Bool)arg1;
 - (id)_accessibilityUserTestingChildren;
 - (long long)_accessibilityUserTestingChildrenCount;
 - (id)_checkmarkImage:(_Bool)arg1;

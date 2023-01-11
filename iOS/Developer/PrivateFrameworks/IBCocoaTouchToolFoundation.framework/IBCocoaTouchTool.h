@@ -49,7 +49,6 @@
 - (id)updateScenesWithSceneUpdateRequests:(id)arg1;
 - (void)applyGlobalAndAdditionalSimulatedMetricsIfNeededWithContext:(id)arg1 during:(CDUnknownBlockType)arg2;
 - (id)renderImagesForRequests:(id)arg1;
-@property(readonly, nonatomic) Class simulatedMetricsWindowClass;
 - (_Bool)connectToRenderServerIfNeeded;
 
 // Remaining properties

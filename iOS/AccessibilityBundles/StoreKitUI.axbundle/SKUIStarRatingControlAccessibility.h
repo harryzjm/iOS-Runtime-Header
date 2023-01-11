@@ -10,6 +10,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (void)_axSetRating:(long long)arg1;

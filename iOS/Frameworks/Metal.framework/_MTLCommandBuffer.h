@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSDictionary, NSError, NSMutableDictionary, NSString, _MTLCommandQueue;
+@class NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSString, _MTLCommandQueue;
 @protocol MTLCommandEncoder, MTLCommandQueue;
 
 @interface _MTLCommandBuffer : NSObject
@@ -17,6 +17,8 @@
     struct MTLDispatch *_scheduledDispatchListTail;
     struct MTLDispatch *_completedDispatchList;
     struct MTLDispatch *_completedDispatchListTail;
+    struct MTLSyncDispatch *_syncDispatchList;
+    struct MTLSyncDispatch *_syncDispatchListTail;
     struct _opaque_pthread_mutex_t _mutex;
     struct _opaque_pthread_cond_t {
         long long __sig;
@@ -49,13 +51,18 @@
     unsigned long long _numEncoders;
     unsigned long long _numThisCommandBuffer;
     unsigned long long _listIndex;
+    _Bool _ownedByParallelEncoder;
+    _Bool _wakeOnCommit;
+    NSMutableArray *_retainedObjects;
     unsigned long long _globalTraceObjectID;
     unsigned long long _labelTraceID;
     _Bool _StatEnabled;
     CDUnknownBlockType _perfSampleHandlerBlock;
+    _Bool _hasPresent;
 }
 
 + (void)initialize;
+@property(nonatomic) _Bool ownedByParallelEncoder; // @synthesize ownedByParallelEncoder=_ownedByParallelEncoder;
 @property(nonatomic) unsigned long long numEncoders; // @synthesize numEncoders=_numEncoders;
 @property(nonatomic) unsigned long long numThisCommandBuffer; // @synthesize numThisCommandBuffer=_numThisCommandBuffer;
 @property(nonatomic, getter=getListIndex) unsigned long long listIndex; // @synthesize listIndex=_listIndex;
@@ -66,6 +73,10 @@
 @property(readonly) _Bool synchronousDebugMode; // @synthesize synchronousDebugMode=_synchronousDebugMode;
 @property(readonly) _Bool retainedReferences; // @synthesize retainedReferences=_retainedReferences;
 @property(copy) NSString *label; // @synthesize label=_label;
+- (id)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
+- (void)executeSynchronizationNotifications:(int)arg1 scope:(unsigned long long)arg2 resources:(const id *)arg3 count:(unsigned long long)arg4;
+- (void)executeSynchronizationNotifications:(int)arg1;
+- (void)addSynchronizationNotification:(CDUnknownBlockType)arg1;
 - (void)popDebugGroup;
 - (void)pushDebugGroup:(id)arg1;
 @property(readonly, nonatomic) double GPUEndTime;
@@ -79,6 +90,7 @@
 - (void)setCurrentCommandEncoder:(id)arg1;
 - (_Bool)skipRender;
 - (void)kernelSubmitTime;
+- (void)_addRetainedObject:(id)arg1;
 - (void)didCompleteWithStartTime:(unsigned long long)arg1 endTime:(unsigned long long)arg2 error:(id)arg3;
 - (void)runPerfCounterCallbackWithBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSMutableDictionary *userDictionary;
@@ -94,6 +106,7 @@
 - (void)presentDrawable:(id)arg1;
 - (void)addScheduledHandler:(CDUnknownBlockType)arg1;
 - (void)commitAndReset;
+- (_Bool)commitAndWaitUntilSubmitted;
 - (void)commitAndHold;
 - (void)commit;
 - (void)enqueue;

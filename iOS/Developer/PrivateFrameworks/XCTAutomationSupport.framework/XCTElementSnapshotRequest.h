@@ -42,7 +42,6 @@
 - (id)elementSnapshotOrError:(id *)arg1;
 - (id)accessibilitySnapshotOrError:(id *)arg1;
 - (id)safeParametersForParameters:(id)arg1;
-- (id)safeAttributesForAttributes:(id)arg1;
 - (id)_snapshotFromUserTestingSnapshot:(id)arg1 frameTransformer:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (id)_childrenOfElement:(id)arg1 userTestingSnapshot:(id)arg2 frameTransformer:(CDUnknownBlockType)arg3 outError:(id *)arg4;
 - (id)_snapshotFromRemoteElementUserTestingSnapshot:(id)arg1 parentElement:(id)arg2 error:(id *)arg3;

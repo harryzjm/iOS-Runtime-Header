@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, UIColor, UIImage, UIImageView, UILabel, _MKBezierPathView;
+@class GEOFeatureStyleAttributes, NSString, UIColor, UIImage, UIImageView, UILabel, UIView, _MKBezierPathView;
 
 @interface MKMarkerAnnotationView
 {
@@ -16,6 +16,8 @@
     UIImageView *_selectedGlyphImageView;
     UILabel *_selectedGlyphLabel;
     _MKBezierPathView *_selectedDotView;
+    UIView *_contentMaskView;
+    GEOFeatureStyleAttributes *_customStyleAttributes;
     _Bool _animatesWhenAdded;
     long long _titleVisibility;
     long long _subtitleVisibility;
@@ -39,6 +41,7 @@
 @property(copy, nonatomic) UIColor *markerTintColor; // @synthesize markerTintColor=_markerTintColor;
 @property(nonatomic) long long subtitleVisibility; // @synthesize subtitleVisibility=_subtitleVisibility;
 @property(nonatomic) long long titleVisibility; // @synthesize titleVisibility=_titleVisibility;
+@property(retain, nonatomic, getter=_styleAttributes, setter=_setStyleAttributes:) GEOFeatureStyleAttributes *styleAttributes; // @synthesize styleAttributes=_customStyleAttributes;
 - (void).cxx_destruct;
 - (void)configureCustomFeature:(id)arg1;
 - (struct UIEdgeInsets)alignmentRectInsets;
@@ -46,7 +49,7 @@
 - (id)_effectiveTitleIsCollidable:(_Bool *)arg1;
 - (_Bool)isProvidingCustomFeature;
 - (_Bool)_shouldDeselectWhenDragged;
-- (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)_setSelected:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setDragState:(unsigned long long)arg1 animated:(_Bool)arg2;
 - (void)_configureAnimated:(_Bool)arg1 fromState:(long long)arg2 toState:(long long)arg3;
 - (void)_setupSelectedViewsIfNeededUsesCallout:(_Bool)arg1;
@@ -57,6 +60,7 @@
 - (void)prepareForSnapshotting;
 - (void)_unhideForDisplay;
 - (void)prepareForDisplay;
+- (void)prepareForReuse;
 - (long long)_currentMarkerState;
 - (void)_updateContentForState:(long long)arg1 forceUpdate:(_Bool)arg2;
 - (void)_updateContentForState:(long long)arg1;
@@ -66,11 +70,13 @@
 - (void)setAnnotation:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2;
+- (void)layoutSublayersOfLayer:(id)arg1;
 - (id)_effectiveGlyphText;
 - (id)_effectiveGlyphImageForState:(long long)arg1 isSystemProvided:(_Bool *)arg2;
 - (id)_effectiveGlyphTintColorForState:(long long)arg1;
 - (id)_effectiveMarkerStrokeTintColorForState:(long long)arg1;
 - (double)_effectiveMarkerStrokeWidthForState:(long long)arg1;
+@property(retain, nonatomic) UIView *selectedContentView;
 - (double)_effectiveShadowAlphaForState:(long long)arg1;
 - (id)_effectiveMarkerTintColorForState:(long long)arg1;
 - (_Bool)canShowCallout;

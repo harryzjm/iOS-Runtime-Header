@@ -16,8 +16,11 @@
 - (void)ibModifyCandidateConstraintItemsWithFilter:(CDUnknownBlockType)arg1 duringEffectiveItemBlock:(CDUnknownBlockType)arg2;
 - (void)ibModifyConstraints:(id)arg1 withFilter:(CDUnknownBlockType)arg2 duringEffectiveItemBlock:(CDUnknownBlockType)arg3;
 - (id)ibExplicitCandidateConstraintGenerationMaskForChildView:(id)arg1;
+- (_Bool)ibShouldIgnoreAmbiguityAndMisplacementIssuesForChild:(id)arg1;
+- (_Bool)ibRequiresWidthConstraintForAmbiguityDuringEngineBootstrapping;
 - (void)ibWillArbitrateInArbitrationUnit:(id)arg1;
 - (void)ibWillArbitrateChild:(id)arg1 inArbitrationUnit:(id)arg2;
+- (void)ibDidBootstrapLayoutWithCopyOfReceiver:(id)arg1 forLayoutEngine:(id)arg2;
 - (void)ibPropagatePropertiesToCopyOfReceiver:(id)arg1 forLayoutEngine:(id)arg2;
 - (void)ibDidMapCopyOfReceiver:(id)arg1 intoLayoutEngine:(id)arg2;
 - (void)ibMapCopyOfReceiver:(id)arg1 intoLayoutEngine:(id)arg2;

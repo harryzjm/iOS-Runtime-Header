@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCTagSettingsDelegate-Protocol.h>
 
-@class FCTagSettings, NSDate, NSNumber, NSString;
+@class FCMTWriterMutexLock, FCTagSettings, NSDate, NSDictionary, NSNumber, NSString;
 
 @interface FCUserInfo <FCTagSettingsDelegate>
 {
@@ -15,8 +15,11 @@
     FCTagSettings *_tagSettings;
     NSNumber *_totalMeteredCount;
     NSDate *_dateLastResetMeteredCount;
+    NSDictionary *_readOnlyUserInfo;
+    FCMTWriterMutexLock *_userInfoLock;
 }
 
++ (id)overrideFeldsparID;
 + (id)commandsToMergeLocalDataToCloud:(id)arg1;
 + (long long)commandQueueUrgency;
 + (id)commandStoreFileName;
@@ -27,15 +30,20 @@
 + (_Bool)requiresHighPriorityFirstSync;
 + (_Bool)requiresBatchedSync;
 + (_Bool)requiresPushNotificationSupport;
-+ (id)userInfoCKRecordFromStore:(id)arg1;
++ (id)userInfoCKRecordFromUserInfoDictionary:(id)arg1;
 + (id)iCloudDataKeys;
 + (id)desiredKeys;
+@property(retain, nonatomic) FCMTWriterMutexLock *userInfoLock; // @synthesize userInfoLock=_userInfoLock;
+@property(retain, nonatomic) NSDictionary *readOnlyUserInfo; // @synthesize readOnlyUserInfo=_readOnlyUserInfo;
 @property(nonatomic) _Bool iCloudAccountChanged; // @synthesize iCloudAccountChanged=_iCloudAccountChanged;
 @property(copy, nonatomic) NSDate *dateLastResetMeteredCount; // @synthesize dateLastResetMeteredCount=_dateLastResetMeteredCount;
 @property(copy, nonatomic) NSNumber *totalMeteredCount; // @synthesize totalMeteredCount=_totalMeteredCount;
 @property(readonly, nonatomic) _Bool useParsecResults; // @synthesize useParsecResults=_useParsecResults;
 @property(retain, nonatomic) FCTagSettings *tagSettings; // @synthesize tagSettings=_tagSettings;
 - (void).cxx_destruct;
+- (id)_userInfoValueForKey:(id)arg1;
+- (void)_modifyUserInfoWithBlock:(CDUnknownBlockType)arg1;
+- (void)_setUserInfoValue:(id)arg1 forKey:(id)arg2;
 - (id)recordsForRestoringZoneName:(id)arg1;
 - (_Bool)canHelpRestoreZoneName:(id)arg1;
 - (void)_removeiCloudDataValues;
@@ -51,6 +59,7 @@
 - (void)addObserver:(id)arg1;
 - (void)loadLocalCachesFromStore;
 - (id)asCKRecord;
+@property(copy, nonatomic) NSString *editorialArticleVersion;
 @property(copy, nonatomic) NSNumber *monthlyMeteredCount;
 @property(readonly, nonatomic) NSDate *dateLastViewedSaved;
 - (void)markSavedAsViewed;

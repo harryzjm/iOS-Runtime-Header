@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CFNetwork/NSCopying-Protocol.h>
 #import <CFNetwork/NSMutableCopying-Protocol.h>
@@ -53,6 +53,10 @@
 - (id)_initWithCFURLRequest:(struct _CFURLRequest *)arg1;
 - (id)initWithURL:(id)arg1 cachePolicy:(unsigned long long)arg2 timeoutInterval:(double)arg3;
 - (_Bool)_isSafeRequestForBackgroundDownload;
+- (_Bool)_isIdempotent;
+- (_Bool)_schemeWasUpgradedDueToDynamicHSTS;
+- (_Bool)_ignoreHSTS;
+- (_Bool)_preventHSTSStorage;
 - (double)_payloadTransmissionTimeout;
 - (_Bool)_requiresShortConnectionTimeout;
 - (id)_startTimeoutDate;
@@ -69,6 +73,7 @@
 @property(readonly, retain) NSInputStream *HTTPBodyStream;
 @property(readonly, copy) NSData *HTTPBody;
 - (id)valueForHTTPHeaderField:(id)arg1;
+- (id)_allHTTPHeaderFieldsAsArrays;
 @property(readonly, copy) NSDictionary *allHTTPHeaderFields;
 @property(readonly, copy) NSString *HTTPMethod;
 

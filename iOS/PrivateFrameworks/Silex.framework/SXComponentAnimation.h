@@ -15,6 +15,7 @@
 + (id)typeString;
 + (void)initializeObject;
 - (Class)handlerClass;
+@property(readonly, nonatomic) int transitionBehavior;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

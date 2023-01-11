@@ -6,6 +6,7 @@
 
 @class NSURL;
 
+__attribute__((visibility("hidden")))
 @interface RCTrimmedCompositionWaveformDataSource
 {
     NSURL *_destinationWaveformURL;

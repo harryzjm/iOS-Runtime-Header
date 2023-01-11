@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, SACalendar;
+#import <SAObjects/SABackgroundContextObject-Protocol.h>
 
-@interface SADynamiteClientState
+@class NSNumber, NSString, SACalendar;
+
+@interface SADynamiteClientState <SABackgroundContextObject>
 {
 }
 
@@ -18,10 +20,17 @@
 + (id)deliveryDeadline;
 @property(copy, nonatomic) NSString *xpAbCookie;
 @property(copy, nonatomic) NSString *userToken;
+@property(copy, nonatomic) NSNumber *userHistoryUnmodifiable;
 @property(copy, nonatomic) NSString *status;
 @property(retain, nonatomic) SACalendar *expirationDate;
 - (id)encodedClassName;
 - (id)groupIdentifier;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

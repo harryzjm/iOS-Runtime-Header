@@ -29,6 +29,7 @@
 - (id)fileUTI;
 - (id)fileType;
 - (id)colorProfileNameForImageAtIndex:(long long)arg1;
+- (id)pixelSizeForImageAtIndex:(long long)arg1 consideringOrientation:(_Bool)arg2;
 - (id)pixelSizeForImageAtIndex:(long long)arg1;
 - (long long)imageCount;
 - (void)dealloc;

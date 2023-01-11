@@ -15,8 +15,7 @@
     _Bool _cellularDataUsageAllowedForMaps;
     _Bool _hasCellularDataUsageAllowedForMaps;
     NSObject<OS_dispatch_queue> *_coreTelephonyIsolationQueue;
-    NSObject<OS_dispatch_queue> *_subscriptionIsolation;
-    unsigned long long _numberOfExplicitSubscriptions;
+    void *_telephonyServerConnection;
 }
 
 + (_Bool)deviceHasRadio;

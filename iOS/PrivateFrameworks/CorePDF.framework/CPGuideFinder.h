@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CorePDF/CPDisposable-Protocol.h>
 
 @class CPCluster, CPZone, NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface CPGuideFinder : NSObject <CPDisposable>
 {
     CPZone *contentZone;

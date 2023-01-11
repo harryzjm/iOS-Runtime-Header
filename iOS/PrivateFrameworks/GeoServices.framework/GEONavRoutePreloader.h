@@ -43,7 +43,6 @@
 @property(readonly, nonatomic) NSObject<OS_os_log> *preloaderLog;
 - (void)_performNextRequests;
 - (void)_performTileRequestsPreemptedStepIndex:(long long)arg1 currentRoutePositionStepIndex:(long long)arg2 firstErrorStepIndex:(long long)arg3 firstLoadStepIndex:(long long)arg4 loadStepsAhead:(long long)arg5 loadStepsAheadIfNoWiFi:(long long)arg6;
-- (void)_performSubscriptionRequestsPreemptedStepIndex:(long long)arg1 currentRoutePositionStepIndex:(long long)arg2 firstErrorStepIndex:(long long)arg3 firstLoadStepIndex:(long long)arg4 loadStepsAhead:(long long)arg5 loadStepsAheadIfNoWiFi:(long long)arg6;
 - (void)_cancelRequestsInPast;
 - (id)_descriptionForStep:(id)arg1;
 - (void)_incrementErrorForStep:(id)arg1;
@@ -61,7 +60,7 @@
 - (_Bool)fullDebuggingEnabled;
 - (_Bool)minimalDebuggingEnabled;
 - (_Bool)loggingEnabled;
-- (void)dealloc;
+- (void)performTearDown;
 - (id)initWithRoute:(id)arg1 loggingEnabled:(_Bool)arg2 minimalDebugging:(_Bool)arg3 fullDebugging:(_Bool)arg4 batteryHandler:(CDUnknownBlockType)arg5;
 
 @end

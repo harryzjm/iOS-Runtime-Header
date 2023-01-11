@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     double _flushInterval;
     _Bool _flushImmediately;
     _Bool _autovacuumInProgress;
+    long long _changesOverride;
     unsigned long long _vmStepsExecuted;
 }
 
@@ -25,17 +26,19 @@ __attribute__((visibility("hidden")))
 - (_Bool)needsAutovacuum;
 - (long long)sizeInBytes;
 - (void)brc_close;
-- (void)usePacedBatchingWithInterval:(double)arg1 changeCount:(int)arg2;
+- (void)usePacedBatchingOnTargetQueue:(id)arg1 withInterval:(double)arg2 changeCount:(int)arg3;
 - (_Bool)_shouldFlushWithChangeCount:(int)arg1;
 - (void)disableProfilingForQueriesInBlock:(CDUnknownBlockType)arg1;
 - (_Bool)executeWithErrorHandler:(CDUnknownBlockType)arg1 sql:(id)arg2;
 - (_Bool)executeWithSlowStatementRadar:(id)arg1 sql:(id)arg2;
+- (_Bool)executeWithExpectedIndex:(id)arg1 sql:(id)arg2;
 - (id)fetchWithSlowStatementRadar:(id)arg1 objectOfClass:(Class)arg2 sql:(id)arg3;
 - (id)fetchWithSlowStatementRadar:(id)arg1 sql:(id)arg2;
 - (void)setProfilingHook:(CDUnknownBlockType)arg1;
 - (void)flushToMakeEditsVisibleToIPCReaders;
 - (_Bool)attachDBAtPath:(id)arg1 as:(id)arg2 error:(id *)arg3;
 @property(nonatomic) _Bool profilingEnabled;
+- (long long)changes;
 - (_Bool)openAtURL:(id)arg1 withFlags:(int)arg2 error:(id *)arg3;
 - (void)_setLockedHandler;
 - (void)_setErrorHandlerWithDBCorruptionHandler:(CDUnknownBlockType)arg1;

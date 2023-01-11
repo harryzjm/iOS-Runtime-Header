@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioFormat, NSArray, NSData, NSDictionary, NSURL;
+@class AVAudioFormat, NSArray, NSData, NSDictionary, NSString, NSURL;
 @protocol AVAudioPlayerDelegate;
 
 @interface AVAudioPlayer : NSObject
 {
     id _impl;
+    NSString *_currentDevice;
 }
 
+@property(copy) NSString *currentDevice; // @synthesize currentDevice=_currentDevice;
 - (void)setMixToUplink:(_Bool)arg1;
 - (_Bool)mixToUplink;
 - (void)setAudioSession:(id)arg1;

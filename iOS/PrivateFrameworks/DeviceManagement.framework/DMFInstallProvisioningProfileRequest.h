@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Catalyst/CATTaskRequest.h>
-
 @class NSData, NSString;
 
-@interface DMFInstallProvisioningProfileRequest : CATTaskRequest
+@interface DMFInstallProvisioningProfileRequest
 {
     NSString *_managingProfileIdentifier;
     NSData *_profileData;
 }
 
 + (_Bool)supportsSecureCoding;
++ (_Bool)isPermittedOnUserConnection;
++ (_Bool)isPermittedOnSystemConnection;
++ (id)permittedPlatforms;
 @property(copy, nonatomic) NSData *profileData; // @synthesize profileData=_profileData;
 @property(copy, nonatomic) NSString *managingProfileIdentifier; // @synthesize managingProfileIdentifier=_managingProfileIdentifier;
 - (void).cxx_destruct;

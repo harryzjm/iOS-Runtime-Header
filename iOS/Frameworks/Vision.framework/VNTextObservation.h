@@ -13,12 +13,10 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)textObservationWithBoundingBox:(struct CGRect)arg1;
 - (void).cxx_destruct;
 - (void)setText:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *text;
-- (void)setCharacterBoxes:(id)arg1;
-@property(readonly, copy, nonatomic) NSArray *characterBoxes;
+@property(copy, nonatomic) NSArray *characterBoxes;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;

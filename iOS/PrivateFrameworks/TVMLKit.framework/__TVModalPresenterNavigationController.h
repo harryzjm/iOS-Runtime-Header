@@ -10,6 +10,7 @@
 #import <TVMLKit/_TVModalPresenterFocusing-Protocol.h>
 
 @class NSArray, NSMapTable, NSString, UIView, UIViewController;
+@protocol UIFocusEnvironment, UIFocusItemContainer;
 
 @interface __TVModalPresenterNavigationController : UINavigationController <UIGestureRecognizerDelegate, _TVModalPresenterFocusing>
 {
@@ -38,13 +39,17 @@
 - (void)pushViewController:(id)arg1 animated:(_Bool)arg2;
 - (void)popViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pushViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_ensureNavigationBarHiddenSafelyForViewSize:(struct CGSize)arg1;
+- (void)viewDidLayoutSubviews;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
 - (id)initWithRootViewController:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) __weak id <UIFocusEnvironment> parentFocusEnvironment;
 @property(readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
 @property(readonly, nonatomic) __weak UIView *preferredFocusedView;
 @property(readonly) Class superclass;

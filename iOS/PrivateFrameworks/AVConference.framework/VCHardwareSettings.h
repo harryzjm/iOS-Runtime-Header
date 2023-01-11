@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface VCHardwareSettings : NSObject
 {
 }
 
+- (unsigned int)maxNetworkBitrateMultiwayVideoOnWifi:(_Bool)arg1;
+- (unsigned int)maxNetworkBitrateMultiwayAudioOnWifi:(_Bool)arg1;
 - (id)init;
 
 @end

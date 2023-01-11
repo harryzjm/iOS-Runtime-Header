@@ -26,6 +26,8 @@
     NSInvocation *_currentFriendRequestInvocation;
     long long _environment;
     GKEventEmitter<GKLocalPlayerListener> *_eventEmitter;
+    double _authStartTimeStamp;
+    unsigned long long _authenticationType;
 }
 
 + (void)authenticateWithUsername:(id)arg1 password:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -42,6 +44,8 @@
 + (void)performSync:(CDUnknownBlockType)arg1;
 + (id)localPlayerAccessQueue;
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) unsigned long long authenticationType; // @synthesize authenticationType=_authenticationType;
+@property(nonatomic) double authStartTimeStamp; // @synthesize authStartTimeStamp=_authStartTimeStamp;
 @property(nonatomic, getter=isShowingInGameUI) _Bool showingInGameUI; // @synthesize showingInGameUI=_showingInGameUI;
 @property(retain, nonatomic) GKEventEmitter<GKLocalPlayerListener> *eventEmitter; // @synthesize eventEmitter=_eventEmitter;
 @property(nonatomic, getter=isNewToGameCenter) _Bool newToGameCenter; // @synthesize newToGameCenter=_newToGameCenter;
@@ -55,6 +59,12 @@
 @property(copy, nonatomic) CDUnknownBlockType validateAccountCompletionHandler; // @synthesize validateAccountCompletionHandler=_validateAccountCompletionHandler;
 @property(retain, nonatomic) GKInvite *acceptedInvite; // @synthesize acceptedInvite=_acceptedInvite;
 @property(nonatomic, getter=isAuthenticated) _Bool authenticated; // @synthesize authenticated=_authenticated;
+- (void)reportAuthenticationLoginCanceled;
+- (void)reportAuthenticatingWithAuthKitInvocation;
+- (void)reportAuthenticatingWithGreenBuddyInvocation;
+- (void)reportAuthenticationErrorNoInternetConnection;
+- (void)reportAuthenticationFailedForPlayer;
+- (_Bool)shouldDisplayWelcomeBannerForPlayer:(id)arg1 lastAuthDate:(id)arg2 remoteUI:(_Bool)arg3 timeBetweenBanners:(double)arg4;
 - (void)generateIdentityVerificationSignatureWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadDefaultLeaderboardCategoryIDWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadDefaultLeaderboardIdentifierWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -66,7 +76,7 @@
 - (void)cancelGameInvite:(id)arg1;
 - (void)fetchTurnBasedEvent;
 - (void)fetchMultiplayerGameInvite;
-- (void)removeAllFriends:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)removeAllFriendsWithBlock:(CDUnknownBlockType)arg1;
 - (void)removeFriend:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)authenticateWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(copy, nonatomic) CDUnknownBlockType authenticateHandler;

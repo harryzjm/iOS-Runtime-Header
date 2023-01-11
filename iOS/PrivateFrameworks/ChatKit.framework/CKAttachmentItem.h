@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ChatKit/QLPreviewItem-Protocol.h>
 
@@ -43,8 +43,7 @@
 @property(readonly, nonatomic) struct CGSize size;
 @property(readonly, nonatomic) NSURL *previewItemURL;
 - (id)_getIrisBundleURL;
-- (id)_getTempIrisBundleLocation;
-- (id)_getTempIrisFolder;
+- (id)_getIrisBundleLocation;
 - (id)calculateIrisVideoPath;
 - (id)getIrisVideoPath;
 - (id)dragItem;
@@ -52,6 +51,7 @@
 - (id)UTIType;
 - (void)startDeferredSetup;
 - (id)cachedPreview;
+- (id)uncachedPreviewURL;
 - (void)_savePreview:(id)arg1;
 - (_Bool)canShareItem;
 - (void)generatePreviewWithCompletion:(CDUnknownBlockType)arg1;
@@ -59,8 +59,6 @@
 - (id)fileIcon;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
-- (void)dealloc;
-- (void)_removeAppendedBundle;
 - (id)imageData;
 - (id)initWithFileURL:(id)arg1 size:(struct CGSize)arg2 transferGUID:(id)arg3 guid:(id)arg4 createdDate:(id)arg5;
 

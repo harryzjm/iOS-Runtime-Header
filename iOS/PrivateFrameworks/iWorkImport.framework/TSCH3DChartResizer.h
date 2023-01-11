@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TSCH3DChartBoundsLayout, TSCH3DChartType, TSCH3DScene;
 
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     struct ResizeData mCurrent;
     tvec2_84d5962d mTarget;
     unsigned long long mIndex;
-    CDStruct_44ada6bf mLayoutSettings;
+    CDStruct_b1c75024 mLayoutSettings;
 }
 
 + (id)resizerWithLayout:(id)arg1 chartType:(id)arg2;

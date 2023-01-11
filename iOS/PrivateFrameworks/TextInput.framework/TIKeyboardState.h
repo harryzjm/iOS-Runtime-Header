@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSCopying-Protocol.h>
 #import <TextInput/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, NSUUID, TIDocumentState, TIInputContextHistory, TIKeyboardCandidate, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardSecureCandidateRenderTraits, TITextInputTraits;
+@class NSArray, NSDictionary, NSString, NSUUID, TIDocumentState, TIInputContextHistory, TIKeyboardCandidate, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardSecureCandidateRenderTraits, TITextInputTraits;
 
 @interface TIKeyboardState : NSObject <NSCopying, NSSecureCoding>
 {
@@ -32,6 +32,7 @@
             unsigned int isScreenLocked:1;
             unsigned int longPredictionListEnabled:1;
             unsigned int needAutofill:1;
+            unsigned int needOneTimeCodeAutofill:1;
         } fields;
     } _mask;
     union {
@@ -56,11 +57,15 @@
     TIKeyboardCandidate *_currentCandidate;
     TITextInputTraits *_textInputTraits;
     NSString *_responseContext;
+    unsigned long long _autofillMode;
+    NSDictionary *_autofillContext;
     NSArray *_supportedPayloadIds;
 }
 
 + (_Bool)supportsSecureCoding;
 @property(copy, nonatomic) NSArray *supportedPayloadIds; // @synthesize supportedPayloadIds=_supportedPayloadIds;
+@property(retain, nonatomic) NSDictionary *autofillContext; // @synthesize autofillContext=_autofillContext;
+@property(nonatomic) unsigned long long autofillMode; // @synthesize autofillMode=_autofillMode;
 @property(copy, nonatomic) NSString *responseContext; // @synthesize responseContext=_responseContext;
 @property(retain, nonatomic) TITextInputTraits *textInputTraits; // @synthesize textInputTraits=_textInputTraits;
 @property(retain, nonatomic) TIKeyboardCandidate *currentCandidate; // @synthesize currentCandidate=_currentCandidate;
@@ -76,12 +81,13 @@
 @property(copy, nonatomic) NSString *inputMode; // @synthesize inputMode=_inputMode;
 @property(copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(retain, nonatomic) NSUUID *documentIdentifier; // @synthesize documentIdentifier=_documentIdentifier;
+- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)dealloc;
+@property(nonatomic) _Bool needOneTimeCodeAutofill;
 @property(nonatomic) _Bool needAutofill;
 @property(nonatomic) _Bool longPredictionListEnabled;
 @property(nonatomic) _Bool isScreenLocked;

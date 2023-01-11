@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSData, NSDate, NSDictionary, NSString, NSURL;
 
@@ -20,6 +20,8 @@
     _Bool _isAuxVideo;
     _Bool _isSticker;
     _Bool _hideAttachment;
+    _Bool _isLocation;
+    _Bool _isContact;
     _Bool _appMessageFallbackImage;
     unsigned short _hfsFlags;
     unsigned int _hfsType;
@@ -52,6 +54,9 @@
     long long _cloudKitSyncState;
     NSData *_cloudKitServerChangeTokenBlob;
     NSString *_cloudKitRecordID;
+    long long _srCloudKitSyncState;
+    NSData *_srCloudKitServerChangeTokenBlob;
+    NSString *_srCloudKitRecordID;
     NSURL *_localURL;
     NSURL *_temporaryHighQualityLocalURL;
     NSDictionary *_attributionInfo;
@@ -66,9 +71,14 @@
 @property(retain, nonatomic) NSDictionary *attributionInfo; // @synthesize attributionInfo=_attributionInfo;
 @property(retain, nonatomic) NSURL *temporaryHighQualityLocalURL; // @synthesize temporaryHighQualityLocalURL=_temporaryHighQualityLocalURL;
 @property(retain, nonatomic, setter=_setLocalURL:) NSURL *localURL; // @synthesize localURL=_localURL;
+@property(retain, nonatomic) NSString *srCloudKitRecordID; // @synthesize srCloudKitRecordID=_srCloudKitRecordID;
+@property(retain, nonatomic) NSData *srCloudKitServerChangeTokenBlob; // @synthesize srCloudKitServerChangeTokenBlob=_srCloudKitServerChangeTokenBlob;
+@property(nonatomic) long long srCloudKitSyncState; // @synthesize srCloudKitSyncState=_srCloudKitSyncState;
 @property(retain, nonatomic) NSString *cloudKitRecordID; // @synthesize cloudKitRecordID=_cloudKitRecordID;
 @property(retain, nonatomic) NSData *cloudKitServerChangeTokenBlob; // @synthesize cloudKitServerChangeTokenBlob=_cloudKitServerChangeTokenBlob;
 @property(nonatomic) long long cloudKitSyncState; // @synthesize cloudKitSyncState=_cloudKitSyncState;
+@property(nonatomic) _Bool isContact; // @synthesize isContact=_isContact;
+@property(nonatomic) _Bool isLocation; // @synthesize isLocation=_isLocation;
 @property(retain, nonatomic) NSArray *attachmentSendContexts; // @synthesize attachmentSendContexts=_attachmentSendContexts;
 @property(nonatomic) _Bool hideAttachment; // @synthesize hideAttachment=_hideAttachment;
 @property(retain, nonatomic) NSDictionary *stickerUserInfo; // @synthesize stickerUserInfo=_stickerUserInfo;

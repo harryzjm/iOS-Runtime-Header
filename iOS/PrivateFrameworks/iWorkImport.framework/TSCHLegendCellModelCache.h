@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, TSCHChartSeries, TSDStroke;
 
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long seriesIndex; // @synthesize seriesIndex=mSeriesIndex;
 @property(readonly) int badgeType; // @synthesize badgeType=mBadgeType;
 @property(readonly) int cellType; // @synthesize cellType=mLegendCellType;
+- (void).cxx_destruct;
 @property(readonly) id symbolFill;
 @property(readonly) id fill;
 - (void)dealloc;

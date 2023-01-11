@@ -14,22 +14,25 @@ __attribute__((visibility("hidden")))
     TSDLayoutGeometry *mDynamicLayoutGeometry;
     struct CGRect mBoundsForStandardKnobs;
     TSUBezierPath *mCachedWrapPath;
-    TSUBezierPath *mCachedExternalWrapPath;
+    TSUBezierPath *mCachedPathForClippingConnectionLines;
 }
 
-+ (id)p_childWrapPathsFrom:(id)arg1;
 - (void).cxx_destruct;
+- (void)p_invalidateDescendentWrapPathsInRoot;
+- (void)p_updateDescendentWrapPathsWithTransform:(struct CGAffineTransform)arg1;
 - (void)p_invalidateDescendentWrapPaths;
 - (void)p_invalidateParentForWrap;
 - (void)p_destroyDynamicCopies;
 - (void)setDynamicGeometry:(id)arg1;
 - (void)p_createDynamicCopies;
+- (_Bool)descendentWrappablesContainsWrappable:(id)arg1;
 - (id)descendentWrappables;
-- (void)transferLayoutGeometryToInfo:(id)arg1;
+- (void)transferLayoutGeometryToInfo:(id)arg1 withAdditionalTransform:(struct CGAffineTransform)arg2 assertIfInDocument:(_Bool)arg3;
 - (struct CGRect)rectInRootForCalculatingActivityLineEndpoint;
-- (id)i_externalWrapPath;
+- (id)pathForClippingConnectionLines;
 - (id)i_wrapPath;
 - (id)i_computeWrapPath;
+- (id)p_childWrapPathsFrom:(id)arg1 inDescendents:(id)arg2;
 - (_Bool)supportsFlipping;
 - (_Bool)canFlip;
 - (_Bool)supportsRotation;
@@ -51,14 +54,16 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)rectInRootForPresentingAnnotationPopoverForSelectionPath:(id)arg1;
 - (struct CGRect)frameForCulling;
 - (struct CGRect)alignmentFrame;
+- (void)updateLayoutGeometryInPreparationForPartitioning;
 - (struct CGRect)clipRect;
 - (struct CGRect)boundsForStandardKnobs;
 - (void)processChangedProperty:(int)arg1;
+- (struct CGRect)rectInRootForSelectionPath:(id)arg1;
 - (id)computeLayoutGeometry;
+- (struct CGRect)computeBoundsForStandardKnobs;
 - (id)additionalDependenciesForChildLayout:(id)arg1;
 - (id)reliedOnLayouts;
 - (id)layoutGeometryFromInfo;
-- (_Bool)canInspectGeometry;
 - (id)visibleGeometries;
 
 @end

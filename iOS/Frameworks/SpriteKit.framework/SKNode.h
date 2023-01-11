@@ -6,13 +6,14 @@
 
 #import <UIKit/UIResponder.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 #import <SpriteKit/UIFocusItem-Protocol.h>
 
 @class GKEntity, MISSING_TYPE, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, SKPhysicsBody, SKReachConstraints, SKScene, UIView;
+@protocol UIFocusEnvironment, UIFocusItemContainer;
 
-@interface SKNode : UIResponder <NSCopying, NSCoding, UIFocusItem>
+@interface SKNode : UIResponder <NSCopying, NSSecureCoding, UIFocusItem>
 {
     struct SKCNode *_skcNode;
     SKNode *_parent;
@@ -33,8 +34,14 @@
     GKEntity *_entity;
 }
 
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
++ (id)debugHierarchyPropertyDescriptions;
++ (id)debugHierarchyObjectsInGroupWithID:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3;
++ (id)debugHierarchyChildGroupingID;
++ (id)nodeWithFileNamed:(id)arg1 securelyWithClasses:(id)arg2 andError:(id *)arg3;
 + (id)nodeWithFileNamed:(id)arg1;
 + (id)node;
++ (_Bool)supportsSecureCoding;
 + (id)nodeFromCaptureData:(id)arg1;
 @property _Bool performFullCapture; // @synthesize performFullCapture=_performFullCapture;
 @property(nonatomic) __weak GKEntity *entity; // @synthesize entity=_entity;
@@ -43,13 +50,10 @@
 @property(copy, nonatomic) SKReachConstraints *reachConstraints; // @synthesize reachConstraints=_reachConstraints;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void).cxx_destruct;
-- (id)debugHierarchyPropertyDescriptions;
-- (id)debugHierarchyObjectsInGroupWithID:(id)arg1 outOptions:(id *)arg2;
-- (id)debugHierarchyChildGroupingID;
 - (_Bool)_isEligibleForFocusInteraction;
 - (_Bool)_isEligibleForFocus;
 - (_Bool)_isEffectivelyHidden;
-- (id)_parentFocusEnvironment;
+@property(readonly, nonatomic) __weak id <UIFocusEnvironment> parentFocusEnvironment;
 @property(readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
 - (_Bool)shouldUpdateFocusInContext:(id)arg1;
 @property(readonly, nonatomic) _Bool canBecomeFocused;
@@ -173,6 +177,7 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic) id <UIFocusItemContainer> focusItemContainer;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) __weak UIView *preferredFocusedView;
 @property(readonly) Class superclass;

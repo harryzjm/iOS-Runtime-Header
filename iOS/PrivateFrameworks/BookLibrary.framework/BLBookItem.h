@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <BookLibrary/NSCoding-Protocol.h>
 #import <BookLibrary/NSCopying-Protocol.h>
 #import <BookLibrary/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSDictionary, NSString, NSURL;
 
-@interface BLBookItem : NSObject <NSCopying, NSCoding, NSSecureCoding>
+@interface BLBookItem : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _sample;
     _Bool _iTunesU;
@@ -72,6 +71,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithEduCloudData:(id)arg1 path:(id)arg2;
+- (id)initWithPeristentIdentifier:(id)arg1 permlink:(id)arg2 title:(id)arg3;
 - (id)initWithStoreDownload:(id)arg1 permlink:(id)arg2 title:(id)arg3;
 - (id)initWithEntry:(id)arg1 basePath:(id)arg2;
 

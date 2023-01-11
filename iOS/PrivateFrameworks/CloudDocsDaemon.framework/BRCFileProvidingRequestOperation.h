@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     BRCDirectoryItem *_directoryItem;
     BRCTreeEnumerator *_treeEnumerator;
     NSMutableSet *_trackedDocIDs;
+    NSSet *_docIDsToCancel;
     NSMutableArray *_callbacks;
     NSError *_lastDownloadError;
     _Bool _isStillEnumeratingDirectory;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)cancel;
 - (id)initWithDirectoryItem:(id)arg1;
 - (id)initWithURL:(id)arg1 readingOptions:(unsigned long long)arg2 client:(id)arg3 session:(id)arg4;
+- (id)initWithName:(id)arg1 session:(id)arg2 readingOptions:(unsigned long long)arg3;
 @property(readonly, nonatomic) NSSet *trackedDocIDs;
 - (void)addCompletionCallback:(CDUnknownBlockType)arg1;
 

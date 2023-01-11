@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreUtils/NSSecureCoding-Protocol.h>
 
@@ -20,9 +20,11 @@
     NSString *_model;
     NSString *_name;
     NSData *_publicKey;
+    NSString *_identifierStr;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(copy, nonatomic) NSString *identifierStr; // @synthesize identifierStr=_identifierStr;
 @property(copy, nonatomic) NSData *publicKey; // @synthesize publicKey=_publicKey;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(copy, nonatomic) NSString *model; // @synthesize model=_model;

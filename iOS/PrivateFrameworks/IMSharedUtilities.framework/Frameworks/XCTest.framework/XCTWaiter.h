@@ -17,14 +17,18 @@
     _XCTWaiterImpl *_internalImplementation;
 }
 
-+ (id)waitForActivity:(id)arg1 timeout:(double)arg2 block:(CDUnknownBlockType)arg3;
 + (long long)waitForExpectations:(id)arg1 timeout:(double)arg2 enforceOrder:(_Bool)arg3;
 + (long long)waitForExpectations:(id)arg1 timeout:(double)arg2;
 + (void)wait:(double)arg1;
 + (void)setStallHandler:(CDUnknownBlockType)arg1;
 + (void)handleStalledWaiter:(id)arg1;
 + (CDUnknownBlockType)installWatchdogForWaiter:(id)arg1 timeout:(double)arg2;
++ (double)watchdogTimeoutSlop;
++ (void)setWatchdogTimeoutSlop:(double)arg1;
++ (id)subsystemQueue;
 @property(readonly) _XCTWaiterImpl *internalImplementation; // @synthesize internalImplementation=_internalImplementation;
+- (void).cxx_destruct;
+@property(readonly) _Bool currentContextIsNested;
 - (long long)result;
 @property(readonly) double timeout;
 - (void)setState:(long long)arg1;
@@ -32,7 +36,6 @@
 @property(readonly, getter=isInProgress) _Bool inProgress;
 @property struct __CFRunLoop *waitingRunLoop;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue;
-@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 - (void)setWaitCallStackReturnAddresses:(id)arg1;
 @property(readonly, copy) NSArray *waitCallStackReturnAddresses;
 @property(readonly) NSArray *fulfilledExpectations;
@@ -52,7 +55,6 @@
 @property(readonly, copy) NSString *description;
 - (id)initWithDelegate:(id)arg1;
 - (id)init;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

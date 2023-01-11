@@ -8,7 +8,6 @@
 
 @class GEOPDMessageLink, NSString, NSTimeZone;
 
-__attribute__((visibility("hidden")))
 @interface GEOMessageLink : NSObject
 {
     GEOPDMessageLink *_messageLink;
@@ -21,6 +20,9 @@ __attribute__((visibility("hidden")))
 - (id)messageOperationBusinessDates;
 - (id)messageBusinessHours;
 - (int)responseTime;
+@property(readonly, nonatomic) _Bool isVerified;
+@property(readonly, nonatomic) NSString *navTintColorString;
+@property(readonly, nonatomic) NSString *navBackgroundColorString;
 @property(readonly, nonatomic) NSString *messageURLString;
 @property(readonly, nonatomic) NSString *messageID;
 - (id)initWithMessageLink:(id)arg1;

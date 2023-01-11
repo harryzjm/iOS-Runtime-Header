@@ -18,6 +18,7 @@
     _Bool _panToDismissEnabled;
     _Bool _trackingUpwardPan;
     long long _activeGestureType;
+    UIPanGestureRecognizer *_contentTransitioningViewGestureRecognizer;
     double _rotation;
     double _previousPinchScale;
     id <AVInteractiveTransitionGestureTrackerDelegate> _delegate;
@@ -40,6 +41,7 @@
 @property(nonatomic, getter=isPanToDismissEnabled) _Bool panToDismissEnabled; // @synthesize panToDismissEnabled=_panToDismissEnabled;
 @property(nonatomic, getter=isPinchToPresentEnabled) _Bool pinchToPresentEnabled; // @synthesize pinchToPresentEnabled=_pinchToPresentEnabled;
 @property(nonatomic, getter=isPinchToDismissEnabled) _Bool pinchToDismissEnabled; // @synthesize pinchToDismissEnabled=_pinchToDismissEnabled;
+@property(nonatomic) __weak UIPanGestureRecognizer *contentTransitioningViewGestureRecognizer; // @synthesize contentTransitioningViewGestureRecognizer=_contentTransitioningViewGestureRecognizer;
 @property(nonatomic) long long activeGestureType; // @synthesize activeGestureType=_activeGestureType;
 - (void).cxx_destruct;
 - (void)_reset;
@@ -55,6 +57,7 @@
 - (void)transitionDidBegin;
 - (_Bool)isTracking;
 - (void)addRecognizersToView:(id)arg1;
+- (void)dealloc;
 - (id)initWithDelegate:(id)arg1;
 
 // Remaining properties

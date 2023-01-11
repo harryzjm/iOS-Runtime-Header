@@ -6,8 +6,9 @@
 
 #import <UIKit/UITableViewSection.h>
 
+@class NSArray;
+
 @interface UITableViewSection (IBCocoaTouchToolIntegration)
-- (id)cells;
-- (void)setCells:(id)arg1;
+@property(copy) NSArray *cells;
 @end
 

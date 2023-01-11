@@ -11,6 +11,7 @@
 
 @protocol PLMomentListData <PLMomentRefreshable>
 @property(retain, nonatomic) NSArray *userTitles;
+@property(readonly, retain, nonatomic) NSArray *batchedMoments;
 @property(retain, nonatomic) NSOrderedSet *moments;
 @property(nonatomic) short generationType;
 @property(nonatomic) _Bool reverseLocationDataContainsLocation;

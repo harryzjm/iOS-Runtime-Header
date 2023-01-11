@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
@@ -17,8 +17,9 @@
     NSString *_identifier;
 }
 
-@property(readonly, retain, nonatomic) NSOrderedSet *layers; // @synthesize layers=_orderedLayers;
+@property(readonly, nonatomic) NSOrderedSet *layers; // @synthesize layers=_orderedLayers;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+- (void).cxx_destruct;
 - (void)_observer_didRepositionLayer:(id)arg1 fromIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;
 - (void)_observer_didStopTrackingLayers;
 - (void)_observer_willStartTrackingLayers;
@@ -33,7 +34,6 @@
 - (void)addObserver:(id)arg1;
 - (void)removeLayer:(id)arg1;
 - (void)addLayer:(id)arg1;
-- (void)dealloc;
 - (id)initWithScene:(id)arg1;
 
 // Remaining properties

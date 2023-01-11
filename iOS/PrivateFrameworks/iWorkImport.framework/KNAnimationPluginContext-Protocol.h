@@ -6,12 +6,15 @@
 
 #import <iWorkImport/NSObject-Protocol.h>
 
-@class KNAnimatedBuild, KNAnimationRandomGenerator, NSArray, NSDictionary, TSDGLState;
+@class KNAnimatedBuild, KNAnimationRandomGenerator, NSArray, NSDictionary, TSDGLState, TSDMetalContext;
 
 @protocol KNAnimationPluginContext <NSObject>
 @property(readonly, nonatomic) _Bool isWarmingUp;
 @property(readonly, nonatomic) TSDGLState *GLState;
+@property(readonly, nonatomic) _Bool isMovieExport;
 @property(readonly, nonatomic) _Bool isPreview;
+@property(readonly, nonatomic) _Bool isMetalRenderer;
+@property(readonly, nonatomic) _Bool isOpenGLRenderer;
 @property(readonly, nonatomic) _Bool isFrameRenderer;
 @property(readonly, nonatomic) _Bool isMagicMove;
 @property(readonly, nonatomic) _Bool isTransition;
@@ -21,12 +24,18 @@
 @property(readonly, nonatomic) KNAnimatedBuild *animatedBuild;
 @property(nonatomic) struct CGRect boundingRect;
 @property(readonly, nonatomic) struct CGRect boundingRectOnCanvas;
+@property(readonly, nonatomic) struct CGRect animationFrame;
+@property(readonly, nonatomic) struct CGRect drawableFrame;
+@property(readonly, nonatomic) TSDMetalContext *metalContext;
 @property(readonly, nonatomic) KNAnimationRandomGenerator *randomGenerator;
 @property(readonly, nonatomic) _Bool isMotionBlurred;
 @property(readonly, nonatomic) double percent;
 @property(readonly, nonatomic) double duration;
 @property(readonly, nonatomic) unsigned long long direction;
 @property(readonly, nonatomic) NSArray *tags;
+@property(readonly, nonatomic) NSDictionary *scaledTextures;
+@property(readonly, nonatomic) NSArray *allTextures;
+@property(readonly, nonatomic) NSArray *highlightingTextures;
 @property(readonly, nonatomic) NSArray *textures;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/NSCopying-Protocol.h>
 
@@ -14,7 +14,6 @@
 {
     unsigned long long _accountID;
     unsigned long long _delegatedAccountID;
-    NSString *_storefrontID;
     long long _requestType;
     NSString *_redownloadParameters;
     NSString *_cloudUniversalLibraryID;
@@ -31,7 +30,6 @@
 @property(copy, nonatomic) NSString *cloudUniversalLibraryID; // @synthesize cloudUniversalLibraryID=_cloudUniversalLibraryID;
 @property(copy, nonatomic) NSString *redownloadParameters; // @synthesize redownloadParameters=_redownloadParameters;
 @property(nonatomic) long long requestType; // @synthesize requestType=_requestType;
-@property(copy, nonatomic) NSString *storefrontID; // @synthesize storefrontID=_storefrontID;
 @property(nonatomic) unsigned long long delegatedAccountID; // @synthesize delegatedAccountID=_delegatedAccountID;
 @property(nonatomic) unsigned long long accountID; // @synthesize accountID=_accountID;
 - (void).cxx_destruct;

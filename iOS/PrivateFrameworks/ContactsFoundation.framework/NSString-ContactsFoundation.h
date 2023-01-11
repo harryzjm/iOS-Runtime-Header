@@ -7,9 +7,10 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (ContactsFoundation)
-+ (id)_cn_LTRControlCharacters;
 + (_Bool)_cn_isBlank:(id)arg1;
+- (id)_cn_flatMap:(CDUnknownBlockType)arg1;
 - (id)_cn_resultWithAllCharacters:(CDUnknownBlockType)arg1;
+- (id)_cn_take:(unsigned long long)arg1;
 - (void)_cn_eachCharacter:(CDUnknownBlockType)arg1;
 - (struct _NSRange)_cn_rangeFromIndex:(unsigned long long)arg1;
 - (id)_cn_SHA256HashStringWithSalt:(id)arg1;
@@ -21,6 +22,8 @@
 - (id)_cn_stringByDeletingNumberOfPathComponents:(unsigned long long)arg1;
 - (id)_cn_stringByAddingPercentEscapesToEntireURL;
 - (id)_cn_stringByAddingPercentEscapesIfNecessary;
+- (struct _NSRange)_cn_rangeOfCommonPrefixWithString:(id)arg1 options:(unsigned long long)arg2;
+- (struct _NSRange)_cn_rangeOfCommonPrefixWithString:(id)arg1;
 - (_Bool)_cn_containsSubstring:(id)arg1 options:(unsigned long long)arg2;
 - (_Bool)_cn_containsSubstring:(id)arg1;
 - (id)_cn_stringByDeletingCharactersInSet:(id)arg1;

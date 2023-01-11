@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SoftwareUpdateServices/NSKeyedUnarchiverDelegate-Protocol.h>
 
@@ -27,14 +27,20 @@
     NSString *_lastProductType;
     NSString *_lastReleaseType;
     NSDictionary *_unlockCallbacks;
+    NSDictionary *_mandatoryUpdateDict;
     _SUAutoInstallOperationModel *_lastAutoInstallOperationModel;
     SUManagedDeviceUpdateDelay *_mdmDelay;
     SUInstallPolicy *_installPolicy;
     _Bool _manifestSubmitted;
+    NSString *_sessionID;
+    NSString *_lastDeletedSUAssetID;
 }
 
 + (id)currentState;
 + (id)statePath;
+@property(retain, nonatomic) NSString *lastDeletedSUAssetID; // @synthesize lastDeletedSUAssetID=_lastDeletedSUAssetID;
+@property(retain, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
+@property(retain, nonatomic) NSDictionary *mandatoryUpdateDict; // @synthesize mandatoryUpdateDict=_mandatoryUpdateDict;
 @property(nonatomic) _Bool manifestSubmitted; // @synthesize manifestSubmitted=_manifestSubmitted;
 @property(retain, nonatomic) SUInstallPolicy *installPolicy; // @synthesize installPolicy=_installPolicy;
 @property(retain, nonatomic) SUManagedDeviceUpdateDelay *mdmDelay; // @synthesize mdmDelay=_mdmDelay;

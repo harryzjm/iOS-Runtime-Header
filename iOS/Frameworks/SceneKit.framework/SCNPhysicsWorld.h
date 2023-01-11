@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 
@@ -50,6 +50,7 @@
 - (struct btDynamicsWorld *)_handle;
 - (struct btVehicleRaycaster *)_defaultVehicleRayCaster;
 - (void)_step:(double)arg1;
+- (void)_updatePhysicsFieldsTrasforms;
 - (struct c3dAether *)_aetherHandle;
 - (void)_removeFieldFromWorld:(id)arg1;
 - (void)_addFieldToWorld:(id)arg1;
@@ -70,7 +71,7 @@
 - (void)removeAllBehaviors;
 - (void)removeBehavior:(id)arg1;
 - (void)addBehavior:(id)arg1;
-@property id <SCNPhysicsContactDelegate> contactDelegate;
+@property __weak id <SCNPhysicsContactDelegate> contactDelegate;
 @property(nonatomic) double timeStep;
 - (double)scale;
 - (void)setScale:(double)arg1;

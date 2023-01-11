@@ -25,6 +25,9 @@
 + (id)inPersonHandleTypeMap;
 + (long long)inPersonHandleTypeForType:(unsigned long long)arg1;
 + (id)inPersonHandleForHandle:(id)arg1;
++ (id)geminiHandleTypeMap;
++ (long long)geminiHandleTypeForType:(unsigned long long)arg1;
++ (id)geminiHandleForHandle:(id)arg1;
 @property(readonly, copy, nonatomic) NSString *customIdentifier; // @synthesize customIdentifier=_customIdentifier;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(readonly, copy, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;

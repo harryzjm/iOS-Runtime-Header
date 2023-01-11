@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSInvalidatable-Protocol.h>
 
@@ -24,6 +24,7 @@
 + (id)_callOutQueue;
 + (void)monitorSendRight:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_callOutQueue;
+- (void).cxx_destruct;
 - (void)invalidate;
 @property(readonly, nonatomic, getter=isValid) _Bool valid; // @dynamic valid;
 - (void)dealloc;

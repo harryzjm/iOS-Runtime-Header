@@ -4,22 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <RelevanceEngine/REElementDataSource.h>
+
 @class NTKUpNextElementDataSource;
 
-@interface NTKUpNextNewsDataSource
+@interface NTKUpNextNewsDataSource : REElementDataSource
 {
     NTKUpNextElementDataSource *_newsDataSourceProxy;
 }
 
 + (_Bool)wantsReloadForSignificantTimeChange;
-+ (id)sampleContentElements;
 + (id)bundleIdentifier;
 + (Class)nanoNewsDataSourceClass;
 @property(retain, nonatomic) NTKUpNextElementDataSource *newsDataSourceProxy; // @synthesize newsDataSourceProxy=_newsDataSourceProxy;
 - (void).cxx_destruct;
+- (void)setAllowsLocationUse:(_Bool)arg1;
 - (void)resume;
 - (void)pause;
 - (void)getElementsDuringDateInterval:(id)arg1 inSection:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (void)getElementsInSection:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (id)supportedSections;
 - (void)setState:(unsigned long long)arg1;
 - (void)setRunning:(_Bool)arg1;
 - (void)setDelegate:(id)arg1;

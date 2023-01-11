@@ -13,7 +13,6 @@
     _Bool _hasType;
     _Bool _hasResult;
     struct XSPerfCollection *_stats;
-    struct XSPerfCounter *_counters;
     NSString *_eventName;
     NSString *_eventType;
     NSArray *_typeValues;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaRemote/NSNetServiceBrowserDelegate-Protocol.h>
 #import <MediaRemote/NSNetServiceDelegate-Protocol.h>
@@ -28,7 +28,9 @@ __attribute__((visibility("hidden")))
 + (Class)externalDeviceClass;
 @property(readonly, nonatomic, getter=isDiscovering) _Bool discovering; // @synthesize discovering=_discovering;
 @property(readonly, nonatomic) NSString *bonjourServiceType; // @synthesize bonjourServiceType=_bonjourServiceType;
-@property(nonatomic) id <MRExternalDeviceControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <MRExternalDeviceControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void).cxx_destruct;
+- (_Bool)_isManagedConfigIDAllowed:(id)arg1;
 - (void)netService:(id)arg1 didUpdateTXTRecordData:(id)arg2;
 - (void)netServiceDidResolveAddress:(id)arg1;
 - (void)netServiceBrowser:(id)arg1 didRemoveService:(id)arg2 moreComing:(_Bool)arg3;

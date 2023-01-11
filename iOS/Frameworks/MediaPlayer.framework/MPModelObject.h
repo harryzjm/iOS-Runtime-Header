@@ -4,21 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/NSCopying-Protocol.h>
+#import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class MPIdentifierSet, NSMutableSet;
+@class MPIdentifierSet, NSMutableDictionary, NSString;
 
-@interface MPModelObject : NSObject <NSCopying>
+@interface MPModelObject : NSObject <NSCopying, NSSecureCoding>
 {
-    _Bool _wasFullyInitialized;
-    NSMutableSet *_initializedProperties;
     MPModelObject *_originalObject;
+    NSMutableDictionary *_storage;
+    _Bool _isFinalized;
     MPIdentifierSet *_identifiers;
 }
 
++ (id)_modelKeyForPropertySelector:(SEL)arg1;
++ (_Bool)_lookupPropertyForSelector:(SEL)arg1 result:(CDUnknownBlockType)arg2;
++ (void)_indexProperties;
++ (_Bool)supportsSecureCoding;
 + (void)performWithoutEnforcement:(CDUnknownBlockType)arg1;
++ (_Bool)resolveInstanceMethod:(SEL)arg1;
 + (void)initialize;
 + (id)requiredLibraryAddStatusObservationProperties;
 + (_Bool)supportsLibraryAddStatusObservation;
@@ -30,12 +36,18 @@
 + (id)storeItemMetadataRequestItemIdentifierForIdentifiers:(id)arg1;
 @property(readonly, copy, nonatomic) MPIdentifierSet *identifiers; // @synthesize identifiers=_identifiers;
 - (void).cxx_destruct;
-- (_Bool)hasLoadedValuesForProperties:(id)arg1;
+- (_Bool)_isModelKey:(id)arg1;
+- (void)setValue:(id)arg1 forModelKey:(id)arg2;
+- (id)valueForModelKey:(id)arg1;
+- (_Bool)hasLoadedValuesForPropertySet:(id)arg1;
 - (_Bool)hasLoadedValueForKey:(id)arg1;
-- (id)descriptionWithType:(long long)arg1;
-- (void)appendIdentifiersToDescription:(id)arg1;
 @property(readonly, nonatomic) MPIdentifierSet *originalIdentifierSet;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
+- (id)valueForUndefinedKey:(id)arg1;
+@property(readonly, nonatomic) NSString *humanDescription;
 - (id)description;
 - (id)copyWithIdentifiers:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)initWithIdentifiers:(id)arg1 block:(CDUnknownBlockType)arg2;

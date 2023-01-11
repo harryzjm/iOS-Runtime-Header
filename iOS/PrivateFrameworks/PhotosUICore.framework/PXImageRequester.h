@@ -6,8 +6,8 @@
 
 #import <PhotosUICore/PXMutableImageRequester-Protocol.h>
 
-@class NSString, PXImageRequest, PXUIMediaProvider, UIImage;
-@protocol PXDisplayAsset;
+@class NSString, PXImageRequest, UIImage;
+@protocol PXDisplayAsset, PXUIImageProvider;
 
 @interface PXImageRequester <PXMutableImageRequester>
 {
@@ -18,11 +18,12 @@
     } _needsUpdateFlags;
     _Bool _hasFullQuality;
     _Bool _isInCloud;
-    PXUIMediaProvider *_mediaProvider;
+    id <PXUIImageProvider> _mediaProvider;
     id <PXDisplayAsset> _asset;
     double _scale;
     UIImage *_image;
     UIImage *_opportunisticImage;
+    double _loadingProgress;
     id <PXDisplayAsset> __currentImageSourceAsset;
     PXImageRequest *__currentRequest;
     struct CGSize _contentSize;
@@ -36,6 +37,7 @@
 @property(nonatomic, setter=_setTargetSize:) struct CGSize _targetSize; // @synthesize _targetSize=__targetSize;
 @property(retain, nonatomic, setter=_setCurrentRequest:) PXImageRequest *_currentRequest; // @synthesize _currentRequest=__currentRequest;
 @property(retain, nonatomic, setter=_setCurrentImageSourceAsset:) id <PXDisplayAsset> _currentImageSourceAsset; // @synthesize _currentImageSourceAsset=__currentImageSourceAsset;
+@property(nonatomic, setter=_setLoadingProgress:) double loadingProgress; // @synthesize loadingProgress=_loadingProgress;
 @property(nonatomic, setter=_setIsInCloud:) _Bool isInCloud; // @synthesize isInCloud=_isInCloud;
 @property(nonatomic, setter=_setHasFullQuality:) _Bool hasFullQuality; // @synthesize hasFullQuality=_hasFullQuality;
 @property(readonly, nonatomic) struct CGRect contentsRect; // @synthesize contentsRect=_contentsRect;
@@ -46,7 +48,7 @@
 @property(readonly, nonatomic) double scale; // @synthesize scale=_scale;
 @property(readonly, nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property(readonly, nonatomic) id <PXDisplayAsset> asset; // @synthesize asset=_asset;
-@property(readonly, nonatomic) PXUIMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
+@property(readonly, nonatomic) id <PXUIImageProvider> mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 - (void).cxx_destruct;
 - (void)_cancelRequests;
 @property(readonly, copy) NSString *description;
@@ -62,6 +64,7 @@
 - (void)_updateIsInCloudIfNeeded;
 - (void)_invalidateIsInCloud;
 - (void)_handleResultOfImageRequest:(id)arg1 image:(id)arg2 info:(id)arg3;
+- (void)_handleProgressForImageRequest:(id)arg1 progress:(double)arg2;
 - (void)_updateImageRequestIfNeeded;
 - (void)_invalidateImageRequest;
 - (void)_updateTargetSizeIfNeeded;

@@ -37,7 +37,6 @@
 - (void)_didComplete;
 - (void)addSynchronizedTransaction:(id)arg1;
 - (id)synchronizedTransactions;
-- (void)dealloc;
 - (id)init;
 
 // Remaining properties

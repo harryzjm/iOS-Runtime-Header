@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, NSURLSessionConfiguration;
 @protocol NSURLSessionDelegate, OS_dispatch_queue;
@@ -13,6 +13,7 @@
 {
 }
 
++ (id)_errorFromError:(id)arg1 forTask:(id)arg2;
 + (id)sessionWithConfiguration:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 + (id)sessionWithConfiguration:(id)arg1;
 + (void)_obliterateAllBackgroundSessionsWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -148,11 +149,13 @@
 - (void)addDelegateBlock:(CDUnknownBlockType)arg1;
 @property(readonly, copy) NSURLSessionConfiguration *configuration; // @dynamic configuration;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)_useTLSSessionCacheFromSession:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 
 // Remaining properties
 @property(retain) NSMutableDictionary *_altSvc; // @dynamic _altSvc;
 @property(copy) NSDictionary *_atsState; // @dynamic _atsState;
+@property(retain) NSMutableDictionary *_coalescing; // @dynamic _coalescing;
 @property(copy) CDUnknownBlockType _connBlock; // @dynamic _connBlock;
 @property(retain) NSMutableSet *_h2BlacklistedHosts; // @dynamic _h2BlacklistedHosts;
 @property _Bool _isSharedSession; // @dynamic _isSharedSession;

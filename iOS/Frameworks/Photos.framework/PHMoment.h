@@ -8,7 +8,6 @@
 
 @interface PHMoment
 {
-    NSData *_approximateLocationData;
     NSData *_reverseLocationData;
     _Bool _reverseLocationDataIsValid;
     _Bool _reverseLocationDataContainsLocation;
@@ -18,7 +17,7 @@
 }
 
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
-+ (id)entityKeyForPropertyKey:(id)arg1;
++ (id)entityKeyMap;
 + (id)identifierCode;
 + (_Bool)managedObjectSupportsTrashedState;
 + (id)fetchType;
@@ -29,13 +28,13 @@
 @property(readonly, nonatomic) NSDate *representativeDate; // @synthesize representativeDate=_representativeDate;
 - (void).cxx_destruct;
 - (id)description;
+- (void)_cacheLocationWithCoordinate:(struct CLLocationCoordinate2D)arg1;
 - (_Bool)collectionHasFixedOrder;
 - (_Bool)hasLocationInfo;
 - (_Bool)hasLocalizedTitle;
 - (id)localizedLocationNames;
 - (id)localizedTitle;
 - (void)_decodeTitlesIfNeeded;
-- (id)approximateLocation;
 - (_Bool)canShowAvalancheStacks;
 - (_Bool)canPerformEditOperation:(long long)arg1;
 - (_Bool)isMeaningful;

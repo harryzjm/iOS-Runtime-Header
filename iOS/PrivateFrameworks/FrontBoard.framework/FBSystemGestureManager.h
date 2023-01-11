@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/UIGestureRecognizerDelegate-Protocol.h>
 
@@ -16,6 +16,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)removeGestureRecognizer:(id)arg1 fromDisplay:(id)arg2;
 - (void)addGestureRecognizer:(id)arg1 toDisplay:(id)arg2;
 - (id)_systemGestureManagerForDisplayWithIdentityCreatingIfNeeded:(id)arg1;

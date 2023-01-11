@@ -6,7 +6,10 @@
 
 #import <Foundation/NSProcessInfo.h>
 
+@class NSString;
+
 @interface NSProcessInfo (SafariCoreExtras)
-@property(readonly, nonatomic) _Bool safari_systemSupportsCloudKitBookmarks;
+@property(readonly, nonatomic) _Bool safari_systemSupportsBookmarkDAVMoves;
+@property(readonly, copy, nonatomic) NSString *safari_deviceUDID;
 @end
 

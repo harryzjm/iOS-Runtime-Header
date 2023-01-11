@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/AVAssetResourceLoaderRequest-Protocol.h>
 
-@class AVAssetResourceLoadingContentInformationRequest, AVAssetResourceLoadingDataRequest, AVAssetResourceLoadingRequestInternal, NSString, NSURLRequest, NSURLResponse;
+@class AVAssetResourceLoadingContentInformationRequest, AVAssetResourceLoadingDataRequest, AVAssetResourceLoadingRequestInternal, AVAssetResourceLoadingRequestor, NSString, NSURLRequest, NSURLResponse;
 
 @interface AVAssetResourceLoadingRequest : NSObject <AVAssetResourceLoaderRequest>
 {
@@ -16,6 +16,7 @@
 }
 
 + (SEL)_selectorForInformingDelegateOfCancellationByFig;
+@property(readonly, nonatomic) AVAssetResourceLoadingRequestor *requestor;
 - (id)persistentContentKeyFromKeyVendorResponse:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (void)generateStreamingContentKeyRequestDataAsynchronouslyForApp:(id)arg1 contentIdentifier:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)streamingContentKeyRequestDataForApp:(id)arg1 contentIdentifier:(id)arg2 options:(id)arg3 error:(id *)arg4;
@@ -35,7 +36,9 @@
 - (void)_sendResponseInfoToCustomURLHandler;
 - (id)serializableRepresentation;
 @property(copy, nonatomic) NSURLRequest *redirect;
+- (_Bool)_isRequestForContentKey;
 - (void)_cacheContentInformation:(id)arg1;
+- (_Bool)_canSetOrUseCachedContentInformation;
 - (void)_appendToCachedData:(id)arg1;
 - (id)_getAndClearCachedData;
 @property(copy, nonatomic) NSURLResponse *response;
@@ -60,7 +63,7 @@
 @property(readonly, copy) NSString *description;
 - (void)finalize;
 - (void)dealloc;
-- (id)initWithResourceLoader:(id)arg1 URL:(id)arg2 httpRequestHeaders:(id)arg3 requestOffset:(id)arg4 requestLength:(id)arg5 figCryptor:(struct OpaqueFigCPECryptor *)arg6 figPlaybackItem:(struct OpaqueFigPlaybackItem *)arg7 figAssetImageGenerator:(struct OpaqueFigAssetImageGenerator *)arg8;
+- (id)initWithResourceLoader:(id)arg1 URL:(id)arg2 httpRequestHeaders:(id)arg3 requestOffset:(id)arg4 requestLength:(id)arg5 allowedContentTypes:(id)arg6 figCryptor:(struct OpaqueFigCPECryptor *)arg7 cryptorKeyRequestID:(unsigned long long)arg8 figPlaybackItem:(struct OpaqueFigPlaybackItem *)arg9 figAssetImageGenerator:(struct OpaqueFigAssetImageGenerator *)arg10;
 - (id)initWithResourceLoader:(id)arg1 requestDictionary:(id)arg2;
 - (id)initWithResourceLoader:(id)arg1 requestInfo:(struct __CFDictionary *)arg2 requestID:(unsigned long long)arg3;
 - (id)init;

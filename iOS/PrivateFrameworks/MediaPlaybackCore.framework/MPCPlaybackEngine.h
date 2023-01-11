@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MPCPlaybackIntent, MPProtocolProxy, NSString, UIView, _MPCAVController, _MPCLeaseManager, _MPCMediaRemotePublisher, _MPCReportingController;
+@class MPCPlaybackIntent, MPCPlayerPath, MPProtocolProxy, NSString, UIView, _MPCAVController, _MPCLeaseManager, _MPCMediaRemotePublisher, _MPCReportingController;
 @protocol MPCPlaybackEngineDelegate, MPCPlaybackEngineEventObserving;
 
 @interface MPCPlaybackEngine : NSObject
@@ -24,8 +24,11 @@
     _MPCMediaRemotePublisher *_mediaRemotePublisher;
     _MPCReportingController *_reportingController;
     _MPCLeaseManager *_leaseManager;
+    NSString *_audioSessionCategory;
 }
 
++ (void)preheatPlayback;
+@property(copy, nonatomic) NSString *audioSessionCategory; // @synthesize audioSessionCategory=_audioSessionCategory;
 @property(nonatomic, getter=isSystemMusicApplication) _Bool systemMusicApplication; // @synthesize systemMusicApplication=_systemMusicApplication;
 @property(readonly, nonatomic) _MPCLeaseManager *leaseManager; // @synthesize leaseManager=_leaseManager;
 @property(readonly, nonatomic) _MPCReportingController *reportingController; // @synthesize reportingController=_reportingController;
@@ -42,9 +45,11 @@
 - (void).cxx_destruct;
 - (void)_restorePlaybackStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_preservePlaybackStateImmediately;
+- (void)_initializePlaybackStack;
 - (void)schedulePlaybackStatePreservation;
-- (id)_playerForMusicPlayerServer;
 @property(readonly, nonatomic) UIView *videoView;
+@property(readonly, nonatomic) MPCPlayerPath *playerPath;
+- (void)reportUserSeekFromTime:(double)arg1 toTime:(double)arg2;
 - (void)removeEngineObserver:(id)arg1;
 - (void)addEngineObserver:(id)arg1;
 - (void)removeSupportedSpecializedQueueIdentifier:(id)arg1;

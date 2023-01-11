@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
 @class UIColor;
 
-@interface MTStaticColorPillView : UIView
+@interface MTStaticColorPillView
 {
     UIColor *_pillColor;
 }
@@ -17,9 +15,7 @@
 - (void).cxx_destruct;
 - (void)setBackgroundColor:(id)arg1;
 - (id)backgroundColor:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)init;
 
 @end
 

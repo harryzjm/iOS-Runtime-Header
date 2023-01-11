@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSKCOIntermediateOperationEnumerator-Protocol.h>
 
@@ -13,10 +13,11 @@
 __attribute__((visibility("hidden")))
 @interface TSKCOOperationArrayEnumerator : NSObject <TSKCOIntermediateOperationEnumerator>
 {
-    NSMutableArray *mOperationArray;
-    unsigned long long mNextIndex;
+    NSMutableArray *_operationArray;
+    unsigned long long _nextIndex;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 @property(readonly, nonatomic) _Bool hasOperations;
 - (void)reset;
@@ -24,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (void)replaceOperation:(id)arg1;
 - (id)nextOperationOnAddress:(id)arg1;
 - (id)nextOperation;
-- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithOperationEnumerator:(id)arg1;
 

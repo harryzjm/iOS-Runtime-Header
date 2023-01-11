@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SACFProvideContext;
+@class NSString, SACFProvideContext;
 
 @interface SACFFlowCompleted
 {
@@ -14,6 +14,7 @@
 + (id)flowCompleted;
 - (_Bool)requiresResponse;
 @property(retain, nonatomic) SACFProvideContext *updateContext;
+@property(copy, nonatomic) NSString *domain;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

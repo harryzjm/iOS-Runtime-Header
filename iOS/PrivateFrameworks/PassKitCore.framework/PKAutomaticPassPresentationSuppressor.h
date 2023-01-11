@@ -4,27 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSDate, NSMutableIndexSet, NSMutableSet, PKAssertion;
+@class NSDate, NSMutableIndexSet, PKAssertion;
 @protocol OS_dispatch_queue;
 
 @interface PKAutomaticPassPresentationSuppressor : NSObject
 {
     PKAssertion *_suppressionAssertion;
-    NSMutableSet *_permissionRequestCompletionBlocks;
     NSMutableIndexSet *_suppressionRequestTokens;
     NSMutableIndexSet *_backgrounedSuppressionIdentifiers;
     NSDate *_backgroundedDate;
-    long long _permissionState;
     unsigned long long _nextRequestToken;
     NSObject<OS_dispatch_queue> *_suppressorQueue;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_acquireSuppressionAssertionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_acquireSuppressionAssertionIfNeededWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_requestPermissionAndAquireSupressionAssertionIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_applicationDidEnterBackground:(id)arg1;
 @property(readonly, nonatomic) _Bool isSuppressing;

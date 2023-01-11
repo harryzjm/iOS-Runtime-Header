@@ -7,7 +7,7 @@
 #import <QuickLook/MarkupViewControllerDelegate-Protocol.h>
 #import <QuickLook/PDFViewDelegate-Protocol.h>
 
-@class NSString, QLDelegateProxy, QLMUViewController;
+@class NSNumber, NSString, QLDelegateProxy, QLMUViewController;
 
 __attribute__((visibility("hidden")))
 @interface QLMarkupItemViewController <MarkupViewControllerDelegate, PDFViewDelegate>
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     _Bool _hasChangesToUndo;
     _Bool _hasChangesToRedo;
     QLMUViewController *_markupViewController;
+    NSNumber *_shouldAllowEditingContents;
     double _topInset;
     QLDelegateProxy *_pdfDocumentDelegateProxy;
 }
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool hasChangesToUndo; // @synthesize hasChangesToUndo=_hasChangesToUndo;
 @property(retain, nonatomic) QLDelegateProxy *pdfDocumentDelegateProxy; // @synthesize pdfDocumentDelegateProxy=_pdfDocumentDelegateProxy;
 @property double topInset; // @synthesize topInset=_topInset;
+@property(retain, nonatomic) NSNumber *shouldAllowEditingContents; // @synthesize shouldAllowEditingContents=_shouldAllowEditingContents;
 @property(retain, nonatomic) QLMUViewController *markupViewController; // @synthesize markupViewController=_markupViewController;
 - (void).cxx_destruct;
 - (void)controllerWantsToShowShareSheet:(id)arg1;
@@ -40,12 +42,14 @@ __attribute__((visibility("hidden")))
 - (void)_updateToolbarVisibilityAnimated:(_Bool)arg1;
 - (void)documentDidUnlock:(id)arg1;
 - (void)enableMarkupMode:(_Bool)arg1;
-- (void)updateMarkupEdgeInsets:(_Bool)arg1;
+- (void)updateMarkupEdgeInsets:(_Bool)arg1 resetScrollViewZoomScaleToMinimum:(_Bool)arg2;
 - (void)_saveChangesWithHostCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_saveChanges;
 - (_Bool)needsToSaveChanges;
 - (void)setAppearance:(id)arg1 animated:(_Bool)arg2;
+- (void)previewDidDisappear:(_Bool)arg1;
 - (void)previewWillDisappear:(_Bool)arg1;
+- (void)previewDidAppear:(_Bool)arg1;
 - (void)performFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (_Bool)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

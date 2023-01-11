@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class ACAccountStore, GKThreadsafeDictionary;
 
@@ -36,6 +36,7 @@
 - (void)removeAllCredentialsForEnvironment:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setPrimaryCredential:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setCredential:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)accountStoreEmailDidChange:(id)arg1;
 - (void)accountStoreDidChange:(id)arg1;
 - (void)invalidateCredentialCaches;
 - (void)_transact:(CDUnknownBlockType)arg1 complete:(CDUnknownBlockType)arg2;

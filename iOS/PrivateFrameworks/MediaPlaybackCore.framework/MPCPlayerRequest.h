@@ -10,6 +10,8 @@
 
 @interface MPCPlayerRequest : MPRequest
 {
+    _Bool _disablePlaybackStateValidation;
+    _Bool _disablePlaybackRateValidation;
     MPCPlayerPath *_playerPath;
     MPPropertySet *_playingItemProperties;
     MPPropertySet *_queueSectionProperties;
@@ -18,6 +20,8 @@
 }
 
 + (Class)responseClass;
+@property(nonatomic) _Bool disablePlaybackRateValidation; // @synthesize disablePlaybackRateValidation=_disablePlaybackRateValidation;
+@property(nonatomic) _Bool disablePlaybackStateValidation; // @synthesize disablePlaybackStateValidation=_disablePlaybackStateValidation;
 @property(copy, nonatomic) MPPropertySet *queueItemProperties; // @synthesize queueItemProperties=_queueItemProperties;
 @property(copy, nonatomic) MPPropertySet *queueSectionProperties; // @synthesize queueSectionProperties=_queueSectionProperties;
 @property(copy, nonatomic) MPPropertySet *playingItemProperties; // @synthesize playingItemProperties=_playingItemProperties;
@@ -26,7 +30,6 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)middlewareClasses;
-- (id)performWithCompletion:(CDUnknownBlockType)arg1;
 - (id)description;
 - (id)init;
 

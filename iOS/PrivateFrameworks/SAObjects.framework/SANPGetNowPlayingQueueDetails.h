@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, NSNumber;
 
 @interface SANPGetNowPlayingQueueDetails
 {
@@ -15,6 +15,7 @@
 - (_Bool)mutatingCommand;
 - (_Bool)requiresResponse;
 @property(nonatomic) long long previousItemCount;
+@property(copy, nonatomic) NSNumber *preemptiveNowPlayingQueueDetailsTimeOut;
 @property(nonatomic) long long nextItemCount;
 @property(copy, nonatomic) NSArray *hashedRouteUIDs;
 - (id)encodedClassName;

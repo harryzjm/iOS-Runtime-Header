@@ -8,7 +8,7 @@
 #import <MediaPlayer/MPRTCReportingItemSessionContaining-Protocol.h>
 #import <MediaPlayer/MPShuffleControllerDataSource-Protocol.h>
 
-@class MPMediaItem, MPMediaLibraryConnectionAssertion, MPMediaQuery, MPMutableBidirectionalDictionary, MPShuffleController, NSArray, NSDictionary, NSString;
+@class MPMediaItem, MPMediaLibraryConnectionAssertion, MPMediaQuery, MPShuffleController, MSVMutableBidirectionalDictionary, NSArray, NSDictionary, NSString;
 
 @interface MPMediaQueryQueueFeeder <MPAVRoutingControllerDelegate, MPRTCReportingItemSessionContaining, MPShuffleControllerDataSource>
 {
@@ -19,8 +19,8 @@
     MPMediaQuery *_query;
     NSArray *_queryItems;
     MPShuffleController *_shuffleController;
-    vector_c1c297d2 _itemPIDs;
-    MPMutableBidirectionalDictionary *_indexToIdentifierCache;
+    vector_bbba3654 _itemPIDs;
+    MSVMutableBidirectionalDictionary *_indexToIdentifierCache;
     unsigned long long _currentInvalidationRevision;
     NSDictionary *_startTimeModifications;
     NSDictionary *_endTimeModifications;
@@ -31,6 +31,7 @@
 + (id)_itemsForQuery:(id)arg1 shuffleType:(long long)arg2;
 + (Class)playbackItemMetadataClass;
 + (id)audioSessionModeForMediaType:(unsigned long long)arg1;
++ (_Bool)supportsSecureCoding;
 @property(retain, nonatomic) MPMediaItem *cloudDialogAllowedMediaItem; // @synthesize cloudDialogAllowedMediaItem=_cloudDialogAllowedMediaItem;
 @property(copy, nonatomic) MPMediaQuery *query; // @synthesize query=_query;
 - (id).cxx_construct;
@@ -45,7 +46,6 @@
 - (unsigned long long)_indexForPersistentID:(unsigned long long)arg1;
 - (void)_handleMediaLibraryDidChange;
 - (id)_currentEmptyQueueError;
-- (void)_configureStoreAVItem:(id)arg1;
 - (void)_libraryDidChangeNotification:(id)arg1;
 - (void)_allowsHighQualityMusicStreamingOnCellularDidChangeNotification:(id)arg1;
 - (unsigned long long)unshuffledIndexOfAVItem:(id)arg1;
@@ -73,10 +73,10 @@
 - (id)copyRawItemAtIndex:(unsigned long long)arg1;
 - (void)applyVolumeNormalizationForItem:(id)arg1;
 - (id)audioSessionModeForItemAtIndex:(unsigned long long)arg1;
-- (_Bool)shouldReuseQueueFeederForPlaybackContext:(id)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)shouldReuseQueueFeederForPlaybackContext:(id)arg1;
+- (void)dealloc;
 - (id)init;
 - (void)_commonInit;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 #import <FrontBoard/FBSSceneAgentProxy-Protocol.h>
@@ -80,7 +80,6 @@
 - (void)_workspaceQueue_dispatchClientBlockIfNecessary:(CDUnknownBlockType)arg1 success:(_Bool)arg2;
 - (void)invalidate;
 @property(readonly, copy, nonatomic) FBSSceneSettings *settings;
-- (void)dealloc;
 - (id)initWithParentWorkspace:(id)arg1 identifier:(id)arg2;
 
 // Remaining properties

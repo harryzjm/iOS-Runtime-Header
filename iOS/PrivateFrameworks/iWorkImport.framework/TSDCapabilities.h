@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSDCapabilities : NSObject
@@ -20,6 +20,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long device; // @synthesize device=_device;
 @property(readonly, nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
 @property(readonly, nonatomic) long long platform; // @synthesize platform=_platform;
+@property(readonly, nonatomic) _Bool isMetalCapable;
+- (_Bool)p_isMetalCapable;
+- (struct CGSize)maximumMetalTextureSizeForDevice:(id)arg1;
 @property(readonly, nonatomic) struct CGSize maximumHardcodedTextureSize;
 - (struct CGSize)maximumTextureSizeWithGLContext:(id)arg1;
 @property(readonly, nonatomic) _Bool hasLightningPort;

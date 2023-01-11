@@ -4,30 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
-@class NSArray, NSMutableArray;
+@class NSArray, NSMutableArray, _MRNowPlayingClientProtobuf;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MRNowPlayingClientRequests : NSObject <MRNowPlayingClientState>
 {
-    void *_client;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSMutableArray *_playerClients;
+    _MRNowPlayingClientProtobuf *_client;
     NSArray *_nowPlayingClients;
 }
 
 @property(readonly, nonatomic) NSArray *nowPlayingClients; // @synthesize nowPlayingClients=_nowPlayingClients;
-@property(readonly, nonatomic) void *client; // @synthesize client=_client;
+@property(readonly, nonatomic) _MRNowPlayingClientProtobuf *client; // @synthesize client=_client;
+- (void).cxx_destruct;
 - (void)restoreNowPlayingClientState;
-- (void)removePlayer:(void *)arg1;
-- (id)nowPlayingPlayerClientRequestsForPlayerPath:(void *)arg1;
+- (void)removePlayer:(id)arg1;
+- (id)existingNowPlayingPlayerClientRequestsForPlayerPath:(id)arg1;
+- (id)nowPlayingPlayerClientRequestsForPlayerPath:(id)arg1;
 - (id)playerClients;
-- (void)dealloc;
-- (id)initWithClient:(void *)arg1;
+- (id)debugDescription;
+- (id)initWithClient:(id)arg1;
 
 @end
 

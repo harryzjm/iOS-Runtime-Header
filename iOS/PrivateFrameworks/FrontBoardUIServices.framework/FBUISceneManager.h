@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardUIServices/FBUISceneManager-Protocol.h>
 
@@ -17,12 +17,12 @@
     FBSDisplayMonitor *_displayMonitor;
 }
 
+- (void).cxx_destruct;
 - (void)workspace:(id)arg1 destroySceneWithIdentifier:(id)arg2;
 - (void)workspace:(id)arg1 createSceneWithName:(id)arg2 specification:(id)arg3;
 - (id)workspace:(id)arg1 sceneIdentifierForName:(id)arg2;
 - (void)invalidateSceneWorkspace:(id)arg1;
 - (void)registerSceneWorkspace:(id)arg1;
-- (void)dealloc;
 - (id)init;
 
 // Remaining properties

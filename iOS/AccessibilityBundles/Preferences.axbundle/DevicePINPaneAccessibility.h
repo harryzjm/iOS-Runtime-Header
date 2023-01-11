@@ -15,8 +15,8 @@
 - (void)_accessibilityInsertText:(id)arg1 atPosition:(long long)arg2;
 - (_Bool)_accessibilityHandwritingAttributeCanDeleteCharacter;
 - (_Bool)_accessibilityHandwritingAttributeAcceptsRawInput;
-- (int)_accessibilityHandwritingAttributeAllowedCharacterSets;
-- (int)_accessibilityHandwritingAttributePreferredCharacterSet;
+- (unsigned long long)_accessibilityHandwritingAttributeAllowedCharacterSets;
+- (unsigned long long)_accessibilityHandwritingAttributePreferredCharacterSet;
 - (_Bool)_accessibilityHandwritingAttributeShouldEchoCharacter;
 - (_Bool)_accessibilitySupportsHandwriting;
 - (void)slideToNewPasscodeField:(_Bool)arg1 withKeyboard:(_Bool)arg2;

@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)accessibilityShouldSpeakItemReorderEvents;
 - (_Bool)_accessibilityOpaqueElementScrollsContentIntoView;
 - (_Bool)isAccessibilityOpaqueElementProvider;
 - (_Bool)_accessibilityScrollingEnabled;

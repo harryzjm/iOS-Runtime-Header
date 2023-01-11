@@ -4,27 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class NSMutableDictionary;
+@class NSDictionary;
 
 @interface MPMusicPlayerQueueDescriptor : NSObject <NSSecureCoding>
 {
-    NSMutableDictionary *_endTimes;
-    NSMutableDictionary *_startTimes;
+    long long _shuffleType;
+    long long _repeatType;
+    NSDictionary *_startTimes;
+    NSDictionary *_endTimes;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(readonly, nonatomic) NSDictionary *endTimes; // @synthesize endTimes=_endTimes;
+@property(readonly, nonatomic) NSDictionary *startTimes; // @synthesize startTimes=_startTimes;
+@property(nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
+@property(nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
 - (void).cxx_destruct;
-- (id)endTimes;
-- (id)startTimes;
 - (void)_setEndTime:(double)arg1 forIdentifiers:(id)arg2;
 - (void)_setStartTime:(double)arg1 forIdentifiers:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (id)_init;
 
 @end
 

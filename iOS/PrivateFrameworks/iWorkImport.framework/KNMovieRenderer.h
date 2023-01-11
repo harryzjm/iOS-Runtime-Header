@@ -4,41 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <iWorkImport/KNAmbientBuildRenderer-Protocol.h>
 #import <iWorkImport/TSKMediaPlayerControllerDelegate-Protocol.h>
 
-@class CALayer, KNBuildRenderer, NSObject, NSString;
-@protocol NSCopying, TSDMovieHUDViewController, TSKMediaPlayerController;
+@class CALayer, KNBuildRenderer, NSObject, NSString, TSUWeakReference;
+@protocol NSCopying, TSKLayerMediaPlayerController, TSKMediaPlayerController;
 
 __attribute__((visibility("hidden")))
-@interface KNMovieRenderer <TSKMediaPlayerControllerDelegate>
+@interface KNMovieRenderer <TSKMediaPlayerControllerDelegate, KNAmbientBuildRenderer>
 {
-    NSObject<TSKMediaPlayerController> *mPlayerController;
-    CALayer *mVideoLayer;
-    double mStartTime;
-    double mPlaybackAtStartTimePauseTime;
-    double mPlaybackAtStartTimePauseOffset;
-    KNBuildRenderer *mBuildInRenderer;
-    struct CGRect mFrameInContainerView;
-    id mMovieStartCallbackTarget;
-    SEL mMovieStartCallbackSelector;
-    unsigned int mHasMoviePlaybackStarted:1;
-    unsigned int mNeedsToSendMovieStartCallback:1;
-    unsigned int mNeedsToSendBuildEndCallback:1;
-    unsigned int mIsObservingVideoLayerReadyForDisplay:1;
-    unsigned int mNeedsPlaybackAtStartTime:1;
-    unsigned int mHasPendingTogglePlayingControl:1;
-    unsigned int mPendingTogglePlayingControlStartsPlaying:1;
-    unsigned int mShouldMoviePlaybackEndOnCompletion:1;
-    unsigned int mWasMoviePlayingBeforeAnimationPause:1;
-    unsigned int mIsTeardownCompletionBlockPending:1;
-    id <TSDMovieHUDViewController> _viewController;
+    NSObject<TSKLayerMediaPlayerController> *_playerController;
+    CALayer *_videoLayer;
+    double _startTime;
+    double _playbackAtStartTimePauseTime;
+    double _playbackAtStartTimePauseOffset;
+    TSUWeakReference *_buildInRendererReference;
+    struct CGRect _frameInContainerView;
+    id _movieStartCallbackTarget;
+    SEL _movieStartCallbackSelector;
+    unsigned int _hasMoviePlaybackStarted:1;
+    unsigned int _needsToSendMovieStartCallback:1;
+    unsigned int _needsToSendBuildEndCallback:1;
+    unsigned int _isObservingVideoLayerReadyForDisplay:1;
+    unsigned int _needsPlaybackAtStartTime:1;
+    unsigned int _hasPendingTogglePlayingControl:1;
+    unsigned int _pendingTogglePlayingControlStartsPlaying:1;
+    unsigned int _shouldMoviePlaybackEndOnCompletion:1;
+    unsigned int _wasMoviePlayingBeforeAnimationPause:1;
+    unsigned int _isTeardownCompletionBlockPending:1;
 }
 
 + (id)movieInfoForMovieTimelineMovieIdentifier:(id)arg1;
 + (id)movieTimelineMovieIdentifierForMovieInfo:(id)arg1;
-@property(retain, nonatomic) id <TSDMovieHUDViewController> viewController; // @synthesize viewController=_viewController;
-@property(readonly, nonatomic) NSObject<TSKMediaPlayerController> *playerController; // @synthesize playerController=mPlayerController;
-@property(nonatomic) KNBuildRenderer *buildInRenderer; // @synthesize buildInRenderer=mBuildInRenderer;
+@property(readonly, nonatomic) NSObject<TSKMediaPlayerController> *playerController; // @synthesize playerController=_playerController;
 @property(readonly, nonatomic) NSObject<NSCopying> *movieTimelineMovieIdentifier;
 @property(readonly, nonatomic) CALayer *offscreenVideoLayer;
 - (void)playbackDidStopForPlayerController:(id)arg1;
@@ -60,9 +58,10 @@ __attribute__((visibility("hidden")))
 - (void)p_setupPlayerController;
 - (void)p_didEndMoviePlayback;
 - (void)p_didStartMoviePlayback;
-- (void)registerForMovieStartCallback:(SEL)arg1 target:(id)arg2;
+- (void)registerForAmbientBuildStartCallback:(SEL)arg1 target:(id)arg2;
 - (void)p_startMoviePlaybackIfNeeded;
-@property(readonly, nonatomic) _Bool hasMoviePlaybackStarted;
+@property(readonly, nonatomic) _Bool hasAmbientBuildStarted;
+@property(readonly, nonatomic) _Bool shouldActionBuildsStopAnimations;
 - (void)interruptAndReset;
 - (void)resumeAnimationsIfPausedAtTime:(double)arg1;
 - (void)resumeAnimationsIfPaused;
@@ -73,9 +72,10 @@ __attribute__((visibility("hidden")))
 - (void)removeAnimationsAndFinish:(_Bool)arg1;
 - (void)updateAnimationsForLayerTime:(double)arg1;
 - (_Bool)addAnimationsAtLayerTime:(double)arg1;
-- (void)animateAfterDelay:(double)arg1;
+- (void)animate;
+@property(nonatomic) __weak KNBuildRenderer *buildInRenderer;
 - (void)dealloc;
-- (id)initWithAnimatedBuild:(id)arg1 info:(id)arg2 buildStage:(id)arg3 session:(id)arg4 animatedSlideView:(id)arg5;
+- (id)initWithAnimatedBuild:(id)arg1 info:(id)arg2 buildStage:(id)arg3 animatedSlideView:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

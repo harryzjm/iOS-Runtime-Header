@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -23,15 +23,19 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int valueType; // @synthesize valueType=_valueType;
 - (void).cxx_destruct;
 - (void)encodeCellValueToArchive:(struct CellValueArchive *)arg1;
+- (void)setPopulatedCustomFormat:(id)arg1;
+- (void)updateWithCustomFormatList:(id)arg1;
 - (long long)compare:(id)arg1;
 - (long long)compareToCellValue:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqualToCellValue:(id)arg1;
 - (id)format;
+- (id)canonicalKeyString;
 - (id)displayString;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (struct TSCEValue)tsceValue;
+- (id)description;
 - (id)initWithLocale:(id)arg1;
 
 @end

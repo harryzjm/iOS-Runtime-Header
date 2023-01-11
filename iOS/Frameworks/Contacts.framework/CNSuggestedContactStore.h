@@ -6,7 +6,6 @@
 
 @protocol SGSuggestionsServiceContactsProtocol;
 
-__attribute__((visibility("hidden")))
 @interface CNSuggestedContactStore
 {
     id <SGSuggestionsServiceContactsProtocol> _suggestionService;

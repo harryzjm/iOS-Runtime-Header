@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVAssetWriterInputConfigurationState, AVAssetWriterInputPassDescription, AVOutputSettings, AVWeakReference, NSArray, NSDictionary, NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetWriterInputHelper : NSObject
 {
     AVAssetWriterInputConfigurationState *_configurationState;
@@ -49,6 +50,7 @@
 @property(copy, nonatomic) NSString *extendedLanguageTag;
 @property(copy, nonatomic) NSString *languageCode;
 @property(nonatomic) struct CGSize naturalSize;
+@property(nonatomic) _Bool maximizePowerEfficiency;
 @property(nonatomic) _Bool expectsMediaDataInRealTime;
 @property(readonly, nonatomic, getter=isReadyForMoreMediaData) _Bool readyForMoreMediaData;
 @property(nonatomic) int mediaTimeScale;

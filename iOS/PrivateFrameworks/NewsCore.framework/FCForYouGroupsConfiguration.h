@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, NSString;
+@class NSDictionary, NSString;
 
 @interface FCForYouGroupsConfiguration : NSObject
 {
     NSString *_configuration;
     double _weekendGreatStoriesYouMissedTimeRange;
-    NSDictionary *_groupConfiguration;
-    NSMutableDictionary *_cachedGroupConfigurations;
+    NSDictionary *_groupConfigurationsByIdentifier;
 }
 
-@property(copy, nonatomic) NSMutableDictionary *cachedGroupConfigurations; // @synthesize cachedGroupConfigurations=_cachedGroupConfigurations;
-@property(copy, nonatomic) NSDictionary *groupConfiguration; // @synthesize groupConfiguration=_groupConfiguration;
++ (id)_groupIdentifiersByType;
+@property(copy, nonatomic) NSDictionary *groupConfigurationsByIdentifier; // @synthesize groupConfigurationsByIdentifier=_groupConfigurationsByIdentifier;
 @property(readonly, nonatomic) double weekendGreatStoriesYouMissedTimeRange; // @synthesize weekendGreatStoriesYouMissedTimeRange=_weekendGreatStoriesYouMissedTimeRange;
 - (void).cxx_destruct;
 - (unsigned long long)hash;
@@ -25,7 +24,7 @@
 - (id)_identifierForGroupType:(long long)arg1;
 - (_Bool)_defaultAllowsNativeAdsValueForGroupType:(long long)arg1;
 - (unsigned long long)_defaultGroupPositionValueForGroupType:(long long)arg1;
-- (unsigned long long)_defaultProceedingGroupsCount:(long long)arg1;
+- (unsigned long long)_defaultPrecedingGroupsCount:(long long)arg1;
 - (id)configurationForGroupType:(long long)arg1;
 - (id)initWithJSONConfiguration:(id)arg1;
 

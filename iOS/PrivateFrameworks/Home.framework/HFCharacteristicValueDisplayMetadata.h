@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HFCharacteristicValueDisplayError, NSString;
+@class HFCharacteristicValueDisplayError, HFServiceState, NSString;
 
 @interface HFCharacteristicValueDisplayMetadata : NSObject
 {
@@ -15,11 +15,15 @@
     NSString *_sortKey;
     long long _transitioningPrimaryState;
     HFCharacteristicValueDisplayError *_error;
+    HFServiceState *_serviceState;
 }
 
++ (id)_errorForSymptomHandler:(id)arg1 isFixingCurrently:(_Bool)arg2 withContextProvider:(id)arg3;
 + (long long)_unknownStatePriorityForServiceType:(id)arg1;
++ (id)displayMetadataForMediaProfile:(id)arg1 withContextProvider:(id)arg2;
 + (id)displayMetadataForAccessory:(id)arg1 withContextProvider:(id)arg2;
-+ (id)displayMetadataForServiceType:(id)arg1 characteristicReadResponse:(id)arg2;
++ (id)displayMetadataForServiceDescriptor:(id)arg1 characteristicReadResponse:(id)arg2;
+@property(retain, nonatomic) HFServiceState *serviceState; // @synthesize serviceState=_serviceState;
 @property(retain, nonatomic) HFCharacteristicValueDisplayError *error; // @synthesize error=_error;
 @property(nonatomic) long long transitioningPrimaryState; // @synthesize transitioningPrimaryState=_transitioningPrimaryState;
 @property(copy, nonatomic) NSString *sortKey; // @synthesize sortKey=_sortKey;

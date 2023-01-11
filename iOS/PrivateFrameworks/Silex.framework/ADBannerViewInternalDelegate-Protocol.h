@@ -6,7 +6,7 @@
 
 #import <Silex/ADBannerViewDelegate-Protocol.h>
 
-@class ADBannerView, UIViewController;
+@class ADBannerView, NSDictionary, UIViewController;
 
 @protocol ADBannerViewInternalDelegate <ADBannerViewDelegate>
 
@@ -14,5 +14,6 @@
 - (void)bannerViewShouldResumeMedia:(ADBannerView *)arg1;
 - (void)bannerViewShouldPauseMedia:(ADBannerView *)arg1;
 - (UIViewController *)viewControllerForStoryboardPresentationFromBannerView:(ADBannerView *)arg1;
+- (void)bannerViewAdLibManagedVideoAdEvent:(ADBannerView *)arg1 eventType:(long long)arg2 info:(NSDictionary *)arg3;
 @end
 

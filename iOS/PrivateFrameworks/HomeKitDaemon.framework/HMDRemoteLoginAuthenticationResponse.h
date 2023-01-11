@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKit/HMRemoteLoginMessage.h>
-
 #import <HomeKitDaemon/HMRemoteLoginMessageProtocol-Protocol.h>
 
 @class ACAccount, NSDictionary, NSString;
 
-@interface HMDRemoteLoginAuthenticationResponse : HMRemoteLoginMessage <HMRemoteLoginMessageProtocol>
+@interface HMDRemoteLoginAuthenticationResponse <HMRemoteLoginMessageProtocol>
 {
     ACAccount *_loggedInAccount;
 }

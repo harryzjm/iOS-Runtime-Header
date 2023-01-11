@@ -5,15 +5,19 @@
 //
 
 @class NSArray, NSDictionary, NSMapTable;
-@protocol FCContentContext, FCFeedPersonalizing;
+@protocol FCContentContext, FCCoreConfiguration, FCFeedPersonalizing;
 
 @interface FCFeedItemHeadlinesOperation
 {
+    _Bool _shouldFilterHeadlinesWithoutSourceChannels;
+    id <FCCoreConfiguration> _configuration;
     id <FCContentContext> _context;
     id <FCFeedPersonalizing> _personalizer;
     NSArray *_feedItems;
+    long long _feedPersonalizationConfigurationSet;
     CDUnknownBlockType _rapidUpdateRefreshTest;
     NSDictionary *_feedContextByFeedID;
+    NSDictionary *_feedIDsByArticleID;
     CDUnknownBlockType _headlinesCompletionHandler;
     CDUnknownBlockType _headlinesMapCompletionHandler;
     NSArray *_resultHeadlines;
@@ -24,16 +28,21 @@
 @property(retain, nonatomic) NSArray *resultHeadlines; // @synthesize resultHeadlines=_resultHeadlines;
 @property(copy, nonatomic) CDUnknownBlockType headlinesMapCompletionHandler; // @synthesize headlinesMapCompletionHandler=_headlinesMapCompletionHandler;
 @property(copy, nonatomic) CDUnknownBlockType headlinesCompletionHandler; // @synthesize headlinesCompletionHandler=_headlinesCompletionHandler;
+@property(copy, nonatomic) NSDictionary *feedIDsByArticleID; // @synthesize feedIDsByArticleID=_feedIDsByArticleID;
 @property(copy, nonatomic) NSDictionary *feedContextByFeedID; // @synthesize feedContextByFeedID=_feedContextByFeedID;
 @property(copy, nonatomic) CDUnknownBlockType rapidUpdateRefreshTest; // @synthesize rapidUpdateRefreshTest=_rapidUpdateRefreshTest;
+@property(nonatomic) _Bool shouldFilterHeadlinesWithoutSourceChannels; // @synthesize shouldFilterHeadlinesWithoutSourceChannels=_shouldFilterHeadlinesWithoutSourceChannels;
+@property(nonatomic) long long feedPersonalizationConfigurationSet; // @synthesize feedPersonalizationConfigurationSet=_feedPersonalizationConfigurationSet;
 @property(copy, nonatomic) NSArray *feedItems; // @synthesize feedItems=_feedItems;
 @property(retain, nonatomic) id <FCFeedPersonalizing> personalizer; // @synthesize personalizer=_personalizer;
 @property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
+@property(copy, nonatomic) id <FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
 - (void).cxx_destruct;
 - (void)_fetchUnadornedHeadlinesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (_Bool)validateOperation;
+- (id)init;
 
 @end
 

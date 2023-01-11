@@ -10,6 +10,7 @@
 {
 }
 
++ (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) NSURL *seedTrack;
 - (id)description;
 

@@ -6,18 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <GameplayKit/NSCoding-Protocol.h>
 #import <GameplayKit/NSCopying-Protocol.h>
+#import <GameplayKit/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary;
 
-@interface GKGraph : NSObject <NSCopying, NSCoding>
+@interface GKGraph : NSObject <NSCopying, NSSecureCoding>
 {
     NSMutableArray *_nodes;
     struct GKCGraph *_cGraph;
     NSMutableDictionary *__info;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)graphWithNodes:(id)arg1;
 + (id)graph;
 @property(retain, nonatomic) NSMutableDictionary *_info; // @synthesize _info=__info;

@@ -4,47 +4,101 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVOutputDevice, NSDictionary, NSLock, NSString;
+@class MRAVEndpoint, MRAVOutputDeviceSourceInfo, NSData, NSDictionary, NSString, _MRAVOutputDeviceDescriptorProtobuf;
 
-__attribute__((visibility("hidden")))
 @interface MRAVOutputDevice : NSObject
 {
-    NSLock *_lock;
+    _Bool _canAccessRemoteAssets;
+    _Bool _canAccessAppleMusic;
+    _Bool _canAccessiCloudMusicLibrary;
+    _Bool _canPlayEncryptedProgressiveDownloadAssets;
+    _Bool _canFetchMediaDataFromSender;
+    _Bool _presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
+    _Bool _remoteControllable;
+    _Bool _groupLeader;
+    _Bool _groupContainsGroupLeader;
+    _Bool _airPlayReceiverSessionActive;
+    _Bool _groupable;
+    _Bool _proxyGroupPlayer;
+    _Bool _canRelayCommunicationChannel;
+    _Bool _supportsBufferedAirPlay;
+    _Bool _deviceGroupable;
+    _Bool _pickedOnPairedDevice;
+    _Bool _hasBatteryLevel;
+    _Bool _localDevice;
+    _Bool _supportsExternalScreen;
+    _Bool _requiresAuthorization;
+    _Bool _parentGroupContainsDiscoverableLeader;
+    _Bool _volumeControlAvailable;
+    unsigned int _deviceType;
+    unsigned int _deviceSubtype;
+    float _batteryLevel;
+    float _volume;
     NSString *_name;
     NSString *_uid;
     NSString *_modelID;
+    NSString *_firmwareVersion;
     NSString *_groupID;
-    NSString *_MACAddress;
+    NSString *_logicalDeviceID;
+    NSData *_MACAddress;
     NSDictionary *_modelSpecificInfo;
-    _Bool _forceRemoteControllability;
-    AVOutputDevice *_avOutputDevice;
+    NSString *_playingPairedDeviceName;
+    NSString *_parentGroupIdentifier;
+    MRAVOutputDeviceSourceInfo *_sourceInfo;
+    MRAVEndpoint *_endpoint;
 }
 
-@property(nonatomic) _Bool forceRemoteControllability; // @synthesize forceRemoteControllability=_forceRemoteControllability;
-@property(readonly, nonatomic) AVOutputDevice *avOutputDevice; // @synthesize avOutputDevice=_avOutputDevice;
-@property(readonly, nonatomic) _Bool requiresAuthorization;
-@property(readonly, nonatomic) _Bool supportsExternalScreen;
-@property(readonly, nonatomic, getter=isLocalDevice) _Bool localDevice;
-@property(readonly, nonatomic) _Bool hasBatteryLevel;
-@property(readonly, nonatomic) float batteryLevel;
-@property(readonly, nonatomic) NSDictionary *modelSpecificInfo;
-@property(readonly, nonatomic) unsigned int deviceSubtype;
-@property(readonly, nonatomic) unsigned int deviceType;
-@property(readonly, nonatomic, getter=isGroupable) _Bool groupable;
-@property(readonly, nonatomic, getter=isGroupLeader) _Bool groupLeader;
-@property(readonly, nonatomic, getter=isRemoteControllable) _Bool remoteControllable;
-@property(readonly, nonatomic) _Bool canAccessRemoteAssets;
-@property(readonly, nonatomic) NSString *MACAddress;
-@property(readonly, nonatomic) NSString *groupID;
-@property(readonly, nonatomic) NSString *modelID;
-@property(readonly, nonatomic) NSString *uid;
-@property(readonly, nonatomic) NSString *name;
++ (id)localDeviceLocalizedName;
++ (id)localDeviceUID;
+@property(nonatomic) __weak MRAVEndpoint *endpoint; // @synthesize endpoint=_endpoint;
+@property(nonatomic) float volume; // @synthesize volume=_volume;
+@property(readonly, nonatomic) MRAVOutputDeviceSourceInfo *sourceInfo; // @synthesize sourceInfo=_sourceInfo;
+@property(readonly, nonatomic, getter=isVolumeControlAvailable) _Bool volumeControlAvailable; // @synthesize volumeControlAvailable=_volumeControlAvailable;
+@property(copy, nonatomic) NSString *parentGroupIdentifier; // @synthesize parentGroupIdentifier=_parentGroupIdentifier;
+@property(readonly, nonatomic) _Bool parentGroupContainsDiscoverableLeader; // @synthesize parentGroupContainsDiscoverableLeader=_parentGroupContainsDiscoverableLeader;
+@property(readonly, nonatomic) _Bool requiresAuthorization; // @synthesize requiresAuthorization=_requiresAuthorization;
+@property(readonly, nonatomic) _Bool supportsExternalScreen; // @synthesize supportsExternalScreen=_supportsExternalScreen;
+@property(readonly, nonatomic, getter=isLocalDevice) _Bool localDevice; // @synthesize localDevice=_localDevice;
+@property(readonly, nonatomic) _Bool hasBatteryLevel; // @synthesize hasBatteryLevel=_hasBatteryLevel;
+@property(readonly, nonatomic) float batteryLevel; // @synthesize batteryLevel=_batteryLevel;
+@property(readonly, nonatomic) unsigned int deviceSubtype; // @synthesize deviceSubtype=_deviceSubtype;
+@property(readonly, nonatomic) unsigned int deviceType; // @synthesize deviceType=_deviceType;
+@property(readonly, nonatomic, getter=isPickedOnPairedDevice) _Bool pickedOnPairedDevice; // @synthesize pickedOnPairedDevice=_pickedOnPairedDevice;
+@property(readonly, nonatomic, getter=isDeviceGroupable) _Bool deviceGroupable; // @synthesize deviceGroupable=_deviceGroupable;
+@property(readonly, nonatomic) _Bool supportsBufferedAirPlay; // @synthesize supportsBufferedAirPlay=_supportsBufferedAirPlay;
+@property(readonly, nonatomic) _Bool canRelayCommunicationChannel; // @synthesize canRelayCommunicationChannel=_canRelayCommunicationChannel;
+@property(readonly, nonatomic, getter=isProxyGroupPlayer) _Bool proxyGroupPlayer; // @synthesize proxyGroupPlayer=_proxyGroupPlayer;
+@property(readonly, nonatomic, getter=isGroupable) _Bool groupable; // @synthesize groupable=_groupable;
+@property(readonly, nonatomic, getter=isAirPlayReceiverSessionActive) _Bool airPlayReceiverSessionActive; // @synthesize airPlayReceiverSessionActive=_airPlayReceiverSessionActive;
+@property(readonly, nonatomic) _Bool groupContainsGroupLeader; // @synthesize groupContainsGroupLeader=_groupContainsGroupLeader;
+@property(readonly, nonatomic, getter=isGroupLeader) _Bool groupLeader; // @synthesize groupLeader=_groupLeader;
+@property(readonly, nonatomic, getter=isRemoteControllable) _Bool remoteControllable; // @synthesize remoteControllable=_remoteControllable;
+@property(readonly, nonatomic) _Bool presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets; // @synthesize presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets=_presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
+@property(readonly, nonatomic) _Bool canFetchMediaDataFromSender; // @synthesize canFetchMediaDataFromSender=_canFetchMediaDataFromSender;
+@property(readonly, nonatomic) _Bool canPlayEncryptedProgressiveDownloadAssets; // @synthesize canPlayEncryptedProgressiveDownloadAssets=_canPlayEncryptedProgressiveDownloadAssets;
+@property(readonly, nonatomic) _Bool canAccessiCloudMusicLibrary; // @synthesize canAccessiCloudMusicLibrary=_canAccessiCloudMusicLibrary;
+@property(readonly, nonatomic) _Bool canAccessAppleMusic; // @synthesize canAccessAppleMusic=_canAccessAppleMusic;
+@property(readonly, nonatomic) _Bool canAccessRemoteAssets; // @synthesize canAccessRemoteAssets=_canAccessRemoteAssets;
+@property(readonly, nonatomic) NSString *playingPairedDeviceName; // @synthesize playingPairedDeviceName=_playingPairedDeviceName;
+@property(readonly, nonatomic) NSDictionary *modelSpecificInfo; // @synthesize modelSpecificInfo=_modelSpecificInfo;
+@property(readonly, nonatomic) NSData *MACAddress; // @synthesize MACAddress=_MACAddress;
+@property(readonly, nonatomic) NSString *logicalDeviceID; // @synthesize logicalDeviceID=_logicalDeviceID;
+@property(copy, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
+@property(readonly, nonatomic) NSString *firmwareVersion; // @synthesize firmwareVersion=_firmwareVersion;
+@property(readonly, nonatomic) NSString *modelID; // @synthesize modelID=_modelID;
+@property(readonly, nonatomic) NSString *uid; // @synthesize uid=_uid;
+@property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) NSDictionary *jsonEncodableDictionaryRepresentation;
+@property(readonly, nonatomic) NSString *roleDescription;
+@property(readonly, nonatomic) NSString *composedTypeDescription;
+@property(readonly, nonatomic) NSString *capabilitiesDescription;
+@property(readonly, nonatomic) _MRAVOutputDeviceDescriptorProtobuf *descriptor;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
-- (void)dealloc;
-- (id)initWithAVOutputDevice:(id)arg1;
 
 @end
 

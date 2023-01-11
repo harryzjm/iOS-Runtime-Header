@@ -4,16 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PUPhotosSharingViewController;
+
 __attribute__((visibility("hidden")))
 @interface PUPhotoKitShareActionPerformer
 {
+    PUPhotosSharingViewController *_preheatedSharingViewController;
 }
 
 + (_Bool)shouldEnableOnAsset:(id)arg1 inAssetCollection:(id)arg2;
 + (_Bool)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2;
+@property(retain, nonatomic) PUPhotosSharingViewController *preheatedSharingViewController; // @synthesize preheatedSharingViewController=_preheatedSharingViewController;
+- (void).cxx_destruct;
 - (id)_assetsFetchResultByAssetCollectionFromCollectionListFetchResult:(id)arg1 inDataSource:(id)arg2;
-- (void)_displayShareSheetWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performUserInteractionTask;
+- (void)preheatUserInteractionTask;
+- (id)_createSharingViewControllerFromCurrentSelection;
 
 @end
 

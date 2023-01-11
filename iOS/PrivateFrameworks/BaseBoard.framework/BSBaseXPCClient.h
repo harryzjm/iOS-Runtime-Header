@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BSAtomicSignal, NSString;
 @protocol OS_dispatch_queue, OS_xpc_object;
@@ -21,9 +21,8 @@
     _Bool _suspended;
 }
 
-- (void)queue_invalidate;
+- (void)queue_invalidateAndFlush:(_Bool)arg1;
 - (void)queue_reconnectToResumedServerIfNecessary;
-- (void)queue_reregister;
 - (_Bool)queue_isSuspended;
 - (id)queue_connection;
 - (void)queue_registerWithServerIfNecessary;

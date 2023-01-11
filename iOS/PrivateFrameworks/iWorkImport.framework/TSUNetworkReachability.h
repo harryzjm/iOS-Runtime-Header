@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 @protocol OS_dispatch_queue;
@@ -16,12 +16,14 @@ __attribute__((visibility("hidden")))
     struct __SCNetworkReachability *_reachabilityRef;
     long long _enableCount;
     NSString *_hostName;
+    long long _cachedStatus;
     _Bool _notifierActive;
     CDUnknownBlockType _reachabilityUpdatedBlock;
     NSObject<OS_dispatch_queue> *_notificationQueue;
-    long long _cachedStatus;
 }
 
++ (id)p_stringForNetworkReachabilityFlags:(unsigned int)arg1;
++ (id)p_stringForNetworkReachabilityStatus:(long long)arg1;
 + (long long)networkStatusForFlags:(unsigned int)arg1;
 + (void)internetReachabilityStatusWithQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)internetReachabilityStatusQueue;
@@ -34,7 +36,6 @@ __attribute__((visibility("hidden")))
 + (struct __SCNetworkReachability *)newNetworkReachabilityRefWithAddress:(const struct sockaddr_in *)arg1;
 + (struct __SCNetworkReachability *)newNetworkReachabilityRefWithHostName:(const char *)arg1;
 + (_Bool)synchronousHostLookup:(id)arg1;
-@property long long cachedStatus; // @synthesize cachedStatus=_cachedStatus;
 @property(nonatomic) _Bool notifierActive; // @synthesize notifierActive=_notifierActive;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *notificationQueue; // @synthesize notificationQueue=_notificationQueue;
 @property(copy, nonatomic) NSString *hostName; // @synthesize hostName=_hostName;
@@ -42,9 +43,11 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)enableNotifier;
 - (void)disableNotifier;
-- (void)stopNotifier;
-- (void)startNotifier;
+- (void)p_stopNotifier;
+- (void)p_startNotifier;
 @property(readonly, nonatomic) long long lastKnownStatus;
+- (void)p_updateCachedStatus:(long long)arg1;
+- (void)updateCachedStatus:(long long)arg1;
 - (long long)statusFromFlags:(unsigned int)arg1;
 - (long long)localWiFiStatusForFlags:(unsigned int)arg1;
 - (struct sockaddr_in)hostAddress;

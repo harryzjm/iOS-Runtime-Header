@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GameplayKit/NSCoding-Protocol.h>
+#import <GameplayKit/NSSecureCoding-Protocol.h>
 
 @class MISSING_TYPE;
 
-@interface GKAgent2D <NSCoding>
+@interface GKAgent2D <NSSecureCoding>
 {
 }
 
++ (_Bool)supportsSecureCoding;
 - (void)applyBrakingForce:(float)arg1 deltaTime:(double)arg2;
 - (void)applySteeringForce:(double)arg1 deltaTime: /* Error: Ran out of types for this method. */;
 - (void)updateWithDeltaTime:(double)arg1;

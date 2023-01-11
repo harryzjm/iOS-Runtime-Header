@@ -42,12 +42,25 @@ struct _NSRange {
     unsigned long long length;
 };
 
+struct _SXComponentContentInset {
+    _Bool all;
+    _Bool left;
+    _Bool top;
+    _Bool right;
+    _Bool bottom;
+};
+
 struct _SXConvertibleValue {
     double value;
     unsigned long long unit;
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    _Bool size;
+    _Bool position;
+} CDStruct_1cc9d0d0;
 
 typedef struct {
     unsigned long long rowIndex;
@@ -69,11 +82,11 @@ typedef struct {
 } CDStruct_d2b197d1;
 
 typedef struct {
-    long long _field1;
-    int _field2;
-    unsigned int _field3;
-    long long _field4;
-} CDStruct_198678f7;
+    long long value;
+    int timescale;
+    unsigned int flags;
+    long long epoch;
+} CDStruct_1b6d18a9;
 
 typedef struct {
     struct {

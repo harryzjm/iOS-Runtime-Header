@@ -58,6 +58,10 @@ struct CGVector {
     double _field2;
 };
 
+struct HFTransformItemProvider {
+    Class _field1;
+};
+
 struct HUGridPosition {
     long long _field1;
     long long _field2;
@@ -75,6 +79,11 @@ struct UIEdgeInsets {
     double right;
 };
 
+struct UIOffset {
+    double horizontal;
+    double vertical;
+};
+
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -83,15 +92,22 @@ struct _NSRange {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned long long _field1;
-    unsigned long long _field2;
-} CDStruct_4bcfbbae;
+    unsigned long long numberOfItems;
+    unsigned long long numberOfRows;
+    unsigned long long maximumNumberOfColumns;
+    long long horizontalAlignment;
+    unsigned long long itemSize;
+} CDStruct_217e81bd;
 
 typedef struct {
     double minScrollPercentage;
     double maxScrollPercentage;
     double maxValue;
 } CDStruct_d6c048b4;
+
+typedef struct {
+    double _field1;
+} CDStruct_2418a849;
 
 // Ambiguous groups
 typedef struct {

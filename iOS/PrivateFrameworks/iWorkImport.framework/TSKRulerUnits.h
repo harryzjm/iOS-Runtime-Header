@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSFormatter;
 
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool centerRulerOrigin; // @synthesize centerRulerOrigin=_centerRulerOrigin;
 @property(nonatomic) _Bool showRulerAsPercentage; // @synthesize showRulerAsPercentage=_showRulerAsPercentage;
 @property(nonatomic) int rulerUnits; // @synthesize rulerUnits=_rulerUnits;
+- (id)localizedCompatibleRulerAbbreviatedUnits;
 - (id)localizedCompatibleRulerUnits;
 - (id)compatibleRulerUnits;
 - (id)formatter:(_Bool)arg1 lenient:(_Bool)arg2;

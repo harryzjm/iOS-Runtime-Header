@@ -6,9 +6,10 @@
 
 #import <AssistantUI/NSObject-Protocol.h>
 
-@class AFUIRequestOptions, NSString, NSURL;
+@class AFUIRequestOptions, NSDictionary, NSString, NSURL;
 
 @protocol SVSSiriViewControllerHosting <NSObject>
+- (void)serviceDidRequestCurrentTextInput:(void (^)(NSString *))arg1;
 - (void)serviceDidEndTaptoEdit;
 - (void)serviceWillBeginTapToEdit;
 - (void)serviceDidResetTextInput;
@@ -17,14 +18,13 @@
 - (void)serviceDidDetectAudioRoutePickerTap;
 - (void)serviceDidExitUITrackingMode;
 - (void)serviceDidEnterUITrackingMode;
+- (void)serviceFailTest:(NSString *)arg1 withReason:(NSString *)arg2;
 - (void)serviceDidFinishTest:(NSString *)arg1;
 - (void)serviceWillStartTest:(NSString *)arg1;
 - (void)servicePresentationDidChangePeekMode:(unsigned long long)arg1;
 - (void)serviceDidDetectMicButtonLongPressEnded;
 - (void)serviceDidDetectMicButtonLongPressBegan;
 - (void)serviceDidDetectMicButtonTap;
-- (void)serviceDidDismissBugReporter;
-- (void)serviceDidPresentBugReporter;
 - (void)serviceDidPresentConversationFromBreadcrumb;
 - (void)serviceDidPresentUserInterface;
 - (void)handlePasscodeUnlockWithCompletion:(void (^)(long long))arg1;
@@ -53,7 +53,11 @@
 - (void)serviceDidReadBulletinWithIdentifier:(NSString *)arg1;
 - (void)serviceBulletinWithIdentifier:(NSString *)arg1 replyHandler:(void (^)(AFBulletin *))arg2;
 - (void)serviceStartGuidedAccess;
-- (void)serviceRequestsDismissal:(_Bool)arg1;
+- (void)serviceRequestsDismissalWithDelayForTTS:(_Bool)arg1 userInfo:(NSDictionary *)arg2;
 - (void)serviceRequestsActivationSourceWithReplyHandler:(void (^)(long long))arg1;
+
+@optional
+- (void)serviceDidDismissBugReporter;
+- (void)serviceDidPresentBugReporter;
 @end
 

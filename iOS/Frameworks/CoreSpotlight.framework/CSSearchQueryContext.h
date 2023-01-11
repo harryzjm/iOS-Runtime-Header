@@ -9,7 +9,7 @@
 #import <CoreSpotlight/NSCopying-Protocol.h>
 #import <CoreSpotlight/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class MISSING_TYPE, NSArray, NSDictionary, NSString;
 
 @interface CSSearchQueryContext : NSObject <NSSecureCoding, NSCopying>
 {
@@ -25,6 +25,7 @@
     NSArray *_markedTextArray;
     NSArray *_disableBundles;
     NSString *_userQuery;
+    NSArray *_filterQueries;
     NSString *_filterQuery;
     long long _strongRankingQueryCount;
     long long _dominantRankingQueryCount;
@@ -34,12 +35,18 @@
     long long _queryID;
     NSString *_completionString;
     NSArray *_completionAttributes;
+    double _currentTime;
+    MISSING_TYPE *_fuzzyMask;
+    MISSING_TYPE *_fuzzyMatch;
 }
 
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) unsigned char flags; // @synthesize flags=_flags;
+@property(nonatomic) double currentTime; // @synthesize currentTime=_currentTime;
 @property(retain, nonatomic) NSArray *completionAttributes; // @synthesize completionAttributes=_completionAttributes;
 @property(retain, nonatomic) NSString *completionString; // @synthesize completionString=_completionString;
+@property(nonatomic) MISSING_TYPE *fuzzyMatch; // @synthesize fuzzyMatch=_fuzzyMatch;
+@property(nonatomic) MISSING_TYPE *fuzzyMask; // @synthesize fuzzyMask=_fuzzyMask;
 @property(nonatomic) long long queryID; // @synthesize queryID=_queryID;
 @property(nonatomic) long long completionResultCount; // @synthesize completionResultCount=_completionResultCount;
 @property(nonatomic) long long maxCount; // @synthesize maxCount=_maxCount;
@@ -47,6 +54,7 @@
 @property(nonatomic) long long dominantRankingQueryCount; // @synthesize dominantRankingQueryCount=_dominantRankingQueryCount;
 @property(nonatomic) long long strongRankingQueryCount; // @synthesize strongRankingQueryCount=_strongRankingQueryCount;
 @property(retain, nonatomic) NSString *filterQuery; // @synthesize filterQuery=_filterQuery;
+@property(copy, nonatomic) NSArray *filterQueries; // @synthesize filterQueries=_filterQueries;
 @property(nonatomic) int rankingType; // @synthesize rankingType=_rankingType;
 @property(retain, nonatomic) NSString *userQuery; // @synthesize userQuery=_userQuery;
 @property(retain, nonatomic) NSArray *disableBundles; // @synthesize disableBundles=_disableBundles;
