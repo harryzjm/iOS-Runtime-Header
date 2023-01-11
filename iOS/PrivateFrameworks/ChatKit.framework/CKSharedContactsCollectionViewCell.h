@@ -6,6 +6,7 @@
 
 @class CNAvatarView;
 
+__attribute__((visibility("hidden")))
 @interface CKSharedContactsCollectionViewCell
 {
     CNAvatarView *_avatarView;

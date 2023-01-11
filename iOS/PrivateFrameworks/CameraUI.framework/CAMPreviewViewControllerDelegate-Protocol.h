@@ -9,6 +9,7 @@
 @class CAMPreviewViewController, UIGestureRecognizer;
 
 @protocol CAMPreviewViewControllerDelegate <NSObject>
+- (void)previewViewControllerDidChangeVideoFillAspectRatio:(CAMPreviewViewController *)arg1;
 - (_Bool)previewViewController:(CAMPreviewViewController *)arg1 gestureRecognizer:(UIGestureRecognizer *)arg2 shouldRequireFailureOfGestureRecognizer:(UIGestureRecognizer *)arg3;
 - (void)previewViewControllerDidChangeFocusOrExposureLocked:(CAMPreviewViewController *)arg1 shouldAnimate:(_Bool)arg2;
 @end

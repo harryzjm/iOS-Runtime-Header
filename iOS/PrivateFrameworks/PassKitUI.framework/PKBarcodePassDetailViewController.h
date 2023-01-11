@@ -7,7 +7,7 @@
 #import <PassKitUI/PKPassHeaderViewDelegate-Protocol.h>
 #import <PassKitUI/UITextViewDelegate-Protocol.h>
 
-@class BluetoothManager, NSArray, NSMutableDictionary, NSObject, NSString, PKBarcodeTableViewCell, PKLinkedAppView, PKPass, PKPassColorProfile, PKPassDisplayProfile, PKPassHeaderView, PKSettingTableCell, UIRefreshControl, UISegmentedControl, UITableViewCell, UIView, UIVisualEffectView;
+@class BluetoothManager, NSMutableDictionary, NSObject, NSString, PKBarcodeTableViewCell, PKLinkedAppView, PKPass, PKPassColorProfile, PKPassDisplayProfile, PKPassHeaderView, PKSettingTableCell, UIRefreshControl, UITableViewCell, UIView;
 @protocol OS_dispatch_source, PKPassDeleteHandler;
 
 @interface PKBarcodePassDetailViewController <UITextViewDelegate, PKPassHeaderViewDelegate>
@@ -21,32 +21,26 @@
     PKSettingTableCell *_showNotificationsCell;
     PKSettingTableCell *_showInLockScreenCell;
     PKSettingTableCell *_automaticSelectionCell;
-    UITableViewCell *_shareCell;
     UITableViewCell *_personalizePassCell;
     UITableViewCell *_deleteCell;
     PKBarcodeTableViewCell *_barcodeCell;
     NSMutableDictionary *_fieldCellsByRow;
-    NSMutableDictionary *_fieldCellHeightsByRow;
-    _Bool _forcedRefresh;
-    double _forcedTopContentInset;
     NSObject<OS_dispatch_source> *_refreshTimeout;
     BluetoothManager *_btManager;
     _Bool _isBluetoothEnabled;
     _Bool _isLocationEnabled;
     _Bool _isWifiEnabled;
     _Bool _showsLinks;
-    NSArray *_tabBarSegments;
     double _headerHeight;
     struct UIEdgeInsets _headerContentInset;
-    double _tabBarHeight;
     struct CGSize _previousLayoutTableViewBoundsSize;
-    _Bool _navigationControllerHidesShadow;
+    double _titleOpacity;
+    struct CGRect _headerFrame;
     UIView *_headerView;
     PKPassHeaderView *_passHeaderView;
-    UIVisualEffectView *_blurView;
-    UISegmentedControl *_tabBar;
-    UIView *_keyLine;
     _Bool _didRampScreenBrightness;
+    unsigned char _visiblityState;
+    _Bool _showDoneButton;
     PKPass *_pass;
     unsigned long long _suppressedContent;
     id <PKPassDeleteHandler> _deleteOverrider;
@@ -55,6 +49,7 @@
 + (_Bool)isWifiEnabled;
 + (id)_linkColor;
 + (id)_linkTextAttributes;
+@property(nonatomic) _Bool showDoneButton; // @synthesize showDoneButton=_showDoneButton;
 @property(nonatomic) id <PKPassDeleteHandler> deleteOverrider; // @synthesize deleteOverrider=_deleteOverrider;
 @property(nonatomic) unsigned long long suppressedContent; // @synthesize suppressedContent=_suppressedContent;
 @property(readonly, nonatomic) PKPass *pass; // @synthesize pass=_pass;
@@ -72,16 +67,16 @@
 - (id)_personalizePassCell;
 - (id)_barcodeCell;
 - (id)_deleteCell;
-- (id)_shareCell;
 - (id)_automaticSelectionCell;
 - (_Bool)_personalizeAvailable;
 - (_Bool)_settingsAvailable;
 - (_Bool)_linkedAppAvailable;
+- (void)_updateStandardAppearance:(id)arg1;
+- (void)_updateNavigationItem;
 - (void)_updatePassProperties;
 - (unsigned long long)_numberOfAvailableSettings;
 - (void)_deletePass;
 - (void)_sharePass;
-- (void)_tabBarSegmentChanged:(id)arg1;
 - (void)_done:(id)arg1;
 - (void)passHeaderViewDidChangePass:(id)arg1;
 - (void)_reloadPassAndView;
@@ -93,8 +88,7 @@
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (void)scrollViewDidEndDecelerating:(id)arg1;
-- (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
@@ -106,21 +100,19 @@
 - (void)_wifiChanged:(id)arg1;
 - (void)setShowsLinks:(_Bool)arg1;
 - (id)linkedApp;
-- (id)_createTabBarWithSelectedIndex:(long long)arg1;
 - (double)_offscreenHeaderHeight;
-- (_Bool)_updateHeaderHeightDeterminingLayout:(_Bool)arg1;
-- (void)_updateTabBarWithSegments:(id)arg1;
-- (void)_updateTabBar;
+- (_Bool)_updateHeaderHeight;
 - (long long)rowAnimationForReloadingSection:(unsigned long long)arg1;
 - (_Bool)reloadData;
 - (void)reloadSections:(id)arg1;
 - (void)reloadSection:(unsigned long long)arg1;
 - (_Bool)shouldMapSection:(unsigned long long)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewWillLayoutSubviews;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
-- (_Bool)pkui_prefersNavigationBarShadowHidden;
+- (_Bool)_canShowWhileLocked;
 - (void)dealloc;
 - (id)initWithPass:(id)arg1;
 - (id)initWithStyle:(long long)arg1 numberOfSections:(unsigned long long)arg2;

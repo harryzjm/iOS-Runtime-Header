@@ -4,9 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PKPaymentCredential;
+
 @interface NPKPaymentProvisioningFlowControllerSecondaryManualEntryStepContext
 {
+    _Bool _allowsAddingDifferentCard;
+    PKPaymentCredential *_credential;
 }
+
+@property(nonatomic) _Bool allowsAddingDifferentCard; // @synthesize allowsAddingDifferentCard=_allowsAddingDifferentCard;
+@property(retain, nonatomic) PKPaymentCredential *credential; // @synthesize credential=_credential;
+- (void).cxx_destruct;
+- (id)description;
+- (id)initWithRequestContext:(id)arg1;
 
 @end
 

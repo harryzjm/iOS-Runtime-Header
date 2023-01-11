@@ -6,14 +6,15 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class NSString, SXColumnLayout, SXDataTableComponent, SXDataTableComponentController, SXDocumentController;
-@protocol SXTextComponentLayoutHosting;
+@class NSString, SXColumnLayout, SXDataTableComponent, SXDataTableComponentController, SXUnitConverter;
+@protocol SXDOMObjectProviding, SXTextComponentLayoutHosting;
 
 @protocol SXDataTableComponentControllerDataSource <NSObject>
+- (SXUnitConverter *)unitConverterForDataTableComponentController:(SXDataTableComponentController *)arg1;
 - (NSString *)contentSizeCategoryForDataTableComponentController:(SXDataTableComponentController *)arg1;
 - (SXColumnLayout *)documentColumnLayoutForDataTableComponentController:(SXDataTableComponentController *)arg1;
 - (id <SXTextComponentLayoutHosting>)textComponentLayoutHostingForDataTableComponentController:(SXDataTableComponentController *)arg1;
-- (SXDocumentController *)documentControllerForDataTableComponentController:(SXDataTableComponentController *)arg1;
+- (id <SXDOMObjectProviding>)DOMObjectProviderForDataTableComponentController:(SXDataTableComponentController *)arg1;
 - (SXDataTableComponent *)componentForDataTableComponentController:(SXDataTableComponentController *)arg1;
 - (double)widthForDataTableComponentController:(SXDataTableComponentController *)arg1;
 @end

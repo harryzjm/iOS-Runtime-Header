@@ -9,12 +9,12 @@
 @class NSArray, NSNumber, NSSet, NSString, UNNotificationContent, UNNotificationRequest;
 
 @protocol UNUserNotificationServerProtocol <NSObject>
+- (void)getNotificationSettingsForTopicsWithBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(NSDictionary *))arg2;
+- (void)getNotificationTopicsForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(NSSet *))arg2;
+- (void)setNotificationTopics:(NSSet *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
 - (void)setBadgeString:(NSString *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
 - (void)setBadgeNumber:(NSNumber *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
 - (void)getBadgeNumberForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(NSNumber *))arg2;
-- (void)getAllowsRemoteNotificationsForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(_Bool))arg2;
-- (void)invalidateTokenForRemoteNotificationsForBundleIdentifier:(NSString *)arg1;
-- (void)requestTokenForRemoteNotificationsForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(_Bool, NSError *))arg2;
 - (void)removeAllDeliveredNotificationsForBundleIdentifier:(NSString *)arg1;
 - (void)removeDeliveredNotificationsWithIdentifiers:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2;
 - (void)getDeliveredNotificationsForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(NSArray *))arg2;

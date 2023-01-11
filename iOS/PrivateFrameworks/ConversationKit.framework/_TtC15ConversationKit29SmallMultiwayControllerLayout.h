@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/SwiftObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC15ConversationKit29SmallMultiwayControllerLayout : SwiftObject
+@interface _TtC15ConversationKit29SmallMultiwayControllerLayout : _TtCs12_SwiftObject
 {
     MISSING_TYPE *stateConstraints;
     MISSING_TYPE *participantListHeightConstraint;
+    MISSING_TYPE *localParticipantViewHeightConstraint;
+    MISSING_TYPE *effectsConstraintManagers;
     MISSING_TYPE *currentConstraints;
 }
 

@@ -8,9 +8,11 @@
 
 @interface CKIMGroupHeaderRecipient
 {
+    NSString *_displayString;
 }
 
-@property(retain, nonatomic) NSString *displayString;
+- (void).cxx_destruct;
+@property(copy, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
 
 @end
 

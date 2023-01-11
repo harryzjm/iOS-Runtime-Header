@@ -12,7 +12,7 @@
 #import <ControlCenterUI/CCUIModuleSettingsManagerObserver-Protocol.h>
 #import <ControlCenterUI/CCUISafeAppearancePropagationProvider-Protocol.h>
 
-@class CCUIControlCenterPositionProvider, CCUIExpandedModuleBackgroundView, CCUILayoutOptions, CCUIModuleCollectionView, CCUIModuleInstanceManager, CCUIModuleSettingsManager, NSArray, NSDictionary, NSHashTable, NSObject, NSString;
+@class CCUIControlCenterPositionProvider, CCUILayoutOptions, CCUIModuleCollectionView, CCUIModuleInstanceManager, CCUIModuleSettingsManager, NSArray, NSDictionary, NSHashTable, NSObject, NSString;
 @protocol CCUIModuleCollectionViewControllerDelegate, OS_dispatch_group;
 
 @interface CCUIModuleCollectionViewController : UIViewController <CCUIModuleInstanceManagerObserver, CCUIModuleSettingsManagerObserver, CCUILayoutViewLayoutSource, CCUIContentModuleContainerViewControllerDelegate, CCUISafeAppearancePropagationProvider>
@@ -24,16 +24,19 @@
     CCUILayoutOptions *_layoutOptions;
     NSDictionary *_moduleViewControllerByIdentifier;
     NSDictionary *_moduleContainerViewByIdentifier;
+    NSHashTable *_homeGestureDismissalAllowedModules;
     NSHashTable *_currentModules;
     NSHashTable *_expandedModules;
     NSObject<OS_dispatch_group> *_moduleCloseDispatchGroup;
-    CCUIExpandedModuleBackgroundView *_sharedExpandedModuleBackgroundView;
+    _Bool _homeGestureDismissalAllowed;
     id <CCUIModuleCollectionViewControllerDelegate> _delegate;
 }
 
+@property(readonly, nonatomic, getter=isHomeGestureDismissalAllowed) _Bool homeGestureDismissalAllowed; // @synthesize homeGestureDismissalAllowed=_homeGestureDismissalAllowed;
 @property(nonatomic) __weak id <CCUIModuleCollectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (_Bool)_shouldApplyBackgroundEffects;
+- (void)_updateHomeGestureDismissalAllowed;
+- (void)_beginAppearanceTransition:(_Bool)arg1 affectedModule:(id)arg2;
 - (long long)_interfaceOrientation;
 - (id)_currentLayoutOptions;
 - (id)_positionProviderForInterfaceOrientation:(long long)arg1;
@@ -46,8 +49,9 @@
 - (id)_moduleInstances;
 - (void)_updateModuleControllers;
 - (void)_updateEnabledModuleIdentifiers;
-- (id)backgroundViewForContentModuleContainerViewController:(id)arg1;
-- (_Bool)shouldApplyBackgroundEffectsForContentModuleContainerViewController:(id)arg1;
+- (void)contentModuleContainerViewControllerDismissPresentedContent:(id)arg1;
+- (void)contentModuleContainerViewController:(id)arg1 willDismissViewController:(id)arg2;
+- (void)contentModuleContainerViewController:(id)arg1 willPresentViewController:(id)arg2;
 - (void)contentModuleContainerViewController:(id)arg1 didCloseExpandedModule:(id)arg2;
 - (void)contentModuleContainerViewController:(id)arg1 willCloseExpandedModule:(id)arg2;
 - (void)contentModuleContainerViewController:(id)arg1 didOpenExpandedModule:(id)arg2;
@@ -65,6 +69,7 @@
 - (id)queryAllTopLevelBlockingGestureRecognizers;
 - (id)relevantSnapHeightsForOrientation:(long long)arg1;
 - (_Bool)isAtMaxHeight;
+- (_Bool)_canShowWhileLocked;
 - (struct CGSize)preferredContentSize;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)viewDidDisappear:(_Bool)arg1;
@@ -73,11 +78,12 @@
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
-- (void)expandedModuleDidChangeSizeWithIdentifier:(id)arg1;
 - (_Bool)isModuleExpandedForIdentifier:(id)arg1;
 - (void)dismissPresentedContentAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dismissExpandedModuleAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)expandModuleWithIdentifier:(id)arg1;
+- (void)didUpdateHomeGestureDismissalAllowed:(_Bool)arg1 forModuleWithIdentifier:(id)arg2;
+- (void)displayWillTurnOff;
 - (void)willResignActive;
 - (void)willBecomeActive;
 @property(retain, nonatomic) CCUIModuleCollectionView *moduleCollectionView; // @dynamic moduleCollectionView;

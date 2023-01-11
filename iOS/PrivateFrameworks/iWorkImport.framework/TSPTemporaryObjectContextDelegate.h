@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 
 + (id)temporaryObjectContextDelegateWithPackageDataForWrite:(id)arg1 additionalDocumentPropertiesForWrite:(id)arg2;
 @property(nonatomic) _Bool ignoreDocumentSupport; // @synthesize ignoreDocumentSupport=_ignoreDocumentSupport;
-@property(readonly, nonatomic) NSSet *persistenceWarnings; // @synthesize persistenceWarnings=_persistenceWarnings;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
 - (void).cxx_destruct;
 - (void)requestAutosave;
@@ -30,14 +29,17 @@ __attribute__((visibility("hidden")))
 - (void)resumeAutosaveWithReason:(id)arg1;
 - (void)suspendAutosaveWithReason:(id)arg1;
 - (void)context:(id)arg1 canPerformUserActionUsingBlock:(CDUnknownBlockType)arg2;
+- (_Bool)contextCanPerformUserActions:(id)arg1;
 - (id)persistenceWarningsForData:(id)arg1 flags:(unsigned long long)arg2;
 - (void)addPersistenceWarnings:(id)arg1;
 - (void)presentPersistenceError:(id)arg1;
+@property(readonly, nonatomic) NSSet *persistenceWarnings;
 - (id)init;
 
 // Remaining properties
 @property(readonly, nonatomic) NSDictionary *additionalDocumentPropertiesForWrite;
 @property(readonly, nonatomic) NSDictionary *additionalDocumentSupportPropertiesForWrite;
+@property(readonly, nonatomic) long long archiveValidationMode;
 @property(readonly, nonatomic) _Bool areNewExternalReferencesToDataAllowed;
 @property(readonly, nonatomic) NSUUID *baseUUIDForObjectUUID;
 @property(readonly, copy) NSString *debugDescription;

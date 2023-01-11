@@ -72,6 +72,7 @@
 + (id)isSampleFromPlistEntry:(id)arg1;
 + (id)backupFolderNameFromPlistEntry:(id)arg1;
 + (id)folderNameFromPlistEntry:(id)arg1;
++ (void)setAccessDate:(id)arg1 toPlistEntry:(id)arg2;
 + (id)accessDateFromPlistEntry:(id)arg1;
 + (id)uniqueIdFromPlistEntry:(id)arg1;
 + (id)primaryLanguageFromPlistEntry:(id)arg1;
@@ -94,6 +95,10 @@
 + (id)bookEpubIdFromPlistEntry:(id)arg1;
 + (id)persistentIDFromPlistEntry:(id)arg1;
 + (id)temporaryItemIdentifierFromPlistEntry:(id)arg1;
++ (void)setBooksArray:(id)arg1 toPlistEntry:(id)arg2;
++ (id)booksArrayFromPlistEntry:(id)arg1;
++ (void)setDeletesArray:(id)arg1 toPlistEntry:(id)arg2;
++ (id)deletesArrayFromPlistEntry:(id)arg1;
 + (id)isEphemeralFromPlistEntry:(id)arg1;
 + (id)isProofedAssetFromPlistEntry:(id)arg1;
 + (id)isExplicitContentFromPlistEntry:(id)arg1;
@@ -134,7 +139,7 @@
 - (id)p_contents:(id)arg1;
 - (void)p_rewriteSidecarWithDeletes:(id)arg1;
 @property(readonly, nonatomic) NSString *sidecarPath;
-- (id)initWithDirectory:(id)arg1 fileName:(id)arg2;
+- (id)_initWithDirectory:(id)arg1 fileName:(id)arg2;
 
 @end
 

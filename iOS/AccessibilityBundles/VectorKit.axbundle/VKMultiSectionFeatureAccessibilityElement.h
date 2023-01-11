@@ -8,10 +8,10 @@
 {
 }
 
-- (void)_startUpdatingDescriptionForBuilding:(CDStruct_c707fdd0 *)arg1;
+- (void)_startUpdatingDescriptionForBuilding:(CDStruct_123780e2 *)arg1;
 - (void)_updatePath;
 - (long long)_accessibilityMapFeatureType;
-- (id)initWithAccessibilityContainer:(id)arg1 feature:(CDStruct_58d0ca89 *)arg2 featureTypeContext:(void *)arg3 ignoreMissingName:(_Bool)arg4 useLocalizedLabels:(_Bool)arg5;
+- (id)initWithAccessibilityContainer:(id)arg1 feature:(CDStruct_123780e2 *)arg2 ignoreMissingName:(_Bool)arg3 useLocalizedLabels:(_Bool)arg4;
 
 @end
 

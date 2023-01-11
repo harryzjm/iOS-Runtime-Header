@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 
 - (struct UIEdgeInsets)symbolFrameInsets;
 - (struct CGPoint)globeKeyTextOffset;
+- (struct CGPoint)moreKeyTextOffset;
 
 @end
 

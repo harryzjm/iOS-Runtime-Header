@@ -8,9 +8,17 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_viewToAddFocusLayer;
+- (id)accessibilityPath;
+- (void)_axToggleSwitch;
+- (void)_fkaSwitchOff;
+- (void)_fkaSwitchOn;
+- (id)_accessibilityKeyCommands;
 - (unsigned long long)accessibilityTraits;
+- (unsigned long long)_accessibilityAutomationType;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;

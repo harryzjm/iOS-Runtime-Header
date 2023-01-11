@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL;
+@class NSString, NSURL;
 
 @interface AXMModelDetectorNode
 {
     NSURL *_modelURL;
+    NSString *_modelIdentifier;
 }
 
 + (id)title;
 + (_Bool)isSupported;
 + (_Bool)supportsSecureCoding;
+@property(readonly, nonatomic) NSString *modelIdentifier; // @synthesize modelIdentifier=_modelIdentifier;
 @property(retain, nonatomic) NSURL *modelURL; // @synthesize modelURL=_modelURL;
 - (void).cxx_destruct;
 - (void)evaluate:(id)arg1;

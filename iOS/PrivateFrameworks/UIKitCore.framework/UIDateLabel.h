@@ -16,7 +16,6 @@
     NSDate *_noon;
     NSDate *_tomorrow;
     NSDate *_previousWeek;
-    UIFont *_timeDesignatorFont;
     NSCalendar *_calendar;
     _Bool _shouldRecomputeText;
     double _paddingFromTimeToDesignator;

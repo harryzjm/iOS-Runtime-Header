@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class MPSImageLaplacian;
 @protocol MTLBuffer;
 
 @interface MPSImageConvolution
@@ -18,6 +19,7 @@
     float _fBias;
     _Bool separable;
     unsigned long long specialFilterType;
+    MPSImageLaplacian *_laplacian;
 }
 
 + (const struct MPSLibraryInfo *)libraryInfo;

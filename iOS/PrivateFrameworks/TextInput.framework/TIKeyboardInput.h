@@ -24,6 +24,7 @@
             unsigned int gesture:1;
             unsigned int synthesizedByAcceptingCandidate:1;
             unsigned int doubleSpace:1;
+            unsigned int rapidDelete:1;
         } fields;
     } _flags;
     _Bool _backspace;
@@ -32,9 +33,11 @@
     TIKeyboardTouchEvent *_touchEvent;
     TIKeyboardCandidate *_acceptedCandidate;
     NSString *_inputManagerHint;
+    double _timestamp;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property(copy, nonatomic) NSString *inputManagerHint; // @synthesize inputManagerHint=_inputManagerHint;
 @property(retain, nonatomic) TIKeyboardCandidate *acceptedCandidate; // @synthesize acceptedCandidate=_acceptedCandidate;
 @property(retain, nonatomic) TIKeyboardTouchEvent *touchEvent; // @synthesize touchEvent=_touchEvent;
@@ -45,6 +48,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(nonatomic, getter=isRapidDelete) _Bool rapidDelete;
 @property(nonatomic, getter=isDoubleSpace) _Bool doubleSpace;
 @property(nonatomic, getter=isSynthesizedByAcceptingCandidate) _Bool synthesizedByAcceptingCandidate;
 @property(nonatomic, getter=isGesture) _Bool gesture;

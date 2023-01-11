@@ -4,21 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIButton, UIImageView;
+@class UIButton, UIImageView, UITableViewCell;
 
 __attribute__((visibility("hidden")))
 @interface UITableViewCellDetailDisclosureView
 {
-    UIButton *_infoButton;
+    UIButton *_accessoryButton;
     UIImageView *_disclosureView;
+    UITableViewCell *_cell;
 }
 
+@property(readonly, nonatomic) UIButton *accessoryButton; // @synthesize accessoryButton=_accessoryButton;
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)removeTarget:(id)arg1 action:(SEL)arg2 forControlEvents:(unsigned long long)arg3;
 - (void)addTarget:(id)arg1 action:(SEL)arg2 forControlEvents:(unsigned long long)arg3;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
-- (id)initWithTarget:(id)arg1 action:(SEL)arg2 cell:(id)arg3 shouldReverseLayoutDirection:(_Bool)arg4;
+- (id)initWithTarget:(id)arg1 action:(SEL)arg2 cell:(id)arg3 buttonType:(long long)arg4 shouldReverseLayoutDirection:(_Bool)arg5;
 
 @end
 

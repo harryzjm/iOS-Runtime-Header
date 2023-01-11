@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotoLibraryServices/PLImageFormat.h>
+#import <AssetsLibraryServices/PLImageFormat.h>
 
 @interface PLImageFormat (PHAdoptionUtilities)
 - (long long)contentMode;

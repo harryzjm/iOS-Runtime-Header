@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSObject, RERemoteTrainingServer, REUpNextScheduler;
-@protocol OS_dispatch_queue;
+@class NSMutableArray, RERemoteTrainingServer;
 
 @interface RERemoteTrainingContext
 {
-    NSObject<OS_dispatch_queue> *_queue;
-    REUpNextScheduler *_scheduler;
     NSMutableArray *_trainingElements;
     NSMutableArray *_trainingEvents;
     NSMutableArray *_trainingInteractions;
@@ -25,8 +22,6 @@
 - (_Bool)isCurrent;
 - (void)setAttribute:(id)arg1 forKey:(id)arg2;
 - (void)trainWithElement:(id)arg1 isPositiveEvent:(_Bool)arg2 interaction:(id)arg3;
-- (void)_configureForRelevanceEngine:(id)arg1;
-- (id)_elementRelevanceEngine;
 - (id)initWithProcessName:(id)arg1;
 - (void)_didSetAttributeForRemoteTraining;
 - (void)_willSetAttributeForRemoteTraining;

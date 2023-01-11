@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class UIActivityIndicatorView, UIButton, UIImageView, UILabel;
+@class PKCheckGlyphLayer, UIActivityIndicatorView, UIButton, UIImageView, UILabel;
 
 @interface PKTableHeaderView : UIView
 {
@@ -16,29 +16,33 @@
     UILabel *_subtitleLabel;
     UIButton *_actionButton;
     UIActivityIndicatorView *_activityIndicator;
-    UIImageView *_checkmarkView;
+    PKCheckGlyphLayer *_checkmarkLayer;
     _Bool _shouldResizeImageToFit;
     _Bool _accessoryViewsDisabled;
     unsigned long long _style;
     double _topPadding;
     double _bottomPadding;
+    double _minimumHeight;
 }
 
-@property(readonly, nonatomic) UIImageView *checkmarkView; // @synthesize checkmarkView=_checkmarkView;
+@property(readonly, nonatomic) PKCheckGlyphLayer *checkmarkLayer; // @synthesize checkmarkLayer=_checkmarkLayer;
 @property(readonly, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property(retain, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property(nonatomic) _Bool accessoryViewsDisabled; // @synthesize accessoryViewsDisabled=_accessoryViewsDisabled;
+@property(nonatomic) double minimumHeight; // @synthesize minimumHeight=_minimumHeight;
 @property(nonatomic) double bottomPadding; // @synthesize bottomPadding=_bottomPadding;
 @property(nonatomic) double topPadding; // @synthesize topPadding=_topPadding;
 @property(nonatomic) _Bool shouldResizeImageToFit; // @synthesize shouldResizeImageToFit=_shouldResizeImageToFit;
 @property(nonatomic) unsigned long long style; // @synthesize style=_style;
 - (void).cxx_destruct;
+- (void)_updateCheckmarkColor;
 - (id)_subtitleFont;
 - (id)_titleFont;
 - (void)_updateAccessoryViews;
 - (void)_updateFonts;
 - (_Bool)_hasAccessibilityLargeText;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)tintColorDidChange;
 - (void)layoutSubviews;
 - (struct CGSize)_sizeThatFitsExcludingImage:(struct CGSize)arg1;
@@ -48,8 +52,7 @@
 @property(readonly, nonatomic) UILabel *titleLabel;
 - (void)_updateImageView;
 - (void)setImageViewImage:(id)arg1 withSize:(struct CGSize)arg2 animated:(_Bool)arg3;
-- (void)setPassSnapshotUsingDefaultSize:(id)arg1 animated:(_Bool)arg2;
-- (void)setPassSnapshotUsingDefaultSize:(id)arg1;
+- (void)setPassSnapshotUsingDefaultSize:(id)arg1 animated:(_Bool)arg2 needsCorners:(_Bool)arg3;
 - (void)dealloc;
 
 @end

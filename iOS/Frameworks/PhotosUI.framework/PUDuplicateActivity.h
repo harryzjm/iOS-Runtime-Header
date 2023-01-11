@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosUICore/PXActivity.h>
+
 __attribute__((visibility("hidden")))
-@interface PUDuplicateActivity
+@interface PUDuplicateActivity : PXActivity
 {
 }
 
 + (long long)activityCategory;
 - (void)performActivity;
 - (_Bool)canPerformWithActivityItems:(id)arg1;
-- (id)_activityBundleImageConfiguration;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 

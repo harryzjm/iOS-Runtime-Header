@@ -10,6 +10,7 @@
 
 @interface CAMLivePhotoButton <CAMAccessibilityHUDImageProvider>
 {
+    _Bool _allowsAutomaticMode;
     UIImageView *__imageView;
     NSDictionary *__enablingAnimationImages;
 }
@@ -17,6 +18,7 @@
 + (double)enablingAnimationDuration;
 @property(copy, nonatomic, setter=_setEnablingAnimationImages:) NSDictionary *_enablingAnimationImages; // @synthesize _enablingAnimationImages=__enablingAnimationImages;
 @property(readonly, nonatomic) UIImageView *_imageView; // @synthesize _imageView=__imageView;
+@property(nonatomic) _Bool allowsAutomaticMode; // @synthesize allowsAutomaticMode=_allowsAutomaticMode;
 - (void).cxx_destruct;
 - (id)imageForAccessibilityHUD;
 - (void)interruptEnablingAnimation;
@@ -38,6 +40,7 @@
 - (long long)indexForMode:(long long)arg1;
 - (long long)modeForIndex:(long long)arg1;
 - (id)_availableModes;
+- (void)setAllowsAutomaticMode:(_Bool)arg1 needsReloadData:(_Bool)arg2;
 - (void)setSelectedIndex:(long long)arg1;
 @property(nonatomic) long long livePhotoMode;
 - (id)initWithLayoutStyle:(long long)arg1;

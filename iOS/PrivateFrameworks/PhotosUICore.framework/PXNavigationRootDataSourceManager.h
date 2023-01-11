@@ -4,21 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PXNavigationListDataSource;
+@class PHPhotoLibrary;
 @protocol PXNavigationRoot;
 
 @interface PXNavigationRootDataSourceManager
 {
     id <PXNavigationRoot> _navigationRoot;
+    PHPhotoLibrary *_photoLibrary;
 }
 
+@property(readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(readonly, nonatomic) id <PXNavigationRoot> navigationRoot; // @synthesize navigationRoot=_navigationRoot;
 - (void).cxx_destruct;
-- (id)createInitialDataSource;
-- (id)initWithNavigationRoot:(id)arg1;
-
-// Remaining properties
-@property(readonly, nonatomic) PXNavigationListDataSource *dataSource; // @dynamic dataSource;
+- (id)createDataSection;
+- (id)initWithChildDataSectionManagers:(id)arg1;
+- (id)initWithNavigationRoot:(id)arg1 photoLibrary:(id)arg2;
 
 @end
 

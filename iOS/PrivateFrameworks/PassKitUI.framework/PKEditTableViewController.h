@@ -10,7 +10,7 @@
 #import <PassKitUI/PKEditTableNoPassesViewDelegate-Protocol.h>
 #import <PassKitUI/UITableViewDataSourcePrefetching-Protocol.h>
 
-@class NSCache, NSMutableArray, NSMutableDictionary, NSObject, NSString, PKEditPendingCacheRequest, PKEditTableNoPassesView, PKGroupsController, UITableView;
+@class NSCache, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, PKEditPendingCacheRequest, PKEditTableNoPassesView, PKGroupsController, UITableView;
 @protocol OS_dispatch_queue, PKEditTableViewControllerCachingDelegate;
 
 @interface PKEditTableViewController : UITableViewController <UITableViewDataSourcePrefetching, PKEditTableNoPassesViewDelegate, PKEditPassesPerformanceTestResponder>
@@ -25,6 +25,7 @@
     NSCache *_imageCache;
     unsigned long long _imagesToKeep;
     NSObject<OS_dispatch_queue> *_queueCaching;
+    NSObject<OS_dispatch_queue> *_queuePlaceholder;
     PKEditPendingCacheRequest *_currentCacheRequest;
     _Bool _shouldProcessHighPriorityRequests;
     NSMutableArray *_highPriorityRequests;
@@ -45,6 +46,8 @@
     NSString *_performanceTestName;
 }
 
++ (id)_generatePlaceholderImageForStyle:(long long)arg1;
++ (void)loadPlaceholdersWithCompletion:(CDUnknownBlockType)arg1;
 @property(nonatomic) long long testIteration; // @synthesize testIteration=_testIteration;
 @property(retain, nonatomic) NSString *performanceTestName; // @synthesize performanceTestName=_performanceTestName;
 @property(nonatomic) long long performanceTest; // @synthesize performanceTest=_performanceTest;
@@ -83,8 +86,6 @@
 - (void)_setShouldProcessLowPriorityRequests:(_Bool)arg1;
 - (unsigned long long)_imagesToKeepOutsideVisibleCells;
 - (void)clearImageCacheForPass:(id)arg1;
-- (id)_resizedImageWithImage:(id)arg1 alignmentSize:(struct CGSize)arg2;
-- (id)_cropImage:(id)arg1 toHeight:(double)arg2;
 - (id)_createPassStackWithPassImage:(id)arg1 withHeight:(double)arg2;
 - (id)_createImageForPass:(id)arg1 imageSize:(struct CGSize)arg2 cacheKey:(id)arg3 fullPass:(_Bool)arg4 stacked:(_Bool)arg5;
 - (void)updateAverageSnapshotDuration:(double)arg1;
@@ -100,9 +101,10 @@
 - (void)imageForPass:(id)arg1 stacked:(_Bool)arg2 synchronously:(_Bool)arg3 placeholder:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)loadContentAndImageSetFromExistingPassForPass:(id)arg1;
 - (unsigned long long)visibleRowsCount;
-- (void)generatePlaceholderImages;
+@property(retain, nonatomic) NSDictionary *placeholders;
+- (void)_placeholderImageForStyle:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)viewDidLoad;
-- (id)initWithStyle:(long long)arg1;
+- (id)initWithStyle:(long long)arg1 placeholders:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

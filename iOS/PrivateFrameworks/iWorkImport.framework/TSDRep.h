@@ -54,15 +54,16 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct CGRect clipRect;
 @property(readonly, nonatomic) _Bool isDrawingInFlippedContext;
 - (void)updateFromLayout;
+- (void)didAddChildRep:(id)arg1;
 - (void)updateChildrenFromLayout;
 - (struct CGRect)layerFrameInScaledCanvasRelativeToParent;
-- (struct CGRect)i_layerFrameInScaledCanvasIgnoringDragging;
+@property(readonly, nonatomic) struct CGRect i_layerFrameInScaledCanvasIgnoringDragging;
 @property(readonly, nonatomic) struct CGRect layerFrameInScaledCanvas;
 @property(readonly, nonatomic) struct CGRect frameInUnscaledCanvasIncludingChrome;
 @property(readonly, nonatomic) struct CGRect frameInUnscaledCanvas;
 - (struct CGPoint)convertNaturalPointFromUnscaledCanvas:(struct CGPoint)arg1;
 - (struct CGPoint)convertNaturalPointToUnscaledCanvas:(struct CGPoint)arg1;
-- (struct CGPath *)newPathInScaledCanvasFromNaturalRect:(struct CGRect)arg1;
+- (const struct CGPath *)newPathInScaledCanvasFromNaturalRect:(struct CGRect)arg1;
 - (struct CGRect)convertNaturalRectFromUnscaledCanvas:(struct CGRect)arg1;
 - (struct CGRect)convertNaturalRectToUnscaledCanvas:(struct CGRect)arg1;
 @property(readonly, nonatomic) struct CGRect naturalBounds;

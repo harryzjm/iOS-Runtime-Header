@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
-@class DVTDispatchLock, DVTObservingToken, DVTStackBacktrace, NSError, NSMutableArray;
+@class DVTDispatchLock, DVTObservingToken, DVTStackBacktrace, NSArray, NSError, NSMutableArray;
 
 @interface DVTOperation : NSOperation
 {
@@ -20,6 +20,7 @@
     _Bool _preventFinish;
     DVTObservingToken *_isFinishedObserverToken;
     DVTObservingToken *_isExecutingObserverToken;
+    NSArray *_warnings;
     DVTStackBacktrace *_creationBacktrace;
 }
 
@@ -28,6 +29,7 @@
 + (id)operationWithBlock:(CDUnknownBlockType)arg1;
 @property _Bool preventFinish; // @synthesize preventFinish=_preventFinish;
 @property(retain) DVTStackBacktrace *creationBacktrace; // @synthesize creationBacktrace=_creationBacktrace;
+@property(copy) NSArray *warnings; // @synthesize warnings=_warnings;
 @property(copy) NSError *error; // @synthesize error=_error;
 @property(copy) CDUnknownBlockType block; // @synthesize block=_block;
 - (void).cxx_destruct;

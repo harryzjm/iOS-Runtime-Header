@@ -8,6 +8,7 @@
 
 @class NSString, SKUIResponseView, SKUITextBoxView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIReviewCollectionViewCell <SKUIViewElementView>
 {
     CDUnknownBlockType _descriptionTapAction;

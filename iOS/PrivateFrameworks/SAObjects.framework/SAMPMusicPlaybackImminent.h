@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface SAMPMusicPlaybackImminent
 {
 }
@@ -12,6 +14,7 @@
 + (id)musicPlaybackImminent;
 - (_Bool)mutatingCommand;
 - (_Bool)requiresResponse;
+@property(copy, nonatomic) NSString *preloadedUserSharedUserId;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

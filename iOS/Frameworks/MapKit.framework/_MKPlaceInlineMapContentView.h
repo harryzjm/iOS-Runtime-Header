@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MKViewWithHairline, NSLayoutConstraint, UIImage, UIImageView, _MKUILabel;
+@class MKMapItemView, MKViewWithHairline, NSLayoutConstraint, UIImage, UIImageView, UIView, _MKUILabel;
 
 __attribute__((visibility("hidden")))
 @interface _MKPlaceInlineMapContentView
@@ -12,15 +12,18 @@ __attribute__((visibility("hidden")))
     MKViewWithHairline *_hairlineView;
     NSLayoutConstraint *_topToTitleConstraint;
     NSLayoutConstraint *_titleToBottomConstraint;
-    UIImageView *_mapView;
+    UIView *_mapView;
+    UIImageView *_mapImageView;
     _MKUILabel *_titleLabel;
+    MKMapItemView *_mapItemView;
 }
 
+@property(retain, nonatomic) MKMapItemView *mapItemView; // @synthesize mapItemView=_mapItemView;
 - (void).cxx_destruct;
 - (struct CGSize)intrinsicContentSize;
 - (double)mapViewHeight;
 @property(retain, nonatomic) UIImage *map;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 @property(nonatomic, getter=isBottomHairlineHidden) _Bool bottomHairlineHidden;
 - (void)_contentSizeDidChange;
 - (double)titleHeight;

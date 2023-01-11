@@ -12,6 +12,11 @@
 - (void)viewControllerDidComplete:(UIViewController *)arg1;
 
 @optional
-- (void)userDidTapCancel:(UIViewController *)arg1;
+- (void)popViewController:(UIViewController *)arg1;
+- (void)receivedResponse;
+- (void)waitForResponse:(UIViewController *)arg1;
+- (void)userDidTapCancel;
+- (long long)signupUserConsentResponse;
+- (void)setDefaultNavigationItems:(UIViewController *)arg1;
 @end
 

@@ -10,9 +10,7 @@
 {
 }
 
-+ (_Bool)supportsSecureCoding;
-+ (_Bool)_isConcreteObjectClass;
-@property(copy, nonatomic, setter=_setSum:) HKQuantity *sum;
+@property(readonly, copy) HKQuantity *sum;
 
 @end
 

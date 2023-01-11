@@ -23,9 +23,9 @@
 @property(retain, nonatomic) NSString *oneAddressFormat; // @synthesize oneAddressFormat=_oneAddressFormat;
 @property(retain, nonatomic) NSString *andNMoreNoEllipsisFormat; // @synthesize andNMoreNoEllipsisFormat=_andNMoreNoEllipsisFormat;
 @property(retain, nonatomic) NSString *andNMoreFormat; // @synthesize andNMoreFormat=_andNMoreFormat;
+- (void).cxx_destruct;
 - (id)commaSeparatedAddressListWithAddressCount:(unsigned long long)arg1 prefixForAddressAtIndex:(CDUnknownBlockType)arg2 stringForAddressAtIndex:(CDUnknownBlockType)arg3 lengthValidationBlock:(CDUnknownBlockType)arg4;
 - (void)getCommaSeparatedAddressList:(out id *)arg1 andListSuffix:(out id *)arg2 withAddressCount:(unsigned long long)arg3 prefixForAddressAtIndex:(CDUnknownBlockType)arg4 stringForAddressAtIndex:(CDUnknownBlockType)arg5 lengthValidationBlock:(CDUnknownBlockType)arg6;
-- (void)dealloc;
 
 @end
 

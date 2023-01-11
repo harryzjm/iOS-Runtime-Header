@@ -21,6 +21,7 @@
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
+- (unsigned long long)_accessibilityAutomationType;
 - (_Bool)isAccessibilityElement;
 
 @end

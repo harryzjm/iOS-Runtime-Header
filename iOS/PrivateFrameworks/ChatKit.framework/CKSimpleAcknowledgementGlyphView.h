@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIImageView;
+@class CKAcknowledgmentGlyphImageView;
 
+__attribute__((visibility("hidden")))
 @interface CKSimpleAcknowledgementGlyphView
 {
-    UIImageView *_glyph;
+    CKAcknowledgmentGlyphImageView *_glyph;
 }
 
-@property(retain, nonatomic) UIImageView *glyph; // @synthesize glyph=_glyph;
+@property(retain, nonatomic) CKAcknowledgmentGlyphImageView *glyph; // @synthesize glyph=_glyph;
 - (void).cxx_destruct;
 - (void)setGlyphColor:(id)arg1;
 - (void)layoutSubviews;

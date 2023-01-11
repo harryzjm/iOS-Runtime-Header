@@ -10,6 +10,7 @@
 
 @class NSMutableArray, NSString, SKUIActivityIndicatorView, SKUIChartsTemplateViewElement, SKUILayoutCache, SKUIModernChartsView, SKUIResourceLoader, SKUIViewElementLayoutContext;
 
+__attribute__((visibility("hidden")))
 @interface SKUIModernChartsDocumentViewController <SKUIResourceLoaderDelegate, SKUIDocumentViewController, SKUIModalSourceViewProvider>
 {
     SKUIActivityIndicatorView *_activityIndicatorView;

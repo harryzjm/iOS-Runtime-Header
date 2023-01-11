@@ -7,6 +7,11 @@
 #import <UIKit/UIImageView.h>
 
 @interface UIImageView (IBCocoaTouchToolIntegration)
+- (void)setIbPreferredSymbolConfiguration:(id)arg1;
+- (id)ibPreferredSymbolConfiguration;
+- (id)systemLayoutGuideForType:(long long)arg1;
+- (void)setIbShadowedMidlineLayoutGuide:(id)arg1;
+- (id)ibShadowedMidlineLayoutGuide;
 - (void)setIbAdjustsImageWhenAncestorFocused:(_Bool)arg1;
 - (_Bool)ibAdjustsImageWhenAncestorFocused;
 - (struct CGSize)sizeForStrechableImageContent;

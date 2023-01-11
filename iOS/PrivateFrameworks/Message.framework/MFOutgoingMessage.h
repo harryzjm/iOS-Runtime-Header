@@ -12,6 +12,7 @@
     MFMutableMessageHeaders *_messageHeaders;
 }
 
+- (void).cxx_destruct;
 - (unsigned long long)messageSize;
 - (id)headersIfAvailable;
 - (id)headers;
@@ -25,7 +26,6 @@
 - (id)messageBody;
 - (id)messageStore;
 - (void)setMessageBody:(id)arg1;
-- (void)dealloc;
 
 @end
 

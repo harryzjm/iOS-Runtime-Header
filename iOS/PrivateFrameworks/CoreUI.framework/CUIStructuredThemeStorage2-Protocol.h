@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CUICommonAssetStorage, CUINamedImageDescription, NSArray, NSDictionary, NSString;
+@class CUICommonAssetStorage, CUINamedImageDescription, CUINamedRenditionInfo, NSArray, NSDictionary, NSString;
 
 @protocol CUIStructuredThemeStorage2
+- (unsigned short)localizationIdentifierForName:(NSString *)arg1;
+- (NSDictionary *)localizations;
 - (NSDictionary *)appearances;
 - (NSString *)nameForAppearanceIdentifier:(unsigned short)arg1;
 - (unsigned short)appearanceIdentifierForName:(NSString *)arg1;
@@ -16,6 +18,7 @@
 - (_Bool)canGetRenditionWithKey:(const struct _renditionkeytoken *)arg1;
 
 @optional
+- (CUINamedRenditionInfo *)renditionInfoForIdentifier:(unsigned short)arg1;
 - (CUICommonAssetStorage *)themeStore;
 - (NSString *)renditionNameForKeyList:(struct _renditionkeytoken *)arg1;
 - (void)removeImageNamed:(NSString *)arg1 withDescription:(CUINamedImageDescription *)arg2;

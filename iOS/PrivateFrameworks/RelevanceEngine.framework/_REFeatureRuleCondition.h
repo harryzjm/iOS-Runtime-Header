@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <RelevanceEngine/REAutomaticExportedInterface-Protocol.h>
+
 @class REFeature;
 
-@interface _REFeatureRuleCondition
+@interface _REFeatureRuleCondition <REAutomaticExportedInterface>
 {
     REFeature *_firstFeature;
     long long _relation;
@@ -18,11 +20,10 @@
 @property(readonly, nonatomic) REFeature *firstFeature; // @synthesize firstFeature=_firstFeature;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)_inflectionFeatureValuePairs;
-- (_Bool)_acceptsFeatureMap:(id)arg1;
+- (_Bool)_acceptsFeatureMap:(id)arg1 predictionSet:(id)arg2 explanation:(id *)arg3;
 - (_Bool)_requiresTwoFeatures;
 - (id)_notCondition;
 - (id)_dependentFeatures;

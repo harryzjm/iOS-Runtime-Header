@@ -27,8 +27,8 @@
 - (void).cxx_destruct;
 - (void)_setNavigationBarEnabled:(_Bool)arg1;
 - (void)_setViewEnabledState:(_Bool)arg1;
-- (void)_continousButtonPressed;
-- (void)_setContinousButtonEnabledState;
+- (void)_continuousButtonPressed;
+- (void)_setContinuousButtonEnabledState;
 - (void)setHeaderViewTitle:(id)arg1 subtitle:(id)arg2;
 - (id)headerView;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
@@ -39,8 +39,6 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)pkui_navigationBarTintColor;
-- (_Bool)pkui_prefersNavigationBarShadowHidden;
 - (id)initWithStyle:(long long)arg1 context:(long long)arg2;
 - (id)initWithPaymentPasses:(id)arg1 context:(long long)arg2 delegate:(id)arg3 peerPaymentAccount:(id)arg4;
 

@@ -6,16 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-@class UILabel;
+@class UILabel, UIScrollView;
 
 @interface CKActionSheetMenuTitleView : UIView
 {
+    UIScrollView *_scrollView;
     UILabel *_titleLabel;
 }
 
 - (void).cxx_destruct;
 - (id)_textColor;
-- (void)updateTitleConstraints;
+- (double)_desiredHeightForLabel:(id)arg1 parentBoundingRect:(struct CGRect)arg2;
+- (void)updateTitleConstraintsForBoundingRect:(struct CGRect)arg1;
 - (id)initWithTitle:(id)arg1;
 
 @end

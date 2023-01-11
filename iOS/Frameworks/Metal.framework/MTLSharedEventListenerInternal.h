@@ -4,11 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSObject;
+@protocol OS_dispatch_queue;
+
 __attribute__((visibility("hidden")))
 @interface MTLSharedEventListenerInternal
 {
+    NSObject<OS_dispatch_queue> *_dispatchQueue;
 }
 
+- (void)dealloc;
+- (id)dispatchQueue;
 - (id)initWithDispatchQueue:(id)arg1;
 - (id)init;
 

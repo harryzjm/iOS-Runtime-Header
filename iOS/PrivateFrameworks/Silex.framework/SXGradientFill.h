@@ -11,7 +11,6 @@
 }
 
 + (CDUnknownBlockType)valueClassBlockForPropertyWithName:(id)arg1;
-+ (id)typeString;
 
 // Remaining properties
 @property(readonly, nonatomic) SXJSONArray *colorStops; // @dynamic colorStops;

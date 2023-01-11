@@ -8,5 +8,8 @@
 
 @interface UIViewController (NUChromeControl)
 - (id)chromeControl;
+- (void)nu_adjustInsetsForScrollView:(id)arg1 withEdgeInsets:(struct UIEdgeInsets)arg2;
+- (void)nu_adjustInsetsForScrollView:(id)arg1;
+- (id)navigationControl;
 @end
 

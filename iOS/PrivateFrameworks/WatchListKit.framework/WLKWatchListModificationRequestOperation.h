@@ -4,15 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString, WLKWatchListModificationResponse;
+
 @interface WLKWatchListModificationRequestOperation
 {
+    unsigned long long _action;
+    NSString *_itemID;
+    WLKWatchListModificationResponse *_response;
 }
 
-- (id)responseProcessor;
-- (id)initWithAction:(unsigned long long)arg1 channelID:(id)arg2 externalID:(id)arg3;
-- (id)initWithAction:(unsigned long long)arg1 identifier:(id)arg2;
-- (id)initWithAction:(unsigned long long)arg1 statsID:(id)arg2;
-- (id)initWithAction:(unsigned long long)arg1 canonicalID:(id)arg2;
+@property(readonly, nonatomic) WLKWatchListModificationResponse *response; // @synthesize response=_response;
+@property(readonly, copy, nonatomic) NSString *itemID; // @synthesize itemID=_itemID;
+@property(readonly, nonatomic) unsigned long long action; // @synthesize action=_action;
+- (void).cxx_destruct;
+- (void)processResponse;
+- (id)initWithAction:(unsigned long long)arg1 channelID:(id)arg2 externalID:(id)arg3 caller:(id)arg4;
+- (id)initWithAction:(unsigned long long)arg1 identifier:(id)arg2 caller:(id)arg3;
+- (id)initWithAction:(unsigned long long)arg1 statsID:(id)arg2 caller:(id)arg3;
+- (id)initWithAction:(unsigned long long)arg1 canonicalID:(id)arg2 caller:(id)arg3;
 
 @end
 

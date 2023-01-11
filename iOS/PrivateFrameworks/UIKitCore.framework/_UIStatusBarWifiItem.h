@@ -4,25 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _UIStatusBarImageView, _UIStatusBarWifiSignalView;
+@class _UIStatusBarImageView, _UIStatusBarStringView, _UIStatusBarWifiSignalView;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarWifiItem
 {
     _UIStatusBarWifiSignalView *_signalView;
     _UIStatusBarImageView *_networkIconView;
+    _UIStatusBarStringView *_rawStringView;
 }
 
++ (id)rawDisplayIdentifier;
 + (id)iconDisplayIdentifier;
 + (id)signalStrengthDisplayIdentifier;
 + (id)groupWithPriority:(long long)arg1;
+@property(retain, nonatomic) _UIStatusBarStringView *rawStringView; // @synthesize rawStringView=_rawStringView;
 @property(retain, nonatomic) _UIStatusBarImageView *networkIconView; // @synthesize networkIconView=_networkIconView;
 @property(retain, nonatomic) _UIStatusBarWifiSignalView *signalView; // @synthesize signalView=_signalView;
 - (void).cxx_destruct;
 - (id)viewForIdentifier:(id)arg1;
+- (void)_create_rawStringView;
+- (void)_create_networkIconView;
+- (void)_create_signalView;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
-- (id)_backgroundColorForUpdate:(id)arg1;
-- (id)_fillColorForUpdate:(id)arg1;
+- (id)_backgroundColorForUpdate:(id)arg1 entry:(id)arg2;
+- (id)_fillColorForUpdate:(id)arg1 entry:(id)arg2;
 - (double)_totalWidthForUpdate:(id)arg1;
 - (double)_interspaceForUpdate:(id)arg1;
 - (double)_barThicknessForUpdate:(id)arg1;

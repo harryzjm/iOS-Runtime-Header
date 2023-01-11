@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString;
+@class NSArray, NSString, UNNotificationAction;
 
 @interface UNMutableNotificationCategory
 {
@@ -13,9 +13,11 @@
 @property(nonatomic) unsigned long long listPriority; // @dynamic listPriority;
 @property(nonatomic) unsigned long long backgroundStyle; // @dynamic backgroundStyle;
 @property(nonatomic) unsigned long long options; // @dynamic options;
+@property(copy, nonatomic) NSString *actionsMenuTitle; // @dynamic actionsMenuTitle;
 @property(copy, nonatomic) NSString *categorySummaryFormat; // @dynamic categorySummaryFormat;
 @property(copy, nonatomic) NSString *hiddenPreviewsBodyPlaceholder; // @dynamic hiddenPreviewsBodyPlaceholder;
 @property(copy, nonatomic) NSArray *intentIdentifiers; // @dynamic intentIdentifiers;
+@property(copy, nonatomic) UNNotificationAction *alternateAction; // @dynamic alternateAction;
 @property(copy, nonatomic) NSArray *minimalActions; // @dynamic minimalActions;
 @property(copy, nonatomic) NSArray *actions; // @dynamic actions;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

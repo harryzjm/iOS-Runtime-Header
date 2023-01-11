@@ -16,7 +16,8 @@ __attribute__((visibility("hidden")))
     struct MapEngine *_mapEngine;
 }
 
-- (RenderQueue_efd5f737 *)renderQueueForTimestamp:(double)arg1;
+- (struct RenderQueue *)renderQueueForTimestamp:(double)arg1;
+- (_Bool)isDelayedRenderQueueConsumptionSupported;
 - (id)initWithEngine:(struct MapEngine *)arg1;
 
 // Remaining properties

@@ -8,7 +8,7 @@
 
 #import <PassKitCore/PKPaymentValidating-Protocol.h>
 
-@class CNContact, NSArray, NSDecimalNumber, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, PKPassLibrary, PKPayment, PKPaymentApplication, PKPaymentInstructions, PKPaymentOptionsDefaults, PKPaymentOptionsRecents, PKPaymentPass, PKPaymentRequest, PKPaymentWebService, PKPeerPaymentQuote, PKPeerPaymentService, PKRemoteDevice, PKRemotePaymentInstrument, PKShippingMethod;
+@class CNContact, NSArray, NSDecimalNumber, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString, PKBankAccountInformation, PKCurrencyAmount, PKDisbursementApplicationInformation, PKPassLibrary, PKPayment, PKPaymentApplication, PKPaymentInstructions, PKPaymentOptionsDefaults, PKPaymentOptionsRecents, PKPaymentPass, PKPaymentRequest, PKPaymentWebService, PKPeerPaymentQuote, PKPeerPaymentService, PKRemoteDevice, PKRemotePaymentInstrument, PKShippingMethod;
 
 @interface PKPaymentAuthorizationDataModel : NSObject <PKPaymentValidating>
 {
@@ -33,6 +33,8 @@
     NSArray *_paymentContentItems;
     NSString *_hostAppLocalizedName;
     NSString *_hostApplicationIdentifier;
+    NSString *_bundleIdentifier;
+    NSString *_teamIdentifier;
     CNContact *_shippingEmail;
     CNContact *_shippingPhone;
     CNContact *_shippingName;
@@ -52,6 +54,9 @@
     NSArray *_pendingTransactions;
     CDUnknownBlockType _updateHandler;
     PKPeerPaymentQuote *_peerPaymentQuote;
+    PKDisbursementApplicationInformation *_disbursementApplicationInformation;
+    PKBankAccountInformation *_bankAccount;
+    PKCurrencyAmount *_peerPaymentBalanceForAccountPayment;
     PKPaymentApplication *_paymentApplication;
     PKPaymentInstructions *_instructions;
     PKRemotePaymentInstrument *_remotePaymentInstrument;
@@ -69,6 +74,9 @@
 @property(readonly, nonatomic) NSArray *allRemoteDevices; // @synthesize allRemoteDevices=_allRemoteDevices;
 @property(retain, nonatomic) PKPaymentInstructions *instructions; // @synthesize instructions=_instructions;
 @property(retain, nonatomic) PKPaymentApplication *paymentApplication; // @synthesize paymentApplication=_paymentApplication;
+@property(retain, nonatomic) PKCurrencyAmount *peerPaymentBalanceForAccountPayment; // @synthesize peerPaymentBalanceForAccountPayment=_peerPaymentBalanceForAccountPayment;
+@property(retain, nonatomic) PKBankAccountInformation *bankAccount; // @synthesize bankAccount=_bankAccount;
+@property(retain, nonatomic) PKDisbursementApplicationInformation *disbursementApplicationInformation; // @synthesize disbursementApplicationInformation=_disbursementApplicationInformation;
 @property(retain, nonatomic) PKPeerPaymentQuote *peerPaymentQuote; // @synthesize peerPaymentQuote=_peerPaymentQuote;
 @property(readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 @property(copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
@@ -90,12 +98,15 @@
 @property(retain, nonatomic) CNContact *shippingName; // @synthesize shippingName=_shippingName;
 @property(retain, nonatomic) CNContact *shippingPhone; // @synthesize shippingPhone=_shippingPhone;
 @property(retain, nonatomic) CNContact *shippingEmail; // @synthesize shippingEmail=_shippingEmail;
+@property(retain, nonatomic) NSString *teamIdentifier; // @synthesize teamIdentifier=_teamIdentifier;
+@property(retain, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property(retain, nonatomic) NSString *hostApplicationIdentifier; // @synthesize hostApplicationIdentifier=_hostApplicationIdentifier;
 @property(retain, nonatomic) NSString *hostAppLocalizedName; // @synthesize hostAppLocalizedName=_hostAppLocalizedName;
 @property(retain, nonatomic) NSArray *paymentContentItems; // @synthesize paymentContentItems=_paymentContentItems;
 @property(retain, nonatomic) PKPaymentRequest *paymentRequest; // @synthesize paymentRequest=_paymentRequest;
 @property(readonly, nonatomic) long long mode; // @synthesize mode=_mode;
 - (void).cxx_destruct;
+- (void)fallbackToBypassMode;
 - (long long)_statusForPass:(id)arg1;
 - (void)_setStatus:(long long)arg1 forPass:(id)arg2;
 - (void)setStatus:(long long)arg1 forItemWithType:(long long)arg2 notify:(_Bool)arg3;
@@ -121,6 +132,7 @@
 @property(readonly, nonatomic) NSArray *remoteDevices;
 - (void)setPass:(id)arg1 withSelectedPaymentApplication:(id)arg2;
 @property(retain, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+- (void)setPaymentPassWithPassTypeIdentifier:(id)arg1 serialNumber:(id)arg2;
 - (_Bool)isValidWithError:(id *)arg1;
 - (id)paymentErrorsFromLegacyStatus:(long long)arg1;
 - (id)_filterAndProcessPaymentPassesUsingConfiguration:(id)arg1;
@@ -134,6 +146,7 @@
 - (void)_updatePeerPaymentPromotionAvailability;
 - (void)_ensureItems;
 @property(readonly, nonatomic) NSString *defaultPaymentPassUniqueIdentifier;
+- (long long)_displayOrderForDataType:(long long)arg1;
 - (unsigned long long)_insertionIndexForItem:(id)arg1;
 - (void)_setPaymentContentDataItems:(id)arg1;
 - (void)_setDataItem:(id)arg1;
@@ -145,6 +158,7 @@
 @property(retain, nonatomic) NSArray *paymentSummaryItems;
 @property(readonly, nonatomic) NSString *currencyCode;
 @property(readonly, nonatomic) NSString *merchantName;
+- (void)setPaymentDateForPaymentRequest:(id)arg1;
 - (void)setShippingAddressErrors:(id)arg1;
 - (void)updateBillingErrors;
 - (_Bool)shouldUpdateContactDataItem;

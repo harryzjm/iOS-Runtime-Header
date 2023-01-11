@@ -7,19 +7,23 @@
 #import <UIKit/UIViewController.h>
 
 #import <ContactsUI/CNContactViewHostProtocol-Protocol.h>
+#import <ContactsUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
+#import <ContactsUI/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class CNContact, CNContactContentViewController, CNContactFormatter, CNContactStore, CNContainer, CNGroup, CNPolicy, NSArray, NSString, UIView, _UIAccessDeniedView;
+@class CNContact, CNContactContentViewController, CNContactFormatter, CNContactRecentsReference, CNContactStore, CNContainer, CNGroup, CNPolicy, NSArray, NSAttributedString, NSString, UIView, _UIAccessDeniedView, _UIRemoteViewController;
 @protocol CNContactContentViewController, CNContactViewControllerDelegate, CNContactViewControllerPPTDelegate, CNContactViewControllerPrivateDelegate;
 
-@interface CNContactViewController : UIViewController <CNContactViewHostProtocol>
+@interface CNContactViewController : UIViewController <CNContactViewHostProtocol, _UIRemoteViewControllerContaining, UIAdaptivePresentationControllerDelegate>
 {
-    void *_addressBook;
     long long _mode;
     _Bool _ignoreViewWillBePresented;
     _Bool _shouldShowLinkedContacts;
     _Bool _highlightedPropertyImportant;
     _Bool _requiresSetup;
     _Bool _showingMeContact;
+    _Bool _allowsDisplayModePickerActions;
+    _Bool _allowsEditPhoto;
+    _Bool _ignoresParentalRestrictions;
     CNContact *_contact;
     NSArray *_displayedPropertyKeys;
     id <CNContactViewControllerDelegate> _delegate;
@@ -39,11 +43,16 @@
     CNPolicy *_policy;
     CNContact *_additionalContact;
     id <CNContactViewControllerPPTDelegate> _pptDelegate;
+    NSArray *_prohibitedPropertyKeys;
     long long _displayMode;
     long long _editMode;
     long long _actions;
     CNContactFormatter *_contactFormatter;
+    CNContactRecentsReference *_recentsData;
     NSString *_primaryPropertyKey;
+    NSString *_importantMessage;
+    NSString *_warningMessage;
+    NSAttributedString *_verifiedInfoMessage;
     UIView *_contactHeaderView;
     UIViewController *_contactHeaderViewController;
 }
@@ -55,11 +64,19 @@
 + (id)descriptorForRequiredKeys;
 @property(retain, nonatomic) UIViewController *contactHeaderViewController; // @synthesize contactHeaderViewController=_contactHeaderViewController;
 @property(retain, nonatomic) UIView *contactHeaderView; // @synthesize contactHeaderView=_contactHeaderView;
+@property(copy, nonatomic) NSAttributedString *verifiedInfoMessage; // @synthesize verifiedInfoMessage=_verifiedInfoMessage;
+@property(copy, nonatomic) NSString *warningMessage; // @synthesize warningMessage=_warningMessage;
+@property(copy, nonatomic) NSString *importantMessage; // @synthesize importantMessage=_importantMessage;
+@property(nonatomic) _Bool ignoresParentalRestrictions; // @synthesize ignoresParentalRestrictions=_ignoresParentalRestrictions;
+@property(nonatomic) _Bool allowsEditPhoto; // @synthesize allowsEditPhoto=_allowsEditPhoto;
+@property(nonatomic) _Bool allowsDisplayModePickerActions; // @synthesize allowsDisplayModePickerActions=_allowsDisplayModePickerActions;
 @property(retain, nonatomic) NSString *primaryPropertyKey; // @synthesize primaryPropertyKey=_primaryPropertyKey;
+@property(retain, nonatomic) CNContactRecentsReference *recentsData; // @synthesize recentsData=_recentsData;
 @property(retain, nonatomic) CNContactFormatter *contactFormatter; // @synthesize contactFormatter=_contactFormatter;
 @property(nonatomic) long long actions; // @synthesize actions=_actions;
 @property(nonatomic) long long editMode; // @synthesize editMode=_editMode;
 @property(nonatomic) long long displayMode; // @synthesize displayMode=_displayMode;
+@property(retain, nonatomic) NSArray *prohibitedPropertyKeys; // @synthesize prohibitedPropertyKeys=_prohibitedPropertyKeys;
 @property(nonatomic) __weak id <CNContactViewControllerPPTDelegate> pptDelegate; // @synthesize pptDelegate=_pptDelegate;
 @property(nonatomic) _Bool showingMeContact; // @synthesize showingMeContact=_showingMeContact;
 @property(retain, nonatomic) CNContact *additionalContact; // @synthesize additionalContact=_additionalContact;
@@ -85,6 +102,8 @@
 @property(copy, nonatomic) NSArray *displayedPropertyKeys; // @synthesize displayedPropertyKeys=_displayedPropertyKeys;
 @property(retain, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 - (void).cxx_destruct;
+- (void)didExecuteDeleteFromDowntimeWhitelistAction;
+- (void)didExecuteClearRecentsDataAction;
 - (void)viewDidAppear;
 - (void)didChangePreferredContentSize:(struct CGSize)arg1;
 - (void)isPresentingEditingController:(_Bool)arg1;
@@ -109,6 +128,7 @@
 - (void)_setViewController:(id)arg1;
 - (void)_endDelayingPresentation;
 - (_Bool)_isDelayingPresentation;
+@property(readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
@@ -116,6 +136,9 @@
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)loadView;
 @property(readonly, nonatomic) id <CNContactViewControllerPrivateDelegate> privateDelegate;
+- (void)presentationControllerDidAttemptToDismiss:(id)arg1;
+- (_Bool)presentationControllerShouldDismiss:(id)arg1;
+- (_Bool)isModalInPresentation;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)highlightPropertyWithKey:(id)arg1 identifier:(id)arg2;
 - (void)highlightPropertyWithKey:(id)arg1 identifier:(id)arg2 important:(_Bool)arg3;

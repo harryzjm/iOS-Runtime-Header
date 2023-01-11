@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FigCaptureSourceCompanionFormat, NSArray;
+@class FigCaptureSourceCompanionFormat, FigCaptureSourceDepthDataFormat, NSArray;
 
 @interface FigCaptureSourceVideoFormat
 {
-    _Bool _isMultiStreamFormat;
-    _Bool _isExternalFormat;
     NSArray *_frontEndScalerCompanionFormats;
     _Bool _sifrSupported;
     FigCaptureSourceCompanionFormat *_nonSIFRCompanionFormat;
     FigCaptureSourceCompanionFormat *_depthCompanionFormat;
     NSArray *_supportedDepthDataFormats;
+    FigCaptureSourceDepthDataFormat *_streamingDXDYDepthDataFormat;
     _Bool _isStreamingDisparitySupported;
     _Bool _isStreamingDepthSupported;
     _Bool _isStillImageDisparitySupported;
@@ -23,6 +22,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (void)initialize;
+- (CDStruct_79c71658)_nativeDimensionsWithoutCrop;
 - (CDStruct_79c71658)_highQualitySensorDimensions;
 - (_Bool)isCompatibleWithInfraredFormat:(id)arg1;
 - (_Bool)isValidDerivedBravoFormatForUnderlyingFormat:(id)arg1;
@@ -30,16 +30,31 @@
 - (CDStruct_79c71658)_visibleSensorDimensionsIncludingCinematic:(_Bool)arg1;
 - (CDStruct_79c71658)_maxUseableSensorDimensions;
 - (CDStruct_79c71658)_outputDimensions;
+@property(readonly) int ispPowerConsumption;
+@property(readonly) int variableSensorPowerConsumption;
+@property(readonly) int baseSensorPowerConsumption;
+@property(readonly) int sensorPowerConsumption;
+@property(readonly) float hardwareCost;
+@property(readonly, getter=isMultiCamSupported) _Bool multiCamSupported;
+@property(readonly, getter=isDeferredPhotoProcessingSupported) _Bool deferredPhotoProcessingSupported;
+@property(readonly, getter=isNonDestructiveCropSupported) _Bool nonDestructiveCropSupported;
+@property(readonly) CDStruct_79c71658 spatialOverCaptureHighResStillImageDimensions;
+@property(readonly) float spatialOverCapturePercentage;
+@property(readonly, getter=isSpatialOverCaptureSupported) _Bool spatialOverCaptureSupported;
+@property(readonly, getter=isMomentCaptureMovieRecordingSupported) _Bool momentCaptureMovieRecordingSupported;
 @property(readonly) float maxZoomFactorForDepthDataDelivery;
 @property(readonly) float minZoomFactorForDepthDataDelivery;
+- (id)streamingDXDYDepthDataFormat;
 @property(readonly) NSArray *supportedDepthDataFormats;
 @property(readonly, getter=isStillImageDepthSupported) _Bool stillImageDepthSupported;
 @property(readonly, getter=isStillImageDisparitySupported) _Bool stillImageDisparitySupported;
 @property(readonly, getter=isStreamingDepthSupported) _Bool streamingDepthSupported;
 @property(readonly, getter=isStreamingDisparitySupported) _Bool streamingDisparitySupported;
-@property(readonly, getter=isExternalFormat) _Bool externalFormat;
 @property(readonly) NSArray *AVCaptureSessionPresets;
 @property(readonly, getter=isHighProfileH264Supported) _Bool highProfileH264Supported;
+@property(readonly) float maxPortraitLightingEffectStrength;
+@property(readonly) float minPortraitLightingEffectStrength;
+@property(readonly) float defaultPortraitLightingEffectStrength;
 @property(readonly) float maxSimulatedAperture;
 @property(readonly) float minSimulatedAperture;
 @property(readonly) float defaultSimulatedAperture;
@@ -50,6 +65,10 @@
 @property(readonly, getter=isWideColorSupported) _Bool wideColorSupported;
 - (_Bool)isStillImageISPChromaNoiseReductionEnabled;
 @property(readonly) CDStruct_79c71658 highResStillImageDimensions;
+- (_Bool)usesPacked10BitFirmwareStillImageOutputPixelFormat;
+- (_Bool)isCaptureTimePhotoCurationSupported;
+@property(readonly, getter=isDigitalFlashSupported) _Bool digitalFlashSupported;
+- (int)redEyeReductionVersion;
 @property(readonly, getter=isRedEyeReductionSupported) _Bool redEyeReductionSupported;
 @property(readonly) _Bool zeroShutterLagRequiresUserInitiatedCaptureRequestTime;
 @property(readonly, getter=isZeroShutterLagSupported) _Bool zeroShutterLagSupported;
@@ -62,6 +81,7 @@
 - (int)stillImageNoiseReductionAndStabilizationScheme;
 @property(readonly, getter=isIrisVideoStabilizationSupported) _Bool irisVideoStabilizationSupported;
 @property(readonly, getter=isIrisSupported) _Bool irisSupported;
+@property(readonly) _Bool configureForSpatialOverCaptureSupport;
 @property(readonly) _Bool configureForStillImageStabilizationSupport;
 @property(readonly, getter=isStillImageStabilizationSupported) _Bool stillImageStabilizationSupported;
 @property(readonly) _Bool needsPreviewDPCC;
@@ -77,6 +97,7 @@
 @property(readonly, getter=isSecondaryScalerUnavailable) _Bool secondaryScalerUnavailable;
 @property(readonly, getter=isVisionDataDeliverySupported) _Bool visionDataDeliverySupported;
 @property(readonly, getter=isLowLightVideoCaptureSupported) _Bool lowLightVideoCaptureSupported;
+@property(readonly, getter=isVariableFrameRateVideoCaptureSupported) _Bool variableFrameRateVideoCaptureSupported;
 @property(readonly) _Bool prefersSensorHDREnabled;
 - (int)sensorHDRCompanionIndex;
 @property(readonly) _Bool hasSensorHDRCompanionIndex;
@@ -88,8 +109,10 @@
 - (id)nonSIFRCompanionFormat;
 @property(readonly, getter=isSIFRSupported) _Bool SIFRSupported;
 - (id)frontEndScalerCompanionFormats;
-- (_Bool)isMultiStreamFormat;
 @property(readonly) int autoFocusSystem;
+- (float)lowLightVideoAEMaxGain;
+- (float)depthDataMaxIntegrationTimeOverride;
+- (float)depthDataAEMaxGain;
 - (int)maxIntegrationTimeOverride;
 - (float)aeMaxGain;
 @property(readonly) CDStruct_1b6d18a9 maxExposureDuration;
@@ -103,21 +126,23 @@
 @property(readonly) float zoomFactorUpscaleThreshold;
 @property(readonly) float maxZoomFactor;
 @property(readonly, getter=isZoomSupported) _Bool zoomSupported;
-- (int)fesBinningFactorVertical;
 - (int)fesBinningFactorHorizontal;
 - (struct CGRect)maxVisibleSensorRect;
 - (int)previewImageQueueSyncStrategy;
+- (float)cinematicStabilizationExtendedLookAheadDuration;
 - (float)stabilizationOverscanPercentageOverrideForCinematic;
 - (int)stabilizationTypeOverrideForCinematic;
 - (int)stabilizationTypeOverrideForStandard;
 - (_Bool)isStabilizationModeSupported:(int)arg1;
 @property(readonly, getter=isBinned) _Bool binned;
+@property(readonly) float geometricDistortionCorrectedFieldOfView;
 @property(readonly) float fieldOfView;
 @property(readonly) float defaultMaxFrameRate;
 @property(readonly) float defaultMinFrameRate;
 @property(readonly) float maxSupportedFrameRate;
 @property(readonly) float minSupportedFrameRate;
 @property(readonly) CDStruct_79c71658 previewDimensions;
+- (CDStruct_79c71658)nativeDimensions;
 @property(readonly) CDStruct_79c71658 sensorDimensions;
 @property(readonly) CDStruct_79c71658 dimensions;
 @property(readonly) int formatIndex;

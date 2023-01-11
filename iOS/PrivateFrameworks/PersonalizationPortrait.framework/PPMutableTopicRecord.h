@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, PPSource, PPTopic;
+@class NSString, PPSource, PPTopic, PPTopicMetadata;
 
 @interface PPMutableTopicRecord
 {
 }
 
+@property(nonatomic) double sentimentScore; // @dynamic sentimentScore;
+@property(retain, nonatomic) PPTopicMetadata *metadata; // @dynamic metadata;
 @property(nonatomic) unsigned long long extractionAssetVersion; // @dynamic extractionAssetVersion;
 @property(retain, nonatomic) NSString *extractionOsBuild; // @dynamic extractionOsBuild;
 @property(nonatomic) _Bool isLocal; // @dynamic isLocal;

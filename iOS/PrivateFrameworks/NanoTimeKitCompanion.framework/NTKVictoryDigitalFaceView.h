@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NTKComplicationDisplayWrapperView, NTKUtilityComplicationFactory, UIColor;
+#import <NanoTimeKitCompanion/NTKVictoryDigitalTimeViewDelegate-Protocol.h>
 
-@interface NTKVictoryDigitalFaceView
+@class NSString, NTKComplicationDisplayWrapperView, NTKUtilityComplicationFactory, UIColor;
+
+@interface NTKVictoryDigitalFaceView <NTKVictoryDigitalTimeViewDelegate>
 {
     NTKUtilityComplicationFactory *_utilityComplicationFactory;
     UIColor *_complicationForegroundColor;
@@ -22,6 +24,8 @@
 - (void)_endScrubbingAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_scrubToDate:(id)arg1 animated:(_Bool)arg2;
 - (_Bool)_supportsTimeScrubbing;
+- (void)_updateImageToBlur;
+- (void)victoryDigitalTimeViewDidChangeTime:(id)arg1;
 - (double)_timeTravelStatusModuleCaptionConstraintPadding;
 - (void)_layoutTimeTravelCaptionView:(id)arg1;
 - (void)_layoutTimeTravelStatusModule:(id)arg1;
@@ -51,6 +55,7 @@
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyColor:(id)arg1 platterColor:(id)arg2 toComplicationView:(id)arg3;
+- (void)_applyTransitionFraction:(double)arg1 fromColor:(id)arg2 toColor:(id)arg3 fromPlatterColor:(id)arg4 toPlatterColor:(id)arg5 fromBackgroundColor:(id)arg6 toBackgroundColor:(id)arg7 slot:(id)arg8;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (double)_verticalPaddingForStatusBar;
@@ -62,6 +67,12 @@
 - (void)_unloadSnapshotContentViews;
 - (void)_loadSnapshotContentViews;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

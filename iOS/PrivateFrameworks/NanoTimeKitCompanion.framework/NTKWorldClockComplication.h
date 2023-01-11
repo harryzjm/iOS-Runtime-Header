@@ -28,6 +28,7 @@
 - (_Bool)appearsInDailySnapshotForFamily:(long long)arg1;
 - (id)description;
 - (id)localizedDetailText;
+- (id)localizedRichDetailText;
 
 @end
 

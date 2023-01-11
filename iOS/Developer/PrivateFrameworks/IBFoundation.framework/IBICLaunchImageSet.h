@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSOrderedSet, NSSet;
+
 @interface IBICLaunchImageSet
 {
 }
@@ -20,8 +22,8 @@
 - (_Bool)requiresRootNamespace;
 - (id)initializeManifestArchivist;
 - (void)createChildrenForSlots:(id)arg1 usingRenderer:(CDUnknownBlockType)arg2;
-- (id)intrinsicallyOrderedChildren;
-- (id)children;
+@property(readonly, nonatomic) NSOrderedSet *intrinsicallyOrderedChildren;
+@property(readonly, nonatomic) NSSet *children;
 - (id)assetRepForStructuredIdentifier:(id)arg1;
 - (id)childForIdentifier:(id)arg1;
 - (id)assetRepForIdentifier:(id)arg1;

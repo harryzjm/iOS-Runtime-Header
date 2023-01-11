@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, WBSHistoryItem, WBSHistorySession;
+@class NSArray, NSDate, WBSHistoryItem, WBSHistorySession;
 
 @protocol WBSHistorySessions
 @property(readonly, nonatomic) unsigned long long numberOfSessions;
 @property(readonly, copy, nonatomic) NSArray *orderedSessions;
+- (void)orderedItemsNewerThanDate:(NSDate *)arg1 maxCount:(unsigned long long)arg2 completionHandler:(void (^)(NSArray *))arg3;
 - (void)enumerateOrderedItemsLastVisitedInSession:(WBSHistorySession *)arg1 usingBlock:(void (^)(WBSHistoryItem *))arg2;
 - (NSArray *)itemsLastVisitedInSession:(WBSHistorySession *)arg1;
 - (WBSHistoryItem *)itemLastVisitedInSession:(WBSHistorySession *)arg1 atIndex:(unsigned long long)arg2;

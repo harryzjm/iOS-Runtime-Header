@@ -28,11 +28,12 @@
     CKMessageEntryRichTextView *_textView;
     double _placeHolderWidth;
     double _maxContentWidthWhenExpanded;
+    double _maxPreviewContentWidthWhenExpanded;
     double _containerViewLineWidth;
     double _sendButtonTextInsetWidth;
     UIViewController<CKPluginEntryViewController> *_pluginEntryViewController;
     CKConversation *_conversation;
-    UIView *_activeView;
+    CKMessageEntryTextView *_activeView;
     IMPluginPayload *_shelfPluginPayload;
     UIView *_textAndSubjectDividerLine;
     UIView *_pluginDividerLine;
@@ -56,11 +57,12 @@
 @property(retain, nonatomic) UIView *pluginDividerLine; // @synthesize pluginDividerLine=_pluginDividerLine;
 @property(retain, nonatomic) UIView *textAndSubjectDividerLine; // @synthesize textAndSubjectDividerLine=_textAndSubjectDividerLine;
 @property(retain, nonatomic) IMPluginPayload *shelfPluginPayload; // @synthesize shelfPluginPayload=_shelfPluginPayload;
-@property(nonatomic) __weak UIView *activeView; // @synthesize activeView=_activeView;
+@property(nonatomic) __weak CKMessageEntryTextView *activeView; // @synthesize activeView=_activeView;
 @property(nonatomic) __weak CKConversation *conversation; // @synthesize conversation=_conversation;
 @property(retain, nonatomic) UIViewController<CKPluginEntryViewController> *pluginEntryViewController; // @synthesize pluginEntryViewController=_pluginEntryViewController;
 @property(nonatomic) double sendButtonTextInsetWidth; // @synthesize sendButtonTextInsetWidth=_sendButtonTextInsetWidth;
 @property(nonatomic) double containerViewLineWidth; // @synthesize containerViewLineWidth=_containerViewLineWidth;
+@property(nonatomic) double maxPreviewContentWidthWhenExpanded; // @synthesize maxPreviewContentWidthWhenExpanded=_maxPreviewContentWidthWhenExpanded;
 @property(nonatomic) double maxContentWidthWhenExpanded; // @synthesize maxContentWidthWhenExpanded=_maxContentWidthWhenExpanded;
 @property(nonatomic) double placeHolderWidth; // @synthesize placeHolderWidth=_placeHolderWidth;
 @property(retain, nonatomic) CKMessageEntryRichTextView *textView; // @synthesize textView=_textView;
@@ -87,6 +89,7 @@
 - (_Bool)messageEntryRichTextView:(id)arg1 shouldPasteMediaObjects:(id)arg2;
 - (double)_maxWidthForTextView;
 - (double)maxWidthForPreviewImagesInMessageEntryRichTextView:(id)arg1;
+- (_Bool)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
 - (void)textViewDidChange:(id)arg1;
 - (void)textViewDidEndEditing:(id)arg1;
 - (void)textViewDidBeginEditing:(id)arg1;

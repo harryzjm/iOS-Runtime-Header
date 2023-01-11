@@ -13,6 +13,9 @@
 }
 
 + (id)sharedManager;
+- (_Bool)isDataEnabled;
+- (_Bool)isTetheringEnabled;
+- (_Bool)shouldShowTethering;
 - (void)sendStateUpdate;
 - (void)dealloc;
 - (id)init;

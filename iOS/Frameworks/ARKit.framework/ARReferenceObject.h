@@ -8,11 +8,13 @@
 
 #import <ARKit/NSSecureCoding-Protocol.h>
 
-@class ARPointCloud, MISSING_TYPE, NSData, NSString, NSUUID;
+@class ARPointCloud, MISSING_TYPE, NSData, NSSet, NSString, NSUUID;
 
 @interface ARReferenceObject : NSObject <NSSecureCoding>
 {
+    NSSet *_keyframes;
     NSString *_name;
+    NSString *_resourceGroupName;
     ARPointCloud *_rawFeaturePoints;
     NSUUID *_identifier;
     long long _version;
@@ -32,15 +34,18 @@
 @property(readonly, nonatomic) long long version; // @synthesize version=_version;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(readonly, nonatomic) ARPointCloud *rawFeaturePoints; // @synthesize rawFeaturePoints=_rawFeaturePoints;
+@property(readonly, nonatomic) NSString *resourceGroupName; // @synthesize resourceGroupName=_resourceGroupName;
 @property(readonly, nonatomic) MISSING_TYPE *extent; // @synthesize extent=_extent;
 @property(readonly, nonatomic) MISSING_TYPE *center; // @synthesize center=_center;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 - (void).cxx_destruct;
+- (void)setResourceGroupName:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
+@property(readonly, nonatomic) NSSet *keyframes;
 - (id)referenceObjectByMergingObject:(id)arg1 error:(id *)arg2;
 - (id)referenceObjectByApplyingTransform:(CDStruct_14d5dc5e)arg1;
 - (_Bool)exportObjectToURL:(id)arg1 previewImage:(id)arg2 error:(id *)arg3;

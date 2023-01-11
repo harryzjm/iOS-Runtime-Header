@@ -9,7 +9,7 @@
 #import <AVConference/AVCSessionParticipantControlProtocol-Protocol.h>
 #import <AVConference/AVCSessionParticipantDelegate-Protocol.h>
 
-@class AVCSessionConfiguration, AVCSessionParticipant, NSArray, NSData, NSMutableDictionary, NSString, VCXPCClientShared;
+@class AVCSessionConfiguration, AVCSessionParticipant, NSArray, NSData, NSDictionary, NSMutableDictionary, NSString, VCXPCClientShared;
 @protocol AVCSessionDelegate, OS_dispatch_queue;
 
 @interface AVCSession : NSObject <AVCSessionParticipantDelegate, AVCSessionParticipantControlProtocol>
@@ -24,11 +24,13 @@
     NSObject<OS_dispatch_queue> *_stateQueue;
     VCXPCClientShared *_connection;
     long long _sessionToken;
+    NSDictionary *_capabilities;
     NSString *_uuid;
     NSData *_frequencyLevels;
     int _activeConfigurationCount;
 }
 
+@property(retain, nonatomic) NSDictionary *capabilities; // @synthesize capabilities=_capabilities;
 @property(readonly, nonatomic) long long sessionToken; // @synthesize sessionToken=_sessionToken;
 @property(readonly, nonatomic) VCXPCClientShared *xpcConnection; // @synthesize xpcConnection=_connection;
 @property(readonly, nonatomic) AVCSessionParticipant *localParticipant; // @synthesize localParticipant=_localParticipant;
@@ -45,10 +47,11 @@
 - (void)setupNotificationQueue:(id)arg1;
 - (void)deregisterFromNotifications;
 - (void)registerBlocksForNotifications;
-- (void)didDetectErrorHandler:(id)arg1;
+- (id)newNSErrorWithErrorDictionary:(id)arg1;
 - (void)endParticipantConfiguration;
 - (void)beginParticipantConfiguration;
 - (void)updateConfiguration:(id)arg1;
+- (void)stopWithError:(id)arg1;
 - (void)stop;
 - (void)start;
 - (void)removeParticipants:(id)arg1;
@@ -58,6 +61,8 @@
 - (void)addParticipants:(id)arg1;
 - (void)addParticipant:(id)arg1;
 - (id)initWithTransportToken:(id)arg1 configuration:(id)arg2 delegate:(id)arg3 queue:(id)arg4;
+- (id)initWithTransportToken:(id)arg1 configuration:(id)arg2 negotiationData:(id)arg3 delegate:(id)arg4 queue:(id)arg5;
+- (id)initPrivateWithTransportToken:(id)arg1 configuration:(id)arg2 negotiationData:(id)arg3 delegate:(id)arg4 queue:(id)arg5;
 @property(nonatomic) id <AVCSessionDelegate> delegate;
 @property(nonatomic) float volume;
 @property(nonatomic, getter=isAudioMuted) _Bool audioMuted;

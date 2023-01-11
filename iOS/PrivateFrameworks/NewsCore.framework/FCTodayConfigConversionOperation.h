@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSData, NSDictionary, NTPBTodayConfig;
+@class NSArray, NSDictionary, NTPBTodayConfig;
 @protocol FCContentContext, FCCoreConfiguration;
 
 @interface FCTodayConfigConversionOperation
 {
-    NSData *_widgetConfigData;
+    NSDictionary *_widgetConfiguration;
     id <FCCoreConfiguration> _configuration;
     id <FCContentContext> _context;
     CDUnknownBlockType _todayConfigCompletionHandler;
@@ -24,7 +24,7 @@
 @property(copy, nonatomic) CDUnknownBlockType todayConfigCompletionHandler; // @synthesize todayConfigCompletionHandler=_todayConfigCompletionHandler;
 @property(retain, nonatomic) id <FCContentContext> context; // @synthesize context=_context;
 @property(copy, nonatomic) id <FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
-@property(retain, nonatomic) NSData *widgetConfigData; // @synthesize widgetConfigData=_widgetConfigData;
+@property(retain, nonatomic) NSDictionary *widgetConfiguration; // @synthesize widgetConfiguration=_widgetConfiguration;
 - (void).cxx_destruct;
 - (void)_collectRecordIDsReferencedBySectionConfig:(id)arg1 withArticleListIDs:(id)arg2 articleIDs:(id)arg3;
 - (void)operationWillFinishWithError:(id)arg1;

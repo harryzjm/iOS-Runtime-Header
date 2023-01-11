@@ -20,6 +20,7 @@
 @property(nonatomic) _Bool inLastViewport; // @synthesize inLastViewport=_inLastViewport;
 @property(nonatomic) _Bool inFirstViewport; // @synthesize inFirstViewport=_inFirstViewport;
 @property(readonly, nonatomic) _Bool isRotating; // @synthesize isRotating=_isRotating;
+- (_Bool)requiresContinuousUpdates;
 - (void)destroyWithBehaviorController:(id)arg1;
 - (void)updateWithBehaviorController:(id)arg1;
 - (void)setupWithBehaviorController:(id)arg1;

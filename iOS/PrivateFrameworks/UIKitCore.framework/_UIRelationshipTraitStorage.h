@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)_propertyDescriptionString;
 - (void)applyRecordsMatchingTraitCollection:(id)arg1;
 - (void)addRecordWithTraitCollection:(id)arg1 addedObjects:(id)arg2 removedObjects:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;

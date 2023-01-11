@@ -4,34 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
-@interface PKCompactNavigationWrapperViewController : UIViewController
+@interface PKCompactNavigationWrapperViewController
 {
     _Bool _hasExplicitTargetNavigationHeight;
-    UIViewController *_wrappedViewController;
     double _targetNavigationHeight;
 }
 
 @property(nonatomic) double targetNavigationHeight; // @synthesize targetNavigationHeight=_targetNavigationHeight;
 @property(readonly, nonatomic) _Bool hasExplicitTargetNavigationHeight; // @synthesize hasExplicitTargetNavigationHeight=_hasExplicitTargetNavigationHeight;
-@property(readonly, nonatomic) UIViewController *wrappedViewController; // @synthesize wrappedViewController=_wrappedViewController;
-- (void).cxx_destruct;
 - (struct CGRect)_wrappedViewControllerFrameForBounds:(struct CGRect)arg1;
-- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
-- (void)viewWillLayoutSubviews;
-- (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;
-- (id)childViewControllerForWhitePointAdaptivityStyle;
-- (id)childViewControllerForScreenEdgesDeferringSystemGestures;
-- (id)childViewControllerForHomeIndicatorAutoHidden;
-- (id)childViewControllerForStatusBarHidden;
-- (id)childViewControllerForStatusBarStyle;
-- (_Bool)extendedLayoutIncludesOpaqueBars;
-- (unsigned long long)edgesForExtendedLayout;
 - (void)didMoveToParentViewController:(id)arg1;
-- (void)loadView;
-- (id)initWithViewController:(id)arg1;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)viewWillLayoutSubviews;
+- (_Bool)_canShowWhileLocked;
+- (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;
+- (id)initWithWrappedViewController:(id)arg1;
+- (id)initWithWrappedViewController:(id)arg1 type:(long long)arg2;
 
 @end
 

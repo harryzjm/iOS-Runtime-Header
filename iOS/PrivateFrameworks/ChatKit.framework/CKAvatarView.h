@@ -18,6 +18,7 @@
 @property(nonatomic) __weak UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 - (void).cxx_destruct;
 - (void)setHighlighted:(_Bool)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (id)init;
 
 @end

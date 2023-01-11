@@ -13,7 +13,6 @@
 __attribute__((visibility("hidden")))
 @interface KNUIState : NSObject <NSCopying>
 {
-    TSKSelectionPath *_selectionPath;
     double _mobileCanvasViewScale;
     struct CGPoint _mobileCanvasOffset;
     double _desktopCanvasViewScale;
@@ -28,6 +27,7 @@ __attribute__((visibility("hidden")))
     _Bool _showMasterGuides;
     _Bool _showsComments;
     _Bool _showsRuler;
+    TSKSelectionPath *_selectionPath;
     KNMacUILayout *_documentUILayout;
     double _lightTableZoomScale;
     double _mobileLightTableZoomScale;

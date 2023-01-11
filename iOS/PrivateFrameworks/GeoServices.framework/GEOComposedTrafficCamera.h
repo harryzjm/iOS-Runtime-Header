@@ -4,14 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <GeoServices/NSSecureCoding-Protocol.h>
+
 @class GEOTrafficCamera, NSString;
 
-@interface GEOComposedTrafficCamera
+@interface GEOComposedTrafficCamera <NSSecureCoding>
 {
     GEOTrafficCamera *_trafficCamera;
 }
 
++ (_Bool)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) unsigned int cameraPriority;
 @property(readonly, nonatomic) _Bool hasCameraPriority;
 @property(readonly, nonatomic) double speedThreshold;

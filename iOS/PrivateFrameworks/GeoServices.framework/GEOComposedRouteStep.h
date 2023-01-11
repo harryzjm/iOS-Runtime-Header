@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <GeoServices/NSSecureCoding-Protocol.h>
+
 @class GEOComposedRoute, GEOComposedRouteLeg, GEOComposedTransitTripRouteStep, GEOInstructionSet, GEOPBTransitStop, GEOStep, GEOTransitStep, NSArray, NSString;
 @protocol GEOTransitArtworkDataSource;
 
-@interface GEOComposedRouteStep : NSObject
+@interface GEOComposedRouteStep : NSObject <NSSecureCoding>
 {
     GEOComposedRoute *_composedRoute;
     GEOStep *_geoStep;
@@ -19,9 +21,12 @@
     struct _NSRange _maneuverPointRange;
     NSString *_maneuverRoadOrExitName;
     NSString *_maneuverRoadName;
+    unsigned int _actualDistance;
     long long _routeLegType;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic) unsigned int actualDistance; // @synthesize actualDistance=_actualDistance;
 @property(nonatomic) __weak GEOComposedRoute *composedRoute; // @synthesize composedRoute=_composedRoute;
 @property(readonly, nonatomic) struct _NSRange maneuverPointRange; // @synthesize maneuverPointRange=_maneuverPointRange;
 @property(readonly, nonatomic) long long routeLegType; // @synthesize routeLegType=_routeLegType;
@@ -30,6 +35,8 @@
 @property(readonly, nonatomic) int drivingSide; // @synthesize drivingSide=_drivingSide;
 @property(readonly, nonatomic) GEOStep *geoStep; // @synthesize geoStep=_geoStep;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)description;
 - (_Bool)_MapsCarPlay_isEqual:(id)arg1;
 @property(readonly, nonatomic) id <GEOTransitArtworkDataSource> routeDetailsSecondaryArtwork;
@@ -54,8 +61,8 @@
 @property(readonly, nonatomic) unsigned int stepID;
 @property(readonly, nonatomic) unsigned int duration;
 @property(readonly, nonatomic) _Bool hasDuration;
-@property(readonly, nonatomic) CDStruct_c3b9c2ee endGeoCoordinate;
-@property(readonly, nonatomic) CDStruct_c3b9c2ee startGeoCoordinate;
+@property(readonly, nonatomic) CDStruct_39925896 endGeoCoordinate;
+@property(readonly, nonatomic) CDStruct_39925896 startGeoCoordinate;
 @property(readonly, nonatomic) _Bool isArrivalStep;
 @property(readonly, nonatomic) _Bool isUncertainArrival;
 @property(readonly, nonatomic) NSString *maneuverRoadName;

@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (id)read;
 - (_Bool)start;
 - (void)dealloc;
-- (id)initWithCancelDelegate:(id)arg1 tracing:(id)arg2;
+- (id)initWithCancelDelegate:(id)arg1;
 
 @end
 

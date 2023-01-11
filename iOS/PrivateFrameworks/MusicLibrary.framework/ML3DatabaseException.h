@@ -6,7 +6,6 @@
 
 @class NSError;
 
-__attribute__((visibility("hidden")))
 @interface ML3DatabaseException
 {
     NSError *_sqliteError;

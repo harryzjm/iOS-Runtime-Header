@@ -23,10 +23,10 @@
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *responsePingQueue; // @synthesize responsePingQueue=_responsePingQueue;
 @property(nonatomic) __weak AMSURLSession *session; // @synthesize session;
 - (void).cxx_destruct;
-- (_Bool)_URLIsTrustedFromRequest:(id)arg1 bagContract:(id)arg2;
+- (_Bool)_URLIsTrustedFromRequest:(id)arg1 bag:(id)arg2;
 - (_Bool)_shouldEnableReversePushForTask:(id)arg1;
 - (void)_setResponseCookiesFromResponse:(id)arg1 taskInfo:(id)arg2;
-- (void)_pingURL:(id)arg1 contract:(id)arg2;
+- (void)_pingURL:(id)arg1 session:(id)arg2 bag:(id)arg3;
 - (void)reportMetricsForTaskInfo:(id)arg1 decodedObject:(id)arg2;
 - (void)reconfigureNewRequest:(id)arg1 originalTask:(id)arg2 redirect:(_Bool)arg3 error:(id *)arg4;
 - (id)handleResponse:(id)arg1 task:(id)arg2;

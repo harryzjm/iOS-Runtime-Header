@@ -9,6 +9,7 @@
 @class AKToolsListViewController;
 
 @protocol AKToolsListViewControllerDelegate <NSObject>
+- (void)toolsListDidSelectOpacityItem:(AKToolsListViewController *)arg1;
 - (void)toolsList:(AKToolsListViewController *)arg1 didSelectToolWithTag:(long long)arg2;
 @end
 

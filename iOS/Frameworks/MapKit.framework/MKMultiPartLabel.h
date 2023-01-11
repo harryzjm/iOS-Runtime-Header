@@ -32,9 +32,10 @@
 - (void)setContentHuggingPriority:(float)arg1 forAxis:(long long)arg2;
 - (void)setContentCompressionResistancePriority:(float)arg1 forAxis:(long long)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+@property(nonatomic) struct UIEdgeInsets textInset;
 - (void)layoutSubviews;
 - (id)_addDefaultAttributesToAttributedString:(id)arg1;
-- (id)_attributedAjudstedMultiPartStringFromString:(id)arg1;
+- (id)_attributedAdjustedMultiPartStringFromString:(id)arg1;
 - (void)_updateTextViewTextAndInvalidateLayout:(id)arg1;
 - (void)_updateStrings;
 @property(retain, nonatomic) NSString *text;

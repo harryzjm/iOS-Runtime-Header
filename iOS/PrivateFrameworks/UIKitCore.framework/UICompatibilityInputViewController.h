@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     UIKeyboardInputMode *_incomingExtensionInputMode;
     double _incomingExtensionInputModeTime;
     double _lastSuspendedTime;
+    double _currentResumeTime;
     _Bool _shouldRegenerateSizingConstraints;
     _Bool _shouldSuppressRemoteInputController;
     _Bool _tearingDownInputController;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (id)_keyboardForThisViewController;
 - (id)_keyboard;
 - (id)childCompatibilityController;
@@ -67,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (_Bool)shouldAutomaticallyForwardRotationMethods;
 - (void)dealloc;
+- (_Bool)_canShowWhileLocked;
 - (void)loadView;
 - (id)_initAsDeferredController;
 - (void)setDeferredSystemView:(id)arg1;

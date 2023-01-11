@@ -18,14 +18,14 @@
 }
 
 + (_Bool)supportsSecureCoding;
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)init;
 @property(nonatomic, readonly) NSString *description;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithNearbyScanDuration:(double)arg1 nearbyScanEnabled:(_Bool)arg2 nearbyScanWhileAuthenticated:(_Bool)arg3 deviceNameSyncInterval:(id)arg4 deviceNameSyncEnabled:(_Bool)arg5;
 @property(nonatomic, readonly) _Bool deviceNameSyncEnabled; // @synthesize deviceNameSyncEnabled;
-@property(nonatomic, readonly) NSDateComponents *deviceNameSyncInterval; // @synthesize deviceNameSyncInterval;
+@property(nonatomic, readonly) NSDateComponents *deviceNameSyncInterval;
 @property(nonatomic, readonly) _Bool nearbyScanWhileAuthenticated; // @synthesize nearbyScanWhileAuthenticated;
 @property(nonatomic, readonly) _Bool nearbyScanEnabled; // @synthesize nearbyScanEnabled;
 @property(nonatomic, readonly) double nearbyScanDuration; // @synthesize nearbyScanDuration;

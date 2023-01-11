@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithArchive:(const struct ChartAxisIDArchive *)arg1;
 - (id)description;
 - (id)debuggingName;
+- (id)displayNameWithOrdinal:(_Bool)arg1;
 - (_Bool)intersectsAxisID:(id)arg1;
 - (long long)compare:(id)arg1;
 - (unsigned long long)hash;

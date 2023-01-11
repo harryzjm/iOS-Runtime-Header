@@ -10,25 +10,25 @@
 #import <iAd/ADPrerollTopBarDelegate-Protocol.h>
 #import <iAd/UIGestureRecognizerDelegate-Protocol.h>
 
-@class ADPrerollBottomBar, ADPrerollTopBar, ADPrivacyButton, NSString, NSTimer, UIImageView;
+@class ADPrerollBottomBar, ADPrerollTopBar, ADPrivacyMarker, NSString, NSTimer, UIImageView;
 @protocol ADPrerollViewDelegate;
 
 @interface ADPrerollView : UIView <UIGestureRecognizerDelegate, ADPrerollTopBarDelegate, ADPrerollBottomBarDelegate>
 {
-    id <ADPrerollViewDelegate> _delegate;
     _Bool _barsVisible;
     _Bool _hasAction;
     _Bool _skipButtonCountingDown;
+    id <ADPrerollViewDelegate> _delegate;
     ADPrerollTopBar *_topBar;
     ADPrerollBottomBar *_bottomBar;
     UIImageView *_swooshView;
     NSTimer *_passiveWatchingTimer;
     double _accumulatedViewingTime;
-    ADPrivacyButton *_privacyButton;
+    ADPrivacyMarker *_privacyMarker;
 }
 
 + (Class)layerClass;
-@property(retain, nonatomic) ADPrivacyButton *privacyButton; // @synthesize privacyButton=_privacyButton;
+@property(retain, nonatomic) ADPrivacyMarker *privacyMarker; // @synthesize privacyMarker=_privacyMarker;
 @property(nonatomic) double accumulatedViewingTime; // @synthesize accumulatedViewingTime=_accumulatedViewingTime;
 @property(retain, nonatomic) NSTimer *passiveWatchingTimer; // @synthesize passiveWatchingTimer=_passiveWatchingTimer;
 @property(retain, nonatomic) UIImageView *swooshView; // @synthesize swooshView=_swooshView;
@@ -37,7 +37,8 @@
 @property(retain, nonatomic) ADPrerollTopBar *topBar; // @synthesize topBar=_topBar;
 @property(nonatomic) _Bool hasAction; // @synthesize hasAction=_hasAction;
 @property(nonatomic) _Bool barsVisible; // @synthesize barsVisible=_barsVisible;
-@property(nonatomic) __weak id <ADPrerollViewDelegate> delegate;
+@property(nonatomic) __weak id <ADPrerollViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (void).cxx_destruct;
 - (void)fadeToBlackWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beginCountdown:(double)arg1;
 - (void)enablePrivacyButton;
@@ -62,7 +63,6 @@
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)shutdown;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

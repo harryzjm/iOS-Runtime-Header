@@ -6,13 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-#import <CameraUI/CAMApertureButtonDelegate-Protocol.h>
 #import <CameraUI/CAMExpandableMenuButtonDelegate-Protocol.h>
+#import <CameraUI/CEKApertureButtonDelegate-Protocol.h>
 
-@class CAMApertureButton, CAMElapsedTimeView, CAMExpandableMenuButton, CAMFilterButton, CAMFlashButton, CAMFlipButton, CAMFramerateIndicatorView, CAMHDRButton, CAMLivePhotoButton, CAMMessagesPhotosButton, CAMTimerButton, NSArray, NSSet, PUReviewScreenDoneButton;
+@class CAMElapsedTimeView, CAMExpandableMenuButton, CAMFilterButton, CAMFlashButton, CAMFlipButton, CAMFramerateIndicatorView, CAMHDRButton, CAMIntensityButton, CAMLivePhotoButton, CAMMessagesPhotosButton, CAMTimerButton, CEKApertureButton, NSArray, NSSet, PUReviewScreenDoneButton;
 @protocol CAMControlVisibilityUpdateDelegate;
 
-@interface CAMTopBar : UIView <CAMExpandableMenuButtonDelegate, CAMApertureButtonDelegate>
+@interface CAMTopBar : UIView <CAMExpandableMenuButtonDelegate, CEKApertureButtonDelegate>
 {
     id <CAMControlVisibilityUpdateDelegate> _visibilityUpdateDelegate;
     long long _style;
@@ -22,7 +22,8 @@
     CAMHDRButton *_HDRButton;
     CAMFlipButton *_flipButton;
     CAMFilterButton *_filterButton;
-    CAMApertureButton *_apertureButton;
+    CEKApertureButton *_apertureButton;
+    CAMIntensityButton *_intensityButton;
     CAMTimerButton *_timerButton;
     CAMLivePhotoButton *_livePhotoButton;
     CAMMessagesPhotosButton *_photosButton;
@@ -50,7 +51,8 @@
 @property(retain, nonatomic) CAMMessagesPhotosButton *photosButton; // @synthesize photosButton=_photosButton;
 @property(retain, nonatomic) CAMLivePhotoButton *livePhotoButton; // @synthesize livePhotoButton=_livePhotoButton;
 @property(retain, nonatomic) CAMTimerButton *timerButton; // @synthesize timerButton=_timerButton;
-@property(retain, nonatomic) CAMApertureButton *apertureButton; // @synthesize apertureButton=_apertureButton;
+@property(retain, nonatomic) CAMIntensityButton *intensityButton; // @synthesize intensityButton=_intensityButton;
+@property(retain, nonatomic) CEKApertureButton *apertureButton; // @synthesize apertureButton=_apertureButton;
 @property(retain, nonatomic) CAMFilterButton *filterButton; // @synthesize filterButton=_filterButton;
 @property(retain, nonatomic) CAMFlipButton *flipButton; // @synthesize flipButton=_flipButton;
 @property(retain, nonatomic) CAMHDRButton *HDRButton; // @synthesize HDRButton=_HDRButton;
@@ -60,7 +62,7 @@
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(nonatomic) __weak id <CAMControlVisibilityUpdateDelegate> visibilityUpdateDelegate; // @synthesize visibilityUpdateDelegate=_visibilityUpdateDelegate;
 - (void).cxx_destruct;
-- (void)apertureButtonNeedsLayout:(id)arg1;
+- (void)apertureButtonNeedsLayout:(id)arg1 animated:(_Bool)arg2;
 - (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (id)hudItemForAccessibilityHUDManager:(id)arg1;
 - (void)_iterateViewsInHUDManager:(id)arg1 forHUDItem:(CDUnknownBlockType)arg2;
@@ -75,6 +77,7 @@
 - (_Bool)shouldHideLivePhotoButtonForGraphConfiguration:(id)arg1;
 - (_Bool)shouldHideElapsedTimeViewForGraphConfiguration:(id)arg1;
 - (_Bool)shouldHideFlipButtonForGraphConfiguration:(id)arg1;
+- (_Bool)shouldHideIntensityButtonForGraphConfiguration:(id)arg1;
 - (_Bool)shouldHideApertureButtonForGraphConfiguration:(id)arg1;
 - (_Bool)shouldHideFilterButtonForGraphConfiguration:(id)arg1;
 - (_Bool)shouldHideTimerButtonForGraphConfiguration:(id)arg1;

@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMHome, HMRoom, NSMutableSet;
-@protocol HFCharacteristicValueSource;
+@class HFItem, HMHome, HMRoom, NSMutableSet;
+@protocol HFCharacteristicValueSource, HFServiceLikeItem;
 
 @interface HFActionSetItemProvider
 {
@@ -14,12 +14,14 @@
     HMRoom *_room;
     CDUnknownBlockType _filter;
     unsigned long long _actionSetItemStyle;
+    HFItem<HFServiceLikeItem> *_serviceLikeItem;
     NSMutableSet *_actionSetItems;
     id <HFCharacteristicValueSource> _overrideValueSource;
 }
 
 @property(retain, nonatomic) id <HFCharacteristicValueSource> overrideValueSource; // @synthesize overrideValueSource=_overrideValueSource;
 @property(retain, nonatomic) NSMutableSet *actionSetItems; // @synthesize actionSetItems=_actionSetItems;
+@property(copy, nonatomic) HFItem<HFServiceLikeItem> *serviceLikeItem; // @synthesize serviceLikeItem=_serviceLikeItem;
 @property(readonly, nonatomic) unsigned long long actionSetItemStyle; // @synthesize actionSetItemStyle=_actionSetItemStyle;
 @property(copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
 @property(nonatomic) _Bool onlyShowsFavorites; // @synthesize onlyShowsFavorites=_onlyShowsFavorites;

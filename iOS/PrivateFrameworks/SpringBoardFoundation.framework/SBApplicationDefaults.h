@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface SBApplicationDefaults
 {
 }
@@ -11,7 +13,7 @@
 - (void)_bindAndRegisterDefaults;
 
 // Remaining properties
-@property(readonly, nonatomic) double backgroundMultitaskingWatchdogTimeout; // @dynamic backgroundMultitaskingWatchdogTimeout;
+@property(nonatomic) NSString *bundleIdentifierToForceHomeAffordanceInset; // @dynamic bundleIdentifierToForceHomeAffordanceInset;
 @property(readonly, nonatomic) _Bool forcesMedusaAdoption; // @dynamic forcesMedusaAdoption;
 @property(readonly, nonatomic) _Bool ignoresDeclaredNetworkUsage; // @dynamic ignoresDeclaredNetworkUsage;
 @property(readonly, nonatomic) _Bool shouldAllowScreenshotsInLoginWindow; // @dynamic shouldAllowScreenshotsInLoginWindow;

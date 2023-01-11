@@ -4,23 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImageView.h>
+#import <UIKit/UIView.h>
 
 #import <PhotosUICore/PXReusableObject-Protocol.h>
 #import <PhotosUICore/PXUIViewBasicTile-Protocol.h>
 
-@class NSString, UIView;
+@class NSString;
 
-@interface PXSelectionBadgeUIViewTile : UIImageView <PXReusableObject, PXUIViewBasicTile>
+@interface PXSelectionBadgeUIViewTile : UIView <PXReusableObject, PXUIViewBasicTile>
 {
-    CDStruct_637f5cce _needsUpdateFlags;
+    _Bool _needsUpdate;
+    UIView *_selectedView;
+    UIView *_unselectedView;
     _Bool __selected;
 }
 
 + (struct CGSize)preferredSize;
 @property(nonatomic, setter=_setSelected:) _Bool _selected; // @synthesize _selected=__selected;
-- (void)_updateImageViewIfNeeded;
-- (void)_invalidateImageView;
+- (void).cxx_destruct;
+- (void)_showUnselectedView;
+- (void)_showSelectedView;
+- (void)_updateBadgeViewIfNeeded;
+- (void)_invalidate;
 - (void)didApplyGeometry:(struct PXTileGeometry)arg1 withUserData:(id)arg2;
 - (void)prepareForReuse;
 - (void)becomeReusable;

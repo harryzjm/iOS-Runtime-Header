@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ARPatchGrid, ARPlaneGeometry, MISSING_TYPE, NSDictionary;
+@class ARPatchGrid, ARPlaneGeometry, MISSING_TYPE, NSDictionary, NSString;
 
 @interface ARPlaneAnchor
 {
@@ -16,12 +16,14 @@
     ARPatchGrid *_gridExtent;
     long long _worldAlignmentRotation;
     NSDictionary *_possibleClassifications;
+    NSString *_classificationLabel;
     MISSING_TYPE *_center;
     MISSING_TYPE *_extent;
 }
 
 + (_Bool)supportsSecureCoding;
 + (_Bool)isClassificationSupported;
+@property(retain, nonatomic) NSString *classificationLabel; // @synthesize classificationLabel=_classificationLabel;
 @property(copy, nonatomic) NSDictionary *possibleClassifications; // @synthesize possibleClassifications=_possibleClassifications;
 @property(nonatomic) long long worldAlignmentRotation; // @synthesize worldAlignmentRotation=_worldAlignmentRotation;
 @property(nonatomic) float uncertaintyAlongNormal; // @synthesize uncertaintyAlongNormal=_uncertaintyAlongNormal;

@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber;
+@class NSDictionary, NSNumber;
 
 __attribute__((visibility("hidden")))
 @interface PUSceneDebugGridViewController
 {
     NSNumber *_sceneIdentifier;
+    NSDictionary *_assetsHighestConfidence;
 }
 
 + (CDUnknownBlockType)assetResourceLargestToSmallestComparator;
+@property(copy, nonatomic) NSDictionary *assetsHighestConfidence; // @synthesize assetsHighestConfidence=_assetsHighestConfidence;
 @property(retain, nonatomic) NSNumber *sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;
 - (void).cxx_destruct;
 - (id)preferredAssetResourcesForAnalyzingAsset:(id)arg1;
@@ -23,10 +25,13 @@ __attribute__((visibility("hidden")))
 - (id)_keywordForSceneIdentifier:(id)arg1;
 - (id)_assetResourceForAsset:(id)arg1;
 - (id)_assetResourcesForAssets:(id)arg1;
-- (id)_assetPathsForAssets:(id)arg1;
+- (id)_cloneAsset:(id)arg1 toDirectory:(id)arg2;
+- (_Bool)_writeDiagnosticsToURL:(id)arg1 incorrectAssets:(id)arg2;
 - (void)_fileRadarWithIncorrectAssets:(id)arg1;
 - (void)_tappedFileRadarButton:(id)arg1;
-- (void)configureGridCell:(id)arg1 forItemAtIndexPath:(id)arg2;
+- (_Bool)assetConfidenceIsAboveThreshold:(id)arg1;
+- (_Bool)assetShouldBeSurpassedInNormalUI:(id)arg1;
+- (void)configureDecorationsForCell:(id)arg1 withAsset:(id)arg2 assetCollection:(id)arg3 thumbnailIsPlaceholder:(_Bool)arg4 assetMayHaveChanged:(_Bool)arg5;
 - (_Bool)allowSlideshowButton;
 - (id)_newEditActionItemsWithWideSpacing:(_Bool)arg1;
 - (double)globalHeaderHeight;

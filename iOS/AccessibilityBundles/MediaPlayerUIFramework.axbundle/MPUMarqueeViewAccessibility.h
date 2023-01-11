@@ -13,7 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
-- (_Bool)_accessibilityIsScannerElement;
+- (_Bool)accessibilityRespondsToUserInteraction;
 
 @end
 

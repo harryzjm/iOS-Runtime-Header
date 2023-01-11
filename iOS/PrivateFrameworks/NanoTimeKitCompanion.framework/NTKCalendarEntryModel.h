@@ -12,6 +12,7 @@
     _Bool _displayAsConflicting;
     _Bool _displayAsFirstInDay;
     _Bool _overlappingDates;
+    _Bool _displayEntryDateInGraphicCircularView;
     NSString *_identifier;
     NSDate *_eventStartDate;
     NSDate *_eventEndDate;
@@ -31,7 +32,7 @@
 + (id)signatureRectangular:(id)arg1;
 + (id)_signatureCornerImageProvider;
 + (id)signatureCorner:(id)arg1;
-+ (id)_signatureCircularCalendarProvider;
++ (id)_signatureCircularCalendarProvider:(id)arg1;
 + (id)signatureCircular:(id)arg1;
 + (id)signatureBezel:(id)arg1;
 + (id)extraLarge:(id)arg1;
@@ -48,6 +49,7 @@
 + (id)contentForSignatureRectangular:(id)arg1;
 + (id)contentForLargeModular:(id)arg1;
 + (id)largeModular:(id)arg1;
+@property(nonatomic) _Bool displayEntryDateInGraphicCircularView; // @synthesize displayEntryDateInGraphicCircularView=_displayEntryDateInGraphicCircularView;
 @property(retain, nonatomic) NSArray *eventColors; // @synthesize eventColors=_eventColors;
 @property(retain, nonatomic) NSURL *launchURL; // @synthesize launchURL=_launchURL;
 @property(nonatomic) unsigned long long eventsInDayCount; // @synthesize eventsInDayCount=_eventsInDayCount;

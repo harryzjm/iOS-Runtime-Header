@@ -8,24 +8,12 @@
 
 @interface AXUIKitGlue : UIAccessibilityLoader
 {
-    _Bool _voiceOverHandwritingEnabled;
-    _Bool _registeredForVoiceOverNotifications;
 }
 
 + (id)wrapDOMRange:(id)arg1;
 + (void)_handleWebKitLegacyInstallation;
 + (void)_accessibilityInitializeSubclassRuntimeOverrides;
 + (id)sharedGlueObjectIfAvailable;
-@property(nonatomic, getter=isRegisteredForVoiceOverNotifications) _Bool registeredForVoiceOverNotifications; // @synthesize registeredForVoiceOverNotifications=_registeredForVoiceOverNotifications;
-@property(nonatomic, getter=isVoiceOverHandwritingEnabled) _Bool voiceOverHandwritingEnabled; // @synthesize voiceOverHandwritingEnabled=_voiceOverHandwritingEnabled;
-- (void)_enableHandwriting;
-- (void)_disableHandwriting;
-- (void)_handleVoiceOverStatusChanged:(id)arg1;
-- (void)_unregisterForVoiceOverNotifications:(id)arg1;
-- (void)_registerForVoiceOverNotifications:(id)arg1;
-- (id)_currentAccessoryView:(_Bool)arg1;
-- (id)description;
-- (id)init;
 
 @end
 

@@ -9,7 +9,7 @@
 #import <MediaPlayer/MPVolumeControllerDelegate-Protocol.h>
 #import <MediaPlayer/MPVolumeDisplaying-Protocol.h>
 
-@class MPAVController, MPAVEndpointRoute, MPAVOutputDeviceRoute, MPAVRoute, MPVolumeController, NSString, NSTimer, UIImage, UIImageView, UILabel, UILayoutGuide, UIView;
+@class MPAVController, MPAVEndpointRoute, MPAVOutputDeviceRoute, MPAVRoute, MPVolumeController, NSString, NSTimer, UIImage, UIImageView, UILabel, UILayoutGuide, UIView, UIWindowScene;
 
 @interface MPVolumeSlider : UISlider <MPVolumeControllerDelegate, MPVolumeDisplaying>
 {
@@ -28,6 +28,9 @@
     double _originalMinTrackViewAlphaOverride;
     double _originalMinValueViewAlphaOverride;
     double _originalMaxValueViewAlphaOverride;
+    _Bool _isCurrentlyTracking;
+    float _setVolumeStartValue;
+    int _coalescedVolumeDidChangeLogCount;
     _Bool _optimisticState;
     float _optimisticValue;
     UILayoutGuide *_trackLayoutGuide;
@@ -49,6 +52,8 @@
 @property(retain, nonatomic) UIImage *volumeWarningTrackImage; // @synthesize volumeWarningTrackImage=_volumeWarningTrackImage;
 @property(readonly, nonatomic) long long style; // @synthesize style=_style;
 - (void).cxx_destruct;
+- (void)_logVolumeValueDidChange:(float)arg1;
+- (id)_routeName;
 - (id)_newVolumeWarningView;
 - (void)_endBlinkingWarningView;
 - (void)_blinkWarningView;
@@ -69,12 +74,15 @@
 - (void)volumeController:(id)arg1 EUVolumeLimitDidChange:(float)arg2;
 - (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
 - (void)volumeController:(id)arg1 volumeControlLabelDidChange:(id)arg2;
+- (void)volumeController:(id)arg1 volumeControlCapabilitiesDidChange:(unsigned int)arg2;
 - (void)volumeController:(id)arg1 volumeControlAvailableDidChange:(_Bool)arg2;
 @property(readonly, nonatomic) NSString *volumeAudioCategory;
 @property(readonly, nonatomic, getter=isOnScreenForVolumeDisplay) _Bool onScreenForVolumeDisplay;
+@property(readonly, nonatomic) UIWindowScene *windowSceneForVolumeDisplay;
 - (void)setVolumeDataSource:(id)arg1;
 @property(retain, nonatomic) MPAVRoute *route;
 @property(readonly, copy, nonatomic) NSString *volumeControlLabel;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)setUserInteractionEnabled:(_Bool)arg1;
 - (void)setHidden:(_Bool)arg1;
 - (void)setAlpha:(double)arg1;

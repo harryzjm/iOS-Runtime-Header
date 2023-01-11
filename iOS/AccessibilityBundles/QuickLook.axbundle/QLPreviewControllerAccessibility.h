@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_listButton;
 - (void)_setFullScreen:(_Bool)arg1 animated:(_Bool)arg2 force:(_Bool)arg3;
 - (void)updateOverlayAnimated:(_Bool)arg1 animatedButtons:(_Bool)arg2 forceRefresh:(_Bool)arg3 withTraitCollection:(id)arg4;
 

@@ -33,9 +33,10 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityKeyElementForKey:(id)arg1;
 - (void)setState:(int)arg1 forKey:(id)arg2;
-- (void)showPopupView:(int)arg1 withKey:(id)arg2 popupInfo:(id)arg3 force:(_Bool)arg4;
+- (void)showPopupView:(long long)arg1 withKey:(id)arg2 popupInfo:(id)arg3 force:(_Bool)arg4;
 - (void)showPopupVariantsForKey:(id)arg1;
 - (id)_accessibilityUserTestingChildren;
+- (void)didBeginContinuousPath;
 - (void)setKeyplaneName:(id)arg1;
 - (_Bool)_isSmallLetterKeyplane:(id)arg1;
 - (_Bool)_isCapitalLetterKeyplane:(id)arg1;
@@ -66,7 +67,9 @@
 - (_Bool)accessibilityPerformEscape;
 - (void)didMoveToWindow;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (long long)accessibilityContainerType;
 - (unsigned long long)accessibilityTraits;
+- (void)addContinuousPathPoint:(struct CGPoint)arg1 withTimestamp:(double)arg2;
 - (void)_accessibilitySetStickyPopupKeys:(id)arg1;
 - (id)_accessibilityStickyPopupKeys;
 

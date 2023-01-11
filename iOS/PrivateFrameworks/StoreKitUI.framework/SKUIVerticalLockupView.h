@@ -10,6 +10,7 @@
 
 @class NSHashTable, NSMapTable, NSString, SKUILockupViewElement, SKUISizeValue, UIView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIVerticalLockupView <SKUIItemOfferButtonDelegate, SKUIPerspectiveView, SKUIViewElementView>
 {
     NSHashTable *_artworkRelatedChildViewElementViews;

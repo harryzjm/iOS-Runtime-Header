@@ -6,6 +6,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface SKUIPreviewControlViewElement
 {
     BOOL _enabled;

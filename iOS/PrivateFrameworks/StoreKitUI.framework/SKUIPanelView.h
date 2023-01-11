@@ -9,6 +9,7 @@
 
 @class NSMapTable, NSString, UIResponder;
 
+__attribute__((visibility("hidden")))
 @interface SKUIPanelView <SKUIAnimatorDOMFeatureDelegate, SKUIViewElementView>
 {
     NSMapTable *_animators;

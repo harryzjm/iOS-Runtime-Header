@@ -13,12 +13,14 @@
 @optional
 - (_Bool)contactNavigationController:(CNContactNavigationController *)arg1 presentViewController:(UIViewController *)arg2 animated:(_Bool)arg3;
 - (CNContactViewController *)contactNavigationController:(CNContactNavigationController *)arg1 contactViewControllerForContact:(CNContact *)arg2 preferredMode:(long long)arg3;
+- (void)contactNavigationControllerClearContactSelection:(CNContactNavigationController *)arg1;
 - (_Bool)contactNavigationControllerShouldShowContactsOnKeyCommands:(CNContactNavigationController *)arg1;
 - (void)contactNavigationController:(CNContactNavigationController *)arg1 didDeleteContact:(CNContact *)arg2;
 - (_Bool)contactNavigationController:(CNContactNavigationController *)arg1 shouldPerformDefaultActionForContactProperty:(CNContactProperty *)arg2;
 - (_Bool)contactNavigationController:(CNContactNavigationController *)arg1 shouldShowCardForContact:(CNContact *)arg2;
 - (_Bool)contactNavigationController:(CNContactNavigationController *)arg1 shouldSelectContact:(CNContact *)arg2 atIndexPath:(NSIndexPath *)arg3;
 - (_Bool)contactNavigationController:(CNContactNavigationController *)arg1 canSelectContact:(CNContact *)arg2;
+- (_Bool)contactNavigationControllerShouldAddNewContact:(CNContactNavigationController *)arg1;
 - (void)contactNavigationControllerDidComplete:(CNContactNavigationController *)arg1;
 - (void)contactNavigationControllerDidCancel:(CNContactNavigationController *)arg1;
 @end

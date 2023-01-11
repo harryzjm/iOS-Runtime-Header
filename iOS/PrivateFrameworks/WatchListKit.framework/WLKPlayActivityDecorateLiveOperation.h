@@ -4,21 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString;
+@class NSString;
 
 @interface WLKPlayActivityDecorateLiveOperation
 {
     NSString *_channelID;
     NSString *_serviceID;
-    NSDictionary *_scheduleDictionary;
 }
 
-@property(readonly, copy, nonatomic) NSDictionary *scheduleDictionary; // @synthesize scheduleDictionary=_scheduleDictionary;
 @property(readonly, copy, nonatomic) NSString *serviceID; // @synthesize serviceID=_serviceID;
 @property(readonly, copy, nonatomic) NSString *channelID; // @synthesize channelID=_channelID;
 - (void).cxx_destruct;
-- (void)didFinish;
-- (id)responseProcessor;
 - (id)initWithChannelID:(id)arg1 serviceID:(id)arg2;
 
 @end

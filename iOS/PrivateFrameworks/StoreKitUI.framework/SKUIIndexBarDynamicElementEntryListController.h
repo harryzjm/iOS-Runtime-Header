@@ -7,6 +7,7 @@
 @class SKUIDynamicPageSectionIndexMapper, SKUIIndexBarEntryListViewElement, SKUIIndexBarEntryViewElement, SKUIViewElement;
 @protocol SKUIEntityProviding;
 
+__attribute__((visibility("hidden")))
 @interface SKUIIndexBarDynamicElementEntryListController
 {
     SKUIDynamicPageSectionIndexMapper *_dynamicIndexMapper;

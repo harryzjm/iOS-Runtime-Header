@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CUAudioPlayer, HMDeviceSetupOperationHandler, NSDate, NSString, RPCompanionLinkClient, SFClient, SFDeviceOperationHandlerWiFiSetup, SFService, SFSession, SFSiriClient, SFSiriDeviceSetupGreetingDetails;
+@class CUAudioPlayer, HMDeviceSetupOperationHandler, NSDate, NSString, RPCompanionLinkClient, SFClient, SFDeviceOperationHandlerCDPSetup, SFDeviceOperationHandlerWiFiSetup, SFService, SFSession, SFSiriClient, SFSiriDeviceSetupGreetingDetails;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFDeviceSetupB238Service : NSObject
@@ -35,9 +35,11 @@
     SFSiriDeviceSetupGreetingDetails *_siriGreetingDetails;
     _Bool _siriHeardWhatCanYouDo;
     _Bool _wifiSetupEnabled;
+    SFDeviceOperationHandlerCDPSetup *_cdpSetupHandler;
     HMDeviceSetupOperationHandler *_homeKitSetupHandler;
     SFDeviceOperationHandlerWiFiSetup *_wifiSetupHandler;
     CUAudioPlayer *_audioPlayer;
+    _Bool _prefCDPEnabled;
     NSString *_languageCode;
     NSString *_localeIdentifier;
     NSString *_temperatureUnit;
@@ -62,7 +64,7 @@
 - (void)_speakLocalizedKey:(id)arg1 event:(unsigned int)arg2;
 - (void)_siriGreetingDialogCPhrase:(id)arg1 error:(id)arg2;
 - (void)_siriGreetingDialogCStart;
-- (void)_siriGreetingDialogBPhrase:(id)arg1 error:(id)arg2;
+- (void)_siriGreetingDialogBPhrase:(id)arg1 localizedText:(id)arg2 error:(id)arg3;
 - (void)_siriGreetingDialogBStart;
 - (void)_siriGreetingDialogA;
 - (void)_siriGreetingIntroPhrase:(id)arg1 error:(id)arg2;

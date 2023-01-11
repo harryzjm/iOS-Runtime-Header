@@ -8,7 +8,7 @@
 #import <iWorkImport/TSKModel-Protocol.h>
 #import <iWorkImport/TSWPSection-Protocol.h>
 
-@class NSArray, NSString, TPPageMaster, TPPageTemplate, TSDFill, TSWPStorage;
+@class NSArray, NSString, NSURL, NSUUID, TPPageMaster, TPPageTemplate, TSDFill, TSWPStorage;
 
 __attribute__((visibility("hidden")))
 @interface TPSection <TSKDocumentObject, TSKModel, TSWPSection>
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     TPPageMaster *_pageMasters[3];
     TSWPStorage *_parentStorage;
     NSString *_name;
+    NSUUID *_sectionHyperlinkUUID;
     _Bool _inheritPreviousHeaderFooter;
     _Bool _pageMasterFirstPageDifferent;
     _Bool _pageMasterFirstPageHidesHeaderFooter;
@@ -31,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)allDrawables;
 - (void)p_addAllDrawablesFromInfo:(id)arg1 toMutableArray:(id)arg2;
-@property(readonly, copy) NSString *description;
 - (id)pageMasterOwningModel:(id)arg1;
 - (id)pageMasterForType:(long long)arg1;
 @property(readonly, nonatomic) NSArray *pageMasters;
@@ -51,6 +51,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak TSWPStorage *parentStorage;
 - (void)setPageMasterForFirstPage:(id)arg1;
 - (id)copyWithContext:(id)arg1;
+@property(readonly, nonatomic) NSURL *url;
+@property(readonly, nonatomic) NSString *localizedPrettyDisplayStringLong;
+@property(readonly, nonatomic) NSString *localizedPrettyDisplayStringShort;
+@property(copy, nonatomic) NSUUID *sectionHyperlinkUUID;
 - (_Bool)isHeaderFooterEmpty:(long long)arg1;
 - (_Bool)isHeaderFooterVisible:(long long)arg1;
 - (void)saveToArchiver:(id)arg1;
@@ -71,6 +75,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

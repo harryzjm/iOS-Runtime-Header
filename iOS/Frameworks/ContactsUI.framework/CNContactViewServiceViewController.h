@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)viewDidAppearForContactViewController:(id)arg1;
+- (void)didExecuteDeleteFromDowntimeWhitelistAction;
+- (void)didExecuteClearRecentsDataAction;
 - (void)viewDidAppear;
 - (void)didChangePreferredContentSize:(struct CGSize)arg1;
 - (void)isPresentingEditingController:(_Bool)arg1;

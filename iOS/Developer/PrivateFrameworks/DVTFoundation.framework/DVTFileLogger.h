@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSFileHandle, NSURL;
+@class NSFileHandle, NSObject, NSURL;
+@protocol OS_dispatch_queue;
 
 @interface DVTFileLogger
 {
     unsigned long long _indentLevel;
     NSURL *_fileURL;
     NSFileHandle *_fileHandle;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 + (void)initialize;

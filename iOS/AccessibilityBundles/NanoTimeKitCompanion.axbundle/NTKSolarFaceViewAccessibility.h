@@ -17,7 +17,6 @@
 - (void)_applyDataMode;
 - (void)crownInputSequencerIdleDidChange:(id)arg1;
 - (void)_handleViewModeTapGesture:(id)arg1;
-- (void)_loadSnapshotContentViews;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

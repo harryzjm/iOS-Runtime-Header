@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CalendarDatabase/CDBRecurrenceGenerator.h>
+#import <CalendarFoundation/CalRecurrenceGenerator.h>
 
-@interface EKRecurrenceGenerator : CDBRecurrenceGenerator
+@interface EKRecurrenceGenerator : CalRecurrenceGenerator
 {
 }
 

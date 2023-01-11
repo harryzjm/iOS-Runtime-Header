@@ -6,6 +6,7 @@
 
 @interface NSOutputStream
 {
+    unsigned char _reserved[128];
 }
 
 

@@ -4,29 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKit/UIView.h>
 
-#import <UserNotificationsUIKit/NCLegibilitySettingsAdjusting-Protocol.h>
+#import <UserNotificationsUIKit/MTMaterialGrouping-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationViewControllerObserving-Protocol.h>
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 #import <UserNotificationsUIKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <UserNotificationsUIKit/UIScrollViewDelegate-Protocol.h>
 
-@class NCNotificationListCellActionButtonsView, NCNotificationViewController, NSString, UIPanGestureRecognizer, UIView, UIViewFloatAnimatableProperty;
+@class NCNotificationListCellActionButtonsView, NCNotificationViewController, NSString, UIPanGestureRecognizer, UIViewFloatAnimatableProperty;
 @protocol NCNotificationListCellDelegate;
 
-@interface NCNotificationListCell : UICollectionViewCell <UIScrollViewDelegate, UIGestureRecognizerDelegate, NCNotificationViewControllerObserving, PLContentSizeCategoryAdjusting, NCLegibilitySettingsAdjusting>
+@interface NCNotificationListCell : UIView <UIScrollViewDelegate, UIGestureRecognizerDelegate, NCNotificationViewControllerObserving, PLContentSizeCategoryAdjusting, MTMaterialGrouping>
 {
     _Bool _adjustsFontForContentSizeCategory;
     _Bool _configured;
-    _Bool _shouldOverrideForReveal;
     _Bool _executingDefaultAction;
     _Bool _performingSwipeHinting;
     _Bool _performingOrbHinting;
+    NSString *_materialGroupNameBase;
     NCNotificationViewController *_contentViewController;
     id <NCNotificationListCellDelegate> _delegate;
-    double _overrideAlpha;
-    NSString *_backgroundGroupName;
+    UIView *_contentView;
     NCNotificationListCellActionButtonsView *_leftActionButtonsView;
     NCNotificationListCellActionButtonsView *_rightActionButtonsView;
     UIView *_leftActionButtonsClippingRevealView;
@@ -36,7 +35,6 @@
     UIViewFloatAnimatableProperty *_targetPositionAnimatableProperty;
     UIPanGestureRecognizer *_panGestureRecognizer;
     double _panGestureStartingPosition;
-    struct CGPoint _overrideCenter;
     struct UIEdgeInsets _insetMargins;
 }
 
@@ -52,19 +50,16 @@
 @property(retain, nonatomic) UIView *leftActionButtonsClippingRevealView; // @synthesize leftActionButtonsClippingRevealView=_leftActionButtonsClippingRevealView;
 @property(retain, nonatomic) NCNotificationListCellActionButtonsView *rightActionButtonsView; // @synthesize rightActionButtonsView=_rightActionButtonsView;
 @property(retain, nonatomic) NCNotificationListCellActionButtonsView *leftActionButtonsView; // @synthesize leftActionButtonsView=_leftActionButtonsView;
-@property(copy, nonatomic) NSString *backgroundGroupName; // @synthesize backgroundGroupName=_backgroundGroupName;
-@property(nonatomic) struct CGPoint overrideCenter; // @synthesize overrideCenter=_overrideCenter;
-@property(nonatomic) double overrideAlpha; // @synthesize overrideAlpha=_overrideAlpha;
-@property(nonatomic) _Bool shouldOverrideForReveal; // @synthesize shouldOverrideForReveal=_shouldOverrideForReveal;
 @property(nonatomic, getter=isConfigured) _Bool configured; // @synthesize configured=_configured;
 @property(nonatomic) struct UIEdgeInsets insetMargins; // @synthesize insetMargins=_insetMargins;
+@property(readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(nonatomic) __weak id <NCNotificationListCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NCNotificationViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
+@property(copy, nonatomic) NSString *materialGroupNameBase; // @synthesize materialGroupNameBase=_materialGroupNameBase;
 @property(nonatomic) _Bool adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
 - (void).cxx_destruct;
-- (void)adjustForLegibilitySettingsChange:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 - (_Bool)adjustForContentSizeCategoryChange;
+- (_Bool)_delegateAllowsPerformingClipping;
 - (_Bool)_shouldPerformClipping;
 - (void)_resetClipping;
 - (void)_setupClipping;
@@ -88,7 +83,6 @@
 - (void)_configureClippingRevealViewsIfNecessary;
 - (void)_performDefaultActionForRight;
 - (void)_performDefaultActionForLeft;
-- (void)_resetRevealOverrides;
 - (void)notificationViewControllerDidEndUserInteraction:(id)arg1;
 - (void)notificationViewControllerWillBeginUserInteraction:(id)arg1;
 - (void)_updateTargetPosition:(double)arg1;
@@ -105,10 +99,9 @@
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (void)resetCellActionButtons;
 - (void)hintSideSwipeForDefaultAction;
-- (void)applyLayoutAttributes:(id)arg1;
 - (_Bool)_disableRasterizeInAnimations;
 - (void)resetCellScrollPositionAnimated:(_Bool)arg1;
-- (void)prepareForReuse;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)cellOpenButtonPressed:(id)arg1;
 - (void)cellClearButtonPressed:(id)arg1;
 - (void)cellSettingsButtonPressed:(id)arg1;

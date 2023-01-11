@@ -9,7 +9,7 @@
 #import <Pegasus/PGPictureInPictureRemoteObjectInterface-Protocol.h>
 #import <Pegasus/PGPictureInPictureViewControllerDelegate-Protocol.h>
 
-@class BKSProcessAssertion, NSArray, NSString, NSXPCConnection, PGPictureInPictureApplication, PGPictureInPictureViewController, PGPlaybackProgress;
+@class BKSProcessAssertion, NSArray, NSString, NSUUID, NSXPCConnection, PGPictureInPictureApplication, PGPictureInPictureViewController, PGPlaybackProgress;
 @protocol OS_dispatch_queue, PGPictureInPictureRemoteObjectDelegate;
 
 __attribute__((visibility("hidden")))
@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
     long long _controlsStyle;
     long long _currentState;
     BKSProcessAssertion *_processAssertion;
+    BKSProcessAssertion *_interruptionBeganFinishTaskAssertion;
+    NSUUID *_finishTaskInvalidationUUID;
     PGPictureInPictureViewController *_pictureInPictureViewController;
     _Bool _isPictureInPicturePossible;
     long long _pictureInPictureInterruptionCounter;
@@ -28,10 +30,12 @@ __attribute__((visibility("hidden")))
     _Bool _shouldShowLoadingIndicator;
     PGPlaybackProgress *_playbackProgress;
     NSArray *_loadedTimeRanges;
-    _Bool _isStartingStoppingOrCancellingPictureInPicture;
+    unsigned long long _transitioningState;
     id <PGPictureInPictureRemoteObjectDelegate> _delegate;
     struct {
         unsigned int pictureInPictureRemoteObject_shouldAcceptSetupRequest:1;
+        unsigned int pictureInPictureRemoteObject_shouldCancelActivePictureInPictureOnStart:1;
+        unsigned int pictureInPictureRemoteObject_shouldUpdateCancellationPolicyOnStart:1;
         unsigned int pictureInPictureRemoteObject_didCreatePictureInPictureViewController:1;
         unsigned int pictureInPictureRemoteObject_willShowPictureInPictureViewController:1;
         unsigned int pictureInPictureRemoteObject_didShowPictureInPictureViewController:1;
@@ -40,10 +44,12 @@ __attribute__((visibility("hidden")))
         unsigned int pictureInPictureRemoteObject_willDestroyPictureInPictureViewController:1;
     } _delegateRespondsTo;
     PGPictureInPictureApplication *_pictureInPictureApplication;
+    NSString *_sourceSceneSessionPersistentIdentifier;
     struct CGSize _preferredContentSize;
     struct CGRect _initialLayerFrame;
 }
 
+@property(readonly, nonatomic) NSString *sourceSceneSessionPersistentIdentifier; // @synthesize sourceSceneSessionPersistentIdentifier=_sourceSceneSessionPersistentIdentifier;
 @property(readonly, nonatomic) struct CGSize preferredContentSize; // @synthesize preferredContentSize=_preferredContentSize;
 @property(readonly, nonatomic) struct CGRect initialLayerFrame; // @synthesize initialLayerFrame=_initialLayerFrame;
 @property(readonly, nonatomic) PGPictureInPictureApplication *pictureInPictureApplication; // @synthesize pictureInPictureApplication=_pictureInPictureApplication;
@@ -58,17 +64,22 @@ __attribute__((visibility("hidden")))
 - (oneway void)setPlaybackProgress:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)setShouldShowLoadingIndicator:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)setShouldShowAlternateActionButtonImage:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (oneway void)setControlsStyle:(long long)arg1 animated:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (oneway void)setPictureInPictureShouldStartWhenEnteringBackground:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)cleanupWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (oneway void)stopPictureInPictureAnimated:(_Bool)arg1 withFinalInterfaceOrientation:(long long)arg2 finalLayerFrame:(struct CGRect)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (oneway void)setupStopAnimated:(_Bool)arg1 activateApplicationIfNeeded:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (oneway void)rotateContentContainer:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (oneway void)checkActivePictureInPictureCancellationPolicyWithCompletion:(CDUnknownBlockType)arg1;
 - (oneway void)updatePreferredContentSize:(struct CGSize)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (oneway void)updateSourceSceneSessionPersistentIdentifierForInteractiveTransitionAnimationUponBackgrounding:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)updateInitialLayerFrameForInteractiveTransitionAnimationUponBackgrounding:(struct CGRect)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)startPictureInPictureAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (oneway void)setupStartAnimated:(_Bool)arg1 hostedWindowHostingHandle:(id)arg2 preferredContentSize:(struct CGSize)arg3 initialInterfaceOrientation:(long long)arg4 initialLayerFrame:(struct CGRect)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (oneway void)setupStartAnimated:(_Bool)arg1 hostedWindowHostingHandle:(id)arg2 sceneSessionPersistentIdentifier:(id)arg3 preferredContentSize:(struct CGSize)arg4 initialInterfaceOrientation:(long long)arg5 initialLayerFrame:(struct CGRect)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (oneway void)initializePictureInPictureWithControlsStyle:(long long)arg1 preferredContentSize:(struct CGSize)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_tearDownAndNotifyClientAboutCancellation:(_Bool)arg1;
+- (void)_invalidateInterruptionBeganFinishTaskAssertion;
+- (id)_finishTaskAssertionForProcessIdentifier:(int)arg1;
 - (id)_processAssertionForProcessIdentifier:(int)arg1;
 - (void)invalidate;
 - (void)cancel;
@@ -76,9 +87,13 @@ __attribute__((visibility("hidden")))
 - (void)suspend;
 - (void)pictureInPictureInterruptionEnded;
 - (void)pictureInPictureInterruptionBegan;
+- (void)stopPictureInPictureAnimated:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)startPictureInPictureEnteringBackgroundAnimated:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 @property(nonatomic, getter=isPictureInPicturePossible) _Bool pictureInPicturePossible;
+@property(readonly, nonatomic) unsigned long long transitioningState;
 @property(readonly, nonatomic) _Bool isStartingStoppingOrCancellingPictureInPicture;
+@property(readonly, nonatomic) _Bool canCancelPictureInPicture;
+@property(readonly, nonatomic) _Bool canStopPictureInPicture;
 @property(readonly, nonatomic) _Bool shouldStartPictureInPictureEnteringBackground;
 @property(nonatomic) __weak id <PGPictureInPictureRemoteObjectDelegate> delegate;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
@@ -86,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)init;
 - (id)initWithConnection:(id)arg1;
+- (_Bool)matchesSceneSessionIdentifier:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

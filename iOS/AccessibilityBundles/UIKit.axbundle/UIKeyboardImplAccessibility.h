@@ -11,9 +11,15 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_axUpdateAutocorrectionSettings;
 - (void)_axShowKeyboardIfHidden;
+- (_Bool)_axShouldShowKeyboard;
+- (_Bool)_shouldMinimizeForHardwareKeyboard;
 - (void)showKeyboardIfNeeded;
 - (void)setInHardwareKeyboardMode:(_Bool)arg1;
+- (void)_axResetFKAFocusToFirstResponder;
+- (_Bool)callShouldDeleteWithWordCountForRapidDelete:(int)arg1 characterCountForRapidDelete:(int)arg2;
+- (_Bool)callShouldInsertText:(id)arg1;
 - (_Bool)callShouldReplaceExtendedRange:(long long)arg1 withText:(id)arg2 includeMarkedText:(_Bool)arg3;
 - (void)completeHandleKeyEvent:(id)arg1;
 - (void)updateLayoutForInterfaceOrientation:(long long)arg1;
@@ -37,8 +43,21 @@
 - (void)dismissKeyboard;
 - (void)setInputMode:(id)arg1 userInitiated:(_Bool)arg2;
 - (void)setShift:(_Bool)arg1 autoshift:(_Bool)arg2;
+- (_Bool)autocorrectionPreference;
 - (_Bool)autocorrectSpellingEnabled;
+- (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)_axHandleVoiceOverStatusChanged:(id)arg1;
+- (void)_axUnregisterForVoiceOverNotifications:(id)arg1;
+- (void)_axRegisterForVoiceOverNotifications:(id)arg1;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axSetIsObservingVoiceOverNotifications:(_Bool)arg1;
+- (_Bool)_axIsObservingVoiceOverNotifications;
+- (void)_axSetIsObservingAppLifecycleNotifications:(_Bool)arg1;
+- (_Bool)_axIsObservingAppLifecycleNotifications;
+- (void)_axSetIsHandwritingEnabled:(_Bool)arg1;
+- (_Bool)_axIsHandwritingEnabled;
 
 @end
 

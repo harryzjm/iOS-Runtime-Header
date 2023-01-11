@@ -20,7 +20,6 @@
     double _right;
 }
 
-+ (id)edgeInsetsWrapperWithNSEdgeInsets:(struct NSEdgeInsets)arg1;
 + (id)edgeInsetsWrapperWithIBEdgeInsets:(struct UIEdgeInsets)arg1;
 + (id)zeroEdgeInsets;
 @property(readonly, nonatomic) double right; // @synthesize right=_right;

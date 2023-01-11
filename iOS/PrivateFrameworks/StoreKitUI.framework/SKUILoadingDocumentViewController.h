@@ -9,6 +9,7 @@
 @class NSObject, NSString, SKUIActivityIndicatorView, SKUIActivityIndicatorViewElement, SKUILayoutCache, SKUILoadingTemplateViewElement, SKUIViewElementLayoutContext;
 @protocol OS_dispatch_source;
 
+__attribute__((visibility("hidden")))
 @interface SKUILoadingDocumentViewController <SKUIDocumentViewController>
 {
     SKUIActivityIndicatorViewElement *_activityIndicatorElement;

@@ -9,6 +9,7 @@
 
 @class NSMutableArray, NSString, SKUIVerticalLockupView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIEditorialCardCollectionViewCell <SKUIPerspectiveView, SKUIViewElementView>
 {
     NSMutableArray *_allLockupViews;

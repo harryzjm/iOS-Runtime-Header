@@ -14,7 +14,10 @@
 
 @interface _INPBPaymentRecord : PBCodable <_INPBPaymentRecord, NSSecureCoding, NSCopying>
 {
-    CDStruct_47fe53f2 _has;
+    struct {
+        unsigned int status:1;
+    } _has;
+    _Bool __encodeLegacyGloryData;
     int _status;
     _INPBCurrencyAmount *_currencyAmount;
     _INPBCurrencyAmount *_feeAmount;
@@ -24,6 +27,8 @@
     _INPBPaymentMethodValue *_paymentMethod;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(nonatomic) int status; // @synthesize status=_status;
 @property(retain, nonatomic) _INPBPaymentMethodValue *paymentMethod; // @synthesize paymentMethod=_paymentMethod;
 @property(retain, nonatomic) _INPBContact *payer; // @synthesize payer=_payer;
@@ -36,6 +41,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (int)StringAsStatus:(id)arg1;

@@ -6,30 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthKit/NSSecureCoding-Protocol.h>
+@class NSDate;
 
-@class NSArray, NSDate;
-
-@interface _HKFirstPartyWorkoutSnapshot : NSObject <NSSecureCoding>
+@interface _HKFirstPartyWorkoutSnapshot : NSObject
 {
+    double _elapsedTime;
+    NSDate *_snapshotDate;
     long long _state;
     unsigned long long _activityType;
-    NSDate *_startDate;
-    NSArray *_workoutEvents;
 }
 
-+ (_Bool)supportsSecureCoding;
 + (id)firstPartyWorkoutSnapshotWithCurrentWorkoutSnapshot:(id)arg1;
-@property(readonly, nonatomic) NSArray *workoutEvents; // @synthesize workoutEvents=_workoutEvents;
-@property(readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property(readonly, nonatomic) unsigned long long activityType; // @synthesize activityType=_activityType;
 @property(readonly, nonatomic) long long state; // @synthesize state=_state;
 - (void).cxx_destruct;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)description;
 - (double)durationForDate:(id)arg1;
-- (id)_initWithState:(long long)arg1 activityType:(unsigned long long)arg2 startDate:(id)arg3 workoutEvents:(id)arg4;
+- (id)_initWithState:(long long)arg1 activityType:(unsigned long long)arg2 elapsedTime:(double)arg3 snapshotDate:(id)arg4;
 
 @end
 

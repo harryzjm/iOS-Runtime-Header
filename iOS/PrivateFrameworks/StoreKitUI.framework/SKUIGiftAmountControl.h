@@ -10,6 +10,7 @@
 
 @class NSMutableArray, NSString, SKUIGiftConfiguration, UITextField, UIView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIGiftAmountControl : UIControl <UITextFieldDelegate>
 {
     NSMutableArray *_amountButtons;
@@ -23,6 +24,7 @@
 - (void).cxx_destruct;
 - (void)_updateButtonsWithTouch:(id)arg1;
 - (void)_reloadSelectedButton;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_textFieldDidEndEditing:(id)arg1;
 - (void)_textFieldDidChange:(id)arg1;
 - (void)_textFieldDidBeginEditing:(id)arg1;

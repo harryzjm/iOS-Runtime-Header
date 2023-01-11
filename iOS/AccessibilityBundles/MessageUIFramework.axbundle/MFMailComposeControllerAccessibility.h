@@ -11,8 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)viewDidLoad;
 - (void)_composeViewDidDraw:(id)arg1;
 - (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

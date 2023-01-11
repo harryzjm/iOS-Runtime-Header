@@ -10,7 +10,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 - (void)_removePlaceholderBackgroundView;
 
 @end

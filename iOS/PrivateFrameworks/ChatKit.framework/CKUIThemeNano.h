@@ -8,6 +8,7 @@
 {
 }
 
+- (id)browserBackgroundColor;
 - (id)messageAcknowledgmentBalloonColorForStyle:(long long)arg1;
 - (id)messageAcknowledgment:(long long)arg1 selectedAcknowledgmentImageColor:(long long)arg2;
 - (id)messageAcknowledgment:(long long)arg1 acknowledgmentImageColor:(long long)arg2;
@@ -20,6 +21,7 @@
 - (id)gray_unfilledBalloonColor;
 - (id)transcriptDeemphasizedTextColor;
 - (id)transcriptBigEmojiColor;
+- (id)transcriptNicknameTextColor;
 - (id)transcriptTextColor;
 - (id)transcriptBackgroundColor;
 - (id)blue_sendButtonColor;

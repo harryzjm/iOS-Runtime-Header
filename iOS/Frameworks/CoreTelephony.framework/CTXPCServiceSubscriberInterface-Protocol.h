@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CTXPCServiceSubscriptionContext, NSData, NSDictionary, NSString;
+@class CTServiceDescriptor, CTSubscriberAuthDataHolder, CTSubscriberAuthRequest, CTXPCServiceSubscriptionContext, NSData, NSString;
 
 @protocol CTXPCServiceSubscriberInterface
-- (void)setAllowedToLaunchSimUnlockDuringBuddy:(_Bool)arg1 completion:(void (^)(NSError *))arg2;
+- (void)getUserDefaultVoiceSubscriptionContext:(void (^)(CTXPCServiceSubscriptionContext *, NSError *))arg1;
+- (void)refreshUserAuthToken:(CTServiceDescriptor *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)getUserAuthToken:(CTServiceDescriptor *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
+- (void)authenticate:(CTServiceDescriptor *)arg1 request:(CTSubscriberAuthRequest *)arg2 completion:(void (^)(CTSubscriberAuthResult *, NSError *))arg3;
 - (void)SIMUnlockProcedureDidComplete;
 - (void)setActiveUserDataSelection:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setDefaultVoice:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setLabel:(CTXPCServiceSubscriptionContext *)arg1 label:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
-- (void)generateUICCAuthenticationInfo:(CTXPCServiceSubscriptionContext *)arg1 authParams:(NSDictionary *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)generateAuthenticationInfoUsingSim:(CTXPCServiceSubscriptionContext *)arg1 authParams:(CTSubscriberAuthDataHolder *)arg2 completion:(void (^)(CTSubscriberAuthDataHolder *, NSError *))arg3;
 - (void)copyLabel:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)getShortLabel:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)getSimLabel:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTSimLabel *, NSError *))arg2;
@@ -30,6 +33,7 @@
 - (void)copyLastKnownMobileSubscriberCountryCode:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)getMobileSubscriberHomeCountryList:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)isEsimFor:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(long long, NSError *))arg2;
+- (void)copyMobileSubscriberIsoSubregionCode:(NSString *)arg1 MNC:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)copyMobileSubscriberIsoCountryCode:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copyMobileSubscriberCountryCode:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)evaluateMobileSubscriberIdentity:(CTXPCServiceSubscriptionContext *)arg1 identity:(NSData *)arg2 completion:(void (^)(NSError *))arg3;
@@ -38,6 +42,7 @@
 - (void)copyMobileSubscriberIdentity:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copySIMIdentity:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copyFirmwareUpdateInfo:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)getTypeAllocationCode:(CTServiceDescriptor *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copyMobileEquipmentInfo:(void (^)(CTMobileEquipmentInfoList *, NSError *))arg1;
 - (void)getSIMTrayStatus:(void (^)(NSString *, NSError *))arg1;
 - (void)getSIMStatus:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;

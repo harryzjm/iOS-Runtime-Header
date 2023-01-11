@@ -19,6 +19,7 @@
 - (_Bool)shouldGroupAccessibilityChildren;
 - (_Bool)accessibilityElementsHidden;
 - (unsigned long long)accessibilityTraits;
+- (unsigned long long)_accessibilityAutomationType;
 - (long long)accessibilityContainerType;
 
 @end

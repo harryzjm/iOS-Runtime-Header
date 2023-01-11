@@ -6,6 +6,7 @@
 
 @class NSString, SKUIImageViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUIBrowseItemComponent
 {
     NSString *_title;

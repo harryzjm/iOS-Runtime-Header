@@ -7,15 +7,18 @@
 #import <CoreSpeech/CSEndpointAnalyzer-Protocol.h>
 
 @class CSAudioChunk, CSServerEndpointFeatures, NSDictionary, NSString;
-@protocol CSEndpointAnalyzerDelegate;
+@protocol CSEndpointAnalyzerDelegate, CSEndpointAnalyzerImplDelegate;
 
 @protocol CSEndpointAnalyzerImpl <CSEndpointAnalyzer>
 @property(nonatomic) unsigned long long activeChannel;
 @property(readonly, nonatomic) _Bool canProcessCurrentRequest;
+@property(nonatomic) __weak id <CSEndpointAnalyzerImplDelegate> implDelegate;
 @property(nonatomic) __weak id <CSEndpointAnalyzerDelegate> delegate;
-- (void)recordingStoppedForReason:(unsigned long long)arg1;
+- (double)trailingSilenceDurationAtEndpoint;
+- (void)recordingStoppedForReason:(long long)arg1;
+- (void)stopEndpointer;
 - (void)processAudioSamplesAsynchronously:(CSAudioChunk *)arg1;
-- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1;
+- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(NSDictionary *)arg2 recordSettings:(NSDictionary *)arg3;
 
 @optional
 @property(readonly, nonatomic) double elapsedTimeWithNoSpeech;

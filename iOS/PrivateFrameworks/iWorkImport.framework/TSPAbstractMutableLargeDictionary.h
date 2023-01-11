@@ -6,7 +6,7 @@
 
 #import <iWorkImport/TSPMutableLargeDictionarySegmentDelegate-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface TSPAbstractMutableLargeDictionary <TSPMutableLargeDictionarySegmentDelegate>
@@ -68,6 +68,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool hasMaxSegmentSize;
 @property(readonly, nonatomic) _Bool hasMaxSegmentObjectCount;
 @property(readonly, nonatomic) _Bool hasDelayedArchivingPriority;
+@property(readonly, nonatomic) NSString *packageLocatorForSegments;
 - (id)createDictionarySegment;
 - (id)convertObjectToSegmentObject:(id)arg1;
 - (id)convertSegmentObjectToObject:(id)arg1;

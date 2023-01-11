@@ -9,11 +9,12 @@
 #import <CarPlay/NSCopying-Protocol.h>
 #import <CarPlay/NSSecureCoding-Protocol.h>
 
-@class CPImageSet, CPTravelEstimates, NSArray, NSMeasurement, NSSet, NSUUID;
+@class CPImageSet, CPTravelEstimates, NSArray, NSMeasurement, NSSet, NSUUID, UIImage;
 
 @interface CPManeuver : NSObject <NSCopying, NSSecureCoding>
 {
     CPImageSet *_symbolSet;
+    UIImage *_junctionImage;
     NSArray *_instructionVariants;
     CPTravelEstimates *_initialTravelEstimates;
     NSArray *_attributedInstructionVariants;
@@ -25,12 +26,14 @@
     unsigned long long _junctionType;
     NSMeasurement *_junctionExitAngle;
     NSSet *_junctionElementAngles;
+    long long _displayStyle;
 }
 
 + (id)_descriptionForJunctionType:(unsigned long long)arg1;
 + (id)_descriptionForTrafficSide:(unsigned long long)arg1;
 + (id)_descriptionForManeuverType:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) long long displayStyle; // @synthesize displayStyle=_displayStyle;
 @property(copy, nonatomic) NSSet *junctionElementAngles; // @synthesize junctionElementAngles=_junctionElementAngles;
 @property(copy, nonatomic) NSMeasurement *junctionExitAngle; // @synthesize junctionExitAngle=_junctionExitAngle;
 @property(nonatomic) unsigned long long junctionType; // @synthesize junctionType=_junctionType;
@@ -42,8 +45,10 @@
 @property(copy, nonatomic) NSArray *attributedInstructionVariants; // @synthesize attributedInstructionVariants=_attributedInstructionVariants;
 @property(retain, nonatomic) CPTravelEstimates *initialTravelEstimates; // @synthesize initialTravelEstimates=_initialTravelEstimates;
 @property(copy, nonatomic) NSArray *instructionVariants; // @synthesize instructionVariants=_instructionVariants;
+@property(retain, nonatomic) UIImage *junctionImage; // @synthesize junctionImage=_junctionImage;
 @property(retain, nonatomic) CPImageSet *symbolSet; // @synthesize symbolSet=_symbolSet;
 - (void).cxx_destruct;
+@property(retain, nonatomic) UIImage *symbolImage;
 - (id)description;
 @property(readonly) NSArray *stringInstructionVariants;
 - (id)copyWithZone:(struct _NSZone *)arg1;

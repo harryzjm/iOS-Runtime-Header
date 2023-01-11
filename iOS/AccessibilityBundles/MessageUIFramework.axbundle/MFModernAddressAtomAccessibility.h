@@ -14,6 +14,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (_Bool)_accessibilityIsSpeakThisElement;
 - (_Bool)isAccessibilityElement;
 
 @end

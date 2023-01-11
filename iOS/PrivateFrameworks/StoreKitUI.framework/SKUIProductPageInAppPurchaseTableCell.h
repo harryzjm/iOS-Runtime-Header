@@ -6,6 +6,7 @@
 
 @class NSString, SKUIColorScheme, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface SKUIProductPageInAppPurchaseTableCell
 {
     SKUIColorScheme *_colorScheme;

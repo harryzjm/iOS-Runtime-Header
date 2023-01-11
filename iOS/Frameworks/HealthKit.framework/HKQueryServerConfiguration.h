@@ -4,26 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKObjectType, _HKFilter;
+@class HKObjectType, NSString, _HKFilter;
 
-__attribute__((visibility("hidden")))
 @interface HKQueryServerConfiguration
 {
     _Bool _shouldDeactivateAfterInitialResults;
     _Bool _shouldSuppressDataCollection;
     HKObjectType *_objectType;
+    NSString *_debugIdentifier;
     _HKFilter *_filter;
+    long long _qualityOfService;
+    double _activationTime;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) double activationTime; // @synthesize activationTime=_activationTime;
 @property(nonatomic) _Bool shouldSuppressDataCollection; // @synthesize shouldSuppressDataCollection=_shouldSuppressDataCollection;
 @property(nonatomic) _Bool shouldDeactivateAfterInitialResults; // @synthesize shouldDeactivateAfterInitialResults=_shouldDeactivateAfterInitialResults;
+@property(nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property(retain, nonatomic) _HKFilter *filter; // @synthesize filter=_filter;
-@property(retain, nonatomic) HKObjectType *objectType; // @synthesize objectType=_objectType;
+@property(copy, nonatomic) NSString *debugIdentifier; // @synthesize debugIdentifier=_debugIdentifier;
+@property(copy, nonatomic) HKObjectType *objectType; // @synthesize objectType=_objectType;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 
 @end
 

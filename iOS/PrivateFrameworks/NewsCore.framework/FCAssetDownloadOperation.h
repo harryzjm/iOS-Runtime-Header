@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FCNetworkBehaviorMonitor, NSData, NSDictionary, NSError, NSHTTPURLResponse, NSString, NSURL, NSURLSessionTask;
+@class FCNetworkBehaviorMonitor, NSData, NSDictionary, NSError, NSHTTPURLResponse, NSString, NSURL;
 
 @interface FCAssetDownloadOperation
 {
@@ -16,7 +16,6 @@
     FCNetworkBehaviorMonitor *_networkBehaviorMonitor;
     CDUnknownBlockType _fileDownloadCompletionHandler;
     CDUnknownBlockType _dataDownloadCompletionHandler;
-    NSURLSessionTask *_downloadTask;
     NSURL *_downloadedFileURL;
     NSData *_downloadedData;
     NSString *_requestUUID;
@@ -28,6 +27,7 @@
     NSError *_error;
 }
 
++ (id)sharedURLRequestScheduler;
 + (id)sharedURLSession;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(nonatomic) unsigned long long responseSize; // @synthesize responseSize=_responseSize;
@@ -38,7 +38,6 @@
 @property(retain, nonatomic) NSString *requestUUID; // @synthesize requestUUID=_requestUUID;
 @property(retain, nonatomic) NSData *downloadedData; // @synthesize downloadedData=_downloadedData;
 @property(retain, nonatomic) NSURL *downloadedFileURL; // @synthesize downloadedFileURL=_downloadedFileURL;
-@property(retain) NSURLSessionTask *downloadTask; // @synthesize downloadTask=_downloadTask;
 @property(copy, nonatomic) CDUnknownBlockType dataDownloadCompletionHandler; // @synthesize dataDownloadCompletionHandler=_dataDownloadCompletionHandler;
 @property(copy, nonatomic) CDUnknownBlockType fileDownloadCompletionHandler; // @synthesize fileDownloadCompletionHandler=_fileDownloadCompletionHandler;
 @property(retain, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor; // @synthesize networkBehaviorMonitor=_networkBehaviorMonitor;
@@ -53,7 +52,6 @@
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (_Bool)validateOperation;
-- (void)setRelativePriority:(long long)arg1;
 
 @end
 

@@ -9,6 +9,7 @@
 
 @class NSString, SKUIArtwork, SKUIEmbeddedMediaView, SKUIMediaComponent;
 
+__attribute__((visibility("hidden")))
 @interface SKUIMediaPageSection <SKUIArtworkRequestDelegate, SKUIEmbeddedMediaViewDelegate>
 {
     SKUIArtwork *_artwork;

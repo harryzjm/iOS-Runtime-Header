@@ -6,22 +6,20 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <EventKitUI/CNAutocompleteResultsTableViewControllerDelegate-Protocol.h>
+#import <EventKitUI/CNComposeRecipientTextViewDelegate-Protocol.h>
 #import <EventKitUI/CNContactPickerDelegate-Protocol.h>
-#import <EventKitUI/MFAutocompleteResultsTableViewControllerDelegate-Protocol.h>
-#import <EventKitUI/MFComposeRecipientTextViewDelegate-Protocol.h>
-#import <EventKitUI/MFContactsSearchConsumer-Protocol.h>
 
-@class CNAutocompleteFetchContext, EKEvent, MFAutocompleteResultsTableViewController, MFComposeRecipientTextView, MFContactsSearchManager, MFSearchShadowView, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSNumber, NSOperationQueue, NSString, UIKeyboard, UIScrollView, UITableView;
+@class CNAutocompleteFetchContext, CNAutocompleteResultsTableViewController, CNAutocompleteSearchManager, CNComposeRecipientTextView, EKEvent, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSNumber, NSOperationQueue, NSString, UIKeyboard, UIScrollView, UITableView;
 @protocol EKEventAttendeePickerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface EKEventAttendeePicker : UIViewController <MFContactsSearchConsumer, MFComposeRecipientTextViewDelegate, MFAutocompleteResultsTableViewControllerDelegate, CNContactPickerDelegate>
+@interface EKEventAttendeePicker : UIViewController <CNComposeRecipientTextViewDelegate, CNAutocompleteResultsTableViewControllerDelegate, CNContactPickerDelegate>
 {
     NSArray *_recipients;
-    MFComposeRecipientTextView *_composeRecipientView;
+    CNComposeRecipientTextView *_composeRecipientView;
     UIScrollView *_recipientScrollView;
     UITableView *_searchResultsView;
-    MFSearchShadowView *_shadowView;
     _Bool _showingSearchField;
     UIKeyboard *_keyboard;
     NSNumber *_lastSearchId;
@@ -35,16 +33,18 @@ __attribute__((visibility("hidden")))
     _Bool _suppressAvailabilityRequests;
     NSDate *_overriddenEventStartDate;
     NSDate *_overriddenEventEndDate;
-    MFContactsSearchManager *_searchManager;
+    CNAutocompleteSearchManager *_searchManager;
     NSMutableArray *_searchResults;
-    MFAutocompleteResultsTableViewController *_autocompleteTableViewController;
+    CNAutocompleteResultsTableViewController *_autocompleteTableViewController;
     CNAutocompleteFetchContext *_fetchContext;
+    _Bool _hasChanges;
     NSString *_searchAccountID;
     id <EKEventAttendeePickerDelegate> _addressValidationDelegate;
 }
 
 + (_Bool)_participantHasResponded:(id)arg1;
 + (id)_addressForRecipient:(id)arg1;
+@property(nonatomic) _Bool hasChanges; // @synthesize hasChanges=_hasChanges;
 @property(nonatomic) __weak id <EKEventAttendeePickerDelegate> addressValidationDelegate; // @synthesize addressValidationDelegate=_addressValidationDelegate;
 @property(copy, nonatomic) NSString *searchAccountID; // @synthesize searchAccountID=_searchAccountID;
 - (void).cxx_destruct;
@@ -80,12 +80,12 @@ __attribute__((visibility("hidden")))
 - (void)consumeCorecipientSearchResults:(id)arg1 taskID:(id)arg2;
 - (void)consumeAutocompleteSearchResults:(id)arg1 taskID:(id)arg2;
 - (id)_searchManager;
+- (void)scrollComposeViewToEnd;
 - (_Bool)_zeroKeyworkSearchEnabled;
 - (double)_maxScrollerHeight;
 - (void)_showSearchResultsView;
 - (void)_hideSearchResultsViewAndCancelOutstandingSearches:(_Bool)arg1;
 - (id)_searchResultsView;
-- (id)_shadowView;
 - (void)_copyRecipientsFromComposeView;
 - (void)_setAtomPresentationOption:(unsigned long long)arg1 forRecipient:(id)arg2;
 - (void)_requestAvailabilityForRecipients:(id)arg1;
@@ -95,11 +95,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *addresses;
 @property(readonly, nonatomic) NSString *remainingText;
 - (void)commitRemainingText;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 event:(id)arg2 overriddenEventStartDate:(id)arg3 overriddenEventEndDate:(id)arg4;
+- (id)initWithFrame:(struct CGRect)arg1 event:(id)arg2 calendar:(id)arg3 overriddenEventStartDate:(id)arg4 overriddenEventEndDate:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

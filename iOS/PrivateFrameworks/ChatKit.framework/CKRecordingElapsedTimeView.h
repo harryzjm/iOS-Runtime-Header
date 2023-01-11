@@ -8,6 +8,7 @@
 
 @class NSDate, NSDateComponentsFormatter, NSTimer, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface CKRecordingElapsedTimeView : UIView
 {
     NSDateComponentsFormatter *__durationFormatter;

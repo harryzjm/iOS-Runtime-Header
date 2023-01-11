@@ -10,13 +10,11 @@
 
 @interface FBSystemAppProxyServiceServer : FBSServiceFacility
 {
-    FBServiceClientAuthenticator *_badgeValueAuthenticator;
-    FBServiceClientAuthenticator *_deleteSnapshotsAuthenticator;
     FBServiceClientAuthenticator *_shutdownAuthenticator;
     FBServiceClientAuthenticator *_keyboardFocusAuthenticator;
-    FBServiceClientAuthenticator *_dataResetAuthenticator;
 }
 
++ (id)targetQueue;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)noteDidReceiveMessage:(id)arg1 withType:(long long)arg2 fromClient:(id)arg3;
@@ -28,16 +26,8 @@
 - (void)_handleTerminateApplication:(id)arg1 forClient:(id)arg2;
 - (void)_handleActions:(id)arg1 forClient:(id)arg2;
 - (void)_handleGetProcessHandle:(id)arg1 forClient:(id)arg2;
-- (void)_handleActivateApplication:(id)arg1 forClient:(id)arg2;
-- (void)_handleCanActivateApplication:(id)arg1 forClient:(id)arg2;
 - (void)_handleGetPasscodeLockedOrBlockedStatus:(id)arg1 forClient:(id)arg2;
 - (void)_handleSystemApplicationBundleIdentifier:(id)arg1 forClient:(id)arg2;
-- (void)_handleSuspendApplication:(id)arg1 forClient:(id)arg2;
-- (void)_handleDeleteAllApplicationSnapshots:(id)arg1 forClient:(id)arg2;
-- (void)_handleDataReset:(id)arg1 forClient:(id)arg2;
-- (void)_handleGetBadgeValue:(id)arg1 forClient:(id)arg2;
-- (void)_handleSetBadgeValue:(id)arg1 forClient:(id)arg2;
-- (void)_handleUIAppCheckIn:(id)arg1 forClient:(id)arg2;
 - (id)_initWithQueue:(id)arg1;
 
 @end

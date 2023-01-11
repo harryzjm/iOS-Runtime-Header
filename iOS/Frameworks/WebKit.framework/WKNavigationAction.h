@@ -8,7 +8,7 @@
 
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSString, NSURL, NSURLRequest, WKFrameInfo, _WKUserInitiatedAction;
+@class NSString, NSURL, NSURLRequest, WKFrameInfo, WKNavigation, _WKUserInitiatedAction;
 
 @interface WKNavigationAction : NSObject <WKObject>
 {
@@ -16,6 +16,7 @@
 }
 
 @property(readonly) struct Object *_apiObject;
+@property(readonly, nonatomic) long long modifierFlags;
 @property(readonly, nonatomic) struct CGPoint _clickLocationInRootViewCoordinates;
 @property(readonly, nonatomic) long long _syntheticClickType;
 @property(readonly, copy, nonatomic) NSURLRequest *request;
@@ -24,9 +25,11 @@
 @property(readonly, copy, nonatomic) WKFrameInfo *sourceFrame;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
+@property(readonly, nonatomic) WKNavigation *_mainFrameNavigation;
 @property(readonly, nonatomic) _Bool _isRedirect;
 @property(readonly, nonatomic) _WKUserInitiatedAction *_userInitiatedAction;
 @property(readonly, nonatomic) _Bool _shouldOpenExternalURLs;
+@property(readonly, nonatomic) _Bool _shouldPerformDownload;
 @property(readonly, nonatomic) _Bool _shouldOpenAppLinks;
 @property(readonly, nonatomic) _Bool _shouldOpenExternalSchemes;
 @property(readonly, nonatomic) _Bool _canHandleRequest;

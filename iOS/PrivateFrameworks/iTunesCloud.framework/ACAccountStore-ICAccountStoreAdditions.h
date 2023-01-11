@@ -16,6 +16,11 @@
 @property(retain, nonatomic, setter=ic_setActiveStoreAccount:) ACAccount *ic_activeStoreAccount;
 @property(readonly, nonatomic) ACAccount *ic_primaryAppleAccount;
 @property(readonly, copy, nonatomic) NSArray *ic_allStoreAccounts;
+- (id)ic_storeAccountForStoreAccountID:(id)arg1 error:(id *)arg2;
+- (id)ic_activeStoreAccountWithError:(id *)arg1;
+- (id)ic_allStoreAccountsWithError:(id *)arg1;
+- (void)ic_localStoreAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (void)ic_storeAccountForHomeUserIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)ic_storeAccountTypeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)ic_storeAccountForStoreAccountID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)ic_primaryAppleAccountWithCompletion:(CDUnknownBlockType)arg1;

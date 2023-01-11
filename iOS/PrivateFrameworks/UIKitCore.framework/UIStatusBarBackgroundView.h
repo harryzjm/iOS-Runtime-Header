@@ -4,20 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIImageView, UIStatusBarCorners, UIStatusBarStyleAttributes;
+@class UIImageView, UIStatusBarStyleAttributes;
 
 __attribute__((visibility("hidden")))
 @interface UIStatusBarBackgroundView
 {
     UIStatusBarStyleAttributes *_style;
-    UIStatusBarCorners *_topCorners;
     UIImageView *_glowView;
     _Bool _glowEnabled;
     _Bool _suppressGlow;
 }
 
 - (void).cxx_destruct;
-- (_Bool)_topCornersAreRounded;
 - (id)_glowImage;
 - (id)_baseImage;
 - (id)_backgroundImageName;

@@ -22,6 +22,7 @@
     _Bool _autoPlayEnabled;
     _Bool _shouldResume;
     _Bool _shouldResumeAfterLoad;
+    _Bool _paused;
     SXImageResource *_imageResource;
     id <SXImageViewDelegate> _delegate;
     SXAnimatedImage *_animatedImage;
@@ -46,6 +47,7 @@
     struct CGPoint _previousPoint;
 }
 
+@property(nonatomic) _Bool paused; // @synthesize paused=_paused;
 @property(nonatomic) struct CGPoint previousPoint; // @synthesize previousPoint=_previousPoint;
 @property(retain, nonatomic) UILongPressGestureRecognizer *scrubGesture; // @synthesize scrubGesture=_scrubGesture;
 @property(nonatomic) unsigned long long intendedFrameIndex; // @synthesize intendedFrameIndex=_intendedFrameIndex;
@@ -57,8 +59,8 @@
 @property(retain, nonatomic) NSMapTable *interestTable; // @synthesize interestTable=_interestTable;
 @property(nonatomic) unsigned long long highQualityInterest; // @synthesize highQualityInterest=_highQualityInterest;
 @property(nonatomic) unsigned long long preferredQualityInterest; // @synthesize preferredQualityInterest=_preferredQualityInterest;
-@property(retain, nonatomic) UIImage *highQualityImage; // @synthesize highQualityImage=_highQualityImage;
-@property(retain, nonatomic) UIImage *preferredQualityImage; // @synthesize preferredQualityImage=_preferredQualityImage;
+@property(nonatomic) __weak UIImage *highQualityImage; // @synthesize highQualityImage=_highQualityImage;
+@property(nonatomic) __weak UIImage *preferredQualityImage; // @synthesize preferredQualityImage=_preferredQualityImage;
 @property(nonatomic) struct CGSize preferredQualityLoadingImageSize; // @synthesize preferredQualityLoadingImageSize=_preferredQualityLoadingImageSize;
 @property(copy, nonatomic) CDUnknownBlockType highQualityImageRequestCancelHandler; // @synthesize highQualityImageRequestCancelHandler=_highQualityImageRequestCancelHandler;
 @property(copy, nonatomic) CDUnknownBlockType preferredQualityImageRequestCancelHandler; // @synthesize preferredQualityImageRequestCancelHandler=_preferredQualityImageRequestCancelHandler;
@@ -89,7 +91,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)resume;
 - (void)pause;
-@property(readonly, nonatomic) _Bool paused;
 - (void)setFrameIndex:(unsigned long long)arg1 allowNearest:(_Bool)arg2;
 - (void)showNextFrame;
 - (void)setAnimatedImage:(id)arg1;

@@ -4,39 +4,52 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class STAllowanceProgressGroupSpecifierProvider, STDevicePickupsUsageGroupSpecifierProvider, STMostUsedGroupSpecifierProvider, STNoUsageDataView, STNotificationsUsageGroupSpecifierProvider, STScreenTimeUsageGroupSpecifierProvider, STTestGroupSpecifierProvider, UILabel;
+@class NSLayoutConstraint, STAllowanceProgressGroupSpecifierProvider, STDatePickerBar, STDevicePickupsUsageGroupSpecifierProvider, STMostUsedGroupSpecifierProvider, STNoUsageDataView, STNotificationsUsageGroupSpecifierProvider, STScreenTimeUsageGroupSpecifierProvider, STSegmentedControlGroupSpecifierProvider, STTestGroupSpecifierProvider;
 
+__attribute__((visibility("hidden")))
 @interface STUsageDetailListController
 {
     STTestGroupSpecifierProvider *_testProvider;
+    STSegmentedControlGroupSpecifierProvider *_segmentedControlProvider;
     STScreenTimeUsageGroupSpecifierProvider *_screenTimeProvider;
     STAllowanceProgressGroupSpecifierProvider *_allowancesProvider;
     STMostUsedGroupSpecifierProvider *_mostUsedProvider;
     STNotificationsUsageGroupSpecifierProvider *_notificationsProvider;
     STDevicePickupsUsageGroupSpecifierProvider *_pickupsProvider;
-    UILabel *_titleLabel;
     STNoUsageDataView *_noUsageDataView;
+    STDatePickerBar *_datePickerBar;
+    NSLayoutConstraint *_datePickerTopConstraint;
+    NSLayoutConstraint *_datePickerBottomConstraint;
 }
 
-@property(readonly, nonatomic) STNoUsageDataView *noUsageDataView; // @synthesize noUsageDataView=_noUsageDataView;
-@property(readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(retain, nonatomic) STDevicePickupsUsageGroupSpecifierProvider *pickupsProvider; // @synthesize pickupsProvider=_pickupsProvider;
-@property(retain, nonatomic) STNotificationsUsageGroupSpecifierProvider *notificationsProvider; // @synthesize notificationsProvider=_notificationsProvider;
-@property(retain, nonatomic) STMostUsedGroupSpecifierProvider *mostUsedProvider; // @synthesize mostUsedProvider=_mostUsedProvider;
-@property(retain, nonatomic) STAllowanceProgressGroupSpecifierProvider *allowancesProvider; // @synthesize allowancesProvider=_allowancesProvider;
-@property(retain, nonatomic) STScreenTimeUsageGroupSpecifierProvider *screenTimeProvider; // @synthesize screenTimeProvider=_screenTimeProvider;
-@property(retain, nonatomic) STTestGroupSpecifierProvider *testProvider; // @synthesize testProvider=_testProvider;
+@property(retain) NSLayoutConstraint *datePickerBottomConstraint; // @synthesize datePickerBottomConstraint=_datePickerBottomConstraint;
+@property(retain) NSLayoutConstraint *datePickerTopConstraint; // @synthesize datePickerTopConstraint=_datePickerTopConstraint;
+@property(retain) STDatePickerBar *datePickerBar; // @synthesize datePickerBar=_datePickerBar;
+@property(retain) STNoUsageDataView *noUsageDataView; // @synthesize noUsageDataView=_noUsageDataView;
+@property(retain) STDevicePickupsUsageGroupSpecifierProvider *pickupsProvider; // @synthesize pickupsProvider=_pickupsProvider;
+@property(retain) STNotificationsUsageGroupSpecifierProvider *notificationsProvider; // @synthesize notificationsProvider=_notificationsProvider;
+@property(retain) STMostUsedGroupSpecifierProvider *mostUsedProvider; // @synthesize mostUsedProvider=_mostUsedProvider;
+@property(retain) STAllowanceProgressGroupSpecifierProvider *allowancesProvider; // @synthesize allowancesProvider=_allowancesProvider;
+@property(retain) STScreenTimeUsageGroupSpecifierProvider *screenTimeProvider; // @synthesize screenTimeProvider=_screenTimeProvider;
+@property(retain) STSegmentedControlGroupSpecifierProvider *segmentedControlProvider; // @synthesize segmentedControlProvider=_segmentedControlProvider;
+@property(retain) STTestGroupSpecifierProvider *testProvider; // @synthesize testProvider=_testProvider;
 - (void).cxx_destruct;
-- (void)showDeviceSelectionAlertController:(id)arg1;
-- (void)showNoUsageDataViewIfNeeded;
+- (void)scrollViewDidScroll:(id)arg1;
+- (void)_rightDatePickerBarButtonTapped:(id)arg1;
+- (void)_leftDatePickerBarButtonTapped:(id)arg1;
+- (void)_setSelectedDeviceIdentifier:(id)arg1;
+- (void)_showDeviceSelectionAlertController:(id)arg1;
+- (void)_setSelectedUsageReportType:(unsigned long long)arg1;
+- (void)_selectedUsageReportDidChangeFrom:(id)arg1 to:(id)arg2;
+- (void)_devicesDidChangeFrom:(id)arg1 to:(id)arg2;
+- (void)_hasUsageDataDidChange:(_Bool)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setCoordinator:(id)arg1;
-- (void)scrollViewDidScroll:(id)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)dealloc;
-- (id)initWithRootViewModelCoordinator:(id)arg1;
 
 @end
 

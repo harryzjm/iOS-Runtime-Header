@@ -61,6 +61,7 @@
 - (id)oneUpPresentationMediaProvider:(id)arg1;
 - (id)oneUpPresentationDataSourceManager:(id)arg1;
 - (void)_startOneUpPresentationForModel:(id)arg1;
+- (long long)oneUpPresentationOrigin:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_updateSeenState;
 - (_Bool)_isModelUnseen:(id)arg1;
@@ -94,8 +95,8 @@
 - (id)init;
 
 // Remaining properties
-@property(readonly, nonatomic) const struct __CFString *accessoryButtonEventTrackerKey;
 @property(readonly, nonatomic) NSString *accessoryButtonTitle;
+@property(readonly, nonatomic) Class collectionViewItemClass;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

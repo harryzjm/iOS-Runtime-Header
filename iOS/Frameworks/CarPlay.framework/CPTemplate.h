@@ -12,28 +12,30 @@
 #import <CarPlay/CPTemplateDelegate-Protocol.h>
 #import <CarPlay/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSMutableArray, NSOperationQueue, NSString, NSUUID;
+@class CPBarButton, NAFuture, NSArray, NSString, NSUUID;
 @protocol CPBaseTemplateProviding, CPTemplateDelegate;
 
 @interface CPTemplate : NSObject <CPBarButtonDelegate, CPBarButtonProviding, CPControlDelegate, CPTemplateDelegate, NSSecureCoding>
 {
+    CPBarButton *_backButton;
     id _userInfo;
     id <CPBaseTemplateProviding> _templateProvider;
+    NAFuture *_templateProviderFuture;
     NSUUID *_identifier;
     id <CPTemplateDelegate> _templateDelegate;
-    NSMutableArray *_internalLeadingBarButtons;
-    NSMutableArray *_internalTrailingBarButtons;
-    NSOperationQueue *_deferredOperationQueue;
+    NSArray *_internalLeadingBarButtons;
+    NSArray *_internalTrailingBarButtons;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(retain, nonatomic) NSOperationQueue *deferredOperationQueue; // @synthesize deferredOperationQueue=_deferredOperationQueue;
-@property(retain, nonatomic) NSMutableArray *internalTrailingBarButtons; // @synthesize internalTrailingBarButtons=_internalTrailingBarButtons;
-@property(retain, nonatomic) NSMutableArray *internalLeadingBarButtons; // @synthesize internalLeadingBarButtons=_internalLeadingBarButtons;
+@property(retain, nonatomic) NSArray *internalTrailingBarButtons; // @synthesize internalTrailingBarButtons=_internalTrailingBarButtons;
+@property(retain, nonatomic) NSArray *internalLeadingBarButtons; // @synthesize internalLeadingBarButtons=_internalLeadingBarButtons;
 @property(nonatomic) __weak id <CPTemplateDelegate> templateDelegate; // @synthesize templateDelegate=_templateDelegate;
 @property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property(retain, nonatomic) NAFuture *templateProviderFuture; // @synthesize templateProviderFuture=_templateProviderFuture;
 @property(retain, nonatomic) id <CPBaseTemplateProviding> templateProvider; // @synthesize templateProvider=_templateProvider;
 @property(retain, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
+@property(retain, nonatomic) CPBarButton *backButton; // @synthesize backButton=_backButton;
 - (void).cxx_destruct;
 - (_Bool)barButton:(id)arg1 setTitle:(id)arg2;
 - (_Bool)barButton:(id)arg1 setImage:(id)arg2;
@@ -45,7 +47,8 @@
 - (void)handleActionForControlIdentifier:(id)arg1;
 @property(retain, nonatomic) NSArray *trailingNavigationBarButtons;
 @property(retain, nonatomic) NSArray *leadingNavigationBarButtons;
-- (void)dealloc;
+- (void)invalidateTemplateProvider;
+- (void)connectTemplateProvider:(id)arg1;
 @property(readonly, copy) NSString *description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

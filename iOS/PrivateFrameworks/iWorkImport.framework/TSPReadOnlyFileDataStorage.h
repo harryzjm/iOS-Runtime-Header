@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4;
+- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4 error:(id *)arg5;
 - (_Bool)readOnly;
 - (void)performReadWithAccessor:(CDUnknownBlockType)arg1;
 - (id)initWithURL:(id)arg1;

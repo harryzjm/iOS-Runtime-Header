@@ -16,6 +16,7 @@
 
 @class IKAppDocument, NSArray, NSMapTable, NSString, SKUIIndexBarControlController, SKUIResourceLoader, SKUIStackTemplateElement, SKUIStorePageSectionsViewController;
 
+__attribute__((visibility("hidden")))
 @interface SKUIStackDocumentViewController <SKUIIndexBarControlControllerDataSource, SKUIIndexBarControlControllerDelegate, SKUIIndexBarEntryListControllerDelegate, SKUIModalSourceViewProvider, SKUIViewControllerTesting, SKUICollectionViewPullToRefreshDelegate, SKUIStorePageSectionsDelegate, SKUIResourceLoaderDelegate, SKUIDocumentViewController>
 {
     IKAppDocument *_document;

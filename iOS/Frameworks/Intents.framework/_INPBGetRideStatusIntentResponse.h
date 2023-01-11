@@ -15,15 +15,20 @@
 @interface _INPBGetRideStatusIntentResponse : PBCodable <_INPBGetRideStatusIntentResponse, NSSecureCoding, NSCopying>
 {
     struct _has;
+    _Bool __encodeLegacyGloryData;
     _INPBRideStatus *_rideStatus;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(retain, nonatomic) _INPBRideStatus *rideStatus; // @synthesize rideStatus=_rideStatus;
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(readonly, nonatomic) _Bool hasRideStatus;

@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <objc/NSObject.h>
+
 #import <CallHistory/NSCopying-Protocol.h>
 #import <CallHistory/NSSecureCoding-Protocol.h>
 
 @class CHHandle, CNContact, NSDate, NSMutableArray, NSNumber, NSSet, NSString, NSUUID, NSValue;
-@protocol CHPhoneBookManagerProtocol;
+@protocol CHPhoneBookManagerProtocol, OS_dispatch_queue;
 
-@interface CHRecentCall <NSSecureCoding, NSCopying>
+@interface CHRecentCall : NSObject <NSSecureCoding, NSCopying>
 {
     _Bool _read;
     _Bool _callerIdIsBlocked;
@@ -25,8 +27,9 @@
     long long _handleType;
     NSUUID *_localParticipantUUID;
     NSUUID *_outgoingLocalParticipantUUID;
-    CHHandle *_localParticipantHandle;
     NSSet *_remoteParticipantHandles;
+    long long _verificationStatus;
+    CHHandle *_localParticipantHandle;
     NSString *_uniqueId;
     NSString *_serviceProvider;
     NSNumber *_bytesOfDataUsed;
@@ -49,6 +52,7 @@
     NSString *_addressBookCallerIDMultiValueId;
     NSString *_devicePhoneId;
     NSString *_callerId;
+    NSObject<OS_dispatch_queue> *_queue;
     NSString *_callerName;
     NSMutableArray *_callOccurrences;
     NSString *_callerIdLabel;
@@ -74,6 +78,29 @@
 + (id)getLocationForCallerId:(id)arg1 andIsoCountryCode:(id)arg2;
 + (id)unarchivedObjectFromData:(id)arg1 error:(id *)arg2;
 + (id)unarchivedObjectClasses;
++ (id)predicateForCallsWithAnyUniqueIDs:(id)arg1;
++ (id)predicateForCallsWithUniqueID:(id)arg1;
++ (id)predicateForCallsWithAnyTTYTypes:(id)arg1;
++ (id)predicateForCallsWithTTYType:(long long)arg1;
++ (id)predicateForCallsWithStatusRead:(_Bool)arg1;
++ (id)predicateForCallsWithStatusOriginated:(_Bool)arg1;
++ (id)predicateForCallsWithStatusAnswered:(_Bool)arg1;
++ (id)predicateForCallsWithStatus:(unsigned int)arg1;
++ (id)predicateForCallsWithAnyServiceProviders:(id)arg1;
++ (id)predicateForCallsWithServiceProvider:(id)arg1;
++ (id)predicateForCallsWithAnyRemoteParticipantHandleNormalizedValues:(id)arg1;
++ (id)predicateForCallsWithAnyRemoteParticipantHandleValues:(id)arg1;
++ (id)predicateForCallsWithAnyRemoteParticipantHandleTypes:(id)arg1;
++ (id)predicateForCallsWithAnyRemoteParticipantHandles:(id)arg1;
++ (id)predicateForCallsWithRemoteParticipantHandleNormalizedValue:(id)arg1;
++ (id)predicateForCallsWithRemoteParticipantHandleValue:(id)arg1;
++ (id)predicateForCallsWithRemoteParticipantHandleType:(long long)arg1;
++ (id)predicateForCallsWithRemoteParticipantHandle:(id)arg1;
++ (id)predicateForCallsWithRemoteParticipantCount:(long long)arg1;
++ (id)predicateForCallsWithAnyMediaTypes:(id)arg1;
++ (id)predicateForCallsWithMediaType:(long long)arg1;
++ (id)predicateForCallsWithCategory:(unsigned int)arg1;
++ (id)predicateForCallsBetweenStartDate:(id)arg1 endDate:(id)arg2;
 @property _Bool mobileOriginated; // @synthesize mobileOriginated=_mobileOriginated;
 @property _Bool answered; // @synthesize answered=_answered;
 @property(retain) id <CHPhoneBookManagerProtocol> phoneBookManager; // @synthesize phoneBookManager=_phoneBookManager;
@@ -84,6 +111,7 @@
 @property(copy, nonatomic) NSString *callerIdLabel; // @synthesize callerIdLabel=_callerIdLabel;
 @property(retain, nonatomic) NSMutableArray *callOccurrences; // @synthesize callOccurrences=_callOccurrences;
 @property(copy, nonatomic) NSString *callerName; // @synthesize callerName=_callerName;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(copy) NSString *callerId; // @synthesize callerId=_callerId;
 @property(copy) NSString *devicePhoneId; // @synthesize devicePhoneId=_devicePhoneId;
 @property(nonatomic) unsigned int callType; // @synthesize callType=_callType;
@@ -110,17 +138,18 @@
 @property(copy, nonatomic) NSString *serviceProvider; // @synthesize serviceProvider=_serviceProvider;
 @property(nonatomic) unsigned int callStatus; // @synthesize callStatus=_callStatus;
 @property(copy, nonatomic) NSString *uniqueId; // @synthesize uniqueId=_uniqueId;
-@property(copy, nonatomic) NSSet *remoteParticipantHandles; // @synthesize remoteParticipantHandles=_remoteParticipantHandles;
 @property(retain, nonatomic) CHHandle *localParticipantHandle; // @synthesize localParticipantHandle=_localParticipantHandle;
+@property(nonatomic) long long verificationStatus; // @synthesize verificationStatus=_verificationStatus;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
+- (id)executeSyncWithResult:(CDUnknownBlockType)arg1;
+- (void)executeSync:(CDUnknownBlockType)arg1;
+- (void)execute:(CDUnknownBlockType)arg1;
 - (void)fixCallTypeInfo;
 - (void)updateTTYAndMediaType;
 - (id)callOccurrencesAsStringSync;
 - (id)description;
 - (id)descriptionInDepth;
-- (_Bool)isAddressBookContactASuggestion;
-- (_Bool)isAddressBookContactASuggestionSync;
 - (_Bool)representsCallAtDate:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)callerIdSubStringForDisplay;
@@ -144,6 +173,7 @@
 - (void)fetchAndSetFullContactSync;
 - (void)fetchAndSetContactIdentifierSync;
 @property(nonatomic) _Bool read; // @synthesize read=_read;
+@property(copy, nonatomic) NSSet *remoteParticipantHandles; // @synthesize remoteParticipantHandles=_remoteParticipantHandles;
 @property(retain, nonatomic) NSUUID *outgoingLocalParticipantUUID; // @synthesize outgoingLocalParticipantUUID=_outgoingLocalParticipantUUID;
 @property(retain, nonatomic) NSUUID *localParticipantUUID; // @synthesize localParticipantUUID=_localParticipantUUID;
 - (void)createOccurrenceArraySync;
@@ -155,13 +185,14 @@
 - (_Bool)canCoalesceWithCall:(id)arg1 withStrategy:(id)arg2;
 - (id)coalescingHash;
 - (_Bool)canCoalesceSyncWithCall:(id)arg1 withStrategy:(id)arg2;
+- (_Bool)canCoalesceRemoteParticipantHandlesFromCall:(id)arg1;
 - (_Bool)canCoalesceSyncWithCollapseIfEqualStrategyWithCall:(id)arg1;
 - (_Bool)canCoalesceSyncWithRecentsStrategyWithCall:(id)arg1;
 - (void)addressBookChanged;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithQueue:(id)arg1;
+- (id)init;
 - (id)archivedDataWithError:(id *)arg1;
 
 @end

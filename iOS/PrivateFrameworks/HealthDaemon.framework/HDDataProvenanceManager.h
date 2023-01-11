@@ -18,7 +18,7 @@
     NSNumber *_propertyLock_localSourceID;
     NSNumber *_propertyLock_localDeviceID;
     NSNumber *_propertyLock_deviceNoneID;
-    int _defaultsLoaded;
+    _Atomic _Bool _defaultsLoaded;
     HDDatabaseValueCache *_persistentIDsByProvenanceKey;
     HDDatabaseValueCache *_originProvenanceByPersistentID;
     NSString *_localSystemBuild;
@@ -41,7 +41,7 @@
 @property(readonly, copy) NSString *description;
 - (id)_localTimeZoneName;
 - (void)_loadDefaults;
-- (id)originProvenanceForPersistentID:(long long)arg1 database:(id)arg2 error:(id *)arg3;
+- (id)originProvenanceForPersistentID:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (id)_localDataProvenanceWithSourceID:(id)arg1 sourceVersion:(id)arg2 deviceID:(id)arg3;
 - (id)localDataProvenanceForSourceEntity:(id)arg1 version:(id)arg2 deviceEntity:(id)arg3;
 - (id)defaultLocalDataProvenanceWithDeviceEntity:(id)arg1;

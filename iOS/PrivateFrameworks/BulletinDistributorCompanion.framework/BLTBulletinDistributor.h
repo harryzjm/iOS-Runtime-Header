@@ -11,17 +11,19 @@
 #import <BulletinDistributorCompanion/BLTCompanionServer-Protocol.h>
 #import <BulletinDistributorCompanion/NSXPCListenerDelegate-Protocol.h>
 
-@class BBObserver, BLTAttachmentHashCache, BLTBulletinFetcher, BLTClientReplyTimeoutManager, BLTGizmoLegacyMap, BLTPingSubscriberManager, BLTRemoteGizmoClient, BLTSectionConfiguration, BLTSettingSync, BLTUserNotificationList, BLTWatchKitAppList, NSDate, NSMutableDictionary, NSMutableSet, NSString;
+@class BBObserver, BLTBulletinDistributorMRUSectionCache, BLTBulletinFetcher, BLTClientReplyTimeoutManager, BLTGizmoLegacyMap, BLTHashCache, BLTPingSubscriberManager, BLTRemoteGizmoClient, BLTSectionConfiguration, BLTSettingSync, BLTUserNotificationList, BLTWatchKitAppList, NSDate, NSMutableDictionary, NSMutableSet, NSString;
 
 @interface BLTBulletinDistributor : NSObject <BLTBulletinDistributorSubscriberDeviceDelegate, BBObserverDelegate, BLTCompanionServer, NSXPCListenerDelegate>
 {
+    unsigned long long _stateHandler;
     _Bool _standaloneTestModeEnabled;
     BLTRemoteGizmoClient *_gizmoConnection;
     BBObserver *_bbObserver;
     NSMutableDictionary *_bulletins;
     NSMutableSet *_noticesFeed;
     NSMutableSet *_lockScreenFeed;
-    BLTAttachmentHashCache *_attachmentHashCache;
+    BLTHashCache *_attachmentHashCache;
+    BLTHashCache *_iconHashCache;
     BLTWatchKitAppList *_watchKitAppList;
     BLTSettingSync *_settingSync;
     NSDate *_startupTime;
@@ -33,9 +35,11 @@
     BLTBulletinFetcher *_bulletinFetcher;
     BLTPingSubscriberManager *_pingSubscriberManager;
     BLTGizmoLegacyMap *_gizmoLegacyMap;
+    BLTBulletinDistributorMRUSectionCache *_mruSectionCache;
 }
 
 + (id)sharedDistributor;
+@property(retain, nonatomic) BLTBulletinDistributorMRUSectionCache *mruSectionCache; // @synthesize mruSectionCache=_mruSectionCache;
 @property(retain, nonatomic) BLTGizmoLegacyMap *gizmoLegacyMap; // @synthesize gizmoLegacyMap=_gizmoLegacyMap;
 @property(retain, nonatomic) BLTPingSubscriberManager *pingSubscriberManager; // @synthesize pingSubscriberManager=_pingSubscriberManager;
 @property(retain, nonatomic) BLTBulletinFetcher *bulletinFetcher; // @synthesize bulletinFetcher=_bulletinFetcher;
@@ -48,13 +52,15 @@
 @property(retain, nonatomic) NSDate *startupTime; // @synthesize startupTime=_startupTime;
 @property(retain, nonatomic) BLTSettingSync *settingSync; // @synthesize settingSync=_settingSync;
 @property(retain, nonatomic) BLTWatchKitAppList *watchKitAppList; // @synthesize watchKitAppList=_watchKitAppList;
-@property(retain, nonatomic) BLTAttachmentHashCache *attachmentHashCache; // @synthesize attachmentHashCache=_attachmentHashCache;
+@property(retain, nonatomic) BLTHashCache *iconHashCache; // @synthesize iconHashCache=_iconHashCache;
+@property(retain, nonatomic) BLTHashCache *attachmentHashCache; // @synthesize attachmentHashCache=_attachmentHashCache;
 @property(retain, nonatomic) NSMutableSet *lockScreenFeed; // @synthesize lockScreenFeed=_lockScreenFeed;
 @property(retain, nonatomic) NSMutableSet *noticesFeed; // @synthesize noticesFeed=_noticesFeed;
 @property(retain, nonatomic) NSMutableDictionary *bulletins; // @synthesize bulletins=_bulletins;
 @property(retain, nonatomic) BBObserver *bbObserver; // @synthesize bbObserver=_bbObserver;
 @property(retain, nonatomic) BLTRemoteGizmoClient *gizmoConnection; // @synthesize gizmoConnection=_gizmoConnection;
 - (void).cxx_destruct;
+- (id)_stateDescription;
 - (void)_addBulletin:(id)arg1 forFeed:(unsigned long long)arg2 playLightsAndSirens:(_Bool)arg3 attachment:(id)arg4 attachmentType:(long long)arg5 alwaysSend:(_Bool)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)willSendLightsAndSirensWithPublisherBulletinID:(id)arg1 recordID:(id)arg2 inPhoneSection:(id)arg3 systemApp:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (_Bool)shouldSuppressLightsAndSirensNow;
@@ -78,6 +84,7 @@
 - (id)_replyTokenForSectionID:(id)arg1 publisherMatchID:(id)arg2;
 - (void)observer:(id)arg1 addBulletin:(id)arg2 forFeed:(unsigned long long)arg3 playLightsAndSirens:(_Bool)arg4 withReply:(CDUnknownBlockType)arg5;
 - (void)setReplyBlock:(CDUnknownBlockType)arg1 forSection:(id)arg2 bulletin:(id)arg3 publicationDate:(id)arg4 replyToken:(id)arg5;
+- (void)_cleanupForAddedBulletin:(id)arg1;
 - (void)_removeTranscodedAttachmentIfNeededForBulletin:(id)arg1;
 - (_Bool)_enqueuBulletinUpdate:(unsigned long long)arg1 bulletin:(id)arg2 feed:(unsigned long long)arg3;
 - (void)_performNextPendingBulletinUpdateForBulletinID:(id)arg1;
@@ -88,13 +95,15 @@
 - (unsigned long long)_nanoPresentableFeedFromPhoneFeed:(unsigned long long)arg1;
 - (_Bool)_willNanoPresent:(unsigned long long)arg1;
 - (id)_bulletinWithPublisherBulletinID:(id)arg1 recordID:(id)arg2 sectionID:(id)arg3;
-- (void)_notifyGizmoOfBulletin:(id)arg1 forFeed:(unsigned long long)arg2 updateType:(unsigned long long)arg3 playLightsAndSirens:(_Bool)arg4 shouldSendReplyIfNeeded:(_Bool)arg5 attachment:(id)arg6 attachmentType:(long long)arg7 isCriticalBulletin:(_Bool)arg8 replyToken:(id)arg9;
+- (void)_notifyGizmoOfBulletin:(id)arg1 forFeed:(unsigned long long)arg2 updateType:(unsigned long long)arg3 playLightsAndSirens:(_Bool)arg4 shouldSendReplyIfNeeded:(_Bool)arg5 attachment:(id)arg6 attachmentType:(long long)arg7 replyToken:(id)arg8;
 - (void)_sendPBBulletin:(id)arg1 forBulletin:(id)arg2 feed:(unsigned long long)arg3 updateType:(unsigned long long)arg4 playLightsAndSirens:(_Bool)arg5 shouldSendReplyIfNeeded:(_Bool)arg6;
 - (void)_handleAddBulletin:(id)arg1 feed:(unsigned long long)arg2 shouldPlayLightsAndSirens:(_Bool)arg3 performedWithSuccess:(_Bool)arg4 sendAttemptTime:(id)arg5 connectionStatus:(unsigned long long)arg6 isGizmoReady:(_Bool)arg7 shouldSendReplyIfNeeded:(_Bool)arg8 replyToken:(id)arg9;
+- (void)_attachIconToBulletin:(id)arg1;
 - (void)_attachAttachment:(id)arg1 attachmentType:(long long)arg2 toBulletin:(id)arg3;
 - (void)_postWillSendBulletinToGizmoNotificationForBulletin:(id)arg1;
 - (void)_rememberBulletin:(id)arg1 forFeed:(unsigned long long)arg2;
-- (void)_notifyGizmoOfCancelBulletin:(id)arg1 universalSectionID:(id)arg2 feed:(unsigned long long)arg3 withBulletinDate:(id)arg4;
+- (void)_mapBulletin:(id)arg1;
+- (void)_notifyGizmoOfCancelBulletin:(id)arg1 sectionID:(id)arg2 universalSectionID:(id)arg3 feed:(unsigned long long)arg4 withBulletinDate:(id)arg5;
 - (void)_pingSubscriberWithBulletin:(id)arg1 ack:(CDUnknownBlockType)arg2;
 - (void)_setupBBObserver;
 - (void)_registerForPairedDeviceBuildChanges;
@@ -114,6 +123,7 @@
 - (void)spoolSectionInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)sendAllSectionInfoWithSpool:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendSectionInfoWithSectionID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)isLocallyConnectedToRemote;
 - (void)sendBulletinSummary:(id)arg1;
 - (void)getWillNanoPresentNotificationForSectionID:(id)arg1 subsectionIDs:(id)arg2 subtype:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)getWillNanoPresentNotificationForSectionID:(id)arg1 subsectionIDs:(id)arg2 completion:(CDUnknownBlockType)arg3;

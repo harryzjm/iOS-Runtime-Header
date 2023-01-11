@@ -21,6 +21,7 @@
 - (id)_duetDonationsStreams;
 - (id)queryForDeletedActionsAfterDate:(id)arg1;
 - (id)queryForAllRelevantShortcuts;
+- (id)_queryForDonatedActionsAfterDate:(id)arg1 streams:(id)arg2;
 - (id)queryForDonatedActionsAfterDate:(id)arg1;
 - (id)queryForAllDonatedActions;
 - (id)_createEventsFromDuetEvents:(id)arg1;
@@ -30,8 +31,11 @@
 - (id)sleepInterval;
 - (id)_createTimelineFromPredictionTimeline:(id)arg1 filterEmptyData:(_Bool)arg2;
 - (id)queryForTopNApplications:(long long)arg1 withLikelihoodGreaterThan:(double)arg2 withTemporalResolution:(int)arg3;
-- (id)init;
-- (id)queryForUnfilteredDonations;
+- (id)_init;
+- (id)_queryForUnfilteredDonationsForStream:(id)arg1;
+- (id)queryForUnfilteredRelevantShortcutDonations;
+- (id)queryForUnfilteredIntentDonations;
+- (id)queryForUnfilteredUserActivityDonations;
 - (id)queryForDuetEventWithIdentifier:(id)arg1;
 
 @end

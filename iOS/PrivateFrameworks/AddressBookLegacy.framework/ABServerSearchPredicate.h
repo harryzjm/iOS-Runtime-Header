@@ -37,7 +37,7 @@
 - (void)runPredicateWithDelegate:(id)arg1;
 - (void)runPredicate;
 @property(retain, nonatomic) DADConnection *connection;
-- (_Bool)shouldSerialize;
+- (id)querySerializationIdentifier;
 @property(readonly, nonatomic) int error;
 @property(nonatomic) void *source;
 - (void)dealloc;

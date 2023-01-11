@@ -8,7 +8,7 @@
 
 #import <WebApp/_SFWebAppViewControllerDelegate-Protocol.h>
 
-@class LoadingViewController, NSString, NSTimer, UIWebClip, UIWindow, _SFWebAppViewController, _UIAsyncInvocation;
+@class LoadingViewController, NSString, NSTimer, UIWebClip, _SFWebAppViewController, _UIAsyncInvocation;
 
 __attribute__((visibility("hidden")))
 @interface WebAppViewController : UIViewController <_SFWebAppViewControllerDelegate>
@@ -18,13 +18,13 @@ __attribute__((visibility("hidden")))
     _Bool _hasShownLoadingViewController;
     LoadingViewController *_loadingViewController;
     long long _orientation;
-    UIWindow *_window;
     NSTimer *_hideSnapshotTimer;
     UIWebClip *_webClip;
 }
 
 @property(readonly, nonatomic) UIWebClip *webClip; // @synthesize webClip=_webClip;
 - (void).cxx_destruct;
+- (void)webAppViewController:(id)arg1 viewServiceDidTerminateWithError:(id)arg2;
 - (void)webAppViewControllerDidFinishInitialLoad:(id)arg1;
 - (void)webAppViewController:(id)arg1 didChangeLoadingState:(_Bool)arg2;
 - (void)viewDidAppear:(_Bool)arg1;
@@ -37,6 +37,8 @@ __attribute__((visibility("hidden")))
 - (void)timeLimitForLoadCompletionExpired;
 - (void)_cancelHideSnapshotTimer;
 - (void)_setUpContentViewController:(id)arg1;
+- (void)_removeRemoteView;
+- (void)_connectToService;
 - (void)dealloc;
 - (id)initWithWebClip:(id)arg1;
 

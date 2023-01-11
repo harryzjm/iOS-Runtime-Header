@@ -6,11 +6,7 @@
 
 @interface MPSkipTrackCommand
 {
-    CDStruct_dcf4dde6 _skipLimit;
 }
-
-@property(nonatomic) CDStruct_dcf4dde6 skipLimit; // @synthesize skipLimit=_skipLimit;
-- (id)_mediaRemoteCommandInfoOptions;
 
 @end
 

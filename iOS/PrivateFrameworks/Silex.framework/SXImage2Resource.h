@@ -6,9 +6,10 @@
 
 @interface SXImage2Resource
 {
+    _Bool wideColorSpace;
 }
 
-+ (id)typeString;
+- (_Bool)wideColorSpace;
 
 @end
 

@@ -7,13 +7,16 @@
 #import <objc/NSObject.h>
 
 @class NSDictionary;
+@protocol XCUIApplicationRegistryProvider;
 
 @interface XCUIApplicationRegistry : NSObject
 {
     NSDictionary *_testDependencies;
     NSDictionary *_userOverrides;
+    id <XCUIApplicationRegistryProvider> _platformProvider;
 }
 
+@property(retain) id <XCUIApplicationRegistryProvider> platformProvider; // @synthesize platformProvider=_platformProvider;
 @property(copy) NSDictionary *userOverrides; // @synthesize userOverrides=_userOverrides;
 @property(copy) NSDictionary *testDependencies; // @synthesize testDependencies=_testDependencies;
 - (void).cxx_destruct;

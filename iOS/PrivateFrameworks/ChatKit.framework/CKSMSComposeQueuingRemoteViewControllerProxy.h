@@ -9,6 +9,7 @@
 @class NSMutableArray;
 @protocol CKSMSCompose;
 
+__attribute__((visibility("hidden")))
 @interface CKSMSComposeQueuingRemoteViewControllerProxy : NSObject
 {
     NSMutableArray *_queuedInvocations;

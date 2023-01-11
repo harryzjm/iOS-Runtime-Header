@@ -11,13 +11,16 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)layoutSubviews;
 - (long long)_accessibilitySortPriority;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (_Bool)_accessibilityPointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (_Bool)_accessibilityAllowOutOfBoundsHitTestAtPoint:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (_Bool)_accessibilityUseAccessibilityFrameForHittest;
 - (_Bool)_accessibilityViewIsVisible;
 - (_Bool)_accessibilityOverridesInvisibility;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_updateLabels;
+- (struct CGRect)accessibilityFrame;
 - (id)accessibilityElements;
 
 @end

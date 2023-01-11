@@ -13,6 +13,7 @@
     _Bool _showCMMInvitations;
     _Bool _showEditSuggestions;
     _Bool _showRecentInterestSuggestions;
+    _Bool _showQuestions;
     _Bool _showFooter;
     _Bool _showSampleSuggestionGadgets;
     _Bool _showVerticalSampleGadgets;
@@ -20,7 +21,6 @@
     _Bool _allowVideoPlayback;
     _Bool _allowLoopPlayback;
     _Bool _allowGIFPlayback;
-    _Bool _showTapToRadar;
     _Bool _useMockData;
     _Bool _forceDisplayReportJunk;
     _Bool _navigateToActivityPost;
@@ -34,11 +34,13 @@
     unsigned long long _maxSimultaneousVideoCount;
     double _minimumVisibilityForVideoPlayback;
     long long _sortingAlgorithm;
+    unsigned long long _maxMemoriesToFetch;
 }
 
 + (id)keyPathsAffectingGadgetVisibility;
 + (id)sharedInstance;
 + (id)settingsControllerModule;
+@property(nonatomic) unsigned long long maxMemoriesToFetch; // @synthesize maxMemoriesToFetch=_maxMemoriesToFetch;
 @property(nonatomic) long long sortingAlgorithm; // @synthesize sortingAlgorithm=_sortingAlgorithm;
 @property(nonatomic) _Bool allowSharingEditSuggestions; // @synthesize allowSharingEditSuggestions=_allowSharingEditSuggestions;
 @property(nonatomic) _Bool useCachedEditRenders; // @synthesize useCachedEditRenders=_useCachedEditRenders;
@@ -50,7 +52,6 @@
 @property(nonatomic) _Bool navigateToActivityPost; // @synthesize navigateToActivityPost=_navigateToActivityPost;
 @property(nonatomic) _Bool forceDisplayReportJunk; // @synthesize forceDisplayReportJunk=_forceDisplayReportJunk;
 @property(nonatomic) _Bool useMockData; // @synthesize useMockData=_useMockData;
-@property(nonatomic) _Bool showTapToRadar; // @synthesize showTapToRadar=_showTapToRadar;
 @property(nonatomic) double minimumVisibilityForVideoPlayback; // @synthesize minimumVisibilityForVideoPlayback=_minimumVisibilityForVideoPlayback;
 @property(nonatomic) unsigned long long maxSimultaneousVideoCount; // @synthesize maxSimultaneousVideoCount=_maxSimultaneousVideoCount;
 @property(nonatomic) _Bool allowGIFPlayback; // @synthesize allowGIFPlayback=_allowGIFPlayback;
@@ -60,6 +61,7 @@
 @property(nonatomic) _Bool showVerticalSampleGadgets; // @synthesize showVerticalSampleGadgets=_showVerticalSampleGadgets;
 @property(nonatomic) _Bool showSampleSuggestionGadgets; // @synthesize showSampleSuggestionGadgets=_showSampleSuggestionGadgets;
 @property(nonatomic) _Bool showFooter; // @synthesize showFooter=_showFooter;
+@property(nonatomic) _Bool showQuestions; // @synthesize showQuestions=_showQuestions;
 @property(nonatomic) _Bool showRecentInterestSuggestions; // @synthesize showRecentInterestSuggestions=_showRecentInterestSuggestions;
 @property(nonatomic) _Bool showEditSuggestions; // @synthesize showEditSuggestions=_showEditSuggestions;
 @property(nonatomic) _Bool showCMMInvitations; // @synthesize showCMMInvitations=_showCMMInvitations;

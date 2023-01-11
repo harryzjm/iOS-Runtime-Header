@@ -6,24 +6,28 @@
 
 #import <PhotoLibraryServices/PLDaemonJob.h>
 
-@class NSArray, NSMutableArray;
+@class NSArray, NSMutableArray, NSMutableSet;
 
 @interface PHResourceAvailabilityJob : PLDaemonJob
 {
     NSMutableArray *_requests;
     NSArray *_cancelledRequestIdentifiers;
+    NSMutableSet *_unsentRequestIdentifiers;
+    struct os_unfair_lock_s _lock;
 }
 
 - (void).cxx_destruct;
 - (void)runDaemonSide;
+- (void)setClientConnection:(id)arg1;
 - (void)cancelAll;
 - (long long)daemonOperation;
 - (_Bool)shouldRunOnDaemonSerialQueue;
 - (void)run;
 - (id)description;
 - (void)encodeToXPCObject:(id)arg1;
-- (id)initFromXPCObject:(id)arg1 connection:(id)arg2;
+- (id)initFromXPCObject:(id)arg1 libraryServicesManager:(id)arg2;
 - (void)addRequest:(id)arg1;
+- (id)initWithPhotoLibrary:(id)arg1;
 
 @end
 

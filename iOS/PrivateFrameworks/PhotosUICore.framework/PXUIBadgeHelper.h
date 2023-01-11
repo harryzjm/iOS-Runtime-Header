@@ -10,10 +10,12 @@
 {
 }
 
-+ (void)getAnimationImages:(id *)arg1 animationDuration:(double *)arg2 forBadge:(unsigned long long)arg3;
-+ (void)getText:(id *)arg1 textOffset:(struct CGPoint *)arg2 forBadgeInfo:(struct PXAssetBadgeInfo)arg3 style:(long long)arg4;
-+ (void)getImage:(id *)arg1 imageOffset:(struct CGPoint *)arg2 forBadgeInfo:(struct PXAssetBadgeInfo)arg3 style:(long long)arg4;
++ (id)_mediumSymbolConfiguration;
++ (id)_smallSymbolConfiguration;
++ (id)textForBadgeInfo:(struct PXAssetBadgeInfo)arg1 style:(long long)arg2;
++ (id)imageForBadgeInfo:(struct PXAssetBadgeInfo)arg1 style:(long long)arg2 isOverContent:(_Bool)arg3;
 + (id)debugBackgroundImageWithBadges:(unsigned long long)arg1;
++ (id)autoReframingImage;
 + (id)suggestionFacesImage;
 + (id)suggestionGreatPhotoImage;
 + (id)suggestionRecentFavoriteImage;
@@ -21,22 +23,16 @@
 + (id)suggestionOnThisDayImage;
 + (id)cloudBadgeImage;
 + (id)panoramaBadgeImage;
++ (id)_favoriteBadgeImageWithSymbolConfiguration:(id)arg1;
 + (id)favoritesCollectionBadgeImage;
 + (id)favoriteBadgeImage;
 + (id)loopingBadgeTemplateImage;
 + (id)loopingBadgeImage;
 + (id)gradientImage;
 + (id)livePhotoBadgeShadowedImage;
-+ (id)livePhotoOffBadgeTemplateImage;
-+ (id)livePhotoBadgeTemplateImage;
-+ (id)depthEffectBadgeImage;
-+ (id)burstBadgeImage;
-+ (id)stackBadgeImage;
-+ (id)_flyingBadgeForBadges:(unsigned long long)arg1;
-+ (id)_flyingBadgesForBadgeInfo:(struct PXAssetBadgeInfo)arg1;
-+ (id)themeForType:(long long)arg1;
-+ (long long)badgeTypeForBadgeInfo:(struct PXAssetBadgeInfo)arg1 style:(long long)arg2;
-+ (id)badgeViewForType:(long long)arg1 withBadgeInfo:(struct PXAssetBadgeInfo)arg2;
++ (struct PXAssetBadgeInfo)topRightBadgeInfoForBadgeInfo:(struct PXAssetBadgeInfo)arg1;
++ (struct PXAssetBadgeInfo)topLeftSecondaryBadgeInfoForBadgeInfo:(struct PXAssetBadgeInfo)arg1;
++ (struct PXAssetBadgeInfo)topLeftPrimaryBadgeInfoForBadgeInfo:(struct PXAssetBadgeInfo)arg1;
 
 @end
 

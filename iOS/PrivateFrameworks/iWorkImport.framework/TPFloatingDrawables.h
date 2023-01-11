@@ -6,14 +6,14 @@
 
 #import <iWorkImport/TSKDocumentObject-Protocol.h>
 
-@class NSMutableDictionary, TPDocumentRoot, TSUPointerKeyDictionary;
+@class NSArray, NSIndexSet, NSMapTable, NSMutableDictionary, NSSet, NSString, TPDocumentRoot;
 
 __attribute__((visibility("hidden")))
 @interface TPFloatingDrawables <TSKDocumentObject>
 {
     NSMutableDictionary *_drawablesByPageIndex;
-    TSUPointerKeyDictionary *_pageIndexByDrawable;
-    TSUPointerKeyDictionary *_tagByDrawable;
+    NSMapTable *_pageIndexByDrawable;
+    NSMapTable *_tagByDrawable;
     TPDocumentRoot *_documentRoot;
 }
 
@@ -37,16 +37,24 @@ __attribute__((visibility("hidden")))
 - (id)drawableEnumerator;
 - (id)tagForDrawable:(id)arg1;
 - (unsigned long long)pageIndexForDrawable:(id)arg1;
-- (unsigned long long)maximumPageIndex;
+@property(readonly, nonatomic) NSIndexSet *pageIndexesOfPagesContainingDrawables;
+@property(readonly, nonatomic) unsigned long long maximumPageIndex;
 - (id)orderedDrawablesOnPageIndex:(unsigned long long)arg1;
+- (id)swift_drawablesOnPageIndex:(unsigned long long)arg1;
 - (id)drawablesOnPageIndex:(unsigned long long)arg1;
-- (id)allDrawables;
-- (unsigned long long)countOfAllDrawables;
-- (_Bool)hasAnyDrawables;
-- (id)debugDescription;
+@property(readonly, nonatomic) NSArray *swift_allDrawables;
+@property(readonly, nonatomic) NSSet *allDrawables;
+@property(readonly, nonatomic) unsigned long long countOfAllDrawables;
+@property(readonly, nonatomic) _Bool hasAnyDrawables;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)initWithContext:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

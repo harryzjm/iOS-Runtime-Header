@@ -17,7 +17,6 @@
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
-- (id)simulatedViewControllerContainingViewController:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

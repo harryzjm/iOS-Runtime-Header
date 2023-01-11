@@ -4,44 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <EventKitUI/MKMapViewDelegate-Protocol.h>
+@class CLLocation, EKEventMapCell, MKMapItemView, UIView;
 
-@class CLLocation, MKMapView, NSString, UITableViewCell, UIView;
-
-@interface EKEventMapDetailItem <MKMapViewDelegate>
+@interface EKEventMapDetailItem
 {
-    UITableViewCell *_cell;
-    MKMapView *_mapView;
-    UIView *_overlayView;
+    EKEventMapCell *_cell;
+    MKMapItemView *_mapView;
     UIView *_loadingView;
     CLLocation *_location;
-    UITableViewCell *_oldCell;
+    EKEventMapCell *_oldCell;
+    _Bool _animationHasRan;
     _Bool _hasMapItemLaunchOptionFromTimeToLeaveNotification;
 }
 
-+ (id)_mapsURLForLocationOnEvent:(id)arg1 hasMapItemLaunchOptionFromTimeToLeaveNotification:(_Bool)arg2;
-+ (id)_locationStringForStructuredLocation:(id)arg1;
 @property(nonatomic) _Bool hasMapItemLaunchOptionFromTimeToLeaveNotification; // @synthesize hasMapItemLaunchOptionFromTimeToLeaveNotification=_hasMapItemLaunchOptionFromTimeToLeaveNotification;
 - (void).cxx_destruct;
-- (id)mapView:(id)arg1 rendererForOverlay:(id)arg2;
-- (void)mapViewDidFinishRenderingMap:(id)arg1 fullyRendered:(_Bool)arg2;
-- (void)mapViewWillStartRenderingMap:(id)arg1;
-- (void)eventViewController:(id)arg1 didSelectReadOnlySubitem:(unsigned long long)arg2;
-- (void)eventViewController:(id)arg1 didUnhighlightSubitem:(unsigned long long)arg2;
-- (void)eventViewController:(id)arg1 didHighlightSubitem:(unsigned long long)arg2;
+- (void)_animateMapIfNeededWithPresentingController:(id)arg1 presentingView:(id)arg2;
 - (double)_mapHeight;
-- (void)_setupMapView;
+- (void)_loadMapItem:(id)arg1 withCoordinateSpan:(CDStruct_c3b9c2ee)arg2;
+- (void)setupMapView;
+- (CDStruct_c3b9c2ee)_makeSpanWithCoordinate:(struct CLLocationCoordinate2D)arg1 radius:(double)arg2 minRadius:(double)arg3;
 - (id)_mapRelatedViewConstraintsForMapRelatedView:(id)arg1 inCell:(id)arg2;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (_Bool)configureWithCalendar:(id)arg1 preview:(_Bool)arg2;
 - (void)reset;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (void)eventViewController:(id)arg1 tableViewDidScroll:(id)arg2;
 
 @end
 

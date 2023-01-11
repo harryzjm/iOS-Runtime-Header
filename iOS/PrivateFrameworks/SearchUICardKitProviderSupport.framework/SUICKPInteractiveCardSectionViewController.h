@@ -11,6 +11,10 @@
 }
 
 + (id)cardSectionClasses;
+- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)didEngageCardSection:(id)arg1;
 - (_Bool)_expectsSearchUIView;
 - (_Bool)_shouldRenderButtonOverlay;
 

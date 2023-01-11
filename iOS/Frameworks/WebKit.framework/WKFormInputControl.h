@@ -4,22 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <WebKit/WKFormPeripheral-Protocol.h>
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKFormInputControl : NSObject <WKFormPeripheral>
+@interface WKFormInputControl
 {
-    struct RetainPtr<id<WKFormControl>> _control;
 }
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (id)assistantView;
-- (void)endEditing;
-- (void)beginEditing;
 - (id)initWithView:(id)arg1;
+@property(readonly, nonatomic) NSString *dateTimePickerCalendarType;
 
 @end
 

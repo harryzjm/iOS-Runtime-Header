@@ -10,7 +10,7 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBRunVoiceCommandIntentResponse-Protocol.h>
 
-@class NSString, _INPBArchivedObject, _INPBDictionary;
+@class NSArray, NSString, _INPBArchivedObject, _INPBDictionary;
 
 @interface _INPBRunVoiceCommandIntentResponse : PBCodable <_INPBRunVoiceCommandIntentResponse, NSSecureCoding, NSCopying>
 {
@@ -19,29 +19,38 @@
         unsigned int customResponsesDisabled:1;
         unsigned int intentCategory:1;
         unsigned int interstitialDisabled:1;
+        unsigned int prefersExecutionOnCompanion:1;
         unsigned int toggleState:1;
     } _has;
     _Bool _continueRunning;
     _Bool _customResponsesDisabled;
     _Bool _interstitialDisabled;
+    _Bool _prefersExecutionOnCompanion;
+    _Bool __encodeLegacyGloryData;
     int _intentCategory;
     int _toggleState;
     NSString *_appBundleId;
     NSString *_localizedAppName;
     _INPBDictionary *_parameters;
     NSString *_responseTemplate;
+    NSArray *_steps;
     _INPBArchivedObject *_underlyingIntent;
     _INPBArchivedObject *_underlyingIntentResponse;
     NSString *_underlyingIntentTitle;
     NSString *_verb;
 }
 
++ (_Bool)supportsSecureCoding;
++ (Class)stepType;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(copy, nonatomic) NSString *verb; // @synthesize verb=_verb;
 @property(copy, nonatomic) NSString *underlyingIntentTitle; // @synthesize underlyingIntentTitle=_underlyingIntentTitle;
 @property(retain, nonatomic) _INPBArchivedObject *underlyingIntentResponse; // @synthesize underlyingIntentResponse=_underlyingIntentResponse;
 @property(retain, nonatomic) _INPBArchivedObject *underlyingIntent; // @synthesize underlyingIntent=_underlyingIntent;
 @property(nonatomic) int toggleState; // @synthesize toggleState=_toggleState;
+@property(copy, nonatomic) NSArray *steps; // @synthesize steps=_steps;
 @property(copy, nonatomic) NSString *responseTemplate; // @synthesize responseTemplate=_responseTemplate;
+@property(nonatomic) _Bool prefersExecutionOnCompanion; // @synthesize prefersExecutionOnCompanion=_prefersExecutionOnCompanion;
 @property(retain, nonatomic) _INPBDictionary *parameters; // @synthesize parameters=_parameters;
 @property(copy, nonatomic) NSString *localizedAppName; // @synthesize localizedAppName=_localizedAppName;
 @property(nonatomic) _Bool interstitialDisabled; // @synthesize interstitialDisabled=_interstitialDisabled;
@@ -54,6 +63,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(readonly, nonatomic) _Bool hasVerb;
@@ -63,7 +74,12 @@
 - (int)StringAsToggleState:(id)arg1;
 - (id)toggleStateAsString:(int)arg1;
 @property(nonatomic) _Bool hasToggleState;
+- (id)stepAtIndex:(unsigned long long)arg1;
+@property(readonly, nonatomic) unsigned long long stepsCount;
+- (void)addStep:(id)arg1;
+- (void)clearSteps;
 @property(readonly, nonatomic) _Bool hasResponseTemplate;
+@property(nonatomic) _Bool hasPrefersExecutionOnCompanion;
 @property(readonly, nonatomic) _Bool hasParameters;
 @property(readonly, nonatomic) _Bool hasLocalizedAppName;
 @property(nonatomic) _Bool hasInterstitialDisabled;

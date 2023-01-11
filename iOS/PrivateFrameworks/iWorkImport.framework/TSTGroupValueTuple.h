@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     NSArray *_groupValues;
 }
 
-+ (UUIDData_5fbc143e)rootUid;
 - (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)sceneObjectClass;
+- (id)userInterfaceName;
 - (int)legendBadgeType;
 - (id)genericToSpecificPropertyMap;
 - (_Bool)supportsSymbolDrawing;

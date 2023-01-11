@@ -9,17 +9,19 @@
 #import <ITMLKit/IKJSDOMDocumentAppBridgeInternal-Protocol.h>
 #import <ITMLKit/IKStyleMediaQueryEvaluator-Protocol.h>
 
-@class IKAppContext, IKDOMDocument, IKHeadElement, IKJSNavigationDocument, IKJSObject, IKViewElement, IKViewElementStyleFactory, NSError, NSMapTable, NSMutableDictionary, NSString;
+@class IKAppContext, IKDOMDocument, IKHeadElement, IKJSNavigationDocument, IKJSObject, IKViewElement, IKViewElementStyleFactory, NSDictionary, NSError, NSMapTable, NSMutableDictionary, NSString;
 @protocol IKAppDocumentDelegate, IKNetworkRequestLoader;
 
 @interface IKAppDocument : NSObject <IKJSDOMDocumentAppBridgeInternal, IKStyleMediaQueryEvaluator>
 {
     NSMutableDictionary *_mediaQueryCache;
+    long long _implicitUpdatesStack;
     _Bool _parsingDOM;
     NSMapTable *_viewElementRegistry;
     _Bool _isViewElementRegistryDirty;
     _Bool _updated;
     _Bool _subtreeUpdated;
+    _Bool _implicitlyUpdated;
     IKAppContext *_appContext;
     IKDOMDocument *_jsDocument;
     NSString *_identifier;
@@ -30,14 +32,19 @@
     NSError *_error;
     id <IKAppDocumentDelegate> _delegate;
     double _impressionThreshold;
+    double _impressionViewablePercentage;
+    NSDictionary *_cachedSnapshotImpressionsMap;
     NSMutableDictionary *_impressions;
     IKJSObject *_owner;
     IKViewElementStyleFactory *_styleFactory;
 }
 
+@property(readonly, nonatomic, getter=isImplicitlyUpdated) _Bool implicitlyUpdated; // @synthesize implicitlyUpdated=_implicitlyUpdated;
 @property(retain, nonatomic) IKViewElementStyleFactory *styleFactory; // @synthesize styleFactory=_styleFactory;
 @property(readonly, nonatomic) __weak IKJSObject *owner; // @synthesize owner=_owner;
 @property(retain, nonatomic) NSMutableDictionary *impressions; // @synthesize impressions=_impressions;
+@property(retain, nonatomic) NSDictionary *cachedSnapshotImpressionsMap; // @synthesize cachedSnapshotImpressionsMap=_cachedSnapshotImpressionsMap;
+@property(nonatomic) double impressionViewablePercentage; // @synthesize impressionViewablePercentage=_impressionViewablePercentage;
 @property(nonatomic) double impressionThreshold; // @synthesize impressionThreshold=_impressionThreshold;
 @property(getter=isSubtreeUpdated) _Bool subtreeUpdated; // @synthesize subtreeUpdated=_subtreeUpdated;
 @property(nonatomic, getter=isUpdated) _Bool updated; // @synthesize updated=_updated;
@@ -51,8 +58,11 @@
 @property(readonly, nonatomic) __weak IKDOMDocument *jsDocument; // @synthesize jsDocument=_jsDocument;
 @property(readonly) __weak IKAppContext *appContext; // @synthesize appContext=_appContext;
 - (void).cxx_destruct;
+- (void)_resetImplicitUpdates;
+- (_Bool)markImplicitlyUpdated;
+- (void)popTrackingImplictUpdates;
+- (void)pushTrackingImplictUpdates;
 - (void)_setViewElementStylesDirtyForced:(_Bool)arg1;
-- (_Bool)_clearUpdatesForElement:(id)arg1;
 - (void)_updateWithXML:(id)arg1;
 - (id)_viewElementForNodeID:(unsigned long long)arg1;
 - (id)viewElementForNodeID:(unsigned long long)arg1;
@@ -69,12 +79,15 @@
 - (void)updateForDocument:(id)arg1;
 - (id)retrieveJSElementForViewElement:(id)arg1 jsContext:(id)arg2;
 - (void)setViewElementStylesDirty;
+- (void)snapshotImpressionsForViewElements:(id)arg1;
 - (void)recordImpressionsForViewElements:(id)arg1;
 - (void)onViewAttributesChangeWithArguments:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)onPerformanceMetricsChange:(id)arg1;
 - (void)onImpressionsChange:(id)arg1;
 - (void)onUpdate;
 - (void)onNeedsUpdateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)onInactive;
+- (void)onActive;
 - (void)onDisappear;
 - (void)onAppear;
 - (void)onUnload;
@@ -82,6 +95,7 @@
 @property(readonly, nonatomic) __weak IKJSNavigationDocument *navigationDocument;
 @property(readonly, copy) NSString *debugDescription;
 - (void)dealloc;
+- (id)initWithAppContext:(id)arg1 document:(id)arg2 owner:(id)arg3 extraInfo:(id)arg4;
 - (id)initWithAppContext:(id)arg1 document:(id)arg2 owner:(id)arg3;
 
 // Remaining properties

@@ -8,11 +8,17 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFHorizontalScrollCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFUserReportRequest;
 
 @interface SFHorizontalScrollCardSection <SFHorizontalScrollCardSection, NSSecureCoding, NSCopying>
 {
-    CDStruct_5ff9a38c _has;
+    struct {
+        unsigned int canBeHidden:1;
+        unsigned int hasTopPadding:1;
+        unsigned int hasBottomPadding:1;
+        unsigned int separatorStyle:1;
+        unsigned int numberOfRows:1;
+    } _has;
     _Bool _canBeHidden;
     _Bool _hasTopPadding;
     _Bool _hasBottomPadding;
@@ -23,9 +29,11 @@
     NSString *_type;
     SFColor *_backgroundColor;
     NSArray *_cardSections;
+    unsigned long long _numberOfRows;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) unsigned long long numberOfRows; // @synthesize numberOfRows=_numberOfRows;
 @property(copy, nonatomic) NSArray *cardSections; // @synthesize cardSections=_cardSections;
 @property(retain, nonatomic) SFColor *backgroundColor;
 @property(nonatomic) int separatorStyle;
@@ -42,6 +50,7 @@
 @property(readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (_Bool)hasNumberOfRows;
 - (_Bool)hasSeparatorStyle;
 - (_Bool)hasHasBottomPadding;
 - (_Bool)hasHasTopPadding;
@@ -59,6 +68,7 @@
 @property(copy, nonatomic) NSArray *parameterKeyPaths;
 @property(copy, nonatomic) NSString *resultIdentifier;
 @property(readonly) Class superclass;
+@property(retain, nonatomic) SFUserReportRequest *userReportRequest;
 
 @end
 

@@ -28,7 +28,6 @@
 + (void)_repeatAggregateStatistics;
 + (void)initialize;
 - (void)setCapsLockLightOn:(_Bool)arg1;
-- (void)setVoiceOverItemChooserVisible:(_Bool)arg1;
 - (void)setDisableSystemGestureRecognitionInEvents:(_Bool)arg1;
 - (void)userEventOccurred;
 - (void)enableEventTap:(_Bool)arg1 forApplication:(int)arg2;

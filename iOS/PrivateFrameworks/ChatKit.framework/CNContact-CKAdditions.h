@@ -8,5 +8,6 @@
 
 @interface CNContact (CKAdditions)
 - (id)identifierForKey:(id)arg1 withDestination:(id)arg2;
+- (id)identifierForKey:(id)arg1 withDestination:(id)arg2;
 @end
 

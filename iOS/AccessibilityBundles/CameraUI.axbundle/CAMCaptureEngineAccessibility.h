@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)captureOutput:(id)arg1 didOutputMetadataObjects:(id)arg2 forMetadataObjectTypes:(id)arg3 fromConnection:(id)arg4;
+- (void)_updateCurrentlyConfiguredObjects;
 - (void)_handleSessionDidStopRunning:(id)arg1;
 - (void)_handleSessionDidStartRunning:(id)arg1;
 - (void)_accessibilityDetectFaces:(_Bool)arg1 completionBlock:(CDUnknownBlockType)arg2;

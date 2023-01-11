@@ -23,7 +23,7 @@
 
 @property(readonly, nonatomic) CPLEngineScopeStorage *scopes; // @synthesize scopes=_scopes;
 - (void).cxx_destruct;
-@property(readonly, copy) NSString *description;
+- (id)phaseDescription;
 - (void)task:(id)arg1 didProgress:(float)arg2 userInfo:(id)arg3;
 - (void)task:(id)arg1 didFinishWithError:(id)arg2;
 - (void)cancel;
@@ -35,16 +35,17 @@
 - (_Bool)shouldContinueAfterError:(id)arg1 fromTask:(id)arg2;
 - (_Bool)shouldProcessScope:(id)arg1 inTransaction:(id)arg2;
 - (id)enumerateScopesForTaskInTransaction:(id)arg1;
-- (id)newScopedTaskWithScope:(id)arg1 transportScope:(id)arg2 clientCacheIdentifier:(id)arg3;
+- (id)newScopedTaskWithScope:(id)arg1 session:(id)arg2 transportScope:(id)arg3 clientCacheIdentifier:(id)arg4;
 - (_Bool)shouldStartTaskInTransaction:(id)arg1;
 - (void)dispatchAsyncWithCurrentSubtask:(CDUnknownBlockType)arg1;
 - (id)_currentScope;
 - (void)_setCurrentTask:(id)arg1;
 - (id)_currentTask;
-- (id)initWithEngineLibrary:(id)arg1;
+- (id)initWithEngineLibrary:(id)arg1 session:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

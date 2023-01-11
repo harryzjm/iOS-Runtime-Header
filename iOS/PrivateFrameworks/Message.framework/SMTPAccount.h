@@ -26,6 +26,7 @@
 + (id)displayedAccountTypeString;
 + (void *)legacyKeychainProtocol;
 + (id)accountTypeString;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (_Bool)canBeFallbackAccount;
 - (_Bool)_isAppleServiceDeliveryHostname:(id)arg1;

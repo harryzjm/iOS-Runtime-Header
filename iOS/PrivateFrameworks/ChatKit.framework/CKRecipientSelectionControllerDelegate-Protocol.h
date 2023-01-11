@@ -6,11 +6,11 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKRecipientSelectionController, MFComposeRecipient, NSString;
+@class CKRecipientSelectionController, CNComposeRecipient, NSString;
 
 @protocol CKRecipientSelectionControllerDelegate <NSObject>
 - (struct UIEdgeInsets)navigationBarInsetsForRecipientSelectionController:(CKRecipientSelectionController *)arg1;
-- (void)recipientSelectionController:(CKRecipientSelectionController *)arg1 didFinishAvailaiblityLookupForRecipient:(MFComposeRecipient *)arg2;
+- (void)recipientSelectionController:(CKRecipientSelectionController *)arg1 didFinishAvailaiblityLookupForRecipient:(CNComposeRecipient *)arg2;
 - (void)recipientSelectionControllerDidPushABViewController:(CKRecipientSelectionController *)arg1;
 - (void)recipientSelectionControllerRequestDismissKeyboard:(CKRecipientSelectionController *)arg1;
 - (void)recipientSelectionController:(CKRecipientSelectionController *)arg1 textDidChange:(NSString *)arg2;

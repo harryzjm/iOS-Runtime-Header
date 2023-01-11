@@ -11,7 +11,7 @@
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
 @class HDProfile, NSString;
-@protocol HDPeriodicActivityDelegate, OS_dispatch_queue, OS_os_log;
+@protocol HDPeriodicActivityDelegate, OS_dispatch_queue, OS_os_log, OS_xpc_object;
 
 @interface HDPeriodicActivity : NSObject <HDHealthDaemonReadyObserver, HDDatabaseProtectedDataObserver, HDDiagnosticObject>
 {
@@ -25,10 +25,12 @@
     NSObject<OS_os_log> *_loggingCategory;
     double _interval;
     id <HDPeriodicActivityDelegate> _delegate;
+    NSObject<OS_xpc_object> *_currentActivity;
 }
 
 + (id)_userDefaultsKeyForName:(id)arg1 key:(id)arg2;
 + (void)registerDisabledPeriodicActivityWithName:(id)arg1 loggingCategory:(id)arg2;
+@property(retain) NSObject<OS_xpc_object> *currentActivity; // @synthesize currentActivity=_currentActivity;
 @property(readonly, nonatomic) __weak id <HDPeriodicActivityDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) double interval; // @synthesize interval=_interval;
 @property(readonly, nonatomic) NSObject<OS_os_log> *loggingCategory; // @synthesize loggingCategory=_loggingCategory;
@@ -56,6 +58,7 @@
 - (_Bool)isWaitingToRun;
 - (void)synthesizeActivityFire;
 - (void)reset;
+@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) long long errorCount;
 - (void)didPerformActivityWithResult:(long long)arg1 minimumRetryInterval:(double)arg2 activityStartDate:(id)arg3 error:(id)arg4;
 - (id)lastSuccessfulRunDate;
@@ -64,7 +67,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

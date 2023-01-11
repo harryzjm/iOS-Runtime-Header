@@ -8,7 +8,7 @@
 
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class CALayer, CLKDevice, NSCalendar, NSDate, NSNumber, NSString, NSTimer, NTKColoringImageView, NTKHandView, UIColor;
+@class CALayer, CLKDevice, NSCalendar, NSDate, NSNumber, NSString, NSTimeZone, NSTimer, NTKColoringImageView, NTKHandView, UIColor;
 
 @interface NTKAnalogHandsView : UIView <NTKTimeView>
 {
@@ -20,13 +20,12 @@
     NSNumber *_displayLinkToken;
     NSTimer *_animationUpdateTimer;
     double _timeOffset;
-    CALayer *_minuteHandDot;
-    CALayer *_secondHandDot;
     CALayer *_minuteHandTransitionBodyLayer;
     CALayer *_minuteHandTransitionStemLayer;
     CALayer *_minuteHandTransitionPegLayer;
     CALayer *_hourHandTransitionBodyLayer;
     CALayer *_hourHandTransitionStemLayer;
+    unsigned long long _style;
     _Bool _timeScrubbing;
     _Bool _frozen;
     _Bool _showDebugClientSideHands;
@@ -42,9 +41,11 @@
     NTKHandView *_hourHandView_clientSide;
     NTKHandView *_minuteHandView_clientSide;
     NTKHandView *_secondHandView_clientSide;
+    NSTimeZone *_timeZone;
 }
 
 + (long long)preferredCountOfInstancesToCache;
+@property(retain, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property(nonatomic) _Bool shouldRestoreSecondHandAfterScrubbing; // @synthesize shouldRestoreSecondHandAfterScrubbing=_shouldRestoreSecondHandAfterScrubbing;
 @property(nonatomic) _Bool showDebugClientSideHands; // @synthesize showDebugClientSideHands=_showDebugClientSideHands;
 @property(readonly, nonatomic) NTKHandView *secondHandView_clientSide; // @synthesize secondHandView_clientSide=_secondHandView_clientSide;
@@ -56,7 +57,6 @@
 @property(readonly, nonatomic) _Bool timeScrubbing; // @synthesize timeScrubbing=_timeScrubbing;
 @property(readonly, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property(readonly, nonatomic) NSDate *overrideDate; // @synthesize overrideDate=_overrideDate;
-@property(retain, nonatomic) CALayer *minuteHandDot; // @synthesize minuteHandDot=_minuteHandDot;
 @property(retain, nonatomic) NTKHandView *secondHandView; // @synthesize secondHandView=_secondHandView;
 @property(retain, nonatomic) NTKHandView *minuteHandView; // @synthesize minuteHandView=_minuteHandView;
 @property(retain, nonatomic) NTKHandView *hourHandView; // @synthesize hourHandView=_hourHandView;
@@ -66,6 +66,9 @@
 - (void)_repointDebugHandsToCurrentTime;
 - (void)_handleDisplayLink;
 - (_Bool)_dontRepointDebugHands;
+- (double)_minuteHandDotDiameter;
+@property(readonly, nonatomic) UIView *minuteHandDot;
+@property(readonly, nonatomic) UIView *secondHandDot;
 - (void)_deregisterFromDisplayLinkManager;
 - (void)_enumerateSecondHandViewsWithBlock:(CDUnknownBlockType)arg1;
 - (id)displayTime;
@@ -73,7 +76,6 @@
 - (void)_addHourMinuteHandsTransitionLayers;
 - (void)_removeHourMinuteHandsTransitionLayers;
 - (void)_removeColorTransitionViews;
-- (void)applySecondHandDotColor:(id)arg1;
 - (void)applySecondHandColor:(id)arg1;
 - (void)applySecondHandTransitionFraction:(double)arg1 fromColor:(id)arg2 toColor:(id)arg3;
 - (void)applyHourMinuteHandsTransitionFraction:(double)arg1 fromStrokeColor:(id)arg2 fromFillColor:(id)arg3 toStrokeColor:(id)arg4 toFillColor:(id)arg5;
@@ -81,10 +83,10 @@
 - (void)endScrubbingAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)scrubToDate:(id)arg1 animated:(_Bool)arg2;
 - (void)startScrubbingAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)setupDefaultMinuteHandDotIfNecessary;
 - (_Bool)_canRunTimeAnimation;
 - (void)_stopTimeAnimation;
 - (void)_startNewTimeAnimation;
+- (double)_timeAnimationFramesPerSecondForDevice:(id)arg1;
 - (void)setTimeOffset:(double)arg1;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
 - (void)didMoveToWindow;
@@ -92,6 +94,7 @@
 - (void)_enumerateHandViews:(CDUnknownBlockType)arg1;
 - (void)layoutSubviews;
 - (void)dealloc;
+- (id)initForDevice:(id)arg1 withStyle:(unsigned long long)arg2;
 - (id)initForDevice:(id)arg1;
 
 // Remaining properties

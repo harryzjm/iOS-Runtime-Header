@@ -6,42 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class EAGLContext, EAGLSharegroup, NSBundle;
+@class NSBundle;
+@protocol MTLDevice;
 
 @interface NURenderer : NSObject
 {
-    EAGLContext *_context;
-    EAGLSharegroup *_shareGroup;
+    id <MTLDevice> _mtlDevice;
     NSBundle *_bundle;
     struct NURendererResources _resources;
-    unsigned int _initalizedProgams:1;
-    unsigned int _initalizedHemi:1;
-    unsigned int _initalizedTextures:1;
-    unsigned int _initalized:1;
+    unsigned long long _viewMtlPixelFormat;
     struct _NUGeometryRange _octahedronGeomRange;
     struct _NUGeometryRange _quadGeomRange;
 }
 
-+ (void)prime;
 + (void)_deallocInstance;
-+ (id)sharedInstance;
-@property(readonly, nonatomic) EAGLSharegroup *shareGroup; // @synthesize shareGroup=_shareGroup;
++ (id)sharedInstanceWithPixelFormat:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (void)_prime;
-- (void)_purge;
-- (void)purge;
 - (void)_asyncDeallocInstance;
-- (_Bool)_initTextures;
-- (void)_loadTexture:(unsigned long long)arg1;
-- (void)_requireTexture:(unsigned long long)arg1 sync:(_Bool)arg2;
-- (_Bool)_initPrograms;
-- (id)snapshot:(id)arg1 size:(struct CGSize)arg2;
-- (void)_renderWithScene:(id)arg1 viewport:(struct NUViewport)arg2 prime:(_Bool)arg3;
-- (void)renderWithScene:(id)arg1 viewport:(struct NUViewport)arg2;
-- (unsigned int)createVertexArray;
-- (_Bool)_initHemi;
+- (void)_initPrograms;
+- (void)_createPipelineForProgramType:(unsigned long long)arg1 fromLibrary:(id)arg2;
+- (void)renderWithScene:(id)arg1 viewport:(struct NUViewport)arg2 resources:(id)arg3 encoder:(id)arg4;
+- (void)drawSpriteWithEncoder:(id)arg1 state:(const struct NURendererState *)arg2 spheroid:(id)arg3 resources:(id)arg4;
+- (void)draw3DWithEncoder:(id)arg1 state:(const struct NURendererState *)arg2 spheroid:(id)arg3 resources:(id)arg4;
+- (void)bindAssetArt:(unsigned long long)arg1 withEncoder:(id)arg2 resources:(id)arg3 toSlot:(unsigned long long)arg4;
+- (void)_initHemi;
+- (void)_initDepthStencilState;
 - (void)dealloc;
-- (id)init;
+- (id)initWithPixelFormat:(unsigned long long)arg1;
 
 @end
 

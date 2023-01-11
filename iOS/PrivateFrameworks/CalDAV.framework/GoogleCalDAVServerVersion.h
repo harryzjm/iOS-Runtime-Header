@@ -8,6 +8,8 @@
 {
 }
 
+- (_Bool)shouldUseDeleteAndAddInsteadOfMoveBetweenCalendars;
+- (_Bool)requiresOpeningAttachmentAsLink;
 - (id)supportedCalendarComponentSets;
 - (id)type;
 - (id)init;

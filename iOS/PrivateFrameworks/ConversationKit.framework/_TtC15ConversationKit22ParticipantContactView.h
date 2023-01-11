@@ -8,19 +8,19 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit22ParticipantContactView : UIView
 {
     MISSING_TYPE *gradientView;
     MISSING_TYPE *contactMonogram;
-    MISSING_TYPE *contactSilhouetteImageView;
+    MISSING_TYPE *silhouette;
     MISSING_TYPE *contactDetails;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
-- (id)initWithCoder:(id)arg1;
+- (void).cxx_destruct;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
 
 @end
 

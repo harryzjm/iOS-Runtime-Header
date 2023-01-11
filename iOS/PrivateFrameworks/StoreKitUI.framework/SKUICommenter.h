@@ -6,6 +6,7 @@
 
 @class NSString, UIImage;
 
+__attribute__((visibility("hidden")))
 @interface SKUICommenter
 {
     _Bool _isAttributed;

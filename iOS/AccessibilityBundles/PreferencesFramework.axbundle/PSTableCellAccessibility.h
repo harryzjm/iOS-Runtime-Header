@@ -12,7 +12,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (_Bool)_accessibilityIsScannerElement;
+- (_Bool)accessibilityRespondsToUserInteraction;
 - (struct CGPoint)_accessibilityMaxScrubberPosition;
 - (struct CGPoint)_accessibilityMinScrubberPosition;
 - (_Bool)_accessibilityIsSpeakThisElement;

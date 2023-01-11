@@ -9,6 +9,7 @@
 @interface HKWorkoutBuilderConfiguration
 {
     _Bool _shouldCollectWorkoutEvents;
+    _Bool _requiresRecovery;
     HKDevice *_device;
     HKWorkoutConfiguration *_workoutConfiguration;
     unsigned long long _goalType;
@@ -17,6 +18,7 @@
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) _Bool requiresRecovery; // @synthesize requiresRecovery=_requiresRecovery;
 @property(nonatomic) _Bool shouldCollectWorkoutEvents; // @synthesize shouldCollectWorkoutEvents=_shouldCollectWorkoutEvents;
 @property(copy, nonatomic) NSUUID *associatedSessionUUID; // @synthesize associatedSessionUUID=_associatedSessionUUID;
 @property(copy, nonatomic) HKQuantity *goal; // @synthesize goal=_goal;

@@ -6,6 +6,7 @@
 
 @class SKUIItemBrowseCellLayout;
 
+__attribute__((visibility("hidden")))
 @interface SKUIItemBrowseTableViewCell
 {
     SKUIItemBrowseCellLayout *_layout;

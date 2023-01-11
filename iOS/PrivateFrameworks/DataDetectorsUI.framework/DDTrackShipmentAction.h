@@ -13,6 +13,7 @@
 - (id)notificationIconBundleIdentifier;
 - (id)notificationTitle;
 - (void)performFromView:(id)arg1;
+- (id)icon;
 - (id)localizedName;
 
 @end

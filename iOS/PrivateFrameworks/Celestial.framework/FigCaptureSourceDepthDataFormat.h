@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 @interface FigCaptureSourceDepthDataFormat
 {
 }
 
 @property(readonly) _Bool RGBIRStereoFusionSupported;
+@property(readonly) NSArray *supportedSemanticSegmentationMatteURNs;
 @property(readonly) float portraitEffectsMatteMainImageDownscalingFactor;
 - (CDStruct_79c71658)depthEngineOutputDimensions;
 @property(readonly, getter=isStillImageOnlyDepthData) _Bool stillImageOnlyDepthData;

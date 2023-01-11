@@ -6,6 +6,7 @@
 
 @class DDRemoteActionViewController;
 
+__attribute__((visibility("hidden")))
 @interface DDAddToAddressBookAction
 {
 }

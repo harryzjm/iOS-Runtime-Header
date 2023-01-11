@@ -15,10 +15,13 @@
 @interface _INPBIntentTypePhrases : PBCodable <_INPBIntentTypePhrases, NSSecureCoding, NSCopying>
 {
     struct _has;
+    _Bool __encodeLegacyGloryData;
     _INPBIntentType *_intentType;
     NSArray *_intentVocabularyExamples;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(copy, nonatomic) NSArray *intentVocabularyExamples; // @synthesize intentVocabularyExamples=_intentVocabularyExamples;
 @property(retain, nonatomic) _INPBIntentType *intentType; // @synthesize intentType=_intentType;
 - (void).cxx_destruct;
@@ -26,6 +29,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (id)intentVocabularyExamplesAtIndex:(unsigned long long)arg1;

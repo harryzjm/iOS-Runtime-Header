@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool hasHiddenRows;
 @property(readonly, nonatomic) _Bool hasCollapsedRows;
 - (_Bool)hasFilterRulesWithTable:(id)arg1 inBaseColumns:(id)arg2;
+- (void)dirtyFilterStateForHeaders;
 - (void)dirtyFilterState;
 - (void)filterSetUpdated;
 - (_Bool)hasActiveFilters;
@@ -81,11 +82,12 @@ __attribute__((visibility("hidden")))
 - (void)willChangeGroupByTo:(id)arg1;
 - (void)setTableInfo:(id)arg1;
 - (void)unregisterFromCalcEngine;
-- (int)registerWithCalcEngine:(id)arg1;
+- (int)registerWithCalcEngine:(id)arg1 baseOwnerUID:(const UUIDData_5fbc143e *)arg2;
 - (void)syncUpHiddenStateFormulaOwnerUIDs;
 - (struct TSCERangeRef)referenceToHiddenStateFromColumn:(unsigned short)arg1 toColumn:(unsigned short)arg2;
 - (struct TSCERangeRef)referenceToHiddenStateFromRow:(unsigned int)arg1 toRow:(unsigned int)arg2;
 - (id)indexesOfHiddenRowsInBaseCellRange:(struct TSUModelCellRect)arg1;
+- (struct TSUModelRowIndex)numberOfUserHiddenRowsInBaseCellRange:(struct TSUModelCellRect)arg1;
 - (struct TSUModelRowIndex)numberOfHiddenRowsInBaseCellRange:(struct TSUModelCellRect)arg1;
 - (id)indexesOfHiddenColumnsInBaseCellRange:(struct TSUModelCellRect)arg1;
 - (struct TSUModelColumnIndex)numberOfHiddenColumnsInBaseCellRange:(struct TSUModelCellRect)arg1;
@@ -113,10 +115,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)anyHiddenRowsInCellRange:(struct TSUCellRect)arg1;
 - (unsigned int)numberOfUserHiddenRowsInCellRange:(struct TSUCellRect)arg1;
 - (unsigned int)numberOfHiddenRowsInCellRange:(struct TSUCellRect)arg1;
+- (id)indexesOfCollapsedRowsInCellRange:(struct TSUCellRect)arg1;
 - (id)indexesOfVisibleRowsInRowRange:(id)arg1;
 - (id)indexesOfUserVisibleRowsInCellRange:(struct TSUCellRect)arg1;
 - (id)indexesOfVisibleRowsInCellRegion:(id)arg1;
 - (id)indexesOfVisibleRowsInCellRange:(struct TSUCellRect)arg1;
+- (id)indexesOfFilteredRowsInCellRange:(struct TSUCellRect)arg1;
 - (id)indexesOfUserHiddenRowsInCellRange:(struct TSUCellRect)arg1;
 - (id)indexesOfHiddenRowsInCellRange:(struct TSUCellRect)arg1;
 - (unsigned char)hidingActionForBaseRowAtIndex:(struct TSUModelRowIndex)arg1;

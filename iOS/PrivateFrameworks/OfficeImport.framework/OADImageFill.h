@@ -6,6 +6,7 @@
 
 @class OADBlipRef, OADImageFillTechnique, OADRelativeRect;
 
+__attribute__((visibility("hidden")))
 @interface OADImageFill
 {
     OADBlipRef *mBlipRef;
@@ -19,6 +20,7 @@
 }
 
 + (id)defaultProperties;
+- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)setStyleColor:(id)arg1;
@@ -43,7 +45,6 @@
 - (_Bool)isAnythingOverridden;
 - (void)setParent:(id)arg1;
 - (id)initWithDefaults;
-- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

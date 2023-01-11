@@ -8,16 +8,15 @@
 #import <HomeUI/UITextViewDelegate-Protocol.h>
 
 @class HUPersonalRequestsDevicesItemModule, NSString;
-@protocol HUPersonalRequestsDevicesModuleControllerDelegate;
 
 @interface HUPersonalRequestsDevicesModuleController <HUSwitchCellDelegate, UITextViewDelegate>
 {
-    id <HUPersonalRequestsDevicesModuleControllerDelegate> _delegate;
 }
 
-@property(nonatomic) __weak id <HUPersonalRequestsDevicesModuleControllerDelegate> delegate; // @synthesize delegate=_delegate;
-- (void).cxx_destruct;
+- (id)setPersonalRequestsDevices:(id)arg1;
+- (id)turnOnPersonalRequestsForAllDevices;
 - (void)_togglePersonalRequestStateForItem:(id)arg1;
+- (void)_presentAlert:(id)arg1;
 - (id)_promptToChangeLocationDeviceFromCurrentDevice:(id)arg1;
 - (id)_promptToChangeLocationDeviceIfNecessary;
 - (id)_promptToEnableSiriIfNecessary;
@@ -28,7 +27,7 @@
 - (void)updateCell:(id)arg1 forItem:(id)arg2 animated:(_Bool)arg3;
 - (void)setupCell:(id)arg1 forItem:(id)arg2;
 - (Class)cellClassForItem:(id)arg1;
-- (id)initWithModule:(id)arg1 delegate:(id)arg2;
+- (id)initWithModule:(id)arg1 host:(id)arg2;
 - (id)initWithModule:(id)arg1;
 
 // Remaining properties

@@ -11,6 +11,15 @@
 @class NSString;
 
 @interface UIAlertController (HUPreloadingModalPresentation) <HUPreloadableViewController>
++ (id)hu_alertControllerForAcknowledgementWithTitle:(id)arg1 message:(id)arg2;
++ (id)hu_alertControllerWithActivityIndicatorAndTitle:(id)arg1;
++ (id)hu_alertControllerForUnimplementedFeature:(id)arg1;
++ (id)alertControllerForAddingDestinationWithTypeString:(id)arg1 andProceed:(CDUnknownBlockType)arg2;
++ (id)alertControllerForAddingDestinationWithType:(unsigned long long)arg1 andProceed:(CDUnknownBlockType)arg2;
++ (id)alertControllerForAddingServiceGroupWithProceed:(CDUnknownBlockType)arg1;
++ (id)alertControllerForAddingRoomWithProceed:(CDUnknownBlockType)arg1;
++ (id)alertControllerForAddingZoneWithProceed:(CDUnknownBlockType)arg1;
++ (id)alertControllerForAddingHomeWithProceed:(CDUnknownBlockType)arg1;
 - (id)hu_preloadContent;
 
 // Remaining properties

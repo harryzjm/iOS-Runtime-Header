@@ -8,6 +8,7 @@
 
 @interface SUDelayedNavigationItem
 {
+    _Bool _delayedBackButtonHidden;
     id _delayedBackButtonTitle;
     id _delayedLeftBarButtonItems;
     NSNumber *_delayedLeftItemsSupplementBackButton;
@@ -20,6 +21,7 @@
 
 @property(retain, nonatomic) SUNavigationItem *wrappedNavigationItem; // @synthesize wrappedNavigationItem=_wrappedNavigationItem;
 @property(nonatomic) _Bool shouldDelayChanges; // @synthesize shouldDelayChanges=_shouldDelayChanges;
+- (void).cxx_destruct;
 - (void)_scheduleCommit;
 - (void)_prepareButtonItemForDisplay:(id)arg1;
 - (id)titleView;
@@ -32,6 +34,7 @@
 - (void)setLeftItemsSupplementBackButton:(_Bool)arg1;
 - (void)setLeftBarButtonItems:(id)arg1 animated:(_Bool)arg2;
 - (void)setLeftBarButtonItem:(id)arg1 animated:(_Bool)arg2;
+- (void)setHidesBackButton:(_Bool)arg1;
 - (void)setBackButtonTitle:(id)arg1;
 - (id)rightBarButtonItems;
 - (id)rightBarButtonItem;

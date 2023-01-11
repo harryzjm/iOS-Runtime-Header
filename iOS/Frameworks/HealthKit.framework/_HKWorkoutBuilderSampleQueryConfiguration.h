@@ -6,7 +6,6 @@
 
 @class NSUUID;
 
-__attribute__((visibility("hidden")))
 @interface _HKWorkoutBuilderSampleQueryConfiguration
 {
     _Bool _needsHistoricalData;

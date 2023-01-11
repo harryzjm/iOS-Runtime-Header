@@ -6,6 +6,7 @@
 
 @class UILabel;
 
+__attribute__((visibility("hidden")))
 @interface STSingleLineDetailTextHeaderView
 {
     UILabel *_detailLabel;

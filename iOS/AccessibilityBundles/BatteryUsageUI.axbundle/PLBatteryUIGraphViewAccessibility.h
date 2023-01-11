@@ -11,6 +11,15 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityDataSeriesValuesForAxis:(long long)arg1;
+- (id)_axBatteryLevelElements;
+- (_Bool)_accessibilityDataSeriesIncludesTrendlineInSonification;
+- (_Bool)_accessibilityDataSeriesSupportsSonification;
+- (_Bool)_accessibilityDataSeriesSupportsSummarization;
+- (id)_accessibilityDataSeriesGridlinePositionsForAxis:(long long)arg1;
+- (id)_accessibilityDataSeriesMinimumValueForAxis:(long long)arg1;
+- (long long)_accessibilityDataSeriesType;
+- (long long)accessibilityContainerType;
 - (id)_accessibilityGraphElementsWithData:(id)arg1 endDate:(id)arg2 numIntervals:(int)arg3 intervalWidth:(double)arg4 intervalHeight:(double)arg5 yOrigin:(double)arg6 tapIndex:(int)arg7;
 - (void)setupGraphElements;
 - (id)accessibilityElements;

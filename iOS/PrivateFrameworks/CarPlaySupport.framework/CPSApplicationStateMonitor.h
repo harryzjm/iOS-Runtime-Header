@@ -6,28 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class BKSApplicationStateMonitor, NSHashTable, NSString;
+@class CARObserverHashTable, NSString, UIWindowScene;
 @protocol OS_dispatch_queue;
 
 @interface CPSApplicationStateMonitor : NSObject
 {
     NSObject<OS_dispatch_queue> *_stateObserverQueue;
     NSString *_bundleIdentifier;
-    BKSApplicationStateMonitor *_stateMonitor;
-    NSHashTable *_stateObservers;
+    CARObserverHashTable *_stateObservers;
+    UIWindowScene *_windowScene;
 }
 
-@property(retain, nonatomic) NSHashTable *stateObservers; // @synthesize stateObservers=_stateObservers;
-@property(retain, nonatomic) BKSApplicationStateMonitor *stateMonitor; // @synthesize stateMonitor=_stateMonitor;
+@property(nonatomic) __weak UIWindowScene *windowScene; // @synthesize windowScene=_windowScene;
+@property(retain, nonatomic) CARObserverHashTable *stateObservers; // @synthesize stateObservers=_stateObservers;
 @property(readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (void).cxx_destruct;
+- (void)_sceneDidEnterBackground:(id)arg1;
+- (void)_sceneWillEnterForeground:(id)arg1;
+- (void)_notifyObserversForeground:(_Bool)arg1;
 @property(readonly, nonatomic, getter=isApplicationActive) _Bool applicationActive;
 - (void)removeApplicationStateObserver:(id)arg1;
 - (void)addApplicationStateObserver:(id)arg1;
-- (void)removeAllObservers;
 - (void)dealloc;
-- (void)_handleStateChange:(id)arg1;
-- (id)initWithBundleIdentifier:(id)arg1;
+- (id)initWithWindowScene:(id)arg1;
 
 @end
 

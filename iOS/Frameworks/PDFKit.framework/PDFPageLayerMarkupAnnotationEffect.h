@@ -9,6 +9,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)removeFromSuperlayer;
+- (void)_updateNoteLayer;
 - (void)update;
 - (id)UUID;
 - (id)annotation;

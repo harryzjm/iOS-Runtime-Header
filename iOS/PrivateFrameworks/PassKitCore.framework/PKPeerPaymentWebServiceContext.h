@@ -19,7 +19,7 @@
 
 + (id)contextWithArchive:(id)arg1;
 + (_Bool)supportsSecureCoding;
-@property(readonly, copy, nonatomic) NSData *signedEnrollmentDataSignature; // @synthesize signedEnrollmentDataSignature=_signedEnrollmentDataSignature;
+@property(copy, nonatomic) NSData *signedEnrollmentDataSignature; // @synthesize signedEnrollmentDataSignature=_signedEnrollmentDataSignature;
 @property(readonly, copy, nonatomic) NSString *companionSerialNumber; // @synthesize companionSerialNumber=_companionSerialNumber;
 @property(nonatomic) _Bool devSigned; // @synthesize devSigned=_devSigned;
 @property(copy, nonatomic) NSString *pushToken; // @synthesize pushToken=_pushToken;

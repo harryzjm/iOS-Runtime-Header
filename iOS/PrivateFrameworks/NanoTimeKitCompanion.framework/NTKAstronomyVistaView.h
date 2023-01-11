@@ -9,15 +9,19 @@
 #import <NanoTimeKitCompanion/NUAnimationObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NUViewDelegate-Protocol.h>
 
-@class CLKDevice, NSMutableSet, NSString, NUScene, NUView;
+@class CLKDevice, NSMutableSet, NSString, NUScene, NUView, UIImageView;
 @protocol NTKAstronomyVistaViewObserver;
 
 @interface NTKAstronomyVistaView : UIView <NUAnimationObserver, NUViewDelegate>
 {
     NUView *_viewer;
+    UIImageView *_fallbackImageView;
+    unsigned long long _fallbackVista;
     NSMutableSet *_activeContentsAnimations;
     unsigned long long _vista;
     unsigned int _isSupplemental:1;
+    unsigned int _isDisplayOn:1;
+    unsigned int _isAnimating:1;
     CLKDevice *_device;
     id <NTKAstronomyVistaViewObserver> _observer;
 }
@@ -35,13 +39,16 @@
 - (unsigned long long)vista;
 - (id)rotatable:(unsigned long long)arg1;
 - (void)layoutSubviews;
-- (void)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1;
+- (void)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
+- (void)_updateAnimation;
 - (void)stopAnimation;
 - (void)startAnimation;
 - (void)updateSunLocationAnimated:(_Bool)arg1;
 - (void)setMinFrameInterval:(int)arg1;
 - (void)setOpaque:(_Bool)arg1;
 @property(retain, nonatomic) NUScene *scene;
+- (id)_fallbackImageForVista:(unsigned long long)arg1;
+- (id)snapshotImage;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;
 

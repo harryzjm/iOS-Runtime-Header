@@ -6,11 +6,15 @@
 
 #import <CoreTelephony/NSObject-Protocol.h>
 
-@class CTXPCServiceSubscriptionContext, NSString;
+@class CTServiceDescriptor, CTXPCServiceSubscriptionContext, NSString;
 
 @protocol CoreTelephonyClientSubscriberDelegate <NSObject>
 
 @optional
+- (void)userDefaultVoiceSlotDidChange:(CTXPCServiceSubscriptionContext *)arg1;
+- (void)subscriberCountryCodeDidChange:(CTXPCServiceSubscriptionContext *)arg1;
+- (void)shortLabelsDidChange;
+- (void)authTokenChanged:(CTServiceDescriptor *)arg1;
 - (void)simPinChangeRequestDidComplete:(CTXPCServiceSubscriptionContext *)arg1 success:(_Bool)arg2;
 - (void)simPukEntryErrorDidOccur:(CTXPCServiceSubscriptionContext *)arg1 status:(NSString *)arg2;
 - (void)simPinEntryErrorDidOccur:(CTXPCServiceSubscriptionContext *)arg1 status:(NSString *)arg2;

@@ -8,6 +8,7 @@
 
 @class UIImageView, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface _CKAcknowledgmentVoteCountView : UIView
 {
     UILabel *_voteCountLabel;

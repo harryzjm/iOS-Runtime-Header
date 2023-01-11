@@ -4,26 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <objc/NSObject.h>
+
 @class NSMutableSet, NSNumber, NSRecursiveLock;
 
-@interface IMMobileNetworkManager
+@interface IMMobileNetworkManager : NSObject
 {
     _Bool _registered;
     _Bool _shouldBringUpDataContext;
-    _Bool _isDataContextAttached;
+    _Bool _isDataPossible;
     _Bool _isDataContextActive;
     _Bool _isDataIndicatorNone;
     _Bool _isDataContextUsable;
     NSRecursiveLock *_lock;
     NSMutableSet *_cellAutoAssociationTokens;
-    NSMutableSet *_wiFiAutoAssociationTokens;
 }
 
-@property(retain, nonatomic) NSMutableSet *wiFiAutoAssociationTokens; // @synthesize wiFiAutoAssociationTokens=_wiFiAutoAssociationTokens;
++ (id)sharedInstance;
 @property(nonatomic) _Bool isDataContextUsable; // @synthesize isDataContextUsable=_isDataContextUsable;
 @property(nonatomic) _Bool isDataIndicatorNone; // @synthesize isDataIndicatorNone=_isDataIndicatorNone;
 @property(nonatomic) _Bool isDataContextActive; // @synthesize isDataContextActive=_isDataContextActive;
-@property(nonatomic) _Bool isDataContextAttached; // @synthesize isDataContextAttached=_isDataContextAttached;
+@property(nonatomic) _Bool isDataPossible; // @synthesize isDataPossible=_isDataPossible;
 @property(nonatomic) _Bool shouldBringUpDataContext; // @synthesize shouldBringUpDataContext=_shouldBringUpDataContext;
 @property(nonatomic) _Bool registered; // @synthesize registered=_registered;
 @property(retain, nonatomic) NSMutableSet *cellularAutoAssociationTokens; // @synthesize cellularAutoAssociationTokens=_cellAutoAssociationTokens;
@@ -66,7 +67,6 @@
 - (void)_lockedAdjustCellularAutoAssociation;
 - (void)_adjustCellularAutoAssociation;
 @property(readonly, nonatomic) _Bool isAirplaneModeEnabled;
-- (void)cutWiFiManagerLinkDidChange:(id)arg1 context:(id)arg2;
 - (void)dealloc;
 - (id)init;
 

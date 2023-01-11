@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVFoundation/AVQueuePlayer.h>
+#import <AVFoundation/AVPlayer.h>
 
 @class ISRateCurveRequest;
 
-@interface ISAVPlayer : AVQueuePlayer
+@interface ISAVPlayer : AVPlayer
 {
     ISRateCurveRequest *_currentRequest;
 }

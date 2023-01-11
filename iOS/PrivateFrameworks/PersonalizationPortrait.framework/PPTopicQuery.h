@@ -9,12 +9,15 @@
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSSet;
+@class NSDate, NSSet, NSString;
 
 @interface PPTopicQuery : NSObject <NSCopying, NSSecureCoding>
 {
-    _Bool _overrideDecayRate;
     _Bool _scoreWithBiases;
+    _Bool _scoreWithStrictFiltering;
+    _Bool _excludeWithoutSentiment;
+    _Bool _scoreWithCalibration;
+    _Bool _orderByIdentifier;
     unsigned long long _limit;
     NSDate *_fromDate;
     NSDate *_toDate;
@@ -24,13 +27,25 @@
     unsigned long long _deviceFilter;
     double _decayRate;
     NSSet *_matchingTopicIds;
+    unsigned long long _minimumComponentCount;
+    NSSet *_matchingAlgorithms;
+    NSSet *_excludingAlgorithms;
+    NSString *_matchingTopicTrie;
 }
 
++ (id)_algorithmsDescription:(id)arg1;
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) _Bool orderByIdentifier; // @synthesize orderByIdentifier=_orderByIdentifier;
+@property(retain, nonatomic) NSString *matchingTopicTrie; // @synthesize matchingTopicTrie=_matchingTopicTrie;
+@property(retain, nonatomic) NSSet *excludingAlgorithms; // @synthesize excludingAlgorithms=_excludingAlgorithms;
+@property(retain, nonatomic) NSSet *matchingAlgorithms; // @synthesize matchingAlgorithms=_matchingAlgorithms;
+@property(nonatomic) unsigned long long minimumComponentCount; // @synthesize minimumComponentCount=_minimumComponentCount;
+@property(nonatomic) _Bool scoreWithCalibration; // @synthesize scoreWithCalibration=_scoreWithCalibration;
+@property(nonatomic) _Bool excludeWithoutSentiment; // @synthesize excludeWithoutSentiment=_excludeWithoutSentiment;
+@property(nonatomic) _Bool scoreWithStrictFiltering; // @synthesize scoreWithStrictFiltering=_scoreWithStrictFiltering;
 @property(retain, nonatomic) NSSet *matchingTopicIds; // @synthesize matchingTopicIds=_matchingTopicIds;
 @property(nonatomic) _Bool scoreWithBiases; // @synthesize scoreWithBiases=_scoreWithBiases;
 @property(nonatomic) double decayRate; // @synthesize decayRate=_decayRate;
-@property(nonatomic) _Bool overrideDecayRate; // @synthesize overrideDecayRate=_overrideDecayRate;
 @property(nonatomic) unsigned long long deviceFilter; // @synthesize deviceFilter=_deviceFilter;
 @property(retain, nonatomic) NSSet *excludingSourceBundleIds; // @synthesize excludingSourceBundleIds=_excludingSourceBundleIds;
 @property(retain, nonatomic) NSSet *matchingSourceBundleIds; // @synthesize matchingSourceBundleIds=_matchingSourceBundleIds;
@@ -39,10 +54,15 @@
 @property(retain, nonatomic) NSDate *fromDate; // @synthesize fromDate=_fromDate;
 @property(nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 - (void).cxx_destruct;
+- (id)customizedDescription;
+- (id)description;
+- (_Bool)isEqual:(id)arg1;
+- (_Bool)isEqualToTopicQuery:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
+@property(nonatomic) _Bool overrideDecayRate;
 
 @end
 

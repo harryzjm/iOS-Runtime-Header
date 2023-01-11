@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CIContext, CIImage, CIVector, NSNumber;
+@class CIImage, CIVector, NSNumber;
 
 __attribute__((visibility("hidden")))
 @interface CIAreaHistogram
@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
     CIVector *inputExtent;
     NSNumber *inputScale;
     NSNumber *inputCount;
-    CIContext *_context;
 }
 
 + (id)customAttributes;
@@ -26,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (id)outputData;
 - (_Bool)_inputsAreOK;
 - (struct IRect)_netExtent;
-- (void)dealloc;
 
 @end
 

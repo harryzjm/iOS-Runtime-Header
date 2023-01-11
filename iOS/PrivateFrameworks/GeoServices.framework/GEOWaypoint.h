@@ -8,37 +8,57 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocation, GEOPlaceSearchRequest, NSMutableArray, PBUnknownFields;
+@class GEOLocation, GEOPlaceSearchRequest, NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEOWaypoint : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_entryPoints;
     GEOLocation *_location;
     GEOPlaceSearchRequest *_placeSearchRequest;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_entryPoints:1;
+        unsigned int read_location:1;
+        unsigned int read_placeSearchRequest:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_entryPoints:1;
+        unsigned int wrote_location:1;
+        unsigned int wrote_placeSearchRequest:1;
+    } _flags;
 }
 
++ (_Bool)isValid:(id)arg1;
 + (Class)entryPointType;
-@property(retain, nonatomic) NSMutableArray *entryPoints; // @synthesize entryPoints=_entryPoints;
-@property(retain, nonatomic) GEOLocation *location; // @synthesize location=_location;
-@property(retain, nonatomic) GEOPlaceSearchRequest *placeSearchRequest; // @synthesize placeSearchRequest=_placeSearchRequest;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(_Bool)arg1;
 @property(readonly, nonatomic) PBUnknownFields *unknownFields;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)copyTo:(id)arg1;
+- (void)clearSensitiveFields;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
+- (void)readAll:(_Bool)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
 - (id)entryPointAtIndex:(unsigned long long)arg1;
 - (unsigned long long)entryPointsCount;
+- (void)_addNoFlagsEntryPoint:(id)arg1;
 - (void)addEntryPoint:(id)arg1;
 - (void)clearEntryPoints;
+@property(retain, nonatomic) NSMutableArray *entryPoints;
+- (void)_readEntryPoints;
+@property(retain, nonatomic) GEOLocation *location;
 @property(readonly, nonatomic) _Bool hasLocation;
+- (void)_readLocation;
+@property(retain, nonatomic) GEOPlaceSearchRequest *placeSearchRequest;
 @property(readonly, nonatomic) _Bool hasPlaceSearchRequest;
+- (void)_readPlaceSearchRequest;
 
 @end
 

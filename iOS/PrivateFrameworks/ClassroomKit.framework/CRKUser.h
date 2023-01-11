@@ -14,6 +14,7 @@
 
 @interface CRKUser : NSObject <NSSecureCoding, NSCopying, CRKCloudStoringSubItem>
 {
+    _Bool _useMeCardIfAvailable;
     NSString *_userIdentifier;
     NSString *_displayName;
     NSString *_givenName;
@@ -34,9 +35,11 @@
 + (id)recordType;
 + (id)skeletonInstance;
 + (_Bool)supportsSecureCoding;
++ (id)customUserFromMeCardUser:(id)arg1;
 + (id)meCardUser;
 @property(copy, nonatomic) CRKImage *userImage; // @synthesize userImage=_userImage;
 @property(copy, nonatomic) NSData *userImageData; // @synthesize userImageData=_userImageData;
+@property(nonatomic, getter=shouldUseMeCardIfAvailable) _Bool useMeCardIfAvailable; // @synthesize useMeCardIfAvailable=_useMeCardIfAvailable;
 @property(nonatomic) long long role; // @synthesize role=_role;
 @property(copy, nonatomic) NSString *userSource; // @synthesize userSource=_userSource;
 @property(copy, nonatomic) NSString *imageURL; // @synthesize imageURL=_imageURL;
@@ -54,6 +57,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqualToUser:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 @property(readonly, copy) NSString *description;

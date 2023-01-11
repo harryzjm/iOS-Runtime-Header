@@ -11,6 +11,8 @@
 @class NSString;
 
 @interface HMAccessoryCollectionSettingItem (HFDebugging) <HFStateDumpBuildable>
++ (id)hf_alarmItemsMatchingAlarmId:(id)arg1 withinItemArray:(id)arg2;
++ (id)hf_collectionSettingItemForAlarm:(id)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 
 // Remaining properties

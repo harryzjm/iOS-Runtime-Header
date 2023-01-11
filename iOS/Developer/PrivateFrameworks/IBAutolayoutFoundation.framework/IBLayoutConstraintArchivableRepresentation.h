@@ -46,8 +46,10 @@
 @property(readonly, nonatomic) unsigned long long firstAttribute; // @synthesize firstAttribute=_firstAttribute;
 @property(readonly, nonatomic) NSString *firstItemIdentifier; // @synthesize firstItemIdentifier=_firstItemIdentifier;
 - (void).cxx_destruct;
-- (id)representationByReversingFirstAndSecondItem;
+- (unsigned long long)hashOfComponentsIgnoringScoring;
 - (unsigned long long)hashOfComponents;
+- (_Bool)hasComponentsEqualToComponentsOfRepresentationAllowingReversingIgnoringScoring:(id)arg1;
+- (_Bool)hasComponentsEqualToComponentsOfConstraintAllowingReversingIgnoringScoring:(id)arg1;
 - (_Bool)hasComponentsEqualToComponentsOfRepresentationAllowingReversing:(id)arg1;
 - (_Bool)hasComponentsEqualToComponentsOfRepresentation:(id)arg1;
 @property(readonly, nonatomic) id containingViewRepresentation;

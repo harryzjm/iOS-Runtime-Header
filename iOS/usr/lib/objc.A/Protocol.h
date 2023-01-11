@@ -8,7 +8,6 @@
 {
 }
 
-+ (void)load;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (const char *)name;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UIBatteryView.h>
+#import <UIKit/_UIStaticBatteryView.h>
 
-@interface BCBatteryView : _UIBatteryView
+@interface BCBatteryView : _UIStaticBatteryView
 {
     _Bool _lowBattery;
 }

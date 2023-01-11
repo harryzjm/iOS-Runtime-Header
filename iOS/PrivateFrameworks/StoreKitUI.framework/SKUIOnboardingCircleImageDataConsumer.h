@@ -6,6 +6,7 @@
 
 @class UIColor;
 
+__attribute__((visibility("hidden")))
 @interface SKUIOnboardingCircleImageDataConsumer
 {
     struct CGSize _outputSize;

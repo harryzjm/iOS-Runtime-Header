@@ -14,6 +14,12 @@
     WebViewPrivate *_private;
 }
 
++ (void)_preflightSpellChecker;
++ (void)_preflightSpellCheckerNow:(id)arg1;
++ (void)_preferencesRemovedNotification:(id)arg1;
++ (void)_cacheModelChangedNotification:(id)arg1;
++ (unsigned long long)_maxCacheModelInAnyInstance;
++ (_Bool)_didSetCacheModel;
 + (void)registerViewClass:(Class)arg1 representationClass:(Class)arg2 forMIMEType:(id)arg3;
 + (void)registerURLSchemeAsLocal:(id)arg1;
 + (void)setMIMETypesShownAsHTML:(id)arg1;
@@ -77,12 +83,6 @@
 + (id)_supportedMIMETypes;
 + (void)_reportException:(struct OpaqueJSValue *)arg1 inContext:(struct OpaqueJSContext *)arg2;
 + (id)_standardUserAgentWithApplicationName:(id)arg1;
-+ (void)_preflightSpellChecker;
-+ (void)_preflightSpellCheckerNow:(id)arg1;
-+ (void)_preferencesRemovedNotification:(id)arg1;
-+ (void)_cacheModelChangedNotification:(id)arg1;
-+ (unsigned long long)_maxCacheModelInAnyInstance;
-+ (_Bool)_didSetCacheModel;
 + (unsigned long long)_cacheModel;
 + (void)_setCacheModel:(unsigned long long)arg1;
 + (_Bool)shouldIncludeInWebKitStatistics;
@@ -91,6 +91,11 @@
 + (Class)_getPDFViewClass;
 + (void)_setPDFRepresentationClass:(Class)arg1;
 + (Class)_getPDFRepresentationClass;
+- (id)_responderForResponderOperations;
+- (_Bool)_continuousCheckingAllowed;
+- (id)_frameViewAtWindowPoint:(struct CGPoint)arg1;
+- (_Bool)_isLoading;
+- (id)_focusedFrame;
 - (id)previousValidKeyView;
 - (id)currentNodeHighlight;
 - (void)setCurrentNodeHighlight:(id)arg1;
@@ -122,6 +127,7 @@
 @property(copy, nonatomic) NSString *mediaStyle;
 @property(copy, nonatomic) NSString *customUserAgent;
 @property(copy, nonatomic) NSString *applicationNameForUserAgent;
+- (void)_invalidateUserAgentCache;
 - (void)_resetZoom:(id)arg1 isTextOnly:(_Bool)arg2;
 - (_Bool)_canResetZoom:(_Bool)arg1;
 - (void)_zoomIn:(id)arg1 isTextOnly:(_Bool)arg2;
@@ -170,9 +176,7 @@
 - (void)showCandidates:(id)arg1 forString:(id)arg2 inRect:(struct CGRect)arg3 forSelectedRange:(struct _NSRange)arg4 view:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_setFontFallbackPrefersPictographs:(_Bool)arg1;
 @property(copy, nonatomic, getter=_sourceApplicationAuditData, setter=_setSourceApplicationAuditData:) NSData *sourceApplicationAuditData;
-- (void)viewDidChangeEffectiveAppearance;
 @property(nonatomic, setter=_setUseSystemAppearance:) _Bool _useSystemAppearance;
-- (_Bool)_effectiveAppearanceIsDark;
 @property(nonatomic, setter=_setUnobscuredSafeAreaInsets:) struct WebEdgeInsets _unobscuredSafeAreaInsets;
 - (void)_setWebGLEnabled:(_Bool)arg1;
 - (_Bool)_webGLEnabled;
@@ -232,8 +236,6 @@
 - (void)_clearMainFrameName;
 - (void)_executeCoreCommandByName:(id)arg1 value:(id)arg2;
 - (id)textIteratorForRect:(struct CGRect)arg1;
-- (void)_setGlobalHistoryItem:(struct HistoryItem *)arg1;
-- (id)_globalHistoryItem;
 - (void)setUsesPageCache:(_Bool)arg1;
 - (_Bool)usesPageCache;
 - (id)_touchEventRegions;
@@ -289,7 +291,6 @@
 - (_Bool)_isPerformingProgrammaticFocus;
 - (void)_popPerformingProgrammaticFocus;
 - (void)_pushPerformingProgrammaticFocus;
-- (void)_closeWindow;
 - (id)_editingDelegateForwarder;
 - (id)_UIDelegateForSelector:(SEL)arg1;
 - (id)_UIDelegateForwarder;
@@ -314,6 +315,10 @@
 - (void)setAllowsRemoteInspection:(_Bool)arg1;
 - (_Bool)allowsRemoteInspection;
 - (id)inspector;
+- (void)_setUseDarkAppearance:(_Bool)arg1 useElevatedUserInterfaceLevel:(_Bool)arg2;
+- (void)_setUseDarkAppearance:(_Bool)arg1 useInactiveAppearance:(_Bool)arg2;
+@property(nonatomic, setter=_setUseElevatedUserInterfaceLevel:) _Bool _useElevatedUserInterfaceLevel;
+@property(nonatomic, setter=_setUseDarkAppearance:) _Bool _useDarkAppearance;
 - (id)_openNewWindowWithRequest:(id)arg1;
 - (id)_downloadURL:(id)arg1;
 - (_Bool)_isProcessingUserGesture;
@@ -329,7 +334,7 @@
 - (void)_dispatchUnloadEvent;
 - (_Bool)_isClosed;
 - (_Bool)_viewClass:(Class *)arg1 andRepresentationClass:(Class *)arg2 forMIMEType:(id)arg3;
-- (void)_didConcludeEditDataInteraction;
+- (void)_didConcludeEditDrag;
 - (void)_endedDataInteraction:(struct CGPoint)arg1 global:(struct CGPoint)arg2;
 - (_Bool)_tryToPerformDataInteraction:(id)arg1 client:(struct CGPoint)arg2 global:(struct CGPoint)arg3 operation:(unsigned long long)arg4;
 - (void)_performDataInteraction:(id)arg1 client:(struct CGPoint)arg2 global:(struct CGPoint)arg3 operation:(unsigned long long)arg4;
@@ -356,6 +361,7 @@
 - (void)_dispatchPendingLoadRequests;
 - (void)_setUIWebViewUserAgentWithBuildVersion:(id)arg1;
 - (void)_setBrowserUserAgentProductVersion:(id)arg1 buildVersion:(id)arg2 bundleVersion:(id)arg3;
+- (void)toggleContinuousSpellChecking:(id)arg1;
 - (void)makeTextStandardSize:(id)arg1;
 @property(readonly, nonatomic) _Bool canMakeTextStandardSize;
 - (void)makeTextLarger:(id)arg1;
@@ -570,11 +576,8 @@
 - (_Bool)_selectionIsCaret;
 - (void)_replaceSelectionWithNode:(id)arg1 matchStyle:(_Bool)arg2;
 - (void)_insertNewlineInQuotedContent;
-- (id)_responderForResponderOperations;
-- (_Bool)_continuousCheckingAllowed;
-- (id)_frameViewAtWindowPoint:(struct CGPoint)arg1;
-- (_Bool)_isLoading;
-- (id)_focusedFrame;
+- (void)_closeWindow;
+- (void)_windowVisibilityChanged:(id)arg1;
 - (id)candidateList;
 - (void)prepareForMouseUp;
 - (void)prepareForMouseDown;

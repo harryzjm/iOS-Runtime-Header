@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)setupViewWithStyle:(unsigned long long)arg1;
+- (id)setupView;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

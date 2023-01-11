@@ -9,5 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)setActiveFramebuffer:(id)arg1;
+
 @end
 

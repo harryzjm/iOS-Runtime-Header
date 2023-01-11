@@ -15,14 +15,14 @@
 }
 
 + (_Bool)supportsSecureCoding;
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)init;
 @property(nonatomic, readonly) NSString *description;
 @property(nonatomic, readonly) NSString *debugDescription;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 @property(nonatomic) long long resultCode; // @synthesize resultCode;
-@property(nonatomic, copy) NSArray *devices; // @synthesize devices;
+@property(nonatomic, copy) NSArray *devices;
 
 @end
 

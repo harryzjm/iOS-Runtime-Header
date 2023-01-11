@@ -11,6 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)setSelectedInk:(id)arg1 animated:(_Bool)arg2;
+- (void)pencilInteractionDidTap:(id)arg1;
+- (void)_accessibilitySetPerformingPencilTap:(_Bool)arg1;
+- (_Bool)_accessibilityPerformingPencilTap;
 - (void)setSelectionState:(unsigned long long)arg1;
 - (void)_commonInit;
 - (_Bool)shouldGroupAccessibilityChildren;

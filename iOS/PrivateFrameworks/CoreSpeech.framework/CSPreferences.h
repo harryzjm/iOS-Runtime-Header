@@ -10,14 +10,21 @@
 {
 }
 
-+ (unsigned long long)_deviceCategoryForDeviceProductType:(id)arg1;
-+ (id)deviceCategoryStringRepresentationForCategoryType:(unsigned long long)arg1;
-+ (_Bool)isCurrentDeviceCompatibleWithVoiceProfileAt:(id)arg1;
 + (id)sharedPreferences;
+- (_Bool)companionSyncVoiceTriggerUtterancesEnabled;
+- (id)fakeHearstModelPath;
+- (void)setHearstSecondPassModelVersion:(id)arg1;
+- (void)setHearstFirstPassModelVersion:(id)arg1;
+- (float)overwritingRemoteVADScore;
+- (_Bool)shouldOverwriteRemoteVADScore;
+- (_Bool)iOSBargeInSupportEnabled;
+- (_Bool)useSiriActivationSPIForwatchOS;
 - (_Bool)useSiriActivationSPIForHomePod;
 - (unsigned long long)maxNumLoggingFiles;
 - (double)audioSessionActivationDelay;
 - (_Bool)smartSiriVolumeSoftVolumeEnabled;
+- (unsigned long long)speakerIdScoreReportingType;
+- (_Bool)speakerIdiTunesAccountSigninEnabled;
 - (_Bool)speakerIdEnabled;
 - (id)audioInjectionFilePath;
 - (void)setAudioInjectionFilePath:(id)arg1;
@@ -28,20 +35,13 @@
 - (id)interstitialRelativeDirForLevel:(long long)arg1;
 - (double)remoteVoiceTriggerEndpointTimeoutWithDefault:(double)arg1;
 - (double)remoteVoiceTriggerDelayTime;
-- (_Bool)_markSATEnrollmentWithMarker:(id)arg1 forLanguage:(id)arg2;
-- (_Bool)_markSATEnrollmentMigratedForLanguageCode:(id)arg1;
-- (_Bool)_markSATEnrollmentSuccessForLanguageCode:(id)arg1;
-- (void)notifyUserVoiceProfileUpdateReady;
-- (id)getUserVoiceProfileUpdateDirectory;
 - (_Bool)_isDirectory:(id)arg1;
-- (void)notifyUserVoiceProfileUploadComplete;
-- (id)getUserVoiceProfileUploadPathWithEnrolledLanguageList:(id *)arg1;
-- (id)getUserVoiceProfileUploadPath;
-- (id)getUserVoiceProfileFileList;
-- (id)_getEnrolledLanguageList;
-- (id)_CSSATUploadPath;
-- (id)_CSSATUpdatePath;
-- (id)CSSATBasePath;
+- (id)getStartOfSpeechAudioLogFilePath;
+- (_Bool)startOfSpeechAudioLoggingEnabled;
+- (long long)getJarvisTriggerMode;
+- (void)setJarvisTriggerMode:(long long)arg1;
+- (_Bool)jarvisAudioLoggingEnabled;
+- (_Bool)secondPassAudioLoggingEnabled;
 - (id)assistantAudioFileLogDirectory;
 - (id)assistantLogDirectory;
 - (id)voiceTriggerAudioLogDirectory;
@@ -52,7 +52,11 @@
 - (void)setFileLoggingIsEnabled:(_Bool)arg1;
 - (_Bool)_storeModeEnabled;
 - (_Bool)twoShotNotificationEnabled;
+- (_Bool)corespeechDaemonEnabled;
 - (_Bool)voiceTriggerInCoreSpeech;
+- (_Bool)isAttentiveSiriAudioLoggingEnabled;
+- (_Bool)isAttentiveSiriEnabled;
+- (_Bool)phraseSpotterEnabled;
 - (_Bool)voiceTriggerEnabled;
 
 @end

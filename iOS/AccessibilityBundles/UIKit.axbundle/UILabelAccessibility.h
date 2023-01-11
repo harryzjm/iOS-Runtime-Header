@@ -10,7 +10,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (_Bool)_accessibilityIsScannerElement;
+- (_Bool)accessibilityRespondsToUserInteraction;
 - (unsigned long long)accessibilityTraits;
 - (id)_axOriginalLabelText:(_Bool)arg1;
 - (id)accessibilityLocalizedStringTableName;
@@ -23,10 +23,11 @@
 - (id)accessibilityLabel;
 - (id)accessibilityValue;
 - (id)accessibilityCustomRotors;
-- (_Bool)_accessibilityOverridesLabelValueHintSelector:(SEL)arg1;
+- (_Bool)_accessibilityOverridesPotentiallyAttributedAPISelector:(SEL)arg1;
 - (id)_axCleanupNewlines:(id)arg1;
 - (_Bool)isAccessibilityElement;
 - (double)_accessibilityFontSize;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

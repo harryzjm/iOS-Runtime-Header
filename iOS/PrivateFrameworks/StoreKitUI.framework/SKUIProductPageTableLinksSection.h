@@ -6,6 +6,7 @@
 
 @class NSMutableArray, SKUIColorScheme, SKUIProductPageItem;
 
+__attribute__((visibility("hidden")))
 @interface SKUIProductPageTableLinksSection
 {
     NSMutableArray *_actions;

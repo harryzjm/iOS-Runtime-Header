@@ -4,16 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CIImage, MLModel;
+@class CIImage, MLModel, NSNumber;
 
 __attribute__((visibility("hidden")))
 @interface CICoreMLModelFilter
 {
     CIImage *inputImage;
     MLModel *inputModel;
+    NSNumber *inputHeadIndex;
+    NSNumber *inputSoftmaxNormalization;
 }
 
 + (id)customAttributes;
+@property(retain, nonatomic) NSNumber *inputSoftmaxNormalization; // @synthesize inputSoftmaxNormalization;
+@property(retain, nonatomic) NSNumber *inputHeadIndex; // @synthesize inputHeadIndex;
 @property(retain, nonatomic) MLModel *inputModel; // @synthesize inputModel;
 @property(retain, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;

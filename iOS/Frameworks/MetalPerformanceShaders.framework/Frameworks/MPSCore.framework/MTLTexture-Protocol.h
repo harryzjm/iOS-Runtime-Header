@@ -9,7 +9,11 @@
 @protocol MTLBuffer, MTLResource, MTLTexture;
 
 @protocol MTLTexture <MTLResource>
+@property(readonly, nonatomic) CDStruct_a06f635e swizzle;
 @property(readonly) _Bool allowGPUOptimizedContents;
+@property(readonly) _Bool isSparse;
+@property(readonly) unsigned long long tailSizeInBytes;
+@property(readonly) unsigned long long firstMipmapInTail;
 @property(readonly, getter=isFramebufferOnly) _Bool framebufferOnly;
 @property(readonly) unsigned long long usage;
 @property(readonly) unsigned long long arrayLength;
@@ -20,6 +24,8 @@
 @property(readonly) unsigned long long width;
 @property(readonly) unsigned long long pixelFormat;
 @property(readonly) unsigned long long textureType;
+@property(readonly) unsigned long long iosurfacePlane;
+@property(readonly) struct __IOSurface *iosurface;
 @property(readonly) unsigned long long bufferBytesPerRow;
 @property(readonly) unsigned long long bufferOffset;
 @property(readonly) id <MTLBuffer> buffer;
@@ -27,6 +33,7 @@
 @property(readonly) unsigned long long parentRelativeLevel;
 @property(readonly) id <MTLTexture> parentTexture;
 @property(readonly) id <MTLResource> rootResource;
+- (id <MTLTexture>)newTextureViewWithPixelFormat:(unsigned long long)arg1 textureType:(unsigned long long)arg2 levels:(struct _NSRange)arg3 slices:(struct _NSRange)arg4 swizzle:(CDStruct_a06f635e)arg5;
 - (id <MTLTexture>)newTextureViewWithPixelFormat:(unsigned long long)arg1 textureType:(unsigned long long)arg2 levels:(struct _NSRange)arg3 slices:(struct _NSRange)arg4;
 - (id <MTLTexture>)newTextureViewWithPixelFormat:(unsigned long long)arg1;
 - (void)replaceRegion:(CDStruct_4c83c94d)arg1 mipmapLevel:(unsigned long long)arg2 withBytes:(const void *)arg3 bytesPerRow:(unsigned long long)arg4;

@@ -19,6 +19,7 @@
         unsigned int entityType:1;
         unsigned int sourceType:1;
     } _has;
+    _Bool __encodeLegacyGloryData;
     int _destinationType;
     int _entityType;
     int _sourceType;
@@ -29,7 +30,9 @@
     _INPBString *_sourceName;
 }
 
++ (_Bool)supportsSecureCoding;
 + (Class)propertiesType;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(nonatomic) int sourceType; // @synthesize sourceType=_sourceType;
 @property(retain, nonatomic) _INPBString *sourceName; // @synthesize sourceName=_sourceName;
 @property(copy, nonatomic) NSArray *properties; // @synthesize properties=_properties;
@@ -43,6 +46,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (int)StringAsSourceType:(id)arg1;

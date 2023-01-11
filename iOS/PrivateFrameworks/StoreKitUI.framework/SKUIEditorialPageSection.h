@@ -6,6 +6,7 @@
 
 @class SKUIColorScheme, SKUIEditorialComponent, SKUIEditorialLayout, SKUIViewElementLayoutContext;
 
+__attribute__((visibility("hidden")))
 @interface SKUIEditorialPageSection
 {
     SKUIColorScheme *_colorScheme;

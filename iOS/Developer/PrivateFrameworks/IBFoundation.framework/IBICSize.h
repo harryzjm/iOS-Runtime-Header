@@ -11,7 +11,9 @@
     struct CGSize _pointSize;
 }
 
-+ (id)itemWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 pointSize:(struct CGSize)arg4 displayOrder:(double)arg5;
++ (id)identifierFromFileName:(id)arg1 inRange:(struct _NSRange *)arg2;
++ (id)defaultItemWithPointSize:(struct CGSize)arg1;
++ (id)itemWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 pointSize:(struct CGSize)arg4;
 + (id)displayName;
 + (id)contentsJSONKey;
 + (id)unspecifiedValuePlaceholder;
@@ -23,7 +25,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqualToSlotComponentCounterpartWithKnownEqualClass:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 pointSize:(struct CGSize)arg4 displayOrder:(double)arg5;
+- (id)initWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 pointSize:(struct CGSize)arg4;
 - (long long)componentID;
 
 @end

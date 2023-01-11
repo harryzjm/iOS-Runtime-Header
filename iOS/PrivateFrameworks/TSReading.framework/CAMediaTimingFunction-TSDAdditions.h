@@ -11,5 +11,6 @@
 @interface CAMediaTimingFunction (TSDAdditions)
 - (double)solveForTime:(double)arg1;
 @property(readonly, nonatomic) TSDBezierPath *bezierPath;
+- (double)TSD_valueAtPercent:(double)arg1;
 @end
 

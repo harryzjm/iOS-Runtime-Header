@@ -6,11 +6,14 @@
 
 #import <Foundation/NSURL.h>
 
+@class NSString;
+
 @interface NSURL (SafariSharedExtras)
 + (void)safari_enumeratePossibleURLsForUserTypedString:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 + (id)safari_URLWithDataAsString:(id)arg1 relativeToURL:(id)arg2;
 + (id)safari_URLWithDataAsString:(id)arg1;
 + (id)safari_URLWithUserTypedString:(id)arg1;
+- (id)safari_relativePathToURL:(id)arg1;
 - (id)safari_wellKnownChangePasswordURL;
 - (_Bool)safari_isWellKnownChangePasswordURL;
 @property(readonly, nonatomic) _Bool safari_isURLTooLongToDisplay;
@@ -24,6 +27,8 @@
 - (id)safari_originalDataAsString;
 - (id)safari_displayNameWithTitle:(id)arg1;
 - (_Bool)safari_hasCharactersBeyondPath;
+@property(readonly, copy, nonatomic) NSString *safari_simplifiedURLStringForDeduping;
+@property(readonly, nonatomic) NSURL *safari_canonicalURLForStartPage;
 - (id)safari_canonicalURL;
 - (id)safari_URLByDeletingUserAndPassword;
 - (_Bool)safari_hasUserOrPassword;
@@ -34,10 +39,12 @@
 @property(readonly, nonatomic) _Bool safari_isEligibleToShowNotSecureWarning;
 @property(readonly, nonatomic) _Bool safari_isLocalOrPrivateNetworkURL;
 @property(readonly, nonatomic) _Bool safari_isSafariResourceURL;
+- (_Bool)safari_isMailtoURL;
 @property(readonly, nonatomic) _Bool safari_isBlobURL;
 - (_Bool)safari_isDataURL;
 - (_Bool)safari_isHTTPURL;
 - (_Bool)safari_isHTTPFamilyURL;
+- (_Bool)safari_hasLocalScheme;
 - (_Bool)safari_hasScheme:(id)arg1;
 - (id)safari_path;
 @end

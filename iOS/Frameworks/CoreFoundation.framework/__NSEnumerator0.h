@@ -9,7 +9,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)_alloc;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)new;
 + (id)sharedInstance;
@@ -18,7 +17,6 @@ __attribute__((visibility("hidden")))
 - (id)retain;
 - (unsigned long long)retainCount;
 - (id)nextObject;
-- (id)_init;
 - (id)init;
 
 @end

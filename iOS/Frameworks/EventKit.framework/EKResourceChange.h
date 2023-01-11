@@ -8,13 +8,14 @@
 
 @class EKCalendar, EKCalendarItem, NSDate, NSNumber, NSString, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface EKResourceChange <EKIdentityProtocol>
 {
 }
 
++ (id)knownRelationshipWeakKeys;
 + (id)knownRelationshipSingleValueKeys;
 + (Class)frozenClass;
++ (id)calendarItemPropertyName;
 - (void)clearAlertedStatus;
 @property(readonly, nonatomic) unsigned int publicStatus;
 @property(readonly, nonatomic) _Bool alerted;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)changedProperties;
 @property(readonly, copy, nonatomic) NSDate *timestamp;
 @property(readonly, nonatomic) unsigned int changeType;
+- (id)notification;
 @property(readonly, retain, nonatomic) EKCalendarItem *calendarItem;
 @property(readonly, retain, nonatomic) EKCalendar *calendar;
 - (id)URL;

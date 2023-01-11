@@ -4,14 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSDictionary;
+
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarVisualProvider_LegacyPhone
 {
+    NSDictionary *_orderedDisplayItemPlacements;
 }
 
++ (struct CGSize)smallPillSize;
++ (struct CGSize)pillSize;
++ (id)pillFont;
++ (id)normalFont;
++ (double)baselineOffset;
++ (struct NSDirectionalEdgeInsets)edgeInsets;
++ (double)regionSpacing;
 + (double)height;
-- (id)styleAttributes;
++ (_Bool)wantsExpandedLeadingPlacements;
+@property(retain, nonatomic) NSDictionary *orderedDisplayItemPlacements; // @synthesize orderedDisplayItemPlacements=_orderedDisplayItemPlacements;
+- (void).cxx_destruct;
+- (id)_backgroundActivityDetailRemovalAnimation;
+- (id)styleAttributesForStyle:(long long)arg1;
 - (id)regionIdentifiersForPartWithIdentifier:(id)arg1;
+- (id)overriddenStyleAttributesForDisplayItemWithIdentifier:(id)arg1;
+- (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
+- (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
+- (void)updateDataForBackgroundActivity:(id)arg1;
+- (void)actionable:(id)arg1 highlighted:(_Bool)arg2 initialPress:(_Bool)arg3;
+- (void)itemCreated:(id)arg1;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
 - (id)setupInContainerView:(id)arg1;
 

@@ -119,6 +119,7 @@
 - (void)_verifyPairingForcingSync:(_Bool)arg1;
 - (void)_handleDidUnpair;
 - (void)_handleDidPairWithNewDevice;
+- (_Bool)syncStateManagerShouldAddFavoriteSubsectionForMailboxId:(id)arg1;
 - (void)syncStateManagerDidInvalidateSyncSession:(id)arg1 syncSessionIdentifier:(id)arg2;
 - (void)syncStateManagerDidBeginSyncSession:(id)arg1 syncSessionType:(id)arg2 syncSessionIdentifier:(id)arg3;
 - (void)syncStateManagerDidChangePairedDevice:(id)arg1;
@@ -134,11 +135,12 @@
 - (void)fetchesSyncServiceServer:(id)arg1 didRequestMoreMessages:(id)arg2;
 - (void)fetchesSyncServiceServer:(id)arg1 didRequestMoreMessagesInBatch:(id)arg2;
 - (void)fetchesSyncServiceServer:(id)arg1 didRequestFetch:(id)arg2;
+- (void)_handleMailboxesDesync;
 - (id)_handleFetchRequest:(id)arg1 shouldResumeSync:(_Bool *)arg2;
 - (void)fetchesSyncServiceServer:(id)arg1 didRequestFetchInBatch:(id)arg2;
 - (void)fetchesSyncServiceServer:(id)arg1 didSendProtobufSuccessfullyWithIDSIdentifier:(id)arg2;
 - (void)fetchesSyncServiceServer:(id)arg1 didFailSendingProtobufWithIDSIdentifier:(id)arg2 errorCode:(long long)arg3;
-- (void)accountsSyncServiceServer:(id)arg1 didReceivedAccountAuthenticationStatus:(id)arg2;
+- (void)accountsSyncServiceServer:(id)arg1 didReceivedAccountAuthenticationStatus:(id)arg2 requestTime:(double)arg3;
 - (void)accountsSyncServiceServer:(id)arg1 didChangeAccountSourceType:(id)arg2;
 - (void)accountsSyncServiceServer:(id)arg1 didSendProtobufSuccessfullyWithIDSIdentifier:(id)arg2;
 - (void)accountsSyncServiceServer:(id)arg1 didFailSendingProtobufWithIDSIdentifier:(id)arg2 errorCode:(long long)arg3;
@@ -157,6 +159,7 @@
 - (void)resendObjectsForIDSIdentifier:(id)arg1;
 @property(readonly, nonatomic) NNMKPairedDeviceInfo *pairedDeviceInfo;
 @property(nonatomic) _Bool organizeByThread;
+- (void)_sendWatchAccountStatusRequest;
 - (void)_sendStandaloneAccountIdentity:(id)arg1 resendInterval:(unsigned long long)arg2;
 - (id)_watchAccounts;
 - (id)requestWatchAccounts;

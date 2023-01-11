@@ -7,9 +7,6 @@
 #import <UIKit/UITabBar.h>
 
 @interface UITabBar (IBCocoaTouchToolIntegration)
-- (id)itemImageBitmaps;
-- (id)titleRectsArray;
-- (id)itemFramesArray;
 - (void)setItems:(id)arg1;
 @end
 

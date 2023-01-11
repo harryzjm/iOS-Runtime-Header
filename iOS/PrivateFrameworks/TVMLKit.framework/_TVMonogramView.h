@@ -13,10 +13,12 @@
 
 @interface _TVMonogramView : _UIFloatingContentView <_UIFloatingContentViewDelegate, TVAuxiliaryViewSelecting>
 {
+    UIView *_placeholderView;
     UIView *_unfocusedShadowView;
     UIView *_focusedShadowView;
     _Bool _isSelected;
     TVMonogramViewConfiguration *_configuration;
+    _TVMonogramDescription *_monogramDescription;
     UIImage *_image;
     UIImage *_placeholderImage;
     double _unfocusedImageAlpha;
@@ -24,10 +26,8 @@
     CDUnknownBlockType _pressCompletionBlock;
     _TVImageView *_imageView;
     TVImageProxy *_imageProxy;
-    _TVMonogramDescription *_monogramDescription;
 }
 
-@property(retain, nonatomic) _TVMonogramDescription *monogramDescription; // @synthesize monogramDescription=_monogramDescription;
 @property(retain, nonatomic) TVImageProxy *imageProxy; // @synthesize imageProxy=_imageProxy;
 @property(retain, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
 @property(copy, nonatomic) CDUnknownBlockType pressCompletionBlock; // @synthesize pressCompletionBlock=_pressCompletionBlock;
@@ -35,6 +35,7 @@
 @property(nonatomic) double unfocusedImageAlpha; // @synthesize unfocusedImageAlpha=_unfocusedImageAlpha;
 @property(retain, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
+@property(retain, nonatomic) _TVMonogramDescription *monogramDescription; // @synthesize monogramDescription=_monogramDescription;
 @property(readonly, nonatomic) TVMonogramViewConfiguration *configuration; // @synthesize configuration=_configuration;
 - (void).cxx_destruct;
 - (void)_loadWithMonogramDescription:(id)arg1 imageProxy:(id)arg2;
@@ -48,6 +49,9 @@
 - (void)setHighlighted:(_Bool)arg1;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)layoutSubviews;
+- (void)_updateFocusedShadowFrameAndLayerWithFrame:(struct CGRect)arg1;
+- (void)_updateUnfocusedShadowFrameAndLayerWithFrame:(struct CGRect)arg1;
+- (void)_updatePlaceholerView;
 - (id)initWithFrame:(struct CGRect)arg1 configuration:(id)arg2;
 
 // Remaining properties

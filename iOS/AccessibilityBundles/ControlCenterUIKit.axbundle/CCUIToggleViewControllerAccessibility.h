@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_accessibilityControlCenterShouldExpandContentModule;
 - (_Bool)_accessibilityControlCenterButtonIsToggle;
 - (id)_accessibilityControlCenterButtonHint;
 - (id)_accessibilityControlCenterButtonIdentifier;

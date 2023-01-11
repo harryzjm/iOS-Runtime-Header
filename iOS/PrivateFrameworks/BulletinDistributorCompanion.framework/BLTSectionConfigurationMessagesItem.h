@@ -8,7 +8,7 @@
 {
 }
 
-- (_Bool)optOutOfCoordinationWithSubtype:(long long)arg1;
+- (unsigned long long)coordinationTypeWithSubtype:(long long)arg1;
 
 @end
 

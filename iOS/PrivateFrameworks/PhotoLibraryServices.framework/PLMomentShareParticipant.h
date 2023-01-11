@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, PLMomentShare;
+@class NSPersonNameComponents, NSString, PLMomentShare;
 
 @interface PLMomentShareParticipant
 {
 }
 
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)_momentShareParticipantsWithPredicate:(id)arg1 fetchLimit:(unsigned long long)arg2 inManagedObjectContext:(id)arg3;
 + (id)participantsWithUUIDs:(id)arg1 inPhotoLibrary:(id)arg2;
@@ -23,6 +22,7 @@
 // Remaining properties
 @property(copy, nonatomic) NSString *emailAddress; // @dynamic emailAddress;
 @property(retain, nonatomic) PLMomentShare *momentShare; // @dynamic momentShare;
+@property(copy, nonatomic) NSPersonNameComponents *nameComponents; // @dynamic nameComponents;
 @property(copy, nonatomic) NSString *phoneNumber; // @dynamic phoneNumber;
 @property(nonatomic) short status; // @dynamic status;
 @property(nonatomic) short type; // @dynamic type;

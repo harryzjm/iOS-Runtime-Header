@@ -13,6 +13,7 @@
 
 @class CLLocationManager, NSArray, NSString, SKUIContentInsetScrollView, SKUIExploreTemplateElement, SKUIMetricsImpressionSession, SKUIStorePageSectionsViewController, UINavigationController, UISplitViewController;
 
+__attribute__((visibility("hidden")))
 @interface SKUIExploreDocumentViewController <CLLocationManagerDelegate, SKUINavigationBarDisplayConfiguring, SKUIStackedBarDelegate, UINavigationControllerDelegate, UISplitViewControllerDelegate, SKUIDocumentViewController>
 {
     SKUIMetricsImpressionSession *_activeMetricsImpressionSession;

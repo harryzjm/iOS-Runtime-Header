@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSURLSessionTaskDelegate-Protocol.h>
 
-@class ACAccount, ACAccountStore, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString, NSURLSession, NSURLSessionConfiguration;
+@class ACAccountStore, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSSet, NSString, NSURLSession, NSURLSessionConfiguration;
 @protocol OS_dispatch_queue;
 
 @interface PKWebService : NSObject <NSURLSessionTaskDelegate>
@@ -24,11 +24,13 @@
     NSObject<OS_dispatch_queue> *_diagnosticReasonsQueue;
     NSObject<OS_dispatch_queue> *_stateQueue;
     NSObject<OS_dispatch_queue> *_sessionQueue;
+    NSSet *_sensitiveKeys;
 }
 
 + (id)_sharedCookieStorage;
-+ (id)account;
 - (void).cxx_destruct;
+- (void)_redactLogsFromJSONObject:(id)arg1;
+- (id)_redactLogsWithData:(id)arg1;
 - (void)logResponse:(id)arg1 withData:(id)arg2;
 - (void)logRequest:(id)arg1;
 - (id)logFacility;
@@ -52,15 +54,13 @@
 - (id)urlSession;
 - (id)dataTaskWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (unsigned long long)webServiceTaskIdentifierForTaskIdentifier:(long long)arg1;
-- (void)handleAuthenticationFailureWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)performRequest:(id)arg1 taskIdentifier:(unsigned long long)arg2 retries:(unsigned long long)arg3 authHandling:(_Bool)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)performRequest:(id)arg1 taskIdentifier:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (unsigned long long)nextTaskID;
 - (void)refreshSessionWithConfiguration:(id)arg1;
 @property(readonly) NSURLSessionConfiguration *sessionConfiguration;
 - (void)invalidate;
-@property(readonly) ACAccount *primaryAppleAccount;
-@property(readonly) ACAccount *account;
+- (void)handleAuthenticationFailureWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleWillPerformHTTPRedirectionWithResponse:(id)arg1 redirectHandler:(CDUnknownBlockType)arg2;
 - (_Bool)canBypassTrustExtendedValidation;
 - (void)processRetryRequest:(id)arg1 responseData:(id)arg2 orginalRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;

@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit23AudioVisualizationLayer : CALayer
 {
     MISSING_TYPE *isAnimating;
@@ -18,7 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *color;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
 @property(nonatomic) struct CGRect bounds;
 - (void)dealloc;

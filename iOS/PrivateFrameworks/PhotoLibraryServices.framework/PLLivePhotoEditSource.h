@@ -4,11 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PLEditSource, PLVideoEditSource;
+
 @interface PLLivePhotoEditSource
 {
+    PLEditSource *_photoEditSource;
+    PLVideoEditSource *_videoEditSource;
 }
 
 + (id)livePhotoSourceWithPhotoURL:(id)arg1 videoComplementURL:(id)arg2;
+@property(readonly, nonatomic) PLVideoEditSource *videoEditSource; // @synthesize videoEditSource=_videoEditSource;
+@property(readonly, nonatomic) PLEditSource *photoEditSource; // @synthesize photoEditSource=_photoEditSource;
+- (void).cxx_destruct;
 - (id)_initWithPhotoSource:(id)arg1 videoComplement:(id)arg2;
 - (id)initWithSubstandardPhotoSource:(id)arg1 videoComplement:(id)arg2;
 - (id)initWithPhotoSource:(id)arg1 videoComplement:(id)arg2;

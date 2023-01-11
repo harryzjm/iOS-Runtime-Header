@@ -13,7 +13,6 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableArray *_blocks;
     _Bool _scheduled;
-    _Bool _backlightOn;
 }
 
 - (void).cxx_destruct;

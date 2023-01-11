@@ -8,6 +8,7 @@
 
 @class NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface HMFetchAnisetteDataRequest <HMRemoteLoginMessageProtocol>
 {
     _Bool _shouldProvision;
@@ -23,8 +24,8 @@
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) NSDictionary *messagePayload;
-- (id)xpcMessageName;
-- (id)messageName;
+@property(readonly, copy, nonatomic) NSString *xpcMessageName;
+@property(readonly, copy, nonatomic) NSString *messageName;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

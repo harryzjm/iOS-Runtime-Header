@@ -13,6 +13,8 @@
 @interface NSNumber (IBBinaryArchivingAdditions) <IBBinaryArchiving>
 + (id)decodeWithBinaryUnarchiver:(id)arg1;
 - (void)encodeWithBinaryArchiver:(id)arg1;
+- (long long)ib_valueType;
+- (Class)ib_immutableClassForPlistOverlay;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

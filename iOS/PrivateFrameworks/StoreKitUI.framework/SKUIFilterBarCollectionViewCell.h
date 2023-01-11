@@ -8,6 +8,7 @@
 
 @class NSString, SKUIFilterBarView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIFilterBarCollectionViewCell <SKUIViewElementView>
 {
     SKUIFilterBarView *_filterBarView;

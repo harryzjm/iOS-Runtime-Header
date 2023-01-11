@@ -11,14 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)accessibilityValue;
-- (id)_accessibilityGetEffectiveCoordinator;
-- (void)refreshWithCoordinator:(id)arg1;
-- (void)_accessibilitySetSavedCoordinator:(id)arg1;
-- (id)_accessibilitySavedCoordinator;
+- (id)accessibilityElements;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
-- (id)_accessibilityNoUsageView;
+- (id)_accessibilityNoUsageViewIfPresent;
 
 @end
 

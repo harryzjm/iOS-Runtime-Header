@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)canBecomeFocused;
 - (id)accessibilityDropPointDescriptors;
 - (id)accessibilityDragSourceDescriptors;
 - (_Bool)_accessibilityIsSpeakThisElement;
@@ -26,6 +27,7 @@
 - (void)setDrawsResizeHandles:(_Bool)arg1;
 - (id)_accessibilitySupplementaryHeaderViews;
 - (id)_accessibilitySupplementaryFooterViews;
+- (id)accessibilityUserInputLabels;
 - (id)accessibilityLabel;
 - (struct CGRect)accessibilityFrameForScrolling;
 - (_Bool)isAccessibilityElement;

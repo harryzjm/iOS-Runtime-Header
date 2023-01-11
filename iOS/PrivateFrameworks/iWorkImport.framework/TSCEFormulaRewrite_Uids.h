@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)containsIndex:(unsigned int)arg1;
 - (void)unloadIndexes;
 - (void)loadIndexesForTable:(id)arg1 isRows:(_Bool)arg2 shuffleMap:(id)arg3;
+- (id)initWithUids:(const vector_4dc5f307 *)arg1 atIndexes:(const vector_12da65de *)arg2;
 - (id)initWithUids:(const vector_4dc5f307 *)arg1;
 
 @end

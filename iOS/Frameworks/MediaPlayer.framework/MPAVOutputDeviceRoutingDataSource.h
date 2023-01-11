@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPAVEndpointRoute, MPMRAVOutputContextWrapper, NSArray, NSObject, NSString;
+@class AVRoutingSessionManager, MPAVEndpointRoute, MPMRAVOutputContextWrapper, NSArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MPAVOutputDeviceRoutingDataSource
@@ -17,11 +17,16 @@
     _Bool _devicePresenceDetected;
     NSArray *_outputDeviceRoutes;
     _Bool _shouldSourceOutputDevicesFromAVODDS;
+    AVRoutingSessionManager *_routingSessionManager;
+    _Bool _supportsRoutePrediction;
     MPMRAVOutputContextWrapper *_applicationOutputContext;
     MPAVEndpointRoute *_endpointRoute;
+    NSString *_initiator;
 }
 
 + (id)_globalAudioSessionLock;
+@property(nonatomic) _Bool supportsRoutePrediction; // @synthesize supportsRoutePrediction=_supportsRoutePrediction;
+@property(retain, nonatomic) NSString *initiator; // @synthesize initiator=_initiator;
 @property(retain, nonatomic) MPAVEndpointRoute *endpointRoute; // @synthesize endpointRoute=_endpointRoute;
 @property(nonatomic) _Bool supportsMultipleSelection; // @synthesize supportsMultipleSelection=_supportsMultipleSelection;
 @property(retain, nonatomic) MPMRAVOutputContextWrapper *applicationOutputContext; // @synthesize applicationOutputContext=_applicationOutputContext;
@@ -42,6 +47,7 @@
 - (_Bool)devicePresenceDetected;
 - (void)setDiscoveryMode:(long long)arg1;
 - (long long)discoveryMode;
+- (id)routingSessionManager;
 @property(copy, nonatomic) NSString *routingContextUID;
 - (void)dealloc;
 - (id)init;

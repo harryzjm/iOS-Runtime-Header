@@ -9,15 +9,18 @@
 
 @class NSString, PSSpecifier;
 
-@interface STAllowancesConfigurationGroupSpecifierProvider <STDeviceBedtimeListControllerDelegate, STAlwaysAllowListControllerDelegate>
+__attribute__((visibility("hidden")))
+@interface STAllowancesConfigurationGroupSpecifierProvider <STAlwaysAllowListControllerDelegate, STDeviceBedtimeListControllerDelegate>
 {
     PSSpecifier *_deviceBedtimeSpecifier;
     PSSpecifier *_appLimitsSpecifier;
     PSSpecifier *_alwaysAllowedSpecifier;
+    PSSpecifier *_communicationLimitsSpecifier;
     PSSpecifier *_contentPrivacySpecifier;
 }
 
 @property(retain, nonatomic) PSSpecifier *contentPrivacySpecifier; // @synthesize contentPrivacySpecifier=_contentPrivacySpecifier;
+@property(retain, nonatomic) PSSpecifier *communicationLimitsSpecifier; // @synthesize communicationLimitsSpecifier=_communicationLimitsSpecifier;
 @property(retain, nonatomic) PSSpecifier *alwaysAllowedSpecifier; // @synthesize alwaysAllowedSpecifier=_alwaysAllowedSpecifier;
 @property(retain, nonatomic) PSSpecifier *appLimitsSpecifier; // @synthesize appLimitsSpecifier=_appLimitsSpecifier;
 @property(retain, nonatomic) PSSpecifier *deviceBedtimeSpecifier; // @synthesize deviceBedtimeSpecifier=_deviceBedtimeSpecifier;
@@ -25,6 +28,12 @@
 - (_Bool)showDemoModeAlertIfNeeded;
 - (void)showContentPrivacyViewController:(id)arg1;
 - (id)contentPrivacyDetailText;
+- (void)_showCommunicationLimitsViewController:(id)arg1;
+- (id)_communicationLimitsDetailText;
+- (void)_resetCommunicationLimitsDetailText;
+- (void)_communicationLimitsDidChangeFrom:(id)arg1 to:(id)arg2;
+- (void)_isRemoteUserDidChangeFrom:(_Bool)arg1 to:(_Bool)arg2;
+- (void)_userTypeDidChange:(unsigned long long)arg1;
 - (void)alwaysAllowListController:(id)arg1 didFinishEditingAlwaysAllowList:(id)arg2;
 - (void)showAlwaysAllowedViewController:(id)arg1;
 - (id)alwaysAllowedDetailText;
@@ -32,7 +41,8 @@
 - (id)appLimitsDetailText;
 - (void)bedtimeListController:(id)arg1 didFinishEditingBedtime:(id)arg2;
 - (void)showDeviceBedtimeViewController:(id)arg1;
-- (id)deviceDowntimeDetailText;
+- (id)_subtitleTextForDeviceBedtime:(id)arg1;
+- (void)_deviceBedtimeDidChange:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setCoordinator:(id)arg1;
 - (id)init;

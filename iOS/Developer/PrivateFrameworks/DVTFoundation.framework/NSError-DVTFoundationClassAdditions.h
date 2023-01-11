@@ -9,11 +9,13 @@
 @interface NSError (DVTFoundationClassAdditions)
 + (id)dvt_errorFromPropertyList:(id)arg1;
 + (id)dvt_errorWithDomain:(id)arg1 errorCode:(long long)arg2 message:(id)arg3 recoverySuggestion:(id)arg4 recoveryOptions:(id)arg5 andRecoveryBlock:(CDUnknownBlockType)arg6;
++ (id)dvt_errorWithDomain:(id)arg1 errorCode:(long long)arg2 message:(id)arg3 recoverySuggestion:(id)arg4 underlyingError:(id)arg5;
 + (id)dvt_errorWithDomain:(id)arg1 errorCode:(long long)arg2 message:(id)arg3 recoverySuggestion:(id)arg4;
 + (id)dvt_errorWithPOSIXErrorCode:(int)arg1;
 + (id)dvt_errorWithPOSIXErrorCode:(int)arg1 messageFormat:(id)arg2;
 + (id)dvt_errorWithDomain:(id)arg1 errorCode:(int)arg2 messageFormat:(id)arg3;
 + (id)dvt_errorWithDomain:(id)arg1 errorCode:(int)arg2 messageFormat:(id)arg3 arguments:(struct __va_list_tag [1])arg4;
+- (id)dvt_recursivelyRetrieveObjectForUserInfoKey:(id)arg1;
 - (id)dvt_propertyListDictionary;
 @property(readonly) _Bool dvt_isNoSuchFileError;
 - (_Bool)dvt_hasDomain:(id)arg1 errorCode:(long long)arg2;

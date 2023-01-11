@@ -10,6 +10,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedConstants;
+- (id)defaultCheckmarkImageForCell:(id)arg1 inTableView:(id)arg2;
+- (id)defaultHeaderFooterBackgroundColorForView:(id)arg1 inTableView:(id)arg2;
 
 @end
 

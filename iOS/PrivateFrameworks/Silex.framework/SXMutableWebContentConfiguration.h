@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLocale, NSString;
+@class NSDictionary, NSLocale, NSString;
 
 @interface SXMutableWebContentConfiguration
 {
     NSString *storeFront;
     NSLocale *locale;
     NSString *contentSizeCategory;
+    NSDictionary *dataSources;
     struct CGSize canvasSize;
     struct CGRect contentFrame;
 }
 
+@property(copy, nonatomic) NSDictionary *dataSources; // @synthesize dataSources;
 @property(nonatomic) struct CGRect contentFrame; // @synthesize contentFrame;
 @property(nonatomic) struct CGSize canvasSize; // @synthesize canvasSize;
 @property(copy, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory;

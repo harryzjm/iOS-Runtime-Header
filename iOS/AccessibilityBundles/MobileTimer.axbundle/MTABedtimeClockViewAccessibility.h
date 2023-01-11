@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityPath;
 - (void)dragMoved:(id)arg1;
 - (id)accessibilityElements;
 - (void)_setAXWakeAdjuster:(id)arg1;

@@ -24,7 +24,9 @@
 @property(readonly, nonatomic) FCAssetHandle *nameImageCompactAssetHandle;
 @property(readonly, nonatomic) FCAssetHandle *nameImageAssetHandle;
 @property(readonly, nonatomic) FCAssetHandle *logoImageAssetHandle;
+@property(readonly, nonatomic) FCColor *darkStyleForegroundColor;
 @property(readonly, nonatomic) FCColor *foregroundColor;
+@property(readonly, nonatomic) FCColor *darkStyleBackgroundColor;
 @property(readonly, nonatomic) FCColor *backgroundColor;
 @property(readonly, copy, nonatomic) FCTextInfo *headlineBylineTextInfo;
 @property(readonly, copy, nonatomic) FCTextInfo *headlineExcerptTextInfo;
@@ -37,6 +39,7 @@
 @property(readonly, nonatomic) FCTagBanner *bannerImageForThemeBackground;
 @property(readonly, nonatomic) FCTagBanner *bannerImageForWhiteBackground;
 @property(readonly, nonatomic) FCTagBanner *defaultBannerImage;
+@property(readonly, nonatomic) _Bool isDark;
 @property(readonly, nonatomic) _Bool isWhite;
 @property(readonly, nonatomic) long long feedType;
 @end

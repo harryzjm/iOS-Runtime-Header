@@ -10,9 +10,11 @@
 {
 }
 
++ (id)sharedInstance;
 - (void)setValue:(id)arg1 forDomain:(id)arg2 forKey:(id)arg3;
 - (id)getValueFromDomain:(id)arg1 forKey:(id)arg2;
 - (void)setBool:(_Bool)arg1 forDomain:(id)arg2 forKey:(id)arg3;
+- (_Bool)getBoolFromDomain:(id)arg1 forKey:(id)arg2 defaultValue:(_Bool)arg3;
 - (_Bool)getBoolFromDomain:(id)arg1 forKey:(id)arg2;
 
 @end

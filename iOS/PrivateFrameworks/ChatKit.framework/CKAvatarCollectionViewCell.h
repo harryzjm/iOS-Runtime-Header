@@ -8,6 +8,7 @@
 
 @class CKAvatarView;
 
+__attribute__((visibility("hidden")))
 @interface CKAvatarCollectionViewCell : UICollectionViewCell
 {
     CKAvatarView *_avatarView;
@@ -19,6 +20,7 @@
 - (void)layoutSubviews;
 - (void)configureWithEntity:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)prepareForReuse;
 
 @end
 

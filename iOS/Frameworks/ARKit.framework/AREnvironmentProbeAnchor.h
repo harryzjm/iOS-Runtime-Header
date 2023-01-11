@@ -27,6 +27,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAnchor:(id)arg1;
 - (id)description;
+- (id)initWithIdentifier:(id)arg1 onPlane:(struct ARTexturedPlane)arg2;
 - (id)initWithIdentifier:(id)arg1 transform:(CDStruct_14d5dc5e)arg2 extent: /* Error: Ran out of types for this method. */;
 - (id)initWithName:(id)arg1 transform:(CDStruct_14d5dc5e)arg2 extent: /* Error: Ran out of types for this method. */;
 - (id)initWithTransform:(CDStruct_14d5dc5e)arg1 extent: /* Error: Ran out of types for this method. */;

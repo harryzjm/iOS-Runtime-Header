@@ -11,6 +11,19 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axNextSelectableIndexPathForIndexPath:(id)arg1;
+- (id)_axPreviousSelectableIndexPathForIndexPath:(id)arg1;
+- (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
+- (_Bool)_allowsFocusToLeaveViaHeading:(unsigned long long)arg1;
+- (_Bool)_accessibilityDrawsFocusRingWhenChildrenFocused;
+- (id)preferredFocusedView;
+- (id)_accessibilityLastFocusedChild;
+- (_Bool)canBecomeFocused;
+- (_Bool)_accessibilityKeyCommandsShouldOverrideKeyCommands;
+- (void)_fkaScrollToNextRow;
+- (void)_fkaScrollToPreviousRow;
+- (id)_accessibilityKeyCommands;
+- (_Bool)_accessibilityIsInMasterSplitViewController;
 - (_Bool)_accessibilityNativeFocusPreferredElementIsValid;
 - (id)_accessibilityReusableViewForOpaqueElement:(id)arg1;
 - (_Bool)accessibilityPerformEscape;
@@ -21,8 +34,10 @@
 - (id)_axVisibleHeadersAndFootersAfterLastVisibleCellSection:(long long)arg1;
 - (id)_axVisibleHeadersAndFootersPriorToFirstVisibleCellSection:(long long)arg1;
 - (_Bool)_accessibilityIsScannerGroup;
-- (_Bool)_accessibilityIsScannerElement;
+- (_Bool)accessibilityRespondsToUserInteraction;
+- (long long)accessibilityContainerType;
 - (unsigned long long)accessibilityTraits;
+- (_Bool)_axTableViewMightBeSidebar;
 - (id)accessibilityLabel;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (id)description;
@@ -48,7 +63,9 @@
 - (id)_delegateViewForHeaderInSection:(long long)arg1;
 - (long long)indexOfAccessibilityElement:(id)arg1;
 - (void)_accessibilityInitializeInternalData;
+- (long long)_axNumberOfSections;
 - (long long)accessibilityElementCount;
+- (id)_accessibilitySortedElementsWithinPreservingFloatingHeader:(id)arg1;
 - (id)_accessibilitySortedElementsWithin;
 - (id)_accessibilityViewChildrenWithOptions:(id)arg1;
 - (_Bool)_accessibilitySearchControllerDimmingViewVisible;
@@ -76,6 +93,7 @@
 - (_Bool)_accessibilityIsSearchTableVisible;
 - (struct CGRect)accessibilityFrame;
 - (void)_accessibilityClearChildren;
+- (id)_accessibilityInternalDataRetrieveOnly;
 - (id)_accessibilityInternalData;
 - (void)_axPostLayoutChange;
 - (id)accessibilityCellForRowAtIndexPath:(id)arg1;
@@ -110,9 +128,8 @@
 - (_Bool)isAccessibilityOpaqueElementProvider;
 - (_Bool)_accessibilityOpaqueElementScrollsContentIntoView;
 - (_Bool)_accessibilityScrollToFrame:(struct CGRect)arg1 forView:(id)arg2;
-- (void)_handleDeviceOrientationChange:(id)arg1;
 - (id)indexPathsForRowsInRect:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
+- (unsigned long long)_accessibilityAutomationType;
 - (void)_accessibilitySetUseOpaqueElements:(id)arg1;
 - (id)_accessibilityUseOpaqueElements;
 

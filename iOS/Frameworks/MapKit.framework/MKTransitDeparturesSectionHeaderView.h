@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MKButtonWithTargetArgument, NSLayoutConstraint, NSString, _MKUILabel;
+@class MKButtonWithTargetArgument, NSLayoutConstraint, NSString, NSTimer, UIActivityIndicatorView, UIStackView, _MKUILabel;
 
 __attribute__((visibility("hidden")))
 @interface MKTransitDeparturesSectionHeaderView
@@ -12,12 +12,16 @@ __attribute__((visibility("hidden")))
     unsigned long long _type;
     _Bool _extraSpacing;
     _MKUILabel *_label;
+    UIStackView *_updatingView;
+    _MKUILabel *_updatingLabel;
+    NSTimer *_updatingLabelTimestampRefreshTimer;
+    NSTimer *_updatingViewRefreshTimer;
+    UIActivityIndicatorView *_updatingSpinner;
     NSLayoutConstraint *_topConstraint;
     NSLayoutConstraint *_bottomConstraint;
     MKButtonWithTargetArgument *_button;
 }
 
-+ (double)defaultHeight;
 + (id)_buttonFont:(unsigned long long)arg1;
 + (id)_font:(unsigned long long)arg1;
 @property(readonly, nonatomic) MKButtonWithTargetArgument *button; // @synthesize button=_button;

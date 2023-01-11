@@ -11,11 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityLoadAccessibilityInformation;
-- (id)accessibilityElements;
-- (void)setLabeledValue:(id)arg1;
+- (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
-- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 
 @end
 

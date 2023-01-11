@@ -11,8 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_queue_setVisibility:(int)arg1;
-- (void)_queue_takeLaunchProcessAssertion;
+- (void)_queue_setVisibility:(long long)arg1;
+- (void)_queue_bootstrapAndExec;
 - (void)_accessibilitySetWasJustLaunched:(_Bool)arg1;
 - (_Bool)_accessibilityWasJustLaunched;
 

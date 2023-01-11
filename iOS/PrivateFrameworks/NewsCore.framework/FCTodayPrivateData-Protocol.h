@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <NewsCore/FCBundleSubscriptionProviderType-Protocol.h>
+#import <NewsCore/FCPurchaseProviderType-Protocol.h>
 #import <NewsCore/NSMutableCopying-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSNumber, NSSet;
+@class FCBundleSubscription, NSArray, NSDictionary, NSNumber, NSSet;
 @protocol FCDerivedPersonalizationData><NSCoding;
 
-@protocol FCTodayPrivateData <NSObject, NSMutableCopying>
+@protocol FCTodayPrivateData <NSObject, NSMutableCopying, FCPurchaseProviderType, FCBundleSubscriptionProviderType>
+@property(readonly, copy, nonatomic) FCBundleSubscription *bundleSubscription;
 @property(readonly, copy, nonatomic) NSNumber *onboardingVersion;
 @property(readonly, copy, nonatomic) NSDictionary *recentlyReadHistoryItems;
 @property(readonly, copy, nonatomic) NSArray *recentlySeenHistoryItems;
-@property(readonly, copy, nonatomic) NSArray *rankedPersonalSubscribedTagIDs;
+@property(readonly, copy, nonatomic) NSArray *rankedAllSubscribedTagIDs;
 @property(readonly, copy, nonatomic) NSSet *purchasedTagIDs;
 @property(readonly, copy, nonatomic) NSSet *autoFavoriteTagIDs;
 @property(readonly, copy, nonatomic) NSSet *mutedTagIDs;

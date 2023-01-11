@@ -7,11 +7,14 @@
 @interface IKCSSDeclarationPoint
 {
     double _value;
+    unsigned long long _unit;
 }
 
-@property double value; // @synthesize value=_value;
+@property(nonatomic) unsigned long long unit; // @synthesize unit=_unit;
+@property(nonatomic) double value; // @synthesize value=_value;
 - (id)description;
 - (id)stringValue;
+- (id)number;
 - (id)initWithParseDeclaration:(id)arg1 info:(id)arg2;
 
 @end

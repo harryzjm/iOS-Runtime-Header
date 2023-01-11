@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityDropPointDescriptors;
+- (id)accessibilityTextualContext;
 - (_Bool)_axIsInNotification;
 - (id)_axAcknowledgmentDescription;
 - (id)_axStickerDescription;

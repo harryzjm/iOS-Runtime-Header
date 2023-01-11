@@ -6,20 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, TSKShuffleMapping, TSTCellRegion;
+@class NSHashTable, NSSet, TSKShuffleMapping, TSTCellRegion;
 
 __attribute__((visibility("hidden")))
 @interface TSTChangeDescriptor : NSObject
 {
+    _Bool _processedByMasterLayout;
     int _changeDescriptor;
     NSHashTable *_referenceIdentifiers;
     TSTCellRegion *_cellRegion;
     struct TSUCellCoord _cellID;
     TSTCellRegion *_strokeRegion;
     TSKShuffleMapping *_shuffleMapping;
+    NSSet *_annotations;
+    unsigned long long _beforeCountValue;
+    unsigned long long _afterCountValue;
 }
 
 + (void)enumerateChangeRecords:(id)arg1 withType:(int)arg2 block:(CDUnknownBlockType)arg3;
++ (id)changeDescriptorWithAnnotationsRemovedForMerge:(id)arg1;
 + (id)changeDescriptorWithType:(int)arg1 shuffleMapping:(id)arg2;
 + (id)changeDescriptorWithType:(int)arg1 referenceIdentifiers:(id)arg2;
 + (id)changeDescriptorWithType:(int)arg1 cellRange:(struct TSUCellRect)arg2 strokeRange:(struct TSUCellRect)arg3;
@@ -29,10 +34,16 @@ __attribute__((visibility("hidden")))
 + (id)changeDescriptorWithType:(int)arg1 cellID:(struct TSUCellCoord)arg2 cellRange:(struct TSUCellRect)arg3 strokeRange:(struct TSUCellRect)arg4;
 + (id)changeDescriptorWithType:(int)arg1 cellID:(struct TSUCellCoord)arg2 cellRange:(struct TSUCellRect)arg3;
 + (id)changeDescriptorWithType:(int)arg1;
++ (id)changeDescriptorWithType:(int)arg1 cellRegion:(id)arg2 beforeCount:(unsigned long long)arg3 afterCount:(unsigned long long)arg4;
++ (id)changeDescriptorWithType:(int)arg1 cellRegion:(id)arg2 strokeRegion:(id)arg3 beforeCount:(unsigned long long)arg4 afterCount:(unsigned long long)arg5;
 + (id)changeDescriptorWithType:(int)arg1 cellID:(struct TSUCellCoord)arg2 cellRegion:(id)arg3 strokeRegion:(id)arg4;
 + (id)changeDescriptorWithType:(int)arg1 strokeRegion:(id)arg2;
 + (id)changeDescriptorWithType:(int)arg1 cellRegion:(id)arg2 strokeRegion:(id)arg3;
 + (id)changeDescriptorWithType:(int)arg1 cellRegion:(id)arg2;
+@property(nonatomic) _Bool processedByMasterLayout; // @synthesize processedByMasterLayout=_processedByMasterLayout;
+@property(nonatomic) unsigned long long afterCountValue; // @synthesize afterCountValue=_afterCountValue;
+@property(nonatomic) unsigned long long beforeCountValue; // @synthesize beforeCountValue=_beforeCountValue;
+@property(retain, nonatomic) NSSet *annotations; // @synthesize annotations=_annotations;
 @property(retain, nonatomic) TSKShuffleMapping *shuffleMapping; // @synthesize shuffleMapping=_shuffleMapping;
 @property(retain, nonatomic) TSTCellRegion *strokeRegion; // @synthesize strokeRegion=_strokeRegion;
 @property(nonatomic) struct TSUCellCoord cellID; // @synthesize cellID=_cellID;
@@ -40,10 +51,13 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int changeDescriptor; // @synthesize changeDescriptor=_changeDescriptor;
 @property(retain, nonatomic) NSHashTable *referenceIdentifiers; // @synthesize referenceIdentifiers=_referenceIdentifiers;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool hasBeforeAfterCounts;
 @property(readonly, nonatomic) struct TSUCellRect cellRange;
 @property(readonly, nonatomic) struct TSUCellRect strokeRange;
 - (_Bool)isEqual:(id)arg1;
+- (void)markAsProcessed;
 - (id)initWithChangeDescriptorType:(int)arg1 cellRegion:(id)arg2 cellID:(struct TSUCellCoord)arg3 strokeRegion:(id)arg4 referenceIdentifiers:(id)arg5 shuffleMapping:(id)arg6;
+- (id)initWithChangeDescriptorType:(int)arg1 cellRegion:(id)arg2 cellID:(struct TSUCellCoord)arg3 strokeRegion:(id)arg4 referenceIdentifiers:(id)arg5 shuffleMapping:(id)arg6 annotations:(id)arg7;
 
 @end
 

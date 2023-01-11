@@ -8,17 +8,17 @@
 
 @interface CKDProtobufResponseBodyParser
 {
+    _Bool _parsingStandaloneMessage;
     _Bool _isParsing;
     Class _messageClass;
     NSMutableData *_tailParserData;
     unsigned long long _curObjectLength;
-    struct CC_SHA256state_st _mescalSignature;
 }
 
-@property(nonatomic) struct CC_SHA256state_st mescalSignature; // @synthesize mescalSignature=_mescalSignature;
 @property(nonatomic) _Bool isParsing; // @synthesize isParsing=_isParsing;
 @property(nonatomic) unsigned long long curObjectLength; // @synthesize curObjectLength=_curObjectLength;
 @property(retain, nonatomic) NSMutableData *tailParserData; // @synthesize tailParserData=_tailParserData;
+@property(nonatomic) _Bool parsingStandaloneMessage; // @synthesize parsingStandaloneMessage=_parsingStandaloneMessage;
 @property(nonatomic) Class messageClass; // @synthesize messageClass=_messageClass;
 - (void).cxx_destruct;
 - (void)finishWithCompletion:(CDUnknownBlockType)arg1;

@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSURL, TSKDocumentRoot;
+
 @protocol TSKApplicationDelegate
 
 @optional
+- (_Bool)openURL:(NSURL *)arg1 sourceDocumentRoot:(TSKDocumentRoot *)arg2;
 - (long long)maximumFontSize;
 @end
 

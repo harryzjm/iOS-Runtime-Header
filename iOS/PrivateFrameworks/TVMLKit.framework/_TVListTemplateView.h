@@ -17,12 +17,16 @@ __attribute__((visibility("hidden")))
     UIFocusContainerGuide *_previewFocusGuide;
     _Bool _backdropEnabled;
     _Bool _floatingBanner;
+    _Bool _shouldAdjustListForTabBar;
+    _Bool _shouldAdjustPreviewForTabBar;
     UIView *_bgImageView;
     UIView *_bannerView;
     UIView *_listView;
     UIView *_previewView;
 }
 
+@property(nonatomic) _Bool shouldAdjustPreviewForTabBar; // @synthesize shouldAdjustPreviewForTabBar=_shouldAdjustPreviewForTabBar;
+@property(nonatomic) _Bool shouldAdjustListForTabBar; // @synthesize shouldAdjustListForTabBar=_shouldAdjustListForTabBar;
 @property(nonatomic) _Bool floatingBanner; // @synthesize floatingBanner=_floatingBanner;
 @property(nonatomic, getter=isBackdropEnabled) _Bool backdropEnabled; // @synthesize backdropEnabled=_backdropEnabled;
 @property(retain, nonatomic) UIView *previewView; // @synthesize previewView=_previewView;
@@ -31,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *bgImageView; // @synthesize bgImageView=_bgImageView;
 - (void).cxx_destruct;
 - (void)layoutSubviews;
+@property(readonly, nonatomic) long long listAlignment;
 - (void)adjustScrollForListView:(id)arg1;
 - (id)preferredFocusEnvironments;
 - (void)setOverlayBlurOffset:(double)arg1;

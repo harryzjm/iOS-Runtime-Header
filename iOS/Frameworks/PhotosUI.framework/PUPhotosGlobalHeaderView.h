@@ -21,9 +21,7 @@ __attribute__((visibility("hidden")))
 + (id)_newTitleLabel;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 - (void).cxx_destruct;
-- (void)tintColorDidChange;
 - (void)layoutSubviews;
-- (void)_updateColors;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

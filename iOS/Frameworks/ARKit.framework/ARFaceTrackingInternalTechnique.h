@@ -6,9 +6,11 @@
 
 @interface ARFaceTrackingInternalTechnique
 {
+    long long _maximumNumberOfTrackedFaces;
 }
 
 + (_Bool)isSupported;
+@property(readonly, nonatomic) long long maximumNumberOfTrackedFaces; // @synthesize maximumNumberOfTrackedFaces=_maximumNumberOfTrackedFaces;
 - (id)initWithOptions:(id)arg1;
 
 @end

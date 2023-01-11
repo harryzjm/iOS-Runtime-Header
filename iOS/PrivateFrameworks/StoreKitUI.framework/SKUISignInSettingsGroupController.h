@@ -6,6 +6,7 @@
 
 @class NSMapTable, NSString;
 
+__attribute__((visibility("hidden")))
 @interface SKUISignInSettingsGroupController
 {
     NSString *_accountName;

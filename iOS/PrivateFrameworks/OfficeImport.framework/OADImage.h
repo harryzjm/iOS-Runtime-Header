@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     OADMovie *mMovie;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 - (void)createPictureFramePresetGeometry;
 - (id)createImageFill;
@@ -27,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (id)geometry;
 - (id)imageProperties;
 - (id)initWithBlipRef:(id)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

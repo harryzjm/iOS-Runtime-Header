@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <MapKit/MKGeoJSONObject-Protocol.h>
 #import <MapKit/MKOverlay-Protocol.h>
 
 @class NSString;
 
-@interface MKPolyline <MKOverlay>
+@interface MKPolyline <MKGeoJSONObject, MKOverlay>
 {
 }
 
@@ -18,6 +19,8 @@
 - (_Bool)intersectsMapRect:(CDStruct_02837cd9)arg1;
 @property(readonly, nonatomic) struct CLLocationCoordinate2D coordinate;
 - (void)_calculateBounds;
+- (id)_initWithGeoJSONPoints:(struct NSArray *)arg1 error:(id *)arg2;
+- (id)_initWithGeoJSONObject:(id)arg1 error:(id *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

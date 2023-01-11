@@ -18,6 +18,7 @@
 @property(readonly, nonatomic) NSString *addressStringNoPort;
 @property(readonly, nonatomic) NSString *addressString;
 @property(readonly, nonatomic) NSData *addressData;
+- (id)ethernetAddress;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(_Bool)arg2;
 
 @end

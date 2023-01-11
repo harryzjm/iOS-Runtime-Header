@@ -6,9 +6,11 @@
 
 #import <UserNotificationsServer/NSObject-Protocol.h>
 
-@class NSString, UNNotificationResponse;
+@class NSString, UNNotificationResponse, UNNotificationSettings;
 
 @protocol UNUserNotificationCenterDelegateServiceProtocol <NSObject>
+- (void)didOpenApplicationForResponse:(UNNotificationResponse *)arg1 forBundleIdentifier:(NSString *)arg2;
+- (void)didChangeSettings:(UNNotificationSettings *)arg1 forBundleIdentifier:(NSString *)arg2;
 - (void)didReceiveNotificationResponse:(UNNotificationResponse *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(_Bool))arg3;
 @end
 

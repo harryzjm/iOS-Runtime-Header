@@ -27,7 +27,7 @@
     EKEventDetailItem *_selectedEditItem;
     long long _disclosedTableSection;
     struct _NSRange _disclosedTableRange;
-    int _pendingStatus;
+    long long _pendingStatus;
     EKEventEditViewController *_activeEventEditor;
     EKUIRecurrenceAlertController *_recurrenceAlertController;
     EKUIEventStatusButtonsView *_statusButtonsView;
@@ -47,8 +47,10 @@
     _Bool _inlineDayViewRespectsSelectedCalendarsFilter;
     _Bool _trustsStatus;
     _Bool _needsReload;
+    _Bool _itemsNeedReload;
     _Bool _dead;
     _Bool _tableIsBeingEdited;
+    _Bool _minimalMode;
     NSArray *_currentSections;
     int _scrollToSection;
     UIView *_headerView;
@@ -56,7 +58,7 @@
     NSArray *_tableViewTopConstraints;
     UIView *_blankFooterView;
     _Bool _showingBlankFooterView;
-    UIViewController *_confirmationAlertPresentationSourceViewController;
+    UIViewController *_presentationSourceViewController;
     NSMutableDictionary *_cellHeights;
     _Bool _allowsEditing;
     _Bool _viewIsVisible;
@@ -71,7 +73,6 @@
     _Bool _showsDelegatorMessage;
     _Bool _showsDelegateMessage;
     _Bool _showsConferenceItem;
-    _Bool _minimalMode;
     _Bool _noninteractivePlatterMode;
     _Bool _isLargeDayView;
     int _editorShowTransition;
@@ -82,6 +83,7 @@
 }
 
 + (void)adjustLayoutForCell:(id)arg1 tableViewWidth:(double)arg2 numRowsInSection:(unsigned long long)arg3 cellRow:(unsigned long long)arg4 forceLayout:(_Bool)arg5;
++ (id)_orderedActionsForMask:(long long)arg1;
 + (void)setDefaultDatesForEvent:(id)arg1;
 @property(retain, nonatomic) NSDictionary *context; // @synthesize context=_context;
 @property(nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
@@ -89,7 +91,6 @@
 @property(nonatomic) int editorShowTransition; // @synthesize editorShowTransition=_editorShowTransition;
 @property(nonatomic) _Bool isLargeDayView; // @synthesize isLargeDayView=_isLargeDayView;
 @property(nonatomic) _Bool noninteractivePlatterMode; // @synthesize noninteractivePlatterMode=_noninteractivePlatterMode;
-@property(nonatomic) _Bool minimalMode; // @synthesize minimalMode=_minimalMode;
 @property(nonatomic) _Bool showsConferenceItem; // @synthesize showsConferenceItem=_showsConferenceItem;
 @property(nonatomic) _Bool showsDelegateMessage; // @synthesize showsDelegateMessage=_showsDelegateMessage;
 @property(nonatomic) _Bool showsDelegatorMessage; // @synthesize showsDelegatorMessage=_showsDelegatorMessage;
@@ -137,9 +138,11 @@
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)eventStatusButtonsView:(id)arg1 calculatedFontSizeToFit:(double)arg2;
 - (double)eventStatusButtonsViewButtonFontSize:(id)arg1;
-- (void)eventStatusButtonsView:(id)arg1 didSelectAction:(long long)arg2;
-- (id)previewActionItems;
+- (void)eventStatusButtonsView:(id)arg1 didSelectAction:(long long)arg2 ifCancelled:(CDUnknownBlockType)arg3;
+- (id)previewActionsWithPresentationController:(id)arg1;
 - (id)_statusButtonsForOrb:(_Bool)arg1;
+- (long long)_actionsMaskForOrb:(_Bool)arg1;
+- (id)_organizerContact;
 - (id)_statusButtons;
 - (_Bool)_shouldDisplayStatusButtons;
 - (void)_updateResponse;
@@ -148,6 +151,15 @@
 - (void)_addToCalendarClicked:(id)arg1;
 - (void)_deleteClicked:(id)arg1;
 - (void)_saveStatus:(long long)arg1;
+- (void)_joinMeeting;
+- (void)_emailOrganizer;
+- (void)_contactOrganizer;
+- (void)_openInMaps;
+- (_Bool)_canEmailOrganizer;
+- (void)_cancelProposedTime;
+- (void)_rejectProposedTime;
+- (void)_acceptProposedTime;
+- (id)_proposedDate;
 - (void)invokeAction:(long long)arg1;
 - (void)_prepareEventForEdit;
 - (void)eventEditViewController:(id)arg1 didCompleteWithAction:(long long)arg2;
@@ -158,7 +170,7 @@
 - (void)eventItemDidStartEditing:(id)arg1;
 - (void)eventDetailItemWantsRefeshForHeightChange;
 - (void)_presentDetachSheet;
-@property(nonatomic) __weak UIViewController *confirmationAlertPresentationSourceViewController;
+@property(nonatomic) __weak UIViewController *presentationSourceViewController;
 - (void)viewLayoutMarginsDidChange;
 - (struct CGSize)preferredContentSize;
 - (void)_performDelete:(long long)arg1;
@@ -171,6 +183,7 @@
 - (id)activeEventEditor;
 - (void)editEvent;
 - (void)doneButtonPressed;
+- (void)_notifyDetailItemsOfVisibilityOnScreen;
 - (void)_updateStatusButtonsActions;
 - (id)_statusButtonsContainerView;
 - (id)_statusButtonsView;
@@ -178,6 +191,7 @@
 - (id)_footerLabelContainingText:(id)arg1;
 - (void)_updateHeaderAndFooterIfNeeded;
 - (_Bool)_shouldDisplayDelegateOrOutOfDateMessage;
+- (_Bool)_isDisplayingSelfOrganizedInvitation;
 - (_Bool)_isDisplayingInvitation;
 - (_Bool)_isDisplayingDeletableEvent;
 - (_Bool)_isDisplayingSuggestion;
@@ -189,12 +203,15 @@
 - (void)_storeChanged:(id)arg1;
 - (void)_refreshEventAndReload;
 - (void)_setObservesKeyboardNotifications:(_Bool)arg1;
+@property(readonly, nonatomic) UIViewController *eventDetailsViewController;
 @property(readonly, nonatomic) UIScrollView *eventDetailsScrollView;
 - (double)topInset;
 - (void)setTopInset:(double)arg1;
 - (id)accessDeniedView;
 @property(nonatomic) int scrollToSection;
 - (void)completeWithAction:(long long)arg1;
+- (void)_didToggleMinimalMode;
+@property(nonatomic) _Bool minimalMode;
 @property(nonatomic) _Bool inlineDayViewRespectsSelectedCalendarsFilter;
 @property(nonatomic) _Bool calendarPreviewIsInlineDayView;
 @property(nonatomic) _Bool hideCalendarPreview;
@@ -202,8 +219,8 @@
 - (_Bool)_backingEventAllowsEditing;
 @property(retain, nonatomic) EKEvent *event;
 - (void)_reloadIfNeeded;
+- (void)_setNeedsReloadIncludingItems:(_Bool)arg1;
 - (void)setNeedsReload;
-- (void)reloadedData;
 - (void)openAttendeesDetailItem;
 - (void)_pop;
 - (_Bool)_shouldPopSelf;

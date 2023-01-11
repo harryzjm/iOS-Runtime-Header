@@ -17,12 +17,12 @@
 - (_Bool)_accessibilityEntryFieldIsFirstResponder;
 - (void)_accessibilityReplaceCharactersAtCursor:(unsigned long long)arg1 withString:(id)arg2;
 - (void)_resetForFailedPasscode:(_Bool)arg1;
-- (_Bool)_accessibilityHandwritingActivateKeyboardReturnKey;
-- (void)_accessibilityInsertText:(id)arg1 atPosition:(long long)arg2;
-- (_Bool)_accessibilityHandwritingAttributeAcceptsRawInput;
+- (_Bool)_accessibilityActivateKeyboardReturnKey;
+- (void)_accessibilityInsertText:(id)arg1;
+- (_Bool)_accessibilitySupportsTextInsertionAndDeletion;
 - (_Bool)_accessibilityHandwritingAttributeShouldPlayKeyboardSecureClickSound;
 - (_Bool)_accessibilityHandwritingAttributeShouldEchoCharacter;
-- (_Bool)_accessibilityHandwritingAttributeCanDeleteCharacter;
+- (_Bool)_accessibilityHasDeletableText;
 - (unsigned long long)_accessibilityHandwritingAttributeAllowedCharacterSets;
 - (unsigned long long)_accessibilityHandwritingAttributePreferredCharacterSet;
 - (_Bool)_accessibilitySupportsHandwriting;

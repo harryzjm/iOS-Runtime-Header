@@ -14,6 +14,8 @@
 
 + (id)confirmationRequiredWithValueToConfirm:(id)arg1;
 + (id)successWithResolvedValue:(double)arg1;
+- (id)_vocabularyValueForObject:(id)arg1 slotDescription:(id)arg2;
+- (id)_intentSlotValueForObject:(id)arg1 slotDescription:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

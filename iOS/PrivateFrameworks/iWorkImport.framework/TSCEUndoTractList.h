@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)addToIncludedUidsTractColumnUids:(const vector_4dc5f307 *)arg1 rowUids:(const vector_4dc5f307 *)arg2;
 - (void)addToIncludedUidsTractColumnUids:(const vector_4dc5f307 *)arg1 rowUids:(const vector_4dc5f307 *)arg2 isRangeRef:(_Bool)arg3 preserveRectangularRange:(_Bool)arg4;
 - (void)addToIncludedUidsTractColumnUid:(const UUIDData_5fbc143e *)arg1 rowUid:(const UUIDData_5fbc143e *)arg2;
+- (id)removedByMoveUidTract;
 - (id)activeUidTract;
 - (id)preMoveRegionUidTract;
 - (id)preMergeUidTract;

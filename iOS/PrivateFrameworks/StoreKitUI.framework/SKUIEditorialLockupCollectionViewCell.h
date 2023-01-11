@@ -6,6 +6,7 @@
 
 @class SKUIEditorialLockupCellLayout;
 
+__attribute__((visibility("hidden")))
 @interface SKUIEditorialLockupCollectionViewCell
 {
     SKUIEditorialLockupCellLayout *_layout;

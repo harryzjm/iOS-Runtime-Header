@@ -13,7 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_axFromString;
 - (void)updateContentsForConversation:(id)arg1;
-- (id)_accessibilitySpeechInputLabel;
+- (id)accessibilityUserInputLabels;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityCustomActionGroupIdentifier;
 - (_Bool)_accessibilityRetainsCustomRotorActionSetting;

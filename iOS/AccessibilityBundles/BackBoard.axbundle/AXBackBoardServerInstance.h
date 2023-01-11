@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import "AXBackBoardServerInstance-Protocol.h"
+#import "AXHeardServerDelegate-Protocol.h"
 
 @class AXIPCServer, NSMutableArray, NSString;
 @protocol AXBackBoardServerInstanceDelegate;
 
-@interface AXBackBoardServerInstance : NSObject <AXBackBoardServerInstance>
+@interface AXBackBoardServerInstance : NSObject <AXHeardServerDelegate, AXBackBoardServerInstance>
 {
     AXIPCServer *_server;
     NSMutableArray *_eventListeners;
@@ -25,6 +26,7 @@
 + (id)backBoardServerInstance;
 @property(nonatomic) __weak id <AXBackBoardServerInstanceDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+- (id)_handleGetLastSetColorFilter:(id)arg1;
 - (id)_handleToggleGuidedAccess:(id)arg1;
 - (id)_handleResetAccessibilityFeatures:(id)arg1;
 - (id)_handleLoadGAXBundleForUnmanagedASAM:(id)arg1;
@@ -34,8 +36,10 @@
 - (id)_handleBlueLightStatusEnabled:(id)arg1;
 - (id)_handleBrightnessFiltersEnabled:(id)arg1;
 - (id)_handleDisableBrightnessFilters:(id)arg1;
-- (id)_handleSupportsBlueLightReduction:(id)arg1;
+- (void)hearingServerDidDie:(id)arg1;
+- (void)restartHearingServer;
 - (id)_setAXPreferenceAsMobile:(id)arg1;
+- (id)_axPreferenceAsMobile:(id)arg1;
 - (id)_handleGuidedAccessCurrentModeAndSessionApp:(id)arg1;
 - (id)_handleGuidedAccessIgnoredRegions:(id)arg1;
 - (id)_handleIsGuidedAccessUnmanagedSelfLocked:(id)arg1;
@@ -69,13 +73,9 @@
 - (id)_handleAssistiveTouchPID:(id)arg1;
 - (id)_handleAXUIServerPID:(id)arg1;
 - (id)_handleRegisterAssistiveTouchPID:(id)arg1;
-- (id)_handleZoomAttributesListenerRegistration:(id)arg1;
-- (void)zoomAttributesChanged:(id)arg1;
-- (id)_handleZoomAttributesChanged:(id)arg1;
 - (id)_handleEventListenerRegistration:(id)arg1;
 - (id)_handleEnableEventTap:(id)arg1;
 - (id)_handleSetCapsLockLightOn:(id)arg1;
-- (id)_handleItemChooserVisible:(id)arg1;
 - (id)_handleUserEventOccurred:(id)arg1;
 - (id)_handlePostEvent:(id)arg1;
 - (id)_handleConvertFrameFromContextIdToContextId:(id)arg1;
@@ -85,6 +85,7 @@
 - (id)_handleContextIdForPosition:(id)arg1;
 - (id)_handleZoomAdjustment:(id)arg1;
 - (id)_handleRegisterZoomConflict:(id)arg1;
+- (struct AXBColorFilterDescription)colorFilterFromLastUpdate;
 - (void)resetAccessibilityFeatures;
 - (void)forceLoadGAXBundle;
 - (_Bool)supportsAdaptation;
@@ -93,7 +94,6 @@
 - (_Bool)blueLightStatusEnabled;
 - (_Bool)brightnessFiltersEnabled;
 - (void)disableBrightnessFilters;
-- (_Bool)supportsBlueLightReduction;
 - (void)eventListener:(id)arg1;
 - (void)dealloc;
 - (id)_initServer;

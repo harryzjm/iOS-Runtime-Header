@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (AvatarUI)
+- (id)avt_map:(CDUnknownBlockType)arg1;
 - (id)avt_description;
 @end
 

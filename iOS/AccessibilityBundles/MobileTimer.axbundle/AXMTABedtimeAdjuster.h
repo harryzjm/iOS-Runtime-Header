@@ -30,6 +30,7 @@
 - (id)accessibilityValue;
 - (id)timeStringForDateComponents:(id)arg1;
 - (id)accessibilityLabel;
+- (id)accessibilityPath;
 - (struct CGRect)accessibilityFrame;
 
 @end

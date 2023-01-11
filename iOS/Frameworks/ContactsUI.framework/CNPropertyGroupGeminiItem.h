@@ -4,28 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNGeminiChannel, CNGeminiResult;
+#import <ContactsUI/CNUIGeminiDataSourceDelegate-Protocol.h>
+
+@class CNGeminiResult, CNMutableContact, NSString;
+@protocol CNUIGeminiDataSourceDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNPropertyGroupGeminiItem
+@interface CNPropertyGroupGeminiItem <CNUIGeminiDataSourceDelegate>
 {
-    _Bool _allowsPickerAction;
     CNGeminiResult *_geminiResult;
-    CNGeminiChannel *_bestChannel;
-    long long _channelType;
+    id <CNUIGeminiDataSourceDelegate> _geminiUpdateDelegate;
+    CNMutableContact *_editingContact;
 }
 
-@property(nonatomic) long long channelType; // @synthesize channelType=_channelType;
-@property(retain, nonatomic) CNGeminiChannel *bestChannel; // @synthesize bestChannel=_bestChannel;
-@property _Bool allowsPickerAction; // @synthesize allowsPickerAction=_allowsPickerAction;
-@property(retain) CNGeminiResult *geminiResult; // @synthesize geminiResult=_geminiResult;
+@property(retain, nonatomic) CNMutableContact *editingContact; // @synthesize editingContact=_editingContact;
+@property(nonatomic) __weak id <CNUIGeminiDataSourceDelegate> geminiUpdateDelegate; // @synthesize geminiUpdateDelegate=_geminiUpdateDelegate;
+@property(retain, nonatomic) CNGeminiResult *geminiResult; // @synthesize geminiResult=_geminiResult;
 - (void).cxx_destruct;
-- (id)description;
+- (void)geminiDataSourceDidUpdate:(id)arg1;
+@property(readonly, copy) NSString *description;
+- (_Bool)canRemove;
 - (_Bool)isValidValue:(id)arg1;
 - (_Bool)isEquivalentToItem:(id)arg1 whenEditing:(_Bool)arg2;
+- (void)updateLabeledValueWithValue:(id)arg1;
 - (id)displayStringForValue:(id)arg1;
 - (id)displayValue;
 - (id)displayLabel;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

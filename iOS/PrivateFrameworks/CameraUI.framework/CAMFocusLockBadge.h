@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DCIMServices/CAMBadgeTextView.h>
+#import <CameraEditKit/CEKBadgeTextView.h>
 
-@interface CAMFocusLockBadge : CAMBadgeTextView
+@interface CAMFocusLockBadge : CEKBadgeTextView
 {
     _Bool _focusLocked;
     _Bool _exposureLocked;

@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FPProvider;
+@class FPProviderDomain;
 
 @interface DOCSearchingDocumentSource
 {
-    FPProvider *_provider;
+    FPProviderDomain *_providerDomain;
 }
 
 - (void).cxx_destruct;
 - (void)setIcon:(id)arg1;
 - (id)icon;
-- (id)initWithProvider:(id)arg1;
+- (id)supportedSearchFilters;
+- (id)initWithProviderDomain:(id)arg1;
 
 @end
 

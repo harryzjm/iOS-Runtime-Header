@@ -4,25 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSUUID;
+#import <HMFoundation/HMFObject-Protocol.h>
+#import <HMFoundation/NSCopying-Protocol.h>
+#import <HMFoundation/NSSecureCoding-Protocol.h>
 
-@interface HMFMessageDestination
+@class NSArray, NSString, NSUUID;
+
+@interface HMFMessageDestination <HMFObject, NSCopying, NSSecureCoding>
 {
     NSUUID *_target;
 }
 
-+ (id)shortDescription;
++ (_Bool)supportsSecureCoding;
 + (id)allMessageDestinations;
 @property(readonly, copy, nonatomic) NSUUID *target; // @synthesize target=_target;
 - (void).cxx_destruct;
-- (id)description;
-- (id)debugDescription;
-- (id)descriptionWithPointer:(_Bool)arg1;
-- (id)shortDescription;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, copy, nonatomic) NSArray *attributeDescriptions;
+@property(readonly, copy) NSString *shortDescription;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (id)initWithTarget:(id)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly, copy) NSString *privateDescription;
+@property(readonly, copy) NSString *propertyDescription;
+@property(readonly) Class superclass;
 
 @end
 

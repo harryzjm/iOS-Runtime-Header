@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <MapsSupport/MSPCloudReplica-Protocol.h>
 #import <MapsSupport/MSPContainerStateSnapshot-Protocol.h>
 #import <MapsSupport/MSPPropertyListReplicaDataSerialization-Protocol.h>
+#import <MapsSupport/MSPPropertyListReplicaSerialization-Protocol.h>
 #import <MapsSupport/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSData, NSString;
 
-@interface MSPFavoritesReplica <NSSecureCoding, MSPPropertyListReplicaDataSerialization, MSPContainerStateSnapshot>
+@interface MSPFavoritesReplica <NSSecureCoding, MSPPropertyListReplicaDataSerialization, MSPPropertyListReplicaSerialization, MSPContainerStateSnapshot, MSPCloudReplica>
 {
 }
 
-+ (void)switchForEdit:(id)arg1 caseIsInsertRecord:(CDUnknownBlockType)arg2 caseIsEditContents:(CDUnknownBlockType)arg3 caseIsEditPosition:(CDUnknownBlockType)arg4;
++ (void)switchForEdit:(id)arg1 caseIsInsertRecord:(CDUnknownBlockType)arg2 caseIsEditContents:(CDUnknownBlockType)arg3 caseIsEditPosition:(CDUnknownBlockType)arg4 caseIsRemoveTombstone:(CDUnknownBlockType)arg5;
 + (_Bool)supportsSecureCoding;
 - (id)editsToMergeWithReplica:(id)arg1 mergeOptions:(id)arg2;
 - (id)replicaByMergingWithReplica:(id)arg1 mergeOptions:(id)arg2 userVisibleEffectiveContentsChanged:(out _Bool *)arg3;
@@ -25,6 +27,9 @@
 - (id)propertyListRepresentationDecoratingRecordsWithBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) id propertyListRepresentation;
 @property(readonly, copy, nonatomic) NSArray *contents;
+- (Class)replicaRecordClass;
+- (id)mergeOptionsWithLastSyncDate:(id)arg1;
+- (id)changesMergingCloudChanges:(id)arg1 withReplica:(id)arg2 lastSyncDate:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

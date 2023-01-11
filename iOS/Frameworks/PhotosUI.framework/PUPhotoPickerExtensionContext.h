@@ -18,33 +18,24 @@ __attribute__((visibility("hidden")))
     NSString *_temporaryDirectoryInHost;
 }
 
++ (void)configureImageManagerLimit;
 @property(copy, nonatomic) NSString *temporaryDirectoryInHost; // @synthesize temporaryDirectoryInHost=_temporaryDirectoryInHost;
 - (void).cxx_destruct;
-- (id)_photosMediaDirectoryURL;
-- (void)_removeItemAtURLIfNeeded:(id)arg1;
-- (id)_copyUrlToTempDirectoryIfNeeded:(id)arg1;
-- (id)_copyPathToTempDirectoryIfNeeded:(id)arg1;
+- (id)_createSandboxTokenForPath:(id)arg1;
+- (id)_createSandboxTokenForURL:(id)arg1;
 - (void)_saveVideoURLForLivePhoto:(id)arg1 fileURL:(id)arg2 appendTo:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_handleLivePhotoVideoUrlFetch:(id)arg1 appendTo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_saveImageURLForLivePhoto:(id)arg1 fileURL:(id)arg2 appendTo:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_handleLivePhotoImageUrlFetch:(id)arg1 appendTo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_photoPickerInfoDictionaryFromUIImagePickerControllerInfoDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)performAppearanceUpdateUsingPhotoPickerAppearanceDictionary:(id)arg1;
 - (void)performPhotoPickerPreviewOfFirstAsset;
 - (void)initiatePhotoPickerSelection;
-- (void)displaySecondaryActionWithType:(id)arg1;
-- (void)displayActionTypeDescription:(id)arg1;
-- (void)displayActionWithType:(id)arg1;
 - (void)didSelectMediaWithInfoDictionary:(id)arg1;
 - (void)_handleMutlipleMediaCompletion:(id)arg1;
 - (void)_createPhotoPickerInfoDictionaryFromInfoDictionary:(id)arg1 appendTo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)didSelectMultipleMediaItemsWithInfoDictionaries:(id)arg1;
 - (void)didDisplayPhotoPickerPreview;
 - (void)didDisplayPhotoPickerSourceType:(id)arg1;
-- (void)setPhotoPickerNavigationBarHidden:(id)arg1;
-- (void)setPhotoPickerViewControllerPrompt:(id)arg1;
-- (void)setPhotoPickerViewControllerTitle:(id)arg1;
-- (void)requestViewControllerFromPhotoPickerWithRequestIdentifier:(id)arg1;
 - (void)dismissCurrentViewControllerFromPhotoPickerAnimated:(id)arg1;
 - (void)invalidatePhotoPickerHostServices;
 - (void)cancelPhotoPicker;
@@ -54,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSOperationQueue *multipleMediaConversionConcurrentQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *multipleMediaIsolationQueue;
 - (void)requestedViewControllerOptionsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)initWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 contextUUID:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

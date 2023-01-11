@@ -7,13 +7,11 @@
 #import <PhotosUICore/PXUIScrollViewDelegate-Protocol.h>
 #import <PhotosUICore/UIScrollViewDelegate-Protocol.h>
 
-@class NSString, UIScrollView, UIView, _PXUIScrollView;
+@class NSString, UIScrollView, _PXUIScrollView;
 
 @interface PXUIScrollViewController <PXUIScrollViewDelegate, UIScrollViewDelegate>
 {
     _PXUIScrollView *_scrollView;
-    _Bool _isUpdatingContentBounds;
-    UIView *_contentView;
     _Bool _isScrollingToTop;
 }
 
@@ -32,6 +30,11 @@
 - (void)scrollViewWillLayoutSubviews:(id)arg1;
 - (id)contentCoordinateSpace;
 - (void)applyScrollInfo:(id)arg1;
+- (_Bool)isDecelerating;
+- (_Bool)isDragging;
+- (_Bool)isTracking;
+- (_Bool)deferContentOffsetUpdates;
+- (void)setDeferContentOffsetUpdates:(_Bool)arg1;
 - (void)setScrollViewContentBounds:(struct CGRect)arg1;
 - (struct CGSize)scrollViewContentSize;
 - (struct CGRect)scrollViewContentBounds;
@@ -42,11 +45,13 @@
 - (void)scrollViewLayoutIfNeeded;
 - (void)setScrollViewNeedsLayout;
 - (void)scrollRectToVisible:(struct CGRect)arg1 avoidingContentInsetEdges:(unsigned long long)arg2 animated:(_Bool)arg3;
+- (_Bool)isScrolledAtEdge:(unsigned int)arg1 tolerance:(double)arg2;
 - (void)setVisibleOrigin:(struct CGPoint)arg1;
 - (void)removeGestureRecognizer:(id)arg1;
 - (void)addGestureRecognizer:(id)arg1;
 - (void)addSubviewToScrollView:(struct NSObject *)arg1;
 - (void)addSubview:(id)arg1;
+- (_Bool)hasWindow;
 @property(readonly, nonatomic) UIScrollView *scrollView;
 - (id)initWithFrame:(struct CGRect)arg1;
 

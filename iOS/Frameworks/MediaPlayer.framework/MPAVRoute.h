@@ -66,28 +66,40 @@
 - (id)debugDescription;
 - (unsigned long long)hash;
 @property(readonly, nonatomic) _Bool supportsWirelessDisplay;
-@property(readonly, nonatomic, getter=isB238Route) _Bool b238Route;
+@property(readonly, nonatomic, getter=isLowLatencyRoute) _Bool lowLatencyRoute;
+@property(readonly, nonatomic, getter=isB444Route) _Bool b444Route;
+@property(readonly, nonatomic, getter=isW2Route) _Bool w2Route;
+@property(readonly, nonatomic, getter=isH1Route) _Bool h1Route;
+@property(readonly, nonatomic, getter=isAirPlayRoute) _Bool airPlayRoute;
 @property(readonly, nonatomic, getter=isW1Route) _Bool w1Route;
+@property(readonly, nonatomic, getter=isTVRoute) _Bool tvRoute;
 @property(readonly, nonatomic, getter=isStereoPair) _Bool stereoPair;
 @property(readonly, nonatomic, getter=isSmartAudio) _Bool smartAudio;
+@property(readonly, nonatomic, getter=isHearingDeviceRoute) _Bool hearingDeviceRoute;
 @property(readonly, nonatomic, getter=isDeviceSpeakerRoute) _Bool deviceSpeakerRoute;
 @property(readonly, nonatomic, getter=isBeatsXRoute) _Bool beatsXRoute;
 @property(readonly, nonatomic, getter=isBeatsStudioRoute) _Bool beatsStudioRoute;
 @property(readonly, nonatomic, getter=isBeatsSoloRoute) _Bool beatsSoloRoute;
 @property(readonly, nonatomic, getter=isPowerbeatsRoute) _Bool powerbeatsRoute;
 @property(readonly, nonatomic, getter=isAirpodsRoute) _Bool airpodsRoute;
+@property(readonly, nonatomic, getter=isHeadphonesRoute) _Bool headphonesRoute;
+@property(readonly, nonatomic, getter=isShareableRoute) _Bool shareableRoute;
 @property(nonatomic) long long displayRouteType;
 @property(readonly, nonatomic, getter=isDisplayedAsPicked) _Bool displayAsPicked;
 @property(readonly, nonatomic) long long passwordType;
 @property(retain, nonatomic) MPAVRoute *wirelessDisplayRoute;
 @property(readonly, nonatomic, getter=isRoutingToWirelessDevice) _Bool routingToWirelessDevice;
 @property(nonatomic, getter=isPicked) _Bool picked;
+@property(readonly, nonatomic) long long numberOfOutputDevices;
+@property(readonly, nonatomic, getter=isSplitRoute) _Bool splitRoute;
+@property(readonly, nonatomic, getter=isSplitterCapable) _Bool splitterCapable;
 @property(readonly, nonatomic) _Bool supportsRemoteControl;
 @property(readonly, nonatomic) _Bool supportsGrouping;
 @property(readonly, nonatomic, getter=isVolumeControlAvailable) _Bool volumeControlAvailable;
 @property(readonly, nonatomic, getter=isProxyGroupPlayer) _Bool proxyGroupPlayer;
 @property(readonly, nonatomic) _Bool isDeviceRoute;
 @property(readonly, nonatomic, getter=isAppleTVRoute) _Bool appleTVRoute;
+@property(readonly, nonatomic) NSString *groupLeaderAirplayIdentifier;
 @property(readonly, nonatomic, getter=isAirPlayingToDevice) _Bool airPlayingToDevice;
 - (void)setAVRouteDescription:(id)arg1;
 @property(readonly, nonatomic) NSDictionary *avRouteDescription;
@@ -96,6 +108,9 @@
 @property(readonly, nonatomic) NSString *designatedGroupLeaderName;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+
+// Remaining properties
+@property(readonly, nonatomic) _Bool isSplitRoute;
 
 @end
 

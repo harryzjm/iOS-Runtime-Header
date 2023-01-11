@@ -111,7 +111,6 @@
 - (void)parentScrollViewDidScroll:(struct CGPoint)arg1;
 - (struct CGSize)contentSizeThatFits:(struct CGSize)arg1;
 - (unsigned long long)assetType;
-- (struct CGSize)screenSize;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)didReceiveMemoryWarning;
 - (void)viewDidLayoutSubviews;
@@ -119,6 +118,7 @@
 - (void)didMoveToParentViewController:(id)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
+- (void)_invalidateCaches;
 - (void)loadView;
 - (id)initWithAttachmentItems:(id)arg1;
 - (void)dealloc;

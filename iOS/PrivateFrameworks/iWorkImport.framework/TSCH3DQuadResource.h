@@ -9,9 +9,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)resourceForBox2:(box_80622335)arg1;
 + (id)normalizedCube;
 + (id)normalizedCenteredCube;
 + (id)normalized2D;
++ (id)normalized3D;
 + (id)normalized4D;
 
 @end

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <IBFoundation/IBBinaryArchiving-Protocol.h>
 #import <IBFoundation/NSCoding-Protocol.h>
 #import <IBFoundation/NSCopying-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface IBICColor : NSObject <NSCoding, NSCopying>
+@interface IBICColor : NSObject <NSCoding, NSCopying, IBBinaryArchiving>
 {
     double *_components;
     struct CGColorSpace *_colorSpace;
@@ -29,7 +30,7 @@
 + (id)colorWithCGColor:(struct CGColor *)arg1;
 @property(readonly, nonatomic) long long colorSpaceID; // @synthesize colorSpaceID=_colorSpaceID;
 @property(readonly, nonatomic) long long componentCount; // @synthesize componentCount=_componentCount;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)colorWithAlphaComponent:(double)arg1;
 - (id)colorWithWhiteComponent:(double)arg1;
 - (id)colorWithBlueComponent:(double)arg1;
@@ -38,7 +39,7 @@
 - (id)colorBySettingComponentAtIndex:(long long)arg1 value:(double)arg2 destinationColorModel:(int)arg3;
 - (id)colorWithColorModel:(int)arg1;
 - (id)colorWithColorSpaceID:(long long)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToColor:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -57,9 +58,15 @@
 - (double)greenComponent;
 - (double)redComponent;
 - (const double *)components;
+- (void)encodeWithBinaryArchiver:(id)arg1;
+- (id)initWithBinaryUnarchiver:(id)arg1;
 - (void)dealloc;
 - (id)initWithColor:(struct CGColor *)arg1;
 - (id)initWithComponents:(const double *)arg1 colorSpaceID:(long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

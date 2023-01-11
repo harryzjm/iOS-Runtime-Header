@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLayoutConstraint, NSMapTable, _UIButtonBar;
+@class NSLayoutConstraint, NSMapTable, _UIBarButtonItemData, _UIButtonBar;
 
 __attribute__((visibility("hidden")))
 @interface _UIToolbarContentView
@@ -15,10 +15,18 @@ __attribute__((visibility("hidden")))
     NSMapTable *_absorptionTable;
     double _standardEdgeSpacing;
     _Bool _hitTestingExtensionsAreValid;
+    _Bool _compactMetrics;
+    long long _itemDistribution;
+    _UIBarButtonItemData *_plainItemAppearance;
+    _UIBarButtonItemData *_doneItemAppearance;
     struct NSDirectionalEdgeInsets _padding;
 }
 
+@property(copy, nonatomic) _UIBarButtonItemData *doneItemAppearance; // @synthesize doneItemAppearance=_doneItemAppearance;
+@property(copy, nonatomic) _UIBarButtonItemData *plainItemAppearance; // @synthesize plainItemAppearance=_plainItemAppearance;
+@property(nonatomic) long long itemDistribution; // @synthesize itemDistribution=_itemDistribution;
 @property(nonatomic) struct NSDirectionalEdgeInsets padding; // @synthesize padding=_padding;
+@property(nonatomic) _Bool compactMetrics; // @synthesize compactMetrics=_compactMetrics;
 - (void).cxx_destruct;
 - (void)_setBackButtonBackgroundVerticalPositionAdjustment:(double)arg1 forBarMetrics:(long long)arg2;
 - (void)_UIAppearance_setBackButtonBackgroundVerticalPositionAdjustment:(double)arg1 forBarMetrics:(long long)arg2;
@@ -28,7 +36,6 @@ __attribute__((visibility("hidden")))
 - (void)_UIAppearance_setBackButtonBackgroundImage:(id)arg1 forState:(unsigned long long)arg2 barMetrics:(long long)arg3;
 - (void)_appearanceChanged;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (long long)barMetrics;
 - (double)defaultTextPadding;
 - (double)defaultEdgeSpacing;
 - (double)absorptionForItem:(id)arg1;
@@ -40,7 +47,8 @@ __attribute__((visibility("hidden")))
 - (void)updateContent;
 - (void)updateConstraints;
 - (id)_newButtonBarWithItems:(id)arg1;
-- (void)_updateButtonBarConstraintConstantsForItems:(id)arg1 inView:(id)arg2;
+- (void)_updateButtonBarConstraintConstants;
+- (struct NSDirectionalEdgeInsets)_directionalSafeArea;
 - (void)tintColorDidChange;
 - (void)layoutMarginsDidChange;
 

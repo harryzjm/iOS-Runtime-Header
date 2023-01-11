@@ -6,6 +6,7 @@
 
 @class NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface SKUIAssetViewElement
 {
     double _initialPlaybackTime;

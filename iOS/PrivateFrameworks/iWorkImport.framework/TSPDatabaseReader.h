@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (struct Message *)newDataMessageForDatabaseObject:(id)arg1;
 - (void)enumerateDataAppRelativePathsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)appRelativePathForOldDataArchive:(const struct DatabaseDataArchive *)arg1;
+- (void)resolveReferences;
 - (_Bool)validateObjectIdentifierForObject:(id)arg1;
 - (void)didUnarchiveObject:(id)arg1 withUnarchiver:(id)arg2;
 - (id)newUnarchiverWithDatabaseObject:(id)arg1;

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     UIViewController *_leadingViewController;
     UIViewController *_trailingViewController;
     UIViewController *_collapsedViewController;
+    UIViewController *_preservedDetailController;
     id <UIPanelControllerDelegate> _delegate;
     UISlidingBarConfiguration *_configuration;
     UISlidingBarStateRequest *_stateRequest;
@@ -25,12 +26,10 @@ __attribute__((visibility("hidden")))
     long long _externallyAnimatingAffectedSides;
     _UIPanelAnimationState *_animationState;
     long long _collapsedState;
-    long long _collapsedSecondaryIndex;
     double _keyboardAdjustment;
 }
 
 @property(nonatomic) double keyboardAdjustment; // @synthesize keyboardAdjustment=_keyboardAdjustment;
-@property(nonatomic) long long collapsedSecondaryIndex; // @synthesize collapsedSecondaryIndex=_collapsedSecondaryIndex;
 @property(nonatomic) long long collapsedState; // @synthesize collapsedState=_collapsedState;
 @property(retain, nonatomic) _UIPanelAnimationState *animationState; // @synthesize animationState=_animationState;
 @property(nonatomic) long long externallyAnimatingAffectedSides; // @synthesize externallyAnimatingAffectedSides=_externallyAnimatingAffectedSides;
@@ -38,16 +37,13 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) UISlidingBarStateRequest *stateRequest; // @synthesize stateRequest=_stateRequest;
 @property(copy, nonatomic) UISlidingBarConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(nonatomic) __weak id <UIPanelControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) UIViewController *preservedDetailController; // @synthesize preservedDetailController=_preservedDetailController;
 @property(retain, nonatomic) UIViewController *collapsedViewController; // @synthesize collapsedViewController=_collapsedViewController;
 @property(retain, nonatomic) UIViewController *trailingViewController; // @synthesize trailingViewController=_trailingViewController;
 @property(retain, nonatomic) UIViewController *leadingViewController; // @synthesize leadingViewController=_leadingViewController;
 @property(retain, nonatomic) UIViewController *mainViewController; // @synthesize mainViewController=_mainViewController;
 - (void).cxx_destruct;
 - (id)_stateForInteractiveRequest:(id)arg1 withAffectedSides:(long long)arg2 inPossibleStates:(id)arg3;
-- (id)_closestEqualOrLargerStateToRequest:(id)arg1 inPossibleStates:(id)arg2 returningDistance:(double *)arg3;
-- (id)_closestStateToRequest:(id)arg1 inPossibleStates:(id)arg2 returningDistance:(double *)arg3;
-- (id)_matchingStateToRequest:(id)arg1 inPossibleStates:(id)arg2;
-- (id)_closestStateToRequest:(id)arg1 inPossibleStates:(id)arg2;
 - (id)computePossibleStatesGivenParentView:(id)arg1 withSize:(struct CGSize)arg2;
 - (id)_allowedTrailingWidthsForParentWidth:(double)arg1;
 - (id)_allowedLeadingWidthsForParentWidth:(double)arg1;

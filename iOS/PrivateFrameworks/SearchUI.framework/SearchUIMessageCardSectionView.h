@@ -17,7 +17,7 @@
 - (id)setupContentView;
 
 // Remaining properties
-@property(retain) TLKMessageView *contentView; // @dynamic contentView;
+@property(retain, nonatomic) TLKMessageView *contentView; // @dynamic contentView;
 
 @end
 

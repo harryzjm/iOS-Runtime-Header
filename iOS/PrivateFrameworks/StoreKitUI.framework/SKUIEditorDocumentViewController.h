@@ -9,6 +9,7 @@
 
 @class NSString, SKUIButtonViewElement, SKUIEditorTemplateView, SKUIEditorTemplateViewElement, SKUIViewElementLayoutContext;
 
+__attribute__((visibility("hidden")))
 @interface SKUIEditorDocumentViewController <SKUIEditorTemplateViewDelegate, SKUIDocumentViewController>
 {
     SKUIButtonViewElement *_doneButtonElement;

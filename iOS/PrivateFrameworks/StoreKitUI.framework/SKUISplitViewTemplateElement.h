@@ -6,6 +6,7 @@
 
 @class SKUIJSDOMFeatureNavigationDocument, SKUIViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUISplitViewTemplateElement
 {
     SKUIJSDOMFeatureNavigationDocument *_leftNavigationDocument;

@@ -5,7 +5,6 @@
 //
 
 @class CNContact, CNContactHeaderView, NSDictionary, UIColor, UIView;
-@protocol ABContactViewDataSource, ABContactViewDelegate;
 
 @interface CNContactView
 {
@@ -24,6 +23,7 @@
 
 + (_Bool)isFixedValueProperty:(id)arg1;
 + (_Bool)isMultiValueProperty:(id)arg1;
++ (id)allImageProperties;
 + (id)optionalCardProperties;
 + (id)defaultCardProperties;
 + (id)allCardProperties;
@@ -71,8 +71,6 @@
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2 contact:(id)arg3;
 
 // Remaining properties
-@property(nonatomic) __weak id <ABContactViewDataSource> dataSource; // @dynamic dataSource;
-@property(nonatomic) __weak id <ABContactViewDelegate> delegate; // @dynamic delegate;
 @property(retain, nonatomic) UIColor *separatorColor; // @dynamic separatorColor;
 
 @end

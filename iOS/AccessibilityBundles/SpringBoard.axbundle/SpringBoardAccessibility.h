@@ -19,18 +19,24 @@
 - (id)_accessibilitySpeakScreenGestureRecognizer;
 - (unsigned long long)_accessibilityNotificationCount;
 - (id)_accessibilityNotificationSummary:(unsigned long long)arg1;
-- (void)takeScreenshotAndEdit:(_Bool)arg1;
+- (_Bool)_accessibilitySpringBoardIsModal;
+- (void)_takeScreenshotAndEdit:(_Bool)arg1;
 - (void)_keyboardOrCaseLatchWantsToAttemptUnlock:(int)arg1;
 - (_Bool)handleDoubleHeightStatusBarTapWithStyleOverride:(int)arg1;
 - (void)_updateRingerState:(int)arg1 withVisuals:(_Bool)arg2 updatePreferenceRegister:(_Bool)arg3;
 - (_Bool)accessibilityStartStopToggle;
 - (int)_accessibilityCurrentCallState;
-- (_Bool)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
-- (id)accessibilityAttributeValue:(long long)arg1;
+- (void)_accessibilityFocusOnAppWithPid:(int)arg1 bundleIdentifier:(id)arg2;
+- (void)_accessibilitySwitchNativeFocusedApplicationWithPID:(int)arg1;
+- (void)_axPerformDidFocusOnApplicationActionWithPid:(int)arg1;
+- (void)_accessibilitySwitchNativeFocusedApplicationInDirection:(long long)arg1;
+- (id)_axProcessesForNativeFocus;
+- (id)_axKeyboardFocusController;
+- (_Bool)_iosAccessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
+- (id)_iosAccessibilityAttributeValue:(long long)arg1;
 - (id)_accessibilityPictureInPictureWindow;
 - (id)_accessibilitySideAppDividerElement;
 - (_Bool)_accessibilityIsBuddyRunning;
-- (_Bool)_accessibilityAssistantIsListening;
 - (_Bool)_accessibilityHitTestsStatusBar;
 - (id)_accessibilityAppSwitcherApps;
 - (_Bool)_accessibilityIsAppSwitcherVisible;
@@ -43,7 +49,6 @@
 - (_Bool)_accessibilityIsVoiceControlRunning;
 - (long long)_accessibilityApplicationOrientation;
 - (void)_accessibilityDeactivationAnimationWillBegin;
-- (void)powerDownRequested:(id)arg1;
 - (_Bool)_isDim;
 - (void)restartManagerWillReboot:(id)arg1;
 - (void)applicationDidFinishLaunching:(id)arg1;
@@ -63,6 +68,9 @@
 - (_Bool)_accessibilitySystemAppServerIsReady;
 - (_Bool)_accessibilityIsSystemAppServer;
 - (id)_accessibilityStatusBar;
+- (id)_lastStatusBarElement;
+- (id)_firstStatusBarElement;
+- (id)_accessibilityStatusBarElements;
 
 @end
 

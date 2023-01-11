@@ -8,7 +8,7 @@
 
 #import <NewsToday/NTHeadlineProviding-Protocol.h>
 
-@class NSDate, NSString, NSURL, NTHeadlinePersonalizationMetadata, NTPBHeadlineAdElement, NTPBHeadlineAnalyticsElement, NTPBHeadlineBackingElement, SFSearchResult;
+@class NSArray, NSDate, NSString, NSURL, NTHeadlinePersonalizationMetadata, NTPBHeadlineAdElement, NTPBHeadlineAnalyticsElement, NTPBHeadlineBackingElement, SFSearchResult;
 
 @interface NTHeadline : NSObject <NTHeadlineProviding>
 {
@@ -25,14 +25,17 @@
     NSString *_sourceName;
     NSString *_compactSourceName;
     NSString *_sourceTagID;
+    NSString *_language;
     NSURL *_sourceNameImageRemoteURL;
     double _sourceNameImageScale;
     NSURL *_compactSourceNameImageRemoteURL;
     NSURL *_thumbnailRemoteURL;
+    NSString *_thumbnailIdentifier;
     unsigned long long _thumbnailSizePreset;
     NSURL *_webURL;
     NSURL *_NewsURL;
     NSString *_storyType;
+    NSArray *_topicIDs;
     SFSearchResult *_searchResult;
     NSURL *_videoURL;
     double _videoDuration;
@@ -65,15 +68,18 @@
 @property(nonatomic) double videoDuration; // @synthesize videoDuration=_videoDuration;
 @property(copy, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 @property(copy, nonatomic) SFSearchResult *searchResult; // @synthesize searchResult=_searchResult;
+@property(copy, nonatomic) NSArray *topicIDs; // @synthesize topicIDs=_topicIDs;
 @property(copy, nonatomic) NSString *storyType; // @synthesize storyType=_storyType;
 @property(copy, nonatomic) NSURL *NewsURL; // @synthesize NewsURL=_NewsURL;
 @property(copy, nonatomic) NSURL *webURL; // @synthesize webURL=_webURL;
 @property(nonatomic) struct CGRect thumbnailFocalFrame; // @synthesize thumbnailFocalFrame=_thumbnailFocalFrame;
 @property(nonatomic) unsigned long long thumbnailSizePreset; // @synthesize thumbnailSizePreset=_thumbnailSizePreset;
+@property(copy, nonatomic) NSString *thumbnailIdentifier; // @synthesize thumbnailIdentifier=_thumbnailIdentifier;
 @property(copy, nonatomic) NSURL *thumbnailRemoteURL; // @synthesize thumbnailRemoteURL=_thumbnailRemoteURL;
 @property(copy, nonatomic) NSURL *compactSourceNameImageRemoteURL; // @synthesize compactSourceNameImageRemoteURL=_compactSourceNameImageRemoteURL;
 @property(nonatomic) double sourceNameImageScale; // @synthesize sourceNameImageScale=_sourceNameImageScale;
 @property(copy, nonatomic) NSURL *sourceNameImageRemoteURL; // @synthesize sourceNameImageRemoteURL=_sourceNameImageRemoteURL;
+@property(copy, nonatomic) NSString *language; // @synthesize language=_language;
 @property(copy, nonatomic) NSString *sourceTagID; // @synthesize sourceTagID=_sourceTagID;
 @property(copy, nonatomic) NSString *compactSourceName; // @synthesize compactSourceName=_compactSourceName;
 @property(copy, nonatomic) NSString *sourceName; // @synthesize sourceName=_sourceName;

@@ -13,8 +13,10 @@
 + (id)safeCategoryTargetClassName;
 - (id)initWithGlyphImage:(id)arg1 highlightColor:(id)arg2;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (struct CGPoint)accessibilityActivationPoint;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
+- (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 - (_Bool)_axLabelsVisible;

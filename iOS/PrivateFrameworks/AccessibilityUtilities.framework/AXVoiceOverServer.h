@@ -9,14 +9,19 @@
 }
 
 + (id)server;
+- (_Bool)isBluetoothBrailleDisplayConnected;
+- (_Bool)isHandwritingInputUIShowing;
 - (_Bool)isBrailleInputUIShowing;
 - (_Bool)triggerCommand:(long long)arg1 withArgument:(id)arg2;
 - (_Bool)triggerCommand:(long long)arg1;
+- (_Bool)triggerGesture:(id)arg1;
 - (id)currentFocusedElement;
 - (id)lastScreenChange;
 - (id)currentRotorName;
 - (id)lastSoundsPlayed;
+- (id)lastSpokenContents;
 - (id)lastSpokenPhrases;
+- (void)performAutomationTestingCommand:(id)arg1 userInfo:(id)arg2 timeout:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (_Bool)_connectIfNecessary;
 - (id)_serviceName;
 

@@ -22,9 +22,11 @@
 - (id)mergeWithContext:(id)arg1;
 - (id)resolveForKey:(id)arg1;
 - (void)whenUnsafeResolvingWithKey:(id)arg1 scope:(id)arg2 callbackBlock:(CDUnknownBlockType)arg3;
+- (void)whenResolvingKey:(id)arg1 scope:(id)arg2 callbackBlock:(CDUnknownBlockType)arg3;
 - (void)whenResolvingProtocol:(id)arg1 scope:(id)arg2 callbackBlock:(CDUnknownBlockType)arg3;
 - (void)whenResolvingClass:(Class)arg1 scope:(id)arg2 callbackBlock:(CDUnknownBlockType)arg3;
 - (void)unsafeUseObject:(id)arg1 forKey:(id)arg2 name:(id)arg3;
+- (void)useObject:(id)arg1 forKey:(id)arg2;
 - (void)useObject:(id)arg1 forProtocol:(id)arg2 name:(id)arg3;
 - (void)useObject:(id)arg1 forProtocol:(id)arg2;
 - (void)useObject:(id)arg1 forClass:(Class)arg2 name:(id)arg3;

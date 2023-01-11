@@ -11,7 +11,7 @@
 + (void)accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (_Bool)_accessibilityIsScannerElement;
+- (_Bool)accessibilityRespondsToUserInteraction;
 - (_Bool)isAccessibilityElement;
 - (id)accessibilityLabel;
 

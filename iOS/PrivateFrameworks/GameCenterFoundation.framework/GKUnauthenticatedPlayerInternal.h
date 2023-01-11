@@ -12,6 +12,8 @@
 + (_Bool)supportsSecureCoding;
 - (_Bool)isEqual:(id)arg1;
 - (id)alias;
+- (id)teamPlayerID;
+- (id)gamePlayerID;
 - (id)playerID;
 - (void)encodeWithCoder:(id)arg1;
 

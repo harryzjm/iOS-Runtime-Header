@@ -15,6 +15,7 @@
 @interface _INPBNote : PBCodable <_INPBNote, NSSecureCoding, NSCopying>
 {
     struct _has;
+    _Bool __encodeLegacyGloryData;
     NSArray *_contents;
     _INPBDateTime *_createdDateTime;
     _INPBDataString *_groupName;
@@ -23,7 +24,9 @@
     _INPBDataString *_title;
 }
 
++ (_Bool)supportsSecureCoding;
 + (Class)contentType;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(retain, nonatomic) _INPBDataString *title; // @synthesize title=_title;
 @property(retain, nonatomic) _INPBDateTime *modifiedDateTime; // @synthesize modifiedDateTime=_modifiedDateTime;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
@@ -35,6 +38,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(readonly, nonatomic) _Bool hasTitle;

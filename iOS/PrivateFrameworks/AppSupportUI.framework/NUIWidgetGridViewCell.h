@@ -4,19 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AppSupportUI/NUIContainerStackViewDelegate-Protocol.h>
+#import <AppSupportUI/NUIContainerViewDelegate-Protocol.h>
 #import <AppSupportUI/NUIWidgetGridViewCell-Protocol.h>
 
 @class NSString, NUIWidgetGridView, UIImageView, UILabel;
 
-@interface NUIWidgetGridViewCell <NUIContainerStackViewDelegate, NUIWidgetGridViewCell>
+@interface NUIWidgetGridViewCell <NUIContainerViewDelegate, NUIWidgetGridViewCell>
 {
     double _width;
     struct CGSize _measuredSize;
     unsigned long long _index;
     _Bool _donatableSpaceIsValid;
     _Bool _accessibilityEnabled;
-    CDStruct_a157df34 _donatableSpace;
+    struct {
+        double leading;
+        double trailing;
+    } _donatableSpace;
     NUIWidgetGridView *_gridView;
 }
 
@@ -24,8 +27,8 @@
 - (void).cxx_destruct;
 - (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
-- (CDStruct_a157df34)donatableSpace;
-- (CDStruct_a157df34)donatableSpaceAllowRemeasure:(_Bool)arg1;
+- (CDStruct_c3b9c2ee)donatableSpace;
+- (CDStruct_c3b9c2ee)donatableSpaceAllowRemeasure:(_Bool)arg1;
 - (void)invalidateIntrinsicContentSize;
 @property(readonly, nonatomic) UILabel *subtitleLabel;
 @property(readonly, nonatomic) UILabel *titleLabel;

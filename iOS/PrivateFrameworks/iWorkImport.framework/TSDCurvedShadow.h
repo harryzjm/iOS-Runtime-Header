@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (double)paddingForCurveWithSize:(struct CGSize)arg1;
 - (struct CGRect)expandedBoundsForRect:(struct CGRect)arg1;
 - (double)paddingForBlur;
-- (_Bool)usesOpenGL;
 - (unsigned long long)shadowType;
 - (double)clampOffset:(double)arg1;
 - (id)description;

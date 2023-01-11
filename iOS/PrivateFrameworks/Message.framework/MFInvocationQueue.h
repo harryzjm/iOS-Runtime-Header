@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Message/MFContentProtectionObserver-Protocol.h>
 #import <Message/MFDiagnosticsGenerator-Protocol.h>
 
-@class NSConditionLock, NSMutableArray, NSMutableSet, NSString;
-@protocol OS_dispatch_queue;
+@class NSConditionLock, NSMutableArray, NSString;
 
-@interface MFInvocationQueue : NSObject <MFDiagnosticsGenerator, MFContentProtectionObserver>
+@interface MFInvocationQueue : NSObject <MFDiagnosticsGenerator>
 {
     NSConditionLock *_lock;
     NSMutableArray *_items;
@@ -20,9 +18,6 @@
     unsigned long long _maxThreads;
     int _threadPriorityTrigger;
     double _threadRecycleTimeout;
-    NSMutableSet *_threadOverrides;
-    _Bool _isForeground;
-    NSObject<OS_dispatch_queue> *_keybagQueue;
 }
 
 + (void)flushAllInvocationQueues;
@@ -31,14 +26,10 @@
 @property(nonatomic) double threadRecycleTimeout; // @synthesize threadRecycleTimeout=_threadRecycleTimeout;
 @property(nonatomic) int threadPriorityTrigger; // @synthesize threadPriorityTrigger=_threadPriorityTrigger;
 @property(readonly, nonatomic) unsigned long long threadCount; // @synthesize threadCount=_numThreads;
+- (void).cxx_destruct;
 - (id)copyDiagnosticInformation;
-- (void)contentProtectionStateChanged:(int)arg1 previousState:(int)arg2;
-- (void)applicationWillResume;
-- (void)applicationWillSuspend;
 - (void)didCancel:(id)arg1;
 - (void)_drainQueue:(id)arg1;
-- (void)_processInvocation:(id)arg1;
-- (void)_adjustThreadPrioritiesIsForeground:(_Bool)arg1;
 - (void)removeAllItems;
 - (void)addInvocation:(id)arg1;
 @property(readonly, nonatomic) unsigned long long invocationCount;

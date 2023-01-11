@@ -10,19 +10,17 @@
 #import <CoreTelephony/CoreTelephonyClientRegistrationDelegate-Protocol.h>
 
 @class CTCarrier, CTServiceDescriptorContainer, CoreTelephonyClient, NSDictionary, NSMutableDictionary, NSString;
+@protocol CTTelephonyNetworkInfoDelegate;
 
 @interface CTTelephonyNetworkInfo : NSObject <CoreTelephonyClientDataDelegate, CoreTelephonyClientRegistrationDelegate>
 {
-    struct queue _queue;
     CoreTelephonyClient *_client;
-    CDUnknownBlockType _serviceSubscriberCellularProviderDidUpdateNotifier;
-    CDUnknownBlockType _subscriberCellularProviderDidUpdateNotifier;
-    CTServiceDescriptorContainer *_descriptors;
-    NSDictionary *_serviceSubscriberCellularProviders;
-    CTCarrier *_subscriberCellularProvider;
     CDUnknownBlockType _serviceSubscriberCellularProvidersDidUpdateNotifier;
-    NSDictionary *_serviceCurrentRadioAccessTechnology;
-    NSMutableDictionary *_serviceSubscriberCellularProvider;
+    CDUnknownBlockType _subscriberCellularProviderDidUpdateNotifier;
+    _Bool _initialized;
+    CTServiceDescriptorContainer *_descriptors;
+    id <CTTelephonyNetworkInfoDelegate> _delegate;
+    NSMutableDictionary *_serviceSubscriberCellularProviders;
     NSMutableDictionary *_cachedCurrentRadioAccessTechnology;
     NSMutableDictionary *_cachedSignalStrength;
     NSMutableDictionary *_cachedCellIds;
@@ -31,21 +29,19 @@
 @property(retain) NSMutableDictionary *cachedCellIds; // @synthesize cachedCellIds=_cachedCellIds;
 @property(retain) NSMutableDictionary *cachedSignalStrength; // @synthesize cachedSignalStrength=_cachedSignalStrength;
 @property(retain) NSMutableDictionary *cachedCurrentRadioAccessTechnology; // @synthesize cachedCurrentRadioAccessTechnology=_cachedCurrentRadioAccessTechnology;
-@property(retain) NSMutableDictionary *serviceSubscriberCellularProvider; // @synthesize serviceSubscriberCellularProvider=_serviceSubscriberCellularProvider;
-@property(readonly, retain, nonatomic) NSDictionary *serviceCurrentRadioAccessTechnology; // @synthesize serviceCurrentRadioAccessTechnology=_serviceCurrentRadioAccessTechnology;
 @property(copy, nonatomic) CDUnknownBlockType serviceSubscriberCellularProvidersDidUpdateNotifier; // @synthesize serviceSubscriberCellularProvidersDidUpdateNotifier=_serviceSubscriberCellularProvidersDidUpdateNotifier;
-@property(retain) CTCarrier *subscriberCellularProvider; // @synthesize subscriberCellularProvider=_subscriberCellularProvider;
-@property(readonly, retain) NSDictionary *serviceSubscriberCellularProviders; // @synthesize serviceSubscriberCellularProviders=_serviceSubscriberCellularProviders;
-- (id).cxx_construct;
+@property(retain) NSMutableDictionary *serviceSubscriberCellularProviders; // @synthesize serviceSubscriberCellularProviders=_serviceSubscriberCellularProviders;
+@property __weak id <CTTelephonyNetworkInfoDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (id)radioAccessTechnology;
+@property(readonly, retain) CTCarrier *subscriberCellularProvider;
 - (id)getFirstCellId;
 - (id)cellId;
 - (id)serviceCellId;
 - (id)signalStrength;
 - (id)serviceSignalStrength;
 @property(readonly, retain, nonatomic) NSString *currentRadioAccessTechnology;
-- (id)currentServiceRadioAccessTechnology;
+@property(readonly, retain, nonatomic) NSDictionary *serviceCurrentRadioAccessTechnology;
 - (void)queryCellIds;
 - (void)updateCellId:(id)arg1 forDescriptor:(id)arg2;
 - (void)updateLegacyRat:(id)arg1;
@@ -56,10 +52,12 @@
 - (void)queryCTSignalStrength;
 - (void)updateSignalStrength:(id)arg1 descriptor:(id)arg2;
 - (void)signalStrengthChanged:(id)arg1 info:(id)arg2;
-- (void)postCellularProviderUpdatesIfNecessary;
+- (void)postNotificationIfReady:(id)arg1 object:(id)arg2;
 - (void)carrierBundleChange:(id)arg1;
 - (void)cellChanged:(id)arg1 cell:(id)arg2;
+- (void)currentDataServiceDescriptorChanged:(id)arg1;
 - (void)connectionStateChanged:(id)arg1 connection:(int)arg2 dataConnectionStatusInfo:(id)arg3;
+@property(readonly, copy) NSString *dataServiceIdentifier;
 @property(readonly) CTServiceDescriptorContainer *descriptors; // @synthesize descriptors=_descriptors;
 - (_Bool)updateNetworkInfoAndShouldNotifyClient:(_Bool *)arg1 forContext:(id)arg2;
 - (_Bool)getAllowsVOIP:(_Bool *)arg1 forContext:(id)arg2 withError:(id *)arg3;
@@ -68,8 +66,9 @@
 - (_Bool)getCarrierName:(id)arg1 forContext:(id)arg2 withError:(id *)arg3;
 @property(copy, nonatomic) CDUnknownBlockType subscriberCellularProviderDidUpdateNotifier;
 - (void)setServiceSubscriberCellularProviderDidUpdateNotifier:(CDUnknownBlockType)arg1;
-- (CDUnknownBlockType)serviceSubscriberCellularProviderDidUpdateNotifier;
+- (CDUnknownBlockType)serviceSubscribersCellularProviderDidUpdateNotifier;
 - (void)dealloc;
+- (id)initWithClient:(id)arg1;
 - (id)init;
 
 // Remaining properties

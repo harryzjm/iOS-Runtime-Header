@@ -8,12 +8,13 @@
 
 #import <UIKitCore/_UIStatusBarVisualProvider-Protocol.h>
 
-@class NSArray, NSString, _UIStatusBar, _UIStatusBarAnimation, _UIStatusBarDisplayItemPlacementGroup, _UIStatusBarStyleAttributes;
+@class NSArray, NSString, _UIStatusBar, _UIStatusBarAnimation, _UIStatusBarDisplayItemPlacementGroup, _UIStatusBarDisplayItemPlacementNetworkGroup;
 
 @interface _UIStatusBarVisualProvider_iOS : NSObject <_UIStatusBarVisualProvider>
 {
     _Bool _expanded;
     _UIStatusBar *_statusBar;
+    _UIStatusBarDisplayItemPlacementNetworkGroup *_expandedNetworkGroup;
     NSArray *_expandedCellularPlacementsAffectedByAirplaneMode;
     NSArray *_expandedLeadingPlacements;
     NSArray *_expandedTrailingPlacements;
@@ -26,12 +27,14 @@
 + (double)itemSpacing;
 + (double)cornerRadius;
 + (double)height;
++ (_Bool)wantsExpandedLeadingPlacements;
 + (_Bool)hasCellularCapability;
 + (Class)visualProviderSubclassForScreen:(id)arg1;
 @property(retain, nonatomic) _UIStatusBarDisplayItemPlacementGroup *secondaryWifiGroup; // @synthesize secondaryWifiGroup=_secondaryWifiGroup;
 @property(readonly, nonatomic) NSArray *expandedTrailingPlacements; // @synthesize expandedTrailingPlacements=_expandedTrailingPlacements;
 @property(readonly, nonatomic) NSArray *expandedLeadingPlacements; // @synthesize expandedLeadingPlacements=_expandedLeadingPlacements;
 @property(readonly, nonatomic) NSArray *expandedCellularPlacementsAffectedByAirplaneMode; // @synthesize expandedCellularPlacementsAffectedByAirplaneMode=_expandedCellularPlacementsAffectedByAirplaneMode;
+@property(readonly, nonatomic) _UIStatusBarDisplayItemPlacementNetworkGroup *expandedNetworkGroup; // @synthesize expandedNetworkGroup=_expandedNetworkGroup;
 @property(nonatomic) _Bool expanded; // @synthesize expanded=_expanded;
 @property(nonatomic) __weak _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
 - (void).cxx_destruct;
@@ -46,6 +49,7 @@
 - (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
 - (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
 - (void)_applyToAppearingRegions:(_Bool)arg1 block:(CDUnknownBlockType)arg2;
+- (id)displayItemIdentifiersForPartWithIdentifier:(id)arg1;
 - (void)updateDataForService:(id)arg1;
 - (id)willUpdateWithData:(id)arg1;
 - (void)_createExpandedPlacements;
@@ -53,7 +57,7 @@
 - (void)modeUpdatedFromMode:(long long)arg1;
 - (id)setupInContainerView:(id)arg1;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
-@property(readonly, nonatomic) _UIStatusBarStyleAttributes *styleAttributes;
+- (id)styleAttributesForStyle:(long long)arg1;
 - (id)init;
 
 // Remaining properties

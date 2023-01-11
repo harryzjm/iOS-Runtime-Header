@@ -6,6 +6,7 @@
 
 @class UIImageView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIVideoThumbnailView
 {
     UIImageView *_playControlView;

@@ -23,7 +23,7 @@
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSMutableSet, NSString, OKPresentationViewController, PHAssetCollection, PHFetchResult, PXBasicUIViewTileAnimator, PXImageRequester, PXMovieProvider, PXOneUpPresentation, PXPhotoKitUIMediaProvider, PXPhotosDataSource, PXPhotosDetailsContext, PXPhotosDetailsHeaderSpec, PXPhotosDetailsHeaderSpecManager, PXPhotosDetailsLoadCoordinationToken, PXReusableObjectPool, PXSectionedSelectionManager, PXSlideshowSession, PXTilingController, PXTitleSubtitleUILabelTile, PXUIPlayButtonTile, PXUISlideshowViewTile, PXUITapGestureRecognizer, PXWidgetSpec;
-@protocol OS_dispatch_queue, PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate;
+@protocol OS_dispatch_queue, PXAnonymousView, PXDisplayAsset, PXWidgetDelegate, PXWidgetUnlockDelegate;
 
 @interface PXPhotosDetailsHeaderTileWidget : NSObject <PXTileSource, PXTilingControllerTransitionDelegate, PXReusableObjectPoolDelegate, UIGestureRecognizerDelegate, PXChangeObserver, PXPhotosDataSourceChangeObserver, PXPhotosDetailsHeaderTileLayoutDelegate, PXSlideshowSessionDelegate, PXTilingControllerZoomAnimationCoordinatorDelegate, PXUISlideshowViewTileDelegate, PXZoomAnimationObserverCoordinatorDelegate, PXMovieProviderDelegate, PXScrollViewControllerObserver, PXUIWidget, PXDiagnosticsEnvironment>
 {
@@ -107,7 +107,7 @@
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)tilingControllerZoomAnimationCoordinator:(id)arg1 enumerateTilesToAnimateInLayerWithType:(long long)arg2 layout:(id)arg3 zoomAnimationContext:(id)arg4 usingBlock:(CDUnknownBlockType)arg5;
 - (id)slideshowViewTileHostViewController:(id)arg1;
-- (_Bool)movieProvider:(id)arg1 navigateToMemory:(id)arg2;
+- (id)presentingViewControllerForMovieProvider:(id)arg1;
 - (void)playMiroMovieWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)containsPoint:(struct CGPoint)arg1 forCoordinateSpace:(id)arg2;
 - (id)zoomAnimationCoordinatorForContext:(id)arg1;
@@ -154,7 +154,8 @@
 - (void)_prepareSlideshowSessionWithAssetCollection:(id)arg1 keyAsset:(id)arg2;
 - (void)_updateSlideshow;
 - (void)_filterOutVideosFromAssetCollection:(id)arg1 filteredAssetCollection:(id *)arg2 assets:(id *)arg3;
-- (id)_keyAsset;
+- (id)keyAsset;
+@property(readonly, nonatomic) id <PXDisplayAsset> presentedKeyAsset;
 - (void)_updateMovieProvider;
 - (void)unloadContentData;
 - (void)loadContentData;

@@ -34,6 +34,7 @@
 + (id)__ck_valueForItemClass:(Class)arg1 forItemProvider:(id)arg2;
 + (id)pasteboardTypesForItemProvider:(id)arg1;
 + (id)pluginDisplayContainerForItemProvider:(id)arg1;
++ (id)_transcoderUserInfoFor:(id)arg1 filename:(id)arg2 type:(id)arg3;
 + (id)mediaObjectForItemProvider:(id)arg1;
 + (_Bool)_shouldCreateMediaObjectForUTIType:(id)arg1;
 + (id)compositionWithPluginDisplayContainer:(id)arg1 subject:(id)arg2;
@@ -47,6 +48,7 @@
 + (id)photoPickerCompositionWithMediaObject:(id)arg1;
 + (id)stickerCompositionWithMediaObjects:(id)arg1;
 + (id)compositionForMessageParts:(id)arg1 preserveSubject:(_Bool)arg2;
++ (id)_savedCompositionForGUID:(id)arg1 readUsingBlock:(CDUnknownBlockType)arg2;
 + (id)savedCompositionForGUID:(id)arg1;
 + (void)deleteCompositionWithGUID:(id)arg1;
 @property(nonatomic) _Bool isFromExternalSource; // @synthesize isFromExternalSource=_isFromExternalSource;
@@ -87,6 +89,7 @@
 - (id)superFormatText:(id *)arg1;
 - (id)superFormatText:(id)arg1 transfterGUIDs:(id *)arg2 mediaObjects:(id *)arg3;
 - (id)superFormatSubject;
+- (_Bool)_saveCompositionData:(id)arg1 atURL:(id)arg2 forGUID:(id)arg3;
 - (void)saveCompositionWithGUID:(id)arg1;
 - (id)compositionWithExpressiveSendStyleID:(id)arg1;
 

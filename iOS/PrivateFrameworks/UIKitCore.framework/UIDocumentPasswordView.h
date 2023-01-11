@@ -6,12 +6,11 @@
 
 #import <UIKitCore/UITextFieldDelegate-Protocol.h>
 
-@class NSObject, NSString, UIDocumentPasswordField, UIImageView, UILabel, UITextField;
+@class NSObject, NSString, UIDocumentPasswordField, UILabel, UITextField;
 @protocol UIDocumentPasswordViewDelegate;
 
 @interface UIDocumentPasswordView <UITextFieldDelegate>
 {
-    UIImageView *_iconView;
     UIDocumentPasswordField *_passwordTextField;
     UILabel *_label;
     NSObject<UIDocumentPasswordViewDelegate> *passwordDelegate;
@@ -29,7 +28,6 @@
 - (void)drawRect:(struct CGRect)arg1;
 - (_Bool)_canDrawContent;
 - (void)layoutSubviews;
-- (struct CGRect)_iconRectForContainerRect:(struct CGRect)arg1;
 - (void)dealloc;
 - (id)initWithDocumentName:(id)arg1;
 

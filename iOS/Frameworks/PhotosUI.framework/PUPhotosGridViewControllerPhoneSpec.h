@@ -17,7 +17,7 @@
 - (id)photosPickerViewControllerSpec;
 - (_Bool)canDisplayOptionsInPopover;
 - (long long)cellFillMode;
-- (int)thumbnailImageFormat;
+- (unsigned short)thumbnailImageFormat;
 - (struct CGSize)baseInterItemSpacing;
 - (unsigned long long)supportedInterfaceOrientations;
 

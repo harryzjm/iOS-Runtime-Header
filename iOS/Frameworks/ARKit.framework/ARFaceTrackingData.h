@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <ARKit/ARResultData-Protocol.h>
 #import <ARKit/NSCopying-Protocol.h>
 #import <ARKit/NSSecureCoding-Protocol.h>
 
-@class MISSING_TYPE, NSDictionary, NSError, NSString;
+@class MISSING_TYPE, NSDictionary, NSError, NSUUID;
 @protocol OS_dispatch_semaphore;
 
-@interface ARFaceTrackingData : NSObject <ARResultData, NSSecureCoding, NSCopying>
+@interface ARFaceTrackingData : NSObject <NSSecureCoding, NSCopying>
 {
     vector_1cb3ea33 _meshVertices;
     struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> _verticesImageSpace;
@@ -22,6 +21,7 @@
     CDStruct_14d5dc5e _transform;
     NSObject<OS_dispatch_semaphore> *_normalsSemaphore;
     NSObject<OS_dispatch_semaphore> *_imageVerticesSemaphore;
+    NSUUID *_anchorIdentifier;
     float _tongueOut;
     NSDictionary *_trackingData;
     NSError *_trackingError;
@@ -51,19 +51,13 @@
 @property(readonly, nonatomic) const MISSING_TYPE **vertices;
 @property(readonly, nonatomic) unsigned long long vertexCount;
 @property(readonly, nonatomic) CDStruct_14d5dc5e transform;
+@property(readonly, nonatomic) NSUUID *identifier;
 - (void)_extractMetaDataAndTransformToMirrored:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool isValid;
-- (id)anchorsForCameraWithTransform:(CDStruct_14d5dc5e)arg1 referenceOriginTransform:(CDStruct_14d5dc5e)arg2 existingAnchors:(id)arg3 anchorsToRemove:(id)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithTrackingData:(id)arg1 transformToMirrored:(_Bool)arg2;
-- (id)initWithTrackingData:(id)arg1;
+- (id)initWithTrackingData:(id)arg1 transformToMirrored:(_Bool)arg2 anchorIdentifier:(id)arg3;
+- (id)initWithTrackingData:(id)arg1 anchorIdentifier:(id)arg2;
 - (id)initPrivate;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

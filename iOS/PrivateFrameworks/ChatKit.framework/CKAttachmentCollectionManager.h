@@ -9,6 +9,7 @@
 @class IMChat, NSArray, NSSet;
 @protocol CKAttachmentCollectionManagerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface CKAttachmentCollectionManager : NSObject
 {
     id <CKAttachmentCollectionManagerDelegate> _delegate;

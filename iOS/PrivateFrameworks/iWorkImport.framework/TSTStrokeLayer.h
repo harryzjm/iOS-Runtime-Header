@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface TSTStrokeLayer <NSCopying, NSMutableCopying, TSTStrokeLayerEnumerating>
 {
-    vector_613d3e5a mStrokeRuns;
+    struct vector<TSTStrokeLayerRun, std::__1::allocator<TSTStrokeLayerRun>> _strokeRuns;
     unsigned int _columnOrRowIndex;
 }
 
@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (void)p_flattenStrokeOrder;
 - (void)p_removeRange:(struct TSTSimpleRange)arg1;
 - (void)p_insertSpaceAtRange:(struct TSTSimpleRange)arg1;
-- (void)p_setStrokeRuns:(vector_613d3e5a)arg1;
 - (void)p_mergeStrokeRunsAtPosition:(unsigned long long)arg1;
 - (void)p_invalidateRange:(struct TSTSimpleRange)arg1;
 - (void)p_invalidate;

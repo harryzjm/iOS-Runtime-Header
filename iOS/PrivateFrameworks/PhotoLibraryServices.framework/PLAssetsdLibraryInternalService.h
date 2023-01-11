@@ -4,16 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <PhotoLibraryServices/PLAssetsdLibraryInternalServiceProtocol-Protocol.h>
 
 @class NSString;
 
-@interface PLAssetsdLibraryInternalService : NSObject <PLAssetsdLibraryInternalServiceProtocol>
+@interface PLAssetsdLibraryInternalService <PLAssetsdLibraryInternalServiceProtocol>
 {
 }
 
+- (void)invalidateBehavioralScoreOnAllAssetsWithReply:(CDUnknownBlockType)arg1;
+- (void)deleteiTunesSyncedContentWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)backgroundJobServiceRemoveAllBundleRecordsFromProcessingSet;
+- (void)getBackgroundJobServiceBundlesInQueueDictionaryWithReply:(CDUnknownBlockType)arg1;
+- (void)getBackgroundJobServiceStateWithReply:(CDUnknownBlockType)arg1;
+- (void)registerBackgroundJobServiceIfNecessaryOnLibraryPath:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)invalidateReverseLocationDataOnAllAssetsWithReply:(CDUnknownBlockType)arg1;
+- (void)setAssetKeywords:(id)arg1 forAssetUUID:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)applyGraphUpdates:(id)arg1 supportingData:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)applySearchIndexUpdates:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)waitForSearchIndexExistenceWithReply:(CDUnknownBlockType)arg1;
+- (void)getSearchIndexProgressWithReply:(CDUnknownBlockType)arg1;
+- (void)markPersonAsNeedingKeyFaceWithPersonUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)resetPendingAnalysisStatesWithReply:(CDUnknownBlockType)arg1;
+- (void)markAnalysisStatesProcessedForWorkerType:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)removeAnalysisRecordsForDeletedAssetsWithUUIDs:(id)arg1 workerType:(unsigned long long)arg2;
+- (void)reloadMomentGenerationOptions;
+- (void)repairMemoriesWithUUIDs:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)previewAssetLocalIdentifiersWithReply:(CDUnknownBlockType)arg1;
+- (void)previewRenderedContentURLAtIndex:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)previewRenderedContentURLCountWithReply:(CDUnknownBlockType)arg1;
+- (void)updateAssetLocationDataWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)getSizeOfResourcesToUploadByCPLWithReply:(CDUnknownBlockType)arg1;
+- (void)getLibrarySizesFromDB:(_Bool)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getAssetCountsWithReply:(CDUnknownBlockType)arg1;
 
 // Remaining properties

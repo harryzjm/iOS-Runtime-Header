@@ -15,6 +15,7 @@
 
 @property(nonatomic) __weak UITextField *textField; // @synthesize textField=_textField;
 - (void).cxx_destruct;
+- (_Bool)_accessibilityHandlesTabKey;
 - (id)accessibilityDropPointDescriptors;
 - (id)accessibilityDragSourceDescriptors;
 - (id)_accessibilityHandwritingAttributes;
@@ -22,9 +23,11 @@
 - (id)_accessibilitySpeakThisString;
 - (void)_accessibilitySetIsSpeakThisElement:(_Bool)arg1;
 - (_Bool)_accessibilityIsSpeakThisElement;
-- (_Bool)_accessibilityIsScannerElement;
+- (_Bool)accessibilityRespondsToUserInteraction;
 - (struct CGRect)accessibilityFrame;
 - (_Bool)_accessibilityHasTextOperations;
+- (void)_accessibilityRedo;
+- (void)_accessibilityUndo;
 - (void)_accessibilitySelectAll;
 - (_Bool)_accessibilityOverridesInstructionsHint;
 - (void)_accessibilityDelete;
@@ -54,10 +57,13 @@
 - (void)accessibilityElementDidBecomeFocused;
 - (void)accessibilityElementDidLoseFocus;
 - (_Bool)_accessibilityViewIsVisible;
-- (void)_accessibilityInsertText:(id)arg1 atPosition:(long long)arg2;
+- (_Bool)_accessibilityInsertTextWithAlternatives:(id)arg1;
+- (void)_accessibilityInsertText:(id)arg1;
 - (void)_accessibilityReplaceCharactersAtCursor:(unsigned long long)arg1 withString:(id)arg2;
 - (_Bool)_accessibilityReplaceTextInRange:(struct _NSRange)arg1 withString:(id)arg2;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
+- (id)accessibilityIdentifier;
+- (unsigned long long)_accessibilityAutomationType;
 - (id)_accessibilityUserTestingParent;
 
 @end

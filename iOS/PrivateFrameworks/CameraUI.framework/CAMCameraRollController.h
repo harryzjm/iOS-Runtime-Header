@@ -100,8 +100,10 @@
 - (_Bool)oneUpPresentationHelperShouldLeaveContentOnSecondScreen:(id)arg1;
 - (long long)oneUpPresentationHelperPreferredBarStyle:(id)arg1;
 - (id)oneUpPresentationHelperViewController:(id)arg1;
+- (long long)oneUpPresentationOrigin:(id)arg1;
 - (void)_updateTransientDataSourceIfNeeded;
 - (void)_invalidateTransientAssets;
+- (id)_cameraRollCollectionListFetchResult;
 - (void)_update;
 - (void)_ensureCameraRollViewController;
 - (void)_startNewSession;

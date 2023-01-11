@@ -8,15 +8,19 @@
 
 #import <SearchUICardKitProviderSupport/CRKIdentifiedProviding-Protocol.h>
 
-@class NSString;
+@class NSString, SUICKPCardViewControllerProvider;
 
 @interface SUICKPEntryPoint : NSObject <CRKIdentifiedProviding>
 {
+    SUICKPCardViewControllerProvider *_cardViewControllerProvider;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *providerIdentifier;
 - (void)requestIdentifiedCardSectionViewProviderForCard:(id)arg1 delegate:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestCardSectionViewProviderForCard:(id)arg1 delegate:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)presentation:(id)arg1 didApplyCardSectionViewSource:(id)arg2 toCardViewController:(id)arg3;
+- (unsigned long long)displayPriorityForCard:(id)arg1;
 - (id)cardViewControllerForCard:(id)arg1;
 - (id)init;
 

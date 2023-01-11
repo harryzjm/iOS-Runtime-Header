@@ -6,10 +6,21 @@
 
 @interface TSMachAbsoluteNanoseconds
 {
+    struct mach_timebase_info _timebaseInfo;
 }
 
 + (id)machAbsoluteNanosecondsClock;
+- (_Bool)getRateRatioNumerator:(unsigned long long *)arg1 denominator:(unsigned long long *)arg2 machAnchor:(unsigned long long *)arg3 andDomainAnchor:(unsigned long long *)arg4 withError:(id *)arg5;
+- (unsigned long long)convertFromDomainIntervalToMachAbsoluteInterval:(unsigned long long)arg1;
+- (unsigned long long)convertFromMachAbsoluteIntervalToDomainInterval:(unsigned long long)arg1;
+- (_Bool)convertFromDomainTime:(unsigned long long *)arg1 toMachAbsoluteTime:(unsigned long long *)arg2 withCount:(unsigned int)arg3;
+- (_Bool)convertFromMachAbsoluteTime:(unsigned long long *)arg1 toDomainTime:(unsigned long long *)arg2 withCount:(unsigned int)arg3;
+- (unsigned long long)convertFromDomainToMachAbsoluteTime:(unsigned long long)arg1 withFlags:(unsigned int *)arg2;
+- (unsigned long long)convertFromMachAbsoluteToDomainTime:(unsigned long long)arg1 withFlags:(unsigned int *)arg2;
+- (unsigned long long)nanosecondsToMachAbsolute:(unsigned long long)arg1;
+- (unsigned long long)machAbsoluteToNanoseconds:(unsigned long long)arg1;
 - (id)clockName;
+- (id)initWithClockIdentifier:(unsigned long long)arg1;
 
 @end
 

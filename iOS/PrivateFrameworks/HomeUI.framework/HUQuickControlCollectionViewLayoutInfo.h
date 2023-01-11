@@ -6,21 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class HUQuickControlCollectionViewGridLayoutInfo, HUQuickControlCollectionViewSupplementaryLayoutInfo;
+@class NSMutableArray;
 
 @interface HUQuickControlCollectionViewLayoutInfo : NSObject
 {
-    HUQuickControlCollectionViewGridLayoutInfo *_gridLayout;
-    HUQuickControlCollectionViewSupplementaryLayoutInfo *_supplementaryLayout;
+    NSMutableArray *_layoutDetailsArray;
     struct CGSize _collectionViewContentSize;
     struct CGRect _availableContentFrame;
-    struct CGRect _preferredLayoutFrame;
 }
 
-@property(retain, nonatomic) HUQuickControlCollectionViewSupplementaryLayoutInfo *supplementaryLayout; // @synthesize supplementaryLayout=_supplementaryLayout;
-@property(retain, nonatomic) HUQuickControlCollectionViewGridLayoutInfo *gridLayout; // @synthesize gridLayout=_gridLayout;
+@property(retain, nonatomic) NSMutableArray *layoutDetailsArray; // @synthesize layoutDetailsArray=_layoutDetailsArray;
 @property(nonatomic) struct CGSize collectionViewContentSize; // @synthesize collectionViewContentSize=_collectionViewContentSize;
-@property(nonatomic) struct CGRect preferredLayoutFrame; // @synthesize preferredLayoutFrame=_preferredLayoutFrame;
 @property(nonatomic) struct CGRect availableContentFrame; // @synthesize availableContentFrame=_availableContentFrame;
 - (void).cxx_destruct;
 

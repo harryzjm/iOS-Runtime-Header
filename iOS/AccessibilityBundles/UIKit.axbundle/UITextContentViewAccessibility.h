@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityCapturedImages;
 - (_Bool)keyboardInput:(id)arg1 shouldInsertText:(id)arg2 isMarkedText:(_Bool)arg3;
 - (_Bool)keyboardInput:(id)arg1 shouldReplaceTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
@@ -25,6 +26,7 @@
 - (id)_accessibilityAttributedValueForRange:(struct _NSRange *)arg1;
 - (void)keyboardInputChangedSelection:(id)arg1;
 - (id)_accessibilityTextViewTextOperationResponder;
+- (unsigned long long)_accessibilityAutomationType;
 - (_Bool)keyboardInputChanged:(id)arg1;
 - (_Bool)_accessibilityShouldUpdateTextCache;
 - (void)_accessibilitySetShouldUpdateCache:(_Bool)arg1;

@@ -13,10 +13,8 @@
 @interface MPPlaybackContext : NSObject <NSSecureCoding>
 {
     MPAVItem *_playerCurrentItem;
-    _Bool _shouldStartPlayback;
-    _Bool _requireFinalTracklist;
-    _Bool _shouldRestartPlayback;
     long long _startIndex;
+    long long _actionAfterQueueLoad;
     long long _shuffleType;
     long long _repeatType;
     NSString *_playActivityFeatureName;
@@ -35,17 +33,18 @@
 @property(copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
 @property(nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
 @property(nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
-@property(nonatomic) _Bool shouldRestartPlayback; // @synthesize shouldRestartPlayback=_shouldRestartPlayback;
-@property(nonatomic) _Bool requireFinalTracklist; // @synthesize requireFinalTracklist=_requireFinalTracklist;
-@property(nonatomic) _Bool shouldStartPlayback; // @synthesize shouldStartPlayback=_shouldStartPlayback;
+@property(nonatomic) long long actionAfterQueueLoad; // @synthesize actionAfterQueueLoad=_actionAfterQueueLoad;
 @property(nonatomic) long long startIndex; // @synthesize startIndex=_startIndex;
 - (void).cxx_destruct;
+@property(readonly, nonatomic, getter=isSupported) _Bool supported;
+@property(readonly, nonatomic) _Bool containsRestorableContent;
 - (id)description;
 - (id)descriptionComponents;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+@property(readonly, nonatomic) _Bool shouldBecomeActive;
+@property(readonly, nonatomic) _Bool containsTransportableContent;
 - (id)init;
-@property(retain, nonatomic) MPAVItem *playerCurrentItem;
 
 @end
 

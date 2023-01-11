@@ -9,14 +9,18 @@
 #import <AvatarUI/AVTStoreBackend-Protocol.h>
 
 @class NSString;
+@protocol AVTAvatarRecordChangeTracker, AVTStoreBackendDelegate;
 
 @interface AVTStubbedStoreBackend : NSObject <AVTStoreBackend>
 {
 }
 
+@property(readonly, nonatomic) id <AVTAvatarRecordChangeTracker> recordChangeTracker;
+@property(nonatomic) __weak id <AVTStoreBackendDelegate> backendDelegate;
 - (_Bool)canCreateAvatarWithError:(id *)arg1;
 - (id)duplicateAvatarRecord:(id)arg1 error:(id *)arg2;
 - (_Bool)deleteAvatarWithIdentifier:(id)arg1 error:(id *)arg2;
+- (_Bool)saveAvatars:(id)arg1 error:(id *)arg2;
 - (_Bool)saveAvatar:(id)arg1 error:(id *)arg2;
 - (id)avatarsForFetchRequest:(id)arg1 error:(id *)arg2;
 

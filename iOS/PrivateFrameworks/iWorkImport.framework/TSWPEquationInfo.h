@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)saveCharacterStylePropertiesFromPropertyMap:(id)arg1 toArchive:(struct CharacterStylePropertiesArchive *)arg2 archiver:(id)arg3;
 - (void)loadCharacterStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const struct CharacterStylePropertiesArchive *)arg2 unarchiver:(id)arg3;
 - (id)imageDataWithObjectContext:(id)arg1;
-- (void)p_rebuildEquationPDF;
+- (void)rebuildEquationPDFIncludingGeometry:(_Bool)arg1;
 - (void)replaceSourceWithNewSource:(id)arg1;
 - (void)willChangeProperty:(int)arg1;
 - (void)updateTextProperties:(id)arg1;

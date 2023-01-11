@@ -6,7 +6,6 @@
 
 @class NSMutableSet, NSMutableString;
 
-__attribute__((visibility("hidden")))
 @interface SocksHandshakev5
 {
     _Bool _done;

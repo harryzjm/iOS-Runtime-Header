@@ -10,6 +10,8 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
+- (_Bool)_accessibilityDrawsFocusRingWhenChildrenFocused;
 - (struct UIEdgeInsets)_accessibilityVisibleContentInset;
 
 @end

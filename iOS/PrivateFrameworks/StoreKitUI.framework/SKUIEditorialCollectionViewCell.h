@@ -8,6 +8,7 @@
 
 @class NSString, SKUIEditorialCellLayout;
 
+__attribute__((visibility("hidden")))
 @interface SKUIEditorialCollectionViewCell <SKUICellLayoutParentView>
 {
     SKUIEditorialCellLayout *_layout;

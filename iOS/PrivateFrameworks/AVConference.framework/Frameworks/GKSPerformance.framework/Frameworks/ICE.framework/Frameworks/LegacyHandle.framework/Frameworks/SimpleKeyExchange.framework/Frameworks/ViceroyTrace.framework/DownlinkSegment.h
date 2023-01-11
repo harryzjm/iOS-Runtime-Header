@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol DownlinkSegmentDelegate;
-
 __attribute__((visibility("hidden")))
 @interface DownlinkSegment
 {
-    id <DownlinkSegmentDelegate> _delegate;
+    double _videoDegradedStartTime;
+    _Bool _isVideoDegraded;
+    unsigned int _videoDegradedTotalCounter;
+    double _videoDegradedTotalTime;
 }
 
+@property unsigned int videoDegradedTotalCounter; // @synthesize videoDegradedTotalCounter=_videoDegradedTotalCounter;
+@property double videoDegradedStartTime; // @synthesize videoDegradedStartTime=_videoDegradedStartTime;
+@property double videoDegradedTotalTime; // @synthesize videoDegradedTotalTime=_videoDegradedTotalTime;
+@property _Bool isVideoDegraded; // @synthesize isVideoDegraded=_isVideoDegraded;
 - (id)segmentReport;
-- (void)setDelegate:(id)arg1;
-- (id)delegate;
+- (void)processVideoDegraded:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithSegmentName:(id)arg1 previousSegmentName:(id)arg2 delegate:(id)arg3;
 

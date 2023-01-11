@@ -8,7 +8,7 @@
 
 #import <ClassroomKit/SFAirDropClassroomTransferDelegate-Protocol.h>
 
-@class CRKAirDropTransferInfo, NSData, NSSet, NSString, SFAirDropClassroomTransferManager;
+@class CRKAirDropTransferInfo, NSData, NSSet, NSString, NSURL, SFAirDropClassroomTransferManager;
 
 @interface CRKShowOpenDialogOperation : CATOperation <SFAirDropClassroomTransferDelegate>
 {
@@ -20,17 +20,19 @@
     NSString *mSourceBundleIdentifier;
     NSString *mFilesDescription;
     NSSet *mAirDropItems;
-    SFAirDropClassroomTransferManager *mTransferManager;
     NSString *mTransferIdentifier;
     CRKAirDropTransferInfo *mTransferInfo;
     _Bool mTransferAccepted;
     _Bool mTransferFinished;
+    NSURL *mTransferDirectoryURL;
+    SFAirDropClassroomTransferManager *mTransferManager;
 }
 
 + (id)fakeBundleID;
 - (void).cxx_destruct;
 - (void)failWithError:(id)arg1;
 - (void)succeedIfNeeded;
+- (void)cleanupHiddenTransferItemsIfNeeded;
 - (void)transferWithIdentifierWasDeclined:(id)arg1 withFailureReason:(unsigned long long)arg2;
 - (void)transferWithIdentifierWasAccepted:(id)arg1;
 - (void)transferDidFinishWithSuccess:(_Bool)arg1 destinationPath:(id)arg2 error:(id)arg3;

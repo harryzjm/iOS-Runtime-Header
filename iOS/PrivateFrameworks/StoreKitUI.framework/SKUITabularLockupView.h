@@ -8,6 +8,7 @@
 
 @class NSMapTable, NSString, SKUITabularLockupLayout;
 
+__attribute__((visibility("hidden")))
 @interface SKUITabularLockupView <SKUIViewElementView>
 {
     SKUITabularLockupLayout *_layout;

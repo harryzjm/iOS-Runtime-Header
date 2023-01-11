@@ -23,7 +23,8 @@
     CDUnknownBlockType _beginTrackingCompletion;
     NSObject<OS_dispatch_queue> *_beginTrackingCompletionQueue;
     _Bool _initialLoadHasOccurred;
-    unsigned int _currentPlatform;
+    _Bool _initialLoadHasFinished;
+    NSString *_currentPlatformKey;
     _Bool _shouldAutoloadAccessibilityCodeItems;
     long long _trackingMode;
     CDUnknownBlockType _shouldLoadAccessibilityCodeItemBlock;
@@ -57,12 +58,14 @@
 - (void)_cancelDyldImageActivityTimer;
 - (void)_scheduleDyldImageActivityTimerWithDelay:(double)arg1;
 - (void)setAccessibilityCodeItemsNeedLoaded;
+- (id)codeItemForBundle:(id)arg1;
 - (id)loadedCodeItemsUsingTrackedItemsIfAvailable:(_Bool)arg1;
 - (id)_queue_loadedCodeItemsUsingTrackedItemsIfAvailable:(_Bool)arg1;
 - (id)loadedCodeItemPathsUsingTrackedItemsIfAvailable:(_Bool)arg1;
 - (void)_addTrackedCodeItem:(id)arg1;
 - (void)endTrackingLoadedCodeItemsWithCompletion:(CDUnknownBlockType)arg1 targetQueue:(id)arg2;
 - (void)beginTrackingLoadedCodeItemsWithMode:(long long)arg1 completion:(CDUnknownBlockType)arg2 targetQueue:(id)arg3;
+@property(readonly, nonatomic) _Bool isInitialLoadFinished;
 @property(readonly, nonatomic) _Bool isTrackingLoadedCodeItems;
 - (CDUnknownBlockType)_validLoadEventDidOccurBlock;
 - (CDUnknownBlockType)_validLoadEventWillOccurBlock;

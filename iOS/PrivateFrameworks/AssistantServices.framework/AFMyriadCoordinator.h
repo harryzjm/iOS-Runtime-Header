@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AFMyriadEmergencyCallPunchout, AFMyriadRecord, AFMyriadStereoPairManager, AFPowerAssertionManager, NSData, NSDate, NSDateFormatter, NSMutableDictionary, NSString, NSUUID, _DKKnowledgeStore;
+@class AFMyriadEmergencyCallPunchout, AFMyriadRecord, AFPowerAssertionManager, AFWatchdogTimer, NSData, NSDate, NSDateFormatter, NSMutableDictionary, NSString, NSUUID, SFDiagnostics, _DKKnowledgeStore;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source;
 
 @interface AFMyriadCoordinator : NSObject
@@ -14,9 +14,11 @@
     unsigned long long _myriadState;
     unsigned long long _nextState;
     unsigned long long _previousState;
+    NSData *_incomingAudioData;
     NSData *_previousAdvertisedData;
     NSMutableDictionary *_replies;
     NSMutableDictionary *_replyCounts;
+    NSMutableDictionary *_repliesBeforeDecision;
     NSMutableDictionary *_previousTrumps;
     NSMutableDictionary *_incomingTrumps;
     NSMutableDictionary *_multipleContinuations;
@@ -26,6 +28,8 @@
     int _deviceAdjust;
     double _deviceDelay;
     double _deviceTrumpDelay;
+    double _deviceInEarDelay;
+    double _deviceInEarInterval;
     unsigned char _deviceGroup;
     NSObject<OS_dispatch_queue> *_myriadWorkQueue;
     NSObject<OS_dispatch_queue> *_myriadWaitWiProxQueue;
@@ -33,9 +37,9 @@
     NSObject<OS_dispatch_queue> *_myriadReadinessQueue;
     NSString *_timerLabel;
     NSObject<OS_dispatch_source> *_timer;
+    AFWatchdogTimer *_overallTimeout;
     NSObject<OS_dispatch_semaphore> *_wiproxReadinessSemaphore;
     AFPowerAssertionManager *_powerAssertionManager;
-    AFMyriadStereoPairManager *_pairManager;
     struct __CFNotificationCenter *_center;
     AFMyriadRecord *_triggerRecord;
     unsigned long long _voiceTriggerTime;
@@ -50,10 +54,12 @@
     _Bool _BTLEReady;
     _Bool _inTask;
     _Bool _ducking;
+    _Bool _stateMachineEncounteredError;
     _Bool _supportsExtended;
     _Bool _listenTimerIsRunning;
     _Bool _coordinationEnabled;
     _Bool _clientIsDirectActivating;
+    _Bool _clientIsInEarActivation;
     _Bool _clientRecentlyLostElection;
     _Bool _clientLostDueToTrumping;
     _Bool _clientIsListeningAfterRecentWin;
@@ -61,6 +67,7 @@
     _Bool _clientIsWatchTrumpPromote;
     _Bool _clientIsRespondingToSlowdown;
     _Bool _clientDoneRespondingToSlowdown;
+    _Bool _clientRespondingToCarPlay;
     int _constantGoodness;
     NSObject<OS_dispatch_source> *_timerSource;
     NSDateFormatter *_dateFormat;
@@ -75,6 +82,8 @@
     unsigned short _lastPHash;
     double _lastEmergencyAttempt;
     _Bool _wasEmergency;
+    SFDiagnostics *_sfdiagnostics;
+    AFWatchdogTimer *_sfDiagnosticsTimer;
 }
 
 + (void)clearCurrentCoordinator;
@@ -85,15 +94,22 @@
 - (unsigned short)recentEventBump;
 - (void)logCoreDuetResults:(id)arg1;
 - (id)activityEventStream;
+- (void)_leaveBLEDiagnosticMode;
+- (void)_enterBLEDiagnosticMode;
 - (void)_waitWiProxAndExecute:(CDUnknownBlockType)arg1;
 - (void)_waitWiProx:(long long)arg1 andExecute:(CDUnknownBlockType)arg2;
 - (void)_ageWedgeFilter;
 - (_Bool)_testAndUpdateWedgeFilter:(id)arg1;
+- (void)notifyCurrentDecisionResult;
+- (void)_updateRepliesWith:(id)arg1 id:(id)arg2 data:(id)arg3;
+- (_Bool)_isAlreadyAdvertising;
 - (_Bool)_inTaskTriggerWasTooSoon;
+- (id)_sortedReplies:(id)arg1;
 - (id)_sortedReplies;
 - (_Bool)_isAPhone:(unsigned char)arg1;
 - (_Bool)_shouldHandleEmergency;
 - (_Bool)_shouldContinueFor:(id)arg1;
+- (id)emptyRecord;
 - (id)slowdownRecord:(unsigned short)arg1;
 - (id)responseObject:(unsigned short)arg1;
 - (id)emergencyHandledRecord;
@@ -119,6 +135,7 @@
 - (void)_adjustActionWindowsFromSlowdown:(int)arg1;
 - (void)_resetActionWindows;
 - (void)_setupActionWindows;
+- (void)_handleStateMachineErrorIfNeeded;
 - (void)_unduck;
 - (void)_stopAdvertisingAndListening;
 - (void)stopListening;
@@ -130,6 +147,8 @@
 - (id)_stateAsString;
 - (void)enterState:(unsigned long long)arg1;
 - (void)_enterState:(unsigned long long)arg1;
+- (void)_cancelOverallTimeout;
+- (void)_setOverallTimeout;
 - (void)_startTimer:(id)arg1 for:(float)arg2 thenEnterState:(unsigned long long)arg3;
 - (void)_startTimer:(id)arg1 until:(id)arg2 thenExecute:(CDUnknownBlockType)arg3;
 - (void)_startTimer:(id)arg1 for:(float)arg2 thenExecute:(CDUnknownBlockType)arg3;
@@ -149,17 +168,30 @@
 - (void)endAdvertisingAfterDelay:(float)arg1;
 - (void)startAdvertisingSlowdown:(unsigned short)arg1;
 - (void)startResponseAdvertising:(unsigned short)arg1;
+- (void)startAdvertisingFromAlertFiringVoiceTriggerWithContext:(id)arg1;
+- (void)startAdvertisingFromAlertFiringVoiceTrigger;
+- (void)startAdvertisingFromInTaskVoiceTriggerWithContext:(id)arg1;
+- (void)startAdvertisingFromInTaskTriggerWithContext:(id)arg1;
 - (void)startAdvertisingFromInTaskVoiceTrigger;
 - (void)startAdvertisingEmergency;
 - (void)startAdvertisingEmergencyHandled;
+- (void)startAdvertisingFromCarPlayTrigger;
+- (void)startAdvertisingFromInEarTrigger;
+- (void)startAdvertisingFromOutgoingTriggerWithContext:(id)arg1;
 - (void)startAdvertisingFromOutgoingTrigger;
+- (void)startAdvertisingFromDirectTriggerWithContext:(id)arg1;
 - (void)startAdvertisingFromDirectTrigger;
+- (void)startWatchAdvertisingFromDirectTriggerWithContext:(id)arg1;
 - (void)startWatchAdvertisingFromDirectTrigger;
+- (void)startWatchAdvertisingFromVoiceTriggerWithContext:(id)arg1;
 - (void)startWatchAdvertisingFromVoiceTrigger;
 - (double)_targetDelayAfterTrigger:(unsigned long long)arg1;
 - (void)_startAdvertisingFromVoiceTriggerAdjusted:(BOOL)arg1;
+- (void)startAdvertisingFromVoiceTriggerAdjusted:(BOOL)arg1 withContext:(id)arg2;
 - (void)startAdvertisingFromVoiceTriggerAdjusted:(BOOL)arg1;
+- (void)resetStateMachine;
 - (void)_startAdvertisingFromVoiceTrigger;
+- (void)startAdvertisingFromVoiceTriggerWithContext:(id)arg1;
 - (void)startAdvertisingFromVoiceTrigger;
 - (void)_initDeviceClassAndAdjustments;
 - (void)_readDefaults;

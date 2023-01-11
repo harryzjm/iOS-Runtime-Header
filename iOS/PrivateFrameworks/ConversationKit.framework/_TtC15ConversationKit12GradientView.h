@@ -8,14 +8,13 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit12GradientView : UIView
 {
     MISSING_TYPE *colors;
 }
 
 + (Class)layerClass;
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)init;

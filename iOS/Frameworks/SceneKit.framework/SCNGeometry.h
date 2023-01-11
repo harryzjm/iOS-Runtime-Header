@@ -12,7 +12,7 @@
 #import <SceneKit/SCNBoundingVolume-Protocol.h>
 #import <SceneKit/SCNShadable-Protocol.h>
 
-@class MISSING_TYPE, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, SCNGeometryElement, SCNGeometrySource, SCNMaterial, SCNOrderedDictionary, SCNProgram, SCNShadableHelper;
+@class MISSING_TYPE, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, SCNGeometryElement, SCNGeometrySource, SCNGeometryTessellator, SCNMaterial, SCNOrderedDictionary, SCNProgram, SCNShadableHelper;
 
 @interface SCNGeometry : NSObject <SCNAnimatable, SCNBoundingVolume, SCNShadable, NSCopying, NSSecureCoding>
 {
@@ -34,6 +34,7 @@
     struct SCNVector3 *_fixedBoundingBoxExtrema;
     NSString *_name;
     NSMutableDictionary *_valuesForUndefinedKeys;
+    SCNGeometryTessellator *_tessellator;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -109,6 +110,7 @@
 @property(nonatomic) unsigned long long subdivisionLevel;
 - (void)set_subdivisionSettings:(CDStruct_4c02ed10)arg1;
 - (CDStruct_4c02ed10)_subdivisionSettings;
+@property(retain, nonatomic) SCNGeometryTessellator *tessellator;
 @property(copy, nonatomic) NSArray *levelsOfDetail;
 - (id)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
 - (_Bool)parseSpecialKey:(id)arg1 withPath:(id)arg2 intoDestination:(id *)arg3 remainingPath:(id *)arg4;
@@ -142,6 +144,7 @@
 - (id)mutableCopy;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)_copyAttributesTo:(id)arg1;
 - (void)_setupObjCModelFrom:(id)arg1;
 - (void)_setAttributes:(id)arg1;
 - (id)getBoundingBox;

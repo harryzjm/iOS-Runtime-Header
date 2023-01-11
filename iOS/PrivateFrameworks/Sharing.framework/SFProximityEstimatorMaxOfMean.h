@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (int)_estimateRSSIForSFBLEDevice:(id)arg1;
+- (id)description;
 - (void)dealloc;
 - (id)initWithProximityInfo:(id)arg1;
 

@@ -4,16 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Silex/SXClassFactoryProtocol-Protocol.h>
-
-@class NSString;
-
-@interface SXFill <SXClassFactoryProtocol>
+@interface SXFill
 {
 }
 
-+ (id)typeString;
-+ (void)initializeObject;
 - (unsigned long long)verticalAlignmentWithValue:(id)arg1 withType:(int)arg2;
 - (unsigned long long)horizontalAlignmentWithValue:(id)arg1 withType:(int)arg2;
 - (unsigned long long)fillModeWithValue:(id)arg1 withType:(int)arg2;
@@ -21,12 +15,8 @@
 
 // Remaining properties
 @property(readonly, nonatomic) unsigned long long attachment; // @dynamic attachment;
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) unsigned long long fillMode; // @dynamic fillMode;
-@property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) unsigned long long horizontalAlignment; // @dynamic horizontalAlignment;
-@property(readonly) Class superclass;
 @property(readonly, nonatomic) unsigned long long verticalAlignment; // @dynamic verticalAlignment;
 
 @end

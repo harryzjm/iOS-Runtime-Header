@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CMArchiveManager, NSMutableArray, NSString;
+@class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CSVMapper
 {
-    CMArchiveManager *mArchiver;
     NSMutableArray *mRows;
     NSString *mFileName;
     unsigned long long mColumnCount;

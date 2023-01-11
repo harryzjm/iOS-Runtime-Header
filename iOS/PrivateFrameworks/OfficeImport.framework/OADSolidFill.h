@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (id)blackFill;
 + (id)whiteFill;
 + (id)defaultProperties;
+- (void).cxx_destruct;
 - (void)removeUnnecessaryOverrides;
 - (_Bool)isAnythingOverridden;
 - (_Bool)isEqual:(id)arg1;
@@ -27,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (id)color;
 - (void)fixPropertiesForChangingParentPreservingEffectiveValues:(id)arg1;
 - (id)initWithDefaults;
-- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

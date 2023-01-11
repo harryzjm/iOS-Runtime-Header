@@ -6,12 +6,13 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <IntentsUI/INUIVoiceShortcutRemoteViewControllerAddDelegate-Protocol.h>
+#import <IntentsUI/INUIVoiceShortcutRemoteViewControllerDelegate-Protocol.h>
+#import <IntentsUI/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class INShortcut, INUIVoiceShortcutHostViewController, NSString;
+@class INShortcut, INUIVoiceShortcutHostViewController, NSString, _UIRemoteViewController;
 @protocol INUIAddVoiceShortcutViewControllerDelegate;
 
-@interface INUIAddVoiceShortcutViewController : UIViewController <INUIVoiceShortcutRemoteViewControllerAddDelegate>
+@interface INUIAddVoiceShortcutViewController : UIViewController <INUIVoiceShortcutRemoteViewControllerDelegate, _UIRemoteViewControllerContaining>
 {
     INShortcut *_shortcut;
     id <INUIAddVoiceShortcutViewControllerDelegate> _delegate;
@@ -23,8 +24,9 @@
 @property(nonatomic) __weak id <INUIAddVoiceShortcutViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) INShortcut *_shortcut; // @synthesize _shortcut;
 - (void).cxx_destruct;
-- (void)remoteViewControllerAddDidCancel;
-- (void)remoteViewControllerDidAddVoiceShortcut:(id)arg1 error:(id)arg2;
+@property(readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
+- (void)remoteViewControllerDidCancel;
+- (void)remoteViewControllerDidCreateVoiceShortcut:(id)arg1 error:(id)arg2;
 - (void)loadView;
 - (id)initWithShortcut:(id)arg1;
 

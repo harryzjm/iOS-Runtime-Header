@@ -14,13 +14,16 @@
 #import <UIKitCore/_UITouchable-Protocol.h>
 
 @class NSArray, NSString, NSUndoManager, NSUserActivity, UIInputViewController, UITextInputAssistantItem, UITextInputMode, UIView;
-@protocol UITextInput, UITextInputPrivate;
+@protocol UIActivityItemsConfigurationReading, UITextInput, UITextInputPrivate, _UICopyConfigurationReading;
 
-@interface UIResponder : NSObject <UIUserActivityRestoring, _UIStateRestorationContinuation, UITextInput_Internal, UITextInputAdditions, _UITouchable, UIResponderStandardEditActions>
+@interface UIResponder : NSObject <UITextInput_Internal, UITextInputAdditions, UIUserActivityRestoring, _UIStateRestorationContinuation, _UITouchable, UIResponderStandardEditActions>
 {
-    unsigned int _hasOverrideClient:1;
-    unsigned int _hasOverrideHost:1;
-    unsigned int _hasInputAssistantItem:1;
+    struct {
+        unsigned int hasOverrideClient:1;
+        unsigned int hasOverrideHost:1;
+        unsigned int hasInputAssistantItem:1;
+        unsigned int suppressSoftwareKeyboard:1;
+    } _responderFlags;
 }
 
 + (void)clearTextInputContextIdentifier:(id)arg1;
@@ -33,6 +36,7 @@
 + (void)_stopDeferredTrackingObjectsWithIdentifiers;
 + (void)_startDeferredTrackingObjectsWithIdentifiers;
 + (id)objectWithRestorationIdentifierPath:(id)arg1;
+@property(readonly, nonatomic) long long editingInteractionConfiguration;
 - (void)_setDropDataOwner:(long long)arg1;
 - (long long)_dropDataOwner;
 - (void)_setDragDataOwner:(long long)arg1;
@@ -96,7 +100,7 @@
 - (_Bool)_enableAutomaticKeyboardPressDone;
 - (_Bool)_disableAutomaticKeyboardUI;
 - (_Bool)_disableAutomaticKeyboardBehavior;
-- (id)_keyCommandsInChainPassingTest:(CDUnknownBlockType)arg1;
+- (id)_keyCommandsInChainPassingTest:(CDUnknownBlockType)arg1 skipViewControllersPresentingModally:(_Bool)arg2;
 - (id)_keyCommandForEvent:(id)arg1 target:(id *)arg2;
 - (id)_keyCommandForEvent:(id)arg1;
 - (id)_keyCommands;
@@ -113,20 +117,30 @@
 - (void)_overrideInputViewNextResponderWithResponder:(id)arg1;
 - (void)_clearOverrideNextResponder;
 - (void)_preserveResponderOverridesWhilePerforming:(CDUnknownBlockType)arg1;
+- (void)_restoreOverrideState:(id)arg1;
+- (id)_captureOverrideState;
 - (void)_clearOverrideHost;
 - (id)_overrideHost;
 - (id)_currentOverrideHost;
 - (id)_currentOverrideClient;
 - (_Bool)_restoreFirstResponder;
+- (void)updateTextAttributesWithConversionHandler:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSUndoManager *undoManager;
 - (void)doesNotRecognizeSelector:(SEL)arg1;
+- (void)selectToHere:(id)arg1;
 - (void)_addShortcut:(id)arg1;
 - (void)_share:(id)arg1;
 - (void)_lookup:(id)arg1;
 - (void)_define:(id)arg1;
+- (void)validateCommand:(id)arg1;
+- (void)_buildMenuFromChainWithBuilder:(id)arg1;
+- (void)buildMenuWithBuilder:(id)arg1;
+- (id)_targetForAction:(SEL)arg1 sender:(id)arg2 skipViewControllersPresentingModally:(_Bool)arg3;
 - (id)targetForAction:(SEL)arg1 withSender:(id)arg2;
+- (id)_targetCanPerformBlock:(CDUnknownBlockType)arg1 nextTargetBlock:(CDUnknownBlockType)arg2;
 - (id)_targetCanPerformBlock:(CDUnknownBlockType)arg1;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (id)_selectToHereResponderProxy;
 - (id)_textServicesResponderProxy;
 - (void)_clearBecomeFirstResponderWhenCapable;
 - (id)firstResponder;
@@ -160,34 +174,22 @@
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)dealloc;
-- (_Bool)_usesDeemphasizedTextAppearance;
-@property(readonly, nonatomic) UITextInputAssistantItem *inputAssistantItem;
-- (void)reloadInputViewsWithoutReset;
-- (void)reloadInputViews;
-- (_Bool)shouldReloadInputViews;
-@property(readonly, nonatomic) NSString *textInputContextIdentifier;
-@property(readonly, nonatomic) UITextInputMode *textInputMode;
-@property(readonly, nonatomic) UIInputViewController *inputAccessoryViewController;
-@property(readonly, nonatomic) UIInputViewController *inputViewController;
-@property(readonly, nonatomic) UIView *inputAccessoryView;
-@property(readonly, nonatomic) UIView *inputView;
-@property(readonly, nonatomic) NSArray *keyCommands;
-- (void)restoreUserActivityState:(id)arg1;
-- (void)updateUserActivityState:(id)arg1;
-@property(retain, nonatomic) NSUserActivity *userActivity;
-- (id)_userActivity;
-- (void)decodeRestorableStateWithCoder:(id)arg1;
-- (void)encodeRestorableStateWithCoder:(id)arg1;
-- (id)_restorationIdentifierPath;
-@property(copy, nonatomic) NSString *restorationIdentifier;
-- (void)_rebuildStateRestorationIdentifierPath;
+- (_Bool)_handleActivityItemsConfigurationShare:(id)arg1;
+- (_Bool)_handleActivityItemsConfigurationDoesNotHandleSelector:(SEL)arg1;
+- (_Bool)_handleActivityItemsConfigurationCanPerformAction:(SEL)arg1 sender:(id)arg2;
+- (id)_firstNonnullActivityItemsConfigurationInResponderChainForView:(id)arg1 location:(struct CGPoint)arg2 sender:(id)arg3 responder:(id *)arg4;
+@property(retain, nonatomic) id <UIActivityItemsConfigurationReading> activityItemsConfiguration;
+- (id)_effectiveActivityItemsConfigurationForView:(id)arg1 location:(struct CGPoint)arg2 sender:(id)arg3;
+- (id)_effectiveActivityItemsConfiguration;
+- (id)_effectiveActivityItemsConfigurationForSender:(id)arg1;
+- (void)_clearTextInputSource;
+- (void)set_textInputSource:(long long)arg1;
+- (long long)_textInputSource;
 - (id)_selectableText;
 @property(readonly, nonatomic) UIView<UITextInputPrivate> *_textSelectingContainer;
 - (struct CGRect)_lastRectForRange:(id)arg1;
 - (long long)selectionAffinity;
 - (_Bool)_shouldPerformUICalloutBarButtonReplaceAction:(SEL)arg1 forText:(id)arg2 checkAutocorrection:(_Bool)arg3;
-- (void)_phraseBoundaryGesture:(id)arg1;
-- (id)_newPhraseBoundaryGestureRecognizer;
 - (void)_unmarkText;
 - (void)_setAttributedMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 - (void)_setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
@@ -216,6 +218,7 @@
 - (id)_textColorForCaretSelection;
 - (id)_rangeFromCurrentRangeWithDelta:(struct _NSRange)arg1;
 - (id)_clampedpositionFromPosition:(id)arg1 offset:(int)arg2;
+- (id)_rangeOfSmartSelectionIncludingRange:(id)arg1;
 - (id)_findPleasingWordBoundaryFromPosition:(id)arg1;
 - (id)_intersectionOfRange:(id)arg1 andRange:(id)arg2;
 - (_Bool)_range:(id)arg1 intersectsRange:(id)arg2;
@@ -228,11 +231,14 @@
 - (id)_rangeOfEnclosingWord:(id)arg1;
 - (id)_rangeOfTextUnit:(long long)arg1 enclosingPosition:(id)arg2;
 - (id)_rangeOfText:(id)arg1 endingAtPosition:(id)arg2;
+- (id)_normalizedStringForRangeComparison:(id)arg1;
 - (void)_scrollRectToVisible:(struct CGRect)arg1 animated:(_Bool)arg2;
 - (void)_replaceDocumentWithText:(id)arg1;
 - (void)_replaceCurrentWordWithText:(id)arg1;
+- (void)_transpose;
 - (void)_deleteForwardAndNotify:(_Bool)arg1;
 - (void)_deleteBackwardAndNotify:(_Bool)arg1;
+- (void)_deleteToEndOfParagraph;
 - (void)_deleteToEndOfLine;
 - (void)_deleteToStartOfLine;
 - (void)_deleteByWord;
@@ -277,9 +283,33 @@
 @property(readonly, nonatomic, getter=isEditable) _Bool editable;
 - (id)__textInteractionFromAssistant;
 - (void)__tearDownInteractionAssistantIfNecessary;
-- (void)__createInteractionAssistantIfNecessaryWithSet:(long long)arg1;
+- (void)__prepareInteractionAssistantIfNecessary;
+- (void)__createInteractionAssistantIfNecessaryWithMode:(long long)arg1;
 - (id)interactionAssistant;
 - (id)textInputView;
+- (void)_setSuppressSoftwareKeyboard:(_Bool)arg1;
+- (_Bool)_suppressSoftwareKeyboard;
+@property(readonly, nonatomic) UITextInputAssistantItem *inputAssistantItem;
+- (void)reloadInputViewsWithoutReset;
+- (void)reloadInputViews;
+- (_Bool)shouldReloadInputViews;
+@property(readonly, nonatomic) NSString *textInputContextIdentifier;
+@property(readonly, nonatomic) UITextInputMode *textInputMode;
+@property(readonly, nonatomic) UIInputViewController *inputAccessoryViewController;
+@property(readonly, nonatomic) UIInputViewController *inputViewController;
+@property(readonly, nonatomic) UIView *inputAccessoryView;
+@property(readonly, nonatomic) UIView *inputView;
+@property(readonly, nonatomic) NSArray *keyCommands;
+- (void)restoreUserActivityState:(id)arg1;
+- (void)updateUserActivityState:(id)arg1;
+@property(retain, nonatomic) NSUserActivity *userActivity;
+- (id)_userActivity;
+- (void)decodeRestorableStateWithCoder:(id)arg1;
+- (void)encodeRestorableStateWithCoder:(id)arg1;
+- (id)_restorationIdentifierPath;
+@property(copy, nonatomic) NSString *restorationIdentifier;
+- (void)_rebuildStateRestorationIdentifierPath;
+@property(retain, nonatomic, setter=_setCopyConfiguration:) id <_UICopyConfigurationReading> _copyConfiguration;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

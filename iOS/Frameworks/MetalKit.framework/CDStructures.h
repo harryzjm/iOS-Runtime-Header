@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#pragma mark Blocks
+#pragma mark Function Pointers and Blocks
+
+typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 

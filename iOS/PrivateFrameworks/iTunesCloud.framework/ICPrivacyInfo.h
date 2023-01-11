@@ -6,17 +6,27 @@
 
 #import <objc/NSObject.h>
 
+@class NSMutableDictionary;
+@protocol OS_dispatch_queue;
+
 @interface ICPrivacyInfo : NSObject
 {
+    NSMutableDictionary *_cache;
+    NSObject<OS_dispatch_queue> *_accessQueue;
 }
 
 + (id)sharedPrivacyInfo;
+- (void).cxx_destruct;
+- (void)_handleUserIdentityStoreDidChangeNotification:(id)arg1;
 - (_Bool)_privacyAcknowledgementRequiredForIdentifier:(id)arg1;
+- (_Bool)privacyAcknowledgementRequiredForSystemApplicationType:(long long)arg1;
 @property(readonly, nonatomic) _Bool privacyAcknowledgementRequiredForApplications;
+@property(readonly, nonatomic) _Bool privacyAcknowledgementRequiredForPodcasts;
 @property(readonly, nonatomic) _Bool privacyAcknowledgementRequiredForBooks;
 @property(readonly, nonatomic) _Bool privacyAcknowledgementRequiredForVideos;
 @property(readonly, nonatomic) _Bool privacyAcknowledgementRequiredForMusic;
 @property(readonly, nonatomic) _Bool privacyAcknowledgementRequiredForMedia;
+- (id)init;
 
 @end
 

@@ -8,7 +8,7 @@
 #import <iWorkImport/TSTTableRepInternal-Protocol.h>
 #import <iWorkImport/UITextFieldDelegate-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSMutableArray, NSMutableDictionary, NSSet, NSString, TSDTilingLayer, TSTAnimation, TSTCellSelection, TSTInfo, TSTLayout, TSTMasterLayout, TSTSelectionDragController, TSTTableReferences;
+@class CALayer, CAShapeLayer, NSMutableArray, NSMutableDictionary, NSSet, NSString, TSDTilingLayer, TSTAnimation, TSTCellSelection, TSTLayout, TSTMasterLayout, TSTSelectionDragController, TSTTableInfo, TSTTableReferences;
 @protocol TSTCanvasReferenceController, TSTTableAnimationController, TSTTableChromeProvider, TSTTableRepDelegate;
 
 __attribute__((visibility("hidden")))
@@ -94,7 +94,6 @@ __attribute__((visibility("hidden")))
 @property _Bool tableRepIsBeingRemovedFromBackgroundLayout; // @synthesize tableRepIsBeingRemovedFromBackgroundLayout=_tableRepIsBeingRemovedFromBackgroundLayout;
 @property(readonly, nonatomic) NSMutableDictionary *childTextReps; // @synthesize childTextReps=_childTextReps;
 - (void).cxx_destruct;
-@property(readonly, copy) NSString *description;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)recursivelyDrawInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
 - (_Bool)canDrawInParallel;
@@ -106,9 +105,6 @@ __attribute__((visibility("hidden")))
 - (void)validateFrozenHeaderRows;
 - (void)validateFrozenHeaderCorner;
 - (struct CGRect)p_alignedLayerFrameForLayoutSpace:(id)arg1 transform:(struct CGAffineTransform)arg2;
-- (void)didUpdateLayer:(id)arg1;
-- (id)additionalLayersUnderLayer;
-- (id)overlayLayers;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
 - (id)textureForDescription:(id)arg1;
@@ -153,6 +149,7 @@ __attribute__((visibility("hidden")))
 - (void)p_removeObservers;
 - (void)dealloc;
 - (struct CGRect)layerFrameInScaledCanvas;
+- (_Bool)p_isTableRenderingRotated;
 - (id)hitRepChrome:(struct CGPoint)arg1;
 - (id)hitRep:(struct CGPoint)arg1 withPrecision:(_Bool)arg2;
 @property(readonly, nonatomic) long long selectionType;
@@ -163,11 +160,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) TSTMasterLayout *masterLayout;
 @property(readonly, nonatomic) _Bool layoutDirectionIsLeftToRight;
 @property(readonly, nonatomic) TSTLayout *tableLayout;
-@property(readonly, nonatomic) TSTInfo *tableModel;
-@property(readonly, nonatomic) TSTInfo *tableInfo;
+@property(readonly, nonatomic) TSTTableInfo *tableModel;
+@property(readonly, nonatomic) TSTTableInfo *tableInfo;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

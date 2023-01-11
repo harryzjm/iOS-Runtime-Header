@@ -8,12 +8,15 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityCapturedImages;
 - (id)_accessibilityNativeFocusPreferredElement;
 - (_Bool)fieldEditor:(id)arg1 shouldInsertText:(id)arg2 replacingRange:(struct _NSRange)arg3;
 - (_Bool)keyboardInput:(id)arg1 shouldInsertText:(id)arg2 isMarkedText:(_Bool)arg3;
 - (void)keyboardInputChangedSelection:(id)arg1;
+- (_Bool)_accessibilityHandwritingAttributeAcceptsContractedBraille;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (unsigned long long)accessibilityTraits;
@@ -21,7 +24,7 @@
 - (id)accessibilityAttributedValue;
 - (id)accessibilityValue;
 - (id)_accessibilityGetValue;
-- (_Bool)_accessibilityOverridesLabelValueHintSelector:(SEL)arg1;
+- (_Bool)_accessibilityOverridesPotentiallyAttributedAPISelector:(SEL)arg1;
 - (id)_accessibilityTextFieldText;
 - (id)accessibilityPlaceholderValue;
 - (_Bool)accessibilityElementIsFocused;
@@ -45,6 +48,7 @@
 - (id)accessibilityDragSourceDescriptors;
 - (id)_accessibilityTextSelectionRectWithLargestVisualRangeFromCandidates:(id)arg1;
 - (_Bool)_axTextFieldIsHidden;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

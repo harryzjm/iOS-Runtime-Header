@@ -17,6 +17,7 @@
     _Bool _voided;
     _Bool _hasStoredValue;
     _Bool _liveRenderedBackground;
+    _Bool _supportsCategoryVisualization;
     _Bool _revoked;
     unsigned long long _passType;
     NSString *_serialNumber;
@@ -53,6 +54,7 @@
 @property(nonatomic, getter=isRevoked) _Bool revoked; // @synthesize revoked=_revoked;
 @property(retain, nonatomic) NSDate *modifiedDate; // @synthesize modifiedDate=_modifiedDate;
 @property(retain, nonatomic) NSDate *ingestedDate; // @synthesize ingestedDate=_ingestedDate;
+@property(nonatomic) _Bool supportsCategoryVisualization; // @synthesize supportsCategoryVisualization=_supportsCategoryVisualization;
 @property(nonatomic) _Bool liveRenderedBackground; // @synthesize liveRenderedBackground=_liveRenderedBackground;
 @property(readonly, nonatomic) PKImage *partialFrontFaceImagePlaceholder; // @synthesize partialFrontFaceImagePlaceholder=_partialFrontFaceImagePlaceholder;
 @property(nonatomic) _Bool hasStoredValue; // @synthesize hasStoredValue=_hasStoredValue;
@@ -101,6 +103,8 @@
 @property(readonly, nonatomic) struct CGRect logoRect;
 @property(readonly, nonatomic) PKLiveRenderedShaderSet *liveRenderedShaderSet;
 @property(readonly, nonatomic) PKPassLiveRenderedImageSet *liveRenderedImageSet;
+@property(readonly, nonatomic) _Bool isValid;
+@property(readonly, nonatomic) NSString *businessChatIdentifier;
 - (id)thumbnailImage;
 - (id)stripImage;
 - (id)backgroundImage;
@@ -113,6 +117,7 @@
 @property(readonly, nonatomic) PKImage *frontFaceShadowImage;
 @property(readonly, nonatomic) PKImage *frontFaceImage;
 @property(readonly, nonatomic) PKImage *notificationIconImage;
+@property(readonly, nonatomic) PKImage *rawIcon;
 @property(readonly, nonatomic) PKImage *iconImage;
 - (id)allSemantics;
 - (id)semantics;
@@ -120,6 +125,7 @@
 @property(readonly, nonatomic) PKPassPersonalization *personalization;
 @property(readonly, nonatomic) NSURL *appLaunchURL;
 @property(readonly, nonatomic) NSArray *storeIdentifiers;
+- (id)balanceFields;
 - (id)primaryFields;
 @property(readonly, nonatomic) NSArray *backFieldBuckets;
 @property(readonly, nonatomic) NSArray *frontFieldBuckets;

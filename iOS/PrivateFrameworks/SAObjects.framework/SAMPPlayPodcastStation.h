@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, SAMPPodcastStation;
+@class NSArray, NSString, SAMPPodcastStation;
 
 @interface SAMPPlayPodcastStation
 {
@@ -16,6 +16,8 @@
 - (_Bool)requiresResponse;
 @property(retain, nonatomic) SAMPPodcastStation *station;
 @property(nonatomic) _Bool startPlaying;
+@property(copy, nonatomic) NSString *sharedUserIdFromPlayableITunesAccount;
+@property(copy, nonatomic) NSString *requesterSharedUserId;
 @property(copy, nonatomic) NSArray *hashedRouteUIDs;
 - (id)encodedClassName;
 - (id)groupIdentifier;

@@ -23,7 +23,7 @@
 @property(nonatomic) _Bool showBackgroundPlatter; // @synthesize showBackgroundPlatter=_showBackgroundPlatter;
 @property(nonatomic) long long transportType; // @synthesize transportType=_transportType;
 - (void).cxx_destruct;
-- (id)imageNameForType:(long long)arg1;
+- (void)_updateTouchInsetsToFillContainerWithSize:(struct CGSize)arg1;
 - (void)_updateImageWithType:(long long)arg1;
 - (void)tintColorDidChange;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

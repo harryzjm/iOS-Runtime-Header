@@ -8,7 +8,7 @@
 {
 }
 
-+ (id)destructiveConfiguration;
++ (id)prominentConfiguration;
 + (id)defaultConfiguration;
 - (long long)requiredSupportLevel;
 

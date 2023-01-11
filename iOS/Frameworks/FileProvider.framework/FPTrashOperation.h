@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
-
 @interface FPTrashOperation
 {
-    NSArray *_items;
 }
 
-- (void).cxx_destruct;
+- (id)fp_prettyDescription;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
+- (id)finalItemsForStitcherForResult:(id)arg1;
 - (void)presendNotifications;
-- (void)mainWithExtensionProxy:(id)arg1;
+- (unsigned long long)transformItem:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)subclassPreflightWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithItems:(id)arg1;
 - (id)replicateForItems:(id)arg1;
 

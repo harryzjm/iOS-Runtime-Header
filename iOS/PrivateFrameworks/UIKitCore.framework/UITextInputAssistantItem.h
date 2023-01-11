@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, UIBlurEffect, UIColor, UIKeyboardAssistantBar;
+@class NSArray, UIBlurEffect, UIColor;
 
 @interface UITextInputAssistantItem : NSObject
 {
-    UIKeyboardAssistantBar *_owner;
     _Bool _allowsHidingShortcuts;
+    _Bool _showsBarButtonItemsInline;
     _Bool _independentGroupSizes;
     NSArray *_leadingBarButtonGroups;
     NSArray *_trailingBarButtonGroups;
@@ -29,13 +29,13 @@
 @property(nonatomic, getter=_marginOverride, setter=_setMarginOverride:) double marginOverride; // @synthesize marginOverride=_marginOverride;
 @property(nonatomic, getter=_independentGroupSizes, setter=_setIndependentGroupSizes:) _Bool independentGroupSizes; // @synthesize independentGroupSizes=_independentGroupSizes;
 @property(copy, nonatomic, getter=_centerBarButtonGroups, setter=_setCenterBarButtonGroups:) NSArray *centerBarButtonGroups; // @synthesize centerBarButtonGroups=_centerBarButtonGroups;
+@property(nonatomic, getter=_showsBarButtonItemsInline, setter=_setShowsBarButtonItemsInline:) _Bool showsBarButtonItemsInline; // @synthesize showsBarButtonItemsInline=_showsBarButtonItemsInline;
 @property(copy, nonatomic) NSArray *trailingBarButtonGroups; // @synthesize trailingBarButtonGroups=_trailingBarButtonGroups;
 @property(copy, nonatomic) NSArray *leadingBarButtonGroups; // @synthesize leadingBarButtonGroups=_leadingBarButtonGroups;
 @property(nonatomic) _Bool allowsHidingShortcuts; // @synthesize allowsHidingShortcuts=_allowsHidingShortcuts;
 - (id)description;
 @property(readonly, nonatomic, getter=_requiresPredictionDisabled) _Bool requiresPredictionDisabled;
 @property(readonly, nonatomic, getter=_hasItemsToDisplay) _Bool hasItemsToDisplay;
-@property(nonatomic, getter=_owner, setter=_setOwner:) __weak UIKeyboardAssistantBar *owner;
 - (void)dealloc;
 - (id)init;
 

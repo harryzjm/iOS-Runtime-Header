@@ -4,37 +4,64 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <HomeKitDaemon/HMDCameraBackingStoreDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDCameraProfileSettingsManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDCameraSettingProactiveReaderDelegate-Protocol.h>
 
-@class HMDCameraResidentMessageHandler, HMDCameraSnapshotManager, HMDCameraStreamSnapshotHandler, HMFNetMonitor, NSMutableArray, NSSet, NSString;
+@class HMDCameraBackingStore, HMDCameraClipUserNotificationCenter, HMDCameraProfileSettingsManager, HMDCameraProfileSettingsModel, HMDCameraRecordingManager, HMDCameraResidentMessageHandler, HMDCameraSnapshotManager, HMDCameraStreamSnapshotHandler, HMDHAPAccessory, HMDPredicateUtilities, HMDService, HMFNetMonitor, NSMutableArray, NSSet, NSString, NSUUID;
 
-@interface HMDCameraProfile <HMDCameraSettingProactiveReaderDelegate>
+@interface HMDCameraProfile <HMDCameraSettingProactiveReaderDelegate, HMDCameraProfileSettingsManagerDelegate, HMDCameraBackingStoreDelegate>
 {
     _Bool _microphonePresent;
     _Bool _speakerPresent;
+    NSUUID *_cloudZoneUUID;
+    HMDCameraBackingStore *_cameraBackingStore;
+    HMDService *_recordingManagementService;
+    HMDHAPAccessory *_hapAccessory;
     NSSet *_cameraStreamManagers;
     HMDCameraSnapshotManager *_snapshotManager;
     HMDCameraStreamSnapshotHandler *_streamSnapshotHandler;
     NSMutableArray *_settingProactiveReaders;
     HMFNetMonitor *_networkMonitor;
     HMDCameraResidentMessageHandler *_residentMessageHandler;
+    HMDCameraRecordingManager *_cameraRecordingManager;
+    HMDCameraProfileSettingsManager *_cameraSettingsManager;
+    HMDCameraClipUserNotificationCenter *_clipUserNotificationCenter;
+    HMDPredicateUtilities *_predicateUtilities;
 }
 
 + (_Bool)supportsSecureCoding;
 + (_Bool)hasMessageReceiverChildren;
 + (id)logCategory;
-@property(readonly, nonatomic) HMDCameraResidentMessageHandler *residentMessageHandler; // @synthesize residentMessageHandler=_residentMessageHandler;
-@property(retain, nonatomic) HMFNetMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
-@property(readonly, nonatomic) NSMutableArray *settingProactiveReaders; // @synthesize settingProactiveReaders=_settingProactiveReaders;
-@property(readonly, nonatomic) HMDCameraStreamSnapshotHandler *streamSnapshotHandler; // @synthesize streamSnapshotHandler=_streamSnapshotHandler;
-@property(readonly, nonatomic) HMDCameraSnapshotManager *snapshotManager; // @synthesize snapshotManager=_snapshotManager;
-@property(readonly, nonatomic) NSSet *cameraStreamManagers; // @synthesize cameraStreamManagers=_cameraStreamManagers;
+@property(retain) HMDPredicateUtilities *predicateUtilities; // @synthesize predicateUtilities=_predicateUtilities;
+@property(retain) HMDCameraClipUserNotificationCenter *clipUserNotificationCenter; // @synthesize clipUserNotificationCenter=_clipUserNotificationCenter;
+@property(readonly) HMDCameraProfileSettingsManager *cameraSettingsManager; // @synthesize cameraSettingsManager=_cameraSettingsManager;
+@property(readonly, nonatomic) HMDCameraRecordingManager *cameraRecordingManager; // @synthesize cameraRecordingManager=_cameraRecordingManager;
+@property(readonly) HMDCameraResidentMessageHandler *residentMessageHandler; // @synthesize residentMessageHandler=_residentMessageHandler;
+@property(readonly) HMFNetMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
+@property(readonly) NSMutableArray *settingProactiveReaders; // @synthesize settingProactiveReaders=_settingProactiveReaders;
+@property(readonly) HMDCameraStreamSnapshotHandler *streamSnapshotHandler; // @synthesize streamSnapshotHandler=_streamSnapshotHandler;
+@property(readonly) HMDCameraSnapshotManager *snapshotManager; // @synthesize snapshotManager=_snapshotManager;
+@property(readonly) NSSet *cameraStreamManagers; // @synthesize cameraStreamManagers=_cameraStreamManagers;
+@property(readonly) __weak HMDHAPAccessory *hapAccessory; // @synthesize hapAccessory=_hapAccessory;
+@property(readonly) HMDService *recordingManagementService; // @synthesize recordingManagementService=_recordingManagementService;
+@property(readonly) HMDCameraBackingStore *cameraBackingStore; // @synthesize cameraBackingStore=_cameraBackingStore;
+@property(readonly) NSUUID *cloudZoneUUID; // @synthesize cloudZoneUUID=_cloudZoneUUID;
 @property(readonly, nonatomic, getter=isSpeakerPresent) _Bool speakerPresent; // @synthesize speakerPresent=_speakerPresent;
 @property(readonly, nonatomic, getter=isMicrophonePresent) _Bool microphonePresent; // @synthesize microphonePresent=_microphonePresent;
 - (void).cxx_destruct;
+- (void)cameraProfileSettingsManager:(id)arg1 canDisableRecordingWithCompletion:(CDUnknownBlockType)arg2;
+- (void)cameraProfileSettingsManager:(id)arg1 canEnableRecordingWithCompletion:(CDUnknownBlockType)arg2;
+- (void)cameraBackingStoreDidDisableCloudStorage:(id)arg1;
+- (void)cameraBackingStoreDidStop:(id)arg1;
+- (void)cameraBackingStoreDidStart:(id)arg1;
+- (void)cameraBackingStore:(id)arg1 didDeleteClip:(id)arg2;
+- (void)cameraBackingStore:(id)arg1 didAddClipSignificantEventNotification:(id)arg2;
+- (void)cameraBackingStore:(id)arg1 didAddSignificantEventNotification:(id)arg2;
+- (_Bool)canPostSignificantEventNotification:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)messageReceiverChildren;
-- (void)monitorForEventsForServices:(id)arg1;
+@property(readonly) HMDCameraProfileSettingsModel *currentSettingsModel;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)cameraSettingProactiveReaderDidCompleteRead:(id)arg1 negotiateStreamMessageWasHandled:(_Bool)arg2;
@@ -45,9 +72,15 @@
 - (id)_createCameraManagers:(id)arg1;
 - (id)dumpState;
 - (void)dealloc;
+- (void)unconfigure;
 @property(readonly, copy) NSString *description;
 - (id)logIdentifier;
-- (id)initWithAccessory:(id)arg1 services:(id)arg2 msgDispatcher:(id)arg3;
+- (void)createCameraClipUserNotificationCenter;
+- (void)setUp;
+@property(readonly, nonatomic, getter=isCameraRecordingFeatureSupported) _Bool supportsCameraRecordingFeature;
+- (id)initWithAccessory:(id)arg1 services:(id)arg2 msgDispatcher:(id)arg3 settingsManager:(id)arg4 workQueue:(id)arg5;
+- (id)assistantObject;
+- (id)url;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

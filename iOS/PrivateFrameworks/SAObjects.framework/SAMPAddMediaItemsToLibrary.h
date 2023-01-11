@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SAMPCollection;
+@class NSString, SAMPCollection;
 
 @interface SAMPAddMediaItemsToLibrary
 {
@@ -14,6 +14,7 @@
 + (id)addMediaItemsToLibrary;
 - (_Bool)requiresResponse;
 @property(retain, nonatomic) SAMPCollection *mediaItems;
+@property(copy, nonatomic) NSString *influencedUserSharedUserId;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

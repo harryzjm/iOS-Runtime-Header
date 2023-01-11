@@ -6,6 +6,7 @@
 
 @class CATMessage, CATRemoteTransport;
 
+__attribute__((visibility("hidden")))
 @interface _CATRemoteTransportSendMessageOperation
 {
     CATRemoteTransport *_transport;

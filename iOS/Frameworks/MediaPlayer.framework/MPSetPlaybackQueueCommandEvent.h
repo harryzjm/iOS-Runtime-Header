@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPRemotePlaybackQueue;
+@class MPRemotePlaybackQueue, NSNumber;
 
 @interface MPSetPlaybackQueueCommandEvent
 {
     MPRemotePlaybackQueue *_playbackQueue;
+    NSNumber *_privateListeningOverride;
 }
 
+@property(readonly, nonatomic) NSNumber *privateListeningOverride; // @synthesize privateListeningOverride=_privateListeningOverride;
 @property(readonly, nonatomic) MPRemotePlaybackQueue *playbackQueue; // @synthesize playbackQueue=_playbackQueue;
 - (void).cxx_destruct;
 - (id)initWithCommand:(id)arg1 playbackQueue:(id)arg2;

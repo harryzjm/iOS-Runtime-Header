@@ -4,7 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface REBayesianMLModel
+#import <RelevanceEngine/REBayesianMLModelProperties-Protocol.h>
+
+@class REExportedTable;
+
+@interface REBayesianMLModel <REBayesianMLModelProperties>
 {
     struct BayesianModel _model;
     unsigned long long _numberOfFeatures;
@@ -14,7 +18,12 @@
 + (unsigned long long)featureBitWidth;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) REExportedTable *content;
+- (void)logCoreAnalyticsMetrics;
+- (unsigned long long)_getTotalPositiveCount;
+- (unsigned long long)_getTotalExampleCount;
+- (float)_getNormalizedEntropy;
+- (float)_getAveragePrediction;
 - (long long)_getNumberOfCoordinates;
 - (void)_clearModel;
 - (_Bool)_loadModelFromURL:(id)arg1 error:(id *)arg2;
@@ -24,7 +33,8 @@
 - (void)_loadFeatureVector:(vector_cfeb9b06 *)arg1 fromFeatureMap:(id)arg2;
 - (id)_predictWithFeatures:(id)arg1;
 - (void)_trainWithFeatures:(id)arg1 positiveEvent:(id)arg2;
-- (id)initWithFeatureSet:(id)arg1;
+- (unsigned long long)_maxFeatureCoordinates;
+- (id)initWithFeatureSet:(id)arg1 priorMean:(float)arg2 modelVarianceEpsilon:(float)arg3;
 
 @end
 

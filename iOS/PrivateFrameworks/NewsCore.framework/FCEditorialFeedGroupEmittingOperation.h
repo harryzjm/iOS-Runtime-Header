@@ -9,6 +9,7 @@
 }
 
 - (id)_feedTransformation;
+- (void)_performOperation;
 - (void)performOperation;
 
 @end

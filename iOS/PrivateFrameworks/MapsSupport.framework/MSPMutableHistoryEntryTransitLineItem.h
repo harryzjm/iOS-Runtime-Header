@@ -6,7 +6,7 @@
 
 #import <MapsSupport/MSPHistoryEntryTransitLineItem-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString;
 @protocol GEOTransitLineItem;
 
 @interface MSPMutableHistoryEntryTransitLineItem <MSPHistoryEntryTransitLineItem>
@@ -27,6 +27,8 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) _Bool tracksRAPReportingOnly;
+@property(readonly, copy, nonatomic) NSDate *usageDate;
 
 @end
 

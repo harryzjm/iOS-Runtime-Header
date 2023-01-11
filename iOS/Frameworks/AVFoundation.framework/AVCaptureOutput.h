@@ -16,9 +16,10 @@
 + (long long)dataDroppedReasonFromSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 + (id)availableVideoCodecTypesForSourceDevice:(id)arg1 sourceFormat:(id)arg2 outputDimensions:(CDStruct_79c71658)arg3 fileType:(id)arg4 videoCodecTypesWhiteList:(id)arg5;
 + (void)initialize;
-- (id)recommendedOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 videoCodecType:(id)arg3 fileType:(id)arg4;
+- (_Bool)updateVideoSettingsForConnection:(id)arg1;
+- (id)recommendedOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 videoCodecType:(id)arg3 fileType:(id)arg4 isIris:(_Bool)arg5;
 - (id)_recommendedAudioOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 fileType:(id)arg3;
-- (id)_recommendedVideoOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 videoCodec:(id)arg3;
+- (id)_recommendedVideoOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 videoCodec:(id)arg3 isIris:(_Bool)arg4;
 - (void)bumpChangeSeed;
 - (int)changeSeed;
 - (id)liveConnections;
@@ -28,7 +29,7 @@
 - (_Bool)appliesMirroringWithPhysicalFlipForConnection:(id)arg1;
 - (_Bool)appliesOrientationWithPhysicalRotationForConnection:(id)arg1;
 - (struct CGSize)outputSizeForSourceFormat:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)handleChangedActiveFormat:(id)arg1 forDevice:(id)arg2;
 - (void)updateMetadataTransformForSourceFormat:(id)arg1;
 - (struct CGRect)rectForMetadataOutputRectOfInterest:(struct CGRect)arg1;
 - (struct CGRect)metadataOutputRectOfInterestForRect:(struct CGRect)arg1;
@@ -36,7 +37,7 @@
 - (id)_inputForConnection:(id)arg1;
 - (id)connectionWithMediaType:(id)arg1;
 @property(readonly, nonatomic) NSArray *connections;
-- (_Bool)canAddConnectionForMediaType:(id)arg1;
+- (_Bool)canAddConnection:(id)arg1 failureReason:(id *)arg2;
 - (id)connectionMediaTypes;
 - (unsigned int)requiredOutputFormatForConnection:(id)arg1;
 - (_Bool)hasRequiredOutputFormatForConnection:(id)arg1;

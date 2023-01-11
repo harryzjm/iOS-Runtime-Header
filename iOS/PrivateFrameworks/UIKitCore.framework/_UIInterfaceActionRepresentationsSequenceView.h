@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 @interface _UIInterfaceActionRepresentationsSequenceView
 {
     long long _sizingSeparatedContentSequenceViewToFitDisabledCount;
+    _Bool _visualCornerForcedOverride;
     UIInterfaceActionVisualStyle *_visualStyle;
     NSArray *_arrangedActionRepresentationViews;
     long long _actionLayoutAxis;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 
 @property(readonly, nonatomic) _UIInterfaceActionSeparatableSequenceView *separatedContentSequenceView; // @synthesize separatedContentSequenceView=_separatedContentSequenceView;
 @property(readonly, nonatomic) NSLayoutConstraint *minimumHeightConstraint; // @synthesize minimumHeightConstraint=_minimumHeightConstraint;
+@property(nonatomic) _Bool visualCornerForcedOverride; // @synthesize visualCornerForcedOverride=_visualCornerForcedOverride;
 @property(nonatomic) unsigned long long visualCornerPosition; // @synthesize visualCornerPosition=_visualCornerPosition;
 @property(nonatomic) long long actionLayoutAxis; // @synthesize actionLayoutAxis=_actionLayoutAxis;
 @property(retain, nonatomic) NSArray *arrangedActionRepresentationViews; // @synthesize arrangedActionRepresentationViews=_arrangedActionRepresentationViews;

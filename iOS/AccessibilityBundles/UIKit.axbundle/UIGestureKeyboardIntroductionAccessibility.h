@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)showGestureKeyboardIntroduction;
+- (_Bool)showGestureKeyboardIntroduction;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

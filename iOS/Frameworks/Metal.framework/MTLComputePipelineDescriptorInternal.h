@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
     struct MTLComputePipelineDescriptorPrivate _private;
 }
 
+- (id)newSerializedComputeDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (id)newSerializedComputeData;
 - (void)validateWithDevice:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
@@ -20,6 +21,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)resourceIndex;
 - (void)setForceResourceIndex:(_Bool)arg1;
 - (_Bool)forceResourceIndex;
+- (_Bool)supportIndirectCommandBuffers;
+- (void)setSupportIndirectCommandBuffers:(_Bool)arg1;
 - (unsigned long long)maxTotalThreadsPerThreadgroup;
 - (void)setMaxTotalThreadsPerThreadgroup:(unsigned long long)arg1;
 - (_Bool)threadGroupSizeIsMultipleOfThreadExecutionWidth;

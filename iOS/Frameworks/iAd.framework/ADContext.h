@@ -18,13 +18,13 @@
 
 @property(copy, nonatomic) NSString *requestJSON; // @synthesize requestJSON=_requestJSON;
 @property(retain, nonatomic) NSMutableSet *tags; // @synthesize tags=_tags;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isFeed;
 - (_Bool)_matchesClause:(id)arg1 inContext:(id)arg2;
 - (_Bool)matchesForNewContext:(id)arg1 matchClauses:(id)arg2 excludeTags:(id)arg3;
 - (void)setContextInfoForConfiguration:(id)arg1;
 - (id)fullContext;
-- (void)dealloc;
 - (id)initWithTags:(id)arg1;
 
 @end

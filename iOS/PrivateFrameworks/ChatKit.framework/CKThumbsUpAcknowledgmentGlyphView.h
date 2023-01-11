@@ -6,6 +6,7 @@
 
 @class CALayer;
 
+__attribute__((visibility("hidden")))
 @interface CKThumbsUpAcknowledgmentGlyphView
 {
     CALayer *_animationLayer;

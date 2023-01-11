@@ -16,6 +16,7 @@
     AVPlayerInternal *_player;
 }
 
++ (_Bool)eligibleForHDRPlayback;
 + (long long)availableHDRModes;
 + (void)registerForScreenConnectionChanges;
 + (void)fireAvailableHDRModesDidChangeNotification;
@@ -32,19 +33,18 @@
 + (_Bool)automaticallyNotifiesObserversOfUserVolume;
 + (_Bool)automaticallyNotifiesObserversOfUsesLegacyAutomaticWaitingBehavior;
 + (_Bool)automaticallyNotifiesObserversOfRate;
-+ (int)_createFigPlayerWithType:(long long)arg1 player:(struct OpaqueFigPlayer **)arg2;
++ (int)_createFigPlayerWithType:(long long)arg1 options:(const struct __CFDictionary *)arg2 player:(struct OpaqueFigPlayer **)arg3;
 + (_Bool)automaticallyNotifiesObserversOfCurrentItem;
 + (id)playerWithFigPlayer:(struct OpaqueFigPlayer *)arg1;
 + (id)playerWithPlayerItem:(id)arg1;
 + (id)playerWithURL:(id)arg1;
-+ (long long)propertyStorageCachePolicy;
 + (void)initialize;
 + (_Bool)isIAPDExtendedModeActive;
 + (_Bool)automaticallyNotifiesObserversOfAutoSwitchStreamVariants;
 + (id)makePlayerLoggingIdentifier;
-- (_Bool)_allowsVideoPlaybackWhileInBackground;
+- (_Bool)_pausesAudioVisualPlaybackInBackground;
+- (void)_setPausesAudioVisualPlaybackInBackground:(_Bool)arg1;
 - (_Bool)_isVideoPlaybackAllowedWhileInBackground;
-- (void)_setAllowsVideoPlaybackWhileInBackground:(_Bool)arg1;
 - (_Bool)_limitsBandwidthForCellularAccess;
 - (void)_setLimitsBandwidthForCellularAccess:(_Bool)arg1;
 - (_Bool)_dynamicallyChoosesInitialVariant;
@@ -62,8 +62,12 @@
 - (id)externalPlaybackVideoGravity;
 - (id)_externalPlaybackVideoGravity;
 - (void)_playerLayer:(id)arg1 replaceVideoLayer:(id)arg2 with:(id)arg3;
+- (id)_performanceDictionary;
+- (void)_updatePixelBufferAttributesForLayer:(id)arg1;
 - (void)_pixelBufferAttributesDidChangeForLayer:(id)arg1;
+- (_Bool)_hasForegroundLayers;
 - (void)_addLayer:(id)arg1;
+- (void)_removeLayer:(id)arg1 videoLayer:(id)arg2 closedCaptionLayer:(id)arg3 subtitleLayer:(id)arg4;
 - (void)_removeLayer:(id)arg1;
 - (void)_detachClosedCaptionLayersFromFigPlayer:(struct OpaqueFigPlayer *)arg1;
 - (void)_attachClosedCaptionLayersToFigPlayer;
@@ -105,6 +109,8 @@
 - (_Bool)allowsExternalPlayback;
 - (void)setPlayerRole:(id)arg1;
 - (id)playerRole;
+- (void)setResourceConservationLevelWhilePaused:(long long)arg1;
+- (long long)resourceConservationLevelWhilePaused;
 - (void)setShouldReduceResourceUsage:(_Bool)arg1;
 - (_Bool)shouldReduceResourceUsage;
 - (_Bool)isDisplayingClosedCaptions;
@@ -140,6 +146,7 @@
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1;
 - (void)seekToDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)seekToDate:(id)arg1;
+- (CDStruct_1b6d18a9)currentUnfoldedTime;
 - (CDStruct_1b6d18a9)currentTime;
 - (_Bool)_usesLegacyAutomaticWaitingBehavior;
 - (void)_setUsesLegacyAutomaticWaitingBehavior:(_Bool)arg1;
@@ -203,13 +210,11 @@
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (id)valueForUndefinedKey:(id)arg1;
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
-- (id)_propertyStorage;
 - (struct OpaqueFigPlayer *)_copyFigPlayer;
 - (id)_stateDispatchQueue;
 - (id)dispatchQueue;
 - (id)_weakReference;
 - (id)_nameForLogging;
-- (void)finalize;
 - (void)dealloc;
 - (id)initWithFigPlayer:(struct OpaqueFigPlayer *)arg1;
 - (id)initWithDispatchQueue:(id)arg1;
@@ -218,20 +223,26 @@
 - (id)initWithPlayerItem:(id)arg1;
 @property(nonatomic) _Bool preventsDisplaySleepDuringVideoPlayback;
 - (_Bool)outputObscuredDueToInsufficientExternalProtection;
-- (_Bool)_outputObscuredDueToInsufficientExternalProtection;
 - (long long)_extractFPExternalProtectionStatus:(id)arg1;
 @property(readonly, nonatomic) long long _externalProtectionStatus;
+- (long long)_externalProtectionStatusCopiedFromFig;
 @property(copy, nonatomic, setter=_setDisplaysUsedForPlayback:) NSArray *_displaysUsedForPlayback;
 - (id)_playbackDisplaysForFigPlayer;
 @property(readonly, nonatomic, getter=_isPIPModePossible) _Bool PIPModePossible;
-@property(nonatomic) float maxRateForAudioPlayback;
-@property(nonatomic) float minRateForAudioPlayback;
+@property float maxRateForAudioPlayback;
+@property float minRateForAudioPlayback;
 @property(readonly, nonatomic, getter=isAudioPlaybackEnabledAtAllRates) _Bool audioPlaybackEnabledAtAllRates;
 - (void)removeAudioPlaybackRateLimits;
+- (void)_restoreVideoLayersForForeground;
 - (void)_willEnterForeground:(id)arg1;
+- (void)_detachVideoLayersForSuspension;
 - (void)_didFinishSuspension:(id)arg1;
+- (void)_didEnterBackground:(id)arg1;
+- (void)_layerVisibilityChanged:(id)arg1;
 - (_Bool)_shouldDetachVideoLayersFromFigPlayer;
 - (long long)_itemOkayToPlayWhileTransitioningToBackground:(id)arg1;
+- (void)_setHostApplicationInForeground:(_Bool)arg1;
+- (_Bool)_hostApplicationInForeground;
 - (_Bool)_carplayIsActive;
 - (_Bool)_isIAPDExtendedModeActive;
 - (_Bool)_hasAssociatedOnscreenAVPlayerLayer;
@@ -242,6 +253,8 @@
 - (_Bool)_preventsSleepDuringVideoPlayback;
 - (void)_setPreventsSleepDuringVideoPlayback:(_Bool)arg1;
 - (_Bool)_CALayerDestinationIsTVOut;
+- (_Bool)_isConnectedToPhysicalSecondScreen;
+- (void)_updateConnectionToSecondScreen;
 - (void)_setCALayerDestinationIsTVOut:(_Bool)arg1;
 - (void)_setClientPriority:(long long)arg1;
 - (long long)_clientPriority;
@@ -251,26 +264,27 @@
 - (void)_setEQPreset:(int)arg1;
 - (void)_setWantsVolumeChangesWhenPausedOrInactive:(_Bool)arg1;
 - (id)playerAVAudioSession;
-@property(nonatomic) _Bool allowsPixelBufferPoolSharing;
+@property _Bool allowsPixelBufferPoolSharing;
 - (void)setDisallowsHardwareAcceleratedVideoDecoder:(_Bool)arg1;
 - (_Bool)disallowsHardwareAcceleratedVideoDecoder;
-@property(nonatomic) _Bool disallowsAMRAudio;
+@property _Bool disallowsAMRAudio;
 - (id)mediaSelectionCriteriaForMediaCharacteristic:(id)arg1;
 - (void)setMediaSelectionCriteria:(id)arg1 forMediaCharacteristic:(id)arg2;
-@property(nonatomic) _Bool appliesMediaSelectionCriteriaAutomatically;
+@property _Bool appliesMediaSelectionCriteriaAutomatically;
 - (id)defaultMediaSelectionCriteriaForMediaCharacteristic:(id)arg1;
 - (void)setPreparesItemsForPlaybackAsynchronously:(_Bool)arg1;
 - (_Bool)preparesItemsForPlaybackAsynchronously;
 - (void)setAutoSwitchStreamVariants:(_Bool)arg1;
 - (_Bool)autoSwitchStreamVariants;
-@property(copy, nonatomic) NSString *audioOutputDeviceUniqueID;
-@property(nonatomic) _Bool allowsOutOfBandTextTrackRendering;
-@property(copy, nonatomic) NSString *multichannelAudioStrategy;
+@property(copy) NSString *audioOutputDeviceUniqueID;
+@property _Bool allowsOutOfBandTextTrackRendering;
+@property(copy) NSString *multichannelAudioStrategy;
 @property(copy, nonatomic) NSString *captionRenderingStrategy;
 @property(copy, nonatomic) NSString *captionPipelineStrategy;
 @property(retain) AVAudioSession *audioSession;
 @property(nonatomic) unsigned long long preferredVideoDecoderGPURegistryID;
 @property(retain, nonatomic) id <AVLoggingIdentifier> loggingIdentifier;
+@property(nonatomic, getter=_disallowsAutoPauseOnRouteRemovalIfNoAudio, setter=_setDisallowsAutoPauseOnRouteRemovalIfNoAudio:) _Bool disallowsAutoPauseOnRouteRemovalIfNoAudio;
 
 @end
 

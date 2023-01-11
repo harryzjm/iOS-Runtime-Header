@@ -8,6 +8,7 @@
 
 @class NSString, SKUIDonationResultView, SKUIGiftAmount;
 
+__attribute__((visibility("hidden")))
 @interface SKUIDonationResultViewController <SKUIDonationConfigurationObserver>
 {
     SKUIGiftAmount *_donationAmount;

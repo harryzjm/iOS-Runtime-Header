@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TSPObject;
+@class NSDate, TSPObject;
 @protocol TSKPencilAnnotation;
 
 __attribute__((visibility("hidden")))
 @interface TSDPencilAnnotationSelection
 {
     TSPObject<TSKPencilAnnotation> *_pencilAnnotation;
+    NSDate *_pencilAnnotationAnchorStartDate;
 }
 
 + (Class)archivedSelectionClass;
+@property(retain, nonatomic) NSDate *pencilAnnotationAnchorStartDate; // @synthesize pencilAnnotationAnchorStartDate=_pencilAnnotationAnchorStartDate;
 @property(readonly, nonatomic) TSPObject<TSKPencilAnnotation> *pencilAnnotation; // @synthesize pencilAnnotation=_pencilAnnotation;
 - (void).cxx_destruct;
 - (_Bool)canSaveSelectionToArchivedViewState;

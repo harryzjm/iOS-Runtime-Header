@@ -6,6 +6,7 @@
 
 @class WDTable, WMBordersProperty, WMTableColumnInfo, WMTableStyle;
 
+__attribute__((visibility("hidden")))
 @interface WMTableMapper
 {
     WDTable *mWdTable;

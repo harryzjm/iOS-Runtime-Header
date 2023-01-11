@@ -12,9 +12,11 @@
 
 + (id)inferredRepIdentifiersGroupedByItemNameForPaths:(id)arg1;
 + (Class)slotClass;
-- (id)slot;
++ (id)identifierWithSlot:(id)arg1 fileName:(id)arg2 explicitlyUnassigned:(_Bool)arg3;
 @property(readonly) IBICColorSpace *colorSpace;
 @property(readonly) IBICIdiom *idiom;
+- (id)slot;
+- (id)initWithSlot:(id)arg1 fileName:(id)arg2 conflictState:(unsigned long long)arg3;
 
 @end
 

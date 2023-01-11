@@ -6,43 +6,51 @@
 
 #import <objc/NSObject.h>
 
-@class NSBundle, NSError, SFDeviceAssetQuery;
+@class NSBundle, NSError, NSMutableArray, SFDeviceAssetQuery, SFDeviceAssetRequestConfiguration;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface SFDeviceAssetTask : NSObject
 {
     _Bool _useProcessLocalCache;
+    _Bool _queryResultCalled;
+    _Bool _downloadCompletionCalled;
     SFDeviceAssetQuery *_deviceAssetQuery;
+    SFDeviceAssetRequestConfiguration *_configuration;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
+    NSMutableArray *_deviceQueryParameters;
     NSObject<OS_dispatch_source> *_timer;
-    CDUnknownBlockType _completionHandler;
-    NSBundle *_assetBundle;
-    NSBundle *_fallbackAssetBundle;
-    NSBundle *_cachedAssetBundle;
+    NSBundle *_matchBundle;
+    NSBundle *_imperfectMatchBundle;
+    NSBundle *_fallbackBundle;
+    NSBundle *_cachedBundle;
     NSError *_error;
 }
 
+@property(nonatomic) _Bool downloadCompletionCalled; // @synthesize downloadCompletionCalled=_downloadCompletionCalled;
+@property(nonatomic) _Bool queryResultCalled; // @synthesize queryResultCalled=_queryResultCalled;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
-@property(readonly, nonatomic) NSBundle *cachedAssetBundle; // @synthesize cachedAssetBundle=_cachedAssetBundle;
-@property(readonly, nonatomic) NSBundle *fallbackAssetBundle; // @synthesize fallbackAssetBundle=_fallbackAssetBundle;
-@property(readonly, nonatomic) NSBundle *assetBundle; // @synthesize assetBundle=_assetBundle;
-@property(readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property(readonly, nonatomic) NSBundle *cachedBundle; // @synthesize cachedBundle=_cachedBundle;
+@property(readonly, nonatomic) NSBundle *fallbackBundle; // @synthesize fallbackBundle=_fallbackBundle;
+@property(readonly, nonatomic) NSBundle *imperfectMatchBundle; // @synthesize imperfectMatchBundle=_imperfectMatchBundle;
+@property(readonly, nonatomic) NSBundle *matchBundle; // @synthesize matchBundle=_matchBundle;
 @property(readonly, nonatomic) NSObject<OS_dispatch_source> *timer; // @synthesize timer=_timer;
+@property(readonly, nonatomic) NSMutableArray *deviceQueryParameters; // @synthesize deviceQueryParameters=_deviceQueryParameters;
 @property(readonly, nonatomic) _Bool useProcessLocalCache; // @synthesize useProcessLocalCache=_useProcessLocalCache;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property(readonly, nonatomic) SFDeviceAssetRequestConfiguration *configuration; // @synthesize configuration=_configuration;
 @property(readonly, nonatomic) SFDeviceAssetQuery *deviceAssetQuery; // @synthesize deviceAssetQuery=_deviceAssetQuery;
 - (void).cxx_destruct;
-- (_Bool)processCanAccessURL:(id)arg1 error:(id *)arg2;
 - (id)bundleAtURL:(id)arg1 error:(id *)arg2;
 - (id)bundleURLFromAssetURL:(id)arg1;
 - (void)completeWithBundle:(id)arg1 isFallback:(_Bool)arg2 isCached:(_Bool)arg3;
 - (_Bool)completeIfPossible;
 - (void)cancelTimeout;
-- (_Bool)updateTaskWithBundle:(id)arg1 error:(id)arg2 isFallback:(_Bool)arg3 isCached:(_Bool)arg4;
-- (_Bool)updateTaskWithAssetBundleURL:(id)arg1 error:(id)arg2 isFallback:(_Bool)arg3 isCached:(_Bool)arg4;
-- (_Bool)updateTaskWithAssetURL:(id)arg1 error:(id)arg2 isFallback:(_Bool)arg3 isCached:(_Bool)arg4;
-- (id)initWithDeviceQuery:(id)arg1 dispatchQueue:(id)arg2 useProcessLocalCache:(_Bool)arg3 timeout:(double)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
+- (_Bool)updateTaskWithBundle:(id)arg1 error:(id)arg2 isFallback:(_Bool)arg3 isImperfectMatch:(_Bool)arg4 isCached:(_Bool)arg5;
+- (_Bool)updateTaskWithAssetBundleURL:(id)arg1 error:(id)arg2 isFallback:(_Bool)arg3 isImperfectMatch:(_Bool)arg4 isCached:(_Bool)arg5;
+- (_Bool)updateTaskWithAssetURL:(id)arg1 error:(id)arg2 isFallback:(_Bool)arg3 isImperfectMatch:(_Bool)arg4 isCached:(_Bool)arg5;
+- (void)createQueryParameters;
+- (id)initWithDeviceQuery:(id)arg1 requestConfiguration:(id)arg2 dispatchQueue:(id)arg3 useProcessLocalCache:(_Bool)arg4;
 
 @end
 

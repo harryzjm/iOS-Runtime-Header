@@ -5,13 +5,13 @@
 //
 
 @class FCFetchOperationResult, NSObject;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore;
+@protocol OS_dispatch_queue;
 
 @interface FCFetchOperation
 {
     FCFetchOperationResult *_result;
-    NSObject<OS_dispatch_semaphore> *_finishedSemaphore;
     _Bool _wifiOnly;
+    _Bool _shouldFailOnMissingObjects;
     _Bool _canSendFetchCompletionSynchronously;
     unsigned long long _cachePolicy;
     double _maximumCachedAge;
@@ -23,6 +23,7 @@
 @property _Bool canSendFetchCompletionSynchronously; // @synthesize canSendFetchCompletionSynchronously=_canSendFetchCompletionSynchronously;
 @property(retain) NSObject<OS_dispatch_queue> *fetchCompletionQueue; // @synthesize fetchCompletionQueue=_fetchCompletionQueue;
 @property(copy) CDUnknownBlockType fetchCompletionBlock; // @synthesize fetchCompletionBlock=_fetchCompletionBlock;
+@property _Bool shouldFailOnMissingObjects; // @synthesize shouldFailOnMissingObjects=_shouldFailOnMissingObjects;
 @property double maximumCachedAge; // @synthesize maximumCachedAge=_maximumCachedAge;
 @property unsigned long long cachePolicy; // @synthesize cachePolicy=_cachePolicy;
 @property _Bool wifiOnly; // @synthesize wifiOnly=_wifiOnly;
@@ -34,7 +35,6 @@
 - (void)finishExecutingWithStatus:(unsigned long long)arg1;
 - (void)finishExecutingWithFetchedObject:(id)arg1;
 - (void)finishExecutingWithResult:(id)arg1;
-- (_Bool)waitUntilFinishedWithTimeout:(double)arg1;
 - (void)cancel;
 - (id)init;
 

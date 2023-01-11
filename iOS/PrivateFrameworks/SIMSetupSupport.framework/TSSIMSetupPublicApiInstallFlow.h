@@ -7,34 +7,37 @@
 #import <SIMSetupSupport/TSCellularPlanManagerCacheDelegate-Protocol.h>
 #import <SIMSetupSupport/TSSIMSetupFlowDelegate-Protocol.h>
 
-@class NSError, NSString, TSCellularPlanAddingViewController;
+@class NSError, NSMutableArray, NSString, UIBarButtonItem, UIViewController;
+@protocol TSSetupFlowItem;
 
 @interface TSSIMSetupPublicApiInstallFlow <TSSIMSetupFlowDelegate, TSCellularPlanManagerCacheDelegate>
 {
-    _Bool _planInstalled;
     _Bool _requireSetup;
-    NSString *_planInstallingUuid;
+    _Bool _skipGeneralInstallConsent;
     NSError *_planInstallError;
-    TSCellularPlanAddingViewController *_spinnerViewController;
+    NSMutableArray *_danglingPlanItems;
+    NSString *_carrierName;
     NSString *_installName;
+    UIViewController<TSSetupFlowItem> *_currentViewController;
     unsigned long long _userConsentType;
+    UIBarButtonItem *_cancelButton;
+    _Bool _confirmationCodeRequired;
+    long long _signupConsentResponse;
+    _Bool _isPreinstallingViewControllerActive;
 }
 
-@property unsigned long long userConsentType; // @synthesize userConsentType=_userConsentType;
-@property(retain) NSString *installName; // @synthesize installName=_installName;
-@property(nonatomic) _Bool requireSetup; // @synthesize requireSetup=_requireSetup;
-@property __weak TSCellularPlanAddingViewController *spinnerViewController; // @synthesize spinnerViewController=_spinnerViewController;
-@property NSError *planInstallError; // @synthesize planInstallError=_planInstallError;
-@property _Bool planInstalled; // @synthesize planInstalled=_planInstalled;
-@property(retain) NSString *planInstallingUuid; // @synthesize planInstallingUuid=_planInstallingUuid;
+@property _Bool isPreinstallingViewControllerActive; // @synthesize isPreinstallingViewControllerActive=_isPreinstallingViewControllerActive;
 - (void).cxx_destruct;
+- (void)_maybeShowPreinstallConsentOnViewController:(id)arg1;
 - (void)planItemsUpdated:(id)arg1 planListError:(id)arg2;
+- (void)setDefaultNavigationItems:(id)arg1;
 - (void)viewControllerDidComplete:(id)arg1;
+- (long long)signupUserConsentResponse;
 - (id)nextViewControllerFrom:(id)arg1;
 - (void)firstViewController:(CDUnknownBlockType)arg1;
 - (id)firstViewController;
 - (void)dealloc;
-- (id)initWithAppName:(id)arg1 requireSetup:(_Bool)arg2;
+- (id)initWithAppName:(id)arg1 requireSetup:(_Bool)arg2 skipGeneralInstallConsent:(_Bool)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

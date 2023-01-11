@@ -16,6 +16,7 @@
 - (IBMarshallingResult *)computeAutolayoutStatusForRequest:(IBAutolayoutStatusMarshallingRequest *)arg1;
 - (IBMarshallingResult *)runFrameDecisionForRequest:(IBAutolayoutFrameDecisionMarshallingRequest *)arg1;
 - (IBMarshallingResult *)constraintsToAddAndRemoveForArbitratingRequest:(IBAutolayoutArbitrationMarshallingRequest *)arg1;
+- (IBMarshallingResult *)resourcesForRequests:(NSArray *)arg1;
 - (NSDictionary *)unregisterFontsAtURLs:(NSArray *)arg1;
 - (NSDictionary *)registerFontsAtURLs:(NSArray *)arg1;
 - (NSString *)fontNameForFamily:(NSString *)arg1 withSymbolicTraits:(NSNumber *)arg2;

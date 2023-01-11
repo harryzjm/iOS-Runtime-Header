@@ -4,20 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class VNSceneClassificationRequest;
+
 @interface AXMSceneDetectorNode
 {
+    unsigned int _taxonomyOptions;
+    VNSceneClassificationRequest *__sceneClassificationRequest;
 }
 
 + (id)possibleSceneClassifications;
 + (id)title;
 + (_Bool)isSupported;
 + (_Bool)supportsSecureCoding;
+@property(retain, nonatomic, setter=_setSceneClassificationRequest:) VNSceneClassificationRequest *_sceneClassificationRequest; // @synthesize _sceneClassificationRequest=__sceneClassificationRequest;
+@property(nonatomic) unsigned int taxonomyOptions; // @synthesize taxonomyOptions=_taxonomyOptions;
+- (void).cxx_destruct;
 - (void)evaluate:(id)arg1;
 - (_Bool)validateVisionKitSoftLinkSymbols;
-- (_Bool)requiresVisionFramework;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)nodeInitialize;
 
 @end
 

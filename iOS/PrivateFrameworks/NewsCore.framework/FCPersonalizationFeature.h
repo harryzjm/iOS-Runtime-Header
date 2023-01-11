@@ -12,6 +12,7 @@
 
 @interface FCPersonalizationFeature : NSObject <NSCopying>
 {
+    _Bool _shouldBeBoosted;
     NSString *_personalizationIdentifier;
     NSString *_fc_description;
     NSString *_tagID;
@@ -24,13 +25,16 @@
 + (id)featureFromTagID:(id)arg1;
 + (id)featuresFromTagIDs:(id)arg1;
 + (id)featuresFromTag:(id)arg1;
-+ (id)featuresFromPersonalizingArticle:(id)arg1;
++ (id)featuresFromPersonalizingItem:(id)arg1 personalizationTreatment:(id)arg2;
 + (id)featuresFromTodayPersonalizationEvent:(id)arg1;
-+ (id)featuresFromHeadline:(id)arg1;
++ (id)featuresFromHeadline:(id)arg1 personalizationTreatment:(id)arg2;
++ (id)featuresFromIssue:(id)arg1;
 @property(retain, nonatomic) NSString *tagID; // @synthesize tagID=_tagID;
 @property(readonly, nonatomic) NSString *fc_description; // @synthesize fc_description=_fc_description;
 @property(retain, nonatomic) NSString *personalizationIdentifier; // @synthesize personalizationIdentifier=_personalizationIdentifier;
+@property(nonatomic) _Bool shouldBeBoosted; // @synthesize shouldBeBoosted=_shouldBeBoosted;
 - (void).cxx_destruct;
+- (double)featureWeightWithConfigurableValues:(id)arg1 publisherID:(id)arg2;
 - (id)fr_description;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;

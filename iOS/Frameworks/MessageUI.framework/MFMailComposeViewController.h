@@ -6,9 +6,12 @@
 
 #import <UIKit/UINavigationController.h>
 
+#import <MessageUI/_UIRemoteViewControllerContaining-Protocol.h>
+
+@class NSString, _UIRemoteViewController;
 @protocol MFMailComposeViewControllerDelegate;
 
-@interface MFMailComposeViewController : UINavigationController
+@interface MFMailComposeViewController : UINavigationController <_UIRemoteViewControllerContaining>
 {
     id _internal;
     CDUnknownBlockType _setupAnimationBlock;
@@ -22,6 +25,9 @@
 + (unsigned long long)maximumAttachmentSize;
 + (_Bool)canSendMailSourceAccountManagement:(int)arg1;
 + (_Bool)canSendMail;
++ (id)log;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (void)setAutorotationDelegate:(id)arg1;
 - (void)autosaveWithHandler:(CDUnknownBlockType)arg1;
@@ -29,6 +35,10 @@
 - (void)setCaretPosition:(unsigned long long)arg1;
 - (void)addSetupAnimationBlock:(CDUnknownBlockType)arg1;
 - (void)finalizeCompositionValues;
+- (void)_addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3 forContentVariation:(id)arg4;
+- (void)_setMessageBody:(id)arg1 isHTML:(_Bool)arg2 forContentVariation:(id)arg3;
+- (void)_setDefaultContentVariation:(id)arg1;
+- (id)_addContentVariationWithName:(id)arg1;
 - (void)setSourceAccountManagement:(int)arg1;
 - (void)setContentVisible:(_Bool)arg1;
 - (void)setKeyboardVisible:(_Bool)arg1;
@@ -36,6 +46,16 @@
 - (void)currentAttachmentLimitWithHandler:(CDUnknownBlockType)arg1;
 - (id)_addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 - (id)_addAttachmentWithFileURL:(id)arg1 mimeType:(id)arg2;
+- (id)shareSheetSessionID;
+- (void)setShareSheetSessionID:(id)arg1;
+- (id)contentURLs;
+- (void)setContentURLs:(id)arg1;
+- (id)contentText;
+- (void)setContentText:(id)arg1;
+- (id)cloudPhotoIDs;
+- (void)setCloudPhotoIDs:(id)arg1;
+- (id)photoIDs;
+- (void)setPhotoIDs:(id)arg1;
 - (id)UTITypes;
 - (void)setUTITypes:(id)arg1;
 - (void)setPreferredSendingEmailAddress:(id)arg1;
@@ -46,17 +66,23 @@
 - (void)setToRecipients:(id)arg1;
 - (id)_validEmailAddressesFromArray:(id)arg1;
 - (void)setSubject:(id)arg1;
-@property(nonatomic) id <MFMailComposeViewControllerDelegate> mailComposeDelegate;
+@property(nonatomic) __weak id <MFMailComposeViewControllerDelegate> mailComposeDelegate;
+- (long long)preferredStatusBarStyle;
 - (void)viewWillDisappear:(_Bool)arg1;
-- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)__viewControllerWillBePresented:(_Bool)arg1;
 - (_Bool)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers;
+- (id)_impl;
 - (id)_internalViewController;
-- (void)dealloc;
 - (id)initWithURL:(id)arg1 sourceAccountManagement:(int)arg2;
 - (id)initWithURL:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

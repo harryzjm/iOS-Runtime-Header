@@ -4,16 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
 #import <WebKit/ASVThumbnailViewDelegate-Protocol.h>
 #import <WebKit/QLPreviewItemDataProvider-Protocol.h>
 #import <WebKit/WKWebViewContentProvider-Protocol.h>
 
-@class NSData, NSString, WKWebView;
+@class NSData, NSString, UIView, WKWebView;
 
 __attribute__((visibility("hidden")))
-@interface WKSystemPreviewView : UIView <ASVThumbnailViewDelegate, WKWebViewContentProvider, QLPreviewItemDataProvider>
+@interface WKSystemPreviewView <ASVThumbnailViewDelegate, WKWebViewContentProvider, QLPreviewItemDataProvider>
 {
     struct RetainPtr<NSItemProvider> _itemProvider;
     struct RetainPtr<NSData> _data;
@@ -24,12 +22,14 @@ __attribute__((visibility("hidden")))
     WKWebView *_webView;
 }
 
++ (_Bool)web_requiresCustomSnapshotting;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)provideDataForItem:(id)arg1;
 - (void)web_hideFindUI;
 - (void)web_findString:(id)arg1 options:(unsigned long long)arg2 maxCount:(unsigned long long)arg3;
 - (void)web_countStringMatches:(id)arg1 options:(unsigned long long)arg2 maxCount:(unsigned long long)arg3;
+@property(readonly, nonatomic) _Bool web_isBackground;
 - (void)web_didSameDocumentNavigation:(unsigned int)arg1;
 - (void)web_setFixedOverlayView:(id)arg1;
 - (void)web_computedContentInsetDidChange;
@@ -47,7 +47,6 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) NSData *web_dataRepresentation;
-@property(readonly, nonatomic) _Bool web_isBackground;
 @property(readonly, nonatomic) NSString *web_suggestedFilename;
 
 @end

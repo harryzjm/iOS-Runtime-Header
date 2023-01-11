@@ -15,8 +15,7 @@
 - (void).cxx_destruct;
 - (void)performActivity;
 - (_Bool)canPerformWithActivityItems:(id)arg1;
-- (id)_beforeActivity;
-- (id)activityImage;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 

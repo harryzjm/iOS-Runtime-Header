@@ -4,17 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UISettings.h>
+#import <PrototypeTools/PTSettings.h>
 
-@interface SBFWallpaperSettings : _UISettings
+@class PTOutlet, SBFWallpaperParallaxSettings;
+
+@interface SBFWallpaperSettings : PTSettings
 {
-    _Bool _replaceBlurs;
-    long long _blurReplacementMode;
+    PTOutlet *_resetWallpaperOutlet;
+    SBFWallpaperParallaxSettings *_homeScreenParallaxSettings;
+    SBFWallpaperParallaxSettings *_lockScreenParallaxSettings;
 }
 
 + (id)settingsControllerModule;
-@property(nonatomic) long long blurReplacementMode; // @synthesize blurReplacementMode=_blurReplacementMode;
-@property(nonatomic) _Bool replaceBlurs; // @synthesize replaceBlurs=_replaceBlurs;
+@property(retain, nonatomic) SBFWallpaperParallaxSettings *lockScreenParallaxSettings; // @synthesize lockScreenParallaxSettings=_lockScreenParallaxSettings;
+@property(retain, nonatomic) SBFWallpaperParallaxSettings *homeScreenParallaxSettings; // @synthesize homeScreenParallaxSettings=_homeScreenParallaxSettings;
+@property(retain, nonatomic) PTOutlet *resetWallpaperOutlet; // @synthesize resetWallpaperOutlet=_resetWallpaperOutlet;
+- (void).cxx_destruct;
+- (id)parallaxSettingsForVariant:(long long)arg1;
 - (void)setDefaultValues;
 
 @end

@@ -22,6 +22,7 @@
     UIImage *_fullsizeAppIcon;
     NSString *_title;
     NSString *_subtitle;
+    UIImage *_monochromeBodyImage;
     NSUserActivity *_userActivity;
     INIntent *_intent;
     INRelevantShortcut *_relevantShortcut;
@@ -32,6 +33,7 @@
 @property(readonly, nonatomic) INRelevantShortcut *relevantShortcut; // @synthesize relevantShortcut=_relevantShortcut;
 @property(readonly, nonatomic) INIntent *intent; // @synthesize intent=_intent;
 @property(readonly, nonatomic) NSUserActivity *userActivity; // @synthesize userActivity=_userActivity;
+@property(readonly, nonatomic) UIImage *monochromeBodyImage; // @synthesize monochromeBodyImage=_monochromeBodyImage;
 @property(readonly, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(readonly, nonatomic) NSString *title; // @synthesize title=_title;
 @property(readonly, nonatomic) _Bool displayAppName; // @synthesize displayAppName=_displayAppName;
@@ -41,7 +43,7 @@
 @property(readonly, nonatomic) REDonatedAction *action; // @synthesize action=_action;
 - (void).cxx_destruct;
 - (void)_loadAppContentPropertiesWithCompletion:(CDUnknownBlockType)arg1;
-- (id)scaleImageForDisplay:(id)arg1;
+- (id)_scaleImageForDisplay:(id)arg1;
 - (void)_loadContentForRelevantShortcut:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_loadContentForUserActivityOnShortcut:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_loadContentForUserActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -53,13 +55,15 @@
 @property(readonly, nonatomic) UIImage *bodyImage;
 @property(readonly, nonatomic, getter=isLocalDonation) _Bool localDonation;
 - (id)_placeholderImageNameForBundleID:(id)arg1;
+@property(readonly, nonatomic) _Bool supportsBackgroundExecution;
+- (_Bool)_hasLocalExtensionForIntentExecution;
 @property(readonly, nonatomic) _Bool supportsLocalIntentExecution;
 @property(readonly, nonatomic) _Bool requiresRemoteExecution;
-@property(readonly, nonatomic) _Bool wantsThreeLineLayout;
 - (_Bool)_isPodcastsDonation;
 - (_Bool)_isMusicDonation;
 @property(readonly, nonatomic) _Bool isEndWorkoutDonation;
 @property(readonly, nonatomic) _Bool isBeginWorkoutDonation;
+@property(readonly, nonatomic) _Bool isWorkoutDonation;
 @property(readonly, nonatomic) _Bool isMediaDonation;
 @property(readonly, nonatomic) unsigned long long donationType;
 - (void)loadWithCompletion:(CDUnknownBlockType)arg1;

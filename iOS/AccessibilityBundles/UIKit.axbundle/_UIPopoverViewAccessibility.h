@@ -10,8 +10,9 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 - (_Bool)shouldGroupAccessibilityChildren;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

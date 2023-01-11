@@ -8,11 +8,12 @@
 #import <HomeUI/HUQuickControlContentCharacteristicWriting-Protocol.h>
 #import <HomeUI/HUQuickControlInteractiveContentContaining-Protocol.h>
 #import <HomeUI/HUQuickControlItemUpdating-Protocol.h>
+#import <HomeUI/HUQuickControlTouchContinuing-Protocol.h>
 
-@class HULayoutContainerView, HUQuickControlCollectionItemManager, HUQuickControlCollectionViewControllerLayoutOptions, HUQuickControlCollectionViewLayout, HUQuickControlContentCharacteristicWritingUpdateAdapter, NSArray, NSMapTable, NSSet, NSString;
+@class HUQuickControlCollectionItemManager, HUQuickControlCollectionViewControllerLayoutOptions, HUQuickControlCollectionViewLayout, HUQuickControlContentCharacteristicWritingUpdateAdapter, NSMapTable, NSSet, NSString;
 @protocol HULayoutAnchorProviding, HUQuickControlContentCharacteristicWritingDelegate, HUQuickControlContentHosting;
 
-@interface HUQuickControlCollectionViewController <HUQuickControlCollectionViewDelegateLayout, HUQuickControlItemUpdating, HUQuickControlInteractiveContentContaining, HUQuickControlContentCharacteristicWriting>
+@interface HUQuickControlCollectionViewController <HUQuickControlCollectionViewDelegateLayout, HUQuickControlItemUpdating, HUQuickControlInteractiveContentContaining, HUQuickControlContentCharacteristicWriting, HUQuickControlTouchContinuing>
 {
     _Bool _userInteractionEnabled;
     _Bool _disableItemUpdatesForOverrideCharacteristicValueChanges;
@@ -22,16 +23,13 @@
     HUQuickControlCollectionViewControllerLayoutOptions *_layoutOptions;
     NSMapTable *_viewControllersKeyedByItem;
     HUQuickControlContentCharacteristicWritingUpdateAdapter *_characteristicWritingAdapter;
-    HULayoutContainerView *_preferredFrameLayoutObservingView;
-    NSArray *_preferredFrameConstraints;
 }
 
-@property(copy, nonatomic) NSArray *preferredFrameConstraints; // @synthesize preferredFrameConstraints=_preferredFrameConstraints;
-@property(retain, nonatomic) HULayoutContainerView *preferredFrameLayoutObservingView; // @synthesize preferredFrameLayoutObservingView=_preferredFrameLayoutObservingView;
 @property(readonly, nonatomic) HUQuickControlContentCharacteristicWritingUpdateAdapter *characteristicWritingAdapter; // @synthesize characteristicWritingAdapter=_characteristicWritingAdapter;
 @property(readonly, nonatomic) NSMapTable *viewControllersKeyedByItem; // @synthesize viewControllersKeyedByItem=_viewControllersKeyedByItem;
 @property(nonatomic) _Bool disableItemUpdatesForOverrideCharacteristicValueChanges; // @synthesize disableItemUpdatesForOverrideCharacteristicValueChanges=_disableItemUpdatesForOverrideCharacteristicValueChanges;
 @property(retain, nonatomic) HUQuickControlCollectionViewControllerLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
+@property(retain, nonatomic) id <HULayoutAnchorProviding> preferredFrameLayoutGuide; // @synthesize preferredFrameLayoutGuide=_preferredFrameLayoutGuide;
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
 @property(nonatomic) __weak id <HUQuickControlContentHosting> quickControlHost; // @synthesize quickControlHost=_quickControlHost;
 @property(nonatomic) __weak id <HUQuickControlContentCharacteristicWritingDelegate> characteristicWritingDelegate; // @synthesize characteristicWritingDelegate=_characteristicWritingDelegate;
@@ -40,23 +38,22 @@
 @property(readonly, copy, nonatomic) NSSet *affectedCharacteristics;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
 - (void)quickControlItemHost:(id)arg1 didUpdateVisibility:(_Bool)arg2;
+- (double)heightForSupplementaryViewAtIndexPath:(id)arg1;
 - (id)intrinsicSizeDescriptorForItemAtIndexPath:(id)arg1 itemSize:(unsigned long long)arg2;
+- (id)viewForTouchContinuation;
 - (id)_allContentViewControllers;
 - (id)_allViewControllers;
 - (void)_propagateInteractiveContentStateForChildViewControllers:(id)arg1;
+- (id)_createCellContainerForViewController:(id)arg1 forItem:(id)arg2;
 - (id)_viewControllerForItem:(id)arg1;
 - (unsigned long long)_titlePositionForItem:(id)arg1;
 - (void)_reconfigureLayoutOptions;
-- (id)_supplementarySectionSettingsForItemSize:(unsigned long long)arg1;
-- (id)_gridSectionSettingsForItemSize:(unsigned long long)arg1;
 - (id)_controlItemsForItem:(id)arg1;
+- (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)itemManager:(id)arg1 didRemoveItem:(id)arg2 atIndexPath:(id)arg3;
 - (void)itemManager:(id)arg1 didUpdateResultsForItem:(id)arg2 atIndexPath:(id)arg3;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
-- (void)_reconfigurePreferredFrameConstraints;
-- (void)_updatePreferredLayoutAreaInset;
-@property(retain, nonatomic) id <HULayoutAnchorProviding> preferredFrameLayoutGuide; // @synthesize preferredFrameLayoutGuide=_preferredFrameLayoutGuide;
 - (void)viewLayoutMarginsDidChange;
 - (void)viewDidLoad;
 - (void)loadView;

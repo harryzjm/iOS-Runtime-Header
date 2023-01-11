@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)retainCount;
 - (oneway void)release;
 - (id)retain;
+- (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

@@ -4,11 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface PLSharedStreamsValidatedExternalResource
 {
+    unsigned int _sharedStreamsType;
+    NSString *_fingerprint;
 }
 
-@property(nonatomic) unsigned int sharedStreamsType;
+@property(retain, nonatomic) NSString *fingerprint; // @synthesize fingerprint=_fingerprint;
+@property(nonatomic) unsigned int sharedStreamsType; // @synthesize sharedStreamsType=_sharedStreamsType;
+- (void).cxx_destruct;
+- (id)description;
 
 @end
 

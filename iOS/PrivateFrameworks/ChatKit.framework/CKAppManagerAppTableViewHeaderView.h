@@ -8,6 +8,7 @@
 
 @class UILabel;
 
+__attribute__((visibility("hidden")))
 @interface CKAppManagerAppTableViewHeaderView : UITableViewHeaderFooterView
 {
     UILabel *_headerLabel;
@@ -16,6 +17,7 @@
 + (id)identifier;
 @property(retain, nonatomic) UILabel *headerLabel; // @synthesize headerLabel=_headerLabel;
 - (void).cxx_destruct;
+- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (id)initWithReuseIdentifier:(id)arg1;
 

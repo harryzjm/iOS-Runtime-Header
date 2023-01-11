@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreDuet/_DKMonitor-Protocol.h>
+#import <CoreDuet/_DKMonitoring-Protocol.h>
 
-@protocol _DKHistoricalDeletingMonitor <_DKMonitor>
+@protocol _DKHistoricalDeletingMonitor <_DKMonitoring>
 @property(copy, nonatomic) CDUnknownBlockType historicalDeletingHandler;
 @end
 

@@ -19,13 +19,13 @@
 - (_Bool)groupView:(PKPassGroupView *)arg1 deleteButtonEnabledForPass:(PKPass *)arg2;
 - (void)groupView:(PKPassGroupView *)arg1 deleteButtonPressedForPass:(PKPass *)arg2;
 - (void)groupView:(PKPassGroupView *)arg1 didUpdatePassView:(PKPassView *)arg2;
-- (void)groupViewFrontPassDidUpdateBarcodeVisibility:(PKPassGroupView *)arg1 animated:(_Bool)arg2;
-- (_Bool)groupViewCanShowBarcode:(PKPassGroupView *)arg1;
 - (void)groupViewDidUpdatePageControlVisibility:(PKPassGroupView *)arg1;
 - (void)groupView:(PKPassGroupView *)arg1 panned:(struct CGPoint)arg2 withVelocity:(struct CGPoint)arg3;
 - (void)groupViewPanDidEnd:(PKPassGroupView *)arg1;
 - (void)groupViewPanDidBegin:(PKPassGroupView *)arg1;
 - (_Bool)groupViewShouldAllowPanning:(PKPassGroupView *)arg1;
+- (void)groupViewPressedDidEnd:(PKPassGroupView *)arg1;
+- (void)groupViewPressed:(PKPassGroupView *)arg1;
 - (void)groupViewTapped:(PKPassGroupView *)arg1;
 @end
 

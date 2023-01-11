@@ -4,15 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPModalPresentationWindow;
-
 @interface MPMediaControlsStandaloneViewController
 {
-    MPModalPresentationWindow *_presentationWindow;
 }
 
-- (void).cxx_destruct;
-- (void)viewDidDisappear:(_Bool)arg1;
 - (void)dismissAfter:(double)arg1;
 - (void)presentAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 

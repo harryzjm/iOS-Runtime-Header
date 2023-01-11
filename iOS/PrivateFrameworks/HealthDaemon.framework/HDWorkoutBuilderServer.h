@@ -17,6 +17,7 @@
 @interface HDWorkoutBuilderServer <HDWorkoutDataAccumulator, HKDataFlowLinkProcessor, HKStateMachineDelegate, HKWorkoutBuilderServerInterface, HDWorkoutDataDestination, HDTaskServerObserver>
 {
     struct os_unfair_lock_s _lock;
+    _Atomic _Bool _invalidated;
     HDWorkoutBuilderEntity *_persistentEntity;
     NSError *_error;
     HKObserverSet *_dataAccumulatorObservers;
@@ -39,7 +40,7 @@
     NSDateInterval *_dataInterval;
 }
 
-+ (_Bool)validateConfiguration:(id)arg1 error:(out id *)arg2;
++ (_Bool)validateConfiguration:(id)arg1 client:(id)arg2 error:(id *)arg3;
 + (Class)configurationClass;
 + (id)requiredEntitlements;
 + (id)taskIdentifier;
@@ -61,7 +62,7 @@
 - (void)didCreateTaskServer:(id)arg1;
 - (_Bool)_canAddDataWithError:(id *)arg1;
 - (_Bool)_validateAuthorizationToSaveWorkoutWithError:(id *)arg1;
-- (void)_discardWorkout;
+- (_Bool)_discardWorkoutWithError:(id *)arg1;
 - (void)_lock_failWithError:(id)arg1;
 - (id)_finishWorkoutWithError:(id *)arg1;
 - (void)connectionInvalidated;
@@ -70,9 +71,11 @@
 - (_Bool)enumerateSamplesOfType:(id)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)removeSampleObserver:(id)arg1;
 - (void)addSampleObserver:(id)arg1;
+- (void)_lock_didUpdateStartDate;
 - (id)currentStatisticsByQuantityType;
 - (void)_updateStatisticsPauseResumeMask;
 - (id)_lock_maskedIntervalsForStatisticsOfType:(id)arg1;
+- (void)_didFinishRecovery;
 - (void)_didUpdateStatistics:(id)arg1;
 - (id)_lock_statisticsDataSourceForQuantityType:(id)arg1;
 - (id)_lock_sourceOrderProviderForQuantityType:(id)arg1;
@@ -89,6 +92,7 @@
 - (void)_didUpdateMetadata:(id)arg1;
 - (_Bool)_addMetadata:(id)arg1 error:(id *)arg2;
 - (id)currentMetadata;
+- (void)remote_setShouldCollectEvents:(_Bool)arg1;
 - (void)remote_setStatisticsComputationMethod:(long long)arg1 forType:(id)arg2;
 - (void)remote_setStatisticsMergeStrategy:(unsigned long long)arg1 forType:(id)arg2;
 - (void)remote_updateDevice:(id)arg1;
@@ -125,7 +129,8 @@
 - (void)_persistRecoveryData;
 @property(readonly, copy) NSString *description;
 - (void)connectionConfigured;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
+@property(readonly) _Bool invalidated;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

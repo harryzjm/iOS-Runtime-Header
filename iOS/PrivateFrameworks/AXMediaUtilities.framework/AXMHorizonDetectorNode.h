@@ -4,13 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class VNDetectHorizonRequest;
+
 @interface AXMHorizonDetectorNode
 {
+    VNDetectHorizonRequest *__detectHorizonRequest;
 }
 
 + (id)title;
 + (_Bool)isSupported;
 + (_Bool)supportsSecureCoding;
+@property(retain, nonatomic, setter=_setDetectHorizonRequest:) VNDetectHorizonRequest *_detectHorizonRequest; // @synthesize _detectHorizonRequest=__detectHorizonRequest;
+- (void).cxx_destruct;
 - (void)evaluate:(id)arg1;
 - (_Bool)validateVisionKitSoftLinkSymbols;
 - (_Bool)requiresVisionFramework;

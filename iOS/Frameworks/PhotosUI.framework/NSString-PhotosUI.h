@@ -10,6 +10,5 @@
 - (id)pu_stringByRepeating:(long long)arg1;
 - (long long)pu_platformAgnosticHash;
 - (id)pu_stringByIndentingNewLines;
-- (_Bool)pu_endsWithFullStopOrEquivalentPunctuationMark;
 @end
 

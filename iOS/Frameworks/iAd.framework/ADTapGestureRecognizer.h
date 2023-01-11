@@ -18,12 +18,12 @@
 @property(copy, nonatomic) CDUnknownBlockType touchMovedHandler; // @synthesize touchMovedHandler=_touchMovedHandler;
 @property(copy, nonatomic) CDUnknownBlockType touchDownHandler; // @synthesize touchDownHandler=_touchDownHandler;
 @property(nonatomic) long long finalTrackingID; // @synthesize finalTrackingID=_finalTrackingID;
+- (void).cxx_destruct;
 - (void)reset;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-- (void)dealloc;
 
 @end
 

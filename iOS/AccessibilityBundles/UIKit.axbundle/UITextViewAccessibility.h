@@ -15,6 +15,8 @@
 - (id)_accessibilityParagraphElements;
 - (id)_accessibilityParagraphLinksCustomRotor;
 - (id)_accessibilityLinksForRange:(struct _NSRange)arg1;
+- (_Bool)_accessibilityTextViewShouldBreakUpParagraphs;
+- (_Bool)canBecomeFocused;
 - (id)_accessibilityInternalTextLinks;
 - (long long)accessibilityContainerType;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
@@ -43,7 +45,7 @@
 - (id)accessibilityValue;
 - (id)_accessibilityGetValue:(_Bool)arg1;
 - (id)_accessibilityGetValue;
-- (_Bool)_accessibilityOverridesLabelValueHintSelector:(SEL)arg1;
+- (_Bool)_accessibilityOverridesPotentiallyAttributedAPISelector:(SEL)arg1;
 - (id)_accessibilityAttributedValueForRange:(struct _NSRange *)arg1;
 - (id)_accessibilitySupplementaryHeaderViews;
 - (void)_accessibilitySetValue:(id)arg1;
@@ -58,6 +60,7 @@
 - (void)_axClearCachedLinkData;
 - (void)dealloc;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (unsigned long long)_accessibilityAutomationType;
 - (void)_axRegisterForDDNotificationIfNeeded;
 - (void)_axSetDidRegisterForDDNotification:(_Bool)arg1;
 - (_Bool)_axDidRegisterForDDNotification;

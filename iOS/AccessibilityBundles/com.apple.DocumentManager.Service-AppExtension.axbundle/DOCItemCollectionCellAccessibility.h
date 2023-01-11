@@ -12,9 +12,10 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)accessibilityScrollToVisible;
-- (id)_accessibilityFileProviderController;
+- (id)_accessibilityItemCollectionViewController;
 - (_Bool)_accessibilityPerformDocumentAction:(id)arg1;
 - (id)accessibilityCustomActions;
+- (unsigned long long)accessibilityTraits;
 - (id)_axAttrTitle;
 - (id)accessibilityIdentifier;
 

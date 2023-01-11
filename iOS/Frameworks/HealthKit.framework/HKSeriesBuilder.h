@@ -14,7 +14,7 @@
 
 @interface HKSeriesBuilder : NSObject <_HKXPCExportable, HKSeriesBuilderClientInterface>
 {
-    long long _state;
+    _Atomic int _state;
     HKTaskServerProxyProvider *_proxyProvider;
     NSUUID *_identifier;
     HKSeriesBuilderConfiguration *_configuration;
@@ -27,18 +27,19 @@
 + (void)configureClientInterface:(id)arg1;
 + (id)serverInterface;
 + (id)clientInterface;
++ (id)taskServerIdentifier;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *resourceQueue; // @synthesize resourceQueue=_resourceQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 @property(readonly, nonatomic) HKHealthStore *store; // @synthesize store=_store;
 @property(readonly, copy, nonatomic) HKSeriesBuilderConfiguration *configuration; // @synthesize configuration=_configuration;
-@property(readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property(readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) HKTaskServerProxyProvider *proxyProvider; // @synthesize proxyProvider=_proxyProvider;
 - (void).cxx_destruct;
 - (void)connectionInvalidated;
 - (id)remoteInterface;
 - (id)exportedInterface;
 - (void)clientRemote_didChangeToState:(long long)arg1;
-@property(nonatomic) long long state;
+@property long long state;
 - (void)_resourceQueue_discardWithHandler:(CDUnknownBlockType)arg1;
 - (void)_resourceQueue_addMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)recoverWithCompletion:(CDUnknownBlockType)arg1;

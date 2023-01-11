@@ -8,6 +8,7 @@
 {
 }
 
++ (Class)meltedClass;
 + (id)relations;
 - (id)description;
 - (void)setOwner:(id)arg1;

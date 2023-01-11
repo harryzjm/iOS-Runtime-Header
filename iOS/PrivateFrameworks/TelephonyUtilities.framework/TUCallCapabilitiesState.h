@@ -33,7 +33,6 @@
     _Bool _supportsFaceTimeVideoRelayCalling;
     _Bool _emergencyCallbackModeEnabled;
     _Bool _emergencyCallbackPossible;
-    _Bool _supportsCarrierServices;
     int _relayCallingAvailability;
     NSDictionary *_relayCallingDisabledForDeviceID;
     NSString *_outgoingRelayCallerID;
@@ -43,7 +42,6 @@
 
 + (_Bool)supportsSecureCoding;
 @property(copy, nonatomic) NSDictionary *senderIdentityCapabilitiesStateByUUID; // @synthesize senderIdentityCapabilitiesStateByUUID=_senderIdentityCapabilitiesStateByUUID;
-@property(nonatomic) _Bool supportsCarrierServices; // @synthesize supportsCarrierServices=_supportsCarrierServices;
 @property(nonatomic, getter=isEmergencyCallbackPossible) _Bool emergencyCallbackPossible; // @synthesize emergencyCallbackPossible=_emergencyCallbackPossible;
 @property(nonatomic, getter=isEmergencyCallbackModeEnabled) _Bool emergencyCallbackModeEnabled; // @synthesize emergencyCallbackModeEnabled=_emergencyCallbackModeEnabled;
 @property(copy, nonatomic) NSArray *cloudCallingDevices; // @synthesize cloudCallingDevices=_cloudCallingDevices;
@@ -73,7 +71,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)deviceIDForPhoneNumber:(id)arg1;
 @property(readonly, nonatomic) TUCloudCallingDevice *defaultPairedDevice;
 @property(readonly, copy) NSString *description;
 - (id)init;

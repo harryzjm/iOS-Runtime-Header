@@ -24,6 +24,7 @@
     MISSING_TYPE *effectsCaptureInfo;
     MISSING_TYPE *effectsViewController;
     MISSING_TYPE *effectsBrowserViewController;
+    MISSING_TYPE *effectsLayoutController;
     MISSING_TYPE *conversationController;
     MISSING_TYPE *videoDeviceController;
     MISSING_TYPE *numberFormatter;
@@ -36,13 +37,15 @@
     MISSING_TYPE *deviceOrientation;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)hideEffectsBrowser;
 - (void)didTapSwapLocalParticipantCamera;
-- (void)didTapToggleVideoMute;
+- (void)toggleVideoMute;
 - (void)didTapLeaveButton;
 - (void)didTapJoinButton;
+- (_Bool)_canShowWhileLocked;
 - (void)updateViewConstraints;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillDisappear:(_Bool)arg1;

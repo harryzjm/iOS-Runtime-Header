@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class MISSING_TYPE, TUCall;
+@class MISSING_TYPE, NSTimer, TUCall;
 @protocol CNKFaceTimeMultiwayConversationViewControllerDelegate;
 
 @interface CNKFaceTimeMultiwayConversationViewController : UIViewController
@@ -18,22 +18,29 @@
     MISSING_TYPE *viewContent;
     MISSING_TYPE *inCallControlsDismissTimer;
     MISSING_TYPE *hideInactiveParticipantsTimer;
+    MISSING_TYPE *effectsLayoutController;
+    MISSING_TYPE *pipZoomControl;
+    MISSING_TYPE *shouldShowZoomControls;
     MISSING_TYPE *deviceOrientation;
     MISSING_TYPE *delegate;
-    MISSING_TYPE *shouldInitializeEffects;
     MISSING_TYPE *effectsEnabled;
     MISSING_TYPE *isPipped;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)accessibilityConstraintController;
 - (void)setControllerIsPipped:(_Bool)arg1;
+- (void)hideEffectsBrowser;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)openMessagesConversation;
+- (void)muteVideo;
 - (void)toggleVideoMute;
 - (void)toggleAudioMute;
+- (void)restartAutoHideInCallControlsDrawerTimer;
 - (void)updateViewConstraints;
+- (_Bool)_canShowWhileLocked;
+- (void)willMoveToParentViewController:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
@@ -47,7 +54,9 @@
 @property(nonatomic) _Bool effectsEnabled; // @synthesize effectsEnabled;
 @property(nonatomic) __weak id <CNKFaceTimeMultiwayConversationViewControllerDelegate> delegate; // @synthesize delegate;
 @property(nonatomic) long long deviceOrientation; // @synthesize deviceOrientation;
+@property(nonatomic, readonly) _Bool wantsApplicationDismissalStyle;
 @property(nonatomic, readonly) TUCall *call;
+@property(nonatomic, retain) NSTimer *inCallControlsDismissTimer; // @synthesize inCallControlsDismissTimer;
 
 @end
 

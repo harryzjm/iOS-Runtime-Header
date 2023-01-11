@@ -4,7 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface ASDGatherLogsRequestOptions
+#import <objc/NSObject.h>
+
+#import <AppStoreDaemon/NSCopying-Protocol.h>
+
+@interface ASDGatherLogsRequestOptions : NSObject <NSCopying>
 {
     _Bool _verbose;
 }

@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class CLGeocoderInternal;
+@class CLGeocoderInternal, CLSilo;
 
 @interface CLGeocoder : NSObject
 {
     CLGeocoderInternal *_internal;
 }
 
++ (id)_timeZoneAtLocation:(id)arg1;
 - (void)_notifyError:(id)arg1;
 - (void)_notifyCancel;
 - (void)_notifyNoResult;
@@ -36,6 +37,7 @@
 - (void)reverseGeocodeLocation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)reverseGeocodeLocation:(id)arg1 localResultsOnly:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic, getter=isGeocoding) _Bool geocoding;
+@property(setter=_setResponseSilo:) CLSilo *_responseSilo;
 - (void)dealloc;
 - (id)init;
 - (void)geocodePostalAddress:(id)arg1 preferredLocale:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

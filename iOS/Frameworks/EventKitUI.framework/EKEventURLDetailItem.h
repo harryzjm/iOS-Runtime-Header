@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UITableViewCell;
+@class NSURL, SGSuggestedEventLaunchInfo, UITableViewCell;
 
 __attribute__((visibility("hidden")))
 @interface EKEventURLDetailItem
 {
     UITableViewCell *_cell;
+    SGSuggestedEventLaunchInfo *_launchInfo;
+    NSURL *_url;
 }
 
++ (Class)_SGSuggestionsServiceClass;
 - (void).cxx_destruct;
 - (_Bool)hasDetailViewControllerAtIndex:(unsigned long long)arg1;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;

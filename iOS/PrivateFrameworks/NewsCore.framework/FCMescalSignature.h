@@ -11,7 +11,6 @@
 }
 
 + (id)signatureFromData:(id)arg1 error:(id *)arg2;
-+ (id)mescalBag;
 
 @end
 

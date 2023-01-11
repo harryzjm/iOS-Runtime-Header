@@ -4,15 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSDate;
+@class NSDate;
 
 @interface PHMomentList
 {
-    NSData *_reverseLocationData;
-    _Bool _reverseLocationDataIsValid;
-    _Bool _reverseLocationDataContainsLocation;
     short _granularityLevel;
-    short _generationType;
     int _sortIndex;
     NSDate *_representativeDate;
 }
@@ -24,7 +20,6 @@
 + (id)fetchType;
 + (id)managedEntityName;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
-@property(readonly, nonatomic) short generationType; // @synthesize generationType=_generationType;
 @property(readonly, nonatomic) int sortIndex; // @synthesize sortIndex=_sortIndex;
 @property(readonly, nonatomic) NSDate *representativeDate; // @synthesize representativeDate=_representativeDate;
 @property(readonly, nonatomic) short granularityLevel; // @synthesize granularityLevel=_granularityLevel;
@@ -35,9 +30,7 @@
 - (_Bool)hasLocalizedTitle;
 - (id)localizedLocationNames;
 - (id)localizedTitle;
-- (void)_decodeTitlesIfNeeded;
 - (long long)collectionListType;
-- (_Bool)isMeaningful;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (Class)changeRequestClass;
 

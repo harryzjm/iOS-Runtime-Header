@@ -4,24 +4,47 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ISAnimatedImageView, PHAnimatedImage;
+#import <objc/NSObject.h>
 
-@interface PXAssetAnimatedImageUIViewTile
+#import <PhotosUICore/PXAssetTile-Protocol.h>
+#import <PhotosUICore/PXAutoplayTile-Protocol.h>
+#import <PhotosUICore/PXReusableObject-Protocol.h>
+#import <PhotosUICore/PXUIViewBasicTile-Protocol.h>
+
+@class ISAnimatedImageView, NSString, PHAnimatedImage, PXImageRequester, UIView;
+
+@interface PXAssetAnimatedImageUIViewTile : NSObject <PXReusableObject, PXAssetTile, PXUIViewBasicTile, PXAutoplayTile>
 {
     ISAnimatedImageView *_animatedImageView;
     long long _animatedImageRequestID;
     unsigned long long _requestCount;
+    PXImageRequester *_imageRequester;
+    double _cornerRadius;
+    long long _desiredPlayState;
     PHAnimatedImage *__animatedImage;
+    CDStruct_e83c9415 _bestPlaybackTimeRange;
 }
 
 @property(retain, nonatomic, setter=_setAnimatedImage:) PHAnimatedImage *_animatedImage; // @synthesize _animatedImage=__animatedImage;
+@property(nonatomic) CDStruct_e83c9415 bestPlaybackTimeRange; // @synthesize bestPlaybackTimeRange=_bestPlaybackTimeRange;
+@property(nonatomic) long long desiredPlayState; // @synthesize desiredPlayState=_desiredPlayState;
+@property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property(retain, nonatomic) PXImageRequester *imageRequester; // @synthesize imageRequester=_imageRequester;
 - (void).cxx_destruct;
-- (void)setImageRequester:(id)arg1;
 - (void)_handleAnimatedImageResult:(id)arg1 info:(id)arg2 expectedRequestCount:(unsigned long long)arg3;
 - (void)_requestAnimatedImageIfNeeded;
 - (void)_updateAnimatedImageView;
-- (id)view;
+@property(readonly, nonatomic) UIView *view;
+- (void)didApplyGeometry:(struct PXTileGeometry)arg1 withUserData:(id)arg2;
+- (void)prepareForReuse;
 - (void)becomeReusable;
+- (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

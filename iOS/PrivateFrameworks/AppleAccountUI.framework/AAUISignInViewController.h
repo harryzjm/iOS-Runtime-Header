@@ -29,11 +29,15 @@
     _Bool _shouldAnticipatePiggybacking;
     _Bool _allowsAccountCreation;
     _Bool _showServiceIcons;
+    _Bool _canEditUsername;
     long long _akServiceType;
     id <AAUISignInViewControllerDelegate> _delegate;
+    NSString *_username;
 }
 
 + (void)phoneNumberSupportedWithCompletion:(CDUnknownBlockType)arg1;
+@property(nonatomic) _Bool canEditUsername; // @synthesize canEditUsername=_canEditUsername;
+@property(copy, nonatomic) NSString *username; // @synthesize username=_username;
 @property(nonatomic) _Bool showServiceIcons; // @synthesize showServiceIcons=_showServiceIcons;
 @property(nonatomic) _Bool allowsAccountCreation; // @synthesize allowsAccountCreation=_allowsAccountCreation;
 @property(nonatomic) __weak id <AAUISignInViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -72,6 +76,7 @@
 - (void)_setPasswordFieldHidden:(_Bool)arg1;
 - (void)_cancelPasswordDelegateIfNecessary;
 - (id)_authorizationValueForAuthenticationResults:(id)arg1;
+- (_Bool)_showOnlyPassword;
 - (void)_repairCloudAccountWithAuthenticationResults:(id)arg1;
 - (void)_attemptAuthenticationWithContext:(id)arg1;
 - (void)_attemptAuthentication;

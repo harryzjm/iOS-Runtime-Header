@@ -6,11 +6,47 @@
 
 #import <NeutrinoCore/NUAutoCalculator.h>
 
-@interface PICropAutoCalculator : NUAutoCalculator
+#import <PhotoImaging/NUTimeBased-Protocol.h>
+#import <PhotoImaging/PIFaceObservingAutoCalculator-Protocol.h>
+
+@class NSNumber, NSString, PIFaceObservationCache;
+
+@interface PICropAutoCalculator : NUAutoCalculator <NUTimeBased, PIFaceObservingAutoCalculator>
 {
+    _Bool _shouldPerformAutoCrop;
+    _Bool _shouldPerformAutoStraighten;
+    _Bool _shouldUseAutoStraightenVerticalDetector;
+    _Bool _debugFilesEnabled;
+    PIFaceObservationCache *_faceObservationCache;
+    NSNumber *_autoStraightenVerticalAngleThreshold;
+    NSNumber *_autoStraightenDominantAngleDiffThreshold;
+    double _maxAutoStraighten;
+    double _minAutoStraighten;
+    NSString *_debugFilesPrefix;
 }
 
-- (void)calculate:(CDUnknownBlockType)arg1;
+@property(copy) NSString *debugFilesPrefix; // @synthesize debugFilesPrefix=_debugFilesPrefix;
+@property _Bool debugFilesEnabled; // @synthesize debugFilesEnabled=_debugFilesEnabled;
+@property double minAutoStraighten; // @synthesize minAutoStraighten=_minAutoStraighten;
+@property double maxAutoStraighten; // @synthesize maxAutoStraighten=_maxAutoStraighten;
+@property(copy) NSNumber *autoStraightenDominantAngleDiffThreshold; // @synthesize autoStraightenDominantAngleDiffThreshold=_autoStraightenDominantAngleDiffThreshold;
+@property(copy) NSNumber *autoStraightenVerticalAngleThreshold; // @synthesize autoStraightenVerticalAngleThreshold=_autoStraightenVerticalAngleThreshold;
+@property _Bool shouldUseAutoStraightenVerticalDetector; // @synthesize shouldUseAutoStraightenVerticalDetector=_shouldUseAutoStraightenVerticalDetector;
+@property _Bool shouldPerformAutoStraighten; // @synthesize shouldPerformAutoStraighten=_shouldPerformAutoStraighten;
+@property _Bool shouldPerformAutoCrop; // @synthesize shouldPerformAutoCrop=_shouldPerformAutoCrop;
+@property(retain, nonatomic) PIFaceObservationCache *faceObservationCache; // @synthesize faceObservationCache=_faceObservationCache;
+- (void).cxx_destruct;
+- (void)submit:(CDUnknownBlockType)arg1;
+- (_Bool)undoExifOrientation:(CDStruct_996ac03c *)arg1 error:(out id *)arg2;
+- (id)imageProperties:(out id *)arg1;
+- (id)initWithComposition:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+@property(nonatomic) CDStruct_1b6d18a9 time;
 
 @end
 

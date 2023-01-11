@@ -9,6 +9,7 @@
 @class NSURL;
 @protocol SKUISortDataRequestDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SKUISortDataRequest <NSCopying>
 {
     id <SKUISortDataRequestDelegate> _delegate;

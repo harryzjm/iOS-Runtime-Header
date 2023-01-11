@@ -14,7 +14,7 @@
 - (id)accessibilityElements;
 - (void)_setAXCombinedElements:(id)arg1;
 - (id)_axCombinedElements;
-- (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 - (id)accessibilityLabel;
 
 @end

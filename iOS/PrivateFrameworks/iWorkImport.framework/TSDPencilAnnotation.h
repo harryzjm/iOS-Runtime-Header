@@ -8,7 +8,7 @@
 #import <iWorkImport/TSKPencilAnnotation-Protocol.h>
 #import <iWorkImport/TSPCopying-Protocol.h>
 
-@class NSString, PKDrawing, TSDDrawableInfo, TSDPencilAnnotationStorage;
+@class NSString, TSDDrawableInfo, TSDPencilAnnotationStorage, TSKPKDrawing;
 
 __attribute__((visibility("hidden")))
 @interface TSDPencilAnnotation <TSPCopying, TSKDocumentObject, TSKPencilAnnotation>
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
-@property(readonly, nonatomic) PKDrawing *drawing; // @dynamic drawing;
+@property(readonly, nonatomic) TSKPKDrawing *drawing; // @dynamic drawing;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

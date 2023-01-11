@@ -15,7 +15,7 @@
 - (void).cxx_destruct;
 - (void)ibic_generateSubNodes:(CDUnknownBlockType)arg1;
 - (id)descriptionWithIndent:(long long)arg1;
-- (id)matchingSlots;
+- (_Bool)_continueEnumeratingUsingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)matchesSlot:(id)arg1;
 - (_Bool)isEqualToSlotFilterWithKnownIdenticalClass:(id)arg1;
 - (unsigned long long)hash;

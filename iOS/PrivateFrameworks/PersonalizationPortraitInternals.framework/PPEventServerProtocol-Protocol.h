@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PersonalizationPortraitInternals/PPFeedbackAccepting-Protocol.h>
+
 @class NSArray, NSDate, NSString;
 
-@protocol PPEventServerProtocol
+@protocol PPEventServerProtocol <PPFeedbackAccepting>
 - (void)sendRTCLogsWithWithCompletion:(void (^)(_Bool, NSError *))arg1;
 - (void)interactionSummaryMetricsWithQueryId:(unsigned long long)arg1;
 - (void)logEventInteractionForEventWithEventIdentifier:(NSString *)arg1 interface:(unsigned short)arg2 actionType:(unsigned short)arg3;

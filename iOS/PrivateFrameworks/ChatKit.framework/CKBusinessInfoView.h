@@ -9,6 +9,7 @@
 @class NSString, UIButton, UILabel;
 @protocol CKBusinessInfoViewDelegate;
 
+__attribute__((visibility("hidden")))
 @interface CKBusinessInfoView : UIView
 {
     id <CKBusinessInfoViewDelegate> _delegate;

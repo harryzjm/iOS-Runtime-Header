@@ -8,6 +8,7 @@
 
 @class NSString, UILabel, UIView;
 
+__attribute__((visibility("hidden")))
 @interface CKSharedAssetCollectionViewCell : UICollectionViewCell
 {
     UIView *_previewView;

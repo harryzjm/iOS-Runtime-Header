@@ -28,5 +28,7 @@
 - (void)ib_encodeSize:(struct CGSize)arg1 forKey:(id)arg2 defaultValue:(struct CGSize)arg3;
 - (CDStruct_c519178c)ib_decodeInsetForKey:(id)arg1 defaultValue:(CDStruct_c519178c)arg2;
 - (void)ib_encodeInset:(CDStruct_c519178c)arg1 forKey:(id)arg2 defaultValue:(CDStruct_c519178c)arg3;
+- (struct UIEdgeInsets)ib_decodeEdgeInsetsForKey:(id)arg1;
+- (void)ib_encodeEdgeInsets:(struct UIEdgeInsets)arg1 forKey:(id)arg2;
 @end
 

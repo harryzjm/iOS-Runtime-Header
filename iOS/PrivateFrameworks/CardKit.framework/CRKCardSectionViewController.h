@@ -12,7 +12,7 @@
 #import <CardKit/SFFeedbackListener-Protocol.h>
 
 @class CRKCardSectionViewConfiguration, CRKOverlayButton, INUIRemoteViewController, NSArray, NSString, UIView;
-@protocol CRCardSection, CRKCardSectionView, CRKCardSectionViewControllerDataSource, CRKCardSectionViewControllerDelegate;
+@protocol CRCardSection, CRKCardSectionView, CRKCardSectionViewControllerDelegate;
 
 @interface CRKCardSectionViewController : UIViewController <CRKCardSectionViewControllingDelegate, SFFeedbackListener, CRKFeedbackDelegate, CRKEventResponding>
 {
@@ -23,16 +23,13 @@
     NSArray *_extraCommands;
     INUIRemoteViewController *__remoteViewController;
     CRKCardSectionViewConfiguration *_viewConfiguration;
-    id <CRKCardSectionViewControllerDataSource> _dataSource;
 }
 
 + (void)_registerWithCardKit;
 + (id)cardSectionViewControllerForViewConfiguration:(id)arg1;
 + (void)registerCardSectionViewController;
 + (id)cardSectionClasses;
-+ (id)cardSectionViewControllerForCardSection:(id)arg1 dataSource:(id)arg2;
 + (id)cardSectionViewControllerForCardSection:(id)arg1;
-@property(nonatomic) __weak id <CRKCardSectionViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) CRKCardSectionViewConfiguration *viewConfiguration; // @synthesize viewConfiguration=_viewConfiguration;
 @property(readonly, nonatomic) INUIRemoteViewController *_remoteViewController; // @synthesize _remoteViewController=__remoteViewController;
 @property(retain, nonatomic, getter=_extraCommands, setter=_setExtraCommands:) NSArray *extraCommands; // @synthesize extraCommands=_extraCommands;
@@ -53,6 +50,7 @@
 - (void)userDidEngageCardSection:(id)arg1 withEngagementFeedback:(id)arg2;
 - (_Bool)performCommand:(id)arg1 forViewController:(id)arg2;
 - (void)cardSectionViewDidSelectPreferredPunchoutIndex:(long long)arg1;
+- (void)willDismissViewController:(id)arg1;
 - (void)presentViewController:(id)arg1;
 - (void)cardSectionViewDidInvalidateSize:(id)arg1;
 - (void)cardSectionViewDidInvalidateSize:(id)arg1 animate:(_Bool)arg2;
@@ -74,6 +72,7 @@
 - (void)_buttonOverlayWasTouchedDown:(id)arg1;
 - (void)_buttonOverlayWasTouchedUpOutside:(id)arg1;
 - (void)_buttonOverlayWasTouchedUpInside:(id)arg1;
+- (void)_cardSectionTapped;
 - (id)_preferredPunchoutCommand;
 - (id)_destinationPunchout;
 - (id)_commands;
@@ -87,7 +86,6 @@
 - (_Bool)_expectsSearchUIView;
 - (_Bool)_hasCorrespondingSearchUIView;
 - (void)_performCommand:(id)arg1;
-- (id)_initWithCardSection:(id)arg1 dataSource:(id)arg2;
 - (id)_initWithCardSection:(id)arg1;
 - (void)cardEventDidOccur:(unsigned long long)arg1 withIdentifier:(id)arg2 userInfo:(id)arg3;
 

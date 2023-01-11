@@ -13,12 +13,18 @@
 + (double)maxTrimDurationForVideo;
 + (double)maxTrimDurationForAudio;
 + (_Bool)acceptsMIMEType:(NSString *)arg1;
+- (void)setShareSheetSessionID:(NSString *)arg1;
+- (void)setContentText:(NSArray *)arg1;
+- (void)setCloudPhotoIDs:(NSArray *)arg1;
+- (void)setPhotoIDs:(NSArray *)arg1;
+- (void)setContentURLs:(NSArray *)arg1;
 - (void)setUTIs:(NSArray *)arg1;
 - (void)setUICustomizationData:(NSData *)arg1;
 - (void)setGameCenterPickedHandles:(NSArray *)arg1 playerNames:(NSArray *)arg2;
 - (void)setGameCenterModeWithPickerBlock:(void (^)(void))arg1;
 - (void)forceMMS;
 - (void)forceCancelComposition;
+- (void)setText:(NSString *)arg1 subject:(NSString *)arg2 addresses:(NSArray *)arg3 chatGUID:(NSString *)arg4 groupName:(NSString *)arg5;
 - (void)setText:(NSString *)arg1 subject:(NSString *)arg2 addresses:(NSArray *)arg3;
 - (void)setTextEntryContentsVisible:(_Bool)arg1;
 - (void)disableCameraAttachments;

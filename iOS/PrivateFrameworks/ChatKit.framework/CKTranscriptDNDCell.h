@@ -8,6 +8,7 @@
 
 @class UISwitch;
 
+__attribute__((visibility("hidden")))
 @interface CKTranscriptDNDCell : UITableViewCell
 {
     UISwitch *_muteSwitch;

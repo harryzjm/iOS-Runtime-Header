@@ -11,8 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_axSetIconProperties:(id)arg1;
 - (void)viewDidLoad;
-- (void)setIcon:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

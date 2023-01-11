@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface SAAppsGetRestrictedApps
 {
@@ -14,6 +14,7 @@
 + (id)getRestrictedApps;
 - (_Bool)mutatingCommand;
 - (_Bool)requiresResponse;
+@property(copy, nonatomic) NSString *executionEnvironment;
 @property(copy, nonatomic) NSArray *appIds;
 - (id)encodedClassName;
 - (id)groupIdentifier;

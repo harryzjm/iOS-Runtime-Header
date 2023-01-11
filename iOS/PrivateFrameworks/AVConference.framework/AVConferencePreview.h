@@ -23,11 +23,16 @@
     NSObject<OS_dispatch_queue> *avConferencePreviewQueue;
     NSObject<OS_dispatch_queue> *avConferencePreviewNotificationQueue;
     _Bool _isPreviewRunning;
+    _Bool _zoomAvailable;
+    double _currentZoomFactor;
+    double _maxZoomFactor;
     NSString *_localCameraUID;
 }
 
 + (id)AVConferencePreviewSingleton;
 @property(retain, nonatomic) NSObject<AVConferencePreviewClientDelegate> *delegate; // @synthesize delegate;
+- (void)setCameraZoomFactor:(double)arg1 withRate:(double)arg2;
+- (void)setCameraZoomFactor:(double)arg1;
 - (void)clearAllStickers:(_Bool)arg1;
 - (void)addStickerWithURL:(id)arg1 isFaceSticker:(_Bool)arg2 atPosition:(struct CGPoint)arg3 identifier:(id)arg4;
 - (void)setMemoji:(id)arg1;
@@ -47,6 +52,9 @@
 - (id)localVideoLayer:(_Bool)arg1;
 - (void)setLocalVideoLayer:(id)arg1 front:(_Bool)arg2;
 - (void)getSnapshot;
+- (double)maxZoomFactor;
+- (double)currentZoomFactor;
+- (_Bool)isCameraZoomAvailable;
 - (_Bool)isPreviewRunning;
 - (void)stopPreview;
 - (void)pausePreview;
@@ -62,6 +70,7 @@
 - (id)init;
 - (void)registerBlocksForDelegateNotifications;
 - (void)connectLayer:(id)arg1 withSlot:(unsigned int)arg2;
+- (void)cameraZoomAvailabilityDidChange:(_Bool)arg1 currentZoomFactor:(double)arg2 maxZoomFactor:(double)arg3;
 - (void)cameraDidBecomeInterruptedForForUniqueID:(id)arg1 reason:(long long)arg2;
 - (void)cameraDidBecomeAvailableForUniqueID:(id)arg1;
 - (void)didGetSnapshot:(id)arg1;

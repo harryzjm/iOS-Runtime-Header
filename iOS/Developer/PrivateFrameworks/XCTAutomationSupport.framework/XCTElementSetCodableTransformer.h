@@ -17,6 +17,7 @@
     NSString *_transformationDescription;
 }
 
++ (void)provideCapabilitiesToBuilder:(id)arg1;
 + (_Bool)supportsSecureCoding;
 @property _Bool stopsOnFirstMatch; // @synthesize stopsOnFirstMatch=_stopsOnFirstMatch;
 @property(copy) NSString *transformationDescription; // @synthesize transformationDescription=_transformationDescription;
@@ -26,9 +27,11 @@
 - (id)transform:(id)arg1 relatedElements:(id *)arg2;
 @property(readonly) _Bool supportsAttributeKeyPathAnalysis;
 @property(readonly) _Bool supportsRemoteEvaluation;
+- (_Bool)canBeRemotelyEvaluatedWithCapabilities:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
 @property(readonly, copy) NSString *description;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;

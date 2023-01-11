@@ -11,6 +11,7 @@
 
 @interface MFMessageComposeViewController : UINavigationController
 {
+    id _internal;
     id <MFMessageComposeViewControllerDelegate> _messageComposeDelegate;
     NSArray *_recipients;
     NSString *_body;
@@ -20,6 +21,13 @@
     unsigned long long _currentAttachedAudioCount;
     unsigned long long _currentAttachedImageCount;
     NSArray *_UTITypes;
+    NSArray *_photoIDs;
+    NSArray *_cloudPhotoIDs;
+    NSArray *_contentText;
+    NSArray *_contentURLs;
+    NSString *_chatGUID;
+    NSString *_groupName;
+    NSString *_shareSheetSessionID;
     NSArray *_attachments;
 }
 
@@ -41,6 +49,18 @@
 + (_Bool)_canSendText;
 + (void)_setupAccountMonitor;
 @property(readonly, copy, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
+- (void)setShareSheetSessionID:(id)arg1;
+- (id)shareSheetSessionID;
+@property(copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
+@property(copy, nonatomic) NSString *chatGUID; // @synthesize chatGUID=_chatGUID;
+- (void)setContentURLs:(id)arg1;
+- (id)contentURLs;
+- (void)setContentText:(id)arg1;
+- (id)contentText;
+- (void)setCloudPhotoIDs:(id)arg1;
+- (id)cloudPhotoIDs;
+- (void)setPhotoIDs:(id)arg1;
+- (id)photoIDs;
 - (void)setUTITypes:(id)arg1;
 - (id)UTITypes;
 @property(nonatomic) unsigned long long currentAttachedImageCount; // @synthesize currentAttachedImageCount=_currentAttachedImageCount;
@@ -50,8 +70,10 @@
 @property(copy, nonatomic) NSString *body; // @synthesize body=_body;
 @property(copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property(nonatomic) id <MFMessageComposeViewControllerDelegate> messageComposeDelegate; // @synthesize messageComposeDelegate=_messageComposeDelegate;
+- (void).cxx_destruct;
 - (void)_setCanEditRecipients:(_Bool)arg1;
 - (void)smsComposeControllerShouldSendMessageWithText:(id)arg1 toRecipients:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)smsComposeControllerEntryViewContentInserted:(id)arg1;
 - (void)smsComposeControllerSendStarted:(id)arg1;
 - (void)smsComposeControllerCancelled:(id)arg1;
 - (_Bool)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers;
@@ -65,6 +87,8 @@
 - (void)_updateAttachmentCountForAttachmentURL:(id)arg1;
 @property(copy, nonatomic) MSMessage *message; // @synthesize message=_message;
 - (_Bool)addRichLinkData:(id)arg1 withWebpageURL:(id)arg2;
+- (void)showSharedItemInEntryView;
+- (void)insertSharedItemAndReturnEntryViewFrame:(id)arg1 withAlternateFilename:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)addAttachmentData:(id)arg1 withAlternateFilename:(id)arg2;
 - (_Bool)addAttachmentData:(id)arg1 typeIdentifier:(id)arg2 filename:(id)arg3;
 - (_Bool)addAttachmentURL:(id)arg1 withAlternateFilename:(id)arg2;

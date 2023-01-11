@@ -14,11 +14,10 @@ __attribute__((visibility("hidden")))
     UIWindow *_baseWindow;
     UIWindow *_ourWindow;
     id _interactionDelegate;
-    long long _startOrientation;
 }
 
 - (void).cxx_destruct;
-- (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
+- (_Bool)shouldAutorotate;
 - (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)loadView;

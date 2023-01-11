@@ -6,13 +6,14 @@
 
 #import <UIKitCore/NSCoding-Protocol.h>
 #import <UIKitCore/UIContentSizeCategoryAdjusting-Protocol.h>
+#import <UIKitCore/_UILabelContentAttributesProvider-Protocol.h>
 #import <UIKitCore/_UILabelVisualStyleSubject-Protocol.h>
 #import <UIKitCore/_UIMultilineTextContentSizing-Protocol.h>
 #import <UIKitCore/_UIViewBaselineSpacing-Protocol.h>
 
 @class CUICatalog, CUIStyleEffectConfiguration, NSAttributedString, NSMutableDictionary, NSString, UIColor, UIFont, _UILabelContent, _UILabelScaledMetrics, _UILabelVisualStyle, _UITextSizeCache;
 
-@interface UILabel <_UIViewBaselineSpacing, _UIMultilineTextContentSizing, _UILabelVisualStyleSubject, NSCoding, UIContentSizeCategoryAdjusting>
+@interface UILabel <_UIViewBaselineSpacing, _UIMultilineTextContentSizing, _UILabelVisualStyleSubject, _UILabelContentAttributesProvider, NSCoding, UIContentSizeCategoryAdjusting>
 {
     struct CGSize _size;
     UIColor *_highlightedColor;
@@ -47,36 +48,38 @@
         unsigned int marqueeEnabled:1;
         unsigned int marqueeRunable:1;
         unsigned int marqueeRequired:1;
-        unsigned int drawsLetterpress:1;
         unsigned int usesExplicitPreferredMaxLayoutWidth:1;
         unsigned int drawsDebugBaselines:1;
         unsigned int explicitBaselineOffset:1;
         unsigned int usesSimpleTextEffects:1;
-        unsigned int isVariableLengthString:1;
         unsigned int wantsUnderlineForAccessibilityButtonShapesEnabled:1;
         unsigned int disableUpdateTextColorOnTraitCollectionChange:1;
         unsigned int textAlignmentFollowsWritingDirection:1;
         unsigned int textAlignmentMirrored:1;
         unsigned int shortcutIntrinsicContentSize:1;
+        unsigned int multilineLabelRequiresCarefulMeasurement:1;
         unsigned int noNeedsDisplayCheckForBaselineCalculationNeeded:1;
         unsigned int overallWritingDirectionFollowsLayoutDirection:1;
+        unsigned int hyphenationFactorIgnoredIfURLsDetected:1;
     } _textLabelFlags;
     _Bool _adjustsFontForContentSizeCategory;
     _Bool __textColorFollowsTintColor;
+    _Bool __supportMultiLineShrinkToFit;
     double _preferredMaxLayoutWidth;
     double _multilineContextWidth;
     UIFont *_fontForShortcutBaselineCalculation;
     _UILabelVisualStyle *__visualStyle;
 }
 
-+ (struct CGSize)_legacy_adjustSizeForWebKitConstraining:(struct CGSize)arg1 withFont:(id)arg2;
 + (struct CGRect)_insetRect:(struct CGRect)arg1 forAttributedString:(id)arg2 withDefaultFont:(id)arg3 inView:(id)arg4;
 + (struct UIEdgeInsets)_insetsForAttributedString:(id)arg1 withDefaultFont:(id)arg2 inView:(id)arg3;
 + (struct UIEdgeInsets)_insetsForString:(id)arg1 withFont:(id)arg2 inView:(id)arg3;
 + (struct __CFCharacterSet *)_tooBigChars;
 + (id)_defaultAttributes;
++ (id)_defaultColor;
 + (id)defaultFont;
 + (Class)layerClass;
+@property(nonatomic, setter=_setSupportMultiLineShrinkToFit:) _Bool _supportMultiLineShrinkToFit; // @synthesize _supportMultiLineShrinkToFit=__supportMultiLineShrinkToFit;
 @property(retain, nonatomic, setter=_setVisualStyle:) _UILabelVisualStyle *_visualStyle; // @synthesize _visualStyle=__visualStyle;
 @property(nonatomic, setter=_setTextColorFollowsTintColor:) _Bool _textColorFollowsTintColor; // @synthesize _textColorFollowsTintColor=__textColorFollowsTintColor;
 @property(nonatomic) double minimumScaleFactor; // @synthesize minimumScaleFactor=_minimumScaleFactor;
@@ -99,10 +102,6 @@
 - (void)_setUsesSimpleTextEffects:(_Bool)arg1;
 - (_Bool)drawsUnderline;
 - (void)setDrawsUnderline:(_Bool)arg1;
-- (id)letterpressStyle;
-- (void)setLetterpressStyle:(id)arg1;
-- (_Bool)drawsLetterpress;
-- (void)setDrawsLetterpress:(_Bool)arg1;
 - (void)_ancestorWillUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)setMarqueeRunning:(_Bool)arg1;
 - (_Bool)marqueeEnabled;
@@ -127,6 +126,9 @@
 - (void)drawTextInRect:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (_Bool)_multilineLabelRequiresCarefulMeasurement;
+- (void)_setMultilineLabelRequiresCarefulMeasurement:(_Bool)arg1;
+- (void)set_multilineLabelRequiresCarefulMeasurement:(_Bool)arg1;
 - (_Bool)_useShortcutIntrinsicContentSize;
 - (void)_setUseShortcutIntrinsicContentSize:(_Bool)arg1;
 - (void)set_useShortcutIntrinsicContentSize:(_Bool)arg1;
@@ -137,6 +139,7 @@
 - (void)_prepareForFirstIntrinsicContentSizeCalculation;
 - (void)invalidateIntrinsicContentSize;
 - (_Bool)_needsDoubleUpdateConstraintsPass;
+- (_Bool)_hasBaseline;
 - (double)_firstBaselineOffsetFromTop;
 - (double)_baselineOffsetFromBottom;
 - (struct CGRect)_ensureBaselineMetricsReturningBounds;
@@ -147,6 +150,7 @@
 - (id)_layoutDebuggingTitle;
 @property(nonatomic, setter=_setDrawsDebugBaselines:) _Bool _drawsDebugBaselines;
 @property(nonatomic) _Bool adjustsLetterSpacingToFitWidth;
+@property(nonatomic, setter=_setHyphenationFactorIgnoredIfURLsDetected:) _Bool _hyphenationFactorIgnoredIfURLsDetected;
 - (float)_hyphenationFactor;
 - (void)_setHyphenationFactor:(float)arg1;
 @property(nonatomic) long long lineSpacing;
@@ -162,7 +166,7 @@
 - (id)_shadow;
 - (void)_setShadow:(id)arg1;
 @property(retain, nonatomic) UIFont *font;
-- (void)_adjustPreferredFontForCurrentContentSizeCategory;
+- (void)_adjustFontForAccessibilityTraits:(_Bool)arg1;
 - (void)_setFont:(id)arg1;
 - (void)_baselineOffsetParametersDidChange;
 - (id)__currentDefaultColor;
@@ -172,6 +176,9 @@
 @property(nonatomic) long long textAlignment;
 - (void)_setTextAlignment:(long long)arg1;
 - (void)tintColorDidChange;
+- (void)setLineBreakStrategy:(unsigned long long)arg1;
+- (void)_setLineBreakStrategy:(unsigned long long)arg1;
+- (unsigned long long)lineBreakStrategy;
 @property(nonatomic) _Bool enablesMarqueeWhenAncestorFocused;
 @property(nonatomic) _Bool allowsDefaultTighteningForTruncation;
 - (void)_setAllowsDefaultTighteningForTruncation:(_Bool)arg1;
@@ -207,7 +214,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
-- (void)_invalidateAsNeededForNewSize:(struct CGSize)arg1 oldSize:(struct CGSize)arg2 withLinkCheck:(_Bool)arg3;
+- (void)_invalidateAsNeededForNewSize:(struct CGSize)arg1 oldSize:(struct CGSize)arg2;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)_updateVariableLengthStringIfNeeded;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -219,24 +226,32 @@
 - (void)_setNeedsDisplayForInvalidatedContents;
 - (void)_invalidateCachedDefaultAttributes;
 - (id)_attributedStringIsolatingStringWritingDirection:(id)arg1;
+- (_Bool)_hyphenationPossiblyDisabledIfURLsDetected;
+- (id)_attributedStringByDisablingHyphenationIfURLsDetected:(id)arg1;
 - (id)_synthesizedTextAttributes;
 @property(retain, nonatomic, getter=_content, setter=_setContent:) _UILabelContent *_content;
 - (void)_setDefaultAttributes:(id)arg1;
 - (id)_defaultAttributes;
+- (void)_mergeDefaultAttributesForDowngradingContent:(id)arg1;
 - (id)_defaultAttributesForUpgradingString:(id)arg1;
 - (double)_preferredMaxLayoutWidth;
+- (void)_updateTextEffectsConfigurationIfNeeded;
 - (id)_cuiStyleEffectConfiguration;
 - (void)_setCuiStyleEffectConfiguration:(id)arg1;
+- (void)_setupDefaultStyleEffectConfiguration;
 - (id)_cuiCatalog;
 - (void)_setCuiCatalog:(id)arg1;
+- (unsigned long long)defaultAccessibilityTraits;
+- (_Bool)isElementAccessibilityExposedToInterfaceBuilder;
+- (_Bool)isAccessibilityElementByDefault;
+- (id)_image;
+- (id)largeContentTitle;
+- (_Bool)_isTextFieldCenteredLabel;
 - (double)_autolayoutSpacingAtEdge:(int)arg1 forAttribute:(long long)arg2 nextToNeighbor:(id)arg3 edge:(int)arg4 attribute:(long long)arg5 multiplier:(double)arg6;
 - (double)_autolayoutSpacingAtEdge:(int)arg1 forAttribute:(long long)arg2 inContainer:(id)arg3 isGuide:(_Bool)arg4;
 - (_Bool)_hasCustomAutolayoutNeighborSpacingForAttribute:(long long *)arg1;
 - (id)_fontInfoForBaselineSpacing;
 - (_Bool)_hasFontInfoForVerticalBaselineSpacing;
-- (unsigned long long)defaultAccessibilityTraits;
-- (_Bool)isElementAccessibilityExposedToInterfaceBuilder;
-- (_Bool)isAccessibilityElementByDefault;
 @property(nonatomic, setter=_setLastLineBaselineFrameOriginY:) double _lastLineBaselineFrameOriginY;
 @property(nonatomic, setter=_setFirstLineBaselineFrameOriginY:) double _firstLineBaselineFrameOriginY;
 @property(nonatomic, setter=_setFirstLineCapFrameOriginY:) double _firstLineCapFrameOriginY;
@@ -261,8 +276,6 @@
 - (void)_setColor:(id)arg1;
 - (_Bool)autotrackTextToFit;
 - (void)setAutotrackTextToFit:(_Bool)arg1;
-- (_Bool)_isTextFieldCenteredLabel;
-- (id)_image;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

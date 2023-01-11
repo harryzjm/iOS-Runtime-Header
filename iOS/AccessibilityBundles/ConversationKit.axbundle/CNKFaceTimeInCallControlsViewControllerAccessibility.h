@@ -12,8 +12,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (long long)_axDevicePosition;
-- (void)_axSetPathOnObject:(id)arg1 withLabel:(id)arg2;
-- (void)_axSetPathOnObject:(id)arg1 withLabelBlock:(CDUnknownBlockType)arg2;
 - (void)viewDidLoad;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (_Bool)accessibilityPerformEscape;

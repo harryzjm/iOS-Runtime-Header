@@ -8,7 +8,7 @@
 
 #import <SpotlightServices/NSCopying-Protocol.h>
 
-@class NSDictionary, NSString;
+@class MISSING_TYPE, NSDictionary, NSString;
 
 @interface PRSL2FeatureVector : NSObject <NSCopying>
 {
@@ -19,20 +19,22 @@
     unsigned char _values;
     float _originalL2Score;
     float _experimentalScore;
+    float _withinBundleScore;
     NSString *_bundleID;
     NSString *_device_type;
     NSDictionary *_searchThroughCEPData;
-    struct ranking_index_score_t _indexScore;
+    MISSING_TYPE *_indexScore;
 }
 
 + (struct FeatureInfo *)featureForName:(id)arg1;
 + (id)contextWithFeatureOrder:(id)arg1 withInflation:(unsigned long long)arg2 withInflatedIndexToSize:(id)arg3;
 + (struct __CFSet *)getL2FeatureSet;
 + (void)initialize;
-@property(nonatomic) struct ranking_index_score_t indexScore; // @synthesize indexScore=_indexScore;
+@property(nonatomic) MISSING_TYPE *indexScore; // @synthesize indexScore=_indexScore;
 @property(retain, nonatomic) NSDictionary *searchThroughCEPData; // @synthesize searchThroughCEPData=_searchThroughCEPData;
 @property(retain, nonatomic) NSString *device_type; // @synthesize device_type=_device_type;
 @property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property(nonatomic) float withinBundleScore; // @synthesize withinBundleScore=_withinBundleScore;
 @property(nonatomic) float experimentalScore; // @synthesize experimentalScore=_experimentalScore;
 @property(nonatomic) float originalL2Score; // @synthesize originalL2Score=_originalL2Score;
 - (void).cxx_destruct;
@@ -45,7 +47,7 @@
 - (id)_dictionaryRepresentationWithoutDefaultValues:(_Bool)arg1;
 - (id)dictionaryRepresentation;
 - (void)setScores:(float *)arg1 forFeatures:(unsigned short *)arg2 count:(unsigned long long)arg3;
-- (float *)getAllScores:(float [1186])arg1;
+- (float *)getAllScores:(float [1235])arg1;
 - (float)scoreForFeature:(unsigned short)arg1;
 @property(readonly, nonatomic) _Bool receiverIsVip;
 @property(readonly, nonatomic) _Bool senderIsVip;
@@ -53,6 +55,7 @@
 @property(nonatomic) _Bool isAppInDock;
 @property(nonatomic) _Bool isSiriAction;
 @property(nonatomic) _Bool displayNameFuzzySpecialInsertion;
+- (id)initWithCache:(struct PRSL2FeatureScoreSmallCache)arg1 featureData:(void *)arg2 featureDataSize:(unsigned short)arg3 flags:(unsigned char)arg4 values:(unsigned char)arg5;
 - (id)init;
 
 @end

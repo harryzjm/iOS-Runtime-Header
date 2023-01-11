@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, NSDictionary;
 
 @interface ARObjectDetectionTechnique
 {
     _Bool _finishedLoadingObjects;
+    NSDictionary *_referenceObjecteMap;
     NSArray *_detectionObjects;
 }
 
 @property(readonly, nonatomic) NSArray *detectionObjects; // @synthesize detectionObjects=_detectionObjects;
 @property(readonly) _Bool finishedLoadingObjects; // @synthesize finishedLoadingObjects=_finishedLoadingObjects;
+@property(readonly) NSDictionary *referenceObjecteMap; // @synthesize referenceObjecteMap=_referenceObjecteMap;
 - (void).cxx_destruct;
-- (id)initWithTrackingTechnique:(id)arg1 detectionObjects:(id)arg2;
+- (id)initWithDetectionObjects:(id)arg1;
 
 @end
 

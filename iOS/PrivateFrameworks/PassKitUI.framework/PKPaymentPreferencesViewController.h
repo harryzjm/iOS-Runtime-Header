@@ -13,7 +13,7 @@
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, PKPassSnapshotter, PKPaymentPass, PKPaymentPreferenceButtonCell, UITableView, UITextField;
+@class NSArray, NSIndexPath, NSString, PKPassSnapshotter, PKPaymentPass, PKPaymentPreferenceButtonCell, UISwitch, UITableView, UITextField;
 
 @interface PKPaymentPreferencesViewController : UIViewController <CNContactPickerDelegate, UITextFieldDelegate, PKAddressSearcherViewControllerDelegate, PKAddressEditorViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 {
@@ -23,6 +23,7 @@
     PKPaymentPreferenceButtonCell *_sizingButtonCell;
     PKPaymentPass *_paymentPassForBillingErrors;
     PKPaymentPass *_currentlySelectedPaymentPass;
+    UISwitch *_peerPaymentAccountPaymentSwitch;
     NSArray *_latestPreferences;
     NSArray *_preferences;
     long long _style;
@@ -71,6 +72,8 @@
 - (id)tableView:(id)arg1 editActionsForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
+- (id)_hyperlinkFooterViewForPreference:(id)arg1;
+- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
@@ -82,17 +85,18 @@
 - (id)_cellOfClass:(Class)arg1;
 - (id)_cellForNamePreference:(id)arg1 row:(unsigned long long)arg2;
 - (id)_cellForPreference:(id)arg1 row:(unsigned long long)arg2;
+- (void)applePayCashSwitchValueChanged:(id)arg1;
 - (void)setErrors:(id)arg1 animated:(_Bool)arg2;
 - (void)setErrors:(id)arg1 otherPass:(id)arg2 animated:(_Bool)arg3;
 - (void)setErrors:(id)arg1 selectedPass:(id)arg2 animated:(_Bool)arg3;
 - (void)clearErrorsForPreference:(Class)arg1;
+- (id)_peerPaymentAccountPaymentSwitch;
 - (void)_cleanupInlineEdits;
 - (void)_startInlineEditingForPreference:(id)arg1 inSection:(unsigned long long)arg2;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_keyboardDidShow:(id)arg1;
 - (void)_updateNavigationBarButtons;
-- (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_updatePreferredContentSize;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillDisappear:(_Bool)arg1;

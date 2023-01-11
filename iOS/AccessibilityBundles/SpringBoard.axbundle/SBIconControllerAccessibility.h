@@ -11,30 +11,25 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_axIsSidebarPinned;
+- (_Bool)_axIsShowingHomeScreenTodayView;
+- (_Bool)_axHideTodayView;
+- (_Bool)_axShowTodayView;
+- (_Bool)_axSetTodayViewVisible:(_Bool)arg1;
 - (id)_axIconScrollView;
-- (void)_axSetCurrentFolderScrollEnabled:(_Bool)arg1;
 - (id)_axRecipientIconView;
 - (id)_axGrabbedIcons;
 - (id)_axGrabbedIconsLabel;
 - (_Bool)_axIsIconDragging;
 - (id)_axCurrentPageControl;
-- (void)setIsEditing:(_Bool)arg1 withFeedbackBehavior:(id)arg2;
-- (void)closeFolderAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (id)createNewFolderFromRecipientIcon:(id)arg1 grabbedIcon:(id)arg2;
-- (void)pushExpandedIcon:(id)arg1 location:(long long)arg2 withTransitionRequest:(id)arg3 animated:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)resetCurrentVisibleIconListImageVisibilityAndJitterState;
 - (long long)_accessibilityIconListCount;
 - (long long)_accessibilityIconListIndex;
 - (_Bool)_accessibilityCloseOpenFolder;
 - (void)_accessibilityMarkIconAsAnimating:(id)arg1;
-- (void)_accessibilitySimpleMoveIconDropDidFinish:(id)arg1;
 - (id)_axLabelForIcons:(id)arg1;
-- (void)_accessibilityDropGrabbedIconsOnReceivingIconView:(id)arg1;
 - (void)_accessibilityStatusChanged;
 - (void)_accessibilityVoiceOverStatusChanged;
 - (void)_accessibilitySwitchControlStatusChanged;
-- (void)_accessibilityCancelSBAXIconMoveSpeakTimer;
-- (void)animateScrollToPageZeroWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 
 @end

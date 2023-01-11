@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, SAUIImageResource;
+@class NSString, NSURL, SAUIImageResource;
 
 @interface SAVCSContentDetailPage
 {
@@ -14,6 +14,7 @@
 + (id)contentDetailPage;
 @property(copy, nonatomic) NSString *utsId;
 @property(nonatomic) _Bool userDriven;
+@property(copy, nonatomic) NSURL *url;
 @property(copy, nonatomic) NSString *showId;
 @property(copy, nonatomic) NSString *seasonId;
 @property(copy, nonatomic) NSString *loadingText;

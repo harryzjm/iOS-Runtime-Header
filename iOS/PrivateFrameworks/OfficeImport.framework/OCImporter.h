@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSString, NSURL, OCDReader, OITSUProgressContext, TCImportTracing;
+@class NSData, NSString, NSURL, OCDReader, OITSUProgressContext;
 
 __attribute__((visibility("hidden")))
 @interface OCImporter
@@ -12,16 +12,24 @@ __attribute__((visibility("hidden")))
     NSURL *mURL;
     NSData *mData;
     OCDReader *mReader;
-    TCImportTracing *mTracing;
     _Bool mTryAlternateReader;
     OITSUProgressContext *mProgressContext;
+    CDUnknownBlockType mOfficeDOMInspector;
     NSString *_lastPasswordAttempted;
 }
 
 + (void)initialize;
++ (Class)readerClassForURL:(id)arg1;
++ (_Bool)URLIsXML:(id)arg1;
++ (Class)xmlReaderClass;
++ (Class)binaryReaderClass;
++ (id)xmlPathExtensions;
 @property(copy, nonatomic) NSString *lastPasswordAttempted; // @synthesize lastPasswordAttempted=_lastPasswordAttempted;
-@property(readonly, nonatomic) TCImportTracing *tracing; // @synthesize tracing=mTracing;
+@property(copy, nonatomic) CDUnknownBlockType officeDOMInspector; // @synthesize officeDOMInspector=mOfficeDOMInspector;
 @property(retain) OITSUProgressContext *progressContext; // @synthesize progressContext=mProgressContext;
+- (void).cxx_destruct;
+- (Class)readerClass;
+- (_Bool)isXML;
 - (void)finalizeWithDocumentState:(id)arg1;
 - (id)displayName;
 - (id)filename;
@@ -35,7 +43,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithData:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (_Bool)start;
-- (_Bool)isXML;
 
 @end
 

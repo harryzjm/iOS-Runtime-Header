@@ -4,22 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Message/MFDAOfflineCacheOperation-Protocol.h>
-
 @class NSString;
 
-@interface _MFDADeferredDeleteMessageOperation <MFDAOfflineCacheOperation>
+@interface _MFDADeferredDeleteMessageOperation
 {
     NSString *_messageID;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)log;
+- (void).cxx_destruct;
 - (id)description;
-- (_Bool)performWithAccount:(id)arg1 offlineCache:(id)arg2;
-- (void)dealloc;
+- (_Bool)translateToLocalActionWithConnection:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDeleteMessageRequest:(id)arg1;
 
 @end
 

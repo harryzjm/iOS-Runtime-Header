@@ -71,17 +71,20 @@
     _Bool _iosSettingsNotificationsShowInHistoryEnabled;
     _Bool _iosSettingsNotificationsShowOnLockScreenEnabled;
     _Bool _iosSettingsNotificationsSoundEnabled;
+    _Bool _isDiagnosticsUsageEnabled;
     _Bool _isNewUser;
     _Bool _isPaidSubscriber;
     _Bool _isPaidSubscriberFromAppStore;
     _Bool _isPaidSubscriberFromNews;
     _Bool _isPaidSubscriberFromThirdParty;
+    _Bool _isStoreDemoModeEnabled;
     _Bool _locationPermissionGranted;
     _Bool _notificationsEnabled;
     _Bool _privateDataEncrypted;
     _Bool _privateDataSyncOn;
     _Bool _progressivePersonalizationAllowed;
     _Bool _runningObsolete;
+    _Bool _signedIntoITunes;
     _Bool _signedIntoIcloud;
     _Bool _upgradedFromObsolete;
     struct {
@@ -114,22 +117,28 @@
         unsigned int iosSettingsNotificationsShowInHistoryEnabled:1;
         unsigned int iosSettingsNotificationsShowOnLockScreenEnabled:1;
         unsigned int iosSettingsNotificationsSoundEnabled:1;
+        unsigned int isDiagnosticsUsageEnabled:1;
         unsigned int isNewUser:1;
         unsigned int isPaidSubscriber:1;
         unsigned int isPaidSubscriberFromAppStore:1;
         unsigned int isPaidSubscriberFromNews:1;
         unsigned int isPaidSubscriberFromThirdParty:1;
+        unsigned int isStoreDemoModeEnabled:1;
         unsigned int locationPermissionGranted:1;
         unsigned int notificationsEnabled:1;
         unsigned int privateDataEncrypted:1;
         unsigned int privateDataSyncOn:1;
         unsigned int progressivePersonalizationAllowed:1;
         unsigned int runningObsolete:1;
+        unsigned int signedIntoITunes:1;
         unsigned int signedIntoIcloud:1;
         unsigned int upgradedFromObsolete:1;
     } _has;
 }
 
+@property(nonatomic) _Bool isDiagnosticsUsageEnabled; // @synthesize isDiagnosticsUsageEnabled=_isDiagnosticsUsageEnabled;
+@property(nonatomic) _Bool isStoreDemoModeEnabled; // @synthesize isStoreDemoModeEnabled=_isStoreDemoModeEnabled;
+@property(nonatomic) _Bool signedIntoITunes; // @synthesize signedIntoITunes=_signedIntoITunes;
 @property(nonatomic) _Bool iosSettingsNotificationsShowAsBannersEnabled; // @synthesize iosSettingsNotificationsShowAsBannersEnabled=_iosSettingsNotificationsShowAsBannersEnabled;
 @property(nonatomic) _Bool iosSettingsNotificationsShowInHistoryEnabled; // @synthesize iosSettingsNotificationsShowInHistoryEnabled=_iosSettingsNotificationsShowInHistoryEnabled;
 @property(nonatomic) _Bool iosSettingsNotificationsShowOnLockScreenEnabled; // @synthesize iosSettingsNotificationsShowOnLockScreenEnabled=_iosSettingsNotificationsShowOnLockScreenEnabled;
@@ -201,6 +210,9 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasIsDiagnosticsUsageEnabled;
+@property(nonatomic) _Bool hasIsStoreDemoModeEnabled;
+@property(nonatomic) _Bool hasSignedIntoITunes;
 - (int)StringAsWidgetDisplayModeSessionEnd:(id)arg1;
 - (id)widgetDisplayModeSessionEndAsString:(int)arg1;
 @property(nonatomic) _Bool hasWidgetDisplayModeSessionEnd;

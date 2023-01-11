@@ -10,6 +10,7 @@
 
 @class NSString, SKUIContentUnavailableTemplateElement, SKUIContentUnavailableView, SKUILayoutCache, SKUIViewElementLayoutContext;
 
+__attribute__((visibility("hidden")))
 @interface SKUIContentUnavailableDocumentViewController <SKUIArtworkRequestDelegate, SKUILayoutCacheDelegate, SKUIDocumentViewController>
 {
     SKUIContentUnavailableView *_contentUnavailableView;

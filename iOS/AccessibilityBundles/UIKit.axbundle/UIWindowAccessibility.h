@@ -11,8 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)accessibilityAttributeValue:(long long)arg1;
-- (unsigned int)_accessibilityWindowContextId;
+- (_Bool)_isTransparentFocusRegion;
+- (id)_iosAccessibilityAttributeValue:(long long)arg1;
+- (_Bool)accessibilityElementsHidden;
+- (unsigned int)_accessibilityContextId;
 - (void)_orderFrontWithoutMakingKey;
 - (_Bool)accessibilityIsWindow;
 - (unsigned long long)accessibilityTraits;
@@ -20,6 +22,7 @@
 - (void)_setFirstResponder:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (long long)_accessibilityInterfaceOrientationForScreenCoordinates;
+- (void)_axCheckForExistingRemoteElements;
 - (void)_axListenForRemoteElement;
 - (void)_axUpdateForRemoteElement:(id)arg1;
 - (void)_axRemoteElementRegistered:(id)arg1;
@@ -31,8 +34,9 @@
 - (id)_accessibilityRemoteElement;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)_accessibilitySetMarzipanRotors:(id)arg1;
-- (id)_accessibilityMarzipanRotors;
+- (unsigned long long)_accessibilityAutomationType;
+- (void)_accessibilitySetIOSMacRotors:(id)arg1;
+- (id)_accessibilityIOSMacRotors;
 - (void)_accessibilitySetAllRemoteElements:(id)arg1;
 - (id)_accessibilityAllRemoteElements;
 

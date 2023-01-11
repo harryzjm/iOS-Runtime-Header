@@ -8,17 +8,25 @@
 #import <AuthKitUI/AKAppleIDAuthenticationInAppContextPasswordDelegate-Protocol.h>
 #import <AuthKitUI/UITextFieldDelegate-Protocol.h>
 
-@class AKRoundedButton, NSString, UILabel, UITextField, UIView;
+@class AKRoundedButton, NSString, UIColor, UILabel, UITextField, UIView;
 
 @interface AKModalSignInViewController <AKAppleIDAuthenticationInAppContextAlertDelegate, AKAppleIDAuthenticationInAppContextPasswordDelegate, UITextFieldDelegate>
 {
+    _Bool _hideTitle;
     UILabel *_titleLabel;
     UILabel *_bodyLabel;
     UITextField *_passwordField;
     AKRoundedButton *_signInButton;
     UIView *_containerView;
+    UIColor *_backgroundColor;
+    NSString *_customBodyText;
+    NSString *_customButtonTitle;
 }
 
+@property(retain, nonatomic) NSString *customButtonTitle; // @synthesize customButtonTitle=_customButtonTitle;
+@property(retain, nonatomic) NSString *customBodyText; // @synthesize customBodyText=_customBodyText;
+@property(nonatomic) _Bool hideTitle; // @synthesize hideTitle=_hideTitle;
+@property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(retain, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property(retain, nonatomic) AKRoundedButton *signInButton; // @synthesize signInButton=_signInButton;
 @property(retain, nonatomic) UITextField *passwordField; // @synthesize passwordField=_passwordField;
@@ -41,8 +49,12 @@
 - (void)_passwordRecoveryButtonWasTapped:(id)arg1;
 - (void)_updateViewConstraints;
 - (void)_setupConstraints;
+- (id)_buttonTitle;
+- (id)_bodyText;
 - (void)_createViews;
 - (void)_setupViews;
+- (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)init;
 

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <MKPlaceCardReviewsControllerDelegate><MKPlaceCardActionControllerDelegate> reviewsControllerDelegate; // @synthesize reviewsControllerDelegate=_reviewsControllerDelegate;
 @property(retain, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 - (void).cxx_destruct;
+- (id)infoCardChildUnactionableUIElements;
 - (id)infoCardChildPossibleActions;
 - (void)sectionView:(id)arg1 didSelectRow:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)_showReview:(id)arg1 index:(unsigned long long)arg2;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)loadCells;
 - (void)_updateAttribution;
 - (void)viewDidLoad;
+- (_Bool)_canShowWhileLocked;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

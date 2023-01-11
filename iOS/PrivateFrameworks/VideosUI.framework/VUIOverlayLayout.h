@@ -4,32 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <TVMLKit/TVViewLayout.h>
 
-#import <VideosUI/VUIOverlayLayoutProtocol-Protocol.h>
-
-@class NSString, VUIImageLayout, VUIProgressBarLayout;
+@class TVImageLayout, VUIProgressBarLayout, VUITextBadgeLayout, VUITextLayout;
 
 __attribute__((visibility("hidden")))
-@interface VUIOverlayLayout : NSObject <VUIOverlayLayoutProtocol>
+@interface VUIOverlayLayout : TVViewLayout
 {
-    VUIImageLayout *_appImageLayout;
+    _Bool _isDarkTheme;
+    long long _overlayType;
+    VUITextLayout *_titleLayout;
+    VUITextBadgeLayout *_textBadgeLayout;
+    TVImageLayout *_badgeLayout;
     VUIProgressBarLayout *_progressBarLayout;
-    struct UIEdgeInsets _padding;
 }
 
-+ (id)overlayLayoutForInterfaceIdiom:(long long)arg1;
++ (id)layoutWithLayout:(id)arg1 overlayType:(long long)arg2 mediaItem:(id)arg3;
++ (id)layoutWithLayout:(id)arg1 overlayType:(long long)arg2 element:(id)arg3;
 @property(retain, nonatomic) VUIProgressBarLayout *progressBarLayout; // @synthesize progressBarLayout=_progressBarLayout;
-@property(retain, nonatomic) VUIImageLayout *appImageLayout; // @synthesize appImageLayout=_appImageLayout;
-@property(nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
+@property(retain, nonatomic) TVImageLayout *badgeLayout; // @synthesize badgeLayout=_badgeLayout;
+@property(retain, nonatomic) VUITextBadgeLayout *textBadgeLayout; // @synthesize textBadgeLayout=_textBadgeLayout;
+@property(retain, nonatomic) VUITextLayout *titleLayout; // @synthesize titleLayout=_titleLayout;
+@property(nonatomic) long long overlayType; // @synthesize overlayType=_overlayType;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) long long type;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (id)_ribbonTitleLayout;
+- (id)_spotlightTitleLayout;
+- (id)_editorialTitleLayout;
+- (id)_navBrickTitleLayout;
+- (void)_updateLayoutWithMediaItem:(id)arg1 type:(long long)arg2;
+- (void)_updateLayoutWithElement:(id)arg1 andType:(long long)arg2;
 
 @end
 

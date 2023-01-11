@@ -8,7 +8,6 @@
 
 @class NSString, QLAnimatedImage, UIImageView;
 
-__attribute__((visibility("hidden")))
 @interface QLImageItemViewController <QLAnimationTimerObserver>
 {
     UIImageView *_imageView;
@@ -19,9 +18,6 @@ __attribute__((visibility("hidden")))
     _Bool _imageIsAnimated;
 }
 
-+ (_Bool)shouldBeRemoteForContentType:(id)arg1;
-+ (id)supportedContentTypes;
-+ (Class)transformerClass;
 - (void).cxx_destruct;
 - (id)draggableView;
 - (void)animationTimerFired:(double)arg1;

@@ -14,11 +14,14 @@
 + (id)imageAtPath:(id)arg1;
 + (id)imageWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 orientation:(long long)arg3;
 + (void)_accessibilityPerformValidations:(id)arg1;
++ (_Bool)_isSerializableAccessibilityElement;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)dealloc;
+- (id)_imageTintedWithColor:(id)arg1 flatten:(_Bool)arg2 renderingMode:(long long)arg3 withUpdatedCGImage:(_Bool)arg4;
 - (id)imageFlippedForRightToLeftLayoutDirection;
 - (id)accessibilityIdentifier;
+- (id)accessibilityLabel;
 - (id)_doubleBezeledImageWithExteriorShadowRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4 interiorShadowRed:(double)arg5 green:(double)arg6 blue:(double)arg7 alpha:(double)arg8 fillRed:(double)arg9 green:(double)arg10 blue:(double)arg11 alpha:(double)arg12;
 - (id)_bezeledImageWithShadowRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4 fillRed:(double)arg5 green:(double)arg6 blue:(double)arg7 alpha:(double)arg8 drawShadow:(_Bool)arg9;
 - (id)_flatImageWithColor:(id)arg1;
@@ -28,6 +31,7 @@
 - (id)_imageScaledToProportion:(double)arg1 interpolationQuality:(int)arg2;
 - (id)initWithContentsOfFile:(id)arg1;
 - (id)initWithContentsOfFile:(id)arg1 cache:(_Bool)arg2;
+- (id)resizableImageWithCapInsets:(struct UIEdgeInsets)arg1 resizingMode:(long long)arg2;
 - (void)_accessibilityApplyLabelOnMainThread:(id)arg1;
 - (struct CGImage *)CGImage;
 - (id)_accessibilityPhotoDescription;

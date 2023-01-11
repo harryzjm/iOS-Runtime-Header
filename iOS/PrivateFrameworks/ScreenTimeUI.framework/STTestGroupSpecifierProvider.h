@@ -6,6 +6,7 @@
 
 @class NSTimer;
 
+__attribute__((visibility("hidden")))
 @interface STTestGroupSpecifierProvider
 {
     _Bool _isHidden;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ARImageDetectionResultData, ARODTHandleManager, NSArray, NSDictionary, NSObject;
+@class ARImageDetectionResultData, ARODTHandleManager, ARWorldTrackingPoseData, NSArray, NSDictionary, NSObject;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface ARImageDetectionTechnique
@@ -20,14 +20,19 @@
     _Bool _deterministicMode;
     struct shared_ptr<arkit::KeyMapBuffer<const void *, std::__1::vector<unsigned char, std::__1::allocator<unsigned char>>>> _poseBuffer;
     _Bool _needsWorldTrackingPoseData;
+    _Bool _enableAutomaticImageScaleEstimation;
+    ARWorldTrackingPoseData *_currentWorldTrackingPose;
     ARODTHandleManager *_odtTHandleManger;
     NSDictionary *_referenceImageMap;
 }
 
 @property(readonly) NSDictionary *referenceImageMap; // @synthesize referenceImageMap=_referenceImageMap;
 @property(readonly) ARODTHandleManager *odtTHandleManger; // @synthesize odtTHandleManger=_odtTHandleManger;
+@property(retain) ARWorldTrackingPoseData *currentWorldTrackingPose; // @synthesize currentWorldTrackingPose=_currentWorldTrackingPose;
+@property(nonatomic) _Bool enableAutomaticImageScaleEstimation; // @synthesize enableAutomaticImageScaleEstimation=_enableAutomaticImageScaleEstimation;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)updateARPresentationMode:(long long)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (void)_loadReferenceImages;
 @property(readonly, nonatomic) _Bool finishedLoadingImages;

@@ -11,8 +11,7 @@
 #import <NewsCore/FCFetchCoordinatorDelegate-Protocol.h>
 #import <NewsCore/FCJSONEncodableObjectProviding-Protocol.h>
 
-@class FCCKContentDatabase, FCCacheCoordinator, FCFetchCoordinator, FCKeyValueStore, FCThreadSafeMutableDictionary, NSArray, NSDictionary, NSString;
-@protocol OS_dispatch_queue;
+@class FCCKContentDatabase, FCCacheCoordinator, FCFetchCoordinator, FCKeyValueStore, FCThreadSafeMutableDictionary, NFUnfairLock, NSArray, NSDictionary, NSString;
 
 @interface FCRecordSource : NSObject <FCCacheCoordinatorDelegate, FCFetchCoordinatorDelegate, FCCacheFlushing, FCJSONEncodableObjectProviding>
 {
@@ -21,7 +20,8 @@
     NSDictionary *_localizedKeysByOriginalKey;
     NSDictionary *_experimentalizedKeysByOriginalKey;
     NSDictionary *_localizedExperimentalizedKeysByOriginalKey;
-    NSObject<OS_dispatch_queue> *_initQueue;
+    NSDictionary *_localizedLanguageSpecificKeysByOriginalKey;
+    NFUnfairLock *_initializationLock;
     FCCKContentDatabase *_contentDatabase;
     NSString *_contentDirectory;
     FCKeyValueStore *_localStore;
@@ -47,11 +47,12 @@
 @property(readonly, nonatomic) FCKeyValueStore *localStore; // @synthesize localStore=_localStore;
 @property(readonly, nonatomic) NSString *contentDirectory; // @synthesize contentDirectory=_contentDirectory;
 @property(readonly, nonatomic) FCCKContentDatabase *contentDatabase; // @synthesize contentDatabase=_contentDatabase;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *initQueue; // @synthesize initQueue=_initQueue;
+@property(retain, nonatomic) NFUnfairLock *initializationLock; // @synthesize initializationLock=_initializationLock;
 - (void).cxx_destruct;
 - (id)jsonEncodableObject;
 - (void)t_stopOverridingExperimentalizableFieldsPostfixAndTreatmentID;
 - (void)t_startOverridingExperimentalizableFieldsPostfix:(id)arg1 treatmentID:(id)arg2;
+- (id)_deleteRecordsWithWriteLockWithIDs:(id)arg1;
 - (id)_fetchErrorForKey:(id)arg1;
 - (id)_faultableRecordsWithIdentifiers:(id)arg1;
 - (id)_saveCKRecordsWithWriteLock:(id)arg1 updateFetchDateForRecordIdentifiers:(id)arg2 fetchContext:(id)arg3;
@@ -60,7 +61,7 @@
 - (id)_recordBaseFromCKRecord:(id)arg1;
 - (void)_deriveDesiredKeys;
 - (void)_deriveDesiredKeysIfNeeded;
-- (void)_initStore;
+- (void)_initializeStore;
 - (void)_prepareForUse;
 - (void)fetchCoordinator:(id)arg1 addFetchOperation:(id)arg2 context:(id)arg3;
 - (id)fetchCoordinator:(id)arg1 fetchOperationForKeys:(id)arg2 context:(id)arg3 qualityOfService:(long long)arg4 relativePriority:(long long)arg5;
@@ -71,19 +72,23 @@
 - (_Bool)recognizesRecordID:(id)arg1;
 - (_Bool)isRecordStale:(id)arg1 withCachePolicy:(id)arg2;
 - (void)updateFetchDateForRecordIDs:(id)arg1;
+- (id)deleteRecordsWithIDs:(id)arg1;
 - (id)convertRecords:(id)arg1;
 - (id)saveRecords:(id)arg1;
 - (id)cachedRecordsWithIDs:(id)arg1;
 - (id)fetchOperationForRecordsWithIDs:(id)arg1 ignoreCacheForRecordIDs:(id)arg2;
 - (id)fetchOperationForRecordsWithIDs:(id)arg1;
+- (id)_localizedLanguageSpecificKeysByOriginalKeyForContentStoreFrontID:(id)arg1 languageCode:(id)arg2;
 - (id)_localizedExperimentalizedKeysByOriginalKeyForContentStoreFrontID:(id)arg1 experimentPostfix:(id)arg2;
 - (id)_experimentalizedKeysByOriginalKeyForExperimentPostfix:(id)arg1;
 - (id)_localizedKeysByOriginalKeyForContentStoreFrontID:(id)arg1;
-- (id)_desiredKeysForContentStoreFrontID:(id)arg1 experimentPostfix:(id)arg2;
+- (id)_desiredKeysForContentStoreFrontID:(id)arg1 experimentPostfix:(id)arg2 languageCode:(id)arg3;
+@property(readonly, nonatomic) NSDictionary *localizedLanguageSpecificKeysByOriginalKey; // @synthesize localizedLanguageSpecificKeysByOriginalKey=_localizedLanguageSpecificKeysByOriginalKey;
 @property(readonly, nonatomic) NSDictionary *localizedExperimentalizedKeysByOriginalKey; // @synthesize localizedExperimentalizedKeysByOriginalKey=_localizedExperimentalizedKeysByOriginalKey;
 @property(readonly, nonatomic) NSDictionary *experimentalizedKeysByOriginalKey; // @synthesize experimentalizedKeysByOriginalKey=_experimentalizedKeysByOriginalKey;
 @property(readonly, nonatomic) NSDictionary *localizedKeysByOriginalKey; // @synthesize localizedKeysByOriginalKey=_localizedKeysByOriginalKey;
 @property(readonly, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
+@property(readonly, nonatomic) NSArray *localizableLanguageSpecificKeys;
 @property(readonly, nonatomic) NSArray *localizableExperimentalizableKeys;
 @property(readonly, nonatomic) NSArray *experimentalizableKeys;
 @property(readonly, nonatomic) NSArray *localizableKeys;

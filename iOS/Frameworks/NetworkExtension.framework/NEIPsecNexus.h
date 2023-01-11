@@ -4,12 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 @interface NEIPsecNexus
 {
+    NSArray *_nexusInstances;
 }
 
+@property(retain, nonatomic) NSArray *nexusInstances; // @synthesize nexusInstances=_nexusInstances;
+- (void).cxx_destruct;
 - (void)setRemotePacketProxy:(id)arg1;
 - (_Bool)setDefaultInputHandler:(struct nw_protocol *)arg1;
+- (id)initWithName:(id)arg1 delegate:(id)arg2 enableWithChannelCount:(unsigned int)arg3 netifRingSize:(unsigned int)arg4 kernelPipeTxRingSize:(unsigned int)arg5 kernelPipeRxRingSize:(unsigned int)arg6;
+- (id)initWithName:(id)arg1 delegate:(id)arg2 enableWithChannelCount:(unsigned int)arg3;
 - (id)initWithName:(id)arg1 delegate:(id)arg2 shouldCreateKernelChannel:(_Bool)arg3;
 
 @end

@@ -7,11 +7,12 @@
 @interface PXDiagnosticsSettings
 {
     _Bool _enableContextualGesture;
+    _Bool _enableInternalSettingsService;
     _Bool _enableGenericService;
-    _Bool _enableMemoriesRelatedService;
+    _Bool _enableGraphService;
     _Bool _enableTitleFontService;
     _Bool _enableCompleteMyMomentService;
-    _Bool _simulateLaunchedToTest;
+    _Bool _enableDebugDictionaryService;
     _Bool _enableScrollService;
     double _scrollSpeed;
     long long _scrollIterations;
@@ -22,11 +23,12 @@
 @property(nonatomic) long long scrollIterations; // @synthesize scrollIterations=_scrollIterations;
 @property(nonatomic) double scrollSpeed; // @synthesize scrollSpeed=_scrollSpeed;
 @property(nonatomic) _Bool enableScrollService; // @synthesize enableScrollService=_enableScrollService;
-@property(nonatomic) _Bool simulateLaunchedToTest; // @synthesize simulateLaunchedToTest=_simulateLaunchedToTest;
+@property(nonatomic) _Bool enableDebugDictionaryService; // @synthesize enableDebugDictionaryService=_enableDebugDictionaryService;
 @property(nonatomic) _Bool enableCompleteMyMomentService; // @synthesize enableCompleteMyMomentService=_enableCompleteMyMomentService;
 @property(nonatomic) _Bool enableTitleFontService; // @synthesize enableTitleFontService=_enableTitleFontService;
-@property(nonatomic) _Bool enableMemoriesRelatedService; // @synthesize enableMemoriesRelatedService=_enableMemoriesRelatedService;
+@property(nonatomic) _Bool enableGraphService; // @synthesize enableGraphService=_enableGraphService;
 @property(nonatomic) _Bool enableGenericService; // @synthesize enableGenericService=_enableGenericService;
+@property(nonatomic) _Bool enableInternalSettingsService; // @synthesize enableInternalSettingsService=_enableInternalSettingsService;
 @property(nonatomic) _Bool enableContextualGesture; // @synthesize enableContextualGesture=_enableContextualGesture;
 - (void)setDefaultValues;
 - (id)parentSettings;

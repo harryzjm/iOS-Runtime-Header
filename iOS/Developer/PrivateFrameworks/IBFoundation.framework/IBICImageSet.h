@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSOrderedSet, NSSet;
+
 @interface IBICImageSet
 {
     _Bool _preservesVectorRepresentation;
+    short _autoscalingType;
     long long _templateRenderingIntent;
-    long long _autoscalingType;
 }
 
 + (_Bool)encodesCompressionForChildren;
@@ -23,7 +25,7 @@
 + (id)createInstanceNamed:(id)arg1;
 + (id)createDefaultInstancesForUnitTesting;
 + (Class)assetRepClass;
-@property(nonatomic) long long autoscalingType; // @synthesize autoscalingType=_autoscalingType;
+@property(nonatomic) short autoscalingType; // @synthesize autoscalingType=_autoscalingType;
 @property(nonatomic) _Bool preservesVectorRepresentation; // @synthesize preservesVectorRepresentation=_preservesVectorRepresentation;
 @property(nonatomic) long long templateRenderingIntent; // @synthesize templateRenderingIntent=_templateRenderingIntent;
 - (_Bool)isEqualForUnitTests:(id)arg1;
@@ -42,8 +44,8 @@
 - (void)enumerateDescriptionAttributeComponents:(CDUnknownBlockType)arg1;
 - (id)initializeManifestArchivist;
 - (void)createChildrenForSlots:(id)arg1 baseSize:(struct CGSize)arg2;
-- (id)intrinsicallyOrderedChildren;
-- (id)children;
+@property(readonly, nonatomic) NSOrderedSet *intrinsicallyOrderedChildren;
+@property(readonly, nonatomic) NSSet *children;
 - (id)assetRepForStructuredIdentifier:(id)arg1;
 - (id)childForIdentifier:(id)arg1;
 - (id)assetRepForIdentifier:(id)arg1;

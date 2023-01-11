@@ -27,7 +27,7 @@
 - (_Bool)layoutShouldShowReviewScreenScrubberBar:(PUOneUpTilingLayout *)arg1;
 - (_Bool)layout:(PUOneUpTilingLayout *)arg1 shouldShowPlayButtonForItemAtIndexPath:(NSIndexPath *)arg2;
 - (struct CGSize)layout:(PUOneUpTilingLayout *)arg1 assetExplorerReviewScreenBadgeSizeForItemAtIndexPath:(NSIndexPath *)arg2;
-- (struct CGSize)layout:(PUOneUpTilingLayout *)arg1 badgeSizeForItemAtIndexPath:(NSIndexPath *)arg2;
+- (struct CGSize)layout:(PUOneUpTilingLayout *)arg1 badgeSizeForItemAtIndexPath:(NSIndexPath *)arg2 contentWidth:(double)arg3;
 - (_Bool)layout:(PUOneUpTilingLayout *)arg1 shouldScaleToFitSafeInsetsForItemAtIndexPath:(NSIndexPath *)arg2;
 - (double)layout:(PUOneUpTilingLayout *)arg1 aspectRatioForItemAtIndexPath:(NSIndexPath *)arg2;
 @end

@@ -6,23 +6,37 @@
 
 #import <objc/NSObject.h>
 
-#import <WatchListKit/WLKBulletinClient-Protocol.h>
+#import <WatchListKit/UNUserNotificationCenterDelegate-Protocol.h>
+#import <WatchListKit/UNUserNotificationCenterDelegatePrivate-Protocol.h>
 #import <WatchListKit/WLKNotificationsImpl-Protocol.h>
 
-@class NSString, NSXPCConnection;
+@class NSString;
 @protocol WLKNotificationCenterDelegate;
 
-@interface WLKNotificationsImpl_iOS : NSObject <WLKBulletinClient, WLKNotificationsImpl>
+@interface WLKNotificationsImpl_iOS : NSObject <UNUserNotificationCenterDelegate, UNUserNotificationCenterDelegatePrivate, WLKNotificationsImpl>
 {
+    _Bool _topicsAreInitialized;
     id <WLKNotificationCenterDelegate> delegate;
-    NSXPCConnection *_connection;
 }
 
 + (id)_JSONDictForResponse:(id)arg1;
-@property(retain, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property(nonatomic) _Bool topicsAreInitialized; // @synthesize topicsAreInitialized=_topicsAreInitialized;
 @property(nonatomic) __weak id <WLKNotificationCenterDelegate> delegate; // @synthesize delegate;
 - (void).cxx_destruct;
-- (void)receivedBulletinResponse:(id)arg1;
+- (void)userNotificationCenter:(id)arg1 didChangeSettings:(id)arg2;
+- (void)userNotificationCenter:(id)arg1 didOpenApplicationForResponse:(id)arg2;
+- (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)userNotificationCenter:(id)arg1 willPresentNotification:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)_networkReachabilityDidChangeNotification:(id)arg1;
+- (id)_topicIdentifierForCategory:(long long)arg1;
+- (id)_displayNameForSubsectionID:(id)arg1;
+- (void)_fetchTopics:(CDUnknownBlockType)arg1;
+- (void)_initializeTopics;
+- (unsigned long long)_authOptions;
+- (id)_notificationCenter;
+- (_Bool)isCategoryEnabledByUser:(long long)arg1;
+- (void)setBadgeString:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)setBadgeNumber:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)post:(id)arg1 title:(id)arg2 body:(id)arg3 options:(id)arg4;
 - (void)dealloc;
 - (id)init;

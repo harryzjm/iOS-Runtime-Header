@@ -6,13 +6,14 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface TLKIconsView
 {
     NSMutableArray *_imageViews;
-    unsigned long long _style;
+    unsigned long long _prominence;
 }
 
-@property(nonatomic) unsigned long long style; // @synthesize style=_style;
+@property(nonatomic) unsigned long long prominence; // @synthesize prominence=_prominence;
 @property(retain, nonatomic) NSMutableArray *imageViews; // @synthesize imageViews=_imageViews;
 - (void).cxx_destruct;
 - (void)updateIcons:(id)arg1;

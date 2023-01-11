@@ -8,6 +8,9 @@
 
 @protocol MobileInstallerProtocol
 - (void)dieForTesting;
+- (void)systemAppMigratorHasCompleted:(void (^)(_Bool, NSError *))arg1;
+- (void)waitForSystemAppMigratorToComplete:(void (^)(NSError *))arg1;
+- (void)setSystemAppMigrationComplete:(void (^)(NSError *))arg1;
 - (void)snapshotWKAppInCompanionAppID:(NSString *)arg1 toURL:(NSURL *)arg2 options:(NSDictionary *)arg3 completion:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)getAppMetadataForApp:(NSString *)arg1 completion:(void (^)(MIBundleMetadata *, NSError *))arg2;
 - (void)updatePlaceholderMetadataForApp:(NSString *)arg1 installType:(unsigned long long)arg2 failureReason:(unsigned long long)arg3 underlyingError:(NSError *)arg4 failureSource:(unsigned long long)arg5 completion:(void (^)(NSError *))arg6;
@@ -20,7 +23,6 @@
 - (void)processRestoredContainerWithIdentifier:(NSString *)arg1 ofType:(long long)arg2 options:(NSDictionary *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)fetchDiskUsageForIdentifiers:(NSArray *)arg1 withOptions:(NSDictionary *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)enumerateInstalledAppsWithOptions:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)fetchInstalledAppsWithOptions:(NSDictionary *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)fetchInstalledDeveloperAppsWithMountPath:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)updateSystemAppStateForIdentifier:(NSString *)arg1 appState:(int)arg2 completion:(void (^)(NSError *))arg3;
 - (void)lookupSystemAppStateWithOptions:(NSDictionary *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;

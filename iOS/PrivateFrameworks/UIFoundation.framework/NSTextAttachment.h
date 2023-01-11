@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <UIFoundation/NSCoding-Protocol.h>
 #import <UIFoundation/NSSecureCoding-Protocol.h>
 #import <UIFoundation/NSTextAttachmentContainer-Protocol.h>
 
 @class NSData, NSFileWrapper, NSString, NSTextAttachmentView, UIImage, UIView;
 
-@interface NSTextAttachment : NSObject <NSSecureCoding, NSTextAttachmentContainer, NSCoding>
+@interface NSTextAttachment : NSObject <NSTextAttachmentContainer, NSSecureCoding>
 {
     NSData *_data;
     NSString *_uti;
@@ -23,6 +22,7 @@
         unsigned int _allowsTextAttachmentView:1;
         unsigned int _embeddingType:4;
         unsigned int _standaloneAlignment:3;
+        unsigned int _allocatesTextContainer:1;
     } _taFlags;
     NSFileWrapper *_fileWrapper;
     UIImage *_image;
@@ -68,8 +68,11 @@
 - (id)initWithFileWrapper:(id)arg1;
 - (id)init;
 - (id)initWithData:(id)arg1 ofType:(id)arg2;
+- (void)_setAllocatesTextContainer:(_Bool)arg1;
+- (_Bool)_allocatesTextContainer;
 - (id)_image;
 - (id)_cacheKey;
+- (id)_imageForUTI_iOS:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

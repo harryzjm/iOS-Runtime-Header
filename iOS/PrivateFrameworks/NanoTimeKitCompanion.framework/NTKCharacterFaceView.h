@@ -52,13 +52,16 @@
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
-- (void)_renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1;
+- (_Bool)_isAnalog;
+- (void)_renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyShowsCanonicalContent;
 - (void)_applyDataMode;
 - (void)_applyDataModeFromOldDataMode:(long long)arg1;
 - (void)_unloadSnapshotContentViews;
 - (void)_loadSnapshotContentViews;
+- (void)_unloadContentViews;
+- (void)_loadContentViews;
 - (void)_applyForegroundAlphaForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (_Bool)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
@@ -69,7 +72,7 @@
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
-- (id)_curvedPickerMaskForSlot:(id)arg1;
+- (id)_pickerMaskForSlot:(id)arg1;
 - (void)_curvedComplicationCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(_Bool *)arg5 forSlot:(id)arg6;
 - (_Bool)_slotSupportsCurvedText:(id)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
@@ -78,6 +81,8 @@
 - (id)_slotForUtilitySlot:(long long)arg1;
 - (long long)_utilitySlotForSlot:(id)arg1;
 - (_Bool)_needsForegroundContainerView;
+- (void)_stopOutputtingTime;
+- (void)_outputTime:(id)arg1;
 - (void)layoutSubviews;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 

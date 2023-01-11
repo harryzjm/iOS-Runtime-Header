@@ -4,13 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate;
+@class NSDate, NSString;
 
 @interface WLKBasicSportingEventMetadata
 {
     NSDate *_startGameTime;
+    NSString *_leagueName;
+    NSString *_leagueShortName;
 }
 
+@property(readonly, copy, nonatomic) NSString *leagueShortName; // @synthesize leagueShortName=_leagueShortName;
+@property(readonly, copy, nonatomic) NSString *leagueName; // @synthesize leagueName=_leagueName;
 @property(readonly, copy, nonatomic) NSDate *startGameTime; // @synthesize startGameTime=_startGameTime;
 - (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;

@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NUSource;
+#import <NeutrinoCore/NUJSSourceExport-Protocol.h>
 
-@interface NUJSSource
+@class NSString, NUSource;
+
+@interface NUJSSource <NUJSSourceExport>
 {
 }
 
+@property(readonly) NSString *mediaType;
 - (id)toString;
 @property(readonly, nonatomic) NUSource *source;
 - (id)initWithRepresentedObject:(id)arg1 context:(id)arg2;

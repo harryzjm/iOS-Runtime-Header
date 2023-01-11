@@ -4,39 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, NSString;
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
-@interface _TtC13CoreKnowledge17CKSQLBackingStore
+@class MISSING_TYPE;
+
+@interface _TtC13CoreKnowledge17CKSQLBackingStore : _TtCs12_SwiftObject
 {
     MISSING_TYPE *name;
+    MISSING_TYPE *connection;
 }
 
-+ (id)mainInstance;
-- (CDUnknownBlockType).cxx_destruct;
-- (id)init;
-- (void)disableSyncAndDeleteCloudDataWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)dropLinksWithBetween:(id)arg1 and:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)dropLinksWithLabel:(id)arg1 from:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)dropLinkWithLabel:(id)arg1 between:(id)arg2 and:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)removeAllValuesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)removeValuesMatching:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)removeValuesForKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)removeValueForKey:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)decreaseWeightForLinkWithLabel:(id)arg1 between:(id)arg2 and:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)increaseWeightForLinkWithLabel:(id)arg1 between:(id)arg2 and:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)setWeightForLinkWithLabel:(id)arg1 between:(id)arg2 and:(id)arg3 toValue:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)writeBatch;
-- (void)setValue:(id)arg1 forKey:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)triplesComponentsMatching:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)dictionaryRepresentationForKeysMatching:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)dictionaryRepresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)valuesForKeysMatching:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)valuesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)valueForKey:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)keysMatching:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)keysWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (void)setDirectory:(id)arg1;
++ (id)directory;
 - (id)initWithName:(id)arg1;
-@property(nonatomic, copy) NSString *name; // @synthesize name;
 
 @end
 

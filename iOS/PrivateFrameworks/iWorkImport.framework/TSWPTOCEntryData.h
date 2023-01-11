@@ -5,12 +5,14 @@
 //
 
 #import <iWorkImport/TSPCopying-Protocol.h>
+#import <iWorkImport/TSSStyleClient-Protocol.h>
 
-@class NSString, TSWPListStyle, TSWPParagraphStyle;
+@class NSString, TSWPListStyle, TSWPParagraphStyle, TSWPStorage;
 
 __attribute__((visibility("hidden")))
-@interface TSWPTOCEntryData <TSPCopying>
+@interface TSWPTOCEntryData <TSPCopying, TSSStyleClient>
 {
+    TSWPStorage *_storage;
     unsigned long long _paragraphIndex;
     unsigned long long _pageNumber;
     NSString *_numberFormat;
@@ -21,7 +23,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _indexedParagraphLevel;
 }
 
-+ (id)tocEntryDataWithParagraphIndex:(unsigned long long)arg1 pageNumber:(unsigned long long)arg2 numberFormat:(id)arg3 heading:(id)arg4 indexedStyle:(id)arg5 indexedListStyle:(id)arg6 indexedListStart:(unsigned long long)arg7 indexedParagraphLevel:(unsigned long long)arg8;
++ (id)tocEntryDataWithStorage:(id)arg1 paragraphIndex:(unsigned long long)arg2 pageNumber:(unsigned long long)arg3 numberFormat:(id)arg4 heading:(id)arg5 indexedStyle:(id)arg6 indexedListStyle:(id)arg7 indexedListStart:(unsigned long long)arg8 indexedParagraphLevel:(unsigned long long)arg9;
 @property(readonly, nonatomic) unsigned long long indexedParagraphLevel; // @synthesize indexedParagraphLevel=_indexedParagraphLevel;
 @property(readonly, nonatomic) unsigned long long indexedListStart; // @synthesize indexedListStart=_indexedListStart;
 @property(readonly, nonatomic) TSWPListStyle *indexedListStyle; // @synthesize indexedListStyle=_indexedListStyle;
@@ -30,17 +32,24 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy, nonatomic) NSString *numberFormat; // @synthesize numberFormat=_numberFormat;
 @property(readonly, nonatomic) unsigned long long pageNumber; // @synthesize pageNumber=_pageNumber;
 @property(readonly, nonatomic) unsigned long long paragraphIndex; // @synthesize paragraphIndex=_paragraphIndex;
+@property(readonly, nonatomic) __weak TSWPStorage *storage; // @synthesize storage=_storage;
 - (void).cxx_destruct;
+- (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
+- (id)referencedStyles;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)saveToArchive:(struct TOCEntryInstanceArchive *)arg1 archiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)loadFromArchive:(const struct TOCEntryInstanceArchive *)arg1 unarchiver:(id)arg2;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)copyWithContext:(id)arg1;
-- (id)initWithParagraphIndex:(unsigned long long)arg1 pageNumber:(unsigned long long)arg2 numberFormat:(id)arg3 heading:(id)arg4 indexedStyle:(id)arg5 indexedListStyle:(id)arg6 indexedListStart:(unsigned long long)arg7 indexedParagraphLevel:(unsigned long long)arg8;
+- (id)initWithStorage:(id)arg1 paragraphIndex:(unsigned long long)arg2 pageNumber:(unsigned long long)arg3 numberFormat:(id)arg4 heading:(id)arg5 indexedStyle:(id)arg6 indexedListStyle:(id)arg7 indexedListStart:(unsigned long long)arg8 indexedParagraphLevel:(unsigned long long)arg9;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

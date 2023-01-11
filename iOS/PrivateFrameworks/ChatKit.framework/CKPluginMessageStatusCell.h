@@ -6,6 +6,7 @@
 
 @class IMBalloonPluginDataSource, NSString, UIImageView, UIView;
 
+__attribute__((visibility("hidden")))
 @interface CKPluginMessageStatusCell
 {
     NSString *_balloonBundleID;

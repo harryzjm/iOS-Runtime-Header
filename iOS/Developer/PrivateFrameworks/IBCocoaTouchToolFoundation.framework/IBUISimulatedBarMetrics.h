@@ -22,7 +22,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithBarStyle:(long long)arg1;
-- (id)simulatedViewControllerContainingViewController:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,19 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class VNImageAnalyzerCompoundRequestGroupingConfiguration;
+
 __attribute__((visibility("hidden")))
 @interface VNImageAnalyzerCompoundRequest
 {
+    VNImageAnalyzerCompoundRequestGroupingConfiguration *_groupingConfiguration;
 }
 
 + (Class)configurationClass;
 + (_Bool)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
-+ (id)compoundRequestsForOriginalRequests:(id)arg1;
++ (id)compoundRequestsForOriginalRequests:(id)arg1 withPerformingContext:(id)arg2 error:(id *)arg3;
 + (void)_addCompoundRequestsToArray:(id)arg1 forModel:(unsigned long long)arg2 withGroupingConfigurations:(id)arg3;
+- (void).cxx_destruct;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
-- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
 - (_Bool)allowsCachingOfResults;
+- (CDUnknownBlockType)resultsSortingComparator;
+- (_Bool)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
 - (id)_configuredDetectorForRequestRevision:(unsigned long long)arg1 appliedConfigurationOptions:(id *)arg2 error:(id *)arg3;
 - (id)initWithDetectorType:(id)arg1 groupingConfiguration:(id)arg2;
 

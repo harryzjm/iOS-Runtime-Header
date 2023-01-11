@@ -13,12 +13,12 @@ __attribute__((visibility("hidden")))
 {
     struct TUnfairLock _lock;
     const struct TBaseFont *_baseFont;
-    struct TTraitsValues _traitsValue;
     const struct TTraitsValues *_refTraits;
     unsigned long long _count;
     NSArray *_cascade;
     NSMutableArray *_fallbacks;
     unsigned long long _hash;
+    int _uiUse;
 }
 
 - (id).cxx_construct;
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)objectAtIndex:(unsigned long long)arg1 shouldLock:(_Bool)arg2 addRanges:(_Bool)arg3;
 - (unsigned long long)count;
 - (void)dealloc;
-- (id)initWithBaseFont:(const struct TBaseFont *)arg1 cascade:(id)arg2;
+- (id)initWithBaseFont:(const struct TBaseFont *)arg1 cascade:(id)arg2 uiUse:(int)arg3;
 
 @end
 

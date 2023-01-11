@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NewsCore/FCFeedPersonalizingArticle-Protocol.h>
+#import <NewsCore/FCFeedPersonalizingItem-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
 @class NSString;
+@protocol FCChannelProviding;
 
-@protocol FCFeedTransformationItem <NSObject, FCFeedPersonalizingArticle>
+@protocol FCFeedTransformationItem <NSObject, FCFeedPersonalizingItem>
 @property(readonly, nonatomic) _Bool canBePurchased;
 @property(readonly, nonatomic) long long publisherArticleVersion;
 @property(readonly, nonatomic) long long minimumNewsVersion;
@@ -19,11 +20,13 @@
 @property(readonly, nonatomic) unsigned long long feedHalfLifeMilliseconds;
 @property(readonly, nonatomic) unsigned long long publishDateMilliseconds;
 @property(readonly, copy, nonatomic) NSString *sourceChannelID;
-@property(readonly, nonatomic, getter=isPaid) _Bool paid;
 @property(readonly, nonatomic) unsigned long long order;
 @property(readonly, nonatomic) unsigned long long contentType;
 @property(readonly, copy, nonatomic) NSString *clusterID;
 @property(readonly, copy, nonatomic) NSString *articleID;
 @property(readonly, copy, nonatomic) NSString *feedID;
+
+@optional
+@property(readonly, copy, nonatomic) id <FCChannelProviding> sourceChannel;
 @end
 

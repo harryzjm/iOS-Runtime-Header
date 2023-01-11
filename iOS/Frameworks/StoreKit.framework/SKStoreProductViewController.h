@@ -39,6 +39,7 @@
 + (id)_defaultIXStoreSheetDictionary;
 + (void)getCanLoadURL:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 + (void)getCanLoadURL:(id)arg1 withURLBag:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
++ (id)allocWithZone:(struct _NSZone *)arg1;
 @property(nonatomic) _Bool automaticallyDismisses; // @synthesize automaticallyDismisses=_automaticallyDismisses;
 @property(copy, nonatomic) NSString *promptString; // @synthesize promptString=_promptString;
 @property(nonatomic) _Bool showsRightBarButton; // @synthesize showsRightBarButton=_showsRightBarButton;
@@ -56,11 +57,14 @@
 - (void)sk_didBecomeOffScreen:(id)arg1;
 - (void)sk_didBecomeOnScreen:(id)arg1;
 - (void)_throwUnsupportedPresentationException;
+- (void)_configureForFullScreenPresentationOrThrowException;
 - (void)_setLoadBlock:(CDUnknownBlockType)arg1;
 - (void)_requestRemoteViewController;
 - (void)_forceOrientationBackToSupportedOrientation;
 - (void)_fireLoadBlockBeforeFinishing;
 - (void)_addRemoteView;
+- (void)setPresentationStyleIfNeeded;
+- (void)setParentViewController:(id)arg1;
 - (_Bool)_isPeeking;
 - (void)_resetRemoteViewController;
 - (void)_presentPageWithRequest:(id)arg1 animated:(_Bool)arg2;
@@ -85,6 +89,8 @@
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)loadView;
 - (void)loadProductWithParameters:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (long long)modalTransitionStyle;
+- (long long)modalPresentationStyle;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 

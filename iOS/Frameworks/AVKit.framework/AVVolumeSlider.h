@@ -11,12 +11,17 @@
 
 @class AVVolumeWarningView, NSNumber, NSString, UIImageView;
 
+__attribute__((visibility("hidden")))
 @interface AVVolumeSlider : UISlider <AVExternalGestureRecognizerPreventing, AVPlaybackControlsViewItem>
 {
     _Bool _included;
     _Bool _collapsed;
     _Bool _hasAlternateAppearance;
     _Bool _hasFullScreenAppearance;
+    _Bool _removed;
+    _Bool _animatingVolumeChange;
+    _Bool _hasChangedLocationAtLeastOnce;
+    _Bool _scrubsWhenTappedAnywhere;
     float _effectiveVolumeLimit;
     UIImageView *_thumbView;
     NSNumber *_unclampedValue;
@@ -24,7 +29,11 @@
     struct CGSize _extrinsicContentSize;
 }
 
+@property(nonatomic) _Bool scrubsWhenTappedAnywhere; // @synthesize scrubsWhenTappedAnywhere=_scrubsWhenTappedAnywhere;
+@property(nonatomic) _Bool hasChangedLocationAtLeastOnce; // @synthesize hasChangedLocationAtLeastOnce=_hasChangedLocationAtLeastOnce;
 @property(nonatomic) __weak AVVolumeWarningView *volumeWarningView; // @synthesize volumeWarningView=_volumeWarningView;
+@property(nonatomic, getter=isAnimatingVolumeChange) _Bool animatingVolumeChange; // @synthesize animatingVolumeChange=_animatingVolumeChange;
+@property(nonatomic, getter=isRemoved) _Bool removed; // @synthesize removed=_removed;
 @property(retain, nonatomic) NSNumber *unclampedValue; // @synthesize unclampedValue=_unclampedValue;
 @property(nonatomic) float effectiveVolumeLimit; // @synthesize effectiveVolumeLimit=_effectiveVolumeLimit;
 @property(retain, nonatomic) UIImageView *thumbView; // @synthesize thumbView=_thumbView;
@@ -35,6 +44,7 @@
 @property(nonatomic) struct CGSize extrinsicContentSize; // @synthesize extrinsicContentSize=_extrinsicContentSize;
 - (void).cxx_destruct;
 - (_Bool)_shouldTrackTouchAtPoint:(struct CGPoint)arg1;
+- (void)_endTracking;
 - (void)setValue:(float)arg1 animated:(_Bool)arg2;
 - (struct CGRect)trackRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)thumbRectForBounds:(struct CGRect)arg1 trackRect:(struct CGRect)arg2 value:(float)arg3;
@@ -47,9 +57,11 @@
 - (struct CGRect)hitRect;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)layoutSubviews;
+- (void)didMoveToWindow;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (struct CGSize)intrinsicContentSize;
 - (_Bool)avkit_shouldPreventExternalGestureRecognizerAtPoint:(struct CGPoint)arg1;
+- (void)setHidden:(_Bool)arg1;
 @property(readonly, nonatomic, getter=isCollapsedOrExcluded) _Bool collapsedOrExcluded;
 - (id)initWithFrame:(struct CGRect)arg1;
 

@@ -6,6 +6,7 @@
 
 @class UILayoutGuide;
 
+__attribute__((visibility("hidden")))
 @interface CKDetailsAddMemberLargeTextCell
 {
     UILayoutGuide *_leadingGuide;
@@ -16,6 +17,7 @@
 - (void).cxx_destruct;
 - (void)_initLabel;
 - (void)_initConstraints;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

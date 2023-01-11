@@ -6,6 +6,7 @@
 
 @class OIXMLElement, WDParagraph;
 
+__attribute__((visibility("hidden")))
 @interface WMParagraphMapper
 {
     WDParagraph *wdParagraph;

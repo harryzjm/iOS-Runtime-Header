@@ -4,11 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIDebuggingInformationObserver-Protocol.h>
-
-@class NSString;
-
-@interface _UILinearForceLevelClassifier <UIDebuggingInformationObserver>
+@interface _UILinearForceLevelClassifier
 {
     double _smoothedForce;
     _Bool _anyForceObservations;
@@ -42,12 +38,6 @@
 - (void)debuggingPropertyForKey:(id)arg1 changedToValue:(id)arg2;
 - (void)touchForceMultiplierDidChange;
 - (id)init;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

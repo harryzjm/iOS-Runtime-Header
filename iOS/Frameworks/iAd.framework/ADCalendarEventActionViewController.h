@@ -6,25 +6,23 @@
 
 #import <iAd/EKEventEditViewDelegate-Protocol.h>
 
-@class ADEventEditViewController, ADHomeButtonHandler, EKEvent, NSString;
+@class ADEventEditViewController, EKEvent, NSString;
 
 @interface ADCalendarEventActionViewController <EKEventEditViewDelegate>
 {
-    ADHomeButtonHandler *_homeButtonHandler;
     EKEvent *_calendarEvent;
     ADEventEditViewController *_eventKitEditViewController;
 }
 
 @property(retain, nonatomic) ADEventEditViewController *eventKitEditViewController; // @synthesize eventKitEditViewController=_eventKitEditViewController;
 @property(retain, nonatomic) EKEvent *calendarEvent; // @synthesize calendarEvent=_calendarEvent;
-@property(retain, nonatomic) ADHomeButtonHandler *homeButtonHandler; // @synthesize homeButtonHandler=_homeButtonHandler;
+- (void).cxx_destruct;
 - (void)eventEditViewController:(id)arg1 didCompleteWithAction:(long long)arg2;
 - (void)clientApplicationDidEnterBackground;
 - (void)dismiss;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)didSetAdSpace;
-- (void)dealloc;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

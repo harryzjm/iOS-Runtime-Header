@@ -13,7 +13,6 @@
 @interface CalDAVServerVersion : NSObject <NSCopying>
 {
     _Bool _supportsTimeRangeFilter;
-    _Bool _supportsTodoTimeRangeFilter;
     _Bool _supportsTimeRangeFilterWithoutEndDate;
     _Bool _supportsTimeRangeFilterOnInbox;
     _Bool _supportsAutoSchedule;
@@ -72,10 +71,11 @@
 @property(nonatomic) _Bool supportsAutoSchedule; // @synthesize supportsAutoSchedule=_supportsAutoSchedule;
 @property(nonatomic) _Bool supportsTimeRangeFilterOnInbox; // @synthesize supportsTimeRangeFilterOnInbox=_supportsTimeRangeFilterOnInbox;
 @property(nonatomic) _Bool supportsTimeRangeFilterWithoutEndDate; // @synthesize supportsTimeRangeFilterWithoutEndDate=_supportsTimeRangeFilterWithoutEndDate;
-@property(nonatomic) _Bool supportsTodoTimeRangeFilter; // @synthesize supportsTodoTimeRangeFilter=_supportsTodoTimeRangeFilter;
 @property(nonatomic) _Bool supportsTimeRangeFilter; // @synthesize supportsTimeRangeFilter=_supportsTimeRangeFilter;
 @property(nonatomic) double version; // @synthesize version=_version;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool shouldUseDeleteAndAddInsteadOfMoveBetweenCalendars;
+@property(readonly, nonatomic) _Bool requiresOpeningAttachmentAsLink;
 - (id)propertyValue;
 @property(readonly, nonatomic) NSString *type;
 - (id)description;

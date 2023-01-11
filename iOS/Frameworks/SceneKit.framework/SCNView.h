@@ -10,7 +10,7 @@
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
 @class AVAudioEngine, AVAudioEnvironmentNode, CALayer, EAGLContext, NSArray, NSString, SCNCameraController, SCNDisplayLink, SCNJitterer, SCNNode, SCNRecursiveLock, SCNRenderer, SCNScene, SCNSpriteKitEventHandler, SCNTechnique, SKScene, UIColor;
-@protocol SCNCameraControlConfiguration, SCNEventHandler, SCNSceneRendererDelegate;
+@protocol MTLCommandQueue, MTLDevice, MTLRenderCommandEncoder, SCNCameraControlConfiguration, SCNEventHandler, SCNSceneRendererDelegate;
 
 @interface SCNView : UIView <SCNSceneRenderer, SCNTechniqueSupport>
 {
@@ -24,8 +24,8 @@
     unsigned int _rendersContinuously:1;
     unsigned int _firstDrawDone:1;
     unsigned int _drawOnMainThreadPending:1;
-    unsigned int _appIsDeactivated:1;
     unsigned int _viewIsOffscreen:1;
+    unsigned int _appIsDeactivated:1;
     unsigned int _autoPausedScene:1;
     unsigned int _inRenderQueueForLayerBackedGLRendering:1;
     unsigned int _disableLinearRendering:1;
@@ -35,6 +35,7 @@
     SCNRenderer *_renderer;
     SCNScene *_scene;
     _Bool _displayLinkCreationRequested;
+    _Bool _skipFramesIfNoDrawableAvailable;
     SCNDisplayLink *_displayLink;
     long long _preferredFramePerSeconds;
     CALayer *_backingLayer;
@@ -46,6 +47,7 @@
     unsigned long long _snapshotImageDataLength;
     id <SCNEventHandler> _navigationCameraController;
     SCNSpriteKitEventHandler *_spriteKitEventHandler;
+    id <MTLDevice> _device;
     NSArray *_controllerGestureRecognizers;
 }
 
@@ -56,6 +58,7 @@
 + (id)_kvoKeysForwardedToRenderer;
 + (_Bool)lowLatency;
 + (_Bool)_isMetalSupported;
++ (id)deviceForOptions:(id)arg1;
 + (unsigned long long)renderingAPIForOptions:(id)arg1;
 - (long long)_preferredFocusMovementStyle;
 - (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
@@ -76,13 +79,14 @@
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)_setGestureRecognizers:(id)arg1;
-- (void)_updateGestureRecognizers;
+- (void)scn_setGestureRecognizers:(id)arg1;
+- (void)scn_updateGestureRecognizers;
 - (_Bool)_controlsOwnScaleFactor;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)displayLayer:(id)arg1;
 - (void)setContentScaleFactor:(double)arg1;
 @property(retain, nonatomic) EAGLContext *eaglContext;
+- (void)setNeedsDisplay;
 - (double)_runFPSTestWithDuration:(double)arg1;
 @property(readonly, nonatomic) unsigned long long renderingAPI;
 - (void)setIbWantsMultisampling:(_Bool)arg1;
@@ -103,6 +107,10 @@
 - (_Bool)_showsAuthoringEnvironment;
 @property(nonatomic) unsigned long long debugOptions;
 - (void)_updateProbes:(id)arg1 withProgress:(id)arg2;
+- (void)set_shouldDelegateARCompositing:(_Bool)arg1;
+- (_Bool)_shouldDelegateARCompositing;
+- (void)set_enableARMode:(_Bool)arg1;
+- (_Bool)_enableARMode;
 - (void)set_disableLinearRendering:(_Bool)arg1;
 - (_Bool)_disableLinearRendering;
 - (void)set_enablesDeferredShading:(_Bool)arg1;
@@ -118,6 +126,7 @@
 @property(nonatomic) _Bool showsStatistics;
 - (void)_sceneDidUpdate:(id)arg1;
 - (void)_systemTimeAnimationStarted:(id)arg1;
+@property(nonatomic) _Bool usesReverseZ;
 - (void)_setNeedsDisplay;
 @property(nonatomic) long long preferredFramesPerSecond;
 - (_Bool)_checkAndUpdateDisplayLinkStateIfNeeded;
@@ -131,6 +140,13 @@
 - (void)prepareObjects:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)prepareObject:(id)arg1 shouldAbortBlock:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) void *context;
+@property(readonly, nonatomic) unsigned long long stencilPixelFormat;
+@property(readonly, nonatomic) unsigned long long depthPixelFormat;
+@property(readonly, nonatomic) unsigned long long colorPixelFormat;
+@property(readonly, nonatomic) id <MTLCommandQueue> commandQueue;
+@property(readonly, nonatomic) id <MTLDevice> device;
+@property(readonly, nonatomic) id <MTLRenderCommandEncoder> currentRenderCommandEncoder;
+- (id)currentRenderPassDescriptor;
 @property(nonatomic) _Bool autoenablesDefaultLighting;
 @property(nonatomic) double sceneTime;
 - (_Bool)isOpaque;
@@ -169,20 +185,28 @@
 @property(readonly, nonatomic) AVAudioEngine *audioEngine;
 - (id)pointOfCulling;
 - (void)setPointOfCulling:(id)arg1;
+@property(readonly, nonatomic) struct CGRect currentViewport;
 @property(retain, nonatomic) SCNNode *pointOfView;
 - (void)setPointOfView:(id)arg1 animate:(_Bool)arg2;
 - (void)layoutSubviews;
 - (void)_drawAtTime:(double)arg1;
 - (struct CGSize)_updateBackingSize;
+- (struct CGSize)backingSizeForBoundSize:(struct CGSize)arg1;
 - (void)_updateContentsScaleFactor;
 - (void)_resetContentsScaleFactor;
 - (void)updateAtTime:(double)arg1;
 - (void)SCN_displayLinkCallback:(double)arg1;
 - (id)_renderingQueue;
 - (_Bool)scn_inLiveResize;
+- (void)setAsynchronousResizing:(_Bool)arg1;
+- (_Bool)asynchronousResizing;
+- (void)setDrawableResizesAsynchronously:(_Bool)arg1;
+- (_Bool)drawableResizesAsynchronously;
+- (void)_scnUpdateContentsGravity;
 - (_Bool)_canJitter;
 - (_Bool)_supportsJitteringSyncRedraw;
 - (void)_jitterRedisplay;
+@property(nonatomic, getter=isTemporalAntialiasingEnabled) _Bool temporalAntialiasingEnabled;
 @property(nonatomic, getter=isJitteringEnabled) _Bool jitteringEnabled;
 - (void)scn_setBackingLayer:(id)arg1;
 - (id)scn_backingLayer;
@@ -193,6 +217,8 @@
 - (void)set_screenTransform:(struct SCNMatrix4)arg1;
 - (double)_superSamplingFactor;
 - (void)set_superSamplingFactor:(double)arg1;
+- (void)setSkipFramesIfNoDrawableAvailable:(_Bool)arg1;
+- (_Bool)skipFramesIfNoDrawableAvailable;
 @property(retain, nonatomic) SCNScene *scene;
 - (void)presentScene:(id)arg1 withTransition:(id)arg2 incomingPointOfView:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
@@ -203,7 +229,8 @@
 - (id)initWithFrame:(struct CGRect)arg1 options:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)_commonInit:(id)arg1;
-- (void)_initializeDisplayLink;
+- (void)_adjustBackingLayerPixelFormat;
+- (void)_initializeDisplayLinkWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

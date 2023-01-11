@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableDictionary, NSNumber, NSSet, NSString, VUIContentRating, VUIMediaEntityKind, VUIMediaEntityType, VUIMediaLibrary;
+@class NSDate, NSMutableDictionary, NSNumber, NSSet, NSString, VUIMediaEntityKind, VUIMediaEntityType, VUIMediaLibrary, _TVContentRating;
 @protocol VUIMediaEntityIdentifier, VUIMediaEntityIdentifierInternal;
 
 @interface VUIMediaEntity : NSObject
@@ -25,7 +25,7 @@
 @property(nonatomic) _Bool cachesPropertiesOnFirstAccess; // @synthesize cachesPropertiesOnFirstAccess=_cachesPropertiesOnFirstAccess;
 @property(retain, nonatomic) NSMutableDictionary *firstAccessPropertiesCache; // @synthesize firstAccessPropertiesCache=_firstAccessPropertiesCache;
 @property(copy, nonatomic) NSObject<VUIMediaEntityIdentifierInternal> *identifierInternal; // @synthesize identifierInternal=_identifierInternal;
-@property(readonly, nonatomic, getter=hasLocalChanges) _Bool localChanges; // @synthesize localChanges=_localChanges;
+@property(nonatomic, getter=hasLocalChanges) _Bool localChanges; // @synthesize localChanges=_localChanges;
 @property(retain, nonatomic) VUIMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 - (void).cxx_destruct;
 - (id)_defaultValueForPropertyDescriptor:(id)arg1;
@@ -43,9 +43,11 @@
 @property(readonly, copy, nonatomic) NSString *showTitle;
 @property(readonly, copy, nonatomic) NSObject<VUIMediaEntityIdentifier> *showIdentifier;
 @property(copy, nonatomic) NSNumber *playedState;
+@property(readonly, copy, nonatomic) NSString *canonicalID;
+@property(readonly, copy, nonatomic) NSNumber *purchaseHistoryID;
 @property(readonly, copy, nonatomic) NSNumber *storeID;
 @property(readonly, copy, nonatomic) NSString *coverArtImageIdentifier;
-@property(readonly, copy, nonatomic) VUIContentRating *contentRating;
+@property(readonly, copy, nonatomic) _TVContentRating *contentRating;
 @property(readonly, copy, nonatomic) NSNumber *releaseYear;
 @property(readonly, copy, nonatomic) NSDate *releaseDate;
 @property(readonly, copy, nonatomic) NSDate *addedDate;

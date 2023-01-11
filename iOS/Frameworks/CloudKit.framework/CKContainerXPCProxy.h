@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <CloudKit/CKXPCClient-Protocol.h>
+#import <CloudKit/CKXPCDiscretionaryClient-Protocol.h>
 
 @class CKContainer, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKContainerXPCProxy : NSObject <CKXPCClient>
+@interface CKContainerXPCProxy : NSObject <CKXPCClient, CKXPCDiscretionaryClient>
 {
     CKContainer *_container;
 }
@@ -19,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak CKContainer *container; // @synthesize container=_container;
 - (void).cxx_destruct;
 - (void)consumeSandboxExtensions:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)readBytesOfInMemoryAssetContentWithUUID:(id)arg1 offset:(unsigned long long)arg2 length:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)getFileMetadataWithFileHandle:(id)arg1 openInfo:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)openFileWithOpenInfo:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)handleOperationCheckpoint:(id)arg1 forOperationWithID:(id)arg2;
@@ -26,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)handleOperationStatistics:(id)arg1 forOperationWithID:(id)arg2;
 - (void)handleOperationProgress:(id)arg1 forOperationWithID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)handleOperationProgress:(id)arg1 forOperationWithID:(id)arg2;
+- (void)cancelOperationID:(id)arg1;
 - (id)initWithContainer:(id)arg1;
 
 // Remaining properties

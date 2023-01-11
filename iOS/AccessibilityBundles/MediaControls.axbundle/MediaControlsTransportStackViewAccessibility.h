@@ -14,7 +14,7 @@
 - (void)setStyle:(long long)arg1;
 - (void)setResponse:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)_updateButtonImage:(id)arg1 button:(id)arg2;
+- (void)_updateButtonVisualStyling:(id)arg1;
 - (id)accessibilityElements;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityDescriptionForCommandRequest:(id)arg1;

@@ -9,7 +9,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)thinKeycapsFontName;
 - (id)lightKeycapsFontName;
 - (_Bool)isTallPopup;
 - (struct CGPoint)popupSymbolTextOffset;

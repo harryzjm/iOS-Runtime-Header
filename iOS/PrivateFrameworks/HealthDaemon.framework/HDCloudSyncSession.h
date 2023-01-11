@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSSet;
+@class HDCloudSyncSequenceRecord, NSSet;
 
 @interface HDCloudSyncSession
 {
     NSSet *_excludedSyncStores;
-    NSDictionary *_anchorClockForExcludedStores;
+    HDCloudSyncSequenceRecord *_sequenceRecord;
 }
 
-@property(readonly, nonatomic) NSDictionary *anchorClockForExcludedStores; // @synthesize anchorClockForExcludedStores=_anchorClockForExcludedStores;
+@property(retain, nonatomic) HDCloudSyncSequenceRecord *sequenceRecord; // @synthesize sequenceRecord=_sequenceRecord;
 - (void).cxx_destruct;
 - (long long)maxEncodedBytesPerMessageForSyncEntityClass:(Class)arg1;
-- (id)predicateForSyncEntityClass:(Class)arg1;
 - (id)newChangeWithSyncEntityClass:(Class)arg1;
 - (void)setExcludedSyncStores:(id)arg1;
 - (id)excludedSyncStores;

@@ -8,16 +8,17 @@
 
 #import <HealthDaemon/HDAssertionObserver-Protocol.h>
 
-@class HDAssertionManager, NSString, RadiosPreferences;
+@class HDAssertion, HDAssertionManager, HDDaemon, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDPowerSavingModeManager : NSObject <HDAssertionObserver>
 {
+    HDDaemon *_daemon;
     NSObject<OS_dispatch_queue> *_queue;
     HDAssertionManager *_assertionManager;
-    RadiosPreferences *_radioPrefs;
     _Bool _powerSavingModeEnabled;
     _Bool _supportsCellularTelephony;
+    HDAssertion *_disableAOTAssertion;
 }
 
 - (void).cxx_destruct;
@@ -26,13 +27,13 @@
 - (void)_stopObservingPowerSavingModeSetting;
 - (void)_startObservingPowerSavingModeSetting;
 - (void)_queue_disablePowerSavingIfNeeded;
-- (void)_queue_enablePowerSavingIfNeeded;
+- (void)_queue_enablePowerSavingIfNeededForOwnerIdentifier:(id)arg1;
 - (void)assertionManager:(id)arg1 assertionInvalidated:(id)arg2;
 - (void)assertionManager:(id)arg1 assertionTaken:(id)arg2;
 - (id)takeSessionAssertionForOwnerIdentifier:(id)arg1 activityType:(unsigned long long)arg2;
 - (_Bool)supportsPowerSavingForActivityType:(unsigned long long)arg1;
 - (void)dealloc;
-- (id)init;
+- (id)initWithDaemon:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

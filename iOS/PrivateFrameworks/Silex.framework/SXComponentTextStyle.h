@@ -4,12 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SXDropCapStyle, SXTextStyle;
+#import <Silex/SXComponentTextStyle-Protocol.h>
 
-@interface SXComponentTextStyle
+@class NSString, SXDropCapStyle, SXJSONArray, SXTextDecoration, SXTextShadow, SXTextStroke, SXTextStyle, UIColor;
+@protocol SXTextStyleFontAttributes;
+
+@interface SXComponentTextStyle <SXComponentTextStyle>
 {
 }
 
++ (CDUnknownBlockType)valueClassBlockForPropertyWithName:(id)arg1;
+- (_Bool)fontScalingWithValue:(id)arg1 withType:(int)arg2;
 - (long long)hyphenationWithValue:(id)arg1 withType:(int)arg2;
 - (double)relativeLineHeightWithValue:(id)arg1 withType:(int)arg2;
 - (long long)exactLineHeightWithValue:(id)arg1 withType:(int)arg2;
@@ -17,17 +22,36 @@
 - (long long)textAlignmentWithValue:(id)arg1 withType:(int)arg2;
 
 // Remaining properties
+@property(readonly, nonatomic) UIColor *backgroundColor;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) SXDropCapStyle *dropCapStyle; // @dynamic dropCapStyle;
 @property(readonly, nonatomic) long long exactLineHeight; // @dynamic exactLineHeight;
 @property(readonly, nonatomic) long long firstLineIndent; // @dynamic firstLineIndent;
+@property(readonly, nonatomic) id <SXTextStyleFontAttributes> fontAttributes;
+@property(readonly, nonatomic) NSString *fontName;
+@property(readonly, nonatomic) _Bool fontScaling; // @dynamic fontScaling;
+@property(readonly, nonatomic) long long fontSize;
 @property(readonly, nonatomic) _Bool hangingPunctuation; // @dynamic hangingPunctuation;
+@property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) long long hyphenation; // @dynamic hyphenation;
+@property(readonly, nonatomic) NSString *identifier;
 @property(readonly, nonatomic) long long lineHeight; // @dynamic lineHeight;
 @property(readonly, nonatomic) SXTextStyle *linkStyle; // @dynamic linkStyle;
+@property(readonly, nonatomic) SXJSONArray *listStyle;
 @property(readonly, nonatomic) long long paragraphSpacingAfter; // @dynamic paragraphSpacingAfter;
 @property(readonly, nonatomic) long long paragraphSpacingBefore; // @dynamic paragraphSpacingBefore;
 @property(readonly, nonatomic) double relativeLineHeight; // @dynamic relativeLineHeight;
+@property(readonly, nonatomic) SXTextDecoration *strikethrough;
+@property(readonly, nonatomic) SXTextStroke *stroke;
+@property(readonly) Class superclass;
 @property(readonly, nonatomic) long long textAlignment; // @dynamic textAlignment;
+@property(readonly, nonatomic) UIColor *textColor;
+@property(readonly, nonatomic) SXTextShadow *textShadow;
+@property(readonly, nonatomic) long long textTransform;
+@property(readonly, nonatomic) double tracking;
+@property(readonly, nonatomic) SXTextDecoration *underline;
+@property(readonly, nonatomic) int verticalAlignment;
 
 @end
 

@@ -4,23 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <MapKit/MKInfoCardThemeListener-Protocol.h>
 #import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
 #import <MapKit/MKStackingViewControllerFixedHeightAware-Protocol.h>
 #import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
-@class MKMapItem, MKPlaceSectionHeaderView, NSArray, NSMutableDictionary, NSString, NSTimeZone, _MKLocalizedHoursBuilder;
+@class MKMapItem, MKPlaceSectionHeaderView, NSArray, NSString, NSTimeZone;
 @protocol _MKInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MKPlaceHoursViewController <MKStackingViewControllerFixedHeightAware, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol>
+@interface MKPlaceHoursViewController <MKStackingViewControllerFixedHeightAware, MKInfoCardThemeListener, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol>
 {
     _Bool _isExpanded;
     MKPlaceSectionHeaderView *_headerView;
-    NSMutableDictionary *_formattedData;
-    _MKLocalizedHoursBuilder *_localizedHoursBuilder;
-    NSArray *_completeHours;
-    NSString *_currentOpenHoursString;
-    NSString *_currentOpenStateString;
+    NSArray *_businessHours;
     _Bool _resizableViewsDisabled;
     id <_MKInfoCardAnalyticsDelegate> _analyticsDelegate;
     MKMapItem *_mapItem;
@@ -31,24 +28,22 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <_MKInfoCardAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
 @property(nonatomic) _Bool resizableViewsDisabled; // @synthesize resizableViewsDisabled=_resizableViewsDisabled;
 - (void).cxx_destruct;
+- (id)infoCardChildUnactionableUIElements;
 - (id)infoCardChildPossibleActions;
+- (void)infoCardThemeChanged;
 - (void)_updateHoursAnimated:(_Bool)arg1;
-- (_Bool)_shouldCollapseFurtherAndColorTopString;
-- (id)formattedData;
-- (void)calculateWidthsForData:(id)arg1;
 - (void)_contentSizeDidChange;
 - (void)_toggleShowAllHours;
 - (void)_setExpanded:(_Bool)arg1;
 - (_Bool)_shouldOnlyShowExpanded;
-@property(readonly, nonatomic) _MKLocalizedHoursBuilder *localizedHoursBuilder;
-@property(readonly, nonatomic) NSString *currentOpenStateString;
-@property(readonly, nonatomic) NSString *currentOpenHoursString;
-@property(readonly, nonatomic) NSArray *completeHours;
+@property(readonly, nonatomic) NSArray *businessHours;
+- (id)hoursBuilderWithHours:(id)arg1;
 @property(readonly, nonatomic) NSTimeZone *timeZone;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)titleString;
 - (id)initWithMapItem:(id)arg1;
+- (_Bool)_canShowWhileLocked;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

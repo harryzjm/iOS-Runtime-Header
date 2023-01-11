@@ -6,6 +6,7 @@
 
 @class UIImageView;
 
+__attribute__((visibility("hidden")))
 @interface STNotificationUsageCell
 {
     UIImageView *_notificationDot;

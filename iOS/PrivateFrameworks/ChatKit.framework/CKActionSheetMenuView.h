@@ -20,7 +20,7 @@
 @property(nonatomic) __weak id <CKActionSheetMenuViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (void)setFrame:(struct CGRect)arg1;
-- (void)updateTitleContraints;
+- (void)updateTitleConstraintsForBoundingRect:(struct CGRect)arg1;
 - (void)setTitle:(id)arg1;
 - (id)initWithTitle:(id)arg1 interfaceActions:(id)arg2;
 - (void)dismissSelf;

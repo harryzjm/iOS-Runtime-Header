@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, SSVLoadURLOperation;
+@class ICStoreURLRequest, NSObject;
 @protocol MPStoreSocialRequestOperationDataSource, OS_dispatch_queue;
 
 @interface MPStoreSocialRequestOperation
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
-    SSVLoadURLOperation *_URLOperation;
+    ICStoreURLRequest *_request;
     id <MPStoreSocialRequestOperationDataSource> _dataSource;
     CDUnknownBlockType _responseHandler;
 }
@@ -21,7 +21,7 @@
 @property(copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(readonly, nonatomic) id <MPStoreSocialRequestOperationDataSource> dataSource; // @synthesize dataSource=_dataSource;
 - (void).cxx_destruct;
-- (id)_storeURLRequestPropertiesUsingBag:(id)arg1;
+- (id)_requestURLFromBagDictionary:(id)arg1;
 - (void)execute;
 - (void)cancel;
 - (id)initWithDataSource:(id)arg1;

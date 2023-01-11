@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary, PPNamedEntityStore;
+#import <RelevanceEngine/REPortraitPredictorProperties-Protocol.h>
 
-@interface REPortraitPredictor
+@class NSDictionary, NSMutableDictionary, PPNamedEntityStore;
+
+@interface REPortraitPredictor <REPortraitPredictorProperties>
 {
     PPNamedEntityStore *_namedEntityStore;
     NSMutableDictionary *_namedEntityScores;
@@ -14,12 +16,12 @@
 
 + (double)updateInterval;
 - (void).cxx_destruct;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) NSDictionary *namedEntityScores;
 - (float)userAffinityToContent:(id)arg1;
 - (void)update;
 - (void)_loadStoreIfNeeded;
 - (void)dealloc;
-- (id)init;
+- (id)_init;
 
 @end
 

@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray;
+@class SearchUICombinedCardSectionsView;
 
 @interface SearchUICombinedCardSectionTableCell
 {
-    NSMutableArray *_subcells;
 }
 
-+ (void)updateChevronAndSeparatorForCell:(id)arg1 tableModel:(id)arg2 indexPath:(id)arg3;
-+ (id)cellViewForTableModel:(id)arg1 section:(unsigned long long)arg2 rowRange:(struct _NSRange)arg3 style:(unsigned long long)arg4 feedbackDelegate:(id)arg5;
-@property(retain) NSMutableArray *subcells; // @synthesize subcells=_subcells;
-- (void).cxx_destruct;
-- (id)initWithTableModel:(id)arg1 section:(unsigned long long)arg2 rowRange:(struct _NSRange)arg3 style:(unsigned long long)arg4 feedbackDelegate:(id)arg5;
+- (void)updateWithRowModel:(id)arg1;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
+
+// Remaining properties
+@property(retain, nonatomic) SearchUICombinedCardSectionsView *sizingContainer; // @dynamic sizingContainer;
 
 @end
 

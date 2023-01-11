@@ -13,10 +13,12 @@
 @interface AVTEngagementListCollectionViewLayout : UICollectionViewLayout <AVTCollectionViewLayout>
 {
     AVTEngagementLayout *_engagementLayout;
-    NSValue *_overriddenContentOffset;
+    NSValue *_ignoredProposedContentOffset;
+    NSValue *_targetContentOffset;
 }
 
-@property(retain, nonatomic) NSValue *overriddenContentOffset; // @synthesize overriddenContentOffset=_overriddenContentOffset;
+@property(retain, nonatomic) NSValue *targetContentOffset; // @synthesize targetContentOffset=_targetContentOffset;
+@property(retain, nonatomic) NSValue *ignoredProposedContentOffset; // @synthesize ignoredProposedContentOffset=_ignoredProposedContentOffset;
 @property(readonly, nonatomic) AVTEngagementLayout *engagementLayout; // @synthesize engagementLayout=_engagementLayout;
 - (void).cxx_destruct;
 - (struct CGSize)contentSizeForVisibleBounds:(struct CGRect)arg1 numberOfItems:(long long)arg2;
@@ -27,9 +29,9 @@
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (struct CGSize)collectionViewContentSize;
 - (void)invalidateLayout;
-@property(readonly, nonatomic) struct CGRect collectionViewBounds;
-- (void)clearContentOffsetOverride;
-- (void)overrideContentOffsetWithPoint:(struct CGPoint)arg1;
+- (struct CGPoint)targetContentOffsetForProposedContentOffset:(struct CGPoint)arg1;
+- (void)clearTargetContentOffsetForAnimations;
+- (void)setTargetContentOffsetForAnimations:(struct CGPoint)arg1;
 - (_Bool)flipsHorizontallyInOppositeLayoutDirection;
 - (_Bool)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
 - (id)initWithEngagementLayout:(id)arg1;

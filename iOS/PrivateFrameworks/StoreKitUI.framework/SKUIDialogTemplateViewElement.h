@@ -6,6 +6,7 @@
 
 @class NSArray, SKUIImageViewElement, SKUILabelViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUIDialogTemplateViewElement
 {
     long long _dialogType;

@@ -4,31 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MessageUI/MFComposeRecipient.h>
+#import <ContactsAutocompleteUI/CNComposeRecipientGroup.h>
 
 #import <ChatKit/CKIMComposeRecipient-Protocol.h>
 
 @class CKIMComposeRecipient, NSArray, NSDate, NSString;
 
-@interface CKIMGroupComposeRecipient : MFComposeRecipient <CKIMComposeRecipient>
+@interface CKIMGroupComposeRecipient : CNComposeRecipientGroup <CKIMComposeRecipient>
 {
     NSString *_conversationGUID;
+    NSArray *_composeRecipients;
     NSArray *_handles;
     NSDate *_lastMessageDate;
     CKIMComposeRecipient *_matchingRecipient;
-    NSArray *_composeRecipients;
     NSString *_detailsString;
 }
 
 + (id)composeRecipientWithConversation:(id)arg1 searchTerm:(id)arg2 matchingRecipient:(id)arg3;
 @property(retain, nonatomic) NSString *detailsString; // @synthesize detailsString=_detailsString;
-@property(retain, nonatomic) NSArray *composeRecipients; // @synthesize composeRecipients=_composeRecipients;
 @property(retain, nonatomic) CKIMComposeRecipient *matchingRecipient; // @synthesize matchingRecipient=_matchingRecipient;
 @property(retain, nonatomic) NSDate *lastMessageDate; // @synthesize lastMessageDate=_lastMessageDate;
 @property(retain, nonatomic) NSArray *handles; // @synthesize handles=_handles;
+@property(readonly, nonatomic) NSArray *composeRecipients; // @synthesize composeRecipients=_composeRecipients;
 @property(retain, nonatomic) NSString *conversationGUID; // @synthesize conversationGUID=_conversationGUID;
 - (void).cxx_destruct;
-@property(retain, nonatomic) NSString *displayString; // @dynamic displayString;
 - (id)address;
 - (id)compositeName;
 - (_Bool)isRemovableFromSearchResults;

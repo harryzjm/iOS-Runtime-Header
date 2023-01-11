@@ -4,11 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface SBSLockScreenService
+#import <objc/NSObject.h>
+
+#import <SpringBoardServices/BSInvalidatable-Protocol.h>
+
+@class NSString, SBSLockScreenServiceConnection;
+
+@interface SBSLockScreenService : NSObject <BSInvalidatable>
 {
+    struct os_unfair_lock_s _lock;
+    SBSLockScreenServiceConnection *_lock_connection;
 }
 
+- (void).cxx_destruct;
+- (id)preventSpuriousScreenUndimWithReason:(id)arg1;
+- (id)preventPasscodeLockWithReason:(id)arg1;
 - (void)requestPasscodeUnlockUIWithOptions:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)launchEmergencyDialerWithCompletion:(CDUnknownBlockType)arg1;
+- (void)invalidate;
+- (void)dealloc;
+- (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

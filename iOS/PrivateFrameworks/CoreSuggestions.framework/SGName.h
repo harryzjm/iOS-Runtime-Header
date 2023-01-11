@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, SGExtractionInfo;
 
 @interface SGName
 {
@@ -14,14 +14,14 @@
     NSString *_lastName;
     NSString *_prefix;
     NSString *_suffix;
-    unsigned long long _extractionType;
+    SGExtractionInfo *_extractionInfo;
 }
 
 + (id)nameWithFirstName:(id)arg1 withRecordId:(id)arg2 origin:(id)arg3;
 + (id)nameWithFirstName:(id)arg1 lastName:(id)arg2 withRecordId:(id)arg3 origin:(id)arg4;
 + (id)nameWithFirstName:(id)arg1 lastName:(id)arg2 middleName:(id)arg3 fullName:(id)arg4 prefix:(id)arg5 suffix:(id)arg6 withRecordId:(id)arg7 origin:(id)arg8;
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) unsigned long long extractionType; // @synthesize extractionType=_extractionType;
+@property(readonly, nonatomic) SGExtractionInfo *extractionInfo; // @synthesize extractionInfo=_extractionInfo;
 @property(readonly, nonatomic) NSString *suffix; // @synthesize suffix=_suffix;
 @property(readonly, nonatomic) NSString *prefix; // @synthesize prefix=_prefix;
 @property(readonly, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
@@ -37,7 +37,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)name;
 - (id)initWithFirstName:(id)arg1 middleName:(id)arg2 lastName:(id)arg3 fullName:(id)arg4 prefix:(id)arg5 suffix:(id)arg6 recordId:(id)arg7 origin:(id)arg8;
-- (id)initWithFirstName:(id)arg1 middleName:(id)arg2 lastName:(id)arg3 fullName:(id)arg4 prefix:(id)arg5 suffix:(id)arg6 recordId:(id)arg7 origin:(id)arg8 extractionType:(unsigned long long)arg9;
+- (id)initWithFirstName:(id)arg1 middleName:(id)arg2 lastName:(id)arg3 fullName:(id)arg4 prefix:(id)arg5 suffix:(id)arg6 recordId:(id)arg7 origin:(id)arg8 extractionInfo:(id)arg9;
 
 @end
 

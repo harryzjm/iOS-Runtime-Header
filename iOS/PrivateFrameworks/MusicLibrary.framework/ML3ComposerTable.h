@@ -6,7 +6,6 @@
 
 @class NSArray;
 
-__attribute__((visibility("hidden")))
 @interface ML3ComposerTable
 {
     NSArray *_columns;

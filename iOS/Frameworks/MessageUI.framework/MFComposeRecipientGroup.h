@@ -11,6 +11,7 @@
     NSArray *_children;
 }
 
+- (void).cxx_destruct;
 - (id)childrenWithCompleteMatches;
 - (id)completelyMatchedAttributedStrings;
 - (_Bool)wasCompleteMatch;
@@ -31,7 +32,6 @@
 - (id)label;
 - (id)displayString;
 - (id)initWithChildren:(id)arg1 displayString:(id)arg2;
-- (void)dealloc;
 
 @end
 

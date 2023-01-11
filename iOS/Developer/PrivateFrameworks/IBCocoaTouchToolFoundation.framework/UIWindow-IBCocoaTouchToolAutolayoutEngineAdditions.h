@@ -6,8 +6,22 @@
 
 #import <UIKit/UIWindow.h>
 
+@class UITraitCollection;
+
 @interface UIWindow (IBCocoaTouchToolAutolayoutEngineAdditions)
++ (void)ib_markWindowForReuse:(id)arg1;
++ (id)ib_dequeueOrCreateReusableWindowWithFrame:(struct CGRect)arg1;
++ (id)ib_dequeueOrCreateReusableWindow;
 - (void)ibInvalidateWindowLevelInternalConstraints;
 - (id)ibRootHostingViewWithCopiedViewHierarchySnapshotForLayoutEngine:(id)arg1 returningWindowForRepresentedViews:(id *)arg2 returningSimulatedMetricsContext:(id *)arg3 returningAddedRepresentedConstraintsForRepresentedViews:(id *)arg4;
+- (_Bool)ibSwizzled_IsWindowServerHostingManaged;
+- (id)ibLayoutTree;
+- (id)ibSwizzled_traitCollection;
+@property(retain, nonatomic, setter=ib_setCustomTraits:) UITraitCollection *ib_customTraits;
+- (void)ibApplySimulatedMetricsWithContext:(id)arg1;
+- (id)ibEffectiveRootCoordinateSystemForConversions;
+- (id)ibEffectiveWindowForConversions;
+- (id)ibWindowForArbitration;
+- (CDUnknownBlockType)ibWindowForUpdatingConstraints:(id *)arg1;
 @end
 

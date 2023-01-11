@@ -27,7 +27,7 @@
 @property(retain, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
 @property(readonly, nonatomic) id <HKDataMetadataViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) NSArray *subSampleTypes; // @synthesize subSampleTypes=_subSampleTypes;
-@property(readonly, nonatomic) HKSample *sample; // @synthesize sample=_sample;
+@property(retain, nonatomic) HKSample *sample; // @synthesize sample=_sample;
 - (void).cxx_destruct;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -49,10 +49,12 @@
 - (void)_exportButtonAction:(id)arg1;
 - (void)_loadSections;
 - (_Bool)_addSectionIfNonNull:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)_localeOrDisplayTypeChange:(id)arg1;
 - (void)dealloc;
-- (id)initWithSample:(id)arg1 delegate:(id)arg2;
+- (id)initWithSample:(id)arg1 usingInsetStyling:(_Bool)arg2 delegate:(id)arg3;
 
 @end
 

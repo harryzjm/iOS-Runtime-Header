@@ -16,6 +16,7 @@
     NSMutableDictionary *_pmrInfo;
 }
 
++ (id)resultsWithExceptions:(id)arg1;
 + (id)resultsWithException:(id)arg1;
 @property(retain, nonatomic) NSMutableDictionary *pmrInfo; // @synthesize pmrInfo=_pmrInfo;
 @property(retain, nonatomic) NSDate *endTime; // @synthesize endTime=_endTime;

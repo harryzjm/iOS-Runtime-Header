@@ -27,8 +27,6 @@
 + (id)suggestionsWithUUIDs:(id)arg1 inPhotoLibrary:(id)arg2;
 + (id)suggestionWithUUID:(id)arg1 inPhotoLibrary:(id)arg2;
 + (id)insertIntoPhotoLibrary:(id)arg1 withUUID:(id)arg2;
-+ (id)insertInManagedObjectContext:(id)arg1;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 @property(readonly, copy) NSString *cloudUUIDForDeletion;
 @property(readonly) long long cloudDeletionType;
@@ -37,6 +35,7 @@
 - (id)cplFullRecord;
 - (_Bool)isSyncableChange;
 - (_Bool)supportsCloudUpload;
+- (id)momentShare;
 - (_Bool)isEmpty;
 - (void)removeRepresentativeAsset:(id)arg1;
 - (void)replaceKeyAsset:(id)arg1;

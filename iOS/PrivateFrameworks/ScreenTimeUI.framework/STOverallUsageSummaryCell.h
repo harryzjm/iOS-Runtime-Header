@@ -4,41 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class STCandyBarView, STDeviceUnlockStateListener, STNoUsageDataView, STTopUsageItemsView, STUnlockForContentView, STUsageTotalDeltaView, UILabel;
+@class STNoUsageDataView, STUsageGraphViewController, STUsageSummaryTitleView;
 
+__attribute__((visibility("hidden")))
 @interface STOverallUsageSummaryCell
 {
-    _Bool _monitorDeviceLockState;
-    _Bool _isVibrancyEnabled;
-    _Bool _isWidget;
-    UILabel *_screenTimeLabel;
-    STUsageTotalDeltaView *_deltaView;
-    STCandyBarView *_candyBarView;
-    STTopUsageItemsView *_topItemsView;
+    STUsageSummaryTitleView *_titleView;
+    STUsageGraphViewController *_weekGraphViewController;
     STNoUsageDataView *_noUsageDataView;
-    STUnlockForContentView *_unlockView;
-    STDeviceUnlockStateListener *_lockStateListener;
 }
 
-@property(retain, nonatomic) STDeviceUnlockStateListener *lockStateListener; // @synthesize lockStateListener=_lockStateListener;
-@property(retain, nonatomic) STUnlockForContentView *unlockView; // @synthesize unlockView=_unlockView;
-@property(retain, nonatomic) STNoUsageDataView *noUsageDataView; // @synthesize noUsageDataView=_noUsageDataView;
-@property(retain, nonatomic) STTopUsageItemsView *topItemsView; // @synthesize topItemsView=_topItemsView;
-@property(retain, nonatomic) STCandyBarView *candyBarView; // @synthesize candyBarView=_candyBarView;
-@property(retain, nonatomic) STUsageTotalDeltaView *deltaView; // @synthesize deltaView=_deltaView;
-@property(retain, nonatomic) UILabel *screenTimeLabel; // @synthesize screenTimeLabel=_screenTimeLabel;
-@property(readonly, nonatomic) _Bool isWidget; // @synthesize isWidget=_isWidget;
-@property(readonly, nonatomic) _Bool isVibrancyEnabled; // @synthesize isVibrancyEnabled=_isVibrancyEnabled;
-@property(nonatomic) _Bool monitorDeviceLockState; // @synthesize monitorDeviceLockState=_monitorDeviceLockState;
+@property(readonly) STNoUsageDataView *noUsageDataView; // @synthesize noUsageDataView=_noUsageDataView;
+@property(readonly) STUsageGraphViewController *weekGraphViewController; // @synthesize weekGraphViewController=_weekGraphViewController;
+@property(readonly) STUsageSummaryTitleView *titleView; // @synthesize titleView=_titleView;
 - (void).cxx_destruct;
-- (void)dealloc;
-- (void)updateViewsForLockState:(_Bool)arg1;
-- (void)stopMonitoringDeviceLockChanges;
-- (void)startMonitoringDeviceLockChanges;
-- (void)refreshWithCoordinator:(id)arg1;
+- (void)_setNoUsageDataViewVisibility;
 - (void)setValue:(id)arg1;
-- (void)stOverallUsageSummaryCellCommonInit;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3 isVibrancyEnabled:(_Bool)arg4 isWidget:(_Bool)arg5;
+- (id)value;
+- (void)_hasMulitlineLayoutDidChangeFrom:(_Bool)arg1 to:(_Bool)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
 
 @end

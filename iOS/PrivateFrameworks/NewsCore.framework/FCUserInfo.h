@@ -6,17 +6,14 @@
 
 #import <NewsCore/FCTagSettingsDelegate-Protocol.h>
 
-@class FCMTWriterMutexLock, FCTagSettings, NSDate, NSDictionary, NSNumber, NSString;
+@class FCMTWriterLock, FCTagSettings, NSDate, NSDictionary, NSNumber, NSString;
 
 @interface FCUserInfo <FCTagSettingsDelegate>
 {
     _Bool _useParsecResults;
-    _Bool _iCloudAccountChanged;
     FCTagSettings *_tagSettings;
-    NSNumber *_totalMeteredCount;
-    NSDate *_dateLastResetMeteredCount;
     NSDictionary *_readOnlyUserInfo;
-    FCMTWriterMutexLock *_userInfoLock;
+    FCMTWriterLock *_userInfoLock;
 }
 
 + (id)overrideFeldsparID;
@@ -33,11 +30,8 @@
 + (id)userInfoCKRecordFromUserInfoDictionary:(id)arg1;
 + (id)iCloudDataKeys;
 + (id)desiredKeys;
-@property(retain, nonatomic) FCMTWriterMutexLock *userInfoLock; // @synthesize userInfoLock=_userInfoLock;
+@property(retain, nonatomic) FCMTWriterLock *userInfoLock; // @synthesize userInfoLock=_userInfoLock;
 @property(retain, nonatomic) NSDictionary *readOnlyUserInfo; // @synthesize readOnlyUserInfo=_readOnlyUserInfo;
-@property(nonatomic) _Bool iCloudAccountChanged; // @synthesize iCloudAccountChanged=_iCloudAccountChanged;
-@property(copy, nonatomic) NSDate *dateLastResetMeteredCount; // @synthesize dateLastResetMeteredCount=_dateLastResetMeteredCount;
-@property(copy, nonatomic) NSNumber *totalMeteredCount; // @synthesize totalMeteredCount=_totalMeteredCount;
 @property(readonly, nonatomic) _Bool useParsecResults; // @synthesize useParsecResults=_useParsecResults;
 @property(retain, nonatomic) FCTagSettings *tagSettings; // @synthesize tagSettings=_tagSettings;
 - (void).cxx_destruct;
@@ -46,11 +40,12 @@
 - (void)_setUserInfoValue:(id)arg1 forKey:(id)arg2;
 - (id)recordsForRestoringZoneName:(id)arg1;
 - (_Bool)canHelpRestoreZoneName:(id)arg1;
-- (void)_removeiCloudDataValues;
 - (void)_persistNotificationsUserID:(id)arg1;
 - (void)syncLocalNotificationsUserID:(id)arg1 withRemoteNotificationsUserID:(id)arg2;
+- (void)handleSyncWithDeletedUserInfoRecord;
 - (void)handleSyncWithUserInfoRecord:(id)arg1;
-- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordIDs:(id)arg2;
+- (id)allKnownRecordNamesWithinRecordZoneWithID:(id)arg1;
+- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
 - (void)accessTokenRemovedForTagID:(id)arg1 userInitiated:(_Bool)arg2;
 - (void)accessTokenDidChangeForTagID:(id)arg1;
 - (void)addModifyTagSettingsCommandToCommandQueue:(id)arg1;
@@ -59,17 +54,23 @@
 - (void)addObserver:(id)arg1;
 - (void)loadLocalCachesFromStore;
 - (id)asCKRecord;
+@property(nonatomic) _Bool newIssueNotificationsEnabled;
+@property(nonatomic) _Bool marketingNotificationsEnabled;
+@property(copy, nonatomic) NSString *canonicalLanguage;
 @property(copy, nonatomic) NSString *editorialArticleVersion;
-@property(copy, nonatomic) NSNumber *monthlyMeteredCount;
 @property(readonly, nonatomic) NSDate *dateLastViewedSaved;
 - (void)markSavedAsViewed;
 - (void)maybeUpdateOnboardingVersion:(CDUnknownBlockType)arg1;
+- (void)updateOnboardingVersion;
+- (void)refreshOnboardingVersion:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool mightNeedToUpdateOnboardingVersion;
-- (void)validateIsMeteredLimitReachedWithArticleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+@property(copy, nonatomic) NSDate *bundleSubscriptionMeteredCountLastResetDate;
+@property(copy, nonatomic) NSNumber *monthlyBundleSubscriptionMeteredCount;
+@property(copy, nonatomic) NSDate *aLaCarteSubscriptionMeteredCountLastResetDate;
+@property(copy, nonatomic) NSNumber *monthlyALaCarteSubscriptionMeteredCount;
 @property(nonatomic) _Bool userHasCompletedFavoritesSetup;
 @property(nonatomic) _Bool hasShownProgressivePersonalizationWelcomeBrick;
 @property(readonly, nonatomic) unsigned long long progressivePersonalization;
-- (void)incrementMonthlyMeteredCountByOneWithArticleID:(id)arg1;
 @property(readonly, nonatomic) _Bool shouldShowDefaultForYou;
 @property(copy, nonatomic) NSDate *dateLastOpened;
 @property(copy, nonatomic) NSDate *userStartDate;
@@ -77,7 +78,7 @@
 @property(readonly, copy, nonatomic) NSString *notificationsUserID;
 @property(copy, nonatomic) NSString *feldsparID;
 - (void)prepareForUse;
-- (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3 iCloudAccountChanged:(_Bool)arg4;
+- (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -8,6 +8,7 @@
 
 @class NSString, UIView;
 
+__attribute__((visibility("hidden")))
 @interface CKDetailsChildViewControllerCell <CKDetailsCell>
 {
     _Bool _shouldUseLayoutMargins;

@@ -6,19 +6,19 @@
 
 #import <HomeUI/NSCopying-Protocol.h>
 
-@class SSSoftwareLibraryItem;
+@class LSApplicationProxy;
 
 @interface HULinkedApplicationLibraryItem <NSCopying>
 {
-    SSSoftwareLibraryItem *_libraryItem;
+    LSApplicationProxy *_applicationProxy;
 }
 
-@property(readonly, nonatomic) SSSoftwareLibraryItem *libraryItem; // @synthesize libraryItem=_libraryItem;
+@property(readonly, nonatomic) LSApplicationProxy *applicationProxy; // @synthesize applicationProxy=_applicationProxy;
 - (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)bundleIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithLibraryItem:(id)arg1;
+- (id)initWithApplicationProxy:(id)arg1;
 - (id)init;
 
 @end

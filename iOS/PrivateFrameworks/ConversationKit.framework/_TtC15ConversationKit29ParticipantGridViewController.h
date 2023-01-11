@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit29ParticipantGridViewController : UIViewController
 {
     MISSING_TYPE *participants;
@@ -22,9 +21,10 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *participantGridViewControllerDelegate;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)forceBumpPriority;
+- (_Bool)_canShowWhileLocked;
 - (void)viewDidLoad;
 - (void)loadView;
 - (id)initWithCoder:(id)arg1;

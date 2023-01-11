@@ -11,7 +11,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)isAccessibilityElement;
-- (void)setBalloonType:(int)arg1;
+- (void)setBalloonType:(long long)arg1;
 - (id)accessibilityLabel;
 
 @end

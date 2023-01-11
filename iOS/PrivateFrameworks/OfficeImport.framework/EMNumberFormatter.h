@@ -8,6 +8,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface EMNumberFormatter : NSObject
 {
     struct __CFNumberFormatter *_genericFormatter;
@@ -19,7 +20,7 @@
     NSString *_excelFormatString;
     NSString *_baseICUFormatString;
     _Bool _isNegativeRed;
-    unsigned short _currencySymbol;
+    _Bool _hasLocales;
     int _formatType;
 }
 

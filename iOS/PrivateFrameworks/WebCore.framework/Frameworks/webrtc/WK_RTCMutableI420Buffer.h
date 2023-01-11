@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <webrtc/WK_RTCMutableI420Buffer-Protocol.h>
+#import <webrtc/RTCMutableI420Buffer-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WK_RTCMutableI420Buffer <WK_RTCMutableI420Buffer>
+@interface WK_RTCMutableI420Buffer <RTCMutableI420Buffer>
 {
 }
 

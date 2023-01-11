@@ -10,6 +10,7 @@
 
 @class NSString, UITextView;
 
+__attribute__((visibility("hidden")))
 @interface CKDetailsLocationShareHeaderFooterView : UITableViewHeaderFooterView <CKDetailsHeaderFooterView>
 {
     UITextView *_locationSharingTextView;

@@ -6,6 +6,7 @@
 
 @class EDSheet, EDWorkbook, NSMutableDictionary;
 
+__attribute__((visibility("hidden")))
 @interface EMState
 {
     EDWorkbook *_workbook;
@@ -14,10 +15,12 @@
 }
 
 @property __weak EDSheet *currentSheet; // @synthesize currentSheet=_currentSheet;
-@property(retain) EDWorkbook *workbook; // @synthesize workbook=_workbook;
 - (void).cxx_destruct;
 - (void)setHyperlink:(id)arg1 forRow:(unsigned long long)arg2 column:(unsigned long long)arg3;
 - (id)hyperlinkForRow:(unsigned long long)arg1 column:(unsigned long long)arg2;
+
+// Remaining properties
+@property(retain) EDWorkbook *document; // @dynamic document;
 
 @end
 

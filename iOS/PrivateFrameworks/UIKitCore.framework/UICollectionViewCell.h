@@ -14,7 +14,6 @@
     UIView *_contentView;
     UIView *_backgroundView;
     UIView *_selectedBackgroundView;
-    _UIFloatingContentView *_focusedFloatingContentView;
     UILongPressGestureRecognizer *_menuGesture;
     id _selectionSegueTemplate;
     id _highlightingSupport;
@@ -31,12 +30,14 @@
     _Bool _highlighted;
     _Bool _isLayoutEngineSuspended;
     _Bool _dragging;
+    _UIFloatingContentView *_focusedFloatingContentView;
     long long _focusStyle;
 }
 
 + (Class)_contentViewClass;
 @property(nonatomic, getter=isDragging) _Bool dragging; // @synthesize dragging=_dragging;
 @property(nonatomic, getter=_focusStyle, setter=_setFocusStyle:) long long focusStyle; // @synthesize focusStyle=_focusStyle;
+@property(readonly, nonatomic, getter=_focusedFloatingContentView) _UIFloatingContentView *focusedFloatingContentView; // @synthesize focusedFloatingContentView=_focusedFloatingContentView;
 @property(nonatomic, getter=_isLayoutEngineSuspended, setter=_setLayoutEngineSuspended:) _Bool _layoutEngineSuspended; // @synthesize _layoutEngineSuspended=_isLayoutEngineSuspended;
 @property(retain, nonatomic) UIView *selectedBackgroundView; // @synthesize selectedBackgroundView=_selectedBackgroundView;
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
@@ -48,6 +49,7 @@
 - (_Bool)_canFocusProgrammatically;
 - (void)_updateFocusedFloatingContentControlStateInContext:(id)arg1 withAnimationCoordinator:(id)arg2 animated:(_Bool)arg3;
 - (void)_updateFocusedFloatingContentControlStateAnimated:(_Bool)arg1;
+- (void)_configureFocusedFloatingContentView:(id)arg1;
 - (void)_ensureFocusedFloatingContentView;
 - (void)setEditing:(_Bool)arg1;
 - (_Bool)isEditing;
@@ -63,7 +65,6 @@
 - (void)cut:(id)arg1;
 - (void)_performAction:(SEL)arg1 sender:(id)arg2;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
-- (void)_menuDismissed:(id)arg1;
 - (void)_handleMenuGesture:(id)arg1;
 - (_Bool)_gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)_isUsingOldStyleMultiselection;
@@ -82,8 +83,8 @@
 - (_Bool)_descendantsShouldHighlight;
 - (_Bool)_highlightDescendantsWhenSelected;
 - (void)_updateBackgroundView;
-- (void)_descendent:(id)arg1 didMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
-- (void)_descendent:(id)arg1 willMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
+- (void)_monitoredView:(id)arg1 didMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
+- (void)_monitoredView:(id)arg1 willMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
 - (void)_setOpaque:(_Bool)arg1 forSubview:(id)arg2;
 - (void)_updateHighlightColorsForAnimationHalfwayPoint;
 - (void)_updateHighlightColorsForView:(id)arg1 highlight:(_Bool)arg2;
@@ -91,10 +92,10 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)_encodableSubviews;
+@property(readonly, nonatomic, getter=_contentViewInset) struct UIEdgeInsets contentViewInset;
 - (void)_setContentView:(id)arg1 addToHierarchy:(_Bool)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-@property(readonly, nonatomic, getter=_contentViewFrame) struct CGRect contentViewFrame;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -10,7 +10,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)description;
-- (void)dealloc;
 - (id)init;
 
 @end

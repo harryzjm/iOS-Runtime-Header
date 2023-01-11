@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)binaryEffects:(_Bool)arg1;
+- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (void)setVisibleSeriesNames:(_Bool)arg1;
 - (_Bool)hasVisibleSeriesNames;
@@ -50,6 +51,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)seriesCount;
 - (_Bool)isBinary;
 - (_Bool)isScatterOrBubble;
+- (_Bool)supportsMarkers;
+- (_Bool)isArea;
 - (_Bool)isPie;
 - (_Bool)is3D;
 - (id)mainType;
@@ -109,7 +112,6 @@ __attribute__((visibility("hidden")))
 - (id)workbook;
 - (void)setSheet:(id)arg1;
 - (id)sheet;
-- (void)dealloc;
 - (id)init;
 
 // Remaining properties

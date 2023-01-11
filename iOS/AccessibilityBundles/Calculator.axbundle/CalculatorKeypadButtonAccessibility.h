@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityPath;
 - (unsigned long long)accessibilityTraits;
 - (_Bool)_accessibilityKeyboardKeyAllowsTouchTyping;
 - (long long)accessibilityCalculatorButton;

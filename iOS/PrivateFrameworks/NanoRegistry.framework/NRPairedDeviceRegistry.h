@@ -17,7 +17,8 @@
     NSObject<OS_dispatch_queue> *_legacyDevicesQueue;
     NSObject<OS_dispatch_queue> *_legacyDevicesQueueFirst;
     unsigned long long _lastStatus;
-    NSMutableArray *_waitingToPairBlocks;
+    NSMutableArray *_waitingForRegistryUpdateBlocks;
+    unsigned long long _callCount;
 }
 
 + (CDUnknownBlockType)activePairedDeviceSelectorBlock;
@@ -26,13 +27,17 @@
 + (id)sharedInstance;
 + (_Bool)shouldBoostProcess;
 + (Class)proxyClass;
-@property(retain, nonatomic) NSMutableArray *waitingToPairBlocks; // @synthesize waitingToPairBlocks=_waitingToPairBlocks;
+@property(nonatomic) unsigned long long callCount; // @synthesize callCount=_callCount;
+@property(retain, nonatomic) NSMutableArray *waitingForRegistryUpdateBlocks; // @synthesize waitingForRegistryUpdateBlocks=_waitingForRegistryUpdateBlocks;
 @property(nonatomic) unsigned short lastCompatibilityState; // @synthesize lastCompatibilityState=_lastCompatibilityState;
 @property(nonatomic) unsigned long long lastStatus; // @synthesize lastStatus=_lastStatus;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *legacyDevicesQueueFirst; // @synthesize legacyDevicesQueueFirst=_legacyDevicesQueueFirst;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *legacyDevicesQueue; // @synthesize legacyDevicesQueue=_legacyDevicesQueue;
 @property(retain, nonatomic) NSMutableDictionary *legacyDevices; // @synthesize legacyDevices=_legacyDevices;
 - (void).cxx_destruct;
+- (void)isPhoneReadyToMigrateDevice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (_Bool)isAssertionActive:(id)arg1;
+- (_Bool)hasCompletedInitialSyncForPairingID:(id)arg1;
 - (unsigned long long)migrationCountForPairingID:(id)arg1;
 - (unsigned long long)lastSyncSwitchIndex;
 - (void)clearRecoveryFlagWithCompletion:(CDUnknownBlockType)arg1;
@@ -61,7 +66,10 @@
 - (id)deviceIDForIDSDevice:(id)arg1;
 - (id)deviceIDForNRDevice:(id)arg1;
 - (id)deviceForNRDevice:(id)arg1 fromIDSDevices:(id)arg2;
+- (id)nonActiveDeviceForIDSDevice:(id)arg1;
 - (id)deviceForIDSDevice:(id)arg1;
+- (id)nonActiveDeviceForBluetoothID:(id)arg1;
+- (id)nonActiveDeviceForBTDeviceID:(id)arg1;
 - (id)deviceForBluetoothID:(id)arg1;
 - (id)deviceForBTDeviceID:(id)arg1;
 - (id)deviceForPairingID:(id)arg1;
@@ -89,7 +97,8 @@
 - (void)suspendPairingClientCrashMonitoring;
 - (void)abortPairingWithReason:(id)arg1;
 - (void)abortPairing;
-- (void)_fireWaitingToPairBlocks;
+- (void)_fireWaitingForUpdateBlocksWithCollection:(id)arg1;
+- (id)waitForActiveDevice;
 - (id)waitForActivePairedDevice;
 - (void)waitForPairingStorePathPairingID:(CDUnknownBlockType)arg1;
 - (void)pairingStorePathPairingID:(CDUnknownBlockType)arg1;
@@ -139,8 +148,10 @@
 - (void)setActivePairedDevice:(id)arg1 operationHasCompleted:(CDUnknownBlockType)arg2;
 - (_Bool)pairedDeviceSupportQuickSwitch;
 - (_Bool)pairedDeviceCountIsLessThanMaxPairedDevices;
+- (id)_mostlyPairedDevices;
 - (long long)maxPairedDeviceCount;
 - (void)threadIsBlockedWaitingOn_nanoregistryd_syncGrabLegacyRegistryWithBlock:(CDUnknownBlockType)arg1;
+- (void)logCallFrequency;
 - (id)_getLocalDeviceCollection;
 
 @end

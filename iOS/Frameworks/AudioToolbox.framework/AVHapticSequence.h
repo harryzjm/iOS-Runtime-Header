@@ -13,7 +13,11 @@
     AVHapticPlayer *_player;
     unsigned long long _seqID;
     double _lastStartTime;
+    unsigned long long _eventBehavior;
     _Bool _loopIsEnabled;
+    float _loopLength;
+    float _playbackRate;
+    double _duration;
     unsigned long long _channelCount;
     unsigned long long _activeChannel;
 }
@@ -21,20 +25,30 @@
 @property(readonly) unsigned long long channelCount; // @synthesize channelCount=_channelCount;
 @property unsigned long long activeChannel; // @synthesize activeChannel=_activeChannel;
 @property double lastStartTime; // @synthesize lastStartTime=_lastStartTime;
+@property double duration; // @synthesize duration=_duration;
 @property unsigned long long seqID; // @synthesize seqID=_seqID;
 @property __weak AVHapticPlayer *player; // @synthesize player=_player;
 - (void).cxx_destruct;
 - (_Bool)setVolume:(float)arg1 atTime:(double)arg2 error:(id *)arg3;
 - (_Bool)activateChannelByIndex:(unsigned long long)arg1 atTime:(double)arg2 error:(id *)arg3;
+- (_Bool)cancelAndReturnError:(id *)arg1;
 - (_Bool)setParameter:(unsigned long long)arg1 value:(float)arg2 channel:(unsigned long long)arg3 atTime:(double)arg4 error:(id *)arg5;
+- (_Bool)seekToTime:(double)arg1 error:(id *)arg2;
+- (_Bool)resumeAtTime:(double)arg1 error:(id *)arg2;
+- (_Bool)pauseAtTime:(double)arg1 error:(id *)arg2;
 - (_Bool)stopAtTime:(double)arg1 error:(id *)arg2;
 - (_Bool)playAtTime:(double)arg1 offset:(double)arg2 error:(id *)arg3;
 - (_Bool)prepareToPlayAndReturnError:(id *)arg1;
+@property float playbackRate;
+- (_Bool)setLoopLength:(float)arg1 error:(id *)arg2;
 @property _Bool loopingEnabled;
 - (unsigned long long)getChannelCount;
+@property(copy) CDUnknownBlockType completionHandler;
 - (_Bool)setLoopingEnabled:(_Bool)arg1 error:(id *)arg2;
+@property unsigned long long eventBehavior;
 - (void)dealloc;
 - (id)initWithDictionary:(id)arg1 player:(id)arg2 error:(id *)arg3;
+- (id)initWithEvents:(id)arg1 player:(id)arg2 error:(id *)arg3;
 - (id)initWithData:(id)arg1 player:(id)arg2 error:(id *)arg3;
 - (id)init;
 

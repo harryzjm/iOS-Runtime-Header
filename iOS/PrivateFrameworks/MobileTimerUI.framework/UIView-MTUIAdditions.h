@@ -8,5 +8,6 @@
 
 @interface UIView (MTUIAdditions)
 @property(readonly, nonatomic) struct CGPoint mtui_boundsCenter;
+@property(readonly, nonatomic) _Bool mtui_isRTL;
 @end
 

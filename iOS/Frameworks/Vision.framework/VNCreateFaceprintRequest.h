@@ -12,9 +12,14 @@
 {
 }
 
++ (Class)configurationClass;
++ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
++ (void)recordDefaultOptionsInDictionary:(id)arg1;
 + (const CDStruct_d47b9615 *)dependentRequestCompatability;
 + (const CDStruct_7d93034e *)revisionAvailability;
 - (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
+- (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
+@property(nonatomic) _Bool forceFaceprintCreation;
 - (void)_determineFacesToProcessFrom:(id)arg1 outputFacesThatNeedNoProcessing:(id)arg2 outputFacesThatNeedAlignment:(id)arg3 outputFacesThatNeedFaceprints:(id)arg4;
 - (long long)dependencyProcessingOrdinality;
 - (_Bool)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;

@@ -9,10 +9,13 @@
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
++ (_Bool)_isSerializableAccessibilityElement;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)createViewForToolbar:(id)arg1;
 - (void)_updateAccessibilityLabelForImage:(id)arg1;
+- (void)_setAXBarButtonImagePath:(id)arg1;
+- (id)_axBarButtonImagePath;
 - (id)initWithImage:(id)arg1 landscapeImagePhone:(id)arg2 style:(long long)arg3 target:(id)arg4 action:(SEL)arg5;
 - (id)initWithImage:(id)arg1 style:(long long)arg2 target:(id)arg3 action:(SEL)arg4;
 - (id)createViewForNavigationItem:(id)arg1;
@@ -21,6 +24,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)setAccessibilityAttributedHint:(id)arg1;
 - (void)setAccessibilityHint:(id)arg1;
+- (void)_setAccessibilityIsNotFirstElement:(_Bool)arg1;
 - (unsigned long long)accessibilityTraits;
 - (_Bool)isAccessibilityElement;
 - (void)setAccessibilityTraits:(unsigned long long)arg1;

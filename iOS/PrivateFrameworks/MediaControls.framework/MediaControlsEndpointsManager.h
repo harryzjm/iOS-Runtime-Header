@@ -13,13 +13,16 @@
 @class MPAVEndpointRoute, MPAVRoutingController, MPMediaControlsConfiguration, MediaControlsHomeObserver, NSArray, NSMutableDictionary, NSString;
 @protocol MediaControlsEndpointsManagerDelegate, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface MediaControlsEndpointsManager : NSObject <MPAVRoutingControllerDelegate, MediaControlsHomeObserverDelegate, MPAVOutputDevicePlaybackDataSource>
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
-    NSArray *_lastDiffedRoutes;
     NSMutableDictionary *_endpointControllersMap;
     _Bool _didLoadHomeUIDsOnce;
     _Bool _isRequestingActiveRoute;
+    _Bool _isUpdatingRoutes;
+    NSArray *_pendingRoutesToUpdate;
+    MPAVEndpointRoute *_resolvedActiveSystemRoute;
     MPMediaControlsConfiguration *_configuration;
     long long _discoveryMode;
     NSArray *_routes;
@@ -38,7 +41,9 @@
 @property(readonly, copy, nonatomic) NSArray *routes; // @synthesize routes=_routes;
 @property(nonatomic) long long discoveryMode; // @synthesize discoveryMode=_discoveryMode;
 @property(readonly, copy, nonatomic) MPMediaControlsConfiguration *configuration; // @synthesize configuration=_configuration;
+@property(retain, nonatomic) MPAVEndpointRoute *resolvedActiveSystemRoute; // @synthesize resolvedActiveSystemRoute=_resolvedActiveSystemRoute;
 - (void).cxx_destruct;
+- (id)_createSectionedCollectionFromRoutes:(id)arg1;
 - (void)_updateWithRoutes:(id)arg1;
 - (void)_updateActiveRoute;
 - (void)_setRoutes:(id)arg1 withChangeDetails:(id)arg2;
@@ -49,6 +54,7 @@
 - (void)homeObserverDidUpdateKnownUIDs:(id)arg1;
 - (void)getOutputDeviceIsPlaying:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
+@property(readonly, nonatomic) _Bool isActiveSystemEndpointEqualToLocalEndpoint;
 - (id)endpointControllerForRoute:(id)arg1;
 @property(retain, nonatomic) MPAVEndpointRoute *activeSystemRoute;
 - (void)dealloc;

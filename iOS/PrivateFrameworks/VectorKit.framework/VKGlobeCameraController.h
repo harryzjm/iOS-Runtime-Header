@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     _Bool _couldEnter3DMode;
     double _currentZoomLevel;
     double _maxZoomLevel;
+    double _minZoomLevel;
     double _lastRotation;
     struct CGPoint _panStartScreenPoint;
     struct CGPoint _panLastScreenPoint;
@@ -32,6 +33,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct GlobeView *globeView; // @synthesize globeView=_globeView;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)animateToRestriction:(id)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
+- (void)setRegionRestriction:(id)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
+- (void)animateRegionWithDuration:(double)arg1 timingFunction:(CDUnknownBlockType)arg2 cursor:(Matrix_443f5d51)arg3 stepHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)setCenterCoordinateDistanceRange:(CDStruct_c3b9c2ee)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
+- (void)setMinZoomLevel:(double)arg1;
 - (void)setMaxZoomLevel:(double)arg1;
 - (void)setCurrentZoomLevel:(double)arg1;
 - (double)topDownMinimumZoomLevel;
@@ -100,7 +106,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)restoreViewportFromInfo:(id)arg1;
 - (id)viewportInfo;
 - (void)dealloc;
-- (id)initWithTaskContext:(shared_ptr_e963992e)arg1;
+- (id)initWithTaskContext:(shared_ptr_e963992e)arg1 mapDataAccess:(struct MapDataAccess *)arg2 animationRunner:(struct AnimationRunner *)arg3 runLoopController:(struct RunLoopController *)arg4 cameraDelegate:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

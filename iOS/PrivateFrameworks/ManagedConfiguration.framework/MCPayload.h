@@ -35,6 +35,7 @@
 + (id)missingFieldErrorWithField:(id)arg1 underlyingError:(id)arg2;
 + (id)payloadFromDictionary:(id)arg1 isStub:(_Bool)arg2 profile:(id)arg3 outError:(id *)arg4;
 + (id)payloadsFromArray:(id)arg1 isStub:(_Bool)arg2 profile:(id)arg3 outError:(id *)arg4;
++ (id)availablePayloadsForUserEnrollment;
 + (id)unavailableUserPayloadsInEphemeralMultiUser;
 + (id)unavailableSystemPayloadsInEphemeralMultiUser;
 + (id)supervisedRequiredPayloads;
@@ -65,6 +66,7 @@
 - (id)description;
 @property(readonly, retain, nonatomic) NSString *friendlyName;
 @property(readonly, nonatomic) NSDictionary *restrictions;
+- (id)filterForUserEnrollmentOutError:(id *)arg1;
 - (id)stubDictionary;
 - (id)malformedPayloadErrorWithError:(id)arg1;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;

@@ -6,18 +6,22 @@
 
 #import <objc/NSObject.h>
 
+@class GCController;
+
 @interface GCControllerElement : NSObject
 {
+    GCControllerElement *_collection;
+    GCController *_controller;
 }
 
-- (_Bool)setHIDValue:(struct __IOHIDValue *)arg1 queue:(id)arg2;
-- (_Bool)setHIDValue:(struct __IOHIDValue *)arg1;
+@property(nonatomic) __weak GCController *controller; // @synthesize controller=_controller;
+@property(nonatomic) __weak GCControllerElement *collection; // @synthesize collection=_collection;
+- (void).cxx_destruct;
 - (_Bool)_setValue:(float)arg1 queue:(id)arg2;
 - (_Bool)_setValue:(float)arg1;
 @property(readonly, nonatomic, getter=isAnalog) _Bool analog;
-@property(readonly, nonatomic) __weak GCControllerElement *collection;
 - (float)value;
-- (id)controller;
+- (int)getAndResetTimesPressed;
 
 @end
 

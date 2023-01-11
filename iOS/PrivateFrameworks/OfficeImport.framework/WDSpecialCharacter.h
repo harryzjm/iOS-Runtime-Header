@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class WDCharacterProperties;
-
 __attribute__((visibility("hidden")))
 @interface WDSpecialCharacter
 {
-    WDCharacterProperties *mProperties;
     int mType;
 }
 
@@ -18,9 +15,6 @@ __attribute__((visibility("hidden")))
 - (void)setCharacterType:(int)arg1;
 - (int)characterType;
 - (int)runType;
-- (void)clearProperties;
-- (id)properties;
-- (void)dealloc;
 
 @end
 

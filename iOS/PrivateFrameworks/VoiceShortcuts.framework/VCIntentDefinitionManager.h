@@ -4,49 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <VoiceShortcuts/INVCIntentDefinitionManager-Protocol.h>
 
-#import <VoiceShortcuts/VCSyncDataHandling-Protocol.h>
+@class NSString;
 
-@class NSTimer, NSURL, VCIntentDefinitionSyncStateModel;
-@protocol OS_dispatch_queue, VCVoiceShortcutSyncService;
-
-@interface VCIntentDefinitionManager : NSObject <VCSyncDataHandling>
+@interface VCIntentDefinitionManager <INVCIntentDefinitionManager>
 {
-    VCIntentDefinitionSyncStateModel *_persistenceStore;
-    NSURL *_intentsDirectory;
-    id <VCVoiceShortcutSyncService> _syncService;
-    NSObject<OS_dispatch_queue> *_callbackQueue;
-    NSTimer *_syncHoldoffTimer;
 }
 
 + (id)appInfoForBundleID:(id)arg1;
++ (id)intentDefinitionURLsForBundleID:(id)arg1 withExtensions:(id)arg2;
 + (id)intentDefinitionLocalizableFileURLsForBundleID:(id)arg1;
 + (id)intentDefinitionURLsForBundleID:(id)arg1;
-+ (id)_filesInSyncedIntentsDirectoryForBundleID:(id)arg1 withExtensions:(id)arg2;
-+ (id)_intentsDirectory;
-+ (id)sharedManager;
-- (void).cxx_destruct;
-- (id)getAllLocalIntentDefinitions;
-- (id)getAllStoredIntentDefinitions;
-- (id)getAllChanges;
-- (void)removeSyncStateForSyncServiceWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (_Bool)deleteSyncedData:(id *)arg1;
-- (void)deregisterSyncServiceWithIdentifier:(id)arg1;
-- (void)registerSyncService:(id)arg1 asMaster:(_Bool)arg2;
-- (id)createMessageFromData:(id)arg1;
-- (void)getUnsyncedChangesForSyncServiceWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)markChangesAsSynced:(id)arg1 withSyncServiceWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)applyChangeSet:(id)arg1 fromSyncServiceWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_createIntentDefinitionWithProtobuff:(id)arg1;
-- (id)_deleteIntentDefinitionWithID:(id)arg1;
-- (id)_createIntentDefinitionsDirectory;
-- (int)handledMessageType;
-- (_Bool)resetPersistentStore;
-- (_Bool)loadPersistentStoreWithURL:(id)arg1;
-- (void)applicationChangedNotification;
-- (void)dealloc;
-- (id)initWithError:(id *)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

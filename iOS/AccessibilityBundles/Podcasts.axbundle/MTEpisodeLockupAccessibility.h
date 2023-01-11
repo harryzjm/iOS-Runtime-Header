@@ -13,7 +13,6 @@
 + (id)safeCategoryTargetClassName;
 - (_Bool)updateIsCurrentPlayerItemState;
 - (id)_accessibilityUserTestingChildren;
-- (id)_accessibilitySupplementaryFooterViews;
 - (id)_privateAccessibilityCustomActions;
 - (_Bool)accessibilityPerformMoreActions:(id)arg1;
 - (id)accessibilityLabel;

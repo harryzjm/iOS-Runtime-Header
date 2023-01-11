@@ -16,6 +16,7 @@
     PUBackgroundColorView *_photoDecorationBorderView;
     PUBackgroundColorView *_photoDecorationOverlayView;
     _Bool _hasTransform;
+    _Bool _hasLayerBackgroundColor;
     struct {
         _Bool respondsToLivePhotoWillBeginPlaybackWithStyle;
     } _delegateFlags;
@@ -46,11 +47,13 @@
     long long _fillMode;
     UIImage *_photoImage;
     UIImage *_placeHolderImage;
+    UIView *_transitionSnapshotView;
     PUPhotoDecoration *_photoDecoration;
     double _cornerRadius;
     unsigned long long _cornersToRound;
     UIColor *_overlayColor;
     double _contentAlpha;
+    double _darkContentOverlayAlpha;
     UIColor *_backgroundColor;
     id <PUPhotoViewContentHelperDelegate> _delegate;
     PHLivePhoto *_livePhoto;
@@ -65,6 +68,7 @@
     NSString *_title;
     NSString *_subtitle;
     UIImageView *_photoImageView;
+    UIView *_darkContentOverlay;
     UIImageView *__crossfadeImageView;
     PUAvalancheStackView *_avalancheStackView;
     PHLivePhotoView *_livePhotoView;
@@ -74,6 +78,7 @@
     PXTitleSubtitleUILabel *__titleSubtitleLabel;
     ISWrappedAVAudioSession *__audioSession;
     struct CGSize _photoSize;
+    struct CGSize _customPaddingForBadgeElements;
     struct PXAssetBadgeInfo _badgeInfo;
     struct CGAffineTransform _imageTransform;
 }
@@ -88,6 +93,7 @@
 @property(retain, nonatomic) PHLivePhotoView *livePhotoView; // @synthesize livePhotoView=_livePhotoView;
 @property(retain, nonatomic) PUAvalancheStackView *avalancheStackView; // @synthesize avalancheStackView=_avalancheStackView;
 @property(retain, nonatomic) UIImageView *_crossfadeImageView; // @synthesize _crossfadeImageView=__crossfadeImageView;
+@property(retain, nonatomic) UIView *darkContentOverlay; // @synthesize darkContentOverlay=_darkContentOverlay;
 @property(retain, nonatomic) UIImageView *photoImageView; // @synthesize photoImageView=_photoImageView;
 @property(retain, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property(retain, nonatomic) NSString *title; // @synthesize title=_title;
@@ -95,6 +101,7 @@
 @property(retain, nonatomic) PXCollectionTileLayoutTemplate *collectionTileLayoutTemplate; // @synthesize collectionTileLayoutTemplate=_collectionTileLayoutTemplate;
 @property(retain, nonatomic) PXFeatureSpec *featureSpec; // @synthesize featureSpec=_featureSpec;
 @property(readonly, nonatomic) PUTextBannerView *textBannerView; // @synthesize textBannerView=_textBannerView;
+@property(nonatomic) struct CGSize customPaddingForBadgeElements; // @synthesize customPaddingForBadgeElements=_customPaddingForBadgeElements;
 @property(nonatomic) long long badgeStyle; // @synthesize badgeStyle=_badgeStyle;
 @property(nonatomic) struct PXAssetBadgeInfo badgeInfo; // @synthesize badgeInfo=_badgeInfo;
 @property(nonatomic) struct CGColor *avalancheStackBackgroundColor; // @synthesize avalancheStackBackgroundColor=_avalancheStackBackgroundColor;
@@ -109,6 +116,7 @@
 @property(nonatomic, getter=isLivePhotoHidden) _Bool livePhotoHidden; // @synthesize livePhotoHidden=_livePhotoHidden;
 @property(retain, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic, getter=isHighlighted) _Bool highlighted; // @synthesize highlighted=_highlighted;
+@property(nonatomic) double darkContentOverlayAlpha; // @synthesize darkContentOverlayAlpha=_darkContentOverlayAlpha;
 @property(nonatomic) double contentAlpha; // @synthesize contentAlpha=_contentAlpha;
 @property(retain, nonatomic) UIColor *overlayColor; // @synthesize overlayColor=_overlayColor;
 @property(nonatomic) _Bool useOverlay; // @synthesize useOverlay=_useOverlay;
@@ -119,6 +127,7 @@
 @property(nonatomic) _Bool flattensBadgeView; // @synthesize flattensBadgeView=_flattensBadgeView;
 @property(nonatomic) _Bool avoidsImageViewIfPossible; // @synthesize avoidsImageViewIfPossible=_avoidsImageViewIfPossible;
 @property(copy, nonatomic) PUPhotoDecoration *photoDecoration; // @synthesize photoDecoration=_photoDecoration;
+@property(retain, nonatomic) UIView *transitionSnapshotView; // @synthesize transitionSnapshotView=_transitionSnapshotView;
 @property(retain, nonatomic) UIImage *placeHolderImage; // @synthesize placeHolderImage=_placeHolderImage;
 @property(retain, nonatomic) UIImage *photoImage; // @synthesize photoImage=_photoImage;
 @property(nonatomic) struct CGSize photoSize; // @synthesize photoSize=_photoSize;
@@ -128,6 +137,7 @@
 @property(nonatomic, getter=isTextBannerVisible) _Bool textBannerVisible; // @synthesize textBannerVisible=_isTextBannerVisible;
 - (void).cxx_destruct;
 - (void)animateCrossfadeToImage:(id)arg1;
+- (void)contentViewDynamicUserInterfaceTraitDidChange;
 - (void)layoutSubviewsOfContentView;
 - (struct CGSize)contentViewSizeThatFits:(struct CGSize)arg1;
 - (void)_updateTitleSubtitleUILabelIfNeeded;
@@ -147,6 +157,7 @@
 - (void)_updateTextBannerView;
 - (void)_updateSubviewOrdering;
 - (void)_updateContentViewClipsToBounds;
+- (void)_updateLayerBackgroundColorIfNeeded;
 - (void)_updateImageView;
 - (void)_updateLivePhotoView;
 - (void)_removeAvalancheStackViewIfNecessary;

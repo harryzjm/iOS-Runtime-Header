@@ -8,6 +8,7 @@
 
 @class CallHistoryDBClientHandle, NSString, TransactionManager;
 
+__attribute__((visibility("hidden")))
 @interface SyncManager <SyncManagerProtocol>
 {
     TransactionManager *_transactionManager;
@@ -34,6 +35,12 @@
 - (id)predicateForCallKind:(id)arg1;
 - (id)fetchObjectWithUniqueId:(id)arg1;
 - (id)fetchAllObjects;
+- (id)fetchCoalescedCallsWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 batchSize:(unsigned long long)arg5;
+- (unsigned long long)fetchCoalescedCallCountWithPredicate:(id)arg1 sortDescriptors:(id)arg2;
+- (id)fetchCallsWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 batchSize:(unsigned long long)arg5;
+- (unsigned long long)fetchCallCountWithPredicate:(id)arg1 sortDescriptors:(id)arg2;
+- (long long)deleteCallsWithPredicate:(id)arg1 error:(id *)arg2;
+- (long long)setRead:(_Bool)arg1 forCallsWithPredicate:(id)arg2 error:(id *)arg3;
 - (void)insertRecordsWithoutTransactions:(id)arg1;
 - (void)insertWithoutTransaction:(id)arg1;
 - (void)insert:(id)arg1;

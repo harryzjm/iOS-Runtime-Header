@@ -7,6 +7,7 @@
 @class AVCaptureDeviceControlRequestQueue, AVCaptureDeviceFormat, AVCaptureSystemPressureState, AVWeakReference, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVCaptureFigVideoDevice
 {
     NSObject<OS_dispatch_queue> *_fcsQueue;
@@ -15,12 +16,13 @@
     NSObject<OS_dispatch_queue> *_devicePropsQueue;
     NSString *_fcsUID;
     long long _position;
-    long long _origin;
     NSString *_localizedName;
     NSArray *_formats;
     AVCaptureDeviceFormat *_activeFormat;
     AVCaptureDeviceFormat *_activeDepthDataFormat;
     CDStruct_1b6d18a9 _activeDepthDataMinFrameDuration;
+    CDStruct_1b6d18a9 _videoMinFrameDurationOverride;
+    id _videoMinFrameDurationOverrideOwner;
     CDStruct_1b6d18a9 _activeMinFrameDuration;
     _Bool _activeMinFrameDurationSetByClient;
     CDStruct_1b6d18a9 _activeMaxFrameDuration;
@@ -71,6 +73,8 @@
     _Bool _photoOutputFlashSceneEnabled;
     _Bool _flashActive;
     _Bool _flashSceneDetectedForPhotoOutput;
+    long long _digitalFlashMode;
+    NSDictionary *_digitalFlashSceneForPhotoOutput;
     _Bool _flashAvailable;
     long long _torchMode;
     _Bool _torchActive;
@@ -81,8 +85,6 @@
     _Bool _faceDetectionDrivenImageProcessingEnabled;
     struct CGRect _faceRectangle;
     int _faceRectangleAngle;
-    _Bool _automaticallyEnablesLowLightBoostWhenAvailable;
-    _Bool _lowLightBoostEnabled;
     _Bool _highDynamicRangeSceneDetectionEnabled;
     _Bool _automaticallyAdjustsVideoHDREnabled;
     _Bool _videoHDREnabled;
@@ -119,6 +121,10 @@
     AVCaptureSystemPressureState *_systemPressureState;
     int _highestSystemPressureLevelEncountered;
     _Bool _lowLightVideoCaptureEnabled;
+    _Bool _spatialOverCaptureEnabled;
+    _Bool _nonDestructiveCropEnabled;
+    long long _nonDestructiveCropAspectRatio;
+    _Bool _geometricDistortionCorrectionEnabled;
 }
 
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
@@ -139,12 +145,21 @@
 - (int)_setFigCaptureSourceProperty:(struct __CFString *)arg1 withValue:(id)arg2;
 - (int)_setFigCaptureSourceProperty:(struct __CFString *)arg1 withValue:(id)arg2 cacheOnly:(_Bool)arg3;
 - (id)_copyFigCaptureSourceProperty:(struct __CFString *)arg1;
+- (void)setNonDestructiveCropAspectRatio:(long long)arg1;
+- (long long)nonDestructiveCropAspectRatio;
+- (void)setNonDestructiveCropEnabled:(_Bool)arg1;
+- (_Bool)isNonDestructiveCropEnabled;
+- (void)setSpatialOverCaptureEnabled:(_Bool)arg1;
+- (_Bool)isSpatialOverCaptureEnabled;
 - (void)_setBravoCameraSelectionBehavior:(id)arg1;
 - (id)bravoCameraSelectionBehavior;
 - (_Bool)isHEIFSupported;
 - (_Bool)isHEVCPreferred;
 - (_Bool)isHEVCSupported;
 - (_Bool)isHEVCRelaxedAverageBitRateTargetSupported;
+- (_Bool)isHEVCMemoryUsageMinimizationSupported;
+- (_Bool)hevcAllowBFramesForHighCTUCountAndHighResolution;
+- (_Bool)hevcAllowBFramesForHighCTUCount;
 - (int)hevcTurboModeVersion;
 - (_Bool)usesQuantizationScalingMatrix_H264_Steep_16_48;
 - (int)minMacroblocksForHighProfileAbove30fps;
@@ -192,10 +207,14 @@
 - (void)setAutomaticallyAdjustsVideoHDREnabled:(_Bool)arg1;
 - (_Bool)automaticallyAdjustsVideoHDREnabled;
 - (_Bool)isAutoRedEyeReductionSupported;
-- (_Bool)isHDRSupported;
+- (id)cameraPoseMatrix;
+- (void)setGeometricDistortionCorrectionEnabled:(_Bool)arg1;
+- (_Bool)isGeometricDistortionCorrectionEnabled;
+- (_Bool)isGeometricDistortionCorrectionSupported;
 - (void)_setMaxAvailableVideoZoomFactor:(double)arg1;
 - (double)maxAvailableVideoZoomFactor;
 - (void)_setMinAvailableVideoZoomFactor:(double)arg1;
+- (id)virtualDeviceSwitchOverVideoZoomFactors;
 - (double)minAvailableVideoZoomFactor;
 - (double)dualCameraSwitchOverVideoZoomFactor;
 - (void)cancelVideoZoomRamp;
@@ -216,12 +235,16 @@
 - (float)videoZoomRampAcceleration;
 - (_Bool)isMachineReadableCodeDetectionSupported;
 - (void)_setPhotoSettingsForSceneMonitoring:(id)arg1;
+- (void)_setDigitalFlashSceneForPhotoOutput:(id)arg1;
+- (id)digitalFlashSceneForPhotoOutput;
+- (id)_digitalFlashExposureTimes;
+- (long long)_digitalFlashStatus;
 - (void)_setIsStillImageStabilizationScene:(_Bool)arg1;
 - (_Bool)_isStillImageStabilizationScene;
 - (_Bool)isStillImageStabilizationScene;
-- (void)setHighDynamicRangeSceneDetectionEnabled:(_Bool)arg1;
 - (void)_setHighDynamicRangeScene:(_Bool)arg1;
 - (_Bool)_isHighDynamicRangeScene;
+- (void)setHighDynamicRangeSceneDetectionEnabled:(_Bool)arg1;
 - (_Bool)isHighDynamicRangeScene;
 - (_Bool)isHighDynamicRangeSceneDetectionEnabled;
 - (_Bool)isHighDynamicRangeSceneDetectionSupported;
@@ -230,6 +253,7 @@
 - (void)setFaceDetectionDrivenImageProcessingEnabled:(_Bool)arg1;
 - (_Bool)isFaceDetectionDrivenImageProcessingEnabled;
 - (_Bool)isFaceDetectionDuringVideoPreviewSupported;
+- (_Bool)isObjectDetectionSupported;
 - (_Bool)isFaceDetectionSupported;
 - (_Bool)isDiagnosticsTestSupported:(id)arg1;
 - (id)runDiagnosticsWithTestType:(id)arg1;
@@ -290,6 +314,8 @@
 - (_Bool)isWhiteBalanceModeSupported:(long long)arg1;
 - (void)_setAdjustingWhiteBalance:(_Bool)arg1;
 - (_Bool)isAdjustingWhiteBalance;
+- (void)setGlobalToneMappingEnabled:(_Bool)arg1;
+- (_Bool)isGlobalToneMappingEnabled;
 - (void)setActiveMaxExposureDuration:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)activeMaxExposureDuration;
 - (void)setExposurePointOfInterest:(struct CGPoint)arg1;
@@ -333,9 +359,15 @@
 - (long long)position;
 - (_Bool)isConnected;
 - (_Bool)isInUseByAnotherApplication;
+- (void)_setDigitalFlashModeInternal:(long long)arg1;
+- (void)setDigitalFlashMode:(long long)arg1;
+- (long long)digitalFlashMode;
 - (void)setLowLightVideoCaptureEnabled:(_Bool)arg1;
 - (_Bool)isLowLightVideoCaptureEnabled;
-- (long long)deviceSourceOrigin;
+- (int)powerConsumptionAt30FPSForOISMode:(int)arg1;
+- (_Bool)isConstituentPhotoCalibrationDataSupported;
+- (id)constituentDeviceWithDeviceType:(id)arg1;
+- (_Bool)supportsMultiCamCaptureWithDevice:(id)arg1;
 - (_Bool)cachesFigCaptureSourceConfigurationChanges;
 - (void)setCachesFigCaptureSourceConfigurationChanges:(_Bool)arg1;
 - (_Bool)appliesSessionPresetMaxIntegrationTimeOverrideToActiveFormat;
@@ -350,6 +382,8 @@
 - (void)setActiveVideoMinFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (int)_setActiveVideoMinFrameDurationInternal:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)activeVideoMinFrameDuration;
+- (void)resetVideoMinFrameDurationOverrideForOwner:(id)arg1;
+- (void)setVideoMinFrameDurationOverride:(CDStruct_1b6d18a9)arg1 forOwner:(id)arg2;
 - (void)setActiveDepthDataMinFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)activeDepthDataMinFrameDuration;
 - (void)setActiveDepthDataFormat:(id)arg1;
@@ -363,6 +397,7 @@
 - (_Bool)isLockedForConfiguration;
 - (_Bool)supportsAVCaptureSessionPreset:(id)arg1;
 - (_Bool)hasMediaType:(id)arg1;
+- (int)figCaptureSourceDeviceType;
 - (id)deviceType;
 - (id)localizedName;
 - (id)modelID;

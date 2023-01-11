@@ -24,7 +24,6 @@
 + (_Bool)supportsSecureCoding;
 + (id)dictationInputMode;
 + (id)autofillSignupInputMode;
-+ (id)autofillFallbackInputMode;
 + (id)intlInputMode;
 + (id)keyboardInputModeWithIdentifier:(id)arg1;
 + (id)hardwareLayoutFromIdentifier:(id)arg1;
@@ -57,6 +56,7 @@
 @property(readonly, nonatomic) NSString *displayName;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+@property(readonly, nonatomic) _Bool isSpecializedInputMode;
 @property(readonly, retain, nonatomic) NSArray *normalizedIdentifierLevels;
 @property(readonly, nonatomic) NSString *identifierWithLayouts;
 - (id)copyWithZone:(struct _NSZone *)arg1;

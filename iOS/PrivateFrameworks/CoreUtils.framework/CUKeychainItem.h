@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSArray, NSData, NSDate, NSDictionary, NSString;
 
 @interface CUKeychainItem : NSObject
 {
@@ -15,8 +15,11 @@
     int _accessibleType;
     int _syncType;
     NSString *_accessGroup;
+    NSDate *_dateCreated;
+    NSDate *_dateModified;
     NSString *_identifier;
     NSDictionary *_metadata;
+    NSArray *_removedMetadata;
     NSString *_name;
     NSData *_persistentRef;
     NSDictionary *_secrets;
@@ -32,10 +35,13 @@
 @property(copy, nonatomic) NSDictionary *secrets; // @synthesize secrets=_secrets;
 @property(copy, nonatomic) NSData *persistentRef; // @synthesize persistentRef=_persistentRef;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property(copy, nonatomic) NSArray *removedMetadata; // @synthesize removedMetadata=_removedMetadata;
 @property(copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property(nonatomic) _Bool legacy; // @synthesize legacy=_legacy;
 @property(nonatomic) _Bool invisible; // @synthesize invisible=_invisible;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, copy, nonatomic) NSDate *dateModified; // @synthesize dateModified=_dateModified;
+@property(readonly, copy, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
 @property(nonatomic) int accessibleType; // @synthesize accessibleType=_accessibleType;
 @property(copy, nonatomic) NSString *accessGroup; // @synthesize accessGroup=_accessGroup;
 - (void).cxx_destruct;

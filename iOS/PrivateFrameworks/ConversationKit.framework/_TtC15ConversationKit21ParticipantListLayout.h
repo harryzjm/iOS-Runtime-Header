@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit21ParticipantListLayout : UICollectionViewFlowLayout
 {
     MISSING_TYPE *indexPathLayoutAttributes;
@@ -16,7 +15,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *calculatedContentSize;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
 - (_Bool)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;

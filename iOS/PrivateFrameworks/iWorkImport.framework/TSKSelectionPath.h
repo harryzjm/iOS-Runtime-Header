@@ -11,10 +11,11 @@
 __attribute__((visibility("hidden")))
 @interface TSKSelectionPath : NSObject
 {
-    NSArray *mCurrentSelection;
+    NSArray *_currentSelection;
 }
 
 + (id)selectionPathWithSelectionArray:(id)arg1;
+- (void).cxx_destruct;
 - (void)saveToArchive:(struct SelectionPathArchive *)arg1 archiver:(id)arg2 context:(id)arg3;
 - (id)initWithArchive:(const struct SelectionPathArchive *)arg1 unarchiver:(id)arg2;
 @property(readonly, nonatomic) NSString *UUIDDescription;
@@ -36,7 +37,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)initWithSelectionArray:(id)arg1;
 
 @end

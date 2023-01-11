@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MFMessageCriterion, MFMessageLibrary, NSDate;
+@class MFMailMessageLibrary, MFMessageCriterion, NSDate;
 
 @interface MFLibraryStore
 {
-    MFMessageLibrary *_library;
+    MFMailMessageLibrary *_library;
     NSDate *_earliestReceivedDate;
     MFMessageCriterion *_criterion;
     unsigned long long _serverMessageCount;
@@ -23,6 +23,7 @@
 + (id)storeWithCriterion:(id)arg1;
 + (unsigned int)defaultLoadOptions;
 @property(retain, nonatomic) NSDate *earliestReceivedDate; // @synthesize earliestReceivedDate=_earliestReceivedDate;
+- (void).cxx_destruct;
 - (_Bool)hasCompleteDataForMimePart:(id)arg1;
 - (void)_queueMessagesWereCompacted:(id)arg1;
 - (void)_queueMessagesWillBeCompacted:(id)arg1;
@@ -49,12 +50,11 @@
 - (void)compactMessages:(id)arg1;
 - (void)doCompact;
 - (_Bool)canCompact;
-- (unsigned long long)appendMessages:(id)arg1 unsuccessfulOnes:(id)arg2 newMessageIDs:(id)arg3 newMessages:(id)arg4 flagsToSet:(id)arg5;
 - (_Bool)allowsAppend;
 - (void)setNumberOfAttachments:(unsigned int)arg1 isSigned:(_Bool)arg2 isEncrypted:(_Bool)arg3 forMessage:(id)arg4;
 - (void)setFlagsForAllMessagesFromDictionary:(id)arg1;
-- (id)setFlagsFromDictionary:(id)arg1 forMessages:(id)arg2;
 - (id)setFlagsLocallyFromDictionary:(id)arg1 forMessages:(id)arg2;
+- (id)setFlagsFromDictionary:(id)arg1 forMessages:(id)arg2;
 - (void)deleteMessagesOlderThanNumberOfDays:(int)arg1 compact:(_Bool)arg2;
 - (void)deleteMessages:(id)arg1 moveToTrash:(_Bool)arg2;
 - (unsigned long long)indexOfMessage:(id)arg1;
@@ -90,18 +90,17 @@
 - (unsigned long long)_fetchWindowMinimum;
 - (unsigned long long)_fetchWindowMultiple;
 - (void)willFetchMessages;
-- (id)dateOfNewestNonSearchResultMessage;
 - (id)dateOfOldestNonIndexedNonSearchResultMessage;
 - (id)serverSearchResults;
 - (id)oldestKnownMessage;
 - (long long)oldestKnownConversation;
-- (struct __CFDictionary *)copySendersByLibraryIDForConversation:(long long)arg1 limit:(long long)arg2;
+- (id)sendersByLibraryIDForConversation:(long long)arg1 limit:(long long)arg2;
 - (id)copyMessagesWithRemoteIDs:(id)arg1 options:(unsigned int)arg2 inMailbox:(id)arg3;
 - (id)copyMessagesWithRemoteIDs:(id)arg1 options:(unsigned int)arg2;
 - (id)copyMessagesMatchingCriterion:(id)arg1 options:(unsigned int)arg2;
 - (id)copyMessagesMatchingText:(id)arg1 options:(unsigned int)arg2;
 - (id)mutableCopyOfAllMessages;
-- (id)copyOfAllMessagesForBodyLoadingFromRowID:(unsigned int)arg1 limit:(unsigned int)arg2;
+- (id)copyOfAllMessagesForBodyLoadingFromRowID:(long long)arg1 limit:(unsigned int)arg2;
 - (id)copyOfAllMessages;
 - (id)copyOfAllMessagesWithOptions:(unsigned int)arg1;
 - (id)copyOfMessagesInRange:(struct _NSRange)arg1 options:(unsigned int)arg2;
@@ -109,7 +108,7 @@
 - (id)copyOfMessageInfosMatchingCriterion:(id)arg1;
 - (id)copyOfMessageInfos;
 - (id)copyOfMessagesInRange:(struct _NSRange)arg1 options:(unsigned int)arg2 generation:(unsigned long long *)arg3;
-- (id)messageWithLibraryID:(unsigned int)arg1 options:(unsigned int)arg2;
+- (id)messageWithLibraryID:(long long)arg1 options:(unsigned int)arg2;
 - (unsigned long long)allNonDeletedCountIncludingServerSearch:(_Bool)arg1 andThreadSearch:(_Bool)arg2;
 - (unsigned long long)nonDeletedCountIncludingServerSearch:(_Bool)arg1 andThreadSearch:(_Bool)arg2;
 - (unsigned long long)totalCount;

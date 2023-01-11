@@ -8,18 +8,20 @@
 
 #import <DiagnosticExtensionsDaemon/DEDPairingProtocol-Protocol.h>
 #import <DiagnosticExtensionsDaemon/DEDSecureArchiving-Protocol.h>
+#import <DiagnosticExtensionsDaemon/DEDXPCConnectorDaemonDelegate-Protocol.h>
 #import <DiagnosticExtensionsDaemon/DEDXPCProtocol-Protocol.h>
 
 @class DEDIDSConnection, DEDSharingConnection, DEDXPCConnector, DEDXPCInbound, NSMutableDictionary, NSString, NSXPCConnection;
 @protocol DEDClientProtocol, DEDPairingProtocol, DEDWorkerProtocol, OS_dispatch_queue, OS_os_log;
 
-@interface DEDController : NSObject <DEDXPCProtocol, DEDPairingProtocol, DEDSecureArchiving>
+@interface DEDController : NSObject <DEDXPCConnectorDaemonDelegate, DEDXPCProtocol, DEDPairingProtocol, DEDSecureArchiving>
 {
     _Bool _isDaemon;
     _Bool _started;
     _Bool _useSharing;
     _Bool _useIDS;
     _Bool _embeddedInApp;
+    NSObject<OS_dispatch_queue> *_bugSessionCallbackQueue;
     DEDXPCConnector *_xpcConnector;
     DEDXPCInbound *_xpcInbound;
     NSXPCConnection *_xpcOutboundConnection;
@@ -68,7 +70,9 @@
 @property __weak NSXPCConnection *xpcOutboundConnection; // @synthesize xpcOutboundConnection=_xpcOutboundConnection;
 @property(retain) DEDXPCInbound *xpcInbound; // @synthesize xpcInbound=_xpcInbound;
 @property(retain) DEDXPCConnector *xpcConnector; // @synthesize xpcConnector=_xpcConnector;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *bugSessionCallbackQueue; // @synthesize bugSessionCallbackQueue=_bugSessionCallbackQueue;
 - (void).cxx_destruct;
+- (void)connector:(id)arg1 didLooseConnectionToProcessWithPid:(int)arg2;
 - (id)sharingConnection;
 - (id)idsConnection;
 - (void)addDevice:(id)arg1;
@@ -94,18 +98,16 @@
 - (id)sessionForIdentifier:(id)arg1;
 - (void)startBugSessionWithIdentifier:(id)arg1 configuration:(id)arg2 target:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_deviceForIncomingDevice:(id)arg1;
+- (_Bool)hasDevice:(id)arg1;
 - (id)_deviceForIncomingDevice:(id)arg1 needsReady:(_Bool)arg2;
 - (id)_sharingDeviceForIncomingDevice:(id)arg1;
 - (void)successPINForDevice:(id)arg1;
 - (void)tryPIN:(id)arg1 forDevice:(id)arg2;
 - (void)promptPINForDevice:(id)arg1;
 - (void)startPairSetupForDevice:(id)arg1;
-- (_Bool)hasDevice:(id)arg1;
-- (id)deviceForIdentifier:(id)arg1;
 - (id)devicesWithIdentifier:(id)arg1;
 - (id)_allKnownDevicesWithIdentifier:(id)arg1;
 - (id)allKnownDevices;
-- (id)knownDevices;
 - (void)stopDiscovery;
 - (void)discoverDevicesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)pingDaemonWithCompletion:(CDUnknownBlockType)arg1;

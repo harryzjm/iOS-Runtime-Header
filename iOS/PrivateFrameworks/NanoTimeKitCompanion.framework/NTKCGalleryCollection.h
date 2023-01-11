@@ -20,6 +20,11 @@
 }
 
 + (id)_galleryCollectionForDevice:(id)arg1 withCollectionIdentifier:(id)arg2 title:(id)arg3 calloutName:(CDUnknownBlockType)arg4;
++ (id)_bigNumeralsDigitalFacesForDevice:(id)arg1;
++ (id)_bigNumeralsAnalogFacesForDevice:(id)arg1;
++ (id)_blackcombFacesForDevice:(id)arg1;
++ (id)_californiaFacesForDevice:(id)arg1;
++ (id)_whistlerSubdialsFacesForDevice:(id)arg1;
 + (id)_whistlerDigitalFacesForDevice:(id)arg1;
 + (id)_whistlerAnalogFacesForDevice:(id)arg1;
 + (id)_photoFacesForDevice:(id)arg1;
@@ -43,9 +48,12 @@
 + (id)_activityFacesForDevice:(id)arg1;
 + (id)_explorerFacesForDevice:(id)arg1;
 + (id)_zeusFacesForDevice:(id)arg1;
++ (id)_olympusFacesForDevice:(id)arg1;
 + (id)_victoryDigitalFacesForDevice:(id)arg1;
 + (id)_victoryAnalogFacesForDevice:(id)arg1;
 + (id)_newFacesForDevice:(id)arg1;
++ (id)_newFacesExcludingRestrictedForDevice:(id)arg1;
++ (id)_calloutNameForNewFaces:(id)arg1 withDevice:(id)arg2;
 + (id)galleryCollectionsForDevice:(id)arg1;
 @property(nonatomic) __weak id <NTKCGalleryCollectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property(copy, nonatomic) NSString *descriptionText; // @synthesize descriptionText=_descriptionText;

@@ -11,10 +11,14 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)setCurrentClearColor;
 + (_Bool)gpuAvailable;
 + (void)_postGLInactiveNotification;
 + (void)_postGLActiveNotification;
 + (_Bool)setCurrentGLContext:(id)arg1;
++ (void)createSharedRepeatableTexture:(unsigned int *)arg1 withImageName:(id)arg2 ofType:(id)arg3;
++ (void)teardownSharedContext;
++ (id)createSharedGLContext;
 + (id)createPlatformGLContext;
 + (id)snapshotImageOfFrameBufferWithID:(unsigned int)arg1 bufferSize:(struct CGSize)arg2 displayScale:(double)arg3;
 + (void)translateMatrix:(CDStruct_f1db2b5e *)arg1 byX:(float)arg2 Y:(float)arg3 result:(CDStruct_f1db2b5e *)arg4;

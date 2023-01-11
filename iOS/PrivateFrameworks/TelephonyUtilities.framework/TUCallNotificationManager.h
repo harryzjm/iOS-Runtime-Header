@@ -29,6 +29,7 @@
 - (void)remoteVideoContentRectChangedForCall:(id)arg1;
 - (void)remoteAspectRatioChangedForCall:(id)arg1;
 - (void)supportsTTYWithVoiceChangedForCall:(id)arg1;
+- (void)localSenderIdentityAccountUUIDChangedForCall:(id)arg1;
 - (void)remoteUplinkMutedChangedForCall:(id)arg1;
 - (void)ttyTypeChangedForCall:(id)arg1;
 - (void)audioPropertiesChangedForCall:(id)arg1;
@@ -36,6 +37,7 @@
 - (void)videoDegradedChangedForCall:(id)arg1;
 - (void)mediaStalledChangedForCall:(id)arg1;
 - (void)isThirdPartyVideoChangedForCall:(id)arg1;
+- (void)isSendingVideoChangedForCall:(id)arg1;
 - (void)isSendingAudioChangedForCall:(id)arg1;
 - (void)isEmergencyChangedForCall:(id)arg1;
 - (void)displayContextChangedForCall:(id)arg1;

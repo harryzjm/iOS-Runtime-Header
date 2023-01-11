@@ -15,6 +15,7 @@
 + (id)dynamicProperties;
 + (id)fallbackTitlePropertyForGroupingType:(long long)arg1;
 + (id)titlePropertyForGroupingType:(long long)arg1;
++ (id)ULIDPropertyForGroupingType:(long long)arg1;
 + (id)persistentIDPropertyForGroupingType:(long long)arg1;
 + (_Bool)canFilterByProperty:(id)arg1;
 + (_Bool)supportsSecureCoding;
@@ -26,6 +27,7 @@
 - (id)_libraryLinkKind;
 - (id)_libraryLinkArtist;
 - (id)_directStoreURL;
+@property(readonly, nonatomic) NSDate *dateDownloaded;
 @property(readonly, nonatomic) _Bool isUsableAsRepresentativeItem;
 - (void)gaplessHeuristicInfo:(unsigned int *)arg1 durationInSamples:(unsigned long long *)arg2 lastPacketsResync:(unsigned long long *)arg3 encodingDelay:(unsigned int *)arg4 encodingDrain:(unsigned int *)arg5;
 - (unsigned long long)countOfChaptersOfType:(long long)arg1;
@@ -112,7 +114,7 @@
 - (id)initWithCoder:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithMultiverseIdentifier:(id)arg1;
+- (id)initWithMultiverseIdentifier:(id)arg1 library:(id)arg2;
 - (id)initWithPersistentID:(unsigned long long)arg1;
 - (id)_artworkCatalogWithArtworkType:(long long)arg1;
 - (id)screenshotArtworkCatalog;

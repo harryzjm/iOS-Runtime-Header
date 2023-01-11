@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)decidePolicyForGeolocationRequestFromOrigin:(struct SecurityOrigin *)arg1 frame:(struct WebFrameProxy *)arg2 completionHandler:(Function_f7a043c0 *)arg3 view:(id)arg4;
+- (void)decidePolicyForGeolocationRequestFromOrigin:(struct SecurityOrigin *)arg1 frame:(struct WebFrameProxy *)arg2 completionHandler:(Function_da50b38b *)arg3 view:(id)arg4;
 - (id)initWithProcessPool:(struct WebProcessPool *)arg1;
 - (id)init;
 - (void)_setEnableHighAccuracy:(_Bool)arg1;

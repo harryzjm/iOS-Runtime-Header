@@ -6,6 +6,7 @@
 
 @class IMManualUpdater;
 
+__attribute__((visibility("hidden")))
 @interface CKAudioProgressView
 {
     _Bool _playing;

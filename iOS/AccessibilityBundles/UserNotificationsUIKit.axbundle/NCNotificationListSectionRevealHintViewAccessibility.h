@@ -14,7 +14,7 @@
 - (_Bool)_accessibilityIsHintTitleVisible;
 - (long long)_accessibilitySortPriority;
 - (id)accessibilityLabel;
-- (_Bool)_accessibilityIsScannerElement;
+- (_Bool)accessibilityRespondsToUserInteraction;
 - (_Bool)isAccessibilityElement;
 
 @end

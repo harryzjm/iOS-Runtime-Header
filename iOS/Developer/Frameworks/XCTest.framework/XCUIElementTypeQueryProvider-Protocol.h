@@ -60,6 +60,7 @@
 @property(readonly, copy) XCUIElementQuery *sliders;
 @property(readonly, copy) XCUIElementQuery *collectionViews;
 @property(readonly, copy) XCUIElementQuery *browsers;
+@property(readonly, copy) XCUIElementQuery *disclosedChildRows;
 @property(readonly, copy) XCUIElementQuery *outlineRows;
 @property(readonly, copy) XCUIElementQuery *outlines;
 @property(readonly, copy) XCUIElementQuery *tableColumns;

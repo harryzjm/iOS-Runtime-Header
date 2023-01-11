@@ -4,36 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+@class UIAnimatableProperty, _UIViewAnimatablePropertyTransformer;
 
-@class UIAnimatablePropertyState, _UIViewAnimatablePropertyTransformer;
-@protocol OS_dispatch_queue;
-
-@interface UIViewFloatAnimatableProperty : NSObject
+@interface UIViewFloatAnimatableProperty
 {
-    NSObject<OS_dispatch_queue> *_animatablePropertyStateLockingQueue;
-    NSObject<OS_dispatch_queue> *_presentationValueLockingQueue;
-    NSObject<OS_dispatch_queue> *_invalidationLockingQueue;
-    double _presentationValue;
-    _Bool _invalidated;
-    UIAnimatablePropertyState *_animatablePropertyState;
     _Bool _performingInterpolationBetweenTwoStates;
-    double _value;
-    _UIViewAnimatablePropertyTransformer *_transformer;
+    UIAnimatableProperty *_animatableProperty;
 }
 
 @property(nonatomic) _Bool performingInterpolationBetweenTwoStates; // @synthesize performingInterpolationBetweenTwoStates=_performingInterpolationBetweenTwoStates;
-@property(retain, nonatomic) _UIViewAnimatablePropertyTransformer *transformer; // @synthesize transformer=_transformer;
-@property(nonatomic) double value; // @synthesize value=_value;
+@property(retain, nonatomic) UIAnimatableProperty *animatableProperty; // @synthesize animatableProperty=_animatableProperty;
 - (void).cxx_destruct;
+@property(retain, nonatomic) _UIViewAnimatablePropertyTransformer *transformer;
 - (void)dealloc;
-@property(retain, nonatomic) UIAnimatablePropertyState *animatablePropertyState;
-@property(nonatomic) double presentationValue;
+@property(readonly, nonatomic) double presentationValue;
 @property(readonly, nonatomic, getter=isInvalidated) _Bool invalidated;
-- (void)invalidateAndStopImmediately:(_Bool)arg1;
 - (void)invalidate;
 @property(nonatomic) double velocity;
-- (_Bool)_performAnimation;
+@property(nonatomic) double value;
 - (id)init;
 
 @end

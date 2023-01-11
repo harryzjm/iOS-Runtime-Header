@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)canCopy:(struct _NSRange)arg1;
 - (_Bool)allowsEditing;
 - (int)styleAttributeArrayKind;
-- (int)attributeArrayKind;
+- (unsigned long long)attributeArrayKind;
 - (int)smartFieldKind;
 - (id)text;
 @property(readonly, nonatomic) int baseTextScript;

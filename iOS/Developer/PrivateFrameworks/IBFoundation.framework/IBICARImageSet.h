@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSUnitLength;
+@class NSOrderedSet, NSSet, NSUnitLength;
 
 @interface IBICARImageSet
 {
@@ -59,8 +59,8 @@
 @property(readonly, nonatomic) double detectabilityEstimation;
 - (void)setAssetData:(id)arg1;
 - (id)initializeManifestArchivist;
-- (id)intrinsicallyOrderedChildren;
-- (id)children;
+@property(readonly, nonatomic) NSOrderedSet *intrinsicallyOrderedChildren;
+@property(readonly, nonatomic) NSSet *children;
 - (id)assetRepForStructuredIdentifier:(id)arg1;
 - (id)childForIdentifier:(id)arg1;
 - (id)assetRepForIdentifier:(id)arg1;

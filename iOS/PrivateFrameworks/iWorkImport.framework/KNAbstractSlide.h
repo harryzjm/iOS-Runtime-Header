@@ -23,13 +23,13 @@ __attribute__((visibility("hidden")))
     KNSlideStyle *_style;
     KNSlideBackgroundInfo *_background;
     NSOrderedSet *_childInfos;
-    _Bool _inDocument;
     NSSet *_builds;
     NSArray *_buildChunks;
     _Bool _needsSlideNodeEventCountUpdate;
     TSUPointerKeyDictionary *_drawableToGhostInfosMap;
     TSUMutablePointerSet *_drawablesWithInvalidatedGhosts;
     _Bool _shouldConsiderAllChunksActive;
+    _Bool _inDocument;
     KNTransition *_transition;
     KNTitlePlaceholderInfo *_titlePlaceholder;
     KNBodyPlaceholderInfo *_bodyPlaceholder;
@@ -48,7 +48,7 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)deliveryGroupIndexForBuildChunk:(id)arg1 inBuildChunks:(id)arg2;
 + (id)parentSlideForInfo:(id)arg1;
 @property(copy, nonatomic) NSDictionary *placeholdersForTags; // @synthesize placeholdersForTags=_placeholdersForTags;
-@property(readonly, nonatomic) _Bool inDocument; // @synthesize inDocument=_inDocument;
+@property(nonatomic) _Bool inDocument; // @synthesize inDocument=_inDocument;
 @property(readonly, nonatomic) __weak KNSlideNode *slideNode; // @synthesize slideNode=_slideNode;
 @property(retain, nonatomic) KNSlideNumberPlaceholderInfo *slideNumberPlaceholder; // @synthesize slideNumberPlaceholder=_slideNumberPlaceholder;
 @property(retain, nonatomic) KNObjectPlaceholderInfo *objectPlaceholder; // @synthesize objectPlaceholder=_objectPlaceholder;
@@ -143,6 +143,7 @@ __attribute__((visibility("hidden")))
 - (id)p_ChunksForDrawable:(id)arg1 animationType:(long long)arg2 onlyActiveChunks:(_Bool)arg3;
 - (id)activeChunksForDrawable:(id)arg1;
 - (id)p_chunksWhichWillPlayWithChunksToSetToWith:(id)arg1;
+- (id)chunksWhichPlayWithChunk:(id)arg1;
 - (_Bool)canSetChunksToAutomaticWith:(id)arg1;
 - (id)availableEventTriggersForBuildChunks:(id)arg1;
 - (void)removeBuildChunk:(id)arg1 rollbackGeneratedIdentifier:(_Bool)arg2;
@@ -209,9 +210,9 @@ __attribute__((visibility("hidden")))
 - (void)p_setChildInfosAsOrderedSet:(id)arg1 usingDOLC:(_Bool)arg2 dolcContext:(id)arg3;
 - (void)p_checkChildInfosForDuplicates:(id)arg1;
 - (void)setChildInfosWithoutDOLC:(id)arg1;
-- (void)setChildInfos:(id)arg1;
-@property(readonly, nonatomic) NSArray *childInfos;
+@property(copy, nonatomic) NSArray *childInfos;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
+@property(readonly, nonatomic) _Bool hasBackgroundAlpha;
 @property(readonly, nonatomic) TSDFill *backgroundFill;
 - (id)objectUUIDPath;
 - (void)didInitFromSOS;
@@ -223,9 +224,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isMaster;
+@property(readonly, nonatomic) _Bool isTopmostContainerInfo;
 @property(nonatomic) _Bool matchesObjectPlaceholderGeometry;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) _Bool supportsCollaborativeEditing;
 
 @end
 

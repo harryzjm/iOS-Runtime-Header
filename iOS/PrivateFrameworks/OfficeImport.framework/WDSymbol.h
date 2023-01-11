@@ -4,26 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class WDCharacterProperties, WDFont;
+@class WDFont;
 
 __attribute__((visibility("hidden")))
 @interface WDSymbol
 {
-    WDCharacterProperties *mProperties;
     WDFont *mFont;
     unsigned short mCharacter;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 - (int)runType;
 - (void)setCharacter:(unsigned short)arg1;
 - (unsigned short)character;
 - (void)setFont:(id)arg1;
 - (id)font;
-- (void)clearProperties;
-- (id)properties;
 - (id)initWithParagraph:(id)arg1;
-- (void)dealloc;
 
 @end
 

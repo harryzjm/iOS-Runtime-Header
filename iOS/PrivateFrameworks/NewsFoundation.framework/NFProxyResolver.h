@@ -12,7 +12,6 @@
 @class NFCallbackStore, NFContainerPool, NFContext, NSString;
 @protocol NFDefinitionContainer;
 
-__attribute__((visibility("hidden")))
 @interface NFProxyResolver : NSObject <NFResolver, NFValidationResolver>
 {
     id <NFDefinitionContainer> _publicContainer;
@@ -29,14 +28,16 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <NFDefinitionContainer> publicContainer; // @synthesize publicContainer=_publicContainer;
 - (void).cxx_destruct;
 - (id)contextWithContextBlock:(CDUnknownBlockType)arg1;
-- (void)ensure:(id)arg1 name:(id)arg2;
-- (id)resolve:(id)arg1 name:(id)arg2 context:(id)arg3 validateBlock:(CDUnknownBlockType)arg4;
+- (void)ensure:(id)arg1;
+- (id)resolveForKey:(id)arg1 context:(id)arg2 validateBlock:(CDUnknownBlockType)arg3;
 - (void)ensureProtocol:(id)arg1 name:(id)arg2;
 - (void)ensureProtocol:(id)arg1;
 - (void)ensureClass:(Class)arg1 name:(id)arg2;
 - (void)ensureClass:(Class)arg1;
 - (id)unsafeResolveForKey:(id)arg1 name:(id)arg2 context:(id)arg3;
 - (id)unsafeResolveForKey:(id)arg1 name:(id)arg2;
+- (id)resolveForKey:(id)arg1 context:(id)arg2;
+- (id)resolveForKey:(id)arg1;
 - (id)resolveProtocol:(id)arg1 name:(id)arg2 contextBlock:(CDUnknownBlockType)arg3;
 - (id)resolveProtocol:(id)arg1 name:(id)arg2;
 - (id)resolveProtocol:(id)arg1 contextBlock:(CDUnknownBlockType)arg2;

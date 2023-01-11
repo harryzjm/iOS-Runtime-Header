@@ -8,6 +8,7 @@
 
 @class NSString, SKUIDividerPageComponent, SKUIViewElementLayoutContext;
 
+__attribute__((visibility("hidden")))
 @interface SKUIDividerPageSection <SKUIArtworkRequestDelegate>
 {
     SKUIViewElementLayoutContext *_layoutContext;

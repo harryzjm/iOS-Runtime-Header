@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HDAWDSubmissionManager, HDAppSubscriptionManager, HDCloudSyncManager, HDCurrentActivitySummaryHelper, HDDataCollectionManager, HDFitnessMachineManager, HDHealthServiceManager, HDNanoSyncManager, HDNotificationManager, HDServiceConnectionManager, HDWorkoutManager;
+@class HDAWDSubmissionManager, HDAppSubscriptionManager, HDCurrentActivitySummaryHelper, HDDataCollectionManager, HDDemoDataManager, HDFitnessMachineManager, HDHealthServiceManager, HDNanoSyncManager, HDNotificationManager, HDOntologyLifecycleManager, HDServiceConnectionManager, HDWorkoutManager;
 
 @interface HDPrimaryProfile
 {
     HDAppSubscriptionManager *_appSubscriptionManager;
     HDAWDSubmissionManager *_awdSubmissionManager;
-    HDCloudSyncManager *_cloudSyncManager;
     HDCurrentActivitySummaryHelper *_currentActivitySummaryHelper;
     HDDataCollectionManager *_dataCollectionManager;
     HDFitnessMachineManager *_fitnessMachineManager;
@@ -19,6 +18,8 @@
     HDHealthServiceManager *_serviceManager;
     HDServiceConnectionManager *_serviceConnectionManager;
     HDWorkoutManager *_workoutManager;
+    HDDemoDataManager *_demoDataManager;
+    HDOntologyLifecycleManager *_ontologyLifecycleManager;
 }
 
 - (void).cxx_destruct;
@@ -27,9 +28,9 @@
 - (id)_newWorkoutManager;
 - (id)_newNotificationManager;
 - (id)_newNanoSyncManager;
-- (id)_newCloudSyncManager;
 - (id)_newAWDSubmissionManager;
 - (id)_newAppSubscriptionManager;
+- (id)ontologyLifecycleManager;
 - (id)serviceManager;
 - (id)serviceConnectionManager;
 - (id)notificationManager;
@@ -38,7 +39,6 @@
 - (id)workoutManager;
 - (id)dataCollectionManager;
 - (id)currentActivitySummaryHelper;
-- (id)cloudSyncManager;
 - (id)awdSubmissionManager;
 - (id)appSubscriptionManager;
 - (id)activityCacheManager;

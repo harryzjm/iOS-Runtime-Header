@@ -8,6 +8,7 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityNotifyDelegateEditingEndValueDidChange:(double)arg1;
@@ -21,14 +22,14 @@
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
 - (_Bool)_accessibilityHitTestShouldFallbackToNearestChild;
-- (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 - (void)_accessibilityClearChildren;
 - (_Bool)isAccessibilityElement;
 - (void)movieScrubberTrackView:(id)arg1 clampedSizeWidthDelta:(double)arg2 actualSizeWidthDelta:(double)arg3 originXDelta:(double)arg4 minimumVisibleValue:(double)arg5 maximumVisibleValue:(double)arg6;
 - (_Bool)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (void)_sliderAnimationDidStop:(id)arg1 finished:(id)arg2 context:(void *)arg3;
+- (void)_sliderAnimationDidStop:(_Bool)arg1;
 - (void)_updateThumbLocation;
-- (void)_trimAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
+- (void)_trimAnimationDidStop:(_Bool)arg1 glassView:(id)arg2;
 - (void)_initSubviews;
 - (void)dealloc;
 - (void)_setValue:(double)arg1 andSendAction:(_Bool)arg2;

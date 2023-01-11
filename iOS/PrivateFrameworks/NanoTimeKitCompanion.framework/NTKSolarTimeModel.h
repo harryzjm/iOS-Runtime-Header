@@ -33,12 +33,14 @@
 @property(nonatomic) _Bool usePlaceholderData; // @synthesize usePlaceholderData=_usePlaceholderData;
 @property(retain, nonatomic) CLLocation *referenceLocation; // @synthesize referenceLocation=_referenceLocation;
 - (void).cxx_destruct;
+- (id)ntkCacheableKey;
 - (void)updateForTimeZoneChange;
 - (void)updateModelWithDate:(id)arg1;
 - (void)_updateDependentValues;
 - (id)dateForPercentageThroughPeriod:(double)arg1;
 - (double)percentageThroughPeriodForDate:(id)arg1;
 - (double)percentageThroughPeriodInCurrentSolarDayForDate:(id)arg1;
+- (id)normalizeDateIntervalForDate:(id)arg1;
 - (double)percentageThroughPeriodForIdealizedTimeInCurrentSolarDay;
 - (_Bool)includesDate:(id)arg1;
 - (id)initWithReferenceDate:(id)arg1 referenceLocation:(id)arg2;

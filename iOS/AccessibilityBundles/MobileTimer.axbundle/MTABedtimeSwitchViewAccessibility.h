@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)updateRepeatLabelForSchedule:(unsigned long long)arg1;
+- (void)_axUpdateRepeatLabelForSchedule:(unsigned long long)arg1;
 - (struct CGPoint)accessibilityActivationPoint;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

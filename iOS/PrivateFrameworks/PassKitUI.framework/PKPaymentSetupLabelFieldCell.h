@@ -4,11 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class UIButton;
+
 @interface PKPaymentSetupLabelFieldCell
 {
+    UIButton *_button;
 }
 
 + (long long)tableViewCellStyle;
+- (void).cxx_destruct;
+- (void)_buttonTapped;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)_updateDisplayForFieldTypeLabel:(id)arg1;

@@ -10,7 +10,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)adjustBacklightLevel:(_Bool)arg1;
+- (void)_adjustBacklightLevel:(_Bool)arg1;
 
 @end
 

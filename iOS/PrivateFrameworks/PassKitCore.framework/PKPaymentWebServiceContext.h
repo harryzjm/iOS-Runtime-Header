@@ -4,12 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDate, NSDictionary, NSMutableDictionary, NSObject, NSString, PKPaymentWebServiceConfiguration, PKPaymentWebServiceRegion;
+@class NSArray, NSDate, NSDictionary, NSMutableDictionary, NSObject, NSString, NSURL, PKPaymentWebServiceConfiguration, PKPaymentWebServiceRegion;
 @protocol OS_dispatch_queue;
 
 @interface PKPaymentWebServiceContext
 {
+    struct os_unfair_lock_s _lock_context;
+    NSMutableDictionary *_verificationRequestsByPassUniqueID;
+    NSDictionary *_regions;
     NSObject<OS_dispatch_queue> *_queue;
+    struct os_unfair_lock_s _cacheLock;
+    NSMutableDictionary *_featureSupportedLangaugeCache;
     _Bool _devSigned;
     _Bool _transactionServiceDisabled;
     _Bool _messageServiceDisabled;
@@ -22,9 +27,7 @@
     NSDate *_registrationDate;
     NSDate *_configurationDate;
     PKPaymentWebServiceConfiguration *_configuration;
-    NSDictionary *_regions;
     NSString *_primaryRegionIdentifier;
-    NSMutableDictionary *_verificationRequestsByPassUniqueID;
     long long _consistencyCheckBackoffLevel;
     NSArray *_certificates;
     NSString *_lastUpdatedTag;
@@ -37,9 +40,7 @@
 @property(copy) NSString *lastUpdatedTag; // @synthesize lastUpdatedTag=_lastUpdatedTag;
 @property(copy) NSArray *certificates; // @synthesize certificates=_certificates;
 @property long long consistencyCheckBackoffLevel; // @synthesize consistencyCheckBackoffLevel=_consistencyCheckBackoffLevel;
-@property(retain) NSMutableDictionary *verificationRequestsByPassUniqueID; // @synthesize verificationRequestsByPassUniqueID=_verificationRequestsByPassUniqueID;
 @property(copy) NSString *primaryRegionIdentifier; // @synthesize primaryRegionIdentifier=_primaryRegionIdentifier;
-@property(retain) NSDictionary *regions; // @synthesize regions=_regions;
 @property _Bool ignoreProvisioningEnablementPercentage; // @synthesize ignoreProvisioningEnablementPercentage=_ignoreProvisioningEnablementPercentage;
 @property _Bool messageServiceDisabled; // @synthesize messageServiceDisabled=_messageServiceDisabled;
 @property _Bool transactionServiceDisabled; // @synthesize transactionServiceDisabled=_transactionServiceDisabled;
@@ -53,10 +54,16 @@
 @property(copy) NSString *deviceID; // @synthesize deviceID=_deviceID;
 @property long long version; // @synthesize version=_version;
 - (void).cxx_destruct;
+- (id)applyServicePreferredLangaugeForFeatureIdentifier:(unsigned long long)arg1;
+- (id)applyServiceLocalizationBundleForfeatureIdentifier:(unsigned long long)arg1;
+- (id)applyServiceFeaturesForRegionMeetingEnablementThreshold:(id)arg1;
 - (double)_contextProvisioningEnablementValue;
 - (id)betaPaymentNetworksForRegion:(id)arg1;
 - (_Bool)contextMeetsMarketGeoNotificationThresholdForRegion:(id)arg1 paymentNetwork:(long long)arg2;
 - (_Bool)contextMeetsProvisioningEnablementPercentageThresholdForRegion:(id)arg1;
+- (id)_regionWithPeerPaymentServiceURL;
+@property(readonly, nonatomic) _Bool hasPeerPaymentAccount;
+@property(readonly, nonatomic) NSURL *peerPaymentServiceURL;
 @property(readonly) __weak NSDictionary *TSMURLStringByPushTopic;
 - (id)TSMPushTopics;
 @property(readonly) __weak PKPaymentWebServiceRegion *primaryRegion;
@@ -64,7 +71,11 @@
 - (void)removeVerificationRequestRecordForUniqueID:(id)arg1;
 - (id)verificationRequestRecordForUniqueID:(id)arg1;
 - (void)addVerificationRequestRecord:(id)arg1 forUniqueID:(id)arg2;
+- (void)_localizationUpdated;
+- (id)debugDescription;
+@property(retain) NSDictionary *regions;
 - (void)encodeWithCoder:(id)arg1;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
 

@@ -8,14 +8,17 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)canBecomeFocused;
 - (_Bool)isAccessibilityElement;
 - (void)reloadAllComponents;
 - (void)dealloc;
 - (void)_accessibilityResetContainerElements;
 - (id)accessibilityElements;
 - (long long)_accessibilityPickerType;
+- (unsigned long long)_accessibilityAutomationType;
 - (double)scrollAnimationDuration;
 
 @end

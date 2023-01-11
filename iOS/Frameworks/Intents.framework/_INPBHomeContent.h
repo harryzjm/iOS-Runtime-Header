@@ -15,11 +15,14 @@
 @interface _INPBHomeContent : PBCodable <_INPBHomeContent, NSSecureCoding, NSCopying>
 {
     struct _has;
+    _Bool __encodeLegacyGloryData;
     NSArray *_actions;
     _INPBHomeFilter *_filter;
 }
 
++ (_Bool)supportsSecureCoding;
 + (Class)actionsType;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(retain, nonatomic) _INPBHomeFilter *filter; // @synthesize filter=_filter;
 @property(copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 - (void).cxx_destruct;
@@ -27,6 +30,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(readonly, nonatomic) _Bool hasFilter;

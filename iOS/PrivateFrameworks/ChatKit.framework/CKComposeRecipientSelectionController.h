@@ -19,7 +19,11 @@
 - (_Bool)textFieldShouldReturn:(id)arg1;
 - (id)_handlesForRecipients:(id)arg1;
 - (_Bool)_updateBackfillForNewRecipients;
+- (id)autocompleteResultIdentifier:(id)arg1;
+- (id)conversationGUIDForRecipient:(id)arg1;
+- (_Bool)shouldInvalidateIDSRequests;
 - (_Bool)_hasExistingConversationWithAddedRecipient:(id)arg1;
+- (id)conversationList;
 - (_Bool)alwaysShowSearchResultsTable;
 - (_Bool)shouldSuppressSearchResultsTable;
 - (_Bool)homogenizePreferredServiceForiMessage;
@@ -29,10 +33,14 @@
 - (void)atomizeAndSendTimeoutHandler;
 - (void)atomizeAndInvokeBlock:(CDUnknownBlockType)arg1;
 - (void)_legacyAddRecipient:(id)arg1;
+- (id)_subscriptionContextForSimID:(id)arg1 phoneNumber:(id)arg2;
 - (void)addRecipient:(id)arg1;
+- (void)_atomizeToConversationNameIfNecessary:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSArray *proposedRecipients;
 @property(readonly, nonatomic) NSArray *expandedRecipients;
 - (void)_updatePillViewIfNeededIfIsNewConversation:(_Bool)arg1;
+- (_Bool)_canShowWhileLocked;
+- (_Bool)deviceHasMultipleSubscriptions;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)dealloc;
 

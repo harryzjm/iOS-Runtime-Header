@@ -11,6 +11,7 @@
 #import <SceneKit/SCNAnimatable-Protocol.h>
 
 @class NSArray, NSDictionary, NSMutableDictionary, NSString, SCNOrderedDictionary;
+@protocol MTLLibrary;
 
 @interface SCNTechnique : NSObject <SCNAnimatable, NSCopying, NSSecureCoding>
 {
@@ -19,6 +20,7 @@
     NSMutableDictionary *_valueForSymbol;
     SCNOrderedDictionary *_animations;
     NSMutableDictionary *_bindings;
+    id <MTLLibrary> _library;
     NSArray *_passes;
 }
 
@@ -63,6 +65,7 @@
 - (const void *)__CFObject;
 - (id)scene;
 - (struct __C3DScene *)sceneRef;
+@property(retain, nonatomic) id <MTLLibrary> library;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)valueForSymbolNamed:(id)arg1;

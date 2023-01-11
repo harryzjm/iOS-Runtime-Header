@@ -12,8 +12,8 @@
 #import <UIKitCore/UITextPasteSessionDelegate-Protocol.h>
 #import <UIKitCore/_UITextPasteProgressSupport-Protocol.h>
 
-@class NSArray, NSMapTable, NSString, NSTextStorage, UIDragInteraction, UIDragItem, UIDropInteraction, UITargetedDragPreview, UITextDraggableGeometrySameViewDropOperationResult, UITextDropProposal, UITextPasteController, UITextPosition, UITextRange, UIView, _UITextDragCaretView;
-@protocol UIDragSession, UIDropSession, UITextDragSupporting><UITextDropSupporting, UITextDraggableGeometry, UITextDraggableGeometrySameViewDropOperation, UITextPasteSession;
+@class NSArray, NSMapTable, NSString, NSTextStorage, UIDragInteraction, UIDragItem, UIDropInteraction, UITargetedDragPreview, UITextDraggableGeometrySameViewDropOperationResult, UITextDropProposal, UITextPasteController, UITextRange, UIView, _UITextDragCaretView;
+@protocol UIDragSession, UIDropSession, UITextDragSupporting><UITextDropSupporting, UITextDraggableGeometry, UITextDraggableGeometrySameViewDropOperation, UITextDropPasteSession;
 
 __attribute__((visibility("hidden")))
 @interface UITextDragAssistant : NSObject <UIDragInteractionDelegate_Private, UIDropInteractionDelegate_Private, _UITextPasteProgressSupport, UITextPasteSessionDelegate, UITextDragDropSupport>
@@ -30,6 +30,10 @@ __attribute__((visibility("hidden")))
         unsigned int forceEditable:1;
         unsigned int delegateSupportsProposalForDrop:1;
         unsigned int delegateSupportsSessionDidUpdate:1;
+        unsigned int delegateSupportsRangeForDrop:1;
+        unsigned int delegateSupportsPositionForDrop:1;
+        unsigned int delegateSupportsWillMoveCaret:1;
+        unsigned int delegateSupportsDidMoveCaret:1;
         unsigned int viewSupportsTextStorage:1;
         unsigned int textStorageDidChange:1;
         unsigned int dropPerformed:1;
@@ -47,7 +51,7 @@ __attribute__((visibility("hidden")))
     NSTextStorage *_observingStorage;
     id <UIDropSession> _currentDropSession;
     _UITextDragCaretView *_dropCaret;
-    UITextPosition *_currentDropPosition;
+    UITextRange *_currentDropRange;
     UIDragItem *_topmostDropItem;
     UITargetedDragPreview *_topmostDropPreview;
     UITextDropProposal *_currentDropProposal;
@@ -55,7 +59,8 @@ __attribute__((visibility("hidden")))
     id <UITextDraggableGeometrySameViewDropOperation> _sameViewDropOperation;
     UITextDraggableGeometrySameViewDropOperationResult *_sameViewDropOperationResult;
     UITextPasteController *_dropPasteController;
-    id <UITextPasteSession> _dropPasteSession;
+    id <UITextDropPasteSession> _dropPasteSession;
+    CDUnknownBlockType _delayedPreviewProvider;
     UIView<UITextDragSupporting><UITextDropSupporting> *_view;
     UIDragInteraction *_dragInteraction;
     UIDropInteraction *_dropInteraction;
@@ -66,33 +71,37 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) __weak UIView<UITextDragSupporting><UITextDropSupporting> *view; // @synthesize view=_view;
 - (void).cxx_destruct;
 - (id)_shrinkingPreview:(id)arg1 toPosition:(id)arg2;
-- (id)_previewForTopmostItem:(id)arg1 withDefault:(id)arg2;
+- (id)_previewForTopmostItem:(id)arg1;
 - (id)_previewForIrrelevantItemFromPreview:(id)arg1;
 - (void)_applyOptionsToGeometry;
 @property(readonly, nonatomic) id <UITextDraggableGeometry> geometry;
 - (id)_closestPositionToPoint:(struct CGPoint)arg1;
 - (void)textPasteSessionDidEndPasting:(id)arg1;
 - (void)textPasteSessionWillBeginPasting:(id)arg1;
+- (void)textPasteSessionDidRevealPasteResult:(id)arg1;
+- (void)textPasteSessionWillHidePasteResult:(id)arg1;
 - (id)_textPasteSelectableRangeForResult:(id)arg1 fromRange:(id)arg2;
 - (long long)_textPasteRangeBehavior;
-- (_Bool)_textPasteShouldBlockPasting;
-- (double)_textPasteBlockingTimeout;
-- (void)_performDropToPosition:(id)arg1 inSession:(id)arg2;
+- (void)_performDropToRange:(id)arg1 inSession:(id)arg2;
 - (void)_performSameViewOperation:(id)arg1;
 - (void)_prepareSameViewOperation:(unsigned long long)arg1 forItems:(id)arg2 fromRanges:(id)arg3 toRange:(id)arg4;
-- (id)_dropRangeForPosition:(id)arg1;
 - (void)_cleanupDrop;
-- (id)_suggestedProposalForPosition:(id)arg1 inSession:(id)arg2 allowCancel:(_Bool)arg3;
-- (void)_updateDropCaretToPosition:(id)arg1;
-- (id)_dropRequestWithPosition:(id)arg1 inSession:(id)arg2;
+- (id)_suggestedProposalForRequest:(id)arg1;
+- (void)_updateDropCaretToRange:(id)arg1 session:(id)arg2;
+- (void)invalidateDropCaret;
+- (id)_dropRequestWithRange:(id)arg1 suggestedProposal:(id)arg2 inSession:(id)arg3;
+- (id)_dropRequestWithRange:(id)arg1 inSession:(id)arg2;
 - (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (void)dropInteraction:(id)arg1 item:(id)arg2 willAnimateDropWithAnimator:(id)arg3;
+- (void)_dropInteraction:(id)arg1 delayedPreviewProviderForDroppingItem:(id)arg2 previewProvider:(CDUnknownBlockType)arg3;
 - (id)dropInteraction:(id)arg1 previewForDroppingItem:(id)arg2 withDefault:(id)arg3;
 - (void)dropInteraction:(id)arg1 sessionDidEnd:(id)arg2;
 - (void)dropInteraction:(id)arg1 concludeDrop:(id)arg2;
 - (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
 - (void)dropInteraction:(id)arg1 sessionDidExit:(id)arg2;
-- (void)_updateDropProposalForPosition:(id)arg1 inSession:(id)arg2 allowCancel:(_Bool)arg3;
+- (_Bool)_updateCurrentDropProposalInSession:(id)arg1 usingRequest:(id)arg2;
+- (id)_rangeInSession:(id)arg1;
+- (id)_positionInSession:(id)arg1;
 - (id)dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
 - (void)dropInteraction:(id)arg1 sessionDidEnter:(id)arg2;
 - (_Bool)dropInteraction:(id)arg1 canHandleSession:(id)arg2;

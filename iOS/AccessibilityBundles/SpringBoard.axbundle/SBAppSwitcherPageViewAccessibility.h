@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
+- (id)_scroller;
 - (id)_accessibilityPreferredScrollActions;
 - (_Bool)_accessibilityElementVisibilityAffectsLayout;
 - (struct CGRect)_accessibilityVisibleFrame;
@@ -24,10 +26,6 @@
 - (_Bool)isAccessibilityElement;
 - (id)_accessibilityBundleIdentifier;
 - (_Bool)_accessibilityIsNotFirstElement;
-- (_Bool)_accessibilityIsControlCenterContainer;
-- (void)viewDismissing:(id)arg1 forTransitionRequest:(id)arg2;
-- (void)setAccessibilityIsDismissing:(_Bool)arg1;
-- (_Bool)accessibilityIsDismissing;
 
 @end
 

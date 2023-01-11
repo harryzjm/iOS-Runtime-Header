@@ -15,6 +15,7 @@
 @class NSArray, NSString, SKUIShelfPageComponent, SKUIShelfPageSectionConfiguration, SKUIShelfViewElement, SKUIViewElementLayoutContext, SKUIViewElementSlideshowController;
 @protocol SKUIScrollViewDelegateObserver;
 
+__attribute__((visibility("hidden")))
 @interface SKUIShelfPageSection <SKUIArtworkRequestDelegate, SKUIObservableScrollViewDelegate, SKUIShelfPageSectionConfigurationDataSource, SKUIViewElementSlideshowDelegate, UICollectionViewDataSource, UICollectionViewDelegate, SKUIShelfPageSection>
 {
     SKUIViewElementLayoutContext *_cellLayoutContext;

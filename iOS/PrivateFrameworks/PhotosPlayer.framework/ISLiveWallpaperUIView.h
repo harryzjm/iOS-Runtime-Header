@@ -4,16 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ISLiveWallpaperPlayer, UIGestureRecognizer;
+@class ISLiveWallpaperPlayer, NSTimer, UIGestureRecognizer;
 
 @interface ISLiveWallpaperUIView
 {
+    _Bool _touching;
     UIGestureRecognizer *_playbackGestureRecognizer;
+    double _force;
+    NSTimer *_updateTimer;
 }
 
+@property(retain, nonatomic) NSTimer *updateTimer; // @synthesize updateTimer=_updateTimer;
+@property(nonatomic) double force; // @synthesize force=_force;
+@property(nonatomic) _Bool touching; // @synthesize touching=_touching;
 @property(readonly, nonatomic) UIGestureRecognizer *playbackGestureRecognizer; // @synthesize playbackGestureRecognizer=_playbackGestureRecognizer;
 - (void).cxx_destruct;
+- (void)dealloc;
+- (void)_updatePlayer;
 - (void)_handlePlaybackRecognizer:(id)arg1;
+- (void)_handleUpdateTimer;
+- (void)willMoveToWindow:(id)arg1;
 - (void)_ISLiveWallpaperUIViewCommonInitialization;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -8,6 +8,7 @@
 
 @class HMFActivity, NSData, NSDictionary;
 
+__attribute__((visibility("hidden")))
 @interface HMFHTTPResponseInternal <NSCopying>
 {
     HMFActivity *_activity;

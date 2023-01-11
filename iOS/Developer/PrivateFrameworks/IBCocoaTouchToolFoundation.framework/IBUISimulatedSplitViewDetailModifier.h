@@ -8,7 +8,5 @@
 {
 }
 
-- (id)simulatedViewControllerContainingViewController:(id)arg1;
-
 @end
 

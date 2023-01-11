@@ -11,12 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)updateNextButton;
-- (id)wifiController;
+- (void)_activationStateChanged;
 - (void)showModalWiFiSettings;
 - (void)_createNavInAirplaneMode:(_Bool)arg1;
 - (void)_accessibilityMarkMainNavBar;
-- (void)_presentViewControllerForBuddyController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)accessibilityIdentifier;
 

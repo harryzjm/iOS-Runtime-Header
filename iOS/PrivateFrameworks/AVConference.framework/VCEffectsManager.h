@@ -16,11 +16,17 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_xpcCommandQueue;
     NSMutableArray *_effectsArray;
     _Bool _effectsRegistered;
-    CDStruct_1b6d18a9 _lastPrintTimeStamp;
-    CDStruct_1b6d18a9 _lastReceivedTimeStamp;
-    int _sendFramesCount;
-    int _receivedFramesCount;
-    double _effectsTimeoutThreshold;
+    struct _opaque_pthread_mutex_t _loggingLock;
+    CDStruct_1b6d18a9 _lastPrintTimestamp;
+    CDStruct_1b6d18a9 _lastReceivedTimestamp;
+    CDStruct_1b6d18a9 _lastSentTimestamp;
+    int _consecutiveDroppedFrameCount;
+    int _cameraFrameCount;
+    int _sentFrameCount;
+    int _receivedFrameCount;
+    int _droppedFrameCount;
+    int _failedFrameCount;
+    _Bool _forceDisableEffectsHealthCheck;
     int _thermalPressureLevel;
 }
 
@@ -28,8 +34,8 @@ __attribute__((visibility("hidden")))
 @property(retain) NSMutableArray *effectsArray; // @synthesize effectsArray=_effectsArray;
 - (void)effectsRegistered:(_Bool)arg1;
 - (void)encodeProcessedPixelBuffer:(struct __CVBuffer *)arg1 time:(CDStruct_1b6d18a9)arg2 imageData:(id)arg3 processTime:(id)arg4;
-- (void)printEffectsLogging;
-- (_Bool)checkHealthForEffect:(id)arg1;
+- (_Bool)checkEffectsHealth;
+- (void)resetEffectsLogging;
 - (void)capturedPixelBuffer:(struct __CVBuffer *)arg1 depthBuffer:(struct __CVBuffer *)arg2 time:(CDStruct_1b6d18a9)arg3 imageData:(id)arg4 toClient:(id)arg5;
 - (void)renderPixelBuffer:(struct __CVBuffer *)arg1 time:(CDStruct_1b6d18a9)arg2;
 - (void)capturedPixelBuffer:(struct __CVBuffer *)arg1 depthDataPixelBuffer:(struct __CVBuffer *)arg2 time:(CDStruct_1b6d18a9)arg3 imageData:(id)arg4;
@@ -38,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)addStickerWithURL:(id)arg1 isFaceSticker:(_Bool)arg2 atPosition:(struct CGPoint)arg3 identifier:(id)arg4;
 - (void)setMemoji:(id)arg1;
 - (void)setAnimoji:(id)arg1;
+- (_Bool)isFaceMeshTrackingEnabled;
 - (_Bool)isEffectsOn;
 - (void)registerBlocksForService;
 @property(nonatomic) id <VCEffectsManagerDelegate> delegate; // @synthesize delegate=_delegate;

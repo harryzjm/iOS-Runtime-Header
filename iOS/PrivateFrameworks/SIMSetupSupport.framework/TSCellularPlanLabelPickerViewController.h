@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <UIKitCore/UITableViewController.h>
 
 #import <SIMSetupSupport/UITextFieldDelegate-Protocol.h>
 
@@ -31,7 +31,7 @@
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (void)doneClicked;
+- (void)_doneButtonTapped;
 - (id)customLabelRowValue;
 - (id)customLabelIndexPath;
 @property(readonly) CTUserLabel *chosenLabel;

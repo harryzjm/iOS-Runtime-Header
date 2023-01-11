@@ -10,6 +10,7 @@
 
 @class CKBusinessInfoView, NSString;
 
+__attribute__((visibility("hidden")))
 @interface CKDetailsBusinessInfoHeaderFooterView : UITableViewHeaderFooterView <CKDetailsHeaderFooterView>
 {
     CKBusinessInfoView *_businessInfoView;

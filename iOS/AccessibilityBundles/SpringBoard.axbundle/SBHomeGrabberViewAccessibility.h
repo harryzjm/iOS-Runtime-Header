@@ -8,8 +8,21 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)_accessibilityUpdateCaptionPanelVisiblityForPresence:(long long)arg1;
+- (void)_accessibilityUpdateCaptionPanelVisibility;
+- (void)_updatePresence:(long long)arg1 style:(long long)arg2 withAnimationSettings:(id)arg3;
+- (void)_accessibilityUnHostRemoteCaptionPanel;
+- (void)_accessibilityHostRemoteCaptionPanel;
+- (void)willMoveToWindow:(id)arg1;
+- (void)dealloc;
+- (void)_accessibilityApplyCounterRotationTransform;
+- (void)layoutSubviews;
+- (void)_accessibilitySetCaptionView:(id)arg1;
+- (id)_accessibilityCaptionView;
 
 @end
 

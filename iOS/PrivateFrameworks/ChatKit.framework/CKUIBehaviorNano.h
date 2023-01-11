@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+__attribute__((visibility("hidden")))
 @interface CKUIBehaviorNano
 {
 }
@@ -84,11 +85,6 @@
 - (id)orbDetailsImage;
 - (id)orbReplyImage;
 - (id)orbComposeImage;
-- (id)surfReplyImage;
-- (id)arouetReplyImage;
-- (id)digitalTouchReplyImage;
-- (id)dictationReplyImage;
-- (id)emojiReplyImage;
 - (id)datestampTranscriptBoldTextAttributes;
 - (id)datestampTranscriptTextAttributes;
 - (id)stampTranscriptBoldTextAttributes;
@@ -148,6 +144,7 @@
 - (double)maxTranscriptPortraitHeight;
 - (unsigned long long)defaultConversationLoadMoreCount;
 - (unsigned long long)defaultConversationViewingMessageCount;
+- (_Bool)disableTranscriptOrb;
 - (_Bool)usesNavigationBarControls;
 - (_Bool)usesEntryView;
 - (_Bool)shouldUseTranslucentBars;

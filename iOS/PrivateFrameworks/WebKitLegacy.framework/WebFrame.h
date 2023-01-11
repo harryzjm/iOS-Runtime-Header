@@ -46,11 +46,12 @@
 - (id)init;
 - (void)printToCGContext:(struct CGContext *)arg1 pageWidth:(float)arg2 pageHeight:(float)arg3;
 - (int)numberOfPagesWithPageWidth:(float)arg1 pageHeight:(float)arg2;
-- (id)renderTreeAsExternalRepresentationForPrinting:(_Bool)arg1;
+- (id)renderTreeAsExternalRepresentationWithOptions:(unsigned long long)arg1;
+- (id)renderTreeAsExternalRepresentationForPrinting;
 - (void)_commitData:(id)arg1;
 - (_Bool)_canSaveAsWebArchive;
 - (_Bool)_canProvideDocumentSource;
-- (void)_setTypingStyle:(id)arg1 withUndoAction:(int)arg2;
+- (void)_setTypingStyle:(id)arg1 withUndoAction:(unsigned char)arg2;
 - (id)_typingStyle;
 - (id)_characterRangeAtPoint:(struct CGPoint)arg1;
 - (struct VisiblePosition)_visiblePositionForPoint:(struct CGPoint)arg1;
@@ -74,7 +75,7 @@
 - (id)_stringByEvaluatingJavaScriptFromString:(id)arg1;
 - (_Bool)_getVisibleRect:(struct CGRect *)arg1;
 - (void)_drawRect:(struct CGRect)arg1 contentsOnly:(_Bool)arg2;
-- (unsigned int)_paintBehaviorForDestinationContext:(struct CGContext *)arg1;
+- (OptionSet_8e32cbf3)_paintBehaviorForDestinationContext:(struct CGContext *)arg1;
 - (id)_stringForRange:(id)arg1;
 - (id)_selectedString;
 - (id)_nodesFromList:(Vector_1d266cd7 *)arg1;

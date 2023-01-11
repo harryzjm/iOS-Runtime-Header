@@ -8,7 +8,7 @@
 
 #import <Navigation/NSCopying-Protocol.h>
 
-@class NSData, NSString, NSUUID;
+@class NSData, NSMutableArray, NSString, NSUUID;
 
 @interface MNGuidanceEventFeedback : PBCodable <NSCopying>
 {
@@ -21,6 +21,7 @@
     unsigned int _enrouteNoticeIndex;
     NSString *_eventDescription;
     unsigned int _eventIndex;
+    NSMutableArray *_junctionViewImageIDs;
     NSData *_routeID;
     unsigned int _selectedPrimaryStringIndex;
     unsigned int _selectedSecondaryStringIndex;
@@ -47,7 +48,9 @@
     } _has;
 }
 
++ (Class)junctionViewImageIDType;
 @property(retain, nonatomic) NSString *eventDescription; // @synthesize eventDescription=_eventDescription;
+@property(retain, nonatomic) NSMutableArray *junctionViewImageIDs; // @synthesize junctionViewImageIDs=_junctionViewImageIDs;
 @property(nonatomic) double maneuverTime; // @synthesize maneuverTime=_maneuverTime;
 @property(nonatomic) double endDistance; // @synthesize endDistance=_endDistance;
 @property(nonatomic) double endTime; // @synthesize endTime=_endTime;
@@ -74,6 +77,10 @@
 - (id)dictionaryRepresentation;
 - (id)description;
 @property(readonly, nonatomic) _Bool hasEventDescription;
+- (id)junctionViewImageIDAtIndex:(unsigned long long)arg1;
+- (unsigned long long)junctionViewImageIDsCount;
+- (void)addJunctionViewImageID:(id)arg1;
+- (void)clearJunctionViewImageIDs;
 @property(nonatomic) _Bool hasManeuverTime;
 @property(nonatomic) _Bool hasEndDistance;
 @property(nonatomic) _Bool hasEndTime;

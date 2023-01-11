@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)menuActionClasses;
 - (void)setPreviewMode:(_Bool)arg1;
 - (_Bool)wantsSeamlessCommit;
 - (id)initWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;

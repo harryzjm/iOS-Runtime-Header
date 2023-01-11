@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MTSound, NSDate, NSString;
+@class MTSound, NSDate, NSDictionary, NSString;
 
 @interface MTMutableTimer
 {
@@ -17,6 +17,7 @@
 @property(nonatomic) double duration; // @dynamic duration;
 @property(copy, nonatomic) NSDate *firedDate; // @dynamic firedDate;
 @property(copy, nonatomic) NSDate *lastModifiedDate; // @dynamic lastModifiedDate;
+@property(copy, nonatomic) NSDictionary *siriContext; // @dynamic siriContext;
 @property(copy, nonatomic) MTSound *sound; // @dynamic sound;
 @property(nonatomic) unsigned long long state; // @dynamic state;
 @property(copy, nonatomic) NSString *title; // @dynamic title;

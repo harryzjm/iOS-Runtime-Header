@@ -46,7 +46,6 @@
 - (void)_setUserVolume:(float)arg1;
 - (void)_setStoppingFadeOutDuration:(float)arg1;
 - (void)_setPreferredLanguageList:(id)arg1;
-- (void)_setPreparesItemsForPlaybackAsynchronously:(_Bool)arg1;
 - (void)_setExpectedAssetTypes:(id)arg1;
 @property(copy, nonatomic) NSString *externalPlaybackVideoGravity;
 - (void)_setEQPreset:(int)arg1;
@@ -64,7 +63,6 @@
 - (void)setUsesAudioOnlyModeForExternalPlayback:(_Bool)arg1 shouldIgnorePlaybackQueueTransactions:(_Bool)arg2;
 @property(nonatomic) float rate;
 - (void)setMediaSelectionCriteria:(id)arg1 forMediaCharacteristic:(id)arg2;
-@property(nonatomic) _Bool limitsBandwidthForCellularAccess;
 - (void)setAllowsExternalPlayback:(_Bool)arg1 shouldIgnorePlaybackQueueTransactions:(_Bool)arg2;
 @property(nonatomic) long long actionAtItemEnd;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1 toleranceBefore:(CDStruct_1b6d18a9)arg2 toleranceAfter:(CDStruct_1b6d18a9)arg3 completionHandler:(CDUnknownBlockType)arg4;

@@ -8,7 +8,7 @@
 
 #import <WebCore/AVAssetResourceLoaderDelegate-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface WebCoreSharedBufferResourceLoaderDelegate : NSObject <AVAssetResourceLoaderDelegate>
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)canFulfillRequest:(id)arg1;
 - (void)updateData:(id)arg1 complete:(_Bool)arg2;
 - (void)setExpectedContentSize:(long long)arg1;
+@property(readonly) NSData *data;
 - (id)initWithParent:(struct ImageDecoderAVFObjC *)arg1;
 
 // Remaining properties

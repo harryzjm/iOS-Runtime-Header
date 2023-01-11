@@ -53,6 +53,7 @@
     NSString *_peerID;
     double _defaultMessageTimeout;
     double _sessionStalenessInterval;
+    long long _sendingBufferCap;
     long long _engineType;
     NSString *_generationID;
 }
@@ -60,6 +61,7 @@
 @property(readonly, nonatomic) NSString *generationID; // @synthesize generationID=_generationID;
 @property(nonatomic) long long engineType; // @synthesize engineType=_engineType;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(nonatomic) long long sendingBufferCap; // @synthesize sendingBufferCap=_sendingBufferCap;
 @property(nonatomic) double sessionStalenessInterval; // @synthesize sessionStalenessInterval=_sessionStalenessInterval;
 @property(nonatomic) double defaultMessageTimeout; // @synthesize defaultMessageTimeout=_defaultMessageTimeout;
 @property(readonly, nonatomic) _SYMultiSuspendableQueue *sessionQueue; // @synthesize sessionQueue=_sessionQueue;
@@ -86,6 +88,7 @@
 - (_Bool)_request:(id)arg1 hasValidSessionIDForSession:(id)arg2 response:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_enqueueIncomingStartSessionRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)_sessionFromIncomingStartRequest:(id)arg1;
+- (void)currentDeviceConnectionChanged:(_Bool)arg1;
 - (void)currentDeviceProximityChanged:(_Bool)arg1;
 - (void)serializeForIncomingSession:(CDUnknownBlockType)arg1;
 - (void)deliveredMessageWithID:(id)arg1 context:(id)arg2;
@@ -127,6 +130,7 @@
 - (_Bool)resume:(id *)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 @property(readonly) SYSession *currentSession;
+@property(readonly, nonatomic) _Bool targetIsConnected;
 @property(readonly, nonatomic) _Bool targetIsInProximity;
 @property(readonly, nonatomic) _Bool isMasterStore;
 - (void)_whenSessionEnds:(CDUnknownBlockType)arg1;
@@ -145,6 +149,7 @@
 - (void)_setProtocolVersionForRemoteOSVersion:(id)arg1 build:(id)arg2 remoteIsWatch:(_Bool)arg3 switchingEngines:(_Bool)arg4;
 - (void)_setupPairingNotifications;
 - (void)dealloc;
+- (id)initWithService:(id)arg1 priority:(long long)arg2 qos:(unsigned int)arg3 asMasterStore:(_Bool)arg4 options:(struct NSDictionary *)arg5;
 - (id)initWithService:(id)arg1 priority:(long long)arg2 asMasterStore:(_Bool)arg3 options:(struct NSDictionary *)arg4;
 - (id)init;
 - (id)dataStreamWithMetadata:(id)arg1 options:(struct NSDictionary *)arg2 identifier:(id *)arg3 error:(id *)arg4;

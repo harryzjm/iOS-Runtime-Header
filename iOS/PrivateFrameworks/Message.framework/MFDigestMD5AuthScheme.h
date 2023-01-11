@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface MFDigestMD5AuthScheme
+#import <EmailCore/ECAuthenticationScheme.h>
+
+@interface MFDigestMD5AuthScheme : ECAuthenticationScheme
 {
 }
 

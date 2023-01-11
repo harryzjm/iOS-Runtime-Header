@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)geminiBadgeWithText:(id)arg1;
 @property(retain, nonatomic) CNLabeledBadge *labeledBadge; // @synthesize labeledBadge=_labeledBadge;
 - (void).cxx_destruct;
+- (void)setText:(id)arg1;
 @property(copy, nonatomic) NSDictionary *viewAttributes;
 
 @end

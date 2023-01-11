@@ -18,14 +18,16 @@
 - (void)ib_incrementIntegerForKey:(id)arg1;
 - (void)ib_setDouble:(double)arg1 forKey:(id)arg2;
 - (void)ib_setInteger:(long long)arg1 forKey:(id)arg2;
+- (void)ib_setObject:(id)arg1 forKey:(id)arg2 inDictionaryForKey:(id)arg3 inDictionaryForKey:(id)arg4 inDictionaryForKey:(id)arg5 subDictionaryClass:(Class)arg6;
+- (void)ib_setObject:(id)arg1 forKey:(id)arg2 inDictionaryForKey:(id)arg3 inDictionaryForKey:(id)arg4 inDictionaryForKey:(id)arg5;
 - (void)ib_setObject:(id)arg1 forKey:(id)arg2 inDictionaryForKey:(id)arg3 inDictionaryForKey:(id)arg4 subDictionaryClass:(Class)arg5;
 - (void)ib_setObject:(id)arg1 forKey:(id)arg2 inDictionaryForKey:(id)arg3 inDictionaryForKey:(id)arg4;
 - (void)ib_setObject:(id)arg1 forKey:(id)arg2 inDictionaryForKey:(id)arg3 subDictionaryClass:(Class)arg4;
 - (void)ib_setObject:(id)arg1 forKey:(id)arg2 inDictionaryForKey:(id)arg3;
 - (void)ib_setObjectIfNonNil:(id)arg1 forKey:(id)arg2 inDictionaryForKey:(id)arg3;
 - (void)ib_removeLastObjectFromArrayForKey:(id)arg1;
-- (void)ib_setObject:(id)arg1 forKey:(id)arg2 inDictionaryForKey:(id)arg3 inDictionaryForKey:(id)arg4 outerDictionaryClass:(Class)arg5;
 - (void)ib_removeObjectsForKeys:(id)arg1;
+- (id)ib_removeAndReturnObjectForKey:(id)arg1;
 - (void)ib_removeObject:(id)arg1 fromSetForKey:(id)arg2;
 - (void)ib_removeObject:(id)arg1 fromSetForKey:(id)arg2 inDictionaryForKey:(id)arg3;
 - (void)ib_removeObjectForKey:(id)arg1 inDictionaryForKey:(id)arg2 inDictionaryForKey:(id)arg3;
@@ -52,5 +54,6 @@
 - (void)ib_addObjects:(id)arg1 toSetForKey:(id)arg2;
 - (void)ib_addObjects:(id)arg1 toArrayForKey:(id)arg2;
 - (id)ib_collectionOfClass:(Class)arg1 forKey:(id)arg2;
+- (void)ib_setObject:(id)arg1 forKey:(id)arg2 inIdentityDictionaryForKey:(id)arg3;
 @end
 

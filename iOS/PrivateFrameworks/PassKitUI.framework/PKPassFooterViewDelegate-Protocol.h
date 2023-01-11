@@ -11,6 +11,10 @@
 @protocol PKPassFooterViewDelegate <NSObject>
 - (unsigned long long)suppressedContentForPassFooter:(PKPassFooterView *)arg1;
 - (_Bool)isPassFooterViewInGroup:(PKPassFooterView *)arg1;
+- (void)passFooterViewDidChangeCoachingState:(PKPassFooterView *)arg1;
 - (void)passFooterViewDidChangeUserIntentRequirement:(PKPassFooterView *)arg1;
+
+@optional
+- (void)passFooterViewDidChangePileSuppressionRequirement:(PKPassFooterView *)arg1;
 @end
 

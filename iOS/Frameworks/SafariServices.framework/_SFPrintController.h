@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSString, SFPrintQueueItem, UIPrintInfo, UIPrintInteractionController, UIViewController, WBUPrintPageRenderer, WKWebView, _SFReaderController;
+#import <SafariServices/UIPrintInteractionControllerDelegate-Protocol.h>
+#import <SafariServices/WBUPrintPageRendererDelegate-Protocol.h>
+
+@class NSMutableArray, NSString, SFPrintQueueItem, UIPrintInfo, UIPrintInteractionController, WBUPrintPageRenderer, WKWebView, _SFReaderController;
 @protocol _SFDialogPresenting, _SFPrintControllerDelegate;
 
-@interface _SFPrintController : NSObject
+@interface _SFPrintController : NSObject <UIPrintInteractionControllerDelegate, WBUPrintPageRendererDelegate>
 {
     UIPrintInfo *_cachedPrintInfo;
     WBUPrintPageRenderer *_cachedPrintPageRenderer;
@@ -19,29 +22,33 @@
     NSString *_loadingDialogTitle;
     NSMutableArray *_printQueue;
     SFPrintQueueItem *_currentItem;
+    _Bool _hasReservedPrintInteractionController;
     _Bool _suppressingPrintUI;
     WKWebView *_webView;
     _SFReaderController *_readerController;
     id <_SFDialogPresenting> _dialogPresenter;
     id <_SFPrintControllerDelegate> _delegate;
-    UIViewController *_viewControllerForPresentation;
 }
 
-@property(nonatomic) __weak UIViewController *viewControllerForPresentation; // @synthesize viewControllerForPresentation=_viewControllerForPresentation;
++ (_Bool)isDisplayingPrintUI;
 @property(nonatomic) __weak id <_SFPrintControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <_SFDialogPresenting> dialogPresenter; // @synthesize dialogPresenter=_dialogPresenter;
 @property(nonatomic) __weak _SFReaderController *readerController; // @synthesize readerController=_readerController;
 @property(nonatomic) __weak WKWebView *webView; // @synthesize webView=_webView;
 - (void).cxx_destruct;
+- (id)printInteractionControllerParentViewController:(id)arg1;
+- (id)presentingViewControllerForPrintPageRenderer:(id)arg1;
 - (void)printInteractionControllerDidFinish;
 - (void)preparePrintInteractionControllerForUsage:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)reservePrintInteractionController;
 - (void)updatePrintInfo;
 @property(readonly, nonatomic) UIPrintInfo *printInfo;
+@property(readonly, nonatomic) NSString *suggestedPDFFileName;
 @property(readonly, nonatomic) WBUPrintPageRenderer *printRenderer;
 - (void)clearQueue;
 - (void)resetPrintUISuppression;
 - (void)handleNextPrintRequest;
+- (void)getPDFDataForUsage:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)printFrame:(id)arg1 initiatedByWebContent:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_dequeuePrintItem;
 - (void)_enqueuePrintItem:(id)arg1;
@@ -52,6 +59,12 @@
 - (void)_preparePrintInteractionControllerForUsage:(long long)arg1 onlyIfLoaded:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

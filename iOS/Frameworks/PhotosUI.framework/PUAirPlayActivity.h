@@ -4,27 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosUICore/PXActivity.h>
+
 #import <PhotosUI/PHAirPlayControllerRouteObserver-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface PUAirPlayActivity <PHAirPlayControllerRouteObserver>
+@interface PUAirPlayActivity : PXActivity <PHAirPlayControllerRouteObserver>
 {
-    _Bool __routeAvailable;
-    _Bool __needsUpdateRouteAvailable;
 }
 
-@property(nonatomic, setter=_setNeedsUpdateRouteAvailable:) _Bool _needsUpdateRouteAvailable; // @synthesize _needsUpdateRouteAvailable=__needsUpdateRouteAvailable;
-@property(nonatomic, getter=_isRouteAvailable, setter=_setRouteAvailable:) _Bool _routeAvailable; // @synthesize _routeAvailable=__routeAvailable;
-- (void)_updateRouteAvailabilityIfNeeded;
 - (void)airPlayControllerRouteAvailabilityChanged:(id)arg1;
 - (void)_unregisterForAirPlayNotifications;
 - (void)_registerForAirPlayNotifications;
 - (void)tearDownForCompletion;
 - (void)performActivity;
+@property(readonly, nonatomic, getter=isRouteAvailable) _Bool routeAvailable;
 - (_Bool)canPerformWithActivityItems:(id)arg1;
-- (id)_activityBundleImageConfiguration;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (void)dealloc;

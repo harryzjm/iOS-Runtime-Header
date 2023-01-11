@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSOrderedSet, NSSet;
+
 @interface IBICStickersIconSet
 {
 }
@@ -17,8 +19,8 @@
 + (Class)assetRepClass;
 + (id)createInstanceNamed:(id)arg1 forIdioms:(id)arg2 usingRenderer:(CDUnknownBlockType)arg3;
 + (id)createDefaultInstancesForUnitTesting;
-- (id)intrinsicallyOrderedChildren;
-- (id)children;
+@property(readonly, nonatomic) NSOrderedSet *intrinsicallyOrderedChildren;
+@property(readonly, nonatomic) NSSet *children;
 - (id)assetRepForStructuredIdentifier:(id)arg1;
 - (id)childForIdentifier:(id)arg1;
 - (id)assetRepForIdentifier:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString;
+@class NSArray, NSString, NSURL;
 
 @interface SAVCSContentButton
 {
@@ -12,6 +12,7 @@
 
 + (id)contentButtonWithDictionary:(id)arg1 context:(id)arg2;
 + (id)contentButton;
+@property(copy, nonatomic) NSURL *url;
 @property(copy, nonatomic) NSArray *togglePlayPauseCommands;
 @property(copy, nonatomic) NSString *contentType;
 @property(copy, nonatomic) NSString *canonicalId;

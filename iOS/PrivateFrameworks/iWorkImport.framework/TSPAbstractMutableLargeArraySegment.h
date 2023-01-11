@@ -6,7 +6,7 @@
 
 #import <iWorkImport/NSFastEnumeration-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSArray, NSMutableArray, NSString;
 @protocol TSPMutableLargeArraySegmentDelegate;
 
 __attribute__((visibility("hidden")))
@@ -36,6 +36,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long estimatedByteSize;
 - (unsigned long long)estimatedByteSizeOfElement:(id)arg1;
 - (id)bisectAtIndex:(unsigned long long)arg1;
+@property(readonly, nonatomic) NSMutableArray *mutableArrayWrapper;
+@property(readonly, nonatomic) NSArray *allObjects;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)replaceObjectAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 - (void)removeLastObject;

@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @synthesize parentInfo=_pageInfo;
 - (id)infoForSelectionPath:(id)arg1;
-@property(readonly, nonatomic) NSArray *childInfos;
+@property(readonly, copy, nonatomic) NSArray *childInfos;
 - (id)copyWithContext:(id)arg1;
 - (_Bool)isThemeContent;
 - (_Bool)isSelectable;
@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)setPrimitiveGeometry:(id)arg1;
 @property(copy, nonatomic) TSDInfoGeometry *geometry;
 - (void)inflateBodyLayout:(id)arg1;
-@property(readonly, nonatomic) _Bool layoutVertically;
+@property(readonly, nonatomic) _Bool laysOutVertically;
 @property(readonly, nonatomic) TPPageHint *pageHint;
 @property(readonly, nonatomic) TSWPStorage *storage;
 @property(readonly, nonatomic) TSWPStorage *bodyStorage;
@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isMaster;
 @property(nonatomic) _Bool matchesObjectPlaceholderGeometry;
 @property(readonly) Class superclass;
 

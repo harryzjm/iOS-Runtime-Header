@@ -18,7 +18,7 @@
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
-- (id)_accessibilityActionButton;
+- (id)_axActionButton;
 - (void)setActionButtonCustomActions:(id)arg1;
 - (id)actionButtonCustomActions;
 

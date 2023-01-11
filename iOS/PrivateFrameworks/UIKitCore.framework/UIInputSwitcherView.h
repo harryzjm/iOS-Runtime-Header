@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/_UIInputSwitcherSplitMenu-Protocol.h>
+
 @class NSArray, NSMutableArray, UIInputSwitcherGestureState;
 
 __attribute__((visibility("hidden")))
-@interface UIInputSwitcherView
+@interface UIInputSwitcherView <_UIInputSwitcherSplitMenu>
 {
     NSMutableArray *m_inputModes;
     NSArray *m_inputSwitcherItems;
@@ -16,6 +18,7 @@ __attribute__((visibility("hidden")))
     _Bool _messagesWriteboardFromSwitcher;
     _Bool _fileReportFromSwitcher;
     _Bool _showsSwitches;
+    CDUnknownBlockType m_finishSplitTransitionBlock;
 }
 
 + (id)activeInstance;
@@ -23,12 +26,15 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool showsSwitches; // @synthesize showsSwitches=_showsSwitches;
 @property(nonatomic) _Bool fileReportFromSwitcher; // @synthesize fileReportFromSwitcher=_fileReportFromSwitcher;
 @property(nonatomic) _Bool messagesWriteboardFromSwitcher; // @synthesize messagesWriteboardFromSwitcher=_messagesWriteboardFromSwitcher;
+@property(copy, nonatomic) CDUnknownBlockType finishSplitTransitionBlock; // @synthesize finishSplitTransitionBlock=m_finishSplitTransitionBlock;
 @property(readonly, nonatomic) NSArray *inputModes; // @synthesize inputModes=m_inputModes;
 - (id)buttonPressed:(id)arg1 withEvent:(id)arg2 location:(struct CGPoint)arg3 isForDictation:(_Bool)arg4 tapAction:(CDUnknownBlockType)arg5;
+- (_Bool)didHitDockItemWithinTypingWindow;
 - (_Bool)_isHandBiasSwitchVisible;
 - (void)switchAction;
 - (void)customizeCell:(id)arg1 forItemAtIndex:(unsigned long long)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (_Bool)usesDeviceLanguageForItemAtIndex:(unsigned long long)arg1;
 - (id)subtitleFontForItemAtIndex:(unsigned long long)arg1;
 - (id)subtitleForItemAtIndex:(unsigned long long)arg1;
 - (id)fontForItemAtIndex:(unsigned long long)arg1;
@@ -41,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)numberOfItems;
 - (void)willFadeForSelectionAtIndex:(unsigned long long)arg1;
 - (void)willFade;
-- (void)willShow;
+- (void)didShow;
 - (_Bool)shouldShow;
 - (void)showAsPopupForKey:(id)arg1 inLayout:(id)arg2;
 - (void)selectPreviousInputMode;
@@ -54,13 +60,16 @@ __attribute__((visibility("hidden")))
 - (void)_segmentControlValueDidChange:(id)arg1;
 - (void)selectInputMode:(id)arg1;
 - (void)setInputMode:(id)arg1;
+- (void)returnToKeyboardIfNeeded;
 - (void)fadeWithDelay:(double)arg1;
 - (void)selectRowForInputMode:(id)arg1;
 - (long long)_indexOfInputSwitcherItemWithIdentifier:(id)arg1;
 - (_Bool)shouldShowSelectionExtraViewForIndexPath:(id)arg1;
 - (id)selectedInputMode;
+- (void)toggleKeyboardFloatingPreference;
 - (void)_reloadInputSwitcherItems;
 - (void)reloadInputModes;
+- (void)didFinishSplitTransition;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

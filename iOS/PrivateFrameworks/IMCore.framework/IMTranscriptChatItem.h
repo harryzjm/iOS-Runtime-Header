@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+#import <IMCore/IMChatTranscriptItem-Protocol.h>
 
-@interface IMTranscriptChatItem
+@class IMHandle, IMServiceImpl, NSAttributedString, NSDate, NSString;
+
+@interface IMTranscriptChatItem <IMChatTranscriptItem>
 {
     NSString *_guid;
     unsigned char _contiguousType;
@@ -20,6 +22,12 @@
 - (void)_setContiguousType:(unsigned char)arg1;
 - (void)_setContiguousLoaded:(_Bool)arg1;
 - (_Bool)_isContiguousLoaded;
+@property(readonly, nonatomic) IMHandle *handle;
+@property(readonly, nonatomic) IMServiceImpl *service;
+@property(readonly, nonatomic) NSDate *transcriptDate;
+@property(readonly, copy, nonatomic) NSAttributedString *transcriptText;
+@property(readonly, nonatomic) _Bool wantsTail;
+@property(readonly, nonatomic, getter=isFromMe) _Bool fromMe;
 @property(readonly, nonatomic, getter=isContiguous) _Bool contiguous;
 @property(readonly, nonatomic) unsigned char attachmentContiguousType;
 @property(readonly, nonatomic) unsigned char contiguousType;
@@ -27,8 +35,12 @@
 - (_Bool)isContiguousWithChatItem:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
-- (id)description;
+@property(readonly) unsigned long long hash;
+@property(readonly, copy) NSString *description;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

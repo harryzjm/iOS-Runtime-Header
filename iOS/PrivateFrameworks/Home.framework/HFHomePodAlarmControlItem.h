@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HFMediaProfileContainerSettingsValueManager;
+@class HFHomeKitSettingsValueManager;
 @protocol HFMediaProfileContainer;
 
 @interface HFHomePodAlarmControlItem
@@ -19,7 +19,7 @@
 - (id)valueForCharacteristicValues:(id)arg1;
 - (id)characteristicValuesForValue:(id)arg1;
 - (id)readValueAndPopulateStandardResults;
-@property(readonly, nonatomic) HFMediaProfileContainerSettingsValueManager *valueManager;
+@property(readonly, nonatomic) HFHomeKitSettingsValueManager *valueManager;
 - (id)copyWithCharacteristicOptions:(id)arg1 valueSource:(id)arg2;
 - (id)initWithValueSource:(id)arg1 characteristicOptions:(id)arg2 displayResults:(id)arg3;
 - (id)initWithMediaProfileContainer:(id)arg1 displayResults:(id)arg2;

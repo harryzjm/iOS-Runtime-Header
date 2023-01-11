@@ -17,6 +17,7 @@
 @property(nonatomic) __weak PDFAnnotation *annotation; // @synthesize annotation=_annotation;
 @property(nonatomic) __weak PDFPage *page; // @synthesize page=_page;
 - (void).cxx_destruct;
+- (id)description;
 - (_Bool)_accessibilityIsButtonWidget;
 - (id)_accessibilityAnnotationFieldType;
 - (id)_accessibilityAnnotationType;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSString;
+@class NSArray, NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDCodeFunctionInvokeURLRequest
@@ -13,8 +13,12 @@ __attribute__((visibility("hidden")))
     NSString *_serviceName;
     NSString *_functionName;
     NSData *_serializedParameters;
+    NSData *_attestationEntropy;
+    NSArray *_pccWrappedInvocationKeys;
 }
 
+@property(copy, nonatomic) NSArray *pccWrappedInvocationKeys; // @synthesize pccWrappedInvocationKeys=_pccWrappedInvocationKeys;
+@property(retain, nonatomic) NSData *attestationEntropy; // @synthesize attestationEntropy=_attestationEntropy;
 @property(retain, nonatomic) NSData *serializedParameters; // @synthesize serializedParameters=_serializedParameters;
 @property(copy, nonatomic) NSString *functionName; // @synthesize functionName=_functionName;
 @property(copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
@@ -23,10 +27,11 @@ __attribute__((visibility("hidden")))
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)generateRequestOperations;
+- (_Bool)requestGETPreAuth;
 - (id)requestOperationClasses;
 - (int)operationType;
 - (_Bool)allowsAnonymousAccount;
-- (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedParameters:(id)arg3;
+- (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedParameters:(id)arg3 attestationEntropy:(id)arg4 pccWrappedInvocationKeys:(id)arg5;
 
 @end
 

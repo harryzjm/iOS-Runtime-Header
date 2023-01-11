@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_accessibilityControlCenterMenuItemAtIndexIsValid:(long long)arg1;
 - (id)_accessibilityModuleViewElements;
 - (void)viewDidLoad;
 - (struct CGRect)_accessibilityControlCenterButtonFrame;

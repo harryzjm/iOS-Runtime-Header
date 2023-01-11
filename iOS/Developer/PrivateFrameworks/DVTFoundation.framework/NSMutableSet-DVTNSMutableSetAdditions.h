@@ -7,6 +7,7 @@
 #import <Foundation/NSMutableSet.h>
 
 @interface NSMutableSet (DVTNSMutableSetAdditions)
+- (_Bool)dvt_addReturningDidMutate:(id)arg1;
 - (id)dvt_popAllObjects;
 - (void)dvt_addObjectIfNonNil:(id)arg1;
 - (void)dvt_recursivelyRemoveAllObjects;

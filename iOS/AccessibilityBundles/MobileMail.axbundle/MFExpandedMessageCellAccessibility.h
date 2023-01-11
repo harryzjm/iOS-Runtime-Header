@@ -15,7 +15,7 @@
 - (id)accessibilityDragSourceDescriptors;
 - (id)accessibilityLabel;
 - (_Bool)_accessibilityTouchContainerShouldOutputBraille;
-- (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 
 @end
 

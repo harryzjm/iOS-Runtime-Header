@@ -35,16 +35,17 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_wideContentTrailingConstraint;
     NSLayoutConstraint *_narrowContentLeadingConstraint;
     NSLayoutConstraint *_narrowContentTrailingConstraint;
+    NSLayoutConstraint *_iPadWidthConstraint;
     _Bool _scrollViewNeedsShadowCachedValue;
     UILabel *_explanationLabel;
     UILabel *_passwordRetrievalExpalantionLabel;
     UIButton *_useStrongPasswordButton;
-    UIButton *_useCustomPasswordButton;
+    UIButton *_useOtherPasswordButton;
     long long _keyboardAppearance;
 }
 
 @property(nonatomic) long long keyboardAppearance; // @synthesize keyboardAppearance=_keyboardAppearance;
-@property(readonly, nonatomic) UIButton *useCustomPasswordButton; // @synthesize useCustomPasswordButton=_useCustomPasswordButton;
+@property(readonly, nonatomic) UIButton *useOtherPasswordButton; // @synthesize useOtherPasswordButton=_useOtherPasswordButton;
 @property(readonly, nonatomic) UIButton *useStrongPasswordButton; // @synthesize useStrongPasswordButton=_useStrongPasswordButton;
 @property(readonly, nonatomic) UILabel *passwordRetrievalExpalantionLabel; // @synthesize passwordRetrievalExpalantionLabel=_passwordRetrievalExpalantionLabel;
 @property(readonly, nonatomic) UILabel *explanationLabel; // @synthesize explanationLabel=_explanationLabel;

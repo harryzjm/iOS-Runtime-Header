@@ -4,13 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface UIScrollViewAccessibility
+#import <UIKit/AXScrollIndicatorDelegate-Protocol.h>
+
+@class NSString;
+
+@interface UIScrollViewAccessibility <AXScrollIndicatorDelegate>
 {
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_didEndDirectManipulationWithScrubbingDirection:(long long)arg1;
+- (struct CGPoint)_newScrollOffsetForScrubReturningAnimated:(_Bool *)arg1;
+- (void)_axAnnounceScrubForDirection:(long long)arg1;
+- (void)_axSetLastScrubAnnouncementDate:(id)arg1;
+- (id)_axLastScrubAnnouncementDate;
+- (double)_axProgressForDirection:(long long)arg1;
+- (struct CGPoint)_axContentOffsetForAddedProgress:(double)arg1 inDirection:(long long)arg2;
+- (struct CGRect)accessibilityFrameForScrollIndicator:(id)arg1;
+- (double)accessibilityProgressForScrollIndicator:(id)arg1;
+- (long long)accessibilityNumberOfPagesForScrollIndicator:(id)arg1;
+- (void)accessibilityScrollIndicator:(id)arg1 addProgress:(double)arg2;
+- (void)accessibilityScrollIndicator:(id)arg1 didBecomeFocused:(_Bool)arg2;
+- (_Bool)accessibilityShouldEnableScrollIndicator:(id)arg1;
+- (_Bool)_accessibilityIsSortPriorityContainer;
+- (void)_hideScrollIndicators;
+- (void)_adjustScrollerIndicators:(_Bool)arg1 alwaysShowingThem:(_Bool)arg2;
+- (id)_axHorizontalScrollIndicator;
+- (id)_axVerticalScrollIndicator;
+- (void)_axAnnotateScrollBars;
+- (id)preferredFocusEnvironments;
+- (_Bool)canBecomeFocused;
+- (id)accessibilityPath;
 - (id)_accessibilityUserTestingChildren;
 - (_Bool)_accessibilityIsScannerGroup;
 - (id)_staticScrollBar;
@@ -30,6 +56,8 @@
 - (_Bool)accessibilityScrollUpPage;
 - (struct CGPoint)_accessibilityVisibleScrollArea:(_Bool)arg1;
 - (void)_scrollViewAnimationEnded:(id)arg1 finished:(_Bool)arg2;
+- (void)accessibilityApplyScrollContent:(struct CGPoint)arg1 sendScrollStatus:(_Bool)arg2 animateWithDuration:(double)arg3 animationCurve:(int)arg4;
+- (void)accessibilityApplyScrollContent:(struct CGPoint)arg1 sendScrollStatus:(_Bool)arg2 animateWithDuration:(double)arg3;
 - (void)accessibilityApplyScrollContent:(struct CGPoint)arg1 sendScrollStatus:(_Bool)arg2 animated:(_Bool)arg3;
 - (struct CGPoint)accessibilityValidateScrollContentOffset:(struct CGPoint)arg1;
 - (_Bool)_accessibilityScrollPageInDirection:(int)arg1;
@@ -48,25 +76,30 @@
 - (long long)_accessibilityPageIndex;
 - (long long)_accessibilityPageCount;
 - (id)_accessibilitySubviews;
+- (double)_axAllowedPagingOverlap;
 - (id)_accessibilityDelegateScrollStatus;
 - (id)_accessibilityRetrieveDelegate;
 - (void)_notifyDidScroll;
+- (void)_scrollViewDidEndDeceleratingForDelegate;
 - (id)_accessibilityScrollStatusFormatString;
 - (_Bool)accessibilityScrollDownPageSupported;
 - (_Bool)accessibilityScrollUpPageSupported;
 - (_Bool)accessibilityScrollRightPageSupported;
 - (_Bool)accessibilityScrollLeftPageSupported;
 - (_Bool)_accessibilityUseContentInset;
+- (void)_accessibilityCurrentPage:(long long *)arg1 totalPages:(long long *)arg2 forVerticalDirection:(_Bool)arg3;
 - (void)_accessibilityCurrentPage:(long long *)arg1 totalPages:(long long *)arg2 type:(int)arg3;
 - (void)_accessibilityCurrentPage:(long long *)arg1 totalPages:(long long *)arg2;
 - (_Bool)_accessibilityScrollStatusPrefersVertical;
 - (double)_accessibilityScrollHeightDistance;
 - (double)_accessibilityScrollWidthDistance;
 - (_Bool)_accessibilityShouldAnimateScroll;
+- (unsigned long long)_accessibilityAutomationType;
 - (_Bool)_accessibilityShouldAnimateScrollToVisible;
 - (long long)accessibilityContainerType;
 - (_Bool)_accessibilityScrollToFrame:(struct CGRect)arg1 forView:(id)arg2;
 - (_Bool)_axShouldScrollToAlignWithPage;
+- (_Bool)_axScrollViewPagingEnabled;
 - (struct CGPoint)_accessibilityContentOffset;
 - (id)_accessibilityLastOpaqueElement;
 - (id)_accessibilityFirstOpaqueElement;
@@ -80,10 +113,19 @@
 - (double)_accessibilityZoomScale;
 - (id)_accessibilityHorizontalScrollBarElement;
 - (id)_accessibilityVerticalScrollBarElement;
+- (_Bool)_axShowsHorizontalScrollBar;
+- (_Bool)_axShowsVerticalScrollBar;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axSetHorizontalScrollBar:(id)arg1;
 - (id)_axHorizontalScrollBar;
 - (void)_axSetVerticalScrollBar:(id)arg1;
 - (id)_axVerticalScrollBar;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

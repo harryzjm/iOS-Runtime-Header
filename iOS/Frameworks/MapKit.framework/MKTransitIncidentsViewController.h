@@ -23,9 +23,10 @@
 - (void)dealloc;
 - (void)_localeDidChange;
 - (void)_updateTitle;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (void)viewDidLoad;
 - (id)initWithIncidents:(id)arg1;
+- (_Bool)_canShowWhileLocked;
 
 @end
 

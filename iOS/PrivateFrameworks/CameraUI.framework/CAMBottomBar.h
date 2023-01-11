@@ -6,17 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-#import <CameraUI/CAMAccessibilityHUDItemProvider-Protocol.h>
-#import <CameraUI/CAMBarsAccessibilityHUDManagerGestureProvider-Protocol.h>
 #import <CameraUI/CAMExpandableMenuButtonDelegate-Protocol.h>
+#import <CameraUI/CEKApertureButtonDelegate-Protocol.h>
 
-@class CAMCreativeCameraButton, CAMExpandableMenuButton, CAMFlashButton, CAMFlipButton, CAMHDRButton, CAMImageWell, CAMLivePhotoButton, CAMModeDial, CAMTimerButton, CAMUtilityBar, CUShutterButton, NSString, PUReviewScreenDoneButton, UIButton;
+@class CAMCreativeCameraButton, CAMExpandableMenuButton, CAMFlashButton, CAMFlipButton, CAMHDRButton, CAMImageWell, CAMLivePhotoButton, CAMModeDial, CAMTimerButton, CAMUtilityBar, CEKApertureButton, CUShutterButton, PUReviewScreenDoneButton, UIButton;
+@protocol CAMControlVisibilityUpdateDelegate;
 
-@interface CAMBottomBar : UIView <CAMExpandableMenuButtonDelegate, CAMAccessibilityHUDItemProvider, CAMBarsAccessibilityHUDManagerGestureProvider>
+@interface CAMBottomBar : UIView <CAMExpandableMenuButtonDelegate, CEKApertureButtonDelegate>
 {
     long long _layoutStyle;
     long long _backgroundStyle;
     UIView *_backgroundView;
+    id <CAMControlVisibilityUpdateDelegate> _visibilityUpdateDelegate;
     CUShutterButton *_shutterButton;
     CUShutterButton *_stillDuringVideoButton;
     CAMModeDial *_modeDial;
@@ -29,16 +30,18 @@
     CAMHDRButton *_HDRButton;
     CAMTimerButton *_timerButton;
     CAMLivePhotoButton *_livePhotoButton;
+    CEKApertureButton *_apertureButton;
     CAMUtilityBar *_utilityBar;
-    double _utilityBarExtensionAboveTopEdge;
+    double _utilityBarExtensionDistance;
     CAMExpandableMenuButton *__expandedMenuButton;
 }
 
 + (_Bool)wantsVerticalBarForLayoutStyle:(long long)arg1;
 + (struct CGRect)shutterButtonAlignmentRectInBounds:(struct CGRect)arg1 forLayoutStyle:(long long)arg2;
 @property(retain, nonatomic, setter=_setExpandedMenuButton:) CAMExpandableMenuButton *_expandedMenuButton; // @synthesize _expandedMenuButton=__expandedMenuButton;
-@property(nonatomic) double utilityBarExtensionAboveTopEdge; // @synthesize utilityBarExtensionAboveTopEdge=_utilityBarExtensionAboveTopEdge;
+@property(nonatomic) double utilityBarExtensionDistance; // @synthesize utilityBarExtensionDistance=_utilityBarExtensionDistance;
 @property(retain, nonatomic) CAMUtilityBar *utilityBar; // @synthesize utilityBar=_utilityBar;
+@property(retain, nonatomic) CEKApertureButton *apertureButton; // @synthesize apertureButton=_apertureButton;
 @property(retain, nonatomic) CAMLivePhotoButton *livePhotoButton; // @synthesize livePhotoButton=_livePhotoButton;
 @property(retain, nonatomic) CAMTimerButton *timerButton; // @synthesize timerButton=_timerButton;
 @property(retain, nonatomic) CAMHDRButton *HDRButton; // @synthesize HDRButton=_HDRButton;
@@ -51,10 +54,12 @@
 @property(retain, nonatomic) CAMModeDial *modeDial; // @synthesize modeDial=_modeDial;
 @property(retain, nonatomic) CUShutterButton *stillDuringVideoButton; // @synthesize stillDuringVideoButton=_stillDuringVideoButton;
 @property(retain, nonatomic) CUShutterButton *shutterButton; // @synthesize shutterButton=_shutterButton;
+@property(nonatomic) __weak id <CAMControlVisibilityUpdateDelegate> visibilityUpdateDelegate; // @synthesize visibilityUpdateDelegate=_visibilityUpdateDelegate;
 @property(readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property(nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 - (void).cxx_destruct;
+- (void)apertureButtonNeedsLayout:(id)arg1 animated:(_Bool)arg2;
 - (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (id)hudItemForAccessibilityHUDManager:(id)arg1;
 - (void)_iterateViewsInHUDManager:(id)arg1 forHUDItem:(CDUnknownBlockType)arg2;
@@ -80,6 +85,7 @@
 - (void)_layoutStillDuringVideoButtonForLayoutStyle:(long long)arg1;
 - (void)_layoutShutterButtonForLayoutStyle:(long long)arg1;
 - (void)_ensureSubviewOrdering;
+- (void)_updateControlVisibilityAnimated:(_Bool)arg1;
 - (void)_updateFlipButtonTappableEdgeInsets;
 - (void)_updateCreativeCameraButtonTappableEdgeInsets;
 - (void)_updateImageWellTappableEdgeInsets;
@@ -87,12 +93,6 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithLayoutStyle:(long long)arg1;
 - (void)_commonCAMBottomBarInitializationInitWithLayoutStyle:(long long)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

@@ -7,7 +7,10 @@
 @class CTNetwork, CTServiceDescriptor, CTXPCServiceSubscriptionContext, NSDictionary, NSString;
 
 @protocol CTXPCServiceRegistrationInterface
+- (void)getPublicSignalStrength:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthInfo *, NSError *))arg2;
 - (void)getDataMode:(CTServiceDescriptor *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
+- (void)getSignalStrengthMeasurements:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthMeasurements *, NSError *))arg2;
+- (void)getEncryptionStatus:(CTServiceDescriptor *)arg1 completion:(void (^)(CTEncryptionStatusInfo *, NSError *))arg2;
 - (void)isNetworkReselectionNeeded:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)copyNetworkSelectionInfo:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTNetworkSelectionInfo *, NSError *))arg2;
 - (void)copyNetworkSelectionState:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IBICAbstractTextureSet;
+@class IBICAbstractTextureSet, NSOrderedSet, NSSet;
 
 @interface IBICMipmapSet
 {
@@ -41,8 +41,8 @@
 - (void)setFileURL:(id)arg1 forTextureAssetInfo:(id)arg2;
 - (id)makeTextureAssetInfoWithMipLevel:(unsigned long long)arg1 cubeFace:(long long)arg2 flipped:(_Bool)arg3;
 - (_Bool)populateNamedAssetImportInfo:(id)arg1 allCompiledItems:(id)arg2 withOptions:(id)arg3 error:(id *)arg4;
-- (id)intrinsicallyOrderedChildren;
-- (id)children;
+@property(readonly, nonatomic) NSOrderedSet *intrinsicallyOrderedChildren;
+@property(readonly, nonatomic) NSSet *children;
 - (id)assetRepForStructuredIdentifier:(id)arg1;
 - (id)childForIdentifier:(id)arg1;
 - (id)assetRepForIdentifier:(id)arg1;

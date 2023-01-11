@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CloudKitDaemon/NSSecureCoding-Protocol.h>
+
 @class CKEncryptedData;
 
 __attribute__((visibility("hidden")))
-@interface CKDChainPCSData
+@interface CKDChainPCSData <NSSecureCoding>
 {
     CKEncryptedData *_encryptedChainPCSPrivateKey;
 }

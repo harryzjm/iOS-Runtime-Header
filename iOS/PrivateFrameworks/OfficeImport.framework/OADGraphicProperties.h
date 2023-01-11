@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     unsigned int mIsBehindText:1;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
@@ -50,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (void)setFill:(id)arg1;
 - (id)fill;
 - (void)setParent:(id)arg1;
-- (void)dealloc;
 - (id)initWithDefaults;
 
 // Remaining properties

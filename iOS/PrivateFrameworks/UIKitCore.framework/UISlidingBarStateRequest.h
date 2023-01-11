@@ -18,10 +18,16 @@
 @property(nonatomic) _Bool userInitiated; // @synthesize userInitiated=_userInitiated;
 @property(nonatomic) double trailingWidth; // @synthesize trailingWidth=_trailingWidth;
 @property(nonatomic) double leadingWidth; // @synthesize leadingWidth=_leadingWidth;
+- (id)_closestEqualOrLargerState:(id)arg1 returningDistance:(double *)arg2;
+- (id)_closestEqualOrLargerState:(id)arg1;
+- (id)_closestState:(id)arg1 returningDistance:(double *)arg2;
+- (id)_closestState:(id)arg1;
+- (id)_matchingState:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 
 @end
 

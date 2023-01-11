@@ -11,6 +11,7 @@
     CRRecentContact *_recent;
 }
 
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)description;
@@ -20,7 +21,6 @@
 - (id)preferredSendingAddress;
 - (id)recentContact;
 - (_Bool)isRemovableFromSearchResults;
-- (void)dealloc;
 - (id)initWithRecentContact:(id)arg1;
 
 @end

@@ -11,6 +11,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_viewToAddFocusLayer;
+- (id)accessibilityPath;
+- (void)_axFKADecrement;
+- (void)_axFKAIncrement;
+- (id)_accessibilityKeyCommands;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 - (double)_accessibilityMaxValue;
@@ -28,6 +33,7 @@
 - (id)_accessibilityAbsoluteValue;
 - (_Bool)isAccessibilityElement;
 - (struct CGPoint)accessibilityActivationPoint;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

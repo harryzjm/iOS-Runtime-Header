@@ -6,14 +6,14 @@
 
 #import <iWorkImport/TSDTextSelection-Protocol.h>
 
-@class NSString, TSTCellRegion, TSTCellUIDRegion, TSTInfo;
+@class NSString, TSTCellRegion, TSTCellUIDRegion, TSTTableInfo;
 
 __attribute__((visibility("hidden")))
 @interface TSTCellSelection <TSDTextSelection>
 {
     _Bool _beginImplicitEditing;
     long long _selectionType;
-    TSTInfo *_tableInfo;
+    TSTTableInfo *_tableInfo;
     TSTCellUIDRegion *_cellUIDRegion;
     TSTCellUIDRegion *_baseCellUIDRegion;
     TSTCellRegion *_cachedCellRegion;
@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct TSTCellUID cursorCellUID; // @synthesize cursorCellUID=_cursorCellUID;
 @property(nonatomic) struct TSTCellUID anchorCellUID; // @synthesize anchorCellUID=_anchorCellUID;
 @property(retain, nonatomic) TSTCellUIDRegion *cellUIDRegion; // @synthesize cellUIDRegion=_cellUIDRegion;
-@property(nonatomic) __weak TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property(nonatomic) __weak TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 @property(nonatomic) struct _NSRange searchReferenceRange; // @synthesize searchReferenceRange=_searchReferenceRange;
 @property(readonly, nonatomic) _Bool beginImplicitEditing; // @synthesize beginImplicitEditing=_beginImplicitEditing;
 @property(readonly, nonatomic) long long selectionType; // @synthesize selectionType=_selectionType;
@@ -97,10 +97,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) TSTCellRegion *baseRegion;
 @property(readonly, nonatomic) struct TSUCellCoord anchorCellID;
 @property(readonly, nonatomic) TSTCellRegion *cellRegion;
+@property(readonly, nonatomic, getter=isValid) _Bool valid;
 - (id)initWithTableInfo:(id)arg1 columnIndices:(id)arg2;
 - (id)initWithTableInfo:(id)arg1 rowIndices:(id)arg2;
 - (id)initWithTableInfo:(id)arg1 cellRegion:(id)arg2;
-- (id)initWithTableInfo:(id)arg1 andPreviousSelection:(id)arg2 offsetBy:(CDStruct_1ef3fb1f)arg3;
+- (id)initWithTableInfo:(id)arg1 andPreviousSelection:(id)arg2 offsetBy:(struct TSUColumnRowOffset)arg3;
 - (id)initWithTableInfo:(id)arg1 rowOrColumn:(long long)arg2 index:(unsigned int)arg3 count:(unsigned int)arg4;
 - (id)initWithTableInfo:(id)arg1 startingColumnIndex:(unsigned short)arg2 numberOfColumns:(unsigned int)arg3;
 - (id)initWithTableInfo:(id)arg1 startingRowIndex:(unsigned int)arg2 numberOfRows:(unsigned int)arg3;

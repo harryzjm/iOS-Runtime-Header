@@ -4,12 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MKCircle;
+@class MKCircle, VKVectorOverlayCircle;
 
 @interface MKCircleRenderer
 {
+    VKVectorOverlayCircle *_vectorData;
 }
 
++ (Class)_mapkitLeafClass;
+- (void).cxx_destruct;
+- (void)_updateRenderColors;
+- (id)vectorDataForOverlay:(id)arg1;
+- (_Bool)overlayCanProvideVectorData:(id)arg1;
+- (id)_vectorData;
+- (_Bool)_canProvideVectorGeometry;
+- (void)setAlpha:(double)arg1;
+- (void)setStrokeColor:(id)arg1;
+- (void)setFillColor:(id)arg1;
+- (void)setLineWidth:(double)arg1;
 - (void)createPath;
 @property(readonly, nonatomic) MKCircle *circle;
 - (id)initWithCircle:(id)arg1;

@@ -6,21 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-@class CLKDevice, NSArray, NSDateFormatter, NSNumber, UIColor, UILabel;
+@class CLKDevice, NSArray, NSDateFormatter, NSDictionary, NSNumber, UIColor, UILabel;
 
 @interface NTKWellnessRichComplicationChartView : UIView
 {
     CLKDevice *_device;
-    unsigned long long _quantityBucketCount;
-    unsigned long long _standBucketCount;
-    NSArray *_quantityBucketDates;
-    NSArray *_moveChartPoints;
-    NSNumber *_minMoveValue;
+    NSDictionary *_moveChartPoints;
     NSNumber *_maxMoveValue;
-    NSArray *_exerciseChartPoints;
-    NSNumber *_minExerciseValue;
+    NSDictionary *_exerciseChartPoints;
     NSNumber *_maxExerciseValue;
-    NSArray *_standChartPoints;
+    NSDictionary *_standChartPoints;
     UIColor *_chartLineColor;
     double _moveChartBottomLineY;
     double _exerciseChartBottomLineY;
@@ -36,30 +31,23 @@
     UILabel *_sixAMHourLabel;
     UILabel *_noonHourLabel;
     UILabel *_sixPMHourLabel;
-    NSArray *_moveGraphData;
-    NSArray *_exerciseGraphData;
-    NSArray *_standGraphData;
 }
 
-@property(retain, nonatomic) NSArray *standGraphData; // @synthesize standGraphData=_standGraphData;
-@property(retain, nonatomic) NSArray *exerciseGraphData; // @synthesize exerciseGraphData=_exerciseGraphData;
-@property(retain, nonatomic) NSArray *moveGraphData; // @synthesize moveGraphData=_moveGraphData;
 - (void).cxx_destruct;
 - (double)_exercisePointRelativeHeightForValue:(double)arg1;
 - (double)_movePointRelativeHeightForValue:(double)arg1;
 - (void)_drawChartsBarsInContext:(struct CGContext *)arg1 lineNumber:(unsigned long long)arg2 xPosition:(double)arg3;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)_generateStandChartPointsForStandHourInfo:(id)arg1;
-- (long long)_qauntityBucketIndexForDate:(id)arg1;
-- (id)_quantityBucketDateForIndex:(unsigned long long)arg1;
+- (id)_generateStandChartPointsForStandHourInfo:(id)arg1;
 - (id)_generateChartPointsForQuantityStatisticsInfo:(id)arg1 withUnit:(id)arg2 accumulateFractionalValues:(_Bool)arg3;
-- (void)_generateExerciseChartPoints;
-- (void)_generateMoveChartPoints;
-- (_Bool)_date:(id)arg1 fallsBetweenDate:(id)arg2 andDate:(id)arg3;
+- (id)_keyForDate:(id)arg1;
+- (void)setStandGraphData:(id)arg1;
+- (void)setExerciseGraphData:(id)arg1;
+- (void)setMoveGraphData:(id)arg1;
 - (void)_registerForNotifications;
 - (void)_currentLocaleChangeOccurred;
-- (void)_createQuantityDateBuckets;
+- (id)_timeStringByRemovingSpacesFromTimeString:(id)arg1;
 - (void)_updateHourLabelsText;
 - (void)_createHourFormatter;
 - (void)dealloc;

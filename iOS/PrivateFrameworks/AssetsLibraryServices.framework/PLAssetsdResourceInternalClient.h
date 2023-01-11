@@ -8,5 +8,10 @@
 {
 }
 
+- (void)purgeExpiredOutboundSharingAssetsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)requestMasterThumbnailForAssetUUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)prepareRevertToOriginalForAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)batchSaveAssetsWithJobDictionaries:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+
 @end
 

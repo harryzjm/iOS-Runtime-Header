@@ -9,7 +9,7 @@
 #import <CoreUtils/CXCallObserverDelegate-Protocol.h>
 #import <CoreUtils/FMFSessionDelegate-Protocol.h>
 
-@class CUBluetoothClient, CUNetInterfaceMonitor, CUSystemMonitor, CUWiFiManager, CXCallObserver, NSArray, NSData, NSString;
+@class CUBluetoothClient, CUNetInterfaceMonitor, CUSystemMonitor, CUWiFiManager, CXCallObserver, NSArray, NSData, NSMutableArray, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -22,35 +22,49 @@ __attribute__((visibility("hidden")))
     CUBluetoothClient *_bluetoothClient;
     CXCallObserver *_callObserver;
     int _activeCallCount;
+    int _connectedCallCount;
+    int _familyBuddyToken;
     _Bool _familyFailed;
     NSArray *_familyMembers;
     _Bool _familyObserving;
     CUSystemMonitor *_familyPrimaryIPMonitor;
     int _familyUpdatedToken;
+    _Bool _manateeAvailable;
+    _Bool _manateeObserving;
     int _fmfDevicesChangedToken;
     int _meDeviceChangedToken;
     int _meDeviceRetryToken;
     NSString *_meDeviceFMFDeviceID;
     NSString *_meDeviceIDSDeviceID;
     NSString *_meDeviceName;
+    _Bool _meDeviceIsMe;
     _Bool _meDeviceValid;
     CUNetInterfaceMonitor *_netInterfaceMonitor;
     unsigned int _netFlags;
     CDUnion_fab80606 _primaryIPv4Addr;
     CDUnion_fab80606 _primaryIPv6Addr;
+    NSString *_primaryNetworkSignature;
     int _powerSourceToken;
     _Bool _powerUnlimited;
+    NSString *_primaryAppleID;
+    _Bool _primaryAppleIDActive;
     _Bool _primaryAppleIDIsHSA2;
+    int _primaryAppleIDNotifyToken;
     _Bool _primaryAppleIDObserving;
     CDStruct_83abfce7 _rotatingIdentifier48;
     NSData *_rotatingIdentifierData;
-    CUSystemMonitor *_rotatingIdentifierBluetoothAddressMonitor;
     NSObject<OS_dispatch_source> *_rotatingIdentifierTimer;
     _Bool _screenLocked;
     int _screenLockedToken;
     _Bool _screenOn;
     int _screenBlankedToken;
     _Bool _screenSaverActive;
+    _Bool _scChangesPending;
+    struct __SCDynamicStore *_scDynamicStore;
+    NSMutableArray *_scInitialKeys;
+    NSString *_scKeySystemName;
+    NSArray *_scNotificationKeys;
+    NSString *_systemName;
     CUWiFiManager *_wifiManager;
     unsigned int _wifiFlags;
     int _wifiState;
@@ -62,6 +76,10 @@ __attribute__((visibility("hidden")))
 - (void)_wifiMonitorStart;
 - (void)_firstUnlockMonitorStop;
 - (void)_firstUnlockMonitorStart;
+- (void)_systemConfigSystemNameChanged:(_Bool)arg1;
+- (void)_systemConfigChanged:(id)arg1 initial:(_Bool)arg2;
+- (void)_systemConfigUpdateNotifications;
+- (void)_systemConfigUpdateKeyPtr:(id *)arg1 name:(id)arg2 enabled:(_Bool)arg3 creator:(CDUnknownBlockType)arg4;
 - (void)_screenSaverMonitorStop;
 - (void)_screenSaverMonitorStart;
 - (void)_screenChanged:(_Bool)arg1;
@@ -70,12 +88,11 @@ __attribute__((visibility("hidden")))
 - (void)_screenLockedChanged;
 - (void)_screenLockedMonitorStop;
 - (void)_screenLockedMonitorStart;
-- (void)_rotatingIdentifierTimerReset:(_Bool)arg1;
 - (void)_rotatingIdentifierTimerFired;
-- (void)_rotatingIdentifierBTUpdated;
 - (void)_rotatingIdentifierMonitorStop;
 - (void)_rotatingIdentifierMonitorStart;
 - (void)_primaryAppleIDChanged:(id)arg1;
+- (id)_primaryAppleIDAccount;
 - (void)_primaryAppleIDMonitorStop;
 - (void)_primaryAppleIDMonitorStart;
 - (void)_powerUnlimitedMonitorStop;
@@ -86,11 +103,15 @@ __attribute__((visibility("hidden")))
 - (void)_meDeviceCheckStart:(_Bool)arg1;
 - (void)_meDeviceMonitorStop;
 - (void)_meDeviceMonitorStart;
+- (void)_manateeChanged:(id)arg1;
+- (void)_manateeMonitorStop;
+- (void)_manateeMonitorStart;
 - (void)_familyUpdated:(id)arg1;
 - (void)_familyNetworkChanged;
 - (void)_familyGetMembers:(_Bool)arg1;
 - (void)_familyMonitorStop;
 - (void)_familyMonitorStart;
+- (int)_connectedCallCountUnached;
 - (int)_activeCallCountUnached;
 - (void)callObserver:(id)arg1 callChanged:(id)arg2;
 - (void)_callMonitorStop;

@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSOrderedSet, NSString;
+@class NSArray, NSOrderedSet, NSString, PHPhotoLibrary;
 
 @interface PHManualFetchResult
 {
     NSOrderedSet *_objectIDs;
+    PHPhotoLibrary *_photoLibrary;
     NSArray *_objects;
     NSString *_identifier;
 }
@@ -38,10 +39,9 @@
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) NSOrderedSet *objectIDs;
-- (id)initWithOids:(id)arg1 fetchType:(id)arg2 fetchPropertySets:(id)arg3 identifier:(id)arg4 registerIfNeeded:(_Bool)arg5 photosCount:(unsigned long long)arg6 videosCount:(unsigned long long)arg7 audiosCount:(unsigned long long)arg8;
-- (id)initWithOids:(id)arg1 fetchType:(id)arg2 fetchPropertySets:(id)arg3 identifier:(id)arg4 registerIfNeeded:(_Bool)arg5;
-- (id)initWithObjects:(id)arg1 fetchType:(id)arg2 fetchPropertySets:(id)arg3 identifier:(id)arg4 registerIfNeeded:(_Bool)arg5;
-- (id)initWithObjects:(id)arg1 fetchType:(id)arg2 fetchPropertySets:(id)arg3;
+- (id)initWithOids:(id)arg1 photoLibrary:(id)arg2 fetchType:(id)arg3 fetchPropertySets:(id)arg4 identifier:(id)arg5 registerIfNeeded:(_Bool)arg6 photosCount:(unsigned long long)arg7 videosCount:(unsigned long long)arg8 audiosCount:(unsigned long long)arg9;
+- (id)initWithOids:(id)arg1 photoLibrary:(id)arg2 fetchType:(id)arg3 fetchPropertySets:(id)arg4 identifier:(id)arg5 registerIfNeeded:(_Bool)arg6;
+- (id)initWithObjects:(id)arg1 photoLibrary:(id)arg2 fetchType:(id)arg3 fetchPropertySets:(id)arg4 identifier:(id)arg5 registerIfNeeded:(_Bool)arg6;
 
 @end
 

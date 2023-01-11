@@ -11,7 +11,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_setCompassVisible:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)_didEndZoom;
+- (void)_setCompassVisible:(_Bool)arg1 animated:(_Bool)arg2 force:(_Bool)arg3;
+- (id)_axMapsDelegate;
+- (long long)_accessibilitySortPriority;
+- (_Bool)canBecomeFocused;
 - (_Bool)accessibilityScroll:(long long)arg1;
 - (id)accessibilityElements;
 

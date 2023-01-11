@@ -16,7 +16,7 @@
 @property(readonly, nonatomic) NSMutableDictionary *store; // @synthesize store=_store;
 - (void).cxx_destruct;
 - (void)storeCallbackDefinition:(id)arg1 forKey:(id)arg2 scope:(id)arg3;
-- (id)lookupForKey:(id)arg1 name:(id)arg2;
+- (id)lookupForKey:(id)arg1;
 - (id)init;
 
 @end

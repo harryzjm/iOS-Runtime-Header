@@ -8,16 +8,17 @@
 
 #import <HomeUI/HUControlPanelControllerDelegate-Protocol.h>
 
-@class HFControlPanelItemProvider, HFItem, HFServiceBuilder, HFStaticItem, HFStaticItemProvider, HFValveServiceItem, HUControlPanelController, NSString;
+@class HFControlPanelItemProvider, HFItem, HFServiceBuilder, HFStaticItem, HFStaticItemProvider, HFValveServiceItem, HUControlPanelController, HUNameItemModule, NSString;
 
 @interface HUValveEditorItemManager : HFItemManager <HUControlPanelControllerDelegate>
 {
-    HFItem *_nameItem;
+    HUNameItemModule *_nameModule;
     HFStaticItem *_identifyItem;
     HUControlPanelController *_controlPanelController;
     HFServiceBuilder *_serviceBuilder;
     unsigned long long _editorMode;
     HFValveServiceItem *_sourceValveItem;
+    HFItem *_nameItem;
     HFControlPanelItemProvider *_controlPanelItemProvider;
     HFStaticItemProvider *_staticItemProvider;
 }
@@ -26,12 +27,13 @@
 + (id)preferredSectionSortArray;
 @property(retain, nonatomic) HFStaticItemProvider *staticItemProvider; // @synthesize staticItemProvider=_staticItemProvider;
 @property(retain, nonatomic) HFControlPanelItemProvider *controlPanelItemProvider; // @synthesize controlPanelItemProvider=_controlPanelItemProvider;
+@property(retain, nonatomic) HFItem *nameItem; // @synthesize nameItem=_nameItem;
 @property(retain, nonatomic) HFValveServiceItem *sourceValveItem; // @synthesize sourceValveItem=_sourceValveItem;
 @property(readonly, nonatomic) unsigned long long editorMode; // @synthesize editorMode=_editorMode;
 @property(retain, nonatomic) HFServiceBuilder *serviceBuilder; // @synthesize serviceBuilder=_serviceBuilder;
 @property(retain, nonatomic) HUControlPanelController *controlPanelController; // @synthesize controlPanelController=_controlPanelController;
 @property(retain, nonatomic) HFStaticItem *identifyItem; // @synthesize identifyItem=_identifyItem;
-@property(retain, nonatomic) HFItem *nameItem; // @synthesize nameItem=_nameItem;
+@property(retain, nonatomic) HUNameItemModule *nameModule; // @synthesize nameModule=_nameModule;
 - (void).cxx_destruct;
 - (void)controlPanelController:(id)arg1 didEndPossibleWritesForControlItem:(id)arg2;
 - (void)controlPanelController:(id)arg1 willBeginPossibleWritesForControlItem:(id)arg2;

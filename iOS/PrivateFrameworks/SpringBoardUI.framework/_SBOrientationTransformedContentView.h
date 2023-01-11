@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/_UIDirectionalRotationView.h>
 
-@interface _SBOrientationTransformedContentView : UIView
+@interface _SBOrientationTransformedContentView : _UIDirectionalRotationView
 {
     long long _contentOrientation;
 }

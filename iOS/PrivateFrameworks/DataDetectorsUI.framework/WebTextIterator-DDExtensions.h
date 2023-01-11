@@ -11,5 +11,6 @@
 - (id)dd_doUrlificationForQuery:(struct __DDScanQuery *)arg1 forResults:(id)arg2 referenceDate:(id)arg3 document:(id)arg4 DOMWasModified:(_Bool *)arg5 relevantResults:(id *)arg6 URLificationBlock:(CDUnknownBlockType)arg7;
 - (id)dd_collectDDRangesForQuery:(struct __DDScanQuery *)arg1 forResults:(id)arg2;
 - (struct __DDScanQuery *)dd_newQueryStopRange:(id *)arg1;
+- (_Bool)dd_checkCurrentRangeAgainstString:(struct __CFString *)arg1;
 @end
 

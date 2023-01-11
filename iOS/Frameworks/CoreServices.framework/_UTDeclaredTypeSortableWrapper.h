@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class _UTDeclaredType;
+@class _LSDatabase, _UTDeclaredType;
 
 __attribute__((visibility("hidden")))
 @interface _UTDeclaredTypeSortableWrapper : NSObject
 {
     _UTDeclaredType *_declaredType;
-    struct LSDatabase *_database;
-    const CDStruct_b8194125 *_utypeData;
+    _LSDatabase *_database;
+    const CDStruct_d2548575 *_utypeData;
 }
 
-@property(nonatomic) const CDStruct_b8194125 *utypeData; // @synthesize utypeData=_utypeData;
-@property(nonatomic) struct LSDatabase *database; // @synthesize database=_database;
+@property(nonatomic) const CDStruct_d2548575 *utypeData; // @synthesize utypeData=_utypeData;
+@property(nonatomic) _LSDatabase *database; // @synthesize database=_database;
 @property(retain, nonatomic) _UTDeclaredType *declaredType; // @synthesize declaredType=_declaredType;
 - (void).cxx_destruct;
 - (long long)compare:(id)arg1;

@@ -6,12 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-@class CKConversation, MFComposeRecipientTextView, UIButton, _UIBackdropView;
+@class CKConversation, CNComposeRecipientTextView, UIButton, _UIBackdropView;
 
+__attribute__((visibility("hidden")))
 @interface CKTranscriptGroupHeaderView : UIView
 {
     CKConversation *_conversation;
-    MFComposeRecipientTextView *_textView;
+    CNComposeRecipientTextView *_textView;
     UIView *_separator;
     UIButton *_actionButton;
     _UIBackdropView *_backdropView;
@@ -20,7 +21,7 @@
 @property(retain, nonatomic) _UIBackdropView *backdropView; // @synthesize backdropView=_backdropView;
 @property(retain, nonatomic) UIButton *actionButton; // @synthesize actionButton=_actionButton;
 @property(retain, nonatomic) UIView *separator; // @synthesize separator=_separator;
-@property(retain, nonatomic) MFComposeRecipientTextView *textView; // @synthesize textView=_textView;
+@property(retain, nonatomic) CNComposeRecipientTextView *textView; // @synthesize textView=_textView;
 @property(retain, nonatomic) CKConversation *conversation; // @synthesize conversation=_conversation;
 - (void).cxx_destruct;
 - (void)layoutSubviews;

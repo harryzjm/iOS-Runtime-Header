@@ -9,7 +9,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)_customizeTraits:(id)arg1 forPopupForKey:(id)arg2 withRenderingContext:(id)arg3 keycapsFontName:(id)arg4;
 - (void)setupLayoutSegments;
 - (double)controlColumnWidthFactor;
 - (struct CGPoint)dictationKeyTextOffset;

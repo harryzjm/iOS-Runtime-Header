@@ -49,8 +49,16 @@
 + (_Bool)_shouldLogExtensionDiscovery;
 + (void)initialize;
 + (id)predicateForActivationRule:(id)arg1;
++ (_Bool)_evaluateActivationRuleWithoutWorkarounds:(id)arg1 withExtensionItemsRepresentation:(id)arg2;
 + (_Bool)evaluateActivationRule:(id)arg1 withExtensionItemsRepresentation:(id)arg2;
 + (void)initializeFiltering;
++ (_Bool)_evaluateActivationRule:(id)arg1 withDictionaryIfItMatchesActiveWebPageAlternative:(id)arg2 matchResult:(out long long *)arg3;
++ (_Bool)_evaluateActivationRule:(id)arg1 withInputItemsIfTheyMatchActiveWebPageAlternative:(id)arg2 matchResult:(out long long *)arg3;
++ (id)_dictionaryIncludingOnlyItemsWithRegisteredTypeIdentifier:(id)arg1 fromMatchingDictionary:(id)arg2;
++ (_Bool)_genericValuesMatchActiveWebPageAlternativeWithExtensionItems:(id)arg1 attachmentsLens:(CDUnknownBlockType)arg2 registeredTypeIdentifiersLens:(CDUnknownBlockType)arg3 isActiveWebPageAttachmentCheck:(CDUnknownBlockType)arg4;
++ (_Bool)_inputItemsMatchActiveWebPageAlternative:(id)arg1;
++ (_Bool)_matchingDictionaryMatchesActiveWebPageAlternative:(id)arg1;
++ (id)_inputItemsByApplyingActiveWebPageAlternative:(id)arg1 ifNeededByActivationRule:(id)arg2;
 @property(copy, nonatomic) NSUUID *connectionUUID; // @synthesize connectionUUID=_connectionUUID;
 @property(nonatomic, getter=_isObservingHostAppStateChanges, setter=_setObservingHostAppStateChanges:) _Bool observingHostAppStateChanges; // @synthesize observingHostAppStateChanges=_observingHostAppStateChanges;
 @property(copy, nonatomic, setter=_setAllowedErrorClasses:) NSSet *_allowedErrorClasses; // @synthesize _allowedErrorClasses=__allowedErrorClasses;
@@ -81,9 +89,9 @@
 - (void)_kill:(int)arg1;
 - (void)_safelyEndUsingWithProcessAssertion:(id)arg1 continuation:(CDUnknownBlockType)arg2;
 - (void)_safelyEndUsing:(CDUnknownBlockType)arg1;
-- (id)newAssertionToBeginUsingPluginWithError:(id *)arg1;
-- (void)_safelyBeginUsing_withAssertion:(CDUnknownBlockType)arg1;
-- (void)_safelyBeginUsingSynchronously:(_Bool)arg1 withAssertion_onSafeQueue:(CDUnknownBlockType)arg2;
+- (id)newAssertionToBeginUsingPluginWithOptions:(unsigned long long)arg1 error:(id *)arg2;
+- (void)_safelyBeginUsingWithOptions:(unsigned long long)arg1 withAssertion_onSafeQueue:(CDUnknownBlockType)arg2;
+- (void)_safelyBeginUsingSynchronously:(_Bool)arg1 options:(unsigned long long)arg2 withAssertion_onSafeQueue:(CDUnknownBlockType)arg3;
 - (void)_safelyBeginUsing:(CDUnknownBlockType)arg1;
 - (int)_plugInProcessIdentifier;
 - (_Bool)_wantsProcessPerRequest;
@@ -105,6 +113,10 @@
 - (void)beginExtensionRequestWithInputItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)beginExtensionRequestWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 error:(id *)arg3;
 - (void)beginExtensionRequestWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)beginExtensionRequestWithOptions:(unsigned long long)arg1 inputItems:(id)arg2 listenerEndpoint:(id)arg3 error:(id *)arg4;
+- (void)beginExtensionRequestWithOptions:(unsigned long long)arg1 inputItems:(id)arg2 listenerEndpoint:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)beginExtensionRequestWithOptions:(unsigned long long)arg1 inputItems:(id)arg2 error:(id *)arg3;
+- (void)beginExtensionRequestWithOptions:(unsigned long long)arg1 inputItems:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_reallyBeginExtensionRequestWithContext:(id)arg1 extensionServiceConnection:(id)arg2 listenerEndpoint:(id)arg3 synchronously:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)_newExtensionContextAndGetConnection:(id *)arg1 assertion:(id)arg2 inputItems:(id)arg3;
 - (void)_reallyBeginExtensionRequestWithInputItems:(id)arg1 processAssertion:(id)arg2 listenerEndpoint:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -123,6 +135,7 @@
 - (void)_didShowExtensionManagementInterface;
 @property(readonly, nonatomic, getter=_isMarkedNew) _Bool _markedNew;
 @property(copy, nonatomic, getter=_extensionState, setter=_setExtensionState:) NSDictionary *_extensionState; // @dynamic _extensionState;
+- (id)_inputItemsByApplyingActiveWebPageAlternativeIfNeeded:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol TSCEFormulaOwning;
+@protocol TSCECalculationEngineRegistration, TSCEFormulaOwning;
 
 __attribute__((visibility("hidden")))
 @interface TSCEFormulaOwnerDependencies
 {
     _Bool _isRegisteredWithCalcEngine;
     unsigned short _formulaOwnerId;
-    int _ownerKind;
     id <TSCEFormulaOwning> _formulaOwner;
+    id <TSCECalculationEngineRegistration> _calcEngineRegistrationObject;
     struct TSCECellDependencies *_cellDependencies;
     struct TSCERangeDependencies *_rangeDependencies;
     struct TSCESpanningDependencies *_spanningColumnDependencies;
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     struct TSCEWholeOwnerDependencies *_wholeOwnerDependencies;
     struct TSCERefErrors *_errors;
     UUIDData_5fbc143e _formulaOwnerUid;
+    struct TSCESubFormulaOwnerID _subOwnerID;
 }
 
 @property(nonatomic) _Bool isRegisteredWithCalcEngine; // @synthesize isRegisteredWithCalcEngine=_isRegisteredWithCalcEngine;
@@ -31,8 +32,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct TSCESpanningDependencies *spanningColumnDependencies; // @synthesize spanningColumnDependencies=_spanningColumnDependencies;
 @property(readonly, nonatomic) struct TSCERangeDependencies *rangeDependencies; // @synthesize rangeDependencies=_rangeDependencies;
 @property(readonly, nonatomic) struct TSCECellDependencies *cellDependencies; // @synthesize cellDependencies=_cellDependencies;
+@property(retain, nonatomic) id <TSCECalculationEngineRegistration> calcEngineRegistrationObject; // @synthesize calcEngineRegistrationObject=_calcEngineRegistrationObject;
 @property(retain, nonatomic) id <TSCEFormulaOwning> formulaOwner; // @synthesize formulaOwner=_formulaOwner;
-@property(nonatomic) int ownerKind; // @synthesize ownerKind=_ownerKind;
+@property(nonatomic) struct TSCESubFormulaOwnerID subOwnerID; // @synthesize subOwnerID=_subOwnerID;
 @property(readonly, nonatomic) unsigned short formulaOwnerId; // @synthesize formulaOwnerId=_formulaOwnerId;
 @property(readonly, nonatomic) UUIDData_5fbc143e formulaOwnerUid; // @synthesize formulaOwnerUid=_formulaOwnerUid;
 - (id).cxx_construct;
@@ -40,10 +42,11 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchiver:(id)arg1;
 - (void)unpackAfterUnarchive;
 - (void)loadFromUnarchiver:(id)arg1;
+@property(readonly, nonatomic) unsigned short ownerKind;
 @property(nonatomic) struct TSCEDependencyTracker *dependencyTracker;
 - (void)dealloc;
 - (void)willClose;
-- (id)initWithContext:(id)arg1 dependencyTracker:(struct TSCEDependencyTracker *)arg2 ownerID:(unsigned short)arg3 ownerUID:(const UUIDData_5fbc143e *)arg4 owner:(id)arg5 ownerKind:(int)arg6;
+- (id)initWithContext:(id)arg1 dependencyTracker:(struct TSCEDependencyTracker *)arg2 ownerID:(unsigned short)arg3 ownerUID:(const UUIDData_5fbc143e *)arg4 owner:(id)arg5 subOwnerID:(const struct TSCESubFormulaOwnerID *)arg6;
 
 @end
 

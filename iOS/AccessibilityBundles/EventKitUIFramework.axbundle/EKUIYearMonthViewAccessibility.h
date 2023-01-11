@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityIsSpeakThisElement;
 - (id)accessibilityHint;
+- (id)accessibilityUserInputLabels;
 - (id)accessibilityLabel;
 - (_Bool)_axIsCurrentMonth;
 - (unsigned long long)accessibilityTraits;

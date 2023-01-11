@@ -30,6 +30,7 @@
 - (void)_showPhotoPickerWithSourceType:(long long)arg1;
 - (void)messageEntryViewSendButtonHit:(id)arg1;
 - (_Bool)accessibilityPerformEscape;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

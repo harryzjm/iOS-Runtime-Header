@@ -4,33 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/VCAudioIOSink-Protocol.h>
-#import <AVConference/VCAudioPowerSpectrumDelegate-Protocol.h>
+#import <AVConference/VCAudioPowerSpectrumProtocol-Protocol.h>
 
-@class NSDictionary, NSMutableDictionary, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioPowerSpectrumMeter <VCAudioPowerSpectrumDelegate, VCAudioIOSink>
+@interface VCAudioPowerSpectrumMeter <VCAudioPowerSpectrumProtocol>
 {
-    id _delegate;
     unsigned short _audioSpectrumBinCount;
-    double _audioSpectrumRefreshRate;
-    unsigned int _lastDeliveryTime;
-    struct atomic_flag _isProcessingOutput;
-    NSMutableDictionary *_audioPowerSpectrums;
-    NSMutableDictionary *_outputPowerSpectrums;
-    struct opaqueCMSimpleQueue *_streamTokenRemovedEventQueue;
-    struct opaqueCMSimpleQueue *_streamTokenAddedEventQueue;
+    struct _VCAudioPowerSpectrumMeterRealtimeContext _realtimeContext;
 }
 
-@property(readonly, nonatomic) NSDictionary *audioPowerSpectrums; // @synthesize audioPowerSpectrums=_audioPowerSpectrums;
-- (void)pushAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
-- (void)didUpdateAudioPowerSpectrum:(id)arg1;
+@property(readonly, nonatomic) void *realtimeContext;
+- (void)unregisterAllStreams;
 - (void)releaseAudioPowerSpectrumForStreamToken:(id)arg1;
 - (void)registerNewAudioPowerSpectrumForStreamToken:(id)arg1 spectrumSource:(id)arg2;
-- (void)processOutput;
-- (void)processInternalEvents;
-- (id)delegate;
 - (void)dealloc;
 - (id)initWithBinCount:(unsigned short)arg1 refreshRate:(double)arg2 delegate:(id)arg3;
 

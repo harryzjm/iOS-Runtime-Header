@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *mChildren;
 }
 
+- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (void)removeUnnecessaryOverrides;
 - (void)changeParentTextListStylePreservingEffectiveValues:(id)arg1;
@@ -29,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (void)setLogicalBounds:(struct CGRect)arg1;
 - (struct CGRect)logicalBounds;
 - (id)groupProperties;
-- (void)dealloc;
 - (id)init;
 
 // Remaining properties

@@ -11,11 +11,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)previewInteractionPresenterDidDismiss:(id)arg1;
-- (void)previewInteractionPresenterDidPresent:(id)arg1;
+- (void)clickInteractionPresenterDidDismiss:(id)arg1;
+- (void)clickInteractionPresenterDidPresent:(id)arg1;
 - (void)_axSetPreviewInteractionAncestorsModal:(_Bool)arg1;
 - (_Bool)_axPerformPreviewInteractionAction;
 - (id)accessibilityCustomActions;
+- (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (_Bool)accessibilityActivate;
 

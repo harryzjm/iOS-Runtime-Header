@@ -8,19 +8,22 @@
 
 #import <AvatarUI/AVTAvatarAttributeEditorViewControllerDelegate-Protocol.h>
 #import <AvatarUI/AVTSplashScreenViewControllerDelegate-Protocol.h>
+#import <AvatarUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 
 @class AVTAvatarAttributeEditorViewController, AVTAvatarRecord, AVTSplashScreenViewController, AVTUIEnvironment, AVTViewSessionProvider, NSString, UIBarButtonItem;
 @protocol AVTAvatarEditorViewControllerDelegate, AVTAvatarStoreInternal, AVTUILogger;
 
-@interface AVTAvatarEditorViewController : UIViewController <AVTSplashScreenViewControllerDelegate, AVTAvatarAttributeEditorViewControllerDelegate>
+@interface AVTAvatarEditorViewController : UIViewController <AVTSplashScreenViewControllerDelegate, AVTAvatarAttributeEditorViewControllerDelegate, UIAdaptivePresentationControllerDelegate>
 {
     _Bool _isCreating;
+    _Bool _hasChanges;
     id <AVTAvatarEditorViewControllerDelegate> _delegate;
     AVTAvatarRecord *_initialAvatarRecord;
     id <AVTAvatarStoreInternal> _store;
     AVTViewSessionProvider *_avtViewSessionProvider;
     AVTUIEnvironment *_environment;
     id <AVTUILogger> _logger;
+    UIBarButtonItem *_cancelButtonItem;
     UIBarButtonItem *_doneButtonItem;
     AVTSplashScreenViewController *_splashScreenViewController;
     AVTAvatarAttributeEditorViewController *_attributeEditorViewController;
@@ -34,7 +37,9 @@
 + (_Bool)shouldShowSplashScreen;
 @property(readonly, nonatomic) AVTAvatarAttributeEditorViewController *attributeEditorViewController; // @synthesize attributeEditorViewController=_attributeEditorViewController;
 @property(readonly, nonatomic) AVTSplashScreenViewController *splashScreenViewController; // @synthesize splashScreenViewController=_splashScreenViewController;
+@property(nonatomic) _Bool hasChanges; // @synthesize hasChanges=_hasChanges;
 @property(retain, nonatomic) UIBarButtonItem *doneButtonItem; // @synthesize doneButtonItem=_doneButtonItem;
+@property(retain, nonatomic) UIBarButtonItem *cancelButtonItem; // @synthesize cancelButtonItem=_cancelButtonItem;
 @property(readonly, nonatomic) _Bool isCreating; // @synthesize isCreating=_isCreating;
 @property(readonly, nonatomic) id <AVTUILogger> logger; // @synthesize logger=_logger;
 @property(readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
@@ -43,6 +48,11 @@
 @property(retain, nonatomic) AVTAvatarRecord *initialAvatarRecord; // @synthesize initialAvatarRecord=_initialAvatarRecord;
 @property(nonatomic) __weak id <AVTAvatarEditorViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+- (void)controllerPresentationWillObstructView:(id)arg1;
+- (void)confirmCancel;
+- (void)handleDiscardAttempt;
+- (void)presentationControllerDidAttemptToDismiss:(id)arg1;
+- (_Bool)presentationControllerShouldDismiss:(id)arg1;
 - (void)attributeEditorDidMakeFirstSelection:(id)arg1;
 - (void)splashScreenViewControllerDidFinish:(id)arg1;
 - (void)finish:(id)arg1;
@@ -54,8 +64,14 @@
 - (id)visibleLayout;
 - (void)applyLayout:(id)arg1;
 - (void)prepareForAnimatedTransitionWithLayout:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (_Bool)disableAvatarSnapshotting;
+- (void)setDisableAvatarSnapshotting:(_Bool)arg1;
+- (_Bool)isModalInPresentation;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithAvatarRecord:(id)arg1 avtViewSessionProvider:(id)arg2 store:(id)arg3 enviroment:(id)arg4 isCreating:(_Bool)arg5;
+- (void)configurePPTMemoji;
+- (void)prepareForPresetsScrollTestOnCategory:(id)arg1 readyHandler:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

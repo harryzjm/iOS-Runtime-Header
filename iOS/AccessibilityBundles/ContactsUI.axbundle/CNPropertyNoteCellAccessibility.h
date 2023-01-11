@@ -12,10 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityLabel;
-- (_Bool)_accessibilityIgnoreInternalLabels;
-- (id)valueView;
-- (id)labelView;
-- (void)_accessibilityLoadAccessibilityInformation;
+- (_Bool)isAccessibilityElement;
 
 @end
 

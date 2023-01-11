@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEquivalentToObject:(id)arg1;
 - (_Bool)allowsEditing;
 - (int)styleAttributeArrayKind;
-- (int)attributeArrayKind;
+- (unsigned long long)attributeArrayKind;
 - (int)smartFieldKind;
 - (id)copyWithNewName:(id)arg1;
 - (id)copyWithContext:(id)arg1;

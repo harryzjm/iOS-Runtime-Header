@@ -6,32 +6,61 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreNFC/NFCNDEFTag-Protocol.h>
 #import <CoreNFC/NFCTag-Protocol.h>
 
-@class NFWeakReference, NSData, NSString;
-@protocol NFCReaderSession, NFTag;
+@class NSNumber, NSString;
+@protocol NFCReaderSession, NFTag, OS_dispatch_queue;
 
-@interface NFCTag : NSObject <NFCTag>
+__attribute__((visibility("hidden")))
+@interface NFCTag : NSObject <NFCTag, NFCNDEFTag>
 {
     id <NFTag> _tag;
-    NFWeakReference *_session;
+    NSNumber *_sessionKey;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
+    long long _configuration;
 }
 
 + (double)_MaxRetryInterval;
 + (unsigned long long)_MaxRetry;
 + (_Bool)supportsSecureCoding;
-- (_Bool)_transceiveWithData:(id)arg1 receivedData:(id *)arg2 error:(id *)arg3;
+- (_Bool)isMatchingSession:(id)arg1;
+- (void)_sendAPDU:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (_Bool)_transceiveWithSession:(id)arg1 sendData:(id)arg2 receivedData:(id *)arg3 error:(id *)arg4;
+- (void)_transceiveWithData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)_disconnectWithError:(id *)arg1;
-- (_Bool)_connectWithError:(id *)arg1;
+- (void)_connectWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (_Bool)_connectWithSession:(id)arg1 outError:(id *)arg2;
+- (void)dispatchOnDelegateQueueAsync:(CDUnknownBlockType)arg1;
 - (id)_getInternalReaderSession;
+- (_Bool)isEqualToNFTag:(id)arg1;
+- (void)_setDelegateQueue:(id)arg1;
 - (void)_setSession:(id)arg1;
 - (void)_setTag:(id)arg1;
-@property(readonly, retain, nonatomic) NSData *identifier;
+@property(readonly, nonatomic) long long configuration;
+- (void)disconnect;
+- (_Bool)proprietaryApplicationDataCoding;
+- (id)applicationData;
+- (id)historicalBytes;
+- (id)systemCode;
+- (id)selectedAID;
+- (id)identifier;
 - (void)dealloc;
-- (id)initWithSession:(id)arg1 tag:(id)arg2;
+- (id)initWithSession:(id)arg1 tag:(id)arg2 startupConfig:(long long)arg3;
+- (id)asNFCFeliCaTag;
+- (id)asNFCMiFareTag;
+- (id)asNFCISO7816Tag;
+- (id)asNFCISO15693Tag;
 @property(readonly, nonatomic, getter=isAvailable) _Bool available;
 @property(readonly, nonatomic) __weak id <NFCReaderSession> session;
 @property(readonly, nonatomic) unsigned long long type;
+- (void)writeNDEF:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)writeLockWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)readNDEFWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)queryNDEFStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (unsigned long long)capacity;
+- (_Bool)isNDEFFormatted;
+- (_Bool)isReadOnly;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

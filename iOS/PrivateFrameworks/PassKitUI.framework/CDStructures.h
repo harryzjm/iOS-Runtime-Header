@@ -76,7 +76,17 @@ struct _NSRange {
     unsigned long long length;
 };
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    _Bool _field1;
+    _Bool _field2;
+    unsigned long long _field3;
+} CDStruct_0e648023;
 
 typedef struct {
     _Bool foreground;
@@ -90,10 +100,43 @@ typedef struct {
 } CDStruct_826e8cf1;
 
 typedef struct {
-    double visibility;
-    double visibilityAnimationTarget;
-    unsigned int animationCounter;
-} CDStruct_6c46ada8;
+    double target;
+    double position;
+    double velocity;
+    double positionThreshold;
+    double velocityThreshold;
+    _Bool running;
+} CDStruct_f94998c4;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+    _Bool _field7;
+    double _field8;
+    double _field9;
+    _Bool _field10;
+    double _field11;
+    double _field12;
+} CDStruct_9c0b9312;
+
+typedef struct {
+    double mass;
+    double stiffness;
+    double damping;
+    double beta;
+    double omega0;
+    double scratch;
+    _Bool dirty;
+} CDStruct_5c14e0b2;
+
+typedef struct {
+    double _field1;
+    double _field2;
+} CDStruct_c3b9c2ee;
 
 typedef struct {
     double cornerRadius;
@@ -102,6 +145,20 @@ typedef struct {
     long long highlightEffect;
     long long disabledEffect;
 } CDStruct_e6a35582;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    struct CGSize _field3;
+    double _field4;
+    double _field5;
+    _Bool _field6;
+} CDStruct_19e39b3b;
+
+typedef struct {
+    CDStruct_c3b9c2ee _field1;
+    CDStruct_c3b9c2ee _field2;
+} CDStruct_90e2a262;
 
 typedef struct {
     struct CGSize preferredContentSize;
@@ -128,4 +185,12 @@ typedef struct {
         _Bool widthConstrained;
     } textMetrics[4];
 } CDStruct_c7197326;
+
+// Ambiguous groups
+typedef struct {
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+} CDStruct_d8808cea;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDate, NSString, PHQuery;
+@class NSArray, NSDate, NSManagedObjectID, NSString, PHQuery;
 
 @interface PHCollectionList
 {
@@ -17,6 +17,7 @@
     NSArray *_collections;
     PHQuery *_query;
     NSString *_transientIdentifier;
+    NSManagedObjectID *_parentFolderObjectID;
     int _plAlbumKind;
     CDUnknownBlockType _childCollectionsSortingComparator;
     unsigned long long _unreadAssetCollectionsCount;
@@ -31,9 +32,11 @@
 + (id)transientCollectionListWithCollections:(id)arg1 title:(id)arg2 identifier:(id)arg3;
 + (id)transientCollectionListWithCollectionsFetchResult:(id)arg1 title:(id)arg2;
 + (id)transientCollectionListWithCollections:(id)arg1 title:(id)arg2;
++ (id)transientCollectionListWithCollections:(id)arg1 title:(id)arg2 identifier:(id)arg3 photoLibrary:(id)arg4;
 + (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
 + (id)fetchMomentListsWithSubtype:(long long)arg1 options:(id)arg2;
 + (id)fetchMomentListsWithSubtype:(long long)arg1 containingMoment:(id)arg2 options:(id)arg3;
++ (id)fetchRootProjectCollectionListWithOptions:(id)arg1;
 + (id)fetchRootAlbumCollectionListWithOptions:(id)arg1;
 + (id)fetchCollectionListsWithType:(long long)arg1 subtype:(long long)arg2 options:(id)arg3;
 + (id)fetchCollectionListsWithType:(long long)arg1 localIdentifiers:(id)arg2 options:(id)arg3;
@@ -46,6 +49,7 @@
 + (id)fetchType;
 + (id)managedEntityName;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
++ (id)fetchCollectionListsForReferences:(id)arg1 photoLibrary:(id)arg2;
 @property(readonly, nonatomic) NSString *transientIdentifier; // @synthesize transientIdentifier=_transientIdentifier;
 @property(readonly, nonatomic) unsigned long long estimatedChildCollectionCount; // @synthesize estimatedChildCollectionCount=_estimatedChildCollectionCount;
 @property(readonly, nonatomic) unsigned long long unreadAssetCollectionsCount; // @synthesize unreadAssetCollectionsCount=_unreadAssetCollectionsCount;
@@ -59,7 +63,9 @@
 @property(readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 - (void).cxx_destruct;
 - (id)description;
-- (id)initTransientWithCollections:(id)arg1 orQuery:(id)arg2 title:(id)arg3 identifier:(id)arg4;
+- (id)initTransientWithCollections:(id)arg1 orQuery:(id)arg2 title:(id)arg3 identifier:(id)arg4 photoLibrary:(id)arg5;
+- (id)effectiveCustomSortKey;
+- (id)parentFolderID;
 - (_Bool)hasLocationInfo;
 @property(readonly, nonatomic) _Bool keyCollectionsAtEnd;
 - (unsigned long long)collectionFixedOrderPriority;
@@ -70,6 +76,7 @@
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (Class)changeRequestClass;
 - (id)pl_assetContainerList;
+- (id)objectReference;
 
 @end
 

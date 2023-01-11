@@ -8,7 +8,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFRichTitleCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFActionItem, SFCard, SFColor, SFImage;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFActionItem, SFCard, SFColor, SFImage, SFRichText, SFUserReportRequest;
 
 @interface SFRichTitleCardSection <SFRichTitleCardSection, NSSecureCoding, NSCopying>
 {
@@ -62,9 +62,11 @@
     SFActionItem *_playAction;
     NSArray *_offers;
     NSString *_footnote;
+    SFRichText *_richSubtitle;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(retain, nonatomic) SFRichText *richSubtitle; // @synthesize richSubtitle=_richSubtitle;
 @property(copy, nonatomic) NSString *footnote; // @synthesize footnote=_footnote;
 @property(copy, nonatomic) NSArray *offers; // @synthesize offers=_offers;
 @property(nonatomic) int playActionAlign; // @synthesize playActionAlign=_playActionAlign;
@@ -132,6 +134,7 @@
 @property(copy, nonatomic) NSArray *parameterKeyPaths;
 @property(copy, nonatomic) NSString *resultIdentifier;
 @property(readonly) Class superclass;
+@property(retain, nonatomic) SFUserReportRequest *userReportRequest;
 
 @end
 

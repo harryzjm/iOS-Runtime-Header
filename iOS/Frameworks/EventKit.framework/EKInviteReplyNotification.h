@@ -6,27 +6,30 @@
 
 @class EKCalendar, NSDate, NSString, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface EKInviteReplyNotification
 {
 }
 
++ (id)sourceForInviteReplyNotification:(id)arg1;
 + (id)knownRelationshipSingleValueKeys;
 + (Class)frozenClass;
-@property(readonly, nonatomic) EKCalendar *inviteReplyCalendar;
-@property(readonly, nonatomic) EKCalendar *calendar;
+- (_Bool)validate:(id *)arg1;
 - (void)clearAlertedStatus;
 @property(readonly, nonatomic) _Bool alerted;
-@property(readonly, nonatomic) NSDate *creationDate;
-@property(readonly, nonatomic) unsigned long long status;
-@property(readonly, nonatomic) NSString *shareeLastName;
-@property(readonly, nonatomic) NSString *shareeFirstName;
-@property(readonly, nonatomic) NSURL *shareeURL;
 @property(readonly, nonatomic) NSString *shareePhoneNumber;
 @property(readonly, nonatomic) NSString *shareeEmailAddress;
-- (id)shareeAddressURL;
-@property(readonly, nonatomic) NSString *shareeDisplayName;
 @property(readonly, nonatomic) NSString *calendarName;
+@property(copy, nonatomic) NSString *summary;
+@property(copy, nonatomic) NSDate *creationDate;
+@property(nonatomic) unsigned long long shareeStatus;
+@property(copy, nonatomic) NSURL *shareeURL;
+@property(copy, nonatomic) NSString *shareeLastName;
+@property(copy, nonatomic) NSString *shareeFirstName;
+@property(copy, nonatomic) NSString *shareeDisplayName;
+@property(copy, nonatomic) NSString *inReplyTo;
+- (void)_setInviteReplyCalendar:(id)arg1;
+@property(readonly, nonatomic) EKCalendar *inviteReplyCalendar;
+- (id)initWithInviteReplyCalendar:(id)arg1;
 
 @end
 

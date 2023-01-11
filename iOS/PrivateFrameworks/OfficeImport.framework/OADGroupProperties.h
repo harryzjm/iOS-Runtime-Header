@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)defaultProperties;
+- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (void)fixPropertiesForChangingParentPreservingEffectiveValues:(id)arg1;
 - (_Bool)hasShape3D;
@@ -33,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasFill;
 - (void)setFill:(id)arg1;
 - (id)fill;
-- (void)dealloc;
 - (id)initWithDefaults;
 
 // Remaining properties

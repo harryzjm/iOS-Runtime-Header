@@ -19,8 +19,10 @@
     SXAudioComponentOverlayView *_overlayView;
     AVPlayerViewController *_playerViewController;
     SXAVPlayer *_player;
+    CDUnknownBlockType _cancelHandler;
 }
 
+@property(copy, nonatomic) CDUnknownBlockType cancelHandler; // @synthesize cancelHandler=_cancelHandler;
 @property(nonatomic) _Bool startPlaybackWhenReady; // @synthesize startPlaybackWhenReady=_startPlaybackWhenReady;
 @property(nonatomic) _Bool audioHasPlayed; // @synthesize audioHasPlayed=_audioHasPlayed;
 @property(retain, nonatomic) SXAVPlayer *player; // @synthesize player=_player;
@@ -39,7 +41,6 @@
 - (void)hidePlaybackControls;
 - (void)showPlaybackControls;
 - (void)pauseMediaPlayback;
-- (void)renderContents;
 - (void)playbackStarted;
 - (void)playbackResumed;
 - (void)playbackPaused;
@@ -49,9 +50,11 @@
 - (void)loadImage;
 - (void)setupPlayerViewControllerWithPlayer:(id)arg1;
 - (void)playButtonTapped:(id)arg1;
+- (void)layoutViews;
+- (void)discardContents;
+- (void)renderContents;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
-- (void)loadComponent:(id)arg1;
-- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 appStateMonitor:(id)arg6 resourceDataSource:(id)arg7 host:(id)arg8;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 resourceDataSource:(id)arg7 host:(id)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -13,5 +13,10 @@
 - (CDStruct_1b6d18a9)pu_duration;
 @property(readonly, nonatomic) NSValue *pu_cachedDuration;
 - (void)_pu_setCachedDuration:(id)arg1;
+- (id)pu_vitalityVideoComposition;
+- (CDStruct_8e0628e6)pu_perspectiveTransformForMetadata:(id)arg1;
+- (id)pu_stillAssetTransformMetadata;
+- (id)pu_stillImageTransformAssetTrack;
+@property(readonly, nonatomic) _Bool pu_supportsVitality;
 @end
 

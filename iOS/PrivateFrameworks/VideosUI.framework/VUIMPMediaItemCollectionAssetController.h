@@ -42,22 +42,21 @@ __attribute__((visibility("hidden")))
 - (void)_enqueueAsyncProcessingQueueStrongSelfBlock:(CDUnknownBlockType)arg1;
 - (void)_onProcessingQueue_setState:(id)arg1 andNotifyDelegate:(_Bool)arg2;
 - (void)_onProcessingQueue_updateStateAndNotifyDelegate:(_Bool)arg1;
-- (void)_onProcessingQueue_removeDownloadWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_onProcessingQueue_cancelAndRemoveDownload;
 - (void)_onProcessingQueue_resumeDownload;
 - (void)_onProcessingQueue_pauseDownload;
-- (void)_onProcessingQueue_cancelDownload;
 - (void)_onProcessingQueue_startDownloadWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_onProcessingQueue_invalidate;
 - (void)mediaEntityAssetController:(id)arg1 stateDidChange:(id)arg2;
-- (void)removeDownloadWithCompletion:(CDUnknownBlockType)arg1;
+- (void)cancelAndRemoveDownload;
 - (void)resumeDownload;
 - (void)pauseDownload;
-- (void)cancelDownload;
 - (void)startDownloadWithCompletion:(CDUnknownBlockType)arg1;
 - (void)invalidate;
 @property(readonly, copy, nonatomic) VUIMediaEntityType *mediaEntityType;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionDispatchQueue; // @synthesize completionDispatchQueue=_completionDispatchQueue;
 @property(nonatomic) __weak id <VUIMediaEntityAssetControllerDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)dealloc;
 - (id)init;
 - (id)initWithMediaItemCollection:(id)arg1 mediaEntityIdentifier:(id)arg2 serialProcessingDispatchQueue:(id)arg3;
 

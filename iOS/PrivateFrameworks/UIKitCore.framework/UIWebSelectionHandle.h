@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIImageView, UITouch, UIWebSelectionView;
+@class UITouch, UIWebSelectionView;
 
 __attribute__((visibility("hidden")))
 @interface UIWebSelectionHandle
 {
     UITouch *_touch;
-    UIImageView *_dragDotView;
     int _position;
     int _textPosition;
     UIWebSelectionView *_selectionView;

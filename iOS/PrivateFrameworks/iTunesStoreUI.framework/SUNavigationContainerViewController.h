@@ -4,22 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIViewController;
+@class AMSBinaryPromise, UIViewController;
 
 @interface SUNavigationContainerViewController
 {
     _Bool _bridgedNavigation;
     _Bool _shouldRunPopHandler;
+    AMSBinaryPromise *_appearancePromise;
     CDUnknownBlockType _popHandler;
 }
 
 @property(nonatomic) _Bool shouldRunPopHandler; // @synthesize shouldRunPopHandler=_shouldRunPopHandler;
 @property(copy, nonatomic) CDUnknownBlockType popHandler; // @synthesize popHandler=_popHandler;
 @property(nonatomic) _Bool bridgedNavigation; // @synthesize bridgedNavigation=_bridgedNavigation;
+@property(retain, nonatomic) AMSBinaryPromise *appearancePromise; // @synthesize appearancePromise=_appearancePromise;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) UIViewController *embeddedViewController;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)setEmbeddedViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;

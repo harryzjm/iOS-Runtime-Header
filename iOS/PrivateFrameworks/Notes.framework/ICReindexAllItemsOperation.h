@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSData;
+
 @interface ICReindexAllItemsOperation
 {
+    NSData *_clientStateData;
 }
 
+- (void).cxx_destruct;
+@property(readonly) NSData *clientStateData; // @synthesize clientStateData=_clientStateData;
 - (void)main;
-- (id)searchableItemIdentifiersToDeleteFromDataSource:(id)arg1;
-- (id)objectIDsToIndexFromDataSource:(id)arg1;
-- (_Bool)shouldDeleteAllItemsBeforeIndexing;
 
 @end
 

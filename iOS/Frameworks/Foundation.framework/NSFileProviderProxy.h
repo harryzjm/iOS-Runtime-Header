@@ -21,10 +21,12 @@ __attribute__((visibility("hidden")))
 @property(readonly) id <NSFileProviderXPCInterface><NSXPCProxyCreating> remoteProvider; // @synthesize remoteProvider=_remoteProvider;
 @property(readonly) NSUUID *uniqueID; // @synthesize uniqueID=_uniqueID;
 @property(readonly) NSString *secureID; // @synthesize secureID=_secureID;
+- (void)movingItemAtLocation:(id)arg1 requiresProvidingWithDestinationLocation:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)observeEndOfWriteAtLocation:(id)arg1 forAccessClaim:(id)arg2;
 - (void)observePresentationChangeOfKind:(id)arg1 withPresenter:(id)arg2 url:(id)arg3 newURL:(id)arg4;
 - (void)provideLogicalURLForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)providePhysicalURLForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (CDUnknownBlockType)provideItemForKernelRequestWithOperation:(unsigned int)arg1 atURL:(id)arg2 forProcess:(int)arg3 withOptions:(unsigned long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (CDUnknownBlockType)provideItemAtURL:(id)arg1 withOptions:(unsigned long long)arg2 forAccessClaim:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)allowedForURL:(id)arg1;
 - (void)invalidate;

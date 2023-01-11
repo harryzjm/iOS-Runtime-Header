@@ -12,7 +12,7 @@
 #import <MediaPlaybackCore/MPMusicSubscriptionLeasePlaybackParticipating-Protocol.h>
 #import <MediaPlaybackCore/MPRTCReportingItemSessionCreating-Protocol.h>
 
-@class ICMusicSubscriptionLeaseSession, ICMusicSubscriptionLeaseStatus, ICStoreRequestContext, MPCModelGenericAVItemTimedMetadataRequest, MPCModelGenericAVItemTimedMetadataResponse, MPCPlaybackRequestEnvironment, MPCSuzeLeaseSession, MPMediaLibrary, MPModelGenericObject, MPPropertySet, MPSubscriptionStatusPlaybackInformation, NSArray, NSData, NSNumber, NSObject, NSOperationQueue, NSString, NSURL;
+@class ICMusicSubscriptionLeaseSession, ICMusicSubscriptionLeaseStatus, ICStoreRequestContext, MPCModelGenericAVItemTimedMetadataRequest, MPCModelGenericAVItemTimedMetadataResponse, MPCModelGenericAVItemUserIdentityPropertySet, MPCPlaybackRequestEnvironment, MPCSuzeLeaseSession, MPMediaLibrary, MPModelGenericObject, MPPropertySet, MPSubscriptionStatusPlaybackInformation, NSArray, NSData, NSDictionary, NSNumber, NSObject, NSOperationQueue, NSString, NSURL;
 @protocol MPCModelPlaybackAssetCacheProviding, MPCReportingIdentityPropertiesLoading, OS_dispatch_queue;
 
 @interface MPCModelGenericAVItem : MPAVItem <AVAssetResourceLoaderDelegate, AVPlayerItemMetadataOutputPushDelegate, ICEnvironmentMonitorObserver, MPMusicSubscriptionLeasePlaybackParticipating, MPRTCReportingItemSessionCreating>
@@ -53,6 +53,7 @@
     NSURL *_streamingKeyServerURL;
     id _rtcReportingParentHierarchyToken;
     NSString *_rtcReportingServiceIdentifier;
+    MPCModelGenericAVItemUserIdentityPropertySet *_identityPropertySet;
     _Bool supportsRadioTrackActions;
     _Bool _radioPlayback;
     _Bool _radioStreamPlayback;
@@ -67,11 +68,13 @@
     NSNumber *_siriInitiated;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
     long long _stationItemLikedState;
+    NSDictionary *_trackInfo;
 }
 
 + (id)_utilitySerialQueue;
 + (_Bool)_prefersHighQualityVideoContentForNetworkType:(long long)arg1;
 + (_Bool)_prefersHighQualityAudioContentForNetworkType:(long long)arg1;
+@property(retain, nonatomic) NSDictionary *trackInfo; // @synthesize trackInfo=_trackInfo;
 @property(nonatomic) long long stationItemLikedState; // @synthesize stationItemLikedState=_stationItemLikedState;
 @property(readonly, copy, nonatomic) MPCPlaybackRequestEnvironment *playbackRequestEnvironment; // @synthesize playbackRequestEnvironment=_playbackRequestEnvironment;
 @property(nonatomic, getter=isRadioStreamPlayback) _Bool radioStreamPlayback; // @synthesize radioStreamPlayback=_radioStreamPlayback;
@@ -125,6 +128,7 @@
 @property(readonly, nonatomic) long long rtcReportingAssetType;
 @property(readonly, copy, nonatomic) NSString *rtcReportingServiceIdentifier;
 @property(readonly, nonatomic) id rtcReportingParentHierarchyToken;
+- (id)mpcReporting_trackInfo;
 - (id)mpcReporting_siriInitiated;
 - (id)mpcReporting_privateListeningEnabled;
 - (_Bool)mpcReporting_shouldReportPlayEventsToStore;
@@ -139,9 +143,12 @@
 - (void)_willResignActivePlayerItem;
 - (void)_willBecomeActivePlayerItem;
 - (long long)_persistedLikedState;
-- (void)_handleUpdatedLikedState:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleUpdatedLikedState:(long long)arg1 forUserIdentity:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_currentPlaybackRateDidChange:(float)arg1;
+- (_Bool)usesSubscriptionLease;
+- (id)useListeningHistory;
 - (id)storeFrontIdentifier;
+- (id)storeAccountID;
 - (_Bool)shouldPreventPlayback;
 - (void)setPlaybackStoppedTime:(double)arg1;
 - (void)setPlaybackFinishedTime:(double)arg1;
@@ -151,11 +158,13 @@
 - (id)bookmarkTime;
 - (_Bool)allowsExternalPlayback;
 - (_Bool)allowsAirPlayFromCloud;
+- (_Bool)canUseLoadedAsset;
 - (float)userRating;
 - (_Bool)useEmbeddedChapterData;
 - (id)urlTimeMarkers;
 - (long long)type;
 - (id)playbackInfo;
+- (id)containerUniqueID;
 - (_Bool)hasStoreLyrics;
 - (id)libraryLyrics;
 - (_Bool)supportsLikedState;
@@ -174,6 +183,7 @@
 - (_Bool)shouldShowComposer;
 - (id)playbackError;
 - (void)notePlaybackFinishedByHittingEnd;
+- (long long)storePurchasedAdamID;
 - (unsigned long long)composerPersistentID;
 - (unsigned long long)genrePersistentID;
 - (unsigned long long)artistPersistentID;
@@ -181,7 +191,9 @@
 - (unsigned long long)albumPersistentID;
 - (id)cloudAlbumID;
 - (id)cloudUniversalLibraryID;
+- (id)personID;
 - (unsigned long long)cloudID;
+- (id)databaseID;
 - (unsigned long long)persistentID;
 - (unsigned long long)mediaType;
 - (id)modelGenericObject;
@@ -213,7 +225,7 @@
 - (id)album;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
-- (id)initWithGenericObject:(id)arg1 itemProperties:(id)arg2 playbackRequestEnvironment:(id)arg3;
+- (id)initWithGenericObject:(id)arg1 itemProperties:(id)arg2 playbackRequestEnvironment:(id)arg3 identityPropertySet:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

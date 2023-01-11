@@ -11,12 +11,19 @@
 @interface HUSoftwareLibraryLookupResult : NSObject
 {
     NSSet *_matchedLibraryItems;
-    NSSet *_unmatchedAccessories;
+    NSSet *_matchedStoreItems;
+    NSSet *_unmatchedRequests;
 }
 
-@property(retain, nonatomic) NSSet *unmatchedAccessories; // @synthesize unmatchedAccessories=_unmatchedAccessories;
++ (id)_storeResultForRequests:(id)arg1;
++ (id)_libraryResultForRequests:(id)arg1;
++ (id)resultForRequests:(id)arg1;
++ (id)resultForAccessories:(id)arg1;
+@property(retain, nonatomic) NSSet *unmatchedRequests; // @synthesize unmatchedRequests=_unmatchedRequests;
+@property(retain, nonatomic) NSSet *matchedStoreItems; // @synthesize matchedStoreItems=_matchedStoreItems;
 @property(retain, nonatomic) NSSet *matchedLibraryItems; // @synthesize matchedLibraryItems=_matchedLibraryItems;
 - (void).cxx_destruct;
+- (id)init;
 
 @end
 

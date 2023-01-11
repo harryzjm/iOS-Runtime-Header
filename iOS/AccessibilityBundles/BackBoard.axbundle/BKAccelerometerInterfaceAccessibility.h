@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)orientationManager:(id)arg1 deviceOrientationMayHaveChanged:(long long)arg2 isDeviceOrientationLocked:(_Bool)arg3;
+- (void)orientationManager:(id)arg1 deviceOrientationMayHaveChanged:(long long)arg2 changeSource:(long long)arg3 isDeviceOrientationLocked:(_Bool)arg4;
 - (void)handleEvent:(struct __IOHIDEvent *)arg1;
 
 @end

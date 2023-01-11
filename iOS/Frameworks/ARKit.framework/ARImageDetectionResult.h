@@ -13,6 +13,7 @@
 
 @interface ARImageDetectionResult : NSObject <NSCopying, NSSecureCoding>
 {
+    double _estimatedScaleFactor;
     ARReferenceImage *_referenceImage;
     void *_imageContext;
     CDStruct_14d5dc5e _visionTransform;
@@ -23,6 +24,7 @@
 @property(nonatomic) void *imageContext; // @synthesize imageContext=_imageContext;
 @property(nonatomic) CDStruct_14d5dc5e worldTrackingCameraTransformAtDetection; // @synthesize worldTrackingCameraTransformAtDetection=_worldTrackingCameraTransformAtDetection;
 @property(retain, nonatomic) ARReferenceImage *referenceImage; // @synthesize referenceImage=_referenceImage;
+@property(nonatomic) double estimatedScaleFactor; // @synthesize estimatedScaleFactor=_estimatedScaleFactor;
 @property(nonatomic) CDStruct_14d5dc5e visionTransform; // @synthesize visionTransform=_visionTransform;
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;

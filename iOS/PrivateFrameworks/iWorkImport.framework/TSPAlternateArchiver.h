@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface TSPAlternateArchiver <TSPKnownFieldRuleProvider>
 {
-    RepeatedPtrField_5867f37b _fieldPathsToRemove;
+    RepeatedPtrField_02f83fb8 _fieldPathsToRemove;
     struct {
         unsigned int hasPreserveNewerValueRule:1;
         unsigned int hasPreserveNewerValueUntilModifiedRule:1;
@@ -30,6 +30,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)enumerateKnownFieldRulesUsingBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool isContentUnknown;
+- (_Bool)isSavingCollaborativeDocument;
+- (_Bool)isSavingDocumentAs;
 - (id)alternateDiffToMergeBeforeVersion:(unsigned long long)arg1 fileFormatVersion:(unsigned long long)arg2 fieldPath:(int *)arg3;
 - (id)alternateDiffToMergeBeforeVersion:(unsigned long long)arg1 fileFormatVersion:(unsigned long long)arg2 field:(int)arg3;
 - (id)alternateDiffToMergeBeforeVersion:(unsigned long long)arg1 fileFormatVersion:(unsigned long long)arg2;
@@ -47,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)setPreserveNewerValueRuleForField:(int)arg1 fileFormatVersion:(unsigned long long)arg2 featureIdentifier:(id)arg3;
 - (void)setPreserveNewerValueRuleForField:(int)arg1 fileFormatVersion:(unsigned long long)arg2;
 - (const struct FieldPath *)baseFieldPathAndReturnShouldDeleteReturnedValue:(_Bool *)arg1;
-@property(readonly, nonatomic) const RepeatedPtrField_5867f37b *fieldPathsToRemove;
+@property(readonly, nonatomic) const RepeatedPtrField_02f83fb8 *fieldPathsToRemove;
 - (void)dealloc;
 - (id)initWithObject:(id)arg1 version:(unsigned long long)arg2 fieldPath:(const struct FieldPath *)arg3 isDiff:(_Bool)arg4 diffReadVersion:(unsigned long long)arg5 parentArchiver:(id)arg6;
 - (id)initWithObject:(id)arg1;

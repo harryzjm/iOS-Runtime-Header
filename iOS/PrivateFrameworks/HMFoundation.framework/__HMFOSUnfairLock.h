@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
     unsigned int _internalOptions;
 }
 
+- (void)performBlock:(CDUnknownBlockType)arg1;
 - (void)assertNotOwner;
 - (void)assertOwner;
 - (void)unlock;

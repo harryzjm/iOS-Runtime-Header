@@ -11,7 +11,16 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_axUnsubscribeFromVoiceOverNotifications;
+- (void)_axSubscribeToVoiceOverNotifications;
 - (void)_updateVisibilityState;
+- (void)dealloc;
+- (id)init;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axSetIsObservingVoiceOverNotifications:(_Bool)arg1;
+- (_Bool)_axIsObservingVoiceOverNotifications;
+- (void)_axSetIsHandwritingEnabled:(_Bool)arg1;
+- (_Bool)_axIsHandwritingEnabled;
 
 @end
 

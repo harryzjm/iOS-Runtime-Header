@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, UIView;
+@class MISSING_TYPE;
 @protocol CHPointFIFODrawingTarget;
 
 @interface CHQuadCurvePointFIFO
@@ -15,7 +15,6 @@
     struct CGPath *_path;
     double _lineWidth;
     id <CHPointFIFODrawingTarget> _drawingTarget;
-    UIView *_view;
     MISSING_TYPE *_lastPoint;
     vector_74a7c1d0 _prevPoints;
     vector_74a7c1d0 _points;
@@ -23,7 +22,6 @@
 }
 
 + (MISSING_TYPE *)interpolateFromPoint:(float)arg1 toPoint:controlPoint:time: /* Error: Ran out of types for this method. */;
-@property(retain, nonatomic) UIView *view; // @synthesize view=_view;
 @property(retain, nonatomic) id <CHPointFIFODrawingTarget> drawingTarget; // @synthesize drawingTarget=_drawingTarget;
 @property(nonatomic) MISSING_TYPE *lastPoint; // @synthesize lastPoint=_lastPoint;
 @property(nonatomic) vector_027a6188 controlPoints; // @synthesize controlPoints=_controlPoints;
@@ -41,7 +39,6 @@
 - (void)addPoint: /* Error: Ran out of types for this method. */;
 - (void)setUnitScaleForViewSize:(struct CGSize)arg1 normalizedSize:(struct CGSize)arg2 contentScaleFactor:(double)arg3;
 - (void)dealloc;
-- (id)initWithFIFO:(id)arg1 strokeView:(id)arg2;
 - (id)initWithFIFO:(id)arg1 drawingTarget:(id)arg2;
 - (id)initWithFIFO:(id)arg1;
 

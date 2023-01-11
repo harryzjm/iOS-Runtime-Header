@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FCMTWriterMutexLock, NSDictionary, NSMutableDictionary, NSOrderedSet, NSSet;
+@class FCMTWriterLock, NSDictionary, NSMutableDictionary, NSOrderedSet, NSSet;
 @protocol FCTagRanking;
 
 @interface FCSubscriptionList
@@ -17,7 +17,7 @@
     NSSet *_ignoredTagIDs;
     id <FCTagRanking> _subscribedTagRanker;
     NSMutableDictionary *_mutableSubscriptionsBySubscriptionID;
-    FCMTWriterMutexLock *_itemsLock;
+    FCMTWriterLock *_itemsLock;
 }
 
 + (void)configureKeyValueStoreForJSONHandling:(id)arg1;
@@ -33,7 +33,7 @@
 + (_Bool)requiresBatchedSync;
 + (_Bool)requiresPushNotificationSupport;
 + (id)desiredKeys;
-@property(retain, nonatomic) FCMTWriterMutexLock *itemsLock; // @synthesize itemsLock=_itemsLock;
+@property(retain, nonatomic) FCMTWriterLock *itemsLock; // @synthesize itemsLock=_itemsLock;
 @property(retain, nonatomic) NSMutableDictionary *mutableSubscriptionsBySubscriptionID; // @synthesize mutableSubscriptionsBySubscriptionID=_mutableSubscriptionsBySubscriptionID;
 @property(retain, nonatomic) id <FCTagRanking> subscribedTagRanker; // @synthesize subscribedTagRanker=_subscribedTagRanker;
 @property(copy, nonatomic) NSSet *ignoredTagIDs; // @synthesize ignoredTagIDs=_ignoredTagIDs;
@@ -79,8 +79,10 @@
 - (void)addSubscriptionsForTagIDs:(id)arg1 typeProvider:(CDUnknownBlockType)arg2 originProvider:(CDUnknownBlockType)arg3 groupID:(id)arg4 notificationsEnabled:(_Bool)arg5 eventInitiationLevelProvider:(CDUnknownBlockType)arg6 completion:(CDUnknownBlockType)arg7;
 - (id)recordsForRestoringZoneName:(id)arg1;
 - (_Bool)canHelpRestoreZoneName:(id)arg1;
+- (void)handleSyncDidResetLocalDataForRecordZoneWithID:(id)arg1;
 - (void)handleSyncCompletion;
-- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordIDs:(id)arg2;
+- (id)allKnownRecordNamesWithinRecordZoneWithID:(id)arg1;
+- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
 - (void)loadLocalCachesFromStore;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;

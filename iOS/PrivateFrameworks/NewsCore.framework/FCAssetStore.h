@@ -23,11 +23,13 @@
 - (id)_keyForFileName:(id)arg1;
 - (id)_filePathForKey:(id)arg1;
 - (id)allKeys;
+- (unsigned long long)storeSizeForKeys:(id)arg1;
 - (unsigned long long)storeSize;
 - (unsigned long long)sizeOfFileForKey:(id)arg1;
 - (id)fileURLForKey:(id)arg1;
 - (id)filePathForKey:(id)arg1;
 - (_Bool)removeAllFiles;
+- (_Bool)removeAllFilesExceptKeys:(id)arg1;
 - (_Bool)removeFileWithKey:(id)arg1;
 - (id)copyData:(id)arg1 withKey:(id)arg2;
 - (id)moveFileAtPath:(id)arg1 withKey:(id)arg2;

@@ -38,9 +38,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <_MKInfoCardAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
 - (void).cxx_destruct;
 - (void)captureUserAction:(int)arg1;
+- (id)infoCardChildUnactionableUIElements;
 - (id)infoCardChildPossibleActions;
 - (void)updateUIForTheme:(id)arg1;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 @property(nonatomic, getter=isBottomSeparatorHidden) _Bool bottomSeparatorHidden;
 @property(nonatomic, getter=isTopSeparatorHidden) _Bool topSeparatorHidden;
 - (void)openAttribution;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithTextItemContainer:(id)arg1 title:(id)arg2 attribution:(id)arg3;
 - (id)initWithPictureItemContainer:(id)arg1 title:(id)arg2 attribution:(id)arg3;
 - (id)initWithChildViewController:(id)arg1 title:(id)arg2 attribution:(id)arg3;
+- (_Bool)_canShowWhileLocked;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

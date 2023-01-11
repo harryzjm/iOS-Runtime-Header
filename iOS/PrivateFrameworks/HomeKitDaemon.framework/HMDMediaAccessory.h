@@ -15,7 +15,6 @@
 }
 
 + (_Bool)supportsSecureCoding;
-+ (id)computedNameForCategoryType:(id)arg1 inRoom:(id)arg2;
 @property(readonly) HMDMediaProfile *mediaProfile; // @synthesize mediaProfile=_mediaProfile;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
@@ -33,11 +32,12 @@
 - (void)setAdvertisement:(id)arg1;
 @property(readonly, copy) HMDMediaAccessoryAdvertisement *advertisement; // @synthesize advertisement=_advertisement;
 - (void)handleRoomNameChanged:(id)arg1;
-- (void)configure:(id)arg1 msgDispatcher:(id)arg2 accessoryConfigureGroup:(id)arg3;
+- (void)configureWithHome:(id)arg1 msgDispatcher:(id)arg2 configurationTracker:(id)arg3;
 - (id)name;
 - (_Bool)providesHashRouteID;
 - (void)removeAdvertisement:(id)arg1;
 - (void)addAdvertisement:(id)arg1;
+- (_Bool)_shouldFilterAccessoryProfile:(id)arg1;
 - (void)_registerForMessages;
 - (id)init;
 - (id)initWithTransaction:(id)arg1 home:(id)arg2;

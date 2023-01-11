@@ -6,6 +6,7 @@
 
 @class SKUITracklistViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUITracklistPageComponent
 {
 }

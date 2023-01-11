@@ -6,58 +6,57 @@
 
 #import <objc/NSObject.h>
 
-@class AVTAvatarConfigurationImageRenderer, AVTCoreModel, AVTDeviceResourceManager, AVTInMemoryImageCache, NSNotificationCenter, NSURL;
-@protocol AVTUILogger, AVTUsageTrackingSession, OS_dispatch_queue;
+@class AVTAvatarConfigurationImageRenderer, AVTCoreEnvironment, AVTCoreModel, AVTDeviceResourceManager, NSNotificationCenter, NSURL, NSUserDefaults;
+@protocol AVTImageCache, AVTUILogger, AVTUsageTrackingSession, OS_dispatch_queue;
 
 @interface AVTUIEnvironment : NSObject
 {
     AVTCoreModel *_editorCoreModel;
     AVTAvatarConfigurationImageRenderer *_renderer;
-    AVTInMemoryImageCache *_inMemoryImageCache;
+    id <AVTImageCache> _inMemoryImageCache;
     id <AVTUsageTrackingSession> _usageTrackingSession;
-    id <AVTUILogger> _logger;
+    _Bool _deviceIsSunflower;
+    AVTCoreEnvironment *_coreEnvironment;
     double _mainScreenScale;
     long long _userInterfaceLayoutDirection;
-    CDUnknownBlockType _serialQueueProvider;
-    CDUnknownBlockType _lockProvider;
     NSObject<OS_dispatch_queue> *_backgroundQueue;
-    NSURL *_storeLocation;
-    NSURL *_imageStoreLocation;
-    NSURL *_imageCacheStoreLocation;
-    NSNotificationCenter *_notificationCenter;
+    NSObject<OS_dispatch_queue> *_backgroundRenderingQueue;
+    NSObject<OS_dispatch_queue> *_backgroundEncodingQueue;
     AVTDeviceResourceManager *_deviceResourceManager;
     double _actionAnimationsMultiplier;
     struct CGSize _mainScreenSize;
 }
 
-+ (id)imageCacheStoreLocationWithError:(id *)arg1;
-+ (id)imageStoreLocation;
-+ (id)storeLocation;
 + (id)createUsageTrackingSessionWithCoreModel:(id)arg1 serialQueueProvider:(CDUnknownBlockType)arg2 logger:(id)arg3;
 + (id)createEditorCoreModelWithLogger:(id)arg1;
-+ (id)createQueueWithQoSClass:(unsigned int)arg1;
-+ (CDUnknownBlockType)serialQueueProvider;
++ (id)createQueueWithQoSClass:(unsigned int)arg1 label:(const char *)arg2;
 + (id)createFunCamEnvironment;
 + (id)defaultEnvironment;
 @property(nonatomic) double actionAnimationsMultiplier; // @synthesize actionAnimationsMultiplier=_actionAnimationsMultiplier;
 @property(readonly, nonatomic) AVTDeviceResourceManager *deviceResourceManager; // @synthesize deviceResourceManager=_deviceResourceManager;
-@property(readonly, nonatomic) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
-@property(readonly, copy, nonatomic) NSURL *imageCacheStoreLocation; // @synthesize imageCacheStoreLocation=_imageCacheStoreLocation;
-@property(readonly, copy, nonatomic) NSURL *imageStoreLocation; // @synthesize imageStoreLocation=_imageStoreLocation;
-@property(readonly, copy, nonatomic) NSURL *storeLocation; // @synthesize storeLocation=_storeLocation;
+@property(readonly, copy, nonatomic) NSObject<OS_dispatch_queue> *backgroundEncodingQueue; // @synthesize backgroundEncodingQueue=_backgroundEncodingQueue;
+@property(readonly, copy, nonatomic) NSObject<OS_dispatch_queue> *backgroundRenderingQueue; // @synthesize backgroundRenderingQueue=_backgroundRenderingQueue;
 @property(readonly, copy, nonatomic) NSObject<OS_dispatch_queue> *backgroundQueue; // @synthesize backgroundQueue=_backgroundQueue;
-@property(readonly, copy, nonatomic) CDUnknownBlockType lockProvider; // @synthesize lockProvider=_lockProvider;
-@property(readonly, copy, nonatomic) CDUnknownBlockType serialQueueProvider; // @synthesize serialQueueProvider=_serialQueueProvider;
+@property(readonly, nonatomic) _Bool deviceIsSunflower; // @synthesize deviceIsSunflower=_deviceIsSunflower;
 @property(readonly, nonatomic) long long userInterfaceLayoutDirection; // @synthesize userInterfaceLayoutDirection=_userInterfaceLayoutDirection;
 @property(readonly, nonatomic) struct CGSize mainScreenSize; // @synthesize mainScreenSize=_mainScreenSize;
 @property(readonly, nonatomic) double mainScreenScale; // @synthesize mainScreenScale=_mainScreenScale;
-@property(readonly, nonatomic) id <AVTUILogger> logger; // @synthesize logger=_logger;
+@property(readonly, nonatomic) AVTCoreEnvironment *coreEnvironment; // @synthesize coreEnvironment=_coreEnvironment;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSNotificationCenter *notificationCenter;
+@property(readonly, copy, nonatomic) NSURL *stickerImageStoreLocation;
+@property(readonly, copy, nonatomic) NSURL *imageCacheStoreLocation;
+@property(readonly, copy, nonatomic) NSURL *imageStoreLocation;
+@property(readonly, copy, nonatomic) NSURL *storeLocation;
+@property(readonly, copy, nonatomic) CDUnknownBlockType lockProvider;
+@property(readonly, copy, nonatomic) CDUnknownBlockType serialQueueProvider;
+@property(readonly, nonatomic) id <AVTUILogger> logger;
+@property(readonly, nonatomic) NSUserDefaults *userDefaults;
 @property(readonly, nonatomic) id <AVTUsageTrackingSession> usageTrackingSession;
-@property(readonly, nonatomic) AVTInMemoryImageCache *inMemoryImageCache;
+@property(readonly, nonatomic) id <AVTImageCache> inMemoryImageCache;
 @property(readonly, nonatomic) AVTAvatarConfigurationImageRenderer *renderer;
 @property(readonly, nonatomic) AVTCoreModel *editorCoreModel;
-- (id)init;
+- (id)initWithCoreEnvironment:(id)arg1;
 
 @end
 

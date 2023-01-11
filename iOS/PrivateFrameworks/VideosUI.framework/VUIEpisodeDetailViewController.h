@@ -8,7 +8,7 @@
 #import <VideosUI/VUIEpisodeDetailViewDelegate-Protocol.h>
 #import <VideosUI/VUIMediaEntitiesFetchControllerDelegate-Protocol.h>
 
-@class NSString, UITapGestureRecognizer, VUIEpisodeDetailView, VUIMediaItem, VUIMetricsController;
+@class NSString, UITapGestureRecognizer, VUIEpisodeDetailView, VUIMediaItem;
 @protocol VUIEpisodeDetailViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -18,10 +18,8 @@ __attribute__((visibility("hidden")))
     id <VUIEpisodeDetailViewControllerDelegate> _delegate;
     VUIEpisodeDetailView *_detailView;
     UITapGestureRecognizer *_tapGestureRecognizer;
-    VUIMetricsController *_metricsController;
 }
 
-@property(retain, nonatomic) VUIMetricsController *metricsController; // @synthesize metricsController=_metricsController;
 @property(retain, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property(retain, nonatomic) VUIEpisodeDetailView *detailView; // @synthesize detailView=_detailView;
 @property(nonatomic) __weak id <VUIEpisodeDetailViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -34,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)controller:(id)arg1 fetchRequests:(id)arg2 didFailWithError:(id)arg3;
 - (void)controller:(id)arg1 fetchRequests:(id)arg2 didCompleteWithResult:(id)arg3;
+- (void)reportMetricsPageEvent;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewWillDisappear:(_Bool)arg1;

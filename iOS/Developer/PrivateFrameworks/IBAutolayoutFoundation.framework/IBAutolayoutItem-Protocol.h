@@ -10,6 +10,7 @@
 @protocol IBAutolayoutInfoProvider, IBAutolayoutItem, IBCollection, IBOrderedCollection;
 
 @protocol IBAutolayoutItem <NSObject>
+@property(readonly, nonatomic) NSArray *ibCandidateRedundantConstraintsFromHostedEngine;
 @property(readonly, nonatomic) _Bool ibIgnoreNearestNeighborProximityThreshold;
 @property(readonly, nonatomic) NSSet *ibFallbackViewsForCandidateConstraintGenerationForFailedArbitration;
 @property(readonly, nonatomic) id ibWindowForArbitration;
@@ -29,6 +30,8 @@
 @property(retain, nonatomic) id <IBOrderedCollection> ibInstalledConstraints;
 @property(retain, nonatomic) id <IBOrderedCollection> ibCandidateConstraints;
 @property(readonly, nonatomic) struct CGRect ibLayoutFrameworkBounds;
+@property(nonatomic) struct CGRect ibDesignBounds;
+@property(nonatomic) struct CGRect ibDesignFrame;
 @property(nonatomic) struct CGRect ibLayoutFrame;
 @property(readonly, nonatomic) struct CGRect ibLayoutBounds;
 @property(readonly, nonatomic) NSArray *constraints;

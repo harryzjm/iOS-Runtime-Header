@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSArray *_uuids;
 }
 
++ (id)tokenizeUUIDPathString:(id)arg1;
 + (id)lastUUIDFromUUIDPathString:(id)arg1;
 @property(readonly, nonatomic) NSArray *uuids; // @synthesize uuids=_uuids;
 - (void).cxx_destruct;

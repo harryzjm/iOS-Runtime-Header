@@ -9,10 +9,13 @@ __attribute__((visibility("hidden")))
 {
     float _rotationAngle;
     float _yawAngle;
+    int _labelKey;
 }
 
+@property int labelKey; // @synthesize labelKey=_labelKey;
 @property float yawAngle; // @synthesize yawAngle=_yawAngle;
 @property float rotationAngle; // @synthesize rotationAngle=_rotationAngle;
+- (id)initWithObjectType:(long long)arg1 boundingBox:(struct CGRect)arg2 confidence:(float)arg3 rotationAngle:(float)arg4 yawAngle:(float)arg5 labelKey:(int)arg6;
 
 @end
 

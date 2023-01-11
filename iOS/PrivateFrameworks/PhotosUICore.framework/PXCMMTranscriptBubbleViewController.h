@@ -8,7 +8,7 @@
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 #import <PhotosUICore/PXTouchingUIGestureRecognizerDelegate-Protocol.h>
 
-@class NSError, NSString, NSURL, PHFetchResult, PHMomentShare, PHPhotoLibrary, PXCMMAssetsProgressListener, PXCMMPreviewAsset, PXCMMPreviewUIImageProvider, PXCMMSpecManager, PXCMMTranscriptBubbleStatusView, PXCMMTranscriptBubbleView;
+@class NSError, NSString, NSURL, PHFetchResult, PHMomentShare, PHPhotoLibrary, PXCMMPreviewAsset, PXCMMPreviewUIImageProvider, PXCMMSpecManager, PXCMMTranscriptBubbleStatusView, PXCMMTranscriptBubbleView, PXMomentShareStatusPresentation;
 @protocol PXCMMTranscriptBubbleTouchDelegate, PXUIImageProvider;
 
 @interface PXCMMTranscriptBubbleViewController <PXPhotoLibraryUIChangeObserver, PXChangeObserver, PXTouchingUIGestureRecognizerDelegate>
@@ -16,7 +16,7 @@
     PHPhotoLibrary *_photoLibrary;
     PHFetchResult *_backingFetchResult;
     PHFetchResult *_keyAssetFetch;
-    PXCMMAssetsProgressListener *_progressListener;
+    PXMomentShareStatusPresentation *_momentShareStatusPresentation;
     long long _saveInProgressTotal;
     PXCMMTranscriptBubbleView *_bubbleView;
     PXCMMTranscriptBubbleStatusView *_errorStatusView;
@@ -38,7 +38,7 @@
 
 + (_Bool)_isPermanentFailureURL:(id)arg1;
 + (void)_registerPermanentFailureURL:(id)arg1;
-@property(retain, nonatomic) PXCMMAssetsProgressListener *progressListener; // @synthesize progressListener=_progressListener;
+@property(retain, nonatomic) PXMomentShareStatusPresentation *momentShareStatusPresentation; // @synthesize momentShareStatusPresentation=_momentShareStatusPresentation;
 @property(nonatomic, getter=isHighlighted) _Bool highlighted; // @synthesize highlighted=_highlighted;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
 @property(nonatomic) long long targetState; // @synthesize targetState=_targetState;
@@ -50,12 +50,12 @@
 - (void).cxx_destruct;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
-- (void)touchingUIGestureRecognizerDidEndTouching:(id)arg1;
-- (void)touchingUIGestureRecognizerDidBeginTouching:(id)arg1;
+- (void)touchingUIGestureRecognizerWillEndTouching:(id)arg1;
+- (void)touchingUIGestureRecognizerWillBeginTouching:(id)arg1;
 - (void)_readyForStateTransition;
 - (void)_ensureBubbleStateTransition;
 - (void)_updateBubbleState;
-- (void)_updateProgressListener;
+- (void)_updateMomentShareStatusPresentation;
 - (void)_updateContent;
 - (void)_updateBubbleView;
 - (_Bool)_shouldShowContent;

@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSNumber;
+
 @interface SAUITemplateKeyline
 {
 }
 
 + (id)keylineWithDictionary:(id)arg1 context:(id)arg2;
 + (id)keyline;
+@property(copy, nonatomic) NSNumber *width;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

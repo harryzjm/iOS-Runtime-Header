@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary;
+@class NSDictionary, WLKSearchWatchListResponse;
 
 @interface WLKSearchWatchListRequestOperation
 {
-    NSDictionary *_options;
+    NSDictionary *_query;
+    WLKSearchWatchListResponse *_response;
 }
 
-@property(readonly, copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
+@property(readonly, nonatomic) WLKSearchWatchListResponse *response; // @synthesize response=_response;
+@property(readonly, copy, nonatomic) NSDictionary *query; // @synthesize query=_query;
 - (void).cxx_destruct;
-- (id)responseProcessor;
-- (id)initWithOptions:(id)arg1;
+- (void)processResponse;
+- (id)initWithQuery:(id)arg1 caller:(id)arg2;
 
 @end
 

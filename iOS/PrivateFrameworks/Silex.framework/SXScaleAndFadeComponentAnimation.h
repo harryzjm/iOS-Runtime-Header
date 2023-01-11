@@ -8,7 +8,6 @@
 {
 }
 
-+ (id)typeString;
 - (Class)handlerClass;
 
 // Remaining properties

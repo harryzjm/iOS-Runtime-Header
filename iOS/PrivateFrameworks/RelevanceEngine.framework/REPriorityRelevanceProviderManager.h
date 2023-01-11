@@ -8,6 +8,7 @@
 {
 }
 
++ (_Bool)_wantsSeperateRelevanceQueue;
 + (id)_features;
 + (Class)_relevanceProviderClass;
 - (float)_relevanceForProvider:(id)arg1;

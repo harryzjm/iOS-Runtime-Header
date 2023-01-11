@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)scalingSettings;
 - (id)implementationName;
+- (int)setRateAllocation:(id)arg1 framerate:(unsigned int)arg2;
 - (int)setBitrate:(unsigned int)arg1 framerate:(unsigned int)arg2;
 - (long long)encode:(id)arg1 codecSpecificInfo:(id)arg2 frameTypes:(id)arg3;
 - (long long)releaseEncoder;

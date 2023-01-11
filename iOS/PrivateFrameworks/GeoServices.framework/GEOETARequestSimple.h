@@ -11,12 +11,10 @@
 @interface GEOETARequestSimple <GEOXPCRequest>
 {
     GEOETARequest *_request;
-    int _mode;
 }
 
 + (Class)replyClass;
 + (_Bool)supportsSecureCoding;
-@property(nonatomic) int mode; // @synthesize mode=_mode;
 @property(retain, nonatomic) GEOETARequest *request; // @synthesize request=_request;
 - (void).cxx_destruct;
 - (_Bool)expectsReply;

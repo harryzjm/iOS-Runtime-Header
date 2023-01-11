@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _shouldFetchAssetContents;
     _Bool _fetchAllChanges;
     _Bool _forcePCSDecryptionAttempt;
+    _Bool _shouldReportAllPerItemFailures;
     CKDRecordCache *_recordCache;
     NSObject<OS_dispatch_group> *_fetchRecordsGroup;
     NSSet *_desiredAssetKeys;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_assetTransferOptionsByRecordTypeAndKey;
 }
 
+@property(nonatomic) _Bool shouldReportAllPerItemFailures; // @synthesize shouldReportAllPerItemFailures=_shouldReportAllPerItemFailures;
 @property(nonatomic) _Bool forcePCSDecryptionAttempt; // @synthesize forcePCSDecryptionAttempt=_forcePCSDecryptionAttempt;
 @property(retain, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
 @property(retain, nonatomic) NSMutableArray *requestInfos; // @synthesize requestInfos=_requestInfos;

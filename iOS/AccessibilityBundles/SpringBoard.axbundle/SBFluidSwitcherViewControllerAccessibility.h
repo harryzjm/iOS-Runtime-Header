@@ -4,29 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface SBFluidSwitcherViewControllerAccessibility
+#import "SBAppSwticherAppAccessibilityElementDelegate-Protocol.h"
+
+@class NSString;
+
+@interface SBFluidSwitcherViewControllerAccessibility <SBAppSwticherAppAccessibilityElementDelegate>
 {
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)appElementIsAccessibilityElement:(id)arg1;
+- (void)_axDidQuitApp:(id)arg1;
 - (id)_accessibilityAppLayoutAtCurrentContentOffset;
+- (id)_axSortedElementArray:(id)arg1;
+- (void)_axCreateAppElementsForLayouts:(id)arg1 visibleItemContainers:(id)arg2;
 - (void)_axCreateAppElements;
+- (void)_axCreateInitialAppElements;
 - (unsigned long long)_axCurrentAppLayoutIndex;
 - (unsigned long long)_axAdjustedIndex:(unsigned long long)arg1 forScrollDirection:(long long)arg2;
 - (_Bool)_axHasMultirowLayout;
 - (unsigned long long)_axNumberOfPages;
 - (unsigned long long)_axPageForIndex:(unsigned long long)arg1;
 - (id)_axScrollStatusForIndex:(unsigned long long)arg1;
+@property(readonly, nonatomic) _Bool _axIsVisible;
 - (_Bool)_axIsInSwitcher;
+- (_Bool)_axIsInlineSwitcherVisible;
+- (_Bool)_axIsFloatingSwitcherVisible;
+- (_Bool)_axIsMainSwitcherVisible;
 - (long long)_axEnvironmentMode;
 - (id)_axVisibleAppLayouts;
 - (id)_axAppLayouts;
 - (id)_axContentView;
 - (id)_axAppLayoutForAppIdentifier:(id)arg1;
 - (id)_axIdentifierOfAppInLayoutState:(id)arg1;
-- (void)performTransitionWithContext:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_updatePlusButtonPresence;
+- (void)performTransitionWithContext:(id)arg1 animated:(_Bool)arg2 alongsideAnimationController:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_addVisibleItemContainerForAppLayout:(id)arg1;
 - (_Bool)_removeVisibleItemContainerForAppLayout:(id)arg1;
 - (void)_setupContentAndTransientViews;
@@ -37,6 +51,13 @@
 - (_Bool)_accessibilityServesAsContainingParentForOrdering;
 - (_Bool)_accessibilityOnlyComparesByXAxis;
 - (void)_accessibilityLoadAccessibilityInformation;
+@property(nonatomic, getter=_axSwitcherType, setter=_setAXSwitcherType:) unsigned long long _axSwitcherType;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

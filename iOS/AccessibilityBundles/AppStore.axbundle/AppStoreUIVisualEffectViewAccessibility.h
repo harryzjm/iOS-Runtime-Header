@@ -11,10 +11,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityUserInputLabels;
 - (id)accessibilityHint;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
-- (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 - (_Bool)accessibilityPerformEscape;
 - (_Bool)isAccessibilityElement;
 - (_Bool)isArticleBackgroundView;

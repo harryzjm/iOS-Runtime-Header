@@ -8,5 +8,7 @@
 {
 }
 
++ (id)allTypes;
+
 @end
 

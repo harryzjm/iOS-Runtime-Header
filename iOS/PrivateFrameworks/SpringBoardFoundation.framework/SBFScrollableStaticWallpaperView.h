@@ -6,14 +6,14 @@
 
 #import <SpringBoardFoundation/UIScrollViewDelegate-Protocol.h>
 
-@class NSString, SBFLockScreenWallpaperParallaxSettings, SBFSubject, UIImageView, UIScrollView;
+@class NSString, SBFSubject, SBFWallpaperParallaxSettings, UIImageView, UIScrollView;
 @protocol SBFCancelable;
 
 @interface SBFScrollableStaticWallpaperView <UIScrollViewDelegate>
 {
     UIImageView *_imageView;
     UIScrollView *_scrollView;
-    SBFLockScreenWallpaperParallaxSettings *_parallaxSettings;
+    SBFWallpaperParallaxSettings *_parallaxSettings;
     SBFSubject *_scrollViewObserver;
     id <SBFCancelable> _colorBoxCancelToken;
     id <SBFCancelable> _parallaxCancelToken;
@@ -53,12 +53,14 @@
 - (id)_scrollView;
 - (id)_newImageView;
 - (void)_setupContentViewWithOptions:(unsigned long long)arg1;
+- (void)setContentView:(id)arg1;
+- (void)_resetColorBoxes;
 - (double)_parallaxFactorWithZoomScale:(double)arg1 contentOffset:(struct CGPoint)arg2;
 - (double)_scrollViewParallaxFactor;
 - (double)parallaxFactor;
 - (void)setParallaxEnabled:(_Bool)arg1;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 variant:(long long)arg3 wallpaperSettingsProvider:(id)arg4;
+- (id)initWithFrame:(struct CGRect)arg1 configuration:(id)arg2 variant:(long long)arg3 cacheGroup:(id)arg4 delegate:(id)arg5 options:(unsigned long long)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

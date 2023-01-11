@@ -8,6 +8,7 @@
 
 @class NSString, SKUIAttributedStringView, UIActivityIndicatorView, UIImageView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIActivityIndicatorView <SKUIViewElementView>
 {
     unsigned long long _alignment;

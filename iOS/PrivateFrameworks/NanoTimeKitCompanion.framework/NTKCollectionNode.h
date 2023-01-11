@@ -28,7 +28,6 @@
 + (id)labels60ChronoForDevice:(id)arg1;
 + (id)hoursChronoForDevice:(id)arg1;
 + (id)ticks60ChronoForDevice:(id)arg1;
-+ (id)ticksColorAnalogForDevice:(id)arg1;
 + (id)hours12ForDevice:(id)arg1;
 + (id)hours4ForDevice:(id)arg1;
 + (id)minutesUtilitarianForDevice:(id)arg1;

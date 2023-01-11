@@ -6,12 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary;
+#import <IMDaemonCore/IDSAccountDelegate-Protocol.h>
 
-@interface IMDAccountController : NSObject
+@class NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString;
+
+@interface IMDAccountController : NSObject <IDSAccountDelegate>
 {
     NSMutableDictionary *_accounts;
     NSMutableDictionary *_activeAccounts;
+    NSSet *_operationalAccountsCache;
     _Bool _isLoading;
     _Bool _isFirstLoad;
 }
@@ -19,6 +22,11 @@
 + (id)sharedAccountController;
 + (id)sharedInstance;
 @property(readonly, nonatomic) _Bool isLoading; // @synthesize isLoading=_isLoading;
+- (void)account:(id)arg1 isActiveChanged:(_Bool)arg2;
+- (id)_nicknameController;
+- (_Bool)_isOperationalForAccount:(id)arg1;
+- (id)_operationalAccounts;
+- (void)_rebuildOperationalAccountsCache;
 - (void)_checkPowerAssertion;
 - (id)anySessionForServiceName:(id)arg1;
 - (id)sessionForAccount:(id)arg1;
@@ -53,6 +61,12 @@
 - (id)init;
 @property(readonly, nonatomic) NSDictionary *loadOldStatusStore;
 - (id)_superFormatFromAIML:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <DoNotDisturbServer/DNDSObservableModeAssertionProvider-Protocol.h>
+#import <DoNotDisturbServer/NSObject-Protocol.h>
 
-@class NSDate;
+@class DNDSModeAssertionUpdateResult, DNDStateUpdate;
 @protocol DNDSAssertionSyncManagerDataSource, DNDSAssertionSyncManagerDelegate;
 
-@protocol DNDSAssertionSyncManager <DNDSObservableModeAssertionProvider>
+@protocol DNDSAssertionSyncManager <NSObject>
 @property(nonatomic) __weak id <DNDSAssertionSyncManagerDelegate> delegate;
 @property(nonatomic) __weak id <DNDSAssertionSyncManagerDataSource> dataSource;
-- (void)invalidateAllModeAssertionsTakenBeforeDate:(NSDate *)arg1 forReason:(unsigned long long)arg2;
-- (void)updateForReason:(unsigned long long)arg1;
 - (void)resume;
+
+@optional
+- (void)updateForStateUpdate:(DNDStateUpdate *)arg1;
+- (void)updateForModeAssertionUpdateResult:(DNDSModeAssertionUpdateResult *)arg1;
 @end
 

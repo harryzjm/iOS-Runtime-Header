@@ -4,16 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKQuantitySample;
+@class HKQuantitySample, NSDate, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface _HKQuantitySeriesSampleQueryServerConfiguration
 {
     HKQuantitySample *_quantitySample;
     long long _seriesAnchor;
+    long long _mode;
+    unsigned long long _options;
+    NSDate *_maximumStartDate;
+    NSUUID *_latestUUID;
+    NSDate *_latestSampleStartDate;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(copy, nonatomic) NSDate *latestSampleStartDate; // @synthesize latestSampleStartDate=_latestSampleStartDate;
+@property(copy, nonatomic) NSUUID *latestUUID; // @synthesize latestUUID=_latestUUID;
+@property(copy, nonatomic) NSDate *maximumStartDate; // @synthesize maximumStartDate=_maximumStartDate;
+@property(nonatomic) unsigned long long options; // @synthesize options=_options;
+@property(nonatomic) long long mode; // @synthesize mode=_mode;
 @property(nonatomic) long long seriesAnchor; // @synthesize seriesAnchor=_seriesAnchor;
 @property(copy, nonatomic) HKQuantitySample *quantitySample; // @synthesize quantitySample=_quantitySample;
 - (void).cxx_destruct;

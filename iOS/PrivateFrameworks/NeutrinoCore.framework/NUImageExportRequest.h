@@ -4,22 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NUColorSpace, NUImageExportFormat;
+#import <NeutrinoCore/NUTimeBased-Protocol.h>
 
-@interface NUImageExportRequest
+@class NSDictionary, NSString, NUColorSpace, NUImageExportFormat;
+
+@interface NUImageExportRequest <NUTimeBased>
 {
     _Bool _renderToData;
     NUColorSpace *_colorSpace;
     NUImageExportFormat *_format;
     NSDictionary *_imageProperties;
-    NSDictionary *_auxiliaryDataByType;
-    CDStruct_1b6d18a9 _time;
+    NSDictionary *_coreGraphicsInfoDictionariesByAuxiliaryType;
 }
 
-@property(copy) NSDictionary *auxiliaryDataByType; // @synthesize auxiliaryDataByType=_auxiliaryDataByType;
+@property(copy) NSDictionary *coreGraphicsInfoDictionariesByAuxiliaryType; // @synthesize coreGraphicsInfoDictionariesByAuxiliaryType=_coreGraphicsInfoDictionariesByAuxiliaryType;
 @property(copy) NSDictionary *imageProperties; // @synthesize imageProperties=_imageProperties;
 @property(nonatomic) _Bool renderToData; // @synthesize renderToData=_renderToData;
-@property CDStruct_1b6d18a9 time; // @synthesize time=_time;
 @property(copy, nonatomic) NUImageExportFormat *format; // @synthesize format=_format;
 @property(retain, nonatomic) NUColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 - (void).cxx_destruct;
@@ -30,6 +30,13 @@
 - (id)initWithComposition:(id)arg1 exportFormat:(id)arg2;
 - (id)initWithComposition:(id)arg1 destinationURL:(id)arg2;
 - (id)initWithComposition:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+@property(nonatomic) CDStruct_1b6d18a9 time;
 
 @end
 

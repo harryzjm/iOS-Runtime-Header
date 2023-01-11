@@ -7,24 +7,20 @@
 #import <objc/NSObject.h>
 
 #import <MediaPlayer/AVAudioSessionDelegateMediaPlayerOnly-Protocol.h>
-#import <MediaPlayer/ICEnvironmentMonitorObserver-Protocol.h>
-#import <MediaPlayer/MPAVPlaylistManagerDelegate-Protocol.h>
+#import <MediaPlayer/MPAVQueueControllerDelegate-Protocol.h>
 #import <MediaPlayer/MPAVRoutingControllerDelegate-Protocol.h>
 
-@class AVAudioSessionMediaPlayerOnly, AVPictureInPictureController, AVPlayerLayer, MPAVItem, MPAVPlaylistManager, MPAVPolicyEnforcer, MPAVQueueCoordinator, MPAVRoute, MPAVRoutingController, MPMediaItem, MPMediaQuery, MPQueueFeeder, MPQueuePlayer, MPVideoView, NSArray, NSDate, NSMapTable, NSMutableArray, NSMutableSet, NSNotification, NSString;
-@protocol OS_dispatch_source;
+@class AVAudioSessionMediaPlayerOnly, AVPictureInPictureController, AVPlayerLayer, MPAVItem, MPAVPolicyEnforcer, MPAVRoute, MPAVRoutingController, MPQueueFeeder, MPQueuePlayer, MPVideoView, NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSNotification, NSString;
+@protocol MPAVQueueController, MPAVQueueCoordinating, OS_dispatch_source;
 
-@interface MPAVController : NSObject <AVAudioSessionDelegateMediaPlayerOnly, ICEnvironmentMonitorObserver, MPAVPlaylistManagerDelegate, MPAVRoutingControllerDelegate>
+@interface MPAVController : NSObject <MPAVRoutingControllerDelegate, MPAVQueueControllerDelegate, AVAudioSessionDelegateMediaPlayerOnly>
 {
-    _Bool _currentItemStartedAsCloudItem;
     _Bool _currentItemHasFinishedDownloading;
     _Bool _didResolveError;
     _Bool _disableAirPlayMirroringDuringPlayback;
-    NSDate *_itemDidChangeDate;
     _Bool _shouldPreventStateChangesForRateChange;
     unsigned long long _stallBackgroundTaskIdentifier;
     _Bool _usesAudioOnlyModeForExternalPlayback;
-    MPAVPlaylistManager *_playlistManager;
     long long _playbackMode;
     _Bool _valid;
     _Bool _allowsItemErrorResolution;
@@ -39,7 +35,7 @@
     double _tickInterval;
     struct __CFRunLoopTimer *_currentItemBookkeepingTimer;
     long long _indexChangeDirection;
-    unsigned long long _itemIndexAtDeath;
+    NSString *_contentItemIDAtDeath;
     long long _lastDisconnectReason;
     double _lastKnownTimeBeforeDeath;
     double _lastPlaybackIndexChangeTime;
@@ -106,6 +102,7 @@
     NSObject<OS_dispatch_source> *_stallTimerSource;
     _Bool _hasProvidedAudibleLikelyToKeepUp;
     _Bool _hasProvidedAudiblePlay;
+    _Bool _isReloadingForPlaybackContextChange;
     double _itemInitialBookmarkTime;
     float _rateBeforeResignActive;
     long long _ubiquitousBookkeepingDisabledCount;
@@ -115,61 +112,64 @@
     _Bool _shouldEnforceHDCP;
     NSMutableSet *_clientsWantingExternalPlayback;
     long long _currentItemRevisionID;
-    unsigned long long _numberOfErrorsSinceLastPlay;
     _Bool _shouldResetQueueWhenReachingEnd;
     _Bool _muted;
-    _Bool _limitsBandwidthForCellularAccess;
     _Bool _useAirPlayMusicMode;
     _Bool _managesAirPlayBehaviors;
-    _Bool _wantsPictureInPicture;
+    _Bool _shouldConnectToAVPlayer;
     _Bool _automaticallyHidesVideoLayersForMusicVideosWhenApplicationBackgrounds;
-    _Bool _allowsExternalPlaybackError;
+    _Bool _wantsPictureInPicture;
+    long long _lastDirection;
     MPAVPolicyEnforcer *_policyEnforcer;
+    long long _actionAfterQueueLoadOverride;
     MPQueuePlayer *_queuePlayer;
-    MPAVQueueCoordinator *_queueCoordinator;
+    id <MPAVQueueCoordinating> _queueCoordinator;
+    id <MPAVQueueController> _queueController;
     NSString *_identifier;
     AVPictureInPictureController *_pictureInPictureController;
 }
 
 + (_Bool)automaticallyNotifiesObserversOfPlaylistManager;
 + (_Bool)prefersApplicationAudioSession;
-+ (Class)playlistManagerClass;
 + (id)_playerKeysToObserve;
 + (id)_itemKeysToObserve;
 + (_Bool)outputSupportsAC3;
 + (id)keyPathsForValuesAffectingCurrentItem;
 + (_Bool)isNetworkSupportedPath:(id)arg1;
 + (void)initialize;
-@property(nonatomic) _Bool shouldEnforceHDCP; // @synthesize shouldEnforceHDCP=_shouldEnforceHDCP;
-@property(nonatomic) _Bool allowsExternalPlaybackError; // @synthesize allowsExternalPlaybackError=_allowsExternalPlaybackError;
-@property(nonatomic) _Bool automaticallyHidesVideoLayersForMusicVideosWhenApplicationBackgrounds; // @synthesize automaticallyHidesVideoLayersForMusicVideosWhenApplicationBackgrounds=_automaticallyHidesVideoLayersForMusicVideosWhenApplicationBackgrounds;
 @property(readonly, nonatomic) AVPictureInPictureController *pictureInPictureController; // @synthesize pictureInPictureController=_pictureInPictureController;
 @property(nonatomic) _Bool wantsPictureInPicture; // @synthesize wantsPictureInPicture=_wantsPictureInPicture;
+@property(nonatomic) _Bool automaticallyHidesVideoLayersForMusicVideosWhenApplicationBackgrounds; // @synthesize automaticallyHidesVideoLayersForMusicVideosWhenApplicationBackgrounds=_automaticallyHidesVideoLayersForMusicVideosWhenApplicationBackgrounds;
+@property(readonly, nonatomic) _Bool shouldConnectToAVPlayer; // @synthesize shouldConnectToAVPlayer=_shouldConnectToAVPlayer;
 @property(nonatomic) _Bool managesAirPlayBehaviors; // @synthesize managesAirPlayBehaviors=_managesAirPlayBehaviors;
 @property(nonatomic) _Bool useAirPlayMusicMode; // @synthesize useAirPlayMusicMode=_useAirPlayMusicMode;
-@property(retain, nonatomic, getter=_playlistManager) MPAVPlaylistManager *playlistManager; // @synthesize playlistManager=_playlistManager;
-@property(nonatomic) _Bool limitsBandwidthForCellularAccess; // @synthesize limitsBandwidthForCellularAccess=_limitsBandwidthForCellularAccess;
 @property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(nonatomic) _Bool shouldEnforceHDCP; // @synthesize shouldEnforceHDCP=_shouldEnforceHDCP;
 @property(nonatomic) double nextFadeOutDuration; // @synthesize nextFadeOutDuration=_nextFadeOutDuration;
-@property(retain, nonatomic) MPAVQueueCoordinator *queueCoordinator; // @synthesize queueCoordinator=_queueCoordinator;
+@property(retain, nonatomic) id <MPAVQueueController> queueController; // @synthesize queueController=_queueController;
+@property(retain, nonatomic) id <MPAVQueueCoordinating> queueCoordinator; // @synthesize queueCoordinator=_queueCoordinator;
 @property(retain, nonatomic) MPQueuePlayer *queuePlayer; // @synthesize queuePlayer=_queuePlayer;
+@property(nonatomic) long long actionAfterQueueLoadOverride; // @synthesize actionAfterQueueLoadOverride=_actionAfterQueueLoadOverride;
 @property(retain, nonatomic) MPAVPolicyEnforcer *policyEnforcer; // @synthesize policyEnforcer=_policyEnforcer;
 @property(nonatomic) long long state; // @synthesize state=_state;
 @property(nonatomic) long long playbackMode; // @synthesize playbackMode=_playbackMode;
 @property(readonly, nonatomic) unsigned long long bufferingState; // @synthesize bufferingState=_bufferingState;
 @property(readonly, nonatomic) _Bool muted; // @synthesize muted=_muted;
 @property(nonatomic) _Bool shouldResetQueueWhenReachingEnd; // @synthesize shouldResetQueueWhenReachingEnd=_shouldResetQueueWhenReachingEnd;
+@property(readonly, nonatomic) long long lastDirection; // @synthesize lastDirection=_lastDirection;
 @property(nonatomic) long long displayOverridePlaybackState; // @synthesize displayOverridePlaybackState=_displayOverridePlaybackState;
 - (void).cxx_destruct;
 - (void)removeTimeObserver:(id)arg1;
 - (id)addPeriodicTimeObserverForInterval:(double)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)_verifyShouldContinuePlayback;
+- (void)_updateDirectionForChangeDelta:(long long)arg1;
 - (void)_updateCurrentItemDurationSnapshotWithPlayerTime:(CDStruct_1b6d18a9)arg1;
 - (void)_resumePlaybackIfNecessary;
 - (void)_pausePlaybackIfNecessaryIgnoringVideoLayerAttachment:(_Bool)arg1;
 - (void)_pausePlaybackIfNecessary;
 - (void)_handlePlaybackErrorResolutionType:(long long)arg1 forItem:(id)arg2 playbackError:(id)arg3 resolutionError:(id)arg4;
 - (_Bool)_canPlayItem:(id)arg1;
+- (void)handlePlaybackErrorWithUserInfo:(id)arg1;
+- (void)playbackHasStartedForItem:(id)arg1;
 - (void)_playbackFailedWithError:(id)arg1 canResolve:(_Bool)arg2;
 - (id)_pickedRoute;
 - (void)_resumeTickTimer;
@@ -181,7 +181,6 @@
 - (void)_updateTypeForItem:(id)arg1;
 - (void)_updateScanningRate;
 - (void)_updateHasProtectedContentForItem:(id)arg1;
-- (void)_updatePlaybackModeForItem:(id)arg1;
 - (void)setRateForScanning:(float)arg1;
 - (void)_updateProgress:(struct __CFRunLoopTimer *)arg1;
 - (void)_updateCurrentItemHasFinishedDownloading;
@@ -216,26 +215,22 @@
 - (id)embeddedDataTimesForItem:(id)arg1;
 - (void)_prepareToPlayItem:(id)arg1;
 - (void)_endSeekAndChangeRate:(_Bool)arg1;
-- (_Bool)_isVideosOrTVApp;
-- (void)_unregisterForPlaylistManager:(id)arg1;
+- (void)setPlaylistManager:(id)arg1;
 - (void)_unregisterForPlayer:(id)arg1;
-- (void)_registerForPlaylistManager:(id)arg1;
 - (_Bool)_shouldProvideAudiblePlaybackPerformance;
 - (double)_currentTimeWithPreloadedPlayerTime:(_Bool)arg1 value:(CDStruct_1b6d18a9)arg2;
-- (void)_configureAVPlaylistManager;
 - (void)_clearVideoLayer:(_Bool)arg1;
 - (_Bool)_changeChapterTimeMarkerIndexBy:(long long)arg1;
 - (void)_cancelStallTimer;
 @property(readonly, nonatomic) MPQueueFeeder *feeder;
-- (void)_applyCellularAccessSettings;
 - (void)_applyAirPlayMusicModeForItem:(id)arg1 shouldIgnorePlaybackQueueTransactions:(_Bool)arg2;
 - (void)_applyAirPlayMusicMode;
 - (void)_verifyDisplayProtection;
 - (void)_delayedUpdateTimeMarker;
 - (void)_delayedUpdateScanningRate;
 - (void)_delayedPlaybackIndexChange;
-- (void)notifyAVPlayerItemDidChange:(id)arg1;
-- (void)notifyAVPlayerItemWillChange:(id)arg1;
+- (void)_itemPlayerItemDidChangeNotification:(id)arg1;
+- (void)_itemPlayerItemWillChangeNotification:(id)arg1;
 - (void)_audioSessionMediaServicesWereResetNotification:(id)arg1;
 - (void)_applicationWillEnterForegroundNotification:(id)arg1;
 - (void)_applicationDidEnterBackgroundNotification:(id)arg1;
@@ -248,10 +243,7 @@
 - (void)_canPlayFastReverseDidChange:(id)arg1;
 - (void)_canPlayFastForwardDidChange:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_delegateAuthorizationForItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_contentsChanged;
-- (void)_networkChangedNotification:(id)arg1;
-- (void)_streamLimitExceeded:(long long)arg1;
 - (void)_airPlayFailedUnsupportedVideoFormatForDeviceWithError:(id)arg1;
 - (void)airPlayFailedRentalDownloadRequired;
 - (void)airPlayVideoEnded;
@@ -280,8 +272,8 @@
 - (id)_playerFailedToQueueNotification:(id)arg1;
 - (void)_itemDidChange:(id)arg1;
 - (void)_itemSecureKeyDeliverDidFinishNotification:(id)arg1;
-- (void)_itemPlaybackModeAvailableNotification:(id)arg1;
 - (void)_itemTypeAvailableNotification:(id)arg1;
+- (void)_itemMediaSelectionCriteriaDidLoadNotification:(id)arg1;
 - (void)_itemTimeMarkersAvailableNotification:(id)arg1;
 - (void)_updateStateForPlaybackPrevention;
 - (void)_itemShouldPreventPlaybackDidChangeNotification:(id)arg1;
@@ -292,13 +284,14 @@
 - (void)_firstVideoFrameDisplayed:(id)arg1;
 - (void)_postMPAVControllerItemReadyToPlayNotificationWithItem:(id)arg1;
 - (void)_postMPAVControllerSizeDidChangeNotificationWithItem:(id)arg1;
+- (void)queueController:(id)arg1 didChangeShuffleType:(long long)arg2;
+- (void)queueController:(id)arg1 didChangeRepeatType:(long long)arg2;
+- (void)queueController:(id)arg1 didChangeContentsWithReplacementPlaybackContext:(id)arg2;
+- (void)queueController:(id)arg1 failedToLoadItem:(id)arg2;
+- (void)queueControllerDidChangeContents:(id)arg1;
 - (void)routingControllerDidPauseFromActiveRouteChange:(id)arg1;
 - (void)routingControllerExternalScreenTypeDidChange:(id)arg1;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
-- (void)playlistManager:(id)arg1 queueCoordinator:(id)arg2 willInsertItem:(id)arg3 afterItem:(id)arg4;
-- (void)playlistManager:(id)arg1 didFailLoadingAllItemsForQueueFeeder:(id)arg2;
-- (void)playlistManager:(id)arg1 didTransitionToPlaylistFeeder:(id)arg2;
-- (void)environmentMonitorDidChangeNetworkType:(id)arg1;
 - (void)skipToSeekableEnd;
 - (void)skipToSeekableStart;
 - (_Bool)canSkipToSeekableEnd;
@@ -320,7 +313,7 @@
 - (void)reloadWithPlaybackContext:(id)arg1;
 @property(readonly, nonatomic) MPVideoView *videoView;
 @property(readonly, nonatomic) AVPlayerLayer *videoLayer;
-@property(nonatomic, getter=destinationIsTVOut, setter=setDestinationIsTVOut:) _Bool destinationIsTVOut;
+@property(nonatomic, setter=setDestinationIsTVOut:) _Bool destinationIsTVOut;
 - (void)_setLastSetTime:(double)arg1;
 - (void)setUsesAudioOnlyModeForExternalPlayback:(_Bool)arg1 shouldIgnorePlaybackQueueTransactions:(_Bool)arg2;
 - (void)setUsesAudioOnlyModeForExternalPlayback:(_Bool)arg1;
@@ -335,8 +328,6 @@
 - (void)endUsingVideoLayer;
 - (void)beginUsingVideoLayer;
 @property(readonly, nonatomic) MPQueuePlayer *avPlayer;
-- (void)applyShuffleSettings;
-- (void)applyRepeatSettings;
 - (void)enableAutoplayForCurrentItem;
 - (void)disableAutoplayForCurrentItem;
 @property(readonly, nonatomic, getter=isCurrentItemReady) _Bool currentItemReady;
@@ -345,8 +336,6 @@
 @property(nonatomic) _Bool stopAtEnd;
 @property(nonatomic) float volume;
 @property(readonly, nonatomic) _Bool hasVolumeControl;
-@property(nonatomic) long long shuffleType;
-@property(nonatomic) long long repeatType;
 - (_Bool)_setRate:(float)arg1 forScanning:(_Bool)arg2 withItem:(id)arg3;
 - (_Bool)_setRate:(float)arg1 forScanning:(_Bool)arg2;
 - (_Bool)setRate:(float)arg1;
@@ -361,16 +350,11 @@
 @property(readonly, nonatomic, getter=isExternalPlaybackActive) _Bool externalPlaybackActive;
 - (long long)_seeklessStateForState:(long long)arg1;
 - (_Bool)_showsPlayingWhenInState:(long long)arg1;
-@property(readonly, nonatomic) MPMediaQuery *currentMediaQuery;
-@property(readonly, nonatomic) MPMediaItem *currentMediaItem;
 @property(readonly, nonatomic) MPAVItem *currentItem;
 @property(nonatomic) _Bool autoPlayWhenLikelyToKeepUp;
 - (void)setClient:(id)arg1 wantsToAllowExternalPlayback:(_Bool)arg2 shouldIgnorePlaybackQueueTransactions:(_Bool)arg3;
 - (void)setClient:(id)arg1 wantsToAllowExternalPlayback:(_Bool)arg2;
 - (_Bool)allowsExternalPlayback;
-@property(readonly, nonatomic) long long activeShuffleType;
-@property(readonly, nonatomic) long long activeRepeatType;
-- (void)tickTimerFired;
 - (_Bool)isTickTimerEnabled;
 - (void)endTickTimer;
 - (void)beginTickTimerWithInterval:(double)arg1;
@@ -378,7 +362,6 @@
 - (void)togglePlaybackWithOptions:(unsigned long long)arg1;
 - (void)togglePlayback;
 @property(nonatomic) double currentTime;
-- (void)playItemAtIndex:(unsigned long long)arg1 withOptions:(unsigned long long)arg2;
 - (void)_playWithOptions:(unsigned long long)arg1 allowsEnablingAutoPlay:(_Bool)arg2;
 - (void)playWithOptions:(unsigned long long)arg1;
 - (void)play;
@@ -389,18 +372,15 @@
 - (double)currentTimeForBookmarking;
 - (_Bool)isSeekingOrScrubbing;
 - (void)endSeek;
-- (_Bool)changePlaybackIndexBy:(long long)arg1 deltaType:(long long)arg2 ignoreElapsedTime:(_Bool)arg3 allowSkippingUnskippableContent:(_Bool)arg4 error:(id *)arg5;
-- (void)changePlaybackIndexBy:(long long)arg1 deltaType:(long long)arg2 ignoreElapsedTime:(_Bool)arg3 allowSkippingUnskippableContent:(_Bool)arg4;
-- (void)changePlaybackIndexBy:(long long)arg1 deltaType:(long long)arg2 ignoreElapsedTime:(_Bool)arg3;
-- (void)changePlaybackIndexBy:(long long)arg1 deltaType:(long long)arg2;
-- (void)changePlaybackIndexBy:(long long)arg1;
-- (void)setPlaybackIndex:(long long)arg1;
+- (_Bool)changePlaybackIndexBy:(long long)arg1 deltaType:(long long)arg2 ignoreElapsedTime:(_Bool)arg3 error:(id *)arg4;
+- (_Bool)changePlaybackIndexBy:(long long)arg1 deltaType:(long long)arg2 ignoreElapsedTime:(_Bool)arg3;
+- (_Bool)changePlaybackIndexBy:(long long)arg1 deltaType:(long long)arg2;
 - (void)_updateLastSetTimeForCurrentItemIfNeeded;
-- (void)setPlaybackIndex:(long long)arg1 selectionDirection:(long long)arg2;
 - (_Bool)_hasValidPlayerTime;
 - (void)_clearLastSetTimeIfPlayerTimeIsValid;
 - (void)beginSeek:(int)arg1;
 - (void)dealloc;
+- (id)initWithOptions:(unsigned long long)arg1;
 - (id)init;
 
 // Remaining properties

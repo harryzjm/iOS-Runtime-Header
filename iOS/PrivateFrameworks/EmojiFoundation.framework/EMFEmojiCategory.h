@@ -13,19 +13,20 @@
     NSString *_identifier;
 }
 
++ (id)NewlyAddedEmoji;
 + (id)ProfessionEmoji;
 + (id)GenderEmoji;
 + (id)SkinToneEmoji;
 + (id)NoneVariantEmoji;
 + (id)DingbatsVariantEmoji;
++ (_Bool)_isNewlyAddedEmoji:(id)arg1;
++ (_Bool)_isFlagEmoji:(id)arg1;
 + (_Bool)_isProfessionEmoji:(id)arg1;
 + (_Bool)_isGenderEmoji:(id)arg1;
 + (_Bool)_isSkinToneEmoji:(id)arg1;
 + (_Bool)_isNoneVariantEmoji:(id)arg1;
 + (_Bool)_isDingbatsVariantEmoji:(id)arg1;
-+ (id)localizedSkinToneEmojiDescriptionForLocale:(id)arg1;
 + (id)localizedSkinToneEmojiDescription;
-+ (id)localizedRecentsDescriptionForLocale:(id)arg1;
 + (id)localizedRecentsDescription;
 + (id)computeEmojiFlagsSortedByLanguage;
 + (id)insertionFlagsForCountryCodes:(id)arg1 inSortedCountryCodes:(id)arg2;
@@ -37,6 +38,7 @@
 + (id)categoryWithIdentifier:(id)arg1;
 + (id)categoryIdentifierList;
 + (id)flagEmojiCountryCodesCommon;
++ (id)FlagsEmoji;
 + (id)SymbolsEmoji;
 + (id)ObjectsEmoji;
 + (id)TravelAndPlacesEmoji;
@@ -49,8 +51,6 @@
 @property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
 - (id)emojiTokensForLocaleData:(id)arg1;
-- (id)shortLocalizedNameForLocale:(id)arg1;
-- (id)localizedNameForLocale:(id)arg1;
 @property(readonly, nonatomic) NSString *shortLocalizedName;
 @property(readonly, nonatomic) NSString *localizedName;
 - (void)dealloc;

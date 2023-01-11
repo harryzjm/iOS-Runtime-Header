@@ -4,15 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <MessageUI/MFComposeRecipientTextView.h>
+#import <ContactsAutocompleteUI/CNComposeRecipientTextView.h>
 
-@interface CKComposeRecipientView : MFComposeRecipientTextView
+@protocol CKComposeRecipientViewDelegate;
+
+@interface CKComposeRecipientView : CNComposeRecipientTextView
 {
+    id <CKComposeRecipientViewDelegate> layoutDelegate;
 }
 
+@property(nonatomic) __weak id <CKComposeRecipientViewDelegate> layoutDelegate; // @synthesize layoutDelegate;
+- (void).cxx_destruct;
+- (struct UIEdgeInsets)layoutMargins;
+- (struct UIEdgeInsets)safeAreaInsets;
 - (void)atomTextViewDidBecomeFirstResponder:(id)arg1;
-- (id)_baseAttributes;
 - (void)reset;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

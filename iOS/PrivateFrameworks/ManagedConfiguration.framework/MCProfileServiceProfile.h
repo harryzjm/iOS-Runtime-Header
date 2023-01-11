@@ -10,7 +10,6 @@
 {
     NSString *_URLString;
     NSArray *_deviceAttributes;
-    NSArray *_supportedDeviceIdentities;
     id _challenge;
     NSData *_enrollmentIdentityPersistentID;
     _Bool _confirmInstallation;
@@ -22,7 +21,6 @@
 @property(readonly, nonatomic) _Bool confirmInstallation; // @synthesize confirmInstallation=_confirmInstallation;
 @property(retain, nonatomic) NSData *enrollmentIdentityPersistentID; // @synthesize enrollmentIdentityPersistentID=_enrollmentIdentityPersistentID;
 @property(readonly, retain, nonatomic) id challenge; // @synthesize challenge=_challenge;
-@property(readonly, retain, nonatomic) NSArray *supportedDeviceIdentities; // @synthesize supportedDeviceIdentities=_supportedDeviceIdentities;
 @property(readonly, retain, nonatomic) NSArray *deviceAttributes; // @synthesize deviceAttributes=_deviceAttributes;
 @property(retain, nonatomic) NSString *URLString; // @synthesize URLString=_URLString;
 - (void).cxx_destruct;
@@ -32,7 +30,7 @@
 - (id)payloads;
 - (id)localizedManagedPayloadSummaryByType;
 - (id)localizedPayloadSummaryByType;
-- (id)initWithDictionary:(id)arg1 allowEmptyPayload:(_Bool)arg2 outError:(id *)arg3;
+- (id)initWithDictionary:(id)arg1 signerCerts:(id)arg2 allowEmptyPayload:(_Bool)arg3 outError:(id *)arg4;
 - (id)_unsupportedValueErrorWithFieldName:(id)arg1 value:(id)arg2;
 - (id)_badDataTypeErrorWithFieldName:(id)arg1;
 

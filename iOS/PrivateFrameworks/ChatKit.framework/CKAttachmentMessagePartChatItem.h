@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKMediaObject, NSString, UIItemProvider;
+@class CKMediaObject, NSString, UIItemProvider, UITraitCollection;
 
 @interface CKAttachmentMessagePartChatItem
 {
     UIItemProvider *_dragItemProvider;
+    UITraitCollection *_transcriptTraitCollection;
     CKMediaObject *_mediaObject;
 }
 
 @property(retain, nonatomic) CKMediaObject *mediaObject; // @synthesize mediaObject=_mediaObject;
+- (id)transcriptTraitCollection;
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSString *transferGUID;
 - (id)dragItemProvider;
@@ -20,10 +22,12 @@
 - (_Bool)shouldCacheSize;
 - (unsigned long long)balloonCorners;
 - (Class)balloonViewClass;
+- (void)setTranscriptTraitCollection:(id)arg1;
 - (_Bool)stickersSnapToPoint;
 - (_Bool)canExport;
 - (_Bool)canForward;
 - (_Bool)canCopy;
+- (struct CGSize)_transcoderGeneratedSizeFittingSize:(struct CGSize)arg1 sizeExists:(_Bool *)arg2;
 - (struct CGSize)loadSizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(out struct UIEdgeInsets *)arg2;
 - (id)initWithIMChatItem:(id)arg1 maxWidth:(double)arg2;
 - (id)description;

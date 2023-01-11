@@ -26,7 +26,7 @@
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (id)accessibilityElements;
-- (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 - (void)dealloc;
 - (id)initWithAccessibilityContainer:(id)arg1;
 

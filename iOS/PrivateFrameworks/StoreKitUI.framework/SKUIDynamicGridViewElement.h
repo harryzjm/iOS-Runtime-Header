@@ -6,6 +6,7 @@
 
 @class NSMutableDictionary;
 
+__attribute__((visibility("hidden")))
 @interface SKUIDynamicGridViewElement
 {
     _Bool _hasValidTemplateDefinitionMap;

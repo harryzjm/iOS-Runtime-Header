@@ -8,16 +8,17 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit22AudioVisualizationView : UIView
 {
+    MISSING_TYPE *colorStyle;
     MISSING_TYPE *gradient;
 }
 
 + (Class)layerClass;
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)init;
 
 @end
 

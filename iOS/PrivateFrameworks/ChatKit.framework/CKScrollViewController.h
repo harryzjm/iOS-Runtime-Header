@@ -16,9 +16,11 @@
     double _bottomInsetPadding;
     double _minimumBottomInset;
     IMScheduledUpdater *_updater;
+    CDUnknownBlockType _overrideScrollBlock;
     struct CGRect _keyboardScreenFrame;
 }
 
+@property(copy, nonatomic) CDUnknownBlockType overrideScrollBlock; // @synthesize overrideScrollBlock=_overrideScrollBlock;
 @property(retain, nonatomic) IMScheduledUpdater *updater; // @synthesize updater=_updater;
 @property(nonatomic) _Bool keyboardInteractionCancelled; // @synthesize keyboardInteractionCancelled=_keyboardInteractionCancelled;
 @property(nonatomic) struct CGRect keyboardScreenFrame; // @synthesize keyboardScreenFrame=_keyboardScreenFrame;
@@ -38,6 +40,7 @@
 - (void)keyboardWillHideViaGesture;
 - (void)contentInsetDidChange;
 - (void)contentInsetWillChange:(struct UIEdgeInsets)arg1 animated:(_Bool)arg2 duration:(double)arg3;
+- (void)primeWithKeyboardFrame:(struct CGRect)arg1;
 - (_Bool)isHoldingScrollGeometryUpdates;
 - (void)endHoldingScrollGeometryUpdatesForAllKeys;
 - (void)endHoldingScrollGeometryUpdatesForKey:(id)arg1;

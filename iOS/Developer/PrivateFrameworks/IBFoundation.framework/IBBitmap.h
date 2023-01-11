@@ -21,6 +21,7 @@
     long long _bitsPerComponent;
 }
 
++ (id)bitmapWith2BitARGBPDFData:(id)arg1 pixelSize:(struct CGSize)arg2 scale:(double)arg3 colorSpace:(struct CGColorSpace *)arg4;
 + (id)bitmapWith32BitARGBPixelWidth:(long long)arg1 pixelHeight:(long long)arg2 colorSpace:(struct CGColorSpace *)arg3 byDrawingIntoContext:(CDUnknownBlockType)arg4;
 @property(readonly) unsigned int bitmapInfo; // @synthesize bitmapInfo=_bitmapInfo;
 @property(readonly) long long bitsPerComponent; // @synthesize bitsPerComponent=_bitsPerComponent;

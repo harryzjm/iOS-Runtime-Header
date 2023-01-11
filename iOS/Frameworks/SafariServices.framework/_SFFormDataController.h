@@ -8,24 +8,22 @@
 
 #import <SafariServices/_SFAuthenticationContextDelegate-Protocol.h>
 
-@class NSString, _SFAuthenticationContext, _SFAutoFillAuthenticationCache;
+@class NSString, WBSOneTimeCodeMonitor, _SFAuthenticationContext;
 
 @interface _SFFormDataController : WBUFormDataController <_SFAuthenticationContextDelegate>
 {
-    _SFAutoFillAuthenticationCache *_autoFillAuthenticationCache;
+    WBSOneTimeCodeMonitor *_oneTimeCodeMonitor;
     _SFAuthenticationContext *_autoFillAuthenticationContext;
 }
 
 + (id)sharedController;
 @property(readonly, nonatomic) _SFAuthenticationContext *autoFillAuthenticationContext; // @synthesize autoFillAuthenticationContext=_autoFillAuthenticationContext;
-@property(readonly, nonatomic) _SFAutoFillAuthenticationCache *autoFillAuthenticationCache; // @synthesize autoFillAuthenticationCache=_autoFillAuthenticationCache;
 - (void).cxx_destruct;
+- (id)oneTimeCodeMonitor;
 - (double)invalidationTimeoutIfApplicationEntersBackgroundDuringAuthenticationForContext:(id)arg1;
 - (_Bool)contextShouldAllowMultipleBiometricFailures:(id)arg1;
 - (_Bool)contextShouldAllowPasscodeFallback:(id)arg1;
 - (_Bool)contextRequiresSessionBasedAuthentication:(id)arg1;
-- (_Bool)authenticationEnabledForContext:(id)arg1;
-- (void)_authenticationContextInvalidated:(id)arg1;
 - (id)initWithAggressiveKeychainCaching:(_Bool)arg1;
 
 // Remaining properties

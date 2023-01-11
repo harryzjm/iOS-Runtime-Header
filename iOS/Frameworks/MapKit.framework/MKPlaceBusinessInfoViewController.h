@@ -20,10 +20,14 @@ __attribute__((visibility("hidden")))
 + (_Bool)mapItemHasBusinessInfoToDisplay:(id)arg1;
 - (void).cxx_destruct;
 - (id)infoCardChildUnactionableUIElements;
+- (id)infoCardChildPossibleActions;
 - (void)_updateBusinessInfo;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
+- (id)_stringForAmenity:(int)arg1;
+- (id)_imageForApplePay;
 @property(retain, nonatomic) MKMapItem *mapItem;
 - (void)viewDidLoad;
+- (_Bool)_canShowWhileLocked;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

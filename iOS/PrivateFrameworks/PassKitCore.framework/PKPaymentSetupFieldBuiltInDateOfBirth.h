@@ -4,15 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate;
-
 @interface PKPaymentSetupFieldBuiltInDateOfBirth
 {
-    NSDate *_defaultDate;
 }
 
-- (void).cxx_destruct;
-- (id)defaultDate;
 - (_Bool)isBuiltIn;
 - (id)initWithIdentifier:(id)arg1 type:(unsigned long long)arg2;
 

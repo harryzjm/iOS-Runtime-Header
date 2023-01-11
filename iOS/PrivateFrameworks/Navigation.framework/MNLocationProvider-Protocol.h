@@ -11,6 +11,7 @@
 
 @protocol MNLocationProvider <NSObject>
 @property(readonly, nonatomic) double timeScale;
+@property(readonly, nonatomic) unsigned long long traceVersion;
 @property(readonly, nonatomic) _Bool isTracePlayer;
 @property(readonly, nonatomic) _Bool isSimulation;
 @property(readonly, nonatomic) _Bool usesCLMapCorrection;
@@ -37,5 +38,9 @@
 - (void)startUpdatingHeading;
 - (void)stopUpdatingLocation;
 - (void)startUpdatingLocation;
+
+@optional
+- (id)initWithEffectiveBundleIdentifier:(NSString *)arg1;
+- (id)initWithEffectiveBundle:(NSBundle *)arg1;
 @end
 

@@ -33,6 +33,7 @@
 @property(retain, nonatomic) id <FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
 - (void).cxx_destruct;
 - (id)_establishStreamOfTags;
+- (id)_localIdentifier;
 - (void)_performSearchQuery:(CDUnknownBlockType)arg1;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;

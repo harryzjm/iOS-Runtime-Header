@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)updateForEndpoint:(id)arg1 route:(id)arg2 inferLocalizedModelName:(_Bool)arg3;
+- (void)updateForEndpoint:(id)arg1 routeItem:(id)arg2 inferLocalizedModelName:(_Bool)arg3;
 - (id)accessibilityValue;
 - (id)_accessibilityDescriptionForRoute:(id)arg1;
 - (id)accessibilityLabel;

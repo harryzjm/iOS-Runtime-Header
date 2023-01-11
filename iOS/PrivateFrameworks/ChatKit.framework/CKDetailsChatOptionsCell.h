@@ -8,6 +8,7 @@
 
 @class NSString, UISwitch;
 
+__attribute__((visibility("hidden")))
 @interface CKDetailsChatOptionsCell <CKDetailsCell>
 {
     UISwitch *_controlSwitch;

@@ -14,6 +14,7 @@
 {
     NSData *_actualExpressPassInformation;
     NSString *_actualUniqueID;
+    NSMutableArray *_currentExpressPassesInformations;
     NSMutableArray *_currentUniqueIDs;
     _Bool _cancelled;
     _Bool _needsUnlock;
@@ -27,7 +28,9 @@
     } _has;
 }
 
++ (Class)currentExpressPassesInformationType;
 + (Class)currentUniqueIDsType;
+@property(retain, nonatomic) NSMutableArray *currentExpressPassesInformations; // @synthesize currentExpressPassesInformations=_currentExpressPassesInformations;
 @property(retain, nonatomic) NSData *actualExpressPassInformation; // @synthesize actualExpressPassInformation=_actualExpressPassInformation;
 @property(retain, nonatomic) NSMutableArray *currentUniqueIDs; // @synthesize currentUniqueIDs=_currentUniqueIDs;
 @property(retain, nonatomic) NSString *actualUniqueID; // @synthesize actualUniqueID=_actualUniqueID;
@@ -45,6 +48,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+- (id)currentExpressPassesInformationAtIndex:(unsigned long long)arg1;
+- (unsigned long long)currentExpressPassesInformationsCount;
+- (void)addCurrentExpressPassesInformation:(id)arg1;
+- (void)clearCurrentExpressPassesInformations;
 @property(readonly, nonatomic) _Bool hasActualExpressPassInformation;
 - (id)currentUniqueIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)currentUniqueIDsCount;

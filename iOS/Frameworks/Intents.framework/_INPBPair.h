@@ -18,6 +18,7 @@
         unsigned int repeated:1;
     } _has;
     _Bool _repeated;
+    _Bool __encodeLegacyGloryData;
     NSString *_key;
     NSArray *_pairCurrencyAmountValues;
     NSArray *_pairCustomObjects;
@@ -34,6 +35,7 @@
     NSArray *_pairUrlValues;
 }
 
++ (_Bool)supportsSecureCoding;
 + (Class)pairUrlValueType;
 + (Class)pairTemperatureValueType;
 + (Class)pairStringValueType;
@@ -47,6 +49,7 @@
 + (Class)pairDataStringType;
 + (Class)pairCustomObjectType;
 + (Class)pairCurrencyAmountValueType;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(nonatomic) _Bool repeated; // @synthesize repeated=_repeated;
 @property(copy, nonatomic) NSArray *pairUrlValues; // @synthesize pairUrlValues=_pairUrlValues;
 @property(copy, nonatomic) NSArray *pairTemperatureValues; // @synthesize pairTemperatureValues=_pairTemperatureValues;
@@ -67,6 +70,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(nonatomic) _Bool hasRepeated;

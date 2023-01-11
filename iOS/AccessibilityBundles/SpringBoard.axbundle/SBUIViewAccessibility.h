@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_isTransparentFocusRegion;
 - (id)actionsForFloatingAppNubView;
 - (id)actionsForPinnedAppNubView;
 - (id)actionsForSideAppDivider;
@@ -24,6 +25,7 @@
 - (_Bool)_accessibilityUIViewCanPerformEscapeAction;
 - (_Bool)accessibilityActivate;
 - (id)accessibilityHint;
+- (_Bool)accessibilityScroll:(long long)arg1;
 
 @end
 

@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <NanoTimeKitCompanion/CLKMonochromeFilterProvider-Protocol.h>
 #import <NanoTimeKitCompanion/NTKRichComplicationBezelViewDelegate-Protocol.h>
 
-@class NSString, NTKWhistlerAnalogColorPalette, NTKWhistlerAnalogDialView, NTKWhistlerAnalogFaceViewComplicationFactory;
+@class NSString, NTKCircularAnalogDialView, NTKWhistlerAnalogColorPalette, NTKWhistlerAnalogFaceViewComplicationFactory;
 
-@interface NTKWhistlerAnalogFaceView <NTKRichComplicationBezelViewDelegate>
+@interface NTKWhistlerAnalogFaceView <NTKRichComplicationBezelViewDelegate, CLKMonochromeFilterProvider>
 {
     NTKWhistlerAnalogFaceViewComplicationFactory *_faceViewComplicationFactory;
-    NTKWhistlerAnalogDialView *_dialView;
+    NTKCircularAnalogDialView *_dialView;
     NTKWhistlerAnalogColorPalette *_colorPalette;
     double _bezelLabelCurvedRadius;
     unsigned long long _color;
@@ -19,21 +20,24 @@
 }
 
 + (id)_swatchColorForColorOption:(id)arg1 forDevice:(id)arg2;
++ (double)curvedRadiusForDevice:(id)arg1 dark:(_Bool)arg2;
 @property(nonatomic) unsigned long long dateStyle; // @synthesize dateStyle=_dateStyle;
 @property(nonatomic) unsigned long long color; // @synthesize color=_color;
 - (void).cxx_destruct;
 - (void)_setupDialView;
+- (void)_reorderSwitcherSnapshotView;
+- (void)bezelViewDidEndInteractive:(id)arg1;
+- (void)bezelViewDidBecomeInteractive:(id)arg1;
 - (void)didUpdateBezelTextForRichComplicationBezelView:(id)arg1;
-- (void)complicationDisplayWrapperView:(id)arg1 startCustomDataAnimationFromEarlierView:(id)arg2 laterView:(id)arg3 isForward:(_Bool)arg4 completionBlock:(CDUnknownBlockType)arg5;
-- (_Bool)complicationDisplayWrapperView:(id)arg1 shouldStartCustomDataAnimationFromEarlierView:(id)arg2 laterView:(id)arg3 isForward:(_Bool)arg4;
+- (void)complicationDisplayWrapperView:(id)arg1 updateCustomDataAnimationFromEarlierView:(id)arg2 laterView:(id)arg3 isForward:(_Bool)arg4 animationType:(unsigned long long)arg5 animationDuration:(double)arg6 animationFraction:(float)arg7;
 - (void)_updateDialTicksForBezelText;
 - (double)_bezelLabelCurvedRadiusForColor:(unsigned long long)arg1;
 - (double)_bezelCircularBackgroundFromComplication:(id)arg1;
+- (id)_platterTextColorForEditMode:(long long)arg1 color:(unsigned long long)arg2;
 - (id)_bezelTextColorForEditMode:(long long)arg1 color:(unsigned long long)arg2;
 - (long long)_editMode;
 - (long long)_richComplicationViewThemeFromFaceColor:(unsigned long long)arg1;
 - (double)_dialTextBackgroundAlphaForEditMode:(long long)arg1;
-- (double)_complicationAlphaForEditMode:(long long)arg1;
 - (double)_contentScaleForEditMode:(long long)arg1;
 - (double)_contentAlphaForEditMode:(long long)arg1;
 - (double)_handAlphaForEditMode:(long long)arg1;
@@ -45,8 +49,12 @@
 - (void)applyToForegroundZoomFraction:(double)arg1 faceScale:(double)arg2;
 - (void)_cleanupAfterZoom;
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
+- (_Bool)viewShouldIgnoreTwoPieceImage:(id)arg1;
+- (id)colorForView:(id)arg1 accented:(_Bool)arg2;
+- (id)filterForView:(id)arg1 style:(long long)arg2 fraction:(double)arg3;
+- (id)filterForView:(id)arg1 style:(long long)arg2;
 - (id)_customEditOptionContainerViewForSlot:(id)arg1;
-- (id)_curvedPickerMaskForSlot:(id)arg1;
+- (id)_pickerMaskForSlot:(id)arg1;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
 - (void)_applyExitingEditingWithTransitionFraction:(double)arg1;
 - (void)_applyEnteringEditingWithTransitionFraction:(double)arg1;
@@ -71,8 +79,7 @@
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_loadLayoutRules;
-- (void)_prepareTimeViewForReuse:(id)arg1;
-- (void)_configureReusableTimeView:(id)arg1;
+- (void)_configureTimeView:(id)arg1;
 - (void)_unloadSnapshotContentViews;
 - (void)_loadSnapshotContentViews;
 - (_Bool)_supportsTimeScrubbing;

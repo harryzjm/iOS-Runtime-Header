@@ -25,7 +25,9 @@
 - (id)succinctDescriptionBuilder;
 - (id)succinctDescription;
 @property(readonly, copy) NSString *description;
+- (_Bool)_canShowWhileLocked;
 - (void)viewDidDisappear:(_Bool)arg1;
+- (void)setHiddenOnClonedDisplay:(_Bool)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

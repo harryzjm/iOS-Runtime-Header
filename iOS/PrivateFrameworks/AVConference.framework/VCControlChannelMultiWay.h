@@ -5,17 +5,17 @@
 //
 
 #import <AVConference/VCControlChannelTransactionDelegate-Protocol.h>
-#import <AVConference/VCControlChannelencryptionDelegate-Protocol.h>
 
 @class NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCControlChannelMultiWay <VCControlChannelencryptionDelegate, VCControlChannelTransactionDelegate>
+@interface VCControlChannelMultiWay <VCControlChannelTransactionDelegate>
 {
     unsigned int _transportSessionID;
     int _vfdMessage;
     int _vfdCancel;
+    _Bool _isRunning;
     struct _opaque_pthread_t *_pidReceiveProc;
     NSMutableDictionary *_dialogs;
     NSMutableArray *_activeParticipants;
@@ -23,9 +23,11 @@ __attribute__((visibility("hidden")))
     _Bool _isEncryptionEnabled;
     NSMutableDictionary *_cryptors;
     void *_currentSendMKI;
+    void *_currentReceiveMKI;
     NSObject<OS_dispatch_queue> *_sequentialKeyMaterialQueue;
 }
 
+@property(readonly) _Bool isRunning; // @synthesize isRunning=_isRunning;
 @property(readonly) _Bool isEncryptionEnabled; // @synthesize isEncryptionEnabled=_isEncryptionEnabled;
 @property(readonly, nonatomic) NSMutableDictionary *dialogs; // @synthesize dialogs=_dialogs;
 @property(nonatomic) int vfdCancel; // @synthesize vfdCancel=_vfdCancel;
@@ -40,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isParticipantActive:(unsigned long long)arg1;
 - (void)addToReceivedStats:(int)arg1;
 - (void)addToSentStats:(int)arg1;
+- (void)setEncryptionWithEncryptionMaterial:(CDStruct_791df8ea *)arg1;
 - (void)addNewKeyMaterial:(id)arg1;
 - (void)scheduleAfter:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
 - (void)removeAllActiveParticipants;
@@ -50,17 +53,21 @@ __attribute__((visibility("hidden")))
 - (void)sendReliableMessage:(id)arg1 participantID:(unsigned long long)arg2;
 - (_Bool)sendReliableMessageAndWait:(id)arg1 participantID:(unsigned long long)arg2;
 - (void)messageReceived:(id)arg1 participantInfo:(CDStruct_94aa5fb4 *)arg2;
-- (id)processEncryptedMessage:(id)arg1 sequenceNumber:(id)arg2 MKIData:(id)arg3 participantID:(id)arg4;
+- (id)processEncryptedPayload:(id)arg1 isData:(_Bool)arg2 sequenceNumber:(id)arg3 MKIData:(id)arg4 participantID:(id)arg5;
 - (_Bool)decryptMessageWithMKI:(void *)arg1 message:(id)arg2 buffer:(char *)arg3 size:(unsigned int)arg4 sequenceNumber:(unsigned short)arg5;
 - (void)flushActiveMessages;
+- (void)stop;
+- (void)start;
 - (void)dealloc;
 - (id)initWithTransportSessionID:(unsigned int)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2;
+- (id)initWithTransportSessionID:(unsigned int)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2 mode:(int)arg3;
 - (_Bool)decryptWithMKI:(void *)arg1 data:(char *)arg2 size:(int)arg3 sequenceNumber:(unsigned short)arg4;
 - (_Bool)encryptData:(char *)arg1 size:(int)arg2 sequenceNumber:(unsigned short)arg3;
 - (int)updateEncryption:(CDStruct_5b6da142 *)arg1 derivedSSRC:(unsigned int)arg2;
 - (int)getKeyDerivationCryptoSet:(CDStruct_5b6da142 *)arg1 withKeyMaterial:(id)arg2 derivedSSRC:(unsigned int *)arg3;
 - (void)setCurrentSendMKIWithKeyMaterial:(id)arg1;
 - (void)updateEncryptionWithKeyMaterial:(id)arg1;
+- (void)updateEncryptionWithEncryptionMaterial:(CDStruct_791df8ea *)arg1;
 - (void)initializeSRTPInfo:(struct tagSRTPINFO *)arg1;
 - (void)finalizeEncryption;
 - (void)initializeEncryption;

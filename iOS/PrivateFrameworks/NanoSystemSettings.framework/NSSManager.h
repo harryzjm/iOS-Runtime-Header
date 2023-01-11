@@ -38,6 +38,11 @@
 - (void)obliterateGizmo:(CDUnknownBlockType)arg1;
 - (void)setDeviceName:(id)arg1;
 - (void)getAboutInfo:(CDUnknownBlockType)arg1;
+- (void)deleteDiagnosticLogFile:(id)arg1 withResult:(CDUnknownBlockType)arg2;
+- (void)getDiagnosticLogsInfo:(CDUnknownBlockType)arg1;
+- (_Bool)fileTransferInProgress:(id)arg1;
+- (void)cancelFileTransfersInProgress;
+- (void)getDiagnosticLogFileFromGizmo:(id)arg1 withResults:(CDUnknownBlockType)arg2;
 - (void)purgeUsageBundle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getUsage:(CDUnknownBlockType)arg1;
 - (void)enableAirplaneMode:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -5,12 +5,13 @@
 //
 
 #import <UIKitCore/UIActionSheetPresentationControllerDelegate-Protocol.h>
+#import <UIKitCore/_UIRemoteViewControllerContaining-Protocol.h>
 #import <UIKitCore/_UISharingPublicController-Protocol.h>
 
-@class CKContainer, CKShare, NSDictionary, NSObject, NSString, UIViewController, _UIResilientRemoteViewContainerViewController, _UIShareInvitationRemoteViewController;
+@class CKContainer, CKContainerSetupInfo, CKShare, NSDictionary, NSObject, NSString, UIViewController, _UIRemoteViewController, _UIResilientRemoteViewContainerViewController, _UIShareInvitationRemoteViewController;
 @protocol OS_dispatch_semaphore, UICloudSharingControllerDelegate, _UICloudSharingControllerDelegate_Internal;
 
-@interface UICloudSharingController <_UISharingPublicController, UIActionSheetPresentationControllerDelegate>
+@interface UICloudSharingController <_UISharingPublicController, UIActionSheetPresentationControllerDelegate, _UIRemoteViewControllerContaining>
 {
     _Bool _isDelayingPresentation;
     NSObject<OS_dispatch_semaphore> *_viewServiceValidSema;
@@ -23,6 +24,7 @@
     _UIResilientRemoteViewContainerViewController *_childViewController;
     _UIShareInvitationRemoteViewController *_remoteViewController;
     CKContainer *_container;
+    CKContainerSetupInfo *_containerSetupInfo;
     NSDictionary *_participantDetails;
     CDUnknownBlockType _preparationHandler;
     UIViewController *_originalPresentingViewController;
@@ -41,6 +43,7 @@
 @property(nonatomic, getter=_originalPresentingViewController, setter=_setOriginalPresentingViewController:) __weak UIViewController *originalPresentingViewController; // @synthesize originalPresentingViewController=_originalPresentingViewController;
 @property(copy, nonatomic) CDUnknownBlockType preparationHandler; // @synthesize preparationHandler=_preparationHandler;
 @property(retain, nonatomic, getter=_participantDetails, setter=_setParticipantDetails:) NSDictionary *participantDetails; // @synthesize participantDetails=_participantDetails;
+@property(retain, nonatomic) CKContainerSetupInfo *containerSetupInfo; // @synthesize containerSetupInfo=_containerSetupInfo;
 @property(retain, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property(readonly, nonatomic, getter=_remoteViewController) _UIShareInvitationRemoteViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
 @property(retain, nonatomic, getter=_childViewController, setter=_setChildViewController:) _UIResilientRemoteViewContainerViewController *childViewController; // @synthesize childViewController=_childViewController;
@@ -48,6 +51,7 @@
 @property(retain, nonatomic) CKShare *share; // @synthesize share=_share;
 @property(nonatomic) __weak id <UICloudSharingControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 - (void)_requestSavedShareWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performHeaderActionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performAuxiliaryActionWithCompletion:(CDUnknownBlockType)arg1;

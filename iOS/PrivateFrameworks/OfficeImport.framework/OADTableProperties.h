@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)defaultProperties;
+- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (_Bool)hasEffects;
 - (void)setEffects:(id)arg1;
@@ -45,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)rightToLeft;
 - (void)setStyle:(id)arg1;
 - (id)style;
-- (void)dealloc;
 - (id)initWithDefaults;
 
 // Remaining properties

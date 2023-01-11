@@ -6,6 +6,7 @@
 
 @class NSArray, NSString, SKUIActivityIndicatorViewElement, SKUINavigationBarViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUIChartsTemplateViewElement
 {
     NSString *_type;

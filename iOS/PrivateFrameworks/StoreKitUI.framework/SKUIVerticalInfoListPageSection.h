@@ -8,6 +8,7 @@
 
 @class NSMutableArray, NSString, SKUIInfoListViewElement, SKUIViewElementLayoutContext;
 
+__attribute__((visibility("hidden")))
 @interface SKUIVerticalInfoListPageSection <SKUIArtworkRequestDelegate>
 {
     SKUIViewElementLayoutContext *_cellLayoutContext;

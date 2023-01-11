@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (_Bool)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
+- (_Bool)_iosAccessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (_Bool)_accessibilityFinishSetupIfAppropriate;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)accessibilityLabel;

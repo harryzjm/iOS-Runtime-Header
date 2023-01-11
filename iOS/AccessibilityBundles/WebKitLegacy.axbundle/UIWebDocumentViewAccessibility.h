@@ -15,6 +15,7 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGRect)accessibilityFrame;
 - (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 - (_Bool)_accessibilityIsScrollAncestor;
 - (_Bool)_accessibilityScrollToFrame:(struct CGRect)arg1 forView:(id)arg2;
 - (_Bool)_accessibilityIsWebDocumentView;

@@ -11,7 +11,10 @@
     NSMutableSet *_dependents;
 }
 
++ (id)sharedRemoteContainer;
++ (id)sharedLocalContainer;
 - (void).cxx_destruct;
+- (id)queryWithDelegate:(id)arg1;
 - (void)_commitEditWithFinalContents:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeDependent:(id)arg1;
 - (void)addDependent:(id)arg1;

@@ -10,6 +10,5 @@
 
 @protocol HUQuickControlContainerViewDelegate <NSObject>
 - (void)detailsButtonPressedInContainerView:(HUQuickControlContainerView *)arg1;
-- (void)alternateControlButtonPressedInContainerView:(HUQuickControlContainerView *)arg1;
 @end
 

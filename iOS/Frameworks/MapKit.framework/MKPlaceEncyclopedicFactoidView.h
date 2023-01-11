@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_baselineToTopConstraint;
     NSLayoutConstraint *_baselineToBottomConstraint;
     NSLayoutConstraint *_baselineToBaselineConstraint;
+    _Bool _isStandAlone;
     _MKUILabel *_keyLabel;
     _MKUILabel *_valueLabel;
 }
@@ -20,10 +21,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _MKUILabel *keyLabel; // @synthesize keyLabel=_keyLabel;
 - (void).cxx_destruct;
 - (void)_contentSizeDidChange;
+- (id)_keyLabelFont;
 - (void)setUpConstraints;
 - (id)_valueLabelWithString:(id)arg1;
 - (id)_keyLabelWithString:(id)arg1;
-- (id)initWithTextItem:(id)arg1;
+- (id)initWithTextItem:(id)arg1 isStandAloneFactoid:(_Bool)arg2;
 
 @end
 

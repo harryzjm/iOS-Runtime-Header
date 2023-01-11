@@ -8,10 +8,8 @@
 {
 }
 
-- (id)initWithSourceURLsAndNames:(id)arg1 destinationFolder:(id)arg2;
-- (id)initWithNamesAndSourceURLs:(id)arg1 destinationFolder:(id)arg2;
-- (id)initWithItems:(id)arg1 destinationFolder:(id)arg2;
-- (id)initWithSourceURLs:(id)arg1 destinationFolder:(id)arg2;
+- (unsigned long long)defaultLastUsedDatePolicy;
+- (_Bool)byCopy;
 
 @end
 

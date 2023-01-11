@@ -8,6 +8,8 @@
 {
 }
 
++ (Class)alternateUniverseClass;
++ (Class)meltedClass;
 + (id)relations;
 + (id)defaultPropertiesToLoad;
 - (id)description;
@@ -23,8 +25,8 @@
 - (id)routing;
 - (void)setMapKitHandle:(id)arg1;
 - (id)mapKitHandle;
-- (void)setAddressBookEntityID:(id)arg1;
-- (id)addressBookEntityID;
+- (void)setContactLabel:(id)arg1;
+- (id)contactLabel;
 - (void)setRadius:(id)arg1;
 - (id)radius;
 - (void)setReferenceFrame:(id)arg1;

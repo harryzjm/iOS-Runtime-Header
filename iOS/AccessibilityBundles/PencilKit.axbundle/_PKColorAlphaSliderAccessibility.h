@@ -17,6 +17,8 @@
 - (void)accessibilityIncrement;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
+- (void)_accessibilitySetColorAlpha:(double)arg1;
+- (double)_accessibilityColorAlpha;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 

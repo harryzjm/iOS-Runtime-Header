@@ -4,25 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKRecordZoneID, NSData;
+#import <CloudKitDaemon/NSCopying-Protocol.h>
+#import <CloudKitDaemon/NSSecureCoding-Protocol.h>
+
+@class CKDSharePCSData, CKRecordID, CKRecordZoneID, NSData;
 
 __attribute__((visibility("hidden")))
-@interface CKDZonePCSData
+@interface CKDZonePCSData <NSSecureCoding, NSCopying>
 {
     struct _OpaquePCSShareProtection *_zoneishPCS;
     CKRecordZoneID *_zoneID;
     NSData *_zoneishPCSData;
     NSData *_zoneishPublicKeyID;
+    CKDSharePCSData *_sharePCSData;
+    CKRecordID *_shareID;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)dataWithZone:(id)arg1;
+@property(retain, nonatomic) CKRecordID *shareID; // @synthesize shareID=_shareID;
+@property(retain, nonatomic) CKDSharePCSData *sharePCSData; // @synthesize sharePCSData=_sharePCSData;
 @property(retain, nonatomic) NSData *zoneishPublicKeyID; // @synthesize zoneishPublicKeyID=_zoneishPublicKeyID;
 @property(copy, nonatomic) NSData *zoneishPCSData; // @synthesize zoneishPCSData=_zoneishPCSData;
 @property(retain, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)itemID;
 @property(nonatomic) struct _OpaquePCSShareProtection *zoneishPCS;
 - (void)dealloc;

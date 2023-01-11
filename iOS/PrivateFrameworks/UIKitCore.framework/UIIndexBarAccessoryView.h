@@ -9,7 +9,6 @@
 @class UIScrollView;
 @protocol UIIndexBarAccessoryViewDelegate;
 
-__attribute__((visibility("hidden")))
 @interface UIIndexBarAccessoryView <UIScrollAccessory>
 {
     UIScrollView *_scrollView;

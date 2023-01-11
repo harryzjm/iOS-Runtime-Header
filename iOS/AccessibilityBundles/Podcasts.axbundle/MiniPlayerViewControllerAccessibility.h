@@ -11,8 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityPlayPauseButtonString;
-- (id)_accessibilitySeekButtonStringInDirection:(_Bool)arg1;
 - (void)accessibilityUpdateMetadata;
 - (void)viewDidLoad;
 - (void)_accessibilityLoadAccessibilityInformation;

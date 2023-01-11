@@ -35,11 +35,10 @@ __attribute__((visibility("hidden")))
 - (void)updateCellularMTU:(int)arg1;
 - (id)getSecondaryConnectionToBeCompared;
 - (id)getPrimaryConnectionToBeCompared;
-- (void)handoverWithWRMSuggestion:(_Bool)arg1;
-- (_Bool)shouldHandoverWhenUpdateWRMDuplication:(int)arg1;
 - (unsigned int)getByteCountWithIndex:(unsigned char)arg1 isOutgoing:(_Bool)arg2;
 - (unsigned int)getPacketCountWithIndex:(unsigned char)arg1 isOutgoing:(_Bool)arg2;
 - (void)optOutAllStreamsForNonPrimaryConnections;
+- (void)resetParticipantGenerationCounter;
 - (void)synchronizeParticipantGenerationCounter:(unsigned char)arg1;
 - (void)updatePacketCountAndByteCountWithIndex:(unsigned char)arg1 packetSize:(int)arg2 numOfStreamId:(int)arg3 isPriorityIncluded:(_Bool)arg4 isOutgoing:(_Bool)arg5;
 - (int)removeConnection:(id)arg1;

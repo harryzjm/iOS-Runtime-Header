@@ -17,6 +17,7 @@
     NSMapTable *m_externalRememberedSet;
 }
 
++ (void)setCrashOnVMCreation:(_Bool)arg1;
 + (unsigned long long)setNumberOfFTLCompilerThreads:(unsigned long long)arg1;
 + (unsigned long long)setNumberOfDFGCompilerThreads:(unsigned long long)arg1;
 + (id)virtualMachineWithContextGroupRef:(struct OpaqueJSContextGroup *)arg1;
@@ -28,6 +29,8 @@
 - (void)dealloc;
 - (id)initWithContextGroupRef:(struct OpaqueJSContextGroup *)arg1;
 - (id)init;
+- (_Bool)isWebThreadAware;
+- (struct VM *)vm;
 - (void)shrinkFootprintWhenIdle;
 - (id)externalRememberedSet;
 - (id)externalObjectGraph;

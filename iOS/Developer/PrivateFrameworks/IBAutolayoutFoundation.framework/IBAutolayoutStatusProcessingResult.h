@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IBAutolayoutStatus;
+@class IBAutolayoutArbitrationResult, IBAutolayoutStatus;
 
 @interface IBAutolayoutStatusProcessingResult
 {
     IBAutolayoutStatus *_status;
+    IBAutolayoutArbitrationResult *_arbitrationResult;
 }
 
+@property(readonly, nonatomic) IBAutolayoutArbitrationResult *arbitrationResult; // @synthesize arbitrationResult=_arbitrationResult;
 @property(readonly, nonatomic) IBAutolayoutStatus *status; // @synthesize status=_status;
 - (void).cxx_destruct;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
-- (id)initWithAutolayoutStatus:(id)arg1;
+- (id)initWithAutolayoutStatus:(id)arg1 arbitrationResult:(id)arg2;
 
 @end
 

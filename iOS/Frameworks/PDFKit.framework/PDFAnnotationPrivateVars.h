@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSLock, NSMutableDictionary, NSString, NSUUID, PDFAKAnnotationAdaptor, PDFAccessibilityNode, PDFAnnotation, PDFPage, UIColor;
+@class NSArray, NSDictionary, NSIndexSet, NSLayoutManager, NSLock, NSMutableDictionary, NSString, NSTextStorage, NSUUID, PDFAKAnnotationAdaptor, PDFAccessibilityNode, PDFAnnotation, PDFPage, UIColor;
 @protocol NSCopying;
 
 __attribute__((visibility("hidden")))
 @interface PDFAnnotationPrivateVars : NSObject
 {
     _Bool loggingEnabled;
-    _Bool export;
+    _Bool shouldExport;
     PDFPage *page;
     struct CGPDFDictionary *sourceDictionary;
     struct __CFDictionary *dictionaryRef;
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     struct CGPDFAnnotation *cgAnnotation;
     NSMutableDictionary *PDFAnnotationDictionary;
     NSDictionary *PDFAnnotationKeyMapping;
+    NSMutableDictionary *internalPDFAnnotationDictionary;
     struct CGPDFForm *normalAppearance;
     struct CGPDFForm *rolloverAppearance;
     struct CGPDFForm *downAppearance;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
     _Bool saveAppearance;
     _Bool isSelected;
     _Bool isHighlighted;
+    NSIndexSet *quadPointsIndexSet;
     PDFAnnotation *parent;
     PDFAnnotation *popup;
     struct CGPDFDictionary *popupDictionary;
@@ -42,6 +44,9 @@ __attribute__((visibility("hidden")))
     NSString *widgetOnStateString;
     id control;
     UIColor *mouseHoverBackgroundColor;
+    NSLayoutManager *layoutManager;
+    NSTextStorage *textStorage;
+    struct UIEdgeInsets textInsets;
     _Bool restoreLinePoints;
     _Bool restoreQuadPoints;
     struct CGPoint startPoint;

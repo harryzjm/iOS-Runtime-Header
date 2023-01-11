@@ -20,6 +20,8 @@
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
+- (id)_accessibilityUserTestingChildren;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

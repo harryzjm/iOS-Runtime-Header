@@ -7,7 +7,7 @@
 #import <CarPlaySupport/CPSAlternateRouteSelecting-Protocol.h>
 #import <CarPlaySupport/CPSPageControlling-Protocol.h>
 
-@class CPSHairlineBorderedView, CPSPagingControlView, CPSRouteOverviewView, NSLayoutConstraint, NSMutableDictionary, NSString;
+@class CPSHairlineBorderedView, CPSPagingControlView, CPSRouteOverviewView, NSLayoutConstraint, NSMutableDictionary, NSString, UIButton;
 
 @interface CPSPagingTripPreviewsCardView <CPSAlternateRouteSelecting, CPSPageControlling>
 {
@@ -18,6 +18,7 @@
     CPSHairlineBorderedView *_borderedAlternatesView;
     CPSHairlineBorderedView *_borderedGoButton;
     CPSHairlineBorderedView *_borderedMoreRoutesButton;
+    UIButton *_moreRoutesButton;
     NSLayoutConstraint *_contentTopConstraint;
     NSLayoutConstraint *_contentBottomConstraint;
     NSLayoutConstraint *_alternateRoutesHeightConstraint;
@@ -29,6 +30,7 @@
 @property(retain, nonatomic) NSLayoutConstraint *contentBottomConstraint; // @synthesize contentBottomConstraint=_contentBottomConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *contentTopConstraint; // @synthesize contentTopConstraint=_contentTopConstraint;
 @property(nonatomic) _Bool showMoreRoutes; // @synthesize showMoreRoutes=_showMoreRoutes;
+@property(readonly, nonatomic) UIButton *moreRoutesButton; // @synthesize moreRoutesButton=_moreRoutesButton;
 @property(readonly, nonatomic) CPSHairlineBorderedView *borderedMoreRoutesButton; // @synthesize borderedMoreRoutesButton=_borderedMoreRoutesButton;
 @property(readonly, nonatomic) CPSHairlineBorderedView *borderedGoButton; // @synthesize borderedGoButton=_borderedGoButton;
 @property(readonly, nonatomic) CPSHairlineBorderedView *borderedAlternatesView; // @synthesize borderedAlternatesView=_borderedAlternatesView;
@@ -46,6 +48,7 @@
 - (void)_toggleMoreRoutesButtonPressed:(id)arg1;
 - (void)_setOverviewCollapsed:(_Bool)arg1;
 - (void)setSelectedTrip:(id)arg1;
+- (void)_updateButtonColors;
 - (id)initWithTripDelegate:(id)arg1 trips:(id)arg2 textConfiguration:(id)arg3;
 
 // Remaining properties

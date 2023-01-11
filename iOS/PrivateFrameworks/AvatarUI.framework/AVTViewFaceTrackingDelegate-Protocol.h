@@ -12,6 +12,7 @@
 - (void)avatarViewFaceTrackingSessionInterruptionDidEnd:(AVTView *)arg1;
 - (void)avatarViewFaceTrackingSessionInterruptionDidBegin:(AVTView *)arg1;
 - (void)avatarView:(AVTView *)arg1 faceTrackingSessionFailedWithError:(NSError *)arg2;
+- (void)avatarView:(AVTView *)arg1 didUpdateWithSensorOcclusionStatus:(_Bool)arg2;
 - (void)avatarView:(AVTView *)arg1 didUpdateWithLowLightStatus:(_Bool)arg2;
 - (void)avatarView:(AVTView *)arg1 didUpdateWithFaceTrackingStatus:(_Bool)arg2;
 @end

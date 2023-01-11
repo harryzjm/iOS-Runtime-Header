@@ -15,6 +15,7 @@
 - (_Bool)accessibilityActivate;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
+- (_Bool)_accessibilityServesAsFirstElement;
 - (_Bool)isAccessibilityElement;
 
 @end

@@ -6,21 +6,9 @@
 
 @interface BKSHIDEventKeyboardDescriptor
 {
-    unsigned int _page;
-    unsigned int _usage;
 }
 
-+ (_Bool)supportsSecureCoding;
 + (id)descriptorWithPage:(unsigned int)arg1 usage:(unsigned int)arg2;
-@property(readonly) unsigned int usage; // @synthesize usage=_usage;
-@property(readonly) unsigned int page; // @synthesize page=_page;
-- (id)initWithCoder:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (_Bool)describes:(id)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (unsigned long long)hash;
-- (_Bool)isEqual:(id)arg1;
-- (id)_initWithPage:(unsigned int)arg1 usage:(unsigned int)arg2 eventType:(unsigned int)arg3;
 
 @end
 

@@ -4,7 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMCameraAudioControl, HMCameraSettingsControl, HMCameraSnapshotControl, HMCameraStreamControl, _HMCameraProfile;
+@class HMCameraAudioControl, HMCameraClipManager, HMCameraSettingsControl, HMCameraSnapshotControl, HMCameraStreamControl, HMCameraUserSettings, _HMCameraProfile;
+@protocol HMCameraProfileUserSettingsDelegate;
 
 @interface HMCameraProfile
 {
@@ -13,16 +14,21 @@
     HMCameraSettingsControl *_settingsControl;
     HMCameraAudioControl *_speakerControl;
     HMCameraAudioControl *_microphoneControl;
+    id <HMCameraProfileUserSettingsDelegate> _userSettingsDelegate;
 }
 
+@property __weak id <HMCameraProfileUserSettingsDelegate> userSettingsDelegate; // @synthesize userSettingsDelegate=_userSettingsDelegate;
 @property(retain, nonatomic) HMCameraAudioControl *microphoneControl; // @synthesize microphoneControl=_microphoneControl;
 @property(retain, nonatomic) HMCameraAudioControl *speakerControl; // @synthesize speakerControl=_speakerControl;
 @property(retain, nonatomic) HMCameraSettingsControl *settingsControl; // @synthesize settingsControl=_settingsControl;
 @property(retain, nonatomic) HMCameraSnapshotControl *snapshotControl; // @synthesize snapshotControl=_snapshotControl;
 @property(retain, nonatomic) HMCameraStreamControl *streamControl; // @synthesize streamControl=_streamControl;
 - (void).cxx_destruct;
+- (void)deleteAllClipsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (_Bool)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (id)services;
+@property(readonly) HMCameraClipManager *clipManager;
+@property(readonly) HMCameraUserSettings *userSettings;
 @property(readonly, nonatomic) _HMCameraProfile *cameraProfile;
 - (id)initWithCameraProfile:(id)arg1;
 

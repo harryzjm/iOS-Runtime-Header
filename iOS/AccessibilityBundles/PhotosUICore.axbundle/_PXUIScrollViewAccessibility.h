@@ -11,11 +11,16 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_axSetPXGScrollViewElements:(id)arg1;
+- (id)ax_filterObjects:(id)arg1;
+- (id)accessibilityElements;
 - (_Bool)_accessibilityScrollAcrossPageBoundaries;
 - (_Bool)_accessibilityOnlyComparesByXAxis;
 - (long long)_axCompareView:(id)arg1 toView:(id)arg2;
 - (id)_accessibilitySortedElementsWithin;
 - (_Bool)isAccessibilityOpaqueElementProvider;
+- (void)_setAXPXGScrollViewElements:(id)arg1;
+- (id)_axPXGScrollViewElements;
 
 @end
 

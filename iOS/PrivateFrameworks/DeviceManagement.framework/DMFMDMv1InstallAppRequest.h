@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @interface DMFMDMv1InstallAppRequest
 {
@@ -13,7 +13,9 @@
     NSString *_originator;
     unsigned long long _managementOptions;
     NSString *_VPNUUIDString;
+    NSArray *_associatedDomains;
     NSDictionary *_configuration;
+    NSString *_personaID;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -21,7 +23,9 @@
 + (_Bool)isPermittedOnSystemConnection;
 + (id)permittedPlatforms;
 + (Class)whitelistedClassForResultObject;
+@property(copy, nonatomic) NSString *personaID; // @synthesize personaID=_personaID;
 @property(copy, nonatomic) NSDictionary *configuration; // @synthesize configuration=_configuration;
+@property(copy, nonatomic) NSArray *associatedDomains; // @synthesize associatedDomains=_associatedDomains;
 @property(copy, nonatomic) NSString *VPNUUIDString; // @synthesize VPNUUIDString=_VPNUUIDString;
 @property(nonatomic) unsigned long long managementOptions; // @synthesize managementOptions=_managementOptions;
 @property(nonatomic) _Bool manage; // @synthesize manage=_manage;

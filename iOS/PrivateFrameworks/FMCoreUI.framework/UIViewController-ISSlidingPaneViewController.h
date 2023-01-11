@@ -10,5 +10,6 @@
 
 @interface UIViewController (ISSlidingPaneViewController)
 @property(readonly) FMSlidingPaneViewController *slidingPaneViewController;
+- (void)addConstraintsToFillSuperview;
 @end
 

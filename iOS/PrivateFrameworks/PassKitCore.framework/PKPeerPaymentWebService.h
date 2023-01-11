@@ -6,7 +6,7 @@
 
 #import <PassKitCore/NSURLSessionTaskDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSObject, NSString, NSURL, PKPeerPaymentService, PKPeerPaymentWebServiceContext, PKSecureElement;
+@class NSMutableDictionary, NSObject, NSString, NSURL, PKPaymentDevice, PKPeerPaymentService, PKPeerPaymentWebServiceContext, PKSecureElement;
 @protocol OS_dispatch_queue, PKPeerPaymentWebServiceArchiver, PKPeerPaymentWebServiceTargetDeviceProtocol;
 
 @interface PKPeerPaymentWebService <NSURLSessionTaskDelegate>
@@ -14,6 +14,7 @@
     PKSecureElement *_secureElement;
     NSMutableDictionary *_prewarmedDeviceScorers;
     NSObject<OS_dispatch_queue> *_prewarmedDeviceScorersQueue;
+    PKPaymentDevice *_paymentDevice;
     _Bool _sharedService;
     PKPeerPaymentWebServiceContext *_context;
     id <PKPeerPaymentWebServiceArchiver> _archiver;
@@ -37,10 +38,14 @@
 - (id)_createDeviceScorerForEndpoint:(id)arg1 recipientAddress:(id)arg2;
 - (void)prewarmDeviceScoreForEndpoint:(id)arg1 recipientAddress:(id)arg2;
 - (void)prewarmDeviceScoreForEndpoint:(id)arg1;
-- (id)_deviceMetadata;
+- (void)_renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)_appleAccountInformation;
+- (void)_peerPaymentDeviceMetadataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_deviceRegistrationDataWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_deviceIdentifier;
+- (unsigned long long)disbursementVoucherWithRequest:(id)arg1 certificates:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)submitDeviceScoreIdentifiersWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)peerPaymentEmailTermsWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)peerPaymentReOpenAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)peerPaymentRequestStatementWithCompletion:(CDUnknownBlockType)arg1;
 - (unsigned long long)peerPaymentBankLookupWithCountryCode:(id)arg1 query:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -68,6 +73,7 @@
 - (void)handleWillPerformHTTPRedirectionWithResponse:(id)arg1 redirectHandler:(CDUnknownBlockType)arg2;
 - (id)forbiddenErrorWithResponse:(id)arg1;
 - (id)badRequestErrorWithResponse:(id)arg1;
+- (void)handleAuthenticationFailureWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleResponse:(id)arg1 withError:(id)arg2 data:(id)arg3 task:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)performRequest:(id)arg1 taskIdentifier:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithContext:(id)arg1 targetDevice:(id)arg2 archiver:(id)arg3;

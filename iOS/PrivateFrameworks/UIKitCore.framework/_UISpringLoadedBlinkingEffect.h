@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CALayer *blinkLayer; // @synthesize blinkLayer=_blinkLayer;
 - (void).cxx_destruct;
 - (id)blinkAnimation;
+- (void)_prepareLayer:(id)arg1 forView:(id)arg2;
 - (void)interaction:(id)arg1 didChangeWithContext:(id)arg2;
 
 // Remaining properties

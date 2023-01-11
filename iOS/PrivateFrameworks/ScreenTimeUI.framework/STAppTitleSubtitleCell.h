@@ -6,6 +6,7 @@
 
 #import <Preferences/PSTableCell.h>
 
+__attribute__((visibility("hidden")))
 @interface STAppTitleSubtitleCell : PSTableCell
 {
     _Bool _hasSubtitle;
@@ -13,14 +14,11 @@
 
 + (long long)cellStyle;
 @property(nonatomic) _Bool hasSubtitle; // @synthesize hasSubtitle=_hasSubtitle;
-- (void)_didFetchAppInfo:(id)arg1;
-- (void)_registerForAppInfoCacheNotifications;
-- (void)_didFetchIcon:(id)arg1;
-- (void)_registerForIconCacheNotifications;
+- (void)_didFetchAppInfoOrIcon:(id)arg1;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
+- (void)setSpecifier:(id)arg1;
 - (void)layoutSubviews;
 @property(readonly, nonatomic) _Bool isAppCell;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
 
 @end
 

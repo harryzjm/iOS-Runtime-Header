@@ -9,7 +9,10 @@
 @class CKRecord, NSDictionary;
 
 @interface NTPBPersonalizationLocalData (FCAdditions)
++ (id)readValueFromKeyValuePair:(id)arg1;
++ (int)keyValuePairType;
 @property(retain, nonatomic) CKRecord *remoteRecord;
 @property(readonly, nonatomic) NSDictionary *openChangeGroupDeltasByFeatureKey;
+- (void)writeToKeyValuePair:(id)arg1;
 @end
 

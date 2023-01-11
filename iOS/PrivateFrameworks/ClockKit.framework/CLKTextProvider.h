@@ -9,7 +9,7 @@
 #import <ClockKit/NSCopying-Protocol.h>
 #import <ClockKit/NSSecureCoding-Protocol.h>
 
-@class CLKTextProviderCache, NSMutableArray, NSMutableDictionary, UIColor;
+@class CLKTextProviderCache, NSMutableArray, NSMutableDictionary, NSString, UIColor;
 
 @interface CLKTextProvider : NSObject <NSSecureCoding, NSCopying>
 {
@@ -22,10 +22,13 @@
     struct NSNumber *_minuteTimerToken;
     struct NSNumber *_30fpsTimerToken;
     _Bool _finalized;
+    _Bool _ignoreUppercaseStyle;
     _Bool _paused;
     _Bool _italicized;
+    _Bool _monospacedNumbers;
     _Bool _useMonospacedNumbersForTimeTravel;
     UIColor *_tintColor;
+    NSString *_accessibilityLabel;
     long long _shrinkTextPreference;
     long long _timeTravelUpdateFrequency;
 }
@@ -40,8 +43,11 @@
 @property(nonatomic) long long timeTravelUpdateFrequency; // @synthesize timeTravelUpdateFrequency=_timeTravelUpdateFrequency;
 @property(nonatomic) _Bool useMonospacedNumbersForTimeTravel; // @synthesize useMonospacedNumbersForTimeTravel=_useMonospacedNumbersForTimeTravel;
 @property(nonatomic) long long shrinkTextPreference; // @synthesize shrinkTextPreference=_shrinkTextPreference;
+@property(nonatomic) _Bool monospacedNumbers; // @synthesize monospacedNumbers=_monospacedNumbers;
 @property(nonatomic) _Bool italicized; // @synthesize italicized=_italicized;
 @property(nonatomic) _Bool paused; // @synthesize paused=_paused;
+@property(nonatomic) _Bool ignoreUppercaseStyle; // @synthesize ignoreUppercaseStyle=_ignoreUppercaseStyle;
+@property(copy, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
 @property(retain, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 - (void).cxx_destruct;
 - (id)JSONObjectRepresentation;
@@ -57,6 +63,7 @@
 - (void)_pruneCacheKeysIfNecessary;
 - (id)_cacheForKey:(id)arg1;
 - (id)_defaultCache;
+- (id)_monospacedNumbers:(id)arg1;
 - (id)_italicize:(id)arg1;
 - (id)_localizedTextProviderWithBundle:(id)arg1 forLocalization:(id)arg2;
 - (long long)_updateFrequency;

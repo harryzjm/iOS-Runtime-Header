@@ -6,12 +6,13 @@
 
 #import <iWorkImport/TSKModel-Protocol.h>
 #import <iWorkImport/TSTResolverContainerNameProvider-Protocol.h>
+#import <iWorkImport/TSWPDrawableOLC-Protocol.h>
 
 @class KNRecordingSyncMaintainer, KNShow, NSString;
 @protocol KNDocumentRootDelegate;
 
 __attribute__((visibility("hidden")))
-@interface KNDocumentRoot <TSKModel, TSTResolverContainerNameProvider>
+@interface KNDocumentRoot <TSWPDrawableOLC, TSKModel, TSTResolverContainerNameProvider>
 {
     _Bool _isObservingRecording;
     KNShow *_show;
@@ -60,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (id)theme;
 - (id)childEnumerator;
 @property(nonatomic) __weak id <KNDocumentRootDelegate> delegate; // @dynamic delegate;
+- (id)knDelegate;
 - (void)dealloc;
 - (void)collectDocumentOpenAnalyticsWithLogger:(id)arg1;
 - (void)willClose;

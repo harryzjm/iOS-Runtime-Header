@@ -12,6 +12,7 @@
 
 @class NSMapTable, NSString, SKUIOnboardingAffiliationCirclesViewController, SKUIOnboardingFooterView, SKUIOnboardingProgressView, SKUIPhysicalCirclesTemplateViewElement, SKUIResourceLoader, UIGestureRecognizer;
 
+__attribute__((visibility("hidden")))
 @interface SKUIPhysicalCirclesDocumentViewController <SKUIArtworkRequestDelegate, SKUIOnboardingAffiliationCirclesDelegate, SKUIPhysicalCirclesTemplateDelegate, UIGestureRecognizerDelegate, SKUIDocumentViewController>
 {
     SKUIOnboardingAffiliationCirclesViewController *_circlesViewController;

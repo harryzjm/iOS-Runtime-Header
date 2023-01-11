@@ -36,6 +36,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) TSPObject *explicitComponentRootObject; // @synthesize explicitComponentRootObject=_explicitComponentRootObject;
 @property(readonly, nonatomic) NSUUID *objectUUID; // @synthesize objectUUID=_objectUUID;
 - (void).cxx_destruct;
+- (_Bool)isSavingCollaborativeDocument;
+- (_Bool)isSavingDocumentAs;
 - (void)validateOrderedArchivableContent:(id)arg1;
 - (id)calculateOrderedArchivableContent;
 - (void)cleanup;
@@ -57,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)addDocumentFeatureInfoWithIdentifier:(id)arg1 readVersion:(unsigned long long)arg2 writeVersion:(unsigned long long)arg3 validatingValues:(_Bool)arg4;
 @property(readonly, nonatomic) NSSet *featureInfos;
 @property(readonly, nonatomic) _Bool shouldSaveAlternates;
+- (id)initWithObject:(id)arg1 flags:(BOOL)arg2;
 - (id)initWithObject:(id)arg1;
 
 // Remaining properties

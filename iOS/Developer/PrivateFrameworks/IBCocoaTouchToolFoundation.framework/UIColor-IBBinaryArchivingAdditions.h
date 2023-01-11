@@ -18,14 +18,22 @@
 + (id)ibColorWithSRGBRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
 + (id)ibColorWithGenericGamma22White:(double)arg1 alpha:(double)arg2;
 + (id)decodeWithBinaryUnarchiver:(id)arg1;
++ (id)ibArchivedDataForColor:(id)arg1;
++ (id)ibDefaultTintColor;
++ (id)computeSystemColors;
++ (id)darkSystemColors;
++ (id)systemColors;
++ (id)fallbackSystemColorNames;
 - (const char *)cStringClassNameForBinaryArchiver:(id)arg1;
-- (id)ibArchivedSystemKeyPathForBinaryArchiver:(id)arg1;
+- (id)ibArchivedSystemKeyPathForBinaryArchiver:(id)arg1 fallbackColor:(id *)arg2;
 - (_Bool)ibGetColorName:(id *)arg1 bundleID:(id *)arg2 fallbackColor:(id *)arg3 unarchiveAsColorWrapper:(_Bool *)arg4;
 - (_Bool)ibGetDisplayP3Red:(double *)arg1 green:(double *)arg2 blue:(double *)arg3 alpha:(double *)arg4;
 - (_Bool)ibGetSRGBRed:(double *)arg1 green:(double *)arg2 blue:(double *)arg3 alpha:(double *)arg4;
 - (_Bool)ibGetGenericGamma22White:(double *)arg1 alpha:(double *)arg2;
 - (id)ibColorByCoercingToExtendedSRGBColor;
 - (void)encodeWithBinaryArchiver:(id)arg1;
+- (id)replacementObjectForCoder:(id)arg1;
+- (id)ibComponentInformation;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

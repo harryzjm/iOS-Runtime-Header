@@ -6,25 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class NSConditionLock, NSMutableArray;
+#import <Message/EFLoggable-Protocol.h>
 
-@interface MFRequestQueue : NSObject
+@class NSMutableArray, NSString;
+
+@interface MFRequestQueue : NSObject <EFLoggable>
 {
-    NSConditionLock *_condition;
-    NSMutableArray *_requests;
-    NSMutableArray *_consumers;
-    unsigned int _waitingOutside;
-    unsigned int _waitingInside;
+    struct os_unfair_lock_s _lock;
+    NSMutableArray *_requestPairs;
 }
 
-- (void)dealloc;
-- (void)processRequests:(id)arg1 consumers:(id)arg2;
-- (void)_processRequests:(id)arg1 consumers:(id)arg2;
-- (void)processRequest:(id)arg1 consumer:(id)arg2;
-- (void)addRequests:(id)arg1 consumers:(id)arg2;
-- (void)willAddRequests:(id)arg1 consumers:(id)arg2;
-- (void)addRequest:(id)arg1 consumer:(id)arg2;
++ (id)signpostLog;
++ (id)log;
+@property(retain, nonatomic) NSMutableArray *requestPairs; // @synthesize requestPairs=_requestPairs;
+- (void).cxx_destruct;
+- (void)processRequests:(id)arg1;
+- (void)_processRequests:(id)arg1;
+- (void)processRequest:(struct EFPair *)arg1;
+- (void)addRequest:(struct EFPair *)arg1;
+- (void)addRequests:(id)arg1;
 - (id)init;
+- (unsigned long long)signpostID;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

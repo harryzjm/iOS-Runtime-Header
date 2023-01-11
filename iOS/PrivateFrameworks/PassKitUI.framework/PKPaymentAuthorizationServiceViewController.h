@@ -39,10 +39,14 @@
     PKPaymentPreferencesViewController *_shippingAddressPreferencesController;
     PKPaymentPreferencesViewController *_shippingContactPreferencesController;
     PKPaymentPreferencesViewController *_paymentCardPreferencesController;
+    PKPaymentPreferencesViewController *_bankAccountPreferencesController;
     _Bool _viewAppeared;
     _Bool _visible;
     _Bool _authenticating;
     _Bool _allowCompactProcessing;
+    long long _internalPearlState;
+    unsigned int _pearlCameraEdge;
+    long long _internalCoachingState;
     UIViewController *_passcodeViewController;
     UIViewController *_passphraseViewController;
     _Bool _hostApplicationResignedActive;
@@ -51,6 +55,7 @@
     _Bool _bypassAuthenticator;
     double _keyboardHeight;
     _Bool _isPad;
+    _Bool _isAMPPayment;
     _Bool _needsFinalCallback;
     long long _preferencesStyle;
     struct __IOHIDEventSystemClient *_hidSystemClient;
@@ -59,11 +64,13 @@
     _Bool _peerPaymentBalanceIsInsufficient;
     NSMutableSet *_completionHandlers;
     CNContact *_lastUnservicableAddress;
+    double _authenticatorFingerOnTime;
     _Bool _userIntentRequired;
     _Bool _shouldIgnorePhysicalButton;
     _Bool _blockingHardwareCancels;
     PKPaymentAuthorizationStateMachine *_stateMachine;
     PKAuthenticator *_authenticator;
+    long long _coachingState;
     LAUIPhysicalButtonView *_physicalButtonView;
     id <PKPaymentAuthorizationServiceViewControllerDelegate><PKPaymentAuthorizationHostProtocol> _delegate;
 }
@@ -71,6 +78,7 @@
 @property(readonly, nonatomic) _Bool blockingHardwareCancels; // @synthesize blockingHardwareCancels=_blockingHardwareCancels;
 @property(nonatomic) __weak id <PKPaymentAuthorizationServiceViewControllerDelegate><PKPaymentAuthorizationHostProtocol> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) LAUIPhysicalButtonView *physicalButtonView; // @synthesize physicalButtonView=_physicalButtonView;
+@property(readonly, nonatomic) long long coachingState; // @synthesize coachingState=_coachingState;
 @property(readonly, nonatomic) _Bool shouldIgnorePhysicalButton; // @synthesize shouldIgnorePhysicalButton=_shouldIgnorePhysicalButton;
 @property(readonly, nonatomic, getter=isUserIntentRequired) _Bool userIntentRequired; // @synthesize userIntentRequired=_userIntentRequired;
 @property(retain, nonatomic) PKAuthenticator *authenticator; // @synthesize authenticator=_authenticator;
@@ -80,6 +88,7 @@
 - (void)_removeSimulatorHIDListener;
 - (void)_startSimulatorHIDListener;
 - (void)_sendDidEncounterAuthorizationEventIfNecessary:(unsigned long long)arg1;
+- (void)_updateCoachingInstruction;
 - (void)_updatePhysicalButtonInstruction;
 - (void)_setUserIntentRequired:(_Bool)arg1 shouldIgnorePhysicalButton:(_Bool)arg2;
 - (void)_updateUserIntentRequired;
@@ -101,10 +110,12 @@
 - (id)_unavailablePasses;
 - (long long)selectedPaymentApplicationIndexFromCardEntries:(id)arg1;
 - (id)_availablePasses;
+- (void)_updateBankAccounts;
+- (void)_setupBankAccounts;
 - (void)_setupShippingContact;
 - (void)_setupShippingAddress;
 - (void)_setupShippingMethods;
-- (void)_setupWithPaymentRequest:(id)arg1 fromAppWithLocalizedName:(id)arg2 andApplicationIdentifier:(id)arg3;
+- (void)_setupWithPaymentRequest:(id)arg1 fromAppWithLocalizedName:(id)arg2 applicationIdentifier:(id)arg3 bundleIdentifier:(id)arg4 teamIdentifier:(id)arg5;
 - (void)_handleModelUpdate;
 - (Class)_viewPresenterClassForDataItem:(id)arg1;
 - (Class)_tableViewClassForDataItem:(id)arg1;
@@ -135,6 +146,7 @@
 - (void)authenticator:(id)arg1 didRequestUserAction:(long long)arg2;
 - (void)authenticatorDidEncounterFingerOff:(id)arg1;
 - (void)authenticatorDidEncounterFingerOn:(id)arg1;
+- (void)authenticator:(id)arg1 didTransitionToCoachingState:(long long)arg2;
 - (void)authenticator:(id)arg1 didTransitionToPearlState:(long long)arg2;
 - (void)_updatePendingTransaction:(id)arg1 withAuthorizationStateParam:(id)arg2;
 - (void)_didSucceedWithAuthorizationStateParam:(id)arg1;
@@ -146,6 +158,9 @@
 - (void)authorizationDidSelectShippingAddressCompleteWithUpdate:(id)arg1;
 - (void)authorizationDidSelectShippingMethodCompleteWithUpdate:(id)arg1;
 - (void)authorizationDidRequestMerchantSessionCompleteWithSession:(id)arg1 error:(id)arg2;
+- (void)authorizationDidUpdateAccountServicePaymentMethodCompleteWithUpdate:(id)arg1 signatureRequest:(id)arg2;
+- (void)authorizationDidAuthorizeApplePayTrustSignatureCompleteWithResult:(id)arg1;
+- (void)authorizationDidAuthorizeCashDisbursementWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuoteCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePurchaseCompleteWithStatus:(long long)arg1;
 - (void)authorizationDidAuthorizePaymentCompleteWithResult:(id)arg1;
@@ -162,12 +177,14 @@
 - (void)_startEvaluation;
 - (void)_suspendAuthenticationAndForceReset:(_Bool)arg1;
 - (void)_suspendAuthentication;
+- (void)_abandonActiveEnrollmentAttempts;
 - (void)_resumeAuthenticationWithPreviousError:(id)arg1 animated:(_Bool)arg2;
 - (void)_invalidPaymentDataWithParam:(id)arg1;
 - (void)_processClientCallback:(id)arg1;
 - (void)_updateCancelButtonEnabledForState:(unsigned long long)arg1 param:(id)arg2;
 - (_Bool)paymentAuthorizationStateMachine:(id)arg1 didTransitionFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3 withParam:(id)arg4;
 - (void)invalidate;
+- (id)handlePaymentRequest:(id)arg1 fromAppWithLocalizedName:(id)arg2 applicationIdentifier:(id)arg3 bundleIdentifier:(id)arg4 teamIdentifier:(id)arg5;
 - (id)handlePaymentRequest:(id)arg1 fromAppWithLocalizedName:(id)arg2 andApplicationIdentifier:(id)arg3;
 - (void)keyboardWillHide:(id)arg1;
 - (void)keyboardWillShow:(id)arg1;

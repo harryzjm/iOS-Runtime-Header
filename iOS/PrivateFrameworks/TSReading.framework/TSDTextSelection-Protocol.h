@@ -4,6 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol TSDTextSelection
+#import <TSReading/NSObject-Protocol.h>
+
+@protocol TSDTextSelection <NSObject>
+@property(readonly, nonatomic) _Bool isAtEndOfLine;
+@property(readonly, nonatomic) struct _NSRange range;
 @end
 

@@ -17,7 +17,7 @@
 - (void)_loadIconForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_loadRemoteIconForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)iconForApplicationWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)init;
+- (id)_init;
 
 @end
 

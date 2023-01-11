@@ -4,25 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSLayoutConstraint, UIColor;
+#import <MapKit/MKPlaceHoursViewDelegate-Protocol.h>
+
+@class MKPlaceHoursView, NSLayoutConstraint, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MKPlaceHoursDayRow
+@interface MKPlaceHoursDayRow <MKPlaceHoursViewDelegate>
 {
-    NSArray *_labels;
-    NSLayoutConstraint *_baselineToTop;
-    NSArray *_baselineToBaselineConstraints;
-    NSArray *_baselineToBottomConstraints;
-    UIColor *_openingStateColor;
+    MKPlaceHoursView *_hoursView;
+    NSLayoutConstraint *_topAnchorToTopLabelBaseline;
 }
 
-@property(retain, nonatomic) UIColor *openingStateColor; // @synthesize openingStateColor=_openingStateColor;
+@property(retain, nonatomic) NSLayoutConstraint *topAnchorToTopLabelBaseline; // @synthesize topAnchorToTopLabelBaseline=_topAnchorToTopLabelBaseline;
+@property(retain, nonatomic) MKPlaceHoursView *hoursView; // @synthesize hoursView=_hoursView;
 - (void).cxx_destruct;
-- (void)_contentSizeDidChange;
-- (void)setDays:(id)arg1 hours:(id)arg2 shouldStack:(_Bool)arg3 isViewControllerExpanding:(_Bool)arg4 shouldCollapseFurther:(_Bool)arg5;
-- (id)_standardLabel;
-- (_Bool)wantsDefaultClipping;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (void)hoursViewDidUpdate:(id)arg1;
+- (void)_setUpConstraints;
+- (void)_setUpViewsForPlaceHoursDayRow;
+- (id)initWithBusinessHours:(id)arg1 frame:(struct CGRect)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

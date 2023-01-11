@@ -13,6 +13,8 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityHint;
 - (struct CGPoint)accessibilityActivationPoint;
+- (struct CGRect)accessibilityFrame;
+- (id)accessibilityPath;
 - (_Bool)accessibilityActivate;
 - (_Bool)_accessibilitySupportsActivateAction;
 - (unsigned long long)accessibilityTraits;

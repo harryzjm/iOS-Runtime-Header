@@ -9,19 +9,19 @@
 #import <UIKitCore/NSCopying-Protocol.h>
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, UIBezierPath, UIColor, UIDragPreviewParameters;
+@class UIBezierPath, UIColor, UIDragPreviewParameters;
 
 @interface _DUIPreview : NSObject <NSSecureCoding, NSCopying>
 {
-    _Bool _springboardPlatterStyle;
     _Bool _fadesHorizontally;
     _Bool _fadesVertically;
     _Bool _hidesSourceView;
-    _Bool _textMode;
-    NSDictionary *_springboardParameters;
+    _Bool _avoidAnimation;
+    _Bool _wantsSuppressedMask;
     UIColor *_backgroundColor;
     UIBezierPath *_outline;
     double _originalRotation;
+    long long _previewMode;
     struct CGPoint _contentOffset;
     struct CGSize _contentSize;
     struct CGPoint _originalCenter;
@@ -33,8 +33,10 @@
 + (id)defaultPreviewWithFrame:(struct CGRect)arg1;
 + (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) struct CGSize viewScaleFactor; // @synthesize viewScaleFactor=_viewScaleFactor;
+@property(nonatomic) _Bool wantsSuppressedMask; // @synthesize wantsSuppressedMask=_wantsSuppressedMask;
+@property(nonatomic) _Bool avoidAnimation; // @synthesize avoidAnimation=_avoidAnimation;
 @property(nonatomic) struct CGPoint liftAnchorPoint; // @synthesize liftAnchorPoint=_liftAnchorPoint;
-@property(nonatomic) _Bool textMode; // @synthesize textMode=_textMode;
+@property(nonatomic) long long previewMode; // @synthesize previewMode=_previewMode;
 @property(nonatomic) double originalRotation; // @synthesize originalRotation=_originalRotation;
 @property(nonatomic) struct CGPoint originalCenter; // @synthesize originalCenter=_originalCenter;
 @property(copy, nonatomic) UIBezierPath *outline; // @synthesize outline=_outline;
@@ -44,8 +46,6 @@
 @property(readonly, nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property(readonly, nonatomic) struct CGPoint contentOffset; // @synthesize contentOffset=_contentOffset;
 @property(copy, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
-@property(copy, nonatomic) NSDictionary *_springboardParameters; // @synthesize _springboardParameters;
-@property(nonatomic) _Bool _springboardPlatterStyle; // @synthesize _springboardPlatterStyle;
 - (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -53,6 +53,8 @@
 - (id)initWithCoder:(id)arg1;
 @property(readonly, nonatomic) struct CGSize croppedScaledSize;
 @property(readonly, nonatomic) struct CGPoint croppedScaledAnchorPoint;
+@property(readonly, nonatomic) _Bool _springboardPlatterStyle;
+@property(nonatomic) _Bool textMode;
 - (double)_topOffset;
 @property(readonly, nonatomic) struct CGSize unscaledSize;
 @property(readonly, nonatomic) struct CGPoint unscaledAnchorPoint;

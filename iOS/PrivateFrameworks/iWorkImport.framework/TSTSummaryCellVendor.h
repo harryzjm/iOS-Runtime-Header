@@ -4,22 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TSTInfo;
+@class TSTTableInfo;
 
 __attribute__((visibility("hidden")))
 @interface TSTSummaryCellVendor
 {
     _Bool _hasCustomFormatsToPaste;
-    TSTInfo *_tableInfo;
-    unordered_map_7f472e10 _cellUIDMap;
+    TSTTableInfo *_tableInfo;
+    map_cd95b0b7 _cellUIDMap;
 }
 
 @property(nonatomic) _Bool hasCustomFormatsToPaste; // @synthesize hasCustomFormatsToPaste=_hasCustomFormatsToPaste;
-@property(nonatomic) __weak TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
-@property(readonly, nonatomic) unordered_map_7f472e10 *cellUIDMap; // @synthesize cellUIDMap=_cellUIDMap;
+@property(readonly, nonatomic) map_cd95b0b7 *cellUIDMap; // @synthesize cellUIDMap=_cellUIDMap;
+@property(readonly, nonatomic) __weak TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)copyWithContext:(id)arg1 tableInfo:(id)arg2;
 - (void)saveToArchive:(struct SummaryCellVendorArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromArchive:(const struct SummaryCellVendorArchive *)arg1 unarchiver:(id)arg2;

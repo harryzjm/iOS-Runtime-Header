@@ -6,6 +6,7 @@
 
 @class CKAudioProgressView, UIDateLabel;
 
+__attribute__((visibility("hidden")))
 @interface CKSharedAudioCollectionViewCell
 {
     CKAudioProgressView *_audioPlaybackView;

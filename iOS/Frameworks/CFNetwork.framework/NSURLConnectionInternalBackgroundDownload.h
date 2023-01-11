@@ -10,7 +10,6 @@
 
 @class NSAsyncSSDownloadManager, NSCountedSet, NSMutableArray, NSString, NSTimer, SSDownloadHandler;
 
-__attribute__((visibility("hidden")))
 @interface NSURLConnectionInternalBackgroundDownload <NSURLConnectionRequired, SSDownloadManagerObserver, SSDownloadHandlerDelegate>
 {
     struct __CFRunLoopSource *_source;

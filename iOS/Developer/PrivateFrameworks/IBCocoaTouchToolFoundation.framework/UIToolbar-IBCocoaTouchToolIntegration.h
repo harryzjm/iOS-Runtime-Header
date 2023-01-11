@@ -8,9 +8,6 @@
 
 @interface UIToolbar (IBCocoaTouchToolIntegration)
 - (_Bool)ibRequiresWidthConstraintForAmbiguityDuringEngineBootstrapping;
-- (id)itemImageBitmaps;
-- (id)titleRectsArray;
-- (id)itemFramesArray;
 - (void)ibGenerateRectsForSpaceItems;
 - (id)_ibItemFramesArray;
 - (void)setItems:(id)arg1;

@@ -4,14 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface PXCMMPhotoKitSaveActionPerformer
+#import <PhotosUICore/PXCMMPhotoKitActionPerformer-Protocol.h>
+
+@class PXCMMPhotoKitSession;
+
+@interface PXCMMPhotoKitSaveActionPerformer <PXCMMPhotoKitActionPerformer>
 {
 }
 
 + (id)sharedSavingWorkerQueue;
+- (void)_completeSavingForAssets:(id)arg1 count:(long long)arg2;
 - (void)performUserInteractionTask;
 - (_Bool)isCancellable;
 - (id)createActionProgress;
+
+// Remaining properties
+@property(readonly, nonatomic) PXCMMPhotoKitSession *session;
 
 @end
 

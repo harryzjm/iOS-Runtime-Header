@@ -12,9 +12,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityReplaceCharactersAtCursor:(unsigned long long)arg1 withString:(id)arg2;
-- (void)_accessibilityInsertText:(id)arg1 atPosition:(long long)arg2;
-- (_Bool)_accessibilityHandwritingAttributeCanDeleteCharacter;
-- (_Bool)_accessibilityHandwritingAttributeAcceptsRawInput;
+- (void)_accessibilityInsertText:(id)arg1;
+- (_Bool)_accessibilityHasDeletableText;
+- (_Bool)_accessibilitySupportsTextInsertionAndDeletion;
 - (unsigned long long)_accessibilityHandwritingAttributeAllowedCharacterSets;
 - (unsigned long long)_accessibilityHandwritingAttributePreferredCharacterSet;
 - (_Bool)_accessibilityHandwritingAttributeShouldPlayKeyboardSecureClickSound;

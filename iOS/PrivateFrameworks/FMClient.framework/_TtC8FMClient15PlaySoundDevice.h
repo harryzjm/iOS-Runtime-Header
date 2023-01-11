@@ -21,7 +21,7 @@
 + (id)PlaySoundDeviceLocalityUnknown;
 + (id)PlaySoundDeviceLocalityRemote;
 + (id)PlaySoundDeviceLocalityLocal;
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)init;
 @property(nonatomic, readonly) NSString *description;
 @property(nonatomic, readonly) NSString *debugDescription;
@@ -29,8 +29,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithServerId:(id)arg1 locality:(id)arg2 safetyWarningConfirmed:(_Bool)arg3;
 @property(nonatomic, readonly) _Bool safetyWarningConfirmed; // @synthesize safetyWarningConfirmed;
-@property(nonatomic, readonly) NSString *locality; // @synthesize locality;
-@property(nonatomic, readonly) NSString *serverId; // @synthesize serverId;
+@property(nonatomic, readonly) NSString *locality;
+@property(nonatomic, readonly) NSString *serverId;
 
 @end
 

@@ -12,10 +12,10 @@
 }
 
 @property(readonly, retain, nonatomic) CRRecentContact *recentContact; // @synthesize recentContact=_recentContact;
+- (void).cxx_destruct;
 - (id)unlocalizedLabel;
 - (id)placeholderName;
 - (id)label;
-- (void)dealloc;
 - (id)initWithChildren:(id)arg1 displayString:(id)arg2 recentContact:(id)arg3;
 
 @end

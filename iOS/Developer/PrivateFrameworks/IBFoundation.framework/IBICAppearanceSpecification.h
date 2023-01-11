@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <IBFoundation/IBBinaryArchiving-Protocol.h>
 #import <IBFoundation/NSCopying-Protocol.h>
 
-@class IBICContrastAppearance, IBICLuminosityAppearance, IBICVibrancyAppearance, NSArray;
+@class IBICContrastAppearance, IBICLuminosityAppearance, IBICVibrancyAppearance, NSArray, NSString;
 
-@interface IBICAppearanceSpecification : NSObject <NSCopying>
+@interface IBICAppearanceSpecification : NSObject <NSCopying, IBBinaryArchiving>
 {
     IBICLuminosityAppearance *_luminosityAppearance;
     IBICVibrancyAppearance *_vibrancyAppearance;
@@ -20,10 +21,17 @@
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSArray *slotComponents;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqualToAppearanceSpecification:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (void)encodeWithBinaryArchiver:(id)arg1;
+- (id)initWithBinaryUnarchiver:(id)arg1;
 - (id)initWithLuminosityAppearance:(id)arg1 vibrancyAppearance:(id)arg2 contrastAppearance:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

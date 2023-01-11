@@ -13,10 +13,14 @@
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)observationWithSceneprints:(id)arg1;
 + (id)sceneprintCurrentVersion;
 @property(readonly, copy, nonatomic) NSString *sceneprintVersion; // @synthesize sceneprintVersion=_sceneprintVersion;
 @property(readonly, nonatomic) NSArray *sceneprints; // @synthesize sceneprints=_sceneprints;
 - (void).cxx_destruct;
+- (id)data;
+- (unsigned long long)elementCount;
+- (unsigned long long)elementType;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;

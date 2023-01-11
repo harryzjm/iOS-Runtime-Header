@@ -12,7 +12,6 @@
 @property(readonly, nonatomic) double accessoryLineHeight; // @synthesize accessoryLineHeight=_accessoryLineHeight;
 - (double)_titleTopOffsetWithTemplate:(id)arg1;
 - (double)imageAspectRatios;
-- (id)accessoryIconColor;
 - (double)accessoryViewToBottom;
 - (double)titleToAccessoryViewSpacingWithTemplate:(id)arg1;
 - (double)publisherLogoToTitleSpacingWithTemplate:(id)arg1;

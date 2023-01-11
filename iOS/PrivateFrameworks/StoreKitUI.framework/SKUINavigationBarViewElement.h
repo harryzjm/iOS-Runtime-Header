@@ -6,6 +6,7 @@
 
 @class NSArray, UIColor;
 
+__attribute__((visibility("hidden")))
 @interface SKUINavigationBarViewElement
 {
     _Bool _hidesShadow;

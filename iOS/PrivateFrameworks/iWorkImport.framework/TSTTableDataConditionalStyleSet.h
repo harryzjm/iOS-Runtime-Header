@@ -12,11 +12,15 @@ __attribute__((visibility("hidden")))
     TSTConditionalStyleSet *_conditionalStyleSet;
 }
 
++ (id)objectWithConditionalStyleSet:(id)arg1 refCount:(unsigned int)arg2;
 @property(retain, nonatomic) TSTConditionalStyleSet *conditionalStyleSet; // @synthesize conditionalStyleSet=_conditionalStyleSet;
 - (void).cxx_destruct;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
+- (unsigned long long)estimateByteSize;
 - (unsigned long long)hash;
+- (void)encodeToArchive:(struct TableDataList_ListEntry *)arg1 key:(unsigned int)arg2 archiver:(id)arg3;
+- (void)loadFromArchive:(const struct TableDataList_ListEntry *)arg1 unarchiver:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initObjectWithConditionalStyleSet:(id)arg1 refCount:(unsigned int)arg2;
 
 @end

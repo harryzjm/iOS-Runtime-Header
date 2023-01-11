@@ -10,7 +10,7 @@
 #import <iWorkImport/TSWPOverlappingField-Protocol.h>
 #import <iWorkImport/TSWPTextSpanningObject-Protocol.h>
 
-@class NSString, PKDrawing, TSWPStorage;
+@class NSString, TSKPKDrawing, TSWPStorage;
 @protocol TSKPencilAnnotationStorage;
 
 __attribute__((visibility("hidden")))
@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, nonatomic) PKDrawing *drawing; // @dynamic drawing;
+@property(readonly, nonatomic) TSKPKDrawing *drawing; // @dynamic drawing;
 @property(readonly) Class superclass;
 
 @end

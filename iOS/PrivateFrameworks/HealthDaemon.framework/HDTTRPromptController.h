@@ -13,7 +13,7 @@
 {
     HDProfile *_profile;
     NSObject<OS_os_log> *_loggingCategory;
-    int _isPresenting;
+    _Atomic _Bool _isPresenting;
     _Bool _canRepromptOnSameBuild;
     NSString *_name;
     double _minimumPromptInterval;

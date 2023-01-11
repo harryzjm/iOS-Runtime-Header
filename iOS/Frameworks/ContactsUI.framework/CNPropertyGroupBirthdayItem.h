@@ -9,7 +9,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)emptyValueForLabel:(id)arg1;
++ (id)_dateForGroup:(id)arg1;
++ (id)initialValueForLabel:(id)arg1 group:(id)arg2;
 - (void)updateLabeledValueWithLabel:(id)arg1;
 - (id)displayLabel;
 

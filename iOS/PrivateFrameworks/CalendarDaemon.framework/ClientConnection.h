@@ -17,6 +17,8 @@
     long long _eventAccess;
     long long _reminderAccess;
     struct CalDatabase *_database;
+    id <CADAccountAccessHandler> _accountAccessHandler;
+    id <CADAccountAccessHandler> _strictAccountAccessHandler;
     NSObject<OS_dispatch_queue> *_dbQueue;
     NSOperationQueue *_operations;
     NSMutableDictionary *_insertedObjects;
@@ -29,10 +31,8 @@
     ClientIdentity *_identity;
     NSXPCConnection *_xpcConnection;
     CADDatabaseInitializationOptions *_databaseInitializationOptions;
-    id <CADAccountAccessHandler> _accountAccessHandler;
 }
 
-@property(readonly, nonatomic) id <CADAccountAccessHandler> accountAccessHandler; // @synthesize accountAccessHandler=_accountAccessHandler;
 @property(readonly) _Bool initializationOptionsSet; // @synthesize initializationOptionsSet=_initializationOptionsSet;
 @property(retain, nonatomic) CADDatabaseInitializationOptions *databaseInitializationOptions; // @synthesize databaseInitializationOptions=_databaseInitializationOptions;
 @property(retain, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
@@ -45,8 +45,10 @@
 - (_Bool)isCalendarItemManaged:(void *)arg1;
 - (_Bool)isCalendarManaged:(void *)arg1;
 - (_Bool)isStoreManaged:(void *)arg1;
+- (_Bool)isNotificationRestricted:(void *)arg1 forAction:(unsigned long long)arg2;
 - (_Bool)isCalendarItemRestricted:(void *)arg1 forAction:(unsigned long long)arg2;
 - (_Bool)isCalendarRestricted:(void *)arg1 forAction:(unsigned long long)arg2;
+- (_Bool)isStoreRestricted:(void *)arg1 forAction:(unsigned long long)arg2 strict:(_Bool)arg3;
 - (_Bool)isStoreRestricted:(void *)arg1 forAction:(unsigned long long)arg2;
 - (id)restrictedCalendarRowIDsForAction:(unsigned long long)arg1;
 - (_Bool)isObjectWithObjectIDAJunkEvent:(id)arg1;
@@ -67,6 +69,9 @@
 - (void)closeDatabase;
 - (void)dealloc;
 - (void)handleDatabaseChanged;
+- (id)strictAccountAccessHandler;
+@property(readonly, nonatomic) id <CADAccountAccessHandler> accountAccessHandler;
+- (id)_createManagedConfigAccountAccessHandlerWithValidator:(id)arg1;
 - (void)_initAccountAccessHandler;
 - (id)initWithXPCConnection:(id)arg1;
 

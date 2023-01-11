@@ -17,6 +17,7 @@
     NSString *_title;
     NSURL *_webpageURL;
     NSURL *_referrerURL;
+    NSString *_targetContentIdentifier;
     SFCompanionAdvertiser *_advertiser;
     NSObject<OS_dispatch_group> *_advertiserCompletedGroup;
     SFCompanionAdvertiser *_resumerAdvertiser;
@@ -110,6 +111,7 @@
 @property(copy) NSDictionary *options; // @synthesize options=_options;
 @property(readonly) unsigned long long suggestedActionType; // @synthesize suggestedActionType=_suggestedActionType;
 @property(readonly, copy) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property(copy) NSString *targetContentIdentifier; // @synthesize targetContentIdentifier=_targetContentIdentifier;
 @property(copy) NSString *dynamicIdentifier; // @synthesize dynamicIdentifier=_dynamicIdentifier;
 @property(copy) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
 @property(readonly) __weak UAUserActivityManager *manager; // @synthesize manager=_manager;
@@ -149,7 +151,7 @@
 - (void)_resignCurrent;
 - (void)becomeCurrent;
 - (void)getContinuationStreamsWithCompletionHandler:(CDUnknownBlockType)arg1;
-@property id <UAUserActivityDelegate> delegate; // @dynamic delegate;
+@property __weak id <UAUserActivityDelegate> delegate; // @dynamic delegate;
 @property _Bool supportsContinuationStreams; // @dynamic supportsContinuationStreams;
 @property(copy) NSData *streamsData;
 @property __weak NSUserActivity *parentUserActivity;

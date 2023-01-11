@@ -6,7 +6,7 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFHomeBuilder, HFItem, HFResidentDeviceItemProvider, HUUserNotificationTopicListModule;
+@class HFHomeBuilder, HFItem, HUUserNotificationTopicListModule;
 
 @interface HUEditLocationItemManager : HFItemManager
 {
@@ -21,17 +21,18 @@
     HFItem *_detailNotesItem;
     HFItem *_softwareUpdateItem;
     HFItem *_accessControlItem;
+    HFItem *_bridgesAndResidentDevicesItem;
+    HFItem *_networkRoutersListItem;
     HFItem *_removeItem;
     unsigned long long _context;
-    HFResidentDeviceItemProvider *_residentDeviceItemProvider;
     HFHomeBuilder *_homeBuilder;
 }
 
-+ (CDUnknownBlockType)residentDeviceItemComparator;
 @property(retain, nonatomic) HFHomeBuilder *homeBuilder; // @synthesize homeBuilder=_homeBuilder;
-@property(retain, nonatomic) HFResidentDeviceItemProvider *residentDeviceItemProvider; // @synthesize residentDeviceItemProvider=_residentDeviceItemProvider;
 @property(readonly, nonatomic) unsigned long long context; // @synthesize context=_context;
 @property(retain, nonatomic) HFItem *removeItem; // @synthesize removeItem=_removeItem;
+@property(retain, nonatomic) HFItem *networkRoutersListItem; // @synthesize networkRoutersListItem=_networkRoutersListItem;
+@property(retain, nonatomic) HFItem *bridgesAndResidentDevicesItem; // @synthesize bridgesAndResidentDevicesItem=_bridgesAndResidentDevicesItem;
 @property(retain, nonatomic) HFItem *accessControlItem; // @synthesize accessControlItem=_accessControlItem;
 @property(retain, nonatomic) HFItem *softwareUpdateItem; // @synthesize softwareUpdateItem=_softwareUpdateItem;
 @property(retain, nonatomic) HFItem *detailNotesItem; // @synthesize detailNotesItem=_detailNotesItem;

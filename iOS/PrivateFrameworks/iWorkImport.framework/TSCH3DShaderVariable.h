@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     _Bool mIsSpecial;
     TSCH3DShaderVariable *mGenericName;
     NSArray *mElements;
+    unsigned long long mComponentCount;
 }
 
 + (id)variableWithName:(id)arg1 type:(struct NSString *)arg2 precision:(struct NSString *)arg3 arraySize:(unsigned long long)arg4 shaderType:(struct TSCH3DShaderType)arg5 isSpecial:(_Bool)arg6 generic:(id)arg7;
@@ -34,6 +35,9 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (id)variableAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) struct TSCH3DShaderType initialLinkType;
+@property(readonly, nonatomic) unsigned long long componentCount;
+@property(readonly, nonatomic) NSString *commonShaderType;
+@property(readonly, nonatomic) _Bool isTexture;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)description;

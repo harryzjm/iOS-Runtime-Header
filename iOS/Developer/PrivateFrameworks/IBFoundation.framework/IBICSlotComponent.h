@@ -32,6 +32,7 @@
 + (void)setComponentID:(long long)arg1;
 + (long long)componentID;
 + (id)unspecifiedValuePlaceholder;
++ (id)componentFilterMatchingAllValuesIncludingUnspecifiedValuePlaceholder:(_Bool)arg1;
 + (id)componentFilterMatchingIdentifiers:(id)arg1;
 + (id)componentFilterMatching:(id)arg1;
 + (id)unspecifiedValueFilter;

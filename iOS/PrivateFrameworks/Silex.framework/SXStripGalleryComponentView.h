@@ -5,15 +5,15 @@
 //
 
 #import <Silex/SXFullscreenCanvasShowable-Protocol.h>
+#import <Silex/SXFullscreenCaptionDataSource-Protocol.h>
 #import <Silex/SXImageViewDelegate-Protocol.h>
 #import <Silex/SXItemizedScrollViewDataSource-Protocol.h>
 #import <Silex/SXItemizedScrollViewDelegate-Protocol.h>
-#import <Silex/SXTextSourceDataSource-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableSet, NSString, SXFullscreenCanvasController, SXImageView, SXItemizedScrollView, SXMediaViewEvent, UIView;
 @protocol SXFullscreenCanvasControllerFactory, SXImageViewFactory;
 
-@interface SXStripGalleryComponentView <SXFullscreenCanvasShowable, SXItemizedScrollViewDataSource, SXItemizedScrollViewDelegate, SXImageViewDelegate, SXTextSourceDataSource>
+@interface SXStripGalleryComponentView <SXFullscreenCanvasShowable, SXItemizedScrollViewDataSource, SXItemizedScrollViewDelegate, SXImageViewDelegate, SXFullscreenCaptionDataSource>
 {
     _Bool _loadedAtleastOneImage;
     id <SXImageViewFactory> _imageViewFactory;
@@ -59,13 +59,11 @@
 - (void)submitEvents;
 - (void)trackExposedGalleryItems;
 - (void)visibilityStateDidChangeFromState:(long long)arg1;
-- (id)contentSizeCategoryForTextSource:(id)arg1;
-- (id)textStyleForTextSource:(id)arg1;
-- (id)inlineTextStylesForTextSource:(id)arg1;
-- (id)additionsForTextSource:(id)arg1;
-- (id)textRulesForTextSource:(id)arg1;
-- (id)textResizerForTextSource:(id)arg1;
-- (id)documentControllerForTextSource:(id)arg1;
+- (id)contentSizeCategoryForCaption:(id)arg1;
+- (id)componentTextStyleForIdentifier:(id)arg1 inheritingFromComponentTextStyle:(id)arg2;
+- (id)textStyleForIdentifier:(id)arg1;
+- (id)textRulesForCaption:(id)arg1;
+- (id)textResizerForCaption:(id)arg1;
 - (_Bool)gestureShouldBegin:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (struct CGRect)snapRegion;
@@ -97,7 +95,7 @@
 - (id)visibleGalleryItemViewForImageIdentifier:(id)arg1;
 - (unsigned long long)analyticsGalleryType;
 - (unsigned long long)analyticsMediaType;
-- (_Bool)transitionViewUsesThumbnail;
+- (_Bool)usesThumbnailWithImageIdentifier:(id)arg1;
 - (struct CGRect)transitionContentFrame;
 - (struct CGRect)transitionVisibleFrame;
 - (id)transitionContentView;
@@ -111,10 +109,11 @@
 - (struct CGRect)itemizedScrollView:(id)arg1 frameForViewAtIndex:(unsigned long long)arg2;
 - (unsigned long long)numberOfViewsInItemizedScrollView:(id)arg1;
 - (id)createViewForViewIndex:(unsigned long long)arg1;
+- (void)discardContents;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
 - (void)receivedInfo:(id)arg1 fromLayoutingPhaseWithIdentifier:(id)arg2;
 - (void)loadComponent:(id)arg1;
-- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 appStateMonitor:(id)arg6 imageViewFactory:(id)arg7 canvasControllerFactory:(id)arg8;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 mediaSharingPolicyProvider:(id)arg7 imageViewFactory:(id)arg8 canvasControllerFactory:(id)arg9;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

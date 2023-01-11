@@ -14,13 +14,9 @@
 - (_Bool)_accessibilityServesAsContainingParentForOrdering;
 - (long long)_accessibilityCompareElement:(id)arg1 toElement:(id)arg2;
 - (void)_axFormatAXLabelOnLabel:(id)arg1 prefix:(id)arg2 suffixFormat:(id)arg3;
-- (void)_axUpdateRings;
 - (void)_axUpdateDigitalLabels;
-- (void)_axSetTimeViewAXLabel;
-- (void)_axUpdateTimeView;
 - (void)setShowSeconds:(_Bool)arg1;
 - (void)_applyEntryModel:(id)arg1 byFraction:(double)arg2 updateLabels:(_Bool)arg3 animated:(_Bool)arg4;
-- (void)_loadSnapshotContentViews;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

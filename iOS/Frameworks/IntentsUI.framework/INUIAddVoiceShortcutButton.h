@@ -6,14 +6,17 @@
 
 #import <UIKit/UIButton.h>
 
-@class CAFilter, INShortcut, INVoiceShortcut, NSLayoutConstraint, UIImageView, UILabel;
+#import <IntentsUI/UIDragInteractionDelegate-Protocol.h>
+
+@class CAFilter, INShortcut, INVoiceShortcut, NSLayoutConstraint, NSString, UIImageView, UILabel;
 @protocol INUIAddVoiceShortcutButtonDelegate;
 
-@interface INUIAddVoiceShortcutButton : UIButton
+@interface INUIAddVoiceShortcutButton : UIButton <UIDragInteractionDelegate>
 {
     unsigned long long _style;
     id <INUIAddVoiceShortcutButtonDelegate> _delegate;
     INShortcut *_shortcut;
+    double _cornerRadius;
     INVoiceShortcut *_voiceShortcut;
     CAFilter *_highlightFilter;
     UIImageView *_sphiriImageView;
@@ -23,12 +26,8 @@
     NSLayoutConstraint *_checkmarkHeightConstraint;
     NSLayoutConstraint *_addToSiriLeadingConstraint;
     NSLayoutConstraint *_addedToSiriLeadingConstraint;
-    NSLayoutConstraint *_addToSiriBottomConstraint;
-    NSLayoutConstraint *_addedToSiriBottomConstraint;
 }
 
-@property(retain, nonatomic) NSLayoutConstraint *addedToSiriBottomConstraint; // @synthesize addedToSiriBottomConstraint=_addedToSiriBottomConstraint;
-@property(retain, nonatomic) NSLayoutConstraint *addToSiriBottomConstraint; // @synthesize addToSiriBottomConstraint=_addToSiriBottomConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *addedToSiriLeadingConstraint; // @synthesize addedToSiriLeadingConstraint=_addedToSiriLeadingConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *addToSiriLeadingConstraint; // @synthesize addToSiriLeadingConstraint=_addToSiriLeadingConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *checkmarkHeightConstraint; // @synthesize checkmarkHeightConstraint=_checkmarkHeightConstraint;
@@ -38,17 +37,25 @@
 @property(nonatomic) __weak UIImageView *sphiriImageView; // @synthesize sphiriImageView=_sphiriImageView;
 @property(retain, nonatomic) CAFilter *highlightFilter; // @synthesize highlightFilter=_highlightFilter;
 @property(retain, nonatomic) INVoiceShortcut *voiceShortcut; // @synthesize voiceShortcut=_voiceShortcut;
+@property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(retain, nonatomic) INShortcut *shortcut; // @synthesize shortcut=_shortcut;
 @property(nonatomic) __weak id <INUIAddVoiceShortcutButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 - (void).cxx_destruct;
+- (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
+- (void)prepareForInterfaceBuilder;
+- (id)accessibilityLabel;
 - (void)_handleVoiceShortcutUpdateNotification:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)_checkAndUpdateForShortcut;
 - (void)_didTapButton;
 - (void)_updatePhraseVisibility;
 - (void)_updateContent;
-- (id)_sphiriImageNameForHeight:(double)arg1;
-- (id)_sphiriImageForHeight:(double)arg1;
+- (id)_dynamicColorWithLightColor:(id)arg1 darkColor:(id)arg2;
+- (id)_dynamicBlackColor;
+- (id)_dynamicWhiteColor;
+- (id)_sphiriImage;
+- (_Bool)_shouldUseLargerFont;
 - (id)_phraseFont;
 - (id)_addToSiriFont;
 - (id)_phraseText;
@@ -59,11 +66,21 @@
 - (id)_strokeColorForStyle:(unsigned long long)arg1;
 - (id)_textColorForStyle:(unsigned long long)arg1;
 - (id)_backgroundColorForStyle:(unsigned long long)arg1;
+- (void)_updateColors;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)setHighlighted:(_Bool)arg1;
+- (void)setStyle:(unsigned long long)arg1;
 - (void)dealloc;
+- (void)_configureWithStyle:(unsigned long long)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithStyle:(unsigned long long)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

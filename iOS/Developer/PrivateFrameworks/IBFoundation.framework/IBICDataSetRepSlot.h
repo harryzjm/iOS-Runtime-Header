@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IBICColorSpace, IBICGraphicsFeatureSet, IBICIdiom, IBICMemoryClass;
+@class IBICColorSpace, IBICGraphicsFeatureSet, IBICIdiom, IBICMemoryClass, IBICSubtype;
 
 @interface IBICDataSetRepSlot
 {
     IBICIdiom *_idiom;
+    IBICSubtype *_subtype;
     IBICMemoryClass *_memory;
     IBICGraphicsFeatureSet *_graphicsFeatureSet;
     IBICColorSpace *_colorSpace;
@@ -18,14 +19,15 @@
 + (id)slotWithIdiom:(id)arg1 memory:(id)arg2 graphicsFeatureSet:(id)arg3;
 + (id)slotWithIdiom:(id)arg1;
 + (id)genesisSlotsForSlots:(id)arg1;
-+ (id)slotFilterWithIdiomFilter:(id)arg1 memoryFilter:(id)arg2 graphicsFeatureSetFilter:(id)arg3 colorSpaceFilter:(id)arg4;
-+ (id)slotFilterWithNilMatching:(long long)arg1 idioms:(id)arg2 memoryClasses:(id)arg3 graphicsFeatureSets:(id)arg4 colorSpaces:(id)arg5;
-+ (id)slotFilterUnionedWithStandardUniversalCounterpart:(_Bool)arg1 idioms:(id)arg2 memoryClasses:(id)arg3 graphicsFeatureSets:(id)arg4 colorSpaces:(id)arg5;
++ (id)slotFilterWithIdiomFilter:(id)arg1 subtypeFilter:(id)arg2 memoryFilter:(id)arg3 graphicsFeatureSetFilter:(id)arg4 colorSpaceFilter:(id)arg5;
++ (id)slotFilterWithNilMatching:(long long)arg1 idioms:(id)arg2 subtypes:(id)arg3 memoryClasses:(id)arg4 graphicsFeatureSets:(id)arg5 colorSpaces:(id)arg6;
++ (id)slotFilterUnionedWithStandardUniversalCounterpart:(_Bool)arg1 idioms:(id)arg2 subtypes:(id)arg3 memoryClasses:(id)arg4 graphicsFeatureSets:(id)arg5 colorSpaces:(id)arg6;
 + (Class)assetRepClass;
 + (Class)assetSetClass;
 @property(readonly) IBICColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 @property(readonly) IBICGraphicsFeatureSet *graphicsFeatureSet; // @synthesize graphicsFeatureSet=_graphicsFeatureSet;
 @property(readonly) IBICMemoryClass *memory; // @synthesize memory=_memory;
+@property(readonly) IBICSubtype *subtype; // @synthesize subtype=_subtype;
 @property(readonly) IBICIdiom *idiom; // @synthesize idiom=_idiom;
 - (void).cxx_destruct;
 - (id)outputFileNameGivenBaseName:(id)arg1 andExtension:(id)arg2;

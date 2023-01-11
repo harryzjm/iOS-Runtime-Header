@@ -13,9 +13,9 @@
 
 + (_Bool)canInitiateDistributedPhotoStreamDeletionForAssetUUID:(id)arg1;
 + (_Bool)writeBreadcrumbContent:(id)arg1 forHashString:(id)arg2;
-+ (id)publishBreadcrumbsPath;
 + (id)iCloudServiceAccount;
-+ (_Bool)photoStreamsEnabled;
++ (_Bool)photoStreamsEnabledForPhotoLibraryURL:(id)arg1;
++ (_Bool)_photoStreamsEnabled;
 + (id)sharedPhotoStreamsHelper;
 - (void)handleMPSStateIfNecessary;
 - (void)fetchMPSStateWithCompletion:(CDUnknownBlockType)arg1;
@@ -39,7 +39,6 @@
 - (long long)maxPixelSizeForDerivative;
 - (id)imageLimitsByAssetType;
 - (long long)_serverIntegerLimitForKey:(id)arg1 debugDefaultKey:(id)arg2;
-- (_Bool)shouldUploadVideos;
 - (_Bool)shouldPublishScreenShots;
 - (void)pollForNewSubscriptionContentOncePerAppForegroundSession;
 - (void)pollForNewSubscriptionContent;

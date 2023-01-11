@@ -9,7 +9,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)_alloc;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 - (id)objectEnumerator;
 - (id)objectAtIndex:(unsigned long long)arg1;
@@ -20,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)retainCount;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copy;
-- (id)_init;
 - (void)dealloc;
 - (id)init;
 

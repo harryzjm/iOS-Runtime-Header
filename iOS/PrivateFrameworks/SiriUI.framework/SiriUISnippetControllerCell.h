@@ -16,6 +16,7 @@
     SiriUIKeyline *_bottomKeyline;
     SiriUIContentButton *_snippetPunchOutButton;
     UIView *_snippetBackgroundView;
+    UIView *_materialView;
     UIView *_clippingContainerView;
     UIView *_cancelledTouchPreventionView;
     UILabel *_cancelledLabel;
@@ -32,6 +33,7 @@
 + (id)elementKind;
 + (double)defaultHeight;
 + (id)reuseIdentifier;
++ (struct CGRect)contentBoundsForCollectionViewCellBounds:(struct CGRect)arg1 snippetViewController:(id)arg2;
 @property(nonatomic, getter=_snippetEdgeInsets, setter=_setSnippetEdgeInsets:) struct UIEdgeInsets snippetEdgeInsets; // @synthesize snippetEdgeInsets=_snippetEdgeInsets;
 @property(nonatomic) __weak SiriUISnippetViewController *snippetViewController; // @synthesize snippetViewController=_snippetViewController;
 - (void).cxx_destruct;

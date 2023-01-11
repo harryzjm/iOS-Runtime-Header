@@ -11,6 +11,7 @@
     NSPredicate *_predicate;
 }
 
++ (void)provideCapabilitiesToBuilder:(id)arg1;
 + (_Bool)supportsSecureCoding;
 @property(readonly, copy) NSPredicate *predicate; // @synthesize predicate=_predicate;
 - (void).cxx_destruct;
@@ -20,10 +21,12 @@
 - (id)requiredKeyPathsOrError:(id *)arg1;
 - (_Bool)supportsAttributeKeyPathAnalysis;
 - (_Bool)supportsRemoteEvaluation;
+- (_Bool)canBeRemotelyEvaluatedWithCapabilities:(id)arg1;
 - (id)transform:(id)arg1 relatedElements:(id *)arg2;
 - (_Bool)_elementMatches:(id)arg1 relatedElement:(id *)arg2;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithPredicate:(id)arg1;
 
 @end

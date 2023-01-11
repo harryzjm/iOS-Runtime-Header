@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 @property(readonly) struct CGPoint screenPoint;
 - (struct CGPoint)_untransformedScreenPoint;
+- (id)device;
 @property(readonly) XCUIElement *referencedElement;
 - (id)coordinateWithOffset:(struct CGVector)arg1;
 - (id)description;
@@ -36,6 +37,9 @@
 - (void)pressForDuration:(double)arg1;
 - (void)doubleTap;
 - (void)tap;
+- (void)_pressWithPressure:(double)arg1 pressDuration:(double)arg2 holdDuration:(double)arg3 releaseDuration:(double)arg4 activityTitle:(id)arg5;
+- (void)pressWithPressure:(double)arg1 duration:(double)arg2;
+- (void)forcePress;
 
 @end
 

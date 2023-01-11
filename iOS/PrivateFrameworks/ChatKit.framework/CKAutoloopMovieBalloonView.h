@@ -13,6 +13,7 @@
 {
     _Bool _isJellyfishVideo;
     _Bool _isMuted;
+    _Bool _isListeningToVideoPlayer;
     CKMovieMediaObject *_mediaObject;
     ISVideoPlayerUIView *_videoPlayer;
     ISWrappedAVPlayer *_avPlayer;
@@ -24,7 +25,9 @@
 + (id)_autoloopAVAudioSessionQueue;
 + (_Bool)isEnabled;
 + (Class)VideoPlayerUIViewClass;
++ (Class)AVPlayerLayerClass;
 + (Class)AVPlayerClass;
+@property(nonatomic) _Bool isListeningToVideoPlayer; // @synthesize isListeningToVideoPlayer=_isListeningToVideoPlayer;
 @property(retain, nonatomic) UIView *snapshotView; // @synthesize snapshotView=_snapshotView;
 @property(nonatomic) _Bool isMuted; // @synthesize isMuted=_isMuted;
 @property(retain, nonatomic) UIImageView *muteButton; // @synthesize muteButton=_muteButton;
@@ -34,6 +37,7 @@
 @property(nonatomic) _Bool isJellyfishVideo; // @synthesize isJellyfishVideo=_isJellyfishVideo;
 @property(retain, nonatomic) CKMovieMediaObject *mediaObject; // @synthesize mediaObject=_mediaObject;
 - (void).cxx_destruct;
+- (void)previewDidChange:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)avPlayerDidDeallocate;
 - (void)avPlayer:(id)arg1 itemDidPlayToEnd:(id)arg2;
@@ -47,10 +51,13 @@
 - (void)didMoveToWindow;
 - (void)prepareForDisplay;
 - (void)prepareForReuse;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)stopListeningToVideoPlayer;
+- (void)startListeningToVideoPlayer;
 - (void)layoutSubviews;
 @property(readonly, copy) NSString *description;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)configureForMediaObject:(id)arg1 previewWidth:(double)arg2 orientation:(BOOL)arg3;
 
 // Remaining properties

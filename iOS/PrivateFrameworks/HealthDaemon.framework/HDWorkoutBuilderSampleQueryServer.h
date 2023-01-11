@@ -19,6 +19,7 @@
 
 + (id)requiredEntitlements;
 + (Class)queryClass;
++ (_Bool)validateConfiguration:(id)arg1 client:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(_Bool)arg2;
 - (void)workoutBuilderServer:(id)arg1 addedSamples:(id)arg2;
@@ -30,9 +31,8 @@
 - (_Bool)_shouldExecuteWhenProtectedDataIsUnavailable;
 - (_Bool)_shouldObserveDatabaseProtectedDataAvailability;
 - (_Bool)_shouldObserveOnPause;
-- (_Bool)_shouldListenForUpdates;
 - (id)workoutBuilderSampleQueryClientWithErrorHandler:(CDUnknownBlockType)arg1;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

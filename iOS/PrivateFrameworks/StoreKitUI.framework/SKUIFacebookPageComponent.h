@@ -6,6 +6,7 @@
 
 @class SKUIFacebookViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUIFacebookPageComponent
 {
 }

@@ -6,13 +6,11 @@
 
 @interface ICAttachmentWebModel
 {
-    id _reservedForWebView;
     CDUnknownBlockType _pendingFetchCompletionHandler;
 }
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
 @property(copy) CDUnknownBlockType pendingFetchCompletionHandler; // @synthesize pendingFetchCompletionHandler=_pendingFetchCompletionHandler;
-@property(retain) id reservedForWebView; // @synthesize reservedForWebView=_reservedForWebView;
 - (void).cxx_destruct;
 - (_Bool)canConvertToHTMLForSharing;
 - (id)attributesForSharingHTMLWithTagName:(id *)arg1 textContent:(id *)arg2;

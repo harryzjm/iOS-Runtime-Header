@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKContextRequest, CKContextResult, NSString;
+@class CKContextRequest, CKContextResult, NSArray, NSString;
 
 @protocol context_xpcProtocol
+- (void)semaphoreWithReply:(void (^)(CKContextSemaphore *))arg1;
 - (void)statusWithReply:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)logTransactionSuccessfulForResponseId:(NSString *)arg1 inputLength:(unsigned long long)arg2 completionLength:(unsigned long long)arg3 requestType:(unsigned long long)arg4 logType:(unsigned long long)arg5;
 - (void)logEngagementForResponseId:(NSString *)arg1 result:(CKContextResult *)arg2 rank:(unsigned long long)arg3 inputLength:(unsigned long long)arg4 completionLength:(unsigned long long)arg5 requestType:(unsigned long long)arg6 logType:(unsigned long long)arg7;
@@ -14,6 +15,7 @@
 - (void)shutdownServiceWithReply:(void (^)(void))arg1;
 - (void)pingServiceWithReply:(void (^)(void))arg1;
 - (void)portraitBlacklistWithReply:(void (^)(NSSet *))arg1;
+- (void)ancestorsForTopics:(NSArray *)arg1 withReply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)capabilitiesForRequestType:(unsigned long long)arg1 withReply:(void (^)(NSSet *, NSString *, NSError *))arg2;
 - (void)warmUpForRequestType:(unsigned long long)arg1 withReply:(void (^)(NSError *))arg2;
 - (void)findResponseByID:(NSString *)arg1 reply:(void (^)(CKContextResponse *))arg2;

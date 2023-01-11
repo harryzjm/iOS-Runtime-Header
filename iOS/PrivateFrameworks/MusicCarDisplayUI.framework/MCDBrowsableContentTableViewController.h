@@ -6,16 +6,17 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <MusicCarDisplayUI/CARSessionObserving-Protocol.h>
 #import <MusicCarDisplayUI/MCDErrorViewDelegate-Protocol.h>
 #import <MusicCarDisplayUI/MCDPCContainerDelegate-Protocol.h>
 #import <MusicCarDisplayUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <MusicCarDisplayUI/UITableViewDataSource-Protocol.h>
 #import <MusicCarDisplayUI/UITableViewDelegate-Protocol.h>
 
-@class AVExternalDevice, MCDNowPlayingButton, MCDPCContainer, MPWeakTimer, NSIndexPath, NSObject, NSString, UIAlertController, UITableView, UIView, _UIFilteredDataSource;
+@class CARSessionStatus, MCDNowPlayingButton, MCDPCContainer, MPWeakTimer, NSIndexPath, NSObject, NSString, UIAlertController, UITableView, UIView, _UIFilteredDataSource;
 @protocol OS_dispatch_queue;
 
-@interface MCDBrowsableContentTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, MCDPCContainerDelegate, MCDErrorViewDelegate>
+@interface MCDBrowsableContentTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, MCDPCContainerDelegate, MCDErrorViewDelegate, CARSessionObserving>
 {
     UITableView *_tableView;
     MCDNowPlayingButton *_nowPlayingButton;
@@ -27,11 +28,12 @@
     MPWeakTimer *_delayTimer;
     UIView *_MCD_tableView;
     NSObject<OS_dispatch_queue> *_serialQueue;
-    AVExternalDevice *_externalDevice;
+    CARSessionStatus *_carSessionStatus;
     _Bool _limited;
     _Bool _hasCarScreen;
     _Bool _hasNoBrowsableContent;
     _Bool _didPushToNowPlayingAtLaunch;
+    _Bool _isRootTableViewController;
     _Bool _hasTabbedBrowsing;
     _Bool _visible;
     _Bool _currentlyPlayingApp;
@@ -56,6 +58,7 @@
 @property(retain, nonatomic) MCDPCContainer *container; // @synthesize container=_container;
 - (void).cxx_destruct;
 - (void)_limitedUIChanged:(id)arg1;
+- (_Bool)_shouldLimitLists;
 - (void)_clearTableViewSelectionAnimated:(_Bool)arg1;
 - (void)_nowPlayingDidChange:(id)arg1;
 - (void)_appRegisteredForContent:(id)arg1;

@@ -11,7 +11,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityLabel;
-- (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 - (_Bool)accessibilityActivate;
 - (_Bool)accessibilityPerformEscape;
 - (_Bool)isAccessibilityElement;

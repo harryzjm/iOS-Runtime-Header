@@ -18,8 +18,6 @@
 
 + (id)identifierFromFileName:(id)arg1 inRange:(struct _NSRange *)arg2;
 + (id)itemWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 platform:(id)arg4 isMarketingIdiom:(_Bool)arg5 coreUIIdiom:(long long)arg6 infoPlistSuffix:(id)arg7 displayOrder:(double)arg8;
-+ (id)itemWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 platform:(id)arg4 coreUIIdiom:(long long)arg5 infoPlistSuffix:(id)arg6 displayOrder:(double)arg7;
-+ (id)itemWithIdentifier:(id)arg1 fileNameComponent:(id)arg2 title:(id)arg3 platform:(id)arg4 coreUIIdiom:(long long)arg5 displayOrder:(double)arg6;
 + (id)displayName;
 + (id)contentsJSONKey;
 + (id)unspecifiedValuePlaceholder;

@@ -4,11 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Silex/NSObject-Protocol.h>
+#import <Silex/NFBundleAssembly-Protocol.h>
 
-@class NSArray;
-
-@protocol NFFrameworkAssembly <NSObject>
-@property(readonly, copy, nonatomic) NSArray *assemblies;
+@protocol NFFrameworkAssembly <NFBundleAssembly>
 @end
 

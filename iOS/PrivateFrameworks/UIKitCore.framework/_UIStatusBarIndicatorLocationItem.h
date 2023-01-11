@@ -7,10 +7,14 @@
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarIndicatorLocationItem
 {
+    long long _previousType;
 }
 
+@property(nonatomic) long long previousType; // @synthesize previousType=_previousType;
+- (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)imageNameForUpdate:(id)arg1;
 - (id)indicatorEntryKey;
+- (id)initWithIdentifier:(id)arg1 statusBar:(id)arg2;
 
 @end
 

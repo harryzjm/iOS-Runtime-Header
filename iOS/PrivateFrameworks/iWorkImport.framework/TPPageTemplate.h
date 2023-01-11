@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) TSDFill *backgroundFill; // @synthesize backgroundFill=_backgroundFill;
 @property(nonatomic) _Bool headersFootersMatchPreviousPage; // @synthesize headersFootersMatchPreviousPage=_headersFootersMatchPreviousPage;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
-@property(retain, nonatomic) TPDrawablesZOrder *drawablesZOrder; // @synthesize drawablesZOrder=_drawablesZOrder;
+@property(readonly, nonatomic) TPDrawablesZOrder *drawablesZOrder; // @synthesize drawablesZOrder=_drawablesZOrder;
 @property(retain, nonatomic) NSMutableDictionary *placeholderDrawables; // @synthesize placeholderDrawables=_placeholderDrawables;
 @property(retain, nonatomic) NSMutableArray *masterDrawables; // @synthesize masterDrawables=_masterDrawables;
 - (void).cxx_destruct;
@@ -55,7 +55,8 @@ __attribute__((visibility("hidden")))
 - (id)copyWithContext:(id)arg1;
 - (double)highestScaleFactorForRenderingDrawableInfo:(id)arg1;
 - (id)infoForSelectionPath:(id)arg1;
-@property(readonly, nonatomic) NSArray *childInfos;
+@property(readonly, nonatomic) _Bool isMaster;
+@property(readonly, copy, nonatomic) NSArray *childInfos;
 - (_Bool)isThemeContent;
 - (Class)repClass;
 - (Class)layoutClass;
@@ -93,6 +94,7 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isTopmostContainerInfo;
 @property(nonatomic) _Bool matchesObjectPlaceholderGeometry;
 @property(readonly) Class superclass;
 

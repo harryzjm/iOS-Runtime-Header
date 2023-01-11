@@ -4,24 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MNNavigationSessionManager, MNRoutePlanningDetails;
+@class MNNavigationSessionManager, NSArray;
 
-__attribute__((visibility("hidden")))
 @interface MNNavigationStatePrepareGuidance
 {
-    MNRoutePlanningDetails *_routePlanningDetails;
+    NSArray *_previewRoutes;
+    unsigned long long _selectedRouteIndex;
     MNNavigationSessionManager *_navigationSessionManager;
 }
 
 - (void).cxx_destruct;
+- (void)resumeRealtimeUpdatesForSubscriber:(id)arg1;
+- (void)pauseRealtimeUpdatesForSubscriber:(id)arg1;
 - (void)stopNavigation;
-- (void)startNavigationForRouteDetails:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)prepareNavigationWithRouteDetails:(id)arg1;
+- (void)startNavigationWithDetails:(id)arg1 activeBlock:(CDUnknownBlockType)arg2;
+- (void)setRoutesForPreview:(id)arg1 selectedRouteIndex:(unsigned long long)arg2;
 - (void)leaveState;
 - (void)enterState;
-- (id)initWithStateManager:(id)arg1 routePlanningDetails:(id)arg2;
+- (id)initWithStateManager:(id)arg1 previewRoutes:(id)arg2 selectedRouteIndex:(unsigned long long)arg3;
 - (id)traceManager;
-- (unsigned long long)desiredResourcePolicy;
+- (_Bool)shouldClearStoredRoutes;
 - (unsigned long long)desiredLocationProviderType;
 - (_Bool)requiresHighMemoryThreshold;
 - (unsigned long long)type;

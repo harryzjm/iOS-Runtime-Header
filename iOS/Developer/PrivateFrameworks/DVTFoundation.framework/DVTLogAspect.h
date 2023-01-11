@@ -27,6 +27,7 @@
 @property _Bool takeTimeProfile; // @synthesize takeTimeProfile=_takeTimeProfile;
 @property _Bool signalInstruments; // @synthesize signalInstruments=_signalInstruments;
 @property(readonly) NSString *name; // @synthesize name=_name;
+@property(readonly) unsigned long long effectiveLogLevel; // @synthesize effectiveLogLevel=_effectiveLogLevel;
 - (void).cxx_destruct;
 - (id)description;
 - (void)unregisterLogHandler:(id)arg1;

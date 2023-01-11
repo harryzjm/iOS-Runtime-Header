@@ -19,6 +19,7 @@
     _Bool _ivarQueue_aggressivelyCacheVideoFrames;
     _Bool _ivarQueue_reversesMoreVideoFramesInMemory;
     _Bool _ivarQueue_decodesAllFramesDuringOrdinaryPlayback;
+    _Bool _ivarQueue_contentSupportsVitality;
     CDStruct_1b6d18a9 _ivarQueue_prePhotoTime;
     CDStruct_1b6d18a9 _ivarQueue_postPhotoTime;
     CDStruct_1b6d18a9 _ivarQueue_playerItemPhotoTime;
@@ -35,6 +36,7 @@
         _Bool content;
         _Bool minimumClientVersion;
         _Bool playbackStyleIdentifier;
+        _Bool contentSupportsVitality;
     } _ivarQueue_isValid;
     AVAssetImageGenerator *_workQueue_imageGenerator;
     _Bool _workQueue_isGeneratingOffsetImage;
@@ -69,6 +71,10 @@
 - (void)_updateVideoPlayerItemIfNeeded;
 - (_Bool)_isVideoPlayerItemValid;
 - (void)_invalidateVideoPlayerItem;
+@property(nonatomic) _Bool contentSupportsVitality;
+- (void)_updateContentSupportsVitalityIfNeeded;
+- (void)_invalidateContentSupportsVitality;
+- (_Bool)_isContentSupportsVitalityValid;
 @property(retain, nonatomic, setter=_setVariationIdentifier:) NSNumber *_variationIdentifier;
 - (void)_updatePlaybackStyleIdentifierIfNeeded;
 - (_Bool)_isPlaybackStyleIdentifierValid;
@@ -82,8 +88,7 @@
 @property(nonatomic, setter=_setStatus:) long long status;
 @property(retain, nonatomic, setter=_setPlayerContent:) ISPlayerContent *playerContent;
 @property(retain, nonatomic, setter=_setError:) NSError *error;
-- (_Bool)decodesAllFramesDuringOrdinaryPlayback;
-- (void)setDecodesAllFramesDuringOrdinaryPlayback:(_Bool)arg1;
+@property(nonatomic) _Bool decodesAllFramesDuringOrdinaryPlayback;
 @property(nonatomic) _Bool reversesMoreVideoFramesInMemory;
 @property(nonatomic) _Bool aggressivelyCacheVideoFrames;
 - (void)_reloadAllContent;

@@ -4,21 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 @class SBSLockScreenContentAssertion;
 
-@interface SBSSecureAppAssertion : NSObject
+@interface SBSSecureAppAssertion
 {
     SBSLockScreenContentAssertion *_actualAssertion;
 }
 
++ (id)acquireSecureAppAssertionWithType:(unsigned long long)arg1 supportedOrientations:(unsigned long long)arg2 errorHandler:(CDUnknownBlockType)arg3;
 + (id)acquireSecureAppAssertionWithType:(unsigned long long)arg1 errorHandler:(CDUnknownBlockType)arg2;
 @property(retain, nonatomic) SBSLockScreenContentAssertion *actualAssertion; // @synthesize actualAssertion=_actualAssertion;
 - (void).cxx_destruct;
-- (void)invalidate;
-- (void)dealloc;
-- (id)initWithType:(unsigned long long)arg1 errorHandler:(CDUnknownBlockType)arg2;
 
 @end
 

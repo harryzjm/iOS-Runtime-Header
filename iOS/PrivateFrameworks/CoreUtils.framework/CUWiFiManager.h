@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CURetrier, NSString;
+@class NSArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CUWiFiManager : NSObject
@@ -17,17 +17,18 @@
     _Bool _invalidateDone;
     struct LogCategory *_ucat;
     _Bool _updating;
-    _Bool _wifiAutoJoinMonitorEnabled;
-    _Bool _wifiAutoJoinMonitorSetup;
-    CURetrier *_wifiRetrier;
+    _Bool _infraDisabledChanged;
+    _Bool _trafficPeerChanged;
     _Bool _wakeOnWirelessEnabledChanged;
+    _Bool _infraDisabled;
     _Bool _wakeOnWirelessEnabled;
     unsigned int _wifiFlags;
     int _wifiState;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
-    NSString *_label;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
+    NSString *_label;
+    NSArray *_trafficPeers;
     CDUnknownBlockType _wifiStateChangedHandler;
 }
 
@@ -35,14 +36,15 @@
 @property(readonly, nonatomic) int wifiState; // @synthesize wifiState=_wifiState;
 @property(readonly, nonatomic) unsigned int wifiFlags; // @synthesize wifiFlags=_wifiFlags;
 @property(nonatomic) _Bool wakeOnWirelessEnabled; // @synthesize wakeOnWirelessEnabled=_wakeOnWirelessEnabled;
+@property(copy, nonatomic) NSArray *trafficPeers; // @synthesize trafficPeers=_trafficPeers;
+@property(copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
-@property(copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property(nonatomic) _Bool infraDisabled; // @synthesize infraDisabled=_infraDisabled;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 - (void).cxx_destruct;
 - (void)_wifiEnsureStopped;
 - (void)_wifiEnsureStarted;
-- (void)_update:(_Bool)arg1;
 - (void)_update;
 - (void)performUpdate:(CDUnknownBlockType)arg1;
 - (void)_invalidated;

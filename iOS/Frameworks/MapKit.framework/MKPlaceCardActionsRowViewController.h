@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)viewDidLayoutSubviews;
 - (void)actionRowSelected:(id)arg1;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (void)viewDidLoad;
 - (void)layoutButtons;
 - (void)createConstraints;
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)createActions;
 - (id)initWithStyle:(unsigned long long)arg1;
 - (void)loadView;
+- (_Bool)_canShowWhileLocked;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

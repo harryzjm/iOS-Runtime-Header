@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCTodayPrivateData-Protocol.h>
 
-@class NSArray, NSDictionary, NSNumber, NSSet, NSString;
+@class FCBundleSubscription, NSArray, NSDictionary, NSNumber, NSSet, NSString;
 @protocol FCDerivedPersonalizationData><NSCoding;
 
 @interface FCTodayPrivateData : NSObject <FCTodayPrivateData>
@@ -18,13 +18,15 @@
 
 @property(readonly, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 - (void).cxx_destruct;
+- (void)prepareForUseWithCompletion:(CDUnknownBlockType)arg1;
+@property(readonly, copy, nonatomic) FCBundleSubscription *bundleSubscription;
+@property(readonly, copy, nonatomic) NSSet *purchasedTagIDs;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly, copy, nonatomic) NSNumber *onboardingVersion;
 @property(readonly, copy, nonatomic) NSArray *recentlySeenHistoryItems;
 @property(readonly, copy, nonatomic) NSDictionary *recentlyReadHistoryItems;
-@property(readonly, copy, nonatomic) NSArray *rankedPersonalSubscribedTagIDs;
-@property(readonly, copy, nonatomic) NSSet *purchasedTagIDs;
+@property(readonly, copy, nonatomic) NSArray *rankedAllSubscribedTagIDs;
 @property(readonly, copy, nonatomic) NSSet *autoFavoriteTagIDs;
 @property(readonly, copy, nonatomic) NSSet *mutedTagIDs;
 @property(readonly, copy, nonatomic) id <FCDerivedPersonalizationData><NSCoding> derivedPersonalizationData;

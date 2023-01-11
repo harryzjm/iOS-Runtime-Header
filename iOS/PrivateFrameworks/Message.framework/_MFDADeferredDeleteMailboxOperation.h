@@ -4,24 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Message/MFDADeferredFolderChangeOperation-Protocol.h>
-
 @class NSString;
 
-@interface _MFDADeferredDeleteMailboxOperation <MFDADeferredFolderChangeOperation>
+@interface _MFDADeferredDeleteMailboxOperation
 {
     NSString *_folderID;
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)description;
-- (id)folderChangeResult;
-- (void)applyToFolderMap:(id)arg1;
-- (_Bool)performWithAccount:(id)arg1 offlineCache:(id)arg2;
-- (void)dealloc;
+- (_Bool)translateToLocalActionWithConnection:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithFolderID:(id)arg1;
 
 @end
 

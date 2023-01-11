@@ -7,7 +7,7 @@
 #import <Preferences/AKAppleIDAuthenticationInAppContextPasswordDelegate-Protocol.h>
 #import <Preferences/RemoteUIControllerDelegate-Protocol.h>
 
-@class AKAppleIDAuthenticationController, CNMonogrammer, NSString, NSTimer, PSSpecifier, RemoteUIController, UIActivityIndicatorView, UIBarButtonItem;
+@class AKAppleIDAuthenticationController, NSString, NSTimer, PSSpecifier, RemoteUIController, UIActivityIndicatorView, UIBarButtonItem;
 
 @interface PSAppleIDSplashViewController <AKAppleIDAuthenticationInAppContextPasswordDelegate, RemoteUIControllerDelegate>
 {
@@ -17,7 +17,6 @@
     UIBarButtonItem *_spinnerBarItem;
     UIBarButtonItem *_nextButtonBarItem;
     UIBarButtonItem *_cancelButtonBarItem;
-    CNMonogrammer *_monogrammer;
     PSSpecifier *_createNewAccountButtonSpecifier;
     PSSpecifier *_createNewAccountGroupSpecifier;
     PSSpecifier *_signInButtonSpecifier;
@@ -44,7 +43,6 @@
 - (void)remoteUIControllerDidDismiss:(id)arg1;
 - (_Bool)_shouldShowCancelDone;
 - (_Bool)_runningInMail;
-- (id)_monogrammer;
 @property(readonly, nonatomic) AKAppleIDAuthenticationController *authenticationController;
 - (void)_presentInvalidUsernameAlert;
 - (void)_signInButtonWasTapped:(id)arg1;
@@ -88,6 +86,7 @@
 - (id)_specifierForLoginUserForm;
 - (id)specifiers;
 - (void)dealloc;
+- (id)_silhouetteMonogram;
 - (id)serviceIcon;
 - (id)serviceDescription;
 - (id)serviceName;

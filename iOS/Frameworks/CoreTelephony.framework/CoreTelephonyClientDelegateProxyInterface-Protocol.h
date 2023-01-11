@@ -7,6 +7,7 @@
 #import <CoreTelephony/CoreTelephonyClientCallDelegate-Protocol.h>
 #import <CoreTelephony/CoreTelephonyClientCapabilitiesDelegate-Protocol.h>
 #import <CoreTelephony/CoreTelephonyClientCarrierBundleDelegate-Protocol.h>
+#import <CoreTelephony/CoreTelephonyClientCarrierServicesDelegate-Protocol.h>
 #import <CoreTelephony/CoreTelephonyClientDataDelegate-Protocol.h>
 #import <CoreTelephony/CoreTelephonyClientDelegate-Protocol.h>
 #import <CoreTelephony/CoreTelephonyClientEmergencyDelegate-Protocol.h>
@@ -18,7 +19,6 @@
 #import <CoreTelephony/CoreTelephonyClientVoicemailDelegate-Protocol.h>
 #import <CoreTelephony/NSObject-Protocol.h>
 
-@protocol CoreTelephonyClientDelegateProxyInterface <NSObject, CoreTelephonyClientDelegate, CoreTelephonyClientRegistrationDelegate, CoreTelephonyClientDataDelegate, CoreTelephonyClientSubscriberDelegate, CoreTelephonyClientEmergencyDelegate, CoreTelephonyClientSMSDelegate, CoreTelephonyClientVoicemailDelegate, CoreTelephonyClientPNRDelegate, CoreTelephonyClientCarrierBundleDelegate, CoreTelephonyClientCapabilitiesDelegate, CoreTelephonyClientSuppServicesDelegate, CoreTelephonyClientCallDelegate>
-- (void)remoteObjectRespondsToSelector:(SEL)arg1 completion:(void (^)(_Bool))arg2;
+@protocol CoreTelephonyClientDelegateProxyInterface <NSObject, CoreTelephonyClientDelegate, CoreTelephonyClientRegistrationDelegate, CoreTelephonyClientDataDelegate, CoreTelephonyClientSubscriberDelegate, CoreTelephonyClientEmergencyDelegate, CoreTelephonyClientSMSDelegate, CoreTelephonyClientVoicemailDelegate, CoreTelephonyClientPNRDelegate, CoreTelephonyClientCarrierBundleDelegate, CoreTelephonyClientCapabilitiesDelegate, CoreTelephonyClientSuppServicesDelegate, CoreTelephonyClientCallDelegate, CoreTelephonyClientCarrierServicesDelegate>
 @end
 

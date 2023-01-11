@@ -14,23 +14,27 @@ __attribute__((visibility("hidden")))
     _Bool _hasPendingImageData;
     _Bool _hasPendingCropRect;
     _Bool _hasPendingThumbnailImageData;
+    _Bool _hasPendingSyncImageData;
     NSData *_pendingImageData;
     NSData *_pendingThumbnailImageData;
     NSData *_pendingFullscreenImageData;
+    NSData *_pendingSyncImageData;
     struct CGRect _pendingCropRect;
 }
 
 + (_Bool)shouldSetWatchChanges;
+@property(nonatomic) _Bool hasPendingSyncImageData; // @synthesize hasPendingSyncImageData=_hasPendingSyncImageData;
 @property(nonatomic) _Bool hasPendingThumbnailImageData; // @synthesize hasPendingThumbnailImageData=_hasPendingThumbnailImageData;
 @property(nonatomic) _Bool hasPendingCropRect; // @synthesize hasPendingCropRect=_hasPendingCropRect;
 @property(nonatomic) _Bool hasPendingImageData; // @synthesize hasPendingImageData=_hasPendingImageData;
+@property(copy, nonatomic) NSData *pendingSyncImageData; // @synthesize pendingSyncImageData=_pendingSyncImageData;
 @property(copy, nonatomic) NSData *pendingFullscreenImageData; // @synthesize pendingFullscreenImageData=_pendingFullscreenImageData;
 @property(copy, nonatomic) NSData *pendingThumbnailImageData; // @synthesize pendingThumbnailImageData=_pendingThumbnailImageData;
 @property(nonatomic) struct CGRect pendingCropRect; // @synthesize pendingCropRect=_pendingCropRect;
 @property(copy, nonatomic) NSData *pendingImageData; // @synthesize pendingImageData=_pendingImageData;
 - (void).cxx_destruct;
 - (_Bool)setWatchChangesforThumbnailImageDataToPerson:(void *)arg1 error:(id *)arg2;
-- (_Bool)flushPendingImageChangesToPerson:(void *)arg1 error:(id *)arg2;
+- (_Bool)flushPendingImageChangesToPerson:(void *)arg1 logger:(id)arg2 error:(id *)arg3;
 - (void)resetAllData;
 
 @end

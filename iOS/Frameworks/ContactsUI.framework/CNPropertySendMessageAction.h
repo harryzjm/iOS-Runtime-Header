@@ -4,12 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <ContactsUI/CNContactActionsControllerDelegate-Protocol.h>
+
+@class CNContactActionsController, CNUIUserActionListDataSource, NSString, UIAlertController;
+
 __attribute__((visibility("hidden")))
-@interface CNPropertySendMessageAction
+@interface CNPropertySendMessageAction <CNContactActionsControllerDelegate>
 {
+    UIAlertController *_alertController;
+    CNContactActionsController *_actionsController;
+    CNUIUserActionListDataSource *_actionsDataSource;
 }
 
+@property(retain, nonatomic) CNUIUserActionListDataSource *actionsDataSource; // @synthesize actionsDataSource=_actionsDataSource;
+@property(retain, nonatomic) CNContactActionsController *actionsController; // @synthesize actionsController=_actionsController;
+@property(retain, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
+- (void).cxx_destruct;
+- (void)contactActionsController:(id)arg1 didSelectAction:(id)arg2;
+- (void)presentDisambiguationAlertWithSender:(id)arg1;
 - (void)performActionForItem:(id)arg1 sender:(id)arg2;
+- (void)performActionWithSender:(id)arg1;
+- (id)initWithContact:(id)arg1 propertyItems:(id)arg2 actionDataSource:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

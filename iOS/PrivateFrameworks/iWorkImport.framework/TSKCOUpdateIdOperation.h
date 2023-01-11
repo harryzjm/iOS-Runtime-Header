@@ -4,35 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <iWorkImport/TSKCOIdOperation-Protocol.h>
-#import <iWorkImport/TSKCOTransforming-Protocol.h>
-#import <iWorkImport/TSKCOUpdateIdOperationSubset-Protocol.h>
-
-@class TSKCOIdAddress;
-
 __attribute__((visibility("hidden")))
-@interface TSKCOUpdateIdOperation <TSKCOIdOperation, TSKCOUpdateIdOperationSubset, TSKCOTransforming>
+@interface TSKCOUpdateIdOperation
 {
-    TSKCOIdAddress *_address;
 }
 
-+ (id)operationWithIdAddress:(id)arg1 propertyName:(id)arg2;
-@property(readonly, nonatomic) TSKCOIdAddress *address; // @synthesize address=_address;
-- (void).cxx_destruct;
++ (id)operationWithUUIDPath:(id)arg1 propertyId:(unsigned short)arg2;
++ (id)operationWithAddress:(const vector_4dc5f307 *)arg1 propertyId:(unsigned short)arg2;
 - (void)saveToArchiver:(id)arg1 message:(struct Operation *)arg2;
 - (id)initWithUnarchiver:(id)arg1 message:(const struct Operation *)arg2;
-- (id)toString;
-- (id)ut_transformByTransformer:(id)arg1;
-- (id)transformDynamicByAnyOperation:(id)arg1 byHigherPriority:(_Bool)arg2 history:(id)arg3;
-- (id)transformStaticByAnyOperation:(id)arg1 byHigherPriority:(_Bool)arg2 history:(id)arg3;
-- (id)transformUpdateIdOperation:(id)arg1 isHigherPriority:(_Bool)arg2 history:(id)arg3;
-- (id)transformUpdateRangeOperation:(id)arg1 isHigherPriority:(_Bool)arg2 history:(id)arg3;
-- (id)transformReplaceRangeOperation:(id)arg1 isHigherPriority:(_Bool)arg2 history:(id)arg3;
-- (id)transformIdPlacementBaseOperation:(id)arg1 isHigherPriority:(_Bool)arg2 history:(id)arg3;
-- (id)toUpdateIdOperation;
+- (shared_ptr_f167ad79)newTransformableOperation;
 - (id)operationWithNewNoop:(_Bool)arg1;
-- (id)initWithIdAddress:(id)arg1 propertyName:(id)arg2;
-- (id)initWithIdAddress:(id)arg1 propertyName:(id)arg2 noop:(_Bool)arg3;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 propertyType:(const CDStruct_1464e8ba *)arg2 noop:(_Bool)arg3;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 propertyId:(unsigned short)arg2 noop:(_Bool)arg3;
+- (id)initWithAddress:(const vector_4dc5f307 *)arg1 propertyId:(unsigned short)arg2;
 
 @end
 

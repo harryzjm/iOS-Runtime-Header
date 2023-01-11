@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long numberOfDataFormulas;
 - (_Bool)labelFormulasAreAllStaticWithCalcEngine:(id)arg1 inEntity:(const UUIDData_5fbc143e *)arg2;
 - (_Bool)formulasOfType:(unsigned long long)arg1 areAllStaticWithCalcEngine:(id)arg2 inEntity:(const UUIDData_5fbc143e *)arg3;
+- (unsigned long long)numberOfTotalCategoryLabelsWithCalcEngine:(id)arg1 inEntity:(const UUIDData_5fbc143e *)arg2;
 - (unsigned long long)numberOfGroupsWithCalcEngine:(id)arg1 inEntity:(const UUIDData_5fbc143e *)arg2;
 - (unsigned long long)p_calculateNumberOfGroupsWithCalcEngine:(id)arg1 inEntity:(const UUIDData_5fbc143e *)arg2;
 - (id)description;

@@ -8,6 +8,7 @@
 
 @class NSMapTable, NSString, SKUIAttributedStringView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIKeyValueInfoListCollectionViewCell <SKUIViewElementView>
 {
     double _titleColumnWidth;

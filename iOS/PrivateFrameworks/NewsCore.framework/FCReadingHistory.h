@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FCMTWriterMutexLock, NSMutableDictionary, NSSet;
+#import <NewsCore/FCClearableReadingHistory-Protocol.h>
 
-@interface FCReadingHistory
+@class FCMTWriterLock, NSMutableDictionary, NSSet, NSString;
+
+@interface FCReadingHistory <FCClearableReadingHistory>
 {
     NSMutableDictionary *_itemsByIdentifier;
     NSMutableDictionary *_itemsByArticleID;
-    FCMTWriterMutexLock *_itemsLock;
+    FCMTWriterLock *_itemsLock;
 }
 
 + (void)configureKeyValueStoreForJSONHandling:(id)arg1;
@@ -27,7 +29,7 @@
 + (_Bool)requiresBatchedSync;
 + (_Bool)requiresPushNotificationSupport;
 + (id)desiredKeys;
-@property(retain, nonatomic) FCMTWriterMutexLock *itemsLock; // @synthesize itemsLock=_itemsLock;
+@property(retain, nonatomic) FCMTWriterLock *itemsLock; // @synthesize itemsLock=_itemsLock;
 @property(retain, nonatomic) NSMutableDictionary *itemsByArticleID; // @synthesize itemsByArticleID=_itemsByArticleID;
 @property(retain, nonatomic) NSMutableDictionary *itemsByIdentifier; // @synthesize itemsByIdentifier=_itemsByIdentifier;
 - (void).cxx_destruct;
@@ -45,10 +47,14 @@
 - (void)markArticle:(id)arg1 asOffensive:(_Bool)arg2;
 - (_Bool)toggleArticleHasBeenMarkedAsOffensive:(id)arg1;
 - (_Bool)hasArticleBeenMarkedAsOffensive:(id)arg1;
+- (_Bool)toggleDislikeForArticleWithID:(id)arg1;
+- (_Bool)toggleLikeForArticleWithID:(id)arg1;
+- (_Bool)_markArticle:(id)arg1 withLikingStatus:(unsigned long long)arg2;
 - (_Bool)markArticle:(id)arg1 withLikingStatus:(unsigned long long)arg2;
 - (unsigned long long)likingStatusForArticleID:(id)arg1;
 - (_Bool)_markArticleAsSeenWithArticleID:(id)arg1 articleVersion:(long long)arg2 historyItem:(id)arg3 modifiedHistoryFeaturesOut:(unsigned long long *)arg4;
 - (_Bool)_markArticleAsSeenWithHeadline:(id)arg1 historyItem:(id)arg2 modifiedHistoryFeaturesOut:(unsigned long long *)arg3;
+- (id)markArticlesAsSeenWithHeadlines:(id)arg1;
 - (_Bool)markArticleAsSeenWithHeadline:(id)arg1;
 - (_Bool)hasArticleBeenSeen:(id)arg1;
 - (_Bool)hasArticleBeenVisited:(id)arg1;
@@ -71,10 +77,17 @@
 - (_Bool)canHelpRestoreZoneName:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordIDs:(id)arg2;
+- (id)allKnownRecordNamesWithinRecordZoneWithID:(id)arg1;
+- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
 - (void)loadLocalCachesFromStore;
 - (id)syncReadingHistoryItemRecords:(id)arg1 deletedArticleIDs:(id)arg2 didRemoveLastVisitedAt:(out _Bool *)arg3;
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

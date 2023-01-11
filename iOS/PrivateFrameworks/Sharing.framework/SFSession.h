@@ -9,7 +9,7 @@
 #import <Sharing/NSSecureCoding-Protocol.h>
 #import <Sharing/SFXPCInterface-Protocol.h>
 
-@class CUAppleIDClient, CUMessageSession, CUMessageSessionServer, NSDate, NSDictionary, NSMutableData, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListenerEndpoint, SFDevice, SFTRSession, TRSession;
+@class CUAppleIDClient, CUMessageSession, CUMessageSessionServer, NSDictionary, NSMutableData, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListenerEndpoint, SDStatusMonitor, SFAppleIDContactInfo, SFDevice, SFTRSession, TRSession;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction;
 
 @interface SFSession : NSObject <NSSecureCoding, SFXPCInterface>
@@ -38,6 +38,9 @@
     _Bool _activateCalled;
     _Bool _activateInProgress;
     _Bool _activateCompleted;
+    CDUnknownBlockType _activateCompletion;
+    SFAppleIDContactInfo *_appleIDContactInfo;
+    _Bool _appleIDContactCompleted;
     _Bool _invalidateCalled;
     _Bool _invalidateDone;
     unsigned int _heartbeatID;
@@ -50,15 +53,6 @@
     unsigned int _pairSetupFlags;
     struct PairingSessionPrivate *_pairSetupSession;
     unsigned int _pairSetupXID;
-    NSMutableData *_pairTLSBuffer;
-    _Bool _pairTLSSuccess;
-    NSDate *_pairTLSStart;
-    CDUnknownBlockType _pairTLSCompletion;
-    _Bool _pairTLSConfigured;
-    struct __SecIdentity *_pairTLSIdentity;
-    _Bool _pairTLSClient;
-    NSObject<OS_dispatch_queue> *_pairTLSQueue;
-    struct SSLContext *_pairTLSSession;
     CDUnknownBlockType _pairVerifyCompletion;
     _Bool _pairVerifyEnded;
     unsigned int _pairVerifyFlags;
@@ -80,6 +74,7 @@
     NSString *_myAppleID;
     CUAppleIDClient *_myAppleIDInfoClient;
     NSString *_peerContactIdentifier;
+    SDStatusMonitor *_statusMonitor;
     CDUnknownBlockType _bluetoothStateChangedHandler;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
@@ -125,6 +120,7 @@
 @property(copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property(copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property(copy, nonatomic) CDUnknownBlockType bluetoothStateChangedHandler; // @synthesize bluetoothStateChangedHandler=_bluetoothStateChangedHandler;
+@property(retain, nonatomic) SDStatusMonitor *statusMonitor; // @synthesize statusMonitor=_statusMonitor;
 @property(copy, nonatomic) NSString *peerContactIdentifier; // @synthesize peerContactIdentifier=_peerContactIdentifier;
 @property(copy, nonatomic) NSString *peerAppleID; // @synthesize peerAppleID=_peerAppleID;
 @property(retain, nonatomic) CUAppleIDClient *myAppleIDInfoClient; // @synthesize myAppleIDInfoClient=_myAppleIDInfoClient;
@@ -163,8 +159,6 @@
 - (void)deregisterRequestID:(id)arg1;
 - (void)_registerRequestID:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)registerRequestID:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)_sendTLSEncryptedObject:(id)arg1;
-- (void)sendTLSEncryptedObject:(id)arg1;
 - (void)_sendEncryptedObject:(id)arg1;
 - (void)sendWithFlags:(unsigned int)arg1 object:(id)arg2;
 - (void)_sendRequestWithFlags:(unsigned int)arg1 object:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
@@ -175,20 +169,14 @@
 - (void)sendResponse:(id)arg1;
 - (void)sendRequest:(id)arg1;
 - (void)sendEvent:(id)arg1;
+- (id)_appleIDVerifyProof:(id)arg1 error:(id *)arg2;
+- (void)appleIDVerifyProof:(id)arg1 dispatchQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)_appleIDAddProof:(id)arg1 error:(id *)arg2;
+- (void)appleIDAddProof:(id)arg1 dispatchQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_pairVerifyCompleted:(int)arg1;
 - (void)_pairVerify:(id)arg1 start:(_Bool)arg2;
 - (void)_pairVerifyWithFlags:(unsigned int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pairVerifyWithFlags:(unsigned int)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_tlsCertificateChainFromTrust:(struct __SecTrust *)arg1;
-- (void)_tlsReceivedValidationRecordData:(id)arg1;
-- (void)_tlsReceivedObjectWithLength:(unsigned long long)arg1;
-- (void)_pairTLSReceivedData:(id)arg1 type:(unsigned char)arg2;
-- (void)pairTLSReceivedData:(id)arg1 type:(unsigned char)arg2;
-- (void)_pairTLSCompleted:(int)arg1;
-- (int)_pairTLSStart;
-- (int)_pairTLSEnsureConfigured;
-- (void)pairTLSWithIdentity:(struct __SecIdentity *)arg1 asClient:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)pairTLSClient:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_pairSetupCompleted:(int)arg1;
 - (void)_pairSetupTryPIN:(id)arg1;
 - (void)pairSetupTryPIN:(id)arg1;
@@ -207,8 +195,10 @@
 - (void)invalidate;
 - (void)_interrupted;
 - (void)_hearbeatTimer;
+- (void)_fetchInfo;
 - (void)_ensureXPCStarted;
 - (void)_activated;
+- (void)_activatedIfReady:(id)arg1;
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (int)setEncryptionReadKey:(const char *)arg1 readKeyLen:(unsigned long long)arg2 writeKey:(const char *)arg3 writeKeyLen:(unsigned long long)arg4;

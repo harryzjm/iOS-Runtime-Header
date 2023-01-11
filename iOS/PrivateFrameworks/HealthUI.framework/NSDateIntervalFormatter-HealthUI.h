@@ -8,6 +8,7 @@
 
 @interface NSDateIntervalFormatter (HealthUI)
 + (id)hk_sleepListDateIntervalFormatter;
++ (id)hk_monthYearIntervalFormatter;
 + (id)hk_monthDayYearIntervalFormatter;
 + (id)hk_yearIntervalFormatter;
 + (id)hk_monthIntervalFormatter;
@@ -15,6 +16,7 @@
 + (id)hk_dateTimeDateIntervalFormatter;
 + (id)hk_hourMinuteOnlyDateIntervalFormatter;
 + (id)hk_hourOnlyDateIntervalFormatter;
++ (id)hk_hourDateIntervalWithDateFormatter;
 + (id)hk_hourDateIntervalFormatter;
 @end
 

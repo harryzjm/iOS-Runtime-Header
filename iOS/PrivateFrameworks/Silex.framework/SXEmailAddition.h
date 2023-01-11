@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)typeString;
 - (id)action;
 
 // Remaining properties

@@ -4,28 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <UIKitCore/NSCopying-Protocol.h>
-
-@class UIView;
-
-@interface UIDragPreviewTarget : NSObject <NSCopying>
+@interface UIDragPreviewTarget
 {
-    UIView *_container;
-    struct CGPoint _center;
-    struct CGAffineTransform _transform;
 }
-
-+ (id)new;
-@property(readonly, nonatomic) struct CGAffineTransform transform; // @synthesize transform=_transform;
-@property(readonly, nonatomic) struct CGPoint center; // @synthesize center=_center;
-@property(readonly, nonatomic) UIView *container; // @synthesize container=_container;
-- (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)init;
-- (id)initWithContainer:(id)arg1 center:(struct CGPoint)arg2;
-- (id)initWithContainer:(id)arg1 center:(struct CGPoint)arg2 transform:(struct CGAffineTransform)arg3;
 
 @end
 

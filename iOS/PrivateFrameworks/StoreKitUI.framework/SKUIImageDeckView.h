@@ -9,6 +9,7 @@
 
 @class NSArray, NSMapTable, NSString, SKUIImageDeckViewElement, UIDynamicAnimator, UIView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIImageDeckView <UIGestureRecognizerDelegate, SKUIViewElementView>
 {
     UIDynamicAnimator *_animator;

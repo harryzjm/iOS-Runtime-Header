@@ -6,23 +6,21 @@
 
 #import <GameController/_GCACHomeButtonDelegate-Protocol.h>
 
-@class GCMotion, NSString, _GCACHomeButton;
+@class NSString, _GCACHomeButton;
 
 @interface _GCMFiExtendedGamepadControllerProfile <_GCACHomeButtonDelegate>
 {
     _GCACHomeButton *_acHome;
-    GCMotion *_motion;
 }
 
 - (void).cxx_destruct;
 - (id)menuButton;
 - (void)toggleSuspendResume;
-- (void)set_motion:(id)arg1;
-- (id)motion;
 - (void)setPlayerIndex:(long long)arg1;
 - (id)name;
 - (id)initWithController:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)determineControllerCapabilities:(id)arg1 initInfo:(struct GCExtendedGamepadInitWithControllerInitInfo *)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

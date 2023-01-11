@@ -8,14 +8,16 @@
 
 #import <DVTFoundation/DVTCancellable-Protocol.h>
 
-@class DVTOperation, NSString;
+@class DVTDispatchLock, DVTOperation, NSString;
 
 @interface DVTDisallowFinishToken : NSObject <DVTCancellable>
 {
     DVTOperation *_operation;
     NSString *_reason;
+    DVTDispatchLock *_lock;
 }
 
+@property(readonly) DVTDispatchLock *lock; // @synthesize lock=_lock;
 @property(readonly) NSString *reason; // @synthesize reason=_reason;
 - (void).cxx_destruct;
 - (void)cancel;

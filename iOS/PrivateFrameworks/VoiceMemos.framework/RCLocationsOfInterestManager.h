@@ -8,36 +8,35 @@
 
 #import <VoiceMemos/CLLocationManagerDelegate-Protocol.h>
 
-@class CLGeocoder, CLLocation, CLLocationManager, NSArray, NSString;
-@protocol OS_dispatch_queue, RCLocationsOfInterestDelegate;
+@class CLLocation, CLLocationManager, NSArray, NSString;
+@protocol RCLocationsOfInterestDelegate;
 
 @interface RCLocationsOfInterestManager : NSObject <CLLocationManagerDelegate>
 {
     int _authorizationStatus;
     CLLocationManager *_locationManager;
     CLLocation *_currentLocation;
-    CLGeocoder *_geographyCoder;
     NSArray *_locationsOfInterest;
-    NSArray *_placesOfInterest;
-    _Bool _ignoringLocationUpdates;
+    _Bool _isFetchingPlacesOfInterest;
+    _Bool _active;
+    unsigned long long _placeInferencePolicy;
     id <RCLocationsOfInterestDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_queue;
-    double _searchRadius;
 }
 
 + (id)defaultManager;
 @property(readonly) CLLocation *currentLocation; // @synthesize currentLocation=_currentLocation;
-@property(nonatomic) double searchRadius; // @synthesize searchRadius=_searchRadius;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property(readonly, nonatomic) _Bool active; // @synthesize active=_active;
 @property(nonatomic) __weak id <RCLocationsOfInterestDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+- (void)_didFetchPlaceInferences:(id)arg1 location:(id)arg2 error:(id)arg3;
+- (void)_requestPlaceInferences;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
-- (void)stop;
 @property(readonly, nonatomic) _Bool authorized;
-@property(readonly, nonatomic) _Bool active;
 @property(readonly, copy) NSArray *locationsOfInterest;
+- (void)stop;
+- (void)_startMonitoringLocation;
 - (void)start;
 - (id)init;
 

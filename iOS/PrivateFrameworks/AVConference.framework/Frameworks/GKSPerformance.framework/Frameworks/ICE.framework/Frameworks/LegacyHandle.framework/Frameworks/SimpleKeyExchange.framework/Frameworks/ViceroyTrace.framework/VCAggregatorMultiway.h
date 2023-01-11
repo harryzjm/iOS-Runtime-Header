@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ViceroyTrace/DownlinkSegmentDelegate-Protocol.h>
+#import <ViceroyTrace/SegmentStatsDelegate-Protocol.h>
 
 @class DownlinkSegment, NSMutableDictionary, NSString, UplinkSegment;
 
 __attribute__((visibility("hidden")))
-@interface VCAggregatorMultiway <DownlinkSegmentDelegate>
+@interface VCAggregatorMultiway <SegmentStatsDelegate>
 {
     NSString *_currentUplinkSegmentKey;
     UplinkSegment *_currentUplinkSegment;
     NSString *_currentDownlinkSegmentKey;
     DownlinkSegment *_currentDownlinkSegment;
     NSMutableDictionary *_calls;
+    NSMutableDictionary *_internalErrors;
     unsigned int _participantCounter;
     double _lastParticipantNumberChangeTime;
     double _numberOfParticipantsDuration[40];
@@ -26,12 +27,23 @@ __attribute__((visibility("hidden")))
     unsigned int _sessionAggregatedDurationTicks;
     unsigned int _sessionUplinkTargetBitrateSwitchCount;
     unsigned long long _sessionUplinkBWEstimationSum;
+    unsigned int _sessionUplinkBWEstimationCounter;
     unsigned long long _sessionDownlinkBWEstimationSum;
+    unsigned int _sessionDownlinkBWEstimationCounter;
     unsigned long long _sessionUplinkTargetBitrateSum;
+    unsigned int _sessionUplinkTargetBitrateCounter;
+    unsigned long long _sessionDownlinkTargetBitrateSum;
+    unsigned int _sessionDownlinkTargetBitrateCounter;
     unsigned long long _sessionUplinkActualBitrateSum;
-    unsigned long long _sessionRoundTripTimeSum;
-    unsigned long long _sessionTotalReceivedSum;
-    unsigned long long _sessionTotalLostSum;
+    unsigned int _sessionUplinkActualBitrateCounter;
+    unsigned long long _sessionDownlinkActualBitrateSum;
+    unsigned int _sessionDownlinkActualBitrateCounter;
+    unsigned long long _sessionDownlinkRoundTripTimeSum;
+    unsigned int _sessionDownlinkRoundTripTimeCounter;
+    unsigned long long _sessionDownlinkTotalPacketsReceivedSum;
+    unsigned long long _sessionDownlinkTotalLostSum;
+    unsigned long long _sessionUplinkTotalPacketsSentSum;
+    unsigned long long _sessionUplinkTotalLostSum;
     unsigned int _sessionEndReason;
     unsigned int _sessionDetailedEndReason;
     unsigned int _lastReportedDownlinkPacketsReceived;
@@ -39,9 +51,12 @@ __attribute__((visibility("hidden")))
     unsigned int _lastReportedUplinkPacketsReceived;
     unsigned int _lastReportedUplinkPacketsSent;
     unsigned int _lastReportedUplinkBytesSent;
+    double _sessionCreatedTime;
     _Bool _isFullsizeUI;
+    _Bool _isDuplicationEnabled;
 }
 
+- (double)timeWeightedNumberOfParticipants;
 - (double)audioErasureTotalTime;
 - (unsigned int)audioErasureCount;
 - (double)significantVideoStallTotalTime;
@@ -51,9 +66,24 @@ __attribute__((visibility("hidden")))
 - (void)updateSegment:(id)arg1 TBR:(int)arg2 ISBTR:(int)arg3 SATXBR:(int)arg4 SARBR:(int)arg5 BWE:(int)arg6;
 - (int)adaptiveLearningState;
 - (void)processEventWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3;
+- (_Bool)isDuplicationChanged:(_Bool)arg1;
+- (void)processUISizeEventForParticipant:(id)arg1 isFullSize:(_Bool)arg2;
+- (void)processInternalErrorDetectedWithCode:(id)arg1;
+- (void)processVideoDegraded:(_Bool)arg1 participantID:(id)arg2;
+- (_Bool)isVideoDegraded;
+- (void)processSessionStart;
+- (void)processSessionInit;
 - (void)processParticipantTimingInfo:(id)arg1;
 - (void)processNumberOfParticipants:(unsigned int)arg1;
+- (_Bool)currentUISize;
 - (void)processRTEvent:(id)arg1;
+- (void)processDownlinkBWEstimation:(unsigned int)arg1;
+- (void)processUplinkBWEstimation:(unsigned int)arg1;
+- (void)processDownlinkRoundTripTime:(unsigned int)arg1;
+- (void)processDownlinkActualBitrate:(unsigned int)arg1;
+- (void)processUplinkActualBitrate:(unsigned int)arg1;
+- (void)processDownlinkTargetBitrate:(unsigned int)arg1;
+- (void)processUplinkTargetBitrate:(unsigned int)arg1;
 - (void)processVideoStreamSwitch:(id)arg1;
 - (void)processAudioStreamSwitch:(id)arg1;
 - (void)processActualBitrateChange:(id)arg1;
@@ -61,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (void)finalizeCall:(id)arg1;
 - (void)videoEnabled:(id)arg1;
 - (void)audioEnabled:(id)arg1;
+- (_Bool)isParticipantLive:(id)arg1;
 - (void)addNewCall:(id)arg1;
 - (void)startDownlinkSegment;
 - (void)resetDownlinkSegment;

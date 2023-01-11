@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface SASSpeechPartialResult
 {
@@ -14,6 +14,7 @@
 + (id)speechPartialResult;
 - (_Bool)requiresResponse;
 @property(copy, nonatomic) NSArray *tokens;
+@property(copy, nonatomic) NSString *language;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

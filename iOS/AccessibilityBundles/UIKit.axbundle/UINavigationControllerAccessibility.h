@@ -11,21 +11,15 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityLoadAccessibilityInformation;
-- (void)_axSetDidRegisterForVoiceOverStatusDidChangeNotification:(_Bool)arg1;
-- (_Bool)_axDidRegisterForVoiceOverStatusDidChangeNotification;
-- (void)_axVoiceOverStatusDidChange:(id)arg1;
-- (void)_axUpdateSearchBarScrollability;
-- (_Bool)_shouldHideSearchBarWhenScrollingForNavigationItem:(id)arg1;
 - (_Bool)_accessibilityNavigationControllerShouldSendScreenChange;
 - (void)navigationTransitionView:(id)arg1 didEndTransition:(long long)arg2 fromView:(id)arg3 toView:(id)arg4;
 - (void)navigationTransitionView:(id)arg1 didStartTransition:(long long)arg2;
+- (_Bool)_accessibilityPostScreenChangeForAppearingView:(id)arg1;
+- (_Bool)_accessibilityVoiceOverFocusIsInView:(id)arg1;
+- (id)_accessibilityOutermostNavigationController;
 - (id)_accessibilitySpeakThisViewController;
-- (void)viewDidDisappear:(_Bool)arg1;
 - (_Bool)accessibilityPerformEscape;
 - (_Bool)_accessibilityCanPerformEscapeAction;
-- (void)viewDidAppear:(_Bool)arg1;
-- (void)dealloc;
 
 @end
 

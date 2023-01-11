@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPMediaLibrary, NSArray, NSString;
+@class NSArray, NSString;
 
 @interface MPModelLibrarySearchRequest
 {
     NSArray *_scopes;
     long long _maximumResultsPerScope;
-    MPMediaLibrary *_mediaLibrary;
     NSString *_searchString;
 }
 
 + (_Bool)supportsSecureCoding;
 @property(copy, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
-@property(retain, nonatomic) MPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 @property(nonatomic) long long maximumResultsPerScope; // @synthesize maximumResultsPerScope=_maximumResultsPerScope;
 @property(copy, nonatomic) NSArray *scopes; // @synthesize scopes=_scopes;
 - (void).cxx_destruct;

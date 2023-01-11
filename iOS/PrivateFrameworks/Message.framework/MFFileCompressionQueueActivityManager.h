@@ -6,13 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@interface MFFileCompressionQueueActivityManager : NSObject
+#import <Message/EFLoggable-Protocol.h>
+
+@class NSString;
+
+@interface MFFileCompressionQueueActivityManager : NSObject <EFLoggable>
 {
 }
 
-+ (void)compressFilesInQueue:(id)arg1 shouldDefer:(CDUnknownBlockType)arg2;
-+ (void)unregisterActivity;
-+ (void)registerActivity:(id)arg1 withCompressionQueue:(id)arg2;
++ (_Bool)compressFilesInQueue:(id)arg1 shouldDefer:(CDUnknownBlockType)arg2;
++ (void)_unregisterXPCActivity;
++ (void)_registerXPCActivity;
++ (void)unregisterXPCActivity;
++ (void)scheduleActivityIfNeeded;
++ (id)log;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

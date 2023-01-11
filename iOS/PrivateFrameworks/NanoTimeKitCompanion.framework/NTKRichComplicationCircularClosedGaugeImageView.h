@@ -4,19 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NTKRichComplicationRingProgressView, UIImageView;
+@class NTKRichComplicationImageView, NTKRichComplicationRingProgressView;
 
 @interface NTKRichComplicationCircularClosedGaugeImageView
 {
-    UIImageView *_imageView;
+    NTKRichComplicationImageView *_imageView;
     NTKRichComplicationRingProgressView *_progressView;
 }
 
 + (_Bool)supportsComplicationFamily:(long long)arg1;
 + (_Bool)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 - (void).cxx_destruct;
+- (void)updateMonochromeColor;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
+- (void)setPaused:(_Bool)arg1;
 - (void)layoutSubviews;
 - (id)init;
 

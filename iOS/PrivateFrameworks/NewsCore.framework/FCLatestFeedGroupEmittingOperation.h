@@ -9,6 +9,7 @@
 }
 
 - (id)_feedTransformationWithFeedContext:(id)arg1;
+- (void)_performOperationWithAvailableFeedItems:(id)arg1;
 - (void)performOperation;
 
 @end

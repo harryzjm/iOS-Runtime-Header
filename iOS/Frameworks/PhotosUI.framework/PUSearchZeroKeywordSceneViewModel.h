@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
 @interface PUSearchZeroKeywordSceneViewModel
 {
 }
 
-- (id)initWithTitle:(id)arg1 representedObject:(id)arg2 sceneId:(id)arg3;
+- (id)initWithTitle:(id)arg1 representedObject:(id)arg2 sceneId:(id)arg3 keyAsset:(id)arg4;
 
 @end
 

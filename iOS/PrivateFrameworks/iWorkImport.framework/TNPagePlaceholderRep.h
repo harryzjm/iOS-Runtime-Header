@@ -9,9 +9,5 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (Class)layerClass;
-- (void)didUpdateLayer:(id)arg1;
-- (_Bool)directlyManagesLayerContent;
-
 @end
 

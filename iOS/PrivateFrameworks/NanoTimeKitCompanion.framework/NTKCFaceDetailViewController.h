@@ -13,6 +13,7 @@
 #import <NanoTimeKitCompanion/NTKCFaceDetailEditOptionSectionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailOtherSectionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailPhotosSectionDelegate-Protocol.h>
+#import <NanoTimeKitCompanion/NTKCTableViewProviding-Protocol.h>
 #import <NanoTimeKitCompanion/NTKFaceCollectionObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKFaceObserver-Protocol.h>
 #import <NanoTimeKitCompanion/UITableViewDataSource-Protocol.h>
@@ -21,7 +22,7 @@
 @class NSArray, NSMutableArray, NSString, NTKCFaceContainerView, NTKCFaceDetailDescriptionSectionController, NTKCFaceDetailKaleidoscopeContentSectionController, NTKCFaceDetailKaleidoscopeStyleSectionController, NTKCFaceDetailOtherSectionController, NTKCFaceDetailPhotosSectionController, NTKCompanionFaceViewController, NTKFace, NTKFaceCollection, UIActivityIndicatorView, UILabel, UITableView, UITableViewCell, UIView, _NTKCDetailActionButton, _NTKCDetailHeaderView;
 @protocol NTKCFaceDetailViewControllerDelegate;
 
-@interface NTKCFaceDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NTKFaceObserver, NTKFaceCollectionObserver, NTKCFaceDetailDescriptionSectionDelegate, NTKCFaceDetailEditOptionSectionDelegate, NTKCFaceDetailPhotosSectionDelegate, NTKCFaceDetailComplicationSectionDelegate, NTKCFaceDetailOtherSectionDelegate, NTKCFaceDetailActionSectionDelegate, NTKCFaceDetailDataSourcesSectionDelegate>
+@interface NTKCFaceDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NTKFaceObserver, NTKFaceCollectionObserver, NTKCFaceDetailDescriptionSectionDelegate, NTKCFaceDetailEditOptionSectionDelegate, NTKCFaceDetailPhotosSectionDelegate, NTKCFaceDetailComplicationSectionDelegate, NTKCFaceDetailOtherSectionDelegate, NTKCFaceDetailActionSectionDelegate, NTKCFaceDetailDataSourcesSectionDelegate, NTKCTableViewProviding>
 {
     _Bool _shared;
     _Bool _inGallery;
@@ -33,7 +34,6 @@
     NSArray *_externalAssets;
     double _intrinsicHeaderHeight;
     _NTKCDetailHeaderView *_headerView;
-    NTKCFaceContainerView *_faceContainer;
     UILabel *_faceName;
     _NTKCDetailActionButton *_addButton;
     UIActivityIndicatorView *_addSpinner;
@@ -48,9 +48,11 @@
     NTKCFaceDetailOtherSectionController *_otherSection;
     CDUnknownBlockType _selectionFinishedHandler;
     UITableViewCell *_editOptionToMakeFullyVisible;
+    NTKCFaceContainerView *_faceContainer;
     struct CGSize _headerFaceSize;
 }
 
+@property(retain, nonatomic) NTKCFaceContainerView *faceContainer; // @synthesize faceContainer=_faceContainer;
 @property(readonly, nonatomic) _Bool faceHasBeenEdited; // @synthesize faceHasBeenEdited=_faceHasBeenEdited;
 @property(retain, nonatomic) UITableViewCell *editOptionToMakeFullyVisible; // @synthesize editOptionToMakeFullyVisible=_editOptionToMakeFullyVisible;
 @property(copy, nonatomic) CDUnknownBlockType selectionFinishedHandler; // @synthesize selectionFinishedHandler=_selectionFinishedHandler;
@@ -66,7 +68,6 @@
 @property(retain, nonatomic) UIActivityIndicatorView *addSpinner; // @synthesize addSpinner=_addSpinner;
 @property(retain, nonatomic) _NTKCDetailActionButton *addButton; // @synthesize addButton=_addButton;
 @property(retain, nonatomic) UILabel *faceName; // @synthesize faceName=_faceName;
-@property(retain, nonatomic) NTKCFaceContainerView *faceContainer; // @synthesize faceContainer=_faceContainer;
 @property(retain, nonatomic) _NTKCDetailHeaderView *headerView; // @synthesize headerView=_headerView;
 @property(nonatomic) double intrinsicHeaderHeight; // @synthesize intrinsicHeaderHeight=_intrinsicHeaderHeight;
 @property(copy, nonatomic) NSArray *externalAssets; // @synthesize externalAssets=_externalAssets;
@@ -78,6 +79,7 @@
 @property(nonatomic) __weak id <NTKCFaceDetailViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) NTKFace *face; // @synthesize face=_face;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) UITableView *ntk_tableView;
 - (void)actionSectionDidDelete:(id)arg1;
 - (void)actionSectionDidSelect:(id)arg1;
 - (void)dataSourcesSectionDidFinishLoading:(id)arg1;
@@ -98,6 +100,7 @@
 - (void)face:(id)arg1 didChangeOptionsForEditMode:(long long)arg2;
 - (void)faceConfigurationDidChange:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)_reloadUpNextDataSourceSections;
 - (id)_pruneComplicationsNotAvailableOnGizmo:(id)arg1;
 - (id)_pruneRemovedOrRestrictedComplications:(id)arg1;
 - (_Bool)_cellIsHiddenBehindHeader:(id)arg1;
@@ -115,6 +118,7 @@
 - (void)_addTapped;
 - (_Bool)_hasRemovedSystemApp;
 - (void)_updateAddButton;
+- (id)_facesUnsupportedByWatchOSVersion:(unsigned int)arg1;
 - (void)_setFaceHasBeenEdited;
 - (_Bool)_isEditOptionFullyVisible:(id)arg1;
 - (void)_setEditOption:(id)arg1 forMode:(long long)arg2;

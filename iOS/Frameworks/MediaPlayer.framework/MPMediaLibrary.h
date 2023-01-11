@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class ML3MusicLibrary, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSPointerArray, NSString, NSURL, QueryCriteriaResultsCache;
+@class ICUserIdentity, ML3MusicLibrary, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSNumber, NSPointerArray, NSString, NSURL, QueryCriteriaResultsCache;
 @protocol MPMediaLibraryDataProviderPrivate, OS_dispatch_queue;
 
 @interface MPMediaLibrary : NSObject <NSSecureCoding>
@@ -80,9 +80,12 @@
     unsigned char _originalCellNetworkFlags;
     unsigned char _originalWiFiNetworkFlags;
     id __MLCoreStorage;
+    NSObject<OS_dispatch_queue> *_accessQueue;
+    ICUserIdentity *_userIdentity;
 }
 
 + (_Bool)companionDeviceActiveStoreAccountIsSubscriber;
++ (void)libraryPathDidChangeForDataProvider:(id)arg1;
 + (void)uniqueIdentifierDidChangeForLibraryDataProvider:(id)arg1;
 + (void)syncGenerationDidChangeForLibraryDataProvider:(id)arg1;
 + (void)reloadDisplayValuesForLibraryDataProvider:(id)arg1;
@@ -104,15 +107,20 @@
 + (void)setLibraryServerDisabled:(_Bool)arg1;
 + (_Bool)isLibraryServerDisabled;
 + (void)requestAuthorization:(CDUnknownBlockType)arg1;
++ (void)validatePermissionsExpiryWithCompletion:(CDUnknownBlockType)arg1;
 + (long long)authorizationStatus;
 + (void)endDiscoveringMediaLibraries;
 + (void)beginDiscoveringMediaLibraries;
++ (void)_postNotificationName:(id)arg1 library:(id)arg2 userInfo:(id)arg3;
++ (void)_postNotificationName:(id)arg1 library:(id)arg2;
 + (_Bool)supportsSecureCoding;
++ (id)_deviceMediaLibraryWithUserIdentity:(id)arg1 isSingletonLibrary:(_Bool)arg2 createIfRequired:(_Bool)arg3;
++ (id)deviceMediaLibraryWithUserIdentity:(id)arg1;
 + (id)deviceMediaLibrary;
 + (void)setDefaultMediaLibrary:(id)arg1;
 + (id)defaultMediaLibrary;
 + (void)initialize;
-@property(retain, nonatomic) id _MLCoreStorage; // @synthesize _MLCoreStorage=__MLCoreStorage;
+@property(readonly, copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 - (void).cxx_destruct;
 - (_Bool)recordPlayEventForPlaylistPersistentID:(long long)arg1;
 - (_Bool)recordPlayEventForAlbumPersistentID:(long long)arg1;
@@ -126,12 +134,15 @@
 - (void)getPlaylistWithUUID:(id)arg1 creationMetadata:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)performStoreItemLibraryImport:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)addAdvertisementItemWithDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)addStoreItemIDs:(id)arg1 referralObject:(id)arg2 andAddTracksToCloudLibrary:(_Bool)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)addStoreItemIDs:(id)arg1 andAddTracksToCloudLibrary:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)addStoreItem:(long long)arg1 andAddTracksToCloudLibrary:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)completeMyCollectionArtworkDataSource;
 - (id)artworkDataSource;
 - (id)libraryDataProvider;
 - (id)_initWithLibraryDataProvider:(id)arg1;
+@property(retain, nonatomic, setter=_setMLCoreStorage:) id _MLCoreStorage; // @synthesize _MLCoreStorage=__MLCoreStorage;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
 @property(readonly, nonatomic) ML3MusicLibrary *ml3Library;
 - (void)_tearDownNotifications;
 - (void)_setupNotifications;
@@ -210,6 +221,9 @@
 - (_Bool)playlistExistsWithPersistentID:(unsigned long long)arg1;
 - (_Bool)itemExistsInDatabaseWithPersistentID:(unsigned long long)arg1;
 - (_Bool)itemExistsWithPersistentID:(unsigned long long)arg1;
+- (_Bool)hasUserPlaylistsContainingAppleMusicContent;
+- (_Bool)hasAddedToLibraryAppleMusicContent;
+- (_Bool)hasUserPlaylists;
 - (_Bool)hasVideoPodcasts;
 - (_Bool)hasHomeVideos;
 - (_Bool)hasTVShows;
@@ -245,6 +259,8 @@
 - (id)additionalLibraryFilterPredicates;
 - (long long)status;
 - (_Bool)writable;
+- (_Bool)isHomeSharingLibrary;
+- (_Bool)isDeviceLibrary;
 - (long long)playlistGeneration;
 - (unsigned long long)syncGenerationID;
 - (unsigned long long)currentEntityRevision;
@@ -257,6 +273,8 @@
 - (void)_displayValuesDidChangeNotification:(id)arg1;
 - (void)_didReceiveMemoryWarning:(id)arg1;
 - (void)_canShowCloudTracksDidChangeNotification:(id)arg1;
+- (void)_activeUserDidChangeForDeviceMediaLibrary:(id)arg1;
+- (void)_reloadLibraryForPathChange;
 - (void)_reloadLibraryForInvisiblePropertyChangeWithNotificationInfo:(id)arg1;
 - (void)_reloadLibraryForDynamicPropertyChangeWithNotificationInfo:(id)arg1;
 - (void)_reloadLibraryForContentsChangeWithNotificationInfo:(id)arg1;
@@ -270,14 +288,26 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (void)dealloc;
+- (id)_initWithUserIdentity:(id)arg1 isSingletonLibrary:(_Bool)arg2;
 - (id)init;
 @property(readonly, nonatomic) shared_ptr_0f3dbfb3 _MediaLibrary_coreLibrary;
 @property(readonly, nonatomic) NSURL *protectedContentSupportStorageURL;
 - (void)enumerateEntityChangesAfterSyncAnchor:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)enumerateEntityChangesAfterSyncAnchor:(id)arg1 maximumRevisionType:(int)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (void)enumerateEntityChangesAfterSyncAnchor:(id)arg1 maximumRevisionType:(int)arg2 inUsersLibrary:(_Bool)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (void)enumerateEntityChangesAfterSyncAnchor:(id)arg1 maximumRevisionType:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateEntityChangesAfterSyncAnchor:(id)arg1 maximumRevisionType:(long long)arg2 inUsersLibrary:(_Bool)arg3 usingBlock:(CDUnknownBlockType)arg4;
 @property(readonly, nonatomic) NSString *_syncValidity;
 - (id)errorResolverForItem:(id)arg1;
+- (void)clearSagaLastPlaylistPlayDataUploadDate;
+- (void)clearSagaLastItemPlayDataUploadDate;
+- (void)clearSagaCloudAccountID;
+@property(copy, nonatomic) NSDate *sagaLastSubscribedContainersUpdateTime;
+@property(copy, nonatomic) NSDate *sagaLastLibraryUpdateTime;
+@property(nonatomic) long long sagaOnDiskDatabaseRevision;
+@property(copy, nonatomic) NSString *storefrontIdentifier;
+@property(nonatomic) long long sagaDatabaseUserVersion;
+@property(copy, nonatomic) NSDate *sagaLastPlaylistPlayDataUploadDate;
+@property(copy, nonatomic) NSDate *sagaLastItemPlayDataUploadDate;
+@property(copy, nonatomic) NSNumber *sagaAccountID;
 - (unsigned long long)filterAvailableContentGroups:(unsigned long long)arg1 withOptions:(unsigned long long)arg2;
 
 @end

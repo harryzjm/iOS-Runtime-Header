@@ -9,12 +9,14 @@
 @interface CXJoinCallAction
 {
     _Bool _videoEnabled;
+    _Bool _uplinkMuted;
     _Bool _shouldSuppressInCallUI;
     _Bool _wantsStagingArea;
     _Bool _upgrade;
     NSUUID *_groupUUID;
     NSSet *_remoteMembers;
     CXHandle *_callerID;
+    NSUUID *_upgradeSessionUUID;
     NSUUID *_messagesGroupUUID;
     NSString *_messagesGroupName;
     NSDate *_dateStarted;
@@ -24,9 +26,11 @@
 @property(copy, nonatomic) NSDate *dateStarted; // @synthesize dateStarted=_dateStarted;
 @property(copy, nonatomic) NSString *messagesGroupName; // @synthesize messagesGroupName=_messagesGroupName;
 @property(copy, nonatomic) NSUUID *messagesGroupUUID; // @synthesize messagesGroupUUID=_messagesGroupUUID;
+@property(copy, nonatomic) NSUUID *upgradeSessionUUID; // @synthesize upgradeSessionUUID=_upgradeSessionUUID;
 @property(nonatomic, getter=isUpgrade) _Bool upgrade; // @synthesize upgrade=_upgrade;
 @property(nonatomic) _Bool wantsStagingArea; // @synthesize wantsStagingArea=_wantsStagingArea;
 @property(nonatomic) _Bool shouldSuppressInCallUI; // @synthesize shouldSuppressInCallUI=_shouldSuppressInCallUI;
+@property(nonatomic, getter=isUplinkMuted) _Bool uplinkMuted; // @synthesize uplinkMuted=_uplinkMuted;
 @property(nonatomic, getter=isVideoEnabled) _Bool videoEnabled; // @synthesize videoEnabled=_videoEnabled;
 @property(copy, nonatomic) CXHandle *callerID; // @synthesize callerID=_callerID;
 @property(copy, nonatomic) NSSet *remoteMembers; // @synthesize remoteMembers=_remoteMembers;

@@ -9,6 +9,7 @@
 @class NSString;
 @protocol SKUIArtworkProviding;
 
+__attribute__((visibility("hidden")))
 @interface SKUIRedeemItem <NSSecureCoding>
 {
     id <SKUIArtworkProviding> _artworks;

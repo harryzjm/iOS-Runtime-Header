@@ -6,11 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class PKPaymentProvisioningController;
+#import <PassKitUI/PKSetupFlowControllerProtocol-Protocol.h>
+
+@class NSString, PKPasscodeUpgradeFlowController, PKPaymentProvisioningController;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPaymentSetupFlowController : NSObject
+@interface PKPaymentSetupFlowController : NSObject <PKSetupFlowControllerProtocol>
 {
+    PKPasscodeUpgradeFlowController *_passcodeUpgradeFlowController;
     PKPaymentProvisioningController *_provisioningController;
     long long _setupContext;
     id <PKPaymentSetupViewControllerDelegate> _delegate;
@@ -20,13 +23,21 @@
 @property(readonly, nonatomic) long long setupContext; // @synthesize setupContext=_setupContext;
 @property(readonly, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
 - (void).cxx_destruct;
-- (void)pushQueuedCredentialViewController:(id)arg1 ontoNavigationController:(id)arg2 pruningHierarchy:(_Bool)arg3 animated:(_Bool)arg4;
 - (id)nextQueuedCredentialViewControllerWithSetupProduct:(id)arg1 allowsManualEntry:(_Bool)arg2;
+- (void)nextViewControllerWithCompletion:(CDUnknownBlockType)arg1;
+- (void)presentPasscodeUpgradeOnViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)manualEntryPaymentSetupViewControllerForProduct:(id)arg1 allowsSelectingBank:(_Bool)arg2;
 - (id)_paymentSetupViewControllerForAssociatedCredential:(id)arg1 product:(id)arg2 allowsManualEntry:(_Bool)arg3;
 - (id)paymentSetupViewControllerForAssociatedCredentials:(id)arg1 product:(id)arg2 allowsManualEntry:(_Bool)arg3;
+- (id)_defaultPaymentSetupViewControllerAllowingManualEntry:(_Bool)arg1;
 - (id)intialPaymentSetupViewControllerForMode:(long long)arg1 allowsManualEntry:(_Bool)arg2;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 delegate:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

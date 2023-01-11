@@ -4,15 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 @class NSString, _MTLCommandBuffer;
 @protocol MTLCommandBuffer, MTLDevice;
 
-@interface _MTLCommandEncoder : NSObject
+@interface _MTLCommandEncoder
 {
     id <MTLDevice> _device;
-    NSString *_label;
     _MTLCommandBuffer<MTLCommandBuffer> *_commandBuffer;
     unsigned long long _numThisEncoder;
     unsigned long long _globalTraceObjectID;
@@ -20,8 +17,7 @@
 }
 
 @property(nonatomic) unsigned long long numThisEncoder; // @synthesize numThisEncoder=_numThisEncoder;
-@property(nonatomic, getter=globalTraceObjectID) unsigned long long globalTraceObjectID; // @synthesize globalTraceObjectID=_globalTraceObjectID;
-@property(copy) NSString *label; // @synthesize label=_label;
+@property(readonly, nonatomic) unsigned long long globalTraceObjectID; // @synthesize globalTraceObjectID=_globalTraceObjectID;
 @property(readonly) unsigned long long dispatchType; // @dynamic dispatchType;
 - (void)memoryBarrierNotificationWithResources:(const id *)arg1 count:(unsigned long long)arg2;
 - (void)memoryBarrierNotificationWithScope:(unsigned long long)arg1;
@@ -37,6 +33,9 @@
 - (id)formattedDescription:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithCommandBuffer:(id)arg1;
+
+// Remaining properties
+@property(copy) NSString *label; // @dynamic label;
 
 @end
 

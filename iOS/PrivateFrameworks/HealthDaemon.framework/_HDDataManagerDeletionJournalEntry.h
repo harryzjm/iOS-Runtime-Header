@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HDDataDeletionConfiguration, NSArray;
+@class HDDataDeletionConfiguration;
+@protocol HKUUIDCollection;
 
 @interface _HDDataManagerDeletionJournalEntry
 {
-    NSArray *_objectUUIDs;
+    id <HKUUIDCollection> _UUIDCollection;
     HDDataDeletionConfiguration *_configuration;
 }
 
 + (void)applyEntries:(id)arg1 withProfile:(id)arg2;
 + (_Bool)supportsSecureCoding;
 @property(readonly, copy, nonatomic) HDDataDeletionConfiguration *configuration; // @synthesize configuration=_configuration;
-@property(readonly, copy, nonatomic) NSArray *objectUUIDs; // @synthesize objectUUIDs=_objectUUIDs;
+@property(readonly, nonatomic) id <HKUUIDCollection> UUIDCollection; // @synthesize UUIDCollection=_UUIDCollection;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

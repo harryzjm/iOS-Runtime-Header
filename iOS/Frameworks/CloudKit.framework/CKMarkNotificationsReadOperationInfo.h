@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CloudKit/NSSecureCoding-Protocol.h>
+
 @class NSArray;
 
-@interface CKMarkNotificationsReadOperationInfo
+@interface CKMarkNotificationsReadOperationInfo <NSSecureCoding>
 {
     NSArray *_notificationIDs;
 }

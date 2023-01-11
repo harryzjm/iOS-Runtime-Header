@@ -16,26 +16,36 @@ struct CC_SHA256state_st {
     unsigned int wbuf[16];
 };
 
-struct HDStatisticsCalculator_DEPRECATED<double> {
-    double _min;
-    double _max;
-    double _mean;
-    long long _count;
+struct Electrocardiogram {
+    CDUnknownFunctionPointerType *_vptr$Base;
+    double _frequency;
+    struct PtrVector<binarysample::ElectrocardiogramLead> _leads;
+    struct {
+        unsigned int frequency:1;
+    } _has;
 };
 
 struct NSDictionary {
     Class _field1;
 };
 
-struct NSUUID {
-    Class _field1;
+struct PtrVector<binarysample::ElectrocardiogramLead> {
+    struct vector<std::__1::unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>>, std::__1::allocator<std::__1::unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>>>> _v;
 };
 
-struct _HDValueAndTime;
+struct _HKLazyLoader<bool> {
+    _Bool _value;
+    _Bool _hasLoaded;
+    struct os_unfair_lock_s _loadLock;
+};
 
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;
+};
+
+struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
+    struct __tree_node_base<void *> *__left_;
 };
 
 struct _xmlHashTable;
@@ -100,19 +110,43 @@ struct _xsltStylesheet {
     struct _xmlHashTable *_field55;
 };
 
+struct map<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead, std::__1::less<binarysample::ElectrocardiogramLead_Name>, std::__1::allocator<std::__1::pair<const binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>>> {
+    struct __tree<std::__1::__value_type<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>, std::__1::__map_value_compare<binarysample::ElectrocardiogramLead_Name, std::__1::__value_type<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>, std::__1::less<binarysample::ElectrocardiogramLead_Name>, true>, std::__1::allocator<std::__1::__value_type<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<binarysample::ElectrocardiogramLead_Name, std::__1::__value_type<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>, std::__1::less<binarysample::ElectrocardiogramLead_Name>, true>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+};
+
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
-struct vector<_HDValueAndTime, std::__1::allocator<_HDValueAndTime>> {
-    struct _HDValueAndTime *_field1;
-    struct _HDValueAndTime *_field2;
-    struct __compressed_pair<_HDValueAndTime *, std::__1::allocator<_HDValueAndTime>> {
-        struct _HDValueAndTime *_field1;
-    } _field3;
+struct unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>>;
+
+struct vector<std::__1::unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>>, std::__1::allocator<std::__1::unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>>>> {
+    struct unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>> *__begin_;
+    struct unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>> *__end_;
+    struct __compressed_pair<std::__1::unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>>*, std::__1::allocator<std::__1::unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>>>> {
+        struct unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>> *__value_;
+    } __end_cap_;
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    id _field1;
+    id _field2;
+    id _field3;
+    id _field4;
+    short _field5;
+    char _field6;
+    unsigned char _field7;
+} CDStruct_0970132e;
 
 typedef struct {
     unsigned long long _field1;
@@ -144,29 +178,12 @@ typedef struct {
     char *_field3;
     char *_field4;
     _Bool _field5;
-} CDStruct_457e09f6;
-
-typedef struct {
-    long long _field1;
-    char *_field2;
-    char *_field3;
-    long long _field4;
-    char *_field5;
-    char *_field6;
-} CDStruct_6b208136;
+    _Bool _field6;
+} CDStruct_b04166ad;
 
 typedef struct {
     long long majorVersion;
     long long minorVersion;
     long long patchVersion;
 } CDStruct_f6aba300;
-
-// Template types
-typedef struct vector<_HDValueAndTime, std::__1::allocator<_HDValueAndTime>> {
-    struct _HDValueAndTime *_field1;
-    struct _HDValueAndTime *_field2;
-    struct __compressed_pair<_HDValueAndTime *, std::__1::allocator<_HDValueAndTime>> {
-        struct _HDValueAndTime *_field1;
-    } _field3;
-} vector_b70ce118;
 

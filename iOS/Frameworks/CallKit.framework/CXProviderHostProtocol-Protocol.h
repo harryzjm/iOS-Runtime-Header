@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CallKit/NSObject-Protocol.h>
+#import <CallKit/CXAbstractProviderHostProtocol-Protocol.h>
 
-@class CXAction, CXCallFailureContext, CXCallUpdate, CXProviderConfiguration, CXTransaction, NSData, NSDate, NSString, NSUUID;
+@class CXCallFailureContext, CXCallUpdate, CXProviderConfiguration, CXTransaction, NSData, NSDate, NSString, NSUUID;
 
-@protocol CXProviderHostProtocol <NSObject>
-- (oneway void)actionCompleted:(CXAction *)arg1;
+@protocol CXProviderHostProtocol <CXAbstractProviderHostProtocol>
 - (oneway void)requestTransaction:(CXTransaction *)arg1 reply:(void (^)(NSError *))arg2;
 - (oneway void)reportCallWithUUID:(NSUUID *)arg1 crossDeviceIdentifier:(NSString *)arg2 changedBytesOfDataUsed:(long long)arg3;
 - (oneway void)reportCallWithUUID:(NSUUID *)arg1 changedMeterLevel:(float)arg2 forDirection:(long long)arg3;

@@ -25,7 +25,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStyle:(long long)arg1 translucent:(_Bool)arg2 tintColor:(id)arg3 barTintColor:(id)arg4;
-- (id)simulatedViewControllerContainingViewController:(id)arg1;
 
 @end
 

@@ -14,7 +14,6 @@
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
-- (void)updateWithRowModel:(id)arg1;
 
 @end
 

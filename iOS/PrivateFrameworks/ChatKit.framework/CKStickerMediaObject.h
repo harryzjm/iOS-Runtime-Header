@@ -10,7 +10,6 @@
 
 + (_Bool)shouldShadePreview;
 + (id)attachmentSummary:(unsigned long long)arg1;
-- (_Bool)generatePreviewOutOfProcess;
 
 @end
 

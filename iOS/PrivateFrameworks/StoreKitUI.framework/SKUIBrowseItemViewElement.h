@@ -6,6 +6,7 @@
 
 @class NSArray, SKUIImageViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUIBrowseItemViewElement
 {
     _Bool _expands;

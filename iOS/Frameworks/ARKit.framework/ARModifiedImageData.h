@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ARImageData;
+@class ARImageData, NSDictionary;
 
 @interface ARModifiedImageData
 {
     ARImageData *_originalImage;
+    NSDictionary *_metaData;
 }
 
+@property(copy, nonatomic) NSDictionary *metaData; // @synthesize metaData=_metaData;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) ARImageData *originalImage;
 - (id)initWithImageData:(id)arg1;

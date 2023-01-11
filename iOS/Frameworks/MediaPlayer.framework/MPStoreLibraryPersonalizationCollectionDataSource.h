@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPModelLazySectionedCollectionDataSource-Protocol.h>
+#import <MediaPlayer/MPLazySectionedCollectionDataSource-Protocol.h>
 
 @class MPMediaLibraryEntityTranslationContext, MPMediaLibraryView, MPPropertySet, MPSectionedCollection, NSDictionary, NSMapTable, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
-@interface MPStoreLibraryPersonalizationCollectionDataSource : NSObject <MPModelLazySectionedCollectionDataSource>
+@interface MPStoreLibraryPersonalizationCollectionDataSource : NSObject <MPLazySectionedCollectionDataSource>
 {
     NSObject<OS_dispatch_queue> *_accessSerialQueue;
     struct vector<std::__1::shared_ptr<mlcore::EntityCache>, std::__1::allocator<std::__1::shared_ptr<mlcore::EntityCache>>> _entityCaches;
@@ -25,7 +25,6 @@
     NSMutableDictionary *_sectionToLibraryAddedOverride;
 }
 
-+ (id)_identifiersByCombiningPersonalizedIdentifiers:(id)arg1 unpersonalizedIdentifiers:(id)arg2;
 + (id)_completePersonalizedObjectWithLibraryObject:(id)arg1 personalizationProperties:(id)arg2 overrideLibraryAddedStatus:(long long)arg3;
 + (id)_requiredLightweightPersonalizationPropertiesForModelClass:(Class)arg1 requestedProperties:(id)arg2;
 + (id)_lightweightPersonalizedObjectWithUnpersonalizedObject:(id)arg1 libraryObject:(id)arg2 personalizationProperties:(id)arg3 overrideLibraryAddedStatus:(long long)arg4;

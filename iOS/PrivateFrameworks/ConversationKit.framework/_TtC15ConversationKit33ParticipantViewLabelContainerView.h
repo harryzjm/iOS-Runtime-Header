@@ -6,19 +6,22 @@
 
 #import <UIKit/UIView.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, UILabel;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit33ParticipantViewLabelContainerView : UIView
 {
     MISSING_TYPE *label;
+    MISSING_TYPE *centerAlignedConstraints;
+    MISSING_TYPE *leadingAlignedConstraints;
+    MISSING_TYPE *isCentered;
 }
 
 + (Class)layerClass;
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 @property(nonatomic, readonly) struct CGSize intrinsicContentSize;
 - (id)initWithFrame:(struct CGRect)arg1;
+@property(nonatomic, readonly) UILabel *label; // @synthesize label;
 
 @end
 

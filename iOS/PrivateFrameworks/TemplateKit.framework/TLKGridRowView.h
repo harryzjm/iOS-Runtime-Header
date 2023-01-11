@@ -8,6 +8,7 @@
 
 @interface TLKGridRowView
 {
+    _Bool _needsSizingPass;
     TLKGridLayoutManager *_manager;
     TLKTableRow *_tableRow;
     NSMutableArray *_labels;
@@ -17,17 +18,16 @@
     unsigned long long _indexOfFirstTrailingColumn;
 }
 
-+ (void)updateLabel:(id)arg1 withFormattedText:(id)arg2 alignment:(long long)arg3;
-@property unsigned long long indexOfFirstTrailingColumn; // @synthesize indexOfFirstTrailingColumn=_indexOfFirstTrailingColumn;
-@property unsigned long long indexOfFirstCenteredColumnForForcedCentering; // @synthesize indexOfFirstCenteredColumnForForcedCentering=_indexOfFirstCenteredColumnForForcedCentering;
-@property(retain) NSMutableArray *currentListOfViews; // @synthesize currentListOfViews=_currentListOfViews;
-@property(retain) NSMutableArray *imageViews; // @synthesize imageViews=_imageViews;
-@property(retain) NSMutableArray *labels; // @synthesize labels=_labels;
++ (void)updateLabel:(id)arg1 withRichText:(id)arg2 alignment:(long long)arg3;
+@property(nonatomic) _Bool needsSizingPass; // @synthesize needsSizingPass=_needsSizingPass;
+@property(nonatomic) unsigned long long indexOfFirstTrailingColumn; // @synthesize indexOfFirstTrailingColumn=_indexOfFirstTrailingColumn;
+@property(nonatomic) unsigned long long indexOfFirstCenteredColumnForForcedCentering; // @synthesize indexOfFirstCenteredColumnForForcedCentering=_indexOfFirstCenteredColumnForForcedCentering;
+@property(retain, nonatomic) NSMutableArray *currentListOfViews; // @synthesize currentListOfViews=_currentListOfViews;
+@property(retain, nonatomic) NSMutableArray *imageViews; // @synthesize imageViews=_imageViews;
+@property(retain, nonatomic) NSMutableArray *labels; // @synthesize labels=_labels;
 @property(retain, nonatomic) TLKTableRow *tableRow; // @synthesize tableRow=_tableRow;
 @property(retain, nonatomic) TLKGridLayoutManager *manager; // @synthesize manager=_manager;
 - (void).cxx_destruct;
-- (id)description;
-- (void)setStylesForEverything;
 - (void)generateLabelsAndImagesIfNecessary;
 - (void)resetStateOfAllViews;
 - (void)observedPropertiesChanged;
@@ -36,7 +36,6 @@
 - (_Bool)isLayoutSizeDependentOnPerpendicularAxis;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (void)styleDidChange:(unsigned long long)arg1;
 - (id)init;
 
 @end

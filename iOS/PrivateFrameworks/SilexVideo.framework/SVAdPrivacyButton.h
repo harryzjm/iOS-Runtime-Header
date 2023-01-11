@@ -8,6 +8,10 @@
 {
 }
 
++ (struct CGSize)size;
++ (double)height;
++ (id)font;
++ (id)title;
 - (id)accessibilityLabel;
 - (id)accessibilityElements;
 - (_Bool)isAccessibilityElement;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSError, XCAccessibilityElement, XCElementSnapshot, XCTAccessibilitySnapshot_iOS;
+@class NSArray, NSDictionary, NSError, XCAXCycleDetector, XCAccessibilityElement, XCElementSnapshot, XCTAccessibilitySnapshot_iOS, XCTTimeoutControls;
 @protocol NSCopying, OS_dispatch_queue;
 
 @interface XCTElementSnapshotRequest : NSObject
@@ -18,8 +18,8 @@
     NSDictionary *_parameters;
     XCElementSnapshot *_elementSnapshot;
     id <NSCopying> _accessibilitySnapshot;
-    double _mainThreadResponsivenessTolerance;
-    double _snapshotDurationTolerance;
+    XCTTimeoutControls *_timeoutControls;
+    XCAXCycleDetector *_cycleDetector;
     NSObject<OS_dispatch_queue> *_queue;
     NSError *_loadError;
 }
@@ -28,8 +28,8 @@
 @property _Bool hasLoaded; // @synthesize hasLoaded=_hasLoaded;
 @property _Bool loadResult; // @synthesize loadResult=_loadResult;
 @property(readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property double snapshotDurationTolerance; // @synthesize snapshotDurationTolerance=_snapshotDurationTolerance;
-@property double mainThreadResponsivenessTolerance; // @synthesize mainThreadResponsivenessTolerance=_mainThreadResponsivenessTolerance;
+@property(retain) XCAXCycleDetector *cycleDetector; // @synthesize cycleDetector=_cycleDetector;
+@property(readonly) XCTTimeoutControls *timeoutControls; // @synthesize timeoutControls=_timeoutControls;
 @property(copy) id <NSCopying> accessibilitySnapshot; // @synthesize accessibilitySnapshot=_accessibilitySnapshot;
 @property(retain) XCElementSnapshot *elementSnapshot; // @synthesize elementSnapshot=_elementSnapshot;
 @property(copy) NSDictionary *parameters; // @synthesize parameters=_parameters;
@@ -37,8 +37,8 @@
 @property(readonly) XCAccessibilityElement *element; // @synthesize element=_element;
 - (void).cxx_destruct;
 - (_Bool)loadSnapshotAndReturnError:(id *)arg1;
+- (id)initWithElement:(id)arg1 attributes:(id)arg2 parameters:(id)arg3 timeoutControls:(id)arg4;
 - (id)initWithElement:(id)arg1 attributes:(id)arg2 parameters:(id)arg3;
-- (id)initWithElement:(id)arg1 rawAttributes:(id)arg2 parameters:(id)arg3;
 - (id)elementSnapshotOrError:(id *)arg1;
 - (id)accessibilitySnapshotOrError:(id *)arg1;
 - (id)safeParametersForParameters:(id)arg1;

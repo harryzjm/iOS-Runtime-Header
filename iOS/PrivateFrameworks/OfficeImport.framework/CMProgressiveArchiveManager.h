@@ -6,6 +6,7 @@
 
 @class NSDate, NSMutableDictionary, NSMutableString;
 
+__attribute__((visibility("hidden")))
 @interface CMProgressiveArchiveManager
 {
     const void *mClient;

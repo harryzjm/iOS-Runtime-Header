@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AXMOutputRequest, AXMOutputRequestDispatchOptions;
+@class AXMOutputRequest;
 
 @interface _AXMOutputRequestTask
 {
     AXMOutputRequest *_request;
-    AXMOutputRequestDispatchOptions *_options;
 }
 
-@property(retain, nonatomic) AXMOutputRequestDispatchOptions *options; // @synthesize options=_options;
 @property(retain, nonatomic) AXMOutputRequest *request; // @synthesize request=_request;
 - (void).cxx_destruct;
 

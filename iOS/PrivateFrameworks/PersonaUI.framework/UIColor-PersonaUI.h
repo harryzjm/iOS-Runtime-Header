@@ -7,6 +7,7 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (PersonaUI)
++ (id)pr_colorNamed:(id)arg1;
 + (id)pr_backgroundColor;
 + (id)pr_darkAccentColor;
 + (id)pr_lightAccentColor;

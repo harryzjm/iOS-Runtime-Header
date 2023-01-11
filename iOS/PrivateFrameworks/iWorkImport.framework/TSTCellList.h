@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     NSPointerArray *_cells;
 }
 
-@property(retain, nonatomic) NSPointerArray *cells; // @synthesize cells=_cells;
+- (void).cxx_destruct;
 - (id)lastCell;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
@@ -25,8 +25,8 @@ __attribute__((visibility("hidden")))
 - (void)popLastCell;
 - (id)shallowAddCell:(id)arg1;
 - (id)addCell:(id)arg1;
-- (void)dealloc;
 - (id)initWithContext:(id)arg1;
+@property(retain, nonatomic) NSPointerArray *cells;
 
 @end
 

@@ -34,6 +34,7 @@
 - (void)_setNavigationControllerContentInsetAdjustment:(struct UIEdgeInsets)arg1;
 - (void)_primitiveSetNavigationControllerContentInsetAdjustment:(struct UIEdgeInsets)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (_Bool)_accessibilityShouldPostScreenChangedOnPresentation;
 - (_Bool)accessibilityPostScreenChangedForChildViewController:(id)arg1 isAddition:(_Bool)arg2;
 
 @end

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     int mSizeInBytes;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 - (_Bool)isLoaded;
 - (void)setSizeInBytes:(int)arg1;
@@ -22,7 +23,6 @@ __attribute__((visibility("hidden")))
 - (id)name;
 - (void)setSoundData:(id)arg1;
 - (id)soundData;
-- (void)dealloc;
 
 @end
 

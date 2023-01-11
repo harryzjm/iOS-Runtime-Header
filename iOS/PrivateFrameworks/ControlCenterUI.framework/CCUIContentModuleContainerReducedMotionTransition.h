@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIWindow;
+@class UIView, UIWindow;
 
 @interface CCUIContentModuleContainerReducedMotionTransition
 {
     UIWindow *_snapshotHostWindow;
+    UIView *_snapshotView;
     struct CGAffineTransform _snapshotCorrectiveTransform;
 }
 
 @property(nonatomic) struct CGAffineTransform snapshotCorrectiveTransform; // @synthesize snapshotCorrectiveTransform=_snapshotCorrectiveTransform;
+@property(retain, nonatomic) UIView *snapshotView; // @synthesize snapshotView=_snapshotView;
 @property(nonatomic) __weak UIWindow *snapshotHostWindow; // @synthesize snapshotHostWindow=_snapshotHostWindow;
 - (void).cxx_destruct;
-- (void)performWithCustomAnimator:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)customAnimator;
+- (void)performTransitionFromView:(id)arg1 toView:(id)arg2 containerView:(id)arg3;
 
 @end
 

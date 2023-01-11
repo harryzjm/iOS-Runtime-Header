@@ -8,22 +8,27 @@
 #import <NanoTimeKitCompanion/NTKColoringView-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeTravelState-Protocol.h>
 
-@class CLKDevice, CLKFont, CLKTextProvider, NSAttributedString, NSParagraphStyle, NSString, UIColor, UIFont, _NTKColorManager;
+@class CLKDevice, CLKFont, CLKTextProvider, NSAttributedString, NSParagraphStyle, NSString, UIColor, UIFont, UIView, _NTKColorManager;
+@protocol CLKMonochromeFilterProvider;
 
 @interface NTKColoringLabel <NTKColoringView, CLKUILabel, NTKTimeTravelState>
 {
     CLKDevice *_device;
     unsigned long long _options;
     _NTKColorManager *_colorManager;
-    struct UIEdgeInsets _cachedOpticalEdgeInsets;
-    _Bool _cachedOpticalEdgeInsetsIsValid;
     struct NSNumber *_updateToken;
     _Bool _updatedAfterTimeTravelStateChange;
     CLKFont *_preTimeTravelFont;
+    _Bool _monochromeSnapshot;
+    double _previousFraction;
+    NSAttributedString *_originalString;
+    UIView *_snapshot;
     _Bool _inTimeTravel;
     _Bool _uppercase;
     _Bool _usesTextProviderTintColoring;
+    _Bool _isTextTruncated;
     _Bool _cachedSizeIsValid;
+    _Bool _cachedOpticalEdgeInsetsIsValid;
     _Bool _usesTextProviderSize;
     UIColor *_overrideColor;
     CLKTextProvider *_textProvider;
@@ -34,17 +39,25 @@
     double _tracking;
     CDUnknownBlockType _nowProvider;
     CDUnknownBlockType _needsResizeHandler;
+    long long _twoToneStyleInMonochrome;
+    id <CLKMonochromeFilterProvider> _filterProvider;
     struct CGSize _cachedSingleLineSize;
+    struct UIEdgeInsets _cachedOpticalEdgeInsets;
 }
 
 + (id)labelWithOptions:(unsigned long long)arg1;
 @property(nonatomic) _Bool usesTextProviderSize; // @synthesize usesTextProviderSize=_usesTextProviderSize;
+@property(nonatomic) _Bool cachedOpticalEdgeInsetsIsValid; // @synthesize cachedOpticalEdgeInsetsIsValid=_cachedOpticalEdgeInsetsIsValid;
+@property(readonly, nonatomic) struct UIEdgeInsets cachedOpticalEdgeInsets; // @synthesize cachedOpticalEdgeInsets=_cachedOpticalEdgeInsets;
 @property(nonatomic) _Bool cachedSizeIsValid; // @synthesize cachedSizeIsValid=_cachedSizeIsValid;
 @property(nonatomic) struct CGSize cachedSingleLineSize; // @synthesize cachedSingleLineSize=_cachedSingleLineSize;
+@property(nonatomic) __weak id <CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
+@property(nonatomic) long long twoToneStyleInMonochrome; // @synthesize twoToneStyleInMonochrome=_twoToneStyleInMonochrome;
 @property(copy, nonatomic) CDUnknownBlockType needsResizeHandler; // @synthesize needsResizeHandler=_needsResizeHandler;
 @property(copy, nonatomic) CDUnknownBlockType nowProvider; // @synthesize nowProvider=_nowProvider;
 @property(nonatomic) double tracking; // @synthesize tracking=_tracking;
 @property(copy, nonatomic) NSParagraphStyle *paragraphStyle; // @synthesize paragraphStyle=_paragraphStyle;
+@property(readonly, nonatomic) _Bool isTextTruncated; // @synthesize isTextTruncated=_isTextTruncated;
 @property(nonatomic) _Bool usesTextProviderTintColoring; // @synthesize usesTextProviderTintColoring=_usesTextProviderTintColoring;
 @property(nonatomic) _Bool uppercase; // @synthesize uppercase=_uppercase;
 @property(nonatomic) double maxWidth; // @synthesize maxWidth=_maxWidth;
@@ -55,6 +68,13 @@
 @property(retain, nonatomic) UIColor *overrideColor; // @synthesize overrideColor=_overrideColor;
 @property(nonatomic) _Bool inTimeTravel; // @synthesize inTimeTravel=_inTimeTravel;
 - (void).cxx_destruct;
+- (void)_setAnimationAlpha:(double)arg1;
+- (void)_setUpSnapshot;
+- (void)editingDidEnd;
+- (void)_updateTwoToneLabelMonochromeColor;
+- (void)updateMonochromeColorWithStyle:(long long)arg1;
+- (void)_transitionTwoToneLabelToMonochromeWithFraction:(double)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1 style:(long long)arg2;
 - (id)_fontWithMonospaceNumbers:(id)arg1;
 - (void)_updateDynamicTracking;
 - (void)setShadowOffset:(struct CGSize)arg1;
@@ -74,7 +94,6 @@
 - (double)widthForMaxWidth:(double)arg1;
 - (void)_requeryTextProviderAndNotify:(_Bool)arg1;
 - (void)setNumberOfLines:(long long)arg1;
-- (void)setusesTextProviderTintColoring:(_Bool)arg1;
 @property(nonatomic) _Bool usesLegibility; // @dynamic usesLegibility;
 - (_Bool)usesLegibility:(_Bool)arg1;
 - (void)setBounds:(struct CGRect)arg1;

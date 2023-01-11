@@ -6,29 +6,55 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+#import <AssistantServices/AFNotifyObserverDelegate-Protocol.h>
 
-@interface AFMyriadMonitor : NSObject
+@class AFNotifyObserver, AFQueue, AFWatchdogTimer, NSString;
+@protocol OS_dispatch_queue;
+
+@interface AFMyriadMonitor : NSObject <AFNotifyObserverDelegate>
 {
-    _Bool _myriadIsWaiting;
-    NSObject<OS_dispatch_source> *_timer;
-    struct __CFNotificationCenter *_center;
+    long long _state;
+    AFWatchdogTimer *_timer;
     NSObject<OS_dispatch_queue> *_myriadMonitorQueue;
-    NSMutableSet *_completions;
+    AFQueue *_completions;
+    AFNotifyObserver *_beginObserver;
+    AFNotifyObserver *_wonObserver;
+    AFNotifyObserver *_lostObserver;
+    AFNotifyObserver *_repostedWonObserver;
+    double _myriadEventMonitorTimeout;
+    _Bool _isRegisteredForMyriadEventNotification;
+    _Bool _ignoreMyriadEvents;
+    _Bool _didRequestCurrentDecisionResult;
+    _Bool _ignoreRepostMyriadNotification;
 }
 
-+ (void)clear;
-+ (void)waitForMyriadDecisionWithCompletion:(CDUnknownBlockType)arg1;
 + (id)sharedMonitor;
 - (void).cxx_destruct;
-- (void)resultSeenWithValue:(_Bool)arg1;
-- (void)_flushCompletions;
-- (void)clear;
-- (void)addCompletion:(CDUnknownBlockType)arg1;
-- (void)setDecisionIsPending;
+- (void)_ignoreRepostMyriadNotification:(_Bool)arg1;
+- (void)_resultSeenWithValue:(_Bool)arg1;
+- (void)_flushCompletions:(_Bool)arg1;
+- (void)_clear;
+- (void)_dequeueBlocksWithSignal:(long long)arg1;
+- (void)_setDecisionIsPending;
+- (void)notifyObserver:(id)arg1 didReceiveNotificationWithToken:(int)arg2;
+- (void)_deregisterFromRepostedDecisionResultsObservers;
+- (void)_deregisterFromMyriadEventNotifications;
+- (void)_fetchCurrentMyraidDecision;
+- (void)_registerForMyriadEvents;
+- (id)_myriadStateToString:(long long)arg1;
 - (void)dealloc;
+- (void)stopMonitoring;
+- (void)dequeueBlocksWaitingForMyriadDecision;
+- (void)ignoreMyriadEvents:(_Bool)arg1;
+- (void)startMonitoringWithTimeoutInterval:(double)arg1;
+- (void)waitForMyriadDecisionWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

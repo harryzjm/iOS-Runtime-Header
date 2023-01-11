@@ -26,8 +26,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)outputContextExistsWithRemoteOutputDevice;
 + (void)resetOutputDeviceForAllOutputContexts;
 + (struct OpaqueFigEndpointPicker *)copySystemVideoPicker;
-+ (_Bool)supportsSecureCoding;
-+ (id)outputContextImplForID:(id)arg1;
++ (id)outputContextImplForID:(id)arg1 type:(id)arg2;
 + (id)outputContextImplForControllingOutputDeviceGroupWithID:(id)arg1 options:(id)arg2;
 + (id)iTunesAudioContext;
 + (id)sharedSystemScreenContext;
@@ -35,7 +34,6 @@ __attribute__((visibility("hidden")))
 + (id)platformDependentScreenOrVideoContext;
 + (id)auxiliaryOutputContext;
 + (id)sharedAudioPresentationOutputContext;
-+ (void)initialize;
 @property __weak AVOutputContext *parentOutputContext; // @synthesize parentOutputContext=_parentContext;
 - (void).cxx_destruct;
 - (id)openCommunicationChannelWithOptions:(id)arg1 error:(id *)arg2;
@@ -46,10 +44,12 @@ __attribute__((visibility("hidden")))
 @property(readonly) _Bool canSetVolume;
 @property(readonly) float volume;
 @property(readonly) _Bool providesControlForAllVolumeFeatures;
-- (void)removeOutputDevice:(id)arg1;
+- (void)removeOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setOutputDevices:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setOutputDevices:(id)arg1;
 @property(readonly) NSArray *outputDevices;
+@property(readonly) _Bool supportsMultipleBluetoothOutputDevices;
 @property(readonly) _Bool supportsMultipleOutputDevices;
 - (void)setOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) AVOutputDevice *outputDevice;
@@ -65,8 +65,6 @@ __attribute__((visibility("hidden")))
 - (void)_addFigEndpointPickerNotifications;
 - (void)_handlePickerServerConnectionDiedNotification;
 - (int)_configureFigEndpointPickerWithFeature:(unsigned long long)arg1 options:(id)arg2;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFeature:(unsigned long long)arg1 options:(id)arg2;
 - (id)initWithContextUUID:(id)arg1;
 - (id)init;

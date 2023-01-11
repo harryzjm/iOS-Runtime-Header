@@ -4,21 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HDSQLitePredicate;
+#import <HealthDaemon/HDMetadataPredicate-Protocol.h>
 
-@interface HDMetadataValueEntityPredicate
+@class HDSQLitePredicate, NSString;
+
+@interface HDMetadataValueEntityPredicate <HDMetadataPredicate>
 {
     HDSQLitePredicate *_keyPredicate;
     HDSQLitePredicate *_valuePredicate;
     _Bool _matchObjectsWithoutKey;
 }
 
++ (id)predicateWithMetadataKey:(id)arg1 exists:(_Bool)arg2;
 + (id)predicateWithMetadataKey:(id)arg1 value:(id)arg2 operatorType:(unsigned long long)arg3;
 + (id)predicateWithMetadataKey:(id)arg1 allowedValues:(id)arg2;
 - (void).cxx_destruct;
+@property(readonly, copy) NSString *description;
 - (id)_valuePredicateForValue:(id)arg1 operatorType:(unsigned long long)arg2;
 - (void)bindToStatement:(struct sqlite3_stmt *)arg1 bindingIndex:(inout int *)arg2;
 - (id)SQLForEntityClass:(Class)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

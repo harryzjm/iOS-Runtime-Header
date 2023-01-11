@@ -9,7 +9,6 @@
 @class PUPhotoPickerRemoteNavigationController, UIViewController;
 
 @protocol PUPhotoPickerRemoteNavigationControllerDelegate <NSObject>
-- (void)photoPickerRemoteNavigationController:(PUPhotoPickerRemoteNavigationController *)arg1 popViewController:(UIViewController *)arg2 animated:(_Bool)arg3;
 - (void)photoPickerRemoteNavigationController:(PUPhotoPickerRemoteNavigationController *)arg1 viewControllerToPush:(UIViewController *)arg2;
 @end
 

@@ -6,19 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPAVMetadataItem-Protocol.h>
+@class AVAsset, AVPlayerItem, AVPlayerItemAccessLog, MPAlternateTracks, MPMediaItem, MPModelGenericObject, MPModelPlayEvent, MPNowPlayingContentItem, MPQueueFeeder, NSArray, NSDictionary, NSError, NSNumber, NSString, NSURL;
+@protocol MPAVItemObserver, OS_dispatch_queue;
 
-@class AVAsset, AVPlayerItem, AVPlayerItemAccessLog, MPAVController, MPAlternateTracks, MPMediaItem, MPModelGenericObject, MPModelPlayEvent, MPNowPlayingContentItem, MPQueueFeeder, MPStoreDownload, NSArray, NSDictionary, NSError, NSNumber, NSString, NSURL;
-@protocol MPAVItemPlaylistIdentifier, MPAVItemQueueIdentifier, OS_dispatch_queue;
-
-@interface MPAVItem : NSObject <MPAVMetadataItem>
+@interface MPAVItem : NSObject
 {
     AVAsset *_asset;
     NSObject<OS_dispatch_queue> *_assetQueue;
     AVPlayerItem *_avPlayerItem;
     _Bool _isAssetLoaded;
     MPQueueFeeder *_feeder;
-    MPAVController *_player;
     float _soundCheckVolumeNormalization;
     NSArray *_chapterTimeMarkers;
     NSArray *_artworkTimeMarkers;
@@ -49,7 +46,6 @@
     _Bool _hasValidPlayerItemDuration;
     double _lastLoggedTotalDuration;
     long long _likedState;
-    _Bool _limitReadAhead;
     CDStruct_1b6d18a9 _playerItemDuration;
     long long _exportableArtworkRevision;
     _Bool _assetLoaded;
@@ -70,10 +66,9 @@
     _Bool _externalDisplay;
     float _currentPlaybackRate;
     float _loudnessInfoVolumeNormalization;
+    id <MPAVItemObserver> _observer;
     NSError *_itemError;
-    id <MPAVItemPlaylistIdentifier> _playlistIdentifier;
-    id <MPAVItemQueueIdentifier> _queueIdentifier;
-    NSString *_feedUniqueIdentifier;
+    NSString *_queueIdentifier;
     long long _playbackMode;
     long long _albumStoreID;
     NSArray *_buyOffers;
@@ -84,22 +79,25 @@
     MPMediaItem *_mediaItem;
     MPModelGenericObject *_modelGenericObject;
     NSString *_aggregateDictionaryItemIdentifier;
-    NSString *_playerIdentifier;
     NSString *_storeFrontIdentifier;
+    NSNumber *_storeAccountID;
+    NSNumber *_useListeningHistory;
     NSString *_contentItemID;
 }
 
-+ (void)applyVolumeNormalizationForQueuedItems:(id)arg1;
 + (id)URLFromPath:(id)arg1;
 + (_Bool)isPlaceholder;
++ (double)nominalHasBeenPlayedThresholdForDuration:(double)arg1;
++ (_Bool)shouldIncrementPlayCountForElapsedTime:(double)arg1 startTime:(double)arg2 stopTime:(double)arg3;
++ (_Bool)hasNominalAmountBeenPlayedForElapsedTime:(double)arg1 startTime:(double)arg2 stopTime:(double)arg3;
 + (void)setDefaultScaleMode:(long long)arg1;
 + (long long)defaultScaleMode;
 @property(copy, nonatomic) NSString *contentItemID; // @synthesize contentItemID=_contentItemID;
+@property(readonly, nonatomic) NSNumber *useListeningHistory; // @synthesize useListeningHistory=_useListeningHistory;
+@property(readonly, nonatomic) NSNumber *storeAccountID; // @synthesize storeAccountID=_storeAccountID;
 @property(nonatomic, getter=hasExternalDisplay) _Bool externalDisplay; // @synthesize externalDisplay=_externalDisplay;
 @property(readonly, copy, nonatomic) NSString *storeFrontIdentifier; // @synthesize storeFrontIdentifier=_storeFrontIdentifier;
 @property(nonatomic, getter=isActiveItem) _Bool activeItem; // @synthesize activeItem=_activeItem;
-@property(copy, nonatomic) NSString *playerIdentifier; // @synthesize playerIdentifier=_playerIdentifier;
-@property(nonatomic) __weak MPAVController *player; // @synthesize player=_player;
 @property(nonatomic) _Bool hasPerformedErrorResolution; // @synthesize hasPerformedErrorResolution=_hasPerformedErrorResolution;
 @property(readonly, nonatomic) _Bool hasFinishedDownloading; // @synthesize hasFinishedDownloading=_hasFinishedDownloading;
 @property(readonly, copy, nonatomic) NSString *aggregateDictionaryItemIdentifier; // @synthesize aggregateDictionaryItemIdentifier=_aggregateDictionaryItemIdentifier;
@@ -122,13 +120,12 @@
 @property(readonly, copy, nonatomic) NSArray *buyOffers; // @synthesize buyOffers=_buyOffers;
 @property(readonly, nonatomic) long long albumStoreID; // @synthesize albumStoreID=_albumStoreID;
 @property(readonly, nonatomic) long long playbackMode; // @synthesize playbackMode=_playbackMode;
-@property(copy, nonatomic) NSString *feedUniqueIdentifier; // @synthesize feedUniqueIdentifier=_feedUniqueIdentifier;
-@property(retain, nonatomic) id <MPAVItemQueueIdentifier> queueIdentifier; // @synthesize queueIdentifier=_queueIdentifier;
-@property(retain, nonatomic) id <MPAVItemPlaylistIdentifier> playlistIdentifier; // @synthesize playlistIdentifier=_playlistIdentifier;
+@property(retain, nonatomic) NSString *queueIdentifier; // @synthesize queueIdentifier=_queueIdentifier;
 @property(retain, nonatomic) NSError *itemError; // @synthesize itemError=_itemError;
 @property(readonly, nonatomic) _Bool canReusePlayerItem; // @synthesize canReusePlayerItem=_canReusePlayerItem;
 @property(readonly, nonatomic) _Bool didAttemptToLoadAsset; // @synthesize didAttemptToLoadAsset=_didAttemptToLoadAsset;
 @property(readonly, nonatomic, getter=isAssetLoaded) _Bool assetLoaded; // @synthesize assetLoaded=_assetLoaded;
+@property(nonatomic) __weak id <MPAVItemObserver> observer; // @synthesize observer=_observer;
 @property(retain, nonatomic) NSArray *urlTimeMarkers; // @synthesize urlTimeMarkers=_urlTimeMarkers;
 @property(nonatomic) float soundCheckVolumeNormalization; // @synthesize soundCheckVolumeNormalization=_soundCheckVolumeNormalization;
 @property _Bool isAssetLoaded; // @synthesize isAssetLoaded=_isAssetLoaded;
@@ -145,25 +142,20 @@
 - (void)replacePlayerItemWithPlayerItem:(id)arg1;
 - (void)reevaluateType;
 - (void)reevaluateHasProtectedContent;
-- (void)reevaluatePlaybackMode;
 @property(readonly, nonatomic) MPModelPlayEvent *modelPlayEvent;
-- (id)localeForAssetTrack:(id)arg1;
 - (void)invalidateContentItemDeviceSpecificUserInfo;
 - (void)_setListeningForCaptionsAppearanceSettingsChanged:(_Bool)arg1;
 - (void)_setNeedsPersistedLikedStateUpdate;
 - (long long)_persistedLikedState;
-- (void)_loadMediaItemWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_handleUpdatedLikedState:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleUpdatedLikedState:(long long)arg1 forUserIdentity:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (double)_expectedStopTimeWithPlaybackInfo:(id)arg1;
 - (double)_expectedStartTimeWithPlaybackInfo:(id)arg1;
-- (long long)_expectedPlaybackMode;
+- (void)_applyLoudnessInfo;
 - (void)_currentPlaybackRateDidChange:(float)arg1;
 - (void)_updateDurationSnapshotWithElapsedTime:(double)arg1 playbackRate:(float)arg2;
-- (void)_checkAllowsBlockingDurationCall;
 - (_Bool)_isBackgroundPlaybackRestricted;
 - (void)setupPlaybackInfo;
 - (void)setupEQPresetWithDefaultPreset:(long long)arg1;
-@property(readonly, nonatomic) NSString *uniqueIdentifier;
 @property(readonly, copy, nonatomic) NSDictionary *playbackInfo;
 - (void)_clearAsset;
 - (CDUnknownBlockType)blockForDirectAVControllerNotificationReferencingItem:(id)arg1;
@@ -177,8 +169,9 @@
 - (id)_initialPlaybackStartTimeForPlaybackInfo:(id)arg1;
 - (void)_likedStateDidChange;
 - (id)_currentContentItemDeviceSpecificUserInfo;
+- (void)_removeObservationsForAVPlayerItem:(id)arg1;
+- (void)_addObservationsForAVPlayerItem:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)_playerItemNewAccessLogEntryNotification:(id)arg1;
 - (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_captionAppearanceSettingsChanged;
 - (void)_itemAttributeAvailableKey:(id)arg1;
@@ -194,8 +187,8 @@
 @property(readonly, nonatomic) _Bool durationIsValid;
 @property(readonly, nonatomic) double durationFromExternalMetadata;
 @property(readonly, nonatomic) CDStruct_1b6d18a9 duration;
-@property(readonly, nonatomic) NSString *localizedPositionInPlaylistString;
 @property(readonly, nonatomic) _Bool shouldShowComposer;
+@property(readonly, nonatomic) long long storePurchasedAdamID;
 @property(readonly, nonatomic) unsigned long long composerPersistentID;
 @property(readonly, nonatomic) unsigned long long genrePersistentID;
 @property(readonly, nonatomic) unsigned long long artistPersistentID;
@@ -203,7 +196,9 @@
 @property(readonly, nonatomic) unsigned long long albumPersistentID;
 @property(readonly, nonatomic) NSString *cloudAlbumID;
 @property(readonly, nonatomic) NSString *cloudUniversalLibraryID;
+@property(readonly, nonatomic) NSString *personID;
 @property(readonly, nonatomic) unsigned long long cloudID;
+@property(readonly, nonatomic) NSString *databaseID;
 @property(readonly, nonatomic) unsigned long long persistentID;
 @property(readonly, nonatomic) unsigned long long mediaType;
 @property(readonly, nonatomic) float userRating;
@@ -229,15 +224,12 @@
 @property(readonly, nonatomic) MPNowPlayingContentItem *contentItem;
 @property(readonly, nonatomic) NSArray *timedMetadataIfAvailable;
 - (void)_realoadEmbeddedTimeMarkers;
-@property(readonly, nonatomic) _Bool supportsSettingCurrentTime;
 @property(readonly, nonatomic) _Bool supportsRating;
-@property(readonly, nonatomic) _Bool supportsSkipToPreviousItem;
-@property(readonly, nonatomic) _Bool supportsSkip;
 @property(readonly, nonatomic) _Bool supportsRewindAndFastForward15Seconds;
 @property(readonly, nonatomic) NSString *storeItemID;
 - (void)setSelectedAlternateTextTrack:(id)arg1;
+- (void)setLikedState:(long long)arg1 forUserIdentity:(id)arg2;
 @property(nonatomic) long long likedState;
-@property(nonatomic) _Bool limitReadAhead;
 - (void)setOverrideDuration:(double)arg1;
 @property(nonatomic) _Bool hasPlayedThisSession;
 - (float)scanIntervalForLevel:(unsigned long long)arg1 paused:(_Bool)arg2;
@@ -254,21 +246,22 @@
 @property(readonly, nonatomic, getter=isStreamable) _Bool streamable;
 @property(readonly, nonatomic, getter=isAlwaysLive) _Bool alwaysLive;
 @property(readonly, nonatomic) _Bool isAd;
-@property(readonly, nonatomic) _Bool hasDisplayableText;
+- (_Bool)hasDisplayableText;
 - (_Bool)hasDataForItemArtwork;
 - (unsigned long long)alternatesCountForTypes:(unsigned long long)arg1;
 - (_Bool)hasAlternatesForTypes:(unsigned long long)arg1;
+@property(readonly, copy, nonatomic) NSString *containerUniqueID;
 @property(readonly, nonatomic) _Bool hasStoreLyrics;
 @property(readonly, nonatomic) NSString *libraryLyrics;
 @property(readonly, nonatomic) NSString *lyrics;
 @property(readonly, nonatomic) NSString *displayableText;
 @property(readonly, nonatomic) _Bool displayableTextLoaded;
+@property(readonly, nonatomic) _Bool usesSubscriptionLease;
 @property(readonly, nonatomic) double currentTimeDisplayOverride;
 @property(readonly, nonatomic) NSString *genre;
 @property(readonly, nonatomic, getter=isExplicitTrack) _Bool explicitTrack;
 @property(readonly, nonatomic, getter=isAssetURLValid) _Bool assetURLValid;
 - (_Bool)isValidPlayerSubstituteForItem:(id)arg1;
-@property(readonly, nonatomic) _Bool isCloudItem;
 @property(readonly, nonatomic) unsigned long long discCount;
 @property(readonly, nonatomic) unsigned long long discNumber;
 @property(readonly, nonatomic) NSString *composer;
@@ -284,7 +277,6 @@
 - (id)url;
 - (id)path;
 - (double)durationInSeconds;
-- (double)_durationInSeconds;
 @property(nonatomic) _Bool userChangedItemsDuringPlayback;
 @property(nonatomic) _Bool userSkippedPlayback;
 @property(nonatomic) _Bool userAdvancedDuringPlayback;
@@ -306,6 +298,7 @@
 @property(readonly, nonatomic) AVAsset *asset;
 - (void)_loadAssetAndPlayerItem;
 - (void)loadAssetAndPlayerItem;
+@property(readonly, nonatomic) _Bool canUseLoadedAsset;
 - (void)flushNowPlayingCaches;
 - (void)dealloc;
 - (void)_releaseAllTimeMarkers;
@@ -317,18 +310,6 @@
 - (_Bool)isSupportedDefaultPlaybackSpeed:(long long)arg1;
 - (CDUnknownBlockType)artworkCatalogBlock;
 - (id)artworkCatalogForPlaybackTime:(double)arg1;
-@property(readonly, nonatomic) _Bool usesSubscriptionLease;
-@property(readonly, nonatomic) long long storePlaybackEndpointType;
-@property(readonly, nonatomic) MPStoreDownload *storeDownload;
-@property(readonly, copy, nonatomic) NSError *lastResourceLoadingError;
-@property(readonly, nonatomic) _Bool isStreamingLowQualityAsset;
-@property(readonly, nonatomic) _Bool didDeferLeaseStart;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

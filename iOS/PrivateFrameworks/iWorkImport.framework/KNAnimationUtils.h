@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)isDiscreteGPUAquisitionDisabled;
++ (_Bool)isDiscreteGPUNeededInShow:(id)arg1;
 + (void)hitPreviewButtonIfExists;
 + (void)getRecommendedPosition:(struct CGPoint *)arg1 andTransform:(struct CATransform3D *)arg2 toFitLayer:(id)arg3 inContainerWithBounds:(struct CGRect)arg4 contentsScale:(double)arg5;
 + (struct CGRect)recommendedLayerBoundsForNaturalPlaybackSize:(struct CGSize)arg1 inContainerWithBounds:(struct CGRect)arg2 contentsScale:(double)arg3 isExternalDisplay:(_Bool)arg4;
@@ -27,11 +29,9 @@ __attribute__((visibility("hidden")))
 + (_Bool)isRenderingLocal;
 + (_Bool)shouldBadgeMetalRendering;
 + (_Bool)isMetalDisabled;
-+ (_Bool)areGLActionBuildsEnabled;
 + (_Bool)isMaxConcurrentTexturePrecachingEnabled;
 + (_Bool)isTexturePrecachingDisabled;
 + (_Bool)isGLStateValidationEnabled;
-+ (_Bool)isFPSGraphEnabled;
 + (_Bool)isFPSLoggingTimerDisabled;
 + (_Bool)isFPSLoggingEnabled;
 + (unsigned long long)randomBasicDirection;

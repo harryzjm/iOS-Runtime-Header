@@ -12,13 +12,11 @@
 {
     double _itemSpacing;
     NSMutableArray *_entries;
-    _Bool _darkMode;
     double _iconTextPadding;
     unsigned long long _dataDetectorTypes;
 }
 
 @property(nonatomic) unsigned long long dataDetectorTypes; // @synthesize dataDetectorTypes=_dataDetectorTypes;
-@property(nonatomic, getter=isDarkMode) _Bool darkMode; // @synthesize darkMode=_darkMode;
 @property(nonatomic) double iconTextPadding; // @synthesize iconTextPadding=_iconTextPadding;
 - (void).cxx_destruct;
 - (void)addEntryWithIcon:(id)arg1 iconSize:(struct CGSize)arg2 attributedText:(id)arg3;

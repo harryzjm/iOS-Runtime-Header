@@ -18,6 +18,7 @@
     _Bool _usePlaceholderAsDisplayImageIfPossible;
     _Bool _inDoubleTapZoom;
     _Bool _didSetup;
+    _Bool _firstLoadZoomToFit;
     UIImage *_tentativePlaceholderImage;
     double _maxImageDimension;
     unsigned long long _inkStyle;
@@ -34,6 +35,7 @@
     struct UIEdgeInsets _edgeInsets;
 }
 
+@property(nonatomic) _Bool firstLoadZoomToFit; // @synthesize firstLoadZoomToFit=_firstLoadZoomToFit;
 @property(nonatomic) __weak AKPageController *pageController; // @synthesize pageController=_pageController;
 @property(nonatomic) __weak AKRectAnnotation *editingAnnotaiton; // @synthesize editingAnnotaiton=_editingAnnotaiton;
 @property _Bool didSetup; // @synthesize didSetup=_didSetup;
@@ -124,6 +126,7 @@
 - (struct CGRect)visibleContentRectInCoordinateSpace:(id)arg1;
 - (struct CGRect)visibleContentRect;
 - (void)viewDidLoad;
+- (_Bool)_canShowWhileLocked;
 - (void)dealloc;
 - (id)initWithSourceContent:(id)arg1 archivedDataModel:(id)arg2 delegate:(id)arg3;
 

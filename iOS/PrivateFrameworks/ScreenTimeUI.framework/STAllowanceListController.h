@@ -4,33 +4,42 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Preferences/PSListController.h>
-
 #import <ScreenTimeUI/STAllowanceDetailListControllerDelegate-Protocol.h>
-#import <ScreenTimeUI/STAllowanceSetupListControllerDelegate-Protocol.h>
 
-@class NSObject, NSString, PSSpecifier;
+@class NSArray, NSObject, NSString, PSSpecifier;
 @protocol STRootViewModelCoordinator;
 
-@interface STAllowanceListController : PSListController <STAllowanceDetailListControllerDelegate, STAllowanceSetupListControllerDelegate>
+__attribute__((visibility("hidden")))
+@interface STAllowanceListController <STAllowanceDetailListControllerDelegate>
 {
     NSObject<STRootViewModelCoordinator> *_coordinator;
-    PSSpecifier *_addAllowanceSpecifier;
+    NSArray *_allowanceSpecifiers;
+    PSSpecifier *_enableAllAllowancesSpecifier;
 }
 
-@property(retain, nonatomic) PSSpecifier *addAllowanceSpecifier; // @synthesize addAllowanceSpecifier=_addAllowanceSpecifier;
+@property(retain) PSSpecifier *enableAllAllowancesSpecifier; // @synthesize enableAllAllowancesSpecifier=_enableAllAllowancesSpecifier;
+@property(copy) NSArray *allowanceSpecifiers; // @synthesize allowanceSpecifiers=_allowanceSpecifiers;
 @property(retain, nonatomic) NSObject<STRootViewModelCoordinator> *coordinator; // @synthesize coordinator=_coordinator;
 - (void).cxx_destruct;
 - (void)showStoreDemoAlert;
-- (void)allowanceSetupListControllerDidCancel:(id)arg1;
-- (void)allowanceSetupListController:(id)arg1 didSelectAllowanceIdentifiers:(id)arg2;
 - (void)allowanceDetailController:(id)arg1 didDeleteAllowance:(id)arg2;
 - (void)allowanceDetailController:(id)arg1 didSaveAllowance:(id)arg2;
+- (void)deleteAllowance:(id)arg1;
+- (void)_showConfirmDeletionView:(id)arg1;
+- (void)confirmDeletion:(id)arg1;
+- (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
+- (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (void)addAllowance:(id)arg1;
-- (void)showBudgetDetailController:(id)arg1;
-- (id)budgetDetailText:(id)arg1;
-- (id)budgetSpecifiers;
+- (void)_showAllowanceDetailController:(id)arg1;
+- (id)_subtitleTextForAllowance:(id)arg1;
+- (id)_specifierForAllowance:(id)arg1;
+- (id)_allAllowancesEnabled:(id)arg1;
+- (void)_setAllAllowancesEnabled:(id)arg1 specifier:(id)arg2;
 - (id)specifiers;
+@property(readonly) _Bool shouldShowCompatibilityAlert;
+- (void)_adjustCellHeightForAllowanceSpecifier:(id)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
+- (void)_allowancesDidChange;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (_Bool)canBeShownFromSuspendedState;
 - (void)dealloc;

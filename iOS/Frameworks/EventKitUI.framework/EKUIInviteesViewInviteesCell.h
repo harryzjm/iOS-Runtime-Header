@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class EKUILabeledAvatarView, NSArray, NSLayoutConstraint, UIActivityIndicatorView, UIImageView, UILabel;
+@class EKUILabeledAvatarView, NSArray, UIActivityIndicatorView, UIImageView, UILabel, UIView;
 
 @interface EKUIInviteesViewInviteesCell : UITableViewCell
 {
@@ -14,30 +14,31 @@
     _Bool _showSpinner;
     UILabel *_nameLabel;
     UILabel *_commentLabel;
+    UILabel *_optionalInviteeLabel;
     UIImageView *_statusImageView;
     EKUILabeledAvatarView *_contactAvatarView;
+    UIView *_textContainerView;
     NSArray *_persistentConstraints;
     NSArray *_removableConstraints;
-    NSLayoutConstraint *_minimumHeightConstraint;
-    NSLayoutConstraint *_nameBaselineToTopConstraint;
     UIActivityIndicatorView *_spinner;
 }
 
 + (id)_commentLabelFont;
 + (id)_nameLabelFont;
-+ (double)_leftTextInset;
 @property(nonatomic) _Bool showSpinner; // @synthesize showSpinner=_showSpinner;
 @property(retain, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
-@property(retain, nonatomic) NSLayoutConstraint *nameBaselineToTopConstraint; // @synthesize nameBaselineToTopConstraint=_nameBaselineToTopConstraint;
-@property(retain, nonatomic) NSLayoutConstraint *minimumHeightConstraint; // @synthesize minimumHeightConstraint=_minimumHeightConstraint;
 @property(retain, nonatomic) NSArray *removableConstraints; // @synthesize removableConstraints=_removableConstraints;
 @property(retain, nonatomic) NSArray *persistentConstraints; // @synthesize persistentConstraints=_persistentConstraints;
+@property(retain, nonatomic) UIView *textContainerView; // @synthesize textContainerView=_textContainerView;
 @property(retain, nonatomic) EKUILabeledAvatarView *contactAvatarView; // @synthesize contactAvatarView=_contactAvatarView;
 @property(retain, nonatomic) UIImageView *statusImageView; // @synthesize statusImageView=_statusImageView;
+@property(retain, nonatomic) UILabel *optionalInviteeLabel; // @synthesize optionalInviteeLabel=_optionalInviteeLabel;
 @property(retain, nonatomic) UILabel *commentLabel; // @synthesize commentLabel=_commentLabel;
 @property(retain, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
 @property _Bool hideStatus; // @synthesize hideStatus=_hideStatus;
 - (void).cxx_destruct;
+- (id)_statusImageViewSymbolConfiguration;
+- (void)updateCommonElements:(id)arg1 statusImage:(id)arg2;
 - (void)updateWithParticipantForSorting:(id)arg1 availabilityType:(long long)arg2 showSpinner:(_Bool)arg3 animated:(_Bool)arg4;
 - (void)updateWithParticipantForSorting:(id)arg1;
 - (void)updateConstraints;

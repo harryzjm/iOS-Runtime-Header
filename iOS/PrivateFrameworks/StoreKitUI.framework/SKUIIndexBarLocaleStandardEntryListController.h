@@ -6,6 +6,7 @@
 
 @class IKViewElementStyle, NSSet, SKUIIndexBarEntryListViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUIIndexBarLocaleStandardEntryListController
 {
     SKUIIndexBarEntryListViewElement *_entryListViewElement;

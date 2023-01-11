@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Message/EMReceivingAccount-Protocol.h>
+#import <Message/EDIndexableAccount-Protocol.h>
+#import <Message/EDReceivingAccount-Protocol.h>
+#import <Message/EFLoggable-Protocol.h>
 
-@class MFError, MFLock, MFMailboxUid, MFMessageLibrary, MFWeakObjectCache, NSMutableDictionary, NSString;
+@class ACAccount, MFError, MFLocalActionReplayHandler, MFLock, MFMailMessageLibrary, MFMailboxUid, MFWeakObjectCache, NSArray, NSMutableDictionary, NSString;
+@protocol EFScheduler;
 
-@interface MailAccount <EMReceivingAccount>
+@interface MailAccount <EFLoggable, EDReceivingAccount, EDIndexableAccount>
 {
     NSString *_path;
     NSString *_nonPersistentPath;
@@ -29,17 +32,19 @@
     MFLock *_cachedMailboxenLock;
     MFLock *_deletionLock;
     MFError *_lastConnectionError;
-    MFMessageLibrary *_library;
+    MFMailMessageLibrary *_library;
     NSMutableDictionary *_currentChokedActions;
     NSString *_mailboxCachePath;
     MFWeakObjectCache *_messageStoresCache;
     long long _cachedLibraryID;
     MFLock *_cachedLibraryIDLock;
-    NSString *_lastKnownHostname;
     _Bool _supportsFastRemoteBodySearch;
+    id <EFScheduler> _mailboxCacheWriteScheduler;
+    MFLocalActionReplayHandler *_replayHandler;
 }
 
 + (void)_removeLookAsideValuesNotInAccountList:(id)arg1;
++ (_Bool)canMoveMessagesFromAccount:(id)arg1 toAccount:(id)arg2 profileConnection:(id)arg3;
 + (_Bool)canMoveMessagesFromAccount:(id)arg1 toAccount:(id)arg2;
 + (void)_setOutboxMailboxUid:(id)arg1;
 + (void)setDataclassesConsideredActive:(id)arg1;
@@ -72,6 +77,8 @@
 + (id)newAccountWithPath:(id)arg1;
 + (id)accountWithPath:(id)arg1;
 + (id)allActivePrimaryMailboxUids;
++ (id)allMailboxUidsForAccounts:(id)arg1;
++ (id)allPurgeableMailboxUids;
 + (id)allMailboxUids;
 + (id)outboxMessageStore:(_Bool)arg1;
 + (id)outboxMailboxUid;
@@ -87,9 +94,9 @@
 + (void)updateAutoFetchSettings;
 + (void)resetMailboxTimers;
 + (id)existingAccountWithType:(id)arg1 hostname:(id)arg2 username:(id)arg3;
++ (void)notifyOfAccountsAdded:(id)arg1 accountsRemoved:(id)arg2 changedAccounts:(id)arg3;
 + (id)accountWithUniqueId:(id)arg1;
-+ (id)purgableAccountsWithError:(id *)arg1;
-+ (id)purgableAccounts;
++ (id)purgeableAccounts;
 + (id)activeAccountsWithError:(id *)arg1;
 + (id)activeAccounts;
 + (void)_removeAccountFromSortedPaths:(id)arg1;
@@ -111,11 +118,17 @@
 + (void)enableMailboxListingNotifications:(_Bool)arg1;
 + (void)disableMailboxListingNotifications;
 + (_Bool)mailboxListingNotificationAreEnabled;
++ (struct os_unfair_recursive_lock_s *)lock;
 + (void)initialize;
++ (id)log;
+@property(readonly, nonatomic) MFLocalActionReplayHandler *replayHandler; // @synthesize replayHandler=_replayHandler;
+@property(retain, nonatomic) id <EFScheduler> mailboxCacheWriteScheduler; // @synthesize mailboxCacheWriteScheduler=_mailboxCacheWriteScheduler;
 @property(readonly, nonatomic) _Bool supportsFastRemoteBodySearch; // @synthesize supportsFastRemoteBodySearch=_supportsFastRemoteBodySearch;
+- (void).cxx_destruct;
 - (_Bool)supportsMailDrop;
 - (_Bool)supportsHandoffType:(id)arg1;
 - (id)unsupportedHandoffTypes;
+@property(readonly, nonatomic) NSArray *emailAddresses;
 @property(readonly) _Bool sourceIsManaged;
 @property(readonly) _Bool shouldArchiveByDefault;
 - (int)archiveDestinationForMailbox:(id)arg1;
@@ -130,10 +143,10 @@
 - (_Bool)restrictedFromSendingExternally;
 - (_Bool)restrictedFromTransferingMessagesToOtherAccounts;
 - (id)copyDataForRemoteEncryptionCertificatesForAddress:(id)arg1 error:(id *)arg2;
+- (id)copyDataForRemoteEncryptionCertificatesForAddresses:(id)arg1 errors:(id *)arg2;
 - (int)secureCompositionEncryptionPolicyForAddress:(id)arg1;
 - (int)secureCompositionSigningPolicyForAddress:(id)arg1;
-- (_Bool)perMessageEncryptionEnabled;
-- (_Bool)secureMIMEEnabled;
+- (_Bool)perMessageEncryptionEnabledForAddress:(id)arg1;
 - (void)setEncryptionIdentityPersistentReference:(id)arg1 forAddress:(id)arg2;
 - (id)encryptionIdentityPersistentReferenceForAddress:(id)arg1;
 - (void)setSigningIdentityPersistentReference:(id)arg1 forAddress:(id)arg2;
@@ -169,7 +182,6 @@
 - (void)_setSpecialMailboxName:(id)arg1 forType:(int)arg2;
 - (_Bool)_assignSpecialMailboxToAppropriateIvar:(id)arg1 forType:(int)arg2;
 - (id)_cachedSpecialMailboxOfType:(int)arg1;
-- (id *)_specialMailboxIvarOfType:(int)arg1;
 - (id)_defaultSpecialMailboxNameForType:(int)arg1;
 - (id)powerAssertionIdentifierWithPrefix:(id)arg1;
 @property(readonly, copy) NSString *description;
@@ -190,6 +202,7 @@
 - (void)_didBecomeActive:(_Bool)arg1;
 - (void)setActive:(_Bool)arg1;
 - (_Bool)isActive;
+@property(readonly, nonatomic) _Bool isLocalAccount;
 - (_Bool)isActiveWithPersistentAccount:(id)arg1;
 - (_Bool)_setPath:(id)arg1;
 - (void)changePushedMailboxUidsAdded:(id)arg1 deleted:(id)arg2;
@@ -206,9 +219,13 @@
 - (id)unactionableInvitationICSRepresentationInMessage:(id)arg1 summary:(id *)arg2;
 - (_Bool)reconstituteOrphanedMeetingInMessage:(id)arg1;
 - (id)meetingStorePersistentID;
+- (id)replayAction:(id)arg1;
+- (void)addNewAction:(id)arg1;
+- (void)newActionsAdded;
+@property(readonly) _Bool moveSupported;
 - (id)loggingIdentifier;
 @property(readonly, nonatomic) _Bool needsRemoteSearchResultsVerification;
-- (id)statisticsKind;
+@property(readonly, copy, nonatomic) NSString *statisticsKind;
 - (id)persistentNameForMailbox:(id)arg1;
 - (id)displayNameUsingSpecialNamesForMailboxUid:(id)arg1;
 - (_Bool)deleteInPlaceForMailbox:(id)arg1;
@@ -280,12 +297,14 @@
 - (id)mailboxesForSuggestionsLostMessageSearchPriorToTime:(double)arg1;
 - (id)allMailboxUids;
 - (id)specialMailboxNameForType:(int)arg1;
+- (_Bool)containsMailboxWithURL:(id)arg1;
+- (id)mailboxForType:(long long)arg1;
 - (id)mailboxUidOfType:(int)arg1 createIfNeeded:(_Bool)arg2;
 - (_Bool)isSpecialMailbox:(id)arg1;
 - (_Bool)deliveryAccountInUseByOtherAccounts:(id)arg1;
 - (void)deleteDeliveryAccountIfNeeded;
 - (_Bool)shouldExpungeMessagesOnDelete;
-- (id)rootMailboxUid;
+@property(readonly, nonatomic) MFMailboxUid *rootMailboxUid;
 - (id)allMailMailboxUid;
 - (id)primaryMailboxUid;
 - (_Bool)canAppendMessages;
@@ -304,7 +323,7 @@
 - (void)_invalidateAndDeleteAccountData:(_Bool)arg1;
 - (void)_deleteHook;
 - (_Bool)canAuthenticateWithCurrentCredentials;
-- (id)smtpIdentifier;
+@property(readonly, copy, nonatomic) NSString *smtpIdentifier;
 - (id)emailAddressesAndAliases;
 - (id)emailAddressesAndAliasesList;
 - (void)setLastEmailAliasesSyncDate:(id)arg1;
@@ -316,7 +335,7 @@
 - (id)receiveEmailAliasAddresses;
 - (id)emailAddressesDictionary;
 - (void)setEmailAddresses:(id)arg1;
-- (id)emailAddresses;
+@property(readonly, copy, nonatomic) NSArray *emailAddressStrings;
 - (void)pushUpdateForAliasData;
 - (void)setEnabled:(_Bool)arg1 forEmailAddress:(id)arg2;
 - (void)setDefaultEmailAddress:(id)arg1;
@@ -333,14 +352,11 @@
 - (id)deliveryAccount;
 - (void)setFullUserName:(id)arg1;
 - (id)fullUserName;
-- (id)tildeAbbreviatedPath;
-- (void)setLastKnownHostname:(id)arg1;
 - (void)setPath:(id)arg1;
 - (id)path;
 @property(readonly, nonatomic) NSString *defaultPath;
 - (id)URLStringFromLegacyURLString:(id)arg1;
 - (id)legacySQLExpressionToMatchAllMailboxes;
-- (void)dealloc;
 - (id)initWithPath:(id)arg1;
 - (id)initWithLibrary:(id)arg1 path:(id)arg2;
 - (id)initWithLibrary:(id)arg1 persistentAccount:(id)arg2;
@@ -357,8 +373,12 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
+@property(readonly, copy, nonatomic) NSString *identifier;
+@property(readonly, nonatomic) _Bool isManaged;
+@property(readonly, nonatomic, getter=isManaged) _Bool managed;
 @property(copy, nonatomic) NSString *password;
 @property(readonly) Class superclass;
+@property(readonly, copy, nonatomic) ACAccount *systemAccount;
 
 @end
 

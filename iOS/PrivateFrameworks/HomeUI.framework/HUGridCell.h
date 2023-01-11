@@ -20,8 +20,8 @@
     UIVisualEffect *_contentEffect;
     UIVisualEffect *_secondaryContentEffect;
     double _secondaryContentDimmingFactor;
-    HFItem *_item;
     HUGridCellBackgroundView *_gridBackgroundView;
+    HFItem *_item;
     UIVisualEffectView *_gridForegroundView;
 }
 
@@ -29,8 +29,8 @@
 + (id)_jitterPositionAnimation;
 + (Class)layoutOptionsClass;
 @property(retain, nonatomic) UIVisualEffectView *gridForegroundView; // @synthesize gridForegroundView=_gridForegroundView;
-@property(retain, nonatomic) HUGridCellBackgroundView *gridBackgroundView; // @synthesize gridBackgroundView=_gridBackgroundView;
 @property(retain, nonatomic) HFItem *item; // @synthesize item=_item;
+@property(retain, nonatomic) HUGridCellBackgroundView *gridBackgroundView; // @synthesize gridBackgroundView=_gridBackgroundView;
 @property(nonatomic) double secondaryContentDimmingFactor; // @synthesize secondaryContentDimmingFactor=_secondaryContentDimmingFactor;
 @property(retain, nonatomic) UIVisualEffect *secondaryContentEffect; // @synthesize secondaryContentEffect=_secondaryContentEffect;
 @property(retain, nonatomic) UIVisualEffect *contentEffect; // @synthesize contentEffect=_contentEffect;
@@ -51,7 +51,6 @@
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)_setupCommonCellAppearance;
-- (void)applyLayoutAttributes:(id)arg1;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;

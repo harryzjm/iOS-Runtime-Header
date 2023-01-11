@@ -7,7 +7,7 @@
 #import <XCTest/XCTActivity-Protocol.h>
 #import <XCTest/XCTWaiterDelegate-Protocol.h>
 
-@class NSDictionary, NSInvocation, NSString, XCTestCaseRun, XCUITestContext, _XCTestCaseImplementation;
+@class NSDictionary, NSInvocation, NSString, XCTestCaseRun, _XCTestCaseImplementation;
 
 @interface XCTestCase <XCTWaiterDelegate, XCTActivity>
 {
@@ -18,6 +18,8 @@
 + (_Bool)_treatMissingBaselinesAsTestFailures;
 + (id)knownMemoryMetrics;
 + (id)measurementFormatter;
++ (id)defaultMeasureOptions;
++ (id)defaultMetrics;
 + (id)defaultPerformanceMetrics;
 + (_Bool)_meetsMinimumOperatingSystemVersion;
 + (CDStruct_2ec95fd7)minimumOperatingSystemVersion;
@@ -40,9 +42,6 @@
 + (id)_allSubclasses;
 @property(retain) _XCTestCaseImplementation *internalImplementation; // @synthesize internalImplementation=_internalImplementation;
 - (void).cxx_destruct;
-- (void)removeUIInterruptionMonitor:(id)arg1;
-- (id)addUIInterruptionMonitorWithDescription:(id)arg1 handler:(CDUnknownBlockType)arg2;
-@property(readonly) XCUITestContext *testContext;
 - (void)_dequeueAndReportBackgroundAttachments;
 - (void)addAttachment:(id)arg1;
 @property(readonly) NSDictionary *activityAggregateStatistics;
@@ -61,7 +60,11 @@
 - (void)reportMetric:(id)arg1 reportFailures:(_Bool)arg2;
 - (void)reportMeasurements:(id)arg1 forMetricID:(id)arg2 reportFailures:(_Bool)arg3;
 - (void)_recordValues:(id)arg1 forPerformanceMetricID:(id)arg2 name:(id)arg3 unitsOfMeasurement:(id)arg4 baselineName:(id)arg5 baselineAverage:(id)arg6 maxPercentRegression:(id)arg7 maxPercentRelativeStandardDeviation:(id)arg8 maxRegression:(id)arg9 maxStandardDeviation:(id)arg10 file:(id)arg11 line:(unsigned long long)arg12;
+- (id)_symbolicationRecordForAddress:(unsigned long long)arg1;
 - (id)_symbolicationRecordForTestCodeInAddressStack:(id)arg1;
+- (void)measureWithMetrics:(id)arg1 options:(id)arg2 block:(CDUnknownBlockType)arg3;
+- (void)measureWithMetrics:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)measureWithOptions:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)measureBlock:(CDUnknownBlockType)arg1;
 - (void)stopMeasuring;
 - (void)startMeasuring;
@@ -92,6 +95,7 @@
 - (Class)_requiredTestRunBaseClass;
 - (void)recordFailureWithDescription:(id)arg1 inFile:(id)arg2 atLine:(unsigned long long)arg3 expected:(_Bool)arg4;
 - (void)_interruptTest;
+@property(nonatomic) _Bool shouldSetShouldHaltWhenReceivesControl;
 @property(nonatomic) _Bool shouldHaltWhenReceivesControl;
 @property _Bool continueAfterFailure;
 @property(retain) XCTestCaseRun *testCaseRun;
@@ -108,11 +112,14 @@
 - (id)initWithSelector:(SEL)arg1;
 - (id)initWithInvocation:(id)arg1;
 - (id)init;
+- (void)removeUIInterruptionMonitor:(id)arg1;
+- (id)addUIInterruptionMonitorWithDescription:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)nestedWaiter:(id)arg1 wasInterruptedByTimedOutWaiter:(id)arg2;
 - (void)waiter:(id)arg1 didFulfillInvertedExpectation:(id)arg2;
 - (void)waiter:(id)arg1 fulfillmentDidViolateOrderingConstraintsForExpectation:(id)arg2 requiredExpectation:(id)arg3;
 - (void)waiter:(id)arg1 didTimeoutWithUnfulfilledExpectations:(id)arg2;
 - (id)expectationForPredicate:(id)arg1 evaluatedWithObject:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (id)expectationForNotification:(id)arg1 object:(id)arg2 notificationCenter:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (id)expectationForNotification:(id)arg1 object:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)keyValueObservingExpectationForObject:(id)arg1 keyPath:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)keyValueObservingExpectationForObject:(id)arg1 keyPath:(id)arg2 expectedValue:(id)arg3;
@@ -121,13 +128,14 @@
 - (void)waitForExpectations:(id)arg1 timeout:(double)arg2 enforceOrder:(_Bool)arg3;
 - (void)waitForExpectations:(id)arg1 timeout:(double)arg2;
 - (void)waitForExpectationsWithTimeout:(double)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)_expectationForDistributedNotification:(id)arg1 object:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)_expectationForDarwinNotification:(id)arg1;
 - (id)performFailableBlock:(CDUnknownBlockType)arg1 testCaseRun:(id)arg2 shouldInterruptTest:(_Bool *)arg3;
 - (void)_performTurningExceptionsIntoFailuresInterruptAfterHandling:(_Bool)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_recordActivityWithFailure:(id)arg1;
 - (void)_recordFailure:(id)arg1;
 - (void)_recordFailureWithDescription:(id)arg1 inFile:(id)arg2 atLine:(unsigned long long)arg3 expected:(_Bool)arg4;
-- (void)_enqueueFailureWithDescription:(id)arg1 inFile:(id)arg2 atLine:(unsigned long long)arg3 expected:(_Bool)arg4 breakWhenDequeued:(_Bool)arg5;
+- (void)_enqueueFailureWithDescription:(id)arg1 inFile:(id)arg2 atLine:(unsigned long long)arg3 expected:(_Bool)arg4 interruptTest:(_Bool)arg5 breakWhenDequeued:(_Bool)arg6;
 - (void)_dequeueFailures;
 
 // Remaining properties

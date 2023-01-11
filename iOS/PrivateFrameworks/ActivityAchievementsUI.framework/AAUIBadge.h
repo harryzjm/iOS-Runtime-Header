@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HealthKitUI/HKAnimatableObject.h>
+#import <ActivityRingsUI/ARUIAnimatableObject.h>
 
-@interface AAUIBadge : HKAnimatableObject
+@interface AAUIBadge : ARUIAnimatableObject
 {
     _Bool _locksRotationY;
     double _rotationX;

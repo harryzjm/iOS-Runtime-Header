@@ -6,10 +6,27 @@
 
 #import <Foundation/NSDictionary.h>
 
-@interface NSDictionary (TSUAdditions)
-+ (id)tsu_dictionaryByInvertingDictionary:(id)arg1;
-- (id)tsu_allKeysAsSet;
-- (id)tsu_objectOfClass:(Class)arg1 forKey:(id)arg2;
+#import <iWorkImport/TSPResourceLocalStrategyProvider-Protocol.h>
+
+@class NSSet, NSString;
+
+@interface NSDictionary (TSUAdditions) <TSPResourceLocalStrategyProvider>
++ (id)tsp_decoderResourceNameDictionaryFromMessage:(const RepeatedPtrField_6277dbb5 *)arg1;
++ (id)tsp_decoderDataInfoDictionaryFromMessage:(const RepeatedPtrField_6277dbb5 *)arg1;
++ (id)tsp_identifierToObjectUUIDDictionaryFromMessage:(const RepeatedPtrField_f8410f9e *)arg1;
++ (id)tsp_identifierToObjectUUIDDictionaryFromWeakExternalReferences:(id)arg1 updatingComponentInfo:(struct ComponentInfo *)arg2 failIfReferenceIsNotPersisted:(_Bool)arg3 context:(id)arg4 error:(id *)arg5;
+- (id)tsu_onlyKeyForObject:(id)arg1;
+@property(readonly) NSSet *tsu_allKeysAsSet;
 - (_Bool)tsu_boolValueForKey:(id)arg1;
+- (id)tsu_invertedCopy;
+- (long long)localStrategyForDocumentResourceInfo:(id)arg1;
+- (void)tsp_enumerateKeysAndObjectsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)tsp_saveIdentifierToObjectUUIDDictionaryToMessage:(RepeatedPtrField_f8410f9e *)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

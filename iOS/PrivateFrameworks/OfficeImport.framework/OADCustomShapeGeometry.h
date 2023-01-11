@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *mPaths;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 - (void)addPath:(id)arg1;
 - (id)pathAtIndex:(unsigned long long)arg1;

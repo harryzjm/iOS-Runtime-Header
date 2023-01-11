@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIClickInteractionDelegate-Protocol.h>
-#import <UIKitCore/_UIInteractiveHighlighting-Protocol.h>
+#import <UIKitCore/_UIClickInteractionDelegateInternal-Protocol.h>
 
-@class NSArray, NSString, UIClickInteraction, UIColor, UIImage, UIImageView, UIView, UIVisualEffectView;
+@class NSArray, NSString, UIColor, UIImage, UIImageView, UIView, UIVisualEffectView, _UIClickInteraction;
 
-@interface UICoverSheetButton <UIClickInteractionDelegate, _UIInteractiveHighlighting>
+@interface UICoverSheetButton <_UIClickInteractionDelegateInternal>
 {
     UIView *_containerView;
     UIImageView *_contentView;
@@ -17,12 +16,13 @@
     NSArray *_backgroundEffects;
     NSArray *_selectedBackgroundEffects;
     UIView *_backgroundHighlightView;
-    UIClickInteraction *_clickInteraction;
+    _UIClickInteraction *_clickInteraction;
     _Bool _interactive;
-    double _interactiveHighlightMagnitude;
     _Bool _didActivateDuringInteraction;
     double _maxForceDuringInteraction;
+    double _highlightProgress;
     _Bool _pronounced;
+    _Bool _latching;
     UIImage *_image;
     UIImage *_selectedImage;
     UIColor *_selectedTintColor;
@@ -39,6 +39,7 @@
 @property(retain, nonatomic) UIColor *selectedTintColor; // @synthesize selectedTintColor=_selectedTintColor;
 @property(retain, nonatomic) UIImage *selectedImage; // @synthesize selectedImage=_selectedImage;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
+@property(nonatomic, getter=isLatching) _Bool latching; // @synthesize latching=_latching;
 @property(nonatomic, getter=isPronounced) _Bool pronounced; // @synthesize pronounced=_pronounced;
 - (void).cxx_destruct;
 - (id)_maxForceStatWithActivation:(_Bool)arg1;
@@ -47,16 +48,16 @@
 - (id)_interactionCountStatWithActivation:(_Bool)arg1;
 - (id)_backgroundEffectsWithBrightness:(double)arg1;
 - (void)layoutIfNeededAnimated;
-- (void)_highlightForInteraction:(id)arg1 fractionComplete:(double)arg2 ended:(_Bool)arg3;
+- (unsigned long long)_clickInteractionDefaultDriverType:(id)arg1;
 - (void)clickInteractionDidEnd:(id)arg1;
 - (void)clickInteraction:(id)arg1 didObserveForce:(double)arg2;
-- (_Bool)clickInteractionShouldInvokeAction:(id)arg1;
-- (void)clickInteractionDidBegin:(id)arg1;
+- (void)clickInteractionDidClickUp:(id)arg1;
+- (_Bool)clickInteractionShouldBegin:(id)arg1;
+- (void)_animateEffectUpdateWithProgress:(double)arg1 ended:(_Bool)arg2;
+- (id)highlightEffectForClickInteraction:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)setSelected:(_Bool)arg1;
-@property(nonatomic, getter=isLatching) _Bool latching;
-- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

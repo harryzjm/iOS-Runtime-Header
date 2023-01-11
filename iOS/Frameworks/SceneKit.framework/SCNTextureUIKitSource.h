@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class UIView, UIWindow;
+
 __attribute__((visibility("hidden")))
 @interface SCNTextureUIKitSource
 {
     _Bool _setup;
     _Bool _windowReady;
     id _source;
-    id _uiWindow;
-    id _uiView;
+    UIWindow *_uiWindow;
+    UIView *_uiView;
     struct CGSize _sizeCache;
     unsigned int _textureID;
     struct __C3DEngineContext *_engineContext;
@@ -19,8 +21,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property(retain, nonatomic) id source; // @synthesize source=_source;
-@property(retain, nonatomic) id uiView; // @synthesize uiView=_uiView;
-@property(retain, nonatomic) id uiWindow; // @synthesize uiWindow=_uiWindow;
+@property(retain, nonatomic) UIView *uiView; // @synthesize uiView=_uiView;
+@property(retain, nonatomic) UIWindow *uiWindow; // @synthesize uiWindow=_uiWindow;
 - (void)_layerTreeDidUpdate;
 - (struct __C3DTexture *)textureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 - (struct CGSize)layerSizeInPixels;
@@ -31,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)cleanup:(struct __C3DRendererContext *)arg1;
 - (void)setup;
 - (void)dealloc;
+- (_Bool)supportsMetal;
 
 @end
 

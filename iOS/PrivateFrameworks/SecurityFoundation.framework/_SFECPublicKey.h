@@ -11,9 +11,11 @@
     id _ecPublicKeyInternal;
 }
 
++ (id)keyWithSubjectPublicKeyInfo:(id)arg1;
 + (id)_secKeyCreationAttributesForSpecifier:(id)arg1;
 + (id)_specifierForSecKey:(struct __SecKey *)arg1;
 - (void).cxx_destruct;
+- (id)encodeSubjectPublicKeyInfo;
 - (id)performWithCCKey:(CDUnknownBlockType)arg1;
 
 // Remaining properties

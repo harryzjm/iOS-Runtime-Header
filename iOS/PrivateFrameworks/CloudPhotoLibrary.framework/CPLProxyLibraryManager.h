@@ -14,10 +14,12 @@
 @interface CPLProxyLibraryManager <CPLClientLibraryManagerProtocol, NSXPCConnectionDelegate, CPLLibraryManagerImplementation>
 {
     NSXPCConnection *_connection;
+    CDUnknownBlockType _blockToCallOnDaemonDying;
     NSMutableDictionary *_downloadTasks;
     NSMutableDictionary *_inMemoryDownloadTasks;
     NSMutableDictionary *_uploadTasks;
     NSMutableDictionary *_forceSyncTasks;
+    NSMutableDictionary *_vouchersPerTaskIdentifier;
     _Bool _diagnosticsEnabled;
     unsigned long long _foregroundCalls;
     NSCountedSet *_disablingReasons;
@@ -30,6 +32,7 @@
     NSMutableArray *_pendingBlocksAfterOpening;
     int _openingStatus;
     int _notifyToken;
+    _Bool _killed;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
@@ -37,6 +40,12 @@
 + (id)daemonProtocolInterface;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (void).cxx_destruct;
+- (void)_dropVoucherForTaskWithIdentifier:(id)arg1;
+- (void)_storeVoucher:(id)arg1 forTaskWithIdentifier:(id)arg2;
+- (void)_withVoucherForTaskWithIdentifier:(id)arg1 do:(CDUnknownBlockType)arg2;
+- (void)provideCloudResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)provideRecordWithCloudScopeIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)provideLibraryInfoForScopeWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)unblockEngineElementOnce:(id)arg1;
 - (void)unblockEngineElement:(id)arg1;
 - (void)blockEngineElement:(id)arg1;
@@ -56,6 +65,8 @@
 - (void)cancelSyncTask:(id)arg1;
 - (void)cancelTask:(id)arg1;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(_Bool)arg3;
+- (void)libraryManagerHasBeenReplaced;
+- (void)provideLocalResource:(id)arg1 recordClassString:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)forceSyncDidFinishForTask:(id)arg1 withErrors:(id)arg2;
 - (void)libraryManagerHasStatusChanges;
 - (void)libraryManagerDidUpdateSizeOfResourcesToUploadToSize:(unsigned long long)arg1 sizeOfOriginalResourcesToUpload:(unsigned long long)arg2 numberOfImages:(unsigned long long)arg3 numberOfVideos:(unsigned long long)arg4 numberOfOtherItems:(unsigned long long)arg5;
@@ -93,6 +104,7 @@
 - (void)noteClientReceivedNotificationOfServerChanges;
 - (void)startSyncSession;
 - (void)resetStatus;
+- (void)checkResourcesAreSafeToPrune:(id)arg1 checkServerIfNecessary:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)deleteResources:(id)arg1 checkServerIfNecessary:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setDiagnosticsEnabled:(_Bool)arg1;
 - (_Bool)diagnosticsEnabled;
@@ -104,7 +116,7 @@
 - (void)beginInMemoryDownloadOfResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_dispatchFailedInMemoryDownloadTaskForResource:(id)arg1 withError:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)publishResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getStreamingURLForResource:(id)arg1 intent:(unsigned long long)arg2 hints:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)beginDownloadForResource:(id)arg1 clientBundleID:(id)arg2 highPriority:(_Bool)arg3 proposedTaskIdentifier:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_dispatchFailedDownloadTaskForResource:(id)arg1 highPriority:(_Bool)arg2 proposedTaskIdentifier:(id)arg3 withError:(id)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
 - (void)_invokeOutstandingInvocationsWithTaskIdentifier:(id)arg1;
@@ -117,6 +129,8 @@
 - (void)dispatchBlockWhenLibraryIsOpen:(CDUnknownBlockType)arg1;
 - (void)_dispatchBlockWhenOpen:(CDUnknownBlockType)arg1;
 - (void)_reallyOpenWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_setCallBlockOnDaemonDying:(CDUnknownBlockType)arg1;
+- (void)_callBlockOnDaemonDying;
 - (id)proxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithAbstractObject:(id)arg1;

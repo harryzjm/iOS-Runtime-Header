@@ -14,13 +14,13 @@ __attribute__((visibility("hidden")))
     CHDChart *mChart;
 }
 
+- (void).cxx_destruct;
 - (void)setChart:(id)arg1;
 - (id)chart;
 - (void)setShowLegend:(_Bool)arg1;
 - (_Bool)showLegend;
 - (void)setChartData:(id)arg1;
 - (id)chartData;
-- (void)dealloc;
 
 @end
 

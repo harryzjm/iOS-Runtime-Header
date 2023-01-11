@@ -12,7 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityIgnoreInternalLabels;
-- (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 
 @end
 

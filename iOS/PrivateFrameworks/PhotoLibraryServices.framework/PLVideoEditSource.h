@@ -4,10 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSURL;
+
 @interface PLVideoEditSource
 {
+    NSURL *_videoURL;
 }
 
+@property(readonly, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
+- (void).cxx_destruct;
 - (id)initWithVideoURL:(id)arg1;
 
 @end

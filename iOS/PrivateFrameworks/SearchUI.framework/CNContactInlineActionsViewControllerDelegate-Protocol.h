@@ -6,11 +6,12 @@
 
 #import <SearchUI/NSObject-Protocol.h>
 
-@class CNContactInlineActionsViewController, NSString;
+@class CNContactInlineActionsViewController, CNUIGeminiDataSource, NSString;
 
 @protocol CNContactInlineActionsViewControllerDelegate <NSObject>
 
 @optional
+- (CNUIGeminiDataSource *)geminiDataSource;
 - (void)contactInlineActionsViewController:(CNContactInlineActionsViewController *)arg1 willPerformActionOfType:(NSString *)arg2;
 @end
 

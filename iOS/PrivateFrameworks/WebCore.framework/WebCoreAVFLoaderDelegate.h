@@ -13,14 +13,16 @@
 __attribute__((visibility("hidden")))
 @interface WebCoreAVFLoaderDelegate : NSObject <AVAssetResourceLoaderDelegate>
 {
-    struct MediaPlayerPrivateAVFoundationObjC *m_callback;
+    WeakPtr_1a409454 m_player;
+    struct GenericTaskQueue<WebCore::Timer> m_taskQueue;
 }
 
-- (void)setCallback:(struct MediaPlayerPrivateAVFoundationObjC *)arg1;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)resourceLoader:(id)arg1 didCancelLoadingRequest:(id)arg2;
 - (_Bool)resourceLoader:(id)arg1 shouldWaitForResponseToAuthenticationChallenge:(id)arg2;
 - (_Bool)resourceLoader:(id)arg1 shouldWaitForLoadingOfRequestedResource:(id)arg2;
-- (id)initWithCallback:(struct MediaPlayerPrivateAVFoundationObjC *)arg1;
+- (id)initWithPlayer:(WeakPtr_1a409454 *)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

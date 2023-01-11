@@ -6,6 +6,7 @@
 
 @class SKUISpacePageComponent;
 
+__attribute__((visibility("hidden")))
 @interface SKUISpacePageSection
 {
 }

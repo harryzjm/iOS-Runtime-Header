@@ -8,17 +8,19 @@
 #import <iWorkImport/TSDMixing-Protocol.h>
 #import <iWorkImport/TSDSelectionStatisticsContributor-Protocol.h>
 #import <iWorkImport/TSWPStorageParent-Protocol.h>
+#import <iWorkImport/TSWPTextBoxNesting-Protocol.h>
 
-@class NSArray, NSObject, NSString, TSDInfoGeometry, TSPObject, TSWPColumns, TSWPPadding, TSWPShapeStyle, TSWPStorage;
+@class NSArray, NSObject, NSString, TSDInfoGeometry, TSPObject, TSWPColumns, TSWPDocumentRoot, TSWPPadding, TSWPShapeStyle, TSWPStorage;
 @protocol TSDContainerInfo, TSDOwningAttachment, TSWPFlowInfo;
 
 __attribute__((visibility("hidden")))
-@interface TSWPShapeInfo <TSDMixing, TSDContainerInfo, TSWPStorageParent, TSDSelectionStatisticsContributor>
+@interface TSWPShapeInfo <TSDMixing, TSDContainerInfo, TSWPStorageParent, TSDSelectionStatisticsContributor, TSWPTextBoxNesting>
 {
     TSWPStorage *_containedStorage;
     _Bool _isTextBox;
     _Bool _preventsComments;
     _Bool _preventsChangeTracking;
+    _Bool _ignoresInteriorWrap;
     TSPObject<TSWPFlowInfo> *_textFlow;
 }
 
@@ -34,6 +36,7 @@ __attribute__((visibility("hidden")))
 + (id)textPropertiesAffectingVisualStyle;
 + (id)textPropertiesAffectingObjectMatch;
 + (id)textPropertiesNeedingCharacterAnimation;
+@property(nonatomic) _Bool ignoresInteriorWrap; // @synthesize ignoresInteriorWrap=_ignoresInteriorWrap;
 @property(nonatomic) __weak TSPObject<TSWPFlowInfo> *textFlow; // @synthesize textFlow=_textFlow;
 @property(readonly, nonatomic) _Bool preventsChangeTracking; // @synthesize preventsChangeTracking=_preventsChangeTracking;
 @property(readonly, nonatomic) _Bool preventsComments; // @synthesize preventsComments=_preventsComments;
@@ -45,13 +48,14 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)p_nonTopicParagraphBreakCount;
 - (unsigned long long)p_chunkCountForByBulletGroup;
 - (unsigned long long)p_chunkCountForByBullet;
+- (_Bool)textIsVerticalAtCharIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool autoListTermination;
 @property(readonly, nonatomic) _Bool autoListRecognition;
 - (id)stylesForCopyStyle;
 - (id)propertyMapForNewPreset;
 - (struct CGPoint)transformableObjectAnchorPoint;
 - (id)textureDeliveryStylesLocalized:(_Bool)arg1 animationFilter:(id)arg2;
-@property(readonly, nonatomic) NSArray *childInfos;
+@property(readonly, copy, nonatomic) NSArray *childInfos;
 - (id)copyAcceptingTrackedChangesWithContext:(id)arg1;
 - (id)copyWithContext:(id)arg1;
 - (Class)repClass;
@@ -95,6 +99,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)canAnchor;
 - (_Bool)isLocked;
 @property(readonly, nonatomic) _Bool shouldIgnoreWPContent;
+@property(readonly, nonatomic) long long nestedTextboxDepth;
+@property(readonly, nonatomic) _Bool isRotatedOrFlipped;
+- (_Bool)supportsParentRotation;
 @property(readonly, nonatomic) _Bool isLinkable;
 @property(readonly, nonatomic) _Bool isLinked;
 - (id)i_ownedTextStorage;
@@ -107,8 +114,8 @@ __attribute__((visibility("hidden")))
 - (void)loadFromArchive:(const struct ShapeInfoArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)upgradeOwnedStorageWithFileFormatVersion:(unsigned long long)arg1;
-- (void)fixupAutosizingTextboxes;
 - (void)upgradeWithNewOwnedStorage;
+- (unsigned long long)maxInlineNestingDepth;
 - (_Bool)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
 - (_Bool)canBeDefinedAsTextPlaceholder;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
@@ -121,10 +128,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isAttachedToBodyText) _Bool attachedToBodyText;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) TSWPDocumentRoot *documentRoot; // @dynamic documentRoot;
 @property(readonly, nonatomic, getter=isFloatingAboveText) _Bool floatingAboveText; // @dynamic floatingAboveText;
 @property(copy, nonatomic) TSDInfoGeometry *geometry; // @dynamic geometry;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic, getter=isInlineWithText) _Bool inlineWithText; // @dynamic inlineWithText;
+@property(readonly, nonatomic) _Bool isMaster;
 @property(nonatomic) _Bool matchesObjectPlaceholderGeometry;
 @property(nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment; // @dynamic owningAttachment;
 @property(readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse; // @dynamic owningAttachmentNoRecurse;

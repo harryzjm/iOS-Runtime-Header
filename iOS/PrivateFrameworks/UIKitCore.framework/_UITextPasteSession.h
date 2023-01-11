@@ -6,34 +6,37 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UITextPasteSession-Protocol.h>
+#import <UIKitCore/UITextDropPasteSession-Protocol.h>
 
-@class NSAttributedString, NSString, UITextPasteController, UITextPasteCoordinator, UITextRange;
+@class NSArray, NSAttributedString, NSString, UITextPasteController, UITextPasteCoordinator, UITextRange;
 @protocol UITextPasteSessionDelegate, _UITextPasteProgressSupport;
 
 __attribute__((visibility("hidden")))
-@interface _UITextPasteSession : NSObject <UITextPasteSession>
+@interface _UITextPasteSession : NSObject <UITextDropPasteSession>
 {
-    _Bool _pastingBlocked;
+    _Bool _animating;
     id <UITextPasteSessionDelegate> _delegate;
     UITextPasteController *_controller;
     UITextPasteCoordinator *_coordinator;
     UITextRange *_range;
     id <_UITextPasteProgressSupport> _progressSupport;
     NSAttributedString *_pasteResult;
+    NSArray *_originalItems;
+    UITextRange *_hiddenRange;
 }
 
+@property(readonly, nonatomic, getter=isAnimating) _Bool animating; // @synthesize animating=_animating;
+@property(retain, nonatomic) UITextRange *hiddenRange; // @synthesize hiddenRange=_hiddenRange;
+@property(copy, nonatomic) NSArray *originalItems; // @synthesize originalItems=_originalItems;
 @property(retain, nonatomic) NSAttributedString *pasteResult; // @synthesize pasteResult=_pasteResult;
-@property(nonatomic, getter=isPastingBlocked) _Bool pastingBlocked; // @synthesize pastingBlocked=_pastingBlocked;
 @property(retain, nonatomic) id <_UITextPasteProgressSupport> progressSupport; // @synthesize progressSupport=_progressSupport;
 @property(retain, nonatomic) UITextRange *range; // @synthesize range=_range;
 @property(retain, nonatomic) UITextPasteCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property(nonatomic) __weak UITextPasteController *controller; // @synthesize controller=_controller;
 @property(nonatomic) __weak id <UITextPasteSessionDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (void)finishPastingIfUnblockedWithAnimator:(id)arg1;
-- (void)finishPastingIfUnblocked;
-- (void)pasteWithAnimator:(id)arg1;
+- (void)animationCompleted;
+- (void)animationStarted;
 - (id)positionedPasteResult;
 
 // Remaining properties

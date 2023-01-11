@@ -6,9 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@class AVCapturePhotoSettings, AVWeakReference, NSArray, NSMutableArray, NSString;
+@class AVCapturePhotoSettings, AVMomentCaptureSettings, AVWeakReference, NSArray, NSDictionary, NSMutableArray, NSString;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVCapturePhotoOutputInternal : NSObject
 {
     AVWeakReference *weakReference;
@@ -18,12 +19,19 @@
     NSArray *availableRawPhotoPixelFormatTypes;
     NSArray *availablePhotoFileTypes;
     NSArray *availableRawPhotoFileTypes;
+    long long maxPhotoQualityPrioritization;
+    _Bool maxPhotoQualityPrioritizationHasBeenSetByClient;
     _Bool stillImageStabilizationSupported;
-    _Bool dualCameraFusionSupported;
+    _Bool virtualDeviceFusionSupported;
+    _Bool virtualDeviceConstituentPhotoDeliverySupported;
+    _Bool virtualDeviceConstituentPhotoDeliveryEnabled;
     _Bool dualCameraDualPhotoDeliverySupported;
     _Bool dualCameraDualPhotoDeliveryEnabled;
+    _Bool cameraCalibrationDataDeliverySupported;
     NSArray *supportedHDRModes;
     NSArray *supportedFlashModes;
+    NSArray *supportedDigitalFlashModes;
+    _Bool digitalFlashCaptureEnabled;
     _Bool autoRedEyeReductionSupported;
     _Bool highResolutionCaptureEnabled;
     unsigned long long maxBracketedCapturePhotoCount;
@@ -40,11 +48,16 @@
     _Bool depthDataDeliveryEnabled;
     _Bool portraitEffectsMatteDeliverySupported;
     _Bool portraitEffectsMatteDeliveryEnabled;
+    NSArray *availableSemanticSegmentationTypes;
+    NSArray *enabledSemanticSegmentationTypes;
     _Bool filterRenderingEnabled;
     _Bool imageOptimizationForOfflineVideoStabilizationSupported;
     _Bool optimizesImagesForOfflineVideoStabilization;
     CDStruct_79c71658 optimizedImageDimensionsForOfflineStabilization;
     _Bool livePhotoMovieProcessingSuspended;
+    _Bool videoCaptureSupported;
+    _Bool videoCaptureEnabled;
+    _Bool resumeLivePhotoMovieCaptureAfterVideoCaptureEnds;
     NSObject<OS_dispatch_queue> *sceneDetectionObserversDispatchQueue;
     int flashSceneObserverCount;
     int HDRSceneObserverCount;
@@ -52,13 +65,25 @@
     _Bool isFlashScene;
     _Bool isHDRScene;
     _Bool isStillImageStabilizationScene;
+    int digitalFlashStatusObserverCount;
+    long long digitalFlashStatus;
+    int digitalFlashExposureTimesObserverCount;
+    NSDictionary *digitalFlashExposureTimes;
     AVCapturePhotoSettings *photoSettingsForSceneMonitoring;
     struct OpaqueFigSimpleMutex *requestsLock;
-    NSMutableArray *requests;
+    NSMutableArray *photoRequests;
     NSMutableArray *prepareRequests;
+    NSMutableArray *movieRequests;
     NSObject<OS_dispatch_queue> *beginEndIrisMovieCaptureHostTimeQueue;
     NSObject<OS_dispatch_group> *beginEndIrisMovieCaptureHostTimeDispatchGroup;
     NSString *sourceDeviceType;
+    _Bool movieRecordingSupported;
+    _Bool movieRecordingEnabled;
+    AVMomentCaptureSettings *momentCaptureInFlight;
+    long long lastMomentSettingsUniqueID;
+    _Bool deferredProcessingSupported;
+    _Bool deferredProcessingEnabled;
+    _Bool processedPhotoZoomWithoutUpscalingSupported;
 }
 
 @end

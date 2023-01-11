@@ -16,6 +16,8 @@
 - (void)_setUILocked:(_Bool)arg1;
 - (_Bool)_finishUIUnlockFromSource:(int)arg1 withOptions:(id)arg2;
 - (void)lockUIFromSource:(int)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_axSetLastLockSource:(int)arg1;
+- (int)_axLastLockSource;
 
 @end
 

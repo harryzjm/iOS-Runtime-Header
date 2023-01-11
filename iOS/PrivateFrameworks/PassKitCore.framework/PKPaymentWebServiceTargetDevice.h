@@ -8,7 +8,7 @@
 
 #import <PassKitCore/PKPaymentWebServiceTargetDeviceProtocol-Protocol.h>
 
-@class NSString, PKAssertion, PKPassLibrary, PKPaymentService, PKSecureElement;
+@class NSString, PKAssertion, PKPassLibrary, PKPassUpgradeController, PKPaymentService, PKSecureElement;
 
 @interface PKPaymentWebServiceTargetDevice : NSObject <PKPaymentWebServiceTargetDeviceProtocol>
 {
@@ -19,10 +19,36 @@
     _Bool _provisioningAssertionActive;
     PKAssertion *_verificationAssertion;
     _Bool _verificationAssertionActive;
+    PKAssertion *_requiringUpgradedPasscodeAssertion;
+    _Bool _requiringUpgradedPasscodeAssertionActive;
+    PKAssertion *_activePasscodeUpgradeFlowAssertion;
+    _Bool _activePasscodeUpgradeFlowAssertionActive;
+    PKPassUpgradeController *_passUpgradeController;
 }
 
 + (id)localTargetDevice;
 - (void).cxx_destruct;
+- (void)performProductActionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)availableProductsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)paymentWebService:(id)arg1 requestPassUpgrade:(id)arg2 pass:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)paymentWebService:(id)arg1 passOwnershipTokenWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)paymentWebService:(id)arg1 storePassOwnershipToken:(id)arg2 withIdentifier:(id)arg3;
+- (void)performDeviceCheckInWithCompletion:(CDUnknownBlockType)arg1;
+- (void)paymentWebService:(id)arg1 setDefaultPaymentPassUniqueIdentifier:(id)arg2;
+- (void)endRequiringUpgradedPasscodeIfNecessary;
+- (void)startRequiringUpgradedPasscodeWithPasscodeMeetsPolicy:(_Bool)arg1;
+- (void)enforceUpgradedPasscodePolicyWithCompletion:(CDUnknownBlockType)arg1;
+- (void)notePasscodeUpgradeFlowDidEnd;
+- (void)notePasscodeUpgradeFlowWillBeginWithCompletion:(CDUnknownBlockType)arg1;
+- (void)paymentWebService:(id)arg1 updateAccountWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)paymentWebService:(id)arg1 deviceMetadataWithFields:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)deleteApplePayTrustKeyWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)createApplePayTrustKeyWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)applePayTrustKeyForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)featureApplicationsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
+- (void)updatedAccountsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
+- (_Bool)paymentWebServiceSupportsAccounts:(id)arg1;
+- (id)supportedFeatureIdentifiersWithPaymentWebService:(id)arg1;
 - (_Bool)paymentWebServiceSupportsPeerPaymentRegistration:(id)arg1;
 - (_Bool)supportsCredentialType:(long long)arg1;
 - (_Bool)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;
@@ -34,6 +60,7 @@
 - (_Bool)claimSecureElementForCurrentUser;
 - (void)paymentWebService:(id)arg1 removePass:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)downloadAllPaymentPassesForPaymentWebService:(id)arg1;
+- (void)_paymentWebService:(id)arg1 pass:(id)arg2 withExpressInfo:(id)arg3 hasDisqualifyingConflicts:(CDUnknownBlockType)arg4;
 - (void)paymentWebService:(id)arg1 handlePotentialExpressPass:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 addPaymentPass:(id)arg2 withCompletionHandlerV2:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 addPaymentPass:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
@@ -46,14 +73,18 @@
 - (void)paymentWebService:(id)arg1 setNewAuthRandomIfNecessaryReturningPairingState:(CDUnknownBlockType)arg2;
 - (id)deviceName;
 - (id)deviceDescriptionForPaymentWebService:(id)arg1;
+- (id)appleAccountInformation;
+- (void)renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)paymentWebService:(id)arg1 deleteApplicationWithAID:(id)arg2;
 - (int)paymentSupportedInCurrentRegionForWebService:(id)arg1;
 - (id)paymentWebService:(id)arg1 filterVerificationChannels:(id)arg2;
 - (void)paymentWebService:(id)arg1 didRegisterWithRegionMap:(id)arg2 primaryRegionTopic:(id)arg3;
+- (void)signatureForAuthToken:(id)arg1 webService:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)trustedDeviceEnrollmentInfoForWebService:(id)arg1;
 - (void)paymentWebService:(id)arg1 provisioningDataWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 signData:(id)arg2 signatureEntanglementMode:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)paymentWebService:(id)arg1 registrationDataWithAuthToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)paymentWebService:(id)arg1 registrationDataWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 configurationDataWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 queueConnectionToTrustedServiceManagerForPushTopic:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)paymentWebServiceDidUpdateConfiguration:(id)arg1;
@@ -67,7 +98,10 @@
 - (void)noteProvisioningDidEnd;
 - (void)noteProvisioningDidBegin;
 - (_Bool)supportsAutomaticPassPresentation;
+- (id)cellularNetworkRegion;
 - (id)deviceRegion;
+- (id)deviceVersion;
+- (id)deviceClass;
 - (id)bridgedClientInfo;
 - (void)dealloc;
 - (id)init;

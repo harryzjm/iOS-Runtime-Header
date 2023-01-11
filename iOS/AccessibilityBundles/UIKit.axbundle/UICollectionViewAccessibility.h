@@ -11,9 +11,17 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityElementForRow:(unsigned long long)arg1 andColumn:(unsigned long long)arg2;
+- (id)preferredFocusedView;
+- (_Bool)canBecomeFocused;
+- (_Bool)_accessibilityKeyCommandsShouldOverrideKeyCommands;
+- (_Bool)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
+- (_Bool)_accessibilityDrawsFocusRingWhenChildrenFocused;
 - (unsigned long long)_accessibilityScanningBehaviorTraits;
 - (id)_accessibilitySupplementaryHeaderViewAtIndexPath:(id)arg1;
 - (id)_accessibilitySupplementaryFooterViews;
+- (id)_accessibilitySupplementaryHeaderViews;
+- (id)_axIndexBar;
 - (id)_accessibilityReusableViewForOpaqueElement:(id)arg1;
 - (_Bool)_accessibilitySpeakThisShouldOnlyIncludeVisibleElements;
 - (id)_accessibilityIndexPathOfDirectSubviewForDescendantElement:(id)arg1 withElementKind:(id *)arg2;
@@ -25,7 +33,7 @@
 - (id)_accessibilityGroupIdentifier;
 - (id)_accessibilityScannerGroupElements;
 - (_Bool)_accessibilityDescendantElementAtIndexPathIsValid:(id)arg1;
-- (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 - (long long)indexOfAccessibilityElement:(id)arg1;
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (id)_accessibilityOtherCollectionViewItems;
@@ -49,7 +57,10 @@
 - (void)_reuseSupplementaryView:(id)arg1;
 - (_Bool)_reuseCell:(id)arg1 notifyDidEndDisplaying:(_Bool)arg2;
 - (void)_axHandleReusedView:(id)arg1;
-- (void)moveItemAtIndexPath:(id)arg1 toIndexPath:(id)arg2;
+- (void)_moveItemAtIndexPath:(id)arg1 toIndexPath:(id)arg2;
+- (void)cancelInteractiveMovement;
+- (void)endInteractiveMovement;
+- (_Bool)beginInteractiveMovementForItemAtIndexPath:(id)arg1;
 - (void)deleteItemsAtIndexPaths:(id)arg1;
 - (void)reloadItemsAtIndexPaths:(id)arg1;
 - (void)insertItemsAtIndexPaths:(id)arg1;
@@ -64,6 +75,7 @@
 - (_Bool)_accessibilityShouldUseCollectionViewCellAccessibilityElements;
 - (void)setAccessibilityShouldBypassColletionViewAccessibility:(_Bool)arg1;
 - (_Bool)accessibilityCollectionViewBehavesLikeUIViewAccessibility;
+- (unsigned long long)_accessibilityAutomationType;
 - (void)setAccessibilityShouldSpeakItemReorderEvents:(_Bool)arg1;
 - (_Bool)accessibilityShouldSpeakItemReorderEvents;
 

@@ -12,14 +12,14 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_isClosingLastItem;
-- (void)_setDismissing:(_Bool)arg1;
+- (void)_dismissWithItemAtCurrentDecelerationFactor:(id)arg1;
 - (_Bool)accessibilityScroll:(long long)arg1;
 - (id)_accessibilityScrollStatusFormatString;
 - (id)_accessibilityScrollStatus;
 - (struct CGPoint)_accessibilityAdjustedScrollOffset:(struct CGPoint)arg1;
 - (void)_accessibilityThumbnailApplyScrollOffset:(struct CGPoint)arg1;
 - (struct CGPoint)_accessibilityThumbnailOffset;
-- (id)initWithFrame:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (_Bool)isAccessibilityOpaqueElementProvider;

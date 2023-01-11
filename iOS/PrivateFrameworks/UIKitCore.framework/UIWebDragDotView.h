@@ -4,20 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIColor, UIImageView;
+@class UIColor;
 
 __attribute__((visibility("hidden")))
 @interface UIWebDragDotView
 {
-    UIColor *m_insertionPointColor;
     UIColor *m_selectionBarColor;
-    UIImageView *m_dot;
     long long m_orientation;
     struct CGRect m_stickFrame;
     struct CGRect m_dotFrame;
 }
 
-@property(nonatomic) _Bool showsBall;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)setEdge:(struct CGRect)arg1;
 - (struct CGRect)stickFrameForEdge:(struct CGRect)arg1 withOverlap:(double)arg2;

@@ -20,13 +20,10 @@ __attribute__((visibility("hidden")))
     UIPrintPageRenderer *_pageRenderer;
 }
 
-+ (_Bool)shouldBeRemoteForContentType:(id)arg1;
-+ (_Bool)providesCustomPrinter;
-+ (id)supportedContentTypes;
-+ (Class)transformerClass;
 - (void).cxx_destruct;
 - (void)_updateConstraintConstants:(_Bool)arg1;
 - (long long)preferredWhitePointAdaptivityStyle;
+- (void)provideCurrentPageAndVisibleRectWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)pdfDataForPageAtIndex:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)prepareForDrawingPages:(struct _NSRange)arg1 ofSize:(struct CGSize)arg2;
 - (void)numberOfPagesWithSize:(struct CGSize)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -43,6 +40,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)canPinchToDismiss;
 - (_Bool)canSwipeToDismiss;
 - (id)printer;
+- (_Bool)_documentAttributesContainTextColors:(id)arg1;
+- (void)_setupTextViewColorsWithDocumentAttributes:(id)arg1;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 // Remaining properties

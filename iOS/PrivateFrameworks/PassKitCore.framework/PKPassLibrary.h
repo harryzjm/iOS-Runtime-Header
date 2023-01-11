@@ -21,10 +21,10 @@
     NSHashTable *_delegates;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_asynchronousImageQueue;
-    _Bool _shouldSendRemovingPassesOfTypeDidFinish;
     id <PKPassLibraryDelegate> _delegate;
 }
 
++ (_Bool)contactlessInterfaceCanBePresentedFromSource:(long long)arg1 deviceUILocked:(_Bool)arg2;
 + (_Bool)contactlessInterfaceCanBePresentedFromSource:(long long)arg1;
 + (id)sharedInstance;
 + (id)sharedInstanceWithRemoteLibrary;
@@ -51,8 +51,6 @@
 - (void)passRemoved:(id)arg1;
 - (void)passUpdated:(id)arg1;
 - (void)passAdded:(id)arg1;
-- (void)removingPassesOfType:(unsigned long long)arg1 didFinishWithSuccess:(_Bool)arg2;
-- (void)removingPassesOfType:(unsigned long long)arg1 didUpdateWithProgress:(double)arg2;
 - (void)catalogChanged:(id)arg1 withNewPasses:(id)arg2;
 - (id)diffForPassUpdateUserNotificationWithIdentifier:(id)arg1;
 - (void)noteAccountDeleted;
@@ -61,7 +59,6 @@
 - (void)shuffleGroups:(int)arg1;
 - (void)removePassesOfType:(unsigned long long)arg1 withDiagnosticReason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removePassesOfType:(unsigned long long)arg1 withDiagnosticReason:(id)arg2;
-- (void)removePassesOfType:(unsigned long long)arg1;
 - (void)removePassesWithUniqueIDs:(id)arg1 diagnosticReason:(id)arg2;
 - (void)removePassWithUniqueID:(id)arg1 diagnosticReason:(id)arg2;
 - (void)spotlightDeleteIndexEntriesForAllPassesWithCompletion:(CDUnknownBlockType)arg1;
@@ -71,6 +68,7 @@
 - (void)introduceDatabaseIntegrityProblem;
 - (void)removeAllScheduledActivities;
 - (void)nukeDatabaseAndExit;
+- (void)pendingUserNotificationsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)issueWalletUserNotificationWithTitle:(id)arg1 message:(id)arg2 forPassUniqueIdentifier:(id)arg3 customActionRoute:(id)arg4;
 - (void)notifyPassUsed:(id)arg1 fromSource:(long long)arg2;
 - (void)sendUserEditedCatalog:(id)arg1;
@@ -78,27 +76,33 @@
 - (id)_remoteLibrary;
 - (_Bool)_hasRemoteLibrary;
 - (_Bool)isPaymentPassActivationAvailable;
+- (long long)_currentNotificationCountForIdentifier:(id)arg1;
+- (void)transitMessageDidDisplay:(id)arg1;
+- (void)transitMessageForRouteInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (_Bool)supportsDisbursements;
 - (id)_defaultPaymentPassForPaymentRequest:(id)arg1;
 - (void)supportedTransitPartnersForDigitalIssuance:(CDUnknownBlockType)arg1;
-- (void)supportedPartnersForDigitalIssuance:(CDUnknownBlockType)arg1;
 - (id)_sortedPaymentPassesForPaymentRequest:(id)arg1;
 - (void)sortedTransitPassesForAppletDataFormat:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)expressFelicaTransitPasses;
 - (id)defaultPaymentPassesWithRemotePasses:(_Bool)arg1;
 - (_Bool)resetSettingsForPass:(id)arg1;
+- (_Bool)setSuppressPromotionsEnabled:(_Bool)arg1 forPass:(id)arg2;
 - (_Bool)setSuppressNotificationsEnabled:(_Bool)arg1 forPass:(id)arg2;
 - (_Bool)setAutomaticPresentationEnabled:(_Bool)arg1 forPass:(id)arg2;
 - (_Bool)setNotificationServiceUpdatesEnabled:(_Bool)arg1 forPass:(id)arg2;
 - (_Bool)setAutomaticUpdatesEnabled:(_Bool)arg1 forPass:(id)arg2;
 - (_Bool)setShowInLockScreenEnabled:(_Bool)arg1 forPass:(id)arg2;
 - (_Bool)_setSetting:(unsigned long long)arg1 enabled:(_Bool)arg2 forPass:(id)arg3;
-- (void)_fetchImageSetForUniqueID:(id)arg1 ofType:(long long)arg2 displayProfile:(id)arg3 usingSynchronousProxy:(_Bool)arg4 withCompletion:(CDUnknownBlockType)arg5;
-- (void)_fetchImageSetContainerForUniqueID:(id)arg1 ofType:(long long)arg2 displayProfile:(id)arg3 usingSynchronousProxy:(_Bool)arg4 withCompletion:(CDUnknownBlockType)arg5;
-- (void)fetchImageSetForUniqueID:(id)arg1 ofType:(long long)arg2 displayProfile:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
-- (id)imageSetForUniqueID:(id)arg1 ofType:(long long)arg2 displayProfile:(id)arg3;
+- (void)_fetchImageSetForUniqueID:(id)arg1 ofType:(long long)arg2 displayProfile:(id)arg3 suffix:(id)arg4 usingSynchronousProxy:(_Bool)arg5 withCompletion:(CDUnknownBlockType)arg6;
+- (void)_fetchImageSetContainerForUniqueID:(id)arg1 ofType:(long long)arg2 displayProfile:(id)arg3 suffix:(id)arg4 usingSynchronousProxy:(_Bool)arg5 withCompletion:(CDUnknownBlockType)arg6;
+- (void)fetchImageSetForUniqueID:(id)arg1 ofType:(long long)arg2 displayProfile:(id)arg3 suffix:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
+- (id)imageSetForUniqueID:(id)arg1 ofType:(long long)arg2 displayProfile:(id)arg3 suffix:(id)arg4;
 - (void)_fetchContentForUniqueID:(id)arg1 usingSynchronousProxy:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)fetchContentForUniqueID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)contentForUniqueID:(id)arg1;
+- (void)postUpgradedPassNotificationForMarket:(id)arg1 passUniqueID:(id)arg2;
+- (void)checkForTransitNotification;
 - (void)rescheduleCommutePlanRenewalReminderForPassWithUniqueID:(id)arg1;
 - (void)updateSettings:(unsigned long long)arg1 forObjectWithUniqueID:(id)arg2;
 - (void)noteObjectSharedWithUniqueID:(id)arg1;
@@ -116,6 +120,8 @@
 - (void)canPresentPaymentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentWalletWithRelevantPassUniqueID:(id)arg1;
 - (void)presentPaymentPass:(id)arg1;
+- (void)paymentSetupFeaturesForConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)presentPaymentSetupRequest:(id)arg1 orientation:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)openPaymentSetupForMerchantIdentifier:(id)arg1 domain:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)openDigitalIssuanceSetupForIdentifier:(id)arg1;
 - (void)openPaymentSetup;
@@ -136,7 +142,7 @@
 - (void)hasInAppPrivateLabelPaymentPassesForApplicationIdentifier:(id)arg1 issuerCountryCodes:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (id)inAppPrivateLabelPaymentPassesForApplicationIdentifier:(id)arg1 issuerCountryCodes:(id)arg2;
 - (void)hasInAppPaymentPassesForNetworks:(id)arg1 capabilities:(unsigned long long)arg2 issuerCountryCodes:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
-- (id)_filterPeerPaymentPass:(id)arg1;
+- (id)_filterPeerPaymentPass:(id)arg1 request:(id)arg2;
 - (id)inAppPaymentPassesForPaymentRequest:(id)arg1;
 - (_Bool)isPassbookVisible;
 - (_Bool)isRemovingPassesOfType:(unsigned long long)arg1;

@@ -17,7 +17,7 @@
 - (void)removeCity:(id)arg1;
 - (_Bool)isAccessibilityElement;
 - (void)addCity:(id)arg1;
-- (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 - (id)accessibilityLabel;
 - (id)accessibilityElements;
 

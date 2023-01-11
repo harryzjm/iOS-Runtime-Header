@@ -11,11 +11,14 @@
 {
     _Bool _activateCalled;
     _Bool _invalidateCalled;
+    _Bool _animationSPIAdopted;
     _Bool _runningAsCarry;
-    NSDate *_syncMaxDate;
-    NSDate *_syncRequestDate;
-    NSObject<OS_dispatch_source> *_syncTimer;
-    CDUnknownBlockType _syncUIHandler;
+    NSDate *_uiUpdateMaxDate;
+    NSDate *_uiUpdateRequestDate;
+    CDUnknownBlockType _uiUpdateHandler;
+    _Bool _uiUpdateMinTimeElapsed;
+    _Bool _uiUpdateShouldDismiss;
+    NSObject<OS_dispatch_source> *_uiUpdateTimer;
     long long _defaultDuration;
 }
 
@@ -28,18 +31,20 @@
 - (id)remoteObjectInterface;
 - (id)exportedInterface;
 - (id)machServiceName;
-- (id)millisecondsFromTimeInterval:(double)arg1;
-- (void)_logDashboardWatchSyncRequestWithIntervalFromStart:(double)arg1 remainingIntervalToWait:(double)arg2 intervalToMaxWait:(double)arg3;
-- (void)sendUICoordinationDate:(id)arg1;
+- (void)_timingInvalidateMinTimer;
+- (void)_timingRestartMinTimer;
+- (void)requestAnimationDateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_initialViewControllerDidDisappear;
+- (void)initialViewControllerDidDisappear;
+- (void)_initialViewControllerDidAppear;
+- (void)initialViewControllerDidAppear;
+- (void)_dismissUI;
+- (void)_sendDismissUIWithReason:(long long)arg1;
+- (void)sendDismissUIWithReason:(long long)arg1;
 - (void)_requestToDismissUIHandler:(CDUnknownBlockType)arg1;
 - (void)requestToDismissUIHandler:(CDUnknownBlockType)arg1;
-- (void)_sendUISyncDate:(id)arg1;
-- (void)sendUISyncDateDirect:(id)arg1;
-- (void)sendUISyncDate:(id)arg1;
-- (void)_syncTimerInvalidateSync;
-- (void)_syncTimerRestartSyncWithTimeout:(double)arg1;
-- (void)_syncHandleShowUIDate:(id)arg1;
-- (void)_requestToShowUIWithHandler:(CDUnknownBlockType)arg1;
+- (void)_requestToStartAnimationAtDate:(id)arg1;
+- (void)requestToStartAnimationAtDate:(id)arg1;
 - (void)requestToShowUIWithHandler:(CDUnknownBlockType)arg1;
 - (void)_invalidate;
 - (void)invalidate;

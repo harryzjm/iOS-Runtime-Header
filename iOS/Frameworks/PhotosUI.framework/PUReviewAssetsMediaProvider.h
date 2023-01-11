@@ -8,7 +8,7 @@
 
 @interface PUReviewAssetsMediaProvider
 {
-    int _nextRequestIdentifier;
+    _Atomic int _nextRequestIdentifier;
     double __screenScale;
     PHConcurrentMapTable *__mediaRequests;
 }

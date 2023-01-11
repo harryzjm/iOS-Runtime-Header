@@ -13,6 +13,7 @@
 @interface AWDHomeKitAccessoryReadWrite : PBCodable <NSCopying>
 {
     unsigned long long _timestamp;
+    int _certified;
     NSMutableArray *_characteristics;
     unsigned int _duration;
     int _errorCode;
@@ -20,16 +21,22 @@
     NSString *_transaction;
     NSString *_transportProtocolVersion;
     int _transportType;
+    unsigned int _underlyingErrorCode;
+    NSString *_underlyingErrorDomain;
     AWDHomeKitVendorInformation *_vendorDetails;
+    _Bool _isCached;
     _Bool _isRemote;
     _Bool _isTimedWrite;
     _Bool _isWrite;
     struct {
         unsigned int timestamp:1;
+        unsigned int certified:1;
         unsigned int duration:1;
         unsigned int errorCode:1;
         unsigned int source:1;
         unsigned int transportType:1;
+        unsigned int underlyingErrorCode:1;
+        unsigned int isCached:1;
         unsigned int isRemote:1;
         unsigned int isTimedWrite:1;
         unsigned int isWrite:1;
@@ -37,6 +44,9 @@
 }
 
 + (Class)characteristicsType;
+@property(nonatomic) unsigned int underlyingErrorCode; // @synthesize underlyingErrorCode=_underlyingErrorCode;
+@property(retain, nonatomic) NSString *underlyingErrorDomain; // @synthesize underlyingErrorDomain=_underlyingErrorDomain;
+@property(nonatomic) _Bool isCached; // @synthesize isCached=_isCached;
 @property(retain, nonatomic) NSString *transportProtocolVersion; // @synthesize transportProtocolVersion=_transportProtocolVersion;
 @property(nonatomic) _Bool isTimedWrite; // @synthesize isTimedWrite=_isTimedWrite;
 @property(retain, nonatomic) NSString *transaction; // @synthesize transaction=_transaction;
@@ -57,6 +67,13 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasUnderlyingErrorCode;
+@property(readonly, nonatomic) _Bool hasUnderlyingErrorDomain;
+@property(nonatomic) _Bool hasIsCached;
+- (int)StringAsCertified:(id)arg1;
+- (id)certifiedAsString:(int)arg1;
+@property(nonatomic) _Bool hasCertified;
+@property(nonatomic) int certified; // @synthesize certified=_certified;
 - (int)StringAsSource:(id)arg1;
 - (id)sourceAsString:(int)arg1;
 @property(nonatomic) _Bool hasSource;

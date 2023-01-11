@@ -17,6 +17,7 @@
 
 + (id)defaultInstanceWithChildSlots:(id)arg1;
 + (_Bool)fileNameIsIdentifier;
++ (_Bool)supportsLocalization;
 + (Class)requiredChildrenClass;
 + (Class)slotClass;
 @property(copy, nonatomic) NSDictionary *childrenIdentifiersToConflictStates; // @synthesize childrenIdentifiersToConflictStates=_childrenIdentifiersToConflictStates;

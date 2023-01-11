@@ -17,6 +17,7 @@
     CDUnknownBlockType _filter;
 }
 
++ (void)provideCapabilitiesToBuilder:(id)arg1;
 @property(readonly, copy) CDUnknownBlockType filter; // @synthesize filter=_filter;
 @property _Bool stopsOnFirstMatch; // @synthesize stopsOnFirstMatch;
 @property(copy) NSString *transformationDescription; // @synthesize transformationDescription;
@@ -25,7 +26,9 @@
 - (id)requiredKeyPathsOrError:(id *)arg1;
 @property(readonly) _Bool supportsAttributeKeyPathAnalysis;
 @property(readonly) _Bool supportsRemoteEvaluation;
+- (_Bool)canBeRemotelyEvaluatedWithCapabilities:(id)arg1;
 - (id)transform:(id)arg1 relatedElements:(id *)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithBlockFilter:(CDUnknownBlockType)arg1;
 
 // Remaining properties

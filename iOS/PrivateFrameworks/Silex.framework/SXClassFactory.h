@@ -10,10 +10,12 @@
 {
 }
 
-+ (id)items;
-+ (Class)classForBaseClass:(Class)arg1 withType:(id)arg2;
++ (void)stopTesting;
++ (void)startTesting;
++ (Class)classForBaseClass:(Class)arg1 type:(id)arg2;
 + (CDUnknownBlockType)valueClassBlockForBaseClass:(Class)arg1;
-+ (void)registerClass:(Class)arg1 forBaseClass:(Class)arg2;
++ (void)registerClass:(Class)arg1 type:(id)arg2 baseClass:(Class)arg3;
++ (void)initialize;
 
 @end
 

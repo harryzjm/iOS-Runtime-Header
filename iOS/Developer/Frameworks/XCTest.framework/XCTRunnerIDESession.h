@@ -27,6 +27,8 @@
     CDUnknownBlockType _readinessReply;
 }
 
++ (id)daemonMediatedSessionForSessionIdentifier:(id)arg1 delegate:(id)arg2 error:(id *)arg3;
++ (double)IDEConnectionTimeout;
 + (void)setSharedSession:(id)arg1;
 + (id)sharedSession;
 + (id)sharedSessionQueue;
@@ -66,6 +68,7 @@
 - (id)_IDE_executeTestIdentifiers:(id)arg1 skippingTestIdentifiers:(id)arg2;
 - (id)_IDE_fetchDiscoveredTestClasses;
 - (id)_IDE_startExecutingTestPlanWithProtocolVersion:(id)arg1;
+- (void)reportBootstrappingFailure:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestReadinessForTesting:(CDUnknownBlockType)arg1;
 @property(readonly) _Bool supportsVariableScreenshotFormats;
 @property(readonly) _Bool reportsCrashes;

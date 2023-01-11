@@ -9,14 +9,14 @@
 __attribute__((visibility("hidden")))
 @interface TSCH3DFBOResource
 {
-    NSString *mName;
+    NSString *_name;
 }
 
-@property(retain, nonatomic) NSString *name; // @synthesize name=mName;
+@property(copy, nonatomic) NSString *name; // @synthesize name=_name;
+- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (id)get;
 - (id)description;
-- (void)dealloc;
 
 @end
 

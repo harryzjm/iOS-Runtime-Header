@@ -10,6 +10,7 @@
 {
 }
 
++ (Class)meltedClass;
 + (id)relations;
 + (id)defaultPropertiesToLoad;
 + (id)organizerWithName:(id)arg1 emailAddress:(id)arg2 address:(id)arg3 isCurrentUser:(_Bool)arg4;

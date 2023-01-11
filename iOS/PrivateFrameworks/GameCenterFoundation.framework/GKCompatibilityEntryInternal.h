@@ -4,16 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet, NSString;
+@class NSNumber, NSSet, NSString;
 
 @interface GKCompatibilityEntryInternal
 {
     NSString *_bundleID;
+    NSNumber *_adamID;
+    long long _platform;
     NSSet *_versions;
+    NSSet *_shortVersions;
 }
 
 + (id)secureCodedPropertyKeys;
+@property(retain, nonatomic) NSSet *shortVersions; // @synthesize shortVersions=_shortVersions;
 @property(retain, nonatomic) NSSet *versions; // @synthesize versions=_versions;
+@property(nonatomic) long long platform; // @synthesize platform=_platform;
+@property(retain, nonatomic) NSNumber *adamID; // @synthesize adamID=_adamID;
 @property(retain, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

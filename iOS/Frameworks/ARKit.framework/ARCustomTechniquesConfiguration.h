@@ -21,6 +21,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (void)configureRecordingTechnique;
+- (id)imageSensorSettingsForSuperWide;
 - (void)ensureTechniqueAndCustomSensorCompatibility;
 - (void)_updateCaptureSettings;
 - (void)setProvidesAudioData:(_Bool)arg1;
@@ -29,7 +30,9 @@
 @property(readonly, nonatomic) ARWorldMap *initialWorldMap;
 - (_Bool)isLightEstimationEnabled;
 - (long long)worldAlignment;
+- (id)imageSensorSettings;
 - (void)setVideoFormat:(id)arg1;
+- (id)initPrivate;
 - (id)init;
 
 @end

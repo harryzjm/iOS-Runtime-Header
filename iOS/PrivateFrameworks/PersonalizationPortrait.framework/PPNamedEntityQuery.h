@@ -13,8 +13,9 @@
 
 @interface PPNamedEntityQuery : NSObject <NSCopying, NSSecureCoding>
 {
-    _Bool _overrideDecayRate;
     _Bool _matchCategory;
+    _Bool _excludeWithoutSentiment;
+    _Bool _orderByName;
     unsigned long long _limit;
     NSDate *_fromDate;
     NSDate *_toDate;
@@ -26,16 +27,23 @@
     NSString *_matchingName;
     NSSet *_matchingCategories;
     NSSet *_excludingAlgorithms;
+    NSString *_matchingEntityTrie;
+    unsigned long long _locationConsumer;
 }
 
 + (id)locationQueryWithLimit:(unsigned long long)arg1 fromDate:(id)arg2 consumerType:(unsigned long long)arg3;
++ (id)_excludingAlgorithmsDescription:(id)arg1;
++ (id)_matchingCategoriesDescription:(id)arg1;
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) _Bool orderByName; // @synthesize orderByName=_orderByName;
+@property(nonatomic) unsigned long long locationConsumer; // @synthesize locationConsumer=_locationConsumer;
+@property(retain, nonatomic) NSString *matchingEntityTrie; // @synthesize matchingEntityTrie=_matchingEntityTrie;
+@property(nonatomic) _Bool excludeWithoutSentiment; // @synthesize excludeWithoutSentiment=_excludeWithoutSentiment;
 @property(retain, nonatomic) NSSet *excludingAlgorithms; // @synthesize excludingAlgorithms=_excludingAlgorithms;
 @property(retain, nonatomic) NSSet *matchingCategories; // @synthesize matchingCategories=_matchingCategories;
 @property(nonatomic) _Bool matchCategory; // @synthesize matchCategory=_matchCategory;
 @property(copy, nonatomic) NSString *matchingName; // @synthesize matchingName=_matchingName;
 @property(nonatomic) double decayRate; // @synthesize decayRate=_decayRate;
-@property(nonatomic) _Bool overrideDecayRate; // @synthesize overrideDecayRate=_overrideDecayRate;
 @property(nonatomic) unsigned long long deviceFilter; // @synthesize deviceFilter=_deviceFilter;
 @property(retain, nonatomic) NSSet *excludingSourceBundleIds; // @synthesize excludingSourceBundleIds=_excludingSourceBundleIds;
 @property(retain, nonatomic) NSSet *matchingSourceBundleIds; // @synthesize matchingSourceBundleIds=_matchingSourceBundleIds;
@@ -44,6 +52,7 @@
 @property(retain, nonatomic) NSDate *fromDate; // @synthesize fromDate=_fromDate;
 @property(nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 - (void).cxx_destruct;
+- (id)customizedDescription;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToNamedEntityQuery:(id)arg1;
@@ -52,6 +61,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
+@property(nonatomic) _Bool overrideDecayRate;
 
 @end
 

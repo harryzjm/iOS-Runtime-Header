@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface SBSApplicationCarPlayService
+#import <objc/NSObject.h>
+
+@interface SBSApplicationCarPlayService : NSObject
 {
 }
 

@@ -8,7 +8,7 @@
 
 @interface _IOSurfaceDebugDescription
 {
-    CDStruct_0dba196d _basicInfo;
+    CDStruct_0bcbbf48 _basicInfo;
     CDStruct_6c6f70a4 _layoutInfo;
     NSString *_name;
 }
@@ -22,7 +22,7 @@
 @property(readonly) unsigned long long virtualAddress;
 - (id)description;
 - (void)dealloc;
-- (id)initWithBasicInfo:(const CDStruct_0dba196d *)arg1 layoutInfo:(const CDStruct_6c6f70a4 *)arg2 name:(id)arg3;
+- (id)initWithBasicInfo:(const CDStruct_0bcbbf48 *)arg1 layoutInfo:(const CDStruct_6c6f70a4 *)arg2 name:(id)arg3;
 
 @end
 

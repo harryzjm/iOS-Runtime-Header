@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+__attribute__((visibility("hidden")))
 @interface _HMFNetAddressIPV4
 {
     struct sockaddr_in *_internal;
 }
 
 @property(readonly, nonatomic) struct sockaddr_in *internal; // @synthesize internal=_internal;
+- (id)dataUsingEncoding:(unsigned long long)arg1;
 - (id)addressString;
 - (unsigned long long)addressFamily;
 - (_Bool)isEqual:(id)arg1;

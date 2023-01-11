@@ -10,7 +10,6 @@
 {
     _Bool __contentViewsOpaque;
     _Bool __timeViewBehindContentView;
-    UIView *_contentView;
     UIView *_dialComplicationContainerView;
     UIView *_zoomingClippingView;
     UIView *_borrowedCircleView;
@@ -18,7 +17,6 @@
     double _maxZoomingIconDiameter;
 }
 
-+ (void)_prewarmForDevice:(id)arg1;
 + (Class)_timeViewClass;
 @property(nonatomic, setter=_setTimeViewBehindContentView:) _Bool _timeViewBehindContentView; // @synthesize _timeViewBehindContentView=__timeViewBehindContentView;
 @property(nonatomic, getter=_contentViewsAreOpaque, setter=_setContentViewsOpaque:) _Bool _contentViewsOpaque; // @synthesize _contentViewsOpaque=__contentViewsOpaque;
@@ -27,8 +25,8 @@
 @property(nonatomic) __weak UIView *borrowedCircleView; // @synthesize borrowedCircleView=_borrowedCircleView;
 @property(retain, nonatomic) UIView *zoomingClippingView; // @synthesize zoomingClippingView=_zoomingClippingView;
 @property(readonly, nonatomic) UIView *dialComplicationContainerView; // @synthesize dialComplicationContainerView=_dialComplicationContainerView;
-@property(readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 - (void).cxx_destruct;
+- (void)_createTimeViewIfNecessary;
 - (_Bool)_isComplicationSlotInsideDial:(id)arg1;
 - (void)_updateDateComplicationPositionIfNecessary;
 - (struct CGPoint)_dateComplicationCenterOffset;
@@ -37,18 +35,18 @@
 - (_Bool)_timeViewBehindContentForEditMode:(long long)arg1;
 - (long long)_backgroundedTimeViewEditModes;
 - (struct CGPoint)_contentCenterOffset;
-- (void)_prepareTimeViewForReuse:(id)arg1;
-- (void)_configureReusableTimeView:(id)arg1;
+- (void)_configureTimeView:(id)arg1;
 - (void)_cleanupAfterZoom;
 - (void)applyToForegroundZoomFraction:(double)arg1 faceScale:(double)arg2;
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
 - (_Bool)_usesCustomZoom;
-- (void)_bringForegroundViewsToFront;
+- (_Bool)_wantsConstantSpeedZoom;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_cleanupAfterEditing;
 - (void)_prepareForEditing;
+- (_Bool)_isAnalog;
 - (id)_complicationContainerViewForSlot:(id)arg1;
 - (void)_loadContentToReplaceUnadornedSnapshot;
 - (void)_applyShowContentForUnadornedSnapshot;
@@ -62,7 +60,6 @@
 - (void)_startScrubbingAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (_Bool)_canStartTimeScrubbing;
 - (_Bool)_supportsTimeScrubbing;
-- (void)_reuseTimeView;
 - (void)dealloc;
 - (void)_unloadSnapshotContentViews;
 - (void)_loadSnapshotContentViews;

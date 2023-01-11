@@ -15,6 +15,7 @@
 - (_Bool)_accessibilityDeleteWeatherCard;
 - (id)accessibilityCustomActions;
 - (unsigned long long)accessibilityTraits;
+- (_Bool)_accessibilityIsSpeakThisElement;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;

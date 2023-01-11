@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKDisplayTypeController, HKHealthStore, HKQuantitySample, HKUnitPreferenceController;
+@class HKDisplayTypeController, HKHealthStore, HKSample, HKUnitPreferenceController;
 
 @interface HKDataMetadataBeatToBeatSection
 {
-    HKQuantitySample *_hrvSample;
+    HKSample *_sample;
     HKHealthStore *_healthStore;
     HKDisplayTypeController *_displayTypeController;
     HKUnitPreferenceController *_unitController;

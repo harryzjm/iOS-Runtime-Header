@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_axRenameAlbumAction;
 - (id)_axTypeStringWithCount:(long long)arg1;
 - (_Bool)_accessibilitySupportsContentSizeCategory:(id)arg1;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -18,6 +19,8 @@
 - (id)accessibilityLabel;
 - (struct CGPoint)accessibilityActivationPoint;
 - (unsigned long long)accessibilityTraits;
+- (_Bool)accessibilityPerformEscape;
+- (id)accessibilityCustomActions;
 - (id)accessibilityValue;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)accessibilityElements;

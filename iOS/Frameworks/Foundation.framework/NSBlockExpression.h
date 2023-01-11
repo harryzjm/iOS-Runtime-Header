@@ -6,6 +6,7 @@
 
 @class NSArray;
 
+__attribute__((visibility("hidden")))
 @interface NSBlockExpression
 {
     CDUnknownBlockType _block;

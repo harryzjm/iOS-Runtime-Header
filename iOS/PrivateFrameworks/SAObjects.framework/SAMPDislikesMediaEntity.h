@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface SAMPDislikesMediaEntity
 {
 }
@@ -11,6 +13,7 @@
 + (id)dislikesMediaEntityWithDictionary:(id)arg1 context:(id)arg2;
 + (id)dislikesMediaEntity;
 - (_Bool)requiresResponse;
+@property(copy, nonatomic) NSString *influencedUserSharedUserId;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

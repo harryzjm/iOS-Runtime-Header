@@ -8,18 +8,21 @@
 
 #import <SafariShared/WBSHistoryStoreDelegate-Protocol.h>
 
-@class NSArray, NSCountedSet, NSData, NSMutableDictionary, NSString;
+@class NSArray, NSCountedSet, NSData, NSMutableDictionary, NSString, WBSHistoryTagMap;
 @protocol OS_dispatch_queue, WBSHistoryStore;
 
 @interface WBSHistory : NSObject <WBSHistoryStoreDelegate>
 {
     NSObject<OS_dispatch_queue> *_entriesByURLStringAccessQueue;
     NSMutableDictionary *_entriesByURLString;
+    NSObject<OS_dispatch_queue> *_hostnameToHistoryItemCountAccessQueue;
+    NSCountedSet *_hostnameToHistoryItemCount;
     NSCountedSet *_stringsForUserTypedDomainExpansion;
     double _historyAgeLimit;
     _Bool _hasStartedLoadingHistory;
     NSObject<OS_dispatch_queue> *_waitUntilHistoryHasLoadedQueue;
     id <WBSHistoryStore> _historyStore;
+    WBSHistoryTagMap *_historyTagMap;
 }
 
 + (void)clearExistingSharedHistory;
@@ -27,6 +30,7 @@
 + (id)historyDatabaseURL;
 + (id)historyPropertyListURL;
 + (id)existingSharedHistory;
+@property(readonly, nonatomic) WBSHistoryTagMap *historyTagMap; // @synthesize historyTagMap=_historyTagMap;
 @property(nonatomic) double historyAgeLimit; // @synthesize historyAgeLimit=_historyAgeLimit;
 - (void).cxx_destruct;
 - (Class)_historyItemClass;
@@ -36,8 +40,10 @@
 - (void)_unload;
 - (void)historyStore:(id)arg1 didRemoveItems:(id)arg2;
 - (void)historyStore:(id)arg1 didRemoveVisits:(id)arg2;
+- (void)historyStore:(id)arg1 didAddVisits:(id)arg2;
 - (void)historyStoreDidFailDatabaseIntegrityCheck:(id)arg1;
 - (_Bool)historyStoreShouldCheckDatabaseIntegrity:(id)arg1;
+- (void)_dispatchDidRemoveHostnames:(id)arg1;
 - (void)_dispatchHistoryVisitAdded:(id)arg1;
 - (void)_dispatchHistoryCleared:(id)arg1;
 - (void)_dispatchHistoryItemsRemovedDuringLoading:(id)arg1;
@@ -62,10 +68,18 @@
 - (void)close;
 - (void)performMaintenance:(CDUnknownBlockType)arg1;
 - (void)performMaintenance;
+- (void)_clearHostnameCount;
+- (id)_updateHostnameCountWithDeletedHistoryItems:(id)arg1;
+- (void)_updateHostnameCountWithAddedHistoryItems:(id)arg1;
+- (void)vacuumHistoryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)clearHistoryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)clearHistory;
 - (void)clearHistoryVisitsAddedAfterDate:(id)arg1 beforeDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)clearHistoryVisitsAddedAfterDate:(id)arg1 beforeDate:(id)arg2;
+- (void)setTitle:(id)arg1 ofTag:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)addTagWithIdentifier:(id)arg1 title:(id)arg2 toItemAtURL:(id)arg3 level:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)fetchTopicsFromStartDate:(id)arg1 toEndDate:(id)arg2 limit:(unsigned long long)arg3 minimumItemCount:(unsigned long long)arg4 sortOrder:(long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)fetchTopicsFromStartDate:(id)arg1 toEndDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)removeAttributes:(unsigned long long)arg1 fromVisit:(id)arg2;
 - (void)addAttributes:(unsigned long long)arg1 toVisit:(id)arg2;
 - (void)_setAttributes:(unsigned long long)arg1 forVisit:(id)arg2;
@@ -81,10 +95,12 @@
 - (void)setLastSeenDate:(id)arg1 forCloudClientVersion:(unsigned long long)arg2;
 - (id)lastSeenDateForCloudClientVersion:(unsigned long long)arg1;
 - (void)pruneTombstonesWithEndDatePriorToDate:(id)arg1;
-- (void)replayAndAddTombstone:(id)arg1;
+- (void)replayAndAddTombstones:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getAllTombstonesWithCompletion:(CDUnknownBlockType)arg1;
+@property(nonatomic) _Bool syncsWithManateeContainer;
 @property(nonatomic) _Bool pushNotificationsAreInitialized;
 @property(nonatomic) unsigned long long cachedNumberOfDevicesInSyncCircle;
+@property(copy, nonatomic) NSData *longLivedSaveOperationData;
 @property(copy, nonatomic) NSData *syncCircleSizeRetrievalThrottlerData;
 @property(copy, nonatomic) NSData *fetchThrottlerData;
 @property(copy, nonatomic) NSData *pushThrottlerData;
@@ -109,6 +125,7 @@
 - (void)_removeItemsInResponseToUserAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_removeHistoryItemsInResponseToUserAction:(id)arg1;
 - (void)removeItemsInResponseToUserAction:(id)arg1;
+- (id)itemForURLString:(id)arg1 createIfNeeded:(_Bool)arg2;
 - (id)itemForURLString:(id)arg1;
 - (id)init;
 

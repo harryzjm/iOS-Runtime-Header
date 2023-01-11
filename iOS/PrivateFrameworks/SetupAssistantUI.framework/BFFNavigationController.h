@@ -6,26 +6,34 @@
 
 #import <Preferences/PSRootController.h>
 
-@class NSMutableArray, NSMutableDictionary, UIColor;
+#import <SetupAssistantUI/UINavigationControllerDelegate-Protocol.h>
 
-@interface BFFNavigationController : PSRootController
+@class NSMutableArray, NSMutableDictionary, NSString, UIColor;
+
+@interface BFFNavigationController : PSRootController <UINavigationControllerDelegate>
 {
     NSMutableArray *_observers;
     NSMutableDictionary *_appearanceHandlers;
     long long _pendingShowOperation;
     UIColor *_backgroundColor;
     _Bool _animating;
+    _Bool _pushWithoutDeferringTransitionsWhileInBackground;
+    _Bool _inBackground;
 }
 
+@property(nonatomic, getter=isInBackground) _Bool inBackground; // @synthesize inBackground=_inBackground;
+@property(nonatomic) _Bool pushWithoutDeferringTransitionsWhileInBackground; // @synthesize pushWithoutDeferringTransitionsWhileInBackground=_pushWithoutDeferringTransitionsWhileInBackground;
 @property(readonly, nonatomic, getter=isAnimating) _Bool animating; // @synthesize animating=_animating;
 - (void).cxx_destruct;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)removeDelegateObserver:(id)arg1;
+- (_Bool)respondsToSelector:(SEL)arg1;
 - (void)addDelegateObserver:(id)arg1;
 - (void)_reapObservers;
 - (void)setDelegate:(id)arg1;
 - (void)setViewControllers:(id)arg1 animated:(_Bool)arg2;
+- (void)popToViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pushViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)popToRootViewControllerAnimated:(_Bool)arg1;
 - (id)popToViewController:(id)arg1 animated:(_Bool)arg2;
@@ -37,6 +45,12 @@
 - (_Bool)_usesTransitionController;
 - (unsigned long long)supportedInterfaceOrientations;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

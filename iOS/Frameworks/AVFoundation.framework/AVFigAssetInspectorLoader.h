@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVAssetInspector, AVWeakReference, NSMutableArray, NSObject, NSURL;
+@class AVAssetInspector, AVDispatchOnce, AVWeakReference, NSMutableArray, NSObject, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface AVFigAssetInspectorLoader
@@ -13,7 +13,7 @@
     int _figAssetCreationStatus;
     AVWeakReference *_weakReferenceToAsset;
     AVAssetInspector *_assetInspector;
-    long long _assetInspectorOnce;
+    AVDispatchOnce *_assetInspectorOnce;
     NSObject<OS_dispatch_queue> *_completionHandlerQueue;
     struct OpaqueFigSimpleMutex *_loadingMutex;
     NSMutableArray *_loadingBatches;
@@ -23,6 +23,8 @@
     NSURL *_URL;
 }
 
++ (id)_figAssetTrackMediaSelectionPropertiesArray;
++ (id)_figAssetMediaSelectionPropertiesArray;
 + (void)_mapAssetKeys:(id)arg1 toFigAssetPropertySet:(id)arg2 figAssetTrackPropertySet:(id)arg3 callerName:(id)arg4;
 + (id)_figAssetTrackPropertiesForKeys;
 + (id)_figAssetPropertiesForKeys;
@@ -31,6 +33,8 @@
 - (void)_setFragmentMindingInterval:(double)arg1;
 - (double)_fragmentMindingInterval;
 - (void)_invokeCompletionHandlerForLoadingBatches:(id)arg1;
+- (long long)fragmentCount;
+- (long long)firstFragmentSequenceNumber;
 - (_Bool)_isStreaming;
 - (_Bool)hasProtectedContent;
 - (unsigned long long)downloadToken;
@@ -50,6 +54,7 @@
 - (void)cancelLoading;
 - (void)loadValuesAsynchronouslyForKeys:(id)arg1 keysForCollectionKeys:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)loadValuesAsynchronouslyForKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (long long)_statusOfValueForKey:(id)arg1 error:(id *)arg2 firstNonLoadedDependencyKey:(id *)arg3;
 - (long long)statusOfValueForKey:(id)arg1 error:(id *)arg2;
 - (long long)_loadStatusForProperty:(id)arg1 figAsset:(struct OpaqueFigAsset *)arg2 error:(id *)arg3;
 - (id)_loadingBatches;
@@ -60,7 +65,6 @@
 - (id)assetInspector;
 - (id)asset;
 - (struct OpaqueFigFormatReader *)_formatReader;
-- (void)finalize;
 - (void)dealloc;
 - (void)_removeFigAssetNotifications;
 - (void)_addFigAssetNotifications;

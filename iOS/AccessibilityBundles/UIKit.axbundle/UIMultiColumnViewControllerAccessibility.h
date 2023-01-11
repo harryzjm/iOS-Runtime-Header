@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)_secondColumnBarButtonItem:(long long)arg1 createIfNecessary:(_Bool)arg2;
 - (void)setNavControllers:(id)arg1;
 - (void)setViewControllers:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

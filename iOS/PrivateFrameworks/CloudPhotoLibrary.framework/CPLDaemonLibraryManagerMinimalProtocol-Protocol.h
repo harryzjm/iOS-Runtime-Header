@@ -7,6 +7,9 @@
 @class CPLMomentShare, CPLResource, CPLScopedIdentifier, NSArray, NSDictionary, NSString, NSURL;
 
 @protocol CPLDaemonLibraryManagerMinimalProtocol
+- (void)provideCloudResource:(CPLResource *)arg1 completionHandler:(void (^)(CPLResource *, unsigned long long))arg2;
+- (void)provideRecordWithCloudScopeIdentifier:(CPLScopedIdentifier *)arg1 completionHandler:(void (^)(CPLRecordChange *, unsigned long long))arg2;
+- (void)provideLibraryInfoForScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(CPLLibraryInfo *, unsigned long long))arg2;
 - (void)unblockEngineElementOnce:(NSString *)arg1;
 - (void)unblockEngineElement:(NSString *)arg1;
 - (void)blockEngineElement:(NSString *)arg1;
@@ -49,10 +52,11 @@
 - (void)getMappedScopedIdentifiersForScopedIdentifiers:(NSArray *)arg1 inAreLocalIdentifiers:(_Bool)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)beginInMemoryDownloadOfResource:(CPLResource *)arg1 reply:(void (^)(NSString *))arg2;
 - (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(void (^)(_Bool, unsigned long long, NSError *))arg3;
-- (void)publishResource:(CPLResource *)arg1 completionHandler:(void (^)(NSURL *, NSDate *, NSError *))arg2;
+- (void)getStreamingURLForResource:(CPLResource *)arg1 intent:(unsigned long long)arg2 hints:(NSDictionary *)arg3 completionHandler:(void (^)(NSURL *, NSDate *, NSError *))arg4;
 - (void)beginDownloadForResource:(CPLResource *)arg1 clientBundleID:(NSString *)arg2 highPriority:(_Bool)arg3 proposedTaskIdentifier:(NSString *)arg4 reply:(void (^)(NSString *))arg5;
 - (void)deactivateLibraryWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)closeLibraryWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)openLibraryWithClientLibraryBaseURL:(NSURL *)arg1 cloudLibraryStateStorageURL:(NSURL *)arg2 cloudLibraryResourceStorageURL:(NSURL *)arg3 libraryIdentifier:(NSString *)arg4 options:(unsigned long long)arg5 completionHandler:(void (^)(NSError *, NSDictionary *, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, NSString *, NSString *, NSURL *))arg6;
+- (void)connectWithCompletionHandler:(void (^)(void))arg1;
 @end
 

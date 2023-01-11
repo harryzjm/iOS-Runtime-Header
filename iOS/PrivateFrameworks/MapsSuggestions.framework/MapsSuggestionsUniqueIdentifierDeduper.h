@@ -11,10 +11,13 @@
 @interface MapsSuggestionsUniqueIdentifierDeduper <MapsSuggestionsDeduper>
 {
     long long _type;
+    struct NSString *_name;
 }
 
 + (_Bool)isEnabled;
+- (void).cxx_destruct;
 - (_Bool)dedupeByEnrichingEntry:(id)arg1 withEntry:(id)arg2;
+@property(readonly, nonatomic) NSString *uniqueName;
 - (id)initWithType:(long long)arg1;
 
 // Remaining properties
@@ -22,7 +25,6 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) NSString *uniqueName;
 
 @end
 

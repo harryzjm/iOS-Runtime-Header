@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FPItem, NSArray;
+@class FPItem;
 
 @interface FPUntrashOperation
 {
-    NSArray *_items;
     FPItem *_restoreDirectory;
     CDUnknownBlockType _untrashCompletionBlock;
 }
 
 @property(copy, nonatomic) CDUnknownBlockType untrashCompletionBlock; // @synthesize untrashCompletionBlock=_untrashCompletionBlock;
 - (void).cxx_destruct;
+- (id)fp_prettyDescription;
 - (void)presendNotifications;
-- (void)finishWithResult:(id)arg1 error:(id)arg2;
-- (void)mainWithExtensionProxy:(id)arg1;
+- (void)postStitchingFinishWithResult:(id)arg1 error:(id)arg2;
+- (unsigned long long)transformItem:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)initWithItems:(id)arg1 restoreDirectory:(id)arg2;
 - (id)replicateForItems:(id)arg1;
 

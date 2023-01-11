@@ -6,11 +6,12 @@
 
 #import <AssistantUI/NSObject-Protocol.h>
 
-@class AFUISpeechSynthesis;
+@class AFSpeechSynthesisRecord, AFUISpeechSynthesis;
 
 @protocol AFUISpeechSynthesisLocalDelegate <NSObject>
+- (void)speechSynthesisDidFinish:(AFSpeechSynthesisRecord *)arg1;
 - (_Bool)speechSynthesisConnectionIsRecording:(AFUISpeechSynthesis *)arg1;
-- (void)speechSynthesis:(AFUISpeechSynthesis *)arg1 prepareForSpeakingWithCompletion:(void (^)(unsigned int, NSError *))arg2;
+- (void)speechSynthesis:(AFUISpeechSynthesis *)arg1 prepareForSpeakingWithOptions:(unsigned long long)arg2 completion:(void (^)(unsigned int, NSError *))arg3;
 - (void)stopCurrentRecordingForSpeechSynthesis:(AFUISpeechSynthesis *)arg1;
 @end
 

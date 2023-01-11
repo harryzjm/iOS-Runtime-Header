@@ -6,24 +6,25 @@
 
 #import <SafariShared/NSObject-Protocol.h>
 
-@class NSError, NSString, NSURL, NSURLRequest, NSURLResponse, WKWebProcessPlugInBrowserContextController, WKWebProcessPlugInFrame, WKWebProcessPlugInScriptWorld;
+@class NSError, NSURLRequest, NSURLResponse, WKWebProcessPlugInBrowserContextController, WKWebProcessPlugInFrame, WKWebProcessPlugInScriptWorld;
 
 @protocol WKWebProcessPlugInLoadDelegate <NSObject>
 
 @optional
-- (NSString *)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 frame:(WKWebProcessPlugInFrame *)arg2 userAgentForURL:(NSURL *)arg3;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 frame:(WKWebProcessPlugInFrame *)arg2 didFailLoadForResource:(unsigned long long)arg3 error:(NSError *)arg4;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 frame:(WKWebProcessPlugInFrame *)arg2 didFinishLoadForResource:(unsigned long long)arg3;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 frame:(WKWebProcessPlugInFrame *)arg2 didInitiateLoadForResource:(unsigned long long)arg3 request:(NSURLRequest *)arg4;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 frame:(WKWebProcessPlugInFrame *)arg2 didInitiateLoadForResource:(unsigned long long)arg3 request:(NSURLRequest *)arg4 pageIsProvisionallyLoading:(_Bool)arg5;
 - (NSURLRequest *)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 frame:(WKWebProcessPlugInFrame *)arg2 willSendRequest:(NSURLRequest *)arg3 redirectResponse:(NSURLResponse *)arg4;
 - (NSURLRequest *)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 frame:(WKWebProcessPlugInFrame *)arg2 willSendRequestForResource:(unsigned long long)arg3 request:(NSURLRequest *)arg4 redirectResponse:(NSURLResponse *)arg5;
+- (unsigned long long)webProcessPlugInBrowserContextControllerRenderingProgressEvents:(WKWebProcessPlugInBrowserContextController *)arg1;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 didFirstVisuallyNonEmptyLayoutForFrame:(WKWebProcessPlugInFrame *)arg2;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 renderingProgressDidChange:(unsigned long long)arg2;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 didLayoutForFrame:(WKWebProcessPlugInFrame *)arg2;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 didHandleOnloadEventsForFrame:(WKWebProcessPlugInFrame *)arg2;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 didRemoveFrameFromHierarchy:(WKWebProcessPlugInFrame *)arg2;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 globalObjectIsAvailableForFrame:(WKWebProcessPlugInFrame *)arg2 inScriptWorld:(WKWebProcessPlugInScriptWorld *)arg3;
+- (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 didClearWindowObjectForFrame:(WKWebProcessPlugInFrame *)arg2 inScriptWorld:(WKWebProcessPlugInScriptWorld *)arg3;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 didSameDocumentNavigation:(long long)arg2 forFrame:(WKWebProcessPlugInFrame *)arg3;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 didFinishLoadForFrame:(WKWebProcessPlugInFrame *)arg2;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 didFailLoadWithErrorForFrame:(WKWebProcessPlugInFrame *)arg2 error:(NSError *)arg3;

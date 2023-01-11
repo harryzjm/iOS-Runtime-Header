@@ -6,8 +6,8 @@
 
 #import <PhotosUICore/PXCMMCloudGadgetViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, PXCMMSuggestionsDataSourceManager, PXCloudWelcomeGadgetProvider, PXMessagesCMMSuggestionsCollectionGadgetProvider, PXMessagesExtensionViewModel, PXMessagesRecentPhotosGadgetProvider, UIViewController;
-@protocol PXGadgetDelegate, PXPhotoLibraryPresenting;
+@class NSArray, NSString, PXCMMSuggestionsDataSourceManager, PXCloudWelcomeGadgetProvider, PXGadgetNavigationHelper, PXMessagesCMMSuggestionsCollectionGadgetProvider, PXMessagesExtensionViewModel, PXMessagesRecentPhotosGadgetProvider, UIViewController;
+@protocol PXGadgetDelegate, PXGadgetTransition, PXPhotoLibraryPresenting;
 
 @interface PXMessagesGadgetDataSourceManager <PXCMMCloudGadgetViewControllerDelegate>
 {
@@ -37,8 +37,10 @@
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
+@property(readonly, nonatomic) id <PXGadgetTransition> gadgetTransition;
 @property(readonly) unsigned long long hash;
 @property(nonatomic) __weak id <PXGadgetDelegate> nextGadgetResponder;
+@property(readonly, nonatomic) PXGadgetNavigationHelper *rootNavigationHelper;
 @property(readonly) Class superclass;
 
 @end

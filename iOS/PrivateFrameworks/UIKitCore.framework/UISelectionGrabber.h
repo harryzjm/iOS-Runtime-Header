@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface UISelectionGrabber
 {
+    double m_screenScale;
     UISelectionGrabberDot *m_dotView;
     _Bool m_isDotted;
     _Bool m_activeFlattened;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)drawRect:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)didMoveToSuperview;
+- (void)willMoveToWindow:(id)arg1;
 - (_Bool)isPointedLeft;
 - (_Bool)isPointedRight;
 - (_Bool)isPointedUp;

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <EKStyleProvider> styleProvider; // @synthesize styleProvider=_styleProvider;
 @property(nonatomic) __weak id <EKCalendarItemEditItemDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+- (id)trailingSwipeActionsConfigurationForRowAtIndex:(long long)arg1;
 - (id)viewForActionSheet;
 - (_Bool)shouldPinKeyboard;
 - (_Bool)isInline;
@@ -61,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)numberOfSubitems;
 - (_Bool)shouldAppearWithVisibility:(int)arg1;
 - (void)applicationDidResume;
+- (void)prepareForReload;
 - (_Bool)forceRefreshLocationItemOnSave;
 - (_Bool)forceRefreshInviteesItemOnSave;
 - (_Bool)forceRefreshStartAndEndDatesOnSave;

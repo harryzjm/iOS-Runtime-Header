@@ -67,6 +67,9 @@
 - (id)init;
 @property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) NSDate *localCreationDate;
+- (id)creationDateUsingLocalTimeZone;
+@property(readonly, nonatomic) unsigned long long deferredLogInfo;
 @property(readonly, nonatomic, getter=isLivePhoto) _Bool livePhoto;
 @property(readonly, nonatomic) _Bool isAnimatedImage;
 @property(readonly, nonatomic) CLLocation *location;
@@ -82,6 +85,7 @@
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) _Bool isLivePhoto;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 videoKeyFrameSourceTime;
 
 @end
 

@@ -12,6 +12,7 @@
 
 @interface NTPBFeedItem : PBCodable <NSCopying>
 {
+    long long _bodyTextLength;
     unsigned long long _contentType;
     unsigned long long _feedHalfLifeMilliseconds;
     double _globalUserFeedback;
@@ -22,17 +23,20 @@
     NSString *_articleID;
     NSString *_clusterID;
     NSString *_feedID;
+    NSString *_parentIssueID;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores *_scores;
     NSString *_sourceChannelID;
     NSMutableArray *_topicIDs;
-    _Bool _hasCoverArt;
     _Bool _hasThumbnail;
     _Bool _hasVideo;
+    _Bool _isBundlePaid;
     _Bool _isExplicitContent;
+    _Bool _isFeatured;
     _Bool _isFromBlockedStorefront;
     _Bool _isHiddenFromAutoFavorites;
     _Bool _isPaid;
     struct {
+        unsigned int bodyTextLength:1;
         unsigned int contentType:1;
         unsigned int feedHalfLifeMilliseconds:1;
         unsigned int globalUserFeedback:1;
@@ -40,10 +44,11 @@
         unsigned int order:1;
         unsigned int publishDateMilliseconds:1;
         unsigned int publisherArticleVersion:1;
-        unsigned int hasCoverArt:1;
         unsigned int hasThumbnail:1;
         unsigned int hasVideo:1;
+        unsigned int isBundlePaid:1;
         unsigned int isExplicitContent:1;
+        unsigned int isFeatured:1;
         unsigned int isFromBlockedStorefront:1;
         unsigned int isHiddenFromAutoFavorites:1;
         unsigned int isPaid:1;
@@ -51,12 +56,15 @@
 }
 
 + (Class)topicIDsType;
+@property(nonatomic) _Bool isFeatured; // @synthesize isFeatured=_isFeatured;
+@property(nonatomic) long long bodyTextLength; // @synthesize bodyTextLength=_bodyTextLength;
+@property(nonatomic) _Bool isBundlePaid; // @synthesize isBundlePaid=_isBundlePaid;
+@property(retain, nonatomic) NSString *parentIssueID; // @synthesize parentIssueID=_parentIssueID;
 @property(nonatomic) _Bool isHiddenFromAutoFavorites; // @synthesize isHiddenFromAutoFavorites=_isHiddenFromAutoFavorites;
 @property(retain, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores *scores; // @synthesize scores=_scores;
 @property(nonatomic) long long publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;
 @property(nonatomic) _Bool hasVideo; // @synthesize hasVideo=_hasVideo;
 @property(nonatomic) _Bool isPaid; // @synthesize isPaid=_isPaid;
-@property(nonatomic) _Bool hasCoverArt; // @synthesize hasCoverArt=_hasCoverArt;
 @property(retain, nonatomic) NSMutableArray *topicIDs; // @synthesize topicIDs=_topicIDs;
 @property(nonatomic) unsigned long long contentType; // @synthesize contentType=_contentType;
 @property(nonatomic) long long minimumNewsVersion; // @synthesize minimumNewsVersion=_minimumNewsVersion;
@@ -79,12 +87,15 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasIsFeatured;
+@property(nonatomic) _Bool hasBodyTextLength;
+@property(nonatomic) _Bool hasIsBundlePaid;
+@property(readonly, nonatomic) _Bool hasParentIssueID;
 @property(nonatomic) _Bool hasIsHiddenFromAutoFavorites;
 @property(readonly, nonatomic) _Bool hasScores;
 @property(nonatomic) _Bool hasPublisherArticleVersion;
 @property(nonatomic) _Bool hasHasVideo;
 @property(nonatomic) _Bool hasIsPaid;
-@property(nonatomic) _Bool hasHasCoverArt;
 - (id)topicIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)topicIDsCount;
 - (void)addTopicIDs:(id)arg1;

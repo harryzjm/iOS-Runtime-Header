@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class INImage, INPortableImageLoader, NSSet, NSString;
+@class INImage, INPortableImageLoader, NSSet, NSString, NSUUID;
 
 @protocol INHServing
+- (oneway void)fetchShareExtensionIntentForExtensionContextUUID:(NSUUID *)arg1 completion:(void (^)(INIntent *))arg2;
+- (oneway void)loadBundleURLsForBundleIdentifiers:(NSSet *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (oneway void)loadSchemaURLsWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
 - (oneway void)loadSchemaURLsForBundleIdentifiers:(NSSet *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (oneway void)purgeExpiredImagesInEphemeralStore;
 - (oneway void)purgeImageWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;

@@ -10,10 +10,14 @@ __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiCollectionViewCell
 {
     UILabel *_emojiLabel;
+    _Bool _unreleasedHighlight;
+    UILabel *_unreleasedBanner;
     UIKeyboardEmoji *_emoji;
 }
 
+@property(nonatomic) _Bool unreleasedHighlight; // @synthesize unreleasedHighlight=_unreleasedHighlight;
 @property(copy, nonatomic) UIKeyboardEmoji *emoji; // @synthesize emoji=_emoji;
+@property(retain, nonatomic) UILabel *unreleasedBanner; // @synthesize unreleasedBanner=_unreleasedBanner;
 - (void).cxx_destruct;
 - (id)debugDescription;
 @property(nonatomic) long long emojiFontSize;

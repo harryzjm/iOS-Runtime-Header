@@ -6,19 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <VisualVoicemail/VMStateRequestControllerDelegate-Protocol.h>
+@class NSArray, NSDictionary, NSError, NSMutableDictionary, NSRecursiveLock, NSString, VMCarrierStateRequestController, VMTranscriptionService, VVVerifier;
+@protocol OS_dispatch_queue, VMTelephonySubscription;
 
-@class CTXPCServiceSubscriptionContext, NSArray, NSDictionary, NSError, NSMutableDictionary, NSRecursiveLock, NSString, VMStateRequestController, VMTranscriptionService, VVVerifier;
-@protocol OS_dispatch_queue;
-
-@interface VVService : NSObject <VMStateRequestControllerDelegate>
+@interface VVService : NSObject
 {
     NSRecursiveLock *_lock;
-    long long _capabilities;
     int _mailboxUsage;
     double _trashCompactionAge;
-    unsigned int _unreadCount;
-    unsigned int _trashedCount;
     NSError *_passwordError;
     NSError *_activationError;
     NSString *_password;
@@ -37,17 +32,25 @@
         unsigned int notificationFallbackEnabled:1;
         unsigned int capabilitiesLoaded:1;
     } _serviceFlags;
+    _Bool _cellularNetworkAvailable;
+    _Bool _SMSReady;
+    _Bool _WiFiNetworkReachable;
+    _Bool _WiFiNetworkSupported;
+    struct os_unfair_lock_s _accessorLock;
+    NSString *_isoCountryCode;
     NSMutableDictionary *_stateRequestAttemptCount;
+    unsigned long long _trashedCount;
+    unsigned long long _unreadCount;
     NSString *_serviceIdentifier;
     NSString *_serviceDestinationID;
     VMTranscriptionService *_transcriptionService;
     VVVerifier *_verifier;
-    CTXPCServiceSubscriptionContext *_context;
+    id <VMTelephonySubscription> _subscription;
     unsigned long long _numFailedAttemptsToSyncOverWifi;
     struct __CFString *_lastConnectionTypeUsed;
     NSDictionary *_accountDictionary;
     NSObject<OS_dispatch_queue> *_serialDispatchQueue;
-    VMStateRequestController *_stateRequestController;
+    VMCarrierStateRequestController *_stateRequestController;
 }
 
 + (id)accountDictionaryForURL:(id)arg1;
@@ -59,25 +62,29 @@
 + (struct __CTServerConnection *)CTServerConnection;
 + (_Bool)sharedServiceIsSubscribed;
 + (_Bool)_lockedSharedServiceIsSubscribed;
-+ (id)serviceWithIdentifier:(id)arg1 context:(id)arg2;
++ (id)serviceWithIdentifier:(id)arg1 destinationID:(id)arg2 name:(id)arg3 isoCountryCode:(id)arg4 subscription:(id)arg5 stateRequestController:(id)arg6;
 + (void)_subscriptionStateChanged;
 + (void)initialize;
-@property(readonly, nonatomic) VMStateRequestController *stateRequestController; // @synthesize stateRequestController=_stateRequestController;
+@property(readonly, nonatomic) VMCarrierStateRequestController *stateRequestController; // @synthesize stateRequestController=_stateRequestController;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
 @property(retain, nonatomic) NSDictionary *accountDictionary; // @synthesize accountDictionary=_accountDictionary;
 @property(nonatomic) struct __CFString *lastConnectionTypeUsed; // @synthesize lastConnectionTypeUsed=_lastConnectionTypeUsed;
 @property(nonatomic) unsigned long long numFailedAttemptsToSyncOverWifi; // @synthesize numFailedAttemptsToSyncOverWifi=_numFailedAttemptsToSyncOverWifi;
-@property(readonly, nonatomic) CTXPCServiceSubscriptionContext *context; // @synthesize context=_context;
+@property(readonly, nonatomic) struct os_unfair_lock_s accessorLock; // @synthesize accessorLock=_accessorLock;
+@property(readonly, nonatomic) id <VMTelephonySubscription> subscription; // @synthesize subscription=_subscription;
 @property(retain, nonatomic) VVVerifier *verifier; // @synthesize verifier=_verifier;
 @property(retain, nonatomic) VMTranscriptionService *transcriptionService; // @synthesize transcriptionService=_transcriptionService;
-@property(retain, nonatomic) NSString *serviceDestinationID; // @synthesize serviceDestinationID=_serviceDestinationID;
-@property(retain, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
+@property(copy, nonatomic) NSString *serviceDestinationID; // @synthesize serviceDestinationID=_serviceDestinationID;
+@property(copy, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
 - (void).cxx_destruct;
+- (void)removeServiceInformation;
 - (void)performSynchronousBlock:(CDUnknownBlockType)arg1;
+- (void)performAtomicAccessorBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSMutableDictionary *stateRequestAttemptCount; // @synthesize stateRequestAttemptCount=_stateRequestAttemptCount;
 - (void)removeAttemptCountForStateRequest:(id)arg1;
 - (void)incrementAttemptCountForStateRequest:(id)arg1;
 - (long long)attemptCountForStateRequest:(id)arg1;
+- (void)handleCPNetworkObserverNetworkReachableNotification:(id)arg1;
 - (void)handleVVServiceDataAvailableNotification:(id)arg1;
 - (void)handleVoicemailInfoUpdate:(id)arg1;
 - (struct __CFString *)dataConnectionServiceTypeOverride;
@@ -100,10 +107,12 @@
 - (void)reportError:(id)arg1;
 - (void)moveRecordsWithIdentifiersToInbox:(id)arg1;
 - (void)moveRecordsWithIdentifiersToTrash:(id)arg1;
-- (void)setGreetingType:(long long)arg1 withData:(id)arg2 duration:(unsigned long long)arg3;
+- (void)movePendingMessagesToInboxTask:(id)arg1;
+- (void)movePendingMessagesToTrashTask:(id)arg1;
+- (void)setGreetingType:(long long)arg1 data:(id)arg2 duration:(unsigned long long)arg3 forAccountUUID:(id)arg4;
 - (_Bool)greetingAvailable;
-- (void)retrieveGreeting;
-- (void)changePassword:(id)arg1 fromPassword:(id)arg2;
+- (void)retrieveGreetingForAccountUUID:(id)arg1;
+- (void)setPasscode:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clearRemoteUIDsForDetachedMessages;
 - (void)retrieveDataForRecord:(void *)arg1;
 - (void)synchronize:(_Bool)arg1;
@@ -122,7 +131,6 @@
 - (int)maximumPasswordLength;
 - (int)minimumPasswordLength;
 - (int)maximumRecordedNameDuration;
-- (int)maximumGreetingDuration;
 - (void)cancelPasswordRequest;
 - (void)displayPasswordRequestIfNecessary;
 - (void)handlePasswordRequestCancellation;
@@ -132,7 +140,6 @@
 - (id)passwordIgnoringSubscription:(_Bool)arg1;
 - (id)password;
 - (_Bool)isPasswordReady;
-- (void)_handleIndicatorNotification:(struct __CFDictionary *)arg1;
 - (_Bool)respectsMWINotifications;
 - (void)handleNotification:(id)arg1 isMWI:(_Bool)arg2;
 - (Class)notificationInterpreterClass;
@@ -145,12 +152,10 @@
 - (void)_enterFallbackMode;
 - (void)_deliverFallbackNotification;
 - (void)cancelNotificationFallback;
-- (void)_handleSMSReady:(_Bool)arg1;
 - (void)_handleSMSCAvailable;
 - (void)clearActivationError;
 - (id)activationError;
 - (void)_setActivationError:(id)arg1;
-- (void)_reportReachabilityChange:(id)arg1;
 - (void)_updateOnlineStatus;
 - (_Bool)isOfflineDueToRoaming;
 - (_Bool)_isOfflineDueToRoamingWithDataStatusDict:(struct __CFDictionary *)arg1;
@@ -158,15 +163,16 @@
 - (void)setOnline:(_Bool)arg1;
 - (void)_setOnline:(_Bool)arg1 fallbackMode:(_Bool)arg2;
 - (_Bool)isOnline;
-- (void)updateLoggingSettings;
-- (void)removeAllNonDetachedRecords;
-- (void)removeAllRecords;
+@property(nonatomic) unsigned long long unreadCount; // @synthesize unreadCount=_unreadCount;
+@property(nonatomic) unsigned long long trashedCount; // @synthesize trashedCount=_trashedCount;
+@property(nonatomic, getter=isSMSReady) _Bool SMSReady; // @synthesize SMSReady=_SMSReady;
+@property(nonatomic, getter=isWiFiNetworkSupported) _Bool WiFiNetworkSupported; // @synthesize WiFiNetworkSupported=_WiFiNetworkSupported;
+@property(nonatomic, getter=isWiFiNetworkReachable) _Bool WiFiNetworkReachable; // @synthesize WiFiNetworkReachable=_WiFiNetworkReachable;
+@property(readonly, nonatomic, getter=isWiFiNetworkAvailable) _Bool WiFiNetworkAvailable;
+@property(readonly, copy, nonatomic) NSString *isoCountryCode; // @synthesize isoCountryCode=_isoCountryCode;
+@property(nonatomic, getter=isCellularNetworkAvailable) _Bool cellularNetworkAvailable; // @synthesize cellularNetworkAvailable=_cellularNetworkAvailable;
 - (void)resetCounts;
 - (void)updateCountsForChangedFlags:(unsigned int)arg1 currentRecordFlags:(unsigned int)arg2;
-- (void)setTrashedCount:(unsigned int)arg1;
-- (unsigned int)trashedCount;
-- (void)setUnreadCount:(unsigned int)arg1;
-- (unsigned int)unreadCount;
 - (void)setMailboxUsage:(int)arg1;
 - (int)mailboxUsage;
 - (_Bool)sharedSubscriptionRequiresSetup;
@@ -177,25 +183,16 @@
 - (void)setSubscribed:(_Bool)arg1;
 - (id)accountParamsAtFilePath:(id)arg1;
 - (id)parametersFilePathForUUIDString:(id)arg1;
-- (_Bool)isVVMAvailableOverWiFi;
 - (_Bool)isSubscribed;
-- (long long)capabilities;
 - (void)dealloc;
-- (id)initWithServiceIdentifier:(id)arg1 context:(id)arg2;
+- (id)initWithServiceIdentifier:(id)arg1 destinationID:(id)arg2 isoCountryCode:(id)arg3 subscription:(id)arg4 stateRequestController:(id)arg5;
 - (void)_callStatusChanged;
 - (void)_carrierBundleChanged;
 - (void)handleDataContextDeactivated;
-- (void)_dataAvailabilityChanged;
 - (void)_dataRoamingStatusChanged;
 - (_Bool)doTrashCompaction;
 - (_Bool)shouldTrashCompactRecord:(void *)arg1;
 - (double)trashCompactionAge;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

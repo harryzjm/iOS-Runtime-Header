@@ -6,6 +6,7 @@
 
 @class SKUIViewElementText;
 
+__attribute__((visibility("hidden")))
 @interface SKUIItemViewElement
 {
     SKUIViewElementText *_itemText;

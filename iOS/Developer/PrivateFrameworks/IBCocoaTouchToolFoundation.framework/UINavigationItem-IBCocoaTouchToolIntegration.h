@@ -10,6 +10,7 @@
 - (id)ibPromptEditableArea;
 - (id)ibLargeTitleEditableArea;
 - (id)ibTitleEditableArea;
+- (void)ibUseDummyTitleIfNecessaryDuring:(CDUnknownBlockType)arg1;
 - (struct CGRect)ibTitleViewFrameInEnclosingBar;
 @property long long ibLargeTitleDisplayMode;
 @end

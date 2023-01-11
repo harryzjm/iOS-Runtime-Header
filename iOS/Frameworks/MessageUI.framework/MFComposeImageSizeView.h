@@ -5,6 +5,7 @@
 //
 
 @class NSMutableArray, UISegmentedControl;
+@protocol MFComposeImageSizeViewDelegate;
 
 @interface MFComposeImageSizeView
 {
@@ -12,6 +13,7 @@
     NSMutableArray *_visibleScales;
 }
 
+- (void).cxx_destruct;
 - (void)segmentedControlChanged;
 - (void)setScale:(unsigned long long)arg1;
 - (void)removeSizeDescriptionForScale:(unsigned long long)arg1;
@@ -19,8 +21,10 @@
 - (unsigned long long)_insertIndexForScale:(unsigned long long)arg1;
 - (unsigned long long)_scaleLabelIndexForScale:(unsigned long long)arg1;
 - (void)layoutSubviews;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(nonatomic) __weak id <MFComposeImageSizeViewDelegate> delegate; // @dynamic delegate;
 
 @end
 

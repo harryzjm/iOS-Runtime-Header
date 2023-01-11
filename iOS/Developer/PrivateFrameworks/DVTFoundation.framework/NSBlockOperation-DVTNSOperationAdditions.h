@@ -8,6 +8,8 @@
 
 @interface NSBlockOperation (DVTNSOperationAdditions)
 + (id)dvt_blockOperationWithBlock:(CDUnknownBlockType)arg1;
++ (id)__DVTMainThreadLatencyChecker__blockOperationWithBlock:(CDUnknownBlockType)arg1;
 - (void)dvt_addExecutionBlock:(CDUnknownBlockType)arg1;
+- (void)__DVTMainThreadLatencyChecker__addExecutionBlock:(CDUnknownBlockType)arg1;
 @end
 

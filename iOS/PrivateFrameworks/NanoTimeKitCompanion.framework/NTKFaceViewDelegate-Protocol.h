@@ -6,11 +6,16 @@
 
 #import <NanoTimeKitCompanion/NSObject-Protocol.h>
 
-@class NSDate, NSString, NTKComplication, NTKFaceView, UIViewController;
+@class NSArray, NSDate, NSString, NTKComplication, NTKEditOption, NTKFaceView, UIViewController;
 
 @protocol NTKFaceViewDelegate <NSObject>
+- (NSArray *)faceViewAllVisibleComplicationsForCurrentConfiguration;
+- (NSArray *)faceViewComplicationSlotsHiddenByEditOption:(NTKEditOption *)arg1;
+- (NTKEditOption *)faceViewEditOptionThatHidesAllComplications;
+- (NSArray *)faceViewComplicationSlots;
 - (NTKComplication *)faceViewComplicationForSlot:(NSString *)arg1;
 - (NSString *)faceViewComplicationAppIdentifierForSlot:(NSString *)arg1;
+- (_Bool)faceViewShouldIgnoreSnapshotImages;
 - (_Bool)faceView:(NTKFaceView *)arg1 wantsToDismissPresentedViewControllerAnimated:(_Bool)arg2;
 - (void)faceViewWantsToPresentViewController:(UIViewController *)arg1;
 - (void)faceViewRequestedLaunchFromRect:(struct CGRect)arg1;
@@ -23,7 +28,8 @@
 - (void)faceViewWillExitTimeTravel;
 - (void)faceViewDidScrubToDate:(NSDate *)arg1 forced:(_Bool)arg2;
 - (void)faceViewWillEnterTimeTravel;
-- (void)faceViewDidLayoutSubviews;
+- (void)faceViewDidChangePaddingForStatusBar;
+- (void)faceViewDidChangeWantsStatusBarIconShadow;
 - (void)faceViewWantsStatusBarHidden:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)faceViewWantsCustomKeylineFramesReloadedForEditMode:(long long)arg1;
 - (void)faceViewWantsComplicationKeylineFramesReloaded;

@@ -8,20 +8,17 @@
 
 #import <DoNotDisturbKit/CLLocationManagerDelegate-Protocol.h>
 
-@class CLGeocoder, CLLocation, CLLocationManager, CLPlacemark, EKCalendarVisibilityManager, EKEvent, EKEventStore, NSArray, NSString, RTLocationOfInterest, RTRoutineManager;
+@class CLLocationManager, EKCalendarVisibilityManager, EKEvent, EKEventStore, NSArray, NSString, _CLPlaceInference;
 @protocol DNDLifetimeDetailsProviderDelegate, OS_dispatch_queue;
 
 @interface DNDLifetimeDetailsProvider : NSObject <CLLocationManagerDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_eventStoreQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;
     _Bool _monitoringLifetimes;
     CLLocationManager *_locationManager;
-    CLLocation *_currentLocation;
-    RTRoutineManager *_routineManager;
-    RTLocationOfInterest *_relevantLOI;
-    CLGeocoder *_geocoder;
-    CLPlacemark *_relevantPlacemark;
+    _CLPlaceInference *_currentPlaceInference;
     EKEventStore *_eventStore;
     EKCalendarVisibilityManager *_calendarVisibilityManager;
     EKEvent *_relevantEvent;
@@ -32,16 +29,13 @@
 @property(nonatomic) __weak id <DNDLifetimeDetailsProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, copy, nonatomic) NSArray *availableLifetimeDetails; // @synthesize availableLifetimeDetails=_availableLifetimeDetails;
 - (void).cxx_destruct;
-- (void)_requestRelevantEvent;
+- (void)_eventStoreQueue_requestRelevantEvent;
 - (void)_queue_requestLifetimeDetails;
-- (void)_queue_gotPlacemark:(id)arg1 forLocation:(id)arg2;
-- (void)_queue_gotLocationOfInterest:(id)arg1 forLocation:(id)arg2;
-- (void)_queue_requestRelevantLocationMetadataForLocation:(id)arg1;
+- (void)_queue_resetLifetimeDetails;
+- (void)_queue_gotPlaceInferences:(id)arg1;
 - (void)_requestRelevantLocationMetadata;
 - (id)_lifetimeDetailsUntilEveningOrMorningForDate:(id)arg1;
 - (void)_queue_rebuildAvailableLifetimeDetails;
-- (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
-- (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)lifetimeDetailsWithMetadataForAssertionDetails:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)lifetimeDetailsForAssertionDetails:(id)arg1 error:(id *)arg2;
 - (id)lifetimeForLifetimeDetails:(id)arg1 error:(id *)arg2;
@@ -49,6 +43,7 @@
 - (void)startUpdatingLifetimeDetailMetadata;
 - (void)stopUpdatingLifetimeDetails;
 - (void)startUpdatingLifetimeDetails;
+- (void)resetLifetimeDetails;
 - (void)requestLifetimeDetails;
 - (id)init;
 

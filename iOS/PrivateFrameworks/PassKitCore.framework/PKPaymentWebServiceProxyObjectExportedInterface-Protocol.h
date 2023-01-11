@@ -6,12 +6,32 @@
 
 #import <PassKitCore/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString, PKPass, PKPaymentPass, PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext;
+@class NSData, NSDictionary, NSString, PKApplePayTrustKeyRequest, PKPass, PKPaymentPass, PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext;
 
 @protocol PKPaymentWebServiceProxyObjectExportedInterface <NSObject>
 - (void)invalidateRemoteProxyTargetDevice;
 - (void)archiveBackgroundContext:(PKPaymentWebServiceBackgroundContext *)arg1;
 - (void)archiveContext:(PKPaymentWebServiceContext *)arg1;
+- (void)passOwnershipTokenWithIdentifier:(NSString *)arg1 completion:(void (^)(NSString *))arg2;
+- (void)storePassOwnershipToken:(NSString *)arg1 withIdentifier:(NSString *)arg2;
+- (void)performDeviceCheckInWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)deleteApplePayTrustKeyWithIdentifier:(NSString *)arg1 completion:(void (^)(_Bool))arg2;
+- (void)createApplePayTrustKeyWithRequest:(PKApplePayTrustKeyRequest *)arg1 completion:(void (^)(PKApplePayTrustKey *, NSError *))arg2;
+- (void)applePayTrustKeyForIdentifier:(NSString *)arg1 completion:(void (^)(PKApplePayTrustKey *))arg2;
+- (void)deviceMetadataWithFields:(unsigned long long)arg1 completion:(void (^)(PKPaymentDeviceMetadata *))arg2;
+- (void)featureApplicationsForProvisioningWithCompletion:(void (^)(NSArray *))arg1;
+- (void)updatedAccountsForProvisioningWithCompletion:(void (^)(NSArray *, NSArray *))arg1;
+- (void)supportedFeatureIdentifiersWithCompletion:(void (^)(NSSet *))arg1;
+- (void)supportsAccountsWithCompletion:(void (^)(_Bool))arg1;
+- (void)updateAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(PKAccount *, NSError *))arg2;
+- (void)endRequiringUpgradedPasscodeIfNecessary;
+- (void)startRequiringUpgradedPasscodeWithPasscodeMeetsPolicy:(_Bool)arg1;
+- (void)enforceUpgradedPasscodePolicyWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)notePasscodeUpgradeFlowDidEnd;
+- (void)notePasscodeUpgradeFlowWillBeginWithCompletion:(void (^)(_Bool, NSError *))arg1;
+- (void)setDefaultPaymentPassUniqueIdentifier:(NSString *)arg1;
+- (void)appleAccountInformationWithCompletion:(void (^)(PKAppleAccountInformation *))arg1;
+- (void)renewAppleAccountWithCompletionHandler:(void (^)(long long, PKAppleAccountInformation *))arg1;
 - (void)supportsPeerPaymentRegistrationWithCompletion:(void (^)(_Bool))arg1;
 - (void)removePass:(PKPass *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
 - (void)addPassData:(NSData *)arg1 completion:(void (^)(_Bool, NSError *))arg2;
@@ -36,7 +56,7 @@
 - (void)getProvisioningDataWithCompletion:(void (^)(PKPaymentDeviceProvisioningData *, NSError *))arg1;
 - (void)signData:(NSData *)arg1 signatureEntanglementMode:(unsigned long long)arg2 withCompletion:(void (^)(NSData *, PKSecureElementSignatureInfo *, NSError *))arg3;
 - (void)getTrustedDeviceEnrollmentInfoWithCompletion:(void (^)(PKTrustedDeviceEnrollmentInfo *))arg1;
-- (void)getRegistrationDataWithAuthToken:(NSString *)arg1 completion:(void (^)(PKPaymentDeviceRegistrationData *, NSError *))arg2;
+- (void)getRegistrationDataWithCompletion:(void (^)(PKPaymentDeviceRegistrationData *, NSError *))arg1;
 - (void)getConfigurationDataWithCompletion:(void (^)(PKPaymentDeviceConfigurationData *, NSError *))arg1;
 - (void)queueConnectionToTrustedServiceManagerForPushTopic:(NSString *)arg1 withCompletion:(void (^)(_Bool, NSError *))arg2;
 - (void)getContextWithCompletion:(void (^)(PKPaymentWebServiceContext *))arg1;

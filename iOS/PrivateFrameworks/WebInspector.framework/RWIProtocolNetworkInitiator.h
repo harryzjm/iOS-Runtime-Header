@@ -10,6 +10,7 @@
 {
 }
 
+@property(nonatomic) int nodeId;
 @property(nonatomic) double lineNumber;
 @property(copy, nonatomic) NSString *url;
 @property(copy, nonatomic) NSArray *stackTrace;

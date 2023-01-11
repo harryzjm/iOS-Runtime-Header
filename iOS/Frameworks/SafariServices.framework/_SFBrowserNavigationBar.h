@@ -4,20 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _SFBrowserToolbar;
-
 __attribute__((visibility("hidden")))
 @interface _SFBrowserNavigationBar
 {
 }
 
 + (long long)_metricsCategory;
-@property(readonly, nonatomic) _SFBrowserToolbar *toolbar;
 - (id)newTextField;
 - (double)placeholderHorizontalInset;
-- (id)toolbarPlacedOnTop;
-- (void)tintColorDidChange;
-- (void)updateToolbarTintColor;
 
 @end
 

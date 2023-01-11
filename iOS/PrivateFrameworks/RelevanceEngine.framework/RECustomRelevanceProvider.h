@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class REFeature, REFeatureValue;
+@class REFeature;
 
 @interface RECustomRelevanceProvider
 {
     REFeature *_feature;
-    REFeatureValue *_value;
+    unsigned long long _value;
 }
 
 + (id)relevanceSimulatorID;
-@property(readonly, nonatomic) REFeatureValue *value; // @synthesize value=_value;
+@property(readonly, nonatomic) unsigned long long value; // @synthesize value=_value;
 @property(readonly, nonatomic) REFeature *feature; // @synthesize feature=_feature;
 - (void).cxx_destruct;
 - (id)description;
@@ -22,7 +22,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryEncoding;
 - (id)initWithDictionary:(id)arg1;
-- (id)initWithFeature:(id)arg1 value:(id)arg2;
+- (void)dealloc;
+- (id)initWithFeature:(id)arg1 value:(unsigned long long)arg2;
 
 @end
 

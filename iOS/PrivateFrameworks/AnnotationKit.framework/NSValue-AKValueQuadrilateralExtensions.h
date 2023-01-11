@@ -8,6 +8,14 @@
 
 @interface NSValue (AKValueQuadrilateralExtensions)
 + (id)valueWithQuadrilateral:(struct AKQuadrilateral)arg1;
++ (id)akValueWithRect:(struct CGRect)arg1;
++ (id)akValueWithSize:(struct CGSize)arg1;
++ (id)akValueWithPoint:(struct CGPoint)arg1;
++ (id)valueWithCGRect:(struct CGRect)arg1;
 @property(readonly) struct AKQuadrilateral quadrilateralValue;
+- (struct CGRect)akRectValue;
+- (struct CGSize)akSizeValue;
+- (struct CGPoint)akPointValue;
+- (struct CGRect)CGRectValue;
 @end
 

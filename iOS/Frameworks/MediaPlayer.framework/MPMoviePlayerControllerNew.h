@@ -9,7 +9,7 @@
 #import <MediaPlayer/MPMediaPlayback-Protocol.h>
 #import <MediaPlayer/MPMovieViewDelegate-Protocol.h>
 
-@class MPAVController, MPInlineVideoController, MPMovieAccessLog, MPMovieErrorLog, MPMoviePlayerController, MPMovieView, MPNowPlayingObserver, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, UIWindow;
+@class MPAVController, MPInlineVideoController, MPMovieAccessLog, MPMovieErrorLog, MPMoviePlayerController, MPMovieView, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, UIWindow;
 @protocol MPMoviePlayerControllerDelegate;
 
 @interface MPMoviePlayerControllerNew : NSObject <MPMovieViewDelegate, MPMediaPlayback>
@@ -25,7 +25,6 @@
     _Bool _moviesNeedReload;
     long long _movieSourceType;
     MPMovieView *_movieView;
-    MPNowPlayingObserver *_nowPlayingObserver;
     NSError *_playbackError;
     MPAVController *_player;
     NSMutableArray *_queuedThumbnailRequests;
@@ -58,7 +57,6 @@
     _Bool _didResignActive;
     _Bool _canShowControlsOverlayBeforeResignedActive;
     double _timeWhenResignedActive;
-    unsigned long long _movieIndexWhenResignedActive;
     MPMovieAccessLog *_cachedAccessLog;
     MPMovieErrorLog *_cachedErrorLog;
 }
@@ -85,8 +83,6 @@
 - (void)_resignActive;
 - (void)_ensureActive;
 - (void)_setMoviePlayer:(id)arg1;
-- (id)_nowPlayingMovie;
-- (void)_setNowPlayingMovie:(id)arg1;
 - (id)_movieOptions;
 - (id)_movies;
 - (void)_setMovies:(id)arg1;
@@ -96,7 +92,7 @@
 - (void)_cacheAccessAndErrorLogs;
 - (_Bool)useApplicationAudioSession;
 - (void)setUseApplicationAudioSession:(_Bool)arg1;
-- (void)setMovieControlMode:(int)arg1;
+- (void)setMovieControlMode:(long long)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (unsigned int)_hostedWindowContextID;
 - (id)_hostedWindow;

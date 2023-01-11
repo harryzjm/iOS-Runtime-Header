@@ -15,11 +15,13 @@
 
 + (_Bool)dismissAutomaticallyAfterExtensionCompletion;
 + (id)authenticateExtension;
+- (void)applicationWillTerminate:(id)arg1;
 - (void)extensionIsCanceling;
 - (void)extensionIsFinishing;
 - (void)messageFromExtension:(id)arg1;
 @property(nonatomic) GKHostedAuthenticateViewController *delegate; // @synthesize delegate=_delegateWeak;
 - (void)dealloc;
+- (void)viewDidLoad;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

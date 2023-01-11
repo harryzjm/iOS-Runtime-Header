@@ -23,10 +23,12 @@
     _Bool _useLegacySerializationFormat;
     NSString *_aggregationIdentifier;
     double _subactivitiesDuration;
+    _Bool _isTopLevel;
 }
 
 + (_Bool)_shouldSaveAttachmentWithName:(id)arg1 lifetime:(long long)arg2;
 + (_Bool)supportsSecureCoding;
+@property _Bool isTopLevel; // @synthesize isTopLevel=_isTopLevel;
 @property(readonly, getter=isValid) _Bool valid; // @synthesize valid=_valid;
 @property(readonly) double subactivitiesDuration; // @synthesize subactivitiesDuration=_subactivitiesDuration;
 @property(copy) NSString *aggregationIdentifier; // @synthesize aggregationIdentifier=_aggregationIdentifier;
@@ -61,8 +63,7 @@
 - (id)initWithCoder:(id)arg1;
 @property(readonly, copy) NSString *name;
 - (id)init;
-- (void)attachDiagnosticsIncludingLocalizableStringsData:(_Bool)arg1;
-- (void)attachAutomaticScreenshot;
+- (void)attachAutomaticScreenshotForDevice:(id)arg1;
 
 // Remaining properties
 @property(readonly) unsigned long long hash;

@@ -63,7 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)updateSelectionRects;
 - (void)removeFromSuperview;
 - (void)animateSloppyReleaseOfHandleInText:(id)arg1 withMagnifier:(id)arg2;
-- (void)shiftWebRangeSelectionAnimationDidStop:(id)arg1 finished:(id)arg2;
+- (void)shiftWebRangeSelectionAnimationDidStop;
 - (void)stopAnyAutoscrolling;
 - (void)autoscrollTimerFired:(id)arg1;
 - (void)_subscribeToScrollNotificationsIfNecessary:(id)arg1;

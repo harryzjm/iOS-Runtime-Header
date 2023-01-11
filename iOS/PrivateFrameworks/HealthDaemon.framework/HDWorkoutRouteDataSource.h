@@ -20,6 +20,7 @@
     HKDataFlowLink *_workoutDataFlowLink;
     HKUnit *_elevationUnit;
     HKQuantity *_currentElevation;
+    HKQuantity *_latestAltitude;
     NSUUID *_workoutUUID;
     NSObject<OS_dispatch_queue> *_queue;
 }
@@ -41,6 +42,7 @@
 - (void)_queue_setupLocationDataCollector;
 - (id)_workoutBuilderServer;
 - (void)_queue_recoverCurrentElevation;
+- (void)altitudeUpdated:(double)arg1;
 - (void)workoutRouteUpdated:(id)arg1;
 - (void)elevationUpdated:(unsigned long long)arg1;
 - (void)workoutSession:(id)arg1 didFailWithError:(id)arg2;
@@ -48,7 +50,7 @@
 - (void)workoutSession:(id)arg1 didChangeToState:(long long)arg2 fromState:(long long)arg3 date:(id)arg4;
 - (void)remote_setupWithSessionIdentifier:(id)arg1;
 @property(readonly, copy) NSString *description;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

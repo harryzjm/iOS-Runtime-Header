@@ -16,7 +16,9 @@ __attribute__((visibility("hidden")))
     struct unordered_map<TSU::UUIDData<TSP::UUIDData>, TSUPointerKeyDictionary *, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<std::__1::pair<const TSU::UUIDData<TSP::UUIDData>, TSUPointerKeyDictionary *>>> _stringsByTrackedReferenceByTable;
     NSObject<OS_dispatch_queue> *_nrmQueue;
     TSCEReferenceTracker *_referenceTracker;
+    TSCEReferenceTracker *_weakReferenceTracker;
     TSCECalculationEngine *_calcEngine;
+    _Bool _markIndirectsDirtyInWritePhase;
 }
 
 @property __weak TSCECalculationEngine *calcEngine; // @synthesize calcEngine=_calcEngine;
@@ -49,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)beginTrackingNameInCell:(struct TSUCellCoord)arg1 ofResolver:(struct TSCETableResolver *)arg2 addingTrackedReferencesTo:(id)arg3;
 - (void)beginTrackingNamesInRange:(struct TSCERangeCoordinate)arg1 ofResolver:(struct TSCETableResolver *)arg2 addingTrackedReferencesTo:(id)arg3;
 - (id)beginTrackingNamesInTable:(const UUIDData_5fbc143e *)arg1 limitedToRange:(struct TSCERangeCoordinate)arg2;
+- (void)endOfEvaluationWritePhase;
 - (void)headerCellContentWasModified:(id)arg1;
 - (UUIDData_5fbc143e)formulaOwnerUID;
 - (void)setCalculationEngine:(id)arg1;

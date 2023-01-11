@@ -5,11 +5,13 @@
 //
 
 #import <TVMLKit/IKAppKeyboardDelegate-Protocol.h>
+#import <TVMLKit/TVAppTemplateImpressionable-Protocol.h>
 #import <TVMLKit/UISearchResultsUpdating-Protocol.h>
+#import <TVMLKit/_TVStackCollectionViewControllerDelegate-Protocol.h>
 
-@class IKAppKeyboard, IKTextFieldElement, IKViewElement, NSString, UISearchController, UIView, _TVStackCollectionViewController;
+@class IKAppKeyboard, IKTextFieldElement, IKViewElement, NSString, UIActivityIndicatorView, UISearchController, UIView, _TVStackCollectionViewController;
 
-@interface _TVSearchTemplateController_iOS <UISearchResultsUpdating, IKAppKeyboardDelegate>
+@interface _TVSearchTemplateController_iOS <UISearchResultsUpdating, IKAppKeyboardDelegate, _TVStackCollectionViewControllerDelegate, TVAppTemplateImpressionable>
 {
     UIView *_nonResultsView;
     _TVStackCollectionViewController *_resultsViewController;
@@ -19,11 +21,20 @@
     IKViewElement *_nonResultsElement;
     IKViewElement *_collectionListElement;
     struct CGRect _keyboardFrame;
+    double _impressionThreshold;
+    UIActivityIndicatorView *_spinner;
+    UIView *_originalSearchFieldRightView;
+    long long _originalSearchFieldRightViewMode;
     IKViewElement *_viewElement;
 }
 
 @property(readonly, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 - (void).cxx_destruct;
+- (id)impressionableElementsContainedInDocument:(id)arg1;
+- (void)_recordImpressionsForVisibleView;
+- (void)_cancelImpressionsUpdate;
+- (void)_updateImpressions;
+- (void)stackCollectionViewController:(id)arg1 scrollViewDidScroll:(id)arg2;
 - (id)_sanitizedText;
 - (_Bool)_isAtWordEnd;
 - (void)_keyboardDidChangeFrame:(id)arg1;
@@ -34,6 +45,7 @@
 - (void)updateSearchResultsForSearchController:(id)arg1;
 - (void)updateNavigationItem:(id)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)loadView;
 - (void)updateWithViewElement:(id)arg1;
 - (void)dealloc;

@@ -8,15 +8,16 @@
 
 #import <IntentsCore/INCExtensionProxy-Protocol.h>
 
-@class INCExtensionConnection, NSExtension;
-@protocol INExtensionContextVending;
+@class INCExtensionConnection, NSExtension, NSValue;
+@protocol _INExtensionContextVending;
 
 @interface INCExtensionProxy : NSObject <INCExtensionProxy>
 {
     _Bool _shouldCache;
     INCExtensionConnection *_connection;
     NSExtension *_extension;
-    id <INExtensionContextVending> _vendorRemote;
+    id <_INExtensionContextVending> _vendorRemote;
+    NSValue *_auditTokenValue;
     CDUnknownBlockType _imageCachingHandler;
     CDUnknownBlockType _imageProcessingHandler;
     CDUnknownBlockType _responseHandler;
@@ -29,18 +30,27 @@
 @property(copy, nonatomic) CDUnknownBlockType imageProcessingHandler; // @synthesize imageProcessingHandler=_imageProcessingHandler;
 @property(copy, nonatomic) CDUnknownBlockType imageCachingHandler; // @synthesize imageCachingHandler=_imageCachingHandler;
 @property(nonatomic) _Bool shouldCache; // @synthesize shouldCache=_shouldCache;
-@property(readonly, nonatomic) id <INExtensionContextVending> _vendorRemote; // @synthesize _vendorRemote;
+@property(readonly, nonatomic) NSValue *_auditTokenValue; // @synthesize _auditTokenValue;
+@property(readonly, nonatomic) id <_INExtensionContextVending> _vendorRemote; // @synthesize _vendorRemote;
 @property(readonly, nonatomic) NSExtension *_extension; // @synthesize _extension;
 @property(readonly, nonatomic) INCExtensionConnection *_connection; // @synthesize _connection;
 - (void).cxx_destruct;
+- (void)_issueSandboxExtensionsForFileURLsIfNeededToIntent:(id)arg1;
 - (_Bool)_isIntentRestrictedWhileProtectedDataUnavailableWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_processIntent:(id)arg1 intentResponse:(id)arg2 withCacheItems:(id)arg3;
 @property(readonly, nonatomic, getter=_isExtensionBeingDebugged) _Bool _extensionBeingDebugged;
-- (id)_initWithConnection:(id)arg1 extension:(id)arg2 vendorRemote:(id)arg3;
+- (_Bool)_extensionProcessHasEntitlement:(id)arg1;
+- (_Bool)_shouldForwardToAppWithIntent:(id)arg1 intentResponse:(id)arg2;
+- (id)_initWithConnection:(id)arg1 extension:(id)arg2 vendorRemote:(id)arg3 auditTokenValue:(id)arg4;
+- (void)stopSendingUpdates;
+- (void)startSendingUpdatesToObserver:(id)arg1;
 - (void)handleIntentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)confirmIntentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)resolveIntentSlotKeyPaths:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)resolveIntentSlotKeyPath:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getDefaultValueForParameterNamed:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getOptionsForParameterNamed:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+@property(nonatomic) _Bool shouldResetRequestAfterHandle;
 
 @end
 

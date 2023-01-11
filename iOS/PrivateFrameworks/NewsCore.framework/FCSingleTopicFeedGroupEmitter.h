@@ -8,7 +8,7 @@
 {
 }
 
-- (id)groupEmitterIdentifier;
++ (id)groupEmitterIdentifier;
 - (Class)classForGroupEmittingOperation;
 
 @end

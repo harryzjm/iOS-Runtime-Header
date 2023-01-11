@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SAIntentGroupProtobufMessage;
+@class NSString, SAIntentGroupProtobufMessage;
 
 @interface SAIntentGroupLaunchAppWithIntent
 {
@@ -13,6 +13,8 @@
 + (id)launchAppWithIntentWithDictionary:(id)arg1 context:(id)arg2;
 + (id)launchAppWithIntent;
 - (_Bool)requiresResponse;
+@property(copy, nonatomic) NSString *jsonEncodedHandledIntentResponse;
+@property(copy, nonatomic) NSString *jsonEncodedHandledIntent;
 @property(retain, nonatomic) SAIntentGroupProtobufMessage *handledIntentResponse;
 @property(retain, nonatomic) SAIntentGroupProtobufMessage *handledIntent;
 - (id)encodedClassName;

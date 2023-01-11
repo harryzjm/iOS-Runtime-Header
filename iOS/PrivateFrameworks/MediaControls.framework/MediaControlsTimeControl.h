@@ -6,11 +6,13 @@
 
 #import <UIKit/UIControl.h>
 
+#import <MediaControls/MTVisualStylingProviderObservingPrivate-Protocol.h>
 #import <MediaControls/UIGestureRecognizerDelegate-Protocol.h>
 
-@class AVTimeFormatter, CADisplayLink, MPCPlayerResponse, NSArray, NSLayoutConstraint, NSString, UIImageView, UILabel, UILayoutGuide, UIView;
+@class AVTimeFormatter, CADisplayLink, CAGradientLayer, MPCPlayerResponse, MPCPlayerResponseItem, MTVisualStylingProvider, NSArray, NSLayoutConstraint, NSString, UILabel, UILayoutGuide, UIView;
 
-@interface MediaControlsTimeControl : UIControl <UIGestureRecognizerDelegate>
+__attribute__((visibility("hidden")))
+@interface MediaControlsTimeControl : UIControl <MTVisualStylingProviderObservingPrivate, UIGestureRecognizerDelegate>
 {
     NSArray *_defaultConstraints;
     NSArray *_trackingConstraints;
@@ -30,13 +32,16 @@
     _Bool _currentlyTracking;
     long long _style;
     MPCPlayerResponse *_response;
+    MPCPlayerResponseItem *_responseItem;
+    MTVisualStylingProvider *_visualStylingProvider;
     UIView *_elapsedTrack;
     UIView *_remainingTrack;
     UIView *_knobView;
     UILabel *_elapsedTimeLabel;
     UILabel *_remainingTimeLabel;
     UILabel *_liveLabel;
-    UIImageView *_liveBackground;
+    UIView *_liveBackground;
+    CAGradientLayer *_liveBackgroundMask;
     UILayoutGuide *_trackLayoutGuide;
     double _sliderValue;
     CDStruct_fce57115 _durationSnapshot;
@@ -45,23 +50,29 @@
 @property(nonatomic, getter=isCurrentlyTracking) _Bool currentlyTracking; // @synthesize currentlyTracking=_currentlyTracking;
 @property(nonatomic) double sliderValue; // @synthesize sliderValue=_sliderValue;
 @property(retain, nonatomic) UILayoutGuide *trackLayoutGuide; // @synthesize trackLayoutGuide=_trackLayoutGuide;
-@property(retain, nonatomic) UIImageView *liveBackground; // @synthesize liveBackground=_liveBackground;
+@property(retain, nonatomic) CAGradientLayer *liveBackgroundMask; // @synthesize liveBackgroundMask=_liveBackgroundMask;
+@property(retain, nonatomic) UIView *liveBackground; // @synthesize liveBackground=_liveBackground;
 @property(retain, nonatomic) UILabel *liveLabel; // @synthesize liveLabel=_liveLabel;
 @property(retain, nonatomic) UILabel *remainingTimeLabel; // @synthesize remainingTimeLabel=_remainingTimeLabel;
 @property(retain, nonatomic) UILabel *elapsedTimeLabel; // @synthesize elapsedTimeLabel=_elapsedTimeLabel;
 @property(retain, nonatomic) UIView *knobView; // @synthesize knobView=_knobView;
 @property(retain, nonatomic) UIView *remainingTrack; // @synthesize remainingTrack=_remainingTrack;
 @property(retain, nonatomic) UIView *elapsedTrack; // @synthesize elapsedTrack=_elapsedTrack;
+@property(retain, nonatomic) MTVisualStylingProvider *visualStylingProvider; // @synthesize visualStylingProvider=_visualStylingProvider;
 @property(nonatomic, getter=isTimeControlOnScreen) _Bool timeControlOnScreen; // @synthesize timeControlOnScreen=_timeControlOnScreen;
 @property(nonatomic) CDStruct_fce57115 durationSnapshot; // @synthesize durationSnapshot=_durationSnapshot;
+@property(retain, nonatomic) MPCPlayerResponseItem *responseItem; // @synthesize responseItem=_responseItem;
 @property(retain, nonatomic) MPCPlayerResponse *response; // @synthesize response=_response;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(nonatomic, getter=isEmpty) _Bool empty; // @synthesize empty=_empty;
 @property(nonatomic, getter=isTransitioning) _Bool transitioning; // @synthesize transitioning=_transitioning;
 - (void).cxx_destruct;
+- (void)providedStylesDidChangeForProvider:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateBackgroundMask;
 - (void)invalidateDisplayLinkIfNeeded;
 - (void)createDisplayLinkIfNeeded;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (void)_updateDisplayLinkPause;
 - (void)_updateTimeControl;
@@ -77,6 +88,7 @@
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (_Bool)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (void)tintColorDidChange;
 - (void)layoutSubviews;
 - (void)viewDidMoveToSuperview;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -20,8 +20,6 @@
     UITraitCollection *_explicitTraitCollection;
 }
 
-+ (void)_applyGlobalSimulatedMetricsForScreen:(id)arg1 orientation:(id)arg2 statusBarHeight:(id)arg3 userInterfaceStyle:(id)arg4;
-+ (void)applyDefaultGlobalSimulatedMetrics;
 @property(nonatomic) _Bool allowStatusBar; // @synthesize allowStatusBar=_allowStatusBar;
 @property(copy, nonatomic) UITraitCollection *explicitTraitCollection; // @synthesize explicitTraitCollection=_explicitTraitCollection;
 @property(copy, nonatomic) NSNumber *explicitStatusBarShouldBeHidden; // @synthesize explicitStatusBarShouldBeHidden=_explicitStatusBarShouldBeHidden;
@@ -30,9 +28,9 @@
 @property(retain, nonatomic) UIWindow *statusBarWindow; // @synthesize statusBarWindow=_statusBarWindow;
 @property(retain, nonatomic) UIWindow *window; // @synthesize window=_window;
 - (void).cxx_destruct;
-- (void)_oldApplyGlobalAndAdditionalSimulatedMetricsForTool:(id)arg1 during:(CDUnknownBlockType)arg2;
 - (void)applyStatusBarOverrideDuring:(CDUnknownBlockType)arg1;
 - (void)applyGlobalAndAdditionalSimulatedMetricsForTool:(id)arg1 during:(CDUnknownBlockType)arg2;
+- (double)simulatorScreenScale;
 - (void)_setupBackgroundWindowForTool:(id)arg1;
 - (void)addWindowCleanupBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) NSArray *windows;

@@ -17,13 +17,20 @@
     NSLayoutConstraint *_leftMarginConstraint;
     NSLayoutConstraint *_rightMarginConstraint;
     NSLayoutConstraint *_labelBaselineConstraint;
+    NSLayoutConstraint *_valueBaselineConstraint;
+    NSLayoutConstraint *_labelValueRelationConstraint;
+    NSLayoutConstraint *_valueBaselineLargeTextConstraint;
+    NSLayoutConstraint *_labelValueRelationLargeTextConstraint;
+    NSLayoutConstraint *_rightMarginLargeTextConstraint;
     _Bool _isPendingTotal;
     _Bool _processing;
+    _Bool _showsBoldValueText;
     PKPaymentAuthorizationLayout *_layout;
     long long _style;
     long long _labelNumberOfLines;
 }
 
+@property(nonatomic) _Bool showsBoldValueText; // @synthesize showsBoldValueText=_showsBoldValueText;
 @property(nonatomic) long long labelNumberOfLines; // @synthesize labelNumberOfLines=_labelNumberOfLines;
 @property(nonatomic, getter=isProcessing) _Bool processing; // @synthesize processing=_processing;
 @property(nonatomic) _Bool isPendingTotal; // @synthesize isPendingTotal=_isPendingTotal;

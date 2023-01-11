@@ -20,7 +20,6 @@
 - (id)description;
 - (id)_displayMode;
 @property(readonly, nonatomic) double pixelAspectRatio;
-- (id)valueForKey:(id)arg1;
 @property(readonly, nonatomic) struct CGSize size;
 - (struct CGSize)_sizeWithLevel:(unsigned long long)arg1;
 - (id)initWithDisplayMode:(id)arg1 mainScreen:(_Bool)arg2;

@@ -11,9 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)loadView;
+- (void)_createImageViews;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_axAnnotateView;
+- (void)_axAnnotateImageViews;
+- (id)_axPhotoViews;
 
 @end
 

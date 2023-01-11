@@ -9,6 +9,7 @@
 @class NSString, SKUIAttributedStringLayout, SKUIButtonViewElement;
 @protocol SKUIToggleButtonDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SKUIToggleButton <SKUIToggleItemStateCenterObserver>
 {
     _Bool _autoIncrement;

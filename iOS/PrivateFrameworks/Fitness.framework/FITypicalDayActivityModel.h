@@ -13,7 +13,7 @@
 {
     NSDateInterval *_interval;
     HKActivitySummary *_queue_currentActivitySummary;
-    FISimpleHistogram *_queue_energyHistogram;
+    FISimpleHistogram *_queue_moveHistogram;
     FISimpleHistogram *_queue_exerciseHistogram;
     NSMutableArray *_queue_bucketDates;
     _Bool _activitySummaryLoaded;
@@ -24,20 +24,22 @@
     id <FITypicalDayActivityModelDelegate> _delegate;
 }
 
++ (id)_emptySimpleHistogram;
 @property(nonatomic) __weak id <FITypicalDayActivityModelDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (long long)_bucketIndexForDate:(id)arg1 startOfDay:(id)arg2 bucketDates:(id)arg3;
 - (id)_bucketDateForIndex:(unsigned long long)arg1 startOfDay:(id)arg2;
-- (id)_queue_fetchActivitySummariesOrderedByCacheIndexWithCalendar:(id)arg1;
+- (_Bool)_queue_enumerateActivitySummariesOrderedByCacheIndexWithCalendar:(id)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_queue_populateHistogramsAndOffWristDateForToday;
 @property(readonly, nonatomic) long long totalActiveDays;
-- (id)_queue_calculateProjectedOffWristDateFromActivitySummaries:(id)arg1;
-- (id)_queue_createHistogramForGoalType:(long long)arg1 activitySummaries:(id)arg2;
+- (id)_queue_calculateProjectedOffWristDateFromHistogram:(id)arg1 activeDays:(long long)arg2;
+- (void)_queue_updateProjectedOffWristDateHistogram:(id)arg1 activitySummary:(id)arg2 activeDays:(long long *)arg3;
+- (void)_queue_updateHistogram:(id)arg1 goalType:(long long)arg2 activitySummary:(id)arg3;
 - (void)_waitUntilActivitySummaryLoaded;
 - (void)handleUpdatedCurrentActivitySummary:(id)arg1;
 - (double)projectedDayDuration;
-- (id)firstOnWristDateToday;
-- (id)projectedOffWristDateToday;
+- (id)userStartOfDay;
+- (id)userEndOfDay;
 - (double)_queue_briskWalkTimeToCompleteMoveGoalWithDateOfBirth:(id)arg1 biologicalSex:(long long)arg2 height:(id)arg3 weight:(id)arg4 wheelchairUse:(long long)arg5;
 - (double)briskWalkTimeToCompleteMoveGoalWithAcitivitySettingsController:(id)arg1;
 - (_Bool)shouldSuggestWalkWithActivitySettingsController:(id)arg1;
@@ -50,7 +52,7 @@
 - (double)currentMoveGoalPercentage;
 - (_Bool)willCompleteStandGoalOrItIsTooLateWithBufferPercentage:(double)arg1;
 - (_Bool)willCompleteExerciseGoalWithBufferPercentage:(double)arg1;
-- (_Bool)willCompleteEnergyBurnedGoalWithBufferPercentage:(double)arg1;
+- (_Bool)willCompleteMoveGoalWithBufferPercentage:(double)arg1;
 - (_Bool)_willCompleteGoalWithType:(long long)arg1 bufferPercentage:(double)arg2;
 - (double)valueOfTypicalDayMoveEarnedByNow;
 - (double)valueOfTypicalDayBriskMinutesEarnedByNow;

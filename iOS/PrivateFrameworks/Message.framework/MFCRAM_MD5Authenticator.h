@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface MFCRAM_MD5Authenticator
+#import <EmailCore/ECSASLAuthenticator.h>
+
+@interface MFCRAM_MD5Authenticator : ECSASLAuthenticator
 {
 }
 

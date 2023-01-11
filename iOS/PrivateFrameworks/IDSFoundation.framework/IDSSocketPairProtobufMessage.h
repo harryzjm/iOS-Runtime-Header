@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <IDSFoundation/IDSSocketPairMessage-Protocol.h>
+
 @class NSData, NSDate, NSString;
 
-@interface IDSSocketPairProtobufMessage
+@interface IDSSocketPairProtobufMessage <IDSSocketPairMessage>
 {
     unsigned long long _payloadOffset;
     unsigned long long _payloadLength;

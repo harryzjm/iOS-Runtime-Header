@@ -26,6 +26,7 @@
 @property(readonly, nonatomic) struct CGRect toolbarRect; // @synthesize toolbarRect=_toolbarRect;
 @property(readonly, nonatomic) struct CGRect navigationBarRect; // @synthesize navigationBarRect=_navigationBarRect;
 @property(readonly, nonatomic) struct CGRect sceneRect; // @synthesize sceneRect=_sceneRect;
+@property(readonly, copy) NSString *description;
 - (_Bool)isEqualToEditorMetrics:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly) unsigned long long hash;
@@ -35,7 +36,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) Class superclass;
 
 @end

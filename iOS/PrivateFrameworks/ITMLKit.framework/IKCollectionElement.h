@@ -4,14 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IKHeaderElement, NSArray;
+@class IKAppBrowserBridge, IKHeaderElement, NSArray;
 
 @interface IKCollectionElement
 {
     NSArray *_sections;
+    IKAppBrowserBridge *_browserBridge;
 }
 
++ (id)supportedFeaturesForElementName:(id)arg1;
+@property(readonly, nonatomic) IKAppBrowserBridge *browserBridge; // @synthesize browserBridge=_browserBridge;
 - (void).cxx_destruct;
+- (id)initWithDOMElement:(id)arg1 parent:(id)arg2 elementFactory:(id)arg3;
 - (void)appDocumentDidMarkStylesDirty;
 @property(readonly, retain, nonatomic) NSArray *sections;
 @property(readonly, retain, nonatomic) IKHeaderElement *header;

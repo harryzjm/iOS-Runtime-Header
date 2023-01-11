@@ -36,8 +36,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) VNMetalContext *metalContext; // @synthesize metalContext=_metalContext;
 @property(readonly, nonatomic) unsigned long long requestRevision; // @synthesize requestRevision=_requestRevision;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
-@property(readonly, copy, nonatomic) NSDictionary *configurationOptions; // @synthesize configurationOptions=_configurationOptions;
+@property(readonly, copy) NSDictionary *configurationOptions; // @synthesize configurationOptions=_configurationOptions;
 - (void).cxx_destruct;
+- (void)updateConfigurationOptionsWithObject:(id)arg1 forKey:(id)arg2;
 - (id)validatedProcessingDeviceInOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)supportsProcessingDevice:(id)arg1;
 - (id)requiredCancellerInOptions:(id)arg1 error:(id *)arg2;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 - (_Bool)currentQueueIsSynchronizationQueue;
 - (id)processInSynchronizationQueueUsingQualityOfServiceClass:(unsigned int)arg1 options:(id)arg2 regionOfInterest:(struct CGRect)arg3 warningRecorder:(id)arg4 error:(id *)arg5;
+- (_Bool)warmUpWithOptions:(id)arg1 error:(id *)arg2;
 - (_Bool)useGPU;
 - (_Bool)completeInitializationAndReturnError:(id *)arg1;
 - (id)initWithConfigurationOptions:(id)arg1;

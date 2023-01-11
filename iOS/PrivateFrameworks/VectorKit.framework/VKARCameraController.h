@@ -18,13 +18,13 @@ __attribute__((visibility("hidden")))
     double _maxZoomLevel;
     double _height;
     double _altitudeOffset;
-    float _fovy;
-    RigidTransform_271c3a39 _offsetTransform;
+    Unit_3d259e8a _fovy;
+    RigidTransform_b9386d13 _offsetTransform;
     CameraFrame_406dbd31 _cameraFrame;
-    RigidTransform_271c3a39 _baseTransform;
-    RigidTransform_271c3a39 _arTransform;
-    RigidTransform_271c3a39 _currentARTransform;
-    RigidTransform_271c3a39 _lastARTransform;
+    RigidTransform_b9386d13 _baseTransform;
+    RigidTransform_b9386d13 _arTransform;
+    RigidTransform_b9386d13 _currentARTransform;
+    RigidTransform_b9386d13 _lastARTransform;
     Quaternion_febf9140 _arOrientation;
     VKTimedAnimation *_transitionAnimation;
     long long _interfaceOrientation;
@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) Unit_57582783 fieldOfView; // @synthesize fieldOfView=_fieldOfView;
-@property(nonatomic) RigidTransform_271c3a39 offsetTransform; // @synthesize offsetTransform=_offsetTransform;
+@property(nonatomic) RigidTransform_b9386d13 offsetTransform; // @synthesize offsetTransform=_offsetTransform;
 @property(nonatomic) _Bool overrideARFieldOfView; // @synthesize overrideARFieldOfView=_overrideARFieldOfView;
 @property(nonatomic) struct MapEngine *mapEngine; // @synthesize mapEngine=_mapEngine;
 @property(nonatomic) struct GlobeView *globeView; // @synthesize globeView=_globeView;
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)arSessionWasInterrupted:(unsigned long long)arg1;
 - (void)updateCameraFrameFromARTransform;
 @property(readonly, nonatomic) float heightScale;
-- (RigidTransform_271c3a39)arCameraTransform;
+- (RigidTransform_b9386d13)arCameraTransform;
 - (void)trasitionToARModeFromCameraFrame:(const CameraFrame_406dbd31 *)arg1 withDuration:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (CameraFrame_406dbd31)cameraFrame;
 - (void)trasitionToARModeAtCoordinate:(CDStruct_c3b9c2ee)arg1 withDuration:(double)arg2 completion:(CDUnknownBlockType)arg3;
@@ -67,7 +67,7 @@ __attribute__((visibility("hidden")))
 - (double)distanceFromCenterCoordinate;
 - (CDStruct_c3b9c2ee)centerCoordinate;
 - (id)mapRegion;
-- (Matrix_6e1d3589)_intersectAndResolveWorldCollision:(const RigidTransform_271c3a39 *)arg1;
+- (Matrix_6e1d3589)_intersectAndResolveWorldCollision:(const RigidTransform_b9386d13 *)arg1;
 - (void)setYaw:(double)arg1 animated:(_Bool)arg2;
 - (double)presentationYaw;
 - (_Bool)isFullyPitched;
@@ -78,7 +78,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)restoreViewportFromInfo:(id)arg1;
 - (id)viewportInfo;
 - (void)dealloc;
-- (id)initWithTaskContext:(shared_ptr_e963992e)arg1;
+- (id)initWithTaskContext:(shared_ptr_e963992e)arg1 mapDataAccess:(struct MapDataAccess *)arg2 animationRunner:(struct AnimationRunner *)arg3 runLoopController:(struct RunLoopController *)arg4 cameraDelegate:(id)arg5;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -11,7 +11,7 @@
 + (id)inferredRepIdentifiersForImageReps:(id)arg1;
 + (id)inferredRepIdentifiersGroupedByItemNameForPaths:(id)arg1;
 + (Class)assetRepClass;
-+ (id)inferredRepIdentifierForPath:(id)arg1 slotComponentTransformer:(CDUnknownBlockType)arg2;
++ (id)inferredRepIdentifierForPath:(id)arg1;
 + (id)_possibleSizesForPixelSize:(struct CGSize)arg1 fileName:(id)arg2;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (Class)slotClass;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, NSTimeZone;
 
 @interface PHAssetOriginalMetadataProperties
 {
@@ -14,10 +14,14 @@
     long long _originalWidth;
     NSString *_originalFilename;
     unsigned long long _originalFilesize;
+    NSTimeZone *_timeZone;
+    long long _timeZoneOffset;
 }
 
 + (id)propertiesToFetch;
 + (id)propertySetName;
+@property(readonly, nonatomic) long long timeZoneOffset; // @synthesize timeZoneOffset=_timeZoneOffset;
+@property(readonly, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property(readonly, nonatomic) unsigned long long originalFilesize; // @synthesize originalFilesize=_originalFilesize;
 @property(readonly, nonatomic) short originalExifOrientation; // @synthesize originalExifOrientation=_originalExifOrientation;
 @property(readonly, nonatomic) NSString *originalFilename; // @synthesize originalFilename=_originalFilename;

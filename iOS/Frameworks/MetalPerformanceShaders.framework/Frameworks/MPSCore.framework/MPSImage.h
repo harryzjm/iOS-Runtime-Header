@@ -16,6 +16,7 @@
     unsigned long long _height;
     unsigned long long _featureChannels;
     unsigned long long _featureChannelsLayout;
+    unsigned long long _featureChannelFormat;
     unsigned long long _numberOfImages;
     unsigned long long _textureType;
     NSString *_label;
@@ -26,6 +27,7 @@
 }
 
 + (id)defaultAllocator;
+@property(readonly, nonatomic) unsigned long long featureChannelFormat; // @synthesize featureChannelFormat=_featureChannelFormat;
 @property(readonly, retain, nonatomic) MPSImage *parent; // @synthesize parent=_parent;
 @property(readonly, nonatomic) unsigned long long featureChannelsLayout; // @synthesize featureChannelsLayout=_featureChannelsLayout;
 @property(copy) NSString *label; // @synthesize label=_label;
@@ -40,6 +42,7 @@
 - (void)writeBytes:(const void *)arg1 dataLayout:(unsigned long long)arg2 imageIndex:(unsigned long long)arg3;
 - (void)readBytes:(void *)arg1 dataLayout:(unsigned long long)arg2 imageIndex:(unsigned long long)arg3;
 - (void)writeBytes:(const void *)arg1 dataLayout:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3 region:(CDStruct_4c83c94d)arg4 featureChannelInfo:(CDStruct_328d5c87)arg5 imageIndex:(unsigned long long)arg6;
+- (void)writeBytes:(const void *)arg1 dataLayout:(unsigned long long)arg2 bytesPerColumn:(unsigned long long)arg3 bytesPerRow:(unsigned long long)arg4 bytesPerImage:(unsigned long long)arg5 region:(CDStruct_4c83c94d)arg6 featureChannelInfo:(CDStruct_328d5c87)arg7 imageIndex:(unsigned long long)arg8;
 - (void)writeBytes:(const void *)arg1 dataLayout:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3 bytesPerImage:(unsigned long long)arg4 region:(CDStruct_4c83c94d)arg5 featureChannelInfo:(CDStruct_328d5c87)arg6 imageIndex:(unsigned long long)arg7;
 - (void)readBytes:(void *)arg1 dataLayout:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3 region:(CDStruct_4c83c94d)arg4 featureChannelInfo:(CDStruct_328d5c87)arg5 imageIndex:(unsigned long long)arg6;
 - (void)readBytes:(void *)arg1 dataLayout:(unsigned long long)arg2 bytesPerRow:(unsigned long long)arg3 bytesPerImage:(unsigned long long)arg4 region:(CDStruct_4c83c94d)arg5 featureChannelInfo:(CDStruct_328d5c87)arg6 imageIndex:(unsigned long long)arg7;
@@ -54,7 +57,7 @@
 - (id)initWithDevice:(id)arg1 imageDescriptor:(id)arg2;
 - (id)initWithTexture:(id)arg1 featureChannels:(unsigned long long)arg2 featureChannelsLayout:(unsigned long long)arg3;
 - (id)initWithTexture:(id)arg1 featureChannels:(unsigned long long)arg2;
-- (id)initWithDescriptor:(id)arg1 featureChannels:(unsigned long long)arg2 featureChannelsLayout:(unsigned long long)arg3 onDevice:(id)arg4;
+- (id)initWithDescriptor:(id)arg1 featureChannels:(unsigned long long)arg2 featureChannelsLayout:(unsigned long long)arg3 featureChannelFormat:(unsigned long long)arg4 onDevice:(id)arg5;
 - (id)init;
 - (void)dealloc;
 @property(readonly, nonatomic) unsigned long long pixelSize;

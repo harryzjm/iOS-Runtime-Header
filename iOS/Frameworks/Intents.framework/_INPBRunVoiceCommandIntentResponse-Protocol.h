@@ -6,9 +6,10 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSString, _INPBArchivedObject, _INPBDictionary;
+@class NSArray, NSString, _INPBArchivedObject, _INPBDictionary, _INPBVoiceCommandStepInfo;
 
 @protocol _INPBRunVoiceCommandIntentResponse <NSObject>
++ (Class)stepType;
 @property(readonly, nonatomic) _Bool hasVerb;
 @property(copy, nonatomic) NSString *verb;
 @property(readonly, nonatomic) _Bool hasUnderlyingIntentTitle;
@@ -19,8 +20,12 @@
 @property(retain, nonatomic) _INPBArchivedObject *underlyingIntent;
 @property(nonatomic) _Bool hasToggleState;
 @property(nonatomic) int toggleState;
+@property(readonly, nonatomic) unsigned long long stepsCount;
+@property(copy, nonatomic) NSArray *steps;
 @property(readonly, nonatomic) _Bool hasResponseTemplate;
 @property(copy, nonatomic) NSString *responseTemplate;
+@property(nonatomic) _Bool hasPrefersExecutionOnCompanion;
+@property(nonatomic) _Bool prefersExecutionOnCompanion;
 @property(readonly, nonatomic) _Bool hasParameters;
 @property(retain, nonatomic) _INPBDictionary *parameters;
 @property(readonly, nonatomic) _Bool hasLocalizedAppName;
@@ -37,6 +42,9 @@
 @property(copy, nonatomic) NSString *appBundleId;
 - (int)StringAsToggleState:(NSString *)arg1;
 - (NSString *)toggleStateAsString:(int)arg1;
+- (_INPBVoiceCommandStepInfo *)stepAtIndex:(unsigned long long)arg1;
+- (void)addStep:(_INPBVoiceCommandStepInfo *)arg1;
+- (void)clearSteps;
 - (int)StringAsIntentCategory:(NSString *)arg1;
 - (NSString *)intentCategoryAsString:(int)arg1;
 @end

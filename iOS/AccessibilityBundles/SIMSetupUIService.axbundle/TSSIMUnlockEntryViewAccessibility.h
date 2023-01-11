@@ -15,7 +15,7 @@
 - (id)initWithActionType:(long long)arg1 actionSubtype:(long long)arg2;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)accessibilityLabel;
-- (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 
 @end
 

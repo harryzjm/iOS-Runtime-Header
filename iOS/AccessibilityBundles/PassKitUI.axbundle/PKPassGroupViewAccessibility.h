@@ -18,6 +18,10 @@
 - (void)_accessibilityDismissModalGroup;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (id)accessibilityValue;
+- (_Bool)_axMoveCardDown:(id)arg1;
+- (_Bool)_axMoveCardUp:(id)arg1;
+- (_Bool)_axMoveCard:(id)arg1 up:(_Bool)arg2;
+- (id)accessibilityCustomActions;
 - (id)accessibilityLabel;
 - (id)accessibilityHint;
 - (unsigned long long)accessibilityTraits;

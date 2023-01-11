@@ -8,7 +8,7 @@
 
 #import <UIFoundation/NSTextApplicationFrameworkContextClient-Protocol.h>
 
-@class CUICatalog, CUIStyleEffectConfiguration, NSGraphicsContext, NSString;
+@class CUICatalog, CUIStyleEffectConfiguration, NSString, __NSImmutableTextStorage;
 
 @interface NSLineFragmentRenderingContext : NSObject <NSTextApplicationFrameworkContextClient>
 {
@@ -34,12 +34,11 @@
     long long _resolvedAlignment;
     CUICatalog *_catalog;
     CUIStyleEffectConfiguration *_styleEffects;
-    NSGraphicsContext *_graphicsContext;
+    __NSImmutableTextStorage *_textStorage;
 }
 
 + (void)initialize;
 + (id)allocWithZone:(struct _NSZone *)arg1;
-@property(retain, nonatomic) NSGraphicsContext *graphicsContext; // @synthesize graphicsContext=_graphicsContext;
 @property(retain, nonatomic) CUIStyleEffectConfiguration *cuiStyleEffects; // @synthesize cuiStyleEffects=_styleEffects;
 @property(retain, nonatomic) CUICatalog *cuiCatalog; // @synthesize cuiCatalog=_catalog;
 @property long long resolvedTextAlignment; // @synthesize resolvedTextAlignment=_resolvedAlignment;
@@ -55,7 +54,7 @@
 @property(nonatomic, getter=_usesSimpleTextEffects, setter=_setUsesSimpleTextEffects:) _Bool usesSimpleTextEffects;
 - (void)finalize;
 - (void)dealloc;
-- (id)initWithRuns:(struct __CFArray *)arg1 glyphOrigin:(double)arg2 lineFragmentWidth:(double)arg3 elasticWidth:(double)arg4 usesScreenFonts:(_Bool)arg5 isRTL:(_Bool)arg6;
+- (id)initWithTextStorage:(id)arg1 runs:(struct __CFArray *)arg2 glyphOrigin:(double)arg3 lineFragmentWidth:(double)arg4 elasticWidth:(double)arg5 usesScreenFonts:(_Bool)arg6 isRTL:(_Bool)arg7;
 - (oneway void)release;
 - (_Bool)_isDeallocating;
 - (_Bool)_tryRetain;

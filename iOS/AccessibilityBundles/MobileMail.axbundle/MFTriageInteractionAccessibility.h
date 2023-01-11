@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_swipeActionWithMiniIcon:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)swipeActionWithPreparation:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

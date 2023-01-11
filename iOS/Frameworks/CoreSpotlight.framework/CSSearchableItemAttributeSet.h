@@ -79,8 +79,11 @@
 @property(readonly) NSMutableDictionary *mutableAttributes; // @synthesize mutableAttributes=_mutableAttributes;
 - (id)initWithAttributes:(id)arg1;
 - (id)initWithItemContentType:(id)arg1;
+- (id)initWithMutableDictionary:(id)arg1;
 - (id)initWithAttributeSet:(id)arg1;
 - (id)init;
+- (id)calendarDelegateIdentifier;
+- (void)setCalendarDelegateIdentifier:(id)arg1;
 - (id)providerInPlaceFileTypeIdentifiers;
 - (void)setProviderInPlaceFileTypeIdentifiers:(id)arg1;
 - (id)providerFileTypeIdentifiers;
@@ -550,11 +553,14 @@
 @property(retain) NSNumber *uploadError;
 @property(retain, nonatomic, getter=isUploading) NSNumber *uploading;
 @property(retain, nonatomic, getter=isUploaded) NSNumber *uploaded;
+- (void)setIsPinned:(id)arg1;
+@property(retain, nonatomic, getter=isPinned) NSNumber *pinned;
 @property(retain, nonatomic, getter=isShared) NSNumber *shared;
 @property(retain, nonatomic, getter=isTrashed) NSNumber *trashed;
 @property(copy) NSArray *fileProviderUserInfoValues;
 @property(copy) NSArray *fileProviderUserInfoKeys;
 @property(copy) NSString *fileProviderDomaindentifier;
+@property(copy) NSString *fileProviderDomainIdentifier;
 @property(copy) NSString *lastEditorIdentifier;
 @property(copy) NSString *lastEditorName;
 @property(copy) NSString *ownerIdentifier;
@@ -566,8 +572,11 @@
 @property(retain) NSNumber *backgroundRunnable;
 @property(copy) NSString *suggestedInvocationPhrase;
 @property(copy) NSData *intentData;
+- (void)setTopic:(id)arg1;
+- (id)topic;
 @property(retain) NSNumber *isPlaceholder;
 @property(copy) NSDate *lastApplicationLaunchedDate;
+@property(retain) NSNumber *isZombie;
 - (id)containerOrder;
 - (void)setContainerOrder:(id)arg1;
 - (id)containerIdentifier;

@@ -10,25 +10,33 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBURLValue-Protocol.h>
 
-@class NSString, _INPBValueMetadata;
+@class NSData, NSString, _INPBValueMetadata;
 
 @interface _INPBURLValue : PBCodable <_INPBURLValue, NSSecureCoding, NSCopying>
 {
     struct _has;
+    _Bool __encodeLegacyGloryData;
     NSString *_absoluteString;
+    NSData *_scope;
     _INPBValueMetadata *_valueMetadata;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(retain, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
+@property(copy, nonatomic) NSData *scope; // @synthesize scope=_scope;
 @property(copy, nonatomic) NSString *absoluteString; // @synthesize absoluteString=_absoluteString;
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(readonly, nonatomic) _Bool hasValueMetadata;
+@property(readonly, nonatomic) _Bool hasScope;
 @property(readonly, nonatomic) _Bool hasAbsoluteString;
 
 // Remaining properties

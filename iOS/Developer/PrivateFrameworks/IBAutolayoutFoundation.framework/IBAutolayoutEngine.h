@@ -50,6 +50,7 @@
 - (void)withAutomaticOptimizationDisabled:(CDUnknownBlockType)arg1;
 - (_Bool)constraintIsRedundant:(id)arg1;
 - (id)candidateRedundantConstraints;
+- (id)candidateRedundantRepresentedConstraintsFromAllHostedEngineRepresentedItems;
 @property(readonly) NSArray *candidateRedundantRepresentedConstraints;
 - (void)setConstant:(double)arg1 ofConstraint:(id)arg2;
 - (void)removeConstraint:(id)arg1;
@@ -84,6 +85,8 @@
 @property(readonly) Class spacerItemClass;
 - (id)debugDescription;
 @property(readonly) NSISEngine *internalEngine;
+- (_Bool)effectiveTranslatesAutoresizingMaskIntoConstraintsForItem:(id)arg1;
+@property(readonly) _Bool strictlyUseExplicitTranslatesAutoresizingMaskIntoConstraints;
 @property(readonly) _Bool allowsDerivedDesignTimeDefaultIntrinsicContentSize;
 @property(readonly) _Bool allowsResizingTopLevelView;
 - (void)setAllowsResizingTopLevelView:(_Bool)arg1;
@@ -114,7 +117,7 @@
 @property(readonly) id <IBAutolayoutInfoProvider> layoutInfo;
 - (void)performInternalEngineModificationsAndAssertOnUnsatisfiableConstraintsIfNeededDuring:(CDUnknownBlockType)arg1 withUnsatisfiableConstraintsHandler:(CDUnknownBlockType)arg2;
 - (_Bool)localAssertsOnRuntimeUnsatisfiableConstraints;
-- (void)enumerateRealAndRepresentedViewsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateRealAndRepresentedItemsWithOrder:(long long)arg1 block:(CDUnknownBlockType)arg2;
 - (void)invalidate;
 - (id)prepareViewHierarchyAndReturnAddedRepresentedConstraintsForRepresentedViews;
 - (id)initWithArbitrationUnit:(id)arg1 options:(unsigned long long)arg2;

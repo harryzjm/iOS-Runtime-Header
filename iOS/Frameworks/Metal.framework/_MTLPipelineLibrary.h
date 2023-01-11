@@ -4,27 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <Metal/MTLPipelineLibrarySPI-Protocol.h>
 
 @class NSArray, NSString;
 @protocol MTLDevice, MTLPipelineCache;
 
 __attribute__((visibility("hidden")))
-@interface _MTLPipelineLibrary : NSObject <MTLPipelineLibrarySPI>
+@interface _MTLPipelineLibrary <MTLPipelineLibrarySPI>
 {
     struct PipelineLibraryData *_pipelineLibraryData;
-    _Bool _disableRunTimeCompilation;
-    NSString *_label;
     id <MTLDevice> _device;
     NSArray *_pipelineNames;
+    _Bool _disableRunTimeCompilation;
 }
 
 @property _Bool disableRunTimeCompilation; // @synthesize disableRunTimeCompilation=_disableRunTimeCompilation;
 @property(readonly) NSArray *pipelineNames; // @synthesize pipelineNames=_pipelineNames;
 @property(readonly) id <MTLDevice> device; // @synthesize device=_device;
-@property(copy) NSString *label; // @synthesize label=_label;
 - (id)newRenderPipelineDescriptorWithName:(id)arg1 error:(id *)arg2;
 - (id)newComputePipelineDescriptorWithName:(id)arg1 error:(id *)arg2;
 - (id)newRenderPipelineStateWithName:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
@@ -38,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(copy) NSString *label; // @dynamic label;
 @property(readonly) Class superclass;
 
 @end

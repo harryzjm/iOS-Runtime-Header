@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class MISSING_TYPE;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -21,13 +23,8 @@ struct CGRect {
 };
 
 struct CGSize {
-    double _field1;
-    double _field2;
-};
-
-struct CLKUIQuadSize {
-    int _field1;
-    int _field2;
+    double width;
+    double height;
 };
 
 struct CLLocationCoordinate2D {
@@ -35,23 +32,22 @@ struct CLLocationCoordinate2D {
     double longitude;
 };
 
-struct NUProgram {
-    unsigned int program;
-    int uniforms[12];
+struct NURendererResources {
+    id pipelines[3];
+    id vertexBuffer;
+    id indexBuffer;
 };
 
-struct NURendererResources {
-    struct NUProgram programs[3];
-    unsigned int vertexBuffer;
-    unsigned int indexBuffer;
-    unsigned int atlasTexture;
-    unsigned long long loadedTexturesSet;
-    unsigned int priTextures[23];
-    unsigned int priTarget[23];
-    unsigned int secTextures[23];
-    unsigned int secTarget[23];
-    unsigned int dummyCubeTexture;
-    unsigned int dummy2dTexture;
+struct NURendererState {
+    struct NUViewport _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    float _field4;
+    struct _NUGeometryRange _field5;
+    struct _NUGeometryRange _field6;
+    union float4x4 _field7;
+    union float4x4 _field8;
+    union float4x4 _field9;
 };
 
 struct NUViewport {
@@ -66,12 +62,11 @@ struct _NUGeometryRange {
     int count;
 };
 
-struct _NUVertex {
-    short _field1;
-    short _field2;
-    short _field3;
-    short _field4;
-    short _field5;
-    short _field6;
+#pragma mark Named Unions
+
+union float4x4 {
+    float _field1[16];
+    float _field2[4][4];
+    MISSING_TYPE *_field3[4];
 };
 

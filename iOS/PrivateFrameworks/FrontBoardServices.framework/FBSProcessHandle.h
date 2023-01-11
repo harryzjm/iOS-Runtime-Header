@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <BaseBoard/BSProcessHandle.h>
+#import "BSProcessHandle.h"
 
 @interface FBSProcessHandle : BSProcessHandle
 {
 }
+
++ (id)allocWithZone:(struct _NSZone *)arg1;
 
 @end
 

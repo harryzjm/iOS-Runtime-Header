@@ -5,12 +5,13 @@
 //
 
 #import <EventKitUI/EKEditItemViewControllerProtocol-Protocol.h>
+#import <EventKitUI/EKEventDetailNotesCellDelegate-Protocol.h>
 #import <EventKitUI/EKEventTitleDetailItemDelegate-Protocol.h>
 
 @class EKEvent, NSMutableArray;
 @protocol EKEditItemViewControllerDelegate;
 
-@interface EKUIEventDiffViewController <EKEventTitleDetailItemDelegate, EKEditItemViewControllerProtocol>
+@interface EKUIEventDiffViewController <EKEventTitleDetailItemDelegate, EKEventDetailNotesCellDelegate, EKEditItemViewControllerProtocol>
 {
     NSMutableArray *_items;
     id <EKEditItemViewControllerDelegate> _editDelegate;

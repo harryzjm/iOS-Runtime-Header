@@ -6,18 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class FCAssetHandle, NSArray;
+@class FCAssetHandle, NSArray, NSString;
 
 @interface FCFlintManifest : NSObject
 {
-    FCAssetHandle *_mainDocumentAssetHandle;
+    NSString *_identifier;
     NSArray *_fontResourceIDs;
+    FCAssetHandle *_mainDocumentAssetHandle;
 }
 
-@property(readonly, nonatomic) NSArray *fontResourceIDs; // @synthesize fontResourceIDs=_fontResourceIDs;
 @property(readonly, nonatomic) FCAssetHandle *mainDocumentAssetHandle; // @synthesize mainDocumentAssetHandle=_mainDocumentAssetHandle;
+@property(readonly, nonatomic) NSArray *fontResourceIDs; // @synthesize fontResourceIDs=_fontResourceIDs;
+@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 - (void).cxx_destruct;
-- (id)initWithMainDocumentAssetHandle:(id)arg1 fontResourceIDs:(id)arg2;
+- (id)fetchANFDocumentDataProviderWithPriority:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)fetchANFDocumentDataProviderWithCompletion:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) _Bool isANFDocumentCached;
+@property(readonly, nonatomic) NSArray *anfDocumentAssetHandles;
+- (id)initWithIdentifier:(id)arg1 mainDocumentAssetHandle:(id)arg2 fontResourceIDs:(id)arg3;
 
 @end
 

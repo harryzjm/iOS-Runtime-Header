@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUI/PHSwipeDownTracker.h>
-
 #import <QuickLook/QLDismissGestureTracking-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface QLSwipeDownTracker : PHSwipeDownTracker <QLDismissGestureTracking>
+@interface QLSwipeDownTracker <QLDismissGestureTracking>
 {
     struct CGRect _initialBounds;
 }

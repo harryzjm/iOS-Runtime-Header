@@ -4,23 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
 @class NSString;
 
-@interface OBPrivacyCombinedController : UIViewController
+@interface OBPrivacyCombinedController
 {
-    _Bool _darkMode;
     _Bool _allowsOpeningSafari;
     _Bool _presentedFromPrivacyPane;
     NSString *_displayLanguage;
 }
 
 + (void)presentPrivacyCombinedControllerOverController:(id)arg1 dismissHandler:(CDUnknownBlockType)arg2;
-@property(retain) NSString *displayLanguage; // @synthesize displayLanguage=_displayLanguage;
++ (id)new;
 @property _Bool presentedFromPrivacyPane; // @synthesize presentedFromPrivacyPane=_presentedFromPrivacyPane;
+@property(retain) NSString *displayLanguage; // @synthesize displayLanguage=_displayLanguage;
 @property _Bool allowsOpeningSafari; // @synthesize allowsOpeningSafari=_allowsOpeningSafari;
-@property(nonatomic, getter=isDarkMode) _Bool darkMode; // @synthesize darkMode=_darkMode;
 - (void).cxx_destruct;
 - (void)viewDidAppear:(_Bool)arg1;
 - (id)initWithIdentifiers:(id)arg1;

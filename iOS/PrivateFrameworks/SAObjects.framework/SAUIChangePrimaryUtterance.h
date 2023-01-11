@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface SAUIChangePrimaryUtterance
 {
 }
@@ -12,6 +14,7 @@
 + (id)changePrimaryUtterance;
 - (_Bool)requiresResponse;
 @property(nonatomic) long long utteranceIndex;
+@property(copy, nonatomic) NSString *speechRecognitionId;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

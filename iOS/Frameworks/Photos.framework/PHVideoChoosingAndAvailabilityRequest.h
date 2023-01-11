@@ -22,16 +22,13 @@
 @property(readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 @property(nonatomic) id <PHVideoChoosingAndAvailabilityRequestDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+- (void)_loadAdjustmentInfoFromPath:(id)arg1 intoAdditionalInfo:(id)arg2;
 - (void)_resourceURLReceivedNotification:(id)arg1;
 - (void)_cplDownloadStatusNotification:(id)arg1;
 - (void)cancel;
 - (void)runDaemonSide;
-- (id)_chooseVideoResourceWithManagedObjectContext:(id)arg1 canDownload:(_Bool *)arg2;
-- (id)_videoChoosingResultsMatchingResourceVersion:(short)arg1 managedObjectContext:(id)arg2;
-- (unsigned int)_videoQualityLevelForRequest;
-- (short)_resourceVersionFromVideoRequestVersion:(long long)arg1 assetHasAdjustments:(_Bool)arg2;
 - (id)plistDictionary;
-- (id)initWithPlistDictionary:(id)arg1;
+- (id)initWithPlistDictionary:(id)arg1 photoLibrary:(id)arg2;
 - (id)initWithAssetObjectID:(id)arg1 size:(struct CGSize)arg2 behaviorSpec:(id)arg3;
 
 @end

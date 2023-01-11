@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData;
+@class NSData, NSDate;
 
 __attribute__((visibility("hidden")))
 @interface AVContentKeyResponseFairPlayStreaming
 {
     NSData *_keyData;
+    NSDate *_renewalDate;
 }
 
 - (void)dealloc;
-- (id)initWithKeyData:(id)arg1;
+- (id)initWithKeyData:(id)arg1 renewalDate:(id)arg2;
 
 @end
 

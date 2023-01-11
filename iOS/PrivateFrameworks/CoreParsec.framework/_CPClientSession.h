@@ -9,27 +9,35 @@
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 #import <CoreParsec/_CPClientSession-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSString, _CPUsageEnvelope, _CPUsageSinceLookback;
 
 @interface _CPClientSession : PBCodable <_CPClientSession, NSSecureCoding>
 {
-    _Bool _firstUseOfTheDay;
     _Bool _removeTimestamps;
+    _Bool _duEnabled;
     int _previousSessionEndReason;
     NSString *_agent;
     NSString *_userGuidString;
     NSDictionary *_resourceVersions;
     double _sessionStart;
-    double _firstUseDate;
     NSString *_parsecDeveloperID;
+    NSString *_countryCode;
+    NSString *_locale;
+    _CPUsageSinceLookback *_usageSinceLookback;
+    _CPUsageEnvelope *_cohortsFeedback;
+    NSData *_jsonFeedback;
     NSArray *_feedbacks;
 }
 
 @property(copy, nonatomic) NSArray *feedbacks; // @synthesize feedbacks=_feedbacks;
+@property(copy, nonatomic) NSData *jsonFeedback; // @synthesize jsonFeedback=_jsonFeedback;
+@property(retain, nonatomic) _CPUsageEnvelope *cohortsFeedback; // @synthesize cohortsFeedback=_cohortsFeedback;
+@property(retain, nonatomic) _CPUsageSinceLookback *usageSinceLookback; // @synthesize usageSinceLookback=_usageSinceLookback;
+@property(copy, nonatomic) NSString *locale; // @synthesize locale=_locale;
+@property(copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property(nonatomic) _Bool duEnabled; // @synthesize duEnabled=_duEnabled;
 @property(copy, nonatomic) NSString *parsecDeveloperID; // @synthesize parsecDeveloperID=_parsecDeveloperID;
 @property(nonatomic) _Bool removeTimestamps; // @synthesize removeTimestamps=_removeTimestamps;
-@property(nonatomic) double firstUseDate; // @synthesize firstUseDate=_firstUseDate;
-@property(nonatomic) _Bool firstUseOfTheDay; // @synthesize firstUseOfTheDay=_firstUseOfTheDay;
 @property(nonatomic) int previousSessionEndReason; // @synthesize previousSessionEndReason=_previousSessionEndReason;
 @property(nonatomic) double sessionStart; // @synthesize sessionStart=_sessionStart;
 @property(copy, nonatomic) NSDictionary *resourceVersions; // @synthesize resourceVersions=_resourceVersions;
@@ -51,7 +59,6 @@
 - (void)setFeedback:(id)arg1;
 - (void)setResourceVersions:(id)arg1 forKey:(id)arg2;
 - (_Bool)getResourceVersions:(id *)arg1 forKey:(id)arg2;
-- (_Bool)requiresQueryId;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

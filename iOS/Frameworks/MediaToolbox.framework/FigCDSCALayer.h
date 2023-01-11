@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+__attribute__((visibility("hidden")))
 @interface FigCDSCALayer
 {
     struct OpaqueFigCDSCALayerInternal *layerInternal;
@@ -15,7 +16,6 @@
 - (void)clear:(struct CGRect)arg1;
 - (void)setVideoBounds:(struct CGRect)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 

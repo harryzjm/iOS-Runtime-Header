@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSIndexSet, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSOperationQueue, NSString, NSURL, PDFAKDocumentAdaptor, PDFForm, PDFOutline, PDFRenderingProperties, PDFSelection;
-@protocol PDFAKControllerDelegateProtocol, PDFDocumentPageChangeDelegate;
+@class NSArray, NSDictionary, NSIndexSet, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSString, NSURL, PDFAKDocumentAdaptor, PDFForm, PDFOutline, PDFRenderingProperties, PDFSelection;
+@protocol OS_dispatch_queue, PDFAKControllerDelegateProtocol, PDFDocumentAsyncFindDelegate, PDFDocumentPageChangeDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PDFDocumentPrivate : NSObject
@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
     int minorVersion;
     _Bool isEncrypted;
     _Bool isUnlocked;
+    int accessPermissions;
     _Bool allowsPrinting;
     _Bool allowsCopying;
     _Bool allowsDocumentChanges;
@@ -43,11 +44,11 @@ __attribute__((visibility("hidden")))
     _Bool allowsCommenting;
     _Bool allowsFormFieldEntry;
     long long permission;
+    NSString *ownerPassword;
+    NSString *userPassword;
     NSDictionary *attributes;
-    NSString *password;
     PDFOutline *outline;
-    NSOperationQueue *pageLayoutThreadQueue;
-    NSOperationQueue *dataDetectorQueue;
+    NSObject<OS_dispatch_queue> *textExtractionQueue;
     _Bool finding;
     int findModel;
     NSArray *findStrings;
@@ -65,7 +66,6 @@ __attribute__((visibility("hidden")))
     NSString *xmpPrefix;
     NSString *xmpRootPath;
     id <PDFDocumentPageChangeDelegate> pageChangeDelegate;
-    struct __DDScanner *dataDetector;
     _Bool documentChanged;
     _Bool documentHasBurnInAnnotations;
     _Bool pagesChanged;
@@ -76,6 +76,10 @@ __attribute__((visibility("hidden")))
     PDFRenderingProperties *renderingProperties;
     _Bool useTaggedPDF;
     _Bool limitedSearch;
+    NSObject<OS_dispatch_queue> *asyncSearchQueue;
+    struct os_unfair_lock_s asyncSearchLock;
+    id <PDFDocumentAsyncFindDelegate> asyncSearchDelegate;
+    NSMutableArray *asyncSearchResults;
 }
 
 - (void).cxx_destruct;

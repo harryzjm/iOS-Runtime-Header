@@ -38,6 +38,7 @@
     struct CGRect _visibleRect;
 }
 
++ (id)preferredFontWithSize:(double)arg1;
 @property(nonatomic) double rippleDuration; // @synthesize rippleDuration=_rippleDuration;
 @property(nonatomic) double glyphScaleAnimationSpeed; // @synthesize glyphScaleAnimationSpeed=_glyphScaleAnimationSpeed;
 @property(nonatomic) double initialScale; // @synthesize initialScale=_initialScale;
@@ -48,6 +49,7 @@
 @property(retain, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
 @property(copy, nonatomic) NSString *text; // @synthesize text=_text;
+- (void)contentSizeDidChange:(id)arg1;
 - (double)requiredWidthForText:(id)arg1;
 - (double)flushAmount;
 - (_Bool)canFitText:(id)arg1;
@@ -86,6 +88,7 @@
 - (struct _NSRange)srcRangeOfAlignmentHunkAtIndex:(unsigned long long)arg1;
 - (void)calculateGlyphAlignment;
 - (unsigned long long)calculateHardAlignmentAtIndex:(unsigned long long)arg1 fromGlyphsInRange:(struct _NSRange)arg2 toGlyphsInRange:(struct _NSRange)arg3;
+- (_Bool)_isRTL;
 - (double)_rippleDurationForEndInsertion:(_Bool)arg1;
 - (double)alphaForFrame:(struct CGRect)arg1;
 - (void)dealloc;

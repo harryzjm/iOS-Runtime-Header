@@ -7,10 +7,14 @@
 #import <ChatKit/CKCoreChatControllerDelegate-Protocol.h>
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKChatController, CKComposition;
+@class CKChatController, CKComposition, NSString;
 
 @protocol CKChatControllerDelegate <NSObject, CKCoreChatControllerDelegate>
 - (void)prewarmCameraIfNecessaryForChatController:(CKChatController *)arg1;
 - (void)chatController:(CKChatController *)arg1 forwardComposition:(CKComposition *)arg2;
+
+@optional
+- (NSString *)navigationBarBackdropLayerGroupNameForChatController:(CKChatController *)arg1;
+- (void)doneButtonPressedForChatController:(CKChatController *)arg1;
 @end
 

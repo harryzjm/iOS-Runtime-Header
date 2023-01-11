@@ -9,9 +9,9 @@
 
 @class CKContainerID, CKRecordID, CKShareID, CKShareParticipant, NSArray, NSData, NSMutableArray, NSMutableSet, NSString, NSURL;
 
-@interface CKShare <NSSecureCoding, NSCopying>
+@interface CKShare <NSCopying, NSSecureCoding>
 {
-    _Bool _allowsReadOnlyParticipantsToSeeEachOther;
+    _Bool _encodeAllowsReadOnlyParticipantsToSeeEachOther;
     _Bool _allowsAnonymousPublicAccess;
     _Bool _serializePersonalInfo;
     long long _publicPermission;
@@ -27,6 +27,7 @@
     NSData *_publicProtectionData;
     NSString *_publicProtectionEtag;
     NSString *_previousPublicProtectionEtag;
+    long long _participantVisibility;
     NSArray *_invitedKeysToRemove;
     CKShareID *_shareID;
 }
@@ -36,7 +37,7 @@
 @property(nonatomic) _Bool serializePersonalInfo; // @synthesize serializePersonalInfo=_serializePersonalInfo;
 @property(retain, nonatomic) NSArray *invitedKeysToRemove; // @synthesize invitedKeysToRemove=_invitedKeysToRemove;
 @property(nonatomic) _Bool allowsAnonymousPublicAccess; // @synthesize allowsAnonymousPublicAccess=_allowsAnonymousPublicAccess;
-@property(nonatomic) _Bool allowsReadOnlyParticipantsToSeeEachOther; // @synthesize allowsReadOnlyParticipantsToSeeEachOther=_allowsReadOnlyParticipantsToSeeEachOther;
+@property(nonatomic) long long participantVisibility; // @synthesize participantVisibility=_participantVisibility;
 @property(retain, nonatomic) NSString *previousPublicProtectionEtag; // @synthesize previousPublicProtectionEtag=_previousPublicProtectionEtag;
 @property(retain, nonatomic) NSString *publicProtectionEtag; // @synthesize publicProtectionEtag=_publicProtectionEtag;
 @property(retain, nonatomic) NSData *publicProtectionData; // @synthesize publicProtectionData=_publicProtectionData;
@@ -46,6 +47,7 @@
 @property(retain, nonatomic) NSMutableArray *allParticipants; // @synthesize allParticipants=_allParticipants;
 @property(copy, nonatomic) CKRecordID *rootRecordID; // @synthesize rootRecordID=_rootRecordID;
 @property(retain, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
+@property(nonatomic) _Bool encodeAllowsReadOnlyParticipantsToSeeEachOther; // @synthesize encodeAllowsReadOnlyParticipantsToSeeEachOther=_encodeAllowsReadOnlyParticipantsToSeeEachOther;
 @property(retain, nonatomic) NSMutableArray *lastFetchedParticipants; // @synthesize lastFetchedParticipants=_lastFetchedParticipants;
 @property(retain, nonatomic) NSMutableSet *removedParticipantIDs; // @synthesize removedParticipantIDs=_removedParticipantIDs;
 @property(retain, nonatomic) NSMutableSet *addedParticipantIDs; // @synthesize addedParticipantIDs=_addedParticipantIDs;
@@ -55,7 +57,6 @@
 - (void)encodeSystemFieldsWithCoder:(id)arg1;
 - (id)shareURL;
 @property(retain, nonatomic) NSData *publicSharingIdentity;
-- (id)privateToken;
 - (id)encryptedPublicSharingKey;
 - (void)setWantsPublicSharingKey:(_Bool)arg1;
 - (void)_getDecryptedShareInContainer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -79,19 +80,25 @@
 - (void)clearModifiedParticipants;
 @property(readonly, nonatomic) NSArray *participants;
 - (void)CKAssignToContainerWithID:(id)arg1;
+- (_Bool)canHostServerURLInfo;
+@property(readonly, nonatomic) _Bool isZoneWideShare;
 - (_Bool)hasEncryptedData;
-- (id)debugDescription;
 - (id)description;
 - (id)CKDescriptionPropertiesWithPublic:(_Bool)arg1 private:(_Bool)arg2 shouldExpand:(_Bool)arg3;
 - (id)copyWithOriginalValues;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(nonatomic) _Bool allowsReadOnlyParticipantsToSeeEachOther;
 - (void)_setPublicPermissionNoSideEffects:(long long)arg1;
 - (void)_removeAllParticipants;
 - (void)_removePendingPrivateAndAdminParticipants;
 - (void)_commonCKShareInit;
 - (void)_addOwnerParticipant;
-- (id)_initWithShareRecordID:(id)arg1;
+- (id)initWithRecordType:(id)arg1 zoneID:(id)arg2;
+- (id)initWithRecordType:(id)arg1 recordID:(id)arg2;
+- (id)initWithRecordType:(id)arg1;
 - (id)init;
+- (id)_initWithShareRecordID:(id)arg1;
+- (id)initWithRecordZoneID:(id)arg1;
 - (id)initWithRootRecord:(id)arg1 shareID:(id)arg2;
 - (id)initWithRootRecord:(id)arg1;
 

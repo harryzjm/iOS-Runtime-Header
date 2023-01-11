@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)loadFromArchive:(const struct FilterSetArchive *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
+- (_Bool)allowsRowInsertion;
 - (id)viewColumnIndicesForRulesInTable:(id)arg1;
 - (id)baseColumnIndicesForRulesInTable:(id)arg1;
 - (id)absoluteRuleIndicesForColumn:(struct TSUModelColumnIndex)arg1 inTable:(id)arg2;

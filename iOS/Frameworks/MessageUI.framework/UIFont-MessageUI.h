@@ -7,6 +7,11 @@
 #import <UIKit/UIFont.h>
 
 @interface UIFont (MessageUI)
++ (id)mf_messageHeaderSummaryLabelFontForMailActionHeader;
++ (id)mf_messageHeaderSenderLabelFontForMailActionHeader;
++ (id)mf_messageHeaderTimestampLabelFont;
++ (id)mf_messageHeaderSummaryLabelFont;
++ (id)mf_messageHeaderSenderLabelFont;
 - (struct CGPoint)mf_originPointFromMidlinePoint:(struct CGPoint)arg1;
 - (struct CGPoint)mf_caplinePointFromBaselinePoint:(struct CGPoint)arg1;
 - (struct CGPoint)mf_baselinePointFromCaplinePoint:(struct CGPoint)arg1;

@@ -7,7 +7,7 @@
 #import <PassKitUI/PKPassPaymentPayStateViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 
-@class NSDate, NSMutableDictionary, NSObject, NSString, PKExpressTransactionState, PKFooterTransactionView, PKPassPaymentPayStateView, PKPaymentService;
+@class NSDate, NSMutableDictionary, NSObject, NSString, PKExpressTransactionState, PKFooterTransactionView, PKPassPaymentPayStateView, PKPaymentService, PKTransitBalanceModel;
 @protocol OS_dispatch_source;
 
 @interface PKPassPaymentConfirmationView <PKPassPaymentPayStateViewDelegate, PKPaymentServiceDelegate>
@@ -19,13 +19,16 @@
     _Bool _receivedTransaction;
     _Bool _receivedExit;
     _Bool _needsResolution;
-    _Bool _showingAlert;
     _Bool _showingResolution;
+    _Bool _showingSuccessResolution;
     _Bool _animatingResolution;
+    _Bool _showingAlert;
     NSObject<OS_dispatch_source> *_activityResolutionTimer;
+    unsigned long long _resolutionCounter;
     NSDate *_visibleDate;
     NSMutableDictionary *_registeredExpressObservers;
     PKPaymentService *_paymentService;
+    PKTransitBalanceModel *_transitBalanceModel;
 }
 
 - (void).cxx_destruct;
@@ -36,13 +39,16 @@
 - (_Bool)_isRegisteredForAnyExpressTransactionNotifications;
 - (_Bool)_isRegisteredForAllExpressTransactionNotifications;
 - (id)_expressNotificationNames;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)payStateView:(id)arg1 revealingCheckmark:(_Bool)arg2;
-- (void)_updateContentViewsWithTransaction:(id)arg1 transitProperties:(id)arg2;
-- (void)_updateContentViewsWithTransitProperties:(id)arg1;
+- (void)_updateContentViewsWithTransaction:(id)arg1 transitBalanceModel:(id)arg2;
+- (void)_updateContentViewsWithTransitBalanceModel:(id)arg1;
 - (void)_updateContentViewsWithTransaction:(id)arg1;
 - (void)_resolveActivityIfNecessary;
+- (void)_resolveActivityIfNecessaryWithDelay;
+- (void)_beginResolution;
 - (void)_disableActivityTimer;
 - (void)_presentCheckmarkIfNecessary;
 - (void)didBecomeHiddenAnimated:(_Bool)arg1;

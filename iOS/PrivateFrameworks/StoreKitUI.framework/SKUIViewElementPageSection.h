@@ -9,6 +9,7 @@
 @class NSString, SKUICollectionViewCell, SKUIViewElementLayoutContext;
 @protocol SKUIViewElementView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIViewElementPageSection <SKUIArtworkRequestDelegate>
 {
     Class _cellClass;

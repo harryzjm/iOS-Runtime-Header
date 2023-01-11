@@ -4,6 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol TSWPFootnoteHeightMeasurer
+#import <TSReading/NSObject-Protocol.h>
+
+@class TSWPStorage;
+
+@protocol TSWPFootnoteHeightMeasurer <NSObject>
+- (void)setFootnoteSpacing:(long long)arg1;
+- (void)setContainerWidth:(double)arg1;
+- (double)footnoteHeight;
+- (void)removeAllFootnoteReferenceStorages;
+- (void)removeFootnoteReferenceStorage:(TSWPStorage *)arg1;
+- (void)addFootnoteReferenceStorage:(TSWPStorage *)arg1;
 @end
 

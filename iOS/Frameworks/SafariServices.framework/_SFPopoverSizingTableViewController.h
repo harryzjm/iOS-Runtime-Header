@@ -6,22 +6,40 @@
 
 #import <UIKit/UITableViewController.h>
 
+@class UIBlurEffect;
+
 @interface _SFPopoverSizingTableViewController : UITableViewController
 {
+    UIBlurEffect *_backgroundBlurEffect;
     _Bool _didUpdateTranslucentAppearanceAtLeastOnce;
     _Bool _didHaveTranslucentAppearance;
+    double _preferredContentWidth;
 }
 
++ (id)tableViewCellForSizeEstimation;
++ (void)initialize;
+@property(nonatomic) double preferredContentWidth; // @synthesize preferredContentWidth=_preferredContentWidth;
+- (void).cxx_destruct;
+- (void)cancelPopoverKeyPressed;
+- (id)keyCommands;
 - (id)backgroundColorUsingTranslucentAppearance:(_Bool)arg1;
+- (id)_backgroundBlurEffect;
 - (void)updateTranslucentAppearance;
 @property(readonly, nonatomic) _Bool hasTranslucentAppearance;
+- (_Bool)_needsTranslucentAppearanceUpdate;
 - (void)_updateTranslucentAppearanceIfNeeded;
+- (double)tableViewSpacingForExtraSeparators:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)didMoveToParentViewController:(id)arg1;
+- (void)willMoveToParentViewController:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)updatePreferredContentSize;
 - (struct CGSize)preferredContentSize;
-- (double)_totalContentHeightForPreferredContentSize;
+@property(readonly, nonatomic) long long maximumNumberOfRows;
+@property(readonly, nonatomic) long long minimumNumberOfRows;
 
 @end
 

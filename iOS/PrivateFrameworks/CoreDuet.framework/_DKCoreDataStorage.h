@@ -18,9 +18,13 @@
     _DKDataProtectionStateMonitor *_dataProtectionMonitor;
     NSFileManager *_fm;
     NSCloudKitMirroringDelegate *_mirroringDelegate;
+    _Bool _isManagedDatabase;
+    _Bool _isDatabaseManager;
+    _Bool _maintenanceRunning;
     _Bool _readOnly;
     _Bool _localOnly;
     _Bool _sync;
+    _Bool _requiresManualMigration;
     NSString *_directory;
     NSURL *_modelURL;
     NSString *_databaseName;
@@ -38,6 +42,7 @@
 + (unsigned long long)countObjectsInContext:(id)arg1 entityName:(id)arg2 predicate:(id)arg3 includeSubentities:(_Bool)arg4 includePendingChanges:(_Bool)arg5;
 + (unsigned long long)deleteObjectsInContext:(id)arg1 entityName:(id)arg2 predicate:(id)arg3 sortDescriptors:(id)arg4 fetchOffset:(unsigned long long)arg5 fetchLimit:(unsigned long long)arg6 includeSubentities:(_Bool)arg7 includePendingChanges:(_Bool)arg8;
 + (unsigned long long)deleteObjectsInContext:(id)arg1 entityName:(id)arg2 predicate:(id)arg3 sortDescriptors:(id)arg4 fetchLimit:(unsigned long long)arg5 includeSubentities:(_Bool)arg6 includePendingChanges:(_Bool)arg7;
+@property(nonatomic) _Bool requiresManualMigration; // @synthesize requiresManualMigration=_requiresManualMigration;
 @property(readonly) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 @property(readonly) NSCloudKitMirroringDelegate *mirroringDelegate; // @synthesize mirroringDelegate=_mirroringDelegate;
 @property __weak id <_DKCoreDataStorageDelegate> delegate; // @synthesize delegate=_delegate;
@@ -54,6 +59,7 @@
 - (_Bool)_deleteDatabaseFiles:(id)arg1;
 - (_Bool)confirmDatabaseConnectionFor:(id)arg1;
 - (_Bool)isManagedObjectContextFor:(id)arg1 equalToManagedObjectContext:(id)arg2;
+- (id)privateManagedObjectContextFor:(id)arg1;
 - (id)managedObjectContextFor:(id)arg1;
 - (void)removeManagedObjectContextForKey:(id)arg1;
 - (id)managedObjectContextForKey:(id)arg1;
@@ -80,7 +86,12 @@
 - (void)removePersistentStoresInCoordinator:(id)arg1;
 - (void)invalidateManagedObjectContextAndPersistentStoreCoordinatorFor:(id)arg1;
 - (void)handleDataProtectionChangeFor:(id)arg1 willBeAvailable:(_Bool)arg2;
-- (_Bool)isDatabaseOwner;
+- (struct __CFString *)clientNeedsHelpNotification;
+- (void)handleClientCallForHelp;
+- (id)databaseManagerName;
+- (void)_unregisterForClientHelpNotifications;
+- (void)_registerForClientHelpNotifications;
+- (void)dealloc;
 - (id)initWithDirectory:(id)arg1 databaseName:(id)arg2 modelURL:(id)arg3 readOnly:(_Bool)arg4 localOnly:(_Bool)arg5 sync:(_Bool)arg6;
 - (id)initWithDirectory:(id)arg1 databaseName:(id)arg2 modelURL:(id)arg3 sync:(_Bool)arg4;
 - (id)initWithDirectory:(id)arg1 databaseName:(id)arg2 modelURL:(id)arg3 readOnly:(_Bool)arg4 localOnly:(_Bool)arg5;

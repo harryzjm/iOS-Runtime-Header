@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 - (id)variableConstraints;
 - (_Bool)shouldIndentWhileEditing;
 - (double)minCellHeight;
+- (_Bool)allowsCellSelection;
 
 @end
 

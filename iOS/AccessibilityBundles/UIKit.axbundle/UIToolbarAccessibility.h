@@ -14,10 +14,11 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (_Bool)_accessibilityOnlyComparesByXAxis;
-- (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 - (id)_accessibilityFuzzyHitTestElements;
 - (_Bool)_accessibilityHitTestShouldFallbackToNearestChild;
 - (id)accessibilityIdentifier;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

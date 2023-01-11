@@ -17,6 +17,7 @@
     struct {
         unsigned int linkMediaType:1;
     } _has;
+    _Bool __encodeLegacyGloryData;
     int _linkMediaType;
     NSString *_albumArtist;
     NSString *_albumName;
@@ -64,6 +65,8 @@
     NSString *_tvSeasonName;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(copy, nonatomic) NSString *tvSeasonName; // @synthesize tvSeasonName=_tvSeasonName;
 @property(copy, nonatomic) NSString *tvSeasonGenre; // @synthesize tvSeasonGenre=_tvSeasonGenre;
 @property(copy, nonatomic) NSString *tvEpisodeSeasonName; // @synthesize tvEpisodeSeasonName=_tvEpisodeSeasonName;
@@ -114,6 +117,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(readonly, nonatomic) _Bool hasTvSeasonName;

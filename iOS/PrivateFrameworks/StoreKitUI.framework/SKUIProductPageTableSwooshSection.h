@@ -9,6 +9,7 @@
 
 @class NSString, SKUIColorScheme, SKUILockupSwooshArtworkLoader, SKUILockupSwooshViewController, SKUIMissingItemLoader, SKUIResourceLoader, SKUISwooshPageComponent, UIViewController;
 
+__attribute__((visibility("hidden")))
 @interface SKUIProductPageTableSwooshSection <SKUIMissingItemDelegate, SKUISwooshViewControllerDelegate>
 {
     CDUnknownBlockType _actionBlock;

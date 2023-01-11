@@ -19,7 +19,9 @@ __attribute__((visibility("hidden")))
     unsigned char _changeType;
     unsigned char _previousLevel;
     unsigned char _updatedLevel;
+    _Bool _isInverse;
     UUIDData_5fbc143e _groupByUid;
+    vector_6018b200 _groupingColumnChanges;
     UUIDMap_b66c2694 _previousGroupNodeToUpdated;
     UUIDMap_b66c2694 _updatedGroupNodeToPrevious;
 }
@@ -30,7 +32,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) TSUUUIDSet *updatedGroupNodeUids; // @synthesize updatedGroupNodeUids=_updatedGroupNodeUids;
 @property(readonly, nonatomic) TSUUUIDSet *previousGroupNodeUids; // @synthesize previousGroupNodeUids=_previousGroupNodeUids;
 @property(readonly, nonatomic) UUIDMap_b66c2694 *previousGroupNodeToUpdated; // @synthesize previousGroupNodeToUpdated=_previousGroupNodeToUpdated;
+@property(readonly, nonatomic) vector_6018b200 *groupingColumnChanges; // @synthesize groupingColumnChanges=_groupingColumnChanges;
 @property(readonly, nonatomic) UUIDData_5fbc143e groupByUid; // @synthesize groupByUid=_groupByUid;
+@property(nonatomic) _Bool isInverse; // @synthesize isInverse=_isInverse;
 @property(nonatomic) unsigned char updatedLevel; // @synthesize updatedLevel=_updatedLevel;
 @property(nonatomic) unsigned char previousLevel; // @synthesize previousLevel=_previousLevel;
 @property(nonatomic) unsigned char changeType; // @synthesize changeType=_changeType;
@@ -42,11 +46,10 @@ __attribute__((visibility("hidden")))
 - (unsigned char)previousRelativeAncestorLevelForUpdatedAncestorCategoryLevel:(unsigned char)arg1 numLevels:(unsigned char)arg2;
 - (UUIDData_5fbc143e)updatedGroupNodeUidForPreviousGroupNodeUid:(const UUIDData_5fbc143e *)arg1;
 - (UUIDData_5fbc143e)previousGroupNodeUidForUpdatedGroupNodeUid:(const UUIDData_5fbc143e *)arg1;
-- (void)removeAllEntriesToUpdatedGroupNodeUid:(const UUIDData_5fbc143e *)arg1;
-- (void)removeAllEntriesFromPreviousGroupUid:(const UUIDData_5fbc143e *)arg1;
 - (void)mapPreviousGroupNodeUid:(const UUIDData_5fbc143e *)arg1 toUpdatedGroupNodeUid:(const UUIDData_5fbc143e *)arg2;
 - (void)addRemoveOfGroupUid:(const UUIDData_5fbc143e *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithType:(unsigned char)arg1 groupingColumnChanges:(const vector_6018b200 *)arg2 groupByUid:(const UUIDData_5fbc143e *)arg3;
 - (id)initWithType:(unsigned char)arg1 groupByUid:(const UUIDData_5fbc143e *)arg2;
 
 @end

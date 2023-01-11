@@ -12,11 +12,15 @@ __attribute__((visibility("hidden")))
     TSTPopUpMenuModel *_popUpMenuModel;
 }
 
-@property(readonly, nonatomic) TSTPopUpMenuModel *popUpMenuModel; // @synthesize popUpMenuModel=_popUpMenuModel;
++ (id)objectWithPopUpMenuModel:(id)arg1 refCount:(unsigned int)arg2;
+- (id)popUpMenuModel;
 - (void).cxx_destruct;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
+- (unsigned long long)estimateByteSize;
 - (unsigned long long)hash;
+- (void)encodeToArchive:(struct TableDataList_ListEntry *)arg1 key:(unsigned int)arg2 archiver:(id)arg3;
+- (void)loadFromArchive:(const struct TableDataList_ListEntry *)arg1 unarchiver:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initObjectWithPopUpMenuModel:(id)arg1 refCount:(unsigned int)arg2;
 
 @end

@@ -6,6 +6,7 @@
 
 @protocol ISLivePhotoSettleBehaviorDelegate;
 
+__attribute__((visibility("hidden")))
 @interface ISLivePhotoSettleBehavior
 {
 }

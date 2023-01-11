@@ -6,19 +6,22 @@
 
 #import <UIKit/UIAccessibilityElement.h>
 
-@class SBAppSwitcherContentViewUIViewAccessibility;
+@class SBAppLayoutAccessibility, SBFluidSwitcherContentViewAccessibility;
+@protocol SBAppSwticherAppAccessibilityElementDelegate;
 
 @interface SBAppSwitcherAppAccessibilityElement : UIAccessibilityElement
 {
     _Bool _isControlCenter;
-    id _appLayout;
+    SBAppLayoutAccessibility *_appLayout;
     id _itemContainer;
-    SBAppSwitcherContentViewUIViewAccessibility *_contentView;
+    SBFluidSwitcherContentViewAccessibility *_contentView;
+    id <SBAppSwticherAppAccessibilityElementDelegate> _delegate;
 }
 
-@property(nonatomic) __weak SBAppSwitcherContentViewUIViewAccessibility *contentView; // @synthesize contentView=_contentView;
+@property(nonatomic) __weak id <SBAppSwticherAppAccessibilityElementDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak SBFluidSwitcherContentViewAccessibility *contentView; // @synthesize contentView=_contentView;
 @property(retain, nonatomic) id itemContainer; // @synthesize itemContainer=_itemContainer;
-@property(retain, nonatomic) id appLayout; // @synthesize appLayout=_appLayout;
+@property(retain, nonatomic) SBAppLayoutAccessibility *appLayout; // @synthesize appLayout=_appLayout;
 @property(readonly, nonatomic) _Bool isControlCenter; // @synthesize isControlCenter=_isControlCenter;
 - (void).cxx_destruct;
 - (_Bool)_accessibilityUpdatesSwitchMenu;

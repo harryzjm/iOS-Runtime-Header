@@ -62,8 +62,7 @@
 - (void)videoPlayerViewDidPauseAfterPlayingVideoToEnd:(id)arg1;
 - (void)videoPlayerViewDidBeginPlaying:(id)arg1;
 - (void)videoPlayerViewDidBeginPlayingQueuedVideo:(id)arg1;
-- (void)_backlightDidTurnOff;
-- (void)_backlightWillTurnOff;
+- (void)handleScreenBlanked;
 - (void)_handleOrdinaryScreenWake;
 - (void)_handleWristRaiseScreenWake;
 - (id)_nextListing;

@@ -10,6 +10,7 @@
 {
     IBICColor *_color;
     NSString *_referenceColorName;
+    NSString *_referenceColorPlatform;
     long long _componentInterpretation;
 }
 
@@ -20,6 +21,7 @@
 + (id)assetRepWithRepIdentifier:(id)arg1;
 + (id)createDefaultInstancesForUnitTesting;
 @property(nonatomic) long long componentInterpretation; // @synthesize componentInterpretation=_componentInterpretation;
+@property(copy, nonatomic) NSString *referenceColorPlatform; // @synthesize referenceColorPlatform=_referenceColorPlatform;
 @property(copy, nonatomic) NSString *referenceColorName; // @synthesize referenceColorName=_referenceColorName;
 @property(retain, nonatomic) IBICColor *color; // @synthesize color=_color;
 - (void).cxx_destruct;

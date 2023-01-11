@@ -8,12 +8,11 @@
 
 #import <PersonalizationPortraitInternals/PPQuickTypeServantProtocol-Protocol.h>
 
-@class PPContactScorer, PPLocalEventStore;
+@class PPLocalEventStore;
 
 @interface PPQuickTypeEventsServant : NSObject <PPQuickTypeServantProtocol>
 {
     PPLocalEventStore *_localEventStore;
-    PPContactScorer *_contactScorer;
 }
 
 - (void).cxx_destruct;
@@ -30,7 +29,7 @@
 - (_Bool)_shouldTreatAsUnscheduledFreeTime:(id)arg1;
 - (_Bool)_userDidOrganizeEvent:(id)arg1;
 - (_Bool)_userIsInvitedToEvent:(id)arg1;
-- (long long)_userStatusForEvent:(id)arg1;
+- (unsigned char)_userStatusForEvent:(id)arg1;
 - (_Bool)_areAllPeopleOfInterest:(id)arg1 inAttendeeList:(id)arg2;
 - (id)_valuesForPrediction:(id)arg1 fields:(unsigned int)arg2 formatter:(id)arg3;
 - (id)_labelForEvent:(id)arg1 value:(id)arg2 fields:(unsigned int)arg3 formatter:(id)arg4;
@@ -39,7 +38,6 @@
 - (id)_fuzzyNextEvents:(id)arg1 minimumCount:(unsigned long long)arg2;
 - (id)_filterEvents:(id)arg1 time:(unsigned char)arg2 people:(id)arg3 busy:(_Bool)arg4 fields:(unsigned int)arg5 explanationSet:(id)arg6;
 - (id)quickTypeItemsWithQuery:(id)arg1 limit:(unsigned long long)arg2 explanationSet:(id)arg3;
-- (void)setContactScorer:(id)arg1;
 - (void)_warmUpFormatters;
 - (id)init;
 

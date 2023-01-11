@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <Foundation/NSUserDefaults.h>
 
 @protocol WeatherPreferencesPersistence;
 
-@interface WeatherInternalPreferences : NSObject
+@interface WeatherInternalPreferences : NSUserDefaults
 {
     id <WeatherPreferencesPersistence> _persistence;
 }
@@ -16,7 +16,8 @@
 + (id)sharedInternalPreferences;
 @property(retain) id <WeatherPreferencesPersistence> persistence; // @synthesize persistence=_persistence;
 - (void).cxx_destruct;
-- (id)objectForKey:(id)arg1;
+@property(readonly) _Bool shouldShowUpdateTimestamp;
+@property(readonly) _Bool isV3Enabled;
 @property(readonly) _Bool isInternalInstall;
 
 @end

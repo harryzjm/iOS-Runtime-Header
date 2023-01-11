@@ -4,16 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GEORouteMatcher, MNTransitLocationCoordinator;
+#import <Navigation/MNArrivalUpdaterDelegate-Protocol.h>
+
+@class GEORouteMatcher, MNArrivalUpdater, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MNSteppingLocationTracker
+@interface MNSteppingLocationTracker <MNArrivalUpdaterDelegate>
 {
-    MNTransitLocationCoordinator *_transitLocationCoordinator;
     GEORouteMatcher *_routeMatcher;
+    MNArrivalUpdater *_arrivalUpdater;
 }
 
 - (void).cxx_destruct;
+- (void)arrivalUpdaterDidArrive:(id)arg1;
+- (void)updateLocation:(id)arg1;
 - (id)_matchedLocationForLocation:(id)arg1;
 - (void)stopTracking;
 - (void)startTracking;
@@ -21,6 +25,12 @@ __attribute__((visibility("hidden")))
 - (void)resetForTracePlayerAtLocation:(id)arg1;
 - (int)transportType;
 - (id)initWithNavigationSession:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UIVisualEffectView.h>
 
 __attribute__((visibility("hidden")))
-@interface SFVibrantCellSelectionBackgroundView : UIView
+@interface SFVibrantCellSelectionBackgroundView : UIVisualEffectView
 {
 }
 
+- (void)traitCollectionDidChange:(id)arg1;
+- (id)_selectionEffect;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

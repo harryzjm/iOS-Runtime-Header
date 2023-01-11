@@ -8,11 +8,9 @@
 {
 }
 
-+ (id)accessibilityFocusedBrowserController;
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_setShowingSidebar:(_Bool)arg1;
 - (void)dealloc;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityKeyboardDidHide:(id)arg1;
@@ -24,9 +22,8 @@
 - (void)setShowingReader:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)scrollViewDidScrollToTop:(id)arg1;
 - (id)accessibilityCurrentWebView;
+- (id)_accessibilitySpeakThisViews;
 - (id)accessibilityActiveTabDocument;
-- (_Bool)accessibilityPerformEscape;
-- (void)sidebarDimmingViewDismiss:(id)arg1;
 
 @end
 

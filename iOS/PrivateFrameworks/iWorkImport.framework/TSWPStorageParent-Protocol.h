@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol TSWPStorageParent
+#import <iWorkImport/NSObject-Protocol.h>
+
+@protocol TSWPStorageParent <NSObject>
 @property(readonly, nonatomic) long long contentWritingDirection;
 @property(readonly, nonatomic) _Bool supportsMultipleColumns;
 @property(readonly, nonatomic) _Bool preventsChangeTracking;
 @property(readonly, nonatomic) _Bool preventsComments;
 @property(readonly, nonatomic) _Bool textIsLinked;
-@property(readonly, nonatomic) _Bool textIsVertical;
 @property(readonly, nonatomic) _Bool autoListTermination;
 @property(readonly, nonatomic) _Bool autoListRecognition;
+- (_Bool)textIsVerticalAtCharIndex:(unsigned long long)arg1;
 
 @optional
 @property(readonly, nonatomic) _Bool storageChangesInvalidateWrap;

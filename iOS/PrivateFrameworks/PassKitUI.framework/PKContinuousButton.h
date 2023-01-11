@@ -6,13 +6,14 @@
 
 #import <UIKit/UIButton.h>
 
-@class CAFilter, CAShapeLayer, UIActivityIndicatorView, UIColor;
+@class CAFilter, CAShapeLayer, NSMutableSet, UIActivityIndicatorView, UIColor, UIImage, _UIBackdropView;
 
 @interface PKContinuousButton : UIButton
 {
     CDStruct_e6a35582 _configuration;
-    UIColor *_tintColor;
-    _Bool _titleColorShouldBeTintColor;
+    UIImage *_image;
+    NSMutableSet *_disabledImageStates;
+    UIColor *_overrideTitleColor;
     CAFilter *_highlightFilter;
     UIColor *_normalInputColor;
     UIColor *_highlightInputColor;
@@ -20,31 +21,42 @@
     UIColor *_disabledInputColor;
     UIColor *_appliedInputColor;
     CAShapeLayer *_layer;
+    _UIBackdropView *_backdropView;
+    long long _backdropStyle;
+    _Bool _updatingBackdropSettings;
     _Bool _highlighted;
     _Bool _selected;
     _Bool _enabled;
     struct CGSize _boundsSize;
     UIActivityIndicatorView *_activityIndicatorView;
-    struct UIEdgeInsets _touchMargins;
+    UIColor *_activityIndicatorColor;
+    _Bool _showSpinner;
+    _Bool _blurDisabled;
 }
 
 + (id)_filterInputColorForEffect:(long long)arg1;
 + (Class)layerClass;
-@property(nonatomic) struct UIEdgeInsets touchMargins; // @synthesize touchMargins=_touchMargins;
+@property(nonatomic) _Bool blurDisabled; // @synthesize blurDisabled=_blurDisabled;
+@property(nonatomic) _Bool showSpinner; // @synthesize showSpinner=_showSpinner;
 - (void).cxx_destruct;
-- (void)showSpinner:(_Bool)arg1;
 - (void)_updateFilter;
 - (void)setSelected:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)setEnabled:(_Bool)arg1;
 - (void)_createHighlightFilterIfNecessary;
-- (void)_updateTintColorWithColor:(id)arg1;
+- (void)_updateTitleColor;
+- (void)_updateColor;
+- (void)_accessibilitySettingsDidChange:(id)arg1;
+- (void)_updateBackdropSettings;
+- (void)updateImageView;
+- (void)setImageEnabled:(_Bool)arg1 forState:(unsigned long long)arg2;
 - (void)updateWithImage:(id)arg1;
+- (void)updateActivityIndicatorColorWithColor:(id)arg1;
 - (void)updateTitleColorWithColor:(id)arg1;
 - (void)layoutSubviews;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)tintColorDidChange;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
-- (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)dealloc;
 - (id)initWithConfiguration:(CDStruct_e6a35582)arg1;
 - (id)initWithCornerRadius:(double)arg1 effect:(long long)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject;
+@class NSArray, NSObject;
 @protocol TSDContainerInfo;
 
 __attribute__((visibility("hidden")))
@@ -14,8 +14,9 @@ __attribute__((visibility("hidden")))
 
 @property(readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
 - (void)updateChildrenFromInfo;
+@property(readonly, nonatomic) NSArray *childInfosForChildLayouts;
 - (void)processChangedProperty:(int)arg1;
-- (id)additionalInfosForChildLayouts;
+@property(readonly, nonatomic) NSArray *additionalInfosForChildLayouts;
 - (id)initWithInfo:(id)arg1;
 
 @end

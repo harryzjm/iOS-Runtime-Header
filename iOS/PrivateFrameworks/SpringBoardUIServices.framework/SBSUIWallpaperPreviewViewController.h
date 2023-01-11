@@ -8,16 +8,18 @@
 
 #import <SpringBoardUIServices/SBFLegibilitySettingsProvider-Protocol.h>
 #import <SpringBoardUIServices/SBFLegibilitySettingsProviderDelegate-Protocol.h>
-#import <SpringBoardUIServices/SBFWallpaperViewSettingsProvider-Protocol.h>
+#import <SpringBoardUIServices/SBSUIWallpaperPreviewViewDelegate-Protocol.h>
 
-@class AVURLAsset, NSDictionary, NSString, NSTimer, SBFHomeScreenWallpaperParallaxSettings, SBFLockScreenWallpaperParallaxSettings, SBFWallpaperConfiguration, SBFWallpaperConfigurationManager, SBFWallpaperSettings, UIImage, _UILegibilitySettings;
-@protocol SBFLegibilitySettingsProviderDelegate;
+@class AVURLAsset, NSDictionary, NSString, NSTimer, SBFWallpaperConfiguration, SBFWallpaperConfigurationManager, SBFWallpaperOptions, SBSUIProgressHUD, UIImage, _UILegibilitySettings;
+@protocol SBFLegibilitySettingsProviderDelegate, SBSUIWallpaperPreviewViewControllerDelegate;
 
-@interface SBSUIWallpaperPreviewViewController : UIViewController <SBFLegibilitySettingsProviderDelegate, SBFWallpaperViewSettingsProvider, SBFLegibilitySettingsProvider>
+@interface SBSUIWallpaperPreviewViewController : UIViewController <SBFLegibilitySettingsProviderDelegate, SBSUIWallpaperPreviewViewDelegate, SBFLegibilitySettingsProvider>
 {
     NSTimer *_dateTimer;
     SBFWallpaperConfigurationManager *_wallpaperConfigurationManager;
+    SBFWallpaperConfiguration *_initialConfiguration;
     UIImage *_wallpaperImage;
+    NSDictionary *_wallpaperImageDict;
     NSDictionary *_proceduralWallpaper;
     NSDictionary *_proceduralWallpaperOptions;
     _Bool _allowScrolling;
@@ -25,21 +27,33 @@
     NSString *_name;
     _Bool _colorSamplingEnabled;
     AVURLAsset *_video;
+    NSDictionary *_videoDict;
     double _stillTimeInVideo;
+    SBFWallpaperOptions *_options;
+    NSDictionary *_optionsDict;
+    _Bool _disableSegmentedControl;
+    _Bool _enableButtons;
+    _Bool _disableContents;
+    _Bool _disableDimming;
+    SBSUIProgressHUD *_hud;
     _Bool _motionEnabled;
+    _Bool _irisEnabled;
     id <SBFLegibilitySettingsProviderDelegate> _delegate;
-    SBFWallpaperSettings *_wallpaperSettings;
+    id <SBSUIWallpaperPreviewViewControllerDelegate> _previewDelegate;
+    double _zoomScale;
+    double _parallaxFactor;
     SBFWallpaperConfiguration *_wallpaperConfiguration;
-    SBFLockScreenWallpaperParallaxSettings *_lockScreenParallaxSettings;
-    SBFHomeScreenWallpaperParallaxSettings *_homeScreenParallaxSettings;
+    struct CGRect _cropRect;
 }
 
-@property(retain, nonatomic) SBFHomeScreenWallpaperParallaxSettings *homeScreenParallaxSettings; // @synthesize homeScreenParallaxSettings=_homeScreenParallaxSettings;
-@property(retain, nonatomic) SBFLockScreenWallpaperParallaxSettings *lockScreenParallaxSettings; // @synthesize lockScreenParallaxSettings=_lockScreenParallaxSettings;
 @property(copy, nonatomic) SBFWallpaperConfiguration *wallpaperConfiguration; // @synthesize wallpaperConfiguration=_wallpaperConfiguration;
+@property(nonatomic) double parallaxFactor; // @synthesize parallaxFactor=_parallaxFactor;
+@property(nonatomic) double zoomScale; // @synthesize zoomScale=_zoomScale;
+@property(nonatomic) struct CGRect cropRect; // @synthesize cropRect=_cropRect;
+@property(nonatomic) _Bool irisEnabled; // @synthesize irisEnabled=_irisEnabled;
 @property(nonatomic) _Bool motionEnabled; // @synthesize motionEnabled=_motionEnabled;
 @property(readonly) UIImage *wallpaperImage; // @synthesize wallpaperImage=_wallpaperImage;
-@property(retain, nonatomic) SBFWallpaperSettings *wallpaperSettings; // @synthesize wallpaperSettings=_wallpaperSettings;
+@property(nonatomic) __weak id <SBSUIWallpaperPreviewViewControllerDelegate> previewDelegate; // @synthesize previewDelegate=_previewDelegate;
 @property(nonatomic) __weak id <SBFLegibilitySettingsProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (_Bool)colorSamplingEnabled;
@@ -49,24 +63,36 @@
 - (void)_stopDateTimer;
 - (void)_updateDateView;
 - (id)_dateView;
+- (void)_displaySettingWallpaperHUD;
 - (id)_wallpaperView;
 - (id)_previewView;
 - (id)_colorWallpaperViewWithFrame:(struct CGRect)arg1 variant:(long long)arg2 configuration:(id)arg3;
-- (id)_proceduralWallpaperViewWithFrame:(struct CGRect)arg1 variant:(long long)arg2;
+- (id)_proceduralWallpaperViewWithFrame:(struct CGRect)arg1 variant:(long long)arg2 configuration:(id)arg3;
 - (id)_wallpaperViewWithFrame:(struct CGRect)arg1 variant:(long long)arg2 options:(id)arg3;
-- (id)_wallpaperViewWithFrame:(struct CGRect)arg1 image:(id)arg2 video:(id)arg3 videoURL:(id)arg4 stillTimeInVideo:(double)arg5 supportsCropping:(_Bool)arg6 variant:(long long)arg7;
+- (id)_wallpaperViewWithFrame:(struct CGRect)arg1 image:(id)arg2 video:(id)arg3 videoURL:(id)arg4 stillTimeInVideo:(double)arg5 supportsCropping:(_Bool)arg6 variant:(long long)arg7 needsWallpaperDimming:(_Bool)arg8;
 - (id)_wallpaperViewWithFrame:(struct CGRect)arg1;
-- (id)wallpaperParallaxSettingsForVariant:(long long)arg1;
+- (void)userDidTapOnSetButton:(id)arg1;
+- (void)userDidTapOnCancelButton:(id)arg1;
+- (void)userDidTapOnParallaxButton:(id)arg1;
+- (void)userDidTapOnIrisButton:(id)arg1;
 - (void)providerLegibilitySettingsChanged:(id)arg1;
 @property(readonly, nonatomic) _UILegibilitySettings *legibilitySettings;
 - (void)setMotionEnabled:(_Bool)arg1 updateParallaxOnWallpaperView:(_Bool)arg2;
-- (void)setProceduralWallpaperForLocations:(long long)arg1;
-- (void)setImageWallpaperForLocations:(long long)arg1;
+- (void)_setProceduralWallpaperForLocationsOnMainThread:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_setImageWallpaperForLocationsOnMainThread:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setImageWallpaperForLocations:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_setWallpaperImagesOnMainThread:(id)arg1 options:(id)arg2 locations:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)setWallpaperImages:(id)arg1 options:(id)arg2 locations:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)setWallpaperImages:(id)arg1 options:(id)arg2 locations:(long long)arg3;
+- (void)_setWallpaperForLocationsOnMainThread:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setWallpaperForLocations:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setWallpaperForLocations:(long long)arg1;
 - (double)_parallaxFactor;
 - (long long)_wallpaperType;
 - (id)_wallpaperTypeDescription;
 - (id)wallpaperConfigurationManager;
+- (void)traitCollectionDidChange:(id)arg1;
+- (_Bool)prefersStatusBarHidden;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
@@ -75,8 +101,11 @@
 - (void)dealloc;
 - (id)initWithScrollableImage:(id)arg1 video:(id)arg2 time:(double)arg3;
 - (id)initWithScrollableImage:(id)arg1;
+- (id)initWithImages:(id)arg1 videos:(id)arg2 variant:(long long)arg3 options:(id)arg4 disableSegmentedControl:(_Bool)arg5 enableButtons:(_Bool)arg6 disableContents:(_Bool)arg7;
+- (id)initWithImage:(id)arg1 video:(id)arg2 variant:(long long)arg3 options:(id)arg4 disableSegmentedControl:(_Bool)arg5 enableButtons:(_Bool)arg6 disableContents:(_Bool)arg7;
 - (id)initWithImage:(id)arg1 name:(id)arg2 video:(id)arg3 time:(double)arg4;
 - (id)initWithImage:(id)arg1 name:(id)arg2;
+- (id)initWithProceduralWallpaper:(id)arg1 options:(id)arg2 variant:(long long)arg3 disableSegmentedControl:(_Bool)arg4 enableButtons:(_Bool)arg5 disableContents:(_Bool)arg6;
 - (id)initWithProceduralWallpaper:(id)arg1 options:(id)arg2;
 - (id)initWithWallpaperVariant:(long long)arg1;
 - (id)initWithImage:(id)arg1;

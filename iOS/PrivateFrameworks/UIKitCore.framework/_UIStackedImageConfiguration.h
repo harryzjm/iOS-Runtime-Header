@@ -18,6 +18,7 @@
     _Bool _allowsNonOpaqueShadow;
     _Bool _boostBrightness;
     _Bool _hueShift;
+    _Bool _disableMask;
     _Bool _focusCursorEnabled;
     _Bool _fullBleedCenteredGrowth;
     unsigned long long _maximumParallaxImages;
@@ -28,6 +29,7 @@
     double _scaleSizeIncrease;
     double _pressedScaleAdjustment;
     double _cornerRadius;
+    double _continuousCornerRadiusEnabled;
     double _specularHighlightHorizontalPositionSensitivity;
     double _specularHighlightVerticalPosition;
     double _specularHighlightVerticalPositionSensitivity;
@@ -79,6 +81,7 @@
 @property(nonatomic) double radiosityOffset; // @synthesize radiosityOffset=_radiosityOffset;
 @property(nonatomic) double focusCursorBorderWidth; // @synthesize focusCursorBorderWidth=_focusCursorBorderWidth;
 @property(nonatomic) _Bool focusCursorEnabled; // @synthesize focusCursorEnabled=_focusCursorEnabled;
+@property(nonatomic) _Bool disableMask; // @synthesize disableMask=_disableMask;
 @property(nonatomic) _Bool hueShift; // @synthesize hueShift=_hueShift;
 @property(nonatomic) _Bool boostBrightness; // @synthesize boostBrightness=_boostBrightness;
 @property(nonatomic) _Bool allowsNonOpaqueShadow; // @synthesize allowsNonOpaqueShadow=_allowsNonOpaqueShadow;
@@ -103,6 +106,7 @@
 @property(nonatomic) double specularHighlightVerticalPosition; // @synthesize specularHighlightVerticalPosition=_specularHighlightVerticalPosition;
 @property(nonatomic) double specularHighlightHorizontalPositionSensitivity; // @synthesize specularHighlightHorizontalPositionSensitivity=_specularHighlightHorizontalPositionSensitivity;
 @property(nonatomic) _Bool flatImageContainsCornerRadius; // @synthesize flatImageContainsCornerRadius=_flatImageContainsCornerRadius;
+@property(nonatomic, getter=isContinuousCornerRadiusEnabled) double continuousCornerRadiusEnabled; // @synthesize continuousCornerRadiusEnabled=_continuousCornerRadiusEnabled;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(nonatomic) struct CGPoint translationOffset; // @synthesize translationOffset=_translationOffset;
 @property(nonatomic) double pressedScaleAdjustment; // @synthesize pressedScaleAdjustment=_pressedScaleAdjustment;

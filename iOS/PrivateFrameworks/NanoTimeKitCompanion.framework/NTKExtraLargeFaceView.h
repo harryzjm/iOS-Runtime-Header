@@ -21,7 +21,6 @@
     NTKDigitalTimeLabelStyle *_timeTravelStyle;
     UIView *_timeTravelExitView;
     UITapGestureRecognizer *_timeTravelExitRecognizer;
-    _Bool _statusBarIsVisible;
     _Bool _viewsOffsetForStatusBar;
     _Bool _isEditing;
     _Bool _complicationIsVisible;
@@ -31,6 +30,8 @@
 
 + (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
+- (void)_removeTimeViews;
+- (void)_createTimeViews;
 - (void)_initLargeTimeLabelIfNecessary;
 - (void)_initSmallTimeLabelIfNecessary;
 - (void)_applyShowContentForUnadornedSnapshot;
@@ -40,15 +41,15 @@
 - (id)_complicationView;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
+- (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (_Bool)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (struct UIEdgeInsets)_keylineLabelActiveAreaInsetsForCustomEditMode:(long long)arg1 slot:(id)arg2;
-- (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
-- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (double)_smallTimeAlphaForEditMode:(long long)arg1;
+- (long long)_complicationPickerStyleForSlot:(id)arg1;
 - (void)_noteComplicationVisibilityChanged;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_cleanupAfterEditing;

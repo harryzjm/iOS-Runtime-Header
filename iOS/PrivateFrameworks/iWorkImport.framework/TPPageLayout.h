@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     int _inInvalidationClusterCount;
     _Bool _childTextLayoutsNeedInvalidationForExteriorWrap;
     _Bool _validating;
+    _Bool _overrideAllowFootnotes;
     NSMutableSet *_anchoredDrawableLayouts;
     TPiOSMarginAdjustLayout *_marginAdjustLayout;
     TSDFill *_backgroundFill;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) TSDFill *backgroundFill; // @synthesize backgroundFill=_backgroundFill;
 @property(readonly, nonatomic) TPFootnoteContainerLayout *footnoteContainerLayout; // @synthesize footnoteContainerLayout=_footnoteContainerLayout;
 @property(readonly, nonatomic) TPiOSMarginAdjustLayout *marginAdjustLayout; // @synthesize marginAdjustLayout=_marginAdjustLayout;
+@property(nonatomic) _Bool overrideAllowFootnotes; // @synthesize overrideAllowFootnotes=_overrideAllowFootnotes;
 @property(nonatomic, getter=isValidating) _Bool validating; // @synthesize validating=_validating;
 - (void).cxx_destruct;
 - (pair_b2618ff2)p_sideMargins;
@@ -70,15 +72,16 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)pageCountForAttachment:(id)arg1;
 - (unsigned long long)pageNumberForAttachment:(id)arg1;
 - (int)naturalAlignmentForTextLayout:(id)arg1;
-- (double)maxAutoGrowHeightForTextLayout:(id)arg1;
-- (double)maxAutoGrowWidthForTextLayout:(id)arg1;
+- (double)maxAutoGrowBlockHeightForTextLayout:(id)arg1;
+- (double)maxAutoGrowLineWidthForTextLayout:(id)arg1;
 - (Class)repClassForTextLayout:(id)arg1;
 - (id)dependentsOfTextLayout:(id)arg1;
 - (struct CGRect)autosizedFrameForTextLayout:(id)arg1 textSize:(struct CGSize)arg2;
 - (struct CGRect)nonAutosizedFrameForTextLayout:(id)arg1;
 - (void)invalidateForAutosizingTextLayout:(id)arg1;
 - (int)verticalAlignmentForTextLayout:(id)arg1;
-- (unsigned int)autosizeFlagsForTextLayout:(id)arg1;
+- (unsigned long long)autosizeFlagsForTextLayout:(id)arg1;
+- (_Bool)descendersCannotClip;
 - (void)wrappableChildInvalidated:(id)arg1;
 - (void)endResizeWrapInvalidationCluster;
 - (void)beginResizeWrapInvalidationCluster;
@@ -88,7 +91,7 @@ __attribute__((visibility("hidden")))
 - (id)layoutsCausingWrapOnTextLayoutTarget:(id)arg1 ignoreIntersection:(_Bool)arg2;
 - (struct CGRect)footnoteContainerFrameWithSize:(struct CGSize)arg1;
 - (void)inflateFootnotesInFootnoteContainer:(id)arg1;
-- (double)heightAvailableForFootnotes;
+- (double)blockHeightAvailableForFootnotes;
 - (void)setNeedsInflation;
 - (void)rebuildChildLayoutsOnNextValidationForcingTextLayout:(_Bool)arg1;
 - (void)invalidateFootnoteContainers;
@@ -99,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (void)processWidowAndInflation;
 @property(readonly, nonatomic) NSSet *anchoredDrawableLayouts;
 @property(readonly, nonatomic) NSArray *floatingDrawableLayouts;
+- (_Bool)isRootLevelForInlineGeometry;
 - (_Bool)isRootLayoutForInspectorGeometry;
 @property(readonly, nonatomic) id <NSFastEnumeration> childTextLayoutsForExteriorWrap;
 - (void)invalidateSize;
@@ -126,6 +130,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasFooters;
 - (_Bool)hasHeaders;
 - (_Bool)allowsHeaderFooter;
+@property(readonly, nonatomic) _Bool canHavePreviousPageFootnotes;
 @property(readonly, nonatomic) _Bool allowsFootnotes;
 @property(readonly, nonatomic) _Bool allowsBody;
 @property(readonly, nonatomic) struct CGRect bodyRect;

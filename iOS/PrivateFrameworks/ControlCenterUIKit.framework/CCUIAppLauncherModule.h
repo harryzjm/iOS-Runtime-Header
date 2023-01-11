@@ -27,14 +27,16 @@
 @property(copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property(copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 - (void).cxx_destruct;
-@property(readonly, nonatomic) UIViewController<CCUIContentModuleContentViewController> *contentViewController;
+- (id)contentViewControllerForContext:(id)arg1;
 - (void)handleTapWithTouchType:(long long)arg1;
+- (void)handleTouchDownWithTouchType:(long long)arg1;
 - (id)launchURLForTouchType:(long long)arg1;
 @property(readonly, copy, nonatomic) UIImage *iconGlyph;
 - (id)init;
 
 // Remaining properties
 @property(readonly, nonatomic) UIViewController<CCUIContentModuleBackgroundViewController> *backgroundViewController;
+@property(readonly, nonatomic) UIViewController<CCUIContentModuleContentViewController> *contentViewController;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

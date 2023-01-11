@@ -21,11 +21,13 @@
 
 @property(nonatomic) CDStruct_fce57115 durationSnapshot; // @synthesize durationSnapshot=_durationSnapshot;
 - (void).cxx_destruct;
+- (void)pauseDisplayLinkIfNeeded;
+- (void)runUntilNextDisplayLinkEvent;
 - (void)_updateProgressForElapsedTime:(double)arg1 duration:(double)arg2;
 - (void)_updateLabelsForElapsedTime:(double)arg1 duration:(double)arg2;
 - (void)_displayLinkTick:(id)arg1;
 - (void)layoutSubviews;
-- (void)_addConstraints;
+- (void)setupConstraints;
 - (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
 

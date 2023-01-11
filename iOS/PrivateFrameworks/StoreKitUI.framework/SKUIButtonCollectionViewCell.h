@@ -8,6 +8,7 @@
 
 @class IKViewElementStyle, NSString, SKUIButtonViewElement, SKUIBuyButtonDescriptor, UIControl;
 
+__attribute__((visibility("hidden")))
 @interface SKUIButtonCollectionViewCell <SKUIViewElementView>
 {
     UIControl *_button;

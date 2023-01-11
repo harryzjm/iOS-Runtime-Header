@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSString, SFDevice, SFDeviceOperationHomeKitSetup, SFDeviceOperationWiFiSetup, SFSession, TROperationQueue, TRSession, UIViewController;
+@class NSMutableArray, NSString, SFDevice, SFDeviceOperationCDPSetup, SFDeviceOperationHomeKitSetup, SFDeviceOperationWiFiSetup, SFSession, TROperationQueue, TRSession, UIViewController;
 @protocol OS_dispatch_queue;
 
 @interface SFDeviceRepairSession : NSObject
@@ -14,15 +14,19 @@
     _Bool _activateCalled;
     _Bool _invalidateCalled;
     unsigned long long _startTicks;
+    int _preflightWiFiEarlyState;
     int _preflightWiFiState;
     SFSession *_sfSession;
     int _sfSessionState;
     int _pairVerifyState;
     int _getProblemsState;
     unsigned long long _problemFlags;
+    _Bool _cdpEnabled;
+    SFDeviceOperationCDPSetup *_cdpSetupOperation;
+    double _cdpSetupSecs;
+    int _cdpState;
     SFDeviceOperationHomeKitSetup *_homeKitSetupOperation;
     int _homeKitSetupState;
-    _Bool _wifiSetupEnabled;
     SFDeviceOperationWiFiSetup *_wifiSetupOperation;
     int _wifiSetupState;
     double _wifiSetupSecs;
@@ -53,13 +57,15 @@
 - (void).cxx_destruct;
 - (int)_runFinish;
 - (int)_runHomeKitSetup;
+- (int)_runCDPSetup;
 - (int)_runTRAuthentication;
 - (int)_runTRSessionStart;
 - (int)_runWiFiSetup;
 - (int)_runGetProblems;
 - (int)_runPairVerify;
 - (int)_runSFSessionStart;
-- (int)_runPreflightWiFi;
+- (int)_runPreflightWiFiFull;
+- (int)_runPreflightWiFiEarly;
 - (void)_run;
 - (void)_reportError:(id)arg1;
 - (void)invalidate;

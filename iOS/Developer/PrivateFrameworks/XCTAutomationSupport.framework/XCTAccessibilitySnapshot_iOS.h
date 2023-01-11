@@ -10,6 +10,7 @@
 
 @class NSDictionary;
 
+__attribute__((visibility("hidden")))
 @interface XCTAccessibilitySnapshot_iOS : NSObject <NSCopying>
 {
     NSDictionary *_userTestingSnapshot;

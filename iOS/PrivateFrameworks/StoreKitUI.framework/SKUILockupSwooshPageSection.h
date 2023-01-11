@@ -10,6 +10,7 @@
 
 @class NSString, SKUILockupSwooshArtworkLoader, SKUILockupSwooshViewController, SKUIMissingItemLoader, SKUIProductPageOverlayController, SKUISwooshPageComponent;
 
+__attribute__((visibility("hidden")))
 @interface SKUILockupSwooshPageSection <SKUIMissingItemDelegate, SKUIProductPageOverlayDelegate, SKUISwooshViewControllerDelegate>
 {
     SKUILockupSwooshArtworkLoader *_artworkLoader;

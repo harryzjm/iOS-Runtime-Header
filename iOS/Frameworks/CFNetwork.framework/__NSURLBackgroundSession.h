@@ -10,7 +10,6 @@
 @class NSError, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSURL, NSXPCConnection;
 @protocol NDBackgroundSessionProtocol, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface __NSURLBackgroundSession <NDBackgroundSessionClient, NSURLSessionSubclass>
 {
     unsigned long long _identSeed;
@@ -59,16 +58,15 @@ __attribute__((visibility("hidden")))
 - (void)backgroundDownloadTask:(unsigned long long)arg1 didResumeAtOffset:(long long)arg2 expectedTotalBytes:(long long)arg3;
 - (void)backgroundDownloadTask:(unsigned long long)arg1 didWriteData:(long long)arg2 totalBytesWritten:(long long)arg3 totalBytesExpectedToWrite:(long long)arg4;
 - (void)backgroundDownloadTask:(unsigned long long)arg1 didFinishDownloadingToURL:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)willRetryBackgroundDataTask:(unsigned long long)arg1 withError:(id)arg2 timingData:(id)arg3;
+- (void)willRetryBackgroundDataTask:(unsigned long long)arg1 withError:(id)arg2 transactionMetrics:(id)arg3;
 - (void)backgroundDataTaskDidBecomeDownloadTask:(unsigned long long)arg1;
 - (void)backgroundTask:(unsigned long long)arg1 getAuthHeadersForResponse:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)backgroundDataTask:(unsigned long long)arg1 didReceiveData:(id)arg2 withReply:(CDUnknownBlockType)arg3;
-- (void)backgroundTask:(unsigned long long)arg1 didCompleteWithError:(id)arg2 info:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)backgroundTask:(unsigned long long)arg1 didFinishCollectingMetrics:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)backgroundTask:(unsigned long long)arg1 didCompleteWithError:(id)arg2 taskMetrics:(id)arg3 info:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)backgroundTask:(unsigned long long)arg1 needNewBodyStream:(_Bool)arg2 withReply:(CDUnknownBlockType)arg3;
 - (void)backgroundTask:(unsigned long long)arg1 didSendBodyData:(long long)arg2 totalBytesSent:(long long)arg3 totalBytesExpectedToSend:(long long)arg4;
-- (void)backgroundTask:(unsigned long long)arg1 didReceiveResponse:(id)arg2 timingData:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)backgroundTask:(unsigned long long)arg1 didReceiveResponse:(id)arg2 timingData:(id)arg3;
+- (void)backgroundTask:(unsigned long long)arg1 didReceiveResponse:(id)arg2 transactionMetrics:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)backgroundTask:(unsigned long long)arg1 didReceiveResponse:(id)arg2 transactionMetrics:(id)arg3;
 - (void)backgroundTask:(unsigned long long)arg1 hasConnectionWaitingWithError:(id)arg2;
 - (void)backgroundTask:(unsigned long long)arg1 hasConnectionWaitingWithReason:(long long)arg2;
 - (void)backgroundTaskHasConnectionWaiting:(unsigned long long)arg1;
@@ -89,14 +87,16 @@ __attribute__((visibility("hidden")))
 - (id)AVAssetDownloadTaskForURLAsset:(id)arg1 assetTitle:(id)arg2 assetArtworkData:(id)arg3 options:(id)arg4;
 - (id)AVAssetDownloadTaskForURLAsset:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
 - (id)_AVAssetDownloadTaskForURL:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
-- (id)_onqueue_downloadTaskForRequest:(id)arg1 resumeData:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_downloadTaskForRequest:(id)arg1;
-- (id)_downloadTaskForResumeData:(id)arg1;
-- (id)downloadTaskForRequest:(id)arg1 downloadFilePath:(id)arg2 resumeData:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)_onqueue_uploadTaskForRequest:(id)arg1 uploadFile:(id)arg2 bodyData:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)uploadTaskForRequest:(id)arg1 uploadFile:(id)arg2 bodyData:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)_onqueue_dataTaskForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)dataTaskForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)webSocketTaskForURL:(id)arg1 protocols:(id)arg2;
+- (id)webSocketTaskForRequest:(id)arg1;
+- (id)_onqueue_downloadTaskWithTaskForClass:(id)arg1;
+- (id)_onqueue_downloadTaskForRequest:(id)arg1;
+- (id)_onqueue_downloadTaskForResumeData:(id)arg1;
+- (id)_downloadTaskWithTaskForClass:(id)arg1;
+- (id)_onqueue_uploadTaskForClass:(id)arg1;
+- (id)_uploadTaskWithTaskForClass:(id)arg1;
+- (id)_onqueue_dataTaskWithTaskForClass:(id)arg1;
+- (id)_dataTaskWithTaskForClass:(id)arg1;
 - (void)performBlockOnQueueAndRethrowExceptions:(CDUnknownBlockType)arg1;
 - (id)connectionLostErrorWithURL:(id)arg1;
 - (id)disconnectedErrorWithURL:(id)arg1;

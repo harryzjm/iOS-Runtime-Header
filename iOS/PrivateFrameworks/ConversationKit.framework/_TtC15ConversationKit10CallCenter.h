@@ -8,14 +8,13 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit10CallCenter : NSObject
 {
     MISSING_TYPE *tuCallCenter;
     MISSING_TYPE *delegate;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

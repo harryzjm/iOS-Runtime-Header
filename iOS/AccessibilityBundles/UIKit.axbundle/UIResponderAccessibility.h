@@ -9,8 +9,10 @@
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
++ (_Bool)_isSerializableAccessibilityElement;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_keyCommands;
 - (void)dealloc;
 
 @end

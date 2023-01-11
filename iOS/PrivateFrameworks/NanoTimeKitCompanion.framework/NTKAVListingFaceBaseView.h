@@ -38,13 +38,15 @@
 - (void)_cancelPauseLockout;
 - (void)_activatePauseLockout;
 - (void)_cancelDelayedPlayback;
+- (void)_handleFaceStyleDidChange;
 - (void)_playNextVideoAfterDelay:(double)arg1;
 - (void)_playNextVideo;
 - (void)_playQueuedUpVideo;
 - (void)_transitionToPosterView:(id)arg1;
 - (void)_endScrubbingAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_startScrubbingAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_complicationFlickerWorkgroundAnimationWithDuration:(double)arg1 applier:(CDUnknownBlockType)arg2;
+- (void)_cancelAllTasks;
+- (id)_complicationFlickerWorkgroundAnimationWithDuration:(double)arg1 applier:(CDUnknownBlockType)arg2;
 - (void)_unpauseFromSwitcher;
 - (void)_playVideoForScreenWake:(id)arg1;
 - (void)_playVideo;
@@ -57,6 +59,7 @@
 - (void)faultInFaceContentSkippedDuringSwiping;
 - (void)_applyDataMode;
 - (void)_unloadSnapshotContentViews;
+- (void)setNormalComplicationDisplayWrapper:(id)arg1 forSlot:(id)arg2;
 - (void)_loadSnapshotContentViews;
 - (void)_cleanupAfterOrb:(_Bool)arg1;
 - (void)_prepareForOrb;
@@ -67,7 +70,6 @@
 - (void)_fadeToCurtainViewWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_hideCurtainView;
 - (void)_showCurtainView;
-- (void)_backlightWillTurnOff;
 - (void)_handleScreenWake;
 - (void)_handleOrdinaryScreenWake;
 - (void)_handleWristRaiseScreenWake;

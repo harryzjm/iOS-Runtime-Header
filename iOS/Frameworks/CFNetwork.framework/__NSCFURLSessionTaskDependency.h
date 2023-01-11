@@ -6,7 +6,6 @@
 
 @class NSURLSessionTask, NSURLSessionTaskDependencyDescription;
 
-__attribute__((visibility("hidden")))
 @interface __NSCFURLSessionTaskDependency
 {
     NSURLSessionTaskDependencyDescription *_taskDependencyDescription;

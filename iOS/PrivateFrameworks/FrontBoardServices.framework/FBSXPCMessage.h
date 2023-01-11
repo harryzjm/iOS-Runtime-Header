@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_xpc_object;
+@protocol BSXPCServiceConnectionMessage, OS_xpc_object;
 
 @interface FBSXPCMessage : NSObject
 {
     NSObject<OS_xpc_object> *_payload;
+    id <BSXPCServiceConnectionMessage> _reply;
 }
 
++ (id)messageWithBSXPCMessage:(id)arg1 ownReply:(_Bool)arg2;
 + (id)messageWithPacker:(CDUnknownBlockType)arg1;
 + (id)messageWithPayload:(id)arg1;
 + (id)message;

@@ -6,6 +6,7 @@
 
 @class SKUISortDataRequest, SSVLoadURLOperation;
 
+__attribute__((visibility("hidden")))
 @interface SKUILoadSortDataOperation
 {
     SSVLoadURLOperation *_underlyingOperation;

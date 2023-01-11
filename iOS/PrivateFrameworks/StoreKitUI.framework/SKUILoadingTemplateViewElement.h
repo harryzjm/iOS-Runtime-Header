@@ -6,6 +6,7 @@
 
 @class SKUIActivityIndicatorViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUILoadingTemplateViewElement
 {
 }

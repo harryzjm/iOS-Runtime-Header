@@ -4,25 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSOperation.h>
+@class NSDictionary;
 
-@class NSDictionary, NSError;
-
-@interface WLKSettingsRequestOperation : NSOperation
+@interface WLKSettingsRequestOperation
 {
-    NSError *_error;
     NSDictionary *_response;
-    CDUnknownBlockType _requestCompletionBlock;
 }
 
-+ (id)URLBagKey;
-@property(copy, nonatomic) CDUnknownBlockType requestCompletionBlock; // @synthesize requestCompletionBlock=_requestCompletionBlock;
++ (id)_requestURL:(id *)arg1;
 @property(readonly, nonatomic) NSDictionary *response; // @synthesize response=_response;
-@property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
 - (void).cxx_destruct;
-- (id)_runNetworkOperationAndReturnError:(id *)arg1;
-- (id)requestProperties;
-- (void)main;
+- (void)processResponse;
+- (void)prepareURLRequest:(CDUnknownBlockType)arg1;
+- (id)init;
 
 @end
 

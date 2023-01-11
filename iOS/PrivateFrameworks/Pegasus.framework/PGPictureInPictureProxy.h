@@ -15,11 +15,15 @@
 {
     struct CGSize _preferredContentSize;
     struct CGRect _initialLayerFrame;
+    NSString *_sceneSessionPersistentIdentifier;
     _Bool _isPictureInPicturePossible;
     _Bool _isPictureInPictureActive;
     _Bool _isPictureInPictureSuspended;
     _Bool _pictureInPictureShouldStartWhenEnteringBackground;
     _Bool _pictureInPictureWasStartedWhenEnteringBackground;
+    _Bool _shouldCancelActivePictureInPictureOnStart;
+    _Bool _shouldPullCancellationPolicyOnStart;
+    id _windowSceneActivationStateObserver;
     double _playbackProgress;
     double _playbackRate;
     NSArray *_loadedTimeRanges;
@@ -35,6 +39,7 @@
     struct {
         unsigned int pictureInPictureProxyInterfaceOrientationForTransitionAnimation:1;
         unsigned int pictureInPictureProxyViewFrameForTransitionAnimation:1;
+        unsigned int pictureInPictureProxyViewControllerWindowForTransitionAnimation:1;
         unsigned int pictureInPictureProxy_willStartPictureInPictureWithAnimationType:1;
         unsigned int pictureInPictureProxy_didStartPictureInPictureWithAnimationType:1;
         unsigned int pictureInPictureProxy_failedToStartPictureInPictureWithAnimationType_error:1;
@@ -53,7 +58,7 @@
 + (_Bool)isPictureInPictureActive;
 + (_Bool)isPictureInPictureSupported;
 @property(readonly, nonatomic) UIViewController<PGPictureInPictureViewController> *viewController; // @synthesize viewController=_viewController;
-@property(readonly, nonatomic) long long controlsStyle; // @synthesize controlsStyle=_controlsStyle;
+@property(nonatomic) long long controlsStyle; // @synthesize controlsStyle=_controlsStyle;
 - (void).cxx_destruct;
 - (oneway void)actionButtonTapped;
 - (oneway void)hostedWindowSizeChangeEnded;
@@ -68,15 +73,30 @@
 - (oneway void)pictureInPictureCancelRequestedAnimated:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)pictureInPictureStopRequestedAnimated:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)pictureInPictureStartRequestedAnimated:(_Bool)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_stopObservingWindowSceneActivationState;
+- (void)_updateAutoPIPSettingsAndNotifyRemoteObject;
+- (void)_updateAutoPIPSettingsAndNotifyRemoteObjectIfNeeded;
+- (id)_expectedScene;
+- (void)_executeDelegateCallbackBlock:(CDUnknownBlockType)arg1 assumeApplicationActive:(_Bool)arg2;
+- (id)_sourceScene;
+- (_Bool)_isViewControllerWindowSceneActive;
+- (id)_sceneSessionPersistentIdentifierForTransitionAnimationAssumeApplicationActive:(_Bool)arg1;
 - (struct CGRect)_viewFrameForTransitionAnimationAssumeApplicationActive:(_Bool)arg1;
 - (long long)_interfaceOrientationForTransitionAnimationAssumeApplicationActive:(_Bool)arg1;
-- (void)_stopPictureInPictureAnimated:(_Bool)arg1 activateApplicationIfNeededAndRestoreUserInterface:(_Bool)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)_stopPictureInPictureAnimated:(_Bool)arg1 restoreUserInterface:(_Bool)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)_didStartWithSuccess:(_Bool)arg1 animationType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_actuallyStartAnimated:(_Bool)arg1 animationType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_setupStart:(_Bool)arg1 animationType:(long long)arg2 initialLayerFrame:(struct CGRect)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_manageStartAnimated:(_Bool)arg1 cancelActiveOnStart:(_Bool)arg2 competionHandler:(CDUnknownBlockType)arg3;
+- (void)_updateCancellationPolicyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_startPictureInPictureAnimated:(_Bool)arg1 enteringBackground:(_Bool)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)setControlsStyle:(long long)arg1 animated:(_Bool)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)rotateContentContainer:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setPlaybackProgress:(double)arg1 playbackRate:(double)arg2;
 - (void)stopPictureInPictureAndRestoreUserInterface:(_Bool)arg1;
 - (void)startPictureInPicture;
+- (void)windowSceneForInteractiveTransitionAnimationWhenEnteringBackgroundDidChangeForViewController;
 - (void)viewFrameForInteractiveTransitionAnimationWhenEnteringBackgroundDidChangeForViewController;
 - (void)preferredContentSizeDidChangeForViewController;
 - (void)setLoadedTimeRanges:(id)arg1;

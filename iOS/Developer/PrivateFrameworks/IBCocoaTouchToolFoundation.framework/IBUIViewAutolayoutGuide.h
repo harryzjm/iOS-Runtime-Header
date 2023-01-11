@@ -30,6 +30,7 @@
 - (void)ibMapCopyOfReceiver:(id)arg1 intoLayoutEngine:(id)arg2;
 - (id)ibOverriddenDesignableContentItem;
 - (_Bool)ibShouldMapIntoLayoutEngineAsSpacerView;
+@property(readonly, nonatomic) NSArray *ibCandidateRedundantConstraintsFromHostedEngine;
 @property(readonly, nonatomic) _Bool ibIgnoreNearestNeighborProximityThreshold;
 @property(readonly, nonatomic) NSSet *ibFallbackViewsForCandidateConstraintGenerationForFailedArbitration;
 @property(readonly, nonatomic) id ibWindowForArbitration;
@@ -41,6 +42,8 @@
 @property(nonatomic) double ibShadowedVerticalContentHuggingPriority;
 @property(nonatomic) double ibShadowedHorizontalContentHuggingPriority;
 @property(nonatomic) _Bool ibExternalExplicitTranslatesAutoresizingMaskIntoConstraints;
+@property(nonatomic) struct CGRect ibDesignBounds;
+@property(nonatomic) struct CGRect ibDesignFrame;
 - (id)ibNextAncestorItemForFindingReferencingConstraintsInLayoutInfo:(id)arg1;
 @property(readonly, nonatomic) id <IBCollection> ibTurnedOnButPossiblyUninstalledReferencingConstraints;
 @property(readonly, nonatomic) id <IBCollection> ibCandidateReferencingConstraints;

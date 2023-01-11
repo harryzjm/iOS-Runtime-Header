@@ -9,7 +9,5 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)load;
-
 @end
 

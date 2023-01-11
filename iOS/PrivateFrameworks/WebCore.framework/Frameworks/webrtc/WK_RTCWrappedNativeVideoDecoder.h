@@ -19,9 +19,10 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)implementationName;
-- (long long)decode:(id)arg1 missingFrames:(_Bool)arg2 fragmentationHeader:(id)arg3 codecSpecificInfo:(id)arg4 renderTimeMs:(long long)arg5;
+- (long long)decode:(id)arg1 missingFrames:(_Bool)arg2 codecSpecificInfo:(id)arg3 renderTimeMs:(long long)arg4;
 - (long long)releaseDecoder;
 - (long long)startDecodeWithSettings:(id)arg1 numberOfCores:(int)arg2;
+- (long long)startDecodeWithNumberOfCores:(int)arg1;
 - (void)setCallback:(CDUnknownBlockType)arg1;
 - (unique_ptr_28850a1b)releaseWrappedDecoder;
 - (id)initWithNativeDecoder:(unique_ptr_28850a1b)arg1;

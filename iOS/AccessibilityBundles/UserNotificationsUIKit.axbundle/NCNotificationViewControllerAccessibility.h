@@ -13,7 +13,9 @@
 + (id)safeCategoryTargetClassName;
 - (id)_axLongLookView;
 - (void)dismissViewControllerWithTransition:(int)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_axAnnounceNotification;
 - (void)viewDidAppear:(_Bool)arg1;
+- (_Bool)_accessibilityShouldPostScreenChangedOnPresentation;
 - (_Bool)_accessibilityAppearanceAnnouncementHandledByEnclosingEntity;
 
 @end

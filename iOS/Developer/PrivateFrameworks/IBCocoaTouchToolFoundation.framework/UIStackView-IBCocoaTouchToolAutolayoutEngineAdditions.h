@@ -8,5 +8,12 @@
 
 @interface UIStackView (IBCocoaTouchToolAutolayoutEngineAdditions)
 - (id)ibCopyObjectHierarchyForLayoutEngine:(id)arg1;
+- (void)ibWillCompileForObjectPackage:(id)arg1;
+- (id)ibEffectiveToManyRelationshipKeyPathForKeyPath:(id)arg1 globalMarshallingContext:(id)arg2;
+- (void)setIbSpacing:(id)arg1;
+- (void)setIbArrangedSubviews:(id)arg1;
+- (void)setMergedSubviews:(id)arg1;
+- (_Bool)ibIsSelfManagedContainerInEngine;
+- (id)initWithMarshalledValues:(id)arg1 orderedKeys:(id)arg2 ignoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
 @end
 

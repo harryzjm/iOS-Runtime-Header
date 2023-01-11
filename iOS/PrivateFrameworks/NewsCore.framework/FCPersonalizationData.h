@@ -8,22 +8,21 @@
 #import <NewsCore/FCCoreConfigurationObserving-Protocol.h>
 #import <NewsCore/FCDerivedPersonalizationData-Protocol.h>
 #import <NewsCore/FCOperationThrottlerDelegate-Protocol.h>
-#import <NewsCore/FCUserInfoObserving-Protocol.h>
 
-@class CKRecord, FCPersonalizationTreatment, FCUserInfo, NSMutableArray, NSMutableDictionary, NSObject, NSString;
+@class CKRecord, FCPersonalizationTreatment, NSData, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol FCOperationThrottler, OS_dispatch_queue;
 
-@interface FCPersonalizationData <FCOperationThrottlerDelegate, FCCoreConfigurationObserving, FCUserInfoObserving, FCAppActivityObserving, FCDerivedPersonalizationData>
+@interface FCPersonalizationData <FCOperationThrottlerDelegate, FCCoreConfigurationObserving, FCAppActivityObserving, FCDerivedPersonalizationData>
 {
     _Bool _attemptingUpload;
+    NSData *_pbData;
     NSMutableDictionary *_aggregates;
     NSMutableDictionary *_openChangeGroupDeltas;
     NSMutableArray *_closedChangeGroups;
     CKRecord *_remoteRecord;
-    NSObject<OS_dispatch_queue> *_readWriteQueue;
+    NSObject<OS_dispatch_queue> *_accessQueue;
     FCPersonalizationTreatment *_treatment;
     id <FCOperationThrottler> _saveThrottler;
-    FCUserInfo *_userInfo;
 }
 
 + (void)configureKeyValueStoreForJSONHandling:(id)arg1;
@@ -39,44 +38,41 @@
 + (_Bool)requiresHighPriorityFirstSync;
 + (_Bool)requiresBatchedSync;
 + (_Bool)requiresPushNotificationSupport;
-+ (void)initialize;
-@property(retain, nonatomic) FCUserInfo *userInfo; // @synthesize userInfo=_userInfo;
 @property _Bool attemptingUpload; // @synthesize attemptingUpload=_attemptingUpload;
 @property(retain, nonatomic) id <FCOperationThrottler> saveThrottler; // @synthesize saveThrottler=_saveThrottler;
 @property(retain) FCPersonalizationTreatment *treatment; // @synthesize treatment=_treatment;
-@property(retain, nonatomic) NSObject<OS_dispatch_queue> *readWriteQueue; // @synthesize readWriteQueue=_readWriteQueue;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
 @property(retain, nonatomic) CKRecord *remoteRecord; // @synthesize remoteRecord=_remoteRecord;
 @property(retain, nonatomic) NSMutableArray *closedChangeGroups; // @synthesize closedChangeGroups=_closedChangeGroups;
 @property(retain, nonatomic) NSMutableDictionary *openChangeGroupDeltas; // @synthesize openChangeGroupDeltas=_openChangeGroupDeltas;
 @property(retain, nonatomic) NSMutableDictionary *aggregates; // @synthesize aggregates=_aggregates;
+@property(readonly, nonatomic) NSData *pbData; // @synthesize pbData=_pbData;
 - (void).cxx_destruct;
 - (void)operationThrottler:(id)arg1 performAsyncOperationWithCompletion:(CDUnknownBlockType)arg2;
-- (void)userInfoDidChangeFeldsparID:(id)arg1 fromCloud:(_Bool)arg2;
 - (void)configurationManager:(id)arg1 configurationDidChange:(id)arg2;
 - (id)aggregateForFeatureKey:(id)arg1;
 - (void)enumerateAggregatesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)aggregatesForFeatureKeys:(id)arg1;
 - (void)activityObservingApplicationDidEnterBackground;
-- (void)_reloadTreatmentWithReliablyFetchedCoreConfig:(_Bool)arg1 feldsparID:(id)arg2;
+- (void)_reloadTreatment;
 - (void)_applicationDidEnterBackground;
-- (void)_closeOpenChangeGroup;
+- (void)_closeOpenChangeGroupFromInstance:(id)arg1;
 - (void)_writeToLocalStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_updateWithRemoteRecord:(id)arg1 profile:(id)arg2;
 - (id)_instanceIdentifier;
 - (id)recordsForRestoringZoneName:(id)arg1;
 - (_Bool)canHelpRestoreZoneName:(id)arg1;
-- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordIDs:(id)arg2;
+- (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
 - (void)loadLocalCachesFromStore;
 - (void)syncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)generateDerivedDataWithQualityOfService:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)d_allGlobalAggregates;
 - (void)clearPersonalizationData;
 - (id)modifyLocalAggregatesForFeatureKeys:(id)arg1 withAction:(unsigned long long)arg2 actionCount:(unsigned long long)arg3 defaultClicks:(double)arg4 defaultImpressions:(double)arg5 impressionBias:(double)arg6;
-- (id)featureKeysWithNoAggregates:(id)arg1;
 @property(readonly, nonatomic) FCPersonalizationTreatment *personalizationTreatment;
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3 userInfo:(id)arg4;
+- (id)initWithPBData:(id)arg1 treatment:(id)arg2;
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
 - (void)d_allResults:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)prepareAggregatesForUseWithCompletionHandler:(CDUnknownBlockType)arg1;

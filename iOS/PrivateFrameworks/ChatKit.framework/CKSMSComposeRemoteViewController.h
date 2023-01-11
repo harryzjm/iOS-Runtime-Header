@@ -21,6 +21,8 @@
 + (id)requestViewControllerWithConnectionHandler:(CDUnknownBlockType)arg1;
 @property(nonatomic) __weak id <CKSMSComposeRemoteViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+- (_Bool)_canShowWhileLocked;
+- (void)smsComposeControllerEntryViewContentInserted;
 - (void)smsComposeControllerCancelled;
 - (void)smsComposeControllerSendStartedWithText:(id)arg1;
 - (void)smsComposeControllerShouldSendMessageWithText:(id)arg1 toRecipients:(id)arg2 completion:(CDUnknownBlockType)arg3;

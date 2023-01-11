@@ -12,7 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_processTextBadgeAXLabel:(id)arg1;
-- (_Bool)_accessibilityIsScannerElement;
+- (_Bool)accessibilityRespondsToUserInteraction;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 

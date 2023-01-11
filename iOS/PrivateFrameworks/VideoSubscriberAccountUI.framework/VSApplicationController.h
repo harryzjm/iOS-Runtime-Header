@@ -10,19 +10,22 @@
 #import <VideoSubscriberAccountUI/VSApplicationDelegate-Protocol.h>
 #import <VideoSubscriberAccountUI/VSStateMachineDelegate-Protocol.h>
 
-@class JSValue, NSError, NSOperationQueue, NSString, VSAppDocumentController, VSApplication, VSApplicationControllerResponseHandler, VSAuditToken, VSIdentityProvider, VSPreferences, VSStateMachine;
+@class JSValue, NSError, NSOperationQueue, NSString, NSURL, VSAppDocumentController, VSApplication, VSApplicationControllerResponseHandler, VSAuditToken, VSIdentityProvider, VSPreferences, VSStateMachine;
 @protocol VSApplicationControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VSApplicationController : NSObject <VSAppDocumentControllerDelegate, VSApplicationDelegate, VSStateMachineDelegate>
 {
+    _Bool _applicationMustSelfValidate;
     _Bool _allowUI;
     id <VSApplicationControllerDelegate> _delegate;
     VSIdentityProvider *_identityProvider;
+    NSString *_accountProviderAuthenticationToken;
     VSAuditToken *_auditToken;
     VSStateMachine *_stateMachine;
     NSError *_delegateError;
     NSError *_onLaunchError;
+    NSURL *_fetchedURL;
     NSOperationQueue *_privateQueue;
     VSApplication *_application;
     VSApplicationControllerResponseHandler *_responseHandler;
@@ -33,15 +36,18 @@ __attribute__((visibility("hidden")))
 
 @property(retain, nonatomic) VSPreferences *preferences; // @synthesize preferences=_preferences;
 @property(nonatomic) _Bool allowUI; // @synthesize allowUI=_allowUI;
+@property(nonatomic) _Bool applicationMustSelfValidate; // @synthesize applicationMustSelfValidate=_applicationMustSelfValidate;
 @property(retain, nonatomic) JSValue *applicationReadyCallback; // @synthesize applicationReadyCallback=_applicationReadyCallback;
 @property(retain, nonatomic) VSAppDocumentController *appDocumentController; // @synthesize appDocumentController=_appDocumentController;
 @property(retain, nonatomic) VSApplicationControllerResponseHandler *responseHandler; // @synthesize responseHandler=_responseHandler;
 @property(retain) VSApplication *application; // @synthesize application=_application;
 @property(retain, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
+@property(retain, nonatomic) NSURL *fetchedURL; // @synthesize fetchedURL=_fetchedURL;
 @property(retain) NSError *onLaunchError; // @synthesize onLaunchError=_onLaunchError;
 @property(retain) NSError *delegateError; // @synthesize delegateError=_delegateError;
 @property(retain, nonatomic) VSStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property(copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
+@property(retain, nonatomic) NSString *accountProviderAuthenticationToken; // @synthesize accountProviderAuthenticationToken=_accountProviderAuthenticationToken;
 @property(retain, nonatomic) VSIdentityProvider *identityProvider; // @synthesize identityProvider=_identityProvider;
 @property(nonatomic) __weak id <VSApplicationControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
@@ -49,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (id)_errorForJavascriptErrorValueValue:(id)arg1 withRequest:(id)arg2;
 - (id)_javascriptRequestForRequest:(id)arg1 withVerificationData:(id)arg2;
 - (void)_makeJavascriptRequestForRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (id)_applicationControllerAlertForJavascriptAlert:(id)arg1;
 - (id)_applicationLaunchParams;
 - (id)_bootURL;
 - (void)_notifyDelegateWithBlock:(CDUnknownBlockType)arg1;
@@ -62,7 +69,9 @@ __attribute__((visibility("hidden")))
 - (void)_completeRequest:(id)arg1 withJavascriptResponse:(id)arg2 javascriptErrorValue:(id)arg3;
 - (void)_applicationReadyWithSuccess:(_Bool)arg1 javascriptErrorValue:(id)arg2;
 - (void)_submitJavascriptRequest:(id)arg1 forApplicationControllerRequest:(id)arg2;
+- (void)_cancelValidation;
 - (void)_beginAuthentication;
+- (void)_presentAlert:(id)arg1;
 - (void)_presentDocument:(id)arg1;
 - (void)appDocumentController:(id)arg1 didFailToUpdateViewModelWithError:(id)arg2;
 - (void)appDocumentController:(id)arg1 didUpdateViewModel:(id)arg2;
@@ -71,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)application:(id)arg1 startDidFailWithError:(id)arg2;
 - (void)applicationDidStart:(id)arg1;
 - (void)application:(id)arg1 evaluateAppJavascriptInContext:(id)arg2;
+- (void)applicationStartSelfValidationWithAuthenticationToken:(id)arg1;
 - (void)submitRequest:(id)arg1;
 - (void)showAuthenticationUserInterfaceWithAuthenticationToken:(id)arg1;
 - (void)stop;
@@ -79,6 +89,7 @@ __attribute__((visibility("hidden")))
 - (void)transitionToNotifyingOfLaunchFailureState;
 - (void)transitionToReadyState;
 - (void)transitionToWaitingForBothLaunchCallbacksState;
+- (void)transitionToWaitingForBootUrlState;
 - (void)dealloc;
 - (id)initWithIdentityProvider:(id)arg1;
 - (id)init;

@@ -6,6 +6,7 @@
 
 @class NSString, SKUIItem;
 
+__attribute__((visibility("hidden")))
 @interface SKUIGiftTemplateViewElement
 {
     long long _giftType;

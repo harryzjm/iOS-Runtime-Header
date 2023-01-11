@@ -9,5 +9,6 @@
 @interface UIColor (SXAdditions)
 - (void)_getHSBA:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) double brightness;
+- (id)initWithJSONObject:(id)arg1 andVersion:(id)arg2;
 @end
 

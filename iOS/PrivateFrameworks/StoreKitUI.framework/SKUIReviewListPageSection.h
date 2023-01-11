@@ -6,6 +6,7 @@
 
 @class NSMutableDictionary, SKUIReviewListPageComponent, SKUIViewElementLayoutContext;
 
+__attribute__((visibility("hidden")))
 @interface SKUIReviewListPageSection
 {
     SKUIViewElementLayoutContext *_cellLayoutContext;

@@ -13,6 +13,7 @@
 
 @optional
 @property(readonly, nonatomic) id <CRKCardViewControllerDelegate> cardViewControllerDelegate;
+- (double)boundingWidthForPresentation:(id <CRKCardPresenting>)arg1;
 - (void)cardPresentation:(id <CRKCardPresenting>)arg1 willTransitionFromCardViewController:(UIViewController<CRKCardViewControlling> *)arg2 toCardViewController:(UIViewController<CRKCardViewControlling> *)arg3 withAnimationCoordinator:(id <CRKAnimationCoordinating>)arg4;
 - (long long)semanticContentAttributeForCardPresentation:(id <CRKCardPresenting>)arg1;
 - (long long)cardPresentation:(id <CRKCardPresenting>)arg1 compareCardSectionViewProviderOne:(id <CRKIdentifiedCardSectionViewProviding>)arg2 providerTwo:(id <CRKIdentifiedCardSectionViewProviding>)arg3;

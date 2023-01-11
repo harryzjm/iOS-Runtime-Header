@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary;
+#import <objc/NSObject.h>
 
-@interface REBundleCache
+@class REConcurrentDictionary;
+
+@interface REBundleCache : NSObject
 {
-    NSMutableDictionary *_cachedBundles;
+    REConcurrentDictionary *_cachedBundles;
 }
 
++ (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)bundleAtPath:(id)arg1;
 - (void)dealloc;

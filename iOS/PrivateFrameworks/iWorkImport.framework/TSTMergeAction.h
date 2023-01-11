@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)actionByExpandingWithAction:(id)arg1;
 - (id)shrinkAction;
-- (id)changeDescriptorForTable:(id)arg1;
+- (id)cellRegionForTable:(id)arg1;
 - (id)remapUIDsByColumnMap:(const UUIDMap_b66c2694 *)arg1 rowMap:(const UUIDMap_b66c2694 *)arg2 ownerMap:(const UUIDMap_b66c2694 *)arg3;
 - (void)enumerateMergeFormulasUsingBlock:(CDUnknownBlockType)arg1;
 - (void)saveToArchive:(struct MergeOperationArchive *)arg1 archiver:(id)arg2;

@@ -12,6 +12,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityElements;
+- (void)setPrecipitation:(double)arg1;
+- (void)_axSetPrecipitation:(double)arg1;
 - (id)_accessibilityBriefLabel;
 - (void)setMode:(long long)arg1;
 - (_Bool)_accessibilityIsInCardMode;

@@ -4,30 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreData/NSManagedObject.h>
-
 #import <PhotoLibraryServices/PLCodecIdentity-Protocol.h>
 
-@class NSSet, NSString;
+@class NSString;
 
-@interface PLCodec : NSManagedObject <PLCodecIdentity>
+@interface PLCodec <PLCodecIdentity>
 {
 }
 
 + (id)commonCodec_HEVC_inContext:(id)arg1;
 + (id)commonCodec_H264_inContext:(id)arg1;
 + (id)codecFromFourCharCodeName:(id)arg1 createIfMissing:(_Bool)arg2 context:(id)arg3;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
-+ (id)_stringFrom4CharCode:(unsigned int)arg1;
+@property(readonly, nonatomic, getter=isPlayable) _Bool playable; // @dynamic playable;
 - (_Bool)supportsCloudUpload;
+- (unsigned int)_typeCodeFromString:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(copy, nonatomic) NSString *fourCharCodeName; // @dynamic fourCharCodeName;
 @property(readonly) unsigned long long hash;
-@property(retain, nonatomic) NSSet *resources; // @dynamic resources;
 @property(readonly) Class superclass;
 
 @end

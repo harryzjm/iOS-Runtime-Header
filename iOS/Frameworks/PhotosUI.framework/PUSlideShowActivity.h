@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosUICore/PXActivity.h>
+
 __attribute__((visibility("hidden")))
-@interface PUSlideShowActivity
+@interface PUSlideShowActivity : PXActivity
 {
 }
 
 - (void)performActivity;
 - (_Bool)canPerformWithActivityItems:(id)arg1;
-- (id)_activityBundleImageConfiguration;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 

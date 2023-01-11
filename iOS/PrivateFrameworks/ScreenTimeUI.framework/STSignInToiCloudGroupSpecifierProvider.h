@@ -5,20 +5,22 @@
 //
 
 #import <ScreenTimeUI/AAUISignInControllerDelegate-Protocol.h>
+#import <ScreenTimeUI/MCProfileConnectionObserver-Protocol.h>
 
-@class CATNetworkReachability, NSString, PSSpecifier;
+@class NSString, PSSpecifier;
 
-@interface STSignInToiCloudGroupSpecifierProvider <AAUISignInControllerDelegate>
+__attribute__((visibility("hidden")))
+@interface STSignInToiCloudGroupSpecifierProvider <AAUISignInControllerDelegate, MCProfileConnectionObserver>
 {
     PSSpecifier *_signInSpecifier;
-    CATNetworkReachability *_networkReachability;
 }
 
-@property(retain, nonatomic) CATNetworkReachability *networkReachability; // @synthesize networkReachability=_networkReachability;
 @property(retain, nonatomic) PSSpecifier *signInSpecifier; // @synthesize signInSpecifier=_signInSpecifier;
 - (void).cxx_destruct;
+- (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (void)signInControllerDidCancel:(id)arg1;
 - (void)signInController:(id)arg1 didCompleteWithSuccess:(_Bool)arg2 error:(id)arg3;
+- (void)_updateEnabledValue;
 - (void)presentAppleAccountSignInController:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setCoordinator:(id)arg1;

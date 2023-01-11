@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVDisplayCriteria, NSArray, NSURL;
+@class AVDispatchOnce, AVDisplayCriteria, NSArray, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface AVFigAssetInspector
 {
     struct OpaqueFigAsset *_figAsset;
     struct OpaqueFigFormatReader *_formatReader;
-    long long _formatReaderOnce;
-    long long _checkIsStreamingOnce;
-    long long _makeDisplayCriteriaOnce;
+    AVDispatchOnce *_formatReaderOnce;
+    AVDispatchOnce *_checkIsStreamingOnce;
+    AVDispatchOnce *_makeDisplayCriteriaOnce;
     AVDisplayCriteria *_displayCriteria;
     _Bool _isStreaming;
     _Bool didCheckForSaveRestriction;
@@ -23,16 +23,20 @@ __attribute__((visibility("hidden")))
 - (id)preferredDisplayCriteria;
 - (id)availableVideoDynamicRanges;
 - (struct CGSize)maximumVideoResolution;
+- (id)makePropertyListForProxyWithOptions:(id)arg1;
 - (id)propertyListForProxy;
 - (id)_nameForProxy;
 - (id)_assetAnalysisMessages;
 - (_Bool)supportsAnalysisReporting;
 - (CDStruct_1b6d18a9)overallDurationHint;
+- (long long)fragmentCount;
+- (long long)firstFragmentSequenceNumber;
 - (_Bool)containsFragments;
 - (_Bool)canContainFragments;
 - (id)SHA1Digest;
 - (_Bool)isCompatibleWithAirPlayVideo;
 - (_Bool)isCompatibleWithSavedPhotosAlbum;
+- (_Bool)isCompatibleWithPhotosTranscodingServiceWithOptions:(id)arg1;
 - (_Bool)isPlayable;
 @property(readonly, nonatomic, getter=_isStreaming) _Bool streaming;
 @property(readonly, nonatomic) _Bool hasProtectedContent;
@@ -56,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (id)alternateTrackGroups;
 - (long long)trackCount;
 - (_Bool)providesPreciseDurationAndTiming;
+- (CDStruct_1b6d18a9)minimumTimeOffsetFromLive;
 - (int)naturalTimeScale;
 - (struct CGSize)naturalSize;
 - (struct CGAffineTransform)preferredTransform;
@@ -71,7 +76,6 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=_figAsset) struct OpaqueFigAsset *figAsset;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (void)finalize;
 - (void)dealloc;
 - (id)initWithFigAsset:(struct OpaqueFigAsset *)arg1;
 

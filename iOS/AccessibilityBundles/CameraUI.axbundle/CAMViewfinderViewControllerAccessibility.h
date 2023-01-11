@@ -11,9 +11,15 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)controlStatusBar:(id)arg1 didReceiveTapInIndicatorForType:(unsigned long long)arg2;
+- (void)_axUpdateForGraphConfiguration;
+- (void)_setCurrentGraphConfiguration:(id)arg1;
 - (void)_updateBadgeVisibilityAnimated:(_Bool)arg1;
 - (void)_updateForShallowDepthOfFieldStatusChangedAnimated:(_Bool)arg1;
 - (void)_handleFilterButtonTapped:(id)arg1;
+- (void)_axUpdateInternalMotionManager;
+- (void)_updateLevelMotionTracking;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (_Bool)accessibilityPerformMagicTap;
 
 @end

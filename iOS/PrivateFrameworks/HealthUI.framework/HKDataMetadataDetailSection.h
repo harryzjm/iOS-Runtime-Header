@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKDisplayTypeController, HKUnitPreferenceController, NSObject;
+#import <HealthUI/HKDataMetadataDetailSectionDataReceiver-Protocol.h>
+
+@class HKDataMetadataDataSource, HKDisplayTypeController, HKUnitPreferenceController, NSObject;
 @protocol HKDataMetadataObject;
 
-@interface HKDataMetadataDetailSection
+@interface HKDataMetadataDetailSection <HKDataMetadataDetailSectionDataReceiver>
 {
+    HKDataMetadataDataSource *_metadataDataSource;
     NSObject<HKDataMetadataObject> *_object;
     HKDisplayTypeController *_displayTypeController;
     HKUnitPreferenceController *_unitController;

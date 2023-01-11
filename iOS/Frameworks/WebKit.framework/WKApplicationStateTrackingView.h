@@ -9,8 +9,9 @@
 __attribute__((visibility("hidden")))
 @interface WKApplicationStateTrackingView : UIView
 {
-    struct WeakObjCPtr<WKWebView> _webView;
+    struct WeakObjCPtr<WKWebView> _webViewToTrack;
     struct unique_ptr<WebKit::ApplicationStateTracker, std::__1::default_delete<WebKit::ApplicationStateTracker>> _applicationStateTracker;
+    _Bool _lastObservedStateWasBackground;
 }
 
 - (id).cxx_construct;

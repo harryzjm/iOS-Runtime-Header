@@ -4,21 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray;
+@class NSArray, NSMutableArray;
 
 @interface PLCombinedAssetSearchResult
 {
+    unsigned long long _assetCount;
+    NSArray *_assetUUIDs;
+    _Bool _resultsCanOverlap;
     NSMutableArray *_assetSearchResults;
 }
 
+@property(nonatomic) _Bool resultsCanOverlap; // @synthesize resultsCanOverlap=_resultsCanOverlap;
 @property(retain, nonatomic) NSMutableArray *assetSearchResults; // @synthesize assetSearchResults=_assetSearchResults;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSArray *groupResults;
 - (id)assetUUIDs;
 - (unsigned long long)assetCount;
 - (id)groupDescription;
 - (unsigned long long)categoryMask;
 - (void)addAssetSearchResult:(id)arg1 isMainSearchResult:(_Bool)arg2;
 - (id)initWithAssetSearchResult:(id)arg1;
+- (id)initWithAssetSearchResults:(id)arg1 canOverlap:(_Bool)arg2;
 
 @end
 

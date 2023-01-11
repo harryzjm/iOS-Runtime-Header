@@ -7,12 +7,11 @@
 #import <GameController/DigitizerValueChangedDelegate-Protocol.h>
 #import <GameController/_GCACHomeButtonDelegate-Protocol.h>
 
-@class GCControllerDirectionPad, GCMotion, NSDate, NSString, _GCACHomeButton;
+@class GCControllerDirectionPad, NSDate, NSString, _GCACHomeButton;
 
 @interface _GCAppleTVRemoteControllerProfile <_GCACHomeButtonDelegate, DigitizerValueChangedDelegate>
 {
     _GCACHomeButton *_acHome;
-    GCMotion *_motion;
     double _windowX;
     double _windowY;
     double _windowSize;
@@ -34,7 +33,6 @@
 - (void)setAllowsRotation:(_Bool)arg1;
 - (id)menuButton;
 - (void)toggleSuspendResume;
-- (id)inputForElement:(struct __IOHIDElement *)arg1;
 - (void)setPlayerIndex:(long long)arg1;
 - (id)name;
 - (id)initWithController:(id)arg1;
@@ -49,8 +47,6 @@
 - (void)appDidBecomeActive;
 - (void)appWillResignActive;
 - (unsigned int)sampleRate;
-- (void)set_motion:(id)arg1;
-- (id)motion;
 - (_Bool)ownershipClaimingElementsZero;
 
 // Remaining properties

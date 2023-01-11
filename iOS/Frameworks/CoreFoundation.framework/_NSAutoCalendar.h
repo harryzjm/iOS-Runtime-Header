@@ -8,13 +8,14 @@
 
 @interface _NSAutoCalendar
 {
-    struct _opaque_pthread_mutex_t _lock;
     NSCalendar *cal;
     NSLocale *changedLocale;
     NSTimeZone *changedTimeZone;
     unsigned long long changedFirstWeekday;
     unsigned long long changedMinimumDaysinFirstWeek;
     NSDate *changedGregorianStartDate;
+    unsigned long long combinedNoteCount;
+    struct os_unfair_lock_s _lock;
 }
 
 @end

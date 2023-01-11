@@ -20,15 +20,19 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)adjustRelativeIndexesBy:(const CDStruct_1ef3fb1f *)arg1;
+- (void)adjustRelativeIndexesBy:(const struct TSUColumnRowOffset *)arg1;
 - (id)absoluteCellTractRefForHostCell:(const struct TSUCellCoord *)arg1;
+- (id)absoluteCellTractRefForHostCell:(const struct TSUCellCoord *)arg1 offTable:(_Bool *)arg2;
+- (void)preserveFlagsFixingInversionsForTract:(id)arg1 absFromRelColumns:(const struct TSUIndexSet *)arg2 absFromRelRows:(const struct TSUIndexSet *)arg3;
+- (CDStruct_d36d9755)relativeBoundingRangeWithContainingCell:(const struct TSUCellCoord *)arg1;
 - (struct TSCERelativeCellCoordinate)relativeBottomRight;
 - (struct TSCERelativeCellCoordinate)relativeTopLeft;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (id)debugDescription;
-- (void)verifySpanningSettings;
+- (_Bool)verifySpanningSettings;
 - (id)description;
+- (_Bool)isSingleCellOrSpanningRange;
 - (_Bool)isRectangularRange;
 - (void)setRelativeRows:(const struct TSUIndexSet *)arg1;
 - (void)setRelativeColumns:(const struct TSUIndexSet *)arg1;
@@ -61,6 +65,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool preserveRectangular;
 @property(nonatomic) _Bool spansAllRows;
 @property(nonatomic) _Bool spansAllColumns;
+- (void)repairSpanningRowSetting;
+- (void)repairSpanningColumnSetting;
 - (id)initWithAbsoluteTractRef:(id)arg1 hostCell:(const struct TSUCellCoord *)arg2;
 - (id)initWithTableUID:(const UUIDData_5fbc143e *)arg1 preserveFlags:(const struct TSUPreserveFlags *)arg2;
 - (id)init;

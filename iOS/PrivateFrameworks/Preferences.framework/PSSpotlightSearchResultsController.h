@@ -15,6 +15,8 @@
 {
     NSMutableDictionary *_iconViewMap;
     NSMutableArray *_reusableIconViews;
+    long long _deviceOrientation;
+    double originalInset;
     NSArray *_results;
     id <PSSpotlightSearchResultsControllerDelegate> _delegate;
     NSMutableArray *_tableData;
@@ -43,6 +45,7 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidLoad;
 - (id)init;
 

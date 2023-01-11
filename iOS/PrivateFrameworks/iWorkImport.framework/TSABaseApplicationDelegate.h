@@ -17,7 +17,8 @@ __attribute__((visibility("hidden")))
 + (void)resetSharedConfigurations;
 + (id)sharedDelegate;
 @property(retain, nonatomic) id <TSADownloadDelegate> downloadDelegate; // @synthesize downloadDelegate=_downloadDelegate;
-@property(nonatomic) TSADocumentRoot *documentRoot; // @synthesize documentRoot=mDocumentRoot;
+@property(nonatomic) __weak TSADocumentRoot *documentRoot; // @synthesize documentRoot=mDocumentRoot;
+- (void).cxx_destruct;
 - (void)setAppTextDefaults:(id)arg1 passphraseVerifier:(id)arg2;
 - (id)iWorkTextDefaultsPassphraseVerifier;
 - (id)appTextDefaults;
@@ -30,7 +31,9 @@ __attribute__((visibility("hidden")))
 - (void)setIWorkAuthorColorIndex:(unsigned long long)arg1;
 - (unsigned long long)iWorkAuthorColorIndex;
 - (id)iWorkAuthorName;
-- (_Bool)hasIWorkAuthorName;
+@property(readonly, nonatomic) _Bool hasIWorkAuthorName;
+- (_Bool)hasApplicationBadgeCount;
+- (void)setApplicationBadgeCount:(unsigned long long)arg1 forCategory:(id)arg2;
 - (void)setIWorkAuthorName:(id)arg1;
 - (void)setICloudPreferences:(id)arg1 forKvsDocumentKey:(id)arg2;
 - (id)iCloudPreferencesForKvsDocumentKey:(id)arg1;
@@ -47,14 +50,12 @@ __attribute__((visibility("hidden")))
 - (id)documentPreferenceKeyPrefix;
 - (void)registerICloudPreferences;
 - (id)existingNestedDocumentPathForPath:(id)arg1;
-- (_Bool)showChineseNamedPointSizes;
-- (_Bool)openURL:(id)arg1 withDocumentRoot:(id)arg2;
-- (_Bool)openURL:(id)arg1;
-- (double)maximumAspectRatioForPreviewImage;
-- (double)mimimumAspectRatioForPreviewImage;
+@property(readonly, nonatomic) _Bool showChineseNamedPointSizes;
+- (_Bool)openURL:(id)arg1 displayAlertOnError:(_Bool)arg2;
+@property(readonly, nonatomic) double maximumAspectRatioForPreviewImage;
+@property(readonly, nonatomic) double mimimumAspectRatioForPreviewImage;
 - (Class)drawableInfoSubclassForClass:(Class)arg1 unarchiver:(id)arg2;
-- (id)applicationTemplateVariantsForLocale:(struct __CFLocale *)arg1;
-@property(readonly, nonatomic) NSArray *applicationTemplateVariants;
+- (id)applicationTemplateVariantsForLocale:(id)arg1;
 - (void)registerDefaults;
 - (_Bool)isReadableDocumentType:(id)arg1;
 @property(readonly, nonatomic) NSArray *importableDocumentTypes;
@@ -68,10 +69,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *nativeDocumentExtension;
 @property(readonly, nonatomic) NSString *nativeDocumentType;
 - (void)persistenceError:(id)arg1;
-- (void)wakeUpDownloadManager;
 - (void)registerSOSClassTypeMappings;
-- (Class)documentRootClass;
-- (void)dealloc;
+@property(readonly, nonatomic) Class documentRootClass;
 - (id)init;
 
 @end

@@ -10,13 +10,16 @@
 
 @class NSArray, NSString, STUsageDetailsViewModel;
 
+__attribute__((visibility("hidden")))
 @interface STSetupAssistantUsageDetailsCoordinator : NSObject <STUsageDetailsViewModelCoordinator>
 {
+    _Bool _refreshing;
     NSArray *_devices;
     NSString *_selectedDeviceIdentifier;
     STUsageDetailsViewModel *_viewModel;
 }
 
+@property(readonly, getter=isRefreshing) _Bool refreshing; // @synthesize refreshing=_refreshing;
 @property(readonly, nonatomic) STUsageDetailsViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property(copy, nonatomic) NSString *selectedDeviceIdentifier; // @synthesize selectedDeviceIdentifier=_selectedDeviceIdentifier;
 @property(readonly, copy, nonatomic) NSArray *devices; // @synthesize devices=_devices;
@@ -24,7 +27,7 @@
 - (void)refreshUsageData;
 - (void)stopRefreshingUsageData;
 - (void)startRefreshingUsageData;
-- (id)introUsageItems;
+- (id)_introUsageItemsWithStartDate:(id)arg1;
 - (id)categoryConfigByIdentifier;
 - (id)appConfigByIdentifier;
 - (id)init;

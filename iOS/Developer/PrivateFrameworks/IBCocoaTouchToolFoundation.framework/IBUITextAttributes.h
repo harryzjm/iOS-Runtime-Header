@@ -26,7 +26,7 @@
 @property(readonly, copy, nonatomic) IBUIFontDescription *fontDescription; // @synthesize fontDescription=_fontDescription;
 - (void).cxx_destruct;
 - (id)transformAfterMarshalling;
-- (id)traitStoragesWithObjectID:(id)arg1 keyPath:(id)arg2;
+- (id)traitStoragesWithObjectID:(id)arg1 keyPath:(id)arg2 targetOSVersion:(id)arg3 platform:(id)arg4;
 - (_Bool)isEmpty;
 - (id)textAttributesWithTextShadowOffset:(id)arg1;
 - (id)textAttributesWithTextShadowColor:(id)arg1;

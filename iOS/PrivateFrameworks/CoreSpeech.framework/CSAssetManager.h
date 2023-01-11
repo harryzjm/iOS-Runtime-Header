@@ -6,51 +6,40 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreSpeech/CSAssetControllerDelegate-Protocol.h>
 #import <CoreSpeech/CSLanguageCodeUpdateMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSSpeechEndpointAssetMetaUpdateMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSVoiceTriggerAssetMetaUpdateMonitorDelegate-Protocol.h>
 
-@class CSPolicy, NSDictionary, NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue;
+@class CSAssetDownloadingOption, CSPolicy, NSMutableDictionary, NSString;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface CSAssetManager : NSObject <CSVoiceTriggerAssetMetaUpdateMonitorDelegate, CSSpeechEndpointAssetMetaUpdateMonitorDelegate, CSLanguageCodeUpdateMonitorDelegate>
+@interface CSAssetManager : NSObject <CSVoiceTriggerAssetMetaUpdateMonitorDelegate, CSSpeechEndpointAssetMetaUpdateMonitorDelegate, CSAssetControllerDelegate, CSLanguageCodeUpdateMonitorDelegate>
 {
-    NSDictionary *_csAssetsDictionary;
-    NSObject<OS_dispatch_queue> *_queue;
     CSPolicy *_enablePolicy;
     NSString *_currentLanguageCode;
+    CSAssetDownloadingOption *_downloadingOption;
     NSMutableDictionary *_observers;
+    NSObject<OS_dispatch_source> *_downloadTimer;
+    long long _downloadTimerCount;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 + (id)sharedManager;
-+ (unsigned long long)getEndpointAssetCurrentCompatibilityVersion;
-+ (id)getEndpointAssetTypeString;
-+ (unsigned long long)getVoiceTriggerAssetCurrentCompatibilityVersion;
-+ (id)getVoiceTriggerAssetTypeString;
-+ (id)predicateForAssetType:(unsigned long long)arg1 language:(id)arg2;
-+ (id)predicateForfetchRemoteMetadataForAssetType:(unsigned long long)arg1;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 - (void).cxx_destruct;
+- (void)_stopPeriodicalDownload;
+- (void)_startPeriodicalDownload;
+- (void)_createPeriodicalDownloadTimer;
+- (void)CSAssetController:(id)arg1 didDownloadNewAssetForType:(unsigned long long)arg2;
 - (void)CSSpeechEndpointAssetMetaUpdateMonitor:(id)arg1 didReceiveNewSpeechEndpointAssetMetaData:(_Bool)arg2;
 - (void)CSVoiceTriggerAssetMetaUpdateMonitor:(id)arg1 didReceiveNewVoiceTriggerAssetMetaData:(_Bool)arg2;
 - (void)removeObserver:(id)arg1 forAssetType:(unsigned long long)arg2;
 - (void)addObserver:(id)arg1 forAssetType:(unsigned long long)arg2;
 - (void)CSLanguageCodeUpdateMonitor:(id)arg1 didReceiveLanguageCodeChanged:(id)arg2;
 @property(readonly, nonatomic) NSString *currentLanguageCode;
-- (void)_startDownloadingAsset:(id)arg1 progress:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_downloadAsset:(id)arg1 withComplete:(CDUnknownBlockType)arg2;
-- (id)_defaultDownloadOptions;
-- (void)_updateFromRemoteToLocalAssets:(id)arg1 forAssetType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_fetchRemoteAssetOfType:(unsigned long long)arg1 withPredicate:(id)arg2 localOnly:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (_Bool)_canFetchRemoteAsset:(unsigned long long)arg1;
 - (void)_fetchRemoteMetaData;
-- (void)fetchRemoteAssetOfType:(unsigned long long)arg1 forLanguageCode:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (_Bool)_isReadyToUse;
-- (void)_runAssetQuery:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_assetQueryForAssetType:(unsigned long long)arg1 withPredicate:(id)arg2 localOnly:(_Bool)arg3;
-- (id)_findLatestInstalledAsset:(id)arg1;
-- (void)_installedAssetOfType:(unsigned long long)arg1 withPredicate:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_installedAssetOfType:(unsigned long long)arg1 withPredicate:(id)arg2;
-- (void)installedAssetOfType:(unsigned long long)arg1 withPredicate:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)installedAssetOfType:(unsigned long long)arg1 withPredicate:(id)arg2;
 - (void)installedAssetOfType:(unsigned long long)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)installedAssetOfType:(unsigned long long)arg1 language:(id)arg2;
 - (void)assetOfType:(unsigned long long)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -58,8 +47,10 @@
 - (void)installedAssetForCurrentLanguageOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)installedAssetForCurrentLanguageOfType:(unsigned long long)arg1;
 - (void)assetForCurrentLanguageOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)allInstalledAssetsOfType:(unsigned long long)arg1 language:(id)arg2;
 - (id)assetForCurrentLanguageOfType:(unsigned long long)arg1;
-- (id)init;
+- (void)setAssetDownloadingOption:(id)arg1;
+- (id)initWithDownloadOption:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

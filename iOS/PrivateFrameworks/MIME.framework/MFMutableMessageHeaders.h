@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSMutableDictionary;
+#import <MIME/ECMutableMessageHeaders-Protocol.h>
 
-@interface MFMutableMessageHeaders
+@class NSMutableArray, NSMutableDictionary, NSString;
+
+@interface MFMutableMessageHeaders <ECMutableMessageHeaders>
 {
     NSMutableDictionary *_headersAdded;
     NSMutableArray *_headersRemoved;
 }
 
-- (id)description;
+- (void).cxx_destruct;
+@property(readonly, copy) NSString *description;
 - (void)stripInternalHeaders;
 - (void)setReferences:(id)arg1;
+- (void)setAddressListForReplyTo:(id)arg1;
 - (void)setAddressListForBcc:(id)arg1;
 - (void)setAddressListForCc:(id)arg1;
 - (void)setAddressListForTo:(id)arg1;
@@ -33,8 +37,12 @@
 - (_Bool)hasHeaderForKey:(id)arg1;
 - (id)allHeaderKeys;
 - (id)headersDictionary;
-- (void)dealloc;
 - (id)mutableCopy;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

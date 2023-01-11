@@ -6,16 +6,26 @@
 
 #import <HomeUI/HUQuickControlColorInteractionCoordinatorDelegate-Protocol.h>
 
-@class HFColorControlItem, HUQuickControlColorViewProfile, NSString;
+@class HFColorControlItem, HUQuickControlColorViewProfile, NSIndexPath, NSString;
 
 @interface HUQuickControlColorViewController <HUQuickControlColorInteractionCoordinatorDelegate>
 {
+    unsigned long long _mode;
+    NSIndexPath *_selectedColorIndexPath;
+    HUQuickControlColorViewController *_colorViewController;
 }
 
 + (Class)controlItemClass;
-- (void)interactionCoordinator:(id)arg1 activeModeDidChange:(unsigned long long)arg2;
+@property(retain, nonatomic) HUQuickControlColorViewController *colorViewController; // @synthesize colorViewController=_colorViewController;
+@property(retain, nonatomic) NSIndexPath *selectedColorIndexPath; // @synthesize selectedColorIndexPath=_selectedColorIndexPath;
+@property(nonatomic) unsigned long long mode; // @synthesize mode=_mode;
+- (void).cxx_destruct;
+- (struct CGSize)preferredContentSize;
+- (void)quickControlItemUpdater:(id)arg1 didUpdateResultsForControlItems:(id)arg2;
+- (void)doneButtonTapped;
+- (void)cancelButtonTapped;
+- (void)presentFullColorViewForInteractionCoordinator:(id)arg1 selectedColorIndexPath:(id)arg2;
 - (void)interactionCoordinator:(id)arg1 colorPaletteDidChange:(id)arg2;
-- (id)overrideSecondaryStatusText;
 - (id)overrideStatusText;
 - (id)controlToViewValueTransformer;
 - (id)createViewProfile;

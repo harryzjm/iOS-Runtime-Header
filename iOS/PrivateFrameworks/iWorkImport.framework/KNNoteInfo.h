@@ -19,10 +19,12 @@ __attribute__((visibility("hidden")))
     _Bool _shrinkTextForPrinting;
     NSObject<TSDContainerInfo> *parentInfo;
     TSWPStorage *_containedStorage;
+    unsigned long long _initialCharacterIndexForExporting;
     struct CGRect _frameForPrinting;
 }
 
 + (_Bool)needsObjectUUID;
+@property(nonatomic) unsigned long long initialCharacterIndexForExporting; // @synthesize initialCharacterIndexForExporting=_initialCharacterIndexForExporting;
 @property(nonatomic) _Bool shrinkTextForPrinting; // @synthesize shrinkTextForPrinting=_shrinkTextForPrinting;
 @property(nonatomic) struct CGRect frameForPrinting; // @synthesize frameForPrinting=_frameForPrinting;
 @property(retain, nonatomic) TSWPStorage *containedStorage; // @synthesize containedStorage=_containedStorage;
@@ -37,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool preventsChangeTracking;
 @property(readonly, nonatomic) _Bool preventsComments;
 @property(readonly, nonatomic) _Bool textIsLinked;
-@property(readonly, nonatomic) _Bool textIsVertical;
+- (_Bool)textIsVerticalAtCharIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool autoListTermination;
 @property(readonly, nonatomic) _Bool autoListRecognition;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
@@ -46,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (id)childEnumerator;
 - (id)infoForSelectionPath:(id)arg1;
-@property(readonly, nonatomic) NSArray *childInfos;
+@property(readonly, copy, nonatomic) NSArray *childInfos;
 - (_Bool)isThemeContent;
 - (_Bool)isSelectable;
 - (Class)repClass;
@@ -73,6 +75,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isMaster;
 @property(nonatomic) _Bool matchesObjectPlaceholderGeometry;
 @property(readonly, nonatomic) _Bool storageChangesInvalidateWrap;
 @property(readonly) Class superclass;

@@ -4,13 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@class NSString;
-
-@interface PPEventNameRecordLoadingDelegate : NSObject
+@interface PPEventNameRecordLoadingDelegate
 {
-    NSString *_name;
     CDUnknownBlockType _eventNameRecordsSetup;
     CDUnknownBlockType _eventNameRecordsHandler;
     CDUnknownBlockType _eventNameRecordsCompletion;
@@ -27,8 +22,14 @@
 @property(copy, nonatomic) CDUnknownBlockType eventNameRecordsCompletion; // @synthesize eventNameRecordsCompletion=_eventNameRecordsCompletion;
 @property(copy, nonatomic) CDUnknownBlockType eventNameRecordsHandler; // @synthesize eventNameRecordsHandler=_eventNameRecordsHandler;
 @property(copy, nonatomic) CDUnknownBlockType eventNameRecordsSetup; // @synthesize eventNameRecordsSetup=_eventNameRecordsSetup;
-@property(readonly, nonatomic) NSString *name; // @synthesize name=_name;
 - (void).cxx_destruct;
+- (void)resetRecordData;
+- (void)recentRecordLoadingCompletion;
+- (unsigned char)recentRecordLoadingHandler:(id)arg1;
+- (unsigned char)recentRecordLoadingSetup;
+- (void)recordLoadingCompletion;
+- (unsigned char)recordLoadingHandler:(id)arg1;
+- (unsigned char)recordLoadingSetup;
 - (id)description;
 - (id)initWithName:(id)arg1;
 

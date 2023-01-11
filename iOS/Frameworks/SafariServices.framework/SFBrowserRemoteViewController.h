@@ -9,7 +9,7 @@
 #import <SafariServices/MPVolumeDisplaying-Protocol.h>
 #import <SafariServices/SFRemoteViewControllerProtocol-Protocol.h>
 
-@class NSString;
+@class NSString, UIWindowScene;
 @protocol SFBrowserRemoteViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *volumeAudioCategory;
 @property(readonly, nonatomic, getter=isOnScreenForVolumeDisplay) _Bool onScreenForVolumeDisplay;
+- (void)didResolveRedirectionWithURL:(id)arg1 appLink:(id)arg2;
 - (void)didChangeFullScreen:(_Bool)arg1;
 - (void)initialLoadDidRedirectToURL:(id)arg1;
 - (void)didDecideCookieSharingForURL:(id)arg1 shouldCancel:(_Bool)arg2;
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic, getter=isOnScreen) _Bool onScreen;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) UIWindowScene *windowSceneForVolumeDisplay;
 
 @end
 

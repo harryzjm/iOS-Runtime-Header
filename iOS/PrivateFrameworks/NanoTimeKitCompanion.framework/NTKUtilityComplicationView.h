@@ -19,9 +19,15 @@
     UIColor *_foregroundColor;
     CLKFont *_font;
     NSDate *_timeTravelDate;
+    UIColor *_computedForegroundColor;
+    UIColor *_computedPlatterColor;
+    double _computedForegroundAlpha;
+    double _computedForegroundImageAlpha;
     _Bool _canUseCurvedText;
     _Bool _shouldUseBackgroundPlatter;
+    _Bool _alwaysEnforcePlatterInset;
     _Bool _useRoundedFontDesign;
+    _Bool _useBlockyHighlightCorners;
     _Bool _suppressesInternalColorOverrides;
     _Bool _editing;
     id <NTKComplicationDisplayObserver> displayObserver;
@@ -63,9 +69,11 @@
 @property(retain, nonatomic) UIImageView *backgroundPlatter; // @synthesize backgroundPlatter=_backgroundPlatter;
 @property(nonatomic) _Bool suppressesInternalColorOverrides; // @synthesize suppressesInternalColorOverrides=_suppressesInternalColorOverrides;
 @property(nonatomic) double editingRotationAngle; // @synthesize editingRotationAngle=_editingRotationAngle;
+@property(nonatomic) _Bool useBlockyHighlightCorners; // @synthesize useBlockyHighlightCorners=_useBlockyHighlightCorners;
 @property(nonatomic) double fontWeight; // @synthesize fontWeight=_fontWeight;
 @property(nonatomic) _Bool useRoundedFontDesign; // @synthesize useRoundedFontDesign=_useRoundedFontDesign;
 @property(readonly) NSDate *timeTravelDate; // @synthesize timeTravelDate=_timeTravelDate;
+@property(nonatomic) _Bool alwaysEnforcePlatterInset; // @synthesize alwaysEnforcePlatterInset=_alwaysEnforcePlatterInset;
 @property(nonatomic) _Bool shouldUseBackgroundPlatter; // @synthesize shouldUseBackgroundPlatter=_shouldUseBackgroundPlatter;
 @property(nonatomic) unsigned long long placement; // @synthesize placement=_placement;
 @property(nonatomic) double foregroundImageAlpha; // @synthesize foregroundImageAlpha=_foregroundImageAlpha;
@@ -111,10 +119,22 @@
 - (id)_backgroundPlatterImage;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (_Bool)shouldUsePlatterInset;
+- (_Bool)isPlacementForTopBezelComplication;
 - (void)_applyColorScheme:(id)arg1;
 - (void)applyTransitionFraction:(double)arg1 fromFaceColor:(unsigned long long)arg2 toFaceColor:(unsigned long long)arg3 units:(unsigned long long)arg4 brightenedUnits:(unsigned long long)arg5;
 - (void)applyFaceColor:(unsigned long long)arg1 units:(unsigned long long)arg2;
+- (void)_updateForegroundImageAlpha;
+- (void)_computeForegroundImageAlpha;
+- (void)_computeForegroundAlpha;
+- (void)_updateForegroundAlpha;
 @property(nonatomic) double foregroundAlpha; // @synthesize foregroundAlpha=_foregroundAlpha;
+- (id)_computedPlatterColor;
+- (void)_computePlatterColor;
+- (void)_updatePlatterColor;
+- (id)_computedForegroundColor;
+- (void)_computeForegroundColor;
+- (void)_updateForegroundColor;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

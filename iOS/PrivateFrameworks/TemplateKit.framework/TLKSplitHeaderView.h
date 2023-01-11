@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TemplateKit/NUIContainerGridViewDelegate-Protocol.h>
+#import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
 
-@class NSString, NUIContainerGridView, TLKBadgedLabel, TLKImage, TLKImageView, TLKMultilineText, TLKVibrantLabel;
+@class NSString, NUIContainerGridView, TLKEmbossedLabel, TLKImage, TLKImageView, TLKLabel, TLKMultilineText;
 
-@interface TLKSplitHeaderView <NUIContainerGridViewDelegate>
+@interface TLKSplitHeaderView <NUIContainerViewDelegate>
 {
     _Bool _shouldBadgeSubtitle;
     TLKMultilineText *_title;
@@ -20,29 +20,27 @@
     TLKImage *_trailingImage;
     TLKMultilineText *_trailingTitle;
     TLKMultilineText *_trailingSubtitle;
-    NUIContainerGridView *_gridView;
     TLKImageView *_leadingImageView;
-    TLKVibrantLabel *_leadingTitleLabel;
-    TLKVibrantLabel *_leadingSubtitleLabel;
+    TLKLabel *_leadingTitleLabel;
+    TLKLabel *_leadingSubtitleLabel;
     TLKImageView *_trailingImageView;
-    TLKVibrantLabel *_trailingTitleLabel;
-    TLKVibrantLabel *_trailingSubtitleLabel;
-    TLKVibrantLabel *_titleLabel;
-    TLKVibrantLabel *_subtitle1Label;
-    TLKBadgedLabel *_subtitle2Label;
+    TLKLabel *_trailingTitleLabel;
+    TLKLabel *_trailingSubtitleLabel;
+    TLKLabel *_titleLabel;
+    TLKLabel *_subtitle1Label;
+    TLKEmbossedLabel *_subtitle2Label;
 }
 
 + (id)footnoteFont;
-@property(retain) TLKBadgedLabel *subtitle2Label; // @synthesize subtitle2Label=_subtitle2Label;
-@property(retain) TLKVibrantLabel *subtitle1Label; // @synthesize subtitle1Label=_subtitle1Label;
-@property(retain) TLKVibrantLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(retain) TLKVibrantLabel *trailingSubtitleLabel; // @synthesize trailingSubtitleLabel=_trailingSubtitleLabel;
-@property(retain) TLKVibrantLabel *trailingTitleLabel; // @synthesize trailingTitleLabel=_trailingTitleLabel;
-@property(retain) TLKImageView *trailingImageView; // @synthesize trailingImageView=_trailingImageView;
-@property(retain) TLKVibrantLabel *leadingSubtitleLabel; // @synthesize leadingSubtitleLabel=_leadingSubtitleLabel;
-@property(retain) TLKVibrantLabel *leadingTitleLabel; // @synthesize leadingTitleLabel=_leadingTitleLabel;
-@property(retain) TLKImageView *leadingImageView; // @synthesize leadingImageView=_leadingImageView;
-@property(retain) NUIContainerGridView *gridView; // @synthesize gridView=_gridView;
+@property(retain, nonatomic) TLKEmbossedLabel *subtitle2Label; // @synthesize subtitle2Label=_subtitle2Label;
+@property(retain, nonatomic) TLKLabel *subtitle1Label; // @synthesize subtitle1Label=_subtitle1Label;
+@property(retain, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(retain, nonatomic) TLKLabel *trailingSubtitleLabel; // @synthesize trailingSubtitleLabel=_trailingSubtitleLabel;
+@property(retain, nonatomic) TLKLabel *trailingTitleLabel; // @synthesize trailingTitleLabel=_trailingTitleLabel;
+@property(retain, nonatomic) TLKImageView *trailingImageView; // @synthesize trailingImageView=_trailingImageView;
+@property(retain, nonatomic) TLKLabel *leadingSubtitleLabel; // @synthesize leadingSubtitleLabel=_leadingSubtitleLabel;
+@property(retain, nonatomic) TLKLabel *leadingTitleLabel; // @synthesize leadingTitleLabel=_leadingTitleLabel;
+@property(retain, nonatomic) TLKImageView *leadingImageView; // @synthesize leadingImageView=_leadingImageView;
 @property(retain, nonatomic) TLKMultilineText *trailingSubtitle; // @synthesize trailingSubtitle=_trailingSubtitle;
 @property(retain, nonatomic) TLKMultilineText *trailingTitle; // @synthesize trailingTitle=_trailingTitle;
 @property(retain, nonatomic) TLKImage *trailingImage; // @synthesize trailingImage=_trailingImage;
@@ -64,16 +62,16 @@
 - (_Bool)secondRowIsHidden;
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
 - (void)observedPropertiesChanged;
-- (id)vibrantFootnoteLabel:(_Bool)arg1;
+- (id)footnoteLabel;
 - (id)thirdRowOfViews;
 - (id)secondRowOfViews;
 - (id)firstRowOfViews;
 - (id)grid;
-- (void)styleDidChange:(unsigned long long)arg1;
 - (struct UIEdgeInsets)effectiveAlignmentRectInsets;
-- (id)init;
+- (id)setupContentView;
 
 // Remaining properties
+@property(retain, nonatomic) NUIContainerGridView *contentView; // @dynamic contentView;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

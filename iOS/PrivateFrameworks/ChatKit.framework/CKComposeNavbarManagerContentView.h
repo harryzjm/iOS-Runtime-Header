@@ -8,6 +8,7 @@
 
 @class CKNavigationBarCanvasView;
 
+__attribute__((visibility("hidden")))
 @interface CKComposeNavbarManagerContentView : UIView
 {
     CKNavigationBarCanvasView *_canvasView;

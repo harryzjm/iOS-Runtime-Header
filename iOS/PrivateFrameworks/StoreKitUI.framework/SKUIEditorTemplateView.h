@@ -10,6 +10,7 @@
 @class NSString, UIColor, UITextView;
 @protocol SKUIEditorTemplateViewDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SKUIEditorTemplateView <UITextViewDelegate, SKUIViewElementView>
 {
     UIColor *_textColor;

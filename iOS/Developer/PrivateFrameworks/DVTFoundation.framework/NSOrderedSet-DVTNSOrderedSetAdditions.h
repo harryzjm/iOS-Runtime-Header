@@ -13,6 +13,7 @@
 - (id)dvt_orderedSetByAddingObject:(id)arg1;
 - (id)dvt_orderedSetBySubtractingOrderedSet:(id)arg1;
 - (id)dvt_anyObjectPassingTest:(CDUnknownBlockType)arg1;
+- (_Bool)dvt_isNonEmpty;
 - (id)dvt_onlyObject;
 @end
 

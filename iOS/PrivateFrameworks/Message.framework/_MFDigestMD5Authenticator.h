@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <EmailCore/ECSASLAuthenticator.h>
+
 @class NSData;
 
-@interface _MFDigestMD5Authenticator
+@interface _MFDigestMD5Authenticator : ECSASLAuthenticator
 {
     unsigned int _maxbuf:16;
     unsigned int _securityLevel:2;
@@ -17,10 +19,10 @@
 - (void)setExpectedResponse:(id)arg1;
 - (void)setCryptInfo:(void *)arg1;
 - (void)setMaxBuffer:(unsigned int)arg1;
-- (int)securityLevel;
-- (void)setSecurityLevel:(int)arg1;
+- (long long)securityLevel;
+- (void)setSecurityLevel:(long long)arg1;
 - (id)responseForServerData:(id)arg1;
-- (void)setAuthenticationState:(int)arg1;
+- (void)setAuthenticationState:(long long)arg1;
 - (void)dealloc;
 
 @end

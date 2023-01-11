@@ -7,7 +7,7 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (WKHitTesting)
-- (id)_findDescendantViewAtPoint:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)_recursiveFindDescendantScrollViewAtPoint:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)_web_findDescendantViewAtPoint:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)_web_setSubviews:(id)arg1;
 @end
 

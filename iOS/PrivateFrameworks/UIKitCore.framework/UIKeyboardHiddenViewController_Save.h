@@ -9,7 +9,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (long long)customModalPresentationStyle;
 - (void)setAutofillVC:(id)arg1;
 
 @end

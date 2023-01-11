@@ -15,19 +15,19 @@ __attribute__((visibility("hidden")))
 @interface TSDMovieInfo <KNImplicitAmbientAnimating, TSDMixing, TSDCompatibilityAwareMediaContainer, TSDPlayableInfo>
 {
     TSPData *mMovieData;
-    NSURL *mMovieRemoteURL;
     TSPData *mImportedAuxiliaryMovieData;
     NSString *mImportedAuxiliaryMovieDataOriginalFilename;
+    _Bool mAudioOnly;
     TSPData *mAudioOnlyImageData;
     double mStartTime;
     double mEndTime;
     double mPosterTime;
+    long long mLoopOption;
+    float mVolume;
+    NSURL *mMovieRemoteURL;
     TSPData *mPosterImageData;
     _Bool mPosterImageGeneratedWithAlphaSupport;
     struct CGSize mNaturalSize;
-    long long mLoopOption;
-    float mVolume;
-    _Bool mAudioOnly;
     _Bool mStreaming;
     _Bool mNativeAudioRecording;
     TSDMediaStyle *mStyle;
@@ -40,11 +40,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) TSPData *posterImageData; // @synthesize posterImageData=mPosterImageData;
 - (id)style;
 - (void).cxx_destruct;
+- (_Bool)shouldShowInPrint;
 - (_Bool)willRenderContentViaImager;
 - (id)typesToPromiseWhenCopyingSingleDrawable;
 - (id)promisedTSPDataForType:(id)arg1;
 - (id)promisedDataForType:(id)arg1;
 - (id)mediaDataForDragging;
+- (_Bool)canCopyData;
 - (_Bool)needsDownload;
 - (_Bool)supportsHyperlinks;
 - (int)intValueForProperty:(int)arg1;
@@ -64,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)animationFilters;
+- (void)takePropertiesFromReplacedMediaInfo:(id)arg1;
 @property(readonly, nonatomic) _Bool supportsLoopingBackAndForth;
 @property(readonly, nonatomic) _Bool supportsLooping;
 @property(readonly, nonatomic) _Bool supportsStartTimeAndEndTime;
@@ -87,7 +90,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 movieRemoteURL:(id)arg4 loadedAsset:(id)arg5;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 movieData:(id)arg4 loadedAsset:(id)arg5;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3;
-- (id)initWithContext:(id)arg1 geometry:(id)arg2;
 @property(nonatomic, getter=isNativeAudioRecording) _Bool nativeAudioRecording;
 @property(nonatomic, getter=isAudioOnly) _Bool audioOnly;
 @property(nonatomic) float volume;
@@ -103,9 +105,11 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchive:(struct MovieArchive *)arg1 archiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)loadFromArchive:(const struct MovieArchive *)arg1 unarchiver:(id)arg2;
+- (int)elementKind;
 - (_Bool)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
 @property(readonly, nonatomic, getter=isImplicitAmbientAnimationInteractive) _Bool implicitAmbientAnimationInteractive;
 - (id)newImplicitAmbientBuildRendererWithAnimatedBuild:(id)arg1 buildChunk:(id)arg2 session:(id)arg3 animatedSlideView:(id)arg4;
+@property(readonly, nonatomic) NSString *implicitAmbientAnimationEffectIdentifier;
 @property(readonly, nonatomic) _Bool canAddImplicitAmbientAnimations;
 
 // Remaining properties

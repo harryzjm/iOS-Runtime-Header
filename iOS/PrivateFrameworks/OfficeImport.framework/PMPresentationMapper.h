@@ -6,18 +6,16 @@
 
 #import <OfficeImport/CMMapperRoot-Protocol.h>
 
-@class CMArchiveManager, NSMutableArray, NSString, OIXMLDocument, OIXMLElement, PDPresentation;
+@class NSMutableArray, NSString, OIXMLDocument, OIXMLElement, PDPresentation;
 
 __attribute__((visibility("hidden")))
 @interface PMPresentationMapper <CMMapperRoot>
 {
     int mWidth;
-    PDPresentation *mPresentation;
     NSMutableArray *mSlideNames;
     NSMutableArray *mSlideGuids;
     NSString *mResourceUrlPrefix;
     NSString *mResourceUrlProtocol;
-    CMArchiveManager *mArchiver;
     OIXMLDocument *mXhtmlDoc;
     OIXMLElement *mBodyElement;
     unsigned int mNextCommit;
@@ -32,12 +30,15 @@ __attribute__((visibility("hidden")))
 - (void)startMappingWithState:(id)arg1;
 - (struct CGSize)slideSize;
 - (struct CGSize)pageSizeForDevice;
+- (struct CGSize)pageSizeForDeviceIncludingMargins:(_Bool)arg1;
 - (id)documentTitle;
 - (id)blipAtIndex:(unsigned int)arg1;
-- (id)archiver;
-- (void)dealloc;
-- (id)initWithPDPresentation:(id)arg1 archiver:(id)arg2;
+- (id)initWithDocument:(id)arg1 archiver:(id)arg2;
+- (id)defaultStyleSheet;
 - (void)setHtmlDocumentSizeInArchiver;
+
+// Remaining properties
+@property(readonly) PDPresentation *document; // @dynamic document;
 
 @end
 

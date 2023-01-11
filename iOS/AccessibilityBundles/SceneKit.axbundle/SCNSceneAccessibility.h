@@ -8,11 +8,13 @@
 {
 }
 
++ (_Bool)_isSerializableAccessibilityElement;
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityContainer;
+- (_Bool)accessibilityContainerIsSet;
 - (id)accessibilityElements;
 - (void)dealloc;
 

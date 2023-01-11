@@ -16,6 +16,12 @@
 - (_Bool)_accessibilityIsSTUIExpandable;
 - (_Bool)_accessibilityIsSTUIExpanded;
 - (id)_axSpecifier;
+- (_Bool)_accessibilityTableViewCellHidesInsertControl;
+- (id)accessibilityHint;
+- (id)_privateAccessibilityCustomActions;
+- (_Bool)accessibilityActivate;
+- (_Bool)_accessibilitySupportsActivateAction;
+- (_Bool)_accessibilityIsAlwaysAllowCell;
 
 @end
 

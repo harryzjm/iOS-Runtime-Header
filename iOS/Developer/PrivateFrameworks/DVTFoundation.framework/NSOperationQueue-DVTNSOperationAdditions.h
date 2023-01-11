@@ -8,5 +8,6 @@
 
 @interface NSOperationQueue (DVTNSOperationAdditions)
 - (void)dvt_addOperationWithBlock:(CDUnknownBlockType)arg1;
+- (void)__DVTMainThreadLatencyChecker__waitUntilAllOperationsAreFinished;
 @end
 

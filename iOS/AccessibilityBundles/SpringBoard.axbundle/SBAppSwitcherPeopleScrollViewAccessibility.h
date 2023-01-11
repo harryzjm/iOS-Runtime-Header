@@ -18,7 +18,7 @@
 - (id)accessibilityLabel;
 - (_Bool)_accessibilityIsFirstElementForFocus;
 - (_Bool)shouldGroupAccessibilityChildren;
-- (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 
 @end
 

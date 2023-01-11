@@ -28,6 +28,7 @@
     ISURLRequestPerformance *_performanceMetrics;
     _Bool _loadsHTTPFailures;
     _Bool _uploadProgressRequested;
+    NSString *_logKey;
     NSArray *_passThroughErrors;
     NSNumber *__accountDSIDOverride;
 }
@@ -37,6 +38,7 @@
 + (id)copyUserAgent;
 @property(retain, nonatomic, setter=_setAccountDSIDOverride:) NSNumber *_accountDSIDOverride; // @synthesize _accountDSIDOverride=__accountDSIDOverride;
 @property(retain, nonatomic) NSArray *passThroughErrors; // @synthesize passThroughErrors=_passThroughErrors;
+@property(retain) NSString *logKey; // @synthesize logKey=_logKey;
 @property(nonatomic, getter=isUploadProgressRequested) _Bool uploadProgressRequested; // @synthesize uploadProgressRequested=_uploadProgressRequested;
 @property(getter=_usesPrivateCookieStore, setter=_setUsesPrivateCookieStore:) _Bool _usesPrivateCookieStore; // @synthesize _usesPrivateCookieStore;
 @property(getter=_shouldSetCookies, setter=_setShouldSetCookies:) _Bool _shouldSetCookies; // @synthesize _shouldSetCookies;
@@ -44,7 +46,6 @@
 @property(getter=_loadsHTTPFailures, setter=_setLoadsHTTPFailures:) _Bool _loadsHTTPFailures; // @synthesize _loadsHTTPFailures;
 @property(retain) ISDataProvider *dataProvider; // @synthesize dataProvider=_dataProvider;
 @property(readonly, copy) NSURLRequest *activeURLRequest; // @synthesize activeURLRequest=_activeURLRequest;
-@property(retain) SSAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 - (void).cxx_destruct;
 - (_Bool)_validateContentLength:(long long)arg1 error:(id *)arg2;
 - (void)_updateProgress;
@@ -114,6 +115,7 @@
 - (void)run;
 @property(copy) SSURLRequestProperties *requestProperties;
 - (void)setRequest:(id)arg1;
+@property(retain) SSAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 - (id)request;
 - (void)dealloc;
 - (id)initWithSessionManager:(id)arg1;

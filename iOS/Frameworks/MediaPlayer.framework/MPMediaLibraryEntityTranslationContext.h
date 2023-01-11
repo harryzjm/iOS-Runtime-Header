@@ -6,23 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class MPMediaLibrary, MPModelKind, NSArray;
+@class MPMediaLibrary, MPModelKind, NSArray, NSString;
 
 @interface MPMediaLibraryEntityTranslationContext : NSObject
 {
     _Bool _multiQuery;
     MPMediaLibrary *_mediaLibrary;
-    NSArray *_allowedItemIdentifiers;
+    NSArray *_allowedEntityIdentifiers;
     NSArray *_scopedContainers;
     unsigned long long _filteringOptions;
     MPModelKind *_modelKind;
+    NSString *_personID;
 }
 
+@property(retain, nonatomic) NSString *personID; // @synthesize personID=_personID;
 @property(retain, nonatomic) MPModelKind *modelKind; // @synthesize modelKind=_modelKind;
 @property(nonatomic) unsigned long long filteringOptions; // @synthesize filteringOptions=_filteringOptions;
 @property(nonatomic, getter=isMultiQuery) _Bool multiQuery; // @synthesize multiQuery=_multiQuery;
 @property(retain, nonatomic) NSArray *scopedContainers; // @synthesize scopedContainers=_scopedContainers;
-@property(retain, nonatomic) NSArray *allowedItemIdentifiers; // @synthesize allowedItemIdentifiers=_allowedItemIdentifiers;
+@property(retain, nonatomic) NSArray *allowedEntityIdentifiers; // @synthesize allowedEntityIdentifiers=_allowedEntityIdentifiers;
 @property(retain, nonatomic) MPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 - (void).cxx_destruct;
 

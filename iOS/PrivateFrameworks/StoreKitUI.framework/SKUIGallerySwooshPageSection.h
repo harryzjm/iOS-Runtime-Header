@@ -9,6 +9,7 @@
 
 @class NSMapTable, NSString, SKUIGallerySwooshViewController, SKUISwooshPageComponent;
 
+__attribute__((visibility("hidden")))
 @interface SKUIGallerySwooshPageSection <SKUIArtworkRequestDelegate, SKUIGallerySwooshViewControllerDelegate>
 {
     NSMapTable *_componentArtworkRequests;

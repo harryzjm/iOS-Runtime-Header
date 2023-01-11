@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <IDSFoundation/IDSSocketPairMessage-Protocol.h>
+
 @class NSData, NSDate, NSString;
 
-@interface IDSSocketPairDataMessage
+@interface IDSSocketPairDataMessage <IDSSocketPairMessage>
 {
     unsigned int _sequenceNumber;
     unsigned short _streamID;

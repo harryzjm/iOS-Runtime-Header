@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface RENowPlayingRelevanceProviderManager
+#import <RelevanceEngine/RENowPlayingRelevanceProviderManagerProperties-Protocol.h>
+
+@interface RENowPlayingRelevanceProviderManager <RENowPlayingRelevanceProviderManagerProperties>
 {
     unsigned long long _state;
 }
 
 + (Class)_relevanceProviderClass;
 + (id)_features;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) unsigned long long state;
 - (void)_updatePlaybackState;
 - (void)pause;
 - (void)resume;

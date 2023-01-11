@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+__attribute__((visibility("hidden")))
 @interface FigCDSCALayerOutputNodeContentLayer
 {
     struct OpaqueFigCDSCALayerOutputNodeContentLayerInternal *layerInternal;
 }
 
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 

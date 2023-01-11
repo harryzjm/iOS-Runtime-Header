@@ -21,7 +21,7 @@
 - (void)performIOChannelReadWithAccessor:(void (^)(id <TSUReadChannel>))arg1;
 - (_Bool)isInPackage:(TSPPackage *)arg1;
 - (NSString *)filenameForPreferredFilename:(NSString *)arg1;
-- (TSPDataStorageWriteResult *)writeData:(TSPData *)arg1 toPackageWriter:(TSPPackageWriter *)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(NSString *)arg4;
+- (TSPDataStorageWriteResult *)writeData:(TSPData *)arg1 toPackageWriter:(TSPPackageWriter *)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(NSString *)arg4 error:(id *)arg5;
 - (_Bool)archiveInfoMessage:(struct DataInfo *)arg1 archiver:(id <TSPDataArchiver>)arg2 packageWriter:(TSPPackageWriter *)arg3;
 - (AVAsset *)AVAssetWithOptions:(NSDictionary *)arg1 forData:(TSPData *)arg2;
 - (NSData *)NSDataWithOptions:(unsigned long long)arg1;
@@ -29,6 +29,7 @@
 - (struct CGDataProvider *)newCGDataProvider;
 
 @optional
+@property(readonly, nonatomic) struct CGSize pixelSize;
 @property(readonly, nonatomic) TSUColor *fallbackColor;
 @property(readonly, nonatomic) unsigned int CRC;
 @property(readonly, nonatomic) id <TSPCryptoInfo> decryptionInfo;

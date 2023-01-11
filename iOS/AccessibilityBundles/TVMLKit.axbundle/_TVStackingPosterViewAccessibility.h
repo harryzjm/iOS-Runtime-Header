@@ -15,6 +15,8 @@
 - (unsigned long long)accessibilityTraits;
 - (id)_accessibilityFrameDelegate;
 - (id)accessibilityLabel;
+- (id)_accessibilityLabelIncludingFallbackPlaceholder:(_Bool)arg1;
+- (_Bool)_accessibilityShouldReverseComponents:(id)arg1;
 - (_Bool)isAccessibilityElement;
 - (id)_accessibilitySupplementaryFooterViews;
 

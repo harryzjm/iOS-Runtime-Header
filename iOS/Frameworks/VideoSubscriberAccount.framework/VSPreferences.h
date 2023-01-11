@@ -12,13 +12,29 @@
 {
     NSUndoManager *_undoManager;
     NSUserDefaults *_userDefaults;
+    NSUserDefaults *_globalUserDefaults;
     VSDevice *_device;
 }
 
 @property(retain, nonatomic) VSDevice *device; // @synthesize device=_device;
+@property(retain, nonatomic) NSUserDefaults *globalUserDefaults; // @synthesize globalUserDefaults=_globalUserDefaults;
 @property(retain, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 @property(retain, nonatomic) NSUndoManager *undoManager; // @synthesize undoManager=_undoManager;
 - (void).cxx_destruct;
+- (id)metricUserIDLastGenerated;
+- (void)setMetricUserID:(id)arg1;
+- (id)metricUserID;
+- (_Bool)ignoreSetTopBoxProfile;
+- (void)setIgnoreSetTopBoxProfile:(_Bool)arg1;
+- (id)setTopBoxInfoBundleIdentifierOverride;
+- (id)setTopBoxInfoAppAdamIdOverride;
+- (id)setTopBoxInfoProviderDisplayNameOverride;
+- (id)setTopBoxInfoProviderIdOverride;
+- (_Bool)setTopBoxInfoIsSetTopBoxOverride;
+- (void)noteIsInSTBMode:(_Bool)arg1;
+- (_Bool)allowInsecureAuthContext;
+- (_Bool)shouldIgnoreExtendedValidation;
+- (_Bool)isInSTBMode;
 - (void)noteDesiredApp:(id)arg1;
 - (_Bool)hasChosenDesiredApp;
 - (void)noteDidSendWelcomeMessage;
@@ -26,6 +42,7 @@
 @property(nonatomic) long long cachedStoreProviderStatus;
 @property(nonatomic) long long cachedDeveloperProviderStatus;
 @property(nonatomic) long long cachedAvailabilityStatus;
+- (void)removeSkipSetupPreset;
 - (void)noteShouldSkipSetup;
 - (void)_updateShouldSkipSetupWithNumber:(id)arg1;
 - (void)_updateValue:(id)arg1 forKey:(id)arg2;

@@ -10,7 +10,6 @@
 {
 }
 
-+ (void)toggleMagnifier;
 + (Class)getZoomBundlePrincipalClassForcingLoad:(_Bool)arg1;
 + (void)initializeZoomMonitor;
 - (void)updateSettings;

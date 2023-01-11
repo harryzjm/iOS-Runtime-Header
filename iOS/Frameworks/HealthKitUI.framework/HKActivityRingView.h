@@ -6,11 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class HKActivitySummary, HKRingsView, _HKShapeView;
+@class ARUIRingsView, ARUIRingsViewRenderer, HKActivitySummary, _HKShapeView;
 
 @interface HKActivityRingView : UIView
 {
-    HKRingsView *_ringsView;
+    ARUIRingsView *_ringsView;
+    ARUIRingsViewRenderer *_renderer;
     _HKShapeView *_maskView;
     _Bool _shouldBypassApplicationStateChecking;
     HKActivitySummary *_activitySummary;
@@ -18,7 +19,6 @@
     double _emptyRingAlpha;
 }
 
-+ (id)_iconSpriteImage;
 @property(nonatomic, getter=_shouldBypassApplicationStateChecking, setter=_setShouldBypassApplicationStateChecking:) _Bool shouldBypassApplicationStateChecking; // @synthesize shouldBypassApplicationStateChecking=_shouldBypassApplicationStateChecking;
 @property(nonatomic, getter=_emptyRingAlpha, setter=_setEmptyRingAlpha:) double emptyRingAlpha; // @synthesize emptyRingAlpha=_emptyRingAlpha;
 @property(nonatomic, getter=_ringInsetPercentage, setter=_setRingInsetPercentage:) double ringInsetPercentage; // @synthesize ringInsetPercentage=_ringInsetPercentage;
@@ -42,6 +42,7 @@
 - (void)setActivitySummary:(id)arg1 animated:(_Bool)arg2;
 - (void)_setUpAfterInit;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 renderer:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

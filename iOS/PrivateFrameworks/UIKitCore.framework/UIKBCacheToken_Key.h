@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     int _displayRowHint;
     struct CGSize _size;
     int _state;
-    int _clipCorners;
+    unsigned long long _clipCorners;
     unsigned long long _groupNeighbors;
     _Bool _usesInsets;
     struct UIEdgeInsets _displayInsets;

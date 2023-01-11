@@ -17,10 +17,13 @@
     struct {
         unsigned int visualCodeType:1;
     } _has;
+    _Bool __encodeLegacyGloryData;
     int _visualCodeType;
     _INPBIntentMetadata *_intentMetadata;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(nonatomic) int visualCodeType; // @synthesize visualCodeType=_visualCodeType;
 @property(retain, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 - (void).cxx_destruct;
@@ -28,6 +31,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (int)StringAsVisualCodeType:(id)arg1;

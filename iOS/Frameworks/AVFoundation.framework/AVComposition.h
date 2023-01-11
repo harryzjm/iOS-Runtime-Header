@@ -38,7 +38,6 @@
 - (void)_loadAssetInspectorAndLoaderOnce;
 - (struct OpaqueFigMutableComposition *)_mutableComposition;
 - (id)description;
-- (void)finalize;
 - (void)dealloc;
 - (id)init;
 - (id)_initWithComposition:(id)arg1;

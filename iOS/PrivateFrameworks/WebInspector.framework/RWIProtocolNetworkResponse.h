@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, RWIProtocolNetworkHeaders, RWIProtocolNetworkResourceTiming;
+@class NSString, RWIProtocolNetworkHeaders, RWIProtocolNetworkResourceTiming, RWIProtocolSecurity;
 
 @interface RWIProtocolNetworkResponse
 {
 }
 
+@property(retain, nonatomic) RWIProtocolSecurity *security;
 @property(retain, nonatomic) RWIProtocolNetworkResourceTiming *timing;
-@property(copy, nonatomic) NSString *requestHeadersText;
 @property(retain, nonatomic) RWIProtocolNetworkHeaders *requestHeaders;
 @property(nonatomic) long long source;
 @property(copy, nonatomic) NSString *mimeType;
-@property(copy, nonatomic) NSString *headersText;
 @property(retain, nonatomic) RWIProtocolNetworkHeaders *headers;
 @property(copy, nonatomic) NSString *statusText;
 @property(nonatomic) int status;

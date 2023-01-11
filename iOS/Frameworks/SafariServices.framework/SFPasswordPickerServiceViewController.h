@@ -6,19 +6,19 @@
 
 #import <SafariServices/SFCredentialProviderExtensionManagerObserver-Protocol.h>
 #import <SafariServices/SFPasswordPickerServiceViewControllerProtocol-Protocol.h>
-#import <SafariServices/_ASCredentialProviderExtensionViewControllerDelegate-Protocol.h>
+#import <SafariServices/UIPresentationControllerDelegatePrivate-Protocol.h>
+#import <SafariServices/_ASCredentialListViewControllerDelegate-Protocol.h>
 #import <SafariServices/_ASPasswordCredentialAuthenticationViewControllerDelegate-Protocol.h>
 #import <SafariServices/_SFAuthenticationClient-Protocol.h>
 #import <SafariServices/_SFAuthenticationContextDelegate-Protocol.h>
 
-@class NSArray, NSString, NSURL, _ASPasswordCredentialAuthenticationViewController, _SFAuthenticationContext, _SFPasswordPickerViewController;
+@class NSArray, NSString, NSURL, SFPasswordPickerViewController, _ASPasswordCredentialAuthenticationViewController, _SFAuthenticationContext;
 
 __attribute__((visibility("hidden")))
-@interface SFPasswordPickerServiceViewController <SFCredentialProviderExtensionManagerObserver, _ASCredentialProviderExtensionViewControllerDelegate, _ASPasswordCredentialAuthenticationViewControllerDelegate, _SFAuthenticationClient, _SFAuthenticationContextDelegate, SFPasswordPickerServiceViewControllerProtocol>
+@interface SFPasswordPickerServiceViewController <SFCredentialProviderExtensionManagerObserver, _ASCredentialListViewControllerDelegate, _ASPasswordCredentialAuthenticationViewControllerDelegate, _SFAuthenticationClient, _SFAuthenticationContextDelegate, UIPresentationControllerDelegatePrivate, SFPasswordPickerServiceViewControllerProtocol>
 {
     _ASPasswordCredentialAuthenticationViewController *_externalCredentialViewController;
-    CDUnknownBlockType _credentialProviderDismissalHandler;
-    _SFPasswordPickerViewController *_passwordPickerViewController;
+    SFPasswordPickerViewController *_passwordPickerViewController;
     _Bool _presentInPopover;
     _Bool _hasAuthenticationForOtherPasswords;
     NSURL *_webViewURL;
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
     NSString *_remoteUnlocalizedAppName;
     NSArray *_externallyVerifiedAssociatedDomains;
     double _authenticationGracePeriod;
-    _Bool _credentialListPresentedDirectly;
+    CDUnknownBlockType _presentCredentialsHandler;
 }
 
 + (id)_exportedInterface;
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentUIForPasswordCredentialAuthenticationViewController:(id)arg1;
-- (void)credentialProviderExtensionViewController:(id)arg1 didFinishWithCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)credentialListViewController:(id)arg1 didFinishWithCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)credentialProviderExtensionManagerExtensionListDidChange:(id)arg1;
 - (void)setAuthenticationGracePeriod:(double)arg1;
 - (void)setExternallyVerifiedAndApprovedSharedWebCredentialsDomains:(id)arg1;
@@ -45,22 +45,21 @@ __attribute__((visibility("hidden")))
 - (void)setRemoteAppID:(id)arg1;
 - (void)setWebViewURL:(id)arg1;
 - (void)_sendCredentialToClientAndDismiss:(id)arg1;
-- (void)_gatherAndShowPasswordsWithCompletion:(CDUnknownBlockType)arg1;
-- (_Bool)_shouldDismissOnCompletion;
+- (void)_authenticateAndSetPresentCredentialsHandlerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fillCredential:(id)arg1 needsAuthentication:(_Bool)arg2;
 - (void)authenticateToPresentInPopover:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_presentCredentialListForExtension:(id)arg1 animated:(_Bool)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)presentationControllerDidDismiss:(id)arg1;
+- (void)_presentCredentialListForExtension:(id)arg1;
 - (id)_actionForPresentingPasswordManagerExtension:(id)arg1;
-- (void)dealloc;
 - (void)_authenticateToViewOtherPasswordsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_dismiss;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)_context;
 - (_Bool)contextShouldAllowMultipleBiometricFailures:(id)arg1;
 - (_Bool)contextShouldAllowPasscodeFallback:(id)arg1;
 - (_Bool)contextRequiresSessionBasedAuthentication:(id)arg1;
-- (_Bool)authenticationEnabledForContext:(id)arg1;
 - (_Bool)displayMessageAsTitleForContext:(id)arg1;
 - (id)passcodePromptForContext:(id)arg1;
 - (id)authenticationMessageForContext:(id)arg1;

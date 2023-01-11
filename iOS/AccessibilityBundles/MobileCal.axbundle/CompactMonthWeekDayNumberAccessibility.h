@@ -18,6 +18,7 @@
 - (id)_axCalendarModel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityHint;
+- (id)accessibilityUserInputLabels;
 - (id)accessibilityLabel;
 - (struct CGRect)accessibilityFrame;
 - (_Bool)isAccessibilityElement;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CLKUIQuadViewDisplayLink, NSArray, NSMutableArray;
+@class CLKUIQuadViewDisplayLink, NSArray, NSMutableArray, NSString;
 @protocol CLKUIQuadViewDelegate;
 
 @interface CLKUIQuadView : UIView
@@ -16,16 +16,21 @@
     struct {
         unsigned int quadViewWillDisplay:1;
     } _delegateRespondsTo;
+    unsigned long long _frameNum;
+    unsigned int _debugId;
     id <CLKUIQuadViewDelegate> _delegate;
+    NSString *_debugIdentifier;
 }
 
 + (id)quadViewWithFrame:(struct CGRect)arg1;
 + (id)quadViewWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2;
++ (id)quadViewWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2 colorSpace:(long long)arg3;
+@property(retain, nonatomic) NSString *debugIdentifier; // @synthesize debugIdentifier=_debugIdentifier;
 @property(nonatomic) __weak id <CLKUIQuadViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (void)_discardContents;
+- (void)discardContents;
 - (void)_handleQuadArrayChange:(id)arg1;
-- (void)_display;
+- (_Bool)_displayAndCheckForDrawable:(_Bool)arg1 WithCompletion:(CDUnknownBlockType)arg2;
 - (id)_snapshotInRect:(struct CGRect)arg1 scale:(double)arg2 time:(double)arg3;
 - (id)snapshotInRect:(struct CGRect)arg1 scale:(double)arg2 time:(double)arg3;
 - (void)_prerenderForTime:(double)arg1;
@@ -34,12 +39,14 @@
 - (void)addQuadsFromArray:(id)arg1;
 - (void)addQuad:(id)arg1;
 @property(readonly, nonatomic) NSArray *quads;
+@property(readonly, nonatomic) unsigned long long frameNum;
 @property(nonatomic, getter=isPaused) _Bool paused;
 @property(nonatomic) long long preferredFramesPerSecond;
-- (void)_prepareAndRenderForTime:(double)arg1;
+- (_Bool)_prepareAndRenderForTime:(double)arg1 inGroup:(id)arg2 checkForDrawable:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1;
+- (_Bool)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
 
 @end
 

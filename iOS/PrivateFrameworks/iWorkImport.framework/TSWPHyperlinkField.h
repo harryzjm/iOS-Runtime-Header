@@ -9,19 +9,18 @@
 __attribute__((visibility("hidden")))
 @interface TSWPHyperlinkField
 {
-    NSURL *_url;
+    NSString *_urlString;
     NSString *_displayTextForChangeTracking;
 }
 
 + (id)newURLFromURLReference:(id)arg1;
-+ (id)urlReferenceFromURL:(id)arg1;
 + (id)defaultMailURL;
 + (id)defaultFileURL;
 + (id)defaultWebURL;
 + (id)defaultURLFromDefaultsKey:(id)arg1 defaultValue:(id)arg2;
 + (_Bool)schemeIsValidForURLReference:(id)arg1;
 + (_Bool)schemeIsValidForURL:(id)arg1;
-+ (int)schemeFromURL:(id)arg1;
++ (long long)schemeFromURL:(id)arg1;
 + (id)defaultFieldStyleIdentifier;
 @property(readonly, nonatomic) NSString *displayTextForChangeTracking; // @synthesize displayTextForChangeTracking=_displayTextForChangeTracking;
 - (void).cxx_destruct;
@@ -33,23 +32,22 @@ __attribute__((visibility("hidden")))
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)loadFromArchive:(const struct HyperlinkFieldArchive *)arg1 unarchiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
+- (void)saveToHyperlinkArchive:(id)arg1;
+- (void)saveToUnsupportedHyperlinkArchive:(id)arg1;
 - (void)saveToArchive:(struct HyperlinkFieldArchive *)arg1 archiver:(id)arg2;
-- (id)fullPath;
-- (id)filePath;
-- (_Bool)hasDisplayText;
-- (_Bool)isFileURL;
-- (id)urlPrefix;
-- (int)scheme;
-- (void)setURLReference:(id)arg1;
-- (id)urlReference;
-@property(retain, nonatomic, setter=setURL:) NSURL *url;
+@property(readonly, nonatomic) NSString *fullPath;
+@property(readonly, nonatomic) NSString *filePath;
+@property(readonly, nonatomic) _Bool hasDisplayText;
+@property(readonly, nonatomic) NSString *urlPrefix;
+@property(readonly, nonatomic) long long scheme;
+@property(copy, nonatomic, setter=setURL:) NSURL *url;
 - (_Bool)allowsEditing;
 - (int)smartFieldKind;
-- (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (id)copyWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 url:(id)arg2;
-@property(readonly, nonatomic) _Bool isInGroupedShape;
 @property(readonly, nonatomic) NSString *displayText;
+- (void)setUrlString:(id)arg1;
+- (id)urlString;
 @property(readonly, nonatomic) TSWPSelection *highlightSelection;
 
 @end

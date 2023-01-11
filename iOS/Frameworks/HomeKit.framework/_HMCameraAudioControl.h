@@ -6,6 +6,7 @@
 
 @class HMCharacteristic;
 
+__attribute__((visibility("hidden")))
 @interface _HMCameraAudioControl
 {
     HMCharacteristic *_mute;

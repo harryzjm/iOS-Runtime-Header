@@ -4,16 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+#import <CloudKit/NSSecureCoding-Protocol.h>
 
-@interface CKFetchShareMetadataOperationInfo
+@class NSArray, NSDictionary;
+
+@interface CKFetchShareMetadataOperationInfo <NSSecureCoding>
 {
     _Bool _shouldFetchRootRecord;
     NSArray *_shareURLsToFetch;
     NSArray *_rootRecordDesiredKeys;
+    NSDictionary *_shareInvitationTokensByShareURL;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(retain, nonatomic) NSDictionary *shareInvitationTokensByShareURL; // @synthesize shareInvitationTokensByShareURL=_shareInvitationTokensByShareURL;
 @property(retain, nonatomic) NSArray *rootRecordDesiredKeys; // @synthesize rootRecordDesiredKeys=_rootRecordDesiredKeys;
 @property(nonatomic) _Bool shouldFetchRootRecord; // @synthesize shouldFetchRootRecord=_shouldFetchRootRecord;
 @property(retain, nonatomic) NSArray *shareURLsToFetch; // @synthesize shareURLsToFetch=_shareURLsToFetch;

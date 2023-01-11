@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 + (id)customAttributes;
 - (id)outputImage;
+- (id)_focalPlanePreProcessorKernelPow2;
 - (id)_focalPlanePreProcessorKernel;
 
 @end

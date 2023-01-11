@@ -13,9 +13,10 @@
     MPSectionedCollection *_representedObjects;
 }
 
-+ (id)defaultLibraryView;
++ (id)libraryViewWithUserIdentity:(id)arg1;
 + (id)personalizedResponseForContentDescriptor:(id)arg1 requestedProperties:(id)arg2;
-+ (id)sharedQueue;
++ (id)preferredQueue;
++ (_Bool)requiresNetwork;
 + (_Bool)supportsSecureCoding;
 @property(retain, nonatomic) MPSectionedCollection *representedObjects; // @synthesize representedObjects=_representedObjects;
 @property(readonly, nonatomic) MPSectionedCollection *unpersonalizedContentDescriptors; // @synthesize unpersonalizedContentDescriptors=_unpersonalizedContentDescriptors;

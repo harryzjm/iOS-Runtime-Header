@@ -8,7 +8,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFSocialMediaPostCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFCard, SFColor, SFImage, SFRichText;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFCard, SFColor, SFImage, SFRichText, SFUserReportRequest;
 
 @interface SFSocialMediaPostCardSection <SFSocialMediaPostCardSection, NSSecureCoding, NSCopying>
 {
@@ -84,6 +84,7 @@
 @property(copy, nonatomic) NSArray *parameterKeyPaths;
 @property(copy, nonatomic) NSString *resultIdentifier;
 @property(readonly) Class superclass;
+@property(retain, nonatomic) SFUserReportRequest *userReportRequest;
 
 @end
 

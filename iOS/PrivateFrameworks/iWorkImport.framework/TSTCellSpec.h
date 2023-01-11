@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)isShimControlFormatType:(int)arg1;
 + (int)shimControlFormatTypeForInteractionType:(int)arg1;
 + (int)interactionTypeForShimControlFormatType:(int)arg1;
 + (id)cellSpecFromTSKFormat:(id)arg1;

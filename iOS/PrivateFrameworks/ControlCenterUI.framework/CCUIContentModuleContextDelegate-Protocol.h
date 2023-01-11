@@ -9,10 +9,10 @@
 @class CCUIContentModuleContext, CCUIStatusUpdate;
 
 @protocol CCUIContentModuleContextDelegate <NSObject>
-- (void)didUpdatePreferredSizeForContentModuleContext:(CCUIContentModuleContext *)arg1;
 - (void)dismissControlCenterForContentModuleContext:(CCUIContentModuleContext *)arg1;
 - (void)dismissExpandedViewForContentModuleContext:(CCUIContentModuleContext *)arg1;
 - (void)requestExpandModuleForContentModuleContext:(CCUIContentModuleContext *)arg1;
 - (void)contentModuleContext:(CCUIContentModuleContext *)arg1 enqueueStatusUpdate:(CCUIStatusUpdate *)arg2;
+- (void)contentModuleContext:(CCUIContentModuleContext *)arg1 didUpdateHomeGestureDismissalAllowed:(_Bool)arg2;
 @end
 

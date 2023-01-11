@@ -6,11 +6,12 @@
 
 #import <PassKitUI/PKPaymentProvisioningControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupHideSetupLaterButtonProtocol-Protocol.h>
-#import <PassKitUI/PKPaymentSetupRequiresPreflightProtocol-Protocol.h>
+#import <PassKitUI/PKPaymentSetupPresentationProtocol-Protocol.h>
+#import <PassKitUI/PKViewControllerPreflightable-Protocol.h>
 
 @class NSString, PKPaymentCredential, PKPaymentCredentialMetadataTableController, PKPaymentSetupProduct, UIImage;
 
-@interface PKPaymentCredentialProvisioningViewController <PKPaymentSetupRequiresPreflightProtocol, PKPaymentProvisioningControllerDelegate, PKPaymentSetupHideSetupLaterButtonProtocol>
+@interface PKPaymentCredentialProvisioningViewController <PKViewControllerPreflightable, PKPaymentProvisioningControllerDelegate, PKPaymentSetupHideSetupLaterButtonProtocol, PKPaymentSetupPresentationProtocol>
 {
     UIImage *_passSnapshotPlaceHolder;
     unsigned long long _credentialProvisioningType;
@@ -20,13 +21,14 @@
     PKPaymentSetupProduct *_setupProduct;
     _Bool _allowsManualEntry;
     _Bool _previouslyAcceptedTerms;
-    _Bool _shouldAutoProvision;
+    _Bool _snapshotNeedsCorners;
     UIImage *_passSnapshot;
+    _Bool _shouldAutoProvision;
 }
 
-@property(copy, nonatomic) UIImage *passSnapshot; // @synthesize passSnapshot=_passSnapshot;
 @property(nonatomic) _Bool shouldAutoProvision; // @synthesize shouldAutoProvision=_shouldAutoProvision;
 - (void).cxx_destruct;
+- (id)onPresentationRemoveViewControllersAfterMarker;
 - (void)paymentPassUpdatedOnCredential:(id)arg1;
 - (void)_cleanupTransferredCredentialFromSourceDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_defaultHeaderViewSubTitleForLocalCredential;
@@ -56,6 +58,7 @@
 - (void)addDifferentCard:(id)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
+- (void)setPassSnapshot:(id)arg1 needsCorners:(_Bool)arg2;
 - (void)dealloc;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 paymentCredential:(id)arg4 setupProduct:(id)arg5 allowsManualEntry:(_Bool)arg6 previouslyAcceptedTerms:(_Bool)arg7;
 

@@ -15,6 +15,8 @@
 
 - (void).cxx_destruct;
 - (id)entitlementWhitelist;
+- (void)authorizationDidUpdateAccountServicePaymentMethodCompleteWithUpdate:(id)arg1 signatureRequest:(id)arg2;
+- (void)authorizationDidAuthorizeApplePayTrustSignatureCompleteWithResult:(id)arg1;
 - (void)prepareWithPaymentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleDismissWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleHostApplicationDidCancel;
@@ -24,6 +26,7 @@
 - (void)authorizationDidSelectShippingAddressCompleteWithUpdate:(id)arg1;
 - (void)authorizationDidSelectShippingMethodCompleteWithStatus:(long long)arg1 paymentSummaryItems:(id)arg2;
 - (void)authorizationDidSelectShippingMethodCompleteWithUpdate:(id)arg1;
+- (void)authorizationDidAuthorizeDisbursementWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuoteCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePurchaseCompleteWithStatus:(long long)arg1;
 - (void)authorizationDidAuthorizePaymentCompleteWithStatus:(long long)arg1;

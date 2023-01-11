@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIAccessibilityHUDItem, UIImageView, UILabel, UIVibrancyEffect, UIView, UIVisualEffectView;
+@class UIAccessibilityHUDItem, UIBlurEffect, UIImageView, UILabel, UIView, UIVisualEffectView;
 
 @interface UIAccessibilityHUDView
 {
     UIAccessibilityHUDItem *_item;
     UIView *_transformContainer;
     UIVisualEffectView *_effectView;
-    UIVibrancyEffect *_vibrancyEffect;
+    UIBlurEffect *_blurEffect;
+    UIVisualEffectView *_itemEffectView;
     UIImageView *_imageView;
     UILabel *_titleLabel;
     UIView *_customView;
@@ -24,6 +25,7 @@
 - (id)imageView;
 - (id)titleLabel;
 - (struct UIEdgeInsets)imageInsetsForLayout;
+- (id)itemContainerViewForLayout;
 - (id)containerViewForLayout;
 - (void)dismissAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)showAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
@@ -31,6 +33,8 @@
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)layoutManager;
+- (void)_updateLabelForItem;
+- (id)_contentEffectsForItem:(id)arg1;
 - (id)initWithHUDItem:(id)arg1;
 
 @end

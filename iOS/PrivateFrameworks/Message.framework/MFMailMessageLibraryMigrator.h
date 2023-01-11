@@ -6,23 +6,52 @@
 
 #import <objc/NSObject.h>
 
-@interface MFMailMessageLibraryMigrator : NSObject
+#import <Message/EFContentProtectionObserver-Protocol.h>
+#import <Message/EFLoggable-Protocol.h>
+
+@class NSConditionLock, NSMutableArray, NSString;
+@protocol MFMailMessageLibraryMigratorDelegate, OS_dispatch_queue;
+
+@interface MFMailMessageLibraryMigrator : NSObject <EFContentProtectionObserver, EFLoggable>
 {
+    _Bool _needsSpotlightReindex;
     _Bool _needsRebuildTriggers;
     _Bool _needsRebuildMessageInfoIndex;
-    int _needsSpotlightReindex;
+    NSMutableArray *_postMigrationBlocks;
+    id <MFMailMessageLibraryMigratorDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_contentProtectionQueue;
+    NSConditionLock *_migrationState;
 }
 
-+ (_Bool)_setMobileMailNeedsSpotlightReIndex:(_Bool)arg1;
-+ (_Bool)_mobileMailNeedsSpotlightReIndex;
++ (int)currentVersion;
++ (id)log;
+@property(readonly, nonatomic) NSConditionLock *migrationState; // @synthesize migrationState=_migrationState;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *contentProtectionQueue; // @synthesize contentProtectionQueue=_contentProtectionQueue;
+@property(readonly, nonatomic) __weak id <MFMailMessageLibraryMigratorDelegate> delegate; // @synthesize delegate=_delegate;
+- (void).cxx_destruct;
+- (void)contentProtectionStateChanged:(int)arg1 previousState:(int)arg2;
+- (void)detachProtectedDatabaseWithConnection:(id)arg1;
+- (long long)attachProtectedDatabaseWithConnection:(id)arg1;
+- (void)runPostMigrationBlocksWithConnection:(id)arg1;
+- (void)addPostMigrationBlock:(CDUnknownBlockType)arg1;
+- (_Bool)needsSpotlightReindex;
 - (void)noteNeedsSpotlightReindex;
-- (void)performSpotlightReindexIfNeededWithHandler:(CDUnknownBlockType)arg1;
 - (void)resetTTRPromptAndForceReindex;
 - (_Bool)needsRebuildMessageInfoIndex;
 - (void)noteRebuildMessageInfoIndex;
 - (_Bool)needsRebuildTriggers;
 - (void)noteNeedsRebuildTriggers;
-- (_Bool)migrateWithSQLiteConnection:(id)arg1;
+- (_Bool)_checkForeignKeysWithConnection:(id)arg1;
+- (long long)_checkContentProtectionState;
+- (long long)_runMigrationStepsFromVersion:(int)arg1 connection:(id)arg2 schema:(id)arg3;
+- (_Bool)migrateWithDatabaseConnection:(id)arg1 schema:(id)arg2;
+- (id)initWithDelegate:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -17,6 +17,7 @@
     struct {
         unsigned int billType:1;
     } _has;
+    _Bool __encodeLegacyGloryData;
     int _billType;
     _INPBBillPayeeValue *_billPayee;
     _INPBDateTimeRange *_dueDate;
@@ -27,6 +28,8 @@
     _INPBDateTimeRange *_transactionScheduledDate;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(retain, nonatomic) _INPBDateTimeRange *transactionScheduledDate; // @synthesize transactionScheduledDate=_transactionScheduledDate;
 @property(retain, nonatomic) _INPBString *transactionNote; // @synthesize transactionNote=_transactionNote;
 @property(retain, nonatomic) _INPBPaymentAmountValue *transactionAmount; // @synthesize transactionAmount=_transactionAmount;
@@ -40,6 +43,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(readonly, nonatomic) _Bool hasTransactionScheduledDate;

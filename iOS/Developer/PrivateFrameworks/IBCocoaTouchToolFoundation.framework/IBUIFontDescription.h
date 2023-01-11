@@ -30,6 +30,7 @@
 - (unsigned long long)_traits;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 - (_Bool)isSystemFont;
 - (id)displayName;
@@ -44,17 +45,16 @@
 - (_Bool)isEqualToFontDescription:(id)arg1;
 @property(readonly) unsigned long long hash;
 - (id)initWithTextStylePlistRepresentation:(id)arg1;
-- (id)initWithName:(id)arg1 family:(id)arg2 andPointSize:(double)arg3;
-- (id)initWithName:(id)arg1 family:(id)arg2 andSize:(long long)arg3;
+- (id)initWithName:(id)arg1 family:(id)arg2 pointSize:(double)arg3;
+- (id)initWithName:(id)arg1 family:(id)arg2 size:(long long)arg3;
 - (id)initWithTextStyle:(id)arg1;
-- (id)initWithType:(long long)arg1 pointSize:(double)arg2 andWeightCategory:(long long)arg3;
-- (id)initWithType:(long long)arg1 size:(long long)arg2 andWeightCategory:(long long)arg3;
+- (id)initWithType:(long long)arg1 pointSize:(double)arg2 weightCategory:(long long)arg3;
+- (id)initWithType:(long long)arg1 size:(long long)arg2 weightCategory:(long long)arg3;
 - (id)initWithType:(long long)arg1 size:(long long)arg2 weightCategory:(long long)arg3 name:(id)arg4 family:(id)arg5 pointSize:(double)arg6;
 - (id)resolveToFontLocally;
 - (id)transformAfterMarshalling;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
 @property(readonly) Class superclass;
 
 @end

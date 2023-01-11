@@ -21,6 +21,7 @@
     _Bool _hasFinishedInitialLoad;
     _Bool _automaticallyUpdatesViewControllerTitle;
     _Bool _visibilityUpdatesEnabled;
+    _Bool _shouldUseAlternateCellColor;
     unsigned long long _appearState;
     HUItemTableViewScrollDestination *_pendingScrollDestination;
     HFItemManager *_itemManager;
@@ -34,6 +35,7 @@
 
 + (unsigned long long)updateMode;
 + (_Bool)adoptsDefaultGridLayoutMargins;
+@property(nonatomic) _Bool shouldUseAlternateCellColor; // @synthesize shouldUseAlternateCellColor=_shouldUseAlternateCellColor;
 @property(retain, nonatomic) HUGridLayoutOptions *gridLayoutOptions; // @synthesize gridLayoutOptions=_gridLayoutOptions;
 @property(readonly, nonatomic) NSMapTable *textFieldToCellMap; // @synthesize textFieldToCellMap=_textFieldToCellMap;
 @property(retain, nonatomic) id <NACancelable> deferredVisibilityUpdate; // @synthesize deferredVisibilityUpdate=_deferredVisibilityUpdate;
@@ -50,6 +52,8 @@
 @property(nonatomic) unsigned long long appearState; // @synthesize appearState=_appearState;
 @property(nonatomic) _Bool wantsPreferredContentSize; // @synthesize wantsPreferredContentSize=_wantsPreferredContentSize;
 - (void).cxx_destruct;
+- (id)presentingViewControllerForModuleController:(id)arg1;
+- (id)moduleController:(id)arg1 textFieldForVisibleItem:(id)arg2;
 - (id)moduleController:(id)arg1 dismissViewControllerForRequest:(id)arg2;
 - (id)moduleController:(id)arg1 presentViewControllerForRequest:(id)arg2;
 - (void)recursivelyDisableItemUpdates:(_Bool)arg1 withReason:(id)arg2;
@@ -93,6 +97,7 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)_scrollToDestination:(id)arg1;
+- (void)_updatePreferredContentSizeIfNecessary;
 - (void)_updateLayoutMarginsForCells:(id)arg1;
 - (_Bool)_shouldHideFooterForSection:(long long)arg1;
 - (_Bool)_shouldHideHeaderForSection:(long long)arg1;
@@ -102,6 +107,7 @@
 - (id)_visibleCellForItem:(id)arg1;
 - (void)_performCommonUpdateForCell:(id)arg1 item:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
 - (void)_dispatchUpdateForCell:(id)arg1 item:(id)arg2 indexPath:(id)arg3 animated:(_Bool)arg4;
+@property(readonly, copy) NSString *description;
 - (id)textFieldForVisibleItem:(id)arg1;
 - (id)moduleControllerForItem:(id)arg1;
 - (id)childViewControllersToPreload;
@@ -140,7 +146,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

@@ -8,7 +8,6 @@
 
 @class NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface MNCommuteDestinationOffRouteScore <MNCommuteDestinationLocationScore>
 {
     int _score;

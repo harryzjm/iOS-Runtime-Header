@@ -6,6 +6,7 @@
 
 @class UIView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIProductPageTableHeaderOnlySection
 {
     UIView *_headerView;

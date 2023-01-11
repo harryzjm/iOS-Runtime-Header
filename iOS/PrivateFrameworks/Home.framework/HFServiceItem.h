@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Home/HFCharacteristicWriteActionBuilderFactory-Protocol.h>
+#import <Home/HFActionBuilderFactory-Protocol.h>
+#import <Home/HFNamingComponentCreating-Protocol.h>
 #import <Home/HFServiceLikeBuilderCreating-Protocol.h>
 #import <Home/HFServiceLikeItem-Protocol.h>
 
-@class HMService, NSString;
+@class HMService, NSSet, NSString;
 @protocol HFCharacteristicValueSource, HFHomeKitObject;
 
-@interface HFServiceItem <HFServiceLikeItem, HFCharacteristicWriteActionBuilderFactory, HFServiceLikeBuilderCreating>
+@interface HFServiceItem <HFServiceLikeItem, HFActionBuilderFactory, HFServiceLikeBuilderCreating, HFNamingComponentCreating>
 {
     id <HFCharacteristicValueSource> _valueSource;
     HMService *_service;
@@ -28,21 +29,22 @@
 - (id)controlDescriptionForCharacteristic:(id)arg1 withValue:(id)arg2;
 - (id)descriptionForCharacteristic:(id)arg1 withValue:(id)arg2;
 - (id)incrementalStateIconDescriptorForPrimaryState:(long long)arg1 incrementalValue:(id)arg2;
+- (id)_iconDescriptorWithFallBackIfNecessary:(id)arg1 withIconPrimaryState:(long long)arg2;
 - (id)_augmentedStandardResultsForUpdateResponse:(id)arg1 controlItems:(id)arg2;
 - (id)performStandardUpdateWithCharacteristicTypes:(id)arg1 options:(id)arg2;
 - (id)characteristicsToReadForCharacteristicTypes:(id)arg1 controlItems:(id)arg2;
 - (id)servicesToReadForCharacteristicType:(id)arg1;
+- (id)namingComponentForHomeKitObject;
 - (id)serviceLikeBuilderInHome:(id)arg1;
 - (id)accessories;
-- (id)services;
+@property(readonly, nonatomic) NSSet *services;
 - (id)currentStateActionBuildersForHome:(id)arg1;
 - (_Bool)actionsMayRequireDeviceUnlock;
-- (_Bool)containsActionableCharacteristics;
+- (_Bool)containsActions;
 - (id)_actionableCharacteristics;
 - (id)controlItemValueSourceForServices:(id)arg1;
 - (id)controlItemValueSourceForPrimaryService;
 - (id)createControlItems;
-- (unsigned long long)_effectiveLoadingStateForSuggestedLoadingState:(unsigned long long)arg1;
 - (id)_subclass_updateWithOptions:(id)arg1;
 @property(readonly, nonatomic) id <HFHomeKitObject> homeKitObject;
 @property(readonly, copy) NSString *debugDescription;

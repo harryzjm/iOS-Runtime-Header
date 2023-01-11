@@ -4,23 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, WDCharacterProperties;
+@class NSDate;
 
 __attribute__((visibility("hidden")))
 @interface WDDateTime
 {
-    WDCharacterProperties *mProperties;
     NSDate *mDate;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 - (int)runType;
 - (id)date;
-- (void)clearProperties;
-- (void)setProperties:(id)arg1;
-- (id)properties;
 - (id)initWithParagraph:(id)arg1 date:(id)arg2;
-- (void)dealloc;
 
 @end
 

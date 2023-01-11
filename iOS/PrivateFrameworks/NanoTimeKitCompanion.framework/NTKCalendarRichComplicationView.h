@@ -4,15 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NTKCalendarRichComplicationContentView;
+@class NSArray, NTKCalendarRichComplicationContentView;
 
 @interface NTKCalendarRichComplicationView
 {
     NTKCalendarRichComplicationContentView *_contentView;
+    NSArray *_accentViews;
+    NSArray *_desaturateViews;
 }
 
+@property(retain, nonatomic) NSArray *desaturateViews; // @synthesize desaturateViews=_desaturateViews;
+@property(retain, nonatomic) NSArray *accentViews; // @synthesize accentViews=_accentViews;
 @property(retain, nonatomic) NTKCalendarRichComplicationContentView *contentView; // @synthesize contentView=_contentView;
 - (void).cxx_destruct;
+- (void)_updateViews:(id)arg1 withFilter:(id)arg2;
+- (void)updateMonochromeColor;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (id)init;
 

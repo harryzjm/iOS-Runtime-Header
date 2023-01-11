@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PUImportItemViewModel, PUImportOneUpCell;
+@class PUImportOneUpCell, PXImportItemViewModel;
 
 @protocol PUImportOneUpCellDisplayDelegate
 - (void)importOneUpCell:(PUImportOneUpCell *)arg1 didRequestCancellationOfThumbnailRequestWithID:(long long)arg2;
-- (long long)importOneUpCell:(PUImportOneUpCell *)arg1 requestedThumbnailForImportItem:(PUImportItemViewModel *)arg2 completion:(void (^)(UIImage *, _Bool))arg3;
-- (void)importOneUpCell:(PUImportOneUpCell *)arg1 requestedBadgeUpdateForImportItem:(PUImportItemViewModel *)arg2;
+- (long long)importOneUpCell:(PUImportOneUpCell *)arg1 requestedThumbnailForImportItem:(PXImportItemViewModel *)arg2 completion:(void (^)(UIImage *, _Bool))arg3;
+- (void)importOneUpCell:(PUImportOneUpCell *)arg1 requestedBadgeUpdateForImportItem:(PXImportItemViewModel *)arg2;
 @end
 

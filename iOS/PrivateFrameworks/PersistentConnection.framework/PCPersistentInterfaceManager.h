@@ -9,7 +9,7 @@
 #import <PersistentConnection/CoreTelephonyClientDataDelegate-Protocol.h>
 #import <PersistentConnection/PCInterfaceMonitorDelegate-Protocol.h>
 
-@class CoreTelephonyClient, NSMapTable, NSRecursiveLock, NSString, NSTimer, PCSimpleTimer;
+@class CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSMapTable, NSRecursiveLock, NSString, NSTimer, PCSimpleTimer;
 
 @interface PCPersistentInterfaceManager : NSObject <CoreTelephonyClientDataDelegate, PCInterfaceMonitorDelegate>
 {
@@ -20,7 +20,6 @@
     struct __CFSet *_wakeOnWiFiDelegates;
     PCSimpleTimer *_wakeOnWiFiDisableTimer;
     void *_interfaceAssertion;
-    int _WWANContextIdentifier;
     NSString *_WWANInterfaceName;
     _Bool _isWWANInterfaceUp;
     NSTimer *_inCallWWANOverrideTimer;
@@ -35,12 +34,13 @@
     _Bool _isInCall;
     _Bool _isWakeOnWiFiSupported;
     _Bool _isWakeOnWiFiEnabled;
-    _Bool _shouldOverrideOnCallBehavior;
     CoreTelephonyClient *_ctClient;
+    CTXPCServiceSubscriptionContext *_currentDataSimContext;
     void *_ctServerConnection;
 }
 
 + (id)sharedInstance;
+@property(readonly) _Bool hasWWANStatusIndicator; // @synthesize hasWWANStatusIndicator=_hasWWANStatusIndicator;
 - (void).cxx_destruct;
 - (id)urlConnectionBoundToWWANInterfaceWithRequest:(id)arg1 delegate:(id)arg2 usesCache:(_Bool)arg3 maxContentLength:(long long)arg4 startImmediately:(_Bool)arg5 connectionProperties:(id)arg6;
 - (id)urlConnectionBoundToWWANInterface:(_Bool)arg1 withRequest:(id)arg2 delegate:(id)arg3 usesCache:(_Bool)arg4 maxContentLength:(long long)arg5 startImmediately:(_Bool)arg6 connectionProperties:(id)arg7;

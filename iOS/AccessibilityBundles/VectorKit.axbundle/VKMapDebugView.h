@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray, NSMutableSet, NSString;
+@class AXVKExplorationVertexElement, NSMutableArray, NSMutableSet, NSString;
 
 @interface VKMapDebugView : UIView
 {
@@ -16,11 +16,13 @@
     NSMutableArray *_poiPaths;
     NSMutableArray *_roadPaths;
     NSMutableArray *_roadPoints;
+    AXVKExplorationVertexElement *_currentExplorationElement;
     struct CGPoint _currentPoint;
     struct CGPoint _frontierPoint;
 }
 
 + (id)sharedInstance;
+@property(retain, nonatomic) AXVKExplorationVertexElement *currentExplorationElement; // @synthesize currentExplorationElement=_currentExplorationElement;
 @property(retain, nonatomic) NSMutableArray *roadPoints; // @synthesize roadPoints=_roadPoints;
 @property(retain, nonatomic) NSMutableArray *roadPaths; // @synthesize roadPaths=_roadPaths;
 @property(retain, nonatomic) NSMutableArray *poiPaths; // @synthesize poiPaths=_poiPaths;
@@ -34,7 +36,9 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)dealloc;
 - (void)_addValidPaths:(id)arg1 array:(id)arg2;
+- (void)removeExplorationPointsAndPaths;
 - (void)removePointsAndPaths;
+- (void)setCurrentExplorationVertex:(id)arg1;
 - (void)addRoadPaths:(id)arg1;
 - (void)addRoadPoints:(id)arg1;
 - (void)addPOIPaths:(id)arg1;

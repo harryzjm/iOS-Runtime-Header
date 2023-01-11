@@ -26,8 +26,6 @@
 
 + (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic, getter=isSecure) _Bool secure; // @synthesize secure=_secure;
-@property(readonly, nonatomic) unsigned int connectionSeed; // @synthesize connectionSeed=_connectionSeed;
-@property(readonly, nonatomic) unsigned int displayID; // @synthesize displayID=_displayID;
 @property(readonly, nonatomic) int pid; // @synthesize pid=_pid;
 @property(readonly, nonatomic, getter=isExternal) _Bool external; // @synthesize external=_external;
 - (void).cxx_destruct;
@@ -43,6 +41,9 @@
 - (_Bool)isiPodOnlyDisplay;
 - (_Bool)isRestrictedAirPlayDisplay;
 - (_Bool)isAirPlayDisplay;
+- (_Bool)isMainRootDisplay;
+- (unsigned int)connectionSeed;
+- (unsigned int)displayID;
 - (_Bool)expectsSecureRendering;
 - (id)uniqueIdentifier;
 - (long long)type;

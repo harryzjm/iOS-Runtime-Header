@@ -34,6 +34,7 @@
 @property(retain, nonatomic, getter=_cardViewController, setter=_setCardViewController:) UIViewController<CRKCardViewControlling> *cardViewController; // @synthesize cardViewController=_cardViewController;
 - (id)snippet;
 - (void).cxx_destruct;
+- (double)boundingWidthForPresentation:(id)arg1;
 @property(readonly, nonatomic) id <CRKCardViewControllerDelegate> cardViewControllerDelegate;
 - (double)desiredHeightForTransparentHeaderView;
 - (void)configureReusableTransparentHeaderView:(id)arg1;
@@ -49,12 +50,15 @@
 - (void)cardViewDidDisappearForCard:(id)arg1 withDisappearanceFeedback:(id)arg2;
 - (void)cardViewDidAppearForCard:(id)arg1 withAppearanceFeedback:(id)arg2;
 - (void)cardViewWillAppearForCard:(id)arg1 withAppearanceFeedback:(id)arg2;
+- (void)userDidReportFeedback:(id)arg1 fromCardSection:(id)arg2;
 - (void)userDidEngageCardSection:(id)arg1 withEngagementFeedback:(id)arg2;
 - (void)modalContainerViewControllerViewDidDisappear:(id)arg1;
 - (void)modalContainerViewControllerViewWillDisappear:(id)arg1;
+- (void)cardViewController:(id)arg1 willDismissViewController:(id)arg2;
 - (void)presentViewController:(id)arg1 forCardViewController:(id)arg2;
 - (unsigned long long)navigationIndexOfCardViewController:(id)arg1;
 - (struct CGSize)cardViewController:(id)arg1 boundingSizeForCardSectionViewController:(id)arg2;
+- (_Bool)performBeganEditingCommand:(id)arg1 forCardViewController:(id)arg2;
 - (_Bool)performPunchoutCommand:(id)arg1 forCardViewController:(id)arg2;
 - (_Bool)performNextCardCommand:(id)arg1 forCardViewController:(id)arg2;
 - (_Bool)performReferentialCommand:(id)arg1 forCardViewController:(id)arg2;
@@ -68,6 +72,7 @@
 - (void)_forwardProgressEvent:(unsigned long long)arg1 toCardViewController:(id)arg2 animated:(_Bool)arg3;
 - (void)_forwardProgressEventToCardViewController:(unsigned long long)arg1;
 - (void)willConfirm;
+- (void)_insertCardViewController:(id)arg1;
 - (id)_metricsContextOfEventsForCardSection:(id)arg1 inCard:(id)arg2;
 - (id)_metricsContextOfEventsForCard:(id)arg1;
 - (void)_validateCardSectionForParsecFeedbackDelivery:(id)arg1 validHandler:(CDUnknownBlockType)arg2;
@@ -77,6 +82,8 @@
 - (void)_addCardViewControllerAsChildViewController:(id)arg1;
 - (void)_removeCardViewControllerFromParentViewController:(id)arg1;
 - (void)siriDidReceiveViewsWithDialogPhase:(id)arg1;
+- (void)siriDidScrollVisible:(_Bool)arg1;
+- (void)siriWillBeginScrolling;
 - (void)siriDidStopSpeakingWithIdentifier:(id)arg1 speechQueueIsEmpty:(_Bool)arg2;
 - (void)siriDidStartSpeakingWithIdentifier:(id)arg1;
 - (void)willCancel;

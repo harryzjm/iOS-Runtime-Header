@@ -4,15 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class EKSource;
+
 @interface EKCalendarAccountEditItem
 {
+    EKSource *_limitedToSource;
 }
 
+- (void).cxx_destruct;
 - (void)calendarEditor:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
 - (_Bool)calendarEditor:(id)arg1 shouldSelectSubitem:(unsigned long long)arg2;
 - (id)currentSource;
 - (_Bool)canAddCalendarToMoreThanOneAccount;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
+- (id)initLimitedToSource:(id)arg1;
 
 @end
 

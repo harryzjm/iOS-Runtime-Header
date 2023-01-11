@@ -6,14 +6,13 @@
 
 #import <ITMLKit/NSObject-Protocol.h>
 
-@class IKElementChangeSet, IKViewElement, IKViewElementFactory, NSArray;
+@class IKChangeSet, IKViewElement, IKViewElementFactory, NSArray, NSDictionary;
 @protocol IKDataSourceElementImplementing;
 
 @protocol IKDataSourceElementImplementing <NSObject>
-@property(readonly, nonatomic) IKElementChangeSet *itemsChangeset;
+@property(readonly, copy, nonatomic) NSDictionary *indexTitles;
+@property(readonly, nonatomic) IKChangeSet *itemsChangeSet;
 @property(readonly, nonatomic) NSArray *prototypes;
-- (long long)indexOfItemForChildElement:(IKViewElement *)arg1;
-- (IKViewElement *)actualElementForProxyElement:(IKViewElement *)arg1;
 - (void)resetUpdates;
 - (void)updateStylesUsingUpdater:(void (^)(void))arg1;
 - (void)applyUpdatesWithImplementation:(id <IKDataSourceElementImplementing>)arg1 usingUpdater:(IKDataSourceElement * (^)(void))arg2;
@@ -22,8 +21,17 @@
 - (void)initializeWithElementFactory:(IKViewElementFactory *)arg1;
 - (void)unloadIndex:(long long)arg1;
 - (void)loadIndex:(long long)arg1;
+- (long long)indexOfItemForElement:(IKViewElement *)arg1;
 - (IKViewElement *)elementForItemAtIndex:(long long)arg1;
 - (IKViewElement *)prototypeForItemAtIndex:(long long)arg1;
 - (long long)numberOfItems;
+
+@optional
+@property(readonly, copy, nonatomic) NSArray *proxiedItemElements;
+@property(readonly, nonatomic) NSArray *masterPrototypes;
+- (_Bool)canProxyUnloadedChildElement:(IKViewElement *)arg1;
+- (IKViewElement *)proxyElementForLoadedChildElement:(IKViewElement *)arg1;
+- (void)resetImplicitUpdates;
+- (IKViewElement *)masterPrototypeForItemAtIndex:(unsigned long long)arg1;
 @end
 

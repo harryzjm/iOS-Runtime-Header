@@ -17,10 +17,11 @@
 - (void)_prepareMesssageLabel;
 - (void)_prepareTitleLabel;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (_Bool)accessisibilityViewIsModal;
-- (_Bool)_accessibilityIsAlertContainer;
+- (_Bool)accessibilityViewIsModal;
+- (long long)accessibilityContainerType;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

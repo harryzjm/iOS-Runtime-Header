@@ -6,6 +6,7 @@
 
 @class SKUIBrowseHeaderPageComponent;
 
+__attribute__((visibility("hidden")))
 @interface SKUIBrowseHeaderPageSection
 {
 }

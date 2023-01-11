@@ -6,13 +6,14 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface TLKRoundedCornerLabels
 {
     NSMutableArray *_roundedLabels;
-    unsigned long long _style;
+    unsigned long long _prominence;
 }
 
-@property(nonatomic) unsigned long long style; // @synthesize style=_style;
+@property(nonatomic) unsigned long long prominence; // @synthesize prominence=_prominence;
 @property(retain, nonatomic) NSMutableArray *roundedLabels; // @synthesize roundedLabels=_roundedLabels;
 - (void).cxx_destruct;
 - (void)updateRoundedText:(id)arg1;

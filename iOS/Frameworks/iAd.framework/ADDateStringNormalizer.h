@@ -18,8 +18,8 @@
 + (id)normalizers;
 + (id)formatter;
 @property(retain, nonatomic) NSRegularExpression *regularExpression; // @synthesize regularExpression=_regularExpression;
+- (void).cxx_destruct;
 - (id)normalize:(id)arg1;
-- (void)dealloc;
 
 @end
 

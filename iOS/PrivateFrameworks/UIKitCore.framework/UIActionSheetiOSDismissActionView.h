@@ -21,11 +21,8 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (double)_heightForTraitCollection:(id)arg1;
 @property(copy, nonatomic) NSString *title;
-- (void)setHighlighted:(_Bool)arg1;
-- (void)_applyContinuousCornerRadius:(double)arg1;
 - (void)_setupDismissButton;
 - (id)initWithContinuousCornerRadius:(double)arg1;
-- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -11,14 +11,15 @@
 @class LSApplicationWorkspace, MCProfileInfo, NSArray, NSString;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface MCUIDataManager : NSObject <LSApplicationWorkspaceObserverProtocol>
 {
+    _Bool _observing;
     int _appsChangedNotifyToken;
     int _provisioningProfileInstalledToken;
     int _provisioningProfileRemovedToken;
-    MCProfileInfo *_mdmProfile;
-    NSArray *_configurationProfiles;
+    MCProfileInfo *_mdmProfileInfo;
+    NSArray *_configurationProfilesInfo;
+    NSArray *_uninstalledProfilesInfo;
     NSArray *_freeDeveloperAppSigners;
     NSArray *_enterpriseAppSigners;
     NSArray *_blockedApplications;
@@ -32,31 +33,34 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) int provisioningProfileRemovedToken; // @synthesize provisioningProfileRemovedToken=_provisioningProfileRemovedToken;
 @property(nonatomic) int provisioningProfileInstalledToken; // @synthesize provisioningProfileInstalledToken=_provisioningProfileInstalledToken;
 @property(nonatomic) int appsChangedNotifyToken; // @synthesize appsChangedNotifyToken=_appsChangedNotifyToken;
+@property(nonatomic) _Bool observing; // @synthesize observing=_observing;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *memberQueue; // @synthesize memberQueue=_memberQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *reloadQueue; // @synthesize reloadQueue=_reloadQueue;
 @property(retain, nonatomic) LSApplicationWorkspace *appWorkspace; // @synthesize appWorkspace=_appWorkspace;
 @property(retain, nonatomic) NSArray *blockedApplications; // @synthesize blockedApplications=_blockedApplications;
 @property(retain, nonatomic) NSArray *enterpriseAppSigners; // @synthesize enterpriseAppSigners=_enterpriseAppSigners;
 @property(retain, nonatomic) NSArray *freeDeveloperAppSigners; // @synthesize freeDeveloperAppSigners=_freeDeveloperAppSigners;
-@property(retain, nonatomic) NSArray *configurationProfiles; // @synthesize configurationProfiles=_configurationProfiles;
-@property(retain, nonatomic) MCProfileInfo *mdmProfile; // @synthesize mdmProfile=_mdmProfile;
+@property(retain, nonatomic) NSArray *uninstalledProfilesInfo; // @synthesize uninstalledProfilesInfo=_uninstalledProfilesInfo;
+@property(retain, nonatomic) NSArray *configurationProfilesInfo; // @synthesize configurationProfilesInfo=_configurationProfilesInfo;
+@property(retain, nonatomic) MCProfileInfo *mdmProfileInfo; // @synthesize mdmProfileInfo=_mdmProfileInfo;
 - (void).cxx_destruct;
 - (void)applicationsDidUninstall:(id)arg1;
 - (void)applicationsDidInstall:(id)arg1;
 - (void)reloadAppSignersAndBlockedAppsInBackgroundWithCompletion:(CDUnknownBlockType)arg1;
-- (void)reloadAppSignersAndBlockedAppsInBackground;
 - (void)reloadProfilesInBackgroundWithCompletion:(CDUnknownBlockType)arg1;
-- (void)reloadProfilesInBackground;
 - (void)_reloadQueueReloadDataInBackgroundIncludingProfiles:(_Bool)arg1 appSigners:(_Bool)arg2 blockedApplications:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)reloadDataInBackgroundIncludingProfiles:(_Bool)arg1 appSigners:(_Bool)arg2 blockedApplications:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)reloadAllDataInBackgroundWithCompletion:(CDUnknownBlockType)arg1;
-- (void)reloadAllDataInBackground;
-- (id)configurationProfilesWithOutMDMProfile:(id *)arg1 outEnterpriseAppSigners:(id *)arg2 outFreeDevAppSigners:(id *)arg3 outBlockedApplications:(id *)arg4;
-- (unsigned long long)profileCount;
+- (void)allDeviceManagementOutMDMProfileInfo:(id *)arg1 outConfigurationProfilesInfo:(id *)arg2 outUninstalledProfilesInfo:(id *)arg3 outEnterpriseAppSigners:(id *)arg4 outFreeDevAppSigners:(id *)arg5 outBlockedApplications:(id *)arg6;
+- (id)configurationProfiles;
+- (id)mdmProfile;
+- (unsigned long long)installedProfileCount;
 - (unsigned long long)appSignerCount;
 - (unsigned long long)itemCount;
 - (_Bool)isProfileSectionEmpty;
-- (void)configurationProfilesChanged:(id)arg1;
+- (void)profilesChanged:(id)arg1;
+- (void)appMovedToForeground:(id)arg1;
+- (void)appMovedToBackground:(id)arg1;
 - (void)dealloc;
 - (id)init;
 

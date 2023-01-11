@@ -8,7 +8,7 @@
 
 #import <ContactsUI/CNContactQuickActionViewContainer-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSString, UITraitCollection;
 
 __attribute__((visibility("hidden")))
 @interface CNTestQuickActionViewContainer : NSObject <CNContactQuickActionViewContainer>
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) UITraitCollection *traitCollection;
 
 @end
 

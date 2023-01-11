@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoardServices/BSDescriptionProviding-Protocol.h>
 #import <SpringBoardServices/SBSStatusBarStyleOverridesAssertionClient-Protocol.h>
 
-@class NSMapTable, NSString, NSXPCConnection, SBSStatusBarStyleOverridesCoordinator;
+@class NSMapTable, NSMutableDictionary, NSString, NSXPCConnection, SBSStatusBarStyleOverridesCoordinator;
 @protocol OS_dispatch_queue;
 
-@interface SBSStatusBarStyleOverridesAssertionManager : NSObject <SBSStatusBarStyleOverridesAssertionClient>
+@interface SBSStatusBarStyleOverridesAssertionManager : NSObject <BSDescriptionProviding, SBSStatusBarStyleOverridesAssertionClient>
 {
     NSMapTable *_assertionsByIdentifier;
+    NSMutableDictionary *_acquisitionHandlerEntriesByIdentifier;
     NSXPCConnection *_sbXPCConnection;
     NSObject<OS_dispatch_queue> *_internalQueue;
     SBSStatusBarStyleOverridesCoordinator *_internalQueue_styleOverrideCoordinator;
@@ -25,15 +27,21 @@
 @property(nonatomic) __weak SBSStatusBarStyleOverridesCoordinator *internalQueue_styleOverrideCoordinator; // @synthesize internalQueue_styleOverrideCoordinator=_internalQueue_styleOverrideCoordinator;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property(retain, nonatomic) NSXPCConnection *sbXPCConnection; // @synthesize sbXPCConnection=_sbXPCConnection;
+@property(retain, nonatomic) NSMutableDictionary *acquisitionHandlerEntriesByIdentifier; // @synthesize acquisitionHandlerEntriesByIdentifier=_acquisitionHandlerEntriesByIdentifier;
 @property(retain, nonatomic) NSMapTable *assertionsByIdentifier; // @synthesize assertionsByIdentifier=_assertionsByIdentifier;
 - (void).cxx_destruct;
 - (void)_reactivateAssertions;
-- (void)_tearDownXPCConnection;
+- (void)_handleXPCConnectionInvalidation;
 - (void)unregisterCoordinator;
 - (void)_registerStyleOverrideCoordinatorAfterInterruption;
 - (void)_internalQueue_updateRegistrationForCoordinator:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)updateRegistrationForCoordinator:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)_internalQueue_removeStatusBarStyleOverridesAssertionWithIdentifier:(id)arg1 invalidate:(_Bool)arg2;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)succinctDescriptionBuilder;
+- (id)succinctDescription;
+@property(readonly, copy) NSString *description;
 - (void)statusBarTappedWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)invalidateStatusBarStyleOverridesAssertionsWithIdentifiers:(id)arg1;
 - (void)updateStatusStringForAssertion:(id)arg1;
@@ -44,7 +52,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

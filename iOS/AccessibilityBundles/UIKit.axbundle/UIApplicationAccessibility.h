@@ -8,10 +8,13 @@
 {
 }
 
++ (_Bool)_isSerializableAccessibilityElement;
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (long long)_accessibilityOrientationForCompareGeometry;
+- (void)_accessibilityShowEditingHUD;
+- (id)_accessibilityNativeFocusableElements:(id)arg1 matchingBlock:(CDUnknownBlockType)arg2;
+- (id)_accessibilityNativeFocusableElements:(id)arg1 withQueryString:(id)arg2;
 - (id)_accessibilityNativeFocusableElements:(id)arg1;
 - (id)_accessibilityExplorerElements;
 - (id)_accessibilityNativeFocusPreferredElement;
@@ -32,13 +35,23 @@
 - (void)sendEvent:(id)arg1;
 - (_Bool)_accessibilityBeginMonitoringIdleRunLoop;
 - (id)_accessibilitySpeakThisElementsAndStrings;
+- (id)_accessibilityFirstElementsForSpeakThis;
 - (id)_accessibilitySpeakThisViewController;
 - (id)_accessibilityApplicationSemanticContextWithViewController:(id)arg1;
 - (id)_accessibilitySemanticContext;
 - (id)_accessibilityAuditIssuesWithOptions:(id)arg1;
 - (id)_axAuditCheckDynamicTextSupport:(_Bool)arg1 andClippingIssues:(_Bool)arg2 spinRunloop:(_Bool)arg3;
+- (id)_targetInChainForAction:(SEL)arg1 sender:(id)arg2;
+- (id)_responderForKeyEvents;
+- (_Bool)_accessibilityHandleDefaultActionForNativeFocusedElement;
+- (_Bool)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1 withEvaluator:(CDUnknownBlockType)arg2;
+- (_Bool)_accessibilityMoveAppFocusForElementMatchingQuery:(id)arg1 heading:(unsigned long long)arg2;
+- (_Bool)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1 toElementMatchingQuery:(id)arg2;
+- (_Bool)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1;
+- (_Bool)_accessibilityApplicationDidBecomeFocused;
+- (_Bool)_accessibilityHandleFullKeyboardAccessAction:(int)arg1 value:(id)arg2;
 - (void)_accessibilityShowKeyboardHints;
-- (_Bool)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
+- (_Bool)_iosAccessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (_Bool)_accessibilityActionIsPhysicalButton:(int)arg1 nativeUIKitTypeRef:(long long *)arg2;
 - (id)_accessibilityElementsWithSemanticContext:(id)arg1;
 - (id)accessibilityLabel;
@@ -50,10 +63,11 @@
 - (_Bool)openURL:(id)arg1;
 - (id)_accessibilityUIWindowFindWithGlobalPoint:(struct CGPoint)arg1;
 - (_Bool)_accessibilityIsTappingMediaLegibilityEvents;
+- (_Bool)_accessibilityIsInitialBundleLoadFinished;
 - (int)_accessibilityApplicationInterfaceOrientation;
 - (int)_accessibilityApplicationForPosition:(struct CGPoint)arg1;
-- (id)accessibilityAttributeValue:(long long)arg1;
-- (id)accessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
+- (id)_iosAccessibilityAttributeValue:(long long)arg1;
+- (id)_iosAccessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
 - (_Bool)_accessibilityDispatchKeyboardAction:(id)arg1;
 - (id)_axSubviews;
 - (id)_accessibilityCurrentHardwareKeyboardLayout;
@@ -83,13 +97,15 @@
 - (id)_accessibilityLastElement;
 - (id)_accessibilityElementFirst:(_Bool)arg1 last:(_Bool)arg2 forFocus:(_Bool)arg3 allowScrolling:(_Bool)arg4;
 - (id)_accessibilityElementFirst:(_Bool)arg1 last:(_Bool)arg2 forFocus:(_Bool)arg3;
-- (id)_accessibilityTableViewCellWithRowIndex:(long long)arg1 column:(long long)arg2 tableView:(id)arg3;
+- (id)_accessibilityCellWithRowIndex:(long long)arg1 column:(long long)arg2 containingView:(id)arg3;
 - (_Bool)_accessibilityAllowsNotificationsDuringSuspension;
 - (void)_accessibilitySetAllowsNotificationsDuringSuspension:(_Bool)arg1;
 - (id)_findContainerAccessibleElement:(id)arg1 first:(_Bool)arg2 focus:(_Bool)arg3 allowScrolling:(_Bool)arg4;
 - (id)_accessibilityWindows;
+- (id)_accessibilityWindowsIgnoringWindowsWithHiddenElements:(_Bool)arg1;
 - (id)_accessibilityUserTestingChildren;
 - (id)_accessibilityElementsForSearchParameter:(id)arg1;
+- (id)_accessibilityAllWindowsOnlyVisibleWindows:(_Bool)arg1;
 - (id)_accessibilityMainWindow;
 - (id)_accessibilityValidateResponderForFocus:(id)arg1;
 - (id)_accessibilityValidatedResponderForExistingGoodResponder:(id)arg1 forFocus:(_Bool)arg2;
@@ -112,6 +128,7 @@
 - (void)_accessibilityKeyboardDidHide:(id)arg1;
 - (struct CGRect)_accessibilityConvertSystemBoundedScreenRectToContextSpace:(struct CGRect)arg1;
 - (struct CGRect)accessibilityFrame;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

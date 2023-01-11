@@ -4,10 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <NewsCore/NSObject-Protocol.h>
+
 @class NSDate, NSString;
 
-@protocol FCHeadlineMetadata
+@protocol FCHeadlineMetadata <NSObject>
 @property(readonly, nonatomic) NSString *storyType;
 @property(readonly, nonatomic) NSDate *displayDate;
+
+@optional
+@property(readonly, nonatomic) NSString *title;
 @end
 

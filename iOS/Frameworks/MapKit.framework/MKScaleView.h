@@ -15,18 +15,14 @@
     _Bool _useYardsForShortDistances;
     NSNumberFormatter *_floatNumberFormatter;
     double _magicNumbers[3];
-    UIColor *_lightSegmentColorRegular;
-    UIColor *_darkSegmentColorRegular;
     UIColor *_borderColorRegular;
-    UIColor *_lightSegmentColorSatellite;
-    UIColor *_darkSegmentColorSatellite;
     UIColor *_borderColorSatellite;
     NSMutableArray *_segments;
+    NSMutableArray *_blurredSegments;
     _MKScaleUnitsView *_unitsView;
     long long _oldNumberOfSegments;
-    UIView *_outlineViewA;
-    UIView *_outlineViewB;
     UIView *_displayedOutline;
+    UIView *_displayedWhiteOutline;
     double _segmentLengthInPixels;
     double _resultSegmentLength;
     double _resultSegmentLengthInMeters;
@@ -40,12 +36,16 @@
     int _layoutCounter;
     _Bool _useLightText;
     _Bool _isVisible;
+    _Bool _usedInternallyByMapView;
     MKMapView *_mapView;
     long long _scaleVisibility;
     long long _legendAlignment;
+    unsigned long long _mapType;
 }
 
 + (id)scaleViewWithMapView:(id)arg1;
+@property(nonatomic) unsigned long long mapType; // @synthesize mapType=_mapType;
+@property(nonatomic) _Bool usedInternallyByMapView; // @synthesize usedInternallyByMapView=_usedInternallyByMapView;
 @property(nonatomic) long long legendAlignment; // @synthesize legendAlignment=_legendAlignment;
 @property(nonatomic) long long scaleVisibility; // @synthesize scaleVisibility=_scaleVisibility;
 @property(nonatomic) __weak MKMapView *mapView; // @synthesize mapView=_mapView;
@@ -56,17 +56,18 @@
 - (id)_formattedStringForFloat:(double)arg1;
 - (void)layoutSubviews;
 - (void)_calculateSegments;
-- (void)_updateSegmentStrokes;
-- (void)didMoveToWindow;
 @property(nonatomic) _Bool useLightText; // @dynamic useLightText;
+- (id)_setupSegmentView:(_Bool)arg1;
 @property(nonatomic) double distanceInMeters; // @dynamic distanceInMeters;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)memoryWarning:(id)arg1;
 - (void)updateLocale:(id)arg1;
 - (void)_updateStrings;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateVisibility;
 - (void)shouldUpdateScaleNotification:(id)arg1;
 - (void)dealloc;
+- (id)_setupOutlineView;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (struct CGSize)_systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;

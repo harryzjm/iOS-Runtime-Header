@@ -33,11 +33,13 @@
 + (id)_createMungledDictionary:(id)arg1;
 - (id)description;
 - (id)_visibleName;
+- (id)fontDescriptorWithDesign:(id)arg1;
 - (id)fontDescriptorWithFamily:(id)arg1;
 - (id)fontDescriptorWithFace:(id)arg1;
 - (id)fontDescriptorWithMatrix:(struct CGAffineTransform)arg1;
 - (id)fontDescriptorWithSize:(double)arg1;
 - (id)fontDescriptorWithSymbolicTraits:(unsigned int)arg1;
+- (id)fontDescriptorWithSymbolicTraits:(unsigned int)arg1 mask:(unsigned int)arg2;
 - (id)fontDescriptorByAddingAttributes:(id)arg1;
 - (id)matchingFontDescriptorWithMandatoryKeys:(id)arg1;
 - (id)matchingFontDescriptorsWithMandatoryKeys:(id)arg1;

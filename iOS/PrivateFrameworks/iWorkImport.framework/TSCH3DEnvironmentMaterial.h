@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (struct MaterialShaderVariables)defaultShaderVariables;
+- (id)defaultShaderVariables;
 - (void)saveToArchive:(struct Chart3DEnvironmentMaterialArchive *)arg1 archiver:(id)arg2;
 - (id)initWithArchive:(const struct Chart3DEnvironmentMaterialArchive *)arg1 unarchiver:(id)arg2;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HMDeviceSetupOperationHandler, SFClient, SFDeviceOperationHandlerWiFiSetup, SFService, SFSession;
+@class HMDeviceSetupOperationHandler, SFClient, SFDeviceOperationHandlerCDPSetup, SFDeviceOperationHandlerWiFiSetup, SFService, SFSession;
 @protocol OS_dispatch_queue;
 
 @interface SFDeviceSetupAppleTVService : NSObject
@@ -17,8 +17,10 @@
     SFClient *_preventExitForLocaleClient;
     SFService *_sfService;
     SFSession *_sfSession;
+    SFDeviceOperationHandlerCDPSetup *_cdpSetupHandler;
     HMDeviceSetupOperationHandler *_homeKitSetupHandler;
     SFDeviceOperationHandlerWiFiSetup *_wifiSetupHandler;
+    _Bool _prefCDPEnabled;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _progressHandler;
 }
@@ -32,6 +34,7 @@
 - (void)_handleSessionEnded:(id)arg1;
 - (void)_handleSessionStarted:(id)arg1;
 - (void)_sfServiceStart;
+- (void)_reportProgress:(unsigned int)arg1 info:(id)arg2;
 - (void)_invalidate;
 - (void)invalidate;
 - (void)_activate;

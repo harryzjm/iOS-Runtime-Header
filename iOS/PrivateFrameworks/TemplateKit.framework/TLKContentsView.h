@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, UILabel;
+@class NSMutableArray, TLKLabel;
 
+__attribute__((visibility("hidden")))
 @interface TLKContentsView
 {
-    unsigned long long _style;
-    UILabel *_titleLabel;
+    TLKLabel *_titleLabel;
     NSMutableArray *_detailsLabels;
 }
 
-+ (id)detailsLabelWithStyle:(unsigned long long)arg1;
-@property(retain) NSMutableArray *detailsLabels; // @synthesize detailsLabels=_detailsLabels;
-@property(retain) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property(nonatomic) unsigned long long style; // @synthesize style=_style;
++ (id)detailsLabel;
+@property(retain, nonatomic) NSMutableArray *detailsLabels; // @synthesize detailsLabels=_detailsLabels;
+@property(retain, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 - (void).cxx_destruct;
 - (void)updateWithTitle:(id)arg1 contents:(id)arg2;
 - (id)init;

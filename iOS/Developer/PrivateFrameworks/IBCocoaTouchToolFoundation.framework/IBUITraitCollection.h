@@ -19,6 +19,7 @@
     long long _displayGamut;
 }
 
++ (id)styleAndContrastByNSAppearanceName;
 @property(readonly, nonatomic) long long displayGamut; // @synthesize displayGamut=_displayGamut;
 @property(readonly, nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 @property(readonly, nonatomic) long long verticalSizeClass; // @synthesize verticalSizeClass=_verticalSizeClass;

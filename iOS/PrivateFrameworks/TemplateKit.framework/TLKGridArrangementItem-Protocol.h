@@ -10,12 +10,12 @@
 @class NUISizeCache;
 
 @protocol TLKGridArrangementItem <NUIArrangementItem, TLKGridFrame>
-@property(retain) NUISizeCache *sizeCache;
-@property double horizontalCompressionResistance;
-@property double horizontalHuggingPriority;
-@property unsigned long long row;
-@property struct _NSRange columnRange;
-@property struct CGRect frame;
+@property(retain, nonatomic) NUISizeCache *sizeCache;
+@property(nonatomic) double horizontalCompressionResistance;
+@property(nonatomic) double horizontalHuggingPriority;
+@property(nonatomic) unsigned long long row;
+@property(nonatomic) struct _NSRange columnRange;
+@property(nonatomic) struct CGRect frame;
 - (struct CGSize)sizeForTargetSize:(struct CGSize)arg1;
 @end
 

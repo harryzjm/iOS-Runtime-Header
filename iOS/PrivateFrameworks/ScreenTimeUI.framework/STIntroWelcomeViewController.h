@@ -4,17 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <OnBoardingKit/OBWelcomeController.h>
+
 @class NSString;
 
-@interface STIntroWelcomeViewController
+__attribute__((visibility("hidden")))
+@interface STIntroWelcomeViewController : OBWelcomeController
 {
     NSString *_childName;
+    CDUnknownBlockType _continueHandler;
 }
 
-@property(copy) NSString *childName; // @synthesize childName=_childName;
+@property(readonly, copy) CDUnknownBlockType continueHandler; // @synthesize continueHandler=_continueHandler;
+@property(readonly, copy) NSString *childName; // @synthesize childName=_childName;
 - (void).cxx_destruct;
-- (void)viewDidLoad;
-- (id)initWithIntroductionModel:(id)arg1 childName:(id)arg2;
+- (void)_continue:(id)arg1;
+- (void)loadView;
+- (id)initWithChildName:(id)arg1 continueHandler:(CDUnknownBlockType)arg2;
 
 @end
 

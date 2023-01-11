@@ -6,6 +6,7 @@
 
 @class NSAttributedString;
 
+__attribute__((visibility("hidden")))
 @interface CKTranscriptSMSSpamCell
 {
     NSAttributedString *_attributedButtonText;

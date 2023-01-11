@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AVCaptureDevice, AVCaptureDeviceFormat, AVCaptureDeviceInput, AVCaptureMetadataOutput, AVCaptureMovieFileOutput, AVCapturePhotoOutput, AVCaptureSession, AVCaptureVideoDataOutput, AVCaptureVideoPreviewLayer, AVCaptureVideoThumbnailOutput, CAMCaptureEngine, CAMPanoramaConfiguration, CAMPanoramaOutput, NSString;
-@protocol AVCaptureFileOutputRecordingDelegate, AVCapturePhotoCaptureDelegate;
+@protocol AVCaptureFileOutputRecordingDelegate, AVCapturePhotoCaptureDelegate, AVMomentCaptureMovieRecordingDelegate;
 
 @interface CAMCaptureCommandContext : NSObject
 {
@@ -53,11 +53,15 @@
 - (id)videoDeviceForMode:(long long)arg1 desiredDevice:(long long)arg2 videoConfiguration:(long long)arg3 resolvedDevice:(long long *)arg4;
 - (id)_captureEngineDeviceForMode:(long long)arg1 desiredDevice:(long long)arg2 videoConfiguration:(long long)arg3 resolvedDevice:(long long *)arg4;
 - (void)clear;
-- (void)stopPanoramaCapture;
+- (void)stopPanoramaCaptureInterrupted:(_Bool)arg1;
 - (void)startPanoramaCaptureWithRequest:(id)arg1;
 @property(readonly, nonatomic) CAMPanoramaConfiguration *currentPanoramaConfiguration;
 @property(readonly, nonatomic) __weak id <AVCaptureFileOutputRecordingDelegate> currentRecordingDelegate;
 - (void)registerVideoCaptureRequest:(id)arg1;
+- (void)clearCachedMomentCaptureSettingsForIdentifier:(id)arg1;
+- (id)cachedMomentCaptureSettingsForIdentifier:(id)arg1;
+- (void)cacheMomentCaptureSettings:(id)arg1 forIdentifier:(id)arg2;
+@property(readonly, nonatomic) __weak id <AVMomentCaptureMovieRecordingDelegate> currentMomentCaptureMovieRecordingDelegate;
 @property(readonly, nonatomic) __weak id <AVCapturePhotoCaptureDelegate> currentStillImageDelegate;
 - (void)registerStillImageCaptureRequest:(id)arg1 withSettings:(id)arg2;
 - (id)initWithCaptureEngine:(id)arg1;

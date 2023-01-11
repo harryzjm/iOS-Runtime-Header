@@ -23,7 +23,6 @@
 + (_Bool)contactIsMe:(id)arg1;
 + (id)localizedLowercaseContactProperty:(id)arg1;
 + (_Bool)contactStoreHasMeCard:(id)arg1;
-+ (_Bool)_isDevicePasscodeSet;
 + (_Bool)keychainSyncEnabled;
 + (id)_stringForCNContactObject:(id)arg1 contactObjectComponent:(id)arg2;
 + (id)valueStringForMatch:(id)arg1;
@@ -44,6 +43,7 @@
 - (_Bool)_shouldTryToSaveCredentialsFromLastForm:(id)arg1 currentFormMetadata:(id)arg2 frame:(id)arg3;
 - (_Bool)webView:(id)arg1 frame:(id)arg2 willNavigateFromForm:(id)arg3 bySubmitting:(_Bool)arg4 processMetadataCorrections:(_Bool)arg5 uniqueIDsOfControlsThatWereAutoFilled:(id)arg6 submissionHandler:(CDUnknownBlockType)arg7;
 - (_Bool)_webView:(id)arg1 willSubmitLoginFormWithMetadata:(id)arg2 formSubmission:(_Bool)arg3 fromFrame:(id)arg4 submissionHandler:(CDUnknownBlockType)arg5;
+- (void)_warnAboutWeakPasswordIfNecessaryWithWebView:(id)arg1 credential:(id)arg2 protectionSpace:(id)arg3;
 - (_Bool)_webView:(id)arg1 saveCredentialsForURL:(id)arg2 formSubmission:(_Bool)arg3 formWithMetadata:(id)arg4 fromFrame:(id)arg5 username:(id)arg6 password:(id)arg7 submissionHandler:(CDUnknownBlockType)arg8;
 - (id)_relatedCredentialMatchesToUpdateForUser:(id)arg1 protectionSpace:(id)arg2 oldCredential:(id *)arg3 matchesForCurrentHost:(id *)arg4 matchesForAssociatedDomains:(id *)arg5 haveExistingCredentialWithSameUsernameAndDifferentPassword:(_Bool *)arg6;
 - (id)_relatedCredentialMatchesToUpdateForUser:(id)arg1 protectionSpace:(id)arg2 oldCredential:(id *)arg3 matchesForCurrentHost:(id *)arg4 matchesForAssociatedDomains:(id *)arg5;
@@ -51,8 +51,8 @@
 - (_Bool)_webView:(id)arg1 willSubmitStandardFormWithMetadata:(id)arg2 fromFrame:(id)arg3 submissionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)_webView:(id)arg1 formSubmission:(_Bool)arg2 willSubmitNewAccountOrChangePasswordFormWithMetadata:(id)arg3 fromFrame:(id)arg4 submissionHandler:(CDUnknownBlockType)arg5;
 - (_Bool)_webView:(id)arg1 saveUsernameAndPasswordFromForm:(id)arg2 inFrame:(id)arg3 confirmOverwritingCurrentPassword:(_Bool)arg4 submissionHandler:(CDUnknownBlockType)arg5;
-- (void)_didFillFieldWithGeneratedPassword:(id)arg1 inFrame:(id)arg2 webView:(id)arg3;
-- (void)_saveUser:(id)arg1 password:(id)arg2 forURL:(id)arg3 andPromptToUpdateRelatedCredentialsWithWebView:(id)arg4;
+- (void)didFillFieldWithGeneratedPassword:(id)arg1 inFrame:(id)arg2 webView:(id)arg3;
+- (void)saveUser:(id)arg1 password:(id)arg2 forURL:(id)arg3 andPromptToUpdateRelatedCredentialsWithWebView:(id)arg4;
 - (_Bool)_saveUser:(id)arg1 password:(id)arg2 forURL:(id)arg3 formType:(unsigned long long)arg4 promptingPolicy:(long long)arg5 webView:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (_Bool)_webView:(id)arg1 saveUsernameAndPasswordForURL:(id)arg2 fromForm:(id)arg3 inFrame:(id)arg4 username:(id)arg5 password:(id)arg6 isGeneratedPassword:(_Bool)arg7 confirmOverwritingCurrentPassword:(_Bool)arg8 submissionHandler:(CDUnknownBlockType)arg9;
 - (id)_credentialMatchesEligibleForUpdateForURL:(id)arg1 username:(id)arg2 oldPassword:(id)arg3;
@@ -63,10 +63,7 @@
 - (void)gatherValuesForForm:(id)arg1 inFrame:(id)arg2 multiRoundAutoFillManager:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)shouldAllowPasswordAutoFillOnURL:(id)arg1 allowExternalCredentials:(_Bool)arg2;
 - (id)_credentialForLoginForm:(id)arg1 inFrame:(id)arg2 completingPartialUser:(_Bool)arg3 matches:(id *)arg4 potentialMatches:(id *)arg5;
-- (id)credentialForLoginForm:(id)arg1 inFrame:(id)arg2;
 - (id)credentialFromMatches:(id)arg1 completingPartialUserInLoginForm:(id)arg2;
-- (void)_autoFillPreferencesDidChange;
-- (id)_syncManager;
 - (void)_applicationWillEnterForeground:(id)arg1;
 @property(readonly, nonatomic) CNContact *me;
 - (id)uniqueIDOfContact:(id)arg1;
@@ -84,9 +81,11 @@
 - (id)addressBookMatchesForProperty:(id)arg1 key:(id)arg2 label:(id)arg3 contact:(id)arg4;
 - (id)addressBookMatchesForProperty:(id)arg1 key:(id)arg2 label:(id)arg3 partialString:(id)arg4 contact:(id)arg5 allowingIdentifiedAddressBookLabelToOverridePreferredIdentifier:(_Bool)arg6;
 - (id)addressBookMatchesForProperty:(id)arg1 key:(id)arg2 label:(id)arg3;
+- (id)_addressBookMatchesForFamilyNameForContact:(id)arg1;
+- (id)_addressBookMatchesForMiddleNameForContact:(id)arg1;
+- (id)_addressBookMatchesForGivenNameForContact:(id)arg1;
 - (id)_addressBookMatchesForFullNameForContact:(id)arg1;
-- (void)gatherAutoFillDisplayDataWithTextField:(id)arg1 displayedInQuickType:(_Bool)arg2 prefix:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)_displayDataWithTextField:(id)arg1 displayedInQuickType:(_Bool)arg2 prefix:(id)arg3;
+- (void)gatherAutoFillDisplayDataWithTextField:(id)arg1 displayedInQuickType:(_Bool)arg2 prefix:(id)arg3 contact:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)saveCompletionDBSoon;
 - (id)completionDBPath;
 - (void)dealloc;

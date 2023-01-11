@@ -15,10 +15,19 @@
 }
 
 + (_Bool)shouldUseX509;
++ (_Bool)shouldUseUpsellEnrollment;
++ (_Bool)shouldUseExtendedEnrollment;
++ (_Bool)shouldUseAutoEnrollment;
++ (_Bool)shouldUseApplePayClassic;
 + (id)keychainLabelForCertWithAccountID:(id)arg1 purpose:(long long)arg2;
 + (id)keychainLabelForKeyWithAccountID:(id)arg1 purpose:(long long)arg2;
 + (id)keychainLabelForAccountID:(id)arg1 purpose:(long long)arg2;
++ (long long)tokenUpdateState;
++ (_Bool)tokenUpdateShouldStartWithLogKey:(id)arg1;
++ (void)tokenUpdateDidFinishWithLogKey:(id)arg1;
 + (id)diskBasedPaymentSheet;
++ (id)countryCode;
++ (id)applePayClassicNetworks;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)x509CertChainDataForAccountIdentifier:(id)arg1 purpose:(long long)arg2 regenerateCerts:(_Bool)arg3 error:(id *)arg4;

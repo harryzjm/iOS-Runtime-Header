@@ -18,13 +18,16 @@
         unsigned int supportsApplePayForPayment:1;
     } _has;
     _Bool _supportsApplePayForPayment;
+    _Bool __encodeLegacyGloryData;
     _INPBTimestamp *_expirationDate;
     NSArray *_paymentMethods;
     NSArray *_rideOptions;
 }
 
++ (_Bool)supportsSecureCoding;
 + (Class)rideOptionsType;
 + (Class)paymentMethodsType;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(nonatomic) _Bool supportsApplePayForPayment; // @synthesize supportsApplePayForPayment=_supportsApplePayForPayment;
 @property(copy, nonatomic) NSArray *rideOptions; // @synthesize rideOptions=_rideOptions;
 @property(copy, nonatomic) NSArray *paymentMethods; // @synthesize paymentMethods=_paymentMethods;
@@ -34,6 +37,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(nonatomic) _Bool hasSupportsApplePayForPayment;

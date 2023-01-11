@@ -6,21 +6,19 @@
 
 #import <UIKit/UIBarButtonItem.h>
 
+@class NSValue, UIToolbar, UIViewController;
+
 @interface UIBarButtonItem (IBCocoaTouchToolIntegration)
 - (id)ibTitleEditableArea;
 - (struct CGRect)ibSceneRect;
 - (struct CGRect)ibCustomViewFrameInEnclosingBar;
-- (void)setIbSpaceItemSceneRect:(id)arg1;
-- (id)ibSpaceItemSceneRect;
+@property(copy, nonatomic) NSValue *ibSpaceItemSceneRect;
 - (id)ibEffectiveOwningToolbar;
-- (void)setIbToolbarOwningViewController:(id)arg1;
-- (id)ibToolbarOwningViewController;
-- (void)setIbOwningToolbar:(id)arg1;
-- (id)ibOwningToolbar;
+@property(nonatomic) UIViewController *ibToolbarOwningViewController;
+@property(nonatomic) UIToolbar *ibOwningToolbar;
 - (_Bool)ibIsSpaceItem;
 - (CDUnknownBlockType)ibWindowForUpdatingConstraints:(id *)arg1;
 - (id)ibEffectiveViewToPlaceInLayoutEngineWindow;
-- (struct CGRect)textRect;
 - (id)font;
 - (id)initWithMarshalledValues:(id)arg1 orderedKeys:(id)arg2 ignoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
 @end

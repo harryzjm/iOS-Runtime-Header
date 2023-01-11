@@ -11,11 +11,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)setShowResultsView:(_Bool)arg1;
 - (void)setCurrentDataSource:(id)arg1;
 - (void)_accessibilityUpdateCardGrabberValueAndSpeak:(_Bool)arg1;
-- (_Bool)_axCollapseCard:(id)arg1;
-- (_Bool)_axExpandCard:(id)arg1;
+- (_Bool)_axCollapseCard;
+- (_Bool)_axExpandCard;
+- (void)dealloc;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)viewDidLoad;
 - (void)_axAnnotateTableView;

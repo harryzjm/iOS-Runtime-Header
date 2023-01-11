@@ -8,5 +8,7 @@
 {
 }
 
+- (Class)classForCoder;
+
 @end
 

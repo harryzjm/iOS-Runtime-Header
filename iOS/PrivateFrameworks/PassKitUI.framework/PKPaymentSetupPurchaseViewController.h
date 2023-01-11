@@ -10,15 +10,17 @@
 #import <PassKitUI/PKPaymentAuthorizationCoordinatorPrivateDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupPurchaseAmountViewDelegate-Protocol.h>
-#import <PassKitUI/PKPaymentSetupRequiresPreflightProtocol-Protocol.h>
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
+#import <PassKitUI/PKViewControllerPreflightable-Protocol.h>
 #import <PassKitUI/RemoteUIControllerDelegate-Protocol.h>
 
 @class NSDecimalNumber, NSString, PKPaymentAuthorizationCoordinator, PKPaymentProvisioningController, PKPaymentProvisioningMethodMetadata, PKPaymentSetupProduct, PKPaymentSetupPurchaseAmountView, PKPaymentSetupPurchaseController, PKServiceProviderPurchase, RemoteUIController, UIActivityIndicatorView, UIImage, UIImageView, UILabel;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPaymentSetupPurchaseViewController : UIViewController <PKPaymentSetupPurchaseAmountViewDelegate, PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate, PKPaymentSetupViewControllerDelegate, RemoteUIControllerDelegate, PKPaymentSetupDelegate, PKPaymentSetupRequiresPreflightProtocol>
+@interface PKPaymentSetupPurchaseViewController : UIViewController <PKPaymentSetupPurchaseAmountViewDelegate, PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate, PKPaymentSetupViewControllerDelegate, RemoteUIControllerDelegate, PKPaymentSetupDelegate, PKViewControllerPreflightable>
 {
+    _Bool _snapshotNeedsCorners;
+    unsigned char _visibility;
     _Bool _fieldsVerified;
     _Bool _acceptedTerms;
     PKPaymentSetupProduct *_product;
@@ -68,7 +70,7 @@
 - (void)_createConstraints;
 - (void)_createSubviews;
 - (_Bool)_shouldHideImage;
-- (_Bool)_shouldShowTransferButton;
+- (_Bool)_readerModeIsSupported;
 - (void)paymentSetupDidFinish:(id)arg1;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;
@@ -80,6 +82,8 @@
 - (void)shakeCard;
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 product:(id)arg4;

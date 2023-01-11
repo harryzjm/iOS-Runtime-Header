@@ -8,7 +8,7 @@
 
 #import <Sharing/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSString;
 
 @interface SFPowerSource : NSObject <NSSecureCoding>
 {
@@ -19,12 +19,16 @@
     _Bool _lowPowerModeEnabled;
     _Bool _showChargingUI;
     _Bool _adapterSharedSource;
+    _Bool _added;
     _Bool _present;
     int _powerState;
     int _role;
+    unsigned int _changes;
     NSString *_accessoryCategory;
     NSString *_accessoryID;
+    NSData *_batteryCaseAddress;
     double _chargeLevel;
+    long long _color;
     long long _familyCode;
     NSString *_groupID;
     NSArray *_LEDs;
@@ -35,9 +39,6 @@
     long long _productID;
     long long _sourceID;
     NSString *_state;
-    SFPowerSource *_subLeft;
-    SFPowerSource *_subRight;
-    SFPowerSource *_subCase;
     long long _temperature;
     NSString *_transportType;
     NSString *_type;
@@ -51,7 +52,9 @@
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) unsigned int changes; // @synthesize changes=_changes;
 @property(nonatomic) _Bool present; // @synthesize present=_present;
+@property(nonatomic) _Bool added; // @synthesize added=_added;
 @property(copy, nonatomic) NSDictionary *ioKitDescription; // @synthesize ioKitDescription=_ioKitDescription;
 @property(copy, nonatomic) NSDictionary *ioKitAdapterDescription; // @synthesize ioKitAdapterDescription=_ioKitAdapterDescription;
 @property(nonatomic) long long adapterSourceID; // @synthesize adapterSourceID=_adapterSourceID;
@@ -63,9 +66,6 @@
 @property(copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property(copy, nonatomic) NSString *transportType; // @synthesize transportType=_transportType;
 @property(nonatomic) long long temperature; // @synthesize temperature=_temperature;
-@property(retain, nonatomic) SFPowerSource *subCase; // @synthesize subCase=_subCase;
-@property(retain, nonatomic) SFPowerSource *subRight; // @synthesize subRight=_subRight;
-@property(retain, nonatomic) SFPowerSource *subLeft; // @synthesize subLeft=_subLeft;
 @property(copy, nonatomic) NSString *state; // @synthesize state=_state;
 @property(nonatomic) long long sourceID; // @synthesize sourceID=_sourceID;
 @property(nonatomic) _Bool showChargingUI; // @synthesize showChargingUI=_showChargingUI;
@@ -81,18 +81,19 @@
 @property(copy, nonatomic) NSArray *LEDs; // @synthesize LEDs=_LEDs;
 @property(copy, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
 @property(nonatomic) long long familyCode; // @synthesize familyCode=_familyCode;
+@property(nonatomic) long long color; // @synthesize color=_color;
 @property(nonatomic) double chargeLevel; // @synthesize chargeLevel=_chargeLevel;
 @property(nonatomic) _Bool charging; // @synthesize charging=_charging;
+@property(copy, nonatomic) NSData *batteryCaseAddress; // @synthesize batteryCaseAddress=_batteryCaseAddress;
 @property(copy, nonatomic) NSString *accessoryID; // @synthesize accessoryID=_accessoryID;
 @property(copy, nonatomic) NSString *accessoryCategory; // @synthesize accessoryCategory=_accessoryCategory;
 - (void).cxx_destruct;
 - (unsigned int)updateWithPowerSourceDescription:(id)arg1;
 - (void)updateWithPowerSource:(id)arg1;
 - (unsigned int)updateWithPowerAdapterDetails:(id)arg1;
-@property(readonly, nonatomic) _Bool aggregateComponent;
-@property(readonly, nonatomic) _Bool aggregate;
+@property(readonly, nonatomic) _Bool wirelessCharging;
+@property(readonly, nonatomic) long long matID;
 @property(readonly, nonatomic, getter=isInternal) _Bool internal;
-- (void)handleSubComponentsUpdated;
 - (void)lowPowerModeChanged:(int)arg1;
 - (void)startLowPowerMonitoringIfAppropriate;
 - (void)invalidate;

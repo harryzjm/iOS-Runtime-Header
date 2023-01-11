@@ -17,6 +17,8 @@
 
 + (id)localTargetDevice;
 - (void).cxx_destruct;
+- (void)renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)appleAccountInformation;
 - (void)_handleAccountChangedNotification:(id)arg1;
 - (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)checkTLKsMissingWithCompletion:(CDUnknownBlockType)arg1;
@@ -32,7 +34,7 @@
 - (void)updateAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (id)account;
 - (void)downloadPassIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
-- (void)peerPaymentReRegisterWithURL:(id)arg1 pushToken:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)peerPaymentReRegisterWithURL:(id)arg1 pushToken:(id)arg2 peerPaymentWebService:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)init;
 

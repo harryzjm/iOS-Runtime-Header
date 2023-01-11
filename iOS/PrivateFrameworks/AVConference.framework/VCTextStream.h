@@ -13,13 +13,11 @@
 __attribute__((visibility("hidden")))
 @interface VCTextStream <VCTextSender, VCTextReceiverDelegate>
 {
-    long long _streamToken;
     VCTextReceiver *_textReceiver;
     VCTextTransmitter *_textTransmitter;
     id <VCTextReceiverDelegate> _receiveDelegate;
 }
 
-@property(readonly, nonatomic) long long streamToken; // @synthesize streamToken=_streamToken;
 - (double)rtcpHeartbeatLeeway;
 @property(readonly, nonatomic) double lastReceivedRTCPPacketTime;
 @property(readonly, nonatomic) double lastReceivedRTPPacketTime;
@@ -35,7 +33,9 @@ __attribute__((visibility("hidden")))
 - (void)setupTextTransmitter;
 - (void)onCallIDChanged;
 - (id)supportedPayloads;
+- (void)didReceiveText:(struct NSString *)arg1;
 - (void)didReceiveCharacter:(unsigned short)arg1;
+- (void)sendText:(struct NSString *)arg1;
 - (void)sendCharacter:(unsigned short)arg1;
 @property(nonatomic) id <VCTextReceiverDelegate> receiveDelegate;
 - (void)dealloc;

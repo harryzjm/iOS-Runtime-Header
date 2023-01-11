@@ -15,6 +15,7 @@
 - (id)createViewProfile;
 - (id)createInteractionCoordinator;
 - (id)_createControlView;
+- (void)viewWillAppear:(_Bool)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) HFIncrementalStateControlItem *controlItem; // @dynamic controlItem;

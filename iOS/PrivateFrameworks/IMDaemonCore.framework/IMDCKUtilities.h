@@ -22,6 +22,7 @@
 }
 
 + (id)im_AKSecurityLevelKey;
++ (id)restoreFailuresDirectory;
 + (id)sharedInstance;
 + (id)logHandle;
 @property(nonatomic) _Bool useDeprecatedApi; // @synthesize useDeprecatedApi=_useDeprecatedApi;
@@ -39,6 +40,7 @@
 - (void)eligibleForTruthZoneWithCompletion:(CDUnknownBlockType)arg1;
 - (void)downgradingFromHSA2AndDisablingMOC;
 - (void)enableMOCIfNeeded;
+- (_Bool)signedIntoiCloudAndiMessageAndiCloudAccountMatchesiMessageAccount;
 - (_Bool)iCloudAccountMatchesiMessageAccount;
 - (unsigned long long)_primaryiCloudAccountSecurityLevel;
 - (void)fetchSecurityLevelAndUpdateMiCSwitchEligibilityIfNeededOnImagentLaunch;
@@ -49,13 +51,30 @@
 - (id)_primaryiCloudAccount;
 - (id)_accountManager;
 - (void)submitPCSReportManateeStatuMetricWithPrefix:(id)arg1 andReason:(id)arg2;
-- (id)metricForPCSReportManateeStatusWithReason:(id)arg1;
+- (void)_metricForPCSReportManateeStatusWithReason:(id)arg1 linkedFunction:(CDUnknownFunctionPointerType)arg2 timeoutInSec:(double)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)metricForPCSReportManateeStatusWithReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)logDumpIsNecessaryAfterSync;
-- (void)noteAllSyncedItemsPriorToSync;
-- (id)_ckStatisticCaluclations;
+- (_Bool)logDumpIsExpected;
+- (_Bool)_isRunningInAutomation;
+- (id)ckStatisticCalculations;
 - (void)logDumpAndSendMessageTo:(id)arg1 forHours:(int)arg2 reason:(id)arg3 isInitialSync:(_Bool)arg4 requirePreviousPrompt:(_Bool)arg5 willSendBlock:(CDUnknownBlockType)arg6;
+- (_Bool)_isLogDumpAllowed;
+- (void)logCloudKitSyncToPowerLogForSyncType:(long long)arg1 isCoreDuetSync:(_Bool)arg2 didCompleteChatSync:(_Bool)arg3 didSucceedSyncingChats:(_Bool)arg4 didCompleteMessageSync:(_Bool)arg5 didSucceedSyncingMessages:(_Bool)arg6 didCompleteAttachmentSync:(_Bool)arg7 didSucceedSyncingAttachments:(_Bool)arg8 syncAttemptCount:(unsigned long long)arg9;
+- (void)logCloudKitSyncToPowerLogForSyncType:(long long)arg1 isCoreDuetSync:(_Bool)arg2 didStartSync:(_Bool)arg3 didFinishSync:(_Bool)arg4 didSucceedSyncing:(_Bool)arg5;
+- (void)logToPowerLogForLogDumpGUID:(id)arg1 logDumpCompleted:(_Bool)arg2 logDumpSucceeded:(_Bool)arg3 logDumpSendingCompleted:(_Bool)arg4 logDumpSendingSucceeded:(_Bool)arg5 reason:(id)arg6;
 - (void)logDumpAndSendMessageTo:(id)arg1 forHours:(int)arg2 reason:(id)arg3 requirePreviousPrompt:(_Bool)arg4 willSendBlock:(CDUnknownBlockType)arg5;
 - (void)logDumpAndSendMessageTo:(id)arg1 forHours:(int)arg2 reason:(id)arg3;
+- (id)findRootCause:(id)arg1;
+- (_Bool)isCKPartialError:(id)arg1;
+- (void)reportCompletionForSyncType:(long long)arg1 isCoreDuetSync:(_Bool)arg2 onAttempt:(unsigned long long)arg3 wasSuccessful:(_Bool)arg4;
+- (void)reportErrorForSyncType:(long long)arg1 syncStep:(id)arg2 isRecoverable:(_Bool)arg3 error:(id)arg4;
+- (void)reportZoneCreation:(id)arg1;
+- (void)postSyncStateToCloudKit:(id)arg1 useManatee:(_Bool)arg2 legacyOnly:(_Bool)arg3;
+- (void)postSyncStateToCloudKit:(id)arg1 legacyOnly:(_Bool)arg2;
+- (void)postSyncStateToCloudKit:(id)arg1 useManatee:(_Bool)arg2;
+- (void)postSyncStateToCloudKit:(id)arg1;
+- (_Bool)isLocalCachedSaltPresent;
+- (_Bool)shouldKickOffWriteForSyncType:(long long)arg1;
 - (void)_showCKLogNotificationWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)errorIndicateDeviceDoesNotHaveKeysToSync:(id)arg1;
 - (_Bool)errorIndicatesIdentityWasLost:(id)arg1;
@@ -96,7 +115,7 @@
 - (_Bool)_isCKErrorPartialFailure:(id)arg1;
 - (unsigned long long)_mocEnabledStateFromAccountStatus:(long long)arg1;
 - (void)fetchMOCEnabledStateWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (id)syncFailureMetricString:(id)arg1 error:(id)arg2;
+- (id)syncFailureMetricString:(id)arg1 isRecoverable:(_Bool)arg2 error:(id)arg3;
 - (id)recordNameForMessageWithGUID:(id)arg1 usingSalt:(id)arg2;
 - (void)_askToTapToRadarWithString:(id)arg1 internalOnly:(_Bool)arg2;
 - (void)reportMOCDebuggingErrorWithString:(id)arg1 internalOnly:(_Bool)arg2 initialSync:(_Bool)arg3 sendToHandle:(id)arg4 reasonString:(id)arg5;
@@ -111,6 +130,7 @@
 - (_Bool)_checkIfEnabledByServerBagOrDefault:(id)arg1;
 - (void)fetchCloudKitAccountStatusAndCheckForAccountNeedsRepairWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)shouldRepairAccountWithDeviceAccountSecurityLevel:(unsigned long long)arg1 serverAccountStatus:(long long)arg2;
+- (void)_setEligibleToToggleMiCSwitch:(_Bool)arg1;
 - (void)fetchLocalAccountSecurityLevel:(CDUnknownBlockType)arg1;
 - (_Bool)_accountNeedsRepairOverride;
 - (void)fetchCloudKitAccountStatusWithCompletion:(CDUnknownBlockType)arg1;
@@ -120,6 +140,7 @@
 - (_Bool)_checkEligibilityWithAccountInfo:(id)arg1;
 - (id)_authenticationController;
 - (_Bool)accountIsVerifiedForMOCAndSafeForCacheDelete;
+- (id)internalQueue;
 - (_Bool)removeFromBackUpAllowed;
 - (_Bool)_serverAllowsRemovalFromBackUp;
 - (_Bool)cacheDeleteEnabled;
@@ -128,6 +149,9 @@
 - (void)_resetKeepMessagesSettingandBroadcastToAllDevices;
 - (_Bool)_shouldDisplayPopUpForResettingKeepMessages;
 - (id)_getKeepMessagesValue;
+- (_Bool)serverAllowsAnalyticDetailsSubmission;
+- (_Bool)serverAllowsAnalyticSubmission;
+- (_Bool)serverAllowsMetricSubmission;
 - (void)setCloudKitSyncingEnabled:(_Bool)arg1;
 - (_Bool)cloudKitSyncDownloadAssetsOnly;
 - (_Bool)cloudKitSyncingEnabled;
@@ -143,9 +167,11 @@
 - (long long)overrideNumberOfChatsToFetch;
 - (_Bool)shouldSyncToSRContainer;
 - (_Bool)shouldForceArchivedMessagesSync;
+- (_Bool)shouldUseDevNickNameContainer;
 - (_Bool)shouldUseDevContainer;
 - (void)keyRollPendingStateDidChange;
 - (void)broadcastCloudKitStateAfterClearingErrors;
+- (void)broadcastCloudKitStateAfterFetchingAccountStatus;
 - (void)broadcastCloudKitState;
 - (void)syncStateWillUpdate:(id)arg1;
 @property(readonly, nonatomic) IMDCKSyncState *syncState; // @synthesize syncState=_syncState;
@@ -153,6 +179,7 @@
 - (id)initWithServerBag:(id)arg1 lockDownmanager:(id)arg2 deviceSupport:(id)arg3 imDefaults:(id)arg4;
 - (id)_truthDatabase;
 - (id)_truthContainer;
+- (id)exitManager;
 - (id)logHandle;
 
 // Remaining properties

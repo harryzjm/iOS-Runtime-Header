@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIImageView.h>
+#import <UIKit/UIView.h>
 
-@interface HUCheckmarkAccessoryView : UIImageView
+@class UIImageView;
+
+@interface HUCheckmarkAccessoryView : UIView
 {
     _Bool _checked;
     _Bool _disabled;
@@ -22,6 +24,8 @@
 - (void).cxx_destruct;
 - (void)_updateColors;
 - (void)tintColorDidChange;
+- (struct CGSize)intrinsicContentSize;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 

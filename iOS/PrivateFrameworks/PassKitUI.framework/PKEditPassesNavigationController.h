@@ -4,16 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UINavigationController.h>
-
-@interface PKEditPassesNavigationController : UINavigationController
+@interface PKEditPassesNavigationController
 {
 }
 
-- (unsigned long long)supportedInterfaceOrientations;
-- (long long)modalTransitionStyle;
-- (long long)modalPresentationStyle;
-- (void)viewDidLoad;
 - (void)_done;
 - (id)initWithExistingGroupsController:(id)arg1;
 - (id)init;

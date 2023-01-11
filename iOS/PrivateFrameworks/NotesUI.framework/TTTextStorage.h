@@ -19,6 +19,7 @@
     _Bool _directlyEditing;
     _Bool _previouslyHadMarkedText;
     _Bool _wantsUndoCommands;
+    _Bool _wantsUpdateTrackingForInitialLoading;
     _Bool _convertAttributes;
     _Bool _shouldConvertTablesToTabs;
     _Bool _retainOriginalFormatting;
@@ -27,13 +28,16 @@
     _Bool _filterSubstringAttributesForPlainText;
     _Bool _disableUndoCoalesceBreaking;
     _Bool _isDictating;
+    _Bool _isPerformingAccessibilityUndoableTextInsertion;
     _Bool _isHandlingTextCheckingResults;
     _Bool _isTypingOrMarkingText;
     _Bool _isSelectingText;
     _Bool _hasEditedCharactersAfterTextSelection;
     _Bool _isDragging;
+    _Bool _isDropping;
     _Bool _isResettingBaseWritingDirection;
     _Bool _isReadingSelectionFromPasteboard;
+    _Bool _shouldRemoveLeadingWhitespaceForChecklistDrop;
     _Bool _isChangingSelectionByGestures;
     _Bool _isApplyingUndoCommand;
     _Bool _isEndingEditing;
@@ -76,13 +80,16 @@
 @property(nonatomic) _Bool isEndingEditing; // @synthesize isEndingEditing=_isEndingEditing;
 @property(nonatomic) _Bool isApplyingUndoCommand; // @synthesize isApplyingUndoCommand=_isApplyingUndoCommand;
 @property(nonatomic) _Bool isChangingSelectionByGestures; // @synthesize isChangingSelectionByGestures=_isChangingSelectionByGestures;
+@property(nonatomic) _Bool shouldRemoveLeadingWhitespaceForChecklistDrop; // @synthesize shouldRemoveLeadingWhitespaceForChecklistDrop=_shouldRemoveLeadingWhitespaceForChecklistDrop;
 @property(nonatomic) _Bool isReadingSelectionFromPasteboard; // @synthesize isReadingSelectionFromPasteboard=_isReadingSelectionFromPasteboard;
 @property(nonatomic) _Bool isResettingBaseWritingDirection; // @synthesize isResettingBaseWritingDirection=_isResettingBaseWritingDirection;
+@property(nonatomic) _Bool isDropping; // @synthesize isDropping=_isDropping;
 @property(nonatomic) _Bool isDragging; // @synthesize isDragging=_isDragging;
 @property(nonatomic) _Bool hasEditedCharactersAfterTextSelection; // @synthesize hasEditedCharactersAfterTextSelection=_hasEditedCharactersAfterTextSelection;
 @property(nonatomic) _Bool isSelectingText; // @synthesize isSelectingText=_isSelectingText;
 @property(nonatomic) _Bool isTypingOrMarkingText; // @synthesize isTypingOrMarkingText=_isTypingOrMarkingText;
 @property(nonatomic) _Bool isHandlingTextCheckingResults; // @synthesize isHandlingTextCheckingResults=_isHandlingTextCheckingResults;
+@property(nonatomic) _Bool isPerformingAccessibilityUndoableTextInsertion; // @synthesize isPerformingAccessibilityUndoableTextInsertion=_isPerformingAccessibilityUndoableTextInsertion;
 @property(nonatomic) _Bool isDictating; // @synthesize isDictating=_isDictating;
 @property(nonatomic) _Bool disableUndoCoalesceBreaking; // @synthesize disableUndoCoalesceBreaking=_disableUndoCoalesceBreaking;
 @property(nonatomic) _Bool filterSubstringAttributesForPlainText; // @synthesize filterSubstringAttributesForPlainText=_filterSubstringAttributesForPlainText;
@@ -97,6 +104,7 @@
 @property(nonatomic) struct _NSRange beforeEndEditedRange; // @synthesize beforeEndEditedRange=_beforeEndEditedRange;
 @property(readonly, nonatomic) NSMutableArray *deletedRanges; // @synthesize deletedRanges=_deletedRanges;
 @property(retain, nonatomic) id <TTTextStorageStyler> styler; // @synthesize styler=_styler;
+@property(nonatomic) _Bool wantsUpdateTrackingForInitialLoading; // @synthesize wantsUpdateTrackingForInitialLoading=_wantsUpdateTrackingForInitialLoading;
 @property(nonatomic) _Bool wantsUndoCommands; // @synthesize wantsUndoCommands=_wantsUndoCommands;
 @property __weak NSObject<TTTextUndoTarget> *overrideUndoTarget; // @synthesize overrideUndoTarget=_overrideUndoTarget;
 @property(retain, nonatomic) NSUndoManager *undoManager; // @synthesize undoManager=_undoManager;
@@ -106,6 +114,7 @@
 - (id)attributedSubstringFromRange:(struct _NSRange)arg1;
 - (id)filteredAttributedSubstringFromRange:(struct _NSRange)arg1;
 - (id)dataFromRange:(struct _NSRange)arg1 documentAttributes:(id)arg2 error:(id *)arg3;
+- (id)standardizedAttributedStringFixingTextAttachmentsForRange:(struct _NSRange)arg1;
 - (id)standardizedAttributedStringFixingTextAttachments;
 - (void)styleTextInRange:(struct _NSRange)arg1;
 - (_Bool)isEditing;
@@ -118,7 +127,7 @@
 - (_Bool)ic_containsAttribute:(id)arg1 InRange:(struct _NSRange)arg2;
 - (void)removeAttribute:(id)arg1 range:(struct _NSRange)arg2;
 - (void)dd_resetResults;
-- (void)dd_makeLinksForResultsInAttributesOfType:(unsigned long long)arg1 context:(id)arg2;
+- (void)dd_makeLinksForResultsInAttributesOfType:(unsigned long long)arg1 context:(id)arg2 range:(struct _NSRange)arg3;
 - (_Bool)_shouldSetOriginalFontAttribute;
 - (void)addAttribute:(id)arg1 value:(id)arg2 range:(struct _NSRange)arg3;
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;
@@ -143,6 +152,7 @@
 - (void)coordinateAccess:(CDUnknownBlockType)arg1;
 - (void)coordinateEditing:(CDUnknownBlockType)arg1;
 - (void)coordinateReading:(CDUnknownBlockType)arg1;
+- (id)mergeableStringReplicaUUIDAtIndex:(unsigned long long)arg1;
 - (_Bool)mergeableStringIsEqualAfterSerialization:(id)arg1;
 - (void)endEditing;
 - (void)fixupAfterEditingDelayedToEndOfRunLoop;
@@ -160,6 +170,7 @@
 @property(readonly, nonatomic) TTMergeableAttributedString *mergeableString;
 - (struct _NSRange)logicalRangeForLocation:(unsigned long long)arg1;
 - (id)string;
+- (unsigned long long)length;
 - (void)editedAttributeRange:(struct _NSRange)arg1;
 - (void)editedRange:(struct _NSRange)arg1 changeInLength:(long long)arg2;
 - (_Bool)_usesSimpleTextEffects;
@@ -171,6 +182,7 @@
 - (id)initWithDocument:(id)arg1;
 - (id)initWithData:(id)arg1 andReplicaID:(id)arg2;
 - (id)initWithReplicaID:(id)arg1;
+- (id)itemProviderForRange:(struct _NSRange)arg1 andNote:(id)arg2;
 - (id)filteredAttributedStringForUTI:(id)arg1 range:(struct _NSRange)arg2;
 - (id)copyDataForUTI:(id)arg1 range:(struct _NSRange)arg2 persistenceHelper:(id)arg3;
 - (id)customPasteboardDataFromRange:(struct _NSRange)arg1 persistenceHelper:(id)arg2;

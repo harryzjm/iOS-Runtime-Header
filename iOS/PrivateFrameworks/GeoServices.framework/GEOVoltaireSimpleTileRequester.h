@@ -11,16 +11,21 @@
 
 @interface GEOVoltaireSimpleTileRequester <NSURLConnectionDelegate, GEOSimpleTileRequesterSubclass>
 {
+    _Bool _hasUpdatedManifestForHTTP410;
 }
 
++ (CDStruct_e4886f83 *)newExpiringTilesets;
++ (unsigned long long)expiringTilesetsCount;
+- (void)failedLoadingTileForKey:(struct _GEOTileKey)arg1 baseOperation:(id)arg2 error:(id)arg3;
 - (_Bool)needsLocalizationForKey:(const struct _GEOTileKey *)arg1;
 - (id)localizationURLForTileKey:(const struct _GEOTileKey *)arg1;
 - (id)_localizationURLForTileKey:(const struct _GEOTileKey *)arg1;
-- (unsigned char)_authTypeForTileKey:(const struct _GEOTileKey *)arg1;
-- (_Bool)useProxyAuthForTileKey:(const struct _GEOTileKey *)arg1;
 - (id)urlForTileKey:(const struct _GEOTileKey *)arg1;
+- (id)_deviceRegionSKUQueryItemForTileSet:(id)arg1;
 - (unsigned int)tileEditionForKey:(const struct _GEOTileKey *)arg1;
+- (_Bool)shouldAllowEmptyDataForTileKey:(const struct _GEOTileKey *)arg1;
 - (int)checksumMethodForIncomingTileDataWithKey:(const struct _GEOTileKey *)arg1;
+- (id)activeTileSetForKey:(const struct _GEOTileKey *)arg1;
 - (unsigned int)tileSetForKey:(const struct _GEOTileKey *)arg1;
 
 // Remaining properties

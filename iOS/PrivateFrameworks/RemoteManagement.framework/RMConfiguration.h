@@ -4,21 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSString, RMActivation;
+#import <objc/NSObject.h>
 
-@interface RMConfiguration
+#import <RemoteManagement/NSSecureCoding-Protocol.h>
+
+@class NSData, NSDictionary, NSString, RMConfigurationAccount;
+
+@interface RMConfiguration : NSObject <NSSecureCoding>
 {
+    NSString *_type;
+    NSString *_identifier;
+    NSString *_serverToken;
+    NSData *_content;
+    RMConfigurationAccount *_account;
+    NSDictionary *_assetByIdentifier;
 }
 
-+ (id)fetchRequestForConfigurationsWithIdentifier:(id)arg1 organizationIdentifier:(id)arg2;
-+ (id)fetchRequestForConfigurationsBelongingToOrganizationWithIdentifier:(id)arg1;
-- (id)computeUniqueIdentifier;
-- (void)didChangeValueForKey:(id)arg1;
-
-// Remaining properties
-@property(retain, nonatomic) RMActivation *activation; // @dynamic activation;
-@property(retain, nonatomic) NSData *configurationPlist; // @dynamic configurationPlist;
-@property(copy, nonatomic) NSString *identifier; // @dynamic identifier;
++ (_Bool)supportsSecureCoding;
+@property(readonly, copy, nonatomic) NSDictionary *assetByIdentifier; // @synthesize assetByIdentifier=_assetByIdentifier;
+@property(readonly, copy, nonatomic) RMConfigurationAccount *account; // @synthesize account=_account;
+@property(readonly, copy, nonatomic) NSData *content; // @synthesize content=_content;
+@property(readonly, copy, nonatomic) NSString *serverToken; // @synthesize serverToken=_serverToken;
+@property(readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
+- (void).cxx_destruct;
+- (unsigned long long)hash;
+- (_Bool)isEqualToConfiguration:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithType:(id)arg1 identifier:(id)arg2 serverToken:(id)arg3 content:(id)arg4 account:(id)arg5 assetByIdentifier:(id)arg6;
 
 @end
 

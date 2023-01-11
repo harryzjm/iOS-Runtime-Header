@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSString *mDosName;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 - (int)runType;
 - (void)setDosName:(id)arg1;
@@ -34,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)linkAbsolute;
 - (void)setPosition:(unsigned int)arg1;
 - (unsigned int)position;
-- (void)dealloc;
 - (id)initWithParagraph:(id)arg1;
 
 @end

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 - (id)nextTargetTopicNumbers;
 - (id)previousTargetTopicNumbers;
 - (id)nextTargetFirstColumn;
+- (_Bool)discardLayoutsForDrawableAttachmentsInRange:(struct _NSRange)arg1;
 - (void)validate;
 - (_Bool)repShouldPreventCaret;
 - (void)willBeRemovedFromLayoutController:(id)arg1;
@@ -21,8 +22,11 @@ __attribute__((visibility("hidden")))
 - (_Bool)isLinked;
 - (_Bool)isOverflowing;
 - (_Bool)isLastTarget;
+- (_Bool)descendersCannotClip;
 - (void)i_validateTextLayout;
+- (void)wrappableChildInvalidated:(id)arg1;
 @property(retain, nonatomic) TSWPLayoutManager *layoutManager; // @dynamic layoutManager;
+- (void)killDrawableLayouts:(id)arg1;
 @property(nonatomic) _Bool textLayoutValid; // @dynamic textLayoutValid;
 
 @end

@@ -4,12 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface PXCMMPhotoKitDeleteActionPerformer
+#import <PhotosUICore/PXCMMPhotoKitActionPerformer-Protocol.h>
+
+@class PXCMMPhotoKitSession;
+
+@interface PXCMMPhotoKitDeleteActionPerformer <PXCMMPhotoKitActionPerformer>
 {
 }
 
 - (void)performBackgroundTask;
 - (void)performUserInteractionTask;
+
+// Remaining properties
+@property(readonly, nonatomic) PXCMMPhotoKitSession *session;
 
 @end
 

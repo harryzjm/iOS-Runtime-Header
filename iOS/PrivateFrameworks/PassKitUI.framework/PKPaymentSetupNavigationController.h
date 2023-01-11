@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PassKitUI/PKPaymentSetupRequiresPreflightProtocol-Protocol.h>
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
+#import <PassKitUI/PKViewControllerPreflightable-Protocol.h>
 
 @class NSString, PKPaymentProvisioningController;
 @protocol PKPaymentSetupDelegate;
 
-@interface PKPaymentSetupNavigationController <PKPaymentSetupViewControllerDelegate, PKPaymentSetupRequiresPreflightProtocol>
+@interface PKPaymentSetupNavigationController <PKPaymentSetupViewControllerDelegate, PKViewControllerPreflightable>
 {
     long long _context;
     _Bool _rootViewControllerNeedsConfiguration;
@@ -31,8 +31,10 @@
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(_Bool)arg3;
 - (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)shouldAutorotate;
+- (void)viewController:(id)arg1 requestPasscodeUpgradeWithCompletion:(CDUnknownBlockType)arg2;
 - (void)viewControllerDidShowEligibilityIssue:(id)arg1;
 - (void)viewController:(id)arg1 didShowProvisioningError:(id)arg2;
+- (void)viewControllerDidCancelSetupFlow:(id)arg1;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;
 - (void)cancel:(id)arg1;
 - (void)_dirtyConfigurationAndReloadIfNeeded;
@@ -43,6 +45,7 @@
 - (void)viewDidLoad;
 - (void)loadView;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

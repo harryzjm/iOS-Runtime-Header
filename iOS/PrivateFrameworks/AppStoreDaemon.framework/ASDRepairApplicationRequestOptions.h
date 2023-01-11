@@ -4,9 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <objc/NSObject.h>
+
+#import <AppStoreDaemon/NSCopying-Protocol.h>
+#import <AppStoreDaemon/NSSecureCoding-Protocol.h>
+
 @class NSNumber, NSString;
 
-@interface ASDRepairApplicationRequestOptions
+@interface ASDRepairApplicationRequestOptions : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_bundleID;
     NSNumber *_accountDSID;

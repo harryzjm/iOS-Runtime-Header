@@ -12,13 +12,13 @@
 {
     int _entityType;
     NSArray *_filters;
-    CADObjectID *_calendarID;
+    NSArray *_calendarRowIDs;
     CADObjectID *_sourceID;
 }
 
 + (_Bool)supportsSecureCoding;
 @property(readonly, nonatomic) CADObjectID *sourceID; // @synthesize sourceID=_sourceID;
-@property(readonly, nonatomic) CADObjectID *calendarID; // @synthesize calendarID=_calendarID;
+@property(readonly, nonatomic) NSArray *calendarRowIDs; // @synthesize calendarRowIDs=_calendarRowIDs;
 @property(readonly, nonatomic) NSArray *filters; // @synthesize filters=_filters;
 @property(readonly, nonatomic) int entityType; // @synthesize entityType=_entityType;
 - (void).cxx_destruct;
@@ -27,7 +27,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (_Bool)validate;
-- (id)initWithEntityType:(int)arg1 filters:(id)arg2 calendar:(id)arg3 source:(id)arg4;
+- (id)initWithEntityType:(int)arg1 filters:(id)arg2 calendars:(id)arg3 source:(id)arg4;
+- (id)initWithEntityType:(int)arg1 filters:(id)arg2 calendars:(id)arg3;
 - (id)initWithEntityType:(int)arg1 filters:(id)arg2 source:(id)arg3;
 - (id)initWithEntityType:(int)arg1 filters:(id)arg2 calendar:(id)arg3;
 - (id)predicateFormat;

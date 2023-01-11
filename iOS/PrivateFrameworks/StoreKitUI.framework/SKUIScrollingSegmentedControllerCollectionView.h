@@ -6,6 +6,7 @@
 
 @protocol SKUIScrollingSegmentedControllerCollectionViewDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SKUIScrollingSegmentedControllerCollectionView
 {
     _Bool _performingLayout;

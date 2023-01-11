@@ -19,16 +19,9 @@ __attribute__((visibility("hidden")))
     MFActivityMonitor *_monitor;
 }
 
-- (void)endResult;
-- (void)setResultUnread:(_Bool)arg1;
-- (void)setResultDateRecieved:(double)arg1;
-- (void)setResultSender:(char *)arg1;
-- (void)setResultSubject:(char *)arg1;
-- (void)beginResult:(unsigned int)arg1;
-- (id)filter;
+- (void).cxx_destruct;
 - (_Bool)shouldCancel;
-- (void)handleMessage:(id)arg1;
-- (void)dealloc;
+- (_Bool)handleMessage:(id)arg1;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 
 @end

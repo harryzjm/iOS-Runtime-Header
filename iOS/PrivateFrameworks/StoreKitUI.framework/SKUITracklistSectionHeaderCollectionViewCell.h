@@ -9,6 +9,7 @@
 
 @class NSMutableArray, NSString, SKUIButtonViewElement, SKUIBuyButtonDescriptor, SKUITracklistColumnData, UIControl, UIView;
 
+__attribute__((visibility("hidden")))
 @interface SKUITracklistSectionHeaderCollectionViewCell <SKUIItemOfferButtonDelegate, SKUIViewElementView>
 {
     UIControl *_button;

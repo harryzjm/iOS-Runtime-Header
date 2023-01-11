@@ -9,6 +9,7 @@
 @class NSString, SKUIViewElement;
 @protocol SKUIEntityProviding;
 
+__attribute__((visibility("hidden")))
 @interface SKUIDynamicShelfViewElement <SKUIDynamicShelfViewElement>
 {
     SKUIViewElement *_cellTemplateViewElement;

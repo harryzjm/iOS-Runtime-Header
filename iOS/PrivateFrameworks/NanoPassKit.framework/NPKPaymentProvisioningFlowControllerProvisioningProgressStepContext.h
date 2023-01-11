@@ -4,9 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface NPKPaymentProvisioningFlowControllerProvisioningProgressStepContext
 {
+    NSString *_localizedProgressDescription;
 }
+
+@property(retain, nonatomic) NSString *localizedProgressDescription; // @synthesize localizedProgressDescription=_localizedProgressDescription;
+- (void).cxx_destruct;
+- (id)initWithRequestContext:(id)arg1;
 
 @end
 

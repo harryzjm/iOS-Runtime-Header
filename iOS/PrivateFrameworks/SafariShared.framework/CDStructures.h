@@ -69,6 +69,10 @@ struct HistoryURLCompletionItem {
 
 struct KeyValuePair<OpaqueFormAutoFillFrame *, std::__1::unique_ptr<SafariShared::FrameMetadata, std::__1::default_delete<SafariShared::FrameMetadata>>>;
 
+struct NSMapTable {
+    Class _field1;
+};
+
 struct NSMutableArray {
     Class _field1;
 };
@@ -170,6 +174,10 @@ struct atomic<LoadingStatus> {
     _Atomic int __a_;
 };
 
+struct atomic<bool> {
+    _Atomic _Bool __a_;
+};
+
 struct atomic<unsigned int> {
     _Atomic unsigned int _field1;
 };
@@ -180,6 +188,10 @@ struct duration<long long, std::__1::ratio<1, 1000000000>> {
 
 struct duration<long long, std::__1::ratio<1, 1000>> {
     long long __rep_;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 struct time_point<std::__1::chrono::steady_clock, std::__1::chrono::duration<long long, std::__1::ratio<1, 1000000000>>> {
@@ -333,6 +345,10 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
+    unsigned int val[8];
+} CDStruct_4c969caf;
+
+typedef struct {
     int webProcessID;
     unsigned long long tabID;
 } CDStruct_497cfc99;
@@ -373,12 +389,6 @@ typedef struct Vector<WTF::RefPtr<SafariShared::BookmarkAndHistoryCompletionMatc
     unsigned int _field2;
     unsigned int _field3;
 } Vector_fc835981;
-
-typedef struct Vector<double, 0, WTF::CrashOnOverflow, 16> {
-    double *m_buffer;
-    unsigned int m_capacity;
-    unsigned int m_size;
-} Vector_23cb8338;
 
 typedef struct Vector<int, 0, WTF::CrashOnOverflow, 16> {
     int *m_buffer;

@@ -22,6 +22,7 @@
 - (void)didMoveToSuperview;
 - (id)initWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2;
 - (_Bool)shouldGroupAccessibilityChildren;
+- (id)_accessibilityComposeElementsForSorting;
 - (long long)_accessibilityCompareElement:(id)arg1 toElement:(id)arg2;
 - (void)_accessibilityLoadAccessibilityInformation;
 

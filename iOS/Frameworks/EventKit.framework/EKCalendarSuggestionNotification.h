@@ -13,14 +13,11 @@
 }
 
 + (id)_queue;
-+ (id)_originBundleIdentifiersPermittedForAllNotifications;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) SGEvent *suggestedEvent;
 - (void)updateSuggestedEventWithEventStore:(id)arg1;
 - (Class)_SGSuggestionsServiceClass;
-- (_Bool)whitelistedForAllNotifications;
 @property(readonly, nonatomic) NSString *originAppName;
-- (_Bool)hiddenFromNotificationCenter;
 
 @end
 

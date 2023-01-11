@@ -6,6 +6,7 @@
 
 @class SKUIDividerViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUIFilterBarViewElement
 {
 }

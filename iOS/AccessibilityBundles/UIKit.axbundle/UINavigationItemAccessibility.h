@@ -11,7 +11,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (void)setTitleView:(id)arg1;
+- (void)_axSetDidOverrideHidesSearchBarWhenScrolling:(_Bool)arg1;
+- (_Bool)_axDidOverrideHidesSearchBarWhenScrolling;
+- (void)_axSetOriginalHidesSearchBarWhenScrolling:(_Bool)arg1;
+- (_Bool)_axOriginalHidesSearchBarWhenScrolling;
 
 @end
 

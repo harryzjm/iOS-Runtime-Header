@@ -15,6 +15,7 @@
 - (id)accessibilityValue;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
+- (unsigned long long)_accessibilityDownloadState;
 - (_Bool)isAccessibilityElement;
 
 @end

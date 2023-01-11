@@ -45,12 +45,15 @@
 - (void)childViewController:(id)arg1 didEndQuickControlsPresentation:(id)arg2;
 - (void)childViewController:(id)arg1 willBeginQuickControlsPresentation:(id)arg2;
 - (id)_ancestorQuickControlPresentationHost;
+- (void)presentationCoordinatorDidCancelDismissalTransition:(id)arg1;
+- (void)presentationCoordinatorWillBeginDismissalTransition:(id)arg1;
 - (void)presentationCoordinator:(id)arg1 didEndPresentationWithContext:(id)arg2;
 - (void)presentationCoordinator:(id)arg1 willBeginPresentationWithContext:(id)arg2;
 - (void)presentationCoordinator:(id)arg1 didRecognizeTapForItem:(id)arg2;
 - (void)presentationCoordinator:(id)arg1 clearOverrideAttributesForItem:(id)arg2;
 - (void)presentationCoordinator:(id)arg1 applyOverrideAttributes:(id)arg2 toItem:(id)arg3;
 - (id)presentationCoordinator:(id)arg1 contextForPresentationAtPoint:(struct CGPoint)arg2;
+- (_Bool)presentationCoordinator:(id)arg1 shouldBeginPresentationWithContext:(id)arg2;
 - (_Bool)presentationCoordinator:(id)arg1 shouldBeginInteractivePresentationWithTouchLocation:(struct CGPoint)arg2;
 - (id)traitCollectionForPresentationCoordinator:(id)arg1;
 - (id)quickControlPresentationContextForItem:(id)arg1 atIndexPath:(id)arg2;
@@ -63,8 +66,10 @@
 - (id)collectionView:(id)arg1 targetIndexPathForMoveFromItemAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
 - (_Bool)collectionView:(id)arg1 canMoveItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
+- (_Bool)_isMultiServiceAccessory:(id)arg1;
 - (void)_updateEditingStateForCell:(id)arg1;
 - (id)prepareToPerformToggleActionForItem:(id)arg1 sourceItem:(id)arg2;
+- (id)_childItemsForItem:(id)arg1;
 - (id)_performTapActionForItem:(id)arg1;
 - (_Bool)_hasTapActionForItem:(id)arg1;
 - (id)_visibleCellForItem:(id)arg1;

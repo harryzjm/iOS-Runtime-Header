@@ -23,6 +23,7 @@
 - (unsigned long long)lowThresholdDataSizeLimit;
 - (unsigned long long)storeVersion;
 - (id)storeFilename;
+- (id)localizableLanguageSpecificKeys;
 - (id)localizableKeys;
 - (id)experimentalizableKeys;
 - (int)pbRecordType;

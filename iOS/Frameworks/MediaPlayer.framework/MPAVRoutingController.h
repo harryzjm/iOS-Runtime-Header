@@ -23,6 +23,7 @@
     int _deviceAvailabilityNotifyToken;
     _Bool _deviceAvailabilityOverrideState;
     _Bool _fetchAvailableRoutesSynchronously;
+    _Bool _representsLongFormVideoContent;
     id <MPAVRoutingControllerDelegate> _delegate;
     MPAVRoutingDataSource *_dataSource;
     NSString *_name;
@@ -31,18 +32,25 @@
     long long _routeTypes;
     MPAVRoute *_legacyCachedRoute;
     id <MPAVOutputDevicePlaybackDataSource> _playbackDataSource;
+    NSString *_presentedBundleID;
+    NSString *_representedBundleID;
 }
 
 + (void)_getActiveRouteWithTimeout:(double)arg1 discoveredRoutes:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)_currentDeviceRoutingIconImageName;
++ (_Bool)bundleIdRepresentsLongFormVideoContent:(id)arg1;
 + (id)systemRouteWithContextUID:(id)arg1;
 + (id)systemRoute;
++ (void)setActiveRoute:(id)arg1 reason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)setActiveRoute:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)getActiveRouteWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)getActiveRouteWithCompletion:(CDUnknownBlockType)arg1;
 + (id)_currentDeviceRoutingIconImage;
 + (id)_iconImageForRoute:(id)arg1;
 + (id)_sharedSerialQueue;
+@property(readonly, nonatomic) _Bool representsLongFormVideoContent; // @synthesize representsLongFormVideoContent=_representsLongFormVideoContent;
+@property(copy, nonatomic) NSString *representedBundleID; // @synthesize representedBundleID=_representedBundleID;
+@property(copy, nonatomic) NSString *presentedBundleID; // @synthesize presentedBundleID=_presentedBundleID;
 @property(nonatomic) __weak id <MPAVOutputDevicePlaybackDataSource> playbackDataSource; // @synthesize playbackDataSource=_playbackDataSource;
 @property(retain, nonatomic) MPAVRoute *legacyCachedRoute; // @synthesize legacyCachedRoute=_legacyCachedRoute;
 @property(nonatomic) long long routeTypes; // @synthesize routeTypes=_routeTypes;
@@ -85,6 +93,7 @@
 - (long long)_externalScreenType:(_Bool *)arg1;
 - (_Bool)_deviceAvailabilityOverrideState;
 - (void)_clearLegacyCachedRoute;
+- (void)unpickTVRoutes;
 - (void)clearCachedRoutes;
 - (_Bool)wirelessDisplayRoutesAvailable;
 - (_Bool)wirelessDisplayRouteIsPicked;

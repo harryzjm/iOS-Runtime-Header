@@ -8,6 +8,7 @@
 
 @class NSString, SKUIHorizontalListView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIHorizontalListCollectionViewCell <SKUIViewElementView>
 {
     struct UIEdgeInsets _contentInset;

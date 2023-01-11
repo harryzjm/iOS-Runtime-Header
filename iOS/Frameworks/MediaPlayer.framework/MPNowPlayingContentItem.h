@@ -68,6 +68,7 @@
 @property(nonatomic) float defaultPlaybackRate;
 @property(nonatomic) double startTime;
 @property(nonatomic) double duration;
+@property(copy, nonatomic) NSString *localizedDurationString;
 @property(copy, nonatomic) NSString *artworkIdentifier;
 @property(copy, nonatomic) NSArray *artworkURLTemplates;
 @property(copy, nonatomic) NSString *artworkURL;
@@ -84,6 +85,7 @@
 @property(copy, nonatomic) NSDictionary *userInfo;
 @property(copy, nonatomic) NSDictionary *deviceSpecificUserInfo;
 @property(copy, nonatomic) NSDate *releaseDate;
+- (id)copyWithNewIdentifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

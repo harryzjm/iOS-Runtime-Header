@@ -27,6 +27,7 @@
 - (void)stopLocationUpdates;
 - (void)startLocationUpdatesWithHandler:(CDUnknownBlockType)arg1;
 - (id)currentLocation;
+- (void)dealloc;
 - (id)init;
 
 // Remaining properties

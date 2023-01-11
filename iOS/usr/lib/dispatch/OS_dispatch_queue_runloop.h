@@ -13,8 +13,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)load;
 - (void)_xref_dispose;
+- (oneway void)release;
 - (id)init;
 
 // Remaining properties

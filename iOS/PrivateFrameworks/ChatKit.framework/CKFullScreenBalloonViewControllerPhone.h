@@ -35,8 +35,9 @@
 - (void)stickerDetailViewController:(id)arg1 selectedStickerPackWithAdamID:(id)arg2;
 - (void)interactionStoppedFromPreviewItemControllerInBalloonView:(id)arg1;
 - (void)interactionStartedFromPreviewItemControllerInBalloonView:(id)arg1;
-- (void)balloonViewDoubleTapped:(id)arg1;
+- (void)liveBalloonTouched:(id)arg1;
 - (void)balloonViewLongTouched:(id)arg1;
+- (void)balloonViewDoubleTapped:(id)arg1;
 - (void)balloonViewTapped:(id)arg1;
 - (void)performClosingAnimationsWithSendAnimation:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)dismissTapGestureRecognized:(id)arg1;

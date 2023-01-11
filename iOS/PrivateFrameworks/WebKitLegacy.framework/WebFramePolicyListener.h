@@ -15,9 +15,10 @@ __attribute__((visibility("hidden")))
 @interface WebFramePolicyListener : NSObject <WebPolicyDecisionListener, WebFormSubmissionListener>
 {
     struct RefPtr<WebCore::Frame, WTF::DumbPtrTraits<WebCore::Frame>> _frame;
-    Function_b05ff6eb _policyFunction;
+    struct PolicyCheckIdentifier _identifier;
+    Function_b3117096 _policyFunction;
     struct RetainPtr<NSURL> _appLinkURL;
-    int _defaultPolicy;
+    unsigned char _defaultPolicy;
 }
 
 + (void)initialize;
@@ -27,11 +28,11 @@ __attribute__((visibility("hidden")))
 - (void)use;
 - (void)download;
 - (void)ignore;
-- (void)receivedPolicyDecision:(int)arg1;
+- (void)receivedPolicyDecision:(unsigned char)arg1;
 - (void)dealloc;
 - (void)invalidate;
-- (id)initWithFrame:(struct Frame *)arg1 policyFunction:(Function_b05ff6eb *)arg2 defaultPolicy:(int)arg3 appLinkURL:(id)arg4;
-- (id)initWithFrame:(struct Frame *)arg1 policyFunction:(Function_b05ff6eb *)arg2 defaultPolicy:(int)arg3;
+- (id)initWithFrame:(struct Frame *)arg1 identifier:(struct PolicyCheckIdentifier)arg2 policyFunction:(Function_b3117096 *)arg3 defaultPolicy:(unsigned char)arg4 appLinkURL:(id)arg5;
+- (id)initWithFrame:(struct Frame *)arg1 identifier:(struct PolicyCheckIdentifier)arg2 policyFunction:(Function_b3117096 *)arg3 defaultPolicy:(unsigned char)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

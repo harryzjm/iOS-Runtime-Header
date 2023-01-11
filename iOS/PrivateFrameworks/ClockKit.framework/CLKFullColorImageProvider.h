@@ -9,22 +9,39 @@
 #import <ClockKit/NSCopying-Protocol.h>
 #import <ClockKit/NSSecureCoding-Protocol.h>
 
-@class NSString, UIColor, UIImage;
+@class CLKImageProvider, NSDictionary, NSString, UIColor, UIImage;
 
 @interface CLKFullColorImageProvider : NSObject <NSSecureCoding, NSCopying>
 {
     UIColor *_tintColor;
     _Bool _applyScalingAndCircularMasking;
     _Bool _finalized;
+    _Bool _prefersFilterOverTransition;
+    _Bool _tritium_inactiveFullColorImageProvider;
     UIImage *_image;
+    CLKImageProvider *_tintedImageProvider;
     NSString *_accessibilityLabel;
+    Class _ImageViewClass;
+    NSDictionary *_metadata;
+    long long _monochromeFilterType;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)fullColorImageProviderWithImageViewClass:(Class)arg1;
++ (id)providerWithFullColorImage:(id)arg1 tintedImageProvider:(id)arg2 applyScalingAndCircularMasking:(_Bool)arg3;
++ (id)providerWithFullColorImage:(id)arg1 monochromeFilterType:(long long)arg2 applyScalingAndCircularMasking:(_Bool)arg3;
 + (id)providerWithFullColorImage:(id)arg1 applyScalingAndCircularMasking:(_Bool)arg2;
++ (id)providerWithFullColorImage:(id)arg1 tintedImageProvider:(id)arg2;
++ (id)providerWithFullColorImage:(id)arg1 monochromeFilterType:(long long)arg2;
 + (id)providerWithFullColorImage:(id)arg1;
+@property(nonatomic) long long monochromeFilterType; // @synthesize monochromeFilterType=_monochromeFilterType;
 @property(retain, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
+@property(copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
+@property(readonly, nonatomic, getter=tritium_isTritiumInactiveFullColorImageProvider) _Bool tritium_inactiveFullColorImageProvider; // @synthesize tritium_inactiveFullColorImageProvider=_tritium_inactiveFullColorImageProvider;
+@property(readonly, nonatomic) Class ImageViewClass; // @synthesize ImageViewClass=_ImageViewClass;
+@property(nonatomic) _Bool prefersFilterOverTransition; // @synthesize prefersFilterOverTransition=_prefersFilterOverTransition;
 @property(retain, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
+@property(retain, nonatomic) CLKImageProvider *tintedImageProvider; // @synthesize tintedImageProvider=_tintedImageProvider;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 - (void).cxx_destruct;
 - (void)_resizeImagesIfNecessaryWithMaxSize:(struct CGSize)arg1 cornerRadius:(double)arg2;
@@ -37,6 +54,7 @@
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 
 @end
 

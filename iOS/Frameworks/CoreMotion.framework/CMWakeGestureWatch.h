@@ -6,6 +6,7 @@
 
 @interface CMWakeGestureWatch
 {
+    int fSelector;
 }
 
 @end

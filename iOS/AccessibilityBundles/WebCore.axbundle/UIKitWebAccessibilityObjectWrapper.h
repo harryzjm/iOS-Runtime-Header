@@ -9,9 +9,12 @@
 }
 
 + (void)initialize;
++ (_Bool)_isSerializableAccessibilityElement;
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityNextElementsWithHeading:(unsigned long long)arg1 queryString:(id)arg2;
+- (_Bool)_accessibilityMoveFocusWithHeading:(unsigned long long)arg1 toElementMatchingQuery:(id)arg2;
 - (unsigned long long)_axUpdatesFrequentlyTrait;
 - (unsigned long long)_axTextAreaTrait;
 - (unsigned long long)_axSearchFieldTrait;
@@ -74,12 +77,12 @@
 - (void)_performPostScrollStatus:(id)arg1;
 - (id)accessibilityIdentifier;
 - (_Bool)_accessibilityHandwritingAttributeAcceptsContractedBraille;
-- (_Bool)_accessibilityHandwritingAttributeAcceptsRawInput;
+- (_Bool)_accessibilitySupportsTextInsertionAndDeletion;
 - (_Bool)_accessibilityHasTextOperations;
 - (id)_accessibilityTextViewTextOperationResponder;
 - (void)_accessibilityReplaceCharactersAtCursor:(unsigned long long)arg1 withString:(id)arg2;
-- (void)_accessibilityInsertText:(id)arg1 atPosition:(long long)arg2;
 - (struct _NSRange)_accessibilitySelectedTextRangeForHandwritingWithValue:(id)arg1;
+- (void)_accessibilityInsertText:(id)arg1;
 - (id)_accessibilityValueForHandwriting;
 - (void)_performLiveRegionUpdate;
 - (id)_accessibilityWebAreaURL;
@@ -93,6 +96,12 @@
 - (_Bool)_accessibilityIsTopMostWebElement;
 - (id)_accessibilityCustomRotor:(long long)arg1;
 - (id)_axWebKitSearchKeyForCustomRotorType:(long long)arg1;
+- (id)accessibilityCustomActions;
+- (void)accessibilityDecrement;
+- (void)accessibilityIncrement;
+- (void)_axVideoToggleMute;
+- (void)_axVideoEnterFullscreen;
+- (_Bool)_axIsInteractiveVideo;
 - (id)accessibilityMathEquation;
 - (id)_accessibilityProcessRootEquation;
 - (id)accessibilityLabel;
@@ -122,7 +131,11 @@
 - (id)accessibilityMathRadicandObject;
 - (id)accessibilityMathRootIndexObject;
 - (id)accessibilityURL;
+- (id)_accessibilityAttributedValue:(id)arg1;
 - (id)_accessibilityAttributedValueForRange:(struct _NSRange *)arg1;
+- (id)_accessibilityAttributedValueForElement;
+- (id)accessibilityAttributedValue;
+- (_Bool)_accessibilityOverridesPotentiallyAttributedAPISelector:(SEL)arg1;
 - (id)accessibilityPlaceholderValue;
 - (id)_accessibilityParentForSubview:(id)arg1;
 - (id)accessibilityPostProcessHitTest:(struct CGPoint)arg1;
@@ -180,13 +193,13 @@
 - (_Bool)_axIsWK2DataDetectorLink;
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;
 - (id)accessibilityContainer;
+- (id)_accessibilityColorDescription;
 - (_Bool)_accessibilityIsFrameOutOfBounds;
 - (id)_accessibilityWebDocumentView;
 - (id)_accessibilityWebPageObject;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (id)_accessibilityRoleDescription;
 - (long long)_accessibilityExpandedStatus;
-- (_Bool)_axWebKitHasPopup;
 - (_Bool)_axWebKitIsAriaPressed;
 - (id)accessibilityLinkRelationshipType;
 - (_Bool)_axWebKitSupportsARIAPressed;
@@ -196,9 +209,9 @@
 - (id)accessibilitySortDirection;
 - (id)_accessibilityCurrentStatus;
 - (_Bool)_axWebKitIsAriaExpanded;
+- (unsigned long long)_accessibilityAutomationType;
 - (_Bool)_axWebKitSupportsARIAExpanded;
 - (unsigned int)_accessibilityContextId;
-- (struct CGPoint)_accessibilityConvertPointToViewSpace:(struct CGPoint)arg1;
 - (_Bool)_accessibilityRequiresContextIdConversion;
 - (id)_accessibilityWebPageParent;
 - (_Bool)_axIsWebKit2;

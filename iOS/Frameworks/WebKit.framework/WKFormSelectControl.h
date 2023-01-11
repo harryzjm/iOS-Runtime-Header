@@ -4,23 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <WebKit/WKFormPeripheral-Protocol.h>
-
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKFormSelectControl : NSObject <WKFormPeripheral>
+@interface WKFormSelectControl
 {
-    struct RetainPtr<NSObject<WKFormControl>> _control;
+    RetainPtr_5ad583fd _control;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)endEditing;
-- (void)beginEditing;
-- (id)assistantView;
 - (id)initWithView:(id)arg1;
 @property(readonly, nonatomic) NSString *selectFormPopoverTitle;
 - (void)selectRow:(long long)arg1 inComponent:(long long)arg2 extendingSelection:(_Bool)arg3;

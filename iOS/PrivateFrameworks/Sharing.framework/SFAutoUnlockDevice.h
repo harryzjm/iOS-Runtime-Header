@@ -13,12 +13,14 @@
     _Bool _unlockEnabled;
     _Bool _keyExists;
     _Bool _bluetoothCloudPaired;
+    _Bool _supportsApproveWithWatch;
     _Bool _placeholder;
     _Bool _supportsAlwaysDirect;
-    _Bool _supportsAuthPrompts;
+    _Bool _supportsApproveIcon;
     _Bool _supportsEncryption;
     _Bool _supportsAdvertisingUnlocked;
     _Bool _supportsConnectionCache;
+    _Bool _supportsHEIC;
     NSString *_modelDescription;
     NSUUID *_bluetoothID;
     NSUUID *_proxyBluetoothID;
@@ -30,10 +32,11 @@
 
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) long long majorOSVersion; // @synthesize majorOSVersion=_majorOSVersion;
+@property(nonatomic) _Bool supportsHEIC; // @synthesize supportsHEIC=_supportsHEIC;
 @property(nonatomic) _Bool supportsConnectionCache; // @synthesize supportsConnectionCache=_supportsConnectionCache;
 @property(nonatomic) _Bool supportsAdvertisingUnlocked; // @synthesize supportsAdvertisingUnlocked=_supportsAdvertisingUnlocked;
 @property(nonatomic) _Bool supportsEncryption; // @synthesize supportsEncryption=_supportsEncryption;
-@property(nonatomic) _Bool supportsAuthPrompts; // @synthesize supportsAuthPrompts=_supportsAuthPrompts;
+@property(nonatomic) _Bool supportsApproveIcon; // @synthesize supportsApproveIcon=_supportsApproveIcon;
 @property(nonatomic) _Bool supportsAlwaysDirect; // @synthesize supportsAlwaysDirect=_supportsAlwaysDirect;
 @property(nonatomic) _Bool placeholder; // @synthesize placeholder=_placeholder;
 @property(retain, nonatomic) NSData *hintToken; // @synthesize hintToken=_hintToken;
@@ -41,6 +44,7 @@
 @property(retain, nonatomic) NSString *modelName; // @synthesize modelName=_modelName;
 @property(copy, nonatomic) NSUUID *proxyBluetoothID; // @synthesize proxyBluetoothID=_proxyBluetoothID;
 @property(retain, nonatomic) NSUUID *bluetoothID; // @synthesize bluetoothID=_bluetoothID;
+@property(nonatomic) _Bool supportsApproveWithWatch; // @synthesize supportsApproveWithWatch=_supportsApproveWithWatch;
 @property(nonatomic) _Bool bluetoothCloudPaired; // @synthesize bluetoothCloudPaired=_bluetoothCloudPaired;
 @property(nonatomic) _Bool keyExists; // @synthesize keyExists=_keyExists;
 @property(nonatomic) _Bool unlockEnabled; // @synthesize unlockEnabled=_unlockEnabled;

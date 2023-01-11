@@ -8,6 +8,7 @@
 
 @class CKAnimatedImage, CKBalloonImageView, NSArray, NSString, UIImage, UILongPressGestureRecognizer, UITapGestureRecognizer;
 
+__attribute__((visibility("hidden")))
 @interface CKAssociatedStickerTranscriptCell <CKAnimationTimerObserver>
 {
     CKBalloonImageView *_imageView;

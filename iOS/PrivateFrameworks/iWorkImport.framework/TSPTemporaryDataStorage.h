@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)gilligan_isRemote;
 @property(readonly, nonatomic) _Bool isMissingData; // @synthesize isMissingData=_isMissingData;
 - (void).cxx_destruct;
-- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4;
+- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4 error:(id *)arg5;
 - (void)performIOChannelReadWithAccessor:(CDUnknownBlockType)arg1;
 - (void)performReadWithAccessor:(CDUnknownBlockType)arg1;
 - (id)decryptionInfo;

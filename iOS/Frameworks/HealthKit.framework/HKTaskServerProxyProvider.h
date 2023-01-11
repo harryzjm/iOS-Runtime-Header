@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HKTaskConfiguration, NSString, NSUUID;
+@class HKTaskConfiguration, NSString, NSURL, NSUUID;
 
 @interface HKTaskServerProxyProvider
 {
     NSUUID *_taskUUID;
+    NSURL *_pluginURL;
     HKTaskConfiguration *_taskConfiguration;
 }
 
 @property(copy) HKTaskConfiguration *taskConfiguration; // @synthesize taskConfiguration=_taskConfiguration;
+@property(copy, nonatomic) NSURL *pluginURL; // @synthesize pluginURL=_pluginURL;
 @property(readonly, copy, nonatomic) NSUUID *taskUUID; // @synthesize taskUUID=_taskUUID;
 - (void).cxx_destruct;
 - (void)fetchProxyServiceEndpointForIdentifier:(id)arg1 endpointHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;

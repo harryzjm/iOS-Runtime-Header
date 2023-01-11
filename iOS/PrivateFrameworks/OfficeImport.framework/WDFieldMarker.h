@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, WDCharacterProperties;
+@class NSData;
 
+__attribute__((visibility("hidden")))
 @interface WDFieldMarker
 {
-    WDCharacterProperties *mProperties;
     int mFieldPosition;
     int mMarkerType;
     unsigned char mFieldType;
@@ -22,6 +22,7 @@
     unsigned int mHasSeparator:1;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 - (void)setData:(id)arg1;
 - (id)data;
@@ -46,10 +47,7 @@
 - (int)fieldMarkerType;
 - (void)setFieldPosition:(int)arg1;
 - (int)fieldPosition;
-- (void)dealloc;
 - (id)initWithParagraph:(id)arg1;
-- (void)clearProperties;
-- (id)properties;
 
 @end
 

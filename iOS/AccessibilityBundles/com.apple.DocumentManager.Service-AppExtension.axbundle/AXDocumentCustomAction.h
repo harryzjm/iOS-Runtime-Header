@@ -6,16 +6,14 @@
 
 #import <UIKit/UIAccessibilityCustomAction.h>
 
-@class FPItem, UIDocumentBrowserAction;
+@class UIMenuItem;
 
 @interface AXDocumentCustomAction : UIAccessibilityCustomAction
 {
-    UIDocumentBrowserAction *_documentAction;
-    FPItem *_item;
+    UIMenuItem *_menuItem;
 }
 
-@property(retain, nonatomic) FPItem *item; // @synthesize item=_item;
-@property(retain, nonatomic) UIDocumentBrowserAction *documentAction; // @synthesize documentAction=_documentAction;
+@property(retain, nonatomic) UIMenuItem *menuItem; // @synthesize menuItem=_menuItem;
 - (void).cxx_destruct;
 
 @end

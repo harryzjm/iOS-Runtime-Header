@@ -14,6 +14,8 @@
     NSData *_data;
     NSString *_name;
     struct Texture2D *_gglTexture;
+    struct shared_ptr<md::TextureAtlasRegion> _textureAtlasRegion;
+    Box_8bd38d92 _textureCoordinates;
     struct CGRect _collisionRect;
     struct CGPoint _anchorPoint;
     struct CGSize _size;
@@ -21,12 +23,14 @@
     _Bool _hasCollisionRect;
     _Bool _hasAnchorPoint;
     _Bool _usedAsTextureAndImage;
-    _Bool _isTextureReady;
+    struct atomic<bool> _isTextureReady;
     struct atomic<bool> _isImageReady;
     VKResourceManager *_resourceManager;
     unsigned char _imageHash[16];
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (int)compareTo:(id)arg1;
 - (void)setCollisionRect:(struct CGRect)arg1;
 - (void)setAnchorPoint:(struct CGPoint)arg1;
@@ -36,7 +40,9 @@
 - (struct CGSize)size;
 - (void)_prepareImage;
 - (struct CGImage *)image;
-- (void)prepareTexture;
+- (void)_prepareTextureWithAtlas:(struct TextureAtlas *)arg1;
+- (void)prepareTextureWithAtlas:(struct TextureAtlas *)arg1;
+- (const Box_8bd38d92 *)textureCoordinates;
 - (struct Texture2D *)gglTexture;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 scale:(double)arg2 resourceManager:(id)arg3;

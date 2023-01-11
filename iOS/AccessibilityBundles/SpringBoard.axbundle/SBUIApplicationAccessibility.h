@@ -11,8 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityDashboardViewController;
-- (id)_accessibilityRootFolderView;
+- (id)_accessibilityCoverSheetViewController;
+- (id)_accessibilityRootFolderViewController;
+- (id)_accessibilityRootFolderController;
 - (id)_accessibilitySpotlightMultiplexingViewController;
 - (_Bool)_accessibilityLeftOfLockTodayViewIsVisible;
 - (_Bool)_accessibilityLeftOfHomeTodayViewIsVisible;
@@ -20,6 +21,7 @@
 - (id)_accessibilityTitleBarElement;
 - (id)accessibilityLabel;
 - (id)_accessibilitySpeakThisViewController;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

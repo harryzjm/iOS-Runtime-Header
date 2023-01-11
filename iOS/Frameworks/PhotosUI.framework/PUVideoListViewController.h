@@ -63,6 +63,7 @@
 - (id)oneUpPresentationHelperViewController:(id)arg1;
 - (void)oneUpPresentationHelper:(id)arg1 didDismissOneUpViewController:(id)arg2;
 - (void)oneUpPresentationHelper:(id)arg1 willPresentOneUpViewController:(id)arg2;
+- (long long)oneUpPresentationOrigin:(id)arg1;
 - (void)_updateAssetsFetchResultIfNeeded;
 - (void)_presentOneUpViewControllerForAssetAtInderxPath:(id)arg1;
 - (void)_ensureOneUpPresentationHelper;
@@ -83,7 +84,6 @@
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)_configureTableView:(id)arg1;
 - (id)_headerViewForTableView:(id)arg1;
-- (id)_defaultBackgroundColor;
 - (void)_deleteItemsAtSelectedIndexes:(id)arg1;
 - (void)deletePhotosActionController:(id)arg1 presentConfirmationViewController:(id)arg2;
 - (long long)preferredAlertControllerStyleForDeletePhotosActionController:(id)arg1;

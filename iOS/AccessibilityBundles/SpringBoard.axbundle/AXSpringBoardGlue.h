@@ -21,9 +21,10 @@
 + (void)removeVoiceOverInfoPanel:(double)arg1;
 + (void)resetCanShowAXInfoPanel;
 + (_Bool)canShowAXInfoPanel;
+@property(readonly, nonatomic) int lastLockSource;
 - (_Bool)_accessibilityAllowShowNotificationGestureOverride;
 - (void)_accessibilitySetAllowShowNotificationGestureOverride:(_Bool)arg1;
-- (_Bool)isUILocked;
+@property(readonly, nonatomic, getter=isUILocked) _Bool UILocked;
 - (_Bool)isDimmed;
 
 @end

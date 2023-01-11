@@ -12,9 +12,11 @@
 {
 }
 
-- (id)_alarmUserActivityWithIntent:(id)arg1;
 - (void)handleMTUpdateAlarm:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)confirmMTUpdateAlarm:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_alarmUserActivityWithIntent:(id)arg1;
+- (void)handleUpdateAlarm:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)confirmUpdateAlarm:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

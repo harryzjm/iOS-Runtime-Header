@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface _INDataImage
 {
-    NSUUID *_md5HashUUID;
+    NSUUID *_sha256HashUUID;
     NSData *_imageData;
 }
 
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)_md5HashUUID;
+- (id)_sha256HashUUID;
 - (_Bool)_isEligibleForProxying;
 - (void)_setImageData:(id)arg1;
 - (id)_imageData;

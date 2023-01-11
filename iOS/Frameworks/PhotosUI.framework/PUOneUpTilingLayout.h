@@ -45,6 +45,7 @@
     _Bool _canDisplayLoadingIndicators;
     _Bool _useUserTransformTiles;
     _Bool _shouldPinContentToTop;
+    _Bool _shouldHideMainContent;
     id <PUOneUpTilingLayoutDelegate> _delegate;
     long long _windowInterfaceOrientation;
     long long _tileInitialContentMode;
@@ -63,6 +64,7 @@
 + (struct CGRect)untransformedRectForItemWithAspectRatio:(double)arg1 pageRect:(struct CGRect)arg2 safeInsets:(struct UIEdgeInsets)arg3;
 + (id)centerTileKinds;
 + (void)initialize;
+@property(nonatomic) _Bool shouldHideMainContent; // @synthesize shouldHideMainContent=_shouldHideMainContent;
 @property(retain, nonatomic) PUParallaxComputer *parallaxComputer; // @synthesize parallaxComputer=_parallaxComputer;
 @property(nonatomic) _Bool shouldPinContentToTop; // @synthesize shouldPinContentToTop=_shouldPinContentToTop;
 @property(nonatomic) struct CGSize displaySizeForInsetMatching; // @synthesize displaySizeForInsetMatching=_displaySizeForInsetMatching;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSDate;
+@class ARFrame, MISSING_TYPE, NSDate;
 @protocol ARSessionMetricsReporting, OS_dispatch_queue;
 
 @interface ARSessionMetrics : NSObject
@@ -14,6 +14,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     id <ARSessionMetricsReporting> _reporter;
     Class _configClass;
+    id _currentConfiguration;
     NSDate *_startDate;
     NSDate *_frameStartDate;
     double _sessionTimeForLastBadFrameRecording;
@@ -23,8 +24,13 @@
     _Bool _positionInitialized;
     MISSING_TYPE *_minPos;
     MISSING_TYPE *_maxPos;
+    ARFrame *_lastUpdatedFrame;
     _Bool _hasInitialWorldMap;
     _Bool _relocalizingToInitialWorldMap;
+    unsigned long long _raycastCount;
+    _Bool _didRunPlaneDetection;
+    long long _highestThermalState;
+    _Bool _didSwitchToWornMode;
 }
 
 - (void).cxx_destruct;
@@ -35,9 +41,13 @@
 - (id)configBasedKey:(id)arg1;
 - (void)_recordSessionEnd;
 - (void)sessionStopped;
+- (void)sessionSwitchedPresentationMode:(long long)arg1;
+- (void)recordRaycast:(id)arg1 tracked:(_Bool)arg2;
 - (void)saveMapWithFrame:(id)arg1;
+- (void)sessionUpdateThermalState:(long long)arg1;
 - (void)sessionDidUpdateFrame:(id)arg1;
-- (void)sessionStartedWithConfiguration:(id)arg1;
+- (void)sessionStarted:(id)arg1 withConfiguration:(id)arg2;
+- (int)_checkRenderEngine:(id)arg1 withConfiguration:(id)arg2;
 - (id)queue;
 - (id)initWithReporter:(id)arg1;
 - (id)init;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)_propertyDescriptionString;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)applyRecordsMatchingTraitCollection:(id)arg1;

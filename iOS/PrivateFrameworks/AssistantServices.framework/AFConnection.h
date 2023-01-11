@@ -9,38 +9,49 @@
 #import <AssistantServices/AFAccessibilityListening-Protocol.h>
 #import <AssistantServices/AFAudioPowerUpdaterDelegate-Protocol.h>
 #import <AssistantServices/AFDeviceRingerSwitchListening-Protocol.h>
+#import <AssistantServices/AFInterstitialProviderDelegate-Protocol.h>
 #import <AssistantServices/NSXPCListenerDelegate-Protocol.h>
 
-@class AFAudioPowerUpdater, AFClientConfiguration, AFClockAlarmSnapshot, AFClockTimerSnapshot, AFConnectionLocationManager, AFOneArgumentSafetyBlock, NSArray, NSError, NSMutableDictionary, NSString, NSUUID, NSXPCConnection;
-@protocol AFAssistantUIService, AFSpeechDelegate, OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
+@class AFAudioPowerUpdater, AFClientConfiguration, AFClockAlarmSnapshot, AFClockTimerSnapshot, AFInterstitialProvider, AFOneArgumentSafetyBlock, AFQueue, AFWatchdogTimer, NSArray, NSError, NSMutableDictionary, NSString, NSUUID, NSXPCConnection;
+@protocol AFAssistantUIService, AFSpeechDelegate, OS_dispatch_group, OS_dispatch_queue;
 
-@interface AFConnection : NSObject <NSXPCListenerDelegate, AFAudioPowerUpdaterDelegate, AFAccessibilityListening, AFDeviceRingerSwitchListening>
+@interface AFConnection : NSObject <NSXPCListenerDelegate, AFAudioPowerUpdaterDelegate, AFAccessibilityListening, AFDeviceRingerSwitchListening, AFInterstitialProviderDelegate>
 {
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_targetQueue;
     NSString *_outstandingRequestClass;
+    void *_clientID;
     NSArray *_cachedBulletins;
     AFClockAlarmSnapshot *_cachedClockAlarmSnapshot;
     AFClockTimerSnapshot *_cachedClockTimerSnapshot;
     NSUUID *_activeRequestUUID;
     long long _activeRequestType;
     long long _activeRequestUsefulUserResultType;
-    NSObject<OS_dispatch_source> *_requestTimeoutTimer;
+    AFWatchdogTimer *_requestTimeoutTimer;
     AFOneArgumentSafetyBlock *_requestCompletion;
+    long long _activeRequestSpeechEvent;
+    _Bool _activeRequestHasSpeechRecognition;
+    _Bool _activeRequestIsDucking;
+    _Bool _activeRequestIsTwoShot;
+    unsigned long long _activeRequestSpeechEndHostTime;
+    unsigned long long _activeRequestNumberOfPresentedInterstitials;
     NSMutableDictionary *_replyHandlerForAceId;
     unsigned int _stateInSync:1;
     unsigned int _shouldSpeak:1;
     unsigned int _isCapturingSpeech:1;
     unsigned int _hasOutstandingRequest:1;
     unsigned int _audioSessionID;
+    NSString *_recordRoute;
+    NSString *_playbackRoute;
     AFAudioPowerUpdater *_inputAudioPowerUpdater;
     AFClientConfiguration *_clientConfiguration;
+    AFInterstitialProvider *_interstitialProvider;
+    AFQueue *_interstitialCommandQueue;
     unsigned int _clientConfigurationIsInSync:1;
     unsigned int _voiceOverIsActive:1;
     NSError *_lastRetryError;
     unsigned long long _pendingSpeechRequestCounter;
     NSObject<OS_dispatch_group> *_speechCallbackGroup;
-    AFConnectionLocationManager *_locationManager;
     id <AFAssistantUIService> _delegate;
     id <AFSpeechDelegate> _speechDelegate;
 }
@@ -81,6 +92,7 @@
 - (void)setOverriddenApplicationContext:(id)arg1 withContext:(id)arg2;
 - (void)setApplicationContextForApplicationInfos:(id)arg1;
 - (void)setApplicationContextForApplicationInfos:(id)arg1 withRefId:(id)arg2;
+- (void)fetchAppicationContextForApplicationInfo:(id)arg1 supplementalContext:(id)arg2 refID:(id)arg3;
 - (void)setApplicationContext:(id)arg1;
 - (void)willSetApplicationContextWithRefId:(id)arg1;
 - (void)clearContext;
@@ -88,6 +100,7 @@
 - (void)getCachedObjectsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getDeferredObjectsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendReplyCommand:(id)arg1;
+- (void)sendGenericAceCommand:(id)arg1 turnIdentifier:(struct NSUUID *)arg2 conflictHandler:(CDUnknownBlockType)arg3;
 - (void)sendGenericAceCommand:(id)arg1 conflictHandler:(CDUnknownBlockType)arg2;
 - (void)sendGenericAceCommand:(id)arg1;
 - (float)peakPower;
@@ -105,6 +118,7 @@
 - (void)stopSpeech;
 - (void)reportIssueForError:(id)arg1 type:(long long)arg2 context:(id)arg3;
 - (void)failRequestWithError:(id)arg1;
+- (void)cancelRequestForReason:(long long)arg1;
 - (void)cancelRequest;
 - (void)cancelSpeech;
 - (void)startAcousticIDRequestWithOptions:(id)arg1;
@@ -112,7 +126,7 @@
 - (CDUnknownBlockType)startRecordingAndGetContinueBlockForPendingSpeechRequestWithOptions:(id)arg1;
 - (void)startRecordingForPendingSpeechRequestWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startSpeechRequestWithOptions:(id)arg1;
-- (void)_startRequestWithAceCommand:(id)arg1 suppressAlert:(_Bool)arg2;
+- (void)_startRequestWithAceCommand:(id)arg1 turnIdentifier:(struct NSUUID *)arg2 suppressAlert:(_Bool)arg3;
 - (void)_startRequestWithInfo:(id)arg1;
 - (void)startRequestWithInfo:(id)arg1 activationEvent:(long long)arg2;
 - (void)startRequestWithInfo:(id)arg1;
@@ -126,8 +140,7 @@
 - (void)setMyriadDecisionResult:(_Bool)arg1;
 - (void)setShouldWaitForMyriad:(_Bool)arg1;
 - (void)setDeviceRingerSwitchState:(long long)arg1;
-- (void)setIsAccessibilityVibrationDisabled:(_Bool)arg1;
-- (void)setIsAccessibilityVoiceOverTouchEnabled:(_Bool)arg1;
+- (void)setAccessibilityState:(id)arg1;
 - (void)setCarDNDActive:(_Bool)arg1;
 - (void)setIsDeviceInStarkMode:(_Bool)arg1;
 - (void)setLockState:(_Bool)arg1 screenLocked:(_Bool)arg2;
@@ -136,6 +149,8 @@
 - (void)resumeInterruptedAudioPlaybackIfNeeded;
 - (void)forceAudioSessionInactiveWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)forceAudioSessionInactive;
+- (void)forceAudioSessionActiveWithOptions:(unsigned long long)arg1 reason:(long long)arg2 speechRequestOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)forceAudioSessionActiveWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)forceAudioSessionActiveWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)forceAudioSessionActive;
 - (void)boostedPreheatWithStyle:(long long)arg1 completion:(CDUnknownBlockType)arg2;
@@ -143,32 +158,37 @@
 - (void)preheatWithStyle:(long long)arg1;
 - (void)invalidate;
 - (void)endSession;
+- (void)_endInterstitialsForReason:(id)arg1;
+- (void)_handleInterstitialPhase:(long long)arg1 fromProvider:(id)arg2 displayText:(id)arg3 speakableText:(id)arg4 context:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_beginInterstitialsForReason:(id)arg1;
+- (void)_enqueueInterstitialCommand:(id)arg1;
+- (_Bool)_isInterstitialsRunning;
 - (void)_willPresentUsefulUserResultWithType:(long long)arg1;
 - (void)_willCompleteRequest;
 - (void)_willFailRequestWithError:(id)arg1;
 - (void)_willCancelRequest;
 - (void)_willEndSession;
-- (void)_willStartRequestWithSpeech:(_Bool)arg1 analyticsEventProvider:(CDUnknownBlockType)arg2;
+- (void)_willStartRequestWithSpeech:(_Bool)arg1 speechRequestOptions:(id)arg2 analyticsEventProvider:(CDUnknownBlockType)arg3;
 - (void)_updateClientConfiguration;
 - (void)_updateState;
 - (void)_updateStateIfNotInSync;
-- (void)_extendExistingRequestTimeout;
-- (void)_extendRequestTimeout;
-- (void)_cancelRequestTimeout;
-- (void)_invokeRequestTimeout;
-- (void)_scheduleRequestTimeout;
+- (void)_extendExistingRequestTimeoutForReason:(id)arg1;
+- (void)_extendRequestTimeoutForReason:(id)arg1;
+- (void)_cancelRequestTimeoutForReason:(id)arg1;
+- (void)_resumeRequestTimeoutForReason:(id)arg1;
+- (void)_pauseRequestTimeoutForReason:(id)arg1;
+- (void)_invokeRequestTimeoutForReason:(id)arg1;
+- (void)_scheduleRequestTimeoutForReason:(id)arg1;
 - (id)_connection;
 - (void)_clearConnection;
 - (void)_connectionFailedWithError:(id)arg1;
+- (void)interstitialProvider:(id)arg1 handlePhase:(long long)arg2 displayText:(id)arg3 speakableText:(id)arg4 context:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)deviceRingerObserver:(id)arg1 didChangeState:(long long)arg2;
-- (void)accessibilityObserver:(id)arg1 didChangeVibrationDisabledPreference:(_Bool)arg2;
-- (void)accessibilityObserver:(id)arg1 didChangeVoiceOverTouchEnabledPreference:(_Bool)arg2;
+- (void)accessibilityObserver:(id)arg1 stateDidChangeFrom:(id)arg2 to:(id)arg3;
 - (void)audioPowerUpdaterDidUpdate:(id)arg1 averagePower:(float)arg2 peakPower:(float)arg3;
 - (void)_tellSpeechDelegateRecognitionDidFail:(id)arg1;
 - (void)_tellSpeechDelegateSpeechRecognizedPartialResult:(id)arg1;
-- (void)_tellSpeechDelegateDidRecognizePhrases:(id)arg1 utterances:(id)arg2;
 - (void)_tellSpeechDelegateRecognitionUpdateWillBeginForTask:(id)arg1;
-- (void)_tellSpeechDelegateRecordingDidFinishRecognitionUpdateWithError:(id)arg1;
 - (void)_tellSpeechDelegateRecordingDidUpdateRecognitionPhrases:(id)arg1 utterances:(id)arg2 refId:(id)arg3;
 - (void)_tellSpeechDelegateRecognizedAdditionalSpeechInterpretation:(id)arg1 refId:(id)arg2;
 - (void)_tellSpeechDelegateSpeechRecognized:(id)arg1;
@@ -184,9 +204,8 @@
 - (void)_tellDelegateAudioSessionDidBecomeActive:(_Bool)arg1;
 - (void)_tellDelegateAudioSessionWillBecomeActive:(_Bool)arg1;
 - (void)_tellDelegateStartPlaybackDidFail:(long long)arg1;
-- (void)_tellDelegateWillProcessStartPlayback:(long long)arg1;
+- (void)_tellDelegateWillProcessStartPlayback:(long long)arg1 intent:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_tellDelegateAudioPlaybackRequestDidStop:(id)arg1 error:(id)arg2;
-- (void)_tellDelegateAudioPlaybackRequestDidNotStart:(id)arg1 error:(id)arg2;
 - (void)_tellDelegateAudioPlaybackRequestDidStart:(id)arg1;
 - (void)_tellDelegateAudioPlaybackRequestWillStart:(id)arg1;
 - (void)_tellDelegateAudioSessionDidEndInterruption:(_Bool)arg1;
@@ -203,20 +222,27 @@
 - (void)_tellDelegateShouldSpeakChanged:(_Bool)arg1;
 - (void)_completeRequestWithUUID:(id)arg1 error:(id)arg2;
 - (void)_tellDelegateRequestWillStart;
+- (void)_updateSpeechEndHostTime:(unsigned long long)arg1;
+- (void)_markSpeechRecognized;
+- (void)_markIsTwoShot;
+- (void)_markIsDucking;
+- (void)_setRecordRoute:(id)arg1;
 - (void)_setAudioSessionID:(unsigned int)arg1;
 - (void)_stopInputAudioPowerUpdates;
 - (_Bool)_startInputAudioPowerUpdatesWithXPCWrapper:(id)arg1;
 - (void)_aceConnectionWillRetryOnError:(id)arg1;
 - (void)_setShouldSpeak:(_Bool)arg1;
-- (void)_doCommand:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)_dispatchCommand:(id)arg1 isInterstitial:(_Bool)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)_handleCommand:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)_startUIRequestWithText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_requestDidEnd;
-- (void)_requestWillBeginWithRequestClass:(id)arg1 isSpeechRequest:(_Bool)arg2 isBackgroundRequest:(_Bool)arg3 analyticsEventProvider:(CDUnknownBlockType)arg4;
-- (void)_requestWillBeginWithRequestClass:(id)arg1 isSpeechRequest:(_Bool)arg2 analyticsEventProvider:(CDUnknownBlockType)arg3;
+- (void)_requestWillBeginWithRequestClass:(id)arg1 isSpeechRequest:(_Bool)arg2 speechRequestOptions:(id)arg3 isBackgroundRequest:(_Bool)arg4 analyticsEventProvider:(CDUnknownBlockType)arg5;
+- (void)_requestWillBeginWithRequestClass:(id)arg1 isSpeechRequest:(_Bool)arg2 speechRequestOptions:(id)arg3 analyticsEventProvider:(CDUnknownBlockType)arg4;
 - (void)_checkAndSetIsCapturingSpeech:(_Bool)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithTargetQueue:(id)arg1;
+- (void)broadcastCommandDictionary:(id)arg1;
 - (void)sendFeedbackToAppPreferencesPredictorForMetricsContext:(id)arg1 selectedBundleId:(id)arg2;
 - (void)requestBarrier:(CDUnknownBlockType)arg1;
 - (void)startSpeechRequestWithSpeechFileAtURL:(id)arg1 isNarrowBand:(_Bool)arg2;
@@ -230,6 +256,7 @@
 - (id)_clientService;
 - (void)_clearAssistantInfoForAccountWithIdentifier:(id)arg1;
 - (void)_barrier;
+- (id)_activeRequestUUID;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

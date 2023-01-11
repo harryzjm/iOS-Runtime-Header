@@ -16,10 +16,13 @@
 {
     CDStruct_f2ecb737 _has;
     _Bool _success;
+    _Bool __encodeLegacyGloryData;
     _INPBString *_entityName;
     _INPBFileProperty *_property;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(nonatomic) _Bool success; // @synthesize success=_success;
 @property(retain, nonatomic) _INPBFileProperty *property; // @synthesize property=_property;
 @property(retain, nonatomic) _INPBString *entityName; // @synthesize entityName=_entityName;
@@ -28,6 +31,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(nonatomic) _Bool hasSuccess;

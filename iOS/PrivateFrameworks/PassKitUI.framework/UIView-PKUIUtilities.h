@@ -7,10 +7,11 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (PKUIUtilities)
-+ (void)_pkui_animateUsingFactory:(id)arg1 withDelay:(double)arg2 options:(unsigned long long)arg3 animations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)pkui_animateUsingFactory:(id)arg1 withDelay:(double)arg2 options:(unsigned long long)arg3 animations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 + (void)pkui_animateUsingOptions:(unsigned long long)arg1 delay:(double)arg2 velocity:(double)arg3 animations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 + (void)pkui_animateUsingOptions:(unsigned long long)arg1 delay:(double)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)pkui_animateUsingOptions:(unsigned long long)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)pkui_setExcludedFromScreenCapture:(_Bool)arg1;
 - (struct CGRect)pkui_readableContentBoundsWithMargins:(struct UIEdgeInsets)arg1;
 - (id)pkui_viewControllerFromResponderChain;
 - (id)pkui_translationAnimation;
@@ -23,5 +24,8 @@
 - (_Bool)pkui_setFrame:(struct CGRect)arg1 animated:(_Bool)arg2;
 - (void)pkui_smallShakeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)pkui_shakeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)pk_applyAppearance:(id)arg1;
+- (id)pk_childrenForAppearance;
+- (void)pkui_setMaskType:(unsigned long long)arg1;
 @end
 

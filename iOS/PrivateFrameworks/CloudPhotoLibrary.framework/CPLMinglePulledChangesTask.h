@@ -12,7 +12,9 @@
     NSObject<OS_dispatch_queue> *_lock;
     NSString *_clientCacheIdentifier;
     _Bool _hasPreparedForMingling;
-    unsigned long long _countOfNotifiedBatchesInPullQueue;
+    NSObject<OS_dispatch_queue> *_notifyQueue;
+    _Bool _didNotifySchedulerPullQueueIsFullOnce;
+    _Bool _needsToNotifySchedulerPullQueueIsFull;
     CPLScopeFilter *_scopeFilter;
 }
 
@@ -27,7 +29,10 @@
 - (void)_processNextBatch;
 - (void)_taskDidFinishWithError:(id)arg1;
 - (_Bool)_checkContinueMinglingInTransaction:(id)arg1;
-- (id)initWithEngineLibrary:(id)arg1;
+- (void)_notifySchedulerPullQueueIsFullNowIfNecessary;
+- (void)_notifySchedulerPullQueueIsFull;
+- (void)_reallyNotifySchedulerPullQueueIsFull;
+- (id)initWithEngineLibrary:(id)arg1 session:(id)arg2;
 
 @end
 

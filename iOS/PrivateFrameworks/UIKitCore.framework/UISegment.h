@@ -4,12 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSString, UIView, _UIBadgeView, _UIFloatingContentView, _UISegmentedControlAppearanceStorage;
+#import <UIKitCore/CAAnimationDelegate-Protocol.h>
+
+@class NSArray, NSString, UIImageView, UIView, _UIBadgeView, _UIFloatingContentView, _UISegmentedControlAppearanceStorage;
 
 __attribute__((visibility("hidden")))
-@interface UISegment
+@interface UISegment <CAAnimationDelegate>
 {
     UIView *_info;
+    UIImageView *_backgroundView;
+    UIImageView *_selectionImageView;
     _UISegmentedControlAppearanceStorage *_appearanceStorage;
     _UIFloatingContentView *_floatingContentView;
     double _width;
@@ -20,7 +24,6 @@ __attribute__((visibility("hidden")))
     _UIBadgeView *_badgeView;
     id _objectValue;
     struct {
-        unsigned int style:3;
         unsigned int size:2;
         unsigned int selected:1;
         unsigned int highlighted:1;
@@ -32,12 +35,13 @@ __attribute__((visibility("hidden")))
         unsigned int wasSelected:1;
         unsigned int needsBackgroundAndContentViewUpdate:1;
         unsigned int usesAXTextSize:1;
+        unsigned int selectionIndicatorDragged:1;
     } _segmentFlags;
     NSArray *_infoConstraints;
     double _requestedScaleFactor;
 }
 
-+ (id)_backgroundImageWithStorage:(id)arg1 style:(long long)arg2 mini:(_Bool)arg3 state:(unsigned long long)arg4 position:(unsigned int)arg5 drawMode:(int *)arg6 defaultBlock:(CDUnknownBlockType)arg7;
++ (id)_backgroundImageWithStorage:(id)arg1 mini:(_Bool)arg2 state:(unsigned long long)arg3 position:(unsigned int)arg4 drawMode:(unsigned int *)arg5 isCustom:(_Bool *)arg6 defaultBlock:(CDUnknownBlockType)arg7;
 @property(nonatomic) double requestedScaleFactor; // @synthesize requestedScaleFactor=_requestedScaleFactor;
 @property(copy, nonatomic, setter=_setInfoConstraints:) NSArray *_infoConstraints; // @synthesize _infoConstraints;
 - (void).cxx_destruct;
@@ -60,7 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)setContentOffset:(struct CGSize)arg1;
 - (id)_segmentLabel;
 - (id)label;
-- (void)setPosition:(unsigned int)arg1;
+@property(nonatomic) unsigned int position;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)_positionInfoWithoutAnimation;
@@ -72,9 +76,9 @@ __attribute__((visibility("hidden")))
 - (double)_barHeight;
 - (struct CGRect)contentRect;
 - (struct CGRect)_contentRectForBounds:(struct CGRect)arg1;
+- (void)removeFromSuperview;
 - (void)animateRemoveForWidth:(double)arg1;
 - (void)animateAdd:(_Bool)arg1;
-- (_Bool)_shouldUsePadMomentaryAppearance;
 - (void)setShowDivider:(_Bool)arg1;
 - (_Bool)showDivider;
 @property int controlSize;
@@ -83,10 +87,14 @@ __attribute__((visibility("hidden")))
 @property(readonly) UIView *badgeView;
 @property(copy, nonatomic) NSString *badgeValue;
 - (void)tintColorDidChange;
+- (void)_setSelectionIndicatorDragged:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)setSelectionIndicatorDragged:(_Bool)arg1;
+- (_Bool)isSelectionIndicatorDragged;
 - (void)_setHighlighted:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setHighlighted:(_Bool)arg1;
 - (_Bool)isHighlighted;
 @property(getter=isSelected) _Bool selected;
+- (void)setSelected:(_Bool)arg1 highlighted:(_Bool)arg2;
 - (void)setEnabled:(_Bool)arg1;
 - (void)_setEnabledAppearance:(_Bool)arg1;
 - (void)setAutosizeText:(_Bool)arg1;
@@ -94,22 +102,25 @@ __attribute__((visibility("hidden")))
 - (void)setBarStyle:(long long)arg1;
 - (id)disabledTextColor;
 - (id)_attributedTextForState:(unsigned long long)arg1 selected:(_Bool)arg2;
+- (id)_stateTextAttibutes:(id)arg1 segmentState:(unsigned long long)arg2;
 - (void)_updateTextColors;
 - (void)setUsesAXTextSize:(_Bool)arg1;
 - (void)setWasSelected:(_Bool)arg1;
 - (void)updateMasking;
 - (_Bool)_hasSelectedColor;
-- (id)_currentOptionsStyleTextShadowColor;
-- (id)_currentOptionsStyleTextColor;
 - (void)_updateBackgroundAndContentViews;
+- (void)_updateSelectionIndicator;
+- (void)_updateHighlight;
+- (void)_updateSelectionToTransform:(struct CATransform3D)arg1 hideSelection:(_Bool)arg2 shouldAnimate:(_Bool)arg3;
+- (void)_insertSelectionView;
+- (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
 - (void)_updateBackgroundAndContentViewsIfNeeded;
 - (void)updateDividerViewForChangedSegment:(id)arg1;
 - (void)insertDividerView;
 - (id)_dividerImage;
-- (void)updateForAppearance:(id)arg1 style:(int)arg2;
+- (void)updateForAppearance:(id)arg1;
 - (id)_dividerImageIsCustom:(_Bool *)arg1;
 - (unsigned long long)_segmentState;
-- (_Bool)_isInMiniBar;
 - (void)setNeedsBackgroundAndContentViewUpdate;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)dealloc;
@@ -117,9 +128,20 @@ __attribute__((visibility("hidden")))
 - (void)_populateArchivedSubviews:(id)arg1;
 - (id)_encodableSubviews;
 - (id)_tintColorArchivingKey;
+- (id)_effectiveBackgroundView;
+- (_Bool)_effectiveDisableShadow;
+- (id)_effectiveBackgroundTintColor;
+- (id)_effectiveSelectedSegmentTintColor;
+- (Class)_segmentedControlClass;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithInfo:(id)arg1 style:(long long)arg2 size:(int)arg3 barStyle:(long long)arg4 tintColor:(id)arg5 appearanceStorage:(id)arg6 position:(unsigned int)arg7 autosizeText:(_Bool)arg8;
+- (id)initWithInfo:(id)arg1 size:(int)arg2 barStyle:(long long)arg3 tintColor:(id)arg4 appearanceStorage:(id)arg5 position:(unsigned int)arg6 autosizeText:(_Bool)arg7;
 - (void)_commonSegmentInit;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

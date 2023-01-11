@@ -6,39 +6,30 @@
 
 #import <objc/NSObject.h>
 
-#import <DoNotDisturbServer/DNDSBackingStoreRecord-Protocol.h>
-#import <DoNotDisturbServer/DNDSSyncRecord-Protocol.h>
-#import <DoNotDisturbServer/NSCopying-Protocol.h>
-#import <DoNotDisturbServer/NSMutableCopying-Protocol.h>
+#import <DoNotDisturbServer/DNDSModeAssertionStoreRecordDictionaryEncoding-Protocol.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSString;
 
-@interface DNDSModeAssertionStoreRecord : NSObject <NSCopying, NSMutableCopying, DNDSBackingStoreRecord, DNDSSyncRecord>
+@interface DNDSModeAssertionStoreRecord : NSObject <DNDSModeAssertionStoreRecordDictionaryEncoding>
 {
-    NSNumber *_storeLastCompleteInvalidationTimestamp;
-    NSArray *_storeAssertionRecords;
+    NSArray *_assertions;
+    NSArray *_invalidations;
+    NSArray *_invalidationRequests;
 }
 
-+ (id)migrateDictionaryRepresentations:(id)arg1 fromVersionNumber:(unsigned long long)arg2 toVersionNumber:(unsigned long long)arg3;
-+ (id)backingStoreWithFileURL:(id)arg1;
-@property(readonly, copy, nonatomic) NSArray *storeAssertionRecords; // @synthesize storeAssertionRecords=_storeAssertionRecords;
-@property(readonly, copy, nonatomic) NSNumber *storeLastCompleteInvalidationTimestamp; // @synthesize storeLastCompleteInvalidationTimestamp=_storeLastCompleteInvalidationTimestamp;
++ (id)recordForAssertionStore:(id)arg1;
++ (id)recordForDictionary:(id)arg1 keys:(const CDStruct_0a6492a9 *)arg2;
+@property(retain, nonatomic) NSArray *invalidationRequests; // @synthesize invalidationRequests=_invalidationRequests;
+@property(retain, nonatomic) NSArray *invalidations; // @synthesize invalidations=_invalidations;
+@property(retain, nonatomic) NSArray *assertions; // @synthesize assertions=_assertions;
 - (void).cxx_destruct;
-- (id)syncDictionaryRepresentation;
-- (id)initWithSyncDictionaryRepresentation:(id)arg1;
-- (id)dictionaryRepresentation;
-- (id)initWithDictionaryRepresentation:(id)arg1;
-- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly, copy) NSString *description;
-- (_Bool)isEqual:(id)arg1;
-@property(readonly) unsigned long long hash;
-- (id)_initWithStoreLastCompleteInvalidationTimestamp:(id)arg1 storeAssertionRecords:(id)arg2;
-- (id)_initWithRecord:(id)arg1;
-- (id)init;
+- (id)object;
+- (id)dictionaryWithKeys:(const CDStruct_0a6492a9 *)arg1 options:(unsigned long long)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 
 @end

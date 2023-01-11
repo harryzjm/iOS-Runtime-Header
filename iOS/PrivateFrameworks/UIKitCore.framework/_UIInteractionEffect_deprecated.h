@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateFromTransformer:(id)arg1;
 - (void)_updateAnimatorIfNeeded;
 - (void)_prepareAnimatorIfNeeded;
-- (struct CGRect)bounds;
+@property(readonly, nonatomic) struct CGRect bounds;
 @property(readonly, nonatomic) double progress;
 @property(readonly, nonatomic) struct CGAffineTransform preferredContentTransform; // @dynamic preferredContentTransform;
 - (id)init;

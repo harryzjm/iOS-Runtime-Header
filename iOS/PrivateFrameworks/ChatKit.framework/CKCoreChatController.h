@@ -7,7 +7,7 @@
 #import <ChatKit/IMChatSendProgressDelegate-Protocol.h>
 #import <ChatKit/IMSystemMonitorListener-Protocol.h>
 
-@class CKConversation, CKFullScreenBalloonViewController, CKScheduledUpdater, CKTranscriptCollectionView, CKTranscriptCollectionViewController, IMChat, NSString, UIProgressView;
+@class CKConversation, CKFullScreenBalloonViewController, CKScheduledUpdater, CKTranscriptCollectionView, CKTranscriptCollectionViewController, IMChat, NSString, STLockoutViewController, UIProgressView;
 @protocol CKCoreChatControllerDelegate;
 
 @interface CKCoreChatController <IMChatSendProgressDelegate, IMSystemMonitorListener>
@@ -15,9 +15,11 @@
     _Bool _sendingMessage;
     _Bool _viewIsVisible;
     _Bool _transitionedFromComposing;
+    _Bool _userInitiatedTranscriptPush;
     _Bool _initialLayoutComplete;
     _Bool _ignoreLastBalloonVisibleInMarkAsReadCheck;
     _Bool _disableAnimationsUnderTest;
+    _Bool _isShowingLockoutView;
     id <CKCoreChatControllerDelegate> _delegate;
     CKConversation *_conversation;
     CKTranscriptCollectionViewController *_collectionViewController;
@@ -27,8 +29,13 @@
     unsigned long long _sendProgressSendCount;
     unsigned long long _sendProgressTotalCount;
     CKFullScreenBalloonViewController *_fullScreenBalloonViewController;
+    CDUnknownBlockType _overrideScrollBlock;
+    STLockoutViewController *_lockoutViewController;
 }
 
+@property(nonatomic) _Bool isShowingLockoutView; // @synthesize isShowingLockoutView=_isShowingLockoutView;
+@property(retain, nonatomic) STLockoutViewController *lockoutViewController; // @synthesize lockoutViewController=_lockoutViewController;
+@property(copy, nonatomic) CDUnknownBlockType overrideScrollBlock; // @synthesize overrideScrollBlock=_overrideScrollBlock;
 @property(nonatomic) _Bool disableAnimationsUnderTest; // @synthesize disableAnimationsUnderTest=_disableAnimationsUnderTest;
 @property(retain, nonatomic) CKFullScreenBalloonViewController *fullScreenBalloonViewController; // @synthesize fullScreenBalloonViewController=_fullScreenBalloonViewController;
 @property(nonatomic) unsigned long long sendProgressTotalCount; // @synthesize sendProgressTotalCount=_sendProgressTotalCount;
@@ -38,6 +45,7 @@
 @property(retain, nonatomic) CKScheduledUpdater *refreshServiceForSendingUpdater; // @synthesize refreshServiceForSendingUpdater=_refreshServiceForSendingUpdater;
 @property(nonatomic) _Bool ignoreLastBalloonVisibleInMarkAsReadCheck; // @synthesize ignoreLastBalloonVisibleInMarkAsReadCheck=_ignoreLastBalloonVisibleInMarkAsReadCheck;
 @property(nonatomic) _Bool initialLayoutComplete; // @synthesize initialLayoutComplete=_initialLayoutComplete;
+@property(nonatomic) _Bool userInitiatedTranscriptPush; // @synthesize userInitiatedTranscriptPush=_userInitiatedTranscriptPush;
 @property(nonatomic) _Bool transitionedFromComposing; // @synthesize transitionedFromComposing=_transitionedFromComposing;
 @property(nonatomic) _Bool viewIsVisible; // @synthesize viewIsVisible=_viewIsVisible;
 @property(nonatomic, getter=isSendingMessage) _Bool sendingMessage; // @synthesize sendingMessage=_sendingMessage;
@@ -103,6 +111,7 @@
 - (_Bool)transcriptCollectionViewControllerShouldLayoutFullscreenEffects:(id)arg1;
 - (_Bool)transcriptCollectionViewController:(id)arg1 shouldSetupFullscreenEffectUI:(id)arg2;
 - (_Bool)transcriptCollectionViewControllerPlaybackForOutgoingEffectsIsAllowed:(id)arg1;
+- (id)traitCollectionForTranscriptCollectionViewController:(id)arg1;
 - (void)transcriptCollectionViewControllerDidInsertAssociatedChatItem:(id)arg1;
 - (void)transcriptCollectionViewControllerWillDisplayLastBalloon:(id)arg1;
 - (void)transcriptCollectionViewControllerReportSpamButtonTapped:(id)arg1;
@@ -122,6 +131,7 @@
 - (void)transcriptCollectionViewController:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)_setConversationDeferredSetup;
 - (void)_removeExistingCollectionViewController;
+- (id)_handleIDsForCurrentConversation;
 @property(readonly, nonatomic) double gradientBottomPlaceholderHeight;
 @property(readonly, nonatomic) double balloonMaxWidth;
 @property(readonly, nonatomic) IMChat *chat;

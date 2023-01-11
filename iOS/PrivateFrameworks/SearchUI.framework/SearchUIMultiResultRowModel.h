@@ -4,42 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-#import <SearchUI/SearchUIRowModel-Protocol.h>
-
-@class NSArray, NSString;
-
-@interface SearchUIMultiResultRowModel : NSObject <SearchUIRowModel>
+@interface SearchUIMultiResultRowModel
 {
-    NSArray *_results;
 }
 
-@property(retain) NSArray *results; // @synthesize results=_results;
-- (void).cxx_destruct;
-- (double)leadingSeparatorImageInset;
 - (int)separatorStyle;
 - (id)dragAppBundleID;
-- (id)dragURL;
-- (id)dragText;
-- (id)dragSubtitle;
-- (id)dragTitle;
-- (_Bool)isSuggestion;
 - (_Bool)isDraggable;
 - (_Bool)isTappable;
-- (id)nextCard;
-- (Class)viewClass;
-- (id)reuseIdentifier;
-- (id)punchouts;
-- (id)cardSection;
-- (id)identifyingResult;
-- (id)initWithResults:(id)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
+- (Class)cellViewClass;
 
 @end
 

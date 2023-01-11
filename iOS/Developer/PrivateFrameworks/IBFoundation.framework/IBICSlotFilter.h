@@ -29,8 +29,8 @@
 - (id)filterBySubtractingFilter:(id)arg1;
 - (id)filterByIntersectingWithFilter:(id)arg1;
 - (id)filterByUnioningWithFilter:(id)arg1;
-- (id)matchingSlotsWithIdiom:(id)arg1;
-- (id)matchingSlots;
+- (_Bool)_continueEnumeratingUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateMatchingSlotsUsingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)matchesRep:(id)arg1;
 - (_Bool)matchesSlot:(id)arg1;
 - (_Bool)isEqual:(id)arg1;

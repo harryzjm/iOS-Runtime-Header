@@ -4,23 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MISSING_TYPE, NSMutableDictionary;
+@class MISSING_TYPE, NSArray, NSMutableDictionary;
 
 @interface VNFaceLandmarkRegion2D
 {
     NSMutableDictionary *_sizedPointsCache;
-    const MISSING_TYPE **_points;
+    MISSING_TYPE **_points;
+    NSArray *_precisionEstimatesPerPoint;
+    NSArray *_occlusionFlagsPerPoint;
 }
 
-@property const MISSING_TYPE **points; // @synthesize points=_points;
++ (_Bool)supportsSecureCoding;
+@property(readonly) NSArray *occlusionFlagsPerPoint; // @synthesize occlusionFlagsPerPoint=_occlusionFlagsPerPoint;
+@property(readonly) NSArray *precisionEstimatesPerPoint; // @synthesize precisionEstimatesPerPoint=_precisionEstimatesPerPoint;
+@property(readonly) const MISSING_TYPE **points; // @synthesize points=_points;
 - (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)dealloc;
-- (id)initWithFaceBoundingBox:(struct CGRect)arg1 points:(MISSING_TYPE **)arg2 pointCount:(unsigned long long)arg3;
+- (id)initWithRequestRevision:(unsigned long long)arg1 faceBoundingBox:(struct CGRect)arg2 points:(MISSING_TYPE **)arg3 pointCount:(unsigned long long)arg4 precisionEstimatesPerPoint:(id)arg5 occlusionFlagsPerPoint:(id)arg6;
 - (const struct CGPoint *)pointsInImageOfSize:(struct CGSize)arg1;
 @property(readonly) const struct CGPoint *normalizedPoints;
 - (MISSING_TYPE *)pointAtIndex:(unsigned long long)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithRequestRevision:(unsigned long long)arg1 faceBoundingBox:(struct CGRect)arg2;
 
 @end
 

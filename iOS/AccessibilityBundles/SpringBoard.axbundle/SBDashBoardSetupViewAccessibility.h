@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)setTitleString:(id)arg1 forLanguage:(id)arg2;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

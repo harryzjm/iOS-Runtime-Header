@@ -15,8 +15,8 @@
 - (id)accessibilityDropPointDescriptors;
 - (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityLabel;
-- (unsigned long long)accessibilityTraits;
 - (id)_axAttrTitle;
+- (_Bool)_accessibilitySubviewIsVisible:(id)arg1;
 - (_Bool)isAccessibilityElement;
 
 @end

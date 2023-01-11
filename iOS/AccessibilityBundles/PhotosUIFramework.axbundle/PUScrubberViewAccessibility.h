@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)canBecomeFocused;
 - (_Bool)_axIsVideoPlayerActivated;
 - (id)_axVideoPlayer;
 - (id)_axShowingType;

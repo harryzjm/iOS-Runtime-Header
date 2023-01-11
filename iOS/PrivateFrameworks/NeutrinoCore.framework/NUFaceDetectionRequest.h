@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <NeutrinoCore/NUTimeBased-Protocol.h>
+
+@class NSString;
 @protocol NUScalePolicy;
 
-@interface NUFaceDetectionRequest
+@interface NUFaceDetectionRequest <NUTimeBased>
 {
     long long _maxFaceCount;
     id <NUScalePolicy> _scalePolicy;
@@ -18,9 +21,15 @@
 - (void)submit:(CDUnknownBlockType)arg1;
 - (long long)mediaComponentType;
 - (id)newRenderJob;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithComposition:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+@property(nonatomic) CDStruct_1b6d18a9 time;
 
 @end
 

@@ -13,9 +13,11 @@
 - (_Bool)isAccessibilityElement;
 - (id)accessibilityIdentifier;
 - (id)accessibilityIdentification;
+- (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityElements;
+- (unsigned long long)_accessibilityAutomationType;
 - (id)initWithImage:(id)arg1;
 
 @end

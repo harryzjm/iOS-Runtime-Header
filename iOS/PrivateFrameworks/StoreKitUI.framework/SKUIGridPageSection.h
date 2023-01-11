@@ -12,6 +12,7 @@
 
 @class NSMapTable, NSMutableDictionary, NSMutableIndexSet, NSString, SKUIClientContext, SKUIGridComponent, SKUIMissingItemLoader, SKUIProductPageOverlayController, SKUIVideoImageDataConsumer;
 
+__attribute__((visibility("hidden")))
 @interface SKUIGridPageSection <SKUIArtworkRequestDelegate, SKUIItemStateCenterObserver, SKUIEmbeddedMediaViewDelegate, SKUIMissingItemDelegate, SKUIProductPageOverlayDelegate>
 {
     NSMapTable *_artworkRequests;

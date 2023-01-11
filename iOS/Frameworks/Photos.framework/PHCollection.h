@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NSString;
+@class NSArray, NSDate, NSManagedObjectID, NSSortDescriptor, NSString;
 
 @interface PHCollection
 {
     _Bool _customSortAscending;
-    int _customSortKey;
+    unsigned int _customSortKey;
     unsigned long long _estimatedPhotosCount;
     unsigned long long _estimatedVideosCount;
     NSDate *_creationDate;
@@ -26,16 +26,26 @@
 + (_Bool)managedObjectSupportsTrashedState;
 + (id)fetchType;
 + (id)managedEntityName;
+@property(readonly, nonatomic) unsigned int customSortKey; // @synthesize customSortKey=_customSortKey;
+@property(readonly, nonatomic) _Bool customSortAscending; // @synthesize customSortAscending=_customSortAscending;
 @property(readonly, nonatomic) NSString *localizedSubtitle; // @synthesize localizedSubtitle=_localizedSubtitle;
 @property(readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(readonly, nonatomic) unsigned long long estimatedVideosCount; // @synthesize estimatedVideosCount=_estimatedVideosCount;
 @property(readonly, nonatomic) unsigned long long estimatedPhotosCount; // @synthesize estimatedPhotosCount=_estimatedPhotosCount;
-@property(readonly, nonatomic) int customSortKey; // @synthesize customSortKey=_customSortKey;
-@property(readonly, nonatomic) _Bool customSortAscending; // @synthesize customSortAscending=_customSortAscending;
 - (void).cxx_destruct;
 - (id)description;
+@property(readonly, nonatomic) _Bool isUserSmartAlbum;
+@property(readonly, nonatomic) _Bool isAlbumContentTitleSort;
+@property(readonly, nonatomic) _Bool isAlbumContentSort;
+@property(readonly, copy, nonatomic) NSSortDescriptor *defaultSortDescriptor;
+@property(readonly, copy, nonatomic) NSString *effectiveCustomSortKey;
+- (id)_effectiveSortDescriptorsFromCustomSortKey:(id)arg1;
+@property(readonly, copy, nonatomic) NSArray *effectiveCustomSortDescriptors;
+- (unsigned long long)ancestryIndexOfCollectionList:(id)arg1 context:(id)arg2;
+@property(readonly, nonatomic) NSManagedObjectID *parentFolderID;
 - (unsigned long long)collectionFixedOrderPriority;
 - (_Bool)collectionHasFixedOrder;
+@property(readonly, nonatomic, getter=isTrashed) _Bool trashed;
 @property(readonly, nonatomic) _Bool hasLocationInfo;
 @property(readonly, nonatomic) _Bool hasLocalizedTitle;
 @property(readonly, nonatomic) NSString *localizedTitle;
@@ -43,6 +53,7 @@
 @property(readonly, nonatomic) _Bool canContainCollections;
 @property(readonly, nonatomic) _Bool canContainAssets;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
+- (id)objectReference;
 
 @end
 

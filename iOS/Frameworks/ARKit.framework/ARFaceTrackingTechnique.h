@@ -4,16 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSUUID;
+
 @interface ARFaceTrackingTechnique
 {
+    NSUUID *_singleUserAnchorIdentifier;
     _Bool _isFaceTracked;
+    long long _maximumNumberOfTrackedFaces;
 }
 
 + (_Bool)isSupported;
 @property _Bool isFaceTracked; // @synthesize isFaceTracked=_isFaceTracked;
+@property(readonly, nonatomic) long long maximumNumberOfTrackedFaces; // @synthesize maximumNumberOfTrackedFaces=_maximumNumberOfTrackedFaces;
+- (void).cxx_destruct;
+- (_Bool)isEqual:(id)arg1;
 - (id)processData:(id)arg1;
 - (id)resultDataClasses;
 - (unsigned long long)requiredSensorDataTypes;
+- (id)initWithMaximumNumberOfTrackedFaces:(long long)arg1;
 - (id)init;
 
 @end

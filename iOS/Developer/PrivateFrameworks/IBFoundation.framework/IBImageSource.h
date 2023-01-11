@@ -13,6 +13,7 @@
     NSDictionary *_options;
     struct CGImageSource *_imageSource;
     struct CGPDFDocument *_pdfDocument;
+    struct CGSVGDocument *_svgDocument;
     struct CGDataProvider *_dataProvider;
 }
 
@@ -20,6 +21,7 @@
 + (id)imageSourceWithData:(id)arg1 options:(id)arg2;
 + (id)imageSourceWithPath:(id)arg1 options:(id)arg2;
 @property(nonatomic) struct CGDataProvider *dataProvider; // @synthesize dataProvider=_dataProvider;
+@property(nonatomic) struct CGSVGDocument *svgDocument; // @synthesize svgDocument=_svgDocument;
 @property(nonatomic) struct CGPDFDocument *pdfDocument; // @synthesize pdfDocument=_pdfDocument;
 @property(nonatomic) struct CGImageSource *imageSource; // @synthesize imageSource=_imageSource;
 @property(retain, nonatomic) NSDictionary *options; // @synthesize options=_options;

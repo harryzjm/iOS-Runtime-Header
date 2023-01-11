@@ -25,7 +25,7 @@
 - (id)accessibilityHint;
 - (id)accessibilityLabel:(id)arg1;
 - (struct CGRect)accessibilityFrame:(id)arg1;
-- (_Bool)_accessibilityIsScannerElement;
+- (_Bool)accessibilityRespondsToUserInteraction;
 - (id)initWithAccessibilityContainer:(id)arg1 textRange:(struct _NSRange)arg2 links:(id)arg3;
 
 // Remaining properties

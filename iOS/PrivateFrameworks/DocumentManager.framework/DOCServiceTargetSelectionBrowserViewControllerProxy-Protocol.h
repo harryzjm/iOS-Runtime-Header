@@ -7,6 +7,7 @@
 @class NSArray;
 
 @protocol DOCServiceTargetSelectionBrowserViewControllerProxy
+- (void)setDirectoryURLToReveal:(NSArray *)arg1;
 - (void)displayExportedURLWrappers;
 - (void)displayURLs:(NSArray *)arg1;
 - (void)displayItems:(NSArray *)arg1;

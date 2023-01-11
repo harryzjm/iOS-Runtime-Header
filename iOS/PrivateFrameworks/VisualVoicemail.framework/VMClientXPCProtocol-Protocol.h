@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VisualVoicemail/NSObject-Protocol.h>
+#import <VisualVoicemail/VMAccountManagerXPCClient-Protocol.h>
+#import <VisualVoicemail/VMGreetingManagerXPCClient-Protocol.h>
+#import <VisualVoicemail/VMMessageManagerXPCClient-Protocol.h>
 
 @class NSOrderedSet, VMVoicemailCapabilities;
 
-@protocol VMClientXPCProtocol <NSObject>
+@protocol VMClientXPCProtocol <VMAccountManagerXPCClient, VMGreetingManagerXPCClient, VMMessageManagerXPCClient>
 - (void)setTranscribing:(_Bool)arg1;
 - (void)setStorageUsage:(unsigned long long)arg1;
 - (void)setSyncInProgress:(_Bool)arg1;

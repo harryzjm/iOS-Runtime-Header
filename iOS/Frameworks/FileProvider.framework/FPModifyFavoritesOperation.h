@@ -8,14 +8,13 @@
 
 @interface FPModifyFavoritesOperation
 {
-    NSArray *_items;
     NSArray *_ranks;
     _Bool _isUnfavorite;
 }
 
 - (void).cxx_destruct;
-- (void)mainWithExtensionProxy:(id)arg1;
-- (void)presendNotifications;
+- (id)fp_prettyDescription;
+- (unsigned long long)transformItem:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)initWithItemsToUnfavorite:(id)arg1;
 - (id)initWithItemsToFavorite:(id)arg1 favoriteRanks:(id)arg2;
 - (id)initWithItems:(id)arg1 favoriteRanks:(id)arg2 isUnfavorite:(_Bool)arg3;

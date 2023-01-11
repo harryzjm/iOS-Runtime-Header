@@ -13,8 +13,11 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
-- (_Bool)_accessibilityIsScannerElement;
+- (_Bool)accessibilityRespondsToUserInteraction;
+- (_Bool)accessibilityElementsHidden;
 - (_Bool)isAccessibilityElement;
+- (_Bool)_axIsInvisibleButton;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

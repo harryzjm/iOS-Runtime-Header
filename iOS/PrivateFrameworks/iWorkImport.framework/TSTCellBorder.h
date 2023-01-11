@@ -55,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)saveToMessage:(struct CellBorderArchive *)arg1 archiver:(id)arg2;
 - (id)initFromMessage:(const struct CellBorderArchive *)arg1 unarchiver:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly, nonatomic) _Bool isEmpty;
+@property(readonly, nonatomic) _Bool hasContent;
 - (void)applyToCell:(id)arg1;
 - (void)_clearRightStroke;
 - (void)_clearBottomStroke;

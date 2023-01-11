@@ -12,7 +12,6 @@
 __attribute__((visibility("hidden")))
 @interface UILayoutContainerView <NSCoding>
 {
-    long long _setNeedsLayoutDisabledCount;
     UIView *_shadowView;
     struct {
         unsigned int delegateRespondsToSemanticContentAttributeChanged:1;
@@ -30,9 +29,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <UILayoutContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)setNeedsLayout;
-- (void)endWhileDisablingSetNeedsLayout;
-- (void)beginWhileDisablingSetNeedsLayout;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)addSubview:(id)arg1;
 - (void)_tearDownShadowViews;

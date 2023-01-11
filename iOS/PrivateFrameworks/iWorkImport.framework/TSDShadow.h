@@ -63,7 +63,6 @@ __attribute__((visibility("hidden")))
 - (void)applyToContext:(struct CGContext *)arg1 viewScale:(double)arg2 flipped:(_Bool)arg3;
 - (void)applyToContext:(struct CGContext *)arg1 viewScale:(double)arg2;
 @property(readonly, nonatomic) struct CGPoint offsetDelta;
-- (_Bool)usesOpenGL;
 - (id)typeDescription;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;

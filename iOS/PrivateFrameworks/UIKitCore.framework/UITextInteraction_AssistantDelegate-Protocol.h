@@ -11,10 +11,16 @@
 @protocol UITextInput;
 
 @protocol UITextInteraction_AssistantDelegate <UITextAutoscrolling, NSObject>
+@property(nonatomic) _Bool expectingCommit;
 @property(readonly, nonatomic) _Bool willHandoffLoupeMagnifier;
 @property(nonatomic) _Bool needsGestureUpdate;
 @property(nonatomic) struct CGPoint loupeGestureEndPoint;
 @property(nonatomic) _Bool autoscrolled;
+- (void)lollipopGestureWithState:(long long)arg1 location:(struct CGPoint)arg2 locationOfFirstTouch:(struct CGPoint)arg3;
+- (void)endFloatingCursor;
+- (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
+- (void)beginFloatingCursorAtPoint:(struct CGPoint)arg1;
+- (void)willBeginFloatingCursor:(_Bool)arg1;
 - (void)resetWillHandoffLoupeMagnifier;
 - (void)scheduleReplacementsForRange:(UITextRange *)arg1 withOptions:(unsigned long long)arg2;
 - (void)scheduleDictationReplacementsForAlternatives:(NSTextAlternatives *)arg1 range:(UITextRange *)arg2;

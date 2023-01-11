@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ASDGatherLogsRequestOptions, NSObject, NSXPCConnection;
+#import <objc/NSObject.h>
+
+@class ASDGatherLogsRequestOptions, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
-@interface ASDGatherLogsRequest
+@interface ASDGatherLogsRequest : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;

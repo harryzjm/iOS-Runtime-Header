@@ -6,6 +6,7 @@
 
 @class NSArray, NSString, SKUIDividerViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUISegmentedControlViewElement
 {
     long long _maximumNumberOfVisibleItems;

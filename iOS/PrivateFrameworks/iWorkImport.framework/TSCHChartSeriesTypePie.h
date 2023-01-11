@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)userInterfaceName;
 - (id)seriesFillLabelUIString;
 - (id)inspectorLocalizedValueLabelsDisclosureTitle;
 - (id)inspectorLocalizedValueLabelsTabName;

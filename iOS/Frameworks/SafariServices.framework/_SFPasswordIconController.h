@@ -25,6 +25,7 @@
     id <_SFPasswordIconControllerDelegate> _delegate;
 }
 
++ (struct CGSize)preferredIconSize;
 @property(nonatomic) __weak id <_SFPasswordIconControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (void)_fetchAppIconForDomain:(id)arg1;

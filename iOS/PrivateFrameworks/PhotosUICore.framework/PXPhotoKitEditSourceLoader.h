@@ -8,22 +8,21 @@
 
 #import <PhotosUICore/PXEditSourceLoader-Protocol.h>
 
-@class NSDate, NSError, NSNumber, NSProgress, NSString, NSURL, PHAsset, PLEditSource, PLPhotoEditModel;
+@class NSDate, NSError, NSNumber, NSProgress, NSString, PHAsset, PICompositionController, PLEditSource;
 @protocol OS_dispatch_queue;
 
 @interface PXPhotoKitEditSourceLoader : NSObject <PXEditSourceLoader>
 {
-    int _imageRequestID;
-    int _videoRequestID;
-    int _adjustmentDataRequestID;
-    NSURL *_imageURL;
-    NSURL *_videoURL;
+    unsigned long long _imageRequestID;
     _Bool _didBeginLoading;
     NSDate *_loadingStartDate;
     NSProgress *_editSourceCreationProgress;
     NSObject<OS_dispatch_queue> *_loadingQueue;
+    _Bool _overcaptureSourceIsActive;
     PLEditSource *_editSource;
-    PLPhotoEditModel *_editModel;
+    PLEditSource *_overcaptureEditSource;
+    PICompositionController *_compositionController;
+    PICompositionController *_originalCompositionController;
     NSProgress *_progress;
     NSError *_error;
     long long _baseVersion;
@@ -38,13 +37,13 @@
 @property(readonly, nonatomic) long long baseVersion; // @synthesize baseVersion=_baseVersion;
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property(readonly, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
-@property(readonly, copy, nonatomic) PLPhotoEditModel *editModel; // @synthesize editModel=_editModel;
+@property(readonly, copy, nonatomic) PICompositionController *originalCompositionController; // @synthesize originalCompositionController=_originalCompositionController;
+@property(readonly, copy, nonatomic) PICompositionController *compositionController; // @synthesize compositionController=_compositionController;
+@property(readonly, nonatomic) PLEditSource *overcaptureEditSource; // @synthesize overcaptureEditSource=_overcaptureEditSource;
 @property(readonly, nonatomic) PLEditSource *editSource; // @synthesize editSource=_editSource;
 - (void).cxx_destruct;
-- (void)_createEditSourceIfPossible;
-- (void)_handleAdjustmentDataInfo:(id)arg1;
-- (void)_handleVideoURLResult:(id)arg1 info:(id)arg2;
-- (void)_handleImageURLResult:(id)arg1 info:(id)arg2;
+@property(readonly, nonatomic) PLEditSource *activeEditSource;
+- (void)_handleContentEditingInputRequestCompletion:(id)arg1 info:(id)arg2 asset:(id)arg3;
 - (void)_handleCancellation;
 - (void)beginLoading;
 @property(readonly, copy, nonatomic) NSString *contentIdentifier;

@@ -14,6 +14,7 @@
 - (void)setActive:(_Bool)arg1;
 - (void)setTitleText:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (_Bool)_accessibilityIsSpeakThisElement;
 - (id)accessibilityIdentifier;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_accessibilityUpdateAXInfo;

@@ -20,10 +20,12 @@
 @property(readonly, nonatomic) NSArray *iconButtons; // @synthesize iconButtons=_iconButtons;
 - (void).cxx_destruct;
 - (_Bool)_axIsHeaderViewActionable;
+- (id)_accessibilitySupplementaryFooterViews;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (_Bool)accessibilityActivate;
+- (struct CGPoint)accessibilityActivationPoint;
 - (_Bool)isAccessibilityElement;
 - (id)initWithAccessibilityContainer:(id)arg1 iconButtons:(id)arg2 dateLabel:(id)arg3 titleLabel:(id)arg4;
 

@@ -13,15 +13,13 @@
 @interface IBICFileType : NSObject <NSCopying>
 {
     _Bool _renderThumbnailWithImageIO;
-    _Bool _supportsAnimation;
     NSString *_title;
     NSString *_identifier;
     double _displayOrder;
     NSArray *_extensions;
 }
 
-+ (id)fileTypeWithIdentifier:(id)arg1 title:(id)arg2 extensions:(id)arg3 displayOrder:(double)arg4 renderThumbnailWithImageIO:(_Bool)arg5 supportsAnimation:(_Bool)arg6;
-@property(readonly, nonatomic) _Bool supportsAnimation; // @synthesize supportsAnimation=_supportsAnimation;
++ (id)fileTypeWithIdentifier:(id)arg1 title:(id)arg2 extensions:(id)arg3 displayOrder:(double)arg4 renderThumbnailWithImageIO:(_Bool)arg5;
 @property(readonly, nonatomic) _Bool renderThumbnailWithImageIO; // @synthesize renderThumbnailWithImageIO=_renderThumbnailWithImageIO;
 @property(readonly, nonatomic) NSArray *extensions; // @synthesize extensions=_extensions;
 @property(readonly, nonatomic) double displayOrder; // @synthesize displayOrder=_displayOrder;
@@ -38,7 +36,7 @@
 - (id)description;
 - (id)preferredExtension;
 - (_Bool)isValidFileExtension:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 title:(id)arg2 extensions:(id)arg3 displayOrder:(double)arg4 renderThumbnailWithImageIO:(_Bool)arg5 supportsAnimation:(_Bool)arg6;
+- (id)initWithIdentifier:(id)arg1 title:(id)arg2 extensions:(id)arg3 displayOrder:(double)arg4 renderThumbnailWithImageIO:(_Bool)arg5;
 
 @end
 

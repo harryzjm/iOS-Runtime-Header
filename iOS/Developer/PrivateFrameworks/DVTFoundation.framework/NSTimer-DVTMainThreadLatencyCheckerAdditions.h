@@ -7,6 +7,7 @@
 #import <Foundation/NSTimer.h>
 
 @interface NSTimer (DVTMainThreadLatencyCheckerAdditions)
++ (id)dvt_scheduledTimerWithTimeInterval:(double)arg1 repeats:(_Bool)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)__DVTMainThreadLatencyChecker__initWithFireDate:(id)arg1 interval:(double)arg2 target:(id)arg3 selector:(SEL)arg4 userInfo:(id)arg5 repeats:(_Bool)arg6;
 @end
 

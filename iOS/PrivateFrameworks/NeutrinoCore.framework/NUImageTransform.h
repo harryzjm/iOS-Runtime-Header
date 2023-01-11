@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
-@interface NUImageTransform : NSObject
+@interface NUImageTransform
 {
 }
 
+- (id)transformByRotateX:(double)arg1 y:(double)arg2 z:(double)arg3;
+- (id)transformByRotateZ:(double)arg1;
+- (id)transformByTranslateX:(double)arg1 translateY:(double)arg2;
+- (id)transformByScaleX:(double)arg1 scaleY:(double)arg2;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)description;
 - (struct CGRect)transformRect:(struct CGRect)arg1;
 - (struct CGPoint)transformPoint:(struct CGPoint)arg1;
 - (id)inverseTransform;

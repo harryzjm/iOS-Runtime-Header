@@ -11,13 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)accessibilityElements;
-- (id)_accessibilityValueAggregateElement;
-- (id)_accessibilityTitleAggregateElement;
-- (void)_accessibilitySetStoredValueAggregate:(id)arg1;
-- (id)_accessibilityStoredValueAggregate;
-- (void)_accessibilitySetStoredTitleAggregate:(id)arg1;
-- (id)_accessibilityStoredTitleAggregate;
+- (_Bool)isAccessibilityElement;
+- (id)accessibilityLabel;
 
 @end
 

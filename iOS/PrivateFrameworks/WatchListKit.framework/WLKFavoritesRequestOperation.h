@@ -4,12 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 @interface WLKFavoritesRequestOperation
 {
+    NSArray *_favorites;
 }
 
-- (id)responseProcessor;
-- (id)init;
+@property(readonly, nonatomic) NSArray *favorites; // @synthesize favorites=_favorites;
+- (void).cxx_destruct;
+- (void)processResponse;
+- (void)prepareURLRequest:(CDUnknownBlockType)arg1;
+- (id)initWithCaller:(id)arg1;
 
 @end
 

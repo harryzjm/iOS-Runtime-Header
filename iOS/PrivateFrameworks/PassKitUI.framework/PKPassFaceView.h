@@ -7,8 +7,7 @@
 #import <PassKitUI/PKForegroundActiveArbiterObserver-Protocol.h>
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 
-@class CAFilter, NSArray, NSMutableArray, NSMutableSet, NSString, PKLiveRenderedCardFaceView, PKPass, PKPassColorProfile, PKPassFaceTemplate, PKPaymentService, UIImage, UIImageView, UIView;
-@protocol PKPassFaceDelegate;
+@class CAFilter, NSArray, NSMutableArray, NSMutableSet, NSString, PKLiveRenderedCardFaceView, PKPass, PKPassColorProfile, PKPassFaceTemplate, PKPassFaceViewRendererState, PKPaymentService, PKTransactionDataOverlayCardFaceView, UIImage, UIImageView, UIView;
 
 @interface PKPassFaceView <PKPaymentServiceDelegate, PKForegroundActiveArbiterObserver>
 {
@@ -31,16 +30,18 @@
     double _dimmer;
     NSMutableArray *_headerBucketViews;
     NSMutableArray *_bodyBucketViews;
+    NSMutableArray *_delayedAnimations;
     PKLiveRenderedCardFaceView *_liveBackgroundView;
+    PKTransactionDataOverlayCardFaceView *_transactionDataOverlayView;
     unsigned long long _contentViewCreatedRegions;
     unsigned long long _invariantViewCreatedRegions;
     _Bool _showsLiveRendering;
     _Bool _foregroundActive;
     PKPaymentService *_paymentService;
+    _Bool _invalidated;
     _Bool _clipsContent;
     _Bool _allowBackgroundPlaceHolders;
     _Bool _liveMotionEnabled;
-    id <PKPassFaceDelegate> _delegate;
     long long _backgroundMode;
     unsigned long long _visibleRegions;
     double _clippedContentHeight;
@@ -56,12 +57,12 @@
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(readonly, retain, nonatomic) NSArray *buckets; // @synthesize buckets=_buckets;
 @property(nonatomic) _Bool liveMotionEnabled; // @synthesize liveMotionEnabled=_liveMotionEnabled;
+@property(nonatomic) _Bool showsLiveRendering; // @synthesize showsLiveRendering=_showsLiveRendering;
 @property(nonatomic) double clippedContentHeight; // @synthesize clippedContentHeight=_clippedContentHeight;
 @property(nonatomic) _Bool allowBackgroundPlaceHolders; // @synthesize allowBackgroundPlaceHolders=_allowBackgroundPlaceHolders;
 @property(nonatomic) _Bool clipsContent; // @synthesize clipsContent=_clipsContent;
 @property(nonatomic) unsigned long long visibleRegions; // @synthesize visibleRegions=_visibleRegions;
 @property(nonatomic) long long backgroundMode; // @synthesize backgroundMode=_backgroundMode;
-@property(nonatomic) id <PKPassFaceDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (void)_handleTimeOrLocaleChange:(id)arg1;
 - (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
@@ -78,7 +79,9 @@
 - (void)_flushContentViewsForRegions:(unsigned long long)arg1;
 - (void)_createContentViewsForRegions:(unsigned long long)arg1;
 - (void)_createInvariantViewsForRegions:(unsigned long long)arg1;
-@property(nonatomic) _Bool showsLiveRendering;
+- (void)didAuthenticate;
+- (void)setShowsLiveRendering:(_Bool)arg1 rendererState:(id)arg2;
+@property(readonly, nonatomic) PKPassFaceViewRendererState *rendererState;
 - (void)createBodyContentViews;
 - (void)createHeaderContentViews;
 - (void)createBodyInvariantViews;
@@ -95,6 +98,7 @@
 - (void)setDimmer:(double)arg1 animated:(_Bool)arg2;
 - (void)_createDimmingFilterIfNecessary;
 @property(readonly, nonatomic) _Bool bodyContentCreated;
+@property(nonatomic, getter=isPaused) _Bool paused;
 @property(readonly, nonatomic) PKPassColorProfile *colorProfile;
 @property(readonly, nonatomic) PKPass *pass;
 - (void)removeContentView:(id)arg1 ofType:(long long)arg2;
@@ -104,6 +108,7 @@
 @property(readonly, nonatomic) UIView *contentView;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (void)setPass:(id)arg1 colorProfile:(id)arg2;
+- (void)invalidate;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

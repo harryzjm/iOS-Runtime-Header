@@ -6,6 +6,7 @@
 
 @class CATMessage, CATXPCTransport;
 
+__attribute__((visibility("hidden")))
 @interface _CATXPCTransportSendMessageOperation
 {
     CATXPCTransport *_transport;

@@ -9,6 +9,7 @@
 @interface CEMSystemBasicWebContentFilterDeclaration_SiteWhiteListItem
 {
     NSString *_payloadAddress;
+    NSString *_payloadBookmarkPath;
     NSString *_payloadPageTitle;
 }
 
@@ -16,6 +17,7 @@
 + (id)buildWithAddress:(id)arg1 withPageTitle:(id)arg2;
 + (id)allowedPayloadKeys;
 @property(copy, nonatomic) NSString *payloadPageTitle; // @synthesize payloadPageTitle=_payloadPageTitle;
+@property(copy, nonatomic) NSString *payloadBookmarkPath; // @synthesize payloadBookmarkPath=_payloadBookmarkPath;
 @property(copy, nonatomic) NSString *payloadAddress; // @synthesize payloadAddress=_payloadAddress;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

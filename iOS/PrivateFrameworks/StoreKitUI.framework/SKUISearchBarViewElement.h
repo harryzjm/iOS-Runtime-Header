@@ -6,6 +6,7 @@
 
 @class NSString, SKUIViewElementText;
 
+__attribute__((visibility("hidden")))
 @interface SKUISearchBarViewElement
 {
     NSString *_accessoryText;

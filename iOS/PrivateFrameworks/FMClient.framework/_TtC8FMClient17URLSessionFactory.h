@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/SwiftObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
-@interface _TtC8FMClient17URLSessionFactory : SwiftObject
+@interface _TtC8FMClient17URLSessionFactory : _TtCs12_SwiftObject
 {
 }
 

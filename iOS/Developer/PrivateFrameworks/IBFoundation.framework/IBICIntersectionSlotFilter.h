@@ -8,9 +8,9 @@
 {
 }
 
-- (id)descriptoinName;
-- (id)matchingSlots;
+- (_Bool)_continueEnumeratingUsingBlock:(CDUnknownBlockType)arg1;
 - (_Bool)matchesSlot:(id)arg1;
+- (id)descriptionName;
 
 @end
 

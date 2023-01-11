@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)showPickerSpecifierForSpecifier:(id)arg1;
+- (void)_showOrHidePickerSpecifierForSpecifier:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityMarkSelectedSpecifier;

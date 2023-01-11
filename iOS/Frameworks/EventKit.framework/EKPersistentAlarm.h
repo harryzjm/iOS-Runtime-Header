@@ -8,6 +8,8 @@
 {
 }
 
++ (Class)alternateUniverseClass;
++ (Class)meltedClass;
 + (id)defaultPropertiesToLoad;
 + (id)relations;
 - (id)description;

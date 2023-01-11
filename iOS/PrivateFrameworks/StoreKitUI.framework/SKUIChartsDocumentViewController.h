@@ -9,6 +9,7 @@
 
 @class NSMutableArray, NSString, SKUIChartColumnsView, SKUIChartsTemplateViewElement, SKUIResourceLoader;
 
+__attribute__((visibility("hidden")))
 @interface SKUIChartsDocumentViewController <SKUIResourceLoaderDelegate, SKUIDocumentViewController>
 {
     SKUIChartColumnsView *_chartsView;

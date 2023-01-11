@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUICore/PXGadgetViewController.h>
+#import <PhotosUICore/PXGadgetUIViewController.h>
 
 #import <PhotosUI/PXNavigationRoot-Protocol.h>
 
-@class NSString, PUSearchHomeGadgetDataSourceManager, PXNavigationListDataSourceManager, UIBarButtonItem, UINavigationController;
+@class NSString, PUSearchHomeGadgetDataSourceManager, PXNavigationListDataSectionManager, UIBarButtonItem, UINavigationController;
 
-@interface PUSearchHomeViewController : PXGadgetViewController <PXNavigationRoot>
+@interface PUSearchHomeViewController : PXGadgetUIViewController <PXNavigationRoot>
 {
     UIBarButtonItem *_navigationDisplayModeButtonItem;
     PUSearchHomeGadgetDataSourceManager *_searchHomeDataSourceManager;
@@ -24,15 +24,17 @@
 - (void)ppt_prepareForSearchTest:(CDUnknownBlockType)arg1;
 - (void)ppt_prepareForSearchScrollingTestWithSearchText:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)ppt_prepareZeroKeywordRequest:(CDUnknownBlockType)arg1;
+- (long long)scrollAnimationIdentifier;
+- (void)_notifyAnalyticsSearchAction:(unsigned long long)arg1;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
 @property(readonly, nonatomic) NSString *navigationIdentifier;
 @property(readonly, nonatomic) NSString *navigationTitle;
 - (void)scrollViewDidScroll:(id)arg1;
-- (_Bool)pu_handleSecondTabTap;
+- (_Bool)pu_scrollToInitialPositionAnimated:(_Bool)arg1;
 - (void)presentOneYearAgo;
 - (void)presentSiriSearchRequest:(id)arg1 resultCount:(unsigned long long)arg2;
 - (void)performRecentSearch:(id)arg1;
-- (void)selectZeroKeyword:(id)arg1 fromSectionWithType:(long long)arg2;
+- (void)selectZeroKeyword:(id)arg1;
 - (void)_clearSearchField;
 - (void)_activateSearchField;
 - (void)_configureSearchNavigationBar;
@@ -49,7 +51,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) UINavigationController *navigationController; // @dynamic navigationController;
-@property(readonly, nonatomic) PXNavigationListDataSourceManager *navigationListDataSourceManager;
+@property(readonly, nonatomic) PXNavigationListDataSectionManager *navigationListDataSourceManager;
 @property(readonly) Class superclass;
 
 @end

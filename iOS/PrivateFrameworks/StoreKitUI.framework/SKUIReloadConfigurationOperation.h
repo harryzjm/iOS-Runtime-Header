@@ -16,6 +16,7 @@
     SSURLBag *_urlBag;
 }
 
++ (id)cachePath;
 - (void).cxx_destruct;
 - (void)main;
 @property(retain) SSURLBag *URLBag;

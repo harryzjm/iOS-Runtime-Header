@@ -11,7 +11,6 @@
 @interface UITabBarController (IBCTTUITabBarControllerIntegration)
 - (void)awakeAfterMarshallerDidEstablishRelationshipsWithContext:(id)arg1 populatingWarningMessages:(id)arg2;
 - (void)ibInstallSimulatedTabBarItems;
-- (id)ibApplySimulatedTabBarMetrics:(id)arg1;
 - (void)ibInstallPlaceholderView:(id)arg1;
 - (void)setIbDisplaysAllTabsForReordering:(_Bool)arg1;
 @property(nonatomic) long long ibSelectedViewControllerIndex;

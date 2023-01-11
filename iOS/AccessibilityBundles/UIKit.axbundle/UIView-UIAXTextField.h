@@ -7,9 +7,19 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (UIAXTextField)
-+ (void)_accessibilityPerformValidations:(id)arg1;
 - (id)_accessibilitySecureTextForString:(id)arg1;
 - (unsigned long long)_accessibilityTextAreaTraits;
 - (double)_accessibilityFontSize;
+- (_Bool)_accessibilityUserTestingIsRightNavButton;
+- (_Bool)_accessibilityUserTestingIsBackNavButton;
+- (void)_accessibilitySetUserTestingIsPreferredButton:(_Bool)arg1;
+- (_Bool)_accessibilityUserTestingIsPreferredButton;
+- (void)_accessibilitySetUserTestingIsDestructiveButton:(_Bool)arg1;
+- (_Bool)_accessibilityUserTestingIsDestructiveButton;
+- (_Bool)_accessibilityUserTestingIsCancelButton;
+- (void)_accessibilitySetUserTestingIsCancelButton:(_Bool)arg1;
+- (void)_accessibilitySetUserTestingIsDefaultButton:(_Bool)arg1;
+- (_Bool)_accessibilityUserTestingIsDefaultButton;
+- (_Bool)_accessibilityUserTestingIsTypeOfButton:(id)arg1;
 @end
 

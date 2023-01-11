@@ -6,6 +6,7 @@
 
 @class SKUIImageView, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface SKUIProfileSettingDescriptionView
 {
     UILabel *_handleLabel;

@@ -15,6 +15,7 @@
 - (id)initWithProfile:(HUQuickControlViewProfile *)arg1;
 
 @optional
+@property(nonatomic) unsigned long long reachabilityState;
 @property(retain, nonatomic) id secondaryValue;
 @end
 

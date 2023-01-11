@@ -4,22 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIVisualEffectView;
+@class UIImageView, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface UICalloutBarBackground
 {
     double m_dividerOffsets[24];
-    _Bool m_isDisplayingVertically;
-    UIVisualEffectView *_separatorView;
     UIVisualEffectView *_blurView;
-    UIVisualEffectView *_tintView;
+    UIImageView *_selectionTintView;
+    UIImageView *_separatorView;
     struct CGRect _highlightRect;
 }
 
 @property(nonatomic) struct CGRect highlightRect; // @synthesize highlightRect=_highlightRect;
 - (void).cxx_destruct;
-- (void)setHighlighted:(_Bool)arg1 forFrame:(struct CGRect)arg2 isDisplayingVertically:(_Bool)arg3;
+- (void)setHighlighted:(_Bool)arg1 forFrame:(struct CGRect)arg2;
 - (void)layoutSubviews;
 - (void)setDividerOffsets:(double *)arg1;
 - (id)init;

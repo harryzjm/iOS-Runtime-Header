@@ -11,21 +11,33 @@
 #import <SpringBoardServices/BSXPCCoding-Protocol.h>
 #import <SpringBoardServices/NSSecureCoding-Protocol.h>
 
-@class BSMutableSettings, NSSet, NSString, SBSRemoteAlertPresentationTarget;
+@class NSDictionary, NSSet, NSString, NSUUID, SBSRemoteAlertPresentationTarget;
 
 @interface SBSRemoteAlertActivationContext : NSObject <BSDescriptionProviding, BSSettingDescriptionProvider, BSXPCCoding, NSSecureCoding>
 {
-    BSMutableSettings *_settings;
+    _Bool _activatingForSiri;
+    _Bool _shouldInvalidateWhenDeactivated;
+    _Bool _switcherEligible;
+    NSString *_reason;
     NSSet *_actions;
+    NSDictionary *_userInfo;
     SBSRemoteAlertPresentationTarget *_presentationTarget;
+    NSUUID *_activityContinuationIdentifier;
+    NSDictionary *_legacyAlertOptions;
 }
 
 + (_Bool)supportsSecureCoding;
++ (id)activationContextWithLegacyAlertOptions:(id)arg1;
+@property(nonatomic, getter=isSwitcherEligible) _Bool switcherEligible; // @synthesize switcherEligible=_switcherEligible;
+@property(nonatomic) _Bool shouldInvalidateWhenDeactivated; // @synthesize shouldInvalidateWhenDeactivated=_shouldInvalidateWhenDeactivated;
+@property(copy, nonatomic) NSDictionary *legacyAlertOptions; // @synthesize legacyAlertOptions=_legacyAlertOptions;
+@property(copy, nonatomic) NSUUID *activityContinuationIdentifier; // @synthesize activityContinuationIdentifier=_activityContinuationIdentifier;
 @property(retain, nonatomic) SBSRemoteAlertPresentationTarget *presentationTarget; // @synthesize presentationTarget=_presentationTarget;
-@property(retain, nonatomic) NSSet *actions; // @synthesize actions=_actions;
+@property(copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
+@property(copy, nonatomic) NSSet *actions; // @synthesize actions=_actions;
+@property(nonatomic, getter=isActivatingForSiri) _Bool activatingForSiri; // @synthesize activatingForSiri=_activatingForSiri;
+@property(copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 - (void).cxx_destruct;
-- (id)settings:(id)arg1 valueDescriptionForFlag:(long long)arg2 object:(id)arg3 ofSetting:(unsigned long long)arg4;
-- (id)settings:(id)arg1 keyDescriptionForSetting:(unsigned long long)arg2;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescriptionBuilder;
@@ -35,11 +47,8 @@
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 @property(readonly, copy) NSString *description;
-@property(nonatomic, getter=isActivatingForSiri) _Bool activatingForSiri;
-@property(retain, nonatomic) NSString *reason;
-- (void)dealloc;
-- (id)_initWithSettings:(id)arg1 actions:(id)arg2 presentationTarget:(id)arg3;
-- (id)_initWithSettings:(id)arg1 actions:(id)arg2;
+- (id)initWithActions:(id)arg1 presentationTarget:(id)arg2 userInfo:(id)arg3;
+- (id)initWithActions:(id)arg1 presentationTarget:(id)arg2;
 - (id)initWithActions:(id)arg1;
 - (id)init;
 

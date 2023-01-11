@@ -18,7 +18,6 @@
 }
 
 + (_Bool)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 - (void).cxx_destruct;
 - (void)_update;
 - (void)_enumerateColumnRowsWithBlock:(CDUnknownBlockType)arg1;

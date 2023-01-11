@@ -24,8 +24,10 @@
 - (id)requiredKeyPathsOrError:(id *)arg1;
 - (_Bool)supportsAttributeKeyPathAnalysis;
 - (_Bool)supportsRemoteEvaluation;
+- (_Bool)canBeRemotelyEvaluatedWithCapabilities:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithScope:(long long)arg1 predicate:(id)arg2;
 
 @end

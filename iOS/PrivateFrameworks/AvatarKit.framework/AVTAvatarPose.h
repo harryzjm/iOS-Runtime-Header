@@ -6,24 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+#import <AvatarKit/NSCopying-Protocol.h>
 
-@interface AVTAvatarPose : NSObject
+@class MISSING_TYPE, NSMutableDictionary;
+
+@interface AVTAvatarPose : NSObject <NSCopying>
 {
-    struct SCNVector3 _neckPosition;
-    struct SCNVector4 _neckOrientation;
+    _Bool _hasNeckPosition;
+    _Bool _hasNeckOrientation;
+    double _bakedAnimationBlendFactor;
     NSMutableDictionary *_weights;
+    MISSING_TYPE *_neckPosition;
+    struct {
+        MISSING_TYPE *vector;
+    } _neckOrientation;
 }
 
 + (id)friendlyPose;
 + (id)neutralPose;
-@property(nonatomic) struct SCNVector4 neckOrientation; // @synthesize neckOrientation=_neckOrientation;
-@property(nonatomic) struct SCNVector3 neckPosition; // @synthesize neckPosition=_neckPosition;
+@property(nonatomic) double bakedAnimationBlendFactor; // @synthesize bakedAnimationBlendFactor=_bakedAnimationBlendFactor;
+@property(nonatomic) struct neckOrientation; // @synthesize neckOrientation=_neckOrientation;
+@property(nonatomic) MISSING_TYPE *neckPosition; // @synthesize neckPosition=_neckPosition;
 - (void).cxx_destruct;
+- (id)description;
+- (id)poseByMergingPose:(id)arg1;
+- (_Bool)affectsPhysicsSimulation;
 - (id)initWithDictionaryRepresentation:(id)arg1;
+- (id)initWithWeights:(id)arg1 neckPosition:(MISSING_TYPE **)arg2 neckOrientation:(struct *)arg3 bakedAnimationBlendFactor:(double)arg4;
 - (id)dictionaryRepresentation;
 - (void)setWeight:(double)arg1 forBlendShapeNamed:(id)arg2;
 - (double)weightForBlendShapeNamed:(id)arg1;
+- (void)setWeights:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

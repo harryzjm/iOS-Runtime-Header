@@ -4,12 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface PXCMMPhotoKitAcceptMomentShareActionPerformer
+#import <PhotosUICore/PXCMMPhotoKitActionPerformer-Protocol.h>
+
+@class PXCMMPhotoKitSession;
+
+@interface PXCMMPhotoKitAcceptMomentShareActionPerformer <PXCMMPhotoKitActionPerformer>
 {
 }
 
 - (void)performBackgroundTask;
 - (_Bool)canPerformActionWithSession:(id)arg1;
+
+// Remaining properties
+@property(readonly, nonatomic) PXCMMPhotoKitSession *session;
 
 @end
 

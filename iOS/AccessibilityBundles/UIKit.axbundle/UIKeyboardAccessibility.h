@@ -32,7 +32,10 @@
 - (_Bool)_axEnterTextValue:(id)arg1;
 - (_Bool)_axCommitWord;
 - (_Bool)_axAdvanceKeyboardPlane:(_Bool)arg1;
-- (_Bool)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
+- (_Bool)_iosAccessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
+- (_Bool)_accessibilityKeyboardIsContinuousPathAvailable;
+- (unsigned long long)_accessibilityAutomationType;
+- (_Bool)_accessibilityKeyboardIsContinuousPathTracking;
 
 @end
 

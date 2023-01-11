@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property(readonly, nonatomic) NSString *documentPasswordHint; // @synthesize documentPasswordHint=_documentPasswordHint;
 @property(retain, nonatomic) TSPObjectContext *context; // @synthesize context=_context;
+- (void).cxx_destruct;
 - (void)presentPersistenceError:(id)arg1;
 - (id)documentPasswordHintForWrite;
 - (id)supportDirectoryURL;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(readonly, nonatomic) NSDictionary *additionalDocumentPropertiesForWrite;
 @property(readonly, nonatomic) NSDictionary *additionalDocumentSupportPropertiesForWrite;
+@property(readonly, nonatomic) long long archiveValidationMode;
 @property(readonly, nonatomic) _Bool areNewExternalReferencesToDataAllowed;
 @property(readonly, nonatomic) NSUUID *baseUUIDForObjectUUID;
 @property(readonly, copy) NSString *debugDescription;

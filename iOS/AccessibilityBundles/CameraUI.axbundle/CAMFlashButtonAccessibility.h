@@ -12,7 +12,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)accessibilityTraits;
+- (void)startExpansionWithProposedFrame:(struct CGRect)arg1;
 - (id)accessibilityValue;
+- (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (id)accessibilityHint;
 - (_Bool)accessibilityActivate;

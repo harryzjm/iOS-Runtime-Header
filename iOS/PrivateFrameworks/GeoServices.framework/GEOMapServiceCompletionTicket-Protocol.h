@@ -4,14 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/NSObject-Protocol.h>
+#import <GeoServices/GEOMapServiceCancellableTicket-Protocol.h>
+#import <GeoServices/GEOMapServiceThrottlableTicket-Protocol.h>
 
-@class GEOMapItemIdentifier, GEOMapServiceTraits, GEORPSuggestionEntry, GEORPSuggestionList, NSDictionary, NSString;
+@class GEOClientRankingModel, GEOMapItemIdentifier, GEOMapServiceTraits, GEORPSuggestionEntry, GEORPSuggestionList, GEOSortPriorityMapping, NSDictionary, NSString;
 
-@protocol GEOMapServiceCompletionTicket <NSObject>
+@protocol GEOMapServiceCompletionTicket <GEOMapServiceCancellableTicket, GEOMapServiceThrottlableTicket>
 @property(readonly, nonatomic) NSDictionary *responseUserInfo;
 @property(readonly, nonatomic) GEOMapServiceTraits *traits;
 @property(readonly, nonatomic, getter=_searchQuery) NSString *searchQuery;
+- (_Bool)showAutocompleteClientSource;
+- (_Bool)autocompleteTopSectionIsQuerySuggestions;
+- (GEOSortPriorityMapping *)sortPriorityMapping;
+- (GEOClientRankingModel *)clientRankingModel;
 - (_Bool)shouldDisplayNoResults;
 - (_Bool)hasShouldDisplayNoResults;
 - (double)retainSearchTime;

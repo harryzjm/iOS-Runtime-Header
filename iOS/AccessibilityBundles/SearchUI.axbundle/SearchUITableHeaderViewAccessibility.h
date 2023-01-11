@@ -15,6 +15,8 @@
 - (void)updateHeaderButtonVisibility;
 - (_Bool)shouldGroupAccessibilityChildren;
 - (_Bool)_accessibilityOnlyComparesByXAxis;
+- (id)init;
+- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

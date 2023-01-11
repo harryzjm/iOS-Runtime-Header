@@ -49,6 +49,7 @@
 @property(retain, nonatomic) SFSafariViewController *safariViewController; // @synthesize safariViewController=_safariViewController;
 @property(copy) NSNumber *safariDismissButtonStyle; // @synthesize safariDismissButtonStyle=_safariDismissButtonStyle;
 @property(retain, nonatomic) NSString *safariViewControllerIdentifier; // @synthesize safariViewControllerIdentifier=_safariViewControllerIdentifier;
+- (void).cxx_destruct;
 - (id)scriptAttributeKeys;
 - (id)attributeKeys;
 - (_Bool)scriptXMLHTTPStoreRequest:(id)arg1 requiresCellularForURL:(id)arg2;
@@ -77,6 +78,7 @@
 - (void)handleRootObjectWithPropertyListString:(id)arg1;
 - (_Bool)checkCapabilitiesPropertyListString:(id)arg1 showFailureDialog:(_Bool)arg2;
 - (id)systemVersion;
+- (void)signupInWallet:(id)arg1 callback:(id)arg2;
 - (_Bool)shouldShowAddToWalletLink:(id)arg1;
 - (_Bool)shouldRestrictContentOfSystem:(id)arg1 level:(id)arg2;
 - (_Bool)haveAccount;
@@ -90,6 +92,7 @@
 @property(readonly) SUScriptDictionary *tidHeaders;
 @property(readonly) long long storeSheetType;
 @property(readonly) NSString *storeFrontIdentifier;
+- (void)setWalletAvailable:(id)arg1;
 - (void)setUserAgent:(id)arg1;
 - (void)setTidState:(id)arg1;
 - (void)setTidHeaders:(id)arg1;
@@ -118,6 +121,8 @@
 - (id)makeXMLHTTPStoreRequest;
 - (id)makeXMLHTTPRequest;
 @property(readonly) id loggingEnabled;
+@property(readonly, getter=isWalletAvailable) id walletAvailable;
+@property(readonly, getter=isApplePayAvailable) id applePayAvailable;
 @property(readonly) NSString *gsToken;
 @property(readonly) id globalRootObject;
 @property(readonly) NSString *deviceSerialNumber;
@@ -132,6 +137,7 @@
 @property(readonly) id applicationAccessibilityEnabled;
 - (void)showSafariViewControllerWithURLString:(id)arg1 identifier:(id)arg2 animated:(_Bool)arg3;
 - (void)dismissSafariViewControllerAnimated:(_Bool)arg1;
+- (void)authorizeApplePayEnrollmentWithParameters:(id)arg1 callback:(id)arg2;
 - (void)accessibilityPostScreenChange;
 - (void)accessibilityPostLayoutChange;
 - (void)_accessibilityPostLayoutChange;
@@ -144,21 +150,30 @@
 - (void)requireCellularForResourceWithURL:(id)arg1;
 - (void)reportAProblemForIdentifier:(id)arg1;
 - (void)removeDeviceOfferWithIdentifier:(id)arg1 account:(id)arg2;
+- (void)redeemCodesReloadDownloadManager;
+- (void)redeemCodes:(id)arg1 params:(id)arg2 completion:(id)arg3;
+- (void)redeemCode:(id)arg1;
 - (void)registerNavBarButtonWithTitle:(id)arg1 side:(id)arg2 function:(id)arg3;
 - (id)presentPrivacySplashWithIdentifier:(id)arg1;
 - (id)presentPrivacyViewControllerWithIdentifier:(id)arg1;
 - (void)performPurchaseAnimationForIdentifier:(id)arg1 style:(id)arg2;
 - (void)perfLog:(id)arg1;
+- (void)paymentSetupFeatureSupported:(id)arg1 callback:(id)arg2;
 - (void)openWallet;
 - (id)machineGUID;
 - (void)log:(id)arg1;
 - (void)handleDialogPropertyListString:(id)arg1;
+- (id)getiTunesPass;
 - (void)financeInterruptionResolved:(id)arg1;
+- (void)fetchWalletCardMetadata:(id)arg1 callback:(id)arg2;
+- (void)fetchWalletCardData:(id)arg1;
+- (void)fetchAppleCardMetadata:(id)arg1 callback:(id)arg2;
 - (void)dispatchXEvent:(id)arg1;
 - (void)dispatchGlobalEventWithName:(id)arg1 payload:(id)arg2;
 - (void)openFamilyCircleSetupWithClientName:(id)arg1 completionFunction:(id)arg2;
 - (void)_finishCreditCardReaderWithOutput:(id)arg1 callback:(id)arg2;
 - (void)openCreditCardReaderWithCompletionFunction:(id)arg1;
+- (void)addiTunesPassWithCompletionFunction:(id)arg1;
 - (void)acknowledgePrivacyLinkWithIdentifier:(id)arg1;
 - (id)parentViewController;
 - (id)DOMElementWithElement:(id)arg1;
@@ -179,6 +194,8 @@
 - (void)startedTest:(id)arg1;
 - (_Bool)isRunningTest;
 - (_Bool)launchedToTest;
+- (id)makeRedeemCameraViewController;
+- (id)redeemCameraAvailable;
 @property(readonly) SUScriptDictionary *scriptStoreBagDictionary;
 - (void)_getSoftwareApplicationWithCompletionFunction:(id)arg1 lookupBlock:(CDUnknownBlockType)arg2;
 @property(readonly) NSArray *installedSoftwareApplications;
@@ -219,6 +236,7 @@
 @property(retain) SUScriptAccount *primaryLockerAccount;
 @property(retain) SUScriptAccount *primaryAccount;
 - (void)setAccounts:(id)arg1;
+- (id)primaryiCloudAccount;
 @property(readonly) NSArray *accounts;
 - (id)makeAccount;
 - (void)authenticateAppleIdWithUsername:(id)arg1 password:(id)arg2 callback:(id)arg3;
@@ -236,7 +254,6 @@
 @property(readonly) SUScriptSectionsController *sectionsController;
 - (void)selectSectionWithIdentifier:(id)arg1;
 - (void)reloadFooterSection:(id)arg1 withURL:(id)arg2;
-- (void)redeemCode:(id)arg1;
 - (void)openURL:(id)arg1;
 - (id)makeStorePageWithURLs:(id)arg1;
 - (id)makeNavigationControllerWithRootViewController:(id)arg1;

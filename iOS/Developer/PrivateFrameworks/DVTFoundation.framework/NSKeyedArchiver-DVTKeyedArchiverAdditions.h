@@ -8,7 +8,6 @@
 
 @interface NSKeyedArchiver (DVTKeyedArchiverAdditions)
 + (id)dvt_archivedDataWithSecureRootObject:(id)arg1 error:(id *)arg2;
-+ (id)dvt_archiverRequiringSecureCoding;
 + (id)dvt_archiveDataFromRunningBlock:(CDUnknownBlockType)arg1;
 @end
 

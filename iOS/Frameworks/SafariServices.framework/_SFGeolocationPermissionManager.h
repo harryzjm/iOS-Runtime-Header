@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <WebUI/WBSGeolocationPreferenceManager.h>
 
 @class UIWebGeolocationPolicyDecider;
 
-@interface _SFGeolocationPermissionManager : NSObject
+@interface _SFGeolocationPermissionManager : WBSGeolocationPreferenceManager
 {
     UIWebGeolocationPolicyDecider *_policyDecider;
 }
@@ -17,7 +17,6 @@
 - (void).cxx_destruct;
 - (void)_showDialogRequestingPermissionForURL:(id)arg1 frame:(id)arg2 dialogPresenter:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)requestPermissionForURL:(id)arg1 frame:(id)arg2 dialogPresenter:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)init;
 
 @end
 

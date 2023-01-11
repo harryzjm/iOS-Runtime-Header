@@ -20,12 +20,16 @@ __attribute__((visibility("hidden")))
     _Atomic _Bool _checkedInvalidHome;
     _Atomic _Bool _lastWriteFailed;
     _Atomic _Bool _observing;
+    _Atomic _Bool _byteCountLimitExceeded;
+    _Atomic _Bool _directMode;
     _Atomic _Bool _disableBackup;
+    _Atomic int _fileProtectionClass;
 }
 
 - (void)dealloc;
 - (void)_sharedCleanup;
-- (void)alreadylocked_updateObservingRemoteChanges;
+- (id)alreadylocked_createObserverUpdateMessageWithOperation:(int)arg1 forRole:(int *)arg2;
+- (int)alreadylocked_updateObservingRemoteChanges;
 - (long long)generationCount;
 - (long long)alreadylocked_generationCount;
 - (_Bool)synchronize;
@@ -36,16 +40,20 @@ __attribute__((visibility("hidden")))
 - (void)requestPlistValidation;
 - (id)createRequestNewContentMessageForDaemon:(int)arg1;
 - (_Bool)alreadylocked_requestNewData;
-- (long long)sendMessageSettingValue:(void *)arg1 forKey:(struct __CFString *)arg2;
-- (void)sendFullyPreparedMessage:(id)arg1 toConnection:(id)arg2 settingValue:(void *)arg3 forKey:(struct __CFString *)arg4 retryCount:(int)arg5;
+- (long long)sendMessageSettingValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3;
+- (void)sendFullyPreparedMessage:(id)arg1 toConnection:(id)arg2 settingValues:(const void **)arg3 forKeys:(const struct __CFString **)arg4 count:(long long)arg5 retryCount:(int)arg6;
 - (void)addPIDImpersonationIfNecessary:(id)arg1;
 - (_Bool)attachAccessTokenToMessage:(id)arg1 accessType:(int)arg2;
-- (_Bool)handleErrorReply:(id)arg1 fromMessageSettingKey:(struct __CFString *)arg2 toValue:(void *)arg3 retryCount:(int)arg4 retryContinuation:(CDUnknownBlockType)arg5;
+- (_Bool)handleErrorReply:(id)arg1 fromMessageSettingKeys:(const struct __CFString **)arg2 toValues:(const void **)arg3 count:(long long)arg4 retryCount:(int)arg5 retryContinuation:(CDUnknownBlockType)arg6;
+- (void)handlePossibleOversizedMessage:(int)arg1;
 - (_Bool)handleErrorReply:(id)arg1 retryCount:(int)arg2 retryContinuation:(CDUnknownBlockType)arg3;
-- (void)goReadOnlyAfterTryingToWriteKey:(struct __CFString *)arg1 value:(void *)arg2;
+- (void)goReadOnlyAfterTryingToWriteKeys:(const struct __CFString **)arg1 values:(const void **)arg2 count:(long long)arg3;
+- (_Bool)isDirectModeEnabled;
+- (void)transitionIntoDirectModeIfNeededWithRetryBlock:(CDUnknownBlockType)arg1;
+- (_Bool)_shouldEnableDirectMode;
 - (_Bool)isVolatile;
-- (void)goVolatileAfterTryingToWriteKey:(struct __CFString *)arg1 value:(void *)arg2;
-- (void)writeFailedForKey:(struct __CFString *)arg1 value:(void *)arg2;
+- (void)goVolatileAfterTryingToWriteKeys:(const struct __CFString **)arg1 values:(const void **)arg2 count:(long long)arg3;
+- (void)writeFailedForKeys:(const struct __CFString **)arg1 values:(const void **)arg2 count:(long long)arg3;
 - (id)createSynchronizeMessage;
 - (_Bool)_isSharedInTheiOSSimulator;
 - (void)alreadylocked_setPrecopiedValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 from:(id)arg4;
@@ -55,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (void *)alreadylocked_copyValueForKey:(struct __CFString *)arg1;
 - (void)setDaemonCacheEnabled:(_Bool)arg1;
 - (void)setAccessRestricted:(_Bool)arg1;
+- (void)setFileProtectionClass:(int)arg1;
 - (void)setBackupDisabled:(_Bool)arg1;
 - (id)initWithDomain:(struct __CFString *)arg1 user:(struct __CFString *)arg2 byHost:(_Bool)arg3 containerPath:(struct __CFString *)arg4 containingPreferences:(id)arg5;
 - (_Bool)isByHost;

@@ -6,6 +6,7 @@
 
 @class NSString, OADHyperlink, OADOrientedBounds;
 
+__attribute__((visibility("hidden")))
 @interface OADDrawableProperties
 {
     OADOrientedBounds *mOrientedBounds;
@@ -19,6 +20,7 @@
     unsigned int mWrdInline:1;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
@@ -45,7 +47,7 @@
 - (_Bool)hasOrientedBounds;
 - (void)setOrientedBounds:(id)arg1;
 - (id)orientedBounds;
-- (void)dealloc;
+- (id)orientedBoundsForCharts;
 - (id)initWithDefaults;
 
 @end

@@ -4,28 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CKDModifyShareTokenURLRequest, CKRecordID, CKShare;
+@class CKRecordID, CKShare;
 
 __attribute__((visibility("hidden")))
 @interface CKDModifyShareHandler
 {
     _Bool _haveAddedOwnerToShare;
     _Bool _isALegacyPublicShareThatNeedsOwnerPPPCSUpgrade;
-    CKDModifyShareTokenURLRequest *_request;
 }
 
 + (id)modifyHandlerForDeleteWithShareID:(id)arg1 operation:(id)arg2;
 + (id)modifyHandlerWithShare:(id)arg1 operation:(id)arg2;
 @property(nonatomic) _Bool isALegacyPublicShareThatNeedsOwnerPPPCSUpgrade; // @synthesize isALegacyPublicShareThatNeedsOwnerPPPCSUpgrade=_isALegacyPublicShareThatNeedsOwnerPPPCSUpgrade;
 @property(nonatomic) _Bool haveAddedOwnerToShare; // @synthesize haveAddedOwnerToShare=_haveAddedOwnerToShare;
-@property(retain, nonatomic) CKDModifyShareTokenURLRequest *request; // @synthesize request=_request;
-- (void).cxx_destruct;
 - (void)updateParticipantsForFetchedShare:(id)arg1 error:(id)arg2;
 - (void)savePCSDataToCache;
 - (void)setServerRecord:(id)arg1;
 - (void)clearProtectionDataForRecord;
 - (id)_removePublicKey:(id)arg1 fromInvitedPCS:(struct _OpaquePCSShareProtection *)arg2;
 - (id)_ensurePrivateParticipant:(id)arg1 isInInvitedSharePCS:(struct _OpaquePCSShareProtection *)arg2;
+- (struct _PCSPublicIdentityData *)createPublicIdentityFromPublicKeyForParticipant:(id)arg1 error:(id *)arg2;
+- (_Bool)_addedPrivateParticipantNeedsAManateeInvitation:(id)arg1;
 - (id)_publicKeyForParticipant:(id)arg1 error:(id *)arg2;
 - (id)_removePrivateParticipant:(id)arg1 fromInvitedSharePCS:(struct _OpaquePCSShareProtection *)arg2;
 - (_Bool)_removePrivateParticipantsFromInvitedPCS:(struct _OpaquePCSShareProtection *)arg1 error:(id *)arg2;
@@ -35,12 +34,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)_updateSharePublicPCSWithError:(id *)arg1;
 - (_Bool)_serializePCSDataForShareWithError:(id *)arg1;
 - (void)_alignParticipantPermissions;
+- (id)_rollShareAndZonePCSIfNeededForSharePCS:(id)arg1 zonePCSData:(id)arg2;
 - (void)prepareForSave;
-- (void)_handleSharePCSData:(id)arg1 withError:(id)arg2;
+- (void)_prepareDependentPCSUpdateIfNeededForShareWithSharePCS:(id)arg1 error:(id)arg2;
+- (id)_handleSharePCSData:(id)arg1 zonePCSData:(id)arg2;
 - (id)_createNewSharePCSDataWithError:(id *)arg1;
 - (void)_fetchRootRecordPublicSharingIdentityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_fetchSharePCSData;
-- (_Bool)_decryptSharePCSData;
 - (void)fetchSharePCSData;
 - (void)noteSideEffectRecordPendingDelete:(id)arg1;
 - (void)noteSideEffectRecordAbsent:(id)arg1;

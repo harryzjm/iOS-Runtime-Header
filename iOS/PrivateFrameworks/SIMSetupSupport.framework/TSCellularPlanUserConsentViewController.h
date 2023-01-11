@@ -4,29 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SetupAssistantUI/BFFSplashController.h>
+#import <OnBoardingKit/OBWelcomeController.h>
 
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
 
 @class NSString;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSCellularPlanUserConsentViewController : BFFSplashController <TSSetupFlowItem>
+@interface TSCellularPlanUserConsentViewController : OBWelcomeController <TSSetupFlowItem>
 {
-    _Bool _didAccept;
-    id <TSSIMSetupFlowDelegate> _delegate;
-    NSString *_name;
+    _Bool _didReceiveResponse;
+    NSString *_confirmationCode;
     unsigned long long _consentType;
+    _Bool _requireAdditionalConsent;
+    id <TSSIMSetupFlowDelegate> _delegate;
 }
 
-@property _Bool didAccept; // @synthesize didAccept=_didAccept;
-@property unsigned long long consentType; // @synthesize consentType=_consentType;
-@property(retain) NSString *name; // @synthesize name=_name;
++ (void)calculateTitleAndDetailsWithName:(id)arg1 consentType:(unsigned long long)arg2 title:(id *)arg3 details:(id *)arg4;
 @property __weak id <TSSIMSetupFlowDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) unsigned long long consentType; // @synthesize consentType=_consentType;
 - (void).cxx_destruct;
-- (void)viewDidDisappear:(_Bool)arg1;
+- (_Bool)canBeShownFromSuspendedState;
+- (void)_cancelButtonTapped;
+- (void)_declineButtonTapped;
+- (void)_acceptButtonTapped;
+- (void)_setNavigationItems;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidLoad;
-- (id)initWithName:(id)arg1 consentType:(unsigned long long)arg2;
+- (id)initWithConfirmationCode:(id)arg1 consentType:(unsigned long long)arg2 requireAdditionalConsent:(_Bool)arg3 confirmationCode:(id)arg4;
+- (id)initWithName:(id)arg1 consentType:(unsigned long long)arg2 requireAdditionalConsent:(_Bool)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

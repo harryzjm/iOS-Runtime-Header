@@ -4,20 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject;
-@protocol OS_dispatch_queue;
-
 @interface CSAudioRouteChangeMonitor
 {
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
 + (id)sharedInstance;
-- (void).cxx_destruct;
+- (_Bool)jarvisConnected;
+- (void)getJarvisConnected:(CDUnknownBlockType)arg1;
+- (_Bool)hearstConnected;
+- (void)getHearstConnected:(CDUnknownBlockType)arg1;
 - (void)_stopMonitoring;
 - (void)_startMonitoringWithQueue:(id)arg1;
-- (void)preferredExternalRouteDidChange:(id)arg1;
-- (id)init;
 
 @end
 

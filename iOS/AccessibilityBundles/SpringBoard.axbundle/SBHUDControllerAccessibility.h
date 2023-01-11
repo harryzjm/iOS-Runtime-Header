@@ -8,10 +8,11 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)presentHUDView:(id)arg1 autoDismissWithDelay:(double)arg2;
-- (void)hideHUDView;
+- (void)_presentHUD:(id)arg1 animated:(_Bool)arg2;
+- (void)_dismissHUD:(id)arg1 animated:(_Bool)arg2;
 
 @end
 

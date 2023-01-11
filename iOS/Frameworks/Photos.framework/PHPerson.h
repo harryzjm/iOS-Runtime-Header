@@ -9,6 +9,8 @@
 @interface PHPerson
 {
     _Bool _inPersonNamingModel;
+    unsigned short _ageType;
+    unsigned short _genderType;
     NSString *_name;
     NSString *_displayName;
     long long _type;
@@ -17,9 +19,11 @@
     long long _faceCount;
     NSDictionary *_contactMatchingDictionary;
     long long _verifiedType;
+    long long _questionType;
 }
 
 + (id)inferredContactByPersonLocalIdentifierForPersons:(id)arg1;
++ (id)fetchPersonsForContactIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsForContacts:(id)arg1 options:(id)arg2;
 + (id)displayNameFromContact:(id)arg1;
 + (id)fullNameFromContact:(id)arg1;
@@ -27,8 +31,15 @@
 + (id)fetchPersonCountGroupedByAssetLocalIdentifierForAssets:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsGroupedByAssetLocalIdentifierForAssets:(id)arg1 options:(id)arg2;
 + (id)fetchHomePersonUUIDsGroupedByAssetUUIDForAssetUUIDs:(id)arg1 options:(id)arg2;
++ (id)_fetchSuggestedRecipientsForFocusedAssetCollection:(id)arg1 assetCollection:(id)arg2 options:(id)arg3 client:(unsigned long long)arg4;
++ (id)_fetchSuggestedPersonsForRecipients:(id)arg1 options:(id)arg2 photoLibrary:(id)arg3;
++ (id)batchFetchSuggestedRecipientsForAssets:(id)arg1 options:(id)arg2;
++ (id)fetchSuggestedRecipientsForFocusedAssetCollection:(id)arg1 options:(id)arg2;
 + (id)fetchSuggestedRecipientsForAssetCollection:(id)arg1 options:(id)arg2;
++ (id)fetchSuggestedPersonsForFocusedAssetCollection:(id)arg1 options:(id)arg2;
++ (id)fetchSuggestedPersonsForAssetCollection:(id)arg1 options:(id)arg2;
 + (id)_momentLocalIdentifiersForAssetCollection:(id)arg1;
++ (id)_assetLocalIdentifiersForAssetCollection:(id)arg1;
 + (id)fetchFinalMergeTargetPersonsForPersonWithUUID:(id)arg1 options:(id)arg2;
 + (id)fetchInvalidMergeCandidatePersonsForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchMergeCandidatePersonsForPerson:(id)arg1 options:(id)arg2;
@@ -39,6 +50,7 @@
 + (id)fetchPersonsForAssetCollection:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsInAsset:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
++ (id)fetchPersonsWithQuestionType:(long long)arg1 options:(id)arg2;
 + (id)fetchPersonsWithType:(long long)arg1 options:(id)arg2;
 + (id)fetchPersonsWithOptions:(id)arg1;
 + (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
@@ -51,16 +63,20 @@
 + (_Bool)managedObjectSupportsPersonFilters;
 + (id)fetchType;
 + (id)managedEntityName;
++ (id)fetchPersonsForReferences:(id)arg1 photoLibrary:(id)arg2;
 + (long long)updateKeyFacesOfPersons:(id)arg1 forceUpdate:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 + (long long)suggestVerifiedPersonForPerson:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (long long)suggestVerifiedPersonForFace:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)_verifiedPersonWithLocalIdentifier:(id)arg1 fromPhotoLibrary:(id)arg2;
-+ (id)_convertToPersonSuggestion:(id)arg1;
-+ (id)_packageSuggestionList:(id)arg1;
++ (id)_convertToPersonSuggestion:(id)arg1 photoLibrary:(id)arg2;
++ (id)_packageSuggestionList:(id)arg1 photoLibrary:(id)arg2;
 + (id)_personSuggestionMarkedAsConfirmed:(_Bool)arg1 fromPersonSuggestion:(id)arg2;
 + (long long)_personSuggestionsForPerson:(id)arg1 confirmedPersonSuggestions:(id)arg2 rejectedPersonSuggestions:(id)arg3 fromClient:(id)arg4 completion:(CDUnknownBlockType)arg5;
 + (long long)personSuggestionsForPerson:(id)arg1 confirmedPersonSuggestions:(id)arg2 rejectedPersonSuggestions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)personSuggestionsForPerson:(id)arg1 confirmedPersonSuggestions:(id)arg2 rejectedPersonSuggestions:(id)arg3;
+@property(readonly, nonatomic) unsigned short genderType; // @synthesize genderType=_genderType;
+@property(readonly, nonatomic) unsigned short ageType; // @synthesize ageType=_ageType;
+@property(readonly, nonatomic) long long questionType; // @synthesize questionType=_questionType;
 @property(readonly, nonatomic) long long verifiedType; // @synthesize verifiedType=_verifiedType;
 @property(readonly, nonatomic) NSDictionary *contactMatchingDictionary; // @synthesize contactMatchingDictionary=_contactMatchingDictionary;
 @property(readonly, nonatomic) long long faceCount; // @synthesize faceCount=_faceCount;
@@ -79,6 +95,7 @@
 @property(readonly, nonatomic, getter=isVerified) _Bool verified;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (Class)changeRequestClass;
+- (id)objectReference;
 
 @end
 

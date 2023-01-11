@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, PDNotesSlide, PDSlideLayout;
+@class NSMutableArray, OITSUNoCopyDictionary, PDNotesSlide, PDSlideLayout;
 
 __attribute__((visibility("hidden")))
 @interface PDSlide
@@ -12,8 +12,10 @@ __attribute__((visibility("hidden")))
     PDSlideLayout *mSlideLayout;
     NSMutableArray *mComments;
     PDNotesSlide *mNotesSlide;
+    OITSUNoCopyDictionary *mCommentParents;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 - (void)removeUnnecessaryOverrides;
 - (void)setUpPropertyHierarchyPreservingEffectiveValues;
@@ -22,6 +24,8 @@ __attribute__((visibility("hidden")))
 - (id)inheritedTextStyleForPlaceholderType:(int)arg1;
 - (void)setInheritedTextStyle:(id)arg1 placeholderType:(int)arg2 defaultTextListStyle:(id)arg3;
 - (void)doneWithContent;
+@property(retain) OITSUNoCopyDictionary *commentParents; // @synthesize commentParents=mCommentParents;
+- (id)commentForAuthorId:(unsigned long long)arg1 authorIdx:(unsigned long long)arg2;
 - (void)addComment:(id)arg1;
 - (id)commentAtIndex:(unsigned long long)arg1;
 - (unsigned long long)commentCount;
@@ -36,7 +40,6 @@ __attribute__((visibility("hidden")))
 - (id)defaultTheme;
 - (void)setSlideLayout:(id)arg1;
 - (id)slideLayout;
-- (void)dealloc;
 
 @end
 

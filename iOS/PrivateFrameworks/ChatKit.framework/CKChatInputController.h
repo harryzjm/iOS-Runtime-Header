@@ -25,6 +25,7 @@
 
 @interface CKChatInputController : NSObject <UITextInputPayloadDelegate, CKMessageEntryViewInputDelegate, CKBrowserViewControllerSendDelegate, CKPhotoBrowserViewControllerSendDelegate, CKHandwritingViewControllerSendDelegate, CKBrowserViewControllerStoreSendDelegate, CKPluginEntryViewControllerDelegate, CKFullScreenAppViewControllerDelegate, CKDeviceOrientationManagerDelegate, CKBrowserSwitcherViewControllerDelegate, CKBrowserTransitionCoordinatorDelegate, CKHandwritingPresentationControllerDelegate, CKBrowserAppManagerViewControllerDelegate>
 {
+    _Bool _isDismissingAppModal;
     _Bool _shouldSuppressStatusBarForHandwriting;
     _Bool __isRunningPPT;
     _Bool _inputViewVisible;
@@ -78,6 +79,7 @@
 @property(nonatomic) _Bool _isRunningPPT; // @synthesize _isRunningPPT=__isRunningPPT;
 @property(nonatomic) _Bool shouldSuppressStatusBarForHandwriting; // @synthesize shouldSuppressStatusBarForHandwriting=_shouldSuppressStatusBarForHandwriting;
 @property(retain, nonatomic) UIViewController *statusBarStyleViewController; // @synthesize statusBarStyleViewController=_statusBarStyleViewController;
+@property(readonly, nonatomic) _Bool isDismissingAppModal; // @synthesize isDismissingAppModal=_isDismissingAppModal;
 @property(retain, nonatomic) IMBalloonPluginDataSource *browserPluginDataSource; // @synthesize browserPluginDataSource=_browserPluginDataSource;
 @property(retain, nonatomic) IMBalloonPlugin *browserPlugin; // @synthesize browserPlugin=_browserPlugin;
 @property(nonatomic) __weak id <CKChatInputControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -96,6 +98,7 @@
 - (id)workingDraftDirForPluginIdentifier:(id)arg1;
 - (id)workingDirForDraft;
 - (void)dismissEntryViewShelf;
+- (void)showModalViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)showEntryViewShelf:(id)arg1 forPlugin:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)showEntryViewShelf:(id)arg1;
 - (void)fullscreenAppViewControllerDidTransitionFromOrientation:(long long)arg1 toOrientation:(long long)arg2;
@@ -156,11 +159,12 @@
 @property(readonly, nonatomic) unsigned long long browserSupportedInterfaceOrientations;
 @property(readonly, nonatomic) _Bool browserShouldAutorotate;
 - (id)_browserViewControllerForInterfaceOrientationMethods;
-@property(readonly, nonatomic) _Bool presentsHandwritingOnRotation;
+@property(readonly, nonatomic) _Bool appModalIsDisplayed;
 @property(readonly, nonatomic) _Bool appManagerIsDisplayed;
 @property(readonly, nonatomic) _Bool appStoreIsDisplayed;
 - (_Bool)handwritingIsDisplayed;
 - (void)showHandwritingBrowserWithExistingPayload:(id)arg1;
+- (_Bool)_shouldShowHandwriting;
 - (_Bool)_switcherPluginHasTouchTokenForDirectSend;
 - (_Bool)_switcherPluginCanMessageAPI;
 - (_Bool)_switcherPluginCanMessageAPIOnBehalfOfPlugin:(id)arg1;
@@ -170,6 +174,7 @@
 - (void)_dismissBrowserViewControllerAndReloadInputViews:(_Bool)arg1;
 - (void)dismissBrowserViewController;
 - (void)showBrowserForPlugin:(id)arg1 dataSource:(id)arg2 style:(unsigned long long)arg3;
+- (void)launchAndShowBrowserForPlugin:(id)arg1 dataSource:(id)arg2 style:(unsigned long long)arg3;
 - (void)_setupObserverForLaunchAppExtensionForDebugging;
 - (void)_launchAppExtensionForDebugging;
 - (void)switcherViewController:(id)arg1 hasUpdatedLastTouchDate:(id)arg2;
@@ -190,6 +195,7 @@
 - (void)browserTransitionCoordinatorWillTransitionOrPresentToFullscreen:(id)arg1 withReason:(long long)arg2;
 - (void)setInputViewVisible:(_Bool)arg1 entryFieldCollapsed:(_Bool)arg2 animated:(_Bool)arg3 messageDelegate:(_Bool)arg4;
 - (void)setInputViewVisible:(_Bool)arg1 entryFieldCollapsed:(_Bool)arg2 animated:(_Bool)arg3;
+- (_Bool)isHandwritingLandscape;
 - (void)composeRecipientViewDidBecomeFirstResponder:(id)arg1;
 - (void)keyboardWillShow:(id)arg1;
 - (void)keyboardDidHide:(id)arg1;
@@ -220,7 +226,6 @@
 - (void)_loadPhotosBrowser;
 - (void)didTransitionFromOrientation:(long long)arg1 toOrientation:(long long)arg2;
 - (void)clearBrowserViewControllerIfNecessary;
-- (id)inputAccessoryView;
 - (id)inputViewController;
 - (id)init;
 - (void)dealloc;

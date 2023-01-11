@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableArray;
+@class MISSING_TYPE, NSArray, NSMutableArray;
 
 @interface _Body
 {
@@ -21,8 +21,8 @@
     NSMutableArray *_shiftTexs14;
     NSMutableArray *_shiftTexs23;
     NSMutableArray *_shiftTexs13;
-    union _GLKVector2 _bone;
-    union _GLKVector2 _offset;
+    MISSING_TYPE *_bone;
+    MISSING_TYPE *_offset;
 }
 
 @property(nonatomic) unsigned char waitingForFootRaise; // @synthesize waitingForFootRaise=_waitingForFootRaise;
@@ -31,8 +31,8 @@
 @property(nonatomic) BOOL animationFrame; // @synthesize animationFrame=_animationFrame;
 @property(nonatomic) BOOL animationDirection; // @synthesize animationDirection=_animationDirection;
 @property(nonatomic) float curBodyX; // @synthesize curBodyX=_curBodyX;
-@property(nonatomic) union _GLKVector2 offset; // @synthesize offset=_offset;
-@property(nonatomic) union _GLKVector2 bone; // @synthesize bone=_bone;
+@property(nonatomic) MISSING_TYPE *offset; // @synthesize offset=_offset;
+@property(nonatomic) MISSING_TYPE *bone; // @synthesize bone=_bone;
 @property(retain, nonatomic) NSMutableArray *shiftTexs13; // @synthesize shiftTexs13=_shiftTexs13;
 @property(retain, nonatomic) NSMutableArray *shiftTexs23; // @synthesize shiftTexs23=_shiftTexs23;
 @property(retain, nonatomic) NSMutableArray *shiftTexs14; // @synthesize shiftTexs14=_shiftTexs14;

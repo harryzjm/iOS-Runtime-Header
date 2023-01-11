@@ -30,6 +30,7 @@
 - (id)accessibilityCustomRotors;
 - (_Bool)isAccessibilityElement;
 - (id)accessibilityHint;
+- (id)accessibilityTextualContext;
 - (id)accessibilityLabel;
 - (void)_axSetEmojiCandidates:(id)arg1;
 - (id)_axEmojiCandidates;

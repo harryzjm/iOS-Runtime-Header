@@ -4,10 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
-@interface EKEventActionChange
+#import <EventKit/EKOwnerIDProviding-Protocol.h>
+
+@class EKObjectID;
+
+@interface EKEventActionChange <EKOwnerIDProviding>
 {
+    EKObjectID *_ownerID;
 }
+
++ (void)fetchEventActionChangesInCalendar:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
++ (void)fetchEventActionChangesInSource:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
++ (void)fetchEventActionChangesInStore:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
++ (int)entityType;
+@property(readonly, nonatomic) EKObjectID *ownerID; // @synthesize ownerID=_ownerID;
+- (void).cxx_destruct;
+- (id)initWithChangeProperties:(id)arg1;
 
 @end
 

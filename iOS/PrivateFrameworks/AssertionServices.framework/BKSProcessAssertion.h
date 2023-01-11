@@ -4,23 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class RBSAssertion;
 
 @interface BKSProcessAssertion
 {
-    int _pid;
-    NSString *_bundleIdentifier;
-    unsigned int _flags;
     unsigned int _reason;
+    unsigned int _flags;
+    RBSAssertion *_mediaPlaybackHackAssertion;
 }
 
 + (id)NameForReason:(unsigned int)arg1;
 @property(readonly, nonatomic) unsigned int reason; // @synthesize reason=_reason;
-- (id)_clientQueue_updateEvent;
-- (id)_clientQueue_destroyEvent;
-- (id)_clientQueue_createEvent;
+- (void).cxx_destruct;
+- (unsigned long long)_legacyFlagsForFlags:(unsigned int)arg1;
+- (unsigned long long)_legacyReasonForReason:(unsigned int)arg1;
+- (void)assertion:(id)arg1 didInvalidateWithError:(id)arg2;
+- (void)invalidate;
+- (_Bool)acquire;
 @property(nonatomic) unsigned int flags;
-- (void)dealloc;
 - (id)initWithPID:(int)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4;
 - (id)initWithPID:(int)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (id)initWithPID:(int)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(CDUnknownBlockType)arg5 acquire:(_Bool)arg6;
@@ -28,7 +29,6 @@
 - (id)initWithBundleIdentifier:(id)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (id)initWithBundleIdentifier:(id)arg1 flags:(unsigned int)arg2 reason:(unsigned int)arg3 name:(id)arg4 withHandler:(CDUnknownBlockType)arg5 acquire:(_Bool)arg6;
 - (id)initWithBundleIdentifier:(id)arg1 pid:(int)arg2 flags:(unsigned int)arg3 reason:(unsigned int)arg4 name:(id)arg5 withHandler:(CDUnknownBlockType)arg6 acquire:(_Bool)arg7;
-- (id)init;
 
 @end
 

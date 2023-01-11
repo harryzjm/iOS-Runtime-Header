@@ -11,7 +11,9 @@
 + (_Bool)actionAvailableForContact:(id)arg1;
 - (_Bool)canBePerformedWhenDeviceIsLocked;
 - (void)performFromView:(id)arg1;
+- (id)icon;
 - (id)localizedName;
+- (id)initWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 
 @end
 

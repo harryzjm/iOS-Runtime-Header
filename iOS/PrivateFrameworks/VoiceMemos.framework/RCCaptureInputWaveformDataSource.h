@@ -5,10 +5,11 @@
 //
 
 #import <VoiceMemos/AVCaptureAudioDataOutputSampleBufferDelegate-Protocol.h>
+#import <VoiceMemos/RCWaveformDataSourceObserver-Protocol.h>
 
-@class NSArray, NSString, RCComposition, RCCompositionFragment, RCMutableComposition, RCMutableCompositionFragment, RCWaveform;
+@class NSArray, NSString, RCComposition, RCCompositionFragment, RCCompositionWaveformDataSource, RCMutableComposition, RCMutableCompositionFragment, RCWaveform;
 
-@interface RCCaptureInputWaveformDataSource <AVCaptureAudioDataOutputSampleBufferDelegate>
+@interface RCCaptureInputWaveformDataSource <AVCaptureAudioDataOutputSampleBufferDelegate, RCWaveformDataSourceObserver>
 {
     double captureDelta;
     _Bool _overdub;
@@ -18,6 +19,7 @@
     RCComposition *_destinationComposition;
     RCCompositionFragment *_destinationFragment;
     RCWaveform *_baseWaveform;
+    RCCompositionWaveformDataSource *_baseWaveformDataSource;
     double _updatedCapturedFragmentDuration;
     double _finalCapturedFragmentDuration;
     double _captureInsertionTimeInComposition;
@@ -31,6 +33,7 @@
 @property(readonly, nonatomic) _Bool canUpdateCaptureComposition; // @synthesize canUpdateCaptureComposition=_canUpdateCaptureComposition;
 @property(readonly, nonatomic) double finalCapturedFragmentDuration; // @synthesize finalCapturedFragmentDuration=_finalCapturedFragmentDuration;
 @property(readonly, nonatomic) double updatedCapturedFragmentDuration; // @synthesize updatedCapturedFragmentDuration=_updatedCapturedFragmentDuration;
+@property(readonly, nonatomic) RCCompositionWaveformDataSource *baseWaveformDataSource; // @synthesize baseWaveformDataSource=_baseWaveformDataSource;
 @property(readonly, nonatomic) RCWaveform *baseWaveform; // @synthesize baseWaveform=_baseWaveform;
 @property(readonly, nonatomic, getter=isOverdub) _Bool overdub; // @synthesize overdub=_overdub;
 @property(readonly, nonatomic) RCCompositionFragment *destinationFragment; // @synthesize destinationFragment=_destinationFragment;
@@ -54,6 +57,7 @@
 @property(readonly, nonatomic) RCMutableComposition *capturedComposition; // @synthesize capturedComposition=_capturedComposition;
 - (id)segmentsInCompositionByConvertingFromActiveLoadingFragment:(id)arg1;
 - (CDStruct_73a5d3ca)timeRangeToHighlight;
+- (id)waveformSegmentsIntersectingTimeRange:(CDStruct_73a5d3ca)arg1;
 - (id)waveformSegmentsInTimeRange:(CDStruct_73a5d3ca)arg1;
 - (void)updateCapturedDelta:(double)arg1;
 - (id)_captureSegmentsInComponentWaveform:(id)arg1 captureTimeRange:(CDStruct_73a5d3ca)arg2 componentWaveformSegmentOffset:(double)arg3;
@@ -63,6 +67,10 @@
 - (_Bool)waitUntilFinished;
 - (void)finishLoadingWithCompletionTimeout:(unsigned long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)startLoading;
+- (void)cancelLoading;
+- (void)waveformDataSourceRequiresUpdate:(id)arg1;
+- (void)waveformDataSource:(id)arg1 didLoadWaveformSegment:(id)arg2;
+- (void)waveformDataSourceDidFinishLoading:(id)arg1;
 - (void)_initializeCaptureComposition;
 - (id)initWithDestinationComposition:(id)arg1 destinationFragment:(id)arg2 isOverdub:(_Bool)arg3;
 

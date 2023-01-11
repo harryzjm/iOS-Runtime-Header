@@ -29,7 +29,9 @@
     unsigned long long _linkType;
 }
 
++ (long long)currentDeviceAuthenticationMode;
 + (id)deviceSpecificLocalizedStringWithKey:(id)arg1;
++ (id)personaIDIfCurrentPersonaIsEnterprise;
 + (id)_buildNumber;
 + (id)_osVersion;
 + (id)_osName;
@@ -63,12 +65,14 @@
 @property(copy) NSString *uniqueDeviceIdentifier; // @synthesize uniqueDeviceIdentifier=_uniqueDeviceIdentifier;
 @property(copy) NSString *serverFriendlyDescription; // @synthesize serverFriendlyDescription=_serverFriendlyDescription;
 - (void).cxx_destruct;
+- (id)_volumeGroupUUID;
 @property(readonly) NSString *phoneNumber;
 @property(readonly) _Bool isMultiUserMode;
 @property(readonly) _Bool isInternalBuild;
 @property(readonly) NSString *integratedCircuitCardIdentifier;
 @property(readonly) NSString *mobileEquipmentIdentifier;
-@property(readonly) _Bool isAppleIDLoginEnabled;
+@property(readonly) _Bool isFaceIDCapable;
+@property(readonly) _Bool isBiometricAuthCapable;
 @property(readonly) _Bool isProtectedWithPasscode;
 @property(readonly) _Bool isInCircle;
 @property(readonly) _Bool isUnlocked;

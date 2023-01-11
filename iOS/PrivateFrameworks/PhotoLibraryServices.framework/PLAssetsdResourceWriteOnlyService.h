@@ -4,21 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <PhotoLibraryServices/PLAssetsdResourceWriteOnlyServiceProtocol-Protocol.h>
 
 @class NSString;
 
-@interface PLAssetsdResourceWriteOnlyService : NSObject <PLAssetsdResourceWriteOnlyServiceProtocol>
+@interface PLAssetsdResourceWriteOnlyService <PLAssetsdResourceWriteOnlyServiceProtocol>
 {
 }
 
+- (void)saveAssetWithDataAndPorts:(id)arg1 clientConnection:(id)arg2 imageSurface:(id)arg3 previewImageSurface:(id)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)saveAssetWithDataAndPorts:(id)arg1 imageSurface:(id)arg2 previewImageSurface:(id)arg3 reply:(CDUnknownBlockType)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MTLType, NSString;
+@class MTLStructType, MTLType, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MTLArgumentInternal
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)bufferDataSize;
 - (unsigned long long)bufferAlignment;
 - (void)dealloc;
+@property(readonly) MTLStructType *structType; // @dynamic structType;
 - (id)initWithName:(id)arg1 type:(unsigned long long)arg2 access:(unsigned long long)arg3 index:(unsigned long long)arg4 active:(_Bool)arg5 arrayLength:(unsigned long long)arg6 typeDescription:(id)arg7;
 - (id)initWithName:(id)arg1 type:(unsigned long long)arg2 access:(unsigned long long)arg3 index:(unsigned long long)arg4 active:(_Bool)arg5 arrayLength:(unsigned long long)arg6;
 

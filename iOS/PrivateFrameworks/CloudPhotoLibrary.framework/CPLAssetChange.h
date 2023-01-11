@@ -22,6 +22,8 @@
     long long _duration;
     CLLocation *_location;
     NSArray *_keywords;
+    NSString *_mediaMetaDataType;
+    NSData *_mediaMetaData;
     NSString *_timeZoneName;
     NSNumber *_timeZoneOffset;
     NSString *_momentIdentifier;
@@ -85,6 +87,8 @@
 @property(copy, nonatomic) NSNumber *timeZoneOffset; // @synthesize timeZoneOffset=_timeZoneOffset;
 @property(copy, nonatomic) NSString *timeZoneName; // @synthesize timeZoneName=_timeZoneName;
 @property(nonatomic, getter=isHidden) _Bool hidden; // @synthesize hidden=_hidden;
+@property(retain, nonatomic) NSData *mediaMetaData; // @synthesize mediaMetaData=_mediaMetaData;
+@property(copy, nonatomic) NSString *mediaMetaDataType; // @synthesize mediaMetaDataType=_mediaMetaDataType;
 @property(copy, nonatomic) NSArray *keywords; // @synthesize keywords=_keywords;
 @property(retain, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property(nonatomic) long long duration; // @synthesize duration=_duration;
@@ -98,6 +102,7 @@
 @property(copy, nonatomic) NSDate *lastSharedDate; // @synthesize lastSharedDate=_lastSharedDate;
 @property(copy, nonatomic) NSString *masterIdentifier; // @synthesize masterIdentifier=_masterIdentifier;
 - (void).cxx_destruct;
+- (_Bool)isAssetChange;
 - (id)scopeIdentifiersForQuarantine;
 - (unsigned long long)fullChangeTypeForFullRecord;
 - (_Bool)_canLowerQuota;

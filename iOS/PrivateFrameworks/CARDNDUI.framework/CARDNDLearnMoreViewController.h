@@ -4,21 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
-
-@class NSLayoutConstraint, UITextView;
-
-@interface CARDNDLearnMoreViewController : UIViewController
+@interface CARDNDLearnMoreViewController
 {
-    UITextView *_textView;
-    NSLayoutConstraint *_bottomMarginConstraint;
 }
 
-@property(retain, nonatomic) NSLayoutConstraint *bottomMarginConstraint; // @synthesize bottomMarginConstraint=_bottomMarginConstraint;
-@property(retain, nonatomic) UITextView *textView; // @synthesize textView=_textView;
-- (void).cxx_destruct;
-- (void)viewSafeAreaInsetsDidChange;
 - (void)viewDidLoad;
+- (id)init;
 
 @end
 

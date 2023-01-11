@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CADDatabaseInitializationOptions, CADObjectID, NSArray;
+@class CADObjectID, NSArray;
 
 @protocol CADDatabaseInterface
 - (void)CADDatabaseLastConfirmedSplashScreenVersion:(void (^)(int, unsigned long long))arg1;
@@ -21,12 +21,12 @@
 - (void)CADDatabaseGetChangedEntityIDsSinceTimestamp:(double)arg1 reply:(void (^)(int, _Bool, NSArray *, double))arg2;
 - (void)CADDatabaseGetChangesSinceSequenceNumber:(int)arg1 reply:(void (^)(int, NSDictionary *))arg2;
 - (void)CADDatabaseGetSequenceNumber:(void (^)(int, int))arg1;
-- (void)CADDatabaseClearSuperfluousChanges:(void (^)(int))arg1;
+- (void)CADDatabaseMarkIndividualChangesConsumed:(NSArray *)arg1 reply:(void (^)(int))arg2;
 - (void)CADDatabaseMarkChangedObjectIDsConsumedUpToSequenceNumber:(long long)arg1 reply:(void (^)(int))arg2;
-- (void)CADDatabaseFetchObjectChangesForEntityType:(int)arg1 insideObject:(CADObjectID *)arg2 reply:(void (^)(int, _Bool, long long, NSArray *))arg3;
-- (void)CADDatabaseFetchChangedObjectIDsSinceSequenceNumber:(long long)arg1 reply:(void (^)(int, _Bool, long long, NSArray *, NSArray *, NSArray *))arg2;
+- (void)CADDatabaseFetchObjectChangesForEntityTypes:(NSArray *)arg1 insideObject:(CADObjectID *)arg2 reply:(void (^)(int, _Bool, long long, NSArray *))arg3;
+- (void)CADDatabaseFetchChangedObjectIDsSinceSequenceNumber:(long long)arg1 reply:(void (^)(int, _Bool, long long, NSData *, int, int, int))arg2;
+- (void)CADDatabaseUnregisterForDetailedChangeTracking:(void (^)(int))arg1;
 - (void)CADDatabaseRegisterForDetailedChangeTracking:(void (^)(int, long long))arg1;
 - (void)CADDatabaseGetUUID:(void (^)(int, NSString *))arg1;
-- (void)CADDatabaseSetInitializationOptions:(CADDatabaseInitializationOptions *)arg1 reply:(void (^)(int))arg2;
 @end
 

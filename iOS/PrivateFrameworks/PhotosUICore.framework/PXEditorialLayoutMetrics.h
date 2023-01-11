@@ -7,6 +7,7 @@
 @interface PXEditorialLayoutMetrics
 {
     _Bool _useSaliency;
+    _Bool _useNewImplementation;
     unsigned long long _numberOfColumns;
     double _interTileSpacing;
     double _headerHeight;
@@ -14,6 +15,7 @@
     struct UIEdgeInsets _padding;
 }
 
+@property(nonatomic) _Bool useNewImplementation; // @synthesize useNewImplementation=_useNewImplementation;
 @property(nonatomic) _Bool useSaliency; // @synthesize useSaliency=_useSaliency;
 @property(nonatomic) unsigned long long lowerItemCountThreshold; // @synthesize lowerItemCountThreshold=_lowerItemCountThreshold;
 @property(nonatomic) double headerHeight; // @synthesize headerHeight=_headerHeight;

@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PHAssetCollection, PHImportResults, PUImportActionCoordinator, PUImportSessionInfo;
+@class PHAssetCollection, PHImportResults, PUImportActionCoordinator, PXImportSessionInfo;
 
 @protocol PUImportActionCoordinatorDelegate
 - (PHAssetCollection *)importDestinationForActionCoordinator:(PUImportActionCoordinator *)arg1;
 - (void)actionCoordinatorDidEndDelete:(PUImportActionCoordinator *)arg1;
 - (void)actionCoordinatorDidBeginDelete:(PUImportActionCoordinator *)arg1;
 - (void)actionCoordinatorWillBeginDelete:(PUImportActionCoordinator *)arg1;
-- (void)actionCoordinator:(PUImportActionCoordinator *)arg1 didCompleteWithImportSession:(PUImportSessionInfo *)arg2 results:(PHImportResults *)arg3;
+- (void)actionCoordinator:(PUImportActionCoordinator *)arg1 didCompleteWithImportSession:(PXImportSessionInfo *)arg2 results:(PHImportResults *)arg3;
 - (void)actionCoordinatorDidCancelImport:(PUImportActionCoordinator *)arg1;
 - (void)actionCoordinatorDidBeginImport:(PUImportActionCoordinator *)arg1;
 - (void)actionCoordinatorWillBeginImport:(PUImportActionCoordinator *)arg1;

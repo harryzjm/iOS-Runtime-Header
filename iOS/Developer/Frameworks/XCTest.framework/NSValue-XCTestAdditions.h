@@ -7,6 +7,8 @@
 #import <Foundation/NSValue.h>
 
 @interface NSValue (XCTestAdditions)
++ (id)xct_valueWithCGRect:(struct CGRect)arg1;
+@property(readonly) struct CGRect xct_CGRectValue;
 - (id)xct_contentDescription;
 @end
 

@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TSCH3DGLFramebuffer;
+@class TSCH3DFramebuffer;
 
 __attribute__((visibility("hidden")))
 @interface TSCH3DFramebufferGaussianBlurAndBlendPipeline
 {
     float mBlendFactor;
-    TSCH3DGLFramebuffer *mBlendTexture;
+    TSCH3DFramebuffer *mBlendTexture;
 }
 
 + (id)effectsArray;
-@property(retain, nonatomic) TSCH3DGLFramebuffer *blendTexture; // @synthesize blendTexture=mBlendTexture;
+@property(retain, nonatomic) TSCH3DFramebuffer *blendTexture; // @synthesize blendTexture=mBlendTexture;
 @property(nonatomic) float blendFactor; // @synthesize blendFactor=mBlendFactor;
 - (void)updateShaderEffectsStates;
 - (void)dealloc;

@@ -17,9 +17,6 @@ __attribute__((visibility("hidden")))
 + (id)capabilities;
 + (id)applicationWorkspace;
 + (id)recentsManagerWithSchedulerProvider:(id)arg1;
-+ (id)personaStore;
-+ (id)fmfFacade;
-+ (id)accountsFacade;
 
 @end
 

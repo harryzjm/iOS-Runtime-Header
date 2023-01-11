@@ -16,7 +16,7 @@
 @property(retain) IBICSlotFilter *lhs; // @synthesize lhs=_lhs;
 - (void).cxx_destruct;
 - (id)descriptionWithIndent:(long long)arg1;
-- (id)descriptoinName;
+- (id)descriptionName;
 - (void)ibic_generateSubNodes:(CDUnknownBlockType)arg1;
 - (_Bool)isEqualToSlotFilterWithKnownIdenticalClass:(id)arg1;
 - (unsigned long long)hash;

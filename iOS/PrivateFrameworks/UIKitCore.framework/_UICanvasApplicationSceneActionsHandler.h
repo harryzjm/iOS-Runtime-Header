@@ -4,18 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <UIKitCore/_UICanvasSceneActionsHandler-Protocol.h>
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface _UICanvasApplicationSceneActionsHandler : NSObject <_UICanvasSceneActionsHandler>
+@interface _UICanvasApplicationSceneActionsHandler <_UICanvasSceneActionsHandler>
 {
 }
 
-- (id)respondToActions:(id)arg1 forScene:(id)arg2 inCanvas:(id)arg3;
+- (id)respondToActions:(id)arg1 forScene:(id)arg2 inCanvas:(id)arg3 fromTransitionContext:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

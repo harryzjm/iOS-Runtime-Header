@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_deleteLastCharacter;
+- (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;

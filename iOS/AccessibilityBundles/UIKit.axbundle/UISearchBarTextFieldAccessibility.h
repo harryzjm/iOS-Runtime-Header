@@ -11,15 +11,17 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityRightButtons;
 - (void)_accessibilityEditingModeChanged;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (_Bool)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityLocalizedStringTableName;
 - (id)accessibilityLocalizationBundlePath;
 - (id)accessibilityLocalizationBundleID;
 - (id)accessibilityLocalizedStringKey;
+- (id)accessibilityValue;
 - (id)accessibilityLabel;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

@@ -10,10 +10,11 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (_Bool)_accessibilityIsScannerElement;
+- (_Bool)accessibilityRespondsToUserInteraction;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (unsigned long long)_accessibilityAutomationType;
 - (_Bool)isAccessibilityElement;
 
 @end

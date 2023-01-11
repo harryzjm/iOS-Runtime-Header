@@ -34,7 +34,7 @@
 + (id)descriptionForBudget:(unsigned long long)arg1;
 @property(readonly, nonatomic) __weak CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
 - (void).cxx_destruct;
-- (void)networkStateDidChangeForNetworkWatcher:(id)arg1;
+- (void)watcher:(id)arg1 stateDidChangeToNetworkState:(id)arg2;
 - (void)scheduledOverrideDidEnd:(id)arg1;
 @property(readonly) _Bool isDataBudgetOverriden;
 - (void)stopOverridingSystemBudgetsForClient:(unsigned long long)arg1;
@@ -47,9 +47,11 @@
 @property(readonly) _Bool canBoostBackgroundOperations;
 @property(readonly) _Bool canBoostOperations;
 @property(readonly) _Bool isOnCellularOrUnknown;
+@property(readonly) _Bool isNetworkConstrained;
 @property(readonly) _Bool isNetworkConnected;
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 @property(readonly) unsigned long long freeDiskSpaceSize;
+- (void)updateDiskPressureState;
 @property(readonly) unsigned long long diskPressureState;
 - (id)componentName;
 - (void)closeAndDeactivate:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;

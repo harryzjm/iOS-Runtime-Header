@@ -9,7 +9,7 @@
 @interface UIButton (IBCocoaTouchToolIntegration)
 - (id)ibNormalInitialAttributedTextColor;
 - (struct CGSize)sizeThatFitsBounds;
-- (struct CGRect)textRect;
+- (struct CGRect)ibTextRect;
 - (void)setIbAppropriateTitle:(id)arg1 forState:(unsigned long long)arg2;
 - (_Bool)ibHasText;
 - (_Bool)ibHasAttributedTitle;

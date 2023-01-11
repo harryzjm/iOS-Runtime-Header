@@ -7,10 +7,11 @@
 #import <NewsCore/NFCopying-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCAssetHandle, FCColor, FCPurchaseOfferableConfiguration, NSArray, NSData, NSDate, NSString, NSURL, NTPBPublisherPaidDescriptionStrings;
+@class FCAssetHandle, FCColor, FCPurchaseOfferableConfiguration, FCSubscriptionButtonConfiguration, NSArray, NSData, NSDate, NSString, NSURL, NTPBPublisherPaidDescriptionStrings;
 @protocol FCChannelProviding, FCFeedTheming, FCSectionProviding, FCTagProviding, FCTopicProviding;
 
 @protocol FCTagProviding <NSObject, NFCopying>
+@property(readonly, copy, nonatomic) FCSubscriptionButtonConfiguration *paidBundleSubscriptionButtonConfiguration;
 @property(readonly, nonatomic) NSDate *publisherSpecifiedArticleIDsModifiedDate;
 @property(readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs;
 @property(readonly, nonatomic) NSString *articleRecirculationConfigJSON;
@@ -26,35 +27,34 @@
 @property(readonly, nonatomic) _Bool publisherPaidWebAccessOptIn;
 @property(readonly, nonatomic) _Bool publisherPaidLeakyPaywallOptOut;
 @property(readonly, nonatomic) NSArray *publisherPaidOfferableConfigurations;
+@property(readonly, nonatomic) NSArray *publisherPaidBundlePurchaseIDs;
 @property(readonly, nonatomic) NSArray *publisherPaidFeldsparablePurchaseIDs;
 @property(readonly, copy, nonatomic) NSString *publisherPaidWebAccessURL;
 @property(readonly, copy, nonatomic) NSString *publisherPaidVerificationURL;
 @property(readonly, copy, nonatomic) NSString *publisherPaidAuthorizationURL;
+@property(readonly, copy, nonatomic) NSString *magazineGenre;
 @property(readonly, copy, nonatomic) NSString *subtitle;
 @property(readonly, nonatomic) _Bool isNotificationEnabled;
 @property(readonly, nonatomic) long long minimumNewsVersion;
 @property(readonly, nonatomic) long long score;
-@property(readonly, nonatomic) NSArray *pinnedArticleIDs;
 @property(readonly, nonatomic) NSArray *allowedStorefrontIDs;
 @property(readonly, nonatomic) NSArray *blockedStorefrontIDs;
 @property(readonly, nonatomic) NSArray *iAdKeywords;
 @property(readonly, nonatomic) NSArray *iAdCategories;
+@property(readonly, copy, nonatomic) FCColor *groupDarkStyleTitleColor;
 @property(readonly, copy, nonatomic) FCColor *groupTitleColor;
 @property(readonly, copy, nonatomic) id <FCFeedTheming> theme;
 @property(readonly, copy, nonatomic) NSString *coverArticleListID;
 @property(readonly, nonatomic) FCAssetHandle *feedNavImageAssetHandle;
 @property(readonly, nonatomic) FCAssetHandle *coverImageAssetHandle;
 @property(readonly, nonatomic) _Bool isSubscribable;
-@property(readonly, nonatomic) NSArray *relatedChannelIDsForOnboarding;
-@property(readonly, nonatomic) NSArray *relatedTopicIDsForOnboarding;
-@property(readonly, nonatomic) NSArray *relatedChannelIDs;
-@property(readonly, nonatomic) NSArray *relatedTopicIDs;
 @property(readonly, copy, nonatomic) NSString *primaryAudience;
 @property(readonly, copy, nonatomic) NSString *replacementID;
 @property(readonly, nonatomic) _Bool isExplicitContent;
 @property(readonly, nonatomic) _Bool isDeprecated;
 @property(readonly, nonatomic) _Bool isPublic;
 @property(readonly, nonatomic) long long contentProvider;
+@property(readonly, copy, nonatomic) NSString *language;
 @property(readonly, copy, nonatomic) NSString *versionKey;
 @property(readonly, copy, nonatomic) NSString *nameCompact;
 @property(readonly, copy, nonatomic) NSString *name;

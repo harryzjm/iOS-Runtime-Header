@@ -15,13 +15,16 @@
     _Bool _hasRemoteDevices;
     _Bool _inFailForward;
     _Bool _canMakeRemotePayments;
+    _Bool _canDecryptBAAEncryptedData;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) _Bool canDecryptBAAEncryptedData; // @synthesize canDecryptBAAEncryptedData=_canDecryptBAAEncryptedData;
 @property(nonatomic) _Bool canMakeRemotePayments; // @synthesize canMakeRemotePayments=_canMakeRemotePayments;
 @property(nonatomic, getter=isInFailForward) _Bool inFailForward; // @synthesize inFailForward=_inFailForward;
 @property(nonatomic) _Bool hasRemoteDevices; // @synthesize hasRemoteDevices=_hasRemoteDevices;
 @property(nonatomic) _Bool hasSecureElement; // @synthesize hasSecureElement=_hasSecureElement;
+@property(readonly, nonatomic, getter=_isDemoModeActive) _Bool _isDemoModeActive;
 @property(readonly, nonatomic) _Bool canMakeLocalPayments;
 @property(readonly, nonatomic) _Bool canMakePayments;
 - (id)copyWithZone:(struct _NSZone *)arg1;

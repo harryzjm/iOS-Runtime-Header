@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Message/EFLoggable-Protocol.h>
 #import <Message/NSURLSessionDownloadDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSString;
 
-@interface MFMailDropAttachmentDataProvider <NSURLSessionDownloadDelegate>
+@interface MFMailDropAttachmentDataProvider <EFLoggable, NSURLSessionDownloadDelegate>
 {
-    NSMutableDictionary *_attachments;
+    NSMutableDictionary *_requests;
 }
 
++ (id)log;
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didResumeAtOffset:(long long)arg3 expectedTotalBytes:(long long)arg4;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didWriteData:(long long)arg3 totalBytesWritten:(long long)arg4 totalBytesExpectedToWrite:(long long)arg5;

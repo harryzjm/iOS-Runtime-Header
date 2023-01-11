@@ -11,6 +11,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_accessibilityIsInCollectionCell;
+- (struct _NSRange)_accessibilityIndexPathAsRange;
+- (_Bool)_axContentViewHasSingleFocusableSubview;
+- (_Bool)canBecomeFocused;
+- (_Bool)_isEligibleForFocusInteraction;
 - (id)accessibilityDropPointDescriptors;
 - (id)accessibilityDragSourceDescriptors;
 - (_Bool)_accessibilityIsOutsideParentBounds;
@@ -35,6 +40,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)_accessibilityParentScrollView;
 - (id)_accessibilityParentCollectionView;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

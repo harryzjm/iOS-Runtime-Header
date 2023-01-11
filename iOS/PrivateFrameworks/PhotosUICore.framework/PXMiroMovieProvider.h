@@ -11,7 +11,7 @@
     NSSet *_defaultAssets;
 }
 
-+ (void)preloadMiroFrameworkInBackground;
++ (void)preloadMiroFrameworkIfNeeded;
 + (void *)_loadMiroFrameworkIfNeeded;
 + (void)initialize;
 @property(readonly, nonatomic) NSSet *defaultAssets; // @synthesize defaultAssets=_defaultAssets;

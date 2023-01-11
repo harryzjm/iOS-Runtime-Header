@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PHAsset, PHMomentShare, PHSuggestion, PXCMMPhotoKitImportStatusManager, PXPhotoKitAssetsDataSourceManager;
+@class PHAsset, PHMomentShare, PHSuggestion, PXCMMPhotoKitImportStatusManager, PXPhotoKitAssetsDataSourceManager, PXPhotoKitMomentShareStatus;
 
 @interface PXCMMPhotoKitSession
 {
     PXCMMPhotoKitImportStatusManager *_cmmImportStatusManager;
+    PXPhotoKitMomentShareStatus *_momentShareStatus;
     PHMomentShare *_momentShare;
     PHSuggestion *_suggestion;
     PHMomentShare *_originatingMomentShare;
@@ -21,7 +22,7 @@
 @property(readonly, nonatomic) PHMomentShare *momentShare; // @synthesize momentShare=_momentShare;
 - (void).cxx_destruct;
 - (id)diagnosticDictionary;
-- (id)assetsProgressListenerWithPresentationStyle:(long long)arg1;
+- (id)momentShareStatusPresentationWithPresentationStyle:(long long)arg1;
 - (id)description;
 - (id)importStatusManager;
 - (id)notificationSuppressionContexts;

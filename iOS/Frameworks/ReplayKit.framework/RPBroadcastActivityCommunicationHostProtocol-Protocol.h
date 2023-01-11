@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSDictionary, NSString, NSURL;
+@class NSString, NSURL;
 
 @protocol RPBroadcastActivityCommunicationHostProtocol
 - (oneway void)presentationInfoWithCompletion:(void (^)(long long, struct CGRect, unsigned long long))arg1;
-- (oneway void)extensionDidFinishWithLaunchURL:(NSURL *)arg1 broadcastURL:(NSURL *)arg2 extensionBundleID:(NSString *)arg3 broadcastConfigurationData:(NSData *)arg4 userInfo:(NSDictionary *)arg5 cancelled:(_Bool)arg6;
 - (oneway void)extensionDidFinishWithLaunchURL:(NSURL *)arg1 broadcastURL:(NSURL *)arg2 extensionBundleID:(NSString *)arg3 cancelled:(_Bool)arg4;
 @end
 

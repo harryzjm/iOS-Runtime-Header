@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TLKMultilineText, TLKVibrantLabel;
+@class TLKLabel, TLKMultilineText;
 
 @interface TLKNumericalResultView
 {
     _Bool _topLabelIsVibrant;
     TLKMultilineText *_title;
     TLKMultilineText *_subtitle;
-    TLKVibrantLabel *_titleLabel;
-    TLKVibrantLabel *_subtitleLabel;
+    TLKLabel *_titleLabel;
+    TLKLabel *_subtitleLabel;
 }
 
-@property(retain) TLKVibrantLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
-@property(retain) TLKVibrantLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property(retain, nonatomic) TLKLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property(retain, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(nonatomic) _Bool topLabelIsVibrant; // @synthesize topLabelIsVibrant=_topLabelIsVibrant;
 @property(retain, nonatomic) TLKMultilineText *subtitle; // @synthesize subtitle=_subtitle;
 @property(retain, nonatomic) TLKMultilineText *title; // @synthesize title=_title;
@@ -26,8 +26,7 @@
 - (id)subtitleLabelText;
 - (id)titleLabelText;
 - (void)observedPropertiesChanged;
-- (void)styleDidChange:(unsigned long long)arg1;
-- (id)init;
+- (id)setupContentView;
 
 @end
 

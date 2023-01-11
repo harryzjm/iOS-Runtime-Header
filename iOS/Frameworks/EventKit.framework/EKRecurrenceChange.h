@@ -4,10 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
-@interface EKRecurrenceChange
+#import <EventKit/EKOwnerIDProviding-Protocol.h>
+
+@class EKObjectID;
+
+@interface EKRecurrenceChange <EKOwnerIDProviding>
 {
+    EKObjectID *_ownerID;
 }
+
++ (void)fetchRecurrenceChangesInCalendar:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
++ (void)fetchRecurrenceChangesInSource:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
++ (void)fetchRecurrenceChangesInStore:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
++ (int)entityType;
+@property(readonly, nonatomic) EKObjectID *ownerID; // @synthesize ownerID=_ownerID;
+- (void).cxx_destruct;
+- (id)initWithChangeProperties:(id)arg1;
 
 @end
 

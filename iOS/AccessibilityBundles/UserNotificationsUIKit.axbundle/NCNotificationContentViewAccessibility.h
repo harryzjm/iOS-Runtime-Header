@@ -12,6 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySupportGesturesAttributes;
+- (id)accessibilityCustomRotors;
 - (_Bool)accessibilityActivate;
 - (_Bool)_accessibilitySupportsActivateAction;
 - (unsigned long long)accessibilityTraits;

@@ -14,10 +14,15 @@ __attribute__((visibility("hidden")))
 
 @property(readonly, copy, nonatomic) TSUColor *numbersKeyColor; // @synthesize numbersKeyColor=_numbersKeyColor;
 - (void).cxx_destruct;
+- (_Bool)URLIsValidForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2 forCrossDocumentPaste:(_Bool)arg3;
 - (id)bladerunnerContainerIdentifier;
+- (id)cloudKitSyncContainerIdentifier;
 - (id)cloudKitContainerIdentifier;
 - (void)p_inputMethodsChanged:(id)arg1;
 - (_Bool)supportsRTL;
+- (id)stringForApplePencilDoubleTapSettingsDescription;
+- (id)stringForSyncActivityPopoverTitle;
+- (id)stringForNoItemsSyncingListItem;
 - (id)stringForEquationChoiceUseEQKitButtonTitle;
 - (id)stringForEquationChoiceBody;
 - (id)stringForEquationChoiceTitle;
@@ -26,6 +31,8 @@ __attribute__((visibility("hidden")))
 - (id)stringForOwnerHasCollabEnabledMessage;
 - (id)stringForOwnerHasCollabEnabledTitle;
 - (id)stringForBoxCollaborationOptInMessage;
+- (id)stringForMoveInlineToFloatingButtonToolTip;
+- (id)stringForMoveInlineToFloatingButtonTitle;
 - (id)stringForCouldntCreatePDFTitle;
 - (id)stringForCloseDocumentConfirmationWillContinueToUpdateInformativeText;
 - (id)stringForCloseDocumentConfirmationAlertMessage;
@@ -35,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)stringForCollaborationOnline;
 - (id)stringForGenericServerUnreachable;
 - (id)stringForICloudUnreachable;
-- (id)stringForCollaborationOffline;
+- (id)stringForCollaborationOfflinePlacard;
 - (id)stringForRemoveLastPrivateParticipantAlertConfirmationMessage;
 - (id)stringForRemoveSelfAlertConfirmationMessage;
 - (id)stringForRemoveSelfAlertConfirmationTitle;
@@ -54,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (id)stringForCloseDocument;
 - (id)stringForOwnerPasswordOnConflictAlertMessage;
 - (id)stringForOwnerPasswordOnConflictAlertTitle;
+- (id)stringForChangePasswordWhileConnectingAlertMessage;
 - (id)stringForCollaborator1_6ConflictWithKeepDetails;
 - (id)stringForCollaborator1_6ConflictDetails;
 - (id)stringForCollaboratorConflictWithKeepDetails;
@@ -76,7 +84,7 @@ __attribute__((visibility("hidden")))
 - (id)previewImageNameForEncryptedNativeDocument;
 - (id)previewImageNameForNativeDocument;
 - (id)universalPreviewImageNameForDocumentType:(id)arg1;
-- (id)applicationTemplateVariantsForLocale:(struct __CFLocale *)arg1;
+- (id)applicationTemplateVariantsForLocale:(id)arg1;
 - (id)appChartPropertyOverrides;
 @property(readonly, copy, nonatomic) NSArray *excelDocumentTypes;
 - (id)importableDocumentTypes;

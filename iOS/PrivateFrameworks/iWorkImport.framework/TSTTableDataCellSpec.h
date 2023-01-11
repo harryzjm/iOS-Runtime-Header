@@ -12,12 +12,16 @@ __attribute__((visibility("hidden")))
     TSTCellSpec *_cellSpec;
 }
 
-@property(readonly, nonatomic) TSTCellSpec *cellSpec; // @synthesize cellSpec=_cellSpec;
++ (id)objectWithCellSpec:(id)arg1 refCount:(unsigned int)arg2;
+- (id)cellSpec;
 - (void).cxx_destruct;
 - (void)setCellSpec:(id)arg1;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
+- (unsigned long long)estimateByteSize;
 - (unsigned long long)hash;
+- (void)encodeToArchive:(struct TableDataList_ListEntry *)arg1 key:(unsigned int)arg2 archiver:(id)arg3;
+- (void)loadFromArchive:(const struct TableDataList_ListEntry *)arg1 unarchiver:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initObjectWithCellSpec:(id)arg1 refCount:(unsigned int)arg2;
 
 @end

@@ -5,13 +5,15 @@
 //
 
 #import <HomeUI/HUQuickControlInteractionCoordinatorDelegate-Protocol.h>
+#import <HomeUI/HUQuickControlTouchContinuing-Protocol.h>
 
 @class HFControlItem, HUQuickControlInteractionCoordinator, HUQuickControlViewProfile, NAValueThrottler, NSString, _HUQuickControlSingleControlHostView;
 
-@interface HUQuickControlSingleControlViewController <HUQuickControlInteractionCoordinatorDelegate>
+@interface HUQuickControlSingleControlViewController <HUQuickControlInteractionCoordinatorDelegate, HUQuickControlTouchContinuing>
 {
     _Bool _writesInProgressOrPossible;
     _Bool _hasWrittenAnyNewValues;
+    _Bool _hasSetControlSize;
     HUQuickControlInteractionCoordinator *_interactionCoordinator;
     id _modelValue;
     NAValueThrottler *_valueWriteThrottler;
@@ -23,6 +25,7 @@
 
 + (Class)controlItemClass;
 + (id)controlItemPredicate;
+@property(nonatomic) _Bool hasSetControlSize; // @synthesize hasSetControlSize=_hasSetControlSize;
 @property(nonatomic) double horizontalControlCompressionFactor; // @synthesize horizontalControlCompressionFactor=_horizontalControlCompressionFactor;
 @property(nonatomic) double verticalDirectionalControlStretchFactor; // @synthesize verticalDirectionalControlStretchFactor=_verticalDirectionalControlStretchFactor;
 @property(retain, nonatomic) HUQuickControlViewProfile *viewProfile; // @synthesize viewProfile=_viewProfile;
@@ -31,8 +34,9 @@
 @property(readonly, nonatomic) NAValueThrottler *valueWriteThrottler; // @synthesize valueWriteThrottler=_valueWriteThrottler;
 @property(nonatomic, getter=areWritesInProgressOrPossible) _Bool writesInProgressOrPossible; // @synthesize writesInProgressOrPossible=_writesInProgressOrPossible;
 @property(readonly, nonatomic) id modelValue; // @synthesize modelValue=_modelValue;
-@property(readonly, nonatomic) HUQuickControlInteractionCoordinator *interactionCoordinator; // @synthesize interactionCoordinator=_interactionCoordinator;
+@property(retain, nonatomic) HUQuickControlInteractionCoordinator *interactionCoordinator; // @synthesize interactionCoordinator=_interactionCoordinator;
 - (void).cxx_destruct;
+- (id)viewForTouchContinuation;
 - (void)interactionCoordinator:(id)arg1 updateControlVerticalStretchFactor:(double)arg2;
 - (void)interactionCoordinator:(id)arg1 updateControlHorizontalCompressionFactor:(double)arg2;
 - (void)hideAuxiliaryViewForInteractionCoordinator:(id)arg1;
@@ -41,6 +45,7 @@
 - (_Bool)hasModelValueChangedForInteractionCoordinator:(id)arg1;
 - (void)interactionCoordinator:(id)arg1 interactionStateDidChange:(_Bool)arg2;
 - (void)interactionCoordinator:(id)arg1 viewValueDidChange:(id)arg2;
+- (void)_updateControlViewReachabilityState;
 - (void)quickControlItemUpdater:(id)arg1 didUpdateResultsForControlItems:(id)arg2;
 - (void)modelValueDidChange;
 - (id)overrideSecondaryStatusText;
@@ -59,6 +64,9 @@
 - (void)invalidateViewProfile;
 - (void)setUserInteractionEnabled:(_Bool)arg1;
 - (_Bool)isUserInteractionEnabled;
+- (id)viewControllerForTouchContinuation;
+- (void)setPreferredControl:(unsigned long long)arg1;
+- (void)setControlOrientation:(unsigned long long)arg1;
 - (void)setControlSize:(unsigned long long)arg1;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
 - (id)overrideValueForCharacteristic:(id)arg1;

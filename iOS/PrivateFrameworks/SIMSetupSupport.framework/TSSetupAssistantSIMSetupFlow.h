@@ -7,22 +7,21 @@
 #import <SIMSetupSupport/TSCellularPlanManagerCacheDelegate-Protocol.h>
 #import <SIMSetupSupport/TSSIMSetupFlowDelegate-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, UIBarButtonItem;
 
 @interface TSSetupAssistantSIMSetupFlow <TSSIMSetupFlowDelegate, TSCellularPlanManagerCacheDelegate>
 {
     _Bool _showAddPlan;
-    _Bool _allowDismiss;
     NSMutableArray *_danglingPlanItems;
     NSString *_iccid;
+    UIBarButtonItem *_cancelButton;
+    NSMutableArray *_currentItemsForIMessage;
 }
 
 + (void)needsToRun:(CDUnknownBlockType)arg1;
-@property _Bool allowDismiss; // @synthesize allowDismiss=_allowDismiss;
-@property(readonly) NSString *iccid; // @synthesize iccid=_iccid;
-@property _Bool showAddPlan; // @synthesize showAddPlan=_showAddPlan;
-@property(retain) NSMutableArray *danglingPlanItems; // @synthesize danglingPlanItems=_danglingPlanItems;
+@property(retain) NSMutableArray *currentItemsForIMessage; // @synthesize currentItemsForIMessage=_currentItemsForIMessage;
 - (void).cxx_destruct;
+- (void)setDefaultNavigationItems:(id)arg1;
 - (void)viewControllerDidComplete:(id)arg1;
 - (id)nextViewControllerFrom:(id)arg1;
 - (id)firstViewController;

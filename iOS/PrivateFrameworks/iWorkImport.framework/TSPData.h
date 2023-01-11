@@ -6,22 +6,22 @@
 
 #import <objc/NSObject.h>
 
+#import <iWorkImport/TSPRemoteDataStorageDelegate-Protocol.h>
 #import <iWorkImport/TSPSplitableData-Protocol.h>
 
-@class NSDate, NSString, TSPDataAttributes, TSPDataManager, TSPDataMetadata, TSPDigest, TSPObjectContext;
+@class NSDate, NSString, TSPDataAttributes, TSPDataManager, TSPDataMetadata, TSPDataUniqueIdentifier, TSPDigest, TSPObjectContext;
 @protocol OS_dispatch_queue, TSPDataStorage;
 
 __attribute__((visibility("hidden")))
-@interface TSPData : NSObject <TSPSplitableData>
+@interface TSPData : NSObject <TSPSplitableData, TSPRemoteDataStorageDelegate>
 {
-    _Atomic int _didCull;
-    long long _identifier;
-    TSPDigest *_digest;
+    _Atomic _Bool _didCull;
     NSObject<OS_dispatch_queue> *_accessQueue;
     id <TSPDataStorage> _storage;
     NSString *_filename;
     TSPDataAttributes *_attributes;
-    _Bool _isDeallocating;
+    long long _identifier;
+    TSPDataUniqueIdentifier *_uniqueIdentifier;
     TSPDataManager *_manager;
     NSDate *_lastModificationDate;
     TSPDataMetadata *_metadata;
@@ -31,10 +31,9 @@ __attribute__((visibility("hidden")))
 + (id)normalizedExtensionForFilename:(id)arg1;
 + (id)typeForFilename:(id)arg1;
 + (id)requiredAVAssetOptions;
-+ (id)cullingListeners;
 + (void)removeCullingListener:(id)arg1;
 + (void)addCullingListener:(id)arg1;
-+ (id)cullingListenersQueue;
++ (void)performDataCullingOperationSynchronously:(_Bool)arg1 usingBlock:(CDUnknownBlockType)arg2;
 + (id)null;
 + (id)readOnlyDataFromNSData:(id)arg1 filename:(id)arg2;
 + (id)readOnlyDataFromURL:(id)arg1;
@@ -47,27 +46,23 @@ __attribute__((visibility("hidden")))
 + (id)dataFromURL:(id)arg1 context:(id)arg2;
 + (_Bool)isSupportedURL:(id)arg1;
 + (id)pasteboardTypeForIdentifier:(long long)arg1;
++ (id)remoteDataWithURL:(id)arg1 digest:(id)arg2 filename:(id)arg3 canDownload:(_Bool)arg4 downloadPriority:(long long)arg5 context:(id)arg6;
 + (id)resourceNameForFilename:(id)arg1 identifier:(long long)arg2;
-+ (id)nsDataWithPattern4:(const char *)arg1;
-+ (id)digestStringForDataWithPattern4:(const char *)arg1;
-+ (id)digestForDataWithPattern4:(const char *)arg1;
-+ (id)readOnlyDataWithPattern4:(const char *)arg1 filename:(id)arg2;
-+ (id)dataWithPattern4:(const char *)arg1 filename:(id)arg2 context:(id)arg3;
-+ (void)temporaryNSDataWithPattern4:(const char *)arg1 accessor:(CDUnknownBlockType)arg2;
 @property(retain, nonatomic) TSPDataMetadata *metadata; // @synthesize metadata=_metadata;
 @property(readonly, nonatomic) NSDate *lastModificationDate; // @synthesize lastModificationDate=_lastModificationDate;
 @property(readonly, nonatomic) __weak TSPDataManager *manager; // @synthesize manager=_manager;
+@property(readonly, nonatomic) TSPDataUniqueIdentifier *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property(readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
 @property(copy, nonatomic) TSPDataAttributes *unsafeAttributes; // @synthesize unsafeAttributes=_attributes;
 - (void).cxx_destruct;
 - (void)upgradeFallbackColorIfNeeded;
 - (id)createMetadataIfNeeded;
+- (struct CGSize)pixelSize;
 - (void)setFallbackColor:(id)arg1;
 - (id)fallbackColor;
 @property(readonly, nonatomic) _Bool gilligan_isRemote;
 - (_Bool)archiveInfoMessage:(struct DataInfo *)arg1 archiver:(id)arg2 packageWriter:(id)arg3;
 - (_Bool)isStorageInPackage:(id)arg1;
-@property(readonly, nonatomic) TSPDigest *digest;
 - (id)preferredFilename;
 - (void)setFilename:(id)arg1 storage:(id)arg2 ifStorageIs:(id)arg3;
 - (void)setFilename:(id)arg1 storage:(id)arg2;
@@ -80,9 +75,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long lengthIfLocal;
 @property(readonly, nonatomic) unsigned long long length;
 - (_Bool)writeToURL:(id)arg1 error:(id *)arg2;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (void)addDownloadObserver:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) _Bool needsDownload;
 - (void)performInputStreamReadWithAccessor:(CDUnknownBlockType)arg1;
@@ -90,7 +85,8 @@ __attribute__((visibility("hidden")))
 - (void)setToCopyOfMetadataIfNil:(id)arg1;
 - (id)copyWithContext:(id)arg1;
 @property(readonly, nonatomic) NSString *digestString;
-@property(readonly, nonatomic) TSPObjectContext *context;
+@property(readonly, nonatomic) TSPDigest *digest;
+@property(readonly, nonatomic) __weak TSPObjectContext *context;
 @property(readonly, nonatomic) unsigned char packageIdentifier;
 @property(readonly, nonatomic) NSString *packageLocator;
 @property(readonly, nonatomic) NSString *documentResourceLocator;
@@ -111,6 +107,7 @@ __attribute__((visibility("hidden")))
 - (id)makeBookmarkDataWithContext:(id)arg1 filename:(id)arg2 error:(out id *)arg3;
 @property(copy) TSPDataAttributes *attributes;
 - (void)didReplaceDataContents;
+- (void)willCullWithFlags:(unsigned long long)arg1;
 - (void)willCull;
 - (void)dealloc;
 @property(nonatomic, getter=isAcknowledgedByServer) _Bool acknowledgedByServer;
@@ -118,8 +115,17 @@ __attribute__((visibility("hidden")))
 - (void)tsp_splitDataWithMaxSize:(unsigned long long)arg1 subdataHandlerBlock:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) unsigned long long tsp_length;
 - (id)pasteboardType;
+- (id)temporaryDataStorageURLForRemoteDataStorage:(id)arg1;
+- (void)didReceiveRemoteDataWithReadChannel:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)didReceiveRemoteDataAtURL:(id)arg1 canMove:(_Bool)arg2 decryptionInfo:(id)arg3 completionQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)didReceiveRemoteData:(id)arg1 decryptionInfo:(id)arg2 completionQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)didReceiveRemoteDataWithHandler:(CDUnknownBlockType)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 @property(readonly, nonatomic) _Bool tsd_allowedToConvertDataAlreadyInDocument;
 @property(nonatomic, setter=tsd_setShouldBeInterpretedAsGenericIfUntagged:) _Bool tsd_shouldBeInterpretedAsGenericIfUntagged;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

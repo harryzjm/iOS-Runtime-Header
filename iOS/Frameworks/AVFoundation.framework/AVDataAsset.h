@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AVAssetInspectorLoader, NSArray, NSDictionary;
+@class AVAssetInspectorLoader, AVDispatchOnce, NSArray, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface AVDataAsset
 {
     NSDictionary *_initializationOptions;
     AVAssetInspectorLoader *_loader;
-    long long _allocateTracksOnceOnly;
+    AVDispatchOnce *_allocateTracksOnceOnly;
     NSArray *_tracks;
 }
 

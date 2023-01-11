@@ -17,11 +17,9 @@
 - (void)_accessibilityZoomIn:(_Bool)arg1;
 - (_Bool)_accessibilityAllowsSiblingsWhenOvergrown;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)dealloc;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_showFocusAtPoint:(struct CGPoint)arg1 startAnimating:(_Bool)arg2;
 - (_Bool)isAccessibilityElement;
-- (id)_accessibilityFaceElements;
 - (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
 - (void)accessibilityZoomInAtPoint:(struct CGPoint)arg1;
 - (unsigned long long)accessibilityTraits;
@@ -29,7 +27,6 @@
 - (_Bool)_axIsPortraitMode;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
-- (id)accessibilityElements;
 - (struct CGPoint)accessibilityActivationPoint;
 
 @end

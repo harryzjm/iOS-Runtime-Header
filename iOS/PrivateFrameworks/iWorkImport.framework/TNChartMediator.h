@@ -7,7 +7,7 @@
 #import <iWorkImport/TSCECalculationEngineRegistration-Protocol.h>
 #import <iWorkImport/TSCEFormulaOwning-Protocol.h>
 
-@class NSCondition, NSString, TNChartFormulaStorage, TNMutableChartFormulaStorage, TSCECalculationEngine, TSUIntToIntDictionary;
+@class NSCondition, NSDictionary, NSString, TNChartFormulaStorage, TNMutableChartFormulaStorage, TSCECalculationEngine, TSUIntToIntDictionary;
 
 __attribute__((visibility("hidden")))
 @interface TNChartMediator <TSCECalculationEngineRegistration, TSCEFormulaOwning>
@@ -28,6 +28,8 @@ __attribute__((visibility("hidden")))
     _Bool mHasBlittedSinceConditionVarSet;
     _Bool mShouldFixAreaFormula;
     TSUIntToIntDictionary *mFormulaIndexToGridIndex;
+    NSDictionary *mTableUidToHeaderRowRangesInPrecedents;
+    _Bool mShouldResetFormulas;
 }
 
 + (id)defaultErrorBarFormulaWrapper;
@@ -38,7 +40,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UUIDData_5fbc143e entityUID; // @synthesize entityUID=mEntityUID;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)localizeFormulaLiteralsWithBundle:(id)arg1;
+- (void)localizeFormulaLiteralsWithLocale:(id)arg1;
 - (id)customNegScatterXFormulas;
 - (id)customPosScatterXFormulas;
 - (id)customNegFormulas;
@@ -47,10 +49,12 @@ __attribute__((visibility("hidden")))
 - (id)rowFormulas;
 - (int)formulasDirection;
 - (id)dataFormulas;
-- (_Bool)p_tableHasCell:(struct TSCECellRef)arg1 withCalcEngine:(id)arg2;
-- (_Bool)p_tableHasRange:(struct TSCERangeRef)arg1 withCalcEngine:(id)arg2;
+- (_Bool)p_tableHasBaseCell:(struct TSCECellRef)arg1 withCalcEngine:(id)arg2;
+- (_Bool)p_tableHasBaseRange:(struct TSCERangeRef)arg1 withCalcEngine:(id)arg2;
 - (id)referencedEntities;
 - (id)referencedEntitiesInMap:(id)arg1;
+- (vector_5a16d233)p_expandSingleRangeForLabels:(const struct TSCERangeRef *)arg1 iterateOverRowsNotColumns:(_Bool)arg2;
+- (vector_5a16d233)expandSingleRangeForLabels:(const struct TSCERangeRef *)arg1 formulaType:(unsigned long long)arg2;
 - (vector_5a16d233)expandSingleRangeForProposedCategoryLabels:(const struct TSCERangeRef *)arg1;
 - (void)p_transposeSeriesAndCategoryLabelsInMap:(id)arg1;
 - (void)repairMissingSeriesLabelsInMap:(id)arg1;
@@ -58,6 +62,8 @@ __attribute__((visibility("hidden")))
 - (void)repairMissingCategoryLabelsInMap:(id)arg1 ignoringNonVisibleLabels:(_Bool)arg2;
 - (void)p_repairMissingCategoryLabelsInMap:(id)arg1;
 - (void)p_promoteSpanningCategorizedCategoryLabelsInMap:(id)arg1;
+- (void)p_repairCategorizedCategoryLabelsInMap:(id)arg1;
+- (unsigned long long)p_numberOfLabelsFromExpandedGeometricRangeRefsWithFormulas:(id)arg1 formulaType:(unsigned long long)arg2;
 - (void)p_repairMissingTabularCategoryLabelsRegularInMap:(id)arg1;
 - (void)p_repairMissingTabularCategoryLabelsIrregularInMap:(id)arg1;
 - (void)p_disconnectLabelsInMap:(id)arg1 ofType:(unsigned long long)arg2;
@@ -101,10 +107,12 @@ __attribute__((visibility("hidden")))
 - (void)p_registerHubFormulaWithCalcEngine:(id)arg1;
 - (void)p_unregisterAllFormulaeFromCalcEngine:(id)arg1;
 - (void)writeResultsForCalcEngine:(id)arg1;
+- (_Bool)p_didHeaderRowRangesChangeForCalcEngine:(id)arg1;
 - (CDStruct_2a4d9400)recalculateForCalcEngine:(id)arg1 atFormulaCoord:(struct TSUCellCoord)arg2 recalcOptions:(CDStruct_3d581f42)arg3;
 - (id)linkedResolver;
 - (UUIDData_5fbc143e)ownerUID;
-- (int)ownerKind;
+- (unsigned short)ownerKind;
+- (struct TSCERangeRef)p_headerRowRangeRefForTableInfo:(id)arg1;
 - (id)hubFormulaPrecedentsWithCalcEngine:(id)arg1 hostOwnerUID:(const UUIDData_5fbc143e *)arg2;
 - (void)invalidateForCalcEngine:(id)arg1;
 - (void)p_copyValuesIntoToChartModel:(id)arg1 formulaMap:(id)arg2;
@@ -158,6 +166,7 @@ __attribute__((visibility("hidden")))
 - (id)ownerUIDMapper;
 - (void)setFormulaOwnerUID:(const UUIDData_5fbc143e *)arg1;
 - (UUIDData_5fbc143e)formulaOwnerUID;
+- (id)formulaOwner;
 - (id)dataFormatterForSeries:(id)arg1 index:(unsigned long long)arg2 axisType:(int)arg3 documentRoot:(id)arg4;
 - (id)nonDefaultDataFormatterForSeries:(id)arg1 index:(unsigned long long)arg2 axisType:(int)arg3 documentRoot:(id)arg4;
 - (id)dataFormatterFromFormatStruct:(CDStruct_b1066b25)arg1 in:(id)arg2;

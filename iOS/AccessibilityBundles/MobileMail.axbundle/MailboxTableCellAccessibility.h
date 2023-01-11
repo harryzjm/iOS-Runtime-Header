@@ -16,7 +16,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
-- (_Bool)_accessibilityIsFlaggedMailboxCell;
+- (_Bool)_accessibilityMailboxUsesUnreadCount;
 - (void)_setUnreadCount:(unsigned long long)arg1;
 - (void)setDetailsDisclosureButton:(id)arg1;
 

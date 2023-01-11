@@ -6,6 +6,7 @@
 
 @class SKUISearchBarController;
 
+__attribute__((visibility("hidden")))
 @interface SKUISearchBarPageSection
 {
     SKUISearchBarController *_searchBarController;

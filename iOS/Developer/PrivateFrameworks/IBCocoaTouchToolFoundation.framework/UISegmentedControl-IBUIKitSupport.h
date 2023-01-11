@@ -10,5 +10,8 @@
 - (id)segmentLabelFont;
 - (id)imageViewForSegmentAtIndex:(unsigned long long)arg1;
 - (id)textLabelForSegmentAtIndex:(unsigned long long)arg1;
+- (id)imageViewRects;
+- (id)ibTextRects;
+- (id)initWithMarshalledValues:(id)arg1 orderedKeys:(id)arg2 ignoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
 @end
 

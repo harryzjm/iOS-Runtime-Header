@@ -17,9 +17,12 @@
 - (_Bool)_axIsURL;
 - (_Bool)_axIsHandwriting;
 - (_Bool)_axIsAttachedPlugin;
+- (struct CGRect)_accessibilityMediaAnalysisFrame;
+- (unsigned int)_accessibilityMediaAnalysisOptions;
 - (_Bool)accessibilityActivate;
 - (id)accessibilityCustomActions;
 - (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (id)accessibilityValue;

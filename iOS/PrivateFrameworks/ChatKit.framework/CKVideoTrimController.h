@@ -12,6 +12,7 @@
 @class CKMediaObject, CKUIVideoEditorController, NSString;
 @protocol CKTrimControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface CKVideoTrimController : NSObject <UIVideoEditorControllerDelegatePrivate, UINavigationControllerDelegate>
 {
     CKMediaObject *_originalMediaObject;

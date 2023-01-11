@@ -9,7 +9,7 @@
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, STSiriContext;
+@class AFLanguageDetectionUserContext, NSArray, NSDictionary, NSString, NSURL, STSiriContext;
 
 @interface AFDictationOptions : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,6 +18,7 @@
     _Bool _secureOfflineOnly;
     _Bool _farField;
     _Bool _releaseAudioSessionOnRecordingCompletion;
+    _Bool _incremental;
     NSString *_applicationName;
     NSString *_applicationVersion;
     STSiriContext *_context;
@@ -46,14 +47,19 @@
     NSURL *_originalAudioFileURL;
     NSDictionary *_recognitionOverrides;
     NSURL *_modelOverrideURL;
+    AFLanguageDetectionUserContext *_languageDetectionUserContext;
+    long long _dictationInputOrigin;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) long long dictationInputOrigin; // @synthesize dictationInputOrigin=_dictationInputOrigin;
+@property(copy, nonatomic) AFLanguageDetectionUserContext *languageDetectionUserContext; // @synthesize languageDetectionUserContext=_languageDetectionUserContext;
 @property(copy, nonatomic) NSURL *modelOverrideURL; // @synthesize modelOverrideURL=_modelOverrideURL;
 @property(copy, nonatomic) NSDictionary *recognitionOverrides; // @synthesize recognitionOverrides=_recognitionOverrides;
 @property(copy, nonatomic) NSURL *originalAudioFileURL; // @synthesize originalAudioFileURL=_originalAudioFileURL;
 @property(nonatomic) long long taskHint; // @synthesize taskHint=_taskHint;
 @property(nonatomic) double maximumRecognitionDuration; // @synthesize maximumRecognitionDuration=_maximumRecognitionDuration;
+@property(nonatomic) _Bool incremental; // @synthesize incremental=_incremental;
 @property(nonatomic) _Bool releaseAudioSessionOnRecordingCompletion; // @synthesize releaseAudioSessionOnRecordingCompletion=_releaseAudioSessionOnRecordingCompletion;
 @property(nonatomic) _Bool farField; // @synthesize farField=_farField;
 @property(nonatomic) _Bool secureOfflineOnly; // @synthesize secureOfflineOnly=_secureOfflineOnly;

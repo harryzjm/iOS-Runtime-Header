@@ -6,6 +6,7 @@
 
 @class GKPerlinNoiseSource;
 
+__attribute__((visibility("hidden")))
 @interface GKTurbulenceNoiseModifier
 {
     double _power;

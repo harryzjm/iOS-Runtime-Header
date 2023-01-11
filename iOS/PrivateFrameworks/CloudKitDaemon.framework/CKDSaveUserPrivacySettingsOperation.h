@@ -4,19 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
-
 __attribute__((visibility("hidden")))
 @interface CKDSaveUserPrivacySettingsOperation
 {
     long long _discoverable;
-    NSString *_applicationBundleID;
 }
 
 + (long long)isPredominatelyDownload;
-@property(copy, nonatomic) NSString *applicationBundleID; // @synthesize applicationBundleID=_applicationBundleID;
 @property(nonatomic) long long discoverable; // @synthesize discoverable=_discoverable;
-- (void).cxx_destruct;
 - (void)main;
 - (_Bool)shouldCheckAppVersion;
 - (id)activityCreate;

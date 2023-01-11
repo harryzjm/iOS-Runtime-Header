@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ClassKit/CLSClientCancalable-Protocol.h>
+#import <ClassKit/CLSClientCancelable-Protocol.h>
 
-@protocol CLSChangeNotifiable <CLSClientCancalable>
+@protocol CLSChangeNotifiable <CLSClientCancelable>
 - (oneway void)clientRemote_itemChanged:(unsigned long long)arg1;
 @end
 

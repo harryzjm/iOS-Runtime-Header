@@ -13,7 +13,7 @@
 #import <iWorkImport/TSPObjectModifyDelegate-Protocol.h>
 #import <iWorkImport/TSPPersistedObjectUUIDMapDelegate-Protocol.h>
 
-@class NSHashTable, NSMutableArray, NSMutableSet, NSSet, NSString, NSURL, TSPArchiverManager, TSPComponentExternalReferenceMap, TSPDataAttributesSnapshot, TSPDocumentRevision, TSPObject, TSPObjectContainer, TSPObjectContext, TSPObjectReferenceMap, TSPPackageMetadata, TSPPersistedObjectUUIDMap;
+@class NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString, NSURL, TSPArchiverManager, TSPComponentExternalReferenceMap, TSPDataAttributesSnapshot, TSPDocumentRevision, TSPObject, TSPObjectContainer, TSPObjectContext, TSPObjectReferenceMap, TSPPackageMetadata, TSPPersistedObjectUUIDMap;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
     TSPDataAttributesSnapshot *_dataAttributesSnapshot;
     TSPObjectReferenceMap *_objectReferenceMap;
     TSPArchiverManager *_archiverManager;
+    NSObject<OS_dispatch_queue> *_completionQueue;
     NSObject<OS_dispatch_group> *_completionGroup;
     NSSet *_knownComponentLocators;
     struct unordered_map<const long long, TSP::ComponentPropertiesSnapshot, TSP::IdentifierHash, std::__1::equal_to<const long long>, std::__1::allocator<std::__1::pair<const long long, TSP::ComponentPropertiesSnapshot>>> _componentPropertiesSnapshot;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_packageLocatorSet;
     TSPObjectContainer *_objectContainer;
     TSPPersistedObjectUUIDMap *_persistedUUIDMap;
+    NSMapTable *_loadedObjects;
     NSObject<OS_dispatch_queue> *_modifyObjectQueue;
     NSHashTable *_modifiedObjectsDuringWrite;
     _Bool _captureSnapshots;
@@ -54,13 +56,15 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_metadataQueue;
     unsigned long long _readVersion;
     unsigned long long _writeVersion;
+    NSMutableSet *_featureIdentifiers;
     NSHashTable *_referencedDatas;
     NSMutableArray *_dataFinalizeHandlers;
-    _Bool _writeSuccess;
-    _Bool _isRecoverableError;
-    _Bool _isCancelled;
-    _Bool _didWriteRootObject;
-    _Bool _didWriteMetadata;
+    _Atomic _Bool _writeSuccess;
+    _Atomic _Bool _didAttemptRecoveryByDirtyingAllComponents;
+    _Atomic _Bool _isRecoverableError;
+    _Atomic _Bool _isCancelled;
+    _Atomic _Bool _didWriteRootObject;
+    _Atomic _Bool _didWriteMetadata;
     NSURL *_documentTargetURL;
     NSURL *_relativeURLForExternalData;
     TSPPackageMetadata *_packageMetadata;
@@ -74,7 +78,7 @@ __attribute__((visibility("hidden")))
 - (id)persistedObjectUUIDMap:(id)arg1 needsDescriptionForComponentIdentifier:(long long)arg2 objectIdentifier:(long long)arg3;
 - (id)explicitComponentRootObjectForObject:(id)arg1;
 - (_Bool)wasComponentCopied:(long long)arg1;
-- (long long)componentIdentifierForObjectIdentifier:(long long)arg1 objectOrNil:(id)arg2 objectUUIDOrNil:(id)arg3;
+- (long long)componentIdentifierForObjectIdentifier:(long long)arg1 objectOrNil:(id)arg2 objectUUIDOrNil:(id)arg3 outComponentIsVersioned:(_Bool *)arg4;
 - (id)objectForIdentifier:(long long)arg1;
 - (void)addDataFinalizeHandlerForSuccessfulSave:(CDUnknownBlockType)arg1;
 - (_Bool)componentWriter:(id)arg1 object:(id)arg2 belongsToLinkedComponent:(id)arg3;
@@ -90,7 +94,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)didWriteData:(id)arg1;
 - (_Bool)didWriteComponent:(id)arg1 wasCopied:(_Bool *)arg2;
 - (_Bool)didWriteObject:(id)arg1 claimingComponent:(id *)arg2;
-- (id)createPackageMetadataWritingDatasWithPackageWriter:(id)arg1 saveOperationState:(id)arg2;
+- (id)createPackageMetadataWritingDatasWithPackageWriter:(id)arg1 saveOperationState:(id)arg2 error:(id *)arg3;
 - (void)didReferenceData:(id)arg1;
 - (void)calculateExternalReferences;
 - (void)updateExternalReferencesForLinkedComponent:(id)arg1;
@@ -103,9 +107,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)isComponentPersisted:(id)arg1;
 - (_Bool)shouldArchiveComponent:(id)arg1 checkForceArchive:(_Bool)arg2;
 - (_Bool)shouldArchiveComponent:(id)arg1;
+- (void)attemptDocumentRecovery;
 - (void)copyComponent:(id)arg1 locator:(id)arg2 packageWriter:(id)arg3;
 - (void)writeExternalReferences:(id)arg1 andUpdateLazyReferences:(id)arg2 withPackageWriter:(id)arg3 forComponent:(id)arg4 locator:(id)arg5;
-- (void)archiveComponent:(id)arg1 locator:(id)arg2 storeOutsideObjectArchive:(_Bool)arg3 rootObject:(id)arg4 withPackageWriter:(id)arg5;
+- (void)archiveComponent:(id)arg1 locator:(id)arg2 compressionAlgorithm:(long long)arg3 storeOutsideObjectArchive:(_Bool)arg4 rootObject:(id)arg5 withPackageWriter:(id)arg6;
 - (void)writeComponent:(id)arg1 rootObjectOrNil:(id)arg2 forceArchive:(_Bool)arg3 failToAutosaveOnArchive:(_Bool)arg4 withPackageWriter:(id)arg5;
 - (void)writeRemainingComponentsWithPackageWriter:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)nextComponentAndRootObjectForComponentWriteWithCompletion:(CDUnknownBlockType)arg1;
@@ -116,6 +121,7 @@ __attribute__((visibility("hidden")))
 - (void)writeRemainingRootObjectsAndRelatedComponents:(id)arg1 withPackageWriter:(id)arg2 completionQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)enumerateWrittenObjectsWithBlock:(CDUnknownBlockType)arg1;
 - (void)updateObjectContextForSuccessfulSaveWithPackageWriter:(id)arg1 packageURL:(id)arg2;
+@property(readonly, nonatomic) NSSet *featureIdentifiers;
 @property(readonly, nonatomic) TSPObjectContainer *objectContainer;
 - (void)writeRootObject:(id)arg1 withPackageWriter:(id)arg2 saveOperationState:(id)arg3 completionQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (unsigned long long)writeRootObject:(id)arg1 withPackageWriter:(id)arg2 saveOperationState:(id)arg3 error:(id *)arg4;
@@ -123,8 +129,8 @@ __attribute__((visibility("hidden")))
 - (void)willModifyObject:(id)arg1 duringReadOperation:(_Bool)arg2 shouldCaptureSnapshot:(_Bool)arg3;
 - (unsigned long long)objectTargetType;
 - (void)dealloc;
-- (id)initWithContext:(id)arg1 documentRevision:(id)arg2 saveToken:(unsigned long long)arg3 packageIdentifier:(unsigned char)arg4 fileFormatVersion:(unsigned long long)arg5 preferredPackageType:(long long)arg6 metadataObject:(id)arg7 dataAttributesSnapshot:(id)arg8 packageWriteCoordinator:(id)arg9 captureSnapshots:(_Bool)arg10;
-- (id)initWithContext:(id)arg1 documentRevision:(id)arg2 saveToken:(unsigned long long)arg3 packageIdentifier:(unsigned char)arg4 fileFormatVersion:(unsigned long long)arg5 preferredPackageType:(long long)arg6 metadataObject:(id)arg7 dataAttributesSnapshot:(id)arg8;
+- (id)initWithContext:(id)arg1 archiverClass:(Class)arg2 archiverFlags:(BOOL)arg3 documentRevision:(id)arg4 saveToken:(unsigned long long)arg5 packageIdentifier:(unsigned char)arg6 fileFormatVersion:(unsigned long long)arg7 preferredPackageType:(long long)arg8 metadataObject:(id)arg9 dataAttributesSnapshot:(id)arg10 packageWriteCoordinator:(id)arg11 captureSnapshots:(_Bool)arg12;
+- (id)initWithContext:(id)arg1 archiverClass:(Class)arg2 archiverFlags:(BOOL)arg3 documentRevision:(id)arg4 saveToken:(unsigned long long)arg5 packageIdentifier:(unsigned char)arg6 fileFormatVersion:(unsigned long long)arg7 preferredPackageType:(long long)arg8 metadataObject:(id)arg9 dataAttributesSnapshot:(id)arg10;
 - (id)init;
 
 // Remaining properties

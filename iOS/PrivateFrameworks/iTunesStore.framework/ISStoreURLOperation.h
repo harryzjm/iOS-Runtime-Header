@@ -26,6 +26,7 @@
     _Bool _urlKnownToBeTrusted;
     _Bool _useUserSpecificURLBag;
     _Bool _needsTermsAndConditionsAcceptance;
+    _Bool _shouldCancelBiometricTokenUpdate;
     _Bool _shouldSuppressUserInfo;
     _Bool _shouldSendAKClientInfoHeaders;
     _Bool _shouldSendDSIDHeader;
@@ -64,6 +65,7 @@
 @property _Bool useUserSpecificURLBag; // @synthesize useUserSpecificURLBag=_useUserSpecificURLBag;
 @property _Bool urlKnownToBeTrusted; // @synthesize urlKnownToBeTrusted=_urlKnownToBeTrusted;
 @property(nonatomic, getter=isURLBagRequest) _Bool URLBagRequest; // @synthesize URLBagRequest=_isURLBagRequest;
+@property _Bool shouldCancelBiometricTokenUpdate; // @synthesize shouldCancelBiometricTokenUpdate=_shouldCancelBiometricTokenUpdate;
 @property(nonatomic) _Bool shouldAppendStorefrontToURL; // @synthesize shouldAppendStorefrontToURL=_shouldAppendStorefrontToURL;
 @property(nonatomic) _Bool shouldAppendAuthKitHeaders; // @synthesize shouldAppendAuthKitHeaders=_shouldAppendAuthKitHeaders;
 @property _Bool needsURLBag; // @synthesize needsURLBag=_needsURLBag;
@@ -74,6 +76,7 @@
 - (void).cxx_destruct;
 - (id)_urlBagForContext:(id)arg1;
 - (_Bool)_shouldRetryForTouchIDChallengeWithError:(id)arg1;
+- (_Bool)_shouldRetryForAbsintheWithResponse:(id)arg1;
 - (void)_runURLOperation;
 - (id)_resolvedURLInBagContext:(id)arg1 bagTrusted:(_Bool *)arg2;
 - (_Bool)_performMachineDataRequest:(id)arg1;
@@ -81,10 +84,12 @@
 - (_Bool)_isErrorTokenError:(id)arg1;
 - (id)_copyAuthenticationContextForAttemptNumber:(long long)arg1;
 - (void)_continueTouchIDSession;
+- (id)_buyParams;
 - (_Bool)_canSendTokenToURL:(id)arg1;
 - (_Bool)_authenticateWithContext:(id)arg1 error:(id *)arg2;
 - (void)_addStandardQueryParametersForURL:(id)arg1;
 - (id)_account;
+- (id)_absintheHeaders;
 - (void)_setStoreFrontIdentifier:(id)arg1 isTransient:(_Bool)arg2;
 - (_Bool)_ssBag_shouldSendGUIDForURL:(id)arg1 withBag:(id)arg2;
 - (id)_ssBag_copyGUIDPatternsFromBag:(id)arg1;
@@ -105,6 +110,7 @@
 @property _Bool performsMachineDataActions;
 @property(nonatomic) _Bool ignorePreexistingSecureToken;
 @property _Bool canSendGUIDParameter;
+- (id)logKey;
 - (id)init;
 
 // Remaining properties

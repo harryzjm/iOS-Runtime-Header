@@ -14,11 +14,15 @@ __attribute__((visibility("hidden")))
 {
     id <PDFHostProtocol> hostProxy;
     PDFView *pdfView;
+    struct CGSize documentViewSize;
     NSString *searchString;
     PDFSelection *searchSelection;
     NSMutableArray *searchResults;
+    _Bool didCancelActiveSearch;
     long long currentGestureState;
     _Bool hasSelection;
+    struct CGPoint topLeftSelectionPoint;
+    struct CGPoint bottomRightSelectionPoint;
 }
 
 - (void).cxx_destruct;

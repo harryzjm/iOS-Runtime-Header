@@ -11,18 +11,17 @@
 @interface QLZipArchiveEntry : NSObject
 {
     struct archive_entry *_entry;
+    QLZipArchive *_archive;
     NSData *_data;
     NSError *_error;
-    QLZipArchive *_archive;
-    NSURL *_url;
 }
 
-@property(retain) NSData *data; // @synthesize data=_data;
-@property(retain, nonatomic) NSURL *url; // @synthesize url=_url;
 @property __weak QLZipArchive *archive; // @synthesize archive=_archive;
+@property(retain) NSData *data; // @synthesize data=_data;
 @property struct archive_entry *entry; // @synthesize entry=_entry;
 - (void).cxx_destruct;
 - (id)readDataWithError:(id *)arg1;
+@property(readonly, nonatomic) NSURL *url;
 
 @end
 

@@ -4,24 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Silex/SXFontFace-Protocol.h>
+#import <Silex/SXFontResource-Protocol.h>
 
-@class NSString;
+@class NSString, NSURL;
 @protocol SXFontAttributes;
 
-@interface SXFontResource <SXFontFace>
+@interface SXFontResource <SXFontResource>
 {
 }
 
-+ (id)typeString;
 - (id)fontAttributesWithValue:(id)arg1 withType:(int)arg2;
 
 // Remaining properties
+@property(readonly, nonatomic) NSURL *URL;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) id <SXFontAttributes> fontAttributes; // @dynamic fontAttributes;
 @property(readonly, nonatomic) NSString *fontName; // @dynamic fontName;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) NSString *identifier;
 @property(readonly) Class superclass;
 
 @end

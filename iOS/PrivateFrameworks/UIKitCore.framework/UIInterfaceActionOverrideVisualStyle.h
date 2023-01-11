@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface UIInterfaceActionOverrideVisualStyle
 {
+    _Bool _alignActionSeparatorLeadingEdgeWithContent;
     double _customSelectionHighlightContinuousCornerRadius;
     UIInterfaceActionSeparatorAttributes *_customSeparatorAttributes;
     UIInterfaceActionHighlightAttributes *_customActionHighlightAttributes;
@@ -19,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType customTitleLabelFontProviderForViewState; // @synthesize customTitleLabelFontProviderForViewState=_customTitleLabelFontProviderForViewState;
 @property(retain, nonatomic) UIInterfaceActionHighlightAttributes *customActionHighlightAttributes; // @synthesize customActionHighlightAttributes=_customActionHighlightAttributes;
 @property(retain, nonatomic) UIInterfaceActionSeparatorAttributes *customSeparatorAttributes; // @synthesize customSeparatorAttributes=_customSeparatorAttributes;
+@property(nonatomic) _Bool alignActionSeparatorLeadingEdgeWithContent; // @synthesize alignActionSeparatorLeadingEdgeWithContent=_alignActionSeparatorLeadingEdgeWithContent;
 @property double customSelectionHighlightContinuousCornerRadius; // @synthesize customSelectionHighlightContinuousCornerRadius=_customSelectionHighlightContinuousCornerRadius;
 - (void).cxx_destruct;
 - (id)actionTitleLabelFontForViewState:(id)arg1;

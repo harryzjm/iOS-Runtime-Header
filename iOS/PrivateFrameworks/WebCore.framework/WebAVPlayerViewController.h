@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)startPictureInPicture;
 - (void)exitFullScreenAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)enterFullScreenAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setWebKitOverrideRouteSharingPolicy:(unsigned long long)arg1 routingContextUID:(id)arg2;
 - (_Bool)playerViewControllerShouldHandleDoneButtonTap:(id)arg1;
 - (id)initWithFullscreenInterface:(struct VideoFullscreenInterfaceAVKit *)arg1;
 

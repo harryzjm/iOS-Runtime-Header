@@ -4,21 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <PhotoLibraryServices/PLAssetsdNotificationServiceProtocol-Protocol.h>
 
 @class NSString;
 
-@interface PLAssetsdNotificationService : NSObject <PLAssetsdNotificationServiceProtocol>
+@interface PLAssetsdNotificationService <PLAssetsdNotificationServiceProtocol>
 {
 }
 
+- (void)noteGoingToExpireCMMsAlertWithCMMUUIDs:(id)arg1 thumbnailImageData:(id)arg2 notificationTitle:(id)arg3 notificationSubtitle:(id)arg4;
+- (void)noteSuggestedCMMAlertViewedWithCMMUUID:(id)arg1;
+- (void)noteSuggestedCMMAlertWithCMMUUID:(id)arg1 notificationDeliveryDate:(id)arg2;
+- (void)reportAsJunkPhotoStreamInvitationForAlbumWithCloudGUID:(id)arg1;
+- (void)respondToPhotoStreamInvitationWithAlbumCloudGUID:(id)arg1 acceptInvitation:(_Bool)arg2;
+- (void)noteInterestingMemoryAlertViewedWithUUID:(id)arg1;
+- (void)noteInterestingMemoryAlertWithMemoryUUID:(id)arg1 notificationDeliveryDate:(id)arg2;
+- (void)userViewedNotificationWithAlbumCloudGUID:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+
 @end
 

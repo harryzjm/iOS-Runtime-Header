@@ -6,6 +6,7 @@
 
 @class SKUIViewElement, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface SKUITextFooterSettingsHeaderFooterDescriptionView
 {
     UILabel *_label;

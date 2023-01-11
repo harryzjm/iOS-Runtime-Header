@@ -6,6 +6,7 @@
 
 @class SKUIAttributedStringView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIAttributedStringWrapperView
 {
     SKUIAttributedStringView *_delegateView;

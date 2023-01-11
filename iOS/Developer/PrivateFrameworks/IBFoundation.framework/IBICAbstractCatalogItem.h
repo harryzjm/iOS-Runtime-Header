@@ -218,6 +218,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
+- (void)populateLocaleImportInfo:(id)arg1 forLocale:(id)arg2 withDevelopmentLanguage:(id)arg3;
 - (void)populateAppearanceImportInfo:(id)arg1 withOptions:(id)arg2 forLuminosityAppearance:(id)arg3 vibrancyAppearance:(id)arg4 contrastAppearance:(id)arg5;
 - (_Bool)populateNamedAssetImportInfo:(id)arg1 allCompiledItems:(id)arg2 withOptions:(id)arg3 error:(id *)arg4;
 - (id)fullyQualifiedRuntimeNameWithOptions:(id)arg1;

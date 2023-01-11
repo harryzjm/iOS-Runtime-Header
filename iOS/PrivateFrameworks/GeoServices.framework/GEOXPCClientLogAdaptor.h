@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLock, NSMutableArray, NSObject;
+@class NSMutableArray, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface GEOXPCClientLogAdaptor
 {
-    NSObject<OS_dispatch_queue> *_serverConnectionQueue;
+    NSObject<OS_dispatch_queue> *_queue;
     _Bool _flushLogsFailed;
     NSMutableArray *_failedLogMessages;
-    NSLock *_failedLogMessagesLock;
+    struct os_unfair_lock_s _failedLogMessagesLock;
 }
 
 - (void).cxx_destruct;

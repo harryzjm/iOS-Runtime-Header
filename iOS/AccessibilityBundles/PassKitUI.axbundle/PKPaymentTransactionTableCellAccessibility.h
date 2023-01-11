@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
+- (_Bool)isAccessibilityElement;
 
 @end
 

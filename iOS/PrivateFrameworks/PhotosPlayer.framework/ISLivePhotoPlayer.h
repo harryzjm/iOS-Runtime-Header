@@ -20,6 +20,7 @@
     double _lastAppliedScale;
     _Bool _playingVitality;
     _Bool _hinting;
+    _Bool _isAttemptingToPlayback;
     _Bool _immediatelyShowsPhotoWhenPlaybackEnds;
     _Bool _playbackAllowed;
     _Bool __settleAutomaticallyWhenReady;
@@ -46,6 +47,7 @@
 @property(nonatomic) long long targetReadiness; // @synthesize targetReadiness=_targetReadiness;
 @property(nonatomic, getter=isPlaybackAllowed) _Bool playbackAllowed; // @synthesize playbackAllowed=_playbackAllowed;
 @property(nonatomic) _Bool immediatelyShowsPhotoWhenPlaybackEnds; // @synthesize immediatelyShowsPhotoWhenPlaybackEnds=_immediatelyShowsPhotoWhenPlaybackEnds;
+@property(nonatomic, setter=_setIsAttemptingToPlayback:) _Bool isAttemptingToPlayback; // @synthesize isAttemptingToPlayback=_isAttemptingToPlayback;
 @property(nonatomic, setter=_setCurrentPlaybackStyle:) long long currentPlaybackStyle; // @synthesize currentPlaybackStyle=_currentPlaybackStyle;
 @property(retain, nonatomic) ISLivePhotoVitalityFilter *vitalityFilter; // @synthesize vitalityFilter=_vitalityFilter;
 @property(nonatomic, getter=isHinting, setter=_setHinting:) _Bool hinting; // @synthesize hinting=_hinting;
@@ -57,6 +59,7 @@
 - (void)vitalityBehaviorDidBeginPlaying:(id)arg1;
 - (void)livePhotoSettleBehaviorDidFinish:(id)arg1;
 - (void)livePhotoPlaybackBehaviorDidFinish:(id)arg1;
+- (void)livePhotoPlaybackBehaviorWillTransitionToPhoto:(id)arg1;
 - (void)livePhotoPlaybackBehaviorDidBeginPlaying:(id)arg1;
 - (void)didPerformChanges;
 - (void)_fadeInAudio;
@@ -66,6 +69,7 @@
 - (long long)_coalescedPlaybackFilterState;
 - (void)_resetPlaybackFilters;
 - (void)_configurePlaybackFilters;
+- (void)setIsAttemptingToPlayback:(_Bool)arg1;
 - (void)_updateScaleIfNeeded;
 - (void)_invalidateScale;
 - (void)_updateApertureModeIfNeeded;

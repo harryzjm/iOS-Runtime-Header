@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)typeString;
 - (id)action;
 - (id)URLWithValue:(id)arg1 withType:(int)arg2;
 

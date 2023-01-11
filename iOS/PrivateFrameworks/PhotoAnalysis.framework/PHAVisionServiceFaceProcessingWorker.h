@@ -41,8 +41,16 @@
 @property(nonatomic) _Bool personBuilderMergeCandidatesEnabled; // @synthesize personBuilderMergeCandidatesEnabled=_personBuilderMergeCandidatesEnabled;
 @property(nonatomic) unsigned long long incrementalPersonProcessingStage; // @synthesize incrementalPersonProcessingStage=_incrementalPersonProcessingStage;
 - (void).cxx_destruct;
+- (_Bool)shouldProcessContact:(id)arg1;
+- (id)sortedPoolOfContactIdentifiersExcludingContactIdentifiers:(id)arg1;
+- (id)_persistentStorageDirectoryURLWithPhotoLibrary:(id)arg1;
+- (id)_loadPersonsModelWithPhotoLibrary:(id)arg1;
+- (_Bool)classifyContactsWithProgress:(id)arg1 extendTimeoutBlock:(CDUnknownBlockType)arg2;
+- (void)markLastBackgroundContactClassificationJobDate;
+- (_Bool)contactClassificationDidExceedTimeInterval;
+- (_Bool)shouldReclassifyContacts;
 - (void)generateFaceIDModelShouldForce:(_Bool)arg1 progress:(id)arg2 extendTimeoutBlock:(CDUnknownBlockType)arg3;
-- (_Bool)deletePersonModel;
+- (_Bool)deletePersonModelWithError:(id *)arg1;
 - (_Bool)persistPersonModel:(id)arg1;
 - (id)personModelPath;
 - (void)markLastBackgroundFaceIDModelRebuildJobDate;
@@ -99,6 +107,7 @@
 - (_Bool)hasStandaloneJobsForScenario:(unsigned long long)arg1;
 - (_Bool)hasAdditionalJobsForScenario:(unsigned long long)arg1 requestReason:(unsigned long long)arg2;
 - (id)statusAsDictionary;
+- (_Bool)_needsToRunContactClassificationForScenario:(unsigned long long)arg1;
 - (_Bool)_needToRunFaceIDModelCreationForScenario:(unsigned long long)arg1;
 - (_Bool)_needToRunPersonPromoterForScenario:(unsigned long long)arg1;
 - (_Bool)_needToRunPersonBuildingJobForScenario:(unsigned long long)arg1;
@@ -110,7 +119,7 @@
 - (void)cooldown;
 - (void)warmup;
 - (void)shutdown;
-- (_Bool)performPersonBuildingWithCanceler:(id)arg1 error:(id *)arg2;
+- (_Bool)performPersonBuildingWithCanceler:(id)arg1 extendTimeoutBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (_Bool)_setAllFaceGroupsNeedPersonBuilding;
 - (_Bool)processDirtyFaceCrop:(id)arg1 error:(id *)arg2;
 - (_Bool)_updateFaceCropFace:(id)arg1 withFaceprintForFaceCrop:(id)arg2 createFaceTorsoprint:(_Bool)arg3 error:(id *)arg4;
@@ -120,7 +129,6 @@
 - (void)_didPerformFaceClustering;
 - (void)_willPerformFaceClustering;
 - (_Bool)_resetFaceClusteringStateWithContext:(id)arg1 error:(id *)arg2;
-- (_Bool)_renderFaceTilesForFaceLocalIdentifiers:(id)arg1 inAssetWithLocalIdentifier:(id)arg2 error:(id *)arg3;
 - (id)_suggestionsForPersonWithLocalIdentifier:(id)arg1 toBeConfirmedPersonSuggestions:(id)arg2 toBeRejectedPersonSuggestions:(id)arg3 operation:(id)arg4 error:(id *)arg5;
 - (void)_finalizeSuggestionsLog;
 - (void)_logFaceToSuggestionsLog:(id)arg1;
@@ -137,7 +145,6 @@
 - (void)interruptPhotoVision;
 - (void)terminatePhotoVision;
 - (id)_photoVisionAllowingCreation:(_Bool)arg1 syncClusterCache:(_Bool)arg2 error:(id *)arg3;
-- (_Bool)_synchronouslyGenerateFaceTilesForFaces:(id)arg1 fromAsset:(id)arg2 assetImage:(id)arg3 error:(id *)arg4;
 - (id)_suggestionsForPersonLocalIdentifier:(id)arg1 clusterSequenceNumbers:(id)arg2 excludePersonLocalIdentifiers:(id)arg3 operation:(id)arg4 context:(id)arg5 error:(id *)arg6;
 - (void)_logAnalysisStatistics;
 - (void)_resetAnalysisStatistics;

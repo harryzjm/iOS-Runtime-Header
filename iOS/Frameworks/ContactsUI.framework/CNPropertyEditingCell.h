@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIButton *labelButton; // @synthesize labelButton=_labelButton;
 - (void).cxx_destruct;
 - (void)regainFocus;
+- (void)picker:(id)arg1 didDeleteItem:(id)arg2;
 - (void)picker:(id)arg1 didPickItem:(id)arg2;
 - (void)pickerDidCancel:(id)arg1;
 - (id)variableConstraints;

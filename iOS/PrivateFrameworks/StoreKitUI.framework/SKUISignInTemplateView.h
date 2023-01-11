@@ -9,6 +9,7 @@
 @class NSMapTable, NSString;
 @protocol SKUISignInViewDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SKUISignInTemplateView <SKUIViewElementView>
 {
     NSMapTable *_viewElements;

@@ -11,6 +11,7 @@
 
 @class IKAppDocument, NSString, SKUIHorizontalLockupView, SKUILayoutCache, SKUIViewElementLayoutContext, SUPlayerStatus, UITapGestureRecognizer;
 
+__attribute__((visibility("hidden")))
 @interface SKUIPreviewOverlayViewController <SKUIItemStateCenterObserver, SKUIArtworkRequestDelegate, SKUILayoutCacheDelegate, UIGestureRecognizerDelegate>
 {
     long long _backgroundStyle;

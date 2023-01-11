@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class __NSImmutableTextStorage;
+
 @interface NSSingleLineTypesetter
 {
     double _lineWidth;
@@ -11,12 +13,8 @@
     unsigned short *_glyphs;
     long long *_props;
     unsigned long long *_charIndexes;
-    struct {
-        unsigned int _usesScreenFonts:1;
-        unsigned int _syncAlignmentToDirection:1;
-        unsigned int _mirrorsTextAlignment:1;
-        unsigned int _reserved:29;
-    } _slFlags;
+    CDStruct_1f053566 _slFlags;
+    __NSImmutableTextStorage *_textStorage;
 }
 
 + (_Bool)_validateAttributes:(id)arg1 measuringOnly:(_Bool)arg2;
@@ -44,10 +42,13 @@
 - (id)createRenderingContextForCharacterRange:(struct _NSRange)arg1 typesetterBehavior:(long long)arg2 usesScreenFonts:(_Bool)arg3 hasStrongRight:(_Bool)arg4 syncDirection:(_Bool)arg5 mirrorsTextAlignment:(_Bool)arg6 maximumWidth:(double)arg7;
 - (id)createRenderingContextForCharacterRange:(struct _NSRange)arg1 typesetterBehavior:(long long)arg2 usesScreenFonts:(_Bool)arg3 hasStrongRight:(_Bool)arg4 maximumWidth:(double)arg5;
 - (id)init;
+- (id)_textStorageForAttachmentProtocol;
+- (id)_textContainerForAttachmentProtocol;
 - (_Bool)synchronizesAlignmentToDirection;
 - (_Bool)_mirrorsTextAlignment;
 - (_Bool)_allowsEllipsisGlyphSubstitution;
 - (_Bool)_usesScreenFonts;
+- (void)dealloc;
 - (void)done;
 
 @end

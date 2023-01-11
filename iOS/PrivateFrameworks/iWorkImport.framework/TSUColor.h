@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 + (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4 targetRGBSpace:(unsigned long long)arg5;
 + (id)colorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
 + (id)colorWithCGColor:(struct CGColor *)arg1;
++ (id)tsd_darkInsertSwatchBackgroundColor;
 + (id)highContrastBackgroundColorForPreset:(id)arg1;
 + (id)instanceWithArchive:(const struct Message *)arg1 unarchiver:(id)arg2;
 + (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3;
@@ -60,9 +61,11 @@ __attribute__((visibility("hidden")))
 - (id)colorByCompositingSourceOverDestinationColor:(id)arg1;
 - (id)newBlendedColorWithFraction:(double)arg1 ofColor:(id)arg2;
 - (id)blendedColorWithFraction:(double)arg1 ofColor:(id)arg2;
+- (_Bool)hasSimilarLuminanceToOtherColor:(id)arg1 minRatio:(double)arg2 maxRatio:(double)arg3;
 - (_Bool)wantsHighContrastBackgroundForDarkMode:(id)arg1;
 - (_Bool)requiresOutlineOnBackgroundWithAppearance:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool isNearlyWhite;
+@property(readonly, nonatomic) _Bool isClear;
 @property(readonly, nonatomic) _Bool isOpaque;
 @property(readonly, nonatomic) double luminance;
 - (id)colorWithAlphaComponent:(double)arg1;

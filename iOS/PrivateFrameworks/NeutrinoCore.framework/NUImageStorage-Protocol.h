@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NeutrinoCore/NSObject-Protocol.h>
+#import <NeutrinoCore/NUMutableBufferProvider-Protocol.h>
 
 @class NSDictionary, NUPixelFormat, NURegion;
 @protocol NUImageStorage, NURenderer;
 
-@protocol NUImageStorage <NSObject>
+@protocol NUImageStorage <NUMutableBufferProvider>
 @property(readonly) NURegion *validRegion;
 @property(readonly) NUPixelFormat *format;
 @property(readonly) long long sizeInBytes;

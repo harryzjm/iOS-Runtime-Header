@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Silex/SXTextStyleFontDescribing-Protocol.h>
+#import <Silex/SXTextStyle-Protocol.h>
 
-@class NSString, SXJSONArray, SXShadow, SXTextDecoration, SXTextStroke, UIColor;
+@class NSString, SXJSONArray, SXTextDecoration, SXTextShadow, SXTextStroke, UIColor;
 @protocol SXTextStyleFontAttributes;
 
-@interface SXTextStyle <SXTextStyleFontDescribing>
+@interface SXTextStyle <SXTextStyle>
 {
 }
 
@@ -21,6 +21,7 @@
 
 // Remaining properties
 @property(readonly, nonatomic) UIColor *backgroundColor; // @dynamic backgroundColor;
+@property(readonly, nonatomic) SXJSONArray *conditional; // @dynamic conditional;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly, nonatomic) id <SXTextStyleFontAttributes> fontAttributes; // @dynamic fontAttributes;
@@ -33,7 +34,7 @@
 @property(readonly, nonatomic) SXTextStroke *stroke; // @dynamic stroke;
 @property(readonly) Class superclass;
 @property(readonly, nonatomic) UIColor *textColor; // @dynamic textColor;
-@property(readonly, nonatomic) SXShadow *textShadow; // @dynamic textShadow;
+@property(readonly, nonatomic) SXTextShadow *textShadow; // @dynamic textShadow;
 @property(readonly, nonatomic) long long textTransform; // @dynamic textTransform;
 @property(readonly, nonatomic) double tracking; // @dynamic tracking;
 @property(readonly, nonatomic) SXTextDecoration *underline; // @dynamic underline;

@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <UIKitCore/UIContextMenuInteractionDelegate-Protocol.h>
 #import <UIKitCore/UIDataSourceTranslating-Protocol.h>
 #import <UIKitCore/_UIDataSourceBackedView-Protocol.h>
+#import <UIKitCore/_UIHorizontalIndexTitleBarDelegate-Protocol.h>
 #import <UIKitCore/_UIKeyboardAutoRespondingScrollView-Protocol.h>
 
-@class NSArray, NSHashTable, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTimer, UICollectionReusableView, UICollectionViewCell, UICollectionViewData, UICollectionViewLayout, UICollectionViewLayoutAttributes, UICollectionViewUpdate, UIFocusContainerGuide, UITouch, UIView, _UICollectionViewDragAndDropController, _UICollectionViewDragDestinationController, _UICollectionViewDragSourceController, _UICollectionViewPrefetchingContext, _UIDragSnappingFeedbackGenerator, _UIDynamicAnimationGroup, _UIVelocityIntegrator;
+@class NSArray, NSHashTable, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSTimer, UICollectionReusableView, UICollectionViewCell, UICollectionViewData, UICollectionViewLayout, UICollectionViewLayoutAttributes, UICollectionViewUpdate, UIContextMenuInteraction, UIFocusContainerGuide, UITouch, UIView, _UICollectionViewDragAndDropController, _UICollectionViewDragDestinationController, _UICollectionViewDragSourceController, _UICollectionViewMultiSelectController, _UICollectionViewOrthogonalScrollerSectionController, _UICollectionViewPrefetchingContext, _UIDragSnappingFeedbackGenerator, _UIDynamicAnimationGroup, _UIFocusFastScrollingIndexBarEntry, _UIHorizontalIndexTitleBar, _UIIndexPathIdentityTracker, _UIVelocityIntegrator;
 @protocol UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, UICollectionViewDataSource_Private, UICollectionViewDelegate, UICollectionViewDragDelegate, UICollectionViewDragDelegate_Private, UICollectionViewDragDestination, UICollectionViewDragSource, UICollectionViewDropDelegate, UICollectionViewDropDelegate_Private;
 
-@interface UICollectionView <_UIKeyboardAutoRespondingScrollView, _UIDataSourceBackedView, UIDataSourceTranslating>
+@interface UICollectionView <_UIHorizontalIndexTitleBarDelegate, UIContextMenuInteractionDelegate, _UIKeyboardAutoRespondingScrollView, _UIDataSourceBackedView, UIDataSourceTranslating>
 {
     UICollectionViewLayout *_layout;
     id <UICollectionViewDataSource_Private> _dataSource;
@@ -44,6 +46,7 @@
     struct CGRect _preRotationBounds;
     struct CGPoint _rotationBoundsOffset;
     long long _rotationAnimationCount;
+    _UIIndexPathIdentityTracker *_identityTracker;
     long long _updateCount;
     NSMutableArray *_insertItems;
     NSMutableArray *_deleteItems;
@@ -86,6 +89,7 @@
     NSTimer *_autoscrollTimer;
     long long _focusedViewType;
     UIFocusContainerGuide *_contentFocusContainerGuide;
+    struct CGPoint _horizontalIndexTitleBarOffset;
     struct {
         unsigned int delegateShouldHighlightItemAtIndexPath:1;
         unsigned int delegateDidHighlightItemAtIndexPath:1;
@@ -117,7 +121,13 @@
         unsigned int delegateDidUpdateFocusInContext:1;
         unsigned int delegateTemplateLayoutCell:1;
         unsigned int delegateWillLayoutCellUsingTemplateLayoutCell:1;
+        unsigned int delegateHorizontalIndexTitleBarSelectedEntry:1;
         unsigned int delegateWasNonNil:1;
+        unsigned int delegateContextMenuConfigurationForItemAtIndexPath:1;
+        unsigned int delegateContextMenuPreviewForHighlighting:1;
+        unsigned int delegateContextMenuPreviewForDismissing:1;
+        unsigned int delegateContextMenuwillPerformPreviewActionForMenuWithConfiguration:1;
+        unsigned int delegateContextMenuWillCommitMenuWithAnimator:1;
         unsigned int dataSourceNumberOfSections:1;
         unsigned int dataSourceViewForSupplementaryElement:1;
         unsigned int dataSourceCanMoveItemAtIndexPathSPI:1;
@@ -130,16 +140,20 @@
         unsigned int dataSourceIndexTitles:1;
         unsigned int dataSourceIndexPathForIndex:1;
         unsigned int dataSourceWasNonNil:1;
+        unsigned int dataSourceIsDiffableDataSource:1;
         unsigned int prefetchDataSourcePrefetchItemsAtIndexPaths:1;
         unsigned int prefetchDataSourceCancelPrefetchingForItemsAtIndexPaths:1;
         unsigned int prefetchDataSourceWasNonNil:1;
         unsigned int reloadSkippedDuringSuspension:1;
         unsigned int scheduledUpdateVisibleCells:1;
+        unsigned int allowDisablingContentOffsetAdjustmentForContentSizeChange:1;
         unsigned int scheduledUpdateVisibleCellLayoutAttributes:1;
         unsigned int allowsSelection:1;
         unsigned int allowsMultipleSelection:1;
         unsigned int allowsSelectionDuringEditing:1;
+        unsigned int allowsUserInitiatedMultipleSelection:1;
         unsigned int allowsMultipleSelectionDuringEditing:1;
+        unsigned int displaysHorizontalIndexTitleBar:1;
         unsigned int fadeCellsForBoundsChange:1;
         unsigned int updatingLayout:1;
         unsigned int needsReload:1;
@@ -170,9 +184,14 @@
         unsigned int allowsVisibleCellUpdatesDuringUpdateAnimations:1;
         unsigned int isCompletingInteractiveMovement:1;
         unsigned int isRegisteredForGeometryChanges:1;
+        unsigned int generatingDescriptionWithDataSource:1;
+        unsigned int skipAttributesApplication:1;
+        unsigned int isApplyingDiffableUpdate:1;
+        unsigned int isAnimatingInteractiveMovementCompletion:1;
     } _collectionViewFlags;
     struct CGPoint _lastLayoutOffset;
     NSIndexPath *_cancellingToIndexPath;
+    NSSet *_currentlyAnimatingReorderedIndexPaths;
     long long _prefetchMode;
     _UICollectionViewPrefetchingContext *_currentPrefetchingContext;
     NSMutableDictionary *_prefetchCacheItems;
@@ -192,10 +211,18 @@
     long long _dragPlaceholderInsertionCadence;
     long long _reorderingCadence;
     NSIndexPath *_highlightedSpringLoadedItem;
+    _UICollectionViewOrthogonalScrollerSectionController *_orthogonalScrollerController;
+    NSMutableDictionary *_orthogonalSectionPrefetchingContexts;
+    _UICollectionViewMultiSelectController *_multiSelectController;
+    UIContextMenuInteraction *_contextMenuInteraction;
     _Bool _prefetchingEnabled;
+    _Bool _isMovingFocusFromHorizontalIndexTitleBarToContent;
     NSIndexPath *_focusedCellIndexPath;
     UICollectionReusableView *_focusedCell;
     NSString *_focusedCellElementKind;
+    _UIFocusFastScrollingIndexBarEntry *_selectedIndexTitleEntry;
+    _UIHorizontalIndexTitleBar *_horizontalIndexTitleBar;
+    NSIndexPath *_indexPathOfFocusedCellBeforeFocusingOnHorizontalIndexTitleBar;
     CDUnknownBlockType _navigationCompletion;
     UIFocusContainerGuide *_endOfContentFocusContainerGuide;
     UICollectionViewCell *_currentPromiseFulfillmentCell;
@@ -206,7 +233,11 @@
 @property(retain, nonatomic, getter=_currentPromiseFulfillmentCell, setter=_setCurrentPromiseFulfillmentCell:) UICollectionViewCell *currentPromiseFulfillmentCell; // @synthesize currentPromiseFulfillmentCell=_currentPromiseFulfillmentCell;
 @property(readonly, nonatomic, getter=_endOfContentFocusContainerGuide) UIFocusContainerGuide *endOfContentFocusContainerGuide; // @synthesize endOfContentFocusContainerGuide=_endOfContentFocusContainerGuide;
 @property(copy, nonatomic, getter=_navigationCompletion, setter=_setNavigationCompletion:) CDUnknownBlockType navigationCompletion; // @synthesize navigationCompletion=_navigationCompletion;
+@property(nonatomic) _Bool isMovingFocusFromHorizontalIndexTitleBarToContent; // @synthesize isMovingFocusFromHorizontalIndexTitleBarToContent=_isMovingFocusFromHorizontalIndexTitleBarToContent;
+@property(retain, nonatomic) NSIndexPath *indexPathOfFocusedCellBeforeFocusingOnHorizontalIndexTitleBar; // @synthesize indexPathOfFocusedCellBeforeFocusingOnHorizontalIndexTitleBar=_indexPathOfFocusedCellBeforeFocusingOnHorizontalIndexTitleBar;
+@property(retain, nonatomic, getter=_horizontalIndexTitleBar, setter=_setHorizontalIndexTitleBar:) _UIHorizontalIndexTitleBar *horizontalIndexTitleBar; // @synthesize horizontalIndexTitleBar=_horizontalIndexTitleBar;
 @property(nonatomic, getter=_defaultLayoutMargins, setter=_setDefaultLayoutMargins:) struct UIEdgeInsets defaultLayoutMargins; // @synthesize defaultLayoutMargins=_defaultLayoutMargins;
+@property(retain, nonatomic) _UIFocusFastScrollingIndexBarEntry *selectedIndexTitleEntry; // @synthesize selectedIndexTitleEntry=_selectedIndexTitleEntry;
 @property(copy, nonatomic, getter=_focusedCellElementKind, setter=_setFocusedCellElementKind:) NSString *focusedCellElementKind; // @synthesize focusedCellElementKind=_focusedCellElementKind;
 @property(retain, nonatomic, getter=_focusedCell, setter=_setFocusedCell:) UICollectionReusableView *focusedCell; // @synthesize focusedCell=_focusedCell;
 @property(copy, nonatomic, getter=_focusedCellIndexPath, setter=_setFocusedCellIndexPath:) NSIndexPath *focusedCellIndexPath; // @synthesize focusedCellIndexPath=_focusedCellIndexPath;
@@ -216,6 +247,15 @@
 @property(nonatomic) __weak id <UICollectionViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) UICollectionViewLayout *collectionViewLayout; // @synthesize collectionViewLayout=_layout;
 - (void).cxx_destruct;
+- (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 previewForDismissingMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (id)_defaultTargetedPreviewForIdentifier:(id)arg1;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+- (void)_configureContextMenuInteractionIfNeeded;
+- (id)_orthogonalScrollerController;
+- (id)_updateTranslator;
+- (void)_performDiffableUpdate:(CDUnknownBlockType)arg1;
 - (void)_managedSubviewAdded:(id)arg1;
 - (id)_prefetchDataSourceActual;
 - (id)_delegateActual;
@@ -248,6 +288,7 @@
 - (id)_presentationIndexPathForDataSourceIndexPath:(id)arg1;
 - (long long)_dataSourceSectionIndexForPresentationSectionIndex:(long long)arg1;
 - (long long)_presentationSectionIndexForDataSourceSectionIndex:(long long)arg1;
+- (id)_identityTracker:(_Bool)arg1;
 - (void)performUsingPresentationValues:(CDUnknownBlockType)arg1;
 - (id)dataSourceIndexPathForPresentationIndexPath:(id)arg1;
 - (id)presentationIndexPathForDataSourceIndexPath:(id)arg1;
@@ -255,6 +296,10 @@
 - (long long)presentationSectionIndexForDataSourceSectionIndex:(long long)arg1;
 - (void)_performWithoutNotifyingRebaseObserversWhenApplyingUpdates:(CDUnknownBlockType)arg1;
 - (id)_performShadowUpdates:(CDUnknownBlockType)arg1;
+- (void)horizontalIndexBar:(id)arg1 selectedEntry:(id)arg2;
+- (void)layoutHorizontalIndexTitleBar;
+- (void)teardownHorizontalIndexTitleBar;
+- (void)setupHorizontalIndexTitleBar;
 - (void)setSpringLoaded:(_Bool)arg1;
 - (_Bool)isSpringLoaded;
 - (void)_addItemAtIndexPathToActiveDragSession:(id)arg1;
@@ -283,6 +328,7 @@
 - (void)_scrollFirstResponderCellToVisible:(_Bool)arg1;
 - (void)_adjustForAutomaticKeyboardInfo:(id)arg1 animated:(_Bool)arg2 lastAdjustment:(double *)arg3;
 @property(nonatomic, getter=_keepsFirstResponderVisibleOnBoundsChange, setter=_setKeepsFirstResponderVisibleOnBoundsChange:) _Bool keepsFirstResponderVisibleOnBoundsChange;
+- (void)_updateHorizontalIndexTitleBarSelectionForFocusedIndexPath:(id)arg1;
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)_reusePreviouslyFocusedManagedSubviewIfNeeded:(id)arg1;
 - (id)_managedSubviewForView:(id)arg1;
@@ -313,17 +359,23 @@
 - (void)_focusedItem:(id)arg1 isMinX:(_Bool *)arg2 isMaxX:(_Bool *)arg3 isMinY:(_Bool *)arg4 isMaxY:(_Bool *)arg5;
 - (id)_fulfillPromisedFocusRegionForCell:(id)arg1;
 - (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
+- (_Bool)_isMovingFocusFromHorizontalIndexBarToCellContent:(id)arg1;
 - (void)_cellBecameFocused:(id)arg1;
 - (_Bool)_cellCanBecomeFocused:(id)arg1;
 - (id)_delegatePreferredIndexPath;
 - (id)preferredFocusedView;
 - (_Bool)canBecomeFocused;
+- (void)_setHorizontalIndexTitleBarOffset:(struct CGPoint)arg1;
+- (struct CGPoint)_horizontalIndexTitleBarOffset;
+- (void)_setDisplaysHorizontalIndexTitleBar:(_Bool)arg1;
+- (_Bool)_displaysHorizontalIndexTitleBar;
 - (_Bool)_remembersPreviouslyFocusedItem;
 - (void)_setRemembersPreviouslyFocusedItem:(_Bool)arg1;
 @property(nonatomic) _Bool remembersLastFocusedIndexPath;
 - (id)_contentFocusContainerGuide;
 - (void)_updateContentFocusContainerGuides;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
+- (void)_orthogonalScrollingSection:(long long)arg1 didScrollToOffset:(struct CGPoint)arg2;
 - (_Bool)_indexPathIsValid:(id)arg1;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
 - (id)_dynamicAnimationsForTrackValues;
@@ -367,6 +419,8 @@
 - (void)_beginUpdates;
 - (void)_updateAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)_updateWithItems:(id)arg1 tentativelyForReordering:(_Bool)arg2 animator:(id)arg3;
+- (void)_recomputePreferredAttributesForVisibleItemsIfNeeded;
+- (void)_removeUntrackedAuxillaryViewsForBeforeVisibleViewsDict:(id)arg1 afterVisibleViewsDict:(id)arg2 withTrackingViewAnimations:(id)arg3;
 - (id)_viewAnimationsForCurrentUpdate;
 - (void)_prepareLayoutForUpdates;
 - (void)_updateFocusedCellIndexPathIfNecessaryWithLastFocusedRect:(struct CGRect)arg1;
@@ -390,9 +444,11 @@
 - (void)_updateSections:(id)arg1 updateAction:(int)arg2;
 - (id)_arrayForUpdateAction:(int)arg1;
 @property(readonly, nonatomic, getter=_currentUpdate) UICollectionViewUpdate *currentUpdate;
+- (id)_reusableViewWithoutAttributesForElementCategory:(unsigned long long)arg1 kind:(id)arg2 indexPath:(id)arg3;
 - (void)_reuseSupplementaryView:(id)arg1;
 - (_Bool)_reuseCell:(id)arg1 notifyDidEndDisplaying:(_Bool)arg2;
 - (_Bool)_reuseCell:(id)arg1;
+- (void)_reuseReusableViewIfNeeded:(id)arg1;
 - (_Bool)_isViewInReuseQueue:(id)arg1;
 - (id)_createTemplateLayoutCellForCellsWithIdentifier:(id)arg1;
 - (id)dequeueReusableSupplementaryViewOfKind:(id)arg1 withReuseIdentifier:(id)arg2 forIndexPath:(id)arg3;
@@ -422,11 +478,15 @@
 - (void)_updateSectionIndex;
 - (void)_reloadSectionIndexTitles;
 - (void)_updateIndex;
+- (struct CGPoint)_adjustFocusContentOffset:(struct CGPoint)arg1 toShowFocusItemWithInfo:(id)arg2;
 - (void)_scrollViewWillEndDraggingWithVelocity:(struct CGPoint)arg1 targetContentOffset:(inout struct CGPoint *)arg2;
+- (void)setContentOffset:(struct CGPoint)arg1;
+- (id)_customScrollAnimation;
 - (void)setContentOffset:(struct CGPoint)arg1 animated:(_Bool)arg2;
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
 - (void)_scrollToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2 animated:(_Bool)arg3;
 - (void)scrollToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2 animated:(_Bool)arg3;
+- (struct CGPoint)_contentOffsetForScrollingToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2 itemFrame:(struct CGRect)arg3 containingScrollView:(id)arg4;
 - (struct CGPoint)_contentOffsetForScrollingToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2;
 - (id)_templateLayoutCellForCellsWithReuseIdentifier:(id)arg1;
 - (id)_indexPathsForVisibleDecorationViewsOfKind:(id)arg1;
@@ -472,7 +532,6 @@
 - (void)setCollectionViewLayout:(id)arg1 withAnimator:(id)arg2;
 - (void)setCollectionViewLayout:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setCollectionViewLayout:(id)arg1 animated:(_Bool)arg2;
-- (_Bool)_visible;
 - (void)layoutSubviews;
 - (void)_applyBlockToAllReusableViews:(CDUnknownBlockType)arg1;
 - (void)_setVisibleView:(id)arg1 forLayoutAttributes:(id)arg2;
@@ -481,9 +540,11 @@
 - (id)_doubleSidedAnimationsForView:(id)arg1 withStartingLayoutAttributes:(id)arg2 startingLayout:(id)arg3 endingLayoutAttributes:(id)arg4 endingLayout:(id)arg5 withAnimationSetup:(CDUnknownBlockType)arg6 animationCompletion:(CDUnknownBlockType)arg7 enableCustomAnimations:(_Bool)arg8 customAnimationsType:(unsigned long long)arg9;
 - (void)_setAllowsVisibleCellUpdatesDuringUpdateAnimations:(_Bool)arg1;
 - (_Bool)_allowsVisibleCellUpdatesDuringUpdateAnimations;
+- (struct UIEdgeInsets)_visibleRectEdgeInsets;
 - (void)_setVisibleRectEdgeInsets:(struct UIEdgeInsets)arg1;
 - (void)_ensureViewsAreLoadedInRect:(struct CGRect)arg1;
 - (unsigned long long)_updateVisibleCellsNow:(_Bool)arg1;
+- (void)_resetPrefetchingContext:(id)arg1;
 - (void)_resetCurrentPrefetchContext;
 - (void)_resetPrefetchedCachedCells;
 - (void)_resetPrefetchState;
@@ -494,12 +555,13 @@
 - (void)_pruneCachedPrefetchViewsForVelocity:(struct CGVector)arg1;
 - (struct CGRect)_computePrefetchCacheValidationBoundsForPrefetchVelocity:(struct CGVector)arg1 visibleBounds:(struct CGRect)arg2;
 - (struct CGRect)_computeFutureVisibleBoundsForPrefetchVelocity:(struct CGVector)arg1 visibleBounds:(struct CGRect)arg2;
-- (void)_computePrefetchCandidatesForVisibleBounds:(struct CGRect)arg1 futureVisibleBounds:(struct CGRect)arg2 prefetchVector:(struct CGVector)arg3 notifyDelegateIfNeeded:(_Bool)arg4;
+- (id)_prefetchingContextForVisibleBounds:(struct CGRect)arg1 attributes:(id)arg2 notify:(_Bool)arg3;
+- (id)_computePrefetchCandidatesForVisibleBounds:(struct CGRect)arg1 futureVisibleBounds:(struct CGRect)arg2 prefetchVector:(struct CGVector)arg3 notifyDelegateIfNeeded:(_Bool)arg4;
 - (void)_computePrefetchCandidatesForVelocity:(struct CGVector)arg1 notifyDelegateIfNeeded:(_Bool)arg2;
-- (unsigned long long)_prefetchItemsForVelocity:(struct CGVector)arg1 maxItemsToPrefetch:(unsigned long long)arg2 invalidateCandidatesOnDirectionChanges:(_Bool)arg3;
-- (unsigned long long)_prefetchItemsForVelocity:(struct CGVector)arg1 maxItemsToPrefetch:(unsigned long long)arg2;
+- (unsigned long long)_prefetchItemsForPrefetchingContext:(id)arg1 maxItemsToPrefetch:(unsigned long long)arg2;
 - (struct CGPoint)_delegateTargetOffsetForProposedContentOffset:(struct CGPoint)arg1;
 @property(readonly, nonatomic, getter=_reorderingTargetPosition) struct CGPoint reorderingTargetPosition;
+- (id)_reorderingDestinationIndexPaths;
 - (id)_reorderingDestinationIndexPath;
 @property(readonly, nonatomic, getter=_reorderedItems) NSArray *reorderedItems;
 - (id)_reorderedItemForView:(id)arg1;
@@ -513,6 +575,8 @@
 - (id)_createPreparedCellForItemAtIndexPath:(id)arg1 withLayoutAttributes:(id)arg2 applyAttributes:(_Bool)arg3;
 - (void)_notifyDidEndDisplayingCellIfNeeded:(id)arg1 forIndexPath:(id)arg2;
 - (void)_notifyWillDisplayCellIfNeeded:(id)arg1 forIndexPath:(id)arg2;
+- (void)_setPrefetchingContext:(id)arg1 forOrthogonalScrollingSection:(long long)arg2;
+- (id)_prefetchingContextForOrthogonalScrollingSection:(long long)arg1;
 - (_Bool)_shouldPrefetchCells;
 - (_Bool)_shouldPrefetchCellsWhenPerformingReloadData;
 - (void)_setShouldPrefetchCellsWhenPerformingReloadData:(_Bool)arg1;
@@ -525,6 +589,7 @@
 - (_Bool)_hasFocusedCellForIndexPath:(id)arg1 shouldUsePreUpdateData:(_Bool)arg2;
 - (void)_checkForPreferredAttributesInView:(id)arg1 originalAttributes:(id)arg2;
 - (_Bool)_isReordering;
+- (struct CGRect)_effectiveVisibleBoundsForBounds:(struct CGRect)arg1;
 - (struct CGRect)_visibleBounds;
 - (void)_addContainerScrollViewForNotifications:(id)arg1;
 - (void)_removeContainerScrollViewForNotifications:(id)arg1;
@@ -541,6 +606,7 @@
 - (void)setScrollEnabled:(_Bool)arg1;
 - (void)setDirectionalLayoutMargins:(struct NSDirectionalEdgeInsets)arg1;
 - (void)_invalidateLayoutForUpdatedLayoutMarginsIfNeeded;
+- (unsigned long long)_edgesPropagatingSafeAreaInsetsToDescendants;
 - (void)safeAreaInsetsDidChange;
 - (void)layoutMarginsDidChange;
 - (void)setLayoutMargins:(struct UIEdgeInsets)arg1;
@@ -550,7 +616,9 @@
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (_Bool)_shouldScrollToContentBeginningInRightToLeft;
+- (void)_addControlledSubview:(id)arg1 atZIndex:(long long)arg2 forced:(_Bool)arg3 initialAttributes:(id)arg4;
 - (void)_addControlledSubview:(id)arg1 atZIndex:(long long)arg2 forced:(_Bool)arg3;
+- (void)_addControlledSubview:(id)arg1;
 - (void)_setIsAncestorOfFirstResponder:(_Bool)arg1;
 - (void)_invalidateLayoutIfNecessaryForReload;
 - (long long)_dragPlaceholderInsertionCadence;
@@ -589,6 +657,8 @@
 - (void)_setAllowsMultipleSelectionDuringEditing:(_Bool)arg1;
 - (_Bool)_allowsSelectionDuringEditing;
 - (void)_setAllowsSelectionDuringEditing:(_Bool)arg1;
+- (void)setAllowsUserInitiatedMultipleSelection:(_Bool)arg1;
+- (_Bool)allowsUserInitiatedMultipleSelection;
 @property(nonatomic) _Bool allowsMultipleSelection;
 @property(nonatomic) _Bool allowsSelection;
 - (void)deselectItemAtIndexPath:(id)arg1 animated:(_Bool)arg2;

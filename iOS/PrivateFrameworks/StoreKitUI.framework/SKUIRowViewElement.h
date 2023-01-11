@@ -6,6 +6,7 @@
 
 @class NSArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface SKUIRowViewElement
 {
     NSString *_type;

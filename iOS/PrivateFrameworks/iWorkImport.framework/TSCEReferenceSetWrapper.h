@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)foreachCellRef:(CDUnknownBlockType)arg1;
 - (void)forallRefs:(CDUnknownBlockType)arg1;
 - (void)removeCellRef:(const struct TSCECellRef *)arg1;
+- (void)insertRefs:(id)arg1;
 - (void)insertSpanningRangeRef:(const struct TSCESpanningRangeRef *)arg1;
 - (void)insertRangeRef:(const struct TSCERangeRef *)arg1;
 - (void)insertCellRef:(const struct TSCECellRef *)arg1;

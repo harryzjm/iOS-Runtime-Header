@@ -6,17 +6,20 @@
 
 #import <UIKit/UIView.h>
 
-@class LAUIPearlGlyphView, NSSet, SBUICAPackageView, SBUIFaceIDCameraGlyphView, UIColor, _UILegibilitySettings;
+@class BSUICAPackageView, LAUIPearlGlyphView, NSSet, SBUIFaceIDCameraGlyphView, SBUIFaceIDCoachingView, UIColor, _UILegibilitySettings;
 
 @interface SBUIProudLockIconView : UIView
 {
     long long _state;
-    SBUICAPackageView *_lockView;
+    UIView *_iconContainerView;
+    BSUICAPackageView *_lockView;
     NSSet *_imageLayers;
     NSSet *_shadowImageLayers;
     NSSet *_shadowFilterLayers;
     LAUIPearlGlyphView *_lazy_pearlGlyphView;
     id _pearlGlyphViewSharedResources;
+    SBUIFaceIDCoachingView *_lazy_faceIDCoachingView;
+    _Bool _performingIncomingLayout;
     SBUIFaceIDCameraGlyphView *_cameraCoveredView;
     _UILegibilitySettings *_legibilitySettings;
     double _durationOnCameraCoveredGlyphBeforeCoaching;
@@ -29,12 +32,22 @@
 @property(readonly, nonatomic) SBUIFaceIDCameraGlyphView *cameraCoveredView; // @synthesize cameraCoveredView=_cameraCoveredView;
 @property(nonatomic) long long state; // @synthesize state=_state;
 - (void).cxx_destruct;
+- (void)_resetCameraGlyphView;
+- (void)_resetfaceIDCoachingView;
+- (void)_resetPearlGlyphView;
+- (id)_faceIDCoachingView;
 - (id)_pearlGlyphView;
 - (double)_alphaForActiveViewForState:(long long)arg1;
+- (double)_lockToCoachingSpacing;
+- (struct CGSize)_smallLockSizeForTextSize:(id)arg1;
+- (struct CGSize)_smallLockSize;
+- (double)_scaleAmountForZoom;
+- (struct CGAffineTransform)_zoomedTransform;
 - (struct CGAffineTransform)_outgoingTransformForView:(id)arg1 fromState:(long long)arg2;
-- (struct CGAffineTransform)_transformForActiveViewForState:(long long)arg1;
+- (struct CGAffineTransform)_transformForActiveView:(id)arg1 forState:(long long)arg2;
 - (struct CGAffineTransform)_incomingTransformForActiveView:(id)arg1 forState:(long long)arg2;
 - (id)_activeViewsForState:(long long)arg1;
+- (id)_layoutAnimationSettingsForTransitionFromViews:(id)arg1 andState:(long long)arg2 toViews:(id)arg3 andState:(long long)arg4;
 - (id)_defaultAnimationSettingsForTransitionFromViews:(id)arg1 andState:(long long)arg2 toViews:(id)arg3 andState:(long long)arg4;
 - (id)_alphaAnimationSettingsForTransitionFromViews:(id)arg1 andState:(long long)arg2 toViews:(id)arg3 andState:(long long)arg4 forIncomingViews:(_Bool)arg5;
 - (id)_transformAnimationSettingsForTransitionFromViews:(id)arg1 andState:(long long)arg2 toViews:(id)arg3 andState:(long long)arg4 forIncomingViews:(_Bool)arg5;

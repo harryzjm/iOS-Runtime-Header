@@ -5,6 +5,7 @@
 //
 
 #import <iWorkImport/KNSlideCollection-Protocol.h>
+#import <iWorkImport/TSDModelContainer-Protocol.h>
 #import <iWorkImport/TSKDocumentObject-Protocol.h>
 #import <iWorkImport/TSKTransformableObject-Protocol.h>
 #import <iWorkImport/TSSPresetSource-Protocol.h>
@@ -13,7 +14,7 @@
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface KNTheme <KNSlideCollection, TSSPresetSource, TSKTransformableObject, TSKDocumentObject>
+@interface KNTheme <KNSlideCollection, TSSPresetSource, TSKTransformableObject, TSKDocumentObject, TSDModelContainer>
 {
     NSString *_UUID;
     NSArray *_masters;
@@ -34,9 +35,14 @@ __attribute__((visibility("hidden")))
 + (id)nativeThemeNameFromTheme:(id)arg1;
 + (id)generateUUID;
 + (void)initialize;
++ (_Bool)needsObjectUUID;
 @property(retain, nonatomic) NSArray *classicThemeRecords; // @synthesize classicThemeRecords=_classicThemeRecords;
 @property(readonly, nonatomic) _Bool defaultMasterSlideNodeIsOurBestGuess; // @synthesize defaultMasterSlideNodeIsOurBestGuess=_defaultMasterSlideNodeIsOurBestGuess;
 - (void).cxx_destruct;
+- (void)moveModel:(id)arg1 toIndex:(unsigned long long)arg2;
+- (void)removeContainedModel:(id)arg1;
+- (void)insertContainedModel:(id)arg1 atIndex:(unsigned long long)arg2;
+@property(readonly, nonatomic) NSArray *containedModels;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeRemovedFromDocumentRoot:(id)arg1;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
@@ -51,9 +57,9 @@ __attribute__((visibility("hidden")))
 - (void)resolveDefaultMaster;
 - (id)p_findDefaultMasterWithoutLoadingSlides;
 - (id)i_findDefaultMasterDuringArchiving;
-- (void)selectSecondMasterAsDefault;
-- (void)p_selectSecondMasterAsDefault;
-- (id)p_findSecondMaster;
+- (void)selectFallbackMasterAsDefault;
+- (void)p_selectFallbackMasterAsDefault;
+- (id)p_findFallbackDefaultMaster;
 - (void)removeAllClassicThemeRecords;
 - (void)addClassicThemeRecord:(id)arg1;
 - (void)addDefaultPresenterNotesStylesIfAbsent;
@@ -64,6 +70,8 @@ __attribute__((visibility("hidden")))
 - (id)mappedMasterForPasteForMaster:(id)arg1;
 - (id)p_mappedMasterForMaster:(id)arg1 scoringHeuristic:(CDUnknownBlockType)arg2;
 - (int)p_matchScoreForMaster:(id)arg1 toMaster:(id)arg2;
+@property(readonly, nonatomic) NSArray *displayedSlideNodes;
+@property(readonly, nonatomic) NSArray *slideNodes;
 - (id)orderedSlideNodesInSelection:(id)arg1;
 - (unsigned long long)indexOfSlideNode:(id)arg1;
 - (_Bool)containsSlideNode:(id)arg1;

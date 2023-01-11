@@ -12,7 +12,6 @@
     IBICLanguageDirection *_languageDirection;
 }
 
-+ (_Bool)idiomSupportsLanguageDirection:(id)arg1;
 + (_Bool)idiomSupportsColorSpace:(id)arg1;
 + (id)genesisSlotsForSlots:(id)arg1;
 + (id)orderedComponentClasses;

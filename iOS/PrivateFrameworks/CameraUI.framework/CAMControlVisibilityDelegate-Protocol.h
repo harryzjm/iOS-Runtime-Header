@@ -8,6 +8,7 @@
 
 @protocol CAMControlVisibilityDelegate <NSObject>
 @property(readonly, nonatomic) _Bool shouldShiftPreviewForUtilityBar;
+@property(readonly, nonatomic) _Bool shouldLayoutLightingNameBadgeAtBottom;
 @property(readonly, nonatomic) _Bool shouldHideLightingControl;
 @property(readonly, nonatomic) _Bool shouldHideFilterNameBadge;
 @property(readonly, nonatomic) _Bool shouldHideQRCodeInstructionLabel;

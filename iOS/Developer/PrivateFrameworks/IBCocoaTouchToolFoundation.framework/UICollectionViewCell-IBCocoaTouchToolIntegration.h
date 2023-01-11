@@ -6,10 +6,22 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
+@class NSValue;
+
 @interface UICollectionViewCell (IBCocoaTouchToolIntegration)
+- (id)ibSwizzled_preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)ibMapCopyOfReceiver:(id)arg1 intoLayoutEngine:(id)arg2;
 - (id)ibEffectiveCompilableRuntimeConstraintForConstraint:(id)arg1;
+- (id)ibPrepareViewAndCreateCompileTimeConstraints;
 - (id)ibOverriddenDesignableContentItem;
+@property(copy) NSValue *ibExplicitAutosizingSize;
+- (_Bool)ibShouldPropagateDesignFramesToCopiedView;
+- (void)setIbRequiresCompileTimeContentViewConstraints:(_Bool)arg1;
+- (_Bool)ibRequiresCompileTimeContentViewConstraints;
+@property(copy) NSValue *ibCustomSize;
+@property _Bool ibIsUsingAutomaticSizing;
+- (void)setIbLayoutFrame:(struct CGRect)arg1;
+- (void)ibForceCellUpdateAndRefresh;
 - (id)initWithMarshalledValues:(id)arg1 orderedKeys:(id)arg2 ignoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
 @end
 

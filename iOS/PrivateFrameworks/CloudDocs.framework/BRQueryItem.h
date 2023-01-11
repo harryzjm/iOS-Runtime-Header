@@ -7,12 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <CloudDocs/NSCopying-Protocol.h>
+#import <CloudDocs/NSFileProviderItemDecorating-Protocol.h>
 #import <CloudDocs/NSFileProviderItem_Private-Protocol.h>
 #import <CloudDocs/NSSecureCoding-Protocol.h>
 
-@class BRFileObjectID, NSArray, NSData, NSDate, NSDictionary, NSError, NSMutableDictionary, NSNumber, NSPersonNameComponents, NSString, NSURL;
+@class BRFileObjectID, NSArray, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSMutableDictionary, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL;
+@protocol NSFileProviderItemFlags;
 
-@interface BRQueryItem : NSObject <NSFileProviderItem_Private, NSSecureCoding, NSCopying>
+@interface BRQueryItem : NSObject <NSFileProviderItem_Private, NSFileProviderItemDecorating, NSSecureCoding, NSCopying>
 {
     NSString *_appLibraryID;
     NSString *_parentPath;
@@ -155,6 +157,7 @@
 - (id)fileSize;
 @property(readonly, copy, nonatomic) NSNumber *childItemCount;
 @property(readonly, nonatomic) unsigned long long capabilities;
+@property(readonly, nonatomic) NSArray *decorations;
 @property(readonly, nonatomic) NSDictionary *userInfo;
 @property(readonly, copy) NSURL *fileURL;
 @property(readonly, getter=isHidden) _Bool hidden;
@@ -165,21 +168,33 @@
 @property(readonly, copy, nonatomic) NSString *parentItemIdentifier;
 @property(readonly, copy, nonatomic) NSString *itemIdentifier;
 @property(readonly) _Bool fp_isContainer;
-@property(readonly, copy) NSString *fp_appContainerBundleIdentifier;
+- (id)fp_appContainerBundleIdentifier;
 - (id)localizedFileNameIfDesktopOrDocuments;
 - (id)containerIDIfDesktopOrDocuments;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
+@property(readonly, nonatomic, getter=isExcludedFromSync) _Bool excludedFromSync;
+@property(readonly, nonatomic) NSDictionary *extendedAttributes;
+@property(readonly, copy) NSString *fileSystemFilename;
+@property(readonly, nonatomic) id <NSFileProviderItemFlags> flags;
+@property(readonly, nonatomic, getter=fp_isAddedByCurrentUser) _Bool fp_addedByCurrentUser;
+@property(readonly, nonatomic) NSPersonNameComponents *fp_addedByNameComponents;
+@property(readonly, copy) NSSet *fp_cloudContainerClientBundleIdentifiers;
+@property(readonly, copy) NSString *fp_cloudContainerIdentifier;
 @property(readonly, copy) NSString *fp_domainIdentifier;
+@property(readonly) _Bool fp_isContainerPristine;
+@property(readonly, nonatomic, getter=fp_isLastModifiedByCurrentUser) _Bool fp_lastModifiedByCurrentUser;
+@property(readonly, copy) NSString *fp_parentDomainIdentifier;
 @property(readonly, getter=fp_isUbiquitous) _Bool fp_ubiquitous;
 @property(readonly, nonatomic) NSNumber *isDownloadRequested;
 @property(readonly, nonatomic) _Bool isTrashed;
+@property(readonly, nonatomic) NSFileProviderItemVersion *itemVersion;
 @property(readonly, nonatomic) NSString *preformattedMostRecentEditorName;
 @property(readonly, nonatomic) NSString *preformattedOwnerName;
 @property(readonly, copy) NSString *providerIdentifier;
 @property(readonly) Class superclass;
-@property(readonly, copy) NSArray *tags;
+@property(readonly, nonatomic, getter=isTopLevelSharedItem) _Bool topLevelSharedItem;
 
 @end
 

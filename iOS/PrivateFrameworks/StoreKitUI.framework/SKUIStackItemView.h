@@ -8,6 +8,7 @@
 
 @class NSArray, NSMapTable, NSString, SKUIAttributedStringView, SKUIStackItemViewElement, SKUIViewElementLayoutContext;
 
+__attribute__((visibility("hidden")))
 @interface SKUIStackItemView <SKUIViewElementView>
 {
     SKUIStackItemViewElement *_viewElement;

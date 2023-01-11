@@ -46,6 +46,8 @@
 - (int)featureType;
 - (_Bool)positionOfInterest:(CDStruct_c3b9c2ee *)arg1 zoom:(float *)arg2;
 - (unsigned char)venueComponentType;
+- (_Bool)hasVenueLookInsideFloorOrdinal;
+- (short)venueLookInsideFloorOrdinal;
 - (short)venueFloorOrdinal;
 - (unsigned long long)venueComponentID;
 - (unsigned long long)venueLevelID;
@@ -55,6 +57,7 @@
 - (const unsigned long long *)featureIDs;
 - (unsigned long long)businessID;
 - (_Bool)hasBusinessID;
+- (_Bool)isTransitAccessPoint;
 - (_Bool)isTransitLine;
 - (_Bool)isTransit;
 - (_Bool)isFlyoverTour;
@@ -77,10 +80,10 @@
 @property(readonly, nonatomic) NSArray *transitSystems;
 @property(readonly, nonatomic) NSArray *iconImageKeys;
 @property(readonly, nonatomic) NSArray *dataIconImageKeys;
+- (id)locale;
 - (id)subtext;
 - (id)text;
 - (const shared_ptr_2d33c5e4 *)labelMarkerImpl;
-- (id)initWithFeatureMarkerPtr:(const shared_ptr_430519ce *)arg1;
 - (id)initWithLabelMarkerPtr:(const shared_ptr_2d33c5e4 *)arg1;
 
 @end

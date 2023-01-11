@@ -8,21 +8,20 @@
 
 #import <Silex/SXComponentInserter-Protocol.h>
 
-@class NSArray, NSString;
+@class NSString;
 @protocol SXComponentInsertionConditionEngine;
 
 @interface SXDebugComponentInserter : NSObject <SXComponentInserter>
 {
-    NSArray *_conditions;
     id <SXComponentInsertionConditionEngine> _conditionEngine;
 }
 
 @property(readonly, nonatomic) id <SXComponentInsertionConditionEngine> conditionEngine; // @synthesize conditionEngine=_conditionEngine;
-@property(readonly, nonatomic) NSArray *conditions; // @synthesize conditions=_conditions;
 - (void).cxx_destruct;
-- (id)componentInsertForMarker:(id)arg1 layoutProvider:(id)arg2;
-- (_Bool)validateMarker:(id)arg1 remainingMarkerCount:(unsigned long long)arg2 layoutProvider:(id)arg3;
-- (unsigned long long)componentTraits;
+- (id)componentInsertForMarker:(id)arg1 DOMObjectProvider:(id)arg2 layoutProvider:(id)arg3;
+- (_Bool)validateMarker:(id)arg1 DOMObjectProvider:(id)arg2 layoutProvider:(id)arg3;
+@property(readonly, nonatomic) unsigned long long componentTraits;
+- (id)conditionsForDOMObjectProvider:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

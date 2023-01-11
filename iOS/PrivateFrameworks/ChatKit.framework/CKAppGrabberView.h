@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CKAppChevronView, UIButton, UIImageView, UILabel;
+@class NSString, UIButton, UIImageView, UILabel, _UIGrabber;
 @protocol CKAppGrabberViewDelegate;
 
 @interface CKAppGrabberView : UIView
@@ -17,7 +17,8 @@
     UIButton *_closeButton;
     UIView *_headerView;
     UIView *_grayLine;
-    CKAppChevronView *_chevronView;
+    _UIGrabber *_chevronView;
+    NSString *_appIdentifier;
     _Bool _showsAppTitle;
     _Bool _roundsTopCorners;
     id <CKAppGrabberViewDelegate> _delegate;
@@ -30,17 +31,17 @@
 @property(nonatomic) _Bool showsAppTitle; // @synthesize showsAppTitle=_showsAppTitle;
 @property(nonatomic) __weak id <CKAppGrabberViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (void)setState:(long long)arg1 animated:(_Bool)arg2;
-@property(nonatomic) long long state;
+- (id)iconImageView;
+- (id)headerView;
 - (void)updateHeaderFrame:(_Bool)arg1;
 - (void)closeButtonTapped:(id)arg1;
-- (void)updateAppTitle:(id)arg1 icon:(id)arg2;
+- (void)updateAppTitle:(id)arg1 icon:(id)arg2 appIdentifier:(id)arg3;
 - (double)chevronMaxYInView:(id)arg1;
 - (double)visualOriginYInView:(id)arg1;
 @property(readonly, nonatomic) double chevronMaxYOffset;
 @property(readonly, nonatomic) double visualOriginYOffset;
-@property(nonatomic) _Bool showsHairlineSeperator;
 @property(nonatomic) _Bool showsGrabberPill;
+- (void)updateIconImageView:(id)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 

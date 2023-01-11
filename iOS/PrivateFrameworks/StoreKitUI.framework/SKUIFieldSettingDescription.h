@@ -8,6 +8,7 @@
 
 @class NSMutableDictionary, NSString, SKUISettingsGroupController;
 
+__attribute__((visibility("hidden")))
 @interface SKUIFieldSettingDescription <SKUIControllableSettingDescription>
 {
     SKUISettingsGroupController *_controller;

@@ -19,9 +19,11 @@
     CBCentralManager *_centralManager;
     struct NSMutableDictionary *_devices;
     _Bool _invalidateCalled;
+    NSObject<OS_dispatch_source> *_lostTimer;
     _Bool _needDups;
     long long _payloadType;
     _Bool _poweredOffSleep;
+    int _rescanSecondsActual;
     NSObject<OS_dispatch_source> *_rescanTimer;
     struct __sFILE {
         char *_field1;
@@ -50,8 +52,18 @@
     _Bool _timeoutFired;
     NSObject<OS_dispatch_source> *_timeoutTimer;
     NSSet *_trackedPeersApplied;
-    _Bool _updating;
     struct LogCategory *_ucat;
+    _Bool _updating;
+    _Bool _scanParamActive;
+    _Bool _scanParamCache;
+    _Bool _scanParamDups;
+    NSData *_scanParamFilterData;
+    NSData *_scanParamFilterMask;
+    long long _scanParamInterval;
+    long long _scanParamWindow;
+    long long _scanParamMode;
+    NSArray *_scanParamPeers;
+    long long _scanParamRSSI;
     _Bool _rssiLog;
     _Bool _rssiLogStdOut;
     _Bool _scanCache;
@@ -110,7 +122,9 @@
 - (void)_startTimeoutIfNeeded;
 - (void)_rssiLogClose;
 - (void)_rssiLogOpen;
+- (void)_restartIfNeeded:(_Bool)arg1;
 - (void)_restartIfNeeded;
+- (void)_rescanLostFired;
 - (void)_rescanTimerFired;
 - (void)_removeAllDevicesWithReason:(id)arg1;
 - (void)_poweredOn;
@@ -127,7 +141,6 @@
 - (void)setPayloadFilterData:(id)arg1 mask:(id)arg2;
 @property(readonly, copy) NSString *description;
 - (void)dealloc;
-- (id)init;
 - (id)initWithType:(long long)arg1;
 
 // Remaining properties

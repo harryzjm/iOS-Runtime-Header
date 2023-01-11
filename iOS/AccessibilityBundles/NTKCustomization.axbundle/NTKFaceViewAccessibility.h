@@ -15,6 +15,8 @@
 - (_Bool)_accessibilityTimeTravelEnabled;
 - (void)_accessibilityTimeAnnouncementDidFinish;
 - (void)_accessibilityAnnounceScrub;
+- (id)detachedComplicationDisplayWrapperForSlot:(id)arg1;
+- (id)normalComplicationDisplayWrapperForSlot:(id)arg1;
 - (void)scrubToDate:(id)arg1 animated:(_Bool)arg2;
 - (void)endScrubbingAnimated:(_Bool)arg1;
 - (void)startScrubbingAnimated:(_Bool)arg1;
@@ -29,8 +31,8 @@
 - (_Bool)_axIsWaitingToAnnounce;
 - (void)_axSetIsDoneAnnouncing:(_Bool)arg1;
 - (_Bool)_axIsDoneAnnouncing;
+- (void)_loadSnapshotContentViews;
 - (void)setTimeView:(id)arg1;
-- (void)_axMakeTimeViewFirstElement;
 - (void)_axApplyAnnotationsToComplicationControllers:(id)arg1;
 - (void)_axAnnotateComplications;
 - (void)_accessibilityLoadAccessibilityInformation;

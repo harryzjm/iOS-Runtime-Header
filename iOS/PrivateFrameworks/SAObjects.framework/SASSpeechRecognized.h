@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSNumber, NSString, SASRecognition, SAUIGetResponseAlternatives;
+@class NSNumber, NSString, SASAudioAnalytics, SASRecognition, SAUIGetResponseAlternatives;
 
 @interface SASSpeechRecognized
 {
@@ -20,6 +20,7 @@
 @property(retain, nonatomic) SASRecognition *recognition;
 @property(copy, nonatomic) NSNumber *processedAudioDuration;
 @property(nonatomic) _Bool eager;
+@property(retain, nonatomic) SASAudioAnalytics *audioAnalytics;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

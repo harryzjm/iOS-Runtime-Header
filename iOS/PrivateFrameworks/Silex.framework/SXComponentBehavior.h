@@ -4,23 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Silex/SXClassFactoryProtocol-Protocol.h>
-
 @class NSString;
 
-@interface SXComponentBehavior <SXClassFactoryProtocol>
+@interface SXComponentBehavior
 {
 }
 
-+ (id)typeString;
-+ (void)initializeObject;
 - (Class)handlerClassForComponent:(id)arg1;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 @property(readonly, nonatomic) NSString *type; // @dynamic type;
 
 @end

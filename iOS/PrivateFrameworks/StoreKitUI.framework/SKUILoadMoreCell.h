@@ -6,6 +6,7 @@
 
 @class UIActivityIndicatorView;
 
+__attribute__((visibility("hidden")))
 @interface SKUILoadMoreCell
 {
     UIActivityIndicatorView *_indicator;

@@ -6,6 +6,7 @@
 
 @class FigVideoLayerInternal;
 
+__attribute__((visibility("hidden")))
 @interface FigVideoLayer
 {
     FigVideoLayerInternal *_videoLayer;
@@ -18,7 +19,6 @@
 - (_Bool)isVideoLayerBeingServiced;
 - (void)layerDidBecomeVisible:(_Bool)arg1;
 - (id)actionForKey:(id)arg1;
-- (void)finalize;
 - (void)dealloc;
 - (id)initWithLayer:(id)arg1;
 - (id)init;

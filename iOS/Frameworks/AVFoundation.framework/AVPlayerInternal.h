@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioSession, AVAudioSessionMediaPlayerOnly, AVOutputContext, AVPixelBufferAttributeMediator, AVPlayerItem, AVPropertyStorage, AVWeakReference, NSArray, NSDictionary, NSError, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@class AVAudioSession, AVAudioSessionMediaPlayerOnly, AVOutputContext, AVPixelBufferAttributeMediator, AVPlayerItem, AVWeakReference, NSArray, NSDictionary, NSError, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 @protocol AVCallbackCancellation><AVKVOIntrospection, AVLoggingIdentifier, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AVPlayerInternal : NSObject
 {
     AVWeakReference *weakReference;
-    AVPropertyStorage *propertyStorage;
     AVPixelBufferAttributeMediator *pixelBufferAttributeMediator;
     NSObject<OS_dispatch_queue> *stateDispatchQueue;
     NSObject<OS_dispatch_queue> *figConfigurationQueue;
@@ -38,8 +37,10 @@ __attribute__((visibility("hidden")))
     NSDictionary *vibrationPattern;
     AVOutputContext *outputContext;
     _Bool IOwnTheFigPlayer;
+    _Bool pausesAudioVisualPlaybackInBackground;
     NSMutableArray *handlersToCallWhenReadyToPlay;
     _Bool shouldReduceResourceUsage;
+    long long resourceConservationLevelWhilePaused;
     NSString *playerRole;
     NSString *externalPlaybackVideoGravity;
     long long actionAtItemEnd;
@@ -73,7 +74,9 @@ __attribute__((visibility("hidden")))
     _Bool isDisplayingClosedCaptions;
     _Bool externalPlaybackActive;
     _Bool airPlayVideoActive;
+    _Bool isConnectedToPhysicalSecondScreen;
     _Bool outputObscuredDueToInsufficientExternalProtection;
+    long long externalProtectionStatus;
     NSString *ancillaryPerformanceInformationForDisplay;
     float rate;
     _Bool automaticallyWaitsToMinimizeStalling;
@@ -82,14 +85,17 @@ __attribute__((visibility("hidden")))
     NSString *reasonForWaitingToPlay;
     struct CGSize currentItemPresentationSize;
     _Bool currentItemNonForcedSubtitlesEnabled;
-    struct __CFDictionary *videoLayers;
+    unsigned long long preferredVideoDecoderGPURegistryID;
+    _Bool disallowsAutoPauseOnRouteRemovalIfNoAudio;
+    _Bool hostApplicationInForeground;
+    NSMutableArray *videoLayers;
     NSMutableArray *subtitleLayers;
     NSMutableArray *closedCaptionLayers;
     NSHashTable *avPlayerLayers;
     int nextPrerollIDToGenerate;
     int pendingPrerollID;
     CDUnknownBlockType prerollCompletionHandler;
-    id <AVCallbackCancellation><AVKVOIntrospection> currentItemSuppressesVideoLayersCallbackInvoker;
+    id currentItemSuppressesVideoLayersNotificationToken;
     id <AVCallbackCancellation><AVKVOIntrospection> currentItemPreferredPixelBufferAttributesCallbackInvoker;
     struct OpaqueFigPlayer *figPlayer;
     struct OpaqueFigPlaybackItem *figPlaybackItemToIdentifyNextCurrentItem;
@@ -98,12 +104,11 @@ __attribute__((visibility("hidden")))
     NSArray *itemsInFigPlayQueue;
     NSArray *expectedAssetTypes;
     _Bool reevaluateBackgroundPlayback;
-    _Bool hostApplicationInForeground;
     _Bool hadAssociatedOnscreenPlayerLayerWhenSuspended;
+    _Bool suspensionExpected;
     struct OpaqueCMClock *figMasterClock;
     NSString *captionRenderingStrategy;
     NSArray *displaysUsedForPlayback;
-    unsigned long long preferredVideoDecoderGPURegistryID;
     id <AVLoggingIdentifier> loggingIdentifier;
 }
 

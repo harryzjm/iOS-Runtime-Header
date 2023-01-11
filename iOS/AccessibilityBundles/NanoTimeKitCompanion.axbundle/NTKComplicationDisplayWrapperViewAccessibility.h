@@ -12,7 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2 animation:(unsigned long long)arg3;
-- (id)accessibilityAttributeValue:(long long)arg1;
+- (id)_iosAccessibilityAttributeValue:(long long)arg1;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityHint;
 - (id)accessibilityValue;

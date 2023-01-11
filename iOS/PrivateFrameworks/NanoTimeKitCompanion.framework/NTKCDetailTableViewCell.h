@@ -11,12 +11,14 @@
 @interface NTKCDetailTableViewCell : UITableViewCell
 {
     _Bool _showsSeparator;
+    _Bool _ignoresRTLCorrection;
     UIView *_separatorView;
 }
 
 + (id)titleFont;
 + (id)defaultTextColor;
 + (id)reuseIdentifier;
+@property(nonatomic) _Bool ignoresRTLCorrection; // @synthesize ignoresRTLCorrection=_ignoresRTLCorrection;
 @property(retain, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
 @property(nonatomic) _Bool showsSeparator; // @synthesize showsSeparator=_showsSeparator;
 - (void).cxx_destruct;
@@ -26,7 +28,6 @@
 - (_Bool)_visibleAtPoint:(struct CGPoint)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setHighlighted:(_Bool)arg1 animated:(_Bool)arg2;
-- (id)_disclosureChevronImage:(_Bool)arg1;
 - (void)layoutSubviews;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

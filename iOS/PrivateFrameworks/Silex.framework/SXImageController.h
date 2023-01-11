@@ -31,10 +31,12 @@
 @property(readonly, nonatomic) struct CGSize viewportSize; // @synthesize viewportSize=_viewportSize;
 - (id)taggedEquivalentOfImageResource:(id)arg1;
 - (id)largestImageResourceForImageIdentifier:(id)arg1;
-- (id)imageResourceForImageIdentifier:(id)arg1 constrainedToSize:(struct CGSize)arg2 allowsUpscaling:(_Bool)arg3;
+- (id)imageResourceForImageIdentifier:(id)arg1 constrainedToSize:(struct CGSize)arg2;
 - (id)imageResourceForVideoFill:(id)arg1;
+- (id)imageResourceForRepeatableImageFill:(id)arg1;
 - (id)imageResourceForImageFill:(id)arg1;
 - (id)imageResourcesForComponentStyle:(id)arg1;
+- (void)determineOptimalImagesForComponentStyles:(id)arg1;
 - (struct CGSize)sizeConstraintForComponent:(id)arg1;
 - (id)imageResourceForDataTableComponent:(id)arg1;
 - (id)imageResourceForAudioComponent:(id)arg1;
@@ -47,7 +49,7 @@
 - (void)determineOptimalImagesForComponents:(id)arg1;
 - (void)determineOptimalImagesForMetadata;
 - (void)prepareImageResources;
-- (id)initWithDocumentController:(id)arg1;
+- (id)initWithDocumentController:(id)arg1 columnCalculator:(id)arg2;
 
 @end
 

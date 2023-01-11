@@ -7,6 +7,7 @@
 #import <UIKit/UIKeyCommand.h>
 
 @interface UIKeyCommand (IBUIKeyCommandIntegration)
++ (id)instantiateWithMarshalledValues:(id)arg1 orderedKeys:(id)arg2 ignoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
 - (id)initWithMarshalledValues:(id)arg1 orderedKeys:(id)arg2 ignoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
 @end
 

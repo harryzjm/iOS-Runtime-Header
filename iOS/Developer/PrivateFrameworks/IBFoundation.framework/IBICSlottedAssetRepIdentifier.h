@@ -19,9 +19,8 @@
 
 + (id)inferredRepIdentifiersGroupedByItemNameForPaths:(id)arg1;
 + (id)inferredRepIdentifiersForPaths:(id)arg1;
-+ (CDUnknownBlockType)slotComponentTransformerForPaths:(id)arg1;
 + (id)orderImageRepPathsForDeterministicConflictResolution:(id)arg1;
-+ (id)inferredRepIdentifierForPath:(id)arg1 slotComponentTransformer:(CDUnknownBlockType)arg2;
++ (id)inferredRepIdentifierForPath:(id)arg1;
 + (id)inferredRepIdentifiersForImageReps:(id)arg1;
 + (Class)slotClass;
 + (id)explicitlyUnassignedIdentifierForFileName:(id)arg1;

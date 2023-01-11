@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) _Bool drawsSeparatorAtBottomOfSection;
 @property(nonatomic) _Bool drawsSeparatorAtTopOfSection;
-@property(nonatomic) double sectionBorderWidth;
 @property(nonatomic) struct UIEdgeInsets backgroundInset;
 @property(retain, nonatomic) UIVisualEffect *separatorEffect;
 @property(nonatomic) _Bool insetsContentViewsToSafeArea;

@@ -4,21 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUICore/PXNavigationListDataSourceManagerObserver-Protocol.h>
+#import <PhotosUICore/PXNavigationListDataSectionManagerObserver-Protocol.h>
 
-@class NSString, PXExtendedTraitCollection, PXNavigationListDataSourceManager;
+@class NSString, PXExtendedTraitCollection, PXNavigationListDataSectionManager;
 
-@interface PXNavigationListGadgetProvider <PXNavigationListDataSourceManagerObserver>
+@interface PXNavigationListGadgetProvider <PXNavigationListDataSectionManagerObserver>
 {
     _Bool _shouldShowNavigationListOnIpad;
     _Bool _isPresentedInPicker;
     unsigned long long _type;
     PXExtendedTraitCollection *_traitCollection;
-    PXNavigationListDataSourceManager *_dataSourceManager;
+    PXNavigationListDataSectionManager *_dataSourceManager;
 }
 
 @property(readonly, nonatomic) _Bool isPresentedInPicker; // @synthesize isPresentedInPicker=_isPresentedInPicker;
-@property(retain, nonatomic) PXNavigationListDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
+@property(retain, nonatomic) PXNavigationListDataSectionManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property(readonly, nonatomic) PXExtendedTraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(nonatomic) _Bool shouldShowNavigationListOnIpad; // @synthesize shouldShowNavigationListOnIpad=_shouldShowNavigationListOnIpad;

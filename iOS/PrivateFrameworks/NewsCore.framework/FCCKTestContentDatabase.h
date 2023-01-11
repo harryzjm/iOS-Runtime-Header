@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FCCKTestFeedQueryEndpoint, FCCKTestMultiFetchQueryEndpoint, FCCKTestOrderFeedQueryEndpoint, NSMutableArray, NSMutableSet;
+@class FCCKTestFeedQueryEndpoint, FCCKTestMultiFetchQueryEndpoint, FCCKTestOrderFeedQueryEndpoint, NSMutableArray, NSMutableSet, NSSet;
 
 @interface FCCKTestContentDatabase
 {
     _Bool _simulateNetworkError;
+    NSSet *_fetchedKeys;
     NSMutableArray *_records;
     NSMutableSet *_droppedFeeds;
     FCCKTestFeedQueryEndpoint *_feedQueryEndpoint;
@@ -22,6 +23,7 @@
 @property(retain, nonatomic) FCCKTestFeedQueryEndpoint *feedQueryEndpoint; // @synthesize feedQueryEndpoint=_feedQueryEndpoint;
 @property(retain, nonatomic) NSMutableSet *droppedFeeds; // @synthesize droppedFeeds=_droppedFeeds;
 @property(retain, nonatomic) NSMutableArray *records; // @synthesize records=_records;
+@property(copy, nonatomic) NSSet *fetchedKeys; // @synthesize fetchedKeys=_fetchedKeys;
 @property(nonatomic) _Bool simulateNetworkError; // @synthesize simulateNetworkError=_simulateNetworkError;
 - (void).cxx_destruct;
 - (id)records:(id)arg1 withDesiredKeys:(id)arg2;
@@ -36,12 +38,18 @@
 - (void)insertArticleID:(id)arg1 atBottomOfFeedID:(id)arg2;
 - (void)insertArticleID:(id)arg1 atTopOfFeedID:(id)arg2;
 - (void)updateTagWithID:(id)arg1 properties:(id)arg2;
+- (void)insertTestIssueWithID:(id)arg1 properties:(id)arg2;
+- (id)insertTestIssueWithProperties:(id)arg1;
+- (void)insertTestTagWithID:(id)arg1 type:(id)arg2 properties:(id)arg3;
 - (id)insertTestTagWithType:(id)arg1 properties:(id)arg2;
 - (id)insertTestTagWithType:(id)arg1 feedID:(id)arg2 properties:(id)arg3;
 - (id)insertTestTagWithType:(id)arg1 feedID:(id)arg2;
 - (void)deleteArticleWithID:(id)arg1;
 - (void)updateArticleWithID:(id)arg1 modDate:(id)arg2 properties:(id)arg3;
 - (void)updateArticleWithID:(id)arg1 properties:(id)arg2;
+- (id)insertTestIssueListReferencingIssueIDs:(id)arg1;
+- (id)insertTestArticleListReferencingArticleIDs:(id)arg1;
+- (id)insertTestForYouConfigWithProperties:(id)arg1;
 - (void)insertTestArticleWithID:(id)arg1 properties:(id)arg2;
 - (id)insertTestArticleWithProperties:(id)arg1;
 - (id)insertTestArticle;

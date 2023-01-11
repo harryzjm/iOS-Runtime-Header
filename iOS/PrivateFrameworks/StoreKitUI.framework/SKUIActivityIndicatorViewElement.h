@@ -6,6 +6,7 @@
 
 @class SKUIImageViewElement, SKUILabelViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUIActivityIndicatorViewElement
 {
     double _period;

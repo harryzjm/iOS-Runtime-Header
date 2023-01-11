@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     CFPrefsPlistSource *_standardSetTarget;
     CFPrefsCloudSource *_cloudSetTarget;
     _Bool initialized;
-    _Atomic _Bool _isRebuildingCache;
 }
 
 + (void)preloadDomainsForIdentifiers:(const struct __CFString **)arg1 containers:(const struct __CFString **)arg2 cloudConfigurationURLs:(const struct __CFURL **)arg3 count:(long long)arg4 containingPreferences:(id)arg5;
@@ -40,9 +39,11 @@ __attribute__((visibility("hidden")))
 - (struct __CFDictionary *)alreadylocked_copyDictionary;
 - (void)alreadylocked_reloadCacheIfStale;
 - (long long)generationCount;
-- (void)handleRemoteChangeNotificationForDomainIdentifier:(struct __CFString *)arg1;
+- (void)handleChangeNotificationForDomainIdentifier:(struct __CFString *)arg1 isRemote:(_Bool)arg2;
 - (long long)alreadylocked_generationCountFromListOfSources:(id *)arg1 count:(long long)arg2;
+- (void)synchronouslySendDaemonMessage:(id)arg1 andAgentMessage:(id)arg2 andDirectMessage:(id)arg3 replyHandler:(CDUnknownBlockType)arg4;
 - (id)createRequestNewContentMessageForDaemon:(int)arg1;
+- (id)createMultiMessageWithContainedMessages:(id)arg1;
 - (void)handleReply:(id)arg1 toRequestNewDataMessage:(id)arg2 onConnection:(id)arg3 retryCount:(int)arg4 error:(_Bool *)arg5;
 - (struct __CFArray *)alreadylocked_copyKeyList;
 - (_Bool)synchronize;
@@ -59,6 +60,8 @@ __attribute__((visibility("hidden")))
 - (void)addSourceForIdentifier:(struct __CFString *)arg1 user:(struct __CFString *)arg2 byHost:(_Bool)arg3 container:(struct __CFString *)arg4;
 - (void)addSimulatorBackstopSourceForIdentifier:(struct __CFString *)arg1;
 - (void)addManagedSourceForIdentifier:(struct __CFString *)arg1 user:(struct __CFString *)arg2;
+- (_Bool)isDirectModeEnabled;
+- (void)transitionIntoDirectModeIfNeededWithRetryBlock:(CDUnknownBlockType)arg1;
 - (void)unlock;
 - (void)lock;
 - (id)copyWithZone:(struct _NSZone *)arg1;

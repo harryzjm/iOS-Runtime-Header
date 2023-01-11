@@ -6,7 +6,12 @@
 
 #import <XCTAutomationSupport/XCElementSnapshot.h>
 
-@interface XCElementSnapshot (Hitpoint)
+#import <XCTest/XCUIElementAttributes-Protocol.h>
+#import <XCTest/XCUIElementSnapshot-Protocol.h>
+
+@class NSArray, NSDictionary, NSString;
+
+@interface XCElementSnapshot (Hitpoint) <XCUIElementAttributes, XCUIElementSnapshot>
 - (id)hitPointForScrolling:(id *)arg1;
 - (id)hitPoint:(id *)arg1;
 - (id)hostingAndOrientationTransformedRect:(struct CGRect)arg1 error:(id *)arg2;
@@ -21,5 +26,20 @@
 - (id)hitTest:(struct CGPoint)arg1;
 - (id)reparentedOrphanElementMatchingAccessibilityElement:(id)arg1 inconsistentRelationshipDescriptions:(id *)arg2 error:(id *)arg3;
 - (id)_snapshotForAccessibilityElement:(id)arg1 error:(id *)arg2;
+@property(readonly, copy) NSDictionary *dictionaryRepresentation;
+
+// Remaining properties
+@property(readonly) NSArray *children;
+@property(readonly) unsigned long long elementType;
+@property(readonly, getter=isEnabled) _Bool enabled;
+@property(readonly) struct CGRect frame;
+@property(readonly) long long horizontalSizeClass;
+@property(readonly) NSString *identifier;
+@property(readonly, copy) NSString *label;
+@property(readonly) NSString *placeholderValue;
+@property(readonly, getter=isSelected) _Bool selected;
+@property(readonly, copy) NSString *title;
+@property(readonly) id value;
+@property(readonly) long long verticalSizeClass;
 @end
 

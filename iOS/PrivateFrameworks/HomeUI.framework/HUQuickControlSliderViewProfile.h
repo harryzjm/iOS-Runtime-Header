@@ -12,6 +12,7 @@
 {
     _Bool _hasSecondaryValue;
     _Bool _hasOffState;
+    _Bool _showGrabbers;
     HFNumberValueConstraints *_primaryValueConstraints;
     HFNumberValueConstraints *_secondaryValueConstraints;
     unsigned long long _preferredFillSection;
@@ -20,12 +21,14 @@
 
 @property(nonatomic) unsigned long long interactionFidelity; // @synthesize interactionFidelity=_interactionFidelity;
 @property(nonatomic) unsigned long long preferredFillSection; // @synthesize preferredFillSection=_preferredFillSection;
+@property(nonatomic) _Bool showGrabbers; // @synthesize showGrabbers=_showGrabbers;
 @property(retain, nonatomic) HFNumberValueConstraints *secondaryValueConstraints; // @synthesize secondaryValueConstraints=_secondaryValueConstraints;
 @property(retain, nonatomic) HFNumberValueConstraints *primaryValueConstraints; // @synthesize primaryValueConstraints=_primaryValueConstraints;
 @property(nonatomic) _Bool hasOffState; // @synthesize hasOffState=_hasOffState;
 @property(nonatomic) _Bool hasSecondaryValue; // @synthesize hasSecondaryValue=_hasSecondaryValue;
 - (void).cxx_destruct;
 - (double)gestureDragCoefficient;
+- (_Bool)supportsTouchContinuation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, SAHAAttributeValue, SAHAEntity;
+@class NSArray, NSString, SAHAAttributeValue, SAHAEntity;
 
 @interface SAHAActionResult
 {
@@ -14,6 +14,8 @@
 + (id)actionResult;
 @property(retain, nonatomic) SAHAAttributeValue *resultValue;
 @property(copy, nonatomic) NSString *resultAttribute;
+@property(copy, nonatomic) NSString *requestActionId;
+@property(copy, nonatomic) NSArray *relatedEntityIds;
 @property(copy, nonatomic) NSString *outcome;
 @property(retain, nonatomic) SAHAEntity *entity;
 - (id)encodedClassName;

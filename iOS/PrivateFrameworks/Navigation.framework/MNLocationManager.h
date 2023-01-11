@@ -9,7 +9,7 @@
 #import <Navigation/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <Navigation/MNLocationProviderDelegate-Protocol.h>
 
-@class CLHeading, GEOLocationShifter, MNLocation, NSBundle, NSDate, NSError, NSHashTable, NSLock, NSString;
+@class CLHeading, CLInUseAssertion, GEOLocationShifter, MNLocation, NSBundle, NSDate, NSError, NSHashTable, NSLock, NSString;
 @protocol MNLocationProvider, MNLocationRecorder;
 
 @interface MNLocationManager : NSObject <GEOResourceManifestTileGroupObserver, MNLocationProviderDelegate>
@@ -19,18 +19,19 @@
     id <MNLocationRecorder> _locationRecorder;
     NSBundle *_effectiveBundle;
     NSString *_effectiveBundleIdentifier;
+    NSHashTable *_accessRequesters;
     NSHashTable *_locationObservers;
     NSHashTable *_locationListeners;
     NSHashTable *_headingObservers;
     NSLock *_observersLock;
     NSLock *_lastLocationLock;
     MNLocation *_lastLocation;
-    MNLocation *_lastGoodLocation;
     GEOLocationShifter *_locationShifter;
     double _lastLocationUpdateTime;
     double _lastLocationReportTime;
     double _locationUpdateStartTime;
     double _expectedGpsUpdateInterval;
+    CLInUseAssertion *_locationAssertion;
     CLHeading *_heading;
     NSDate *_lastUpdatedHeadingDate;
     _Bool _hasCustomDesiredAccuracy;
@@ -61,7 +62,6 @@
 - (_Bool)locationProviderShouldPauseLocationUpdates:(id)arg1;
 - (void)locationProviderDidChangeAuthorizationStatus:(id)arg1;
 - (void)locationProvider:(id)arg1 didUpdateHeading:(id)arg2;
-- (void)_locationProvider:(id)arg1 didUpdateLocation:(id)arg2;
 - (void)locationProvider:(id)arg1 didReceiveError:(id)arg2;
 - (void)locationProvider:(id)arg1 didUpdateLocation:(id)arg2;
 - (_Bool)isLocationServicesRestricted;
@@ -75,10 +75,17 @@
 - (void)_reportLocationReset;
 - (void)_reportLocationFailureWithError:(id)arg1;
 - (void)_reportLocationSuccess;
+- (void)_updateForNewLocation:(id)arg1 rawLocation:(id)arg2;
 - (void)_startLocationUpdateWithObserver:(id)arg1 desiredAccuracy:(double)arg2;
 - (void)_setTrackingHeading:(_Bool)arg1;
 - (void)_setTrackingLocation:(_Bool)arg1;
 - (void)_reset;
+- (void)removeLocationAccessForAll;
+- (void)removeLocationAccessFor:(id)arg1;
+- (void)requestLocationAccessFor:(id)arg1;
+- (_Bool)_hasLocationAssertion;
+- (void)_clearLocationAssertion;
+- (void)_createLocationAssertion;
 - (void)_setLastLocationReceivedFromMaps:(id)arg1;
 - (void)pushLocation:(id)arg1;
 - (void)stopHeadingUpdateWithObserver:(id)arg1;

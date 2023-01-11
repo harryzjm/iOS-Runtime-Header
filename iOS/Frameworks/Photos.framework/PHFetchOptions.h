@@ -31,6 +31,10 @@
     NSNumber *_includeExpiredMomentSharesNumber;
     NSNumber *_includeFavoriteMemoriesCollectionListNumber;
     NSNumber *_includePlacesSmartAlbumNumber;
+    NSNumber *_includeAllPhotosSmartAlbumNumber;
+    NSNumber *_includeRecentlyEditedSmartAlbumNumber;
+    NSNumber *_includeScreenRecordingsSmartAlbumNumber;
+    NSNumber *_includeRootFolderNumber;
     NSNumber *_excludeMontageAssetsNumber;
     NSNumber *_minimumVerifiedFaceCountNumber;
     NSNumber *_minimumUnverifiedFaceCountNumber;
@@ -42,7 +46,10 @@
     NSNumber *_isExclusivePredicateNumber;
     NSMutableSet *_propertySets;
     NSNumber *_shouldPrefetchCountNumber;
+    NSNumber *_highlightCurationTypeNumber;
     NSNumber *_sharingStreamNumber;
+    NSNumber *_includeUserSmartAlbumsNumber;
+    _Bool _includeRecentsSmartAlbum;
     NSPredicate *_predicate;
     NSArray *_sortDescriptors;
     NSArray *_customObjectIDSortOrder;
@@ -54,10 +61,13 @@
     PHPhotoLibrary *_photoLibrary;
 }
 
-+ (id)effectivePhotoLibraryForFetchOptions:(id)arg1;
++ (id)effectivePhotoLibraryForFetchOptions:(id)arg1 object:(id)arg2;
++ (id)fetchOptionsWithPhotoLibrary:(id)arg1 orObject:(id)arg2;
++ (id)fetchOptionsWithInclusiveDefaultsForPhotoLibrary:(id)arg1;
 + (id)fetchOptionsWithInclusiveDefaults;
 @property(retain, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(copy, nonatomic) NSSet *verifiedPersonTypes; // @synthesize verifiedPersonTypes=_verifiedPersonTypes;
+@property(nonatomic) _Bool includeRecentsSmartAlbum; // @synthesize includeRecentsSmartAlbum=_includeRecentsSmartAlbum;
 @property(retain, nonatomic) NSPredicate *internalInclusionPredicate; // @synthesize internalInclusionPredicate=_internalInclusionPredicate;
 @property(retain, nonatomic) NSArray *internalSortDescriptors; // @synthesize internalSortDescriptors=_internalSortDescriptors;
 @property(retain, nonatomic) NSPredicate *internalPredicate; // @synthesize internalPredicate=_internalPredicate;
@@ -67,7 +77,9 @@
 @property(retain, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 - (void).cxx_destruct;
 - (id)description;
+@property(nonatomic) _Bool includeUserSmartAlbums;
 @property(nonatomic) unsigned long long sharingStream;
+@property(nonatomic) unsigned short highlightCurationType;
 @property(nonatomic) _Bool isExclusivePredicate;
 @property(nonatomic) _Bool shouldPrefetchCount;
 @property(nonatomic) _Bool includeOnlyFacesInFaceGroups;
@@ -78,6 +90,10 @@
 @property(nonatomic) unsigned long long minimumUnverifiedFaceCount;
 @property(nonatomic) unsigned long long minimumVerifiedFaceCount;
 @property(nonatomic) _Bool excludeMontageAssets;
+@property(nonatomic) _Bool includeRootFolder;
+@property(nonatomic) _Bool includeScreenRecordingsSmartAlbum;
+@property(nonatomic) _Bool includeRecentlyEditedSmartAlbum;
+@property(nonatomic) _Bool includeAllPhotosSmartAlbum;
 @property(nonatomic) _Bool includePlacesSmartAlbum;
 @property(nonatomic) _Bool includeFavoriteMemoriesCollectionList;
 @property(nonatomic) _Bool includeExpiredMomentShares;
@@ -100,6 +116,7 @@
 @property(readonly, nonatomic) NSSet *fetchPropertySetsAsSet;
 - (void)addFetchPropertySets:(id)arg1;
 @property(retain, nonatomic) NSArray *fetchPropertySets;
+@property(readonly, nonatomic) _Bool hasAnySortDescriptors;
 - (void)mergeWithFetchOptions:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;

@@ -4,21 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface VNPixelBufferObservation
 {
     struct __CVBuffer *_pixelBuffer;
+    NSString *_featureName;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(readonly, copy, nonatomic) NSString *featureName; // @synthesize featureName=_featureName;
 @property(readonly, nonatomic) struct __CVBuffer *pixelBuffer; // @synthesize pixelBuffer=_pixelBuffer;
+- (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
-- (id)debugDescription;
+- (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)dealloc;
-- (id)initWithRequestRevision:(unsigned long long)arg1 CVPixelBuffer:(struct __CVBuffer *)arg2;
+- (id)initWithRequestRevision:(unsigned long long)arg1 featureName:(id)arg2 CVPixelBuffer:(struct __CVBuffer *)arg3;
 
 @end
 

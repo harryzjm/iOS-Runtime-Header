@@ -4,16 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface IDSSocketPairAckMessage
+#import <IDSFoundation/IDSSocketPairMessage-Protocol.h>
+
+@class NSData, NSDate, NSString;
+
+@interface IDSSocketPairAckMessage <IDSSocketPairMessage>
 {
     unsigned int _sequenceNumber;
 }
 
-@property(readonly, nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
+@property(nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 - (id)_nonHeaderData;
 - (unsigned char)command;
 - (id)initWithSequenceNumber:(unsigned int)arg1;
 - (id)initWithCommand:(unsigned char)arg1 underlyingData:(id)arg2;
+
+// Remaining properties
+@property(readonly, nonatomic) NSData *data;
+@property(readonly, nonatomic) _Bool expectsPeerResponse;
+@property(retain, nonatomic) NSDate *expiryDate;
+@property(readonly, nonatomic) NSString *messageUUID;
+@property(readonly, nonatomic) NSString *peerResponseIdentifier;
+@property(nonatomic) unsigned short streamID;
+@property(readonly, nonatomic) _Bool wantsAppAck;
 
 @end
 

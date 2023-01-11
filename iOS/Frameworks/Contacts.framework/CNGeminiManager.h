@@ -7,20 +7,29 @@
 #import <objc/NSObject.h>
 
 #import <Contacts/CoreTelephonyClientDelegate-Protocol.h>
+#import <Contacts/TUCallProviderManagerDelegate-Protocol.h>
 
-@class CNContactsEnvironment, CoreTelephonyClient, NSString, TUCallProviderManager;
+@class CNContactsEnvironment, CoreTelephonyClient, NSMapTable, NSString, TUCallProviderManager;
+@protocol OS_dispatch_queue;
 
-@interface CNGeminiManager : NSObject <CoreTelephonyClientDelegate>
+@interface CNGeminiManager : NSObject <CoreTelephonyClientDelegate, TUCallProviderManagerDelegate>
 {
     CNContactsEnvironment *_environment;
     CoreTelephonyClient *_coreTelephonyClient;
     TUCallProviderManager *_callProviderManager;
+    NSObject<OS_dispatch_queue> *_queue;
+    NSMapTable *_delegateToQueue;
+    unsigned long long _dataSourceExclusions;
 }
 
++ (_Bool)useFakeData;
 + (id)cellularPlanManager;
 + (id)channelStringFromSenderIdentity:(id)arg1;
 + (id)descriptorForRequiredKeys;
 + (_Bool)deviceSupportsGemini;
+@property(nonatomic) unsigned long long dataSourceExclusions; // @synthesize dataSourceExclusions=_dataSourceExclusions;
+@property(retain, nonatomic) NSMapTable *delegateToQueue; // @synthesize delegateToQueue=_delegateToQueue;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property(retain, nonatomic) TUCallProviderManager *callProviderManager; // @synthesize callProviderManager=_callProviderManager;
 @property(retain, nonatomic) CoreTelephonyClient *coreTelephonyClient; // @synthesize coreTelephonyClient=_coreTelephonyClient;
 @property(retain, nonatomic) CNContactsEnvironment *environment; // @synthesize environment=_environment;
@@ -30,7 +39,13 @@
 - (id)fetchedSubscriptionsWithError:(id *)arg1;
 - (id)bestSubscriptionForHandle:(id)arg1 contactStore:(id)arg2 error:(id *)arg3;
 - (id)bestSubscriptionForContact:(id)arg1 error:(id *)arg2;
+- (id)fakeSenderIdentities;
+- (void)danglingPlansDidUpdate:(id)arg1;
+- (void)providersChangedForProviderManager:(id)arg1;
 - (void)subscriptionInfoDidChange;
+- (void)notifyDelegateOfChannelUpdates;
+- (void)removeDelegate:(id)arg1;
+- (void)addDelegate:(id)arg1 queue:(id)arg2;
 - (_Bool)isReferencedByCallHistoryForSenderLabelIdentifier:(id)arg1;
 - (_Bool)isReferencedByMessagesForSenderLabelIdentifier:(id)arg1;
 - (_Bool)isReferencedByContactsForSenderLabelIdentifier:(id)arg1 store:(id)arg2;
@@ -51,13 +66,15 @@
 - (id)senderIdentityMatchingUUID:(id)arg1 fromSenderIdentities:(id)arg2;
 - (id)mostRecentChannelIdentifierForPhoneNumbers:(id)arg1 fromChannelIdentifiers:(id)arg2;
 - (id)bestChannelIdentifierForPhoneNumbers:(id)arg1 fromChannelIdentifiers:(id)arg2 defaultChannelIdentifier:(id)arg3;
-- (id)channelForHandle:(id)arg1 contactStore:(id)arg2 substituteDefaultForDangling:(_Bool)arg3 error:(id *)arg4;
+- (id)geminiResultForHandle:(id)arg1 contactStore:(id)arg2 substituteDefaultForDangling:(_Bool)arg3 error:(id *)arg4;
+- (id)geminiResultForHandle:(id)arg1 contactStore:(id)arg2 error:(id *)arg3;
 - (id)bestSenderIdentityForHandle:(id)arg1 contactStore:(id)arg2 error:(id *)arg3;
 - (id)contactForPhoneString:(id)arg1 contactStore:(id)arg2;
-- (id)channelForPreferredChannelString:(id)arg1 fromChannels:(id)arg2;
-- (id)bestGeminiResultForContact:(id)arg1 substituteDefaultForDangling:(_Bool)arg2 error:(id *)arg3;
+- (id)channelForPreferredChannelString:(id)arg1 fromChannels:(id)arg2 synthesizeMissingChannels:(_Bool)arg3;
+- (id)geminiResultForContact:(id)arg1 substituteDefaultForDangling:(_Bool)arg2 error:(id *)arg3;
+- (id)geminiResultForContact:(id)arg1 error:(id *)arg2;
 - (id)remoteBestSenderIdentityForHandle:(id)arg1 contactStore:(id)arg2 error:(id *)arg3;
-- (id)remoteBestGeminiResultForContact:(id)arg1 substituteDefaultForDangling:(_Bool)arg2 error:(id *)arg3;
+- (id)remoteGeminiResultForContact:(id)arg1 substituteDefaultForDangling:(_Bool)arg2 error:(id *)arg3;
 - (id)bestSenderIdentityForContact:(id)arg1 error:(id *)arg2;
 - (id)channelForContact:(id)arg1 error:(id *)arg2;
 - (id)fetchedSenderIdentitiesWithError:(id *)arg1;

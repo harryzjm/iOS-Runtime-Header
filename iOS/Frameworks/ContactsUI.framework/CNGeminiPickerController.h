@@ -10,7 +10,7 @@
 #import <ContactsUI/UITableViewDelegate-Protocol.h>
 
 @class CNGeminiChannel, NSIndexPath, NSMutableArray, NSString, UITableViewController;
-@protocol CNPickerControllerDelegate;
+@protocol CNPickerControllerDelegate><UINavigationControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface CNGeminiPickerController : UINavigationController <UITableViewDataSource, UITableViewDelegate>
@@ -18,12 +18,10 @@ __attribute__((visibility("hidden")))
     UITableViewController *_tableViewController;
     NSMutableArray *_geminiChannels;
     CNGeminiChannel *_preferredGeminiChannel;
-    NSString *_contactName;
     NSIndexPath *_selectedIndexPath;
 }
 
 @property(retain, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
-@property(retain, nonatomic) NSString *contactName; // @synthesize contactName=_contactName;
 @property(retain, nonatomic) CNGeminiChannel *preferredGeminiChannel; // @synthesize preferredGeminiChannel=_preferredGeminiChannel;
 @property(retain, nonatomic) NSMutableArray *geminiChannels; // @synthesize geminiChannels=_geminiChannels;
 @property(retain, nonatomic) UITableViewController *tableViewController; // @synthesize tableViewController=_tableViewController;
@@ -43,11 +41,13 @@ __attribute__((visibility("hidden")))
 - (void)cancelPicker:(id)arg1;
 - (void)donePicker:(id)arg1;
 - (void)didPickItem;
-- (id)initWithGeminiItem:(id)arg1;
+- (void)setGeminiResult:(id)arg1 reload:(_Bool)arg2;
+- (void)setGeminiResult:(id)arg1;
+- (id)initWithGeminiResult:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(nonatomic) __weak id <CNPickerControllerDelegate> delegate; // @dynamic delegate;
+@property(nonatomic) __weak id <CNPickerControllerDelegate><UINavigationControllerDelegate> delegate; // @dynamic delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

@@ -78,7 +78,16 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool supportsCustomEffectTimingCurve2;
 @property(readonly, nonatomic) _Bool supportsCustomEffectTimingCurve1;
 @property(readonly, nonatomic) _Bool supportsRandomNumberSeedInspection;
+@property(readonly, nonatomic) _Bool supportsDecay;
+@property(readonly, nonatomic) _Bool supportsCustomRepeats;
+@property(readonly, nonatomic) _Bool supportsJiggleIntensity;
+@property(readonly, nonatomic) _Bool supports3DChartRotationAngle;
+@property(readonly, nonatomic) _Bool supportsActionRotationDirection;
+@property(readonly, nonatomic) _Bool supportsActionRotationAngle;
 @property(readonly, nonatomic) _Bool supportsTravelDistance;
+@property(readonly, nonatomic) _Bool supportsActionScale;
+@property(readonly, nonatomic) _Bool supportsOpacity;
+@property(readonly, nonatomic) _Bool supportsCustomScale;
 @property(readonly, nonatomic) _Bool supportsScaleAmount;
 @property(readonly, nonatomic) _Bool supportsShine;
 @property(readonly, nonatomic) _Bool supportsIncludeEndpoints;

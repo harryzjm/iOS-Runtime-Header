@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface CNKMostActiveParticipantViewController : UIViewController
 {
     MISSING_TYPE *participants;
@@ -18,7 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *widthConstraint;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)viewDidLoad;
 - (void)viewDidLayoutSubviews;

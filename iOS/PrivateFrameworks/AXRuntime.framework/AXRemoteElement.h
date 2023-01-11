@@ -26,6 +26,7 @@
 + (id)remoteElementsForContextId:(unsigned int)arg1;
 + (id)remoteElementsForBlock:(CDUnknownBlockType)arg1;
 + (id)remoteElementForBlock:(CDUnknownBlockType)arg1;
++ (_Bool)_isSerializableAccessibilityElement;
 + (void)initialize;
 @property(nonatomic) _Bool deniesDirectAppConnection; // @synthesize deniesDirectAppConnection=_deniesDirectAppConnection;
 @property(nonatomic) __weak id accessibilityContainer; // @synthesize accessibilityContainer=_accessibilityContainer;
@@ -41,6 +42,7 @@
 - (struct CGRect)accessibilityFrame;
 - (void)unregister;
 - (id)accessibilityElements;
+- (unsigned long long)_accessibilityAutomationType;
 - (id)_accessibilitySortedElementsWithin;
 - (id)_accessibilityLastElement;
 - (id)_accessibilityFirstElement;
@@ -48,6 +50,7 @@
 - (id)_accessibilityActiveKeyboard;
 - (id)_remoteElementWithAttribute:(long long)arg1 limitToRemoteSubviews:(_Bool)arg2;
 - (void)getLeafElementsFromRemoteSide:(CDUnknownBlockType)arg1;
+- (void)_getRemoteValuesOffMainThread:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) unsigned long long uuidHash;
 - (void)dealloc;
 - (id)_accessibilityTextViewTextOperationResponder;

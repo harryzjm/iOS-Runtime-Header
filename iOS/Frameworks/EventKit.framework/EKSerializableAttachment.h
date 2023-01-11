@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL;
+@class NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface EKSerializableAttachment
 {
     NSURL *_urlOnDisk;
+    NSString *_contentTypeFromServer;
 }
 
 + (id)classesForKey;
+@property(retain, nonatomic) NSString *contentTypeFromServer; // @synthesize contentTypeFromServer=_contentTypeFromServer;
 @property(retain, nonatomic) NSURL *urlOnDisk; // @synthesize urlOnDisk=_urlOnDisk;
 - (void).cxx_destruct;
 - (id)createAttachment;

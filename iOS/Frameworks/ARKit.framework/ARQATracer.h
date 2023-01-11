@@ -9,7 +9,7 @@
 #import <ARKit/ARInternalSessionObserver-Protocol.h>
 #import <ARKit/ARReplaySensorDelegate-Protocol.h>
 
-@class ARScreenRecording, NSMutableData, NSMutableDictionary, NSOutputStream, NSString, UILabel;
+@class ARPresentationStats, ARScreenRecording, NSArray, NSDictionary, NSMutableData, NSMutableDictionary, NSOutputStream, NSString, UILabel;
 @protocol ARQATracerDelegate, OS_dispatch_queue;
 
 @interface ARQATracer : NSObject <ARInternalSessionObserver, ARReplaySensorDelegate>
@@ -20,16 +20,20 @@
     NSMutableData *_dataBuffer;
     NSOutputStream *_framesStreamToFile;
     NSObject<OS_dispatch_queue> *_processingQueue;
+    NSDictionary *_raycastQueryData;
+    NSArray *_raycastResultData;
     _Bool _forceQuitApp;
     _Bool _recordScreen;
     id <ARQATracerDelegate> _delegate;
     NSString *_traceOutputFilePath;
     UILabel *_replayFrameLabel;
     ARScreenRecording *_screenRecorder;
+    ARPresentationStats *_presentationStats;
     struct CGPoint _offset;
 }
 
 + (_Bool)isEnabled;
+@property(retain, nonatomic) ARPresentationStats *presentationStats; // @synthesize presentationStats=_presentationStats;
 @property(nonatomic) _Bool recordScreen; // @synthesize recordScreen=_recordScreen;
 @property(nonatomic) _Bool forceQuitApp; // @synthesize forceQuitApp=_forceQuitApp;
 @property(nonatomic) struct CGPoint offset; // @synthesize offset=_offset;
@@ -43,13 +47,16 @@
 - (void)replaySensorDidFinishReplayingData;
 - (void)addFrameLabel:(id)arg1;
 - (id)createTraceOutputDirectory;
-- (void)update:(id)arg1;
+- (void)update:(id)arg1 session:(id)arg2;
 - (void)stop;
 - (void)start:(id)arg1;
 - (void)flushDataBufferToFile;
 - (void)writeStringToOutputStream:(id)arg1;
 - (void)writeJSONObjectToStream:(id)arg1 prefix:(id)arg2;
 - (void)receiveDefaults;
+- (void)traceRaycastResults:(id)arg1;
+- (void)traceRaycastQuery:(id)arg1;
+- (void)dealloc;
 - (id)init;
 
 // Remaining properties

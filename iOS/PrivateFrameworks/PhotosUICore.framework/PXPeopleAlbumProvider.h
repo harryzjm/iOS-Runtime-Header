@@ -43,12 +43,12 @@
 - (void)_invalidateCache;
 - (void)imageCacheDidChanged:(id)arg1;
 - (void)peopleSectionedDataSource:(id)arg1 didApplyIncrementalChanges:(id)arg2;
-- (void)peopleSectionedDataSourceMembersChanged:(id)arg1;
+- (void)peopleSectionedDataSourceMembersChangedNonIncrementally:(id)arg1;
 - (_Bool)_shouldShowInterstitialProgress;
 - (void)_handleRequestResult:(id)arg1 forRequestID:(_Atomic int)arg2 person:(id)arg3 atIndex:(long long)arg4 error:(id)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)_asyncAddImagesToCacheWithItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_asyncAddImagesToCacheWithPersons:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_reCacheImagesCompletion:(CDUnknownBlockType)arg1;
-- (id)_members;
+- (id)_visiblePersons;
 @property(readonly, nonatomic) long long peopleCount;
 - (void)_updateCachedCountIfNeeded;
 @property(readonly, nonatomic) _Bool isCountAvailable;

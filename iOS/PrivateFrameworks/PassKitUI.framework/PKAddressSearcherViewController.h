@@ -54,10 +54,10 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)_showAddressEditorWithContact:(id)arg1;
-- (void)cancel;
-- (struct CGSize)preferredContentSize;
+- (void)searchBarCancelButtonClicked:(id)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewDidDisappear:(_Bool)arg1;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;

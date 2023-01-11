@@ -21,10 +21,8 @@
 - (id)printingMailingFrame;
 - (id)collectReaderContentFromPrintAndMailingFrame;
 - (id)isolatedWorldForNextPageDetection;
-- (void)decreaseReaderTextSize;
-- (void)increaseReaderTextSize;
-- (void)setReaderTheme:(id)arg1;
-- (void)setReaderFont:(id)arg1;
+- (void)setReaderIsActive:(_Bool)arg1;
+- (void)setConfiguration:(id)arg1;
 - (void)reloadArticle;
 - (void)loadNewArticle;
 - (void)_initializeReaderJSControllerForFrame:(id)arg1;

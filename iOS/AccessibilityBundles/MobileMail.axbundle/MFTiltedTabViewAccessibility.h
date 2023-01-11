@@ -11,8 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (struct CGRect)_axFrameForDismissDraftsElement;
-- (id)_axComposeNavController;
 - (struct CGRect)accessibilityFrame;
 - (_Bool)_accessibilityUseAccessibilityFrameForHittest;
 - (id)accessibilityElements;

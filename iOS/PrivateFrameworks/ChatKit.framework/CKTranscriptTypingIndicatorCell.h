@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <ChatKit/CKLayerDelegate-Protocol.h>
+
 @class CALayer, CKTypingView;
 @protocol IMTypingIndicatorLayerProtocol;
 
-@interface CKTranscriptTypingIndicatorCell
+@interface CKTranscriptTypingIndicatorCell <CKLayerDelegate>
 {
     CKTypingView *_typingView;
 }
@@ -19,14 +21,13 @@
 - (void)startPulseAnimation;
 - (void)startGrowAnimation;
 @property(retain, nonatomic) CALayer<IMTypingIndicatorLayerProtocol> *indicatorLayer;
-- (void)_applicationDidEnterBackground:(id)arg1;
-- (void)_applicationWillEnterForeground:(id)arg1;
+- (void)setTraitCollection:(id)arg1;
+- (void)ckLayerDidBecomeVisible:(_Bool)arg1;
 - (void)performRemoval:(CDUnknownBlockType)arg1;
 - (void)performInsertion:(CDUnknownBlockType)arg1;
 - (void)layoutSubviewsForAlignmentContents;
 - (void)setOrientation:(BOOL)arg1;
 - (void)prepareForReuse;
-- (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)dealloc;
 - (void)configureForChatItem:(id)arg1;

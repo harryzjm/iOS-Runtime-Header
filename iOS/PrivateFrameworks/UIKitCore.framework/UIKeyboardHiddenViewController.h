@@ -5,13 +5,13 @@
 //
 
 #import <UIKitCore/UIInputViewControllerNeedSceneSize-Protocol.h>
-#import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <UIKitCore/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class NSString, UIView, _SFPasswordViewController;
+@class NSString, _SFPasswordViewController;
+@protocol BSInvalidatable;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardHiddenViewController <UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate, UIInputViewControllerNeedSceneSize>
+@interface UIKeyboardHiddenViewController <UIViewControllerTransitioningDelegate, UIInputViewControllerNeedSceneSize>
 {
     _SFPasswordViewController *_autofillVC;
     _Bool _presentedAutofill;
@@ -19,27 +19,22 @@ __attribute__((visibility("hidden")))
     _Bool _isFocusDeferred;
     unsigned int _deferredContextID;
     NSString *_deferredDisplayUUID;
-    UIView *_sourceView;
+    id <BSInvalidatable> _eventFocusDeferralToken;
+    _Bool _processingSceneDidChange;
 }
 
-@property(nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property(nonatomic) _Bool presentedAutofill; // @synthesize presentedAutofill=_presentedAutofill;
 @property(retain, nonatomic) _SFPasswordViewController *autofillVC; // @synthesize autofillVC=_autofillVC;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)_sceneDidChange;
-- (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
-- (void)prepareForPopoverPresentation:(id)arg1;
 - (_Bool)_formSheetObeysContentContainerSize;
 - (void)presentViewController:(_Bool)arg1;
 - (void)presentAutofillVCWithAnimation:(_Bool)arg1;
 - (void)presentSelfWithAnimation:(_Bool)arg1;
-- (long long)customModalPresentationStyle;
 - (_Bool)shouldPresentAsPopover;
 - (void)_willChangeToFirstResponder:(id)arg1;
 - (void)_setDeferred:(_Bool)arg1 forDisplayUUID:(id)arg2;
-- (id)_clientDeferralProperties;
-- (id)_hostDeferralProperties;
-- (id)_deferredPropertiesForClientContext:(unsigned int)arg1;
+- (id)_deferredTargetForClientContext:(unsigned int)arg1;
 - (void)_applicationWillDeactivate:(id)arg1;
 - (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_deviceWillLock:(id)arg1;
@@ -49,7 +44,6 @@ __attribute__((visibility("hidden")))
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
-- (void)viewDidLoad;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 

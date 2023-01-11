@@ -4,12 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@protocol NTKRichComplicationRectangularBaseViewDelegate;
+
 @interface NTKRichComplicationRectangularBaseView
 {
+    id <NTKRichComplicationRectangularBaseViewDelegate> _delegate;
 }
 
-+ (void)startDataAnimationFromEarlierView:(id)arg1 laterView:(id)arg2 isForward:(_Bool)arg3 completionBlock:(CDUnknownBlockType)arg4;
++ (void)updateCustomDataAnimationFromEarlierView:(id)arg1 laterView:(id)arg2 isForward:(_Bool)arg3 animationType:(unsigned long long)arg4 animationDuration:(double)arg5 animationFraction:(float)arg6;
 + (id)viewWithLegacyComplicationType:(unsigned long long)arg1;
+@property(nonatomic) __weak id <NTKRichComplicationRectangularBaseViewDelegate> delegate; // @synthesize delegate=_delegate;
+- (void).cxx_destruct;
 - (void)_transitToHighlightState:(_Bool)arg1 fraction:(double)arg2;
 - (id)_createAndAddColoringLabelWithFontSize:(double)arg1 weight:(double)arg2 usesTextProviderTintColoring:(_Bool)arg3;
 - (id)initWithFamily:(long long)arg1;

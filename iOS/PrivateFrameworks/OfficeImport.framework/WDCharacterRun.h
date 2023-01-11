@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableString, WDCharacterProperties;
+@class NSMutableString;
 
+__attribute__((visibility("hidden")))
 @interface WDCharacterRun
 {
-    WDCharacterProperties *mProperties;
     NSMutableString *mString;
     _Bool mBinaryWriterContentFlag;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 - (_Bool)isEmpty;
 - (void)copyPropertiesFrom:(id)arg1;
@@ -23,11 +24,8 @@
 - (void)appendString:(id)arg1;
 - (void)setString:(id)arg1;
 - (id)string;
-- (void)clearProperties;
 - (void)setPropertiesForDocument;
-- (id)properties;
 - (int)runType;
-- (void)dealloc;
 - (void)setBinaryWriterContentFlag:(_Bool)arg1;
 - (_Bool)binaryWriterContentFlag;
 

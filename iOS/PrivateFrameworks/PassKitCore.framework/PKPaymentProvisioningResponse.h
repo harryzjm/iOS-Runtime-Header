@@ -4,15 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSURL;
+@class NSArray, NSString, NSURL;
 
 @interface PKPaymentProvisioningResponse
 {
     _Bool _willProvisionWithAuthenticationDisabled;
     NSURL *_passURL;
     NSArray *_moreInfoURLs;
+    NSString *_ownershipToken;
+    NSString *_ownershipTokenIdentifier;
 }
 
+@property(readonly, copy, nonatomic) NSString *ownershipTokenIdentifier; // @synthesize ownershipTokenIdentifier=_ownershipTokenIdentifier;
+@property(readonly, copy, nonatomic) NSString *ownershipToken; // @synthesize ownershipToken=_ownershipToken;
 @property(readonly, nonatomic) _Bool willProvisionWithAuthenticationDisabled; // @synthesize willProvisionWithAuthenticationDisabled=_willProvisionWithAuthenticationDisabled;
 @property(readonly, copy, nonatomic) NSArray *moreInfoURLs; // @synthesize moreInfoURLs=_moreInfoURLs;
 @property(copy, nonatomic) NSURL *passURL; // @synthesize passURL=_passURL;

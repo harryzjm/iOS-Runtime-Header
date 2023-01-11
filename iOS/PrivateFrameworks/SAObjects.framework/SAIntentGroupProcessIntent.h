@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, SAIntentGroupProtobufMessage;
+@class NSArray, NSString, SAIntentGroupProtobufMessage;
 
 @interface SAIntentGroupProcessIntent
 {
@@ -15,6 +15,7 @@
 - (_Bool)mutatingCommand;
 - (_Bool)requiresResponse;
 @property(nonatomic) _Bool shouldRunHandleIntent;
+@property(copy, nonatomic) NSString *jsonEncodedIntent;
 @property(copy, nonatomic) NSArray *intentSlotKeyPaths;
 @property(retain, nonatomic) SAIntentGroupProtobufMessage *intent;
 @property(nonatomic) _Bool allowsPunchOut;

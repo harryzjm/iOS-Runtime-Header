@@ -4,19 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableDictionary;
+@class INCodableAttribute, NSArray, NSMutableDictionary, NSString;
 
 @interface INIntentResponseCodableDescription
 {
     NSMutableDictionary *_intentResponseCodableCodes;
+    NSString *_outputAttributeName;
     NSArray *_responseCodes;
 }
 
 + (_Bool)supportsSecureCoding;
 @property(copy, nonatomic) NSArray *responseCodes; // @synthesize responseCodes=_responseCodes;
+@property(retain, nonatomic, setter=_setOutputAttributeName:) NSString *_outputAttributeName; // @synthesize _outputAttributeName;
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)dictionaryRepresentationForLanguage:(id)arg1;
+- (void)updateWithDictionary:(id)arg1;
+- (id)_attributesKeyPrefix;
+- (id)_attributeKeyPrefix;
+- (id)keyPrefix;
+- (id)_ignoredAttributeTags;
+@property(readonly, nonatomic) INCodableAttribute *outputAttribute;
 - (id)attributes;
 - (id)intentResponseCodeWithCode:(long long)arg1;
 

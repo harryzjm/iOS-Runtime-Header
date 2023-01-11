@@ -10,7 +10,6 @@
 
 - (void)dealloc;
 - (id)debugDescription;
-- (void)_dispose;
 - (id)init;
 
 @end

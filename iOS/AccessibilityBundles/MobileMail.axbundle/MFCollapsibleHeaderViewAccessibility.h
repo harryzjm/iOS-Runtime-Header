@@ -10,7 +10,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (_Bool)_accessibilityIsTouchContainer;
+- (long long)accessibilityContainerType;
 
 @end
 

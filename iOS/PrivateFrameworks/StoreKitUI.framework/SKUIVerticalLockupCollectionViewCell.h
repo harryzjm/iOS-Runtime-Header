@@ -9,6 +9,7 @@
 
 @class NSString, SKUIImageView, SKUIVerticalLockupView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIVerticalLockupCollectionViewCell <SKUIPerspectiveView, SKUIViewElementView>
 {
     SKUIImageView *_highlightImageView;

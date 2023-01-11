@@ -8,7 +8,7 @@
 
 #import <VoiceMemos/RCMutableRecording-Protocol.h>
 
-@class AVAsset, CLLocation, NSDate, NSString, NSURL;
+@class AVAsset, CLLocation, NSData, NSDate, NSNumber, NSString, NSURL;
 @protocol _NSFileBackedFuture;
 
 @interface RCCloudRecording : NSManagedObject <RCMutableRecording>
@@ -16,9 +16,14 @@
     AVAsset *_avAsset;
 }
 
++ (id)cacheDeletedOnWatchPredicate;
 + (id)playablePredicate;
++ (_Bool)setPurgeable:(_Bool)arg1 recordingURL:(id)arg2 error:(id *)arg3;
++ (_Bool)isRecordingPurgeable:(id)arg1;
++ (void)initialize;
 + (id)searchableItemIdentifierForSavedRecordingURI:(id)arg1;
 + (id)savedRecordingURIForSearchableItemIdentifier:(id)arg1;
+@property(retain, nonatomic) AVAsset *avAsset; // @synthesize avAsset=_avAsset;
 - (void).cxx_destruct;
 - (id)activityViewController:(id)arg1 thumbnailImageForActivityType:(id)arg2 suggestedSize:(struct CGSize)arg3;
 - (id)activityViewController:(id)arg1 subjectForActivityType:(id)arg2;
@@ -26,7 +31,6 @@
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (id)_activityURLCreateIfNecessary:(_Bool)arg1;
 - (void)_validatePath;
-@property(readonly, nonatomic) AVAsset *avAsset;
 - (id)_detailLabel;
 - (id)_labelAllowingEmptyString:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool isContentBeingModified;
@@ -37,26 +41,35 @@
 - (void)setName:(id)arg1;
 @property(readonly, copy, nonatomic) NSURL *URIRepresentation;
 @property(readonly, copy, nonatomic) NSURL *url;
+@property(nonatomic) _Bool recordedOnWatch;
+- (void)setDownloading:(_Bool)arg1;
+@property(readonly, nonatomic) _Bool downloading;
 - (void)setEditing:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool editing;
 - (void)setManuallyRenamed:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool manuallyRenamed;
 - (void)setPlayable:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool playable;
+@property(readonly, nonatomic) _Bool uploaded;
 @property(nonatomic) _Bool evicted;
 @property(nonatomic) _Bool pendingRestore;
 @property(nonatomic) _Bool synced;
+- (id)purgeAudioFuture:(id *)arg1;
+@property(readonly, nonatomic) NSNumber *purgeableAudioFutureSize;
 - (_Bool)synchronizeWithExistingAudioFuture:(id *)arg1;
+- (void)_updateAudioFuture:(id)arg1;
 - (void)setLocation:(id)arg1;
 @property(readonly, copy, nonatomic) CLLocation *location;
 @property(copy, nonatomic) NSDate *evictionDate; // @dynamic evictionDate;
 @property(copy, nonatomic) NSString *path; // @dynamic path;
+- (_Bool)synchronizeRecordingMetadata:(id *)arg1;
 - (void)willSave;
 - (void)awakeFromFetch;
 - (void)awakeFromInsert;
 - (id)searchableItem;
 
 // Remaining properties
+@property(retain, nonatomic) NSData *audioDigest; // @dynamic audioDigest;
 @property(retain, nonatomic) id <_NSFileBackedFuture> audioFuture; // @dynamic audioFuture;
 @property(copy, nonatomic) NSString *customLabel; // @dynamic customLabel;
 @property(copy, nonatomic) NSDate *date; // @dynamic date;

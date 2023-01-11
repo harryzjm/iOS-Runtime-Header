@@ -13,7 +13,7 @@
 + (id)properties;
 
 // Remaining properties
-@property(retain, nonatomic) HMDAccountIdentifier *identifier; // @dynamic identifier;
+@property(copy, nonatomic) HMDAccountIdentifier *identifier; // @dynamic identifier;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <IBFoundation/IBICSchemaProvider-Protocol.h>
 
-@class IBICColorSpace, IBICFileType, IBICHeightClass, IBICIdiom, IBICLanguageDirection, IBICPlatform, IBICScale, IBICScreenWidth, IBICSize, IBICSubtype, IBICWidthClass, NSArray, NSSet, NSString;
+@class IBICColorSpace, IBICContrastAppearance, IBICFileType, IBICHeightClass, IBICIdiom, IBICLanguageDirection, IBICLuminosityAppearance, IBICPlatform, IBICScale, IBICScreenWidth, IBICSize, IBICSubtype, IBICVibrancyAppearance, IBICWidthClass, NSArray, NSDictionary, NSSet, NSString;
 
 @interface IBICBaseSchemaProvider : NSObject <IBICSchemaProvider>
 {
@@ -42,6 +42,14 @@
     IBICColorSpace *_anyColorSpace;
     IBICColorSpace *_sRGBColorSpace;
     IBICColorSpace *_P3ColorSpace;
+    NSDictionary *_graphicsFeatureSetInspectorLabels;
+    IBICLuminosityAppearance *_anyLightness;
+    IBICLuminosityAppearance *_darkAppearance;
+    IBICLuminosityAppearance *_lightAppearance;
+    IBICContrastAppearance *_anyContrast;
+    IBICContrastAppearance *_highContrast;
+    IBICVibrancyAppearance *_anyVibrancy;
+    IBICVibrancyAppearance *_vibrant;
     IBICSubtype *_anySubtype;
     IBICScreenWidth *_anyScreenWidth;
     IBICSize *_size1024;
@@ -68,6 +76,8 @@
 - (void)applyScaleComponentImplicationsForSlotClass:(Class)arg1 schema:(id)arg2;
 - (void)registerSchemaComponents:(id)arg1;
 - (void)registerSuggestionSets:(id)arg1;
+- (void)registerContrastSuggestionSets:(id)arg1 forSlotClasses:(id)arg2;
+- (void)registerLuminositySuggestionSets:(id)arg1 forSlotClasses:(id)arg2;
 - (void)registerGPUCapabilitySuggestionSets:(id)arg1 forSlotClasses:(id)arg2;
 - (void)registerSizeClassSuggestionSets:(id)arg1 forSlotClasses:(id)arg2;
 - (void)registerColorSpaceSuggestionSets:(id)arg1 forSlotClasses:(id)arg2 baseDisplayOrder:(double)arg3;

@@ -6,6 +6,7 @@
 
 @class SKUIBrowseItemComponent, SKUIViewElementLayoutContext;
 
+__attribute__((visibility("hidden")))
 @interface SKUIBrowseItemPageSection
 {
     SKUIViewElementLayoutContext *_layoutContext;

@@ -18,6 +18,9 @@ __attribute__((visibility("hidden")))
 - (void)picker:(id)arg1 didPickItem:(id)arg2;
 - (void)performDefaultAction;
 - (_Bool)shouldPerformDefaultAction;
+- (_Bool)allowsCellSelection;
+- (void)setCardGroupItem:(id)arg1;
+- (id)alertGroup;
 @property(readonly, nonatomic) CNPropertyGroupAlertItem *alertItem;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

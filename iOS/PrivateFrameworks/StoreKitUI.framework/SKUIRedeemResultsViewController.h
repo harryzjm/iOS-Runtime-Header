@@ -6,6 +6,7 @@
 
 @class SKUIRedeem;
 
+__attribute__((visibility("hidden")))
 @interface SKUIRedeemResultsViewController
 {
     SKUIRedeem *_redeem;

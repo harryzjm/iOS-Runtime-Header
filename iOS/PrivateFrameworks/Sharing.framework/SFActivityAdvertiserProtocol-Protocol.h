@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Sharing/NSObject-Protocol.h>
+#import <Sharing/SDXPCDaemonProtocol-Protocol.h>
 
 @class NSData, NSDictionary, NSString;
 
-@protocol SFActivityAdvertiserProtocol <NSObject>
+@protocol SFActivityAdvertiserProtocol <SDXPCDaemonProtocol>
 - (void)advertiseAdvertisementPayload:(NSData *)arg1 options:(NSDictionary *)arg2 withErrorHandler:(void (^)(NSError *))arg3;
 - (void)pairedSFPeerDevicesWithOptions:(NSDictionary *)arg1 completionHandler:(void (^)(NSSet *, NSError *))arg2;
 - (void)peerForUUID:(NSString *)arg1 completionHandler:(void (^)(SFPeerDevice *, NSError *))arg2;

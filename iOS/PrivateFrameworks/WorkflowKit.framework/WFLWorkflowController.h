@@ -6,44 +6,53 @@
 
 #import <objc/NSObject.h>
 
-@class NSProgress, WFLActionImplementation, WFLWorkflow;
+#import <WorkflowKit/WFSiriUserInterface-Protocol.h>
+#import <WorkflowKit/WFWorkflowControllerDelegate-Protocol.h>
+
+@class INIntentResponse, NSArray, NSProgress, NSString, WFWorkflow, WFWorkflowController;
 @protocol WFLWorkflowControllerDelegate;
 
-@interface WFLWorkflowController : NSObject
+@interface WFLWorkflowController : NSObject <WFWorkflowControllerDelegate, WFSiriUserInterface>
 {
-    _Bool _running;
+    NSArray *_airPlayRouteIDs;
     id <WFLWorkflowControllerDelegate> _delegate;
-    WFLWorkflow *_workflow;
-    NSProgress *_progress;
     long long _executionContext;
-    unsigned long long _currentActionIndex;
-    WFLActionImplementation *_currentActionImplementation;
-    WFLActionImplementation *_previousActionImplementation;
+    WFWorkflowController *_controller;
+    INIntentResponse *_lastIntentResponse;
 }
 
-+ (void)initialize;
-@property(retain, nonatomic) WFLActionImplementation *previousActionImplementation; // @synthesize previousActionImplementation=_previousActionImplementation;
-@property(retain, nonatomic) WFLActionImplementation *currentActionImplementation; // @synthesize currentActionImplementation=_currentActionImplementation;
-@property(nonatomic) unsigned long long currentActionIndex; // @synthesize currentActionIndex=_currentActionIndex;
+@property(retain, nonatomic) INIntentResponse *lastIntentResponse; // @synthesize lastIntentResponse=_lastIntentResponse;
+@property(readonly, nonatomic) WFWorkflowController *controller; // @synthesize controller=_controller;
 @property(nonatomic) long long executionContext; // @synthesize executionContext=_executionContext;
-@property(retain, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
-@property(nonatomic, getter=isRunning) _Bool running; // @synthesize running=_running;
-@property(readonly, nonatomic) WFLWorkflow *workflow; // @synthesize workflow=_workflow;
 @property(nonatomic) __weak id <WFLWorkflowControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, copy, nonatomic) NSArray *airPlayRouteIDs; // @synthesize airPlayRouteIDs=_airPlayRouteIDs;
 - (void).cxx_destruct;
-- (id)userInterfaceForRunningAction:(id)arg1;
-- (void)workflowControllerDidFinishRunningAction:(id)arg1;
-- (void)workflowControllerWillRunAction:(id)arg1 withInput:(id)arg2 proceedHandler:(CDUnknownBlockType)arg3;
-- (void)workflowControllerDidStopWithError:(id)arg1;
-- (void)workflowControllerDidFinishRunningWithOutput:(id)arg1;
-- (void)workflowControllerWillRun;
-- (id)createImplementationForAction:(id)arg1;
-- (void)stepWithInput:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)configureIntent:(id)arg1;
+- (_Bool)executeIntent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)openUserActivity:(id)arg1 bundleIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)speakText:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)openInteractionInApp:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)showInteractionIfNeeded:(id)arg1 requiringConfirmation:(_Bool)arg2 requiringAuthentication:(_Bool)arg3 executionStage:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)workflowController:(id)arg1 userInterfaceForAction:(id)arg2;
+- (void)presentAlert:(id)arg1;
+- (void)workflowController:(id)arg1 didRunAction:(id)arg2;
+- (void)workflowController:(id)arg1 prepareToRunAction:(id)arg2 withInput:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)workflowController:(id)arg1 didFinishRunningWithError:(id)arg2 cancelled:(_Bool)arg3;
+- (void)workflowControllerWillRun:(id)arg1;
 - (void)launchAppWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)stop;
 - (void)runWithInput:(id)arg1;
-- (void)dealloc;
+@property(readonly, nonatomic) WFWorkflow *workflow;
+@property(readonly, nonatomic) NSProgress *progress;
+@property(readonly, nonatomic, getter=isRunning) _Bool running;
 - (id)initWithWorkflow:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

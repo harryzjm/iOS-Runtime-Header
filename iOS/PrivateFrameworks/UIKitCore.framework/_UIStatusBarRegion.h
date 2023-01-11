@@ -19,7 +19,9 @@
     _UIStatusBar *_statusBar;
     id <_UIStatusBarRegionLayout> _layout;
     NSSet *_dependentRegionIdentifiers;
+    _UIStatusBarRegion *_enabilityRegion;
     double _alpha;
+    long long _overriddenStyle;
     _UIStatusBarStyleAttributes *_overriddenStyleAttributes;
     UIView *_contentView;
     UIView *_backgroundView;
@@ -29,12 +31,14 @@
     UILayoutGuide *_layoutGuide;
     NSLayoutConstraint *_centerXConstraint;
     NSLayoutConstraint *_centerYConstraint;
+    UIView *_containerView;
     UIView *_frozenView;
     struct UIOffset _offset;
     struct UIEdgeInsets _actionInsets;
 }
 
 @property(retain, nonatomic) UIView *frozenView; // @synthesize frozenView=_frozenView;
+@property(readonly, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property(retain, nonatomic) NSLayoutConstraint *centerYConstraint; // @synthesize centerYConstraint=_centerYConstraint;
 @property(retain, nonatomic) NSLayoutConstraint *centerXConstraint; // @synthesize centerXConstraint=_centerXConstraint;
 @property(retain, nonatomic) UILayoutGuide *layoutGuide; // @synthesize layoutGuide=_layoutGuide;
@@ -44,9 +48,11 @@
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(retain, nonatomic) _UIStatusBarStyleAttributes *overriddenStyleAttributes; // @synthesize overriddenStyleAttributes=_overriddenStyleAttributes;
+@property(nonatomic) long long overriddenStyle; // @synthesize overriddenStyle=_overriddenStyle;
 @property(nonatomic) double alpha; // @synthesize alpha=_alpha;
 @property(nonatomic) struct UIOffset offset; // @synthesize offset=_offset;
 @property(nonatomic) _Bool offsetable; // @synthesize offsetable=_offsetable;
+@property(nonatomic) __weak _UIStatusBarRegion *enabilityRegion; // @synthesize enabilityRegion=_enabilityRegion;
 @property(retain, nonatomic) NSSet *dependentRegionIdentifiers; // @synthesize dependentRegionIdentifiers=_dependentRegionIdentifiers;
 @property(retain, nonatomic) id <_UIStatusBarRegionLayout> layout; // @synthesize layout=_layout;
 @property(nonatomic) __weak _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
@@ -54,18 +60,18 @@
 @property(nonatomic) struct UIEdgeInsets actionInsets; // @synthesize actionInsets=_actionInsets;
 @property(retain, nonatomic) _UIStatusBarAction *action; // @synthesize action=_action;
 - (void).cxx_destruct;
-- (id)displayItemForHUDAtPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
+- (id)displayItemForHUDAtLocation:(struct CGPoint)arg1;
 @property(readonly, copy, nonatomic) NSDictionary *displayItemAbsoluteFrames;
 @property(readonly, nonatomic) _UIStatusBarDisplayItem *overflowedDisplayItem;
 @property(readonly, nonatomic) NSArray *currentEnabledDisplayItems;
 @property(readonly, nonatomic) NSArray *enabledDisplayItems;
+- (void)_overriddenStyleAttributesChanged;
 @property(nonatomic, getter=isFrozen) _Bool frozen;
 - (void)enableWithToken:(unsigned long long)arg1;
 - (void)disableWithToken:(unsigned long long)arg1;
 @property(readonly, nonatomic, getter=isEnabled) _Bool enabled;
 - (void)_addSubview:(id)arg1 atBack:(_Bool)arg2;
 - (void)setIdentifier:(id)arg1;
-@property(readonly, nonatomic) UIView *containerView;
 @property(readonly, nonatomic) id <UILayoutItem> containerItem;
 @property(readonly, nonatomic) id <UILayoutItem> layoutItem;
 @property(readonly, copy) NSString *description;

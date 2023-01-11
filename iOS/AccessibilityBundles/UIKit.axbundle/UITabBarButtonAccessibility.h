@@ -17,6 +17,7 @@
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (id)accessibilityValue;
+- (unsigned long long)_accessibilityAutomationType;
 - (_Bool)isAccessibilityElement;
 
 @end

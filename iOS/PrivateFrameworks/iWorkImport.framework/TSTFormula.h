@@ -8,14 +8,14 @@
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
-@class NSString, TSCECalculationEngine, TSTExpressionNode, TSTInfo;
+@class NSString, TSCECalculationEngine, TSTExpressionNode, TSTTableInfo;
 
 __attribute__((visibility("hidden")))
 @interface TSTFormula : NSObject <NSCopying>
 {
     TSTExpressionNode *_expressionTree;
     TSCECalculationEngine *_calculationEngine;
-    TSTInfo *_hostInfo;
+    TSTTableInfo *_hostInfo;
     NSString *_initialWhitespace;
     struct TSUModelCellCoord _hostCell;
     _Bool _syntaxError;
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool formulaWasFixable; // @synthesize formulaWasFixable=_formulaWasFixable;
 @property(nonatomic) _Bool fixupFormulas; // @synthesize fixupFormulas=_fixupFormulas;
 @property(nonatomic, getter=isSyntaxError) _Bool syntaxError; // @synthesize syntaxError=_syntaxError;
-@property(nonatomic) TSCECalculationEngine *calculationEngine; // @synthesize calculationEngine=_calculationEngine;
+@property(nonatomic) __weak TSCECalculationEngine *calculationEngine; // @synthesize calculationEngine=_calculationEngine;
 @property(retain, nonatomic) TSTExpressionNode *expressionTree; // @synthesize expressionTree=_expressionTree;
 - (void).cxx_destruct;
 - (id)simplify;
@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)reparseWithStorage:(id)arg1 adjustExpressionTree:(CDUnknownBlockType)arg2;
 - (void)reparseWithStorage:(id)arg1;
+- (void)fixPreserveFlagsForCategoryRefInNode:(id)arg1;
 - (id)nodesToCheckForBareArgumentPlaceholders;
 - (_Bool)hasBareArgumentPlaceholders;
 - (void)insertFormulaText:(id)arg1 includeWhitespace:(_Bool)arg2;

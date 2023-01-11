@@ -18,6 +18,10 @@
 }
 
 + (void)main;
++ (void)checkForActiveTrap;
++ (long long)trapTimeoutInSeconds;
++ (_Bool)trap;
++ (void)setTrap:(_Bool)arg1;
 + (id)sharedInstance;
 @property(readonly, getter=isCanceled) _Bool canceled; // @synthesize canceled=_canceled;
 - (void).cxx_destruct;

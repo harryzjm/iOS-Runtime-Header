@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 + (id)_extensionAuxiliaryVendorProtocol;
 + (id)_extensionAuxiliaryHostProtocol;
 - (void).cxx_destruct;
+- (void)_willBeginEditing;
 - (void)_requestHandlingOfIntent:(id)arg1;
 - (id)interfaceParametersDescription;
 - (struct CGSize)_bestAllowedSizeForAllowedSizesDictionary:(id)arg1;

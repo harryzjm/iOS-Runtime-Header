@@ -31,6 +31,7 @@
 - (id)description;
 - (id)pointCloudByApplyingTransform:(CDStruct_14d5dc5e)arg1;
 - (id)_hitTestPointFromOrigin:(float)arg1 withDirection:maximumAngle: /* Error: Ran out of types for this method. */;
+- (id)filterPointCloudWithIdentifiers:(set_8479fffa)arg1;
 - (id)filterPointCloudFrom:ellipsoid: /* Error: Ran out of types for this method. */;
 - (MISSING_TYPE *)standardDeviation;
 - (MISSING_TYPE *)centroid;

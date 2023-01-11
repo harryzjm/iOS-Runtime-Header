@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject;
+@class HAPAccessoryServerBrowserIP, NSObject;
 @protocol HMDWACScannerDelegate, OS_dispatch_queue;
 
 @protocol HMDWACScanner
+- (void)startDiscoveringAirPlayAccessoriesWithBrowser:(HAPAccessoryServerBrowserIP *)arg1;
 - (void)resume;
 - (void)backoff;
 - (void)stop;

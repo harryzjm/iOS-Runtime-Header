@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ARTimeKeyedList, ARWorldAlignmentData, MISSING_TYPE, NSObject;
+@class ARTimeKeyedList, ARWorldAlignmentData, CMMotionManager, MISSING_TYPE, NSObject;
 @protocol OS_dispatch_semaphore;
 
 @interface ARWorldAlignmentTechnique
@@ -24,8 +24,10 @@
     NSObject<OS_dispatch_semaphore> *_dataSemaphore;
     long long _alignment;
     long long _cameraPosition;
+    CMMotionManager *_motionManager;
 }
 
+@property(retain, nonatomic) CMMotionManager *motionManager; // @synthesize motionManager=_motionManager;
 @property(readonly, nonatomic) long long cameraPosition; // @synthesize cameraPosition=_cameraPosition;
 @property(readonly, nonatomic) long long alignment; // @synthesize alignment=_alignment;
 - (void).cxx_destruct;

@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSString, WKWebView;
+@class NSData, NSString;
 
 @interface _SFImageActivityItemProvider
 {
     NSData *_imageOnlyDocumentData;
     NSString *_documentUTI;
-    WKWebView *_webView;
 }
 
 - (void).cxx_destruct;

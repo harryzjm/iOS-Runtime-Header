@@ -14,12 +14,15 @@
     _Bool _shouldShowGridView;
     _Bool _QRBannersEnabledInSettings;
     _Bool _forceEnableQRBanners;
-    _Bool _didAcknowledgeQRCodeDescription;
     _Bool _shouldCaptureHDREV0;
     _Bool _shouldUseModernHDRBehavior;
     _Bool _didAcknowledgePortraitModeDescription;
     _Bool _autoLowLightVideoEnabled;
     _Bool _shouldForceMonoAudioRecording;
+    _Bool _photoOverCaptureEnabled;
+    _Bool _videoOverCaptureEnabled;
+    _Bool _autoAdjustmentsEnabled;
+    _Bool _didAcknowledgeCTMDescription;
     _Bool _preserveEffectFilter;
     _Bool _preserveCaptureMode;
     _Bool _preserveLivePhoto;
@@ -67,6 +70,10 @@
 @property(nonatomic) long long squareModeLastCapturedEffectFilterType; // @synthesize squareModeLastCapturedEffectFilterType=_squareModeLastCapturedEffectFilterType;
 @property(nonatomic) long long photoModeLastCapturedEffectFilterType; // @synthesize photoModeLastCapturedEffectFilterType=_photoModeLastCapturedEffectFilterType;
 @property(nonatomic) long long previewViewAspectMode; // @synthesize previewViewAspectMode=_previewViewAspectMode;
+@property(nonatomic) _Bool didAcknowledgeCTMDescription; // @synthesize didAcknowledgeCTMDescription=_didAcknowledgeCTMDescription;
+@property(readonly, nonatomic, getter=isAutoAdjustmentsEnabled) _Bool autoAdjustmentsEnabled; // @synthesize autoAdjustmentsEnabled=_autoAdjustmentsEnabled;
+@property(readonly, nonatomic, getter=isVideoOverCaptureEnabled) _Bool videoOverCaptureEnabled; // @synthesize videoOverCaptureEnabled=_videoOverCaptureEnabled;
+@property(readonly, nonatomic, getter=isPhotoOverCaptureEnabled) _Bool photoOverCaptureEnabled; // @synthesize photoOverCaptureEnabled=_photoOverCaptureEnabled;
 @property(readonly, nonatomic) _Bool shouldForceMonoAudioRecording; // @synthesize shouldForceMonoAudioRecording=_shouldForceMonoAudioRecording;
 @property(readonly, nonatomic, getter=isAutoLowLightVideoEnabled) _Bool autoLowLightVideoEnabled; // @synthesize autoLowLightVideoEnabled=_autoLowLightVideoEnabled;
 @property(readonly, nonatomic) long long slomoConfiguration; // @synthesize slomoConfiguration=_slomoConfiguration;
@@ -74,7 +81,6 @@
 @property(nonatomic) _Bool didAcknowledgePortraitModeDescription; // @synthesize didAcknowledgePortraitModeDescription=_didAcknowledgePortraitModeDescription;
 @property(readonly, nonatomic) _Bool shouldUseModernHDRBehavior; // @synthesize shouldUseModernHDRBehavior=_shouldUseModernHDRBehavior;
 @property(readonly, nonatomic) _Bool shouldCaptureHDREV0; // @synthesize shouldCaptureHDREV0=_shouldCaptureHDREV0;
-@property(nonatomic) _Bool didAcknowledgeQRCodeDescription; // @synthesize didAcknowledgeQRCodeDescription=_didAcknowledgeQRCodeDescription;
 @property(nonatomic) _Bool forceEnableQRBanners; // @synthesize forceEnableQRBanners=_forceEnableQRBanners;
 @property(readonly, nonatomic) _Bool QRBannersEnabledInSettings; // @synthesize QRBannersEnabledInSettings=_QRBannersEnabledInSettings;
 @property(readonly, nonatomic) _Bool shouldShowGridView; // @synthesize shouldShowGridView=_shouldShowGridView;
@@ -82,10 +88,12 @@
 @property(retain, nonatomic) CAMCaptureConfiguration *captureConfiguration; // @synthesize captureConfiguration=_captureConfiguration;
 @property(nonatomic, setter=_setDidResetTorchMode:) _Bool didResetTorchMode; // @synthesize didResetTorchMode=_didResetTorchMode;
 - (void).cxx_destruct;
+- (_Bool)isOverCaptureEnabledForCTMCaptureType:(long long)arg1;
 @property(readonly, nonatomic) long long photoEncodingBehavior;
 - (long long)videoEncodingBehaviorForConfiguration:(long long)arg1;
 @property(readonly, nonatomic) _Bool shouldShowQRBanners;
 - (_Bool)shouldResetCaptureConfiguration;
+- (void)updateResetTimeoutDate;
 - (void)writePreferences;
 - (_Bool)readPreferencesWithOverrides:(id)arg1 emulationMode:(long long)arg2 callActive:(_Bool)arg3;
 - (long long)_sanitizeLightingType:(long long)arg1 forMode:(long long)arg2;

@@ -6,11 +6,9 @@
 
 #import <UIKit/UIView.h>
 
-#import <SpringBoardFoundation/SFChargingVisualInformationProvider-Protocol.h>
+@class NSDate, SBFLockScreenDateSubtitleDateView, SBFLockScreenDateSubtitleView, SBUILegibilityLabel, UIColor, _UILegibilitySettings;
 
-@class NSDate, NSString, SBFLockScreenDateSubtitleDateView, SBFLockScreenDateSubtitleView, SBUILegibilityLabel, UIColor, _UILegibilitySettings;
-
-@interface SBFLockScreenDateView : UIView <SFChargingVisualInformationProvider>
+@interface SBFLockScreenDateView : UIView
 {
     SBUILegibilityLabel *_timeLabel;
     double _timeAlpha;
@@ -25,14 +23,16 @@
     double _dateToTimeStretch;
     double _timeLegibilityStrength;
     double _subtitleLegibilityStrength;
+    double _maximumSubtitleWidth;
     struct CGRect _restingFrame;
 }
 
-+ (CDStruct_d2b197d1)timeFontMetrics;
++ (CDStruct_91d2e2b9)timeFontMetrics;
 + (id)timeFont;
 + (double)defaultHeight;
 @property(retain, nonatomic) SBFLockScreenDateSubtitleView *customSubtitleView; // @synthesize customSubtitleView=_customSubtitleView;
 @property(nonatomic) struct CGRect restingFrame; // @synthesize restingFrame=_restingFrame;
+@property(nonatomic) double maximumSubtitleWidth; // @synthesize maximumSubtitleWidth=_maximumSubtitleWidth;
 @property(nonatomic) double subtitleLegibilityStrength; // @synthesize subtitleLegibilityStrength=_subtitleLegibilityStrength;
 @property(nonatomic) double timeLegibilityStrength; // @synthesize timeLegibilityStrength=_timeLegibilityStrength;
 @property(nonatomic) _Bool useCompactDateFormat; // @synthesize useCompactDateFormat=_useCompactDateFormat;
@@ -54,8 +54,8 @@
 - (void)_updateLabelAlpha;
 - (void)_setSubtitleAlpha:(double)arg1;
 - (void)_updateLabels;
-@property(readonly, nonatomic) struct CGRect chargingVisualInformationTimeSubtitleFrame;
-@property(readonly, nonatomic) struct CGRect chargingVisualInformationTimeFrame;
+- (struct CGRect)chargingVisualInformationTimeSubtitleFrame;
+- (struct CGRect)chargingVisualInformationTimeFrame;
 - (id)_timeLabel;
 - (struct CGRect)presentationExtentForAlignmentPercent:(double)arg1;
 - (void)setContentAlpha:(double)arg1 withSubtitleVisible:(_Bool)arg2;
@@ -63,12 +63,6 @@
 - (void)updateFormat;
 @property(nonatomic, getter=isSubtitleHidden) _Bool subtitleHidden;
 - (id)initWithFrame:(struct CGRect)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

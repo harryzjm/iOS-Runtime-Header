@@ -17,6 +17,9 @@
 @property(nonatomic) __weak UIPickerView *picker; // @synthesize picker=_picker;
 @property(nonatomic) unsigned long long component; // @synthesize component=_component;
 - (void).cxx_destruct;
+- (id)accessibilityUserInputLabels;
+- (id)_axSpeechInputLabelForTimeIntervalCalendarUnit:(unsigned long long)arg1;
+- (id)_axSpeechInputLabelForDateCalendarUnit:(unsigned long long)arg1;
 - (_Bool)_accessibilityIsSpeakThisElement;
 - (unsigned long long)accessibilityTraits;
 - (_Bool)accessibilityScroll:(long long)arg1;
@@ -33,9 +36,11 @@
 - (id)_accessibilityViewForComponent;
 - (long long)_accessibilityIndexForPickerString:(id)arg1;
 - (id)_accessibilityUserTestingChildren;
+- (_Bool)_axIsInDatePickerView;
 - (long long)_accessibilityPickerType;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

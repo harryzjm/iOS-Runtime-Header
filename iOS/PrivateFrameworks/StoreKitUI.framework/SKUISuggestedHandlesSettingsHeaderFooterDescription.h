@@ -7,6 +7,7 @@
 @class NSArray, SKUIClientContext;
 @protocol SKUISuggestedHandlesSettingsHeaderFooterDescriptionDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SKUISuggestedHandlesSettingsHeaderFooterDescription
 {
     SKUIClientContext *_clientContext;

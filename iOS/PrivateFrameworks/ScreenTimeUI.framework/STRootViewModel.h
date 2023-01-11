@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSSet, STUser;
+@class NSArray, NSDictionary, NSSet, STUIUser;
 
+__attribute__((visibility("hidden")))
 @interface STRootViewModel : NSObject
 {
+    _Bool _canStopScreenTimeWithoutPasscode;
     _Bool _isCloudSyncEnabled;
     NSSet *_installedBundleIDs;
     NSDictionary *_installedBundleIDsByCategoryIdentifier;
-    STUser *_me;
+    STUIUser *_me;
     NSArray *_children;
     NSArray *_devices;
 }
@@ -33,10 +35,11 @@
 + (id)keyPathsForValuesAffectingScreenTimeEnabled;
 @property(copy, nonatomic) NSArray *devices; // @synthesize devices=_devices;
 @property(copy, nonatomic) NSArray *children; // @synthesize children=_children;
-@property(copy, nonatomic) STUser *me; // @synthesize me=_me;
+@property(copy, nonatomic) STUIUser *me; // @synthesize me=_me;
 @property(copy, nonatomic) NSDictionary *installedBundleIDsByCategoryIdentifier; // @synthesize installedBundleIDsByCategoryIdentifier=_installedBundleIDsByCategoryIdentifier;
 @property(copy, nonatomic) NSSet *installedBundleIDs; // @synthesize installedBundleIDs=_installedBundleIDs;
 @property(nonatomic) _Bool isCloudSyncEnabled; // @synthesize isCloudSyncEnabled=_isCloudSyncEnabled;
+@property(nonatomic) _Bool canStopScreenTimeWithoutPasscode; // @synthesize canStopScreenTimeWithoutPasscode=_canStopScreenTimeWithoutPasscode;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) _Bool canToggleWebsiteData;
 @property(readonly, nonatomic) _Bool forceParentalControls;

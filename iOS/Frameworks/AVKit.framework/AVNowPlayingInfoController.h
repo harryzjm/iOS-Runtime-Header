@@ -6,9 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@class AVObservationController, AVPlayerController;
+@class AVObservationController, AVPlayerController, NSString;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVNowPlayingInfoController : NSObject
 {
     id _playerControllerCurrentTimeJumpedObserver;
@@ -18,20 +19,29 @@
     AVObservationController *_keyValueObservationController;
     NSObject<OS_dispatch_queue> *_backgroundQueue;
     _Bool _requiresLinearPlayback;
+    NSString *_overrideParentApplicationDisplayIdentifier;
     AVPlayerController *_playerController;
     AVPlayerController *_playerControllerToActivateAfterDelay;
 }
 
++ (id)_mediaRemoteLanguageOptionCharacteristicForAVMediaCharacteristic:(id)arg1;
++ (id)_avMediaCharacteristics;
++ (id)_mediaRemoteLanguageOptionCharacteristicsForAVMediaSelectionOption:(id)arg1;
++ (void *)_createMediaRemoteLanguageOptionWithAVMediaSelectionOption:(id)arg1;
++ (void *)_createMediaRemoteLanguageOptionGroupWithAVMediaSelectionOptions:(id)arg1;
 + (void)sharedNowPlayingInfoControllerWithCompletion:(CDUnknownBlockType)arg1;
 @property(nonatomic) __weak AVPlayerController *playerControllerToActivateAfterDelay; // @synthesize playerControllerToActivateAfterDelay=_playerControllerToActivateAfterDelay;
 @property(retain, nonatomic) AVPlayerController *playerController; // @synthesize playerController=_playerController;
+@property(copy, nonatomic) NSString *overrideParentApplicationDisplayIdentifier; // @synthesize overrideParentApplicationDisplayIdentifier=_overrideParentApplicationDisplayIdentifier;
 @property(nonatomic) _Bool requiresLinearPlayback; // @synthesize requiresLinearPlayback=_requiresLinearPlayback;
 - (void).cxx_destruct;
+- (id)_currentLanguageOptions;
+- (id)_availableLanguageOptions;
 - (unsigned int)_handleRemoteCommand:(unsigned int)arg1 options:(id)arg2;
 - (void)_updateRegisteredRemoteCommandEnabledStatesWithCommandsAndStates:(id)arg1;
 - (id)_makeCommandsAndStatesDictionaryForPlayerController:(id)arg1;
 - (id)_makeNowPlayingInfo;
-- (void)_updateNowPlayingInfo:(id)arg1 commandsAndStates:(id)arg2 playbackState:(unsigned int)arg3;
+- (void)_updateNowPlayingInfo:(id)arg1 commandsAndStates:(id)arg2;
 - (void)_updateNowPlayingInfoIfNeeded;
 - (void)_setNowPlayingInfoNeedsUpdate;
 - (void)stopNowPlayingUpdatesForPlayerController:(id)arg1;

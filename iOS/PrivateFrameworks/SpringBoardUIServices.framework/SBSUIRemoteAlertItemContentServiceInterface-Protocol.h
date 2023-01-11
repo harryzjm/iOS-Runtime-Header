@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@protocol SBSUIRemoteAlertItemContentServiceInterface
+#import <SpringBoardUIServices/SBSUIUserNotificationContentProviding-Protocol.h>
+
+@protocol SBSUIRemoteAlertItemContentServiceInterface <SBSUIUserNotificationContentProviding>
 - (void)getPreferredContentSizeWithReplyBlock:(void (^)(struct CGSize))arg1;
 @end
 

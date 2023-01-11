@@ -7,6 +7,6 @@
 #import <TemplateKit/NSObject-Protocol.h>
 
 @protocol TLKGridFrame <NSObject>
-@property struct CGRect frame;
+@property(nonatomic) struct CGRect frame;
 @end
 

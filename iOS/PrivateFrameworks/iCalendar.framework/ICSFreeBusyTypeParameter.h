@@ -8,7 +8,7 @@
 {
 }
 
-+ (id)freeBusyTypeParameterFromCode:(int)arg1;
++ (id)freeBusyTypeParameterFromCode:(unsigned long long)arg1;
 + (id)freeBusyTypeParameterFromICSString:(id)arg1;
 
 @end

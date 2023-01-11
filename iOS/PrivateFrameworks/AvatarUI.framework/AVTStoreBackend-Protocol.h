@@ -7,11 +7,15 @@
 #import <AvatarUI/NSObject-Protocol.h>
 
 @class AVTAvatarFetchRequest, AVTAvatarRecord, NSArray, NSString;
+@protocol AVTAvatarRecordChangeTracker, AVTStoreBackendDelegate;
 
 @protocol AVTStoreBackend <NSObject>
+@property(readonly, nonatomic) id <AVTAvatarRecordChangeTracker> recordChangeTracker;
+@property(nonatomic) __weak id <AVTStoreBackendDelegate> backendDelegate;
 - (_Bool)canCreateAvatarWithError:(id *)arg1;
 - (AVTAvatarRecord *)duplicateAvatarRecord:(AVTAvatarRecord *)arg1 error:(id *)arg2;
 - (_Bool)deleteAvatarWithIdentifier:(NSString *)arg1 error:(id *)arg2;
+- (_Bool)saveAvatars:(NSArray *)arg1 error:(id *)arg2;
 - (_Bool)saveAvatar:(AVTAvatarRecord *)arg1 error:(id *)arg2;
 - (NSArray *)avatarsForFetchRequest:(AVTAvatarFetchRequest *)arg1 error:(id *)arg2;
 @end

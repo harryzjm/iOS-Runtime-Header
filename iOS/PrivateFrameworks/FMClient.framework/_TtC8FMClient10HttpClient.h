@@ -16,10 +16,10 @@
     MISSING_TYPE *endpoint;
     MISSING_TYPE *statusCodeHandlers;
     MISSING_TYPE *statusCodeHandlerQueue;
-    MISSING_TYPE *session.storage;
+    MISSING_TYPE *$__lazy_storage_$_session;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

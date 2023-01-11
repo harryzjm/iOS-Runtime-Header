@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSString, NSURL;
+@class BLPurchaseRequest, NSArray, NSDictionary, NSString, NSURL;
 
 @protocol BLServiceProtocol
 - (void)getValueSimulateDeviceOutOfSpaceWithReply:(void (^)(_Bool, NSError *))arg1;
@@ -19,7 +19,7 @@
 - (void)requestDownloadWithMetadata:(NSDictionary *)arg1 isRestore:(_Bool)arg2 reply:(void (^)(NSString *, NSError *))arg3;
 - (void)requestDownloadWithParameters:(NSDictionary *)arg1 reply:(void (^)(NSString *, NSError *))arg2;
 - (void)downloadWithPermlink:(NSURL *)arg1 title:(NSString *)arg2 reply:(void (^)(NSString *, NSError *))arg3;
-- (void)purchaseWithBuyParameters:(NSString *)arg1 storeID:(NSString *)arg2 reply:(void (^)(NSString *, BLPurchaseResponse *, NSError *))arg3;
+- (void)purchaseWithRequest:(BLPurchaseRequest *)arg1 reply:(void (^)(NSString *, BLPurchaseResponse *, NSError *))arg2;
 - (void)cancelAllActiveDownloadsWithReply:(void (^)(NSError *))arg1;
 - (void)cancelDownloadWithID:(NSString *)arg1 withReply:(void (^)(NSError *))arg2;
 - (void)resumeDownloadWithID:(NSString *)arg1 withReply:(void (^)(NSError *))arg2;

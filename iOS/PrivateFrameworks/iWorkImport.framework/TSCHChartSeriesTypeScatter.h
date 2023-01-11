@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)userInterfaceName;
 - (_Bool)supportsValueLabelsAxisOption;
 - (_Bool)supportsValueLabelsSeriesName;
 - (_Bool)supportsFillSetFill;

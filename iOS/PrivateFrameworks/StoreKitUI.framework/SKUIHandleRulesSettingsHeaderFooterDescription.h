@@ -6,6 +6,7 @@
 
 @class SKUIClientContext;
 
+__attribute__((visibility("hidden")))
 @interface SKUIHandleRulesSettingsHeaderFooterDescription
 {
     SKUIClientContext *_clientContext;

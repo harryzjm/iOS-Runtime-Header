@@ -10,6 +10,7 @@
 
 - (id)_notificationTypeDescription;
 - (void)_stopObserving;
+- (void)_handleNotification:(id)arg1;
 - (void)_startObserving;
 
 @end

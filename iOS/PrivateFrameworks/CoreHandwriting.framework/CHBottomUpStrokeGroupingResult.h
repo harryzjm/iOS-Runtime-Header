@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSSet;
+@class NSDictionary;
 
 @interface CHBottomUpStrokeGroupingResult
 {
-    NSSet *_nontextCandidates;
-    NSDictionary *_substrokesByStrokeIdentifier;
+    NSDictionary *_substrokePlacementsByStrokeIdentifier;
 }
 
-@property(readonly, retain, nonatomic) NSDictionary *substrokesByStrokeIdentifier; // @synthesize substrokesByStrokeIdentifier=_substrokesByStrokeIdentifier;
-@property(readonly, retain, nonatomic) NSSet *nontextCandidates; // @synthesize nontextCandidates=_nontextCandidates;
+@property(readonly, retain, nonatomic) NSDictionary *substrokePlacementsByStrokeIdentifier; // @synthesize substrokePlacementsByStrokeIdentifier=_substrokePlacementsByStrokeIdentifier;
 - (void)dealloc;
-- (id)initWithStrokeGroups:(id)arg1 createdStrokeGroups:(id)arg2 deletedStrokeGroups:(id)arg3 substrokesByStrokeIdentifier:(id)arg4 nontextCandidates:(id)arg5;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithStrokeGroups:(id)arg1 createdStrokeGroups:(id)arg2 deletedStrokeGroups:(id)arg3 substrokePlacementsByStrokeIdentifier:(id)arg4;
 
 @end
 

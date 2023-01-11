@@ -7,11 +7,13 @@
 #import <XCTest/NSObject-Protocol.h>
 
 @class NSNumber, XCUIApplicationProcess;
+@protocol XCUIElementSnapshotApplication;
 
 @protocol XCUIApplicationProcessTracker <NSObject>
 - (void)setApplicationProcess:(XCUIApplicationProcess *)arg1 forToken:(NSNumber *)arg2;
 - (XCUIApplicationProcess *)applicationProcessWithToken:(NSNumber *)arg1;
 - (void)setApplicationProcess:(XCUIApplicationProcess *)arg1 forPID:(int)arg2;
 - (XCUIApplicationProcess *)applicationProcessWithPID:(int)arg1;
+- (id <XCUIElementSnapshotApplication>)monitoredApplicationWithProcessIdentifier:(int)arg1;
 @end
 

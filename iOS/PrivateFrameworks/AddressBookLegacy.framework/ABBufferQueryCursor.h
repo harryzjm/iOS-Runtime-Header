@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ABBufferQuery, CNManagedConfiguration, NSMutableData;
+@class ABBufferQuery, CNManagedConfiguration, NSMutableData, NSMutableDictionary;
 
 @interface ABBufferQueryCursor : NSObject
 {
@@ -25,6 +25,7 @@
     int _contactPreferredForImageColumn;
     int _personLinkColumn;
     NSMutableData *_mutableData;
+    NSMutableDictionary *_matchInfo;
     struct sqlite3_blob *_incompleteBlob;
     unsigned long long _blobBytesWritten;
     unsigned long long _blobLength;
@@ -61,11 +62,11 @@
 @property(nonatomic) unsigned long long blobLength; // @synthesize blobLength=_blobLength;
 @property(nonatomic) unsigned long long blobBytesWritten; // @synthesize blobBytesWritten=_blobBytesWritten;
 @property(nonatomic) struct sqlite3_blob *incompleteBlob; // @synthesize incompleteBlob=_incompleteBlob;
+@property(retain, nonatomic) NSMutableDictionary *matchInfo; // @synthesize matchInfo=_matchInfo;
 @property(retain, nonatomic) NSMutableData *mutableData; // @synthesize mutableData=_mutableData;
 - (void)dealloc;
 - (void)fetchNextBatchWithReply:(CDUnknownBlockType)arg1;
 - (id)initWithQuery:(id)arg1 batchSize:(unsigned long long)arg2 managedConfiguration:(id)arg3;
-- (id)initWithAddressBook:(void *)arg1 query:(id)arg2 queryBinder:(CDUnknownBlockType)arg3 propertyIdentifierSet:(struct __CFSet *)arg4 includeLinkedContacts:(_Bool)arg5 sortOrder:(unsigned int)arg6 suggestedContactsPerBatch:(unsigned long long)arg7 managedConfiguration:(id)arg8;
 - (id)initWithAddressBook:(void *)arg1 predicate:(id)arg2 propertyIdentifierSet:(struct __CFSet *)arg3 includeLinkedContacts:(_Bool)arg4 sortOrder:(unsigned int)arg5 suggestedContactsPerBatch:(unsigned long long)arg6 managedConfiguration:(id)arg7;
 
 @end

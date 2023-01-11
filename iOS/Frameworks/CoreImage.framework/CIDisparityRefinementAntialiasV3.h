@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CIImage, NSDictionary;
+@class CIImage, NSDictionary, NSNumber;
 
 __attribute__((visibility("hidden")))
 @interface CIDisparityRefinementAntialiasV3
@@ -13,8 +13,10 @@ __attribute__((visibility("hidden")))
     CIImage *inputPreprocImage;
     CIImage *inputDisparityWeightImage;
     NSDictionary *inputTuningParameters;
+    NSNumber *inputScale;
 }
 
+@property(retain) NSNumber *inputScale; // @synthesize inputScale;
 @property(retain) NSDictionary *inputTuningParameters; // @synthesize inputTuningParameters;
 @property(retain) CIImage *inputDisparityWeightImage; // @synthesize inputDisparityWeightImage;
 @property(retain) CIImage *inputPreprocImage; // @synthesize inputPreprocImage;

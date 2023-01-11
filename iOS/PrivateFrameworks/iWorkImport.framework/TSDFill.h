@@ -11,7 +11,7 @@
 #import <iWorkImport/TSSPropertyCommandSerializing-Protocol.h>
 #import <iWorkImport/TSSPropertyValueArchiving-Protocol.h>
 
-@class NSString;
+@class NSString, TSUColor;
 
 __attribute__((visibility("hidden")))
 @interface TSDFill : NSObject <TSSPropertyCommandSerializing, TSSPropertyValueArchiving, TSDPathPainter, TSSPreset>
@@ -23,19 +23,14 @@ __attribute__((visibility("hidden")))
 + (void)registerSubclass:(Class)arg1;
 + (id)p_subclassRegistry;
 @property(readonly, nonatomic) NSString *presetKind;
-- (int)fillType;
-- (id)referenceColor;
+@property(readonly, nonatomic) long long fillType;
+@property(readonly, nonatomic) TSUColor *referenceColorForFontArchiving;
+@property(readonly, nonatomic) TSUColor *referenceColor;
 - (_Bool)drawsInOneStep;
 - (_Bool)isClear;
 - (_Bool)requiresOutlineOnBackgroundWithAppearance:(unsigned long long)arg1;
 - (_Bool)isNearlyWhite;
 - (_Bool)isOpaque;
-- (void)applyToCAShapeLayer:(id)arg1 withScale:(double)arg2;
-- (_Bool)canApplyToCAShapeLayer;
-- (void)applyToCALayer:(id)arg1 withScale:(double)arg2;
-- (_Bool)shouldBeReappliedToCALayer:(id)arg1;
-- (_Bool)canApplyToCALayerByAddingSublayers;
-- (_Bool)canApplyToCALayer;
 - (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (void)paintPath:(struct CGPath *)arg1 naturalBounds:(struct CGRect)arg2 inContext:(struct CGContext *)arg3 isPDF:(_Bool)arg4;

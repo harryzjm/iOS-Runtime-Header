@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UITextRange *base; // @synthesize base=_base;
 - (void).cxx_destruct;
 - (void)smartExtendRangedSelection:(int)arg1 downstream:(_Bool)arg2;
+- (void)setGranularRangedSelectionWithExtentPoint:(struct CGPoint)arg1;
 - (void)setRangedSelectionWithExtentPoint:(struct CGPoint)arg1;
 - (void)setSelectionWithFirstPoint:(struct CGPoint)arg1 secondPoint:(struct CGPoint)arg2;
 - (_Bool)setRangedSelectionExtentPoint:(struct CGPoint)arg1 baseIsStart:(_Bool)arg2;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)setRangedSelectionBaseToCurrentSelectionEnd;
 - (void)setRangedSelectionBaseToCurrentSelectionStart;
 - (void)setRangedSelectionBaseToCurrentSelection;
+- (_Bool)isRangedSelectionSpanningDocument;
 - (_Bool)hasEditableSelection;
 - (_Bool)pointAtEndOfLine:(struct CGPoint)arg1;
 - (_Bool)pointAtStartOfLine:(struct CGPoint)arg1;
@@ -46,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)increaseSelectionGranularity;
 - (void)alterSelectionGranularity:(long long)arg1;
 - (void)alterSelection:(struct CGPoint)arg1 granularity:(long long)arg2;
+- (void)aggressivelyExpandSelectionToSmartSelectionContainingCaretSelection;
 - (void)aggressivelyExpandSelectionToWordContainingCaretSelection;
 - (void)collapseSelection;
 - (void)clearSelection;
@@ -62,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)caretRect;
 - (id)selectionRects;
 @property(readonly, nonatomic, getter=_domRange) DOMRange *domRange;
+@property(readonly, nonatomic) _Bool willSelectionChange;
 - (void)commit;
 - (void)selectionChanged;
 - (void)dealloc;

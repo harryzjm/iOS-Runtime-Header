@@ -32,6 +32,7 @@
     unsigned long long _pixelHeight;
     CLLocation *_location;
     NSDate *_creationDate;
+    NSDate *_localCreationDate;
     NSDate *_modificationDate;
     double _duration;
     NSString *_burstIdentifier;
@@ -77,6 +78,7 @@
 @property(readonly, nonatomic) double duration; // @synthesize duration=_duration;
 @property(readonly, nonatomic, getter=isHDR) _Bool HDR; // @synthesize HDR=_HDR;
 @property(readonly, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
+@property(readonly, nonatomic) NSDate *localCreationDate; // @synthesize localCreationDate=_localCreationDate;
 @property(readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property(readonly, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property(readonly, nonatomic) unsigned long long pixelHeight; // @synthesize pixelHeight=_pixelHeight;
@@ -96,10 +98,12 @@
 - (_Bool)_linkFileAtURL:(id)arg1 toURL:(id)arg2;
 - (id)_uniqueDestinationURLForFileURL:(id)arg1 inDirectory:(id)arg2;
 - (id)_ensureLinkDestinationDirectoryFromBaseDirectory:(id)arg1;
+@property(readonly, nonatomic) unsigned long long reframeVariation;
 - (_Bool)isOriginalRaw;
 @property(readonly, copy, nonatomic) NSString *pathForTrimmedVideoFile;
 @property(readonly, copy, nonatomic) NSString *pathForOriginalVideoFile;
 @property(readonly, copy, nonatomic) NSString *pathForOriginalImageFile;
+@property(readonly, nonatomic, getter=isCloudPhotoLibraryEnabled) _Bool cloudPhotoLibraryEnabled;
 @property(readonly, nonatomic, getter=isResourceDownloadPossible) _Bool resourceDownloadPossible;
 @property(readonly, nonatomic) int originalEXIFOrientation;
 @property(readonly, nonatomic) NSDictionary *imageProperties;
@@ -107,12 +111,14 @@
 - (unsigned long long)requestContentEditingInputWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) PFVideoAVObjectBuilder *videoObjectBuilder;
 @property(readonly, nonatomic) unsigned long long livePhotoVisibilityState;
+@property(readonly, nonatomic, getter=isTrimmableType) _Bool trimmableType;
 @property(readonly, nonatomic) unsigned long long originalResourceChoice;
 @property(readonly, nonatomic, getter=isInPlaceVideoTrimAllowed) _Bool inPlaceVideoTrimAllowed;
 @property(readonly, nonatomic, getter=isLivePhotoVisibilityAdjustmentAllowed) _Bool livePhotoVisibilityAdjustmentAllowed;
 @property(readonly, nonatomic, getter=isContentAdjustmentAllowed) _Bool contentAdjustmentAllowed;
 @property(readonly, nonatomic, getter=isAdjusted) _Bool adjusted;
 @property(readonly, nonatomic, getter=isHighFramerateVideo) _Bool highFramerateVideo;
+@property(readonly, nonatomic) unsigned long long deferredLogInfo;
 - (unsigned long long)isContentEqualTo:(id)arg1;
 @property(readonly, nonatomic) _Bool isAnimatedImage;
 @property(readonly, nonatomic) _Bool hasPhotoColorAdjustments;
@@ -128,6 +134,7 @@
 @property(readonly, nonatomic) double aspectRatio;
 @property(readonly, nonatomic, getter=isFavorite) _Bool favorite;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithAVAsset:(id)arg1 audioMix:(id)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 captureDate:(id)arg5 duration:(double)arg6 previewImage:(id)arg7 videoURL:(id)arg8 unadjustedVideoURL:(id)arg9 adjustments:(id)arg10 identifier:(id)arg11;
 - (id)initWithAVAsset:(id)arg1 audioMix:(id)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 captureDate:(id)arg5 duration:(double)arg6 previewImage:(id)arg7 videoURL:(id)arg8 adjustments:(id)arg9 identifier:(id)arg10;
 - (id)initWithLivePhoto:(id)arg1 fullsizeUnadjustedImageURL:(id)arg2 fullsizeUnadjustedVideoURL:(id)arg3 assetAdjustments:(id)arg4 width:(unsigned long long)arg5 height:(unsigned long long)arg6 captureDate:(id)arg7 metadata:(id)arg8 duration:(double)arg9 previewImage:(id)arg10 identifier:(id)arg11;
 - (id)initWithPhoto:(id)arg1 mediaSubtypes:(unsigned long long)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 captureDate:(id)arg5 metadata:(id)arg6 burstIdentifier:(id)arg7 representedCount:(unsigned long long)arg8 fullsizeImageURL:(id)arg9 fullsizeUnadjustedImageURL:(id)arg10 assetAdjustments:(id)arg11 identifier:(id)arg12;
@@ -153,6 +160,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) CDStruct_1b6d18a9 videoKeyFrameSourceTime;
 
 @end
 

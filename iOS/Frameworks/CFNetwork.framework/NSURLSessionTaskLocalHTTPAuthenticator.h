@@ -6,7 +6,6 @@
 
 @protocol NSURLSessionAppleIDContext;
 
-__attribute__((visibility("hidden")))
 @interface NSURLSessionTaskLocalHTTPAuthenticator
 {
     id <NSURLSessionAppleIDContext> _externalAuthenticator;

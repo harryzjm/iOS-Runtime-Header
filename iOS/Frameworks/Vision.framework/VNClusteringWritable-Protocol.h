@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSUUID;
+@class NSArray, NSDictionary;
 
 @protocol VNClusteringWritable
-+ (NSUUID *)nonGroupedGroupID;
 - (NSArray *)getClustersWithOptions:(NSDictionary *)arg1 error:(id *)arg2;
 @end
 

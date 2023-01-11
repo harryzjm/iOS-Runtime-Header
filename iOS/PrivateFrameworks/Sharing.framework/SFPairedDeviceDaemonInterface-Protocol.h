@@ -9,9 +9,12 @@
 @class NSDate, NSDictionary, NSString;
 
 @protocol SFPairedDeviceDaemonInterface <SDXPCDaemonProtocol>
+- (void)triggerChargingUIWithDismissHandler:(void (^)(NSError *))arg1;
 - (void)sendDashboardEntryWithName:(NSString *)arg1 dict:(NSDictionary *)arg2;
-- (void)sendUICoordinationDate:(NSDate *)arg1;
-- (void)sendUISyncDate:(NSDate *)arg1;
-- (void)requestToShowChargingUIWithHandler:(void (^)(NSDate *, NSError *))arg1;
+- (void)sendDismissUIWithReason:(long long)arg1;
+- (void)initialViewControllerDidDisappear;
+- (void)initialViewControllerDidAppear;
+- (void)sendAnimationDate:(NSDate *)arg1;
+- (void)requestAnimationDateWithCompletion:(void (^)(NSDate *, NSError *))arg1;
 @end
 

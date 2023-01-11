@@ -12,6 +12,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityElements;
 - (id)_accessibilityScrollStatus;
+- (long long)accessibilityContainerType;
 - (_Bool)accessibilityShouldSpeakItemReorderEvents;
 - (_Bool)accessibilityCollectionViewBehavesLikeUIViewAccessibility;
 

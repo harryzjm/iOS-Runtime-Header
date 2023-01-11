@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CPLAdjustments, CPLResource, NSError, NSURL;
+@class CPLAdjustments, CPLDerivativesFilter, CPLResource, NSError, NSString, NSURL;
 
 @protocol CPLDerivativeGenerator
 + (_Bool)isUnsupportedOriginalFormatError:(NSError *)arg1;
-+ (void)generateDerivativeResourcesFromInputResource:(CPLResource *)arg1 withAdjustments:(CPLAdjustments *)arg2 destinationDirectory:(NSURL *)arg3 completionHandler:(void (^)(NSArray *, NSError *))arg4;
++ (void)generateDerivativeResourcesFromInputResource:(CPLResource *)arg1 withAdjustments:(CPLAdjustments *)arg2 destinationDirectory:(NSURL *)arg3 derivativesFilter:(CPLDerivativesFilter *)arg4 completionHandler:(void (^)(NSArray *, NSError *))arg5;
++ (_Bool)canGenerateImageDerivativesFromUTI:(NSString *)arg1;
++ (_Bool)isMovieUTI:(NSString *)arg1;
 @end
 

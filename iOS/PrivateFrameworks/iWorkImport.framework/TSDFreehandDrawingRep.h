@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSCache;
+
 __attribute__((visibility("hidden")))
 @interface TSDFreehandDrawingRep
 {
+    NSCache *_cachedClusteredShapeRepsForAnimationExport;
 }
 
+- (void).cxx_destruct;
 - (id)textureForDescription:(id)arg1;
 - (id)accessibilityLabel;
 - (_Bool)tsaxAllowedToEditChildren;
 - (id)tsaxChildren;
 - (_Bool)isAccessibilityElement;
-- (id)p_childrenForDrawingRecursively;
+- (id)p_shapeChildrenForDrawingRecursively;
 - (id)p_freehandDrawingLayout;
 - (double)opacity;
 - (struct CGRect)clipRect;

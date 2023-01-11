@@ -13,9 +13,9 @@
 __attribute__((visibility("hidden")))
 @interface TSTImportWarningSet : NSObject <TSSPropertyCommandSerializing>
 {
-    struct TSTImportWarningSetCellWarningFlags mCellWarning;
-    NSString *mOriginalDataFormat;
-    struct TSTImportFormulaWarning mFormulaWarning;
+    struct TSTImportWarningSetCellWarningFlags _cellWarning;
+    NSString *_originalDataFormat;
+    struct TSTImportFormulaWarning _formulaWarning;
 }
 
 + (id)cellDiffClearingAllWarningsWithContext:(id)arg1;
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 + (id)warningSetForCondFormatComplexFormula;
 + (id)warningSetForCondFormatAboveAvgStdDev;
 + (id)warningSetForCondFormatAboveAvgEqualAvg;
++ (id)warningSetForFilteredColumnFormulaNotCopied;
 + (id)warningSetForTransposeUnmodifiedWithIssues;
 + (id)warningSetForTransposedWithIssues:(id)arg1;
 + (id)warningSetForTransposedWithoutIssues:(id)arg1;
@@ -49,12 +50,16 @@ __attribute__((visibility("hidden")))
 + (id)warningSetFor3DReferenceFormula:(id)arg1;
 + (id)emptyWarningSet;
 + (id)p_warningSetForFormulaWarningType:(long long)arg1 originalFormula:(id)arg2 supplementaryText:(id)arg3;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 @property(readonly, copy) NSString *description;
 - (void)saveToArchive:(struct ImportWarningSetArchive *)arg1;
+- (int)TSTImportFormulaWarningTypeToArchive;
 - (id)initFromArchive:(const struct ImportWarningSetArchive *)arg1;
+- (long long)TSTImportFormulaWarningTypeFromArchive:(int)arg1;
 - (void)saveToPropertyCommandMessage:(struct Message *)arg1 archiver:(id)arg2;
 - (id)initFromPropertyCommandMessage:(const struct Message *)arg1 unarchiver:(id)arg2;
-- (_Bool)isTransposeWarning;
+- (_Bool)p_isPersistedWithFormulaWarningTypeEnumeration;
 - (id)warningSetByRemovingWarningsFromSet:(id)arg1;
 - (id)cellDiffClearingWarningsWithContext:(id)arg1;
 - (id)warningSetByAddingWarningsFromSet:(id)arg1;
@@ -63,7 +68,6 @@ __attribute__((visibility("hidden")))
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)areAnySet;
-- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

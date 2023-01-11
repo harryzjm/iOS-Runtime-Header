@@ -8,6 +8,7 @@
 
 @class NSString, SKUIAttributedStringView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIReviewListTitleView <SKUIViewElementView>
 {
     SKUIAttributedStringView *_titleView;

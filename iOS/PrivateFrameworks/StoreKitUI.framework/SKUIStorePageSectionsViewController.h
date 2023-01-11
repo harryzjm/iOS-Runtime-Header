@@ -17,6 +17,7 @@
 @class NSArray, NSIndexPath, NSMapTable, NSMutableArray, NSMutableIndexSet, NSNumber, NSString, SKUICollectionView, SKUIColorScheme, SKUIIndexBarControl, SKUILayoutCache, SKUIMetricsController, SKUIMetricsImpressionSession, SKUIProductPageOverlayController, SKUIResourceLoader, SKUIStackedBar, SKUIStorePageSplitsDescription, UICollectionView, UIRefreshControl, UITapGestureRecognizer, UIView;
 @protocol SKUICollectionViewPullToRefreshDelegate, SKUIStorePageSectionsDelegate, UIViewControllerPreviewing;
 
+__attribute__((visibility("hidden")))
 @interface SKUIStorePageSectionsViewController <UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, SKUIItemStateCenterObserver, SKUILayoutCacheDelegate, SKUIProductPageOverlayDelegate, SKUIStorePageCollectionViewDelegate, SKUIViewControllerTesting, UICollectionViewDataSource, UIGestureRecognizerDelegate>
 {
     SKUIProductPageOverlayController *_activeOverlayController;

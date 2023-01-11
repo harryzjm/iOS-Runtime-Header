@@ -4,16 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIButton.h>
+#import <UIKit/UIControl.h>
 
-__attribute__((visibility("hidden")))
-@interface _TtC15ConversationKit19InCallControlButton : UIButton
+@class MISSING_TYPE;
+
+@interface _TtC15ConversationKit19InCallControlButton : UIControl
 {
+    MISSING_TYPE *discBackgroundEffectView;
+    MISSING_TYPE *discBackgroundFlatView;
+    MISSING_TYPE *imageView;
+    MISSING_TYPE *paragraphStyle;
+    MISSING_TYPE *isUsingVisualEffects;
+    MISSING_TYPE *style;
+    MISSING_TYPE *label;
+    MISSING_TYPE *discView;
+    MISSING_TYPE *image;
+    MISSING_TYPE *colorConfiguration;
+    MISSING_TYPE *contentAlpha;
 }
 
+- (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-@property(nonatomic, readonly) struct CGSize intrinsicContentSize;
 - (id)initWithCoder:(id)arg1;
 @property(nonatomic) _Bool highlighted;
 - (_Bool)isHighlighted;

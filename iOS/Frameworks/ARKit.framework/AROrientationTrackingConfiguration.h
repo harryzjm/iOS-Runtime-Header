@@ -8,6 +8,7 @@
 {
 }
 
++ (_Bool)supportsFrameSemantics:(unsigned long long)arg1;
 + (id)supportedVideoFormats;
 + (id)new;
 - (id)description;

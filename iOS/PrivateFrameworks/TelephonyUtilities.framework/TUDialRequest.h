@@ -9,11 +9,12 @@
 #import <TelephonyUtilities/NSCopying-Protocol.h>
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
 #import <TelephonyUtilities/TUCallRequest-Protocol.h>
+#import <TelephonyUtilities/TUFilteredRequest-Protocol.h>
 #import <TelephonyUtilities/TUVideoRequest-Protocol.h>
 
-@class CNContactStore, IDSDestination, NSArray, NSDate, NSString, NSURL, NSUUID, NSUserActivity, TUCallProvider, TUCallProviderManager, TUHandle, TUSenderIdentityClient;
+@class BSProcessHandle, IDSDestination, NSArray, NSDate, NSString, NSURL, NSUUID, NSUserActivity, TUCallProvider, TUCallProviderManager, TUHandle, TUSenderIdentity, TUSenderIdentityClient;
 
-@interface TUDialRequest : NSObject <TUCallRequest, TUVideoRequest, NSSecureCoding, NSCopying>
+@interface TUDialRequest : NSObject <TUCallRequest, TUVideoRequest, TUFilteredRequest, NSSecureCoding, NSCopying>
 {
     _Bool _video;
     _Bool _performDialAssist;
@@ -39,8 +40,14 @@
     CDUnknownBlockType _isEmergencyNumberOrIsWhitelistedBlock;
     NSDate *_dateDialed;
     NSString *_endpointIDSDestinationURI;
+    NSString *_endpointRapportMediaSystemIdentifier;
+    NSString *_endpointRapportEffectiveIdentifier;
     NSUUID *_localSenderIdentityUUID;
+    NSUUID *_localSenderIdentityAccountUUID;
     long long _originatingUIType;
+    NSString *_successNotification;
+    NSString *_failureNotification;
+    BSProcessHandle *_processHandle;
     struct CGSize _localPortraitAspectRatio;
     struct CGSize _localLandscapeAspectRatio;
 }
@@ -50,9 +57,10 @@
 + (void)setLegacyAddressBookIdentifierToContactIdentifierTransformBlock:(CDUnknownBlockType)arg1;
 + (void)setCallProviderManagerGeneratorBlock:(CDUnknownBlockType)arg1;
 + (CDUnknownBlockType)callProviderManagerGeneratorBlock;
++ (id)contactStore;
 + (long long)originatingUITypeForString:(id)arg1;
 + (id)stringForOriginatingUIType:(long long)arg1;
-+ (id)providerForIntentPreferredCallProvider:(long long)arg1 providerManager:(id)arg2;
++ (id)providerForIntentPreferredCallProvider:(long long)arg1 callCapability:(long long)arg2 providerManager:(id)arg3;
 + (long long)ttyTypeForIntentTTYType:(long long)arg1;
 + (long long)intentTTYTypeForTTYType:(long long)arg1;
 + (long long)dialRequestTypeForIntentDestinationType:(long long)arg1;
@@ -60,11 +68,18 @@
 + (id)stringForTTYType:(long long)arg1;
 + (long long)handleTypeForQueryItem:(id)arg1;
 + (id)stringForDialType:(long long)arg1;
++ (long long)dialRequestTTYTypeForCHRecentCallTTYType:(long long)arg1;
+@property(retain, nonatomic) BSProcessHandle *processHandle; // @synthesize processHandle=_processHandle;
+@property(copy, nonatomic) NSString *failureNotification; // @synthesize failureNotification=_failureNotification;
+@property(copy, nonatomic) NSString *successNotification; // @synthesize successNotification=_successNotification;
 @property(nonatomic) _Bool shouldSuppressInCallUI; // @synthesize shouldSuppressInCallUI=_shouldSuppressInCallUI;
 @property(nonatomic, getter=isRedial) _Bool redial; // @synthesize redial=_redial;
 @property(nonatomic, getter=isSOS, setter=setSOS:) _Bool sos; // @synthesize sos=_sos;
 @property(nonatomic) long long originatingUIType; // @synthesize originatingUIType=_originatingUIType;
+@property(copy, nonatomic) NSUUID *localSenderIdentityAccountUUID; // @synthesize localSenderIdentityAccountUUID=_localSenderIdentityAccountUUID;
 @property(copy, nonatomic) NSUUID *localSenderIdentityUUID; // @synthesize localSenderIdentityUUID=_localSenderIdentityUUID;
+@property(copy, nonatomic) NSString *endpointRapportEffectiveIdentifier; // @synthesize endpointRapportEffectiveIdentifier=_endpointRapportEffectiveIdentifier;
+@property(copy, nonatomic) NSString *endpointRapportMediaSystemIdentifier; // @synthesize endpointRapportMediaSystemIdentifier=_endpointRapportMediaSystemIdentifier;
 @property(copy, nonatomic) NSString *endpointIDSDestinationURI; // @synthesize endpointIDSDestinationURI=_endpointIDSDestinationURI;
 @property(nonatomic) _Bool endpointOnCurrentDevice; // @synthesize endpointOnCurrentDevice=_endpointOnCurrentDevice;
 @property(nonatomic) _Bool hostOnCurrentDevice; // @synthesize hostOnCurrentDevice=_hostOnCurrentDevice;
@@ -94,7 +109,7 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqualToDialRequest:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (id)_contactFromINPerson:(id)arg1 bestGuessHandle:(id *)arg2;
+- (id)_contactFromINPerson:(id)arg1 contactsDataSource:(id)arg2 bestGuessHandle:(id *)arg3;
 - (id)dialRequestByReplacingProvider:(id)arg1;
 - (id)validityErrorForSOS;
 - (id)validityErrorForUnsupportedHandleType;
@@ -107,8 +122,13 @@
 - (id)validityErrorForUnspecifiedProvider;
 @property(readonly, copy, nonatomic) NSArray *validityErrors;
 @property(readonly, nonatomic, getter=isValid) _Bool valid;
+- (id)userActivityUsingDeprecatedCallingIntents:(_Bool)arg1;
 @property(readonly, nonatomic) NSUserActivity *userActivity;
+- (id)failureNotificationQueryItem;
+- (id)successNotificationQueryItem;
 - (id)shouldSuppressInCallUIQueryItem;
+- (id)endpointRapportEffectiveIdentifierQueryItem;
+- (id)endpointRapportMediaSystemIdentifierQueryItem;
 - (id)endpointIDSDestinationURIQueryItem;
 - (id)redialURLQueryItem;
 - (id)sosURLQueryItem;
@@ -120,6 +140,7 @@
 - (id)suppressAssistURLQueryItem;
 - (id)forceAssistURLQueryItem;
 - (id)audioSourceIdentifierURLQueryItem;
+- (id)localSenderIdentityAccountUUIDURLQueryItem;
 - (id)localSenderIdentityUUIDURLQueryItem;
 - (id)providerCustomIdentifierURLQueryItem;
 - (id)contactIdentifierURLQueryItem;
@@ -135,20 +156,25 @@
 - (id)destinationIDFromURL:(id)arg1;
 - (id)callProviderFromURLComponents:(id)arg1 video:(_Bool *)arg2;
 - (_Bool)boolValueForQueryItemWithName:(id)arg1 inURLComponents:(id)arg2;
+- (id)handles;
+- (id)bundleIdentifier;
 @property(readonly, nonatomic) IDSDestination *endpointIDSDestination;
 @property(copy, nonatomic) NSString *destinationID;
 @property(readonly, nonatomic) TUSenderIdentityClient *senderIdentityClient; // @synthesize senderIdentityClient=_senderIdentityClient;
-@property(readonly, nonatomic) CNContactStore *contactStore;
+@property(readonly, copy, nonatomic) TUSenderIdentity *localSenderIdentity;
 @property(readonly, nonatomic) _Bool useTTY;
 @property(readonly, nonatomic) int service;
 @property(readonly, copy) NSString *description;
 - (id)init;
-- (id)initWithDialIntent:(id)arg1 providerManager:(id)arg2;
+- (id)initWithDialIntent:(id)arg1 providerManager:(id)arg2 contactsDataSource:(id)arg3 senderIdentityClient:(id)arg4;
+- (id)initWithUserActivity:(id)arg1 providerManager:(id)arg2 contactsDataSource:(id)arg3 senderIdentityClient:(id)arg4;
 - (id)initWithUserActivity:(id)arg1 providerManager:(id)arg2;
 - (id)initWithUserActivity:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (id)initWithService:(int)arg1;
 - (id)initWithProvider:(id)arg1;
+@property(readonly, nonatomic, getter=isTTYAvailable) _Bool ttyAvailable;
+@property(readonly, nonatomic, getter=isRTTAvailable) _Bool rttAvailable;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

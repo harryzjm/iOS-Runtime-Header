@@ -6,12 +6,14 @@
 
 @class NSMutableArray, WDTableProperties;
 
+__attribute__((visibility("hidden")))
 @interface WDTable
 {
     WDTableProperties *mProperties;
     NSMutableArray *mRows;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 - (id)newRunIterator;
 - (id)runIterator;
@@ -28,7 +30,6 @@
 - (unsigned long long)rowCount;
 - (void)clearProperties;
 - (id)properties;
-- (void)dealloc;
 - (id)initWithText:(id)arg1;
 
 @end

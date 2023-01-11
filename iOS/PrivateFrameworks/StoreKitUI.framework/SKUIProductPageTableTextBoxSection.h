@@ -6,6 +6,7 @@
 
 @class NSString, SKUIClientContext, SKUIColorScheme, SKUILayoutCache;
 
+__attribute__((visibility("hidden")))
 @interface SKUIProductPageTableTextBoxSection
 {
     SKUIClientContext *_clientContext;

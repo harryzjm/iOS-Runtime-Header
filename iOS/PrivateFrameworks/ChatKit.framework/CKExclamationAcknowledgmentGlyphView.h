@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIImageView;
+@class CKAcknowledgmentGlyphImageView;
 
+__attribute__((visibility("hidden")))
 @interface CKExclamationAcknowledgmentGlyphView
 {
-    UIImageView *_leftExclamationGlyph;
-    UIImageView *_rightExclamationGlyph;
+    CKAcknowledgmentGlyphImageView *_leftExclamationGlyph;
+    CKAcknowledgmentGlyphImageView *_rightExclamationGlyph;
 }
 
-@property(retain, nonatomic) UIImageView *rightExclamationGlyph; // @synthesize rightExclamationGlyph=_rightExclamationGlyph;
-@property(retain, nonatomic) UIImageView *leftExclamationGlyph; // @synthesize leftExclamationGlyph=_leftExclamationGlyph;
+@property(retain, nonatomic) CKAcknowledgmentGlyphImageView *rightExclamationGlyph; // @synthesize rightExclamationGlyph=_rightExclamationGlyph;
+@property(retain, nonatomic) CKAcknowledgmentGlyphImageView *leftExclamationGlyph; // @synthesize leftExclamationGlyph=_leftExclamationGlyph;
 - (void).cxx_destruct;
 - (double)animationDuration;
 - (void)animateWithBeginTime:(double)arg1 completionDelay:(double)arg2 completion:(CDUnknownBlockType)arg3;

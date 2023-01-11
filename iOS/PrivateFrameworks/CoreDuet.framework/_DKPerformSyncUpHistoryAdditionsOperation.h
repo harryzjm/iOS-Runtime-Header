@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, _CDMutablePerfMetric, _DKSync2Policy, _DKSyncHistory, _DKSyncPeer, _DKSyncType;
+@class NSArray, NSDate, _CDMutablePerfMetric, _DKSync2Policy, _DKSyncHistory, _DKSyncPeer, _DKSyncType;
 @protocol _DKSyncLocalKnowledgeStorage, _DKSyncRemoteKnowledgeStorage;
 
 @interface _DKPerformSyncUpHistoryAdditionsOperation
@@ -16,8 +16,8 @@
     _DKSyncType *_type;
     _CDMutablePerfMetric *_perfMetric;
     struct _CDPerfEvent _perfEvent;
+    NSArray *_streamNames;
     _Bool _hadAdditions;
-    NSDate *_startDate;
     NSDate *_now;
     unsigned long long _batchNumber;
     _DKSyncHistory *_history;

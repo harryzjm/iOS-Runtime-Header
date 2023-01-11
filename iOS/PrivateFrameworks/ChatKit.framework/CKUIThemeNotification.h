@@ -8,6 +8,8 @@
 {
 }
 
+- (id)entryViewBackgroundColor;
+- (id)entryFieldPlaceholderColor;
 - (long long)entryViewStyle;
 
 @end

@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (_Bool)_accessibilityControlCenterButtonWillExpand;
 - (id)_accessibilityControlCenterButtonIdentifier;
 - (_Bool)_accessibilityControlCenterButtonIsToggle;
 - (id)_accessibilityControlCenterButtonHint;

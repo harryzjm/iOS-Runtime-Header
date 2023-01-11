@@ -21,11 +21,11 @@
 @property(nonatomic) long long proxyType; // @synthesize proxyType=_proxyType;
 @property(copy, nonatomic) NSURL *contentProxyURLConnect; // @synthesize contentProxyURLConnect=_contentProxyURLConnect;
 @property(copy, nonatomic) NSURL *contentProxyURL; // @synthesize contentProxyURL=_contentProxyURL;
+- (void).cxx_destruct;
 - (void)configVersionDidChange:(id)arg1;
 - (void)proxyTypeDidChange:(long long)arg1;
 - (void)contentProxyURLConnectDidChange:(id)arg1;
 - (void)contentProxyURLDidChange:(id)arg1;
-- (void)dealloc;
 
 @end
 

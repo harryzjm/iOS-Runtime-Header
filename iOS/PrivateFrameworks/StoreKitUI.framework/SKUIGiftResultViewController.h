@@ -6,6 +6,7 @@
 
 @class SKUIGiftItemView, UIButton, UIImage;
 
+__attribute__((visibility("hidden")))
 @interface SKUIGiftResultViewController
 {
     UIButton *_giftAgainButton;

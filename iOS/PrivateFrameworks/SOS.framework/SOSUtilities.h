@@ -16,6 +16,8 @@
 + (_Bool)shouldPlayAudioDuringCountdown;
 + (void)setAutomaticCallCountdownEnabled:(_Bool)arg1;
 + (_Bool)isAutomaticCallCountdownEnabled;
++ (_Bool)hasActiveSIMForClient:(id)arg1;
++ (_Bool)shouldForceDisableAutoCallForClient:(id)arg1;
 + (long long)SOSSelectableTriggerMechanismCapability;
 + (_Bool)deviceHasHomeButton;
 + (_Bool)isD2xDevice;
@@ -25,9 +27,13 @@
 + (long long)SOSTriggerClickCount;
 + (_Bool)canTriggerSOSWithClicks;
 + (_Bool)canTriggerSOSWithVolumeLockHold;
++ (_Bool)isIndiaSKU;
++ (_Bool)autoCallRequiresSIM;
 + (_Bool)mustAllowThreeClickTrigger;
 + (void)setNewtonTriggersEmergencySOS:(_Bool)arg1;
 + (_Bool)newtonTriggersEmergencySOS;
++ (void)setNewtonTriggersEmergencySOSNumber:(id)arg1;
++ (id)newtonTriggersEmergencySOSNumber;
 + (void)setLongPressTriggersEmergencySOS:(_Bool)arg1;
 + (_Bool)longPressTriggersEmergencySOS;
 + (id)_userFriendsDefaults;

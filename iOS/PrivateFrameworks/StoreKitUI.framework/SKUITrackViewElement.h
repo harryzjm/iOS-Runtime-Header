@@ -6,6 +6,7 @@
 
 @class SKUIActionsViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUITrackViewElement
 {
     BOOL _enabled;

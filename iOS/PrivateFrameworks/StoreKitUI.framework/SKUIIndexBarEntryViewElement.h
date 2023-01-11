@@ -6,6 +6,7 @@
 
 @class NSString, SKUIViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUIIndexBarEntryViewElement
 {
     NSString *_targetIndexBarEntryID;

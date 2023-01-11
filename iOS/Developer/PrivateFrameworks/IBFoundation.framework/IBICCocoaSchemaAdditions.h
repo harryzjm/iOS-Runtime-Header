@@ -8,7 +8,7 @@
 
 #import <IBFoundation/IBICSchemaProvider-Protocol.h>
 
-@class IBICColorSpace, IBICContrastAppearance, IBICFileType, IBICIdiom, IBICLanguageDirection, IBICLuminosityAppearance, IBICPlatform, IBICScale, IBICSize, IBICVibrancyAppearance, NSString;
+@class IBICColorSpace, IBICContrastAppearance, IBICFileType, IBICIdiom, IBICLanguageDirection, IBICLuminosityAppearance, IBICPlatform, IBICScale, IBICSize, IBICVibrancyAppearance, NSArray, NSString;
 
 @interface IBICCocoaSchemaAdditions : NSObject <IBICSchemaProvider>
 {
@@ -25,6 +25,8 @@
     IBICSize *_size128;
     IBICSize *_size256;
     IBICSize *_size512;
+    NSArray *_fileProviderIconBadgeSizes;
+    NSArray *_fileProviderSidebarIconSizes;
     IBICColorSpace *_anyColorSpace;
     IBICColorSpace *_sRGBColorSpace;
     IBICColorSpace *_P3ColorSpace;
@@ -44,15 +46,17 @@
 
 - (void).cxx_destruct;
 - (void)registerSuggestionSets:(id)arg1;
+- (void)registerVectorGlyphSetSlots:(id)arg1;
 - (void)registerColorSetSlots:(id)arg1;
 - (void)registerTextureSetSlots:(id)arg1;
 - (void)registerModelSetSlots:(id)arg1;
 - (void)registerDataSetSlots:(id)arg1;
 - (void)registerAppIconSetSlots:(id)arg1;
 - (id)macAppIconDetailAreaGroupPathForSize:(id)arg1;
+- (void)registerSidebarIconSetSlots:(id)arg1;
+- (void)registerIconBadgeSetSlots:(id)arg1;
 - (void)registerIconSetSlots:(id)arg1;
 - (void)registerImageSetSlots:(id)arg1;
-- (id)registerAppearanceSuggestionSets:(id)arg1 forSlotClasses:(id)arg2;
 - (void)registerSchemaComponents:(id)arg1;
 - (void)captureExistingSlotComponents:(id)arg1;
 - (void)registerSlotComponents:(id)arg1;

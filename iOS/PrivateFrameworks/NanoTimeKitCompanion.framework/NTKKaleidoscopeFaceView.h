@@ -8,7 +8,7 @@
 #import <NanoTimeKitCompanion/CLKUIResourceProviderDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKColorCircularUtilitarianFaceViewComplicationFactoryDelegate-Protocol.h>
 
-@class CLKUIQuadView, CLKUIResourceProviderKey, NSMapTable, NSString, NTKColorCircularUtilitarianFaceViewComplicationFactory, NTKRoundedCornerOverlayView, UIColor;
+@class CLKUIQuadView, CLKUIResourceProviderKey, NSMapTable, NSMutableSet, NSString, NTKColorCircularUtilitarianFaceViewComplicationFactory, NTKRoundedCornerOverlayView, UIColor;
 
 @interface NTKKaleidoscopeFaceView <NTKColorCircularUtilitarianFaceViewComplicationFactoryDelegate, CLKUIQuadViewDelegate, CLKUIResourceProviderDelegate>
 {
@@ -26,6 +26,7 @@
     float _crownTurnsPerRotation;
     double _dayDuration;
     NSMapTable *_quadPathfinderMapTable;
+    NSMutableSet *_loadedAssets;
     unsigned long long _currentAsset;
     unsigned long long _currentStyle;
 }
@@ -37,6 +38,7 @@
 - (id)_snapshotWithAsset:(unsigned long long)arg1 style:(unsigned long long)arg2 size:(struct CGSize)arg3;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (id)_swatchForAsset:(unsigned long long)arg1;
+- (_Bool)_wantsConstantSpeedZoom;
 - (id)_quadWithStyle:(unsigned long long)arg1 asset:(unsigned long long)arg2;
 - (id)_textureForAsset:(unsigned long long)arg1;
 - (id)_pathfinderForAsset:(unsigned long long)arg1;
@@ -66,21 +68,21 @@
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
+- (_Bool)_isEditOptionFullscreen:(id)arg1;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_cleanupAfterTransitionComplicationSlot:(id)arg1 selectedComplication:(id)arg2;
 - (void)_cleanupAfterEditing;
 - (void)_prepareForEditing;
-- (id)_editOptionThatHidesAllComplications;
 - (double)_verticalPaddingForStatusBar;
 - (struct CGPoint)_contentCenterOffset;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
-- (id)_curvedPickerMaskForSlot:(id)arg1;
+- (id)_pickerMaskForSlot:(id)arg1;
 - (void)_curvedComplicationCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(_Bool *)arg5 forSlot:(id)arg6;
 - (_Bool)_slotSupportsCurvedText:(id)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_loadLayoutRules;
-- (void)_configureReusableTimeView:(id)arg1;
+- (void)_configureTimeView:(id)arg1;
 - (double)_kaleidoscopeTimeForAsset:(unsigned long long)arg1;
 - (void)quadViewWillDisplay:(id)arg1 forTime:(double)arg2;
 - (_Bool)slotUsesCurvedText:(id)arg1;
@@ -88,7 +90,7 @@
 - (void)_enableCrown;
 - (void)_applyDataMode;
 - (void)_applyFrozen;
-- (void)_renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1;
+- (void)_renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
 - (void)_unloadSnapshotContentViews;
 - (void)_loadSnapshotContentViews;
 - (void)_updateWithAsset:(unsigned long long)arg1;

@@ -8,6 +8,7 @@
 
 @class CKDetailsAddGroupNameView, NSString;
 
+__attribute__((visibility("hidden")))
 @interface CKDetailsGroupNameCell <CKDetailsCell>
 {
     CKDetailsAddGroupNameView *_groupNameView;

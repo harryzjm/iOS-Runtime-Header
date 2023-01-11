@@ -20,11 +20,13 @@
 @property(retain, nonatomic) UITableViewCell *tableViewCell; // @synthesize tableViewCell=_tableViewCell;
 @property(retain, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
 - (void).cxx_destruct;
+- (id)_accessibilityCapturedImages;
 - (id)accessibilityDropPointDescriptors;
 - (id)accessibilityDragSourceDescriptors;
 - (_Bool)_accessibilityRetainsCustomRotorActionSetting;
 - (id)_privateAccessibilityCustomActions;
 - (id)accessibilityCustomActions;
+- (id)accessibilityUserInputLabels;
 - (unsigned long long)_accessibilityScanningBehaviorTraits;
 - (_Bool)_accessibilityShouldIncludeRowRangeInElementDescription;
 - (_Bool)_accessibilityHasNativeFocus;
@@ -36,10 +38,12 @@
 - (_Bool)_accessibilityIsSpeakThisElement;
 - (long long)_accessibilityScannerActivateBehavior;
 - (_Bool)_accessibilityIsScannerGroup;
-- (_Bool)_accessibilityIsScannerElement;
+- (_Bool)accessibilityRespondsToUserInteraction;
 - (_Bool)_allowCustomActionHintSpeakOverride;
 - (id)_accessibilityAbsoluteValue;
 - (_Bool)_accessibilityHasTextOperations;
+- (void)_accessibilityRedo;
+- (void)_accessibilityUndo;
 - (void)_accessibilitySelectAll;
 - (void)_accessibilityPaste;
 - (_Bool)accessibilityPerformMagicTap;
@@ -112,6 +116,7 @@
 - (_Bool)_accessibilityBackingElementIsValid;
 - (id)_accessibilityProxyView;
 @property(readonly, nonatomic) UITableViewCell *realTableViewCell; // @dynamic realTableViewCell;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

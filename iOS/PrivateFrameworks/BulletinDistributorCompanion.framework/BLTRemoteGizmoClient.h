@@ -7,15 +7,18 @@
 #import <BulletinDistributorCompanion/BLTBulletinSendQueueDelegate-Protocol.h>
 #import <BulletinDistributorCompanion/BLTGizmoClient-Protocol.h>
 
-@class BLTBulletinSendQueuePassthrough, NSString;
+@class BLTBulletinSendQueuePassthrough, BLTGizmoLegacyMap, NSMutableDictionary, NSString;
 @protocol BLTCompanionServer;
 
 @interface BLTRemoteGizmoClient <BLTBulletinSendQueueDelegate, BLTGizmoClient>
 {
     BLTBulletinSendQueuePassthrough *_bulletinSendQueue;
+    NSMutableDictionary *_gizmoToPhonePublisherBulletinIDMap;
     id <BLTCompanionServer> _server;
+    BLTGizmoLegacyMap *_gizmoLegacyMap;
 }
 
+@property(retain, nonatomic) BLTGizmoLegacyMap *gizmoLegacyMap; // @synthesize gizmoLegacyMap=_gizmoLegacyMap;
 @property(nonatomic) __weak id <BLTCompanionServer> server; // @synthesize server=_server;
 - (void).cxx_destruct;
 - (void)queuePendingRequests;

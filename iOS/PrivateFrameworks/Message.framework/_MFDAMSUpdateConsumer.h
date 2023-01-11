@@ -6,6 +6,8 @@
 
 #import <Message/MFDASyncActionsConsumer-Protocol.h>
 
+@class NSString;
+
 @interface _MFDAMSUpdateConsumer <MFDASyncActionsConsumer>
 {
 }
@@ -15,6 +17,12 @@
 - (void)receiveSyncActions:(id)arg1;
 - (_Bool)handleItems:(id)arg1;
 - (void)drainMailbox;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

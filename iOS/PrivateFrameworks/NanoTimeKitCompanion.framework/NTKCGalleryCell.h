@@ -16,6 +16,7 @@
 {
     _Bool _hasCalloutName;
     _Bool _hasCalloutImage;
+    _Bool _allSnapshotsLoaded;
     NTKCGalleryCollection *_collection;
     id <NTKCGalleryCellDelegate> _delegate;
     long long _selectedIndex;
@@ -35,6 +36,7 @@
 
 + (double)rowHeightForCollection:(id)arg1;
 + (id)reuseIdentifier;
+@property(nonatomic) _Bool allSnapshotsLoaded; // @synthesize allSnapshotsLoaded=_allSnapshotsLoaded;
 @property(retain, nonatomic) _NTKCAddNewFace *addNewFace; // @synthesize addNewFace=_addNewFace;
 @property(retain, nonatomic) UILabel *footer; // @synthesize footer=_footer;
 @property(retain, nonatomic) UIStackView *collectionViewFooterStack; // @synthesize collectionViewFooterStack=_collectionViewFooterStack;
@@ -62,8 +64,10 @@
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
-- (id)previewViewAndRect:(struct CGRect *)arg1 forFace:(id)arg2;
+- (id)containerViewForFace:(id)arg1;
 - (id)faceForLocation:(struct CGPoint)arg1;
+- (void)clearSelectedFaces;
+- (void)selectFace:(id)arg1;
 - (void)updateFaceAtIndex:(unsigned long long)arg1;
 - (struct CGPoint)_contentInsetPoint;
 @property(nonatomic) struct CGPoint contentOffset;

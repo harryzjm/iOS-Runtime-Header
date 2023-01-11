@@ -6,7 +6,6 @@
 
 @class PHAsset;
 
-__attribute__((visibility("hidden")))
 @interface PUSearchZeroKeywordAssetViewModel
 {
     PHAsset *_asset;

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool isEmpty;
 @property(readonly, nonatomic) unsigned long long cellCount;
 - (id)cellRegionFromTable:(id)arg1;
+- (id)initWithCellUIDRangeVector:(const vector_793e6c56 *)arg1;
 
 @end
 

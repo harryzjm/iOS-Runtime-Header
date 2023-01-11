@@ -20,6 +20,7 @@
     PKPaymentSetupFooterView *_tableFooter;
     UIColor *_editableTextFieldColor;
     long long _mode;
+    _Bool _offerOtherMethods;
     PKPaymentVerificationController *_verificationController;
     PKPaymentProvisioningController *_provisioningController;
     id <PKPaymentSetupViewControllerDelegate> _setupDelegate;
@@ -55,7 +56,7 @@
 - (void)loadView;
 - (void)dealloc;
 - (void)_handlePassVerifiedNotification:(id)arg1;
-- (id)initWithVerificationController:(id)arg1 mode:(long long)arg2;
+- (id)initWithVerificationController:(id)arg1 mode:(long long)arg2 offerOtherMethods:(_Bool)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

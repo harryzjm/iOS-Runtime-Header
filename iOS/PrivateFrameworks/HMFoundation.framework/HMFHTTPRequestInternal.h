@@ -6,6 +6,7 @@
 
 @class HMFActivity, NSData, NSDictionary, NSMutableDictionary, NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface HMFHTTPRequestInternal
 {
     NSMutableDictionary *_headerFields;

@@ -6,6 +6,7 @@
 
 @class UIColor;
 
+__attribute__((visibility("hidden")))
 @interface SKUIUberImageDataConsumer
 {
     UIColor *_backgroundColor;

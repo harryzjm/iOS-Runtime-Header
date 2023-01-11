@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
     float mRadius;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
@@ -20,7 +21,6 @@ __attribute__((visibility("hidden")))
 - (float)radius;
 - (void)setColor:(id)arg1;
 - (id)color;
-- (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 

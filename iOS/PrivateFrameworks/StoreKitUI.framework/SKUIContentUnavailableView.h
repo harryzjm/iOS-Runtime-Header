@@ -8,6 +8,7 @@
 
 @class NSString, SKUIAttributedStringView, SKUIButtonViewElement, SKUIImageView, SKUIImageViewElement, UIControl;
 
+__attribute__((visibility("hidden")))
 @interface SKUIContentUnavailableView <SKUIViewElementView>
 {
     UIControl *_button;

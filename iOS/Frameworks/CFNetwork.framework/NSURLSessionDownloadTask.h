@@ -8,7 +8,9 @@
 {
 }
 
++ (id)new;
 - (void)cancelByProducingResumeData:(CDUnknownBlockType)arg1;
+- (id)init;
 
 @end
 

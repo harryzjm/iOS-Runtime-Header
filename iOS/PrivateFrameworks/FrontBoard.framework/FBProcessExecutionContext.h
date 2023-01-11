@@ -9,11 +9,12 @@
 #import <FrontBoard/NSCopying-Protocol.h>
 #import <FrontBoard/NSMutableCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSURL;
+@class NSArray, NSDictionary, NSURL, RBSProcessIdentity;
 @protocol FBProcessWatchdogProviding;
 
 @interface FBProcessExecutionContext : NSObject <NSCopying, NSMutableCopying>
 {
+    RBSProcessIdentity *_identity;
     NSArray *_arguments;
     NSDictionary *_environment;
     NSURL *_standardOutputURL;
@@ -25,10 +26,8 @@
     unsigned int _launchAssertionFlags;
     id <FBProcessWatchdogProviding> _watchdogProvider;
     double _watchdogExtension;
-    double _watchdogScaleFactor;
 }
 
-@property(nonatomic) double watchdogScaleFactor; // @synthesize watchdogScaleFactor=_watchdogScaleFactor;
 @property(nonatomic) double watchdogExtension; // @synthesize watchdogExtension=_watchdogExtension;
 @property(retain, nonatomic) id <FBProcessWatchdogProviding> watchdogProvider; // @synthesize watchdogProvider=_watchdogProvider;
 @property(nonatomic) unsigned int launchAssertionFlags; // @synthesize launchAssertionFlags=_launchAssertionFlags;
@@ -40,12 +39,13 @@
 @property(retain, nonatomic) NSURL *standardOutputURL; // @synthesize standardOutputURL=_standardOutputURL;
 @property(copy, nonatomic) NSDictionary *environment; // @synthesize environment=_environment;
 @property(copy, nonatomic) NSArray *arguments; // @synthesize arguments=_arguments;
+@property(copy, nonatomic) RBSProcessIdentity *identity; // @synthesize identity=_identity;
 - (void).cxx_destruct;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned int)_launchAssertionFlags;
 - (id)_initWithExecutionContext:(id)arg1;
-- (id)init;
+- (id)initWithIdentity:(id)arg1;
 
 @end
 

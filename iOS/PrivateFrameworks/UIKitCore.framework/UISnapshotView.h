@@ -4,11 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKitCore/UIStatusBarTinting-Protocol.h>
+@class NSMutableArray, UIColor, UIImageView, UIView;
 
-@class NSMutableArray, NSString, UIColor, UIImageView, UIView;
-
-@interface UISnapshotView <UIStatusBarTinting>
+@interface UISnapshotView
 {
     struct CGSize _contentSize;
     struct UIEdgeInsets _contentBeyondBounds;
@@ -22,10 +20,8 @@
     UIImageView *_shadowView;
     unsigned int _disableEdgeAntialiasing:1;
     unsigned int _disableVerticalStretch:1;
-    UIColor *_statusBarTintColor;
 }
 
-@property(retain, nonatomic, setter=_setStatusBarTintColor:) UIColor *_statusBarTintColor; // @synthesize _statusBarTintColor;
 @property(retain, nonatomic) UIView *shadowView; // @synthesize shadowView=_shadowView;
 @property(retain, nonatomic) UIColor *edgePaddingColor; // @synthesize edgePaddingColor=_edgePaddingColor;
 @property(nonatomic, getter=_contentOffset, setter=_setContentOffset:) struct CGPoint contentOffset; // @synthesize contentOffset=_contentOffset;
@@ -42,7 +38,6 @@
 - (void)layoutSubviews;
 - (void)_updateContentsRect;
 - (void)_positionImageView;
-- (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)setContentStretch:(struct CGRect)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
@@ -51,12 +46,6 @@
 @property(nonatomic, getter=isEdgeAntialiasingEnabled) _Bool edgeAntialiasingEnabled;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

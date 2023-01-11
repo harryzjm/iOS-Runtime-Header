@@ -14,12 +14,12 @@
 {
     NSMutableDictionary *_objectPackagesBySessionID;
     NSMutableDictionary *_contextsBySessionID;
+    NSString *_lastClosedSessionID;
 }
 
 - (void).cxx_destruct;
 - (id)messageReceiveChannel:(id)arg1 preprocessException:(id)arg2;
 - (void)initializeWithArguments:(id)arg1;
-- (void)configureDefaultSimulatedMetrics;
 - (void)installFrameworkHooks;
 - (id)evaluatedConstantValuesForRequest:(id)arg1;
 - (id)isClippingResolvedForRequest:(id)arg1;
@@ -29,6 +29,7 @@
 - (id)constraintsToAddAndRemoveForArbitratingRequest:(id)arg1;
 - (id)_configureLayoutRulesAndLayoutInfoForRequest:(id)arg1 during:(CDUnknownBlockType)arg2;
 - (void)installLayoutRulesIfNeeded;
+- (id)resourcesForRequests:(id)arg1;
 - (id)unregisterFontsAtURLs:(id)arg1;
 - (id)registerFontsAtURLs:(id)arg1;
 - (id)fontNameForFamily:(id)arg1 withSymbolicTraits:(id)arg2;
@@ -44,6 +45,7 @@
 - (_Bool)isInsideIncrementalRequestSessionForSceneUpdateRequest:(id)arg1;
 - (id)objectPackageForSceneUpdateRequest:(id)arg1;
 - (id)bitmapByRenderingSimulatedMetricsContext:(id)arg1 scaleFactor:(double)arg2;
+- (unsigned int)renderToIOSurfaceID:(unsigned int)arg1 simulatedMetricsContext:(id)arg2 forRequest:(id)arg3;
 - (id)backgroundImageForRenderingSimulatedMetricsContext:(id)arg1;
 - (id)bitmapByRenderingSimulatedMetricsContext:(id)arg1 forRequest:(id)arg2 scaleFactor:(double)arg3;
 - (id)updateScenesWithSceneUpdateRequests:(id)arg1;

@@ -23,6 +23,7 @@
 + (id)_preferredSourceFromSources:(id)arg1 sourceOrder:(id)arg2;
 + (id)samplesForSamplesBySource:(id)arg1;
 + (id)dateIntervalForSamples:(id)arg1;
+@property(readonly, copy, nonatomic) NSDictionary *samplesBySource; // @synthesize samplesBySource=_samplesBySource;
 @property(readonly, nonatomic) NSDateInterval *resultInterval; // @synthesize resultInterval=_resultInterval;
 - (void).cxx_destruct;
 - (id)endDate;
@@ -31,6 +32,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)_calculatePreferredDuration:(double *)arg1 categoryValue:(long long *)arg2;
+@property(readonly, copy) NSString *description;
 - (id)preferredDateIntervals;
 - (id)dateIntervalsForCategoryValue:(long long)arg1;
 - (id)initWithResultInterval:(id)arg1 dateIntervalsByCategoryValue:(id)arg2 samplesBySource:(id)arg3;
@@ -38,7 +40,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

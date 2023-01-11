@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TSTColumnRowUIDMap, TSTInfo;
+@class TSTColumnRowUIDMap, TSTTableInfo;
 
 __attribute__((visibility("hidden")))
 @interface TSTCategoryOrder
 {
-    TSTInfo *_tableInfo;
+    _Bool _isRowOrderTemporary;
+    TSTTableInfo *_tableInfo;
     TSTColumnRowUIDMap *_uidMap;
 }
 
 + (UUIDData_5fbc143e)categoryColumnUID;
+@property _Bool isRowOrderTemporary; // @synthesize isRowOrderTemporary=_isRowOrderTemporary;
 @property(retain) TSTColumnRowUIDMap *uidMap; // @synthesize uidMap=_uidMap;
-@property(readonly) __weak TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property(readonly) __weak TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 - (void).cxx_destruct;
 - (id)columnRowUIDMap;
 - (vector_4dc5f307)groupUidsGivenRowUids:(const vector_4dc5f307 *)arg1 selectedLevels:(const unordered_map_3e9d252a *)arg2;
@@ -25,9 +27,12 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromArchive:(const struct CategoryOrderArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
+- (vector_4dc5f307)setRowOrderUsingViewOrder;
+- (void)setTemporaryRowOrder:(const vector_4dc5f307 *)arg1;
 - (void)setRowOrder:(const vector_4dc5f307 *)arg1;
 - (vector_4dc5f307)rowOrder;
-- (_Bool)isValid;
+- (_Bool)hasValidUidMap;
+- (_Bool)hasValidInfo;
 - (id)sortedArrayFromArray:(id)arg1;
 - (unsigned char)minimumCategoryLevelInRowRange:(struct _NSRange)arg1;
 - (id)targetGroupFromRowIndex:(unsigned int)arg1 minSourceLevel:(unsigned char)arg2 templateRowUID:(UUIDData_5fbc143e *)arg3;

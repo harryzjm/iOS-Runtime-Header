@@ -5,7 +5,7 @@
 //
 
 @class NSArray, NSDictionary, NSString, XCAccessibilityElement, XCApplicationQuery, XCUIApplicationImpl, XCUIApplicationOpenRequest, XCUIElement;
-@protocol XCTRunnerAutomationSession;
+@protocol XCTRunnerAutomationSession, XCUIDevice;
 
 @interface XCUIApplication
 {
@@ -31,7 +31,6 @@
 + (id)keyPathsForValuesAffectingState;
 + (id)keyPathsForValuesAffectingIsApplicationStateKnown;
 + (id)new;
-+ (id)applicationWithPID:(int)arg1;
 @property(getter=isIdleAnimationWaitEnabled) _Bool idleAnimationWaitEnabled; // @synthesize idleAnimationWaitEnabled=_idleAnimationWaitEnabled;
 @property _Bool allowBackgroundInteraction; // @synthesize allowBackgroundInteraction=_allowBackgroundInteraction;
 @property(nonatomic) _Bool doesNotHandleUIInterruptions; // @synthesize doesNotHandleUIInterruptions=_doesNotHandleUIInterruptions;
@@ -49,8 +48,8 @@
 @property(readonly) XCUIElement *keyboard; // @synthesize keyboard=_keyboard;
 - (_Bool)setFauxCollectionViewCellsEnabled:(_Bool)arg1 error:(id *)arg2;
 @property(readonly) _Bool fauxCollectionViewCellsEnabled;
-@property(readonly, nonatomic) long long interfaceOrientation;
 - (_Bool)_waitForViewControllerViewDidDisappearWithTimeout:(double)arg1 error:(id *)arg2;
+@property(readonly, nonatomic) long long interfaceOrientation;
 - (void)_waitForQuiescence;
 @property(readonly) _Bool hasAutomationSession;
 @property(readonly) _Bool backgroundInteractionAllowed;
@@ -68,27 +67,28 @@
 @property(readonly) _Bool background;
 @property(readonly) _Bool suspended;
 @property(readonly) _Bool running;
-@property(readonly) int bridgedProcessID;
 @property(nonatomic) int processID;
 @property(nonatomic) unsigned long long state;
 - (_Bool)isApplicationStateKnown;
 - (void)resetAlertCount;
 @property(readonly) _Bool shouldBeCheckedForAlerts;
 - (_Bool)exists;
+- (id)currentProcess;
 - (id)application;
-@property(readonly) id <XCTRunnerAutomationSession> bridgedProcessAutomationSession;
 @property(readonly) id <XCTRunnerAutomationSession> automationSession;
 - (id)description;
 - (id)query;
 - (void)clearQuery;
-- (void)resolveHandleUIInterruption:(_Bool)arg1;
-@property(readonly) XCAccessibilityElement *bridgedProcessAccessibilityElement;
+- (_Bool)resolveOrRaiseTestFailure:(_Bool)arg1 error:(id *)arg2;
 @property(readonly) XCAccessibilityElement *accessibilityElement;
 - (unsigned long long)elementType;
+@property(readonly) id <XCUIDevice> device;
 @property(readonly) NSString *bundleID;
 @property(readonly) NSString *path;
-- (void)commonInitWithApplicationImpl:(id)arg1 isTestDependency:(_Bool)arg2;
+- (void)commonInitWithApplicationSpecifier:(id)arg1 device:(id)arg2;
 - (id)initPrivateWithPath:(id)arg1 bundleID:(id)arg2;
+- (id)initWithApplicationSpecifier:(id)arg1 device:(id)arg2;
+- (id)initWithBundleIdentifier:(id)arg1 device:(id)arg2;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)init;
 - (id)initWithElementQuery:(id)arg1;

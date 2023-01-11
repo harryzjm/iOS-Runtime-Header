@@ -15,7 +15,7 @@
 {
     _Bool _isPhoneticInfoProvidedInConfiguration;
     _Bool _isAttemptedPhoneticTranscription;
-    NSString *_passwordType;
+    unsigned long long _passwordType;
     NSURL *_mediumImageURL;
     NSURL *_largeImageURL;
     NSString *_identifier;
@@ -30,6 +30,10 @@
     NSString *_tokenizedPhoneticDisplayName;
 }
 
++ (unsigned long long)UMUserPasscodeTypeFromLKPasswordType:(unsigned long long)arg1;
++ (unsigned long long)LKPasswordTypeFromUMUserPasscodeType:(unsigned long long)arg1;
++ (unsigned long long)passwordTypeFromPasswordTypeString:(id)arg1;
++ (id)fullNameWithFamilyName:(id)arg1 givenName:(id)arg2;
 + (id)userFromDictionary:(id)arg1;
 + (id)userFromUMUser:(id)arg1;
 + (void)setAutogeneratesPhoneticNameWithLocale:(id)arg1;
@@ -48,7 +52,7 @@
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) NSURL *largeImageURL; // @synthesize largeImageURL=_largeImageURL;
 @property(retain, nonatomic) NSURL *mediumImageURL; // @synthesize mediumImageURL=_mediumImageURL;
-@property(retain, nonatomic) NSString *passwordType; // @synthesize passwordType=_passwordType;
+@property(nonatomic) unsigned long long passwordType; // @synthesize passwordType=_passwordType;
 - (void).cxx_destruct;
 - (void)setDiffUMUserPropertiesFromUMUser:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

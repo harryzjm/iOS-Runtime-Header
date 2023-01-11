@@ -6,16 +6,21 @@
 
 #import <PassKitUI/PKPaymentProvisioningControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupHideSetupLaterButtonProtocol-Protocol.h>
+#import <PassKitUI/PKPaymentSetupPresentationProtocol-Protocol.h>
 
-@class NSMutableArray, NSString, PKPaymentCredentialTableViewCell, PKPaymentProvisioningController, PKPaymentSetupFooterView, PKPaymentSetupProduct, PKTableHeaderView, UIImage;
+@class NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSString, PKPaymentCredentialCache, PKPaymentCredentialTableViewCell, PKPaymentProvisioningController, PKPaymentSetupFlowController, PKPaymentSetupFooterView, PKPaymentSetupProduct, PKTableHeaderView, UIImage;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPaymentCredentialsViewController <PKPaymentSetupHideSetupLaterButtonProtocol, PKPaymentProvisioningControllerDelegate>
+@interface PKPaymentCredentialsViewController <PKPaymentSetupHideSetupLaterButtonProtocol, PKPaymentProvisioningControllerDelegate, PKPaymentSetupPresentationProtocol>
 {
     PKPaymentProvisioningController *_provisioningController;
     id <PKPaymentSetupViewControllerDelegate> _setupDelegate;
     NSMutableArray *_credentialCaches;
+    PKPaymentCredentialCache *_peerPaymentCredentialCache;
     NSMutableArray *_refundedCredentialCaches;
+    NSMutableArray *_unavailableCredentialCaches;
+    NSMutableOrderedSet *_ordering;
+    NSMutableDictionary *_paymentCredentialToCredentialSectionMap;
     PKTableHeaderView *_tableHeader;
     PKPaymentSetupFooterView *_tableFooter;
     _Bool _allowsManualEntry;
@@ -23,6 +28,7 @@
     PKPaymentCredentialTableViewCell *_sizingCell;
     unsigned long long _maximumNumberOfSelectableCredentials;
     double _cachedHeaderViewWidth;
+    PKPaymentSetupFlowController *_flowController;
     _Bool _hideSetupLaterButton;
     PKPaymentSetupProduct *_product;
 }
@@ -30,9 +36,12 @@
 @property(nonatomic) _Bool hideSetupLaterButton; // @synthesize hideSetupLaterButton=_hideSetupLaterButton;
 @property(retain, nonatomic) PKPaymentSetupProduct *product; // @synthesize product=_product;
 - (void).cxx_destruct;
+- (id)paymentSetupMarker;
 - (void)_createPassSnapshotFromPaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_presentSecurityCapabilitiesFlowWithFeature:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)performSecurityCheckForCredentials:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_queue_updatePassSnapshot:(id)arg1 paymentCredential:(id)arg2 credentialSection:(unsigned long long)arg3 credentialsInCache:(id)arg4;
 - (void)paymentPassUpdatedOnCredential:(id)arg1;
-- (void)_presentViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_terminateSetupFlow;
 - (void)_startProvisioningForCredentials:(id)arg1;
 - (void)_startProvisioningForSelectedCards;
@@ -41,10 +50,15 @@
 - (void)_updateForSelectionCount;
 - (unsigned long long)_numberOfSelectedCredentials;
 - (void)_updateMaximumSelectableCredentials;
+- (void)_sortCredentialCaches:(id)arg1;
+- (void)_populateOrderCredentialCaches;
 - (void)_updateRemoteCredentialCache;
 - (void)_updateTableHeaderViewSubtitle;
+- (_Bool)_canSelectCredential:(id)arg1;
 - (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;
 - (void)_showRefund:(id)arg1;
+- (void)_showUnavailableDetail:(id)arg1;
+- (void)tableView:(id)arg1 accessoryButtonTappedForRowWithIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (void)_setPassSnapshotOnCell:(id)arg1 cell:(id)arg2;
@@ -53,6 +67,9 @@
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (long long)_sectionForCredentialSection:(unsigned long long)arg1;
+- (unsigned long long)_credentialSectionForPaymentCredential:(id)arg1;
+- (unsigned long long)_credentialSectionForSection:(long long)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;

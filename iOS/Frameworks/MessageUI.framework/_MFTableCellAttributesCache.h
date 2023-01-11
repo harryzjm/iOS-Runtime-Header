@@ -14,6 +14,7 @@
 }
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)cachedAttributesForIdentifier:(id)arg1 constructionBlock:(CDUnknownBlockType)arg2;
 - (void)_didReceiveFontSizeChangeNotification:(id)arg1;
 - (void)dealloc;

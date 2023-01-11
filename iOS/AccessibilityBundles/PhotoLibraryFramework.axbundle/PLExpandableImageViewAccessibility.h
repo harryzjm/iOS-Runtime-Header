@@ -16,7 +16,6 @@
 - (id)accessibilityValue;
 - (_Bool)_accessibilityScrollToVisible;
 - (id)_axSourceObject;
-- (void)_initPhotoDesc;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityElementStoredUserLabel;
 - (id)_axExifLabel;

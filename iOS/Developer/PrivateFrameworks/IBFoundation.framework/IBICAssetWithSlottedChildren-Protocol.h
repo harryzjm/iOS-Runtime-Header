@@ -10,6 +10,7 @@
 @protocol IBCollection;
 
 @protocol IBICAssetWithSlottedChildren <NSObject>
++ (_Bool)supportsLocalization;
 + (id)defaultInstanceWithChildSlots:(id <IBCollection>)arg1;
 + (Class)slotClass;
 - (_Bool)shouldMutateChild:(IBICAbstractCatalogItem *)arg1 byCopyingContentToNewSlot:(IBICSlot *)arg2;

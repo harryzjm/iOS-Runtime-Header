@@ -26,8 +26,9 @@
 - (_Bool)isAccessibilityElement;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
+- (_Bool)canBecomeFocused;
 - (id)accessibilityElements;
-- (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 - (void)dealloc;
 
 @end

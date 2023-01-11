@@ -13,9 +13,9 @@
 - (id)accessibilityHint;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
-- (unsigned long long)accessibilityTraits;
-- (void)mouseUp:(struct __GSEvent *)arg1;
+- (long long)accessibilityContainerType;
 - (_Bool)accessibilityPerformEscape;
+- (struct CGPoint)accessibilityActivationPoint;
 - (_Bool)accessibilityActivate;
 - (_Bool)_accessibilityCanDismiss;
 - (_Bool)accessibilityViewIsModal;

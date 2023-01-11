@@ -36,7 +36,7 @@
 @property(readonly, nonatomic) Class MPNetworkPlayabilityMonitor; // @synthesize MPNetworkPlayabilityMonitor=_MPNetworkPlayabilityMonitor;
 @property(readonly, nonatomic) Class MPMoviePlayerViewController; // @synthesize MPMoviePlayerViewController=_MPMoviePlayerViewController;
 @property(readonly, nonatomic) Class MPMoviePlayerController; // @synthesize MPMoviePlayerController=_MPMoviePlayerController;
-@property(readonly, nonatomic) Class WBUFormDataControllerWK1;
+- (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *kToneArtistKey;
 @property(readonly, nonatomic) NSString *kToneDurationKey;
 @property(readonly, nonatomic) NSString *kToneGenreKey;

@@ -4,18 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLayoutConstraint, NSString, UIImage, UIImageView, _MKUILabel;
+@class NSLayoutConstraint, NSString, UIImage, UIImageView, UIView, _MKUILabel;
 
 __attribute__((visibility("hidden")))
 @interface MKTransitSystemCell
 {
     UIImageView *_shieldImageView;
     _MKUILabel *_systemLabel;
+    UIView *_disclosureButton;
     NSLayoutConstraint *_imageToLabelConstraint;
     NSLayoutConstraint *_systemLabelToTopConstraint;
+    NSLayoutConstraint *_systemLabelToBottomConstraint;
+    _Bool _showDisclosureButton;
+    _Bool _expanded;
 }
 
+@property(nonatomic, getter=isExpanded) _Bool expanded; // @synthesize expanded=_expanded;
+@property(nonatomic) _Bool showDisclosureButton; // @synthesize showDisclosureButton=_showDisclosureButton;
 - (void).cxx_destruct;
+- (struct CGAffineTransform)_transformForExpandedState:(_Bool)arg1 animating:(_Bool)arg2;
+- (void)setExpanded:(_Bool)arg1 insideAnimation:(_Bool)arg2;
+- (id)_disclosureButton;
+- (void)infoCardThemeChanged;
+- (void)prepareForReuse;
 @property(copy, nonatomic) NSString *systemName;
 @property(retain, nonatomic) UIImage *systemArtwork;
 - (void)_contentSizeCategoryDidChange;

@@ -109,6 +109,7 @@
 - (unsigned long long)nsli_autoresizingMask;
 - (_Bool)nsli_descriptionIncludesPointer;
 - (id)nsli_description;
+- (_Bool)nsli_defaultResolvedValue:(double *)arg1 forSymbolicConstant:(id)arg2 inConstraint:(id)arg3 error:(id *)arg4;
 - (_Bool)nsli_resolvedValue:(double *)arg1 forSymbolicConstant:(id)arg2 inConstraint:(id)arg3 error:(id *)arg4;
 - (id)nsli_superitem;
 - (struct CGSize)nsli_convertSizeFromEngineSpace:(struct CGSize)arg1;
@@ -128,10 +129,6 @@
 - (void)_setManualLayoutFrame:(struct CGRect)arg1;
 - (void)_setOwningView:(id)arg1;
 - (void)_owningViewIsDeallocating;
-- (id)_autolayoutTraceAtLevel:(long long)arg1 recursively:(_Bool)arg2;
-- (id)_descriptionForLayoutTrace;
-@property(readonly, nonatomic) _Bool hasAmbiguousLayout;
-- (id)constraintsAffectingLayoutForAxis:(long long)arg1;
 @property(readonly, nonatomic) NSLayoutYAxisAnchor *lastBaselineAnchor;
 @property(readonly, nonatomic) NSLayoutYAxisAnchor *firstBaselineAnchor;
 - (void)traitCollectionDidChange:(id)arg1;
@@ -145,6 +142,10 @@
 @property(readonly, nonatomic) UIView *_ui_superview;
 @property(nonatomic) struct CGRect _ui_frame;
 @property(readonly, nonatomic) struct CGRect _ui_bounds;
+- (id)_autolayoutTraceAtLevel:(long long)arg1 recursively:(_Bool)arg2;
+- (id)_descriptionForLayoutTrace;
+@property(readonly, nonatomic) _Bool hasAmbiguousLayout;
+- (id)constraintsAffectingLayoutForAxis:(long long)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

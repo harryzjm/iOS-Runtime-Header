@@ -14,6 +14,9 @@
 }
 
 - (void).cxx_destruct;
+@property(readonly, nonatomic) long long subtype;
+@property(readonly, nonatomic) long long type;
+@property(readonly, copy, nonatomic) NSString *attributionLabel;
 @property(readonly, copy, nonatomic) NSString *stationStringID;
 @property(readonly, nonatomic) long long stationID;
 @property(readonly, copy, nonatomic) NSString *stationHash;

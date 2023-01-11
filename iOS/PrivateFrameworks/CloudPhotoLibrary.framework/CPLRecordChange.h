@@ -17,6 +17,9 @@
     _Bool _shouldNotTrustCloudCache;
     _Bool _shouldFilterDefaultValuesForNewProperties;
     _Bool _isSparseFullChange;
+    _Bool _shouldOnlyUploadNewResources;
+    _Bool _didCacheRealResourceSizeInStorage;
+    unsigned long long _cachedRealResourceSizeInStorage;
     _Bool _inTrash;
     _Bool _inExpunged;
     _Bool _serverRecordIsCorrupted;
@@ -34,7 +37,7 @@
 + (id)newChangeWithIdentifier:(id)arg1 changeType:(unsigned long long)arg2;
 + (CDUnknownBlockType)copyPropertyBlockForDirection:(unsigned long long)arg1;
 + (CDUnknownBlockType)equalityBlockForDirection:(unsigned long long)arg1;
-+ (id)_descriptionForChangeType:(unsigned long long)arg1 isSparseFullChange:(_Bool)arg2;
++ (id)_descriptionForChangeType:(unsigned long long)arg1 isSparseFullChange:(_Bool)arg2 onlyUploadNewResources:(_Bool)arg3;
 + (id)descriptionForChangeType:(unsigned long long)arg1;
 + (long long)maxInlineDataSize;
 + (id)newChangeWithType:(unsigned long long)arg1;
@@ -60,6 +63,8 @@
 @property(copy, nonatomic) NSDate *recordModificationDate; // @synthesize recordModificationDate=_recordModificationDate;
 @property(copy, nonatomic) CPLScopedIdentifier *scopedIdentifier; // @synthesize scopedIdentifier=_scopedIdentifier;
 - (void).cxx_destruct;
+- (_Bool)isAssetChange;
+- (_Bool)isMasterChange;
 - (id)copyChangeType:(unsigned long long)arg1;
 - (void)copyDerivativesFromRecordIfPossible:(id)arg1;
 - (void)copyDerivatives:(unsigned long long *)arg1 count:(int)arg2 avoidResourceType:(unsigned long long)arg3 fromRecord:(id)arg4 inResourcePerType:(id)arg5;
@@ -77,6 +82,11 @@
 - (unsigned long long)estimatedRecordSize;
 - (_Bool)validateChangeWithError:(id *)arg1;
 - (_Bool)validateFullRecord;
+- (id)onlyAddedResources;
+- (_Bool)changeIsOnlyAddingResourcesToRecord:(id)arg1 addedResources:(id *)arg2;
+- (_Bool)allowsToOnlyUploadNewResources;
+- (_Bool)shouldOnlyUploadNewResources;
+- (void)markToOnlyUploadNewResources;
 - (void)markAsSparseFullChange;
 - (_Bool)isSparseFullChange;
 - (CDUnknownBlockType)checkDefaultValueBlockForPropertyWithSelector:(SEL)arg1;
@@ -104,13 +114,16 @@
 - (_Bool)resourceChangeWillOnlyChangeDerivatives:(id)arg1;
 - (id)realRecordChangeFromRecordChange:(id)arg1 direction:(unsigned long long)arg2 newRecord:(id *)arg3;
 - (id)realRecordChangeFromRecordChange:(id)arg1 direction:(unsigned long long)arg2 newRecord:(id *)arg3 updatedProperties:(id *)arg4;
+- (id)realRecordChangeFromRecordChange:(id)arg1 direction:(unsigned long long)arg2 newRecord:(id *)arg3 changeType:(unsigned long long)arg4 updatedProperties:(id *)arg5;
 - (_Bool)applyChange:(id)arg1 copyPropertiesToFinalChange:(id)arg2 forChangeType:(unsigned long long)arg3 direction:(unsigned long long)arg4 updatedProperty:(id *)arg5;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
+- (id)redactedDescription;
 - (id)description;
 - (id)propertiesDescription;
 - (unsigned long long)originalResourceSize;
 - (unsigned long long)realResourceSize;
+- (unsigned long long)effectiveResourceSizeToUploadUsingStorage:(id)arg1;
 - (unsigned long long)totalResourceSize;
 - (id)resourceForType:(unsigned long long)arg1;
 - (void)setResources:(id)arg1;

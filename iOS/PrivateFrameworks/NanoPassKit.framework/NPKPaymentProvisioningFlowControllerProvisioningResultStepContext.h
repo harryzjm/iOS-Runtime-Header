@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSError;
+@class NSError, PKPaymentPass;
 
 @interface NPKPaymentProvisioningFlowControllerProvisioningResultStepContext
 {
     _Bool _cardAdded;
+    PKPaymentPass *_provisionedPass;
     NSError *_error;
 }
 
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
+@property(retain, nonatomic) PKPaymentPass *provisionedPass; // @synthesize provisionedPass=_provisionedPass;
 @property(nonatomic) _Bool cardAdded; // @synthesize cardAdded=_cardAdded;
 - (void).cxx_destruct;
 - (id)description;
+- (id)initWithRequestContext:(id)arg1;
 
 @end
 

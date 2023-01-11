@@ -7,30 +7,36 @@
 #import <UIKit/UIView.h>
 
 #import <NanoUniverse/CLKUIQuadViewDelegate-Protocol.h>
+#import <NanoUniverse/CLKUIResourceProviderDelegate-Protocol.h>
 
-@class CLKDevice, CLKUIQuadView, NSString, NUGLQuad, NUScene;
+@class CLKDevice, CLKUIQuadView, CLKUIResourceProviderKey, NSBundle, NSString, NUMetalQuad, NUResources, NUScene;
 @protocol NUViewDelegate;
 
-@interface NUView : UIView <CLKUIQuadViewDelegate>
+@interface NUView : UIView <CLKUIQuadViewDelegate, CLKUIResourceProviderDelegate>
 {
     CLKDevice *_device;
     CLKUIQuadView *_quadView;
-    NUGLQuad *_quad;
+    CLKUIResourceProviderKey *_resourceProviderKey;
+    NUResources *_resources;
+    NUMetalQuad *_quad;
+    NSBundle *_bundle;
     id <NUViewDelegate> _delegate;
 }
 
 @property(nonatomic) __weak id <NUViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+- (id)resourceProviderKey;
+- (id)provideAtlasBacking:(id)arg1;
 - (void)quadViewWillDisplay:(id)arg1 forTime:(double)arg2;
-- (id)snapshot:(id)arg1 size:(struct CGSize)arg2;
-- (id)snapshot;
 @property(retain, nonatomic) NUScene *scene;
-- (void)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1;
+- (void)renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
 - (void)stopAnimation;
 - (void)startAnimation;
 - (void)setAnimationFrameInterval:(int)arg1;
 - (void)layoutSubviews;
 - (void)setOpaque:(_Bool)arg1;
+- (id)quadView;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties

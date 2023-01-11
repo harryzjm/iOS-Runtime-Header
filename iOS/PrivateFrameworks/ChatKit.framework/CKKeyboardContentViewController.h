@@ -17,6 +17,7 @@
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property(retain, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 - (void).cxx_destruct;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)loadView;

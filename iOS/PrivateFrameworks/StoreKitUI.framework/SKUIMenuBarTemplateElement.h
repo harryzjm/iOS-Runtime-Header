@@ -7,6 +7,7 @@
 @class SKUINavigationBarViewElement, SKUIViewElement;
 @protocol SKUIMenuBarViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUIMenuBarTemplateElement
 {
 }

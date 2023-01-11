@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <RelevanceEngine/RELoggable-Protocol.h>
+#import <RelevanceEngine/REEngineLocationManagerProperties-Protocol.h>
 
-@class CLLocation, NSString, RELocationManager, REObserverStore;
+@class CLLocation, RELocationManager, REObserverStore;
 
-@interface REEngineLocationManager <RELoggable>
+@interface REEngineLocationManager <REEngineLocationManagerProperties>
 {
     RELocationManager *_locationManager;
     RELocationManager *_simulatedLocationManager;
@@ -21,7 +21,8 @@
 @property(retain) CLLocation *location; // @synthesize location=_location;
 @property(retain, nonatomic) CLLocation *currentLocation; // @synthesize currentLocation=_currentLocation;
 - (void).cxx_destruct;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) RELocationManager *locationManager;
+@property(readonly, nonatomic) _Bool monitoringLocation;
 - (void)_stopMonitoringLocationForManager:(id)arg1;
 - (void)_beginMonitoringLocationForManager:(id)arg1;
 - (id)_currentLocationManager;
@@ -36,12 +37,6 @@
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)initWithRelevanceEngine:(id)arg1 locationManager:(id)arg2;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 
 @end
 

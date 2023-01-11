@@ -7,11 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <SetupAssistant/AKAppleIDAuthenticationDelegate-Protocol.h>
-#import <SetupAssistant/SUNetworkObserver-Protocol.h>
+#import <SetupAssistant/BYNetworkObserver-Protocol.h>
 
 @class AKAppleIDAuthenticationContext, NSString;
 
-@interface BYManagedAppleIDBootstrap : NSObject <AKAppleIDAuthenticationDelegate, SUNetworkObserver>
+@interface BYManagedAppleIDBootstrap : NSObject <AKAppleIDAuthenticationDelegate, BYNetworkObserver>
 {
     AKAppleIDAuthenticationContext *_authContext;
     _Bool _shouldRetrySilentLoginUpgrade;
@@ -19,6 +19,7 @@
 }
 
 + (_Bool)isSettingUpMultiUser;
++ (_Bool)isFirstTimeLogin;
 + (_Bool)isMultiUser;
 + (id)delegateBundleIDsForManagedAccount;
 + (id)sharedManager;
@@ -31,8 +32,9 @@
 - (void)_upgradeShortLivedTokenCompletion:(CDUnknownBlockType)arg1;
 - (void)_createAppleAccountWithUsername:(id)arg1 password:(id)arg2 rawPassword:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)recoverEMCSWithCompletion:(CDUnknownBlockType)arg1;
-- (void)runSilentLoginUpgradeIfNeededWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_runSilentLoginUpgradeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)runSilentLoginUpgradeIfNeededWithCompletion:(CDUnknownBlockType)arg1 shortLivedTokenUpgradeCompletion:(CDUnknownBlockType)arg2 willNotCompleteBlock:(CDUnknownBlockType)arg3;
+- (void)runSilentLoginUpgradeIfNeededWithCompletion:(CDUnknownBlockType)arg1 shortLivedTokenUpgradeCompletion:(CDUnknownBlockType)arg2;
+- (void)_runSilentLoginUpgradeWithCompletion:(CDUnknownBlockType)arg1 shortLivedTokenUpgradeCompletion:(CDUnknownBlockType)arg2;
 - (void)switchToLoginWindowDueToError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)needsToUpgradeShortLivedToken;
 - (void)ingestManagedBuddyData;

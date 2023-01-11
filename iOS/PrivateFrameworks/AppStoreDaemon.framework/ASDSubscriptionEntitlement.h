@@ -13,6 +13,7 @@
 @interface ASDSubscriptionEntitlement : NSObject <NSSecureCoding>
 {
     NSDictionary *_dictionary;
+    unsigned long long _segment;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -22,11 +23,14 @@
 - (void)encodeWithCoder:(id)arg1;
 @property(readonly, copy) NSString *vendorID;
 @property(readonly, copy) NSNumber *quantity;
+@property(readonly) unsigned long long segment;
 @property(readonly, copy) NSNumber *purchaseDownloadID;
 @property(readonly, copy) NSNumber *purchasabilityType;
 @property(readonly, copy) NSNumber *originalPurchaseDownloadID;
 @property(readonly, copy) NSString *offerID;
 @property(readonly, getter=isNewsAppPurchase) _Bool newsAppPurchase;
+@property(readonly) _Bool isPurchaser;
+@property(readonly) _Bool isTrialPeriod;
 @property(readonly, copy) NSString *inAppVersion;
 @property(readonly, copy) NSNumber *inAppAdamID;
 @property(readonly, copy) NSNumber *familyID;
@@ -34,9 +38,10 @@
 @property(readonly, copy) NSNumber *chargeStoreFrontID;
 @property(readonly, copy) NSString *chargeCurrencyCode;
 @property(readonly, copy) NSString *chargeCountryCode;
+@property(readonly) _Bool autoRenewEnabled;
 @property(readonly, copy) NSNumber *appVersion;
 @property(readonly, copy) NSNumber *appAdamID;
-- (id)initWithDictionary:(id)arg1 forAppAdamID:(id)arg2;
+- (id)initWithDictionary:(id)arg1 forAppAdamID:(id)arg2 segment:(unsigned long long)arg3;
 
 @end
 

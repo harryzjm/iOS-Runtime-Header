@@ -18,6 +18,7 @@
 + (id)new;
 + (void)initialize;
 - (void)setDelegateOverride:(id)arg1 delegateOverrideCallbackQueue:(id)arg2;
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateOverrideCallbackQueue;
 @property(readonly, nonatomic) id delegateOverride;
 - (void)setOfflineVideoStabilizationMotionMetadataObjectTypesAvailable:(_Bool)arg1;
 - (_Bool)isOfflineVideoStabilizationMotionMetadataObjectTypesAvailable;
@@ -25,7 +26,7 @@
 - (void)setFaceTrackingMetadataObjectTypesAvailable:(_Bool)arg1;
 - (_Bool)isFaceTrackingMetadataObjectTypesAvailable;
 - (_Bool)isFaceTrackingSupported;
-- (_Bool)canAddConnectionForMediaType:(id)arg1;
+- (_Bool)canAddConnection:(id)arg1 failureReason:(id *)arg2;
 - (id)connectionMediaTypes;
 @property(nonatomic) struct CGRect rectOfInterest;
 - (id)_metadataIdentifiers;

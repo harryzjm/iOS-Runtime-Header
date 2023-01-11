@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNPropertyGroupItem;
+@class CNPropertyGroupItem, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface CNLabelPickerController
 {
     CNPropertyGroupItem *_item;
+    NSMutableArray *_labelsToDeleteOnCommit;
 }
 
+@property(retain) NSMutableArray *labelsToDeleteOnCommit; // @synthesize labelsToDeleteOnCommit=_labelsToDeleteOnCommit;
 @property(readonly, nonatomic) __weak CNPropertyGroupItem *item; // @synthesize item=_item;
 - (void).cxx_destruct;
-- (void)viewWillAppear:(_Bool)arg1;
+- (void)pickedItem:(id)arg1;
 - (void)removeCustomItem:(id)arg1;
 - (id)titleForPickerItem:(id)arg1;
 - (id)initForPropertyItem:(id)arg1;

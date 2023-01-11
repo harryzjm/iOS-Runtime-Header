@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@protocol IMDCoreRecentsProtocol;
+@class CRRecentContactsLibrary;
 
 @interface IMDCoreSpotlightDispatchObject : NSObject
 {
@@ -14,7 +14,7 @@
     _Bool _shouldAddToSuggestions;
     _Bool _shouldAddToSpotlight;
     _Bool _shouldAddToCoreRecents;
-    NSObject<IMDCoreRecentsProtocol> *_recentsInstance;
+    CRRecentContactsLibrary *_recentsInstance;
 }
 
 + (id)sharedInstance;
@@ -22,8 +22,7 @@
 @property(nonatomic) _Bool shouldAddToSpotlight; // @synthesize shouldAddToSpotlight=_shouldAddToSpotlight;
 @property(nonatomic) _Bool shouldAddToSuggestions; // @synthesize shouldAddToSuggestions=_shouldAddToSuggestions;
 @property(nonatomic) _Bool allowsOverrideOfObjects; // @synthesize allowsOverrideOfObjects=_allowsOverrideOfObjects;
-@property(nonatomic) NSObject<IMDCoreRecentsProtocol> *recentsInstance; // @synthesize recentsInstance=_recentsInstance;
-- (void)contactStoreDidChange:(id)arg1;
+@property(nonatomic) CRRecentContactsLibrary *recentsInstance; // @synthesize recentsInstance=_recentsInstance;
 - (void)dealloc;
 - (id)init;
 

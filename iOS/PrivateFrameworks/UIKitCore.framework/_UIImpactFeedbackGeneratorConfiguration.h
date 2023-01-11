@@ -14,6 +14,8 @@
     double _minimumInterval;
 }
 
++ (id)rigidConfiguration;
++ (id)softConfiguration;
 + (id)strongConfiguration;
 + (id)lightConfiguration;
 + (id)defaultConfiguration;

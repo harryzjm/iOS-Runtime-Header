@@ -8,6 +8,7 @@
 
 @class NSString, UIPageControl;
 
+__attribute__((visibility("hidden")))
 @interface SKUIPageControlCollectionViewCell <SKUIViewElementView>
 {
     struct UIEdgeInsets _contentInset;

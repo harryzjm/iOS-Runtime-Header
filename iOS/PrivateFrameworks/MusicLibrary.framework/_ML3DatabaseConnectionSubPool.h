@@ -9,7 +9,6 @@
 @class NSMutableSet, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
-__attribute__((visibility("hidden")))
 @interface _ML3DatabaseConnectionSubPool : NSObject
 {
     NSObject<OS_dispatch_queue> *_checkoutQueue;
@@ -37,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleDatabaseDeletion;
 - (void)handleDiagnostic:(id)arg1;
 - (void)closeConnectionsAndWaitForBusyConnections:(_Bool)arg1;
+- (void)checkInConnection:(id)arg1 returnToPool:(_Bool)arg2;
 - (void)checkInConnection:(id)arg1;
 - (id)checkoutConnection:(_Bool *)arg1;
 @property(nonatomic) int connectionsProfilingLevel;

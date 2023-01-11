@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, _TtC13CoreKnowledge15CKSQLConnection;
+@class MISSING_TYPE;
 
 @interface CKPersistentStoreHandler : NSObject
 {
@@ -14,11 +14,10 @@
 }
 
 + (id)inMemoryHandler;
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (_Bool)dropLinksBetween:(id)arg1 and:(id)arg2 error:(id *)arg3;
 - (_Bool)dropLinksWithLabel:(id)arg1 from:(id)arg2 error:(id *)arg3;
 - (_Bool)dropLinkWithLabel:(id)arg1 between:(id)arg2 and:(id)arg3 error:(id *)arg4;
-- (_Bool)decreaseWeightsWithBetween:(id)arg1 and:(id)arg2 error:(id *)arg3;
 - (long long)decreaseWeightForLinkWithLabel:(id)arg1 between:(id)arg2 and:(id)arg3;
 - (long long)increaseWeightForLinkWithLabel:(id)arg1 between:(id)arg2 and:(id)arg3;
 - (_Bool)setWeightForLinkWithLabel:(id)arg1 between:(id)arg2 and:(id)arg3 toValue:(long long)arg4 error:(id *)arg5;
@@ -35,10 +34,8 @@
 - (id)valuesAndReturnError:(id *)arg1;
 - (id)keysMatching:(id)arg1 error:(id *)arg2;
 - (id)keysAndReturnError:(id *)arg1;
-- (void)dealloc;
 - (id)initWithName:(id)arg1;
 - (id)init;
-@property(nonatomic, retain) _TtC13CoreKnowledge15CKSQLConnection *connection; // @synthesize connection;
 
 @end
 

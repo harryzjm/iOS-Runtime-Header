@@ -23,6 +23,7 @@
     CDStruct_14d5dc5e _referenceOriginTransform;
 }
 
++ (id)keyframesForTrackingData:(id)arg1 withFeaturePoints:(id)arg2 referenceOriginTransform:(CDStruct_14d5dc5e)arg3;
 + (CDStruct_183601bc)boundsForTrackingData:(id)arg1;
 + (id)featurePointsForTrackingData:(id)arg1 referenceOriginTransform:(CDStruct_14d5dc5e)arg2;
 + (_Bool)supportsSecureCoding;

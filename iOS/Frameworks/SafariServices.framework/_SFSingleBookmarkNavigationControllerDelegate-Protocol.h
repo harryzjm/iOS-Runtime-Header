@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _SFSingleBookmarkNavigationController;
+@class WebBookmark, _SFSingleBookmarkNavigationController;
 
 @protocol _SFSingleBookmarkNavigationControllerDelegate
 - (_Bool)addBookmarkNavControllerCanSaveBookmarkChanges:(_SFSingleBookmarkNavigationController *)arg1;
-- (void)addBookmarkNavController:(_SFSingleBookmarkNavigationController *)arg1 didFinishWithResult:(_Bool)arg2;
+- (void)addBookmarkNavController:(_SFSingleBookmarkNavigationController *)arg1 didFinishWithResult:(_Bool)arg2 bookmark:(WebBookmark *)arg3;
 @end
 

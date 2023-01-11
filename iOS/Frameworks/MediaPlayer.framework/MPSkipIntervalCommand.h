@@ -15,6 +15,7 @@
 - (void).cxx_destruct;
 - (id)newCommandEventWithInterval:(double)arg1;
 - (id)_mediaRemoteCommandInfoOptions;
+- (id)initWithMediaRemoteCommandType:(unsigned int)arg1;
 
 @end
 

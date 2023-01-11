@@ -10,12 +10,12 @@
 #import <PassKitUI/PKPaymentAuthorizationFooterViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentAuthorizationStateMachineDelegate-Protocol.h>
 
-@class LAUIPhysicalButtonView, NSArray, NSString, NSTimer, PKAuthenticator, PKContinuityPaymentCardSummaryView, PKContinuityPaymentFaviconView, PKPaymentAuthorizationFooterView, PKPaymentAuthorizationStateMachine, PKRemotePaymentRequest, UILabel, UIStackView, UIView, _UIBackdropView;
+@class LAUIPhysicalButtonView, NSArray, NSString, NSTimer, PKAuthenticator, PKContinuityPaymentCardSummaryView, PKContinuityPaymentFaviconView, PKPaymentAuthorizationFooterView, PKPaymentAuthorizationStateMachine, PKRemotePaymentRequest, UILabel, UIStackView, UIView, UIVisualEffectView;
 @protocol PKPaymentAuthorizationHostProtocol;
 
 @interface PKContinuityPaymentViewController : UIViewController <PKAuthenticatorDelegate, PKPaymentAuthorizationFooterViewDelegate, PKPaymentAuthorizationStateMachineDelegate>
 {
-    _UIBackdropView *_backdropView;
+    UIVisualEffectView *_backdropView;
     UIView *_dimmingBackgroundView;
     UIView *_compactRegion;
     LAUIPhysicalButtonView *_physicalButtonView;
@@ -31,6 +31,7 @@
     UIViewController *_passphraseViewController;
     _Bool _viewAppeared;
     _Bool _userIntentRequired;
+    long long _internalCoachingState;
     NSArray *_defaultConstraints;
     NSArray *_compactConstraints;
     _Bool _authenticating;
@@ -55,6 +56,7 @@
 - (void)authenticator:(id)arg1 didRequestUserAction:(long long)arg2;
 - (void)authenticatorDidEncounterFingerOff:(id)arg1;
 - (void)authenticatorDidEncounterFingerOn:(id)arg1;
+- (void)authenticator:(id)arg1 didTransitionToCoachingState:(long long)arg2;
 - (void)authenticator:(id)arg1 didTransitionToPearlState:(long long)arg2;
 - (_Bool)paymentPass:(id *)arg1 paymentApplication:(id *)arg2 fromAID:(id)arg3;
 - (void)_invalidPaymentDataWithParam:(id)arg1;
@@ -79,6 +81,7 @@
 - (void)_cancelPassphrasePressed;
 - (void)cancelPressed:(id)arg1;
 - (void)_setUserIntentRequired:(_Bool)arg1;
+- (void)_updateCoachingInstruction;
 - (void)_updateUserIntentRequired;
 - (void)_setPassphraseViewController:(id)arg1;
 - (void)_setPasscodeViewController:(id)arg1;
@@ -92,6 +95,7 @@
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
+- (_Bool)_canShowWhileLocked;
 - (void)dealloc;
 - (id)initWithRemotePaymentRequest:(id)arg1;
 - (id)init;

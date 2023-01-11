@@ -4,12 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface _DUIImageComponent
+#import <objc/NSObject.h>
+
+#import <UIKitCore/NSSecureCoding-Protocol.h>
+
+@interface _DUIImageComponent : NSObject <NSSecureCoding>
 {
+    _Bool _ignoresAccessibilityFilters;
     _Bool _hidesImage;
     unsigned int _slotID;
     unsigned int _contextID;
     unsigned long long _renderID;
+    struct CGRect _frame;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -17,11 +23,12 @@
 @property(nonatomic) unsigned int contextID; // @synthesize contextID=_contextID;
 @property(nonatomic) unsigned long long renderID; // @synthesize renderID=_renderID;
 @property(nonatomic) unsigned int slotID; // @synthesize slotID=_slotID;
+@property(nonatomic) _Bool ignoresAccessibilityFilters; // @synthesize ignoresAccessibilityFilters=_ignoresAccessibilityFilters;
+@property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)portalView;
-- (id)addPortalLayerToView:(id)arg1;
 - (void)_configurePortalLayer:(id)arg1;
-- (id)imageComponentWithoutSlot;
 @property(readonly, nonatomic) _Bool representsPortal;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

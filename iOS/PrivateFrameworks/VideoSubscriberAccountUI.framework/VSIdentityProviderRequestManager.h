@@ -55,12 +55,15 @@
 @property(readonly, nonatomic) VSIdentityProvider *identityProvider; // @synthesize identityProvider=_identityProvider;
 - (void).cxx_destruct;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (_Bool)applicationController:(id)arg1 requestsAlert:(id)arg2;
 - (void)applicationController:(id)arg1 request:(id)arg2 didCompleteWithResponse:(id)arg3;
 - (void)applicationController:(id)arg1 request:(id)arg2 didFailWithError:(id)arg3;
 - (void)applicationController:(id)arg1 didReceiveViewModel:(id)arg2;
 - (void)applicationController:(id)arg1 didReceiveViewModelError:(id)arg2;
 - (void)applicationController:(id)arg1 startDidFailWithError:(id)arg2;
 - (void)applicationControllerDidStart:(id)arg1;
+- (id)_supportedProviderAuthenticationToken;
+- (void)_enqueueSubscriptionOperationIfRequiredForResponse:(id)arg1 asDependencyOf:(id)arg2;
 - (id)_accountChannelsWithChannelIDs:(id)arg1;
 - (void)_resetVerificationStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_accountMetadataWithAuthenticationScheme:(id)arg1 responseStatusCode:(id)arg2 responseString:(id)arg3 accountMetadataRequest:(id)arg4 verificationData:(id)arg5;
@@ -74,6 +77,7 @@
 - (void)_showAuthenticationUI;
 - (void)_submitApplicationControllerRequest:(id)arg1;
 - (void)_stopApplicationController;
+- (id)_identityProviderAlertWithApplicationControllerAlert:(id)arg1;
 - (id)_applicationControllerRequestWithIdentityProviderRequest:(id)arg1;
 - (void)_completeCurrentRequestWithResult:(id)arg1;
 - (void)_completeCurrentRequestWithError:(id)arg1;
@@ -86,6 +90,7 @@
 - (void)_startDeletingAccount;
 - (void)_handleApplicationControllerError:(id)arg1 forRequest:(id)arg2;
 - (_Bool)_handleAccountMetadataRequest:(id)arg1 didCompleteWithResponse:(id)arg2;
+- (_Bool)_handleSTBOptOutDidComplete:(id)arg1;
 - (_Bool)_handleLogoutRequestDidComplete:(id)arg1;
 - (_Bool)_handleSilentAuthenticationRequest:(id)arg1 didCompleteWithResponse:(id)arg2;
 - (_Bool)_handleAuthenticationRequest:(id)arg1 didCompleteWithResponse:(id)arg2;

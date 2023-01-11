@@ -21,10 +21,12 @@
 + (id)snapshotCache;
 + (id)detailsPreviewCache;
 + (id)transcriptPreviewCache;
++ (id)previewPrewarmQueue;
 + (id)mapThumbnailQueue;
 @property(retain, nonatomic) CKMultiDict *pendingBlocks; // @synthesize pendingBlocks=_pendingBlocks;
 @property(retain, nonatomic) CKDispatchCache *dispatchCache; // @synthesize dispatchCache=_dispatchCache;
 - (void).cxx_destruct;
+- (void)clearQueueAndCachedPreviews;
 - (_Bool)shouldReplaceCachedPreview:(id)arg1 withPreview:(id)arg2;
 - (void)transferRemoved:(id)arg1;
 - (void)transferFinished:(id)arg1;
@@ -33,6 +35,7 @@
 - (void)systemApplicationDidSuspend;
 - (id)notificationCenter;
 - (id)mediaObjectManager;
+- (void)suspend;
 - (void)resume;
 - (void)endGeneratingForKey:(id)arg1;
 - (void)beginGeneratingForKey:(id)arg1;

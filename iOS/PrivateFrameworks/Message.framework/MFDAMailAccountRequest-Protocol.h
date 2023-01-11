@@ -4,13 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MFOfflineCacheOperation;
-@protocol MFDAOfflineCacheOperation;
-
 @protocol MFDAMailAccountRequest
 @property(readonly, nonatomic) _Bool isUserRequested;
 @property(readonly, nonatomic) _Bool shouldSend;
-- (MFOfflineCacheOperation<MFDAOfflineCacheOperation> *)deferredOperation;
 - (unsigned long long)generationNumber;
 @end
 

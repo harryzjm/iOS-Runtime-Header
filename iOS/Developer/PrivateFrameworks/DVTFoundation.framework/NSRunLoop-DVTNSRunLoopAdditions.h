@@ -11,6 +11,10 @@
 - (void)dvt_spinRunLoopInMode:(id)arg1 waitingForGroup:(id)arg2;
 - (void)dvt_spinRunLoopInMode:(id)arg1 waitingForSemaphore:(id)arg2;
 - (void)dvt_spinRunLoopInMode:(id)arg1 whileBlockExecutesConcurrently:(CDUnknownBlockType)arg2;
+- (void)dvt_spinRunLoopInMode:(id)arg1 whileQueue:(id)arg2 executesAsynchronously:(CDUnknownBlockType)arg3;
+- (void)dvt_spinRunLoopInMode:(id)arg1 until:(CDUnknownBlockType)arg2;
 - (id)dvt_performInModes:(id)arg1 withOrder:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)__DVTMainThreadLatencyChecker__cancelPerformSelector:(SEL)arg1 target:(id)arg2 argument:(id)arg3;
+- (void)__DVTMainThreadLatencyChecker__performSelector:(SEL)arg1 target:(id)arg2 argument:(id)arg3 order:(unsigned long long)arg4 modes:(id)arg5;
 @end
 

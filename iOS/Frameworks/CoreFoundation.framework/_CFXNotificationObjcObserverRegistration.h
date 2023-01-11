@@ -7,8 +7,8 @@
 __attribute__((visibility("hidden")))
 @interface _CFXNotificationObjcObserverRegistration
 {
-    _Bool _useFallback;
     id _object;
+    _Atomic _Bool _useFallback;
 }
 
 - (void)resetObserverAndChildren:(void *)arg1;

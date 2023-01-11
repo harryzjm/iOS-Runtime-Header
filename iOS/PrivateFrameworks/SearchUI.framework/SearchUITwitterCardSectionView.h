@@ -4,23 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
+#import <SearchUI/NUIContainerViewDelegate-Protocol.h>
 
-@class NSString, TLKStackView, UIView;
+@class NSString, SearchUIImageView, TLKStackView;
 
-@interface SearchUITwitterCardSectionView <NUIContainerStackViewDelegate>
+@interface SearchUITwitterCardSectionView <NUIContainerViewDelegate>
 {
-    UIView *_pictureView;
+    SearchUIImageView *_pictureView;
 }
 
-@property(retain) UIView *pictureView; // @synthesize pictureView=_pictureView;
+@property(retain, nonatomic) SearchUIImageView *pictureView; // @synthesize pictureView=_pictureView;
 - (void).cxx_destruct;
-- (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
+- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (id)setupContentView;
-- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 
 // Remaining properties
-@property(retain) TLKStackView *contentView; // @dynamic contentView;
+@property(retain, nonatomic) TLKStackView *contentView; // @dynamic contentView;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

@@ -6,20 +6,66 @@
 
 #import <objc/NSObject.h>
 
-@class XCUISiriService;
+@class NSString, XCUIRemote, XCUISiriService, XCUITestContext;
+@protocol XCUIAccessibilityInterface, XCUIApplicationAutomationSessionProviding, XCUIApplicationManaging, XCUIApplicationMonitor, XCUIDeviceEventAndStateInterface, XCUIEventSynthesizing, XCUIScreenDataSource, XCUIXcodeApplicationManaging;
 
 @interface XCUIDevice : NSObject
 {
+    _Bool _isLocal;
+    _Bool _isSimulatorDevice;
+    long long _platform;
+    id <XCUIAccessibilityInterface> _accessibilityInterface;
+    id <XCUIApplicationMonitor> _applicationMonitor;
+    id <XCUIEventSynthesizing> _eventSynthesizer;
+    id <XCUIApplicationManaging> _platformApplicationManager;
+    id <XCUIXcodeApplicationManaging> _xcodeApplicationManager;
+    id <XCUIDeviceEventAndStateInterface> _deviceEventAndStateInterface;
+    id <XCUIApplicationAutomationSessionProviding> _applicationAutomationSessionProvider;
+    XCUISiriService *_siriService;
+    id <XCUIScreenDataSource> _screenDataSource;
+    NSString *_uniqueIdentifier;
+    XCUITestContext *_testContext;
+    XCUIRemote *_remote;
 }
 
 + (id)sharedDevice;
-@property(readonly) XCUISiriService *siriService;
++ (id)localDevice;
+- (id)remote;
+- (id)testContext;
+- (_Bool)isSimulatorDevice;
+- (id)uniqueIdentifier;
+- (id)screenDataSource;
+- (id)applicationAutomationSessionProvider;
+- (id)deviceEventAndStateInterface;
+- (id)xcodeApplicationManager;
+- (id)platformApplicationManager;
+- (id)eventSynthesizer;
+- (id)applicationMonitor;
+- (id)accessibilityInterface;
+- (long long)platform;
+- (_Bool)isLocal;
+- (void).cxx_destruct;
+- (void)remoteAutomationSessionDidDisconnect:(id)arg1;
+- (void)attachLocalizableStringsData;
+- (void)rotateDigitalCrown:(double)arg1 velocity:(double)arg2;
 - (void)pressLockButton;
 - (void)holdHomeButtonForDuration:(double)arg1;
 - (void)pressButton:(long long)arg1;
 - (void)_silentPressButton:(long long)arg1;
-- (void)_dispatchEventWithPage:(unsigned int)arg1 usage:(unsigned int)arg2 duration:(double)arg3;
+- (void)_setOrientation:(long long)arg1;
 @property(nonatomic) long long orientation;
+- (id)init;
+- (id)description;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (id)mainScreen;
+- (id)screens;
+- (id)mainScreenOrError:(id *)arg1;
+- (id)screensOrError:(id *)arg1;
+@property(readonly) XCUISiriService *siriService; // @synthesize siriService=_siriService;
+- (_Bool)supportsPressureInteraction;
+- (_Bool)performDeviceEvent:(id)arg1 error:(id *)arg2;
+- (id)initLocalDeviceWithPlatform:(long long)arg1;
 
 @end
 

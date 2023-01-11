@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (_Bool)canDrawWithOtherStroke:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)canApplyDirectlyToRepCALayer;
+- (_Bool)canApplyDirectlyToRepRenderable;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

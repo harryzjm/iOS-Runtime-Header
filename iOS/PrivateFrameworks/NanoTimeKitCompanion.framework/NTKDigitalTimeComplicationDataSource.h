@@ -10,7 +10,6 @@
 
 + (_Bool)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 + (_Bool)acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
-+ (Class)richComplicationDisplayViewClassForType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (id)_templateWithShouldDisplayIdealizeState:(_Bool)arg1;
 - (id)complicationApplicationIdentifier;
 - (void)getLaunchURLForTimelineEntryDate:(id)arg1 timeTravelDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
@@ -19,8 +18,8 @@
 - (_Bool)alwaysShowIdealizedTemplateInSwitcher;
 - (id)currentSwitcherTemplate;
 - (unsigned long long)timelineAnimationBehavior;
-- (void)resume;
 - (_Bool)supportsTapAction;
+- (Class)richComplicationDisplayViewClassForDevice:(id)arg1;
 
 @end
 

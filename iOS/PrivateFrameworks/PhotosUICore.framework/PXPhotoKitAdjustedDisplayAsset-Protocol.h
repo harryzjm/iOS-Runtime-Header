@@ -6,12 +6,12 @@
 
 #import <PhotosUICore/PXDisplayAsset-Protocol.h>
 
-@class NSString, PHAsset, PLEditSource, PLPhotoEditModel;
+@class NSString, PHAsset, PICompositionController, PLPhotoEditRenderer;
 
 @protocol PXPhotoKitAdjustedDisplayAsset <PXDisplayAsset>
 @property(readonly, nonatomic) PHAsset *photoKitAsset;
 @property(readonly, nonatomic) NSString *adjustedContentIdentifier;
 @property(readonly, nonatomic) _Bool wantsAdjustments;
-- (PLPhotoEditModel *)applyAdjustmentsToEditModel:(PLPhotoEditModel *)arg1 editSource:(PLEditSource *)arg2;
+- (PICompositionController *)applyAdjustmentsToCompositionController:(PICompositionController *)arg1 renderer:(PLPhotoEditRenderer *)arg2;
 @end
 

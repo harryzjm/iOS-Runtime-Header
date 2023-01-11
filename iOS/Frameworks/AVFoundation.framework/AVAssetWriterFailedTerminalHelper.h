@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     NSError *_terminalError;
 }
 
+- (void)flush;
 - (void)setFinishWritingDelegate:(id)arg1;
 - (void)finishWritingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)finishWriting;

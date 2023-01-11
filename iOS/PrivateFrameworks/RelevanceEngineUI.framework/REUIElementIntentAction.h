@@ -10,6 +10,7 @@
 {
 }
 
+- (void)_performWithContext:(id)arg1;
 - (id)_newPerformer;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class OADDrawable, WDCharacterProperties;
+@class OADDrawable;
 
 __attribute__((visibility("hidden")))
 @interface WDOfficeArt
 {
-    WDCharacterProperties *mProperties;
     OADDrawable *mDrawable;
     _Bool mFloating;
 }
 
 + (int)textBoxTextTypeForRegularTextType:(int)arg1;
+- (void).cxx_destruct;
 - (id)description;
 - (void)propagateTextTypeToDrawables;
 - (void)setTextType:(int)arg1 recursivelyToDrawable:(id)arg2;
@@ -29,11 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)overrideDrawable;
 - (void)setDrawable:(id)arg1;
 - (id)drawable;
-- (void)clearProperties;
-- (void)setProperties:(id)arg1;
-- (id)properties;
 - (int)runType;
-- (void)dealloc;
 - (id)initWithParagraph:(id)arg1;
 - (void)checkForFloating:(id)arg1;
 

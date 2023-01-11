@@ -28,7 +28,7 @@
 + (void)countOfAssetsInMstreamdSharingDownloadQueueWithCompletionBlock:(CDUnknownBlockType)arg1;
 + (void)isMstreamdBusyPerformingSharingActivityWithCompletionBlock:(CDUnknownBlockType)arg1;
 + (void)pruneNonRecentlyViewedCloudSharingAssetsInLibrary:(id)arg1;
-+ (void)applicationIsInForeground:(_Bool)arg1;
++ (void)applicationIsInForeground:(_Bool)arg1 photoLibraryURL:(id)arg2;
 + (double)intervalBetweenAlbumPolls;
 + (double)intervalBetweenPolls;
 + (void)downloadAsset:(id)arg1 cloudPlaceholderKind:(short)arg2 shouldPrioritize:(_Bool)arg3 shouldExtendTimer:(_Bool)arg4;
@@ -37,7 +37,7 @@
 + (id)_downloadRequestQueue;
 + (_Bool)_recentlyRequestedDownloadAsset:(id)arg1 cloudPlaceholderKind:(short)arg2;
 + (void)prioritizeDownloadsForAlbumGUID:(id)arg1;
-+ (void)checkServerModelForAlbum:(id)arg1;
++ (void)checkServerModelForAlbum:(id)arg1 photoLibrary:(id)arg2;
 + (void)markCommentsForAssetCollectionWithGUID:(id)arg1 asViewedWithLastViewedDate:(id)arg2;
 + (void)markAlbumGUIDAsViewed:(id)arg1 clearUnseenAssetsCount:(_Bool)arg2;
 + (struct CGSize)derivedAssetSizeForMasterSizeWidth:(double)arg1 height:(double)arg2 derivativeType:(int)arg3 withSpecificationInfo:(id)arg4;
@@ -47,8 +47,10 @@
 + (id)temporaryVideoPathForCollectionGUID:(id)arg1;
 + (id)temporaryThumbnailPathForCollectionGUID:(id)arg1;
 + (id)temporaryDerivativePathForCollectionGUID:(id)arg1 uti:(id)arg2;
++ (id)_temporaryUploadDerivativesPathForCollectionGUID:(id)arg1 pathExtension:(id)arg2;
 + (double)derivedAssetSmallDimensionLimitForType:(int)arg1;
 + (id)derivativesForMasterAsset:(id)arg1 withSpecifications:(id)arg2;
++ (id)_videoDerivativeForVideoAtURL:(id)arg1 outputURL:(id)arg2 withPreset:(id)arg3 outputFileType:(id)arg4;
 + (id)videoDerivativesForAssetCollection:(id)arg1 withSpecifications:(id)arg2;
 + (void)deleteCommentWithGUIDFromServer:(id)arg1;
 + (void)publishCloudSharedCommentToServer:(id)arg1;
@@ -114,8 +116,10 @@
 + (_Bool)accountMatchesEmail:(id)arg1;
 + (id)sharingUsername;
 + (id)sharingPersonID;
-+ (_Bool)sharedStreamsExplictlyDisabled;
-+ (_Bool)sharedStreamsEnabled;
++ (_Bool)sharedStreamsExplictlyDisabledForPhotoLibraryURL:(id)arg1;
++ (_Bool)_sharedStreamsExplicitlyDisabled;
++ (_Bool)sharedStreamsEnabledForPhotoLibraryURL:(id)arg1;
++ (_Bool)_sharedStreamsEnabled;
 + (void)clearCachedAccountState;
 + (void)photosPreferencesChanged;
 + (void)accountSettingsChanged;

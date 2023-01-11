@@ -10,7 +10,7 @@
 #import <EventKitUI/UIActionSheetDelegate-Protocol.h>
 #import <EventKitUI/UIAlertViewDelegate-Protocol.h>
 
-@class EKCalendarItem, EKCalendarItemEditItem, EKEventStore, EKUIRecurrenceAlertController, NSArray, NSMutableSet, NSString, UIBarButtonItem, UIResponder, _UIAccessDeniedView;
+@class EKCalendarItem, EKCalendarItemEditItem, EKChangeSet, EKEventStore, EKUIRecurrenceAlertController, NSArray, NSMutableSet, NSString, UIBarButtonItem, UIResponder, _UIAccessDeniedView;
 @protocol EKCalendarItemEditorDelegate;
 
 __attribute__((visibility("hidden")))
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     EKUIRecurrenceAlertController *_recurrenceAlertController;
     EKCalendarItemEditItem *_currentEditItem;
     _Bool _giveTitleCellKeyboardFocus;
+    _Bool _needsFirstResponderSet;
     int _editItemVisibility;
     _Bool _isIgnoringCellHeightChange;
     _Bool _needsCellHeightChange;
@@ -45,11 +46,13 @@ __attribute__((visibility("hidden")))
     UIResponder *_responderToRestoreOnAppearence;
     unsigned long long _visibleSectionToRestoreOnAppearence;
     _UIAccessDeniedView *_accessDeniedView;
+    EKChangeSet *_originalChangeSet;
 }
 
 + (id)_doneLocalizedString;
 + (id)_addLocalizedString;
 + (id)defaultTitleForCalendarItem;
+@property(retain, nonatomic) EKChangeSet *originalChangeSet; // @synthesize originalChangeSet=_originalChangeSet;
 @property(retain, nonatomic) _UIAccessDeniedView *accessDeniedView; // @synthesize accessDeniedView=_accessDeniedView;
 @property(nonatomic) _Bool timeImplicitlySet; // @synthesize timeImplicitlySet=_timeImplicitlySet;
 @property(readonly) EKCalendarItemEditItem *currentEditItem; // @synthesize currentEditItem=_currentEditItem;
@@ -70,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (id)_nameForDeleteButton;
 - (_Bool)_performSave:(long long)arg1 animated:(_Bool)arg2;
 - (void)_performDelete:(long long)arg1;
+- (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (void)deleteClicked:(id)arg1;
 - (void)tableViewDidFinishReload:(id)arg1;
 - (void)tableViewDidStartReload:(id)arg1;
@@ -97,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (void)editItem:(id)arg1 wantsRowInsertions:(id)arg2 rowDeletions:(id)arg3;
 - (long long)rowNumberForEditItem:(id)arg1;
 - (void)editItem:(id)arg1 wantsRowReload:(id)arg2;
+- (void)editItemWantsFooterTitlesToReload:(id)arg1;
 - (void)editItem:(id)arg1 performActionsOnCellAtSubitem:(unsigned long long)arg2 actions:(CDUnknownBlockType)arg3;
 - (void)_reallyHandleCellHeightChange;
 - (void)_tableViewDidUpdateHeights;
@@ -114,6 +119,7 @@ __attribute__((visibility("hidden")))
 - (void)editItemDidStartEditing:(id)arg1;
 - (void)_revertEvent;
 - (void)_copyEventForPossibleRevert;
+- (id)_viewHierarchy;
 @property(nonatomic) double navBarRightContentInset;
 @property(nonatomic) double navBarLeftContentInset;
 - (void)_setWantsToEnableDoneButton:(_Bool)arg1;
@@ -130,7 +136,6 @@ __attribute__((visibility("hidden")))
 - (void)setupForEvent;
 - (unsigned long long)entityType;
 - (id)notificationNamesForLocaleChange;
-- (void)customizeActionSheet:(id)arg1;
 - (id)defaultAlertTitle;
 - (void)setupDeleteButton;
 - (id)preferredTitle;
@@ -148,12 +153,13 @@ __attribute__((visibility("hidden")))
 - (void)completeAndSave;
 - (void)handleTapOutside;
 - (void)done:(id)arg1;
-- (void)cancelEditingWithDelegateNotification:(_Bool)arg1;
+- (void)cancelEditingWithDelegateNotification:(_Bool)arg1 forceCancel:(_Bool)arg2;
 - (void)cancel:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)applicationDidResume;
 - (void)viewDidLoad;
 - (void)updateNavButtonsWithSpacing;
+- (void)_setupFirstResponder;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

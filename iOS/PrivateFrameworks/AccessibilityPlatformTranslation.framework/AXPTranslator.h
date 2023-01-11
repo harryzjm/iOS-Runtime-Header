@@ -33,6 +33,8 @@
 - (void)initializeAXRuntimeForSystemAppServer;
 - (void)enableAccessibility;
 - (void)processPlatformNotification:(unsigned long long)arg1 data:(id)arg2;
+- (CDUnknownBlockType)attributedStringConversionBlock;
+- (id)processSupportedActions:(id)arg1;
 - (id)processFrontMostApp:(id)arg1;
 - (id)processHitTest:(id)arg1;
 - (id)processAttributeRequest:(id)arg1;
@@ -48,7 +50,9 @@
 - (void)_resetBridgeTokensForResponse:(id)arg1 bridgeDelegateToken:(id)arg2;
 - (void)handleNotification:(unsigned long long)arg1 data:(id)arg2 associatedObject:(id)arg3;
 - (id)frontmostApplicationWithDisplayId:(unsigned int)arg1 bridgeDelegateToken:(id)arg2;
+- (id)_translationApplicationObjectForPidNumber:(id)arg1;
 - (id)translationApplicationObjectForPid:(int)arg1;
+- (id)translationApplicationObject;
 - (id)init;
 
 @end

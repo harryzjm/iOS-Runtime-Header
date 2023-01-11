@@ -33,7 +33,7 @@
 - (_Bool)_accessibilityIsSpeakThisElement;
 - (long long)_accessibilityScannerActivateBehavior;
 - (_Bool)_accessibilityIsScannerGroup;
-- (_Bool)_accessibilityIsScannerElement;
+- (_Bool)accessibilityRespondsToUserInteraction;
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;
 - (_Bool)_accessibilitySupportsActivateAction;
 - (id)_accessibilityCollectionViewCellContentSubviews;
@@ -50,6 +50,8 @@
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
 - (_Bool)_accessibilityHasTextOperations;
+- (void)_accessibilityRedo;
+- (void)_accessibilityUndo;
 - (void)_accessibilitySelectAll;
 - (void)_accessibilityPaste;
 - (void)_accessibilitySelect;

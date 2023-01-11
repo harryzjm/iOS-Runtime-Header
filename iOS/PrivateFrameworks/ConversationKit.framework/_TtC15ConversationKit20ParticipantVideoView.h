@@ -8,17 +8,17 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit20ParticipantVideoView : UIView
 {
     MISSING_TYPE *frontFacingCameraView;
     MISSING_TYPE *backFacingCameraView;
-    MISSING_TYPE *visualEffectView;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
-- (id)initWithCoder:(id)arg1;
+- (void).cxx_destruct;
+- (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)init;
 
 @end
 

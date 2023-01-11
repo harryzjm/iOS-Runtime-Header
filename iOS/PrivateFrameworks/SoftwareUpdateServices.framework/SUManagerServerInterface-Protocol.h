@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NSString, NSUUID, SUDownloadMetadata, SUScanOptions;
+@class NSArray, NSDate, NSDictionary, NSString, NSUUID, SUDownloadMetadata, SUScanOptions;
 
 @protocol SUManagerServerInterface
+- (void)registerCSInstallPredicatesOnDate:(NSDate *)arg1;
 - (void)isAutomaticUpdateV2Enabled:(void (^)(_Bool, NSError *))arg1;
 - (void)enableAutomaticUpdateV2:(_Bool)arg1;
 - (void)createInstallationKeybag:(NSString *)arg1 forUnattendedInstall:(_Bool)arg2 withResult:(void (^)(_Bool, NSError *))arg3;
@@ -21,6 +22,7 @@
 - (void)isUpdateReadyForInstallation:(void (^)(_Bool, NSError *))arg1;
 - (void)isInstallationKeybagRequired:(void (^)(_Bool, NSError *))arg1;
 - (void)presentAutoUpdateBanner:(void (^)(_Bool, NSError *))arg1;
+- (void)isAutoUpdateScheduled:(void (^)(_Bool, NSError *))arg1;
 - (void)isAutoUpdateEnabled:(void (^)(_Bool, NSError *))arg1;
 - (void)currentPasscodePolicy:(void (^)(unsigned long long, NSError *))arg1;
 - (void)consentToAutoInstallOperation:(NSUUID *)arg1 withResult:(void (^)(_Bool, NSError *))arg2;

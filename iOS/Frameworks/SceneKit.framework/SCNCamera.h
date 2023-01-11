@@ -12,6 +12,7 @@
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
 @class NSArray, NSMutableDictionary, NSString, SCNMaterialProperty, SCNOrderedDictionary, SCNTechnique;
+@protocol MTLTexture;
 
 @interface SCNCamera : NSObject <SCNAnimatable, SCNTechniqueSupport, NSCopying, NSSecureCoding>
 {
@@ -60,6 +61,7 @@
     float _bloomIntensity;
     float _bloomThreshold;
     int _bloomIteration;
+    float _bloomIterationSpread;
     float _bloomBlurRadius;
     float _motionBlurIntensity;
     float _vignettingPower;
@@ -68,6 +70,11 @@
     float _colorFringeIntensity;
     float _saturation;
     float _contrast;
+    float _grainIntensity;
+    float _grainScale;
+    _Bool _grainIsColored;
+    float _whiteBalanceTemperature;
+    float _whiteBalanceTint;
     struct {
         float intensity;
         float radius;
@@ -77,6 +84,8 @@
         long long sampleCount;
         long long downSample;
     } _screenSpaceAmbientOcclusion;
+    id <MTLTexture> _grainTexture;
+    float _grainSlice;
 }
 
 + (_Bool)supportsSecureCoding;
@@ -88,8 +97,10 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_didDecodeSCNCamera:(id)arg1;
-@property(nonatomic) double focalSize;
-@property(nonatomic) double focalDistance;
+- (void)setFocalSize:(double)arg1;
+- (double)focalSize;
+- (void)setFocalDistance:(double)arg1;
+- (double)focalDistance;
 - (void)_customEncodingOfSCNCamera:(id)arg1;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -114,7 +125,8 @@
 @property(nonatomic) long long focalBlurSampleCount;
 @property(nonatomic) long long apertureBladeCount;
 @property(nonatomic) double fStop;
-@property(nonatomic) double aperture;
+- (void)setAperture:(double)arg1;
+- (double)aperture;
 @property(nonatomic) double focalLength;
 @property(nonatomic) double sensorHeight;
 @property(nonatomic) double fieldOfView;
@@ -122,8 +134,10 @@
 - (void)_updateFov;
 @property(nonatomic) double zNear;
 @property(nonatomic) double zFar;
-@property(nonatomic) double yFov;
-@property(nonatomic) double xFov;
+- (void)setYFov:(double)arg1;
+- (double)yFov;
+- (void)setXFov:(double)arg1;
+- (double)xFov;
 @property(nonatomic) double whitePoint;
 @property(nonatomic) _Bool wantsHDR;
 @property(nonatomic) _Bool wantsExposureAdaptation;
@@ -135,7 +149,8 @@
 @property(nonatomic) double motionBlurIntensity;
 @property(nonatomic) double minimumExposure;
 @property(nonatomic) double maximumExposure;
-@property(nonatomic) double focalBlurRadius;
+- (void)setFocalBlurRadius:(double)arg1;
+- (double)focalBlurRadius;
 - (void)setDofIntensity:(float)arg1;
 - (float)dofIntensity;
 @property(nonatomic) _Bool wantsDepthOfField;
@@ -150,11 +165,22 @@
 - (double)exposureAdaptationDuration;
 @property(nonatomic) double exposureAdaptationDarkeningSpeedFactor;
 @property(nonatomic) double exposureAdaptationBrighteningSpeedFactor;
+@property(nonatomic) double whiteBalanceTint;
+@property(nonatomic) double whiteBalanceTemperature;
+- (void)setGrainTexture:(id)arg1;
+- (id)grainTexture;
+- (void)setGrainSlice:(double)arg1;
+- (double)grainSlice;
+@property(nonatomic) _Bool grainIsColored;
+@property(nonatomic) double grainScale;
+@property(nonatomic) double grainIntensity;
 @property(nonatomic) double contrast;
 @property(nonatomic) double colorFringeIntensity;
 @property(nonatomic) double colorFringeStrength;
 @property(nonatomic) unsigned long long categoryBitMask;
+@property(nonatomic) double bloomIterationSpread;
 - (void)setBloomIteration:(long long)arg1;
+@property(nonatomic) long long bloomIterationCount;
 - (long long)bloomIteration;
 @property(nonatomic) double bloomThreshold;
 @property(nonatomic) double bloomIntensity;

@@ -12,6 +12,7 @@
 
 @interface IBLayoutConstant (IBUILayoutConstantIntegration) <IBBinaryArchiving>
 - (id)initWithBinaryUnarchiver:(id)arg1;
+- (id)transformAfterMarshalling;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

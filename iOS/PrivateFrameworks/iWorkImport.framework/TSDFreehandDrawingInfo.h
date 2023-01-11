@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)loadFromArchive:(const struct GroupArchive *)arg1 unarchiver:(id)arg2 upgradeDOLC:(_Bool)arg3;
 - (id)copyWithContext:(id)arg1;
 - (id)allNestedChildrenInfosForWrap;
+- (_Bool)isEffectivelyEmpty;
 - (Class)repClass;
 - (Class)layoutClass;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)animationFilters;
+- (_Bool)shouldHaveFakeShapeInfoForPersistingEmptyGroup;
 - (_Bool)isFreehandDrawing;
 - (id)initWithSpacerShapeAndContext:(id)arg1 geometry:(id)arg2;
 - (_Bool)containsDisallowedElementKind:(unsigned int)arg1;

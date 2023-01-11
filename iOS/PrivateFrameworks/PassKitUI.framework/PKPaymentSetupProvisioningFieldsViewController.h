@@ -9,7 +9,7 @@
 #import <PassKitUI/RemoteUIControllerDelegate-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
-@class CLInUseAssertion, NSString, NSTimer, PKPaymentProvisioningController, PKPaymentSetupFooterView, PKPaymentVerificationController, RemoteUIController, UINotificationFeedbackGenerator;
+@class CLInUseAssertion, NSString, NSTimer, PKPasscodeUpgradeFlowController, PKPaymentProvisioningController, PKPaymentSetupFooterView, PKPaymentVerificationController, RemoteUIController, UINotificationFeedbackGenerator;
 
 @interface PKPaymentSetupProvisioningFieldsViewController <UITextFieldDelegate, RemoteUIControllerDelegate, PKPaymentVerificationControllerDelegate, PKPaymentSetupHideSetupLaterButtonProtocol>
 {
@@ -23,6 +23,7 @@
     CDUnknownBlockType _waitForActivationCompletionHandler;
     NSTimer *_waitForActivationTimer;
     NSString *_activatingPaymentPassUniqueID;
+    PKPasscodeUpgradeFlowController *_passcodeUpgradeFlowController;
     _Bool _hideSetupLaterButton;
     PKPaymentProvisioningController *_paymentProvisioningController;
     CDUnknownBlockType _continueActionHandler;
@@ -34,6 +35,7 @@
 - (void).cxx_destruct;
 - (id)defaultHeaderViewSubTitle;
 - (id)defaultHeaderViewTitle;
+- (void)resetRightBarButtonState;
 - (void)resetProvisioningState;
 - (void)resetAllFieldsAndProvisioningState;
 - (void)updateFieldsModelWithPaymentCredential:(id)arg1;
@@ -50,8 +52,10 @@
 - (void)_handleNextCredentialWithPresentationDelay:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handlePassSuccessfullyAdded:(id)arg1;
 - (void)handlePassSuccessfullyAdded:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)declineTerms;
 - (void)acceptTerms;
 - (void)displayTermsForEligibility:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)performPasscodeUpgradeIfNeeded:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)displayTermsForTermsURL:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
 - (void)_provisioningLocalizedProgressDescriptionDidChange:(id)arg1;
@@ -65,6 +69,7 @@
 - (void)requestProvisioning:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)requestEligibility:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)requestRequirements:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_logNormalizedLevenshteinDistanceFromString:(id)arg1 toField:(id)arg2 forKey:(id)arg3 onQueue:(id)arg4;
 - (id)newPaymentProvisioningRequest;
 - (id)newPaymentEligibilityRequest;
 - (id)newPaymentRequirementsRequest;

@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData;
-
 @interface SBWorkspaceDefaults
 {
 }
@@ -16,7 +14,6 @@
 @property(readonly, nonatomic, getter=isBreadcrumbDisabled) _Bool breadcrumbDisabled; // @dynamic breadcrumbDisabled;
 @property(readonly, nonatomic) long long medusaDeviceSimulation; // @dynamic medusaDeviceSimulation;
 @property(readonly, nonatomic, getter=isMedusaEnabled) _Bool medusaEnabled; // @dynamic medusaEnabled;
-@property(retain, nonatomic) NSData *mostRecentFloatingApplicationState; // @dynamic mostRecentFloatingApplicationState;
 
 @end
 

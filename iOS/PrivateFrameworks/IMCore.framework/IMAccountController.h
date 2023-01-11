@@ -38,6 +38,7 @@
 - (id)bestAccountForService:(id)arg1;
 - (id)bestConnectedAccountForService:(id)arg1 withLogin:(id)arg2;
 - (id)bestActiveAccountForService:(id)arg1 withLogin:(id)arg2;
+- (id)iMessageAccountForLastAddressedHandle:(id)arg1 simID:(id)arg2;
 - (id)bestOperationalAccountForService:(id)arg1 withLogin:(id)arg2;
 - (id)bestAccountForService:(id)arg1 withLogin:(id)arg2;
 - (id)bestAccountForService:(id)arg1 login:(id)arg2 guid:(id)arg3;
@@ -93,7 +94,6 @@
 - (id)_bestOperationalAccountForSendingForService:(id)arg1;
 - (id)__iCloudSystemAccountForService:(id)arg1;
 - (id)_bestAccountForAddresses:(id)arg1;
-- (id)_operationalPhoneAccountForService:(id)arg1;
 
 @end
 

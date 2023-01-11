@@ -6,12 +6,13 @@
 
 #import <XCTest/XCTElementSnapshotAttributeDataSource-Protocol.h>
 
-@class XCTElementQuery, XCTElementQueryResults;
+@class XCTCapabilities, XCTElementQuery, XCTElementQueryResults;
 
 @protocol XCTRunnerAutomationSession <XCTElementSnapshotAttributeDataSource>
 @property(readonly) _Bool supportsAnimationsIdleNotifications;
 @property(readonly) _Bool supportsMainRunLoopIdleNotifications;
 @property(readonly) _Bool supportsFetchingAttributesForElement;
+@property(readonly) XCTCapabilities *remoteInterfaceCapabilities;
 - (void)notifyWhenAnimationsAreIdle:(void (^)(NSError *))arg1;
 - (void)notifyWhenMainRunLoopIsIdle:(void (^)(NSError *))arg1;
 - (XCTElementQueryResults *)matchesForQuery:(XCTElementQuery *)arg1 error:(id *)arg2;

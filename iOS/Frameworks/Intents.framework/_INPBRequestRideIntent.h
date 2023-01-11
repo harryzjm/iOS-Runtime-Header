@@ -18,6 +18,7 @@
         unsigned int usesApplePayForPayment:1;
     } _has;
     _Bool _usesApplePayForPayment;
+    _Bool __encodeLegacyGloryData;
     _INPBLocation *_dropOffLocation;
     _INPBIntentMetadata *_intentMetadata;
     _INPBInteger *_partySize;
@@ -29,6 +30,8 @@
     _INPBDateTimeRange *_scheduledPickupTime;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(nonatomic) _Bool usesApplePayForPayment; // @synthesize usesApplePayForPayment=_usesApplePayForPayment;
 @property(retain, nonatomic) _INPBDateTimeRange *scheduledPickupTime; // @synthesize scheduledPickupTime=_scheduledPickupTime;
 @property(retain, nonatomic) _INPBDataString *rideOptionName; // @synthesize rideOptionName=_rideOptionName;
@@ -44,6 +47,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(nonatomic) _Bool hasUsesApplePayForPayment;

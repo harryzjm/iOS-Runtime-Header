@@ -13,6 +13,7 @@
     NSArray *_editingItems;
     NSArray *_originalEditingItems;
     _Bool _showActionsWhenEmpty;
+    _Bool _allowsDisplayModePickerActions;
     _Bool _isAdded;
     NSString *_property;
     CNPolicy *_policy;
@@ -24,6 +25,7 @@
 + (id)groupForProperty:(id)arg1 contact:(id)arg2 store:(id)arg3 policy:(id)arg4 linkedPolicies:(id)arg5;
 @property(retain, nonatomic) NSArray *deletedItems; // @synthesize deletedItems=_deletedItems;
 @property(nonatomic) _Bool isAdded; // @synthesize isAdded=_isAdded;
+@property(nonatomic) _Bool allowsDisplayModePickerActions; // @synthesize allowsDisplayModePickerActions=_allowsDisplayModePickerActions;
 @property(nonatomic) _Bool showActionsWhenEmpty; // @synthesize showActionsWhenEmpty=_showActionsWhenEmpty;
 @property(readonly, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property(readonly, nonatomic) NSDictionary *linkedPolicies; // @synthesize linkedPolicies=_linkedPolicies;
@@ -36,7 +38,9 @@
 - (id)_nextAvailableLabel;
 - (id)_nextAvailableLabelInLabels:(id)arg1 withValueSelector:(SEL)arg2;
 - (id)_availableLabelsInLabels:(id)arg1 forItem:(id)arg2 withValueSelector:(SEL)arg3 usedLabelsCount:(long long *)arg4;
-- (id)labelsForItem:(id)arg1;
+- (id)itemsUsingLabel:(id)arg1;
+- (id)labelsInUseByGroup;
+- (id)labelsForItem:(id)arg1 options:(unsigned long long)arg2;
 - (void)saveChangesForItems:(id)arg1;
 - (id)policyForItem:(id)arg1;
 - (void)_updateNameValuesForItems:(id)arg1;
@@ -48,6 +52,7 @@
 - (id)_itemToBeMergedWith:(id)arg1 fromItems:(id)arg2 forEditing:(_Bool)arg3;
 - (id)_mergeItems:(id)arg1 forEditing:(_Bool)arg2;
 - (id)_loadPropertyItems;
+- (Class)propertyGroupItemClass;
 @property(retain, nonatomic) NSArray *editingItems;
 - (id)displayItems;
 - (void)saveChanges;

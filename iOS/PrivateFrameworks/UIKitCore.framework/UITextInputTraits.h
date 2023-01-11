@@ -43,11 +43,15 @@
     _Bool contentsIsSingleValue;
     _Bool acceptsEmoji;
     _Bool acceptsDictationSearchResults;
+    _Bool useAutomaticEndpointing;
+    _Bool showDictationButton;
     _Bool forceEnableDictation;
     _Bool forceDisableDictation;
     _Bool forceDefaultDictationInfo;
     _Bool returnKeyGoesToNextResponder;
     _Bool acceptsFloatingKeyboard;
+    _Bool forceFloatingKeyboard;
+    struct UIEdgeInsets floatingKeyboardEdgeInsets;
     _Bool acceptsSplitKeyboard;
     _Bool displaySecureTextUsingPlainText;
     _Bool learnsCorrections;
@@ -79,6 +83,7 @@
 + (_Bool)keyboardTypeRequiresASCIICapable:(long long)arg1;
 + (id)traitsByAdoptingTraits:(id)arg1 lightweight:(_Bool)arg2;
 + (id)traitsByAdoptingTraits:(id)arg1;
++ (id)traitEnvironmentFromTraits:(id)arg1;
 + (id)defaultTextInputTraits;
 + (long long)configuredAppearanceForAppearance:(long long)arg1 withTraitEnvironment:(id)arg2;
 + (long long)accessibleAppearanceForAppearance:(long long)arg1;
@@ -108,6 +113,8 @@
 @property(nonatomic) _Bool displaySecureEditsUsingPlainText; // @synthesize displaySecureEditsUsingPlainText;
 @property(nonatomic) _Bool displaySecureTextUsingPlainText; // @synthesize displaySecureTextUsingPlainText;
 @property(nonatomic) _Bool acceptsSplitKeyboard; // @synthesize acceptsSplitKeyboard;
+@property(nonatomic) struct UIEdgeInsets floatingKeyboardEdgeInsets; // @synthesize floatingKeyboardEdgeInsets;
+@property(nonatomic) _Bool forceFloatingKeyboard; // @synthesize forceFloatingKeyboard;
 @property(nonatomic) _Bool acceptsFloatingKeyboard; // @synthesize acceptsFloatingKeyboard;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder; // @synthesize returnKeyGoesToNextResponder;
 @property(nonatomic) int emptyContentReturnKeyType; // @synthesize emptyContentReturnKeyType;
@@ -115,6 +122,8 @@
 @property(nonatomic) _Bool forceDefaultDictationInfo; // @synthesize forceDefaultDictationInfo;
 @property(nonatomic) _Bool forceDisableDictation; // @synthesize forceDisableDictation;
 @property(nonatomic) _Bool forceEnableDictation; // @synthesize forceEnableDictation;
+@property(nonatomic) _Bool showDictationButton; // @synthesize showDictationButton;
+@property(nonatomic) _Bool useAutomaticEndpointing; // @synthesize useAutomaticEndpointing;
 @property(nonatomic) _Bool acceptsDictationSearchResults; // @synthesize acceptsDictationSearchResults;
 @property(nonatomic) _Bool acceptsEmoji; // @synthesize acceptsEmoji;
 @property(nonatomic) _Bool acceptsPayloads; // @synthesize acceptsPayloads;

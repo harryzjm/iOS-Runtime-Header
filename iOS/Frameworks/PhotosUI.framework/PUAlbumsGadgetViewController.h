@@ -4,20 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUICore/PXGadgetViewController.h>
+#import <PhotosUICore/PXGadgetUIViewController.h>
 
-#import <PhotosUI/PLNavigableCollectionContainer-Protocol.h>
+#import <PhotosUI/PXNavigableCollectionContainer-Protocol.h>
+#import <PhotosUI/PXNavigationRoot-Protocol.h>
 
-@class NSString, PUSessionInfo, UIBarButtonItem;
+@class NSString, PUSessionInfo, PXNavigationListDataSectionManager, UIBarButtonItem, UINavigationController;
 
-@interface PUAlbumsGadgetViewController : PXGadgetViewController <PLNavigableCollectionContainer>
+@interface PUAlbumsGadgetViewController : PXGadgetUIViewController <PXNavigableCollectionContainer, PXNavigationRoot>
 {
+    UIBarButtonItem *_navigationDisplayModeButtonItem;
+    PXNavigationListDataSectionManager *_navigationListDataSourceManager;
     PUSessionInfo *_sessionInfo;
     UIBarButtonItem *_plusButtonItem;
 }
 
 @property(retain, nonatomic) UIBarButtonItem *plusButtonItem; // @synthesize plusButtonItem=_plusButtonItem;
 @property(retain, nonatomic) PUSessionInfo *sessionInfo; // @synthesize sessionInfo=_sessionInfo;
+@property(retain, nonatomic) UIBarButtonItem *navigationDisplayModeButtonItem; // @synthesize navigationDisplayModeButtonItem=_navigationDisplayModeButtonItem;
 - (void).cxx_destruct;
 - (void)_pushViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handlePlusButtonLongPress:(id)arg1;
@@ -25,13 +29,23 @@
 - (void)_presentNewActionAlertControllerIncludeNewFolderAction:(_Bool)arg1;
 - (id)_newSharedAlbumActionWithSpec:(id)arg1;
 - (id)_newFolderActionWithSpec:(id)arg1;
+- (id)_newSmartAlbumActionWithSpec:(id)arg1;
 - (id)_newAlbumActionWithSpec:(id)arg1;
 - (void)_handleDoneButton:(id)arg1;
 - (void)_updateNavigationBar;
+- (void)selectNavigationListItem:(id)arg1 hintIndex:(long long)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+@property(readonly, nonatomic) PXNavigationListDataSectionManager *navigationListDataSourceManager; // @synthesize navigationListDataSourceManager=_navigationListDataSourceManager;
+@property(readonly, nonatomic) NSString *navigationIdentifier;
+@property(readonly, nonatomic) NSString *navigationTitle;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (_Bool)canRouteToDestination:(id)arg1;
 - (id)_navigableGadgetForCollection:(id)arg1;
 - (void)navigateToCollection:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)canNavigateToCollection:(id)arg1;
+- (long long)scrollAnimationIdentifier;
+- (void)configureSectionHeader:(id)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (id)initWithLayout:(id)arg1 dataSourceManager:(id)arg2;
@@ -41,6 +55,7 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) UINavigationController *navigationController; // @dynamic navigationController;
 @property(readonly) Class superclass;
 
 @end

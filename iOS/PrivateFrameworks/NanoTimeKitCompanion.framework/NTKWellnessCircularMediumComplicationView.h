@@ -9,7 +9,6 @@
 }
 
 + (_Bool)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 - (_Bool)usesMediumLayout;
 
 @end

@@ -8,6 +8,7 @@
 
 @class CAEmitterLayer, CALayer, CKTextBalloonView, NSArray, NSString, UITextView;
 
+__attribute__((visibility("hidden")))
 @interface CKInvisibleInkTextEffectView <CAAnimationDelegate>
 {
     _Bool _blendingEnabled;

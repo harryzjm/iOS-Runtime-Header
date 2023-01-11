@@ -14,7 +14,7 @@
 - (id)accessibilityHint;
 - (id)accessibilityValue;
 - (id)accessibilityLabel;
-- (void)setTime:(double)arg1;
+- (void)setStopwatchState:(long long)arg1 elapsedTime:(double)arg2 shouldPauseTextCountdown:(_Bool)arg3 timeTravelDate:(id)arg4;
 - (void)_axUpdateWithTime:(double)arg1;
 - (void)_accessibilitySetAccumulatedInterval:(double)arg1;
 - (double)_accessibilityAccumulatedInterval;

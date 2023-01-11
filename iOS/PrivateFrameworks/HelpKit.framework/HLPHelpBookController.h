@@ -8,6 +8,7 @@
 
 @interface HLPHelpBookController
 {
+    _Bool _supportsDarkMode;
     _Bool _hasSectionIcon;
     _Bool _fullBookView;
     long long _contentFormatVersion;
@@ -19,6 +20,7 @@
     NSString *_bookId;
     NSString *_topicPathFormat;
     NSString *_remoteSearchPath;
+    NSString *_remoteCSSearchIndex;
     NSString *_iconBasePath;
     HLPHelpLocale *_locale;
     NSString *_welcomeTopicIdentifier;
@@ -33,6 +35,7 @@
 @property(retain, nonatomic) NSString *welcomeTopicIdentifier; // @synthesize welcomeTopicIdentifier=_welcomeTopicIdentifier;
 @property(retain, nonatomic) HLPHelpLocale *locale; // @synthesize locale=_locale;
 @property(retain, nonatomic) NSString *iconBasePath; // @synthesize iconBasePath=_iconBasePath;
+@property(retain, nonatomic) NSString *remoteCSSearchIndex; // @synthesize remoteCSSearchIndex=_remoteCSSearchIndex;
 @property(retain, nonatomic) NSString *remoteSearchPath; // @synthesize remoteSearchPath=_remoteSearchPath;
 @property(retain, nonatomic) NSString *topicPathFormat; // @synthesize topicPathFormat=_topicPathFormat;
 @property(retain, nonatomic) NSString *bookId; // @synthesize bookId=_bookId;
@@ -44,6 +47,7 @@
 @property(nonatomic) _Bool hasSectionIcon; // @synthesize hasSectionIcon=_hasSectionIcon;
 @property(nonatomic) long long serverType; // @synthesize serverType=_serverType;
 @property(nonatomic) long long contentFormatVersion; // @synthesize contentFormatVersion=_contentFormatVersion;
+@property(nonatomic) _Bool supportsDarkMode; // @synthesize supportsDarkMode=_supportsDarkMode;
 - (void).cxx_destruct;
 - (id)welcomeTopicItem;
 - (id)copyrightTopicItem;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray;
+@class MISSING_TYPE, NSMutableArray;
 
 @interface _Head
 {
@@ -15,15 +15,15 @@
     int _inAnimation;
     NSMutableArray *_texs;
     NSMutableArray *_blinkTexs;
-    union _GLKVector2 _bone;
-    union _GLKVector2 _offset;
+    MISSING_TYPE *_bone;
+    MISSING_TYPE *_offset;
 }
 
 @property(nonatomic) int inAnimation; // @synthesize inAnimation=_inAnimation;
 @property(nonatomic) float curHeadX; // @synthesize curHeadX=_curHeadX;
 @property(nonatomic) float curHeadTilt; // @synthesize curHeadTilt=_curHeadTilt;
-@property(nonatomic) union _GLKVector2 offset; // @synthesize offset=_offset;
-@property(nonatomic) union _GLKVector2 bone; // @synthesize bone=_bone;
+@property(nonatomic) MISSING_TYPE *offset; // @synthesize offset=_offset;
+@property(nonatomic) MISSING_TYPE *bone; // @synthesize bone=_bone;
 @property(retain, nonatomic) NSMutableArray *blinkTexs; // @synthesize blinkTexs=_blinkTexs;
 @property(retain, nonatomic) NSMutableArray *texs; // @synthesize texs=_texs;
 @property(nonatomic) float height; // @synthesize height=_height;

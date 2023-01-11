@@ -8,7 +8,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFSelectableGridCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFCard, SFColor;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFCard, SFColor, SFUserReportRequest;
 
 @interface SFSelectableGridCardSection <SFSelectableGridCardSection, NSSecureCoding, NSCopying>
 {
@@ -61,6 +61,7 @@
 @property(copy, nonatomic) NSArray *parameterKeyPaths;
 @property(copy, nonatomic) NSString *resultIdentifier;
 @property(readonly) Class superclass;
+@property(retain, nonatomic) SFUserReportRequest *userReportRequest;
 
 @end
 

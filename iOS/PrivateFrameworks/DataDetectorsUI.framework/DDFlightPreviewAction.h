@@ -4,23 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
-
 __attribute__((visibility("hidden")))
 @interface DDFlightPreviewAction
 {
     _Bool _previewModeSet;
-    NSString *_platerTitle;
 }
 
 + (id)viewControllerProviderClass;
-@property(retain) NSString *platerTitle; // @synthesize platerTitle=_platerTitle;
-- (void).cxx_destruct;
 - (void)setPreviewMode:(_Bool)arg1;
+- (id)menuActionClasses;
+- (id)expandViewController;
+- (_Bool)wantsCustomViewControllerCommit;
 - (id)previewActions;
-- (_Bool)wantsSeamlessCommit;
-- (id)platterTitle;
-- (id)initWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 
 @end
 

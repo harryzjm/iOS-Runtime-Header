@@ -8,7 +8,7 @@
 {
 }
 
-- (struct CGSize)preferredContentSize;
+- (_Bool)shouldAutorotate;
 - (void)willCommitPreview;
 - (id)initWithEvent:(id)arg1;
 

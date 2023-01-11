@@ -9,7 +9,7 @@
 #import <HomeUI/HUGridDisplayOptions-Protocol.h>
 #import <HomeUI/NSCopying-Protocol.h>
 
-@class HUGridCameraCellLayoutOptions, HUGridHeadlineCellLayoutOptions, HUGridSceneCellLayoutOptions, HUGridServiceCellLayoutOptions, HUNavigationBarLayoutOptions, NSNumber, NSString, UIFont;
+@class HUGridCameraCellLayoutOptions, HUGridHeadlineCellLayoutOptions, HUGridSceneCellLayoutOptions, HUGridServiceCellLayoutOptions, HUGridStatusBannerCellLayoutOptions, HUNavigationBarLayoutOptions, NSNumber, NSString, UIFont;
 
 @interface HUGridLayoutOptions : NSObject <HUGridDisplayOptions, NSCopying>
 {
@@ -46,6 +46,8 @@
     HUGridSceneCellLayoutOptions *_sceneCellOptions;
     HUGridServiceCellLayoutOptions *_serviceCellOptions;
     HUNavigationBarLayoutOptions *_navigationBarOptions;
+    HUGridStatusBannerCellLayoutOptions *_statusBannerCellOptions;
+    long long _numberOfCameraCellsPerRow;
     NSNumber *_overrideViewSizeSubclass;
     struct CGSize _viewSize;
     struct UIEdgeInsets _sectionTitleMargin;
@@ -57,6 +59,8 @@
 + (id)defaultOptionsForViewSize:(struct CGSize)arg1 overrideSizeSubclass:(long long)arg2;
 + (id)defaultOptionsForViewSize:(struct CGSize)arg1;
 @property(retain, nonatomic) NSNumber *overrideViewSizeSubclass; // @synthesize overrideViewSizeSubclass=_overrideViewSizeSubclass;
+@property(readonly, nonatomic) long long numberOfCameraCellsPerRow; // @synthesize numberOfCameraCellsPerRow=_numberOfCameraCellsPerRow;
+@property(copy, nonatomic) HUGridStatusBannerCellLayoutOptions *statusBannerCellOptions; // @synthesize statusBannerCellOptions=_statusBannerCellOptions;
 @property(copy, nonatomic) HUNavigationBarLayoutOptions *navigationBarOptions; // @synthesize navigationBarOptions=_navigationBarOptions;
 @property(copy, nonatomic) HUGridServiceCellLayoutOptions *serviceCellOptions; // @synthesize serviceCellOptions=_serviceCellOptions;
 @property(copy, nonatomic) HUGridSceneCellLayoutOptions *sceneCellOptions; // @synthesize sceneCellOptions=_sceneCellOptions;
@@ -99,7 +103,7 @@
 - (double)preferredSectionHeightForNumberOfSceneRows:(unsigned long long)arg1;
 @property(readonly, nonatomic) double largeTitleCellTopMargin;
 @property(readonly, nonatomic) double statusListCellBottomMargin;
-@property(readonly, nonatomic) double statusListCellTopMargin;
+- (double)statusListCellTopMargin:(_Bool)arg1 forStatusBannerWidth:(double)arg2 havingTitleAndDescription:(id)arg3 contentSizeCategory:(id)arg4;
 @property(readonly, nonatomic) double sectionHeaderCellHeight;
 @property(readonly, nonatomic) double statusListCellHeight;
 @property(readonly, nonatomic) double headlineCellHeight;
@@ -110,6 +114,7 @@
 - (double)_pointWidthForFractionalNumberOfColumns:(double)arg1;
 - (double)pointWidthForNumberOfColumns:(long long)arg1;
 @property(readonly, nonatomic) double pointWidthForFullWidthCell;
+@property(readonly, nonatomic) double pointWidthForCurrentViewSizeSubclass;
 @property(readonly, nonatomic) long long numberOfColumns;
 @property(readonly, nonatomic) long long cellSizeSubclass;
 @property(readonly, nonatomic) long long viewSizeSubclass;

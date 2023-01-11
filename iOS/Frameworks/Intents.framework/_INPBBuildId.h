@@ -15,10 +15,13 @@
 @interface _INPBBuildId : PBCodable <_INPBBuildId, NSSecureCoding, NSCopying>
 {
     struct _has;
+    _Bool __encodeLegacyGloryData;
     NSString *_buildNumber;
     NSString *_versionNumber;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(copy, nonatomic) NSString *versionNumber; // @synthesize versionNumber=_versionNumber;
 @property(copy, nonatomic) NSString *buildNumber; // @synthesize buildNumber=_buildNumber;
 - (void).cxx_destruct;
@@ -26,6 +29,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(readonly, nonatomic) _Bool hasVersionNumber;

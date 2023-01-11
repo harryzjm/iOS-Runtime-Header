@@ -5,11 +5,12 @@
 //
 
 #import <ContactsUI/CNPickerControllerDelegate-Protocol.h>
+#import <ContactsUI/UINavigationControllerDelegate-Protocol.h>
 
 @class CNSocialProfile, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNPropertySocialProfileEditingCell <CNPickerControllerDelegate>
+@interface CNPropertySocialProfileEditingCell <CNPickerControllerDelegate, UINavigationControllerDelegate>
 {
 }
 

@@ -29,6 +29,9 @@
     SCNMaterialProperty *_metalness;
     SCNMaterialProperty *_roughness;
     SCNMaterialProperty *_displacement;
+    SCNMaterialProperty *_clearCoat;
+    SCNMaterialProperty *_clearCoatRoughness;
+    SCNMaterialProperty *_clearCoatNormal;
     SCNOrderedDictionary *_animations;
     NSMutableDictionary *_bindings;
     NSString *_name;
@@ -143,6 +146,9 @@
 @property(nonatomic) double transparency;
 @property(nonatomic) double shininess;
 @property(nonatomic) long long transparencyMode;
+@property(readonly, nonatomic) SCNMaterialProperty *clearCoatNormal;
+@property(readonly, nonatomic) SCNMaterialProperty *clearCoatRoughness;
+@property(readonly, nonatomic) SCNMaterialProperty *clearCoat;
 @property(readonly, nonatomic) SCNMaterialProperty *displacement;
 @property(readonly, nonatomic) SCNMaterialProperty *roughness;
 @property(readonly, nonatomic) SCNMaterialProperty *metalness;

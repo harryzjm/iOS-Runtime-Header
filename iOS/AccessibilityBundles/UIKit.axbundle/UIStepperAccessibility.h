@@ -11,10 +11,15 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)canBecomeFocused;
+- (void)_fkaTapMinus;
+- (void)_fkaTapPlus;
+- (id)_accessibilityKeyCommands;
 - (void)_updateCount:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_commonStepperInit;
 - (void)_axAnnotateButtons;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

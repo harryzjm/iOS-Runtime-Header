@@ -16,9 +16,11 @@
 @property(nonatomic) __weak id attributeDelegate; // @synthesize attributeDelegate;
 @property(nonatomic) __weak id textDelegate; // @synthesize textDelegate;
 - (void).cxx_destruct;
+- (id)_accessibilityCapturedImages;
 - (id)_accessibilityAllDropPointDescriptors;
 - (id)_accessibilityAllDragSourceDescriptors;
 - (id)description;
+- (id)accessibilityUserInputLabels;
 - (unsigned long long)_accessibilityScanningBehaviorTraits;
 - (long long)_accessibilityScannerActivateBehavior;
 - (id)_accessibilitySpeakThisString;
@@ -35,7 +37,7 @@
 - (struct _NSRange)_accessibilityIndexPathAsRange;
 - (_Bool)_accessibilityIsInTableCell;
 - (struct _NSRange)accessibilityRowRange;
-- (_Bool)_accessibilityIsScannerElement;
+- (_Bool)accessibilityRespondsToUserInteraction;
 - (unsigned long long)accessibilityTraits;
 - (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityLanguage;

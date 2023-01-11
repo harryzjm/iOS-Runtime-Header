@@ -6,8 +6,12 @@
 
 @interface FigAudioCaptureConnectionConfiguration
 {
+    _Bool _builtInMicrophoneStereoAudioCaptureEnabled;
+    int _builtInMicrophonePosition;
 }
 
+@property(nonatomic) int builtInMicrophonePosition; // @synthesize builtInMicrophonePosition=_builtInMicrophonePosition;
+@property(nonatomic) _Bool builtInMicrophoneStereoAudioCaptureEnabled; // @synthesize builtInMicrophoneStereoAudioCaptureEnabled=_builtInMicrophoneStereoAudioCaptureEnabled;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

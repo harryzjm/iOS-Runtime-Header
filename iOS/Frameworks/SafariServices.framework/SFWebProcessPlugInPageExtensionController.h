@@ -19,7 +19,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)clearExtensionScriptWorlds;
 - (void)finalizeJavaScriptForSharingExtension:(id)arg1 arguments:(id)arg2;
-- (void)evaluateJavaScriptForSharingExtension:(id)arg1 javaScript:(id)arg2 extraArguments:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)evaluateJavaScriptForSharingExtension:(id)arg1 extraArguments:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)prepareJavaScriptWorldForSharingExtension:(id)arg1 javaScript:(id)arg2;
 - (void)_clearExtensionControllerInterface;
 - (void)_setUpExtensionControllerInterface;
 - (void)dealloc;

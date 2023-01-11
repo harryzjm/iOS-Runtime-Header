@@ -10,11 +10,10 @@
 - (void)ibWillCompileForObjectPackage:(id)arg1;
 - (_Bool)ibUsesExplicitPreferredMaxLayoutWidth;
 - (void)setIbUsesExplicitPreferredMaxLayoutWidth:(_Bool)arg1;
-- (double)ibAdditionalBaselineOffsetFromTop;
-- (double)ibAdditionalBaselineOffsetFromBottom;
 - (struct CGSize)sizeThatFitsBounds;
+- (void)setIbTextAlignment:(long long)arg1;
 - (_Bool)ibIsMultiline;
-- (struct CGRect)textRect;
+- (struct CGRect)ibTextRect;
 - (_Bool)ibAllowsDefaultDesignTimeOrIntegralIntrinsicSizeCorrection;
 @end
 

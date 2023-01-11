@@ -27,18 +27,22 @@
 
 + (id)colorPresetWithName:(id)arg1 category:(long long)arg2;
 + (id)secondaryColorPresetWithName:(id)arg1 category:(long long)arg2 variation:(float)arg3;
++ (id)colorPresetWithName:(id)arg1 category:(long long)arg2 colorIndex:(unsigned long long)arg3 variation:(float)arg4;
 + (id)colorPresetWithName:(id)arg1 category:(long long)arg2 variation:(float)arg3;
 @property(readonly) NSString *name; // @synthesize name=_name;
 - (void).cxx_destruct;
 - (id)description;
 - (id)gradientLayerForNaturalColorWithSkinColor:(id)arg1;
 - (void)renderNaturalSkinColorIntoCALayer:(id)arg1 withSkinColor:(id)arg2;
+- (id)gradientLayerWithRangeMin:(float)arg1 max:(float)arg2 withSkinColor:(id)arg3;
 - (id)gradientLayerWithRangeMin:(float)arg1 max:(float)arg2;
+- (void)renderColorIntoCALayer:(id)arg1 withSkinColor:(id)arg2;
 - (void)renderColorIntoCALayer:(id)arg1;
 @property(readonly) float variation;
 - (id)colorPresetWithVariation:(float)arg1;
 - (void)didMutate;
 @property(readonly) long long category;
+- (id)derivedCategoriesNames;
 - (id)derivedColorNameForPresetCategory:(long long)arg1;
 - (void)setDerivedColors:(id)arg1;
 - (id)derivedColor;
@@ -48,6 +52,7 @@
 - (struct UIColor *)previewAccentColor;
 - (struct UIColor *)previewColor;
 @property(readonly) UIImage *thumbnail;
+- (_Bool)shouldBlendWithSkinColor;
 @property(readonly) _Bool isNatural;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

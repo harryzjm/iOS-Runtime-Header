@@ -16,6 +16,7 @@
 {
     WebBookmarkCollection *_collection;
     WebBookmark *_parentBookmark;
+    NSArray *_childBookmarks;
     _Bool _addingBookmark;
     _Bool _saveWhenDismissed;
     _SFBookmarkTextEntryTableViewCell *_titleCell;
@@ -33,12 +34,16 @@
     WebBookmark *_bookmark;
 }
 
-@property(retain, nonatomic) WebBookmark *bookmark; // @synthesize bookmark=_bookmark;
+@property(copy, nonatomic) WebBookmark *bookmark; // @synthesize bookmark=_bookmark;
 @property(nonatomic) __weak id <_SFBookmarkInfoViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (_Bool)bookmarkInfoViewControllerShouldUseTranslucentAppearance:(id)arg1;
 - (_Bool)bookmarkInfoViewControllerCanSaveBookmarkChanges:(id)arg1;
 - (void)bookmarkInfoViewController:(id)arg1 didFinishWithResult:(_Bool)arg2;
+- (void)_saveBookmarkKeyPressed;
+- (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (id)keyCommands;
+- (void)cancelPopoverKeyPressed;
 - (id)backgroundColorUsingTranslucentAppearance:(_Bool)arg1;
 - (void)updateTranslucentAppearance;
 - (_Bool)hasTranslucentAppearance;
@@ -93,9 +98,8 @@
 - (void)_returnWasPressedInTextField:(id)arg1;
 - (void)cancel;
 - (void)_saveButtonPressed;
-- (id)initWithBookmarkForFavorites:(id)arg1 inCollection:(id)arg2 addingBookmark:(_Bool)arg3;
 - (id)initWithBookmark:(id)arg1 inCollection:(id)arg2 addingBookmark:(_Bool)arg3;
-- (id)initWithBookmark:(id)arg1 inCollection:(id)arg2 addingBookmark:(_Bool)arg3 toFavorites:(_Bool)arg4 willBeDisplayedModally:(_Bool)arg5;
+- (id)initWithBookmark:(id)arg1 childBookmarks:(id)arg2 inCollection:(id)arg3 addingBookmark:(_Bool)arg4 toFavorites:(_Bool)arg5 willBeDisplayedModally:(_Bool)arg6;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

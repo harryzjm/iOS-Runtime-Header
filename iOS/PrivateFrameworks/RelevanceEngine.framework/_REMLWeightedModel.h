@@ -6,17 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class REMLModel;
+#import <RelevanceEngine/REAutomaticExportedInterface-Protocol.h>
 
-@interface _REMLWeightedModel : NSObject
+@class REFeature, REInteractionDescriptor;
+
+@interface _REMLWeightedModel : NSObject <REAutomaticExportedInterface>
 {
-    float _weight;
-    REMLModel *_model;
+    REInteractionDescriptor *_descriptor;
+    REFeature *_biasFeature;
 }
 
-@property(nonatomic) float weight; // @synthesize weight=_weight;
-@property(retain, nonatomic) REMLModel *model; // @synthesize model=_model;
++ (id)weightedModelWithDescriptor:(id)arg1 featureSet:(id)arg2;
 - (void).cxx_destruct;
+- (void)_configureMode:(id)arg1;
+- (_Bool)_loadModel:(id)arg1 fromURL:(id)arg2 error:(id *)arg3;
+- (_Bool)loadModelFromURL:(id)arg1 error:(id *)arg2;
+- (_Bool)saveModelToURL:(id)arg1 error:(id *)arg2;
+- (id)predictWithFeatures:(id)arg1;
+- (void)trainModelWithFeatureMap:(id)arg1 positiveEvent:(id)arg2;
+- (void)enumerateModels:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) REFeature *selectionFeature;
+@property(readonly, nonatomic) float weight;
+- (float)_biasForFeatureSet:(id)arg1;
+- (id)initWithBiasFeature:(id)arg1;
 
 @end
 

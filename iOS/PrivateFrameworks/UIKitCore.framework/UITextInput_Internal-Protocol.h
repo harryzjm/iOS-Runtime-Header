@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSAttributedString, NSString, UIColor, UIFont, UIPhraseBoundaryGestureRecognizer, UIResponder, UITextInputArrowKeyHistory, UITextPosition, UITextRange, UIView;
+@class NSAttributedString, NSString, UIColor, UIFont, UIResponder, UITextInputArrowKeyHistory, UITextPosition, UITextRange, UIView;
 @protocol UITextInput, UITextInputPrivate;
 
 @protocol UITextInput_Internal
 @property(readonly, nonatomic, getter=_proxyTextInput) UIResponder<UITextInput> *__content;
 - (_Bool)_usesAsynchronousProtocol;
-- (void)_phraseBoundaryGesture:(UIPhraseBoundaryGestureRecognizer *)arg1;
-- (UIPhraseBoundaryGestureRecognizer *)_newPhraseBoundaryGestureRecognizer;
 - (_Bool)_hasMarkedText;
 - (void)_unmarkText;
 - (void)_setAttributedMarkedText:(NSAttributedString *)arg1 selectedRange:(struct _NSRange)arg2;
@@ -40,14 +38,17 @@
 - (UIFont *)_fontForCaretSelection;
 - (UIColor *)_textColorForCaretSelection;
 - (UITextPosition *)_clampedpositionFromPosition:(UITextPosition *)arg1 offset:(int)arg2;
+- (void)_transpose;
 - (void)_deleteForwardAndNotify:(_Bool)arg1;
 - (void)_deleteBackwardAndNotify:(_Bool)arg1;
+- (void)_deleteToEndOfParagraph;
 - (void)_deleteToEndOfLine;
 - (void)_deleteToStartOfLine;
 - (void)_deleteByWord;
 - (UITextRange *)_intersectionOfRange:(UITextRange *)arg1 andRange:(UITextRange *)arg2;
 - (_Bool)_range:(UITextRange *)arg1 intersectsRange:(UITextRange *)arg2;
 - (_Bool)_range:(UITextRange *)arg1 containsRange:(UITextRange *)arg2;
+- (UITextRange *)_rangeOfSmartSelectionIncludingRange:(UITextRange *)arg1;
 - (UITextPosition *)_findPleasingWordBoundaryFromPosition:(UITextPosition *)arg1;
 - (UITextRange *)_rangeSpanningTextUnit:(long long)arg1 andPosition:(UITextPosition *)arg2;
 - (UITextRange *)_fullRange;

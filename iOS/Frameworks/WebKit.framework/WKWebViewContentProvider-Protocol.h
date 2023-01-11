@@ -6,9 +6,10 @@
 
 #import <WebKit/NSObject-Protocol.h>
 
-@class NSData, NSString, UIScrollView, UIView, WKWebView;
+@class NSData, NSString, UIEvent, UIScrollView, UIView, WKWebView;
 
 @protocol WKWebViewContentProvider <NSObject>
++ (_Bool)web_requiresCustomSnapshotting;
 @property(readonly, nonatomic) UIView *web_contentView;
 - (void)web_hideFindUI;
 - (void)web_findString:(NSString *)arg1 options:(unsigned long long)arg2 maxCount:(unsigned long long)arg3;
@@ -25,6 +26,8 @@
 @property(readonly, nonatomic) _Bool web_isBackground;
 @property(readonly, nonatomic) NSString *web_suggestedFilename;
 @property(readonly, nonatomic) NSData *web_dataRepresentation;
+- (void)web_snapshotRectInContentViewCoordinates:(struct CGRect)arg1 snapshotWidth:(double)arg2 completionHandler:(void (^)(struct CGImage *))arg3;
+- (_Bool)web_handleKeyEvent:(UIEvent *)arg1;
 - (void)web_beginAnimatedResizeWithUpdates:(void (^)(void))arg1;
 - (void)web_scrollViewDidZoom:(UIScrollView *)arg1;
 - (void)web_scrollViewDidEndZooming:(UIScrollView *)arg1 withView:(UIView *)arg2 atScale:(double)arg3;

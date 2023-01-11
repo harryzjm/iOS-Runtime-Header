@@ -4,7 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
+
 @protocol CTXPCServiceBaseInterface
+- (void)registerForNotifications:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)ping:(void (^)(NSError *))arg1;
 - (void)getDescriptorsForDomain:(long long)arg1 completion:(void (^)(CTServiceDescriptorContainer *, NSError *))arg2;
 - (void)getDualSimCapability:(void (^)(long long, NSError *))arg1;

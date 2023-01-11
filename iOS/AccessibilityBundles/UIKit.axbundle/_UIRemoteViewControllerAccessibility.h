@@ -11,6 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)_axShouldTakeBackFocus;
+- (void)__handleFocusMovementAction:(id)arg1;
+- (id)disconnect;
 - (void)__setViewServiceIsDisplayingPopover:(_Bool)arg1;
 - (void)_awakeWithConnectionInfo:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation:(_Bool)arg1;

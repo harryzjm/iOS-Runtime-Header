@@ -9,18 +9,22 @@
 #import <ClockKit/NSCopying-Protocol.h>
 #import <ClockKit/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSMutableSet, UIColor;
+@class NSDictionary, NSHashTable, UIColor;
 
 @interface CLKComplicationTemplate : NSObject <NSSecureCoding, NSCopying>
 {
     NSDictionary *_metadata;
-    NSMutableSet *_activeClients;
+    NSHashTable *_activeClients;
     _Bool _finalized;
+    _Bool _linkedOnOrAfterGrace;
     UIColor *_tintColor;
+    long long _uiSensitivity;
 }
 
 + (id)complicationTemplateWithJSONObjectRepresentation:(id)arg1 bundle:(id)arg2;
 + (_Bool)supportsSecureCoding;
+@property(nonatomic, setter=setUISensitivity:) long long uiSensitivity; // @synthesize uiSensitivity=_uiSensitivity;
+@property(readonly, nonatomic, getter=isLinkedOnOrAfterGrace) _Bool linkedOnOrAfterGrace; // @synthesize linkedOnOrAfterGrace=_linkedOnOrAfterGrace;
 @property(copy, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 - (void).cxx_destruct;
 - (void)_enumerateAllKeysWithBlock:(CDUnknownBlockType)arg1;
@@ -39,6 +43,7 @@
 - (void)_enumerateTextProviderKeysWithBlock:(CDUnknownBlockType)arg1;
 - (id)JSONObjectRepresentationWritingResourcesToBundlePath:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)init;
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;

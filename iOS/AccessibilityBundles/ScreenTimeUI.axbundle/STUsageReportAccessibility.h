@@ -11,9 +11,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_countedDataSetForItemType:(unsigned long long)arg1 budgetItemIdentifier:(id)arg2;
-- (id)_timedDataSetForItemType:(unsigned long long)arg1;
+- (id)_countedDataSetForItemType:(unsigned long long)arg1 budgetItemIdentifier:(id)arg2 includeIndicatorImageName:(_Bool)arg3;
+- (id)_timedDataSetForItemType:(unsigned long long)arg1 useDarkColors:(_Bool)arg2;
 - (id)_timedDataSetForItemType:(unsigned long long)arg1 budgetItemIdentifier:(id)arg2;
+- (id)screenTimeDataSet;
+- (unsigned long long)_axTimePeriodForDescription;
 - (id)_accessibilityStringForDate:(id)arg1 timePeriod:(unsigned long long)arg2;
 
 @end

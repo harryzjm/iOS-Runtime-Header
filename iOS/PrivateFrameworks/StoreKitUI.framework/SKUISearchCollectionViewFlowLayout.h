@@ -6,6 +6,7 @@
 
 @class UICollectionView;
 
+__attribute__((visibility("hidden")))
 @interface SKUISearchCollectionViewFlowLayout
 {
     UICollectionView *_collectionView;

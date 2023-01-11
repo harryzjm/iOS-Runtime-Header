@@ -11,8 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_loadSnapshotContentViews;
-- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

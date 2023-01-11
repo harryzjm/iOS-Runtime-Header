@@ -25,7 +25,7 @@
 @property(readonly) long long startingColumnNumber; // @synthesize startingColumnNumber=_startingColumnNumber;
 - (void).cxx_destruct;
 - (id)dvt_persistableStringRepresentation;
-- (id)dvt_initFromPersistableStringRepresentation:(id)arg1 error:(id *)arg2;
+- (id)dvt_initFromPersistableStringRepresentation:(id)arg1 error:(out id *)arg2;
 - (id)copyWithURL:(id)arg1;
 - (long long)compare:(id)arg1;
 - (_Bool)isEqualDisregardingTimestamp:(id)arg1;

@@ -13,7 +13,6 @@
 + (id)safeCategoryTargetClassName;
 - (id)_axCreateAggregateStatusView:(id)arg1 primaryTitle:(id)arg2 batteryLevelLabel:(id)arg3 chargingImage:(id)arg4 warningImage:(id)arg5;
 - (void)_accessibilityUpdateAccessibilityElements;
-- (_Bool)_accessibilityIsAlertContainer;
 - (void)_updateBatteryLevelLeft:(double)arg1 levelRight:(double)arg2 levelCase:(double)arg3;
 - (void)viewWillAppear:(_Bool)arg1;
 - (_Bool)accessibilityPerformEscape;

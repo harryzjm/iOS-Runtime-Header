@@ -6,11 +6,11 @@
 
 #import <PhotoLibrary/SBFLegibilitySettingsProviderDelegate-Protocol.h>
 
-@class NSArray, NSString, PLWallpaperNavigationItem, SBSUIWallpaperPreviewViewController;
+@class NSArray, NSString, SBSUIWallpaperPreviewViewController, UINavigationItem;
 
 @interface PLWallpaperImageViewController <SBFLegibilitySettingsProviderDelegate>
 {
-    PLWallpaperNavigationItem *_navItem;
+    UINavigationItem *_navItem;
     int _wallpaperMode;
     NSArray *_navigationToolbarItems;
     _Bool _saveWallpaperData;
@@ -51,7 +51,7 @@
 - (void)_updateTitles;
 - (_Bool)uiipc_useTelephonyUI;
 - (void)_adjustScrollViewGeometry;
-- (int)imageFormat;
+- (unsigned short)imageFormat;
 - (_Bool)clientIsWallpaper;
 - (void)setupNavigationItem;
 - (void)loadView;

@@ -20,13 +20,13 @@ struct CGAffineTransform {
 };
 
 struct CGPoint {
-    double _field1;
-    double _field2;
+    double x;
+    double y;
 };
 
 struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
+    struct CGPoint origin;
+    struct CGSize size;
 };
 
 struct CGSize {
@@ -56,7 +56,16 @@ typedef struct {
     _Bool showScanningState;
     _Bool showScanningStateDuringFaceDetect;
     double minimumDurationBeforeShowScanningState;
-} CDStruct_4613c6c6;
+    _Bool bkCoachingHintsEnabled;
+    double minimumDurationBetweenLeavingCoachingAndCoaching;
+    double minimumDurationShowingCoaching;
+    double durationOnCameraCoveredGlyphBeforeCoaching;
+    double durationToSuppressCameraCoveredWhenWakingWithSmartCover;
+    _Bool coachingDelaysUnlock;
+    _Bool suppressFaceIDDisabledState;
+    _Bool spinBeforeCoaching;
+    unsigned long long substate;
+} CDStruct_29b32c11;
 
 typedef struct {
     long long fromState;

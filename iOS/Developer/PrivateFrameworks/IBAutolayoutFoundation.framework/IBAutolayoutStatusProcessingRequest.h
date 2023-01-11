@@ -4,19 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IBAutolayoutArbitrationUnit, IBAutolayoutArbitrationUnitSparseRepresentation;
+@class IBAutolayoutArbitrationUnit, IBAutolayoutArbitrationUnitSparseRepresentation, NSDictionary;
 
 @interface IBAutolayoutStatusProcessingRequest
 {
     IBAutolayoutArbitrationUnitSparseRepresentation *_sparseRepresentation;
     IBAutolayoutArbitrationUnit *_arbitrationUnit;
+    NSDictionary *_arbitrationOptions;
 }
 
+@property(readonly, nonatomic) NSDictionary *arbitrationOptions; // @synthesize arbitrationOptions=_arbitrationOptions;
 @property(readonly, nonatomic) IBAutolayoutArbitrationUnit *arbitrationUnit; // @synthesize arbitrationUnit=_arbitrationUnit;
 - (void).cxx_destruct;
+- (id)description;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
-- (id)initWithArbitrationUnit:(id)arg1 resultPhase:(long long)arg2 postProcessingBlock:(CDUnknownBlockType)arg3;
+- (id)initWithArbitrationUnit:(id)arg1 arbitrationOptions:(id)arg2 resultPhase:(long long)arg3 postProcessingBlock:(CDUnknownBlockType)arg4;
 
 @end
 

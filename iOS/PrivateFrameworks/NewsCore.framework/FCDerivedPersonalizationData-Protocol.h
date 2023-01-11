@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <NewsCore/NFCopying-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
 @class NSArray, NSDictionary, NSString;
 @protocol FCPersonalizationAggregate;
 
-@protocol FCDerivedPersonalizationData <NSObject>
+@protocol FCDerivedPersonalizationData <NSObject, NFCopying>
 - (id <FCPersonalizationAggregate>)aggregateForFeatureKey:(NSString *)arg1;
 - (NSDictionary *)aggregatesForFeatureKeys:(NSArray *)arg1;
 @end

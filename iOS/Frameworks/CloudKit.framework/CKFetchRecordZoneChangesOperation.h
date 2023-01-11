@@ -10,7 +10,9 @@
 {
     _Bool _fetchAllChanges;
     _Bool _shouldFetchAssetContents;
+    _Bool _shouldReportAllPerItemFailures;
     CDUnknownBlockType _recordChangedBlock;
+    CDUnknownBlockType _perRecordChangeCompletionBlock;
     CDUnknownBlockType _recordWithIDWasDeletedBlock;
     CDUnknownBlockType _recordZoneChangeTokensUpdatedBlock;
     CDUnknownBlockType _recordZoneFetchCompletionBlock;
@@ -23,6 +25,7 @@
     NSDictionary *_assetTransferOptionsByRecordTypeAndKey;
 }
 
+@property(nonatomic) _Bool shouldReportAllPerItemFailures; // @synthesize shouldReportAllPerItemFailures=_shouldReportAllPerItemFailures;
 @property(retain, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
 @property(retain, nonatomic) NSMutableDictionary *perItemErrors; // @synthesize perItemErrors=_perItemErrors;
 @property(nonatomic) _Bool shouldFetchAssetContents; // @synthesize shouldFetchAssetContents=_shouldFetchAssetContents;
@@ -34,6 +37,7 @@
 - (void).cxx_destruct;
 - (id)activityCreate;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
+- (id)partialFailureForItemsInZone:(id)arg1;
 - (void)_handleProgressCallback:(id)arg1;
 - (void)performCKOperation;
 - (_Bool)CKOperationShouldRun:(id *)arg1;
@@ -47,6 +51,7 @@
 @property(copy, nonatomic) CDUnknownBlockType recordZoneFetchCompletionBlock; // @synthesize recordZoneFetchCompletionBlock=_recordZoneFetchCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordZoneChangeTokensUpdatedBlock; // @synthesize recordZoneChangeTokensUpdatedBlock=_recordZoneChangeTokensUpdatedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordWithIDWasDeletedBlock; // @synthesize recordWithIDWasDeletedBlock=_recordWithIDWasDeletedBlock;
+@property(copy, nonatomic) CDUnknownBlockType perRecordChangeCompletionBlock; // @synthesize perRecordChangeCompletionBlock=_perRecordChangeCompletionBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordChangedBlock; // @synthesize recordChangedBlock=_recordChangedBlock;
 - (id)initWithRecordZoneIDs:(id)arg1 configurationsByRecordZoneID:(id)arg2;
 - (id)init;

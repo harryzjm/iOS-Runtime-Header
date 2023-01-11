@@ -4,22 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MNNavigationSessionManager, MNRoutePlanningDetails;
+@class MNNavigationSessionManager, MNStartNavigationDetails;
 
-__attribute__((visibility("hidden")))
 @interface MNNavigationStateGuidance
 {
-    MNRoutePlanningDetails *_routePlanningDetails;
     MNNavigationSessionManager *_navigationSessionManager;
+    MNStartNavigationDetails *_startDetails;
 }
 
-+ (id)guidanceStateForRoutePlanningDetails:(id)arg1 stateManager:(id)arg2 navigationSessionManager:(id)arg3;
++ (id)guidanceStateForStartDetails:(id)arg1 stateManager:(id)arg2 navigationSessionManager:(id)arg3;
 - (void).cxx_destruct;
+- (void)resumeRealtimeUpdatesForSubscriber:(id)arg1;
+- (void)pauseRealtimeUpdatesForSubscriber:(id)arg1;
+- (void)recordPedestrianTracePath:(id)arg1;
 - (void)recordTraceBookmarkAtCurrentPositionWthScreenshotData:(id)arg1;
 - (void)setTracePosition:(double)arg1;
 - (void)setTracePlaybackSpeed:(double)arg1;
 - (void)setTraceIsPlaying:(_Bool)arg1;
 - (void)acceptReroute:(_Bool)arg1 forTrafficIncidentAlertDetails:(id)arg2;
+- (void)setJunctionViewImageWidth:(double)arg1 height:(double)arg2;
 - (void)setRideIndex:(unsigned long long)arg1 forLegIndex:(unsigned long long)arg2;
 - (void)setDisplayedStepIndex:(unsigned long long)arg1;
 - (void)setIsConnectedToCarplay:(_Bool)arg1;
@@ -29,17 +32,20 @@ __attribute__((visibility("hidden")))
 - (void)vibrateForPrompt:(unsigned long long)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)repeatCurrentTrafficAlertWithReply:(CDUnknownBlockType)arg1;
 - (void)repeatCurrentGuidanceWithReply:(CDUnknownBlockType)arg1;
-- (void)switchToRouteWithDetails:(id)arg1;
+- (void)switchToRoute:(id)arg1;
 - (void)resumeOriginalDestination;
 - (void)updateDestination:(id)arg1;
 - (void)stopNavigation;
+- (void)preEnterState;
 - (void)leaveState;
 - (void)enterState;
-- (id)initWithStateManager:(id)arg1 navigationSessionManager:(id)arg2 routePlanningDetails:(id)arg3;
+- (id)initWithStateManager:(id)arg1 navigationSessionManager:(id)arg2 startDetails:(id)arg3;
 - (id)traceManager;
-- (unsigned long long)desiredResourcePolicy;
+- (_Bool)shouldClearStoredRoutes;
 - (unsigned long long)desiredLocationProviderType;
 - (_Bool)requiresHighMemoryThreshold;
+- (id)currentDestination;
+- (void)updateGuidanceWithData:(id)arg1 reply:(CDUnknownBlockType)arg2;
 
 @end
 

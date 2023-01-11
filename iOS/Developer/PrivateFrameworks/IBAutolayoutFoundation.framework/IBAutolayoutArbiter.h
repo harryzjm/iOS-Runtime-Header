@@ -34,6 +34,7 @@
 @property(copy) NSSet *constraintsToRemove; // @synthesize constraintsToRemove=_constraintsToRemove;
 @property(readonly) IBAutolayoutEngine *engine; // @synthesize engine=_engine;
 - (void).cxx_destruct;
+- (id)description;
 - (id)arbitrateWithOptions:(id)arg1;
 - (void)removeTemporaryConstraintsForAncestorsOfWhitelistedViews;
 - (void)resolveMutuallyExclusiveConstraintsRemovedDuringEngineBootstrapping;

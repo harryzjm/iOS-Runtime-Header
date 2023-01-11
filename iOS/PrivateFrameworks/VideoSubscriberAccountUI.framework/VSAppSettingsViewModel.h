@@ -46,6 +46,10 @@
 @property(readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(readonly, copy, nonatomic) NSString *adamID; // @synthesize adamID=_adamID;
 - (void).cxx_destruct;
+- (id)appIconURLForSize:(struct CGSize)arg1;
+- (id)appAdamIDs;
+- (id)appBundleIDs;
+- (id)name;
 @property(readonly, copy) NSString *description;
 - (void)applicationsDidFailToUninstall:(id)arg1;
 - (void)applicationsDidUninstall:(id)arg1;
@@ -69,6 +73,7 @@
 - (void)_updatePrivacyState;
 - (id)initWithAppDescription:(id)arg1 privacyVoucher:(id)arg2 restrictionsCenter:(id)arg3 privacyFacade:(id)arg4;
 - (id)initWithBundle:(struct __CFBundle *)arg1 restrictionsCenter:(id)arg2 privacyFacade:(id)arg3;
+- (id)initWithBundle:(struct __CFBundle *)arg1 restrictionsCenter:(id)arg2 privacyFacade:(id)arg3 adamID:(id)arg4;
 - (id)init;
 - (void)dealloc;
 - (id)initWithApplicationWorkspace:(id)arg1;

@@ -11,8 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)initWithPassType:(unsigned long long)arg1;
+- (id)initWithPassType:(unsigned long long)arg1 delegate:(id)arg2;
+- (void)didMoveToWindow;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)setShowActivityIndicator:(_Bool)arg1;
 
 @end
 

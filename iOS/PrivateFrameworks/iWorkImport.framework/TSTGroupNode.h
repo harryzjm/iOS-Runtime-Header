@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     TSUMutableUUIDSet *_rowUids;
     TSTGroupNode *_parentNode;
     TSTGroupNodeFormatManager *_formatManager;
+    unordered_map_8a2ad1cf _childNodesByRowUid;
 }
 
 + (id)localizedStringForCellValue:(id)arg1 categoryLevel:(unsigned char)arg2 groupBy:(id)arg3;
@@ -82,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (id)safeChildren;
 - (void)removeChildForKey:(id)arg1;
 - (void)addChild:(id)arg1 withKey:(id)arg2;
+- (void)dealloc;
 - (id)initWithArchive:(const struct CategoryOwnerArchive_GroupByArchive_GroupNodeArchive *)arg1 forGroupBy:(id)arg2 atLevel:(unsigned char)arg3;
 - (id)initWithGroupCellValue:(id)arg1 atLevel:(unsigned char)arg2 groupUid:(UUIDData_5fbc143e)arg3 children:(id)arg4;
 - (id)initAsRootNode;

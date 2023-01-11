@@ -12,6 +12,7 @@
     short _importedBy;
     short _videoFrameRate;
     NSArray *_resources;
+    NSArray *_expungeableResourceStates;
     NSDate *_creationDate;
     NSString *_itemType;
     NSDate *_importDate;
@@ -38,8 +39,11 @@
 @property(copy, nonatomic) NSDate *importDate; // @synthesize importDate=_importDate;
 @property(copy, nonatomic) NSString *itemType; // @synthesize itemType=_itemType;
 @property(copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property(copy, nonatomic) NSArray *expungeableResourceStates; // @synthesize expungeableResourceStates=_expungeableResourceStates;
 @property(copy, nonatomic) NSArray *resources; // @synthesize resources=_resources;
 - (void).cxx_destruct;
+- (_Bool)isMasterChange;
+- (_Bool)allowsToOnlyUploadNewResources;
 - (_Bool)isResourceTypeAGeneratedDerivative:(unsigned long long)arg1;
 - (unsigned long long)dataClassType;
 - (_Bool)supportsDeletion;

@@ -23,16 +23,17 @@
 - (void).cxx_destruct;
 - (id)_swatchImageForSmokeColor:(unsigned long long)arg1 andDialShape:(unsigned long long)arg2;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
+- (_Bool)_wantsConstantSpeedZoom;
 - (void)reloadDataSources;
 - (void)setupDataSources;
 - (void)_updateDialSize;
 - (void)_applyVideoPlayerTransform;
 - (id)imageForEditOption:(id)arg1;
+- (id)_complicationsCompanionForegroundColor;
 - (void)_customizeVideoPlayerOnSetup;
 - (void)_handleEitherScreenWake;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
-- (void)_configureReusableTimeView:(id)arg1;
-- (id)_editOptionThatHidesAllComplications;
+- (void)_configureTimeView:(id)arg1;
 
 @end
 

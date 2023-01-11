@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class NSArray, WLKSiriBestPlayablesResponse;
 
 @interface WLKSiriBestPlayableForStatsIDsOperation
 {
     NSArray *_statsIDs;
+    WLKSiriBestPlayablesResponse *_response;
 }
 
+@property(readonly, nonatomic) WLKSiriBestPlayablesResponse *response; // @synthesize response=_response;
 @property(readonly, copy, nonatomic) NSArray *statsIDs; // @synthesize statsIDs=_statsIDs;
 - (void).cxx_destruct;
-- (id)responseProcessor;
-- (id)initWithStatsIDs:(id)arg1;
+- (void)processResponse;
+- (id)initWithStatsIDs:(id)arg1 caller:(id)arg2;
 
 @end
 

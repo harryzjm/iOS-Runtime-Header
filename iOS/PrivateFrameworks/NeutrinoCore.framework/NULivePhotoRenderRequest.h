@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NUColorSpace;
+@class NUColorSpace, NURenderContext;
 @protocol NUScalePolicy;
 
 @interface NULivePhotoRenderRequest
 {
+    NURenderContext *_stillBufferRenderContext;
     id <NUScalePolicy> _scalePolicy;
     NUColorSpace *_colorSpace;
 }

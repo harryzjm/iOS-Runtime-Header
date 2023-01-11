@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MFHeaderLabelView, NSString, UILabel;
+@class CNComposeHeaderLabelView, NSString, UILabel;
 
 @interface MFComposeMultiView
 {
     UILabel *_accountLabel;
-    MFHeaderLabelView *_imageSizeHeaderLabelView;
+    CNComposeHeaderLabelView *_imageSizeHeaderLabelView;
     UILabel *_imageSizeLabel;
     UILabel *_placeholderImageSizeLabel;
     _Bool _imageSizeShown;
@@ -20,6 +20,7 @@
 
 @property(nonatomic, getter=isAccountAutoselected) _Bool accountAutoselected; // @synthesize accountAutoselected=_accountAutoselected;
 @property(nonatomic) _Bool accountHasUnsafeDomain; // @synthesize accountHasUnsafeDomain=_accountHasUnsafeDomain;
+- (void).cxx_destruct;
 - (id)labelColor;
 - (void)refreshPreferredContentSize;
 - (void)layoutSubviews;
@@ -31,7 +32,6 @@
 - (id)placeholderImageSizeLabel;
 - (id)imageSizeLabel;
 - (id)accountLabel;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

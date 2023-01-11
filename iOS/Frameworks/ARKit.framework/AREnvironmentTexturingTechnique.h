@@ -8,12 +8,14 @@
 
 @interface AREnvironmentTexturingTechnique
 {
+    _Bool _wantsHDREnvironmentTextures;
     _Bool _networkIntialized;
     AREnvironmentProbeManager *_probeManager;
 }
 
 @property _Bool networkIntialized; // @synthesize networkIntialized=_networkIntialized;
 @property(retain) AREnvironmentProbeManager *probeManager; // @synthesize probeManager=_probeManager;
+@property(readonly) _Bool wantsHDREnvironmentTextures; // @synthesize wantsHDREnvironmentTextures=_wantsHDREnvironmentTextures;
 - (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
 - (void)requestResultDataAtTimestamp:(double)arg1 context:(id)arg2;
@@ -22,7 +24,7 @@
 - (void)reconfigureFrom:(id)arg1;
 - (_Bool)reconfigurableFrom:(id)arg1;
 - (unsigned long long)requiredSensorDataTypes;
-- (id)initWithOptions:(long long)arg1;
+- (id)initWithOptions:(long long)arg1 wantsHDREnvironmentTextures:(_Bool)arg2;
 
 @end
 

@@ -6,6 +6,7 @@
 
 @class ACAccountStore, SKUIFacebookLikeStatus, SKUIFacebookPageComponent, SKUIReviewsFacebookView, SKUIViewElementLayoutContext;
 
+__attribute__((visibility("hidden")))
 @interface SKUIFacebookPageSection
 {
     ACAccountStore *_accountStore;

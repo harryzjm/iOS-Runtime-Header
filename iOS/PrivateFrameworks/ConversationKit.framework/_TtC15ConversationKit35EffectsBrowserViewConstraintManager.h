@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/SwiftObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC15ConversationKit35EffectsBrowserViewConstraintManager : SwiftObject
+@interface _TtC15ConversationKit35EffectsBrowserViewConstraintManager : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *constraints;
+    MISSING_TYPE *constantConstraints;
+    MISSING_TYPE *effectsBrowserViewTopAnchor;
 }
 
 @end

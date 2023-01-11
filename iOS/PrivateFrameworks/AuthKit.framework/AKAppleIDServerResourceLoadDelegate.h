@@ -8,12 +8,13 @@
 
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
-@class AKAnisetteData, AKDevice, NSArray, NSNumber, NSString;
+@class AKAnisetteData, AKAnisetteProvisioningController, AKAttestationData, AKDevice, NSArray, NSNumber, NSString;
 @protocol AKAnisetteServiceProtocol;
 
 @interface AKAppleIDServerResourceLoadDelegate : NSObject <NSSecureCoding>
 {
     NSString *_altDSID;
+    AKAnisetteProvisioningController *_proxiedProvisioningController;
     _Bool _shouldSendEphemeralAuthHeader;
     _Bool _shouldSendICSCIntentHeader;
     _Bool _shouldSendLocalUserHasAppleIDLoginHeader;
@@ -30,24 +31,32 @@
     NSString *_identityToken;
     NSString *_proxyAppName;
     NSString *_clientAppName;
+    NSString *_appProvidedContext;
     NSNumber *_hasEmptyPasswordOverride;
     NSString *_securityUpgradeContext;
     NSString *_followupItems;
     AKDevice *_proxiedDevice;
+    NSString *_proxiedAltDSID;
+    NSString *_proxiedIdentityToken;
     id <AKAnisetteServiceProtocol> _anisetteDataProvider;
     AKAnisetteData *_proxiedDeviceAnisetteData;
+    AKAttestationData *_proxiedDeviceAttestationData;
 }
 
 + (unsigned long long)signalFromServerResponse:(id)arg1;
 + (id)sharedController;
 + (_Bool)supportsSecureCoding;
 @property(nonatomic) _Bool shouldSendSigningHeaders; // @synthesize shouldSendSigningHeaders=_shouldSendSigningHeaders;
+@property(retain, nonatomic) AKAttestationData *proxiedDeviceAttestationData; // @synthesize proxiedDeviceAttestationData=_proxiedDeviceAttestationData;
 @property(retain, nonatomic) AKAnisetteData *proxiedDeviceAnisetteData; // @synthesize proxiedDeviceAnisetteData=_proxiedDeviceAnisetteData;
 @property(retain, nonatomic) id <AKAnisetteServiceProtocol> anisetteDataProvider; // @synthesize anisetteDataProvider=_anisetteDataProvider;
+@property(retain, nonatomic) NSString *proxiedIdentityToken; // @synthesize proxiedIdentityToken=_proxiedIdentityToken;
+@property(retain, nonatomic) NSString *proxiedAltDSID; // @synthesize proxiedAltDSID=_proxiedAltDSID;
 @property(retain, nonatomic) AKDevice *proxiedDevice; // @synthesize proxiedDevice=_proxiedDevice;
 @property(copy, nonatomic) NSString *followupItems; // @synthesize followupItems=_followupItems;
 @property(copy, nonatomic) NSString *securityUpgradeContext; // @synthesize securityUpgradeContext=_securityUpgradeContext;
 @property(retain, nonatomic) NSNumber *hasEmptyPasswordOverride; // @synthesize hasEmptyPasswordOverride=_hasEmptyPasswordOverride;
+@property(copy, nonatomic) NSString *appProvidedContext; // @synthesize appProvidedContext=_appProvidedContext;
 @property(copy, nonatomic) NSString *clientAppName; // @synthesize clientAppName=_clientAppName;
 @property(copy, nonatomic) NSString *proxyAppName; // @synthesize proxyAppName=_proxyAppName;
 @property(copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
@@ -70,8 +79,11 @@
 - (_Bool)isAuthenticationRequired:(id)arg1;
 - (_Bool)isResponseFinal:(id)arg1;
 - (void)_signWithFeatureOptInHeaders:(id)arg1;
+- (void)_signWithProxiedDeviceHeaders:(id)arg1;
 - (void)signRequestWithCommonHeaders:(id)arg1;
 - (void)_signRequest:(id)arg1;
+- (id)signingController;
+- (id)_proxiedProvisioningController;
 - (void)signRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)signRequest:(id)arg1;
 @property(nonatomic) _Bool shouldSendAbsintheHeader;

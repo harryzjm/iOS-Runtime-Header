@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSIndexSet, TSCH3DShaderEffects, TSCH3DShaderEffectsStates;
+@class NSIndexSet, NSMutableArray, TSCH3DShaderEffects, TSCH3DShaderEffectsStates;
 
 __attribute__((visibility("hidden")))
 @interface TSCH3DCombinationRenderProcessor
@@ -14,22 +14,29 @@ __attribute__((visibility("hidden")))
     tmat4x4_3074befe mProjection;
     _Bool mTransformChanged;
     _Bool mProjectionChanged;
-    StateStack_6cdf83e9 mObjectStateStack;
+    StateStack_2a9a65b0 mObjectStateStack;
+    struct StateStack<TSCH3D::RenderState, 10> mRenderStateStack;
     TSCH3DShaderEffects *mEffects;
-    TSCH3DShaderEffectsStates *mShaderEffectsStates;
+    NSMutableArray *mEffectsStatesStack;
 }
 
 + (id)processorWithOriginal:(id)arg1 enableTypes:(id)arg2;
+@property(retain, nonatomic) NSMutableArray *effectsStatesStack; // @synthesize effectsStatesStack=mEffectsStatesStack;
 @property(readonly, nonatomic) _Bool projectionChanged; // @synthesize projectionChanged=mProjectionChanged;
 @property(readonly, nonatomic) _Bool transformChanged; // @synthesize transformChanged=mTransformChanged;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)popRenderState;
+- (void)pushRenderState;
+- (void)setRenderState:(const struct RenderState *)arg1;
+- (struct RenderState)renderState;
+@property(readonly, nonatomic) TSCH3DShaderEffectsStates *currentEffectsStates;
 - (id)effectsStates;
 - (id)effects;
 - (void)resetBuffers;
 - (void)popState;
 - (void)pushState;
-- (StateStack_6cdf83e9 *)objectStateStack;
+- (StateStack_2a9a65b0 *)objectStateStack;
 - (void)projection:(tmat4x4_3074befe *)arg1;
 - (void)popMatrix;
 - (void)pushMatrix;
@@ -42,10 +49,10 @@ __attribute__((visibility("hidden")))
 - (tmat4x4_3074befe *)projectionTransform;
 - (tmat4x4_3074befe *)currentTransform;
 - (void)resetTransformChangeFlags;
+- (_Bool)renderStateEnabled;
 - (_Bool)shaderEnabled;
 - (_Bool)objectStateEnabled;
 - (_Bool)matrixEnabled;
-- (void)dealloc;
 - (id)initWithOriginal:(id)arg1 enableTypes:(id)arg2;
 - (id)initWithOriginal:(id)arg1;
 

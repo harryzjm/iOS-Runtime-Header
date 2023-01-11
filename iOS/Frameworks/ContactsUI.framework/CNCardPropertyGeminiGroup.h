@@ -7,8 +7,13 @@
 __attribute__((visibility("hidden")))
 @interface CNCardPropertyGeminiGroup
 {
+    _Bool _shouldShowGemini;
 }
 
+@property(nonatomic) _Bool shouldShowGemini; // @synthesize shouldShowGemini=_shouldShowGemini;
+- (id)displayItems;
+- (id)editingItems;
+- (void)setGeminiResult:(id)arg1;
 - (id)_loadPropertyItems;
 
 @end

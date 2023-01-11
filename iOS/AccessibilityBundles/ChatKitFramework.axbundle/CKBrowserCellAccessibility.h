@@ -13,6 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_axShinyStatusLabel;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityUserInputLabels;
 - (id)accessibilityLabel;
 - (struct CGRect)accessibilityFrame;
 - (_Bool)isAccessibilityElement;

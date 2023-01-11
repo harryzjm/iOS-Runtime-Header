@@ -8,6 +8,7 @@
 {
 }
 
++ (Class)meltedClass;
 + (id)relations;
 + (id)defaultPropertiesToLoad;
 - (id)description;

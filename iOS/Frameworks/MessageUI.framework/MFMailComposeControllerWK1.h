@@ -12,6 +12,7 @@
 - (void)_beginBlockingBodyScroll;
 - (void)setIsModal:(_Bool)arg1;
 - (id)_selectedAttachmentURLs;
+- (id)_copyMessagePlainTextForDonationRemoveQuotes:(_Bool)arg1;
 - (id)_copyMessagePlainTextForDonation;
 - (id)_copyMessageDataForActivityHandoff;
 - (void)_setBodyFieldAutocorrectionContext:(id)arg1;
@@ -21,6 +22,7 @@
 - (void)loadView;
 - (void)_bodyTextChanged:(id)arg1;
 - (id)_allocateComposeView;
+- (id)_signatureController;
 - (id)_composeBodyField;
 - (id)_createSignatureController;
 - (void)dealloc;

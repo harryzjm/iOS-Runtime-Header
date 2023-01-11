@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSHashTable, NSMutableArray, RCExtAudioFilePipe;
+@class AVAudioFile, NSError, NSHashTable, NSMutableArray;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface RCWaveformGenerator : NSObject
@@ -19,7 +19,7 @@
     NSHashTable *_weakObservers;
     NSMutableArray *_internalFinishedLoadingBlockUUIDs;
     NSMutableArray *_internalFinishedLoadingBlocks;
-    RCExtAudioFilePipe *_activeExtAudioFile;
+    AVAudioFile *_activeAudioFile;
     struct PowerMeter _samplePowerMeter;
     _Bool _isSampleRateKnown;
     vector_7584168e _powerLevelBuffer;
@@ -35,7 +35,7 @@
     long long _overviewUnitsPerSecond;
 }
 
-@property(readonly, nonatomic) _Bool canceled; // @synthesize canceled=_canceled;
+@property(nonatomic) _Bool canceled; // @synthesize canceled=_canceled;
 @property(readonly, nonatomic) long long state; // @synthesize state=_state;
 @property(nonatomic) long long overviewUnitsPerSecond; // @synthesize overviewUnitsPerSecond=_overviewUnitsPerSecond;
 @property(readonly, nonatomic) double segmentFlushInterval; // @synthesize segmentFlushInterval=_segmentFlushInterval;
@@ -50,8 +50,8 @@
 - (void)_onQueue_flushWaveformSegment:(id)arg1;
 - (_Bool)_appendAveragePowerLevelsByDigestingWaveformSegments:(id)arg1;
 - (id)synchronouslyApproximateWaveformForAVContentURL:(id)arg1 byReadingCurrentFileAheadTimeRange:(CDStruct_73a5d3ca)arg2;
-- (void)_onQueue_appendAveragePowerLevelsByDigestingTimeRange:(CDStruct_73a5d3ca)arg1 inExtAudioFile:(id)arg2 sourceFormat:(struct AudioStreamBasicDescription *)arg3 outputFormat:(struct AudioStreamBasicDescription *)arg4;
-- (void)_appendAveragePowerLevelsByDigestingTimeRange:(CDStruct_73a5d3ca)arg1 inExtAudioFile:(id)arg2 sourceFormat:(struct AudioStreamBasicDescription *)arg3 outputFormat:(struct AudioStreamBasicDescription *)arg4;
+- (void)_onQueue_appendAveragePowerLevelsByDigestingTimeRange:(CDStruct_73a5d3ca)arg1 inAudioFile:(id)arg2;
+- (void)_appendAveragePowerLevelsByDigestingTimeRange:(CDStruct_73a5d3ca)arg1 inAudioFile:(id)arg2;
 - (_Bool)_appendPowerMeterValuesFromDataInAudioFile:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (void)_appendPowerMeterValuesFromAudioPCMBuffer:(id)arg1;
 - (void)_appendPowerMeterValuesFromSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;

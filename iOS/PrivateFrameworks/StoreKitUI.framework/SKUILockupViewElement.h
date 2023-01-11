@@ -6,6 +6,7 @@
 
 @class SKUIFullscreenImageViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUILockupViewElement
 {
     BOOL _enabled;

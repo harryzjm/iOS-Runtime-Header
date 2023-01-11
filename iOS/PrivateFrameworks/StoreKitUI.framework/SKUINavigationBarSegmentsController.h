@@ -6,6 +6,7 @@
 
 @class SKUISegmentedControlViewElementController;
 
+__attribute__((visibility("hidden")))
 @interface SKUINavigationBarSegmentsController
 {
     SKUISegmentedControlViewElementController *_underlyingController;

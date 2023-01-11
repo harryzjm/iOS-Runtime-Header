@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     CIImage *inputImage;
     CIImage *inputShiftmapImage;
     CIImage *inputMatteImage;
+    CIImage *inputHairImage;
     NSNumber *inputAperture;
     CIVector *inputLeftEyePosition;
     CIVector *inputRightEyePosition;
@@ -37,16 +38,19 @@ __attribute__((visibility("hidden")))
 @property(retain) CIVector *inputRightEyePosition; // @synthesize inputRightEyePosition;
 @property(retain) CIVector *inputLeftEyePosition; // @synthesize inputLeftEyePosition;
 @property(copy, nonatomic) NSNumber *inputAperture; // @synthesize inputAperture;
+@property(retain) CIImage *inputHairImage; // @synthesize inputHairImage;
 @property(retain) CIImage *inputMatteImage; // @synthesize inputMatteImage;
 @property(retain) CIImage *inputShiftmapImage; // @synthesize inputShiftmapImage;
 @property(retain) CIImage *inputImage; // @synthesize inputImage;
 - (id)outputImage;
+- (id)blurMapV4:(id)arg1 shiftmap:(id)arg2 alphaImage:(id)arg3 hairImage:(id)arg4;
 - (id)blurMapV3:(id)arg1 shiftmap:(id)arg2 alphaImage:(id)arg3;
 - (id)refineShiftMapV3WithMainImage:(id)arg1 shiftmap:(id)arg2 lensModel:(id)arg3;
 - (id)blurMapV2:(id)arg1;
 - (id)smoothShiftMapV2:(id)arg1;
+- (id)faceMaskDelta:(id)arg1 extent:(struct CGRect)arg2 parameters:(id)arg3 distanceToAdd:(float *)arg4;
 - (id)faceMaskApply:(id)arg1 blurMap:(id)arg2;
-- (id)faceMaskParams:(id)arg1;
+- (id)faceMaskParams:(id)arg1 useNormalizedCoords:(_Bool)arg2;
 - (_Bool)needToRunFaceMask;
 - (id)lensModelApply:(id)arg1 shiftMap:(id)arg2;
 - (id)lensModelParams:(id)arg1;

@@ -20,6 +20,7 @@
     unsigned int _routeDiscoveryMode;
     NSMutableArray *_applicationPickedRoutes;
     unsigned int _inputMode;
+    float _volume;
     unsigned int _volumeCapabilities;
     MRApplicationActivity *_activity;
     _MRDeviceInfoMessageProtobuf *_deviceInfo;
@@ -29,6 +30,8 @@
     CDUnknownBlockType _commandCallback;
     CDUnknownBlockType _beginLyricsEventCallback;
     CDUnknownBlockType _endLyricsEventCallback;
+    CDUnknownBlockType _playbackSessionCallback;
+    CDUnknownBlockType _playbackSessionMigrateRequestCallback;
     NSMutableArray *_nowPlayingClients;
     unsigned int _hardwareRemoteBehavior;
     _MRNowPlayingClientProtobuf *_activeNowPlayingClient;
@@ -50,19 +53,21 @@
 @property(retain, nonatomic) MRApplicationActivity *activity;
 @property(retain, nonatomic) _MRNowPlayingClientProtobuf *activeNowPlayingClient; // @synthesize activeNowPlayingClient=_activeNowPlayingClient;
 @property(nonatomic) _Bool canBeNowPlayingApp;
-@property(readonly, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
-- (void)updateDeviceInfo:(id)arg1;
 @property(nonatomic) unsigned int inputMode;
 @property(nonatomic) unsigned int routeDiscoveryMode;
 @property(nonatomic) _Bool isOverrideApp;
+@property(retain, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
 @property(copy, nonatomic) NSArray *applicationPickedRoutes;
 @property(copy, nonatomic) CDUnknownBlockType endLyricsEventCallback;
 @property(copy, nonatomic) CDUnknownBlockType beginLyricsEventCallback;
+@property(copy, nonatomic) CDUnknownBlockType playbackSessionMigrateRequestCallback;
+@property(copy, nonatomic) CDUnknownBlockType playbackSessionCallback;
 @property(copy, nonatomic) CDUnknownBlockType commandCallback;
 @property(copy, nonatomic) CDUnknownBlockType playbackQueueTransactionCallback;
 @property(copy, nonatomic) CDUnknownBlockType playbackQueueCallback;
 @property(readonly, nonatomic) NSArray *nowPlayingClients;
 @property(nonatomic) unsigned int volumeCapabilities;
+@property(nonatomic) float volume;
 - (void)dealloc;
 - (id)initWithOrigin:(id)arg1;
 

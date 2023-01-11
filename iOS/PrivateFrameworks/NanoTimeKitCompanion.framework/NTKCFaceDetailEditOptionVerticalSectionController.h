@@ -4,12 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray;
+@class NSMutableArray, NSString, NTKCFaceDetailDescriptionCell;
 
 @interface NTKCFaceDetailEditOptionVerticalSectionController
 {
+    NTKCFaceDetailDescriptionCell *_footerCell;
+    NSString *_footer;
 }
 
+@property(retain, nonatomic) NSString *footer; // @synthesize footer=_footer;
+@property(retain, nonatomic) NTKCFaceDetailDescriptionCell *footerCell; // @synthesize footerCell=_footerCell;
+- (void).cxx_destruct;
+- (void)_refreshOverrideTexts;
+- (id)_overrideTextForOption:(id)arg1;
+- (double)heightForRow:(long long)arg1;
+- (id)cellForRow:(long long)arg1;
+- (long long)numberOfRows;
 - (void)_setupWithCollection:(id)arg1;
 - (_Bool)collectionChanged:(id)arg1 withSelectedOptions:(id)arg2;
 - (void)reloadActionRow;
@@ -17,7 +27,7 @@
 - (void)faceDidChange;
 - (void)didSelectRow:(long long)arg1;
 - (_Bool)_canSelectRow:(long long)arg1;
-- (id)initWithTableView:(id)arg1 face:(id)arg2 inGallery:(_Bool)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5;
+- (id)initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(_Bool)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5;
 
 // Remaining properties
 @property(retain, nonatomic) NSMutableArray *rows; // @dynamic rows;

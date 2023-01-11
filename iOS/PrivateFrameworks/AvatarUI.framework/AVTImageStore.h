@@ -14,8 +14,8 @@
 @interface AVTImageStore : NSObject <AVTImageCache>
 {
     _Bool _validateImages;
-    NSFileManager *_fileManager;
     NSURL *_location;
+    NSFileManager *_fileManager;
     id <AVTImageEncoder> _imageEncoder;
     NSObject<OS_dispatch_queue> *_stateLock;
     id <AVTUILogger> _logger;
@@ -27,8 +27,8 @@
 @property(readonly, nonatomic) id <AVTUILogger> logger; // @synthesize logger=_logger;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *stateLock; // @synthesize stateLock=_stateLock;
 @property(readonly, nonatomic) id <AVTImageEncoder> imageEncoder; // @synthesize imageEncoder=_imageEncoder;
-@property(readonly, copy, nonatomic) NSURL *location; // @synthesize location=_location;
 @property(readonly, nonatomic) NSFileManager *fileManager; // @synthesize fileManager=_fileManager;
+@property(readonly, copy, nonatomic) NSURL *location; // @synthesize location=_location;
 - (void).cxx_destruct;
 - (id)resourceForItem:(id)arg1 scope:(id)arg2 cacheMissHandler:(CDUnknownBlockType)arg3;
 - (id)resourceForItem:(id)arg1 scope:(id)arg2;
@@ -39,7 +39,9 @@
 - (id)imageForItem:(id)arg1 scope:(id)arg2 error:(id *)arg3;
 - (_Bool)copyImagesForPersistentIdentifierPrefix:(id)arg1 toPersistentIdentifierPrefix:(id)arg2 error:(id *)arg3;
 - (_Bool)deleteImagesForItemsWithPersistentIdentifierPrefix:(id)arg1 error:(id *)arg2;
+- (_Bool)saveImage:(id)arg1 withImageData:(id)arg2 forItem:(id)arg3 scope:(id)arg4 error:(id *)arg5;
 - (_Bool)saveImage:(id)arg1 forItem:(id)arg2 scope:(id)arg3 error:(id *)arg4;
+- (id)resourceURLForItem:(id)arg1 scope:(id)arg2;
 - (_Bool)createDirectoryIfNeeded:(id *)arg1;
 - (void)performStateWork:(CDUnknownBlockType)arg1;
 - (id)initWithEnvironment:(id)arg1 validateImages:(_Bool)arg2 location:(id)arg3 encoder:(id)arg4;

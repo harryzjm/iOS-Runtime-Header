@@ -6,6 +6,7 @@
 
 @class XCTElementContainingTransformer;
 
+__attribute__((visibility("hidden")))
 @interface XCTContainingTransformerIterator
 {
     _Bool _hasCheckedInput;

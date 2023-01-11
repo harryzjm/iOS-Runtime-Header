@@ -21,16 +21,26 @@
     PKPaymentPass *_paymentPass;
     unsigned long long _educationContext;
     _Bool _isFaceIDDevice;
+    _Bool _isPad;
+    double _maxHeight;
     AVPlayerLayer *_video;
+    UIView *_videoBoundingView;
     AVPlayer *_player;
     AVPlayerItem *_playerItem;
     _Bool _playerStarted;
     _Bool _invalidated;
+    _Bool _offerAddToWatch;
     CDUnknownBlockType _continueHandler;
+    NSString *_titleOverride;
+    NSString *_bodyAddition;
 }
 
++ (id)assetBackgroundColorPad;
 + (id)assetBackgroundColor;
 + (_Bool)shouldPresentForPass:(id)arg1 inEducationContext:(unsigned long long)arg2;
+@property(copy, nonatomic) NSString *bodyAddition; // @synthesize bodyAddition=_bodyAddition;
+@property(copy, nonatomic) NSString *titleOverride; // @synthesize titleOverride=_titleOverride;
+@property(nonatomic) _Bool offerAddToWatch; // @synthesize offerAddToWatch=_offerAddToWatch;
 @property(copy, nonatomic) CDUnknownBlockType continueHandler; // @synthesize continueHandler=_continueHandler;
 - (void).cxx_destruct;
 - (void)_showAddToWatchOfferForPass:(id)arg1;
@@ -44,10 +54,12 @@
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillLayoutSubviews;
+- (void)viewDidLoad;
 - (void)loadView;
 - (void)dealloc;
 - (id)initWithPaymentPass:(id)arg1 setupContext:(long long)arg2 educationContext:(unsigned long long)arg3;
 - (id)init;
+- (_Bool)_canShowWhileLocked;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

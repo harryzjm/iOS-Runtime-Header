@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, PPNamedEntity, PPSource;
+@class NSString, PPNamedEntity, PPNamedEntityMetadata, PPSource;
 
 @interface PPMutableNamedEntityRecord
 {
 }
 
+@property(retain, nonatomic) PPNamedEntityMetadata *metadata; // @dynamic metadata;
+@property(nonatomic) double sentimentScore; // @dynamic sentimentScore;
 @property(nonatomic) unsigned char changeType; // @dynamic changeType;
 @property(nonatomic) unsigned long long extractionAssetVersion; // @dynamic extractionAssetVersion;
 @property(retain, nonatomic) NSString *extractionOsBuild; // @dynamic extractionOsBuild;

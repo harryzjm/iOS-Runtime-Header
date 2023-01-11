@@ -5,18 +5,31 @@
 //
 
 #import <MediaControls/MPAVRoutingControllerDelegate-Protocol.h>
+#import <MediaControls/MediaControlsEndpointControllerConnectionDelegate-Protocol.h>
+#import <MediaControls/MediaControlsEndpointObserverDelegate-Protocol.h>
 
-@class MPAVRoutingController, NSString;
+@class MPAVRoutingController, MPMRAVEndpointObserverWrapper, NSString;
 
-@interface MediaControlsStandaloneEndpointController <MPAVRoutingControllerDelegate>
+__attribute__((visibility("hidden")))
+@interface MediaControlsStandaloneEndpointController <MPAVRoutingControllerDelegate, MediaControlsEndpointObserverDelegate, MediaControlsEndpointControllerConnectionDelegate>
 {
+    NSString *_routeUID;
     MPAVRoutingController *_routingController;
+    MPMRAVEndpointObserverWrapper *_endpointObserver;
 }
 
+@property(retain, nonatomic) MPMRAVEndpointObserverWrapper *endpointObserver; // @synthesize endpointObserver=_endpointObserver;
 @property(readonly, nonatomic) MPAVRoutingController *routingController; // @synthesize routingController=_routingController;
+@property(retain, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
 - (void).cxx_destruct;
+- (id)_routeForEndpoint:(void *)arg1;
+- (_Bool)controller:(id)arg1 shouldRetryFailedRequestWithError:(id)arg2;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
-- (void)setAutomaticResponseLoading:(_Bool)arg1;
+- (void)endObserving;
+- (void)beginObserving;
+- (id)proxyDelegate;
+- (void)dealloc;
+- (id)initWithRouteUID:(id)arg1;
 - (id)initWithEndpoint:(id)arg1;
 
 // Remaining properties

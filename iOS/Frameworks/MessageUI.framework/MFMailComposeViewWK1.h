@@ -12,6 +12,7 @@
     MFComposeTextContentView *_textView;
 }
 
+- (void).cxx_destruct;
 - (void)_setBodyShouldScrollToFirstResponder:(_Bool)arg1;
 - (void)_endBlockingBodyScroll;
 - (void)_beginBlockingBodyScroll;

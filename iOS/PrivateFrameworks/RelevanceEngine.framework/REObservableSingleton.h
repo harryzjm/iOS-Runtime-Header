@@ -16,7 +16,7 @@
 - (void)removeObserver:(id)arg1;
 - (void)addObserver:(id)arg1;
 @property(readonly, nonatomic) unsigned long long numberOfObservers;
-- (id)init;
+- (id)_init;
 
 @end
 

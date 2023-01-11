@@ -8,17 +8,19 @@
 
 #import <XCTest/XCTRunnerAutomationSession-Protocol.h>
 
-@class NSString, NSXPCConnection;
-@protocol XCUICapabilities;
+@class NSString, NSXPCConnection, XCTCapabilities;
 
 @interface XCTRunnerAutomationSession : NSObject <XCTRunnerAutomationSession>
 {
     int _connectionPid;
     NSXPCConnection *_connection;
-    id <XCUICapabilities> _capabilities;
+    XCTCapabilities *_remoteInterfaceCapabilities;
 }
 
-@property(readonly) id <XCUICapabilities> capabilities; // @synthesize capabilities=_capabilities;
++ (id)legacyCapabilitiesForOSVersion:(CDStruct_2ec95fd7)arg1 platform:(unsigned long long)arg2 error:(id *)arg3;
++ (id)exportedCapabilities;
++ (void)requestSessionWithEndpoint:(id)arg1 pid:(int)arg2 completion:(CDUnknownBlockType)arg3;
+@property(retain) XCTCapabilities *remoteInterfaceCapabilities; // @synthesize remoteInterfaceCapabilities=_remoteInterfaceCapabilities;
 @property(readonly) int connectionPid; // @synthesize connectionPid=_connectionPid;
 @property(readonly) NSXPCConnection *connection; // @synthesize connection=_connection;
 - (void).cxx_destruct;
@@ -33,7 +35,7 @@
 @property(readonly) _Bool supportsMainRunLoopIdleNotifications;
 @property(readonly) _Bool supportsFetchingAttributesForElement;
 - (id)matchesForQuery:(id)arg1 error:(id *)arg2;
-- (id)initWithEndpoint:(id)arg1 pid:(int)arg2 capabilities:(id)arg3;
+- (id)initWithConnection:(id)arg1 pid:(int)arg2 remoteInterfaceCapabilities:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -5,12 +5,13 @@
 //
 
 #import <ChatKit/CKAppManagerViewControllerDelegate-Protocol.h>
+#import <ChatKit/UIPresentationControllerDelegatePrivate-Protocol.h>
 #import <ChatKit/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class CKAppManagerViewController, NSString, UINavigationController;
 @protocol CKBrowserAppManagerViewControllerDelegate;
 
-@interface CKBrowserAppManagerViewController <UIViewControllerTransitioningDelegate, CKAppManagerViewControllerDelegate>
+@interface CKBrowserAppManagerViewController <UIPresentationControllerDelegatePrivate, UIViewControllerTransitioningDelegate, CKAppManagerViewControllerDelegate>
 {
     UINavigationController *_navController;
     CKAppManagerViewController *_appViewController;
@@ -19,11 +20,13 @@
 
 @property(nonatomic) __weak id <CKBrowserAppManagerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (id)parentTransitioningDelegate;
 - (long long)parentModalPresentationStyle;
+- (_Bool)isDismissing;
 - (_Bool)isLoaded;
 - (_Bool)mayBeKeptInViewHierarchy;
 - (_Bool)supportsQuickView;

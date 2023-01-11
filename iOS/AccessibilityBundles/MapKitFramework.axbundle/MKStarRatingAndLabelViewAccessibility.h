@@ -8,13 +8,12 @@
 {
 }
 
-+ (id)starRatingAndProviderAsAttributedStringForMapItem:(id)arg1 textColor:(id)arg2 font:(id)arg3 showReviewsOrTips:(_Bool)arg4 ratingStyle:(long long)arg5 theme:(id)arg6;
++ (id)starRatingAndProviderAsAttributedStringForMapItem:(id)arg1 textColor:(id)arg2 font:(id)arg3 showReviewsOrTips:(_Bool)arg4 showNumberOfReviews:(_Bool)arg5 ratingStyle:(long long)arg6 theme:(id)arg7;
 + (id)ratingAndReviewsAsAttributedString:(double)arg1 style:(long long)arg2 font:(id)arg3 numberOfReviews:(unsigned long long)arg4 textColor:(id)arg5 theme:(id)arg6;
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)isAccessibilityElement;
-- (id)accessibilityLabel;
 
 @end
 

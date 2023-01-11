@@ -6,25 +6,24 @@
 
 #import <UIKit/UIView.h>
 
-@class UIImageView, UILabel, UITapGestureRecognizer;
+@class MTVisualStylingProvider, UIImageView, UILabel, UITapGestureRecognizer;
 
 @interface WGExplanatoryView : UIView
 {
     UIImageView *_glyphView;
     UILabel *_label;
+    MTVisualStylingProvider *_visualStylingProvider;
     UITapGestureRecognizer *_tapGesture;
 }
 
 - (void).cxx_destruct;
+- (void)_invalidateVisualStyling;
+- (void)_updateVisualStylingIfNecessary;
 - (void)_configureExplanationLabelWithExplanation:(id)arg1;
 - (void)_configureGlyphViewWithGlyph:(id)arg1;
-- (void)_updateStyleForLabel;
-- (void)_updateStyleForGlyphView;
-- (id)_vibrantStyling;
-- (void)_backgroundContrastDidChange:(id)arg1;
 - (void)addTarget:(id)arg1 action:(SEL)arg2;
+- (void)willMoveToSuperview:(id)arg1;
 - (void)layoutSubviews;
-- (void)dealloc;
 - (id)initWithGlyph:(id)arg1 andExplanation:(id)arg2;
 
 @end

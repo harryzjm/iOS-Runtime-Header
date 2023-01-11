@@ -19,13 +19,14 @@ __attribute__((visibility("hidden")))
     _Bool mShadowOnChildrenDisabled;
     struct CGContext *mCommittedPathContext;
     struct CGImage *mCommittedPathImage;
+    struct CGRect mCommittedPathImageUnscaledRect;
     struct _NSRange mCommittedPointRange;
     struct _NSRange mAvailableToCommitPointRange;
     unsigned int mOverrideState:2;
     double mOverriddenValue;
     struct CGRect mLastDynamicInvalidRect;
     _Bool mFillChanged;
-    _Bool mShouldForceLayerGeometryUpdate;
+    _Bool mShouldForceRenderableGeometryUpdate;
     _Bool mIsInvisibleCacheValid;
     _Bool mIsInvisibleCache;
     _Bool mNeedsDisplay;
@@ -36,6 +37,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (_Bool)p_isInsidePlayingFreehandDrawing;
 - (id)p_strokeForRenderingIncludingPlaybackFromStroke:(id)arg1;
+- (_Bool)p_shouldUpgradeStrokeForPlayback:(id)arg1;
+- (void)dynamicOverrideDidChange;
 - (_Bool)canDrawShadowInOneStepWithChildren:(_Bool)arg1;
 - (_Bool)p_drawsSelfInOneStep;
 - (id)p_brushStrokeFromStroke:(id)arg1;
@@ -46,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)p_drawLineEndForHead:(_Bool)arg1 withDelta:(struct CGPoint)arg2 andStroke:(id)arg3 inContext:(struct CGContext *)arg4 useFastDrawing:(_Bool)arg5;
 - (void)setTextureAttributes:(id)arg1 textureBounds:(struct CGRect)arg2;
 - (id)p_drawingPlaybackSession;
+@property(readonly, nonatomic) _Bool isPartiallyAnimated;
 - (double)opacity;
 @property(readonly, nonatomic) double strokeEnd;
 - (_Bool)canDrawWithOtherShapeRep:(id)arg1;

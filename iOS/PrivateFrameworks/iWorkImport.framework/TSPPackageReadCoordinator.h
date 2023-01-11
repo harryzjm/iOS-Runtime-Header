@@ -7,7 +7,7 @@
 #import <iWorkImport/TSPPersistedObjectUUIDMapDelegate-Protocol.h>
 #import <iWorkImport/TSPReadCoordinator-Protocol.h>
 
-@class NSMapTable, NSMutableArray, NSMutableSet, NSObject, NSSet, NSString, NSURL, NSUUID, TSPDocumentRevision, TSPFinalizeHandlerQueue, TSPObject, TSPObjectContainer, TSPObjectContext, TSPPackage, TSPPackageMetadata, TSPPersistedObjectUUIDMap;
+@class NSArray, NSMapTable, NSMutableSet, NSObject, NSSet, NSString, NSURL, NSUUID, TSPDocumentRevision, TSPFinalizeHandlerQueue, TSPObject, TSPObjectContainer, TSPObjectContext, TSPPackage, TSPPackageMetadata, TSPPersistedObjectUUIDMap;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -33,12 +33,14 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_readCompletionQueue;
     NSObject<OS_dispatch_queue> *_componentQueue;
     unordered_map_38045d47 _readIdentifiers;
-    NSMutableArray *_componentsToUpgrade;
+    NSArray *_componentsToUpgrade;
     NSObject<OS_dispatch_queue> *_objectQueue;
     NSMapTable *_objects;
     unordered_map_38045d47 _readExternalObjects;
     _Bool _losesDataOnWrite;
     _Bool _didRequireUpgrade;
+    long long _archiveValidationMode;
+    NSSet *_featureIdentifiers;
     NSSet *_unsupportedFeatureIdentifiers;
     TSPDocumentRevision *_documentRevision;
     unsigned long long _saveToken;
@@ -54,7 +56,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned long long saveToken; // @synthesize saveToken=_saveToken;
 @property(readonly, nonatomic) TSPDocumentRevision *documentRevision; // @synthesize documentRevision=_documentRevision;
 @property(readonly, nonatomic) NSSet *unsupportedFeatureIdentifiers; // @synthesize unsupportedFeatureIdentifiers=_unsupportedFeatureIdentifiers;
+@property(readonly, nonatomic) NSSet *featureIdentifiers; // @synthesize featureIdentifiers=_featureIdentifiers;
 @property(readonly, nonatomic) _Bool losesDataOnWrite; // @synthesize losesDataOnWrite=_losesDataOnWrite;
+@property(readonly, nonatomic) long long archiveValidationMode; // @synthesize archiveValidationMode=_archiveValidationMode;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)persistedObjectUUIDMap:(id)arg1 foundDuplicateUUID:(id)arg2 firstObjectLocation:(struct ObjectLocation)arg3 secondObjectLocation:(struct ObjectLocation)arg4;
@@ -76,6 +80,9 @@ __attribute__((visibility("hidden")))
 - (id)externalObjectForIdentifier:(long long)arg1 componentIdentifier:(long long)arg2 isReadFinished:(_Bool)arg3;
 - (id)unarchivedObjectForIdentifier:(long long)arg1 isReadFinished:(_Bool)arg2;
 - (id)context;
+- (void)p_validateComponent:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)validateArchiveWithCompletion:(CDUnknownBlockType)arg1;
+- (id)p_allComponentsInPackage;
 - (void)prepareForFullDocumentUpgradeImpl;
 - (void)prepareForFullDocumentUpgrade;
 - (void)updateObjectContextForSuccessfulRead;
@@ -97,7 +104,7 @@ __attribute__((visibility("hidden")))
 - (void)readRootObjectWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)didUpdateLazyReferenceDelegate:(id)arg1;
 - (_Bool)endReading;
-- (id)initWithContext:(id)arg1 package:(id)arg2 packageURLOrNil:(id)arg3 finalizeHandlerQueue:(id)arg4 areExternalDataReferencesAllowed:(_Bool)arg5 skipDocumentUpgrade:(_Bool)arg6;
+- (id)initWithContext:(id)arg1 package:(id)arg2 packageURL:(id)arg3 finalizeHandlerQueue:(id)arg4 areExternalDataReferencesAllowed:(_Bool)arg5 skipDocumentUpgrade:(_Bool)arg6 archiveValidationMode:(long long)arg7;
 - (id)init;
 
 // Remaining properties

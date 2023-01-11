@@ -14,7 +14,7 @@
 #import <iWorkImport/TSTTableStrokeProviding-Protocol.h>
 #import <iWorkImport/TSTTableTileCreating-Protocol.h>
 
-@class NSArray, NSMapTable, NSString, NSUUID, TSCECalculationEngine, TSCEOwnerUidMapper, TSDStroke, TSTCategoryOwner, TSTCellDictionary, TSTCellStyle, TSTCellWillChangeDistributor, TSTColumnRowUIDMap, TSTConcurrentMutableCellUIDSet, TSTConditionalStyleFormulaOwner, TSTHiddenStateFormulaOwner, TSTHiddenStatesOwner, TSTInfo, TSTMergeOwner, TSTPencilAnnotationOwner, TSTSortRuleReferenceTracker, TSTStrokeSidecar, TSTStructuredTextImportRecord, TSTTableDataStore, TSTTableFilterSet, TSTTableSortOrder, TSTTableStyle, TSTTableStylePreset, TSWPParagraphStyle, TSWPShapeStyle, TSWPStorage;
+@class NSArray, NSMapTable, NSString, NSUUID, TSCECalculationEngine, TSCEOwnerUidMapper, TSDStroke, TSTCategoryOwner, TSTCellDictionary, TSTCellStyle, TSTCellWillChangeDistributor, TSTColumnRowUIDMap, TSTConcurrentMutableCellUIDSet, TSTConditionalStyleFormulaOwner, TSTHiddenStateFormulaOwner, TSTHiddenStatesOwner, TSTMergeOwner, TSTPencilAnnotationOwner, TSTSortRuleReferenceTracker, TSTStrokeSidecar, TSTStructuredTextImportRecord, TSTTableDataStore, TSTTableFilterSet, TSTTableInfo, TSTTableSortOrder, TSTTableStyle, TSTTableStylePreset, TSWPParagraphStyle, TSWPShapeStyle, TSWPStorage;
 
 __attribute__((visibility("hidden")))
 @interface TSTTableModel <TSCEReferenceResolving, TSCEColumnRowUIDMapping, TSCECalculationEngineRegistration, TSCEFormulaOwning, TSDMixing, TSTCustomStrokeProviding, TSTStyleProviding, TSTTableStrokeProviding, TSTTableTileCreating>
@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
     TSTHiddenStateFormulaOwner *_hiddenStateFormulaOwnerForRows;
     TSTHiddenStateFormulaOwner *_hiddenStateFormulaOwnerForColumns;
     TSTStrokeSidecar *_strokeSidecar;
+    struct TSCECellRefSet _clearErrorCells;
+    struct os_unfair_lock_s _clearErrorLock;
     _Bool _wasCut;
     _Bool _headerRowsFrozen;
     _Bool _headerColumnsFrozen;
@@ -45,7 +47,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _presetIDForUpgrade;
     TSTTableStylePreset *_tableStylePreset;
     TSTTableStyle *_tableStyle;
-    TSTInfo *_tableInfo;
+    TSTTableInfo *_tableInfo;
     TSTCellStyle *_bodyCellStyle;
     TSTCellStyle *_headerRowCellStyle;
     TSTCellStyle *_headerColumnCellStyle;
@@ -94,11 +96,13 @@ __attribute__((visibility("hidden")))
     TSTPencilAnnotationOwner *_pencilAnnotationOwner;
     UUIDData_5fbc143e _tableUID;
     UUIDData_5fbc143e _fromTableUID;
+    UUIDData_5fbc143e _fromGroupByUID;
 }
 
 + (_Bool)needsObjectUUID;
 + (id)tableModelForTableUID:(const UUIDData_5fbc143e *)arg1 withCalcEngine:(id)arg2;
 @property(readonly, nonatomic) TSTPencilAnnotationOwner *pencilAnnotationOwner; // @synthesize pencilAnnotationOwner=_pencilAnnotationOwner;
+@property(nonatomic) UUIDData_5fbc143e fromGroupByUID; // @synthesize fromGroupByUID=_fromGroupByUID;
 @property(retain, nonatomic) TSTTableFilterSet *upgradeFilterSet; // @synthesize upgradeFilterSet=_upgradeFilterSet;
 @property(retain, nonatomic) TSTStructuredTextImportRecord *textImportRecord; // @synthesize textImportRecord=_textImportRecord;
 @property(nonatomic) _Bool wasUnarchivedFromAProvidedTable; // @synthesize wasUnarchivedFromAProvidedTable=_wasUnarchivedFromAProvidedTable;
@@ -130,6 +134,12 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) TSCECalculationEngine *calcEngine; // @synthesize calcEngine=_calcEngine;
 @property(readonly, nonatomic) unsigned long long versionAtUnarchive; // @synthesize versionAtUnarchive=_versionAtUnarchive;
 - (id).cxx_construct;
+- (void).cxx_destruct;
+- (void)didApplyConcurrentCellMap:(id)arg1;
+- (void)prepareToApplyConcurrentCellMap:(id)arg1;
+- (int)shouldAllowApplyConcurrentCellMap:(id)arg1;
+- (void)setCellsConcurrently:(id)arg1 ignoreFormula:(_Bool)arg2 clearImportWarnings:(_Bool)arg3;
+- (void)accumulateCurrentCellsConcurrently:(id)arg1 suppressCellBorder:(_Bool)arg2;
 - (_Bool)auditRowInfoCellCountsReturningResult:(id *)arg1;
 - (_Bool)auditDatalistDuplicationReturningResult:(id *)arg1;
 - (_Bool)confirmRefCountsReturningResult:(id *)arg1;
@@ -146,19 +156,20 @@ __attribute__((visibility("hidden")))
 - (void)upgradeFromPreUFF;
 - (void)upgradeFormatsForCustomFormatListU2_0;
 - (void)assertCollaborationConvergence;
+- (void)_removeAnnotationsFromDeleteRange:(struct TSUModelCellRect)arg1;
 - (void)validate;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (void)updateTableRowColumnStylesWithBlock:(CDUnknownBlockType)arg1;
 - (void)mapTableStylesToStylesheet:(id)arg1 withMapper:(id)arg2;
+- (void)clearErrors;
+- (void)addCellRefToClearError:(const struct TSCECellRef *)arg1;
 - (struct TSCECellCoordSet)cellsModifiedInCurrentRecalcCycle;
 - (_Bool)hasFormulas;
-- (void)prepareForPasteWithCalculationEngine:(id)arg1 sourceOffset:(CDStruct_1ef3fb1f)arg2;
-- (void)registerAllFormulasWithCalculationEngine:(id)arg1 wasCrossDocumentPaste:(_Bool)arg2 infoIsCategorized:(_Bool)arg3;
+- (void)prepareForPasteWithCalculationEngine:(id)arg1 sourceOffset:(struct TSUColumnRowOffset)arg2 bakeFormulas:(_Bool)arg3;
+- (void)registerAllFormulasWithCalculationEngine:(id)arg1 wasCrossDocumentPaste:(_Bool)arg2 infoIsCategorized:(_Bool)arg3 wasUndo:(_Bool)arg4;
 - (void)copyPasteboardCustomFormatsFromTableModel:(id)arg1;
 - (void)makePasteboardCustomFormatList;
 - (void)reassignPasteboardCustomFormatKeys;
-- (void)addPasteboardCustomFormatFromCell:(id)arg1;
-- (void)clearPasteboardCustomFormatsListsAndMaps;
 - (void)addPasteboardCustomFormatsToDocumentAndUpdateCells;
 - (void)remapTableUIDsInFormulasWithMap:(const UUIDMap_b66c2694 *)arg1 calcEngine:(id)arg2 bakeForBadRefs:(_Bool)arg3;
 - (void)setFormulaOwnerUIDsWithMap:(id)arg1 shouldStealReferences:(_Bool)arg2;
@@ -221,7 +232,7 @@ __attribute__((visibility("hidden")))
 - (id)fillForColumn:(struct TSUModelColumnIndex)arg1;
 - (id)fillForRow:(struct TSUModelRowIndex)arg1;
 - (id)regionForValueOrCommentCellsInBaseCellRect:(struct TSUModelCellRect)arg1;
-- (id)fontColorAtBaseCellCoord:(struct TSUModelCellCoord)arg1 optionalCell:(id)arg2;
+- (id)characterFillAtBaseCellCoord:(struct TSUModelCellCoord)arg1 optionalCell:(id)arg2;
 - (id)stringAtBaseCellCoord:(struct TSUModelCellCoord)arg1 optionalCell:(id)arg2;
 - (void)setHidingState:(unsigned char)arg1 atColumnIndex:(const struct TSUModelColumnIndex *)arg2;
 - (void)setHidingState:(unsigned char)arg1 atRowIndex:(const struct TSUModelRowIndex *)arg2;
@@ -236,6 +247,8 @@ __attribute__((visibility("hidden")))
 - (void)swapRowAtIndex:(struct TSUModelRowIndex)arg1 withRowAtIndex:(struct TSUModelRowIndex)arg2;
 - (void)moveBaseColumnRange:(struct _NSRange)arg1 toColumnIndex:(struct TSUModelColumnIndex)arg2;
 - (void)moveBaseRowRange:(struct _NSRange)arg1 toRowIndex:(struct TSUModelRowIndex)arg2;
+- (void)removeAnnotationsFromColumnsAtBaseIndexes:(id)arg1;
+- (void)removeAnnotationsFromRowsAtBaseIndexes:(id)arg1;
 - (void)removeColumnsAtBaseIndexes:(id)arg1;
 - (void)removeRowsAtBaseIndexes:(id)arg1;
 - (void)removeColumnsAtIndex:(struct TSUModelColumnIndex)arg1 count:(struct TSUModelColumnIndex)arg2;
@@ -301,10 +314,10 @@ __attribute__((visibility("hidden")))
 - (int)cellValueTypeAtBaseCellCoord:(struct TSUModelCellCoord)arg1;
 - (id)formatAtBaseCellCoord:(struct TSUModelCellCoord)arg1 formatIsExplicitOut:(_Bool *)arg2;
 - (int)setCellsWithBaseCellMap:(id)arg1 ignoreFormulas:(_Bool)arg2 skipDirtyingNonFormulaCells:(_Bool)arg3;
-- (int)p_preflightApplyBaseCellMap:(id)arg1;
+- (int)p_shouldAllowApplyBaseCellMap:(id)arg1;
 - (struct TSCEFormula *)formulaAtBaseCellCoord:(struct TSUModelCellCoord)arg1;
 - (int)setCell:(id)arg1 atBaseCellCoord:(struct TSUModelCellCoord)arg2 ignoreFormula:(_Bool)arg3 clearImportWarnings:(_Bool)arg4;
-- (int)p_preflightSetCell:(id)arg1 atBaseCellCoord:(struct TSUModelCellCoord)arg2;
+- (int)p_shouldAllowSetCell:(id)arg1 atBaseCellCoord:(struct TSUModelCellCoord)arg2;
 - (_Bool)hasFormulaAtBaseCellCoord:(struct TSUModelCellCoord)arg1;
 - (void)updateCalculationEngineForFormula:(struct TSCEFormula *)arg1 inBaseCellCoord:(struct TSUModelCellCoord)arg2;
 - (id)cellAtBaseCellCoord:(struct TSUModelCellCoord)arg1;
@@ -324,6 +337,7 @@ __attribute__((visibility("hidden")))
 - (void)setStorageParentToInfo:(id)arg1;
 @property(readonly, copy) NSString *description;
 @property(nonatomic) _Bool wasCut; // @synthesize wasCut=_wasCut;
+- (void)clearFromGroupByUID;
 - (void)clearFromTableUID;
 @property(readonly, nonatomic) NSUUID *nsTableUID;
 @property(readonly, nonatomic) TSTCellWillChangeDistributor *cellWillChangeDistributor; // @synthesize cellWillChangeDistributor=_cellWillChangeDistributor;
@@ -374,7 +388,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct TSUModelColumnIndex numberOfHeaderColumns; // @synthesize numberOfHeaderColumns=_numberOfHeaderColumns;
 @property(nonatomic) struct TSUModelRowIndex numberOfFooterRows; // @synthesize numberOfFooterRows=_numberOfFooterRows;
 @property(nonatomic) struct TSUModelRowIndex numberOfHeaderRows; // @synthesize numberOfHeaderRows=_numberOfHeaderRows;
-@property(nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property(nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 @property(nonatomic) _Bool headerColumnsFrozen; // @synthesize headerColumnsFrozen=_headerColumnsFrozen;
 @property(nonatomic) _Bool headerRowsFrozen; // @synthesize headerRowsFrozen=_headerRowsFrozen;
 @property(nonatomic) _Bool styleApplyClearsAll; // @synthesize styleApplyClearsAll=_styleApplyClearsAll;
@@ -397,6 +411,7 @@ __attribute__((visibility("hidden")))
 - (void)p_rebuildTheTable:(id)arg1;
 - (void)p_upgradeDefaultCellStylesForStrokeSidecar;
 - (void)dealloc;
+- (id)initWithContext:(id)arg1 fromSourceModel:(id)arg2 region:(id)arg3 tableInfo:(id)arg4 waitForCalcEngine:(_Bool)arg5 formulaCoordSpace:(long long)arg6;
 - (id)initWithContext:(id)arg1 fromSourceModel:(id)arg2 region:(id)arg3 tableInfo:(id)arg4 waitForCalcEngine:(_Bool)arg5;
 - (id)initWithContext:(id)arg1 rows:(unsigned int)arg2 columns:(unsigned int)arg3 styles:(id)arg4 stylePreset:(id)arg5 tableInfo:(id)arg6;
 - (id)initWithContext:(id)arg1 rowUids:(const vector_4dc5f307 *)arg2 columnUids:(const vector_4dc5f307 *)arg3 styles:(id)arg4 stylePreset:(id)arg5 tableInfo:(id)arg6;
@@ -439,6 +454,7 @@ __attribute__((visibility("hidden")))
 - (struct TSCERangeCoordinate)tableRangeCoordinate;
 - (_Bool)hasCellID:(struct TSUCellCoord)arg1;
 - (id)sheetName;
+- (UUIDData_5fbc143e)groupByUID;
 - (UUIDData_5fbc143e)resolverUID;
 - (id)drawableInfo;
 - (id)objectToArchiveInDependencyTracker;
@@ -447,7 +463,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_2a4d9400)recalculateForCalcEngine:(id)arg1 atFormulaCoord:(struct TSUCellCoord)arg2 recalcOptions:(CDStruct_3d581f42)arg3;
 - (id)linkedResolver;
 - (UUIDData_5fbc143e)ownerUID;
-- (int)ownerKind;
+- (unsigned short)ownerKind;
 - (void)notifyTableOfNewResults;
 - (void)performReadForOneOffFormulaEvaluation:(id)arg1 forCellCoord:(struct TSUCellCoord)arg2;
 - (void)unregisterFromCalcEngine:(id)arg1;
@@ -455,6 +471,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isRegisteredWithCalcEngine:(id)arg1;
 - (_Bool)registerLast;
 - (UUIDData_5fbc143e)formulaOwnerUID;
+- (id)formulaOwner;
 - (void)registerWithCalcEngineForDocumentLoad:(id)arg1;
 - (void)setNewFormulaOwnerUIDsForDuplicatesWithCalcEngine:(id)arg1;
 

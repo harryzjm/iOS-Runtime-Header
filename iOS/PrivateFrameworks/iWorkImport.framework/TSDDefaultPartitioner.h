@@ -4,18 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <iWorkImport/TSDCanvasDelegate-Protocol.h>
-#import <iWorkImport/TSDDynamicCanvasDelegate-Protocol.h>
 #import <iWorkImport/TSDPartitioner-Protocol.h>
-#import <iWorkImport/TSKChangeSourceObserver-Protocol.h>
 
 @class NSString, TSDCanvas, TSDDrawableInfo, TSUPointerKeyDictionary;
 @protocol TSDCanvasProxyDelegate;
 
 __attribute__((visibility("hidden")))
-@interface TSDDefaultPartitioner : NSObject <TSKChangeSourceObserver, TSDDynamicCanvasDelegate, TSDPartitioner, TSDCanvasDelegate>
+@interface TSDDefaultPartitioner <TSDPartitioner, TSDCanvasDelegate>
 {
     TSDDrawableInfo *mInfo;
     TSDCanvas *mCanvas;
@@ -26,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(readonly, nonatomic) _Bool paginateRightToLeft; // @synthesize paginateRightToLeft=mPaginateRightToLeft;
+- (void)didProcessAllChanges;
 - (void)processChanges:(id)arg1 forChangeSource:(id)arg2;
 - (void)preprocessChanges:(id)arg1 forChangeSource:(id)arg2;
 - (void)i_layoutUnregistered:(id)arg1;

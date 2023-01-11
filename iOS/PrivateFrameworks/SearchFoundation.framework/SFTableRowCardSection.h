@@ -8,7 +8,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFTableRowCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFTableAlignmentSchema;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFTableAlignmentSchema, SFUserReportRequest;
 
 @interface SFTableRowCardSection <SFTableRowCardSection, NSSecureCoding, NSCopying>
 {
@@ -79,6 +79,7 @@
 @property(copy, nonatomic) NSArray *parameterKeyPaths;
 @property(copy, nonatomic) NSString *resultIdentifier;
 @property(readonly) Class superclass;
+@property(retain, nonatomic) SFUserReportRequest *userReportRequest;
 
 @end
 

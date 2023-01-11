@@ -6,6 +6,7 @@
 
 @class SKUIArtworkRequest, SSVLoadURLOperation;
 
+__attribute__((visibility("hidden")))
 @interface SKUILoadArtworkResourceOperation
 {
     SSVLoadURLOperation *_underlyingOperation;

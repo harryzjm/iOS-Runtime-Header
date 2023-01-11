@@ -20,13 +20,14 @@ __attribute__((visibility("hidden")))
 }
 
 + (double)_fontPointSizeForIdiom:(long long)arg1;
-@property(nonatomic, getter=_tabBarButton, setter=_setTabBarButton:) __weak UITabBarButton *tabBarButton; // @synthesize tabBarButton=_tabBarButton;
-@property(retain, nonatomic, getter=_unselectedTintColor, setter=_setUnselectedTintColor:) UIColor *unselectedTintColor; // @synthesize unselectedTintColor=_unselectedTintColor;
+@property(nonatomic) __weak UITabBarButton *tabBarButton; // @synthesize tabBarButton=_tabBarButton;
+@property(retain, nonatomic) UIColor *unselectedTintColor; // @synthesize unselectedTintColor=_unselectedTintColor;
 @property(retain, nonatomic, setter=_setAppearanceGuideClass:) Class _appearanceGuideClass; // @synthesize _appearanceGuideClass;
 - (void).cxx_destruct;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(_Bool)arg3;
 - (long long)_idiomForFontGivenIdiom:(long long)arg1;
+- (id)_fontForIdiom:(long long)arg1 forTabBarDisplayStyle:(long long)arg2;
 - (id)_fontForIdiom:(long long)arg1;
 - (void)_applyTabBarButtonAppearanceStorage:(id)arg1 withTaggedSelectors:(id)arg2;
 - (id)_titleTextAttributesForState:(unsigned long long)arg1;
@@ -42,10 +43,12 @@ __attribute__((visibility("hidden")))
 - (void)_UIAppearance_setTitlePositionAdjustment:(struct UIOffset)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)setSelected:(_Bool)arg1;
+- (void)_legacyApperance_updateTextColorsForState;
 - (void)updateTextColorsForState;
 - (void)tintColorDidChange;
-- (void)sizeToFitBounds:(struct CGRect)arg1;
+- (void)resizeToFitWidth:(double)arg1;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
+- (id)initWithTabBarDisplayStyle:(long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (_Bool)_shouldCeilSizeToViewScale;
 

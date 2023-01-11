@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)markupStringForDisplayWithData:(id)arg1 displayStyle:(int)arg2 printableWidth:(double)arg3 allowAttachmentElement:(_Bool)arg4;
+- (id)markupStringForDisplayWithData:(id)arg1 allowAttachmentElement:(_Bool)arg2;
 
 @end
 

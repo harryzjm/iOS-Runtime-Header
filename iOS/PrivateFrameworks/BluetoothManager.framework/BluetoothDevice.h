@@ -16,9 +16,12 @@
     unsigned int _connectingServiceMask;
 }
 
+- (int)getLowSecurityStatus;
 - (unsigned int)getConnectingServiceMask;
 - (void)setConnectingServicemask:(unsigned int)arg1;
 - (_Bool)setUserName:(id)arg1;
+- (_Bool)isProController;
+- (_Bool)supportsHS;
 - (_Bool)isAppleAudioDevice;
 - (void)setSyncGroup:(int)arg1 enabled:(_Bool)arg2;
 - (id)syncGroups;
@@ -54,12 +57,14 @@
 - (_Bool)supportsBatteryLevel;
 - (unsigned long long)connectedServicesCount;
 - (unsigned long long)connectedServices;
+- (_Bool)isTemporaryPaired;
 - (_Bool)connected;
 - (_Bool)magicPaired;
 - (_Bool)cloudPaired;
 - (_Bool)paired;
 - (unsigned int)productId;
 - (unsigned int)vendorId;
+- (id)aclUID;
 - (id)scoUID;
 - (id)description;
 - (unsigned int)minorClass;

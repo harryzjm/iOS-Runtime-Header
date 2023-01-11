@@ -24,15 +24,15 @@
 - (void).cxx_destruct;
 - (void)distillWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setContent:(id)arg1 tagSolutionSpace:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)sortAndDumpImportRecords:(id)arg1;
 - (_Bool)registerAssetPackIfNeeded:(id)arg1 forItem:(id)arg2 withTagSolver:(id)arg3 error:(id *)arg4;
-- (id)_createSoftlinkToWorkaroundRadar17523681ForImageRep:(id)arg1 error:(id *)arg2;
 - (void)logAssets;
 - (void)logAsset:(id)arg1;
 - (void)logAssetImport:(id)arg1;
 - (id)stringFromSizeClass:(long long)arg1;
 - (id)stringFromCompressionType:(long long)arg1;
 - (id)stringFromTemplateRenderingMode:(long long)arg1;
-- (id)stringFromLayoutDirection:(unsigned long long)arg1;
+- (id)stringFromLayoutDirection:(long long)arg1;
 - (id)stringFromDisplayGamut:(long long)arg1;
 - (id)stringFromResizingMode:(long long)arg1;
 - (id)stringFromRenditionType:(long long)arg1;

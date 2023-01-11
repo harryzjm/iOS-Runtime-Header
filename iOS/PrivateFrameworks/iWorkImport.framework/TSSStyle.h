@@ -12,7 +12,7 @@
 #import <iWorkImport/TSSStyleClient-Protocol.h>
 #import <iWorkImport/TSSStyleObject-Protocol.h>
 
-@class NSString, TSSPropertyMap, TSSStylesheet, TSURetainedPointerSet;
+@class NSString, TSSPropertyMap, TSSStylesheet, TSUColor, TSURetainedPointerSet;
 
 __attribute__((visibility("hidden")))
 @interface TSSStyle <NSCopying, TSSPropertyValueValidator, TSSStyleObject, TSSPropertySource, TSSStyleClient, TSKModel, TSKTransformableObject>
@@ -46,6 +46,10 @@ __attribute__((visibility("hidden")))
 + (id)description;
 + (id)properties;
 + (int)muxDefaultPropertyForSpecificProperty:(int)arg1;
++ (_Bool)p_isFillAdvanced:(id)arg1;
++ (void)addIgnoreAndPreserveRulesAndDocumentWarningsForPropertyMap:(id)arg1 withArchiver:(id)arg2;
++ (id)adjustPropertyMapForFontColorArchiving:(id)arg1 fallbackColor:(id)arg2;
++ (void)upgradeFontColorToIncludeCharacterFillInPropertyMap:(id)arg1 forOwningTSPObject:(id)arg2;
 + (id)validateFontInPropertyMap:(id)arg1 parentStyle:(id)arg2 checkedFontMap:(id)arg3;
 + (id)validateFontName:(id)arg1 size:(double)arg2 bold:(_Bool)arg3 italic:(_Bool)arg4 checkedFontMap:(id)arg5 newFontName:(id *)arg6 newBold:(_Bool *)arg7 newItalic:(_Bool *)arg8;
 + (struct __CTFont *)pCreateFontWithName:(id)arg1 fontSize:(double)arg2;
@@ -156,11 +160,17 @@ __attribute__((visibility("hidden")))
 - (_Bool)allowsImplicitComponentOwnership;
 - (id)componentRootObject;
 - (void)saveParagraphStylePropertiesToArchive:(struct ParagraphStylePropertiesArchive *)arg1 archiver:(id)arg2;
-- (void)saveCharacterStylePropertiesToArchive:(struct CharacterStylePropertiesArchive *)arg1 archiver:(id)arg2;
+- (void)saveCharacterStylePropertiesToArchive:(struct CharacterStylePropertiesArchive *)arg1 archiver:(id)arg2 archivingForCommand:(_Bool)arg3;
+@property(readonly, nonatomic) TSUColor *fallbackFontColorWhenUnableToReadCharacterFillColor;
 - (void)loadParagraphStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const struct ParagraphStylePropertiesArchive *)arg2 unarchiver:(id)arg3;
+- (void)p_removeFontColorPropertyInPropertyMap:(id)arg1;
 - (void)loadCharacterStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const struct CharacterStylePropertiesArchive *)arg2 unarchiver:(id)arg3;
+- (void)upgradeOutlinesToStrokesForcingUpgradeForUnderspecifiedCharacterStyles:(_Bool)arg1;
+- (void)p_upgradeOutlinesToStrokesInPropertyMap:(id)arg1 forcingUpgradeForUnderspecifiedCharacterStyles:(_Bool)arg2;
 - (void)setBoolValue:(_Bool)arg1 forProperty:(int)arg2;
 - (_Bool)boolValueForProperty:(int)arg1 defaultValue:(_Bool)arg2;
+- (id)resolvedValueForProperty:(int)arg1 inStyles:(id)arg2;
+- (_Bool)wantsCustomResolveLogicForProperty:(int)arg1 forStyles:(id)arg2;
 - (id)validateFontWithCheckedFontMap:(id)arg1;
 - (_Bool)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
 

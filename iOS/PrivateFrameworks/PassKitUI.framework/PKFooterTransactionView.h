@@ -8,34 +8,49 @@
 
 #import <PassKitUI/PKPeerPaymentContactResolverDelegate-Protocol.h>
 
-@class NSString, PKPaymentPass, PKPaymentTransaction, PKPeerPaymentContactResolver, PKStackedTextItemGroup, PKStackedTextItemGroupView, PKTransitPassProperties, UIImageView;
+@class NSString, PKContinuousButton, PKPaymentPass, PKPaymentPassAction, PKPaymentTransaction, PKPeerPaymentContactResolver, PKStackedTextItemGroup, PKStackedTextItemGroupView, PKTransitBalanceModel, UIImageView;
 
 @interface PKFooterTransactionView : UIView <PKPeerPaymentContactResolverDelegate>
 {
     PKStackedTextItemGroup *_displayItem;
     PKStackedTextItemGroupView *_headerView;
-    UIView *_separatorView;
     PKStackedTextItemGroupView *_contentView;
+    UIView *_separatorView;
+    PKStackedTextItemGroupView *_footerView;
+    UIImageView *_disclosureView;
+    PKContinuousButton *_actionButton;
+    PKPaymentPassAction *_action;
     UIImageView *_imageView;
     _Bool _animated;
     unsigned long long _deferUpdateCounter;
     _Bool _needsContentUpdate;
+    _Bool _contentRequiresDisclosure;
+    _Bool _disableCommutePlanDisplay;
+    _Bool _enableDisclosure;
     PKPaymentPass *_pass;
     PKPaymentTransaction *_transaction;
-    PKTransitPassProperties *_transitProperties;
+    PKTransitBalanceModel *_transitBalanceModel;
     PKPeerPaymentContactResolver *_peerPaymentContactResolver;
+    NSString *_requiredActionPropertyIdentifier;
+    CDUnknownBlockType _actionHandler;
 }
 
+@property(copy, nonatomic) CDUnknownBlockType actionHandler; // @synthesize actionHandler=_actionHandler;
+@property(retain, nonatomic) NSString *requiredActionPropertyIdentifier; // @synthesize requiredActionPropertyIdentifier=_requiredActionPropertyIdentifier;
+@property(readonly, nonatomic) _Bool contentRequiresDisclosure; // @synthesize contentRequiresDisclosure=_contentRequiresDisclosure;
+@property(nonatomic) _Bool enableDisclosure; // @synthesize enableDisclosure=_enableDisclosure;
+@property(nonatomic) _Bool disableCommutePlanDisplay; // @synthesize disableCommutePlanDisplay=_disableCommutePlanDisplay;
 @property(readonly, nonatomic) PKPeerPaymentContactResolver *peerPaymentContactResolver; // @synthesize peerPaymentContactResolver=_peerPaymentContactResolver;
-@property(readonly, nonatomic) PKTransitPassProperties *transitProperties; // @synthesize transitProperties=_transitProperties;
+@property(copy, nonatomic) PKTransitBalanceModel *transitBalanceModel; // @synthesize transitBalanceModel=_transitBalanceModel;
 @property(readonly, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
 @property(readonly, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 - (void).cxx_destruct;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)contactsDidChangeForContactResolver:(id)arg1;
 @property(readonly, nonatomic) _Bool hasContent;
 - (void)endUpdates:(_Bool)arg1;
 - (void)beginUpdates;
-- (void)setTransitProperties:(id)arg1 animated:(_Bool)arg2;
+- (void)setTransitBalanceModel:(id)arg1 animated:(_Bool)arg2;
 - (void)setTransaction:(id)arg1 animated:(_Bool)arg2;
 - (void)setPass:(id)arg1 animated:(_Bool)arg2;
 - (id)_image;
@@ -44,9 +59,11 @@
 - (_Bool)_strikethroughAmount;
 - (id)_relativeDateText;
 - (id)_statusText;
+- (id)_firstRenewActionForPass:(id)arg1;
 - (id)_locationText;
 - (id)_merchantText;
 - (void)_updateContentAnimated:(_Bool)arg1;
+- (void)_actionButtonTapped:(id)arg1;
 - (void)layoutSubviews;
 - (void)layoutIfNeededAnimated:(_Bool)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

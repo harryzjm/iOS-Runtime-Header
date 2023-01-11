@@ -8,7 +8,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFFlightCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFFlight;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFFlight, SFUserReportRequest;
 
 @interface SFFlightCardSection <SFFlightCardSection, NSSecureCoding, NSCopying>
 {
@@ -68,6 +68,7 @@
 @property(copy, nonatomic) NSArray *parameterKeyPaths;
 @property(copy, nonatomic) NSString *resultIdentifier;
 @property(readonly) Class superclass;
+@property(retain, nonatomic) SFUserReportRequest *userReportRequest;
 
 @end
 

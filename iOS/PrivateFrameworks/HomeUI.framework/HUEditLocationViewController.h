@@ -58,6 +58,7 @@
 - (void)wallpaperPicker:(id)arg1 didSelectWallpaper:(id)arg2 withImage:(id)arg3;
 - (void)wallpaperPicker:(id)arg1 didReceiveDroppedImage:(id)arg2;
 - (void)wallpaperThumbnailCell:(id)arg1 didReceiveDroppedImage:(id)arg2;
+- (void)wallpaperPickerDidCancel:(id)arg1;
 - (void)wallpaperPickerDidFinish:(id)arg1 wallpaper:(id)arg2 image:(id)arg3;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (_Bool)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
@@ -75,8 +76,10 @@
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)buildItemModuleControllerForModule:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)doneButtonPressed:(id)arg1;
 - (void)addButtonPressed:(id)arg1;
+- (id)presentNetworkSettings:(_Bool)arg1;
 - (id)showNotificationSettingsForHomeKitObject:(id)arg1 animated:(_Bool)arg2;
 - (void)scrollToNotificationTopicsAnimated:(_Bool)arg1;
 @property(readonly, nonatomic) HUHomeUsersCollectionViewController *usersViewController; // @synthesize usersViewController=_usersViewController;

@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)animateUnlockWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)resetLock;
+@property(readonly, nonatomic) _Bool prefersBaselineAlignment;
 - (void)applyStyleAttributes:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

@@ -47,6 +47,7 @@
 - (id)_axDualStringLabel;
 - (_Bool)allowsCaseChangeOnShift;
 - (id)_accessibilityLabel;
+- (_Bool)_axDisplaysGlobeKeyAsEmojiKey;
 - (_Bool)_axIsShifted;
 - (id)accessibilityIdentifier;
 - (id)accessibilityValue;
@@ -54,6 +55,7 @@
 - (id)_accessibilityKeyboardKeyEnteredString;
 - (_Bool)_axIsDictationKey;
 - (_Bool)accessibilityActivate;
+- (unsigned long long)_accessibilityAutomationType;
 - (_Bool)_accessibilityActivateForPanAlternate:(_Bool)arg1 isSecondAlternate:(_Bool)arg2;
 - (_Bool)_accessibilityDismissAlternativeKeyPicker;
 - (id)_axLayoutStar;

@@ -23,6 +23,7 @@
 - (_Bool)_accessibilityIsSpeakThisElement;
 - (struct CGRect)accessibilityFrame;
 - (struct CGRect)_frameInDayGridView;
+- (id)accessibilityUserInputLabels;
 - (id)accessibilityLabel;
 
 @end

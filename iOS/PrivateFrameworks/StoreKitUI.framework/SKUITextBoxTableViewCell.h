@@ -6,6 +6,7 @@
 
 @class SKUITextBoxView;
 
+__attribute__((visibility("hidden")))
 @interface SKUITextBoxTableViewCell
 {
     SKUITextBoxView *_textBoxView;

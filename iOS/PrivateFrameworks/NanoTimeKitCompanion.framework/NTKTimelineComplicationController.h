@@ -4,11 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class CLKComplicationTemplate;
+
 @interface NTKTimelineComplicationController
 {
+    _Bool _ignoreNewTemplates;
+    CLKComplicationTemplate *_alwaysOnTemplate;
+    CLKComplicationTemplate *_lockedTemplate;
 }
 
 + (_Bool)_isLegacy;
+@property(readonly, nonatomic) CLKComplicationTemplate *lockedTemplate; // @synthesize lockedTemplate=_lockedTemplate;
+@property(nonatomic) _Bool ignoreNewTemplates; // @synthesize ignoreNewTemplates=_ignoreNewTemplates;
+@property(readonly, nonatomic) CLKComplicationTemplate *alwaysOnTemplate; // @synthesize alwaysOnTemplate=_alwaysOnTemplate;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) CLKComplicationTemplate *activeDisplayTemplate;
 - (void)_aggdAppLaunchForTimeTravelDate:(id)arg1 timelineEntryDate:(id)arg2;
 - (unsigned long long)_animationForTimelineEntryTransitionFrom:(id)arg1 to:(id)arg2 withAnimationBehavior:(unsigned long long)arg3;
 

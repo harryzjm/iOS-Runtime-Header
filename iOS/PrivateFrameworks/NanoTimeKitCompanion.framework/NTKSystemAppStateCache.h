@@ -7,14 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <NanoTimeKitCompanion/LSApplicationWorkspaceObserverProtocol-Protocol.h>
+#import <NanoTimeKitCompanion/NTKSystemAppStateCache-Protocol.h>
 
 @class NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
-@interface NTKSystemAppStateCache : NSObject <LSApplicationWorkspaceObserverProtocol>
+@interface NTKSystemAppStateCache : NSObject <LSApplicationWorkspaceObserverProtocol, NTKSystemAppStateCache>
 {
     NSMutableSet *_restrictedSystemApps;
     NSMutableSet *_removedSystemApps;
+    NSMutableSet *_cachedAppStateBundleId;
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSString *_tinCanBundleID;
 }
@@ -22,11 +24,15 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)_queue_restrictedSystemApps;
+- (id)_queue_cachedAppStateBundleId;
 - (id)_queue_removedSystemApps;
+- (void)_queue_deviceDidPair;
 - (void)_queue_tinCanSettingsChanged;
 - (void)_queue_applicationsDidChange:(id)arg1 state:(unsigned long long)arg2;
+- (void)_queue_verifyStateForAppBundleId:(id)arg1;
 - (void)_queue_initializeRemovedSystemApps;
 - (void)_queue_initializeRestrictedSystemApps;
+- (void)_deviceDidPair;
 - (void)_tinCanSettingsChanged;
 - (void)applicationsDidUninstall:(id)arg1;
 - (void)applicationsDidInstall:(id)arg1;

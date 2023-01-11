@@ -8,6 +8,7 @@
 
 @class NSString, SKUIQuicklinksPageComponent, SKUIQuicklinksViewController;
 
+__attribute__((visibility("hidden")))
 @interface SKUIQuicklinksPageSection <SKUIQuicklinksViewControllerDelegate>
 {
     SKUIQuicklinksViewController *_quicklinksViewController;

@@ -9,6 +9,9 @@
 @class NSArray, PDFPage;
 
 @protocol PDFViewDelegatePrivate <PDFViewDelegate>
+
+@optional
+- (struct UIEdgeInsets)pdfViewContentInset;
 - (NSArray *)menuItems:(NSArray *)arg1 forPage:(PDFPage *)arg2;
 @end
 

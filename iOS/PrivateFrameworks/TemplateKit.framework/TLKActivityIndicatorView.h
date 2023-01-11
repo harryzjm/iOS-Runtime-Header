@@ -4,23 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TLKMultilineText, TLKVibrantLabel, UIActivityIndicatorView;
+@class TLKLabel, TLKMultilineText, UIActivityIndicatorView;
 
 @interface TLKActivityIndicatorView
 {
     TLKMultilineText *_subtitle;
     UIActivityIndicatorView *_activityIndicator;
-    TLKVibrantLabel *_subtitleLabel;
+    TLKLabel *_subtitleLabel;
 }
 
-@property(retain) TLKVibrantLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
-@property(retain) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
+@property(retain, nonatomic) TLKLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property(retain, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property(retain, nonatomic) TLKMultilineText *subtitle; // @synthesize subtitle=_subtitle;
 - (void).cxx_destruct;
 - (id)subtitleLabelText;
 - (void)observedPropertiesChanged;
-- (void)styleDidChange:(unsigned long long)arg1;
-- (id)init;
+- (void)tlk_updateForAppearance:(id)arg1;
+- (void)didMoveToWindow;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (_Bool)usesDefaultInsets;
+- (id)setupContentView;
 
 @end
 

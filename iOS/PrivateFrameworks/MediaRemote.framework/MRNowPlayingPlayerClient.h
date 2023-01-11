@@ -20,7 +20,7 @@
     NSDictionary *_nowPlayingInfo;
     MRNowPlayingArtwork *_nowPlayingArtwork;
     unsigned int _playbackState;
-    double _playbackStateSetToPlayTimestamp;
+    NSDate *_playbackStateDate;
     unsigned long long _capabilities;
     NSDate *_lastReceivedCommandDate;
     _Bool _coalescingInvalidations;
@@ -41,6 +41,8 @@
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
+- (void)_invokePlaybackSessionMigrateRequestOperations:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handePlaybackSessionMigrateRequest:(struct _MRPlaybackSessionProtobuf *)arg1 request:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updatePlaybackQueueWithCachedUpdates:(id)arg1 forPendingRequest:(id)arg2;
 - (void)clearCachedContentItemArtworkForItems:(id)arg1;
 - (void)cacheContentItemChangesForPendingRequests:(id)arg1;
@@ -53,7 +55,8 @@
 - (void)beginSendingTransactions;
 - (void)restoreNowPlayingClientState;
 @property(readonly, nonatomic) _Bool hasReceivedCommandRecently;
-- (void)preProcessCommand:(unsigned int)arg1 options:(id)arg2;
+- (id)resolveCommandOptions:(unsigned int)arg1 options:(id)arg2;
+- (unsigned int)resolveCommand:(unsigned int)arg1;
 - (void)preProcessChangePlaybackRateCommandWithOptions:(id)arg1;
 - (void)updateCacheWithContentItems:(id)arg1;
 - (void)updateCacheWithItem:(id)arg1;
@@ -67,11 +70,12 @@
 - (void)unsetCoalescingInvalidations;
 - (_Bool)testAndSetCoalescingInvalidations;
 - (void)updatePlayer:(id)arg1;
-@property(nonatomic) unsigned int playbackState;
-@property(nonatomic) double invalidatationTimestamp;
-@property(copy, nonatomic) NSArray *supportedCommands;
+@property(readonly, nonatomic) unsigned int playbackState;
+- (void)updatePlaybackState:(unsigned int)arg1 date:(id)arg2;
 @property(retain, nonatomic) MRNowPlayingArtwork *nowPlayingArtwork;
 @property(copy, nonatomic) NSDictionary *nowPlayingInfo;
+@property(nonatomic) double invalidatationTimestamp;
+@property(copy, nonatomic) NSArray *supportedCommands;
 - (id)initWithPlayerPath:(id)arg1;
 
 @end

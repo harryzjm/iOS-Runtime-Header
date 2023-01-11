@@ -12,7 +12,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityCanBeConsideredAsMainWindow;
-- (id)_initWithScreen:(id)arg1 options:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

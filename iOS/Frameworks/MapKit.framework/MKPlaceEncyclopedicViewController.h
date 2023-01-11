@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak id <MKPlaceCardEncyclopedicControllerDelegate> encyclopedicControllerDelegate; // @synthesize encyclopedicControllerDelegate=_encyclopedicControllerDelegate;
 @property(retain, nonatomic) id <GEOEncyclopedicInfo> encyclopedicInfo; // @synthesize encyclopedicInfo=_encyclopedicInfo;
 - (void).cxx_destruct;
+- (id)infoCardChildUnactionableUIElements;
 - (id)infoCardChildPossibleActions;
 - (id)_textBlockText;
 - (id)_textBlockTitle;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)_viewEncyclopedicContent;
 - (void)_updateViews;
 - (void)viewDidLoad;
+- (_Bool)_canShowWhileLocked;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

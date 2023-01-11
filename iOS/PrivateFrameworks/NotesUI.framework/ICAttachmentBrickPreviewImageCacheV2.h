@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <NotesShared/ICCache.h>
+#import <NotesShared/ICThumbnailDataCache.h>
 
-@interface ICAttachmentBrickPreviewImageCacheV2 : ICCache
+@interface ICAttachmentBrickPreviewImageCacheV2 : ICThumbnailDataCache
 {
 }
 
-+ (id)cacheKeyForAttachmentObjectID:(id)arg1 brickSize:(unsigned long long)arg2 scale:(double)arg3;
++ (id)cacheKeyForAttachmentObjectID:(id)arg1 brickSize:(unsigned long long)arg2 scale:(double)arg3 appearanceType:(unsigned long long)arg4;
 - (void)attachmentPreviewImagesDidUpdate:(id)arg1;
 - (void)dealloc;
 - (id)init;

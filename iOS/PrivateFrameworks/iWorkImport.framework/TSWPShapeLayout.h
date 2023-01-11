@@ -43,7 +43,9 @@ __attribute__((visibility("hidden")))
 - (struct CGAffineTransform)autosizedTransformForInfoGeometry:(id)arg1;
 - (struct CGAffineTransform)autosizedTransform;
 - (struct CGAffineTransform)computeLayoutTransform;
+- (void)transferLayoutGeometryToInfo:(id)arg1 withAdditionalTransform:(struct CGAffineTransform)arg2 assertIfInDocument:(_Bool)arg3;
 - (id)dependentLayouts;
+- (_Bool)descendersCannotClip;
 - (_Bool)textLayoutShouldLayoutVertically:(id)arg1;
 - (_Bool)textLayoutShouldWrapAroundExternalDrawables:(id)arg1;
 - (Class)repClassForTextLayout:(id)arg1;
@@ -52,7 +54,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)nonAutosizedFrameForTextLayout:(id)arg1;
 - (void)invalidateForAutosizingTextLayout:(id)arg1;
 - (int)verticalAlignmentForTextLayout:(id)arg1;
-- (unsigned int)autosizeFlagsForTextLayout:(id)arg1;
+- (unsigned long long)autosizeFlagsForTextLayout:(id)arg1;
 @property(readonly, nonatomic) _Bool autosizes;
 - (id)interiorClippingPath;
 - (id)textWrapper;
@@ -66,6 +68,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)p_isEmptyParagraphWithFillOrBorders;
 - (_Bool)p_isEmptyList;
 - (_Bool)p_hasVisibleContents;
+- (id)layoutsForProvidingGuidesForChildLayouts;
+- (_Bool)providesGuidesForChildLayouts;
 - (void)invalidatePath;
 - (void)invalidateSize;
 - (void)replaceChild:(id)arg1 with:(id)arg2;
@@ -79,7 +83,7 @@ __attribute__((visibility("hidden")))
 - (void)willBeAddedToLayoutController:(id)arg1;
 - (void)dealloc;
 - (id)initWithInfo:(id)arg1;
-- (double)maxAutoGrowWidthForTextLayout:(id)arg1;
+- (double)maxAutoGrowLineWidthForTextLayout:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

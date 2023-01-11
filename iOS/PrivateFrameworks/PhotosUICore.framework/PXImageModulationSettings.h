@@ -7,12 +7,14 @@
 @interface PXImageModulationSettings
 {
     _Bool _enabled;
+    _Bool _forceCurrentScreenSupportsHDR;
     long long _filterType;
     long long _HDRConsideration;
     double _HDRModulationIntensity;
     double _SDRModulationIntensity;
     double _videoComplementModulationIntensity;
     long long _EDRHeadroomRequestScheme;
+    long long _EDRHeadroomUsageScheme;
     double _manualEDRHeadroomRequestStops;
     double _EDRHeadroomRequestHDRThreshold;
     double _EDRHeadroomRequestSustainDuration;
@@ -23,12 +25,14 @@
 
 + (id)sharedInstance;
 + (id)settingsControllerModule;
+@property(nonatomic) _Bool forceCurrentScreenSupportsHDR; // @synthesize forceCurrentScreenSupportsHDR=_forceCurrentScreenSupportsHDR;
 @property(nonatomic) double deviceMaximumEDRHeadroomStops; // @synthesize deviceMaximumEDRHeadroomStops=_deviceMaximumEDRHeadroomStops;
 @property(nonatomic) double highEDRRequestedHeadroomStops; // @synthesize highEDRRequestedHeadroomStops=_highEDRRequestedHeadroomStops;
 @property(nonatomic) double lowEDRRequestedHeadroomStops; // @synthesize lowEDRRequestedHeadroomStops=_lowEDRRequestedHeadroomStops;
 @property(nonatomic) double EDRHeadroomRequestSustainDuration; // @synthesize EDRHeadroomRequestSustainDuration=_EDRHeadroomRequestSustainDuration;
 @property(nonatomic) double EDRHeadroomRequestHDRThreshold; // @synthesize EDRHeadroomRequestHDRThreshold=_EDRHeadroomRequestHDRThreshold;
 @property(nonatomic) double manualEDRHeadroomRequestStops; // @synthesize manualEDRHeadroomRequestStops=_manualEDRHeadroomRequestStops;
+@property(nonatomic) long long EDRHeadroomUsageScheme; // @synthesize EDRHeadroomUsageScheme=_EDRHeadroomUsageScheme;
 @property(nonatomic) long long EDRHeadroomRequestScheme; // @synthesize EDRHeadroomRequestScheme=_EDRHeadroomRequestScheme;
 @property(nonatomic) double videoComplementModulationIntensity; // @synthesize videoComplementModulationIntensity=_videoComplementModulationIntensity;
 @property(nonatomic) double SDRModulationIntensity; // @synthesize SDRModulationIntensity=_SDRModulationIntensity;

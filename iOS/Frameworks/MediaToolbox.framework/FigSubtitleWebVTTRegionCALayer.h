@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+__attribute__((visibility("hidden")))
 @interface FigSubtitleWebVTTRegionCALayer
 {
     struct OpaqueFigSubtitleWebVTTRegionCALayerInternal *layerInternal;
@@ -18,7 +19,6 @@
 - (void)setContent:(struct __CFDictionary *)arg1;
 - (struct __CFString *)getContentID;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 
 @end

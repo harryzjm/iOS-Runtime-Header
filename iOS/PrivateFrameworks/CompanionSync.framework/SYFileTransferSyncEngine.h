@@ -7,7 +7,7 @@
 #import <CompanionSync/IDSServiceDelegate-Protocol.h>
 
 @class IDSMessageContext, IDSService, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSObject, NSString, NSURL, SYDevice, SYStartSyncSession, _SYInputStreamer, _SYOutputStreamer;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_os_transaction;
 
 __attribute__((visibility("hidden")))
 @interface SYFileTransferSyncEngine <IDSServiceDelegate>
@@ -24,21 +24,28 @@ __attribute__((visibility("hidden")))
     _SYOutputStreamer *_responseStream;
     _Bool _responsesCanceled;
     IDSService *_idsService;
-    NSObject<OS_dispatch_queue> *_idsQueue;
     SYDevice *_activeDevice;
     SYDevice *_sessionDevice;
     SYDevice *_responseDevice;
+    struct os_unfair_lock_s _idsQueueLock;
+    NSObject<OS_dispatch_queue> *_idsQueue;
+    _Bool _idsQueueIsSuspended;
+    _Bool _idsQueueResumedLock;
     NSMutableIndexSet *_messageRows;
     NSMutableIndexSet *_responseMessageRows;
     NSMutableArray *_deferredIncomingSessions;
     NSMutableSet *_singleMessageUUIDs;
+    struct os_unfair_lock_s _messageMapLock;
     NSMutableDictionary *_messageIDsToSessionIDs;
+    NSObject<OS_os_transaction> *_closureTransaction;
+    NSObject<OS_os_transaction> *_responseSessionTransaction;
     NSDictionary *_customIDSOptions;
 }
 
 @property(copy, nonatomic) NSDictionary *customIDSOptions; // @synthesize customIDSOptions=_customIDSOptions;
 - (void).cxx_destruct;
 - (unsigned long long)_crcChecksum:(id)arg1;
+- (void)service:(id)arg1 connectedDevicesChanged:(id)arg2;
 - (void)service:(id)arg1 nearbyDevicesChanged:(id)arg2;
 - (void)service:(id)arg1 didSwitchActivePairedDevice:(id)arg2 acknowledgementBlock:(CDUnknownBlockType)arg3;
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 hasBeenDeliveredWithContext:(id)arg4;
@@ -84,6 +91,9 @@ __attribute__((visibility("hidden")))
 - (void)endFileTransferForStream:(id)arg1 atURL:(id)arg2 target:(id)arg3 wasCancelled:(_Bool)arg4 messageRows:(id)arg5;
 - (void)suspend;
 - (_Bool)resume:(id *)arg1;
+- (void)dealloc;
+- (void)_resumeIdsQueue;
+- (void)_suspendIdsQueue;
 - (id)initWithService:(id)arg1 queue:(id)arg2;
 
 // Remaining properties

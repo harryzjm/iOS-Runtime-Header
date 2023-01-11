@@ -41,6 +41,7 @@
 - (void)_updateStepFunction;
 - (void)_stopAnimation;
 - (void)dealloc;
+- (double)settlingDuration;
 - (id)init;
 - (id)initWithValue:(double)arg1 velocity:(double)arg2 unitSize:(double)arg3;
 

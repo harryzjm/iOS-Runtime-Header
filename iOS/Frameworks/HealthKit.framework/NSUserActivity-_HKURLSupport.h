@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Foundation/NSUserActivity.h>
+#import <CoreServices/NSUserActivity.h>
 
 @interface NSUserActivity (_HKURLSupport)
++ (id)_hk_userActivityForAtrialFibrillationEventType;
++ (id)_hk_userActivityForElectrocardiogramType;
 @end
 

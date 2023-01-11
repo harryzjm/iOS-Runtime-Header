@@ -6,24 +6,19 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-@class NSString, UIActivityIndicatorView, UILabel;
+@class UIActivityIndicatorView;
 
 @interface PKSpinnerHeaderView : UITableViewHeaderFooterView
 {
-    UILabel *_headerLabel;
     UIActivityIndicatorView *_spinner;
     _Bool _showSpinner;
-    NSString *_headerText;
 }
 
-+ (id)_labelFont;
-+ (double)sectionHeight;
 @property(nonatomic) _Bool showSpinner; // @synthesize showSpinner=_showSpinner;
-@property(retain, nonatomic) NSString *headerText; // @synthesize headerText=_headerText;
 - (void).cxx_destruct;
-- (void)_systemTextSizeChanged;
 - (void)layoutSubviews;
-- (id)initWithFrame:(struct CGRect)arg1 text:(id)arg2 showSpinner:(_Bool)arg3;
+- (void)prepareForReuse;
+- (id)initWithReuseIdentifier:(id)arg1;
 
 @end
 

@@ -8,18 +8,22 @@
 
 #import <iTunesCloud/NSCopying-Protocol.h>
 #import <iTunesCloud/NSMutableCopying-Protocol.h>
+#import <iTunesCloud/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface ICClientInfo : NSObject <NSCopying, NSMutableCopying>
+@interface ICClientInfo : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
     NSString *_processName;
     NSString *_clientIdentifier;
     NSString *_clientVersion;
     NSString *_requestingBundleIdentifier;
     NSString *_requestingBundleVersion;
+    NSString *_bagProfile;
+    NSString *_bagProfileVersion;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)defaultInfo;
 @property(readonly, copy, nonatomic) NSString *requestingBundleVersion; // @synthesize requestingBundleVersion=_requestingBundleVersion;
 @property(readonly, copy, nonatomic) NSString *requestingBundleIdentifier; // @synthesize requestingBundleIdentifier=_requestingBundleIdentifier;
@@ -27,9 +31,15 @@
 @property(readonly, copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property(readonly, copy, nonatomic) NSString *processName; // @synthesize processName=_processName;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)_clientInfoCopyWithClass:(Class)arg1;
+@property(readonly, copy, nonatomic) NSString *bagProfileVersion;
+@property(readonly, copy, nonatomic) NSString *bagProfile;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (id)initWithSystemApplicationType:(long long)arg1;
 - (id)initWithBundleIdentifier:(id)arg1;
 
 @end

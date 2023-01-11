@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
+@class AMSAuthenticateRequest, AMSDialogRequest, NSArray;
 
 @protocol ASDNotificationServiceProtocol
 - (void)deliverProgress:(NSArray *)arg1;
 - (void)deliverNotifications:(NSArray *)arg1;
+- (void)deliverDialogRequest:(AMSDialogRequest *)arg1 withResultHandler:(void (^)(AMSDialogResult *, NSError *))arg2;
+- (void)deliverAuthenticateRequest:(AMSAuthenticateRequest *)arg1 withResultHandler:(void (^)(AMSAuthenticateResult *, NSError *))arg2;
 @end
 

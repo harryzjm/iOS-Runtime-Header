@@ -19,6 +19,7 @@
     struct btC3DDebugDraw *_debugDrawer;
     struct c3dAether _aether;
     _Bool _hasActiveFields;
+    _Bool _firstSimulationDone;
     id <SCNPhysicsContactDelegate> _contactDelegate;
     SCNPhysicsContact *_contact;
     SCNScene *_scene;
@@ -29,6 +30,8 @@
     NSMutableArray *_fields;
     double _elapsedTime;
     NSMutableArray *_behaviors;
+    NSArray *_activeBehaviors;
+    _Bool _activeBehaviorsValid;
     NSMutableSet *_bodies;
 }
 
@@ -50,7 +53,7 @@
 - (struct btDynamicsWorld *)_handle;
 - (struct btVehicleRaycaster *)_defaultVehicleRayCaster;
 - (void)_step:(double)arg1;
-- (void)_updatePhysicsFieldsTrasforms;
+- (void)_updatePhysicsFieldsTransforms;
 - (struct c3dAether *)_aetherHandle;
 - (void)_removeFieldFromWorld:(id)arg1;
 - (void)_addFieldToWorld:(id)arg1;

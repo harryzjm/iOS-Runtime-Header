@@ -12,16 +12,17 @@ __attribute__((visibility("hidden")))
 @interface _CFXPreferences : NSObject
 {
     struct __CFDictionary *_sources;
-    struct _opaque_pthread_mutex_t *_sourcesLock;
     struct __CFDictionary *_namedVolatileSources;
-    struct _opaque_pthread_mutex_t *_namedVolatileSourcesLock;
     struct __CFDictionary *_searchLists;
-    struct _opaque_pthread_mutex_t *_searchListsLock;
     NSObject<OS_xpc_object> *_agentConnection;
     NSObject<OS_xpc_object> *_daemonConnection;
-    NSObject<OS_xpc_object> *_observationConnection;
+    NSObject<OS_xpc_object> *_directConnection;
     unsigned int _launchdUID;
     unsigned int _euid;
+    _Atomic char _userHomeDirectoryState;
+    struct os_unfair_lock_s _sourcesLock;
+    struct os_unfair_lock_s _searchListsLock;
+    struct os_unfair_lock_s _namedVolatileSourcesLock;
 }
 
 + (id)copyDefaultPreferences;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (_Atomic unsigned int *)shmemForRole:(int)arg1 name:(const char *)arg2;
 - (void)resetPreferences:(_Bool)arg1;
 - (void)ingestVolatileStateFromPreferences:(id)arg1;
+- (void)_deliverPendingKVONotifications;
 - (void)registerDefaultValues:(struct __CFDictionary *)arg1;
 - (struct __CFArray *)volatileSourceNames;
 - (struct __CFDictionary *)copyDictionaryForApp:(struct __CFString *)arg1 withContainer:(struct __CFString *)arg2;
@@ -54,7 +56,9 @@ __attribute__((visibility("hidden")))
 - (void)fullCloudSynchronizeForAppIdentifier:(struct __CFString *)arg1 container:(struct __CFString *)arg2 configurationURL:(struct __CFURL *)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)addSuitePreferences:(struct __CFString *)arg1 toAppIdentifier:(struct __CFString *)arg2 container:(struct __CFString *)arg3;
 - (void)setAccessRestricted:(_Bool)arg1 forAppIdentifier:(struct __CFString *)arg2;
+- (void)setFileProtectionClass:(int)arg1 identifier:(struct __CFString *)arg2 user:(struct __CFString *)arg3 host:(struct __CFString *)arg4 container:(struct __CFString *)arg5;
 - (void)setBackupDisabled:(_Bool)arg1 identifier:(struct __CFString *)arg2 user:(struct __CFString *)arg3 host:(struct __CFString *)arg4 container:(struct __CFString *)arg5;
+- (void)simulateTimerSynchronizeForTestingForUser:(struct __CFString *)arg1;
 - (void)flushCachesForAppIdentifier:(struct __CFString *)arg1 user:(struct __CFString *)arg2;
 - (void)notifyOfImpendingDeletionOfUser:(struct __CFString *)arg1;
 - (void)setDaemonCacheEnabled:(_Bool)arg1 identifier:(struct __CFString *)arg2 user:(struct __CFString *)arg3 host:(struct __CFString *)arg4 container:(struct __CFString *)arg5;
@@ -69,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (void)unregisterUserDefaultsInstance:(id)arg1;
 - (id)init;
 - (_Bool)canLookUpAgents;
+- (_Bool)currentUserHasInvalidHomeDirectory;
 - (unsigned int)euid;
 - (void)assertEquivalence:(_Bool)arg1 ofIdentifiers:(struct __CFArray *)arg2 users:(struct __CFArray *)arg3 hosts:(struct __CFArray *)arg4 containers:(struct __CFArray *)arg5 managedFlags:(struct __CFArray *)arg6 cloudFlags:(struct __CFArray *)arg7;
 - (void)withNamedVolatileSources:(CDUnknownBlockType)arg1;
@@ -82,7 +87,6 @@ __attribute__((visibility("hidden")))
 - (void)alreadylocked_withSearchLists:(CDUnknownBlockType)arg1;
 - (void)replaceSearchList:(id)arg1 withSearchList:(id)arg2;
 - (void)withSuiteSearchListForIdentifier:(struct __CFString *)arg1 user:(struct __CFString *)arg2 locked:(_Bool)arg3 perform:(CDUnknownBlockType)arg4;
-- (void)withSnapshotSearchList:(CDUnknownBlockType)arg1;
 - (void)assertEquivalence:(_Bool)arg1 ofIdentifiers:(struct __CFArray *)arg2 containers:(struct __CFArray *)arg3 cloudConfigurationURLs:(struct __CFArray *)arg4;
 - (void)withSearchListForIdentifier:(struct __CFString *)arg1 container:(struct __CFString *)arg2 cloudConfigurationURL:(struct __CFURL *)arg3 perform:(CDUnknownBlockType)arg4;
 - (void)updateSearchListsForIdentifier:(struct __CFString *)arg1;

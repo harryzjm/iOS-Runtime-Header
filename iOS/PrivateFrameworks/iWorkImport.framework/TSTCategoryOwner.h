@@ -9,12 +9,12 @@
 #import <iWorkImport/TSTCellWillChangeProtocol-Protocol.h>
 #import <iWorkImport/TSTMergeChangeProtocol-Protocol.h>
 
-@class NSArray, NSMutableArray, TSCECalculationEngine, TSTInfo, TSTTableModel;
+@class NSArray, NSMutableArray, TSCECalculationEngine, TSTTableInfo, TSTTableModel;
 
 __attribute__((visibility("hidden")))
 @interface TSTCategoryOwner : NSObject <TSTCellWillChangeProtocol, TSTMergeChangeProtocol>
 {
-    TSTInfo *_tableInfo;
+    TSTTableInfo *_tableInfo;
     TSCECalculationEngine *_calcEngine;
     UUIDData_5fbc143e _baseTableUID;
     UUIDData_5fbc143e _ownerUID;
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)willRemoveRows:(const vector_4dc5f307 *)arg1;
 - (void)didUnmergeRange:(struct TSUModelCellRect)arg1;
 - (void)didMergeRange:(struct TSUModelCellRect)arg1;
+- (void)willApplyConcurrentCellMap:(id)arg1;
 - (void)willApplyBaseCellMap:(id)arg1;
 - (void)willApplyCell:(id)arg1 baseCellCoord:(struct TSUModelCellCoord)arg2;
 - (UUIDData_5fbc143e)p_willApplyCell:(id)arg1 baseCellCoord:(struct TSUModelCellCoord)arg2 refreshCategoryInfo:(_Bool)arg3;
@@ -44,13 +45,14 @@ __attribute__((visibility("hidden")))
 - (void)registerGroupBy:(id)arg1;
 - (id)calcEngine;
 - (void)unregisterFromCalcEngine;
-- (int)registerWithCalcEngine:(id)arg1;
-- (void)willClose;
+- (int)registerWithCalcEngine:(id)arg1 baseOwnerUID:(const UUIDData_5fbc143e *)arg2;
+- (void)teardown;
 @property(readonly, nonatomic) TSTTableModel *tableModel;
-@property(retain, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property(nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 - (void)unregisterFromDistributors;
 - (void)registerWithDistributors;
 - (id)description;
+- (_Bool)hasEnabledGroupBys;
 - (void)dealloc;
 - (id)initWithBaseTableUID:(const UUIDData_5fbc143e *)arg1;
 - (id)initWithBaseTableUID:(const UUIDData_5fbc143e *)arg1 ownerUID:(const UUIDData_5fbc143e *)arg2;

@@ -11,7 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (Class)_axSBFloatingDockControllerClass;
+- (id)_axFloatingDockController;
 - (_Bool)_axIsFloatingDockWindow;
 - (_Bool)accessibilityPerformEscape;
 - (_Bool)_accessibilityWindowVisible;

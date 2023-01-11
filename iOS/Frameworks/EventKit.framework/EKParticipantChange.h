@@ -4,10 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
 @interface EKParticipantChange
 {
 }
+
++ (void)fetchParticipantChangesInCalendar:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
++ (void)fetchParticipantChangesInSource:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
++ (void)fetchParticipantChangesInStore:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
++ (int)entityType;
 
 @end
 

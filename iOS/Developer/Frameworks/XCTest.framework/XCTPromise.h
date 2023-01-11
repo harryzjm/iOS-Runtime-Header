@@ -11,17 +11,17 @@
 @interface XCTPromise : NSObject
 {
     struct atomic_flag _promiseFulfilled;
-    NSError *_error;
-    id _value;
-    XCTestExpectation *_expectation;
     NSString *_promiseDescription;
+    id _value;
+    NSError *_error;
+    XCTestExpectation *_expectation;
 }
 
 @property(readonly) struct atomic_flag promiseFulfilled; // @synthesize promiseFulfilled=_promiseFulfilled;
-@property(readonly, copy) NSString *promiseDescription; // @synthesize promiseDescription=_promiseDescription;
 @property(readonly) XCTestExpectation *expectation; // @synthesize expectation=_expectation;
-@property(retain) id value; // @synthesize value=_value;
 @property(retain) NSError *error; // @synthesize error=_error;
+@property(retain) id value; // @synthesize value=_value;
+@property(readonly, copy) NSString *promiseDescription; // @synthesize promiseDescription=_promiseDescription;
 - (void).cxx_destruct;
 - (void)fulfillWithValue:(id)arg1 error:(id)arg2;
 - (void)fulfillWithError:(id)arg1;

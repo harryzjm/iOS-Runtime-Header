@@ -8,6 +8,7 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)setActive:(_Bool)arg1 animated:(_Bool)arg2;

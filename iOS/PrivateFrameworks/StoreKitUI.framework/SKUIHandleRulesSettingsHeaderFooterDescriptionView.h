@@ -6,6 +6,7 @@
 
 @class NSMutableArray, SKUIHandleRulesSettingsHeaderFooterDescription, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface SKUIHandleRulesSettingsHeaderFooterDescriptionView
 {
     NSMutableArray *_buttons;

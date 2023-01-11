@@ -6,6 +6,7 @@
 
 @class SKUIFocusedTouchGestureRecognizer, SKUIGiftConfirmView, SKUIGiftPurchaseRequest;
 
+__attribute__((visibility("hidden")))
 @interface SKUIGiftConfirmViewController
 {
     SKUIGiftConfirmView *_confirmView;

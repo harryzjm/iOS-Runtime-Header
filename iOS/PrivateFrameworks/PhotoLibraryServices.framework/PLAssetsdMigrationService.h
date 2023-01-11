@@ -4,21 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <PhotoLibraryServices/PLAssetsdMigrationServiceProtocol-Protocol.h>
 
-@class NSString;
+@class NSObject, NSString;
+@protocol OS_dispatch_queue;
 
-@interface PLAssetsdMigrationService : NSObject <PLAssetsdMigrationServiceProtocol>
+@interface PLAssetsdMigrationService <PLAssetsdMigrationServiceProtocol>
 {
+    NSObject<OS_dispatch_queue> *_backgroundQueue;
 }
 
+@property(readonly, nonatomic) NSObject<OS_dispatch_queue> *backgroundQueue; // @synthesize backgroundQueue=_backgroundQueue;
+- (void).cxx_destruct;
+- (void)moveiPhotoLibraryMediaWithReply:(CDUnknownBlockType)arg1;
+- (void)dataMigrationWillFinishWithReply:(CDUnknownBlockType)arg1;
+- (void)cleanupModelForDataMigrationForRestoreType:(long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)initWithLibraryServicesManager:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+
 @end
 

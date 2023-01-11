@@ -4,12 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+#import <ClassKit/CLSContactsSearchable-Protocol.h>
 
-@interface CLSPerson
+@class NSPersonNameComponents, NSString;
+
+@interface CLSPerson <CLSContactsSearchable>
 {
     _Bool _progressTrackingAllowed;
     _Bool _federatedAccount;
+    _Bool _isEditable;
+    _Bool _isSearchable;
     NSString *_appleID;
     NSString *_givenName;
     NSString *_middleName;
@@ -20,11 +24,21 @@
     NSString *_iCloudUserID;
     NSString *_orgID;
     long long _passcodeType;
+    NSString *_emailAddress;
+    NSString *_grade;
+    long long _sourceType;
+    NSString *_searchText;
 }
 
 + (unsigned long long)roleFromString:(id)arg1;
 + (id)stringForRole:(unsigned long long)arg1;
 + (_Bool)supportsSecureCoding;
+@property(copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
+@property(nonatomic, getter=isSearchable) _Bool isSearchable; // @synthesize isSearchable=_isSearchable;
+@property(nonatomic, getter=isEditable) _Bool isEditable; // @synthesize isEditable=_isEditable;
+@property(nonatomic) long long sourceType; // @synthesize sourceType=_sourceType;
+@property(copy, nonatomic) NSString *grade; // @synthesize grade=_grade;
+@property(copy, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 @property(nonatomic, getter=isFederatedAccount) _Bool federatedAccount; // @synthesize federatedAccount=_federatedAccount;
 @property(nonatomic, getter=isProgressTrackingAllowed) _Bool progressTrackingAllowed; // @synthesize progressTrackingAllowed=_progressTrackingAllowed;
 @property(nonatomic) long long passcodeType; // @synthesize passcodeType=_passcodeType;
@@ -38,10 +52,15 @@
 @property(copy, nonatomic) NSString *givenName; // @synthesize givenName=_givenName;
 @property(copy, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSPersonNameComponents *nameComponents;
+@property(readonly, nonatomic) NSString *displayName;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)_init;
+
+// Remaining properties
+@property(readonly, nonatomic) NSString *groupIdentifier;
 
 @end
 

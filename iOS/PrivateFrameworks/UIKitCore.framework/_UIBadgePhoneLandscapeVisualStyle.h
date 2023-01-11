@@ -9,9 +9,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (double)singleBadgeWidth;
+- (double)cornerRadius;
 - (double)minWidth;
-- (double)verticalInset;
 - (double)edgePadding;
 - (id)font;
 - (double)fontSize;

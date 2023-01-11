@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CPLBatchExtractionStrategy, CPLChangeBatch, CPLEnginePushRepository, CPLEngineScheduler, CPLEngineScopeStorage, CPLEngineTransport, CPLExtractedBatch, NSArray, NSDate, NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSObject, NSString;
+@class CPLBatchExtractionStrategy, CPLChangeBatch, CPLDerivativesFilter, CPLEnginePushRepository, CPLEngineScheduler, CPLEngineScopeStorage, CPLEngineTransport, CPLExtractedBatch, NSArray, NSDate, NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSObject, NSString;
 @protocol CPLEngineTransportCheckRecordsExistenceTask, CPLEngineTransportGroup, CPLEngineTransportUploadBatchTask, OS_dispatch_queue;
 
 @interface CPLPushToTransportScopeTask
@@ -19,6 +19,7 @@
     CPLChangeBatch *_uploadBatch;
     CPLChangeBatch *_batchToCommit;
     NSError *_preparationError;
+    CPLDerivativesFilter *_derivativesFilter;
     NSArray *_uploadResourceTasks;
     NSDictionary *_recordsWithGeneratedResources;
     NSMutableDictionary *_recordsWithSparseResources;
@@ -54,10 +55,13 @@
     NSString *_currentTaskKey;
     NSDate *_taskStartDate;
     unsigned long long _recordCount;
+    _Bool _didExtractOneBatch;
     _Bool _highPriority;
+    NSString *_phaseDescription;
 }
 
 @property(nonatomic) _Bool highPriority; // @synthesize highPriority=_highPriority;
+@property(copy) NSString *phaseDescription; // @synthesize phaseDescription=_phaseDescription;
 - (void).cxx_destruct;
 - (id)taskIdentifier;
 - (void)_pushTaskDidFinishWithError:(id)arg1;
@@ -82,9 +86,9 @@
 - (void)_requireExistenceCheckForRecords:(id)arg1;
 - (void)_updateQuotaStrategyAfterSuccessInTransaction:(id)arg1;
 - (void)_popNextBatchAndContinue;
-- (void)_didFinishTaskWithKey:(id)arg1 error:(_Bool)arg2;
+- (void)_didFinishTaskWithKey:(id)arg1 error:(_Bool)arg2 cancelled:(_Bool)arg3;
 - (void)_didStartTaskWithKey:(id)arg1 recordCount:(unsigned long long)arg2;
-- (id)initWithEngineLibrary:(id)arg1 clientCacheIdentifier:(id)arg2 scope:(id)arg3 transportScope:(id)arg4;
+- (id)initWithEngineLibrary:(id)arg1 session:(id)arg2 clientCacheIdentifier:(id)arg3 scope:(id)arg4 transportScope:(id)arg5;
 
 @end
 

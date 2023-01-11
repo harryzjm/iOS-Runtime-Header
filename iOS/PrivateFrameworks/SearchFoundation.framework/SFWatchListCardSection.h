@@ -8,7 +8,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFWatchListCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFWatchListItem;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFUserReportRequest, SFWatchListItem;
 
 @interface SFWatchListCardSection <SFWatchListCardSection, NSSecureCoding, NSCopying>
 {
@@ -59,6 +59,7 @@
 @property(copy, nonatomic) NSArray *parameterKeyPaths;
 @property(copy, nonatomic) NSString *resultIdentifier;
 @property(readonly) Class superclass;
+@property(retain, nonatomic) SFUserReportRequest *userReportRequest;
 
 @end
 

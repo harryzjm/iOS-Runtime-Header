@@ -6,6 +6,7 @@
 
 @class NSMutableArray, NSXPCConnection, NSXPCInterface;
 
+__attribute__((visibility("hidden")))
 @interface TransactionManager
 {
     NSXPCConnection *_connection;

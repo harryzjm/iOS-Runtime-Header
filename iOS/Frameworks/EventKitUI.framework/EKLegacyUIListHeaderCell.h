@@ -4,23 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UITableViewHeaderFooterView.h>
 
 @class EKLegacyUIListHeaderCellContentView;
 
-@interface EKLegacyUIListHeaderCell : UIView
+@interface EKLegacyUIListHeaderCell : UITableViewHeaderFooterView
 {
     EKLegacyUIListHeaderCellContentView *_contentView;
     _Bool _showWeekNumber;
 }
 
++ (double)timeWidthIncludingDots:(_Bool)arg1;
++ (void)_invalidateWidths;
++ (void)_calculateWidths;
++ (id)_allDayLocalizedString;
++ (id)_noonLocalizedString;
++ (double)xMidpointForCalendarDot;
 @property(nonatomic) _Bool showWeekNumber; // @synthesize showWeekNumber=_showWeekNumber;
 - (void).cxx_destruct;
 - (void)setNeedsDisplay;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (id)_backgroundImage;
-- (void)setFrame:(struct CGRect)arg1;
-- (void)setOpaque:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool reusable;
 @property(nonatomic) _Bool indentsForDots;
 @property(nonatomic) double date;

@@ -6,24 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@class _LSDatabase;
+
 __attribute__((visibility("hidden")))
 @interface LSRecordBuilder : NSObject
 {
-    struct LSDatabase *_db;
+    _LSDatabase *_db;
 }
 
 + (id)recordBuilderForType:(unsigned long long)arg1;
-- (unsigned int)createStringFrom:(id)arg1 lowercase:(_Bool)arg2;
-- (id)retainURL:(id)arg1;
-- (id)retainDictionary:(id)arg1;
-- (id)retainArray:(id)arg1;
-- (id)retainNumber:(id)arg1;
-- (id)retainString:(id)arg1;
+- (void).cxx_destruct;
 - (_Bool)parseInstallationInfo:(id)arg1;
 - (void)parseiTunesMetadata:(id)arg1;
 - (_Bool)parseInfoPlist:(id)arg1;
-- (unsigned int)registerBundleRecord:(struct LSDatabase *)arg1 error:(id *)arg2;
-- (void)setDatabase:(struct LSDatabase *)arg1;
+- (unsigned int)registerBundleRecord:(id)arg1 error:(id *)arg2;
+- (void)setDatabase:(id)arg1;
 
 @end
 

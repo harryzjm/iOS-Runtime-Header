@@ -30,6 +30,7 @@
 - (void)_updateSubviewsAnimated:(_Bool)arg1;
 - (void)layoutIfNeededAnimated:(_Bool)arg1;
 - (void)layoutSubviews;
+@property(readonly, nonatomic) double headerPadding;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)initWithStyle:(long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

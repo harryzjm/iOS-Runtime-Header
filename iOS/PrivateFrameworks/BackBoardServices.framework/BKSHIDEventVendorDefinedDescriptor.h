@@ -9,7 +9,6 @@
 }
 
 + (id)descriptorWithPage:(unsigned int)arg1 usage:(unsigned int)arg2;
-- (id)_initWithPage:(unsigned int)arg1 usage:(unsigned int)arg2;
 
 @end
 

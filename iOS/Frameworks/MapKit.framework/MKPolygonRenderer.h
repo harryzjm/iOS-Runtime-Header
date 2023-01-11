@@ -4,12 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MKPolygon;
+@class MKPolygon, VKVectorOverlayPolygonGroup;
 
 @interface MKPolygonRenderer
 {
+    VKVectorOverlayPolygonGroup *_vectorData;
 }
 
++ (Class)_mapkitLeafClass;
+- (void).cxx_destruct;
+- (void)_updateRenderColors;
+- (id)vectorDataForOverlay:(id)arg1;
+- (_Bool)overlayCanProvideVectorData:(id)arg1;
+- (id)_vectorGeometry;
+- (_Bool)_canProvideVectorGeometry;
+- (void)setAlpha:(double)arg1;
+- (void)setStrokeColor:(id)arg1;
+- (void)setFillColor:(id)arg1;
+- (void)setMiterLimit:(double)arg1;
+- (void)setLineJoin:(int)arg1;
+- (void)setLineWidth:(double)arg1;
 - (void)fillPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (void)createPath;
 @property(readonly, nonatomic) MKPolygon *polygon;

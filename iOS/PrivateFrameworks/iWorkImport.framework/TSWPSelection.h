@@ -13,8 +13,8 @@ __attribute__((visibility("hidden")))
 {
     int _type;
     struct _NSRange _range;
-    unsigned long long _headChar;
-    unsigned long long _tailChar;
+    unsigned long long _headCharIndex;
+    unsigned long long _tailCharIndex;
     _Bool _leadingEdge;
     unsigned long long _leadingCharIndex;
     _Bool _validVisualRanges;
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
     TSWPRangeArray *_visualRanges;
 }
 
-+ (_Bool)p_checkEndOfLineFlagForRange:(struct _NSRange *)arg1 leadingEdge:(_Bool *)arg2 type:(int *)arg3 endOfLine:(_Bool)arg4 storage:(id)arg5;
++ (_Bool)p_checkEndOfLineFlagForRange:(inout struct _NSRange *)arg1 leadingEdge:(inout _Bool *)arg2 type:(inout int *)arg3 endOfLine:(_Bool)arg4 storage:(id)arg5;
 + (id)selectionFromWPSelection:(id)arg1;
 + (id)selectionWithRange:(struct _NSRange)arg1 type:(int)arg2 leadingEdge:(_Bool)arg3 storage:(id)arg4;
 + (id)selectionWithRange:(struct _NSRange)arg1;
@@ -34,8 +34,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool validVisualRanges; // @synthesize validVisualRanges=_validVisualRanges;
 @property(readonly, nonatomic) unsigned long long leadingCharIndex; // @synthesize leadingCharIndex=_leadingCharIndex;
 @property(readonly, nonatomic) _Bool leadingEdge; // @synthesize leadingEdge=_leadingEdge;
-@property(nonatomic) unsigned long long tailChar; // @synthesize tailChar=_tailChar;
-@property(nonatomic) unsigned long long headChar; // @synthesize headChar=_headChar;
+@property(nonatomic) unsigned long long tailCharIndex; // @synthesize tailCharIndex=_tailCharIndex;
+@property(nonatomic) unsigned long long headCharIndex; // @synthesize headCharIndex=_headCharIndex;
 @property(readonly, nonatomic) struct _NSRange smartFieldRange; // @synthesize smartFieldRange=_smartFieldRange;
 @property(readonly, nonatomic) int type; // @synthesize type=_type;
 @property(readonly, nonatomic) struct _NSRange rawRange; // @synthesize rawRange=_range;
@@ -45,10 +45,8 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchive:(struct SelectionArchive *)arg1 archiver:(id)arg2;
 - (_Bool)intersectsRange:(struct _NSRange)arg1;
 - (_Bool)containsCharacterAtIndex:(unsigned long long)arg1;
-- (unsigned long long)rightEdge;
-- (unsigned long long)leftEdge;
 - (unsigned long long)visualRangeCount;
-- (void)setHeadChar:(unsigned long long)arg1 tailChar:(unsigned long long)arg2;
+- (void)setHeadCharIndex:(unsigned long long)arg1 tailCharIndex:(unsigned long long)arg2;
 - (id)visualRangesArray;
 - (id)i_visualRanges;
 - (id)visualRanges;
@@ -56,7 +54,7 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)superRange;
 - (unsigned long long)end;
 - (unsigned long long)start;
-- (id)copyWithVisualRanges:(id)arg1 headChar:(unsigned long long)arg2 tailChar:(unsigned long long)arg3 rightToLeft:(_Bool)arg4 sameLine:(_Bool)arg5;
+- (id)copyWithVisualRanges:(id)arg1 headCharIndex:(unsigned long long)arg2 tailCharIndex:(unsigned long long)arg3 rightToLeft:(_Bool)arg4 sameLine:(_Bool)arg5;
 - (id)copyWithNewVisualRanges:(id)arg1;
 - (id)constrainToRange:(struct _NSRange)arg1;
 - (id)copyWithNewStyleInsertionBehavior:(int)arg1 newCaretAffinity:(int)arg2;

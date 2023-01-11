@@ -8,6 +8,7 @@
 
 @class NSData, NSString, NSURL, SKUICategoryController, SKUIStorePageViewController, SSVLoadURLOperation;
 
+__attribute__((visibility("hidden")))
 @interface SKUILegacyNativeViewController <SKUICategoryControllerDelegate>
 {
     NSURL *_activeURL;

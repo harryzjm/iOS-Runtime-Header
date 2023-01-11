@@ -9,7 +9,7 @@
 #import <Silex/WKNavigationDelegatePrivate-Protocol.h>
 #import <Silex/WKUIDelegate-Protocol.h>
 
-@class NSString, SXWebCrashRetryThrottler, WKWebView;
+@class NSString, SXWebCrashRetryThrottler, WKWebView, WKWebsiteDataStore;
 @protocol SXComponentActionHandler;
 
 @interface SXEmbedVideoComponentView <WKNavigationDelegate, WKNavigationDelegatePrivate, WKUIDelegate, SXViewportChangeListener>
@@ -19,9 +19,11 @@
     id <SXComponentActionHandler> _actionHandler;
     WKWebView *_webView;
     SXWebCrashRetryThrottler *_webCrashRetryThrottler;
+    WKWebsiteDataStore *_dataStore;
 }
 
 + (id)sharedConfiguration;
+@property(readonly, nonatomic) WKWebsiteDataStore *dataStore; // @synthesize dataStore=_dataStore;
 @property(nonatomic) _Bool isPresentingFullscreen; // @synthesize isPresentingFullscreen=_isPresentingFullscreen;
 @property(nonatomic) _Bool webViewIsLoaded; // @synthesize webViewIsLoaded=_webViewIsLoaded;
 @property(retain, nonatomic) SXWebCrashRetryThrottler *webCrashRetryThrottler; // @synthesize webCrashRetryThrottler=_webCrashRetryThrottler;
@@ -45,10 +47,11 @@
 - (struct CGRect)transitionContentFrame;
 - (void)updateWebViewToWidth:(double)arg1;
 - (void)initializeWebViewWithURL:(id)arg1;
-- (void)visibilityStateDidChangeFromState:(long long)arg1;
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
+- (void)discardContents;
+- (void)renderContents;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
-- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 appStateMonitor:(id)arg6 actionHandler:(id)arg7;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 actionHandler:(id)arg7 websiteDataStore:(id)arg8;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

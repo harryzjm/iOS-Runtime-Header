@@ -8,8 +8,8 @@
 
 #import <XCTest/XCTElementSnapshotAttributeDataSource-Protocol.h>
 
-@class NSString, XCAccessibilityElement, XCElementSnapshot;
-@protocol OS_dispatch_queue, XCTRunnerAutomationSession, XCUIAccessibilityInterface, XCUIApplicationMonitor;
+@class NSString, XCAccessibilityElement, XCElementSnapshot, XCTFuture;
+@protocol OS_dispatch_queue, XCTRunnerAutomationSession, XCUIApplicationProcessDelegate, XCUIDevice;
 
 @interface XCUIApplicationProcess : NSObject <XCTElementSnapshotAttributeDataSource>
 {
@@ -23,31 +23,26 @@
     _Bool _animationsHaveFinished;
     _Bool _hasExitCode;
     _Bool _hasCrashReport;
-    _Bool _bridged;
     unsigned long long _alertCount;
-    NSString *_bundleID;
     id <XCTRunnerAutomationSession> _automationSession;
+    XCTFuture *_automationSessionFuture;
+    NSString *_bundleID;
     XCElementSnapshot *_lastSnapshot;
-    XCUIApplicationProcess *_bridgedProcess;
-    id <XCUIApplicationMonitor> _applicationMonitor;
-    id <XCUIAccessibilityInterface> _axInterface;
+    id <XCUIDevice> _device;
+    id <XCUIApplicationProcessDelegate> _delegate;
 }
 
 + (id)keyPathsForValuesAffectingIsQuiescent;
 + (_Bool)automaticallyNotifiesObserversForKey:(id)arg1;
-+ (id)keyPathsForValuesAffectingHasBridgedProcess;
 + (id)keyPathsForValuesAffectingIsProcessIDValid;
 + (id)keyPathsForValuesAffectingForeground;
 + (id)keyPathsForValuesAffectingBackground;
 + (id)keyPathsForValuesAffectingSuspended;
 + (id)keyPathsForValuesAffectingRunning;
 + (id)keyPathsForValuesAffectingIsApplicationStateKnown;
-@property(readonly) id <XCUIAccessibilityInterface> axInterface; // @synthesize axInterface=_axInterface;
-@property(readonly) id <XCUIApplicationMonitor> applicationMonitor; // @synthesize applicationMonitor=_applicationMonitor;
-@property(retain, nonatomic) XCUIApplicationProcess *bridgedProcess; // @synthesize bridgedProcess=_bridgedProcess;
+@property(readonly) id <XCUIApplicationProcessDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly) id <XCUIDevice> device; // @synthesize device=_device;
 @property(retain) XCElementSnapshot *lastSnapshot; // @synthesize lastSnapshot=_lastSnapshot;
-@property(retain) id <XCTRunnerAutomationSession> automationSession; // @synthesize automationSession=_automationSession;
-@property(getter=isBridged) _Bool bridged; // @synthesize bridged=_bridged;
 @property _Bool hasCrashReport; // @synthesize hasCrashReport=_hasCrashReport;
 @property _Bool hasExitCode; // @synthesize hasExitCode=_hasExitCode;
 @property(readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
@@ -61,10 +56,11 @@
 - (_Bool)terminate:(id *)arg1;
 - (_Bool)waitForViewControllerViewDidDisappearWithTimeout:(double)arg1 error:(id *)arg2;
 - (void)acquireBackgroundAssertion;
-- (void)waitForFutureAutomationSession:(id)arg1;
-- (id)futureAutomationSession;
+@property(readonly) XCTFuture *automationSessionFuture; // @synthesize automationSessionFuture=_automationSessionFuture;
+- (id)_queue_automationSessionFuture;
 - (void)waitForAutomationSession;
-@property(readonly, getter=isQuiescent) _Bool quiescent;
+@property(retain, nonatomic) id <XCTRunnerAutomationSession> automationSession; // @synthesize automationSession=_automationSession;
+- (_Bool)isQuiescent;
 - (void)_initiateQuiescenceChecksIncludingAnimationsIdle:(_Bool)arg1;
 - (void)waitForQuiescenceIncludingAnimationsIdle:(_Bool)arg1;
 - (id)_makeQuiescenceExpectation;
@@ -78,7 +74,6 @@
 @property _Bool eventLoopHasIdled;
 @property int exitCode;
 @property(retain) id token;
-- (_Bool)hasBridgedProcess;
 @property(nonatomic) int processID;
 @property(readonly, getter=isProcessIDValid) _Bool processIDValid;
 @property(readonly) _Bool foreground;
@@ -93,8 +88,7 @@
 @property(readonly, copy) NSString *shortDescription;
 - (id)_queue_description;
 @property(readonly, copy) NSString *description;
-- (id)initWithBundleID:(id)arg1;
-- (id)initWithBundleID:(id)arg1 applicationMonitor:(id)arg2 axInterface:(id)arg3;
+- (id)initWithBundleID:(id)arg1 device:(id)arg2 delegate:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -9,6 +9,7 @@
 @class NSNumberFormatter, NSObject, NSString, SKUICounterTimeView, SKUICounterViewElement, SKUIImageView, UILabel;
 @protocol OS_dispatch_source;
 
+__attribute__((visibility("hidden")))
 @interface SKUICounterView <SKUIViewElementView>
 {
     struct UIEdgeInsets _contentInset;

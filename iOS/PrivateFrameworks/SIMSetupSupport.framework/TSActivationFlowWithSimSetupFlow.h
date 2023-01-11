@@ -5,30 +5,41 @@
 //
 
 #import <SIMSetupSupport/TSCellularPlanManagerCacheDelegate-Protocol.h>
+#import <SIMSetupSupport/TSEntitlementJSHandlerDelegate-Protocol.h>
 #import <SIMSetupSupport/TSSIMSetupFlowDelegate-Protocol.h>
 
-@class NSError, NSString, TSCellularPlanAddingViewController;
+@class NSError, NSMutableArray, NSString, UIBarButtonItem, UIViewController;
+@protocol TSSetupFlowItem;
 
-@interface TSActivationFlowWithSimSetupFlow <TSSIMSetupFlowDelegate, TSCellularPlanManagerCacheDelegate>
+@interface TSActivationFlowWithSimSetupFlow <TSSIMSetupFlowDelegate, TSCellularPlanManagerCacheDelegate, TSEntitlementJSHandlerDelegate>
 {
-    _Bool _planInstalled;
     _Bool _requireSetup;
-    NSString *_planInstallingUuid;
+    _Bool _confirmationCodeRequired;
+    _Bool _isTransferCapable;
     NSError *_planInstallError;
-    TSCellularPlanAddingViewController *_spinnerViewController;
-    unsigned long long _userConsentType;
+    NSMutableArray *_danglingPlanItems;
+    NSMutableArray *_transferItems;
     NSString *_name;
+    unsigned long long _userConsentType;
+    UIBarButtonItem *_cancelButton;
+    long long _signupConsentResponse;
+    UIViewController<TSSetupFlowItem> *_currentViewController;
+    _Bool _isPreinstallingViewControllerActive;
 }
 
-@property(retain) NSString *name; // @synthesize name=_name;
-@property unsigned long long userConsentType; // @synthesize userConsentType=_userConsentType;
-@property(nonatomic) _Bool requireSetup; // @synthesize requireSetup=_requireSetup;
-@property __weak TSCellularPlanAddingViewController *spinnerViewController; // @synthesize spinnerViewController=_spinnerViewController;
-@property NSError *planInstallError; // @synthesize planInstallError=_planInstallError;
-@property _Bool planInstalled; // @synthesize planInstalled=_planInstalled;
-@property(retain) NSString *planInstallingUuid; // @synthesize planInstallingUuid=_planInstallingUuid;
+@property _Bool isPreinstallingViewControllerActive; // @synthesize isPreinstallingViewControllerActive=_isPreinstallingViewControllerActive;
 - (void).cxx_destruct;
+- (void)_requestPendingInstallItems;
+- (void)_requestTransferPlanList;
+- (void)_maybeShowPreinstallConsentOnViewController:(id)arg1;
+- (void)accountPendingRelease;
+- (void)accountCancelled;
+- (void)didTransferPlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 alternateSDMP:(id)arg5 state:(id)arg6;
+- (void)didPurchasePlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 alternateSDMP:(id)arg5;
 - (void)planItemsUpdated:(id)arg1 planListError:(id)arg2;
+- (void)popViewController:(id)arg1;
+- (long long)signupUserConsentResponse;
+- (void)setDefaultNavigationItems:(id)arg1;
 - (void)viewControllerDidComplete:(id)arg1;
 - (id)nextViewControllerFrom:(id)arg1;
 - (void)firstViewController:(CDUnknownBlockType)arg1;

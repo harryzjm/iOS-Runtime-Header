@@ -8,10 +8,12 @@
 {
 }
 
++ (id)_predicateForSyncSession:(id)arg1;
++ (id)_basePruningPredicateForDate:(id)arg1 profile:(id)arg2;
 + (id)_objectWithCodable:(id)arg1;
++ (Class)_syncedSampleTypeClass;
 + (Class)healthEntityClass;
 + (id)syncEntityIdentifier;
-+ (id)_companionNanoSyncPredicateConjunctionForSession:(id)arg1;
 + (int)nanoSyncObjectType;
 
 @end

@@ -15,13 +15,16 @@
     SGContentAdmissionKVOObserver *_kvoObserver;
 }
 
++ (void)migrateForTests;
 + (void)clearTestSettings;
++ (_Bool)isSupportedSearchableItemBundleIdentifier:(id)arg1;
 + (_Bool)shouldAdmitContentFromBundleIdentifier:(id)arg1;
 + (void)disableBundleIdentifier:(id)arg1;
 + (id)sharedInstance;
 + (void)initialize;
 - (void).cxx_destruct;
 - (void)_clearTestSettings;
+- (void)_migrateIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)_shouldAdmitContentFromBundleIdentifier:(id)arg1;
 - (void)_disableBundleIdentifier:(id)arg1;
 - (void)_refreshDisabledBundleIds;

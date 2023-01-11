@@ -14,7 +14,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAdornAttachmentsWithLabels;
 - (void)_replaceImages;
-- (id)_mailComposeEditingInputAssistantGroup;
+- (id)_mailComposeEditingTrailingInputAssistantGroups;
 - (void)changeQuoteLevel:(long long)arg1;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilitySuperHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;

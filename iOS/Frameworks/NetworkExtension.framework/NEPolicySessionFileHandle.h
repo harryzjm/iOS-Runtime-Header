@@ -4,12 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface NEPolicySessionFileHandle
 {
+    NSString *_name;
 }
 
+@property(readonly) NSString *name; // @synthesize name=_name;
+- (void).cxx_destruct;
 - (unsigned long long)type;
 - (id)description;
+- (id)dictionary;
+- (id)initFromDictionary:(id)arg1;
+- (id)initWithPolicySession:(id)arg1 name:(id)arg2;
 - (id)initWithPolicySession:(id)arg1;
 
 @end

@@ -9,7 +9,7 @@
 #import <AvatarUI/AVTDeviceResourceConsumer-Protocol.h>
 
 @class AVTAvatarConfigurationImageRenderer, AVTRenderingScope, NSString;
-@protocol AVTDeviceResourceConsumerDelegate, AVTImageCache, AVTScheduler, AVTUILogger, OS_dispatch_queue;
+@protocol AVTDeviceResourceConsumerDelegate, AVTImageCache, AVTTaskScheduler, AVTUILogger, OS_dispatch_queue;
 
 @interface AVTPresetImageProvider : NSObject <AVTDeviceResourceConsumer>
 {
@@ -17,7 +17,7 @@
     id <AVTImageCache> _cache;
     id <AVTUILogger> _logger;
     AVTAvatarConfigurationImageRenderer *_renderer;
-    id <AVTScheduler> _renderingScheduler;
+    id <AVTTaskScheduler> _renderingScheduler;
     NSObject<OS_dispatch_queue> *_presetQueue;
     NSObject<OS_dispatch_queue> *_colorQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
@@ -32,14 +32,14 @@
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *colorQueue; // @synthesize colorQueue=_colorQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *presetQueue; // @synthesize presetQueue=_presetQueue;
-@property(readonly, nonatomic) id <AVTScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
+@property(readonly, nonatomic) id <AVTTaskScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
 @property(readonly, nonatomic) AVTAvatarConfigurationImageRenderer *renderer; // @synthesize renderer=_renderer;
 @property(readonly, nonatomic) id <AVTUILogger> logger; // @synthesize logger=_logger;
 @property(readonly, nonatomic) id <AVTImageCache> cache; // @synthesize cache=_cache;
 @property(nonatomic) __weak id <AVTDeviceResourceConsumerDelegate> consumerDelegate; // @synthesize consumerDelegate=_consumerDelegate;
 - (void).cxx_destruct;
 - (void)releaseRenderingResourceForEstimatedDuration:(double)arg1;
-- (CDUnknownBlockType)providerForThumbnailForModelPreset:(id)arg1 presetOverrides:(id)arg2 avatarConfiguration:(id)arg3 framingMode:(id)arg4;
+- (CDUnknownBlockType)providerForThumbnailForModelPreset:(id)arg1 presetOverrides:(id)arg2 poseOverride:(id)arg3 avatarConfiguration:(id)arg4 framingMode:(id)arg5;
 - (CDUnknownBlockType)providerForImageForItem:(id)arg1 scope:(id)arg2 queue:(id)arg3 renderingHandler:(CDUnknownBlockType)arg4;
 - (void)renderColorGradientForModelColor:(id)arg1 skinColor:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)renderColorForColorPreset:(id)arg1 skinColor:(id)arg2 intoLayer:(id)arg3;

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     struct __CTParagraphStyle *_coreTextParagraphStyle;
     NSMapTable *_styleCache;
     NSMapTable *_scalePercentStyleCaches;
+    _Bool _allowsMissingPropertiesWithNoParentStyleForUpgrade;
 }
 
 + (id)styleSummaryForPropertyMap:(id)arg1;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 + (id)presetStyleDescriptorForOrdinal:(unsigned long long)arg1;
 + (id)cellDiffProperties;
 + (id)defaultStyleWithDefaultPropertiesInContext:(id)arg1;
+@property(nonatomic) _Bool allowsMissingPropertiesWithNoParentStyleForUpgrade; // @synthesize allowsMissingPropertiesWithNoParentStyleForUpgrade=_allowsMissingPropertiesWithNoParentStyleForUpgrade;
 - (void).cxx_destruct;
 - (id)styleSummary;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
@@ -47,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)addMissingClassProperties;
 - (void)localizeForBidi:(_Bool)arg1;
 - (void)saveToArchiver:(id)arg1;
+- (id)fallbackFontColorWhenUnableToReadCharacterFillColor;
 - (void)saveToArchive:(struct ParagraphStyleArchive *)arg1 archiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)loadFromArchive:(const struct ParagraphStyleArchive *)arg1 unarchiver:(id)arg2;
@@ -61,7 +64,9 @@ __attribute__((visibility("hidden")))
 - (void)clearStyleCaches;
 - (void)willModify;
 - (id)fullPropertyMap;
+- (void)setOverridePropertyMap:(id)arg1;
 - (void)dealloc;
+- (id)initWithContext:(id)arg1 name:(id)arg2 overridePropertyMap:(id)arg3 isVariation:(_Bool)arg4;
 - (double)ascent;
 - (id)objectByRemovingPropertiesInMap:(id)arg1 addingPropertiesInMap:(id)arg2 updateInverseResetPropertyMap:(id)arg3 updateInverseSetPropertyMap:(id)arg4;
 - (_Bool)p_contentTagIsBody;

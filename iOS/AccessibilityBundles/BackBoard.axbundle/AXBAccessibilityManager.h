@@ -10,7 +10,6 @@
 
 @interface AXBAccessibilityManager : NSObject
 {
-    _Bool _voiceOverItemChooserVisible;
     AXSimpleRuntimeManager *_runtimeManager;
     _Bool _accelerometerDisabled;
 }
@@ -19,7 +18,6 @@
 + (void)initializeAccessibilityMonitor;
 + (void)updateAccessibilitySettings;
 @property(nonatomic) _Bool accelerometerDisabled; // @synthesize accelerometerDisabled=_accelerometerDisabled;
-@property(nonatomic) _Bool voiceOverItemChooserVisible; // @synthesize voiceOverItemChooserVisible=_voiceOverItemChooserVisible;
 - (void).cxx_destruct;
 - (_Bool)_accessibilityEventTapCallback:(id)arg1;
 - (void)_undoContextShiftedPoints:(id)arg1;
@@ -31,9 +29,9 @@
 - (void)_userEventOccurred;
 - (id)windowServerDisplayForDisplayId:(unsigned int)arg1;
 - (_Bool)_accessibilityDisplayRequiresRotateForPoints:(id)arg1;
-- (id)accessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
-- (_Bool)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
-- (id)accessibilityAttributeValue:(long long)arg1;
+- (id)_iosAccessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
+- (_Bool)_iosAccessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
+- (id)_iosAccessibilityAttributeValue:(long long)arg1;
 - (void)simulatePressAtPoint:(struct CGPoint)arg1 withContextId:(unsigned int)arg2 withDelay:(float)arg3 withForce:(double)arg4;
 - (void)_sendPressFingerEvent:(_Bool)arg1 location:(struct CGPoint)arg2 force:(double)arg3 flags:(unsigned int)arg4 contextId:(unsigned int)arg5;
 - (struct CGPoint)accessibilityConvertHostedViewPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2 displayId:(unsigned int)arg3;
@@ -45,12 +43,16 @@
 - (void)_sendFingerEvent:(unsigned int)arg1 location:(struct CGPoint)arg2 force:(double)arg3 flags:(unsigned int)arg4 contextId:(unsigned int)arg5;
 - (id)_commonEventRepForTouchEventWithType:(unsigned int)arg1 location:(struct CGPoint)arg2 force:(double)arg3 flags:(unsigned int)arg4 contextId:(unsigned int)arg5;
 - (void)_sendEventRep:(id)arg1;
-- (void)accessibilitySetValue:(id)arg1 forAttribute:(long long)arg2;
+- (void)_iosAccessibilitySetValue:(id)arg1 forAttribute:(long long)arg2;
 - (id)_accessibilitySpringBoardApplication;
+- (id)_accessibilityNativeFocusedApplication;
+- (id)_deliveryManager;
 - (id)_accessibilityAssistiveTouchApplication;
 - (id)_accessibilityUIServerApplication;
 - (id)_accessibilitySystemAppApplicationPid;
+- (id)_accessibilityCarPlayApplicationPid;
 - (id)_accessibilitySystemAppApplicationBundleId;
+- (id)_accessibilityCarPlayApp;
 - (id)_accessibilitySystemApp;
 - (id)allJobLabels;
 - (_Bool)_accessibilityIsInternalInstall;

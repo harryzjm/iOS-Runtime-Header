@@ -8,6 +8,7 @@
 
 @class NSArray;
 
+__attribute__((visibility("hidden")))
 @interface AVCaptureResolvedPhotoSettingsInternal : NSObject
 {
     long long uniqueID;
@@ -19,6 +20,10 @@
     _Bool livePhotoMovieEnabled;
     CDStruct_79c71658 livePhotoMovieDimensions;
     CDStruct_79c71658 portraitEffectsMatteDimensions;
+    CDStruct_79c71658 hairSegmentationMatteDimensions;
+    CDStruct_79c71658 skinSegmentationMatteDimensions;
+    CDStruct_79c71658 teethSegmentationMatteDimensions;
+    CDStruct_79c71658 spatialOverCapturePhotoDimensions;
     _Bool turboModeEnabled;
     _Bool flashEnabled;
     _Bool redEyeReductionEnabled;
@@ -26,8 +31,10 @@
     _Bool adjustedPhotoFiltersEnabled;
     _Bool EV0PhotoDeliveryEnabled;
     _Bool stillImageStabilizationEnabled;
-    _Bool dualCameraFusionEnabled;
+    _Bool virtualDeviceFusionEnabled;
     _Bool squareCropEnabled;
+    CDStruct_79c71658 deferredPhotoProxyDimensions;
+    CDStruct_e83c9415 photoProcessingTimeRange;
     NSArray *photoManifest;
 }
 

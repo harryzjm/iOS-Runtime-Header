@@ -11,8 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_axLoadIconResults:(id)arg1;
-- (void)updateWithResultsForRow:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (_Bool)accessibilityElementsHidden;
 - (_Bool)isAccessibilityElement;

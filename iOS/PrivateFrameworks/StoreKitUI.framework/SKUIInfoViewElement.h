@@ -6,6 +6,7 @@
 
 @class NSArray, SKUILabelViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUIInfoViewElement
 {
 }

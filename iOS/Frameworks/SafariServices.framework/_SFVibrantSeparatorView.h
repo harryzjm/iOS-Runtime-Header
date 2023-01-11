@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UIVisualEffectView.h>
 
-@interface _SFVibrantSeparatorView : UIView
+@interface _SFVibrantSeparatorView : UIVisualEffectView
 {
-    UIView *_backgroundView;
-    UIView *_overlayView;
 }
 
-- (void).cxx_destruct;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

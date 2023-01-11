@@ -4,11 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface STIntroIdentityViewController
+#import <OnBoardingKit/OBWelcomeController.h>
+
+@class STIntroductionModel;
+
+__attribute__((visibility("hidden")))
+@interface STIntroIdentityViewController : OBWelcomeController
 {
+    STIntroductionModel *_model;
+    CDUnknownBlockType _continueHandler;
 }
 
-- (void)viewDidLoad;
+@property(readonly, copy) CDUnknownBlockType continueHandler; // @synthesize continueHandler=_continueHandler;
+@property(readonly) STIntroductionModel *model; // @synthesize model=_model;
+- (void).cxx_destruct;
+- (void)_myChildsDevice:(id)arg1;
+- (void)_myDevice:(id)arg1;
+- (void)loadView;
+- (id)initWithIntroductionModel:(id)arg1 continueHandler:(CDUnknownBlockType)arg2;
 
 @end
 

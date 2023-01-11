@@ -12,26 +12,44 @@
 
 @interface HKKeyValueDomain : NSObject <_HKXPCExportable>
 {
-    HKHealthStore *_healthStore;
     NSUUID *_identifier;
     HKTaskServerProxyProvider *_proxyProvider;
     long long _category;
     NSString *_domainName;
+    HKHealthStore *_healthStore;
 }
 
 + (id)clientInterface;
 + (id)serverInterface;
++ (id)healthAppDefaultsDomainWithHealthStore:(id)arg1;
+@property(readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
+@property(readonly, copy, nonatomic) NSString *domainName; // @synthesize domainName=_domainName;
+@property(readonly, nonatomic) long long category; // @synthesize category=_category;
 - (void).cxx_destruct;
 - (void)connectionInvalidated;
 - (id)remoteInterface;
 - (id)exportedInterface;
 - (void)allValuesWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_propertyListValueFromData:(id)arg1 error:(id *)arg2;
+- (id)_dataFromPropertyListValue:(id)arg1 error:(id *)arg2;
+- (void)propertyListValueForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)propertyListValueForKey:(id)arg1 error:(id *)arg2;
+- (void)stringForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)stringForKey:(id)arg1 error:(id *)arg2;
 - (void)dateForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)dateForKey:(id)arg1 error:(id *)arg2;
 - (void)numberForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)numberForKey:(id)arg1 error:(id *)arg2;
 - (void)removeValuesForKeys:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setValuesWithDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setPropertyListValue:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)setPropertyListValue:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (void)setString:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)setString:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (void)setDate:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)setDate:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (void)setNumber:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (_Bool)setNumber:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (CDUnknownBlockType)_objectCompletionOnClientQueue:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)_actionCompletionOnClientQueue:(CDUnknownBlockType)arg1;
 - (void)invalidate;

@@ -15,13 +15,18 @@
 @interface _INPBDataString : PBCodable <_INPBDataString, NSSecureCoding, NSCopying>
 {
     struct _has;
+    _Bool __encodeLegacyGloryData;
     NSArray *_alternatives;
     NSString *_localizedValue;
+    NSString *_pronunciationHint;
     NSString *_vocabularyIdentifier;
 }
 
++ (_Bool)supportsSecureCoding;
 + (Class)alternativesType;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(copy, nonatomic) NSString *vocabularyIdentifier; // @synthesize vocabularyIdentifier=_vocabularyIdentifier;
+@property(copy, nonatomic) NSString *pronunciationHint; // @synthesize pronunciationHint=_pronunciationHint;
 @property(copy, nonatomic) NSString *localizedValue; // @synthesize localizedValue=_localizedValue;
 @property(copy, nonatomic) NSArray *alternatives; // @synthesize alternatives=_alternatives;
 - (void).cxx_destruct;
@@ -29,9 +34,12 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(readonly, nonatomic) _Bool hasVocabularyIdentifier;
+@property(readonly, nonatomic) _Bool hasPronunciationHint;
 @property(readonly, nonatomic) _Bool hasLocalizedValue;
 - (id)alternativesAtIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long alternativesCount;

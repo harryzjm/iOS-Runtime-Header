@@ -6,18 +6,18 @@
 
 #import <NanoTimeKitCompanion/NTKActivityFaceViewFactoryDelegate-Protocol.h>
 
-@class HKRingsView, NSMutableDictionary, NSString, NTKActivityDateComplicationLabel, NTKActivityDialView, NTKActivityFaceViewFactory, NTKDateComplicationController, NTKFaceViewTapControl, UILabel, UIView;
+@class ARUIRingsView, NSMutableDictionary, NSString, NTKActivityDateComplicationLabel, NTKActivityDialView, NTKActivityFaceViewFactory, NTKDateComplicationController, NTKFaceViewTapControl, UILabel, UIView;
 
 @interface NTKActivityAnalogFaceView <NTKActivityFaceViewFactoryDelegate>
 {
     NTKActivityFaceViewFactory *_faceViewFactory;
-    HKRingsView *_ringsView;
+    ARUIRingsView *_ringsView;
     NTKDateComplicationController *_dateComplicationController;
     NTKActivityDateComplicationLabel *_dateComplicationLabel;
     UIView *_activityContainerView;
-    UILabel *_energyLabel;
-    UILabel *_briskMinutesLabel;
-    UILabel *_standHoursLabel;
+    UILabel *_moveLabel;
+    UILabel *_exerciseLabel;
+    UILabel *_standLabel;
     NTKActivityDialView *_dialView;
     NTKFaceViewTapControl *_tapToLaunchButton;
     NSMutableDictionary *_faceColorsToSchemes;
@@ -26,9 +26,10 @@
     double _activityViewsAlpha;
     _Bool _wristRaiseAnimationPending;
     _Bool _snapshotContentViewsLoaded;
-    double _lastEnergyPercentage;
-    double _lastBriskPercentage;
-    double _lastSedentaryPercentage;
+    double _lastMovePercentage;
+    double _lastExercisePercentage;
+    double _lastStandPercentage;
+    double _innerDialViewScale;
 }
 
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
@@ -38,7 +39,7 @@
 - (id)_highlightImage;
 - (void)_enumerateChronoViews:(CDUnknownBlockType)arg1;
 - (void)_enumerateActivityLabels:(CDUnknownBlockType)arg1;
-- (void)_enumerateRingGroups:(CDUnknownBlockType)arg1;
+- (void)_enumerateRingGroupControllers:(CDUnknownBlockType)arg1;
 - (id)_additionalPrelaunchApplicationIdentifiers;
 - (void)_showChronoDetailByFraction:(double)arg1 fillRings:(_Bool)arg2;
 - (double)_dialScaleForEditMode:(long long)arg1;
@@ -53,6 +54,7 @@
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (id)_accentColorForFaceColor:(unsigned long long)arg1;
+- (void)_configureAppropriateChronoDetail;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_cleanupAfterEditing;
 - (void)_prepareForEditing;
@@ -70,18 +72,23 @@
 - (void)_applyShowsLockedUI;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
-- (id)_curvedPickerMaskForSlot:(id)arg1;
+- (id)_pickerMaskForSlot:(id)arg1;
 - (void)_curvedComplicationCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(_Bool *)arg5 forSlot:(id)arg6;
 - (_Bool)_slotSupportsCurvedText:(id)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_unloadSnapshotContentViews;
-- (void)_renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1;
+- (void)_renderSynchronouslyWithImageQueueDiscard:(_Bool)arg1 inGroup:(id)arg2;
+- (void)screenWillTurnOn;
+- (void)screenDidTurnOff;
 - (double)_verticalPaddingForStatusBar;
 - (struct CGPoint)_contentCenterOffset;
 - (void)_addOrRemoveChronoViewsIfNecessary;
 - (void)_dateComplicationPressed:(id)arg1;
+- (id)_newActivitySubviewWithTextColor:(id)arg1;
 - (void)_loadChronoViewsIfNecessary;
+- (void)_loadRingsViewIfNecessary;
+- (void)_loadDialIfNecessary;
 - (void)_loadSnapshotContentViews;
 - (void)_cleanupAfterZoom;
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;

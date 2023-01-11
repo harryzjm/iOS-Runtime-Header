@@ -13,7 +13,7 @@
 {
     NSMutableArray *_delegates;
     AVTFaceTrackingInfo *_trackingInfo;
-    CDStruct_40c3f62d _trackingData;
+    CDStruct_32896d86 _trackingData;
     NSLock *_trackingDataLock;
     unsigned long long _lastTrackingCaptureTimestamp;
     CDStruct_14d5dc5e _rawTransform;
@@ -22,6 +22,7 @@
     _Bool _trackingIsPaused;
     _Bool _isActive;
     _Bool _shouldConstraintHeadPose;
+    _Bool _shouldUseAudioData;
     struct {
         double refTimestamp;
         double arDelegateTimestamp;
@@ -32,6 +33,8 @@
     double _lastTrackingDate;
     long long _orientation;
     _Bool _lowLight;
+    _Bool _isSensorCovered;
+    _Bool limitRoll;
     _Bool _faceTrackingPaused;
     _Bool _skipUpdates;
     _Bool _faceIsTracked;
@@ -46,14 +49,16 @@
 @property(readonly) _Bool faceIsTracked; // @synthesize faceIsTracked=_faceIsTracked;
 @property(nonatomic) _Bool skipUpdates; // @synthesize skipUpdates=_skipUpdates;
 @property(nonatomic, getter=faceTrackingIsPaused) _Bool faceTrackingPaused; // @synthesize faceTrackingPaused=_faceTrackingPaused;
+@property(nonatomic) _Bool limitRoll; // @synthesize limitRoll;
 @property(nonatomic) _Bool shouldConstraintHeadPose; // @synthesize shouldConstraintHeadPose=_shouldConstraintHeadPose;
 @property(readonly) unsigned long long lastTrackingCaptureTimestamp; // @synthesize lastTrackingCaptureTimestamp=_lastTrackingCaptureTimestamp;
 @property(readonly) double lastTrackingDate; // @synthesize lastTrackingDate=_lastTrackingDate;
+@property(readonly, getter=isSensorCovered) _Bool sensorCovered; // @synthesize sensorCovered=_isSensorCovered;
 @property(readonly) _Bool lowLight; // @synthesize lowLight=_lowLight;
 @property(readonly) AVTFaceTrackingInfo *faceTrackingInfo; // @synthesize faceTrackingInfo=_trackingInfo;
 - (void).cxx_destruct;
 @property(readonly) CDStruct_14d5dc5e rawTransform;
-- (void)copyTrackingData:(CDStruct_40c3f62d *)arg1;
+- (void)copyTrackingData:(CDStruct_32896d86 *)arg1;
 - (void)endQuery;
 - (void)beginQuery;
 - (void)startRecording;
@@ -65,6 +70,8 @@
 @property(readonly, nonatomic) double arDelegateTimestamp;
 @property(readonly, nonatomic) double arFrameTimestamp;
 @property(readonly) long long faceTrackingFrameID;
+@property(nonatomic) _Bool shouldUseAudioData;
+- (void)setSensorCovered:(_Bool)arg1;
 - (void)setLowLight:(_Bool)arg1;
 - (void)setFaceIsTracked:(_Bool)arg1;
 @property(copy) NSURL *faceTrackingRecordingURL;

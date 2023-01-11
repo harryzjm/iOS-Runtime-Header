@@ -11,13 +11,13 @@
 #import <AssistantUI/AFUISpeechSynthesisElementDelegate-Protocol.h>
 #import <AssistantUI/VSSpeechSynthesizerDelegate-Protocol.h>
 
-@class AFQueue, AFVoiceInfo, NSMutableArray, NSMutableDictionary, NSString, VSSpeechSynthesizer;
+@class AFQueue, AFSiriClientStateManager, AFVoiceInfo, NSMutableArray, NSMutableDictionary, NSString, VSSpeechSynthesizer;
 @protocol AFUISpeechSynthesisDelegate, AFUISpeechSynthesisLocalDelegate, OS_dispatch_group, OS_dispatch_queue;
 
 @interface AFUISpeechSynthesis : NSObject <AFQueueDelegate, AFUISpeechSynthesisElementDelegate, VSSpeechSynthesizerDelegate, AFUISpeechSynthesis>
 {
     VSSpeechSynthesizer *_synthesizer;
-    _Bool _sessionIDIsValid;
+    AFSiriClientStateManager *_siriClientStateManager;
     unsigned int _sessionID;
     AFVoiceInfo *_outputVoice;
     NSMutableDictionary *_availableVoicesForLanguage;
@@ -37,6 +37,7 @@
 @property(retain, nonatomic) id <AFUISpeechSynthesisDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) __weak id <AFUISpeechSynthesisLocalDelegate> localDelegate; // @synthesize localDelegate=_localDelegate;
 - (void).cxx_destruct;
+- (void)_setSiriClientStateManager:(id)arg1;
 - (void)_setSynthesizer:(id)arg1;
 - (void)_processProvisionalElements;
 - (id)_filterVoices:(id)arg1 gender:(id)arg2;
@@ -49,15 +50,14 @@
 - (void)_handleAudioData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)processDelayedItem:(id)arg1;
 - (void)enqueueText:(id)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_enqueueText:(id)arg1 audioData:(id)arg2 identifier:(id)arg3 language:(id)arg4 gender:(id)arg5 isPhonetic:(_Bool)arg6 provisionally:(_Bool)arg7 eligibleAfterDuration:(double)arg8 delayed:(_Bool)arg9 preparationIdentifier:(id)arg10 completion:(CDUnknownBlockType)arg11 animationIdentifier:(id)arg12 analyticsContext:(id)arg13 speakableContextInfo:(id)arg14;
+- (void)_enqueueText:(id)arg1 audioData:(id)arg2 identifier:(id)arg3 language:(id)arg4 gender:(id)arg5 isPhonetic:(_Bool)arg6 provisionally:(_Bool)arg7 eligibleAfterDuration:(double)arg8 delayed:(_Bool)arg9 canUseServerTTS:(_Bool)arg10 preparationIdentifier:(id)arg11 shouldCache:(_Bool)arg12 synthesizesWhileRecording:(_Bool)arg13 completion:(CDUnknownBlockType)arg14 animationIdentifier:(id)arg15 analyticsContext:(id)arg16 speakableContextInfo:(id)arg17;
+- (void)enqueuePhaticWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enqueueAudioData:(id)arg1 identifier:(id)arg2 provisionally:(_Bool)arg3 eligibleAfterDuration:(double)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)enqueueText:(id)arg1 identifier:(id)arg2 language:(id)arg3 gender:(id)arg4 isPhonetic:(_Bool)arg5 provisionally:(_Bool)arg6 eligibleAfterDuration:(double)arg7 delayed:(_Bool)arg8 preparationIdentifier:(id)arg9 completion:(CDUnknownBlockType)arg10 animationIdentifier:(id)arg11 analyticsContext:(id)arg12 speakableContextInfo:(id)arg13;
-- (_Bool)_startSpeechPreSynthesisOfText:(id)arg1 speakableContext:(id)arg2 error:(id *)arg3;
-- (void)presynthesizeDialogStrings:(id)arg1 speakableContext:(id)arg2;
+- (void)enqueueText:(id)arg1 identifier:(id)arg2 language:(id)arg3 gender:(id)arg4 isPhonetic:(_Bool)arg5 provisionally:(_Bool)arg6 eligibleAfterDuration:(double)arg7 delayed:(_Bool)arg8 canUseServerTTS:(_Bool)arg9 preparationIdentifier:(id)arg10 completion:(CDUnknownBlockType)arg11 animationIdentifier:(id)arg12 analyticsContext:(id)arg13 speakableContextInfo:(id)arg14;
 - (void)setAudioSessionID:(unsigned int)arg1;
 - (void)setOutputVoice:(id)arg1;
 - (void)speechSynthesizer:(id)arg1 didFinishSpeakingRequest:(id)arg2 withInstrumentMetrics:(id)arg3;
-- (void)speechSynthesizer:(id)arg1 didFinishSpeakingRequest:(id)arg2 successfully:(_Bool)arg3 withError:(id)arg4;
+- (void)speechSynthesizer:(id)arg1 didFinishSpeakingRequest:(id)arg2 successfully:(_Bool)arg3 phonemesSpoken:(id)arg4 withError:(id)arg5;
 - (void)speechSynthesizer:(id)arg1 didStartSpeakingRequest:(id)arg2;
 - (void)speechSynthesizer:(id)arg1 didFinishPresynthesizedAudioRequest:(id)arg2 withInstrumentMetrics:(id)arg3 error:(id)arg4;
 - (void)speechSynthesizer:(id)arg1 didStopPresynthesizedAudioRequest:(id)arg2 atEnd:(_Bool)arg3 error:(id)arg4;
@@ -69,10 +69,11 @@
 - (void)_cancelByCancellingActiveElementsOnly:(_Bool)arg1;
 - (void)skipCurrentSynthesis;
 - (void)cancel;
-- (_Bool)isSynthesisQueueEmpty;
+- (_Bool)_isSynthesisQueueEmpty;
+- (void)isSynthesisQueueEmpty:(CDUnknownBlockType)arg1;
 - (_Bool)isSpeaking;
 - (void)prewarmIfNeeded;
-- (void)_updateSynthesizerWithSessionID:(unsigned int)arg1;
+- (id)_siriClientStateManager;
 - (id)_synthesizer;
 - (id)init;
 

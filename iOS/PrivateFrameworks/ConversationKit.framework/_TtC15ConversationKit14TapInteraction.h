@@ -10,14 +10,13 @@
 
 @class MISSING_TYPE, UIView;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit14TapInteraction : NSObject <UIInteraction>
 {
     MISSING_TYPE *view;
     MISSING_TYPE *tapGestureRecognizer;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (void)handleRecognizer:(id)arg1;
 - (void)didMoveToView:(id)arg1;
 - (void)willMoveToView:(id)arg1;

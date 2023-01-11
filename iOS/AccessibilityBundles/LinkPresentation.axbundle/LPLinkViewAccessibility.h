@@ -11,7 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axMediaViews;
 - (void)_axFollowLink;
+- (unsigned int)_accessibilityMediaAnalysisOptions;
 - (_Bool)accessibilityActivate;
 - (id)accessibilityValue;
 - (unsigned long long)accessibilityTraits;
@@ -19,6 +21,7 @@
 - (id)accessibilityLabel;
 - (_Bool)_axPlayPause:(id)arg1;
 - (id)accessibilityCustomActions;
+- (id)_axMuteAction;
 - (id)_axITunesPlayButton;
 - (_Bool)isAccessibilityElement;
 

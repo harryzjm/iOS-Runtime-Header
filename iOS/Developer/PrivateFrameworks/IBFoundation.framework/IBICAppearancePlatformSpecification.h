@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <IBFoundation/IBBinaryArchiving-Protocol.h>
+
 @class NSString;
 
-@interface IBICAppearancePlatformSpecification : NSObject
+@interface IBICAppearancePlatformSpecification : NSObject <IBBinaryArchiving>
 {
     NSString *_appearanceName;
     long long _identifier;
@@ -17,10 +19,17 @@
 @property(readonly) long long identifier; // @synthesize identifier=_identifier;
 @property(readonly, copy) NSString *appearanceName; // @synthesize appearanceName=_appearanceName;
 - (void).cxx_destruct;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqualToAppearancePlatformSpecification:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
+- (void)encodeWithBinaryArchiver:(id)arg1;
+- (id)initWithBinaryUnarchiver:(id)arg1;
 - (id)initWithAppearanceName:(id)arg1 identifier:(long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) Class superclass;
 
 @end
 

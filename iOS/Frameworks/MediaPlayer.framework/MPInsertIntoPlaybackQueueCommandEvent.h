@@ -4,19 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MPRemotePlaybackQueue, NSArray, NSString;
+@class MPRemotePlaybackQueue, NSArray, NSNumber, NSString;
 
 @interface MPInsertIntoPlaybackQueueCommandEvent
 {
     NSArray *_supportedInsertionPositions;
     long long _insertionPosition;
     MPRemotePlaybackQueue *_playbackQueue;
+    NSNumber *_privateListeningOverride;
     NSString *_insertAfterContentItemID;
     long long _destinationOffset;
 }
 
 @property(readonly, nonatomic) long long destinationOffset; // @synthesize destinationOffset=_destinationOffset;
 @property(readonly, nonatomic) NSString *insertAfterContentItemID; // @synthesize insertAfterContentItemID=_insertAfterContentItemID;
+@property(readonly, nonatomic) NSNumber *privateListeningOverride; // @synthesize privateListeningOverride=_privateListeningOverride;
 @property(readonly, nonatomic) MPRemotePlaybackQueue *playbackQueue; // @synthesize playbackQueue=_playbackQueue;
 @property(readonly, nonatomic) long long insertionPosition; // @synthesize insertionPosition=_insertionPosition;
 @property(copy, nonatomic) NSArray *supportedInsertionPositions; // @synthesize supportedInsertionPositions=_supportedInsertionPositions;

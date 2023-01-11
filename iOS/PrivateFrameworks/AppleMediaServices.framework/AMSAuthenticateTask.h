@@ -4,34 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ACAccount, AMSAuthenticateOptions, NSNumber, NSString;
+@class ACAccount, AMSAuthenticateOptions, NSNumber, NSString, NSUUID;
 
 @interface AMSAuthenticateTask
 {
+    AMSAuthenticateOptions *_options;
     NSString *_password;
+    NSString *_multiUserToken;
     NSString *_rawPassword;
     NSString *_altDSID;
     NSNumber *_DSID;
+    NSUUID *_homeIdentifier;
     NSString *_username;
     ACAccount *_authenticatedAccount;
-    AMSAuthenticateOptions *_options;
 }
 
-@property(retain, nonatomic) AMSAuthenticateOptions *options; // @synthesize options=_options;
 @property(retain, nonatomic) ACAccount *authenticatedAccount; // @synthesize authenticatedAccount=_authenticatedAccount;
 @property(retain, nonatomic) NSString *username; // @synthesize username=_username;
+@property(retain, nonatomic) NSUUID *homeIdentifier; // @synthesize homeIdentifier=_homeIdentifier;
 @property(retain, nonatomic) NSNumber *DSID; // @synthesize DSID=_DSID;
 @property(retain, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property(retain, nonatomic) NSString *rawPassword; // @synthesize rawPassword=_rawPassword;
+@property(retain, nonatomic) NSString *multiUserToken; // @synthesize multiUserToken=_multiUserToken;
 @property(retain, nonatomic) NSString *password; // @synthesize password=_password;
+@property(readonly, nonatomic) AMSAuthenticateOptions *options; // @synthesize options=_options;
 - (void).cxx_destruct;
+- (void)setHomeUserID:(id)arg1;
+- (void)setHomeID:(id)arg1;
+- (id)homeUserID;
+- (id)homeID;
 - (void)_updateAccountWithProvidedInformation:(id)arg1;
-- (_Bool)_shouldPerformInProcessAuthKitUpdateForAccount:(id)arg1;
+- (id)_performAuthenticationUsingAccount:(id)arg1 credentialSource:(unsigned long long)arg2 error:(id *)arg3;
 - (id)_createVerifyCredentialOptionsWithCredentialSource:(unsigned long long)arg1;
 - (id)_accountStoreForAuthentication;
-- (id)_updatedAccountForAuthenticationWithError:(id *)arg1;
+- (id)_updateAccountWithAuthKit:(id)arg1 error:(id *)arg2;
 - (id)_accountForAuthentication;
 - (id)performAuthentication;
+- (id)initWithRequest:(id)arg1;
 - (id)initWithAccount:(id)arg1 options:(id)arg2;
 - (id)init;
 

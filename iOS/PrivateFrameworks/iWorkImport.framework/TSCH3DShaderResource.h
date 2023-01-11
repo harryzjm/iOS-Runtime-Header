@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TSCH3DShaderProgram;
+@class TSCH3DShaderProgram, TSCH3DVersion;
 
 __attribute__((visibility("hidden")))
 @interface TSCH3DShaderResource
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) TSCH3DShaderProgram *program;
 - (void)appendShaderResourceString:(IteratorRange_617e5e79)arg1 toDataBuffer:(id)arg2;
 - (IteratorRange_617e5e79)resourceStringOfString:(id)arg1;
+@property(readonly, nonatomic) TSCH3DVersion *version;
 - (void)dealloc;
 - (id)initWithCaching:(int)arg1 version:(id)arg2;
 - (id)initWithCaching:(int)arg1;

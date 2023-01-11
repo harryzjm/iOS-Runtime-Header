@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <RelevanceEngine/REIndentedDescription-Protocol.h>
+#import <RelevanceEngine/REAutomaticExportedInterface-Protocol.h>
 
-@class NSString, RECondition, REConditionEvaluator;
+@class RECondition, REConditionEvaluator;
 
-@interface REFilteringRule <REIndentedDescription>
+@interface REFilteringRule <REAutomaticExportedInterface>
 {
     REConditionEvaluator *_conditionEvaluator;
     RECondition *_condition;
@@ -18,18 +18,12 @@
 @property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property(readonly, nonatomic) RECondition *condition; // @synthesize condition=_condition;
 - (void).cxx_destruct;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
-@property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(readonly) unsigned long long hash;
+- (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithCondition:(id)arg1 type:(unsigned long long)arg2;
 - (id)initWithCondition:(id)arg1;
 @property(readonly, nonatomic) REConditionEvaluator *conditionEvaluator;
-
-// Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly) Class superclass;
 
 @end
 

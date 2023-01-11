@@ -4,12 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class WLKContinueWatchingResponse;
+
 @interface WLKPlayHistoryRemoveRequestOperation
 {
+    WLKContinueWatchingResponse *_response;
 }
 
-- (id)responseProcessor;
-- (id)initWithChannelID:(id)arg1 externalID:(id)arg2;
+@property(readonly, nonatomic) WLKContinueWatchingResponse *response; // @synthesize response=_response;
+- (void).cxx_destruct;
+- (void)processResponse;
+- (id)initWithChannelID:(id)arg1 externalID:(id)arg2 caller:(id)arg3;
 
 @end
 

@@ -14,8 +14,6 @@
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
-- (void)_accessibilitySetRepresentedTimePeriod:(unsigned long long)arg1;
-- (unsigned long long)_accessibilityRepresentedTimePeriod;
 - (void)_accessibilitySetUnderlyingRepresentedTimePeriod:(unsigned long long)arg1;
 - (unsigned long long)_accessibilityUnderlyingRepresentedTimePeriod;
 

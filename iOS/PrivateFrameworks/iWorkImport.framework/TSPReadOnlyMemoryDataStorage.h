@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)readOnly;
 - (unsigned long long)encodedLength;
 - (_Bool)isReadable;
-- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4;
+- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4 error:(id *)arg5;
 - (_Bool)archiveInfoMessage:(struct DataInfo *)arg1 archiver:(id)arg2 packageWriter:(id)arg3;
 - (id)NSDataWithOptions:(unsigned long long)arg1;
 - (void)performIOChannelReadWithAccessor:(CDUnknownBlockType)arg1;

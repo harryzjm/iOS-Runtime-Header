@@ -6,14 +6,13 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface TLKContentsContainerView
 {
-    unsigned long long _style;
     NSMutableArray *_contentsViews;
 }
 
-@property(retain) NSMutableArray *contentsViews; // @synthesize contentsViews=_contentsViews;
-@property(nonatomic) unsigned long long style; // @synthesize style=_style;
+@property(retain, nonatomic) NSMutableArray *contentsViews; // @synthesize contentsViews=_contentsViews;
 - (void).cxx_destruct;
 - (void)updateWithContents:(id)arg1;
 - (id)init;

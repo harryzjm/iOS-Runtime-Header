@@ -6,6 +6,7 @@
 
 @class SKUIFieldSettingDescription, SKUIInputViewElement, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface SKUISubmitFieldSettingDescriptionView
 {
     double _aggregateLabelWidth;

@@ -76,6 +76,8 @@
 @property(nonatomic) __weak id <CKExtensionConsumer> currentExtensionConsumer; // @synthesize currentExtensionConsumer=_currentExtensionConsumer;
 @property(retain, nonatomic) NSString *lastLaunchedIdentifier; // @synthesize lastLaunchedIdentifier=_lastLaunchedIdentifier;
 - (void).cxx_destruct;
+- (_Bool)_shouldShowActivity;
+- (_Bool)_shouldShowSURF;
 - (_Bool)isPluginVisible:(id)arg1;
 - (void)handleManagedConfigSettingsChangeNotification:(id)arg1;
 @property(readonly, nonatomic) _Bool isAppStoreEnabled;
@@ -98,7 +100,9 @@
 @property(readonly, nonatomic) NSArray *allEnabledPlugins;
 @property(readonly, nonatomic) _Bool hasLoadedExtensions;
 - (_Bool)isInternalPlugin:(id)arg1;
+- (void)clearBalloonPluginCache;
 - (void)invalidateIconCache;
+- (id)pluginForAdamID:(id)arg1;
 - (id)pluginForIdentifier:(id)arg1;
 - (id)balloonPluginIdentifierForAppExtensionBundleIdentifier:(id)arg1;
 - (void)saveWithNotification:(_Bool)arg1;
@@ -140,6 +144,7 @@
 - (id)digitalTouchViewControllerWithDataSource:(id)arg1;
 - (id)existingPhotoBrowserViewController;
 - (id)photosBrowserViewControllerWithPluginPayloads:(id)arg1;
+- (void)invalidateAppManagerPlugin;
 - (void)invalidatePhotosPlugin;
 - (id)descriptionOfVisibleDrawerPlugins;
 - (void)removeVisibleInstallationWithID:(id)arg1;

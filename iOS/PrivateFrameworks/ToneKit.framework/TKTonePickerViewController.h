@@ -18,7 +18,7 @@
 @class MPMediaPickerController, MPMusicPlayerController, NSMutableArray, NSMutableDictionary, NSNumber, NSString, TKToneClassicsTableViewController, TKTonePickerController, TKTonePickerTableViewCellLayoutManager, TKVibrationPickerViewController, UIBarButtonItem, UIImage;
 @protocol TKTonePickerStyleProvider, TKTonePickerViewControllerDelegate;
 
-@interface TKTonePickerViewController : UITableViewController <TKTonePickerControllerDelegate, TKTonePickerControllerDelegateInternal, TKTonePickerTableViewControllerHelper, TKTonePickerTableViewLayoutMarginsObserver, TKTonePickerTableViewSeparatorObserver, TKVibrationPickerViewControllerDelegate, TKVibrationPickerViewControllerDismissalDelegate, MPMediaPickerControllerDelegate>
+@interface TKTonePickerViewController : UITableViewController <TKVibrationPickerViewControllerDelegate, TKVibrationPickerViewControllerDismissalDelegate, TKTonePickerControllerDelegate, TKTonePickerControllerDelegateInternal, TKTonePickerTableViewControllerHelper, TKTonePickerTableViewLayoutMarginsObserver, TKTonePickerTableViewSeparatorObserver, MPMediaPickerControllerDelegate>
 {
     TKTonePickerController *_tonePickerController;
     UIImage *_checkmarkImage;
@@ -42,6 +42,7 @@
     id <TKTonePickerStyleProvider> _styleProvider;
 }
 
++ (id)_checkmarkImage;
 @property(retain, nonatomic) id <TKTonePickerStyleProvider> styleProvider; // @synthesize styleProvider=_styleProvider;
 @property(nonatomic) _Bool showsMedia; // @synthesize showsMedia=_showsMedia;
 @property(nonatomic) _Bool showsIgnoreMute; // @synthesize showsIgnoreMute=_showsIgnoreMute;
@@ -66,13 +67,17 @@
 - (_Bool)tonePickerControllerShouldShowMedia:(id)arg1;
 - (void)tonePickerController:(id)arg1 selectedMediaItemWithIdentifier:(id)arg2;
 - (void)tonePickerController:(id)arg1 selectedToneWithIdentifier:(id)arg2;
-- (void)tonePickerController:(id)arg1 didUpdateFooterText:(id)arg2 ofTonePickerSectionItem:(id)arg3;
 - (void)tonePickerController:(id)arg1 didUpdateDetailText:(id)arg2 ofTonePickerItem:(id)arg3;
 - (void)tonePickerController:(id)arg1 didUpdateTonePickerItem:(id)arg2;
 - (void)tonePickerController:(id)arg1 didUpdateDownloadProgressOfTonePickerItem:(id)arg2;
 - (void)tonePickerController:(id)arg1 didUpdateCheckedStatus:(_Bool)arg2 ofTonePickerItem:(id)arg3;
-- (void)tonePickerController:(id)arg1 didInsertPickerRowItems:(id)arg2 andTonePickerSectionItems:(id)arg3;
-- (void)tonePickerController:(id)arg1 didDeletePickerRowItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)tonePickerController:(id)arg1 didUpdateFooterTextOfTonePickerSectionItems:(id)arg2;
+- (void)tonePickerController:(id)arg1 didUpdateHeaderTextOfTonePickerSectionItems:(id)arg2;
+- (void)tonePickerController:(id)arg1 didInsertTonePickerSectionItems:(id)arg2;
+- (void)tonePickerController:(id)arg1 didInsertPickerRowItems:(id)arg2;
+- (void)tonePickerController:(id)arg1 didDeleteTonePickerSectionItems:(id)arg2;
+- (void)tonePickerController:(id)arg1 didDeletePickerRowItems:(id)arg2;
+- (void)tonePickerController:(id)arg1 requestsPerformingBatchUpdates:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)tonePickerControllerDidReloadTones:(id)arg1;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
@@ -82,6 +87,8 @@
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
+- (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -113,6 +120,7 @@
 - (id)selectedIdentifier:(_Bool *)arg1;
 @property(nonatomic, getter=isMediaAtTop) _Bool mediaAtTop;
 - (void)_handleMediaLibraryDidChangeNotification;
+- (void)_handlePreferredContentSizeCategoryDidChangeNotification:(id)arg1;
 - (void)_updateCell:(id)arg1 withDownloadProgress:(float)arg2 animated:(_Bool)arg3;
 - (_Bool)_shouldShowCheckmarkOnTrailingEdge;
 - (void)_resetScrollingPosition;
@@ -123,6 +131,7 @@
 - (void)_updateMinimumTextIndentation;
 - (double)_minimumTextIndentationForTableView:(id)arg1 withCheckmarkImage:(id)arg2;
 - (id)_customHeaderViewForHeaderInSection:(long long)arg1;
+- (_Bool)_canShowWhileLocked;
 - (void)applicationWillSuspend;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillDisappear:(_Bool)arg1;

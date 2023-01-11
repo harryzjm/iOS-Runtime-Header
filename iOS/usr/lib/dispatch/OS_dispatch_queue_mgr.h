@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)load;
 - (id)init;
 
 // Remaining properties

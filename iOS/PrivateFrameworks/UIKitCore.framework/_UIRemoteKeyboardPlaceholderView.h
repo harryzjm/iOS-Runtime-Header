@@ -24,11 +24,13 @@ __attribute__((visibility("hidden")))
 + (id)placeholderForView:(id)arg1;
 @property(retain, nonatomic) UIView *associatedView; // @synthesize associatedView=_associatedView;
 @property(retain, nonatomic) UIView *fallbackView; // @synthesize fallbackView=_fallbackView;
+- (void)_isPlaceholderViewSelector;
 - (_Bool)isEqual:(id)arg1;
 @property(readonly, copy) NSString *description;
 @property(nonatomic) struct CGSize fixedSize;
 - (_Bool)refreshPlaceholder;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGSize)intrinsicContentSize;
 @property(readonly, retain) UIView *placeheldView;
 - (void)dealloc;

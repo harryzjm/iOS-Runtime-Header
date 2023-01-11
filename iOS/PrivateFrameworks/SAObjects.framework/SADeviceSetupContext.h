@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface SADeviceSetupContext
 {
 }
 
 + (id)setupContextWithDictionary:(id)arg1 context:(id)arg2;
 + (id)setupContext;
+@property(copy, nonatomic) NSString *setupSceneId;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

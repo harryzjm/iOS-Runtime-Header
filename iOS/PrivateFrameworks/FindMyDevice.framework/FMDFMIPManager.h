@@ -6,11 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@class NSURL;
+@protocol OS_dispatch_queue;
+
 @interface FMDFMIPManager : NSObject
 {
+    NSURL *_managedLostModeFileURL;
+    NSURL *_needsLocateAckLostModeFileURL;
+    NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
 + (id)sharedInstance;
+@property(retain, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
+@property(retain, nonatomic) NSURL *needsLocateAckLostModeFileURL; // @synthesize needsLocateAckLostModeFileURL=_needsLocateAckLostModeFileURL;
+@property(retain, nonatomic) NSURL *managedLostModeFileURL; // @synthesize managedLostModeFileURL=_managedLostModeFileURL;
+- (void).cxx_destruct;
 - (void)stopSoundMessageWithCompletion:(CDUnknownBlockType)arg1;
 - (void)playSoundWithMessage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)getNeedsLocateAckLostModeFileURL;
@@ -21,6 +31,7 @@
 - (void)_updateManagedLostModeWithInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (_Bool)_isRunningAsMobileUser;
 - (id)newErrorForCode:(int)arg1 message:(id)arg2;
+- (void)_stopAlarm;
 - (void)_forceFMWUpgradeAlertWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getAccessoriesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)clearData:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
@@ -68,6 +79,7 @@
 - (_Bool)isLostModeActive;
 - (_Bool)isManagedLostModeActive;
 - (_Bool)lostModeIsActive;
+- (id)init;
 - (void)activationLockVersionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addNotificationRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)showDailyLocateReport;

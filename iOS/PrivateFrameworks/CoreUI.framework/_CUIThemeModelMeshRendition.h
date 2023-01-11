@@ -4,10 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class MDLMesh, NSArray, NSMutableArray;
+
 __attribute__((visibility("hidden")))
 @interface _CUIThemeModelMeshRendition
 {
+    MDLMesh *_mesh;
+    NSMutableArray *_submeshKeys;
 }
+
+- (unsigned long long)writeToData:(id)arg1;
+- (id)modelMesh;
+@property(readonly) NSArray *submeshKeys;
+- (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (void)dealloc;
+- (id)initForArchiving:(id)arg1 withSubmeshRenditionKeys:(id)arg2;
 
 @end
 

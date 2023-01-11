@@ -10,6 +10,6 @@
 + (id)dvt_unarchiveObjectOfClasses:(id)arg1 fromData:(id)arg2 error:(id *)arg3;
 + (id)dvt_unarchiveObjectOfClass:(Class)arg1 fromData:(id)arg2 error:(id *)arg3;
 + (void)dvt_unarchiveData:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
-+ (id)_dvt_unarchiverRequiringSecureCodingFromData:(id)arg1 error:(id *)arg2;
+- (id)dvt_initRequiringSecureCoding:(_Bool)arg1 forReadingFromData:(id)arg2 error:(id *)arg3;
 @end
 

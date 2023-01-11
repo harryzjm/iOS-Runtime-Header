@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSURL;
+@class NSNumber, NSURL;
 
 @interface MPCreateRadioStationCommandEvent
 {
     _Bool _requestingPlaybackInitialization;
     NSURL *_stationURL;
+    NSNumber *_privateListeningOverride;
 }
 
+@property(readonly, nonatomic) NSNumber *privateListeningOverride; // @synthesize privateListeningOverride=_privateListeningOverride;
 @property(readonly, nonatomic, getter=isRequestingPlaybackInitialization) _Bool requestingPlaybackInitialization; // @synthesize requestingPlaybackInitialization=_requestingPlaybackInitialization;
 @property(readonly, nonatomic) NSURL *stationURL; // @synthesize stationURL=_stationURL;
 - (void).cxx_destruct;

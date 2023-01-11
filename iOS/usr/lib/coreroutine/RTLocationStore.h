@@ -4,30 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, NSObject;
-@protocol OS_dispatch_source;
+@class NSMutableArray, NSObject, RTTimer, RTTimerManager;
+@protocol OS_os_transaction;
 
 @interface RTLocationStore
 {
-    _Bool _flushTimerSuspended;
+    RTTimerManager *_timerManager;
+    NSObject<OS_os_transaction> *_flushTransaction;
     NSMutableArray *_locations;
-    NSObject<OS_dispatch_source> *_flushTimer;
+    RTTimer *_flushTimer;
 }
 
-@property(readonly) NSObject<OS_dispatch_source> *flushTimer; // @synthesize flushTimer=_flushTimer;
+@property(readonly, nonatomic) RTTimer *flushTimer; // @synthesize flushTimer=_flushTimer;
+@property(readonly, nonatomic) NSMutableArray *locations; // @synthesize locations=_locations;
 - (void).cxx_destruct;
-- (void)fetchMetricsFromDate:(id)arg1 toDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)_fetchMetricsFromDate:(id)arg1 toDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)fetchMetricsWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_fetchMetricsWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)removeLocationsPredating:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_removeLocationsPredating:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)fetchLocationsFromDate:(id)arg1 toDate:(id)arg2 uncertainty:(double)arg3 limit:(unsigned long long)arg4 handler:(CDUnknownBlockType)arg5;
-- (void)_fetchLocationsFromDate:(id)arg1 toDate:(id)arg2 uncertainty:(double)arg3 limit:(unsigned long long)arg4 handler:(CDUnknownBlockType)arg5;
+- (void)fetchStoredLocationsWithContext:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_fetchStoredLocationsWithContext:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)fetchStoredLocationsWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_fetchStoredLocationsWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)fetchStoredLocationsCountFromDate:(id)arg1 toDate:(id)arg2 uncertainty:(double)arg3 limit:(unsigned long long)arg4 handler:(CDUnknownBlockType)arg5;
+- (void)_fetchStoredLocationsCountFromDate:(id)arg1 toDate:(id)arg2 uncertainty:(double)arg3 limit:(unsigned long long)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)storeLocations:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_storeLocations:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_flushCachedLocations:(CDUnknownBlockType)arg1;
-- (void)_suspendFlushTimer;
-- (void)_resumeFlushTimer;
+- (void)_flushCachedLocationsWithHandler:(CDUnknownBlockType)arg1;
+- (void)_invalidateFlushTimer;
+- (void)_startFlushTimer;
+- (void)_shutdownWithHandler:(CDUnknownBlockType)arg1;
 - (void)_shutdown;
+- (id)initWithPersistenceManager:(id)arg1 timerManager:(id)arg2;
 - (id)initWithPersistenceManager:(id)arg1;
 - (id)init;
 

@@ -18,11 +18,14 @@
         unsigned int name:1;
         unsigned int qualifier:1;
     } _has;
+    _Bool __encodeLegacyGloryData;
     int _name;
     int _qualifier;
     _INPBFilePropertyValue *_value;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(retain, nonatomic) _INPBFilePropertyValue *value; // @synthesize value=_value;
 @property(nonatomic) int qualifier; // @synthesize qualifier=_qualifier;
 @property(nonatomic) int name; // @synthesize name=_name;
@@ -31,6 +34,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(readonly, nonatomic) _Bool hasValue;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class IBICColorSpace, IBICContrastAppearance, IBICGraphicsFeatureSet, IBICHeightClass, IBICIdiom, IBICLanguageDirection, IBICLuminosityAppearance, IBICMemoryClass, IBICScale, IBICScreenWidth, IBICSubtype, IBICVibrancyAppearance, IBICWidthClass;
+@class IBICColorSpace, IBICContrastAppearance, IBICGraphicsFeatureSet, IBICHeightClass, IBICIdiom, IBICLanguageDirection, IBICLocale, IBICLuminosityAppearance, IBICMemoryClass, IBICScale, IBICScreenWidth, IBICSubtype, IBICVibrancyAppearance, IBICWidthClass;
 
 @interface IBICImageSetRepSlot
 {
@@ -18,6 +18,7 @@
     IBICGraphicsFeatureSet *_graphicsFeatureSet;
     IBICColorSpace *_colorSpace;
     IBICLanguageDirection *_languageDirection;
+    IBICLocale *_locale;
     IBICLuminosityAppearance *_luminosityAppearance;
     IBICContrastAppearance *_contrastAppearance;
     IBICVibrancyAppearance *_vibrancyAppearance;
@@ -29,14 +30,15 @@
 + (id)slotWithIdiom:(id)arg1 subtype:(id)arg2 scale:(id)arg3 widthClass:(id)arg4 heightClass:(id)arg5;
 + (id)genesisSlotsForSlots:(id)arg1;
 + (id)orderedComponentClasses;
-+ (id)slotFilterWithIdiomFilter:(id)arg1 subtypeFilter:(id)arg2 scaleFilter:(id)arg3 screenWidthFilter:(id)arg4 widthClass:(id)arg5 heightClassFilter:(id)arg6 memoryFilter:(id)arg7 graphicsFeatureSetFilter:(id)arg8 colorSpaceFilter:(id)arg9 languageDirectionFilter:(id)arg10 lightnessFilter:(id)arg11 contrastFilter:(id)arg12 vibrancyFilter:(id)arg13;
-+ (id)slotFilterWithNilMatching:(long long)arg1 idioms:(id)arg2 subtypes:(id)arg3 scales:(id)arg4 screenWidths:(id)arg5 widthClasses:(id)arg6 heightClasses:(id)arg7 memoryClasses:(id)arg8 graphicsFeatureSets:(id)arg9 colorSpaces:(id)arg10 languageDirections:(id)arg11 luminositySlots:(id)arg12 contrastSlots:(id)arg13 vibrancySlots:(id)arg14;
-+ (id)slotFilterUnionedWithStandardUniversalCounterpart:(_Bool)arg1 idioms:(id)arg2 subtypes:(id)arg3 scales:(id)arg4 screenWidths:(id)arg5 widthClasses:(id)arg6 heightClasses:(id)arg7 memoryClasses:(id)arg8 graphicsFeatureSets:(id)arg9 colorSpaces:(id)arg10 languageDirections:(id)arg11 luminositySlots:(id)arg12 contrastSlots:(id)arg13 vibrancySlots:(id)arg14;
++ (id)slotFilterWithIdiomFilter:(id)arg1 subtypeFilter:(id)arg2 scaleFilter:(id)arg3 screenWidthFilter:(id)arg4 widthClass:(id)arg5 heightClassFilter:(id)arg6 memoryFilter:(id)arg7 graphicsFeatureSetFilter:(id)arg8 colorSpaceFilter:(id)arg9 languageDirectionFilter:(id)arg10 lightnessFilter:(id)arg11 contrastFilter:(id)arg12 vibrancyFilter:(id)arg13 localeFilter:(id)arg14;
++ (id)slotFilterWithNilMatching:(long long)arg1 idioms:(id)arg2 subtypes:(id)arg3 scales:(id)arg4 screenWidths:(id)arg5 widthClasses:(id)arg6 heightClasses:(id)arg7 memoryClasses:(id)arg8 graphicsFeatureSets:(id)arg9 colorSpaces:(id)arg10 languageDirections:(id)arg11 luminositySlots:(id)arg12 contrastSlots:(id)arg13 vibrancySlots:(id)arg14 localeSlots:(id)arg15;
++ (id)slotFilterUnionedWithStandardUniversalCounterpart:(_Bool)arg1 idioms:(id)arg2 subtypes:(id)arg3 scales:(id)arg4 screenWidths:(id)arg5 widthClasses:(id)arg6 heightClasses:(id)arg7 memoryClasses:(id)arg8 graphicsFeatureSets:(id)arg9 colorSpaces:(id)arg10 languageDirections:(id)arg11 luminositySlots:(id)arg12 contrastSlots:(id)arg13 vibrancySlots:(id)arg14 localeSlots:(id)arg15;
 + (Class)assetRepClass;
 + (Class)assetSetClass;
 @property(readonly) IBICVibrancyAppearance *vibrancyAppearance; // @synthesize vibrancyAppearance=_vibrancyAppearance;
 @property(readonly) IBICContrastAppearance *contrastAppearance; // @synthesize contrastAppearance=_contrastAppearance;
 @property(readonly) IBICLuminosityAppearance *luminosityAppearance; // @synthesize luminosityAppearance=_luminosityAppearance;
+@property(readonly) IBICLocale *locale; // @synthesize locale=_locale;
 @property(readonly) IBICLanguageDirection *languageDirection; // @synthesize languageDirection=_languageDirection;
 @property(readonly) IBICColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 @property(readonly) IBICGraphicsFeatureSet *graphicsFeatureSet; // @synthesize graphicsFeatureSet=_graphicsFeatureSet;
@@ -48,6 +50,7 @@
 @property(readonly) IBICSubtype *subtype; // @synthesize subtype=_subtype;
 @property(readonly) IBICIdiom *idiom; // @synthesize idiom=_idiom;
 - (void).cxx_destruct;
+- (_Bool)hasUnspecifiedLocale;
 - (_Bool)hasUnspecifiedAppearance;
 - (id)outputFileNameGivenBaseName:(id)arg1 andExtension:(id)arg2;
 - (id)detailAreaPath;

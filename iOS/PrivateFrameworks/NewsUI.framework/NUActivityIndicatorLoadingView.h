@@ -8,13 +8,15 @@
 
 #import <NewsUI/NULoadingViewProviding-Protocol.h>
 
-@class NSString, UIActivityIndicatorView;
+@class NSString, UIActivityIndicatorView, UILabel;
 
 @interface NUActivityIndicatorLoadingView : UIView <NULoadingViewProviding>
 {
     UIActivityIndicatorView *_activityIndicatorView;
+    UILabel *_label;
 }
 
+@property(readonly, nonatomic) UILabel *label; // @synthesize label=_label;
 @property(readonly, nonatomic) UIActivityIndicatorView *activityIndicatorView; // @synthesize activityIndicatorView=_activityIndicatorView;
 - (void).cxx_destruct;
 - (void)loadingViewStopAnimating;
@@ -22,6 +24,7 @@
 - (void)layoutSubviews;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithText:(id)arg1 activityIndicatorStyle:(long long)arg2;
 - (id)initWithActivityIndicatorStyle:(long long)arg1;
 
 // Remaining properties

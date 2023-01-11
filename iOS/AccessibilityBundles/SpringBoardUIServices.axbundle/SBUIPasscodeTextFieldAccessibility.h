@@ -14,7 +14,7 @@
 - (_Bool)_accessibilitySupportsHandwriting;
 - (void)deleteBackward;
 - (void)insertText:(id)arg1;
-- (id)accessibilityValue;
+- (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 

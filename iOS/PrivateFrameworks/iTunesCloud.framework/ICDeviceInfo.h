@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSString;
+@class NSData, NSNumber, NSString;
 @protocol OS_dispatch_queue;
 
 @interface ICDeviceInfo : NSObject
@@ -25,8 +25,17 @@
     NSString *_deviceGUID;
     NSString *_name;
     NSString *_pairedDeviceGUID;
+    NSString *_pairedDeviceMediaGUID;
     NSString *_serialNumber;
     struct CGSize _mainScreenSize;
+    NSNumber *_hasCellularDataCapabilityNumber;
+    NSNumber *_hasTelephonyCapabilityNumber;
+    NSNumber *_hasWiFiCapabilityValue;
+    NSNumber *_hasWAPICapabilityValue;
+    NSNumber *_has720pCapabilityValue;
+    NSNumber *_has1080pCapabilityValue;
+    NSNumber *_screenClassValue;
+    NSNumber *_isInternalBuildNumber;
     NSString *_systemReleaseType;
     NSObject<OS_dispatch_queue> *_accessQueue;
 }
@@ -34,6 +43,7 @@
 + (id)defaultInfo;
 + (id)currentDeviceInfo;
 - (void).cxx_destruct;
+- (id)_activePairedDevice;
 - (int)_gestaltDeviceClass;
 @property(readonly, copy, nonatomic) NSString *currentLocale;
 @property(readonly, nonatomic) unsigned int fairPlayDeviceType;
@@ -47,10 +57,18 @@
 @property(readonly, nonatomic) _Bool isIPad;
 @property(readonly, nonatomic) _Bool isAppleTV;
 @property(readonly, nonatomic) _Bool isIPhone;
+@property(readonly, nonatomic) int screenClass;
+@property(readonly, nonatomic) _Bool has1080pCapability;
+@property(readonly, nonatomic) _Bool has720pCapability;
+@property(readonly, nonatomic) _Bool hasWAPICapability;
+@property(readonly, nonatomic) _Bool hasWiFiCapability;
+@property(readonly, nonatomic) _Bool hasTelephonyCapability;
+@property(readonly, nonatomic) _Bool hasCellularDataCapability;
 @property(readonly, nonatomic) struct CGSize mainScreenSize;
 @property(readonly, copy, nonatomic) NSString *serialNumber;
 @property(readonly, copy, nonatomic) NSString *name;
 @property(readonly, nonatomic) int deviceClass;
+@property(readonly, copy, nonatomic) NSString *pairedDeviceMediaGUID;
 @property(readonly, copy, nonatomic) NSString *pairedDeviceGUID;
 @property(readonly, copy, nonatomic) NSData *deviceFairPlayGUIDData;
 @property(readonly, copy, nonatomic) NSString *deviceGUID;

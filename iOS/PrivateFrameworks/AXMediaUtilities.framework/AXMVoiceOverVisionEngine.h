@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class AXMFaceDetectorNode, AXMImageNode, AXMSceneDetectorNode, AXMScreenCaptureNode, AXMTextDetectorNode, AXMTraitDetectorNode;
+@class AXMCaptionDetectorNode, AXMFaceDetectorNode, AXMIconClassDetectorNode, AXMImageNode, AXMProminentObjectsDetectorNode, AXMSceneDetectorNode, AXMScreenCaptureNode, AXMTextDetectorNode, AXMTraitDetectorNode;
 
 @interface AXMVoiceOverVisionEngine
 {
@@ -14,8 +14,14 @@
     AXMSceneDetectorNode *_sceneDetector;
     AXMFaceDetectorNode *_faceDetector;
     AXMTraitDetectorNode *_traitDetector;
+    AXMProminentObjectsDetectorNode *_prominentObjectsDetector;
+    AXMCaptionDetectorNode *_captionDetector;
+    AXMIconClassDetectorNode *_iconClassDetector;
 }
 
+@property(nonatomic) __weak AXMIconClassDetectorNode *iconClassDetector; // @synthesize iconClassDetector=_iconClassDetector;
+@property(nonatomic) __weak AXMCaptionDetectorNode *captionDetector; // @synthesize captionDetector=_captionDetector;
+@property(nonatomic) __weak AXMProminentObjectsDetectorNode *prominentObjectsDetector; // @synthesize prominentObjectsDetector=_prominentObjectsDetector;
 @property(nonatomic) __weak AXMTraitDetectorNode *traitDetector; // @synthesize traitDetector=_traitDetector;
 @property(nonatomic) __weak AXMFaceDetectorNode *faceDetector; // @synthesize faceDetector=_faceDetector;
 @property(nonatomic) __weak AXMSceneDetectorNode *sceneDetector; // @synthesize sceneDetector=_sceneDetector;
@@ -23,7 +29,6 @@
 @property(nonatomic) __weak AXMImageNode *imageNode; // @synthesize imageNode=_imageNode;
 @property(nonatomic) __weak AXMScreenCaptureNode *captureNode; // @synthesize captureNode=_captureNode;
 - (void).cxx_destruct;
-- (void)setVisionRecognitionOptions:(unsigned long long)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (id)init;
 

@@ -7,9 +7,12 @@
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarRoundedCornerView
 {
+    double _cornerRadius;
 }
 
+@property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 - (void)layoutSubviews;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

@@ -5,23 +5,24 @@
 //
 
 @class NSString;
+@protocol FCChannelProviding;
 
 @interface FCDraftFeedDescriptor
 {
+    id <FCChannelProviding> _channel;
     NSString *_articleListID;
-    NSString *_feedName;
+    NSString *_issueListID;
 }
 
-@property(retain, nonatomic) NSString *feedName; // @synthesize feedName=_feedName;
+@property(readonly, nonatomic) NSString *issueListID; // @synthesize issueListID=_issueListID;
 @property(readonly, nonatomic) NSString *articleListID; // @synthesize articleListID=_articleListID;
+@property(readonly, nonatomic) id <FCChannelProviding> channel; // @synthesize channel=_channel;
 - (void).cxx_destruct;
+- (id)backingChannel;
 - (long long)feedType;
 - (id)name;
 - (id)feedGroupEmittersWithConfiguration:(id)arg1;
-- (id)fetchOperationForHeadlinesWithIDs:(id)arg1 context:(id)arg2;
-- (id)streamOfLatestArticleIDsWithContext:(id)arg1;
-- (void)fetchArticleIDsWithContext:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (id)initWithIdentifier:(id)arg1 articleListID:(id)arg2 name:(id)arg3;
+- (id)initWithChannel:(id)arg1 articleListID:(id)arg2 issueListID:(id)arg3;
 
 @end
 

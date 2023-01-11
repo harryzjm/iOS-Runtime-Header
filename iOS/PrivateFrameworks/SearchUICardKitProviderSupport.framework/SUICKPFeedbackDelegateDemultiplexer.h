@@ -22,13 +22,16 @@
 @property(readonly, nonatomic) NSMutableDictionary *feedbackDelegatesByCardSectionViewIds; // @synthesize feedbackDelegatesByCardSectionViewIds=_feedbackDelegatesByCardSectionViewIds;
 @property(readonly, nonatomic) NSMutableDictionary *feedbackDelegatesByCardSectionIdentifiers; // @synthesize feedbackDelegatesByCardSectionIdentifiers=_feedbackDelegatesByCardSectionIdentifiers;
 - (void).cxx_destruct;
+- (void)presentViewControllerForCard:(id)arg1 animate:(_Bool)arg2;
 - (void)cardSectionViewDidSelectPreferredPunchoutIndex:(long long)arg1;
 - (void)cardSectionViewDidInvalidateSize:(id)arg1;
+- (void)willDismissViewController:(id)arg1;
 - (void)presentViewController:(id)arg1;
 - (void)cardSectionViewDidInvalidateSize:(id)arg1 animate:(_Bool)arg2;
 - (_Bool)shouldHandleCardSectionEngagement:(id)arg1;
 - (void)sendCustomFeedback:(id)arg1;
 - (void)didErrorOccur:(id)arg1;
+- (void)didReportUserResponseFeedback:(id)arg1;
 - (void)didEngageCardSection:(id)arg1;
 - (void)cardViewDidAppear:(id)arg1;
 - (void)cardViewDidDisappear:(id)arg1;

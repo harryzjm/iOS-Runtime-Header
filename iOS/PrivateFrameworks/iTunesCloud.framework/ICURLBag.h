@@ -30,10 +30,13 @@
 @property(readonly, copy, nonatomic) NSString *storefrontHeaderSuffix;
 @property(readonly, nonatomic) ICURLBagLibraryDAAPConfiguration *libraryDAAPConfiguration;
 @property(readonly, nonatomic) ICURLBagRadioConfiguration *radioConfiguration;
+- (id)mescalConfigurationForResponse:(id)arg1;
 - (id)mescalConfigurationForResponseURL:(id)arg1;
+- (id)mescalConfigurationForRequest:(id)arg1;
 - (id)mescalConfigurationForRequestURL:(id)arg1;
 - (_Bool)shouldAppendMachineDataHeadersForURL:(id)arg1;
 - (_Bool)shouldAppendDeviceGUIDForURL:(id)arg1;
+- (_Bool)boolValueForBagKey:(id)arg1;
 - (long long)int64ValueForBagKey:(id)arg1;
 - (id)urlForBagKey:(id)arg1;
 - (_Bool)hasValueForBagKey:(id)arg1;

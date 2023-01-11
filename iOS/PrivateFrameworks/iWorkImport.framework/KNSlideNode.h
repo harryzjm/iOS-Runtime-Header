@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
     NSString *_previousIdentifier;
     unsigned int _tableNameCounter;
     NSArray *_children;
+    _Bool _hasBackgroundAlpha;
     NSMutableDictionary *_slideSpecificHyperlinkMap;
     _Bool _hasExplicitBuilds;
     _Bool _hasExplicitBuildsIsUpToDate;
@@ -45,13 +46,13 @@ __attribute__((visibility("hidden")))
 + (_Bool)needsObjectUUID;
 + (id)slideNodeUUIDForObsoleteUniqueIDString:(id)arg1 inSlideNodes:(id)arg2;
 @property(readonly, nonatomic) NSDictionary *slideSpecificHyperlinkMap; // @synthesize slideSpecificHyperlinkMap=_slideSpecificHyperlinkMap;
+@property(readonly, nonatomic) _Bool hasBackgroundAlpha; // @synthesize hasBackgroundAlpha=_hasBackgroundAlpha;
 @property(nonatomic) _Bool hasBodyInOutlineView; // @synthesize hasBodyInOutlineView=_hasBodyInOutlineView;
 @property(nonatomic, getter=isCollapsedInOutlineView) _Bool collapsedInOutlineView; // @synthesize collapsedInOutlineView=_collapsedInOutlineView;
 @property(nonatomic, getter=isCollapsed) _Bool collapsed; // @synthesize collapsed=_collapsed;
 @property(copy, nonatomic) NSSet *digestsForDatasThatNeedDownloadForThumbnail; // @synthesize digestsForDatasThatNeedDownloadForThumbnail=_digestsForDatasThatNeedDownloadForThumbnail;
 @property(readonly, nonatomic) NSDictionary *thumbnails; // @synthesize thumbnails=_thumbnails;
 @property(nonatomic) __weak KNSlideTree *slideTree; // @synthesize slideTree=_slideTree;
-@property(retain, nonatomic) NSString *previousIdentifier; // @synthesize previousIdentifier=_previousIdentifier;
 - (void).cxx_destruct;
 - (void)p_commonInit;
 - (void)purgeU15ModelIfNeeded;
@@ -103,6 +104,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool hasBuildEvents;
 - (void)p_updateHasExplicitBuilds;
 @property(readonly, nonatomic) _Bool hasExplicitBuilds;
+- (void)updateHasBackgroundAlpha;
 @property(readonly, nonatomic) NSArray *children;
 @property(readonly, nonatomic) _Bool hasChildren;
 @property(readonly, nonatomic) KNSlideNode *previousSkippingHidden;
@@ -111,6 +113,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) KNSlideNode *nextSkippingCollapsed;
 @property(readonly, nonatomic) KNSlideNode *previous;
 @property(readonly, nonatomic) KNSlideNode *next;
+@property(copy, nonatomic) NSString *previousIdentifier;
 @property(readonly, nonatomic) NSString *uniqueIdentifier;
 - (void)dealloc;
 - (id)initWithContext:(id)arg1;
@@ -124,6 +127,7 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchive:(struct SlideNodeArchive *)arg1 archiver:(id)arg2;
 - (id)p_mappingFromString:(id)arg1;
 - (void)loadFromArchive:(const struct SlideNodeArchive *)arg1 unarchiver:(id)arg2;
+- (id)objectUUIDPath;
 - (void)didLoadSlide:(id)arg1;
 - (void)removeObsoleteFieldsFor20Upgrade;
 - (void)removeInvalidSlideSpecificHyperlinksWithSlideNodeUUIDStrings:(id)arg1;

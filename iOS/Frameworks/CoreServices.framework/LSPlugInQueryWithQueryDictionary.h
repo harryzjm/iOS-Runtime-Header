@@ -15,15 +15,14 @@
 }
 
 + (_Bool)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
-- (_Bool)_shouldCacheResolvedResults;
 - (void)_enumerateWithXPCConnection:(id)arg1 block:(CDUnknownBlockType)arg2;
-- (_Bool)matchesPlugin:(const struct LSPluginData *)arg1 withDatabase:(struct LSDatabase *)arg2;
+- (_Bool)matchesPlugin:(unsigned int)arg1 pluginData:(const struct LSPluginData *)arg2 withDatabase:(id)arg3;
 - (id)_queryDictionary;
-- (void)dealloc;
 - (id)_initWithQueryDictionary:(id)arg1 applyFilter:(CDUnknownBlockType)arg2;
 
 @end

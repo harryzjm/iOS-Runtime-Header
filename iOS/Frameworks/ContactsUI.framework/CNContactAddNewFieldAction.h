@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSArray;
 @protocol CNContactGroupPickerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface CNContactAddNewFieldAction
 {
+    NSArray *_prohibitedPropertyKeys;
     id <CNContactGroupPickerDelegate> _groupPickerDelegate;
 }
 
 @property(nonatomic) __weak id <CNContactGroupPickerDelegate> groupPickerDelegate; // @synthesize groupPickerDelegate=_groupPickerDelegate;
+@property(retain, nonatomic) NSArray *prohibitedPropertyKeys; // @synthesize prohibitedPropertyKeys=_prohibitedPropertyKeys;
 - (void).cxx_destruct;
 - (void)performActionWithSender:(id)arg1;
 

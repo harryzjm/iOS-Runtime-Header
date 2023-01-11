@@ -9,13 +9,13 @@
 @class NSDictionary, NSNumber, NSString, WKBrowsingContextHandle;
 
 @protocol SFReaderWebProcessControllerProtocol <NSObject>
-- (void)willHideReader;
+- (void)collectArticleContent;
+- (void)checkReaderAvailability;
 - (void)didFinishPresentationUpdateAfterTransitioningToReader;
 - (void)prepareReaderContentForPrinting;
-- (void)decreaseReaderTextSize;
-- (void)increaseReaderTextSize;
-- (void)setReaderTheme:(NSString *)arg1;
-- (void)setReaderFont:(NSString *)arg1;
+- (void)setReaderIsActive:(_Bool)arg1;
+- (void)activateFont:(NSString *)arg1;
+- (void)setConfiguration:(NSDictionary *)arg1;
 - (void)collectReaderContentForMail;
 - (void)collectReadingListItemInfoWithBookmarkID:(NSNumber *)arg1;
 - (void)setInitalArticleScrollPositionAsDictionary:(NSDictionary *)arg1;

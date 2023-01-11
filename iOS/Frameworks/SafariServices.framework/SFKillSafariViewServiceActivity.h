@@ -4,17 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIActivity.h>
-
 __attribute__((visibility("hidden")))
-@interface SFKillSafariViewServiceActivity : UIActivity
+@interface SFKillSafariViewServiceActivity
 {
 }
 
 - (void)performActivity;
 - (_Bool)canPerformWithActivityItems:(id)arg1;
-- (id)_beforeActivity;
-- (id)activityImage;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 

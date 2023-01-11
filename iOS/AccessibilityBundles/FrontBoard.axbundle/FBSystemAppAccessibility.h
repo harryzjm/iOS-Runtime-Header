@@ -12,8 +12,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityIsSystemAppServer;
-- (id)accessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
-- (id)accessibilityAttributeValue:(long long)arg1;
+- (id)_iosAccessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
+- (id)_iosAccessibilityAttributeValue:(long long)arg1;
 
 @end
 

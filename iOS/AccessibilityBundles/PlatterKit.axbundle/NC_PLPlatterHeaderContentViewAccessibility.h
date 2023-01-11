@@ -13,6 +13,8 @@
 + (id)safeCategoryTargetClassName;
 - (void)setTitle:(id)arg1;
 - (void)setDate:(id)arg1;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)_configureUtilityButton;
 - (id)accessibilityElements;
 - (id)_accessibilityTitleLabel;
 - (_Bool)isAccessibilityElement;

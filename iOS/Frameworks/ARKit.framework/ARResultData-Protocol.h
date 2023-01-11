@@ -12,6 +12,7 @@
 
 @optional
 - (NSArray *)anchorsForCameraWithTransform:(CDStruct_14d5dc5e)arg1 referenceOriginTransform:(CDStruct_14d5dc5e)arg2 existingAnchors:(NSArray *)arg3 anchorsToRemove:(NSMutableArray *)arg4;
+- (struct __CVBuffer *)segmentationBuffer;
 - (ARPointCloud *)featurePoints;
 - (ARLightEstimate *)lightEstimate;
 - (unsigned long long)worldAlignmentModifiers;

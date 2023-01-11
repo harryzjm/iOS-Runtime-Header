@@ -18,8 +18,8 @@
 }
 
 + (id)stringForDataType:(long long)arg1;
-+ (vector_eb9481f9)indexVectorFromArray:(id)arg1;
-+ (id)arrayFromIndexVector:(const vector_eb9481f9 *)arg1;
++ (vector_06e666a8)indexVectorFromArray:(id)arg1;
++ (id)arrayFromIndexVector:(const vector_06e666a8 *)arg1;
 + (int)cppStorageOrder:(long long)arg1;
 + (id)doubleMatrixWithValues:(id)arg1 error:(id *)arg2;
 + (id)doubleMultiArrayWithShape:(id)arg1 valueArray:(id)arg2 error:(id *)arg3;
@@ -57,8 +57,8 @@
 - (id)numberArray;
 - (_Bool)setRangeWithRawData:(id)arg1 destIndex:(unsigned long long)arg2 error:(id *)arg3;
 - (_Bool)fillWithNumber:(id)arg1;
-- (id)sequeezeDimensions:(id)arg1 error:(id *)arg2;
-- (id)sequeeze;
+- (id)squeezeDimensions:(id)arg1 error:(id *)arg2;
+- (id)squeeze;
 - (id)sliceAtOrigin:(id)arg1 shape:(id)arg2 squeeze:(_Bool)arg3 error:(id *)arg4;
 - (void *)multiArrayBuffer;
 - (id)debugQuickLookObject;

@@ -10,6 +10,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityUnregisterRemoteView;
 - (id)accessibilityElements;
 - (void)_accessibilitySetRemoteElementIfNecessary;
 - (void)_accessibilityTransmitRemoteUUIDToPid:(int)arg1 machPort:(unsigned int)arg2 value:(id)arg3;

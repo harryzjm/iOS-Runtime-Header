@@ -6,6 +6,7 @@
 
 @class NSURL;
 
+__attribute__((visibility("hidden")))
 @interface CKFullScreenEffectMediaObject
 {
     NSURL *_audioFileURL;

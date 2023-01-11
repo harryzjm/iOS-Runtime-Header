@@ -32,6 +32,7 @@
 - (void)handleMediaServicesWereResetNotification:(id)arg1;
 - (oneway void)handleAudioSessionActivationStateChangedTo:(_Bool)arg1;
 - (oneway void)handleActionTimeout:(id)arg1;
+- (void)_performAction:(id)arg1;
 - (oneway void)commitTransaction:(id)arg1;
 - (void)actionCompleted:(id)arg1;
 - (void)_performDelegateCallback:(CDUnknownBlockType)arg1;

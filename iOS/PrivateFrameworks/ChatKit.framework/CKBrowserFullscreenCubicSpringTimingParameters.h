@@ -8,6 +8,7 @@
 
 @class UICubicTimingParameters;
 
+__attribute__((visibility("hidden")))
 @interface CKBrowserFullscreenCubicSpringTimingParameters : UISpringTimingParameters
 {
     UICubicTimingParameters *_springCubicTimingParameters;

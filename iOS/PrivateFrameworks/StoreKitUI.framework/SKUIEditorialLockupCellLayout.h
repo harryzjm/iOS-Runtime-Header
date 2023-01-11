@@ -6,6 +6,7 @@
 
 @class SKUICellLayoutView, SKUIEditorialCellLayout, SKUILockupItemCellLayout, SKUITextBoxView, UIColor, UIView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIEditorialLockupCellLayout
 {
     struct UIEdgeInsets _contentInsets;

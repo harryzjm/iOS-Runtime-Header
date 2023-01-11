@@ -29,8 +29,9 @@ __attribute__((visibility("hidden")))
 
 + (struct CGImageSource *)p_newImageSourceFromFilePath:(id)arg1;
 + (struct CGImageSource *)p_newImageSourceFromCacheForData:(id)arg1 withFilenameSuffix:(id)arg2;
-+ (void)clearCacheForData:(id)arg1;
++ (void)clearCacheForDataUniqueIdentifier:(id)arg1 context:(id)arg2;
 + (id)p_cacheStringForData:(id)arg1;
++ (id)p_cacheDirectoryForDigestString:(id)arg1 isApplicationData:(_Bool)arg2 context:(id)arg3;
 + (id)p_cacheDirectoryForData:(id)arg1;
 + (void)initialize;
 + (struct CGSize)naturalSizeForImageData:(id)arg1;
@@ -63,7 +64,7 @@ __attribute__((visibility("hidden")))
 - (struct CGImage *)CGImageResampledToSize:(struct CGSize)arg1 lowQuality:(_Bool)arg2;
 - (id)p_cacheSuffixForScale:(unsigned long long)arg1;
 - (long long)p_reciprocalScaleForImageSize:(struct CGSize)arg1;
-- (struct CGImage *)CGImageForSize:(struct CGSize)arg1 inContext:(struct CGContext *)arg2 orLayer:(id)arg3;
+- (struct CGImage *)CGImageForSize:(struct CGSize)arg1 inContext:(struct CGContext *)arg2 orContentsScaleProvider:(id)arg3;
 - (struct CGImage *)CGImageForNaturalSize;
 - (void)drawImageInContext:(struct CGContext *)arg1 rect:(struct CGRect)arg2;
 - (_Bool)isValid;

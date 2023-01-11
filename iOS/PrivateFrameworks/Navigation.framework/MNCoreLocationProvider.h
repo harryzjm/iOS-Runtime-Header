@@ -10,7 +10,7 @@
 #import <Navigation/CLLocationManagerVehicleDelegate-Protocol.h>
 #import <Navigation/MNLocationProvider-Protocol.h>
 
-@class CLLocationManager, NSBundle, NSLock, NSString;
+@class CLLocationManager, NSBundle, NSLock, NSRunLoop, NSString;
 @protocol MNLocationProviderDelegate;
 
 __attribute__((visibility("hidden")))
@@ -27,10 +27,12 @@ __attribute__((visibility("hidden")))
     NSBundle *_effectiveBundle;
     NSString *_effectiveBundleIdentifier;
     CDUnknownBlockType _authorizationRequestBlock;
+    NSRunLoop *_debug_initRunLoop;
+    NSRunLoop *_debug_deinitRunLoop;
     _Bool _updatingLocations;
 }
 
-@property _Bool updatingLocations; // @synthesize updatingLocations=_updatingLocations;
+@property(nonatomic) _Bool updatingLocations; // @synthesize updatingLocations=_updatingLocations;
 @property(nonatomic) __weak id <MNLocationProviderDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 @property(nonatomic) long long activityType;
@@ -46,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)locationManager:(id)arg1 didUpdateHeading:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 @property(readonly, nonatomic) double timeScale;
+@property(readonly, nonatomic) unsigned long long traceVersion;
 @property(readonly, nonatomic) _Bool isTracePlayer;
 @property(readonly, nonatomic) _Bool isSimulation;
 @property(readonly, nonatomic) int authorizationStatus;
@@ -72,7 +75,10 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool usesCLMapCorrection;
 @property(readonly, nonatomic) CLLocationManager *_clLocationManager;
 - (void)_createCLLocationManager;
+- (void)_sharedInit;
 - (void)dealloc;
+- (id)initWithEffectiveBundleIdentifier:(id)arg1;
+- (id)initWithEffectiveBundle:(id)arg1;
 - (id)init;
 
 // Remaining properties

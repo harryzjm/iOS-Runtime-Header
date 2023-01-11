@@ -34,6 +34,7 @@
     NSArray *_properties;
     NSMutableArray *_recipientsBeingRemoved;
     NSUndoManager *_undoManager;
+    struct CGRect _addButtonFrame;
     _Bool _editable;
     _Bool _separatorHidden;
     _Bool _expanded;
@@ -61,6 +62,7 @@
 @property(nonatomic, getter=isSeparatorHidden) _Bool separatorHidden; // @synthesize separatorHidden=_separatorHidden;
 @property(nonatomic) _Bool editable; // @synthesize editable=_editable;
 @property(nonatomic) _Bool indicatesUnsafeRecipientsWhenCollapsed; // @synthesize indicatesUnsafeRecipientsWhenCollapsed=_indicatesUnsafeRecipientsWhenCollapsed;
+- (void).cxx_destruct;
 - (void)composeRecipientAtomSelectNext:(id)arg1;
 - (void)composeRecipientAtomSelectPrevious:(id)arg1;
 - (void)composeRecipientAtomShowPersonCard:(id)arg1;
@@ -70,7 +72,7 @@
 - (void)dragExited;
 - (void)dragMovedToPoint:(struct CGPoint)arg1;
 - (void)dragEnteredAtPoint:(struct CGPoint)arg1;
-- (id)dragPreviewForDraggedItem:(id)arg1;
+- (id)dragPreviewForDraggedItem:(id)arg1 withContainer:(id)arg2;
 - (struct _NSRange)_placeholderAttachmentRange;
 - (id)_placeholderAttachmentWithStaticWidth;
 - (void)_notifyDelegateOfSizeChange;
@@ -100,9 +102,10 @@
 - (void)_ensureAddButton;
 - (void)_setTextViewIsCollapsed:(_Bool)arg1 animated:(_Bool)arg2;
 - (_Bool)_isTextViewCollapsed;
+- (id)_attributedStringWithAtomizedRecipients;
 - (void)_updateInactiveTextView;
 - (void)_ensureInactiveTextView;
-- (id)_accessibilityToString;
+- (id)_toString;
 - (_Bool)_textViewContainsAtomizedRecipients;
 - (void)_resetSelectionState;
 - (_Bool)_shouldAnimateAtomViewChanges;
@@ -144,16 +147,19 @@
 - (void)setEditable:(_Bool)arg1 animated:(_Bool)arg2;
 @property(readonly, copy, nonatomic) NSArray *uncommentedAddresses;
 @property(copy, nonatomic) NSArray *addresses;
-@property(nonatomic) id <MFComposeRecipientTextViewDelegate> delegate;
+@property(nonatomic) __weak id <MFComposeRecipientTextViewDelegate> delegate;
 - (void)_addButtonTapped:(id)arg1;
 - (_Bool)containsAddress:(id)arg1;
 - (void)addAddress:(id)arg1;
 - (void)removeRecipient:(id)arg1;
 - (void)_didRemoveRecipient:(id)arg1;
+- (void)_recipientsWereAdded:(id)arg1;
 - (id)undoManager;
+- (void)addRecipient:(id)arg1 index:(unsigned long long)arg2 animate:(_Bool)arg3 notify:(_Bool)arg4;
 - (void)addRecipient:(id)arg1 index:(unsigned long long)arg2 animate:(_Bool)arg3;
 - (void)addRecord:(void *)arg1 property:(int)arg2 identifier:(int)arg3;
 - (void)_addRecord:(void *)arg1 identifier:(int)arg2;
+- (void)addRecipient:(id)arg1 notify:(_Bool)arg2;
 - (void)addRecipient:(id)arg1;
 @property(copy, nonatomic) NSArray *recipients;
 - (void)_removeAllRecipients;

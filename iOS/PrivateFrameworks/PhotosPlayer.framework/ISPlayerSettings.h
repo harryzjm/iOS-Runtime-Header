@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+__attribute__((visibility("hidden")))
 @interface ISPlayerSettings
 {
     _Bool _easingEnabled;
@@ -21,9 +22,6 @@
     _Bool _allowVideoPreRoll;
     _Bool _allowPlayerReuse;
     float _vitalityEaseMinRate;
-    double _photoTransitionAdjustment;
-    double _minimumPhotoTransitionDuration;
-    double _minimumColorAdjustedPhotoTransitionDuration;
     double _vitalityEaseDuration;
     long long _startBehavior;
     double _forceTouchTimeoutInterval;
@@ -65,9 +63,6 @@
 @property(nonatomic) float vitalityEaseMinRate; // @synthesize vitalityEaseMinRate=_vitalityEaseMinRate;
 @property(nonatomic) double vitalityEaseDuration; // @synthesize vitalityEaseDuration=_vitalityEaseDuration;
 @property(nonatomic) _Bool easingEnabled; // @synthesize easingEnabled=_easingEnabled;
-@property(nonatomic) double minimumColorAdjustedPhotoTransitionDuration; // @synthesize minimumColorAdjustedPhotoTransitionDuration=_minimumColorAdjustedPhotoTransitionDuration;
-@property(nonatomic) double minimumPhotoTransitionDuration; // @synthesize minimumPhotoTransitionDuration=_minimumPhotoTransitionDuration;
-@property(nonatomic) double photoTransitionAdjustment; // @synthesize photoTransitionAdjustment=_photoTransitionAdjustment;
 - (void)setDefaultValues;
 
 @end

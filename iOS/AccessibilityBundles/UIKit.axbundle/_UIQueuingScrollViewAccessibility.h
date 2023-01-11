@@ -10,6 +10,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)canBecomeFocused;
 - (struct CGRect)accessibilityFrame;
 
 @end

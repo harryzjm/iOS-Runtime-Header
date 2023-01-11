@@ -11,6 +11,18 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityPath;
+- (_Bool)_isEligibleForFocusInteraction;
+- (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (id)preferredFocusedView;
+- (void)_axSetFocusedSubview:(id)arg1;
+- (id)_axGetFocusedSubview;
+- (_Bool)canBecomeFocused;
+- (void)_accessibilityHandleReorderMoveUpWithFocus;
+- (void)_accessibilityHandleReorderMoveDownWithFocus;
+- (id)_accessibilityKeyCommands;
+- (id)_accessibilityPerformableActions;
+- (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (_Bool)_accessibilityShouldIncludeRowRangeInElementDescription;
 - (_Bool)_accessibilityViewHierarchyHasNativeFocus;
 - (_Bool)_accessibilitySetNativeFocus;
@@ -19,9 +31,10 @@
 - (id)accessibilityDropPointDescriptors;
 - (id)accessibilityDragSourceDescriptors;
 - (_Bool)_accessibilityIsSpeakThisElement;
-- (_Bool)_accessibilityHandleReorderMove:(id)arg1 up:(_Bool)arg2;
-- (_Bool)_accessibilityHandleReorderMoveUp:(id)arg1;
-- (_Bool)_accessibilityHandleReorderMoveDown:(id)arg1;
+- (_Bool)_accessibilityHandleReorderMoveUp:(_Bool)arg1;
+- (_Bool)_accessibilityHandleReorderMoveUp;
+- (_Bool)_accessibilityHandleReorderMoveDown;
+- (_Bool)_accessibilityHasReorderActions;
 - (id)_privateAccessibilityCustomActions;
 - (id)_axCustomActionsForActions:(id)arg1;
 - (_Bool)_axPerformAction:(id)arg1;
@@ -30,12 +43,13 @@
 - (_Bool)_accessibilityIsOutsideParentBounds;
 - (id)_accessibilityParentTableView;
 - (id)_accessibilityEquivalenceTag;
-- (_Bool)_accessibilityPerformSwipeAction:(id)arg1;
+- (_Bool)_accessibilityPerformSwipeDeleteAction:(id)arg1;
 - (_Bool)_accessibilityHandleDetailButtonPress:(id)arg1;
 - (_Bool)_accessibilitySwipeActionsAllowed;
-- (_Bool)_hasTrailingSwipeActions;
+- (_Bool)_axHasTrailingSwipeActions;
+- (_Bool)_axHasLeadingSwipeActions;
 - (_Bool)isAccessibilityElement;
-- (void)_beginSwiping;
+- (id)accessibilityUserInputLabels;
 - (id)accessibilityLabel;
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)indexOfAccessibilityElement:(id)arg1;
@@ -61,7 +75,9 @@
 - (void)_setShowingDeleteConfirmation:(_Bool)arg1;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)didTransitionToState:(unsigned long long)arg1;
+- (id)_accessibilityRetrieveTableViewCellTextWithLocalizationOptions:(long long)arg1 shouldExcludeDetailText:(_Bool)arg2;
 - (id)_accessibilityRetrieveTableViewCellText:(long long)arg1;
+- (id)_accessibilityRetrieveTableViewCellTextExcludingDetailText;
 - (id)_accessibilityRetrieveTableViewCellText;
 - (_Bool)_accessibilityLabelShouldBeDistinct:(id)arg1;
 - (id)tableTextAccessibleLocalizedTableName:(id)arg1;
@@ -70,6 +86,7 @@
 - (id)tableTextAccessibleStringKey:(id)arg1;
 - (id)tableTextAccessibleLabel:(id)arg1;
 - (id)_accessibilityRetrieveTableViewIvarsText;
+- (_Bool)_accessibilityClientIgnoresReorderControl;
 - (struct CGRect)tableTextAccessibleFrame:(id)arg1;
 - (id)_accessibilityTextElementText;
 - (void)setAccessoryView:(id)arg1;
@@ -131,6 +148,11 @@
 - (id)_accessibilityImageViewIfExists;
 - (id)_accessibilityDetailTextLabelIfExists;
 - (id)_accessibilityTextLabelIfExists;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axApplyAccessoryType:(long long)arg1 withControl:(id)arg2;
+- (id)_accessoryViewForType:(long long)arg1;
+- (void)_axSetShouldForceRefreshChildren:(_Bool)arg1;
+- (_Bool)_axShouldForceRefreshChildren;
 
 @end
 

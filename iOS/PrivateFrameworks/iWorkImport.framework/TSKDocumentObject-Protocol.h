@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <iWorkImport/NSObject-Protocol.h>
+
 @class TSKAddedToDocumentContext, TSKDocumentRoot;
 
-@protocol TSKDocumentObject
+@protocol TSKDocumentObject <NSObject>
 - (void)wasRemovedFromDocumentRoot:(TSKDocumentRoot *)arg1;
 - (void)willBeRemovedFromDocumentRoot:(TSKDocumentRoot *)arg1;
 - (void)wasAddedToDocumentRoot:(TSKDocumentRoot *)arg1 dolcContext:(TSKAddedToDocumentContext *)arg2;

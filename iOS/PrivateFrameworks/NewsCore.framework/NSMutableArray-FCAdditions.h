@@ -27,5 +27,6 @@
 - (void)fc_removeObject:(id)arg1 sortedUsingSelector:(SEL)arg2;
 - (void)fc_insertObject:(id)arg1 sortedUsingSelector:(SEL)arg2;
 - (id)fc_mergeSortedOrderedCollection:(id)arg1 usingComparator:(CDUnknownBlockType)arg2;
+- (void)fc_safelyAddStringIfNonNilAndNotZeroLength:(id)arg1;
 @end
 

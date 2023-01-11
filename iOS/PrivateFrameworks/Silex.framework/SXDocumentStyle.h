@@ -4,17 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SXFill, SXJSONLinearGradient, UIColor;
+#import <Silex/SXDocumentStyle-Protocol.h>
 
-@interface SXDocumentStyle
+@class NSString, SXJSONArray, SXJSONLinearGradient, UIColor;
+
+@interface SXDocumentStyle <SXDocumentStyle>
 {
 }
 
-- (id)fillWithValue:(id)arg1 withType:(int)arg2;
++ (CDUnknownBlockType)valueClassBlockForPropertyWithName:(id)arg1;
 
 // Remaining properties
 @property(readonly, nonatomic) UIColor *backgroundColor; // @dynamic backgroundColor;
-@property(readonly, nonatomic) SXFill *fill; // @dynamic fill;
+@property(readonly, nonatomic) SXJSONArray *conditional; // @dynamic conditional;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @property(readonly, nonatomic) UIColor *topBackgroundColor; // @dynamic topBackgroundColor;
 @property(readonly, nonatomic) SXJSONLinearGradient *topBackgroundGradient; // @dynamic topBackgroundGradient;
 

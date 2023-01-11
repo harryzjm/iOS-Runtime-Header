@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCMutableTodayPrivateData-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSSet, NSString;
+@class FCBundleSubscription, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSSet, NSString;
 @protocol FCDerivedPersonalizationData><NSCoding;
 
 @interface FCMutableTodayPrivateData <FCMutableTodayPrivateData>
@@ -14,10 +14,11 @@
 }
 
 - (void)_deleteObjectsForOldKeys;
+- (void)setBundleSubscription:(id)arg1;
 - (void)setOnboardingVersion:(id)arg1;
 - (void)setRecentlySeenHistoryItems:(id)arg1;
 - (void)setRecentlyReadHistoryItems:(id)arg1;
-- (void)setRankedPersonalSubscribedTagIDs:(id)arg1;
+- (void)setRankedAllSubscribedTagIDs:(id)arg1;
 - (void)setPurchasedTagIDs:(id)arg1;
 - (void)setAutoFavoriteTagIDs:(id)arg1;
 - (void)setMutedTagIDs:(id)arg1;
@@ -27,6 +28,7 @@
 
 // Remaining properties
 @property(readonly, copy, nonatomic) NSSet *autoFavoriteTagIDs;
+@property(readonly, copy, nonatomic) FCBundleSubscription *bundleSubscription;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy, nonatomic) id <FCDerivedPersonalizationData><NSCoding> derivedPersonalizationData;
 @property(readonly, copy) NSString *description;
@@ -35,7 +37,7 @@
 @property(readonly, copy, nonatomic) NSSet *mutedTagIDs;
 @property(readonly, copy, nonatomic) NSNumber *onboardingVersion;
 @property(readonly, copy, nonatomic) NSSet *purchasedTagIDs;
-@property(readonly, copy, nonatomic) NSArray *rankedPersonalSubscribedTagIDs;
+@property(readonly, copy, nonatomic) NSArray *rankedAllSubscribedTagIDs;
 @property(readonly, copy, nonatomic) NSDictionary *recentlyReadHistoryItems;
 @property(readonly, copy, nonatomic) NSArray *recentlySeenHistoryItems;
 @property(readonly) Class superclass;

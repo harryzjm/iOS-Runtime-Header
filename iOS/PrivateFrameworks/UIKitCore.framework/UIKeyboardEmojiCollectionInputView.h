@@ -6,12 +6,13 @@
 
 #import <UIKitCore/UICollectionViewDataSource-Protocol.h>
 #import <UIKitCore/UICollectionViewDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardMediaControllerDelegate-Protocol.h>
 
 @class NSIndexPath, NSString, UICollectionViewFlowLayout, UIKeyboardEmojiCategory, UIKeyboardEmojiCollectionView, UIKeyboardEmojiGraphicsTraits, UIResponder;
 @protocol UIKBEmojiHitTestResponder;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardEmojiCollectionInputView <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface UIKeyboardEmojiCollectionInputView <UIKeyboardMediaControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 {
     UIKeyboardEmojiCollectionView *_collectionView;
     UICollectionViewFlowLayout *_flowLayout;
@@ -20,10 +21,16 @@ __attribute__((visibility("hidden")))
     UIKeyboardEmojiGraphicsTraits *_emojiGraphicsTraits;
     _Bool _isDraggingInputView;
     unsigned long long _currentSection;
+    _Bool _inputDelegateCanSupportAnimoji;
+    _Bool _hasShownAnimojiFirstTimeExperience;
+    _Bool _shouldRetryFetchingAnimojiRecents;
+    _Bool _useWideAnimojiCell;
+    _Bool _hasShownAnimojiCell;
     CDUnknownBlockType _completionBlock;
     UIResponder<UIKBEmojiHitTestResponder> *_hitTestResponder;
 }
 
++ (_Bool)shouldHighlightEmoji:(id)arg1;
 @property(nonatomic) NSIndexPath *tappedSkinToneEmoji; // @synthesize tappedSkinToneEmoji=_tappedSkinToneEmoji;
 @property(nonatomic) UIResponder<UIKBEmojiHitTestResponder> *hitTestResponder; // @synthesize hitTestResponder=_hitTestResponder;
 @property(copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
@@ -35,19 +42,24 @@ __attribute__((visibility("hidden")))
 - (void)didMoveToWindow;
 - (long long)indexForPrettyCategoryDisplay:(id)arg1;
 - (double)snappedXOffsetForOffset:(double)arg1;
+- (double)_recentlyUsedMediaRoundedOffset:(double)arg1 recentlyUsedMediaCellWidth:(double)arg2;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (id)firstFullyVisibleHeader;
 - (id)itemInRect:(struct CGRect)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
+- (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumInteritemSpacingForSectionAtIndex:(long long)arg3;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumLineSpacingForSectionAtIndex:(long long)arg3;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
+- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
+- (void)didTearDownRecentsViewForKeyboardMediaController:(id)arg1;
+- (_Bool)_shouldShowRecentlyUsedMedia;
 - (void)willDisplayModalActionView:(id)arg1 withSubTreeKeyView:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)shouldDismissModalDisplayView:(id)arg1;
 - (long long)didInputSubTree:(id)arg1;

@@ -13,6 +13,8 @@
 {
     _Bool _isRequestingExtension;
     NSExtension *_extension;
+    long long _extensionScore;
+    unsigned long long _externalResourcesPermission;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_completionHandlersQueue;
     NSExtensionContext *_context;
@@ -23,6 +25,7 @@
     NSMutableArray *_extensionRequestHandlers;
 }
 
+@property(nonatomic) _Bool isRequestingExtension; // @synthesize isRequestingExtension=_isRequestingExtension;
 @property(retain, nonatomic) NSMutableArray *extensionRequestHandlers; // @synthesize extensionRequestHandlers=_extensionRequestHandlers;
 @property(retain, nonatomic) QLGracePeriodTimer *gracePeriodTimer; // @synthesize gracePeriodTimer=_gracePeriodTimer;
 @property(retain, nonatomic) NSMutableSet *observers; // @synthesize observers=_observers;
@@ -31,6 +34,8 @@
 @property(retain, nonatomic) NSExtensionContext *context; // @synthesize context=_context;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *completionHandlersQueue; // @synthesize completionHandlersQueue=_completionHandlersQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property unsigned long long externalResourcesPermission; // @synthesize externalResourcesPermission=_externalResourcesPermission;
+@property long long extensionScore; // @synthesize extensionScore=_extensionScore;
 @property(retain, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
 - (void).cxx_destruct;
 - (void)invalidateAndCancelExtensionRequest;

@@ -15,6 +15,11 @@
 - (id)_newBarButtonItemWithIdentifier:(long long)arg1 location:(long long)arg2;
 - (_Bool)accessibilityScroll:(long long)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axLoadUnmuteButtonAccessibility:(id)arg1;
+- (void)_axLoadMuteButtonAccessibility:(id)arg1;
+- (void)_axLoadRewindButtonAccessibility:(id)arg1;
+- (void)_axLoadDeleteButtonAccessibility:(id)arg1;
+- (void)_axLoadShareButtonAccessibility:(id)arg1;
 - (void)_axLoadDoneButtonAccessibility:(id)arg1;
 - (void)_axLoadBackButtonWithNoTitleAccessibility:(id)arg1;
 - (void)_axLoadAirplayButtonAccessibility:(id)arg1;

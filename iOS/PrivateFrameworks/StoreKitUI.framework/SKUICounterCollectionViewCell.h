@@ -8,6 +8,7 @@
 
 @class NSString, SKUICounterView, SKUIImageView;
 
+__attribute__((visibility("hidden")))
 @interface SKUICounterCollectionViewCell <SKUIViewElementView>
 {
     struct UIEdgeInsets _contentInset;

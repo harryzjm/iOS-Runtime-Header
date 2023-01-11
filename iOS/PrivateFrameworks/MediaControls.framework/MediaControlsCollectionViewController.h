@@ -37,11 +37,13 @@
     _MediaControlsTapHoldGestureRecognizer *_tapGestureRecognizer;
     UIScrollView *_scrollView;
     long long _displayMode;
+    double _preferredItemHeight;
     struct UIEdgeInsets _scrollViewInsets;
 }
 
 + (id)alphaAnimatorWithAnimations:(CDUnknownBlockType)arg1;
 + (id)frameAnimator;
+@property(nonatomic) double preferredItemHeight; // @synthesize preferredItemHeight=_preferredItemHeight;
 @property(nonatomic) long long displayMode; // @synthesize displayMode=_displayMode;
 @property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(retain, nonatomic) _MediaControlsTapHoldGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
@@ -84,7 +86,7 @@
 - (void)_updateFrameForViewController:(id)arg1 atIndex:(long long)arg2 withCoordinator:(id)arg3 assumingSize:(struct CGSize)arg4;
 - (void)_updateFramesForActiveViewControllersWithCoordinator:(id)arg1 assumingSize:(struct CGSize)arg2;
 - (void)_updateContentSize;
-- (void)_updateContentInsets;
+- (void)updateContentInsets;
 - (double)_totalHeight;
 - (void)_tileViews;
 - (void)_setFrame:(struct CGRect)arg1 forVisibleViewAtIndex:(long long)arg2;
@@ -103,6 +105,7 @@
 - (long long)_closestItemAtPoint:(struct CGPoint)arg1;
 - (void)_dequeueAndPerformBatchUpdatesIfNeeded;
 - (_Bool)_canPerformBatchUpdates;
+- (double)preferredItemHeightGivenWidth:(double)arg1;
 - (void)scrollToSelectedItemAnimated:(_Bool)arg1;
 @property(readonly, nonatomic) NSIndexSet *visibleIndexes;
 - (long long)itemAtPoint:(struct CGPoint)arg1;

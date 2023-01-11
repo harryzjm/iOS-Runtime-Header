@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/SwiftObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC13CoreKnowledge7Matcher : SwiftObject
+@interface _TtC13CoreKnowledge7Matcher : _TtCs12_SwiftObject
 {
     MISSING_TYPE *comparison;
     MISSING_TYPE *value;
-    MISSING_TYPE *sql.storage;
+    MISSING_TYPE *$__lazy_storage_$_sql;
 }
 
 @end

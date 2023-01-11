@@ -9,18 +9,28 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (Class)meltedClass;
 + (id)relations;
 + (id)defaultPropertiesToLoad;
+- (void)setInviteReplyCalendar:(id)arg1;
 - (id)inviteReplyCalendar;
-- (id)calendar;
 - (_Bool)alerted;
+- (void)setSummary:(id)arg1;
+- (id)summary;
+- (void)setCreationDate:(id)arg1;
 - (id)creationDate;
-- (unsigned long long)status;
+- (void)setShareeStatus:(unsigned long long)arg1;
+- (unsigned long long)shareeStatus;
+- (void)setShareeURL:(id)arg1;
+- (id)shareeURL;
+- (void)setShareeLastName:(id)arg1;
 - (id)shareeLastName;
+- (void)setShareeFirstName:(id)arg1;
 - (id)shareeFirstName;
-- (id)shareeAddressURL;
+- (void)setShareeDisplayName:(id)arg1;
 - (id)shareeDisplayName;
-- (id)calendarName;
+- (void)setInReplyTo:(id)arg1;
+- (id)inReplyTo;
 - (int)entityType;
 
 @end

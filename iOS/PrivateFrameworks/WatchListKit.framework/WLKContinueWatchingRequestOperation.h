@@ -4,11 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class WLKContinueWatchingResponse;
+
 @interface WLKContinueWatchingRequestOperation
 {
+    WLKContinueWatchingResponse *_response;
 }
 
-- (id)responseProcessor;
+@property(retain, nonatomic) WLKContinueWatchingResponse *response; // @synthesize response=_response;
+- (void).cxx_destruct;
+- (void)_donateMediaItems:(id)arg1;
+- (void)processResponse;
+- (id)initWithQueryParameters:(id)arg1;
+- (id)initWithCaller:(id)arg1 options:(long long)arg2;
 - (id)init;
 
 @end

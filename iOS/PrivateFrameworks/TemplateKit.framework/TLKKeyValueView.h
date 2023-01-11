@@ -4,28 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <TemplateKit/NUIContainerStackViewDelegate-Protocol.h>
+#import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
 
 @class NSArray, NSString, TLKImage, TLKImageView, TLKKeyValueGridView, TLKStackView;
 
-@interface TLKKeyValueView <NUIContainerStackViewDelegate>
+@interface TLKKeyValueView <NUIContainerViewDelegate>
 {
-    _Bool _isInMeasurementPass;
     NSArray *_leadingTuples;
     NSArray *_trailingTuples;
     TLKImage *_image;
     TLKKeyValueGridView *_leadingGrid;
     TLKKeyValueGridView *_trailingGrid;
     TLKImageView *_imageView;
-    TLKStackView *_containerView;
+    double _lastMeasuredWidth;
 }
 
 + (unsigned long long)visibleRowsInGrid:(id)arg1;
-@property _Bool isInMeasurementPass; // @synthesize isInMeasurementPass=_isInMeasurementPass;
-@property(retain) TLKStackView *containerView; // @synthesize containerView=_containerView;
-@property(retain) TLKImageView *imageView; // @synthesize imageView=_imageView;
-@property(retain) TLKKeyValueGridView *trailingGrid; // @synthesize trailingGrid=_trailingGrid;
-@property(retain) TLKKeyValueGridView *leadingGrid; // @synthesize leadingGrid=_leadingGrid;
+@property(nonatomic) double lastMeasuredWidth; // @synthesize lastMeasuredWidth=_lastMeasuredWidth;
+@property(retain, nonatomic) TLKImageView *imageView; // @synthesize imageView=_imageView;
+@property(retain, nonatomic) TLKKeyValueGridView *trailingGrid; // @synthesize trailingGrid=_trailingGrid;
+@property(retain, nonatomic) TLKKeyValueGridView *leadingGrid; // @synthesize leadingGrid=_leadingGrid;
 @property(retain, nonatomic) TLKImage *image; // @synthesize image=_image;
 @property(retain, nonatomic) NSArray *trailingTuples; // @synthesize trailingTuples=_trailingTuples;
 @property(retain, nonatomic) NSArray *leadingTuples; // @synthesize leadingTuples=_leadingTuples;
@@ -38,12 +36,13 @@
 - (long long)currentStackViewDistribution;
 - (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (void)observedPropertiesChanged;
-- (_Bool)isLayoutSizeDependentOnPerpendicularAxis;
+- (_Bool)containerView:(id)arg1 shouldRestartMeasurementDueToCompressionInAxis:(long long)arg2 forReason:(long long)arg3;
+- (void)_reconfigureForCompressedState;
 - (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
-- (void)styleDidChange:(unsigned long long)arg1;
-- (id)init;
+- (id)setupContentView;
 
 // Remaining properties
+@property(retain, nonatomic) TLKStackView *contentView; // @dynamic contentView;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

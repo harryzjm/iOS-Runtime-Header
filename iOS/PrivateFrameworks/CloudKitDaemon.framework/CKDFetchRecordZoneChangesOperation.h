@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType serverChangeTokenUpdatedBlock; // @synthesize serverChangeTokenUpdatedBlock=_serverChangeTokenUpdatedBlock;
 @property(copy, nonatomic) CDUnknownBlockType recordChangedBlock; // @synthesize recordChangedBlock=_recordChangedBlock;
 - (void).cxx_destruct;
+- (id)analyticsPayload;
 - (void)fillOutOperationResult:(id)arg1;
 - (Class)operationResultClass;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;

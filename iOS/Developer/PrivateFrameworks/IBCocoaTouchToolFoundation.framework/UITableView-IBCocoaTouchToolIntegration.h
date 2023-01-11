@@ -13,9 +13,11 @@
 @property(retain, nonatomic) IBPlaceholderDrawingAttributes *ibUnusedAreaDrawingAttributes;
 - (void)setIbUnusedAreaPlaceholderView:(id)arg1;
 - (id)ibUnusedAreaPlaceholderView;
+- (_Bool)ibIsChildASubarbitrationUnitRoot:(id)arg1;
+- (void)ibPropagatePropertiesToCopyOfReceiver:(id)arg1 forLayoutEngine:(id)arg2;
 - (void)setIbMinimumGeometryForCellFramesAndContentSize:(id)arg1;
 - (_Bool)ibCapturePlaceholderTable:(id)arg1 forRelationship:(id)arg2 withContext:(id)arg3;
-- (struct CGSize)ibContentSize;
+- (id)ibContentSize;
 - (id)sectionAndCellFrames;
 - (void)setIbReuseIdentifiersToPrototypeNibData:(id)arg1;
 - (void)setIbCachedSectionsIncludingPrototypes:(id)arg1;
@@ -29,6 +31,9 @@
 - (void)_setAssociationCellForSections:(id)arg1 withTableView:(id)arg2;
 - (void)_setAssociationCells:(id)arg1 withTableView:(id)arg2;
 - (id)ibSections;
+@property(nonatomic) double ibShadowedEstimatedSectionFooterHeight;
+@property(nonatomic) double ibShadowedEstimatedSectionHeaderHeight;
+@property(nonatomic) double ibShadowedEstimatedRowHeight;
 - (void)ibTableViewCell:(id)arg1 didIncrementallyChangeValueForKeyPath:(id)arg2;
 - (id)initWithMarshalledValues:(id)arg1 orderedKeys:(id)arg2 ignoredKeys:(id)arg3 globalMarshallingContext:(id)arg4;
 @end

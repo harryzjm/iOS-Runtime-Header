@@ -5,6 +5,7 @@
 //
 
 @class NSDictionary, UIViewController;
+@protocol CDPStateUIProvider;
 
 @interface AIDAMutableServiceContext
 {
@@ -13,6 +14,7 @@
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(retain, nonatomic) UIViewController *viewController; // @dynamic viewController;
+@property(nonatomic) __weak id <CDPStateUIProvider> cdpUiProvider; // @dynamic cdpUiProvider;
 @property(nonatomic) _Bool shouldForceOperation; // @dynamic shouldForceOperation;
 @property(copy, nonatomic) NSDictionary *authenticationResults; // @dynamic authenticationResults;
 

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (_Bool)hostApplicationIsEntitled;
 @property(retain) TUCallProvider *callProvider; // @synthesize callProvider=_callProvider;
 - (void).cxx_destruct;
+- (id)dialRequest;
 - (id)localizedName;
 - (long long)TTYType;
 

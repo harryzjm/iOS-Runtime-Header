@@ -8,7 +8,7 @@
 
 #import <BulletinDistributorCompanion/NSCopying-Protocol.h>
 
-@class BLTPBAction, NSData, NSMutableArray, NSString;
+@class BLTPBAction, BLTPBSectionIcon, NSData, NSMutableArray, NSString;
 
 @interface BLTPBBulletin : PBCodable <NSCopying>
 {
@@ -32,6 +32,7 @@
     BLTPBAction *_dismissAction;
     NSString *_dismissalID;
     unsigned int _feed;
+    BLTPBSectionIcon *_icon;
     NSString *_messageTitle;
     NSMutableArray *_peopleIDs;
     NSString *_publisherBulletinID;
@@ -52,13 +53,16 @@
     NSString *_threadID;
     NSString *_title;
     NSString *_universalSectionID;
+    _Bool _containsUpdateIcon;
     _Bool _containsUpdatedAttachment;
     _Bool _hasCriticalIcon;
     _Bool _ignoresQuietMode;
     _Bool _includesSound;
     _Bool _loading;
+    _Bool _preemptsPresentedAlert;
     _Bool _soundShouldIgnoreRingerSwitch;
     _Bool _soundShouldRepeat;
+    _Bool _suppressDelayForForwardedBulletins;
     _Bool _turnsOnDisplay;
     struct {
         unsigned int date:1;
@@ -69,12 +73,15 @@
         unsigned int attachmentType:1;
         unsigned int sectionSubtype:1;
         unsigned int soundAlertType:1;
+        unsigned int containsUpdateIcon:1;
         unsigned int containsUpdatedAttachment:1;
         unsigned int hasCriticalIcon:1;
         unsigned int ignoresQuietMode:1;
         unsigned int loading:1;
+        unsigned int preemptsPresentedAlert:1;
         unsigned int soundShouldIgnoreRingerSwitch:1;
         unsigned int soundShouldRepeat:1;
+        unsigned int suppressDelayForForwardedBulletins:1;
         unsigned int turnsOnDisplay:1;
     } _has;
 }
@@ -83,9 +90,13 @@
 + (Class)peopleIDsType;
 + (Class)subsectionIDsType;
 + (Class)supplementaryActionsType;
-+ (void)_addAttachmentsFromBBBulletin:(id)arg1 toBLTPBBulletin:(id)arg2 observer:(id)arg3 completion:(CDUnknownBlockType)arg4;
-+ (void)_attachmentFromBBAttachmentMetadata:(id)arg1 bulletin:(id)arg2 observer:(id)arg3 fileOption:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
-+ (void)bulletinWithBBBulletin:(id)arg1 sockPuppetAppBundleID:(id)arg2 observer:(id)arg3 feed:(unsigned long long)arg4 teamID:(id)arg5 universalSectionID:(id)arg6 isCriticalBulletin:(_Bool)arg7 replyToken:(id)arg8 gizmoLegacyCategoryID:(id)arg9 useUserInfoForContext:(_Bool)arg10 removeSubtitleForOlderWatches:(_Bool)arg11 completion:(CDUnknownBlockType)arg12;
++ (void)_addAttachmentsFromBBBulletin:(id)arg1 toBLTPBBulletin:(id)arg2 observer:(id)arg3 attachOption:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)_attachmentFromBBAttachmentMetadata:(id)arg1 bulletin:(id)arg2 observer:(id)arg3 fileOption:(unsigned long long)arg4 attachNoData:(_Bool)arg5 completion:(CDUnknownBlockType)arg6;
++ (void)bulletinWithBBBulletin:(id)arg1 sockPuppetAppBundleID:(id)arg2 observer:(id)arg3 feed:(unsigned long long)arg4 teamID:(id)arg5 universalSectionID:(id)arg6 shouldUseExpirationDate:(_Bool)arg7 replyToken:(id)arg8 gizmoLegacyPublisherBulletinID:(id)arg9 gizmoLegacyCategoryID:(id)arg10 gizmoSectionID:(id)arg11 gizmoSectionSubtype:(id)arg12 useUserInfoForContext:(_Bool)arg13 removeSubtitleForOlderWatches:(_Bool)arg14 attachOption:(unsigned long long)arg15 completion:(CDUnknownBlockType)arg16;
+@property(nonatomic) _Bool containsUpdateIcon; // @synthesize containsUpdateIcon=_containsUpdateIcon;
+@property(retain, nonatomic) BLTPBSectionIcon *icon; // @synthesize icon=_icon;
+@property(nonatomic) _Bool suppressDelayForForwardedBulletins; // @synthesize suppressDelayForForwardedBulletins=_suppressDelayForForwardedBulletins;
+@property(nonatomic) _Bool preemptsPresentedAlert; // @synthesize preemptsPresentedAlert=_preemptsPresentedAlert;
 @property(nonatomic) double soundAudioVolume; // @synthesize soundAudioVolume=_soundAudioVolume;
 @property(nonatomic) _Bool hasCriticalIcon; // @synthesize hasCriticalIcon=_hasCriticalIcon;
 @property(nonatomic) _Bool soundShouldIgnoreRingerSwitch; // @synthesize soundShouldIgnoreRingerSwitch=_soundShouldIgnoreRingerSwitch;
@@ -144,6 +155,10 @@
 - (_Bool)readFrom:(id)arg1;
 - (id)dictionaryRepresentation;
 - (id)description;
+@property(nonatomic) _Bool hasContainsUpdateIcon;
+@property(readonly, nonatomic) _Bool hasIcon;
+@property(nonatomic) _Bool hasSuppressDelayForForwardedBulletins;
+@property(nonatomic) _Bool hasPreemptsPresentedAlert;
 @property(nonatomic) _Bool hasSoundAudioVolume;
 @property(nonatomic) _Bool hasHasCriticalIcon;
 @property(nonatomic) _Bool hasSoundShouldIgnoreRingerSwitch;

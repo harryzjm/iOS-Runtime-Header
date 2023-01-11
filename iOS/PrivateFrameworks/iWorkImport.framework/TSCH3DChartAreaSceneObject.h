@@ -9,7 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (struct MeshData)createMeshForSeries:(id)arg1;
++ (id)createMeshForSeries:(id)arg1;
 + (id)chartSeriesType;
 + (_Bool)supportsChartSeriesDepthOffset;
 + (float)chartSeriesDepth;

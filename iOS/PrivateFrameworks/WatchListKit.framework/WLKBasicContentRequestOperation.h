@@ -4,19 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, WLKBasicContentMetadata;
+@class NSArray, WLKBasicContentMetadata, WLKBasicContentRequestResponse;
 
 @interface WLKBasicContentRequestOperation
 {
     NSArray *_contentIDs;
+    WLKBasicContentRequestResponse *_response;
 }
 
+@property(readonly, nonatomic) WLKBasicContentRequestResponse *response; // @synthesize response=_response;
 @property(readonly, copy, nonatomic) NSArray *contentIDs; // @synthesize contentIDs=_contentIDs;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) WLKBasicContentMetadata *basicContentMetadata;
-- (id)responseProcessor;
-- (id)initWithContentIDs:(id)arg1;
-- (id)initWithContentID:(id)arg1;
+- (void)processResponse;
+- (id)initWithContentIDs:(id)arg1 caller:(id)arg2;
+- (id)initWithContentID:(id)arg1 caller:(id)arg2;
 
 @end
 

@@ -4,22 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString;
-
 @interface VCCompanionSyncIncomingSession
 {
-    NSDictionary *_syncDataHandlers;
-    NSString *_syncServiceIdentifier;
 }
 
-@property(readonly, copy, nonatomic) NSString *syncServiceIdentifier; // @synthesize syncServiceIdentifier=_syncServiceIdentifier;
-@property(readonly, nonatomic) NSDictionary *syncDataHandlers; // @synthesize syncDataHandlers=_syncDataHandlers;
-- (void).cxx_destruct;
++ (long long)direction;
 - (void)resetDataStoreForSyncSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)syncSession:(id)arg1 applyChanges:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (long long)syncSession:(id)arg1 enqueueChanges:(CDUnknownBlockType)arg2 error:(id *)arg3;
-- (long long)sessionType;
-- (id)initWithSYSession:(id)arg1 syncServiceIdentifier:(id)arg2 syncDataHandlers:(id)arg3;
 
 @end
 

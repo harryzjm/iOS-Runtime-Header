@@ -22,7 +22,6 @@
     IBUITraitCollection *_simulatedTraitCollection;
 }
 
-+ (id)_cachedBatteryImageForStatusBarStyle:(long long)arg1;
 @property(retain, nonatomic) IBUITraitCollection *simulatedTraitCollection; // @synthesize simulatedTraitCollection=_simulatedTraitCollection;
 @property(retain, nonatomic) NSArray *metricsModifiers; // @synthesize metricsModifiers=_metricsModifiers;
 @property(retain, nonatomic) NSNumber *statusBarStyle; // @synthesize statusBarStyle=_statusBarStyle;
@@ -35,8 +34,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
-- (void)_applyOldSimulatedMetricsToViewController:(id)arg1 withContext:(id)arg2;
-- (void)_applyNewSimulatedMetricsToViewController:(id)arg1 withContext:(id)arg2;
 - (void)applySimulatedMetricsToViewController:(id)arg1 withContext:(id)arg2;
 
 // Remaining properties

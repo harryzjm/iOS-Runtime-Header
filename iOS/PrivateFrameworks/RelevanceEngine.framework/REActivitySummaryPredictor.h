@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <RelevanceEngine/REActivitySummaryPredictorProperties-Protocol.h>
+
 @class NSSet;
 
-@interface REActivitySummaryPredictor
+@interface REActivitySummaryPredictor <REActivitySummaryPredictorProperties>
 {
     NSSet *_queries;
     float _activeEnergyPercentComplete;
@@ -20,8 +22,7 @@
 @property float exerciseTimePercentComplete; // @synthesize exerciseTimePercentComplete=_exerciseTimePercentComplete;
 @property float activeEnergyPercentComplete; // @synthesize activeEnergyPercentComplete=_activeEnergyPercentComplete;
 - (void).cxx_destruct;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
-- (void)_updateWithActivitySummary:(id)arg1;
+- (void)_updateWithActivitySummary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_stopQueries;
 - (void)_stopQuery:(id)arg1;
 - (void)_runQuery:(id)arg1;
@@ -30,7 +31,7 @@
 - (void)update;
 - (void)pause;
 - (void)resume;
-- (id)init;
+- (id)_init;
 
 @end
 

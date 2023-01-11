@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, PKPaymentHeroImageManifest;
+@class NSArray;
 
 @interface NPKPaymentProvisioningFlowControllerWelcomeStepContext
 {
-    PKPaymentHeroImageManifest *_heroImageManifest;
-    NSArray *_featuredNetworks;
+    NSArray *_heroImages;
 }
 
-@property(retain, nonatomic) NSArray *featuredNetworks; // @synthesize featuredNetworks=_featuredNetworks;
-@property(retain, nonatomic) PKPaymentHeroImageManifest *heroImageManifest; // @synthesize heroImageManifest=_heroImageManifest;
+@property(retain, nonatomic) NSArray *heroImages; // @synthesize heroImages=_heroImages;
 - (void).cxx_destruct;
 - (id)description;
+- (id)initWithRequestContext:(id)arg1;
 
 @end
 

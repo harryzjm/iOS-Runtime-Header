@@ -6,6 +6,7 @@
 
 @class CKAppInstallation, CKBrowserIconView;
 
+__attribute__((visibility("hidden")))
 @interface CKBrowserAppInstallCell
 {
     CKAppInstallation *_installation;

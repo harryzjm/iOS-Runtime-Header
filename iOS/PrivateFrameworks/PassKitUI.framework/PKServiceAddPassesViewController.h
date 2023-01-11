@@ -31,7 +31,7 @@
 - (_Bool)prefersStatusBarHidden;
 - (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)shouldAutorotate;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

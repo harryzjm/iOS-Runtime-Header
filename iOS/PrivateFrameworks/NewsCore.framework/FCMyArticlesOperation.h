@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FCCloudContext, FCDateRange, FCFeedPersonalizedArticles, NSArray, NSDictionary, NSError;
+@class FCCloudContext, FCDateRange, NSArray, NSDictionary, NSError, NSMapTable;
 @protocol FCCoreConfiguration;
 
 @interface FCMyArticlesOperation
@@ -15,7 +15,7 @@
     FCDateRange *_dateRange;
     CDUnknownBlockType _feedItemsChangedHandler;
     NSArray *_feedItems;
-    FCFeedPersonalizedArticles *_nonEditorialPersonalizedArticles;
+    NSMapTable *_nonEditorialScoreProfiles;
     NSDictionary *_feedContextByFeedID;
     NSError *_error;
     long long _binOverride;
@@ -30,7 +30,7 @@
 @property(nonatomic) long long binOverride; // @synthesize binOverride=_binOverride;
 @property(copy) NSError *error; // @synthesize error=_error;
 @property(copy) NSDictionary *feedContextByFeedID; // @synthesize feedContextByFeedID=_feedContextByFeedID;
-@property(retain) FCFeedPersonalizedArticles *nonEditorialPersonalizedArticles; // @synthesize nonEditorialPersonalizedArticles=_nonEditorialPersonalizedArticles;
+@property(retain) NSMapTable *nonEditorialScoreProfiles; // @synthesize nonEditorialScoreProfiles=_nonEditorialScoreProfiles;
 @property(copy) NSArray *feedItems; // @synthesize feedItems=_feedItems;
 @property(copy, nonatomic) CDUnknownBlockType feedItemsChangedHandler; // @synthesize feedItemsChangedHandler=_feedItemsChangedHandler;
 @property(nonatomic) _Bool streamFeedItems; // @synthesize streamFeedItems=_streamFeedItems;

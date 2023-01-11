@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NSDateFormatter, NSString;
+@class NSCalendar, NSDate, NSDateFormatter, NSLocale, NSString;
 
 @interface PKPaymentSetupFieldDate
 {
@@ -13,20 +13,25 @@
     _Bool _showsMonth;
     _Bool _showsYear;
     NSString *_submissionFormat;
+    NSCalendar *_calendar;
+    NSLocale *_locale;
+    NSDate *_defaultDate;
 }
 
+@property(copy, nonatomic) NSDate *defaultDate; // @synthesize defaultDate=_defaultDate;
+@property(retain, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
+@property(retain, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property(copy, nonatomic) NSString *submissionFormat; // @synthesize submissionFormat=_submissionFormat;
 @property(nonatomic) _Bool showsYear; // @synthesize showsYear=_showsYear;
 @property(nonatomic) _Bool showsMonth; // @synthesize showsMonth=_showsMonth;
 @property(nonatomic) _Bool showsDay; // @synthesize showsDay=_showsDay;
 - (void).cxx_destruct;
 - (unsigned long long)fieldType;
+- (void)_commonUpdate;
 - (void)updateWithConfiguration:(id)arg1;
-- (id)_locale;
-@property(readonly, copy, nonatomic) NSDate *defaultDate;
 - (_Bool)submissionStringMeetsAllRequirements;
 - (id)_defaultValueAsDateForCurrentLocale;
-- (id)submissionString;
+- (id)_submissionStringForValue:(id)arg1;
 - (id)displayString;
 @property(copy, nonatomic) NSDate *currentValue; // @dynamic currentValue;
 - (id)initWithIdentifier:(id)arg1 type:(unsigned long long)arg2;

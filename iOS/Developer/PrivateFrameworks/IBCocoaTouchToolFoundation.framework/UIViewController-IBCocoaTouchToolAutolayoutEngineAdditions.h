@@ -6,7 +6,36 @@
 
 #import <UIKit/UIViewController.h>
 
-@interface UIViewController (IBCocoaTouchToolAutolayoutEngineAdditions)
+#import <IBCocoaTouchToolFoundation/IBUIViewControllerAutolayoutGuideDelegate-Protocol.h>
+
+@class IBPlaceholderDrawingAttributes, IBUISimulatedMetricsContainerRepresentation, NSArray, NSString;
+
+@interface UIViewController (IBCocoaTouchToolAutolayoutEngineAdditions) <IBUIViewControllerAutolayoutGuideDelegate>
++ (void)ibInstallFrameworkHooks;
 - (id)ibRootHostingViewWithCopiedViewHierarchySnapshotForLayoutEngine:(id)arg1 returningWindowForRepresentedViews:(id *)arg2 returningSimulatedMetricsContext:(id *)arg3 returningAddedRepresentedConstraintsForRepresentedViews:(id *)arg4;
+- (void)ibSwizzled_setView:(id)arg1;
+@property long long ibSwizzled_preferredStatusBarStyle;
+@property _Bool ibSwizzled_prefersStatusBarHidden;
+- (void)ibInstallPlaceholderView:(id)arg1;
+@property(retain, nonatomic) IBPlaceholderDrawingAttributes *ibPlaceholderDrawingAttributes;
+- (id)ibMakeWindowForRenderingWithSimulatedMetricsContext:(id)arg1;
+- (void)ibApplySimulatedMetricsWithContext:(id)arg1;
+@property(retain, nonatomic) IBUISimulatedMetricsContainerRepresentation *ibEffectiveSimulatedMetrics;
+- (id)ibEffectiveParentItemForReferencingConstraintTraversalOfAutolayoutGuide:(id)arg1;
+- (struct CGRect)ibFrameForAutolayoutGuide:(id)arg1;
+- (id)ibContainingItemForAutolayoutGuide:(id)arg1;
+@property(retain, nonatomic) NSArray *ibShadowedLayoutGuides;
+- (id)ibEditorMetrics;
+- (double)ibBottomLayoutGuideOffsetFromBottom;
+- (double)ibTopLayoutGuideOffsetFromTop;
+- (id)ibTopLevelViewForLayoutEngine:(id)arg1;
+- (CDUnknownBlockType)ibWindowForUpdatingConstraints:(id *)arg1;
+- (void)awakeAfterMarshallerDidEstablishRelationshipsWithContext:(id)arg1 populatingWarningMessages:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

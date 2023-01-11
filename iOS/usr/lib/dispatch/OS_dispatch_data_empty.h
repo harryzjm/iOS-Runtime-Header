@@ -10,7 +10,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
-+ (void)load;
 - (void)_activate;
 - (void)_resume;
 - (void)_suspend;

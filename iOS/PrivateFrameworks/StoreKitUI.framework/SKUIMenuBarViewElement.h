@@ -9,6 +9,7 @@
 
 @class NSArray, NSString, SKUIMenuBarViewElementConfiguration;
 
+__attribute__((visibility("hidden")))
 @interface SKUIMenuBarViewElement <_SKUIMenuBarViewElementConfigurationReloadDelegate, SKUIMenuBarViewElement>
 {
     NSArray *_titleViewElements;

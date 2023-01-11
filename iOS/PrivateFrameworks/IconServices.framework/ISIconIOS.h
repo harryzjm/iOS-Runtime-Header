@@ -4,33 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class LSResourceProxy;
+@class LSResourceProxy, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface ISIconIOS
 {
+    NSArray *_decorations;
     LSResourceProxy *_resourceProxy;
 }
 
 + (id)backgroundQueue;
 @property(retain) LSResourceProxy *resourceProxy; // @synthesize resourceProxy=_resourceProxy;
+@property(copy, nonatomic) NSArray *decorations; // @synthesize decorations=_decorations;
 - (void).cxx_destruct;
 - (void)getCGImageForImageDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (struct CGImage *)CGImageForImageDescriptor:(id)arg1;
 - (double)_aspectRatio;
-- (_Bool)_shouldInvalidate;
 - (void)getImageForImageDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)imageForDescriptor:(id)arg1;
+- (id)_imageForSymbolImageDescriptor:(id)arg1;
 - (id)imageForImageDescriptor:(id)arg1;
 - (void)prepareImagesForImageDescriptors:(id)arg1;
+- (void)prepareImagesForDescriptors:(id)arg1;
+- (void)_prepareImageForSymbolImageDescriptor:(id)arg1;
 - (id)_prepareImageForImageDescriptor:(id)arg1;
 - (int)variantForSize:(struct CGSize)arg1 scale:(double)arg2 options:(unsigned long long)arg3;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)isEqualToIcon:(id)arg1;
+- (id)initWithResourceProxy:(id)arg1 decorations:(id)arg2;
 - (id)initWithResourceProxy:(id)arg1;
 - (id)initWithType:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)initWithURL:(id)arg1;
+- (id)_initTransparent;
 
 @end
 

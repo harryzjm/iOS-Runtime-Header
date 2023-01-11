@@ -7,11 +7,11 @@
 #import <PhotosUI/PUMagnfiedViewControllerDelegate-Protocol.h>
 #import <PhotosUI/PXCPLServiceUIDelegate-Protocol.h>
 #import <PhotosUI/PXCloudQuotaControllerDelegate-Protocol.h>
-#import <PhotosUI/PXPhotosGlobalFooterViewModelPresentationDelegate-Protocol.h>
+#import <PhotosUI/PXPhotosLibraryFooterViewModelPresentationDelegate-Protocol.h>
 
 @class NSArray, NSIndexPath, NSString, NSTimer, PUGridMagnifiedImageViewController, PUGridPinchGestureRecognizer, PUGridZoomLevelInfo, PUMomentsZoomLevelManager, PUZoomableGridTransition, PUZoomableGridViewControllerSpec, PXCPLServiceUI, PXCloudQuotaController, UITapGestureRecognizer;
 
-@interface PUZoomableGridViewController <PXCPLServiceUIDelegate, PXCloudQuotaControllerDelegate, PUMagnfiedViewControllerDelegate, PXPhotosGlobalFooterViewModelPresentationDelegate>
+@interface PUZoomableGridViewController <PXCPLServiceUIDelegate, PXCloudQuotaControllerDelegate, PUMagnfiedViewControllerDelegate, PXPhotosLibraryFooterViewModelPresentationDelegate>
 {
     _Bool _isDisplayingGlobalFooterView;
     _Bool _isDisplayingEmptyPlaceholderView;
@@ -140,6 +140,7 @@
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (void)animateRevealWithInteractionProgress:(id)arg1 forPreviewingAtLocation:(struct CGPoint)arg2 inSourceView:(id)arg3 containerView:(id)arg4;
 - (void)oneUpPresentationHelper:(id)arg1 willPresentOneUpPreviewViewController:(id)arg2;
+- (long long)oneUpPresentationOrigin;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(_Bool)arg2;
 - (void)willPresentPreviewViewController:(id)arg1 forLocation:(struct CGPoint)arg2 inSourceView:(id)arg3;
 - (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;

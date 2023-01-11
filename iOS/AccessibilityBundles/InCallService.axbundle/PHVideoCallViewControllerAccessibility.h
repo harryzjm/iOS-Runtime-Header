@@ -17,13 +17,15 @@
 - (void)_accessibilityLoadInfoOnPipVideoViews;
 - (void)_accessibilityMakeSureWindowIsVisibleToElementFetcher;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)autoFadeOutBottomBar;
 - (void)_refreshStatusBarAndPIPAnimated:(_Bool)arg1;
 - (void)videoOverlayViewController:(id)arg1 isShowingOverlay:(_Bool)arg2;
-- (void)setControlsState:(long long)arg1 animated:(_Bool)arg2;
-- (void)updateTopBar:(_Bool)arg1 bottomBar:(_Bool)arg2 animated:(_Bool)arg3;
+- (void)setControlsState:(long long)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)updateTopBar:(_Bool)arg1 bottomBar:(_Bool)arg2 controlsBar:(_Bool)arg3 animated:(_Bool)arg4;
 - (void)toggleLocalCameraType;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)loadView;
+- (void)_accessibilityExpandControls;
 - (_Bool)accessibilityPerformEscape;
 
 @end

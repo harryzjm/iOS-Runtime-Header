@@ -8,11 +8,20 @@
 
 #import <ContextKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSError, NSString;
+@class NSArray, NSDate, NSError, NSString;
 
 @interface CKContextResponse : NSObject <NSSecureCoding>
 {
     _Bool _discarded;
+    double _hideCompletionsTimeLimit;
+    _Atomic _Bool _shown;
+    _Atomic _Bool _engaged;
+    _Atomic _Bool _transactionSuccessful;
+    _Atomic _Bool _logged;
+    _Atomic unsigned int _loggingShownMax;
+    _Atomic _Bool _loggingServerOverride;
+    _Atomic unsigned int _loggingCouldHaveShownMax;
+    _Atomic unsigned int _loggingInputLengthMax;
     _Bool _resultsNeedFiltering;
     NSString *_uuid;
     NSError *_error;
@@ -21,9 +30,15 @@
     NSArray *_level2Topics;
     NSString *_debug;
     unsigned long long _requestType;
+    unsigned long long _mustPrefixMatchLength;
+    NSDate *_hideCompletionsAfterDate;
+    NSDate *_responseDate;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(retain, nonatomic) NSDate *responseDate; // @synthesize responseDate=_responseDate;
+@property(retain, nonatomic) NSDate *hideCompletionsAfterDate; // @synthesize hideCompletionsAfterDate=_hideCompletionsAfterDate;
+@property(nonatomic) unsigned long long mustPrefixMatchLength; // @synthesize mustPrefixMatchLength=_mustPrefixMatchLength;
 @property(nonatomic) _Bool resultsNeedFiltering; // @synthesize resultsNeedFiltering=_resultsNeedFiltering;
 @property(nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 @property(retain, nonatomic) NSString *debug; // @synthesize debug=_debug;
@@ -31,8 +46,13 @@
 @property(retain, nonatomic) NSArray *level1Topics; // @synthesize level1Topics=_level1Topics;
 @property(retain, nonatomic) NSArray *results; // @synthesize results=_results;
 @property(retain, nonatomic) NSError *error; // @synthesize error=_error;
-@property(retain, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
+@property(copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 - (void).cxx_destruct;
+- (void)discardCompleter:(id)arg1;
+- (void)logTransactionSuccessfulForInput:(id)arg1 completion:(id)arg2;
+- (void)logEngagement:(id)arg1 forInput:(id)arg2 completion:(id)arg3;
+- (void)logResultsShown:(unsigned long long)arg1 serverOverride:(_Bool)arg2 forInput:(id)arg3 couldHaveShown:(unsigned long long)arg4;
+- (void)setHideCompletionsTimeLimit:(double)arg1;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)dealloc;

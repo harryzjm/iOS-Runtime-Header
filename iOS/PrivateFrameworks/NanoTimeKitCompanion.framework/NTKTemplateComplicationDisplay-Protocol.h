@@ -17,5 +17,6 @@
 @optional
 + (_Bool)supportsComplicationFamily:(long long)arg1;
 - (long long)layoutOverride;
+- (unsigned long long)timelineAnimationFadeTypeOverride;
 @end
 

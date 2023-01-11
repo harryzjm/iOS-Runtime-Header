@@ -9,6 +9,6 @@
 @class FCAssetHandle, FCOperation;
 
 @protocol FCAssetHandleDelegate <NSObject>
-- (FCOperation *)operationToFetchFileForAssetHandle:(FCAssetHandle *)arg1 completion:(void (^)(NSString *, _Bool, NSError *))arg2;
+- (FCOperation *)operationToFetchDataProviderForAssetHandle:(FCAssetHandle *)arg1 completion:(void (^)(id <FCAssetDataProvider>, NSError *))arg2;
 @end
 

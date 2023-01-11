@@ -13,8 +13,8 @@
 }
 
 - (void).cxx_destruct;
-- (void)presendNotifications;
-- (void)mainWithExtensionProxy:(id)arg1;
+- (id)fp_prettyDescription;
+- (unsigned long long)transformItem:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)initWithItems:(id)arg1 date:(id)arg2;
 - (id)replicateForItems:(id)arg1;
 

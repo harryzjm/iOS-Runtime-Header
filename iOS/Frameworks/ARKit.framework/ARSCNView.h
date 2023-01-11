@@ -7,15 +7,18 @@
 #import <SceneKit/SCNView.h>
 
 #import <ARKit/ARInternalSessionObserver-Protocol.h>
+#import <ARKit/ARPresentationDelegate-Protocol.h>
+#import <ARKit/ARSessionProviding-Protocol.h>
 #import <ARKit/_SCNSceneRendererDelegate-Protocol.h>
 
-@class ARPointCloud, ARSession, CIWarpKernel, MISSING_TYPE, NSMutableArray, NSMutableDictionary, NSObject, NSString, SCNNode, SCNScene, UIView;
+@class ARFrame, ARPointCloud, ARPresentation, ARPresentationFrame, ARSCNCompositor, ARSession, ARSinglePassRenderer, CIWarpKernel, MISSING_TYPE, NSMutableArray, NSMutableDictionary, NSObject, NSString, SCNNode, SCNScene, UIView;
 @protocol ARSCNViewDelegate, OS_dispatch_semaphore, SCNCaptureDeviceOutputConsumer;
 
-@interface ARSCNView : SCNView <ARInternalSessionObserver, _SCNSceneRendererDelegate>
+@interface ARSCNView : SCNView <ARInternalSessionObserver, _SCNSceneRendererDelegate, ARPresentationDelegate, ARSessionProviding>
 {
     ARSession *_session;
     double _lastFrameTimestamp;
+    double _lastFrameInterval;
     id <SCNCaptureDeviceOutputConsumer> _captureDeviceOutputConsumer;
     SCNNode *_lightNode;
     SCNNode *_cameraNode;
@@ -40,11 +43,26 @@
     unsigned long long _warpKernelLensType;
     NSMutableArray *_environmentProbeNodes;
     NSMutableArray *_environmentProbeNodesToRemove;
+    _Bool _lastRendersMotionBlur;
     _Bool _renderThreadFixed;
+    _Bool _attemptRenderSynchronisationARFrame;
+    ARSCNCompositor *_compositor;
+    struct os_unfair_lock_s _occlusionLock;
+    ARPresentation *_presentation;
+    ARPresentationFrame *_currentPresentationFrame;
+    ARSinglePassRenderer *_arSinglePassRenderer;
+    CDStruct_14d5dc5e _currentReferenceTransform;
+    _Bool _runningWithSegmentation;
+    _Bool _automaticallyOccludesVirtualContent;
     _Bool _automaticallyUpdatesLighting;
+    _Bool _rendersCameraGrain;
+    _Bool _rendersMotionBlur;
     _Bool _providesOcclusionGeometry;
+    _Bool _segmentationUseEstimatedDepthData;
     _Bool _shouldRestrictFrameRate;
     _Bool _drawsCameraImage;
+    unsigned long long _occlusionExcludedBitMask;
+    long long _compositorAlgorithm;
     long long _targetFramesPerSecond;
     long long _developerPreferredFramesPerSecond;
     long long _frameToRemoveRotationSnapshotOn;
@@ -57,9 +75,14 @@
 @property long long developerPreferredFramesPerSecond; // @synthesize developerPreferredFramesPerSecond=_developerPreferredFramesPerSecond;
 @property long long targetFramesPerSecond; // @synthesize targetFramesPerSecond=_targetFramesPerSecond;
 @property _Bool shouldRestrictFrameRate; // @synthesize shouldRestrictFrameRate=_shouldRestrictFrameRate;
+@property(nonatomic) _Bool segmentationUseEstimatedDepthData; // @synthesize segmentationUseEstimatedDepthData=_segmentationUseEstimatedDepthData;
 @property(nonatomic) _Bool providesOcclusionGeometry; // @synthesize providesOcclusionGeometry=_providesOcclusionGeometry;
+@property(nonatomic) _Bool rendersMotionBlur; // @synthesize rendersMotionBlur=_rendersMotionBlur;
+@property(nonatomic) _Bool rendersCameraGrain; // @synthesize rendersCameraGrain=_rendersCameraGrain;
 @property(nonatomic) _Bool automaticallyUpdatesLighting; // @synthesize automaticallyUpdatesLighting=_automaticallyUpdatesLighting;
+@property(nonatomic) long long compositorAlgorithm; // @synthesize compositorAlgorithm=_compositorAlgorithm;
 - (void).cxx_destruct;
+- (id)sceneRenderer;
 - (struct __CVBuffer *)_warpPixelBuffer:(struct __CVBuffer *)arg1 withCamera:(id)arg2;
 - (void)_loadWarpKernalForLensType:(unsigned long long)arg1;
 - (void)_updateBackingSize;
@@ -71,6 +94,7 @@
 - (void)_updatePreferredFramesPerSecond;
 - (void)_updateFramesPerSecondWithTarget:(long long)arg1 shouldRestrictFrameRate:(_Bool)arg2;
 @property(nonatomic) long long actualPreferredFramesPerSecond;
+- (void)_updateOcclusionCompositor;
 - (void)_updateDebugVisualization:(id)arg1;
 - (void)_addOcclusionGeometryForAnchor:(id)arg1;
 - (void)_removeAnchors:(id)arg1;
@@ -97,29 +121,41 @@
 - (void)session:(id)arg1 didChangeState:(unsigned long long)arg2;
 - (void)session:(id)arg1 didUpdateFrame:(id)arg2;
 - (void)_renderer:(id)arg1 updateAtTime:(double)arg2;
+- (void)presentationIsReadyForNextRender:(id)arg1;
+- (void)_drawAtTime:(double)arg1;
+@property(nonatomic) __weak id <ARSCNViewDelegate> delegate; // @dynamic delegate;
 - (long long)preferredFramesPerSecond;
 - (void)setPreferredFramesPerSecond:(long long)arg1;
 - (unsigned long long)debugOptions;
 - (void)setDebugOptions:(unsigned long long)arg1;
 - (void)setPointOfView:(id)arg1;
 @property(retain, nonatomic) SCNScene *scene; // @dynamic scene;
+- (id)raycastQueryFromPoint:(struct CGPoint)arg1 allowingTarget:(long long)arg2 alignment:(long long)arg3;
 - (MISSING_TYPE *)unprojectPoint:(struct CGPoint)arg1 ontoPlaneWithTransform:(CDStruct_14d5dc5e)arg2;
 - (id)hitTest:(struct CGPoint)arg1 types:(unsigned long long)arg2;
 - (id)occlusionGeometryNodeForAnchor:(id)arg1;
 - (id)nodeForAnchor:(id)arg1;
 - (id)anchorForNode:(id)arg1;
+- (_Bool)automaticallyOccludesUsingSegmentation;
+- (void)setAutomaticallyOccludesUsingSegmentation:(_Bool)arg1;
+@property(nonatomic) unsigned long long occlusionExcludedBitMask; // @synthesize occlusionExcludedBitMask=_occlusionExcludedBitMask;
+@property(nonatomic) _Bool automaticallyOccludesVirtualContent; // @synthesize automaticallyOccludesVirtualContent=_automaticallyOccludesVirtualContent;
+@property(nonatomic) _Bool runningWithSegmentation; // @synthesize runningWithSegmentation=_runningWithSegmentation;
 @property(retain, nonatomic) ARSession *session;
 @property(readonly, copy) NSString *description;
 - (void)layoutSubviews;
 - (void)encodeWithCoder:(id)arg1;
+- (void)setupCompositor;
 - (void)_commonInit;
+@property(readonly, nonatomic) ARFrame *currentRenderFrame;
+- (id)compositor;
+- (_Bool)drawsCameraImageAndNilPresentation;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 options:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(nonatomic) __weak id <ARSCNViewDelegate> delegate; // @dynamic delegate;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

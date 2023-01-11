@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, WLKContentPlayResponse;
 
 @interface WLKContentPlayRequestOperation
 {
     NSString *_canonicalID;
+    WLKContentPlayResponse *_response;
 }
 
+@property(retain, nonatomic) WLKContentPlayResponse *response; // @synthesize response=_response;
 @property(readonly, copy, nonatomic) NSString *canonicalID; // @synthesize canonicalID=_canonicalID;
 - (void).cxx_destruct;
-- (id)responseProcessor;
-- (id)initWithCanonicalID:(id)arg1;
+- (void)processResponse;
+- (id)initWithCanonicalID:(id)arg1 caller:(id)arg2;
 
 @end
 

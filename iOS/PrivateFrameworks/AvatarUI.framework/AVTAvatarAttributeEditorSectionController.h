@@ -9,7 +9,7 @@
 #import <AvatarUI/AVTAvatarAttributeEditorSectionController-Protocol.h>
 
 @class AVTAvatarAttributeEditorSection, AVTTransitionCoordinator, AVTUIEnvironment, NSString;
-@protocol AVTAvatarAttributeEditorControllerSubSelectionDelegate, AVTIndexBasedScheduler, AVTScheduler;
+@protocol AVTAvatarAttributeEditorControllerSubSelectionDelegate, AVTIndexBasedTaskScheduler, AVTTaskScheduler;
 
 @interface AVTAvatarAttributeEditorSectionController : NSObject <AVTAvatarAttributeEditorSectionController>
 {
@@ -18,26 +18,27 @@
     AVTAvatarAttributeEditorSection *_section;
     AVTTransitionCoordinator *_transitionCoordinator;
     AVTUIEnvironment *_environment;
-    id <AVTIndexBasedScheduler> _thumbnailScheduler;
-    id <AVTScheduler> _renderingScheduler;
+    id <AVTIndexBasedTaskScheduler> _thumbnailScheduler;
+    id <AVTTaskScheduler> _renderingScheduler;
 }
 
 + (struct UIEdgeInsets)edgeInsetsForSection:(id)arg1 fittingWidth:(double)arg2 environment:(id)arg3;
 + (struct CGSize)cellSizeForSectionItem:(id)arg1 inSection:(id)arg2 fittingWidth:(double)arg3 environment:(id)arg4;
 + (double)edgeLengthFittingWidth:(double)arg1 environment:(id)arg2;
 + (_Bool)supportsSelection;
-@property(readonly, nonatomic) id <AVTScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
-@property(readonly, nonatomic) id <AVTIndexBasedScheduler> thumbnailScheduler; // @synthesize thumbnailScheduler=_thumbnailScheduler;
+@property(readonly, nonatomic) id <AVTTaskScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
+@property(readonly, nonatomic) id <AVTIndexBasedTaskScheduler> thumbnailScheduler; // @synthesize thumbnailScheduler=_thumbnailScheduler;
 @property(readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property(retain, nonatomic) AVTTransitionCoordinator *transitionCoordinator; // @synthesize transitionCoordinator=_transitionCoordinator;
 @property(retain, nonatomic) AVTAvatarAttributeEditorSection *section; // @synthesize section=_section;
 @property(nonatomic) __weak id <AVTAvatarAttributeEditorControllerSubSelectionDelegate> delegate; // @synthesize delegate;
 @property(nonatomic) long long selectedIndex; // @synthesize selectedIndex=_selectedIndex;
 - (void).cxx_destruct;
+- (_Bool)evaluateDisplayCondition:(id)arg1;
 - (void)didSelectItemAtIndex:(long long)arg1 cell:(id)arg2;
 - (void)didUnhighlightItemAtIndex:(long long)arg1 cell:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)didHighlightItemAtIndex:(long long)arg1 cell:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (void)invalidateLayout;
+- (void)invalidateLayoutForNewContainerSize:(struct CGSize)arg1;
 - (void)resetToDefaultState;
 - (void)cell:(id)arg1 willDisplayAtIndex:(long long)arg2;
 - (struct UIEdgeInsets)edgeInsetsFittingSize:(struct CGSize)arg1;

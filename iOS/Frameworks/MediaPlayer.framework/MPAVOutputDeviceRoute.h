@@ -20,6 +20,8 @@
 - (void).cxx_destruct;
 - (_Bool)_anyOutputDevicePassesTest:(CDUnknownBlockType)arg1;
 - (_Bool)_anyOutputDevicePassesMRFunction:(CDUnknownFunctionPointerType)arg1;
+- (_Bool)isLowLatencyRoute;
+- (_Bool)isSplitterCapable;
 - (_Bool)supportsGrouping;
 - (_Bool)isStereoPair;
 - (_Bool)requiresPassword;
@@ -31,6 +33,7 @@
 - (id)groupUID;
 - (id)productIdentifier;
 - (id)routeUID;
+- (_Bool)isAirPlayRoute;
 - (_Bool)isPickedOnPairedDevice;
 - (_Bool)isVolumeControlAvailable;
 @property(readonly, nonatomic, getter=isGroupLeader) _Bool groupLeader;

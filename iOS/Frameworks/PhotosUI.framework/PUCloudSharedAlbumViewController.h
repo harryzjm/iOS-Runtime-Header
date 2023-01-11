@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PhotosUI/PLAlbumStreamingOptionsViewControllerDelegate-Protocol.h>
 #import <PhotosUI/PUPhotoStreamComposeServiceDelegate-Protocol.h>
 #import <PhotosUI/PUVideoTrimQueueControllerDelegate-Protocol.h>
+#import <PhotosUI/PXAlbumStreamingOptionsViewControllerDelegate-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
 @class NSArray, NSString, PLCloudSharedAlbum, PUPhotoStreamComposeServiceViewController, PUPhotosPickerViewController, PUVideoTrimQueueController, UIBarButtonItem, UISegmentedControl, UIViewController;
 @protocol PUCloudSharedAlbumViewControllerDelegate;
 
-@interface PUCloudSharedAlbumViewController <PLAlbumStreamingOptionsViewControllerDelegate, UIPopoverPresentationControllerDelegate, PUVideoTrimQueueControllerDelegate, PUPhotoStreamComposeServiceDelegate>
+@interface PUCloudSharedAlbumViewController <PXAlbumStreamingOptionsViewControllerDelegate, UIPopoverPresentationControllerDelegate, PUVideoTrimQueueControllerDelegate, PUPhotoStreamComposeServiceDelegate>
 {
     PUPhotosPickerViewController *_activePhotosPickerViewController;
     PUVideoTrimQueueController *_trimController;
@@ -80,7 +80,6 @@
 - (_Bool)canDeleteContent;
 - (_Bool)canAddToOtherAlbumContent;
 - (id)_suppressionContexts;
-- (_Bool)_appAllowsSupressionOfAlerts;
 - (void)setAlbum:(struct NSObject *)arg1 existingFetchResult:(id)arg2;
 
 // Remaining properties

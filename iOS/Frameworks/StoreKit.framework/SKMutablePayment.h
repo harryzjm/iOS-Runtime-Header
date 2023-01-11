@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSDictionary, NSString;
+@class NSData, NSDictionary, NSString, SKPaymentDiscount;
 
 @interface SKMutablePayment
 {
@@ -13,6 +13,7 @@
 @property(copy, nonatomic) NSDictionary *requestParameters; // @dynamic requestParameters;
 @property(copy, nonatomic) NSString *partnerTransactionIdentifier; // @dynamic partnerTransactionIdentifier;
 @property(copy, nonatomic) NSString *partnerIdentifier; // @dynamic partnerIdentifier;
+@property(copy, nonatomic) SKPaymentDiscount *paymentDiscount; // @dynamic paymentDiscount;
 @property(nonatomic) _Bool simulatesAskToBuyInSandbox; // @dynamic simulatesAskToBuyInSandbox;
 @property(copy, nonatomic) NSData *requestData; // @dynamic requestData;
 @property(nonatomic) long long quantity; // @dynamic quantity;

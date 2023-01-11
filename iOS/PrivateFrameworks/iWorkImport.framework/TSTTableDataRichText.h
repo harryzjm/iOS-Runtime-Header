@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class TSTRichTextPayload, TSWPStorage;
+@class TSTRichTextPayload;
 
 __attribute__((visibility("hidden")))
 @interface TSTTableDataRichText
@@ -12,11 +12,15 @@ __attribute__((visibility("hidden")))
     TSTRichTextPayload *_payload;
 }
 
++ (id)objectWithRichTextPayload:(id)arg1 refCount:(unsigned int)arg2;
 - (void).cxx_destruct;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
+- (unsigned long long)estimateByteSize;
 - (unsigned long long)hash;
-@property(readonly, nonatomic) TSWPStorage *richTextStorage;
+- (id)richTextStorage;
+- (void)encodeToArchive:(struct TableDataList_ListEntry *)arg1 key:(unsigned int)arg2 archiver:(id)arg3;
+- (void)loadFromArchive:(const struct TableDataList_ListEntry *)arg1 unarchiver:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initObjectWithRichTextPayload:(id)arg1 refCount:(unsigned int)arg2;
 
 @end

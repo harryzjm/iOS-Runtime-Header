@@ -6,7 +6,7 @@
 
 #import <PhotosUI/PXSharedAlbumInvitationViewDelegate-Protocol.h>
 
-@class NSString, PXFeedInvitationSectionInfo, PXSharedAlbumHeaderView, PXSharedAlbumInvitationView, UILabel, UIView;
+@class NSString, PXFeedInvitationSectionInfo, PXSharedAlbumHeaderView, PXSharedAlbumInvitationView, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface PUFeedInvitationCell <PXSharedAlbumInvitationViewDelegate>
@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     _Bool _showHeader;
     _Bool _showFooter;
     PXFeedInvitationSectionInfo *_invitationSectionInfo;
-    UIView *_separatorView;
     PXSharedAlbumHeaderView *_headerView;
     PXSharedAlbumInvitationView *_invitationView;
     UILabel *_dateLabel;
@@ -24,7 +23,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UILabel *dateLabel; // @synthesize dateLabel=_dateLabel;
 @property(retain, nonatomic) PXSharedAlbumInvitationView *invitationView; // @synthesize invitationView=_invitationView;
 @property(retain, nonatomic) PXSharedAlbumHeaderView *headerView; // @synthesize headerView=_headerView;
-@property(retain, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
 @property(nonatomic) _Bool showFooter; // @synthesize showFooter=_showFooter;
 @property(nonatomic) _Bool showHeader; // @synthesize showHeader=_showHeader;
 @property(nonatomic) _Bool useInPopover; // @synthesize useInPopover=_useInPopover;

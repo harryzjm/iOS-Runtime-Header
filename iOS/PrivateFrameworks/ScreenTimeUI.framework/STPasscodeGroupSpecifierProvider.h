@@ -6,6 +6,7 @@
 
 @class PSSpecifier;
 
+__attribute__((visibility("hidden")))
 @interface STPasscodeGroupSpecifierProvider
 {
     PSSpecifier *_togglePasscodeSpecifier;
@@ -14,6 +15,9 @@
 @property(retain, nonatomic) PSSpecifier *togglePasscodeSpecifier; // @synthesize togglePasscodeSpecifier=_togglePasscodeSpecifier;
 - (void).cxx_destruct;
 - (_Bool)isHidden;
+- (void)_removeManagedPasscode;
+- (void)_setManagedPasscode;
+- (id)_removePasscodeAction;
 - (void)changeOrRemovePasscode:(id)arg1;
 - (void)reloadTogglePasscodeSpecifier;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

@@ -16,13 +16,14 @@
     _Bool _isStarted;
 }
 
-@property(nonatomic) id <AVCVirtualTTYDeviceDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)terminateSession;
 - (void)deregisterBlocksForDelegateNotifications;
 - (void)registerBlocksForDelegateNotifications;
+- (_Bool)sendText:(struct NSString *)arg1;
 - (id)sendCharacter:(unsigned short)arg1;
 - (void)stop;
 - (void)start;
+@property(nonatomic) id <AVCVirtualTTYDeviceDelegate> delegate;
 - (void)dealloc;
 - (id)initWithMode:(long long)arg1 error:(id *)arg2 streamToken:(long long)arg3;
 - (id)initWithMode:(long long)arg1 error:(id *)arg2;

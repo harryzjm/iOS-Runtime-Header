@@ -34,7 +34,8 @@
 - (id)description;
 - (id)installationWarningsIncludeUnsignedProfileWarning:(_Bool)arg1;
 - (_Bool)isManagedByProfileService;
-- (id)initWithDictionary:(id)arg1 allowEmptyPayload:(_Bool)arg2 outError:(id *)arg3;
+- (_Bool)isManagedByMDM;
+- (id)initWithDictionary:(id)arg1 options:(id)arg2 signerCerts:(id)arg3 allowEmptyPayload:(_Bool)arg4 outError:(id *)arg5;
 - (id)subjectSummaryFromCertificateWithPersistentID:(id)arg1;
 - (struct __SecCertificate *)copyCertificateWithPersistentID:(id)arg1;
 - (id)subjectSummaryFromCertificatePayloadWithUUID:(id)arg1;

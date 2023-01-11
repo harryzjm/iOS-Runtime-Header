@@ -5,10 +5,11 @@
 //
 
 #import <RelevanceEngine/REEngineLocationManagerObserver-Protocol.h>
+#import <RelevanceEngine/RELocationPredictorProperties-Protocol.h>
 
-@class NSLock, NSMapTable, NSMutableDictionary, NSString, RTRoutineManager;
+@class NSDictionary, NSLock, NSMapTable, NSMutableDictionary, NSString, RTRoutineManager;
 
-@interface RELocationPredictor <REEngineLocationManagerObserver>
+@interface RELocationPredictor <REEngineLocationManagerObserver, RELocationPredictorProperties>
 {
     RTRoutineManager *_manager;
     NSMapTable *_routineData;
@@ -19,15 +20,18 @@
 + (id)supportedFeatures;
 + (double)updateInterval;
 - (void).cxx_destruct;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) NSDictionary *routineDataByEngine;
 - (void)locationManagerDidUpdateLocation:(id)arg1;
 - (void)_setOverrideLocation:(long long)arg1 forEngine:(id)arg2;
+- (id)predictedLocationNameForEngine:(id)arg1;
+- (id)predictedLocationIdentifierForEngine:(id)arg1;
+- (id)_routineDataForEngine:(id)arg1;
 - (id)locationForEngine:(id)arg1 userLocation:(long long)arg2;
 - (void)removeRelevanceEngine:(id)arg1;
 - (void)addRelevanceEngine:(id)arg1;
 - (void)update;
 - (id)featureValueForFeature:(id)arg1 element:(id)arg2 engine:(id)arg3 trainingContext:(id)arg4;
-- (id)init;
+- (id)_init;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
     OITSUImage *m_image;
 }
 
+- (void).cxx_destruct;
 - (id)getImage;
-- (void)dealloc;
 
 @end
 

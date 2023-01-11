@@ -23,7 +23,8 @@
 - (unsigned long long)eventAttendeePicker:(id)arg1 getValidationStatusForAddress:(id)arg2;
 - (void)eventAttendeePicker:(id)arg1 cacheValidationStatus:(unsigned long long)arg2 forAddress:(id)arg3;
 - (struct CGSize)preferredContentSize;
-@property(copy, nonatomic) NSArray *sharees;
+- (void)setSharees:(id)arg1;
+@property(readonly, copy, nonatomic) NSArray *sharees;
 - (id)_createRecipientFromSharee:(id)arg1;
 - (id)_recipientFromSharee:(id)arg1;
 - (id)_createShareeFromRecipient:(id)arg1;
@@ -32,7 +33,7 @@
 - (void)cancel;
 - (void)viewDidLoad;
 - (void)setSearchAccountID:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 calendar:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

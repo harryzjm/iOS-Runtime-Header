@@ -8,6 +8,7 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilitySupportsContentSizeCategory:(id)arg1;
@@ -17,9 +18,10 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityFuzzyHitTestElements;
 - (_Bool)_accessibilityHitTestShouldFallbackToNearestChild;
-- (unsigned long long)accessibilityTraits;
 - (long long)accessibilityContainerType;
 - (_Bool)shouldGroupAccessibilityChildren;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

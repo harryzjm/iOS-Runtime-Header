@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)_presentationControllerDidDismiss:(id)arg1;
 - (void)__viewWillLayoutSubviews;
 
 @end

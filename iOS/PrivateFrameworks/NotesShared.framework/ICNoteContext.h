@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
+#import <NotesShared/ICManagedObjectContextUpdaterDelegate-Protocol.h>
 #import <NotesShared/ICNoteContainer-Protocol.h>
 
-@class ICAccount, ICAccountUtilities, ICNote, ICNotesCrossProcessChangeCoordinator, ICPersistentContainer, ICXPCStoreCrossProcessChangeListener, NSError, NSManagedObjectContext, NSString, NSTimer;
+@class ICAccount, ICAccountUtilities, ICFolderCustomNoteSortType, ICManagedObjectContextUpdater, ICNote, ICNotesCrossProcessChangeCoordinator, ICPersistentContainer, NSArray, NSData, NSDictionary, NSError, NSManagedObjectContext, NSString, NSTimer;
 @protocol OS_dispatch_queue;
 
-@interface ICNoteContext : NSObject <ICNoteContainer>
+@interface ICNoteContext : NSObject <ICManagedObjectContextUpdaterDelegate, ICNoteContainer>
 {
     _Bool _delaySaving;
     _Bool _databaseOpenFailedDueToLowDiskSpace;
     _Bool _saving;
+    _Bool _shouldEnsureLocalAccount;
     ICPersistentContainer *_persistentContainer;
     ICNotesCrossProcessChangeCoordinator *_crossProcessChangeCoordinator;
     NSManagedObjectContext *_managedObjectContext;
@@ -23,10 +25,11 @@
     NSError *_databaseOpenError;
     NSTimer *_updateAttachmentLocationsTimer;
     unsigned long long _contextOptions;
-    ICXPCStoreCrossProcessChangeListener *_xpcStoreCrossProcessListener;
+    ICManagedObjectContextUpdater *_contextUpdater;
     ICAccountUtilities *_accountUtilities;
     NSTimer *_trashDeletionTimer;
     NSObject<OS_dispatch_queue> *_backgroundTaskQueue;
+    NSDictionary *_persistentStoresByAccountId;
 }
 
 + (_Bool)isActive;
@@ -42,11 +45,13 @@
 + (_Bool)hasSharedContext;
 + (id)sharedContext;
 + (void)startSharedContextWithOptions:(unsigned long long)arg1;
+@property(retain, nonatomic) NSDictionary *persistentStoresByAccountId; // @synthesize persistentStoresByAccountId=_persistentStoresByAccountId;
+@property(nonatomic) _Bool shouldEnsureLocalAccount; // @synthesize shouldEnsureLocalAccount=_shouldEnsureLocalAccount;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *backgroundTaskQueue; // @synthesize backgroundTaskQueue=_backgroundTaskQueue;
 @property(retain, nonatomic) NSTimer *trashDeletionTimer; // @synthesize trashDeletionTimer=_trashDeletionTimer;
 @property(retain, nonatomic) ICAccountUtilities *accountUtilities; // @synthesize accountUtilities=_accountUtilities;
 @property(getter=isSaving) _Bool saving; // @synthesize saving=_saving;
-@property(retain, nonatomic) ICXPCStoreCrossProcessChangeListener *xpcStoreCrossProcessListener; // @synthesize xpcStoreCrossProcessListener=_xpcStoreCrossProcessListener;
+@property(retain, nonatomic) ICManagedObjectContextUpdater *contextUpdater; // @synthesize contextUpdater=_contextUpdater;
 @property(nonatomic) unsigned long long contextOptions; // @synthesize contextOptions=_contextOptions;
 @property(retain, nonatomic) NSTimer *updateAttachmentLocationsTimer; // @synthesize updateAttachmentLocationsTimer=_updateAttachmentLocationsTimer;
 @property(nonatomic) _Bool databaseOpenFailedDueToLowDiskSpace; // @synthesize databaseOpenFailedDueToLowDiskSpace=_databaseOpenFailedDueToLowDiskSpace;
@@ -56,36 +61,56 @@
 @property(nonatomic) _Bool delaySaving; // @synthesize delaySaving=_delaySaving;
 @property(retain, nonatomic) ICNotesCrossProcessChangeCoordinator *crossProcessChangeCoordinator; // @synthesize crossProcessChangeCoordinator=_crossProcessChangeCoordinator;
 - (void).cxx_destruct;
+- (void)managedObjectContextUpdater:(id)arg1 objectDidChange:(id)arg2;
 - (void)postMoveUpdateChangeCountForNote:(id)arg1;
 - (void)cloudContextFetchRecordChangeOperationDidFinish:(id)arg1;
+@property(readonly, nonatomic) _Bool isSharedContext;
 - (_Bool)hasAnyContextOptions:(unsigned long long)arg1;
 - (_Bool)hasContextOptions:(unsigned long long)arg1;
-- (_Bool)canBeSharedViaICloud;
+- (_Bool)mergeWithSubFolderMergeableData:(id)arg1;
+- (void)updateSubFolderMergeableDataChangeCount;
+- (void)saveSubFolderMergeableDataIfNeeded;
+@property(retain, nonatomic) NSData *subFolderOrderMergeableData;
+@property(readonly, nonatomic) NSArray *visibleSubFolders;
+@property(readonly, nonatomic) NSString *containerIdentifier;
+@property(readonly, nonatomic) _Bool isTrashFolder;
+- (_Bool)isModernCustomFolder;
+@property(readonly, nonatomic) _Bool isAllNotesContainer;
+@property(readonly, nonatomic) _Bool canBeSharedViaICloud;
+@property(readonly, nonatomic) _Bool isSharedViaICloud;
 - (_Bool)isDeleted;
 - (id)noteVisibilityTestingForSearchingAccount;
-- (_Bool)supportsEditingNotes;
+@property(readonly, nonatomic) _Bool supportsEditingNotes;
+- (id)detailForTableViewCell;
 - (id)titleForTableViewCell;
 - (id)titleForNavigationBar;
 - (id)accountName;
 @property(readonly, nonatomic) ICAccount *noteContainerAccount;
 - (_Bool)supportsVisibilityTestingType:(long long)arg1;
+- (id)customNoteSortTypeValue;
 - (void)saveAndClearDecryptedDataIfNecessary;
 - (void)deleteEverything;
 - (void)purgeEverything;
 - (void)setupCrossProcessChangeCoordinator;
 - (void)destroyPersistentStore;
+- (id)persistentStoreForAccountID:(id)arg1;
 - (id)persistentStoreCoordinator;
 - (id)newWorkerManagedObjectContext;
+- (void)cleanupAdditionalPersistentStores;
+- (void)createAdditionalPersistentStoresWithAccountIdentifiers:(id)arg1 persistentContainer:(id)arg2;
+- (id)defaultPersistentStoreFromPersistentStores:(id)arg1;
+- (void)refreshPersistentStoresByAccountIdFromPersistentStores:(id)arg1;
+- (id)storeFilenameForAccountIdentifier:(id)arg1;
+- (void)createAdditionalPersistentStoresWithAccountIdentifiers:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)loadAdditionalPersistentStores;
 @property(readonly) ICPersistentContainer *persistentContainer; // @synthesize persistentContainer=_persistentContainer;
 - (void)reloadPersistentContainer;
 - (void)clearPersistentContainer;
 - (id)persistentContainerQueue;
 - (void)startSearchIndexerChangeObservingIfNecessary;
 - (id)fetchedResultsControllerForFetchRequest:(id)arg1 sectionNameKeyPath:(id)arg2;
-- (id)newFetchedResultsControllerForAllRegularFoldersAndAccounts;
-- (id)newFetchedResultsControllerForAllFoldersIncludingHiddenNoteContainers:(_Bool)arg1;
-- (id)newFetchedResultsControllerForAllNoteContainersWithPredicate:(id)arg1;
 - (id)newFetchedResultsControllerForAllAccounts;
+@property(readonly, nonatomic) ICFolderCustomNoteSortType *customNoteSortType;
 - (id)predicateForSearchableNotes;
 - (id)predicateForPinnedNotes;
 - (id)predicateForVisibleNotes;
@@ -99,7 +124,6 @@
 - (void)managedObjectContextDidSave:(id)arg1;
 - (void)refreshAll;
 - (id)predicateForSearchableAttachments;
-- (id)predicateForRegularFoldersAndAccounts;
 - (_Bool)recoverFromSaveError;
 - (_Bool)save;
 - (_Bool)saveImmediately;

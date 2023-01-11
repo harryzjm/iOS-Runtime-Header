@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/NSObject-Protocol.h>
+#import <GeoServices/GEOMapServiceCancellableTicket-Protocol.h>
 
 @class GEOMapServiceTraits;
 
-@protocol GEOMapServiceProblemReportTicket <NSObject>
+@protocol GEOMapServiceProblemReportTicket <GEOMapServiceCancellableTicket>
 @property(readonly, nonatomic) GEOMapServiceTraits *traits;
 - (void)cancel;
-- (void)submitWithHandler:(void (^)(NSString *, _Bool, NSData *, NSError *))arg1 networkActivity:(void (^)(_Bool))arg2;
+- (void)submitWithHandler:(void (^)(NSString *, NSData *, NSError *))arg1 networkActivity:(void (^)(_Bool))arg2;
 @end
 

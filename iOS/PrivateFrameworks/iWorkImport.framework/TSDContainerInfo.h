@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)insertContainedModel:(id)arg1 atIndex:(unsigned long long)arg2;
 @property(readonly, nonatomic) NSArray *containedModels;
 - (id)infoForSelectionPath:(id)arg1;
-@property(readonly, nonatomic) NSArray *childInfos;
+@property(readonly, copy, nonatomic) NSArray *childInfos;
 - (id)copyWithContext:(id)arg1;
 - (_Bool)isThemeContent;
 - (Class)repClass;
@@ -72,9 +72,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isMaster;
 @property(nonatomic) _Bool matchesObjectPlaceholderGeometry;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) _Bool supportsCollaborativeEditing;
 
 @end
 

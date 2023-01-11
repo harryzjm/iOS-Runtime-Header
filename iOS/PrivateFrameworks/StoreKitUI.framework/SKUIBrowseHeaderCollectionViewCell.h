@@ -6,6 +6,7 @@
 
 @class NSString, SKUIGroupedHeaderView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIBrowseHeaderCollectionViewCell
 {
     SKUIGroupedHeaderView *_headerView;

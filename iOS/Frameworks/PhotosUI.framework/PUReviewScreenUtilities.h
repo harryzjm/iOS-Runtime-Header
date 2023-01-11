@@ -15,10 +15,12 @@
 + (struct CGRect)_portraitBoundsForReferenceBounds:(struct CGRect)arg1;
 + (CDStruct_d54ccef3)_geometryForCameraTopBarFrame:(struct CGRect)arg1 inReferenceBounds:(struct CGRect)arg2 forContentSize:(struct CGSize)arg3 orientation:(long long)arg4;
 + (CDStruct_d54ccef3)_geometryForBarFrame:(struct CGRect)arg1 inReferenceBounds:(struct CGRect)arg2 orientation:(long long)arg3;
++ (CDStruct_d54ccef3)reviewScreenScrubberBarGeometryForReferenceBounds:(struct CGRect)arg1 withOrientation:(long long)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
 + (CDStruct_d54ccef3)reviewScreenScrubberBarGeometryForReferenceBounds:(struct CGRect)arg1 withOrientation:(long long)arg2;
 + (CDStruct_d54ccef3)reviewScreenControlBarGeometryForReferenceBounds:(struct CGRect)arg1 withOrientation:(long long)arg2;
 + (CDStruct_d54ccef3)reviewScreenTopBarGeometryForReferenceBounds:(struct CGRect)arg1 withOrientation:(long long)arg2;
 + (CDStruct_d54ccef3)reviewScreenContentGeometryForReferenceBounds:(struct CGRect)arg1 forContentSize:(struct CGSize)arg2 withOrientation:(long long)arg3;
++ (struct CGRect)reviewScreenScrubberBarFrameForReferenceBounds:(struct CGRect)arg1 safeAreaInsets:(struct UIEdgeInsets)arg2;
 + (struct CGRect)reviewScreenScrubberBarFrameForReferenceBounds:(struct CGRect)arg1;
 + (double)_reviewScreenScrubberBarHeightForSizeClass:(unsigned long long)arg1;
 + (struct CGRect)reviewScreenControlBarFrameForReferenceBounds:(struct CGRect)arg1;

@@ -4,21 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <GeoServices/GEOETAUpdater.h>
-
 @class NSTimer;
 
 __attribute__((visibility("hidden")))
-@interface MNTracePlayerETAUpdater : GEOETAUpdater
+@interface MNTracePlayerETAUpdater
 {
     NSTimer *_delayTimer;
 }
 
 - (void).cxx_destruct;
-- (void)requestUpdate;
-- (void)startUpdateRequests;
-- (void)reset;
-- (void)_timerFiredWithResponse:(id)arg1 currentStep:(id)arg2 percentOfStepRemaining:(double)arg3 error:(id)arg4;
+- (void)resumeUpdateRequests;
+- (void)startUpdateRequestsForRoutes:(id)arg1 andNavigationType:(int)arg2;
+- (void)_handleDelayTimerWithUpdateRow:(id)arg1;
 - (void)playETAUpdate:(id)arg1;
 - (void)dealloc;
 

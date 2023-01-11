@@ -6,18 +6,16 @@
 
 #import <UIKit/UIButton.h>
 
-@class CALayer, ICTrackedParagraph;
+@class ICTrackedParagraph;
 
 @interface ICTodoButton : UIButton
 {
     _Bool _done;
     ICTrackedParagraph *_trackedParagraph;
-    CALayer *_imageLayer;
     struct CGSize _defaultSize;
     struct CGSize _defaultImageSize;
 }
 
-@property(retain, nonatomic) CALayer *imageLayer; // @synthesize imageLayer=_imageLayer;
 @property(nonatomic) struct CGSize defaultImageSize; // @synthesize defaultImageSize=_defaultImageSize;
 @property(nonatomic) struct CGSize defaultSize; // @synthesize defaultSize=_defaultSize;
 @property(nonatomic) __weak ICTrackedParagraph *trackedParagraph; // @synthesize trackedParagraph=_trackedParagraph;
@@ -25,13 +23,15 @@
 - (void).cxx_destruct;
 - (void)setDone:(_Bool)arg1 animated:(_Bool)arg2;
 - (id)init;
-- (void)darkerSystemColorsStatusDidChange;
 - (void)setFrame:(struct CGRect)arg1 leftToRight:(_Bool)arg2;
+- (struct CGRect)imageFrame;
 - (void)updateImagesAnimated:(_Bool)arg1;
-- (struct UIImage *)imageNamed:(id)arg1 withTint:(struct UIColor *)arg2 version:(unsigned long long)arg3;
 - (struct UIImage *)imageForChecked:(_Bool)arg1 withHighlight:(_Bool)arg2;
+- (void)wasPressed;
 - (void)setHighlighted:(_Bool)arg1;
-- (void)dealloc;
+- (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;
+- (void)trackedParagraphDidChange;
+- (id)initWithDragDelegate:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

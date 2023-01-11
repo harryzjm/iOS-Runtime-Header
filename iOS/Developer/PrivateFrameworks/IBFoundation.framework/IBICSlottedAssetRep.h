@@ -37,6 +37,7 @@
 - (void).cxx_destruct;
 - (id)languageComponentsRepresentedByConflictFreeSiblings;
 - (long long)compareForVariantMatching:(id)arg1;
+- (long long)filteringPriorityForVariantSelection;
 - (_Bool)isMinimallyFitForVariantSelection;
 - (id)slotForVariantSelection;
 - (_Bool)matchesFileType:(id)arg1;

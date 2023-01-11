@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     _Bool _hasBegunFirstNavigation;
     SFBrowserPersonaAnalyticsHelper *_cachedAnalyticsHelper;
     NSTimer *_redirectNotificationTimer;
+    _Bool _hostApplicationIsForeground;
     SFUserNotification *_userNotification;
     NSString *_hostApplicationCallbackURLScheme;
 }
@@ -40,6 +41,8 @@ __attribute__((visibility("hidden")))
 - (void)webViewController:(id)arg1 willPerformClientRedirectToURL:(id)arg2 withDelay:(double)arg3;
 - (void)webViewControllerDidCancelClientRedirect:(id)arg1;
 - (void)webViewController:(id)arg1 didReceiveServerRedirectForProvisionalNavigation:(id)arg2;
+- (_Bool)_shouldReloadImmediatelyAfterPageLoadError;
+- (id)_hostAppBundleId;
 - (unsigned long long)_persona;
 - (id)_analyticsHelper;
 - (id)bundleIdentifierForProfileInstallation;
@@ -64,14 +67,18 @@ __attribute__((visibility("hidden")))
 - (void)_getSafariDataSharingModeWithCompletion:(CDUnknownBlockType)arg1;
 - (id)websiteDataStoreConfiguration;
 - (_Bool)_ensureWebsiteDataStoreURL:(id)arg1 cookieStoreURL:(id)arg2;
+- (id)_websiteDataStoreURL;
 - (id)_webDataStoreRootURL;
 - (void)openCurrentURLInSafari;
+- (void)_didResolveDestinationURL:(id)arg1 pendingAppLinkCheck:(_Bool)arg2;
+- (void)startResolveRedirectionForURL:(id)arg1;
 - (void)decideCookieSharingForURL:(id)arg1 callbackURLScheme:(id)arg2;
 - (void)loadURL:(id)arg1;
 - (id)processPool;
 - (void)updateScrollViewIndicatorVerticalInsets:(struct UIEdgeInsets)arg1 horizontalInsets:(struct UIEdgeInsets)arg2;
 - (id)processPoolConfiguration;
 - (void)viewWillDisappear:(_Bool)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)_willAppearInRemoteViewController;
 - (void)dealloc;

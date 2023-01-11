@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HomeKitDaemon/HMDCameraPowerAssertionProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDCameraRemoteStreamSenderProtocol-Protocol.h>
 
-@class AVCPacketRelay, HMDCameraSessionID, HMFOSTransaction, NSNumber, NSObject, NSString;
+@class AVCPacketRelay, HMFOSTransaction, NSNumber, NSObject, NSString;
 @protocol HMDCameraIDSDeviceConnectionSenderDelegate, OS_dispatch_queue;
 
-@interface HMDCameraIDSDeviceConnectionSender <HMDCameraRemoteStreamSenderProtocol, HMDCameraPowerAssertionProtocol>
+@interface HMDCameraIDSDeviceConnectionSender <HMDCameraRemoteStreamSenderProtocol>
 {
     id <HMDCameraIDSDeviceConnectionSenderDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
@@ -46,7 +45,6 @@
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
-@property(readonly, nonatomic) HMDCameraSessionID *sessionID;
 @property(readonly) Class superclass;
 
 @end

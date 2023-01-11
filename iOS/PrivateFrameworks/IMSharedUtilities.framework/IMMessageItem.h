@@ -13,9 +13,12 @@
 @interface IMMessageItem <NSSecureCoding, NSCopying, IMRemoteObjectCoding>
 {
     _Bool _blockingRichLinks;
+    _Bool _isBeingRetried;
     _Bool _updatingDataSourcePayload;
     _Bool _backwardsCompatibleVersion;
     _Bool _isSOS;
+    _Bool _NicknameRequested;
+    _Bool _shouldSendMeCard;
     unsigned int _error;
     NSString *_subject;
     NSString *_plainBody;
@@ -36,15 +39,24 @@
     NSDictionary *_messageSummaryInfo;
     NSDictionary *_bizIntent;
     NSString *_locale;
+    NSString *_retryToParticipant;
     NSString *_notificationIDSTokenURI;
+    NSString *_suggestedAuthorName;
+    NSString *_suggestedAuthorAvatarPath;
 }
 
 + (_Bool)messageContainsSurfDD:(id)arg1;
 + (_Bool)supportsSecureCoding;
+@property(copy, nonatomic) NSString *suggestedAuthorAvatarPath; // @synthesize suggestedAuthorAvatarPath=_suggestedAuthorAvatarPath;
+@property(copy, nonatomic) NSString *suggestedAuthorName; // @synthesize suggestedAuthorName=_suggestedAuthorName;
+@property(nonatomic) _Bool shouldSendMeCard; // @synthesize shouldSendMeCard=_shouldSendMeCard;
+@property(nonatomic) _Bool NicknameRequested; // @synthesize NicknameRequested=_NicknameRequested;
 @property(nonatomic) _Bool isSOS; // @synthesize isSOS=_isSOS;
 @property(nonatomic) _Bool backwardsCompatibleVersion; // @synthesize backwardsCompatibleVersion=_backwardsCompatibleVersion;
 @property(nonatomic, getter=isUpdatingDataSourcePayload) _Bool updatingDataSourcePayload; // @synthesize updatingDataSourcePayload=_updatingDataSourcePayload;
 @property(retain, nonatomic) NSString *notificationIDSTokenURI; // @synthesize notificationIDSTokenURI=_notificationIDSTokenURI;
+@property(retain, nonatomic) NSString *retryToParticipant; // @synthesize retryToParticipant=_retryToParticipant;
+@property(nonatomic) _Bool isBeingRetried; // @synthesize isBeingRetried=_isBeingRetried;
 @property(nonatomic) _Bool blockingRichLinks; // @synthesize blockingRichLinks=_blockingRichLinks;
 @property(retain, nonatomic) NSString *locale; // @synthesize locale=_locale;
 @property(retain, nonatomic) NSDictionary *bizIntent; // @synthesize bizIntent=_bizIntent;
@@ -82,6 +94,7 @@
 - (void)setWasDataDetected:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool wasDataDetected;
 @property(nonatomic) _Bool hasDataDetectorResults;
+@property(nonatomic) _Bool isSpam;
 @property(nonatomic) _Bool isCorrupt;
 @property(readonly, nonatomic) _Bool isFromExternalSource;
 @property(readonly, nonatomic) _Bool wasDowngraded;
@@ -112,6 +125,7 @@
 - (id)initWithDictionary:(id)arg1 hint:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)enumerateAttachmentGUIDsWithBlock:(CDUnknownBlockType)arg1;
 - (id)copyForBackwardsCompatibility;
 - (id)copyWithFlags:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

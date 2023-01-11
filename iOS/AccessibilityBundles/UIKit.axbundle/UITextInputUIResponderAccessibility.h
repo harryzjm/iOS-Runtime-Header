@@ -8,12 +8,19 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_axResetFKAFocusToFirstResponder;
+- (_Bool)resignFirstResponder;
+- (_Bool)becomeFirstResponder;
 - (id)_accessibilityEndOfDocument;
 - (id)_accessibilityBeginningOfDocument;
 - (id)_accessibilityPositionFromPosition:(id)arg1 offset:(long long)arg2;
 - (long long)_accessibilityOffsetFromPosition:(id)arg1 toPosition:(id)arg2;
+- (_Bool)_accessibilityHandlesTabKey;
+- (id)_accessibilityAlternativesForTextAtPosition:(unsigned long long)arg1;
+- (_Bool)_accessibilityInsertTextWithAlternatives:(id)arg1;
 - (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1;
 - (id)_accessibilitySpeakThisString;
 - (unsigned long long)accessibilityTraits;
@@ -26,6 +33,7 @@
 - (struct _NSRange)_accessibilityRangeForLineNumberAndColumn:(id)arg1;
 - (id)_accessibilityLineNumberAndColumnForPoint:(struct CGPoint)arg1;
 - (id)accessibilityValue;
+- (unsigned long long)_accessibilityPositionInDirection:(long long)arg1 offset:(unsigned long long)arg2 forPosition:(unsigned long long)arg3;
 - (struct _NSRange)_accessibilityLineRangeForPosition:(unsigned long long)arg1;
 - (long long)_accessibilityLineStartPosition;
 - (long long)_accessibilityLineEndPosition;

@@ -39,6 +39,7 @@
     double m_fadedTime;
     NSDictionary *m_currentAppearOrFadeContext;
     id m_responderTarget;
+    CDUnknownBlockType m_responderTargetCompletionHandler;
     NSArray *m_replacements;
     NSArray *m_extraItems;
     NSString *m_untruncatedString;
@@ -52,9 +53,9 @@
     NSMutableArray *m_axSeparatorViews;
 }
 
-+ (void)hideSharedCalloutBarIfTargetView:(id)arg1;
++ (void)hideSharedCalloutBarFromTargetView:(id)arg1;
 + (void)hideSharedCalloutBar;
-+ (void)fadeSharedCalloutBarIfTargetView:(id)arg1;
++ (void)fadeSharedCalloutBarFromTargetView:(id)arg1;
 + (void)fadeSharedCalloutBar;
 + (_Bool)sharedCalloutBarIsVisible;
 + (void)_releaseSharedInstance;
@@ -63,7 +64,6 @@
 + (void)performWithoutAffectingSharedCalloutBar:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) UIStackView *verticalStackView; // @synthesize verticalStackView=m_verticalStackView;
 @property(readonly, nonatomic) UIScrollView *verticalScrollView; // @synthesize verticalScrollView=m_verticalScrollView;
-@property(readonly, nonatomic) _Bool isDisplayingVertically; // @synthesize isDisplayingVertically=m_isDisplayingVertically;
 @property(nonatomic) _Bool suppressesAppearance; // @synthesize suppressesAppearance=m_suppressesAppearance;
 @property(retain, nonatomic) NSDictionary *currentAppearOrFadeContext; // @synthesize currentAppearOrFadeContext=m_currentAppearOrFadeContext;
 @property(nonatomic) _Bool supressesHorizontalMovement; // @synthesize supressesHorizontalMovement=m_supressesHorizontalMovement;
@@ -86,6 +86,7 @@
 @property(nonatomic) struct CGPoint pointBelowControls; // @synthesize pointBelowControls=m_pointBelowControls;
 @property(nonatomic) struct CGPoint pointAboveControls; // @synthesize pointAboveControls=m_pointAboveControls;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) _Bool isDisplayingVertically; // @synthesize isDisplayingVertically=m_isDisplayingVertically;
 - (void)clearSupressesHorizontalMovementFrame;
 - (void)clearReplacements;
 - (_Bool)hasReplacements;
@@ -97,9 +98,12 @@
 - (void)updateAnimated:(_Bool)arg1;
 - (void)update;
 - (void)hide;
-- (void)hideIfTargetView:(id)arg1;
+- (void)hideFromTargetView:(id)arg1;
 - (void)fade;
-- (void)fadeIfTargetView:(id)arg1;
+- (void)fadeFromTargetView:(id)arg1;
+- (void)setResponderTarget:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_clearResponderTarget;
+- (_Bool)_isOwnedByView:(id)arg1;
 - (void)_fadeAfterCommand:(SEL)arg1;
 - (void)_endOngoingAppearOrFadeAnimations;
 - (void)appear;
@@ -108,8 +112,6 @@
 - (void)setTargetRect:(struct CGRect)arg1 view:(id)arg2 arrowDirection:(int)arg3;
 - (void)setTargetRect:(struct CGRect)arg1 view:(id)arg2 pointLeftOfControls:(struct CGPoint)arg3 pointRightOfControls:(struct CGPoint)arg4;
 - (void)setTargetRect:(struct CGRect)arg1 view:(id)arg2 pointBelowControls:(struct CGPoint)arg3 pointAboveControls:(struct CGPoint)arg4;
-- (SEL)_actionForButton:(id)arg1;
-- (id)_visibleButtons;
 - (_Bool)_updateVisibleItemsAnimated:(_Bool)arg1;
 - (void)adjustFrameToAvoidDividerOnArrow;
 - (void)addVerticalSeparatorAfterButton:(id)arg1;
@@ -135,6 +137,7 @@
 - (void)_showNextItems:(id)arg1;
 - (void)_showPreviousItems:(id)arg1;
 - (void)buttonPressed:(id)arg1;
+- (void)keyboardAnalyticsDispatchWithSelector:(SEL)arg1;
 - (id)_targetForAction:(SEL)arg1;
 - (_Bool)_touchesInsideShouldHideCalloutBar;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;

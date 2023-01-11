@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSOrderedSet, NSSet;
+
 @interface IBICBundleIconSet
 {
     _Bool _preRendered;
@@ -24,8 +26,8 @@
 - (_Bool)manifestArchivist:(id)arg1 validateManifest:(id)arg2 results:(id)arg3;
 - (id)effectiveModificationDateForCARCompiler;
 - (id)initializeManifestArchivist;
-- (id)intrinsicallyOrderedChildren;
-- (id)children;
+@property(readonly, nonatomic) NSOrderedSet *intrinsicallyOrderedChildren;
+@property(readonly, nonatomic) NSSet *children;
 - (id)assetRepForStructuredIdentifier:(id)arg1;
 - (id)childForIdentifier:(id)arg1;
 - (id)assetRepForIdentifier:(id)arg1;

@@ -4,6 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#pragma mark Blocks
+
+typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
+
 #pragma mark Named Structures
 
 struct CGPoint {
@@ -19,5 +23,12 @@ struct CGRect {
 struct CGSize {
     double _field1;
     double _field2;
+};
+
+struct UIEdgeInsets {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 

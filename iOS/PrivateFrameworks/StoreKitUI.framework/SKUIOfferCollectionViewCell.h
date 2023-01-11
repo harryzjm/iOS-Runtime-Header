@@ -8,6 +8,7 @@
 
 @class NSString, SKUIOfferView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIOfferCollectionViewCell <SKUIViewElementView>
 {
     SKUIOfferView *_offerView;

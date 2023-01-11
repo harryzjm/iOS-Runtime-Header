@@ -11,7 +11,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)setLayoutIfSupported:(unsigned long long)arg1 animated:(_Bool)arg2 velocity:(double)arg3;
 - (void)presentController:(id)arg1 animated:(_Bool)arg2 useDefaultContaineeLayout:(_Bool)arg3;
 
 @end

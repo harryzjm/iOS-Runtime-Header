@@ -16,8 +16,10 @@
     int _travelDirection;
     NSString *_roadDirection;
     NSArray *_intersectingRoads;
+    NSArray *_consolidatedAndOrderedFeatures;
 }
 
+@property(retain, nonatomic) NSArray *consolidatedAndOrderedFeatures; // @synthesize consolidatedAndOrderedFeatures=_consolidatedAndOrderedFeatures;
 @property(nonatomic) int travelDirection; // @synthesize travelDirection=_travelDirection;
 @property(retain, nonatomic) NSArray *intersectingRoads; // @synthesize intersectingRoads=_intersectingRoads;
 @property(retain, nonatomic) NSString *roadDirection; // @synthesize roadDirection=_roadDirection;
@@ -30,6 +32,12 @@
 - (id)_nearestPOIsForPoint:(struct CGPoint)arg1;
 - (_Bool)_accessibilityRoadContainsTrackingPoint:(struct CGPoint)arg1;
 - (float)_accessibilityDistanceFromEndOfRoad:(struct CGPoint)arg1 forAngle:(float)arg2;
+- (id)accessibilityViableIntersectorsForPoint:(struct CGPoint)arg1 fromSortedArray:(id)arg2 isStart:(_Bool)arg3;
+- (id)accessibilitySortedIntersectorsForPoint:(struct CGPoint)arg1;
+- (id)adjacentIntersectorsForPoint:(struct CGPoint)arg1 isStart:(_Bool)arg2;
+- (struct AXVKFeaturePointIndices)featureAndPointIndicesForPoint:(struct CGPoint)arg1;
+- (id)consolidatedAndOrderedFeaturesFromAllFeaturePoints:(id)arg1;
+- (void)_accessibilityMapsExplorationBeginFromCurrentElement;
 - (id)_accessibilityUpcomingRoadsForPoint:(struct CGPoint)arg1 forAngle:(float)arg2;
 - (float)_accessibilityDistance:(struct CGPoint)arg1 forAngle:(float)arg2 toRoad:(id)arg3;
 - (struct CGRect)accessibilityFrame;
@@ -39,6 +47,7 @@
 @property(readonly, nonatomic) NSArray *originalPaths; // @synthesize originalPaths=_originalPaths;
 - (long long)_accessibilityMapRoadType;
 - (_Bool)_accessibilityLastHitTestNearBorder;
+- (struct _NSRange)_roadSuffixRangeForCommonRoadAbbreviations:(id)arg1 replacement:(id *)arg2;
 - (id)accessibilityLabel;
 - (id)_axRoadSuffix;
 - (id)trueLabel;

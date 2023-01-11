@@ -11,14 +11,20 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)removeActiveWidgetAnnotation;
+- (void)removeControlForAnnotation:(id)arg1;
 - (struct CGPDFSelection *)_lineSelectionForSelection:(struct CGPDFSelection *)arg1;
 - (id)_axLineSelections;
 - (id)accessibilityElements;
+- (id)_axAllElements;
+- (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (_Bool)_accessibilityIsFrameOutOfBounds;
+- (_Bool)_axIsUsingPDFExtensionView;
 - (id)_axGetPDFView;
 - (id)_axGetPage;
 - (struct CGPDFPage *)_axPageRef;
 - (_Bool)isAccessibilityElement;
+- (void)_axSetAllNodeElements:(id)arg1;
+- (id)_axAllNodeElements;
 - (void)_axSetPageViewElements:(id)arg1;
 - (id)_axPageViewElements;
 

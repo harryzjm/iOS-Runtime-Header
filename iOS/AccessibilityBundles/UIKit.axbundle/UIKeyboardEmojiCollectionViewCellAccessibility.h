@@ -21,7 +21,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityHeaderElements;
 - (_Bool)_accessibilityAllowsAlternativeCharacterActivation;
-- (_Bool)_accessibilityIsTouchContainer;
+- (long long)accessibilityContainerType;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 - (struct _NSRange)accessibilityRowRange;

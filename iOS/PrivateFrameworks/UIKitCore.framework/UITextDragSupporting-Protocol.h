@@ -6,7 +6,8 @@
 
 #import <UIKitCore/UITextDraggable-Protocol.h>
 
-@protocol UITextDragFinishState;
+@class NSArray, UITextRange;
+@protocol UITextDragFinishState, UITextDraggableGeometry;
 
 @protocol UITextDragSupporting <UITextDraggable>
 - (void)draggingFinished:(id <UITextDragFinishState>)arg1;
@@ -15,6 +16,9 @@
 - (_Bool)allowsEditingTextAttributes;
 
 @optional
+- (id <UITextDraggableGeometry>)_textGeometry;
+- (NSArray *)_customDraggableObjectsForRange:(UITextRange *)arg1;
+- (UITextRange *)_rangeOfCustomDraggableObjectsInRange:(UITextRange *)arg1;
 - (struct _NSRange)_visibleRangeWithLayout:(_Bool)arg1;
 - (_Bool)_shouldObscureInput;
 - (void)performCancelAnimations;

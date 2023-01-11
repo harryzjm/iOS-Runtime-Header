@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <RelevanceEngine/REPeriodOfDayPredictorProperties-Protocol.h>
+
 @class NSArray, NSDateInterval, NSLock, REDuetKnowledgeStore, REUpNextTimer;
 
-@interface REPeriodOfDayPredictor
+@interface REPeriodOfDayPredictor <REPeriodOfDayPredictorProperties>
 {
     NSArray *_storedPeriods;
     NSLock *_storedPeriodsLock;
@@ -16,7 +18,7 @@
 
 + (double)updateInterval;
 - (void).cxx_destruct;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) NSArray *storedPeriods;
 - (id)_nextDayPeriodUpdateDate;
 - (void)_queue_updateNextDateUpdateTimer;
 - (void)_getHistoricSleepIntervalsWithCompletion:(CDUnknownBlockType)arg1;
@@ -33,7 +35,7 @@
 - (void)_handleSignificantTimeChange;
 - (id)_defaultDayPeriodsOfDayForDate:(id)arg1;
 - (void)dealloc;
-- (id)init;
+- (id)_init;
 
 @end
 

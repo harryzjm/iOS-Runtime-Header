@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class FigCaptureIrisPreparedSettings;
+@class FigCaptureIrisPreparedSettings, NSArray;
 
 @interface FigCaptureIrisSinkConfiguration
 {
@@ -17,12 +17,24 @@
     _Bool _quadraHighResCaptureEnabled;
     _Bool _depthDataDeliveryEnabled;
     _Bool _portraitEffectsMatteDeliveryEnabled;
+    NSArray *_enabledSemanticSegmentationMatteURNs;
     _Bool _filterRenderingEnabled;
-    _Bool _bravoDualPhotoDeliveryEnabled;
+    _Bool _bravoConstituentPhotoDeliveryEnabled;
+    _Bool _momentCaptureMovieRecordingEnabled;
+    int _maxQualityPrioritization;
+    _Bool _deferredProcessingEnabled;
+    _Bool _digitalFlashCaptureEnabled;
+    _Bool _irisFrameHarvestingEnabled;
 }
 
-@property(nonatomic) _Bool bravoDualPhotoDeliveryEnabled; // @synthesize bravoDualPhotoDeliveryEnabled=_bravoDualPhotoDeliveryEnabled;
+@property(nonatomic) _Bool irisFrameHarvestingEnabled; // @synthesize irisFrameHarvestingEnabled=_irisFrameHarvestingEnabled;
+@property(nonatomic) _Bool digitalFlashCaptureEnabled; // @synthesize digitalFlashCaptureEnabled=_digitalFlashCaptureEnabled;
+@property(nonatomic) _Bool deferredProcessingEnabled; // @synthesize deferredProcessingEnabled=_deferredProcessingEnabled;
+@property(nonatomic) int maxQualityPrioritization; // @synthesize maxQualityPrioritization=_maxQualityPrioritization;
+@property(nonatomic) _Bool momentCaptureMovieRecordingEnabled; // @synthesize momentCaptureMovieRecordingEnabled=_momentCaptureMovieRecordingEnabled;
+@property(nonatomic) _Bool bravoConstituentPhotoDeliveryEnabled; // @synthesize bravoConstituentPhotoDeliveryEnabled=_bravoConstituentPhotoDeliveryEnabled;
 @property(nonatomic) _Bool filterRenderingEnabled; // @synthesize filterRenderingEnabled=_filterRenderingEnabled;
+@property(retain, nonatomic) NSArray *enabledSemanticSegmentationMatteURNs; // @synthesize enabledSemanticSegmentationMatteURNs=_enabledSemanticSegmentationMatteURNs;
 @property(nonatomic) _Bool portraitEffectsMatteDeliveryEnabled; // @synthesize portraitEffectsMatteDeliveryEnabled=_portraitEffectsMatteDeliveryEnabled;
 @property(nonatomic) _Bool depthDataDeliveryEnabled; // @synthesize depthDataDeliveryEnabled=_depthDataDeliveryEnabled;
 @property(nonatomic) _Bool quadraHighResCaptureEnabled; // @synthesize quadraHighResCaptureEnabled=_quadraHighResCaptureEnabled;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString;
+@class NSString, OITSUBezierPath;
 
 __attribute__((visibility("hidden")))
 @interface PDAnimateMotionBehavior
 {
-    NSString *mPath;
+    OITSUBezierPath *mPath;
     _Bool mHasAngle;
     double mAngle;
     NSString *mPointsTypes;
@@ -21,6 +21,9 @@ __attribute__((visibility("hidden")))
     int mPathEditMode;
 }
 
++ (id)NSStringForBezierPath:(id)arg1;
++ (id)bezierPathFromNSString:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (void)setPathEditMode:(int)arg1;
@@ -40,7 +43,6 @@ __attribute__((visibility("hidden")))
 - (void)setPath:(id)arg1;
 - (id)path;
 - (_Bool)hasPath;
-- (void)dealloc;
 
 @end
 

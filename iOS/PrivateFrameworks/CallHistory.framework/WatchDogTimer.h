@@ -7,6 +7,7 @@
 @class NSObject, NSString;
 @protocol OS_dispatch_source;
 
+__attribute__((visibility("hidden")))
 @interface WatchDogTimer
 {
     NSString *_name;

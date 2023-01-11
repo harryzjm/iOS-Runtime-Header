@@ -9,6 +9,9 @@
 @protocol FCAppActivityObserving <NSObject>
 
 @optional
+- (void)activityObservingApplicationWindowDidBecomeBackground;
+- (void)activityObservingApplicationWindowDidBecomeForeground;
+- (void)activityObservingApplicationWindowWillBecomeForeground;
 - (void)activityObservingApplicationWillEnterForeground;
 - (void)activityObservingApplicationDidEnterBackground;
 - (void)activityObservingApplicationDidBecomeActive;

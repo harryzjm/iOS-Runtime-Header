@@ -11,12 +11,15 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (_Bool)canBecomeFocused;
+- (id)accessibilityUserInputLabels;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 - (_Bool)accessibilityActivate;
 - (_Bool)_accessibilitySupportsActivateAction;
 - (id)accessibilityValue;
 - (_Bool)isAccessibilityElement;
+- (unsigned long long)_accessibilityAutomationType;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGRect)accessibilityFrame;
 - (void)setCurrentPage:(long long)arg1;

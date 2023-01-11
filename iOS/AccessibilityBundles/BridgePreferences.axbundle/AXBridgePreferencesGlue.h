@@ -11,7 +11,6 @@
 }
 
 + (void)accessibilityInitializeBundle;
-+ (id)accessibilityBundles;
 
 @end
 

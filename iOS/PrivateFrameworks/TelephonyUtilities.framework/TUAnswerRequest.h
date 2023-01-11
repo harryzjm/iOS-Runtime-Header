@@ -10,14 +10,18 @@
 #import <TelephonyUtilities/TUCallRequest-Protocol.h>
 #import <TelephonyUtilities/TUVideoRequest-Protocol.h>
 
-@class NSDate, NSString;
+@class IDSDestination, NSDate, NSString;
 
 @interface TUAnswerRequest : NSObject <NSSecureCoding, TUCallRequest, TUVideoRequest>
 {
     _Bool _wantsHoldMusic;
     _Bool _pauseVideoToStart;
+    _Bool _downgradeToAudio;
     NSString *_uniqueProxyIdentifier;
     NSString *_sourceIdentifier;
+    IDSDestination *_endpointIDSDestination;
+    NSString *_endpointRapportMediaSystemIdentifier;
+    NSString *_endpointRapportEffectiveIdentifier;
     long long _behavior;
     NSDate *_dateAnswered;
     struct CGSize _localLandscapeAspectRatio;
@@ -27,8 +31,12 @@
 + (_Bool)supportsSecureCoding;
 @property(retain, nonatomic) NSDate *dateAnswered; // @synthesize dateAnswered=_dateAnswered;
 @property(nonatomic) long long behavior; // @synthesize behavior=_behavior;
+@property(nonatomic) _Bool downgradeToAudio; // @synthesize downgradeToAudio=_downgradeToAudio;
 @property(nonatomic) _Bool pauseVideoToStart; // @synthesize pauseVideoToStart=_pauseVideoToStart;
 @property(nonatomic) _Bool wantsHoldMusic; // @synthesize wantsHoldMusic=_wantsHoldMusic;
+@property(retain, nonatomic) NSString *endpointRapportEffectiveIdentifier; // @synthesize endpointRapportEffectiveIdentifier=_endpointRapportEffectiveIdentifier;
+@property(retain, nonatomic) NSString *endpointRapportMediaSystemIdentifier; // @synthesize endpointRapportMediaSystemIdentifier=_endpointRapportMediaSystemIdentifier;
+@property(retain, nonatomic) IDSDestination *endpointIDSDestination; // @synthesize endpointIDSDestination=_endpointIDSDestination;
 @property(copy, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 @property(nonatomic) struct CGSize localPortraitAspectRatio; // @synthesize localPortraitAspectRatio=_localPortraitAspectRatio;
 @property(nonatomic) struct CGSize localLandscapeAspectRatio; // @synthesize localLandscapeAspectRatio=_localLandscapeAspectRatio;

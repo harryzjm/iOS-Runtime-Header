@@ -13,11 +13,11 @@
     MISSING_TYPE *clientBundleId;
     MISSING_TYPE *clientProcessName;
     MISSING_TYPE *_activeConnection;
-    MISSING_TYPE *serverProxy.storage;
+    MISSING_TYPE *$__lazy_storage_$_serverProxy;
     MISSING_TYPE *authenticationProvider;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)init;
 - (void)invalidate;
 - (void)registerAuthenticationProvider:(id)arg1;

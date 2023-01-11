@@ -6,16 +6,20 @@
 
 @class CALayerHost;
 
-__attribute__((visibility("hidden")))
 @interface _UILayerHostView
 {
+    int _pid;
+    unsigned int _contextID;
 }
 
 + (Class)layerClass;
 - (void)dealloc;
 @property(readonly, retain, nonatomic) CALayerHost *layerHost;
 @property(nonatomic) _Bool inheritsSecurity;
+- (void)setPid:(int)arg1 contextID:(unsigned int)arg2;
 @property(nonatomic) unsigned int contextID;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 pid:(int)arg2 contextID:(unsigned int)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

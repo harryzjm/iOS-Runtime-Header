@@ -8,6 +8,7 @@
 
 @class NSString, UISegmentedControl;
 
+__attribute__((visibility("hidden")))
 @interface CKDetailsSegmentedControlCell <CKDetailsCell>
 {
     UISegmentedControl *_segmentedControl;

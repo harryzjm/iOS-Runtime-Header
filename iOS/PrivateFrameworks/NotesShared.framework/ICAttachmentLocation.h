@@ -12,7 +12,7 @@
 {
 }
 
-+ (id)newAttachmentLocationWithContext:(id)arg1;
++ (id)newAttachmentLocationForAttachment:(id)arg1;
 @property(readonly, nonatomic) NSString *formattedAddressWithoutAttachmentTitle;
 - (id)targetSearchIndexable;
 

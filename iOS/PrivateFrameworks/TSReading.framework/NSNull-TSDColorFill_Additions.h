@@ -6,13 +6,16 @@
 
 #import <Foundation/NSNull.h>
 
+#import <TSReading/TSDMixing-Protocol.h>
 #import <TSReading/TSDPathPainter-Protocol.h>
 
 @class NSString;
 
-@interface NSNull (TSDColorFill_Additions) <TSDPathPainter>
+@interface NSNull (TSDColorFill_Additions) <TSDPathPainter, TSDMixing>
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
+- (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
+- (long long)mixingTypeWithObject:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

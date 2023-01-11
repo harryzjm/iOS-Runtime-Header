@@ -18,6 +18,7 @@
 + (void)mapCharacterPropertiesFromStyles:(id *)arg1 styleCount:(unsigned int)arg2 toNS:(id)arg3 stickyFont:(id *)arg4 scale:(double)arg5;
 + (id)mapCharacterPropertiesFromNS:(id)arg1;
 + (void)mapCharacterPropertiesFromNS:(id)arg1 toWP:(id)arg2;
++ (void)initialize;
 
 @end
 

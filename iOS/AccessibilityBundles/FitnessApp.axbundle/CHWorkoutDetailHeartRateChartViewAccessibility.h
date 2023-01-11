@@ -11,12 +11,24 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (float)_decimalForDate:(id)arg1;
 - (id)_axDateInterval;
+- (id)_accessibilityDataSeriesMaximumValueForAxis:(long long)arg1;
+- (id)_accessibilityDataSeriesMinimumValueForAxis:(long long)arg1;
+- (id)_accessibilityDataSeriesUnitLabelForAxis:(long long)arg1;
+- (id)_accessibilityDataSeriesTitleForAxis:(long long)arg1;
+- (id)_accessibilityDataSeriesValuesForAxis:(long long)arg1;
+- (id)_accessibilityDataSeriesName;
+- (long long)_accessibilityDataSeriesType;
+- (_Bool)_accessibilityDataSeriesSupportsSonification;
+- (_Bool)_accessibilityDataSeriesSupportsSummarization;
+- (long long)accessibilityContainerType;
 - (unsigned long long)_accessibilityHoursPerSlice;
 - (double)_accessibilityTimeIntervalPerSlice;
 - (id)_accessibilityQuantityForSliceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)_accessibilityNumberOfSlices;
 - (_Bool)_accessibilityShouldUseSlices;
+- (id)accessibilityElements;
 
 @end
 

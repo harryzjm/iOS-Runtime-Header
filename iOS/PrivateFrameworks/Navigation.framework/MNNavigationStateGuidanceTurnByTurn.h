@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
 @interface MNNavigationStateGuidanceTurnByTurn
 {
 }
 
 - (void)enterState;
 - (void)setFullGuidanceMode:(_Bool)arg1;
-- (unsigned long long)desiredResourcePolicy;
 - (unsigned long long)type;
 
 @end

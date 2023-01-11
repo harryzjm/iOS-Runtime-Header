@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKDModifyRecordsOperation, CKDPCSCache, CKDPCSManager, CKDProgressTracker, CKDRecordPCSData, CKDSharePCSData, CKRecord, CKRecordID, NSError, NSMutableDictionary, NSString;
+@class CKDModifyRecordsOperation, CKDPCSCache, CKDPCSManager, CKDProgressTracker, CKDRecordPCSData, CKDSharePCSData, CKDZonePCSData, CKRecord, CKRecordID, NSDictionary, NSError, NSMutableDictionary, NSString;
 @protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _isDelete;
     _Bool _saveCompletionBlockCalled;
     _Bool _needsRefetch;
+    _Bool _didAttemptDugongKeyRoll;
     _Bool _didRollRecordPCSMasterKey;
     int _saveAttempts;
     CKDModifyRecordsOperation *_operation;
@@ -29,6 +30,8 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_rereferencedAssetArrayByFieldname;
     CKDProgressTracker *_progressTracker;
     long long _batchRank;
+    CKDZonePCSData *_sharedZonePCSData;
+    NSDictionary *_assetUUIDToExpectedProperties;
     CKRecordID *_recordID;
 }
 
@@ -37,6 +40,9 @@ __attribute__((visibility("hidden")))
 + (id)modifyHandlerWithRecord:(id)arg1 operation:(id)arg2;
 @property(nonatomic) _Bool didRollRecordPCSMasterKey; // @synthesize didRollRecordPCSMasterKey=_didRollRecordPCSMasterKey;
 @property(retain, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
+@property(copy, nonatomic) NSDictionary *assetUUIDToExpectedProperties; // @synthesize assetUUIDToExpectedProperties=_assetUUIDToExpectedProperties;
+@property(nonatomic) _Bool didAttemptDugongKeyRoll; // @synthesize didAttemptDugongKeyRoll=_didAttemptDugongKeyRoll;
+@property(retain, nonatomic) CKDZonePCSData *sharedZonePCSData; // @synthesize sharedZonePCSData=_sharedZonePCSData;
 @property(nonatomic) _Bool needsRefetch; // @synthesize needsRefetch=_needsRefetch;
 @property(nonatomic) _Bool saveCompletionBlockCalled; // @synthesize saveCompletionBlockCalled=_saveCompletionBlockCalled;
 @property(nonatomic) int saveAttempts; // @synthesize saveAttempts=_saveAttempts;
@@ -62,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)_pretendToWrapEncryptedDataForRecordValueStore:(id)arg1;
 - (_Bool)_wrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 forField:(id)arg3 recordID:(id)arg4;
 - (void)prepareForSave;
+- (void)prepareStreamingAsset:(id)arg1 forUploadWithRecord:(id)arg2;
 - (_Bool)_prepareAsset:(id)arg1 recordKey:(id)arg2 record:(id)arg3 error:(id *)arg4;
 - (id)prepareAssetsForUploadWithError:(id *)arg1;
 - (id)assetsWhichNeedRecordFetch;
@@ -72,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (void)_unwrapRecordPCSWithShareID:(id)arg1;
 - (void)_unwrapRecordPCSForZone;
 - (void)_continueCreateAndSavePCSWithZonePCS:(id)arg1 sharePCS:(id)arg2;
+- (_Bool)_useZoneishPCS;
 - (void)_createAndSavePCS;
 - (id)_addParentPCS:(id)arg1 toRecordPCS:(id)arg2;
 - (void)_fetchParentPCSForData:(id)arg1 withError:(id)arg2;

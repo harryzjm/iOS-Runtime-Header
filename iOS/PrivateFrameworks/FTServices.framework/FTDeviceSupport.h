@@ -34,7 +34,6 @@
     _Bool _supportsCellularData;
     _Bool _simBecameNotReady;
     long long _simInserted;
-    _Bool _wantsForcedCellularQueries;
     long long _isPNRSupportedCachedValue;
     _Bool _faceTimeBlocked;
     _Bool _iMessageBlocked;
@@ -48,7 +47,6 @@
 
 + (id)sharedInstance;
 @property(readonly, nonatomic) _Bool commCenterDead; // @synthesize commCenterDead=_commCenterDead;
-@property(readonly, nonatomic) _Bool wantsForcedCellularQueries; // @synthesize wantsForcedCellularQueries=_wantsForcedCellularQueries;
 @property(readonly, nonatomic) _Bool mmsConfigured; // @synthesize mmsConfigured=_mmsConfigured;
 @property(readonly, nonatomic) _Bool supportsMMS; // @synthesize supportsMMS=_supportsMMS;
 @property(readonly, nonatomic) _Bool supportsSMS; // @synthesize supportsSMS=_supportsSMS;
@@ -65,6 +63,8 @@
 - (_Bool)_enoughPowerToSupportEffects;
 - (long long)memorySize;
 @property(readonly, nonatomic) _Bool lowRAMDevice;
+- (int)cpuFamily;
+@property(readonly, nonatomic) _Bool slowCPUDevice;
 @property(readonly, nonatomic) _Bool supportsApplePay;
 @property(readonly, nonatomic) _Bool isInMultiUserMode;
 @property(readonly, nonatomic) _Bool nonWifiCallingAvailable;
@@ -128,6 +128,7 @@
 @property(readonly, nonatomic) _Bool iMessageSupported;
 @property(readonly, nonatomic) _Bool iMessageBlocked;
 @property(readonly, nonatomic) _Bool iMessageAvailable;
+- (_Bool)inProcess_isCallingSupported;
 @property(readonly, nonatomic) _Bool callingSupported;
 @property(readonly, nonatomic) _Bool callingBlocked;
 @property(readonly, nonatomic) _Bool multiwaySupported;
@@ -142,8 +143,6 @@
 - (void)_unregisterForCommCenterReadyNotifications;
 - (void)_registerForCommCenterReadyNotifications;
 - (void)_updateCapabilities;
-- (_Bool)_wantsForcedCellularQueries;
-- (id)_forceWWANQueriesCarrierBundleValue;
 - (void)_registerForCapabilityNotifications;
 - (void)_unregisterForServiceStatusNotifications;
 - (void)_registerForServiceStatusNotifications;

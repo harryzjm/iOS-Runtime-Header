@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface UIDebuggingInformationOverlay <UISplitViewControllerDelegate>
 {
+    _Bool _isFullscreen;
     _Bool _checkingTouches;
     _Bool _touchCaptureEnabled;
     NSMutableArray *_touchObservers;
@@ -19,8 +20,6 @@ __attribute__((visibility("hidden")))
     struct CGPoint _drawingOrigin;
 }
 
-+ (void)popDisableApplyingConfigurations;
-+ (void)pushDisableApplyingConfigurations;
 + (id)overlay;
 + (void)prepareDebuggingOverlay;
 @property(nonatomic) struct CGPoint drawingOrigin; // @synthesize drawingOrigin=_drawingOrigin;
@@ -29,12 +28,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSMutableArray *touchObservers; // @synthesize touchObservers=_touchObservers;
 @property(nonatomic) _Bool touchCaptureEnabled; // @synthesize touchCaptureEnabled=_touchCaptureEnabled;
 @property(nonatomic) _Bool checkingTouches; // @synthesize checkingTouches=_checkingTouches;
+@property(nonatomic) _Bool isFullscreen; // @synthesize isFullscreen=_isFullscreen;
 - (void).cxx_destruct;
 @property(retain, nonatomic) UIDebuggingInformationRootTableViewController *rootTableViewController;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)toggleFullscreen;
 - (void)toggleVisibility;
+- (void)_setHidden:(_Bool)arg1;
 @property(readonly, nonatomic) UIDebuggingInformationOverlayViewController *overlayViewController;
 - (id)init;
 

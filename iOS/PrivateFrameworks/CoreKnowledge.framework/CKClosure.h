@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKEntity, CKKnowledgeStore, MISSING_TYPE, NSString;
+@class MISSING_TYPE;
 
 @interface CKClosure : NSObject
 {
@@ -14,14 +14,10 @@
     MISSING_TYPE *entity;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)init;
-- (void)execute;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-@property(nonatomic, readonly) NSString *identifier;
-@property(nonatomic, readonly) CKEntity *entity; // @synthesize entity;
-@property(nonatomic, readonly) CKKnowledgeStore *store; // @synthesize store;
 
 @end
 

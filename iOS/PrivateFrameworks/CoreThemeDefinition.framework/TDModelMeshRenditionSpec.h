@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MDLMesh, NSOrderedSet;
+@class NSOrderedSet;
 
 @interface TDModelMeshRenditionSpec
 {
@@ -12,9 +12,9 @@
 
 + (id)fetchRequest;
 - (id)createCSIRepresentationWithCompression:(_Bool)arg1 colorSpaceID:(unsigned long long)arg2 document:(id)arg3;
+- (void)processSubMesh:(id)arg1 withAssetSubmeshIndex:(unsigned int *)arg2 assetKeySpec:(id)arg3 inDocument:(id)arg4;
 
 // Remaining properties
-@property(retain, nonatomic) MDLMesh *mesh; // @dynamic mesh;
 @property(retain, nonatomic) NSOrderedSet *submeshes; // @dynamic submeshes;
 
 @end

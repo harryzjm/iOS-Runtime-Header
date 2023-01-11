@@ -31,18 +31,22 @@
     NSArray *_pendingGroupsFromOtherSessions;
     NSHashTable *_groupsFromPage;
     FCFeedRefreshSession *_refreshSession;
+    NSHashTable *_insertedGroupsFromPage;
     FCFeedEdition *_followingEdition;
     NSArray *_emitters;
     NSArray *_remainingEmitters;
     NSSet *_articleIDs;
     NSSet *_clusterIDs;
+    NSSet *_groupIDs;
 }
 
+@property(readonly, copy, nonatomic) NSSet *groupIDs; // @synthesize groupIDs=_groupIDs;
 @property(readonly, copy, nonatomic) NSSet *clusterIDs; // @synthesize clusterIDs=_clusterIDs;
 @property(readonly, copy, nonatomic) NSSet *articleIDs; // @synthesize articleIDs=_articleIDs;
 @property(retain, nonatomic) NSArray *remainingEmitters; // @synthesize remainingEmitters=_remainingEmitters;
 @property(retain, nonatomic) NSArray *emitters; // @synthesize emitters=_emitters;
 @property(retain, nonatomic) FCFeedEdition *followingEdition; // @synthesize followingEdition=_followingEdition;
+@property(retain, nonatomic) NSHashTable *insertedGroupsFromPage; // @synthesize insertedGroupsFromPage=_insertedGroupsFromPage;
 @property(retain, nonatomic) FCFeedRefreshSession *refreshSession; // @synthesize refreshSession=_refreshSession;
 @property(readonly, nonatomic) _Bool isOffline; // @synthesize isOffline=_isOffline;
 @property(retain, nonatomic) NSHashTable *groupsFromPage; // @synthesize groupsFromPage=_groupsFromPage;
@@ -67,7 +71,9 @@
 @property(readonly, nonatomic) FCForYouCatchUpOperation *forYouCatchUpOperation; // @synthesize forYouCatchUpOperation=_forYouCatchUpOperation;
 - (_Bool)isNewEdition;
 - (id)articleIDsContainedByGroupType:(long long)arg1;
+- (id)groupOfGroupType:(long long)arg1;
 - (id)allArticleIDs;
+- (id)allGroupIDs;
 - (id)filterTransformationWithFilterOptions:(long long)arg1 considerOutputFrom:(id)arg2;
 - (id)filterTransformationWithFilterOptions:(long long)arg1 ignoringOutputFrom:(id)arg2;
 - (id)filterTransformationWithFilterOptions:(long long)arg1 ignoringCurrentPageOutputFrom:(id)arg2;
@@ -77,15 +83,15 @@
 - (id)creationDateOfFollowingGroupWithType:(long long)arg1;
 - (id)precedingNewFavoriteTagIDs;
 - (_Bool)pageHasPrecedingGroupWithSourceIdentifier:(id)arg1;
+- (_Bool)pageWillHaveGroupWithSourceIdentifier:(id)arg1;
+- (_Bool)pageIsWaitingForFirstGroupFromSourceIdentifier:(id)arg1;
 - (_Bool)pageHasExhaustedGroupsWithTypes:(id)arg1;
-- (_Bool)pageWillContainHeadlineCount:(unsigned long long)arg1 fromGroupTypes:(id)arg2;
 - (_Bool)pageWillContainExpandedNewGroupWithType:(long long)arg1;
-- (_Bool)pageWillContainGroupWithType:(long long)arg1;
 - (unsigned long long)countOfPrecedingAdjacentGroupsWithTypes:(id)arg1;
 - (id)followingAdjacentHeadlinesFromGroupType:(long long)arg1;
 - (id)precedingAdjacentHeadlinesFromGroupType:(long long)arg1;
-@property(readonly, nonatomic) unsigned long long countOfArticlesInPrecedingGroup;
 @property(readonly, nonatomic) long long precedingGroupType;
+- (unsigned long long)countOfGroupsFromPageWithType:(long long)arg1;
 - (id)groupFromPageWithType:(long long)arg1;
 - (id)copyWithRefreshSession:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 cloudContext:(id)arg2 refreshSession:(id)arg3 refreshDateRange:(id)arg4 currentEdition:(id)arg5 followingEdition:(id)arg6 precedingGroups:(id)arg7 followingGroups:(id)arg8 pendingGroupsFromOtherSessions:(id)arg9 feedDescriptor:(id)arg10 emitters:(id)arg11 desiredHeadlineCount:(unsigned long long)arg12 preferSpeedOverQuality:(_Bool)arg13 forYouCatchUpOperation:(id)arg14;

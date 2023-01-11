@@ -4,18 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CPLEngineTransport, CPLFeatureVersionHistory, CPLLibraryInfo, NSObject;
-@protocol CPLEngineTransportDownloadBatchTask, CPLEngineTransportGetLibraryInfoTask, CPLEngineTransportGroup, CPLEngineTransportQueryTask, OS_dispatch_queue;
+@class CPLEngineTransport, CPLFeatureVersionHistory, CPLLibraryInfo, CPLLibraryState, NSObject, NSString;
+@protocol CPLEngineTransportDownloadBatchTask, CPLEngineTransportGetCurrentSyncAnchorTask, CPLEngineTransportGroup, CPLEngineTransportQueryTask, OS_dispatch_queue;
 
 @interface CPLPullFromTransportScopeTask
 {
     NSObject<OS_dispatch_queue> *_queue;
     CPLEngineTransport *_transport;
-    struct NSData *_initialSyncAnchor;
     id <CPLEngineTransportDownloadBatchTask> _downloadTask;
     id <CPLEngineTransportQueryTask> _queryTask;
-    id <CPLEngineTransportGetLibraryInfoTask> _getLibraryInfoTask;
-    struct NSData *_lastKnownSyncAnchor;
     CPLLibraryInfo *_currentLibraryInfo;
     Class _currentQueryClass;
     _Bool _ignoreNewBatches;
@@ -27,8 +24,19 @@
     unsigned long long _totalAssetCountForScope;
     _Bool _hasCachedTotalAssetCountForScope;
     long long _taskItem;
+    _Bool _hasFetchedInitialSyncAnchor;
+    _Bool _shouldStoreInitialSyncAnchor;
+    struct NSData *_initialSyncAnchor;
+    CPLLibraryInfo *_initialLibraryInfo;
+    CPLLibraryState *_initialLibraryState;
+    id <CPLEngineTransportGetCurrentSyncAnchorTask> _fetchInitialSyncAnchorTask;
+    NSObject<OS_dispatch_queue> *_notifyQueue;
+    _Bool _didNotifySchedulerPullQueueIsFullOnce;
+    _Bool _needsToNotifySchedulerPullQueueIsFull;
+    NSString *_phaseDescription;
 }
 
+@property(copy) NSString *phaseDescription; // @synthesize phaseDescription=_phaseDescription;
 - (void).cxx_destruct;
 - (id)taskIdentifier;
 - (void)cancel;
@@ -36,10 +44,12 @@
 - (void)launch;
 - (void)_launch;
 - (void)_checkServerFeatureVersionWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_fetchInitialSyncAnchor;
 - (void)_launchPullTasksAndDisableQueries:(_Bool)arg1;
 - (void)_launchNextQueryTask;
 - (void)_launchQueryForClass:(Class)arg1 cursor:(id)arg2;
 - (void)_handleNewBatchFromQuery:(id)arg1 newCursor:(id)arg2;
+- (void)_storeInitialSyncAnchorIfNecessaryInTransaction:(id)arg1;
 - (void)_handleNewBatchFromQuery:(id)arg1 newCursor:(id)arg2 inTransaction:(id)arg3;
 - (void)_launchFetchChangesFromSyncAnchor:(struct NSData *)arg1;
 - (void)_updateLastFeatureVersionAndRelaunchFetchChangesFromSyncAnchor:(struct NSData *)arg1;
@@ -49,7 +59,10 @@
 - (unsigned long long)_totalAssetCountForScope;
 - (void)_extractAndMingleAssetsIfPossibleFromBatch:(id)arg1 inTransaction:(id)arg2;
 - (void)_cancelAllTasks;
-- (id)initWithEngineLibrary:(id)arg1 clientCacheIdentifier:(id)arg2 scope:(id)arg3 transportScope:(id)arg4;
+- (void)_notifySchedulerPullQueueIsFullNowIfNecessary;
+- (void)_notifySchedulerPullQueueIsFull;
+- (void)_reallyNotifySchedulerPullQueueIsFull;
+- (id)initWithEngineLibrary:(id)arg1 session:(id)arg2 clientCacheIdentifier:(id)arg3 scope:(id)arg4 transportScope:(id)arg5;
 
 @end
 

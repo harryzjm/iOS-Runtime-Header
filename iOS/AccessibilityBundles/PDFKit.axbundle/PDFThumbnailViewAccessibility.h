@@ -12,11 +12,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityUserTestingChildren;
-- (id)scrubbingAtFraction:(double)arg1 betweenIndexPath:(id)arg2 andIndexPath:(id)arg3 outDiscreteFraction:(double *)arg4;
-- (void)_accessibilitySetAnnouncementTimer:(id)arg1;
-- (id)_accessibilityAnnouncementTimer;
 - (struct CGRect)accessibilityFrame;
 - (struct CGPoint)accessibilityActivationPoint;
+- (id)_axIconsView;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
 - (id)accessibilityValue;

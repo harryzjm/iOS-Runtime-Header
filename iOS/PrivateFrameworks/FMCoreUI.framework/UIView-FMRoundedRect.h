@@ -6,12 +6,21 @@
 
 #import <UIKit/UIView.h>
 
-@class NSNumber, UIColor;
+@class NSArray, NSNumber, UIColor;
 
 @interface UIView (FMRoundedRect)
 - (struct CGPath *)newPathForRoundedRect:(struct CGRect)arg1 radius:(double)arg2;
 @property(retain, nonatomic) NSNumber *roundedRectBorderWidth;
 @property(retain, nonatomic) UIColor *roundedRectBorderColor;
 @property(retain, nonatomic) UIColor *roundedRectBackgroundColor;
+- (id)addConstraintsToSetSize:(struct CGSize)arg1;
+- (id)addConstraintsToFillSuperview;
+- (id)generateImage;
+@property(retain, nonatomic) UIColor *debugHighlight;
+- (void)setRandomDebugHighlight;
+- (void)centerVerticallyInSuperview;
+- (void)centerHorizontallyInSuperview;
+- (void)performOnAllSubviews:(CDUnknownBlockType)arg1;
+@property(readonly, copy) NSArray *allSubviews;
 @end
 

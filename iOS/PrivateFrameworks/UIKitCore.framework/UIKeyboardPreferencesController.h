@@ -12,6 +12,7 @@
 {
 }
 
++ (id)valueForPreferenceKey:(id)arg1 domain:(id)arg2;
 + (id)sharedPreferencesController;
 - (_Bool)isPasswordAutoFillAllowed;
 - (_Bool)respondsToSelector:(SEL)arg1;
@@ -23,9 +24,9 @@
 - (void)performedFirstReachableKeyboardInteraction;
 - (_Bool)isFirstReachableKeyboardInteraction;
 @property long long handBias;
+@property _Bool enableProKeyboard;
 - (_Bool)spaceConfirmationEnabled;
 - (double)rivenSizeFactor:(double)arg1;
-- (_Bool)typologyEnabled;
 - (_Bool)allEnabledInputModesAreValid;
 - (void)setLanguageAwareInputModeLastUsed:(id)arg1;
 - (void)saveInputModes:(id)arg1;

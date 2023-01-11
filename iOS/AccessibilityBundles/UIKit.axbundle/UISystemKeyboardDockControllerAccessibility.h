@@ -11,8 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)updateDockItemsVisibility;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)loadView;
+- (void)_axUpdateGlobeKeyLabel;
+- (_Bool)_axShowsGlobeKeyAsEmoji;
 
 @end
 

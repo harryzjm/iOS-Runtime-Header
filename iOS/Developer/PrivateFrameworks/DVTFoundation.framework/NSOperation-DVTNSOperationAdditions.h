@@ -6,7 +6,13 @@
 
 #import <Foundation/NSOperation.h>
 
+@class DVTStackBacktrace;
+
 @interface NSOperation (DVTNSOperationAdditions)
 - (void)dvt_observeCompletionOnQueue:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)__DVTMainThreadLatencyChecker__waitUntilFinished;
+- (void)__DVTMainThreadLatencyChecker__setCompletionBlock:(CDUnknownBlockType)arg1;
+@property(retain) DVTStackBacktrace *__DVTMainThreadLatencyChecker__creationBacktrace;
+- (id)__DVTMainThreadLatencyChecker__init;
 @end
 

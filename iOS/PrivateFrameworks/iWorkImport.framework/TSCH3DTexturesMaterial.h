@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void)didInitFromSOS;
 - (id)firstTiling;
 - (id)firstTexture;
+- (id)variableTexture;
 - (void)addTexture:(id)arg1 tiling:(id)arg2;
 - (id)textureEnumerator;
 - (unsigned long long)textureCount;

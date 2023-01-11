@@ -8,6 +8,7 @@
 
 @class UILabel;
 
+__attribute__((visibility("hidden")))
 @interface CKBadgeView : UIView
 {
     unsigned long long _value;

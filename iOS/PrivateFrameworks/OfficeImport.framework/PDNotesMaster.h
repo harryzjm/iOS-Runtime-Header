@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     OADTextListStyle *mNotesTextStyle;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 - (void)removeUnnecessaryOverrides;
 - (void)setUpPropertyHierarchyPreservingEffectiveValues;
@@ -32,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (id)colorScheme;
 - (id)theme;
 - (id)parentSlideBase;
-- (void)dealloc;
 - (id)init;
 
 @end

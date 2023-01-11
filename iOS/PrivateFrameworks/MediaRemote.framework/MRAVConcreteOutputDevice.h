@@ -13,6 +13,7 @@
     AVOutputDevice *_avOutputDevice;
     MRAVOutputDeviceSourceInfo *_sourceInfo;
     NSString *_uid;
+    _Bool _overrideUID;
     NSString *_modelID;
     NSString *_firmwareVersion;
     NSString *_logicalDeviceID;
@@ -28,6 +29,7 @@
 - (void)_onqueue_clearCachedAVOutputDeviceProperties;
 - (_Bool)_isOutputDevice:(id)arg1 belongToOutputContext:(id)arg2;
 - (id)_outputContext;
+- (id)bluetoothID;
 - (void)setVolume:(float)arg1;
 - (float)volume;
 - (_Bool)isVolumeControlAvailable;
@@ -38,15 +40,21 @@
 - (float)batteryLevel;
 - (unsigned int)deviceSubtype;
 - (unsigned int)deviceType;
+- (id)availableBluetoothListeningModes;
+- (void)setCurrentBluetoothListeningMode:(id)arg1;
+- (id)currentBluetoothListeningMode;
 - (_Bool)isPickedOnPairedDevice;
 - (_Bool)isDeviceGroupable;
 - (_Bool)isProxyGroupPlayer;
+- (_Bool)supportsBluetoothSharing;
 - (_Bool)isGroupable;
 - (id)parentGroupIdentifier;
 - (_Bool)parentGroupContainsDiscoverableLeader;
 - (_Bool)isAirPlayReceiverSessionActive;
 - (_Bool)groupContainsGroupLeader;
 - (_Bool)isGroupLeader;
+- (_Bool)isAddedToHomeKit;
+- (_Bool)supportsRapport;
 - (_Bool)supportsBufferedAirPlay;
 - (_Bool)canRelayCommunicationChannel;
 - (_Bool)isRemoteControllable;

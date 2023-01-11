@@ -29,7 +29,6 @@
 - (void)reloadLocalizedFormatStrings;
 - (id)stringFromDuration:(double)arg1 style:(long long)arg2;
 - (id)stringFromDuration:(double)arg1 replacingDigitsWithDigit:(unsigned long long)arg2 style:(long long)arg3;
-- (void)dealloc;
 - (id)init;
 
 @end

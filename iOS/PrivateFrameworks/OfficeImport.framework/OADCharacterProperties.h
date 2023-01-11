@@ -8,6 +8,7 @@
 
 @class NSArray, NSString, OADColor, OADFill, OADHyperlink, OADStroke;
 
+__attribute__((visibility("hidden")))
 @interface OADCharacterProperties <OADEffectsParent>
 {
     NSString *mLatinFont;
@@ -60,6 +61,7 @@
 }
 
 + (void)initialize;
+- (void).cxx_destruct;
 - (_Bool)isAnythingOverridden;
 - (_Bool)isAnyCharacterPropertyOverridden;
 - (_Bool)isEqual:(id)arg1;
@@ -151,7 +153,6 @@
 - (id)stroke;
 - (_Bool)hasStroke;
 @property(readonly, copy) NSString *description;
-- (void)dealloc;
 - (id)initWithDefaults;
 
 // Remaining properties

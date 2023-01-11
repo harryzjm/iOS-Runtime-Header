@@ -6,10 +6,10 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKDetailsController;
+@class UIViewController;
 
 @protocol CKDetailsControllerDelegate <NSObject>
-- (void)detailsControllerDidDismiss:(CKDetailsController *)arg1;
-- (void)detailsControllerWillDismiss:(CKDetailsController *)arg1;
+- (void)detailsControllerDidDismiss:(UIViewController *)arg1;
+- (void)detailsControllerWillDismiss:(UIViewController *)arg1;
 @end
 

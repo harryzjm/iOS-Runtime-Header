@@ -6,9 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSArray, PKPaymentPass, PKPaymentSetupMoreInfoView;
+#import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 
-@interface PKPaymentSetupMoreInfoViewController : UIViewController
+@class NSArray, NSString, PKPaymentPass, PKPaymentSetupMoreInfoView;
+
+@interface PKPaymentSetupMoreInfoViewController : UIViewController <UIScrollViewDelegate>
 {
     _Bool _isFinalViewController;
     PKPaymentPass *_pass;
@@ -25,9 +27,11 @@
 @property(readonly, retain, nonatomic) NSArray *moreInfoItems; // @synthesize moreInfoItems=_moreInfoItems;
 @property(readonly, retain, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 - (void).cxx_destruct;
+- (long long)preferredStatusBarStyle;
 - (void)_handleDismissal;
 - (void)_handlePush;
 - (void)_nextTapped:(id)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
 - (id)_nextItems;
 - (id)_currentItem;
 - (void)viewWillLayoutSubviews;
@@ -36,6 +40,12 @@
 - (unsigned long long)edgesForExtendedLayout;
 - (void)_configureNavigationItem;
 - (id)initWithMoreInfoItems:(id)arg1 paymentPass:(id)arg2 context:(long long)arg3 dismissalHandler:(CDUnknownBlockType)arg4;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

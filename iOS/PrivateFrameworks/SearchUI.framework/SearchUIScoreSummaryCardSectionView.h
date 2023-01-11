@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <SearchUI/NUIContainerBoxViewDelegate-Protocol.h>
+#import <SearchUI/NUIContainerViewDelegate-Protocol.h>
 
 @class NSString, TLKSplitHeaderView;
 
-@interface SearchUIScoreSummaryCardSectionView <NUIContainerBoxViewDelegate>
+@interface SearchUIScoreSummaryCardSectionView <NUIContainerViewDelegate>
 {
     TLKSplitHeaderView *_splitHeaderView;
 }
@@ -17,7 +17,7 @@
 + (id)titleForScoreBoard:(id)arg1 forDisplay:(_Bool)arg2;
 + (int)separatorStyleForCardSection:(id)arg1;
 + (_Bool)supportsRecyclingForCardSection:(id)arg1;
-@property(retain) TLKSplitHeaderView *splitHeaderView; // @synthesize splitHeaderView=_splitHeaderView;
+@property(retain, nonatomic) TLKSplitHeaderView *splitHeaderView; // @synthesize splitHeaderView=_splitHeaderView;
 - (void).cxx_destruct;
 - (void)updateChevronVisible:(_Bool)arg1 leaveSpaceForChevron:(_Bool)arg2;
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;

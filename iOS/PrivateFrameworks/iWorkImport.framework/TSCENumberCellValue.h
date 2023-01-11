@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithNumberValue:(struct TSCENumberValue *)arg1 locale:(id)arg2;
+- (id)initWithDecimal:(const struct TSUDecimal *)arg1 locale:(id)arg2;
 - (id)initWithDouble:(double)arg1 locale:(id)arg2;
 
 @end

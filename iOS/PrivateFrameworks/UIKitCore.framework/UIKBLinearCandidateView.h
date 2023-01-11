@@ -4,21 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class UIKBCandidateCollectionView;
-
 __attribute__((visibility("hidden")))
 @interface UIKBLinearCandidateView
 {
 }
 
-+ (Class)cellClass;
-- (void)scrollViewDidChangeContentSize:(id)arg1;
 - (unsigned long long)focusableVariantCount;
-- (void)reloadDataByAppendingAtEnd:(_Bool)arg1;
 - (void)refreshSelectedCandidate;
-
-// Remaining properties
-@property(readonly, nonatomic) UIKBCandidateCollectionView *candidatesCollectionView; // @dynamic candidatesCollectionView;
+- (void)updateCandidateKey;
 
 @end
 

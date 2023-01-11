@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)allowsEditing;
 @property(readonly, nonatomic) struct _NSRange range;
 @property(readonly, nonatomic) int styleAttributeArrayKind;
-@property(readonly, nonatomic) int attributeArrayKind;
+@property(readonly, nonatomic) unsigned long long attributeArrayKind;
 - (int)smartFieldKind;
 - (id)copyWithContext:(id)arg1;
 - (void)i_setTextAttributeUUIDString:(id)arg1;

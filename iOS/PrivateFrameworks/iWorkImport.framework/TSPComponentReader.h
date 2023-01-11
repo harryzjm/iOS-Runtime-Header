@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
         unsigned int isReadingFromDocument:1;
         unsigned int ignoreUnknownContent:1;
         unsigned int ignoreVersionChecking:1;
+        unsigned int hasIncompatibleVersion:1;
         unsigned int acceptUnknownDocumentObject:1;
     } _flags;
 }
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldProceedParsingOnFailure;
 - (void)beginReadingWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
+- (id)initWithComponent:(id)arg1 finalizeHandlerQueue:(id)arg2 delegate:(id)arg3 readChannel:(id)arg4 ignoreUnknownContent:(_Bool)arg5 ignoreVersionChecking:(_Bool)arg6;
 - (id)initWithComponent:(id)arg1 finalizeHandlerQueue:(id)arg2 delegate:(id)arg3 readChannel:(id)arg4;
 - (id)initWithComponent:(id)arg1 finalizeHandlerQueue:(id)arg2 delegate:(id)arg3;
 

@@ -4,22 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <Home/HFActionBuilderFactory-Protocol.h>
 #import <Home/HFMediaAccessoryLikeItem-Protocol.h>
 
 @class NSSet, NSString;
-@protocol HFCharacteristicValueSource, HFHomeKitObject, HFMediaProfileContainer;
+@protocol HFCharacteristicValueSource, HFHomeKitObject, HFHomeKitSettingsVendor, HFMediaProfileContainer, HFMediaValueSource;
 
-@interface HFMediaAccessoryItem <HFMediaAccessoryLikeItem>
+@interface HFMediaAccessoryItem <HFMediaAccessoryLikeItem, HFActionBuilderFactory>
 {
+    _Bool _inServiceAction;
     id <HFHomeKitObject> _homeKitObject;
-    id <HFMediaProfileContainer> _mediaProfileContainer;
+    id <HFHomeKitSettingsVendor> _homeKitSettingsVendor;
     id <HFCharacteristicValueSource> _valueSource;
+    id <HFMediaProfileContainer> _mediaProfileContainer;
+    long long _mediaAccessoryItemType;
 }
 
-@property(readonly, nonatomic) id <HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
+@property(nonatomic) _Bool inServiceAction; // @synthesize inServiceAction=_inServiceAction;
+@property(readonly, nonatomic) long long mediaAccessoryItemType; // @synthesize mediaAccessoryItemType=_mediaAccessoryItemType;
 @property(readonly, nonatomic) id <HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
+@property(readonly, nonatomic) id <HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
+@property(readonly, nonatomic) id <HFHomeKitSettingsVendor> homeKitSettingsVendor; // @synthesize homeKitSettingsVendor=_homeKitSettingsVendor;
 @property(readonly, nonatomic) id <HFHomeKitObject> homeKitObject; // @synthesize homeKitObject=_homeKitObject;
 - (void).cxx_destruct;
+- (id)currentStateActionBuildersForHome:(id)arg1;
+- (_Bool)actionsMayRequireDeviceUnlock;
+- (_Bool)containsActions;
 - (id)iconDescriptor;
 - (id)serviceNameComponents;
 - (_Bool)_isInstallingSoftwareUpdate;
@@ -37,22 +47,27 @@
 - (_Bool)isAppleTV;
 - (_Bool)isContainedWithinMediaSystem;
 - (_Bool)isHomePodAndIsInMediaSystem;
+- (_Bool)isSingleHomePod;
 - (_Bool)isHomePod;
 - (_Bool)isHomePodMediaSystem;
+@property(readonly, nonatomic) _Bool supportsMediaAction;
+@property(readonly, nonatomic) _Bool allowsAppleMusicAccount;
 @property(readonly, nonatomic) NSSet *availableSoftwareUpdates;
 @property(readonly, nonatomic) NSSet *accessoriesSupportingSoftwareUpdate;
 @property(readonly, nonatomic) _Bool isContainedWithinItemGroup;
 @property(readonly, nonatomic) unsigned long long numberOfItemsContainedWithinGroup;
 @property(readonly, nonatomic) _Bool isItemGroup;
+- (id)namingComponentForHomeKitObject;
 - (id)serviceLikeBuilderInHome:(id)arg1;
 - (id)accessories;
-- (id)services;
+@property(readonly, nonatomic) NSSet *services;
 - (unsigned long long)_effectiveLoadingStateForSuggestedLoadingState:(unsigned long long)arg1;
 - (id)copyWithValueSource:(id)arg1;
 - (id)settings;
 - (id)room;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)createControlItems;
+@property(readonly, nonatomic) id <HFMediaValueSource> mediaValueSource;
 @property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithValueSource:(id)arg1 homeKitObject:(id)arg2;

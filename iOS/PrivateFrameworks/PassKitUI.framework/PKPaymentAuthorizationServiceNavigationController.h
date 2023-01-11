@@ -19,8 +19,9 @@
 - (void).cxx_destruct;
 - (id)_backgroundColorForModalFormSheet;
 - (void)traitCollectionDidChange:(id)arg1;
+- (id)initWithLayoutStyle:(long long)arg1 paymentRequest:(id)arg2;
+- (id)initWithStyle:(unsigned long long)arg1;
 - (id)init;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 @end
 

@@ -11,14 +11,16 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)layoutSubviews;
+- (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)_accessibilitySupportsContentSizeCategory:(id)arg1;
 - (void)_searchFieldEndEditing;
 - (void)_searchFieldBeginEditing;
 - (id)_accessibilitySubviews;
 - (id)_accessibilityFuzzyHitTestElements;
 - (_Bool)_accessibilityHitTestShouldFallbackToNearestChild;
-- (id)_imageForSearchBarIcon:(long long)arg1 state:(unsigned long long)arg2 customImage:(_Bool *)arg3;
-- (void)_setUpScopeBar;
+- (id)_accessibilitySearchBarMaskView;
+- (id)imageForSearchBarIcon:(long long)arg1 state:(unsigned long long)arg2;
 
 @end
 

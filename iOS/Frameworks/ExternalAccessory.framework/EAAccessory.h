@@ -14,6 +14,7 @@
     EAAccessoryInternal *_internal;
 }
 
+- (_Bool)supportsDestinationSharing;
 - (_Bool)supportsPointOfInterest;
 - (void)updateItemProperty:(int)arg1 withValue:(id)arg2;
 - (void)updateSystemProperty:(int)arg1 withValue:(id)arg2;
@@ -73,6 +74,8 @@
 - (id)preferredApp;
 - (_Bool)shouldBeHiddenFromUI;
 - (_Bool)supportsPublicIap;
+- (id)protocolDetails;
+- (id)ppid;
 - (id)certData;
 - (id)certSerial;
 - (id)macAddress;
@@ -92,8 +95,10 @@
 - (unsigned int)accessoryCapabilities;
 - (id)coreAccessoriesPrimaryUUID;
 - (_Bool)createdByCoreAccessories;
+- (_Bool)supportsCarPlayAppLinks;
 - (_Bool)supportsWirelessCarPlay;
 - (_Bool)supportsUSBCarPlay;
+- (_Bool)supportsOOBBTPairing2;
 - (_Bool)supportsOOBBTPairing;
 - (_Bool)supportsCarPlay;
 - (_Bool)isAvailableOverBonjour;

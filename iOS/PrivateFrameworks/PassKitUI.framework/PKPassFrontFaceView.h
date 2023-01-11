@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PKBarcodeStickerView, PKLinkedAppIconView, UIImageView, UILabel, UIView, WLEasyToHitCustomButton;
+@class PKBarcodeStickerView, PKLinkedAppIconView, UILabel, UIView;
 
 @interface PKPassFrontFaceView
 {
-    PKBarcodeStickerView *_barcodeView;
-    WLEasyToHitCustomButton *_infoButton;
-    UIImageView *_contactlessLogoView;
-    UIView *_bottomRightItemView;
     UILabel *_logoLabel;
+    PKBarcodeStickerView *_barcodeView;
+    UIView *_bottomRightItemView;
     _Bool _showsLinkedApp;
     _Bool _showsBarcodeView;
     _Bool _showsLiveBalance;
@@ -26,7 +24,6 @@
 @property(nonatomic) long long bottomRightItem; // @synthesize bottomRightItem=_bottomRightItem;
 @property(nonatomic) _Bool showsLinkedApp; // @synthesize showsLinkedApp=_showsLinkedApp;
 - (void).cxx_destruct;
-- (void)_infoButtonPressed;
 - (id)_relevantBuckets;
 - (id)_rebucketAuxiliaryFields:(id)arg1;
 @property(readonly, nonatomic) PKBarcodeStickerView *barcodeView;
@@ -34,13 +31,12 @@
 - (void)_positionBarcodeView;
 - (void)layoutSubviews;
 - (void)updateValidity;
+- (id)createExpiredLabel;
 - (id)createContactlessLogoView;
-- (id)createInfoButton;
 - (void)createBodyContentViews;
 - (void)createHeaderContentViews;
 - (id)templateForLayoutMode:(long long)arg1;
 - (id)passFaceTemplate;
-- (void)setClipsContent:(_Bool)arg1;
 - (struct CGSize)contentSize;
 - (void)setShowsBarcodeView:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)insertContentView:(id)arg1 ofType:(long long)arg2;

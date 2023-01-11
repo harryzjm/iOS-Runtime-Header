@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CNContact, PKAuthorizedPeerPaymentQuote, PKPayment, PKPaymentMethod, PKServiceProviderPurchase, PKShippingMethod;
+@class CNContact, PKAccountServicePaymentMethod, PKApplePayTrustSignature, PKAuthorizedPeerPaymentQuote, PKDisbursementVoucher, PKPayment, PKPaymentMethod, PKServiceProviderPurchase, PKShippingMethod;
 
 @interface PKPaymentAuthorizationClientCallbackStateParam
 {
@@ -17,6 +17,9 @@
 @property(nonatomic) long long kind; // @synthesize kind=_kind;
 - (void).cxx_destruct;
 - (id)description;
+@property(readonly, nonatomic) PKAccountServicePaymentMethod *accountServicePaymentMethod;
+@property(readonly, nonatomic) PKApplePayTrustSignature *applePayTrustSignature;
+@property(readonly, nonatomic) PKDisbursementVoucher *disbursementVoucher;
 @property(readonly, nonatomic) PKAuthorizedPeerPaymentQuote *authorizedPeerPaymentQuote;
 @property(readonly, nonatomic) PKServiceProviderPurchase *purchase;
 @property(readonly, nonatomic) PKPayment *payment;

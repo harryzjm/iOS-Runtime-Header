@@ -11,12 +11,14 @@
 @interface _WKActivatedElementInfo : NSObject
 {
     struct RetainPtr<NSURL> _URL;
+    struct RetainPtr<NSURL> _imageURL;
     struct RetainPtr<NSString> _title;
-    struct CGPoint _interactionLocation;
+    struct IntPoint _interactionLocation;
     struct RetainPtr<NSString> _ID;
     struct RefPtr<WebKit::ShareableBitmap, WTF::DumbPtrTraits<WebKit::ShareableBitmap>> _image;
     struct RetainPtr<UIImage> _uiImage;
     struct RetainPtr<NSDictionary> _userInfo;
+    _Bool _animatedImage;
     long long _type;
     struct CGRect _boundingRect;
 }
@@ -28,12 +30,14 @@
 - (void).cxx_destruct;
 @property(readonly, copy, nonatomic) UIImage *image;
 @property(readonly, nonatomic) NSDictionary *userInfo;
-@property(readonly, nonatomic) struct CGPoint _interactionLocation;
+@property(readonly, nonatomic) _Bool isAnimatedImage;
+@property(readonly, nonatomic) struct IntPoint _interactionLocation;
 @property(readonly, nonatomic) NSString *ID;
 @property(readonly, nonatomic) NSString *title;
+@property(readonly, nonatomic) NSURL *imageURL;
 @property(readonly, nonatomic) NSURL *URL;
-- (id)_initWithType:(long long)arg1 URL:(id)arg2 location:(struct CGPoint)arg3 title:(id)arg4 ID:(id)arg5 rect:(struct CGRect)arg6 image:(struct ShareableBitmap *)arg7 userInfo:(id)arg8;
-- (id)_initWithType:(long long)arg1 URL:(id)arg2 location:(struct CGPoint)arg3 title:(id)arg4 ID:(id)arg5 rect:(struct CGRect)arg6 image:(struct ShareableBitmap *)arg7;
+- (id)_initWithType:(long long)arg1 URL:(id)arg2 imageURL:(id)arg3 location:(const struct IntPoint *)arg4 title:(id)arg5 ID:(id)arg6 rect:(struct CGRect)arg7 image:(struct ShareableBitmap *)arg8 userInfo:(id)arg9;
+- (id)_initWithType:(long long)arg1 URL:(id)arg2 imageURL:(id)arg3 location:(const struct IntPoint *)arg4 title:(id)arg5 ID:(id)arg6 rect:(struct CGRect)arg7 image:(struct ShareableBitmap *)arg8;
 - (id)_initWithInteractionInformationAtPosition:(const struct InteractionInformationAtPosition *)arg1;
 
 @end

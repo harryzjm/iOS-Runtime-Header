@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <swiftCore/SwiftObject.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC13CoreKnowledge8CKLogger : SwiftObject
+@interface _TtC13CoreKnowledge8CKLogger : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *category;
+    MISSING_TYPE *osLog;
 }
 
 @end

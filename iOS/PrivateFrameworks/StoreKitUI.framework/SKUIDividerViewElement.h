@@ -6,6 +6,7 @@
 
 @class SKUIButtonViewElement, SKUIViewElementText;
 
+__attribute__((visibility("hidden")))
 @interface SKUIDividerViewElement
 {
     SKUIButtonViewElement *_button;

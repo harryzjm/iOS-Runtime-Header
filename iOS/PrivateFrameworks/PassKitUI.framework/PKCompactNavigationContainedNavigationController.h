@@ -8,17 +8,19 @@
 
 #import <PassKitUI/PKObservableContentContainer-Protocol.h>
 
-@class NSHashTable, NSLock, NSString, _UIBackdropView;
+@class NSHashTable, NSLock, NSString, UIVisualEffectView;
 
 @interface PKCompactNavigationContainedNavigationController : UINavigationController <PKObservableContentContainer>
 {
-    _UIBackdropView *_backdropView;
+    UIVisualEffectView *_backdropView;
     NSLock *_observersLock;
     NSHashTable *_observers;
     _Bool _overridesContentOverlayInsets;
+    unsigned long long _style;
 }
 
 @property(nonatomic) _Bool overridesContentOverlayInsets; // @synthesize overridesContentOverlayInsets=_overridesContentOverlayInsets;
+@property(readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 - (void).cxx_destruct;
 - (id)_observers;
 - (void)removeContentContainerObserver:(id)arg1;
@@ -27,7 +29,10 @@
 - (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)viewWillLayoutSubviews;
+- (_Bool)_canShowWhileLocked;
 - (void)viewDidLoad;
+- (void)loadView;
+- (id)initWithStyle:(unsigned long long)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 // Remaining properties

@@ -4,22 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSIndexSet, TSWPStorage;
-
 __attribute__((visibility("hidden")))
 @interface TPPdfHyperlinkController
 {
     struct CGRect mCanvasRect;
-    TSWPStorage *mBodyStorage;
-    NSIndexSet *mParagraphIndicesInTOCs;
 }
 
 + (id)URLWithDestinationName:(id)arg1;
++ (id)destinationFromSectionURL:(id)arg1;
 + (id)footnoteMarkNameForIndex:(unsigned long long)arg1;
 + (id)footnoteRefNameForIndex:(unsigned long long)arg1;
-- (void).cxx_destruct;
-- (id)p_paragraphIndicesInTOCs;
-- (void)addHyperlinksForRep:(id)arg1 context:(struct CGContext *)arg2;
 - (id)destinationFromUrl:(id)arg1;
 - (_Bool)isDestination:(id)arg1;
 - (_Bool)ignoreUrl:(id)arg1;

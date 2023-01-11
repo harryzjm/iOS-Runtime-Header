@@ -8,6 +8,7 @@
 
 @class CALayer, NSString, SKUIClientContext, SKUIEditProfileSettingDescription, SKUIImageView, UIButton, UITextField;
 
+__attribute__((visibility("hidden")))
 @interface SKUIEditProfileSettingDescriptionView <UITextFieldDelegate>
 {
     CALayer *_divider1;

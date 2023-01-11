@@ -8,15 +8,15 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit12MonogramView : UIView
 {
     MISSING_TYPE *lastSizeForFont;
     MISSING_TYPE *font;
+    MISSING_TYPE *colorStyle;
     MISSING_TYPE *text;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

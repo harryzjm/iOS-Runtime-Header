@@ -14,8 +14,7 @@ __attribute__((visibility("hidden")))
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToMessage:(struct LargeObjectArray *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (id)convertSegmentElementToElement:(id)arg1;
-- (id)convertElementToSegmentElement:(id)arg1;
+- (void)addObjectsFromArray:(id)arg1;
 
 @end
 

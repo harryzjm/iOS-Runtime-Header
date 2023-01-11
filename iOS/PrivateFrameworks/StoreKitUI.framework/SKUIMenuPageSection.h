@@ -11,6 +11,7 @@
 
 @class NSMutableIndexSet, NSString, SKUIMenuPageComponent, SKUIMenuViewController, SKUIPillsControl, SKUIPopupMenuHeaderView, UIBarButtonItem, UIPopoverController;
 
+__attribute__((visibility("hidden")))
 @interface SKUIMenuPageSection <SKUIMenuViewControllerDelegate, SKUIPopupMenuDelegate, SKUISortDataRequestDelegate, UIPopoverControllerDelegate>
 {
     UIBarButtonItem *_cancelMenuItem;

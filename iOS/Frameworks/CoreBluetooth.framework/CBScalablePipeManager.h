@@ -10,6 +10,12 @@
 @interface CBScalablePipeManager
 {
     NSMutableSet *_identifiers;
+    struct {
+        unsigned int didRegisterEndpoint:1;
+        unsigned int didUnregisterEndpoint:1;
+        unsigned int pipeDidConnect:1;
+        unsigned int pipeDidDisconnect:1;
+    } _delegateFlags;
     id <CBScalablePipeManagerDelegate> _delegate;
     NSHashTable *_pipes;
 }

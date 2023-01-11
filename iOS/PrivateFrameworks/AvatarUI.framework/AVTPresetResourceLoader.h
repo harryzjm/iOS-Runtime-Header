@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class AVTInMemoryImageCache, AVTInMemoryResourceCache, AVTUIEnvironment;
-@protocol AVTScheduler, AVTUILogger, OS_dispatch_queue;
+@class AVTInMemoryResourceCache, AVTUIEnvironment;
+@protocol AVTImageCache, AVTTaskScheduler, AVTUILogger, OS_dispatch_queue;
 
 @interface AVTPresetResourceLoader : NSObject
 {
     AVTUIEnvironment *_environment;
     AVTInMemoryResourceCache *_presetCache;
-    AVTInMemoryImageCache *_inMemoryImageCache;
-    id <AVTScheduler> _renderingScheduler;
+    id <AVTImageCache> _inMemoryImageCache;
+    id <AVTTaskScheduler> _renderingScheduler;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     id <AVTUILogger> _logger;
@@ -23,8 +23,8 @@
 @property(readonly, nonatomic) id <AVTUILogger> logger; // @synthesize logger=_logger;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
-@property(readonly, nonatomic) id <AVTScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
-@property(readonly, nonatomic) AVTInMemoryImageCache *inMemoryImageCache; // @synthesize inMemoryImageCache=_inMemoryImageCache;
+@property(readonly, nonatomic) id <AVTTaskScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
+@property(readonly, nonatomic) id <AVTImageCache> inMemoryImageCache; // @synthesize inMemoryImageCache=_inMemoryImageCache;
 @property(readonly, nonatomic) AVTInMemoryResourceCache *presetCache; // @synthesize presetCache=_presetCache;
 @property(readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 - (void).cxx_destruct;

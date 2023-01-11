@@ -9,7 +9,7 @@
 #import <TelephonyUtilities/NSCopying-Protocol.h>
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
 
-@class NSSet, NSString, NSUUID, TUContactsDataProvider, TUHandle;
+@class NSSet, NSString, NSUUID, TUContactsDataProvider, TUConversationMember, TUHandle;
 
 @interface TUConversation : NSObject <NSCopying, NSSecureCoding>
 {
@@ -24,17 +24,27 @@
     NSSet *_remoteMembers;
     NSSet *_activeRemoteParticipants;
     long long _avcSessionToken;
+    NSString *_avcSessionIdentifier;
+    TUConversationMember *_localMember;
     NSUUID *_messagesGroupUUID;
     TUHandle *_initiator;
     NSString *_messagesGroupName;
+    long long _maxVideoDecodesAllowed;
+    NSObject *_reportingHierarchyToken;
+    NSObject *_reportingHierarchySubToken;
 }
 
 + (_Bool)supportsSecureCoding;
 + (id)numberFormatter;
 + (id)emptyConversationWithGroupUUID:(id)arg1;
+@property(retain, nonatomic) NSObject *reportingHierarchySubToken; // @synthesize reportingHierarchySubToken=_reportingHierarchySubToken;
+@property(retain, nonatomic) NSObject *reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
+@property(nonatomic) long long maxVideoDecodesAllowed; // @synthesize maxVideoDecodesAllowed=_maxVideoDecodesAllowed;
 @property(copy, nonatomic) NSString *messagesGroupName; // @synthesize messagesGroupName=_messagesGroupName;
 @property(retain, nonatomic) TUHandle *initiator; // @synthesize initiator=_initiator;
 @property(retain, nonatomic) NSUUID *messagesGroupUUID; // @synthesize messagesGroupUUID=_messagesGroupUUID;
+@property(retain, nonatomic) TUConversationMember *localMember; // @synthesize localMember=_localMember;
+@property(copy, nonatomic) NSString *avcSessionIdentifier; // @synthesize avcSessionIdentifier=_avcSessionIdentifier;
 @property(nonatomic) long long avcSessionToken; // @synthesize avcSessionToken=_avcSessionToken;
 @property(copy, nonatomic) NSSet *activeRemoteParticipants; // @synthesize activeRemoteParticipants=_activeRemoteParticipants;
 @property(copy, nonatomic) NSSet *remoteMembers; // @synthesize remoteMembers=_remoteMembers;

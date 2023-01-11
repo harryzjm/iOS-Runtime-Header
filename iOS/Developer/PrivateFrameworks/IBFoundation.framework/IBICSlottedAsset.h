@@ -6,13 +6,15 @@
 
 #import <IBFoundation/IBICAssetWithSlottedChildren-Protocol.h>
 
-@class IBICManifestArchivist, NSString;
+@class IBICManifestArchivist, NSSet, NSString;
 
 @interface IBICSlottedAsset <IBICAssetWithSlottedChildren>
 {
     IBICManifestArchivist *_manifestArchivist;
+    _Bool _localizable;
 }
 
++ (_Bool)supportsLocalization;
 + (id)fileUTIsToAllowInUnstructuredImport;
 + (id)fileExtensionsToAllowInUnstructuredImport;
 + (id)synthesizeItemsFromLoosePaths:(id)arg1 claimingPaths:(id *)arg2;
@@ -26,6 +28,7 @@
 + (id)defaultName;
 + (_Bool)isAbstractCatalogItemClass;
 + (id)defaultInstanceWithChildSlots:(id)arg1;
+@property(nonatomic, getter=isLocalizable) _Bool localizable; // @synthesize localizable=_localizable;
 - (void).cxx_destruct;
 - (_Bool)isEqualForUnitTests:(id)arg1;
 - (_Bool)shouldMutateChild:(id)arg1 byCopyingContentToNewSlot:(id)arg2;
@@ -43,18 +46,22 @@
 - (Class)manifestArchivistSlotClassForChildren:(id)arg1;
 - (void)replaceChildrenFromFileSystemSnapshot:(id)arg1 results:(id)arg2;
 - (void)populateMutatorsToAddRequiredChildCounterparts:(id)arg1;
+- (void)manifestArchivist:(id)arg1 populateManifest:(id)arg2;
+- (void)manifestArchivist:(id)arg1 applyPropertiesFromManifest:(id)arg2;
+- (void)enumerateDescriptionAttributeComponents:(CDUnknownBlockType)arg1;
 - (void)populateIssues:(id)arg1 context:(id)arg2;
 - (id)assetRepMatchingVariant:(id)arg1 forPlatform:(id)arg2;
 - (id)assetRepForSlot:(id)arg1;
 - (id)assetRepForStructuredIdentifier:(id)arg1;
 - (id)assetRepForIdentifier:(id)arg1;
 - (id)childForIdentifier:(id)arg1;
-- (id)children;
+@property(readonly, nonatomic) NSSet *children;
 - (id)defaultUnqualifiedRuntimeName;
 - (id)orderedSlotComponentClasses;
 - (_Bool)fileStructureSnapshotChildWouldMapToModelChild:(id)arg1;
 - (id)manifestContent;
 - (id)manifestFileName;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
 - (id)initializeManifestArchivist;

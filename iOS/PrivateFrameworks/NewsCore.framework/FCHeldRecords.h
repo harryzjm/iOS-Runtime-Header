@@ -15,8 +15,8 @@
 }
 
 + (id)heldRecordsByMerging:(id)arg1 with:(id)arg2;
-@property(retain, nonatomic) NSDictionary *interestTokensByID; // @synthesize interestTokensByID=_interestTokensByID;
-@property(retain, nonatomic) NSDictionary *recordsByID; // @synthesize recordsByID=_recordsByID;
+@property(readonly, nonatomic) NSDictionary *interestTokensByID; // @synthesize interestTokensByID=_interestTokensByID;
+@property(readonly, nonatomic) NSDictionary *recordsByID; // @synthesize recordsByID=_recordsByID;
 - (void).cxx_destruct;
 - (id)heldRecordsForIDs:(id)arg1;
 - (id)heldRecordsPassingTest:(CDUnknownBlockType)arg1;
@@ -32,6 +32,7 @@
 @property(readonly, nonatomic) FCInterestToken *onlyInterestToken;
 @property(readonly, nonatomic) id onlyRecord;
 @property(readonly, nonatomic) unsigned long long count;
+- (id)initWithRecordsByID:(id)arg1 interestTokensByID:(id)arg2;
 
 @end
 

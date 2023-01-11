@@ -7,13 +7,9 @@
 #import <DocumentManager/DOCRemoteAppearanceInterface-Protocol.h>
 
 @class DOCConfiguration;
-@protocol DOCHostBrowserViewControllerProxy, DOCHostDocumentBrowserViewControllerInterface, DOCHostInfoViewControllerProxy, DOCHostSourceViewControllerProxy, DOCHostTargetSelectionBrowserViewControllerProxy;
+@protocol DOCHostDocumentBrowserViewControllerInterface, DOCHostTargetSelectionBrowserViewControllerProxy;
 
 @protocol DOCServiceContextProtocol <DOCRemoteAppearanceInterface>
-- (void)fetchAllSourcesWithCompletionHandler:(void (^)(NSArray *))arg1;
-- (void)configureAsBrowserViewWithHostProxy:(id <DOCHostBrowserViewControllerProxy>)arg1 configuration:(DOCConfiguration *)arg2 completionBlock:(void (^)(id <DOCServiceBrowserViewControllerProxy>))arg3;
-- (void)configureAsSourceViewWithHostProxy:(id <DOCHostSourceViewControllerProxy>)arg1 configuration:(DOCConfiguration *)arg2 completionBlock:(void (^)(id <DOCServiceSourceViewControllerProxy>))arg3;
-- (void)configureAsInfoViewWithHostProxy:(id <DOCHostInfoViewControllerProxy>)arg1 configuration:(DOCConfiguration *)arg2 completionBlock:(void (^)(id <DOCServiceInfoViewControllerProxy>))arg3;
 - (void)configureAsTargetSelectionBrowserWithHostProxy:(id <DOCHostTargetSelectionBrowserViewControllerProxy>)arg1 configuration:(DOCConfiguration *)arg2 completionBlock:(void (^)(id <DOCServiceTargetSelectionBrowserViewControllerProxy>))arg3;
 - (void)configureAsDocumentBrowserWithHostProxy:(id <DOCHostDocumentBrowserViewControllerInterface>)arg1 configuration:(DOCConfiguration *)arg2 completionBlock:(void (^)(id <DOCServiceDocumentBrowserViewControllerInterface>))arg3;
 @end

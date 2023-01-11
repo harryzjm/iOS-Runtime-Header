@@ -24,6 +24,8 @@
 + (_Bool)isFileNotFoundError:(id)arg1;
 + (_Bool)writeVersion:(id)arg1 toDiskAtLocation:(id)arg2 error:(id *)arg3;
 + (id)readVersionForStoreAtLocation:(id)arg1 error:(id *)arg2;
++ (_Bool)removeFilesAtLocation:(id)arg1 error:(id *)arg2;
++ (_Bool)contentExistsAtLocation:(id)arg1;
 + (id)currentVersion;
 + (id)dbLocationForStoreLocation:(id)arg1;
 

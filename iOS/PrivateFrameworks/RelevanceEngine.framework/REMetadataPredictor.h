@@ -14,8 +14,9 @@
 
 + (id)supportedFeatures;
 - (void).cxx_destruct;
+- (void)update;
 - (id)featureValueForFeature:(id)arg1 element:(id)arg2 engine:(id)arg3 trainingContext:(id)arg4;
-- (id)init;
+- (id)_init;
 
 @end
 

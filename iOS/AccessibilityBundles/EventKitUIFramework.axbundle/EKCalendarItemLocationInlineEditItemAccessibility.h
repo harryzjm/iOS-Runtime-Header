@@ -12,8 +12,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
-- (void)_accessibilityLoadAccessibilityInformation;
-- (void)_axAnnotateLocationCell;
 
 @end
 

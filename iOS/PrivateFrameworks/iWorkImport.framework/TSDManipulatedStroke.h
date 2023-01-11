@@ -20,10 +20,10 @@ __attribute__((visibility("hidden")))
 - (double)renderedWidth;
 - (void)saveToArchive:(struct StrokeArchive *)arg1 archiver:(id)arg2;
 - (id)initWithArchive:(const struct StrokeArchive *)arg1 unarchiver:(id)arg2;
-- (struct CGPath *)pathToStrokeFromCGPath:(struct CGPath *)arg1;
-- (_Bool)prefersToApplyToCAShapeLayerDuringManipulation;
-- (_Bool)canApplyToCAShapeLayer;
-- (void)paintPath:(struct CGPath *)arg1 wantsInteriorStroke:(_Bool)arg2 inContext:(struct CGContext *)arg3 useFastDrawing:(_Bool)arg4 parameterized:(_Bool)arg5 drawWithOpenGL:(_Bool)arg6 shouldReverseDrawOrder:(_Bool)arg7;
+- (const struct CGPath *)pathToStrokeFromCGPath:(struct CGPath *)arg1;
+- (_Bool)prefersToApplyToShapeRenderableDuringManipulation;
+- (_Bool)canApplyToShapeRenderable;
+- (void)paintPath:(struct CGPath *)arg1 wantsInteriorStroke:(_Bool)arg2 inContext:(struct CGContext *)arg3 useFastDrawing:(_Bool)arg4 parameterized:(_Bool)arg5 shouldReverseDrawOrder:(_Bool)arg6;
 - (struct CGPath *)manipulatePath:(struct CGPath *)arg1 withLineWidth:(double)arg2;
 - (id)strokeLineEnd:(id)arg1;
 - (struct CGPath *)strokedPath:(struct CGPath *)arg1 withLineWidth:(double)arg2 insideStroke:(_Bool)arg3;

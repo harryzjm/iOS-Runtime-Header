@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class CAShapeLayer;
+
 __attribute__((visibility("hidden")))
 @interface TSWPTOCRep
 {
+    CAShapeLayer *_selectionHighlightLayer;
 }
 
 + (id)TOCReferenceNameWithParagraphIndex:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)i_indexOfHitTOCEntryAtPoint:(struct CGPoint)arg1;
 - (id)i_paragraphStyleAtPoint:(struct CGPoint)arg1;
 - (id)hyperlinkRegions;
-- (void)showTableOfContentsEditingCollaborationHUDAtPoint:(struct CGPoint)arg1;
 - (_Bool)canMakePathEditable;
 - (_Bool)shouldShowKnobs;
 - (_Bool)shouldCreateKnobs;

@@ -17,6 +17,8 @@
 - (id)_deviceAccountNumberCellForIndexPath:(id)arg1 tableView:(id)arg2;
 - (id)_peerPaymentCardInfoCellForRowIndex:(long long)arg1 tableView:(id)arg2;
 - (id)_linkCellWithText:(id)arg1 forTableView:(id)arg2;
+- (void)viewDidLayoutSubviews;
+- (void)_axLabelIssuerLogo;
 - (void)_accessibilityLoadAccessibilityInformation;
 
 @end

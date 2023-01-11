@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewCell.h>
-
 #import <MediaPlayer/MPAVRoutingThemeableCellView-Protocol.h>
 
 @class MPAVRoutingTableViewCellSubtitleTextState, MPVolumeSlider, NSString, NSTimer, UIActivityIndicatorView, UIImageView, UILabel;
 @protocol MPAVRoutingTableViewCellDelegate;
 
-@interface MPAVRoutingTableViewCell : UITableViewCell <MPAVRoutingThemeableCellView>
+@interface MPAVRoutingTableViewCell <MPAVRoutingThemeableCellView>
 {
     UIImageView *_iconImageView;
     UILabel *_routeNameLabel;
@@ -48,9 +46,10 @@
 - (void).cxx_destruct;
 - (void)_animateSubtitleLabelToNextAvailableText;
 - (void)_updateSpinnerStyle;
-- (void)_updateSubtitleTextLabelForRoute:(id)arg1;
+- (void)_updateSubtitleTextLabelForRouteItem:(id)arg1;
 - (void)_updateSmartAudioAccessory;
 - (id)_checkmarkImageForSmartAudio;
+- (id)_checkmarkAccessibilityLabelForSmartAudio;
 - (id)_checkmarkImageNameForSmartAudio;
 - (id)_iconImageForRoute:(id)arg1;
 - (id)_pairedDeviceTextForRoute:(id)arg1;
@@ -67,7 +66,7 @@
 - (id)volumeView;
 - (id)subtitleView;
 - (id)titleView;
-- (void)updateForEndpoint:(id)arg1 route:(id)arg2 inferLocalizedModelName:(_Bool)arg3;
+- (void)updateForEndpoint:(id)arg1 routeItem:(id)arg2 inferLocalizedModelName:(_Bool)arg3;
 - (void)prepareForReuse;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;

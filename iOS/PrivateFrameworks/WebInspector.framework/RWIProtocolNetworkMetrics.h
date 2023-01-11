@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSString, RWIProtocolNetworkHeaders;
+@class NSString, RWIProtocolNetworkHeaders, RWIProtocolSecurityConnection;
 
 @interface RWIProtocolNetworkMetrics
 {
 }
 
+@property(retain, nonatomic) RWIProtocolSecurityConnection *securityConnection;
 @property(nonatomic) double responseBodyDecodedSize;
 @property(nonatomic) double responseBodyBytesReceived;
 @property(nonatomic) double responseHeaderBytesReceived;

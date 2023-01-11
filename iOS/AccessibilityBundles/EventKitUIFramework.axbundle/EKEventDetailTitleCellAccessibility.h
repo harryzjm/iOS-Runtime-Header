@@ -11,12 +11,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)accessibilityCustomRotors;
-- (_Bool)_allowCustomActionHintSpeakOverride;
+- (void)addLocation:(id)arg1;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)_locationView;
+- (void)_axAnnotateLocationViewsIfNeeded;
 
 @end
 

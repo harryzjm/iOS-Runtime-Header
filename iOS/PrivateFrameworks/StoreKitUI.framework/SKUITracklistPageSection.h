@@ -9,6 +9,7 @@
 @class NSString, SKUITracklistColumnData, SKUITracklistPageComponent, SKUIViewElementLayoutContext;
 @protocol SKUIEntityProviding;
 
+__attribute__((visibility("hidden")))
 @interface SKUITracklistPageSection <SKUIArtworkRequestDelegate>
 {
     SKUIViewElementLayoutContext *_cellLayoutContext;

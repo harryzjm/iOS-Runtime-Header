@@ -11,12 +11,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_axUpdateVolumeButtonLabel;
-- (_Bool)_axPlayerControllerIsMuted;
-- (_Bool)_axShowVolumeSlider;
-- (void)_accessibilityVisibilityControllerItemVisibilityChanged:(id)arg1;
-- (void)volumeButtonTapTriggered:(id)arg1;
-- (void)_updateVolumeButtonGlyph;
+- (_Bool)_axToggleAudioControls:(id)arg1;
+- (_Bool)_axIsMuted;
+- (void)_axLoadVolumeButtonAccessibilityInformation;
 - (void)playbackControlsViewDidLoad:(id)arg1;
 - (void)dealloc;
 - (void)_accessibilityLoadAccessibilityInformation;

@@ -11,6 +11,7 @@
 @class NSString;
 
 @interface NSMutableArray (IBMutableArrayAdditions) <IBMutableOrderedCollection>
+- (void)ib_sortUsingSelector:(SEL)arg1 onKeyPath:(id)arg2;
 - (void)ib_reverseObjects;
 - (void)ib_removeObjectsInCollection:(id)arg1;
 - (void)ib_moveObjects:(id)arg1 toIndex:(long long)arg2;

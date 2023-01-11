@@ -6,6 +6,7 @@
 
 #import <UIKit/_UITableViewCellActionButton.h>
 
+__attribute__((visibility("hidden")))
 @interface CKTableViewCellActionButton : _UITableViewCellActionButton
 {
 }

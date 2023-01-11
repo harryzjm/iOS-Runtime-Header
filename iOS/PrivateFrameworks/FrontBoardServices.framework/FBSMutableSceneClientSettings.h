@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSSet, NSString;
+#import <FrontBoardServices/BSDebugDescriptionProviding-Protocol.h>
+#import <FrontBoardServices/BSXPCSecureCoding-Protocol.h>
 
-@interface FBSMutableSceneClientSettings
+@class NSOrderedSet, NSSet, NSString;
+
+@interface FBSMutableSceneClientSettings <BSDebugDescriptionProviding, BSXPCSecureCoding>
 {
 }
 
@@ -18,6 +21,13 @@
 @property(copy, nonatomic) NSSet *occlusions; // @dynamic occlusions;
 @property(nonatomic) long long preferredInterfaceOrientation; // @dynamic preferredInterfaceOrientation;
 @property(nonatomic) double preferredLevel; // @dynamic preferredLevel;
+@property(copy, nonatomic, setter=_setLayers:) NSOrderedSet *layers; // @dynamic layers;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

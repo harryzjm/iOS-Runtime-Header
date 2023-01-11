@@ -10,10 +10,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)messsageHoursWithMapItem:(id)arg1;
-- (id)localizedHoursBuilder;
+- (id)hoursBuilderWithHours:(id)arg1;
 - (id)timeZone;
-- (id)completeHours;
+- (id)businessHours;
 - (id)titleString;
+- (_Bool)_canShowWhileLocked;
 
 @end
 

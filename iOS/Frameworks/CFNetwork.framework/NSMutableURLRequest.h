@@ -11,13 +11,15 @@
 }
 
 - (void)setBoundInterfaceIdentifier:(id)arg1;
-@property _Bool allowsCellularAccess;
-@property unsigned long long networkServiceType;
+@property _Bool allowsCellularAccess; // @dynamic allowsCellularAccess;
+@property unsigned long long networkServiceType; // @dynamic networkServiceType;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-@property(copy) NSURL *mainDocumentURL;
-@property double timeoutInterval;
-@property unsigned long long cachePolicy;
-@property(copy) NSURL *URL;
+@property _Bool allowsExpensiveNetworkAccess; // @dynamic allowsExpensiveNetworkAccess;
+@property _Bool allowsConstrainedNetworkAccess; // @dynamic allowsConstrainedNetworkAccess;
+@property(copy) NSURL *mainDocumentURL; // @dynamic mainDocumentURL;
+@property double timeoutInterval; // @dynamic timeoutInterval;
+@property unsigned long long cachePolicy; // @dynamic cachePolicy;
+@property(copy) NSURL *URL; // @dynamic URL;
 - (void)setContentDispositionEncodingFallbackArray:(id)arg1;
 - (void)_setPayloadTransmissionTimeout:(double)arg1;
 - (void)_setIgnoreHSTS:(_Bool)arg1;

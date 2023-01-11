@@ -15,7 +15,6 @@
 }
 
 + (_Bool)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 - (void).cxx_destruct;
 - (id)ringColor;
 - (void)_enumerateColoringStackedImagesViewsWithBlock:(CDUnknownBlockType)arg1;

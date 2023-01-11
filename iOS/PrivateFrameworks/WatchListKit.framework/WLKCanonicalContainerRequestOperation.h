@@ -4,11 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class WLKCanonicalContainerResponse;
+
 @interface WLKCanonicalContainerRequestOperation
 {
+    WLKCanonicalContainerResponse *_containerResponse;
 }
 
-- (id)responseProcessor;
+@property(readonly, nonatomic) WLKCanonicalContainerResponse *containerResponse; // @synthesize containerResponse=_containerResponse;
+- (void).cxx_destruct;
+- (void)processResponse;
 
 @end
 

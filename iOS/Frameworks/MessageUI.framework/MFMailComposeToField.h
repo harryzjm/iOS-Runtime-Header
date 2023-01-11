@@ -19,7 +19,8 @@
 
 @property(nonatomic) _Bool smimeButtonEnabled; // @synthesize smimeButtonEnabled=_smimeButtonEnabled;
 @property(nonatomic) _Bool smimeButtonVisible; // @synthesize smimeButtonVisible=_smimeButtonVisible;
-@property(nonatomic) id <MFMailComposeToFieldDelegate> toFieldDelegate; // @synthesize toFieldDelegate=_toFieldDelegate;
+@property(nonatomic) __weak id <MFMailComposeToFieldDelegate> toFieldDelegate; // @synthesize toFieldDelegate=_toFieldDelegate;
+- (void).cxx_destruct;
 - (id)_textContainerExclusionPathsWithAddButton:(_Bool)arg1;
 - (void)_setSMIMEButtonVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setWantsEncryption:(_Bool)arg1 canEncrypt:(_Bool)arg2 animated:(_Bool)arg3;

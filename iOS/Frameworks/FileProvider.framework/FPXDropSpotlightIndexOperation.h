@@ -4,17 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CSSearchableIndex;
+@class CSSearchableIndex, FPXDomainContext, NSString;
 
 __attribute__((visibility("hidden")))
 @interface FPXDropSpotlightIndexOperation
 {
     CSSearchableIndex *_index;
+    NSString *_reason;
+    NSString *_domainID;
+    FPXDomainContext *_domainContext;
 }
 
++ (void)deleteSearchableItemsAndClearClientStateWithDomainIdentifier:(id)arg1 index:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (void)main;
-- (id)initWithIndex:(id)arg1;
+- (id)operationDescription;
+- (id)initWithIndex:(id)arg1 context:(id)arg2 domainID:(id)arg3 reason:(id)arg4;
 
 @end
 

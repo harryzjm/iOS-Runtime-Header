@@ -6,7 +6,6 @@
 
 @class NSArray, NSString, QLDetailItemViewControllerState, QLFileIconImageView, UIButton, UIStackView, UIView;
 
-__attribute__((visibility("hidden")))
 @interface QLDetailItemViewController
 {
     QLFileIconImageView *_filePreviewImageView;

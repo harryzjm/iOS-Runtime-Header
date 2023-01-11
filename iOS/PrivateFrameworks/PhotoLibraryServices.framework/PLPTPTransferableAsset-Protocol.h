@@ -10,6 +10,14 @@
 @protocol PLPTPTransferableAdditionalAssetAttributes, PLPTPTransferableSidecarFile;
 
 @protocol PLPTPTransferableAsset <NSObject>
+@property(readonly, copy, nonatomic) NSString *pathForPenultimateFullsizeRenderVideoFile;
+@property(readonly, copy, nonatomic) NSString *pathForPenultimateFullsizeRenderImageFile;
+@property(readonly, nonatomic) long long snowplowTrashedState;
+@property(readonly, nonatomic) struct CGSize videoComplementSpatialOverCaptureSize;
+@property(readonly, nonatomic) struct CGSize spatialOverCaptureSize;
+@property(readonly, copy, nonatomic) NSString *pathForOriginalAdjustmentFile;
+@property(readonly, copy, nonatomic) NSString *pathForVideoComplementSpatialOverCaptureContentFile;
+@property(readonly, copy, nonatomic) NSString *pathForSpatialOverCaptureContentFile;
 @property(readonly, copy, nonatomic) NSString *pathForFullsizeRenderVideoFile;
 @property(readonly, copy, nonatomic) NSString *pathForFullsizeRenderImageFile;
 @property(readonly, copy, nonatomic) NSString *pathForAdjustmentFile;
@@ -37,6 +45,7 @@
 @property(readonly, retain, nonatomic) NSSet *ptpSidecarFiles;
 @property(readonly, retain, nonatomic) id <PLPTPTransferableAdditionalAssetAttributes> ptpAdditionalAttributes;
 @property(readonly, nonatomic) unsigned long long ptpCloudMasterOriginalFileSize;
+@property(readonly, nonatomic) _Bool cloudPhotoLibraryEnabled;
 @property(readonly, copy, nonatomic) NSString *pathForOriginalFile;
 @property(readonly, nonatomic) unsigned long long originalFilesize;
 @property(readonly, copy, nonatomic) NSDate *modificationDate;

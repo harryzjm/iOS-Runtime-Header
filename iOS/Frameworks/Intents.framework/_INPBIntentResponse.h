@@ -21,12 +21,15 @@
     } _has;
     _Bool _requiresAuthentication;
     _Bool _requiresProtectedData;
+    _Bool __encodeLegacyGloryData;
     int _type;
     _INPBIntentResponsePayloadFailure *_payloadFailure;
     _INPBIntentResponsePayloadSuccess *_payloadSuccess;
     _INPBUserActivity *_userActivity;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(retain, nonatomic) _INPBUserActivity *userActivity; // @synthesize userActivity=_userActivity;
 @property(nonatomic) int type; // @synthesize type=_type;
 @property(nonatomic) _Bool requiresProtectedData; // @synthesize requiresProtectedData=_requiresProtectedData;
@@ -38,6 +41,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(readonly, nonatomic) _Bool hasUserActivity;

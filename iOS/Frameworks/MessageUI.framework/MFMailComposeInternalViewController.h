@@ -7,17 +7,19 @@
 #import <UIKit/UIViewController.h>
 
 #import <MessageUI/MFMailComposeRemoteViewControllerDelegate-Protocol.h>
-#import <MessageUI/MFMailCompositionUTITypes-Protocol.h>
+#import <MessageUI/MFMailCompositionAdditionalDonating-Protocol.h>
+#import <MessageUI/MFMailCompositionShareSheetRecipients-Protocol.h>
 
 @class MFMailComposePlaceholderViewController, MFMailComposeRemoteViewController, NSArray, NSError, NSMutableArray, NSMutableDictionary, NSString, _UIAsyncInvocation;
 @protocol MFMailComposeViewControllerDelegate;
 
-@interface MFMailComposeInternalViewController : UIViewController <MFMailComposeRemoteViewControllerDelegate, MFMailCompositionUTITypes>
+@interface MFMailComposeInternalViewController : UIViewController <MFMailComposeRemoteViewControllerDelegate, MFMailCompositionAdditionalDonating, MFMailCompositionShareSheetRecipients>
 {
-    id <MFMailComposeViewControllerDelegate> _mailComposeDelegate;
     MFMailComposePlaceholderViewController *_placeholderViewController;
     MFMailComposeRemoteViewController *_serviceViewController;
     _UIAsyncInvocation *_cancellationInvocation;
+    unsigned long long _defaultContentVariationIndex;
+    NSMutableArray *_contentVariations;
     NSMutableDictionary *_compositionValues;
     NSMutableArray *_attachments;
     NSString *_placeholderSubject;
@@ -32,18 +34,26 @@
     unsigned int _didAppear:1;
     unsigned int _didFinish:1;
     unsigned int _delegateRespondsToBodyFinishedLoadingWithResult:1;
-    id _autorotationDelegate;
+    id <MFMailComposeViewControllerDelegate> _mailComposeDelegate;
 }
 
-@property(nonatomic) id autorotationDelegate; // @synthesize autorotationDelegate=_autorotationDelegate;
-@property(nonatomic) id <MFMailComposeViewControllerDelegate> mailComposeDelegate; // @synthesize mailComposeDelegate=_mailComposeDelegate;
+@property(nonatomic) __weak id <MFMailComposeViewControllerDelegate> mailComposeDelegate; // @synthesize mailComposeDelegate=_mailComposeDelegate;
+- (void).cxx_destruct;
+- (id)remoteViewController;
 - (void)autosaveWithHandler:(CDUnknownBlockType)arg1;
 - (void)requestFramesForAttachmentsWithIdentifiers:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)_setCompositionValue:(id)arg1 forKey:(id)arg2;
 - (void)finalizeCompositionValues;
 - (id)addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 - (id)addAttachmentFileURL:(id)arg1 mimeType:(id)arg2;
+@property(copy, nonatomic) NSString *shareSheetSessionID;
+@property(copy, nonatomic) NSArray *contentURLs;
+@property(copy, nonatomic) NSArray *contentText;
+@property(copy, nonatomic) NSArray *cloudPhotoIDs;
+@property(copy, nonatomic) NSArray *photoIDs;
 @property(copy, nonatomic) NSArray *UTITypes;
+- (void)setDefaultContentVariation:(id)arg1;
+- (id)addContentVariationWithName:(id)arg1;
 - (void)setCaretPosition:(unsigned long long)arg1;
 - (void)setContentVisible:(_Bool)arg1;
 - (void)setSourceAccountManagement:(int)arg1;
@@ -72,7 +82,6 @@
 - (void)_didEndDelayingCompositionPresentation;
 - (void)_endDelayingCompositionPresentation;
 - (void)_beginDelayingCompositionPresenation;
-- (double)_delayedPresentationTimeout;
 - (void)willMoveToParentViewController:(id)arg1;
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

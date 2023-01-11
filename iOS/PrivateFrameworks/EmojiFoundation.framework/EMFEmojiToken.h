@@ -36,6 +36,7 @@
 - (id)copyWithPresentationStyle:(int)arg1;
 - (_Bool)supportsPresentationStyle:(int)arg1;
 @property(readonly, nonatomic) int presentationStyle;
+@property(readonly, nonatomic) _Bool _shouldHighlightEmoji;
 - (id)copyWithSkinToneVariant:(int)arg1;
 @property(readonly, copy, nonatomic) NSArray *_skinToneVariantStrings;
 @property(readonly, copy, nonatomic) NSArray *skinToneVariants;
@@ -49,6 +50,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)dealloc;
 - (id)initWithString:(id)arg1 localeIdentifier:(id)arg2;
 - (id)initWithCEMEmojiToken:(struct __EmojiTokenWrapper *)arg1;

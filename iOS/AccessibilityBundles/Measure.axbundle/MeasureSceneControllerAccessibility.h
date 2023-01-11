@@ -17,7 +17,7 @@
 @property(readonly, nonatomic) NSDictionary *_accessibilityWorldRectangles;
 @property(readonly, nonatomic) NSDictionary *_accessibilityWorldLines;
 @property(readonly, nonatomic) NSArray *_accessibilityOrderedWorldLineIDs;
-- (void)renderer:(id)arg1 updateAtTime:(double)arg2;
+- (void)session:(id)arg1 didUpdateFrame:(id)arg2;
 - (void)didUpdateSnapPointWithScreenPoint:(id)arg1 worldPoint:(id)arg2;
 - (void)_axSetLastWorldPointType:(long long)arg1;
 - (long long)_axLastWorldPointType;

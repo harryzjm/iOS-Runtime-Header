@@ -10,6 +10,6 @@
 
 @protocol DVTStringRepresentationPersistable <NSObject>
 - (NSString *)dvt_persistableStringRepresentation;
-- (id)dvt_initFromPersistableStringRepresentation:(NSString *)arg1 error:(id *)arg2;
+- (id)dvt_initFromPersistableStringRepresentation:(NSString *)arg1 error:(out id *)arg2;
 @end
 

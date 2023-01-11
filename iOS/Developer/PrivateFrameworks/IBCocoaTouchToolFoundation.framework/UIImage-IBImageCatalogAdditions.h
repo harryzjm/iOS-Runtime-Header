@@ -6,9 +6,29 @@
 
 #import <UIKit/UIImage.h>
 
-@class IBICImageResizingBehavior;
+#import <IBCocoaTouchToolFoundation/IBBinaryArchiving-Protocol.h>
 
-@interface UIImage (IBImageCatalogAdditions)
+@class IBICImageResizingBehavior, NSString;
+
+@interface UIImage (IBImageCatalogAdditions) <IBBinaryArchiving>
++ (double)ibUpScaleForSize:(struct CGSize)arg1;
++ (id)decodeWithBinaryUnarchiver:(id)arg1;
++ (id)imagePlaceholderData1x1;
++ (id)imagePlaceholderData16X16;
++ (id)createImagePlaceholderDataWithSize:(struct CGSize)arg1;
++ (id)ibSystemImageNamed:(id)arg1 compatibleWithTraitCollection:(id)arg2;
++ (id)ibSymbolImageNamed:(id)arg1;
 @property(retain) IBICImageResizingBehavior *ibResizingBehavior;
+- (const char *)cStringClassNameForBinaryArchiver:(id)arg1;
+- (void)encodeWithBinaryArchiver:(id)arg1;
+- (void)ibSwizzled_encodeWithCoder:(id)arg1;
+- (void)setIbSymbolName:(id)arg1;
+- (id)ibSymbolName;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

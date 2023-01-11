@@ -25,7 +25,9 @@
 
 + (CDUnknownBlockType)assetResourceSmallestToLargestComparator;
 + (CDUnknownBlockType)assetResourceLargestToSmallestComparator;
++ (void)disableANEForRequest:(id)arg1;
 + (id)defaultImageCreationOptions;
++ (id)analysisLog;
 + (void)initialize;
 @property _Bool analysisJobCancelled; // @synthesize analysisJobCancelled=_analysisJobCancelled;
 @property(nonatomic) unsigned int visionAlgorithmUmbrellaVersion; // @synthesize visionAlgorithmUmbrellaVersion=_visionAlgorithmUmbrellaVersion;
@@ -37,8 +39,6 @@
 - (void)coalesceResultsDictionary:(id)arg1 forAssetLocalIdentifier:(id)arg2;
 - (void)coalesceJobResult:(unsigned long long)arg1 forAssetLocalIdentifier:(id)arg2;
 - (_Bool)supportsCoalescingResults;
-- (_Bool)stopAcknowledgeDeletionsJob:(id)arg1 error:(id *)arg2;
-- (_Bool)startAcknowledgeDeletionsJob:(id)arg1 error:(id *)arg2;
 - (_Bool)stopAnalysisJob:(id)arg1 error:(id *)arg2;
 - (_Bool)startAnalysisJob:(id)arg1 error:(id *)arg2;
 - (void)shutdown;

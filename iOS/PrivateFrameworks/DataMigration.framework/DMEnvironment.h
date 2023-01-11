@@ -14,6 +14,8 @@
 + (id)sharedInstance;
 + (_Bool)isBuildVersion:(id)arg1 equalToBuildVersion:(id)arg2;
 @property(nonatomic) _Bool testMigrationInfrastructureOnly; // @synthesize testMigrationInfrastructureOnly=_testMigrationInfrastructureOnly;
+- (void)blockUntilPreferencesFlush;
+- (_Bool)isDeviceUsingEphemeralStorage;
 - (void)setMigrationPluginResultsPref:(id)arg1;
 - (id)migrationPluginResultsPref;
 - (_Bool)implementMigrationPluginResults;
@@ -29,6 +31,7 @@
 - (void)clearContext;
 - (void)setContext:(id)arg1;
 - (id)context;
+- (id)contextPath;
 - (id)buildVersion;
 
 @end

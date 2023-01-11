@@ -9,10 +9,10 @@
 #import <UIKitCore/_UIScreenEdgePanRecognizerDelegate-Protocol.h>
 #import <UIKitCore/_UIViewRepresentingKeyboardLayout-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSUUID, UIKBCadenceMonitor, UIKBScreenTraits, UIKBTextEditingTraits, UIKeyboardTaskQueue, UITextInputTraits, _UIKBRTFingerDetection, _UIKBRTRecognizer, _UIKBRTTouchDrifting, _UIKBRTTouchVelocities, _UIScreenEdgePanRecognizer;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSUUID, UIKBCadenceMonitor, UIKBScreenTraits, UIKBTextEditingTraits, UIKeyboardTaskQueue, UIKeyboardTypingStyleEstimator, UITextInputTraits, _UIKBRTFingerDetection, _UIKBRTRecognizer, _UIKBRTTouchDrifting, _UIKBRTTouchVelocities, _UIScreenEdgePanRecognizer;
 @protocol OS_dispatch_queue;
 
-@interface UIKeyboardLayout <_UIScreenEdgePanRecognizerDelegate, _UIKBRTRecognizerDelegate, _UIKBRTTouchDriftingDelegate, _UIViewRepresentingKeyboardLayout>
+@interface UIKeyboardLayout <_UIKBRTRecognizerDelegate, _UIKBRTTouchDriftingDelegate, _UIViewRepresentingKeyboardLayout, _UIScreenEdgePanRecognizerDelegate>
 {
     UITextInputTraits *_inputTraits;
     UIKBScreenTraits *_screenTraits;
@@ -23,6 +23,7 @@
     unsigned long long _cursorLocation;
     _Bool _disableInteraction;
     UIKeyboardTaskQueue *_taskQueue;
+    UIKeyboardTypingStyleEstimator *_typingStyleEstimator;
     _Bool hideKeysUnderIndicator;
     _Bool _hasPreferredHeight;
     _Bool _isExecutingDeferredTouchTasks;
@@ -72,6 +73,8 @@
 @property(nonatomic) unsigned long long cursorLocation; // @synthesize cursorLocation=_cursorLocation;
 @property(retain, nonatomic) NSUUID *shiftKeyTouchUUID; // @synthesize shiftKeyTouchUUID=_shiftKeyTouchUUID;
 @property(retain, nonatomic) NSUUID *activeTouchUUID; // @synthesize activeTouchUUID=_activeTouchUUID;
+- (_Bool)isHandwritingPlane;
+- (_Bool)hasActiveContinuousPathInput;
 - (id)simulateTouchForCharacter:(id)arg1 errorVector:(struct CGPoint)arg2 shouldTypeVariants:(_Bool)arg3 baseKeyForVariants:(_Bool)arg4;
 - (id)simulateTouch:(struct CGPoint)arg1;
 - (void)changeToKeyplane:(id)arg1;
@@ -84,15 +87,20 @@
 - (_Bool)shouldAllowSelectionGestures:(_Bool)arg1 atPoint:(struct CGPoint)arg2 toBegin:(_Bool)arg3;
 - (id)internationalKeyDisplayStringOnEmojiKeyboard;
 - (void)updateUndoKeyState;
+- (_Bool)showsDedicatedEmojiKeyAlongsideGlobeButton;
 - (_Bool)globeKeyDisplaysAsEmojiKey;
 - (void)setKeyboardBias:(long long)arg1;
 - (void)updateGlobeKeyAndLayoutOriginBeforeSnapshotForInputView:(id)arg1;
+- (_Bool)isResized;
+- (_Bool)isResizing;
 - (_Bool)supportsEmoji;
 - (_Bool)isEmojiKeyplane;
 - (_Bool)keyplaneContainsEmojiKey;
 - (_Bool)keyplaneContainsDismissKey;
 - (void)triggerSpaceKeyplaneSwitchIfNecessary;
+- (_Bool)_allowContinuousPathUI;
 - (id)currentKeyplane;
+- (void)traitCollectionDidChange;
 - (double)biasedKeyboardWidthRatio;
 - (long long)currentHandBias;
 - (void)cancelTouchesForTwoFingerTapGesture:(id)arg1;
@@ -109,8 +117,6 @@
 - (double)flickDistance;
 - (double)hitBuffer;
 - (_Bool)canHandleEvent:(id)arg1;
-- (void)didFinishScreenGestureRecognition;
-- (void)didRecognizeGestureOnEdge:(unsigned long long)arg1 withDistance:(double)arg2;
 - (unsigned long long)targetEdgesForScreenGestureRecognition;
 - (unsigned long long)fingerIDForTouchUUID:(id)arg1;
 - (struct CGPoint)_uikbrtTouchDrifting:(id)arg1 touchCenterForFingerID:(unsigned long long)arg2;
@@ -135,12 +141,12 @@
 - (_Bool)handRestRecognizerShouldNeverIgnoreTouchState:(id)arg1 fromPoint:(struct CGPoint)arg2 toPoint:(struct CGPoint)arg3 forRestingState:(unsigned long long)arg4 otherRestedTouchLocations:(id)arg5;
 - (unsigned char)getHandRestRecognizerState;
 - (void)screenEdgePanRecognizerStateDidChange:(id)arg1;
-- (void)_notifyLayoutOfGesturePosition:(struct CGPoint)arg1 relativeToEdge:(unsigned long long)arg2;
 - (_Bool)_canAddTouchesToScreenGestureRecognizer:(id)arg1;
 - (void)resetTouchProcessingForKeyboardChange;
 - (void)updateTouchProcessingForKeyplaneChange;
 - (void)updateTouchProcessingForKeyboardChange;
 - (void)reloadKeyboardGestureRecognition;
+- (void)didMoveToWindow;
 - (void)_resetFingerDetectionFromLayout;
 - (_Bool)_shouldAllowKeyboardHandlingForTouchesEndedOrCancelled:(id)arg1 withEvent:(id)arg2;
 - (_Bool)_shouldAllowKeyboardHandlingForTouchesMoved:(id)arg1 withEvent:(id)arg2;
@@ -148,6 +154,7 @@
 - (void)assertSavedLocation:(struct CGPoint)arg1 onTouch:(id)arg2 inWindow:(id)arg3 resetPrevious:(_Bool)arg4;
 - (void)_addTouchToScreenEdgePanRecognizer:(id)arg1;
 - (void)_executeDeferredTouchTasks;
+- (void)_clearDeferredTouchTasks;
 - (_Bool)_shouldAllowKeyboardHandlingIfNecessaryForTouch:(id)arg1 phase:(long long)arg2 withTouchState:(id)arg3 task:(CDUnknownBlockType)arg4;
 - (void)resetHRRLayoutState;
 - (void)recognizer:(id)arg1 cancelTouchOnLayoutWithId:(id)arg2 startPoint:(struct CGPoint)arg3 endPoint:(struct CGPoint)arg4 whenReady:(CDUnknownBlockType)arg5;
@@ -216,10 +223,12 @@
 - (id)_keyboardLayoutView;
 - (void)longPressAction;
 - (_Bool)isShiftKeyPlaneChooser;
+- (_Bool)isGeometricShiftOrMoreKeyForTouch:(id)arg1;
 - (_Bool)isShiftKeyBeingHeld;
 - (void)setAutoshift:(_Bool)arg1;
 - (void)setShift:(_Bool)arg1;
 - (_Bool)diacriticForwardCompose;
+- (_Bool)isKanaPlane;
 - (_Bool)isAlphabeticPlane;
 - (_Bool)ignoresShiftState;
 - (_Bool)usesAutoShift;
@@ -235,11 +244,10 @@
 @property(readonly, nonatomic) long long idiom;
 @property(readonly, nonatomic) long long orientation;
 @property(retain, nonatomic) UIKeyboardTaskQueue *taskQueue;
+@property(readonly, nonatomic) UIKeyboardTypingStyleEstimator *typingStyleEstimator;
 - (void)willMoveToWindow:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)addWipeRecognizer;
-- (void)wipeGestureRecognized:(id)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

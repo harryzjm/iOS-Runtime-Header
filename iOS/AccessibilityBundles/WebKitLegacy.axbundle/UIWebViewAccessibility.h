@@ -13,6 +13,7 @@
 - (void)webView:(id)arg1 didFailLoadWithError:(id)arg2 forFrame:(id)arg3;
 - (void)webViewClose:(id)arg1;
 - (void)webView:(id)arg1 didFinishLoadForFrame:(id)arg2;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

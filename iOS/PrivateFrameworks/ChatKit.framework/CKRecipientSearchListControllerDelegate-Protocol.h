@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <ChatKit/MFAutocompleteResultsTableViewControllerDelegate-Protocol.h>
+#import <ChatKit/CNAutocompleteResultsTableViewControllerDelegate-Protocol.h>
 
 @class CKRecipientSearchListController, NSDictionary, NSString;
 
-@protocol CKRecipientSearchListControllerDelegate <MFAutocompleteResultsTableViewControllerDelegate>
+@protocol CKRecipientSearchListControllerDelegate <CNAutocompleteResultsTableViewControllerDelegate>
 - (long long)searchListController:(CKRecipientSearchListController *)arg1 idStatusForIDSID:(NSString *)arg2;
 - (void)searchListController:(CKRecipientSearchListController *)arg1 destinationsUpdated:(NSDictionary *)arg2;
 - (void)searchListControllerDidScroll:(CKRecipientSearchListController *)arg1;

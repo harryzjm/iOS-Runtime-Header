@@ -27,7 +27,6 @@
 + (id)_axAuditGetIndexPathsDictionaryForUpdateActionForView:(id)arg1;
 + (id)_axAuditGetIndexPathsDictionaryForCaptureActionForView:(id)arg1;
 + (id)_axAuditGetAllTableAndCollectionViewsForHierarchy:(id)arg1;
-+ (id)_axAuditFindClosestAccessibleAncestor:(id)arg1;
 + (id)_axAuditFindDescendantInaccessibleElements:(id)arg1;
 + (_Bool)_axAuditShouldElementBeCheckedForClipping:(id)arg1;
 + (_Bool)_axAuditElementIsClipping:(id)arg1;

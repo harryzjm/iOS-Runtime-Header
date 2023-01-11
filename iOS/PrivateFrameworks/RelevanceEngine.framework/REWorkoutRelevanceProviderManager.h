@@ -5,17 +5,21 @@
 //
 
 #import <RelevanceEngine/REPredictorObserver-Protocol.h>
+#import <RelevanceEngine/REWorkoutRelevanceProviderManagerProperties-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString;
 
-@interface REWorkoutRelevanceProviderManager <REPredictorObserver>
+@interface REWorkoutRelevanceProviderManager <REPredictorObserver, REWorkoutRelevanceProviderManagerProperties>
 {
     unsigned long long _state;
+    NSDate *_lastWorkoutDate;
 }
 
++ (_Bool)_wantsSeperateRelevanceQueue;
 + (Class)_relevanceProviderClass;
 + (id)_features;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
+@property(readonly, nonatomic) unsigned long long state;
 - (void)predictorDidUpdate:(id)arg1;
 - (void)_prepareForUpdate;
 - (void)pause;

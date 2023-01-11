@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableDictionary, NSObject, TSKCustomFormatList, TSPLazyReference, TSTMergeRegionMap, TSTTableDataList, TSTTableHeaderStorage, TSTTableHeaderStorageBucket, TSTTileIDKeyDict;
+@class NSMutableDictionary, NSObject, TSKCustomFormatList, TSPLazyReference, TSTMergeRegionMap, TSTTableDataList, TSTTableHeaderStorage, TSTTableTileStorage;
 @protocol TSDContainerInfo><TSWPStorageParent;
 
 __attribute__((visibility("hidden")))
@@ -12,17 +12,27 @@ __attribute__((visibility("hidden")))
 {
     _Atomic int _iteratorRunningCount;
     vector_e87daf7b _mergedRects;
+    TSTTableDataList *_styleDataList;
+    TSTTableDataList *_conditionalStyleSetDataList;
+    TSTTableDataList *_stringDataList;
+    TSTTableDataList *_formulaDataList;
+    TSTTableDataList *_controlCellSpecDataList;
+    TSTTableDataList *_formulaErrorDataList;
+    TSTTableDataList *_richTextDataList;
+    TSTTableDataList *_formatDataList;
+    TSTTableDataList *_commentStorageDataList;
+    TSTTableDataList *_importWarningSetDataList;
+    TSTTableDataList *_preBNCFormatDataList;
+    _Bool _foundABadDatalistKey;
     _Bool _upgrading;
     _Bool _cellCountValid;
     unsigned char _storageVersionPreBNC;
     _Bool _missingPostBNCDatalists;
-    unsigned short _nextRowStripID;
     unsigned int _cellCount;
     TSKCustomFormatList *_pasteboardCustomFormatList;
-    struct TSTTableRBTreeNode_s *_rowTileIndex;
-    TSTTileIDKeyDict *_tileStorage;
+    TSTTableTileStorage *_tileStorage;
     TSTTableHeaderStorage *_rowHeaderStorage;
-    TSTTableHeaderStorageBucket *_columnHeaderStorage;
+    TSTTableHeaderStorage *_columnHeaderStorage;
     TSPLazyReference *_styleTableReference;
     TSPLazyReference *_conditionalStyleSetTableReference;
     TSPLazyReference *_stringTableReference;
@@ -45,7 +55,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool cellCountValid; // @synthesize cellCountValid=_cellCountValid;
 @property(nonatomic) unsigned int cellCount; // @synthesize cellCount=_cellCount;
 @property(retain, nonatomic) TSTMergeRegionMap *mergedCellRanges; // @synthesize mergedCellRanges=_mergedCellRanges;
-@property(nonatomic) unsigned short nextRowStripID; // @synthesize nextRowStripID=_nextRowStripID;
 @property(retain, nonatomic) NSMutableDictionary *pasteboardCustomFormatMap; // @synthesize pasteboardCustomFormatMap=_pasteboardCustomFormatMap;
 @property(nonatomic) __weak NSObject<TSDContainerInfo><TSWPStorageParent> *richTextParentInfo; // @synthesize richTextParentInfo=_richTextParentInfo;
 @property(readonly, nonatomic) TSTTableDataList *multipleChoiceListFormatDataList; // @synthesize multipleChoiceListFormatDataList=_multipleChoiceListFormatDataList;
@@ -60,18 +69,21 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) TSPLazyReference *stringTableReference; // @synthesize stringTableReference=_stringTableReference;
 @property(retain, nonatomic) TSPLazyReference *conditionalStyleSetTableReference; // @synthesize conditionalStyleSetTableReference=_conditionalStyleSetTableReference;
 @property(retain, nonatomic) TSPLazyReference *styleTableReference; // @synthesize styleTableReference=_styleTableReference;
-@property(retain, nonatomic) TSTTableHeaderStorageBucket *columnHeaderStorage; // @synthesize columnHeaderStorage=_columnHeaderStorage;
+@property(retain, nonatomic) TSTTableHeaderStorage *columnHeaderStorage; // @synthesize columnHeaderStorage=_columnHeaderStorage;
 @property(retain, nonatomic) TSTTableHeaderStorage *rowHeaderStorage; // @synthesize rowHeaderStorage=_rowHeaderStorage;
-@property(retain, nonatomic) TSTTileIDKeyDict *tileStorage; // @synthesize tileStorage=_tileStorage;
-@property(nonatomic) struct TSTTableRBTreeNode_s *rowTileIndex; // @synthesize rowTileIndex=_rowTileIndex;
+@property(retain, nonatomic) TSTTableTileStorage *tileStorage; // @synthesize tileStorage=_tileStorage;
 @property(nonatomic) _Bool upgrading; // @synthesize upgrading=_upgrading;
 @property(retain, nonatomic) TSKCustomFormatList *pasteboardCustomFormatList; // @synthesize pasteboardCustomFormatList=_pasteboardCustomFormatList;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (vector_73284f0b)accumulateCurrentCellsConcurrentlyInRow:(struct TSUModelRowIndex)arg1 rowInfo:(id)arg2 atColumns:(vector_5e7df3d8 *)arg3 usingCellCreationBlock:(CDUnknownBlockType)arg4;
+- (void)didApplyConcurrentCellMap:(id)arg1;
+- (void)prepareToApplyConcurrentCellMap:(id)arg1;
+- (void)setCellsConcurrently:(id)arg1 tableUID:(const UUIDData_5fbc143e *)arg2 calculationEngine:(id)arg3 conditionalStyleOwner:(id)arg4 ignoreFormula:(_Bool)arg5 clearImportWarnings:(_Bool)arg6;
+- (void)updateDataListsConcurrentlyWithConcurrentCellMap:(id)arg1 clearImportWarnings:(_Bool)arg2;
 - (_Bool)auditRowInfoCellCountsReturningResult:(id *)arg1;
 - (_Bool)auditDatalistDuplicationReturningResult:(id *)arg1;
 - (_Bool)confirmRefCountsReturningResult:(id *)arg1;
-- (multimap_672c207c)_makeCellMapFromTiles;
 - (id)copyWithOwner:(id)arg1;
 - (void)assertIsNotIterating;
 - (void)endIteration;
@@ -79,10 +91,9 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchive:(struct DataStore *)arg1 archiver:(id)arg2 isInTheDocument:(_Bool)arg3;
 - (id)p_cellMapForUpgradingToBraveNewCell;
 - (void)upgradeDataStoreCellStorageIfNeededWithTableUID:(const UUIDData_5fbc143e *)arg1 conditionalStyleOwner:(id)arg2;
-- (_Bool)needToUpgradeCellStorage;
+- (_Bool)_needToUpgradeCellStorage;
 - (void)setStorageParentToInfo:(id)arg1;
 - (id)initWithArchive:(const struct DataStore *)arg1 unarchiver:(id)arg2 owner:(id)arg3;
-- (void)dealloc;
 - (id)initWithOwner:(id)arg1;
 - (void)replaceConditionalStyleSetsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)replaceFormulasUsingBlock:(CDUnknownBlockType)arg1;
@@ -95,13 +106,14 @@ __attribute__((visibility("hidden")))
 - (id)p_pasteboardCustomFormatList;
 @property(readonly, nonatomic) _Bool hasPasteboardCustomFormats; // @dynamic hasPasteboardCustomFormats;
 - (id)addPasteboardCustomFormat:(id)arg1 toDocument:(id)arg2 updatingPasteboardFormat:(_Bool)arg3;
-- (id)importWarningSetDataList;
-- (id)commentStorageDataList;
+- (void)addPasteboardCustomFormatFromCell:(id)arg1;
 - (void)resetAlmostEverything;
 - (id)p_makeALazyDatalistOfType:(int)arg1 isNewForBNC:(_Bool)arg2;
 - (id)p_makeALazyDatalistOfType:(int)arg1;
 - (_Bool)auditTilesForRowOverlapAndExtensionPastTableBounds:(struct TSUCellCoord)arg1 result:(id *)arg2;
 - (id)preBNCFormatDataList;
+- (id)importWarningSetDataList;
+- (id)commentStorageDataList;
 - (id)formatDataList;
 - (id)richTextDataList;
 - (id)formulaErrorDataList;
@@ -110,8 +122,10 @@ __attribute__((visibility("hidden")))
 - (id)styleDataList;
 - (id)stringDataList;
 - (id)conditionalStyleSetDataList;
-- (id)p_datalistForLazyReference:(id)arg1;
+- (id)p_loadDatalist:(id *)arg1 forLazyReference:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (id)p_loadDatalist:(id *)arg1 forLazyReference:(id)arg2;
 - (vector_e87daf7b)mergedRects;
+- (id)formulaSpecForStorageRef:(struct TSTCellStorage *)arg1;
 - (id)formulaSpecAtCellID:(struct TSUCellCoord)arg1;
 - (struct TSCEFormula *)formulaAtCellID:(struct TSUCellCoord)arg1;
 - (void)swapRowAtIndex:(unsigned int)arg1 withRowAtIndex:(unsigned int)arg2;
@@ -125,12 +139,15 @@ __attribute__((visibility("hidden")))
 - (void)p_clearDataListEntriesInRange:(struct TSUCellRect)arg1;
 - (void)resolveDataListKeysForCell:(id)arg1 suppressTransmutation:(_Bool)arg2 sourceStorageVersion:(unsigned char)arg3;
 - (void)resolveDataListKeysForPreBNCCell:(id)arg1 suppressTransmutation:(_Bool)arg2 sourceStorageVersion:(unsigned char)arg3;
+- (void)p_stashBadKey:(unsigned long long)arg1 forList:(id)arg2;
 - (id)p_populatedMultipleChoiceListFormat:(id)arg1;
 - (id)populatedCustomFormat:(id)arg1 value:(double)arg2;
 - (void)upgradeCellFormatsU2_0;
+- (CDStruct_c8ca99d5)p_preBNCKeysForCell:(id)arg1 oldPreBNCStorageRef:(CDStruct_106f10ff *)arg2 callWillModify:(_Bool)arg3;
 - (CDStruct_c8ca99d5)p_preBNCKeysForCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 - (void)setCellMap:(id)arg1 tableUID:(const UUIDData_5fbc143e *)arg2 calculationEngine:(id)arg3 conditionalStyleOwner:(id)arg4 ignoreFormulas:(_Bool)arg5 skipDirtyingNonFormulaCells:(_Bool)arg6 doRichTextDOLC:(_Bool)arg7;
 - (void)setCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 tableUID:(const UUIDData_5fbc143e *)arg3 calculationEngine:(id)arg4 conditionalStyleOwner:(id)arg5 ignoreFormula:(_Bool)arg6 clearImportWarnings:(_Bool)arg7 doRichTextDOLC:(_Bool)arg8;
+- (CDStruct_c8ca99d5)p_updatePreBNCDataListsForCurrentFormat:(id)arg1 numberFormat:(id)arg2 currencyFormat:(id)arg3 dateFormat:(id)arg4 durationFormat:(id)arg5 baseFormat:(id)arg6 customFormat:(id)arg7 stepperSliderFormat:(id)arg8 mcListFormat:(id)arg9 oldPreBNCStorageRef:(CDStruct_106f10ff *)arg10 callWillModify:(_Bool)arg11;
 - (id)allRichTextStorages;
 - (_Bool)containsControlCellSpecs;
 - (_Bool)containsImportWarnings;
@@ -149,26 +166,41 @@ __attribute__((visibility("hidden")))
 - (_Bool)cellExistsAtCellID:(struct TSUCellCoord)arg1;
 - (_Bool)getCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 - (struct TSTCellStorage *)cellStorageRefAtCellID:(struct TSUCellCoord)arg1;
-- (void)p_enumerateTilesConcurrentlyUsingBlock:(CDUnknownBlockType)arg1 andWaitForAsyncBlocks:(_Bool)arg2;
-- (void)enumerateTilesAtNode:(struct TSTTableRBTreeNode_s *)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (id)i_tileAtOrAfterRow:(unsigned int)arg1 startingTileRowIndex:(unsigned int *)arg2;
-- (id)i_tileForRow:(unsigned int)arg1 startingTileRowIndex:(unsigned int *)arg2;
+- (id)i_tileStartingAtOrAfterRowIndex:(unsigned int)arg1 outTileRange:(struct _NSRange *)arg2;
+- (id)i_tileStartingAtOrBeforeRowIndex:(unsigned int)arg1 outTileRange:(struct _NSRange *)arg2;
 - (void)upgradeConditionalStylesToLinkedRefWithTableUID:(const UUIDData_5fbc143e *)arg1;
 - (id)commentStorageAtCellID:(struct TSUCellCoord)arg1;
 @property(readonly, nonatomic) unsigned long long numberOfComments;
 @property(readonly, nonatomic) unsigned int numberOfConditionalStyles;
 @property(readonly, nonatomic) unsigned int numberOfPopulatedCells;
 - (void)p_updateNumberOfPopulatedCells;
-- (void)removeColumnHeaderAtIndex:(unsigned short)arg1;
-- (void)removeRowHeaderAtIndex:(unsigned int)arg1;
+- (void)incrementCellCountsAtCellID:(struct TSUCellCoord)arg1;
+- (void)decrementCellCountsAtCellID:(struct TSUCellCoord)arg1;
+- (void)decrementColumnCellCount:(unsigned short)arg1 byAmount:(unsigned long long)arg2;
+- (void)setTextStyle:(id)arg1 ofColumnAtIndex:(unsigned short)arg2;
+- (void)setTextStyle:(id)arg1 ofRowAtIndex:(unsigned int)arg2;
+- (id)textStyleOfColumnAtIndex:(unsigned short)arg1;
+- (id)textStyleOfRowAtIndex:(unsigned int)arg1;
+- (void)setCellStyle:(id)arg1 ofColumnAtIndex:(unsigned short)arg2;
+- (void)setCellStyle:(id)arg1 ofRowAtIndex:(unsigned int)arg2;
+- (id)cellStyleOfColumnAtIndex:(unsigned short)arg1;
+- (id)cellStyleOfRowAtIndex:(unsigned int)arg1;
+- (void)setHidingState:(unsigned char)arg1 ofColumnAtIndex:(unsigned short)arg2;
+- (void)setHidingState:(unsigned char)arg1 ofRowAtIndex:(unsigned int)arg2;
+- (unsigned char)hidingStateOfColumnAtIndex:(unsigned short)arg1;
+- (unsigned char)hidingStateOfRowAtIndex:(unsigned int)arg1;
 - (void)setWidth:(double)arg1 ofColumnAtIndex:(unsigned short)arg2;
 - (void)setHeight:(double)arg1 ofRowAtIndex:(unsigned int)arg2;
 - (double)widthOfColumnAtIndex:(unsigned short)arg1;
 - (double)heightOfRowAtIndex:(unsigned int)arg1;
-- (void)enumerateColumnHeaderInfosWithBlock:(CDUnknownBlockType)arg1;
-- (void)enumerateRowHeaderInfosWithBlock:(CDUnknownBlockType)arg1;
-- (id)headerInfoForColumn:(unsigned short)arg1 willModify:(_Bool)arg2 createIfNotThere:(_Bool)arg3;
-- (id)headerInfoForRow:(unsigned int)arg1 willModify:(_Bool)arg2 createIfNotThere:(_Bool)arg3;
+- (unsigned long long)cellCountOfColumnAtIndex:(unsigned short)arg1;
+- (unsigned long long)cellCountOfRowAtIndex:(unsigned int)arg1;
+- (void)updateHeaderStorageStylesWithBlock:(CDUnknownBlockType)arg1;
+- (void)forceLoadHeaderStorages;
+- (void)updateColumnHeaderAtIndex:(unsigned short)arg1 fromMetadata:(id)arg2;
+- (void)updateRowHeaderAtIndex:(unsigned int)arg1 fromMetadata:(id)arg2;
+- (id)metadataForColumnIndex:(unsigned short)arg1 hidingAction:(unsigned char)arg2 uuid:(UUIDData_5fbc143e)arg3 defaultColumnWidth:(double)arg4;
+- (id)metadataForRowIndex:(unsigned int)arg1 hidingAction:(unsigned char)arg2 uuid:(UUIDData_5fbc143e)arg3;
 
 @end
 

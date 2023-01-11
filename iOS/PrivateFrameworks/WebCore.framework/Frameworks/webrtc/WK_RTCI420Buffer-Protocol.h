@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <webrtc/WK_RTCYUVPlanarBuffer-Protocol.h>
+#import <webrtc/RTCYUVPlanarBuffer-Protocol.h>
 
-@protocol WK_RTCI420Buffer <WK_RTCYUVPlanarBuffer>
+@protocol WK_RTCI420Buffer <RTCYUVPlanarBuffer>
 @end
 

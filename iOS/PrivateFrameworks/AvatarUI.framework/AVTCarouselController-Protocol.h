@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AvatarUI/AVTARFrameConsumer-Protocol.h>
 #import <AvatarUI/AVTObjectViewController-Protocol.h>
 
 @class NSString;
 @protocol AVTAvatarRecord, AVTUIViewSnapshotProvider;
 
-@protocol AVTCarouselController <AVTObjectViewController, AVTARFrameConsumer>
+@protocol AVTCarouselController <AVTObjectViewController>
 @property(nonatomic) _Bool allowsCreate;
 @property(nonatomic) _Bool singleAvatarMode;
 @property(nonatomic) double decelerationRate;

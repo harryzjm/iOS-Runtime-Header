@@ -18,8 +18,16 @@
 
 @property(readonly, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
 - (void).cxx_destruct;
+- (void)deleteImageRecentsMetadataRequestFailed:(id)arg1;
+- (void)setContactImageDataZeroCropRect:(id)arg1 format:(const char *)arg2;
+- (void)setContactImageData:(id)arg1 format:(const char *)arg2 cropRect:(struct CGRect)arg3;
+- (void)removeContactImageData;
+- (void)setContactImageData:(id)arg1;
+- (void)applyContactUpdateOfKind:(const char *)arg1 value:(id)arg2 property:(id)arg3;
+- (void)postingNotificationWithName:(id)arg1;
 - (void)XPCConnectionWasInvalidated;
 - (void)XPCConnectionWasInterrupted;
+- (void)errorWhenQueryingTetheredSyncData:(id)arg1;
 - (void)internalError:(id)arg1;
 - (void)SPIUsageLackingEntitlementRejectedForPID:(int)arg1;
 - (void)SPIUsageLackingEntitlementGrantedForPID:(int)arg1;
@@ -35,11 +43,15 @@
 - (void)fetchEncodedContactsMatchingPredicate:(id)arg1 unifyResults:(_Bool)arg2 keysToFetch:(id)arg3;
 - (void)fetchContactsProgressivelyMatchingPredicate:(id)arg1 unifyResults:(_Bool)arg2 keysToFetch:(id)arg3;
 - (void)fetchContactsMatchingPredicate:(id)arg1 unifyResults:(_Bool)arg2 keysToFetch:(id)arg3;
+- (void)_commonFetchContactsMatchingPredicate:(id)arg1 fetchType:(const char *)arg2 unifyResults:(_Bool)arg3 keysToFetch:(id)arg4;
 - (void)noAccessToContactsWithError:(id)arg1;
 - (void)contactsAccessWasGranted:(_Bool)arg1;
 - (void)tccAccessRequestWasDenied;
 - (void)tccAccessPreflightWasDenied;
+- (void)postingNotification:(CDUnknownBlockType)arg1;
 - (void)servicingContactsRequest:(CDUnknownBlockType)arg1;
+- (void)settingDefaultAccount:(CDUnknownBlockType)arg1;
+- (void)resettingSortDataIfNeeded:(CDUnknownBlockType)arg1;
 - (void)clearingChangeHistory:(CDUnknownBlockType)arg1;
 - (void)fetchingChangeHistory:(CDUnknownBlockType)arg1;
 - (void)unregisteringForChangeHistory:(CDUnknownBlockType)arg1;
@@ -52,6 +64,7 @@
 - (void)fetchingContactIdentifierWithMatchingDictionary:(CDUnknownBlockType)arg1;
 - (void)fetchingContactWithUserActivity:(CDUnknownBlockType)arg1;
 - (void)fetchingContacts:(CDUnknownBlockType)arg1;
+- (void)fetchingContactSectionCounts:(CDUnknownBlockType)arg1;
 - (void)fetchingContactCount:(CDUnknownBlockType)arg1;
 - (void)changingMeContact:(CDUnknownBlockType)arg1;
 - (void)fetchingMeContactIdentifier:(CDUnknownBlockType)arg1;

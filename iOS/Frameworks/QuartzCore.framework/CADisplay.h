@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CADisplayAttributes, CADisplayMode, NSArray, NSString;
+@class CADisplayAttributes, CADisplayMode, CADisplayPreferences, NSArray, NSString;
 
 @interface CADisplay : NSObject
 {
@@ -17,25 +17,33 @@
 + (id)TVOutDisplay;
 + (id)mainDisplay;
 + (id)displays;
-@property(readonly) int linkQuality;
-@property(readonly) CADisplayAttributes *externalDisplayAttributes;
+- (void)overrideDisplayTimings:(id)arg1;
+- (id)allowedHDRModes;
+- (id)preferredHDRModes;
+- (id)supportedHDRModes;
+- (id)preferredModeWithCriteria:(id)arg1;
+@property(copy, nonatomic) CADisplayPreferences *preferences;
+@property(nonatomic) double latency;
+@property(readonly, nonatomic) int linkQuality;
+@property(readonly, nonatomic) CADisplayAttributes *externalDisplayAttributes;
 - (id)description;
-@property(readonly) _Bool supportsExtendedColors;
-@property(readonly) unsigned int odLUTVersion;
-@property(readonly) NSString *nativeOrientation;
-@property(readonly, getter=isCloningSupported) _Bool cloningSupported;
-@property(readonly, getter=isCloned) _Bool cloned;
+@property(readonly, nonatomic) _Bool supportsExtendedColors;
+@property(readonly, nonatomic) unsigned int odLUTVersion;
+@property(readonly, nonatomic) NSString *currentOrientation;
+@property(readonly, nonatomic) NSString *nativeOrientation;
+@property(readonly, nonatomic, getter=isCloningSupported) _Bool cloningSupported;
+@property(readonly, nonatomic, getter=isCloned) _Bool cloned;
 @property(copy, nonatomic) NSString *overscanAdjustment;
-@property(readonly) struct CGSize overscanAmounts;
-@property(readonly) double overscanAmount;
-@property(readonly, getter=isOverscanned) _Bool overscanned;
-@property(readonly) long long minimumFrameDuration;
-@property(readonly) double heartbeatRate;
-@property(readonly) double refreshRate;
-@property(readonly, getter=isExternal) _Bool external;
-@property(readonly, getter=isSupported) _Bool supported;
-@property(readonly) int processId;
-@property(readonly) long long tag;
+@property(readonly, nonatomic) struct CGSize overscanAmounts;
+@property(readonly, nonatomic) double overscanAmount;
+@property(readonly, nonatomic, getter=isOverscanned) _Bool overscanned;
+@property(readonly, nonatomic) long long minimumFrameDuration;
+@property(readonly, nonatomic) double heartbeatRate;
+@property(readonly, nonatomic) double refreshRate;
+@property(readonly, nonatomic, getter=isExternal) _Bool external;
+@property(readonly, nonatomic, getter=isSupported) _Bool supported;
+@property(readonly, nonatomic) int processId;
+@property(readonly, nonatomic) long long tag;
 @property(readonly, nonatomic) struct CGRect safeBounds;
 @property(readonly, nonatomic) struct CGRect frame;
 @property(readonly, nonatomic) struct CGRect bounds;
@@ -44,14 +52,19 @@
 @property(readonly, nonatomic) CADisplayMode *preferredMode;
 @property(retain, nonatomic) CADisplayMode *currentMode;
 @property(readonly, nonatomic) NSArray *availableModes;
-@property(readonly) NSString *uniqueId;
-@property(readonly) unsigned int connectionSeed;
-@property(readonly) unsigned int seed;
-@property(readonly) unsigned int displayId;
+@property(readonly, nonatomic) NSString *productName;
+@property(readonly, nonatomic) NSString *containerId;
+@property(readonly, nonatomic) NSString *uniqueId;
+@property(readonly, nonatomic) unsigned int connectionSeed;
+@property(readonly, nonatomic) unsigned int seed;
+@property(readonly, nonatomic) unsigned int displayId;
 @property(readonly, nonatomic) NSString *deviceName;
 @property(readonly, nonatomic) NSString *name;
+- (_Bool)setDisplayProperties:(id)arg1;
+- (id)immutableCopy;
 - (void)update;
 - (void)_invalidate;
+- (void)dealloc;
 - (id)_initWithDisplay:(struct Display *)arg1;
 
 @end

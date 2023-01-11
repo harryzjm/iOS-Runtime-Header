@@ -8,15 +8,17 @@
 
 #import <TelephonyUtilities/NSCopying-Protocol.h>
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
+#import <TelephonyUtilities/TUFilteredRequest-Protocol.h>
 
 @class NSSet, NSString, NSURL, NSUUID, TUHandle;
 
-@interface TUJoinConversationRequest : NSObject <NSCopying, NSSecureCoding>
+@interface TUJoinConversationRequest : NSObject <TUFilteredRequest, NSCopying, NSSecureCoding>
 {
     _Bool _videoEnabled;
     _Bool _shouldSuppressInCallUI;
     _Bool _wantsStagingArea;
     _Bool _showUIPrompt;
+    _Bool _uplinkMuted;
     NSSet *_remoteMembers;
     NSUUID *_UUID;
     TUHandle *_callerID;
@@ -26,6 +28,7 @@
 
 + (_Bool)supportsSecureCoding;
 + (id)sanitizedMembersFromMembers:(id)arg1;
++ (_Bool)showUIPromptFromURLComponents:(id)arg1;
 + (id)messagesGroupNameFromURLComponents:(id)arg1;
 + (id)messagesGroupUUIDFromURLComponents:(id)arg1;
 + (id)callerIDFromURLComponents:(id)arg1;
@@ -33,6 +36,7 @@
 + (_Bool)shouldSuppressInCallUIFromURLComponents:(id)arg1;
 + (_Bool)videoEnabledFromURLComponents:(id)arg1;
 + (id)remoteMembersFromURLComponents:(id)arg1;
+@property(nonatomic, getter=isUplinkMuted) _Bool uplinkMuted; // @synthesize uplinkMuted=_uplinkMuted;
 @property(nonatomic) _Bool showUIPrompt; // @synthesize showUIPrompt=_showUIPrompt;
 @property(copy, nonatomic) NSString *messagesGroupName; // @synthesize messagesGroupName=_messagesGroupName;
 @property(copy, nonatomic) NSUUID *messagesGroupUUID; // @synthesize messagesGroupUUID=_messagesGroupUUID;
@@ -46,6 +50,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)showUIPromptQueryItem;
 - (id)messagesGroupNameQueryItem;
 - (id)messagesGroupUUIDQueryItem;
 - (id)callerIDQueryItem;
@@ -55,11 +60,18 @@
 - (id)remoteMembersQueryItem;
 - (id)queryItems;
 @property(readonly, nonatomic) NSURL *URL;
-- (id)description;
+- (id)handles;
+- (id)bundleIdentifier;
+@property(readonly, copy) NSString *description;
 - (id)initWithGroupUUID:(id)arg1 localParticipantHandle:(id)arg2 remoteParticipantHandles:(id)arg3;
 - (id)initWithURL:(id)arg1;
 - (id)initWithConversation:(id)arg1;
 - (id)initWithRemoteMembers:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

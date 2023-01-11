@@ -7,6 +7,9 @@
 #import <Foundation/NSOperationQueue.h>
 
 @interface NSOperationQueue (FCAsyncBlockAdditions)
++ (id)fc_ckRequestOperationQueue;
++ (id)fc_sharedSerialQueue;
++ (id)fc_sharedConcurrentQueue;
 - (void)fc_addAsyncOperationWithBlock:(CDUnknownBlockType)arg1;
 @end
 

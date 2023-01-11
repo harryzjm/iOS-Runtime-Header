@@ -9,6 +9,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)_customizeTraits:(id)arg1 forPopupForKey:(id)arg2 withRenderingContext:(id)arg3 keycapsFontName:(id)arg4;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (_Bool)shouldUseRoundCornerForKey:(id)arg1;
 - (id)shiftLockControlKeyTraits;
@@ -20,9 +21,10 @@ __attribute__((visibility("hidden")))
 - (id)controlKeyShadowColorName;
 - (id)defaultKeyShadowColorName;
 - (void)_customizeGeometry:(id)arg1 forKey:(id)arg2 contents:(id)arg3 onKeyplane:(id)arg4;
-- (int)roundCornersForKey:(id)arg1 onKeyplane:(id)arg2;
+- (unsigned long long)roundCornersForKey:(id)arg1 onKeyplane:(id)arg2;
 - (unsigned long long)edgesWithInsetsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (_Bool)useRoundCorner;
+- (struct UIEdgeInsets)wideShadowPaddleInsets;
 - (struct UIEdgeInsets)symbolFrameInsets;
 
 @end

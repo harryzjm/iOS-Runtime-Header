@@ -11,11 +11,14 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_axGetNubViewContainer;
-- (id)_axGetNubView;
+- (id)_axNubViewContainer;
+- (id)_axNubView;
 - (void)_axLoadNubViewAccessibilityInformation;
-- (void)viewDidAppear:(_Bool)arg1;
+- (id)_axInlineExposeViewController;
+- (void)_axSetUpExposeViewController;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)viewDidAppear:(_Bool)arg1;
+- (id)initWithDeviceApplicationSceneHandle:(id)arg1 inlineContainerViewController:(id)arg2 layoutRole:(long long)arg3;
 
 @end
 

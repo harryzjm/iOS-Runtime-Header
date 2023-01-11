@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 @interface VCControlChannel
 {
     id _messageReceivedDelegate;
+    id _dataReceivedDelegate;
     int _bytesSent;
     int _lastProcessedBytesSent;
     int _bytesSentToReport;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_asyncProcessingQueue;
 }
 
+- (void)setEncryptionWithEncryptionMaterial:(CDStruct_791df8ea *)arg1;
 - (void)broadcastUnreliableMessage:(id)arg1;
 - (void)sendUnreliableMessage:(id)arg1 participantID:(unsigned long long)arg2;
 - (void)sendReliableMessage:(id)arg1 participantID:(unsigned long long)arg2;
@@ -34,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)throwNotSupportedExceptionForMethod:(id)arg1;
 - (void)flushActiveMessages;
 - (void)dealloc;
+@property(nonatomic) id dataReceivedDelegate;
 @property(nonatomic) id messageReceivedDelegate; // @synthesize messageReceivedDelegate=_messageReceivedDelegate;
 - (id)init;
 

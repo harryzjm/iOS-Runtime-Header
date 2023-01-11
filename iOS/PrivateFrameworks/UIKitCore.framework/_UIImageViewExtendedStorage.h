@@ -8,27 +8,35 @@
 
 #import <UIKitCore/CAAnimationDelegate-Protocol.h>
 
-@class CIContext, NSArray, NSString, UIImage, UIImageView;
+@class CIContext, NSArray, NSMapTable, NSString, UIImage, UIImageSymbolConfiguration, UIImageView, UILayoutGuide;
 
 __attribute__((visibility("hidden")))
 @interface _UIImageViewExtendedStorage : NSObject <CAAnimationDelegate>
 {
     UIImageView *_imageView;
-    _Bool _highlighted;
     UIImage *_image;
     UIImage *_highlightedImage;
+    UIImage *_configuredImage;
+    UIImage *_configuredHighlightedImage;
+    UIImageSymbolConfiguration *_preferredSymbolConfiguration;
+    UIImageSymbolConfiguration *_overridingSymbolConfiguration;
     NSArray *_animationImages;
     NSArray *_highlightedAnimationImages;
     double _animationDuration;
     long long _animationRepeatCount;
-    int _drawMode;
     long long _defaultRenderingMode;
-    _Bool _masksTemplateImages;
     unsigned long long _templateImageRenderingEffects;
     UIImage *_displayedImage;
     UIImage *_displayedHighlightedImage;
     CIContext *_CIContext;
-    _Bool _adjustsImageSizeForAccessibilityContentSizeCategory;
+    UILayoutGuide *_imageContentGuide;
+    NSMapTable *_layouts;
+    unsigned int _drawMode;
+    struct {
+        unsigned int highlighted:1;
+        unsigned int masksTemplateImages:1;
+        unsigned int adjustsImageSizeForAccessibilityContentSizeCategory:1;
+    } _flags;
 }
 
 - (void).cxx_destruct;

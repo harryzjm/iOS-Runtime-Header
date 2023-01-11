@@ -11,6 +11,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityAutomationType;
 - (_Bool)_accessibilityIsSpeakThisElement;
 - (_Bool)_accessibilityHasNativeFocus;
 - (unsigned long long)accessibilityTraits;

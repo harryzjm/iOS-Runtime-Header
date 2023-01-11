@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setState:(long long)arg1 onButtonWidgetAnnotation:(id)arg2;
 - (void)setStringValue:(id)arg1 onChoiceWidgetAnnotation:(id)arg2 withTableView:(id)arg3;
 - (void)setStringValue:(id)arg1 onChoiceWidgetAnnotation:(id)arg2 withTextField:(id)arg3;
@@ -34,22 +35,11 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (void)textWidgetChangedTextView:(id)arg1;
-- (void)textWidgetDidEndEditingTextField:(id)arg1;
-- (void)textWidgetChangedTextField:(id)arg1;
-- (void)textWidgetDidBeginEditingTextField:(id)arg1;
 - (void)_addPDFAnnotation:(id)arg1;
 - (void)_addPDFAnnotationStampSignature:(id)arg1;
 - (void)_choiceWidgetDone;
 - (void)_addPDFAnnotationChoiceWidget:(id)arg1;
-- (void)_keyboardWillHide:(id)arg1;
-- (void)_keyboardWillShow:(id)arg1;
-- (void)_textWidgetDone;
-- (_Bool)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
-- (_Bool)textViewShouldBeginEditing:(id)arg1;
-- (id)_scaleFont:(id)arg1 forString:(id)arg2 withBounds:(struct CGRect)arg3;
 - (void)_addPDFAnnotationTextWidget:(id)arg1;
-- (void)setupGestureRecognizersForPDFPageViewController:(id)arg1;
 - (struct CGPoint)convertPointToPageView:(struct CGPoint)arg1;
 - (struct CGAffineTransform)_rotationTransformForPageView;
 - (struct CGRect)convertRectToPageView:(struct CGRect)arg1;
@@ -61,16 +51,12 @@ __attribute__((visibility("hidden")))
 - (void)_setupBookmarkLayer;
 - (void)setHidden:(_Bool)arg1;
 - (void)setFrame:(struct CGRect)arg1;
-- (void)enableTextSelectionHandles;
-- (void)clearTextSelectionHandles;
-- (void)setLollipopMagnifierPagePoint:(struct CGPoint)arg1;
-- (void)clearLollipopMagnifier;
-- (void)setTextSelectionMagnifierPagePoint:(struct CGPoint)arg1;
-- (void)clearTextSelectionMagnifier;
-- (void)removeActiveWidgetAnnotation;
-- (void)_rotateActiveWidgetAnnotation;
-- (void)addControlForWidgetAnnotation:(id)arg1;
-- (void)setAnnotation:(id)arg1 isSelected:(_Bool)arg2;
+- (id)markupAnnotationsForIndexSet:(id)arg1;
+- (void)addMarkupWithStyle:(unsigned long long)arg1 forIndexSet:(id)arg2;
+- (void)removeControlForAnnotation:(id)arg1;
+- (void)_rotateActiveAnnotation;
+- (void)addControlForAnnotation:(id)arg1;
+- (id)activeAnnotation;
 - (void)removeAnnotation:(id)arg1;
 - (void)_updateAnnotationVisibility:(id)arg1;
 - (void)updateAnnotation:(id)arg1;
@@ -79,10 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)hideTileLayer:(_Bool)arg1;
 - (void)previewRotatePage:(double)arg1;
 - (void)addSearchSelection:(id)arg1;
-- (void)setSearchSelection:(id)arg1;
-- (void)setEnableSelectionDrawing:(_Bool)arg1;
-- (id)selection;
-- (void)setSelection:(id)arg1;
+- (void)setSearchSelections:(id)arg1;
 - (int)backgroundImageQuality;
 - (id)backgroundImage;
 - (_Bool)hasBackgroundImage;
@@ -90,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (id)pageLayer;
 - (id)geometryInterface;
 - (id)page;
+- (void)_updateBackgroundColor;
 - (void)_didRotatePageNotification:(id)arg1;
 - (unsigned long long)visibilityDelegateIndex;
 - (void)setVisibilityDelegateIndex:(unsigned long long)arg1;
@@ -111,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isVisible;
 - (long long)displayBox;
 - (void)setNeedsTilesUpdate;
+- (id)renderingProperties;
 - (void)dealloc;
 - (id)initWithPage:(id)arg1 geometryInterface:(id)arg2 andRenderingProperties:(id)arg3;
 

@@ -15,14 +15,14 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)addExternalReferenceToObjectIdentifier:(long long)arg1 componentIdentifier:(long long)arg2 isWeak:(_Bool)arg3;
+- (void)addExternalReferenceToObjectIdentifier:(long long)arg1 componentIdentifier:(long long)arg2 isWeak:(_Bool)arg3 componentIsVersioned:(_Bool)arg4;
 - (struct ComponentExternalReferenceInfo)externalReferenceInfoForObjectIdentifier:(long long)arg1;
 - (void)enumerateExternalReferences:(CDUnknownBlockType)arg1;
-- (void)saveToMessage:(RepeatedPtrField_1f1a6efb *)arg1;
+- (void)saveToMessage:(struct ComponentInfo *)arg1;
 - (void)dealloc;
-- (id)initFromMessage:(const RepeatedPtrField_1f1a6efb *)arg1;
+- (void)appendReferencesFromMessage:(const RepeatedPtrField_5bff772f *)arg1 componentIsVersioned:(_Bool)arg2;
+- (id)initFromMessage:(const struct ComponentInfo *)arg1;
 - (id)initWithMapSize:(unsigned long long)arg1;
-- (id)init;
 
 @end
 

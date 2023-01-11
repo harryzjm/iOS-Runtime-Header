@@ -6,6 +6,7 @@
 
 @protocol SKUIScrollingTabBarContentCollectionViewDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SKUIScrollingTabBarContentCollectionView
 {
     _Bool _performingLayout;

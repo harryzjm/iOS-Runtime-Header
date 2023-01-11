@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HDNanoSyncStore;
+@class HDNanoSyncStore, HDSyncPredicate;
 
 @interface HDNanoSyncSession
 {
     unsigned long long _options;
+    HDSyncPredicate *_syncPredicate;
     CDUnknownBlockType _completion;
     unsigned long long _messageCount;
 }
@@ -19,8 +20,10 @@
 - (void)invokeCompletionWithSuccess:(_Bool)arg1 error:(id)arg2;
 - (void)incrementMessageCount;
 - (id)changeSetWithChanges:(id)arg1 statusCode:(int)arg2 error:(id)arg3;
+- (id)syncPredicate;
+- (id)_syncPredicate;
+- (id)_intervalForSecondsSinceDaysAgo:(unsigned long long)arg1;
 - (long long)maxEncodedBytesPerMessageForSyncEntityClass:(Class)arg1;
-- (id)predicateForSyncEntityClass:(Class)arg1;
 - (id)newChangeWithSyncEntityClass:(Class)arg1;
 @property(readonly, nonatomic) HDNanoSyncStore *nanoSyncStore;
 @property(readonly, nonatomic, getter=isLastChance) _Bool lastChance;

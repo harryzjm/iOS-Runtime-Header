@@ -4,24 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <RelevanceEngine/REMLLinearModelProperties-Protocol.h>
+
 @class NSDictionary;
 
-@interface REMLLinearModel
+@interface REMLLinearModel <REMLLinearModelProperties>
 {
     NSDictionary *_models;
-    float _scaleFactor;
-    NSDictionary *_nonActionModels;
-    float _nonActionScaleFactor;
 }
 
 - (void).cxx_destruct;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) NSDictionary *models;
+- (void)setMetricsRecorder:(id)arg1;
+- (void)logCoreAnalyticsMetrics;
+- (unsigned long long)_getTotalPositiveCount;
+- (unsigned long long)_getTotalExampleCount;
 - (long long)_getNumberOfCoordinates;
+- (float)_getNormalizedEntropy;
+- (float)_getAveragePrediction;
 - (void)_clearModel;
 - (_Bool)_loadModelFromURL:(id)arg1 error:(id *)arg2;
-- (_Bool)_saveDebugModelToURL:(id)arg1 error:(id *)arg2;
 - (_Bool)_saveModelToURL:(id)arg1 error:(id *)arg2;
 - (id)_predictWithFeatures:(id)arg1;
+- (id)predictionSetWithFeatures:(id)arg1;
+- (void)_enumerateModelsForFeatureMap:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)_trainWithFeatures:(id)arg1 positiveEvent:(id)arg2;
 - (void)_clearCache;
 - (void)trainWithFeatures:(id)arg1 positiveEvent:(id)arg2 interaction:(id)arg3;

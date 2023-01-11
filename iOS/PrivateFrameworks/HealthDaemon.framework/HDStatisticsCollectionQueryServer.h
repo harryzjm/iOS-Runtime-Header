@@ -4,22 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <HealthDaemon/HDDataObserver-Protocol.h>
+#import <HealthDaemon/HDQuantitySeriesObserver-Protocol.h>
 
-@class HDStatisticsCollectionCalculator, HDStatisticsCollectionCalculatorDefaultDataSource, HDStatisticsCollectionCalculatorDefaultSourceOrderProvider, NSDate, NSMutableArray, NSNumber, NSString, _HKDateIntervalCollection;
+@class HDStatisticsCollectionCalculator, HDStatisticsCollectionCalculatorDefaultDataSource, HDStatisticsCollectionCalculatorDefaultSourceOrderProvider, HKQuantityType, NSDate, NSMutableDictionary, NSString, _HKDateIntervalCollection;
 
-@interface HDStatisticsCollectionQueryServer <HDDataObserver>
+@interface HDStatisticsCollectionQueryServer <HDQuantitySeriesObserver>
 {
     _HKDateIntervalCollection *_intervalCollection;
     HDStatisticsCollectionCalculatorDefaultDataSource *_dataSource;
     HDStatisticsCollectionCalculatorDefaultSourceOrderProvider *_sourceOrderProvider;
     HDStatisticsCollectionCalculator *_calculator;
-    NSMutableArray *_addedSamples;
-    NSNumber *_addedSamplesAnchor;
+    NSMutableDictionary *_pendingQuantitiesBySeries;
     _Bool _addedSamplesRequireProtectedData;
-    _Bool _deliveredInitialResults;
+    _Bool _requiresFetch;
+    _Bool _hasScheduledUpdate;
     _Bool _deliversUpdates;
     unsigned long long _mergeStrategy;
+    HKQuantityType *_quantityType;
     NSDate *_anchorDate;
     unsigned long long _statisticsOptions;
     CDUnknownBlockType _unitTest_queryServerStatisticsEnumerationHandler;
@@ -38,19 +39,22 @@
 - (void).cxx_destruct;
 - (_Bool)_queue_objectIsRelevant:(id)arg1;
 - (void)_queue_deliverUpdatedStatistics:(id)arg1 error:(id)arg2;
-- (void)_queue_fetchAndDeliverAllStatisticsInitial:(_Bool)arg1;
+- (void)_queue_fetchAndDeliverAllStatistics;
+- (void)_queue_accumulateUpdatedStatistics:(id)arg1 accumulatedStatistics:(id)arg2 sendHandler:(CDUnknownBlockType)arg3;
 - (void)_queue_sendAccumulatedStatistics:(id)arg1 isFinal:(_Bool)arg2 statisticsCount:(long long *)arg3 shouldResetStatistics:(_Bool *)arg4;
 - (void)_queue_updateStatistics;
-- (void)_scheduleFetchAndDeliver;
-- (void)_scheduleUpdateStatistics;
+- (id)_queue_filteredPendingSeriesWithError:(id *)arg1;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(_Bool)arg2;
-- (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
-- (void)samplesAdded:(id)arg1 anchor:(id)arg2;
+- (void)profile:(id)arg1 didDiscardSeriesOfType:(id)arg2;
+- (CDUnknownBlockType)transactionalQuantityInsertHandlerForProfile:(id)arg1 journaled:(_Bool)arg2 count:(long long)arg3;
+- (void)_queue_didReceiveQuantity:(id)arg1 type:(id)arg2 dateInterval:(id)arg3 series:(id)arg4 anchor:(id)arg5;
+- (id)quantityType;
+- (void)_queue_performUpdate;
+- (void)_queue_scheduleUpdate;
 - (_Bool)_shouldObserveDatabaseProtectedDataAvailability;
-- (_Bool)_shouldExecuteWhenProtectedDataIsUnavailable;
 - (void)_queue_start;
 - (_Bool)_shouldListenForUpdates;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

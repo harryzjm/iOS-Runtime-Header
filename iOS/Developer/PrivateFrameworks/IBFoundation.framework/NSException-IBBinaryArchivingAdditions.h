@@ -13,6 +13,7 @@
 @interface NSException (IBBinaryArchivingAdditions) <IBBinaryArchiving>
 + (id)decodeWithBinaryUnarchiver:(id)arg1;
 - (void)encodeWithBinaryArchiver:(id)arg1;
+- (id)ib_exceptionByModifyingUserInfo:(CDUnknownBlockType)arg1;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

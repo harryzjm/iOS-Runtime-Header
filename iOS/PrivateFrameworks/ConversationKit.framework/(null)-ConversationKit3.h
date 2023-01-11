@@ -5,7 +5,9 @@
 //
 
 @interface (null) (ConversationKit3)
-- (id)childViewControllerForHomeIndicatorAutoHidden;
-- (_Bool)prefersHomeIndicatorAutoHidden;
+- (void)handleScreenConnectionDidUpdate:(id)arg1;
+- (void)handleLocalVideoPreviewFirstFrameArrived:(id)arg1;
+- (void)handleCameraZoomBecameUnavailable:(id)arg1;
+- (void)handleCameraZoomBecameAvailable:(id)arg1;
 @end
 

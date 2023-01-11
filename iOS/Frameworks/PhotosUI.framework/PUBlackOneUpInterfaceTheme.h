@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
 @interface PUBlackOneUpInterfaceTheme
 {
 }
 
 - (id)scrubberPlaceholderColor;
-- (unsigned long long)emptyPlaceholderStyle;
 - (id)photoBrowserChromeVisibleBackgroundColor;
 - (id)photoBrowserTitleViewTappableTextColor;
 - (id)photoBrowserTitleViewTextColor;
 - (long long)photoBrowserBarStyle;
 - (id)playheadBackgroundColor;
+- (id)playheadOutlineColor;
 - (id)playheadColor;
 
 @end

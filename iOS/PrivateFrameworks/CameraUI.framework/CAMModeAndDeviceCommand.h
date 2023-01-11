@@ -21,8 +21,10 @@
 @property(retain, nonatomic, setter=_setResolvedGraphConfiguration:) CAMCaptureGraphConfiguration *_resolvedGraphConfiguration; // @synthesize _resolvedGraphConfiguration=__resolvedGraphConfiguration;
 @property(readonly, nonatomic) CAMCaptureGraphConfiguration *_desiredGraphConfiguration; // @synthesize _desiredGraphConfiguration=__desiredGraphConfiguration;
 - (void).cxx_destruct;
+- (_Bool)_wantsLivePhotoMetadataInVideosForMode:(long long)arg1 device:(long long)arg2;
 - (_Bool)_wantsLowLightBoostForMode:(long long)arg1 device:(long long)arg2;
 - (_Bool)_wantsQuadraHighResolutionForMode:(long long)arg1 device:(long long)arg2;
+- (_Bool)_shouldEnableCTMVideoCaptureForMode:(long long)arg1 device:(long long)arg2;
 - (_Bool)_shouldEnableLivePhotoCaptureForMode:(long long)arg1 device:(long long)arg2;
 - (_Bool)_isStillImageMode:(long long)arg1;
 - (void)_performPostConfigurationSanityCheckForGraphConfiguration:(id)arg1 withContext:(id)arg2;

@@ -10,6 +10,8 @@
 {
 }
 
+@property(copy, nonatomic) NSString *bagProfileVersion; // @dynamic bagProfileVersion;
+@property(copy, nonatomic) NSString *bagProfile; // @dynamic bagProfile;
 @property(copy, nonatomic) NSString *requestingBundleVersion; // @dynamic requestingBundleVersion;
 @property(copy, nonatomic) NSString *requestingBundleIdentifier; // @dynamic requestingBundleIdentifier;
 @property(copy, nonatomic) NSString *clientVersion; // @dynamic clientVersion;

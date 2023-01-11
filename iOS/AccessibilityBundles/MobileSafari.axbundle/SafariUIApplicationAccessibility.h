@@ -12,11 +12,12 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (_Bool)_accessibilityAlternateActionForURL:(id)arg1;
-- (_Bool)_accessibilityCanDisplayMultipleControllers;
 - (_Bool)_accessibilityLoadURL:(id)arg1;
 - (_Bool)_accessibilityWebViewIsLoading;
 - (id)_accessibilityActiveURL;
 - (id)_accessibilityRetrieveWebViewForSearchResults;
+- (_Bool)_accessibilityWebSearchResultsActive;
+- (id)_accessibilityMainBrowserController;
 - (id)accessibilityLabel;
 
 @end

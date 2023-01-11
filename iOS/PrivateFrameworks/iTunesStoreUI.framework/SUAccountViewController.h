@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDictionary, NSString, NSURL, SUMescalSession;
+@class ACAccount, NSDictionary, NSString, NSURL, SUMescalSession;
 
 @interface SUAccountViewController
 {
@@ -15,12 +15,15 @@
     long long _mescalState;
     NSString *_primingSignature;
     NSDictionary *_tidHeaders;
+    ACAccount *_account;
 }
 
 + (id)_latestAccountViewController;
+@property(retain, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(readonly, nonatomic, getter=_mescalSession) SUMescalSession *_mescalSession; // @synthesize _mescalSession;
 - (void).cxx_destruct;
+- (id)_URLByRemovingBlacklistedParametersWithURL:(id)arg1;
 - (_Bool)_shouldUseWebViewFastPath;
 - (void)_mescalDidOpenWithSession:(id)arg1 error:(id)arg2;
 - (void)_forceOrientationBackToSupportedOrientation;

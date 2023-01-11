@@ -11,17 +11,19 @@
 @interface AVVCRecordDeviceInfo : NSObject
 {
     _Bool _isRemoteDevice;
+    unsigned int _remoteDeviceCategory;
     NSString *_recordRoute;
     NSString *_remoteProductIdentifier;
     NSUUID *_remoteDeviceUID;
 }
 
+@property(readonly, nonatomic) unsigned int remoteDeviceCategory; // @synthesize remoteDeviceCategory=_remoteDeviceCategory;
 @property(readonly, nonatomic) NSUUID *remoteDeviceUID; // @synthesize remoteDeviceUID=_remoteDeviceUID;
 @property(readonly, nonatomic) NSString *remoteProductIdentifier; // @synthesize remoteProductIdentifier=_remoteProductIdentifier;
 @property(readonly) _Bool isRemoteDevice; // @synthesize isRemoteDevice=_isRemoteDevice;
 @property(readonly, nonatomic) NSString *recordRoute; // @synthesize recordRoute=_recordRoute;
 - (void)dealloc;
-- (id)initWithVoiceController:(id)arg1;
+- (id)initWithRecordingEngine:(struct AVVCRecordingEngine *)arg1;
 
 @end
 

@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <XCTAutomationSupport/NSCopying-Protocol.h>
 #import <XCTAutomationSupport/NSObject-Protocol.h>
+#import <XCTAutomationSupport/XCTCapabilitiesProviding-Protocol.h>
 
-@class NSOrderedSet, NSSet, NSString, XCElementSnapshot;
+@class NSOrderedSet, NSSet, NSString, XCElementSnapshot, XCTCapabilities;
 @protocol XCTMatchingElementIterator;
 
-@protocol XCTElementSetTransformer <NSObject>
+@protocol XCTElementSetTransformer <NSObject, NSCopying, XCTCapabilitiesProviding>
 @property _Bool stopsOnFirstMatch;
 @property(readonly) _Bool supportsAttributeKeyPathAnalysis;
 @property(copy) NSString *transformationDescription;
 @property(readonly) _Bool supportsRemoteEvaluation;
 - (NSSet *)requiredKeyPathsOrError:(id *)arg1;
+- (_Bool)canBeRemotelyEvaluatedWithCapabilities:(XCTCapabilities *)arg1;
 - (id <XCTMatchingElementIterator>)iteratorForInput:(XCElementSnapshot *)arg1;
 - (NSOrderedSet *)transform:(NSOrderedSet *)arg1 relatedElements:(id *)arg2;
 @end

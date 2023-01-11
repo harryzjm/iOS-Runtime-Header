@@ -4,26 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <RelevanceEngine/REElementRelevanceEngineProperties-Protocol.h>
+#import <RelevanceEngine/REFeatureTransformerInvalidationDelegate-Protocol.h>
+#import <RelevanceEngine/REMLModelManagerDataStore-Protocol.h>
 #import <RelevanceEngine/REMLModelManagerObserver-Protocol.h>
 #import <RelevanceEngine/REPredictorObserver-Protocol.h>
 #import <RelevanceEngine/RERelevanceProviderEnvironmentDelegate-Protocol.h>
 #import <RelevanceEngine/RESectionDelegate-Protocol.h>
 
-@class NSArray, NSMapTable, NSMutableDictionary, NSMutableSet, NSObject, NSString, REDataSourceManager, REFeatureTransmuter, REKeyMultiValueMap, REPredictorManager, RERelevanceProviderEnvironment, REUpNextScheduler;
+@class NSArray, NSDictionary, NSMapTable, NSMutableDictionary, NSMutableSet, NSObject, NSString, REDataSourceManager, REFeatureSet, REFeatureTransmuter, REKeyMultiValueMap, REPredictorManager, RERelevanceProviderEnvironment, REUpNextScheduler;
 @protocol OS_dispatch_queue, REElementRelevanceEngineDelegate;
 
-@interface REElementRelevanceEngine <RESectionDelegate, RERelevanceProviderEnvironmentDelegate, REMLModelManagerObserver, REPredictorObserver>
+@interface REElementRelevanceEngine <RESectionDelegate, RERelevanceProviderEnvironmentDelegate, REMLModelManagerObserver, REPredictorObserver, REElementRelevanceEngineProperties, REFeatureTransformerInvalidationDelegate, REMLModelManagerDataStore>
 {
     NSMutableSet *_elementsNeedingRelevanceUpdate;
     NSMutableDictionary *_sections;
     NSMutableDictionary *_predictedElements;
     NSMapTable *_relevanceProviderElementMap;
     REKeyMultiValueMap *_identifierElementIdentifierMap;
+    REFeatureSet *_persistenceFeatures;
     REPredictorManager *_predictorManager;
     RERelevanceProviderEnvironment *_providerEnvironment;
     REDataSourceManager *_dataSourceManager;
     REFeatureTransmuter *_featureTransmuter;
     REUpNextScheduler *_scheduler;
+    REUpNextScheduler *_predictorUpdatedScheduler;
     NSObject<OS_dispatch_queue> *_queue;
     _Bool _deviceIsLocked;
     _Bool _ignoreDeviceLockState;
@@ -32,7 +37,13 @@
 
 @property(nonatomic) __weak id <REElementRelevanceEngineDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) RERelevanceProviderEnvironment *providerEnvironment;
+@property(readonly, nonatomic) REPredictorManager *predictorManager;
+@property(readonly, nonatomic) NSDictionary *sectionsMap;
+- (id)elementRankerForSection:(id)arg1;
 - (id)predictionForElement:(id)arg1;
+- (id)featureProviderForElement:(id)arg1;
+- (id)_generateFeatureMapForElement:(id)arg1;
 - (id)featureMapForElement:(id)arg1 trainingContext:(id)arg2;
 - (id)_queue_featureMapForElement:(id)arg1 trainingContext:(id)arg2;
 - (id)_queue_featureMapForElementWithId:(id)arg1 trainingContext:(id)arg2;
@@ -45,7 +56,11 @@
 - (void)_queue_scheduleRelevanceUpdateForElement:(id)arg1;
 - (_Bool)_elementIsFullyLoaded:(id)arg1;
 - (void)relevanceEnvironment:(id)arg1 didUpdateRelevanceProvider:(id)arg2;
+- (void)featureTransformerDidInvalidate:(id)arg1;
 - (void)predictorDidUpdate:(id)arg1;
+- (void)predictor:(id)arg1 didFinishActivity:(id)arg2;
+- (void)predictor:(id)arg1 didBeginActivity:(id)arg2;
+- (void)_updateStateBasedOnPredictor;
 - (void)_checkPreferences;
 - (void)pause;
 - (void)resume;
@@ -55,6 +70,9 @@
 - (void)addElement:(id)arg1 section:(id)arg2;
 - (void)modelManagerDidUpdateModel:(id)arg1;
 - (void)_enumerateAndGenerateSectionComparators:(CDUnknownBlockType)arg1;
+- (_Bool)modelManager:(id)arg1 saveDataStoreToURL:(id)arg2 error:(id *)arg3;
+- (_Bool)modelManager:(id)arg1 loadDataStoreFromURL:(id)arg2 error:(id *)arg3;
+- (id)dataStoreKey;
 - (id)elementAtPath:(id)arg1;
 - (unsigned long long)numberOfElementsInSection:(id)arg1;
 @property(readonly, nonatomic) NSArray *sections;

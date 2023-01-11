@@ -6,6 +6,7 @@
 
 @class NSString, SKUILockupViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUIPreviewTemplateViewElement
 {
     long long _itemIdentifier;

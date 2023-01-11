@@ -36,17 +36,16 @@
 - (id)itemProviderAtIndex:(unsigned long long)arg1;
 - (void)doAfterLoadingProvidedContentIntoFileURLs:(CDUnknownBlockType)arg1 synchronousTimeout:(double)arg2;
 - (void)doAfterLoadingProvidedContentIntoFileURLs:(CDUnknownBlockType)arg1;
-- (id)typeIdentifiersToLoadForRegisteredTypeIdentfiers:(id)arg1;
+- (id)typeIdentifiersToLoad:(id)arg1;
 @property(readonly, nonatomic) long long numberOfFiles;
 @property(readonly, nonatomic) NSArray *allDroppedFileURLs;
-- (id)preferredFileUploadURLAtIndex:(unsigned long long)arg1 fileType:(id *)arg2;
+- (id)fileUploadURLsAtIndex:(unsigned long long)arg1 fileTypes:(id *)arg2;
 - (id)valuesForPasteboardType:(id)arg1 inItemSet:(id)arg2;
 - (id)dataForPasteboardType:(id)arg1 inItemSet:(id)arg2;
 - (id)dataForPasteboardType:(id)arg1;
 - (id)_preLoadedDataConformingToType:(id)arg1 forItemProviderAtIndex:(unsigned long long)arg2;
 @property(copy, nonatomic) NSArray *itemProviders;
 - (id)pasteboardTypes;
-- (id)pasteboardTypesByFidelityForItemAtIndex:(unsigned long long)arg1;
 - (void)updateSupportedTypeIdentifiers:(id)arg1;
 - (id)init;
 

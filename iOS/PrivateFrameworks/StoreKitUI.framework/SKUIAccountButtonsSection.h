@@ -8,6 +8,7 @@
 
 @class NSString, SKUIAccountButtonsComponent, SKUIAccountButtonsViewController;
 
+__attribute__((visibility("hidden")))
 @interface SKUIAccountButtonsSection <SKUIAccountButtonsDelegate>
 {
     SKUIAccountButtonsViewController *_accountButtonsViewController;

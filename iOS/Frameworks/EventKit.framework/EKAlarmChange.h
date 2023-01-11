@@ -4,13 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface EKAlarmChange
+#import <EventKit/EKOwnerIDProviding-Protocol.h>
+
+@class EKObjectID;
+
+@interface EKAlarmChange <EKOwnerIDProviding>
 {
+    EKObjectID *_ownerID;
 }
 
 + (void)fetchAlarmChangesInCalendar:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 + (void)fetchAlarmChangesInSource:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 + (void)fetchAlarmChangesInStore:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
++ (int)entityType;
+@property(readonly, nonatomic) EKObjectID *ownerID; // @synthesize ownerID=_ownerID;
+- (void).cxx_destruct;
+- (id)initWithChangeProperties:(id)arg1;
 
 @end
 

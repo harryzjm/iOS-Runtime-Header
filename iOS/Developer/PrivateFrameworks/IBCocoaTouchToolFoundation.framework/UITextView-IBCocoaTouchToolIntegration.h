@@ -7,7 +7,10 @@
 #import <UIKit/UITextView.h>
 
 @interface UITextView (IBCocoaTouchToolIntegration)
+- (double)ibAdditionalBaselineOffsetFromBottom;
+- (double)ibAdditionalBaselineOffsetFromTop;
 - (struct CGSize)sizeThatFitsBounds;
+- (void)setIbTextAlignment:(long long)arg1;
 - (void)setIbTextContentType:(id)arg1;
 - (void)setIbSmartQuotesType:(long long)arg1;
 - (void)setIbSmartInsertDeleteType:(long long)arg1;

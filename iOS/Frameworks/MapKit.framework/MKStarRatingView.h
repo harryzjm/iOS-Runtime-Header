@@ -11,22 +11,27 @@
 @interface MKStarRatingView : UIView
 {
     double _rating;
-    long long _numLevels;
+    unsigned long long _numLevels;
     double _padding;
     _Bool _highlighted;
+    NSMutableArray *_ratingViews;
+    long long _numReviews;
+    long long _starStyle;
     UIImage *_fullStarImage;
     UIImage *_halfStarImage;
     UIImage *_emptyStarImage;
     UIImage *_fullStarHighlightedImage;
     UIImage *_halfStarHighlightedImage;
     UIImage *_emptyStarHighlightedImage;
-    NSMutableArray *_ratingViews;
-    long long _numReviews;
-    long long _starStyle;
 }
 
 + (id)ratingAsAttributedString:(double)arg1 baseFont:(id)arg2 style:(long long)arg3 theme:(id)arg4;
-+ (id)ratingAsAttributedString:(double)arg1 baseFont:(id)arg2 style:(long long)arg3;
++ (id)ratingShortAsAttributedString:(double)arg1 baseFont:(id)arg2 theme:(id)arg3;
++ (id)textAttachmentimageNamed:(id)arg1 font:(id)arg2;
++ (id)halfStarTextAttachmentWithFont:(id)arg1;
++ (id)emptyStarTextAttachmentWithFont:(id)arg1;
++ (id)fullStarTextAttachmentWithFont:(id)arg1;
++ (id)colorForRating:(double)arg1;
 @property(retain, nonatomic) UIImage *emptyStarHighlightedImage; // @synthesize emptyStarHighlightedImage=_emptyStarHighlightedImage;
 @property(retain, nonatomic) UIImage *halfStarHighlightedImage; // @synthesize halfStarHighlightedImage=_halfStarHighlightedImage;
 @property(retain, nonatomic) UIImage *fullStarHighlightedImage; // @synthesize fullStarHighlightedImage=_fullStarHighlightedImage;
@@ -35,7 +40,7 @@
 @property(retain, nonatomic) UIImage *fullStarImage; // @synthesize fullStarImage=_fullStarImage;
 @property(nonatomic, getter=isHighlighted) _Bool highlighted; // @synthesize highlighted=_highlighted;
 @property(nonatomic) double rating; // @synthesize rating=_rating;
-@property(nonatomic) long long numberOfRatingLevels; // @synthesize numberOfRatingLevels=_numLevels;
+@property(nonatomic) unsigned long long numberOfRatingLevels; // @synthesize numberOfRatingLevels=_numLevels;
 @property(nonatomic) long long starStyle; // @synthesize starStyle=_starStyle;
 - (void).cxx_destruct;
 - (void)setPadding:(double)arg1;

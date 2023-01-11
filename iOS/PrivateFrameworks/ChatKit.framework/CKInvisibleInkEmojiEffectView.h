@@ -8,6 +8,7 @@
 
 @class CAEmitterLayer, CALayer, NSString, UITextView;
 
+__attribute__((visibility("hidden")))
 @interface CKInvisibleInkEmojiEffectView <CAAnimationDelegate>
 {
     _Bool _blendingEnabled;

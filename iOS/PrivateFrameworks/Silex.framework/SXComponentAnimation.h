@@ -4,24 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Silex/SXClassFactoryProtocol-Protocol.h>
-
-@class NSString;
-
-@interface SXComponentAnimation <SXClassFactoryProtocol>
+@interface SXComponentAnimation
 {
 }
 
-+ (id)typeString;
-+ (void)initializeObject;
 - (Class)handlerClass;
 @property(readonly, nonatomic) int transitionBehavior;
 
 // Remaining properties
-@property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
-@property(readonly) unsigned long long hash;
-@property(readonly) Class superclass;
 @property(readonly, nonatomic) _Bool userControllable; // @dynamic userControllable;
 
 @end

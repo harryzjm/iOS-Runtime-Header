@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class TSWPStorage;
 @protocol TSDInfo;
 
 @protocol TSWPDrawableOLC
@@ -11,6 +12,7 @@
 @optional
 - (void)didRemoveDrawable:(id <TSDInfo>)arg1;
 - (void)willRemoveDrawable:(id <TSDInfo>)arg1;
+- (void)willRemoveDrawable:(id <TSDInfo>)arg1 storage:(TSWPStorage *)arg2;
 - (void)didAddDrawable:(id <TSDInfo>)arg1;
 - (void)willAddDrawable:(id <TSDInfo>)arg1;
 @end

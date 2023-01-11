@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class ODDColorTransform, ODDNodePoint, ODDStyleDefinition;
+@class NSArray, ODDColorTransform, ODDNodePoint, ODDStyleDefinition;
 
 __attribute__((visibility("hidden")))
 @interface ODDDiagram
@@ -12,15 +12,17 @@ __attribute__((visibility("hidden")))
     ODDNodePoint *mDocumentPoint;
     ODDColorTransform *mColorTransform;
     ODDStyleDefinition *mStyleDefinition;
+    NSArray *mEquivalentDrawables;
 }
 
+@property(retain, nonatomic) NSArray *equivalentDrawables; // @synthesize equivalentDrawables=mEquivalentDrawables;
+- (void).cxx_destruct;
 - (id)description;
 - (id)styleDefinition;
 - (id)colorTransform;
 - (void)setDocumentPoint:(id)arg1;
 - (id)documentPoint;
 - (void)setParentTextListStyle:(id)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

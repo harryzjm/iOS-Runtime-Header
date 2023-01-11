@@ -30,7 +30,6 @@
     id <PKPerformActionViewControllerDelegate> _delegate;
 }
 
-+ (id)navigationBarBackgroundColor;
 + (id)alertControllerForUnableReason:(unsigned long long)arg1 action:(id)arg2 displayableError:(id)arg3 addCardActionHandler:(CDUnknownBlockType)arg4;
 @property(nonatomic) __weak id <PKPerformActionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) PKPaymentWebService *webService; // @synthesize webService=_webService;
@@ -53,11 +52,12 @@
 - (void)_showSpinner:(_Bool)arg1;
 - (void)setRightBarButtonEnabled:(_Bool)arg1;
 - (void)shakeCard;
-- (_Bool)pkui_prefersNavigationBarShadowHidden;
+- (_Bool)pkui_disablesAutomaticDismissalUponEnteringBackground;
 - (void)viewWillLayoutSubviews;
 - (void)updateFirstResponder;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (id)_actionViewForPass:(id)arg1 action:(id)arg2;
 - (id)initWithPass:(id)arg1 action:(id)arg2 paymentDataProvider:(id)arg3;

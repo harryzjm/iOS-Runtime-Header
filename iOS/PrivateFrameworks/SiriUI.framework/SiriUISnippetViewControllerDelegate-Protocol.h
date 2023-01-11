@@ -21,8 +21,11 @@
 - (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 pushSirilandSnippets:(NSArray *)arg2;
 
 @optional
+- (void)siriSnippetViewController:(id <SiriUIViewController>)arg1 setTypeToSiriViewHidden:(_Bool)arg2;
+- (double)boundingWidthForSnippetViewController:(SiriUISnippetViewController *)arg1;
 - (unsigned long long)navigationIndexOfSnippetViewController:(SiriUISnippetViewController *)arg1;
 - (NSSet *)siriEnabledAppListForSiriViewController:(id <SiriUIViewController>)arg1;
 - (unsigned long long)siriDeviceLockStateForSnippetViewController:(id <SiriUIViewController>)arg1;
+- (void)siriSnippetViewControllerRequestsPinning:(SiriUISnippetViewController *)arg1;
 @end
 

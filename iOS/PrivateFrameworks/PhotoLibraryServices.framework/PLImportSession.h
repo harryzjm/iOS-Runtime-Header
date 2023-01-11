@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSOrderedSet;
+#import <PhotoLibraryServices/PLFileSystemAlbumMetadataPersistence-Protocol.h>
 
-@interface PLImportSession
+@class NSOrderedSet, NSString;
+
+@interface PLImportSession <PLFileSystemAlbumMetadataPersistence>
 {
     _Bool _needsPersistenceUpdate;
     _Bool _albumShouldBeAutomaticallyDeleted;
 }
 
++ (id)validKindsForPersistence;
 + (id)albumWithImportSessionID:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)insertNewImportSessionAlbumWithImportSessionID:(id)arg1 inManagedObjectContext:(id)arg2;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
-+ (id)insertInManagedObjectContext:(id)arg1;
 @property(nonatomic) _Bool albumShouldBeAutomaticallyDeleted; // @synthesize albumShouldBeAutomaticallyDeleted=_albumShouldBeAutomaticallyDeleted;
 @property(nonatomic) _Bool needsPersistenceUpdate; // @synthesize needsPersistenceUpdate=_needsPersistenceUpdate;
 - (id)mutableAssets;
@@ -27,8 +28,9 @@
 - (void)didSave;
 - (void)willSave;
 - (_Bool)validateImportSessionID:(id *)arg1 error:(id *)arg2;
-- (void)removePersistedFileSystemData;
-- (void)persistMetadataToFileSystem;
+- (void)removePersistedFileSystemDataWithPathManager:(id)arg1;
+- (void)persistMetadataToFileSystemWithPathManager:(id)arg1;
+- (_Bool)isValidForPersistence;
 - (id)batchedAssets;
 - (_Bool)_isDateAfterEndDate:(id)arg1;
 - (_Bool)_isDateBeforeStartDate:(id)arg1;
@@ -37,9 +39,15 @@
 - (void)revalidateImportDates;
 - (void)_updateEndDate:(id)arg1;
 - (void)_updateStartDate:(id)arg1;
+- (_Bool)validForPersistenceChangedForChangedKeys:(id)arg1;
+- (id)payloadForChangedKeys:(id)arg1;
 
 // Remaining properties
 @property(retain, nonatomic) NSOrderedSet *assets; // @dynamic assets;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

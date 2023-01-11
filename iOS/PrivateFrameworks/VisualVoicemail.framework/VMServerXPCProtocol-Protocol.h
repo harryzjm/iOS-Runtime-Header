@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <VisualVoicemail/NSObject-Protocol.h>
+#import <VisualVoicemail/VMAccountManagerXPCServer-Protocol.h>
+#import <VisualVoicemail/VMGreetingManagerXPCServer-Protocol.h>
+#import <VisualVoicemail/VMMessageManagerXPCServer-Protocol.h>
 
-@class NSArray, NSProgress, NSString, VMVoicemailGreeting;
+@class NSArray, NSProgress;
 
-@protocol VMServerXPCProtocol <NSObject>
+@protocol VMServerXPCProtocol <VMAccountManagerXPCServer, VMGreetingManagerXPCServer, VMMessageManagerXPCServer>
 - (void)obliterate;
 - (void)reportTranscriptionRatedAccurate:(_Bool)arg1 forIdentifier:(long long)arg2;
 - (void)reportTranscriptionProblemForIdentifier:(long long)arg1;
-- (void)changePassword:(NSString *)arg1 completionBlock:(void (^)(NSError *))arg2;
 - (void)removeAllVoicemails;
 - (void)retrieveDataForIdentifier:(long long)arg1;
 - (void)setReadForIdentifiers:(NSArray *)arg1;
@@ -21,8 +22,6 @@
 - (void)setDeletedForIdentifier:(long long)arg1;
 - (void)removeVoicemailFromTrashWithIdentifier:(long long)arg1;
 - (void)setTrashedForIdentifiers:(NSArray *)arg1;
-- (void)setVoicemailGreeting:(VMVoicemailGreeting *)arg1 completionBlock:(void (^)(NSError *))arg2;
-- (void)retrieveVoicemailGreeting:(void (^)(VMVoicemailGreeting *, NSError *))arg1;
 - (void)allVoicemails:(void (^)(NSOrderedSet *))arg1;
 - (void)synchronize;
 - (NSProgress *)requestTranscriptionProgress:(void (^)(_Bool))arg1;

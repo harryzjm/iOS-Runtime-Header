@@ -6,6 +6,7 @@
 
 @class AWDServerConnection;
 
+__attribute__((visibility("hidden")))
 @interface AWDLogger
 {
     AWDServerConnection *_awdServer;

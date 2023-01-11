@@ -12,6 +12,7 @@
 + (id)safeCategoryTargetClassName;
 - (_Bool)_allowCustomActionHintSpeakOverride;
 - (id)accessibilityCustomRotors;
+- (id)accessibilityUserInputLabels;
 - (id)_accessibilitySpeakThisString;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;

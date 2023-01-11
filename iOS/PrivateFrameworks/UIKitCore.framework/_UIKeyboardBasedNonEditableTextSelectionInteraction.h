@@ -7,6 +7,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIKeyboardBasedNonEditableTextSelectionInteraction
 {
+    _Bool _isShiftKeyBeingHeld;
 }
 
 - (void)oneFingerForcePress:(id)arg1;

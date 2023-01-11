@@ -17,6 +17,7 @@
 - (long long)_accessibilityExpandedStatus;
 - (id)accessibilityLabel;
 - (id)accessibilityValue;
+- (id)accessibilityCustomActions;
 - (_Bool)isAccessibilityElement;
 - (id)_accessibilityRoleDescription;
 

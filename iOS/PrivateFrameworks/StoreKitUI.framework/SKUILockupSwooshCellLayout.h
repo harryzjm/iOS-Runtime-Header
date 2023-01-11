@@ -6,6 +6,7 @@
 
 @class NSString, UIColor, UIImage, UIImageView, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface SKUILockupSwooshCellLayout
 {
     UILabel *_artistNameLabel;

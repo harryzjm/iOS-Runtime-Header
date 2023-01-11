@@ -8,14 +8,13 @@
 
 #import <coreroutine/RTPurgable-Protocol.h>
 
-@class NSString, RTAccountManager, RTContactsManager, RTDefaultsManager, RTDiagnostics, RTDistanceCalculator, RTEventManager, RTFingerprintManager, RTLearnedLocationAlgorithmMetricCalculator, RTLearnedLocationEngineTrainingMetrics, RTLearnedLocationStore, RTLocationManager, RTLocationStore, RTMapServiceManager, RTMapsSupportManager, RTMetricManager, RTMotionActivityManager, RTPersonalizationPortraitManager, RTVisitManager, RTXPCActivityManager;
+@class NSString, RTAccountManager, RTContactsManager, RTDefaultsManager, RTDiagnostics, RTDistanceCalculator, RTEventManager, RTFingerprintManager, RTLearnedLocationAlgorithmMetricCalculator, RTLearnedLocationEngineTrainingMetrics, RTLearnedLocationReconcilerPerDevice, RTLearnedLocationReconcilerPerVisit, RTLearnedLocationStore, RTLocationManager, RTLocationStore, RTMapServiceManager, RTMapsSupportManager, RTMetricManager, RTMotionActivityManager, RTPersonalizationPortraitManager, RTPlatform, RTVisitManager, RTXPCActivityManager;
 @protocol OS_dispatch_queue, RTLearnedLocationEngineProtocol;
 
 @interface RTLearnedLocationEngine : NSObject <RTPurgable>
 {
     _Bool _monitorFingerprints;
     id <RTLearnedLocationEngineProtocol> _delegate;
-    RTLearnedLocationEngineTrainingMetrics *_trainingMetrics;
     NSObject<OS_dispatch_queue> *_queue;
     RTAccountManager *_accountManager;
     RTLearnedLocationAlgorithmMetricCalculator *_algorithmMetricCalculator;
@@ -32,18 +31,25 @@
     RTMapsSupportManager *_mapsSupportManager;
     RTMetricManager *_metricManager;
     RTMotionActivityManager *_motionActivityManager;
+    RTPlatform *_platform;
     RTPersonalizationPortraitManager *_portraitManager;
+    RTLearnedLocationEngineTrainingMetrics *_trainingMetrics;
+    RTLearnedLocationReconcilerPerVisit *_reconcilerPerVisit;
+    RTLearnedLocationReconcilerPerDevice *_reconcilerPerDevice;
     RTVisitManager *_visitManager;
     RTXPCActivityManager *_xpcActivityManager;
 }
 
-+ (id)locationFromMapItem:(id)arg1;
 + (id)locationFromAggregateVisits:(id)arg1;
-+ (double)confidenceFromDataPointCount:(unsigned long long)arg1;
 + (id)visitFromAggregateVisits:(id)arg1;
+@property(nonatomic) _Bool monitorFingerprints; // @synthesize monitorFingerprints=_monitorFingerprints;
 @property(readonly, nonatomic) RTXPCActivityManager *xpcActivityManager; // @synthesize xpcActivityManager=_xpcActivityManager;
 @property(readonly, nonatomic) RTVisitManager *visitManager; // @synthesize visitManager=_visitManager;
+@property(readonly, nonatomic) RTLearnedLocationReconcilerPerDevice *reconcilerPerDevice; // @synthesize reconcilerPerDevice=_reconcilerPerDevice;
+@property(readonly, nonatomic) RTLearnedLocationReconcilerPerVisit *reconcilerPerVisit; // @synthesize reconcilerPerVisit=_reconcilerPerVisit;
+@property(retain, nonatomic) RTLearnedLocationEngineTrainingMetrics *trainingMetrics; // @synthesize trainingMetrics=_trainingMetrics;
 @property(readonly, nonatomic) RTPersonalizationPortraitManager *portraitManager; // @synthesize portraitManager=_portraitManager;
+@property(readonly, nonatomic) RTPlatform *platform; // @synthesize platform=_platform;
 @property(readonly, nonatomic) RTMotionActivityManager *motionActivityManager; // @synthesize motionActivityManager=_motionActivityManager;
 @property(readonly, nonatomic) RTMetricManager *metricManager; // @synthesize metricManager=_metricManager;
 @property(readonly, nonatomic) RTMapsSupportManager *mapsSupportManager; // @synthesize mapsSupportManager=_mapsSupportManager;
@@ -60,20 +66,16 @@
 @property(readonly, nonatomic) RTLearnedLocationAlgorithmMetricCalculator *algorithmMetricCalculator; // @synthesize algorithmMetricCalculator=_algorithmMetricCalculator;
 @property(readonly, nonatomic) RTAccountManager *accountManager; // @synthesize accountManager=_accountManager;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property(retain, nonatomic) RTLearnedLocationEngineTrainingMetrics *trainingMetrics; // @synthesize trainingMetrics=_trainingMetrics;
-@property(nonatomic) _Bool monitorFingerprints; // @synthesize monitorFingerprints=_monitorFingerprints;
 @property(nonatomic) __weak id <RTLearnedLocationEngineProtocol> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
-- (id)_updateExistingPlace:(id)arg1 ifBetterMapItem:(id)arg2 error:(id *)arg3;
 - (_Bool)_removeUnusedMapItems:(id *)arg1;
 - (_Bool)_retrainVisitsWithoutPlaces:(id *)arg1;
-- (id)_inferPlaceTypesWithError:(id *)arg1;
-- (id)replaceBusinessMapItemWithReverseGeocodedMapItemForHome:(id)arg1;
-- (_Bool)_updatePlaceTypesFromInferenceWithError:(id *)arg1;
-- (void)_logLocationsOfInterest;
+- (void)_logDatabasesWithReason:(id)arg1;
+- (void)_logLocalStoreWithReason:(id)arg1;
+- (void)_logCloudStoreWithReason:(id)arg1;
 - (void)_teardownTrainingMetrics;
 - (void)_setupTrainingMetricsFromDate:(id)arg1 toDate:(id)arg2;
-- (void)purgeManager:(id)arg1 performPurgeOfType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)performPurgeOfType:(long long)arg1 referenceDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)onVisitManagerNotification:(id)arg1;
 - (void)_updateMonitorFingerprintsWithVisit:(id)arg1;
 - (void)_onVisitManagerNotification:(id)arg1;
@@ -81,35 +83,58 @@
 - (void)_onFingerprintManagerNotification:(id)arg1;
 - (void)onContactsManagerNotification:(id)arg1;
 - (void)_onContactsManagerNotification:(id)arg1;
-- (_Bool)_processMeCardWithError:(id *)arg1;
-- (id)_postalAddressMapItemsOfContact:(id)arg1 error:(id *)arg2;
-- (id)_meCardContactWithError:(id *)arg1;
-- (void)_purge;
-- (_Bool)_trainLocationsOfInterestModelWithError:(id *)arg1;
+- (void)classifyPlaceTypesWithHandler:(CDUnknownBlockType)arg1;
+- (void)_classifyPlaceTypesWithHandler:(CDUnknownBlockType)arg1;
+- (_Bool)_classifyPlaceTypes:(id *)arg1;
+- (void)_purgeWithReferenceDate:(id)arg1;
+- (void)didFinishTraining;
+- (void)willBeginTraining;
+- (void)relabelWithHandler:(CDUnknownBlockType)arg1;
+- (_Bool)_relabelWithRelabeler:(id)arg1 relabelerPersister:(id)arg2 error:(id *)arg3;
+- (_Bool)_relabelWithError:(id *)arg1;
+- (id)getRelabeledInferredMapItemForCandidate:(struct RTPair *)arg1 relabeler:(id)arg2 loiIdentifierToCoalescedSourceMap:(id)arg3 submitMetrics:(_Bool)arg4 error:(id *)arg5;
+- (id)extractCandidate:(struct RTPair *)arg1 fromNearbyCandidates:(id)arg2 extractedCandidate:(struct RTPair **)arg3 error:(id *)arg4;
+- (id)getNearbyCandidatesAroundLocation:(id)arg1 distance:(double)arg2 loiIdentifierToCoalescedSourceMap:(id)arg3 error:(id *)arg4;
+- (id)_performPerDeviceReconiliationWithError:(id *)arg1;
+- (id)_performPerVisitReconciliationWithError:(id *)arg1;
+- (void)reconcileLearnedLocationsWithHandler:(CDUnknownBlockType)arg1;
+- (void)_reconcileLearnedLocationsWithHandler:(CDUnknownBlockType)arg1;
+- (_Bool)_reconcileLearnedLocationsWithError:(id *)arg1;
+- (unsigned long long)preferredReconciliationAlgorithm;
 - (void)trainLocationsOfInterestModelWithHandler:(CDUnknownBlockType)arg1;
-- (void)_trainLocationsOfInterestModelWithHandler:(CDUnknownBlockType)arg1;
+- (void)_requestTrainLocationsOfInterestModelWithHandler:(CDUnknownBlockType)arg1;
+- (void)requestTrainLocationsOfInterestModelWithHandler:(CDUnknownBlockType)arg1;
+- (_Bool)_trainLocationsOfInterestModelWithError:(id *)arg1;
 - (void)trainWithHandler:(CDUnknownBlockType)arg1;
+- (void)_trainWithFromDate:(id)arg1 ToDate:(id)arg2 forLastLearnedVisit:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_trainWithHandler:(CDUnknownBlockType)arg1;
-- (_Bool)_trainVisitsFromDate:(id)arg1 toDate:(id)arg2 error:(id *)arg3;
-- (_Bool)_processVisits:(id)arg1 error:(id *)arg2;
-- (id)_updateExistingPlaceNearMapItem:(id)arg1 error:(id *)arg2;
+- (_Bool)_deferTrainingDueToAvailability;
+- (_Bool)_deferTrainingDueToRecentResetSync;
+- (_Bool)_trainVisitsFromDate:(id)arg1 toDate:(id)arg2 forLastLearnedVisit:(id)arg3 error:(id *)arg4;
+- (_Bool)_processVisits:(id)arg1 forLastLearnedVisit:(id)arg2 error:(id *)arg3;
 - (id)_placeForMapItem:(id)arg1 error:(id *)arg2;
+- (void)_submitMetricsForVisit:(id)arg1 possibleInferredMapItems:(id)arg2 selectedInferredMapItem:(id)arg3;
 - (id)_bestInferredMapItemForVisit:(id)arg1 error:(id *)arg2;
-- (id)_bestInferredMapItemForVisit:(id)arg1 fromInferredMapItems:(id)arg2 error:(id *)arg3;
-- (id)_inferredMapItemsForVisit:(id)arg1 error:(id *)arg2;
+- (id)_bestFusedInferredMapItemForVisit:(id)arg1 fromCandidates:(id)arg2 error:(id *)arg3;
+- (id)_candidatesForVisit:(id)arg1 providers:(id)arg2 error:(id *)arg3;
+- (id)_candidatesForInferredMapItems:(id)arg1 error:(id *)arg2;
+- (void)queryMapItemProvider:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)fetchFusionCandidatesForVisit:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)_enabledMapItemProviders;
-- (id)_filterVisits:(id)arg1;
+- (id)_mapItemProviderForClass:(Class)arg1 error:(id *)arg2;
+- (id)_filterVisits:(id)arg1 lastLearnedVisit:(id)arg2;
 - (id)_visitsFromDate:(id)arg1 toDate:(id)arg2 error:(id *)arg3;
-- (id)_lastVisit;
+- (id)_lastVisitWithError:(id *)arg1;
 - (void)shutdown;
 - (void)_shutdown;
 - (void)setup;
 - (void)_setup;
+- (void)_fetchLatestVisitWithHandler:(CDUnknownBlockType)arg1;
 - (void)_teardownXpcActivityTrain;
 - (void)_setupXpcActivityTrain;
 - (void)_unregisterForNotifications;
 - (void)_registerForNotifications;
-- (id)initWithAccountManager:(id)arg1 algorithmMetricCalculator:(id)arg2 contactsManager:(id)arg3 defaultsManager:(id)arg4 diagnostics:(id)arg5 distanceCalculator:(id)arg6 eventManager:(id)arg7 fingerprintManager:(id)arg8 learnedLocationStore:(id)arg9 locationManager:(id)arg10 locationStore:(id)arg11 mapServiceManager:(id)arg12 mapsSupportManager:(id)arg13 metricManager:(id)arg14 motionActivityManager:(id)arg15 portraitManager:(id)arg16 visitManager:(id)arg17 xpcActivityManager:(id)arg18;
+- (id)initWithAccountManager:(id)arg1 algorithmMetricCalculator:(id)arg2 contactsManager:(id)arg3 defaultsManager:(id)arg4 diagnostics:(id)arg5 distanceCalculator:(id)arg6 eventManager:(id)arg7 fingerprintManager:(id)arg8 learnedLocationStore:(id)arg9 locationManager:(id)arg10 locationStore:(id)arg11 mapServiceManager:(id)arg12 mapsSupportManager:(id)arg13 metricManager:(id)arg14 motionActivityManager:(id)arg15 platform:(id)arg16 portraitManager:(id)arg17 reconcilerPerVisit:(id)arg18 reconcilerPerDevice:(id)arg19 visitManager:(id)arg20 xpcActivityManager:(id)arg21;
 - (id)init;
 
 // Remaining properties

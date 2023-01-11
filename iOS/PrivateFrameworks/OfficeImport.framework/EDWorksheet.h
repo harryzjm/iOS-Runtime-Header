@@ -4,8 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class EDCollection, EDColumnInfoCollection, EDMergedCellCollection, EDPane, EDReference, EDRowBlocks, EDWarnings, OITSUPointerKeyDictionary;
+@class EDCollection, EDColumnInfoCollection, EDMergedCellCollection, EDPane, EDReference, EDRowBlocks, EDWarnings, NSMutableDictionary;
 
+__attribute__((visibility("hidden")))
 @interface EDWorksheet
 {
     EDRowBlocks *mRowBlocks;
@@ -23,11 +24,12 @@
     unsigned long long mMaxColumnOutlineLevel;
     _Bool mFitToPage;
     EDReference *mMaxCellReferencedInFormulas;
-    OITSUPointerKeyDictionary *mMergedRows;
-    OITSUPointerKeyDictionary *mMergedCols;
+    NSMutableDictionary *mMergedRows;
+    NSMutableDictionary *mMergedCols;
     EDReference *mImplicitCellArea;
 }
 
+- (void).cxx_destruct;
 - (id)description;
 - (_Bool)hasMergedCells;
 - (id)worksheetWarnings;

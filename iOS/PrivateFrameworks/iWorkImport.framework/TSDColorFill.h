@@ -54,11 +54,7 @@ __attribute__((visibility("hidden")))
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)referenceColor;
 - (id)presetKind;
-- (int)fillType;
-- (void)applyToCAShapeLayer:(id)arg1 withScale:(double)arg2;
-- (_Bool)canApplyToCAShapeLayer;
-- (void)applyToCALayer:(id)arg1 withScale:(double)arg2;
-- (_Bool)canApplyToCALayer;
+- (long long)fillType;
 - (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (void)paintRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (_Bool)drawsInOneStep;

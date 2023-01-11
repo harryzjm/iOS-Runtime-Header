@@ -8,5 +8,7 @@
 
 @interface CALayer (AnchorPoint)
 - (void)setAnchorPointWithoutChangingPosition:(struct CGPoint)arg1;
+- (void)setFrameUsingCenterAndBounds:(struct CGRect)arg1;
+- (struct CGRect)frameUsingCenterAndBounds;
 @end
 

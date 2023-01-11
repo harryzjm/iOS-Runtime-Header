@@ -14,7 +14,6 @@
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)_rootFeatures;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;

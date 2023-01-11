@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface SAMPLikesMediaEntity
 {
 }
@@ -11,6 +13,7 @@
 + (id)likesMediaEntityWithDictionary:(id)arg1 context:(id)arg2;
 + (id)likesMediaEntity;
 - (_Bool)requiresResponse;
+@property(copy, nonatomic) NSString *influencedSharedUserId;
 - (id)encodedClassName;
 - (id)groupIdentifier;
 

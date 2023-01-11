@@ -8,7 +8,6 @@
 {
 }
 
-+ (id)typeString;
 - (_Bool)userControllable;
 - (Class)handlerClass;
 

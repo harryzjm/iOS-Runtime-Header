@@ -10,23 +10,24 @@
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/HMMutableApplicationData-Protocol.h>
 
-@class HMAccessory, HMApplicationData, HMFUnfairLock, HMHome, HMHomeManagerConfiguration, HMMutableArray, NSArray, NSNumber, NSOperationQueue, NSString, NSUUID, _HMContext, _HMLocationHandler;
+@class HMAccessory, HMApplicationData, HMFUnfairLock, HMHome, HMHomeManagerConfiguration, HMMutableArray, HMNetworkRouterFirewallRuleManager, HMUserCloudShareManager, NSArray, NSNumber, NSOperationQueue, NSSet, NSString, NSUUID, _HMContext;
 @protocol HMHomeManagerDelegate, OS_dispatch_queue;
 
 @interface HMHomeManager : NSObject <HMFMessageReceiver, HMMutableApplicationData, HMApplicationData>
 {
     HMFUnfairLock *_lock;
     HMAccessory *_currentAccessory;
+    NSOperationQueue *_syncOperationQueue;
+    _Bool _frameworkMergeComplete;
     _Bool _thisDeviceResidentCapable;
     _Bool _residentEnabledForThisDevice;
     _Bool _accessAllowedWhenLocked;
     _Bool _mediaAccessoryControlRequested;
     _Bool _didUpdateHomes;
-    _Bool _frameworkMergeComplete;
-    _Bool _fetchInProgress;
     _Bool _viewServiceActive;
     int _serverGenerationCounterToken;
     id <HMHomeManagerDelegate> _delegate;
+    unsigned long long _authorizationStatus;
     HMHome *_primaryHome;
     HMHome *_currentHome;
     HMApplicationData *_applicationData;
@@ -35,41 +36,41 @@
     unsigned long long _residentProvisioningStatus;
     HMHomeManagerConfiguration *_configuration;
     unsigned long long _options;
+    NSSet *_addAccessoryRequests;
+    HMUserCloudShareManager *_userCloudShareManager;
     HMMutableArray *_currentHomes;
     HMMutableArray *_homeInvitations;
     NSOperationQueue *_mergeOperationQueue;
-    unsigned long long _generationCounter;
     NSNumber *_fileGenerationCounter;
     NSNumber *_fileMetadataVersion;
-    unsigned long long _metadataVersion;
-    _HMLocationHandler *_locationHandler;
-    NSString *_homeCacheDir;
     NSString *_homeDataCache;
     NSString *_metadataCache;
     NSUUID *_uuid;
     _HMContext *_context;
+    unsigned long long _generationCounter;
+    unsigned long long _metadataVersion;
+    HMNetworkRouterFirewallRuleManager *_firewallRuleManager;
 }
 
 + (_Bool)dataSyncInProgressFromDataSyncState:(unsigned long long)arg1;
+@property(readonly, nonatomic) HMNetworkRouterFirewallRuleManager *firewallRuleManager; // @synthesize firewallRuleManager=_firewallRuleManager;
 @property(nonatomic, getter=isViewServiceActive) _Bool viewServiceActive; // @synthesize viewServiceActive=_viewServiceActive;
+@property(nonatomic) unsigned long long metadataVersion; // @synthesize metadataVersion=_metadataVersion;
+@property(nonatomic) unsigned long long generationCounter; // @synthesize generationCounter=_generationCounter;
 @property(readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property(readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property(retain) NSString *metadataCache; // @synthesize metadataCache=_metadataCache;
 @property(retain) NSString *homeDataCache; // @synthesize homeDataCache=_homeDataCache;
-@property(retain) NSString *homeCacheDir; // @synthesize homeCacheDir=_homeCacheDir;
-@property(readonly, nonatomic) _HMLocationHandler *locationHandler; // @synthesize locationHandler=_locationHandler;
-@property(nonatomic) unsigned long long metadataVersion; // @synthesize metadataVersion=_metadataVersion;
 @property(retain, nonatomic) NSNumber *fileMetadataVersion; // @synthesize fileMetadataVersion=_fileMetadataVersion;
 @property(retain, nonatomic) NSNumber *fileGenerationCounter; // @synthesize fileGenerationCounter=_fileGenerationCounter;
 @property(nonatomic) int serverGenerationCounterToken; // @synthesize serverGenerationCounterToken=_serverGenerationCounterToken;
-@property(nonatomic) unsigned long long generationCounter; // @synthesize generationCounter=_generationCounter;
-@property(nonatomic) _Bool fetchInProgress; // @synthesize fetchInProgress=_fetchInProgress;
-@property(nonatomic) _Bool frameworkMergeComplete; // @synthesize frameworkMergeComplete=_frameworkMergeComplete;
 @property(nonatomic) _Bool didUpdateHomes; // @synthesize didUpdateHomes=_didUpdateHomes;
 @property(retain, nonatomic) NSOperationQueue *mergeOperationQueue; // @synthesize mergeOperationQueue=_mergeOperationQueue;
 @property(retain, nonatomic) HMMutableArray *homeInvitations; // @synthesize homeInvitations=_homeInvitations;
 @property(retain, nonatomic) HMMutableArray *currentHomes; // @synthesize currentHomes=_currentHomes;
+@property(readonly) HMUserCloudShareManager *userCloudShareManager; // @synthesize userCloudShareManager=_userCloudShareManager;
 - (void).cxx_destruct;
+@property(readonly, copy) NSUUID *applicationDataIdentifier;
 - (void)_pairingIdentityForAccessoryWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)pairingIdentityForAccessoryWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_registerForMediaAccessoryControl:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -78,7 +79,6 @@
 - (void)_handleAccessAllowedWhenLockedUpdatedNotification:(id)arg1;
 - (void)_handleResidentEnabledForThisDeviceUpdatedNotification:(id)arg1;
 - (void)_handleResidentDeviceCapableUpdatedNotification:(id)arg1;
-- (void)_handleAppDataUpdatedNotification:(id)arg1;
 - (void)_updateInvitation:(id)arg1 presenceAuthStatus:(unsigned long long)arg2 invitationState:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_acceptInvitation:(id)arg1 presenceAuthStatus:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_acceptInvitation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -101,23 +101,26 @@
 - (void)_notifyDelegateOfAppDataUpdate;
 - (void)_updateHomes:(id)arg1;
 - (void)_updateCurrentHome:(id)arg1;
+- (void)_updateAddAccessoryRequestsAndNotify:(id)arg1;
+- (void)_notifyPendingAddRequests:(id)arg1;
+- (void)_handleCheckForAddAccessoryRequests;
 - (void)_handleRuntimeStateUpdateNotification:(id)arg1;
 - (void)_requestRuntimeUpdate:(id)arg1;
 - (void)_handleRuntimeStateUpdatePayload:(id)arg1;
-- (void)_requestFetchHomeConfigurationWithGenerationCounter:(id)arg1 cachedHomeConfiguration:(id)arg2 metadataVersion:(id)arg3 cachedMetadataConfiguration:(id)arg4 refreshRequested:(_Bool)arg5;
-- (void)_fetchHomeConfigurationWithCache:(_Bool)arg1 refreshRequested:(_Bool)arg2;
 - (void)_writeCaches:(id)arg1 homeData:(_Bool)arg2 metadata:(_Bool)arg3;
 @property(readonly, nonatomic) unsigned long long serverGenerationCounter;
 - (void)_dumpCaches:(id)arg1 metadata:(id)arg2;
 - (_Bool)_isValidCachedHomeConfiguration:(id)arg1;
 - (void)_removeCacheFiles:(_Bool)arg1;
 - (void)_determineCacheFiles;
-- (void)_determineCacheDirectory;
 - (void)_processHomeConfigurationRequest:(id)arg1 refreshRequested:(_Bool)arg2;
+- (id)_addAccessoryRequestsFromArray:(id)arg1;
 - (void)__handleHomeManagerState:(id)arg1;
+- (void)__start;
+- (void)__processSyncResponse:(id)arg1 refreshRequested:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_fetchHomeConfigurationWithRefreshRequested:(_Bool)arg1;
 - (void)_requestRefresh;
-- (void)_fetchHomeConfigurationWithPrivacyCheckWithCache:(_Bool)arg1 refreshRequested:(_Bool)arg2;
-- (void)_start;
+@property(readonly) NSString *homeCacheDir;
 - (void)_pingDeviceWithDestination:(id)arg1 secure:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_pingDeviceWithUUID:(id)arg1 secure:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)__removeAccountWithHandle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -173,6 +176,7 @@
 - (void)updatePrimaryHome:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 @property(readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property(readonly, nonatomic) NSUUID *messageTargetUUID;
+@property(retain, nonatomic) NSSet *addAccessoryRequests; // @synthesize addAccessoryRequests=_addAccessoryRequests;
 @property(nonatomic) _Bool mediaAccessoryControlRequested; // @synthesize mediaAccessoryControlRequested=_mediaAccessoryControlRequested;
 - (void)_notifyResidentProvisioningStatus:(unsigned long long)arg1;
 - (void)setResidentProvisioningStatus:(unsigned long long)arg1;
@@ -206,6 +210,8 @@
 - (void)setCurrentHome:(id)arg1;
 @property(readonly, nonatomic) HMHome *currentHome; // @synthesize currentHome=_currentHome;
 @property(retain, nonatomic) HMHome *primaryHome; // @synthesize primaryHome=_primaryHome;
+@property(nonatomic) _Bool frameworkMergeComplete; // @synthesize frameworkMergeComplete=_frameworkMergeComplete;
+@property(readonly) unsigned long long authorizationStatus; // @synthesize authorizationStatus=_authorizationStatus;
 @property(nonatomic) __weak id <HMHomeManagerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)dealloc;
 - (id)initWithHomeMangerConfiguration:(id)arg1;

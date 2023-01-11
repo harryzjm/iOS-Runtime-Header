@@ -6,6 +6,7 @@
 
 @class OADDrawable;
 
+__attribute__((visibility("hidden")))
 @interface CMDrawableStyle
 {
     OADDrawable *mDrawable;

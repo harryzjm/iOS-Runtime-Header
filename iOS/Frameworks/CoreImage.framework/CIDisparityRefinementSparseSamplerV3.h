@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CIImage, NSDictionary;
+@class CIImage, NSDictionary, NSNumber;
 
 __attribute__((visibility("hidden")))
 @interface CIDisparityRefinementSparseSamplerV3
@@ -12,8 +12,10 @@ __attribute__((visibility("hidden")))
     CIImage *inputImage;
     CIImage *inputPreprocImage;
     NSDictionary *inputTuningParameters;
+    NSNumber *inputScale;
 }
 
+@property(retain) NSNumber *inputScale; // @synthesize inputScale;
 @property(retain) NSDictionary *inputTuningParameters; // @synthesize inputTuningParameters;
 @property(retain) CIImage *inputPreprocImage; // @synthesize inputPreprocImage;
 @property(retain) CIImage *inputImage; // @synthesize inputImage;

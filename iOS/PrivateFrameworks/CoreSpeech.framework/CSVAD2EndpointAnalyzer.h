@@ -9,7 +9,7 @@
 #import <CoreSpeech/CSEndpointAnalyzerImpl-Protocol.h>
 
 @class NSDictionary, NSMutableData, NSString;
-@protocol CSEndpointAnalyzerDelegate, OS_dispatch_queue;
+@protocol CSEndpointAnalyzerDelegate, CSEndpointAnalyzerImplDelegate, OS_dispatch_queue;
 
 @interface CSVAD2EndpointAnalyzer : NSObject <CSEndpointAnalyzerImpl>
 {
@@ -48,8 +48,10 @@
     double _previousSamplesSeen;
     NSObject<OS_dispatch_queue> *_apQueue;
     unsigned long long _vtEndInSampleCount;
+    double _trailingSilenceDurationAtEndpoint;
 }
 
+@property(nonatomic) double trailingSilenceDurationAtEndpoint; // @synthesize trailingSilenceDurationAtEndpoint=_trailingSilenceDurationAtEndpoint;
 @property(nonatomic) unsigned long long vtEndInSampleCount; // @synthesize vtEndInSampleCount=_vtEndInSampleCount;
 @property(nonatomic) _Bool recordingDidStop; // @synthesize recordingDidStop=_recordingDidStop;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *apQueue; // @synthesize apQueue=_apQueue;
@@ -92,9 +94,9 @@
 @property(readonly, nonatomic) double lastStartOfVoiceActivityTime;
 - (void)_resetWithSampleRate:(unsigned long long)arg1;
 - (void)reset;
-- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1;
+- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2;
 - (void)preheat;
-- (void)recordingStoppedForReason:(unsigned long long)arg1;
+- (void)recordingStoppedForReason:(long long)arg1;
 @property(readonly, nonatomic) _Bool canProcessCurrentRequest;
 - (void)dealloc;
 - (id)init;
@@ -109,6 +111,7 @@
 @property(readonly, nonatomic) double elapsedTimeWithNoSpeech;
 @property(readonly, nonatomic) NSString *endpointerModelVersion;
 @property(readonly) unsigned long long hash;
+@property(nonatomic) __weak id <CSEndpointAnalyzerImplDelegate> implDelegate;
 @property(readonly) Class superclass;
 
 @end

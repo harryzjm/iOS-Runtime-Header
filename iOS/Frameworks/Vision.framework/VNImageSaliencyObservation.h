@@ -4,32 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray;
-
 @interface VNImageSaliencyObservation
 {
-    struct CGSize _mOriginalImageSize;
-    NSArray *_mSalientObjects;
-    struct CGRect _mSalientRegion;
-    struct CGRect _mHighlySalientRegion;
 }
-
-+ (_Bool)supportsSecureCoding;
-+ (struct __CVBuffer *)create64x64FloatPixelBufferFromNSData:(id)arg1;
-+ (id)createNSDataDumpFrom64x64FloatPixelBuffer:(struct __CVBuffer *)arg1;
-- (void).cxx_destruct;
-@property(readonly, nonatomic) struct CGRect narrowedBoundingBox;
-@property(readonly, nonatomic) struct CGRect boundingBox;
-@property(readonly, nonatomic) NSArray *salientObjects;
-- (void)_computeBoundingBoxes;
-- (void)_computeSalientObjects;
-- (struct __CVBuffer *)createSaliencyImageAndReturnError:(id *)arg1;
-- (unsigned long long)hash;
-- (_Bool)isEqual:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithRequestRevision:(unsigned long long)arg1 rawSaliencyImage:(struct __CVBuffer *)arg2 originalImageSize:(struct CGSize)arg3;
 
 @end
 

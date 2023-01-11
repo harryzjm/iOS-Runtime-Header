@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AVConference/NSObject-Protocol.h>
+#import <AVConference/VCBasebandCodecNotifications-Protocol.h>
 
 @class VCAudioIOControllerClient;
 
-@protocol VCAudioIOControllerControl <NSObject>
+@protocol VCAudioIOControllerControl <VCBasebandCodecNotifications>
 - (void)updateClient:(VCAudioIOControllerClient *)arg1;
 - (void)stopClient:(VCAudioIOControllerClient *)arg1;
 - (void)startClient:(VCAudioIOControllerClient *)arg1;
 
 @optional
+- (void)refreshRemoteCodecType:(unsigned int)arg1 sampleRate:(double)arg2;
 - (void)refreshOutputMetering;
 - (void)refreshInputMetering;
 @end

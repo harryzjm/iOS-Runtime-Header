@@ -13,6 +13,7 @@
     _Bool _sponsored;
     _Bool _deleted;
     _Bool _isDraft;
+    _Bool _isLocalDraft;
     _Bool _featureCandidate;
     _Bool _needsRapidUpdates;
     _Bool _showMinimalChrome;
@@ -22,6 +23,10 @@
     _Bool _hiddenFromAutoFavorites;
     _Bool _paid;
     _Bool _webEmbedsEnabled;
+    _Bool _bundlePaid;
+    _Bool _issueOnly;
+    _Bool _showBundleSoftPaywall;
+    _Bool _useTransparentNavigationBar;
     NSString *_versionIdentifier;
     NSString *_identifier;
     NSString *_articleID;
@@ -47,7 +52,6 @@
     NSDate *_lastFetchedDate;
     NSArray *_topics;
     NSArray *_topicIDs;
-    NSArray *_endOfArticleTopicIDs;
     NSURL *_videoURL;
     double _videoDuration;
     NSArray *_iAdCategories;
@@ -61,6 +65,8 @@
     FCTopStoriesStyleConfiguration *_storyStyle;
     long long _minimumNewsVersion;
     FCCoverArt *_coverArt;
+    unsigned long long _role;
+    long long _bodyTextLength;
     FCAssetManager *_assetManager;
     NSDictionary *_articlePayload;
     NSString *_flintDocumentUrlString;
@@ -76,6 +82,14 @@
 @property(retain, nonatomic) NSString *flintDocumentUrlString; // @synthesize flintDocumentUrlString=_flintDocumentUrlString;
 @property(retain, nonatomic) NSDictionary *articlePayload; // @synthesize articlePayload=_articlePayload;
 @property(retain, nonatomic) FCAssetManager *assetManager; // @synthesize assetManager=_assetManager;
+- (_Bool)useTransparentNavigationBar;
+- (_Bool)showBundleSoftPaywall;
+- (long long)bodyTextLength;
+- (_Bool)isIssueOnly;
+- (void)setRole:(unsigned long long)arg1;
+- (unsigned long long)role;
+- (void)setBundlePaid:(_Bool)arg1;
+- (_Bool)isBundlePaid;
 - (_Bool)webEmbedsEnabled;
 - (id)coverArt;
 - (void)setPaid:(_Bool)arg1;
@@ -96,6 +110,7 @@
 - (_Bool)isFeatureCandidate;
 - (id)allowedStorefrontIDs;
 - (id)blockedStorefrontIDs;
+- (_Bool)isLocalDraft;
 - (_Bool)isDraft;
 - (void)setDeleted:(_Bool)arg1;
 - (_Bool)isDeleted;
@@ -106,13 +121,13 @@
 - (_Bool)isSponsored;
 - (double)videoDuration;
 - (id)videoURL;
-- (id)endOfArticleTopicIDs;
 - (void)setTopicIDs:(id)arg1;
 - (id)topicIDs;
 - (id)topics;
 - (id)lastFetchedDate;
 - (id)lastModifiedDate;
 - (id)contentURL;
+- (void)setAccessoryText:(id)arg1;
 - (id)accessoryText;
 - (void)setShortExcerpt:(id)arg1;
 - (id)shortExcerpt;

@@ -29,6 +29,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)chartableCodedQuantitySetWithDate:(id)arg1 error:(id *)arg2;
+- (id)chartableCodedQuantityWithError:(id *)arg1;
 - (id)initWithCodings:(id)arg1 value:(id)arg2 referenceRanges:(id)arg3;
 - (id)init;
 

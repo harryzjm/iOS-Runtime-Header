@@ -24,6 +24,7 @@
 @property(readonly, nonatomic) id <IBCollection> constraintsToRemove; // @synthesize constraintsToRemove=_constraintsToRemove;
 @property(readonly, nonatomic) id <IBCollection> constraintsToAdd; // @synthesize constraintsToAdd=_constraintsToAdd;
 - (void).cxx_destruct;
+@property(readonly, copy) NSString *description;
 @property(readonly, nonatomic, getter=isErrorResult) _Bool errorResult;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
@@ -32,7 +33,6 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

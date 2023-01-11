@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_doCommonCleanupUponEndingLayoutTransitionWithInterruption:(_Bool)arg1;
+- (void)_beginLayoutStateTransitionWithTransitionContext:(id)arg1;
 - (_Bool)_axSeparatorHidden;
 - (void)_updateAuxiliaryViews;
 - (void)_axAnnotateAffordanceView;

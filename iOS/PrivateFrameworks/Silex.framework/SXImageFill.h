@@ -10,10 +10,8 @@
 {
 }
 
-+ (id)typeString;
 
 // Remaining properties
 @property(readonly, nonatomic) NSString *imageIdentifier; // @dynamic imageIdentifier;
-
 @end
 

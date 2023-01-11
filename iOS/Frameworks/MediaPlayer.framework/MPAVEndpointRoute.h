@@ -23,12 +23,16 @@
 - (_Bool)_groupLeaderIsOfDeviceSubtype:(unsigned int)arg1;
 - (void)_endpointOutputDevicesDidChange:(id)arg1;
 - (void)_endpointDidChange:(id)arg1;
+- (long long)numberOfOutputDevices;
+- (_Bool)isSplitRoute;
+- (_Bool)isSplitterCapable;
 - (_Bool)supportsRemoteControl;
 - (_Bool)supportsGrouping;
 - (long long)routeSubtype;
 - (long long)routeType;
 - (id)groupUID;
 - (id)routeUID;
+- (_Bool)isLowLatencyRoute;
 - (_Bool)isRoutingToWirelessDevice;
 - (_Bool)isDeviceSpeakerRoute;
 @property(readonly, nonatomic) _Bool canModifyGroupMembership;
@@ -36,7 +40,9 @@
 - (_Bool)isDeviceRoute;
 - (_Bool)isStereoPair;
 - (_Bool)isHomePodRoute;
+- (_Bool)isTVRoute;
 - (_Bool)isAppleTVRoute;
+- (id)groupLeaderAirplayIdentifier;
 - (_Bool)isAirPlayingToDevice;
 - (_Bool)presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
 - (_Bool)canFetchMediaDataFromSender;

@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)CRC;
 - (unsigned long long)encodedLength;
 - (unsigned long long)length;
-- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4;
+- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4 error:(id *)arg5;
 - (id)streamReadChannel;
 - (void)performIOChannelReadWithAccessor:(CDUnknownBlockType)arg1;
 - (void)setIsMissingData:(_Bool)arg1;

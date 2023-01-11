@@ -15,7 +15,6 @@
 - (_Bool)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 @property(nonatomic) unsigned long long maximumIntermediateSideLength;
 @property(nonatomic) unsigned long long blurDeterminationMethod;
-- (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

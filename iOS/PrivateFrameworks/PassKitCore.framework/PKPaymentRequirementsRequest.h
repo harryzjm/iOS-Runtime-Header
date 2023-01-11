@@ -12,14 +12,16 @@
     NSString *_cardholderName;
     NSString *_primaryAccountNumber;
     NSString *_referrerIdentifier;
+    NSString *_passOwnershipToken;
 }
 
+@property(copy, nonatomic) NSString *passOwnershipToken; // @synthesize passOwnershipToken=_passOwnershipToken;
 @property(copy, nonatomic) NSString *referrerIdentifier; // @synthesize referrerIdentifier=_referrerIdentifier;
 @property(copy, nonatomic) NSString *primaryAccountNumber; // @synthesize primaryAccountNumber=_primaryAccountNumber;
 @property(copy, nonatomic) NSString *cardholderName; // @synthesize cardholderName=_cardholderName;
 @property(retain, nonatomic) PKPaymentCredential *paymentCredential; // @synthesize paymentCredential=_paymentCredential;
 - (void).cxx_destruct;
-- (void)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 account:(id)arg3 certChain:(id)arg4 devSigned:(_Bool)arg5 deviceData:(id)arg6 webService:(id)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3 certChain:(id)arg4 devSigned:(_Bool)arg5 deviceData:(id)arg6 webService:(id)arg7 completion:(CDUnknownBlockType)arg8;
 - (id)_cardDictionary;
 - (id)initWithCardholderName:(id)arg1 primaryAccountNumber:(id)arg2;
 - (id)initWithPaymentCredential:(id)arg1;

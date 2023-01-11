@@ -6,6 +6,7 @@
 
 @class SKUIViewElementText;
 
+__attribute__((visibility("hidden")))
 @interface SKUITomatoRatingViewElement
 {
     long long _freshness;

@@ -11,9 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_axSetEditButtonHint;
-- (void)updateCurrentEditButton;
+- (id)optionsButtonItem;
+- (id)composeButton;
 - (void)_updateToolbarItems;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)loadView;
 - (void)_accessibilityLoadAccessibilityInformation;
 

@@ -23,6 +23,7 @@
     double _lastOffset;
     _Bool _inSteadyState;
     _Bool _performingBatchUpdates;
+    _Bool _sendingOutputsDidChange;
     long long _state;
     double _topBarHeight;
     double _bottomBarOffset;
@@ -32,9 +33,11 @@
 
 @property(nonatomic) __weak id <_SFDynamicBarAnimatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) double minimumTopBarHeight; // @synthesize minimumTopBarHeight=_minimumTopBarHeight;
+@property(readonly, nonatomic, getter=isSendingOutputsDidChange) _Bool sendingOutputsDidChange; // @synthesize sendingOutputsDidChange=_sendingOutputsDidChange;
 @property(readonly, nonatomic) double bottomBarOffset; // @synthesize bottomBarOffset=_bottomBarOffset;
 @property(readonly, nonatomic) double topBarHeight; // @synthesize topBarHeight=_topBarHeight;
 @property(readonly, nonatomic) long long state; // @synthesize state=_state;
+@property(readonly, nonatomic, getter=isTrackingDrag) _Bool trackingDrag; // @synthesize trackingDrag=_dragging;
 - (void).cxx_destruct;
 - (void)setBottomBarOffset:(double)arg1 forState:(long long)arg2;
 - (void)setTopBarHeight:(double)arg1 forState:(long long)arg2;

@@ -17,6 +17,8 @@
 - (_Bool)accessibilityPerformEscape;
 - (_Bool)isAccessibilityElement;
 - (id)_accessibilityTextViewTextOperationResponder;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

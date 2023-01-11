@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool readOnly;
 @property(readonly, nonatomic) unsigned long long encodedLength;
 @property(readonly, nonatomic) unsigned long long length;
-- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4;
+- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4 error:(id *)arg5;
 - (_Bool)archiveInfoMessage:(struct DataInfo *)arg1 archiver:(id)arg2 packageWriter:(id)arg3;
 - (id)filenameForPreferredFilename:(id)arg1;
 @property(readonly, nonatomic) _Bool isMissingData;
@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool gilligan_isRemote;
 @property(readonly) unsigned long long hash;
 @property(readonly, nonatomic) _Bool needsDownload;
+@property(readonly, nonatomic) struct CGSize pixelSize;
 @property(readonly) Class superclass;
 
 @end

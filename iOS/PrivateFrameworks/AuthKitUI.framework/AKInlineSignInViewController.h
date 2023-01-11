@@ -57,6 +57,7 @@
 - (void)createAppleIDButtonWasTapped:(id)arg1;
 - (void)iForgotButtonWasTapped:(id)arg1;
 - (void)signInButtonWasTapped:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)_updateVibrancyAndBlurInTextFields;
 - (void)_prefillAuthFields;
 - (void)_updateSignInFieldStatuses;

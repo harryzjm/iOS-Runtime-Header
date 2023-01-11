@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 - (id)userVisibleURLString;
 - (id)originalURLString;
-- (id)initWithUserTypedString:(id)arg1 url:(id)arg2 title:(id)arg3;
+- (id)initWithUserTypedString:(id)arg1 url:(id)arg2 title:(id)arg3 forQueryID:(long long)arg4;
 
 @end
 

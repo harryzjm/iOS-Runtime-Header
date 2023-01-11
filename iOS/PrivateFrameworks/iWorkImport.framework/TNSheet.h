@@ -12,7 +12,7 @@
 #import <iWorkImport/TSWPHeaderFooterProvider-Protocol.h>
 #import <iWorkImport/TSWPStorageParent-Protocol.h>
 
-@class NSArray, NSEnumerator, NSMutableArray, NSMutableSet, NSObject, NSString, TNDocumentRoot, TSDInfoGeometry, TSPObject, TSWPStorage;
+@class NSArray, NSEnumerator, NSMutableArray, NSMutableSet, NSObject, NSString, TNDocumentRoot, TSDInfoGeometry, TSDLayoutController, TSPObject, TSWPStorage;
 @protocol TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
@@ -35,11 +35,13 @@ __attribute__((visibility("hidden")))
     long long _startPageNumber;
     double _pageHeaderInset;
     double _pageFooterInset;
+    TSDLayoutController *_activeRootSearchLayoutController;
     struct UIEdgeInsets _printMargins;
 }
 
 + (_Bool)needsObjectUUID;
 + (id)sheetForSelectionModel:(id)arg1 outIsPaginated:(_Bool *)arg2;
+@property(retain, nonatomic) TSDLayoutController *activeRootSearchLayoutController; // @synthesize activeRootSearchLayoutController=_activeRootSearchLayoutController;
 @property(nonatomic) struct UIEdgeInsets printMargins; // @synthesize printMargins=_printMargins;
 - (id)i_newHeaderFooterStorage;
 - (void)i_importHeadersFooters:(id)arg1 headerType:(long long)arg2 useSingleHeaderFooter:(_Bool)arg3;
@@ -55,7 +57,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool preventsChangeTracking;
 @property(readonly, nonatomic) _Bool preventsComments;
 @property(readonly, nonatomic) _Bool textIsLinked;
-@property(readonly, nonatomic) _Bool textIsVertical;
+- (_Bool)textIsVerticalAtCharIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) _Bool autoListTermination;
 @property(readonly, nonatomic) _Bool autoListRecognition;
 - (_Bool)isThemeContent;
@@ -113,8 +115,8 @@ __attribute__((visibility("hidden")))
 - (void)insertDrawableInfos:(id)arg1 atIndex:(unsigned long long)arg2 context:(id)arg3;
 - (void)insertDrawableInfo:(id)arg1 atIndex:(unsigned long long)arg2 context:(id)arg3;
 - (void)insertDrawableInfo:(id)arg1 context:(id)arg2;
-- (void)setChildInfos:(id)arg1;
-@property(readonly, nonatomic) NSArray *childInfos;
+@property(readonly, nonatomic) NSArray *printableInfos;
+@property(copy, nonatomic) NSArray *childInfos;
 - (id)infoForSelectionPath:(id)arg1;
 - (_Bool)layoutIsLeftToRight;
 - (_Bool)layoutIsRightToLeft;
@@ -153,10 +155,11 @@ __attribute__((visibility("hidden")))
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly) unsigned long long hash;
+@property(readonly, nonatomic) _Bool isMaster;
+@property(readonly, nonatomic) _Bool isTopmostContainerInfo;
 @property(nonatomic) _Bool matchesObjectPlaceholderGeometry;
 @property(readonly, nonatomic) _Bool storageChangesInvalidateWrap;
 @property(readonly) Class superclass;
-@property(readonly, nonatomic) _Bool supportsCollaborativeEditing;
 
 @end
 

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     CHXReadState *mCHXState;
 }
 
+- (void).cxx_destruct;
 - (id)chxState;
 - (id)initWithCHXState:(id)arg1;
 

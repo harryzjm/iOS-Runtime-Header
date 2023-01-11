@@ -4,7 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-__attribute__((visibility("hidden")))
 @interface EKPersistentCalendarItem
 {
 }
@@ -54,6 +53,8 @@ __attribute__((visibility("hidden")))
 - (id)externalData;
 - (void)setExternalModificationTag:(id)arg1;
 - (id)externalModificationTag;
+- (void)setExternalScheduleID:(id)arg1;
+- (id)externalScheduleID;
 - (void)setExternalID:(id)arg1;
 - (id)externalID;
 - (void)setUniqueID:(id)arg1;

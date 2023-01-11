@@ -7,10 +7,11 @@
 #import <UIKit/UIViewController.h>
 
 #import <Social/SLRemoteComposeViewControllerDelegateProtocol-Protocol.h>
+#import <Social/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class NSArray, NSExtension, NSLayoutConstraint, NSString, UIView;
+@class NSArray, NSExtension, NSLayoutConstraint, NSString, UIView, _UIRemoteViewController;
 
-@interface SLComposeViewController : UIViewController <SLRemoteComposeViewControllerDelegateProtocol>
+@interface SLComposeViewController : UIViewController <SLRemoteComposeViewControllerDelegateProtocol, _UIRemoteViewControllerContaining>
 {
     NSExtension *_extension;
     NSString *_initialText;
@@ -62,8 +63,10 @@
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)_instantiateAndBeginExtensionIfNeeded;
+- (void)_instantiateAndBeginExtensionIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (_Bool)_useCustomDimmingView;
+@property(readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 - (void)remoteViewController:(id)arg1 didTerminateWithError:(id)arg2;
 - (void)remoteController:(id)arg1 didLoadWithError:(id)arg2;
 - (void)_handleRemoteViewFailure;
@@ -97,6 +100,12 @@
 - (id)initWithExtensionIdentifier:(id)arg1;
 - (id)initWithServiceType:(id)arg1;
 - (id)initWithExtension:(id)arg1 requestedServiceType:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

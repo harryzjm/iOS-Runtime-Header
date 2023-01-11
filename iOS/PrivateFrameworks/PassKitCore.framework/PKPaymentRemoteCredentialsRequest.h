@@ -4,15 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface PKPaymentRemoteCredentialsRequest
 {
     _Bool _includeMetadata;
+    NSString *_productIdentifier;
     long long _credentialType;
 }
 
 @property(nonatomic) long long credentialType; // @synthesize credentialType=_credentialType;
+@property(nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property(nonatomic) _Bool includeMetadata; // @synthesize includeMetadata=_includeMetadata;
-- (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 account:(id)arg3;
+- (id)_urlRequestWithServiceURL:(id)arg1 deviceIdentifier:(id)arg2 appleAccountInformation:(id)arg3;
 
 @end
 

@@ -8,12 +8,12 @@
 
 #import <iWorkImport/TSPDecoder-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, UIPasteboard;
 
 __attribute__((visibility("hidden")))
 @interface TSPPasteboard : NSObject <TSPDecoder>
 {
-    id _pasteboard;
+    UIPasteboard *_pasteboard;
 }
 
 + (id)pasteboardWithPasteboard:(id)arg1;
@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 + (id)activePasteboardForName:(id)arg1;
 + (id)activePasteboards;
 + (id)activePasteboardsQueue;
-+ (id)stylePasteboard;
 - (void).cxx_destruct;
 - (id)newReadChannelForDataWithIdentifier:(long long)arg1 info:(id)arg2;
 - (id)newReadChannelForRootObjectComponent;

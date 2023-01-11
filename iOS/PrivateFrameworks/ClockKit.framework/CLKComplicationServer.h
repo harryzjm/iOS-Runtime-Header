@@ -18,6 +18,8 @@
     NSXPCConnection *_serverConnection;
     id <CLKComplicationDataSource> _dataSource;
     NSSet *_activeComplications;
+    struct os_unfair_lock_s _connectionLock;
+    int _restartNotificationToken;
     struct {
         _Bool supportsGetTimeTravelDirections;
         _Bool supportsGetTimelineStartDate;
@@ -33,6 +35,7 @@
         _Bool supportsGetLocalizableDescriptionProvider;
         _Bool supportsGetLocalizableSampleTemplate;
         _Bool exceptionOnSkippedHandler;
+        _Bool supportsGetAlwaysOnTemplate;
     } _dataSourceFlags;
 }
 
@@ -45,6 +48,7 @@
 - (void)getTimelineEntriesForComplication:(id)arg1 afterDate:(id)arg2 limit:(unsigned long long)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)getTimelineEntriesForComplication:(id)arg1 beforeDate:(id)arg2 limit:(unsigned long long)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)getCurrentTimelineEntryForComplication:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)getAlwaysOnTemplateForComplication:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getTimelineAnimationBehaviorForComplication:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getPrivacyBehaviorForComplication:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getTimelineEndDateForComplication:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
@@ -53,12 +57,15 @@
 - (void)setActiveComplications:(id)arg1;
 - (void)_createDataSourceIfNecessary;
 - (void)_checkinWithServer;
+- (void)_complicationServiceDidStart;
 - (void)_createConnection;
 @property(readonly, nonatomic) NSDate *latestTimeTravelDate;
 @property(readonly, nonatomic) NSDate *earliestTimeTravelDate;
 @property(readonly, nonatomic) NSArray *activeComplications;
 - (void)extendTimelineForComplication:(id)arg1;
 - (void)reloadTimelineForComplication:(id)arg1;
+- (id)serverProxy;
+- (void)dealloc;
 - (id)_init;
 - (id)initWithClientIdentifier:(id)arg1;
 - (id)init;

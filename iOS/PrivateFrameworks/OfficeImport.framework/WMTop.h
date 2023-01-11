@@ -9,9 +9,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)fillHTMLArchiveForOfficeData:(id)arg1 fileName:(id)arg2 xmlFlag:(_Bool)arg3 archiver:(id)arg4;
-+ (void)fillHTMLArchiveForOfficeFile:(id)arg1 xmlFlag:(_Bool)arg2 archiver:(id)arg3;
-+ (id)documentFromContents:(id)arg1 isXML:(_Bool)arg2 archiver:(id)arg3;
+- (Class)mapperClassForIndexing:(_Bool)arg1;
+- (Class)stateClass;
+- (void)initializeClasses;
+- (Class)readerClassForXMLDocuments;
+- (Class)readerClassForBinaryDocuments;
 
 @end
 

@@ -136,6 +136,9 @@
 - (void)_finishRotation;
 - (void)_beginRotation;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (_Bool)_effectiveAppearanceIsInactive;
+- (_Bool)_effectiveAppearanceIsDark;
 - (void)_updateCheckeredPattern;
 @property(nonatomic) _Bool suppressesIncrementalRendering;
 @property(readonly, nonatomic, getter=canGoForward) _Bool canGoForward;
@@ -175,9 +178,9 @@
 - (void)_didRotate:(id)arg1;
 @property(nonatomic) _Bool keyboardDisplayRequiresUserAction;
 - (_Bool)isElementAccessibilityExposedToInterfaceBuilder;
+- (Class)_printFormatterClass;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
-- (Class)_printFormatterClass;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -9,8 +9,8 @@
 #import <XCTAutomationSupport/NSCopying-Protocol.h>
 #import <XCTAutomationSupport/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSEnumerator, NSIndexPath, NSSet, NSString, XCAccessibilityElement, XCTLocalizableStringInfo, XCUIApplication;
-@protocol XCTElementSnapshotAttributeDataSource;
+@class NSArray, NSDictionary, NSEnumerator, NSIndexPath, NSSet, NSString, XCAccessibilityElement, XCTLocalizableStringInfo;
+@protocol XCTElementSnapshotAttributeDataSource, XCUIElementSnapshotApplication;
 
 @interface XCElementSnapshot : NSObject <NSSecureCoding, NSCopying>
 {
@@ -21,8 +21,7 @@
     _Bool _hasFocus;
     _Bool _hasKeyboardFocus;
     _Bool _isTruncatedValue;
-    int _bridgedProcessID;
-    XCUIApplication *_application;
+    id <XCUIElementSnapshotApplication> _application;
     unsigned long long _generation;
     id <XCTElementSnapshotAttributeDataSource> _dataSource;
     NSString *_title;
@@ -37,6 +36,7 @@
     NSArray *_children;
     NSDictionary *_additionalAttributes;
     NSArray *_userTestingAttributes;
+    NSSet *_disclosedChildRowAXElements;
     XCAccessibilityElement *_accessibilityElement;
     XCAccessibilityElement *_parentAccessibilityElement;
     XCElementSnapshot *_parent;
@@ -44,10 +44,12 @@
     struct CGRect _frame;
 }
 
-+ (id)axAttributesForSnapshotAttributes:(id)arg1;
-+ (id)requiredAXAttributesForElementSnapshotHierarchy;
++ (unsigned long long)elementTypeForAccessibilityElement:(id)arg1 usingAXAttributes_iOS:(id)arg2 useLegacyElementType:(_Bool)arg3;
++ (unsigned long long)elementTypeForAccessibilityElement:(id)arg1 usingAXAttributes_macOS:(id)arg2 useLegacyElementType:(_Bool)arg3;
++ (id)axAttributesForSnapshotAttributes:(id)arg1 isMacOS:(_Bool)arg2;
++ (id)requiredAXAttributesForElementSnapshotHierarchyOnMacOS:(_Bool)arg1;
 + (id)sanitizedElementSnapshotHierarchyAttributesForAttributes:(id)arg1 isMacOS:(_Bool)arg2;
-+ (id)axAttributesForElementSnapshotKeyPaths:(id)arg1;
++ (id)axAttributesForElementSnapshotKeyPaths:(id)arg1 isMacOS:(_Bool)arg2;
 + (id)elementWithAccessibilityElement:(id)arg1;
 + (_Bool)supportsSecureCoding;
 @property(copy) XCTLocalizableStringInfo *localizableStringInfo; // @synthesize localizableStringInfo=_localizableStringInfo;
@@ -64,14 +66,20 @@
 - (_Bool)_isDescendantOfElement:(id)arg1;
 @property(readonly) NSSet *uniqueDescendantSubframes;
 @property(readonly) NSArray *suggestedHitpoints;
-- (_Bool)isRemote;
+@property(readonly) _Bool isRemote;
 @property(readonly) XCElementSnapshot *rootElement;
 @property(readonly) double centerY;
 @property(readonly) double centerX;
 @property(readonly) struct CGPoint center;
 @property(readonly) struct CGRect visibleFrame;
+@property(readonly) NSArray *disclosedChildRows;
+@property(readonly) XCElementSnapshot *outline;
+@property(readonly) _Bool isInRootMenu;
+@property(readonly) XCElementSnapshot *menuItem;
+@property(readonly) XCElementSnapshot *menu;
 @property(readonly) XCElementSnapshot *scrollView;
 - (id)nearestSharedAncestorOfElement:(id)arg1 matchingType:(long long)arg2;
+- (id)_nearestAncestorMatchingAnyOfTypes:(id)arg1;
 - (id)nearestAncestorMatchingType:(long long)arg1;
 - (id)localizableStringsDataIncludingChildren;
 - (_Bool)_frameFuzzyMatchesElement:(id)arg1;
@@ -103,14 +111,13 @@
 - (id)debugDescription;
 - (id)descriptionIncludingPointers:(_Bool)arg1;
 - (id)description;
+@property(copy) NSSet *disclosedChildRowAXElements; // @synthesize disclosedChildRowAXElements=_disclosedChildRowAXElements;
 @property(copy) NSArray *children; // @synthesize children=_children;
 @property(copy) NSArray *userTestingAttributes; // @synthesize userTestingAttributes=_userTestingAttributes;
 @property long long verticalSizeClass; // @synthesize verticalSizeClass=_verticalSizeClass;
 @property long long horizontalSizeClass; // @synthesize horizontalSizeClass=_horizontalSizeClass;
 @property unsigned long long traits; // @synthesize traits=_traits;
 @property _Bool isMainWindow; // @synthesize isMainWindow=_isMainWindow;
-@property int bridgedProcessID; // @synthesize bridgedProcessID=_bridgedProcessID;
-@property(readonly, getter=isBridged) _Bool bridged;
 @property(getter=isSelected) _Bool selected; // @synthesize selected=_selected;
 @property(getter=isEnabled) _Bool enabled; // @synthesize enabled=_enabled;
 @property _Bool hasFocus; // @synthesize hasFocus=_hasFocus;
@@ -145,7 +152,7 @@
 - (id)initWithCoder:(id)arg1;
 @property(readonly, copy) NSArray *identifiers;
 @property(nonatomic) unsigned long long generation; // @synthesize generation=_generation;
-@property(nonatomic) XCUIApplication *application; // @synthesize application=_application;
+@property(nonatomic) __weak id <XCUIElementSnapshotApplication> application; // @synthesize application=_application;
 - (id)initWithAccessibilityElement:(id)arg1;
 - (void)dealloc;
 

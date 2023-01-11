@@ -9,22 +9,23 @@
 #import <WebKit/NSCopying-Protocol.h>
 #import <WebKit/NSSecureCoding-Protocol.h>
 
-@class NSMutableDictionary, NSString, WKPreferences, WKProcessPool, WKUserContentController, WKWebView, WKWebViewContentProviderRegistry, WKWebsiteDataStore, _WKApplicationManifest, _WKVisitedLinkStore, _WKWebsiteDataStore;
+@class NSArray, NSString, WKPreferences, WKProcessPool, WKUserContentController, WKWebView, WKWebViewContentProviderRegistry, WKWebpagePreferences, WKWebsiteDataStore, _WKApplicationManifest, _WKVisitedLinkStore, _WKWebsiteDataStore;
+@protocol _UIClickInteractionDriving;
 
 @interface WKWebViewConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
+    struct RefPtr<API::PageConfiguration, WTF::DumbPtrTraits<API::PageConfiguration>> _pageConfiguration;
     struct LazyInitialized<WTF::RetainPtr<WKProcessPool>> _processPool;
     struct LazyInitialized<WTF::RetainPtr<WKPreferences>> _preferences;
     struct LazyInitialized<WTF::RetainPtr<WKUserContentController>> _userContentController;
     struct LazyInitialized<WTF::RetainPtr<_WKVisitedLinkStore>> _visitedLinkStore;
     struct LazyInitialized<WTF::RetainPtr<WKWebsiteDataStore>> _websiteDataStore;
+    struct LazyInitialized<WTF::RetainPtr<WKWebpagePreferences>> _defaultWebpagePreferences;
     struct WeakObjCPtr<WKWebView> _relatedWebView;
     struct WeakObjCPtr<WKWebView> _alternateWebViewForNavigationGestures;
     struct RetainPtr<NSString> _groupIdentifier;
-    struct LazyInitialized<WTF::RetainPtr<NSString>> _applicationNameForUserAgent;
-    struct LazyInitialized<WTF::RetainPtr<NSMutableDictionary<NSString *, id<WKURLSchemeHandler>>>> _urlSchemeHandlers;
+    struct Optional<WTF::RetainPtr<NSString>> _applicationNameForUserAgent;
     double _incrementalRenderingSuppressionTimeout;
-    _Bool _treatsSHA1SignedCertificatesAsInsecure;
     _Bool _respectsImageOrientation;
     _Bool _printsBackgrounds;
     _Bool _allowsJavaScriptMarkup;
@@ -32,7 +33,6 @@
     _Bool _allowsMetaRefresh;
     _Bool _allowUniversalAccessFromFileURLs;
     struct LazyInitialized<WTF::RetainPtr<WKWebViewContentProviderRegistry>> _contentProviderRegistry;
-    _Bool _alwaysRunsAtForegroundPriority;
     _Bool _allowsInlineMediaPlayback;
     _Bool _inlineMediaPlaybackRequiresPlaysInlineAttribute;
     _Bool _allowsInlineMediaPlaybackAfterFullscreen;
@@ -40,14 +40,14 @@
     _Bool _textInteractionGesturesEnabled;
     _Bool _longPressActionsEnabled;
     _Bool _systemPreviewEnabled;
+    _Bool _shouldDecidePolicyBeforeLoadingQuickLookPreview;
     _Bool _invisibleAutoplayNotPermitted;
     _Bool _mediaDataLoadsAutomatically;
     _Bool _attachmentElementEnabled;
+    Class _attachmentFileWrapperClass;
     _Bool _mainContentUserGestureOverrideEnabled;
-    _Bool _initialCapitalizationEnabled;
     _Bool _waitsForPaintAfterViewDidMoveToWindow;
     _Bool _controlledByAutomation;
-    struct RetainPtr<_WKApplicationManifest> _applicationManifest;
     _Bool _applePayEnabled;
     _Bool _needsStorageAccessFromFileURLsQuirk;
     _Bool _legacyEncryptedMediaAPIEnabled;
@@ -56,8 +56,10 @@
     _Bool _incompleteImageBorderEnabled;
     _Bool _shouldDeferAsynchronousScriptsUntilAfterDocumentLoad;
     _Bool _drawsBackground;
-    struct RetainPtr<NSString> _overrideContentSecurityPolicy;
+    _Bool _editableImagesEnabled;
+    _Bool _undoManagerAPIEnabled;
     struct RetainPtr<NSString> _mediaContentTypesRequiringHardwareSupport;
+    struct RetainPtr<NSArray<NSString *>> _additionalSupportedImageTypes;
     _Bool _suppressesIncrementalRendering;
     _Bool _allowsAirPlayForMediaPlayback;
     _Bool _allowsPictureInPictureMediaPlayback;
@@ -78,13 +80,15 @@
 @property(nonatomic) _Bool suppressesIncrementalRendering; // @synthesize suppressesIncrementalRendering=_suppressesIncrementalRendering;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (Ref_1d7364d1)copyPageConfiguration;
 @property(nonatomic, setter=_setContentProviderRegistry:) WKWebViewContentProviderRegistry *_contentProviderRegistry;
-@property(readonly, nonatomic) NSMutableDictionary *_urlSchemeHandlers;
 @property(retain, nonatomic, setter=_setWebsiteDataStore:) _WKWebsiteDataStore *_websiteDataStore;
 - (id)urlSchemeHandlerForURLScheme:(id)arg1;
 - (void)setURLSchemeHandler:(id)arg1 forURLScheme:(id)arg2;
 @property(retain, nonatomic, setter=_setVisitedLinkStore:) _WKVisitedLinkStore *_visitedLinkStore;
 @property(copy, nonatomic) NSString *applicationNameForUserAgent;
+@property(readonly, nonatomic) NSString *_applicationNameForDesktopUserAgent;
+@property(copy, nonatomic) WKWebpagePreferences *defaultWebpagePreferences;
 @property(retain, nonatomic) WKWebsiteDataStore *websiteDataStore;
 @property(retain, nonatomic) WKUserContentController *userContentController;
 @property(retain, nonatomic) WKPreferences *preferences;
@@ -94,8 +98,11 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
 - (id)init;
+@property(nonatomic, setter=_setUndoManagerAPIEnabled:) _Bool _undoManagerAPIEnabled;
+@property(nonatomic, setter=_setEditableImagesEnabled:) _Bool _editableImagesEnabled;
 @property(nonatomic, setter=_setAllowMediaContentTypesRequiringHardwareSupportAsFallback:) _Bool _allowMediaContentTypesRequiringHardwareSupportAsFallback;
 @property(nonatomic, setter=_setLegacyEncryptedMediaAPIEnabled:) _Bool _legacyEncryptedMediaAPIEnabled;
+@property(copy, nonatomic, setter=_setAdditionalSupportedImageTypes:) NSArray *_additionalSupportedImageTypes;
 @property(nonatomic, setter=_setMediaContentTypesRequiringHardwareSupport:) NSString *_mediaContentTypesRequiringHardwareSupport;
 @property(nonatomic, setter=_setOverrideContentSecurityPolicy:) NSString *_overrideContentSecurityPolicy;
 @property(nonatomic, setter=_setNeedsStorageAccessFromFileURLsQuirk:) _Bool _needsStorageAccessFromFileURLsQuirk;
@@ -111,9 +118,13 @@
 @property(nonatomic, setter=_setShouldDeferAsynchronousScriptsUntilAfterDocumentLoad:) _Bool _shouldDeferAsynchronousScriptsUntilAfterDocumentLoad;
 @property(nonatomic, setter=_setIncompleteImageBorderEnabled:) _Bool _incompleteImageBorderEnabled;
 @property(nonatomic, setter=_setColorFilterEnabled:) _Bool _colorFilterEnabled;
+@property(nonatomic, setter=_setAttachmentFileWrapperClass:) Class _attachmentFileWrapperClass;
 @property(nonatomic, setter=_setAttachmentElementEnabled:) _Bool _attachmentElementEnabled;
 @property(nonatomic, setter=_setMediaDataLoadsAutomatically:) _Bool _mediaDataLoadsAutomatically;
 @property(nonatomic, setter=_setInvisibleAutoplayNotPermitted:) _Bool _invisibleAutoplayNotPermitted;
+@property(nonatomic, setter=_setClickInteractionDriverForTesting:) id <_UIClickInteractionDriving> _clickInteractionDriverForTesting;
+@property(nonatomic, setter=_setCanShowWhileLocked:) _Bool _canShowWhileLocked;
+@property(nonatomic, setter=_setShouldDecidePolicyBeforeLoadingQuickLookPreview:) _Bool _shouldDecidePolicyBeforeLoadingQuickLookPreview;
 @property(nonatomic, setter=_setSystemPreviewEnabled:) _Bool _systemPreviewEnabled;
 @property(nonatomic, setter=_setLongPressActionsEnabled:) _Bool _longPressActionsEnabled;
 @property(nonatomic, setter=_setTextInteractionGesturesEnabled:) _Bool _textInteractionGesturesEnabled;

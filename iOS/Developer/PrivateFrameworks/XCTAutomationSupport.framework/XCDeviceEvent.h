@@ -25,6 +25,8 @@
 @property double duration; // @synthesize duration=_duration;
 @property unsigned int usage; // @synthesize usage=_usage;
 @property unsigned int eventPage; // @synthesize eventPage=_eventPage;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 @property(readonly) _Bool isButtonHoldEvent;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

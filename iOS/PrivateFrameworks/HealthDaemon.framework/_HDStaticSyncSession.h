@@ -9,7 +9,6 @@
 }
 
 - (long long)maxEncodedBytesPerMessageForSyncEntityClass:(Class)arg1;
-- (id)predicateForSyncEntityClass:(Class)arg1;
 - (id)newChangeWithSyncEntityClass:(Class)arg1;
 
 @end

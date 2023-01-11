@@ -4,16 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <FrontBoardServices/FBSServiceFacilityClient.h>
+#import <objc/NSObject.h>
 
-@interface UISApplicationSupportClient : FBSServiceFacilityClient
+#import <UIKitServices/BSInvalidatable-Protocol.h>
+
+@class BSServiceConnection, NSString;
+
+@interface UISApplicationSupportClient : NSObject <BSInvalidatable>
 {
+    struct os_unfair_lock_s _lock;
+    BSServiceConnection *_lock_connection;
+    _Bool _lock_invalidated;
 }
 
-- (id)edgeInfoForDisplayConfiguration:(id)arg1;
-- (id)initialDisplayContext;
+- (void).cxx_destruct;
+- (id)_remoteTarget;
+- (void)destroyScenesWithPersistentIdentifiers:(id)arg1 animationType:(unsigned long long)arg2 destroySessions:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)applicationInitializationContext;
 - (void)requestPasscodeUnlockUIWithCompletion:(CDUnknownBlockType)arg1;
+- (void)invalidate;
+- (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

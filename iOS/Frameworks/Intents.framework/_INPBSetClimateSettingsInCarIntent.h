@@ -28,6 +28,7 @@
     _Bool _enableAutoMode;
     _Bool _enableClimateControl;
     _Bool _enableFan;
+    _Bool __encodeLegacyGloryData;
     int _airCirculationMode;
     int _climateZone;
     int _relativeFanSpeedSetting;
@@ -39,6 +40,8 @@
     _INPBTemperature *_temperature;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(retain, nonatomic) _INPBTemperature *temperature; // @synthesize temperature=_temperature;
 @property(nonatomic) int relativeTemperatureSetting; // @synthesize relativeTemperatureSetting=_relativeTemperatureSetting;
 @property(nonatomic) int relativeFanSpeedSetting; // @synthesize relativeFanSpeedSetting=_relativeFanSpeedSetting;
@@ -57,6 +60,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(readonly, nonatomic) _Bool hasTemperature;

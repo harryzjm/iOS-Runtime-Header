@@ -14,6 +14,7 @@
 @interface PKGlyphView : UIView <PKFingerprintGlyphViewDelegate>
 {
     long long _style;
+    _Bool _isPad;
     unsigned long long _transitionIndex;
     _Bool _transitioning;
     _Bool _transitioningAnimated;
@@ -38,6 +39,9 @@
     double _phoneAspectRatio;
     CALayer *_customImageLayer;
     struct UIColor *_secondaryColor;
+    struct UIColor *_primaryHighlightColor;
+    struct UIColor *_secondaryHighlightColor;
+    unsigned int _userIntentEdge;
     long long _colorMode;
     UIColor *_primaryColor;
     struct CGImage *_customImage;
@@ -46,9 +50,11 @@
     struct UIEdgeInsets _customImageAlignmentEdgeInsets;
 }
 
++ (void)invokeSuccessFeedback;
 + (id)sharedStaticResources;
 + (_Bool)automaticallyNotifiesObserversOfState;
 @property(nonatomic) __weak id <PKGlyphViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) unsigned int userIntentEdge; // @synthesize userIntentEdge=_userIntentEdge;
 @property(readonly, nonatomic) long long state; // @synthesize state=_state;
 @property(readonly, nonatomic) struct CGImage *customImage; // @synthesize customImage=_customImage;
 @property(readonly, nonatomic) struct UIEdgeInsets customImageAlignmentEdgeInsets; // @synthesize customImageAlignmentEdgeInsets=_customImageAlignmentEdgeInsets;
@@ -67,10 +73,13 @@
 - (struct UIColor *)_secondaryColorForStyle:(long long)arg1 mode:(long long)arg2;
 - (struct UIColor *)_primaryColorForStyle:(long long)arg1 mode:(long long)arg2;
 - (void)_setSecondaryColor:(struct UIColor *)arg1 animated:(_Bool)arg2;
+- (void)_applyEffectivePrimaryColorToLayersAnimated:(_Bool)arg1;
 - (void)_setPrimaryColor:(struct UIColor *)arg1 animated:(_Bool)arg2;
+- (void)_applyEffectiveHighlightColorsToLayersAnimated:(_Bool)arg1;
 - (void)_setRecognizedIfNecessaryWithTransitionIndex:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateCheckViewStateAnimated:(_Bool)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_updateCustomImageLayerOpacityAnimated:(_Bool)arg1;
+- (void)_updateUserIntentLayerRotation;
 - (void)_updateUserIntentLayoutAnimated:(_Bool)arg1;
 - (void)_endPhoneWiggle;
 - (void)_startPhoneWiggle;
@@ -85,9 +94,11 @@
 - (void)_executeAfterMinimumAnimationDurationForStateTransition:(CDUnknownBlockType)arg1;
 - (void)_updateLastAnimationTimeWithAnimationOfDuration:(double)arg1;
 - (void)updateRasterizationScale:(double)arg1;
+- (void)updateRotation;
 - (void)tintColorDidChange;
 - (void)_layoutContentLayer:(id)arg1;
 - (void)layoutSubviews;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)didMoveToWindow;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1;

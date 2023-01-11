@@ -6,12 +6,12 @@
 
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 
-@class NSString, PXCMMAssetsProgressListener;
+@class NSString, PXMomentShareStatusPresentation;
 @protocol PXCMMFooterViewModelActionDelegate;
 
 @interface PXCMMFooterViewModel <PXChangeObserver>
 {
-    PXCMMAssetsProgressListener *_assetsProgressListener;
+    PXMomentShareStatusPresentation *_momentShareStatusPresentation;
     id <PXCMMFooterViewModelActionDelegate> _actionDelegate;
 }
 
@@ -19,7 +19,7 @@
 - (void).cxx_destruct;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)_updateAllProperties;
-- (id)initWithProgressListener:(id)arg1;
+- (id)initWithMomentShareStatusPresentation:(id)arg1;
 - (id)init;
 
 // Remaining properties

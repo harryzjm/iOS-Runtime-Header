@@ -10,14 +10,9 @@
 
 @interface PXCompleteMyMomentSettings <PXCMMWorkflowCoordinatorDelegate>
 {
-    PXCMMWorkflowCoordinator *_workflowCoordinator;
     _Bool _cmmFeatureEnabled;
     _Bool _showCMMSettingsAtTopLevel;
-    _Bool _shouldCreateLinkForMessages;
-    _Bool _shouldCreateLinkForMail;
     _Bool _alwaysSortAfterAddMore;
-    _Bool _showIncomingShares;
-    _Bool _showOutgoingShares;
     _Bool _preventNilTitles;
     _Bool _enableLightCuration;
     _Bool _showTitle;
@@ -39,6 +34,7 @@
     _Bool _showFakeSendBackFooterView;
     _Bool _showSectionHeaders;
     _Bool _sectionHeadersShouldFloat;
+    _Bool _showStatusFooter;
     _Bool _showProgressInGrid;
     _Bool _showProgressBannerView;
     _Bool _showProgressBannerViewPaused;
@@ -53,7 +49,20 @@
     _Bool _showMessageTextEntryGadget;
     _Bool _insertNewRecipientsAtTheEnd;
     _Bool _graphSuggestionEnabled;
-    long long _shareSheetLinkThreshold;
+    _Bool _showCMMSuggestionGadgets;
+    _Bool _showCMMInvitationGadgets;
+    _Bool _showSampleGadgets;
+    _Bool _shouldBakeInIfLivePhotoPlaybackDisabled;
+    _Bool _shouldBakeInIfLivePhotoMuted;
+    _Bool _shouldBakeInIfAdjustedByThirdParty;
+    _Bool _shouldBakeInIfCropped;
+    _Bool _shouldBakeInIfTimelineTrimmed;
+    _Bool _shouldBakeInIfPortraitDepthEffectEnabled;
+    _Bool _shouldBakeInIfContainsPenultimateResources;
+    _Bool _shouldIncludeSpatialOvercaptureResources;
+    long long _cmmShareSheetBehavior;
+    long long _shareSheetLinkAssetCountThreshold;
+    unsigned long long _shareSheetLinkTotalFileSizeThresholdMB;
     long long _invitationsDataSourceType;
     long long _suggestionsDataSourceType;
     unsigned long long _suggestionsMatchingStrategy;
@@ -68,11 +77,24 @@
     long long _overrideNumberOfColumnsInLandscape;
     long long _sharingLinkType;
     double _peopleSuggestionsTimeout;
+    long long _sidebarType;
 }
 
-+ (id)transientProperties;
 + (id)sharedInstance;
++ (id)transientProperties;
 + (id)settingsControllerModule;
+@property(nonatomic) _Bool shouldIncludeSpatialOvercaptureResources; // @synthesize shouldIncludeSpatialOvercaptureResources=_shouldIncludeSpatialOvercaptureResources;
+@property(nonatomic) _Bool shouldBakeInIfContainsPenultimateResources; // @synthesize shouldBakeInIfContainsPenultimateResources=_shouldBakeInIfContainsPenultimateResources;
+@property(nonatomic) _Bool shouldBakeInIfPortraitDepthEffectEnabled; // @synthesize shouldBakeInIfPortraitDepthEffectEnabled=_shouldBakeInIfPortraitDepthEffectEnabled;
+@property(nonatomic) _Bool shouldBakeInIfTimelineTrimmed; // @synthesize shouldBakeInIfTimelineTrimmed=_shouldBakeInIfTimelineTrimmed;
+@property(nonatomic) _Bool shouldBakeInIfCropped; // @synthesize shouldBakeInIfCropped=_shouldBakeInIfCropped;
+@property(nonatomic) _Bool shouldBakeInIfAdjustedByThirdParty; // @synthesize shouldBakeInIfAdjustedByThirdParty=_shouldBakeInIfAdjustedByThirdParty;
+@property(nonatomic) _Bool shouldBakeInIfLivePhotoMuted; // @synthesize shouldBakeInIfLivePhotoMuted=_shouldBakeInIfLivePhotoMuted;
+@property(nonatomic) _Bool shouldBakeInIfLivePhotoPlaybackDisabled; // @synthesize shouldBakeInIfLivePhotoPlaybackDisabled=_shouldBakeInIfLivePhotoPlaybackDisabled;
+@property(nonatomic) _Bool showSampleGadgets; // @synthesize showSampleGadgets=_showSampleGadgets;
+@property(nonatomic) _Bool showCMMInvitationGadgets; // @synthesize showCMMInvitationGadgets=_showCMMInvitationGadgets;
+@property(nonatomic) _Bool showCMMSuggestionGadgets; // @synthesize showCMMSuggestionGadgets=_showCMMSuggestionGadgets;
+@property(nonatomic) long long sidebarType; // @synthesize sidebarType=_sidebarType;
 @property(nonatomic) double peopleSuggestionsTimeout; // @synthesize peopleSuggestionsTimeout=_peopleSuggestionsTimeout;
 @property(nonatomic) _Bool graphSuggestionEnabled; // @synthesize graphSuggestionEnabled=_graphSuggestionEnabled;
 @property(nonatomic) long long sharingLinkType; // @synthesize sharingLinkType=_sharingLinkType;
@@ -91,6 +113,7 @@
 @property(nonatomic) _Bool showProgressBannerViewPaused; // @synthesize showProgressBannerViewPaused=_showProgressBannerViewPaused;
 @property(nonatomic) _Bool showProgressBannerView; // @synthesize showProgressBannerView=_showProgressBannerView;
 @property(nonatomic) _Bool showProgressInGrid; // @synthesize showProgressInGrid=_showProgressInGrid;
+@property(nonatomic) _Bool showStatusFooter; // @synthesize showStatusFooter=_showStatusFooter;
 @property(nonatomic) _Bool sectionHeadersShouldFloat; // @synthesize sectionHeadersShouldFloat=_sectionHeadersShouldFloat;
 @property(nonatomic) _Bool showSectionHeaders; // @synthesize showSectionHeaders=_showSectionHeaders;
 @property(nonatomic) _Bool showFakeSendBackFooterView; // @synthesize showFakeSendBackFooterView=_showFakeSendBackFooterView;
@@ -121,20 +144,17 @@
 @property(nonatomic) unsigned long long suggestionsMatchingStrategy; // @synthesize suggestionsMatchingStrategy=_suggestionsMatchingStrategy;
 @property(nonatomic) long long suggestionsDataSourceType; // @synthesize suggestionsDataSourceType=_suggestionsDataSourceType;
 @property(nonatomic) _Bool preventNilTitles; // @synthesize preventNilTitles=_preventNilTitles;
-@property(nonatomic) _Bool showOutgoingShares; // @synthesize showOutgoingShares=_showOutgoingShares;
-@property(nonatomic) _Bool showIncomingShares; // @synthesize showIncomingShares=_showIncomingShares;
 @property(nonatomic) long long invitationsDataSourceType; // @synthesize invitationsDataSourceType=_invitationsDataSourceType;
 @property(nonatomic) _Bool alwaysSortAfterAddMore; // @synthesize alwaysSortAfterAddMore=_alwaysSortAfterAddMore;
-@property(nonatomic) long long shareSheetLinkThreshold; // @synthesize shareSheetLinkThreshold=_shareSheetLinkThreshold;
-@property(nonatomic) _Bool shouldCreateLinkForMail; // @synthesize shouldCreateLinkForMail=_shouldCreateLinkForMail;
-@property(nonatomic) _Bool shouldCreateLinkForMessages; // @synthesize shouldCreateLinkForMessages=_shouldCreateLinkForMessages;
+@property(nonatomic) unsigned long long shareSheetLinkTotalFileSizeThresholdMB; // @synthesize shareSheetLinkTotalFileSizeThresholdMB=_shareSheetLinkTotalFileSizeThresholdMB;
+@property(nonatomic) long long shareSheetLinkAssetCountThreshold; // @synthesize shareSheetLinkAssetCountThreshold=_shareSheetLinkAssetCountThreshold;
+@property(nonatomic) long long cmmShareSheetBehavior; // @synthesize cmmShareSheetBehavior=_cmmShareSheetBehavior;
 @property(nonatomic) _Bool showCMMSettingsAtTopLevel; // @synthesize showCMMSettingsAtTopLevel=_showCMMSettingsAtTopLevel;
 @property(nonatomic) _Bool cmmFeatureEnabled; // @synthesize cmmFeatureEnabled=_cmmFeatureEnabled;
-- (void).cxx_destruct;
-- (void)workflowCoordinator:(id)arg1 workflowViewController:(id)arg2 didFinishSession:(id)arg3 withActivityState:(unsigned long long)arg4;
-@property(readonly, nonatomic) PXCMMWorkflowCoordinator *workflowCoordinator;
 - (void)setDefaultValues;
 - (id)parentSettings;
+- (void)workflowCoordinator:(id)arg1 workflowViewController:(id)arg2 didFinishSession:(id)arg3 withActivityState:(unsigned long long)arg4;
+@property(retain, nonatomic) PXCMMWorkflowCoordinator *workflowCoordinator;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthKit/HKUUIDProvider-Protocol.h>
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
 @class HKDevice, HKSource, HKSourceRevision, NSDate, NSDictionary, NSString, NSUUID;
 
-@interface HKObject : NSObject <NSCopying, NSSecureCoding>
+@interface HKObject : NSObject <HKUUIDProvider, NSCopying, NSSecureCoding>
 {
     NSUUID *_UUID;
     HKSourceRevision *_sourceRevision;
@@ -31,7 +32,8 @@
 @property(readonly) HKDevice *device; // @synthesize device=_device;
 @property(readonly) HKSourceRevision *sourceRevision; // @synthesize sourceRevision=_sourceRevision;
 - (void).cxx_destruct;
-@property(nonatomic, getter=_creationDate, setter=_setCreationDate:) NSDate *creationDate;
+@property(readonly, copy, nonatomic, getter=_timeZoneName) NSString *timeZoneName;
+@property(copy, nonatomic, getter=_creationDate, setter=_setCreationDate:) NSDate *creationDate;
 - (void)_setDevice:(id)arg1;
 - (void)_setSourceRevision:(id)arg1;
 - (id)_source;
@@ -44,21 +46,27 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (long long)_externalSyncObjectCode;
 - (id)_valueDescription;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (_Bool)_shouldNotifyOnInsert;
-- (id)_validateConfigurationAllowingPrivateMetadata:(_Bool)arg1;
+- (id)_validateConfigurationAllowingPrivateMetadata:(_Bool)arg1 applicationSDKVersion:(unsigned int)arg2;
 - (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (_Bool)prepareForDelivery:(id *)arg1;
 - (_Bool)prepareForSaving:(id *)arg1;
-- (_Bool)_validateForSavingWithClientEntitlements:(id)arg1 error:(id *)arg2;
+- (_Bool)_validateForSavingWithClientEntitlements:(id)arg1 applicationSDKVersion:(unsigned int)arg2 error:(id *)arg3;
 - (void)_validateForCreation;
 - (id)_copyByArchiving;
 - (id)_init;
 - (id)init;
+- (id)hk_UUID;
 - (long long)hk_integerValue;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <iWorkImport/TSTCellIterating-Protocol.h>
 
-@class NSMutableIndexSet, NSString, TSTCell, TSTCellRegion, TSTInfo, TSTMutableCellIteratorData, TSTTableModel;
+@class NSMutableIndexSet, NSString, TSTCell, TSTCellRegion, TSTMutableCellIteratorData, TSTTableInfo, TSTTableModel;
 @protocol TSTCellRegionIterating, TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating;
 
 __attribute__((visibility("hidden")))
@@ -18,8 +18,9 @@ __attribute__((visibility("hidden")))
     _Bool _returnEmptyCells;
     _Bool _returnOneEmptyCell;
     _Bool _terminateRegionIterator;
+    _Bool _returnOnlyFormulas;
     unsigned int _rowForColumnIndexesWithMerges;
-    TSTInfo *_tableInfo;
+    TSTTableInfo *_tableInfo;
     TSTTableModel *_tableModel;
     TSTCellRegion *_region;
     TSTCell *_cell;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <TSTCellRegionIterating> regionIterator; // @synthesize regionIterator=_regionIterator;
 @property(retain, nonatomic) id <TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating> strokeIterator; // @synthesize strokeIterator=_strokeIterator;
 @property(retain, nonatomic) id <TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating> contentIterator; // @synthesize contentIterator=_contentIterator;
+@property(nonatomic) _Bool returnOnlyFormulas; // @synthesize returnOnlyFormulas=_returnOnlyFormulas;
 @property(nonatomic) _Bool terminateRegionIterator; // @synthesize terminateRegionIterator=_terminateRegionIterator;
 @property(nonatomic) _Bool returnOneEmptyCell; // @synthesize returnOneEmptyCell=_returnOneEmptyCell;
 @property(nonatomic) _Bool returnEmptyCells; // @synthesize returnEmptyCells=_returnEmptyCells;
@@ -45,7 +47,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) TSTCellRegion *region; // @synthesize region=_region;
 @property(retain, nonatomic) TSTTableModel *tableModel; // @synthesize tableModel=_tableModel;
 @property(readonly, nonatomic) _Bool returnCellContents; // @synthesize returnCellContents=_returnCellContents;
-@property(readonly, retain, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property(readonly, retain, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 - (void).cxx_destruct;
 - (void)p_updateDataForCellID:(struct TSUCellCoord)arg1;
 - (void)p_updateDataForMergeAtCellID:(struct TSUCellCoord)arg1;

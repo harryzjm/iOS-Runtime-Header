@@ -16,7 +16,7 @@
 - (id)_axNCNotificationViewController;
 - (_Bool)accessibilityPerformEscape;
 - (id)accessibilityCustomActions;
-- (_Bool)_axClear:(id)arg1;
+- (_Bool)_axDismissAction:(id)arg1;
 - (_Bool)_axDismiss;
 - (_Bool)_axMore:(id)arg1;
 - (id)accessibilityIdentifier;

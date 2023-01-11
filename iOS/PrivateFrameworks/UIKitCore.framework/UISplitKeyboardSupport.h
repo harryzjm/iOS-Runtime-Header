@@ -12,7 +12,8 @@
 __attribute__((visibility("hidden")))
 @interface UISplitKeyboardSupport <UIGestureRecognizerDelegate, UIKeyboardKeyplaneTransitionDelegate>
 {
-    UIPanGestureRecognizer *_translateRecognizer;
+    UIPanGestureRecognizer *_singleFingerPanRecognizer;
+    UIPanGestureRecognizer *_twoFingerPanRecognizer;
     _Bool _isTranslating;
     _Bool _isSplitting;
     _Bool _splitLockState;

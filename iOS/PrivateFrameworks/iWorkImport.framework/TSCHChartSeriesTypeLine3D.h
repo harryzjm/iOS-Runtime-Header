@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)sceneObjectClass;
+- (id)userInterfaceName;
 - (id)genericToSpecificPropertyMap;
 - (_Bool)supportsSymbolDrawing;
 - (_Bool)supportsLineConnectionStyle;

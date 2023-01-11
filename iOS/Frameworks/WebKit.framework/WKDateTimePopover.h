@@ -6,7 +6,7 @@
 
 #import <WebKit/WKFormControl-Protocol.h>
 
-@class WKContentView;
+@class NSString, WKContentView;
 
 __attribute__((visibility("hidden")))
 @interface WKDateTimePopover <WKFormControl>
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+@property(readonly, nonatomic) NSString *calendarType;
 - (id)controlView;
 - (void)controlEndEditing;
 - (void)controlBeginEditing;

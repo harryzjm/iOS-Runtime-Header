@@ -10,8 +10,13 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityRedo;
+- (void)_accessibilityUndo;
 - (void)_accessibilitySelectAll;
 - (void)_accessibilityUnderline;
+- (void)_accessibilitySpeak;
+- (void)_accessibilitySpeakSpellOut;
+- (void)_accessibilitySpeakSentence;
 - (void)_accessibilityItalic;
 - (void)_accessibilityBold;
 - (void)_accessibilityPostStyleOptionStatus:(id)arg1;

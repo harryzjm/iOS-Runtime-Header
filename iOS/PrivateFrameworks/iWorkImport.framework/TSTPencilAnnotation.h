@@ -6,19 +6,17 @@
 
 #import <iWorkImport/TSKPencilAnnotation-Protocol.h>
 
-@class NSString, TSDPencilAnnotationStorage, TSTInfo;
+@class NSString, TSDPencilAnnotationStorage, TSTTableInfo;
 
 __attribute__((visibility("hidden")))
 @interface TSTPencilAnnotation <TSKPencilAnnotation>
 {
     TSDPencilAnnotationStorage *_pencilAnnotationStorage;
-    TSTInfo *_table;
-    unsigned long long _index;
+    TSTTableInfo *_table;
 }
 
 + (_Bool)needsObjectUUID;
-@property(nonatomic) unsigned long long index; // @synthesize index=_index;
-@property(nonatomic) __weak TSTInfo *table; // @synthesize table=_table;
+@property(nonatomic) __weak TSTTableInfo *table; // @synthesize table=_table;
 @property(readonly, nonatomic) TSDPencilAnnotationStorage *pencilAnnotationStorage; // @synthesize pencilAnnotationStorage=_pencilAnnotationStorage;
 - (void).cxx_destruct;
 - (void)saveToArchive:(struct PencilAnnotationArchive *)arg1 archiver:(id)arg2;

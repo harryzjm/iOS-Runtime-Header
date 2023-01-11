@@ -4,14 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class PLPhotoLibrary;
+
 @interface PLPhotoLibraryShouldReloadNotification
 {
+    PLPhotoLibrary *_photoLibrary;
 }
 
+- (void).cxx_destruct;
 - (id)userInfo;
 - (id)object;
 - (id)name;
-- (id)initNotification;
+- (id)initNotificationWithPhotoLibrary:(id)arg1;
 
 @end
 

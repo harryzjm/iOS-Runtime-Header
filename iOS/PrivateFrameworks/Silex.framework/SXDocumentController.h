@@ -6,26 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, SXDocument, SXImageController, SXMetaData, UIColor;
-@protocol SXAutoPlacement, SXFontIndex;
+#import <Silex/SXDocumentShareURLProvider-Protocol.h>
 
-@interface SXDocumentController : NSObject
+@class NSMutableDictionary, NSString, SXDocument, SXImageController, SXJSONObjectMerger, SXMetaData, UIColor;
+
+@interface SXDocumentController : NSObject <SXDocumentShareURLProvider>
 {
+    NSString *_shareURL;
     SXDocument *_document;
-    id <SXFontIndex> _fontIndex;
+    SXJSONObjectMerger *_componentStyleMerger;
     SXImageController *_imageController;
-    NSMutableDictionary *_componentTextStyles;
     NSMutableDictionary *_componentStyles;
 }
 
 @property(retain, nonatomic) NSMutableDictionary *componentStyles; // @synthesize componentStyles=_componentStyles;
-@property(retain, nonatomic) NSMutableDictionary *componentTextStyles; // @synthesize componentTextStyles=_componentTextStyles;
 @property(retain, nonatomic) SXImageController *imageController; // @synthesize imageController=_imageController;
-@property(readonly, nonatomic) id <SXFontIndex> fontIndex; // @synthesize fontIndex=_fontIndex;
+@property(readonly, nonatomic) SXJSONObjectMerger *componentStyleMerger; // @synthesize componentStyleMerger=_componentStyleMerger;
 @property(readonly, nonatomic) SXDocument *document; // @synthesize document=_document;
+@property(readonly, nonatomic) NSString *shareURL; // @synthesize shareURL=_shareURL;
 - (void).cxx_destruct;
-- (id)mergeJSONObjects:(id)arg1;
-- (id)mergedObjectsWithIdentifier:(id)arg1 andDefaultIdentifiers:(id)arg2 fromDictionary:(id)arg3;
+- (id)mergedObjectsWithIdentifiers:(id)arg1 fromDictionary:(id)arg2 merger:(id)arg3;
 @property(readonly, nonatomic) UIColor *topBackgroundColor;
 @property(readonly, nonatomic) UIColor *documentBackgroundColor;
 @property(readonly, nonatomic) SXMetaData *metaData;
@@ -37,16 +37,14 @@
 - (id)imageResourceForIdentifier:(id)arg1;
 - (id)componentLayoutForIdentifier:(id)arg1;
 - (id)resourceForIdentifier:(id)arg1;
-- (id)componentTextStyleForIdentifier:(id)arg1 andClassification:(id)arg2;
-- (id)componentTextStyleForIdentifier:(id)arg1 inheritingFromComponentTextStyle:(id)arg2;
-- (id)componentTextStyleForIdentifier:(id)arg1;
-- (id)textStyleForIdentifier:(id)arg1;
-- (id)dataTableStyleForIdentifier:(id)arg1 andClassification:(id)arg2;
-- (id)dataTableStyleForIdentifier:(id)arg1;
-- (id)componentStyleForIdentifier:(id)arg1 andClassification:(id)arg2;
-- (id)componentStyleForIdentifier:(id)arg1;
-@property(readonly, nonatomic) id <SXAutoPlacement> autoplacement;
-- (id)initWithDocument:(id)arg1;
+- (id)componentStyleForComponent:(id)arg1;
+- (id)initWithDocument:(id)arg1 shareURL:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

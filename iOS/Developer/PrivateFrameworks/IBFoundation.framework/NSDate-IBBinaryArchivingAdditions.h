@@ -11,8 +11,13 @@
 @class NSString;
 
 @interface NSDate (IBBinaryArchivingAdditions) <IBBinaryArchiving>
++ (double)ib_secondsSinceDate:(id)arg1;
 - (void)encodeWithBinaryArchiver:(id)arg1;
 - (id)initWithBinaryUnarchiver:(id)arg1;
+- (_Bool)ib_isInThePast;
+- (_Bool)ib_isBeforeDate:(id)arg1;
+- (double)ib_secondsTillDate;
+- (Class)ib_immutableClassForPlistOverlay;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

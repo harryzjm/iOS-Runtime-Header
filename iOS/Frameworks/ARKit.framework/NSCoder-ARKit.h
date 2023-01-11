@@ -19,5 +19,7 @@
 - (void)encodeMatrix3x3:(CDStruct_8e0628e6)arg1 forKey:(id)arg2;
 - (MISSING_TYPE *)decodeVector3ForKey:(id)arg1;
 - (void)encodeVector3:(id)arg1 forKey: /* Error: Ran out of types for this method. */;
+- (MISSING_TYPE *)decodeVector2ForKey:(id)arg1;
+- (void)encodeVector2:(id)arg1 forKey: /* Error: Ran out of types for this method. */;
 @end
 

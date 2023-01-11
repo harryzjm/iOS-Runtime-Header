@@ -6,6 +6,7 @@
 
 @class NSArray, NSDateFormatter, NSMutableIndexSet, SKUIClientContext, SKUIColorScheme, SKUILayoutCache, SKUIProductPageTableExpandableHeaderView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIProductPageTableUpdateHistorySection
 {
     SKUIClientContext *_clientContext;

@@ -7,6 +7,7 @@
 __attribute__((visibility("hidden")))
 @interface __NSSingleObjectEnumerator
 {
+    id _theCollection;
     id _theObjectToReturn;
 }
 
@@ -14,7 +15,7 @@ __attribute__((visibility("hidden")))
 - (id)nextObject;
 - (void)dealloc;
 - (id)init;
-- (id)initWithObject:(id)arg1;
+- (id)initWithObject:(id)arg1 collection:(id)arg2;
 
 @end
 

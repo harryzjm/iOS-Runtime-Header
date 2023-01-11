@@ -4,30 +4,44 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <IMDaemonCore/IMDCKAbstractSyncControllerDelegate-Protocol.h>
 #import <IMDaemonCore/IMDXPCEventStreamHandlerDelegate-Protocol.h>
+#import <IMDaemonCore/IMSystemMonitorListener-Protocol.h>
 
-@class CKFetchRecordZonesOperation, IMTimer, NSDate, NSString, NSTimer;
+@class IMTimer, NSDate, NSString, NSTimer;
 
-@interface IMDCKSyncController <IMDXPCEventStreamHandlerDelegate>
+@interface IMDCKSyncController <IMDXPCEventStreamHandlerDelegate, IMSystemMonitorListener, IMDCKAbstractSyncControllerDelegate>
 {
+    _Bool _shouldReloadConversations;
     NSDate *_syncStartDate;
     NSTimer *_longRunningSyncTimer;
     IMTimer *_nightlySyncTimer;
     long long _initialSyncAttempts;
-    CKFetchRecordZonesOperation *_cloudKitMetricsFetchOp;
     NSDate *_lastLogDumpDate;
     NSDate *_lastRestoreFailureLogDumpDate;
+    NSTimer *_reloadTimer;
 }
 
 + (id)sharedInstance;
+@property(retain) NSTimer *reloadTimer; // @synthesize reloadTimer=_reloadTimer;
+@property _Bool shouldReloadConversations; // @synthesize shouldReloadConversations=_shouldReloadConversations;
 @property(retain, nonatomic) NSDate *lastRestoreFailureLogDumpDate; // @synthesize lastRestoreFailureLogDumpDate=_lastRestoreFailureLogDumpDate;
 @property(retain, nonatomic) NSDate *lastLogDumpDate; // @synthesize lastLogDumpDate=_lastLogDumpDate;
-@property(retain, nonatomic) CKFetchRecordZonesOperation *cloudKitMetricsFetchOp; // @synthesize cloudKitMetricsFetchOp=_cloudKitMetricsFetchOp;
 @property(nonatomic) long long initialSyncAttempts; // @synthesize initialSyncAttempts=_initialSyncAttempts;
 @property(retain, nonatomic) IMTimer *nightlySyncTimer; // @synthesize nightlySyncTimer=_nightlySyncTimer;
 @property(retain, nonatomic) NSTimer *longRunningSyncTimer; // @synthesize longRunningSyncTimer=_longRunningSyncTimer;
 @property(retain, nonatomic) NSDate *syncStartDate; // @synthesize syncStartDate=_syncStartDate;
 - (void).cxx_destruct;
+- (_Bool)logCloudKitAnalytics;
+- (void)_submitCloudKitAnalyticWithOperationGroupName:(id)arg1 analyticDictionary:(id)arg2;
+- (_Bool)_serverDeniesDailySyncStateAnalytics;
+- (_Bool)_serverDeniesPeriodicSyncAnalytics;
+- (id)_periodicSyncStateDictionary;
+- (_Bool)_completedPeriodicSyncSinceFirstFullSyncForLastSyncDate:(id)arg1 firstFullSyncCompletedDate:(id)arg2;
+- (id)_dailySyncStateDictionary;
+- (void)_addDatesDefaultsIfNeededToDictionary:(id)arg1;
+- (void)_addDatesDefaultsIfNeededToDictionary:(id)arg1 keys:(id)arg2;
+- (void)clearAnalyticDefaultsAndLocalSyncState;
 - (void)performOneTimeAccountUpgradeCheckIfNeeded;
 - (_Bool)enforceAccountsMatchForMocAndShowDialogIfNeeded;
 - (void)handleAKUserInfoChangedNotification:(id)arg1;
@@ -45,13 +59,14 @@
 - (void)_noteDownSyncStartedWithIsPeriodicSync:(_Bool)arg1;
 - (void)_autoBugCaptureWithSubType:(id)arg1 debugDescription:(id)arg2;
 - (void)_beginExitStateCleanupIfNeededWithActivity:(id)arg1 useNonHSA2ManateeDatabase:(_Bool)arg2;
-- (void)_ifCloudKitAbleToSyncIsFullSync:(_Bool)arg1 callBlock:(CDUnknownBlockType)arg2 activity:(id)arg3;
+- (void)_ifCloudKitAbleToSyncIsFullSync:(_Bool)arg1 activity:(id)arg2 callBlock:(CDUnknownBlockType)arg3;
 - (void)_callSyncWithCompletion:(CDUnknownBlockType)arg1 activity:(id)arg2;
 - (void)_syncChatsWithActivity:(id)arg1;
 - (id)_sharedDatabaseManager;
 - (_Bool)_isSyncingToStingRay;
 - (void)syncDeletesToCloudKitWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_beginPeriodicSyncWithActivity:(id)arg1 deviceConditionsToCheck:(unsigned long long)arg2 attemptCount:(unsigned long long)arg3 useStingRay:(_Bool)arg4 syncChatsCompletionBlock:(CDUnknownBlockType)arg5;
+- (void)syncAttachmentMetadataFirstSyncWithActivity:(id)arg1 deviceConditionsToCheck:(unsigned long long)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_beginPeriodicSyncWithActivity:(id)arg1 deviceConditionsToCheck:(unsigned long long)arg2 attemptCount:(unsigned long long)arg3;
 - (id)_recordManager;
 - (void)_reloadChatRegistryOnMainThread;
@@ -59,6 +74,7 @@
 - (void)_dealWithEncryptionKeyLostErrorIfApplicable:(id)arg1;
 - (_Bool)_errorIndicatesDeviceNotGoodForSync:(id)arg1;
 - (void)beginInitialSyncAttemptCount:(unsigned long long)arg1;
+- (id)_retryError;
 - (void)collectLogsIfNeeded;
 - (void)sendRestoreFailuresLogDumpsIfNeeded;
 - (void)sendRestoreFailuresLogDumps;
@@ -68,7 +84,16 @@
 - (_Bool)_hasDumpedRestoreFailureLogsInPastHour;
 - (_Bool)_hasDumpedLogsInPastHour;
 - (void)recordMetricIsCloudKitEnabled;
+- (void)_performLastCompleteSyncedDBDateMetricForSuccessfulSync;
+- (void)_performLastSyncDateMetricForSuccessfulSync;
 - (void)performMetricForSuccessfulSync;
+- (void)systemDidUnlock;
+- (void)_refreshUIWhileSyncing;
+- (void)refreshUIIfApplicableWithBatchCount:(unsigned long long)arg1;
+- (double)reloadTimeInterval;
+- (_Bool)_serverAllowsUIRefreshTimerWhileSyncing;
+- (_Bool)_serverAllowsUIRefreshWhileSyncing;
+- (void)syncController:(id)arg1 syncBatchCompleted:(unsigned long long)arg2;
 - (void)clearLocalCloudKitSyncState;
 - (void)clearCKRelatedDefaults;
 - (void)kickOffCloudKitSyncIfNeededOnImagentLaunch;
@@ -100,9 +125,11 @@
 - (long long)syncControllerRecordType;
 - (id)statsCollector;
 - (id)rampManager;
+- (id)initialAttachmentSyncController;
 - (id)attachmentSyncController;
 - (id)exitManager;
 - (id)chatSyncController;
+- (id)initialMessageSyncController;
 - (id)messageSyncController;
 
 // Remaining properties

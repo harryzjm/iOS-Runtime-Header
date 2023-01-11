@@ -4,27 +4,41 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class UITextGestureTuning;
+
 __attribute__((visibility("hidden")))
 @interface UITextSelectionInteraction
 {
     double _lastTapTimestamp;
     struct CGPoint _lastTapLocation;
     long long _previousRepeatedGranularity;
+    UITextGestureTuning *_gestureTuning;
 }
 
+- (void).cxx_destruct;
 - (_Bool)shouldHandleOneFingerTapInUneditable:(id)arg1;
 - (_Bool)interaction_gestureRecognizerShouldBegin:(id)arg1;
 - (void)setHybridSelectionWithPoint:(struct CGPoint)arg1;
 - (void)twoFingerRangedSelectGesture:(id)arg1;
 - (void)tapAndAHalf:(id)arg1;
+- (void)_createGestureTuningIfNecessary;
 - (void)confirmMarkedText:(id)arg1;
+- (void)_updateTapGestureHistoryWithLocation:(struct CGPoint)arg1;
 - (void)oneFingerTap:(id)arg1;
 - (void)oneFingerTapSelectsAll:(id)arg1;
-- (void)performTapActionAtPoint:(struct CGPoint)arg1 granularity:(long long)arg2 modifierFlags:(long long)arg3;
-- (void)performTapActionAtPoint:(struct CGPoint)arg1 granularity:(long long)arg2;
-- (_Bool)isNowWithinRepeatedTapTime;
+- (void)performTapActionWithDelegate:(id)arg1 atPoint:(struct CGPoint)arg2 granularity:(long long)arg3 modifierFlags:(long long)arg4;
+- (long long)_textGranularityForRepeatedTap:(long long)arg1;
+- (_Bool)_isRepeatedTap:(id)arg1 gestureLocationOut:(struct CGPoint *)arg2;
+- (_Bool)_isWithinRepeatedTapTimeForTouch:(id)arg1;
+- (_Bool)_isNowWithinRepeatedTapTime;
 - (_Bool)_isShiftKeyBeingHeldForGesture:(id)arg1;
 - (void)oneFingerDoubleTap:(id)arg1;
+- (void)oneFingerTripleTap:(id)arg1;
+- (void)toggleSelectionCommands;
+- (void)_applyTransientState:(id)arg1;
+- (id)_transientState;
+- (void)didMoveToView:(id)arg1;
+- (void)finishSetup;
 - (id)initWithMode:(long long)arg1;
 
 @end

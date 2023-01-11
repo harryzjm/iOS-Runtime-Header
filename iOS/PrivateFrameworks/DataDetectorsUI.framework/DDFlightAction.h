@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (id)viewController;
 - (void)closePressed;
 - (int)interactionType;
+- (id)icon;
 - (id)localizedName;
 - (void)prepareViewControllerForActionController:(id)arg1;
 - (id)initWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;

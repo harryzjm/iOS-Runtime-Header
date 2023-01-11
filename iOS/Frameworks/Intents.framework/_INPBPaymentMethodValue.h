@@ -15,6 +15,7 @@
 @interface _INPBPaymentMethodValue : PBCodable <_INPBPaymentMethodValue, NSSecureCoding, NSCopying>
 {
     CDStruct_f953fb60 _has;
+    _Bool __encodeLegacyGloryData;
     int _type;
     _INPBImageValue *_icon;
     NSString *_identificationHint;
@@ -22,6 +23,8 @@
     _INPBValueMetadata *_valueMetadata;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(retain, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 @property(nonatomic) int type; // @synthesize type=_type;
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
@@ -32,6 +35,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(readonly, nonatomic) _Bool hasValueMetadata;

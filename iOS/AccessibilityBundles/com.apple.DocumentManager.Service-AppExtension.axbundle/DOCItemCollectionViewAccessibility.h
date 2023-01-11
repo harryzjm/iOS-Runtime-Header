@@ -11,7 +11,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axDisplayOptionsView;
 - (_Bool)_accessibilityOpaqueElementScrollsContentIntoView;
+- (id)_accessibilitySupplementaryFooterViews;
+- (id)_accessibilityUserTestingChildren;
 - (id)accessibilityValue;
 - (id)accessibilityIdentifier;
 

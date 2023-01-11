@@ -4,18 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSString;
+
 @interface GCControllerButtonInput
 {
+    NSString *_descriptionName;
+    int _pressCounter;
+    _Bool _nonAnalog;
+    float _value;
+    CDUnknownBlockType _valueChangedHandler;
+    CDUnknownBlockType _pressedChangedHandler;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType pressedChangedHandler;
-@property(copy, nonatomic) CDUnknownBlockType valueChangedHandler;
+@property _Bool nonAnalog; // @synthesize nonAnalog=_nonAnalog;
+@property(readonly, nonatomic) float value; // @synthesize value=_value;
+@property(copy, nonatomic) CDUnknownBlockType pressedChangedHandler; // @synthesize pressedChangedHandler=_pressedChangedHandler;
+@property(copy, nonatomic) CDUnknownBlockType valueChangedHandler; // @synthesize valueChangedHandler=_valueChangedHandler;
+- (void).cxx_destruct;
+- (void)setValue:(float)arg1;
+- (id)description;
 @property(readonly, nonatomic, getter=isPressed) _Bool pressed;
-- (_Bool)setHIDValue:(struct __IOHIDValue *)arg1 queue:(id)arg2;
-- (_Bool)setHIDValue:(struct __IOHIDValue *)arg1;
+- (int)getAndResetTimesPressed;
 - (_Bool)_setValue:(float)arg1 queue:(id)arg2;
 - (_Bool)_setValue:(float)arg1;
-@property(readonly, nonatomic) float value;
+- (_Bool)isAnalog;
+- (id)initWithDescriptionName:(id)arg1;
 
 @end
 

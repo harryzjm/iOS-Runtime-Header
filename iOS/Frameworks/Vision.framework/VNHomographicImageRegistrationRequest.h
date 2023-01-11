@@ -8,7 +8,7 @@
 {
 }
 
-- (_Bool)internalPerformInContext:(id)arg1 error:(id *)arg2;
+- (_Bool)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (_Bool)wantsSequencedRequestObservationsRecording;
 - (_Bool)allowsCachingOfResults;
 - (_Bool)_calculateHomographicWarpTransform:(CDStruct_8e0628e6 *)arg1 ofFloatingImagePixelBuffer:(struct __CVBuffer *)arg2 ontoReferenceImagePixelBuffer:(struct __CVBuffer *)arg3 usingImageRegistrationContext:(struct ImageRegistrationCtx_s *)arg4 glContext:(void *)arg5 seededWithPreviousWarpTransform:(const CDStruct_8e0628e6 *)arg6 error:(id *)arg7;

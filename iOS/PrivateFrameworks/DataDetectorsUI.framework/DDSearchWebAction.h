@@ -9,9 +9,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)localizedName;
 - (_Bool)canBePerformedByOpeningURL;
 - (void)performFromView:(id)arg1;
+- (id)icon;
+- (id)localizedName;
 
 @end
 

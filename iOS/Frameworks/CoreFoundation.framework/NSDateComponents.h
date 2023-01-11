@@ -49,7 +49,9 @@
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)dealloc;
+- (id)_initWithCFDateComponents:(struct __CFDateComponents *)arg1;
 - (id)init;
+- (struct __CFDateComponents *)_dateComponents;
 
 @end
 

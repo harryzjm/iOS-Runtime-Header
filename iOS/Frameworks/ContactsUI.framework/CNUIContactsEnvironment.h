@@ -6,21 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class CNContactChangesNotifier, CNContactStore, CNContactsEnvironment, CNGeminiManager, CNUIAccountsFacade, CNUICoreRecentsManager, CNUIExternalComponentsFactory, CNUIFMFFacade, CNUIIDSAvailabilityProvider, CNUIMeContactMonitor, CNUISchedulerProvider, CNUIUserActivityManager, PRPersonaStore, _DECConsumer;
-@protocol CNCapabilities, CNLSApplicationWorkspace, CNUIDefaultUserActionFetcher, CNUILikenessRendering, CNUIPRLikenessResolver, CNUIPlaceholderProviderFactory, CNUIUserActionDiscoveringEnvironment;
+@class CNCollation, CNContactChangesNotifier, CNContactStore, CNContactsEnvironment, CNFavorites, CNGeminiManager, CNHealthStoreManager, CNUICoreRecentsManager, CNUIExternalComponentsFactory, CNUIIDSAvailabilityProvider, CNUIMeContactMonitor, CNUISchedulerProvider, CNUIUserActivityManager;
+@protocol CNCapabilities, CNLSApplicationWorkspace, CNUIApplicationLaunchCheckin, CNUIDefaultUserActionFetcher, CNUILikenessRendering, CNUIPRLikenessResolver, CNUIPlaceholderProviderFactory, CNUIUserActionDiscoveringEnvironment;
 
 @interface CNUIContactsEnvironment : NSObject
 {
-    CNUIAccountsFacade *_accountsFacade;
-    CNUIFMFFacade *_fmfFacade;
-    _DECConsumer *_duetConsumer;
-    PRPersonaStore *_personaStore;
+    id <CNUIApplicationLaunchCheckin> _launchCheckinRegistrar;
     CNUISchedulerProvider *_defaultSchedulerProvider;
     CNContactStore *_contactStore;
+    CNContactStore *_inProcessContactStore;
+    CNFavorites *_inProcessFavorites;
+    CNUIUserActivityManager *_inProcessActivityManager;
     id <CNUIPlaceholderProviderFactory> _placeholderProviderFactory;
     CNUIMeContactMonitor *_meMonitor;
     id <CNUIPRLikenessResolver> _cachingLikenessResolver;
     id <CNUILikenessRendering> _cachingLikenessRenderer;
+    id <CNUILikenessRendering> _cachingMonogramRenderer;
     id <CNUIUserActionDiscoveringEnvironment> _actionDiscoveringEnvironment;
     CNUIIDSAvailabilityProvider *_idsAvailabilityProvider;
     id <CNLSApplicationWorkspace> _applicationWorkspace;
@@ -29,8 +30,9 @@
     CNContactChangesNotifier *_contactChangesNotifier;
     CNUICoreRecentsManager *_recentsManager;
     CNUIExternalComponentsFactory *_componentsFactory;
-    CNUIUserActivityManager *_activityManager;
-    id _launchCheckinRegistrar;
+    struct UCollator *_sortCollator;
+    CNCollation *_collation;
+    CNHealthStoreManager *_healthStoreManager;
     CNGeminiManager *_geminiManager;
     CNContactsEnvironment *_cnEnvironment;
 }
@@ -39,8 +41,9 @@
 + (id)currentEnvironment;
 @property(readonly, nonatomic) CNContactsEnvironment *cnEnvironment; // @synthesize cnEnvironment=_cnEnvironment;
 @property(retain, nonatomic) CNGeminiManager *geminiManager; // @synthesize geminiManager=_geminiManager;
-@property(retain, nonatomic) id launchCheckinRegistrar; // @synthesize launchCheckinRegistrar=_launchCheckinRegistrar;
-@property(retain, nonatomic) CNUIUserActivityManager *activityManager; // @synthesize activityManager=_activityManager;
+@property(retain, nonatomic) CNHealthStoreManager *healthStoreManager; // @synthesize healthStoreManager=_healthStoreManager;
+@property(retain, nonatomic) CNCollation *collation; // @synthesize collation=_collation;
+@property(nonatomic) struct UCollator *sortCollator; // @synthesize sortCollator=_sortCollator;
 @property(retain, nonatomic) CNUIExternalComponentsFactory *componentsFactory; // @synthesize componentsFactory=_componentsFactory;
 @property(retain, nonatomic) CNUICoreRecentsManager *recentsManager; // @synthesize recentsManager=_recentsManager;
 @property(retain, nonatomic) CNContactChangesNotifier *contactChangesNotifier; // @synthesize contactChangesNotifier=_contactChangesNotifier;
@@ -49,20 +52,25 @@
 @property(retain, nonatomic) id <CNLSApplicationWorkspace> applicationWorkspace; // @synthesize applicationWorkspace=_applicationWorkspace;
 @property(retain, nonatomic) CNUIIDSAvailabilityProvider *idsAvailabilityProvider; // @synthesize idsAvailabilityProvider=_idsAvailabilityProvider;
 @property(retain, nonatomic) id <CNUIUserActionDiscoveringEnvironment> actionDiscoveringEnvironment; // @synthesize actionDiscoveringEnvironment=_actionDiscoveringEnvironment;
+@property(retain, nonatomic) id <CNUILikenessRendering> cachingMonogramRenderer; // @synthesize cachingMonogramRenderer=_cachingMonogramRenderer;
 @property(retain, nonatomic) id <CNUILikenessRendering> cachingLikenessRenderer; // @synthesize cachingLikenessRenderer=_cachingLikenessRenderer;
 @property(retain, nonatomic) id <CNUIPRLikenessResolver> cachingLikenessResolver; // @synthesize cachingLikenessResolver=_cachingLikenessResolver;
 @property(retain, nonatomic) CNUIMeContactMonitor *meMonitor; // @synthesize meMonitor=_meMonitor;
 @property(retain, nonatomic) id <CNUIPlaceholderProviderFactory> placeholderProviderFactory; // @synthesize placeholderProviderFactory=_placeholderProviderFactory;
+@property(retain, nonatomic) CNUIUserActivityManager *inProcessActivityManager; // @synthesize inProcessActivityManager=_inProcessActivityManager;
+@property(retain, nonatomic) CNFavorites *inProcessFavorites; // @synthesize inProcessFavorites=_inProcessFavorites;
+@property(retain, nonatomic) CNContactStore *inProcessContactStore; // @synthesize inProcessContactStore=_inProcessContactStore;
 @property(retain, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property(retain, nonatomic) CNUISchedulerProvider *defaultSchedulerProvider; // @synthesize defaultSchedulerProvider=_defaultSchedulerProvider;
-@property(retain, nonatomic) PRPersonaStore *personaStore; // @synthesize personaStore=_personaStore;
-@property(retain, nonatomic) _DECConsumer *duetConsumer; // @synthesize duetConsumer=_duetConsumer;
-@property(retain, nonatomic) CNUIFMFFacade *fmfFacade; // @synthesize fmfFacade=_fmfFacade;
-@property(retain, nonatomic) CNUIAccountsFacade *accountsFacade; // @synthesize accountsFacade=_accountsFacade;
+@property(retain, nonatomic) id <CNUIApplicationLaunchCheckin> launchCheckinRegistrar; // @synthesize launchCheckinRegistrar=_launchCheckinRegistrar;
 - (void).cxx_destruct;
 - (id)nts_lazyGeminiManager;
-- (id)nts_launchCheckinRegistrar;
-- (id)nts_lazyActivityManager;
+- (id)nts_lazyHealthStoreManager;
+- (void)dealloc;
+- (struct UCollator *)nts_lazySortCollator;
+- (id)nts_lazyCollation;
+- (id)nts_lazyInProcessFavorites;
+- (id)nts_lazyInProcessActivityManager;
 - (id)nts_lazyComponentsFactory;
 - (id)nts_makeRecentsManager;
 - (id)nts_lazyRecentsManager;
@@ -74,15 +82,14 @@
 - (id)nts_lazyIDSAvailabilityProvider;
 - (id)nts_makeActionDiscoveringEnvironment;
 - (id)nts_lazyActionDiscoveringEnvironment;
+- (id)nts_lazyCachingMonogramRenderer;
 - (id)nts_lazyCachingLikenessRenderer;
 - (id)nts_makeCachingLikenessResolver;
 - (id)nts_lazyCachingLikenessResolver;
 - (id)nts_lazyPlaceholderProviderFactory;
 - (id)nts_lazyDefaultSchedulerProvider;
 - (id)nts_lazyContactStore;
-- (id)nts_lazyPersonaStore;
-- (id)nts_lazyFMFFacade;
-- (id)nts_lazyAccountsFacade;
+- (id)nts_lazyInProcessContactStore;
 - (id)initWithContactsEnvironment:(id)arg1;
 - (id)init;
 

@@ -8,7 +8,6 @@
 
 @class NSURL;
 
-__attribute__((visibility("hidden")))
 @interface QLImageItemURLContents <NSSecureCoding>
 {
     NSURL *_imageURL;

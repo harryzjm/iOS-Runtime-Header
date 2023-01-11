@@ -10,6 +10,7 @@
 
 - (id)_feedTransformation;
 - (id)_candidateIDs;
+- (void)_performOperation;
 - (void)performOperation;
 
 @end

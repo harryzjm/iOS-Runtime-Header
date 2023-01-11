@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <CoreDuet/_DKMonitor-Protocol.h>
+#import <CoreDuet/_DKMonitoring-Protocol.h>
 
 @class _DKEvent;
 
-@protocol _DKInstantMonitor <_DKMonitor>
+@protocol _DKInstantMonitor <_DKMonitoring>
 @property(readonly, nonatomic) _DKEvent *currentEvent;
 @property(copy, nonatomic) CDUnknownBlockType instantHandler;
 - (void)synchronouslyReflectCurrentValue;

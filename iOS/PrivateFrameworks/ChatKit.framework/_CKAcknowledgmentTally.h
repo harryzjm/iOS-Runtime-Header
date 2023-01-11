@@ -8,6 +8,7 @@
 
 @class NSArray;
 
+__attribute__((visibility("hidden")))
 @interface _CKAcknowledgmentTally : NSObject
 {
     long long _type;

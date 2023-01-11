@@ -18,16 +18,21 @@
         unsigned int callDuration:1;
         unsigned int timeToEstablish:1;
     } _has;
+    _Bool __encodeLegacyGloryData;
     double _callDuration;
     double _timeToEstablish;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(nonatomic) double timeToEstablish; // @synthesize timeToEstablish=_timeToEstablish;
 @property(nonatomic) double callDuration; // @synthesize callDuration=_callDuration;
 - (id)dictionaryRepresentation;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(nonatomic) _Bool hasTimeToEstablish;

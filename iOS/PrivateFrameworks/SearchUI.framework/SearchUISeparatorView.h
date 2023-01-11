@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface SearchUISeparatorView
+#import <TemplateKit/TLKProminenceView.h>
+
+@interface SearchUISeparatorView : TLKProminenceView
 {
     double _separatorHeight;
 }
 
-@property double separatorHeight; // @synthesize separatorHeight=_separatorHeight;
-- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
-- (id)initWithStyle:(unsigned long long)arg1;
+@property(nonatomic) double separatorHeight; // @synthesize separatorHeight=_separatorHeight;
+- (struct CGSize)effectiveLayoutSizeFittingSize:(struct CGSize)arg1;
+- (struct CGSize)intrinsicContentSize;
+- (id)init;
 
 @end
 

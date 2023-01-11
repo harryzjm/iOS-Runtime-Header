@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
+#import <UIKit/UIViewController.h>
 
 #import <AvatarUI/AVTAvatarActionsViewControllerDelegate-Protocol.h>
 #import <AvatarUI/AVTAvatarDisplayingControllerDelegate-Protocol.h>
@@ -13,23 +13,21 @@
 #import <AvatarUI/AVTDisplayingCarouselController-Protocol.h>
 #import <AvatarUI/AVTRecordingCarouselController-Protocol.h>
 
-@class AVTAvatarContainerViewController, AVTAvatarRecordDataSource, AVTMultiAvatarController, AVTRecordView, AVTSingleAvatarController, AVTUIEnvironment, AVTView, AVTViewCarouselLayout, AVTViewSession, AVTViewSessionProvider, NSString, UIView;
+@class AVTAvatarRecordDataSource, AVTMultiAvatarController, AVTRecordView, AVTSingleAvatarController, AVTUIEnvironment, AVTView, AVTViewCarouselLayout, AVTViewSession, AVTViewSessionProvider, NSString, UIView;
 @protocol AVTAvatarDisplayingController, AVTAvatarRecord, AVTDisplayingCarouselControllerDelegate, AVTPresenterDelegate, AVTRecordingCarouselControllerDelegate, AVTUILogger;
 
-@interface AVTCarouselController : NSObject <AVTAvatarActionsViewControllerDelegate, AVTAvatarEditorViewControllerDelegate, AVTAvatarDisplayingControllerDelegate, AVTAvatarRecordDataSourceObserver, AVTRecordingCarouselController, AVTDisplayingCarouselController>
+@interface AVTCarouselController : UIViewController <AVTAvatarActionsViewControllerDelegate, AVTAvatarEditorViewControllerDelegate, AVTAvatarDisplayingControllerDelegate, AVTAvatarRecordDataSourceObserver, AVTRecordingCarouselController, AVTDisplayingCarouselController>
 {
     _Bool _singleAvatarMode;
     id <AVTPresenterDelegate> presenterDelegate;
     id <AVTDisplayingCarouselControllerDelegate> displayingDelegate;
     id <AVTRecordingCarouselControllerDelegate> recordingDelegate;
     double _decelerationRate;
-    UIView *_view;
     AVTAvatarRecordDataSource *_dataSource;
     id <AVTUILogger> _logger;
     AVTUIEnvironment *_environment;
     id <AVTAvatarRecord> _currentAvatarRecord;
     UIView *_avtViewContainer;
-    AVTAvatarContainerViewController *_containerViewController;
     AVTViewSessionProvider *_avtViewSessionProvider;
     AVTViewSession *_avtViewSession;
     AVTMultiAvatarController *_multiAvatarController;
@@ -39,7 +37,6 @@
     long long _mode;
 }
 
-+ (long long)indexClosestToIndex:(unsigned long long)arg1 withinSet:(id)arg2;
 + (void)setupAVTView:(id)arg1;
 + (id)recordingCarouselForRecordDataSource:(id)arg1;
 + (id)displayingCarouselForRecordDataSource:(id)arg1;
@@ -51,13 +48,11 @@
 @property(retain, nonatomic) AVTMultiAvatarController *multiAvatarController; // @synthesize multiAvatarController=_multiAvatarController;
 @property(retain, nonatomic) AVTViewSession *avtViewSession; // @synthesize avtViewSession=_avtViewSession;
 @property(readonly, nonatomic) AVTViewSessionProvider *avtViewSessionProvider; // @synthesize avtViewSessionProvider=_avtViewSessionProvider;
-@property(retain, nonatomic) AVTAvatarContainerViewController *containerViewController; // @synthesize containerViewController=_containerViewController;
 @property(retain, nonatomic) UIView *avtViewContainer; // @synthesize avtViewContainer=_avtViewContainer;
 @property(retain, nonatomic) id <AVTAvatarRecord> currentAvatarRecord; // @synthesize currentAvatarRecord=_currentAvatarRecord;
 @property(readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property(readonly, nonatomic) id <AVTUILogger> logger; // @synthesize logger=_logger;
 @property(readonly, nonatomic) AVTAvatarRecordDataSource *dataSource; // @synthesize dataSource=_dataSource;
-@property(retain, nonatomic) UIView *view; // @synthesize view=_view;
 @property(nonatomic) _Bool singleAvatarMode; // @synthesize singleAvatarMode=_singleAvatarMode;
 @property(nonatomic) __weak id <AVTRecordingCarouselControllerDelegate> recordingDelegate; // @synthesize recordingDelegate;
 @property(nonatomic) __weak id <AVTDisplayingCarouselControllerDelegate> displayingDelegate; // @synthesize displayingDelegate;
@@ -67,8 +62,8 @@
 - (void)avatarEditorViewControllerDidCancel:(id)arg1;
 - (void)avatarEditorViewController:(id)arg1 didFinishWithAvatarRecord:(id)arg2;
 - (void)avatarActionsViewControllerDidFinish:(id)arg1;
-- (id)indexSetForEditableRecords;
 - (id)avatarActionsViewController:(id)arg1 recordUpdateForDeletingRecord:(id)arg2;
+- (void)significantRecordChangeInDataSource:(id)arg1;
 - (void)dataSource:(id)arg1 didRemoveRecord:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)dataSource:(id)arg1 didEditRecord:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)dataSource:(id)arg1 didAddRecord:(id)arg2 atIndex:(unsigned long long)arg3;
@@ -93,7 +88,6 @@
 - (void)showMultiAvatarControllerAnimated:(_Bool)arg1;
 - (void)setAllowsCreate:(_Bool)arg1 animated:(_Bool)arg2;
 @property(nonatomic) _Bool allowsCreate;
-- (void)renderForARFrame:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)displayAvatarRecord:(id)arg1 animated:(_Bool)arg2;
 - (void)displayAvatarRecordWithIdentifier:(id)arg1 animated:(_Bool)arg2;
 - (void)setSingleAvatarMode:(_Bool)arg1 animated:(_Bool)arg2;
@@ -102,6 +96,7 @@
 - (void)reloadDataCenteringToAvatarRecord:(id)arg1;
 - (void)reloadData;
 - (void)beginAVTViewSession;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)loadView;
 @property(nonatomic) double decelerationRate; // @synthesize decelerationRate=_decelerationRate;
 - (id)initWithMode:(long long)arg1 sessionProvider:(id)arg2 dataSource:(id)arg3 environment:(id)arg4;
@@ -112,6 +107,7 @@
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+@property(readonly, nonatomic) UIView *view;
 
 @end
 

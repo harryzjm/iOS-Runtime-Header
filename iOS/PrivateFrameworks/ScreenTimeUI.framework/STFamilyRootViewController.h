@@ -7,6 +7,7 @@
 @class NSObject;
 @protocol STRootViewModelCoordinator;
 
+__attribute__((visibility("hidden")))
 @interface STFamilyRootViewController
 {
     NSObject<STRootViewModelCoordinator> *_coordinator;

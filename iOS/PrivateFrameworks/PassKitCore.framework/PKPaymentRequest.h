@@ -8,14 +8,18 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class AKAppleIDAuthenticationContext, NSArray, NSData, NSSet, NSString, NSURL, PKContact, PKPaymentMerchantSession;
+@class AKAppleIDAuthenticationContext, NSArray, NSData, NSDate, NSSet, NSString, NSTimeZone, NSURL, PKApplePayTrustSignatureRequest, PKContact, PKPaymentMerchantSession;
 
 @interface PKPaymentRequest : NSObject <NSSecureCoding>
 {
     _Bool _expectsMerchantSession;
+    _Bool _accountPaymentSupportsPeerPayment;
+    _Bool _accountPaymentUsePeerPaymentBalance;
+    _Bool _deviceSupportsPeerPaymentAccountPayment;
     _Bool _suppressTotal;
     _Bool _shippingEditable;
     _Bool _requiresAddressPrecision;
+    _Bool _supportsInstantFundsIn;
     NSString *_merchantIdentifier;
     NSString *_countryCode;
     NSArray *_supportedNetworks;
@@ -37,6 +41,12 @@
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_sourceApplicationSecondaryIdentifier;
     NSString *_CTDataConnectionServiceType;
+    NSString *_boundInterfaceIdentifier;
+    PKApplePayTrustSignatureRequest *_applePayTrustSignatureRequest;
+    NSArray *_bankAccounts;
+    long long _paymentFrequency;
+    NSDate *_paymentDate;
+    NSTimeZone *_paymentTimeZone;
     unsigned long long _APIType;
     unsigned long long _requestType;
     unsigned long long _requestor;
@@ -52,6 +62,8 @@
     NSString *_localizedPasswordButtonTitle;
     NSString *_shippingEditableMessage;
     PKPaymentMerchantSession *_merchantSession;
+    NSString *_passTypeIdentifier;
+    NSString *_passSerialNumber;
     double _clientCallbackTimeout;
 }
 
@@ -64,7 +76,10 @@
 + (long long)version;
 + (id)availableNetworks;
 + (id)requestWithProtobuf:(id)arg1;
+@property(nonatomic) _Bool supportsInstantFundsIn; // @synthesize supportsInstantFundsIn=_supportsInstantFundsIn;
 @property(nonatomic) double clientCallbackTimeout; // @synthesize clientCallbackTimeout=_clientCallbackTimeout;
+@property(copy, nonatomic) NSString *passSerialNumber; // @synthesize passSerialNumber=_passSerialNumber;
+@property(copy, nonatomic) NSString *passTypeIdentifier; // @synthesize passTypeIdentifier=_passTypeIdentifier;
 @property(retain, nonatomic) PKPaymentMerchantSession *merchantSession; // @synthesize merchantSession=_merchantSession;
 @property(nonatomic) _Bool requiresAddressPrecision; // @synthesize requiresAddressPrecision=_requiresAddressPrecision;
 @property(copy, nonatomic) NSString *shippingEditableMessage; // @synthesize shippingEditableMessage=_shippingEditableMessage;
@@ -83,6 +98,15 @@
 @property(nonatomic) unsigned long long requestor; // @synthesize requestor=_requestor;
 @property(nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 @property(nonatomic) unsigned long long APIType; // @synthesize APIType=_APIType;
+@property(copy, nonatomic) NSTimeZone *paymentTimeZone; // @synthesize paymentTimeZone=_paymentTimeZone;
+@property(copy, nonatomic) NSDate *paymentDate; // @synthesize paymentDate=_paymentDate;
+@property(nonatomic) long long paymentFrequency; // @synthesize paymentFrequency=_paymentFrequency;
+@property(nonatomic) _Bool deviceSupportsPeerPaymentAccountPayment; // @synthesize deviceSupportsPeerPaymentAccountPayment=_deviceSupportsPeerPaymentAccountPayment;
+@property(nonatomic) _Bool accountPaymentUsePeerPaymentBalance; // @synthesize accountPaymentUsePeerPaymentBalance=_accountPaymentUsePeerPaymentBalance;
+@property(nonatomic) _Bool accountPaymentSupportsPeerPayment; // @synthesize accountPaymentSupportsPeerPayment=_accountPaymentSupportsPeerPayment;
+@property(retain, nonatomic) NSArray *bankAccounts; // @synthesize bankAccounts=_bankAccounts;
+@property(retain, nonatomic) PKApplePayTrustSignatureRequest *applePayTrustSignatureRequest; // @synthesize applePayTrustSignatureRequest=_applePayTrustSignatureRequest;
+@property(copy, nonatomic) NSString *boundInterfaceIdentifier; // @synthesize boundInterfaceIdentifier=_boundInterfaceIdentifier;
 @property(retain, nonatomic) NSString *CTDataConnectionServiceType; // @synthesize CTDataConnectionServiceType=_CTDataConnectionServiceType;
 @property(retain, nonatomic) NSString *sourceApplicationSecondaryIdentifier; // @synthesize sourceApplicationSecondaryIdentifier=_sourceApplicationSecondaryIdentifier;
 @property(retain, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
@@ -107,6 +131,8 @@
 @property(copy, nonatomic) NSString *merchantIdentifier; // @synthesize merchantIdentifier=_merchantIdentifier;
 - (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1 error:(id *)arg2;
+@property(readonly) _Bool _isAMPPayment;
+@property(readonly) _Bool _isPSD2StyleRequest;
 - (id)_transactionAmount;
 - (unsigned long long)_contactFieldsToAddressFields:(id)arg1;
 - (id)_addressFieldsToContactFields:(unsigned long long)arg1;
@@ -115,8 +141,11 @@
 - (_Bool)isEqualToPaymentRequest:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
+- (id)disbursementPaymentRequest;
+- (_Bool)isDisbursementPaymentRequest;
 - (id)protobuf;
 - (id)serviceProviderPaymentRequest;
 - (_Bool)isServiceProviderPaymentRequest;

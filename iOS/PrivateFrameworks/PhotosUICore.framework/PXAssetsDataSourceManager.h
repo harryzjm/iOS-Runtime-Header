@@ -4,17 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class PXAssetsDataSource;
+#import <PhotosUICore/PXMutableAssetsDataSourceManager-Protocol.h>
 
-@interface PXAssetsDataSourceManager
+@class NSString, PXAssetsDataSource;
+
+@interface PXAssetsDataSourceManager <PXMutableAssetsDataSourceManager>
 {
 }
 
+@property(nonatomic) long long backgroundFetchOriginSection;
+- (void)startBackgroundFetchIfNeeded;
+- (void)resumeChangeDeliveryAndBackgroundLoading:(id)arg1;
+- (id)pauseChangeDeliveryWithTimeout:(double)arg1;
+- (_Bool)forceAccurateSection:(long long)arg1 andSectionsBeforeAndAfter:(long long)arg2;
+- (_Bool)forceAccurateSectionsIfNeeded:(id)arg1;
+- (_Bool)forceAccurateAllSectionsIfNeeded;
+- (void)setCurationEnabled:(_Bool)arg1 forAssetCollection:(id)arg2;
 - (void)unregisterChangeObserver:(id)arg1 context:(void *)arg2;
 - (void)registerChangeObserver:(id)arg1 context:(void *)arg2;
+- (id)mutableChangeObject;
 
 // Remaining properties
 @property(readonly, nonatomic) PXAssetsDataSource *dataSource; // @dynamic dataSource;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

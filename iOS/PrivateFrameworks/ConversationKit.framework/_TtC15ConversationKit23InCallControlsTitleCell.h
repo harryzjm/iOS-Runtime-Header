@@ -6,9 +6,8 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class MISSING_TYPE, UIButton;
+@class MISSING_TYPE, _TtC15ConversationKit19InCallControlButton;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit23InCallControlsTitleCell : UITableViewCell
 {
     MISSING_TYPE *summaryLabel;
@@ -26,13 +25,13 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *delegate;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
-- (void)didTapMessagesButton;
+- (void).cxx_destruct;
+- (void)didTapMessagesButton:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (id)init;
-@property(nonatomic, readonly) UIButton *messagesButton; // @synthesize messagesButton;
+@property(nonatomic, readonly) _TtC15ConversationKit19InCallControlButton *messagesButton; // @synthesize messagesButton;
 
 @end
 

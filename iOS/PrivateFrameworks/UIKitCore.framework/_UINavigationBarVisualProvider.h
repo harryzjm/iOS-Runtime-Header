@@ -6,35 +6,50 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, UINavigationBar, _UINavigationBarItemStack, _UINavigationControllerRefreshControlHost;
+@class NSString, UINavigationBar, UINavigationItem, _UINavigationBarItemStack, _UINavigationControllerRefreshControlHost;
+@protocol _UIBarAppearanceChangeObserver;
 
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarVisualProvider : NSObject
 {
     UINavigationBar *_navigationBar;
     _UINavigationBarItemStack *_stack;
-    NSDictionary *_overrides;
-    _Bool _usesLegacyUI;
-    _UINavigationControllerRefreshControlHost *_refreshControlHost;
+    NSString *_backdropGroupName;
+    UINavigationItem *_itemForMeasuring;
 }
 
-+ (_Bool)supportsRefreshControlHosting;
-@property(retain, nonatomic) _UINavigationControllerRefreshControlHost *refreshControlHost; // @synthesize refreshControlHost=_refreshControlHost;
+@property(copy, nonatomic) NSString *backdropGroupName; // @synthesize backdropGroupName=_backdropGroupName;
 @property(retain, nonatomic) _UINavigationBarItemStack *stack; // @synthesize stack=_stack;
 @property(readonly, nonatomic) UINavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
 - (void).cxx_destruct;
+- (void)appendToDescription:(id)arg1;
+- (id)description;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1 defaultAnswer:(CDUnknownBlockType)arg2;
 - (id)preferredFocusedView;
 - (_Bool)canHandleStatusBarTouchAtPoint:(struct CGPoint)arg1;
 - (long long)statusBarStyle;
+@property(retain, nonatomic) _UINavigationControllerRefreshControlHost *refreshControlHost;
+- (_Bool)supportsRefreshControlHosting;
+- (void)navigationBarInvalidatedResolvedLayoutMargins;
 - (void)setSemanticContentAttribute:(long long)arg1;
+- (id)traitCollectionForChild:(id)arg1 baseTraitCollection:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)setBackButtonVisible:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setupTopNavigationItem;
+@property(nonatomic) _Bool forceScrollEdgeAppearance;
+@property(readonly, nonatomic) id <_UIBarAppearanceChangeObserver> appearanceObserver;
+@property(nonatomic) long long appearanceAPIVersion;
+- (void)updateBackgroundGroupName;
+@property(nonatomic) double titleAlpha;
+@property(nonatomic) double backgroundAlpha;
+@property(nonatomic) _Bool useInlineBackgroundHeightWhenLarge;
 @property(readonly, nonatomic) _Bool wantsLargeTitleDisplayed;
 - (void)recordBarSize:(struct CGSize)arg1;
 - (void)updateTopNavigationItemTitleView;
 - (void)updateTopNavigationItemAnimated:(_Bool)arg1;
+- (void)dismissHostedSearchWithTransitionCoordinator:(id)arg1;
+- (void)presentHostedSearchWithTransitionCoordinator:(id)arg1;
+- (void)presentSearchWithTransitionCoordinator:(id)arg1;
 - (void)animateForSearchPresentation:(_Bool)arg1;
 - (void)popAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pushAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
@@ -45,7 +60,10 @@ __attribute__((visibility("hidden")))
 - (void)intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 - (void)barSizeChanged;
 - (_Bool)shouldUseHeightRangeFittingWidth;
-- (CDStruct_c3b9c2ee)heightRangeFittingWidth:(double)arg1;
+- (id)restingHeights;
+- (_Bool)topItemHasVariableHeight;
+- (CDStruct_39925896)layoutHeightsFittingWidth:(double)arg1;
+- (struct NSDirectionalEdgeInsets)resolvedLargeTitleMargins;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)invalidateIntrinsicContentSize;
 - (struct CGSize)intrinsicContentSize;
@@ -53,15 +71,12 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) long long currentContentSize;
 - (void)updateArchivedSubviews:(id)arg1;
 - (void)provideViewsForContents:(id)arg1 topItem:(id)arg2 backItem:(id)arg3;
-- (void)_updateTitleViewForOpacityChange;
-- (void)_updateBackground;
 - (void)changeLayout;
 - (void)changeAppearance;
 - (void)stackDidChangeFrom:(id)arg1;
 - (void)teardown;
 - (void)prepare;
 - (id)initWithNavigationBar:(id)arg1;
-- (double)_shim_backgroundAlpha;
 - (_Bool)_shim_34415965;
 - (void)_shim_30244716;
 - (void)_shim_updateBackgroundViewIgnoringFlag;
@@ -84,9 +99,6 @@ __attribute__((visibility("hidden")))
 - (double)_shim_backgroundHeight;
 - (void)_shim_setDisableBlurTinting:(_Bool)arg1;
 - (_Bool)_shim_disableBlurTinting;
-- (void)_shim_setBackdropGroupName:(id)arg1;
-- (id)_shim_backdropGroupName;
-- (void)_shim_updateBackdropView;
 - (void)_shim_setShadowAlpha:(double)arg1;
 - (double)_shim_shadowAlpha;
 - (id)_shim_compatibilityBackgroundView;
@@ -97,6 +109,7 @@ __attribute__((visibility("hidden")))
 - (id)_shim_contentView;
 - (id)_accessibility_controlToActivateForHUDGestureLiftAtPoint:(struct CGPoint)arg1;
 - (id)_accessibility_HUDItemForPoint:(struct CGPoint)arg1;
+- (_Bool)_accessibility_shouldBeginHUDGestureAtPoint:(struct CGPoint)arg1;
 
 @end
 

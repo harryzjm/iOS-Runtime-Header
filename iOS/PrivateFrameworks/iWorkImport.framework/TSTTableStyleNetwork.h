@@ -69,7 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)clearAndGenerateCategoryStylesConnectedToStylesheet:(_Bool)arg1;
 - (void)p_clearCategoryStyles;
 - (void)upgradeIfNecessary;
-- (void)saveToArchive:(struct TableStyleNetworkArchive *)arg1 archiver:(id)arg2;
+- (void)p_saveToArchive:(struct TableStyleNetworkArchive *)arg1 archiver:(id)arg2 isPre30Alternate:(_Bool)arg3;
 - (void)saveToArchiver:(id)arg1;
 - (void)loadFromArchive:(const struct TableStyleNetworkArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;

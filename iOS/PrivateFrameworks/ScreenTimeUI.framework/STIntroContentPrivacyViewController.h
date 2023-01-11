@@ -4,12 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface STIntroContentPrivacyViewController
+#import <OnBoardingKit/OBWelcomeController.h>
+
+__attribute__((visibility("hidden")))
+@interface STIntroContentPrivacyViewController : OBWelcomeController
 {
+    CDUnknownBlockType _continueHandler;
 }
 
-- (void)viewDidLayoutSubviews;
-- (void)viewDidLoad;
+@property(readonly, copy) CDUnknownBlockType continueHandler; // @synthesize continueHandler=_continueHandler;
+- (void).cxx_destruct;
+- (void)_continue:(id)arg1;
+- (void)loadView;
+- (id)initWithContinueHandler:(CDUnknownBlockType)arg1;
 
 @end
 

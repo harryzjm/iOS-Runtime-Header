@@ -4,23 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIView.h>
-
-@class NSString, UILabel;
+#import <UIKit/_UIContentUnavailableView.h>
 
 __attribute__((visibility("hidden")))
-@interface QLErrorView : UIView
+@interface QLErrorView : _UIContentUnavailableView
 {
-    UILabel *_subtitleLabel;
-    UILabel *_titleLabel;
-    NSString *_title;
-    NSString *_subtitle;
 }
 
-@property(retain, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
-@property(retain, nonatomic) NSString *title; // @synthesize title=_title;
-- (void).cxx_destruct;
-- (id)init;
+- (id)initWithTitle:(id)arg1;
 
 @end
 

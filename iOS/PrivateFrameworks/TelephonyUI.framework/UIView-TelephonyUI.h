@@ -7,6 +7,7 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (TelephonyUI)
++ (void)tpSetSemanticContentAttribute_recursive:(long long)arg1 startingAtView:(id)arg2;
 @property(readonly, nonatomic) long long tp_userInterfaceLayoutDirection;
 @end
 

@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <LocationSupport/CLIntersiloService.h>
+
 #import <CoreMotion/CLNotifierServiceProtocol-Protocol.h>
 
 @class NSString;
 
-@interface CLNotifierServiceAdapter <CLNotifierServiceProtocol>
+@interface CLNotifierServiceAdapter : CLIntersiloService <CLNotifierServiceProtocol>
 {
     struct map<unsigned long, int, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, int>>> _clients;
     struct CLNotifierBase *_notifier;

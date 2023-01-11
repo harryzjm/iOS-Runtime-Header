@@ -6,6 +6,7 @@
 
 @class NSString, UIButton, UIView;
 
+__attribute__((visibility("hidden")))
 @interface CKTextInlineNotificationView
 {
     UIView *_contentView;

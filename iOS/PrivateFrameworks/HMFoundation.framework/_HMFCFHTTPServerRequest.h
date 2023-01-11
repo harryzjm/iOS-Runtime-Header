@@ -6,6 +6,7 @@
 
 @class NSMutableData, _HMFCFHTTPServerConnection;
 
+__attribute__((visibility("hidden")))
 @interface _HMFCFHTTPServerRequest
 {
     struct _CFHTTPServerRequest *_requestRef;

@@ -11,11 +11,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)setState:(long long)arg1 animated:(_Bool)arg2;
+- (void)setState:(long long)arg1 animated:(_Bool)arg2 options:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (_Bool)_accessibilityIsBuddyRunning;
 - (_Bool)_accessibilityIsInSleepState;
 - (id)lockViewAccessibilityLabel;
+- (_Bool)accessibilityRespondsToUserInteraction;
 - (_Bool)lockViewIsAccessibilityElement;
 - (void)_accessibilityLoadAccessibilityInformation;
 

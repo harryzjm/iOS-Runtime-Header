@@ -8,12 +8,14 @@
 
 #import <PhotosUICore/PXEditSourceLoader-Protocol.h>
 
-@class NSError, NSNumber, NSProgress, NSString, PLEditSource, PLPhotoEditModel;
+@class NSError, NSNumber, NSProgress, NSString, PICompositionController, PLEditSource;
 
 @interface PXStaticEditSourceLoader : NSObject <PXEditSourceLoader>
 {
     PLEditSource *_editSource;
-    PLPhotoEditModel *_editModel;
+    PLEditSource *_overcaptureEditSource;
+    PICompositionController *_compositionController;
+    PICompositionController *_originalCompositionController;
     long long _baseVersion;
     NSProgress *_progress;
     NSError *_error;
@@ -26,14 +28,17 @@
 @property(readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property(readonly, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property(readonly, nonatomic) long long baseVersion; // @synthesize baseVersion=_baseVersion;
-@property(readonly, copy, nonatomic) PLPhotoEditModel *editModel; // @synthesize editModel=_editModel;
+@property(readonly, copy, nonatomic) PICompositionController *originalCompositionController; // @synthesize originalCompositionController=_originalCompositionController;
+@property(readonly, copy, nonatomic) PICompositionController *compositionController; // @synthesize compositionController=_compositionController;
+@property(readonly, nonatomic) PLEditSource *overcaptureEditSource; // @synthesize overcaptureEditSource=_overcaptureEditSource;
 @property(readonly, nonatomic) PLEditSource *editSource; // @synthesize editSource=_editSource;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSNumber *loadDuration;
 - (void)beginLoading;
-- (id)initWithEditSource:(id)arg1 editModel:(id)arg2 baseVersion:(long long)arg3 contentIdentifier:(id)arg4;
+- (id)initWithEditSource:(id)arg1 compositionController:(id)arg2 baseVersion:(long long)arg3 contentIdentifier:(id)arg4;
 
 // Remaining properties
+@property(readonly, nonatomic) PLEditSource *activeEditSource; // @dynamic activeEditSource;
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;

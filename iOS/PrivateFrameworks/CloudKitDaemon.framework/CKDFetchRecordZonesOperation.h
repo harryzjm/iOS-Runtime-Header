@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSMutableArray, NSMutableDictionary;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchRecordZonesOperation
@@ -19,9 +19,11 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_zoneIDsNeedingPCSUpdateRetry;
     NSMutableDictionary *_pcsUpdateErrorsByZoneID;
     long long _numZoneSaveAttempts;
+    NSMutableSet *_zoneIDsNeedingDugongKeyRoll;
 }
 
 @property(nonatomic) _Bool ignorePCSFailures; // @synthesize ignorePCSFailures=_ignorePCSFailures;
+@property(retain, nonatomic) NSMutableSet *zoneIDsNeedingDugongKeyRoll; // @synthesize zoneIDsNeedingDugongKeyRoll=_zoneIDsNeedingDugongKeyRoll;
 @property(nonatomic) _Bool onlyFetchPCSInfo; // @synthesize onlyFetchPCSInfo=_onlyFetchPCSInfo;
 @property(nonatomic) long long numZoneSaveAttempts; // @synthesize numZoneSaveAttempts=_numZoneSaveAttempts;
 @property(retain, nonatomic) NSMutableDictionary *pcsUpdateErrorsByZoneID; // @synthesize pcsUpdateErrorsByZoneID=_pcsUpdateErrorsByZoneID;
@@ -41,7 +43,8 @@ __attribute__((visibility("hidden")))
 - (void)_handleRecordZoneFetch:(id)arg1 zoneID:(id)arg2 responseCode:(id)arg3;
 - (void)saveZonesWithUpdatedZonePCS;
 - (void)_handleRecordZoneSaved:(id)arg1 error:(id)arg2;
-- (_Bool)_checkAndUpdateZonePCSIfNeededForZone:(id)arg1 error:(id *)arg2;
+- (_Bool)_locked_checkAndUpdateZonePCSIfNeededForZone:(id)arg1 error:(id *)arg2;
+- (void)_locked_callbackForRecordZone:(id)arg1 zoneID:(id)arg2 error:(id)arg3;
 - (void)_sendErrorForFailedZones;
 - (id)activityCreate;
 - (id)nameForState:(unsigned long long)arg1;

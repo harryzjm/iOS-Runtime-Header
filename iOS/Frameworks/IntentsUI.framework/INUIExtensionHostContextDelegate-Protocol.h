@@ -9,6 +9,7 @@
 @class INIntent, _INUIExtensionHostContext;
 
 @protocol INUIExtensionHostContextDelegate <NSObject>
+- (void)extensionHostContextWillBeginEditing:(_INUIExtensionHostContext *)arg1;
 - (void)extensionHostContext:(_INUIExtensionHostContext *)arg1 wantsToHandleIntent:(INIntent *)arg2;
 @end
 

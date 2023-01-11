@@ -6,23 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, XCAccessibilityElement, XCUIApplicationProcess;
-@protocol XCUIAccessibilityInterface, XCUIApplicationManaging, XCUIApplicationMonitor, XCUIXcodeApplicationManaging;
+#import <XCTest/XCUIApplicationProcessDelegate-Protocol.h>
 
-@interface XCUIApplicationImpl : NSObject
+@class NSString, XCAccessibilityElement, XCUIApplicationProcess;
+@protocol XCUIDevice;
+
+@interface XCUIApplicationImpl : NSObject <XCUIApplicationProcessDelegate>
 {
     _Bool _codeCoverageEnabled;
     _Bool _hasValidAlertCount;
-    id <XCUIApplicationMonitor> _applicationMonitor;
-    id <XCUIAccessibilityInterface> _axInterface;
+    _Bool _previousOnDemandAutomationSessionRequestFailed;
     NSString *_path;
     NSString *_bundleID;
     XCUIApplicationProcess *_currentProcess;
-    id <XCUIXcodeApplicationManaging> _xcodeApplicationManager;
-    id <XCUIApplicationManaging> _platformApplicationManager;
+    id <XCUIDevice> _device;
 }
 
-+ (_Bool)shouldWaitForAutomationSessionWhenUsingPlatformLauncher:(_Bool)arg1;
 + (id)keyPathsForValuesAffectingActivated;
 + (id)keyPathsForValuesAffectingForeground;
 + (id)keyPathsForValuesAffectingBackground;
@@ -30,15 +29,13 @@
 + (id)keyPathsForValuesAffectingRunning;
 + (id)keyPathsForValuesAffectingState;
 + (id)keyPathsForValuesAffectingHasCurrentProcess;
+@property _Bool previousOnDemandAutomationSessionRequestFailed; // @synthesize previousOnDemandAutomationSessionRequestFailed=_previousOnDemandAutomationSessionRequestFailed;
 @property _Bool hasValidAlertCount; // @synthesize hasValidAlertCount=_hasValidAlertCount;
 @property _Bool codeCoverageEnabled; // @synthesize codeCoverageEnabled=_codeCoverageEnabled;
-@property(readonly) id <XCUIApplicationManaging> platformApplicationManager; // @synthesize platformApplicationManager=_platformApplicationManager;
-@property(readonly) id <XCUIXcodeApplicationManaging> xcodeApplicationManager; // @synthesize xcodeApplicationManager=_xcodeApplicationManager;
+@property(readonly) id <XCUIDevice> device; // @synthesize device=_device;
 @property(retain, nonatomic) XCUIApplicationProcess *currentProcess; // @synthesize currentProcess=_currentProcess;
 @property(readonly, copy) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property(readonly, copy) NSString *path; // @synthesize path=_path;
-@property(readonly) id <XCUIAccessibilityInterface> axInterface; // @synthesize axInterface=_axInterface;
-@property(readonly) id <XCUIApplicationMonitor> applicationMonitor; // @synthesize applicationMonitor=_applicationMonitor;
 - (void).cxx_destruct;
 - (_Bool)waitForViewControllerViewDidDisappearWithTimeout:(double)arg1 error:(id *)arg2;
 - (void)handleCrashUnderSymbol:(id)arg1;
@@ -51,6 +48,9 @@
 - (void)_launchUsingXcodeWithArguments:(id)arg1 environment:(id)arg2;
 - (void)_waitForLaunchProgressWithToken:(id)arg1;
 - (void)_launchWithRequest:(id)arg1;
+- (_Bool)shouldWaitForAutomationSessionWhenUsingPlatformLauncher:(_Bool)arg1;
+- (_Bool)applicationProcessShouldRequestAutomationSession:(id)arg1;
+- (void)applicationProcessAutomationSessionRequestFailed:(id)arg1;
 - (void)_activateForPlatform;
 - (void)_activate;
 - (void)serviceOpenRequest:(id)arg1;
@@ -65,13 +65,16 @@
 - (_Bool)waitForState:(unsigned long long)arg1 timeout:(double)arg2;
 @property(nonatomic) unsigned long long state;
 @property(nonatomic) int processID;
-@property(readonly) int bridgedProcessID;
-@property(readonly) XCAccessibilityElement *bridgedProcessAccessibilityElement;
 @property(readonly) XCAccessibilityElement *accessibilityElement;
 - (_Bool)hasCurrentProcess;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)initWithPath:(id)arg1 bundleID:(id)arg2;
-- (id)initWithPath:(id)arg1 bundleID:(id)arg2 xcodeApplicationManager:(id)arg3 platformApplicationManager:(id)arg4 applicationMonitor:(id)arg5 axInterface:(id)arg6;
+- (id)initWithPath:(id)arg1 bundleID:(id)arg2 device:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

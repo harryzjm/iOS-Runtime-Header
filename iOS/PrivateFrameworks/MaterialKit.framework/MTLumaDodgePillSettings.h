@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/_UISettings.h>
+#import <PrototypeTools/PTSettings.h>
 
 @class MTLumaDodgePillStyleSettings;
 
-@interface MTLumaDodgePillSettings : _UISettings
+@interface MTLumaDodgePillSettings : PTSettings
 {
     double _minWidth;
     double _maxWidth;
@@ -18,6 +18,8 @@
     double _brightLumaThreshold;
     double _darkLumaThreshold;
     double _initialLumaThreshold;
+    double _cornerRadius;
+    long long _cornerMask;
     MTLumaDodgePillStyleSettings *_noneSettings;
     MTLumaDodgePillStyleSettings *_thinSettings;
     MTLumaDodgePillStyleSettings *_graySettings;
@@ -32,6 +34,8 @@
 @property(retain, nonatomic) MTLumaDodgePillStyleSettings *graySettings; // @synthesize graySettings=_graySettings;
 @property(retain, nonatomic) MTLumaDodgePillStyleSettings *thinSettings; // @synthesize thinSettings=_thinSettings;
 @property(retain, nonatomic) MTLumaDodgePillStyleSettings *noneSettings; // @synthesize noneSettings=_noneSettings;
+@property(nonatomic) long long cornerMask; // @synthesize cornerMask=_cornerMask;
+@property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property(nonatomic) double initialLumaThreshold; // @synthesize initialLumaThreshold=_initialLumaThreshold;
 @property(nonatomic) double darkLumaThreshold; // @synthesize darkLumaThreshold=_darkLumaThreshold;
 @property(nonatomic) double brightLumaThreshold; // @synthesize brightLumaThreshold=_brightLumaThreshold;
@@ -42,7 +46,6 @@
 @property(nonatomic) double minWidth; // @synthesize minWidth=_minWidth;
 - (void).cxx_destruct;
 - (void)setDefaultValues;
-- (void)updateWithSettingsFromArchive:(id)arg1;
 
 @end
 

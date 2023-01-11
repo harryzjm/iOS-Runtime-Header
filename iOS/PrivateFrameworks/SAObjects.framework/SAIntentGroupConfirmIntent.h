@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class SAIntentGroupProtobufMessage;
+@class NSString, SAIntentGroupProtobufMessage;
 
 @interface SAIntentGroupConfirmIntent
 {
@@ -13,6 +13,7 @@
 + (id)confirmIntentWithDictionary:(id)arg1 context:(id)arg2;
 + (id)confirmIntent;
 - (_Bool)requiresResponse;
+@property(copy, nonatomic) NSString *jsonEncodedIntent;
 @property(retain, nonatomic) SAIntentGroupProtobufMessage *intent;
 - (id)encodedClassName;
 - (id)groupIdentifier;

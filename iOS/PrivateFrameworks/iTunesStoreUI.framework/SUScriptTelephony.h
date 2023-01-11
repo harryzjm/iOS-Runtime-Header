@@ -4,22 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSObject, NSString;
-@protocol OS_dispatch_queue;
+@class NSString;
 
 @interface SUScriptTelephony
 {
-    NSObject<OS_dispatch_queue> *_telephonyQueue;
-    struct __CTServerConnection *_telephonyServer;
 }
 
 + (void)initialize;
 + (id)webScriptNameForSelector:(SEL)arg1;
 + (id)webScriptNameForKeyName:(id)arg1;
-- (void).cxx_destruct;
 - (id)scriptAttributeKeys;
 - (id)attributeKeys;
 - (_Bool)_checkIfIsAllowed;
+- (void)_handleRegistrationChangedNotification:(id)arg1;
+- (void)_handlePhoneNumberChangedNotification:(id)arg1;
+- (void)_handleOperatorNameChangedNotification:(id)arg1;
 - (id)sendSMSWithBodyText:(id)arg1 digits:(id)arg2 countryCode:(id)arg3;
 - (id)formattedPhoneNumber:(id)arg1;
 @property(readonly, nonatomic) NSString *providerName;

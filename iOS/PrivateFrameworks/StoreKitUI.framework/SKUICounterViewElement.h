@@ -6,6 +6,7 @@
 
 @class NSDate, NSString, SKUIImageViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUICounterViewElement
 {
     double _changeRatePerSecond;

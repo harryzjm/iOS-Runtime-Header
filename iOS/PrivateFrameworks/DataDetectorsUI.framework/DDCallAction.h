@@ -9,14 +9,15 @@
 }
 
 + (_Bool)isAvailable;
++ (id)callProvider;
 - (_Bool)isEmail;
-- (id)callProvider;
 - (long long)TTYType;
 - (int)interactionType;
 - (id)notificationURL;
 - (id)notificationIconBundleIdentifier;
 - (_Bool)canBePerformedByOpeningURL;
 - (void)performFromView:(id)arg1;
+- (id)dialRequestWithProvider:(id)arg1;
 - (id)dialRequest;
 - (id)notificationTitle;
 - (id)notificationTitleTargetString;

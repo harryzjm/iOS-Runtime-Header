@@ -15,6 +15,7 @@
 }
 
 @property(getter=isMirroringEnabled) _Bool mirroringEnabled; // @synthesize mirroringEnabled=_mirroringEnabled;
+@property(readonly) CDStruct_b2fbf00d whitepoint;
 - (id)description;
 @property _Bool disabled;
 @property _Bool disablesUpdates;
@@ -34,10 +35,11 @@
 - (void)setMaximumRefreshRate:(float)arg1;
 - (float)minimumRefreshRate;
 - (void)setMinimumRefreshRate:(float)arg1;
+@property(readonly) float maximumLuminance;
 @property float maximumBrightness;
 @property float contrast;
 - (void)setAccessibilityColorMatrix:(float *)arg1 scale:(float)arg2;
-- (void)setNits:(float)arg1;
+@property float nits;
 - (void)setColorMatrix:(float *)arg1 scale:(float)arg2 rampDuration:(double)arg3;
 @property(getter=isGrayscale) _Bool grayscale;
 @property _Bool allowsExtendedDynamicRange;
@@ -45,6 +47,8 @@
 @property struct CGSize overscanAmounts;
 @property double overscanAmount;
 @property(copy) NSString *orientation;
+@property(getter=isFlipBookEnabled) _Bool flipBookEnabled;
+- (void)setCalibrationPhase:(unsigned int)arg1 forIdentifier:(unsigned int)arg2;
 - (void)willUnblank;
 @property(getter=isBlanked) _Bool blanked;
 @property(readonly) CAWindowServerDisplay *cloneMaster;
@@ -56,7 +60,6 @@
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2;
 - (unsigned int)taskNamePortOfContextId:(unsigned int)arg1;
-- (unsigned int)taskPortOfContextId:(unsigned int)arg1;
 - (unsigned int)clientPortOfContextId:(unsigned int)arg1;
 - (unsigned int)clientPortAtPosition:(struct CGPoint)arg1;
 - (unsigned int)contextIdAtPosition:(struct CGPoint)arg1 excludingContextIds:(id)arg2;

@@ -15,17 +15,17 @@
 }
 
 + (_Bool)supportsSecureCoding;
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)init;
 @property(nonatomic, readonly) NSString *debugDescription;
 @property(nonatomic, readonly) NSString *description;
 - (_Bool)isEqual:(id)arg1;
-@property(nonatomic, readonly) long long hashValue;
+@property(nonatomic, readonly) long long hash;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithDeviceName:(id)arg1 discoveryId:(id)arg2;
-@property(nonatomic, readonly) NSString *discoveryId; // @synthesize discoveryId;
-@property(nonatomic, readonly) NSString *deviceName; // @synthesize deviceName;
+@property(nonatomic, readonly) NSString *discoveryId;
+@property(nonatomic, readonly) NSString *deviceName;
 
 @end
 

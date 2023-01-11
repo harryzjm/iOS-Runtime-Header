@@ -6,35 +6,33 @@
 
 #import <UIKit/UIViewController.h>
 
-@class MISSING_TYPE, NSString;
+@class MISSING_TYPE, NSString, UIView;
 @protocol CNKFaceTimeInCallControlsViewControllerDelegate;
 
 @interface CNKFaceTimeInCallControlsViewController : UIViewController
 {
-    MISSING_TYPE *joinLeaveButtonTopConstraintConstant;
     MISSING_TYPE *groupName;
-    MISSING_TYPE *shouldShowEffects;
-    MISSING_TYPE *shouldShowGlow;
+    MISSING_TYPE *representedLegacyCallIdentifier;
+    MISSING_TYPE *controlsButtonRowCount;
+    MISSING_TYPE *tableViewSeparator;
+    MISSING_TYPE *participantsTableViewController;
     MISSING_TYPE *localParticipant;
-    MISSING_TYPE *participants;
-    MISSING_TYPE *capabilitiesChecker;
     MISSING_TYPE *viewContent;
     MISSING_TYPE *mode;
+    MISSING_TYPE *topInset;
     MISSING_TYPE *isExpanded;
-    MISSING_TYPE *videoButtonIsEnabled;
-    MISSING_TYPE *videoIsEnabled;
     MISSING_TYPE *audioIsEnabled;
+    MISSING_TYPE *videoIsEnabled;
+    MISSING_TYPE *effectsAreAvailable;
+    MISSING_TYPE *effectsAreEnabled;
     MISSING_TYPE *shouldShowJoinButton;
-    MISSING_TYPE *effectsButtonIsSelected;
     MISSING_TYPE *delegate;
     MISSING_TYPE *participantDelegate;
     MISSING_TYPE *participantsViewControllerDelegate;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)accessibilityMessageLabel;
-- (id)accessibilityMessageButton;
 - (id)accessibilityDisableVideoLabel;
 - (id)accessibilityDisableVideoButton;
 - (id)accessibilityRouteLabel;
@@ -45,33 +43,35 @@
 - (id)accessibilityCameraButton;
 - (id)accessibilityEffectsLabel;
 - (id)accessibilityEffectsButton;
-- (id)accessibilityExpandButton;
 - (id)accessibilityJoinLeaveButton;
 - (id)accessibilityHotdog;
+- (void)updateToRepresentLegacyCall:(id)arg1;
+- (void)updateAudioRouteButtonFor:(id)arg1;
 - (void)updateControlsVisibilityForExpandedState:(_Bool)arg1;
-- (void)didToggleMuteCamera;
-- (void)didTapRoutePicker;
-- (void)didTapOpenMessages;
-- (void)didTapToggleMuteAudio;
-- (void)didTapFlipCamera;
-- (void)didTapExpand;
-- (void)didTapJoinConversation;
-- (void)didTapLeaveConversation;
-- (void)didTapEffects;
+- (void)didTapAudioRouteButton:(id)arg1;
+- (void)didTapMuteButton:(id)arg1;
+- (void)didTapToggleCameraButton:(id)arg1;
+- (void)didTapJoinLeaveButton:(id)arg1;
+- (void)didTapFlipCameraButton:(id)arg1;
+- (void)didTapEffectsButton:(id)arg1;
+- (_Bool)_canShowWhileLocked;
 - (void)viewDidLayoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)willMoveToParentViewController:(id)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
-- (void)updateViewConstraints;
 - (void)viewDidLoad;
+- (void)loadView;
+- (void)embedEffectsBrowserViewController:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithActiveCall:(id)arg1;
 @property(nonatomic, readonly) NSString *description;
 @property(nonatomic) __weak id <CNKFaceTimeInCallControlsViewControllerDelegate> delegate; // @synthesize delegate;
-@property(nonatomic) _Bool effectsButtonIsSelected; // @synthesize effectsButtonIsSelected;
+@property(nonatomic, readonly) UIView *audioButton;
 @property(nonatomic) _Bool shouldShowJoinButton; // @synthesize shouldShowJoinButton;
-@property(nonatomic) _Bool audioIsEnabled; // @synthesize audioIsEnabled;
+@property(nonatomic) _Bool effectsAreEnabled; // @synthesize effectsAreEnabled;
+@property(nonatomic) _Bool effectsAreAvailable; // @synthesize effectsAreAvailable;
 @property(nonatomic) _Bool videoIsEnabled; // @synthesize videoIsEnabled;
-@property(nonatomic) _Bool videoButtonIsEnabled; // @synthesize videoButtonIsEnabled;
+@property(nonatomic) _Bool audioIsEnabled; // @synthesize audioIsEnabled;
 @property(nonatomic) _Bool isExpanded; // @synthesize isExpanded;
 
 @end

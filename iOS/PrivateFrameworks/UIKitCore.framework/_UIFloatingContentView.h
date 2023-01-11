@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray, UIImage, UIView, _UIFloatingContentCornerRadiusAnimatingScreenScaleInheritingView, _UIFloatingContentCornerRadiusAnimatingView, _UIFloatingContentTransformView, _UIFocusAnimationConfiguration;
+@class NSMutableArray, NSString, UIImage, UIView, _UIFloatingContentCornerRadiusAnimatingScreenScaleInheritingView, _UIFloatingContentCornerRadiusAnimatingView, _UIFloatingContentTransformView, _UIFocusAnimationConfiguration;
 @protocol _UIFloatingContentViewDelegate;
 
 @interface _UIFloatingContentView
@@ -45,6 +45,7 @@
     UIImage *_shadowImage;
     unsigned long long _controlState;
     long long _highlightStyle;
+    NSString *_cornerCurve;
     CDUnknownBlockType _focusAnimationConfigurationHandler;
     struct CGPoint _focusScaleAnchorPoint;
     struct CGSize _shadowSize;
@@ -57,6 +58,7 @@
 
 + (id)_defaultFocusAnimationConfiguration;
 @property(copy, nonatomic) CDUnknownBlockType focusAnimationConfigurationHandler; // @synthesize focusAnimationConfigurationHandler=_focusAnimationConfigurationHandler;
+@property(nonatomic) NSString *cornerCurve; // @synthesize cornerCurve=_cornerCurve;
 @property(nonatomic) _Bool showsHighContrastFocusIndicator; // @synthesize showsHighContrastFocusIndicator=_showsHighContrastFocusIndicator;
 @property(nonatomic) _Bool _disableOutsetShadowPath; // @synthesize _disableOutsetShadowPath=__disableOutsetShadowPath;
 @property(nonatomic) struct CGSize asymmetricFocusedSizeIncrease; // @synthesize asymmetricFocusedSizeIncrease=_asymmetricFocusedSizeIncrease;
@@ -116,6 +118,8 @@
 - (void)setShadowImage:(id)arg1 stretchable:(_Bool)arg2;
 - (void)setBackgroundColor:(id)arg1 forState:(unsigned long long)arg2;
 - (id)backgroundColorForState:(unsigned long long)arg1;
+- (void)_updateCornerRadiusLayers;
+@property(nonatomic, getter=isContinuousCornerEnabled) _Bool continuousCornerEnabled;
 - (id)transformView;
 - (id)highlightView;
 @property(readonly, nonatomic) UIView *visualEffectContainerView;

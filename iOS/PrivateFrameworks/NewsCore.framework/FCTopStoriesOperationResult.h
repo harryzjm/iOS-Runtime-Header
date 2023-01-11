@@ -15,10 +15,12 @@
     NSDate *_publishDate;
     NSDictionary *_topStoriesMetadataByArticleID;
     FCColorGradient *_backgroundColorGradient;
+    FCColorGradient *_darkStyleBackgroundColorGradient;
     NSString *_subtitle;
 }
 
 @property(readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property(readonly, copy, nonatomic) FCColorGradient *darkStyleBackgroundColorGradient; // @synthesize darkStyleBackgroundColorGradient=_darkStyleBackgroundColorGradient;
 @property(copy, nonatomic) FCColorGradient *backgroundColorGradient; // @synthesize backgroundColorGradient=_backgroundColorGradient;
 @property(copy) NSDictionary *topStoriesMetadataByArticleID; // @synthesize topStoriesMetadataByArticleID=_topStoriesMetadataByArticleID;
 @property(copy) NSDate *publishDate; // @synthesize publishDate=_publishDate;

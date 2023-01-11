@@ -8,7 +8,6 @@
 {
 }
 
-+ (id)typeString;
 - (Class)handlerClassForComponent:(id)arg1;
 
 // Remaining properties

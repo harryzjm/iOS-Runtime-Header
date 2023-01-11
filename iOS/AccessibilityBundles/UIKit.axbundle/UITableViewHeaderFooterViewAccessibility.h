@@ -15,6 +15,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityElement;
+- (_Bool)accessibilityRespondsToUserInteraction;
 
 @end
 

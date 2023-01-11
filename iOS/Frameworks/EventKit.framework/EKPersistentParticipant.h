@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface EKPersistentParticipant
+#import <EventKit/EKParticipantSemanticIdentifierGeneratorDelegate-Protocol.h>
+
+@interface EKPersistentParticipant <EKParticipantSemanticIdentifierGeneratorDelegate>
 {
 }
 
@@ -21,6 +23,7 @@
 - (void)setAddress:(id)arg1;
 - (id)address;
 - (void)setLastName:(id)arg1;
+- (id)url;
 - (id)lastName;
 - (void)setFirstName:(id)arg1;
 - (id)firstName;

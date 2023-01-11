@@ -9,7 +9,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (unsigned long long)desiredResourcePolicy;
 - (unsigned long long)type;
 
 @end

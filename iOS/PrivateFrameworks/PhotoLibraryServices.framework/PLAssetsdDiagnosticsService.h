@@ -4,21 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <objc/NSObject.h>
-
 #import <PhotoLibraryServices/PLAssetsdDiagnosticsServiceProtocol-Protocol.h>
 
 @class NSString;
 
-@interface PLAssetsdDiagnosticsService : NSObject <PLAssetsdDiagnosticsServiceProtocol>
+@interface PLAssetsdDiagnosticsService <PLAssetsdDiagnosticsServiceProtocol>
 {
 }
 
+- (void)initializeSharedMemoryForDeferredLogs:(id)arg1;
+- (void)setPhotosXPCEndpoint:(id)arg1 withReply:(CDUnknownBlockType)arg2;
+- (void)getPhotosXPCEndpointWithReply:(CDUnknownBlockType)arg1;
+- (void)incompleteRestoreProcessesWithReply:(CDUnknownBlockType)arg1;
+- (void)dumpPhotoAnalysisStatusWithReply:(CDUnknownBlockType)arg1;
+- (void)dumpStatusIncludingDaemon:(_Bool)arg1 reply:(CDUnknownBlockType)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
+
 @end
 

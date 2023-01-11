@@ -8,6 +8,7 @@
 
 @class UIImageView;
 
+__attribute__((visibility("hidden")))
 @interface CKBrowserSelectionLabelAccessoryView : UIView
 {
     UIImageView *_plusLView;

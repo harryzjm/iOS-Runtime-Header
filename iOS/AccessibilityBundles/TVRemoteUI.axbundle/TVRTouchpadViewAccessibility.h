@@ -14,13 +14,8 @@
 - (void)_accessibilitySetIsDirectTouching:(_Bool)arg1;
 - (_Bool)_accessibilityIsDirectTouching;
 - (void)_accessibilityFocusChanged:(id)arg1;
-- (id)_accessibilityPathInTouchpadViewForShape:(long long)arg1;
-- (struct CGRect)_accessibilityFrameInTouchpadViewForShape:(long long)arg1;
-- (double)_accessibilityPositionForShape:(long long)arg1 xAxis:(_Bool)arg2;
-- (id)_accessibilitySwitchControlElements;
-- (void)_accessibilityPerformTouchpadAction:(long long)arg1;
+- (_Bool)_accessibilityIsMatchPoint;
 - (long long)accessibilityNavigationStyle;
-- (id)accessibilityElements;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

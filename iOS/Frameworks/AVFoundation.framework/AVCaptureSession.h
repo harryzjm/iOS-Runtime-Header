@@ -48,6 +48,9 @@
 - (void)_teardownFigCaptureSession;
 - (int)_createFigCaptureSession;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)informSessionMembersOfChangedActiveFormat:(id)arg1 forDevice:(id)arg2;
+- (void)handleVideoInputDevice:(id)arg1 activeDepthDataFormatChanged:(id)arg2;
+- (void)handleVideoInputDevice:(id)arg1 activeFormatChanged:(id)arg2;
 - (_Bool)videoHDREnabledForDevice:(id)arg1 format:(id)arg2 sessionPreset:(id)arg3;
 - (id)valueForUndefinedKey:(id)arg1;
 - (void)_setMasterClock:(struct OpaqueCMClock *)arg1;
@@ -70,6 +73,7 @@
 - (void)addConnection:(id)arg1;
 - (_Bool)canAddConnection:(id)arg1;
 - (_Bool)_canAddConnection:(id)arg1 failureReason:(id *)arg2;
+@property(readonly, nonatomic) NSArray *connections;
 - (void)_removeVideoPreviewLayer:(id)arg1;
 - (void)_removeAllPreviewLayers;
 - (_Bool)_addVideoPreviewLayerWithNoConnection:(id)arg1 exceptionReason:(id *)arg2;
@@ -91,6 +95,7 @@
 - (_Bool)_canAddInput:(id)arg1 failureReason:(id *)arg2;
 @property(readonly, nonatomic) NSArray *inputs;
 - (void)_determineMasterClock;
+- (_Bool)isOverCost:(id *)arg1;
 - (_Bool)isBeingConfigured;
 - (void)_commitConfiguration;
 - (void)_beginConfiguration;

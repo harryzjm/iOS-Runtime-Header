@@ -37,7 +37,6 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)finalize;
 - (void)dealloc;
 - (void)_removeFigAssetNotifications;
 - (void)_addFigAssetNotifications;

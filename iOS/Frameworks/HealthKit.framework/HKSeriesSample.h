@@ -6,7 +6,7 @@
 
 @interface HKSeriesSample
 {
-    long long _count;
+    _Atomic unsigned int _count;
     _Bool _frozen;
 }
 
@@ -17,7 +17,7 @@
 - (id)_valueDescription;
 - (_Bool)_shouldNotifyOnInsert;
 - (id)_validateSample;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 @property(readonly) unsigned long long count;
 - (void)_setCount:(unsigned long long)arg1;
 

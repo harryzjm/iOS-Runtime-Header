@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @interface CSAsset : NSObject
 {
@@ -16,6 +16,7 @@
     NSString *_configVersion;
 }
 
++ (id)defaultFallBackAssetForHearst;
 + (id)defaultFallBackAssetForSmartSiriVolume;
 + (id)fallBackAssetResourcePath;
 + (id)assetForAssetType:(unsigned long long)arg1 resourcePath:(id)arg2 configVersion:(id)arg3;
@@ -27,6 +28,8 @@
 - (_Bool)isEqualAsset:(id)arg1;
 - (id)description;
 @property(readonly, nonatomic) NSString *hashFromResourcePath;
+- (_Bool)containsCategory:(id)arg1;
+- (_Bool)containsKey:(id)arg1 category:(id)arg2;
 - (id)getStringForKey:(id)arg1 category:(id)arg2 default:(id)arg3;
 - (_Bool)getBoolForKey:(id)arg1 category:(id)arg2 default:(_Bool)arg3;
 - (id)getNumberForKey:(id)arg1 category:(id)arg2 default:(id)arg3;
@@ -60,9 +63,18 @@
 @property(readonly, nonatomic) unsigned int SSVEnergyBufferSize;
 @property(readonly, nonatomic) unsigned long long SSVLKFSChannelBitset;
 @property(readonly, nonatomic) unsigned long long SSVNoiseLevelChannelBitset;
+- (id)configFilepathForDictationOrigin:(unsigned long long)arg1;
 - (id)_sha256:(id)arg1;
 - (id)_sha1:(id)arg1;
-- (id)RTModel;
+- (id)hearstRTModelLocaleMap;
+- (id)hearstRTModelWithMajorVersion:(unsigned long long)arg1 minorVersion:(unsigned long long)arg2 locale:(id)arg3;
+- (id)latestHearstRTModelForLocale:(id)arg1;
+- (id)RTModelWithFallbackLanguage:(id)arg1;
+- (id)createRTModelWithLocale:(id)arg1;
+@property(readonly, nonatomic) NSString *spgConfigFile;
+@property(readonly, nonatomic) NSString *startOfSpeechDetectorConfigFile;
+@property(readonly, nonatomic) NSString *languageDetectorConfigFile;
+@property(readonly, nonatomic) NSArray *languageDetectorSupportedLocale;
 
 @end
 

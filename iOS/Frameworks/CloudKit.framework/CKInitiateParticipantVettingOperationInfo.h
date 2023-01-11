@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <CloudKit/NSSecureCoding-Protocol.h>
+
 @class CKShareMetadata, NSString;
 
-@interface CKInitiateParticipantVettingOperationInfo
+@interface CKInitiateParticipantVettingOperationInfo <NSSecureCoding>
 {
     CKShareMetadata *_shareMetadata;
     NSString *_participantID;

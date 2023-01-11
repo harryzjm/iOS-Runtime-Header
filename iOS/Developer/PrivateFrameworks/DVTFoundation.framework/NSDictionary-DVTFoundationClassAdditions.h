@@ -6,9 +6,14 @@
 
 #import <Foundation/NSDictionary.h>
 
-@interface NSDictionary (DVTFoundationClassAdditions)
-+ (id)dvt_dictionaryWithObjects:(id)arg1 groupedIntoSetsByKeyPath:(id)arg2;
-+ (id)dvt_dictionaryWithObjects:(id)arg1 groupedIntoArraysByKeyPath:(id)arg2;
+#import <DVTFoundation/DVTPropertyListValue-Protocol.h>
+
+@class NSArray, NSData, NSDate, NSNumber, NSString;
+
+@interface NSDictionary (DVTFoundationClassAdditions) <DVTPropertyListValue>
++ (id)dvt_dictionaryWithObjects:(id)arg1 groupedIntoOrderedSetsByKeyPath:(id)arg2 makeGroupsImmutable:(_Bool)arg3;
++ (id)dvt_dictionaryWithObjects:(id)arg1 groupedIntoSetsByKeyPath:(id)arg2 makeGroupsImmutable:(_Bool)arg3;
++ (id)dvt_dictionaryWithObjects:(id)arg1 groupedIntoArraysByKeyPath:(id)arg2 makeGroupsImmutable:(_Bool)arg3;
 + (id)dvt_dictionaryWithTuples:(id)arg1;
 + (id)dvt_strictDictionaryWithKeysAndObjects:(id)arg1;
 + (id)dvt_dictionaryWithKeysAndValues:(id)arg1;
@@ -34,5 +39,26 @@
 - (id)dvt_dictionaryByAddingEntriesFromDictionary:(id)arg1;
 - (id)dvt_dictionaryBySettingObject:(id)arg1 forKey:(id)arg2;
 - (id)dvt_dictionaryByRemovingObjectsForKeys:(id)arg1;
+- (id)dvt_decodePlistArrayForKey:(id)arg1 objectsOfClass:(Class)arg2 error:(id *)arg3;
+- (id)dvt_decodePlistObjectForKey:(id)arg1 ofClass:(Class)arg2 error:(id *)arg3;
+- (id)dvt_plistDictionaryForKey:(id)arg1 error:(id *)arg2;
+- (id)dvt_plistArrayForKey:(id)arg1 error:(id *)arg2;
+- (id)dvt_dataForKey:(id)arg1 error:(id *)arg2;
+- (id)dvt_dateForKey:(id)arg1 error:(id *)arg2;
+- (id)dvt_numberForKey:(id)arg1 error:(id *)arg2;
+- (id)dvt_stringForKey:(id)arg1 error:(id *)arg2;
+@property(readonly) NSDictionary *dictionaryValue;
+@property(readonly) NSArray *arrayValue;
+@property(readonly) NSDate *dateValue;
+@property(readonly) NSNumber *numberValue;
+@property(readonly) NSData *dataValue;
+@property(readonly) NSString *stringValue;
+- (void)dvt_getStrongObjects:(id *)arg1 andStrongKeys:(id *)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

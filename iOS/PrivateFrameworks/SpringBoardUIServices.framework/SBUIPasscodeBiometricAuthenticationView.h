@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSLayoutConstraint, NSString, PKGlyphView, SBUIButton, SBUIPasscodePillButton, UILabel;
+@class NSLayoutConstraint, NSString, PKGlyphView, SBUIButton, SBUIPasscodePillButton, UIButton, UILabel, UILayoutGuide;
 @protocol SBUIPasscodeBiometricAuthenticationViewDelegate, SBUIPasscodeBiometricAuthenticationViewLayoutDelegate;
 
 @interface SBUIPasscodeBiometricAuthenticationView
@@ -23,16 +23,22 @@
     PKGlyphView *_touchIDGlyphView;
     SBUIButton *_emergencyCallButton;
     SBUIButton *_cancelButton;
+    UIButton *_backgroundCancelButton;
     UILabel *_touchIDReasonLabel;
     UILabel *_faceIDLabel;
     UILabel *_faceIDReasonLabel;
+    UILayoutGuide *_faceIDLabelAndReasonHelperGuide;
+    UILayoutGuide *_faceIDLabelAndReasonLayoutGuide;
     NSLayoutConstraint *_faceIDLabelFaceIDReasonBaselineConstraint;
 }
 
 @property(retain, nonatomic) NSLayoutConstraint *faceIDLabelFaceIDReasonBaselineConstraint; // @synthesize faceIDLabelFaceIDReasonBaselineConstraint=_faceIDLabelFaceIDReasonBaselineConstraint;
+@property(retain, nonatomic) UILayoutGuide *faceIDLabelAndReasonLayoutGuide; // @synthesize faceIDLabelAndReasonLayoutGuide=_faceIDLabelAndReasonLayoutGuide;
+@property(retain, nonatomic) UILayoutGuide *faceIDLabelAndReasonHelperGuide; // @synthesize faceIDLabelAndReasonHelperGuide=_faceIDLabelAndReasonHelperGuide;
 @property(retain, nonatomic) UILabel *faceIDReasonLabel; // @synthesize faceIDReasonLabel=_faceIDReasonLabel;
 @property(retain, nonatomic) UILabel *faceIDLabel; // @synthesize faceIDLabel=_faceIDLabel;
 @property(retain, nonatomic) UILabel *touchIDReasonLabel; // @synthesize touchIDReasonLabel=_touchIDReasonLabel;
+@property(retain, nonatomic) UIButton *backgroundCancelButton; // @synthesize backgroundCancelButton=_backgroundCancelButton;
 @property(retain, nonatomic) SBUIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property(retain, nonatomic) SBUIButton *emergencyCallButton; // @synthesize emergencyCallButton=_emergencyCallButton;
 @property(retain, nonatomic) PKGlyphView *touchIDGlyphView; // @synthesize touchIDGlyphView=_touchIDGlyphView;
@@ -54,8 +60,8 @@
 - (void)_cancelButtonHit;
 - (void)_usePasscodeButtonHit;
 - (void)_setFaceIDReasonLine2:(id)arg1;
-- (void)_createConstraints;
-- (void)_createSubviews;
+- (void)_updateConstraints;
+- (void)_updateSubviews;
 - (void)setGlyphViewState:(long long)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setGlyphViewState:(long long)arg1;
 - (void)setAncillaryButtonsVisible:(_Bool)arg1 animated:(_Bool)arg2;

@@ -15,11 +15,14 @@
 @interface _INPBNoteContent : PBCodable <_INPBNoteContent, NSSecureCoding, NSCopying>
 {
     CDStruct_f953fb60 _has;
+    _Bool __encodeLegacyGloryData;
     int _type;
     _INPBImageNoteContent *_image;
     _INPBTextNoteContent *_text;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(nonatomic) int type; // @synthesize type=_type;
 @property(retain, nonatomic) _INPBTextNoteContent *text; // @synthesize text=_text;
 @property(retain, nonatomic) _INPBImageNoteContent *image; // @synthesize image=_image;
@@ -28,6 +31,8 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 - (int)StringAsType:(id)arg1;

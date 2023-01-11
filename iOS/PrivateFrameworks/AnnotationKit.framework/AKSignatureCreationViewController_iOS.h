@@ -34,10 +34,13 @@
 - (void)_done:(id)arg1;
 - (void)_clear:(id)arg1;
 - (void)_cancel:(id)arg1;
+- (_Bool)_canShowWhileLocked;
 - (void)_validateButtons;
 - (_Bool)prefersStatusBarHidden;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
+- (void)_setToolPickerVisible;
 - (void)didReceiveMemoryWarning;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
 - (id)initWithController:(id)arg1;

@@ -11,8 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (long long)_accessibilityAppLayoutType;
-- (_Bool)_accessibilityIsControlCenterVisible;
+- (void)_axHandlePageViewTap:(id)arg1;
+- (id)_axAppLayout;
 - (id)_accessibilityPreferredScrollActions;
 - (_Bool)_accessibilityCanPerformAction:(int)arg1;
 - (_Bool)_accessibilityElementVisibilityAffectsLayout;
@@ -28,12 +28,7 @@
 - (_Bool)_accessibilityCanCloseApp;
 - (_Bool)_accessibilityIsNotFirstElement;
 - (id)accessibilityValue;
-- (id)_accessibilityBundleIdentifier;
-- (id)_axDisplayItems;
-- (id)_axAppLayout;
 - (id)accessibilityLabel;
-- (void)_handlePageViewTap:(id)arg1;
-- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

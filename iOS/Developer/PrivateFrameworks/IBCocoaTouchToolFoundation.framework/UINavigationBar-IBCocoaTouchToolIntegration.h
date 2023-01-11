@@ -7,15 +7,6 @@
 #import <UIKit/UINavigationBar.h>
 
 @interface UINavigationBar (IBCocoaTouchToolIntegration)
-- (id)ibBarButtonItemBitmaps;
-- (id)_ibBarButtonItemBitmapsForItems:(id)arg1;
-- (id)ibRightBarButtonItemTitleRects;
-- (id)ibLeftBarButtonItemTitleRects;
-- (id)_ibBarButtonItemTitleRectsForItems:(id)arg1;
-- (id)ibRightBarButtonItemFrames;
-- (id)ibLeftBarButtonItemFrames;
-- (id)_ibBarButtonItemFramesForItems:(id)arg1;
-- (struct CGRect)ibTitleViewFrame;
 - (void)setIbShadowedLargeTitleTextAttributes:(id)arg1;
 - (id)ibShadowedLargeTitleTextAttributes;
 - (_Bool)ibPrefersLargeTitles;

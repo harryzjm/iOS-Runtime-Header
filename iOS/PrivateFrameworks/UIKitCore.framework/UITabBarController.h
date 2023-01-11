@@ -8,11 +8,13 @@
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/UILayoutContainerViewDelegate-Protocol.h>
 #import <UIKitCore/UITabBarDelegate-Protocol.h>
+#import <UIKitCore/_UIScrollViewScrollObserver-Protocol.h>
+#import <UIKitCore/_UITVScrollViewManagerDelegate-Protocol.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSString, UIFocusContainerGuide, UIGestureRecognizer, UILayoutContainerView, UILongPressGestureRecognizer, UIMoreNavigationController, UINavigationController, UITabBar, UITapGestureRecognizer, UIView, UIViewController;
+@class NSArray, NSMapTable, NSMutableArray, NSString, UIFocusContainerGuide, UIFocusGuide, UIGestureRecognizer, UILayoutContainerView, UILongPressGestureRecognizer, UIMoreNavigationController, UINavigationController, UIScrollView, UITabBar, UITapGestureRecognizer, UIView, UIViewController, _UITVScrollViewManager;
 @protocol UITabBarControllerDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning;
 
-@interface UITabBarController <UIGestureRecognizerDelegate, UILayoutContainerViewDelegate, UITabBarDelegate, NSCoding>
+@interface UITabBarController <UIGestureRecognizerDelegate, UILayoutContainerViewDelegate, _UIScrollViewScrollObserver, _UITVScrollViewManagerDelegate, UITabBarDelegate, NSCoding>
 {
     UITabBar *_tabBar;
     UILayoutContainerView *_containerView;
@@ -33,6 +35,10 @@
     UIGestureRecognizer *_touchDetectionGestureRecognizer;
     UIFocusContainerGuide *_contentFocusContainerGuide;
     UILongPressGestureRecognizer *_accessibilityLongPressGestureRecognizer;
+    UIScrollView *_observingScrollView;
+    UIView *_tabBarContainerView;
+    _UITVScrollViewManager *_scrollViewManager;
+    UIFocusGuide *_tabBarOffscreenFocusGuide;
     struct {
         unsigned int isShowingMoreItem:1;
         unsigned int needsToRebuildItems:1;
@@ -46,6 +52,7 @@
         unsigned int offscreen:1;
         unsigned int hidNavBar:1;
     } _tabBarControllerFlags;
+    _Bool __shouldFocusViewControllerAfterTransition;
     NSMutableArray *_moreChildViewControllers;
     UIView *_accessoryView;
     NSMapTable *_rememberedFocusedItemsByViewController;
@@ -58,8 +65,8 @@
 + (_Bool)_shouldSendLegacyMethodsFromViewWillTransitionToSize;
 + (Class)_moreNavigationControllerClass;
 + (_Bool)_directlySetsContentOverlayInsetsForChildren;
-+ (_Bool)doesOverrideSupportedInterfaceOrientations;
 + (_Bool)doesOverridePreferredInterfaceOrientationForPresentation;
+@property(nonatomic) _Bool _shouldFocusViewControllerAfterTransition; // @synthesize _shouldFocusViewControllerAfterTransition=__shouldFocusViewControllerAfterTransition;
 @property(retain, nonatomic, setter=_setInteractor:) id <UIViewControllerInteractiveTransitioning> _interactor; // @synthesize _interactor=__interactor;
 @property(retain, nonatomic, setter=_setAnimator:) id <UIViewControllerAnimatedTransitioning> _animator; // @synthesize _animator=__animator;
 @property(retain, nonatomic, getter=_backdropGroupName, setter=_setBackdropGroupName:) NSString *_backdropGroupName; // @synthesize _backdropGroupName=__backdropGroupName;
@@ -87,9 +94,9 @@
 - (long long)preferredInterfaceOrientationForPresentation;
 - (_Bool)_hasPreferredInterfaceOrientationForPresentation;
 - (unsigned long long)supportedInterfaceOrientations;
-- (_Bool)_shouldSynthesizeSupportedOrientations;
 - (_Bool)_doAllViewControllersSupportInterfaceOrientation:(long long)arg1;
 - (_Bool)_allowsAutorotation;
+- (void)_childViewController:(id)arg1 updatedObservedScrollView:(id)arg2;
 - (void)_setSelectedViewControllerNeedsLayout;
 - (void)_setMaximumNumberOfItems:(unsigned long long)arg1;
 - (unsigned long long)_effectiveMaxItems;
@@ -154,7 +161,6 @@
 @property(nonatomic) UIViewController *selectedViewController;
 @property(nonatomic) unsigned long long selectedIndex;
 - (id)_viewControllerForSelectAtIndex:(unsigned long long)arg1;
-- (_Bool)_allowSelectionWithinMoreList;
 - (id)_selectedViewControllerInTabBar;
 - (void)setViewControllers:(id)arg1 animated:(_Bool)arg2;
 - (void)_setViewControllers:(id)arg1 animated:(_Bool)arg2;
@@ -162,12 +168,19 @@
 - (void)_rebuildTabBarItemsIfNeeded;
 @property(copy, nonatomic) NSArray *viewControllers;
 - (void)_configureTargetActionForTabBarItem:(id)arg1;
+- (void)_scrollViewManagerDidFinishScrolling:(id)arg1;
+- (void)_observeScrollViewDidScroll:(id)arg1;
+- (void)_adjustTVTabBarForContentScrollView:(id)arg1;
+- (void)_updateViewController:(id)arg1 forTabbarObservedScrollView:(id)arg2;
+- (_Bool)_isLegacyTabBar;
+- (_Bool)_isModernTVTabBar;
+- (_Bool)_isFocusedTabVisible;
 - (id)_recallRememberedFocusedItemForViewController:(id)arg1;
 - (void)_forgetFocusedItemForViewController:(id)arg1;
 - (void)_rememberFocusedItem:(id)arg1 forViewController:(id)arg2;
 @property(readonly, nonatomic, getter=_rememberedFocusedItemsByViewController) NSMapTable *rememberedFocusedItemsByViewController; // @synthesize rememberedFocusedItemsByViewController=_rememberedFocusedItemsByViewController;
 - (_Bool)shouldUpdateFocusInContext:(id)arg1;
-- (void)_updateOffscreenStatus:(_Bool)arg1;
+- (void)_updateOffscreenStatus:(_Bool)arg1 withFocusAnimationCoordinator:(id)arg2;
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)_overridingPreferredFocusEnvironment;
 - (_Bool)_canRestoreFocusAfterTransitionToRecalledItem:(id)arg1 inViewController:(id)arg2;
@@ -196,7 +209,6 @@
 - (_Bool)_reallyWantsFullScreenLayout;
 - (void)updateTabBarItemForViewController:(id)arg1;
 - (void)_setSelectedTabBarItem:(id)arg1;
-- (void)purgeMemoryForReason:(int)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (id)_accessibilityHUDLongPressRecognizer;
@@ -213,6 +225,7 @@
 - (void)setView:(id)arg1;
 - (void)setTabBar:(id)arg1;
 - (void)_prepareTabBar;
+- (struct CGRect)_adjustTabBarFrameForSafeAreas:(struct CGRect)arg1;
 - (void)_updateTabBarLayout;
 - (void)_safeAreaInsetsDidChangeForView;
 - (struct CGRect)_adjustContentViewFrameForOffscreenFocus:(struct CGRect)arg1 viewController:(id)arg2;

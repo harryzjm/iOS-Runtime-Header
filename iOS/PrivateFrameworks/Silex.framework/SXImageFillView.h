@@ -28,6 +28,7 @@
 @property(readonly, nonatomic) UIImage *image;
 - (struct CGRect)fillFrameWithBoundingSize:(struct CGSize)arg1;
 - (void)layoutSubviews;
+- (void)load;
 - (void)dealloc;
 - (id)initWithImageFill:(id)arg1 imageResource:(id)arg2 imageViewFactory:(id)arg3;
 

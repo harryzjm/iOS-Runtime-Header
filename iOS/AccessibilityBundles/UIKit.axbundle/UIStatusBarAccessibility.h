@@ -19,6 +19,7 @@
 - (_Bool)_accessibilityAlwaysOrderedFirst;
 - (_Bool)_accessibilityOverridesInvisibility;
 - (_Bool)accessibilityPerformEscape;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

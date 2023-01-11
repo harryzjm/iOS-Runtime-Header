@@ -6,6 +6,7 @@
 
 @class EDStyle, EDWorkbook;
 
+__attribute__((visibility("hidden")))
 @interface EMCellNumberMapper
 {
     double edValue;

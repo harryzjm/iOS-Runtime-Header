@@ -18,7 +18,7 @@
 - (id)setupContentView;
 
 // Remaining properties
-@property(retain) TLKSimpleRowView *contentView; // @dynamic contentView;
+@property(retain, nonatomic) TLKSimpleRowView *contentView; // @dynamic contentView;
 
 @end
 

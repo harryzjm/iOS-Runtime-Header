@@ -4,16 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Silex/SXClassFactoryProtocol-Protocol.h>
+#import <Silex/SXResource-Protocol.h>
 
 @class NSString, NSURL;
 
-@interface SXResource <SXClassFactoryProtocol>
+@interface SXResource <SXResource>
 {
 }
 
-+ (id)typeString;
-+ (void)initializeObject;
 - (id)URLWithValue:(id)arg1 withType:(int)arg2;
 
 // Remaining properties

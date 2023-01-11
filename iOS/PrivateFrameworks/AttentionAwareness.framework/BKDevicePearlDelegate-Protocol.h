@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <AttentionAwareness/NSObject-Protocol.h>
+#import <AttentionAwareness/BKDeviceDelegate-Protocol.h>
 
 @class BKDevice;
 
-@protocol BKDevicePearlDelegate <NSObject>
+@protocol BKDevicePearlDelegate <BKDeviceDelegate>
 
 @optional
 - (void)device:(BKDevice *)arg1 pearlStateChanged:(long long)arg2;

@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UIViewController.h>
+#import <OnBoardingKit/OBBaseWelcomeController.h>
 
-#import <SIMSetupSupport/TSCellularPlanQRCodeScannerCaptureDelegate-Protocol.h>
+#import <SIMSetupSupport/AVCaptureMetadataOutputObjectsDelegate-Protocol.h>
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
 #import <SIMSetupSupport/UINavigationControllerDelegate-Protocol.h>
 
 @class CAShapeLayer, NSDate, NSString, TSCellularPlanQRCodeScannerView, UIButton, UILabel, UIView;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSCellularPlanScanViewController : UIViewController <TSCellularPlanQRCodeScannerCaptureDelegate, UINavigationControllerDelegate, TSSetupFlowItem>
+@interface TSCellularPlanScanViewController : OBBaseWelcomeController <AVCaptureMetadataOutputObjectsDelegate, UINavigationControllerDelegate, TSSetupFlowItem>
 {
+    _Bool _preinstallCompleted;
     NSDate *_nextTimeToAcceptScan;
     CAShapeLayer *_fillWithHoleLayer;
     CAShapeLayer *_holeOutlineLayer;
@@ -23,7 +24,6 @@
     _Bool _manualCardInfoEntry;
     id <TSSIMSetupFlowDelegate> _delegate;
     NSString *_fauxCardData;
-    long long _userConsentResponse;
     UIView *_scanView;
     UIView *_cutoutView;
     UIButton *_enterDetailsManuallyButton;
@@ -38,15 +38,18 @@
 @property(nonatomic) __weak UIView *scanView; // @synthesize scanView=_scanView;
 @property(readonly) _Bool manualCardInfoEntry; // @synthesize manualCardInfoEntry=_manualCardInfoEntry;
 @property(readonly) _Bool confirmationCodeRequired; // @synthesize confirmationCodeRequired=_confirmationCodeRequired;
-@property(readonly) long long userConsentResponse; // @synthesize userConsentResponse=_userConsentResponse;
 @property(readonly) NSString *fauxCardData; // @synthesize fauxCardData=_fauxCardData;
 @property __weak id <TSSIMSetupFlowDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+- (_Bool)canBeShownFromSuspendedState;
+- (void)didChangeValueForKey:(id)arg1;
 - (void)_addNewPlanWithCardData:(id)arg1 confirmationCode:(id)arg2;
 - (void)enterFauxCardDataManually:(id)arg1;
 - (void)captureOutput:(id)arg1 didOutputMetadataObjects:(id)arg2 fromConnection:(id)arg3;
-- (void)captureSession:(id)arg1 isRunning:(_Bool)arg2;
-- (void)cancelButtonTapped;
+- (long long)navigationBarScrollToEdgeBehavior;
+- (void)planInfoDidUpdate:(id)arg1 planListError:(id)arg2;
+- (void)presentViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)viewDidLoad;

@@ -14,8 +14,6 @@
 - (_Bool)_accessibilityOverridesInvalidFrames;
 - (_Bool)_accessibilityUseAccessibilityFrameForHittest;
 - (struct CGRect)accessibilityFrame;
-- (void)updateTitleLabel;
-- (void)_accessibilityLoadAccessibilityInformation;
 
 @end
 

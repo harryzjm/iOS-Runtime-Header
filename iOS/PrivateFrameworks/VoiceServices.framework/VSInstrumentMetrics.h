@@ -14,6 +14,7 @@
 {
     _Bool _isWarmStart;
     _Bool _isServerTTS;
+    _Bool _isServerStreamTTS;
     _Bool _isServerTimeout;
     _Bool _isServerTTSRacing;
     _Bool _canUseServerTTS;
@@ -23,6 +24,7 @@
     NSString *_utterance;
     NSString *_voiceAssetKey;
     NSString *_voiceResourceAssetKey;
+    NSString *_audioOutputRoute;
     long long _requestCreatedTimestamp;
     long long _eagerRequestCreatedTimeStampDiffs;
     long long _synthesisBeginTimestamp;
@@ -32,6 +34,7 @@
     long long _audioStartTimestampDiffs;
     double _audioDuration;
     long long _promptCount;
+    long long _sourceOfTTS;
     long long _synthesisToSpeechTimeGap;
     long long _waitForSynthesisToFinishTimeDelay;
 }
@@ -42,10 +45,12 @@
 @property long long waitForSynthesisToFinishTimeDelay; // @synthesize waitForSynthesisToFinishTimeDelay=_waitForSynthesisToFinishTimeDelay;
 @property long long synthesisToSpeechTimeGap; // @synthesize synthesisToSpeechTimeGap=_synthesisToSpeechTimeGap;
 @property _Bool isSpeechRequest; // @synthesize isSpeechRequest=_isSpeechRequest;
+@property long long sourceOfTTS; // @synthesize sourceOfTTS=_sourceOfTTS;
 @property long long promptCount; // @synthesize promptCount=_promptCount;
 @property _Bool canUseServerTTS; // @synthesize canUseServerTTS=_canUseServerTTS;
 @property _Bool isServerTTSRacing; // @synthesize isServerTTSRacing=_isServerTTSRacing;
 @property _Bool isServerTimeout; // @synthesize isServerTimeout=_isServerTimeout;
+@property _Bool isServerStreamTTS; // @synthesize isServerStreamTTS=_isServerStreamTTS;
 @property _Bool isServerTTS; // @synthesize isServerTTS=_isServerTTS;
 @property _Bool isWarmStart; // @synthesize isWarmStart=_isWarmStart;
 @property double audioDuration; // @synthesize audioDuration=_audioDuration;
@@ -56,6 +61,7 @@
 @property long long synthesisBeginTimestamp; // @synthesize synthesisBeginTimestamp=_synthesisBeginTimestamp;
 @property long long eagerRequestCreatedTimeStampDiffs; // @synthesize eagerRequestCreatedTimeStampDiffs=_eagerRequestCreatedTimeStampDiffs;
 @property long long requestCreatedTimestamp; // @synthesize requestCreatedTimestamp=_requestCreatedTimestamp;
+@property(copy) NSString *audioOutputRoute; // @synthesize audioOutputRoute=_audioOutputRoute;
 @property(copy) NSString *voiceResourceAssetKey; // @synthesize voiceResourceAssetKey=_voiceResourceAssetKey;
 @property(copy) NSString *voiceAssetKey; // @synthesize voiceAssetKey=_voiceAssetKey;
 @property(copy) NSString *utterance; // @synthesize utterance=_utterance;

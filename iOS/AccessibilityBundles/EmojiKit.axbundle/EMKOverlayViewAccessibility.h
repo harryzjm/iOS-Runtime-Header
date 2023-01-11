@@ -15,7 +15,7 @@
 - (id)initWithView:(id)arg1 anchorRect:(struct CGRect)arg2 emojiTokenList:(id)arg3 selectionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)accessibilityPerformEscape;
 - (_Bool)accessibilityViewIsModal;
-- (unsigned long long)accessibilityTraits;
+- (long long)accessibilityContainerType;
 - (_Bool)isAccessibilityElement;
 
 @end

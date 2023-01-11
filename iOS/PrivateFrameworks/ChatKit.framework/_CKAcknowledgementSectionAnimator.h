@@ -8,6 +8,7 @@
 
 @class CKEntity, CNAvatarView, UICollectionViewLayoutAttributes, UIImageView, UILabel, UIView;
 
+__attribute__((visibility("hidden")))
 @interface _CKAcknowledgementSectionAnimator : NSObject
 {
     UICollectionViewLayoutAttributes *_avatarViewAttr;

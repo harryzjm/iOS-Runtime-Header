@@ -10,6 +10,7 @@
 
 @protocol IBICVariantObject <NSObject>
 - (long long)compareForVariantMatching:(id)arg1;
+- (long long)filteringPriorityForVariantSelection;
 - (_Bool)isMinimallyFitForVariantSelection;
 - (IBICSlot *)slotForVariantSelection;
 @end

@@ -4,15 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CDBSourceConstraints, NSNumber, NSString;
+@class EKFrozenReminderSource, NSNumber, NSString;
 
 @interface EKPersistentSource
 {
+    EKFrozenReminderSource *_reminderSource;
 }
 
++ (Class)meltedClass;
 + (id)relations;
 + (id)defaultPropertiesToLoad;
+@property(retain) EKFrozenReminderSource *reminderSource; // @synthesize reminderSource=_reminderSource;
+- (void).cxx_destruct;
 - (id)description;
+- (void)setDelegatedAccountOwnerStoreID:(id)arg1;
+- (id)delegatedAccountOwnerStoreID;
 - (void)setLastSyncError:(unsigned long long)arg1;
 - (unsigned long long)lastSyncError;
 - (void)setLastSyncEndDate:(id)arg1;
@@ -21,6 +27,8 @@
 - (id)lastSyncStartDate;
 - (void)setFlags:(int)arg1;
 - (int)flags;
+- (void)setShowsNotifications:(_Bool)arg1;
+- (_Bool)showsNotifications;
 @property(nonatomic) _Bool onlyCreatorCanModify; // @dynamic onlyCreatorCanModify;
 - (void)setCreatorCodeSigningIdentity:(id)arg1;
 - (id)creatorCodeSigningIdentity;
@@ -38,7 +46,7 @@
 @property(nonatomic) int preferredEventPrivateValue; // @dynamic preferredEventPrivateValue;
 @property(nonatomic) long long sourceType; // @dynamic sourceType;
 - (int)entityType;
-@property(readonly, nonatomic) CDBSourceConstraints *constraints;
+- (id)constraints;
 
 @end
 

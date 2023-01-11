@@ -8,7 +8,7 @@
 {
 }
 
-+ (id)imageFromData:(id)arg1;
+- (id)loadImage;
 
 @end
 

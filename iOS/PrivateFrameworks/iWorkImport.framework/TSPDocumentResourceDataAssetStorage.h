@@ -22,11 +22,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) TSPDocumentResourceInfo *documentResourceInfo;
 @property(readonly, nonatomic) id <TSUResourceRequest> resourceRequest;
 - (void)addDownloadObserver:(id)arg1 forData:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)downloadProgress;
 - (_Bool)needsDownload;
 - (_Bool)archiveInfoMessage:(struct DataInfo *)arg1 archiver:(id)arg2 packageWriter:(id)arg3;
 - (id)NSDataWithOptions:(unsigned long long)arg1;
 @property(readonly, nonatomic) NSDataAsset *dataAsset;
+- (struct CGSize)pixelSize;
 - (id)fallbackColor;
 - (void)performIOChannelReadWithAccessor:(CDUnknownBlockType)arg1;
 - (unsigned long long)encodedLength;

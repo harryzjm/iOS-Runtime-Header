@@ -6,26 +6,27 @@
 
 #import <UIKit/UICollectionView.h>
 
-@class NSArray, UICollectionReusableView, UIColor;
+@class NSArray, UICollectionReusableView, UICollectionViewFlowLayout, UIColor;
 
 @interface UICollectionView (IBCocoaTouchToolIntegration)
+- (void)ibPropagatePropertiesToCopyOfReceiver:(id)arg1 forLayoutEngine:(id)arg2;
 - (void)ibInstallPlaceholderView:(id)arg1;
 @property(retain, nonatomic) UICollectionReusableView *ibPrototypeSectionFooterView;
 @property(retain, nonatomic) UICollectionReusableView *ibPrototypeSectionHeaderView;
 @property(readonly) NSArray *ibCellBackgroundColors;
 - (void)setIbCellBackgroundColors:(id)arg1;
-@property(readonly) NSArray *ibCellSizes;
-- (void)setIbCellSizes:(id)arg1;
 @property(copy, nonatomic) NSArray *ibCells;
 - (void)setIbHasBackgroundView:(id)arg1;
 - (id)ibCellFrames;
 - (id)ibBackgroundViewFrame;
 - (id)ibSectionFooterViewFrames;
 - (id)ibSectionHeaderViewFrames;
+- (_Bool)ibIsChildASubarbitrationUnitRoot:(id)arg1;
+@property(readonly) UICollectionViewFlowLayout *ibFlowLayout;
 - (id)ibFramesForSupplementaryElementsOfKind:(id)arg1;
 - (_Bool)ibCapturePlaceholderTable:(id)arg1 forRelationship:(id)arg2 withContext:(id)arg3;
 - (void)setIbCompiledPrototypeNibs:(id)arg1;
-- (struct CGSize)ibContentSize;
+- (id)ibContentSize;
 - (void)ibReloadDataAndLayoutSubviewsIfNeeded;
 @property(readonly) UIColor *ibSectionFooterViewBackgroundColor;
 - (void)setIbSectionFooterViewBackgroundColor:(id)arg1;

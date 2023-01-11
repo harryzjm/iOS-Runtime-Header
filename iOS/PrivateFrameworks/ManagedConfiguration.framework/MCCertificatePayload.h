@@ -4,17 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSData, NSDate, NSString;
+@class NSData, NSDate, NSNumber, NSString;
 
 @interface MCCertificatePayload
 {
     NSData *_certificatePersistentID;
     NSString *_installedOnDeviceID;
+    NSNumber *_isIdentity;
+    NSNumber *_isRoot;
+    NSNumber *_expiryInterval;
+    NSString *_certSubject;
+    NSString *_certIssuer;
 }
 
 @property(copy, nonatomic) NSString *installedOnDeviceID; // @synthesize installedOnDeviceID=_installedOnDeviceID;
 @property(retain, nonatomic) NSData *certificatePersistentID; // @synthesize certificatePersistentID=_certificatePersistentID;
 - (void).cxx_destruct;
+- (id)issuer;
+- (id)certificateSubject;
 @property(readonly, retain, nonatomic) NSDate *expiry;
 - (id)description;
 - (id)subtitle2Description;

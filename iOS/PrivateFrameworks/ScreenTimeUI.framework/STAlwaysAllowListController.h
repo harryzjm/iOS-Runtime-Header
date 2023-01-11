@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Preferences/PSListController.h>
-
 @class NSArray, NSSet, PSSpecifier, STAlwaysAllowList;
 @protocol STAlwaysAllowListControllerDelegate;
 
-@interface STAlwaysAllowListController : PSListController
+__attribute__((visibility("hidden")))
+@interface STAlwaysAllowListController
 {
     id <STAlwaysAllowListControllerDelegate> _delegate;
     STAlwaysAllowList *_alwaysAllowList;
     NSArray *_chooseBundleIDs;
     NSSet *_installedBundleIDs;
+    PSSpecifier *_allowedContactsSpecifier;
     PSSpecifier *_allowedAppsGroupSpecifier;
     NSArray *_allowedAppsSpecifiers;
     PSSpecifier *_chooseAppsGroupSpecifier;
@@ -25,6 +25,7 @@
 @property(retain, nonatomic) PSSpecifier *chooseAppsGroupSpecifier; // @synthesize chooseAppsGroupSpecifier=_chooseAppsGroupSpecifier;
 @property(retain, nonatomic) NSArray *allowedAppsSpecifiers; // @synthesize allowedAppsSpecifiers=_allowedAppsSpecifiers;
 @property(retain, nonatomic) PSSpecifier *allowedAppsGroupSpecifier; // @synthesize allowedAppsGroupSpecifier=_allowedAppsGroupSpecifier;
+@property(retain) PSSpecifier *allowedContactsSpecifier; // @synthesize allowedContactsSpecifier=_allowedContactsSpecifier;
 @property(copy, nonatomic) NSSet *installedBundleIDs; // @synthesize installedBundleIDs=_installedBundleIDs;
 @property(copy, nonatomic) NSArray *chooseBundleIDs; // @synthesize chooseBundleIDs=_chooseBundleIDs;
 @property(copy, nonatomic) STAlwaysAllowList *alwaysAllowList; // @synthesize alwaysAllowList=_alwaysAllowList;
@@ -33,17 +34,28 @@
 - (id)appSpecifiersForBundleIDs:(id)arg1;
 - (id)tableView:(id)arg1 titleForDeleteConfirmationButtonForRowAtIndexPath:(id)arg2;
 - (void)removeAllowedIdentifier:(id)arg1 withSpecifier:(id)arg2;
+- (void)_removeAllowedAppSpecifier:(id)arg1;
+- (void)_insertAllowedAppSpecifier:(id)arg1;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
+- (id)removeMessagesConfirmationPrompt;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (_Bool)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
+- (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (_Bool)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (_Bool)shouldReloadSpecifiersOnResume;
 - (id)createChooseAppsSpecifiers;
 - (id)createAllowedAppsSpecifiers;
+- (id)_allowedContactsDuringDowntimeText:(id)arg1;
 - (id)specifiers;
 - (void)willResignActive;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (_Bool)canBeShownFromSuspendedState;
 - (void)viewDidLoad;
+- (void)_communicationLimitsDidChangeFrom:(id)arg1 to:(id)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)setCoordinator:(id)arg1;
+- (void)dealloc;
 - (id)init;
 
 @end

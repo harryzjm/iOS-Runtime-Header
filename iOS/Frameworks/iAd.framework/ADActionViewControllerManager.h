@@ -15,11 +15,11 @@
 
 + (id)sharedManager;
 @property(retain, nonatomic) NSMutableDictionary *servingAdSpaces; // @synthesize servingAdSpaces=_servingAdSpaces;
+- (void).cxx_destruct;
 - (void)cancelRequestForActionViewControllerForAdSpace:(id)arg1;
 - (void)actionViewController:(id)arg1 dismissForIdentifier:(id)arg2;
 - (void)requestActionViewControllerForAdSpace:(id)arg1;
 - (id)init;
-- (void)dealloc;
 
 @end
 

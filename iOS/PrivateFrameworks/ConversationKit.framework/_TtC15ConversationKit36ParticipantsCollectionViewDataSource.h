@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit36ParticipantsCollectionViewDataSource : NSObject
 {
     MISSING_TYPE *onlineParticipants;
@@ -17,7 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *didCreateCellForParticipant;
 }
 
-- (CDUnknownBlockType).cxx_destruct;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

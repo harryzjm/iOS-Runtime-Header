@@ -6,28 +6,24 @@
 
 #import <OfficeImport/OIProgressiveReaderDelegate-Protocol.h>
 
-@class CMArchiveManager, EMState, EMWorkbookMapper, NSString;
+@class EMWorkbookMapper;
 
 __attribute__((visibility("hidden")))
 @interface EMTop <OIProgressiveReaderDelegate>
 {
-    CMArchiveManager *_archiver;
-    EMState *_state;
-    EMWorkbookMapper *_mapper;
-    NSString *_inFileName;
-    _Bool _xml;
 }
 
-+ (void)fillHTMLArchiveForExcelData:(id)arg1 fileName:(id)arg2 xmlFlag:(_Bool)arg3 archiver:(id)arg4;
-+ (void)fillHTMLArchiveForExcelFile:(id)arg1 xmlFlag:(_Bool)arg2 archiver:(id)arg3;
-- (void).cxx_destruct;
-- (void)readerDidEndDocument:(id)arg1;
-- (void)readerDidReadElement:(id)arg1 atIndex:(unsigned long long)arg2 inDocument:(id)arg3 isLastElement:(_Bool)arg4;
++ (_Bool)supportsProgressiveMapping;
 - (void)readerDidStartDocument:(id)arg1 withElementCount:(long long)arg2;
-- (void)readFile:(id)arg1 xmlFlag:(_Bool)arg2 archiver:(id)arg3;
-- (void)readData:(id)arg1 fileName:(id)arg2 xmlFlag:(_Bool)arg3 archiver:(id)arg4;
-- (void)readFile:(id)arg1 orData:(id)arg2 withDataFileName:(id)arg3 xmlFlag:(_Bool)arg4 archiver:(id)arg5;
-- (void)_streamWorkbook:(id)arg1;
+- (void)readFile:(id)arg1 orData:(id)arg2 dataFileName:(id)arg3 format:(unsigned long long)arg4 archiver:(id)arg5 forIndexing:(_Bool)arg6;
+- (void)initializeClasses;
+- (Class)mapperClassForIndexing:(_Bool)arg1;
+- (Class)stateClass;
+- (Class)readerClassForXMLDocuments;
+- (Class)readerClassForBinaryDocuments;
+
+// Remaining properties
+@property(readonly) EMWorkbookMapper *mapper; // @dynamic mapper;
 
 @end
 

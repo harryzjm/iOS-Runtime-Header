@@ -6,6 +6,7 @@
 
 @class NSDate;
 
+__attribute__((visibility("hidden")))
 @interface CKRecordActionMenuItem
 {
     _Bool _wasSelected;

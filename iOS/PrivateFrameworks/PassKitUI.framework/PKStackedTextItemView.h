@@ -44,6 +44,8 @@
 - (void)prepareForReuse;
 - (void)layoutIfNeededAnimated:(_Bool)arg1;
 - (void)layoutSubviews;
+- (double)headerPadding;
+- (CDStruct_9c0b9312)_titleFontMetrics;
 - (CDStruct_c7197326)boundingMetricForWidth:(double)arg1;
 - (id)initWithStyle:(long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -11,6 +11,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)setMode:(unsigned long long)arg1;
+- (void)_axSetLapButtonTraitsForMode:(unsigned long long)arg1;
 - (void)_addLap:(double)arg1;
 - (void)loadView;
 - (void)_accessibilityLoadAccessibilityInformation;

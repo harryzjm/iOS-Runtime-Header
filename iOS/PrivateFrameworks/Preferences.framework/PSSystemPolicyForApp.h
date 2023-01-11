@@ -6,18 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, PSPhotosPolicyController;
 
 @interface PSSystemPolicyForApp : NSObject
 {
     unsigned long long _policyOptions;
     _Bool _forcePolicyOptions;
+    PSPhotosPolicyController *_photosPrivacyController;
     NSString *_bundleIdentifier;
 }
 
 + (_Bool)isServiceRestricted:(id)arg1;
 @property(copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 - (void).cxx_destruct;
+- (id)preferredLanguage:(id)arg1;
+- (id)preferredLanguageSpecifier;
 - (id)documentSource:(id)arg1;
 - (id)documentsSpecifier;
 - (id)privacyAccessForSpecifier:(id)arg1;
@@ -26,14 +29,10 @@
 - (struct __CFBundle *)copyTCCBundleForService:(struct __CFString *)arg1;
 - (id)privacySpecifierForService:(struct __CFString *)arg1;
 - (id)privacySpecifiers;
-- (id)authLevelStringForStatus:(int)arg1;
+- (id)authLevelStringForStatus:(unsigned long long)arg1;
 - (id)locationStatus:(id)arg1;
 - (_Bool)_isLocationServicesRestricted;
 - (id)locationServicesSpecifier;
-- (Class)photosDetailClass;
-- (id)photosLocalizedStringForAuthType:(id)arg1;
-- (id)photosAuthDescriptionForAppBundle:(struct __CFBundle *)arg1;
-- (id)photosStatus:(id)arg1;
 - (id)photosServicesSpecifier;
 - (id)isBackgroundRefreshEnabled:(id)arg1;
 - (void)setBackgroundRefreshEnabled:(id)arg1 forSpecifier:(id)arg2;

@@ -6,7 +6,7 @@
 
 #import <Home/HFActionSetBuilderProtocol-Protocol.h>
 
-@class HFMutableSetDiff, HMActionSet, NSArray, NSString;
+@class HFMediaPlaybackActionBuilder, HFMutableSetDiff, HMActionSet, NSArray, NSString;
 @protocol HFIconDescriptor;
 
 @interface HFActionSetBuilder <HFActionSetBuilderProtocol>
@@ -29,6 +29,7 @@
 - (id)_lazilyUpdateFavorite;
 - (id)commitItem;
 - (id)_performValidation;
+@property(readonly, nonatomic) HFMediaPlaybackActionBuilder *mediaAction;
 @property(readonly, nonatomic, getter=isAffectedByEndEvents) _Bool affectedByEndEvents;
 @property(readonly, nonatomic) _Bool requiresDeviceUnlock;
 - (void)removeAllActions;

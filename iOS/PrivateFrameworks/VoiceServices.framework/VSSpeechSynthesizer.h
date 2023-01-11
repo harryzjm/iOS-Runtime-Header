@@ -8,13 +8,11 @@
 
 #import <VoiceServices/VSSpeechConnectionDelegate-Protocol.h>
 
-@class NSString, VSKeepAlive, VSSpeechConnection;
+@class NSMutableDictionary, NSString, VSSpeechConnection;
 @protocol OS_dispatch_queue, VSSpeechSynthesizerDelegate;
 
 @interface VSSpeechSynthesizer : NSObject <VSSpeechConnectionDelegate>
 {
-    VSKeepAlive *_keepAlive;
-    VSKeepAlive *_inactiveKeepAlive;
     NSString *_clientBundleIdentifier;
     unsigned int _audioSessionID;
     unsigned int _audioQueueFlags;
@@ -48,6 +46,7 @@
     long long _footprint;
     long long _voiceType;
     long long _gender;
+    NSMutableDictionary *_durationRequests;
 }
 
 + (void)getVoiceInfoForLanguageCode:(id)arg1 footprint:(long long)arg2 gender:(long long)arg3 type:(long long)arg4 reply:(CDUnknownBlockType)arg5;
@@ -65,11 +64,13 @@
 + (id)availableVoices;
 + (void)getLogToFile:(CDUnknownBlockType)arg1;
 + (void)setLogToFile:(_Bool)arg1;
++ (id)characterClassCountForUtterance:(id)arg1 language:(id)arg2;
 + (id)sharedInstance;
 + (_Bool)playVoicePreviewForLanguageCode:(id)arg1 gender:(long long)arg2;
 + (id)validatePresynthesizedAudioRequest:(id)arg1;
 + (id)validateRequest:(id)arg1;
 + (id)errorWithReason:(id)arg1;
+@property(retain, nonatomic) NSMutableDictionary *durationRequests; // @synthesize durationRequests=_durationRequests;
 @property(nonatomic) long long gender; // @synthesize gender=_gender;
 @property(nonatomic) long long voiceType; // @synthesize voiceType=_voiceType;
 @property(nonatomic) _Bool useCustomVoice; // @synthesize useCustomVoice=_useCustomVoice;
@@ -93,6 +94,7 @@
 - (void)cleanUnusedAssets:(CDUnknownBlockType)arg1;
 - (void)endAudioPowerUpdate;
 - (void)beginAudioPowerUpdateWithReply:(CDUnknownBlockType)arg1;
+- (void)forwardStreamObject:(id)arg1;
 - (void)getTTSServerVoicesWithFilter:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (_Bool)continueSpeakingWithError:(id *)arg1;
 - (_Bool)stopSpeakingAtNextBoundary:(long long)arg1 error:(id *)arg2;
@@ -130,6 +132,8 @@
 - (void)connection:(id)arg1 speechRequestDidStart:(id)arg2;
 - (void)setMaintainInactivePersistentConnection:(_Bool)arg1;
 - (void)setMaintainPersistentConnection:(_Bool)arg1;
+- (void)estimateDurationOfRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (double)estimateDurationOfRequest:(id)arg1;
 - (_Bool)_continueSpeakingRequest:(id)arg1 withError:(id *)arg2;
 - (_Bool)stopSpeakingRequest:(id)arg1 atNextBoundary:(long long)arg2 synchronously:(_Bool)arg3 error:(id *)arg4;
 - (float)maximumRate;
@@ -148,9 +152,9 @@
 - (_Bool)_stopSpeakingRequest:(id)arg1 atNextBoundary:(long long)arg2 synchronously:(_Bool)arg3 error:(id *)arg4;
 - (_Bool)_stopSpeakingPresynthesizedAudioRequest:(id)arg1 synchronously:(_Bool)arg2 error:(id *)arg3;
 - (void)_setDelegate:(id)arg1;
+- (_Bool)queryPhaticCapability:(id)arg1;
 - (id)prewarmIfNeededWithRequest:(id)arg1;
 - (id)initForInputFeedback;
-- (void)dealloc;
 - (id)init;
 
 @end

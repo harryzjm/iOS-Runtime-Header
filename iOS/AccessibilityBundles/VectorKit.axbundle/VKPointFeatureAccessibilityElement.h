@@ -4,12 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@class NSMutableArray;
+
 @interface VKPointFeatureAccessibilityElement
 {
+    NSMutableArray *_featureIds;
     CDStruct_31142d93 _location;
 }
 
+@property(retain, nonatomic) NSMutableArray *featureIds; // @synthesize featureIds=_featureIds;
 @property(nonatomic) CDStruct_31142d93 location; // @synthesize location=_location;
+- (void).cxx_destruct;
+- (id)accessibilityDragSourceDescriptors;
 - (_Bool)_accessibilitySupportsActivateAction;
 - (_Bool)accessibilityActivate;
 - (struct CGRect)accessibilityFrame;
@@ -22,6 +28,8 @@
 - (double)_radius;
 - (long long)_accessibilityMapFeatureType;
 - (_Bool)isAccessibilityElement;
+- (_Bool)isEqual:(id)arg1;
+- (id)initWithAccessibilityContainer:(id)arg1;
 
 @end
 

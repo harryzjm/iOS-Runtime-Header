@@ -17,7 +17,7 @@
 - (_Bool)canReduceOutputChannels;
 @property(nonatomic) _Bool preservesRange;
 @property(nonatomic) _Bool perservesAlpha;
-- (id)_initWithReflection:(struct CIKernelReflection)arg1;
+- (id)_initWithReflection:(struct CIKernelReflection)arg1 constants:(id)arg2;
 - (id)initWithString:(id)arg1;
 - (struct CGRect)autogenerateROI:(struct WarpKernel *)arg1 args:(struct SerialObjectPtrArray *)arg2 arguments:(id)arg3 extent:(struct CGRect)arg4;
 - (id)makeGridImage:(struct CGRect)arg1 nx:(int)arg2 ny:(int)arg3;

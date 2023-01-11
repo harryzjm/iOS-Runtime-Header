@@ -4,19 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <Preferences/PSListController.h>
+@class STContentPrivacyListController;
 
-@protocol STContentPrivacyViewModelCoordinator;
-
-@interface STContentPrivacyStoreDetailController : PSListController
+__attribute__((visibility("hidden")))
+@interface STContentPrivacyStoreDetailController
 {
-    id <STContentPrivacyViewModelCoordinator> _coordinator;
+    STContentPrivacyListController *_contentPrivacyController;
 }
 
-@property(retain, nonatomic) id <STContentPrivacyViewModelCoordinator> coordinator; // @synthesize coordinator=_coordinator;
+@property __weak STContentPrivacyListController *contentPrivacyController; // @synthesize contentPrivacyController=_contentPrivacyController;
 - (void).cxx_destruct;
+- (void)_isLoadedDidChange:(_Bool)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)setCoordinator:(id)arg1;
+- (void)dealloc;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (_Bool)shouldReloadSpecifiersOnResume;
+- (id)specifiers;
 - (id)init;
 
 @end

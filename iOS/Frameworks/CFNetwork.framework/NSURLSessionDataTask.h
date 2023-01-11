@@ -8,5 +8,8 @@
 {
 }
 
++ (id)new;
+- (id)init;
+
 @end
 

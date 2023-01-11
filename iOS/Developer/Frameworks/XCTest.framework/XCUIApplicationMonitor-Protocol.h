@@ -5,22 +5,20 @@
 //
 
 #import <XCTest/NSObject-Protocol.h>
+#import <XCTest/XCUIApplicationPlatformServicesProviderDelegate-Protocol.h>
 #import <XCTest/XCUIApplicationProcessTracker-Protocol.h>
 
-@class NSNumber, NSString, XCTApplicationStateSnapshot, XCUIApplication, XCUIApplicationImpl, XCUIApplicationProcess, XCUIApplicationRegistry;
+@class NSNumber, NSSet, NSString, XCUIApplicationImpl, XCUIApplicationProcess, XCUIApplicationRegistry;
 
-@protocol XCUIApplicationMonitor <NSObject, XCUIApplicationProcessTracker>
+@protocol XCUIApplicationMonitor <NSObject, XCUIApplicationProcessTracker, XCUIApplicationPlatformServicesProviderDelegate>
+@property(readonly) NSSet *automationSessionBlacklist;
 @property(retain) XCUIApplicationRegistry *applicationRegistry;
 - (void)acquireBackgroundAssertionForPID:(int)arg1 reply:(void (^)(_Bool))arg2;
-- (void)requestAutomationSessionForTestTargetWithPID:(int)arg1 preferredBackendPath:(NSString *)arg2 reply:(void (^)(id <XCTRunnerAutomationSession>, NSError *))arg3;
 - (void)waitForUnrequestedTerminationOfLaunchedApplicationsWithTimeout:(double)arg1;
 - (void)terminationTrackedForApplicationProcess:(XCUIApplicationProcess *)arg1;
 - (void)launchRequestedForApplicationProcess:(XCUIApplicationProcess *)arg1;
 - (void)terminateApplicationProcess:(XCUIApplicationProcess *)arg1 withToken:(id)arg2;
-- (XCUIApplication *)monitoredApplicationWithProcessIdentifier:(int)arg1;
 - (XCUIApplicationImpl *)applicationImplementationForApplicationAtPath:(NSString *)arg1 bundleID:(NSString *)arg2;
-- (void)updatedApplicationStateSnapshot:(XCTApplicationStateSnapshot *)arg1;
-- (void)applicationWithBundleID:(NSString *)arg1 didUpdatePID:(int)arg2 state:(unsigned long long)arg3;
 - (void)processWithToken:(NSNumber *)arg1 exitedWithStatus:(int)arg2;
 - (void)stopTrackingProcessWithToken:(NSNumber *)arg1;
 - (void)crashInProcessWithBundleID:(NSString *)arg1 path:(NSString *)arg2 pid:(int)arg3 symbol:(NSString *)arg4;

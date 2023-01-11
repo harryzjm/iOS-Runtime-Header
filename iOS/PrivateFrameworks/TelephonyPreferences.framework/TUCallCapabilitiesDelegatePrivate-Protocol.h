@@ -12,7 +12,6 @@
 
 @optional
 - (void)didChangeRelayCallingFeatures;
-- (void)didChangeCarrierSpaceCapabilities;
 - (void)didChangeEmergencyCallbackPossible;
 - (void)didChangeEmergencyCallbackMode;
 - (void)didChangeThumperCallingProvisionalURLForSenderIdentityWithUUID:(NSUUID *)arg1;

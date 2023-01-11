@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSInvocation;
+@class NSException, NSInvocation;
 
 @interface NSInvocationOperation
 {
-    id _inv;
-    id _exception;
-    void *_reserved2;
+    NSInvocation *_inv;
+    NSException *_exception;
 }
 
 @property(readonly, retain) id result;

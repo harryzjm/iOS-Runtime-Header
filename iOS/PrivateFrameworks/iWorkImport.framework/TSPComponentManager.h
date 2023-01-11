@@ -70,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (id)documentComponentImpl;
 - (id)rootComponentWithIdentifierImpl:(long long)arg1 locator:(id)arg2 packageIdentifier:(unsigned char)arg3;
 - (void)loadFromPackage:(id)arg1 metadata:(id)arg2;
+- (void)loadComponent:(const struct ComponentInfo *)arg1 package:(id)arg2;
 - (_Bool)isActive;
 - (void)tearDown;
 - (void)dealloc;

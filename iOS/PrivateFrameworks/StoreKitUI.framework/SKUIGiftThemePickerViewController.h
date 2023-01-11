@@ -10,6 +10,7 @@
 
 @class NSArray, NSString, SKUIGiftThemeCollectionView, SKUIGiftThemePickerFlowLayout, UIImage, UIPageControl, UITapGestureRecognizer;
 
+__attribute__((visibility("hidden")))
 @interface SKUIGiftThemePickerViewController <SKUIGiftConfigurationObserver, UICollectionViewDataSource, UICollectionViewDelegate>
 {
     _Bool _animatingScrollView;

@@ -9,9 +9,11 @@
     double _headerViewHeight;
     double _cameraViewAspectRatio;
     double _headerHorizontalInnerMargins;
+    double _cellHeight;
 }
 
 + (id)defaultOptionsForCellSizeSubclass:(long long)arg1;
+@property(nonatomic) double cellHeight; // @synthesize cellHeight=_cellHeight;
 @property(nonatomic) double headerHorizontalInnerMargins; // @synthesize headerHorizontalInnerMargins=_headerHorizontalInnerMargins;
 @property(nonatomic) double cameraViewAspectRatio; // @synthesize cameraViewAspectRatio=_cameraViewAspectRatio;
 @property(nonatomic) double headerViewHeight; // @synthesize headerViewHeight=_headerViewHeight;

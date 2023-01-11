@@ -6,7 +6,7 @@
 
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCKeyValueStore, FCNetworkBehaviorMonitor, FCPersonalizationData, FCPrivateChannelMembershipController, FCReadingHistory, FCReadingList, FCSubscriptionList, FCTagSettings, FCUserInfo, NSString;
+@class FCIssueReadingHistory, FCKeyValueStore, FCNetworkBehaviorMonitor, FCPersonalizationData, FCPrivateChannelMembershipController, FCReadingHistory, FCReadingList, FCSubscriptionList, FCTagSettings, FCUserInfo, NSString;
 @protocol FCPrivateDataContextInternal, FCPushNotificationHandling;
 
 @protocol FCPrivateDataContext <NSObject>
@@ -22,6 +22,7 @@
 @property(readonly, nonatomic) FCReadingHistory *readingHistory;
 @property(readonly, nonatomic) FCPrivateChannelMembershipController *privateChannelMembershipController;
 @property(readonly, nonatomic) FCPersonalizationData *personalizationData;
+@property(readonly, nonatomic) FCIssueReadingHistory *issueReadingHistory;
 - (FCKeyValueStore *)privateStoreWithName:(NSString *)arg1 version:(unsigned long long)arg2 options:(unsigned long long)arg3;
 @end
 

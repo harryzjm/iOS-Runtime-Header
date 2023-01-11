@@ -6,6 +6,7 @@
 
 @class NSNumber, NSString;
 
+__attribute__((visibility("hidden")))
 @interface SKUIReportAConcernReasonViewElement
 {
     NSNumber *_reasonID;

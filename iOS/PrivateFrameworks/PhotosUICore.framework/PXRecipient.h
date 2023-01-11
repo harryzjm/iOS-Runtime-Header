@@ -21,15 +21,14 @@
     NSString *_phoneNumberString;
     NSString *_emailAddressString;
     PXRecipientTransport *_suggestedTransport;
-    NSString *_displayName;
+    NSString *_localizedName;
     CNContact *_contact;
 }
 
-+ (id)displayNameForAddress:(id)arg1 recipientKind:(long long)arg2;
 + (id)_contactForAddress:(id)arg1 recipientKind:(long long)arg2;
 + (id)new;
 @property(readonly, nonatomic) CNContact *contact; // @synthesize contact=_contact;
-@property(readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property(readonly, copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property(retain, nonatomic) PXRecipientTransport *suggestedTransport; // @synthesize suggestedTransport=_suggestedTransport;
 @property(readonly, copy, nonatomic) NSString *emailAddressString; // @synthesize emailAddressString=_emailAddressString;
 @property(readonly, copy, nonatomic) NSString *phoneNumberString; // @synthesize phoneNumberString=_phoneNumberString;
@@ -43,8 +42,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
-- (id)initWithContact:(id)arg1 address:(id)arg2 recipientKind:(long long)arg3;
-- (id)initWithAddress:(id)arg1 recipientKind:(long long)arg2;
+- (id)initWithContact:(id)arg1 address:(id)arg2 nameComponents:(id)arg3 recipientKind:(long long)arg4;
+- (id)initWithAddress:(id)arg1 nameComponents:(id)arg2 recipientKind:(long long)arg3;
 - (id)init;
 
 // Remaining properties

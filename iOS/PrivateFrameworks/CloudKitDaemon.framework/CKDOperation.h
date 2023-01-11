@@ -10,7 +10,7 @@
 #import <CloudKitDaemon/CKDURLRequestAuthRetryDelegate-Protocol.h>
 #import <CloudKitDaemon/CKDURLRequestMetricsDelegate-Protocol.h>
 
-@class CKDClientContext, CKDClientProxy, CKDOperationMetrics, CKDURLRequest, CKOperationInfo, CKOperationMMCSRequestOptions, CKOperationResult, CKTimeLogger, NSDate, NSError, NSMutableArray, NSNumber, NSObject, NSString;
+@class CKDClientContext, CKDClientProxy, CKDOperationMetrics, CKDURLRequest, CKOperationInfo, CKOperationMMCSRequestOptions, CKOperationResult, NSDate, NSError, NSMutableArray, NSNumber, NSObject, NSString;
 @protocol NSObject, OS_dispatch_group, OS_dispatch_queue, OS_os_activity;
 
 __attribute__((visibility("hidden")))
@@ -24,9 +24,9 @@ __attribute__((visibility("hidden")))
     _Bool _useClearAssetEncryption;
     _Bool _isProxyOperation;
     _Bool _shouldPipelineFetchAllChangesRequests;
+    _Bool _didAttemptDugongKeyRoll;
     _Atomic int _pcsWaitCount;
     CKDURLRequest *_request;
-    CKTimeLogger *_timeLogger;
     NSDate *_startDate;
     CKDOperation *_parentOperation;
     CKDClientContext *_context;
@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 
 + (long long)isPredominatelyDownload;
 + (id)_globalOperationCallbackQueueForQOS:(long long)arg1;
+@property(nonatomic) _Bool didAttemptDugongKeyRoll; // @synthesize didAttemptDugongKeyRoll=_didAttemptDugongKeyRoll;
 @property(nonatomic) _Atomic int pcsWaitCount; // @synthesize pcsWaitCount=_pcsWaitCount;
 @property(retain, nonatomic) NSString *clientSuppliedDeviceIdentifier; // @synthesize clientSuppliedDeviceIdentifier=_clientSuppliedDeviceIdentifier;
 @property(retain, nonatomic) NSObject<OS_dispatch_group> *childOperationsGroup; // @synthesize childOperationsGroup=_childOperationsGroup;
@@ -72,10 +73,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) CKDClientContext *context; // @synthesize context=_context;
 @property(nonatomic) __weak CKDOperation *parentOperation; // @synthesize parentOperation=_parentOperation;
 @property(retain, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
-@property(retain, nonatomic) CKTimeLogger *timeLogger; // @synthesize timeLogger=_timeLogger;
 @property(nonatomic) _Bool isExecuting; // @synthesize isExecuting=_isExecuting;
 @property(nonatomic) _Bool isFinished; // @synthesize isFinished=_isFinished;
 - (void).cxx_destruct;
+- (id)analyticsPayload;
+- (id)dugongKeyRollAnalyticsPayloadWithError:(id)arg1;
+- (id)baseOperationAndErrorInfoCoreAnalyticsPayloadWithError:(id)arg1;
+- (void)sendCoreAnalyticsEventOperationFinished;
+- (_Bool)isNetworkingBehaviorEquivalentForOperation:(id)arg1;
 - (id)statusReportWithIndent:(unsigned long long)arg1;
 - (id)CKStatusReportLogGroups;
 - (id)CKStatusReportProperties;
@@ -92,6 +97,8 @@ __attribute__((visibility("hidden")))
 - (void)setCompletionBlock:(CDUnknownBlockType)arg1;
 @property(readonly, nonatomic) _Bool usesBackgroundSession;
 - (_Bool)isConcurrent;
+- (void)setQualityOfService:(long long)arg1;
+- (void)configureQualityOfServiceFromOperationInfo:(id)arg1;
 @property(readonly, nonatomic) unsigned int QOSClass;
 @property(readonly, nonatomic) NSString *flowControlKey;
 @property(readonly, nonatomic) _Bool shouldCheckAppVersion;
@@ -110,6 +117,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)makeStateTransition;
 @property(nonatomic) unsigned long long state;
 - (void)cancel;
+- (_Bool)isTopLevelDaemonOperationForMetrics;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)finishWithError:(id)arg1;
 - (void)_finishInternalOnCallbackQueueWithError:(id)arg1;
@@ -136,19 +144,25 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSNumber *operationGroupQuantityNumber;
 @property(readonly, nonatomic) NSString *operationGroupName;
 @property(readonly, nonatomic) NSString *operationGroupID;
+@property(readonly, nonatomic) _Bool isCloudKitSupportOperation;
 @property(readonly, nonatomic) _Bool shouldSkipZonePCSUpdate;
 - (id)additionalRequestHTTPHeaders;
 @property(readonly, nonatomic) double timeoutIntervalForResource;
 @property(readonly, nonatomic) double timeoutIntervalForRequest;
 @property(readonly, nonatomic) _Bool allowsBackgroundNetworking;
 @property(readonly, nonatomic) _Bool preferAnonymousRequests;
-@property(readonly, nonatomic) unsigned long long discretionaryNetworkBehavior;
+@property(readonly, nonatomic) unsigned long long systemScheduler;
+@property(readonly, nonatomic) unsigned long long discretionaryWhenBackgroundedState;
+@property(readonly, nonatomic) unsigned long long duetPreClearedMode;
+- (unsigned long long)discretionaryNetworkBehavior;
 @property(readonly, nonatomic) _Bool automaticallyRetryNetworkFailures;
 @property(readonly, nonatomic) NSString *authPromptReason;
 @property(readonly, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
 @property(readonly, nonatomic) CKOperationMMCSRequestOptions *MMCSRequestOptions;
 @property(readonly, nonatomic) _Bool isLongLived;
 @property(readonly, nonatomic) NSString *operationID;
+@property(readonly, nonatomic) unsigned long long resolvedDiscretionaryNetworkBehavior;
+@property(readonly, nonatomic) _Bool resolvedAutomaticallyRetryNetworkFailures;
 @property(readonly, nonatomic) _Bool allowsPowerNapScheduling;
 @property(readonly, nonatomic) NSString *sourceApplicationBundleIdentifier;
 @property(readonly, nonatomic) _Bool allowsCellularAccess;

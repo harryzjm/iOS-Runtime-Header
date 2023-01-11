@@ -11,20 +11,24 @@
 @interface FCGroupConfig : NSObject
 {
     FCColor *_groupTitleColor;
+    FCColor *_groupDarkStyleTitleColor;
     NSArray *_groupFonts;
     unsigned long long _cutoffTimeSecs;
     unsigned long long _cutoffCount;
     FCColorGradient *_groupBackgroundColorGradient;
+    FCColorGradient *_groupDarkStyleBackgroundColorGradient;
     NSDictionary *_dictionary;
     NSDictionary *_articleMetadataByArticleID;
 }
 
 @property(retain, nonatomic) NSDictionary *articleMetadataByArticleID; // @synthesize articleMetadataByArticleID=_articleMetadataByArticleID;
 @property(retain, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
+@property(retain, nonatomic) FCColorGradient *groupDarkStyleBackgroundColorGradient; // @synthesize groupDarkStyleBackgroundColorGradient=_groupDarkStyleBackgroundColorGradient;
 @property(retain, nonatomic) FCColorGradient *groupBackgroundColorGradient; // @synthesize groupBackgroundColorGradient=_groupBackgroundColorGradient;
 @property(nonatomic) unsigned long long cutoffCount; // @synthesize cutoffCount=_cutoffCount;
 @property(nonatomic) unsigned long long cutoffTimeSecs; // @synthesize cutoffTimeSecs=_cutoffTimeSecs;
 @property(retain, nonatomic) NSArray *groupFonts; // @synthesize groupFonts=_groupFonts;
+@property(retain, nonatomic) FCColor *groupDarkStyleTitleColor; // @synthesize groupDarkStyleTitleColor=_groupDarkStyleTitleColor;
 @property(retain, nonatomic) FCColor *groupTitleColor; // @synthesize groupTitleColor=_groupTitleColor;
 - (void).cxx_destruct;
 @property(readonly, nonatomic) NSString *feedID;

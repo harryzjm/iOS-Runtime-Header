@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <RelevanceEngine/REAppUsagePredictorProperties-Protocol.h>
+
 @class RETimeline;
 
-@interface REAppUsagePredictor
+@interface REAppUsagePredictor <REAppUsagePredictorProperties>
 {
     RETimeline *_timeline;
 }
@@ -14,7 +16,7 @@
 + (double)updateInterval;
 + (id)supportedFeatures;
 - (void).cxx_destruct;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) RETimeline *timeline;
 - (id)featureValueForFeature:(id)arg1 element:(id)arg2 engine:(id)arg3 trainingContext:(id)arg4;
 - (void)update;
 

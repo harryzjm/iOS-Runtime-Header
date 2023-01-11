@@ -24,7 +24,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic, getter=isRecordingOutOfSync) _Bool recordingOutOfSync;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)init;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)initWithOutOfSyncToken:(id)arg1 canClearOutOfSyncToken:(_Bool)arg2;
 - (void)saveToArchive:(struct RecordingSyncState *)arg1 archiver:(id)arg2;
 - (id)initWithArchive:(const struct RecordingSyncState *)arg1 unarchiver:(id)arg2;

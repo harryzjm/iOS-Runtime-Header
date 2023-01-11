@@ -12,6 +12,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)viewDidLoad;
+- (void)mapView:(id)arg1 regionDidChangeAnimated:(_Bool)arg2;
+- (void)_triggerCrossHairLocationDecode;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAnnotateSnapToUserLocationButton;
 

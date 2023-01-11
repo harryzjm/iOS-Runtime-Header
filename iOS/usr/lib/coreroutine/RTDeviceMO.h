@@ -4,21 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSDate, NSSet, NSString;
+@class NSSet, NSString;
 
 @interface RTDeviceMO
 {
 }
 
-+ (id)managedObjectWithIdentifier:(id)arg1 deviceName:(id)arg2 deviceClass:(id)arg3 deviceModel:(id)arg4 inManagedObjectContext:(id)arg5;
++ (id)managedObjectWithIdentifier:(id)arg1 deviceName:(id)arg2 deviceClass:(id)arg3 deviceModel:(id)arg4 creationDate:(id)arg5 inManagedObjectContext:(id)arg6;
 + (id)fetchRequest;
-@property(copy, nonatomic) NSDate *expirationDate;
-@property(copy, nonatomic) NSDate *creationDate;
 - (void)setDevice:(id)arg1;
 @property(readonly, nonatomic) RTDeviceMO *device;
 
 // Remaining properties
 @property(retain, nonatomic) NSSet *addresses; // @dynamic addresses;
+@property(retain, nonatomic) NSSet *deletionRequests; // @dynamic deletionRequests;
 @property(copy, nonatomic) NSString *deviceClass; // @dynamic deviceClass;
 @property(copy, nonatomic) NSString *deviceModel; // @dynamic deviceModel;
 @property(copy, nonatomic) NSString *deviceName; // @dynamic deviceName;

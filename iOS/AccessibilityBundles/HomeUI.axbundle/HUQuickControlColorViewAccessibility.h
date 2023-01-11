@@ -13,7 +13,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilitySelectedSwatch;
 - (id)_accessibilityFirstQuickControlElementForFocus;
-- (void)_switchButtonTapped:(id)arg1;
+- (void)_updateColorPicker;
 - (id)accessibilityElements;
 
 @end

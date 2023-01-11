@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     NSString *mName;
 }
 
-+ (id)pathSourceForShapeType:(int)arg1 naturalSize:(struct CGSize)arg2;
++ (id)pathSourceForShapeType:(long long)arg1 naturalSize:(struct CGSize)arg2;
 + (id)pathSourceWithArchive:(const struct PathSourceArchive *)arg1;
 @property _Bool hasVerticalFlip; // @synthesize hasVerticalFlip=mVerticalFlip;
 @property _Bool hasHorizontalFlip; // @synthesize hasHorizontalFlip=mHorizontalFlip;

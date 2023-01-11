@@ -13,8 +13,10 @@
 
 @interface PXPlacesSnapshotFactory : NSObject <PHPhotoLibraryChangeObserver>
 {
-    NSString *_cachedFilePath;
-    UIImage *_cachedSnapshotImage;
+    NSString *_cachedFilePathLight;
+    NSString *_cachedFilePathDark;
+    UIImage *_cachedSnapshotImageLight;
+    UIImage *_cachedSnapshotImageDark;
     NSString *_cachedSnapshotImageIdentifier;
     UIImage *_placeholderImage;
     long long _cachedCount;
@@ -23,6 +25,7 @@
     NSObject<OS_dispatch_queue> *_concurentQueue;
     _Bool _isRegisteredForPhotoLibraryChanges;
     _Bool _countCacheInvalidated;
+    long long _currentUserInterfaceStyle;
     id <PXPlacesSnapshotFactoryDelegate> _delegate;
     PHAssetCollection *_placesCollection;
     PHAsset *_snapshottedAsset;
@@ -46,7 +49,7 @@
 - (void)photoLibraryDidChange:(id)arg1;
 - (_Bool)_imageExistsWithLocalIdentifier:(id)arg1;
 - (void)_saveImage:(id)arg1 ofAsset:(id)arg2 atPath:(id)arg3;
-- (void)removePreviousCachedImage;
+- (void)removePreviousCachedImages;
 - (id)_latestAssetWithLocation;
 - (id)_placeHolderImageForExtendedTraitCollection:(id)arg1;
 - (void)requestAssetCountWithForcedRefresh:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
@@ -60,6 +63,7 @@
 - (void)_handleAsyncPlacesLibraryAlbumSnapshotWithSnapshotOptions:(id)arg1 andCompletion:(CDUnknownBlockType)arg2;
 - (void)requestPlacesLibraryAlbumSnapshotWithSnapshotOptions:(id)arg1 andCompletion:(CDUnknownBlockType)arg2;
 - (void)requestPlacesSnapshotWithSnapshotOptions:(id)arg1 assets:(id)arg2 andCompletion:(CDUnknownBlockType)arg3;
+@property(nonatomic) long long currentUserInterfaceStyle; // @synthesize currentUserInterfaceStyle=_currentUserInterfaceStyle;
 - (void)dealloc;
 - (id)init;
 

@@ -6,7 +6,6 @@
 
 @class __NSURLSessionTaskDependencyResourceIdentifier;
 
-__attribute__((visibility("hidden")))
 @interface __NSCFURLSessionTaskDependencyDescription
 {
     float _priority;

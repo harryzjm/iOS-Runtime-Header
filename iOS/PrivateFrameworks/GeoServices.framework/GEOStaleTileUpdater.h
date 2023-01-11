@@ -4,19 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class GEORequestCounter, GEOResourceManifestManager, GEOTileDB, GEOTileKeyList, GEOTileKeyMap, NSString;
+@class GEOResourceManifestManager, GEOTileDB, GEOTileKeyList, GEOTileKeyMap;
 
 __attribute__((visibility("hidden")))
 @interface GEOStaleTileUpdater
 {
-    NSString *_uniqueIdentifier;
     GEOTileDB *_diskCache;
     GEOResourceManifestManager *_manifestManager;
-    GEORequestCounter *_requestCounter;
     GEOTileKeyList *_keysRemaining;
     unsigned long long _numberOfTilesOriginallyConsidered;
-    unsigned long long _numberOfTilesAttempted;
-    struct GEOOnce_s _loggedStartRequestCounterAction;
     GEOTileKeyMap *_cacheMissType;
     unsigned long long _batchSize;
 }
@@ -27,9 +23,10 @@ __attribute__((visibility("hidden")))
 - (void)downloadDidSucceedForTile:(struct _GEOTileKey *)arg1 downloadSize:(unsigned long long)arg2 httpStatus:(unsigned int)arg3;
 - (void)_addMoreKeysToListIfNeeded:(id)arg1 staleCachedETags:(id)arg2 staleCachedData:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)determineNextBatchWithQueue:(id)arg1 callback:(CDUnknownBlockType)arg2;
+- (unsigned long long)numberOfTilesConsidered;
 - (_Bool)cancelKey:(const struct _GEOTileKey *)arg1;
 - (void)_determineStaleKeysToUpdate;
-- (id)initWithDiskCache:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3 manifestManager:(id)arg4 requestCounter:(id)arg5 tileRequesterCreationBlock:(CDUnknownBlockType)arg6;
+- (id)initWithDiskCache:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3 manifestManager:(id)arg4 tileRequesterCreationBlock:(CDUnknownBlockType)arg5;
 
 @end
 

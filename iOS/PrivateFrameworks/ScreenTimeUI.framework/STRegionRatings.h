@@ -6,8 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface STRegionRatings : NSObject
 {
     NSDictionary *_ratingsPlist;
@@ -16,11 +17,14 @@
 + (id)sharedRatings;
 @property(readonly) NSDictionary *ratingsPlist; // @synthesize ratingsPlist=_ratingsPlist;
 - (void).cxx_destruct;
+- (id)localizedStringForAppRatingLabel:(id)arg1;
 - (id)localizedAppRatingsForRegion:(id)arg1;
 - (id)localizedTVRatingsForRegion:(id)arg1;
 - (id)localizedMovieRatingsForRegion:(id)arg1;
 - (id)_localizedRatingsForRegion:(id)arg1 type:(id)arg2 allContentKey:(id)arg3 noContentKey:(id)arg4;
+@property(readonly, copy) NSArray *localizedRegionAndCodePairs;
 @property(readonly, copy) NSDictionary *localizedRegionsByCode;
+- (id)_localizedLabelForRegion:(id)arg1 rating:(id)arg2;
 - (id)_overrideValueForString:(id)arg1;
 @property(readonly, copy) NSString *preferredRegion;
 - (id)init;

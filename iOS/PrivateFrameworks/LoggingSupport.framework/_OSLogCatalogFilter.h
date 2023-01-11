@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)visitPredicateExpression:(id)arg1;
 - (void)visitPredicate:(id)arg1;
 - (void)processComparisonPredicate:(id)arg1;
-- (void)processLeftExpression:(id *)arg1 andRightExpression:(id *)arg2;
+- (void)processLeftExpression:(id)arg1 andRightExpression:(id)arg2;
 - (void)handleDSCContents:(struct uuiddb_dsc_map_s *)arg1;
 - (struct uuiddb_dsc_map_s *)getDSCMap;
 - (void)readDSCUUIDs;

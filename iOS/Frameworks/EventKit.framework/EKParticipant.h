@@ -5,11 +5,12 @@
 //
 
 #import <EventKit/EKIdentityProtocol-Protocol.h>
+#import <EventKit/EKParticipantSemanticIdentifierGeneratorDelegate-Protocol.h>
 #import <EventKit/NSCopying-Protocol.h>
 
 @class EKCalendarItem, NSPredicate, NSString, NSURL;
 
-@interface EKParticipant <EKIdentityProtocol, NSCopying>
+@interface EKParticipant <EKParticipantSemanticIdentifierGeneratorDelegate, EKIdentityProtocol, NSCopying>
 {
     EKCalendarItem *_owner;
 }
@@ -18,6 +19,7 @@
 + (id)participantWithName:(id)arg1 url:(id)arg2;
 @property(readonly, nonatomic) EKCalendarItem *owner; // @synthesize owner=_owner;
 - (void).cxx_destruct;
+@property(readonly, copy) NSString *description;
 - (id)semanticIdentifier;
 - (id)setInviterNameString;
 @property(copy, nonatomic) NSString *inviterNameString; // @dynamic inviterNameString;
@@ -29,7 +31,6 @@
 - (id)proposedStartDate;
 - (_Bool)isLocationRoom;
 - (const void *)ABRecordWithAddressBook:(void *)arg1;
-@property(readonly, nonatomic) NSPredicate *contactPredicate;
 - (id)nameComponents;
 - (_Bool)isEqualToParticipant:(id)arg1;
 - (void)setURL:(id)arg1;
@@ -39,6 +40,8 @@
 @property(readonly, nonatomic) long long participantRole;
 @property(readonly, nonatomic) long long participantStatus;
 @property(readonly, nonatomic) long long participantType;
+- (id)url;
+- (id)displayName;
 @property(copy, nonatomic) NSString *lastName;
 @property(copy, nonatomic) NSString *firstName;
 @property(copy, nonatomic) NSString *phoneNumber;
@@ -50,10 +53,10 @@
 @property(readonly, nonatomic) NSString *UUID;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithName:(id)arg1 emailAddress:(id)arg2 phoneNumber:(id)arg3 url:(id)arg4;
+@property(readonly, nonatomic) NSPredicate *contactPredicate; // @dynamic contactPredicate;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;
 

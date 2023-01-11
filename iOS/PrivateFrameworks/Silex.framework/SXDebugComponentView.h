@@ -4,13 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+@protocol SXLayoutInvalidator;
+
 @interface SXDebugComponentView
 {
+    id <SXLayoutInvalidator> _invalidator;
 }
 
+@property(readonly, nonatomic) id <SXLayoutInvalidator> invalidator; // @synthesize invalidator=_invalidator;
+- (void).cxx_destruct;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
 - (void)loadComponent:(id)arg1;
-- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 invalidator:(id)arg5;
 
 @end
 

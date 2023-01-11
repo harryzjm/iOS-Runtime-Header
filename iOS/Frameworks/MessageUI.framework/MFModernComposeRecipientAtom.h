@@ -9,14 +9,15 @@
 
 @interface MFModernComposeRecipientAtom
 {
-    id <MFComposeRecipientAtomDelegate> _delegate;
     MFComposeRecipient *_recipient;
     UITextInputTraits *_traits;
     unsigned int _wasSelectedWhenTouchesBegan:1;
     unsigned int _touchesWereCancelled:1;
+    id <MFComposeRecipientAtomDelegate> _delegate;
 }
 
-@property(nonatomic) id <MFComposeRecipientAtomDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) __weak id <MFComposeRecipientAtomDelegate> delegate; // @synthesize delegate=_delegate;
+- (void).cxx_destruct;
 - (void)moveRight:(id)arg1;
 - (void)moveLeft:(id)arg1;
 - (id)keyCommands;
@@ -26,7 +27,6 @@
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 @property(readonly, nonatomic) MFComposeRecipient *recipient;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 recipient:(id)arg2 presentationOptions:(unsigned long long)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 recipient:(id)arg2;
 

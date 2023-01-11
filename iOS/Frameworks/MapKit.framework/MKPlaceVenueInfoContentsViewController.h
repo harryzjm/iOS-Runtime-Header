@@ -21,12 +21,13 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSArray *labels; // @synthesize labels=_labels;
 @property(retain, nonatomic) id <GEOMapItemVenueContents> venueContents; // @synthesize venueContents=_venueContents;
 - (void).cxx_destruct;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (void)updateLabelsProperties;
 - (id)rowWithLeftLabel:(id)arg1 rightLabel:(id)arg2;
 - (id)labelWithTitle:(id)arg1;
 - (void)viewDidLoad;
 - (id)initWithVenueContents:(id)arg1;
+- (_Bool)_canShowWhileLocked;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -14,8 +14,8 @@
 @interface PLAvalanche : NSObject <PLAssetContainer, PLAssetChangeObserver>
 {
     NSString *_uuid;
-    NSOrderedSet *_assets;
     PLPhotoLibrary *_photoLibrary;
+    NSOrderedSet *_assets;
     NSIndexSet *__originalAutoPickIndexes;
     NSMutableIndexSet *__autoPickIndexes;
     NSIndexSet *__originalUserFavoriteIndexes;
@@ -34,14 +34,15 @@
 + (unsigned long long)_calculateStackAssetForAssetCount:(unsigned long long)arg1 autoPicks:(id)arg2 userFavorites:(id)arg3;
 + (id)_assetAmongAssets:(id)arg1 fromIndexes:(id)arg2 excludingIndexes:(id)arg3;
 + (id)_visibleIndexesAmongAssets:(id)arg1 fromUserFavoriteIndexes:(id)arg2 stackIndex:(unsigned long long)arg3;
++ (_Bool)_allowMPSmodificationForBurstChangesOnLibrary:(id)arg1;
 + (void)_updateMembershipForAssets:(id)arg1 autoPicks:(id)arg2 stackAsset:(id)arg3 userFavorites:(id)arg4 deleteNonPicks:(_Bool)arg5 allowDissolve:(_Bool)arg6 inLibrary:(id)arg7;
 + (id)_updatePropertiesForAssets:(id)arg1 autoPicks:(id)arg2 stackAsset:(id)arg3 userFavorites:(id)arg4 deleteNonPicks:(_Bool)arg5 setFirstPick:(_Bool)arg6 allowDissolve:(_Bool)arg7;
 + (void)_handleUpdatesForContextWillSave:(id)arg1;
 + (id)revalidateAvalancheAssets:(id)arg1 inLibrary:(id)arg2 deleteNonPicks:(_Bool)arg3 allowDissolve:(_Bool)arg4;
-+ (void)disolveBurstForAssets:(id)arg1;
++ (void)disolveBurstForAssets:(id)arg1 permanently:(_Bool)arg2;
 + (_Bool)isValidBurstWithAssets:(id)arg1;
-+ (unsigned long long)countForAvalancheUUID:(id)arg1 inLibrary:(id)arg2;
-+ (id)assetsWithAvalancheUUID:(id)arg1 inManagedObjectContext:(id)arg2;
++ (unsigned long long)countForNonMPSAssetsWithAvalancheUUID:(id)arg1 inLibrary:(id)arg2;
++ (id)nonMPSAssetsWithAvalancheUUID:(id)arg1 inManagedObjectContext:(id)arg2;
 @property(copy, nonatomic, setter=_setCompletionHandler:) CDUnknownBlockType _completionHandler; // @synthesize _completionHandler=__completionHandler;
 @property(retain, nonatomic, setter=_setAnOldPick:) PLManagedAsset *_anOldPick; // @synthesize _anOldPick=__anOldPick;
 @property(retain, nonatomic, setter=_setANewPick:) PLManagedAsset *_aNewPick; // @synthesize _aNewPick=__aNewPick;
@@ -51,9 +52,10 @@
 @property(retain, nonatomic) NSIndexSet *_originalUserFavoriteIndexes; // @synthesize _originalUserFavoriteIndexes=__originalUserFavoriteIndexes;
 @property(retain, nonatomic) NSMutableIndexSet *_autoPickIndexes; // @synthesize _autoPickIndexes=__autoPickIndexes;
 @property(retain, nonatomic) NSIndexSet *_originalAutoPickIndexes; // @synthesize _originalAutoPickIndexes=__originalAutoPickIndexes;
-@property(retain, nonatomic) PLPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property(retain, nonatomic) NSOrderedSet *assets; // @synthesize assets=_assets;
-@property(retain, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
+@property(readonly, nonatomic) PLPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+@property(readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
+- (void).cxx_destruct;
 @property(readonly, copy, nonatomic) NSArray *localizedLocationNames;
 @property(readonly, nonatomic) _Bool canShowAvalancheStacks;
 @property(readonly, nonatomic) _Bool canShowComments;

@@ -21,12 +21,15 @@
     } _has;
     _Bool _overwrite;
     _Bool _success;
+    _Bool __encodeLegacyGloryData;
     _INPBString *_destinationName;
     NSArray *_entityNames;
     _INPBString *_sourceName;
 }
 
++ (_Bool)supportsSecureCoding;
 + (Class)entityNameType;
+@property(nonatomic, setter=_setEncodeLegacyGloryData:) _Bool _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property(nonatomic) _Bool success; // @synthesize success=_success;
 @property(retain, nonatomic) _INPBString *sourceName; // @synthesize sourceName=_sourceName;
 @property(nonatomic) _Bool overwrite; // @synthesize overwrite=_overwrite;
@@ -37,6 +40,9 @@
 @property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)dealloc;
 - (void)writeTo:(id)arg1;
 - (_Bool)readFrom:(id)arg1;
 @property(nonatomic) _Bool hasSuccess;

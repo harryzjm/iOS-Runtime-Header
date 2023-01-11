@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
+#import <PhotosUICore/PXActivity.h>
+
 @class PUAlbumPickerViewController;
 
 __attribute__((visibility("hidden")))
-@interface PUAddToAlbumActivity
+@interface PUAddToAlbumActivity : PXActivity
 {
     PUAlbumPickerViewController *_albumPickerViewController;
 }
@@ -18,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareWithActivityItems:(id)arg1;
 - (_Bool)canPerformWithActivityItems:(id)arg1;
 - (id)_activityBundleImageConfiguration;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 

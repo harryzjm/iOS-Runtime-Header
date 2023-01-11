@@ -4,23 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class CMMotionActivityManager;
+#import <RelevanceEngine/REDeviceMotionPredictorProperties-Protocol.h>
 
-@interface REDeviceMotionPredictor
+@class CMMotionActivity, CMMotionActivityManager, REUpNextScheduler;
+
+@interface REDeviceMotionPredictor <REDeviceMotionPredictorProperties>
 {
     CMMotionActivityManager *_activityManager;
-    _Bool _isStationary;
-    unsigned long long _type;
+    REUpNextScheduler *_scheduler;
+    CMMotionActivity *_lastActivity;
+    _Bool _stationary;
+    unsigned long long _motionType;
 }
 
 + (id)supportedFeatures;
+@property unsigned long long motionType; // @synthesize motionType=_motionType;
+@property(getter=isStationary) _Bool stationary; // @synthesize stationary=_stationary;
 - (void).cxx_destruct;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
+@property(readonly, nonatomic) CMMotionActivityManager *activityManager;
 - (void)_updateWithActivity:(id)arg1;
 - (void)pause;
 - (void)resume;
 - (id)featureValueForFeature:(id)arg1 element:(id)arg2 engine:(id)arg3 trainingContext:(id)arg4;
-- (id)init;
+- (id)_init;
 
 @end
 

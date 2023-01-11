@@ -4,19 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class _UIStatusBarStringView;
-
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarPersonNameItem
 {
-    _UIStatusBarStringView *_personNameView;
 }
 
-@property(retain, nonatomic) _UIStatusBarStringView *personNameView; // @synthesize personNameView=_personNameView;
-- (void).cxx_destruct;
-- (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
-- (id)viewForIdentifier:(id)arg1;
-- (id)dependentEntryKeys;
+- (id)nameEntryKey;
 
 @end
 

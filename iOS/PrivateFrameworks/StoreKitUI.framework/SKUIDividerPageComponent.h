@@ -6,6 +6,7 @@
 
 @class NSString, SKUIDividerViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUIDividerPageComponent
 {
     NSString *_title;

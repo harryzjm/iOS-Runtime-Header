@@ -23,6 +23,9 @@
 + (_Bool)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (short)closestVertexIndexToLabeledFacePosition:(id)arg1;
+- (MISSING_TYPE *)normalForLabeledFacePosition:(id)arg1;
+- (MISSING_TYPE *)positionForLabeledFacePosition:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

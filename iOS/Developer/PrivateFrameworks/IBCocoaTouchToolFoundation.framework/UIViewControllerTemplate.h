@@ -15,6 +15,7 @@
     _Bool _hidesBottomBarWhenPushed;
     _Bool _extendedLayoutIncludesOpaqueBars;
     _Bool _automaticallyAdjustsScrollViewInsets;
+    _Bool _ibRequiresClassSwapper;
     UIViewControllerTemplate *_parentViewController;
     UINavigationItem *_navigationItem;
     UITabBarItem *_tabBarItem;
@@ -38,8 +39,11 @@
     NSValue *_preferredContentSize;
     NSArray *_keyCommands;
     unsigned long long _edgesForExtendedLayout;
+    NSArray *_childControllerCreationSelectorNames;
 }
 
+@property(nonatomic) _Bool ibRequiresClassSwapper; // @synthesize ibRequiresClassSwapper=_ibRequiresClassSwapper;
+@property(copy, nonatomic) NSArray *childControllerCreationSelectorNames; // @synthesize childControllerCreationSelectorNames=_childControllerCreationSelectorNames;
 @property(nonatomic) _Bool automaticallyAdjustsScrollViewInsets; // @synthesize automaticallyAdjustsScrollViewInsets=_automaticallyAdjustsScrollViewInsets;
 @property(nonatomic) _Bool extendedLayoutIncludesOpaqueBars; // @synthesize extendedLayoutIncludesOpaqueBars=_extendedLayoutIncludesOpaqueBars;
 @property(nonatomic) unsigned long long edgesForExtendedLayout; // @synthesize edgesForExtendedLayout=_edgesForExtendedLayout;
@@ -75,6 +79,7 @@
 - (void)createTabBarItemsIfNecessary;
 - (void)createNavigationItemsIfNecessary;
 - (void)dealloc;
+- (_Bool)ibRequiresClassSwapperForObjectClassName:(id)arg1 customClassName:(id)arg2;
 - (void)setIbShadowedLayoutGuides:(id)arg1;
 - (id)ibShadowedLayoutGuides;
 - (_Bool)ibCapturePlaceholderTable:(id)arg1 forRelationship:(id)arg2 withContext:(id)arg3;

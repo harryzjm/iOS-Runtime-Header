@@ -4,22 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <PassKitUI/AAUIDeviceToDeviceEncryptionHelperDelegate-Protocol.h>
 #import <PassKitUI/PKExplanationViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSelectPassesViewControllerDelegate-Protocol.h>
-#import <PassKitUI/PKPaymentSetupHideSetupLaterButtonProtocol-Protocol.h>
-#import <PassKitUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class NSString, PKPaymentProvisioningController, PKPeerPaymentCredential, PKPeerPaymentWebService, RemoteUIController, UIImage;
+@class NSString, PKPaymentProvisioningController, PKPeerPaymentCredential, PKPeerPaymentTermsController, PKPeerPaymentWebService, UIImage;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPeerPaymentExplanationViewController <RemoteUIControllerDelegate, PKExplanationViewDelegate, PKPaymentSelectPassesViewControllerDelegate, AAUIDeviceToDeviceEncryptionHelperDelegate, PKExplanationViewControllerDelegate, PKPaymentSetupHideSetupLaterButtonProtocol>
+@interface PKPeerPaymentExplanationViewController <PKExplanationViewDelegate, PKPaymentSelectPassesViewControllerDelegate, PKExplanationViewControllerDelegate>
 {
     PKPaymentProvisioningController *_provisioningController;
     PKPeerPaymentCredential *_credential;
     id <PKPaymentSetupViewControllerDelegate> _setupDelegate;
-    RemoteUIController *_termsController;
+    PKPeerPaymentTermsController *_termsController;
     PKPeerPaymentWebService *_peerPaymentWebService;
     UIImage *_passSnapShot;
     _Bool _hidesSetupLater;
@@ -41,10 +38,8 @@
 - (void)_continuePressed;
 - (void)_addDifferentCard;
 - (id)_bodyText;
-- (void)deviceToDeviceEncryptionHelper:(id)arg1 shouldContinueUpgradingUserToHSA2WithCompletion:(CDUnknownBlockType)arg2;
 - (void)explanationViewControllerDidSelectCancel:(id)arg1;
 - (void)selectPassesViewController:(id)arg1 didSelectPasses:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)setHideSetupLaterButton:(_Bool)arg1;

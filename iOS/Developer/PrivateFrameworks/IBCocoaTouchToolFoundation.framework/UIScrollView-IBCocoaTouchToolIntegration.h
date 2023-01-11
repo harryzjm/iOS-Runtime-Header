@@ -12,6 +12,9 @@
 - (_Bool)ibShouldIgnoreScrollableContentHeightAmbiguityForRepresentationOfItem:(id)arg1 inEngine:(id)arg2;
 - (_Bool)ibShouldIgnoreScrollableContentWidthAmbiguityForRepresentationOfItem:(id)arg1 inEngine:(id)arg2;
 - (_Bool)_ibShouldIgnoreScrollableContentAmbiguityForRepresentationOfItem:(id)arg1 inEngine:(id)arg2;
+- (void)ibDidBootstrapLayoutWithCopyOfReceiver:(id)arg1 forLayoutEngine:(id)arg2;
+- (void)setIbComputedContentSize:(id)arg1;
+- (id)ibContentSize;
 - (id)systemLayoutGuideForType:(long long)arg1;
 - (void)setIbShadowedFrameLayoutGuide:(id)arg1;
 - (id)ibShadowedFrameLayoutGuide;
@@ -24,6 +27,9 @@
 - (void)setIbPlaceholderView:(id)arg1;
 - (id)ibFallbackViewsForCandidateConstraintGenerationForFailedArbitration;
 - (id)ibExplicitCandidateConstraintGenerationMaskForChildView:(id)arg1;
+- (void)ibPropagateFramesAffectingAutoresizingMasksToCopyOfReceiver:(id)arg1 forLayoutEngine:(id)arg2;
+- (void)setIbLayoutFrame:(struct CGRect)arg1;
+- (void)ibPreserveContentOffsetDuring:(CDUnknownBlockType)arg1;
 - (void)ibSwizzled_setContentOffset:(struct CGPoint)arg1;
 - (void)ibApplyContentOffsetAdjustment;
 - (void)ibDidIncrementallyUpdateValueForKeyPath:(id)arg1;

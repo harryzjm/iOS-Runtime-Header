@@ -10,7 +10,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)instanceWithArchive:(const struct Chart3DEmissiveMaterialArchive *)arg1 unarchiver:(id)arg2;
-- (struct MaterialShaderVariables)defaultShaderVariables;
+- (id)defaultShaderVariables;
 - (void)saveToArchive:(struct Chart3DEmissiveMaterialArchive *)arg1 archiver:(id)arg2;
 - (id)initWithArchive:(const struct Chart3DEmissiveMaterialArchive *)arg1 unarchiver:(id)arg2;
 

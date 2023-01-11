@@ -8,11 +8,14 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (unsigned long long)accessibilityTraits;
+- (_Bool)canBecomeFocused;
+- (long long)accessibilityContainerType;
 - (_Bool)_accessibilityIsScannerGroup;
 - (_Bool)isAccessibilityElement;
+- (unsigned long long)_accessibilityAutomationType;
 
 @end
 

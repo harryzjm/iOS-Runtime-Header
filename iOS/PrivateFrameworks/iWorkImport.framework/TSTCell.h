@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     double _valueDouble;
     unsigned int _valueID;
     NSObject *_valueObject;
-    struct TSCEDecimal _valueBigNumber;
+    struct TSUDecimal _valueBigNumber;
     unsigned char _conditionalStyleAppliedRule;
     unsigned short _explicitFormatFlags;
     unsigned short _cellFlags;
@@ -46,9 +46,9 @@ __attribute__((visibility("hidden")))
     TSKFormat *_durationFormat;
     TSKFormat *_textFormat;
     TSKFormat *_booleanFormat;
+    TSTImportWarningSet *_importWarningSet;
     TSULocale *_locale;
     TSDCommentStorage *_commentStorage;
-    TSTImportWarningSet *_importWarningSet;
 }
 
 + (id)stringForCellValueType:(int)arg1;
@@ -71,10 +71,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int textStyleID; // @synthesize textStyleID=_textStyleID;
 @property(nonatomic) unsigned int cellStyleID; // @synthesize cellStyleID=_cellStyleID;
 @property(readonly, nonatomic) unsigned int cellFormatKind; // @synthesize cellFormatKind=_cellFormatKind;
-@property(retain, nonatomic) TSTImportWarningSet *importWarningSet; // @synthesize importWarningSet=_importWarningSet;
 @property(retain, nonatomic) TSDCommentStorage *commentStorage; // @synthesize commentStorage=_commentStorage;
 @property(retain, nonatomic) TSULocale *locale; // @synthesize locale=_locale;
 @property(nonatomic) unsigned short cellFlags; // @synthesize cellFlags=_cellFlags;
+@property(retain, nonatomic) TSTImportWarningSet *importWarningSet; // @synthesize importWarningSet=_importWarningSet;
 @property(readonly, nonatomic) TSKFormat *booleanFormat; // @synthesize booleanFormat=_booleanFormat;
 @property(readonly, nonatomic) TSKFormat *textFormat; // @synthesize textFormat=_textFormat;
 @property(readonly, nonatomic) TSKFormat *durationFormat; // @synthesize durationFormat=_durationFormat;
@@ -95,10 +95,11 @@ __attribute__((visibility("hidden")))
 - (id)cellValueTypeDescription;
 - (id)description;
 - (id)reorganizeValueForSorting;
-@property(readonly, nonatomic) _Bool hasImportWarningSet;
 @property(readonly, nonatomic) _Bool hasCommentStorage;
-- (void)setImportWarningSet:(id)arg1 clearingID:(_Bool)arg2;
 - (void)setCommentStorage:(id)arg1 clearingID:(_Bool)arg2;
+- (void)setImportWarningSet:(id)arg1 clearingID:(_Bool)arg2;
+@property(readonly, nonatomic) _Bool hasImportWarningSet;
+@property(readonly, nonatomic) _Bool hasAnyWarning;
 - (unsigned int)formatIDForStorageFlag:(unsigned int)arg1;
 - (id)formatForStorageFlag:(unsigned int)arg1;
 - (void)setFormatID:(unsigned int)arg1 forStorageFlag:(unsigned int)arg2;
@@ -153,7 +154,7 @@ __attribute__((visibility("hidden")))
 - (void)applyPopupChoiceIndex:(unsigned long long)arg1;
 @property(readonly, nonatomic) unsigned long long popupChoiceIndex;
 @property(readonly, nonatomic) TSTStockDetails *stockDetails;
-@property(readonly, nonatomic) _Bool hasStockFormula;
+@property(readonly, nonatomic) _Bool hasStockFormulaForStockUI;
 @property(readonly, nonatomic) _Bool hasFormula;
 @property(readonly, nonatomic) TSTCellSpec *cellSpecForDiff;
 @property(readonly, nonatomic) _Bool hasCellSpec;
@@ -168,6 +169,7 @@ __attribute__((visibility("hidden")))
 - (void)clearStrokes;
 - (void)copyJustStyleAndStrokesToCell:(id)arg1;
 - (void)copyJustStrokesToCell:(id)arg1;
+- (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2 supportsInlineAttachments:(_Bool)arg3;
 @property(readonly, nonatomic) _Bool hasConditionalStyle;
 @property(readonly, nonatomic) _Bool hasTextStyle;
 @property(readonly, nonatomic) _Bool hasCellStyle;
@@ -201,12 +203,16 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSDate *dateValue;
 @property(nonatomic) double durationTimeIntervalValue;
 @property(nonatomic) _Bool boolValue;
+- (void)setCurrencyOrNumberDecimalValue:(const struct TSUDecimal *)arg1;
 - (void)setCurrencyOrNumberDoubleValue:(double)arg1;
+@property(readonly, nonatomic) struct TSUDecimal underlyingDecimalValue;
 @property(readonly, nonatomic) double underlyingDoubleValue;
 @property(nonatomic) double currencyDoubleValue;
 @property(nonatomic) double numberDoubleValue;
-@property(nonatomic) struct TSCEDecimal currencyDecimalValue;
-@property(nonatomic) struct TSCEDecimal numberDecimalValue;
+@property(nonatomic) struct TSUDecimal currencyDecimalValue;
+- (void)setCurrencyDecimalValue:(struct TSUDecimal)arg1 roundToDoublePrecision:(_Bool)arg2;
+@property(nonatomic) struct TSUDecimal numberDecimalValue;
+- (void)setNumberDecimalValue:(struct TSUDecimal)arg1 roundToDoublePrecision:(_Bool)arg2;
 - (void)setProvidedValueTypeBeforeUpgrade;
 - (void)clearDataListIDs;
 @property(nonatomic) unsigned int richTextID;
@@ -222,11 +228,17 @@ __attribute__((visibility("hidden")))
 - (void)inflateFromStorageRef:(struct TSTCellStorage *)arg1 dataStore:(id)arg2 suppressingTransmutation:(_Bool)arg3;
 - (void)inflateFromStorageRef:(struct TSTCellStorage *)arg1 dataStore:(id)arg2;
 - (void)copyValueAndFormatToCell:(id)arg1;
+- (void)copyJustValueToCell:(id)arg1;
 - (void)shallowCopyToCell:(id)arg1;
 - (void)copyToCell:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithStorageRef:(struct TSTCellStorage *)arg1 dataStore:(id)arg2;
 - (id)initWithLocale:(id)arg1;
+- (void)replaceContentWithParsableString:(id)arg1 tableInfo:(id)arg2 cellID:(struct TSUCellCoord)arg3 flags:(unsigned long long)arg4 outControlWasRemoved:(_Bool *)arg5;
+- (_Bool)coerceCellToFormatTypeUsingSpares:(int)arg1;
+- (_Bool)coerceTextCellToBestNumberFormatUsingLimitedParsing:(_Bool)arg1;
+- (_Bool)coerceToBaseFormat:(id)arg1;
+- (_Bool)coerceToFormatType:(int)arg1;
 - (_Bool)removeControlCellSpec;
 
 @end

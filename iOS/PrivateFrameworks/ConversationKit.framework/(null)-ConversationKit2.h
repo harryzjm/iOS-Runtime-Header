@@ -4,7 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@interface (null) (ConversationKit2)
-- (void)handleLocalVideoPreviewFirstFrameArrived:(id)arg1;
+#import <ConversationKit/AVCRemoteVideoClientDelegate-Protocol.h>
+
+@interface (null) (ConversationKit2) <AVCRemoteVideoClientDelegate>
+- (void)remoteVideoClient:(id)arg1 remoteVideoAttributesDidChange:(id)arg2;
+- (void)remoteVideoClient:(id)arg1 videoDidDegrade:(_Bool)arg2;
+- (void)remoteVideoClient:(id)arg1 remoteVideoDidPause:(_Bool)arg2;
+- (void)remoteVideoClient:(id)arg1 videoDidSuspend:(_Bool)arg2;
+- (void)remoteVideoClientDidReceiveFirstFrame:(id)arg1;
 @end
 

@@ -105,6 +105,8 @@
 - (void)_noteOutstandingUpdateRequestForSequence:(id)arg1;
 - (void)_setLargestAvailableDisplayMode:(long long)arg1;
 - (void)_updatePreferredContentSizeWithHeight:(double)arg1;
+- (void)_layoutMarginsDidChange;
+- (struct UIEdgeInsets)_layoutMargins;
 - (struct UIEdgeInsets)_marginInsets;
 - (struct CGSize)_maxSizeForDisplayMode:(long long)arg1;
 - (void)handleReconnectionRequest:(id)arg1;
@@ -133,6 +135,7 @@
 - (void)_packageViewWithBlock:(CDUnknownBlockType)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)_captureLayerTree:(CDUnknownBlockType)arg1;
 - (void)_invalidateSnapshotWithForce:(_Bool)arg1 removingSnapshotFilesForActiveDisplayMode:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_removeAllSnapshotFilesInActiveDisplayModeForAllButActiveUserInterfaceStyle;
 - (void)_removeAllSnapshotFilesInActiveDisplayModeForContentSizeCategory:(id)arg1;
 - (void)_removeAllSnapshotFilesForActiveDisplayMode;
 - (void)_removeAllSnapshotFilesDueToIssue:(_Bool)arg1;
@@ -158,6 +161,7 @@
 - (_Bool)_isActiveSequence:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
+- (_Bool)_canShowWhileLocked;
 - (_Bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)viewDidLoad;
 - (void)managingContainerDidDisappear:(id)arg1;

@@ -10,6 +10,7 @@
 
 @class NSArray, UICollectionViewLayoutAttributes;
 
+__attribute__((visibility("hidden")))
 @interface CKBallotLayoutAttributesCollection : NSObject <NSCopying>
 {
     UICollectionViewLayoutAttributes *_containerAttributes;

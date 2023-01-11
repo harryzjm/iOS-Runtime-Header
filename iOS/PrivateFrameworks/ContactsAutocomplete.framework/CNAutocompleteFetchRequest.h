@@ -7,28 +7,33 @@
 #import <objc/NSObject.h>
 
 #import <ContactsAutocomplete/NSCopying-Protocol.h>
+#import <ContactsAutocomplete/NSSecureCoding-Protocol.h>
 
 @class CNAutocompleteFetchContext, NSArray, NSString;
 
-@interface CNAutocompleteFetchRequest : NSObject <NSCopying>
+@interface CNAutocompleteFetchRequest : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_searchString;
     NSString *_priorityDomainForSorting;
     unsigned long long _searchType;
     CNAutocompleteFetchContext *_fetchContext;
+    struct NSNumber *_shouldIncludeGroupResultsImpl;
     _Bool _includeContacts;
     _Bool _includeRecents;
     _Bool _includeSuggestions;
+    _Bool _includeLocalExtensions;
     _Bool _includeDirectoryServers;
     _Bool _includeCalendarServers;
     _Bool _includePredictions;
 }
 
++ (_Bool)supportsSecureCoding;
 + (id)searchablePropertiesForSearchType:(unsigned long long)arg1;
 + (id)request;
 @property _Bool includePredictions; // @synthesize includePredictions=_includePredictions;
 @property _Bool includeCalendarServers; // @synthesize includeCalendarServers=_includeCalendarServers;
 @property _Bool includeDirectoryServers; // @synthesize includeDirectoryServers=_includeDirectoryServers;
+@property _Bool includeLocalExtensions; // @synthesize includeLocalExtensions=_includeLocalExtensions;
 @property _Bool includeSuggestions; // @synthesize includeSuggestions=_includeSuggestions;
 @property _Bool includeRecents; // @synthesize includeRecents=_includeRecents;
 @property _Bool includeContacts; // @synthesize includeContacts=_includeContacts;
@@ -39,9 +44,13 @@
 - (void).cxx_destruct;
 @property _Bool includeServers;
 @property(copy) NSString *sendingAddress;
+@property _Bool shouldIncludeGroupResults;
+- (id)shouldIncludeGroupResultsDebugString;
 - (id)searchTypeDebugString;
 - (id)includeDebugString;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 @property(readonly) NSArray *searchableProperties;
 - (_Bool)isValid:(id *)arg1;
 - (id)executeWithDelegate:(id)arg1;

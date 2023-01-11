@@ -14,7 +14,7 @@
 #import <PhotosUI/PUTilingViewTileUseDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSSet, NSString, PUBrowsingSession, PUCameraPreviewTransitionDelegate, PUChangeDirectionValueFilter, PUOneUpViewController, PUPinchedTileTracker, PUTilingView, PXPhotosDataSource, UITapGestureRecognizer, UIViewController;
+@class NSSet, NSString, PUBrowsingSession, PUChangeDirectionValueFilter, PUOneUpViewController, PUPinchedTileTracker, PUTilingView, PXPhotosDataSource, UITapGestureRecognizer, UIViewController;
 @protocol PUOneUpPresentationHelperAssetDisplayDelegate, PUOneUpPresentationHelperDelegate;
 
 @interface PUOneUpPresentationHelper : NSObject <PUPhotosPreviewPresentationControllerDelegate, UIGestureRecognizerDelegate, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PUTilingViewTileUseDelegate, PUPinchedTileTrackerDelegate, PUTilingViewControllerTransitionEndPoint>
@@ -70,11 +70,11 @@
     UITapGestureRecognizer *__tapGestureRecognizer;
     PUPinchedTileTracker *__pinchedTileTracker;
     PUChangeDirectionValueFilter *__panDirectionValueFilter;
-    PUCameraPreviewTransitionDelegate *__cameraPreviewTransitionDelegate;
+    long long __presentationOrigin;
 }
 
+@property(nonatomic) long long _presentationOrigin; // @synthesize _presentationOrigin=__presentationOrigin;
 @property(nonatomic, setter=_setIsPerformingNonAnimatedPush:) _Bool _isPerformingNonAnimatedPush; // @synthesize _isPerformingNonAnimatedPush=__isPerformingNonAnimatedPush;
-@property(retain, nonatomic, setter=_setCameraPreviewTransitionDelegate:) PUCameraPreviewTransitionDelegate *_cameraPreviewTransitionDelegate; // @synthesize _cameraPreviewTransitionDelegate=__cameraPreviewTransitionDelegate;
 @property(retain, nonatomic, setter=_setPanDirectionValueFilter:) PUChangeDirectionValueFilter *_panDirectionValueFilter; // @synthesize _panDirectionValueFilter=__panDirectionValueFilter;
 @property(retain, nonatomic, setter=_setPinchedTileTracker:) PUPinchedTileTracker *_pinchedTileTracker; // @synthesize _pinchedTileTracker=__pinchedTileTracker;
 @property(retain, nonatomic, setter=_setTapGestureRecognizer:) UITapGestureRecognizer *_tapGestureRecognizer; // @synthesize _tapGestureRecognizer=__tapGestureRecognizer;
@@ -125,9 +125,7 @@
 - (void)navigateToAssetAtIndexPath:(id)arg1;
 - (id)cameraPreviewTransitionDelegateWithSourceRect:(struct CGRect)arg1 sourceImage:(id)arg2;
 - (id)previewPresentationTransitioningDelegateForPosition:(struct CGPoint)arg1 inSourceView:(id)arg2;
-- (void)_updatePreviewingScrubber;
 - (_Bool)shouldStartPreviewingSimultaneouslyWithGestureRecognizer:(id)arg1;
-- (id)_scrollViewForPreviewing;
 - (void)commitPreviewViewController:(id)arg1;
 - (void)cancelCommitTransitionForPreviewViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(_Bool)arg2;
@@ -137,7 +135,7 @@
 - (id)_createOneUpViewControllerWithBrowsingSession:(id)arg1 options:(unsigned long long)arg2;
 - (void)_didFinishTransitioningToOneUp;
 - (void)_disappearingTilingView:(id)arg1 animationCompleted:(_Bool)arg2;
-- (void)_cleanUpAfterTilingViewTransitionAnimated:(_Bool)arg1;
+- (void)_cleanUpAfterTilingViewTransitionAnimated:(_Bool)arg1 transitionAborted:(_Bool)arg2;
 - (void)_updateAssetReferencesDisplayedInTilingView;
 - (void)_invalidateAssetReferencesDisplayedInTilingView;
 - (void)_handleTap:(id)arg1;

@@ -43,6 +43,7 @@
 - (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (id)_storePlatformRequestContextWithIdentity:(id)arg1;
 - (void)_schedulePeriodicTasks;
+- (void)_handleUserIdentityStoreDidChange;
 - (void)_handleUserIdentityStoreDidChangeNotification:(id)arg1;
 - (void)_processSyncCommands:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateBanners:(id)arg1 completion:(CDUnknownBlockType)arg2;

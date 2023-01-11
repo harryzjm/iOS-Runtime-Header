@@ -4,27 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class MTSound, NSString;
+@class MTSound, NSNumber, NSString;
 
 @interface MTMutableAlarm
 {
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)applyChangesFromChangeSet:(id)arg1;
 
 // Remaining properties
-@property(nonatomic) unsigned long long active; // @dynamic active;
-@property(nonatomic, getter=isActiveForThisDevice) _Bool activeForThisDevice; // @dynamic activeForThisDevice;
 @property(nonatomic) _Bool allowsSnooze; // @dynamic allowsSnooze;
 @property(nonatomic) _Bool bedtimeDoNotDisturb; // @dynamic bedtimeDoNotDisturb;
+@property(nonatomic) unsigned long long bedtimeDoNotDisturbOptions; // @dynamic bedtimeDoNotDisturbOptions;
 @property(nonatomic) unsigned long long bedtimeHour; // @dynamic bedtimeHour;
 @property(nonatomic) unsigned long long bedtimeMinute; // @dynamic bedtimeMinute;
+@property(copy, nonatomic) NSNumber *bedtimeReminder; // @dynamic bedtimeReminder;
 @property(nonatomic) unsigned long long bedtimeReminderMinutes; // @dynamic bedtimeReminderMinutes;
 @property(nonatomic, getter=isEnabled) _Bool enabled; // @dynamic enabled;
 @property(nonatomic) unsigned long long hour; // @dynamic hour;
 @property(nonatomic) unsigned long long minute; // @dynamic minute;
+@property(nonatomic) unsigned long long playOptions; // @dynamic playOptions;
 @property(nonatomic) unsigned long long repeatSchedule; // @dynamic repeatSchedule;
+@property(nonatomic) _Bool sleepSchedule; // @dynamic sleepSchedule;
 @property(copy, nonatomic) MTSound *sound; // @dynamic sound;
+@property(nonatomic) _Bool timeInBedTracking; // @dynamic timeInBedTracking;
 @property(copy, nonatomic) NSString *title; // @dynamic title;
 
 @end

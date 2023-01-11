@@ -6,12 +6,20 @@
 
 #import <CloudKit/CKRecord.h>
 
+#import <CloudDocsDaemon/PQLBindable-Protocol.h>
 #import <CloudDocsDaemon/PQLValuable-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
-@interface CKRecord (BRCSerializationAdditions) <PQLValuable>
+@interface CKRecord (BRCSerializationAdditions) <PQLValuable, PQLBindable>
 + (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
++ (id)desiredKeysWithMask:(unsigned short)arg1;
++ (id)rootAppLibraryRecordForAppLibraryID:(id)arg1 zoneID:(id)arg2;
++ (id)rootDirectoryRecordForZoneID:(id)arg1;
++ (id)brc_containerMetadataRecordWithContainer:(id)arg1;
++ (id)brc_containerMetadataZoneID;
++ (id)brc_zoneHealthZoneID;
++ (id)brc_fakeRecordWithErrorMarkerFor20716676;
 - (void)serializeVersion:(id)arg1 diffs:(unsigned long long)arg2 deadInServerTruth:(_Bool)arg3;
 - (void)serializeStatInfo:(id)arg1 diffs:(unsigned long long)arg2 stageID:(id)arg3 deadInServerTruth:(_Bool)arg4 pcsChaining:(_Bool)arg5;
 - (void)serializeFilename:(id)arg1 forCreation:(_Bool)arg2 setExtension:(_Bool)arg3 inSharedAlias:(_Bool)arg4;
@@ -29,6 +37,23 @@
 - (_Bool)deserializeFilename:(id *)arg1 basename:(id *)arg2 bounceno:(id *)arg3 extension:(id *)arg4 userInfo:(id)arg5 error:(id *)arg6;
 - (_Bool)_deserializeValue:(id *)arg1 forKey:(id)arg2 encrypted:(_Bool)arg3 expectClass:(Class)arg4 allowNil:(_Bool)arg5 errorDescription:(id *)arg6;
 - (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
+- (void)sanitizeShortTokenFields;
+- (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
+- (_Bool)brc_currentUserOwnsLastEditorDevice;
+- (id)brc_lastEditorDeviceName;
+- (_Bool)brc_safeToGetURL;
+- (id)brc_updateDroppedReason;
+- (id)brc_oplockMergeEtag;
+- (_Bool)brc_isInterestingRecordForSyncDown;
+- (id)brc_containerMetadataIconPaths;
+- (id)brc_containerMetadataIconNames;
+@property(readonly, nonatomic) NSData *brc_containerMetadataPropertiesData;
+- (_Bool)brc_isfakeRecordWithErrorMarkerFor20716676;
+- (void)brc_updateWithLogicalName:(id)arg1 isFolder:(_Bool)arg2;
+- (id)brc_documentName;
+- (id)brc_sharedDocumentDisplayName;
+- (id)brc_sharedDocumentExtension;
+- (_Bool)isFolderShare;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

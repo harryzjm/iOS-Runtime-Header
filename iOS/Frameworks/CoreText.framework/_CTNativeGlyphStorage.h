@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (void)setProps:(unsigned int)arg1 atIndex:(long long)arg2;
 - (void)setOrigin:(struct CGPoint)arg1 atIndex:(long long)arg2;
 - (struct CGPoint)originAtIndex:(long long)arg1;
-- (const struct CGPoint *)origins;
 - (_Bool)implementsOrigins;
 - (void)setAttachmentCount:(long long)arg1 atIndex:(long long)arg2;
 - (long long)attachmentCountAtIndex:(long long)arg1;
@@ -42,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_tryRetain;
 - (id)copyWithRange:(CDStruct_912cb5d2)arg1;
 - (id)initWithCount:(long long)arg1;
-- (void)prepareWithCapacity:(long long)arg1 preallocated:(_Bool)arg2;
+- (id)prepareWithCapacity:(long long)arg1 preallocated:(_Bool)arg2;
 
 @end
 

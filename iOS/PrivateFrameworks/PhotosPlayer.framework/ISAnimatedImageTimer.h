@@ -6,6 +6,7 @@
 
 @class CADisplayLink, _ISAnimatedImageTimerForwardingProxy;
 
+__attribute__((visibility("hidden")))
 @interface ISAnimatedImageTimer
 {
     CADisplayLink *_displayLink;

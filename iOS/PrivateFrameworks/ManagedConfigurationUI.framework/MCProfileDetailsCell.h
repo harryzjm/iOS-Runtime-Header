@@ -4,29 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-#import <UIKit/UITableViewCell.h>
-
-@class UIImageView, UILabel, UIView;
-
 __attribute__((visibility("hidden")))
-@interface MCProfileDetailsCell : UITableViewCell
+@interface MCProfileDetailsCell
 {
-    UIImageView *_detailImageView;
-    UIView *_detailView;
-    UILabel *_detailTitleLabel;
-    UILabel *_detailSubtitle1Label;
-    UILabel *_detailSubtitle2Label;
+    unsigned long long _cellStyle;
 }
 
-+ (double)cellHeight;
-@property(retain, nonatomic) UILabel *detailSubtitle2Label; // @synthesize detailSubtitle2Label=_detailSubtitle2Label;
-@property(retain, nonatomic) UILabel *detailSubtitle1Label; // @synthesize detailSubtitle1Label=_detailSubtitle1Label;
-@property(retain, nonatomic) UILabel *detailTitleLabel; // @synthesize detailTitleLabel=_detailTitleLabel;
-@property(retain, nonatomic) UIView *detailView; // @synthesize detailView=_detailView;
-@property(retain, nonatomic) UIImageView *detailImageView; // @synthesize detailImageView=_detailImageView;
-- (void).cxx_destruct;
+@property(nonatomic) unsigned long long cellStyle; // @synthesize cellStyle=_cellStyle;
+- (id)_combineSubtitleAndApplyAttributeWithSubtitle1:(id)arg1 subtitle2:(id)arg2 font:(id)arg3 defaultColor:(id)arg4 expirationColor:(id)arg5 nearExpiration:(_Bool)arg6;
+- (id)_attributedTextForSolitaryTitleLabel:(id)arg1 defaultColor:(id)arg2;
 - (id)_textForLabel:(id)arg1 value:(id)arg2;
 - (id)_imageForApplicationIdentifier:(id)arg1;
+- (id)_detailImage;
+- (_Bool)_containsTitleLabelOnly;
 - (void)setCertificate:(struct __SecCertificate *)arg1;
 - (void)setPayloadInfo:(id)arg1;
 - (void)_setPayloadInfo:(id)arg1;
@@ -34,12 +24,10 @@ __attribute__((visibility("hidden")))
 - (void)setManagedBook:(id)arg1;
 - (void)setManagedApp:(id)arg1;
 - (void)setUnmanagedEnterpriseApp:(id)arg1;
-- (void)setTitle:(id)arg1 subtitle1:(id)arg2 subtitle2:(id)arg3;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (id)_detailImage;
-- (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
-- (void)layoutSubviews;
-- (void)_setupCell;
+- (void)_setTitle:(id)arg1 subtitle1:(id)arg2 subtitle2:(id)arg3 nearExpiration:(_Bool)arg4;
+- (void)_setTitle:(id)arg1 subtitle1:(id)arg2 subtitle2:(id)arg3;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
+- (void)prepareForReuse;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

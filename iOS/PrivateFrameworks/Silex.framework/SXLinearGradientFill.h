@@ -8,10 +8,8 @@
 {
 }
 
-+ (id)typeString;
 
 // Remaining properties
 @property(readonly, nonatomic) double angle; // @dynamic angle;
-
 @end
 

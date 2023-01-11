@@ -4,17 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSMutableArray;
+@class GEOTileKeyMap, NSMutableArray, geo_isolater;
 
 @interface GEORegionalResourcesTileRequester
 {
     NSMutableArray *_loaders;
+    geo_isolater *_loadersIsolater;
+    GEOTileKeyMap *_signpostIDs;
+    geo_isolater *_signpostIDsIsolater;
 }
 
 + (unsigned char)tileProviderIdentifier;
 - (void).cxx_destruct;
+- (void)_generateEndSignpostEventIfNecessary:(struct _GEOTileKey)arg1;
 - (void)cancel;
 - (void)start;
+- (id)initWithTileRequest:(id)arg1 delegateQueue:(id)arg2 delegate:(id)arg3;
 
 @end
 

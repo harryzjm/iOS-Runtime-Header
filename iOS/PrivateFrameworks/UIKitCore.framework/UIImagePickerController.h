@@ -5,11 +5,12 @@
 //
 
 #import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class NSArray, NSExtension, NSMutableDictionary, NSObject, NSString, UIView, UIViewController;
-@protocol OS_dispatch_queue, UINavigationControllerDelegate><UIImagePickerControllerDelegate;
+@class NSArray, NSExtension, NSMutableDictionary, NSString, UIView, UIViewController, _UIRemoteViewController;
+@protocol UINavigationControllerDelegate><UIImagePickerControllerDelegate;
 
-@interface UIImagePickerController <NSCoding>
+@interface UIImagePickerController <_UIRemoteViewControllerContaining, NSCoding>
 {
     long long _sourceType;
     id _image;
@@ -18,7 +19,6 @@
     NSMutableDictionary *_properties;
     int _previousStatusBarStyle;
     _Bool _previousStatusBarHidden;
-    NSObject<OS_dispatch_queue> *_photosExtensionDiscoveryQueue;
     Class _photoPickerRequestOptionsClass;
     CDUnknownBlockType _photoPickerDisplayCompletion;
     CDUnknownBlockType _photoPickerPreviewDisplayCompletion;
@@ -29,8 +29,6 @@
     CDStruct_d1897728 _imagePickerFlags;
     unsigned long long _savingOptions;
     NSExtension *_photosExtension;
-    id _photosExtensionDiscoveryDriver;
-    NSString *_initialViewControllerClassName;
 }
 
 + (_Bool)isFlashAvailableForCameraDevice:(long long)arg1;
@@ -40,14 +38,14 @@
 + (_Bool)_reviewCapturedItems;
 + (_Bool)_isMediaTypeAvailable:(id)arg1 forSource:(long long)arg2;
 + (_Bool)isSourceTypeAvailable:(long long)arg1;
-@property(copy, nonatomic) NSString *initialViewControllerClassName; // @synthesize initialViewControllerClassName=_initialViewControllerClassName;
-@property(retain, nonatomic) id photosExtensionDiscoveryDriver; // @synthesize photosExtensionDiscoveryDriver=_photosExtensionDiscoveryDriver;
 @property(retain, nonatomic) NSExtension *photosExtension; // @synthesize photosExtension=_photosExtension;
 - (void).cxx_destruct;
 - (void)_imagePickerDidCompleteWithInfoArray:(id)arg1;
 - (void)_imagePickerDidCompleteWithInfo:(id)arg1;
 - (void)_imagePickerDidCancel;
 - (void)_autoDismiss;
+@property(readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
+- (long long)_preferredModalPresentationStyle;
 - (struct CGSize)_adjustedContentSizeForPopover:(struct CGSize)arg1;
 - (void)_setupControllersForCurrentMediaTypes;
 - (void)_handleTopViewControllerReadyForDisplay:(id)arg1;
@@ -63,7 +61,6 @@
 - (void)dismissCurrentViewControllerFromPhotoPickerAnimated:(id)arg1;
 - (void)cancelPhotoPicker;
 - (void)_testPerformPreviewOfFirstPhoto;
-- (_Bool)_isPhotoPickerExtensionEnabled;
 - (void)_invalidatePhotoPickerServices;
 - (void)_setPhotoPickerPreviewDisplayCompletion:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)_photoPickerPreviewDisplayCompletion;
@@ -72,9 +69,7 @@
 @property(readonly, nonatomic) Class photoPickerRequestOptionsClass;
 - (id)_propertiesForPhotoPickerExtension;
 - (void)_handleInstantiatedRemoteViewController:(id)arg1 request:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_handleMatchingExtensions:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_serializeHandlingMatchingExtensions:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
-@property(readonly) NSObject<OS_dispatch_queue> *photosExtensionDiscoveryQueue;
+- (void)_handleMatchingExtension:(id)arg1 viewControllerClassName:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_createInitialControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (_Bool)_shouldDelayPresentation;
 - (void)_removeAllChildren;
@@ -126,6 +121,10 @@
 - (_Bool)_convertAutoloopsToGIF;
 - (void)_setOnlyShowAutoloops:(_Bool)arg1;
 - (_Bool)_onlyShowAutoloops;
+- (void)_setShowsFileSizePicker:(_Bool)arg1;
+- (_Bool)_showsFileSizePicker;
+- (void)_setRequiresPickingConfirmation:(_Bool)arg1;
+- (_Bool)_requiresPickingConfirmation;
 - (void)_setMultipleSelectionLimit:(unsigned long long)arg1;
 - (unsigned long long)_multipleSelectionLimit;
 - (void)_setAllowsMultipleSelection:(_Bool)arg1;
@@ -140,7 +139,11 @@
 - (id)init;
 
 // Remaining properties
+@property(readonly, copy) NSString *debugDescription;
 @property(nonatomic) __weak id <UINavigationControllerDelegate><UIImagePickerControllerDelegate> delegate; // @dynamic delegate;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

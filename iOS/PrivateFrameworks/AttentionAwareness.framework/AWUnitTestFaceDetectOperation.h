@@ -22,10 +22,12 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) __weak AWUnitTestPearlDevice *unitTestDevice; // @synthesize unitTestDevice=_unitTestDevice;
 - (void).cxx_destruct;
+- (void)awSetFaceDetectError;
 - (void)awSetFaceFound;
 - (void)cancel;
 - (void)awDeliverFaceFound;
 - (void)awFinishWithReason:(long long)arg1;
+- (void)startWithReply:(CDUnknownBlockType)arg1;
 - (_Bool)startWithError:(id *)arg1;
 - (long long)state;
 - (void)dealloc;

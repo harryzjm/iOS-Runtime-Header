@@ -18,7 +18,7 @@
 - (void)_accessibilityScrollToIndex:(unsigned long long)arg1;
 - (id)_accessibilityScrollStatus;
 - (id)_accessibilitySubviews;
-- (id)_accessibilityMoveFocusToNextOpaqueElementForTechnology:(id)arg1 direction:(long long)arg2 searchType:(long long)arg3 range:(struct _NSRange)arg4;
+- (id)_accessibilityMoveFocusToNextOpaqueElementForTechnology:(id)arg1 direction:(long long)arg2 searchType:(long long)arg3 range:(struct _NSRange)arg4 shouldScrollToVisible:(_Bool)arg5;
 - (id)accessibilityLabel;
 - (_Bool)isAccessibilityOpaqueElementProvider;
 

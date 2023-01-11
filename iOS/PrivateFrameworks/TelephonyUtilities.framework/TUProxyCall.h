@@ -35,6 +35,7 @@
     _Bool _prefersExclusiveAccessToCellularNetwork;
     _Bool _remoteUplinkMuted;
     _Bool _shouldSuppressInCallUI;
+    _Bool _mutuallyExclusiveCall;
     _Bool _wantsStagingArea;
     int _callStatus;
     int _ttyType;
@@ -43,6 +44,7 @@
     float _remoteMeterLevel;
     NSString *_callUUID;
     TUHandle *_handle;
+    NSString *_isoCountryCode;
     TUCallProvider *_backingProvider;
     TUCallProvider *_displayProvider;
     NSString *_callerNameFromNetwork;
@@ -64,6 +66,7 @@
     TUCallDisplayContext *_displayContext;
     NSSet *_remoteParticipantHandles;
     NSUUID *_localSenderIdentityUUID;
+    NSUUID *_localSenderIdentityAccountUUID;
     id <TUCallServicesProxyCallActions> _proxyCallActionsDelegate;
     id <TURemoteVideoClient> _localVideo;
     id <TURemoteVideoClient> _remoteVideo;
@@ -85,7 +88,9 @@
 @property(retain, nonatomic) id <TURemoteVideoClient> localVideo; // @synthesize localVideo=_localVideo;
 @property(nonatomic) __weak id <TUCallServicesProxyCallActions> proxyCallActionsDelegate; // @synthesize proxyCallActionsDelegate=_proxyCallActionsDelegate;
 @property(nonatomic) _Bool wantsStagingArea; // @synthesize wantsStagingArea=_wantsStagingArea;
+@property(nonatomic, getter=isMutuallyExclusiveCall) _Bool mutuallyExclusiveCall; // @synthesize mutuallyExclusiveCall=_mutuallyExclusiveCall;
 @property(nonatomic) _Bool shouldSuppressInCallUI; // @synthesize shouldSuppressInCallUI=_shouldSuppressInCallUI;
+@property(copy, nonatomic) NSUUID *localSenderIdentityAccountUUID; // @synthesize localSenderIdentityAccountUUID=_localSenderIdentityAccountUUID;
 @property(copy, nonatomic) NSUUID *localSenderIdentityUUID; // @synthesize localSenderIdentityUUID=_localSenderIdentityUUID;
 @property(nonatomic, getter=isRemoteUplinkMuted) _Bool remoteUplinkMuted; // @synthesize remoteUplinkMuted=_remoteUplinkMuted;
 @property(nonatomic) _Bool prefersExclusiveAccessToCellularNetwork; // @synthesize prefersExclusiveAccessToCellularNetwork=_prefersExclusiveAccessToCellularNetwork;
@@ -134,6 +139,7 @@
 @property(nonatomic, getter=isOutgoing) _Bool outgoing; // @synthesize outgoing=_outgoing;
 @property(retain, nonatomic) TUCallProvider *displayProvider; // @synthesize displayProvider=_displayProvider;
 @property(retain, nonatomic) TUCallProvider *backingProvider; // @synthesize backingProvider=_backingProvider;
+@property(copy, nonatomic) NSString *isoCountryCode; // @synthesize isoCountryCode=_isoCountryCode;
 @property(retain, nonatomic) TUHandle *handle; // @synthesize handle=_handle;
 @property(nonatomic, getter=isHostedOnCurrentDevice) _Bool hostedOnCurrentDevice; // @synthesize hostedOnCurrentDevice=_hostedOnCurrentDevice;
 @property(nonatomic) int callStatus; // @synthesize callStatus=_callStatus;

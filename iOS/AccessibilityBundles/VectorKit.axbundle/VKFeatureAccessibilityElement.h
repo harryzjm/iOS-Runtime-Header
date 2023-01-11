@@ -6,19 +6,19 @@
 
 #import <UIKit/UIAccessibilityElement.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 
 @interface VKFeatureAccessibilityElement : UIAccessibilityElement
 {
-    NSMutableArray *_featureArray;
+    NSMutableSet *_featureSet;
     NSMutableArray *_paths;
     _Bool _isPOI;
     _Bool _isRouteEta;
     int _style;
     float _strokeWidth;
     int _sortKey;
-    unsigned long long _featureId;
     unsigned long long _shieldType;
+    NSMutableDictionary *_pointToFeatureDict;
     NSMutableArray *_hitTestPaths;
     NSString *_shieldText;
 }
@@ -30,9 +30,9 @@
 @property(nonatomic) _Bool isPOI; // @synthesize isPOI=_isPOI;
 @property(retain, nonatomic) NSMutableArray *hitTestPaths; // @synthesize hitTestPaths=_hitTestPaths;
 @property(retain, nonatomic) NSMutableArray *paths; // @synthesize paths=_paths;
-@property(readonly, nonatomic) NSMutableArray *featureArray; // @synthesize featureArray=_featureArray;
+@property(retain, nonatomic) NSMutableDictionary *pointToFeatureDict; // @synthesize pointToFeatureDict=_pointToFeatureDict;
+@property(readonly, nonatomic) NSMutableSet *featureSet; // @synthesize featureSet=_featureSet;
 @property(nonatomic) unsigned long long shieldType; // @synthesize shieldType=_shieldType;
-@property(nonatomic) unsigned long long featureId; // @synthesize featureId=_featureId;
 @property(nonatomic) int style; // @synthesize style=_style;
 - (void).cxx_destruct;
 - (id)_accessibilityMapDetailedInfoAtPoint:(struct CGPoint)arg1;
@@ -53,14 +53,16 @@
 - (long long)_accessibilityMapFeatureType;
 - (id)initWithAccessibilityContainer:(id)arg1;
 - (void)dealloc;
-- (id)pointsFromFeature:(id)arg1;
+- (id)pointsFromFeatureWrapper:(id)arg1;
 - (_Bool)pointInside:(struct CGPoint)arg1;
 - (void)addFeaturesFromElement:(id)arg1;
-- (void)addFeature:(void *)arg1;
+- (void)addFeatureWrapper:(id)arg1;
+- (void)addFeature:(CDStruct_123780e2 *)arg1;
+- (void)removeFeatures;
 - (id)accessibilityLabel;
 - (void)_updateElementStatus;
 - (_Bool)_allowCustomActionHintSpeakOverride;
-- (id)initWithAccessibilityContainer:(id)arg1 feature:(CDStruct_58d0ca89 *)arg2 featureTypeContext:(void *)arg3 ignoreMissingName:(_Bool)arg4 useLocalizedLabels:(_Bool)arg5;
+- (id)initWithAccessibilityContainer:(id)arg1 feature:(CDStruct_123780e2 *)arg2 ignoreMissingName:(_Bool)arg3 useLocalizedLabels:(_Bool)arg4;
 
 @end
 

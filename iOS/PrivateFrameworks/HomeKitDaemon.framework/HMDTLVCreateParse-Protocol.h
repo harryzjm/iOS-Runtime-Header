@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class HMUIndent, NSData, NSString;
+@class HMFStringIndentation, NSData, NSString;
 
 @protocol HMDTLVCreateParse
-- (NSString *)descriptionWithIndent:(HMUIndent *)arg1;
+- (NSString *)descriptionWithIndent:(HMFStringIndentation *)arg1;
 - (_Bool)_parseFromTLVData;
 - (NSData *)tlvData;
 @end

@@ -8,6 +8,7 @@
 
 @class NSArray, NSMapTable, NSString, SKUIImageGridViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUIImageGridViewReuseView <SKUIViewElementView>
 {
     NSMapTable *_imageViewToImageResourceCacheKey;

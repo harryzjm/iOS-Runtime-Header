@@ -4,21 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard. Updated in 2022 by Kevin Bradley.
 //
 
-@class NSArray, NSDictionary, NUColorSpace;
+@class NSArray, NSDictionary, NSProgress, NUColorSpace;
 
 @interface NUVideoExportRequest
 {
     _Bool _requiresVideoComposition;
     NSDictionary *_outputSettings;
     NSArray *_metadata;
+    NSProgress *_progress;
+    double _bitRateMultiplicationFactor;
     NUColorSpace *_cachedColorSpace;
 }
 
 @property(nonatomic) _Bool requiresVideoComposition; // @synthesize requiresVideoComposition=_requiresVideoComposition;
 @property(retain) NUColorSpace *cachedColorSpace; // @synthesize cachedColorSpace=_cachedColorSpace;
+@property(nonatomic) double bitRateMultiplicationFactor; // @synthesize bitRateMultiplicationFactor=_bitRateMultiplicationFactor;
+@property(retain) NSProgress *progress; // @synthesize progress=_progress;
 @property(copy) NSArray *metadata; // @synthesize metadata=_metadata;
 @property(copy) NSDictionary *outputSettings; // @synthesize outputSettings=_outputSettings;
 - (void).cxx_destruct;
+- (void)submitWithProgress:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)submit:(CDUnknownBlockType)arg1;
 - (long long)mediaComponentType;
 - (id)copyWithZone:(struct _NSZone *)arg1;

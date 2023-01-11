@@ -9,9 +9,11 @@
 #import <Home/CLLocationManagerDelegate-Protocol.h>
 
 @class CLLocationManager, NAFuture, NSHashTable, NSMutableArray, NSString;
+@protocol OS_dispatch_queue;
 
 @interface HFLocationManagerDispatcher : NSObject <CLLocationManagerDelegate>
 {
+    NSObject<OS_dispatch_queue> *_queue;
     _Bool _hasInitializedAuthorizationStatus;
     int _cachedAuthorizationStatus;
     CLLocationManager *_locationManager;
@@ -26,6 +28,8 @@
 @property(retain, nonatomic) NSHashTable *locationObservers; // @synthesize locationObservers=_locationObservers;
 @property(readonly, nonatomic) CLLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 - (void).cxx_destruct;
+- (void)_updateMacAuthorizationStatus:(int)arg1;
+- (void)_authorizeHomeKitLocationServices;
 - (void)locationManager:(id)arg1 didFinishDeferredUpdatesWithError:(id)arg2;
 - (void)locationManagerDidResumeLocationUpdates:(id)arg1;
 - (void)locationManagerDidPauseLocationUpdates:(id)arg1;
@@ -46,6 +50,7 @@
 - (void)_updateCachedAuthorizationStatus:(int)arg1;
 @property(readonly, nonatomic) int authorizationStatus;
 @property(readonly, nonatomic) NAFuture *authorizationStatusFuture;
+- (void)dealloc;
 - (id)init;
 
 // Remaining properties

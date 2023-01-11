@@ -8,21 +8,29 @@
 
 #import <MediaPlayer/MPLazySectionedCollectionDataSource-Protocol.h>
 
-@class MPMediaLibraryEntityTranslationContext, MPModelLibraryRequest, NSString;
+@class MPMediaLibraryEntityTranslationContext, MPModelLibraryRequest, NSDictionary, NSString;
 
 @interface MPModelLibraryDefaultSectionedCollectionDataSource : NSObject <MPLazySectionedCollectionDataSource>
 {
     MPMediaLibraryEntityTranslationContext *_entityTranslationContext;
+    vector_bbba3654 _allowedItemPersistentIDs;
+    struct map<long long, unsigned long, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, unsigned long>>> _allowedItemPersistentIDToItemQueryResultsIndexMap;
     MPModelLibraryRequest *_request;
+    NSDictionary *_indexPathToContainerUniqueIDMap;
     shared_ptr_8b9a1f72 _itemIdentifierQueryResults;
     shared_ptr_274c5e8b _itemQueryResults;
 }
 
 @property(readonly, nonatomic) shared_ptr_274c5e8b itemQueryResults; // @synthesize itemQueryResults=_itemQueryResults;
 @property(readonly, nonatomic) shared_ptr_8b9a1f72 itemIdentifierQueryResults; // @synthesize itemIdentifierQueryResults=_itemIdentifierQueryResults;
+@property(retain, nonatomic) NSDictionary *indexPathToContainerUniqueIDMap; // @synthesize indexPathToContainerUniqueIDMap=_indexPathToContainerUniqueIDMap;
 @property(readonly, nonatomic) MPModelLibraryRequest *request; // @synthesize request=_request;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (id)_buildIndexPathToContainerUniqueIDMapFromItemQueryResults:(shared_ptr_274c5e8b)arg1;
+- (_Bool)_allowedEntityIdentifiersContainsAllPersistentIDs;
+- (unsigned long long)_adjustedGlobalIndexForIndexPath:(id)arg1;
+- (void)_populateIndexMap;
 - (_Bool)_usesSections;
 - (id)indexPathForItemWithIdentifiersIntersectingSet:(id)arg1;
 - (id)identifiersForSectionAtIndex:(long long)arg1;

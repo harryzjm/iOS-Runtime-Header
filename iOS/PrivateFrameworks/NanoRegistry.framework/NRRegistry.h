@@ -27,6 +27,7 @@
 
 + (int)registerNotifyTokenWithName:(id)arg1 withQueue:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 + (unsigned long long)readNotifyToken:(int)arg1;
++ (void)fixSecurePropertiesWithCollection:(id)arg1 secureProperties:(id)arg2 insecurePropertyNames:(id)arg3;
 + (id)getReferencedSecureProperties:(id)arg1 fromDiff:(id)arg2;
 + (id)getReferencedSecurePropertyIDsFromDiff:(id)arg1;
 + (id)_nextToken;
@@ -51,6 +52,7 @@
 - (void)enqueueForWriteAsync:(CDUnknownBlockType)arg1;
 - (void)enqueueForReadAsync:(CDUnknownBlockType)arg1;
 - (void)enqueueForRead:(CDUnknownBlockType)arg1;
+- (_Bool)enqueueForReadUnlessSuspended:(CDUnknownBlockType)arg1;
 - (_Bool)supportsWatch;
 @property(retain, nonatomic) NRSecureDevicePropertyStore *secureProperties; // @synthesize secureProperties=_secureProperties;
 - (void)_startQueue;

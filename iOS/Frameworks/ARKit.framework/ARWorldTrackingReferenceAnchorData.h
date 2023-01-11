@@ -9,17 +9,22 @@
 #import <ARKit/ARResultData-Protocol.h>
 #import <ARKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSString;
+@class NSSet, NSString;
 
 @interface ARWorldTrackingReferenceAnchorData : NSObject <ARResultData, NSSecureCoding>
 {
-    NSData *_visionTransformData;
     double _timestamp;
-    NSArray *_anchorIdentifiers;
+    NSSet *_updatedAnchors;
+    NSSet *_addedAnchors;
+    NSSet *_removedAnchors;
+    NSSet *_receivedAnchors;
 }
 
 + (_Bool)supportsSecureCoding;
-@property(readonly, nonatomic) NSArray *anchorIdentifiers; // @synthesize anchorIdentifiers=_anchorIdentifiers;
+@property(retain, nonatomic) NSSet *receivedAnchors; // @synthesize receivedAnchors=_receivedAnchors;
+@property(readonly, nonatomic) NSSet *removedAnchors; // @synthesize removedAnchors=_removedAnchors;
+@property(readonly, nonatomic) NSSet *addedAnchors; // @synthesize addedAnchors=_addedAnchors;
+@property(readonly, nonatomic) NSSet *updatedAnchors; // @synthesize updatedAnchors=_updatedAnchors;
 @property(nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 - (void).cxx_destruct;
 - (_Bool)isEqual:(id)arg1;
@@ -27,8 +32,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)anchorsForCameraWithTransform:(CDStruct_14d5dc5e)arg1 referenceOriginTransform:(CDStruct_14d5dc5e)arg2 existingAnchors:(id)arg3 anchorsToRemove:(id)arg4;
-@property(readonly, nonatomic) CDStruct_14d5dc5e *anchorVisionTransforms;
-- (id)initWithAnchorPosesDictionary:(id)arg1;
+- (id)initWithUpdatedAnchors:(id)arg1 addedAnchors:(id)arg2 removedAnchors:(id)arg3;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
